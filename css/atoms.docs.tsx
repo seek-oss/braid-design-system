@@ -28,7 +28,7 @@ import { ThemedExample } from '../site/src/App/ThemeSetting';
 import { CssDoc } from '../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
-type BoxShadowDocs = Required<Record<BoxShadow, string>>;
+type BoxShadowDocs = Required<Record<Exclude<BoxShadow, 'none'>, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 
 interface AtomicPropertyProps {
@@ -134,17 +134,13 @@ const docs: CssDoc = {
                 Object.keys(
                   unresponsiveProperties,
                 ) as Array<UnresponsiveProperties>
-              )
-                // filtering out `background` as it’s not public api due to
-                // impact on context related contrast handling..
-                .filter((prop) => prop !== 'background')
-                .map((prop) => (
-                  <AtomicProperty
-                    key={prop}
-                    name={prop}
-                    values={Object.keys(unresponsiveProperties[prop])}
-                  />
-                ))}
+              ).map((prop) => (
+                <AtomicProperty
+                  key={prop}
+                  name={prop}
+                  values={Object.keys(unresponsiveProperties[prop])}
+                />
+              ))}
             </Tiles>
           </Box>
         </>
@@ -398,8 +394,14 @@ const docs: CssDoc = {
                     'Used for borders around prominent interactive elements.',
                   borderFormAccentLarge:
                     'Used for large borders around prominent interactive elements.',
+                  borderFormAccentLight:
+                    'Used for borders around prominent interactive elements in a dark context.',
+                  borderFormAccentLightLarge:
+                    'Used for large borders around prominent interactive elements in a dark context.',
                   borderBrandAccentLarge:
                     'Used for large borders around branded elements.',
+                  borderBrandAccentLightLarge:
+                    'Used for large borders around branded elements in a dark context.',
                   borderPositive:
                     'Used for borders around “positive” elements.',
                   borderPositiveLight:
@@ -410,6 +412,8 @@ const docs: CssDoc = {
                     'Used for large borders around “critical” elements.',
                   borderCriticalLight:
                     'Used for borders around “criticalLight” elements.',
+                  borderCriticalLightLarge:
+                    'Used for large borders around “criticalLight” elements.',
                   borderCaution: 'Used for borders around “caution” elements.',
                   borderCautionLight:
                     'Used for borders around “cautionLight” elements.',

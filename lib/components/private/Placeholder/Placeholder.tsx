@@ -21,8 +21,7 @@ export const Placeholder = ({
   height = 120,
   shape = 'rectangle',
 }: PlaceholderProps) => {
-  const theme =
-    useBackgroundLightness() === 'light' ? styles.lightTheme : styles.darkTheme;
+  const lightness = useBackgroundLightness();
 
   return (
     <Box
@@ -32,7 +31,12 @@ export const Placeholder = ({
       alignItems="center"
       justifyContent="center"
       borderRadius={shape === 'round' ? 'full' : undefined}
-      className={[wireframe.vanillaTheme, theme, styles.box]}
+      className={[
+        wireframe.vanillaTheme,
+        styles.lightTheme[lightness.lightMode],
+        styles.darkTheme[lightness.darkMode],
+        styles.box,
+      ]}
       style={{
         width: resolveToPxIfUnitless(width),
         height: resolveToPxIfUnitless(height),

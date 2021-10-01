@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, LinkProps } from '../Link/Link';
 import { useMenuItem } from './useMenuItem';
 import { MenuItemProps } from './MenuItem';
+import { Box } from '../Box/Box';
 
 export interface MenuItemLinkProps
   extends MenuItemProps,
@@ -24,8 +25,14 @@ export const MenuItemLink = ({
   });
 
   return (
-    <Link {...menuItemProps} href={href} target={target} rel={rel}>
+    <Box
+      component={Link}
+      {...menuItemProps}
+      href={href}
+      target={target}
+      rel={rel}
+    >
       <MenuItemChildren tone={tone}>{children}</MenuItemChildren>
-    </Link>
+    </Box>
   );
 };

@@ -12,7 +12,7 @@ import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: ({ handler, setDefaultState, getState, toggleState }) =>
       source(
         <>

@@ -12,12 +12,17 @@ import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
-import { useBackground } from '../Box/BackgroundContext';
+import {
+  useBackground,
+  useBackgroundLightness,
+} from '../Box/BackgroundContext';
 import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
+import * as keylineStyles from '../private/keyline/keyline.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -33,11 +38,11 @@ export type AlertProps = {
 } & CloseProps;
 
 const backgroundForTone: Record<Tone, BoxProps['background']> = {
-  promote: 'promoteLight',
-  info: 'infoLight',
-  positive: 'positiveLight',
-  caution: 'cautionLight',
-  critical: 'criticalLight',
+  promote: { lightMode: 'promoteLight', darkMode: 'neutral' },
+  info: { lightMode: 'infoLight', darkMode: 'neutral' },
+  positive: { lightMode: 'positiveLight', darkMode: 'neutral' },
+  caution: { lightMode: 'cautionLight', darkMode: 'neutral' },
+  critical: { lightMode: 'criticalLight', darkMode: 'neutral' },
 };
 
 const borderForTone: Record<Tone, BoxShadow> = {
@@ -66,6 +71,7 @@ export const Alert = ({
   data,
   onClose,
 }: AlertProps) => {
+  const backgroundLightness = useBackgroundLightness();
   const parentBackground = useBackground();
   const Icon = icons[tone];
 
@@ -87,7 +93,11 @@ export const Alert = ({
             <Icon tone={tone} />
           </Column>
           <Column>
-            <Box className={textAlignedToIcon.standard}>{children}</Box>
+            <Box className={textAlignedToIcon.standard}>
+              <DefaultTextPropsProvider tone={tone}>
+                {children}
+              </DefaultTextPropsProvider>
+            </Box>
           </Column>
           {onClose ? (
             <Column width="content">
@@ -100,20 +110,24 @@ export const Alert = ({
           ) : null}
         </Columns>
       </Box>
-      {parentBackground !== 'surface' && (
+      {parentBackground.lightMode !== 'surface' && (
         <Overlay
           borderRadius={borderRadius}
-          boxShadow={borderForTone[tone]}
+          boxShadow={{ lightMode: borderForTone[tone], darkMode: 'none' }}
           visible
         />
       )}
       <Box
-        background={tone}
         paddingLeft={highlightBarSize}
         position="absolute"
         top={0}
         bottom={0}
         left={0}
+        className={[
+          keylineStyles.tone[tone],
+          keylineStyles.lightMode[backgroundLightness.lightMode],
+          keylineStyles.darkMode[backgroundLightness.darkMode],
+        ]}
       />
     </Box>
   );

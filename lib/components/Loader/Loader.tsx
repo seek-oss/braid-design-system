@@ -20,7 +20,7 @@ export const Loader = ({
   delayVisibility = false,
   data,
 }: LoaderProps) => {
-  const parentBackgroundColor = useBackgroundLightness();
+  const background = useBackgroundLightness();
 
   return (
     <Box
@@ -38,7 +38,8 @@ export const Loader = ({
         className={[
           atoms({ reset: 'svg' }),
           styles.size[size],
-          styles.color[parentBackgroundColor],
+          styles.lightModeColor[background.lightMode],
+          styles.darkModeColor[background.darkMode],
         ].join(' ')}
         viewBox="0 0 300 134"
         aria-hidden

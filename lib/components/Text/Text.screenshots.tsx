@@ -64,7 +64,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Text Spacing',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Container,
       Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
@@ -72,7 +72,10 @@ export const screenshots: ComponentScreenshot = {
         return (
           <Stack space="medium">
             {sizes.sort().map((size) => (
-              <Box key={size} background="neutralLight">
+              <Box
+                key={size}
+                background={{ lightMode: 'neutralLight', darkMode: 'neutral' }}
+              >
                 <Text size={size}>
                   {titleCase(size)} Text (Line 1)
                   <br />

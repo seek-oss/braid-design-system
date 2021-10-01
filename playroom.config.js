@@ -8,7 +8,7 @@ module.exports = {
   outputPath: './site/dist/playroom',
   title: 'BRAID',
   snippets: './lib/playroom/snippets.ts',
-  themes: './lib/themes/index.ts',
+  themes: './lib/playroom/themes.ts',
   frameComponent: './lib/playroom/FrameComponent.tsx',
   scope: './lib/playroom/useScope.ts',
   typeScriptFiles: ['lib/**/*.{ts,tsx}', '!**/node_modules'],

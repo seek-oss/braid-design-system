@@ -66,7 +66,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'States',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: ({ id, handler }) =>
       source(
         <Stack space="medium">

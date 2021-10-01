@@ -9,7 +9,7 @@ import React, {
 import dedent from 'dedent';
 import { base as baseReset } from '../../css/reset/reset.css';
 import { atoms, Atoms } from '../../css/atoms/atoms';
-import { sprinkles } from '../../css/atoms/sprinkles.css';
+import { sprinkles, ColorModeValue } from '../../css/atoms/sprinkles.css';
 import { ColoredBox } from './ColoredBox';
 import { Background } from '../../css/atoms/atomicProperties';
 
@@ -17,7 +17,7 @@ export type BoxBackgroundVariant = Background | 'customDark' | 'customLight';
 
 export interface BoxBaseProps extends Omit<Atoms, 'reset' | 'background'> {
   className?: ClassValue;
-  background?: BoxBackgroundVariant;
+  background?: ColorModeValue<BoxBackgroundVariant>;
 }
 
 export interface BoxProps

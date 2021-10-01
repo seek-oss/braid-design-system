@@ -10,6 +10,7 @@ import {
   IconLocation,
   Stack,
   Heading,
+  Notice,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -201,27 +202,40 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      Example: ({ id, getState, setState, setDefaultState }) =>
         source(
-          <Dropdown
-            label="Label"
-            id={id}
-            onChange={setState('dropdown')}
-            value={getState('dropdown')}
-            disabled={true}
-          >
-            <option>Option 1</option>
-            <option>Option 2</option>
-          </Dropdown>,
+          <>
+            {setDefaultState('dropdown', 'Option 1')}
+
+            <Dropdown
+              label="Label"
+              id={id}
+              onChange={setState('dropdown')}
+              value={getState('dropdown')}
+              disabled={true}
+            >
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </Dropdown>
+          </>,
         ),
     },
     {
       label: 'Placeholder prompt',
       description: (
-        <Text>
-          Providing a <Strong>placeholder</Strong> will display as a prompt to
-          the user no value is selected.
-        </Text>
+        <>
+          <Text>
+            Providing a <Strong>placeholder</Strong> will display as a prompt to
+            the user no value is selected.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              A placeholder is not visible when the field is{' '}
+              <TextLink href="#disabled-field">disabled</TextLink>.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: ({ id, getState, setState }) =>
         source(

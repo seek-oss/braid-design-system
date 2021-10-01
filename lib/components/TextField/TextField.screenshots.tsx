@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { IconSearch, IconPhone, TextField, TextLink } from '../';
+import { IconSearch, IconPhone, TextField, TextLink, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -14,10 +14,10 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Job Title"
+          label="Label"
           id={id}
           onChange={handler}
-          value="Senior Developer"
+          value="Text value"
         />
       ),
     },
@@ -26,7 +26,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Job Title"
+          label="Label"
           id={id}
           onChange={handler}
           value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -41,7 +41,7 @@ export const screenshots: ComponentScreenshot = {
 
         return (
           <TextField
-            label="Job Title"
+            label="Label"
             id={id}
             onChange={(e) => setValue(e.currentTarget.value)}
             onClear={() => setValue('')}
@@ -58,10 +58,10 @@ export const screenshots: ComponentScreenshot = {
 
         return (
           <TextField
-            label="Job Title"
+            label="Label"
             id={id}
             icon={<IconSearch />}
-            placeholder="Enter a job title"
+            placeholder="Placeholder text"
             onChange={(e) => setValue(e.currentTarget.value)}
             value={value}
           />
@@ -73,7 +73,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Job Title"
+          label="Label"
           id={id}
           onChange={handler}
           onClear={handler}
@@ -86,10 +86,10 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Job Title"
+          label="Label"
           id={id}
           value=""
-          message="e.g. Senior Developer"
+          message="Neutral message"
           onChange={handler}
         />
       ),
@@ -99,8 +99,8 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Title"
-          secondaryLabel="Optional"
+          label="Label"
+          secondaryLabel="Secondary"
           id={id}
           value=""
           onChange={handler}
@@ -112,8 +112,8 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Title"
-          secondaryLabel="Optional"
+          label="Label"
+          secondaryLabel="Secondary"
           tertiaryLabel={<TextLink href="#">Help?</TextLink>}
           id={id}
           value=""
@@ -123,9 +123,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'TextField with no visual label',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Container,
       Example: ({ id, handler }) => (
-        <TextField aria-label="Title" id={id} value="" onChange={handler} />
+        <TextField aria-label="Label" id={id} value="" onChange={handler} />
       ),
     },
     {
@@ -133,8 +134,8 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Title"
-          secondaryLabel="Optional"
+          label="Label"
+          secondaryLabel="Secondary"
           description="Longer description of this field"
           id={id}
           value=""
@@ -143,15 +144,15 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextField with error',
+      label: 'TextField with critical message',
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Do you like Braid?"
+          label="Label"
           tone="critical"
           id={id}
-          value="No"
-          message="Answer is incorrect"
+          value="Text value"
+          message="Critical message"
           onChange={handler}
         />
       ),
@@ -161,13 +162,35 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Do you like Braid?"
+          label="Label"
           id={id}
-          value="Yes"
-          message="Nice one!"
+          value="Text value"
+          message="Positive message"
           tone="positive"
           onChange={handler}
         />
+      ),
+    },
+    {
+      label: 'TextField disabled',
+      Container,
+      Example: ({ id, handler }) => (
+        <Stack space="gutter">
+          <TextField
+            label="No value"
+            id={`${id}_1`}
+            value=""
+            disabled={true}
+            onChange={handler}
+          />
+          <TextField
+            label="With value"
+            id={`${id}_2`}
+            value="Text value"
+            disabled={true}
+            onChange={handler}
+          />
+        </Stack>
       ),
     },
     {
@@ -176,10 +199,10 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Job Title"
+          label="Label"
           id={id}
           onChange={handler}
-          value="Senior Developer"
+          value="Text value"
         />
       ),
     },
@@ -188,11 +211,11 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Amount"
+          label="Label"
           id={id}
           onChange={handler}
-          prefix="AUD $"
-          value="1000"
+          prefix="Prefix"
+          value="Text value"
         />
       ),
     },
@@ -201,12 +224,12 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: ({ id, handler }) => (
         <TextField
-          label="Phone number"
+          label="Label"
           id={id}
           onChange={handler}
           icon={<IconPhone />}
-          prefix="+61"
-          value="411 111 111"
+          prefix="Prefix"
+          value="Text value"
         />
       ),
     },

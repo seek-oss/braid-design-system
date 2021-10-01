@@ -135,7 +135,10 @@ export const CodeButton = ({
         variant="focus"
         className={[styles.focusOverlay, hideFocusRingsClassName]}
       />
-      <FieldOverlay background="neutralLight" className={styles.hoverOverlay} />
+      <FieldOverlay
+        background={{ lightMode: 'neutralSoftHover', darkMode: 'surfaceDark' }}
+        className={styles.hoverOverlay}
+      />
       <FieldOverlay className={styles.activeOverlay} />
       <Box
         component="span"
@@ -162,6 +165,7 @@ export const CodeBlock = ({
     position="relative"
     padding="xxsmall"
     borderRadius="large"
+    background="surfaceDark"
     className={styles.code}
   >
     <Box padding={['medium', 'medium', 'large']}>
@@ -238,9 +242,7 @@ const Code = ({
   return (
     <Box position="relative">
       <Stack space="xsmall">
-        {typeof children !== 'string' && (
-          <ThemedExample background="body">{value}</ThemedExample>
-        )}
+        {typeof children !== 'string' && <ThemedExample>{value}</ThemedExample>}
         {hideCode ? null : <CodeBlock>{code}</CodeBlock>}
         <Inline space="xxsmall" align="right">
           {collapsedByDefault ? (

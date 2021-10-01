@@ -6,7 +6,7 @@ import { Badge } from '../';
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Positive',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: () => source(<Badge tone="positive">Positive</Badge>),
   },
   {
@@ -20,7 +20,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Critical',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: () => source(<Badge tone="critical">Critical</Badge>),
   },
   {
@@ -34,7 +34,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Caution',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: () => source(<Badge tone="caution">Caution</Badge>),
   },
   {
@@ -48,7 +48,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Info',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: () => source(<Badge tone="info">Info</Badge>),
   },
   {
@@ -62,7 +62,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Promote',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: () => source(<Badge tone="promote">Promote</Badge>),
   },
   {
@@ -76,7 +76,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Neutral',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: () => source(<Badge tone="neutral">Neutral</Badge>),
   },
   {

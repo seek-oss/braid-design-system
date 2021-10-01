@@ -103,7 +103,7 @@ const page: Page = {
             </Column>
             <Column>
               <Box display="flex">
-                <ThemedExample>
+                <ThemedExample transparent>
                   <Box
                     background="formAccent"
                     paddingLeft={space}

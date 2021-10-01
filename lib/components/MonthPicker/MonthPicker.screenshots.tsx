@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { MonthPicker } from '../';
+import { MonthPicker, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -48,7 +48,30 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Disabled',
+      Container,
+      Example: ({ id, handler }) => (
+        <Stack space="gutter">
+          <MonthPicker
+            id={`${id}_1`}
+            label="With value"
+            disabled={true}
+            value={{ month: 1, year: 2019 }}
+            onChange={handler}
+          />
+          <MonthPicker
+            id={`${id}_2`}
+            label="No value"
+            disabled={true}
+            value={{}}
+            onChange={handler}
+          />
+        </Stack>
+      ),
+    },
+    {
       label: 'No visual label',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Container,
       Example: ({ id, handler }) => (
         <MonthPicker

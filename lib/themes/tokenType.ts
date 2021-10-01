@@ -75,6 +75,7 @@ export interface BraidTokens {
     };
     color: {
       brandAccent: string;
+      brandAccentLight: string;
       caution: string;
       cautionLight: string;
       critical: string;
@@ -82,6 +83,7 @@ export interface BraidTokens {
       field: string;
       focus: string;
       formAccent: string;
+      formAccentLight: string;
       info: string;
       infoLight: string;
       neutral: string;
@@ -101,17 +103,26 @@ export interface BraidTokens {
   };
   color: {
     foreground: {
+      brandAccentLight: string;
       brandAccent: string;
+      cautionLight: string;
       caution: string;
+      criticalLight: string;
       critical: string;
+      formAccentLight: string;
       formAccent: string;
+      infoLight: string;
       info: string;
+      linkLight: string;
       link: string;
       linkHover: string;
       linkVisited: string;
+      linkLightVisited: string;
       neutral: string;
       neutralInverted: string;
+      positiveLight: string;
       positive: string;
+      promoteLight: string;
       promote: string;
       rating: string;
       secondary: string;
@@ -119,6 +130,7 @@ export interface BraidTokens {
     };
     background: {
       body: string;
+      bodyDark: string;
       brand: string;
       brandAccent: string;
       brandAccentActive: string;
@@ -126,6 +138,7 @@ export interface BraidTokens {
       brandAccentSoft: string;
       brandAccentSoftActive: string;
       brandAccentSoftHover: string;
+      brandDark: string;
       caution: string;
       cautionLight: string;
       critical: string;
@@ -144,13 +157,18 @@ export interface BraidTokens {
       info: string;
       infoLight: string;
       neutral: string;
+      neutralActive: string;
+      neutralHover: string;
       neutralLight: string;
       neutralSoft: string;
+      neutralSoftActive: string;
+      neutralSoftHover: string;
       positive: string;
       positiveLight: string;
       promote: string;
       promoteLight: string;
       surface: string;
+      surfaceDark: string;
     };
   };
 }

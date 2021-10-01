@@ -3,6 +3,7 @@ import dedent from 'dedent';
 import React, {
   createContext,
   useContext,
+  useEffect,
   ReactNode,
   AnchorHTMLAttributes,
   forwardRef,
@@ -17,6 +18,8 @@ import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProvider
 import { BreakpointProvider } from './BreakpointContext';
 import { BraidThemeContext } from './BraidThemeContext';
 import { BraidTheme } from '../../themes/BraidTheme';
+import { darkMode } from '../../css/atoms/sprinkles.css';
+import * as typographyStyles from '../../hooks/typography/typography.css';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
@@ -88,13 +91,56 @@ export const BraidProvider = ({
     `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
   );
 
+  const defaultTextTones = !alreadyInBraidProvider
+    ? `${typographyStyles.lightModeTone.light} ${typographyStyles.darkModeTone.dark}`
+    : '';
+
+  // TODO REMOVE THIS BRANCH HACK
+  useEffect(() => {
+    if (alreadyInBraidProvider) {
+      return;
+    }
+
+    let code = '';
+    const colorModeToggle = (ev: KeyboardEvent) => {
+      code += ev.key;
+      if (code.substr(code.length - 4) === 'dark') {
+        document.documentElement.classList.add(darkMode);
+        code = '';
+      }
+
+      if (code.substr(code.length - 5) === 'light') {
+        document.documentElement.classList.remove(darkMode);
+        code = '';
+      }
+
+      if (code.length > 5) {
+        code = code.substr(code.length - 5);
+      }
+    };
+    window.addEventListener('keydown', colorModeToggle);
+
+    return () => {
+      window.removeEventListener('keydown', colorModeToggle);
+    };
+  }, [alreadyInBraidProvider]);
+
   return (
     <BraidThemeContext.Provider value={theme}>
       <TreatProvider theme={theme.treatTheme}>
         {styleBody ? (
-          <style type="text/css">{`body{margin:0;padding:0;background:${theme.background}}`}</style>
+          <style type="text/css">{`
+            body{margin:0;padding:0;background:${theme.background.lightMode}}
+            html.${darkMode}{color-scheme:dark}
+            html.${darkMode} body{background:${theme.background.darkMode}}
+            }}
+          `}</style>
         ) : null}
-        <div className={theme.vanillaTheme}>
+        <div
+          className={`${theme.vanillaTheme}${
+            defaultTextTones ? ` ${defaultTextTones}` : ''
+          }`}
+        >
           <LinkComponentContext.Provider
             value={linkComponent || linkComponentFromContext}
           >

@@ -30,34 +30,24 @@ export interface BadgeProps {
   'aria-describedby'?: string;
 }
 
+const lightModeBackgroundForTone = {
+  positive: 'positiveLight',
+  critical: 'criticalLight',
+  info: 'infoLight',
+  promote: 'promoteLight',
+  neutral: 'neutralLight',
+  caution: 'cautionLight',
+} as const;
+
 const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
   if (weight === 'strong') {
     return tone;
   }
 
-  if (tone === 'positive') {
-    return 'positiveLight';
-  }
-
-  if (tone === 'critical') {
-    return 'criticalLight';
-  }
-
-  if (tone === 'info') {
-    return 'infoLight';
-  }
-
-  if (tone === 'promote') {
-    return 'promoteLight';
-  }
-
-  if (tone === 'neutral') {
-    return 'neutralLight';
-  }
-
-  if (tone === 'caution') {
-    return 'cautionLight';
-  }
+  return {
+    lightMode: lightModeBackgroundForTone[tone],
+    darkMode: 'neutral',
+  } as const;
 };
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(

@@ -135,7 +135,7 @@ export const ModalContent = ({
         {/* modalRef gets forwarded down to UL by RemoveScroll by `forwardProps` */}
         <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
           <Box
-            background="surface"
+            background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
             borderRadius={position === 'center' ? 'xlarge' : undefined}
             overflow="auto"
             position="relative"
@@ -215,7 +215,7 @@ export const ModalContent = ({
                   component="button"
                   aria-label={closeLabel}
                   borderRadius="full"
-                  background="surface"
+                  background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
                   padding="xsmall"
                   cursor="pointer"
                   position="relative"

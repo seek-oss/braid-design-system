@@ -73,7 +73,9 @@ const page: Page = {
                       space="none"
                       align={{ mobile: 'center', tablet: 'left' }}
                     >
-                      <Button variant="ghost">Show me</Button>
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -317,12 +319,18 @@ const page: Page = {
         <Step
           heading="5. Add some colour"
           detail={
-            <Text component="p">
-              Now that we have our layout, let&rsquo;s get our banner some
-              attention by applying a background colour to the `Box` container.
-              In this example, we&rsquo;ll set a `background` colour of
-              `brandAccent`.
-            </Text>
+            <>
+              <Text component="p">
+                Now that we have our layout, let&rsquo;s get our banner some
+                attention by applying a background colour to the `Box`
+                container. In this example, we&rsquo;ll set a `background`
+                colour of `brandAccent`.
+              </Text>
+              <Text component="p">
+                Given we are using a coloured background now, it makes sense to
+                push back the button by using a `neutral` tone.
+              </Text>
+            </>
           }
         >
           <Box background="brandAccent">
@@ -333,7 +341,9 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button variant="ghost">Show me</Button>
+                    <Button variant="ghost" tone="neutral">
+                      Show me
+                    </Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -390,7 +400,9 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button variant="ghost">Show me</Button>
+                    <Button variant="ghost" tone="neutral">
+                      Show me
+                    </Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -434,7 +446,9 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button variant="ghost">Show me</Button>
+                    <Button variant="ghost" tone="neutral">
+                      Show me
+                    </Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -495,7 +509,9 @@ const page: Page = {
                     space="none"
                     align={{ mobile: 'center', tablet: 'left' }}
                   >
-                    <Button variant="ghost">Show me</Button>
+                    <Button variant="ghost" tone="neutral">
+                      Show me
+                    </Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -543,7 +559,9 @@ const page: Page = {
                       Heard about our latest marketing campaign?
                     </Heading>
                     <Inline space="none">
-                      <Button variant="ghost">Show me</Button>
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -590,7 +608,9 @@ const page: Page = {
                       space="none"
                       align={{ mobile: 'center', tablet: 'left' }}
                     >
-                      <Button variant="ghost">Show me</Button>
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -637,7 +657,9 @@ const page: Page = {
                       space="none"
                       align={{ mobile: 'center', tablet: 'left' }}
                     >
-                      <Button variant="ghost">Show me</Button>
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
                     </Inline>
                   </Stack>
                 </Column>

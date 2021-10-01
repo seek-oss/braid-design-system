@@ -30,7 +30,7 @@ export const GalleryPanel = ({
     className={styles.panel}
   >
     <Overlay
-      background="surface"
+      background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
       borderRadius="standard"
       className={styles.panelBackground}
       visible

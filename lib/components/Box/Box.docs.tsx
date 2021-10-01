@@ -399,7 +399,7 @@ const docs: ComponentDocs = {
             <Strong>customLight</Strong> or <Strong>customDark</Strong>.
           </Text>
           <Stack space="xxsmall">
-            <ThemedExample background="body">
+            <ThemedExample>
               <Stack space="large">
                 <Box
                   padding="medium"
@@ -466,6 +466,8 @@ const docs: ComponentDocs = {
             {Object.entries(
               validateBackgrounds({
                 body: 'Used for elements that need to match the body background.',
+                bodyDark:
+                  'Used for elements that need to match the body background in dark context.',
                 brand: 'Used for branding larger areas of the screen.',
                 brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',
@@ -504,12 +506,24 @@ const docs: ComponentDocs = {
                 neutralLight: 'Used for light “neutral” elements.',
                 neutralSoft: 'Used for soft “neutral” elements',
                 surface: 'Used for surfaces that sit on top of body elements',
+                surfaceDark:
+                  'Used for surfaces that sit on top of body elements in a dark context',
+
+                // New colours
+                brandDark: 'TODO',
+                neutralActive: 'TODO',
+                neutralHover: 'TODO',
+                neutralSoftActive: 'TODO',
+                neutralSoftHover: 'TODO',
               }),
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">
                 <Column width="content">
                   <Box
-                    background="surface"
+                    background={{
+                      lightMode: 'surface',
+                      darkMode: 'surfaceDark',
+                    }}
                     borderRadius="large"
                     padding="gutter"
                   >
@@ -596,8 +610,14 @@ const docs: ComponentDocs = {
                   'Used for borders around prominent interactive elements.',
                 borderFormAccentLarge:
                   'Used for large borders around prominent interactive elements.',
+                borderFormAccentLight:
+                  'Used for borders around prominent interactive elements in a dark context.',
+                borderFormAccentLightLarge:
+                  'Used for large borders around prominent interactive elements in a dark context.',
                 borderBrandAccentLarge:
                   'Used for large borders around branded elements.',
+                borderBrandAccentLightLarge:
+                  'Used for large borders around branded elements in a dark context.',
                 borderPositive: 'Used for borders around “positive” elements.',
                 borderPositiveLight:
                   'Used for borders around “positiveLight” elements.',
@@ -606,6 +626,8 @@ const docs: ComponentDocs = {
                   'Used for large borders around “critical” elements.',
                 borderCriticalLight:
                   'Used for borders around “criticalLight” elements.',
+                borderCriticalLightLarge:
+                  'Used for large borders around “criticalLight” elements.',
                 borderCaution: 'Used for borders around “caution” elements.',
                 borderCautionLight:
                   'Used for borders around “cautionLight” elements.',
@@ -621,7 +643,14 @@ const docs: ComponentDocs = {
                 <Column width="content">
                   <Box
                     background={
-                      boxShadow.includes('Inverted') ? 'brand' : 'surface'
+                      !/^border|outline/.test(boxShadow)
+                        ? 'surface'
+                        : {
+                            lightMode: boxShadow.includes('Inverted')
+                              ? 'brand'
+                              : 'surface',
+                            darkMode: 'surfaceDark',
+                          }
                     }
                     borderRadius="large"
                     padding="gutter"

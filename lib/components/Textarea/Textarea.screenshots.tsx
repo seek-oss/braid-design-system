@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Textarea, TextLink } from '../';
+import { Stack, Textarea, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -13,24 +13,19 @@ export const screenshots: ComponentScreenshot = {
       label: 'Textarea',
       Container,
       Example: ({ id, handler }) => (
-        <Textarea
-          id={id}
-          value="Senior Developer"
-          onChange={handler}
-          label="Job Title"
-        />
+        <Textarea id={id} value="Text value" onChange={handler} label="Label" />
       ),
     },
     {
-      label: 'Textarea with message',
+      label: 'Textarea with neutral message',
       Container,
       Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value=""
           onChange={handler}
-          label="Job Title"
-          message="e.g. Senior Developer"
+          label="Label"
+          message="Neutral message"
         />
       ),
     },
@@ -42,8 +37,8 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           value=""
           onChange={handler}
-          label="Title"
-          secondaryLabel="Optional"
+          label="Label"
+          secondaryLabel="Secondary"
         />
       ),
     },
@@ -55,17 +50,18 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           value=""
           onChange={handler}
-          label="Title"
-          secondaryLabel="Optional"
+          label="Label"
+          secondaryLabel="Secondary"
           tertiaryLabel={<TextLink href="#">Help?</TextLink>}
         />
       ),
     },
     {
       label: 'Textarea with no visual label',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Container,
       Example: ({ id, handler }) => (
-        <Textarea id={id} value="" onChange={handler} aria-label="Title" />
+        <Textarea id={id} value="" onChange={handler} aria-label="Label" />
       ),
     },
     {
@@ -76,8 +72,8 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           value="No"
           onChange={handler}
-          label="Do you like Braid?"
-          message="Answer is incorrect"
+          label="Label"
+          message="Critical message"
           tone="critical"
         />
       ),
@@ -90,10 +86,32 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           value="Yes"
           onChange={handler}
-          label="Do you like Braid?"
-          message="Nice one!"
+          label="Label"
+          message="Positive message"
           tone="positive"
         />
+      ),
+    },
+    {
+      label: 'Textarea disabled',
+      Container,
+      Example: ({ id, handler }) => (
+        <Stack space="gutter">
+          <Textarea
+            id={`${id}_1`}
+            value=""
+            onChange={handler}
+            label="No value"
+            disabled={true}
+          />
+          <Textarea
+            id={`${id}_2`}
+            value="With a value"
+            onChange={handler}
+            label="With a value"
+            disabled={true}
+          />
+        </Stack>
       ),
     },
     {
@@ -107,7 +125,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             lineLimit={6}
           />
         );
@@ -124,7 +142,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             characterLimit={50}
           />
         );
@@ -143,7 +161,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             characterLimit={50}
           />
         );
@@ -162,7 +180,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             characterLimit={9}
           />
         );
@@ -181,7 +199,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             description="Characters 9-22 are invalid"
             highlightRanges={[{ start: 9, end: 22 }]}
           />
@@ -201,7 +219,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             description="Characters 9-22 are invalid"
             characterLimit={50}
             highlightRanges={[{ start: 9, end: 22 }]}
@@ -218,7 +236,7 @@ export const screenshots: ComponentScreenshot = {
 
         return (
           <Textarea
-            label="Do you like Braid?"
+            label="Label"
             id={id}
             onChange={(e) => setValue(e.currentTarget.value)}
             value={value}

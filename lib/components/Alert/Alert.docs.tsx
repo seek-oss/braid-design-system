@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
           </Text>
         </Stack>
       ),
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () =>
         source(
           <Alert tone="info">
@@ -101,7 +101,7 @@ const docs: ComponentDocs = {
           <Strong>onClose</Strong> handler.
         </Text>
       ),
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () =>
         /* eslint-disable no-alert */
         source(

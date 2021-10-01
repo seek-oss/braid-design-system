@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { renderBackgroundProvider } from './BackgroundContext';
 import { atoms, Atoms } from '../../css/atoms/atoms';
 import { BoxBaseProps } from './Box';
-import { resolveBackgroundAtom } from './ColoredBox';
+import { useColoredBoxClasses } from './ColoredBox';
 
 export interface BoxRendererProps extends BoxBaseProps {
   component?: Atoms['reset'];
@@ -19,7 +19,7 @@ const ColoredBoxRenderer = ({
   children: BoxRendererProps['children'];
   className: string;
 }) => {
-  const colorClasses = resolveBackgroundAtom(background);
+  const colorClasses = useColoredBoxClasses(background);
   const element = children(clsx(className, colorClasses));
 
   return renderBackgroundProvider(background, element);

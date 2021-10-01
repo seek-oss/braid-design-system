@@ -114,7 +114,7 @@ export const Navigation = ({ children }: NavigationProps) => {
             wide: 'block',
           }}
           zIndex="sticky"
-          background="body"
+          background={{ lightMode: 'body', darkMode: 'bodyDark' }}
           className={[
             styles.subNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
@@ -125,7 +125,7 @@ export const Navigation = ({ children }: NavigationProps) => {
       </RemoveScroll>
 
       <Box
-        background="surface"
+        background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
         position="relative"
         overflow="hidden" // Fix stack space intercepting nav bar clicks
         paddingX={{
@@ -155,7 +155,7 @@ export const Navigation = ({ children }: NavigationProps) => {
         display={['block', 'none']}
         pointerEvents={showStickyHeader ? undefined : 'none'}
         zIndex="sticky"
-        background="body"
+        background={{ lightMode: 'body', darkMode: 'bodyDark' }}
         opacity={showStickyHeader ? undefined : 0}
         tabIndex={-1}
         aria-hidden={true}

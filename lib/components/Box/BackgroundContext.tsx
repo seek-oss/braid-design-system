@@ -1,19 +1,67 @@
 import React, { createContext, useContext, ReactElement } from 'react';
 import { BoxBackgroundVariant } from './Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import {
+  ColorModeValue,
+  mapColorModeValue,
+} from '../../css/atoms/sprinkles.css';
 
-export type BackgroundContextValue = BoxBackgroundVariant;
+export type BackgroundContextValue = Exclude<
+  BoxBackgroundVariant,
+  'transparent'
+>;
 
-const backgroundContext = createContext<BackgroundContextValue>('body');
+const lightModeBackgroundContext =
+  createContext<BackgroundContextValue>('body');
+const darkModeBackgroundContext =
+  createContext<BackgroundContextValue>('bodyDark');
 
-export const BackgroundProvider = backgroundContext.Provider;
+export const LightBackgroundProvider = lightModeBackgroundContext.Provider;
+export const DarkBackgroundProvider = darkModeBackgroundContext.Provider;
 
 export const renderBackgroundProvider = (
-  background: BoxBackgroundVariant,
+  background: ColorModeValue<BoxBackgroundVariant>,
   element: ReactElement | null,
-) => <BackgroundProvider value={background}>{element}</BackgroundProvider>;
+) => {
+  if (background === 'transparent') {
+    return element;
+  }
 
-export const useBackground = () => useContext(backgroundContext);
+  if (typeof background === 'string') {
+    return (
+      <LightBackgroundProvider value={background}>
+        <DarkBackgroundProvider value={background}>
+          {element}
+        </DarkBackgroundProvider>
+      </LightBackgroundProvider>
+    );
+  }
+
+  let returnEl = element;
+
+  if (background.lightMode && background.lightMode !== 'transparent') {
+    returnEl = (
+      <LightBackgroundProvider value={background.lightMode}>
+        {returnEl}
+      </LightBackgroundProvider>
+    );
+  }
+
+  if (background.darkMode && background.darkMode !== 'transparent') {
+    returnEl = (
+      <DarkBackgroundProvider value={background.darkMode}>
+        {returnEl}
+      </DarkBackgroundProvider>
+    );
+  }
+
+  return returnEl;
+};
+
+export const useBackground = () => ({
+  lightMode: useContext(lightModeBackgroundContext),
+  darkMode: useContext(darkModeBackgroundContext),
+});
 
 export const useBackgroundLightness = (
   backgroundOverride?: ReturnType<typeof useBackground>,
@@ -21,14 +69,29 @@ export const useBackgroundLightness = (
   const backgroundFromContext = useBackground();
   const background = backgroundOverride || backgroundFromContext;
   const { backgroundLightness } = useBraidTheme();
+  const lightnessMap = {
+    ...backgroundLightness,
+    customDark: 'dark',
+    customLight: 'light',
+  } as const;
 
-  if (background === 'customDark') {
-    return 'dark';
-  }
+  return {
+    lightMode: lightnessMap[background.lightMode],
+    darkMode: lightnessMap[background.darkMode],
+  };
+};
 
-  if (background === 'customLight') {
-    return 'light';
-  }
+export type ColorContrastValue<Value> =
+  | { light: Value; dark: Value }
+  | ((contrast: 'light' | 'dark', background: BackgroundContextValue) => Value);
+export const useColorContrast = () => {
+  const background = useBackground();
+  const backgroundLightness = useBackgroundLightness();
 
-  return backgroundLightness[background];
+  return <Value extends string>(map: ColorContrastValue<Value>) =>
+    mapColorModeValue(backgroundLightness, (lightness, mode) =>
+      typeof map === 'function'
+        ? map(lightness, background[mode])
+        : map[lightness],
+    );
 };

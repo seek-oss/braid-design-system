@@ -11,6 +11,7 @@ import { vars } from '../../themes/vars.css';
 import { breakpointQuery, responsiveStyle } from '../../css/responsiveStyle';
 
 import { mapToProperty } from '../../utils';
+import { darkMode } from '../../css/atoms/sprinkles.css';
 
 type Vars = typeof vars;
 type TextDefinition = Vars['textSize'];
@@ -104,9 +105,17 @@ const textLinkVars = createThemeContract({
   textDecorationHover: null,
 });
 
-const regularLinkVars = assignVars(textLinkVars, {
+const lightModeRegularLinkVars = assignVars(textLinkVars, {
   color: vars.foregroundColor.link,
   colorHover: vars.foregroundColor.linkHover,
+  fontWeight: vars.textWeight.medium,
+  textDecoration: 'none',
+  textDecorationHover: 'underline',
+});
+
+const darkModeRegularLinkVars = assignVars(textLinkVars, {
+  color: vars.foregroundColor.linkLight,
+  colorHover: vars.foregroundColor.linkLight,
   fontWeight: vars.textWeight.medium,
   textDecoration: 'none',
   textDecorationHover: 'underline',
@@ -133,53 +142,213 @@ export const textLink = style({
   },
 });
 
-export const regularLink = style({
-  vars: regularLinkVars,
-});
-
 export const weakLink = style({
   vars: weakLinkVars,
 });
 
-export const textLinkVisited = style({
-  ':visited': {
-    color: vars.foregroundColor.linkVisited,
+export const textLinkVisitedLinkMode = styleVariants({
+  light: {
+    selectors: {
+      [`html:not(${darkMode}) &:visited`]: {
+        color: vars.foregroundColor.linkVisited,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html:not(${darkMode}) &:visited`]: {
+        color: vars.foregroundColor.linkLightVisited,
+      },
+    },
   },
 });
 
-export const tone = styleVariants(
-  {
-    brandAccent: vars.foregroundColor.brandAccent,
-    caution: vars.foregroundColor.caution,
-    critical: vars.foregroundColor.critical,
-    formAccent: vars.foregroundColor.formAccent,
-    info: vars.foregroundColor.info,
-    positive: vars.foregroundColor.positive,
-    promote: vars.foregroundColor.promote,
-    secondary: vars.foregroundColor.secondary,
-    link: vars.foregroundColor.link,
+export const textLinkVisitedDarkMode = styleVariants({
+  light: {
+    selectors: {
+      [`html${darkMode} &:visited`]: {
+        color: vars.foregroundColor.linkVisited,
+      },
+    },
   },
-  mapToProperty('color'),
+  dark: {
+    selectors: {
+      [`html${darkMode} &:visited`]: {
+        color: vars.foregroundColor.linkLightVisited,
+      },
+    },
+  },
+});
+
+export const inheritLinkColor = style({});
+
+export const lightModeTextLink = styleVariants({
+  light: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        vars: lightModeRegularLinkVars,
+      },
+      [`html:not(${darkMode}) ${inheritLinkColor} > &`]: {
+        vars: weakLinkVars,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        vars: darkModeRegularLinkVars,
+      },
+      [`html:not(${darkMode}) ${inheritLinkColor} > &`]: {
+        vars: weakLinkVars,
+      },
+    },
+  },
+});
+
+export const darkModeTextLink = styleVariants({
+  light: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        vars: lightModeRegularLinkVars,
+      },
+      [`html${darkMode} ${inheritLinkColor} > &`]: {
+        vars: weakLinkVars,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        vars: darkModeRegularLinkVars,
+      },
+      [`html${darkMode} ${inheritLinkColor} > &`]: {
+        vars: weakLinkVars,
+      },
+    },
+  },
+});
+
+const textToneVars = createThemeContract({
+  critical: null,
+  caution: null,
+  info: null,
+  promote: null,
+  positive: null,
+  brandAccent: null,
+  formAccent: null,
+  neutral: null,
+  secondary: null,
+  link: null,
+});
+
+const lightContextToneVars = assignVars(textToneVars, {
+  critical: vars.foregroundColor.critical,
+  caution: vars.foregroundColor.caution,
+  info: vars.foregroundColor.info,
+  promote: vars.foregroundColor.promote,
+  positive: vars.foregroundColor.positive,
+  brandAccent: vars.foregroundColor.brandAccent,
+  formAccent: vars.foregroundColor.formAccent,
+  neutral: vars.foregroundColor.neutral,
+  secondary: vars.foregroundColor.secondary,
+  link: vars.foregroundColor.link,
+});
+
+const darkContextToneVars = assignVars(textToneVars, {
+  critical: vars.foregroundColor.criticalLight,
+  caution: vars.foregroundColor.cautionLight,
+  info: vars.foregroundColor.infoLight,
+  promote: vars.foregroundColor.promoteLight,
+  positive: vars.foregroundColor.positiveLight,
+  brandAccent: vars.foregroundColor.brandAccentLight,
+  formAccent: vars.foregroundColor.formAccentLight,
+  neutral: vars.foregroundColor.neutralInverted,
+  secondary: vars.foregroundColor.secondaryInverted,
+  link: vars.foregroundColor.linkLight,
+});
+
+export const lightModeTone = styleVariants({
+  light: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        vars: lightContextToneVars,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        vars: darkContextToneVars,
+      },
+    },
+  },
+});
+
+export const darkModeTone = styleVariants({
+  light: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        vars: lightContextToneVars,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        vars: darkContextToneVars,
+      },
+    },
+  },
+});
+
+const neutralOverrideForBackground: Partial<
+  Record<keyof typeof vars.backgroundColor, keyof typeof vars.foregroundColor>
+> = {
+  formAccentSoft: 'formAccent',
+  formAccentSoftActive: 'formAccent',
+  formAccentSoftHover: 'formAccent',
+  criticalLight: 'critical',
+  criticalSoft: 'critical',
+  criticalSoftActive: 'critical',
+  criticalSoftHover: 'critical',
+  caution: 'caution',
+  cautionLight: 'caution',
+  positiveLight: 'positive',
+  infoLight: 'info',
+  promoteLight: 'promote',
+};
+
+export const lightModeNeutralOverride = styleVariants(
+  neutralOverrideForBackground,
+  (textTone) => ({
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        vars: {
+          [textToneVars.neutral]:
+            vars.foregroundColor[textTone as keyof typeof vars.foregroundColor],
+        },
+      },
+    },
+  }),
 );
 
-export const invertableTone = {
-  neutral: styleVariants({
-    light: {
-      color: vars.foregroundColor.neutral,
-    },
-    dark: {
-      color: vars.foregroundColor.neutralInverted,
-    },
-  }),
-  secondary: styleVariants({
-    light: {
-      color: vars.foregroundColor.secondary,
-    },
-    dark: {
-      color: vars.foregroundColor.secondaryInverted,
+export const darkModeNeutralOverride = styleVariants(
+  neutralOverrideForBackground,
+  (textTone) => ({
+    selectors: {
+      [`html${darkMode} &`]: {
+        vars: {
+          [textToneVars.neutral]:
+            vars.foregroundColor[textTone as keyof typeof vars.foregroundColor],
+        },
+      },
     },
   }),
-};
+);
+
+export const tone = styleVariants(textToneVars, (toneVar) => ({
+  color: toneVar,
+}));
 
 const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
   const space = calc(touchableHeight).subtract(textHeight).divide(2).toString();

@@ -103,6 +103,7 @@ export const FieldGroup = ({
               label={restProps.label}
               secondaryLabel={secondaryLabel}
               tertiaryLabel={tertiaryLabel}
+              disabled={disabled}
               description={description}
               descriptionId={descriptionId}
             />

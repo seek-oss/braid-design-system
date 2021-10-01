@@ -1,8 +1,21 @@
 import { style } from '@vanilla-extract/css';
+import { darkMode } from '../../css/atoms/sprinkles.css';
 import { vars } from '../../themes/vars.css';
 
-export const starColor = style({
-  color: vars.foregroundColor.rating,
+export const lightModeStarColor = style({
+  selectors: {
+    [`html:not(${darkMode}) &`]: {
+      color: vars.foregroundColor.rating,
+    },
+  },
+});
+
+export const darkModeStarColor = style({
+  selectors: {
+    [`html${darkMode} &`]: {
+      color: vars.foregroundColor.rating,
+    },
+  },
 });
 
 export const starSpacing = style({

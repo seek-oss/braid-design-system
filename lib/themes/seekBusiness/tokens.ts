@@ -8,6 +8,7 @@ export default makeTokens({
   displayName: 'SEEK Business',
   brand: '#009fd4',
   brandAccent,
+  brandAccentLight: brandAccent,
   brandAccentActive: darken(0.05, brandAccent),
   brandAccentHover: lighten(0.05, brandAccent),
   brandAccentSoft: tint(0.925, brandAccent),

@@ -39,7 +39,7 @@ export const Toggle = ({
   size = 'standard',
   data,
 }: ToggleProps) => {
-  const showBorder = useBackgroundLightness() === 'light';
+  const backgroundLightness = useBackgroundLightness();
 
   return (
     <Box
@@ -82,7 +82,17 @@ export const Toggle = ({
           width="full"
           overflow="hidden"
           borderRadius="full"
-          className={[styles.slideTrack[size], styles.slideTrackBackground]}
+          background={{
+            lightMode:
+              backgroundLightness.lightMode === 'light'
+                ? 'neutralLight'
+                : 'neutral',
+            darkMode:
+              backgroundLightness.darkMode === 'light'
+                ? 'neutralLight'
+                : 'neutral',
+          }}
+          className={[styles.slideTrack[size], styles.slideTrackMask]}
         >
           <Box
             position="absolute"
@@ -95,8 +105,17 @@ export const Toggle = ({
         </Box>
         <Box
           position="absolute"
-          background="surface"
-          boxShadow={showBorder ? 'borderField' : undefined}
+          background={{
+            lightMode:
+              backgroundLightness.lightMode === 'light'
+                ? 'surface'
+                : 'surfaceDark',
+            darkMode:
+              backgroundLightness.darkMode === 'light'
+                ? 'surface'
+                : 'surfaceDark',
+          }}
+          boxShadow="borderField"
           transition="fast"
           display="flex"
           alignItems="center"

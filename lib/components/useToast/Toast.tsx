@@ -12,7 +12,9 @@ import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
 import { InternalToast, ToastAction } from './ToastTypes';
+import { useBackgroundLightness } from '../Box/BackgroundContext';
 import * as styles from './Toast.css';
+import * as keylineStyles from '../private/keyline/keyline.css';
 
 const toneToIcon = {
   critical: IconCritical,
@@ -60,6 +62,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     },
     ref,
   ) => {
+    const backgroundLightness = useBackgroundLightness();
+
     const remove = useCallback(
       () => onClear(dedupeKey, id),
       [onClear, dedupeKey, id],
@@ -119,9 +123,12 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           <Box boxShadow="large" borderRadius={borderRadius}>
             <ContentBlock width="xsmall">
               <Box
-                background="surface"
+                background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
                 position="relative"
-                boxShadow="borderNeutralLight"
+                boxShadow={{
+                  lightMode: 'borderNeutralLight',
+                  darkMode: 'none',
+                }}
                 borderRadius={borderRadius}
                 paddingY="medium"
                 paddingLeft="medium"
@@ -155,12 +162,16 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                   </Column>
                 </Columns>
                 <Box
-                  background={tone}
                   paddingLeft="xxsmall"
                   position="absolute"
                   left={0}
                   top={0}
                   bottom={0}
+                  className={[
+                    keylineStyles.tone[tone],
+                    keylineStyles.lightMode[backgroundLightness.lightMode],
+                    keylineStyles.darkMode[backgroundLightness.darkMode],
+                  ]}
                 />
               </Box>
             </ContentBlock>

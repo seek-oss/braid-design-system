@@ -1,5 +1,5 @@
 import '../../reset';
-import React, { Fragment, ReactNode } from 'react';
+import React, { useEffect, Fragment, ReactNode } from 'react';
 import {
   BraidProvider,
   makeLinkComponent,
@@ -8,6 +8,7 @@ import {
 } from '../components';
 import { BraidTheme } from '../themes/BraidTheme';
 import { PlayroomStateProvider } from './playroomState';
+import { darkMode } from '../css/atoms/sprinkles.css';
 
 interface Props {
   theme: BraidTheme;
@@ -39,19 +40,27 @@ const ResponsiveReady = ({ children }: { children: ReactNode }) => {
   return <>{responsiveReady ? children : null}</>;
 };
 
-export default ({ theme, children }: Props) => (
-  <Fragment>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: theme.webFonts.map((font) => font.linkTag).join(''),
-      }}
-    />
-    <PlayroomStateProvider>
-      <BraidProvider theme={theme} linkComponent={PlayroomLink}>
-        <ToastProvider>
-          <ResponsiveReady>{children}</ResponsiveReady>
-        </ToastProvider>
-      </BraidProvider>
-    </PlayroomStateProvider>
-  </Fragment>
-);
+export default ({ theme, children }: Props) => {
+  useEffect(() => {
+    if (theme.displayName === 'apacDark') {
+      document.documentElement.classList.add(darkMode);
+    }
+  }, [theme.displayName]);
+
+  return (
+    <Fragment>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: theme.webFonts.map((font) => font.linkTag).join(''),
+        }}
+      />
+      <PlayroomStateProvider>
+        <BraidProvider theme={theme} linkComponent={PlayroomLink}>
+          <ToastProvider>
+            <ResponsiveReady>{children}</ResponsiveReady>
+          </ToastProvider>
+        </BraidProvider>
+      </PlayroomStateProvider>
+    </Fragment>
+  );
+};

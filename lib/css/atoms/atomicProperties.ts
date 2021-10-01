@@ -12,15 +12,19 @@ const space = {
 
 const boxShadow = {
   ...vars.shadow,
-  outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
-  borderField: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.field}`,
-  borderCritical: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.critical}`,
-  borderCriticalLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.criticalLight}`,
-  borderCriticalLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.critical}`,
+  borderBrandAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccent}`,
+  borderBrandAccentLightLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccentLight}`,
   borderCaution: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.caution}`,
   borderCautionLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.cautionLight}`,
-  borderPositive: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positive}`,
-  borderPositiveLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positiveLight}`,
+  borderCritical: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.critical}`,
+  borderCriticalLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.critical}`,
+  borderCriticalLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.criticalLight}`,
+  borderCriticalLightLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.criticalLight}`,
+  borderField: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.field}`,
+  borderFormAccent: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formAccent}`,
+  borderFormAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.formAccent}`,
+  borderFormAccentLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formAccentLight}`,
+  borderFormAccentLightLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.formAccentLight}`,
   borderInfo: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.info}`,
   borderInfoLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.infoLight}`,
   borderNeutral: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutral}`,
@@ -28,11 +32,12 @@ const boxShadow = {
   borderNeutralInverted: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralInverted}`,
   borderNeutralInvertedLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.neutralInverted}`,
   borderNeutralLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralLight}`,
+  borderPositive: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positive}`,
+  borderPositiveLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positiveLight}`,
   borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
   borderPromoteLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promoteLight}`,
-  borderFormAccent: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formAccent}`,
-  borderFormAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.formAccent}`,
-  borderBrandAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccent}`,
+  outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
+  none: 'none',
 };
 
 export type BoxShadow = keyof typeof boxShadow;
@@ -44,7 +49,6 @@ export const pseudoProperties = {
 export type PseudoProperties = keyof typeof pseudoProperties;
 
 export const unresponsiveProperties = {
-  background: vars.backgroundColor,
   overflow: ['hidden', 'scroll', 'visible', 'auto'],
   userSelect: ['none'],
   outline: ['none'],
@@ -60,7 +64,6 @@ export const unresponsiveProperties = {
     modal: 300,
     notification: 400,
   },
-  boxShadow,
   cursor: ['default', 'pointer'],
   pointerEvents: ['none'],
   top: [0],
@@ -78,7 +81,19 @@ export const unresponsiveProperties = {
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties;
 
-export type Background = keyof typeof vars.backgroundColor;
+const background = {
+  ...vars.backgroundColor,
+  transparent: 'transparent',
+} as const;
+
+export const colorProperties = {
+  background,
+  boxShadow,
+} as const;
+
+export type Background = keyof typeof background;
+
+export type ColorProperties = keyof typeof colorProperties;
 
 export const responsiveProperties = {
   display: {

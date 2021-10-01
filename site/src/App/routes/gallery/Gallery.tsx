@@ -130,7 +130,7 @@ interface RenderExampleProps {
   example: ComponentExample;
 }
 const RenderExample = ({ id, example }: RenderExampleProps) => {
-  const { label, Container = DefaultContainer, background = 'body' } = example;
+  const { label, Container = DefaultContainer, background } = example;
   const { code, value } = useSourceFromExample(id, example);
 
   return (
@@ -198,7 +198,7 @@ const GalleryItem = ({
   return (
     <Box
       component="article"
-      background="surface"
+      background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
       borderRadius="xlarge"
       padding={isAnIcon ? 'large' : 'xxlarge'}
       margin={isAnIcon ? 'small' : 'xxlarge'}

@@ -10,16 +10,21 @@ import {
   Box,
   Hidden,
   Alert,
-  List,
+  Notice,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { ReactNode } from 'markdown-to-jsx/node_modules/@types/react';
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <Box maxWidth="xsmall">{children}</Box>
+);
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Box style={{ maxWidth: 400 }}>
-        <Stack space="small">
+      <Box maxWidth="xsmall">
+        <Stack space="xsmall">
           <FieldLabel
             htmlFor="field"
             label="Label"
@@ -55,18 +60,116 @@ const docs: ComponentDocs = {
       associate the label with its associated field.
     </Text>
   ),
-  alternatives: [],
+  alternatives: [
+    {
+      name: 'FieldMessage',
+      description: 'For displaying messages below a custom field.',
+    },
+  ],
   additional: [
     {
-      label: 'See also',
+      label: 'Label',
+      Container,
+      description: <Text>Sets the primary label of field.</Text>,
+      Example: () => source(<FieldLabel htmlFor="field" label="Label" />),
+    },
+    {
+      label: 'Secondary label',
+      Container,
       description: (
-        <List space="large">
-          <Text tone="secondary">
-            <TextLink href="/components/FieldMessage">FieldMessage</TextLink>{' '}
-            &mdash; For displaying messages below a custom field.
+        <>
+          <Text>
+            Provide additional context, typically used to indicate optionality
+            of a field.
           </Text>
-        </List>
+          <Notice tone="info">
+            <Text>
+              Only displayed when provided in addition to a{' '}
+              <TextLink href="#label">label</TextLink>.
+            </Text>
+          </Notice>
+        </>
       ),
+      Example: () =>
+        source(
+          <FieldLabel
+            htmlFor="field"
+            label="Label"
+            secondaryLabel="Secondary label"
+          />,
+        ),
+    },
+    {
+      label: 'Tertiary label',
+      Container,
+      description: (
+        <>
+          <Text>
+            Provide further context, typically used for providing assistance
+            with a field.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              Only displayed when provided in addition to a{' '}
+              <TextLink href="#label">label</TextLink>.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: () =>
+        source(
+          <FieldLabel
+            htmlFor="field"
+            label="Label"
+            tertiaryLabel={
+              <TextLink href="#">
+                Tertiary<Hidden below="tablet"> label</Hidden>
+              </TextLink>
+            }
+          />,
+        ),
+    },
+    {
+      label: 'Additional description',
+      description: (
+        <>
+          <Text>
+            Additional context can be provided with a{' '}
+            <Strong>description</Strong>. This will display below the field
+            label.
+          </Text>
+          <Alert tone="info">
+            <Text>
+              It is strongly recommended that a <Strong>descriptionId</Strong>{' '}
+              is also passed in, allowing the description to be associated with
+              your custom field via <Strong>aria-describedby</Strong> prop. This
+              will allow a screen reader to provide this additional context upon
+              focusing the field.
+            </Text>
+          </Alert>
+        </>
+      ),
+      Example: () =>
+        source(
+          <FieldLabel
+            htmlFor="field"
+            label="Label"
+            description="Extra information about the field"
+            descriptionId="description"
+          />,
+        ),
+    },
+    {
+      label: 'Disabled field',
+      Container,
+      description: (
+        <Text>
+          Setting the <Strong>disabled</Strong> prop to <Strong>true</Strong>{' '}
+          dims the field label.
+        </Text>
+      ),
+      Example: () =>
+        source(<FieldLabel htmlFor="field" label="Label" disabled={true} />),
     },
   ],
 };

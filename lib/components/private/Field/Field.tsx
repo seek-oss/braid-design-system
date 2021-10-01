@@ -2,7 +2,6 @@ import assert from 'assert';
 import React, { Fragment, ReactNode, AllHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Box, BoxProps } from '../../Box/Box';
-import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
@@ -14,6 +13,10 @@ import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, touchableText } from '../../../hooks/typography';
 import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
+import {
+  BackgroundContextValue,
+  useColorContrast,
+} from '../../Box/BackgroundContext';
 import * as styles from './Field.css';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
@@ -89,6 +92,28 @@ type InternalFieldProps = FieldBaseProps &
     ): ReactNode;
   };
 
+export const resolveFieldBackground = ({
+  background,
+  disabled,
+}: {
+  background: BackgroundContextValue;
+  disabled?: boolean;
+}) => {
+  if (
+    background === 'surfaceDark' ||
+    background === 'bodyDark' ||
+    background === 'neutral'
+  ) {
+    return disabled ? 'neutral' : 'transparent';
+  }
+
+  if (background === 'brand') {
+    return disabled ? 'brandDark' : 'surface';
+  }
+
+  return disabled ? 'neutralSoft' : 'surface';
+};
+
 export const Field = ({
   id,
   value,
@@ -120,9 +145,10 @@ export const Field = ({
     'description' in restProps && restProps.description
       ? `${id}-description`
       : undefined;
-  const fieldBackground = disabled ? 'neutralSoft' : 'surface';
-  const showFieldBorder =
-    useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
+  const colorConstrast = useColorContrast();
+  const fieldBackground = colorConstrast((_, background) =>
+    resolveFieldBackground({ background, disabled }),
+  );
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
   const hasVisualLabel = 'label' in restProps;
@@ -131,7 +157,7 @@ export const Field = ({
     <Fragment>
       <FieldOverlay
         variant={disabled ? 'disabled' : 'default'}
-        visible={showFieldBorder}
+        visible={tone !== 'critical' || disabled}
       />
       <FieldOverlay
         variant="critical"
@@ -151,6 +177,7 @@ export const Field = ({
           id={labelId}
           htmlFor={id}
           label={'label' in restProps ? restProps.label : undefined}
+          disabled={disabled}
           secondaryLabel={
             'secondaryLabel' in restProps ? restProps.secondaryLabel : undefined
           }
@@ -202,8 +229,7 @@ export const Field = ({
               styles.field,
               styles.placeholderColor,
               useText({
-                backgroundContext: fieldBackground,
-                tone: hasValue ? 'neutral' : 'secondary',
+                tone: hasValue && !disabled ? 'neutral' : 'secondary',
                 size: 'standard',
                 baseline: false,
               }),

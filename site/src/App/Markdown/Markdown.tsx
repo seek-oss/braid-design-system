@@ -93,7 +93,7 @@ const renderers = {
   code: Code,
   link: TextLink,
   blockquote: ({ children }: any) => (
-    <Box paddingX="gutter" paddingY="small" background="formAccentSoft">
+    <Box paddingX="gutter" paddingY="small" background="neutralLight">
       <Box paddingTop="small">
         <DefaultTextPropsProvider tone="secondary">
           {children}

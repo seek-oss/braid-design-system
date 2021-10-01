@@ -42,7 +42,7 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Variants',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       description: (
         <Text>
           You can customise the appearance of the button via the{' '}
@@ -63,7 +63,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Sizes',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       description: (
         <Text>
           You can customise the size of the button via the <Strong>size</Strong>{' '}
@@ -107,7 +107,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Icons',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       description: (
         <Text>
           You can add an icon to the button by nesting an icon element inside.
@@ -139,7 +139,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Loading Button',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       description: (
         <>
           <Text>
@@ -158,7 +158,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Branding',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       description: (
         <Text>
           For hero actions that want to leverage the brand colour, you can set
@@ -183,7 +183,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Destructive actions',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       description: (
         <Text>
           For destructive actions like “Delete” you can set the button’s{' '}
@@ -256,7 +256,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () =>
         source(
           <Stack space="large">
@@ -265,11 +265,13 @@ const docs: ComponentDocs = {
                 Standard size
               </Text>
               <Box
-                background="neutralLight"
+                background={{ lightMode: 'neutralLight', darkMode: 'neutral' }}
                 borderRadius="standard"
                 padding="gutter"
               >
-                <Box background="surface">
+                <Box
+                  background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
+                >
                   <Inline space="xsmall" alignY="center">
                     <Heading level="2">Heading</Heading>
                     <Button bleedY>Button</Button>
@@ -282,11 +284,13 @@ const docs: ComponentDocs = {
                 Small size
               </Text>
               <Box
-                background="neutralLight"
+                background={{ lightMode: 'neutralLight', darkMode: 'neutral' }}
                 borderRadius="standard"
                 padding="gutter"
               >
-                <Box background="surface">
+                <Box
+                  background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
+                >
                   <Inline space="xsmall" alignY="center">
                     <Heading level="2">Heading</Heading>
                     <Button bleedY size="small">

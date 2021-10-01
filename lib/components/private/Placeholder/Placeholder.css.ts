@@ -1,20 +1,64 @@
-import { createTheme, style } from '@vanilla-extract/css';
+import {
+  assignVars,
+  createThemeContract,
+  style,
+  styleVariants,
+} from '@vanilla-extract/css';
+import { darkMode } from '../../../css/atoms/sprinkles.css';
 
-export const [lightTheme, vars] = createTheme(
-  {
-    background: 'hsla(0, 0%, 20%, 0.08)',
-    borderColor: 'hsla(0, 0%, 20%, 0.3)',
-    labelColor: 'hsla(0, 0%, 20%, 0.4)',
-    lineColor: 'hsla(0, 0%, 20%, 0.1)',
+const vars = createThemeContract({
+  background: null,
+  borderColor: null,
+  labelColor: null,
+  lineColor: null,
+});
+
+const lightContextVars = assignVars(vars, {
+  background: 'hsla(0, 0%, 20%, 0.08)',
+  borderColor: 'hsla(0, 0%, 20%, 0.3)',
+  labelColor: 'hsla(0, 0%, 20%, 0.4)',
+  lineColor: 'hsla(0, 0%, 20%, 0.1)',
+});
+
+const darkContextVars = assignVars(vars, {
+  background: 'hsla(0, 0%, 100%, 0.05)',
+  borderColor: 'hsla(0, 0%, 100%, 0.4)',
+  labelColor: 'hsla(0, 0%, 100%, 0.6)',
+  lineColor: 'hsla(0, 0%, 100%, 0.2)',
+});
+
+export const lightTheme = styleVariants({
+  light: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        vars: lightContextVars,
+      },
+    },
   },
-  'lightTheme',
-);
+  dark: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        vars: darkContextVars,
+      },
+    },
+  },
+});
 
-export const darkTheme = createTheme(vars, {
-  background: 'hsla(0, 0%, 100%, 0.35)',
-  borderColor: 'hsla(0, 0%, 100%, 0.8)',
-  labelColor: 'hsla(0, 0%, 100%, 0.8)',
-  lineColor: 'hsla(0, 0%, 100%, 0.4)',
+export const darkTheme = styleVariants({
+  light: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        vars: lightContextVars,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        vars: darkContextVars,
+      },
+    },
+  },
 });
 
 const borderWidth = '2px';

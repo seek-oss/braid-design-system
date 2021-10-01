@@ -26,6 +26,12 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Neutral Field Message',
+      Example: ({ id }) => (
+        <FieldMessage id={id} message="This is a neutral message." />
+      ),
+    },
+    {
       label: 'Critical with long (wrapping) message',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>

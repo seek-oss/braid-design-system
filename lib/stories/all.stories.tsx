@@ -8,6 +8,7 @@ import { ComponentExample, ComponentScreenshot } from '../../site/src/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
 import { useSourceFromExample } from '../utils/useSourceFromExample';
 import { BraidProvider, ToastProvider, Box } from '../components';
+import { darkMode } from '../css/atoms/sprinkles.css';
 
 const webFontLinkTags = uniq(
   flatten(values(themes).map((theme) => theme.webFonts)).map(
@@ -35,7 +36,11 @@ interface RenderExampleProps {
   example: ComponentExample;
 }
 const RenderExample = ({ example }: RenderExampleProps) => {
-  const { label, Container = DefaultContainer, background = 'body' } = example;
+  const {
+    label,
+    Container = DefaultContainer,
+    background = { lightMode: 'body', darkMode: 'bodyDark' },
+  } = example;
   const { value } = useSourceFromExample('id', example);
 
   return (
@@ -105,40 +110,51 @@ Object.keys(allStories)
         : theme.name !== 'wireframe';
     });
 
+    if (!docs.screenshotOnlyInWireframe) {
+      storyThemes.unshift({
+        ...themes.apac,
+        displayName: 'apacDark',
+        name: 'apacDark',
+      });
+    }
+
     storyThemes.forEach((theme) => {
-      const renderStory = () => (
-        <BrowserRouter>
-          <BraidProvider theme={theme}>
-            <ToastProvider>
-              <style type="text/css">
-                {`
+      const renderStory = () => {
+        if (theme.name === 'apacDark') {
+          document.documentElement.classList.add(darkMode);
+        } else {
+          document.documentElement.classList.remove(darkMode);
+        }
+
+        return (
+          <BrowserRouter>
+            <BraidProvider theme={theme}>
+              <ToastProvider>
+                <style type="text/css">
+                  {`
               .noAnimation * {
                 animation-delay: -0.0001s !important;
                 animation-duration: 0s !important;
                 animation-play-state: paused !important;
               }`}
-              </style>
-              <div
-                className="noAnimation"
-                style={{
-                  background: 'white',
-                }}
-              >
-                {docs.examples.map((example, i) => (
-                  <PlayroomStateProvider key={i}>
-                    <RenderExample
-                      example={{
-                        ...example,
-                        label: example.label ?? componentName,
-                      }}
-                    />
-                  </PlayroomStateProvider>
-                ))}
-              </div>
-            </ToastProvider>
-          </BraidProvider>
-        </BrowserRouter>
-      );
+                </style>
+                <div className="noAnimation">
+                  {docs.examples.map((example, i) => (
+                    <PlayroomStateProvider key={i}>
+                      <RenderExample
+                        example={{
+                          ...example,
+                          label: example.label ?? componentName,
+                        }}
+                      />
+                    </PlayroomStateProvider>
+                  ))}
+                </div>
+              </ToastProvider>
+            </BraidProvider>
+          </BrowserRouter>
+        );
+      };
 
       stories.add(theme.name, renderStory, {
         layout: 'fullscreen',

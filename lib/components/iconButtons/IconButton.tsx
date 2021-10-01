@@ -5,7 +5,7 @@ import React, {
   MouseEvent,
   forwardRef,
 } from 'react';
-import { Box } from '../Box/Box';
+import { Box, BoxBackgroundVariant } from '../Box/Box';
 import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -13,10 +13,35 @@ import buildDataAttributes, {
 import { iconSize, iconContainerSize, UseIconProps } from '../../hooks/useIcon';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
+  BackgroundContextValue,
   useBackground,
   useBackgroundLightness,
 } from '../Box/BackgroundContext';
 import * as styles from './IconButton.css';
+
+const useHoverBackground = (
+  colorMode: 'lightMode' | 'darkMode',
+  background: BackgroundContextValue,
+): BoxBackgroundVariant => {
+  const backgroundLightness = useBackgroundLightness();
+
+  if (background === 'body' || background === 'surface') {
+    return 'neutralLight';
+  }
+
+  if (background) {
+    return backgroundLightness[colorMode] === 'light'
+      ? 'surface'
+      : 'surfaceDark';
+  }
+
+  return (
+    {
+      lightMode: 'neutralLight',
+      darkMode: 'surfaceDark',
+    } as const
+  )[colorMode];
+};
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface IconButtonProps {
@@ -80,6 +105,15 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       [onClick, onMouseDown],
     );
 
+    const lightModeHoverBackground = useHoverBackground(
+      'lightMode',
+      background.lightMode,
+    );
+    const darkModeHoverBackground = useHoverBackground(
+      'darkMode',
+      background.darkMode,
+    );
+
     return (
       <Box
         component="button"
@@ -111,17 +145,19 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           pointerEvents="none"
         >
           <Overlay
-            background={
-              background === 'body' || background === 'surface'
-                ? 'neutralLight'
-                : 'surface'
-            }
+            background={{
+              lightMode: lightModeHoverBackground,
+              darkMode: darkModeHoverBackground,
+            }}
             transition="fast"
             borderRadius="full"
             className={[
               styles.hoverOverlay,
               active && styles.forceActive,
-              backgroundLightness === 'dark' && styles.darkBackground,
+              backgroundLightness.lightMode === 'dark' &&
+                styles.darkBackgroundLightMode,
+              backgroundLightness.darkMode === 'dark' &&
+                styles.darkBackgroundDarkMode,
             ]}
           />
           {keyboardAccessible ? (

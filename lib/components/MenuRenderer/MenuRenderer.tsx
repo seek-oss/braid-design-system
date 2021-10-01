@@ -282,7 +282,7 @@ export const MenuRenderer = ({
             }}
             boxShadow="medium"
             borderRadius={borderRadius}
-            background="surface"
+            background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
             marginTop={offsetSpace}
             transition="fast"
             right={align === 'right' ? 0 : undefined}
@@ -314,7 +314,10 @@ export const MenuRenderer = ({
               })}
             </Box>
             <Overlay
-              boxShadow="borderNeutralLight"
+              boxShadow={{
+                lightMode: 'borderNeutralLight',
+                darkMode: 'borderNeutral',
+              }}
               borderRadius={borderRadius}
               visible
             />

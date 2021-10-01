@@ -1,4 +1,5 @@
 import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { darkMode } from '../../css/atoms/sprinkles.css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -24,10 +25,39 @@ export const size = styleVariants(vars.textSize, ({ mobile, tablet }) =>
   }),
 );
 
-export const color = {
-  dark: style({ fill: vars.backgroundColor.surface }),
-  light: style({ fill: vars.backgroundColor.neutral }),
-};
+export const lightModeColor = styleVariants({
+  light: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        fill: vars.foregroundColor.neutral,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        fill: vars.foregroundColor.neutralInverted,
+      },
+    },
+  },
+});
+
+export const darkModeColor = styleVariants({
+  light: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        fill: vars.foregroundColor.neutral,
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        fill: vars.foregroundColor.neutralInverted,
+      },
+    },
+  },
+});
 
 const bounce = keyframes({
   '33%': {

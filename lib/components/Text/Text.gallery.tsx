@@ -52,7 +52,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Tones',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: () =>
       source(
         <Stack space="large">

@@ -6,36 +6,38 @@ import * as styles from './ThemedExample.css';
 
 interface ThemedExampleProps {
   background?: BoxProps['background'];
+  transparent?: boolean;
   children: ReactNode;
 }
 
-export function ThemedExample({ background, children }: ThemedExampleProps) {
+export function ThemedExample({
+  background,
+  transparent = false,
+  children,
+}: ThemedExampleProps) {
   const { theme, ready } = useThemeSettings();
 
   return (
     <Box opacity={!ready ? 0 : undefined} transition="fast">
       <BraidProvider styleBody={false} theme={theme}>
-        {background ? (
-          <Box
-            background={theme.name === 'docs' ? 'neutralLight' : 'body'}
-            padding="xsmall"
-            className={styles.unthemedBorderRadius}
-          >
-            <Box
-              background={
-                theme.name === 'docs' && background === 'body'
-                  ? 'neutralLight'
-                  : background
-              }
-              padding={['small', 'medium', 'large']}
-              className={styles.unthemedBorderRadius}
-            >
-              {children}
-            </Box>
-          </Box>
-        ) : (
-          children
-        )}
+        <Box
+          boxShadow={
+            transparent
+              ? undefined
+              : {
+                  darkMode: 'borderNeutralLarge',
+                }
+          }
+          background={
+            transparent
+              ? undefined
+              : background || { lightMode: 'body', darkMode: 'bodyDark' }
+          }
+          padding={transparent ? undefined : ['small', 'medium', 'large']}
+          className={styles.unthemedBorderRadius}
+        >
+          {children}
+        </Box>
       </BraidProvider>
     </Box>
   );

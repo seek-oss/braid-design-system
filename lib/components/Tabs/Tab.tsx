@@ -31,6 +31,7 @@ import buildDataAttributes, {
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import { BadgeProps, Badge } from '../Badge/Badge';
+import { Divider } from '../Divider/Divider';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
@@ -244,10 +245,12 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
             right={0}
             bottom={0}
             className={styles.divider}
-          />
+          >
+            <Divider />
+          </Box>
         ) : null}
         <Box
-          background="neutral"
+          background={{ lightMode: 'neutral', darkMode: 'neutralLight' }}
           position="absolute"
           zIndex={2}
           transition="fast"
@@ -271,6 +274,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           bottom={0}
           className={[
             styles.tabUnderline,
+            styles.tabUnderlineActiveDarkMode,
             !isSelected ? styles.tabUnderlineAnimation : undefined,
             tabListItemIndex > 0 ? styles.hairlineMarginLeft : null,
           ]}

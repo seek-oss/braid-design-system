@@ -36,12 +36,12 @@ const usageTypes = [
 ] as const;
 type Usage = typeof usageTypes[number];
 
-interface ColourDoc {
+interface ColorDoc {
   description: string;
   swatch: BoxProps['background'];
   usage: Record<Usage, string[]>;
 }
-const toneDocs: Record<Tone, ColourDoc> = {
+const toneDocs: Record<Tone, ColorDoc> = {
   critical: {
     description: 'Super important. You need to see this.',
     swatch: 'critical',

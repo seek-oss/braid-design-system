@@ -1,18 +1,33 @@
-import { globalStyle, style } from '@vanilla-extract/css';
+import { createVar, globalStyle, style } from '@vanilla-extract/css';
+import { darkMode } from '../../../../../lib/css/atoms/sprinkles.css';
 import { vars } from '../../../../../lib/themes/vars.css';
 
 export const loader = style({
-  color: '#f2f2f2',
+  opacity: 0.3,
   height: 300,
   width: 300,
   maxHeight: 'min(50vw, 50vh)',
   maxWidth: 'min(50vw, 50vh)',
 });
 
+const borderColor = createVar();
+
 export const divider = style({
-  borderRight: `${vars.borderWidth.standard} solid ${vars.borderColor.neutralLight}`,
+  borderRight: `${vars.borderWidth.standard} solid ${borderColor}`,
   width: 1,
   height: vars.textSize.standard.mobile.lineHeight,
+  selectors: {
+    [`html:not(${darkMode}) &`]: {
+      vars: {
+        [borderColor]: vars.borderColor.neutralLight,
+      },
+    },
+    [`html${darkMode} &`]: {
+      vars: {
+        [borderColor]: vars.borderColor.neutral,
+      },
+    },
+  },
 });
 
 export const grabCursor = style({

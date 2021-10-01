@@ -87,7 +87,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Disabled field',
-    background: 'surface',
+    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
     Example: ({ id, getState, setState }) =>
       source(
         <PasswordField

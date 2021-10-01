@@ -11,7 +11,11 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import { useBackgroundLightness } from '../Box/BackgroundContext';
+import {
+  BackgroundContextValue,
+  ColorContrastValue,
+  useColorContrast,
+} from '../Box/BackgroundContext';
 import { Text, TextProps } from '../Text/Text';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
 import ActionsContext from '../Actions/ActionsContext';
@@ -25,7 +29,7 @@ export const buttonVariants = [
 ] as const;
 
 type ButtonSize = 'standard' | 'small';
-type ButtonTone = 'brandAccent' | 'critical';
+type ButtonTone = 'brandAccent' | 'critical' | 'neutral';
 type ButtonVariant = typeof buttonVariants[number];
 export interface ButtonStyleProps {
   size?: ButtonSize;
@@ -50,11 +54,34 @@ export interface ButtonProps extends ButtonStyleProps {
 
 type ButtonStyles = {
   textTone: TextProps['tone'];
-  background: BoxProps['background'];
-  backgroundHover: BoxProps['background'];
-  backgroundActive: BoxProps['background'];
-  boxShadow: BoxShadow | undefined;
+  background:
+    | ColorContrastValue<BackgroundContextValue>
+    | BackgroundContextValue
+    | undefined;
+  backgroundHover:
+    | ColorContrastValue<BackgroundContextValue>
+    | BackgroundContextValue
+    | undefined;
+  backgroundActive:
+    | ColorContrastValue<BackgroundContextValue>
+    | BackgroundContextValue
+    | undefined;
+  boxShadow: ColorContrastValue<BoxShadow> | BoxShadow | undefined;
 };
+
+const neutralOverrideOnBrand =
+  (
+    lightBackground: BackgroundContextValue,
+  ): ColorContrastValue<BackgroundContextValue> =>
+  (contrast, background) => {
+    if (contrast === 'light') {
+      return lightBackground;
+    }
+
+    return background === 'brand' || background === 'brandDark'
+      ? 'brandDark'
+      : 'neutral';
+  };
 
 const variants: Record<
   ButtonVariant,
@@ -66,6 +93,13 @@ const variants: Record<
       background: 'formAccent',
       backgroundHover: 'formAccentHover',
       backgroundActive: 'formAccentActive',
+      boxShadow: undefined,
+    },
+    neutral: {
+      textTone: undefined,
+      background: { light: 'neutral', dark: 'neutralLight' },
+      backgroundHover: { light: 'neutralSoftHover', dark: 'neutralHover' },
+      backgroundActive: { light: 'neutralSoftActive', dark: 'neutralActive' },
       boxShadow: undefined,
     },
     brandAccent: {
@@ -86,23 +120,30 @@ const variants: Record<
   soft: {
     default: {
       textTone: 'formAccent',
-      background: 'formAccentSoft',
-      backgroundHover: 'formAccentSoftHover',
-      backgroundActive: 'formAccentSoftActive',
+      background: neutralOverrideOnBrand('formAccentSoft'),
+      backgroundHover: neutralOverrideOnBrand('formAccentSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('formAccentSoftActive'),
+      boxShadow: undefined,
+    },
+    neutral: {
+      textTone: undefined,
+      background: neutralOverrideOnBrand('neutralSoft'),
+      backgroundHover: neutralOverrideOnBrand('neutralSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('neutralSoftActive'),
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: 'brandAccent',
-      background: 'brandAccentSoft',
-      backgroundHover: 'brandAccentSoftHover',
-      backgroundActive: 'brandAccentSoftActive',
+      background: neutralOverrideOnBrand('brandAccentSoft'),
+      backgroundHover: neutralOverrideOnBrand('brandAccentSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('brandAccentSoftActive'),
       boxShadow: undefined,
     },
     critical: {
       textTone: 'critical',
-      background: 'criticalSoft',
-      backgroundHover: 'criticalSoftHover',
-      backgroundActive: 'criticalSoftActive',
+      background: neutralOverrideOnBrand('criticalSoft'),
+      backgroundHover: neutralOverrideOnBrand('criticalSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('criticalSoftActive'),
       boxShadow: undefined,
     },
   },
@@ -110,22 +151,29 @@ const variants: Record<
     default: {
       textTone: 'formAccent',
       background: undefined,
-      backgroundHover: 'formAccentSoftHover',
-      backgroundActive: 'formAccentSoftActive',
+      backgroundHover: neutralOverrideOnBrand('formAccentSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('formAccentSoftActive'),
+      boxShadow: undefined,
+    },
+    neutral: {
+      textTone: undefined,
+      background: undefined,
+      backgroundHover: neutralOverrideOnBrand('neutralSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('neutralSoftActive'),
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: 'brandAccent',
       background: undefined,
-      backgroundHover: 'brandAccentSoftHover',
-      backgroundActive: 'brandAccentSoftActive',
+      backgroundHover: neutralOverrideOnBrand('brandAccentSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('brandAccentSoftActive'),
       boxShadow: undefined,
     },
     critical: {
       textTone: 'critical',
       background: undefined,
-      backgroundHover: 'criticalSoftHover',
-      backgroundActive: 'criticalSoftActive',
+      backgroundHover: neutralOverrideOnBrand('criticalSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('criticalSoftActive'),
       boxShadow: undefined,
     },
   },
@@ -133,23 +181,42 @@ const variants: Record<
     default: {
       textTone: 'formAccent',
       background: undefined,
-      backgroundHover: 'formAccentSoftHover',
-      backgroundActive: 'formAccentSoftActive',
-      boxShadow: 'borderFormAccentLarge',
+      backgroundHover: neutralOverrideOnBrand('formAccentSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('formAccentSoftActive'),
+      boxShadow: {
+        light: 'borderFormAccentLarge',
+        dark: 'borderFormAccentLightLarge',
+      },
+    },
+    neutral: {
+      textTone: undefined,
+      background: undefined,
+      backgroundHover: neutralOverrideOnBrand('neutralSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('neutralSoftActive'),
+      boxShadow: {
+        light: 'borderNeutralLarge',
+        dark: 'borderNeutralInvertedLarge',
+      },
     },
     brandAccent: {
       textTone: 'brandAccent',
       background: undefined,
-      backgroundHover: 'brandAccentSoftHover',
-      backgroundActive: 'brandAccentSoftActive',
-      boxShadow: 'borderBrandAccentLarge',
+      backgroundHover: neutralOverrideOnBrand('brandAccentSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('brandAccentSoftActive'),
+      boxShadow: {
+        light: 'borderBrandAccentLarge',
+        dark: 'borderBrandAccentLightLarge',
+      },
     },
     critical: {
       textTone: 'critical',
       background: undefined,
-      backgroundHover: 'brandAccentSoftHover',
-      backgroundActive: 'brandAccentSoftActive',
-      boxShadow: 'borderCriticalLarge',
+      backgroundHover: neutralOverrideOnBrand('brandAccentSoftHover'),
+      backgroundActive: neutralOverrideOnBrand('brandAccentSoftActive'),
+      boxShadow: {
+        light: 'borderCriticalLarge',
+        dark: 'borderCriticalLightLarge',
+      },
     },
   },
 } as const;
@@ -176,10 +243,9 @@ export const ButtonOverlays = ({
   children,
 }: ButtonProps) => {
   const actionsContext = useContext(ActionsContext);
-  const isInverted =
-    useBackgroundLightness() === 'dark' && !tone && variant !== 'solid';
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
+  const colorConstrast = useColorContrast();
 
   return (
     <>
@@ -191,26 +257,31 @@ export const ButtonOverlays = ({
       />
       <FieldOverlay
         borderRadius="large"
-        background={!isInverted ? stylesForVariant.backgroundHover : undefined}
-        className={[
-          styles.hoverOverlay,
-          isInverted ? styles.invertedBackgrounds.hover : undefined,
-        ]}
+        background={
+          stylesForVariant.backgroundHover &&
+          typeof stylesForVariant.backgroundHover !== 'string'
+            ? colorConstrast(stylesForVariant.backgroundHover)
+            : stylesForVariant.backgroundHover
+        }
+        className={styles.hoverOverlay}
       />
       <FieldOverlay
         borderRadius="large"
-        background={!isInverted ? stylesForVariant.backgroundActive : undefined}
-        className={[
-          styles.activeOverlay,
-          isInverted ? styles.invertedBackgrounds.active : undefined,
-        ]}
+        background={
+          stylesForVariant.backgroundActive &&
+          typeof stylesForVariant.backgroundActive !== 'string'
+            ? colorConstrast(stylesForVariant.backgroundActive)
+            : stylesForVariant.backgroundActive
+        }
+        className={styles.activeOverlay}
       />
-      {stylesForVariant.boxShadow || (isInverted && variant === 'ghost') ? (
+      {stylesForVariant.boxShadow ? (
         <Box
           component="span"
           boxShadow={
-            isInverted
-              ? 'borderNeutralInvertedLarge'
+            stylesForVariant.boxShadow &&
+            typeof stylesForVariant.boxShadow !== 'string'
+              ? colorConstrast(stylesForVariant.boxShadow)
               : stylesForVariant.boxShadow
           }
           borderRadius="large"
@@ -237,7 +308,7 @@ export const ButtonOverlays = ({
         className={size === 'standard' ? touchableText.standard : undefined}
       >
         <Text
-          tone={!isInverted ? stylesForVariant.textTone : undefined}
+          tone={stylesForVariant.textTone}
           weight="medium"
           size={size}
           baseline={false}
@@ -258,10 +329,9 @@ export const useButtonStyles = ({
   loading,
 }: ButtonProps): BoxProps => {
   const actionsContext = useContext(ActionsContext);
-  const isInverted =
-    useBackgroundLightness() === 'dark' && !tone && variant !== 'solid';
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
+  const colorConstrast = useColorContrast();
 
   return {
     borderRadius: 'large',
@@ -274,15 +344,16 @@ export const useButtonStyles = ({
     textAlign: 'center',
     userSelect: 'none',
     cursor: !loading ? 'pointer' : undefined,
-    background: !isInverted ? stylesForVariant.background : undefined,
+    background:
+      stylesForVariant.background &&
+      typeof stylesForVariant.background !== 'string'
+        ? colorConstrast(stylesForVariant.background)
+        : stylesForVariant.background,
     className: [
       styles.root,
-      isInverted && variant === 'soft'
-        ? styles.invertedBackgrounds.soft
-        : undefined,
-      size === 'small' ? virtualTouchable({ xAxis: false }) : undefined,
+      size === 'small' ? virtualTouchable({ xAxis: false }) : null,
       size === 'standard' ? styles.standard : styles.small,
-      bleedY ? styles.bleedY : undefined,
+      bleedY ? styles.bleedY : null,
     ],
   } as const;
 };

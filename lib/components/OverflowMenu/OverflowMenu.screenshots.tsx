@@ -7,7 +7,7 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Default',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: ({ handler }) => (
         <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
           <OverflowMenu label="Options">

@@ -7,7 +7,7 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Regular Badge',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => <Badge tone="positive">Regular</Badge>,
     },
     {
@@ -20,7 +20,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Badge with Vertical Bleed',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => (
         <Inline space="xsmall" alignY="center">
           <Heading level="4">Heading</Heading>
@@ -32,7 +32,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Positive Badge',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => <Badge tone="positive">Positive</Badge>,
     },
     {
@@ -45,7 +45,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Critical Badge',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => <Badge tone="critical">Critical</Badge>,
     },
     {
@@ -58,7 +58,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Caution Badge',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => <Badge tone="caution">Caution</Badge>,
     },
     {
@@ -71,7 +71,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Info Badge',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => <Badge tone="info">Info</Badge>,
     },
     {
@@ -84,7 +84,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Promote Badge',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => <Badge tone="promote">Promote</Badge>,
     },
     {
@@ -97,7 +97,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Neutral Badge',
-      background: 'surface',
+      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       Example: () => <Badge tone="neutral">Neutral</Badge>,
     },
     {

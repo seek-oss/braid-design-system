@@ -6,11 +6,12 @@ import React, {
   AllHTMLAttributes,
 } from 'react';
 
-import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { IconMinus, IconTick } from '../../icons';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { Box } from '../../Box/Box';
+import { useColorContrast } from '../../Box/BackgroundContext';
+import { resolveFieldBackground } from '../Field/Field';
 import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
 
@@ -98,7 +99,11 @@ const Indicator = ({
     </Box>
   ) : (
     <Box
-      background={disabled ? 'neutralLight' : 'formAccent'}
+      background={
+        disabled
+          ? { lightMode: 'neutral', darkMode: 'surfaceDark' }
+          : 'formAccent'
+      }
       transition="fast"
       width="full"
       height="full"
@@ -144,10 +149,12 @@ export const StyledInput = forwardRef<
 
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
-    const showFieldBorder =
-      useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
-
     const isMixed = isCheckbox && checked === 'mixed';
+
+    const colorConstrast = useColorContrast();
+    const fieldBackground = colorConstrast((_, background) =>
+      resolveFieldBackground({ background, disabled }),
+    );
 
     useEffect(() => {
       if (ref && typeof ref === 'object' && ref.current && isCheckbox) {
@@ -204,13 +211,13 @@ export const StyledInput = forwardRef<
           flexShrink={0}
           position="relative"
           className={[styles.fakeField, styles.fakeFieldSize[size]]}
-          background={disabled ? 'neutralSoft' : 'surface'}
+          background={fieldBackground}
           borderRadius={fieldBorderRadius}
         >
           <FieldOverlay
             variant={disabled ? 'disabled' : 'default'}
             borderRadius={fieldBorderRadius}
-            visible={showFieldBorder}
+            visible={tone !== 'critical' || disabled}
           />
           <FieldOverlay
             variant="critical"

@@ -61,8 +61,7 @@ export const slideTrack = styleVariants(sizes, (size) => ({
   height: calc.subtract(vars.inlineFieldSize[size], vars.grid),
 }));
 
-export const slideTrackBackground = style({
-  backgroundColor: vars.borderColor.neutralLight,
+export const slideTrackMask = style({
   // Fix for Safari border-radius, overflow hidden, transform bug:
   // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
   WebkitMaskImage: '-webkit-radial-gradient(white, black)',
