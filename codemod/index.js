@@ -12,7 +12,20 @@ const paths = glob.sync(pathGlob, { ignore: ['**/node_modules/**', '*.d.ts'] });
 
 const progress = new cliProgress.SingleBar(
   {
-    format: '[{bar}] {value}/{total}',
+    format: (options, params) => {
+      if (params.value === 0) {
+        return `Searching for files matching "${pathGlob}"...`;
+      }
+
+      const completeSize = Math.round(params.progress * options.barsize);
+      const incompleteSize = options.barsize - completeSize;
+      const bar =
+        options.barCompleteString.substr(0, completeSize) +
+        options.barGlue +
+        options.barIncompleteString.substr(0, incompleteSize);
+
+      return `[${bar}] ${params.value}/${params.total}`;
+    },
     hideCursor: true,
     barCompleteChar: '■',
     barIncompleteChar: '-',
