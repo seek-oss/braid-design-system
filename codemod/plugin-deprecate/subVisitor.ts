@@ -7,7 +7,7 @@ import {
   renderUntraceableImportWarning,
   renderUntraceablePropertyWarning,
 } from '../warning-renderer/warning';
-import { deprecationMap } from './deprecationMap';
+import { deprecationMap, getReplacement, isDeprecated } from './deprecationMap';
 import { deArray, updateStringLiteral } from './helpers';
 
 interface Context extends PluginPass {
@@ -23,6 +23,24 @@ interface SubVisitorContext extends Context {
 }
 
 export const subVisitor: Visitor<SubVisitorContext> = {
+  TemplateLiteral(path) {
+    if (path.node.expressions.length === 0) {
+      if (isDeprecated(this.componentName, this.propName)) {
+        const templateValue = path.node.quasis[0].value;
+        const newValue = getReplacement(
+          this.componentName,
+          this.propName,
+          templateValue.raw,
+        );
+        if (templateValue.raw !== newValue) {
+          templateValue.raw = newValue;
+          templateValue.cooked = newValue;
+          // @ts-expect-error
+          this.file.metadata.hasChanged = true;
+        }
+      }
+    }
+  },
   StringLiteral(path) {
     updateStringLiteral(
       path,
@@ -77,6 +95,12 @@ export const subVisitor: Visitor<SubVisitorContext> = {
     }
   },
   CallExpression(path) {
+    path.skip();
+  },
+  UnaryExpression(path) {
+    path.skip();
+  },
+  BinaryExpression(path) {
     path.skip();
   },
   LogicalExpression(path) {

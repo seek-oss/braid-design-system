@@ -8,7 +8,7 @@ export const deprecationMap = {
       selection: 'formAccentSoft',
     },
     boxShadow: {
-      standard: 'neutralLight',
+      borderStandard: 'borderNeutralLight',
       borderStandardInverted: 'borderNeutralInverted',
       borderStandardInvertedLarge: 'borderNeutralInvertedLarge',
       borderFormHover: 'borderFormAccent',

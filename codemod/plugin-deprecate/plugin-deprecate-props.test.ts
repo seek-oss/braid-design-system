@@ -11,7 +11,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background="card" boxShadow="standard" />
+          <Box background="card" boxShadow="borderStandard" />
         </div>
       );
     };`,
@@ -20,7 +20,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background="surface" boxShadow="neutralLight" />
+          <Box background="surface" boxShadow="borderNeutralLight" />
         </div>
       );
     };`,
@@ -32,7 +32,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <BraidBox background="card" boxShadow="standard" />
+          <BraidBox background="card" boxShadow="borderStandard" />
         </div>
       );
     };`,
@@ -41,7 +41,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <BraidBox background="surface" boxShadow="neutralLight" />
+          <BraidBox background="surface" boxShadow="borderNeutralLight" />
         </div>
       );
     };`,
@@ -54,8 +54,8 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Braid.Box background="card" boxShadow="standard" />
-          <Box background="card" boxShadow="standard" />
+          <Braid.Box background="card" boxShadow="borderStandard" />
+          <Box background="card" boxShadow="borderStandard" />
         </div>
       );
     };`,
@@ -65,8 +65,8 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Braid.Box background="surface" boxShadow="neutralLight" />
-          <Box background="card" boxShadow="standard" />
+          <Braid.Box background="surface" boxShadow="borderNeutralLight" />
+          <Box background="card" boxShadow="borderStandard" />
         </div>
       );
     };`,
@@ -78,7 +78,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background="card" boxShadow="standard" />
+          <Box background="card" boxShadow="borderStandard" />
         </div>
       );
     };`,
@@ -87,7 +87,50 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background="card" boxShadow="standard" />
+          <Box background="card" boxShadow="borderStandard" />
+        </div>
+      );
+    };`,
+  },
+  {
+    title: 'Visit Braid component using ternary as props values',
+    code: dedent`
+    import { Box } from 'braid-design-system';
+    export default () => {
+      return (
+        <div background="card">
+          <Box background={true ? 'card' : 'body'} />
+        </div>
+      );
+    };`,
+    output: dedent`
+    import { Box } from 'braid-design-system';
+    export default () => {
+      return (
+        <div background="card">
+          <Box background={true ? 'surface' : 'body'} />
+        </div>
+      );
+    };`,
+  },
+  {
+    title:
+      'Visit Braid component using simple template literal as props values',
+    code: dedent`
+    import { Box } from 'braid-design-system';
+    export default () => {
+      return (
+        <div background="card">
+          <Box background={true ? \`card\` : 'body'} />
+        </div>
+      );
+    };`,
+    output: dedent`
+    import { Box } from 'braid-design-system';
+    export default () => {
+      return (
+        <div background="card">
+          <Box background={true ? \`surface\` : 'body'} />
         </div>
       );
     };`,
@@ -100,7 +143,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background={bgColor} boxShadow="standard" />
+          <Box background={bgColor} boxShadow="borderStandard" />
         </div>
       );
     };`,
@@ -110,7 +153,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background={bgColor} boxShadow="neutralLight" />
+          <Box background={bgColor} boxShadow="borderNeutralLight" />
         </div>
       );
     };`,
@@ -126,7 +169,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background={bgColor} boxShadow={'standard'} />
+          <Box background={bgColor} boxShadow={'borderStandard'} />
         </div>
       );
     };`,
@@ -138,7 +181,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     export default () => {
       return (
         <div background="card">
-          <Box background={bgColor} boxShadow={'neutralLight'} />
+          <Box background={bgColor} boxShadow={'borderNeutralLight'} />
         </div>
       );
     };`,
