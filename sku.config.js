@@ -1,6 +1,6 @@
 const path = require('path');
-const routes = require('./sku.routes.js');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
+// const routes = require('./sku.routes.js');
+// const CircularDependencyPlugin = require('circular-dependency-plugin');
 const browserslist = require('./browserslist');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
@@ -17,7 +17,7 @@ const entries = Boolean(process.env.DEBUG_IE)
 
 module.exports = {
   srcPaths: [
-    'src',
+    'packages/braid-design-system/src',
     'css',
     'themes',
     'site/src',
@@ -26,7 +26,7 @@ module.exports = {
     'reset',
   ],
   ...entries,
-  routes,
+  // routes,
   rootResolution: false,
   public: './site/src/public',
   target: './site/dist',
@@ -42,12 +42,12 @@ module.exports = {
     },
   }),
   dangerouslySetWebpackConfig: (config) => {
-    config.plugins.push(
-      new CircularDependencyPlugin({
-        exclude: /node_modules/,
-        failOnError: true,
-      }),
-    );
+    // config.plugins.push(
+    //   new CircularDependencyPlugin({
+    //     exclude: /node_modules/,
+    //     failOnError: true,
+    //   }),
+    // );
 
     // Import Changelog as a raw string so it can be passed to the markdown renderer
     config.module.rules.push({
