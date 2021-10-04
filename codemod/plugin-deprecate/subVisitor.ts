@@ -35,19 +35,6 @@ export const subVisitor: Visitor<SubVisitorContext> = {
   ObjectProperty(path) {
     const deprecations = deprecationMap[this.componentName];
     if (deprecations) {
-      if (
-        !path.node.computed &&
-        t.isIdentifier(path.node.key) &&
-        deprecations[path.node.key.name]
-      ) {
-        path.traverse(subVisitor, {
-          ...this,
-          propName: path.node.key.name,
-          propLocation: path.node.loc,
-          recurses: this.recurses + 1,
-        });
-      }
-
       if (path.node.computed) {
         if (
           t.isStringLiteral(path.node.key) &&
@@ -59,17 +46,34 @@ export const subVisitor: Visitor<SubVisitorContext> = {
             propLocation: path.node.loc,
             recurses: this.recurses + 1,
           });
-        } else {
-          const warningString = renderUntraceablePropertyWarning({
-            code: this.file.code,
-            componentName: this.componentName,
-            propLocation: path.node.key.loc,
-          });
 
-          // @ts-expect-error
-          this.file.metadata.warnings.push(warningString);
+          return;
         }
+        const warningString = renderUntraceablePropertyWarning({
+          code: this.file.code,
+          componentName: this.componentName,
+          propLocation: path.node.key.loc,
+        });
+
+        // @ts-expect-error
+        this.file.metadata.warnings.push(warningString);
+      } else if (
+        t.isIdentifier(path.node.key) &&
+        deprecations[path.node.key.name]
+      ) {
+        path.traverse(subVisitor, {
+          ...this,
+          propName: path.node.key.name,
+          propLocation: path.node.loc,
+          recurses: this.recurses + 1,
+        });
+
+        return;
       }
+    }
+
+    if (!this.propName) {
+      path.skip();
     }
   },
   CallExpression(path) {

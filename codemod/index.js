@@ -14,7 +14,7 @@ const progress = new cliProgress.SingleBar(
   {
     format: '[{bar}] {value}/{total}',
     hideCursor: true,
-    barCompleteChar: '=',
+    barCompleteChar: '■',
     barIncompleteChar: '-',
   },
   cliProgress.Presets.shades_classic,
@@ -62,20 +62,23 @@ Promise.all(jobs)
     if (warningCount > 0) {
       console.warn(
         chalk.yellow(
-          `Completed with ${warningCount} file${
-            warningCount !== 1 ? 's' : ''
-          } containing warnings (see above).`,
+          `${warningCount} file${warningCount !== 1 ? 's' : ''} contained ${
+            warningCount === 1 ? 'a warning' : 'warnings'
+          } (see above).`,
         ),
       );
-    } else if (updateCount > 0) {
+    }
+    if (updateCount > 0) {
       console.log(
         chalk.green(
-          `Successfully updated ${updateCount} file${
+          `${updateCount} file${
             updateCount !== 1 ? 's' : ''
-          }.`,
+          } updated successfully.`,
         ),
       );
-    } else {
+    }
+
+    if (warningCount === 0 && updateCount === 0) {
       console.log(chalk.green("You're up to date!"));
     }
   })

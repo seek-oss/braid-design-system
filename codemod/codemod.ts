@@ -6,6 +6,7 @@ import prettier from 'prettier';
 import atomsPlugin from './plugin-deprecate/plugin-deprecate-atoms';
 import propsPlugin from './plugin-deprecate/plugin-deprecate-props';
 import varsPlugin from './plugin-deprecate/plugin-deprecate-vars';
+import importUpdatePlugin from './plugin-deprecate/plugin-import-update';
 
 export function babelRecast(code: string, filename: string) {
   const ast = parse(code, {
@@ -34,7 +35,7 @@ export function babelRecast(code: string, filename: string) {
     code: false,
     ast: true,
     filename,
-    plugins: [propsPlugin, atomsPlugin, varsPlugin],
+    plugins: [propsPlugin, atomsPlugin, varsPlugin, importUpdatePlugin],
   };
 
   const { ast: transformedAST, metadata } = transformFromAstSync(

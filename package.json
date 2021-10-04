@@ -97,7 +97,6 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/generator": "^7.12.11",
-    "@babel/preset-typescript": "^7.12.7",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
     "@octokit/rest": "^18.0.15",
