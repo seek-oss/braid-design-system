@@ -46,17 +46,20 @@ for (const filepath of paths) {
 Promise.all(jobs)
   .then((results) => {
     progress.stop();
+    let errored = false;
 
-    for (const { warnings, filepath } of results) {
-      if (warnings.length > 0) {
-        console.log(filepath);
-        warnings.forEach((warning) => console.log(warning));
+    for (const result of results) {
+      errored = errored || !Boolean(result);
+
+      if (result && result.warnings.length > 0) {
+        console.log(result.filepath);
+        result.warnings.forEach((warning) => console.log(warning));
       }
     }
 
-    const updateCount = results.filter(({ updated }) => updated).length;
+    const updateCount = results.filter(({ updated } = {}) => updated).length;
     const warningCount = results.filter(
-      ({ warnings }) => warnings.length > 0,
+      ({ warnings } = {}) => (warnings || []).length > 0,
     ).length;
 
     if (warningCount > 0) {
@@ -78,7 +81,9 @@ Promise.all(jobs)
       );
     }
 
-    if (warningCount === 0 && updateCount === 0) {
+    if (errored) {
+      console.error(chalk.red('Something went wrong :('));
+    } else if (warningCount === 0 && updateCount === 0) {
       console.log(chalk.green("You're up to date!"));
     }
   })

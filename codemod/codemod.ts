@@ -29,7 +29,7 @@ export function babelRecast(code: string, filename: string) {
   });
 
   const options = {
-    cloneInputAst: false,
+    cloneInputAst: false, // requires v7.11.0+
     configFile: false,
     babelrc: false,
     code: false,
