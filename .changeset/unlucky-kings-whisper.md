@@ -13,17 +13,30 @@ updated:
 
 Simplifies the semantics of the colour-based tokens to support upcoming colour mode work. Changes to the property values on `backgroundColor` and `borderColor` has flow on affects to the apis on `Box` and `atoms`.
 
-### Token changes
-#### New
+
+**TOKEN CHANGES**
+
+**New**
 - **backgroundColor:** `surface`, `neutralSoft`
 - **borderColor:** `neutral`, `neutralInverted`, `neutralLight`
 
-#### Removed
+**Removed**
 - **backgroundColor:** `card`, `formAccentDisabled`, `input`, `inputDisabled`, `selection`
 - **borderColor:** `formHover`, `standard`, `standardInverted`
 
-### Migration Guide
-#### `Box` backgrounds
+**MIGRATION GUIDE**
+
+Migration can largely be automated by running the Braid upgrade command. You must provide a glob to target your project’s source files. For example:
+
+```
+yarn braid-upgrade v31 "**/*.{ts,tsx}"
+```
+
+---
+
+It may be necessary to manually migrate code in some cases, here are the affected use cases:
+
+**`Box` backgrounds**
 ```diff
 - <Box background="card" />
 + <Box background="surface" />
@@ -41,7 +54,7 @@ Simplifies the semantics of the colour-based tokens to support upcoming colour m
 + <Box background="formAccentSoft" />
 ```
 
-#### `Box` boxShadows
+**`Box` boxShadows**
 ```diff
 - <Box boxShadow="borderStandard" />
 + <Box boxShadow="borderNeutralLight" />
@@ -56,7 +69,7 @@ Simplifies the semantics of the colour-based tokens to support upcoming colour m
 + <Box boxShadow="borderFormAccent" />
 ```
 
-#### `vars`
+**`vars`**
 ```diff
 - vars.borderColor.standard
 + vars.borderColor.neutralLight
@@ -68,7 +81,7 @@ Simplifies the semantics of the colour-based tokens to support upcoming colour m
 + vars.borderColor.formAccent
 ```
 
-#### `atoms`
+**`atoms`**
 ```diff
  atoms({
 -  boxShadow: 'borderStandard',

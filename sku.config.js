@@ -19,6 +19,7 @@ module.exports = {
   srcPaths: [
     'lib',
     'color-mode',
+    'codemod/src',
     'css',
     'themes',
     'site/src',
