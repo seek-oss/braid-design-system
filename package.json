@@ -22,15 +22,16 @@
     "prelint": "yarn setup",
     "prestart": "yarn setup",
     "prebuild": "yarn setup",
+    "build-codemod": "node ./codemod/scripts/build",
     "build": "NODE_ENV=production SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"playroom build\"",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "deploy": "node scripts/deploy.js",
     "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "release": "yarn setup && changeset publish && yarn build && yarn deploy",
+    "release": "yarn setup && yarn build-codemod && changeset publish && yarn build && yarn deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
-    "prepare": "patch-package"
+    "prepare": "patch-package && cd codemod && yarn"
   },
   "bin": {
     "braid-upgrade": "./codemod/dist/index.js"
