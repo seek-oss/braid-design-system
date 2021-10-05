@@ -27,56 +27,71 @@ export function babelRecast({
   code: string;
   filePath: string;
 }) {
-  const ast = parse(code, {
-    parser: {
-      parse: (source: string) =>
-        parseSync(source, {
-          plugins: [jsxSyntax],
-          overrides: [
-            {
-              test: [`**/*.ts`, `**/*.tsx`],
-              plugins: [[typescriptSyntax, { isTSX: true }]],
+  try {
+    const ast = parse(code, {
+      parser: {
+        parse: (source: string) =>
+          parseSync(source, {
+            plugins: [jsxSyntax],
+            overrides: [
+              {
+                test: [`**/*.ts`, `**/*.tsx`],
+                plugins: [[typescriptSyntax, { isTSX: true }]],
+              },
+            ],
+            filename: filePath,
+            parserOpts: {
+              tokens: true,
             },
-          ],
-          filename: filePath,
-          parserOpts: {
-            tokens: true,
-          },
-        }),
-    },
-  });
+          }),
+      },
+    });
 
-  const options = {
-    cloneInputAst: false,
-    configFile: false,
-    babelrc: false,
-    code: false,
-    ast: true,
-    filename: filePath,
-    plugins: pluginsForVersion[version],
-  };
+    const options = {
+      cloneInputAst: false,
+      configFile: false,
+      babelrc: false,
+      code: false,
+      ast: true,
+      filename: filePath,
+      plugins: pluginsForVersion[version],
+    };
 
-  const transformResult = transformFromAstSync(ast, code, options);
+    const transformResult = transformFromAstSync(ast, code, options);
 
-  if (!transformResult || (transformResult && !transformResult.ast)) {
-    throw new Error(`An error occurred transforming: ${filePath}`);
+    if (!transformResult || (transformResult && !transformResult.ast)) {
+      return {
+        warnings: [],
+        error: 'Error transforming code',
+        hasChanged: false,
+        source: code,
+      };
+    }
+
+    const { ast: transformedAST, metadata } = transformResult;
+
+    return {
+      // @ts-expect-error
+      warnings: metadata ? metadata.warnings : [],
+      // @ts-expect-error
+      hasChanged: metadata ? metadata.hasChanged : false,
+      // @ts-expect-error
+      source: print(transformedAST).code,
+    };
+  } catch (e) {
+    return {
+      warnings: [],
+      error: `${e}`,
+      hasChanged: false,
+      source: code,
+    };
   }
-
-  const { ast: transformedAST, metadata } = transformResult;
-
-  return {
-    // @ts-expect-error
-    warnings: metadata ? metadata.warnings : [],
-    // @ts-expect-error
-    hasChanged: metadata ? metadata.hasChanged : false,
-    // @ts-expect-error
-    source: print(transformedAST).code,
-  };
 }
 
 export interface CodemodResult {
   updated: boolean;
   warnings: Array<string>;
+  error?: string;
   filePath: string;
 }
 export default async ({
@@ -91,6 +106,7 @@ export default async ({
   const {
     source: newSource,
     warnings,
+    error,
     hasChanged,
   } = babelRecast({ version, code, filePath });
 
@@ -98,6 +114,7 @@ export default async ({
     filePath,
     updated: hasChanged,
     warnings,
+    error,
   };
 
   if (hasChanged) {

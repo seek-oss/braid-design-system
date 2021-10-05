@@ -9288,34 +9288,38 @@ $> yarn braid-upgrade v31 "**/*.{ts,tsx}"
   const pool = import_workerpool.default.pool(`${__dirname}/wrapper.js`);
   const jobs = [];
   for (const filePath of paths) {
-    jobs.push(pool.exec("codemod", [{ version, filePath }]).then((result) => {
+    jobs.push(pool.exec("codemod", [{ version, filePath }]).catch((err) => err).then((result) => {
       progress.increment();
       return result;
-    }).catch((err) => {
-      console.error(err);
     }));
   }
   Promise.all(jobs).then((results) => {
     progress.stop();
-    let errored = false;
     for (const result of results) {
-      errored = errored || !Boolean(result);
-      if (result && result.warnings.length > 0) {
+      if (result.error) {
+        console.error(import_chalk.default.red(`${result.filePath}
+
+${result.error}
+`));
+      }
+      if (result.warnings.length > 0) {
         console.log(result.filePath);
         result.warnings.forEach((warning) => console.log(warning));
       }
     }
-    const updateCount = results.filter((result) => result && result.updated).length;
-    const warningCount = results.filter((result) => (result ? result.warnings : []).length > 0).length;
+    const errors = results.filter((result) => Boolean(result.error));
+    const updateCount = results.filter((result) => result.updated).length;
+    const warningCount = results.filter((result) => result.warnings.length > 0).length;
+    if (errors.length > 0) {
+      console.error(import_chalk.default.red(`${errors.length} file${errors.length !== 1 ? "s" : ""} contained ${errors.length === 1 ? "an error" : "errors"} (see above).`));
+    }
     if (warningCount > 0) {
       console.warn(import_chalk.default.yellow(`${warningCount} file${warningCount !== 1 ? "s" : ""} contained ${warningCount === 1 ? "a warning" : "warnings"} (see above).`));
     }
     if (updateCount > 0) {
       console.log(import_chalk.default.green(`${updateCount} file${updateCount !== 1 ? "s" : ""} updated successfully.`));
     }
-    if (errored) {
-      console.error(import_chalk.default.red("Something went wrong :("));
-    } else if (warningCount === 0 && updateCount === 0) {
+    if (errors.length === 0 && warningCount === 0 && updateCount === 0) {
       console.log(import_chalk.default.green("You're up to date!"));
     }
   }).finally(() => {

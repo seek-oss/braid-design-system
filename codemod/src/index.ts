@@ -66,36 +66,43 @@ $> yarn braid-upgrade v31 "**/*.{ts,tsx}"
     jobs.push(
       pool
         .exec('codemod', [{ version, filePath }])
+        .catch((err) => err)
         .then((result) => {
           progress.increment();
           return result;
-        })
-        .catch((err) => {
-          console.error(err);
         }),
     );
   }
 
   Promise.all(jobs)
-    .then((results: Array<CodemodResult | undefined>) => {
+    .then((results: Array<CodemodResult>) => {
       progress.stop();
-      let errored = false;
 
       for (const result of results) {
-        errored = errored || !Boolean(result);
-
-        if (result && result.warnings.length > 0) {
+        if (result.error) {
+          console.error(chalk.red(`${result.filePath}\n\n${result.error}\n`));
+        }
+        if (result.warnings.length > 0) {
           console.log(result.filePath);
           result.warnings.forEach((warning: string) => console.log(warning));
         }
       }
 
-      const updateCount = results.filter(
-        (result) => result && result.updated,
-      ).length;
+      const errors = results.filter((result) => Boolean(result.error));
+      const updateCount = results.filter((result) => result.updated).length;
       const warningCount = results.filter(
-        (result) => (result ? result.warnings : []).length > 0,
+        (result) => result.warnings.length > 0,
       ).length;
+
+      if (errors.length > 0) {
+        console.error(
+          chalk.red(
+            `${errors.length} file${errors.length !== 1 ? 's' : ''} contained ${
+              errors.length === 1 ? 'an error' : 'errors'
+            } (see above).`,
+          ),
+        );
+      }
 
       if (warningCount > 0) {
         console.warn(
@@ -106,6 +113,7 @@ $> yarn braid-upgrade v31 "**/*.{ts,tsx}"
           ),
         );
       }
+
       if (updateCount > 0) {
         console.log(
           chalk.green(
@@ -116,9 +124,7 @@ $> yarn braid-upgrade v31 "**/*.{ts,tsx}"
         );
       }
 
-      if (errored) {
-        console.error(chalk.red('Something went wrong :('));
-      } else if (warningCount === 0 && updateCount === 0) {
+      if (errors.length === 0 && warningCount === 0 && updateCount === 0) {
         console.log(chalk.green("You're up to date!"));
       }
     })
