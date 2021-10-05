@@ -4,11 +4,11 @@
 
 Remove `BraidLoadableProvider`
 
-As most Apps should run the `apac` theme across all brands, it no longer makes sense to centralise a loadable version of the `BraidProvider`. This should simplify builds across the board and may result in a small build-speed increase. 
+As most Apps should run the `apac` theme across all brands, it no longer makes sense to centralise a loadable version of the `BraidProvider`. This should simplify builds across the board and may result in a small build-speed increase.
 
-MIGRATION GUIDE
+**MIGRATION GUIDE**
 
-If you are only using a single theme, then you should migrate your `BraidLoadableProvider` usage to `BraidProvider`. 
+If you are only using a single theme, then you should migrate your `BraidLoadableProvider` usage to `BraidProvider`.
 
 ```diff
 +import apac from 'braid-design-system/themes/apac';
@@ -24,7 +24,7 @@ export const App = () => (
 );
 ```
 
-If your app still needs to render different themes then you can replicate the `BraidLoadableProvider` functionality locally using the `loadable.lib` API. 
+If your app still needs to render different themes then you can replicate the `BraidLoadableProvider` functionality locally using the `loadable.lib` API.
 
 ```tsx
 import { BraidProvider } from 'braid-design-system';
