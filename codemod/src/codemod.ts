@@ -2,6 +2,10 @@ import fs from 'fs';
 import { parse, print } from 'recast';
 import { transformFromAstSync, parseSync } from '@babel/core';
 import prettier from 'prettier';
+// @ts-expect-error
+import jsxSyntax from '@babel/plugin-syntax-jsx';
+// @ts-expect-error
+import typescriptSyntax from '@babel/plugin-syntax-typescript';
 
 import atomsPlugin from './plugin-deprecate/plugin-deprecate-atoms';
 import propsPlugin from './plugin-deprecate/plugin-deprecate-props';
@@ -27,11 +31,11 @@ export function babelRecast({
     parser: {
       parse: (source: string) =>
         parseSync(source, {
-          plugins: [`@babel/plugin-syntax-jsx`],
+          plugins: [jsxSyntax],
           overrides: [
             {
               test: [`**/*.ts`, `**/*.tsx`],
-              plugins: [[`@babel/plugin-syntax-typescript`, { isTSX: true }]],
+              plugins: [[typescriptSyntax, { isTSX: true }]],
             },
           ],
           filename: filePath,
