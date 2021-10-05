@@ -8,3 +8,4 @@ site/dist/
 CHANGELOG.md
 .changeset/*.md
 componentUpdates.json
+codemod/dist

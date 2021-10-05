@@ -18,6 +18,7 @@ const entries = Boolean(process.env.DEBUG_IE)
 module.exports = {
   srcPaths: [
     'lib',
+    'codemod/src',
     'css',
     'themes',
     'site/src',
