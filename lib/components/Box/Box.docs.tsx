@@ -510,7 +510,7 @@ const docs: ComponentDocs = {
                   'Used for surfaces that sit on top of body elements in a dark context',
 
                 // New colours
-                brandDark: 'TODO',
+                brandLight: 'TODO',
                 neutralActive: 'TODO',
                 neutralHover: 'TODO',
                 neutralSoftActive: 'TODO',

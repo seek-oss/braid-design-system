@@ -138,7 +138,7 @@ export interface BraidTokens {
       brandAccentSoft: string;
       brandAccentSoftActive: string;
       brandAccentSoftHover: string;
-      brandDark: string;
+      brandLight: string;
       caution: string;
       cautionLight: string;
       critical: string;

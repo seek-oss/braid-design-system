@@ -230,7 +230,7 @@ const tokens: BraidTokens = {
     background: {
       body: '#f2f2f2',
       brand: '#0037e9',
-      brandDark: '#0037e9',
+      brandLight: '#0037e9',
       bodyDark: 'black',
       brandAccent,
       brandAccentActive: getActiveColor(brandAccent),

@@ -108,7 +108,7 @@ export const resolveFieldBackground = ({
   }
 
   if (background === 'brand') {
-    return disabled ? 'brandDark' : 'surface';
+    return disabled ? 'brandLight' : 'surface';
   }
 
   return disabled ? 'neutralSoft' : 'surface';

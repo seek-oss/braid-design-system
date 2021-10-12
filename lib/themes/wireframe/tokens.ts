@@ -236,7 +236,7 @@ const tokens: BraidTokens = {
       brandAccentSoft: tint(0.925, brandAccent),
       brandAccentSoftActive: tint(0.85, brandAccent),
       brandAccentSoftHover: tint(0.9, brandAccent),
-      brandDark: black,
+      brandLight: black,
       caution,
       cautionLight: getLightVariant(caution),
       critical,

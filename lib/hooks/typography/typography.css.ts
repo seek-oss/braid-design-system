@@ -261,7 +261,7 @@ const darkContextToneVars = assignVars(textToneVars, {
   promote: vars.foregroundColor.promoteLight,
   positive: vars.foregroundColor.positiveLight,
   brandAccent: vars.foregroundColor.brandAccentLight,
-  formAccent: vars.foregroundColor.formAccentLight,
+  formAccent: vars.foregroundColor.neutralInverted,
   neutral: vars.foregroundColor.neutralInverted,
   secondary: vars.foregroundColor.secondaryInverted,
   link: vars.foregroundColor.linkLight,

@@ -78,9 +78,19 @@ const neutralOverrideOnBrand =
       return lightBackground;
     }
 
-    return background === 'brand' || background === 'brandDark'
-      ? 'brandDark'
-      : 'neutral';
+    if (background === 'brand' || background === 'brandLight') {
+      return 'brandLight';
+    }
+
+    if (
+      background !== 'bodyDark' &&
+      background !== 'surfaceDark' &&
+      background !== 'neutral'
+    ) {
+      return lightBackground;
+    }
+
+    return 'neutral';
   };
 
 const variants: Record<
@@ -185,11 +195,11 @@ const variants: Record<
       backgroundActive: neutralOverrideOnBrand('formAccentSoftActive'),
       boxShadow: {
         light: 'borderFormAccentLarge',
-        dark: 'borderFormAccentLightLarge',
+        dark: 'borderNeutralInvertedLarge',
       },
     },
     neutral: {
-      textTone: undefined,
+      textTone: 'neutral',
       background: undefined,
       backgroundHover: neutralOverrideOnBrand('neutralSoftHover'),
       backgroundActive: neutralOverrideOnBrand('neutralSoftActive'),
@@ -201,8 +211,8 @@ const variants: Record<
     brandAccent: {
       textTone: 'brandAccent',
       background: undefined,
-      backgroundHover: neutralOverrideOnBrand('brandAccentSoftHover'),
-      backgroundActive: neutralOverrideOnBrand('brandAccentSoftActive'),
+      backgroundHover: neutralOverrideOnBrand('brandAccentSoft'),
+      backgroundActive: neutralOverrideOnBrand('brandAccentSoftHover'),
       boxShadow: {
         light: 'borderBrandAccentLarge',
         dark: 'borderBrandAccentLightLarge',
@@ -211,8 +221,8 @@ const variants: Record<
     critical: {
       textTone: 'critical',
       background: undefined,
-      backgroundHover: neutralOverrideOnBrand('brandAccentSoftHover'),
-      backgroundActive: neutralOverrideOnBrand('brandAccentSoftActive'),
+      backgroundHover: neutralOverrideOnBrand('criticalSoft'),
+      backgroundActive: neutralOverrideOnBrand('criticalSoftHover'),
       boxShadow: {
         light: 'borderCriticalLarge',
         dark: 'borderCriticalLightLarge',

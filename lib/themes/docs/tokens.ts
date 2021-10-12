@@ -224,7 +224,7 @@ const tokens: BraidTokens = {
       brandAccentSoft: palette.grey['200'],
       brandAccentSoftActive: darken(0.025, palette.grey['200']),
       brandAccentSoftHover: darken(0.05, palette.grey['200']),
-      brandDark: black,
+      brandLight: black,
       caution: palette.yellow['500'],
       cautionLight: palette.yellow['100'],
       critical: palette.red['600'],

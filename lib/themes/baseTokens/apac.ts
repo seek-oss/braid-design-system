@@ -257,7 +257,7 @@ export const makeTokens = ({
         brandAccentSoft,
         brandAccentSoftActive,
         brandAccentSoftHover,
-        brandDark: palette.seekBlue['600'],
+        brandLight: palette.seekBlue['400'],
         caution: palette.yellow['500'],
         cautionLight: palette.yellow['100'],
         critical,
