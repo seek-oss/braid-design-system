@@ -10,6 +10,7 @@ export interface FieldLabelProps {
   id?: string;
   htmlFor: string | false;
   label?: ReactNode;
+  disabled?: boolean;
   secondaryLabel?: ReactNode;
   tertiaryLabel?: ReactNode;
   description?: ReactNode;
@@ -21,6 +22,7 @@ export const FieldLabel = ({
   id,
   htmlFor,
   label,
+  disabled,
   secondaryLabel,
   tertiaryLabel,
   description,
@@ -32,7 +34,7 @@ export const FieldLabel = ({
   }
 
   const labelEl = (
-    <Text>
+    <Text tone={disabled ? 'secondary' : undefined}>
       <Strong>{label}</Strong>
       {secondaryLabel ? <Secondary>&nbsp;({secondaryLabel})</Secondary> : null}
     </Text>

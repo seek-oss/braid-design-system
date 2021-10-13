@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { PasswordField, TextLink } from '../';
+import { PasswordField, Stack, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -140,17 +140,23 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'PasswordField disabled',
       Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('qwerty');
-        return (
+      Example: ({ id, handler }) => {
+        <Stack space="gutter">
           <PasswordField
-            label="Password"
-            id={id}
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
+            label="No value"
+            id={`${id}_1`}
+            value=""
             disabled={true}
+            onChange={handler}
           />
-        );
+          <PasswordField
+            label="With value"
+            id={`${id}_2`}
+            value="Text value"
+            disabled={true}
+            onChange={handler}
+          />
+        </Stack>;
       },
     },
     {

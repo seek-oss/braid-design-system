@@ -10,6 +10,7 @@ import {
   IconLocation,
   Stack,
   Heading,
+  Notice,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -202,13 +203,13 @@ const docs: ComponentDocs = {
         </Text>
       ),
       background: 'card',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ id, setState }) =>
         source(
           <Dropdown
             label="Label"
             id={id}
             onChange={setState('dropdown')}
-            value={getState('dropdown')}
+            value="Option 1"
             disabled={true}
           >
             <option>Option 1</option>
@@ -219,10 +220,18 @@ const docs: ComponentDocs = {
     {
       label: 'Placeholder prompt',
       description: (
-        <Text>
-          Providing a <Strong>placeholder</Strong> will display as a prompt to
-          the user no value is selected.
-        </Text>
+        <>
+          <Text>
+            Providing a <Strong>placeholder</Strong> will display as a prompt to
+            the user no value is selected.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              A placeholder is not visible when the field is{' '}
+              <TextLink href="#disabled-field">disabled</TextLink>.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: ({ id, getState, setState }) =>
         source(

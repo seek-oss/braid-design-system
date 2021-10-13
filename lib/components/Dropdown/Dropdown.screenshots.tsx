@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Dropdown, IconLocation } from '../';
+import { Dropdown, IconLocation, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -86,6 +86,56 @@ export const screenshots: ComponentScreenshot = {
           <option value="1">Developer</option>
           <option value="2">Designer</option>
         </Dropdown>
+      ),
+    },
+    {
+      label: 'Dropdown in disabled state',
+      Container,
+      Example: ({ id, handler }) => (
+        <Stack space="gutter">
+          <Dropdown
+            label="With no value or placeholder"
+            id={`${id}_1`}
+            onChange={handler}
+            value=""
+            disabled={true}
+          >
+            <option value="1">Developer</option>
+            <option value="2">Designer</option>
+          </Dropdown>
+          <Dropdown
+            label="With value and no placeholder"
+            id={`${id}_2`}
+            onChange={handler}
+            value="1"
+            disabled={true}
+          >
+            <option value="1">Developer</option>
+            <option value="2">Designer</option>
+          </Dropdown>
+          <Dropdown
+            label="With no value and a placeholder"
+            id={`${id}_3`}
+            onChange={handler}
+            value=""
+            disabled={true}
+            placeholder="Placeholder text"
+          >
+            <option value="1">Developer</option>
+            <option value="2">Designer</option>
+          </Dropdown>
+          <Dropdown
+            label="With value and a placholder"
+            id={`${id}_4`}
+            onChange={handler}
+            value="1"
+            disabled={true}
+            placeholder="Placeholder text"
+          >
+            <option value="1">Developer</option>
+            <option value="2">Designer</option>
+          </Dropdown>
+        </Stack>
       ),
     },
     {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Badge, Radio, Text } from '../';
+import { Badge, Radio, Text, Stack } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -27,15 +27,23 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Disabled Radio Button',
-      background: 'card',
       Example: ({ id, handler }) => (
-        <Radio
-          id={id}
-          disabled={true}
-          checked={false}
-          onChange={handler}
-          label="Label"
-        />
+        <Stack space="gutter">
+          <Radio
+            id={`${id}_1`}
+            disabled={true}
+            checked={false}
+            onChange={handler}
+            label="Disabled unchecked"
+          />
+          <Radio
+            id={`${id}_2`}
+            disabled={true}
+            checked={true}
+            onChange={handler}
+            label="Disabled checked"
+          />
+        </Stack>
       ),
     },
     {

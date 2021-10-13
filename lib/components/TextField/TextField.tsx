@@ -96,7 +96,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
               onChange={onChange}
               onFocus={onFocus}
               onBlur={onBlur}
-              placeholder={placeholder}
+              placeholder={!restProps.disabled ? placeholder : undefined}
               {...fieldProps}
               ref={inputRef}
             />

@@ -151,6 +151,7 @@ export const Field = ({
           id={labelId}
           htmlFor={id}
           label={'label' in restProps ? restProps.label : undefined}
+          disabled={disabled}
           secondaryLabel={
             'secondaryLabel' in restProps ? restProps.secondaryLabel : undefined
           }
@@ -203,7 +204,7 @@ export const Field = ({
               styles.placeholderColor,
               useText({
                 backgroundContext: fieldBackground,
-                tone: hasValue ? 'neutral' : 'secondary',
+                tone: hasValue && !disabled ? 'neutral' : 'secondary',
                 size: 'standard',
                 baseline: false,
               }),

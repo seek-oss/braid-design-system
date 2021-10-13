@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   category: 'Layout',
   Example: () =>
     source(
-      <Card>
+      <Card rounded>
         <Stack space="xlarge">
           <Stack space="medium">
             <Text tone="secondary">Regular weight</Text>

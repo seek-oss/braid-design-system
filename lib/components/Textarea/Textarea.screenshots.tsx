@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Textarea, TextLink } from '../';
+import { Stack, Textarea, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -13,24 +13,19 @@ export const screenshots: ComponentScreenshot = {
       label: 'Textarea',
       Container,
       Example: ({ id, handler }) => (
-        <Textarea
-          id={id}
-          value="Senior Developer"
-          onChange={handler}
-          label="Job Title"
-        />
+        <Textarea id={id} value="Text value" onChange={handler} label="Label" />
       ),
     },
     {
-      label: 'Textarea with message',
+      label: 'Textarea with neutral message',
       Container,
       Example: ({ id, handler }) => (
         <Textarea
           id={id}
           value=""
           onChange={handler}
-          label="Job Title"
-          message="e.g. Senior Developer"
+          label="Label"
+          message="Neutral message"
         />
       ),
     },
@@ -42,8 +37,8 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           value=""
           onChange={handler}
-          label="Title"
-          secondaryLabel="Optional"
+          label="Label"
+          secondaryLabel="Secondary"
         />
       ),
     },
@@ -55,8 +50,8 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           value=""
           onChange={handler}
-          label="Title"
-          secondaryLabel="Optional"
+          label="Label"
+          secondaryLabel="Secondary"
           tertiaryLabel={<TextLink href="#">Help?</TextLink>}
         />
       ),
@@ -65,7 +60,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Textarea with no visual label',
       Container,
       Example: ({ id, handler }) => (
-        <Textarea id={id} value="" onChange={handler} aria-label="Title" />
+        <Textarea id={id} value="" onChange={handler} aria-label="Label" />
       ),
     },
     {
@@ -74,10 +69,10 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Textarea
           id={id}
-          value="No"
+          value=""
           onChange={handler}
-          label="Do you like Braid?"
-          message="Answer is incorrect"
+          label="Label"
+          message="Critical message"
           tone="critical"
         />
       ),
@@ -88,12 +83,50 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Textarea
           id={id}
-          value="Yes"
+          value=""
           onChange={handler}
-          label="Do you like Braid?"
-          message="Nice one!"
+          label="Label"
+          message="Positive message"
           tone="positive"
         />
+      ),
+    },
+    {
+      label: 'Textarea disabled',
+      Container,
+      Example: ({ id, handler }) => (
+        <Stack space="gutter">
+          <Textarea
+            label="With no value or placeholder"
+            id={`${id}_1`}
+            value=""
+            disabled={true}
+            onChange={handler}
+          />
+          <Textarea
+            label="With value and no placeholder"
+            id={`${id}_2`}
+            value="Text value"
+            disabled={true}
+            onChange={handler}
+          />
+          <Textarea
+            label="With no value and a placeholder"
+            id={`${id}_3`}
+            value=""
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+          />
+          <Textarea
+            label="With value and a placeholder"
+            id={`${id}_4`}
+            value="Text value"
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+          />
+        </Stack>
       ),
     },
     {
@@ -107,7 +140,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             lineLimit={6}
           />
         );
@@ -124,7 +157,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             characterLimit={50}
           />
         );
@@ -143,7 +176,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             characterLimit={50}
           />
         );
@@ -162,7 +195,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             characterLimit={9}
           />
         );
@@ -181,7 +214,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             description="Characters 9-22 are invalid"
             highlightRanges={[{ start: 9, end: 22 }]}
           />
@@ -201,7 +234,7 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-            label="Do you like Braid?"
+            label="Label"
             description="Characters 9-22 are invalid"
             characterLimit={50}
             highlightRanges={[{ start: 9, end: 22 }]}
@@ -218,7 +251,7 @@ export const screenshots: ComponentScreenshot = {
 
         return (
           <Textarea
-            label="Do you like Braid?"
+            label="Label"
             id={id}
             onChange={(e) => setValue(e.currentTarget.value)}
             value={value}

@@ -141,13 +141,13 @@ const docs: ComponentDocs = {
         </Text>
       ),
       background: 'card',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ id, setState }) =>
         source(
           <Textarea
             label="Label"
             id={id}
             onChange={setState('textarea')}
-            value={getState('textarea')}
+            value="Text in disabled field"
             disabled={true}
           />,
         ),
