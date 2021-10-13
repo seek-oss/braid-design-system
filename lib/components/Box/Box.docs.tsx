@@ -508,13 +508,6 @@ const docs: ComponentDocs = {
                 surface: 'Used for surfaces that sit on top of body elements',
                 surfaceDark:
                   'Used for surfaces that sit on top of body elements in a dark context',
-
-                // New colours
-                brandLight: 'TODO',
-                neutralActive: 'TODO',
-                neutralHover: 'TODO',
-                neutralSoftActive: 'TODO',
-                neutralSoftHover: 'TODO',
               }),
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">

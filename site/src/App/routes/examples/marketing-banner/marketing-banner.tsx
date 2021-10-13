@@ -73,9 +73,7 @@ const page: Page = {
                       space="none"
                       align={{ mobile: 'center', tablet: 'left' }}
                     >
-                      <Button variant="ghost" tone="neutral">
-                        Show me
-                      </Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -341,9 +339,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -400,9 +396,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -446,9 +440,7 @@ const page: Page = {
                     Heard about our latest marketing campaign?
                   </Heading>
                   <Inline space="none">
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -509,9 +501,7 @@ const page: Page = {
                     space="none"
                     align={{ mobile: 'center', tablet: 'left' }}
                   >
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
+                    <Button variant="ghost">Show me</Button>
                   </Inline>
                 </Stack>
               </Column>
@@ -559,9 +549,7 @@ const page: Page = {
                       Heard about our latest marketing campaign?
                     </Heading>
                     <Inline space="none">
-                      <Button variant="ghost" tone="neutral">
-                        Show me
-                      </Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -608,9 +596,7 @@ const page: Page = {
                       space="none"
                       align={{ mobile: 'center', tablet: 'left' }}
                     >
-                      <Button variant="ghost" tone="neutral">
-                        Show me
-                      </Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
@@ -657,9 +643,7 @@ const page: Page = {
                       space="none"
                       align={{ mobile: 'center', tablet: 'left' }}
                     >
-                      <Button variant="ghost" tone="neutral">
-                        Show me
-                      </Button>
+                      <Button variant="ghost">Show me</Button>
                     </Inline>
                   </Stack>
                 </Column>
