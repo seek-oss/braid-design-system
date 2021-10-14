@@ -140,7 +140,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'PasswordField disabled',
       Container,
-      Example: ({ id, handler }) => {
+      Example: ({ id, handler }) => (
         <Stack space="gutter">
           <PasswordField
             label="With no value or placeholder"
@@ -172,8 +172,8 @@ export const screenshots: ComponentScreenshot = {
             placeholder="Placeholder text"
             onChange={handler}
           />
-        </Stack>;
-      },
+        </Stack>
+      ),
     },
     {
       label: 'PasswordField on Brand Background',

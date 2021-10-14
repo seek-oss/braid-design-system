@@ -84,7 +84,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'When disabled',
-      Example: ({ handler }) => {
+      Example: ({ handler }) => (
         <RadioGroup
           id="radiolist5"
           value="2"
@@ -96,8 +96,8 @@ export const screenshots: ComponentScreenshot = {
           <RadioItem label="1 year" value="1" />
           <RadioItem label="2 years" value="2" />
           <RadioItem label="3+ years " value="3" />
-        </RadioGroup>;
-      },
+        </RadioGroup>
+      ),
     },
     {
       label: 'When disabled and critical',
