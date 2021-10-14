@@ -503,8 +503,12 @@ const docs: ComponentDocs = {
                 promote: 'Used for heavier “promote” elements.',
                 promoteLight: 'Used for light “promote” elements.',
                 neutral: 'Used for heavier “neutral” elements.',
+                neutralActive: 'Active colour for "neutral" elements',
+                neutralHover: 'Hover colour for "neutral" elements',
                 neutralLight: 'Used for light “neutral” elements.',
                 neutralSoft: 'Used for soft “neutral” elements',
+                neutralSoftActive: 'Active colour for "neutralSoft" elements',
+                neutralSoftHover: 'Hover colour for "neutralSoft" elements',
                 surface: 'Used for surfaces that sit on top of body elements',
                 surfaceDark:
                   'Used for surfaces that sit on top of body elements in a dark context',

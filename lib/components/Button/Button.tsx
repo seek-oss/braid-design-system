@@ -30,7 +30,7 @@ export const buttonVariants = [
 ] as const;
 
 type ButtonSize = 'standard' | 'small';
-type ButtonTone = 'brandAccent' | 'critical';
+type ButtonTone = 'brandAccent' | 'critical' | 'neutral';
 type ButtonVariant = typeof buttonVariants[number];
 export interface ButtonStyleProps {
   size?: ButtonSize;
@@ -96,6 +96,13 @@ const variants: Record<
       backgroundActive: 'criticalActive',
       boxShadow: undefined,
     },
+    neutral: {
+      textTone: undefined,
+      background: { light: 'neutral', dark: 'neutralSoft' },
+      backgroundHover: { light: 'neutralSoftHover', dark: 'neutralHover' },
+      backgroundActive: { light: 'neutralSoftActive', dark: 'neutralActive' },
+      boxShadow: undefined,
+    },
   },
   soft: {
     default: {
@@ -117,6 +124,13 @@ const variants: Record<
       background: { light: 'criticalSoft', dark: 'customDark' },
       backgroundHover: 'criticalSoftHover',
       backgroundActive: 'criticalSoftActive',
+      boxShadow: undefined,
+    },
+    neutral: {
+      textTone: 'neutral',
+      background: { light: 'neutralSoft', dark: 'customDark' },
+      backgroundHover: 'neutralSoftHover',
+      backgroundActive: 'neutralSoftActive',
       boxShadow: undefined,
     },
   },
@@ -142,6 +156,13 @@ const variants: Record<
       backgroundActive: 'criticalSoftActive',
       boxShadow: undefined,
     },
+    neutral: {
+      textTone: 'neutral',
+      background: undefined,
+      backgroundHover: 'neutralSoftHover',
+      backgroundActive: 'neutralSoftActive',
+      boxShadow: undefined,
+    },
   },
   ghost: {
     default: {
@@ -151,7 +172,7 @@ const variants: Record<
       backgroundActive: 'formAccentSoftActive',
       boxShadow: {
         light: 'borderFormAccentLarge',
-        dark: 'borderNeutralInvertedLarge',
+        dark: 'borderFormAccentLightLarge',
       },
     },
     brandAccent: {
@@ -172,6 +193,16 @@ const variants: Record<
       boxShadow: {
         light: 'borderCriticalLarge',
         dark: 'borderCriticalLightLarge',
+      },
+    },
+    neutral: {
+      textTone: 'neutral',
+      background: undefined,
+      backgroundHover: 'neutralSoftHover',
+      backgroundActive: 'neutralSoftActive',
+      boxShadow: {
+        light: 'borderNeutralLarge',
+        dark: 'borderNeutralInvertedLarge',
       },
     },
   },

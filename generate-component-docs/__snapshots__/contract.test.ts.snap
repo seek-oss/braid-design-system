@@ -378,8 +378,12 @@ Object {
         | "info"
         | "infoLight"
         | "neutral"
+        | "neutralActive"
+        | "neutralHover"
         | "neutralLight"
         | "neutralSoft"
+        | "neutralSoftActive"
+        | "neutralSoftHover"
         | "positive"
         | "positiveLight"
         | "promote"
@@ -1319,8 +1323,12 @@ Object {
         | "info"
         | "infoLight"
         | "neutral"
+        | "neutralActive"
+        | "neutralHover"
         | "neutralLight"
         | "neutralSoft"
+        | "neutralSoftActive"
+        | "neutralSoftHover"
         | "positive"
         | "positiveLight"
         | "promote"
@@ -1830,7 +1838,7 @@ Object {
     styleBody?: boolean
     theme: {
         background: { lightMode: string; darkMode: string; }
-        backgroundLightness: { body: "light" | "dark"; bodyDark: "light" | "dark"; brand: "light" | "dark"; brandAccent: "light" | "dark"; brandAccentActive: "light" | "dark"; brandAccentHover: "light" | "dark"; ... 28 more ...; surfaceDark: "light" | "dark"; }
+        backgroundLightness: { body: "light" | "dark"; bodyDark: "light" | "dark"; brand: "light" | "dark"; brandAccent: "light" | "dark"; brandAccentActive: "light" | "dark"; brandAccentHover: "light" | "dark"; ... 32 more ...; surfaceDark: "light" | "dark"; }
         color: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 14 more ...; secondaryInverted: string; }; background: { ...; }; }
         displayName: string
         name: string
@@ -1870,6 +1878,7 @@ Object {
     tone?: 
         | "brandAccent"
         | "critical"
+        | "neutral"
     type?: 
         | "button"
         | "reset"
@@ -2374,6 +2383,7 @@ Object {
     tone?: 
         | "brandAccent"
         | "critical"
+        | "neutral"
     translate?: 
         | "no"
         | "yes"

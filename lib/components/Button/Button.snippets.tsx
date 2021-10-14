@@ -77,6 +77,34 @@ export const snippets: Snippets = [
     ),
   },
   {
+    name: 'Neutral Solid',
+    code: source(<Button tone="neutral">Button</Button>),
+  },
+  {
+    name: 'Neutral Ghost',
+    code: source(
+      <Button tone="neutral" variant="ghost">
+        Button
+      </Button>,
+    ),
+  },
+  {
+    name: 'Neutral Soft',
+    code: source(
+      <Button tone="neutral" variant="soft">
+        Button
+      </Button>,
+    ),
+  },
+  {
+    name: 'Neutral Transparent',
+    code: source(
+      <Button tone="neutral" variant="transparent">
+        Button
+      </Button>,
+    ),
+  },
+  {
     name: 'Small Solid',
     code: source(<Button size="small">Button</Button>),
   },

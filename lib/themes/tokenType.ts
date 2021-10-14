@@ -156,8 +156,12 @@ export interface BraidTokens {
       info: string;
       infoLight: string;
       neutral: string;
+      neutralActive: string;
+      neutralHover: string;
       neutralLight: string;
       neutralSoft: string;
+      neutralSoftActive: string;
+      neutralSoftHover: string;
       positive: string;
       positiveLight: string;
       promote: string;
