@@ -590,6 +590,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
   const clearable = Boolean(
     typeof onClear !== 'undefined' &&
+      !restProps.disabled &&
       typeof value !== 'undefined' &&
       value.text.length > 0,
   );

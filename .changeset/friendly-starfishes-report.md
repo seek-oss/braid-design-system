@@ -7,10 +7,11 @@ updated:
   - Autosuggest
   - Dropdown
   - MonthPicker
+  - PasswordField
   - TextField
   - Textarea
 ---
 
-**Autosuggest, Dropdown, MonthPicker, TextField, Textarea:** Hide `placeholder` text when field is `disabled`
+**Autosuggest, Dropdown, MonthPicker, PasswordField, TextField, Textarea:** Hide `placeholder` text when field is `disabled`
 
 

@@ -58,6 +58,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     const clearable = Boolean(
       typeof onClear !== 'undefined' &&
+        !restProps.disabled &&
         typeof value === 'string' &&
         value.length > 0,
     );

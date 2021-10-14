@@ -7784,9 +7784,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@608: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1517: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
-    at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
+    __@iterator@606: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@1513: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
@@ -7795,8 +7794,6 @@ Object {
     filter: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S[]; (predicate: (value: Filterab...
     find: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (this: void, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S | undefined; (predica...
     findIndex: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
-    flat: <A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]
-    flatMap: <U, This = undefined>(callback: (this: This, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => U | readonly U[], thisArg?: This | undefined) => U[]
     forEach: (callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => void, thisArg?: any) => void
     includes: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => boolean
     indexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
