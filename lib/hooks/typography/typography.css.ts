@@ -179,6 +179,30 @@ export const invertableTone = {
       color: vars.foregroundColor.secondaryInverted,
     },
   }),
+  brandAccent: styleVariants({
+    light: {
+      color: vars.foregroundColor.brandAccent,
+    },
+    dark: {
+      color: vars.foregroundColor.brandAccentLight,
+    },
+  }),
+  formAccent: styleVariants({
+    light: {
+      color: vars.foregroundColor.formAccent,
+    },
+    dark: {
+      color: vars.foregroundColor.formAccentLight,
+    },
+  }),
+  critical: styleVariants({
+    light: {
+      color: vars.foregroundColor.critical,
+    },
+    dark: {
+      color: vars.foregroundColor.criticalLight,
+    },
+  }),
 };
 
 const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {

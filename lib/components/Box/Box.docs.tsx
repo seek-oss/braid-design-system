@@ -501,8 +501,12 @@ const docs: ComponentDocs = {
                 promote: 'Used for heavier “promote” elements.',
                 promoteLight: 'Used for light “promote” elements.',
                 neutral: 'Used for heavier “neutral” elements.',
+                neutralActive: 'Active colour for "neutral" elements',
+                neutralHover: 'Hover colour for "neutral" elements',
                 neutralLight: 'Used for light “neutral” elements.',
                 neutralSoft: 'Used for soft “neutral” elements',
+                neutralSoftActive: 'Active colour for "neutralSoft" elements',
+                neutralSoftHover: 'Hover colour for "neutralSoft" elements',
                 surface: 'Used for surfaces that sit on top of body elements',
               }),
             ).map(([background, description]) => (
@@ -596,8 +600,14 @@ const docs: ComponentDocs = {
                   'Used for borders around prominent interactive elements.',
                 borderFormAccentLarge:
                   'Used for large borders around prominent interactive elements.',
+                borderFormAccentLight:
+                  'Used for borders around prominent interactive elements in a dark context.',
+                borderFormAccentLightLarge:
+                  'Used for large borders around prominent interactive elements in a dark context.',
                 borderBrandAccentLarge:
                   'Used for large borders around branded elements.',
+                borderBrandAccentLightLarge:
+                  'Used for large borders around branded elements in a dark context.',
                 borderPositive: 'Used for borders around “positive” elements.',
                 borderPositiveLight:
                   'Used for borders around “positiveLight” elements.',
@@ -606,6 +616,8 @@ const docs: ComponentDocs = {
                   'Used for large borders around “critical” elements.',
                 borderCriticalLight:
                   'Used for borders around “criticalLight” elements.',
+                borderCriticalLightLarge:
+                  'Used for large borders around “criticalLight” elements.',
                 borderCaution: 'Used for borders around “caution” elements.',
                 borderCautionLight:
                   'Used for borders around “cautionLight” elements.',

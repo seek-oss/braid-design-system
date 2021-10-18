@@ -12,6 +12,7 @@ import {
   Strong,
   IconSend,
   IconDelete,
+  Notice,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -209,16 +210,58 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'De-emphasized actions',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            For cases where actions need may need to be de-emphasized, you can
+            set the button’s <Strong>tone</Strong> to <Strong>neutral.</Strong>
+          </Text>
+          <Text>
+            This makes the button follow the default text colour, including{' '}
+            <TextLink href="#contextual-design">
+              inverting on dark surfaces
+            </TextLink>{' '}
+            to improve contrast.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button tone="neutral">Solid</Button>
+            <Button tone="neutral" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="neutral" variant="soft">
+              Soft
+            </Button>
+            <Button tone="neutral" variant="transparent">
+              Transparent
+            </Button>
+          </Inline>,
+        ),
+    },
+    {
       label: 'Contextual design',
       description: (
         <>
           <Text>
             The <Strong>ghost</Strong>, <Strong>soft</Strong>, and{' '}
-            <Strong>transparent</Strong> variants are inverted when rendered on
-            a dark background.
+            <Strong>transparent</Strong> variants automatically lighten their
+            foreground colour to improve contrast against a dark background. To
+            compliment this, the hover and active backgrounds remove the colour
+            in favour of a white translucency.
           </Text>
+          <Notice>
+            <Text>
+              A <Strong>solid</Strong> button with a <Strong>neutral</Strong>{' '}
+              tone will also be inverted to improve contrast.
+            </Text>
+          </Notice>
           <Text>
-            When using custom backgrounds or images on a{' '}
+            When using custom background colours or images on a{' '}
             <TextLink href="components/Box">Box</TextLink> component, this
             behaviour can be applied by setting the <Strong>background</Strong>{' '}
             to either <Strong>customLight</Strong> or{' '}
@@ -226,15 +269,54 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'brand',
+      background: 'neutral',
       Example: () =>
         source(
-          <Box background="brand">
-            <Inline space="small">
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="soft">Soft</Button>
-              <Button variant="transparent">Transparent</Button>
-            </Inline>
+          <Box background="neutral">
+            <Stack space="small">
+              <Inline space="small">
+                <Button>Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="soft">Soft</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Inline>
+              <Inline space="small">
+                <Button tone="brandAccent">Solid</Button>
+                <Button tone="brandAccent" variant="ghost">
+                  Ghost
+                </Button>
+                <Button tone="brandAccent" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="brandAccent" variant="transparent">
+                  Transparent
+                </Button>
+              </Inline>
+              <Inline space="small">
+                <Button tone="critical">Solid</Button>
+                <Button tone="critical" variant="ghost">
+                  Ghost
+                </Button>
+                <Button tone="critical" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="critical" variant="transparent">
+                  Transparent
+                </Button>
+              </Inline>
+              <Inline space="small">
+                <Button tone="neutral">Solid</Button>
+                <Button tone="neutral" variant="ghost">
+                  Ghost
+                </Button>
+                <Button tone="neutral" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="neutral" variant="transparent">
+                  Transparent
+                </Button>
+              </Inline>
+            </Stack>
           </Box>,
         ),
     },

@@ -1,23 +1,35 @@
 import { BraidTokens } from '../tokenType';
 import { darken, lighten, mix, tint } from 'polished';
-import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
+import {
+  findClosestAccessibleLighterColor,
+  getAccessibleVariant,
+  getLightVariant,
+  isLight,
+} from '../../utils';
 
 const brand = '#083cae';
 const brandAccent = '#f13465';
 const formAccent = brand;
 const focus = lighten(0.5, brand);
 const critical = '#db3737';
-const criticalLight = '#f6e4e4';
+const criticalLightBackground = '#f6e4e4';
 const positive = '#009537';
 const caution = '#ffc549';
 const info = '#0946CB';
 const promote = '#5736ab';
-const neutral = '#666';
+const neutral = '#444444';
+const neutralSoft = '#f5f5f5';
 const black = '#222';
 const secondary = '#777';
 const white = '#fff';
 const link = '#0946CB';
 const linkVisited = '#5736ab';
+const brandAccentLight = findClosestAccessibleLighterColor(
+  brandAccent,
+  neutral,
+);
+const formAccentLight = findClosestAccessibleLighterColor(formAccent, neutral);
+const criticalLight = findClosestAccessibleLighterColor(critical, neutral);
 
 const getActiveColor = (x: string) =>
   isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -171,13 +183,15 @@ const tokens: BraidTokens = {
     },
     color: {
       brandAccent,
+      brandAccentLight,
       caution,
       cautionLight: mix(0.6, caution, getLightVariant(caution)),
       critical,
-      criticalLight: mix(0.3, critical, criticalLight),
+      criticalLight,
       field: '#dddddd',
       focus,
       formAccent,
+      formAccentLight,
       info,
       infoLight: mix(0.3, info, getLightVariant(info)),
       neutral: black,
@@ -201,9 +215,12 @@ const tokens: BraidTokens = {
   color: {
     foreground: {
       brandAccent,
+      brandAccentLight,
       caution: getAccessibleVariant(caution, caution),
       critical: getAccessibleVariant(critical),
+      criticalLight,
       formAccent,
+      formAccentLight,
       info: getAccessibleVariant(info),
       link,
       linkHover: link,
@@ -230,7 +247,7 @@ const tokens: BraidTokens = {
       critical,
       criticalActive: getActiveColor(critical),
       criticalHover: getHoverColor(critical),
-      criticalLight,
+      criticalLight: criticalLightBackground,
       criticalSoft: tint(0.925, critical),
       criticalSoftActive: tint(0.85, critical),
       criticalSoftHover: tint(0.9, critical),
@@ -243,8 +260,12 @@ const tokens: BraidTokens = {
       info,
       infoLight: getLightVariant(info),
       neutral,
+      neutralActive: darken(0.05, neutral),
+      neutralHover: lighten(0.05, neutral),
       neutralLight: darken(0.04, getLightVariant(neutral)),
-      neutralSoft: lighten(0.02, getLightVariant(neutral)),
+      neutralSoft,
+      neutralSoftActive: darken(0.05, neutralSoft),
+      neutralSoftHover: darken(0.025, neutralSoft),
       positive,
       positiveLight: getLightVariant(positive),
       promote,
