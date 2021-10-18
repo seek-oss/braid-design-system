@@ -147,16 +147,24 @@ const docs: ComponentDocs = {
           to the <Strong>disabled</Strong> prop.
         </Text>
       ),
-      background: 'card',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ id, toggleState }) =>
         source(
-          <Checkbox
-            id={id}
-            disabled={true}
-            checked={getState('checked')}
-            onChange={() => toggleState('checked')}
-            label="Label"
-          />,
+          <Stack space="medium">
+            <Checkbox
+              id={id}
+              disabled={true}
+              checked={false}
+              onChange={() => toggleState('checked')}
+              label="Unchecked"
+            />
+            <Checkbox
+              id={id}
+              disabled={true}
+              checked={true}
+              onChange={() => toggleState('checked')}
+              label="Checked"
+            />
+          </Stack>,
         ),
     },
     {

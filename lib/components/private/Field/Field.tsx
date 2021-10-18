@@ -80,6 +80,7 @@ interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
 type InternalFieldProps = FieldBaseProps &
   FieldLabelVariant & {
     secondaryIcon?: ReactNode;
+    alwaysShowSecondaryIcon?: boolean;
     children(
       overlays: ReactNode,
       props: FieldRenderProps,
@@ -104,6 +105,7 @@ export const Field = ({
   'aria-describedby': ariaDescribedBy,
   data,
   secondaryIcon,
+  alwaysShowSecondaryIcon = false,
   autoFocus,
   icon,
   prefix,
@@ -126,6 +128,8 @@ export const Field = ({
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
   const hasVisualLabel = 'label' in restProps;
+  const showSecondaryIcon =
+    alwaysShowSecondaryIcon || (secondaryIcon && hasValue);
 
   const overlays = (
     <Fragment>
@@ -151,6 +155,7 @@ export const Field = ({
           id={labelId}
           htmlFor={id}
           label={'label' in restProps ? restProps.label : undefined}
+          disabled={disabled}
           secondaryLabel={
             'secondaryLabel' in restProps ? restProps.secondaryLabel : undefined
           }
@@ -169,7 +174,7 @@ export const Field = ({
         background={fieldBackground}
         borderRadius="standard"
         display="flex"
-        className={secondaryIcon ? styles.secondaryIconSpace : undefined}
+        className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
       >
         {children(
           overlays,
@@ -179,7 +184,7 @@ export const Field = ({
             background: fieldBackground,
             width: 'full',
             paddingLeft: fieldPadding,
-            paddingRight: secondaryIcon ? undefined : fieldPadding,
+            paddingRight: showSecondaryIcon ? undefined : fieldPadding,
             borderRadius: 'standard',
             outline: 'none',
             'aria-describedby': mergeIds(
@@ -203,7 +208,7 @@ export const Field = ({
               styles.placeholderColor,
               useText({
                 backgroundContext: fieldBackground,
-                tone: hasValue ? 'neutral' : 'secondary',
+                tone: hasValue && !disabled ? 'neutral' : 'secondary',
                 size: 'standard',
                 baseline: false,
               }),
@@ -230,6 +235,7 @@ export const Field = ({
           ) : null,
           secondaryIcon ? (
             <Box
+              component="span"
               position="absolute"
               width="touchable"
               height="touchable"

@@ -2809,6 +2809,7 @@ Object {
     data?: DataAttributeMap
     description?: ReactNode
     descriptionId?: string
+    disabled?: boolean
     htmlFor: 
         | false
         | string

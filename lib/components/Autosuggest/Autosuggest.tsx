@@ -499,7 +499,7 @@ export const Autosuggest = forwardRef(function <Value>(
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
     type: type === 'search' ? type : 'text',
-    placeholder,
+    placeholder: !restProps.disabled ? placeholder : undefined,
     onChange: (e: ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
 
@@ -590,6 +590,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
   const clearable = Boolean(
     typeof onClear !== 'undefined' &&
+      !restProps.disabled &&
       typeof value !== 'undefined' &&
       value.text.length > 0,
   );

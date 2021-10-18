@@ -10,7 +10,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Card>
+      <Card rounded>
         <Placeholder label="This content is inside a card" height={60} />
       </Card>,
     ),

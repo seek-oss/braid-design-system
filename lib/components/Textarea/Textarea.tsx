@@ -176,7 +176,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                       updateScroll(event.currentTarget.scrollTop)
                   : undefined
               }
-              placeholder={placeholder}
+              placeholder={!restProps.disabled ? placeholder : undefined}
               className={[styles.field, className]}
               {...fieldProps}
               ref={ref}

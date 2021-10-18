@@ -8,7 +8,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Card>
+      <Card rounded>
         <Inline space="medium" align="center">
           <Inline space="medium" collapseBelow="desktop" align="center">
             <Badge tone="positive">Positive</Badge>

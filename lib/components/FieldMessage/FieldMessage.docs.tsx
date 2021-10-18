@@ -1,16 +1,7 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import {
-  FieldMessage,
-  Alert,
-  Text,
-  Strong,
-  List,
-  TextLink,
-  Stack,
-  Box,
-} from '../';
+import { FieldMessage, Alert, Text, Strong, Stack, Box } from '../';
 import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
@@ -59,18 +50,10 @@ const docs: ComponentDocs = {
       prop.
     </Text>
   ),
-  alternatives: [],
-  additional: [
+  alternatives: [
     {
-      label: 'See also',
-      description: (
-        <List space="large">
-          <Text tone="secondary">
-            <TextLink href="/components/FieldLabel">FieldLabel</TextLink>{' '}
-            &mdash; For displaying labels above a custom field.
-          </Text>
-        </List>
-      ),
+      name: 'FieldLabel',
+      description: 'For displaying labels above a custom field',
     },
   ],
 };

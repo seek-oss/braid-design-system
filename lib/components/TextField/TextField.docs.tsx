@@ -150,13 +150,13 @@ const docs: ComponentDocs = {
         </Text>
       ),
       background: 'card',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ id, setState }) =>
         source(
           <TextField
             label="Label"
             id={id}
             onChange={setState('textfield')}
-            value={getState('textfield')}
+            value="Text in disabled field"
             disabled={true}
           />,
         ),
