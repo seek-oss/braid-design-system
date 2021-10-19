@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { CheckboxStandalone } from '../';
+import { CheckboxStandalone, Stack } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -59,13 +59,22 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Disabled',
       Example: ({ id, handler }) => (
-        <CheckboxStandalone
-          id={id}
-          disabled={true}
-          checked={false}
-          onChange={handler}
-          aria-label="Label"
-        />
+        <Stack space="gutter">
+          <CheckboxStandalone
+            id={id}
+            disabled={true}
+            checked={false}
+            onChange={handler}
+            aria-label="Disabled unchecked"
+          />
+          <CheckboxStandalone
+            id={id}
+            disabled={true}
+            checked={true}
+            onChange={handler}
+            aria-label="Disabled checked"
+          />
+        </Stack>
       ),
     },
     {

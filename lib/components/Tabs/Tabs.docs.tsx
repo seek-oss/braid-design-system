@@ -22,7 +22,7 @@ const docs: ComponentDocs = {
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   Example: ({ id }) =>
     source(
-      <Card>
+      <Card rounded>
         <TabsProvider id={id}>
           <Stack space="medium">
             <Tabs label="Test tabs">

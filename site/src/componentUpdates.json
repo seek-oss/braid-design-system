@@ -1959,5 +1959,48 @@
         "summary": "**Buttons, Fields, TextLinks, Toggle:** Use `span` for field state overlays instead of `div`\n\nProduce more valid HTML as `div` elements are not as flexible with which elements they can be inside (from a validators perspective)."
       }
     ]
+  },
+  {
+    "version": "30.5.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "**Autosuggest, Dropdown, MonthPicker, PasswordField, TextField, Textarea:** Hide `placeholder` text when field is `disabled`"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dropdown",
+          "MonthPicker",
+          "TextField",
+          "Textarea",
+          "Radio",
+          "RadioGroup"
+        ],
+        "summary": "**Autosuggest, Checkbox, CheckboxStandalone, Dropdown, MonthPicker, TextField, Textarea, Radio, RadioGroup:** Dim the field value and label when field is `disabled`"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "TextField"
+        ],
+        "summary": "**Autosuggest, TextField:** Hide clear button when field is `disabled`."
+      },
+      {
+        "updated": [
+          "FieldLabel"
+        ],
+        "summary": "**FieldLabel:** Dim label when `disabled`"
+      }
+    ]
   }
 ]

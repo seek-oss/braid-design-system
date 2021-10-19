@@ -50,5 +50,18 @@ export const screenshots: ComponentScreenshot = {
         />
       ),
     },
+    {
+      label: 'Field Label when disabled',
+      Container,
+      Example: ({ id }) => (
+        <FieldLabel
+          htmlFor={id}
+          label="Title"
+          disabled={true}
+          secondaryLabel="Optional"
+          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
+        />
+      ),
+    },
   ],
 };
