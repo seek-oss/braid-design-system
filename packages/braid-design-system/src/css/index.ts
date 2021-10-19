@@ -1,5 +1,6 @@
-import { vars as internalVars } from '../themes/vars.css';
-import { atoms as internalAtoms, Atoms } from '../css/atoms/atoms';
+import { vars as internalVars } from '../themes';
+import type { Atoms } from '../css/atoms/atoms';
+import { atoms as internalAtoms } from '../css/atoms/atoms';
 import { responsiveStyle } from '../css/responsiveStyle';
 import { breakpoints } from '../css/breakpoints';
 import { globalHeadingStyle, globalTextStyle } from '../hooks/typography';

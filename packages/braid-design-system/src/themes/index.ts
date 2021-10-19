@@ -9,3 +9,5 @@ export { default as catho } from './catho';
 export { default as occ } from './occ';
 export { default as wireframe } from './wireframe';
 export { default as docs } from './docs';
+
+export { vars } from './vars.css';
