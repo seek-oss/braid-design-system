@@ -144,6 +144,7 @@ export const StyledInput = forwardRef<
 
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
+    const accentBackground = disabled ? 'neutralLight' : 'formAccent';
     const showFieldBorder =
       useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
@@ -219,7 +220,7 @@ export const StyledInput = forwardRef<
           />
           <FieldOverlay
             variant={tone === 'critical' && isCheckbox ? tone : undefined}
-            background={isCheckbox && !disabled ? 'formAccent' : undefined}
+            background={isCheckbox ? accentBackground : undefined}
             borderRadius={fieldBorderRadius}
             className={styles.selected}
           >
