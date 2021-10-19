@@ -41,7 +41,10 @@ const svgrConfig = {
 };
 
 const baseDir = path.join(__dirname, '..');
-const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
+const iconComponentsDir = path.join(
+  baseDir,
+  'packages/braid-design-system/src/components/icons',
+);
 
 (async () => {
   // First clean up any existing SVG components
@@ -149,7 +152,8 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
         dedent`
           import React from 'react';
           import { Box } from '../../Box/Box';
-          import useIcon, { UseIconProps } from '../../../hooks/useIcon';
+          import type { UseIconProps } from '../../../hooks/useIcon';
+          import useIcon from '../../../hooks/useIcon';
           import { ${svgComponentName} } from './${svgComponentName}';
 
           export type ${iconName}Props = UseIconProps;
