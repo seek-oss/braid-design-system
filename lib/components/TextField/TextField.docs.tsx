@@ -149,13 +149,14 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      background: 'surface',
+      Example: ({ id, setState }) =>
         source(
           <TextField
             label="Label"
             id={id}
             onChange={setState('textfield')}
-            value={getState('textfield')}
+            value="Text in disabled field"
             disabled={true}
           />,
         ),

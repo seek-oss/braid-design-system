@@ -58,6 +58,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     const clearable = Boolean(
       typeof onClear !== 'undefined' &&
+        !restProps.disabled &&
         typeof value === 'string' &&
         value.length > 0,
     );
@@ -96,7 +97,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
               onChange={onChange}
               onFocus={onFocus}
               onBlur={onBlur}
-              placeholder={placeholder}
+              placeholder={!restProps.disabled ? placeholder : undefined}
               {...fieldProps}
               ref={inputRef}
             />

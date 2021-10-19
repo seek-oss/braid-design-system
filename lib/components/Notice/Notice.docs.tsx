@@ -8,7 +8,7 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Card>
+      <Card rounded>
         <Stack space="medium">
           <Notice tone="promote">
             <Text>This is a promoted message.</Text>

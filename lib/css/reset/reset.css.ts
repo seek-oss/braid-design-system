@@ -59,6 +59,9 @@ const mark = style({
 const select = style([
   field,
   style({
+    ':disabled': {
+      opacity: 1,
+    },
     selectors: {
       '&::-ms-expand': {
         display: 'none',
