@@ -1,16 +1,14 @@
-import React, { createContext, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import React, { createContext } from 'react';
 import { Box } from '../Box/Box';
-import { ColumnProps } from '../Column/Column';
-import { Space, ResponsiveSpace } from '../../css/atoms/atoms';
+import type { ColumnProps } from '../Column/Column';
+import type { Space, ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMarginLeft } from '../../css/negativeMargin/negativeMargin';
-import {
-  resolveCollapsibleAlignmentProps,
-  CollapsibleAlignmentProps,
-} from '../../utils/collapsibleAlignmentProps';
+import type { CollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
+import { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
 import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 type CollapsibleAlignmentChildProps = ReturnType<
   typeof resolveCollapsibleAlignmentProps

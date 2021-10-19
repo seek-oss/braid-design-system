@@ -1,12 +1,13 @@
 import React from 'react';
-import { Optional } from 'utility-types';
-import { useFallbackState, StateProp } from '../../playroom/playroomState';
+import type { Optional } from 'utility-types';
+import type { StateProp } from '../../playroom/playroomState';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import {
-  PasswordField as BraidPasswordField,
+import type {
   PasswordFieldBaseProps,
   PasswordFieldLabelProps,
 } from './PasswordField';
+import { PasswordField as BraidPasswordField } from './PasswordField';
 
 type PlayroomPasswordFieldProps = StateProp &
   Optional<PasswordFieldBaseProps, 'id' | 'value' | 'onChange'> &

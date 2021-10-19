@@ -1,14 +1,9 @@
-import React, {
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-} from 'react';
+import type { ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
 
 import * as themes from '../../../../lib/themes';
-import { BraidTheme } from '../../../../lib/themes/BraidTheme';
+import type { BraidTheme } from '../../../../lib/themes/BraidTheme';
 type ThemeKey = keyof typeof themes;
 
 const defaultTheme = 'apac' as const;

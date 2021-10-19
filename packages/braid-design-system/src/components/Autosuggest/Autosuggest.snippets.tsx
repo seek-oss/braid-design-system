@@ -1,6 +1,6 @@
 import React from 'react';
 import { Autosuggest, IconLocation } from '../../playroom/components';
-import { Snippets } from '../private/Snippets';
+import type { Snippets } from '../private/Snippets';
 import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [

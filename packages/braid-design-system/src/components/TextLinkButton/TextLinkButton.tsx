@@ -1,18 +1,10 @@
-import React, {
-  useRef,
-  useCallback,
-  AllHTMLAttributes,
-  ReactNode,
-  KeyboardEvent,
-} from 'react';
+import type { AllHTMLAttributes, ReactNode, KeyboardEvent } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Box } from '../Box/Box';
-import {
-  PrivateTextLinkRenderer,
-  PrivateTextLinkRendererProps,
-} from '../TextLinkRenderer/TextLinkRenderer';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { PrivateTextLinkRendererProps } from '../TextLinkRenderer/TextLinkRenderer';
+import { PrivateTextLinkRenderer } from '../TextLinkRenderer/TextLinkRenderer';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps

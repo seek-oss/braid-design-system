@@ -1,6 +1,6 @@
 import { darken, rgba } from 'polished';
 import { palette } from '../../color/palette';
-import { BraidTokens } from '../tokenType';
+import type { BraidTokens } from '../tokenType';
 
 const brandAccent = palette.grey['900'];
 const formAccent = palette.indigo['600'];

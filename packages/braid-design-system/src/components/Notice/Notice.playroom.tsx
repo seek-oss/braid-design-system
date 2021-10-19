@@ -1,5 +1,6 @@
 import React from 'react';
-import { Notice as BraidNotice, NoticeProps } from './Notice';
+import type { NoticeProps } from './Notice';
+import { Notice as BraidNotice } from './Notice';
 
 export const Notice = ({ tone, ...restProps }: NoticeProps) => (
   <BraidNotice

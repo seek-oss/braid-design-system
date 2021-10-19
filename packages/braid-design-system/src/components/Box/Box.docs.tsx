@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import type { ComponentDocs } from '../../../site/src/types';
 import {
   Box,
   Text,
@@ -14,14 +14,16 @@ import {
 } from '../';
 import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
-import { BoxProps } from './Box';
+import type { BoxProps } from './Box';
+import type {
+  UnresponsiveProperties,
+  ResponsiveProperties,
+  PseudoProperties,
+} from '../../css/atoms/atomicProperties';
 import {
   responsiveProperties,
   unresponsiveProperties,
   pseudoProperties,
-  UnresponsiveProperties,
-  ResponsiveProperties,
-  PseudoProperties,
 } from '../../css/atoms/atomicProperties';
 
 type BackgroundDocs = Required<

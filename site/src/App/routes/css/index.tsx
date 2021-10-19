@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteProps } from 'react-router';
+import type { RouteProps } from 'react-router';
 import { CssDoc } from '../../CssDoc/CssDoc';
 import { getCssDoc } from '../../navigationHelpers';
 

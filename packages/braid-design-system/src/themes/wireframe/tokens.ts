@@ -1,6 +1,6 @@
 import { darken, lighten, mix, tint } from 'polished';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
-import { BraidTokens } from '../tokenType';
+import type { BraidTokens } from '../tokenType';
 
 const formAccent = '#404040';
 const critical = '#ef3e4a';

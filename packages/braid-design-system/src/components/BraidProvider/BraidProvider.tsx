@@ -1,15 +1,13 @@
 import assert from 'assert';
 import dedent from 'dedent';
-import React, {
-  createContext,
-  useContext,
+import type {
   ReactNode,
   AnchorHTMLAttributes,
-  forwardRef,
   ForwardRefRenderFunction,
   ComponentType,
   Ref,
 } from 'react';
+import React, { createContext, useContext, forwardRef } from 'react';
 import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../css/reset/resetTracker';
 import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';

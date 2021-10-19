@@ -1,24 +1,27 @@
-import React, { Children, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { Divider, DividerProps } from '../Divider/Divider';
-import { Hidden, HiddenProps } from '../Hidden/Hidden';
+import type { DividerProps } from '../Divider/Divider';
+import { Divider } from '../Divider/Divider';
+import type { HiddenProps } from '../Hidden/Hidden';
+import { Hidden } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
-import { alignToFlexAlign, Align } from '../../utils/align';
+import type { Align } from '../../utils/align';
+import { alignToFlexAlign } from '../../utils/align';
 import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
 import {
-  OptionalResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
 } from '../../css/atoms/sprinkles.css';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 const alignToDisplay = {
   left: 'block',

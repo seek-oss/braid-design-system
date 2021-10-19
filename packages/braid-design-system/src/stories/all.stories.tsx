@@ -1,10 +1,14 @@
-import React, { ReactNode, Fragment } from 'react';
+import type { ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import { storiesOf } from 'sku/@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
 import '../../reset';
 import * as themes from '../themes';
-import { ComponentExample, ComponentScreenshot } from '../../site/src/types';
+import type {
+  ComponentExample,
+  ComponentScreenshot,
+} from '../../site/src/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
 import { useSourceFromExample } from '../utils/useSourceFromExample';
 import { BraidProvider, ToastProvider, Box } from '../components';

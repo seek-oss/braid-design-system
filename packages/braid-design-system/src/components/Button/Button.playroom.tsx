@@ -3,7 +3,8 @@ import {
   buttonVariants,
   buttonWeights,
 } from '../ButtonRenderer/ButtonRenderer';
-import { Button as BraidButton, ButtonProps } from './Button';
+import type { ButtonProps } from './Button';
+import { Button as BraidButton } from './Button';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant, weight, ...restProps }, ref) => {

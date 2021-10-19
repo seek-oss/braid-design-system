@@ -1,4 +1,4 @@
-import { Style } from 'sku/treat';
+import type { Style } from 'sku/treat';
 
 type SelectorMap = Style['selectors'];
 

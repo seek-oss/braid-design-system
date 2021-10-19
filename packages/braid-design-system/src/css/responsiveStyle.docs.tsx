@@ -4,7 +4,7 @@ import { responsiveStyle, vars, breakpoints } from '.';
 import { Notice, Strong, Text, TextLink } from '../components';
 import source from '../utils/source.macro';
 import Code from '../../site/src/App/Code/Code';
-import { CssDoc } from '../../site/src/types';
+import type { CssDoc } from '../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints);

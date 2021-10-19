@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
-import React, { MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider, TextLinkButton, Text, Actions } from '..';

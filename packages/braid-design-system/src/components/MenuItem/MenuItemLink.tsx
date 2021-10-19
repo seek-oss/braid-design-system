@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, LinkProps } from '../Link/Link';
+import type { LinkProps } from '../Link/Link';
+import { Link } from '../Link/Link';
 import { useMenuItem } from './useMenuItem';
-import { MenuItemProps } from './MenuItem';
+import type { MenuItemProps } from './MenuItem';
 
 export interface MenuItemLinkProps
   extends MenuItemProps,

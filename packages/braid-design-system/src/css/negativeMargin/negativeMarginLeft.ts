@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { RequiredResponsiveValue } from '../atoms/sprinkles.css';
-import { Space } from '../atoms/atoms';
+import type { RequiredResponsiveValue } from '../atoms/sprinkles.css';
+import type { Space } from '../atoms/atoms';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './negativeMarginLeft.css';
 

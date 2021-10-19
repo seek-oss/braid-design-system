@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from '../../../site/src/types';
+import type { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Dialog, Button, Inline, Stack } from '../';
 import { Placeholder } from '../../playroom/components';

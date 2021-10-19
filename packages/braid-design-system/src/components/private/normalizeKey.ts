@@ -1,4 +1,4 @@
-import { KeyboardEvent } from 'react';
+import type { KeyboardEvent } from 'react';
 
 // Normalizes the 'key' property of a KeyboardEvent in IE/Edge
 export function normalizeKey({ key, keyCode }: KeyboardEvent) {

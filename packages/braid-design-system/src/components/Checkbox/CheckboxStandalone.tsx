@@ -1,10 +1,8 @@
 import React, { forwardRef } from 'react';
 import { Box } from '../Box/Box';
-import {
-  StyledInput,
-  StyledInputProps,
-} from '../private/InlineField/StyledInput';
-import { CheckboxProps } from './Checkbox';
+import type { StyledInputProps } from '../private/InlineField/StyledInput';
+import { StyledInput } from '../private/InlineField/StyledInput';
+import type { CheckboxProps } from './Checkbox';
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 
 type LabelStyle =

@@ -2,15 +2,15 @@ import { useContext } from 'react';
 import assert from 'assert';
 import clsx from 'clsx';
 
-import { OptionalTitle } from '../../components/icons/SVGTypes';
-import { BoxProps } from '../../components/Box/Box';
+import type { OptionalTitle } from '../../components/icons/SVGTypes';
+import type { BoxProps } from '../../components/Box/Box';
 import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import { textSize, useTextTone, UseTextProps } from '../typography';
+import type { UseTextProps } from '../typography';
+import { textSize, useTextTone } from '../typography';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../../components/private/buildDataAttributes';
+import type { DataAttributeMap } from '../../components/private/buildDataAttributes';
+import buildDataAttributes from '../../components/private/buildDataAttributes';
 import * as styles from './icon.css';
 
 type IconSize = NonNullable<UseTextProps['size']> | 'fill';

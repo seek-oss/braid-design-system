@@ -3,9 +3,8 @@ import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 type AllOrNone<T> = T | { [K in keyof T]?: never };
 

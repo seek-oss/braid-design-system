@@ -1,11 +1,11 @@
 import React, { forwardRef, Children } from 'react';
 import assert from 'assert';
-import { Box, BoxProps } from '../Box/Box';
+import type { BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import * as styles from './Badge.css';
 
 const validTones = [

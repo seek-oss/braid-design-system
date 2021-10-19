@@ -1,5 +1,6 @@
 import React from 'react';
-import { MenuRenderer, MenuRendererProps } from '../MenuRenderer/MenuRenderer';
+import type { MenuRendererProps } from '../MenuRenderer/MenuRenderer';
+import { MenuRenderer } from '../MenuRenderer/MenuRenderer';
 import { OverflowButton } from '../iconButtons/OverflowButton/OverflowButton';
 import { Box } from '../Box/Box';
 import * as styles from './OverflowMenu.css';

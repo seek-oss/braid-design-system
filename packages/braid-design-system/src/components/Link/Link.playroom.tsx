@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
-import { Link as CustomLink, LinkProps } from './Link';
+import type { LinkProps } from './Link';
+import { Link as CustomLink } from './Link';
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ href, onClick, ...restProps }, ref) => (

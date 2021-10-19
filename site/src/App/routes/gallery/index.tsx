@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { parseToHsl, setLightness } from 'polished';
 
-import { Page } from '../../../types';
+import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import { Box } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Rating } from '../';
 import { backgrounds } from '../../utils/docsHelpers';
 

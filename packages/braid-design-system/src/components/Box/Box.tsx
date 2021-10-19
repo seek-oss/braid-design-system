@@ -1,15 +1,11 @@
-import clsx, { ClassValue } from 'clsx';
-import {
-  createElement,
-  forwardRef,
-  useContext,
-  AllHTMLAttributes,
-  ElementType,
-  useEffect,
-} from 'react';
+import type { ClassValue } from 'clsx';
+import clsx from 'clsx';
+import type { AllHTMLAttributes, ElementType } from 'react';
+import { createElement, forwardRef, useContext, useEffect } from 'react';
 import dedent from 'dedent';
 import { base as baseReset } from '../../css/reset/reset.css';
-import { atoms, Atoms } from '../../css/atoms/atoms';
+import type { Atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
 import { sprinkles } from '../../css/atoms/sprinkles.css';
 import { renderBackgroundProvider } from './BackgroundContext';
 import TextLinkRendererContext from '../TextLinkRenderer/TextLinkRendererContext';

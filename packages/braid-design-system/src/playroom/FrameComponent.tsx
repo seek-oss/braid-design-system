@@ -1,5 +1,6 @@
 import '../../reset';
-import React, { Fragment, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import {
   BraidProvider,
   makeLinkComponent,

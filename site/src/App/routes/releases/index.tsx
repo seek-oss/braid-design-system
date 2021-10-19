@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 // @ts-expect-error
 import changelogContent from '../../../../../CHANGELOG.md';
 
-import { Page } from '../../../types';
+import type { Page } from '../../../types';
 import { Markdown } from '../../Markdown/Markdown';
 import { PageTitle } from '../../Seo/PageTitle';
 

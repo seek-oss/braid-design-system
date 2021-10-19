@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { IconCritical, IconPositive } from '../icons';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 export const tones = ['neutral', 'critical', 'positive'] as const;
 type FieldTone = typeof tones[number];

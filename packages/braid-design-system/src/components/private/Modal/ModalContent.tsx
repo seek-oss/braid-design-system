@@ -1,24 +1,20 @@
-import React, {
-  ReactNode,
-  useRef,
-  forwardRef,
-  Fragment,
-  KeyboardEvent,
-  Ref,
-} from 'react';
+import type { ReactNode, KeyboardEvent, Ref } from 'react';
+import React, { useRef, forwardRef, Fragment } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
-import { Box, BoxProps } from '../../Box/Box';
+import type { BoxProps } from '../../Box/Box';
+import { Box } from '../../Box/Box';
 import { normalizeKey } from '../normalizeKey';
 import { Heading } from '../../Heading/Heading';
 import { Stack } from '../../Stack/Stack';
 import { Columns } from '../../Columns/Columns';
 import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
-import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
 import { negativeMarginTop } from '../../../css/negativeMargin/negativeMargin';
 import { virtualTouchable } from '../touchable/virtualTouchable';
-import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
+import type { DataAttributeMap } from '../buildDataAttributes';
+import buildDataAttributes from '../buildDataAttributes';
 import * as styles from './Modal.css';
 
 export interface ModalContentProps {

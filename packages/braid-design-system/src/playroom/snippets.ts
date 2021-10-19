@@ -1,5 +1,5 @@
 import { flatten } from 'lodash';
-import { BraidSnippet } from '../components/private/Snippets';
+import type { BraidSnippet } from '../components/private/Snippets';
 
 const req = require.context('../components', true, /\.snippets\.tsx?$/);
 export default flatten(

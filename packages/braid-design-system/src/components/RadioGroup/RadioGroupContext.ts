@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { RadioGroupProps } from './RadioGroup';
+import type { RadioGroupProps } from './RadioGroup';
 
 interface RadioGroupContextValues {
   id: RadioGroupProps['id'];

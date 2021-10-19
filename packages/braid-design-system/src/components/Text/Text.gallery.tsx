@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text, Stack } from '../';
-import { ComponentExample } from '../../../site/src/types';
+import type { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [

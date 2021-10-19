@@ -1,8 +1,8 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
 import * as css from '../../../css';
-import { BraidSnippet } from '../../../lib/components/private/Snippets';
-import { ComponentDocs, ComponentExample, CssDoc } from '../types';
+import type { BraidSnippet } from '../../../lib/components/private/Snippets';
+import type { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(

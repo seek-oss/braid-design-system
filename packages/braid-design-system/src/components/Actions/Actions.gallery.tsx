@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentExample } from '../../../site/src/types';
+import type { ComponentExample } from '../../../site/src/types';
 import { Actions, Button, IconDelete } from '../';
 
 export const galleryItems: ComponentExample[] = [

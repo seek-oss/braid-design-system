@@ -1,10 +1,9 @@
 import assert from 'assert';
+import type { ReactNode, ReactElement } from 'react';
 import React, {
   useState,
   cloneElement,
   Children,
-  ReactNode,
-  ReactElement,
   createContext,
   useContext,
 } from 'react';
@@ -13,7 +12,7 @@ import {
   negativeMarginTop,
   negativeMarginLeft,
 } from '../../../../../lib/css/negativeMargin/negativeMargin';
-import { BadgeProps } from '../../../../../lib/components/Badge/Badge';
+import type { BadgeProps } from '../../../../../lib/components/Badge/Badge';
 import { Box, Divider, Link, Text } from '../../../../../lib/components';
 import * as styles from './Navigation.css';
 

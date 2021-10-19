@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Button, IconNewWindow, Stack, Text } from '../../components';
 import { Actions } from './Actions';
 import { TextLink } from '../TextLink/TextLink';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { Stack, Text, Box } from '../';
 import { TooltipRenderer, StaticTooltipProvider } from './TooltipRenderer';
 

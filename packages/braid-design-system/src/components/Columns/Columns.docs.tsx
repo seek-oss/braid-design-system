@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import type { ComponentDocs } from '../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Columns, Column, Strong, Text, Stack } from '../';
 import source from '../../utils/source.macro';

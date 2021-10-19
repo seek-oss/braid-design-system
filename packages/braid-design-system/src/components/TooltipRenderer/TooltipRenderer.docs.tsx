@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import type { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import {
   TooltipRenderer,
@@ -12,10 +12,10 @@ import {
   Strong,
   Button,
 } from '..';
+import type { TooltipRendererProps } from './TooltipRenderer';
 import {
   StaticTooltipProvider,
   TooltipTextDefaultsProvider,
-  TooltipRendererProps,
 } from './TooltipRenderer';
 import { constants } from './TooltipRenderer.css';
 

@@ -1,7 +1,9 @@
-import { ReactElement } from 'react';
-import clsx, { ClassValue } from 'clsx';
+import type { ReactElement } from 'react';
+import type { ClassValue } from 'clsx';
+import clsx from 'clsx';
 import { renderBackgroundProvider } from './BackgroundContext';
-import { atoms, Atoms } from '../../css/atoms/atoms';
+import type { Atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
 
 export interface BoxRendererProps extends Omit<Atoms, 'reset'> {
   component?: Atoms['reset'];

@@ -1,7 +1,9 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { createContext, useContext } from 'react';
 import assert from 'assert';
 import dedent from 'dedent';
-import { List, ListProps } from '../List/List';
+import type { ListProps } from '../List/List';
+import { List } from '../List/List';
 import { Text } from '../Text/Text';
 
 const BulletListContext = createContext(false);

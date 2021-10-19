@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Optional } from 'utility-types';
+import type { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
+import type { TextDropdownProps } from './TextDropdown';
 import {
   TextDropdown as BraidTextDropdown,
-  TextDropdownProps,
   parseSimpleToComplexOption,
 } from './TextDropdown';
 

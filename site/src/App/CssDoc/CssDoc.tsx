@@ -9,7 +9,7 @@ import {
   Box,
   Inline,
 } from '../../../../lib/components';
-import { CssDoc as CssDocType } from '../../types';
+import type { CssDoc as CssDocType } from '../../types';
 import {
   Navigation,
   NavigationItem,

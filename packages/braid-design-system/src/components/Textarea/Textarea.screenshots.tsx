@@ -1,5 +1,6 @@
-import React, { ReactNode, useState } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ReactNode } from 'react';
+import React, { useState } from 'react';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { Textarea, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

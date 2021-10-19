@@ -5,7 +5,7 @@ import { HeadProvider } from 'react-head';
 // @ts-ignore
 import ScrollMemory from 'react-router-scroll-memory';
 import { App } from './App/App';
-import { RenderContext } from './types';
+import type { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import { initUpdates } from './App/Updates';
 

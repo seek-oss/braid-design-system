@@ -1,23 +1,19 @@
 import assert from 'assert';
 import clsx from 'clsx';
 import dedent from 'dedent';
-import React, {
-  createContext,
-  useContext,
-  useMemo,
-  Fragment,
-  ReactNode,
-  CSSProperties,
-  ComponentType,
-} from 'react';
-import { Atoms, atoms } from '../../css/atoms/atoms';
+import type { ReactNode, CSSProperties, ComponentType } from 'react';
+import React, { createContext, useContext, useMemo, Fragment } from 'react';
+import type { Atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
+import type { BackgroundVariant } from '../Box/BackgroundContext';
 import {
   BackgroundProvider,
-  BackgroundVariant,
   useBackgroundLightness,
 } from '../Box/BackgroundContext';
-import { Box, BoxProps } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
+import type { BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { touchableText } from '../../hooks/typography';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';

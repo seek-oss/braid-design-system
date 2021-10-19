@@ -24,7 +24,7 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
 import tokens from '../../../../../../lib/themes/wireframe/tokens';
-import { Page } from '../../../../types';
+import type { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';

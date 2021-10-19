@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { AccordionItem, Accordion, Text } from '../../components';
 import { Placeholder } from '../../playroom/components';
 

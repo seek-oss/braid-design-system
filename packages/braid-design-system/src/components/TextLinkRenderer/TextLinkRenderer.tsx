@@ -1,4 +1,5 @@
-import React, { CSSProperties, useContext, ReactElement } from 'react';
+import type { CSSProperties, ReactElement } from 'react';
+import React, { useContext } from 'react';
 import dedent from 'dedent';
 import assert from 'assert';
 import clsx from 'clsx';
@@ -7,7 +8,8 @@ import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import ActionsContext from '../Actions/ActionsContext';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { atoms, Atoms } from '../../css/atoms/atoms';
+import type { Atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
 import {
   useTextTone,
@@ -17,7 +19,7 @@ import {
 } from '../../hooks/typography';
 import { useBackground } from '../Box/BackgroundContext';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
+import type { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
 import * as styles from './TextLinkRenderer.css';
 
 interface StyleProps {

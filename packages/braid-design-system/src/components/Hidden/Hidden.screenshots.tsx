@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
 import { Box } from '../Box/Box';

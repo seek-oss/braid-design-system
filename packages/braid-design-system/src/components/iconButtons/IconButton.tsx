@@ -1,16 +1,11 @@
-import React, {
-  useCallback,
-  AllHTMLAttributes,
-  ReactNode,
-  MouseEvent,
-  forwardRef,
-} from 'react';
+import type { AllHTMLAttributes, ReactNode, MouseEvent } from 'react';
+import React, { useCallback, forwardRef } from 'react';
 import { Box } from '../Box/Box';
 import { Overlay } from '../private/Overlay/Overlay';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
-import { iconSize, iconContainerSize, UseIconProps } from '../../hooks/useIcon';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
+import type { UseIconProps } from '../../hooks/useIcon';
+import { iconSize, iconContainerSize } from '../../hooks/useIcon';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   useBackground,

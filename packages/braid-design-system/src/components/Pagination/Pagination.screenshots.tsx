@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { Pagination } from '../';
-import { LinkProps } from '../Link/Link';
+import type { LinkProps } from '../Link/Link';
 import { maxPages } from './paginate';
 
 const linkProps = (): LinkProps => ({ href: '#' });

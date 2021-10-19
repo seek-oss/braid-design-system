@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
+import type { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
 
 interface ActionsContextValue
   extends Pick<PrivateButtonRendererProps, 'size'> {}

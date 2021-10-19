@@ -1,5 +1,6 @@
 import React from 'react';
-import { Columns as BraidColumns, ColumnsProps } from './Columns';
+import type { ColumnsProps } from './Columns';
+import { Columns as BraidColumns } from './Columns';
 
 export const Columns = ({
   space,

@@ -6,7 +6,7 @@ import {
   AccordionItem,
   Placeholder,
 } from '../../playroom/components';
-import { ComponentExample } from '../../../site/src/types';
+import type { ComponentExample } from '../../../site/src/types';
 
 export const galleryItems: ComponentExample[] = [
   {

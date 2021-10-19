@@ -1,5 +1,7 @@
-import React, { ReactNode } from 'react';
-import { Box, BoxProps } from '../Box/Box';
+import type { ReactNode } from 'react';
+import React from 'react';
+import type { BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import {
   IconInfo,
   IconCritical,
@@ -7,16 +9,15 @@ import {
   IconPromote,
   IconCaution,
 } from '../icons';
-import { AllOrNone } from '../private/AllOrNone';
+import type { AllOrNone } from '../private/AllOrNone';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
 import { useBackground } from '../Box/BackgroundContext';
 import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 

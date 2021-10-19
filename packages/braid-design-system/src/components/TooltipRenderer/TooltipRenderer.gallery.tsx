@@ -1,9 +1,10 @@
 import React from 'react';
-import { ComponentExample } from '../../../site/src/types';
+import type { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
-import { TooltipContent, TooltipRendererProps } from './TooltipRenderer';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { TooltipRendererProps } from './TooltipRenderer';
+import { TooltipContent } from './TooltipRenderer';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { constants } from './TooltipRenderer.css';
 import { calc } from '@vanilla-extract/css-utils';
 

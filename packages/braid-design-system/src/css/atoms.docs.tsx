@@ -1,14 +1,17 @@
 import dedent from 'dedent';
 import React from 'react';
-import {
-  responsiveProperties,
+import type {
   ResponsiveProperties,
-  pseudoProperties,
   PseudoProperties,
-  unresponsiveProperties,
   UnresponsiveProperties,
 } from '../css/atoms/atomicProperties';
-import { Atoms, atoms } from '../css/atoms/atoms';
+import {
+  responsiveProperties,
+  pseudoProperties,
+  unresponsiveProperties,
+} from '../css/atoms/atomicProperties';
+import type { Atoms } from '../css/atoms/atoms';
+import { atoms } from '../css/atoms/atoms';
 import {
   Box,
   Stack,
@@ -24,7 +27,7 @@ import {
 import source from '../utils/source.macro';
 import Code from '../../site/src/App/Code/Code';
 import { ThemedExample } from '../../site/src/App/ThemeSetting';
-import { CssDoc } from '../../site/src/types';
+import type { CssDoc } from '../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 type BoxShadowDocs = Required<Record<NonNullable<Atoms['boxShadow']>, string>>;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from '../../../site/src/types';
+import type { ComponentExample } from '../../../site/src/types';
 import {
   OverflowMenu,
   MenuItemDivider,

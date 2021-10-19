@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import type { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Badge, Card, Inline, Heading, Text, TextLink, Strong } from '../';
 

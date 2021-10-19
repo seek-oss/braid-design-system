@@ -1,15 +1,10 @@
 import React, { forwardRef } from 'react';
-import {
-  PrivateTextLinkRenderer,
-  PrivateTextLinkRendererProps,
-} from '../TextLinkRenderer/TextLinkRenderer';
-import {
-  useLinkComponent,
-  LinkComponentProps,
-} from '../BraidProvider/BraidProvider';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { PrivateTextLinkRendererProps } from '../TextLinkRenderer/TextLinkRenderer';
+import { PrivateTextLinkRenderer } from '../TextLinkRenderer/TextLinkRenderer';
+import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
+import { useLinkComponent } from '../BraidProvider/BraidProvider';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 export interface TextLinkProps
   extends Omit<PrivateTextLinkRendererProps, 'reset' | 'children'>,

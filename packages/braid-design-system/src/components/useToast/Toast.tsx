@@ -11,7 +11,7 @@ import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
-import { InternalToast, ToastAction } from './ToastTypes';
+import type { InternalToast, ToastAction } from './ToastTypes';
 import * as styles from './Toast.css';
 
 const toneToIcon = {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Tiles as BraidTiles, TilesProps } from './Tiles';
+import type { TilesProps } from './Tiles';
+import { Tiles as BraidTiles } from './Tiles';
 
 export const Tiles = ({ space, columns, ...restProps }: TilesProps) => (
   <BraidTiles

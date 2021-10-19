@@ -4,7 +4,7 @@ import { Alert, Stack, Strong, Text, TextLink } from '../components';
 import { globalHeadingStyle } from '../hooks/typography';
 import source from '../utils/source.macro';
 import Code from '../../site/src/App/Code/Code';
-import { CssDoc } from '../../site/src/types';
+import type { CssDoc } from '../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const docs: CssDoc = {

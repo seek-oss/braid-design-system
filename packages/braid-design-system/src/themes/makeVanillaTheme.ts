@@ -1,7 +1,8 @@
 import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
 import { precomputeValues } from '@capsizecss/vanilla-extract';
-import { FontMetrics, getCapHeight } from '@capsizecss/core';
+import type { FontMetrics } from '@capsizecss/core';
+import { getCapHeight } from '@capsizecss/core';
 
 import type { BraidTokens, TextDefinition } from './tokenType';
 import { breakpoints } from '../css/breakpoints';

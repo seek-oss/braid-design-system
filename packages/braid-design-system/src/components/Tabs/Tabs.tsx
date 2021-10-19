@@ -11,15 +11,15 @@ import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
 import { Tab } from './Tab';
 import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { TabListContext, TabListContextValues } from './TabListContext';
+import type { TabListContextValues } from './TabListContext';
+import { TabListContext } from './TabListContext';
 import * as styles from './Tabs.css';
 
 export interface TabsProps {

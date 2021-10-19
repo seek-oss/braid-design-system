@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
-import { RouteProps } from 'react-router';
-import { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
-import { Source } from '../../lib/utils/source.macro';
-import { BoxProps } from '../../lib/components/Box/Box';
-import useScope from '../../lib/playroom/useScope';
+import type { ReactNode } from 'react';
+import type { RouteProps } from 'react-router';
+import type { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
+import type { Source } from '../../lib/utils/source.macro';
+import type { BoxProps } from '../../lib/components/Box/Box';
+import type useScope from '../../lib/playroom/useScope';
 
 export interface AppConfig {
   playroomUrl: string;

@@ -1,12 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
-import {
-  render,
-  cleanup,
-  fireEvent,
-  RenderResult,
-  act,
-} from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import genericUserEvent from '@testing-library/user-event';
 import {
   BraidTestProvider,
@@ -15,7 +10,7 @@ import {
   MenuItemCheckbox,
   MenuItemDivider,
 } from '..';
-import { MenuRendererProps } from './MenuRenderer';
+import type { MenuRendererProps } from './MenuRenderer';
 
 // The generic `user-event` library currently doesn't have knowledge
 // of the react lifecycle, e.g. it's methods are not wrapped with

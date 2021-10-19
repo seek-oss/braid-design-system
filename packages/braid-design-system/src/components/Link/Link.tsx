@@ -1,10 +1,9 @@
-import clsx, { ClassValue } from 'clsx';
+import type { ClassValue } from 'clsx';
+import clsx from 'clsx';
 import React, { forwardRef } from 'react';
 import { atoms } from '../../css/atoms/atoms';
-import {
-  useLinkComponent,
-  LinkComponentProps,
-} from '../BraidProvider/BraidProvider';
+import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
+import { useLinkComponent } from '../BraidProvider/BraidProvider';
 
 export type LinkProps = Omit<LinkComponentProps, 'className'> & {
   className?: ClassValue;

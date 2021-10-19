@@ -1,5 +1,5 @@
-import { BraidTokens } from '../tokenType';
-import { DeepPartial } from 'utility-types';
+import type { BraidTokens } from '../tokenType';
+import type { DeepPartial } from 'utility-types';
 import merge from 'lodash/merge';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 import { darken, lighten, mix, tint } from 'polished';

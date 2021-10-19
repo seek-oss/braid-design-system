@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { AppConfig } from '../types';
+import type { AppConfig } from '../types';
 
 const defaultConfig: AppConfig = {
   playroomUrl: '/',

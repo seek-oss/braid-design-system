@@ -1,12 +1,13 @@
-import { Render } from 'sku';
-import React, { ReactElement } from 'react';
+import type { Render } from 'sku';
+import type { ReactElement } from 'react';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { HeadProvider } from 'react-head';
 import dedent from 'dedent';
 import { uniq, flatten, values } from 'lodash';
 import { App } from './App/App';
-import { RenderContext } from './types';
+import type { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import * as themes from '../../lib/themes';
 import { braidVersionToDate } from './getVersionDetails';

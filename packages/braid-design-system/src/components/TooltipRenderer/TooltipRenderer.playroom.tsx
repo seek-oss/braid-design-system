@@ -1,10 +1,8 @@
 import React from 'react';
-import { Optional } from 'utility-types';
+import type { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import {
-  TooltipRenderer as BraidTooltipRenderer,
-  TooltipRendererProps,
-} from './TooltipRenderer';
+import type { TooltipRendererProps } from './TooltipRenderer';
+import { TooltipRenderer as BraidTooltipRenderer } from './TooltipRenderer';
 
 type PlayroomTooltipRendererProps = Optional<TooltipRendererProps, 'id'>;
 

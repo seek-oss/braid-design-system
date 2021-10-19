@@ -1,6 +1,7 @@
-import React, { Fragment, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import { titleCase } from 'title-case';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Text, Stack, Column, Columns, IconPositive } from '../';
 import { text as textSizes } from '../../hooks/typography/typography.css';
 import { backgrounds, textAlignments } from '../../utils/docsHelpers';

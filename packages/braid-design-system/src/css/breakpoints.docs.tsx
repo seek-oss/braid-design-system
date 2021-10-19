@@ -11,7 +11,7 @@ import {
 } from '../components';
 import { breakpoints } from '../css/breakpoints';
 import Code from '../../site/src/App/Code/Code';
-import { CssDoc } from '../../site/src/types';
+import type { CssDoc } from '../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints) as Array<keyof typeof breakpoints>;

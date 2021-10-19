@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoxProps } from '../../../../../../lib/components/Box/Box';
+import type { BoxProps } from '../../../../../../lib/components/Box/Box';
 import {
   Box,
   Text,
@@ -11,7 +11,7 @@ import {
   Hidden,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
-import { Page } from '../../../../types';
+import type { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import * as styles from './tones.css';

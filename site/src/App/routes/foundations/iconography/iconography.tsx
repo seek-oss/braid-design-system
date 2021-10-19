@@ -12,7 +12,7 @@ import {
   Strong,
 } from '../../../../../../lib/components';
 import { Overlay } from '../../../../../../lib/components/private/Overlay/Overlay';
-import { Page } from '../../../../types';
+import type { Page } from '../../../../types';
 import * as icons from '../../../../../../lib/components/icons';
 import { PageTitle } from '../../../Seo/PageTitle';
 import * as styles from './iconography.css';

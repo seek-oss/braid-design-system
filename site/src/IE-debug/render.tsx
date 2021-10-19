@@ -1,4 +1,4 @@
-import { Render } from 'sku';
+import type { Render } from 'sku';
 
 const skuRender: Render<any> = {
   renderApp: () => {},

@@ -7,7 +7,7 @@ import {
   useBackground,
   useBackgroundLightness,
 } from '../../components/Box/BackgroundContext';
-import { BoxProps } from '../../components/Box/Box';
+import type { BoxProps } from '../../components/Box/Box';
 import { useDefaultTextProps } from '../../components/private/defaultTextProps';
 import TextLinkRendererContext from '../../components/TextLinkRenderer/TextLinkRendererContext';
 import { vars } from '../../themes/vars.css';

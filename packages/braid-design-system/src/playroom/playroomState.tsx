@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useMemo,
-  ReactNode,
-} from 'react';
+import type { ReactNode } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 import curry from 'lodash/curry';
 
 export interface StateProp {

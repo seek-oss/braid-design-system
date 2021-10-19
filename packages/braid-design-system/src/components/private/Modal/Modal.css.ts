@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { externalGutter } from './ModalExternalGutter';
-import { TextBreakpoint } from '../../../themes/tokenType';
+import type { TextBreakpoint } from '../../../themes/tokenType';
 import { responsiveStyle } from '../../../css/responsiveStyle';
 import { vars } from '../../../themes/vars.css';
 import { atoms } from '../../../css/atoms/atoms';

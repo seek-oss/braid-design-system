@@ -1,14 +1,12 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import HeadingContext from './HeadingContext';
-import { Box, BoxProps } from '../Box/Box';
-import {
-  useHeading,
-  HeadingLevel,
-  HeadingWeight,
-} from '../../hooks/typography';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { HeadingLevel, HeadingWeight } from '../../hooks/typography';
+import { useHeading } from '../../hooks/typography';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { Truncate } from '../private/Truncate/Truncate';
 
 const resolveDefaultComponent = {

@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { useThemeSettings } from './ThemeSettingContext';
 import { BraidProvider, Box } from '../../../../lib/components';
-import { BoxProps } from '../../../../lib/components/Box/Box';
+import type { BoxProps } from '../../../../lib/components/Box/Box';
 import * as styles from './ThemedExample.css';
 
 interface ThemedExampleProps {

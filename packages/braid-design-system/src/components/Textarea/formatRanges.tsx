@@ -1,6 +1,7 @@
-import React, { ReactChild } from 'react';
+import type { ReactChild } from 'react';
+import React from 'react';
 import parseHighlights from 'autosuggest-highlight/parse';
-import { TextareaProps } from './Textarea';
+import type { TextareaProps } from './Textarea';
 import { Highlight } from './Highlight/Highlight';
 
 export const formatRanges = (

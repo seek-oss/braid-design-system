@@ -1,9 +1,7 @@
 import React, { forwardRef, useContext } from 'react';
 import assert from 'assert';
-import {
-  InlineField,
-  InlineFieldProps,
-} from '../private/InlineField/InlineField';
+import type { InlineFieldProps } from '../private/InlineField/InlineField';
+import { InlineField } from '../private/InlineField/InlineField';
 import {
   RadioGroupContext,
   RadioItemContext,

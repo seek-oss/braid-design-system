@@ -1,14 +1,13 @@
 import assert from 'assert';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import {
-  resolveResponsiveRangeProps,
-  ResponsiveRangeProps,
-} from '../../utils/resolveResponsiveRangeProps';
-import { Box, BoxProps } from '../Box/Box';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { ResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
+import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
+import type { BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import * as styles from './Card.css';
 
 export const validCardComponents = [

@@ -1,14 +1,12 @@
-import { Children, ReactNode } from 'react';
-import {
-  OptionalResponsiveValue,
-  normalizeResponsiveValue,
-} from '../css/atoms/sprinkles.css';
-import {
-  ResponsiveRangeProps,
-  resolveResponsiveRangeProps,
-} from './resolveResponsiveRangeProps';
+import type { ReactNode } from 'react';
+import { Children } from 'react';
+import type { OptionalResponsiveValue } from '../css/atoms/sprinkles.css';
+import { normalizeResponsiveValue } from '../css/atoms/sprinkles.css';
+import type { ResponsiveRangeProps } from './resolveResponsiveRangeProps';
+import { resolveResponsiveRangeProps } from './resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from './optimizeResponsiveArray';
-import { Align, alignToFlexAlign, alignYToFlexAlign, AlignY } from './align';
+import type { Align, AlignY } from './align';
+import { alignToFlexAlign, alignYToFlexAlign } from './align';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {

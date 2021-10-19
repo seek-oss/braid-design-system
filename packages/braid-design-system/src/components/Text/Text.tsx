@@ -1,11 +1,13 @@
-import React, { ReactNode, useContext, useMemo } from 'react';
+import type { ReactNode } from 'react';
+import React, { useContext, useMemo } from 'react';
 import assert from 'assert';
 import { TextContext } from './TextContext';
-import { Box, BoxProps } from '../Box/Box';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
-import { useText, UseTextProps } from '../../hooks/typography';
+import type { BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
+import type { UseTextProps } from '../../hooks/typography';
+import { useText } from '../../hooks/typography';
 import { useDefaultTextProps } from '../private/defaultTextProps';
 import { Truncate } from '../private/Truncate/Truncate';
 

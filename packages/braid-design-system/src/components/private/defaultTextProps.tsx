@@ -1,6 +1,7 @@
 import React from 'react';
-import { createContext, useContext, ReactNode, useMemo } from 'react';
-import { UseTextProps } from '../../hooks/typography';
+import type { ReactNode } from 'react';
+import { createContext, useContext, useMemo } from 'react';
+import type { UseTextProps } from '../../hooks/typography';
 
 interface DefaultTextProps {
   tone?: NonNullable<UseTextProps['tone']>;

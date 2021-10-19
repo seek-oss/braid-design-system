@@ -1,10 +1,10 @@
-import React, { ReactNode, useContext } from 'react';
+import type { ReactNode } from 'react';
+import React, { useContext } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
 import { ColumnsContext } from '../Columns/Columns';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import * as styles from './Column.css';
 
 export interface ColumnProps {

@@ -5,7 +5,7 @@ import { TabsContext } from './TabsProvider';
 import { TAB_PANELS_UPDATED } from './Tabs.actions';
 import { TabPanel } from './TabPanel';
 import { TabPanelsContext } from './TabPanelsContext';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 interface TabPanelsProps {
   renderInactivePanels?: boolean;

@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { vars } from '.';
 import {
   Text,
@@ -11,10 +12,10 @@ import {
   Hidden,
   Alert,
 } from '../components';
-import { ReactNodeNoStrings } from '../components/private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../components/private/ReactNodeNoStrings';
 import Code from '../../site/src/App/Code/Code';
 import { ThemedExample } from '../../site/src/App/ThemeSetting';
-import { CssDoc } from '../../site/src/types';
+import type { CssDoc } from '../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const Row = ({

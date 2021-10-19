@@ -8,7 +8,7 @@ import {
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import { useConfig } from '../../ConfigContext';
-import { Page } from '../../../types';
+import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 
 const braidDesignSupportLink = (

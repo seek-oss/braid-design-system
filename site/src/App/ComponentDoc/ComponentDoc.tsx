@@ -1,10 +1,11 @@
-import React, { ReactNode, Fragment } from 'react';
+import type { ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { ComponentProps } from './ComponentProps';
 import docsTheme from '../../../../lib/themes/docs';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
-import { BraidSnippet } from '../../../../lib/components/private/Snippets';
+import type { BraidSnippet } from '../../../../lib/components/private/Snippets';
 import {
   BraidProvider,
   Box,
@@ -19,7 +20,7 @@ import {
   Secondary,
 } from '../../../../lib/components';
 
-import { ComponentDocs, ComponentExample } from '../../types';
+import type { ComponentDocs, ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample, useThemeSettings } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';

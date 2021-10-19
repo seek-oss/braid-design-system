@@ -1,6 +1,6 @@
 import assert from 'assert';
 import matchHighlights from 'autosuggest-highlight/match';
-import {
+import type {
   AutosuggestValue,
   Suggestion,
   Suggestions,

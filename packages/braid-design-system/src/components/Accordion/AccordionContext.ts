@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { TextProps } from '../Text/Text';
+import type { TextProps } from '../Text/Text';
 
 export const validTones = ['neutral', 'secondary'] as const;
 

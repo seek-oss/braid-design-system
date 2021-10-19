@@ -1,15 +1,10 @@
-import React, {
-  createContext,
-  useState,
-  useEffect,
-  useContext,
-  ReactNode,
-} from 'react';
+import type { ReactNode } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { BackgroundProvider } from '../Box/BackgroundContext';
 import { atoms } from '../../css/atoms/atoms';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';

@@ -1,6 +1,6 @@
-import { Style } from 'sku/treat';
+import type { Style } from 'sku/treat';
 import omit from 'lodash/omit';
-import { Breakpoint } from '../css/breakpoints';
+import type { Breakpoint } from '../css/breakpoints';
 
 type RequiredTokens = { breakpoint: Record<Breakpoint, number> };
 type StyleWithoutMediaQueries = Exclude<Style['@media'], undefined>[string];

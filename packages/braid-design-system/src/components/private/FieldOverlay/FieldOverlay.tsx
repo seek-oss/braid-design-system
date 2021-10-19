@@ -1,5 +1,6 @@
 import React from 'react';
-import { Overlay, OverlayProps } from '../Overlay/Overlay';
+import type { OverlayProps } from '../Overlay/Overlay';
+import { Overlay } from '../Overlay/Overlay';
 
 type FieldOverlayVariant =
   | 'default'

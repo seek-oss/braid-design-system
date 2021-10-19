@@ -1,9 +1,12 @@
-import React, { Children, ReactNode } from 'react';
-import { Text, TextProps } from '../Text/Text';
-import { Stack, StackProps } from '../Stack/Stack';
+import type { ReactNode } from 'react';
+import React, { Children } from 'react';
+import type { TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
+import type { StackProps } from '../Stack/Stack';
+import { Stack } from '../Stack/Stack';
 import { Box } from '../Box/Box';
 import flattenChildren from 'react-keyed-flatten-children';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   DefaultTextPropsProvider,
   useDefaultTextProps,

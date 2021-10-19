@@ -1,16 +1,19 @@
-import React, { FormEvent, ReactElement } from 'react';
+import type { FormEvent, ReactElement } from 'react';
+import React from 'react';
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
-import {
-  FieldGroup,
+import type {
   FieldGroupBaseProps,
   FieldLabelVariant,
 } from '../private/FieldGroup/FieldGroup';
-import { RadioItem, RadioItemProps } from '../RadioGroup/RadioItem';
-import { Stack, StackProps } from '../Stack/Stack';
+import { FieldGroup } from '../private/FieldGroup/FieldGroup';
+import type { RadioItemProps } from '../RadioGroup/RadioItem';
+import { RadioItem } from '../RadioGroup/RadioItem';
+import type { StackProps } from '../Stack/Stack';
+import { Stack } from '../Stack/Stack';
 import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 import { Box } from '../Box/Box';
-import { InlineFieldProps } from '../private/InlineField/InlineField';
+import type { InlineFieldProps } from '../private/InlineField/InlineField';
 
 export type RadioGroupBaseProps<Value = NonNullable<string | number>> =
   FieldGroupBaseProps & {

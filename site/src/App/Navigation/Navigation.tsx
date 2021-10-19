@@ -1,10 +1,5 @@
-import React, {
-  useState,
-  useRef,
-  ReactNode,
-  useEffect,
-  forwardRef,
-} from 'react';
+import type { ReactNode } from 'react';
+import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {
@@ -16,7 +11,7 @@ import {
   HiddenVisually,
 } from '../../../../lib/components';
 import { RemoveScroll } from 'react-remove-scroll';
-import { BoxProps } from '../../../../lib/components/Box/Box';
+import type { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '../MenuButton/MenuButton';

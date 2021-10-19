@@ -1,11 +1,9 @@
-import React, { forwardRef, ReactNode, AllHTMLAttributes } from 'react';
-import {
-  PrivateButtonRenderer,
-  PrivateButtonRendererProps,
-} from '../ButtonRenderer/ButtonRenderer';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { ReactNode, AllHTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
+import type { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
+import { PrivateButtonRenderer } from '../ButtonRenderer/ButtonRenderer';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonProps

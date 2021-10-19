@@ -1,9 +1,11 @@
 import React from 'react';
 import assert from 'assert';
 import { useBackground } from '../Box/BackgroundContext';
-import useIcon, { UseIconProps } from '../../hooks/useIcon';
+import type { UseIconProps } from '../../hooks/useIcon';
+import useIcon from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
+import type { TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
 import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
 import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
 import { IconStarActiveSvg as IconStarFullSvg } from '../icons/IconStar/IconStarActiveSvg';

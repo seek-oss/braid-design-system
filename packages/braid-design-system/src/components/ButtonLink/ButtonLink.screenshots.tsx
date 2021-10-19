@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import type { ReactNode } from 'react';
+import React from 'react';
+import type { ComponentScreenshot } from '../../../site/src/types';
 import { ButtonLink } from '../';
 import { Inline } from '../Inline/Inline';
 

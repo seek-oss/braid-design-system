@@ -1,4 +1,4 @@
-import { BraidTokens } from '../tokenType';
+import type { BraidTokens } from '../tokenType';
 import { darken, lighten, mix, tint } from 'polished';
 import { getAccessibleVariant, getLightVariant, isLight } from '../../utils';
 

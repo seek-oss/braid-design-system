@@ -2,12 +2,13 @@ import './treatTheme.d';
 import { createTheme } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
-import { FontMetrics, getCapHeight } from '@capsizecss/core';
+import type { FontMetrics } from '@capsizecss/core';
+import { getCapHeight } from '@capsizecss/core';
 
 import { breakpoints } from '../css/breakpoints';
 import { makeThemeUtils } from './themeUtils';
 import { isLight } from '../utils';
-import { BraidTokens, TextDefinition } from './tokenType';
+import type { BraidTokens, TextDefinition } from './tokenType';
 
 const fontSizeToCapHeight = (
   definition: TextDefinition,

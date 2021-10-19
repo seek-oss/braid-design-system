@@ -1,6 +1,6 @@
+import type { ReactNode } from 'react';
 import React, {
   Fragment,
-  ReactNode,
   memo,
   useEffect,
   useState,
@@ -42,7 +42,7 @@ import { getHistory, isNew } from '../../Updates';
 import source from '../../../../../lib/utils/source.macro';
 import { CopyIcon } from '../../Code/CopyIcon';
 import { CodeButton, formatSnippet } from '../../Code/Code';
-import { ComponentExample } from '../../../types';
+import type { ComponentExample } from '../../../types';
 import {
   useThemeSettings,
   ThemedExample,
@@ -55,16 +55,17 @@ import {
 import { PlayroomStateProvider } from '../../../../../lib/playroom/playroomState';
 import { useSourceFromExample } from '../../../../../lib/utils/useSourceFromExample';
 import * as icons from '../../../../../lib/components/icons';
+import type { FitToScreenDimensions } from './galleryState';
 import {
   zoom as zoomState,
   fitToScreenDimensions,
   controller as controllerState,
-  FitToScreenDimensions,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
 import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
-import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
-import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
+import type { UseIconProps } from '../../../../../lib/hooks/useIcon';
+import useIcon from '../../../../../lib/hooks/useIcon';
+import type { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';
 
 import * as styles from './gallery.css';

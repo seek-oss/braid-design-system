@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import ActionsContext from './ActionsContext';
-import { Inline, InlineProps } from '../Inline/Inline';
-import { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
+import type { InlineProps } from '../Inline/Inline';
+import { Inline } from '../Inline/Inline';
+import type { PrivateButtonRendererProps } from '../ButtonRenderer/ButtonRenderer';
 
 export interface ActionsProps {
   size?: PrivateButtonRendererProps['size'];

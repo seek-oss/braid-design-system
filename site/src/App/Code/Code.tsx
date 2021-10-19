@@ -1,10 +1,5 @@
-import React, {
-  useState,
-  ReactChild,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import type { ReactChild } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';
@@ -13,7 +8,7 @@ import reactElementToJsxString from 'react-element-to-jsx-string';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'playroom/utils';
 import { useConfig } from '../ConfigContext';
-import { Source } from '../../../../lib/utils/source.macro';
+import type { Source } from '../../../../lib/utils/source.macro';
 import {
   Box,
   Stack,
@@ -23,7 +18,7 @@ import {
   Hidden,
   IconPositive,
 } from '../../../../lib/components';
-import { BoxProps } from '../../../../lib/components/Box/Box';
+import type { BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';

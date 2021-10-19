@@ -1,9 +1,8 @@
 import React from 'react';
 import { Box } from '../Box/Box';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { atoms } from '../../css/atoms/atoms';
 import * as styles from './Loader.css';
 

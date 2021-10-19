@@ -1,14 +1,15 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
-import { useDisclosure, UseDisclosureProps } from './useDisclosure';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { UseDisclosureProps } from './useDisclosure';
+import { useDisclosure } from './useDisclosure';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 export type DisclosureBaseProps = {
   expandLabel: string;

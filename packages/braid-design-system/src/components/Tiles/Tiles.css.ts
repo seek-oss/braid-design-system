@@ -1,5 +1,5 @@
 import { styleVariants } from '@vanilla-extract/css';
-import { Breakpoint } from '../../css/breakpoints';
+import type { Breakpoint } from '../../css/breakpoints';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 const columnsWidths = {

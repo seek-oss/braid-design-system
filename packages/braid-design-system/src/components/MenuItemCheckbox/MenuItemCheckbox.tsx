@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { Box } from '../Box/Box';
 import { IconTick } from '../icons/IconTick/IconTick';
-import { MenuItemProps } from '../MenuItem/MenuItem';
+import type { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
 import * as styles from './MenuItemCheckbox.css';
 

@@ -1,13 +1,13 @@
-import React, { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
+import type { AllHTMLAttributes, ChangeEvent, ReactNode } from 'react';
+import React from 'react';
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import * as styles from './Toggle.css';
 import type { Size } from './Toggle.css';
 

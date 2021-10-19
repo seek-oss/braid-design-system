@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Box, IconLink, Link } from '../../../../lib/components';
-import { HeadingProps } from '../../../../lib/components/Heading/Heading';
+import type { HeadingProps } from '../../../../lib/components/Heading/Heading';
 import * as styles from './LinkableHeading.css';
 
 interface LinkableHeadingProps {

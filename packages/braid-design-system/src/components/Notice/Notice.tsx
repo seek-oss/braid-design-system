@@ -1,13 +1,13 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Box } from '../Box/Box';
 import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';
 

@@ -1,5 +1,6 @@
-import React, { ReactChild } from 'react';
-import { Page } from '../../../../types';
+import type { ReactChild } from 'react';
+import React from 'react';
+import type { Page } from '../../../../types';
 import {
   Heading,
   Text,
@@ -21,7 +22,7 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
-import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
 
 interface StepProps {

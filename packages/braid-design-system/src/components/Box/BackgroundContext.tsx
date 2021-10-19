@@ -1,5 +1,6 @@
-import React, { createContext, useContext, ReactElement } from 'react';
-import { BoxProps } from './Box';
+import type { ReactElement } from 'react';
+import React, { createContext, useContext } from 'react';
+import type { BoxProps } from './Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 export type BackgroundVariant =

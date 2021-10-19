@@ -1,10 +1,11 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { Box } from '../Box/Box';
 import { Secondary } from '../Secondary/Secondary';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';
-import { DataAttributeMap } from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
 
 export interface FieldLabelProps {
   id?: string;

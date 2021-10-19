@@ -15,7 +15,7 @@ import {
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
-import { Page } from '../../../types';
+import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import source from '../../../../../lib/utils/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';

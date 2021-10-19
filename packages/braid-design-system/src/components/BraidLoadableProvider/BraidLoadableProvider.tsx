@@ -1,9 +1,8 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import loadable from 'sku/@loadable/component';
-import {
-  BraidProvider,
-  BraidProviderProps,
-} from '../BraidProvider/BraidProvider';
+import type { BraidProviderProps } from '../BraidProvider/BraidProvider';
+import { BraidProvider } from '../BraidProvider/BraidProvider';
 
 // @ts-ignore loadable can not currently type dynamic props
 const BraidLoadable = loadable.lib(

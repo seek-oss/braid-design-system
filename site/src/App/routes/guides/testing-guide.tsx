@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Page } from '../../../types';
+import type { Page } from '../../../types';
 import { TextStack } from '../../TextStack/TextStack';
 import {
   Heading,

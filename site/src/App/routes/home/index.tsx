@@ -7,7 +7,7 @@ import {
   Divider,
 } from '../../../../../lib/components';
 import { useConfig } from '../../ConfigContext';
-import { Page } from '../../../types';
+import type { Page } from '../../../types';
 
 const Home = () => {
   const { playroomUrl } = useConfig();
