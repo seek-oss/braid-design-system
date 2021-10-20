@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Button, Box, Heading, Inline, IconSend } from '../';
+import { Button, Heading, Inline, IconSend } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
@@ -56,17 +56,22 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Inverted on dark backgrounds',
-    background: 'brand',
+    label: 'Neutral',
+    background: 'surface',
     Example: () =>
       source(
-        <Box background="brand" padding="small">
-          <Inline space="small">
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="soft">Soft</Button>
-            <Button variant="transparent">Transparent</Button>
-          </Inline>
-        </Box>,
+        <Inline space="small">
+          <Button tone="neutral">Search</Button>
+          <Button tone="neutral" variant="ghost">
+            Search
+          </Button>
+          <Button tone="neutral" variant="soft">
+            Search
+          </Button>
+          <Button tone="neutral" variant="transparent">
+            Search
+          </Button>
+        </Inline>,
       ),
   },
   {

@@ -10,6 +10,7 @@ export default makeTokens({
   displayName: 'APAC',
   brand: palette.seekBlue['500'],
   brandAccent,
+  brandAccentLight: palette.seekPink['200'],
   brandAccentActive: darken(0.05, brandAccent),
   brandAccentHover: lighten(0.05, brandAccent),
   brandAccentSoft,
