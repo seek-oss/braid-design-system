@@ -244,7 +244,6 @@ export const ButtonOverlays = ({
       <FieldOverlay
         borderRadius="large"
         background={
-          stylesForVariant.backgroundHover &&
           typeof stylesForVariant.backgroundHover === 'object'
             ? stylesForVariant.backgroundHover[backgroundLightness]
             : stylesForVariant.backgroundHover
@@ -257,7 +256,6 @@ export const ButtonOverlays = ({
       <FieldOverlay
         borderRadius="large"
         background={
-          stylesForVariant.backgroundActive &&
           typeof stylesForVariant.backgroundActive === 'object'
             ? stylesForVariant.backgroundActive[backgroundLightness]
             : stylesForVariant.backgroundActive
@@ -328,7 +326,6 @@ export const useButtonStyles = ({
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
   const background =
-    stylesForVariant.background &&
     typeof stylesForVariant.background === 'object'
       ? stylesForVariant.background[backgroundLightness]
       : stylesForVariant.background;
