@@ -25,6 +25,7 @@ export function ThemedExample({
             transparent
               ? undefined
               : {
+                  lightMode: background ? 'borderNeutralLight' : undefined,
                   darkMode: 'borderNeutralLarge',
                 }
           }

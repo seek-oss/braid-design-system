@@ -327,8 +327,9 @@ const page: Page = {
                 colour of `brandAccent`.
               </Text>
               <Text component="p">
-                Given we are using a coloured background now, it makes sense to
-                push back the button by using a `neutral` tone.
+                Given we are emphasizing our banner using a coloured background,
+                it makes sense to de-emphasize the button by applying a
+                `neutral` tone.
               </Text>
             </>
           }

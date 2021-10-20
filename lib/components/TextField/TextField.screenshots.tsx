@@ -177,17 +177,33 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Stack space="gutter">
           <TextField
-            label="No value"
+            label="With no value or placeholder"
             id={`${id}_1`}
             value=""
             disabled={true}
             onChange={handler}
           />
           <TextField
-            label="With value"
+            label="With value and no placeholder"
             id={`${id}_2`}
             value="Text value"
             disabled={true}
+            onChange={handler}
+          />
+          <TextField
+            label="With no value and a placeholder"
+            id={`${id}_3`}
+            value=""
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+          />
+          <TextField
+            label="With value and a placeholder"
+            id={`${id}_4`}
+            value="Text value"
+            disabled={true}
+            placeholder="Placeholder text"
             onChange={handler}
           />
         </Stack>

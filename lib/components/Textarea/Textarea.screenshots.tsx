@@ -70,7 +70,7 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Textarea
           id={id}
-          value="No"
+          value=""
           onChange={handler}
           label="Label"
           message="Critical message"
@@ -84,7 +84,7 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Textarea
           id={id}
-          value="Yes"
+          value=""
           onChange={handler}
           label="Label"
           message="Positive message"
@@ -98,18 +98,34 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Stack space="gutter">
           <Textarea
+            label="With no value or placeholder"
             id={`${id}_1`}
             value=""
-            onChange={handler}
-            label="No value"
             disabled={true}
+            onChange={handler}
           />
           <Textarea
+            label="With value and no placeholder"
             id={`${id}_2`}
-            value="With a value"
-            onChange={handler}
-            label="With a value"
+            value="Text value"
             disabled={true}
+            onChange={handler}
+          />
+          <Textarea
+            label="With no value and a placeholder"
+            id={`${id}_3`}
+            value=""
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+          />
+          <Textarea
+            label="With value and a placeholder"
+            id={`${id}_4`}
+            value="Text value"
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
           />
         </Stack>
       ),

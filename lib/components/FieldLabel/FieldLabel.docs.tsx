@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
       <Box maxWidth="xsmall">
         <Stack space="xsmall">
           <FieldLabel
-            htmlFor="field"
+            htmlFor="example"
             label="Label"
             secondaryLabel={
               <>
@@ -39,7 +39,7 @@ const docs: ComponentDocs = {
               </TextLink>
             }
           />
-          <Box id="field">
+          <Box id="example">
             <Placeholder height={40} />
           </Box>
         </Stack>
@@ -71,7 +71,15 @@ const docs: ComponentDocs = {
       label: 'Label',
       Container,
       description: <Text>Sets the primary label of field.</Text>,
-      Example: () => source(<FieldLabel htmlFor="field" label="Label" />),
+      Example: () =>
+        source(
+          <Stack space="xsmall">
+            <FieldLabel htmlFor="labelExample" label="Label" />
+            <Box id="labelExample">
+              <Placeholder height={40} />
+            </Box>
+          </Stack>,
+        ),
     },
     {
       label: 'Secondary label',
@@ -92,11 +100,16 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <FieldLabel
-            htmlFor="field"
-            label="Label"
-            secondaryLabel="Secondary label"
-          />,
+          <Stack space="xsmall">
+            <FieldLabel
+              htmlFor="secondaryExample"
+              label="Label"
+              secondaryLabel="Secondary label"
+            />
+            <Box id="secondaryExample">
+              <Placeholder height={40} />
+            </Box>
+          </Stack>,
         ),
     },
     {
@@ -118,19 +131,25 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <FieldLabel
-            htmlFor="field"
-            label="Label"
-            tertiaryLabel={
-              <TextLink href="#">
-                Tertiary<Hidden below="tablet"> label</Hidden>
-              </TextLink>
-            }
-          />,
+          <Stack space="xsmall">
+            <FieldLabel
+              htmlFor="tertiaryExample"
+              label="Label"
+              tertiaryLabel={
+                <TextLink href="#">
+                  Tertiary<Hidden below="tablet"> label</Hidden>
+                </TextLink>
+              }
+            />
+            <Box id="tertiaryExample">
+              <Placeholder height={40} />
+            </Box>
+          </Stack>,
         ),
     },
     {
       label: 'Additional description',
+      Container,
       description: (
         <>
           <Text>
@@ -151,12 +170,17 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <FieldLabel
-            htmlFor="field"
-            label="Label"
-            description="Extra information about the field"
-            descriptionId="description"
-          />,
+          <Stack space="xsmall">
+            <FieldLabel
+              htmlFor="descriptionExample"
+              label="Label"
+              description="Extra information about the field"
+              descriptionId="fieldDescription"
+            />
+            <Box id="descriptionExample" aria-describedby="fieldDescription">
+              <Placeholder height={40} />
+            </Box>
+          </Stack>,
         ),
     },
     {
@@ -169,7 +193,18 @@ const docs: ComponentDocs = {
         </Text>
       ),
       Example: () =>
-        source(<FieldLabel htmlFor="field" label="Label" disabled={true} />),
+        source(
+          <Stack space="xsmall">
+            <FieldLabel
+              htmlFor="disabledExample"
+              label="Label"
+              disabled={true}
+            />
+            <Box id="disabledExample">
+              <Placeholder height={40} />
+            </Box>
+          </Stack>,
+        ),
     },
   ],
 };

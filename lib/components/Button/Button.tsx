@@ -310,9 +310,21 @@ export const ButtonOverlays = ({
           size === 'small' ? styles.constants.smallButtonPaddingSize : undefined
         }
         className={size === 'standard' ? touchableText.standard : undefined}
+        background={
+          tone === 'neutral' && variant !== 'solid'
+            ? {
+                lightMode:
+                  lightness.lightMode === 'light'
+                    ? 'customLight'
+                    : 'customDark',
+                darkMode:
+                  lightness.darkMode === 'light' ? 'customLight' : 'customDark',
+              }
+            : undefined
+        }
       >
         <Text
-          tone={stylesForVariant.textTone}
+          tone={variant !== 'solid' ? stylesForVariant.textTone : undefined}
           weight="medium"
           size={size}
           baseline={false}

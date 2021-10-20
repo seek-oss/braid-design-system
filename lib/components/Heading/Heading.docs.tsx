@@ -133,12 +133,14 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'brand',
+      background: 'neutral',
       Example: () =>
         source(
-          <Heading level="2">
-            This Heading is inverted to improve contrast.
-          </Heading>,
+          <Box background="neutral">
+            <Heading level="2">
+              This Heading is inverted to improve contrast.
+            </Heading>
+          </Box>,
         ),
     },
   ],

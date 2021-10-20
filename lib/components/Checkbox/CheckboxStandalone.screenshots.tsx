@@ -65,14 +65,14 @@ export const screenshots: ComponentScreenshot = {
             disabled={true}
             checked={false}
             onChange={handler}
-            aria-label="Label"
+            aria-label="Disabled unchecked"
           />
           <CheckboxStandalone
             id={id}
             disabled={true}
             checked={true}
             onChange={handler}
-            aria-label="Label"
+            aria-label="Disabled checked"
           />
         </Stack>
       ),

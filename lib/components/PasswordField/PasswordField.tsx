@@ -83,6 +83,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         labelId={undefined}
         disabled={disabled}
         secondaryMessage={null}
+        alwaysShowSecondaryIcon={!disabled}
         secondaryIcon={
           disabled ? null : (
             <IconButton
@@ -106,7 +107,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
               onChange={onChange}
               onFocus={onFocus}
               onBlur={onBlur}
-              placeholder={placeholder}
+              placeholder={!disabled ? placeholder : undefined}
               {...fieldProps}
               ref={inputRef}
             />

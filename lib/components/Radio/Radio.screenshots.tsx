@@ -35,14 +35,14 @@ export const screenshots: ComponentScreenshot = {
             disabled={true}
             checked={false}
             onChange={handler}
-            label="Label"
+            label="Disabled unchecked"
           />
           <Radio
             id={`${id}_2`}
             disabled={true}
             checked={true}
             onChange={handler}
-            label="Label"
+            label="Disabled checked"
           />
         </Stack>
       ),

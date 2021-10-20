@@ -304,9 +304,6 @@ export const darkModeTone = styleVariants({
 const neutralOverrideForBackground: Partial<
   Record<keyof typeof vars.backgroundColor, keyof typeof vars.foregroundColor>
 > = {
-  formAccentSoft: 'formAccent',
-  formAccentSoftActive: 'formAccent',
-  formAccentSoftHover: 'formAccent',
   criticalLight: 'critical',
   criticalSoft: 'critical',
   criticalSoftActive: 'critical',

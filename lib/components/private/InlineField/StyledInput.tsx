@@ -9,7 +9,7 @@ import React, {
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { IconMinus, IconTick } from '../../icons';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
-import { Box } from '../../Box/Box';
+import { Box, BoxProps } from '../../Box/Box';
 import { useColorContrast } from '../../Box/BackgroundContext';
 import { resolveFieldBackground } from '../Field/Field';
 import * as styles from './InlineField.css';
@@ -101,7 +101,7 @@ const Indicator = ({
     <Box
       background={
         disabled
-          ? { lightMode: 'neutral', darkMode: 'surfaceDark' }
+          ? { lightMode: 'neutralLight', darkMode: 'surfaceDark' }
           : 'formAccent'
       }
       transition="fast"
@@ -149,6 +149,9 @@ export const StyledInput = forwardRef<
 
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
+    const accentBackground: BoxProps['background'] = disabled
+      ? { lightMode: 'neutralLight', darkMode: 'neutral' }
+      : 'formAccent';
     const isMixed = isCheckbox && checked === 'mixed';
 
     const colorConstrast = useColorContrast();
@@ -226,7 +229,7 @@ export const StyledInput = forwardRef<
           />
           <FieldOverlay
             variant={tone === 'critical' && isCheckbox ? tone : undefined}
-            background={isCheckbox && !disabled ? 'formAccent' : undefined}
+            background={isCheckbox ? accentBackground : undefined}
             borderRadius={fieldBorderRadius}
             className={styles.selected}
           >

@@ -210,14 +210,22 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Discrete actions',
+      label: 'De-emphasized actions',
       background: { lightMode: 'surface', darkMode: 'surfaceDark' },
       description: (
-        <Text>
-          For more discrete actions it can be necessary to reduce it’s
-          prominance. We can achieve this by setting the button’s{' '}
-          <Strong>tone</Strong> to <Strong>neutral.</Strong>
-        </Text>
+        <>
+          <Text>
+            For cases where actions need may need to be de-emphasized, you can
+            set the button’s <Strong>tone</Strong> to <Strong>neutral.</Strong>
+          </Text>
+          <Text>
+            This makes the button follow the default text colour, including{' '}
+            <TextLink href="#contextual-design">
+              inverting on dark surfaces
+            </TextLink>{' '}
+            to improve contrast.
+          </Text>
+        </>
       ),
       Example: () =>
         source(
@@ -261,10 +269,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'brand',
+      background: 'neutral',
       Example: () =>
         source(
-          <Box background="brand">
+          <Box background="neutral">
             <Stack space="small">
               <Inline space="small">
                 <Button>Solid</Button>

@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Autosuggest, filterSuggestions, IconSearch } from '../';
+import { Autosuggest, filterSuggestions, IconSearch, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -147,6 +147,48 @@ export const screenshots: ComponentScreenshot = {
           />
         );
       },
+    },
+    {
+      label: 'Autosuggest when disabled',
+      Container,
+      Example: ({ id, handler }) => (
+        <Stack space="gutter">
+          <Autosuggest
+            label="With no value or placeholder"
+            id={`${id}_1`}
+            value={{ text: '' }}
+            disabled={true}
+            onChange={handler}
+            suggestions={[]}
+          />
+          <Autosuggest
+            label="With value and no placeholder"
+            id={`${id}_2`}
+            value={{ text: 'Text value' }}
+            disabled={true}
+            onChange={handler}
+            suggestions={[]}
+          />
+          <Autosuggest
+            label="With no value and a placeholder"
+            id={`${id}_3`}
+            value={{ text: '' }}
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+            suggestions={[]}
+          />
+          <Autosuggest
+            label="With value and a placeholder"
+            id={`${id}_4`}
+            value={{ text: 'Text value' }}
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+            suggestions={[]}
+          />
+        </Stack>
+      ),
     },
     {
       label: 'Autosuggest with no visual label',

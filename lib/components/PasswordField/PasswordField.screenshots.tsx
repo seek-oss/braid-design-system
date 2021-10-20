@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { PasswordField, TextLink } from '../';
+import { PasswordField, Stack, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -141,18 +141,40 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'PasswordField disabled',
       Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('qwerty');
-        return (
+      Example: ({ id, handler }) => (
+        <Stack space="gutter">
           <PasswordField
-            label="Password"
-            id={id}
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
+            label="With no value or placeholder"
+            id={`${id}_1`}
+            value=""
             disabled={true}
+            onChange={handler}
           />
-        );
-      },
+          <PasswordField
+            label="With value and no placeholder"
+            id={`${id}_2`}
+            value="Text value"
+            disabled={true}
+            onChange={handler}
+          />
+          <PasswordField
+            label="With no value and a placeholder"
+            id={`${id}_3`}
+            value=""
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+          />
+          <PasswordField
+            label="With value and a placeholder"
+            id={`${id}_4`}
+            value="Text value"
+            disabled={true}
+            placeholder="Placeholder text"
+            onChange={handler}
+          />
+        </Stack>
+      ),
     },
     {
       label: 'PasswordField on Brand Background',

@@ -15,7 +15,7 @@ Introduces a `neutral` tone for cases where actions need to be de-emphasised. As
 
 **BREAKING CHANGE:**
 
-A `Button` with a `variant` of `ghost`, `soft`, or `transparent` and no specified `tone` would previously invert when inside a dark container. Instead of using the inverted foreground colours, these cases will now result in a lighter version of the default tone, i.e. `formAccent`.
+A `Button` with a `variant` of `ghost`, `soft`, or `transparent` and no specified `tone` would previously invert when inside a dark container. Now, instead of inverting the foreground colour, these cases will use a lighter version of the default tone, i.e. `formAccent`.
 
 **MIGRATION GUIDE:**
 

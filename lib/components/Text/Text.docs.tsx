@@ -217,7 +217,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To ensure text has sufficient contrast, when on a dark background
-            the foreground colour is inverted.
+            the foreground colour either inverts or lightens.
           </Text>
           <Text>
             When using custom backgrounds or images on a{' '}
@@ -228,12 +228,19 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'brand',
+      background: 'neutral',
       Example: () =>
         source(
           <Stack space="small">
             <Text>Neutral text</Text>
             <Text tone="secondary">Secondary text</Text>
+            <Text tone="critical">Critical text</Text>
+            <Text tone="caution">Caution text</Text>
+            <Text tone="positive">Positive text</Text>
+            <Text tone="info">Info text</Text>
+            <Text tone="promote">Promote text</Text>
+            <Text tone="formAccent">FormAccent text</Text>
+            <Text tone="brandAccent">BrandAccent text</Text>
           </Stack>,
         ),
     },

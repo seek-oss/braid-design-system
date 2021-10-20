@@ -125,7 +125,7 @@ export const screenshots: ComponentScreenshot = {
             <option value="2">Designer</option>
           </Dropdown>
           <Dropdown
-            label="With value and a placholder"
+            label="With value and a placeholder"
             id={`${id}_4`}
             onChange={handler}
             value="1"
