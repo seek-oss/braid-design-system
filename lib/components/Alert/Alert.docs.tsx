@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Alert, Text, Strong, Stack, TextLink, List } from '../';
+import { Alert, Text, Strong, Stack, TextLink, List, Notice } from '../';
 import { Card } from '../Card/Card';
 
 const docs: ComponentDocs = {
@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
           </Text>
         </Stack>
       ),
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Alert tone="info">
@@ -101,7 +101,7 @@ const docs: ComponentDocs = {
           <Strong>onClose</Strong> handler.
         </Text>
       ),
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () =>
         /* eslint-disable no-alert */
         source(
@@ -118,11 +118,20 @@ const docs: ComponentDocs = {
     {
       label: 'Contextual design',
       description: (
-        <Text>
-          When outside of a <TextLink href="/components/Card">Card</TextLink>,
-          an outline is used to provide sufficient contrast against the
-          background.
-        </Text>
+        <>
+          <Text>
+            When outside of a <TextLink href="/components/Card">Card</TextLink>,
+            an outline is used to provide sufficient contrast against the
+            background.
+          </Text>
+          <Notice>
+            <Text>
+              This only applies in a light context, i.e. when the soft
+              background colours require differentiation from the surrounding
+              background colour.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: () =>
         source(

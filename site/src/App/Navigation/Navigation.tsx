@@ -114,7 +114,7 @@ export const Navigation = ({ children }: NavigationProps) => {
             wide: 'block',
           }}
           zIndex="sticky"
-          background={{ lightMode: 'body', darkMode: 'bodyDark' }}
+          background="body"
           className={[
             styles.subNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
@@ -155,7 +155,7 @@ export const Navigation = ({ children }: NavigationProps) => {
         display={['block', 'none']}
         pointerEvents={showStickyHeader ? undefined : 'none'}
         zIndex="sticky"
-        background={{ lightMode: 'body', darkMode: 'bodyDark' }}
+        background="body"
         opacity={showStickyHeader ? undefined : 0}
         tabIndex={-1}
         aria-hidden={true}

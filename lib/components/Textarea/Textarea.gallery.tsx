@@ -91,7 +91,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Disabled field',
-    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+    background: 'surface',
     Example: ({ id, getState, setState }) =>
       source(
         <Textarea

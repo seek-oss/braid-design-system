@@ -282,7 +282,7 @@ export const MenuRenderer = ({
             }}
             boxShadow="medium"
             borderRadius={borderRadius}
-            background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
+            background="surface"
             marginTop={offsetSpace}
             transition="fast"
             right={align === 'right' ? 0 : undefined}

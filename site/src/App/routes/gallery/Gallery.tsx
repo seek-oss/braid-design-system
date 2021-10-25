@@ -198,7 +198,7 @@ const GalleryItem = ({
   return (
     <Box
       component="article"
-      background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
+      background="surface"
       borderRadius="xlarge"
       padding={isAnIcon ? 'large' : 'xxlarge'}
       margin={isAnIcon ? 'small' : 'xxlarge'}

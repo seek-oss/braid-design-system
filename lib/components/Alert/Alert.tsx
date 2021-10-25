@@ -20,7 +20,6 @@ import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
 import * as keylineStyles from '../private/keyline/keyline.css';
 
@@ -38,11 +37,11 @@ export type AlertProps = {
 } & CloseProps;
 
 const backgroundForTone: Record<Tone, BoxProps['background']> = {
-  promote: { lightMode: 'promoteLight', darkMode: 'neutral' },
-  info: { lightMode: 'infoLight', darkMode: 'neutral' },
-  positive: { lightMode: 'positiveLight', darkMode: 'neutral' },
-  caution: { lightMode: 'cautionLight', darkMode: 'neutral' },
-  critical: { lightMode: 'criticalLight', darkMode: 'neutral' },
+  promote: 'promoteLight',
+  info: 'infoLight',
+  positive: 'positiveLight',
+  caution: 'cautionLight',
+  critical: 'criticalLight',
 };
 
 const borderForTone: Record<Tone, BoxShadow> = {
@@ -93,11 +92,7 @@ export const Alert = ({
             <Icon tone={tone} />
           </Column>
           <Column>
-            <Box className={textAlignedToIcon.standard}>
-              <DefaultTextPropsProvider tone={tone}>
-                {children}
-              </DefaultTextPropsProvider>
-            </Box>
+            <Box className={textAlignedToIcon.standard}>{children}</Box>
           </Column>
           {onClose ? (
             <Column width="content">

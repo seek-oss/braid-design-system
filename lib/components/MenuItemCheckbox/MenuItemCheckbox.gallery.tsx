@@ -5,7 +5,7 @@ import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+    background: 'surface',
     Example: ({ setDefaultState, getState, toggleState }) =>
       source(
         <>

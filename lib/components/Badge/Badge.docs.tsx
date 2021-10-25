@@ -56,7 +56,7 @@ const docs: ComponentDocs = {
           <Strong>strong</Strong>.
         </Text>
       ),
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="medium" align="center">
@@ -99,7 +99,7 @@ const docs: ComponentDocs = {
           </Text>
         </Fragment>
       ),
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="xsmall" alignY="center">

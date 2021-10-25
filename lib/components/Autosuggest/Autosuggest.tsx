@@ -137,11 +137,7 @@ function SuggestionItem({
         component="span"
         display="flex"
         justifyContent="spaceBetween"
-        background={
-          highlighted
-            ? { lightMode: 'formAccentSoft', darkMode: 'neutral' }
-            : undefined
-        }
+        background={highlighted ? 'formAccentSoft' : undefined}
         paddingX="small"
         paddingRight={onClear ? 'none' : undefined}
       >
@@ -692,10 +688,7 @@ export const Autosuggest = forwardRef(function <Value>(
                     display={isOpen ? 'block' : 'none'}
                     position="absolute"
                     zIndex="dropdown"
-                    background={{
-                      lightMode: 'surface',
-                      darkMode: 'surfaceDark',
-                    }}
+                    background="surface"
                     borderRadius="standard"
                     boxShadow="medium"
                     width="full"

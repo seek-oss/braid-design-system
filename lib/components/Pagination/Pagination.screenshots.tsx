@@ -132,7 +132,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'On a surface',
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () => (
         <Pagination
           label="Label"

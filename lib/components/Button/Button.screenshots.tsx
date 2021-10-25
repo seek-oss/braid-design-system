@@ -99,14 +99,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With vertical bleed (standard)',
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () => (
-        <Box
-          background={{ lightMode: 'neutralLight', darkMode: 'neutral' }}
-          borderRadius="standard"
-          padding="gutter"
-        >
-          <Box background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}>
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="surface">
             <Inline space="xsmall" alignY="center">
               <Heading level="2">Heading</Heading>
               <Button bleedY>Button</Button>
@@ -117,14 +113,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With vertical bleed (small)',
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () => (
-        <Box
-          background={{ lightMode: 'neutralLight', darkMode: 'neutral' }}
-          borderRadius="standard"
-          padding="gutter"
-        >
-          <Box background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}>
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="surface">
             <Inline space="xsmall" alignY="center">
               <Heading level="2">Heading</Heading>
               <Button bleedY size="small">

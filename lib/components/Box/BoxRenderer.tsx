@@ -12,17 +12,24 @@ export interface BoxRendererProps extends BoxBaseProps {
 
 const ColoredBoxRenderer = ({
   background,
+  boxShadow,
   children,
   className,
 }: {
   background: NonNullable<BoxRendererProps['background']>;
+  boxShadow: BoxRendererProps['boxShadow'];
   children: BoxRendererProps['children'];
   className: string;
 }) => {
-  const colorClasses = useColoredBoxClasses(background);
-  const element = children(clsx(className, colorClasses));
+  const { backgroundContext, classList } = useColoredBoxClasses({
+    background,
+    boxShadow,
+  });
+  const element = children(clsx(className, classList));
 
-  return renderBackgroundProvider(background, element);
+  return backgroundContext
+    ? renderBackgroundProvider(backgroundContext, element)
+    : element;
 };
 
 export const BoxRenderer = ({
@@ -30,12 +37,17 @@ export const BoxRenderer = ({
   component = 'div',
   className,
   background,
+  boxShadow,
   ...props
 }: BoxRendererProps) => {
   const classes = clsx(className, atoms({ reset: component, ...props }));
 
   return background ? (
-    <ColoredBoxRenderer background={background} className={classes}>
+    <ColoredBoxRenderer
+      background={background}
+      boxShadow={boxShadow}
+      className={classes}
+    >
       {children}
     </ColoredBoxRenderer>
   ) : (

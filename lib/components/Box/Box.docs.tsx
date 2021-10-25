@@ -517,10 +517,7 @@ const docs: ComponentDocs = {
               <Columns key={background} space="medium" alignY="center">
                 <Column width="content">
                   <Box
-                    background={{
-                      lightMode: 'surface',
-                      darkMode: 'surfaceDark',
-                    }}
+                    background="surface"
                     borderRadius="large"
                     padding="gutter"
                   >
@@ -639,16 +636,14 @@ const docs: ComponentDocs = {
               <Columns key={boxShadow} space="medium" alignY="center">
                 <Column width="content">
                   <Box
-                    background={
-                      !/^border|outline/.test(boxShadow)
-                        ? 'surface'
-                        : {
-                            lightMode: boxShadow.includes('Inverted')
-                              ? 'brand'
-                              : 'surface',
-                            darkMode: 'surfaceDark',
-                          }
-                    }
+                    background={{
+                      lightMode: boxShadow.includes('Inverted')
+                        ? 'neutral'
+                        : 'surface',
+                      darkMode: /^border|outline/.test(boxShadow)
+                        ? 'surfaceDark'
+                        : 'surface',
+                    }}
                     borderRadius="large"
                     padding="gutter"
                   >

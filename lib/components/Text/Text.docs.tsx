@@ -123,7 +123,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -152,7 +152,7 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -169,7 +169,7 @@ const docs: ComponentDocs = {
           text tone will be matched by default.
         </Text>
       ),
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">

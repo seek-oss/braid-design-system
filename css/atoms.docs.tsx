@@ -169,7 +169,7 @@ const docs: CssDoc = {
               };
             `}
           </Code>
-          <ThemedExample background="body">
+          <ThemedExample>
             <Stack space="gutter" align="center">
               <Inline space="gutter" align="center" alignY="center">
                 <Box
@@ -314,7 +314,7 @@ const docs: CssDoc = {
               };
             `}
           </Code>
-          <ThemedExample background="body">
+          <ThemedExample>
             <Inline space="medium" align="center">
               <Box
                 background="formAccentHover"
@@ -373,7 +373,7 @@ const docs: CssDoc = {
               ways when upgrading Braid.
             </Text>
           </Alert>
-          <ThemedExample background="body">
+          <ThemedExample>
             <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
               {Object.entries(
                 validateBoxShadows({

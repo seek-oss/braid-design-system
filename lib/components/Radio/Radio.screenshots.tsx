@@ -27,7 +27,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Disabled Radio Button',
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Example: ({ id, handler }) => (
         <Stack space="gutter">
           <Radio

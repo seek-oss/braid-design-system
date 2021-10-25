@@ -36,11 +36,7 @@ interface RenderExampleProps {
   example: ComponentExample;
 }
 const RenderExample = ({ example }: RenderExampleProps) => {
-  const {
-    label,
-    Container = DefaultContainer,
-    background = { lightMode: 'body', darkMode: 'bodyDark' },
-  } = example;
+  const { label, Container = DefaultContainer, background = 'body' } = example;
   const { value } = useSourceFromExample('id', example);
 
   return (

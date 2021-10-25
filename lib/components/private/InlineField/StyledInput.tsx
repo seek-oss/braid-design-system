@@ -150,7 +150,7 @@ export const StyledInput = forwardRef<
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
     const accentBackground: BoxProps['background'] = disabled
-      ? { lightMode: 'neutralLight', darkMode: 'neutral' }
+      ? 'neutralLight'
       : 'formAccent';
     const isMixed = isCheckbox && checked === 'mixed';
 

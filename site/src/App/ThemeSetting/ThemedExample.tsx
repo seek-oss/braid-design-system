@@ -29,11 +29,7 @@ export function ThemedExample({
                   darkMode: 'borderNeutralLarge',
                 }
           }
-          background={
-            transparent
-              ? undefined
-              : background || { lightMode: 'body', darkMode: 'bodyDark' }
-          }
+          background={transparent ? undefined : background || 'body'}
           padding={transparent ? undefined : ['small', 'medium', 'large']}
           className={styles.unthemedBorderRadius}
         >

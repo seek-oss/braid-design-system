@@ -4,12 +4,15 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import * as styles from './Toggle.css';
 import type { Size } from './Toggle.css';
+import {
+  BackgroundContextValue,
+  useColorContrast,
+} from '../Box/BackgroundContext';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
@@ -30,6 +33,21 @@ const handleChange =
     }
   };
 
+export const resolveBackground = ({
+  background,
+  light,
+  dark,
+}: {
+  background: BackgroundContextValue;
+  light: BackgroundContextValue;
+  dark: BackgroundContextValue;
+}) =>
+  background === 'surfaceDark' ||
+  background === 'bodyDark' ||
+  background === 'neutral'
+    ? dark
+    : light;
+
 export const Toggle = ({
   id,
   on,
@@ -39,7 +57,7 @@ export const Toggle = ({
   size = 'standard',
   data,
 }: ToggleProps) => {
-  const backgroundLightness = useBackgroundLightness();
+  const colorConstrast = useColorContrast();
 
   return (
     <Box
@@ -82,16 +100,13 @@ export const Toggle = ({
           width="full"
           overflow="hidden"
           borderRadius="full"
-          background={{
-            lightMode:
-              backgroundLightness.lightMode === 'light'
-                ? 'neutralLight'
-                : 'neutral',
-            darkMode:
-              backgroundLightness.darkMode === 'light'
-                ? 'neutralLight'
-                : 'neutral',
-          }}
+          background={colorConstrast((_, background) =>
+            resolveBackground({
+              background,
+              light: 'neutralLight',
+              dark: 'neutral',
+            }),
+          )}
           className={[styles.slideTrack[size], styles.slideTrackMask]}
         >
           <Box
@@ -105,16 +120,13 @@ export const Toggle = ({
         </Box>
         <Box
           position="absolute"
-          background={{
-            lightMode:
-              backgroundLightness.lightMode === 'light'
-                ? 'surface'
-                : 'surfaceDark',
-            darkMode:
-              backgroundLightness.darkMode === 'light'
-                ? 'surface'
-                : 'surfaceDark',
-          }}
+          background={colorConstrast((_, background) =>
+            resolveBackground({
+              background,
+              light: 'surface',
+              dark: 'surfaceDark',
+            }),
+          )}
           boxShadow="borderField"
           transition="fast"
           display="flex"

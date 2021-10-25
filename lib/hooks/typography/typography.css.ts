@@ -302,7 +302,7 @@ export const darkModeTone = styleVariants({
 });
 
 const neutralOverrideForBackground: Partial<
-  Record<keyof typeof vars.backgroundColor, keyof typeof vars.foregroundColor>
+  Record<keyof typeof vars.backgroundColor, keyof typeof textToneVars>
 > = {
   criticalLight: 'critical',
   criticalSoft: 'critical',
@@ -322,7 +322,7 @@ export const lightModeNeutralOverride = styleVariants(
       [`html:not(${darkMode}) &`]: {
         vars: {
           [textToneVars.neutral]:
-            vars.foregroundColor[textTone as keyof typeof vars.foregroundColor],
+            textToneVars[textTone as keyof typeof textToneVars],
         },
       },
     },
@@ -336,7 +336,7 @@ export const darkModeNeutralOverride = styleVariants(
       [`html${darkMode} &`]: {
         vars: {
           [textToneVars.neutral]:
-            vars.foregroundColor[textTone as keyof typeof vars.foregroundColor],
+            textToneVars[textTone as keyof typeof textToneVars],
         },
       },
     },

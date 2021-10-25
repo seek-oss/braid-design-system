@@ -6,7 +6,7 @@ import { Button, Heading, Inline, IconSend } from '../';
 export const galleryItems: ComponentExample[] = [
   {
     label: 'Default',
-    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+    background: 'surface',
     Example: () =>
       source(
         <Inline space="small">
@@ -19,7 +19,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Critical',
-    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+    background: 'surface',
     Example: () =>
       source(
         <Inline space="small">
@@ -38,7 +38,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'BrandAccent',
-    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+    background: 'surface',
     Example: () =>
       source(
         <Inline space="small">
@@ -57,7 +57,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Neutral',
-    background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+    background: 'surface',
     Example: () =>
       source(
         <Inline space="small">

@@ -35,7 +35,7 @@ export const darkMode = style({});
 const colorAtomicProperties = defineProperties({
   defaultCondition: 'lightMode',
   conditions: {
-    lightMode: {},
+    lightMode: { selector: `html:not(${darkMode}) &` },
     darkMode: { selector: `${darkMode} &` },
   },
   properties: colorProperties,

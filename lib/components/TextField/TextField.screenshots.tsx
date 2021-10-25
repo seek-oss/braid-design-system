@@ -123,7 +123,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'TextField with no visual label',
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Container,
       Example: ({ id, handler }) => (
         <TextField aria-label="Label" id={id} value="" onChange={handler} />

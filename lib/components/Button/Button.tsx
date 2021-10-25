@@ -67,7 +67,7 @@ type ButtonStyles = {
     | ColorContrastValue<BackgroundContextValue>
     | BackgroundContextValue
     | undefined;
-  boxShadow: ColorContrastValue<BoxShadow> | BoxShadow | undefined;
+  boxShadow: BoxShadow | undefined;
 };
 
 const variants: Record<
@@ -170,40 +170,28 @@ const variants: Record<
       background: undefined,
       backgroundHover: 'formAccentSoftHover',
       backgroundActive: 'formAccentSoftActive',
-      boxShadow: {
-        light: 'borderFormAccentLarge',
-        dark: 'borderFormAccentLightLarge',
-      },
+      boxShadow: 'borderFormAccentLarge',
     },
     brandAccent: {
       textTone: 'brandAccent',
       background: undefined,
       backgroundHover: 'brandAccentSoftHover',
       backgroundActive: 'brandAccentSoftActive',
-      boxShadow: {
-        light: 'borderBrandAccentLarge',
-        dark: 'borderBrandAccentLightLarge',
-      },
+      boxShadow: 'borderBrandAccentLarge',
     },
     critical: {
       textTone: 'critical',
       background: undefined,
       backgroundHover: 'criticalSoftHover',
       backgroundActive: 'criticalSoftActive',
-      boxShadow: {
-        light: 'borderCriticalLarge',
-        dark: 'borderCriticalLightLarge',
-      },
+      boxShadow: 'borderCriticalLarge',
     },
     neutral: {
       textTone: 'neutral',
       background: undefined,
       backgroundHover: 'neutralSoftHover',
       backgroundActive: 'neutralSoftActive',
-      boxShadow: {
-        light: 'borderNeutralLarge',
-        dark: 'borderNeutralInvertedLarge',
-      },
+      boxShadow: 'borderNeutralLarge',
     },
   },
 } as const;
@@ -282,12 +270,7 @@ export const ButtonOverlays = ({
       {stylesForVariant.boxShadow ? (
         <Box
           component="span"
-          boxShadow={
-            stylesForVariant.boxShadow &&
-            typeof stylesForVariant.boxShadow !== 'string'
-              ? colorConstrast(stylesForVariant.boxShadow)
-              : stylesForVariant.boxShadow
-          }
+          boxShadow={stylesForVariant.boxShadow}
           borderRadius="large"
           position="absolute"
           top={0}
@@ -324,7 +307,7 @@ export const ButtonOverlays = ({
         }
       >
         <Text
-          tone={variant !== 'solid' ? stylesForVariant.textTone : undefined}
+          tone={stylesForVariant.textTone}
           weight="medium"
           size={size}
           baseline={false}

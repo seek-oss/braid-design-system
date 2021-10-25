@@ -157,7 +157,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Dropdown with no visual label',
-      background: { lightMode: 'surface', darkMode: 'surfaceDark' },
+      background: 'surface',
       Container,
       Example: ({ id, handler }) => (
         <Dropdown
