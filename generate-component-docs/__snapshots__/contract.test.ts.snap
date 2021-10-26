@@ -431,7 +431,7 @@ Object {
         | "none"
         | "outlineFocus"
         | "small"
-        | { lightMode?: "small" | "large" | "medium" | "none" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | "borderCritical" | "borderCriticalLarge" | ... 19 more ... | undefined; darkMode?: "small" | ... 28 more ... | undefined; }
+        | Partial<Record<"lightMode" | "darkMode", "small" | "large" | "medium" | "none" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | ... 20 more ... | "outlineFocus">>
     capture?: 
         | false
         | string
@@ -1376,7 +1376,7 @@ Object {
         | "none"
         | "outlineFocus"
         | "small"
-        | { lightMode?: "small" | "large" | "medium" | "none" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | "borderCritical" | "borderCriticalLarge" | ... 19 more ... | undefined; darkMode?: "small" | ... 28 more ... | undefined; }
+        | Partial<Record<"lightMode" | "darkMode", "small" | "large" | "medium" | "none" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | ... 20 more ... | "outlineFocus">>
     children: (className: string) => ReactElement<any, string | JSXElementConstructor<any>> | null
     className?: ClassValue
     component?: 

@@ -13,9 +13,11 @@ export const root = style({
   textDecoration: 'none',
 });
 
+export const forceActive = style({});
+
 export const activeOverlay = style({
   selectors: {
-    [`${root}:active &`]: {
+    [`${root}:active &, ${forceActive}&`]: {
       opacity: 1,
     },
   },
@@ -140,7 +142,7 @@ export const invertedBackgroundsLightMode = styleVariants({
   active: {
     selectors: {
       [`html:not(${darkMode}) &`]: {
-        background: rgba('#000', 0.05),
+        background: rgba('#fff', 0.15),
       },
     },
   },
@@ -164,7 +166,7 @@ export const invertedBackgroundsDarkMode = styleVariants({
   active: {
     selectors: {
       [`html${darkMode} &`]: {
-        background: rgba('#000', 0.05),
+        background: rgba('#fff', 0.15),
       },
     },
   },

@@ -216,23 +216,36 @@ export const ButtonOverlays = ({
   tone,
   loading,
   children,
-}: ButtonProps) => {
+  keyboardFocusable = true,
+  labelSpacing = true,
+  forceActive = false,
+  radius = 'large',
+}: ButtonProps & {
+  keyboardFocusable?: boolean;
+  radius?: 'full' | 'large';
+  labelSpacing?: boolean;
+  forceActive?: boolean;
+}) => {
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
   const colorConstrast = useColorContrast();
   const lightness = useBackgroundLightness();
+  const labelMargin =
+    size === 'small' || variant === 'transparent' ? 'small' : 'medium';
 
   return (
     <>
+      {keyboardFocusable ? (
+        <FieldOverlay
+          borderRadius={radius}
+          variant="focus"
+          onlyVisibleForKeyboardNavigation
+          className={styles.focusOverlay}
+        />
+      ) : null}
       <FieldOverlay
-        borderRadius="large"
-        variant="focus"
-        onlyVisibleForKeyboardNavigation
-        className={styles.focusOverlay}
-      />
-      <FieldOverlay
-        borderRadius="large"
+        borderRadius={radius}
         background={
           stylesForVariant.backgroundHover &&
           typeof stylesForVariant.backgroundHover !== 'string'
@@ -250,7 +263,7 @@ export const ButtonOverlays = ({
         ]}
       />
       <FieldOverlay
-        borderRadius="large"
+        borderRadius={radius}
         background={
           stylesForVariant.backgroundActive &&
           typeof stylesForVariant.backgroundActive !== 'string'
@@ -258,6 +271,7 @@ export const ButtonOverlays = ({
             : stylesForVariant.backgroundActive
         }
         className={[
+          forceActive ? styles.forceActive : undefined,
           styles.activeOverlay,
           variant !== 'solid' && lightness.lightMode === 'dark'
             ? styles.invertedBackgroundsLightMode.active
@@ -271,7 +285,7 @@ export const ButtonOverlays = ({
         <Box
           component="span"
           boxShadow={stylesForVariant.boxShadow}
-          borderRadius="large"
+          borderRadius={radius}
           position="absolute"
           top={0}
           bottom={0}
@@ -286,13 +300,17 @@ export const ButtonOverlays = ({
         display="block"
         overflow="hidden"
         pointerEvents="none"
-        marginX={
-          size === 'small' || variant === 'transparent' ? 'small' : 'medium'
-        }
+        marginX={labelSpacing ? labelMargin : undefined}
         paddingY={
-          size === 'small' ? styles.constants.smallButtonPaddingSize : undefined
+          labelSpacing && size === 'small'
+            ? styles.constants.smallButtonPaddingSize
+            : undefined
         }
-        className={size === 'standard' ? touchableText.standard : undefined}
+        className={
+          labelSpacing && size === 'standard'
+            ? touchableText.standard
+            : undefined
+        }
         background={
           tone === 'neutral' && variant !== 'solid'
             ? {
@@ -326,7 +344,10 @@ export const useButtonStyles = ({
   tone,
   bleedY,
   loading,
-}: ButtonProps): BoxProps => {
+  radius = 'large',
+}: ButtonProps & {
+  radius?: 'full' | 'large';
+}): BoxProps => {
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
@@ -334,7 +355,7 @@ export const useButtonStyles = ({
   const lightness = useBackgroundLightness();
 
   return {
-    borderRadius: 'large',
+    borderRadius: radius,
     width: 'full',
     position: 'relative',
     display: 'block',
