@@ -12,9 +12,8 @@ import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
 import { InternalToast, ToastAction } from './ToastTypes';
-import { useBackgroundLightness } from '../Box/BackgroundContext';
+import { Keyline } from '../private/Keyline/Keyline';
 import * as styles from './Toast.css';
-import * as keylineStyles from '../private/keyline/keyline.css';
 
 const toneToIcon = {
   critical: IconCritical,
@@ -62,8 +61,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     },
     ref,
   ) => {
-    const backgroundLightness = useBackgroundLightness();
-
     const remove = useCallback(
       () => onClear(dedupeKey, id),
       [onClear, dedupeKey, id],
@@ -161,18 +158,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                     </Box>
                   </Column>
                 </Columns>
-                <Box
-                  paddingLeft="xxsmall"
-                  position="absolute"
-                  left={0}
-                  top={0}
-                  bottom={0}
-                  className={[
-                    keylineStyles.tone[tone],
-                    keylineStyles.lightMode[backgroundLightness.lightMode],
-                    keylineStyles.darkMode[backgroundLightness.darkMode],
-                  ]}
-                />
+                <Keyline tone={tone} borderRadius={borderRadius} />
               </Box>
             </ContentBlock>
           </Box>

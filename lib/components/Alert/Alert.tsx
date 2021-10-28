@@ -12,16 +12,13 @@ import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
-import {
-  useBackground,
-  useBackgroundLightness,
-} from '../Box/BackgroundContext';
+import { useBackground } from '../Box/BackgroundContext';
 import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
-import * as keylineStyles from '../private/keyline/keyline.css';
+import { Keyline } from '../private/Keyline/Keyline';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -60,8 +57,6 @@ const icons = {
   critical: IconCritical,
 };
 
-const highlightBarSize = 'xxsmall';
-
 export const Alert = ({
   tone = 'info',
   children,
@@ -70,7 +65,6 @@ export const Alert = ({
   data,
   onClose,
 }: AlertProps) => {
-  const backgroundLightness = useBackgroundLightness();
   const parentBackground = useBackground();
   const Icon = icons[tone];
 
@@ -86,25 +80,19 @@ export const Alert = ({
       aria-live="polite"
       {...(data ? buildDataAttributes(data) : undefined)}
     >
-      <Box paddingLeft={highlightBarSize}>
-        <Columns space="small">
+      <Columns space="small">
+        <Column width="content">
+          <Icon tone={tone} />
+        </Column>
+        <Column>
+          <Box className={textAlignedToIcon.standard}>{children}</Box>
+        </Column>
+        {onClose ? (
           <Column width="content">
-            <Icon tone={tone} />
+            <ClearButton tone="neutral" label={closeLabel} onClick={onClose} />
           </Column>
-          <Column>
-            <Box className={textAlignedToIcon.standard}>{children}</Box>
-          </Column>
-          {onClose ? (
-            <Column width="content">
-              <ClearButton
-                tone="neutral"
-                label={closeLabel}
-                onClick={onClose}
-              />
-            </Column>
-          ) : null}
-        </Columns>
-      </Box>
+        ) : null}
+      </Columns>
       {parentBackground.lightMode !== 'surface' && (
         <Overlay
           borderRadius={borderRadius}
@@ -112,18 +100,7 @@ export const Alert = ({
           visible
         />
       )}
-      <Box
-        paddingLeft={highlightBarSize}
-        position="absolute"
-        top={0}
-        bottom={0}
-        left={0}
-        className={[
-          keylineStyles.tone[tone],
-          keylineStyles.lightMode[backgroundLightness.lightMode],
-          keylineStyles.darkMode[backgroundLightness.darkMode],
-        ]}
-      />
+      <Keyline tone={tone} borderRadius={borderRadius} />
     </Box>
   );
 };

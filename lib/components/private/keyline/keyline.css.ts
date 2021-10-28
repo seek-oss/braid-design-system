@@ -1,6 +1,7 @@
 import {
   assignVars,
   createThemeContract,
+  style,
   styleVariants,
 } from '@vanilla-extract/css';
 import { darkMode as darkScope } from '../../../css/atoms/sprinkles.css';
@@ -12,6 +13,7 @@ const keylineVars = createThemeContract({
   positive: null,
   caution: null,
   critical: null,
+  formAccent: null,
 });
 
 const lightModeVars = assignVars(keylineVars, {
@@ -20,6 +22,7 @@ const lightModeVars = assignVars(keylineVars, {
   positive: vars.borderColor.positive,
   caution: vars.borderColor.caution,
   critical: vars.borderColor.critical,
+  formAccent: vars.borderColor.formAccent,
 });
 
 const darkModeVars = assignVars(keylineVars, {
@@ -28,15 +31,12 @@ const darkModeVars = assignVars(keylineVars, {
   positive: vars.borderColor.positiveLight,
   caution: vars.borderColor.cautionLight,
   critical: vars.borderColor.criticalLight,
+  formAccent: vars.borderColor.formAccentLight,
 });
 
-export const tone = styleVariants({
-  promote: { background: keylineVars.promote },
-  info: { background: keylineVars.info },
-  positive: { background: keylineVars.positive },
-  caution: { background: keylineVars.caution },
-  critical: { background: keylineVars.critical },
-});
+export const tone = styleVariants(keylineVars, (_, name) => ({
+  background: keylineVars[name],
+}));
 
 export const lightMode = styleVariants({
   light: {
@@ -70,4 +70,13 @@ export const darkMode = styleVariants({
       },
     },
   },
+});
+
+export const noRadiusOnRight = style({
+  borderTopRightRadius: '0 !important',
+  borderBottomRightRadius: '0 !important',
+});
+
+export const largestWidth = style({
+  width: vars.borderRadius.xlarge,
 });
