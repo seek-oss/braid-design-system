@@ -40,5 +40,6 @@ export const hoverOverlay = style({
 
 export const verticalDivider = style({
   width: vars.borderWidth.standard,
-  background: vars.borderColor.neutralLight,
+  background: vars.borderColor.field,
+  opacity: 0.4,
 });
