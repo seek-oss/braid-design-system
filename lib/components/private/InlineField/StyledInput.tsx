@@ -10,8 +10,6 @@ import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { IconMinus, IconTick } from '../../icons';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { Box, BoxProps } from '../../Box/Box';
-import { useColorContrast } from '../../Box/BackgroundContext';
-import { resolveFieldBackground } from '../Field/Field';
 import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
 
@@ -153,11 +151,9 @@ export const StyledInput = forwardRef<
       ? 'neutralLight'
       : 'formAccent';
     const isMixed = isCheckbox && checked === 'mixed';
-
-    const colorConstrast = useColorContrast();
-    const fieldBackground = colorConstrast((_, background) =>
-      resolveFieldBackground({ background, disabled }),
-    );
+    const fieldBackground: BoxProps['background'] = disabled
+      ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+      : { lightMode: 'surface', darkMode: 'transparent' };
 
     useEffect(() => {
       if (ref && typeof ref === 'object' && ref.current && isCheckbox) {

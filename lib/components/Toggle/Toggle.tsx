@@ -7,12 +7,9 @@ import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { useBackgroundLightness } from '../Box/BackgroundContext';
 import * as styles from './Toggle.css';
 import type { Size } from './Toggle.css';
-import {
-  BackgroundContextValue,
-  useColorContrast,
-} from '../Box/BackgroundContext';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
@@ -33,21 +30,6 @@ const handleChange =
     }
   };
 
-export const resolveBackground = ({
-  background,
-  light,
-  dark,
-}: {
-  background: BackgroundContextValue;
-  light: BackgroundContextValue;
-  dark: BackgroundContextValue;
-}) =>
-  background === 'surfaceDark' ||
-  background === 'bodyDark' ||
-  background === 'neutral'
-    ? dark
-    : light;
-
 export const Toggle = ({
   id,
   on,
@@ -57,7 +39,7 @@ export const Toggle = ({
   size = 'standard',
   data,
 }: ToggleProps) => {
-  const colorConstrast = useColorContrast();
+  const lightness = useBackgroundLightness();
 
   return (
     <Box
@@ -100,14 +82,12 @@ export const Toggle = ({
           width="full"
           overflow="hidden"
           borderRadius="full"
-          background={colorConstrast((_, background) =>
-            resolveBackground({
-              background,
-              light: 'neutralLight',
-              dark: 'neutral',
-            }),
-          )}
-          className={[styles.slideTrack[size], styles.slideTrackMask]}
+          className={[
+            styles.slideTrack[size],
+            styles.slideTrackMask,
+            styles.slideTrackBgLightMode[lightness.lightMode],
+            styles.slideTrackBgDarkMode[lightness.darkMode],
+          ]}
         >
           <Box
             position="absolute"
@@ -120,13 +100,7 @@ export const Toggle = ({
         </Box>
         <Box
           position="absolute"
-          background={colorConstrast((_, background) =>
-            resolveBackground({
-              background,
-              light: 'surface',
-              dark: 'surfaceDark',
-            }),
-          )}
+          background="surface"
           boxShadow="borderField"
           transition="fast"
           display="flex"

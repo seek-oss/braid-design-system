@@ -13,10 +13,6 @@ import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import { useText, touchableText } from '../../../hooks/typography';
 import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
-import {
-  BackgroundContextValue,
-  useColorContrast,
-} from '../../Box/BackgroundContext';
 import * as styles from './Field.css';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
@@ -93,24 +89,6 @@ type InternalFieldProps = FieldBaseProps &
     ): ReactNode;
   };
 
-export const resolveFieldBackground = ({
-  background,
-  disabled,
-}: {
-  background: BackgroundContextValue;
-  disabled?: boolean;
-}) => {
-  if (
-    background === 'surfaceDark' ||
-    background === 'bodyDark' ||
-    background === 'neutral'
-  ) {
-    return disabled ? 'neutral' : 'transparent';
-  }
-
-  return disabled ? 'neutralSoft' : 'surface';
-};
-
 export const Field = ({
   id,
   value,
@@ -143,10 +121,9 @@ export const Field = ({
     'description' in restProps && restProps.description
       ? `${id}-description`
       : undefined;
-  const colorConstrast = useColorContrast();
-  const fieldBackground = colorConstrast((_, background) =>
-    resolveFieldBackground({ background, disabled }),
-  );
+  const fieldBackground: BoxProps['background'] = disabled
+    ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+    : { lightMode: 'surface', darkMode: 'transparent' };
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
   const hasVisualLabel = 'label' in restProps;

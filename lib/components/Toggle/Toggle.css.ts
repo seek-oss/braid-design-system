@@ -3,6 +3,8 @@ import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
 import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';
+import { rgba } from 'polished';
+import { darkMode } from '../../css/atoms/sprinkles.css';
 
 const sizes = {
   standard: 'standard',
@@ -60,6 +62,40 @@ export const slideContainerSize = styleVariants(sizes, (size) => ({
 export const slideTrack = styleVariants(sizes, (size) => ({
   height: calc.subtract(vars.inlineFieldSize[size], vars.grid),
 }));
+
+export const slideTrackBgLightMode = styleVariants({
+  light: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        background: rgba('#000', 0.08),
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html:not(${darkMode}) &`]: {
+        background: rgba('#fff', 0.12),
+      },
+    },
+  },
+});
+
+export const slideTrackBgDarkMode = styleVariants({
+  light: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        background: rgba('#000', 0.08),
+      },
+    },
+  },
+  dark: {
+    selectors: {
+      [`html${darkMode} &`]: {
+        background: rgba('#fff', 0.12),
+      },
+    },
+  },
+});
 
 export const slideTrackMask = style({
   // Fix for Safari border-radius, overflow hidden, transform bug:

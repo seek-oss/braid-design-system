@@ -314,10 +314,7 @@ export const MenuRenderer = ({
               })}
             </Box>
             <Overlay
-              boxShadow={{
-                lightMode: 'borderNeutralLight',
-                darkMode: 'borderNeutral',
-              }}
+              boxShadow="borderNeutralLight"
               borderRadius={borderRadius}
               visible
             />
