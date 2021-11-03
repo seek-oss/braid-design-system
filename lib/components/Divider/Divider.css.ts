@@ -4,7 +4,7 @@ import {
   style,
   styleVariants,
 } from '@vanilla-extract/css';
-import { darkMode } from '../../css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../css/colorModeStyle';
 import { vars } from '../../themes/vars.css';
 
 export const base = style({
@@ -20,24 +20,20 @@ export const regular = style({ background: weightVars.regular });
 export const strong = style({ background: weightVars.strong });
 
 export const weight = styleVariants({
-  light: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        vars: assignVars(weightVars, {
-          regular: vars.borderColor.neutralLight,
-          strong: vars.borderColor.neutral,
-        }),
-      },
+  light: colorModeStyle({
+    lightMode: {
+      vars: assignVars(weightVars, {
+        regular: vars.borderColor.neutralLight,
+        strong: vars.borderColor.neutral,
+      }),
     },
-  },
-  dark: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        vars: assignVars(weightVars, {
-          regular: vars.borderColor.neutral,
-          strong: vars.borderColor.neutralLight,
-        }),
-      },
+  }),
+  dark: colorModeStyle({
+    darkMode: {
+      vars: assignVars(weightVars, {
+        regular: vars.borderColor.neutral,
+        strong: vars.borderColor.neutralLight,
+      }),
     },
-  },
+  }),
 });

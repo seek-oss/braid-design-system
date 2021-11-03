@@ -1,5 +1,5 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css';
-import { darkMode } from '../../../../../lib/css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../../../../lib/css/colorModeStyle';
 import { vars } from '../../../../../lib/themes/vars.css';
 
 export const loader = style({
@@ -16,18 +16,18 @@ export const divider = style({
   borderRight: `${vars.borderWidth.standard} solid ${borderColor}`,
   width: 1,
   height: vars.textSize.standard.mobile.lineHeight,
-  selectors: {
-    [`html:not(${darkMode}) &`]: {
+  ...colorModeStyle({
+    lightMode: {
       vars: {
         [borderColor]: vars.borderColor.neutralLight,
       },
     },
-    [`html${darkMode} &`]: {
+    darkMode: {
       vars: {
         [borderColor]: vars.borderColor.neutral,
       },
     },
-  },
+  }),
 });
 
 export const grabCursor = style({

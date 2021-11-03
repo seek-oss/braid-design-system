@@ -4,7 +4,7 @@ import {
   style,
   styleVariants,
 } from '@vanilla-extract/css';
-import { darkMode as darkScope } from '../../../css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../../css/colorModeStyle';
 import { vars } from '../../../themes/vars.css';
 
 const keylineVars = createThemeContract({
@@ -39,37 +39,29 @@ export const tone = styleVariants(keylineVars, (_, name) => ({
 }));
 
 export const lightMode = styleVariants({
-  light: {
-    selectors: {
-      [`html:not(${darkScope}) &`]: {
-        vars: lightModeVars,
-      },
+  light: colorModeStyle({
+    lightMode: {
+      vars: lightModeVars,
     },
-  },
-  dark: {
-    selectors: {
-      [`html:not(${darkScope}) &`]: {
-        vars: darkModeVars,
-      },
+  }),
+  dark: colorModeStyle({
+    lightMode: {
+      vars: darkModeVars,
     },
-  },
+  }),
 });
 
 export const darkMode = styleVariants({
-  light: {
-    selectors: {
-      [`html${darkScope} &`]: {
-        vars: lightModeVars,
-      },
+  light: colorModeStyle({
+    darkMode: {
+      vars: lightModeVars,
     },
-  },
-  dark: {
-    selectors: {
-      [`html${darkScope} &`]: {
-        vars: darkModeVars,
-      },
+  }),
+  dark: colorModeStyle({
+    darkMode: {
+      vars: darkModeVars,
     },
-  },
+  }),
 });
 
 export const noRadiusOnRight = style({

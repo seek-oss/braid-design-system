@@ -1,23 +1,23 @@
 import { style } from '@vanilla-extract/css';
-import { darkMode } from '../../css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../css/colorModeStyle';
 
 export const hover = style({});
 
-export const lightModeCurrentKeyline = style({
-  selectors: {
-    [`html:not(${darkMode}) &`]: {
+export const lightModeCurrentKeyline = style(
+  colorModeStyle({
+    lightMode: {
       opacity: 0.3,
     },
-  },
-});
+  }),
+);
 
-export const darkModeCurrentKeyline = style({
-  selectors: {
-    [`html${darkMode} &`]: {
+export const darkModeCurrentKeyline = style(
+  colorModeStyle({
+    darkMode: {
       opacity: 0.3,
     },
-  },
-});
+  }),
+);
 
 export const current = style({
   opacity: 0.075,

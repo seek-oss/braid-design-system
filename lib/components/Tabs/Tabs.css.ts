@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { darkMode } from '../../css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../css/colorModeStyle';
 import { vars } from '../../themes/vars.css';
 
 export const tab = style({
@@ -55,13 +55,13 @@ export const tabUnderline = style({
   height: 2,
 });
 
-export const tabUnderlineActiveDarkMode = style({
-  selectors: {
-    [`html${darkMode} &`]: {
+export const tabUnderlineActiveDarkMode = style(
+  colorModeStyle({
+    darkMode: {
       background: vars.borderColor.formAccentLight,
     },
-  },
-});
+  }),
+);
 
 export const tabUnderlineHover = style({
   selectors: {

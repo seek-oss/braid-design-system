@@ -1,6 +1,6 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { darkMode } from '../../../../../lib/css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../../../../lib/css/colorModeStyle';
 import { vars } from '../../../../../lib/themes/vars.css';
 
 const activeUnderlineVar = createVar();
@@ -20,22 +20,18 @@ export const centerHorizontally = style({
 });
 
 export const activeUnderlineColor = styleVariants({
-  light: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        vars: {
-          [activeUnderlineVar]: vars.borderColor.neutral,
-        },
+  light: colorModeStyle({
+    lightMode: {
+      vars: {
+        [activeUnderlineVar]: vars.borderColor.neutral,
       },
     },
-  },
-  dark: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        vars: {
-          [activeUnderlineVar]: vars.borderColor.neutralLight,
-        },
+  }),
+  dark: colorModeStyle({
+    darkMode: {
+      vars: {
+        [activeUnderlineVar]: vars.borderColor.neutralLight,
       },
     },
-  },
+  }),
 });

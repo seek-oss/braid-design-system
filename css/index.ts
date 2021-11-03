@@ -1,5 +1,6 @@
 import { vars as internalVars } from '../lib/themes/vars.css';
 import { atoms as internalAtoms, Atoms } from '../lib/css/atoms/atoms';
+import { colorModeStyle } from '../lib/css/colorModeStyle';
 import { responsiveStyle } from '../lib/css/responsiveStyle';
 import { breakpoints } from '../lib/css/breakpoints';
 import { globalHeadingStyle, globalTextStyle } from '../lib/hooks/typography';
@@ -46,6 +47,7 @@ export {
   atoms,
   breakpoints,
   responsiveStyle,
+  colorModeStyle,
   globalTextStyle,
   globalHeadingStyle,
 };

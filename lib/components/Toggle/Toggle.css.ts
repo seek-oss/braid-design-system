@@ -4,7 +4,7 @@ import { vars } from '../../themes/vars.css';
 import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';
 import { rgba } from 'polished';
-import { darkMode } from '../../css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../css/colorModeStyle';
 
 const sizes = {
   standard: 'standard',
@@ -64,37 +64,29 @@ export const slideTrack = styleVariants(sizes, (size) => ({
 }));
 
 export const slideTrackBgLightMode = styleVariants({
-  light: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        background: rgba('#000', 0.08),
-      },
+  light: colorModeStyle({
+    lightMode: {
+      background: rgba('#000', 0.08),
     },
-  },
-  dark: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        background: rgba('#fff', 0.12),
-      },
+  }),
+  dark: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.12),
     },
-  },
+  }),
 });
 
 export const slideTrackBgDarkMode = styleVariants({
-  light: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        background: rgba('#000', 0.08),
-      },
+  light: colorModeStyle({
+    darkMode: {
+      background: rgba('#000', 0.08),
     },
-  },
-  dark: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        background: rgba('#fff', 0.12),
-      },
+  }),
+  dark: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.12),
     },
-  },
+  }),
 });
 
 export const slideTrackMask = style({

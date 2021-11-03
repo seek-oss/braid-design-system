@@ -1,7 +1,7 @@
 import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { rgba } from 'polished';
-import { darkMode } from '../../css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -125,49 +125,37 @@ export const loadingDot = style({
 });
 
 export const invertedBackgroundsLightMode = styleVariants({
-  soft: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        background: rgba('#fff', 0.1),
-      },
+  soft: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.1),
     },
-  },
-  hover: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        background: rgba('#fff', 0.15),
-      },
+  }),
+  hover: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.15),
     },
-  },
-  active: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        background: rgba('#fff', 0.15),
-      },
+  }),
+  active: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.15),
     },
-  },
+  }),
 });
 
 export const invertedBackgroundsDarkMode = styleVariants({
-  soft: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        background: rgba('#fff', 0.1),
-      },
+  soft: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.1),
     },
-  },
-  hover: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        background: rgba('#fff', 0.15),
-      },
+  }),
+  hover: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.15),
     },
-  },
-  active: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        background: rgba('#fff', 0.15),
-      },
+  }),
+  active: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.15),
     },
-  },
+  }),
 });
