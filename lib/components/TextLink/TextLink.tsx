@@ -54,10 +54,12 @@ export const useLinkStyles = ({
     weight === 'weak'
       ? typographyStyles.weakLink
       : [
-          isPlainBackground(backgroundContext.lightMode, 'light')
+          isPlainBackground(backgroundContext.lightMode, 'light') ||
+          weight === 'regular'
             ? typographyStyles.lightModeTextLink[backgroundLightness.lightMode]
             : typographyStyles.weakLink,
-          isPlainBackground(backgroundContext.darkMode, 'dark')
+          isPlainBackground(backgroundContext.darkMode, 'dark') ||
+          weight === 'regular'
             ? typographyStyles.darkModeTextLink[backgroundLightness.darkMode]
             : typographyStyles.weakLink,
         ];
