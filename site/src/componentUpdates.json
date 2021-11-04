@@ -2002,5 +2002,9 @@
         "summary": "**FieldLabel:** Dim label when `disabled`"
       }
     ]
+  },
+  {
+    "version": "30.5.1",
+    "updates": []
   }
 ]
