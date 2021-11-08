@@ -70,7 +70,7 @@ export default function (): PluginObj<Context> {
                 typeof attr.node.name.name !== 'string' ||
                 !isPropDeprecated(elementName, attr.node.name.name)
               ) {
-                return;
+                continue;
               }
 
               const attributeValue = deArray(attr.get('value'));
