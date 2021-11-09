@@ -7761,6 +7761,9 @@ Object {
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
+    ref?: 
+        | (instance: HTMLInputElement | null) => void
+        | RefObject<HTMLInputElement>
     size?: 
         | "small"
         | "standard"
