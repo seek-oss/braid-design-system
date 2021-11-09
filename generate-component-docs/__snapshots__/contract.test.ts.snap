@@ -7448,6 +7448,7 @@ Object {
         | "standard"
     id?: string
     onClick?: MouseEventHandler<HTMLSpanElement>
+    tabIndex?: number
     weight?: 
         | "regular"
         | "weak"
