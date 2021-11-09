@@ -2017,5 +2017,16 @@
         "summary": "**TextLinkButton:** Add support for `tabIndex`"
       }
     ]
+  },
+  {
+    "version": "30.7.0",
+    "updates": [
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Add ref support"
+      }
+    ]
   }
 ]

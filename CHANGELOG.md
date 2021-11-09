@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 30.7.0
+
+### Minor Changes
+
+- **Toggle:** Add ref support ([#1029](https://github.com/seek-oss/braid-design-system/pull/1029))
+
 ## 30.6.0
 
 ### Minor Changes
