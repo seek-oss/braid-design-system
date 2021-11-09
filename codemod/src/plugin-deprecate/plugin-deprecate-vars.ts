@@ -147,7 +147,7 @@ export default function (): PluginObj<PluginPass> {
                 ) {
                   const binding = path.scope.getBinding(specifier.local.name);
                   if (!binding) {
-                    return;
+                    continue;
                   }
 
                   for (const refPath of binding.referencePaths) {
