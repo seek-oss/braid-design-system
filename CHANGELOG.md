@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 30.6.0
+
+### Minor Changes
+
+- **TextLinkButton:** Add support for `tabIndex` ([#1025](https://github.com/seek-oss/braid-design-system/pull/1025))
+
 ## 30.5.1
 
 ### Patch Changes

@@ -2006,5 +2006,16 @@
   {
     "version": "30.5.1",
     "updates": []
+  },
+  {
+    "version": "30.6.0",
+    "updates": [
+      {
+        "updated": [
+          "TextLinkButton"
+        ],
+        "summary": "**TextLinkButton:** Add support for `tabIndex`"
+      }
+    ]
   }
 ]
