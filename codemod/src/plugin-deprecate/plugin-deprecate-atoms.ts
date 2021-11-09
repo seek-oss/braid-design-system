@@ -61,7 +61,7 @@ export default function (): PluginObj<Context> {
             if (t.isIdentifier(argPath.node)) {
               const argBinding = path.scope.getBinding(argPath.node.name);
               if (!argBinding) {
-                return;
+                continue;
               }
               argBinding.path.traverse(subVisitor, {
                 ...this,

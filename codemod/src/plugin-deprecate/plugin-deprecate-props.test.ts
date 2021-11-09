@@ -93,6 +93,28 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     };`,
   },
   {
+    title:
+      'Visit Braid component where non-deprecated props preceed a deprecated prop in the prop list',
+    code: dedent`
+    import { Box } from 'braid-design-system';
+    export default () => {
+      return (
+        <div background="card">
+          <Box className="stylez" background={true ? 'card' : 'body'} />
+        </div>
+      );
+    };`,
+    output: dedent`
+    import { Box } from 'braid-design-system';
+    export default () => {
+      return (
+        <div background="card">
+          <Box className="stylez" background={true ? 'surface' : 'body'} />
+        </div>
+      );
+    };`,
+  },
+  {
     title: 'Visit Braid component using ternary as props values',
     code: dedent`
     import { Box } from 'braid-design-system';
