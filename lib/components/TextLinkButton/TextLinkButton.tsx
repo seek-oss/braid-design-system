@@ -21,6 +21,7 @@ export interface TextLinkButtonProps
   'aria-controls'?: NativeSpanProps['aria-controls'];
   'aria-expanded'?: NativeSpanProps['aria-expanded'];
   'aria-describedby'?: NativeSpanProps['aria-describedby'];
+  tabIndex?: NativeSpanProps['tabIndex'];
 }
 
 const noop = () => {};
@@ -34,6 +35,7 @@ export const TextLinkButton = ({
   'aria-controls': ariaControls,
   'aria-expanded': ariaExpanded,
   'aria-describedby': ariaDescribedBy,
+  tabIndex,
 }: TextLinkButtonProps) => {
   const buttonRef = useRef<HTMLSpanElement>(null);
   const classes = useLinkStyles({
@@ -56,7 +58,7 @@ export const TextLinkButton = ({
     <Box
       ref={buttonRef}
       role="button"
-      tabIndex={0}
+      tabIndex={tabIndex ?? 0}
       component="span"
       onClick={onClick}
       onKeyDown={handleKeyboard}

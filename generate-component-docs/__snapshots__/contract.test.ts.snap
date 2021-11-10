@@ -427,8 +427,9 @@ Object {
         | "outlineFocus"
         | "small"
     capture?: 
+        | "environment"
+        | "user"
         | false
-        | string
         | true
     cellPadding?: 
         | number
@@ -7335,6 +7336,7 @@ Object {
         | "standard"
     id?: string
     onClick?: MouseEventHandler<HTMLSpanElement>
+    tabIndex?: number
     weight?: 
         | "regular"
         | "weak"
@@ -7454,6 +7456,9 @@ Object {
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
+    ref?: 
+        | (instance: HTMLInputElement | null) => void
+        | RefObject<HTMLInputElement>
     size?: 
         | "small"
         | "standard"
@@ -7479,8 +7484,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@606: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1513: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@iterator@609: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@1516: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>

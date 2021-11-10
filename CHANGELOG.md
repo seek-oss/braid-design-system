@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 30.7.0
+
+### Minor Changes
+
+- **Toggle:** Add ref support ([#1029](https://github.com/seek-oss/braid-design-system/pull/1029))
+
+## 30.6.0
+
+### Minor Changes
+
+- **TextLinkButton:** Add support for `tabIndex` ([#1025](https://github.com/seek-oss/braid-design-system/pull/1025))
+
+## 30.5.1
+
+### Patch Changes
+
+- Move `@types/react` to devDependencies ([#1023](https://github.com/seek-oss/braid-design-system/pull/1023))
+
+  Braid requires consumers to provide React, therefore they should also provide the appropriate version of `@types/react` rather than rely on the version installed in Braid.
+
 ## 30.5.0
 
 ### Minor Changes
