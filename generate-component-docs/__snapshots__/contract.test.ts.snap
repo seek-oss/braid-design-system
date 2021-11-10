@@ -433,8 +433,9 @@ Object {
         | "small"
         | Partial<Record<"lightMode" | "darkMode", "small" | "large" | "medium" | "none" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | ... 20 more ... | "outlineFocus">>
     capture?: 
+        | "environment"
+        | "user"
         | false
-        | string
         | true
     cellPadding?: 
         | number
@@ -7347,6 +7348,7 @@ Object {
         | "standard"
     id?: string
     onClick?: MouseEventHandler<HTMLSpanElement>
+    tabIndex?: number
     weight?: 
         | "regular"
         | "weak"
@@ -7466,6 +7468,9 @@ Object {
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
+    ref?: 
+        | (instance: HTMLInputElement | null) => void
+        | RefObject<HTMLInputElement>
     size?: 
         | "small"
         | "standard"
@@ -7491,8 +7496,8 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@608: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1518: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@iterator@611: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    __@unscopables@1521: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>

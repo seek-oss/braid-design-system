@@ -250,7 +250,7 @@ const docs: ComponentDocs = {
       label: 'Inserting an icon',
       description: (
         <Text>
-          For decoration and help disguinishing fields an <Strong>icon</Strong>{' '}
+          For decoration and help distinguishing fields an <Strong>icon</Strong>{' '}
           can be provided. This will be placed in the left of the field and is
           not interactive.
         </Text>
