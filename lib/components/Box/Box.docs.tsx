@@ -386,16 +386,16 @@ const docs: ComponentDocs = {
           </Code>
           <Text>
             When a <TextLink href="/components/Text">Text</TextLink> component
-            is placed on a dark background, the foreground colour may be
-            inverted based on the{' '}
+            is placed on a dark background, the foreground colour either inverts
+            or lightens based on the{' '}
             <TextLink href="/components/Text#contrast">
               contrast rules of Text.
             </TextLink>
           </Text>
           <Text>
-            When using custom backgrounds or images, this behaviour can no
-            longer work by default. You can opt back into this behaviour by
-            setting the <Strong>background</Strong> to either{' '}
+            When using custom backgrounds or images, this can no longer work by
+            default. However, you can opt back into this behaviour by setting
+            the <Strong>background</Strong> to either{' '}
             <Strong>customLight</Strong> or <Strong>customDark</Strong>.
           </Text>
           <Stack space="xxsmall">
