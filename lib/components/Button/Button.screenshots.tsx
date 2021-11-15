@@ -2,7 +2,6 @@ import React, { Fragment, ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Button } from '../';
 import { Inline } from '../Inline/Inline';
-import { Stack } from '../Stack/Stack';
 import { Heading } from '../Heading/Heading';
 import { backgrounds } from '../../utils/docsHelpers';
 
@@ -11,25 +10,25 @@ const Container = ({ children }: { children: ReactNode }) => (
 );
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
+  screenshotWidths: [768],
   examples: [
     {
       label: 'Default',
       Container,
       Example: () => (
-        <Stack space="small">
+        <Inline space="small">
           <Button>Solid</Button>
           <Button variant="ghost">Ghost</Button>
           <Button variant="soft">Soft</Button>
           <Button variant="transparent">Transparent</Button>
-        </Stack>
+        </Inline>
       ),
     },
     {
       label: 'Critical',
       Container,
       Example: () => (
-        <Stack space="small">
+        <Inline space="small">
           <Button tone="critical">Solid</Button>
           <Button tone="critical" variant="ghost">
             Ghost
@@ -40,14 +39,14 @@ export const screenshots: ComponentScreenshot = {
           <Button tone="critical" variant="transparent">
             Transparent
           </Button>
-        </Stack>
+        </Inline>
       ),
     },
     {
       label: 'BrandAccent',
       Container,
       Example: () => (
-        <Stack space="small">
+        <Inline space="small">
           <Button tone="brandAccent">Solid</Button>
           <Button tone="brandAccent" variant="ghost">
             Ghost
@@ -58,14 +57,14 @@ export const screenshots: ComponentScreenshot = {
           <Button tone="brandAccent" variant="transparent">
             Transparent
           </Button>
-        </Stack>
+        </Inline>
       ),
     },
     {
       label: 'Neutral',
       Container,
       Example: () => (
-        <Stack space="small">
+        <Inline space="small">
           <Button tone="neutral">Solid</Button>
           <Button tone="neutral" variant="ghost">
             Ghost
@@ -76,14 +75,14 @@ export const screenshots: ComponentScreenshot = {
           <Button tone="neutral" variant="transparent">
             Transparent
           </Button>
-        </Stack>
+        </Inline>
       ),
     },
     {
       label: 'Small size',
       Container,
       Example: () => (
-        <Stack space="small">
+        <Inline space="small">
           <Button size="small">Solid</Button>
           <Button size="small" variant="ghost">
             Ghost
@@ -94,7 +93,7 @@ export const screenshots: ComponentScreenshot = {
           <Button size="small" variant="transparent">
             Transparent
           </Button>
-        </Stack>
+        </Inline>
       ),
     },
     {
@@ -134,12 +133,12 @@ export const screenshots: ComponentScreenshot = {
         <Fragment>
           {backgrounds.map((background) => (
             <Box key={background} background={background} padding="medium">
-              <Stack space="small">
+              <Inline space="small">
                 <Button>Solid</Button>
                 <Button variant="ghost">Ghost</Button>
                 <Button variant="soft">Soft</Button>
                 <Button variant="transparent">Transparent</Button>
-              </Stack>
+              </Inline>
             </Box>
           ))}
         </Fragment>
@@ -152,7 +151,7 @@ export const screenshots: ComponentScreenshot = {
         <Fragment>
           {backgrounds.map((background) => (
             <Box key={background} background={background} padding="medium">
-              <Stack space="small">
+              <Inline space="small">
                 <Button tone="critical">Solid</Button>
                 <Button tone="critical" variant="ghost">
                   Ghost
@@ -163,7 +162,7 @@ export const screenshots: ComponentScreenshot = {
                 <Button tone="critical" variant="transparent">
                   Transparent
                 </Button>
-              </Stack>
+              </Inline>
             </Box>
           ))}
         </Fragment>
@@ -176,7 +175,7 @@ export const screenshots: ComponentScreenshot = {
         <Fragment>
           {backgrounds.map((background) => (
             <Box key={background} background={background} padding="medium">
-              <Stack space="small">
+              <Inline space="small">
                 <Button tone="brandAccent">Solid</Button>
                 <Button tone="brandAccent" variant="ghost">
                   Ghost
@@ -187,7 +186,7 @@ export const screenshots: ComponentScreenshot = {
                 <Button tone="brandAccent" variant="transparent">
                   Transparent
                 </Button>
-              </Stack>
+              </Inline>
             </Box>
           ))}
         </Fragment>
@@ -200,7 +199,7 @@ export const screenshots: ComponentScreenshot = {
         <Fragment>
           {backgrounds.map((background) => (
             <Box key={background} background={background} padding="medium">
-              <Stack space="small">
+              <Inline space="small">
                 <Button tone="neutral">Solid</Button>
                 <Button tone="neutral" variant="ghost">
                   Ghost
@@ -211,7 +210,7 @@ export const screenshots: ComponentScreenshot = {
                 <Button tone="neutral" variant="transparent">
                   Transparent
                 </Button>
-              </Stack>
+              </Inline>
             </Box>
           ))}
         </Fragment>
