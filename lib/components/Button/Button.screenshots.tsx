@@ -1,20 +1,15 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Box, Button } from '../';
 import { Inline } from '../Inline/Inline';
 import { Heading } from '../Heading/Heading';
 import { backgrounds } from '../../utils/docsHelpers';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
-
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],
   examples: [
     {
       label: 'Default',
-      Container,
       Example: () => (
         <Inline space="small">
           <Button>Solid</Button>
@@ -26,7 +21,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Critical',
-      Container,
       Example: () => (
         <Inline space="small">
           <Button tone="critical">Solid</Button>
@@ -44,7 +38,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'BrandAccent',
-      Container,
       Example: () => (
         <Inline space="small">
           <Button tone="brandAccent">Solid</Button>
@@ -62,7 +55,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Neutral',
-      Container,
       Example: () => (
         <Inline space="small">
           <Button tone="neutral">Solid</Button>
@@ -80,7 +72,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Small size',
-      Container,
       Example: () => (
         <Inline space="small">
           <Button size="small">Solid</Button>
@@ -128,11 +119,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Contrast',
-      Container,
       Example: () => (
         <Fragment>
           {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="medium">
+            <Box key={background} background={background} padding="small">
               <Inline space="small">
                 <Button>Solid</Button>
                 <Button variant="ghost">Ghost</Button>
@@ -146,11 +136,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Contrast - critical',
-      Container,
       Example: () => (
         <Fragment>
           {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="medium">
+            <Box key={background} background={background} padding="small">
               <Inline space="small">
                 <Button tone="critical">Solid</Button>
                 <Button tone="critical" variant="ghost">
@@ -170,11 +159,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Contrast - brandAccent',
-      Container,
       Example: () => (
         <Fragment>
           {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="medium">
+            <Box key={background} background={background} padding="small">
               <Inline space="small">
                 <Button tone="brandAccent">Solid</Button>
                 <Button tone="brandAccent" variant="ghost">
@@ -194,11 +182,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Contrast - neutral',
-      Container,
       Example: () => (
         <Fragment>
           {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="medium">
+            <Box key={background} background={background} padding="small">
               <Inline space="small">
                 <Button tone="neutral">Solid</Button>
                 <Button tone="neutral" variant="ghost">
