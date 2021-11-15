@@ -10,7 +10,7 @@ updated:
 **vars:** Add new backgrounds and light variant border colors
 
 **New backgrounds**
-The following backrounds are now available on the `vars.backgroundColor` theme object:
+The following backgrounds are now available on the `vars.backgroundColor` theme object:
 - `neutralActive`
 - `neutralHover`
 - `neutralSoftActive`

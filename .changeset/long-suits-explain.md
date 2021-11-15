@@ -4,17 +4,10 @@
 
 ---
 updated:
-  - Box
+  - atoms
 ---
 
-**Box:** Add neutral background variants and new boxShadow border variants
-
-**New backgrounds**
-The following backgrounds are now available:
-- `neutralActive`
-- `neutralHover`
-- `neutralSoftActive`
-- `neutralSoftHover`
+**atoms:** Add boxShadow border variants
 
 **New boxShadows**
 The following box shadows are now available:

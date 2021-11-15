@@ -161,12 +161,12 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, handler }) =>
+      Example: ({ id }) =>
         source(
           <RadioGroup
             id={id}
             value="2"
-            onChange={handler}
+            onChange={() => {}}
             label="Label"
             disabled={true}
           >

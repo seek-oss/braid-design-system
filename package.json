@@ -31,7 +31,7 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "yarn setup && yarn build-codemod && changeset publish && yarn build && yarn deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
-    "prepare": "patch-package && cd codemod && yarn"
+    "prepare": "patch-package"
   },
   "bin": {
     "braid-upgrade": "./codemod/dist/index.js"
