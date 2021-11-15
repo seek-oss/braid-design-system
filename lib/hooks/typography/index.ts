@@ -114,9 +114,6 @@ export function useWeight(weight: keyof typeof styles.fontWeight) {
 const neutralToneOverrideForBackground: Partial<
   Record<NonNullable<BoxProps['background']>, keyof typeof styles.tone>
 > = {
-  formAccentSoft: 'formAccent',
-  formAccentSoftActive: 'formAccent',
-  formAccentSoftHover: 'formAccent',
   criticalLight: 'critical',
   criticalSoft: 'critical',
   criticalSoftActive: 'critical',
