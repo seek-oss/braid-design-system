@@ -2028,5 +2028,81 @@
         "summary": "**Toggle:** Add ref support"
       }
     ]
+  },
+  {
+    "version": "31.0.0",
+    "updates": [
+      {
+        "updated": [
+          "BraidTestProvider"
+        ],
+        "summary": "**BraidTestProvider:** Move to separate entry\n\nBy moving `BraidTestProvider` to it’s own entry, we can prevent importing all the themes at dev-time. This improves the developer experience when debugging the stylesheet that is output by the development server.\n\n**MIGRATION GUIDE**\n\nMigration can largely be automated by running the Braid upgrade command. You must provide a glob to target your project’s source files. For example:\n\n```\nyarn braid-upgrade v31 \"**/*.{ts,tsx}\"\n```\n\n---\n\nIt may be necessary to manually migrate code in some cases, here are the affected use cases:\n\n```diff\n- import { BraidTestProvider } from 'braid-design-system';\n+ import { BraidTestProvider } from 'braid-design-system/test';\n```"
+      },
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Add neutral background variants and new boxShadow border variants\n\n**New backgrounds**\nThe following backgrounds are now available:\n- `neutralActive`\n- `neutralHover`\n- `neutralSoftActive`\n- `neutralSoftHover`\n\n**New boxShadows**\nThe following box shadows are now available:\n- `borderBrandAccentLightLarge`\n- `borderCriticalLightLarge`\n- `borderFormAccentLight`\n- `borderFormAccentLightLarge`"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Add `neutral` tone\n\nIntroduces a `neutral` tone for cases where actions need to be de-emphasised. As a result, there is a breaking change to the contextual design rules that invert buttons in dark containers.\n\n\n**BREAKING CHANGE:**\n\nA `Button` with a `variant` of `ghost`, `soft`, or `transparent` and no specified `tone` would previously invert when inside a dark container. Now, instead of inverting the foreground colour, these cases will use a lighter version of the default tone, i.e. `formAccent`.\n\n**MIGRATION GUIDE:**\n\nTo maintain previous behaviour, consumers should opt into the `neutral` tone.\n\n```diff\n <Box background=\"brand\" padding=\"gutter\">\n-   <Button variant=\"ghost\">Click</Button>\n+   <Button variant=\"ghost\" tone=\"neutral\">Click</Button>\n </Box>\n```"
+      },
+      {
+        "updated": [
+          "Text"
+        ],
+        "summary": "**Text:** Improve contrast of `brandAccent`, `critical` and `formAccent` tones\n\nWhen using any of the above tones in a dark container, a lighter colour will be used to improve the text contrast against the background."
+      },
+      {
+        "updated": [
+          "atoms"
+        ],
+        "summary": "**atoms:** Add boxShadow border variants\n\n**New boxShadows**\nThe following box shadows are now available:\n- `borderBrandAccentLightLarge`\n- `borderCriticalLightLarge`\n- `borderFormAccentLight`\n- `borderFormAccentLightLarge`"
+      },
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Darken neutral background for the `occ` theme.\n\nA `neutral` background should be able to hold tone-based text. Moving from `grey700` to `grey800` as per the [Atomic Design System color palette](https://occmundial.github.io/occ-atomic/#Colors)"
+      },
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Add new backgrounds and light variant border colors\n\n**New backgrounds**\nThe following backgrounds are now available on the `vars.backgroundColor` theme object:\n- `neutralActive`\n- `neutralHover`\n- `neutralSoftActive`\n- `neutralSoftHover`\n\n**New borderColors**\nThe following border colors are now available on the `vars.borderColor` theme object:\n- `brandAccentLight`\n- `criticalLight`\n- `formAccentLight`"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Remove weight prop\n\nRemoving support for the `weight` prop. This was deprecated back in [v29.26.0](https://seek-oss.github.io/braid-design-system/releases#29.26.0) in favour of using the [`variant`](https://seek-oss.github.io/braid-design-system/components/Button#variants) prop."
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink, TextLinkButton:** Remove support inside `Actions` component\n\nRemoving support for `TextLink` and `TextLinkButton` components inside of `Actions`. This was previously deprecated back in [v29.26.0](https://seek-oss.github.io/braid-design-system/releases#29.26.0) in favour of using the `transparent` `variant` of [`ButtonLink`](https://seek-oss.github.io/braid-design-system/components/Button#variants).\n\n**MIGRATION GUIDE**\n\n```diff\n  <Actions>\n    <Button>...</Button>\n-   <TextLink href=\"...\">...</TextLink>\n+   <ButtonLink href=\"...\" variant=\"transparent\">...</ButtonLink>\n  </Actions>\n```"
+      },
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Darken neutral background for the `seekAnz` theme.\n\nA `neutral` background should be able to hold tone-based text. Moving from `sk-mid-gray-dark` to `sk-charcoal` as per the [Seek Style Guide color palette](https://seek-oss.github.io/seek-style-guide/palette)"
+      },
+      {
+        "updated": [
+          "Box",
+          "atoms",
+          "vars"
+        ],
+        "summary": "**Box, atoms, vars:** Update theme colour tokens with improved semantics.\n\nSimplifies the semantics of the colour-based tokens to support upcoming colour mode work. Changes to the property values on `backgroundColor` and `borderColor` has flow on affects to the apis on `Box` and `atoms`.\n\n\n**TOKEN CHANGES**\n\n**New**\n- **backgroundColor:** `surface`, `neutralSoft`\n- **borderColor:** `neutral`, `neutralInverted`, `neutralLight`\n\n**Removed**\n- **backgroundColor:** `card`, `formAccentDisabled`, `input`, `inputDisabled`, `selection`\n- **borderColor:** `formHover`, `standard`, `standardInverted`\n\n**MIGRATION GUIDE**\n\nMigration can largely be automated by running the Braid upgrade command. You must provide a glob to target your project’s source files. For example:\n\n```\nyarn braid-upgrade v31 \"**/*.{ts,tsx}\"\n```\n\n---\n\nIt may be necessary to manually migrate code in some cases, here are the affected use cases:\n\n**`Box` backgrounds**\n```diff\n- <Box background=\"card\" />\n+ <Box background=\"surface\" />\n\n- <Box background=\"formAccentDisabled\" />\n+ <Box background=\"neutralLight\" />\n\n- <Box background=\"input\" />\n+ <Box background=\"surface\" />\n\n- <Box background=\"inputDisabled\" />\n+ <Box background=\"neutralSoft\" />\n\n- <Box background=\"selection\" />\n+ <Box background=\"formAccentSoft\" />\n```\n\n**`Box` boxShadows**\n```diff\n- <Box boxShadow=\"borderStandard\" />\n+ <Box boxShadow=\"borderNeutralLight\" />\n\n- <Box boxShadow=\"borderStandardInverted\" />\n+ <Box boxShadow=\"borderNeutralInverted\" />\n\n- <Box boxShadow=\"borderStandardInvertedLarge\" />\n+ <Box boxShadow=\"borderNeutralInvertedLarge\" />\n\n- <Box boxShadow=\"borderFormHover\" />\n+ <Box boxShadow=\"borderFormAccent\" />\n```\n\n**`vars`**\n```diff\n- vars.borderColor.standard\n+ vars.borderColor.neutralLight\n\n- vars.borderColor.standardInverted\n+ vars.borderColor.neutralInverted\n\n- vars.borderColor.formHover\n+ vars.borderColor.formAccent\n```\n\n**`atoms`**\n```diff\n atoms({\n-  boxShadow: 'borderStandard',\n+  boxShadow: 'borderNeutralLight',\n });\n\n atoms({\n-  boxShadow: 'borderStandardInverted',\n+  boxShadow: 'borderNeutralInverted',\n });\n\n atoms({\n-  boxShadow: 'borderStandardInvertedLarge',\n+  boxShadow: 'borderNeutralInvertedLarge',\n });\n\n atoms({\n-  boxShadow: 'borderFormHover',\n+  boxShadow: 'borderFormAccent',\n });\n```"
+      }
+    ]
   }
 ]
