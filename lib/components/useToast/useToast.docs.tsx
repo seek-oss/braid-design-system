@@ -18,7 +18,7 @@ import { useToast } from './ToastContext';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, handler }) => {
+  Example: ({ id }) => {
     const { theme } = useThemeSettings();
     const showToast = useToast();
 
@@ -47,7 +47,7 @@ const docs: ComponentDocs = {
             shouldRemove={false}
             treatTheme={theme.treatTheme}
             vanillaTheme={theme.vanillaTheme}
-            onClear={handler}
+            onClear={() => {}}
             message="Positive toast"
             tone="positive"
           />
@@ -133,7 +133,7 @@ const docs: ComponentDocs = {
           tones.
         </Text>
       ),
-      Example: ({ id, showToast, handler }) => {
+      Example: ({ id, showToast }) => {
         const { theme } = useThemeSettings();
 
         const { code } = source(
@@ -174,7 +174,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={handler}
+              onClear={() => {}}
               message="Positive message"
               tone="positive"
             />
@@ -184,7 +184,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={handler}
+              onClear={() => {}}
               message="Critical message"
               tone="critical"
             />
@@ -205,7 +205,7 @@ const docs: ComponentDocs = {
           a description.
         </Text>
       ),
-      Example: ({ id, showToast, handler }) => {
+      Example: ({ id, showToast }) => {
         const { theme } = useThemeSettings();
 
         const { code } = source(
@@ -233,7 +233,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={handler}
+              onClear={() => {}}
               message="Positive message"
               tone="positive"
               description="Longer description providing more context for the user."
@@ -265,7 +265,7 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ id, showToast, handler }) => {
+      Example: ({ id, showToast }) => {
         const { theme } = useThemeSettings();
 
         /* eslint-disable no-alert */
@@ -296,7 +296,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={handler}
+              onClear={() => {}}
               message="Positive message"
               tone="positive"
               action={{

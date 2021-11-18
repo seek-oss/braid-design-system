@@ -5,3 +5,4 @@ dist-storybook/
 report/
 site/dist/
 # end managed by sku
+codemod/dist

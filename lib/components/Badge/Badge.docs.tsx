@@ -56,7 +56,7 @@ const docs: ComponentDocs = {
           <Strong>strong</Strong>.
         </Text>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="medium" align="center">
@@ -99,7 +99,7 @@ const docs: ComponentDocs = {
           </Text>
         </Fragment>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="xsmall" alignY="center">

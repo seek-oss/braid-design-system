@@ -12,27 +12,34 @@ const space = {
 
 const boxShadow = {
   ...vars.shadow,
-  outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
-  borderField: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.field}`,
-  borderStandard: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standard}`,
-  borderStandardInverted: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.standardInverted}`,
-  borderCritical: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.critical}`,
-  borderCriticalLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.criticalLight}`,
-  borderCriticalLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.critical}`,
+  borderBrandAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccent}`,
+  borderBrandAccentLightLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccentLight}`,
   borderCaution: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.caution}`,
   borderCautionLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.cautionLight}`,
-  borderPositive: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positive}`,
-  borderPositiveLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positiveLight}`,
-  borderInfo: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.info}`,
-  borderInfoLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.infoLight}`,
-  borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
-  borderPromoteLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promoteLight}`,
-  borderFormHover: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formHover}`,
+  borderCritical: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.critical}`,
+  borderCriticalLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.critical}`,
+  borderCriticalLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.criticalLight}`,
+  borderCriticalLightLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.criticalLight}`,
+  borderField: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.field}`,
   borderFormAccent: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formAccent}`,
   borderFormAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.formAccent}`,
-  borderBrandAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccent}`,
-  borderStandardInvertedLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.standardInverted}`,
+  borderFormAccentLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.formAccentLight}`,
+  borderFormAccentLightLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.formAccentLight}`,
+  borderInfo: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.info}`,
+  borderInfoLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.infoLight}`,
+  borderNeutral: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutral}`,
+  borderNeutralLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.neutral}`,
+  borderNeutralInverted: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralInverted}`,
+  borderNeutralInvertedLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.neutralInverted}`,
+  borderNeutralLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralLight}`,
+  borderPositive: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positive}`,
+  borderPositiveLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positiveLight}`,
+  borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
+  borderPromoteLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promoteLight}`,
+  outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
 };
+
+export type BoxShadow = keyof typeof boxShadow;
 
 export const pseudoProperties = {
   transform: vars.transform,
@@ -74,6 +81,8 @@ export const unresponsiveProperties = {
 } as const;
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties;
+
+export type Background = keyof typeof vars.backgroundColor;
 
 export const responsiveProperties = {
   display: {

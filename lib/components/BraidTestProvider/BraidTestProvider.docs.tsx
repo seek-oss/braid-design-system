@@ -24,10 +24,6 @@ const docs: ComponentDocs = {
       name: 'BraidProvider',
       description: 'For production apps with a single theme.',
     },
-    {
-      name: 'BraidLoadableProvider',
-      description: 'For production apps with multiple themes.',
-    },
   ],
   additional: [
     {
@@ -39,7 +35,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
       code: `
-        import { BraidTestProvider } from 'braid-design-system';
+        import { BraidTestProvider } from 'braid-design-system/test';
         import { render } from 'react-testing-library';
 
         it('should do something', () => {
@@ -60,7 +56,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
       code: `
-        import { BraidTestProvider } from 'braid-design-system';
+        import { BraidTestProvider } from 'braid-design-system/test';
         import { render } from 'react-testing-library';
 
         it('should do something', () => {

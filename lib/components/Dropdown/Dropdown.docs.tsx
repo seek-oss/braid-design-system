@@ -202,7 +202,7 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      background: 'card',
+      background: 'surface',
       Example: ({ id, setState }) =>
         source(
           <Dropdown

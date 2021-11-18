@@ -98,7 +98,7 @@ const Indicator = ({
     </Box>
   ) : (
     <Box
-      background={disabled ? 'formAccentDisabled' : 'formAccent'}
+      background={disabled ? 'neutralLight' : 'formAccent'}
       transition="fast"
       width="full"
       height="full"
@@ -144,7 +144,7 @@ export const StyledInput = forwardRef<
 
     const isCheckbox = type === 'checkbox';
     const fieldBorderRadius = isCheckbox ? 'standard' : 'full';
-    const accentBackground = disabled ? 'formAccentDisabled' : 'formAccent';
+    const accentBackground = disabled ? 'neutralLight' : 'formAccent';
     const showFieldBorder =
       useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
 
@@ -205,7 +205,7 @@ export const StyledInput = forwardRef<
           flexShrink={0}
           position="relative"
           className={[styles.fakeField, styles.fakeFieldSize[size]]}
-          background={disabled ? 'inputDisabled' : 'input'}
+          background={disabled ? 'neutralSoft' : 'surface'}
           borderRadius={fieldBorderRadius}
         >
           <FieldOverlay

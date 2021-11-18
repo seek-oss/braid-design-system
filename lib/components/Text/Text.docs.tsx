@@ -123,7 +123,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -152,7 +152,7 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -169,7 +169,7 @@ const docs: ComponentDocs = {
           text tone will be matched by default.
         </Text>
       ),
-      background: 'card',
+      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -217,24 +217,26 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To ensure text has sufficient contrast, when on a dark background
-            the foreground colour is inverted.
+            the foreground colour either inverts or lightens.
           </Text>
           <Text>
-            When using custom backgrounds or images, this behaviour can be
-            applied using the{' '}
-            <TextLink href="/components/BackgroundProvider">
-              BackgroundProvider
-            </TextLink>{' '}
-            and specifying whether the background is dark or light.
+            When using custom backgrounds or images on a{' '}
+            <TextLink href="components/Box">Box</TextLink> component, this
+            behaviour can be applied by setting the <Strong>background</Strong>{' '}
+            to either <Strong>customLight</Strong> or{' '}
+            <Strong>customDark</Strong>.
           </Text>
         </>
       ),
-      background: 'brand',
+      background: 'neutral',
       Example: () =>
         source(
           <Stack space="small">
             <Text>Neutral text</Text>
             <Text tone="secondary">Secondary text</Text>
+            <Text tone="critical">Critical text</Text>
+            <Text tone="formAccent">FormAccent text</Text>
+            <Text tone="brandAccent">BrandAccent text</Text>
           </Stack>,
         ),
     },

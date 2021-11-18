@@ -91,7 +91,7 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Disabled field',
-    background: 'card',
+    background: 'surface',
     Example: ({ id, getState, setState }) =>
       source(
         <MonthPicker

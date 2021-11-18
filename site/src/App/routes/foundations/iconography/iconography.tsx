@@ -56,7 +56,7 @@ const IconTile = ({
           </Text>
         </Box>
         <Overlay
-          boxShadow="borderStandard"
+          boxShadow="borderNeutralLight"
           borderRadius="standard"
           transition="fast"
           className={styles.overlay}

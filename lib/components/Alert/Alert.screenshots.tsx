@@ -14,8 +14,8 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Info Alert Inside Card',
-      background: 'card',
+      label: 'Info Alert on a surface',
+      background: 'surface',
       Example: () => (
         <Alert tone="info">
           <Text>This is an important piece of information.</Text>
@@ -57,8 +57,8 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Promote Alert Inside Card',
-      background: 'card',
+      label: 'Promote Alert on a surface',
+      background: 'surface',
       Example: () => (
         <Alert tone="promote">
           <Text>This is a promoted piece of information.</Text>
@@ -74,8 +74,8 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Caution Alert Inside Card',
-      background: 'card',
+      label: 'Caution Alert on a surface',
+      background: 'surface',
       Example: () => (
         <Alert tone="caution">
           <Text>This is a cautionary piece of information.</Text>
@@ -91,8 +91,8 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Critical Alert Inside Card',
-      background: 'card',
+      label: 'Critical Alert on a surface',
+      background: 'surface',
       Example: () => (
         <Alert tone="critical">
           <Text>This is a critical piece of information.</Text>
@@ -108,8 +108,8 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Positive Alert Inside Card',
-      background: 'card',
+      label: 'Positive Alert on a surface',
+      background: 'surface',
       Example: () => (
         <Alert tone="positive">
           <Text>This is a positive piece of information.</Text>

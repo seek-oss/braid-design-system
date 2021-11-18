@@ -102,7 +102,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'When disabled and critical',
       Example: () => {
-        const [state, setState] = useState('');
+        const [state, setState] = useState('2');
         return (
           <RadioGroup
             id="radiolist6"

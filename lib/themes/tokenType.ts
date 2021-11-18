@@ -75,6 +75,7 @@ export interface BraidTokens {
     };
     color: {
       brandAccent: string;
+      brandAccentLight: string;
       caution: string;
       cautionLight: string;
       critical: string;
@@ -82,15 +83,16 @@ export interface BraidTokens {
       field: string;
       focus: string;
       formAccent: string;
-      formHover: string;
+      formAccentLight: string;
       info: string;
       infoLight: string;
+      neutral: string;
+      neutralInverted: string;
+      neutralLight: string;
       positive: string;
       positiveLight: string;
       promote: string;
       promoteLight: string;
-      standard: string;
-      standardInverted: string;
     };
   };
   focusRingSize: number;
@@ -101,9 +103,12 @@ export interface BraidTokens {
   };
   color: {
     foreground: {
+      brandAccentLight: string;
       brandAccent: string;
       caution: string;
+      criticalLight: string;
       critical: string;
+      formAccentLight: string;
       formAccent: string;
       info: string;
       link: string;
@@ -126,7 +131,6 @@ export interface BraidTokens {
       brandAccentSoft: string;
       brandAccentSoftActive: string;
       brandAccentSoftHover: string;
-      card: string;
       caution: string;
       cautionLight: string;
       critical: string;
@@ -138,22 +142,24 @@ export interface BraidTokens {
       criticalSoftHover: string;
       formAccent: string;
       formAccentActive: string;
-      formAccentDisabled: string;
       formAccentHover: string;
       formAccentSoft: string;
       formAccentSoftActive: string;
       formAccentSoftHover: string;
       info: string;
       infoLight: string;
-      input: string;
-      inputDisabled: string;
       neutral: string;
+      neutralActive: string;
+      neutralHover: string;
       neutralLight: string;
+      neutralSoft: string;
+      neutralSoftActive: string;
+      neutralSoftHover: string;
       positive: string;
       positiveLight: string;
       promote: string;
       promoteLight: string;
-      selection: string;
+      surface: string;
     };
   };
 }

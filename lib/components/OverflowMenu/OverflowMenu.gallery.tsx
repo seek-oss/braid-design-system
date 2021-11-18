@@ -5,7 +5,7 @@ import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    background: 'card',
+    background: 'surface',
     Example: ({ handler }) =>
       source(
         <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>

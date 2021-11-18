@@ -161,15 +161,12 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      background: 'card',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ id }) =>
         source(
           <RadioGroup
             id={id}
-            value={getState('radio')}
-            onChange={({ currentTarget: { value } }) =>
-              setState('radio', value)
-            }
+            value="2"
+            onChange={() => {}}
             label="Label"
             disabled={true}
           >

@@ -1,25 +1,17 @@
 import React, { createContext, useContext, ReactElement } from 'react';
-import { BoxProps } from './Box';
+import { BoxBackgroundVariant } from './Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
-export type BackgroundVariant =
-  | NonNullable<BoxProps['background']>
-  | 'UNKNOWN_DARK'
-  | 'UNKNOWN_LIGHT';
+export type BackgroundContextValue = BoxBackgroundVariant;
 
-const backgroundContext = createContext<BackgroundVariant>('body');
+const backgroundContext = createContext<BackgroundContextValue>('body');
 
 export const BackgroundProvider = backgroundContext.Provider;
 
 export const renderBackgroundProvider = (
-  background: BackgroundVariant | undefined,
+  background: BoxBackgroundVariant,
   element: ReactElement | null,
-) =>
-  background ? (
-    <BackgroundProvider value={background}>{element}</BackgroundProvider>
-  ) : (
-    element
-  );
+) => <BackgroundProvider value={background}>{element}</BackgroundProvider>;
 
 export const useBackground = () => useContext(backgroundContext);
 
@@ -29,17 +21,14 @@ export const useBackgroundLightness = (
   const backgroundFromContext = useBackground();
   const background = backgroundOverride || backgroundFromContext;
   const { backgroundLightness } = useBraidTheme();
-  const defaultLightness = backgroundLightness.body;
 
-  if (background === 'UNKNOWN_DARK') {
+  if (background === 'customDark') {
     return 'dark';
   }
 
-  if (background === 'UNKNOWN_LIGHT') {
+  if (background === 'customLight') {
     return 'light';
   }
 
-  return background
-    ? backgroundLightness[background] || defaultLightness
-    : defaultLightness;
+  return backgroundLightness[background];
 };

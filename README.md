@@ -29,7 +29,7 @@ For example:
 
 ```js
 import 'braid-design-system/reset'; // <-- Must be first
-import jobStreetTheme from 'braid-design-system/themes/jobStreet';
+import apacTheme from 'braid-design-system/themes/apac';
 import { BraidProvider, Text } from 'braid-design-system';
 // ...etc.
 ```
@@ -38,11 +38,11 @@ Finally, render the `BraidProvider` component, providing the imported theme via 
 
 ```js
 import 'braid-design-system/reset';
-import jobStreetTheme from 'braid-design-system/themes/jobStreet';
+import apacTheme from 'braid-design-system/themes/apac';
 import { BraidProvider, Text } from 'braid-design-system';
 
 export default () => (
-  <BraidProvider theme={jobStreetTheme}>
+  <BraidProvider theme={apacTheme}>
     <Text>Hello World!</Text>
   </BraidProvider>
 );
@@ -51,7 +51,7 @@ export default () => (
 If you're rendering within the context of another application, you may want to opt out of the provided body styles, which set the background color and reset margin and padding:
 
 ```js
-<BraidProvider theme={jobStreetTheme} styleBody={false}>
+<BraidProvider theme={apacTheme} styleBody={false}>
   <Text>Hello World!</Text>
 </BraidProvider>
 ```
@@ -78,21 +78,6 @@ export const App = () => (
   <BraidProvider theme={wireframe} linkComponent={CustomLink}>
     ...
   </BraidProvider>
-);
-```
-
-## Multi-theme setup
-
-If you require multiple themes and want to code split them, you can subsitute the `BraidProvider` with the `BraidLoadableProvider`, passing it the necessary `themeName` at runtime. Remove any explicit theme imports you may have.
-
-```js
-import 'braid-design-system/reset';
-import { BraidLoadableProvider, Text } from 'braid-design-system';
-
-export default ({ themeName }) => (
-  <BraidLoadableProvider themeName={themeName}>
-    <Text>Hello World!</Text>
-  </BraidLoadableProvider>
 );
 ```
 

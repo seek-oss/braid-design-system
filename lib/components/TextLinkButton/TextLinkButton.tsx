@@ -6,20 +6,14 @@ import React, {
   KeyboardEvent,
 } from 'react';
 import { Box } from '../Box/Box';
-import {
-  PrivateTextLinkRenderer,
-  PrivateTextLinkRendererProps,
-} from '../TextLinkRenderer/TextLinkRenderer';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { TextLinkStyles, useLinkStyles } from '../TextLink/TextLink';
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps
-  extends Omit<
-    PrivateTextLinkRendererProps,
-    'reset' | 'children' | 'showVisited'
-  > {
+  extends Omit<TextLinkStyles, 'showVisited'> {
   id?: NativeSpanProps['id'];
   onClick?: NativeSpanProps['onClick'];
   data?: DataAttributeMap;
@@ -44,6 +38,11 @@ export const TextLinkButton = ({
   tabIndex,
 }: TextLinkButtonProps) => {
   const buttonRef = useRef<HTMLSpanElement>(null);
+  const classes = useLinkStyles({
+    reset: false,
+    weight,
+    hitArea,
+  });
 
   const handleKeyboard = useCallback(
     (event: KeyboardEvent<HTMLSpanElement>) => {
@@ -56,25 +55,21 @@ export const TextLinkButton = ({
   );
 
   return (
-    <PrivateTextLinkRenderer reset={false} weight={weight} hitArea={hitArea}>
-      {(styleProps) => (
-        <Box
-          ref={buttonRef}
-          role="button"
-          tabIndex={tabIndex ?? 0}
-          component="span"
-          onClick={onClick}
-          onKeyDown={handleKeyboard}
-          aria-controls={ariaControls}
-          aria-expanded={ariaExpanded}
-          aria-describedby={ariaDescribedBy}
-          id={id}
-          {...styleProps}
-          {...(data ? buildDataAttributes(data) : undefined)}
-        >
-          {children}
-        </Box>
-      )}
-    </PrivateTextLinkRenderer>
+    <Box
+      ref={buttonRef}
+      role="button"
+      tabIndex={tabIndex ?? 0}
+      component="span"
+      onClick={onClick}
+      onKeyDown={handleKeyboard}
+      aria-controls={ariaControls}
+      aria-expanded={ariaExpanded}
+      aria-describedby={ariaDescribedBy}
+      id={id}
+      className={classes}
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
+      {children}
+    </Box>
   );
 };

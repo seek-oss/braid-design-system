@@ -30,13 +30,16 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Text on Brand Background',
-      background: 'brand',
+      label: 'Text on dark background',
+      background: 'neutral',
       Container,
       Example: () => (
         <Stack space="small">
           <Text>Neutral text</Text>
           <Text tone="secondary">Secondary text</Text>
+          <Text tone="critical">Critical text</Text>
+          <Text tone="formAccent">FormAccent text</Text>
+          <Text tone="brandAccent">BrandAccent text</Text>
         </Stack>
       ),
     },
@@ -64,7 +67,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Text Spacing',
-      background: 'card',
+      background: 'surface',
       Container,
       Example: () => {
         const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;

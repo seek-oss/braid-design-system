@@ -27,7 +27,7 @@ const docs: ComponentDocs = {
           will do.
         </Text>
       ),
-      background: 'card',
+      background: 'surface',
       Example: ({ getState, setState, toggleState }) =>
         source(
           <Inline space="small" alignY="center">

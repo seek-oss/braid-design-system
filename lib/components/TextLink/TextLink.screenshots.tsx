@@ -1,20 +1,19 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import {
-  Actions,
   Box,
-  Button,
   Heading,
   IconNewWindow,
   IconChevron,
-  Stack,
   Text,
   TextLink,
+  Columns,
+  Column,
 } from '../';
 import { backgrounds } from '../../utils/docsHelpers';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
+  screenshotWidths: [768],
   examples: [
     {
       label: 'Regular TextLink',
@@ -72,15 +71,6 @@ export const screenshots: ComponentScreenshot = {
         <Text>
           This sentence contains a <TextLink href="#">TextLink.</TextLink>
         </Text>
-      ),
-    },
-    {
-      label: 'TextLink inside Actions (Deprecated)',
-      Example: () => (
-        <Actions>
-          <Button>Button</Button>
-          <TextLink href="#">TextLink</TextLink>
-        </Actions>
       ),
     },
     {
@@ -143,42 +133,37 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextLink inside Actions with icon (Deprecated)',
-      Example: () => (
-        <Actions>
-          <Button>Button</Button>
-          <TextLink href="#">
-            TextLink <IconChevron direction="right" />
-          </TextLink>
-        </Actions>
-      ),
-    },
-    {
       label: 'TextLink Contrast',
       Example: () => (
         <Fragment>
           {backgrounds.map((background, i) => (
-            <Box key={i} background={background}>
-              <Stack space="none">
-                <Text baseline={false}>
-                  {background}{' '}
-                  <TextLink href="#">
-                    with default weight <IconNewWindow />
-                  </TextLink>
-                </Text>
-                <Text baseline={false}>
-                  {background}{' '}
-                  <TextLink href="#" weight="regular">
-                    with regular weight <IconNewWindow />
-                  </TextLink>
-                </Text>
-                <Text baseline={false}>
-                  {background}{' '}
-                  <TextLink href="#" weight="weak">
-                    with weak weight <IconNewWindow />
-                  </TextLink>
-                </Text>
-              </Stack>
+            <Box key={i} background={background} padding="small">
+              <Columns space="xlarge">
+                <Column>
+                  <Text>{background}</Text>
+                </Column>
+                <Column width="content">
+                  <Text>
+                    <TextLink href="#">
+                      Default <IconNewWindow />
+                    </TextLink>
+                  </Text>
+                </Column>
+                <Column width="content">
+                  <Text>
+                    <TextLink href="#" weight="regular">
+                      Regular <IconNewWindow />
+                    </TextLink>
+                  </Text>
+                </Column>
+                <Column>
+                  <Text>
+                    <TextLink href="#" weight="weak">
+                      Weak <IconNewWindow />
+                    </TextLink>
+                  </Text>
+                </Column>
+              </Columns>
             </Box>
           ))}
         </Fragment>

@@ -137,7 +137,7 @@ function SuggestionItem({
         component="span"
         display="flex"
         justifyContent="spaceBetween"
-        background={highlighted ? 'selection' : undefined}
+        background={highlighted ? 'formAccentSoft' : undefined}
         paddingX="small"
         paddingRight={onClear ? 'none' : undefined}
       >
@@ -688,7 +688,7 @@ export const Autosuggest = forwardRef(function <Value>(
                     display={isOpen ? 'block' : 'none'}
                     position="absolute"
                     zIndex="dropdown"
-                    background="card"
+                    background="surface"
                     borderRadius="standard"
                     boxShadow="medium"
                     width="full"
