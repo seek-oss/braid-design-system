@@ -16,7 +16,7 @@ If you are only using a single theme, then you should migrate your `BraidLoadabl
 -import { BraidLoadableProvider } from 'braid-design-system';
 
 export const App = () => (
--    <BraidLoadableProvider theme="apac">
+-    <BraidLoadableProvider themeName="apac">
 +    <BraidProvider theme={apac}>
     ...
 -    </BraidLoadableProvider>
