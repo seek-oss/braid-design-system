@@ -6,6 +6,7 @@ export { AccordionItem } from '../components/Accordion/AccordionItem.playroom';
 export { Alert } from '../components/Alert/Alert.playroom';
 export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
 export { Badge } from '../components/Badge/Badge.playroom';
+export { Box } from '../components/Box/Box.playroom';
 export { Button } from '../components/Button/Button.playroom';
 export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Card } from '../components/Card/Card.playroom';
