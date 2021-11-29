@@ -1,5 +1,381 @@
 # braid-design-system
 
+## 31.0.0
+
+### Major Changes
+
+- **BraidTestProvider:** Move to separate entry ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  By moving `BraidTestProvider` to it’s own entry, we can prevent importing all the themes at dev-time. This improves the developer experience when debugging the stylesheet that is output by the development server.
+
+  **MIGRATION GUIDE**
+
+  Migration can largely be automated by running the Braid upgrade command. You must provide a glob to target your project’s source files. For example:
+
+  ```
+  yarn braid-upgrade v31 "**/*.{ts,tsx}"
+  ```
+
+  ***
+
+  It may be necessary to manually migrate code in some cases, here are the affected use cases:
+
+  ```diff
+  - import { BraidTestProvider } from 'braid-design-system';
+  + import { BraidTestProvider } from 'braid-design-system/test';
+  ```
+
+- **BackgroundProvider** Removed in favour of setting a `background` of `customDark`/`customLight` directly on the `Box` that has the custom background color. ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  **MIGRATION GUIDE**
+
+  ```diff
+  -<Box style={{ backgroundColor: 'purple' }}>
+  +<Box background="customDark" style={{ backgroundColor: 'purple' }}>
+  -   <BackgroundProvider value="UNKNOWN_DARK">
+       <Text>Inverted text given dark context</Text>
+  -   </BackgroundProvider>
+   </Box>
+  ```
+
+- Remove previously deprecated `ButtonRenderer` component in favour of [`Button`](https://seek-oss.github.io/braid-design-system/components/Button) and [`ButtonLink`](https://seek-oss.github.io/braid-design-system/components/ButtonLink). ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  **MIGRATION GUIDE**
+
+  If you were using this to render an `a` element that visually looks like a button, you should be using [`ButtonLink`](https://seek-oss.github.io/braid-design-system/components/ButtonLink)
+
+  ```diff
+  -  <ButtonRenderer>
+  -    {(ButtonChildren, buttonProps) => (
+  -      <a to="#" {...buttonProps}>
+  -        Visually a button
+  -      </a>
+  -    )}
+  -  </ButtonRenderer>
+  +  <ButtonLink>
+  +    Visually a button
+  +  </ButtonLink>
+  ```
+
+- **Button, ButtonLink:** Add `neutral` tone ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  Introduces a `neutral` tone for cases where actions need to be de-emphasised. As a result, there is a breaking change to the contextual design rules that invert buttons in dark containers.
+
+  **BREAKING CHANGE:**
+
+  A `Button` with a `variant` of `ghost`, `soft`, or `transparent` and no specified `tone` would previously invert when inside a dark container. Now, instead of inverting the foreground colour, these cases will use a lighter version of the default tone, i.e. `formAccent`.
+
+  **MIGRATION GUIDE:**
+
+  To maintain previous behaviour, consumers should opt into the `neutral` tone.
+
+  ```diff
+   <Box background="brand" padding="gutter">
+  -   <Button variant="ghost">Click</Button>
+  +   <Button variant="ghost" tone="neutral">Click</Button>
+   </Box>
+  ```
+
+- Remove legacy seekAsia themes ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  Since the rebrand went live earlier this year, all consumers of `jobsDb`, `jobStreet`, `jobStreetClassic` and `seekUnifiedBeta` themes should now be using the `apac` theme in production.
+
+  **MIGRATION GUIDE**
+
+  ```diff
+  -import jobStreet from 'braid-design-system/themes/jobStreet';
+  +import apac from 'braid-design-system/themes/apac';
+
+  -<BraidProvider theme={jobStreet}>
+  +<BraidProvider theme={apac}>
+     ...
+   </BraidProvider>
+  ```
+
+- **BulletList** Remove deprecated component ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  **MIGRATION GUIDE**
+
+  ```diff
+  -<BulletList>
+  -  <Bullet large>Bullet</Bullet>
+  -  <Bullet large>Bullet</Bullet>
+  -  <Bullet large>Bullet</Bullet>
+  -</BulletList>
+
+  +<List size="large">
+  +  <Text>Bullet</Text>
+  +  <Text>Bullet</Text>
+  +  <Text>Bullet</Text>
+  +</List>
+  ```
+
+- Remove previously deprecated `TextLinkRenderer` component in favour of [`TextLink`](https://seek-oss.github.io/braid-design-system/components/TextLink) and [`TextLinkButton`](https://seek-oss.github.io/braid-design-system/components/TextLinkButton). ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  **MIGRATION GUIDE**
+
+  If you were using this to render a `button` element that visually looks like a link, you should be using [`TextLinkButton`](https://seek-oss.github.io/braid-design-system/components/TextLinkButton)
+
+  ```diff
+  <Text>
+  -  <TextLinkRenderer reset={false}>
+  -    {(textLinkProps) => (
+  -      <Box component="button" {...textLinkProps}>
+  -        Visually a link
+  -      </Box>
+  -    )}
+  -  </TextLinkRenderer>
+  +  <TextLinkButton>
+  +    Visually a link
+  +  </TextLinkButton>
+    , rendered as a button.
+  </Text>
+  ```
+
+  If you were using this to render an `a` element or using a client side router link component you should ensure you have configured the [`linkComponent on BraidProvider`](https://seek-oss.github.io/braid-design-system/components/BraidProvider#providing-a-custom-link-component) in your app. Once handled, migrating to [`TextLink`](https://seek-oss.github.io/braid-design-system/components/TextLink) should be straight forward.
+
+  ```diff
+  <Text>
+  -  <TextLinkRenderer reset={false}>
+  -    {(textLinkProps) => (
+  -      <Link {...textLinkProps}>
+  -        ...
+  -      </Link>
+  -    )}
+  -  </TextLinkRenderer>
+  +  <TextLink>
+  +    ...
+  +  </TextLink>
+  </Text>
+  ```
+
+- **Button, ButtonLink:** Remove weight prop ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  Removing support for the `weight` prop. This was deprecated back in [v29.26.0](https://seek-oss.github.io/braid-design-system/releases#29.26.0) in favour of using the [`variant`](https://seek-oss.github.io/braid-design-system/components/Button#variants) prop.
+
+- **TextLink, TextLinkButton:** Remove support inside `Actions` component ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  Removing support for `TextLink` and `TextLinkButton` components inside of `Actions`. This was previously deprecated back in [v29.26.0](https://seek-oss.github.io/braid-design-system/releases#29.26.0) in favour of using the `transparent` `variant` of [`ButtonLink`](https://seek-oss.github.io/braid-design-system/components/Button#variants).
+
+  **MIGRATION GUIDE**
+
+  ```diff
+    <Actions>
+      <Button>...</Button>
+  -   <TextLink href="...">...</TextLink>
+  +   <ButtonLink href="..." variant="transparent">...</ButtonLink>
+    </Actions>
+  ```
+
+- Remove `BraidLoadableProvider` ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  As most Apps should run the `apac` theme across all brands, it no longer makes sense to centralise a loadable version of the `BraidProvider`. This should simplify builds across the board and may result in a small build-speed increase.
+
+  **MIGRATION GUIDE**
+
+  If you are only using a single theme, then you should migrate your `BraidLoadableProvider` usage to `BraidProvider`.
+
+  ```diff
+  +import apac from 'braid-design-system/themes/apac';
+  +import { BraidProvider } from 'braid-design-system';
+  -import { BraidLoadableProvider } from 'braid-design-system';
+
+  export const App = () => (
+  -    <BraidLoadableProvider themeName="apac">
+  +    <BraidProvider theme={apac}>
+      ...
+  -    </BraidLoadableProvider>
+  +    </BraidProvider>
+  );
+  ```
+
+  If your app still needs to render different themes then you can replicate the `BraidLoadableProvider` functionality locally using the `loadable.lib` API.
+
+  ```tsx
+  import { BraidProvider } from 'braid-design-system';
+  import React, { ReactNode } from 'react';
+  import loadable from 'sku/@loadable/component';
+
+  type ThemeName = 'apac' | 'catho';
+
+  const BraidTheme = loadable.lib((props: { themeName: ThemeName }) =>
+    import(`braid-design-system/themes/${props.themeName}`),
+  );
+
+  interface AppProps {
+    themeName: ThemeName;
+    children: ReactNode;
+  }
+  export const App = ({ themeName, children }: AppProps) => (
+    <BraidTheme themeName={themeName}>
+      {({ default: theme }) => (
+        <BraidProvider theme={theme}>{children}</BraidProvider>
+      )}
+    </BraidTheme>
+  );
+  ```
+
+- **Box, atoms, vars:** Update theme colour tokens with improved semantics. ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  Simplifies the semantics of the colour-based tokens to support upcoming colour mode work. Changes to the property values on `backgroundColor` and `borderColor` has flow on affects to the apis on `Box` and `atoms`.
+
+  **TOKEN CHANGES**
+
+  **New**
+
+  - **backgroundColor:** `surface`, `neutralSoft`
+  - **borderColor:** `neutral`, `neutralInverted`, `neutralLight`
+
+  **Removed**
+
+  - **backgroundColor:** `card`, `formAccentDisabled`, `input`, `inputDisabled`, `selection`
+  - **borderColor:** `formHover`, `standard`, `standardInverted`
+
+  **MIGRATION GUIDE**
+
+  Migration can largely be automated by running the Braid upgrade command. You must provide a glob to target your project’s source files. For example:
+
+  ```
+  yarn braid-upgrade v31 "**/*.{ts,tsx}"
+  ```
+
+  ***
+
+  It may be necessary to manually migrate code in some cases, here are the affected use cases:
+
+  **`Box` backgrounds**
+
+  ```diff
+  - <Box background="card" />
+  + <Box background="surface" />
+
+  - <Box background="formAccentDisabled" />
+  + <Box background="neutralLight" />
+
+  - <Box background="input" />
+  + <Box background="surface" />
+
+  - <Box background="inputDisabled" />
+  + <Box background="neutralSoft" />
+
+  - <Box background="selection" />
+  + <Box background="formAccentSoft" />
+  ```
+
+  **`Box` boxShadows**
+
+  ```diff
+  - <Box boxShadow="borderStandard" />
+  + <Box boxShadow="borderNeutralLight" />
+
+  - <Box boxShadow="borderStandardInverted" />
+  + <Box boxShadow="borderNeutralInverted" />
+
+  - <Box boxShadow="borderStandardInvertedLarge" />
+  + <Box boxShadow="borderNeutralInvertedLarge" />
+
+  - <Box boxShadow="borderFormHover" />
+  + <Box boxShadow="borderFormAccent" />
+  ```
+
+  **`vars`**
+
+  ```diff
+  - vars.borderColor.standard
+  + vars.borderColor.neutralLight
+
+  - vars.borderColor.standardInverted
+  + vars.borderColor.neutralInverted
+
+  - vars.borderColor.formHover
+  + vars.borderColor.formAccent
+  ```
+
+  **`atoms`**
+
+  ```diff
+   atoms({
+  -  boxShadow: 'borderStandard',
+  +  boxShadow: 'borderNeutralLight',
+   });
+
+   atoms({
+  -  boxShadow: 'borderStandardInverted',
+  +  boxShadow: 'borderNeutralInverted',
+   });
+
+   atoms({
+  -  boxShadow: 'borderStandardInvertedLarge',
+  +  boxShadow: 'borderNeutralInvertedLarge',
+   });
+
+   atoms({
+  -  boxShadow: 'borderFormHover',
+  +  boxShadow: 'borderFormAccent',
+   });
+  ```
+
+### Minor Changes
+
+- **Box:** Add neutral background variants and new boxShadow border variants ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  **New backgrounds**
+  The following backgrounds are now available:
+
+  - `neutralActive`
+  - `neutralHover`
+  - `neutralSoftActive`
+  - `neutralSoftHover`
+
+  **New boxShadows**
+  The following box shadows are now available:
+
+  - `borderBrandAccentLightLarge`
+  - `borderCriticalLightLarge`
+  - `borderFormAccentLight`
+  - `borderFormAccentLightLarge`
+
+- **atoms:** Add boxShadow border variants ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  **New boxShadows**
+  The following box shadows are now available:
+
+  - `borderBrandAccentLightLarge`
+  - `borderCriticalLightLarge`
+  - `borderFormAccentLight`
+  - `borderFormAccentLightLarge`
+
+- **vars:** Darken neutral background for the `occ` theme. ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  A `neutral` background should be able to hold tone-based text. Moving from `grey700` to `grey800` as per the [Atomic Design System color palette](https://occmundial.github.io/occ-atomic/#Colors)
+
+- **vars:** Add new backgrounds and light variant border colors ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  **New backgrounds**
+  The following backgrounds are now available on the `vars.backgroundColor` theme object:
+
+  - `neutralActive`
+  - `neutralHover`
+  - `neutralSoftActive`
+  - `neutralSoftHover`
+
+  **New borderColors**
+  The following border colors are now available on the `vars.borderColor` theme object:
+
+  - `brandAccentLight`
+  - `criticalLight`
+  - `formAccentLight`
+
+- **vars:** Darken neutral background for the `seekAnz` theme. ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  A `neutral` background should be able to hold tone-based text. Moving from `sk-mid-gray-dark` to `sk-charcoal` as per the [Seek Style Guide color palette](https://seek-oss.github.io/seek-style-guide/palette)
+
+### Patch Changes
+
+- **Text:** Improve contrast of `brandAccent`, `critical` and `formAccent` tones ([#1031](https://github.com/seek-oss/braid-design-system/pull/1031))
+
+  When using any of the above tones in a dark container, a lighter colour will be used to improve the text contrast against the background.
+
 ## 30.7.0
 
 ### Minor Changes

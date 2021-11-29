@@ -73,3 +73,5 @@ export { IconUpload } from './IconUpload/IconUpload';
 export { IconVideo } from './IconVideo/IconVideo';
 export { IconVisibility } from './IconVisibility/IconVisibility';
 export { IconWorkExperience } from './IconWorkExperience/IconWorkExperience';
+export { IconZoomIn } from './IconZoomIn/IconZoomIn';
+export { IconZoomOut } from './IconZoomOut/IconZoomOut';
