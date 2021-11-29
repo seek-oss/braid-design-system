@@ -3,6 +3,7 @@ import type { StyleRule } from '@vanilla-extract/css';
 import { vars } from '../../themes/vars.css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import * as styles from './typography.css';
+import * as linkStyles from '../../components/TextLink/TextLink.css';
 
 type TextTone = keyof typeof styles.tone;
 
@@ -103,7 +104,7 @@ export function useTextTone({ tone }: { tone: TextTone }) {
   const inheritLinkColor = tone !== 'neutral' && tone !== 'secondary';
 
   return `${styles.tone[tone]}${
-    inheritLinkColor ? ` ${styles.inheritLinkColor}` : ''
+    inheritLinkColor ? ` ${linkStyles.inheritLinkColor}` : ''
   }`;
 }
 

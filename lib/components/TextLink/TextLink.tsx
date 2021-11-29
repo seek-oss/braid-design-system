@@ -14,7 +14,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import * as typographyStyles from '../../hooks/typography/typography.css';
+import * as styles from './TextLink.css';
 
 export interface TextLinkStyles {
   weight?: 'regular' | 'weak';
@@ -52,29 +52,25 @@ export const useLinkStyles = ({
 
   const linkStyles =
     weight === 'weak'
-      ? typographyStyles.weakLink
+      ? styles.weakLink
       : [
           isPlainBackground(backgroundContext.lightMode, 'light') ||
           weight === 'regular'
-            ? typographyStyles.lightModeTextLink[backgroundLightness.lightMode]
-            : typographyStyles.weakLink,
+            ? styles.regularLinkLightMode[backgroundLightness.lightMode]
+            : styles.weakLink,
           isPlainBackground(backgroundContext.darkMode, 'dark') ||
           weight === 'regular'
-            ? typographyStyles.darkModeTextLink[backgroundLightness.darkMode]
-            : typographyStyles.weakLink,
+            ? styles.regularLinkDarkMode[backgroundLightness.darkMode]
+            : styles.weakLink,
         ];
 
   return clsx(
-    typographyStyles.textLink,
+    styles.base,
     linkStyles,
     showVisited
       ? [
-          typographyStyles.textLinkVisitedLinkMode[
-            backgroundLightness.lightMode
-          ],
-          typographyStyles.textLinkVisitedDarkMode[
-            backgroundLightness.darkMode
-          ],
+          styles.visitedLightMode[backgroundLightness.lightMode],
+          styles.visitedDarkMode[backgroundLightness.darkMode],
         ]
       : '',
     reset !== false
