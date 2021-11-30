@@ -9,12 +9,17 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
 
   for (const key in props) {
     if (sprinkles.properties.has(key as keyof Omit<Atoms, 'reset'>)) {
+      const value = props[key as keyof typeof props];
       try {
         // Try passing to atoms, if sprinkle property but value is not
         // valid, property will be left out until value is valid.
-        atoms({ [key]: props[key as keyof typeof props] });
-        sprinklesProps[key] = props[key as keyof typeof props];
-      } catch (e) {}
+        atoms({ [key]: value });
+        sprinklesProps[key] = value;
+      } catch (e) {
+        if (key === 'background' && /^customDark|customLight$/.test(value)) {
+          sprinklesProps[key] = value;
+        }
+      }
     } else {
       otherProps[key] = props[key as keyof typeof props];
     }
