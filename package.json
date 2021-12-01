@@ -155,7 +155,7 @@
     "svgo": "^2.4.0",
     "title-case": "^3.0.3",
     "ts-node": "^9.1.1",
-    "typescript": "^4.4.2",
+    "typescript": "^4.5.2",
     "workerpool": "^6.1.5"
   },
   "volta": {

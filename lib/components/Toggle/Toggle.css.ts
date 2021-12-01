@@ -21,12 +21,12 @@ export const root = style({
   },
 });
 
-export const realField = style({
-  height: hitArea,
-  selectors: {
-    ...debugTouchable(),
+export const realField = style([
+  {
+    height: hitArea,
   },
-});
+  debugTouchable(),
+]);
 
 export const realFieldPosition = styleVariants(sizes, (size) => ({
   top: calc(hitArea)

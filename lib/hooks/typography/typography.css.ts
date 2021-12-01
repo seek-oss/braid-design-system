@@ -214,6 +214,8 @@ const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
   };
 };
 
+// Using "ts-ignore" here as we don't want users still on typescript < 4.5.0 to get errors
+// @ts-ignore Type instantiation is excessively deep and possibly infinite. Any ideas?
 export const touchable = styleVariants(vars.textSize, (textDefinition) =>
   responsiveStyle({
     mobile: makeTouchableSpacing(
