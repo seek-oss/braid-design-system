@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ReactNode } from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import {
@@ -13,7 +14,6 @@ import {
   Notice,
 } from '../';
 import { Placeholder } from '../../playroom/components';
-import { ReactNode } from 'markdown-to-jsx/node_modules/@types/react';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box maxWidth="xsmall">{children}</Box>
