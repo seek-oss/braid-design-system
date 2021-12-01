@@ -19,13 +19,13 @@ export const root = style({
   },
 });
 
-export const realField = style({
-  width: hitArea,
-  height: hitArea,
-  selectors: {
-    ...debugTouchable(),
+export const realField = style([
+  {
+    width: hitArea,
+    height: hitArea,
   },
-});
+  debugTouchable(),
+]);
 
 export const realFieldPosition = styleVariants(sizes, (size: Size) => {
   const offset = calc(hitArea)

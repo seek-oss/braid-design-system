@@ -1,13 +1,13 @@
-import { Style } from 'sku/treat';
+import type { StyleRule } from '@vanilla-extract/css';
 
-type SelectorMap = Style['selectors'];
-
-export const debugTouchable = ({ after = false } = {}): SelectorMap =>
+export const debugTouchable = ({ after = false } = {}): StyleRule =>
   process.env.NODE_ENV === 'production'
     ? {}
     : {
-        [`[data-braid-debug] &${after ? ':after' : ''}`]: {
-          background: 'red',
-          opacity: 0.2,
+        selectors: {
+          [`[data-braid-debug] &${after ? ':after' : ''}`]: {
+            background: 'red',
+            opacity: 0.2,
+          },
         },
       };
