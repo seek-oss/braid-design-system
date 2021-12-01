@@ -5,6 +5,7 @@ dist-storybook/
 report/
 site/dist/
 # end managed by sku
+
 CHANGELOG.md
 .changeset/*.md
 componentUpdates.json
