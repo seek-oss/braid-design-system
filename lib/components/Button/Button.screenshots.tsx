@@ -71,23 +71,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Neutral',
-      Example: () => (
-        <Inline space="small">
-          <Button tone="neutral">Solid</Button>
-          <Button tone="neutral" variant="ghost">
-            Ghost
-          </Button>
-          <Button tone="neutral" variant="soft">
-            Soft
-          </Button>
-          <Button tone="neutral" variant="transparent">
-            Transparent
-          </Button>
-        </Inline>
-      ),
-    },
-    {
       label: 'Small size',
       Example: () => (
         <Inline space="small">
@@ -189,29 +172,6 @@ export const screenshots: ComponentScreenshot = {
                   Soft
                 </Button>
                 <Button tone="brandAccent" variant="transparent">
-                  Transparent
-                </Button>
-              </Inline>
-            </Box>
-          ))}
-        </Fragment>
-      ),
-    },
-    {
-      label: 'Contrast - neutral',
-      Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="medium">
-              <Inline space="small">
-                <Button tone="neutral">Solid</Button>
-                <Button tone="neutral" variant="ghost">
-                  Ghost
-                </Button>
-                <Button tone="neutral" variant="soft">
-                  Soft
-                </Button>
-                <Button tone="neutral" variant="transparent">
                   Transparent
                 </Button>
               </Inline>
