@@ -35,7 +35,7 @@ export const MenuItemCheckbox = ({
         borderRadius="standard"
         boxShadow="borderField"
         position="relative"
-        background={{ lightMode: 'surface', darkMode: 'transparent' }}
+        background={{ lightMode: 'surface' }}
         marginRight="xsmall"
         className={styles.checkboxBorder}
       >

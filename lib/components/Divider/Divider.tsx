@@ -18,8 +18,8 @@ export const Divider = ({ weight = 'regular' }: DividerProps) => {
         className={[
           styles.base,
           weight === 'strong' ? styles.strong : styles.regular,
-          styles.weight[lightness.lightMode],
-          styles.weight[lightness.darkMode],
+          styles.lightModeWeight[lightness.lightMode],
+          styles.darkModeWeight[lightness.darkMode],
         ]}
       />
     </Box>

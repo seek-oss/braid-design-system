@@ -153,7 +153,7 @@ export const StyledInput = forwardRef<
     const isMixed = isCheckbox && checked === 'mixed';
     const fieldBackground: BoxProps['background'] = disabled
       ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
-      : { lightMode: 'surface', darkMode: 'transparent' };
+      : { lightMode: 'surface' };
 
     useEffect(() => {
       if (ref && typeof ref === 'object' && ref.current && isCheckbox) {

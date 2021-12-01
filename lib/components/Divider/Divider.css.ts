@@ -19,9 +19,28 @@ const weightVars = createThemeContract({
 export const regular = style({ background: weightVars.regular });
 export const strong = style({ background: weightVars.strong });
 
-export const weight = styleVariants({
+export const lightModeWeight = styleVariants({
   light: colorModeStyle({
     lightMode: {
+      vars: assignVars(weightVars, {
+        regular: vars.borderColor.neutralLight,
+        strong: vars.borderColor.neutral,
+      }),
+    },
+  }),
+  dark: colorModeStyle({
+    lightMode: {
+      vars: assignVars(weightVars, {
+        regular: vars.borderColor.neutral,
+        strong: vars.borderColor.neutralLight,
+      }),
+    },
+  }),
+});
+
+export const darkModeWeight = styleVariants({
+  light: colorModeStyle({
+    darkMode: {
       vars: assignVars(weightVars, {
         regular: vars.borderColor.neutralLight,
         strong: vars.borderColor.neutral,

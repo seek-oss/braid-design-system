@@ -522,11 +522,17 @@ const docs: ComponentDocs = {
                     padding="gutter"
                   >
                     <Box
-                      background={background as keyof BackgroundDocs}
+                      background={{
+                        lightMode: background as keyof BackgroundDocs,
+                        darkMode: background as keyof BackgroundDocs,
+                      }}
                       boxShadow={
-                        background === 'surface'
-                          ? 'borderNeutralLight'
-                          : undefined
+                        (
+                          {
+                            surface: { lightMode: 'borderNeutralLight' },
+                            surfaceDark: { darkMode: 'borderNeutral' },
+                          } as const
+                        )[background]
                       }
                       borderRadius="large"
                       padding="gutter"
@@ -648,7 +654,10 @@ const docs: ComponentDocs = {
                     padding="gutter"
                   >
                     <Box
-                      boxShadow={boxShadow as keyof BoxShadowDocs}
+                      boxShadow={{
+                        lightMode: boxShadow as keyof BoxShadowDocs,
+                        darkMode: boxShadow as keyof BoxShadowDocs,
+                      }}
                       borderRadius="large"
                       padding="gutter"
                     />

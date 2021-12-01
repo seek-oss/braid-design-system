@@ -6,7 +6,6 @@ type FieldOverlayVariant =
   | 'disabled'
   | 'focus'
   | 'hover'
-  | 'transparent'
   | 'critical';
 export interface FieldOverlayProps
   extends Pick<
@@ -25,9 +24,8 @@ const boxShadowForVariant: Record<
   FieldOverlayVariant,
   OverlayProps['boxShadow']
 > = {
-  transparent: 'none',
   default: 'borderField',
-  disabled: { lightMode: 'borderNeutralLight', darkMode: 'none' },
+  disabled: 'borderNeutralLight',
   focus: 'outlineFocus',
   hover: 'borderFormAccent',
   critical: 'borderCritical',

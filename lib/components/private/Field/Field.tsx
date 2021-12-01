@@ -123,7 +123,7 @@ export const Field = ({
       : undefined;
   const fieldBackground: BoxProps['background'] = disabled
     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
-    : { lightMode: 'surface', darkMode: 'transparent' };
+    : { lightMode: 'surface' };
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
   const hasVisualLabel = 'label' in restProps;

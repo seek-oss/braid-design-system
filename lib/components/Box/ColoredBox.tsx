@@ -39,7 +39,7 @@ const adaptiveBoxShadow: Partial<Record<BoxShadow, BoxShadow>> = {
   borderInfo: 'borderInfoLight',
   borderNeutral: 'borderNeutralInverted',
   borderNeutralLarge: 'borderNeutralInvertedLarge',
-  borderNeutralLight: 'borderNeutral', // Too far ???? (MenuRenderer menu border, gallery too, but not using box)
+  borderNeutralLight: 'borderNeutral',
   borderPositive: 'borderPositiveLight',
   borderPromote: 'borderPromoteLight',
 };

@@ -428,14 +428,22 @@ const docs: CssDoc = {
                 <Columns key={boxShadow} space="medium" alignY="center">
                   <Column width="content">
                     <Box
-                      background={
-                        boxShadow.includes('Inverted') ? 'brand' : 'surface'
-                      }
+                      background={{
+                        lightMode: boxShadow.includes('Inverted')
+                          ? 'neutral'
+                          : 'surface',
+                        darkMode: /^border|outline/.test(boxShadow)
+                          ? 'surfaceDark'
+                          : 'surface',
+                      }}
                       borderRadius="standard"
                       padding="gutter"
                     >
                       <Box
-                        boxShadow={boxShadow as keyof BoxShadowDocs}
+                        boxShadow={{
+                          lightMode: boxShadow as keyof BoxShadowDocs,
+                          darkMode: boxShadow as keyof BoxShadowDocs,
+                        }}
                         borderRadius="standard"
                         padding="gutter"
                       />
