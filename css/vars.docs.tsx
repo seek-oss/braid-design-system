@@ -136,7 +136,6 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
           <Text size="large">
             <span
               style={{
-                // @ts-expect-error csstype `Property.FontWeight` does not support CSS variables as valid values
                 fontWeight: weightVar,
               }}
             >
