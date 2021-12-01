@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 31.1.0
+
+### Minor Changes
+
+- **IconTip:** Add tip icon ([#1040](https://github.com/seek-oss/braid-design-system/pull/1040))
+
+- **IconZoomIn, IconZoomOut:** Add zoom in/out icons ([#1035](https://github.com/seek-oss/braid-design-system/pull/1035))
+
 ## 31.0.0
 
 ### Major Changes
