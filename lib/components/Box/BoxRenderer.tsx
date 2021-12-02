@@ -2,11 +2,16 @@ import React, { ReactElement } from 'react';
 import clsx from 'clsx';
 import { renderBackgroundProvider } from './BackgroundContext';
 import { atoms, Atoms } from '../../css/atoms/atoms';
-import { BoxBaseProps } from './Box';
+import { BoxBaseProps, SimpleBackground } from './Box';
 import { useColoredBoxClasses } from './ColoredBox';
+import { BoxShadow } from '../../css/atoms/atomicProperties';
 
 export interface BoxRendererProps extends BoxBaseProps {
   component?: Atoms['reset'];
+  // TODO: COLORMODE RELEASE
+  // Remove overrides
+  background?: SimpleBackground | 'customDark' | 'customLight';
+  boxShadow?: BoxShadow;
   children: (className: string) => ReactElement | null;
 }
 

@@ -95,6 +95,7 @@ Box.displayName = 'Box';
 export type SimpleBackground = Exclude<Background, 'bodyDark' | 'surfaceDark'>;
 interface PublicBoxProps extends BoxProps {
   background?: SimpleBackground | 'customDark' | 'customLight';
+  boxShadow?: BoxShadow;
 }
 
 export const PublicBox = forwardRef<HTMLElement, PublicBoxProps>(
@@ -105,6 +106,13 @@ export const PublicBox = forwardRef<HTMLElement, PublicBoxProps>(
         typeof props.background !== 'string'
       ) {
         throw new Error('Conditional backgrounds are not suppported');
+      }
+
+      if (
+        typeof props.boxShadow !== 'undefined' &&
+        typeof props.boxShadow !== 'string'
+      ) {
+        throw new Error('Conditional boxShadows are not suppported');
       }
     }
     return <Box {...props} ref={ref} />;
