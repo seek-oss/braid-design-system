@@ -11,7 +11,7 @@ import { vars } from '../../themes/vars.css';
 import { breakpointQuery, responsiveStyle } from '../../css/responsiveStyle';
 
 import { mapToProperty } from '../../utils';
-import { darkMode } from '../../css/atoms/sprinkles.css';
+import { colorModeStyle } from '../../css/colorModeStyle';
 
 type Vars = typeof vars;
 type TextDefinition = Vars['textSize'];
@@ -137,37 +137,29 @@ const darkContextToneVars = assignVars(textToneVars, {
 });
 
 export const lightModeTone = styleVariants({
-  light: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        vars: lightContextToneVars,
-      },
+  light: colorModeStyle({
+    lightMode: {
+      vars: lightContextToneVars,
     },
-  },
-  dark: {
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
-        vars: darkContextToneVars,
-      },
+  }),
+  dark: colorModeStyle({
+    lightMode: {
+      vars: darkContextToneVars,
     },
-  },
+  }),
 });
 
 export const darkModeTone = styleVariants({
-  light: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        vars: lightContextToneVars,
-      },
+  light: colorModeStyle({
+    darkMode: {
+      vars: lightContextToneVars,
     },
-  },
-  dark: {
-    selectors: {
-      [`html${darkMode} &`]: {
-        vars: darkContextToneVars,
-      },
+  }),
+  dark: colorModeStyle({
+    darkMode: {
+      vars: darkContextToneVars,
     },
-  },
+  }),
 });
 
 const neutralOverrideForBackground: Partial<
@@ -186,30 +178,28 @@ const neutralOverrideForBackground: Partial<
 
 export const lightModeNeutralOverride = styleVariants(
   neutralOverrideForBackground,
-  (textTone) => ({
-    selectors: {
-      [`html:not(${darkMode}) &`]: {
+  (textTone) =>
+    colorModeStyle({
+      lightMode: {
         vars: {
           [textToneVars.neutral]:
             textToneVars[textTone as keyof typeof textToneVars],
         },
       },
-    },
-  }),
+    }),
 );
 
 export const darkModeNeutralOverride = styleVariants(
   neutralOverrideForBackground,
-  (textTone) => ({
-    selectors: {
-      [`html${darkMode} &`]: {
+  (textTone) =>
+    colorModeStyle({
+      darkMode: {
         vars: {
           [textToneVars.neutral]:
             textToneVars[textTone as keyof typeof textToneVars],
         },
       },
-    },
-  }),
+    }),
 );
 
 export const tone = styleVariants(textToneVars, (toneVar) => ({

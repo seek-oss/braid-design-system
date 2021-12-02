@@ -192,6 +192,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Autosuggest with no visual label',
+      background: 'surface',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState<Value>({ text: '' });

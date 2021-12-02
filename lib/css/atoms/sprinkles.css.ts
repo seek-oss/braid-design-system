@@ -31,12 +31,16 @@ const pseudoAtomicProperties = defineProperties({
 });
 
 export const darkMode = style({});
+export const colorModeSelectors = {
+  light: `html:not(${darkMode}) &`,
+  dark: `html${darkMode} &`,
+};
 
 const colorAtomicProperties = defineProperties({
   defaultCondition: 'lightMode',
   conditions: {
-    lightMode: { selector: `html:not(${darkMode}) &` },
-    darkMode: { selector: `html${darkMode} &` },
+    lightMode: { selector: colorModeSelectors.light },
+    darkMode: { selector: colorModeSelectors.dark },
   },
   properties: colorProperties,
 });
@@ -93,7 +97,4 @@ export type ColorModeValue<Value extends string | number> = ConditionalValue<
   typeof colorAtomicProperties,
   Value
 >;
-export const normalizeColorModeValue = createNormalizeValueFn(
-  colorAtomicProperties,
-);
 export const mapColorModeValue = createMapValueFn(colorAtomicProperties);

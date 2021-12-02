@@ -16,7 +16,7 @@ const ColoredBoxRenderer = ({
   children,
   className,
 }: {
-  background: NonNullable<BoxRendererProps['background']>;
+  background: BoxRendererProps['background'];
   boxShadow: BoxRendererProps['boxShadow'];
   children: BoxRendererProps['children'];
   className: string;
@@ -42,7 +42,7 @@ export const BoxRenderer = ({
 }: BoxRendererProps) => {
   const classes = clsx(className, atoms({ reset: component, ...props }));
 
-  return background ? (
+  return background || boxShadow ? (
     <ColoredBoxRenderer
       background={background}
       boxShadow={boxShadow}

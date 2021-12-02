@@ -1,18 +1,16 @@
 import { StyleRule } from '@vanilla-extract/css';
-import { darkMode as darkModeClass } from './atoms/sprinkles.css';
+import { colorModeSelectors } from './atoms/sprinkles.css';
 
 type CSSProps = Omit<StyleRule, 'selectors' | '@media' | '@supports'>;
 
-const selector = {
-  light: `html:not(${darkModeClass}) &`,
-  dark: `html${darkModeClass} &`,
-};
-
-const makeSelector = (mode: 'light' | 'dark', styles?: CSSProps) =>
+const makeSelector = (
+  mode: keyof typeof colorModeSelectors,
+  styles?: CSSProps,
+) =>
   !styles || Object.keys(styles).length === 0
     ? {}
     : {
-        [selector[mode]]: styles,
+        [colorModeSelectors[mode]]: styles,
       };
 
 interface ColorModeStyle {

@@ -96,7 +96,7 @@ export const Alert = ({
       {parentBackground.lightMode !== 'surface' && (
         <Overlay
           borderRadius={borderRadius}
-          boxShadow={{ lightMode: borderForTone[tone], darkMode: 'none' }}
+          boxShadow={{ lightMode: borderForTone[tone] }}
           visible
         />
       )}

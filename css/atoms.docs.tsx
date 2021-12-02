@@ -9,7 +9,7 @@ import {
   UnresponsiveProperties,
   BoxShadow,
 } from '../lib/css/atoms/atomicProperties';
-import { atoms } from '../lib/css/atoms/atoms';
+import { atoms } from '../css';
 import {
   Box,
   Stack,

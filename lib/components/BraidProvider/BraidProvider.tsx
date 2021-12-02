@@ -19,7 +19,7 @@ import { BreakpointProvider } from './BreakpointContext';
 import { BraidThemeContext } from './BraidThemeContext';
 import { BraidTheme } from '../../themes/BraidTheme';
 import { darkMode } from '../../css/atoms/sprinkles.css';
-import * as typographyStyles from '../../hooks/typography/typography.css';
+import { VanillaThemeContainer } from './VanillaThemeContainer';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
@@ -91,10 +91,6 @@ export const BraidProvider = ({
     `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
   );
 
-  const defaultTextTones = !alreadyInBraidProvider
-    ? `${typographyStyles.lightModeTone.light} ${typographyStyles.darkModeTone.dark}`
-    : '';
-
   // TODO REMOVE THIS BRANCH HACK
   useEffect(() => {
     if (alreadyInBraidProvider) {
@@ -135,10 +131,9 @@ export const BraidProvider = ({
             html.${darkMode} body{background:${theme.background.darkMode}}
           `}</style>
         ) : null}
-        <div
-          className={`${theme.vanillaTheme}${
-            defaultTextTones ? ` ${defaultTextTones}` : ''
-          }`}
+        <VanillaThemeContainer
+          theme={theme.vanillaTheme}
+          setDefaultTextTones={!alreadyInBraidProvider}
         >
           <LinkComponentContext.Provider
             value={linkComponent || linkComponentFromContext}
@@ -149,7 +144,7 @@ export const BraidProvider = ({
               <BreakpointProvider>{children}</BreakpointProvider>
             )}
           </LinkComponentContext.Provider>
-        </div>
+        </VanillaThemeContainer>
       </TreatProvider>
     </BraidThemeContext.Provider>
   );
