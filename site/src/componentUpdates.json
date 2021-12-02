@@ -2104,5 +2104,23 @@
         "summary": "**Box, atoms, vars:** Update theme colour tokens with improved semantics.\n\nSimplifies the semantics of the colour-based tokens to support upcoming colour mode work. Changes to the property values on `backgroundColor` and `borderColor` has flow on affects to the apis on `Box` and `atoms`.\n\n\n**TOKEN CHANGES**\n\n**New**\n- **backgroundColor:** `surface`, `neutralSoft`\n- **borderColor:** `neutral`, `neutralInverted`, `neutralLight`\n\n**Removed**\n- **backgroundColor:** `card`, `formAccentDisabled`, `input`, `inputDisabled`, `selection`\n- **borderColor:** `formHover`, `standard`, `standardInverted`\n\n**MIGRATION GUIDE**\n\nMigration can largely be automated by running the Braid upgrade command. You must provide a glob to target your project’s source files. For example:\n\n```\nyarn braid-upgrade v31 \"**/*.{ts,tsx}\"\n```\n\n---\n\nIt may be necessary to manually migrate code in some cases, here are the affected use cases:\n\n**`Box` backgrounds**\n```diff\n- <Box background=\"card\" />\n+ <Box background=\"surface\" />\n\n- <Box background=\"formAccentDisabled\" />\n+ <Box background=\"neutralLight\" />\n\n- <Box background=\"input\" />\n+ <Box background=\"surface\" />\n\n- <Box background=\"inputDisabled\" />\n+ <Box background=\"neutralSoft\" />\n\n- <Box background=\"selection\" />\n+ <Box background=\"formAccentSoft\" />\n```\n\n**`Box` boxShadows**\n```diff\n- <Box boxShadow=\"borderStandard\" />\n+ <Box boxShadow=\"borderNeutralLight\" />\n\n- <Box boxShadow=\"borderStandardInverted\" />\n+ <Box boxShadow=\"borderNeutralInverted\" />\n\n- <Box boxShadow=\"borderStandardInvertedLarge\" />\n+ <Box boxShadow=\"borderNeutralInvertedLarge\" />\n\n- <Box boxShadow=\"borderFormHover\" />\n+ <Box boxShadow=\"borderFormAccent\" />\n```\n\n**`vars`**\n```diff\n- vars.borderColor.standard\n+ vars.borderColor.neutralLight\n\n- vars.borderColor.standardInverted\n+ vars.borderColor.neutralInverted\n\n- vars.borderColor.formHover\n+ vars.borderColor.formAccent\n```\n\n**`atoms`**\n```diff\n atoms({\n-  boxShadow: 'borderStandard',\n+  boxShadow: 'borderNeutralLight',\n });\n\n atoms({\n-  boxShadow: 'borderStandardInverted',\n+  boxShadow: 'borderNeutralInverted',\n });\n\n atoms({\n-  boxShadow: 'borderStandardInvertedLarge',\n+  boxShadow: 'borderNeutralInvertedLarge',\n });\n\n atoms({\n-  boxShadow: 'borderFormHover',\n+  boxShadow: 'borderFormAccent',\n });\n```"
       }
     ]
+  },
+  {
+    "version": "31.1.0",
+    "updates": [
+      {
+        "new": [
+          "IconTip"
+        ],
+        "summary": "**IconTip:** Add tip icon"
+      },
+      {
+        "new": [
+          "IconZoomIn",
+          "IconZoomOut"
+        ],
+        "summary": "**IconZoomIn, IconZoomOut:** Add zoom in/out icons"
+      }
+    ]
   }
 ]

@@ -1847,6 +1847,31 @@ export const IconTimeSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconTipSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import type { SVGProps } from '../SVGTypes';
+
+export const IconTipSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns=\\"http://www.w3.org/2000/svg\\"
+    width={16}
+    height={16}
+    viewBox=\\"0 0 24 24\\"
+    focusable=\\"false\\"
+    fill=\\"currentColor\\"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d=\\"M9 18.957a1 1 0 0 1-1-1V16a8.96 8.96 0 0 0-1.485-2.633l-.277-.391a7 7 0 1 1 11.524 0l-.277.391A8.96 8.96 0 0 0 16 16v1.932a1 1 0 0 1-2 0V16c0-1.095.878-2.419 1.856-3.793l.261-.368a5 5 0 1 0-8.234 0l.26.368C9.124 13.581 10 14.905 10 16v1.957a1 1 0 0 1-1 1z\\" />
+    <path d=\\"M13.286 22h-2.572A2.761 2.761 0 0 1 8 19.2V17a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2.2a2.761 2.761 0 0 1-2.714 2.8zM10 18v1.2a.761.761 0 0 0 .714.8h2.572a.761.761 0 0 0 .714-.8V18zm13-8h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zm-1.475 5.5a.994.994 0 0 1-.499-.134l-1.732-1a1 1 0 1 1 1-1.732l1.732 1a1 1 0 0 1-.5 1.866zm-1.73-10a1 1 0 0 1-.501-1.866l1.732-1a1 1 0 1 1 1 1.732l-1.732 1a.994.994 0 0 1-.5.134zM3 10H1a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2zm-.525 5.5a1 1 0 0 1-.501-1.866l1.732-1a1 1 0 1 1 1 1.732l-1.732 1a.994.994 0 0 1-.5.134zm1.73-10a.994.994 0 0 1-.499-.134l-1.732-1a1 1 0 0 1 1-1.732l1.732 1a1 1 0 0 1-.5 1.866zM15 10a1 1 0 0 1-1-1 2.003 2.003 0 0 0-2-2 1 1 0 0 1 0-2 4.004 4.004 0 0 1 4 4 1 1 0 0 1-1 1z\\" />
+    <path d=\\"M14 21a2 2 0 0 1-4 0\\" />
+  </svg>
+);
+"
+`;
+
 exports[`IconUploadSvg should match snapshot 1`] = `
 "import React from 'react';
 

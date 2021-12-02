@@ -69,6 +69,7 @@ export { IconTag } from './IconTag/IconTag';
 export { IconThumb } from './IconThumb/IconThumb';
 export { IconTick } from './IconTick/IconTick';
 export { IconTime } from './IconTime/IconTime';
+export { IconTip } from './IconTip/IconTip';
 export { IconUpload } from './IconUpload/IconUpload';
 export { IconVideo } from './IconVideo/IconVideo';
 export { IconVisibility } from './IconVisibility/IconVisibility';
