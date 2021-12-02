@@ -7,7 +7,10 @@ import * as themes from '../themes';
 import { ComponentExample, ComponentScreenshot } from '../../site/src/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
 import { useSourceFromExample } from '../utils/useSourceFromExample';
-import { BraidProvider, ToastProvider, Box } from '../components';
+import { BraidProvider, ToastProvider } from '../components';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../components/Box/Box';
 import { darkMode } from '../css/atoms/sprinkles.css';
 
 const webFontLinkTags = uniq(

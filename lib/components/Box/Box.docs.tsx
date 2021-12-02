@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import {
-  Box,
   Text,
   TextLink,
   Stack,
@@ -12,6 +11,10 @@ import {
   Strong,
   Alert,
 } from '../';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from './Box';
+import type { SimpleBackground } from './Box';
 import source from '../../utils/source.macro';
 import Code from '../../../site/src/App/Code/Code';
 import {
@@ -23,15 +26,12 @@ import {
   PseudoProperties,
   BoxShadow,
 } from '../../css/atoms/atomicProperties';
-import { vars } from '../../themes/vars.css';
 import { ThemedExample } from '../../../site/src/App/ThemeSetting';
 
-type BackgroundDocs = Required<
-  Record<keyof typeof vars.backgroundColor, string>
->;
+type BackgroundDocs = Required<Record<SimpleBackground, string>>;
 const validateBackgrounds = (backgrounds: BackgroundDocs) => backgrounds;
 
-type BoxShadowDocs = Required<Record<Exclude<BoxShadow, 'none'>, string>>;
+type BoxShadowDocs = Required<Record<BoxShadow, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 
 interface AtomicPropertyProps {
@@ -466,8 +466,9 @@ const docs: ComponentDocs = {
             {Object.entries(
               validateBackgrounds({
                 body: 'Used for elements that need to match the body background.',
-                bodyDark:
-                  'Used for elements that need to match the body background in dark context.',
+                // TODO: COLORMODE RELEASE
+                // bodyDark:
+                //   'Used for elements that need to match the body background in dark context.',
                 brand: 'Used for branding larger areas of the screen.',
                 brandAccent: 'Used for hero elements on the screen.',
                 brandAccentHover: 'Hover colour for “brandAccent” elements.',
@@ -510,8 +511,9 @@ const docs: ComponentDocs = {
                 neutralSoftActive: 'Active colour for "neutralSoft" elements',
                 neutralSoftHover: 'Hover colour for "neutralSoft" elements',
                 surface: 'Used for surfaces that sit on top of body elements',
-                surfaceDark:
-                  'Used for surfaces that sit on top of body elements in a dark context',
+                // TODO: COLORMODE RELEASE
+                // surfaceDark:
+                //   'Used for surfaces that sit on top of body elements in a dark context',
               }),
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">

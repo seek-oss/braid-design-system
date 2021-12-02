@@ -22,7 +22,6 @@ import {
   Stack,
   Text,
   Heading,
-  Box,
   Badge,
   Inline,
   Link,
@@ -37,6 +36,9 @@ import {
   TextDropdown,
   Strong,
 } from '../../../../../lib/components';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../../../../../lib/components/Box/Box';
 import docsTheme from '../../../../../lib/themes/docs';
 import { getHistory, isNew } from '../../Updates';
 import source from '../../../../../lib/utils/source.macro';

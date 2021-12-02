@@ -11,7 +11,6 @@ import {
 } from '../lib/css/atoms/atomicProperties';
 import { atoms } from '../css';
 import {
-  Box,
   Stack,
   Columns,
   Column,
@@ -22,13 +21,16 @@ import {
   Strong,
   Alert,
 } from '../lib/components';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../lib/components/Box/Box';
 import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { ThemedExample } from '../site/src/App/ThemeSetting';
 import { CssDoc } from '../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
-type BoxShadowDocs = Required<Record<Exclude<BoxShadow, 'none'>, string>>;
+type BoxShadowDocs = Required<Record<BoxShadow, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 
 interface AtomicPropertyProps {

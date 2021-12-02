@@ -1,7 +1,6 @@
 import React from 'react';
 import { BoxProps } from '../../../../../../lib/components/Box/Box';
 import {
-  Box,
   Text,
   Columns,
   Column,
@@ -10,6 +9,9 @@ import {
   Divider,
   Hidden,
 } from '../../../../../../lib/components';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../../../../../../lib/components/Box/Box';
 import { TextStack } from '../../../TextStack/TextStack';
 import { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';

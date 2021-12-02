@@ -350,7 +350,6 @@ Object {
     autoSave?: string
     background?: 
         | "body"
-        | "bodyDark"
         | "brand"
         | "brandAccent"
         | "brandAccentActive"
@@ -389,9 +388,6 @@ Object {
         | "promote"
         | "promoteLight"
         | "surface"
-        | "surfaceDark"
-        | "transparent"
-        | Partial<Record<"lightMode" | "darkMode", BoxBackgroundVariant>>
     borderRadius?: 
         | "full"
         | "large"
@@ -428,10 +424,9 @@ Object {
         | "borderPromoteLight"
         | "large"
         | "medium"
-        | "none"
         | "outlineFocus"
         | "small"
-        | Partial<Record<"lightMode" | "darkMode", "small" | "large" | "medium" | "none" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | ... 20 more ... | "outlineFocus">>
+        | Partial<Record<"lightMode" | "darkMode", "small" | "large" | "medium" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | "borderCritical" | ... 19 more ... | "outlineFocus">>
     capture?: 
         | "environment"
         | "user"
@@ -1336,7 +1331,6 @@ Object {
         | "promoteLight"
         | "surface"
         | "surfaceDark"
-        | "transparent"
         | Partial<Record<"lightMode" | "darkMode", BoxBackgroundVariant>>
     borderRadius?: 
         | "full"
@@ -1374,10 +1368,9 @@ Object {
         | "borderPromoteLight"
         | "large"
         | "medium"
-        | "none"
         | "outlineFocus"
         | "small"
-        | Partial<Record<"lightMode" | "darkMode", "small" | "large" | "medium" | "none" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | ... 20 more ... | "outlineFocus">>
+        | Partial<Record<"lightMode" | "darkMode", "small" | "large" | "medium" | "borderBrandAccentLarge" | "borderBrandAccentLightLarge" | "borderCaution" | "borderCautionLight" | "borderCritical" | ... 19 more ... | "outlineFocus">>
     children: (className: string) => ReactElement<any, string | JSXElementConstructor<any>> | null
     className?: ClassValue
     component?: 

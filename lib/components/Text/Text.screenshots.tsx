@@ -1,7 +1,10 @@
 import React, { Fragment, ReactNode } from 'react';
 import { titleCase } from 'title-case';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Box, Text, Stack, Column, Columns, IconPositive } from '../';
+import { Text, Stack, Column, Columns, IconPositive } from '../';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../Box/Box';
 import { text as textSizes } from '../../hooks/typography/typography.css';
 import { backgrounds, textAlignments } from '../../utils/docsHelpers';
 

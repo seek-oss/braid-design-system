@@ -37,7 +37,6 @@ const boxShadow = {
   borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
   borderPromoteLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promoteLight}`,
   outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
-  none: 'none',
 };
 
 export type BoxShadow = keyof typeof boxShadow;
@@ -81,17 +80,12 @@ export const unresponsiveProperties = {
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties;
 
-const background = {
-  ...vars.backgroundColor,
-  transparent: 'transparent',
-} as const;
-
 export const colorProperties = {
-  background,
+  background: vars.backgroundColor,
   boxShadow,
 } as const;
 
-export type Background = keyof typeof background;
+export type Background = keyof typeof vars.backgroundColor;
 
 export type ColorProperties = keyof typeof colorProperties;
 

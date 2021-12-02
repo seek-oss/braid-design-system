@@ -11,10 +11,12 @@ import {
   ContentBlock,
   Text,
   Link,
-  Box,
   Hidden,
   HiddenVisually,
 } from '../../../../lib/components';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../../../../lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
 import { BoxProps } from '../../../../lib/components/Box/Box';
 import { SubNavigation } from '../SubNavigation/SubNavigation';

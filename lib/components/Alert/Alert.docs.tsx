@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Alert, Text, Strong, Stack, TextLink, List, Notice } from '../';
+import { Alert, Text, Strong, Stack, TextLink, List } from '../';
 import { Card } from '../Card/Card';
 
 const docs: ComponentDocs = {
@@ -124,6 +124,8 @@ const docs: ComponentDocs = {
             an outline is used to provide sufficient contrast against the
             background.
           </Text>
+          {/*
+          TODO: COLORMODE RELEASE
           <Notice>
             <Text>
               This only applies in a light context, i.e. when the soft
@@ -131,6 +133,7 @@ const docs: ComponentDocs = {
               background colour.
             </Text>
           </Notice>
+          */}
         </>
       ),
       Example: () =>

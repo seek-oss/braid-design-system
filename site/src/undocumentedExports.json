@@ -15,5 +15,5 @@
     "TabPanels",
     "ToastProvider"
   ],
-  "css": ["Breakpoint"]
+  "css": ["Breakpoint", "colorModeStyle"]
 }

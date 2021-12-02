@@ -6,10 +6,7 @@ import {
   mapColorModeValue,
 } from '../../css/atoms/sprinkles.css';
 
-export type BackgroundContextValue = Exclude<
-  BoxBackgroundVariant,
-  'transparent'
->;
+export type BackgroundContextValue = BoxBackgroundVariant;
 
 const lightModeBackgroundContext =
   createContext<BackgroundContextValue>('body');
@@ -23,10 +20,6 @@ export const renderBackgroundProvider = (
   background: ColorModeValue<BoxBackgroundVariant>,
   element: ReactElement | null,
 ) => {
-  if (background === 'transparent') {
-    return element;
-  }
-
   if (typeof background === 'string') {
     return (
       <LightBackgroundProvider value={background}>
@@ -39,7 +32,7 @@ export const renderBackgroundProvider = (
 
   let returnEl = element;
 
-  if (background.lightMode && background.lightMode !== 'transparent') {
+  if (background.lightMode) {
     returnEl = (
       <LightBackgroundProvider value={background.lightMode}>
         {returnEl}
@@ -47,7 +40,7 @@ export const renderBackgroundProvider = (
     );
   }
 
-  if (background.darkMode && background.darkMode !== 'transparent') {
+  if (background.darkMode) {
     returnEl = (
       <DarkBackgroundProvider value={background.darkMode}>
         {returnEl}

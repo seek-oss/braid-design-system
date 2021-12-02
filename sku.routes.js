@@ -21,6 +21,8 @@ const getPages = (relativePath) => {
   return source.match(/('.*')(?=:)/g).map((x) => x.split("'")[1]);
 };
 
+// TODO: COLORMODE RELEASE
+// Remove `colorModeStyle` from `undocumentedExports.json`
 const cssNames = getExports('css/index.ts', 'css');
 const componentNames = getExports('lib/components/index.ts');
 const iconNames = getExports('lib/components/icons/index.ts');

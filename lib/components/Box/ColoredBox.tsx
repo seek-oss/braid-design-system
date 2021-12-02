@@ -155,13 +155,8 @@ export const useColoredBoxClasses = ({
 
     // ---------------------------------------------------------------------------
     // Assign text tone vars based on the lightness context
-    if (lightMode !== 'transparent') {
-      classList.push(typographyStyles.lightModeTone[lightnessMap[lightMode!]]);
-    }
-
-    if (darkMode !== 'transparent') {
-      classList.push(typographyStyles.darkModeTone[lightnessMap[darkMode!]]);
-    }
+    classList.push(typographyStyles.lightModeTone[lightnessMap[lightMode!]]);
+    classList.push(typographyStyles.darkModeTone[lightnessMap[darkMode!]]);
 
     // ---------------------------------------------------------------------------
     // Override `neutral` text tone based on the lightness context

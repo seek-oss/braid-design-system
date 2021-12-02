@@ -18,8 +18,8 @@ export type BoxBackgroundVariant = Background | 'customDark' | 'customLight';
 export interface BoxBaseProps
   extends Omit<Atoms, 'reset' | 'background' | 'boxShadow'> {
   className?: ClassValue;
-  background?: BoxBackgroundVariant | ColorModeValue<BoxBackgroundVariant>;
-  boxShadow?: BoxShadow | ColorModeValue<BoxShadow>;
+  background?: ColorModeValue<BoxBackgroundVariant>;
+  boxShadow?: ColorModeValue<BoxShadow>;
 }
 
 export interface BoxProps
@@ -89,3 +89,26 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
 );
 
 Box.displayName = 'Box';
+
+// TODO: COLORMODE RELEASE
+// Remove PublicBox
+export type SimpleBackground = Exclude<Background, 'bodyDark' | 'surfaceDark'>;
+interface PublicBoxProps extends BoxProps {
+  background?: SimpleBackground | 'customDark' | 'customLight';
+}
+
+export const PublicBox = forwardRef<HTMLElement, PublicBoxProps>(
+  (props, ref) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (
+        typeof props.background !== 'undefined' &&
+        typeof props.background !== 'string'
+      ) {
+        throw new Error('Conditional backgrounds are not suppported');
+      }
+    }
+    return <Box {...props} ref={ref} />;
+  },
+);
+
+PublicBox.displayName = 'Box';

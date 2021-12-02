@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import {
-  Box,
   Heading,
   IconNewWindow,
   IconChevron,
@@ -10,6 +9,9 @@ import {
   Columns,
   Column,
 } from '../';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../Box/Box';
 import { backgrounds } from '../../utils/docsHelpers';
 
 export const screenshots: ComponentScreenshot = {

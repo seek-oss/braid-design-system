@@ -19,7 +19,7 @@ export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
 export { filterSuggestions } from './Autosuggest/filterSuggestions';
 export { Badge } from './Badge/Badge';
-export { Box } from './Box/Box';
+export { PublicBox as Box } from './Box/Box';
 export { BoxRenderer } from './Box/BoxRenderer';
 export { Button } from './Button/Button';
 export { ButtonLink } from './ButtonLink/ButtonLink';

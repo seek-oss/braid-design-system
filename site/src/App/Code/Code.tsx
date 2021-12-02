@@ -15,7 +15,6 @@ import { createUrl } from 'playroom/utils';
 import { useConfig } from '../ConfigContext';
 import { Source } from '../../../../lib/utils/source.macro';
 import {
-  Box,
   Stack,
   Text,
   Inline,
@@ -23,7 +22,9 @@ import {
   Hidden,
   IconPositive,
 } from '../../../../lib/components';
-import { BoxProps } from '../../../../lib/components/Box/Box';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box, BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
