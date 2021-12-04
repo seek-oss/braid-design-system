@@ -12,6 +12,7 @@ import { breakpointQuery, responsiveStyle } from '../../css/responsiveStyle';
 
 import { mapToProperty } from '../../utils';
 import { colorModeStyle } from '../../css/colorModeStyle';
+import { BoxBackgroundVariant } from '../../components/Box/Box';
 
 type Vars = typeof vars;
 type TextDefinition = Vars['textSize'];
@@ -163,7 +164,7 @@ export const darkModeTone = styleVariants({
 });
 
 const neutralOverrideForBackground: Partial<
-  Record<keyof typeof vars.backgroundColor, keyof typeof textToneVars>
+  Record<BoxBackgroundVariant, keyof typeof textToneVars>
 > = {
   criticalLight: 'critical',
   criticalSoft: 'critical',

@@ -3,7 +3,6 @@ import { atoms } from '../../css/atoms/atoms';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import {
   renderBackgroundProvider,
-  useBackground,
   useBackgroundLightness,
 } from './BackgroundContext';
 import { BoxBackgroundVariant, BoxProps } from './Box';
@@ -17,7 +16,7 @@ export interface ColoredBoxProps extends BoxProps {
 const adaptiveBackgrounds: Partial<Record<BoxBackgroundVariant, Background>> = {
   body: 'bodyDark',
   surface: 'surfaceDark',
-  brand: 'surfaceDark',
+  brand: 'neutral',
   promoteLight: 'neutral',
   infoLight: 'neutral',
   positiveLight: 'neutral',
@@ -46,47 +45,16 @@ const adaptiveBoxShadow: Partial<Record<BoxShadow, BoxShadow>> = {
 
 const normaliseBackground = (background: ColoredBoxProps['background']) => ({
   lightMode: typeof background === 'object' ? background.lightMode : background,
-  darkMode: typeof background === 'object' ? background.darkMode : background,
+  darkMode:
+    typeof background === 'object'
+      ? background.darkMode
+      : adaptiveBackgrounds[background!] || background,
 });
 
 const normalisedBoxShadow = (boxShadow: ColoredBoxProps['boxShadow']) => ({
   lightMode: typeof boxShadow === 'object' ? boxShadow.lightMode : boxShadow,
   darkMode: typeof boxShadow === 'object' ? boxShadow.darkMode : boxShadow,
 });
-
-const isDarkLayerContainer = (context: BoxBackgroundVariant | undefined) =>
-  context && ['bodyDark', 'surfaceDark'].includes(context);
-
-const resolveBackground = ({
-  context,
-  background,
-  fallback,
-}: {
-  context: {
-    background: BoxBackgroundVariant;
-    lightness?: 'dark' | 'light';
-  };
-  background: ColoredBoxProps['background'];
-  fallback: BoxBackgroundVariant | undefined;
-}) => {
-  if (typeof background === 'string') {
-    if (background === 'surface') {
-      if (
-        isDarkLayerContainer(context.background) ||
-        context.background === 'neutral'
-      ) {
-        return adaptiveBackgrounds[background];
-      }
-    } else if (
-      context.lightness === 'dark' &&
-      adaptiveBackgrounds[background]
-    ) {
-      return adaptiveBackgrounds[background];
-    }
-  }
-
-  return fallback;
-};
 
 export const useColoredBoxClasses = ({
   background,
@@ -96,7 +64,6 @@ export const useColoredBoxClasses = ({
   boxShadow?: ColoredBoxProps['boxShadow'];
 }) => {
   const parentLightness = useBackgroundLightness();
-  const parentBackground = useBackground();
   const { backgroundLightness } = useBraidTheme();
   const lightnessMap = {
     ...backgroundLightness,
@@ -131,27 +98,7 @@ export const useColoredBoxClasses = ({
   if (background) {
     // ---------------------------------------------------------------------------
     // Normalise simple background to populated conditional value
-    const normalisedBackground = normaliseBackground(background);
-
-    // ---------------------------------------------------------------------------
-    // Resolve background given the parent background & lightness context
-    const lightMode = normalisedBackground.lightMode;
-    // const lightMode = resolveBackground({
-    //   context: {
-    //     background: parentBackground.lightMode,
-    //     lightness: parentLightness.lightMode,
-    //   },
-    //   background,
-    //   fallback: normalisedBackground.lightMode,
-    // });
-    const darkMode = resolveBackground({
-      context: {
-        background: parentBackground.darkMode,
-        lightness: parentLightness.darkMode,
-      },
-      background,
-      fallback: normalisedBackground.darkMode,
-    });
+    const { lightMode, darkMode } = normaliseBackground(background);
 
     // ---------------------------------------------------------------------------
     // Assign text tone vars based on the lightness context
@@ -163,59 +110,48 @@ export const useColoredBoxClasses = ({
 
     //  1. If `neutral` background, check for background specified in opposite
     //  colour mode for tone
-    const lightModeContext =
-      normalisedBackground.lightMode === 'neutral'
-        ? normalisedBackground.darkMode
-        : normalisedBackground.lightMode;
-    const darkModeContext =
-      normalisedBackground.darkMode === 'neutral'
-        ? normalisedBackground.lightMode
-        : normalisedBackground.darkMode;
+    const lightModeTone = lightMode === 'neutral' ? darkMode : lightMode;
+    const darkModeTone = darkMode === 'neutral' ? lightMode : darkMode;
 
-    //  2. If background has neutral override, apply it
+    //  2. If background has neutral text override, apply it
     if (
-      lightModeContext &&
-      lightModeContext in typographyStyles.lightModeNeutralOverride
+      lightModeTone &&
+      typographyStyles.lightModeNeutralOverride[lightModeTone]
     ) {
-      classList.push(
-        typographyStyles.lightModeNeutralOverride[
-          lightModeContext as keyof typeof typographyStyles.lightModeNeutralOverride
-        ],
-      );
+      classList.push(typographyStyles.lightModeNeutralOverride[lightModeTone]);
     }
 
     if (
-      darkModeContext &&
-      darkModeContext in typographyStyles.darkModeNeutralOverride
+      darkModeTone &&
+      typographyStyles.darkModeNeutralOverride[darkModeTone]
     ) {
-      classList.push(
-        typographyStyles.darkModeNeutralOverride[
-          darkModeContext as keyof typeof typographyStyles.darkModeNeutralOverride
-        ],
-      );
+      classList.push(typographyStyles.darkModeNeutralOverride[darkModeTone]);
     }
 
     // ---------------------------------------------------------------------------
-    // Set background atoms classes and update background context
-    const newBackground = {
-      lightMode:
-        lightMode === 'customDark' || lightMode === 'customLight'
-          ? undefined
-          : lightMode,
-      darkMode:
-        darkMode === 'customDark' || darkMode === 'customLight'
-          ? undefined
-          : darkMode,
-    };
-
+    // Set background atoms classes
     classList.push(
       atoms({
-        background: newBackground,
+        background: {
+          lightMode:
+            lightMode === 'customDark' || lightMode === 'customLight'
+              ? undefined
+              : lightMode,
+          darkMode:
+            darkMode === 'customDark' || darkMode === 'customLight'
+              ? undefined
+              : darkMode,
+        },
       }),
     );
 
+    // ---------------------------------------------------------------------------
+    // Return updated background context and class list
     return {
-      backgroundContext: newBackground,
+      backgroundContext: {
+        lightMode,
+        darkMode,
+      },
       classList: classList.join(' '),
     };
   }

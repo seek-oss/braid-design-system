@@ -37,7 +37,9 @@ const isPlainBackground = (
       backgroundContext === 'surface' ||
       backgroundContext === 'neutralLight')) ||
   (contrast === 'dark' &&
-    (backgroundContext === 'bodyDark' || backgroundContext === 'surfaceDark'));
+    (backgroundContext === 'bodyDark' ||
+      backgroundContext === 'surfaceDark' ||
+      backgroundContext === 'neutral'));
 
 export const useLinkStyles = ({
   reset = 'a',
