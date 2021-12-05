@@ -3,7 +3,6 @@ import dedent from 'dedent';
 import React, {
   createContext,
   useContext,
-  useEffect,
   ReactNode,
   AnchorHTMLAttributes,
   forwardRef,
@@ -90,36 +89,6 @@ export const BraidProvider = ({
       inTestProvider,
     `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
   );
-
-  // TODO REMOVE THIS BRANCH HACK
-  useEffect(() => {
-    if (alreadyInBraidProvider) {
-      return;
-    }
-
-    let code = '';
-    const colorModeToggle = (ev: KeyboardEvent) => {
-      code += ev.key;
-      if (code.substr(code.length - 4) === 'dark') {
-        document.documentElement.classList.add(darkMode);
-        code = '';
-      }
-
-      if (code.substr(code.length - 5) === 'light') {
-        document.documentElement.classList.remove(darkMode);
-        code = '';
-      }
-
-      if (code.length > 5) {
-        code = code.substr(code.length - 5);
-      }
-    };
-    window.addEventListener('keydown', colorModeToggle);
-
-    return () => {
-      window.removeEventListener('keydown', colorModeToggle);
-    };
-  }, [alreadyInBraidProvider]);
 
   return (
     <BraidThemeContext.Provider value={theme}>
