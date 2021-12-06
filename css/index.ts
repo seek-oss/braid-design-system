@@ -10,7 +10,9 @@ const {
   grid,
   space,
   touchableSize,
-  backgroundColor,
+  // TODO: COLORMODE RELEASE
+  // Release new backgrounds
+  backgroundColor: { surfaceDark: _, bodyDark: __, ...backgroundColor },
   foregroundColor,
   textWeight,
   borderColor,
