@@ -15,11 +15,9 @@ import { Background, BoxShadow } from '../../css/atoms/atomicProperties';
 
 export type BoxBackgroundVariant = Background | 'customDark' | 'customLight';
 
-export interface BoxBaseProps
-  extends Omit<Atoms, 'reset' | 'background' | 'boxShadow'> {
+export interface BoxBaseProps extends Omit<Atoms, 'reset' | 'background'> {
   className?: ClassValue;
   background?: ColorModeValue<BoxBackgroundVariant>;
-  boxShadow?: ColorModeValue<BoxShadow>;
 }
 
 export interface BoxProps

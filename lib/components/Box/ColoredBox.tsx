@@ -6,8 +6,8 @@ import {
   useBackgroundLightness,
 } from './BackgroundContext';
 import { BoxBackgroundVariant, BoxProps } from './Box';
-import * as typographyStyles from '../../hooks/typography/typography.css';
 import { Background, BoxShadow } from '../../css/atoms/atomicProperties';
+import * as typographyStyles from '../../hooks/typography/typography.css';
 
 export interface ColoredBoxProps extends BoxProps {
   component: NonNullable<BoxProps['component']>;
@@ -108,12 +108,11 @@ export const useColoredBoxClasses = ({
     // ---------------------------------------------------------------------------
     // Override `neutral` text tone based on the lightness context
 
-    //  1. If `neutral` background, check for background specified in opposite
-    //  colour mode for tone
+    //  1. If `neutral` background, check background tone in opposite color mode
     const lightModeTone = lightMode === 'neutral' ? darkMode : lightMode;
     const darkModeTone = darkMode === 'neutral' ? lightMode : darkMode;
 
-    //  2. If background has neutral text override, apply it
+    //  2. If neutral text override exists for background, apply it
     if (
       lightModeTone &&
       typographyStyles.lightModeNeutralOverride[lightModeTone]
