@@ -135,9 +135,23 @@ Object.keys(allStories)
                 animation-delay: -0.0001s !important;
                 animation-duration: 0s !important;
                 animation-play-state: paused !important;
-              }`}
+              }
+              .artboard {
+                --deepColor: ${
+                  theme.name === 'apacDark'
+                    ? `rgba(255, 255, 255, .05)`
+                    : `rgba(0, 0, 0, .05)`
+                };
+                --cubeSize: 12px;
+                background-color: transparent;
+                background-image: linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor)),
+                  linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor));
+                background-size: calc(var(--cubeSize) * 2) calc(var(--cubeSize) * 2);
+                background-position: 0 0, var(--cubeSize) var(--cubeSize);
+              }
+              `}
                 </style>
-                <div className="noAnimation">
+                <div className="noAnimation artboard">
                   {docs.examples.map((example, i) => (
                     <PlayroomStateProvider key={i}>
                       <RenderExample
