@@ -21,7 +21,11 @@ export default function useScope() {
           mutation.type === 'attributes' &&
           mutation.attributeName === 'class'
         ) {
-          setColorMode(colorMode === 'lightMode' ? 'darkMode' : 'lightMode');
+          setColorMode(
+            document.documentElement.classList.contains(darkMode)
+              ? 'darkMode'
+              : 'lightMode',
+          );
         }
       }
     });

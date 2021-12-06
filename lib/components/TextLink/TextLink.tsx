@@ -4,8 +4,8 @@ import { atoms, Atoms } from '../../css/atoms/atoms';
 import {
   useBackgroundLightness,
   useBackground,
-  BackgroundContextValue,
 } from '../Box/BackgroundContext';
+import { BoxBackgroundVariant } from '../Box/Box';
 import {
   useLinkComponent,
   LinkComponentProps,
@@ -29,7 +29,7 @@ export interface TextLinkProps
 }
 
 const isPlainBackground = (
-  backgroundContext: BackgroundContextValue,
+  backgroundContext: BoxBackgroundVariant,
   contrast: 'dark' | 'light',
 ) =>
   (contrast === 'light' &&

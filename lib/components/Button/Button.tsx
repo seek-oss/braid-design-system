@@ -5,14 +5,13 @@ import React, {
   AllHTMLAttributes,
 } from 'react';
 import { touchableText } from '../../hooks/typography';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, BoxBackgroundVariant, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
-  BackgroundContextValue,
   ColorContrastValue,
   useBackgroundLightness,
   useColorContrast,
@@ -56,16 +55,16 @@ export interface ButtonProps extends ButtonStyleProps {
 type ButtonStyles = {
   textTone: TextProps['tone'];
   background:
-    | ColorContrastValue<BackgroundContextValue>
-    | BackgroundContextValue
+    | ColorContrastValue<BoxBackgroundVariant>
+    | BoxBackgroundVariant
     | undefined;
   backgroundHover:
-    | ColorContrastValue<BackgroundContextValue>
-    | BackgroundContextValue
+    | ColorContrastValue<BoxBackgroundVariant>
+    | BoxBackgroundVariant
     | undefined;
   backgroundActive:
-    | ColorContrastValue<BackgroundContextValue>
-    | BackgroundContextValue
+    | ColorContrastValue<BoxBackgroundVariant>
+    | BoxBackgroundVariant
     | undefined;
   boxShadow: BoxShadow | undefined;
 };

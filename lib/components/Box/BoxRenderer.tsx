@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import clsx from 'clsx';
-import { renderBackgroundProvider } from './BackgroundContext';
+import { BackgroundProvider } from './BackgroundContext';
 import { atoms, Atoms } from '../../css/atoms/atoms';
 import { BoxBaseProps, SimpleBackground } from './Box';
 import { useColoredBoxClasses } from './ColoredBox';
@@ -32,9 +32,11 @@ const ColoredBoxRenderer = ({
   });
   const element = children(clsx(className, classList));
 
-  return backgroundContext
-    ? renderBackgroundProvider(backgroundContext, element)
-    : element;
+  return backgroundContext ? (
+    <BackgroundProvider value={backgroundContext}>{element}</BackgroundProvider>
+  ) : (
+    element
+  );
 };
 
 export const BoxRenderer = ({

@@ -1,8 +1,9 @@
-import { createElement, forwardRef } from 'react';
+import React, { createElement, forwardRef } from 'react';
 import { atoms } from '../../css/atoms/atoms';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import {
-  renderBackgroundProvider,
+  BackgroundProvider,
+  useBackground,
   useBackgroundLightness,
 } from './BackgroundContext';
 import { BoxBackgroundVariant, BoxProps } from './Box';
@@ -64,6 +65,7 @@ export const useColoredBoxClasses = ({
   boxShadow?: ColoredBoxProps['boxShadow'];
 }) => {
   const parentLightness = useBackgroundLightness();
+  const currentBackgroundContext = useBackground();
   const { backgroundLightness } = useBraidTheme();
   const lightnessMap = {
     ...backgroundLightness,
@@ -148,8 +150,8 @@ export const useColoredBoxClasses = ({
     // Return updated background context and class list
     return {
       backgroundContext: {
-        lightMode,
-        darkMode,
+        lightMode: lightMode || currentBackgroundContext.lightMode,
+        darkMode: darkMode || currentBackgroundContext.darkMode,
       },
       classList: classList.join(' '),
     };
@@ -172,9 +174,13 @@ export const ColoredBox = forwardRef<HTMLElement, ColoredBoxProps>(
       ref,
     });
 
-    return backgroundContext
-      ? renderBackgroundProvider(backgroundContext, element)
-      : element;
+    return backgroundContext ? (
+      <BackgroundProvider value={backgroundContext}>
+        {element}
+      </BackgroundProvider>
+    ) : (
+      element
+    );
   },
 );
 

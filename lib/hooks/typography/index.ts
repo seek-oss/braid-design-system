@@ -101,11 +101,9 @@ export function useWeight(weight: keyof typeof styles.fontWeight) {
 }
 
 export function useTextTone({ tone }: { tone: TextTone }) {
-  const inheritLinkColor = tone !== 'neutral' && tone !== 'secondary';
-
-  return `${styles.tone[tone]}${
-    inheritLinkColor ? ` ${linkStyles.inheritLinkColor}` : ''
-  }`;
+  return tone !== 'neutral' && tone !== 'secondary'
+    ? `${styles.tone[tone]} ${linkStyles.inheritLinkColor}`
+    : styles.tone[tone];
 }
 
 export const touchableText = styles.touchable;

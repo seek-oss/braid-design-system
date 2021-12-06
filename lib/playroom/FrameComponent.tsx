@@ -1,5 +1,5 @@
 import '../../reset';
-import React, { useContext, useEffect, Fragment, ReactNode } from 'react';
+import React, { useEffect, Fragment, ReactNode } from 'react';
 import {
   BraidProvider,
   makeLinkComponent,
@@ -9,7 +9,6 @@ import {
 import { BraidTheme } from '../themes/BraidTheme';
 import { PlayroomStateProvider } from './playroomState';
 import { darkMode } from '../css/atoms/sprinkles.css';
-import { BraidThemeContext } from '../components/BraidProvider/BraidThemeContext';
 
 interface Props {
   theme: BraidTheme;
@@ -44,12 +43,7 @@ const ResponsiveReady = ({ children }: { children: ReactNode }) => {
 export default ({ theme, children }: Props) => {
   // TODO: COLORMODE RELEASE
   // Remove color mode toggle
-  const alreadyInBraidProvider = Boolean(useContext(BraidThemeContext));
   useEffect(() => {
-    if (alreadyInBraidProvider) {
-      return;
-    }
-
     let code = '';
     const darkTrigger = 'braiddark';
     const lightTrigger = 'braidlight';
@@ -75,7 +69,7 @@ export default ({ theme, children }: Props) => {
     return () => {
       window.removeEventListener('keydown', colorModeToggle);
     };
-  }, [alreadyInBraidProvider]);
+  }, []);
 
   return (
     <Fragment>

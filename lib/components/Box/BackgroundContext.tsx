@@ -1,60 +1,21 @@
-import React, { createContext, useContext, ReactElement } from 'react';
+import { createContext, useContext } from 'react';
 import { BoxBackgroundVariant } from './Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import {
-  ColorModeValue,
-  mapColorModeValue,
-} from '../../css/atoms/sprinkles.css';
+import { mapColorModeValue } from '../../css/atoms/sprinkles.css';
 
-export type BackgroundContextValue = BoxBackgroundVariant;
-
-const lightModeBackgroundContext =
-  createContext<BackgroundContextValue>('body');
-const darkModeBackgroundContext =
-  createContext<BackgroundContextValue>('bodyDark');
-
-export const LightBackgroundProvider = lightModeBackgroundContext.Provider;
-export const DarkBackgroundProvider = darkModeBackgroundContext.Provider;
-
-export const renderBackgroundProvider = (
-  background: ColorModeValue<BoxBackgroundVariant>,
-  element: ReactElement | null,
-) => {
-  if (typeof background === 'string') {
-    return (
-      <LightBackgroundProvider value={background}>
-        <DarkBackgroundProvider value={background}>
-          {element}
-        </DarkBackgroundProvider>
-      </LightBackgroundProvider>
-    );
-  }
-
-  let returnEl = element;
-
-  if (background.lightMode) {
-    returnEl = (
-      <LightBackgroundProvider value={background.lightMode}>
-        {returnEl}
-      </LightBackgroundProvider>
-    );
-  }
-
-  if (background.darkMode) {
-    returnEl = (
-      <DarkBackgroundProvider value={background.darkMode}>
-        {returnEl}
-      </DarkBackgroundProvider>
-    );
-  }
-
-  return returnEl;
+type BackgroundContextValue = {
+  lightMode: BoxBackgroundVariant;
+  darkMode: BoxBackgroundVariant;
 };
 
-export const useBackground = () => ({
-  lightMode: useContext(lightModeBackgroundContext),
-  darkMode: useContext(darkModeBackgroundContext),
+const backgroundContext = createContext<BackgroundContextValue>({
+  lightMode: 'body',
+  darkMode: 'bodyDark',
 });
+
+export const BackgroundProvider = backgroundContext.Provider;
+
+export const useBackground = () => useContext(backgroundContext);
 
 export const useBackgroundLightness = (
   backgroundOverride?: ReturnType<typeof useBackground>,
@@ -76,7 +37,7 @@ export const useBackgroundLightness = (
 
 export type ColorContrastValue<Value> =
   | { light: Value; dark: Value }
-  | ((contrast: 'light' | 'dark', background: BackgroundContextValue) => Value);
+  | ((contrast: 'light' | 'dark', background: BoxBackgroundVariant) => Value);
 export const useColorContrast = () => {
   const background = useBackground();
   const backgroundLightness = useBackgroundLightness();
