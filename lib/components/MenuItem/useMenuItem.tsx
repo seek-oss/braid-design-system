@@ -166,7 +166,7 @@ interface MenuItemChildrenProps {
 }
 function MenuItemChildren({ tone, children }: MenuItemChildrenProps) {
   return (
-    <Box userSelect="none">
+    <Box component="span" userSelect="none">
       <Text
         size={menuItemChildrenSize}
         baseline={false}
