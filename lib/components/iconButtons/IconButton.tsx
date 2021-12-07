@@ -6,16 +6,12 @@ import React, {
   forwardRef,
 } from 'react';
 import { Box } from '../Box/Box';
-import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { iconSize, iconContainerSize, UseIconProps } from '../../hooks/useIcon';
+import { iconContainerSize, UseIconProps } from '../../hooks/useIcon';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import {
-  useBackground,
-  useBackgroundLightness,
-} from '../Box/BackgroundContext';
+import { ButtonOverlays, useButtonStyles } from '../Button/Button';
 import * as styles from './IconButton.css';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
@@ -52,9 +48,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     forwardedRef,
   ) => {
-    const background = useBackground();
-    const backgroundLightness = useBackgroundLightness();
-
     const handleMouseDown = useCallback(
       (event: MouseEvent<HTMLButtonElement>) => {
         if (typeof onMouseDown !== 'function') {
@@ -80,14 +73,18 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       [onClick, onMouseDown],
     );
 
+    const { className, ...buttonStyles } = useButtonStyles({
+      variant: 'transparent',
+      tone: 'neutral',
+      size: 'standard',
+      radius: 'full',
+    });
+
     return (
       <Box
         component="button"
         type="button"
         ref={forwardedRef}
-        cursor="pointer"
-        outline="none"
-        className={[styles.button, virtualTouchable()]}
         zIndex={0}
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
@@ -97,46 +94,27 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={handleMouseDown}
-        transform={{ active: 'touchable' }}
-        transition="touchable"
         tabIndex={!keyboardAccessible ? -1 : undefined}
         {...(data ? buildDataAttributes(data) : undefined)}
+        {...buttonStyles}
+        className={[
+          className,
+          styles.button,
+          virtualTouchable(),
+          iconContainerSize(),
+        ]}
       >
-        <Box
-          position="relative"
-          display="flex"
-          className={iconContainerSize()}
-          alignItems="center"
-          justifyContent="center"
-          pointerEvents="none"
+        <ButtonOverlays
+          variant="transparent"
+          tone="neutral"
+          size="standard"
+          radius="full"
+          keyboardFocusable={keyboardAccessible}
+          labelSpacing={false}
+          forceActive={active}
         >
-          <Overlay
-            background={
-              background === 'body' || background === 'surface'
-                ? 'neutralLight'
-                : 'surface'
-            }
-            transition="fast"
-            borderRadius="full"
-            className={[
-              styles.hoverOverlay,
-              active && styles.forceActive,
-              backgroundLightness === 'dark' && styles.darkBackground,
-            ]}
-          />
-          {keyboardAccessible ? (
-            <Overlay
-              boxShadow="outlineFocus"
-              transition="fast"
-              borderRadius="full"
-              className={styles.focusOverlay}
-              onlyVisibleForKeyboardNavigation
-            />
-          ) : null}
-          <Box position="relative" className={iconSize()}>
-            {children({ size: 'fill', tone })}
-          </Box>
-        </Box>
+          {children({ tone })}
+        </ButtonOverlays>
       </Box>
     );
   },

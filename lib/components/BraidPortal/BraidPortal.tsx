@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { TextContext } from '../Text/TextContext';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { VanillaThemeContainer } from '../BraidProvider/VanillaThemeContainer';
 
 export interface BraidPortalProps {
   children: ReactNode;
@@ -13,7 +14,9 @@ export const BraidPortal = ({ children, container }: BraidPortalProps) => {
 
   return createPortal(
     <TextContext.Provider value={false}>
-      <div className={vanillaTheme}>{children}</div>
+      <VanillaThemeContainer theme={vanillaTheme} setDefaultTextTones>
+        {children}
+      </VanillaThemeContainer>
     </TextContext.Provider>,
     container ?? document.body,
   );

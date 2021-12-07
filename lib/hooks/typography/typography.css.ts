@@ -11,6 +11,8 @@ import { vars } from '../../themes/vars.css';
 import { breakpointQuery, responsiveStyle } from '../../css/responsiveStyle';
 
 import { mapToProperty } from '../../utils';
+import { colorModeStyle } from '../../css/colorModeStyle';
+import { BoxBackgroundVariant } from '../../components/Box/Box';
 
 type Vars = typeof vars;
 type TextDefinition = Vars['textSize'];
@@ -96,114 +98,114 @@ export const heading = {
   '4': makeTypographyRules(vars.headingLevel['4'], 'heading4'),
 };
 
-const textLinkVars = createThemeContract({
-  color: null,
-  colorHover: null,
-  fontWeight: null,
-  textDecoration: null,
-  textDecorationHover: null,
+const textToneVars = createThemeContract({
+  critical: null,
+  caution: null,
+  info: null,
+  promote: null,
+  positive: null,
+  brandAccent: null,
+  formAccent: null,
+  neutral: null,
+  secondary: null,
+  link: null,
 });
 
-const regularLinkVars = assignVars(textLinkVars, {
-  color: vars.foregroundColor.link,
-  colorHover: vars.foregroundColor.linkHover,
-  fontWeight: vars.textWeight.medium,
-  textDecoration: 'none',
-  textDecorationHover: 'underline',
+const lightContextToneVars = assignVars(textToneVars, {
+  critical: vars.foregroundColor.critical,
+  caution: vars.foregroundColor.caution,
+  info: vars.foregroundColor.info,
+  promote: vars.foregroundColor.promote,
+  positive: vars.foregroundColor.positive,
+  brandAccent: vars.foregroundColor.brandAccent,
+  formAccent: vars.foregroundColor.formAccent,
+  neutral: vars.foregroundColor.neutral,
+  secondary: vars.foregroundColor.secondary,
+  link: vars.foregroundColor.link,
 });
 
-const weakLinkVars = assignVars(textLinkVars, {
-  color: 'inherit',
-  colorHover: 'inherit',
-  fontWeight: 'inherit',
-  textDecoration: 'underline',
-  textDecorationHover: 'underline',
+const darkContextToneVars = assignVars(textToneVars, {
+  critical: vars.foregroundColor.criticalLight,
+  caution: vars.foregroundColor.cautionLight,
+  info: vars.foregroundColor.infoLight,
+  promote: vars.foregroundColor.promoteLight,
+  positive: vars.foregroundColor.positiveLight,
+  brandAccent: vars.foregroundColor.brandAccentLight,
+  formAccent: vars.foregroundColor.formAccentLight,
+  neutral: vars.foregroundColor.neutralInverted,
+  secondary: vars.foregroundColor.secondaryInverted,
+  link: vars.foregroundColor.linkLight,
 });
 
-export const textLink = style({
-  color: textLinkVars.color,
-  fontWeight: textLinkVars.fontWeight,
-  textDecoration: textLinkVars.textDecoration,
-  ':hover': {
-    color: textLinkVars.colorHover,
-    textDecoration: textLinkVars.textDecorationHover,
-  },
-  ':focus': {
-    color: textLinkVars.colorHover,
-  },
+export const lightModeTone = styleVariants({
+  light: colorModeStyle({
+    lightMode: {
+      vars: lightContextToneVars,
+    },
+  }),
+  dark: colorModeStyle({
+    lightMode: {
+      vars: darkContextToneVars,
+    },
+  }),
 });
 
-export const regularLink = style({
-  vars: regularLinkVars,
+export const darkModeTone = styleVariants({
+  light: colorModeStyle({
+    darkMode: {
+      vars: lightContextToneVars,
+    },
+  }),
+  dark: colorModeStyle({
+    darkMode: {
+      vars: darkContextToneVars,
+    },
+  }),
 });
 
-export const weakLink = style({
-  vars: weakLinkVars,
-});
+const neutralOverrideForBackground: Partial<
+  Record<BoxBackgroundVariant, keyof typeof textToneVars>
+> = {
+  criticalLight: 'critical',
+  criticalSoft: 'critical',
+  criticalSoftActive: 'critical',
+  criticalSoftHover: 'critical',
+  caution: 'caution',
+  cautionLight: 'caution',
+  positiveLight: 'positive',
+  infoLight: 'info',
+  promoteLight: 'promote',
+};
 
-export const textLinkVisited = style({
-  ':visited': {
-    color: vars.foregroundColor.linkVisited,
-  },
-});
-
-export const tone = styleVariants(
-  {
-    brandAccent: vars.foregroundColor.brandAccent,
-    caution: vars.foregroundColor.caution,
-    critical: vars.foregroundColor.critical,
-    formAccent: vars.foregroundColor.formAccent,
-    info: vars.foregroundColor.info,
-    positive: vars.foregroundColor.positive,
-    promote: vars.foregroundColor.promote,
-    secondary: vars.foregroundColor.secondary,
-    link: vars.foregroundColor.link,
-  },
-  mapToProperty('color'),
+export const lightModeNeutralOverride = styleVariants(
+  neutralOverrideForBackground,
+  (textTone) =>
+    colorModeStyle({
+      lightMode: {
+        vars: {
+          [textToneVars.neutral]:
+            textToneVars[textTone as keyof typeof textToneVars],
+        },
+      },
+    }),
 );
 
-export const invertableTone = {
-  neutral: styleVariants({
-    light: {
-      color: vars.foregroundColor.neutral,
-    },
-    dark: {
-      color: vars.foregroundColor.neutralInverted,
-    },
-  }),
-  secondary: styleVariants({
-    light: {
-      color: vars.foregroundColor.secondary,
-    },
-    dark: {
-      color: vars.foregroundColor.secondaryInverted,
-    },
-  }),
-  brandAccent: styleVariants({
-    light: {
-      color: vars.foregroundColor.brandAccent,
-    },
-    dark: {
-      color: vars.foregroundColor.brandAccentLight,
-    },
-  }),
-  formAccent: styleVariants({
-    light: {
-      color: vars.foregroundColor.formAccent,
-    },
-    dark: {
-      color: vars.foregroundColor.formAccentLight,
-    },
-  }),
-  critical: styleVariants({
-    light: {
-      color: vars.foregroundColor.critical,
-    },
-    dark: {
-      color: vars.foregroundColor.criticalLight,
-    },
-  }),
-};
+export const darkModeNeutralOverride = styleVariants(
+  neutralOverrideForBackground,
+  (textTone) =>
+    colorModeStyle({
+      darkMode: {
+        vars: {
+          [textToneVars.neutral]:
+            textToneVars[textTone as keyof typeof textToneVars],
+        },
+      },
+    }),
+);
+
+export const tone = styleVariants(textToneVars, (toneVar) => ({
+  color: toneVar,
+}));
 
 const makeTouchableSpacing = (touchableHeight: string, textHeight: string) => {
   const space = calc(touchableHeight).subtract(textHeight).divide(2).toString();

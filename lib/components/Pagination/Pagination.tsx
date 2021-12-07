@@ -102,11 +102,12 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
         component="span"
         borderRadius={borderRadius}
         boxShadow="borderFormAccent"
-        className={
-          parentBackground !== 'surface' && current
-            ? styles.currentKeyline
-            : undefined
-        }
+        className={{
+          [styles.lightModeCurrentKeyline]:
+            parentBackground.lightMode !== 'surface' && current,
+          [styles.darkModeCurrentKeyline]:
+            parentBackground.darkMode !== 'surface' && current,
+        }}
       />
       <Box component="span" zIndex={1} userSelect="none">
         <Text

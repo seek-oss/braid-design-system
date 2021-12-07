@@ -1,25 +1,17 @@
 import clsx from 'clsx';
 import type { StyleRule } from '@vanilla-extract/css';
-import assert from 'assert';
-
-import {
-  useBackground,
-  useBackgroundLightness,
-} from '../../components/Box/BackgroundContext';
-import { BoxProps } from '../../components/Box/Box';
-import { useDefaultTextProps } from '../../components/private/defaultTextProps';
 import { vars } from '../../themes/vars.css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import * as styles from './typography.css';
+import * as linkStyles from '../../components/TextLink/TextLink.css';
 
-type TextTone = keyof typeof styles.tone | 'neutral';
+type TextTone = keyof typeof styles.tone;
 
 export interface UseTextProps {
   weight?: keyof typeof styles.fontWeight;
   size?: keyof typeof styles.text;
   tone?: TextTone;
   baseline: boolean;
-  backgroundContext?: BoxProps['background'];
 }
 
 export const globalTextStyle = ({
@@ -46,9 +38,8 @@ export function useText({
   size = 'standard',
   tone = 'neutral',
   baseline,
-  backgroundContext,
 }: UseTextProps) {
-  const textTone = useTextTone({ tone, backgroundContext });
+  const textTone = useTextTone({ tone });
 
   return clsx(
     styles.fontFamily,
@@ -65,7 +56,6 @@ interface UseHeadingProps {
   weight?: HeadingWeight;
   level: HeadingLevel;
   baseline: boolean;
-  backgroundContext?: BoxProps['background'];
 }
 
 export const globalHeadingStyle = ({
@@ -91,9 +81,8 @@ export function useHeading({
   weight = 'regular',
   level,
   baseline,
-  backgroundContext,
 }: UseHeadingProps) {
-  const textTone = useTextTone({ tone: 'neutral', backgroundContext });
+  const textTone = useTextTone({ tone: 'neutral' });
 
   return clsx(
     styles.fontFamily,
@@ -111,52 +100,10 @@ export function useWeight(weight: keyof typeof styles.fontWeight) {
   return styles.fontWeight[weight];
 }
 
-const neutralToneOverrideForBackground: Partial<
-  Record<NonNullable<BoxProps['background']>, keyof typeof styles.tone>
-> = {
-  criticalLight: 'critical',
-  criticalSoft: 'critical',
-  criticalSoftActive: 'critical',
-  criticalSoftHover: 'critical',
-  caution: 'caution',
-  cautionLight: 'caution',
-  positiveLight: 'positive',
-  infoLight: 'info',
-  promoteLight: 'promote',
-};
-
-export function useTextTone({
-  tone: toneProp,
-  backgroundContext: backgroundContextOverride,
-}: {
-  tone: TextTone;
-  backgroundContext?: BoxProps['background'];
-}) {
-  const backgroundContext = useBackground();
-  const background = backgroundContextOverride || backgroundContext;
-  const backgroundLightness = useBackgroundLightness(background);
-  const { tone } = useDefaultTextProps({ tone: toneProp });
-
-  if (tone === 'neutral' && background in neutralToneOverrideForBackground) {
-    const toneOverride =
-      neutralToneOverrideForBackground[
-        background as keyof typeof neutralToneOverrideForBackground
-      ];
-
-    assert(toneOverride, `Tone override not found for tone: ${tone}`);
-
-    return styles.tone[toneOverride];
-  }
-
-  if (tone !== 'neutral') {
-    return tone in styles.invertableTone
-      ? styles.invertableTone[tone as keyof typeof styles.invertableTone][
-          backgroundLightness
-        ]
-      : styles.tone[tone];
-  }
-
-  return styles.invertableTone.neutral[backgroundLightness];
+export function useTextTone({ tone }: { tone: TextTone }) {
+  return tone !== 'neutral' && tone !== 'secondary'
+    ? `${styles.tone[tone]} ${linkStyles.inheritLinkColor}`
+    : styles.tone[tone];
 }
 
 export const touchableText = styles.touchable;

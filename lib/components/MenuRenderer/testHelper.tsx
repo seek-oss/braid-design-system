@@ -213,13 +213,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         userEvent.click(menuItemCheckbox);
 
-        expect(menuItemCheckbox.getAttribute('aria-checked')).toBe('true');
+        const updatedElements = getElements({ getAllByRole });
+        const updatedMenuItem = updatedElements.menuItems[2];
+
+        expect(updatedMenuItem.getAttribute('aria-checked')).toBe('true');
 
         expect(menu).toBeVisible();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).not.toHaveBeenCalled();
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
-        expect(menuItemCheckbox).toHaveFocus();
+        expect(updatedMenuItem).toHaveFocus();
       });
     });
 

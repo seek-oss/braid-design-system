@@ -47,7 +47,7 @@ const RenderExample = ({
   Example,
   code,
   Container = DefaultContainer,
-  background = 'body',
+  background,
   showCodeByDefault = false,
   playroom,
 }: RenderExampleProps) => {

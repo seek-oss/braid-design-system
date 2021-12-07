@@ -16,6 +16,7 @@ import {
 import { BadgeProps } from '../../../../../lib/components/Badge/Badge';
 import { Box, Divider, Link, Text } from '../../../../../lib/components';
 import * as styles from './Navigation.css';
+import { useBackgroundLightness } from '../../../../../lib/components/Box/BackgroundContext';
 
 const navItemPaddingX = ['small', 'medium'] as const;
 const navItemPaddingY = 'medium' as const;
@@ -39,7 +40,7 @@ export const NavigationItem = ({
     !badge || badge.props.bleedY === undefined,
     "Badge elements cannot set the 'bleedY' prop when passed to a NavigationItem component",
   );
-
+  const lightness = useBackgroundLightness();
   const index = useContext(NavigationItemIndexContext);
   const [hovered, setHovered] = useState(false);
 
@@ -69,7 +70,11 @@ export const NavigationItem = ({
                 width="full"
                 zIndex={1}
                 bottom={0}
-                className={styles.activeUnderline}
+                className={[
+                  styles.activeUnderline,
+                  styles.activeUnderlineColor[lightness.lightMode],
+                  styles.activeUnderlineColor[lightness.darkMode],
+                ]}
               />
               <Text size="standard" weight="strong">
                 {children}

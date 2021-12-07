@@ -9,9 +9,8 @@ import {
   UnresponsiveProperties,
   BoxShadow,
 } from '../lib/css/atoms/atomicProperties';
-import { atoms } from '../lib/css/atoms/atoms';
+import { atoms } from '../css';
 import {
-  Box,
   Stack,
   Columns,
   Column,
@@ -22,6 +21,9 @@ import {
   Strong,
   Alert,
 } from '../lib/components';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../lib/components/Box/Box';
 import source from '../lib/utils/source.macro';
 import Code from '../site/src/App/Code/Code';
 import { ThemedExample } from '../site/src/App/ThemeSetting';
@@ -134,17 +136,13 @@ const docs: CssDoc = {
                 Object.keys(
                   unresponsiveProperties,
                 ) as Array<UnresponsiveProperties>
-              )
-                // filtering out `background` as it’s not public api due to
-                // impact on context related contrast handling..
-                .filter((prop) => prop !== 'background')
-                .map((prop) => (
-                  <AtomicProperty
-                    key={prop}
-                    name={prop}
-                    values={Object.keys(unresponsiveProperties[prop])}
-                  />
-                ))}
+              ).map((prop) => (
+                <AtomicProperty
+                  key={prop}
+                  name={prop}
+                  values={Object.keys(unresponsiveProperties[prop])}
+                />
+              ))}
             </Tiles>
           </Box>
         </>
@@ -173,7 +171,7 @@ const docs: CssDoc = {
               };
             `}
           </Code>
-          <ThemedExample background="body">
+          <ThemedExample>
             <Stack space="gutter" align="center">
               <Inline space="gutter" align="center" alignY="center">
                 <Box
@@ -318,7 +316,7 @@ const docs: CssDoc = {
               };
             `}
           </Code>
-          <ThemedExample background="body">
+          <ThemedExample>
             <Inline space="medium" align="center">
               <Box
                 background="formAccentHover"
@@ -377,7 +375,7 @@ const docs: CssDoc = {
               ways when upgrading Braid.
             </Text>
           </Alert>
-          <ThemedExample background="body">
+          <ThemedExample>
             <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
               {Object.entries(
                 validateBoxShadows({
@@ -432,14 +430,22 @@ const docs: CssDoc = {
                 <Columns key={boxShadow} space="medium" alignY="center">
                   <Column width="content">
                     <Box
-                      background={
-                        boxShadow.includes('Inverted') ? 'brand' : 'surface'
-                      }
+                      background={{
+                        lightMode: boxShadow.includes('Inverted')
+                          ? 'neutral'
+                          : 'surface',
+                        darkMode: /^border|outline/.test(boxShadow)
+                          ? 'surfaceDark'
+                          : 'surface',
+                      }}
                       borderRadius="standard"
                       padding="gutter"
                     >
                       <Box
-                        boxShadow={boxShadow as keyof BoxShadowDocs}
+                        boxShadow={{
+                          lightMode: boxShadow as keyof BoxShadowDocs,
+                          darkMode: boxShadow as keyof BoxShadowDocs,
+                        }}
                         borderRadius="standard"
                         padding="gutter"
                       />

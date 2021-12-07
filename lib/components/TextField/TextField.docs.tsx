@@ -149,7 +149,6 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      background: 'surface',
       Example: ({ id, setState }) =>
         source(
           <TextField

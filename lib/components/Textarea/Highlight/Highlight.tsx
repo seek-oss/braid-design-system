@@ -10,7 +10,7 @@ export const Highlight = ({ children }: HighlightProps) => (
   <Box
     component="mark"
     borderRadius="standard"
-    background="criticalLight"
+    background={{ lightMode: 'criticalLight', darkMode: 'critical' }}
     className={styles.root}
   >
     {children}

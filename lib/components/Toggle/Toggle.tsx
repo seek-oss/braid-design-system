@@ -40,7 +40,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     { id, on, onChange, label, align = 'left', size = 'standard', data },
     forwardedRef,
   ) => {
-    const showBorder = useBackgroundLightness() === 'light';
+    const lightness = useBackgroundLightness();
 
     return (
       <Box
@@ -84,7 +84,12 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             width="full"
             overflow="hidden"
             borderRadius="full"
-            className={[styles.slideTrack[size], styles.slideTrackBackground]}
+            className={[
+              styles.slideTrack[size],
+              styles.slideTrackMask,
+              styles.slideTrackBgLightMode[lightness.lightMode],
+              styles.slideTrackBgDarkMode[lightness.darkMode],
+            ]}
           >
             <Box
               position="absolute"
@@ -98,7 +103,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           <Box
             position="absolute"
             background="surface"
-            boxShadow={showBorder ? 'borderField' : undefined}
+            boxShadow="borderField"
             transition="fast"
             display="flex"
             alignItems="center"

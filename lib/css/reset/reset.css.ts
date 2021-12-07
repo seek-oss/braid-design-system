@@ -48,13 +48,19 @@ const appearance = style({
   appearance: 'none',
 });
 
-const field = style([block, appearance]);
+const transparent = style({
+  backgroundColor: 'transparent',
+});
+
+const field = style([block, appearance, transparent]);
 
 // Custom reset rules
-const mark = style({
-  backgroundColor: 'transparent',
-  color: 'inherit',
-});
+const mark = style([
+  transparent,
+  {
+    color: 'inherit',
+  },
+]);
 
 const select = style([
   field,
@@ -84,9 +90,7 @@ const input = style([
   }),
 ]);
 
-const button = style({
-  background: 'none',
-});
+const button = style([transparent]);
 
 const a = style({
   textDecoration: 'none',

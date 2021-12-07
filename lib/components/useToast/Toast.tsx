@@ -12,6 +12,7 @@ import { IconPositive, IconCritical } from '../icons';
 import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { useTimeout } from './useTimeout';
 import { InternalToast, ToastAction } from './ToastTypes';
+import { Keyline } from '../private/Keyline/Keyline';
 import * as styles from './Toast.css';
 
 const toneToIcon = {
@@ -154,14 +155,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                     </Box>
                   </Column>
                 </Columns>
-                <Box
-                  background={tone}
-                  paddingLeft="xxsmall"
-                  position="absolute"
-                  left={0}
-                  top={0}
-                  bottom={0}
-                />
+                <Keyline tone={tone} borderRadius={borderRadius} />
               </Box>
             </ContentBlock>
           </Box>

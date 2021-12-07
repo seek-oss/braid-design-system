@@ -1,6 +1,7 @@
 import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { rgba } from 'polished';
+import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -12,9 +13,11 @@ export const root = style({
   textDecoration: 'none',
 });
 
+export const forceActive = style({});
+
 export const activeOverlay = style({
   selectors: {
-    [`${root}:active &`]: {
+    [`${root}:active &, ${forceActive}&`]: {
       opacity: 1,
     },
   },
@@ -121,8 +124,38 @@ export const loadingDot = style({
   },
 });
 
-export const invertedBackgrounds = styleVariants({
-  soft: { background: rgba('#fff', 0.075) },
-  hover: { background: rgba('#fff', 0.15) },
-  active: { background: rgba('#000', 0.05) },
+export const invertedBackgroundsLightMode = styleVariants({
+  soft: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.1),
+    },
+  }),
+  hover: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.15),
+    },
+  }),
+  active: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.15),
+    },
+  }),
+});
+
+export const invertedBackgroundsDarkMode = styleVariants({
+  soft: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.1),
+    },
+  }),
+  hover: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.15),
+    },
+  }),
+  active: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.15),
+    },
+  }),
 });

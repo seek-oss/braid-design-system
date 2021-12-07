@@ -24,10 +24,9 @@ export const size = styleVariants(vars.textSize, ({ mobile, tablet }) =>
   }),
 );
 
-export const color = {
-  dark: style({ fill: vars.backgroundColor.surface }),
-  light: style({ fill: vars.backgroundColor.neutral }),
-};
+export const currentColor = style({
+  fill: 'currentcolor',
+});
 
 const bounce = keyframes({
   '33%': {

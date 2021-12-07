@@ -18,6 +18,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
+import { Keyline } from '../private/Keyline/Keyline';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -56,8 +57,6 @@ const icons = {
   critical: IconCritical,
 };
 
-const highlightBarSize = 'xxsmall';
-
 export const Alert = ({
   tone = 'info',
   children,
@@ -81,40 +80,27 @@ export const Alert = ({
       aria-live="polite"
       {...(data ? buildDataAttributes(data) : undefined)}
     >
-      <Box paddingLeft={highlightBarSize}>
-        <Columns space="small">
+      <Columns space="small">
+        <Column width="content">
+          <Icon tone={tone} />
+        </Column>
+        <Column>
+          <Box className={textAlignedToIcon.standard}>{children}</Box>
+        </Column>
+        {onClose ? (
           <Column width="content">
-            <Icon tone={tone} />
+            <ClearButton tone="neutral" label={closeLabel} onClick={onClose} />
           </Column>
-          <Column>
-            <Box className={textAlignedToIcon.standard}>{children}</Box>
-          </Column>
-          {onClose ? (
-            <Column width="content">
-              <ClearButton
-                tone="neutral"
-                label={closeLabel}
-                onClick={onClose}
-              />
-            </Column>
-          ) : null}
-        </Columns>
-      </Box>
-      {parentBackground !== 'surface' && (
+        ) : null}
+      </Columns>
+      {parentBackground.lightMode !== 'surface' && (
         <Overlay
           borderRadius={borderRadius}
-          boxShadow={borderForTone[tone]}
+          boxShadow={{ lightMode: borderForTone[tone] }}
           visible
         />
       )}
-      <Box
-        background={tone}
-        paddingLeft={highlightBarSize}
-        position="absolute"
-        top={0}
-        bottom={0}
-        left={0}
-      />
+      <Keyline tone={tone} borderRadius={borderRadius} />
     </Box>
   );
 };

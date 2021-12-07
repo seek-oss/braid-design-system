@@ -2,7 +2,6 @@ import assert from 'assert';
 import React, { Fragment, ReactNode, AllHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Box, BoxProps } from '../../Box/Box';
-import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
   FieldMessage,
@@ -122,9 +121,9 @@ export const Field = ({
     'description' in restProps && restProps.description
       ? `${id}-description`
       : undefined;
-  const fieldBackground = disabled ? 'neutralSoft' : 'surface';
-  const showFieldBorder =
-    useBackgroundLightness() === 'light' && (tone !== 'critical' || disabled);
+  const fieldBackground: BoxProps['background'] = disabled
+    ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+    : { lightMode: 'surface' };
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
   const hasVisualLabel = 'label' in restProps;
@@ -135,7 +134,7 @@ export const Field = ({
     <Fragment>
       <FieldOverlay
         variant={disabled ? 'disabled' : 'default'}
-        visible={showFieldBorder}
+        visible={tone !== 'critical' || disabled}
       />
       <FieldOverlay
         variant="critical"
@@ -207,7 +206,6 @@ export const Field = ({
               styles.field,
               styles.placeholderColor,
               useText({
-                backgroundContext: fieldBackground,
                 tone: hasValue && !disabled ? 'neutral' : 'secondary',
                 size: 'standard',
                 baseline: false,

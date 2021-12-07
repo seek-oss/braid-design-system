@@ -30,35 +30,14 @@ export interface BadgeProps {
   'aria-describedby'?: string;
 }
 
-const backgroundForTone = (tone: Tone, weight: BadgeWeight) => {
-  if (weight === 'strong') {
-    return tone;
-  }
-
-  if (tone === 'positive') {
-    return 'positiveLight';
-  }
-
-  if (tone === 'critical') {
-    return 'criticalLight';
-  }
-
-  if (tone === 'info') {
-    return 'infoLight';
-  }
-
-  if (tone === 'promote') {
-    return 'promoteLight';
-  }
-
-  if (tone === 'neutral') {
-    return 'neutralLight';
-  }
-
-  if (tone === 'caution') {
-    return 'cautionLight';
-  }
-};
+const lightModeBackgroundForTone = {
+  positive: 'positiveLight',
+  critical: 'criticalLight',
+  info: 'infoLight',
+  promote: 'promoteLight',
+  neutral: 'neutralLight',
+  caution: 'cautionLight',
+} as const;
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
   (
@@ -103,7 +82,9 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
           tabIndex={tabIndex}
           aria-describedby={ariaDescribedBy}
           title={title ?? (!ariaDescribedBy ? children : undefined)}
-          background={backgroundForTone(tone, weight)}
+          background={
+            weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
+          }
           paddingX="xsmall"
           borderRadius="large"
           overflow="hidden"
@@ -112,7 +93,6 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
             component="span"
             size={styles.constants.textSize}
             weight="medium"
-            tone={weight === 'regular' ? tone : undefined}
             truncate
             baseline={false}
           >

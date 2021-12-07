@@ -9,7 +9,7 @@ import { Box, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import * as styles from './Card.css';
+import { Keyline } from '../private/Keyline/Keyline';
 
 export const validCardComponents = [
   'div',
@@ -78,18 +78,7 @@ export const Card = ({
       borderRadius={resolvedRounding}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
-      {tone ? (
-        <Box
-          position="absolute"
-          top={0}
-          bottom={0}
-          left={0}
-          paddingLeft="xxsmall"
-          borderRadius={resolvedRounding}
-          background={tone}
-          className={styles.toneKeyline}
-        />
-      ) : null}
+      {tone ? <Keyline tone={tone} borderRadius={resolvedRounding} /> : null}
       {children}
     </Box>
   );

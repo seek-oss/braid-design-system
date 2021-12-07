@@ -3,6 +3,8 @@ import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
 import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';
+import { rgba } from 'polished';
+import { colorModeStyle } from '../../css/colorModeStyle';
 
 const sizes = {
   standard: 'standard',
@@ -61,8 +63,33 @@ export const slideTrack = styleVariants(sizes, (size) => ({
   height: calc.subtract(vars.inlineFieldSize[size], vars.grid),
 }));
 
-export const slideTrackBackground = style({
-  backgroundColor: vars.borderColor.neutralLight,
+export const slideTrackBgLightMode = styleVariants({
+  light: colorModeStyle({
+    lightMode: {
+      background: rgba('#000', 0.08),
+    },
+  }),
+  dark: colorModeStyle({
+    lightMode: {
+      background: rgba('#fff', 0.12),
+    },
+  }),
+});
+
+export const slideTrackBgDarkMode = styleVariants({
+  light: colorModeStyle({
+    darkMode: {
+      background: rgba('#000', 0.08),
+    },
+  }),
+  dark: colorModeStyle({
+    darkMode: {
+      background: rgba('#fff', 0.12),
+    },
+  }),
+});
+
+export const slideTrackMask = style({
   // Fix for Safari border-radius, overflow hidden, transform bug:
   // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
   WebkitMaskImage: '-webkit-radial-gradient(white, black)',

@@ -22,7 +22,6 @@ import {
   Stack,
   Text,
   Heading,
-  Box,
   Badge,
   Inline,
   Link,
@@ -37,6 +36,9 @@ import {
   TextDropdown,
   Strong,
 } from '../../../../../lib/components';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../../../../../lib/components/Box/Box';
 import docsTheme from '../../../../../lib/themes/docs';
 import { getHistory, isNew } from '../../Updates';
 import source from '../../../../../lib/utils/source.macro';
@@ -130,7 +132,7 @@ interface RenderExampleProps {
   example: ComponentExample;
 }
 const RenderExample = ({ id, example }: RenderExampleProps) => {
-  const { label, Container = DefaultContainer, background = 'body' } = example;
+  const { label, Container = DefaultContainer, background } = example;
   const { code, value } = useSourceFromExample(id, example);
 
   return (

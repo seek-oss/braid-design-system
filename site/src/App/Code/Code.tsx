@@ -15,7 +15,6 @@ import { createUrl } from 'playroom/utils';
 import { useConfig } from '../ConfigContext';
 import { Source } from '../../../../lib/utils/source.macro';
 import {
-  Box,
   Stack,
   Text,
   Inline,
@@ -23,7 +22,9 @@ import {
   Hidden,
   IconPositive,
 } from '../../../../lib/components';
-import { BoxProps } from '../../../../lib/components/Box/Box';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box, BoxProps } from '../../../../lib/components/Box/Box';
 import { FieldOverlay } from '../../../../lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from '../../../../lib/components/private/hideFocusRings/hideFocusRings';
 import { CopyIcon } from './CopyIcon';
@@ -135,7 +136,10 @@ export const CodeButton = ({
         variant="focus"
         className={[styles.focusOverlay, hideFocusRingsClassName]}
       />
-      <FieldOverlay background="neutralLight" className={styles.hoverOverlay} />
+      <FieldOverlay
+        background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
+        className={styles.hoverOverlay}
+      />
       <FieldOverlay className={styles.activeOverlay} />
       <Box
         component="span"
@@ -162,6 +166,7 @@ export const CodeBlock = ({
     position="relative"
     padding="xxsmall"
     borderRadius="large"
+    background="surfaceDark"
     className={styles.code}
   >
     <Box padding={['medium', 'medium', 'large']}>
@@ -238,9 +243,7 @@ const Code = ({
   return (
     <Box position="relative">
       <Stack space="xsmall">
-        {typeof children !== 'string' && (
-          <ThemedExample background="body">{value}</ThemedExample>
-        )}
+        {typeof children !== 'string' && <ThemedExample>{value}</ThemedExample>}
         {hideCode ? null : <CodeBlock>{code}</CodeBlock>}
         <Inline space="xxsmall" align="right">
           {collapsedByDefault ? (

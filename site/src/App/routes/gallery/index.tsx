@@ -7,18 +7,31 @@ import { Box } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings } from '../../ThemeSetting';
 import { Gallery } from './Gallery';
+import { darkMode } from '../../../../../lib/css/atoms/sprinkles.css';
 import * as styles from './gallery.css';
 
 const useBackgroundColor = () => {
   const { theme } = useThemeSettings();
-  const backgroundColor =
-    theme.color.background[theme.name === 'docs' ? 'neutralLight' : 'body'];
+  const [bgColor, setBgColor] = useState('');
 
-  const { lightness } = parseToHsl(backgroundColor);
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains(darkMode);
 
-  return lightness < 0.96
-    ? setLightness(0.96, backgroundColor)
-    : backgroundColor;
+    if (isDark) {
+      setBgColor(theme.color.background.bodyDark);
+    } else {
+      const backgroundColor =
+        theme.color.background[theme.name === 'docs' ? 'neutralLight' : 'body'];
+      const { lightness } = parseToHsl(backgroundColor);
+      setBgColor(
+        lightness < 0.96
+          ? setLightness(0.96, backgroundColor)
+          : backgroundColor,
+      );
+    }
+  }, [theme]);
+
+  return bgColor;
 };
 
 const GalleryPage = () => {
@@ -58,7 +71,7 @@ const GalleryPage = () => {
         pointerEvents={ready ? 'none' : undefined}
       >
         <Box className={styles.loader}>
-          <Logo iconOnly height="100%" width="100%" />
+          <Logo tone="secondary" iconOnly height="100%" width="100%" />
         </Box>
       </Box>
     </Box>

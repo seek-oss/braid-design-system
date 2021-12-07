@@ -118,11 +118,23 @@ const docs: ComponentDocs = {
     {
       label: 'Contextual design',
       description: (
-        <Text>
-          When outside of a <TextLink href="/components/Card">Card</TextLink>,
-          an outline is used to provide sufficient contrast against the
-          background.
-        </Text>
+        <>
+          <Text>
+            When outside of a <TextLink href="/components/Card">Card</TextLink>,
+            an outline is used to provide sufficient contrast against the
+            background.
+          </Text>
+          {/*
+          TODO: COLORMODE RELEASE
+          <Notice>
+            <Text>
+              This only applies in a light context, i.e. when the soft
+              background colours require differentiation from the surrounding
+              background colour.
+            </Text>
+          </Notice>
+          */}
+        </>
       ),
       Example: () =>
         source(

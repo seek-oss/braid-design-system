@@ -1,5 +1,6 @@
 import { vars as internalVars } from '../lib/themes/vars.css';
 import { atoms as internalAtoms, Atoms } from '../lib/css/atoms/atoms';
+import { colorModeStyle } from '../lib/css/colorModeStyle';
 import { responsiveStyle } from '../lib/css/responsiveStyle';
 import { breakpoints } from '../lib/css/breakpoints';
 import { globalHeadingStyle, globalTextStyle } from '../lib/hooks/typography';
@@ -9,7 +10,9 @@ const {
   grid,
   space,
   touchableSize,
-  backgroundColor,
+  // TODO: COLORMODE RELEASE
+  // Release new backgrounds
+  backgroundColor: { surfaceDark: _, bodyDark: __, ...backgroundColor },
   foregroundColor,
   textWeight,
   borderColor,
@@ -46,6 +49,7 @@ export {
   atoms,
   breakpoints,
   responsiveStyle,
+  colorModeStyle,
   globalTextStyle,
   globalHeadingStyle,
 };

@@ -107,7 +107,10 @@ const makeWebFonts = (tokens: TreatTheme) => {
 const makeRuntimeTokens = (tokens: TreatTheme) => ({
   name: tokens.name,
   displayName: tokens.displayName,
-  background: tokens.color.background.body,
+  background: {
+    lightMode: tokens.color.background.body,
+    darkMode: tokens.color.background.bodyDark,
+  },
   webFonts: makeWebFonts(tokens),
   space: {
     grid: tokens.grid,

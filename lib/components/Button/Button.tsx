@@ -5,15 +5,16 @@ import React, {
   AllHTMLAttributes,
 } from 'react';
 import { touchableText } from '../../hooks/typography';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, BoxBackgroundVariant, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
-  BackgroundContextValue,
+  ColorContrastValue,
   useBackgroundLightness,
+  useColorContrast,
 } from '../Box/BackgroundContext';
 import { Text, TextProps } from '../Text/Text';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
@@ -54,18 +55,18 @@ export interface ButtonProps extends ButtonStyleProps {
 type ButtonStyles = {
   textTone: TextProps['tone'];
   background:
-    | BackgroundContextValue
-    | { light: BackgroundContextValue; dark: BackgroundContextValue }
+    | ColorContrastValue<BoxBackgroundVariant>
+    | BoxBackgroundVariant
     | undefined;
   backgroundHover:
-    | BackgroundContextValue
-    | { light: BackgroundContextValue; dark: BackgroundContextValue }
+    | ColorContrastValue<BoxBackgroundVariant>
+    | BoxBackgroundVariant
     | undefined;
   backgroundActive:
-    | BackgroundContextValue
-    | { light: BackgroundContextValue; dark: BackgroundContextValue }
+    | ColorContrastValue<BoxBackgroundVariant>
+    | BoxBackgroundVariant
     | undefined;
-  boxShadow: { light: BoxShadow; dark: BoxShadow } | undefined;
+  boxShadow: BoxShadow | undefined;
 };
 
 const variants: Record<
@@ -105,28 +106,28 @@ const variants: Record<
   soft: {
     default: {
       textTone: 'formAccent',
-      background: 'formAccentSoft',
+      background: { light: 'formAccentSoft', dark: 'customDark' },
       backgroundHover: 'formAccentSoftHover',
       backgroundActive: 'formAccentSoftActive',
       boxShadow: undefined,
     },
     brandAccent: {
       textTone: 'brandAccent',
-      background: 'brandAccentSoft',
+      background: { light: 'brandAccentSoft', dark: 'customDark' },
       backgroundHover: 'brandAccentSoftHover',
       backgroundActive: 'brandAccentSoftActive',
       boxShadow: undefined,
     },
     critical: {
       textTone: 'critical',
-      background: 'criticalSoft',
+      background: { light: 'criticalSoft', dark: 'customDark' },
       backgroundHover: 'criticalSoftHover',
       backgroundActive: 'criticalSoftActive',
       boxShadow: undefined,
     },
     neutral: {
       textTone: 'neutral',
-      background: 'neutralSoft',
+      background: { light: 'neutralSoft', dark: 'customDark' },
       backgroundHover: 'neutralSoftHover',
       backgroundActive: 'neutralSoftActive',
       boxShadow: undefined,
@@ -168,40 +169,28 @@ const variants: Record<
       background: undefined,
       backgroundHover: 'formAccentSoftHover',
       backgroundActive: 'formAccentSoftActive',
-      boxShadow: {
-        light: 'borderFormAccentLarge',
-        dark: 'borderFormAccentLightLarge',
-      },
+      boxShadow: 'borderFormAccentLarge',
     },
     brandAccent: {
       textTone: 'brandAccent',
       background: undefined,
       backgroundHover: 'brandAccentSoftHover',
       backgroundActive: 'brandAccentSoftActive',
-      boxShadow: {
-        light: 'borderBrandAccentLarge',
-        dark: 'borderBrandAccentLightLarge',
-      },
+      boxShadow: 'borderBrandAccentLarge',
     },
     critical: {
       textTone: 'critical',
       background: undefined,
       backgroundHover: 'criticalSoftHover',
       backgroundActive: 'criticalSoftActive',
-      boxShadow: {
-        light: 'borderCriticalLarge',
-        dark: 'borderCriticalLightLarge',
-      },
+      boxShadow: 'borderCriticalLarge',
     },
     neutral: {
       textTone: 'neutral',
       background: undefined,
       backgroundHover: 'neutralSoftHover',
       backgroundActive: 'neutralSoftActive',
-      boxShadow: {
-        light: 'borderNeutralLarge',
-        dark: 'borderNeutralInvertedLarge',
-      },
+      boxShadow: 'borderNeutralLarge',
     },
   },
 } as const;
@@ -226,50 +215,76 @@ export const ButtonOverlays = ({
   tone,
   loading,
   children,
-}: ButtonProps) => {
+  keyboardFocusable = true,
+  labelSpacing = true,
+  forceActive = false,
+  radius = 'large',
+}: ButtonProps & {
+  keyboardFocusable?: boolean;
+  radius?: 'full' | 'large';
+  labelSpacing?: boolean;
+  forceActive?: boolean;
+}) => {
   const actionsContext = useContext(ActionsContext);
-  const backgroundLightness = useBackgroundLightness();
-  const isInverted = backgroundLightness === 'dark' && variant !== 'solid';
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
+  const colorConstrast = useColorContrast();
+  const lightness = useBackgroundLightness();
+  const labelMargin =
+    size === 'small' || variant === 'transparent' ? 'small' : 'medium';
 
   return (
     <>
+      {keyboardFocusable ? (
+        <FieldOverlay
+          borderRadius={radius}
+          variant="focus"
+          onlyVisibleForKeyboardNavigation
+          className={styles.focusOverlay}
+        />
+      ) : null}
       <FieldOverlay
-        borderRadius="large"
-        variant="focus"
-        onlyVisibleForKeyboardNavigation
-        className={styles.focusOverlay}
-      />
-      <FieldOverlay
-        borderRadius="large"
+        borderRadius={radius}
         background={
-          typeof stylesForVariant.backgroundHover === 'object'
-            ? stylesForVariant.backgroundHover[backgroundLightness]
+          stylesForVariant.backgroundHover &&
+          typeof stylesForVariant.backgroundHover !== 'string'
+            ? colorConstrast(stylesForVariant.backgroundHover)
             : stylesForVariant.backgroundHover
         }
         className={[
           styles.hoverOverlay,
-          isInverted ? styles.invertedBackgrounds.hover : undefined,
+          variant !== 'solid' && lightness.lightMode === 'dark'
+            ? styles.invertedBackgroundsLightMode.hover
+            : null,
+          variant !== 'solid' && lightness.darkMode === 'dark'
+            ? styles.invertedBackgroundsDarkMode.hover
+            : null,
         ]}
       />
       <FieldOverlay
-        borderRadius="large"
+        borderRadius={radius}
         background={
-          typeof stylesForVariant.backgroundActive === 'object'
-            ? stylesForVariant.backgroundActive[backgroundLightness]
+          stylesForVariant.backgroundActive &&
+          typeof stylesForVariant.backgroundActive !== 'string'
+            ? colorConstrast(stylesForVariant.backgroundActive)
             : stylesForVariant.backgroundActive
         }
         className={[
+          forceActive ? styles.forceActive : undefined,
           styles.activeOverlay,
-          isInverted ? styles.invertedBackgrounds.active : undefined,
+          variant !== 'solid' && lightness.lightMode === 'dark'
+            ? styles.invertedBackgroundsLightMode.active
+            : null,
+          variant !== 'solid' && lightness.darkMode === 'dark'
+            ? styles.invertedBackgroundsDarkMode.active
+            : null,
         ]}
       />
       {stylesForVariant.boxShadow ? (
         <Box
           component="span"
-          boxShadow={stylesForVariant.boxShadow[backgroundLightness]}
-          borderRadius="large"
+          boxShadow={stylesForVariant.boxShadow}
+          borderRadius={radius}
           position="absolute"
           top={0}
           bottom={0}
@@ -284,23 +299,32 @@ export const ButtonOverlays = ({
         display="block"
         overflow="hidden"
         pointerEvents="none"
-        marginX={
-          size === 'small' || variant === 'transparent' ? 'small' : 'medium'
-        }
+        marginX={labelSpacing ? labelMargin : undefined}
         paddingY={
-          size === 'small' ? styles.constants.smallButtonPaddingSize : undefined
+          labelSpacing && size === 'small'
+            ? styles.constants.smallButtonPaddingSize
+            : undefined
         }
-        className={size === 'standard' ? touchableText.standard : undefined}
+        className={
+          labelSpacing && size === 'standard'
+            ? touchableText.standard
+            : undefined
+        }
         background={
-          tone === 'neutral' &&
-          variant !== 'solid' &&
-          backgroundLightness === 'light'
-            ? 'customLight'
+          tone === 'neutral' && variant !== 'solid'
+            ? {
+                lightMode:
+                  lightness.lightMode === 'light'
+                    ? 'customLight'
+                    : 'customDark',
+                darkMode:
+                  lightness.darkMode === 'light' ? 'customLight' : 'customDark',
+              }
             : undefined
         }
       >
         <Text
-          tone={variant !== 'solid' ? stylesForVariant.textTone : undefined}
+          tone={stylesForVariant.textTone}
           weight="medium"
           size={size}
           baseline={false}
@@ -319,19 +343,18 @@ export const useButtonStyles = ({
   tone,
   bleedY,
   loading,
-}: ButtonProps): BoxProps => {
+  radius = 'large',
+}: ButtonProps & {
+  radius?: 'full' | 'large';
+}): BoxProps => {
   const actionsContext = useContext(ActionsContext);
-  const backgroundLightness = useBackgroundLightness();
-  const isInverted = backgroundLightness === 'dark' && variant === 'soft';
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
-  const background =
-    typeof stylesForVariant.background === 'object'
-      ? stylesForVariant.background[backgroundLightness]
-      : stylesForVariant.background;
+  const colorConstrast = useColorContrast();
+  const lightness = useBackgroundLightness();
 
   return {
-    borderRadius: 'large',
+    borderRadius: radius,
     width: 'full',
     position: 'relative',
     display: 'block',
@@ -341,13 +364,22 @@ export const useButtonStyles = ({
     textAlign: 'center',
     userSelect: 'none',
     cursor: !loading ? 'pointer' : undefined,
-    background: !isInverted ? background : undefined,
+    background:
+      stylesForVariant.background &&
+      typeof stylesForVariant.background !== 'string'
+        ? colorConstrast(stylesForVariant.background)
+        : stylesForVariant.background,
     className: [
+      variant === 'soft' && lightness.lightMode === 'dark'
+        ? styles.invertedBackgroundsLightMode.soft
+        : null,
+      variant === 'soft' && lightness.darkMode === 'dark'
+        ? styles.invertedBackgroundsDarkMode.soft
+        : null,
       styles.root,
-      isInverted ? styles.invertedBackgrounds.soft : undefined,
-      size === 'small' ? virtualTouchable({ xAxis: false }) : undefined,
+      size === 'small' ? virtualTouchable({ xAxis: false }) : null,
       size === 'standard' ? styles.standard : styles.small,
-      bleedY ? styles.bleedY : undefined,
+      bleedY ? styles.bleedY : null,
     ],
   } as const;
 };

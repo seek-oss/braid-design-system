@@ -16,8 +16,14 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
         atoms({ [key]: value });
         sprinklesProps[key] = value;
       } catch (e) {
-        if (key === 'background' && /^customDark|customLight$/.test(value)) {
-          sprinklesProps[key] = value;
+        if (key === 'background') {
+          if (
+            (typeof value === 'string' &&
+              /^customDark|customLight$/.test(value)) ||
+            (typeof value === 'object' && (value.darkMode || value.lightMode))
+          ) {
+            sprinklesProps[key] = value;
+          }
         }
       }
     } else {

@@ -1,4 +1,4 @@
-import { darken, lighten, mix, tint } from 'polished';
+import { darken, lighten, tint } from 'polished';
 import {
   findClosestAccessibleLighterColor,
   getAccessibleVariant,
@@ -30,6 +30,15 @@ const brandAccentLight = findClosestAccessibleLighterColor(
 );
 const formAccentLight = findClosestAccessibleLighterColor(formAccent, neutral);
 const criticalLight = findClosestAccessibleLighterColor(critical, neutral);
+const cautionLight = findClosestAccessibleLighterColor(caution, neutral);
+const infoLight = findClosestAccessibleLighterColor(info, neutral);
+const linkLight = findClosestAccessibleLighterColor(link, neutral);
+const linkLightVisited = findClosestAccessibleLighterColor(
+  linkVisited,
+  neutral,
+);
+const positiveLight = findClosestAccessibleLighterColor(positive, neutral);
+const promoteLight = findClosestAccessibleLighterColor(promote, neutral);
 
 const getActiveColor = (x: string) =>
   isLight(x) ? darken(0.1, x) : darken(0.05, x);
@@ -185,7 +194,7 @@ const tokens: BraidTokens = {
       brandAccent,
       brandAccentLight,
       caution,
-      cautionLight: mix(0.6, caution, getLightVariant(caution)),
+      cautionLight,
       critical,
       criticalLight,
       field: '#999999',
@@ -193,14 +202,14 @@ const tokens: BraidTokens = {
       formAccent,
       formAccentLight,
       info,
-      infoLight: mix(0.3, info, getLightVariant(info)),
+      infoLight,
       neutral,
       neutralInverted: white,
       neutralLight: '#e0e0e0',
       positive,
-      positiveLight: mix(0.3, positive, getLightVariant(positive)),
+      positiveLight,
       promote,
-      promoteLight: mix(0.3, promote, getLightVariant(promote)),
+      promoteLight,
     },
   },
   focusRingSize: 2,
@@ -217,18 +226,24 @@ const tokens: BraidTokens = {
       brandAccent,
       brandAccentLight,
       caution: getAccessibleVariant(caution, caution),
+      cautionLight,
       critical: getAccessibleVariant(critical),
       criticalLight,
       formAccent,
       formAccentLight,
       info: getAccessibleVariant(info),
+      infoLight,
       link,
       linkHover: link,
+      linkLight,
       linkVisited,
+      linkLightVisited,
       neutral,
       neutralInverted: white,
       positive: getAccessibleVariant(positive),
+      positiveLight,
       promote: getAccessibleVariant(promote),
+      promoteLight,
       rating: '#f36e23',
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
@@ -236,6 +251,7 @@ const tokens: BraidTokens = {
     background: {
       body: '#f2f2f2',
       brand: '#0037e9',
+      bodyDark: 'black',
       brandAccent,
       brandAccentActive: getActiveColor(brandAccent),
       brandAccentHover: getHoverColor(brandAccent),
@@ -270,7 +286,8 @@ const tokens: BraidTokens = {
       positiveLight: getLightVariant(positive),
       promote,
       promoteLight: getLightVariant(promote),
-      surface: 'white',
+      surface: white,
+      surfaceDark: '#222',
     },
   },
 };

@@ -9,6 +9,7 @@ import React, {
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
+import { Divider } from '../Divider/Divider';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
 import buildDataAttributes, {
@@ -146,7 +147,9 @@ export const Tabs = (props: TabsProps) => {
                 left={0}
                 right={0}
                 className={styles.divider}
-              />
+              >
+                <Divider />
+              </Box>
             ) : null}
           </Box>
         </Box>

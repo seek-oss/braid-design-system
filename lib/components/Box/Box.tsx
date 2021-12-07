@@ -9,15 +9,15 @@ import React, {
 import dedent from 'dedent';
 import { base as baseReset } from '../../css/reset/reset.css';
 import { atoms, Atoms } from '../../css/atoms/atoms';
-import { sprinkles } from '../../css/atoms/sprinkles.css';
+import { sprinkles, ColorModeValue } from '../../css/atoms/sprinkles.css';
 import { ColoredBox } from './ColoredBox';
-import { Background } from '../../css/atoms/atomicProperties';
+import { Background, BoxShadow } from '../../css/atoms/atomicProperties';
 
 export type BoxBackgroundVariant = Background | 'customDark' | 'customLight';
 
 export interface BoxBaseProps extends Omit<Atoms, 'reset' | 'background'> {
   className?: ClassValue;
-  background?: BoxBackgroundVariant;
+  background?: ColorModeValue<BoxBackgroundVariant>;
 }
 
 export interface BoxProps
@@ -27,7 +27,7 @@ export interface BoxProps
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
-  ({ component = 'div', className, ...props }, ref) => {
+  ({ component = 'div', className, background, boxShadow, ...props }, ref) => {
     const atomProps: Record<string, unknown> = {};
     const nativeProps: Record<string, unknown> = {};
 
@@ -61,17 +61,17 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     const atomicClasses = atoms({
       reset: typeof component === 'string' ? component : 'div',
       ...atomProps,
-      background: undefined,
     });
 
     const combinedClasses = `${atomicClasses}${
       userClasses ? ` ${userClasses}` : ''
     }`;
 
-    return props.background ? (
+    return background || boxShadow ? (
       <ColoredBox
         component={component}
-        background={props.background}
+        background={background}
+        boxShadow={boxShadow}
         className={combinedClasses}
         ref={ref}
         {...nativeProps}
@@ -87,3 +87,34 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
 );
 
 Box.displayName = 'Box';
+
+// TODO: COLORMODE RELEASE
+// Remove PublicBox
+export type SimpleBackground = Exclude<Background, 'bodyDark' | 'surfaceDark'>;
+interface PublicBoxProps extends BoxProps {
+  background?: SimpleBackground | 'customDark' | 'customLight';
+  boxShadow?: BoxShadow;
+}
+
+export const PublicBox = forwardRef<HTMLElement, PublicBoxProps>(
+  (props, ref) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (
+        typeof props.background !== 'undefined' &&
+        typeof props.background !== 'string'
+      ) {
+        throw new Error('Conditional backgrounds are not suppported');
+      }
+
+      if (
+        typeof props.boxShadow !== 'undefined' &&
+        typeof props.boxShadow !== 'string'
+      ) {
+        throw new Error('Conditional boxShadows are not suppported');
+      }
+    }
+    return <Box {...props} ref={ref} />;
+  },
+);
+
+PublicBox.displayName = 'Box';

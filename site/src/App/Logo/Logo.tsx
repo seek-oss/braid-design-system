@@ -1,10 +1,12 @@
 import React from 'react';
 import { Box } from '../../../../lib/components';
+import { useTextTone } from '../../../../lib/hooks/typography';
 
 interface LogoProps {
   width?: string | number;
   height?: string | number;
   iconOnly?: boolean;
+  tone?: 'neutral' | 'secondary';
 }
 
 const defaultSize = 32;
@@ -12,13 +14,19 @@ const defaultSize = 32;
 const resolveToPxIfUnitless = (value: string | number) =>
   typeof value === 'string' && /[0-9]$/.test(value) ? `${value}px` : value;
 
-export const Logo = ({ width, height, iconOnly = false }: LogoProps) => {
+export const Logo = ({
+  width,
+  height,
+  tone = 'neutral',
+  iconOnly = false,
+}: LogoProps) => {
   const defaultWidth = iconOnly ? defaultSize : 164;
   const defaultHeight = defaultSize;
 
   return (
     <Box
       overflow="hidden"
+      className={useTextTone({ tone })}
       style={{
         width: resolveToPxIfUnitless(width ? width : defaultWidth),
         height: resolveToPxIfUnitless(height ? height : defaultHeight),

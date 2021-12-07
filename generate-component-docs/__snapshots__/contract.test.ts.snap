@@ -394,8 +394,8 @@ Object {
         | "none"
         | "standard"
         | "xlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "standard" | "large" | "xlarge" | "none" | "full" | null>
-        | { mobile?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; tablet?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; desktop?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; wide?: "standard" | ... 4 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "standard" | "large" | "none" | "xlarge" | "full" | null>
+        | { mobile?: "standard" | "large" | "none" | "xlarge" | "full" | undefined; tablet?: "standard" | "large" | "none" | "xlarge" | "full" | undefined; desktop?: "standard" | "large" | "none" | "xlarge" | "full" | undefined; wide?: "standard" | ... 4 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -752,8 +752,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginBottom?: 
         | "gutter"
         | "large"
@@ -764,8 +764,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginHeight?: number
     marginLeft?: 
         | "gutter"
@@ -777,8 +777,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginRight?: 
         | "gutter"
         | "large"
@@ -789,8 +789,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginTop?: 
         | "gutter"
         | "large"
@@ -801,8 +801,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginWidth?: number
     marginX?: 
         | "gutter"
@@ -814,8 +814,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginY?: 
         | "gutter"
         | "large"
@@ -826,8 +826,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     max?: 
         | number
         | string
@@ -1029,8 +1029,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingBottom?: 
         | "gutter"
         | "large"
@@ -1041,8 +1041,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingLeft?: 
         | "gutter"
         | "large"
@@ -1053,8 +1053,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingRight?: 
         | "gutter"
         | "large"
@@ -1065,8 +1065,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingTop?: 
         | "gutter"
         | "large"
@@ -1077,8 +1077,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingX?: 
         | "gutter"
         | "large"
@@ -1089,8 +1089,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingY?: 
         | "gutter"
         | "large"
@@ -1101,8 +1101,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     pattern?: string
     placeholder?: string
     playsInline?: boolean
@@ -1334,8 +1334,8 @@ Object {
         | "none"
         | "standard"
         | "xlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "standard" | "large" | "xlarge" | "none" | "full" | null>
-        | { mobile?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; tablet?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; desktop?: "standard" | "large" | "xlarge" | "none" | "full" | undefined; wide?: "standard" | ... 4 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "standard" | "large" | "none" | "xlarge" | "full" | null>
+        | { mobile?: "standard" | "large" | "none" | "xlarge" | "full" | undefined; tablet?: "standard" | "large" | "none" | "xlarge" | "full" | undefined; desktop?: "standard" | "large" | "none" | "xlarge" | "full" | undefined; wide?: "standard" | ... 4 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -1597,8 +1597,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginBottom?: 
         | "gutter"
         | "large"
@@ -1609,8 +1609,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginLeft?: 
         | "gutter"
         | "large"
@@ -1621,8 +1621,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginRight?: 
         | "gutter"
         | "large"
@@ -1633,8 +1633,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginTop?: 
         | "gutter"
         | "large"
@@ -1645,8 +1645,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginX?: 
         | "gutter"
         | "large"
@@ -1657,8 +1657,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     marginY?: 
         | "gutter"
         | "large"
@@ -1669,8 +1669,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     maxWidth?: 
         | "large"
         | "medium"
@@ -1694,8 +1694,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingBottom?: 
         | "gutter"
         | "large"
@@ -1706,8 +1706,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingLeft?: 
         | "gutter"
         | "large"
@@ -1718,8 +1718,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingRight?: 
         | "gutter"
         | "large"
@@ -1730,8 +1730,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingTop?: 
         | "gutter"
         | "large"
@@ -1742,8 +1742,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingX?: 
         | "gutter"
         | "large"
@@ -1754,8 +1754,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     paddingY?: 
         | "gutter"
         | "large"
@@ -1766,8 +1766,8 @@ Object {
         | "xsmall"
         | "xxlarge"
         | "xxsmall"
-        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | null>
-        | { mobile?: "xsmall" | "small" | "large" | "medium" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | "none" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "gutter" | ... 4 more ... | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | null>
+        | { mobile?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; tablet?: "xsmall" | "small" | "large" | "medium" | "none" | "gutter" | "xxsmall" | "xlarge" | "xxlarge" | undefined; desktop?: "xsmall" | ... 8 more ... | undefined; wide?: "xsmall" | ... 8 more ......
     pointerEvents?: "none"
     position?: 
         | "absolute"
@@ -1826,9 +1826,9 @@ Object {
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
     theme: {
-        background: string
-        backgroundLightness: { body: "light" | "dark"; brand: "light" | "dark"; brandAccent: "light" | "dark"; brandAccentActive: "light" | "dark"; brandAccentHover: "light" | "dark"; brandAccentSoft: "light" | "dark"; ... 30 more ...; surface: "light" | "dark"; }
-        color: { foreground: { brandAccentLight: string; brandAccent: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; info: string; link: string; ... 8 more ...; secondaryInverted: string; }; background: { ...; }; }
+        background: { lightMode: string; darkMode: string; }
+        backgroundLightness: { body: "light" | "dark"; bodyDark: "light" | "dark"; brand: "light" | "dark"; brandAccent: "light" | "dark"; brandAccentActive: "light" | "dark"; brandAccentHover: "light" | "dark"; ... 32 more ...; surfaceDark: "light" | "dark"; }
+        color: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 14 more ...; secondaryInverted: string; }; background: { ...; }; }
         displayName: string
         name: string
         space: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; }
@@ -7578,7 +7578,7 @@ Object {
   exportType: component,
   props: {
     __@iterator@609: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1516: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    __@unscopables@1517: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
@@ -7640,7 +7640,7 @@ exports[`useColor 1`] = `
 Object {
   exportType: hook,
   params: Array [],
-  returnType: { foreground: { brandAccentLight: string; brandAccent: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; info: string; link: string; ... 8 more ...; secondaryInverted: string; }; background: { ...; }; },
+  returnType: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 14 more ...; secondaryInverted: string; }; background: { ...; }; },
 }
 `;
 

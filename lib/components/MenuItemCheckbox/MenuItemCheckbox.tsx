@@ -32,14 +32,16 @@ export const MenuItemCheckbox = ({
       display="flex"
     >
       <Box
+        component="span"
         borderRadius="standard"
         boxShadow="borderField"
         position="relative"
-        background="surface"
+        background={{ lightMode: 'surface' }}
         marginRight="xsmall"
         className={styles.checkboxBorder}
       >
         <Box
+          component="span"
           position="absolute"
           width="full"
           height="full"

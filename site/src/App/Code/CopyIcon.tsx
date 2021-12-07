@@ -1,5 +1,8 @@
 import React, { SVGProps } from 'react';
-import { Box } from '../../../../lib/components';
+
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../../../../lib/components/Box/Box';
 import useIcon, { UseIconProps } from '../../../../lib/hooks/useIcon';
 
 // Adapted from https://github.com/feathericons/feather

@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Box, Button } from '../';
+import { Button } from '../';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { Box } from '../Box/Box';
 import { Inline } from '../Inline/Inline';
 import { Heading } from '../Heading/Heading';
 import { backgrounds } from '../../utils/docsHelpers';

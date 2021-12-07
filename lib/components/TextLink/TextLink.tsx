@@ -1,18 +1,20 @@
 import clsx from 'clsx';
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef } from 'react';
 import { atoms, Atoms } from '../../css/atoms/atoms';
-import { useBackground } from '../Box/BackgroundContext';
+import {
+  useBackgroundLightness,
+  useBackground,
+} from '../Box/BackgroundContext';
+import { BoxBackgroundVariant } from '../Box/Box';
 import {
   useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
-import HeadingContext from '../Heading/HeadingContext';
-import { TextContext } from '../Text/TextContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import * as typographyStyles from '../../hooks/typography/typography.css';
+import * as styles from './TextLink.css';
 
 export interface TextLinkStyles {
   weight?: 'regular' | 'weak';
@@ -27,46 +29,52 @@ export interface TextLinkProps
 }
 
 const isPlainBackground = (
-  backgroundContext: ReturnType<typeof useBackground>,
+  backgroundContext: BoxBackgroundVariant,
+  contrast: 'dark' | 'light',
 ) =>
-  backgroundContext === 'body' ||
-  backgroundContext === 'surface' ||
-  backgroundContext === 'neutralLight' ||
-  backgroundContext === 'neutralSoft';
+  (contrast === 'light' &&
+    (backgroundContext === 'body' ||
+      backgroundContext === 'surface' ||
+      backgroundContext === 'neutralLight')) ||
+  (contrast === 'dark' &&
+    (backgroundContext === 'bodyDark' ||
+      backgroundContext === 'surfaceDark' ||
+      backgroundContext === 'neutral'));
 
-function useDefaultLinkWeight() {
-  const backgroundContext = useBackground();
-  const inHeading = useContext(HeadingContext);
-  const textContext = useContext(TextContext);
-
-  const inPlainText =
-    !textContext ||
-    textContext.tone === undefined ||
-    textContext.tone === 'neutral' ||
-    textContext.tone === 'secondary';
-
-  return isPlainBackground(backgroundContext) && (inHeading || inPlainText)
-    ? 'regular'
-    : 'weak';
-}
-
-export function useLinkStyles({
+export const useLinkStyles = ({
   reset = 'a',
-  weight: weightProp,
+  weight,
   showVisited = false,
   hitArea = 'standard',
 }: Pick<TextLinkProps, 'weight' | 'showVisited' | 'hitArea'> & {
   reset?: Atoms['reset'] | false;
-}) {
-  const defaultWeight = useDefaultLinkWeight();
-  const weight = weightProp ?? defaultWeight;
+}) => {
+  const backgroundLightness = useBackgroundLightness();
+  const backgroundContext = useBackground();
+
+  const linkStyles =
+    weight === 'weak'
+      ? styles.weakLink
+      : [
+          isPlainBackground(backgroundContext.lightMode, 'light') ||
+          weight === 'regular'
+            ? styles.regularLinkLightMode[backgroundLightness.lightMode]
+            : styles.weakLink,
+          isPlainBackground(backgroundContext.darkMode, 'dark') ||
+          weight === 'regular'
+            ? styles.regularLinkDarkMode[backgroundLightness.darkMode]
+            : styles.weakLink,
+        ];
 
   return clsx(
-    typographyStyles.textLink,
-    weight === 'weak'
-      ? typographyStyles.weakLink
-      : typographyStyles.regularLink,
-    showVisited ? typographyStyles.textLinkVisited : null,
+    styles.base,
+    linkStyles,
+    showVisited
+      ? [
+          styles.visitedLightMode[backgroundLightness.lightMode],
+          styles.visitedDarkMode[backgroundLightness.darkMode],
+        ]
+      : '',
     reset !== false
       ? atoms({
           reset: typeof reset === 'string' ? reset : 'a',
@@ -77,7 +85,7 @@ export function useLinkStyles({
     }),
     hitArea === 'large' && virtualTouchable(),
   );
-}
+};
 
 export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
   ({ weight, showVisited, hitArea, data, ...props }, ref) => {
