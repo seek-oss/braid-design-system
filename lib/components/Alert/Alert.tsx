@@ -6,9 +6,9 @@ import {
   IconPositive,
   IconPromote,
   IconCaution,
+  IconClear,
 } from '../icons';
 import { AllOrNone } from '../private/AllOrNone';
-import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
@@ -19,6 +19,9 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
 import { Keyline } from '../private/Keyline/Keyline';
+import { virtualTouchable } from '../private/touchable/virtualTouchable';
+import { iconContainerSize } from '../../hooks/useIcon';
+import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 
@@ -89,7 +92,49 @@ export const Alert = ({
         </Column>
         {onClose ? (
           <Column width="content">
-            <ClearButton tone="neutral" label={closeLabel} onClick={onClose} />
+            <Box
+              component="button"
+              aria-label={closeLabel}
+              borderRadius="full"
+              cursor="pointer"
+              position="relative"
+              onClick={onClose}
+              outline="none"
+              transition="touchable"
+              transform={{ active: 'touchable' }}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              className={[
+                styles.closeButton,
+                iconContainerSize(),
+                virtualTouchable(),
+              ]}
+            >
+              <Overlay
+                component="span"
+                boxShadow="outlineFocus"
+                transition="fast"
+                onlyVisibleForKeyboardNavigation
+                borderRadius="full"
+                className={styles.closeButtonFocus}
+              />
+              <Overlay
+                component="span"
+                background="surface"
+                transition="fast"
+                borderRadius="full"
+                className={styles.closeButtonHover}
+              />
+              <Box
+                component="span"
+                display="block"
+                zIndex={1}
+                position="relative"
+              >
+                <IconClear size="fill" tone={tone} />
+              </Box>
+            </Box>
           </Column>
         ) : null}
       </Columns>
