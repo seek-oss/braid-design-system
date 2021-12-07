@@ -75,8 +75,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Auto Tone (via TextContext)',
       Example: () => {
-        const iconTones = ['neutral', ...Object.keys(tones)].sort() as Array<
-          keyof typeof tones | 'neutral'
+        const iconTones = Object.keys(tones).sort() as Array<
+          keyof typeof tones
         >;
 
         return (
