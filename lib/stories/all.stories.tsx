@@ -139,7 +139,7 @@ Object.keys(allStories)
               .artboard {
                 --deepColor: ${
                   theme.name === 'apacDark'
-                    ? `rgba(255, 255, 255, .05)`
+                    ? `rgba(255, 255, 255, .1)`
                     : `rgba(0, 0, 0, .05)`
                 };
                 --cubeSize: 12px;
