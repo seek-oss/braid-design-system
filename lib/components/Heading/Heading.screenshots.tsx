@@ -123,7 +123,11 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Fragment>
           {backgrounds.map((background) => (
-            <Box key={background} background={background} paddingY="xsmall">
+            <Box
+              key={background}
+              background={{ lightMode: background, darkMode: background }}
+              paddingY="xsmall"
+            >
               <Heading level="4">{background}</Heading>
             </Box>
           ))}

@@ -71,7 +71,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'No visual label',
-      background: 'surface',
       Container,
       Example: ({ id, handler }) => (
         <MonthPicker

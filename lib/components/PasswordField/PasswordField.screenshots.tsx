@@ -74,7 +74,6 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'PasswordField with no visual label',
-      background: 'surface',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState('qwerty');
