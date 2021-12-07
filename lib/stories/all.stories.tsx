@@ -143,7 +143,9 @@ Object.keys(allStories)
                     : `rgba(0, 0, 0, .05)`
                 };
                 --cubeSize: 12px;
-                background-color: transparent;
+                background-color: ${
+                  theme.name === 'apacDark' ? `black` : `white`
+                };
                 background-image: linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor)),
                   linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor));
                 background-size: calc(var(--cubeSize) * 2) calc(var(--cubeSize) * 2);
