@@ -12,7 +12,7 @@ jobs:
     env:
       CI: true
     steps:
-     - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.23.1
 
