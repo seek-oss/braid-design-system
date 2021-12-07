@@ -128,6 +128,7 @@
     "husky": "^4.3.8",
     "ink": "^3.0.9",
     "js-yaml": "^4.0.0",
+    "mini-css-extract-plugin": "^2.4.5",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
     "patch-package": "^6.4.7",

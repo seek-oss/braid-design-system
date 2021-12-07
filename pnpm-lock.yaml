@@ -66,6 +66,7 @@ specifiers:
   is-mobile: ^2.2.2
   js-yaml: ^4.0.0
   lodash: ^4.17.21
+  mini-css-extract-plugin: ^2.4.5
   npm-registry-client: ^8.6.0
   panzoom: ^9.4.2
   patch-package: ^6.4.7
@@ -177,6 +178,7 @@ devDependencies:
   husky: 4.3.8
   ink: 3.2.0_74cdfb704b70bfbe5b519e0c4564d995
   js-yaml: 4.1.0
+  mini-css-extract-plugin: 2.4.5
   npm-registry-client: 8.6.0
   panzoom: 9.4.2
   patch-package: 6.4.7
@@ -4818,12 +4820,30 @@ packages:
       ajv: 6.12.6
     dev: true
 
+  /ajv-formats/2.1.1:
+    resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+    dependencies:
+      ajv: 8.8.2
+    dev: true
+
   /ajv-keywords/3.5.2_ajv@6.12.6:
     resolution: {integrity: sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==}
     peerDependencies:
       ajv: ^6.9.1
     dependencies:
       ajv: 6.12.6
+    dev: true
+
+  /ajv-keywords/5.1.0_ajv@8.8.2:
+    resolution: {integrity: sha512-YCS/JNFAUyr5vAuhk1DWm1CBxRHW9LbJ2ozWeemrIqpbsqKjHVxYPyi5GC0rjZIT5JxJ3virVTS8wk4i/Z+krw==}
+    peerDependencies:
+      ajv: ^8.8.2
+    dependencies:
+      ajv: 8.8.2
+      fast-deep-equal: 3.1.3
     dev: true
 
   /ajv/6.12.6:
@@ -4844,8 +4864,8 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /ajv/8.6.1:
-    resolution: {integrity: sha512-42VLtQUOLefAvKFAQIxIZDaThq6om/PrfP0CYk3/vn+y4BMNkKnbli8ON2QCiHov4KkzOSJ/xSoBJdayiiYvVQ==}
+  /ajv/8.8.2:
+    resolution: {integrity: sha512-x9VuX+R/jcFj1DHo/fCp99esgGDWiHENrKxaCENuCxpoMCmAt/COCGVDwA7kleEpEzJjDnvh3yGoOuLu0Dtllw==}
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -13061,13 +13081,22 @@ packages:
       tiny-warning: 1.0.3
     dev: true
 
-  /mini-css-extract-plugin/2.2.0_webpack@5.49.0:
-    resolution: {integrity: sha512-91HeVHbq7PUJ4TwOuMTlFWfVWrLqf3SF0PlEDPV+wtgsfxrMebN9LLzflyQqdKLp4/H3PexRB1WLKsCqpWKkxQ==}
+  /mini-css-extract-plugin/2.4.5:
+    resolution: {integrity: sha512-oEIhRucyn1JbT/1tU2BhnwO6ft1jjH1iCX9Gc59WFMg0n5773rQU0oyQ0zzeYFFuBfONaRbQJyGoPtuNseMxjA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      schema-utils: 3.1.1
+      schema-utils: 4.0.0
+    dev: true
+
+  /mini-css-extract-plugin/2.4.5_webpack@5.49.0:
+    resolution: {integrity: sha512-oEIhRucyn1JbT/1tU2BhnwO6ft1jjH1iCX9Gc59WFMg0n5773rQU0oyQ0zzeYFFuBfONaRbQJyGoPtuNseMxjA==}
+    engines: {node: '>= 12.13.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      schema-utils: 4.0.0
       webpack: 5.49.0
     dev: true
 
@@ -16615,6 +16644,16 @@ packages:
       ajv-keywords: 3.5.2_ajv@6.12.6
     dev: true
 
+  /schema-utils/4.0.0:
+    resolution: {integrity: sha512-1edyXKgh6XnJsJSQ8mKWXnN/BVaIbFMLpouRUrXgVq7WYne5kw3MW7UPhO44uRXQSIpTSXoJbmrR2X0w9kUTyg==}
+    engines: {node: '>= 12.13.0'}
+    dependencies:
+      '@types/json-schema': 7.0.9
+      ajv: 8.8.2
+      ajv-formats: 2.1.1
+      ajv-keywords: 5.1.0_ajv@8.8.2
+    dev: true
+
   /scope-eval/1.0.0:
     resolution: {integrity: sha1-4YLbGh7ybz551L9IQjsl4ig58P8=}
     dev: true
@@ -16951,7 +16990,7 @@ packages:
       lint-staged: 11.1.1
       lodash: 4.17.21
       memoizee: 0.4.15
-      mini-css-extract-plugin: 2.2.0_webpack@5.49.0
+      mini-css-extract-plugin: 2.4.5_webpack@5.49.0
       node-emoji: 1.10.0
       node-html-parser: 4.1.3
       open: 7.4.2
@@ -17850,7 +17889,7 @@ packages:
     resolution: {integrity: sha512-ZGum47Yi6KOOFDE8m223td53ath2enHcYLgOCjGr5ngu8bdIARQk6mN/wRMv4yMRcHnCSnHbCEha4sobQx5yWg==}
     engines: {node: '>=10.0.0'}
     dependencies:
-      ajv: 8.6.1
+      ajv: 8.8.2
       lodash.clonedeep: 4.5.0
       lodash.truncate: 4.4.2
       slice-ansi: 4.0.0
