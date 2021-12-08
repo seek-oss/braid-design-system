@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 31.2.1
+
+### Patch Changes
+
+- useIcon: Return props compatible with public Box component ([#1045](https://github.com/seek-oss/braid-design-system/pull/1045))
+
 ## 31.2.0
 
 ### Minor Changes
