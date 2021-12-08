@@ -91,7 +91,7 @@ Box.displayName = 'Box';
 // TODO: COLORMODE RELEASE
 // Remove PublicBox
 export type SimpleBackground = Exclude<Background, 'bodyDark' | 'surfaceDark'>;
-interface PublicBoxProps extends BoxProps {
+export interface PublicBoxProps extends BoxProps {
   background?: SimpleBackground | 'customDark' | 'customLight';
   boxShadow?: BoxShadow;
 }
