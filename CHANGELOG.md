@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 31.2.2
+
+### Patch Changes
+
+- **BraidProvider:** Add `backgroundColor` to html node when `styleBody` is set (defaults to `true`) ([#1047](https://github.com/seek-oss/braid-design-system/pull/1047))
+
 ## 31.2.1
 
 ### Patch Changes
