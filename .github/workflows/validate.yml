@@ -9,6 +9,10 @@ jobs:
     env:
       CI: true
     steps:
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.23.1
+
       - name: Checkout Repo
         uses: actions/checkout@main
         with:
@@ -19,19 +23,20 @@ jobs:
         uses: actions/setup-node@main
         with:
           node-version: 16.x
+          cache: 'pnpm'
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm i
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Test
-        run: yarn test
+        run: pnpm test
 
       - name: Chromatic
         run: |
-          yarn build-storybook
-          yarn chromatic --storybook-build-dir dist-storybook --exit-zero-on-changes --auto-accept-changes master
+          pnpm build-storybook
+          pnpm chromatic --storybook-build-dir dist-storybook --exit-zero-on-changes --auto-accept-changes master
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}

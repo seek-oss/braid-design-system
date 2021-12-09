@@ -12,6 +12,10 @@ jobs:
     env:
       CI: true
     steps:
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.23.1
+
       - name: Checkout Repo
         uses: actions/checkout@main
 
@@ -19,20 +23,21 @@ jobs:
         uses: actions/setup-node@main
         with:
           node-version: 16.x
+          cache: 'pnpm'
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm i
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Deploy to surge
-        run: yarn deploy-preview -d braid-design-system--${GITHUB_SHA}.surge.sh
+        run: pnpm surge -p ./site/dist -d braid-design-system--${GITHUB_SHA}.surge.sh
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
 
       - name: Update PR status
-        run: yarn post-commit-status
+        run: pnpm post-commit-status
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

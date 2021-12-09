@@ -13,23 +13,19 @@
   ],
   "scripts": {
     "test": "SKU_TELEMETRY=false sku test",
-    "start": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"playroom start\"",
-    "lint": "SKU_TELEMETRY=false sku lint",
+    "start": "pnpm run setup && SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"playroom start\"",
+    "lint": "pnpm run setup && SKU_TELEMETRY=false sku lint",
     "format": "SKU_TELEMETRY=false sku format",
     "generate-component-docs": "ts-node generate-component-docs",
     "generate-icons": "node scripts/generateIcons.js",
-    "setup": "SKU_TELEMETRY=false sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
-    "prelint": "yarn setup",
-    "prestart": "yarn setup",
-    "prebuild": "yarn setup",
+    "setup": "SKU_TELEMETRY=false sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"pnpm generate-component-docs\" \"pnpm generate-icons\"",
     "build-codemod": "node ./codemod/scripts/build",
-    "build": "NODE_ENV=production SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"playroom build\"",
+    "build": "pnpm run setup && NODE_ENV=production SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"playroom build\"",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "deploy": "node scripts/deploy.js",
-    "deploy-preview": "surge -p ./site/dist",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "release": "yarn setup && yarn build-codemod && changeset publish && yarn build && yarn deploy",
+    "release": "pnpm run setup && pnpm build-codemod && changeset publish && pnpm build && pnpm deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
     "prepare": "patch-package"
   },
@@ -89,6 +85,7 @@
     "@babel/plugin-syntax-jsx": "^7.14.5",
     "@babel/plugin-syntax-typescript": "^7.14.5",
     "@babel/preset-typescript": "^7.12.7",
+    "@babel/runtime": "^7.16.3",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
     "@octokit/rest": "^18.0.15",
@@ -131,6 +128,7 @@
     "husky": "^4.3.8",
     "ink": "^3.0.9",
     "js-yaml": "^4.0.0",
+    "mini-css-extract-plugin": "^2.4.5",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
     "patch-package": "^6.4.7",
@@ -150,7 +148,7 @@
     "recoil": "^0.3.1",
     "renovate-config-seek": "0.4.0",
     "sanitize-html": "^2.3.2",
-    "sku": "^11.0.1",
+    "sku": "^11.2.5",
     "surge": "^0.21.7",
     "svgo": "^2.4.0",
     "title-case": "^3.0.3",
@@ -159,7 +157,6 @@
     "workerpool": "^6.1.5"
   },
   "volta": {
-    "node": "16.13.0",
-    "yarn": "1.21.1"
+    "node": "16.13.0"
   }
 }

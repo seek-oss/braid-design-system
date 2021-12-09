@@ -10,4 +10,4 @@ icons/
 *.migration.md
 *.test.tsx
 *.test.ts
-yarn.lock
+pnpm-lock.yaml

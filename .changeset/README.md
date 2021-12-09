@@ -29,7 +29,7 @@ My summary of the change
 Add a changeset as part of a PR if the changes impact the consumer. A changeset is basically a markdown file which also describes the size of the change (patch, minor or major).
 
 ```bash
-yarn changeset add
+pnpm changeset add
 ```
 
 A PR could theoretically have multiple changesets describing different changes.
@@ -42,7 +42,7 @@ The [changeset-bot](https://github.com/apps/changeset-bot) will add a reminder o
 
 ### Github action creates a changeset PR (kind of like renovate)
 
-After merging the PR to master, a new PR is automatically created that contains the result of `yarn changeset version`.
+After merging the PR to master, a new PR is automatically created that contains the result of `pnpm changeset version`.
 
 This:
 

@@ -87,19 +87,19 @@ If you're migrating from an existing style guide, please refer to the [Style Gui
 
 ## Local Development
 
-This project uses [Yarn](https://yarnpkg.com) for development dependencies.
+This project uses [pnpm](https://pnpm.io/) for development dependencies.
 
-Installing with `yarn` is required to ensure dependencies match the current [yarn.lock](./yarn.lock).
+Installing with `pnpm` is required to ensure dependencies match the current [pnpm-lock.yaml](./pnpm-lock.yaml).
 
 ```bash
-$ yarn
-$ yarn start
+$ pnpm install
+$ pnpm start
 ```
 
 Start a local Storybook server:
 
 ```bash
-$ yarn storybook
+$ pnpm storybook
 ```
 
 ## Contributing
