@@ -2186,5 +2186,16 @@
   {
     "version": "31.2.1",
     "updates": []
+  },
+  {
+    "version": "31.2.2",
+    "updates": [
+      {
+        "updated": [
+          "BraidProvider"
+        ],
+        "summary": "**BraidProvider:** Add `backgroundColor` to html node when `styleBody` is set (defaults to `true`)"
+      }
+    ]
   }
 ]
