@@ -286,7 +286,7 @@ const tokens: BraidTokens = {
       promote,
       promoteLight: getLightVariant(promote),
       surface: white,
-      surfaceDark: '#333',
+      surfaceDark: '#222',
     },
   },
 };

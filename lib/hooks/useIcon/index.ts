@@ -3,7 +3,7 @@ import assert from 'assert';
 import clsx from 'clsx';
 
 import { OptionalTitle } from '../../components/icons/SVGTypes';
-import { BoxProps } from '../../components/Box/Box';
+import { PublicBoxProps } from '../../components/Box/Box';
 import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { textSize, useTextTone, UseTextProps } from '../typography';
@@ -50,7 +50,9 @@ const detaultVerticalCorrection = {
 export default (
   { size, tone, alignY, data, ...titleProps }: UseIconProps,
   { verticalCorrection = detaultVerticalCorrection }: PrivateIconProps = {},
-): BoxProps => {
+  // TODO: COLORMODE RELEASE
+  // Revert to BoxProps
+): PublicBoxProps => {
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
   const inheritedTone =

@@ -2122,5 +2122,80 @@
         "summary": "**IconZoomIn, IconZoomOut:** Add zoom in/out icons"
       }
     ]
+  },
+  {
+    "version": "31.2.0",
+    "updates": [
+      {
+        "updated": [
+          "OverflowMenu"
+        ],
+        "summary": "**OverflowMenu:** Use `neutral` tone button style"
+      },
+      {
+        "updated": [
+          "Alert",
+          "Card",
+          "Toast"
+        ],
+        "summary": "**Alert, Card, Toast:** Improve highlight keyline\n\nEnsures that components using a highlight keyline have the correct border radius and mask their overflow correctly."
+      },
+      {
+        "updated": [
+          "Alert",
+          "Autosuggest",
+          "Tag",
+          "TextField"
+        ],
+        "summary": "**Alert, Autosuggest, Tag, TextField:** Use `neutral` tone button style for clear action"
+      },
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Reset background color on `input` and `select` elements\n\nWhen specifying a `component` of `input` or `select` the background color was not being reset, falling through to the user agent styles. Reseting it to `transparent` to ensure predicatble styles across browsers and colour modes."
+      },
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Add light variant foreground colors\n\n**New foregrounds**\nThe following foregrounds are now available on the `vars.foregroundColor` theme object:\n- `cautionLight`\n- `infoLight`\n- `linkLight`\n- `linkLightVisited`\n- `positiveLight`\n- `promoteLight`"
+      },
+      {
+        "updated": [
+          "Text"
+        ],
+        "summary": "**Text:** Improve contrast of `caution`, `positive`, `info`, `promote` and `link` tones\n\nWhen using any of the above tones in a dark container, a lighter colour will be used to improve the text contrast against the background."
+      },
+      {
+        "updated": [
+          "MenuItem",
+          "MenuItemLink",
+          "MenuItemCheckbox"
+        ],
+        "summary": "**MenuItem, MenuItemLink, MenuItemCheckbox:** Use `span` elements internally for more valid HTML."
+      },
+      {
+        "updated": [
+          "Loader"
+        ],
+        "summary": "**Loader:**  Use current text color"
+      }
+    ]
+  },
+  {
+    "version": "31.2.1",
+    "updates": []
+  },
+  {
+    "version": "31.2.2",
+    "updates": [
+      {
+        "updated": [
+          "BraidProvider"
+        ],
+        "summary": "**BraidProvider:** Add `backgroundColor` to html node when `styleBody` is set (defaults to `true`)"
+      }
+    ]
   }
 ]

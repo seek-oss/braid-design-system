@@ -1,5 +1,55 @@
 # braid-design-system
 
+## 31.2.2
+
+### Patch Changes
+
+- **BraidProvider:** Add `backgroundColor` to html node when `styleBody` is set (defaults to `true`) ([#1047](https://github.com/seek-oss/braid-design-system/pull/1047))
+
+## 31.2.1
+
+### Patch Changes
+
+- useIcon: Return props compatible with public Box component ([#1045](https://github.com/seek-oss/braid-design-system/pull/1045))
+
+## 31.2.0
+
+### Minor Changes
+
+- **vars:** Add light variant foreground colors ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
+  **New foregrounds**
+  The following foregrounds are now available on the `vars.foregroundColor` theme object:
+
+  - `cautionLight`
+  - `infoLight`
+  - `linkLight`
+  - `linkLightVisited`
+  - `positiveLight`
+  - `promoteLight`
+
+- **Text:** Improve contrast of `caution`, `positive`, `info`, `promote` and `link` tones ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
+  When using any of the above tones in a dark container, a lighter colour will be used to improve the text contrast against the background.
+
+### Patch Changes
+
+- **OverflowMenu:** Use `neutral` tone button style ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
+- **Alert, Card, Toast:** Improve highlight keyline ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
+  Ensures that components using a highlight keyline have the correct border radius and mask their overflow correctly.
+
+- **Alert, Autosuggest, Tag, TextField:** Use `neutral` tone button style for clear action ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
+- **Box:** Reset background color on `input` and `select` elements ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
+  When specifying a `component` of `input` or `select` the background color was not being reset, falling through to the user agent styles. Reseting it to `transparent` to ensure predicatble styles across browsers and colour modes.
+
+- **MenuItem, MenuItemLink, MenuItemCheckbox:** Use `span` elements internally for more valid HTML. ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
+- **Loader:** Use current text color ([#1042](https://github.com/seek-oss/braid-design-system/pull/1042))
+
 ## 31.1.0
 
 ### Minor Changes
