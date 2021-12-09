@@ -86,6 +86,7 @@
     "@babel/plugin-syntax-jsx": "^7.14.5",
     "@babel/plugin-syntax-typescript": "^7.14.5",
     "@babel/preset-typescript": "^7.12.7",
+    "@babel/runtime": "^7.16.3",
     "@changesets/cli": "^2.14.0",
     "@changesets/get-github-info": "^0.4.5",
     "@octokit/rest": "^18.0.15",
