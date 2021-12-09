@@ -25,7 +25,7 @@
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "release": "pnpm setup && pnpm build-codemod && changeset publish && pnpm build && pnpm deploy",
+    "release": "pnpm run setup && pnpm build-codemod && changeset publish && pnpm build && pnpm deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
     "prepare": "patch-package"
   },
