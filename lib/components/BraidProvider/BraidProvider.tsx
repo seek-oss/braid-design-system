@@ -95,9 +95,8 @@ export const BraidProvider = ({
       <TreatProvider theme={theme.treatTheme}>
         {styleBody ? (
           <style type="text/css">{`
-            body{margin:0;padding:0;background:${theme.background.lightMode}}
-            html.${darkMode}{color-scheme:dark}
-            html.${darkMode} body{background:${theme.background.darkMode}}
+            html,body{margin:0;padding:0;background:${theme.background.lightMode}}
+            html.${darkMode},html.${darkMode} body{color-scheme:dark;background:${theme.background.darkMode}}
           `}</style>
         ) : null}
         <VanillaThemeContainer
