@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 31.2.3
+
+### Patch Changes
+
+- Update experimental color mode flags ([#1050](https://github.com/seek-oss/braid-design-system/pull/1050))
+
 ## 31.2.2
 
 ### Patch Changes
