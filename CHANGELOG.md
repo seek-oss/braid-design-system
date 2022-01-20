@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 31.3.0
+
+### Minor Changes
+
+- **vars:** Expose `contentWidth` theme tokens ([#1052](https://github.com/seek-oss/braid-design-system/pull/1052))
+
 ## 31.2.3
 
 ### Patch Changes

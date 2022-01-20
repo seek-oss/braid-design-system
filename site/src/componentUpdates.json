@@ -2201,5 +2201,16 @@
   {
     "version": "31.2.3",
     "updates": []
+  },
+  {
+    "version": "31.3.0",
+    "updates": [
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Expose `contentWidth` theme tokens"
+      }
+    ]
   }
 ]
