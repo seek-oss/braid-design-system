@@ -215,8 +215,8 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            For cases where actions need may need to be de-emphasized, you can
-            set the button’s <Strong>tone</Strong> to <Strong>neutral.</Strong>
+            For cases where actions need to be de-emphasized, the{' '}
+            <Strong>tone</Strong> can be set to <Strong>neutral.</Strong>
           </Text>
           <Text>
             This makes the button follow the default text colour, including{' '}
