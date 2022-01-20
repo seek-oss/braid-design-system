@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { vars } from '.';
 import {
   Text,
@@ -13,7 +13,7 @@ import {
 } from '../lib/components';
 import { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings';
 import Code from '../site/src/App/Code/Code';
-import { ThemedExample } from '../site/src/App/ThemeSetting';
+import { ThemedExample, useThemeSettings } from '../site/src/App/ThemeSetting';
 import { CssDoc } from '../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
@@ -43,6 +43,32 @@ const Row = ({
   </Columns>
 );
 
+const ContentWidthValue = ({ var: varName }: { var: string }) => {
+  const [size, setSize] = useState(0);
+  const { themeKey } = useThemeSettings();
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (ref.current && themeKey) {
+      setSize(ref.current.offsetWidth);
+    }
+  }, [themeKey]);
+
+  return (
+    <>
+      <Box
+        component="span"
+        position="absolute"
+        pointerEvents="none"
+        opacity={0}
+        ref={ref}
+        style={{ width: varName }}
+      />
+      {size > 0 ? `${size}px` : '&nbsp;'}
+    </>
+  );
+};
+
 const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
   grid: (
     <Row name="grid">
@@ -66,6 +92,17 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
         }}
       />
     </Row>
+  ),
+  contentWidth: (
+    <Stack space="medium" dividers>
+      {Object.entries(vars.contentWidth).map(([widthName, widthVar]) => (
+        <Row key={widthName} group="contentWidth" name={widthName}>
+          <Text>
+            <ContentWidthValue var={widthVar} />
+          </Text>
+        </Row>
+      ))}
+    </Stack>
   ),
   space: (
     <Stack space="medium" dividers>
