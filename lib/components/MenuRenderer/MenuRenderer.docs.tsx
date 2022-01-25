@@ -15,29 +15,32 @@ import {
   Button,
   Dialog,
   IconDelete,
+  Inline,
 } from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <MenuRenderer
-        offsetSpace="small"
-        trigger={(triggerProps, { open }) => (
-          <Box userSelect="none" cursor="pointer" {...triggerProps}>
-            <Text>
-              Menu{' '}
-              <IconChevron
-                direction={open ? 'up' : 'down'}
-                alignY="lowercase"
-              />
-            </Text>
-          </Box>
-        )}
-      >
-        <MenuItem onClick={() => {}}>Button</MenuItem>
-        <MenuItemLink href="#">Link</MenuItemLink>
-      </MenuRenderer>,
+      <Inline space="none">
+        <MenuRenderer
+          offsetSpace="small"
+          trigger={(triggerProps, { open }) => (
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
+          <MenuItem onClick={() => {}}>Button</MenuItem>
+          <MenuItemLink href="#">Link</MenuItemLink>
+        </MenuRenderer>
+      </Inline>,
     ),
   description: (
     <Stack space="large">
@@ -53,7 +56,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#menu">
         WAI-ARIA Menu Pattern.
       </TextLink>
     </Text>
@@ -75,7 +78,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Box style={{ paddingLeft: '40px', maxWidth: '220px' }}>
+          <Inline space="none">
             <MenuRenderer
               align="right"
               offsetSpace="small"
@@ -94,7 +97,7 @@ const docs: ComponentDocs = {
               <MenuItem onClick={() => {}}>Button</MenuItem>
               <MenuItemLink href="#">Link</MenuItemLink>
             </MenuRenderer>
-          </Box>,
+          </Inline>,
         ),
     },
     {
@@ -111,23 +114,25 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <MenuRenderer
-            offsetSpace={{ mobile: 'xsmall', tablet: 'small' }}
-            trigger={(triggerProps, { open }) => (
-              <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Text>
-                  Custom space{' '}
-                  <IconChevron
-                    direction={open ? 'up' : 'down'}
-                    alignY="lowercase"
-                  />
-                </Text>
-              </Box>
-            )}
-          >
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItemLink href="#">Link</MenuItemLink>
-          </MenuRenderer>,
+          <Inline space="none">
+            <MenuRenderer
+              offsetSpace={{ mobile: 'xsmall', tablet: 'small' }}
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Custom space{' '}
+                    <IconChevron
+                      direction={open ? 'up' : 'down'}
+                      alignY="lowercase"
+                    />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItem onClick={() => {}}>Button</MenuItem>
+              <MenuItemLink href="#">Link</MenuItemLink>
+            </MenuRenderer>
+          </Inline>,
         ),
     },
     {
@@ -143,24 +148,29 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState, showToast }) =>
         source(
           <>
-            <MenuRenderer
-              offsetSpace="small"
-              trigger={(triggerProps, { open }) => (
-                <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                  <Text>
-                    Menu{' '}
-                    <IconChevron
-                      direction={open ? 'up' : 'down'}
-                      alignY="lowercase"
-                    />
-                  </Text>
-                </Box>
-              )}
-            >
-              <MenuItem onClick={() => toggleState('confirm')} tone="critical">
-                Delete
-              </MenuItem>
-            </MenuRenderer>
+            <Inline space="none">
+              <MenuRenderer
+                offsetSpace="small"
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text>
+                      Menu{' '}
+                      <IconChevron
+                        direction={open ? 'up' : 'down'}
+                        alignY="lowercase"
+                      />
+                    </Text>
+                  </Box>
+                )}
+              >
+                <MenuItem
+                  onClick={() => toggleState('confirm')}
+                  tone="critical"
+                >
+                  Delete
+                </MenuItem>
+              </MenuRenderer>
+            </Inline>
             <Dialog
               id={id}
               width="content"

@@ -12,7 +12,7 @@ export const galleryItems: ComponentExample[] = [
           {setDefaultState('checked1', false)}
           {setDefaultState('checked2', false)}
           {setDefaultState('checked3', false)}
-          <Box style={{ paddingLeft: 200 }}>
+          <Box style={{ maxWidth: '120px' }}>
             <OverflowMenu label="Checklist">
               <MenuItemCheckbox
                 checked={getState('checked1')}
