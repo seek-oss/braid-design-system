@@ -70,8 +70,8 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Years can be restriced to a range using the <Strong>minYear</Strong>{' '}
-            and <Strong>maxYear</Strong> props.
+            Years can be restricted to a range using the{' '}
+            <Strong>minYear</Strong> and <Strong>maxYear</Strong> props.
           </Text>
           <Text>
             By default, the years are presented in descending order, this can be
