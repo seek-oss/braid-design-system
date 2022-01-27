@@ -17,7 +17,7 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: ({ getState, setState }) =>
     source(
-      <Box style={{ paddingLeft: 200 }}>
+      <Box style={{ maxWidth: '150px' }}>
         <OverflowMenu label="Options">
           <MenuItem onClick={() => {}}>Button</MenuItem>
           <MenuItemLink href="#" onClick={() => {}}>
@@ -55,7 +55,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#menu">
         WAI-ARIA Menu Pattern.
       </TextLink>
     </Text>

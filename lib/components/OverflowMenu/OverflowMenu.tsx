@@ -16,7 +16,11 @@ export const OverflowMenu = ({
 }: OverflowMenuProps) => (
   <MenuRenderer
     trigger={(triggerProps, { open }) => (
-      <Box className={styles.triggerOffset}>
+      <Box
+        display="flex"
+        justifyContent="flexEnd"
+        className={styles.triggerOffset}
+      >
         <OverflowButton label={label} active={open} {...triggerProps} />
       </Box>
     )}

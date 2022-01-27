@@ -20,7 +20,7 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
+      <Box style={{ maxWidth: '100px' }}>
         <OverflowMenu label="Options">
           <MenuItem onClick={() => {}}>Button</MenuItem>
           <MenuItemLink href="#" onClick={() => {}}>
@@ -32,7 +32,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">
+      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#menu">
         WAI-ARIA Menu Pattern.
       </TextLink>
     </Text>
@@ -54,7 +54,7 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState, showToast }) =>
         source(
           <>
-            <Box paddingLeft="xxlarge">
+            <Box style={{ maxWidth: '100px' }}>
               <OverflowMenu label="Options">
                 <MenuItem
                   onClick={() => toggleState('confirm')}

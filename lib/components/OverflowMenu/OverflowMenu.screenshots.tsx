@@ -9,7 +9,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Default',
       background: 'surface',
       Example: ({ handler }) => (
-        <Box style={{ paddingLeft: '100px', maxWidth: '200px' }}>
+        <Box style={{ maxWidth: '100px' }}>
           <OverflowMenu label="Options">
             <MenuItem onClick={handler}>Button</MenuItem>
             <MenuItemLink href="#" onClick={handler}>

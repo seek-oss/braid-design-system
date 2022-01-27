@@ -7,6 +7,7 @@ import {
   MenuItemLink,
   Text,
   IconChevron,
+  Inline,
 } from '..';
 import source from '../../utils/source.macro';
 
@@ -15,68 +16,74 @@ export const galleryItems: ComponentExample[] = [
     label: 'Default',
     Example: () =>
       source(
-        <MenuRenderer
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>,
+        <Inline space="none">
+          <MenuRenderer
+            trigger={(triggerProps, { open }) => (
+              <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                <Text>
+                  Menu{' '}
+                  <IconChevron
+                    direction={open ? 'up' : 'down'}
+                    alignY="lowercase"
+                  />
+                </Text>
+              </Box>
+            )}
+          >
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItemLink href="#">Link</MenuItemLink>
+          </MenuRenderer>
+        </Inline>,
       ),
   },
   {
     label: 'Right aligned',
     Example: () =>
       source(
-        <MenuRenderer
-          align="right"
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>,
+        <Inline space="none">
+          <MenuRenderer
+            align="right"
+            trigger={(triggerProps, { open }) => (
+              <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                <Text>
+                  Right aligned menu{' '}
+                  <IconChevron
+                    direction={open ? 'up' : 'down'}
+                    alignY="lowercase"
+                  />
+                </Text>
+              </Box>
+            )}
+          >
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItemLink href="#">Link</MenuItemLink>
+          </MenuRenderer>
+        </Inline>,
       ),
   },
   {
     label: 'Offset space for menu',
     Example: () =>
       source(
-        <MenuRenderer
-          offsetSpace={{ mobile: 'none', tablet: 'small' }}
-          trigger={(triggerProps, { open }) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Text>
-                Menu{' '}
-                <IconChevron
-                  direction={open ? 'up' : 'down'}
-                  alignY="lowercase"
-                />
-              </Text>
-            </Box>
-          )}
-        >
-          <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>,
+        <Inline space="none">
+          <MenuRenderer
+            offsetSpace={{ mobile: 'none', tablet: 'small' }}
+            trigger={(triggerProps, { open }) => (
+              <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                <Text>
+                  Menu{' '}
+                  <IconChevron
+                    direction={open ? 'up' : 'down'}
+                    alignY="lowercase"
+                  />
+                </Text>
+              </Box>
+            )}
+          >
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItemLink href="#">Link</MenuItemLink>
+          </MenuRenderer>
+        </Inline>,
       ),
   },
 ];

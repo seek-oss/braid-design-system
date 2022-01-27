@@ -20,7 +20,7 @@ export const galleryItems: ComponentExample[] = [
           {setDefaultState('checked2', false)}
           {setDefaultState('checked3', false)}
 
-          <Box style={{ paddingLeft: 200 }}>
+          <Box style={{ maxWidth: '120px' }}>
             <OverflowMenu label="Options">
               <MenuItem onClick={handler}>Button</MenuItem>
               <MenuItemLink href="#" onClick={handler}>
