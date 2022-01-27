@@ -6503,6 +6503,7 @@ Object {
     component?: 
         | "div"
         | "ol"
+        | "span"
         | "ul"
     data?: DataAttributeMap
     dividers?: 
@@ -6522,6 +6523,38 @@ Object {
         | "xxsmall"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+},
+}
+`;
+
+exports[`Step 1`] = `
+Object {
+  exportType: component,
+  props: {
+    children: string
+    complete?: boolean
+    id?: string
+},
+}
+`;
+
+exports[`Stepper 1`] = `
+Object {
+  exportType: component,
+  props: {
+    activeStep?: number
+    children: 
+        | ReactElement<StepProps, string | JSXElementConstructor<any>>
+        | ReactElement<StepProps, string | JSXElementConstructor<any>>[]
+    data?: DataAttributeMap
+    id?: string
+    label: string
+    mode?: 
+        | "linear"
+        | "non-linear"
+    onStepClick?: (step: { id?: string | undefined; stepNumber: number; }) => void
+    progress: number
+    tone?: "neutral"
 },
 }
 `;

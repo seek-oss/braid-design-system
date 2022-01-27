@@ -44,7 +44,7 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
       }),
 });
 
-export const validStackComponents = ['div', 'ol', 'ul'] as const;
+export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
 
 const extractHiddenPropsFromChild = (child: ReactNode) =>
   child && typeof child === 'object' && 'type' in child && child.type === Hidden
@@ -114,7 +114,7 @@ export const Stack = ({
   const stackItemProps = useStackItem({ space, align });
   const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
-  const stackItemComponent = isList ? 'li' : 'div';
+  const stackItemComponent = isList ? 'li' : component;
 
   let firstItemOnMobile: number | null = null;
   let firstItemOnTablet: number | null = null;
@@ -177,6 +177,7 @@ export const Stack = ({
           >
             {dividers && index > 0 ? (
               <Box
+                component="span"
                 width="full"
                 paddingBottom={space}
                 display={optimizeResponsiveArray([
