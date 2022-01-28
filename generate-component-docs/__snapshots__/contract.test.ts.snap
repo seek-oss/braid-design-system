@@ -29,6 +29,7 @@ exports[`AccordionItem 1`] = `
 Object {
   exportType: component,
   props: {
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children: ReactNode
     data?: DataAttributeMap
     expanded?: boolean

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { AccordionItem, Accordion, Text } from '../../components';
+import { AccordionItem, Accordion, Badge, Text } from '../../components';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
@@ -351,6 +351,22 @@ export const screenshots: ComponentScreenshot = {
       label: 'AccordionItem with size and tone',
       Example: ({ id }) => (
         <AccordionItem label="Label" id={id} size="small" tone="secondary">
+          <Text size="small">Content</Text>
+        </AccordionItem>
+      ),
+    },
+    {
+      label: 'AccordionItem with a badge',
+      Example: ({ id }) => (
+        <AccordionItem
+          label="Label"
+          id={id}
+          badge={
+            <Badge tone="promote" weight="strong">
+              Badge
+            </Badge>
+          }
+        >
           <Text size="small">Content</Text>
         </AccordionItem>
       ),

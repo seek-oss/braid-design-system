@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AccordionItem,
   Accordion,
+  Badge,
   Placeholder,
 } from '../../playroom/components';
 import source from '../../utils/source.macro';
@@ -84,6 +85,21 @@ export const snippets: Snippets = [
     name: 'Standard standalone item',
     code: source(
       <AccordionItem label="Label" size="standard">
+        <Placeholder height={100} />
+      </AccordionItem>,
+    ),
+  },
+  {
+    name: 'Standalone item with a badge',
+    code: source(
+      <AccordionItem
+        label="Label"
+        badge={
+          <Badge tone="promote" weight="strong">
+            Badge
+          </Badge>
+        }
+      >
         <Placeholder height={100} />
       </AccordionItem>,
     ),
