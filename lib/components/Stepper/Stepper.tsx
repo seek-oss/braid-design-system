@@ -42,7 +42,7 @@ export const Stepper = ({
   onStepClick,
   ...props
 }: StepperProps) => {
-  const steps = flattenChildren(children) as Array<ReactElement<StepProps>>;
+  const steps = flattenChildren(children);
   const stepCount = steps.length;
   const progress = 'progress' in props ? props.progress : 0;
   const activeStepNumber =
@@ -58,8 +58,8 @@ export const Stepper = ({
       stepNumber !== activeStepNumber &&
       (mode !== 'linear' || stepNumber <= progress);
 
-    if (stepNumber === activeStepNumber && child) {
-      stepName = child.props.children;
+    if (stepNumber === activeStepNumber && typeof child === 'object') {
+      stepName = (child.props as StepProps).children;
     }
 
     return (
@@ -99,6 +99,7 @@ export const Stepper = ({
         <Box
           component="span"
           position="absolute"
+          pointerEvents="none"
           className={styles.progressTrack}
           role="progressbar"
           aria-valuemin={0}
