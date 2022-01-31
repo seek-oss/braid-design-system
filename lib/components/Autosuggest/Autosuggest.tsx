@@ -496,6 +496,19 @@ export const Autosuggest = forwardRef(function <Value>(
     tablet: false,
   });
 
+  useEffect(() => {
+    if (menuRef.current && isOpen && !isMobile) {
+      const { bottom: menuBottom } = menuRef.current.getBoundingClientRect();
+      const viewportHeight = document.documentElement.clientHeight;
+
+      if (menuBottom > viewportHeight) {
+        menuRef.current.scrollIntoView();
+      }
+    }
+    // re-running this effect if the suggestionCount changes
+    // to ensure asychronous updates aren't left out of view.
+  }, [isOpen, isMobile, suggestionCount]);
+
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
     type: type === 'search' ? type : 'text',
