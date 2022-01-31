@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 31.4.0
+
+### Minor Changes
+
+- **AccordionItem:** Add badge support ([#1057](https://github.com/seek-oss/braid-design-system/pull/1057))
+
+  The `AccordionItem` now has support for the `badge` prop.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <AccordionItem label="Label" badge={<Badge>New</Badge>}>
+    ...
+  </AccordionItem>
+  ```
+
+### Patch Changes
+
+- **Autosuggest:** Scroll list into view ([#1058](https://github.com/seek-oss/braid-design-system/pull/1058))
+
+  The suggestions list will now be scrolled into view (on tablet and above) if it extends beyond the bottom of the window. This prevents suggestions (particularly those loaded asynchronously) from being obscured by the edge of the window.
+
 ## 31.3.1
 
 ### Patch Changes
