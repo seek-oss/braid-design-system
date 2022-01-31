@@ -30,7 +30,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
-import { BadgeProps, Badge } from '../Badge/Badge';
+import { BadgeProps } from '../Badge/Badge';
 import { Divider } from '../Divider/Divider';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
@@ -55,7 +55,8 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   );
 
   assert(
-    !badge || badge.type === Badge,
+    // @ts-expect-error
+    !badge || badge.type.__isBadge__,
     `Tab badge prop can only be an instance of Badge. e.g. <Tab badge={<Badge>New</Badge>}>`,
   );
 
