@@ -66,11 +66,6 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       display="block"
       width="full"
       aria-current={active ? 'step' : undefined}
-      className={[
-        styles.step,
-        styles.tone[tone || 'formAccent'],
-        isLast ? styles.stretchLastAboveTablet : styles.stretch,
-      ]}
       cursor={onStepClick ? 'pointer' : undefined}
       onClick={onStepClick ? () => onStepClick({ id, stepNumber }) : undefined}
       className={[styles.step, styles.tone[tone || 'formAccent']]}
