@@ -60,8 +60,11 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
 
   return (
     <Box
-      component="li"
+      component={onStepClick ? 'button' : 'span'}
       position="relative"
+      outline="none"
+      display="block"
+      width="full"
       aria-current={active ? 'step' : undefined}
       className={[
         styles.step,
@@ -70,8 +73,7 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       ]}
       cursor={onStepClick ? 'pointer' : undefined}
       onClick={onStepClick ? () => onStepClick({ id, stepNumber }) : undefined}
-      tabIndex={active ? 0 : undefined}
-      outline="none"
+      className={[styles.step, styles.tone[tone || 'formAccent']]}
     >
       {!isLast ? (
         <Box
@@ -86,6 +88,7 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
             position="absolute"
             top={0}
             bottom={0}
+            left={0}
             width="full"
             className={[
               styles.progressLine,

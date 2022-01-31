@@ -53,6 +53,7 @@ export const Stepper = ({
   let stepName = '';
   const stepItems = Children.map(steps, (child, index) => {
     const stepNumber = index + 1;
+    const isLast = stepNumber === stepCount;
     const clickable =
       typeof onStepClick === 'function' &&
       stepNumber !== activeStepNumber &&
@@ -70,11 +71,16 @@ export const Stepper = ({
           stepNumber,
           mode,
           tone,
-          isLast: stepNumber === stepCount,
+          isLast,
           onStepClick: clickable ? onStepClick : null,
         }}
       >
-        {child}
+        <Box
+          component="li"
+          className={isLast ? styles.stretchLastAboveTablet : styles.stretch}
+        >
+          {child}
+        </Box>
       </StepContext.Provider>
     );
   });
