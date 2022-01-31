@@ -502,7 +502,7 @@ export const Autosuggest = forwardRef(function <Value>(
       const viewportHeight = document.documentElement.clientHeight;
 
       if (menuBottom > viewportHeight) {
-        menuRef.current.scrollIntoView();
+        menuRef.current.scrollIntoView(false);
       }
     }
     // re-running this effect if the suggestionCount changes
