@@ -20,15 +20,11 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Stepper label="Steps example" progress={3}>
-        {[
-          '1. First step',
-          '2. Second step',
-          '3. Third step',
-          '4. Forth step',
-          '5. Fifth step',
-        ].map((step) => (
-          <Step key={step}>{step}</Step>
-        ))}
+        <Step>1. First step</Step>
+        <Step>2. Second step</Step>
+        <Step>3. Third step</Step>
+        <Step>4. Forth step</Step>
+        <Step>5. Fifth step</Step>
       </Stepper>,
     ),
   accessibility: (
@@ -72,14 +68,10 @@ const docs: ComponentDocs = {
             {setDefaultState('progress', 1)}
             <Stack space="medium">
               <Stepper label="Linear steps" progress={getState('progress')}>
-                {[
-                  '1. First step',
-                  '2. Second step',
-                  '3. Third step',
-                  '4. Forth step',
-                ].map((step) => (
-                  <Step key={step}>{step}</Step>
-                ))}
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step>3. Third step</Step>
+                <Step>4. Forth step</Step>
               </Stepper>
               <Inline space="small" align="center">
                 {getState('progress') > 1 ? (
@@ -127,16 +119,10 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Stepper label="Non-linear steps" mode="non-linear" activeStep={2}>
-            {[
-              '1. First step',
-              '2. Second step',
-              '3. Third step',
-              '4. Forth step',
-            ].map((step, index) => (
-              <Step key={step} complete={index === 3}>
-                {step}
-              </Step>
-            ))}
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step complete>3. Third step</Step>
+            <Step>4. Forth step</Step>
           </Stepper>,
         ),
     },
@@ -177,22 +163,24 @@ const docs: ComponentDocs = {
                   })
                 }
               >
-                {[
-                  '1. First step',
-                  '2. Second step',
-                  '3. Third step',
-                  '4. Forth step',
-                  '5. Fifth step',
-                  '6. Sixth step',
-                ].map((step) => (
-                  <Step
-                    key={step}
-                    id={step}
-                    complete={getState('complete')[step]}
-                  >
-                    {step}
-                  </Step>
-                ))}
+                <Step id={1} complete={getState('complete')[1]}>
+                  1. First step
+                </Step>
+                <Step id={2} complete={getState('complete')[2]}>
+                  2. Second step
+                </Step>
+                <Step id={3} complete={getState('complete')[3]}>
+                  3. Third step
+                </Step>
+                <Step id={4} complete={getState('complete')[4]}>
+                  4. Forth step
+                </Step>
+                <Step id={5} complete={getState('complete')[5]}>
+                  5. Fifth step
+                </Step>
+                <Step id={6} complete={getState('complete')[6]}>
+                  6. Sixth step
+                </Step>
               </Stepper>
             </Stack>
           </>,
@@ -230,16 +218,12 @@ const docs: ComponentDocs = {
                   setState('activeStep', stepNumber)
                 }
               >
-                {[
-                  '1. First step',
-                  '2. Second step',
-                  '3. Third step',
-                  '4. Forth step',
-                  '5. Fifth step',
-                  '6. Sixth step',
-                ].map((step) => (
-                  <Step key={step}>{step}</Step>
-                ))}
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step>3. Third step</Step>
+                <Step>4. Forth step</Step>
+                <Step>5. Fifth step</Step>
+                <Step>6. Sixth step</Step>
               </Stepper>
             </Stack>
           </>,
@@ -266,13 +250,9 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Stepper tone="neutral" label="De-emphasized the tone" progress={2}>
-            {['1. First step', '2. Second step', '3. Third step'].map(
-              (step) => (
-                <Step key={step} id={step}>
-                  {step}
-                </Step>
-              ),
-            )}
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step>3. Third step</Step>
           </Stepper>,
         ),
     },
