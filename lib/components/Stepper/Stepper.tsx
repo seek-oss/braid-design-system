@@ -1,3 +1,4 @@
+import assert from 'assert';
 import React, { Children, ReactElement } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import buildDataAttributes, {
@@ -6,8 +7,13 @@ import buildDataAttributes, {
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Hidden } from '../Hidden/Hidden';
-import { StepContext, StepperMode, StepperTone } from './StepperContext';
-import { StepProps } from './Step';
+import {
+  StepContext,
+  StepperContextProvider,
+  StepperMode,
+  StepperTone,
+} from './StepperContext';
+import { Step, StepProps } from './Step';
 import * as styles from './Stepper.css';
 
 type LinearProps = {
@@ -21,12 +27,14 @@ type NonLinearProps = {
   activeStep: number;
 };
 
+type ChildStep = ReactElement<StepProps, typeof Step>;
+
 type StepperProps = {
   label: string;
-  children: Array<ReactElement<StepProps>> | ReactElement<StepProps>;
+  children: Array<ChildStep> | ChildStep;
   mode?: StepperMode;
   tone?: StepperTone;
-  onStepClick?: (step: { id?: string; stepNumber: number }) => void;
+  onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
   data?: DataAttributeMap;
   id?: string;
 } & (LinearProps | NonLinearProps);
@@ -42,7 +50,7 @@ export const Stepper = ({
   onStepClick,
   ...props
 }: StepperProps) => {
-  const steps = flattenChildren(children);
+  const steps = flattenChildren(children) as Array<ChildStep>;
   const stepCount = steps.length;
   const progress = 'progress' in props ? props.progress : 0;
   const activeStepNumber =
@@ -59,8 +67,13 @@ export const Stepper = ({
       stepNumber !== activeStepNumber &&
       (mode !== 'linear' || stepNumber <= progress);
 
+    assert(
+      !child || child.type.__isStep__,
+      'Only Step elements can be direct children of a Stepper. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Stepper',
+    );
+
     if (stepNumber === activeStepNumber && typeof child === 'object') {
-      stepName = (child.props as StepProps).children;
+      stepName = child.props.children;
     }
 
     return (
@@ -86,41 +99,47 @@ export const Stepper = ({
   });
 
   return (
-    <Box
-      component="nav"
-      position="relative"
-      aria-label={label}
-      id={id}
-      {...(data ? buildDataAttributes(data) : undefined)}
+    <StepperContextProvider
+      activeStep={activeStepNumber}
+      stepCount={mode === 'linear' ? progress : stepItems.length}
+      interactable={typeof onStepClick === 'function'}
     >
       <Box
-        component="ol"
-        display="flex"
-        paddingBottom="medium"
-        justifyContent={{ mobile: 'spaceBetween', tablet: 'center' }}
+        component="nav"
+        position="relative"
+        aria-label={label}
+        id={id}
+        {...(data ? buildDataAttributes(data) : undefined)}
       >
-        {stepItems}
-      </Box>
-      {mode === 'linear' ? (
         <Box
-          component="span"
-          position="absolute"
-          pointerEvents="none"
-          className={styles.progressTrack}
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={stepCount - 1}
-          aria-valuenow={progress > 0 ? progress - 1 : undefined}
-          aria-valuetext={progress > 0 ? label : undefined}
-          style={{
-            left: `${(100 - ((stepCount - 1) / stepCount) * 100) / 2}%`,
-            width: `${((progress - 1) / stepCount) * 100}%`,
-          }}
-        />
-      ) : null}
-      <Hidden above="mobile">
-        <Text weight="strong">{stepName}</Text>
-      </Hidden>
-    </Box>
+          component="ol"
+          display="flex"
+          paddingBottom="medium"
+          justifyContent={{ mobile: 'spaceBetween', tablet: 'center' }}
+        >
+          {stepItems}
+        </Box>
+        {mode === 'linear' ? (
+          <Box
+            component="span"
+            position="absolute"
+            pointerEvents="none"
+            className={styles.progressTrack}
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={stepCount - 1}
+            aria-valuenow={progress > 0 ? progress - 1 : undefined}
+            aria-valuetext={progress > 0 ? label : undefined}
+            style={{
+              left: `${(100 - ((stepCount - 1) / stepCount) * 100) / 2}%`,
+              width: `${((progress - 1) / stepCount) * 100}%`,
+            }}
+          />
+        ) : null}
+        <Hidden above="mobile">
+          <Text weight="strong">{stepName}</Text>
+        </Hidden>
+      </Box>
+    </StepperContextProvider>
   );
 };

@@ -132,7 +132,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             Steps can be made interactive by providing a handler via the{' '}
-            <Strong>onStepClick</Strong> prop. This function recieves the{' '}
+            <Strong>onStepClick</Strong> prop. This function receives the{' '}
             <Strong>stepNumber</Strong> and the <Strong>id</Strong> (as provided
             to the <Strong>Step</Strong> component itself).
           </Text>
@@ -155,13 +155,15 @@ const docs: ComponentDocs = {
               <Stepper
                 label="Interactions"
                 mode="non-linear"
-                activeStep={3}
-                onStepClick={({ id = '' }) =>
-                  setState('complete', {
-                    ...getState('complete'),
-                    [id]: !getState('complete')[id],
-                  })
-                }
+                activeStep={1}
+                onStepClick={({ id }) => {
+                  if (id) {
+                    setState('complete', {
+                      ...getState('complete'),
+                      [id]: !getState('complete')[id],
+                    });
+                  }
+                }}
               >
                 <Step id={1} complete={getState('complete')[1]}>
                   1. First step
@@ -192,13 +194,13 @@ const docs: ComponentDocs = {
         <>
           <Text>
             In <Strong>linear</Strong> mode, the step number passed to the{' '}
-            <Strong>progress</Strong> prop will also be the active step, however
-            this may be overridden by passing an explicit step number via the{' '}
+            <Strong>progress</Strong> prop will also be the active step. Any
+            previous step can be made active using the{' '}
             <Strong>activeStep</Strong> prop.
           </Text>
           <Text>
             In <Strong>non-linear</Strong> mode, the <Strong>activeStep</Strong>{' '}
-            prop is a requirement.
+            prop is required to set the starting point.
           </Text>
         </>
       ),

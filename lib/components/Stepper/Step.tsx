@@ -1,11 +1,12 @@
+import assert from 'assert';
 import clsx from 'clsx';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 import { Hidden } from '../Hidden/Hidden';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { StepContext } from './StepperContext';
+import { StepContext, StepperContext } from './StepperContext';
 import * as styles from './Stepper.css';
 
 interface StepIndicatorProps {
@@ -46,29 +47,62 @@ const StepIndicator = ({ complete, started, active }: StepIndicatorProps) => (
 export interface StepProps {
   children: string;
   complete?: boolean;
-  id?: string;
+  id?: string | number;
 }
 
 export const Step = ({ complete = false, id, children }: StepProps) => {
+  const stepRef = useRef<HTMLButtonElement>(null);
   const { activeStep, tone, mode, stepNumber, onStepClick, isLast, progress } =
     useContext(StepContext);
 
+  const stepperContext = useContext(StepperContext);
+  assert(
+    stepperContext !== null,
+    'A Step must be rendered as a child of a Stepper. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Stepper',
+  );
+
+  const { onKeyUp, onKeyDown, onClick, onFocus, onBlur, focusedStep } =
+    stepperContext;
+
   const linear = mode === 'linear';
-  const active = stepNumber === activeStep;
-  const completed = complete || (linear && stepNumber < progress);
-  const started = active || complete || (linear && stepNumber <= progress);
+  const active = activeStep === stepNumber;
+  const focused = focusedStep === stepNumber;
+  const linearStepBeforeProgress = linear && stepNumber < progress;
+  const completed = complete || linearStepBeforeProgress;
+  const started = active || complete || linearStepBeforeProgress;
+  const keyboardAccessible = focused || (active && focusedStep === null);
+
+  useEffect(() => {
+    if (stepRef.current && focused) {
+      stepRef.current.focus();
+    }
+  }, [focused]);
 
   return (
     <Box
-      component={onStepClick ? 'button' : 'span'}
+      component="button"
+      ref={stepRef}
       position="relative"
       outline="none"
       display="block"
       width="full"
       aria-current={active ? 'step' : undefined}
       cursor={onStepClick ? 'pointer' : undefined}
-      onClick={onStepClick ? () => onStepClick({ id, stepNumber }) : undefined}
       className={[styles.step, styles.tone[tone || 'formAccent']]}
+      onClick={() => {
+        if (onClick) {
+          onClick(stepNumber);
+        }
+
+        if (onStepClick) {
+          onStepClick({ id, stepNumber });
+        }
+      }}
+      onKeyUp={onKeyUp}
+      onKeyDown={onKeyDown}
+      onFocus={onFocus}
+      onBlur={keyboardAccessible ? onBlur : undefined}
+      tabIndex={keyboardAccessible ? 0 : -1}
     >
       {!isLast ? (
         <Box
@@ -87,9 +121,7 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
             width="full"
             className={[
               styles.progressLine,
-              !linear || progress <= stepNumber
-                ? styles.progressUnfilled
-                : undefined,
+              !linearStepBeforeProgress ? styles.progressUnfilled : undefined,
             ]}
           />
         </Box>
@@ -133,3 +165,5 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
     </Box>
   );
 };
+
+Step.__isStep__ = true;
