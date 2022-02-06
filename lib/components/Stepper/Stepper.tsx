@@ -13,7 +13,7 @@ import {
   StepperMode,
   StepperTone,
 } from './StepperContext';
-import { Step, StepProps } from './Step';
+import { Step as StepComponent, StepProps } from './Step';
 import * as styles from './Stepper.css';
 
 type LinearProps = {
@@ -27,11 +27,11 @@ type NonLinearProps = {
   activeStep: number;
 };
 
-type ChildStep = ReactElement<StepProps, typeof Step>;
+type Step = ReactElement<StepProps, typeof StepComponent>;
 
 type StepperProps = {
   label: string;
-  children: Array<ChildStep> | ChildStep;
+  children: Array<Step> | Step;
   mode?: StepperMode;
   tone?: StepperTone;
   onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
@@ -39,8 +39,22 @@ type StepperProps = {
   id?: string;
 } & (LinearProps | NonLinearProps);
 
+const resolveActiveStep = (
+  mode: StepperMode,
+  progress: number,
+  activeStep?: number,
+) => {
+  if (
+    mode === 'linear' &&
+    (typeof activeStep === 'undefined' || activeStep > progress)
+  ) {
+    return progress;
+  }
+  return activeStep || 0;
+};
+
 export const Stepper = ({
-  activeStep = 0,
+  activeStep,
   label,
   mode = 'linear',
   tone,
@@ -50,22 +64,16 @@ export const Stepper = ({
   onStepClick,
   ...props
 }: StepperProps) => {
-  const steps = flattenChildren(children) as Array<ChildStep>;
+  const steps = flattenChildren(children) as Array<Step>;
   const stepCount = steps.length;
+  const isLinear = mode === 'linear';
   const progress = 'progress' in props ? props.progress : 0;
-  const activeStepNumber =
-    mode !== 'linear' || (activeStep && activeStep < progress)
-      ? activeStep
-      : progress;
+  const activeStepNumber = resolveActiveStep(mode, progress, activeStep);
 
   let stepName = '';
   const stepItems = Children.map(steps, (child, index) => {
     const stepNumber = index + 1;
     const isLast = stepNumber === stepCount;
-    const clickable =
-      typeof onStepClick === 'function' &&
-      stepNumber !== activeStepNumber &&
-      (mode !== 'linear' || stepNumber <= progress);
 
     assert(
       !child || child.type.__isStep__,
@@ -79,13 +87,8 @@ export const Stepper = ({
     return (
       <StepContext.Provider
         value={{
-          activeStep: activeStepNumber,
-          progress,
           stepNumber,
-          mode,
-          tone,
           isLast,
-          onStepClick: clickable ? onStepClick : null,
         }}
       >
         <Box
@@ -101,8 +104,11 @@ export const Stepper = ({
   return (
     <StepperContextProvider
       activeStep={activeStepNumber}
-      stepCount={mode === 'linear' ? progress : stepItems.length}
-      interactable={typeof onStepClick === 'function'}
+      tone={tone}
+      progress={progress}
+      stepCount={stepItems.length}
+      isLinear={isLinear}
+      onStepClick={onStepClick}
     >
       <Box
         component="nav"
@@ -114,12 +120,12 @@ export const Stepper = ({
         <Box
           component="ol"
           display="flex"
-          paddingBottom="medium"
+          paddingBottom={{ mobile: 'medium', tablet: 'none' }}
           justifyContent={{ mobile: 'spaceBetween', tablet: 'center' }}
         >
           {stepItems}
         </Box>
-        {mode === 'linear' ? (
+        {isLinear ? (
           <Box
             component="span"
             position="absolute"

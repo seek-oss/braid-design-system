@@ -42,6 +42,14 @@ const docs: ComponentDocs = {
         it is neccessary to provide a <Strong>label</Strong>.
       </Text>
       <Text>
+        Implements the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#kbd_roving_tabindex">
+          roving tabindex
+        </TextLink>{' '}
+        pattern when the steps are interactive (
+        <TextLink href="#step-interactions">see below</TextLink>).
+      </Text>
+      <Text>
         When used in <Strong>linear</Strong> mode (default), the{' '}
         <TextLink href="https://www.w3.org/TR/wai-aria-1.2/#progressbar">
           progressbar
@@ -66,7 +74,7 @@ const docs: ComponentDocs = {
         source(
           <>
             {setDefaultState('progress', 1)}
-            <Stack space="medium">
+            <Stack space="large">
               <Stepper label="Linear steps" progress={getState('progress')}>
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
