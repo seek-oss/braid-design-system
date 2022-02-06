@@ -26,25 +26,28 @@ const alignToDisplay = {
   right: 'flex',
 } as const;
 
+export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
+
 interface UseStackItemProps {
   align: OptionalResponsiveValue<Align>;
   space: ResponsiveSpace;
+  component: typeof validStackComponents[number];
 }
 
-const useStackItem = ({ align, space }: UseStackItemProps) => ({
-  paddingTop: space,
-  // If we're aligned left across all screen sizes,
-  // there's actually no alignment work to do.
-  ...(align === 'left'
-    ? null
-    : {
-        display: mapResponsiveValue(align, (value) => alignToDisplay[value]),
-        flexDirection: 'column' as const,
-        alignItems: alignToFlexAlign(align),
-      }),
-});
-
-export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
+const useStackItem = ({ align, space, component }: UseStackItemProps) =>
+  ({
+    paddingTop: space,
+    display: component === 'span' ? 'block' : undefined,
+    // If we're aligned left across all screen sizes,
+    // there's actually no alignment work to do.
+    ...(align === 'left'
+      ? null
+      : {
+          display: mapResponsiveValue(align, (value) => alignToDisplay[value]),
+          flexDirection: 'column' as const,
+          alignItems: alignToFlexAlign(align),
+        }),
+  } as const);
 
 const extractHiddenPropsFromChild = (child: ReactNode) =>
   child && typeof child === 'object' && 'type' in child && child.type === Hidden
@@ -111,7 +114,7 @@ export const Stack = ({
       .join(', ')}]`,
   );
 
-  const stackItemProps = useStackItem({ space, align });
+  const stackItemProps = useStackItem({ space, align, component });
   const stackItems = flattenChildren(children);
   const isList = component === 'ol' || component === 'ul';
   const stackItemComponent = isList ? 'li' : component;
@@ -124,6 +127,7 @@ export const Stack = ({
   return (
     <Box
       component={component}
+      display={component === 'span' ? 'block' : undefined}
       className={negativeMarginTop(space)}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
