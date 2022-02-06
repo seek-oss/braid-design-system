@@ -52,25 +52,37 @@ export interface StepProps {
 
 export const Step = ({ complete = false, id, children }: StepProps) => {
   const stepRef = useRef<HTMLButtonElement>(null);
-  const { activeStep, tone, mode, stepNumber, onStepClick, isLast, progress } =
-    useContext(StepContext);
-
+  const { stepNumber, isLast } = useContext(StepContext);
   const stepperContext = useContext(StepperContext);
   assert(
     stepperContext !== null,
     'A Step must be rendered as a child of a Stepper. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Stepper',
   );
 
-  const { onKeyUp, onKeyDown, onClick, onFocus, onBlur, focusedStep } =
-    stepperContext;
+  const {
+    focusedStep,
+    activeStep,
+    tone,
+    progress,
+    isLinear,
+    onKeyUp,
+    onKeyDown,
+    onClick,
+    onFocus,
+    onBlur,
+    onStepClick,
+  } = stepperContext;
 
-  const linear = mode === 'linear';
   const active = activeStep === stepNumber;
   const focused = focusedStep === stepNumber;
-  const linearStepBeforeProgress = linear && stepNumber < progress;
+  const linearStepBeforeProgress = isLinear && stepNumber < progress;
   const completed = complete || linearStepBeforeProgress;
-  const started = active || complete || linearStepBeforeProgress;
+  const started = active || complete || (isLinear && stepNumber <= progress);
   const keyboardAccessible = focused || (active && focusedStep === null);
+  const interactable =
+    typeof onStepClick === 'function' &&
+    !active &&
+    (!isLinear || stepNumber <= progress);
 
   useEffect(() => {
     if (stepRef.current && focused) {
@@ -86,18 +98,23 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       outline="none"
       display="block"
       width="full"
+      cursor={interactable ? 'pointer' : undefined}
+      pointerEvents={!interactable && !active ? 'none' : undefined}
       aria-current={active ? 'step' : undefined}
-      cursor={onStepClick ? 'pointer' : undefined}
-      className={[styles.step, styles.tone[tone || 'formAccent']]}
-      onClick={() => {
-        if (onClick) {
-          onClick(stepNumber);
-        }
+      className={[styles.step, styles.tone[tone]]}
+      onClick={
+        interactable
+          ? () => {
+              if (onClick) {
+                onClick(stepNumber);
+              }
 
-        if (onStepClick) {
-          onStepClick({ id, stepNumber });
-        }
-      }}
+              if (onStepClick) {
+                onStepClick({ id, stepNumber });
+              }
+            }
+          : undefined
+      }
       onKeyUp={onKeyUp}
       onKeyDown={onKeyDown}
       onFocus={onFocus}
@@ -133,6 +150,7 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       >
         <Box
           component="span"
+          display="block"
           position="relative"
           transition="fast"
           className={styles.indicatorContainer}

@@ -4,7 +4,6 @@ import React, {
   ReactNode,
   useReducer,
 } from 'react';
-import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import * as styles from './Stepper.css';
 
@@ -13,23 +12,12 @@ export type StepperTone = Exclude<keyof typeof styles.tone, 'formAccent'>;
 
 interface StepContextValues {
   stepNumber: number;
-  activeStep: number;
-  progress: number;
-  mode: StepperMode;
-  tone?: StepperTone;
   isLast: boolean;
-  onStepClick:
-    | ((step: { id?: string | number; stepNumber: number }) => void)
-    | null;
 }
 
 export const StepContext = createContext<StepContextValues>({
-  activeStep: 0,
   stepNumber: 0,
-  progress: 0,
-  mode: 'linear',
   isLast: false,
-  onStepClick: null,
 });
 
 // Action type IDs (allows action type names to be minified)
@@ -58,6 +46,11 @@ export type Action =
 
 interface State {
   focusedStep: number | null;
+  activeStep: number;
+  progress: number;
+  isLinear: boolean;
+  tone: keyof typeof styles.tone;
+  onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
 }
 
 interface StepperContextValues extends State {
@@ -74,23 +67,44 @@ export type StepperProviderProps = {
   children: ReactNode;
   activeStep: number;
   stepCount: number;
-  interactable: boolean;
+  progress: number;
+  isLinear: boolean;
+  tone?: keyof typeof styles.tone;
+  onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
 };
 
-// Tweak getNextIndex inputs/outputs given step numbers are not zero based.
-const getNextStep: typeof getNextIndex = (moveAmount, current, total) => {
-  const maxItems = total + 1;
-  const nextIndex = getNextIndex(moveAmount, current, maxItems);
+const getNextStep = (
+  moveAmount: 1 | -1,
+  current: number | null,
+  maxStep: number,
+) => {
+  if (current === null) {
+    return moveAmount > 0 ? 1 : maxStep;
+  }
 
-  return nextIndex === 0 ? 1 : nextIndex;
+  const nextStep = moveAmount + current;
+
+  if (nextStep > maxStep) {
+    return 1;
+  }
+
+  if (nextStep < 1) {
+    return maxStep;
+  }
+
+  return nextStep;
 };
 
 export const StepperContextProvider = ({
   children,
   activeStep,
-  stepCount,
-  interactable,
+  stepCount: stepCountProp,
+  progress,
+  isLinear,
+  tone = 'formAccent',
+  onStepClick,
 }: StepperProviderProps) => {
+  const stepCount = isLinear ? progress : stepCountProp;
   const [stepperState, dispatch] = useReducer(
     (state: State, action: Action): State => {
       switch (action.type) {
@@ -147,6 +161,11 @@ export const StepperContextProvider = ({
     },
     {
       focusedStep: null,
+      activeStep,
+      isLinear,
+      tone,
+      progress,
+      onStepClick,
     },
   );
 
@@ -208,7 +227,12 @@ export const StepperContextProvider = ({
     <StepperContext.Provider
       value={{
         ...stepperState,
-        ...(interactable
+        activeStep,
+        isLinear,
+        tone,
+        progress,
+        onStepClick,
+        ...(typeof onStepClick === 'function'
           ? {
               onKeyUp,
               onKeyDown,

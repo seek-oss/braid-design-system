@@ -6533,7 +6533,9 @@ Object {
   props: {
     children: string
     complete?: boolean
-    id?: string
+    id?: 
+        | number
+        | string
 },
 }
 `;
@@ -6544,15 +6546,15 @@ Object {
   props: {
     activeStep?: number
     children: 
-        | ReactElement<StepProps, string | JSXElementConstructor<any>>
-        | ReactElement<StepProps, string | JSXElementConstructor<any>>[]
+        | Step
+        | Step[]
     data?: DataAttributeMap
     id?: string
     label: string
     mode?: 
         | "linear"
         | "non-linear"
-    onStepClick?: (step: { id?: string | undefined; stepNumber: number; }) => void
+    onStepClick?: (step: { id?: string | number | undefined; stepNumber: number; }) => void
     progress: number
     tone?: "neutral"
 },

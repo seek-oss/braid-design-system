@@ -40,8 +40,9 @@ export const tone = {
   ),
 };
 
-export const step = style(
-  colorModeStyle({
+export const step = style({
+  textAlign: 'left',
+  ...colorModeStyle({
     lightMode: {
       vars: {
         [baseColourVar]: vars.borderColor.neutralLight,
@@ -53,7 +54,7 @@ export const step = style(
       },
     },
   }),
-);
+});
 
 export const indicator = style([
   atoms({ display: 'block' }),
@@ -164,7 +165,11 @@ export const progressUnfilled = style({
 });
 
 export const indicatorContainer = style({
+  width: vars.inlineFieldSize.standard,
   selectors: {
+    [`${step}:active &`]: {
+      transform: vars.transform.touchable,
+    },
     [`body:not([${hideFocusRingsDataAttribute}]) ${step}:focus &`]: {
       transform: 'scale(1.2)',
     },
