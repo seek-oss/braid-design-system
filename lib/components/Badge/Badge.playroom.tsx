@@ -7,3 +7,5 @@ export const Badge = ({ tone, ...restProps }: BadgeProps) => (
     {...restProps}
   />
 );
+
+Badge.__isBadge__ = true;

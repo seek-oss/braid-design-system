@@ -1,7 +1,15 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Accordion, AccordionItem, Card, Text, TextLink, Strong } from '../';
+import {
+  Accordion,
+  AccordionItem,
+  Badge,
+  Card,
+  Text,
+  TextLink,
+  Strong,
+} from '../';
 import { Placeholder } from '../../playroom/components';
 import { validSpaceValues } from './Accordion';
 
@@ -95,6 +103,37 @@ const docs: ComponentDocs = {
               </AccordionItem>
             </Accordion>
           </Card>,
+        ),
+    },
+    {
+      label: 'Badge support',
+      description: (
+        <Text>
+          Add a <TextLink href="/components/Badge">Badge</TextLink> alongside
+          the label of the AccordionItem using the <Strong>badge</Strong> prop.
+        </Text>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Accordion>
+            <AccordionItem label="Accordion item 1" id={`${id}_1`}>
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem
+              label="Accordion item 2"
+              id={`${id}_2`}
+              badge={
+                <Badge tone="promote" weight="strong">
+                  Badge
+                </Badge>
+              }
+            >
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem label="Accordion item 3" id={`${id}_3`}>
+              <Placeholder height={80} />
+            </AccordionItem>
+          </Accordion>,
         ),
     },
     {

@@ -1,9 +1,16 @@
-import React, { ReactNode, useContext } from 'react';
+import React, {
+  cloneElement,
+  ReactElement,
+  ReactNode,
+  useContext,
+} from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
+import { Inline } from '../Inline/Inline';
+import { BadgeProps } from '../Badge/Badge';
 import { IconChevron } from '../icons';
 import {
   useDisclosure,
@@ -37,6 +44,7 @@ export type AccordionItemBaseProps = {
   size?: TextProps['size'];
   tone?: AccordionContextValue['tone'];
   data?: DataAttributeMap;
+  badge?: ReactElement<BadgeProps>;
 };
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
@@ -46,6 +54,7 @@ export const AccordionItem = ({
   id,
   label,
   children,
+  badge,
   size: sizeProp,
   tone: toneProp,
   data,
@@ -67,6 +76,17 @@ export const AccordionItem = ({
     `The 'tone' prop should be one of the following: ${validTones
       .map((x) => `"${x}"`)
       .join(', ')}`,
+  );
+
+  assert(
+    // @ts-expect-error
+    !badge || badge.type.__isBadge__,
+    `AccordionItem badge prop can only be an instance of Badge. e.g. <AccordionItem badge={<Badge>New</Badge>}>`,
+  );
+
+  assert(
+    !badge || badge.props.bleedY === undefined,
+    "Badge elements cannot set the 'bleedY' prop when passed to an AccordionItem component",
   );
 
   const size = accordionContext?.size ?? sizeProp ?? 'large';
@@ -111,9 +131,12 @@ export const AccordionItem = ({
           <Box position="relative">
             <Columns space={itemSpace}>
               <Column>
-                <Text size={size} weight={weight} tone={tone} component="div">
-                  {label}
-                </Text>
+                <Inline space="small" alignY="center">
+                  <Text size={size} weight={weight} tone={tone} component="div">
+                    {label}
+                  </Text>
+                  {badge ? cloneElement(badge, { bleedY: true }) : null}
+                </Inline>
               </Column>
               <Column width="content">
                 <Text

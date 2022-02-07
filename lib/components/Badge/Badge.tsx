@@ -105,3 +105,5 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 );
 
 Badge.displayName = 'Badge';
+// @ts-expect-error
+Badge.__isBadge__ = true;
