@@ -7,25 +7,10 @@ import {
   RenderResult,
   act,
 } from '@testing-library/react';
-import genericUserEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
 import { MenuItem, MenuItemLink, MenuItemCheckbox, MenuItemDivider } from '..';
 import { MenuRendererProps } from './MenuRenderer';
-
-// The generic `user-event` library currently doesn't have knowledge
-// of the react lifecycle, e.g. it's methods are not wrapped with
-// the `act` function. See issue for details:
-// https://github.com/testing-library/user-event/issues/128
-const userEvent = {
-  click: (el: HTMLElement) => act(() => genericUserEvent.click(el)),
-};
-
-const TAB = 9;
-const ENTER = 13;
-const ESCAPE = 27;
-const SPACE = 32;
-const ARROW_UP = 38;
-const ARROW_DOWN = 40;
 
 interface MenuTestSuiteParams {
   name: string;
@@ -211,7 +196,8 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menuItemCheckbox.getAttribute('aria-checked')).toBe('false');
 
-        userEvent.click(menuItemCheckbox);
+        // Should not need to wrap this in `act`, but necessary for now
+        act(() => userEvent.click(menuItemCheckbox));
 
         const updatedElements = getElements({ getAllByRole });
         const updatedMenuItem = updatedElements.menuItems[2];
@@ -232,10 +218,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should open the menu with enter key', () => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
         expect(menu).not.toBeVisible();
 
-        fireEvent.keyUp(menuButton, { keyCode: ENTER });
+        userEvent.tab();
+        userEvent.keyboard('{enter}');
         const { menuItems } = getElements({ getAllByRole });
 
         expect(menu).toBeVisible();
@@ -247,10 +234,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should open the menu with space key', () => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
         expect(menu).not.toBeVisible();
 
-        fireEvent.keyUp(menuButton, { keyCode: SPACE });
+        userEvent.tab();
+        userEvent.keyboard('{space}');
         const { menuItems } = getElements({ getAllByRole });
 
         expect(menu).toBeVisible();
@@ -262,10 +250,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should open the menu with down arrow key', () => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
         expect(menu).not.toBeVisible();
 
-        fireEvent.keyUp(menuButton, { keyCode: ARROW_DOWN });
+        userEvent.tab();
+        userEvent.keyboard('{arrowdown}');
         const { menuItems } = getElements({ getAllByRole });
 
         expect(menu).toBeVisible();
@@ -277,10 +266,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should open the menu with up arrow key', () => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
         expect(menu).not.toBeVisible();
 
-        fireEvent.keyUp(menuButton, { keyCode: ARROW_UP });
+        userEvent.tab();
+        userEvent.keyboard('{arrowup}');
         const { menuItems } = getElements({ getAllByRole });
 
         expect(menu).toBeVisible();
@@ -292,14 +282,14 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should close the menu with escape key', () => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
-        const { menu, menuButton, menuItems } = getElements({
+        const { menu, menuButton } = getElements({
           getAllByRole,
         });
 
         userEvent.click(menuButton);
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
-        fireEvent.keyUp(menuItems[0], { keyCode: ESCAPE });
+        userEvent.keyboard('{esc}');
 
         expect(menu).not.toBeVisible();
         expect(menuButton).toHaveFocus();
@@ -310,17 +300,17 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should close the menu with tab key', () => {
         const { getAllByRole, openHandler, closeHandler } = renderMenu();
 
-        const { menu, menuButton, menuItems } = getElements({
+        const { menu, menuButton } = getElements({
           getAllByRole,
         });
 
         userEvent.click(menuButton);
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
-        fireEvent.keyDown(menuItems[0], { keyCode: TAB });
+        userEvent.tab();
 
         expect(menu).not.toBeVisible();
-        expect(menuButton).toHaveFocus();
+        expect(document.body).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenCalledTimes(1);
       });
@@ -328,25 +318,26 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should be able to navigate down the list and back to the start', () => {
         const { getAllByRole } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
         expect(menu).not.toBeVisible();
 
-        fireEvent.keyUp(menuButton, { keyCode: ARROW_DOWN });
+        userEvent.tab();
+        userEvent.keyboard('{arrowdown}');
         const firstDown = getElements({ getAllByRole });
         const firstMenuItem = firstDown.menuItems[0];
         expect(firstMenuItem).toHaveFocus();
 
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
+        userEvent.keyboard('{arrowdown}');
         const secondDown = getElements({ getAllByRole });
         const secondMenuItem = secondDown.menuItems[1];
         expect(secondMenuItem).toHaveFocus();
 
-        fireEvent.keyUp(secondMenuItem, { keyCode: ARROW_DOWN });
+        userEvent.keyboard('{arrowdown}');
         const thirdDown = getElements({ getAllByRole });
         const thirdMenuItem = thirdDown.menuItems[2];
         expect(thirdMenuItem).toHaveFocus();
 
-        fireEvent.keyUp(thirdMenuItem, { keyCode: ARROW_DOWN });
+        userEvent.keyboard('{arrowdown}');
         const forthDown = getElements({ getAllByRole });
         const firstMenuItemAgain = forthDown.menuItems[0];
         expect(firstMenuItemAgain).toHaveFocus();
@@ -355,25 +346,26 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should be able to navigate up the list and back to the end', () => {
         const { getAllByRole } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
         expect(menu).not.toBeVisible();
 
-        fireEvent.keyUp(menuButton, { keyCode: ARROW_UP });
+        userEvent.tab();
+        userEvent.keyboard('{arrowup}');
         const firstUp = getElements({ getAllByRole });
         const thirdMenuItem = firstUp.menuItems[2];
         expect(thirdMenuItem).toHaveFocus();
 
-        fireEvent.keyUp(thirdMenuItem, { keyCode: ARROW_UP });
+        userEvent.keyboard('{arrowup}');
         const secondUp = getElements({ getAllByRole });
         const secondMenuItem = secondUp.menuItems[1];
         expect(secondMenuItem).toHaveFocus();
 
-        fireEvent.keyUp(secondMenuItem, { keyCode: ARROW_UP });
+        userEvent.keyboard('{arrowup}');
         const thirdUp = getElements({ getAllByRole });
         const firstMenuItem = thirdUp.menuItems[0];
         expect(firstMenuItem).toHaveFocus();
 
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_UP });
+        userEvent.keyboard('{arrowup}');
         const forthUp = getElements({ getAllByRole });
         const lastMenuItemAgain = forthUp.menuItems[2];
         expect(lastMenuItemAgain).toHaveFocus();
@@ -385,12 +377,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { menu, menuButton } = getElements({ getAllByRole });
 
         // Open menu
-        fireEvent.keyUp(menuButton, { keyCode: ENTER });
-        const firstDown = getElements({ getAllByRole });
-        const firstMenuItem = firstDown.menuItems[0];
+        userEvent.tab();
+        userEvent.keyboard('{enter}');
 
         // Action the item
-        fireEvent.keyUp(firstMenuItem, { keyCode: ENTER });
+        userEvent.keyboard('{enter}');
 
         expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -404,12 +395,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { menu, menuButton } = getElements({ getAllByRole });
 
         // Open menu
-        fireEvent.keyUp(menuButton, { keyCode: ENTER });
-        const firstDown = getElements({ getAllByRole });
-        const firstMenuItem = firstDown.menuItems[0];
+        userEvent.tab();
+        userEvent.keyboard('{enter}');
 
         // Action the item
-        fireEvent.keyUp(firstMenuItem, { keyCode: SPACE });
+        userEvent.keyboard('{space}');
 
         expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -423,17 +413,10 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { menu, menuButton } = getElements({ getAllByRole });
 
         // Open menu
-        fireEvent.keyUp(menuButton, { keyCode: ENTER });
-        const firstDown = getElements({ getAllByRole });
-        const firstMenuItem = firstDown.menuItems[0];
-
-        // Navigate down
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        const secondDown = getElements({ getAllByRole });
-        const secondMenuItem = secondDown.menuItems[1];
-
-        // Action the item
-        fireEvent.keyUp(secondMenuItem, { keyCode: ENTER });
+        userEvent.tab();
+        userEvent.keyboard('{enter}');
+        userEvent.keyboard('{arrowdown}');
+        userEvent.keyboard('{enter}');
 
         expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -447,17 +430,10 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { menu, menuButton } = getElements({ getAllByRole });
 
         // Open menu
-        fireEvent.keyUp(menuButton, { keyCode: ENTER });
-        const firstDown = getElements({ getAllByRole });
-        const firstMenuItem = firstDown.menuItems[0];
-
-        // Navigate down
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        const secondDown = getElements({ getAllByRole });
-        const secondMenuItem = secondDown.menuItems[1];
-
-        // Action the item
-        fireEvent.keyUp(secondMenuItem, { keyCode: SPACE });
+        userEvent.tab();
+        userEvent.keyboard('{enter}');
+        userEvent.keyboard('{arrowdown}');
+        userEvent.keyboard('{space}');
 
         expect(menu).not.toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(1);
@@ -468,23 +444,21 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should toggle the state on MenuItemCheckbox when selecting it with enter', () => {
         const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
 
         // Open menu
-        fireEvent.keyUp(menuButton, { keyCode: ENTER });
-        const firstDown = getElements({ getAllByRole });
-        const firstMenuItem = firstDown.menuItems[0];
+        userEvent.tab();
+        userEvent.keyboard('{enter}');
+        userEvent.keyboard('{arrowdown}');
+        userEvent.keyboard('{arrowdown}');
 
-        // Navigate down
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
         const thirdDown = getElements({ getAllByRole });
         const thirdMenuItem = thirdDown.menuItems[2];
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('false');
 
         // Action the item
-        fireEvent.keyUp(thirdMenuItem, { keyCode: ENTER });
+        userEvent.keyboard('{enter}');
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('true');
 
@@ -496,23 +470,21 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should toggle the state on MenuItemCheckbox when selecting it with space', () => {
         const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menu } = getElements({ getAllByRole });
 
         // Open menu
-        fireEvent.keyUp(menuButton, { keyCode: ENTER });
-        const firstDown = getElements({ getAllByRole });
-        const firstMenuItem = firstDown.menuItems[0];
+        userEvent.tab();
+        userEvent.keyboard('{enter}');
+        userEvent.keyboard('{arrowdown}');
+        userEvent.keyboard('{arrowdown}');
 
-        // Navigate down
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
-        fireEvent.keyUp(firstMenuItem, { keyCode: ARROW_DOWN });
         const thirdDown = getElements({ getAllByRole });
         const thirdMenuItem = thirdDown.menuItems[2];
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('false');
 
         // Action the item
-        fireEvent.keyUp(thirdMenuItem, { keyCode: SPACE });
+        userEvent.keyboard('{space}');
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('true');
 
