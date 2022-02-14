@@ -1,5 +1,36 @@
 # braid-design-system
 
+## 31.5.0
+
+### Minor Changes
+
+- **Stack:** Add support for span elements ([#1060](https://github.com/seek-oss/braid-design-system/pull/1060))
+
+  Stack now supports using `span` elements for it's markup, this is useful when using layout components inside elements that should not contain a `div` element, e.g. `button`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Stack component="span" space="medium">
+    ...
+  </Stack>
+  ```
+
+- **Stepper:** Add component ([#1060](https://github.com/seek-oss/braid-design-system/pull/1060))
+
+  See [documentation](https://seek-oss.github.io/braid-design-system/components/Stepper) for full feature set and usage details.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Stepper label="Linear steps" progress={3}>
+    <Step>1. First step</Step>
+    <Step>2. Second step</Step>
+    <Step>3. Third step</Step>
+    <Step>4. Forth step</Step>
+  </Stepper>
+  ```
+
 ## 31.4.0
 
 ### Minor Changes
