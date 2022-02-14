@@ -61,6 +61,8 @@ export { RadioItem } from './RadioGroup/RadioItem';
 export { Rating } from './Rating/Rating';
 export { Secondary } from './Secondary/Secondary';
 export { Stack } from './Stack/Stack';
+export { Step } from './Stepper/Step';
+export { Stepper } from './Stepper/Stepper';
 export { Strong } from './Strong/Strong';
 export { Tab } from './Tabs/Tab';
 export { TabsProvider } from './Tabs/TabsProvider';
