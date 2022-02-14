@@ -2241,5 +2241,22 @@
         "summary": "**AccordionItem:** Add badge support\n\nThe `AccordionItem` now has support for the `badge` prop.\n\n**EXAMPLE USAGE:**\n```jsx\n<AccordionItem\n  label=\"Label\"\n  badge={<Badge>New</Badge>}\n>\n  ...\n</AccordionItem>\n```"
       }
     ]
+  },
+  {
+    "version": "31.5.0",
+    "updates": [
+      {
+        "updated": [
+          "Stack"
+        ],
+        "summary": "**Stack:** Add support for span elements\n\nStack now supports using `span` elements for it's markup, this is useful when using layout components inside elements that should not contain a `div` element, e.g. `button`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Stack component=\"span\" space=\"medium\">\n  ...\n</Stack>\n```"
+      },
+      {
+        "new": [
+          "Stepper"
+        ],
+        "summary": "**Stepper:** Add component\n\nSee [documentation](https://seek-oss.github.io/braid-design-system/components/Stepper) for full feature set and usage details.\n\n**EXAMPLE USAGE:**\n```jsx\n<Stepper label=\"Linear steps\" progress={3}>\n  <Step>1. First step</Step>\n  <Step>2. Second step</Step>\n  <Step>3. Third step</Step>\n  <Step>4. Forth step</Step>\n</Stepper>\n```"
+      }
+    ]
   }
 ]
