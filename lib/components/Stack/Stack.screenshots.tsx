@@ -178,5 +178,38 @@ export const screenshots: ComponentScreenshot = {
         </Stack>
       ),
     },
+    {
+      label: 'Test - Span align to left',
+      Container,
+      Example: () => (
+        <Stack component="span" space="gutter">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Span align to center',
+      Container,
+      Example: () => (
+        <Stack component="span" space="gutter" align="center">
+          <Placeholder height={40} width={40} />
+          <Placeholder height={40} width={60} />
+          <Placeholder height={40} width={80} />
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Span align to right',
+      Container,
+      Example: () => (
+        <Stack component="span" space="gutter" align="right">
+          <Placeholder height={40} width={40} />
+          <Placeholder height={40} width={60} />
+          <Placeholder height={40} width={80} />
+        </Stack>
+      ),
+    },
   ],
 };
