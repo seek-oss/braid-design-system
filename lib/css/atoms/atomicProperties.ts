@@ -5,7 +5,7 @@ const sizes = {
   touchable: vars.touchableSize,
 };
 
-const space = {
+export const space = {
   ...vars.space,
   none: 0,
 } as const;
