@@ -61,9 +61,7 @@ export const snippets: Snippets = [
       <Card>
         <Stack space="gutter">
           <Columns space="gutter">
-            <Column>
-              <Heading level="3">Heading</Heading>
-            </Column>
+            <Heading level="3">Heading</Heading>
             <Column width="content">
               <OverflowMenu label="Options">
                 <MenuItem>Menu Item</MenuItem>

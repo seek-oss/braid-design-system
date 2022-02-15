@@ -12,15 +12,9 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Columns space="none">
-        <Column>
-          <Placeholder height={60} />
-        </Column>
-        <Column>
-          <Placeholder height={60} />
-        </Column>
-        <Column>
-          <Placeholder height={60} />
-        </Column>
+        <Placeholder height={60} />
+        <Placeholder height={60} />
+        <Placeholder height={60} />
       </Columns>,
     ),
   alternatives: [
@@ -67,12 +61,8 @@ const docs: ComponentDocs = {
               wide: 'xlarge',
             }}
           >
-            <Column>
-              <Placeholder height={60} />
-            </Column>
-            <Column>
-              <Placeholder height={60} />
-            </Column>
+            <Placeholder height={60} />
+            <Placeholder height={60} />
           </Columns>,
         ),
     },
@@ -81,10 +71,10 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            All columns are of equal width by default, but you can also
-            customise the width of each column individually.{' '}
-            <Strong>Column</Strong> supports widths fractional widths down to{' '}
-            <Strong>1/5</Strong>.
+            All columns are of equal width by default, but you can also use the{' '}
+            <TextLink href="">Column</TextLink> component to customise the width
+            of each column individually. <Strong>Column</Strong> supports widths
+            fractional widths down to <Strong>1/5</Strong>.
           </Text>
           <Text>
             If you want a column to be as small as possible, you can also set
@@ -100,81 +90,61 @@ const docs: ComponentDocs = {
               <Column width="content">
                 <Placeholder height={30} label="content" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="1/5">
                 <Placeholder height={30} label="1/5" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="1/4">
                 <Placeholder height={30} label="1/4" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="1/3">
                 <Placeholder height={30} label="1/3" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="2/5">
                 <Placeholder height={30} label="2/5" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="1/2">
                 <Placeholder height={30} label="1/2" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="3/5">
                 <Placeholder height={30} label="3/5" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="2/3">
                 <Placeholder height={30} label="2/3" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="3/4">
                 <Placeholder height={30} label="3/4" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
             <Columns space="xsmall">
               <Column width="4/5">
                 <Placeholder height={30} label="4/5" />
               </Column>
-              <Column>
-                <Placeholder height={30} label="fluid" />
-              </Column>
+              <Placeholder height={30} label="fluid" />
             </Columns>
           </Stack>,
         ),
@@ -191,37 +161,19 @@ const docs: ComponentDocs = {
         source(
           <Stack space="large" dividers>
             <Columns space="small" alignY="top">
-              <Column>
-                <Placeholder height={20} />
-              </Column>
-              <Column>
-                <Placeholder height={80} label="top" />
-              </Column>
-              <Column>
-                <Placeholder height={20} />
-              </Column>
+              <Placeholder height={20} />
+              <Placeholder height={80} label="top" />
+              <Placeholder height={20} />
             </Columns>
             <Columns space="small" alignY="center">
-              <Column>
-                <Placeholder height={20} />
-              </Column>
-              <Column>
-                <Placeholder height={80} label="center" />
-              </Column>
-              <Column>
-                <Placeholder height={20} />
-              </Column>
+              <Placeholder height={20} />
+              <Placeholder height={80} label="center" />
+              <Placeholder height={20} />
             </Columns>
             <Columns space="small" alignY="bottom">
-              <Column>
-                <Placeholder height={20} />
-              </Column>
-              <Column>
-                <Placeholder height={80} label="bottom" />
-              </Column>
-              <Column>
-                <Placeholder height={20} />
-              </Column>
+              <Placeholder height={20} />
+              <Placeholder height={80} label="bottom" />
+              <Placeholder height={20} />
             </Columns>
           </Stack>,
         ),
@@ -278,15 +230,9 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Columns space="small" collapseBelow="tablet">
-            <Column>
-              <Placeholder height={60} />
-            </Column>
-            <Column>
-              <Placeholder height={60} />
-            </Column>
-            <Column>
-              <Placeholder height={60} />
-            </Column>
+            <Placeholder height={60} />
+            <Placeholder height={60} />
+            <Placeholder height={60} />
           </Columns>,
         ),
     },
@@ -305,9 +251,7 @@ const docs: ComponentDocs = {
             <Column width="1/5">
               <Placeholder height={60} label="First" />
             </Column>
-            <Column>
-              <Placeholder height={60} label="Second" />
-            </Column>
+            <Placeholder height={60} label="Second" />
           </Columns>,
         ),
     },

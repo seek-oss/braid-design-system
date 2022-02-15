@@ -1,7 +1,8 @@
-import React, { createContext, ReactElement } from 'react';
+import assert from 'assert';
+import React, { ReactElement } from 'react';
 import { Box } from '../Box/Box';
-import { ColumnProps } from '../Column/Column';
-import { Space, ResponsiveSpace } from '../../css/atoms/atoms';
+import { Column, ColumnProps } from '../Column/Column';
+import { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMarginLeft } from '../../css/negativeMargin/negativeMargin';
 import {
   resolveCollapsibleAlignmentProps,
@@ -11,32 +12,7 @@ import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-
-type CollapsibleAlignmentChildProps = ReturnType<
-  typeof resolveCollapsibleAlignmentProps
->['collapsibleAlignmentChildProps'];
-
-interface ColumnsContextValue {
-  collapseMobile: boolean;
-  collapseTablet: boolean;
-  collapseDesktop: boolean;
-  mobileSpace: Space;
-  tabletSpace: Space;
-  desktopSpace: Space;
-  wideSpace: Space;
-  collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | null;
-}
-
-export const ColumnsContext = createContext<ColumnsContextValue>({
-  collapseMobile: false,
-  collapseTablet: false,
-  collapseDesktop: false,
-  mobileSpace: 'none',
-  tabletSpace: 'none',
-  desktopSpace: 'none',
-  wideSpace: 'none',
-  collapsibleAlignmentChildProps: null,
-});
+import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
@@ -44,6 +20,7 @@ export interface ColumnsProps extends CollapsibleAlignmentProps {
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
     | null;
+  component?: typeof validColumnsComponents[number];
   data?: DataAttributeMap;
 }
 
@@ -54,8 +31,16 @@ export const Columns = ({
   space = 'none',
   align,
   alignY,
+  component = 'div',
   data,
 }: ColumnsProps) => {
+  assert(
+    validColumnsComponents.includes(component),
+    `Invalid Columns component: '${component}'. Should be one of [${validColumnsComponents
+      .map((c) => `'${c}'`)
+      .join(', ')}]`,
+  );
+
   const normalizedSpace = normalizeResponsiveValue(space);
   const {
     mobile: mobileSpace = 'none',
@@ -80,6 +65,7 @@ export const Columns = ({
 
   return (
     <Box
+      component={component}
       {...collapsibleAlignmentProps}
       className={negativeMarginLeft({
         mobile: collapseMobile ? 'none' : mobileSpace,
@@ -99,9 +85,18 @@ export const Columns = ({
           desktopSpace,
           wideSpace,
           collapsibleAlignmentChildProps,
+          component,
         }}
       >
-        {orderChildren(children)}
+        {orderChildren(children).map((child, index) =>
+          typeof child === 'object' &&
+          'type' in child &&
+          child.type === Column ? (
+            child
+          ) : (
+            <Column key={index}>{child}</Column>
+          ),
+        )}
       </ColumnsContext.Provider>
     </Box>
   );

@@ -425,16 +425,12 @@ const page: Page = {
       <Code>
         {source(
           <Columns space="small">
-            <Column>
-              <Card>
-                <Text>Column 1</Text>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Text>Column 2</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Column 1</Text>
+            </Card>
+            <Card>
+              <Text>Column 2</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
@@ -453,27 +449,27 @@ const page: Page = {
       <Code>
         {source(
           <Columns space="small" collapseBelow="tablet">
-            <Column>
-              <Card>
-                <Text>Column 1</Text>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Text>Column 2</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Column 1</Text>
+            </Card>
+            <Card>
+              <Text>Column 2</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
       <Text>
-        All columns are of equal width by default, but you can also customise
-        the <TextLink href="/components/Columns#column-widths">width</TextLink>{' '}
-        of each column individually.
+        All columns are of equal width by default, but you can also use the{' '}
+        <TextLink href="">Column</TextLink> component to customise the{' '}
+        <TextLink href="/components/Columns#column-widths">width</TextLink> of
+        each column individually.
       </Text>
       <Text>
         For example, if you wanted to render a main content area and a sidebar,
-        collapsing to a single column on mobile:
+        collapsing to a single column on mobile, wrap the sidebar in a{' '}
+        <Strong>Column</Strong> and provide a{' '}
+        <TextLink href="/components/Columns#column-widths">width</TextLink> like
+        so:
       </Text>
       <Code>
         {source(
@@ -483,11 +479,9 @@ const page: Page = {
                 <Text>Sidebar</Text>
               </Card>
             </Column>
-            <Column>
-              <Card>
-                <Text>Main content</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Main content</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
@@ -507,9 +501,7 @@ const page: Page = {
           <Card>
             <Stack space="medium">
               <Columns space="small">
-                <Column>
-                  <Heading level="3">Card heading</Heading>
-                </Column>
+                <Heading level="3">Card heading</Heading>
                 <Column width="content">
                   <OverflowMenu label="Options">
                     <MenuItem
@@ -551,17 +543,15 @@ const page: Page = {
                 <Text>Sidebar</Text>
               </Card>
             </Column>
-            <Column>
-              <Card>
-                <Text>Main content</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Main content</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
       <Text>
-        If you have <Strong>Column</Strong> elements that are of varying height,
-        you can center them vertically with the{' '}
+        If you have columns are of varying height, you can center them
+        vertically with the{' '}
         <TextLink href="/components/Columns#vertical-alignment">
           alignY
         </TextLink>{' '}
@@ -570,32 +560,26 @@ const page: Page = {
       <Code>
         {source(
           <Columns space="small" alignY="center">
-            <Column>
-              <Card>
-                <Stack space="medium" align="center">
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                </Stack>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Stack space="medium" align="center">
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                </Stack>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Stack space="medium" align="center">
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                </Stack>
-              </Card>
-            </Column>
+            <Card>
+              <Stack space="medium" align="center">
+                <Text>Column</Text>
+                <Text>Column</Text>
+              </Stack>
+            </Card>
+            <Card>
+              <Stack space="medium" align="center">
+                <Text>Column</Text>
+                <Text>Column</Text>
+                <Text>Column</Text>
+                <Text>Column</Text>
+              </Stack>
+            </Card>
+            <Card>
+              <Stack space="medium" align="center">
+                <Text>Column</Text>
+                <Text>Column</Text>
+              </Stack>
+            </Card>
           </Columns>,
         )}
       </Code>
