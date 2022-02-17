@@ -18,6 +18,9 @@ import {
 
 const unresponsiveAtomicProperties = defineProperties({
   properties: unresponsiveProperties,
+  shorthands: {
+    inset: ['top', 'bottom', 'left', 'right'],
+  },
 });
 
 const pseudoAtomicProperties = defineProperties({

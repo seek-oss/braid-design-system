@@ -229,15 +229,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         <Box paddingLeft="xsmall">{cloneElement(badge, { bleedY: true })}</Box>
       ) : null}
 
-      <Box
-        position="absolute"
-        top={0}
-        left={0}
-        right={0}
-        bottom={0}
-        overflow="hidden"
-        pointerEvents="none"
-      >
+      <Box position="absolute" inset={0} overflow="hidden" pointerEvents="none">
         {divider === 'minimal' ? (
           <Box
             position="absolute"

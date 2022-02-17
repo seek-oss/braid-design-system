@@ -41,10 +41,7 @@ export const Overlay = ({
     borderRadius={borderRadius}
     boxShadow={boxShadow}
     transition={transition}
-    top={0}
-    bottom={0}
-    left={0}
-    right={0}
+    inset={0}
     opacity={!visible ? 0 : undefined}
     className={[
       onlyVisibleForKeyboardNavigation ? hideFocusRingsClassName : null,

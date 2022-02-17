@@ -74,10 +74,7 @@ const Indicator = ({
     >
       <Box
         position="absolute"
-        top={0}
-        bottom={0}
-        left={0}
-        right={0}
+        inset={0}
         transition="fast"
         opacity={checked !== 'mixed' ? 0 : undefined}
       >
@@ -85,10 +82,7 @@ const Indicator = ({
       </Box>
       <Box
         position="absolute"
-        top={0}
-        bottom={0}
-        left={0}
-        right={0}
+        inset={0}
         transition="fast"
         opacity={checked !== true ? 0 : undefined}
       >
