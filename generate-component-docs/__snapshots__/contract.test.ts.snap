@@ -5603,6 +5603,7 @@ Object {
     component?: 
         | "div"
         | "ol"
+        | "span"
         | "ul"
     data?: DataAttributeMap
     reverse?: boolean
