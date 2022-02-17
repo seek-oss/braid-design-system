@@ -59,7 +59,7 @@ export const Inline = ({
 
   return (
     <Box
-      component={component}
+      component={component === 'span' ? component : undefined}
       display={component === 'span' ? 'block' : undefined}
       className={negativeMarginTop(space)}
       {...(data ? buildDataAttributes(data) : undefined)}
