@@ -17,7 +17,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-export const validInlineComponents = ['div', 'ol', 'ul'] as const;
+export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
@@ -44,7 +44,7 @@ export const Inline = ({
   );
 
   const isList = component === 'ol' || component === 'ul';
-  const inlineItemComponent = isList ? 'li' : 'div';
+  const inlineItemComponent = isList ? 'li' : component;
 
   const {
     collapsibleAlignmentProps,
@@ -59,6 +59,8 @@ export const Inline = ({
 
   return (
     <Box
+      component={component}
+      display={component === 'span' ? 'block' : undefined}
       className={negativeMarginTop(space)}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
