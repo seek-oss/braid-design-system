@@ -225,8 +225,8 @@ export const Modal = ({
           pointerEvents={state === CLOSING ? 'none' : undefined}
           className={[
             styles.backdrop,
-            position in styles.transition &&
-              styles.transition[position as keyof typeof styles.transition],
+            position === 'left' ||
+              (position === 'right' && styles.horiztontalTransition),
           ]}
         />
 
@@ -240,13 +240,13 @@ export const Modal = ({
           pointerEvents="none"
           transition="fast"
           opacity={state !== OPEN ? 0 : undefined}
-          {...(position === 'right'
-            ? { paddingLeft: ['none', 'xlarge'] }
-            : { padding: externalGutter })}
+          paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
+          paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
+          padding={position === 'center' ? externalGutter : undefined}
           className={[
             styles.modalContainer,
-            position in styles.transition &&
-              styles.transition[position as keyof typeof styles.transition],
+            position === 'left' ||
+              (position === 'right' && styles.horiztontalTransition),
             state === OPENING && styles.entrance[position],
             state === CLOSING &&
               position in styles.exit &&

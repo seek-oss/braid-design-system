@@ -2736,6 +2736,9 @@ Object {
     id: string
     onClose: (openState: false) => void
     open: boolean
+    position?: 
+        | "left"
+        | "right"
     title: string
     width?: 
         | "large"

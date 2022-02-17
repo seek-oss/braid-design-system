@@ -30,7 +30,7 @@ export interface ModalContentProps {
   width: BoxProps['maxWidth'] | 'content';
   description?: ReactNodeNoStrings;
   illustration?: ReactNodeNoStrings;
-  position: 'center' | 'right';
+  position: 'center' | 'right' | 'left';
   headingLevel: '2' | '3';
   scrollLock?: boolean;
   headingRef?: Ref<HTMLElement>;
@@ -104,9 +104,9 @@ export const ModalContent = ({
     }
   };
 
-  const justifyContent = ({ center: 'center', right: 'flexEnd' } as const)[
-    position
-  ];
+  const justifyContent = (
+    { left: 'flexStart', center: 'center', right: 'flexEnd' } as const
+  )[position];
 
   return (
     <Box
@@ -128,7 +128,9 @@ export const ModalContent = ({
         display="flex"
         alignItems="center"
         justifyContent={justifyContent}
-        height={position === 'right' ? 'full' : undefined}
+        height={
+          position === 'right' || position === 'left' ? 'full' : undefined
+        }
         width={width !== 'content' ? 'full' : undefined}
         maxWidth={width !== 'content' ? width : undefined}
       >
@@ -141,7 +143,9 @@ export const ModalContent = ({
             position="relative"
             boxShadow="large"
             width={width !== 'content' ? 'full' : undefined}
-            height={position === 'right' ? 'full' : undefined}
+            height={
+              position === 'right' || position === 'left' ? 'full' : undefined
+            }
             padding={modalPadding}
             className={[
               styles.pointerEventsAll,
