@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import { RequiredResponsiveValue } from '../atoms/sprinkles.css';
 import { Space } from '../atoms/atoms';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
-import * as styles from './negativeMarginLeft.css';
+import * as styles from './negativeMarginRight.css';
 
-export const negativeMarginLeft = (space?: RequiredResponsiveValue<Space>) =>
+export const negativeMarginRight = (space?: RequiredResponsiveValue<Space>) =>
   space
     ? clsx(
         resolveResponsiveProp(

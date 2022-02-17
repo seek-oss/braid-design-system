@@ -19,6 +19,7 @@ export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
 export { filterSuggestions } from './Autosuggest/filterSuggestions';
 export { Badge } from './Badge/Badge';
+export { Bleed } from './Bleed/Bleed';
 // TODO: COLORMODE RELEASE
 // Expose internal Box
 export { PublicBox as Box } from './Box/Box';
