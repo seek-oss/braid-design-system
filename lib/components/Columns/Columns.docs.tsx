@@ -183,7 +183,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           When the total width of all the columns is less than the width of the
-          parent container, the columns can be aligned horiontally using the{' '}
+          parent container, the columns can be aligned horizontally using the{' '}
           <Strong>align</Strong> prop. Responsive values are supported.
         </Text>
       ),
