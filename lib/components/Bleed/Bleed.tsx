@@ -1,11 +1,6 @@
 import React from 'react';
 import { ResponsiveSpace } from '../../css/atoms/atoms';
-import {
-  negativeMarginLeft,
-  negativeMarginTop,
-  negativeMarginRight,
-  negativeMarginBottom,
-} from '../../css/negativeMargin/negativeMargin';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { Box, BoxProps } from '../Box/Box';
 
 export interface BleedProps {
@@ -31,10 +26,10 @@ export const Bleed = ({
 }: BleedProps) => (
   <Box
     className={[
-      negativeMarginTop(top || vertical || space),
-      negativeMarginBottom(bottom || vertical || space),
-      negativeMarginLeft(left || horizontal || space),
-      negativeMarginRight(right || horizontal || space),
+      negativeMargin('top', top || vertical || space),
+      negativeMargin('bottom', bottom || vertical || space),
+      negativeMargin('left', left || horizontal || space),
+      negativeMargin('right', right || horizontal || space),
     ]}
   >
     <Box position="relative">{children}</Box>
