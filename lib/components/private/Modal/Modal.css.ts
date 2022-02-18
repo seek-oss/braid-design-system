@@ -200,10 +200,6 @@ export const cropIconSpace = {
   ),
 };
 
-export const negativeMarginRightXSmall = style({
-  marginRight: calc.negate(vars.space.xsmall),
-});
-
 const calculateCloseIconSize = (
   level: '2' | '3',
   breakpoint: TextBreakpoint,

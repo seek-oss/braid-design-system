@@ -110,7 +110,7 @@ const docs: ComponentDocs = {
       label: 'Horizontal alignment',
       description: (
         <Text>
-          Items can be aligned horiontally using the <Strong>align</Strong>{' '}
+          Items can be aligned horizontally using the <Strong>align</Strong>{' '}
           prop. Responsive values are supported.
         </Text>
       ),
