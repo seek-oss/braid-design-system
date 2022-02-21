@@ -14,9 +14,9 @@ import { Stack } from '../../Stack/Stack';
 import { Columns } from '../../Columns/Columns';
 import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
+import { Bleed } from '../../Bleed/Bleed';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
-import { negativeMarginTop } from '../../../css/negativeMargin/negativeMargin';
 import { virtualTouchable } from '../touchable/virtualTouchable';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styles from './Modal.css';
@@ -205,12 +205,7 @@ export const ModalContent = ({
             paddingRight={modalPadding}
             className={position === 'center' && styles.maxSize[position]}
           >
-            <Box
-              className={[
-                negativeMarginTop('xsmall'),
-                styles.negativeMarginRightXSmall,
-              ]}
-            >
+            <Bleed top="xsmall" right="xsmall">
               <Box
                 position="relative"
                 className={styles.cropIconSpace[headingLevel]}
@@ -251,7 +246,7 @@ export const ModalContent = ({
                   </Box>
                 </Box>
               </Box>
-            </Box>
+            </Bleed>
           </Box>
         </Box>
       </Box>

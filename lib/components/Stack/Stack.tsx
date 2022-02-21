@@ -9,7 +9,7 @@ import * as hiddenStyles from '../Hidden/Hidden.css';
 import { alignToFlexAlign, Align } from '../../utils/align';
 import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   OptionalResponsiveValue,
@@ -128,7 +128,7 @@ export const Stack = ({
     <Box
       component={component}
       display={component === 'span' ? 'block' : undefined}
-      className={negativeMarginTop(space)}
+      className={negativeMargin('top', space)}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       {Children.map(stackItems, (child, index) => {

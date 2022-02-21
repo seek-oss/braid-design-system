@@ -3,10 +3,7 @@ import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import { Divider, DividerProps } from '../Divider/Divider';
 import { Space } from '../../css/atoms/atoms';
-import {
-  negativeMarginTop,
-  negativeMarginLeft,
-} from '../../css/negativeMargin/negativeMargin';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './Tiles.css';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
@@ -34,10 +31,14 @@ export const Tiles = ({
   data,
 }: TilesProps) => (
   <Box
-    className={negativeMarginTop(space)}
+    className={negativeMargin('top', space)}
     {...(data ? buildDataAttributes(data) : undefined)}
   >
-    <Box display="flex" flexWrap="wrap" className={negativeMarginLeft(space)}>
+    <Box
+      display="flex"
+      flexWrap="wrap"
+      className={negativeMargin('left', space)}
+    >
       {Children.map(flattenChildren(children), (child, i) => (
         <Box
           minWidth={0}

@@ -164,6 +164,99 @@ Object {
 }
 `;
 
+exports[`Bleed 1`] = `
+Object {
+  exportType: component,
+  props: {
+    bottom?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+    children: ReactNode
+    horizontal?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+    left?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+    right?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+    space?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+    top?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+    vertical?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+},
+}
+`;
+
 exports[`Box 1`] = `
 Object {
   exportType: component,
