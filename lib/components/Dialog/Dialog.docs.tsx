@@ -37,12 +37,22 @@ const docs: ComponentDocs = {
       </>,
     ),
   accessibility: (
-    <Text>
-      Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal">
-        WAI-ARIA Dialog (Modal) Pattern.
-      </TextLink>
-    </Text>
+    <>
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal">
+          WAI-ARIA Dialog (Modal) Pattern.
+        </TextLink>
+      </Text>
+      <Text>
+        Due to the size of the Dialog, all entrance and exit animations adhere
+        to the users{' '}
+        <TextLink href="https://www.w3.org/WAI/WCAG21/Techniques/css/C39">
+          reduce motion
+        </TextLink>
+        preference.
+      </Text>
+    </>
   ),
   alternatives: [
     { name: 'Drawer', description: 'For a larger amount of content.' },

@@ -215,38 +215,32 @@ export const Modal = ({
         <Box
           onClick={state === OPEN ? initiateClose : undefined}
           position="fixed"
-          top={0}
-          bottom={0}
-          left={0}
-          right={0}
+          inset={0}
           zIndex="modalBackdrop"
           transition={position === 'center' ? 'fast' : undefined}
           opacity={state !== OPEN ? 0 : undefined}
           pointerEvents={state === CLOSING ? 'none' : undefined}
           className={[
             styles.backdrop,
-            position in styles.transition &&
-              styles.transition[position as keyof typeof styles.transition],
+            position === 'left' ||
+              (position === 'right' && styles.horiztontalTransition),
           ]}
         />
 
         <Box
           position="fixed"
-          top={0}
-          bottom={0}
-          left={0}
-          right={0}
+          inset={0}
           zIndex="modal"
           pointerEvents="none"
           transition="fast"
           opacity={state !== OPEN ? 0 : undefined}
-          {...(position === 'right'
-            ? { paddingLeft: ['none', 'xlarge'] }
-            : { padding: externalGutter })}
+          paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
+          paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
+          padding={position === 'center' ? externalGutter : undefined}
           className={[
             styles.modalContainer,
-            position in styles.transition &&
-              styles.transition[position as keyof typeof styles.transition],
+            position === 'left' ||
+              (position === 'right' && styles.horiztontalTransition),
             state === OPENING && styles.entrance[position],
             state === CLOSING &&
               position in styles.exit &&

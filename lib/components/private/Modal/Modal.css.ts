@@ -41,6 +41,15 @@ export const entrance = {
       }),
     ),
   ],
+  left: [
+    reducedMotion,
+    style(
+      responsiveStyle({
+        mobile: { opacity: 1, transform: 'translateX(-140%)' },
+        tablet: { opacity: 0, transform: 'translateX(-40px)' },
+      }),
+    ),
+  ],
 };
 
 export const exit = {
@@ -53,21 +62,28 @@ export const exit = {
       }),
     ),
   ],
+  left: [
+    reducedMotion,
+    style(
+      responsiveStyle({
+        mobile: { opacity: 1, transform: 'translateX(-140%)' },
+        tablet: { opacity: 0, transform: 'translateX(-10px)' },
+      }),
+    ),
+  ],
 };
 
 const easeOut = 'cubic-bezier(0.4, 0, 0, 1)';
-export const transition = {
-  right: style(
-    responsiveStyle({
-      mobile: {
-        transition: `transform .3s ${easeOut}, opacity .3s ${easeOut}`,
-      },
-      tablet: {
-        transition: `transform .175s ${easeOut}, opacity .175s ${easeOut}`,
-      },
-    }),
-  ),
-};
+export const horiztontalTransition = style(
+  responsiveStyle({
+    mobile: {
+      transition: `transform .3s ${easeOut}, opacity .3s ${easeOut}`,
+    },
+    tablet: {
+      transition: `transform .175s ${easeOut}, opacity .175s ${easeOut}`,
+    },
+  }),
+);
 
 export const modalContainer = style({
   maxHeight: '100vh',
@@ -76,6 +92,10 @@ export const modalContainer = style({
 
 export const pointerEventsAll = style({
   pointerEvents: 'all',
+});
+
+const viewportHeight = style({
+  maxHeight: '100vh',
 });
 
 export const maxSize = {
@@ -113,9 +133,8 @@ export const maxSize = {
       },
     }),
   ),
-  right: style({
-    maxHeight: '100vh',
-  }),
+  right: viewportHeight,
+  left: viewportHeight,
 };
 
 export const headingRoot = style({
@@ -180,10 +199,6 @@ export const cropIconSpace = {
     }),
   ),
 };
-
-export const negativeMarginRightXSmall = style({
-  marginRight: calc.negate(vars.space.xsmall),
-});
 
 const calculateCloseIconSize = (
   level: '2' | '3',

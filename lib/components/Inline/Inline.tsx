@@ -4,10 +4,7 @@ import flattenChildren from 'react-keyed-flatten-children';
 
 import { Box } from '../Box/Box';
 import { ResponsiveSpace } from '../../css/atoms/atoms';
-import {
-  negativeMarginLeft,
-  negativeMarginTop,
-} from '../../css/negativeMargin/negativeMargin';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   resolveCollapsibleAlignmentProps,
@@ -17,7 +14,7 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-export const validInlineComponents = ['div', 'ol', 'ul'] as const;
+export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
@@ -44,7 +41,7 @@ export const Inline = ({
   );
 
   const isList = component === 'ol' || component === 'ul';
-  const inlineItemComponent = isList ? 'li' : 'div';
+  const inlineItemComponent = isList ? 'li' : component;
 
   const {
     collapsibleAlignmentProps,
@@ -59,12 +56,14 @@ export const Inline = ({
 
   return (
     <Box
-      className={negativeMarginTop(space)}
+      component={component === 'span' ? component : undefined}
+      display={component === 'span' ? 'block' : undefined}
+      className={negativeMargin('top', space)}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
         component={component}
-        className={negativeMarginLeft(space)}
+        className={negativeMargin('left', space)}
         flexWrap="wrap"
         {...collapsibleAlignmentProps}
       >

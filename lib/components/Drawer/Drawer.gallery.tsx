@@ -1,7 +1,15 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Drawer, Button, Inline, Text, TextLink } from '..';
+import {
+  Drawer,
+  Button,
+  Inline,
+  Text,
+  TextLink,
+  TextDropdown,
+  Strong,
+} from '..';
 import { Placeholder } from '../../playroom/components';
 import { DrawerContent } from './Drawer';
 
@@ -40,24 +48,46 @@ export const galleryItems: ComponentExample[] = [
   },
   {
     label: 'Preview animation',
-    Example: ({ getState, setState, resetState }) =>
+    Example: ({ setDefaultState, getState, setState, toggleState }) =>
       source(
         <>
-          <Inline space="small" align="center">
-            <Button onClick={() => setState('width', 'small')}>
-              Open small
-            </Button>
-            <Button onClick={() => setState('width', 'medium')}>
-              Open medium
-            </Button>
-            <Button onClick={() => setState('width', 'large')}>
-              Open large
+          {setDefaultState('width', 'medium')}
+          {setDefaultState('position', 'right')}
+          <Inline space="gutter" align="center" alignY="center">
+            <Text>
+              Width:{' '}
+              <Strong>
+                <TextDropdown
+                  id="width"
+                  label="Width"
+                  options={['small', 'medium', 'large']}
+                  value={getState('width')}
+                  onChange={setState('width')}
+                />
+              </Strong>
+            </Text>
+            <Text>
+              Position:{' '}
+              <Strong>
+                <TextDropdown
+                  id="position"
+                  label="Position"
+                  options={['left', 'right']}
+                  value={getState('position')}
+                  onChange={setState('position')}
+                />
+              </Strong>
+            </Text>
+            <Button size="small" onClick={() => toggleState('open')}>
+              Open
             </Button>
           </Inline>
 
           <Drawer
             id="drawer-animation-example"
-            title={`A \"${getState('width')}\" drawer`}
+            title={`A \"${getState(
+              'width',
+            )}\" drawer positioned on the \"${getState('position')}\"`}
             description={
               <Text tone="secondary">
                 Uses a {getState('width')}{' '}
@@ -67,8 +97,9 @@ export const galleryItems: ComponentExample[] = [
               </Text>
             }
             width={getState('width')}
-            open={getState('width')}
-            onClose={() => resetState('width')}
+            position={getState('position')}
+            open={getState('open')}
+            onClose={() => toggleState('open')}
           >
             <Placeholder height={100} width="100%" />
             <Placeholder height={100} width="100%" />

@@ -20,6 +20,7 @@ import {
   Button,
   Hidden,
   Strong,
+  Bleed,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
@@ -29,6 +30,7 @@ import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 import source from '../../../../../../lib/utils/source.macro';
+import { Placeholder } from '../../../../../../lib/playroom/components';
 
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];
@@ -82,6 +84,9 @@ const page: Page = {
         </Text>
         <Text>
           <TextLink href="#contentblock">ContentBlock</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#bleed">Bleed</TextLink>
         </Text>
       </List>
 
@@ -749,6 +754,62 @@ const page: Page = {
           </ContentBlock>,
         )}
       </Code>
+
+      <Divider />
+
+      <LinkableHeading>Bleed</LinkableHeading>
+      <Text>
+        Sometimes it is necessary for a component to extend out into it&rsquo;s
+        surrounding layout. We can achieve this using the{' '}
+        <TextLink href="/components/Bleed">Bleed</TextLink> component.
+      </Text>
+      <Text>
+        Consider the following example where we have a <Strong>Card</Strong>{' '}
+        containing a header image, a <Strong>Heading</Strong> and some{' '}
+        <Strong>Text</Strong>. The <Strong>Card</Strong> applies internal
+        spacing, indenting the content from the edges of the container.
+      </Text>
+      <Code>
+        {source(
+          <Card>
+            <Stack space="gutter">
+              <Placeholder height={200} label="Header Image" />
+              <Heading level="3">Heading</Heading>
+              <Text>Text content</Text>
+            </Stack>
+          </Card>,
+        )}
+      </Code>
+      <Text>
+        If we want the image to run to the edges of the container, we can wrap
+        it in a <Strong>Bleed</Strong> and define which direction and how far we
+        want the image to bleed into the surrounding layout.
+      </Text>
+      <Text>
+        In this case, let&rsquo;s bleed{' '}
+        <TextLink href="/components/Bleed#horizontal">horizontally</TextLink>{' '}
+        and also out the{' '}
+        <TextLink href="/components/Bleed#specific-direction">top</TextLink>:
+      </Text>
+      <Code>
+        {source(
+          <Card>
+            <Stack space="gutter">
+              <Bleed horizontal="gutter" top="gutter">
+                <Placeholder height={200} label="Header Image" />
+              </Bleed>
+              <Heading level="3">Heading</Heading>
+              <Text>Text content</Text>
+            </Stack>
+          </Card>,
+        )}
+      </Code>
+      <Text>
+        Given this is achieved using negative margins, it is important to ensure
+        that size and direction of the bleed is accommodated by the parent
+        layout. In this case, ensure we do not choose bleed values that exceed
+        the indent of the parent <Strong>Card</Strong> component.
+      </Text>
     </TextStack>
   ),
 };
