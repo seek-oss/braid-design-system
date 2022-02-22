@@ -35,7 +35,7 @@ specifiers:
   '@types/workerpool': ^6.1.0
   '@vanilla-extract/css': ^1.6.1
   '@vanilla-extract/css-utils': ^0.1.1
-  '@vanilla-extract/sprinkles': ^1.3.0
+  '@vanilla-extract/sprinkles': ^1.3.3
   assert: ^2.0.0
   autosuggest-highlight: ^3.1.1
   babel-plugin-macros: ^3.0.1
@@ -111,7 +111,7 @@ dependencies:
   '@types/uuid': 8.3.1
   '@vanilla-extract/css': 1.6.1
   '@vanilla-extract/css-utils': 0.1.1
-  '@vanilla-extract/sprinkles': 1.3.0_@vanilla-extract+css@1.6.1
+  '@vanilla-extract/sprinkles': 1.3.3_@vanilla-extract+css@1.6.1
   assert: 2.0.0
   autosuggest-highlight: 3.1.1
   clsx: 1.1.1
@@ -4392,8 +4392,8 @@ packages:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
     dev: true
 
-  /@vanilla-extract/sprinkles/1.3.0_@vanilla-extract+css@1.6.1:
-    resolution: {integrity: sha512-MF4ShklyUxAfXm+M6NkizNQSPFfGycZVHc/HIYqXrqDIFDc+6UQoBwiygWUla/6pXzZk9u1TViirhfZIH/zEmA==}
+  /@vanilla-extract/sprinkles/1.3.3_@vanilla-extract+css@1.6.1:
+    resolution: {integrity: sha512-LoxDYbVSrNZdsXME09UUescV9v2tT0AI2yalavR3KCGNY89i2Lp7j7iNZuXJMPK4MzW7CErfYDffcpJ5+PyU2g==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:

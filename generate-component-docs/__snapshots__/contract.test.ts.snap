@@ -812,6 +812,7 @@ Object {
         | "tel"
         | "text"
         | "url"
+    inset?: 0
     integrity?: string
     is?: string
     itemID?: string
@@ -1673,6 +1674,7 @@ Object {
     height?: 
         | "full"
         | "touchable"
+    inset?: 0
     justifyContent?: 
         | "center"
         | "flexEnd"

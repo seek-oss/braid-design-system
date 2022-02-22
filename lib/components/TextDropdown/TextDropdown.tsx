@@ -80,10 +80,7 @@ export function TextDropdown<Value>({
       <Box
         component="select"
         position="absolute"
-        top={0}
-        left={0}
-        right={0}
-        bottom={0}
+        inset={0}
         width="full"
         opacity={0}
         className={styles.select}

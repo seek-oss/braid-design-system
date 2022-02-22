@@ -44,10 +44,7 @@ const GalleryPage = () => {
   return (
     <Box
       position="fixed"
-      top={0}
-      bottom={0}
-      left={0}
-      right={0}
+      inset={0}
       style={{ backgroundColor: useBackgroundColor() }}
     >
       <PageTitle title="Gallery" />
@@ -61,10 +58,7 @@ const GalleryPage = () => {
         justifyContent="center"
         zIndex="sticky"
         position="fixed"
-        bottom={0}
-        left={0}
-        right={0}
-        top={0}
+        inset={0}
         background="body"
         transition="fast"
         opacity={ready ? 0 : undefined}
