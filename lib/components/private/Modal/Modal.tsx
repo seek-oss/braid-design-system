@@ -215,10 +215,7 @@ export const Modal = ({
         <Box
           onClick={state === OPEN ? initiateClose : undefined}
           position="fixed"
-          top={0}
-          bottom={0}
-          left={0}
-          right={0}
+          inset={0}
           zIndex="modalBackdrop"
           transition={position === 'center' ? 'fast' : undefined}
           opacity={state !== OPEN ? 0 : undefined}
@@ -232,10 +229,7 @@ export const Modal = ({
 
         <Box
           position="fixed"
-          top={0}
-          bottom={0}
-          left={0}
-          right={0}
+          inset={0}
           zIndex="modal"
           pointerEvents="none"
           transition="fast"

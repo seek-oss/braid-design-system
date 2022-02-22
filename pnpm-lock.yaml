@@ -15,13 +15,12 @@ specifiers:
   '@svgr/core': ^5.5.0
   '@svgr/plugin-jsx': ^5.5.0
   '@svgr/plugin-prettier': ^5.5.0
-  '@testing-library/jest-dom': ^5.11.9
-  '@testing-library/react': ^10.4.9
-  '@testing-library/react-hooks': ^7.0.1
+  '@testing-library/jest-dom': ^5.16.2
+  '@testing-library/react': ^12.1.2
+  '@testing-library/react-hooks': ^7.0.2
   '@testing-library/user-event': ^13.5.0
   '@types/autosuggest-highlight': ^3.1.1
   '@types/babel-plugin-macros': ^2.8.4
-  '@types/classnames': ^2.2.11
   '@types/cli-progress': ^3.9.2
   '@types/dedent': ^0.7.0
   '@types/fs-extra': ^9.0.6
@@ -36,7 +35,7 @@ specifiers:
   '@types/workerpool': ^6.1.0
   '@vanilla-extract/css': ^1.6.1
   '@vanilla-extract/css-utils': ^0.1.1
-  '@vanilla-extract/sprinkles': ^1.3.0
+  '@vanilla-extract/sprinkles': ^1.3.3
   assert: ^2.0.0
   autosuggest-highlight: ^3.1.1
   babel-plugin-macros: ^3.0.1
@@ -107,13 +106,12 @@ dependencies:
   '@capsizecss/core': 3.0.0
   '@capsizecss/vanilla-extract': 1.0.0_@vanilla-extract+css@1.6.1
   '@types/autosuggest-highlight': 3.1.1
-  '@types/classnames': 2.3.1
   '@types/dedent': 0.7.0
   '@types/lodash': 4.14.171
   '@types/uuid': 8.3.1
   '@vanilla-extract/css': 1.6.1
   '@vanilla-extract/css-utils': 0.1.1
-  '@vanilla-extract/sprinkles': 1.3.0_@vanilla-extract+css@1.6.1
+  '@vanilla-extract/sprinkles': 1.3.3_@vanilla-extract+css@1.6.1
   assert: 2.0.0
   autosuggest-highlight: 3.1.1
   clsx: 1.1.1
@@ -144,9 +142,9 @@ devDependencies:
   '@svgr/core': 5.5.0
   '@svgr/plugin-jsx': 5.5.0
   '@svgr/plugin-prettier': 5.5.0
-  '@testing-library/jest-dom': 5.14.1
-  '@testing-library/react': 10.4.9_react-dom@17.0.2+react@17.0.2
-  '@testing-library/react-hooks': 7.0.1_react-dom@17.0.2+react@17.0.2
+  '@testing-library/jest-dom': 5.16.2
+  '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
+  '@testing-library/react-hooks': 7.0.2_react-dom@17.0.2+react@17.0.2
   '@testing-library/user-event': 13.5.0
   '@types/babel-plugin-macros': 2.8.5
   '@types/cli-progress': 3.9.2
@@ -1671,14 +1669,6 @@ packages:
       source-map-support: 0.5.19
     dev: true
 
-  /@babel/runtime-corejs3/7.14.7:
-    resolution: {integrity: sha512-Wvzcw4mBYbTagyBVZpAJWI06auSIj033T/yNE0Zn1xcup83MieCddZA7ls3kme17L4NOGBrQ09Q+nKB41RLWBA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      core-js-pure: 3.16.0
-      regenerator-runtime: 0.13.9
-    dev: true
-
   /@babel/runtime/7.16.3:
     resolution: {integrity: sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==}
     engines: {node: '>=6.9.0'}
@@ -2338,17 +2328,6 @@ packages:
       write-file-atomic: 3.0.3
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@jest/types/26.6.2:
-    resolution: {integrity: sha512-fC6QCp7Sc5sX6g8Tvbmj4XUTbyrik0akgRy03yjXbQaBWWNWGE7SGtJk98m0N8nzegD/7SggrUlivxo5ax4KWQ==}
-    engines: {node: '>= 10.14.2'}
-    dependencies:
-      '@types/istanbul-lib-coverage': 2.0.3
-      '@types/istanbul-reports': 3.0.1
-      '@types/node': 16.3.0
-      '@types/yargs': 15.0.14
-      chalk: 4.1.2
     dev: true
 
   /@jest/types/27.0.6:
@@ -3714,27 +3693,27 @@ packages:
       prettier: 2.4.1
     dev: true
 
-  /@testing-library/dom/7.31.2:
-    resolution: {integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==}
-    engines: {node: '>=10'}
+  /@testing-library/dom/8.11.3:
+    resolution: {integrity: sha512-9LId28I+lx70wUiZjLvi1DB/WT2zGOxUh46glrSNMaWVx849kKAluezVzZrXJfTKKoQTmEOutLes/bHg4Bj3aA==}
+    engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.14.5
       '@babel/runtime': 7.16.3
       '@types/aria-query': 4.2.2
-      aria-query: 4.2.2
+      aria-query: 5.0.0
       chalk: 4.1.2
-      dom-accessibility-api: 0.5.6
+      dom-accessibility-api: 0.5.11
       lz-string: 1.4.4
-      pretty-format: 26.6.2
+      pretty-format: 27.0.6
     dev: true
 
-  /@testing-library/jest-dom/5.14.1:
-    resolution: {integrity: sha512-dfB7HVIgTNCxH22M1+KU6viG5of2ldoA5ly8Ar8xkezKHKXjRvznCdbMbqjYGgO2xjRbwnR+rR8MLUIqF3kKbQ==}
+  /@testing-library/jest-dom/5.16.2:
+    resolution: {integrity: sha512-6ewxs1MXWwsBFZXIk4nKKskWANelkdUehchEOokHsN8X7c2eKXGw+77aRV63UU8f/DTSVUPLaGxdrj4lN7D/ug==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
     dependencies:
       '@babel/runtime': 7.16.3
       '@types/testing-library__jest-dom': 5.14.0
-      aria-query: 4.2.2
+      aria-query: 5.0.0
       chalk: 3.0.0
       css: 3.0.0
       css.escape: 1.5.1
@@ -3743,8 +3722,8 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react-hooks/7.0.1_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-bpEQ2SHSBSzBmfJ437NmnP+oArQ7aVmmULiAp6Ag2rtyLBLPNFSMmgltUbFGmQOJdPWo4Ub31kpUC5T46zXNwQ==}
+  /@testing-library/react-hooks/7.0.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-dYxpz8u9m4q1TuzfcUApqi8iFfR6R0FaMbr2hjZJy1uC8z+bO/K4v8Gs9eogGKYQop7QsrBTFkv/BCF7MzD2Cg==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16.9.0'
@@ -3765,15 +3744,15 @@ packages:
       react-error-boundary: 3.1.3_react@17.0.2
     dev: true
 
-  /@testing-library/react/10.4.9_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-pHZKkqUy0tmiD81afs8xfiuseXfU/N7rAX3iKjeZYje86t9VaB0LrxYVa+OOsvkrveX5jCK3IjajVn2MbePvqA==}
-    engines: {node: '>=10'}
+  /@testing-library/react/12.1.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-ihQiEOklNyHIpo2Y8FREkyD1QAea054U0MVbwH1m8N9TxeFz+KoJ9LkqoKqJlzx2JDm56DVwaJ1r36JYxZM05g==}
+    engines: {node: '>=12'}
     peerDependencies:
       react: '*'
       react-dom: '*'
     dependencies:
       '@babel/runtime': 7.16.3
-      '@testing-library/dom': 7.31.2
+      '@testing-library/dom': 8.11.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -3860,6 +3839,7 @@ packages:
     deprecated: This is a stub types definition. classnames provides its own type definitions, so you do not need this installed.
     dependencies:
       classnames: 2.3.1
+    dev: true
 
   /@types/cli-progress/3.9.2:
     resolution: {integrity: sha512-VO5/X5Ij+oVgEVjg5u0IXVe3JQSKJX+Ev8C5x+0hPy0AuWyW+bF8tbajR7cPFnDGhs7pidztcac+ccrDtk5teA==}
@@ -4220,12 +4200,6 @@ packages:
     resolution: {integrity: sha512-7tFImggNeNBVMsn0vLrpn1H1uPrUBdnARPTpZoitY37ZrdJREzf7I16tMrlK3hen349gr1NYh8CmZQa7CTG6Aw==}
     dev: true
 
-  /@types/yargs/15.0.14:
-    resolution: {integrity: sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==}
-    dependencies:
-      '@types/yargs-parser': 20.2.1
-    dev: true
-
   /@types/yargs/16.0.4:
     resolution: {integrity: sha512-T8Yc9wt/5LbJyCaLiHPReJa0kApcIgJ7Bn735GjItUfh08Z1pJvu8QZqb9s+mMvKV6WUQRV7K2R46YbjMXTTJw==}
     dependencies:
@@ -4418,8 +4392,8 @@ packages:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
     dev: true
 
-  /@vanilla-extract/sprinkles/1.3.0_@vanilla-extract+css@1.6.1:
-    resolution: {integrity: sha512-MF4ShklyUxAfXm+M6NkizNQSPFfGycZVHc/HIYqXrqDIFDc+6UQoBwiygWUla/6pXzZk9u1TViirhfZIH/zEmA==}
+  /@vanilla-extract/sprinkles/1.3.3_@vanilla-extract+css@1.6.1:
+    resolution: {integrity: sha512-LoxDYbVSrNZdsXME09UUescV9v2tT0AI2yalavR3KCGNY89i2Lp7j7iNZuXJMPK4MzW7CErfYDffcpJ5+PyU2g==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
@@ -5067,12 +5041,9 @@ packages:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
     dev: true
 
-  /aria-query/4.2.2:
-    resolution: {integrity: sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==}
+  /aria-query/5.0.0:
+    resolution: {integrity: sha512-V+SM7AbUwJ+EBnB8+DXs0hPZHO0W6pqBcc0dW90OwtVG02PswOu/teuARoLQjdDOH+t9pJgGnW5/Qmouf3gPJg==}
     engines: {node: '>=6.0'}
-    dependencies:
-      '@babel/runtime': 7.16.3
-      '@babel/runtime-corejs3': 7.14.7
     dev: true
 
   /arr-diff/4.0.0:
@@ -5292,7 +5263,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001307
+      caniuse-lite: 1.0.30001249
       colorette: 1.2.2
       fraction.js: 4.1.1
       normalize-range: 0.1.2
@@ -5307,7 +5278,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001307
+      caniuse-lite: 1.0.30001249
       colorette: 1.2.2
       fraction.js: 4.1.1
       normalize-range: 0.1.2
@@ -5320,7 +5291,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001307
+      caniuse-lite: 1.0.30001249
       colorette: 1.2.2
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -5949,7 +5920,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001307
+      caniuse-lite: 1.0.30001249
       electron-to-chromium: 1.3.798
       escalade: 3.1.1
       node-releases: 1.1.73
@@ -5960,7 +5931,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001307
+      caniuse-lite: 1.0.30001249
       colorette: 1.2.2
       electron-to-chromium: 1.3.798
       escalade: 3.1.1
@@ -6182,13 +6153,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001307
+      caniuse-lite: 1.0.30001249
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite/1.0.30001307:
-    resolution: {integrity: sha512-+MXEMczJ4FuxJAUp0jvAl6Df0NI/OfW1RWEE61eSmzS7hw6lz4IKutbhbXendwq8BljfFuHtu26VWsg4afQ7Ng==}
+  /caniuse-lite/1.0.30001249:
+    resolution: {integrity: sha512-vcX4U8lwVXPdqzPWi6cAJ3FnQaqXbBqy/GZseKNQzRj37J7qZdGcBtxq/QLFNLLlfsoXLUdHw8Iwenri86Tagw==}
     dev: true
 
   /capital-case/1.0.4:
@@ -6445,6 +6416,7 @@ packages:
 
   /classnames/2.3.1:
     resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
+    dev: true
 
   /clean-css/4.2.3:
     resolution: {integrity: sha512-VcMWDN54ZN/DS+g58HYL5/n4Zrqe8vHJpGA8KdgUXFU4fuP/aHNw8eld9SyEIyabIMJX/0RaY/fplOo5hYLSFA==}
@@ -7855,6 +7827,10 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: true
+
+  /dom-accessibility-api/0.5.11:
+    resolution: {integrity: sha512-7X6GvzjYf4yTdRKuCVScV+aA9Fvh5r8WzWrXBH9w82ZWB/eYDMGCnazoC/YAqAzUJWHzLOnZqr46K3iEyUhUvw==}
     dev: true
 
   /dom-accessibility-api/0.5.6:
@@ -15246,16 +15222,6 @@ packages:
       renderkid: 2.0.7
     dev: true
 
-  /pretty-format/26.6.2:
-    resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}
-    engines: {node: '>= 10'}
-    dependencies:
-      '@jest/types': 26.6.2
-      ansi-regex: 5.0.1
-      ansi-styles: 4.3.0
-      react-is: 17.0.2
-    dev: true
-
   /pretty-format/27.0.6:
     resolution: {integrity: sha512-8tGD7gBIENgzqA+UBzObyWqQ5B778VIFZA/S66cclyd5YkFLYs2Js7gxDKf0MXtTc9zcS7t1xhdfcElJ3YIvkQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -17209,6 +17175,7 @@ packages:
 
   /source-map-resolve/0.5.3:
     resolution: {integrity: sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==}
+    deprecated: See https://github.com/lydell/source-map-resolve#deprecated
     dependencies:
       atob: 2.1.2
       decode-uri-component: 0.2.0
@@ -17219,6 +17186,7 @@ packages:
 
   /source-map-resolve/0.6.0:
     resolution: {integrity: sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w==}
+    deprecated: See https://github.com/lydell/source-map-resolve#deprecated
     dependencies:
       atob: 2.1.2
       decode-uri-component: 0.2.0

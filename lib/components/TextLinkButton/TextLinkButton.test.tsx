@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { MouseEvent } from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
 import { TextLinkButton, Text, Actions } from '..';
@@ -31,7 +31,7 @@ describe('TextLink', () => {
 
     it('should call the click handler on keyboard interaction', () => {
       const clickHandler = createMockClickHandler();
-      const { getByRole } = render(
+      render(
         <BraidTestProvider>
           <Text>
             <TextLinkButton onClick={clickHandler}>Link text</TextLinkButton>
@@ -39,14 +39,13 @@ describe('TextLink', () => {
         </BraidTestProvider>,
       );
 
-      const button = getByRole('button');
-
-      fireEvent.keyDown(button, { key: 'Enter' });
+      userEvent.tab();
+      userEvent.keyboard('{enter}');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
 
-      fireEvent.keyDown(button, { key: ' ' });
+      userEvent.keyboard('{space}');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
@@ -102,7 +101,7 @@ describe('TextLink', () => {
 
     it('should call the click handler on keyboard interaction', () => {
       const clickHandler = createMockClickHandler();
-      const { getByRole } = render(
+      render(
         <BraidTestProvider>
           <Actions>
             <TextLinkButton onClick={clickHandler}>Link text</TextLinkButton>
@@ -110,14 +109,13 @@ describe('TextLink', () => {
         </BraidTestProvider>,
       );
 
-      const button = getByRole('button');
-
-      fireEvent.keyDown(button, { key: 'Enter' });
+      userEvent.tab();
+      userEvent.keyboard('{enter}');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
 
-      fireEvent.keyDown(button, { key: ' ' });
+      userEvent.keyboard('{space}');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();

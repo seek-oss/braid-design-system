@@ -2,7 +2,6 @@ import '@testing-library/jest-dom/extend-expect';
 import React, { ComponentType, useState } from 'react';
 import {
   render,
-  fireEvent,
   waitForElementToBeRemoved,
   waitFor,
 } from '@testing-library/react';
@@ -20,7 +19,6 @@ export const modalTestSuite = (
     >
   >,
 ) => {
-  const ESCAPE = 27;
   const CLOSE_LABEL = 'Close button';
   const TITLE = 'Test Title';
 
@@ -146,11 +144,11 @@ export const modalTestSuite = (
     });
 
     it('should close when hitting escape', async () => {
-      const { getByTestId, queryByRole, getByRole } = renderTestCase();
+      const { getByTestId, queryByRole } = renderTestCase();
 
       const dialogOpenButton = getByTestId('buttonBefore');
       userEvent.click(dialogOpenButton);
-      fireEvent.keyDown(getByRole('dialog'), { keyCode: ESCAPE });
+      userEvent.keyboard('{escape}');
 
       await waitForElementToBeRemoved(() => queryByRole('dialog'), {
         timeout: EXIT_TIMEOUT,
