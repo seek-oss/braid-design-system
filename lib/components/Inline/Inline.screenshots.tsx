@@ -309,5 +309,38 @@ export const screenshots: ComponentScreenshot = {
         </Inline>
       ),
     },
+    {
+      label: 'Test - Span align to left',
+      Container,
+      Example: () => (
+        <Inline component="span" space="gutter">
+          <Placeholder width={48} height={48} label="1" />
+          <Placeholder width={48} height={48} label="2" />
+          <Placeholder width={48} height={48} label="3" />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Test - Span align to center',
+      Container,
+      Example: () => (
+        <Inline component="span" space="gutter" align="center">
+          <Placeholder width={48} height={48} label="1" />
+          <Placeholder width={48} height={48} label="2" />
+          <Placeholder width={48} height={48} label="3" />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Test - Span align to right',
+      Container,
+      Example: () => (
+        <Inline component="span" space="gutter" align="right">
+          <Placeholder width={48} height={48} label="1" />
+          <Placeholder width={48} height={48} label="2" />
+          <Placeholder width={48} height={48} label="3" />
+        </Inline>
+      ),
+    },
   ],
 };
