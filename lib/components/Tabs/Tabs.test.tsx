@@ -213,7 +213,7 @@ describe('Tabs', () => {
       // Focus selected tab
       userEvent.tab();
 
-      // Test horiztonal navigation works
+      // Test horizontal navigation works
       expect(secondTab).toHaveFocus();
       userEvent.keyboard('{arrowright}');
       expect(thirdTab).toHaveFocus();

@@ -17,7 +17,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
 import { Tab } from './Tab';
-import { negativeMarginTop } from '../../css/negativeMargin/negativeMargin';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { TabListContext, TabListContextValues } from './TabListContext';
@@ -112,7 +112,9 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <Box>
-      <Box className={reserveHitArea ? undefined : negativeMarginTop('medium')}>
+      <Box
+        className={reserveHitArea ? undefined : negativeMargin('top', 'medium')}
+      >
         <Box position="relative">
           <Box
             ref={tabsRef}

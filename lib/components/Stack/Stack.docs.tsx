@@ -62,7 +62,7 @@ const docs: ComponentDocs = {
       label: 'Horizontal alignment',
       description: (
         <Text>
-          Items can be aligned horiontally using the <Strong>align</Strong>{' '}
+          Items can be aligned horizontally using the <Strong>align</Strong>{' '}
           prop. Responsive values are supported, e.g.{' '}
           <Strong>{"align={{ mobile: 'center', tablet: 'left' }}"}</Strong>
         </Text>

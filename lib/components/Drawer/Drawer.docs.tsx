@@ -41,12 +41,22 @@ const docs: ComponentDocs = {
       </>,
     ),
   accessibility: (
-    <Text>
-      Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal">
-        WAI-ARIA Dialog (Modal) Pattern.
-      </TextLink>
-    </Text>
+    <>
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal">
+          WAI-ARIA Dialog (Modal) Pattern.
+        </TextLink>
+      </Text>
+      <Text>
+        Due to the size of the Drawer, all entrance and exit animations adhere
+        to the users{' '}
+        <TextLink href="https://www.w3.org/WAI/WCAG21/Techniques/css/C39">
+          reduce motion
+        </TextLink>
+        preference.
+      </Text>
+    </>
   ),
   alternatives: [
     { name: 'Dialog', description: 'For a smaller amount of content.' },
@@ -109,6 +119,55 @@ const docs: ComponentDocs = {
               open={getState('width') !== undefined}
               width={getState('width')}
               onClose={() => resetState('width')}
+            >
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+              <Placeholder height={100} width="100%" />
+            </Drawer>
+          </>,
+        ),
+    },
+    {
+      label: 'Position',
+      description: (
+        <Text>
+          The Drawer can be positioned on either the <Strong>left</Strong> or
+          the <Strong>right</Strong> by setting the <Strong>position</Strong>{' '}
+          prop.
+        </Text>
+      ),
+      Example: ({ id, setState, getState, resetState }) =>
+        source(
+          <>
+            <Box padding="medium">
+              <Inline space="small" align="center">
+                <Button onClick={() => setState('position', 'left')}>
+                  Open from left
+                </Button>
+                <Button onClick={() => setState('position', 'right')}>
+                  Open from right
+                </Button>
+              </Inline>
+            </Box>
+
+            <Drawer
+              id={id}
+              title={`Position: ${getState('position')}`}
+              open={getState('position') !== undefined}
+              position={getState('position')}
+              onClose={() => resetState('position')}
             >
               <Placeholder height={100} width="100%" />
               <Placeholder height={100} width="100%" />

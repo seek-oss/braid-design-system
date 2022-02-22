@@ -1,7 +1,7 @@
 import React, { ReactNode, useContext } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
-import { ColumnsContext } from '../Columns/Columns';
+import { ColumnsContext } from '../Columns/ColumnsContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -23,10 +23,13 @@ export const Column = ({ children, data, width }: ColumnProps) => {
     desktopSpace,
     wideSpace,
     collapsibleAlignmentChildProps,
+    component,
   } = useContext(ColumnsContext);
 
   return (
     <Box
+      component={component}
+      display={component === 'span' ? 'block' : undefined}
       minWidth={0}
       width={width !== 'content' ? 'full' : undefined}
       flexShrink={width === 'content' ? 0 : undefined}

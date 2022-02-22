@@ -20,6 +20,7 @@ import {
   Button,
   Hidden,
   Strong,
+  Bleed,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
@@ -29,6 +30,7 @@ import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 import source from '../../../../../../lib/utils/source.macro';
+import { Placeholder } from '../../../../../../lib/playroom/components';
 
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];
@@ -82,6 +84,9 @@ const page: Page = {
         </Text>
         <Text>
           <TextLink href="#contentblock">ContentBlock</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#bleed">Bleed</TextLink>
         </Text>
       </List>
 
@@ -425,16 +430,12 @@ const page: Page = {
       <Code>
         {source(
           <Columns space="small">
-            <Column>
-              <Card>
-                <Text>Column 1</Text>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Text>Column 2</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Column 1</Text>
+            </Card>
+            <Card>
+              <Text>Column 2</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
@@ -453,27 +454,27 @@ const page: Page = {
       <Code>
         {source(
           <Columns space="small" collapseBelow="tablet">
-            <Column>
-              <Card>
-                <Text>Column 1</Text>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Text>Column 2</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Column 1</Text>
+            </Card>
+            <Card>
+              <Text>Column 2</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
       <Text>
-        All columns are of equal width by default, but you can also customise
-        the <TextLink href="/components/Columns#column-widths">width</TextLink>{' '}
-        of each column individually.
+        All columns are of equal width by default, but you can also use the{' '}
+        <TextLink href="">Column</TextLink> component to customise the{' '}
+        <TextLink href="/components/Columns#column-widths">width</TextLink> of
+        each column individually.
       </Text>
       <Text>
         For example, if you wanted to render a main content area and a sidebar,
-        collapsing to a single column on mobile:
+        collapsing to a single column on mobile, wrap the sidebar in a{' '}
+        <Strong>Column</Strong> and provide a{' '}
+        <TextLink href="/components/Columns#column-widths">width</TextLink> like
+        so:
       </Text>
       <Code>
         {source(
@@ -483,11 +484,9 @@ const page: Page = {
                 <Text>Sidebar</Text>
               </Card>
             </Column>
-            <Column>
-              <Card>
-                <Text>Main content</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Main content</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
@@ -507,9 +506,7 @@ const page: Page = {
           <Card>
             <Stack space="medium">
               <Columns space="small">
-                <Column>
-                  <Heading level="3">Card heading</Heading>
-                </Column>
+                <Heading level="3">Card heading</Heading>
                 <Column width="content">
                   <OverflowMenu label="Options">
                     <MenuItem
@@ -551,17 +548,15 @@ const page: Page = {
                 <Text>Sidebar</Text>
               </Card>
             </Column>
-            <Column>
-              <Card>
-                <Text>Main content</Text>
-              </Card>
-            </Column>
+            <Card>
+              <Text>Main content</Text>
+            </Card>
           </Columns>,
         )}
       </Code>
       <Text>
-        If you have <Strong>Column</Strong> elements that are of varying height,
-        you can center them vertically with the{' '}
+        If you have columns are of varying height, you can center them
+        vertically with the{' '}
         <TextLink href="/components/Columns#vertical-alignment">
           alignY
         </TextLink>{' '}
@@ -570,32 +565,26 @@ const page: Page = {
       <Code>
         {source(
           <Columns space="small" alignY="center">
-            <Column>
-              <Card>
-                <Stack space="medium" align="center">
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                </Stack>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Stack space="medium" align="center">
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                </Stack>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Stack space="medium" align="center">
-                  <Text>Column</Text>
-                  <Text>Column</Text>
-                </Stack>
-              </Card>
-            </Column>
+            <Card>
+              <Stack space="medium" align="center">
+                <Text>Column</Text>
+                <Text>Column</Text>
+              </Stack>
+            </Card>
+            <Card>
+              <Stack space="medium" align="center">
+                <Text>Column</Text>
+                <Text>Column</Text>
+                <Text>Column</Text>
+                <Text>Column</Text>
+              </Stack>
+            </Card>
+            <Card>
+              <Stack space="medium" align="center">
+                <Text>Column</Text>
+                <Text>Column</Text>
+              </Stack>
+            </Card>
           </Columns>,
         )}
       </Code>
@@ -765,6 +754,62 @@ const page: Page = {
           </ContentBlock>,
         )}
       </Code>
+
+      <Divider />
+
+      <LinkableHeading>Bleed</LinkableHeading>
+      <Text>
+        Sometimes it is necessary for a component to extend out into it&rsquo;s
+        surrounding layout. We can achieve this using the{' '}
+        <TextLink href="/components/Bleed">Bleed</TextLink> component.
+      </Text>
+      <Text>
+        Consider the following example where we have a <Strong>Card</Strong>{' '}
+        containing a header image, a <Strong>Heading</Strong> and some{' '}
+        <Strong>Text</Strong>. The <Strong>Card</Strong> applies internal
+        spacing, indenting the content from the edges of the container.
+      </Text>
+      <Code>
+        {source(
+          <Card>
+            <Stack space="gutter">
+              <Placeholder height={200} label="Header Image" />
+              <Heading level="3">Heading</Heading>
+              <Text>Text content</Text>
+            </Stack>
+          </Card>,
+        )}
+      </Code>
+      <Text>
+        If we want the image to run to the edges of the container, we can wrap
+        it in a <Strong>Bleed</Strong> and define which direction and how far we
+        want the image to bleed into the surrounding layout.
+      </Text>
+      <Text>
+        In this case, let&rsquo;s bleed{' '}
+        <TextLink href="/components/Bleed#horizontal">horizontally</TextLink>{' '}
+        and also out the{' '}
+        <TextLink href="/components/Bleed#specific-direction">top</TextLink>:
+      </Text>
+      <Code>
+        {source(
+          <Card>
+            <Stack space="gutter">
+              <Bleed horizontal="gutter" top="gutter">
+                <Placeholder height={200} label="Header Image" />
+              </Bleed>
+              <Heading level="3">Heading</Heading>
+              <Text>Text content</Text>
+            </Stack>
+          </Card>,
+        )}
+      </Code>
+      <Text>
+        Given this is achieved using negative margins, it is important to ensure
+        that size and direction of the bleed is accommodated by the parent
+        layout. In this case, ensure we do not choose bleed values that exceed
+        the indent of the parent <Strong>Card</Strong> component.
+      </Text>
     </TextStack>
   ),
 };
