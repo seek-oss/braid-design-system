@@ -1,4 +1,5 @@
 import React from 'react';
+import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
 import {
   Inline as BraidInline,
   InlineProps,
@@ -13,7 +14,7 @@ export const Inline = ({
   ...restProps
 }: InlineProps) => (
   <BraidInline
-    space={typeof space !== 'boolean' ? space : 'none'}
+    space={cleanSpaceValue(space)}
     align={typeof align !== 'boolean' ? align : undefined}
     alignY={typeof alignY !== 'boolean' ? alignY : undefined}
     component={

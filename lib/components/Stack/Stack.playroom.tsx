@@ -1,4 +1,5 @@
 import React from 'react';
+import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
 import { Stack as BraidStack, StackProps, validStackComponents } from './Stack';
 
 export const Stack = ({
@@ -8,7 +9,7 @@ export const Stack = ({
   ...restProps
 }: StackProps) => (
   <BraidStack
-    space={typeof space !== 'boolean' ? space : 'none'}
+    space={cleanSpaceValue(space)}
     align={typeof align !== 'boolean' ? align : undefined}
     component={
       component && validStackComponents.indexOf(component) > -1

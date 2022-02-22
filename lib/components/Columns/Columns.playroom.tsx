@@ -1,4 +1,5 @@
 import React from 'react';
+import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
 import { Columns as BraidColumns, ColumnsProps } from './Columns';
 import { validColumnsComponents } from './ColumnsContext';
 
@@ -10,7 +11,7 @@ export const Columns = ({
   ...restProps
 }: ColumnsProps) => (
   <BraidColumns
-    space={typeof space !== 'boolean' ? space : 'none'}
+    space={cleanSpaceValue(space)}
     align={typeof align !== 'boolean' ? align : undefined}
     alignY={typeof alignY !== 'boolean' ? alignY : undefined}
     component={
