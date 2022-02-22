@@ -516,12 +516,16 @@ const docs: ComponentDocs = {
                 //   'Used for surfaces that sit on top of body elements in a dark context',
               }),
             ).map(([background, description]) => (
-              <Columns key={background} space="medium" alignY="center">
+              <Columns
+                key={background}
+                space="medium"
+                alignY={{ tablet: 'center' }}
+              >
                 <Column width="content">
                   <Box
                     background="surface"
                     borderRadius="large"
-                    padding="gutter"
+                    padding={{ mobile: 'small', tablet: 'gutter' }}
                   >
                     <Box
                       background={{
@@ -537,22 +541,16 @@ const docs: ComponentDocs = {
                         )[background]
                       }
                       borderRadius="large"
-                      padding="gutter"
+                      padding={{ mobile: 'medium', tablet: 'gutter' }}
                     />
                   </Box>
                 </Column>
-                <Column>
-                  <Box paddingRight="medium">
-                    <Stack space="small">
-                      <Text weight="medium">
-                        <Box style={{ wordBreak: 'break-all' }}>
-                          {background}
-                        </Box>
-                      </Text>
-                      <Text tone="secondary">{description}</Text>
-                    </Stack>
-                  </Box>
-                </Column>
+                <Stack space="small">
+                  <Text weight="medium">
+                    <Box style={{ wordBreak: 'break-all' }}>{background}</Box>
+                  </Text>
+                  <Text tone="secondary">{description}</Text>
+                </Stack>
               </Columns>
             ))}
           </Tiles>,
@@ -641,7 +639,11 @@ const docs: ComponentDocs = {
                   'Used for borders around “promoteLight” elements.',
               }),
             ).map(([boxShadow, description]) => (
-              <Columns key={boxShadow} space="medium" alignY="center">
+              <Columns
+                key={boxShadow}
+                space="medium"
+                alignY={{ tablet: 'center' }}
+              >
                 <Column width="content">
                   <Box
                     background={{
@@ -653,7 +655,7 @@ const docs: ComponentDocs = {
                         : 'surface',
                     }}
                     borderRadius="large"
-                    padding="gutter"
+                    padding={{ mobile: 'small', tablet: 'gutter' }}
                   >
                     <Box
                       boxShadow={{
@@ -661,22 +663,16 @@ const docs: ComponentDocs = {
                         darkMode: boxShadow as keyof BoxShadowDocs,
                       }}
                       borderRadius="large"
-                      padding="gutter"
+                      padding={{ mobile: 'medium', tablet: 'gutter' }}
                     />
                   </Box>
                 </Column>
-                <Column>
-                  <Box paddingRight="medium">
-                    <Stack space="small">
-                      <Text weight="medium">
-                        <Box style={{ wordBreak: 'break-all' }}>
-                          {boxShadow}
-                        </Box>
-                      </Text>
-                      <Text tone="secondary">{description}</Text>
-                    </Stack>
-                  </Box>
-                </Column>
+                <Stack space="small">
+                  <Text weight="medium">
+                    <Box style={{ wordBreak: 'break-all' }}>{boxShadow}</Box>
+                  </Text>
+                  <Text tone="secondary">{description}</Text>
+                </Stack>
               </Columns>
             ))}
           </Tiles>,

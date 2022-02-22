@@ -1,7 +1,7 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import { List, Text, TextLink, Stack, Column, Columns } from '..';
+import { List, Text, TextLink, Stack, Columns } from '..';
 import { IconTick, Strong } from '../../playroom/components';
 
 const docs: ComponentDocs = {
@@ -10,41 +10,31 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Columns space="large" collapseBelow="desktop">
-        <Column>
-          <List>
-            <Text>Bullet</Text>
-            <Text>Bullet</Text>
-            <Text>Bullet</Text>
-          </List>
-        </Column>
-        <Column>
-          <List type="number">
-            <Text>Number</Text>
-            <Text>Number</Text>
-            <Text>Number</Text>
-          </List>
-        </Column>
-        <Column>
-          <List type="alpha">
-            <Text>Alpha</Text>
-            <Text>Alpha</Text>
-            <Text>Alpha</Text>
-          </List>
-        </Column>
-        <Column>
-          <List type="roman">
-            <Text>Roman</Text>
-            <Text>Roman</Text>
-            <Text>Roman</Text>
-          </List>
-        </Column>
-        <Column>
-          <List type="icon" icon={<IconTick />}>
-            <Text>Icon</Text>
-            <Text>Icon</Text>
-            <Text>Icon</Text>
-          </List>
-        </Column>
+        <List>
+          <Text>Bullet</Text>
+          <Text>Bullet</Text>
+          <Text>Bullet</Text>
+        </List>
+        <List type="number">
+          <Text>Number</Text>
+          <Text>Number</Text>
+          <Text>Number</Text>
+        </List>
+        <List type="alpha">
+          <Text>Alpha</Text>
+          <Text>Alpha</Text>
+          <Text>Alpha</Text>
+        </List>
+        <List type="roman">
+          <Text>Roman</Text>
+          <Text>Roman</Text>
+          <Text>Roman</Text>
+        </List>
+        <List type="icon" icon={<IconTick />}>
+          <Text>Icon</Text>
+          <Text>Icon</Text>
+          <Text>Icon</Text>
+        </List>
       </Columns>,
     ),
   accessibility: (
@@ -75,41 +65,31 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Columns space="large" collapseBelow="desktop">
-            <Column>
-              <List>
-                <Text>Bullet</Text>
-                <Text>Bullet</Text>
-                <Text>Bullet</Text>
-              </List>
-            </Column>
-            <Column>
-              <List type="number">
-                <Text>Number</Text>
-                <Text>Number</Text>
-                <Text>Number</Text>
-              </List>
-            </Column>
-            <Column>
-              <List type="alpha">
-                <Text>Alpha</Text>
-                <Text>Alpha</Text>
-                <Text>Alpha</Text>
-              </List>
-            </Column>
-            <Column>
-              <List type="roman">
-                <Text>Roman</Text>
-                <Text>Roman</Text>
-                <Text>Roman</Text>
-              </List>
-            </Column>
-            <Column>
-              <List type="icon" icon={<IconTick tone="positive" />}>
-                <Text>Icon</Text>
-                <Text>Icon</Text>
-                <Text>Icon</Text>
-              </List>
-            </Column>
+            <List>
+              <Text>Bullet</Text>
+              <Text>Bullet</Text>
+              <Text>Bullet</Text>
+            </List>
+            <List type="number">
+              <Text>Number</Text>
+              <Text>Number</Text>
+              <Text>Number</Text>
+            </List>
+            <List type="alpha">
+              <Text>Alpha</Text>
+              <Text>Alpha</Text>
+              <Text>Alpha</Text>
+            </List>
+            <List type="roman">
+              <Text>Roman</Text>
+              <Text>Roman</Text>
+              <Text>Roman</Text>
+            </List>
+            <List type="icon" icon={<IconTick tone="positive" />}>
+              <Text>Icon</Text>
+              <Text>Icon</Text>
+              <Text>Icon</Text>
+            </List>
           </Columns>,
         ),
     },
@@ -125,34 +105,26 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Columns space="large" collapseBelow="desktop">
-            <Column>
-              <List tone="secondary" size="large" space="gutter">
-                <Text>Large</Text>
-                <Text>Large</Text>
-                <Text>Large</Text>
-              </List>
-            </Column>
-            <Column>
-              <List tone="secondary" size="standard" space="medium">
-                <Text>Standard</Text>
-                <Text>Standard</Text>
-                <Text>Standard</Text>
-              </List>
-            </Column>
-            <Column>
-              <List tone="secondary" size="small" space="small">
-                <Text>Small</Text>
-                <Text>Small</Text>
-                <Text>Small</Text>
-              </List>
-            </Column>
-            <Column>
-              <List tone="secondary" size="xsmall" space="small">
-                <Text>Xsmall</Text>
-                <Text>Xsmall</Text>
-                <Text>Xsmall</Text>
-              </List>
-            </Column>
+            <List tone="secondary" size="large" space="gutter">
+              <Text>Large</Text>
+              <Text>Large</Text>
+              <Text>Large</Text>
+            </List>
+            <List tone="secondary" size="standard" space="medium">
+              <Text>Standard</Text>
+              <Text>Standard</Text>
+              <Text>Standard</Text>
+            </List>
+            <List tone="secondary" size="small" space="small">
+              <Text>Small</Text>
+              <Text>Small</Text>
+              <Text>Small</Text>
+            </List>
+            <List tone="secondary" size="xsmall" space="small">
+              <Text>Xsmall</Text>
+              <Text>Xsmall</Text>
+              <Text>Xsmall</Text>
+            </List>
           </Columns>,
         ),
     },
@@ -213,27 +185,21 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Columns space="large" collapseBelow="desktop">
-            <Column>
-              <List type="number" start={9}>
-                <Text>Number</Text>
-                <Text>Number</Text>
-                <Text>Number</Text>
-              </List>
-            </Column>
-            <Column>
-              <List type="alpha" start={9}>
-                <Text>Alpha</Text>
-                <Text>Alpha</Text>
-                <Text>Alpha</Text>
-              </List>
-            </Column>
-            <Column>
-              <List type="roman" start={9}>
-                <Text>Roman</Text>
-                <Text>Roman</Text>
-                <Text>Roman</Text>
-              </List>
-            </Column>
+            <List type="number" start={9}>
+              <Text>Number</Text>
+              <Text>Number</Text>
+              <Text>Number</Text>
+            </List>
+            <List type="alpha" start={9}>
+              <Text>Alpha</Text>
+              <Text>Alpha</Text>
+              <Text>Alpha</Text>
+            </List>
+            <List type="roman" start={9}>
+              <Text>Roman</Text>
+              <Text>Roman</Text>
+              <Text>Roman</Text>
+            </List>
           </Columns>,
         ),
     },

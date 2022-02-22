@@ -130,14 +130,12 @@ export const AccordionItem = ({
           */}
           <Box position="relative">
             <Columns space={itemSpace}>
-              <Column>
-                <Inline space="small" alignY="center">
-                  <Text size={size} weight={weight} tone={tone} component="div">
-                    {label}
-                  </Text>
-                  {badge ? cloneElement(badge, { bleedY: true }) : null}
-                </Inline>
-              </Column>
+              <Inline space="small" alignY="center">
+                <Text size={size} weight={weight} tone={tone} component="div">
+                  {label}
+                </Text>
+                {badge ? cloneElement(badge, { bleedY: true }) : null}
+              </Inline>
               <Column width="content">
                 <Text
                   size={size}

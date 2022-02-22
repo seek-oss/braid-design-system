@@ -135,7 +135,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                       <Icon tone={tone} />
                     </Box>
                   </Column>
-                  <Column>{content}</Column>
+                  {content}
                   <Column width="content">
                     <Box
                       width="touchable"

@@ -37,13 +37,11 @@ export const Notice = ({ tone = 'info', data, children }: NoticeProps) => {
         <Column width="content">
           <Icon tone={tone} />
         </Column>
-        <Column>
-          <Box className={textAlignedToIcon.standard}>
-            <DefaultTextPropsProvider tone={tone}>
-              {children}
-            </DefaultTextPropsProvider>
-          </Box>
-        </Column>
+        <Box className={textAlignedToIcon.standard}>
+          <DefaultTextPropsProvider tone={tone}>
+            {children}
+          </DefaultTextPropsProvider>
+        </Box>
       </Columns>
     </Box>
   );

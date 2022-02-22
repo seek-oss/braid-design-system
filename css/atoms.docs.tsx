@@ -427,7 +427,11 @@ const docs: CssDoc = {
                     'Used for borders around “promoteLight” elements.',
                 }),
               ).map(([boxShadow, description]) => (
-                <Columns key={boxShadow} space="medium" alignY="center">
+                <Columns
+                  key={boxShadow}
+                  space="medium"
+                  alignY={{ tablet: 'center' }}
+                >
                   <Column width="content">
                     <Box
                       background={{
@@ -439,7 +443,7 @@ const docs: CssDoc = {
                           : 'surface',
                       }}
                       borderRadius="standard"
-                      padding="gutter"
+                      padding={{ mobile: 'small', tablet: 'gutter' }}
                     >
                       <Box
                         boxShadow={{
@@ -447,22 +451,16 @@ const docs: CssDoc = {
                           darkMode: boxShadow as keyof BoxShadowDocs,
                         }}
                         borderRadius="standard"
-                        padding="gutter"
+                        padding={{ mobile: 'medium', tablet: 'gutter' }}
                       />
                     </Box>
                   </Column>
-                  <Column>
-                    <Box paddingRight="medium">
-                      <Stack space="small">
-                        <Text weight="medium">
-                          <Box style={{ wordBreak: 'break-all' }}>
-                            {boxShadow}
-                          </Box>
-                        </Text>
-                        <Text tone="secondary">{description}</Text>
-                      </Stack>
-                    </Box>
-                  </Column>
+                  <Stack space="small">
+                    <Text weight="medium">
+                      <Box style={{ wordBreak: 'break-all' }}>{boxShadow}</Box>
+                    </Text>
+                    <Text tone="secondary">{description}</Text>
+                  </Stack>
                 </Columns>
               ))}
             </Tiles>

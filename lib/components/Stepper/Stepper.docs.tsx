@@ -5,7 +5,6 @@ import { Step } from './Step';
 import { Stepper } from './Stepper';
 import {
   Button,
-  Column,
   Columns,
   IconChevron,
   Inline,
@@ -84,35 +83,31 @@ const docs: ComponentDocs = {
                 <Step>4. Forth step</Step>
               </Stepper>
               <Columns space="small">
-                <Column>
-                  <Inline space="small" align="right">
-                    {getState('progress') > 1 ? (
-                      <Button
-                        size="small"
-                        variant="ghost"
-                        onClick={() =>
-                          setState('progress', getState('progress') - 1)
-                        }
-                      >
-                        <IconChevron direction="left" /> Back
-                      </Button>
-                    ) : null}
-                  </Inline>
-                </Column>
-                <Column>
-                  <Inline space="small">
-                    {getState('progress') < 4 ? (
-                      <Button
-                        size="small"
-                        onClick={() =>
-                          setState('progress', getState('progress') + 1)
-                        }
-                      >
-                        Next <IconChevron direction="right" />
-                      </Button>
-                    ) : null}
-                  </Inline>
-                </Column>
+                <Inline space="small" align="right">
+                  {getState('progress') > 1 ? (
+                    <Button
+                      size="small"
+                      variant="ghost"
+                      onClick={() =>
+                        setState('progress', getState('progress') - 1)
+                      }
+                    >
+                      <IconChevron direction="left" /> Back
+                    </Button>
+                  ) : null}
+                </Inline>
+                <Inline space="small">
+                  {getState('progress') < 4 ? (
+                    <Button
+                      size="small"
+                      onClick={() =>
+                        setState('progress', getState('progress') + 1)
+                      }
+                    >
+                      Next <IconChevron direction="right" />
+                    </Button>
+                  ) : null}
+                </Inline>
               </Columns>
             </Stack>
           </>,

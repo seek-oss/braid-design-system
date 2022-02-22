@@ -17,6 +17,8 @@ import {
   IconBookmark,
   TextLink,
   List,
+  Notice,
+  Strong,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from '../../../../../../lib/playroom/components';
@@ -55,16 +57,14 @@ const page: Page = {
         <Card>
           <Stack space="gutter">
             <Columns space="gutter">
-              <Column>
-                <Stack space="small">
-                  <Badge tone="positive">New</Badge>
-                  <Heading level="3">Product Designer</Heading>
-                  <Inline space="small">
-                    <Text tone="secondary">Braid Design Pty Ltd</Text>
-                    <Rating rating={4.5} />
-                  </Inline>
-                </Stack>
-              </Column>
+              <Stack space="small">
+                <Badge tone="positive">New</Badge>
+                <Heading level="3">Product Designer</Heading>
+                <Inline space="small">
+                  <Text tone="secondary">Braid Design Pty Ltd</Text>
+                  <Rating rating={4.5} />
+                </Inline>
+              </Stack>
               <Column width="content">
                 <IconBookmark />
               </Column>
@@ -386,51 +386,102 @@ const page: Page = {
           detail={
             <Stack space="xlarge">
               <Text>
-                Sometimes adding new features can necessitate changing the
-                layout. First, we&rsquo;ll use a{' '}
-                <TextLink href="/components/columns">Columns</TextLink>{' '}
-                component to break up our card into two columns.
+                Sometimes adding new features can necessitate moving elements
+                around to achieve a specific layout. In this case, we&rsquo;ll
+                use a <TextLink href="/components/columns">Columns</TextLink>{' '}
+                component to wrap the header of our card and split it into two
+                columns — one for the job header, the other for the save action.
               </Text>
-              <Text tone="secondary">
-                NOTE: To make this easier to follow, we&rsquo;ve replaced the
-                job content with a Placeholder.
-              </Text>
+              <Notice>
+                <Text>
+                  NOTE: To make this easier to visualise, we&rsquo;ve replaced
+                  the header content with our desired layout using Placeholders.
+                </Text>
+              </Notice>
             </Stack>
           }
         >
           <Card>
-            <Columns space="gutter">
-              <Column>
-                <Placeholder label="Job content" height={80} />
-              </Column>
-              <Column>
+            <Stack space="gutter">
+              <Columns space="gutter">
+                <Placeholder label="Job header" height={80} />
                 <Placeholder label="Save action" height={80} />
-              </Column>
-            </Columns>
+              </Columns>
+
+              <Stack space="xsmall">
+                <Text tone="secondary" size="small">
+                  <IconLocation /> Melbourne
+                </Text>
+                <Text tone="secondary" size="small">
+                  <IconTag /> Information Technology
+                </Text>
+                <Text tone="secondary" size="small">
+                  <IconMoney /> 150k+
+                </Text>
+              </Stack>
+
+              <Text>
+                Long description of card details providing more information.
+              </Text>
+
+              <Text tone="secondary" size="xsmall">
+                2d ago
+              </Text>
+            </Stack>
           </Card>
         </Step>
 
         <Step
           detail={
-            <Text>
-              In the second column we&rsquo;ll use the{' '}
-              <TextLink href="/components/IconBookmark">IconBookmark</TextLink>{' '}
-              as the save action. By default, `Columns` are of equal width. In
-              this design however, the second column should only we as wide as
-              the save action itself. This can be controlled by setting the
-              `Column` to have a &ldquo;width&rdquo; of &ldquo;content&rdquo;.
-            </Text>
+            <Stack space="xlarge">
+              <Text>
+                By default, each direct child element of{' '}
+                <Strong>Columns</Strong> will result in a column of equal width.
+                Given the second column will only contain our save action we
+                want to leave the majority of space for the job header.
+              </Text>
+              <Text>
+                We can achieve this by wrapping the save action in an explicit{' '}
+                <Strong>Column</Strong> and setting it&rsquo;s
+                &ldquo;width&rdquo; to only be as large as it&rsquo;s
+                &ldquo;content&rdquo; — in this case the{' '}
+                <TextLink href="/components/IconBookmark">
+                  IconBookmark
+                </TextLink>{' '}
+                icon.
+              </Text>
+            </Stack>
           }
         >
           <Card>
-            <Columns space="gutter">
-              <Column>
-                <Placeholder label="Job content" height={80} />
-              </Column>
-              <Column width="content">
-                <IconBookmark />
-              </Column>
-            </Columns>
+            <Stack space="gutter">
+              <Columns space="gutter">
+                <Placeholder label="Job header" height={80} />
+                <Column width="content">
+                  <IconBookmark />
+                </Column>
+              </Columns>
+
+              <Stack space="xsmall">
+                <Text tone="secondary" size="small">
+                  <IconLocation /> Melbourne
+                </Text>
+                <Text tone="secondary" size="small">
+                  <IconTag /> Information Technology
+                </Text>
+                <Text tone="secondary" size="small">
+                  <IconMoney /> 150k+
+                </Text>
+              </Stack>
+
+              <Text>
+                Long description of card details providing more information.
+              </Text>
+
+              <Text tone="secondary" size="xsmall">
+                2d ago
+              </Text>
+            </Stack>
           </Card>
         </Step>
 
@@ -438,48 +489,46 @@ const page: Page = {
           detail={
             <Text>
               Now that we&rsquo;ve adjusted the layout, let&rsquo;s reinstate
-              our job content in the main column.
+              our job header in the main column.
             </Text>
           }
         >
           <Card>
-            <Columns space="gutter">
-              <Column>
-                <Stack space="gutter">
-                  <Stack space="small">
-                    <Badge tone="positive">New</Badge>
-                    <Heading level="3">Product Designer</Heading>
-                    <Inline space="small">
-                      <Text tone="secondary">Braid Design Pty Ltd</Text>
-                      <Rating rating={4.5} />
-                    </Inline>
-                  </Stack>
-
-                  <Stack space="xsmall">
-                    <Text tone="secondary" size="small">
-                      <IconLocation /> Melbourne
-                    </Text>
-                    <Text tone="secondary" size="small">
-                      <IconTag /> Information Technology
-                    </Text>
-                    <Text tone="secondary" size="small">
-                      <IconMoney /> 150k+
-                    </Text>
-                  </Stack>
-
-                  <Text>
-                    Long description of card details providing more information.
-                  </Text>
-
-                  <Text tone="secondary" size="xsmall">
-                    2d ago
-                  </Text>
+            <Stack space="gutter">
+              <Columns space="gutter">
+                <Stack space="small">
+                  <Badge tone="positive">New</Badge>
+                  <Heading level="3">Product Designer</Heading>
+                  <Inline space="small">
+                    <Text tone="secondary">Braid Design Pty Ltd</Text>
+                    <Rating rating={4.5} />
+                  </Inline>
                 </Stack>
-              </Column>
-              <Column width="content">
-                <IconBookmark />
-              </Column>
-            </Columns>
+                <Column width="content">
+                  <IconBookmark />
+                </Column>
+              </Columns>
+
+              <Stack space="xsmall">
+                <Text tone="secondary" size="small">
+                  <IconLocation /> Melbourne
+                </Text>
+                <Text tone="secondary" size="small">
+                  <IconTag /> Information Technology
+                </Text>
+                <Text tone="secondary" size="small">
+                  <IconMoney /> 150k+
+                </Text>
+              </Stack>
+
+              <Text>
+                Long description of card details providing more information.
+              </Text>
+
+              <Text tone="secondary" size="xsmall">
+                2d ago
+              </Text>
+            </Stack>
           </Card>
         </Step>
 
@@ -502,16 +551,14 @@ const page: Page = {
           <Card>
             <Stack space="gutter">
               <Columns space="gutter">
-                <Column>
-                  <Stack space="small">
-                    <Badge tone="positive">New</Badge>
-                    <Heading level="3">Product Designer</Heading>
-                    <Inline space="small">
-                      <Text tone="secondary">Braid Design Pty Ltd</Text>
-                      <Rating rating={4.5} />
-                    </Inline>
-                  </Stack>
-                </Column>
+                <Stack space="small">
+                  <Badge tone="positive">New</Badge>
+                  <Heading level="3">Product Designer</Heading>
+                  <Inline space="small">
+                    <Text tone="secondary">Braid Design Pty Ltd</Text>
+                    <Rating rating={4.5} />
+                  </Inline>
+                </Stack>
                 <Column width="content">
                   <IconBookmark />
                 </Column>

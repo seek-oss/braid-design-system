@@ -102,11 +102,9 @@ export const screenshots: ComponentScreenshot = {
           {backgrounds.map((background) => (
             <Box key={background} background={background} padding="xsmall">
               <Columns space="medium">
-                <Column>
-                  <Text size="small">
-                    {background} <IconPositive />
-                  </Text>
-                </Column>
+                <Text size="small">
+                  {background} <IconPositive />
+                </Text>
                 <Column width="content">
                   <Text size="small" tone="secondary">
                     Secondary <IconPositive />

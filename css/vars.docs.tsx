@@ -27,12 +27,10 @@ const Row = ({
   children: ReactNode;
 }) => (
   <Columns space="large" alignY="center">
-    <Column>
-      <Text>
-        <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
-        {name}
-      </Text>
-    </Column>
+    <Text>
+      <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
+      {name}
+    </Text>
     <Column width="content">
       <Box style={{ color: vars.foregroundColor.neutral as any }}>
         <ThemedExample>

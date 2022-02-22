@@ -139,13 +139,11 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
     <BraidProvider styleBody={false} theme={docsTheme}>
       <Stack space="small">
         <Columns space="medium" alignY="center">
-          <Column>
-            {label ? (
-              <Text component="h5" tone="secondary">
-                {label}
-              </Text>
-            ) : null}
-          </Column>
+          {label ? (
+            <Text component="h5" tone="secondary">
+              {label}
+            </Text>
+          ) : null}
           {code ? (
             <Column width="content">
               <CodeButton

@@ -106,17 +106,15 @@ const page: Page = {
                 <Text baseline={false}>{space}</Text>
               </Box>
             </Column>
-            <Column>
-              <Box display="flex">
-                <ThemedExample transparent>
-                  <Box
-                    background="formAccent"
-                    paddingLeft={space}
-                    paddingTop="medium"
-                  />
-                </ThemedExample>
-              </Box>
-            </Column>
+            <Box display="flex">
+              <ThemedExample transparent>
+                <Box
+                  background="formAccent"
+                  paddingLeft={space}
+                  paddingTop="medium"
+                />
+              </ThemedExample>
+            </Box>
           </Columns>
         ))}
       </Stack>

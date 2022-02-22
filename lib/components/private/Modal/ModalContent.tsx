@@ -168,16 +168,14 @@ export const ModalContent = ({
                 </Stack>
               ) : (
                 <Columns space="none">
-                  <Column>
-                    <ModalContentHeader
-                      title={title}
-                      headingLevel={headingLevel}
-                      description={description}
-                      descriptionId={descriptionId}
-                      center={Boolean(illustration)}
-                      ref={headingRef}
-                    />
-                  </Column>
+                  <ModalContentHeader
+                    title={title}
+                    headingLevel={headingLevel}
+                    description={description}
+                    descriptionId={descriptionId}
+                    center={Boolean(illustration)}
+                    ref={headingRef}
+                  />
                   <Column width="content">
                     <Box width="touchable" />
                   </Column>

@@ -2,7 +2,6 @@ import React, { ChangeEvent, FocusEvent, createRef, Fragment } from 'react';
 import { isMobile } from 'is-mobile';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Field } from '../private/Field/Field';
@@ -227,38 +226,35 @@ const MonthPicker = ({
     <FieldGroup id={id} tone={tone} disabled={disabled} {...restProps}>
       {(fieldGroupProps) => (
         <Columns space="medium">
-          <Column>
-            <Dropdown
-              id={monthId}
-              value={currentValue.month || ''}
-              onChange={makeChangeHandler(onChange, value, 'month')}
-              onBlur={blurHandler}
-              onFocus={focusHandler}
-              tone={tone}
-              placeholder={monthLabel}
-              aria-label={monthLabel}
-              {...fieldGroupProps}
-              ref={monthRef}
-            >
-              {getMonths(monthNames)}
-            </Dropdown>
-          </Column>
-          <Column>
-            <Dropdown
-              id={yearId}
-              value={currentValue.year || ''}
-              onChange={makeChangeHandler(onChange, value, 'year')}
-              onBlur={blurHandler}
-              onFocus={focusHandler}
-              tone={tone}
-              placeholder={yearLabel}
-              aria-label={yearLabel}
-              {...fieldGroupProps}
-              ref={yearRef}
-            >
-              {getYears(minYear, maxYear, ascendingYears)}
-            </Dropdown>
-          </Column>
+          <Dropdown
+            id={monthId}
+            value={currentValue.month || ''}
+            onChange={makeChangeHandler(onChange, value, 'month')}
+            onBlur={blurHandler}
+            onFocus={focusHandler}
+            tone={tone}
+            placeholder={monthLabel}
+            aria-label={monthLabel}
+            {...fieldGroupProps}
+            ref={monthRef}
+          >
+            {getMonths(monthNames)}
+          </Dropdown>
+
+          <Dropdown
+            id={yearId}
+            value={currentValue.year || ''}
+            onChange={makeChangeHandler(onChange, value, 'year')}
+            onBlur={blurHandler}
+            onFocus={focusHandler}
+            tone={tone}
+            placeholder={yearLabel}
+            aria-label={yearLabel}
+            {...fieldGroupProps}
+            ref={yearRef}
+          >
+            {getYears(minYear, maxYear, ascendingYears)}
+          </Dropdown>
         </Columns>
       )}
     </FieldGroup>

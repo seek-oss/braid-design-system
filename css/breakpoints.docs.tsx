@@ -56,11 +56,9 @@ const docs: CssDoc = {
                       {iconForBp[b]}
                     </Box>
                   </Column>
-                  <Column>
-                    <Text baseline={false} weight="strong">
-                      {b}
-                    </Text>
-                  </Column>
+                  <Text baseline={false} weight="strong">
+                    {b}
+                  </Text>
                   <Column width="content">
                     <Text>{`${breakpoints[b]}${index !== 0 ? 'px' : ''}`}</Text>
                   </Column>

@@ -149,11 +149,9 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
             <Box background={swatch} className={styles.square} />
           </ThemedExample>
         </Column>
-        <Column>
-          <Box height="touchable" display="flex" alignItems="center">
-            <Heading level="4">{tone}</Heading>
-          </Box>
-        </Column>
+        <Box height="touchable" display="flex" alignItems="center">
+          <Heading level="4">{tone}</Heading>
+        </Box>
       </Columns>
 
       <Columns space={['xsmall', 'medium']} collapseBelow="tablet">
@@ -162,34 +160,30 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
             <Box width="touchable" />
           </Hidden>
         </Column>
-        <Column>
-          <TextStack space="large">
-            <Text>{description}</Text>
+        <TextStack space="large">
+          <Text>{description}</Text>
 
-            {usageTypes.map((usageType) =>
-              usage[usageType].length > 0 ? (
-                <Columns
-                  key={usageType}
-                  space={['medium', 'large']}
-                  collapseBelow="tablet"
-                >
-                  <Column width="1/5">
-                    <Text tone="secondary">{usageType}</Text>
-                  </Column>
-                  <Column>
-                    <Stack space="small">
-                      {usage[usageType].map((usageItem, index) => (
-                        <Text key={index} tone="secondary">
-                          - {usageItem}
-                        </Text>
-                      ))}
-                    </Stack>
-                  </Column>
-                </Columns>
-              ) : null,
-            )}
-          </TextStack>
-        </Column>
+          {usageTypes.map((usageType) =>
+            usage[usageType].length > 0 ? (
+              <Columns
+                key={usageType}
+                space={['medium', 'large']}
+                collapseBelow="tablet"
+              >
+                <Column width="1/5">
+                  <Text tone="secondary">{usageType}</Text>
+                </Column>
+                <Stack space="small">
+                  {usage[usageType].map((usageItem, index) => (
+                    <Text key={index} tone="secondary">
+                      - {usageItem}
+                    </Text>
+                  ))}
+                </Stack>
+              </Columns>
+            ) : null,
+          )}
+        </TextStack>
       </Columns>
     </Stack>
   );
@@ -212,22 +206,20 @@ function TonePage() {
 
       <Columns space={['small', 'gutter']}>
         {tones.map((tone) => (
-          <Column key={tone}>
-            <Stack space={['none', 'xsmall']}>
-              <ThemedExample>
-                <Box
-                  background={toneDocs[tone].swatch}
-                  width="full"
-                  className={styles.rectangle}
-                />
-              </ThemedExample>
-              <Hidden below="tablet">
-                <Box textAlign="center">
-                  <Text tone="secondary">{tone}</Text>
-                </Box>
-              </Hidden>
-            </Stack>
-          </Column>
+          <Stack space={['none', 'xsmall']} key={tone}>
+            <ThemedExample>
+              <Box
+                background={toneDocs[tone].swatch}
+                width="full"
+                className={styles.rectangle}
+              />
+            </ThemedExample>
+            <Hidden below="tablet">
+              <Box textAlign="center">
+                <Text tone="secondary">{tone}</Text>
+              </Box>
+            </Hidden>
+          </Stack>
         ))}
       </Columns>
 

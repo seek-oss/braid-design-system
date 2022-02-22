@@ -79,9 +79,7 @@ const page: Page = {
                     </Inline>
                   </Stack>
                 </Column>
-                <Column>
-                  <Placeholder height={300} label="Marketing illustration" />
-                </Column>
+                <Placeholder height={300} label="Marketing illustration" />
               </Columns>
             </ContentBlock>
           </Box>,
@@ -171,9 +169,7 @@ const page: Page = {
             <Column width="3/5">
               <Placeholder height={300} />
             </Column>
-            <Column>
-              <Placeholder height={300} />
-            </Column>
+            <Placeholder height={300} />
           </Columns>
         </Step>
 
@@ -193,9 +189,7 @@ const page: Page = {
                 </Heading>
                 <Button>Show me</Button>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -221,9 +215,7 @@ const page: Page = {
                   <Button>Show me</Button>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -247,9 +239,7 @@ const page: Page = {
                   <Button>Show me</Button>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -274,9 +264,7 @@ const page: Page = {
                   <Button variant="ghost">Show me</Button>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -309,9 +297,7 @@ const page: Page = {
                   </Inline>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -348,9 +334,7 @@ const page: Page = {
                   </Inline>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -407,9 +391,7 @@ const page: Page = {
                   </Inline>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -453,9 +435,7 @@ const page: Page = {
                   </Inline>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -516,9 +496,7 @@ const page: Page = {
                   </Inline>
                 </Stack>
               </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
+              <Placeholder height={300} label="Marketing illustration" />
             </Columns>
           </Box>
         </Step>
@@ -566,9 +544,7 @@ const page: Page = {
                     </Inline>
                   </Stack>
                 </Column>
-                <Column>
-                  <Placeholder height={300} label="Marketing illustration" />
-                </Column>
+                <Placeholder height={300} label="Marketing illustration" />
               </Columns>
             </ContentBlock>
           </Box>
@@ -615,9 +591,7 @@ const page: Page = {
                     </Inline>
                   </Stack>
                 </Column>
-                <Column>
-                  <Placeholder height={300} label="Marketing illustration" />
-                </Column>
+                <Placeholder height={300} label="Marketing illustration" />
               </Columns>
             </ContentBlock>
           </Box>
@@ -664,9 +638,7 @@ const page: Page = {
                     </Inline>
                   </Stack>
                 </Column>
-                <Column>
-                  <Placeholder height={300} label="Marketing illustration" />
-                </Column>
+                <Placeholder height={300} label="Marketing illustration" />
               </Columns>
             </ContentBlock>
           </Box>

@@ -10,7 +10,6 @@ import {
   Button,
   Stack,
   Columns,
-  Column,
   Box,
 } from '../../../../../lib/components';
 import { TextStack } from '../../TextStack/TextStack';
@@ -131,22 +130,18 @@ const DevelopmentWorkflow = () => (
     <Code>
       {source(
         <Columns space="gutter" collapseBelow="tablet">
-          <Column>
-            <Card>
-              <Stack space="small">
-                <Heading level="4">Column 1</Heading>
-                <Text>My first Braid component</Text>
-              </Stack>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Stack space="small">
-                <Heading level="4">Column 2</Heading>
-                <Text>My second Braid component</Text>
-              </Stack>
-            </Card>
-          </Column>
+          <Card>
+            <Stack space="small">
+              <Heading level="4">Column 1</Heading>
+              <Text>My first Braid component</Text>
+            </Stack>
+          </Card>
+          <Card>
+            <Stack space="small">
+              <Heading level="4">Column 2</Heading>
+              <Text>My second Braid component</Text>
+            </Stack>
+          </Card>
         </Columns>,
       )}
     </Code>
@@ -162,22 +157,18 @@ const DevelopmentWorkflow = () => (
           space={{ mobile: 'xxsmall', tablet: 'gutter' }}
           collapseBelow="tablet"
         >
-          <Column>
-            <Card>
-              <Stack space="small">
-                <Heading level="4">Column 1</Heading>
-                <Text>My first Braid component</Text>
-              </Stack>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Stack space="small">
-                <Heading level="4">Column 2</Heading>
-                <Text>My second Braid component</Text>
-              </Stack>
-            </Card>
-          </Column>
+          <Card>
+            <Stack space="small">
+              <Heading level="4">Column 1</Heading>
+              <Text>My first Braid component</Text>
+            </Stack>
+          </Card>
+          <Card>
+            <Stack space="small">
+              <Heading level="4">Column 2</Heading>
+              <Text>My second Braid component</Text>
+            </Stack>
+          </Card>
         </Columns>,
       )}
     </Code>

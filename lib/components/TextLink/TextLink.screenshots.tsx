@@ -141,9 +141,7 @@ export const screenshots: ComponentScreenshot = {
           {backgrounds.map((background, i) => (
             <Box key={i} background={background} padding="small">
               <Columns space="xlarge">
-                <Column>
-                  <Text>{background}</Text>
-                </Column>
+                <Text>{background}</Text>
                 <Column width="content">
                   <Text>
                     <TextLink href="#">
@@ -158,13 +156,11 @@ export const screenshots: ComponentScreenshot = {
                     </TextLink>
                   </Text>
                 </Column>
-                <Column>
-                  <Text>
-                    <TextLink href="#" weight="weak">
-                      Weak <IconNewWindow />
-                    </TextLink>
-                  </Text>
-                </Column>
+                <Text>
+                  <TextLink href="#" weight="weak">
+                    Weak <IconNewWindow />
+                  </TextLink>
+                </Text>
               </Columns>
             </Box>
           ))}
