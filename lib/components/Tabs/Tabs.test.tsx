@@ -1,16 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState, Fragment } from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
 import { Tabs, Tab, TabPanel, TabsProvider, TabPanels } from '..';
-
-const ENTER = 13;
-const SPACE = 32;
-const END = 35;
-const HOME = 36;
-const ARROW_LEFT = 37;
-const ARROW_RIGHT = 39;
 
 const TestPanel = ({ children }: { children: string }) => {
   const [checked, setChecked] = useState(false);
@@ -222,52 +215,52 @@ describe('Tabs', () => {
 
       // Test horizontal navigation works
       expect(secondTab).toHaveFocus();
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_RIGHT });
+      userEvent.keyboard('{arrowright}');
       expect(thirdTab).toHaveFocus();
-      fireEvent.keyUp(thirdTab, { keyCode: ARROW_RIGHT });
+      userEvent.keyboard('{arrowright}');
       expect(firstTab).toHaveFocus();
-      fireEvent.keyUp(firstTab, { keyCode: ARROW_RIGHT });
+      userEvent.keyboard('{arrowright}');
       expect(secondTab).toHaveFocus();
-      fireEvent.keyUp(secondTab, { keyCode: ARROW_LEFT });
+      userEvent.keyboard('{arrowleft}');
       expect(firstTab).toHaveFocus();
-      fireEvent.keyUp(firstTab, { keyCode: ARROW_LEFT });
+      userEvent.keyboard('{arrowleft}');
       expect(thirdTab).toHaveFocus();
-      fireEvent.keyUp(thirdTab, { keyCode: ARROW_LEFT });
+      userEvent.keyboard('{arrowleft}');
       expect(secondTab).toHaveFocus();
     });
 
     it('should navigate to last tab with the end key', () => {
       const { getAllByRole } = renderTabs();
-      const [firstTab, , thirdTab] = getAllByRole('tab');
+      const [, , thirdTab] = getAllByRole('tab');
 
       // Focus selected tab and move focus to the last tab
       userEvent.tab();
-      fireEvent.keyUp(firstTab, { keyCode: END });
+      userEvent.keyboard('{end}');
 
       expect(thirdTab).toHaveFocus();
     });
 
     it('should navigate to first tab with the home key', () => {
       const { getAllByRole } = renderTabs({ selectedItem: 'third' });
-      const [firstTab, , thirdTab] = getAllByRole('tab');
+      const [firstTab] = getAllByRole('tab');
 
       // Focus selected tab and mmove focus to the first tab
       userEvent.tab();
-      fireEvent.keyUp(thirdTab, { keyCode: HOME });
+      userEvent.keyboard('{home}');
 
       expect(firstTab).toHaveFocus();
     });
 
     it('should select the focused tab with the space key', () => {
       const { getAllByRole } = renderTabs();
-      const [firstTab, , thirdTab] = getAllByRole('tab');
+      const [, , thirdTab] = getAllByRole('tab');
 
       // Focus selected tab and move focus to the left
       userEvent.tab();
-      fireEvent.keyUp(firstTab, { keyCode: ARROW_LEFT });
+      userEvent.keyboard('{arrowleft}');
 
       // Test commit tab selection with space
-      fireEvent.keyUp(thirdTab, { keyCode: SPACE });
+      userEvent.keyboard('{space}');
 
       expect(thirdTab).toHaveFocus();
       expect(thirdTab.getAttribute('aria-selected')).toBe('true');
@@ -275,14 +268,14 @@ describe('Tabs', () => {
 
     it('should select the focused tab with the enter key', () => {
       const { getAllByRole } = renderTabs();
-      const [firstTab, secondTab] = getAllByRole('tab');
+      const [, secondTab] = getAllByRole('tab');
 
       // Focus selected tab and move focus to the right
       userEvent.tab();
-      fireEvent.keyUp(firstTab, { keyCode: ARROW_RIGHT });
+      userEvent.keyboard('{arrowright}');
 
       // Test commit tab selection with enter
-      fireEvent.keyUp(secondTab, { keyCode: ENTER });
+      userEvent.keyboard('{enter}');
 
       expect(secondTab).toHaveFocus();
       expect(secondTab.getAttribute('aria-selected')).toBe('true');
