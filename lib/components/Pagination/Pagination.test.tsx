@@ -61,7 +61,7 @@ describe('Pagination', () => {
       </BraidTestProvider>,
     );
 
-    expect(queryByLabelText('Prev')).not.toBeInTheDocument();
+    expect(queryByLabelText('Prev')).not.toBeVisible();
     expect(document.body).toHaveFocus();
     userEvent.tab();
     expect(getByLabelText('Pg 1')).toHaveFocus();
@@ -87,7 +87,7 @@ describe('Pagination', () => {
       </BraidTestProvider>,
     );
 
-    expect(queryByLabelText('Next')).not.toBeInTheDocument();
+    expect(queryByLabelText('Next')).not.toBeVisible();
     expect(document.body).toHaveFocus();
     userEvent.tab();
     expect(getByLabelText('Prev')).toHaveFocus();

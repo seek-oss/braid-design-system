@@ -6436,6 +6436,7 @@ Object {
     pageLabel?: (page: number) => string
     previousLabel?: string
     total: number
+    visiblePageLimit?: number
 },
 }
 `;
