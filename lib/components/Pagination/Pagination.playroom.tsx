@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Optional } from 'utility-types';
 import { StateProp } from '../../playroom/playroomState';
 import {
-  defaultVisiblePageLimit,
+  defaultPageLimit,
   Pagination as BraidPagination,
   PaginationProps,
 } from './Pagination';
@@ -36,9 +36,7 @@ const resolveFallbackTotal = (
     return total;
   }
 
-  return resolvedPage > defaultVisiblePageLimit
-    ? resolvedPage * 2
-    : defaultTotal;
+  return resolvedPage > defaultPageLimit ? resolvedPage * 2 : defaultTotal;
 };
 
 export const Pagination = ({

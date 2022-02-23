@@ -26,7 +26,7 @@ export interface PaginationProps {
   pageLabel?: (page: number) => string;
   nextLabel?: string;
   previousLabel?: string;
-  visiblePageLimit?: number;
+  pageLimit?: number;
   data?: DataAttributeMap;
 }
 
@@ -124,7 +124,7 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
   );
 };
 
-export const defaultVisiblePageLimit = 7;
+export const defaultPageLimit = 7;
 
 export const Pagination = ({
   page,
@@ -134,17 +134,17 @@ export const Pagination = ({
   pageLabel = (p: number) => `Go to page ${p}`,
   nextLabel = 'Next',
   previousLabel = 'Previous',
-  visiblePageLimit = defaultVisiblePageLimit,
+  pageLimit = defaultPageLimit,
   data,
 }: PaginationProps) => {
   assert(total >= 1, `\`total\` must be at least 1`);
   assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
   assert(
-    visiblePageLimit >= 1 && visiblePageLimit <= defaultVisiblePageLimit,
-    `\`visiblePageLimit\` must be between 1 and ${defaultVisiblePageLimit}`,
+    pageLimit >= 1 && pageLimit <= defaultPageLimit,
+    `\`pageLimit\` must be between 1 and ${defaultPageLimit}`,
   );
 
-  const pages = paginate({ page, total, maxPages: visiblePageLimit });
+  const pages = paginate({ page, total, maxPages: pageLimit });
   const showPrevious = page > 1;
   const showNext = page < total;
 
@@ -159,7 +159,7 @@ export const Pagination = ({
           component="li"
           paddingRight={{
             mobile: 'medium',
-            tablet: visiblePageLimit > 2 ? tabletButtonSpacing : undefined,
+            tablet: pageLimit > 2 ? tabletButtonSpacing : undefined,
           }}
           transition="fast"
           opacity={!showPrevious ? 0 : undefined}
@@ -188,7 +188,7 @@ export const Pagination = ({
                 !current ? { mobile: 'none', tablet: 'block' } : undefined
               }
               paddingRight={
-                visiblePageLimit > 2 && isNotLast
+                pageLimit > 2 && isNotLast
                   ? {
                       tablet: tabletButtonSpacing,
                     }
@@ -212,7 +212,7 @@ export const Pagination = ({
           component="li"
           paddingLeft={{
             mobile: 'medium',
-            tablet: visiblePageLimit > 2 ? tabletButtonSpacing : undefined,
+            tablet: pageLimit > 2 ? tabletButtonSpacing : undefined,
           }}
           transition="fast"
           opacity={!showNext ? 0 : undefined}

@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
 import { Pagination } from '../';
 import { LinkProps } from '../Link/Link';
-import { defaultVisiblePageLimit } from './Pagination';
+import { defaultPageLimit } from './Pagination';
 
 const linkProps = (): LinkProps => ({ href: '#' });
 
@@ -10,122 +10,122 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
   examples: [
     {
-      label: `First page, where total < ${defaultVisiblePageLimit}`,
+      label: `First page, where total < ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
           page={1}
-          total={defaultVisiblePageLimit - 3}
+          total={defaultPageLimit - 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `First page, where total = ${defaultVisiblePageLimit}`,
+      label: `First page, where total = ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
           page={1}
-          total={defaultVisiblePageLimit}
+          total={defaultPageLimit}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `First page, where total > ${defaultVisiblePageLimit}`,
+      label: `First page, where total > ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
           page={1}
-          total={defaultVisiblePageLimit + 3}
+          total={defaultPageLimit + 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Center page, where total < ${defaultVisiblePageLimit}`,
+      label: `Center page, where total < ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
-          page={Math.round((defaultVisiblePageLimit - 3) / 2)}
-          total={defaultVisiblePageLimit - 3}
+          page={Math.round((defaultPageLimit - 3) / 2)}
+          total={defaultPageLimit - 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Center page, where total = ${defaultVisiblePageLimit}`,
+      label: `Center page, where total = ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
-          page={Math.round(defaultVisiblePageLimit / 2)}
-          total={defaultVisiblePageLimit}
+          page={Math.round(defaultPageLimit / 2)}
+          total={defaultPageLimit}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Center page, where total > ${defaultVisiblePageLimit}`,
+      label: `Center page, where total > ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
-          page={Math.round((defaultVisiblePageLimit + 3) / 2)}
-          total={defaultVisiblePageLimit + 3}
+          page={Math.round((defaultPageLimit + 3) / 2)}
+          total={defaultPageLimit + 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Last page, where total < ${defaultVisiblePageLimit}`,
+      label: `Last page, where total < ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
-          page={defaultVisiblePageLimit - 3}
-          total={defaultVisiblePageLimit - 3}
+          page={defaultPageLimit - 3}
+          total={defaultPageLimit - 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Last page, where total = ${defaultVisiblePageLimit}`,
+      label: `Last page, where total = ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
-          page={defaultVisiblePageLimit}
-          total={defaultVisiblePageLimit}
+          page={defaultPageLimit}
+          total={defaultPageLimit}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Last page, where total > ${defaultVisiblePageLimit}`,
+      label: `Last page, where total > ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
-          page={defaultVisiblePageLimit + 3}
-          total={defaultVisiblePageLimit + 3}
+          page={defaultPageLimit + 3}
+          total={defaultPageLimit + 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Second page, where total > ${defaultVisiblePageLimit}`,
+      label: `Second page, where total > ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
           page={2}
-          total={defaultVisiblePageLimit + 3}
+          total={defaultPageLimit + 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: `Second last page, where total > ${defaultVisiblePageLimit}`,
+      label: `Second last page, where total > ${defaultPageLimit}`,
       Example: () => (
         <Pagination
           label="Label"
-          page={defaultVisiblePageLimit + 3 - 1}
-          total={defaultVisiblePageLimit + 3}
+          page={defaultPageLimit + 3 - 1}
+          total={defaultPageLimit + 3}
           linkProps={linkProps}
         />
       ),
@@ -137,13 +137,13 @@ export const screenshots: ComponentScreenshot = {
         <Pagination
           label="Label"
           page={1}
-          total={defaultVisiblePageLimit - 3}
+          total={defaultPageLimit - 3}
           linkProps={linkProps}
         />
       ),
     },
     {
-      label: 'With visiblePageLimit set to 1, on first page',
+      label: 'With pageLimit set to 1, on first page',
       background: 'surface',
       Example: () => (
         <Pagination
@@ -151,12 +151,12 @@ export const screenshots: ComponentScreenshot = {
           page={1}
           total={10}
           linkProps={linkProps}
-          visiblePageLimit={1}
+          pageLimit={1}
         />
       ),
     },
     {
-      label: 'With visiblePageLimit set to 1, on last page',
+      label: 'With pageLimit set to 1, on last page',
       background: 'surface',
       Example: () => (
         <Pagination
@@ -164,12 +164,12 @@ export const screenshots: ComponentScreenshot = {
           page={10}
           total={10}
           linkProps={linkProps}
-          visiblePageLimit={1}
+          pageLimit={1}
         />
       ),
     },
     {
-      label: 'With visiblePageLimit set to 2, on first page',
+      label: 'With pageLimit set to 2, on first page',
       background: 'surface',
       Example: () => (
         <Pagination
@@ -177,12 +177,12 @@ export const screenshots: ComponentScreenshot = {
           page={1}
           total={10}
           linkProps={linkProps}
-          visiblePageLimit={2}
+          pageLimit={2}
         />
       ),
     },
     {
-      label: 'With visiblePageLimit set to 2, on last page',
+      label: 'With pageLimit set to 2, on last page',
       background: 'surface',
       Example: () => (
         <Pagination
@@ -190,12 +190,12 @@ export const screenshots: ComponentScreenshot = {
           page={10}
           total={10}
           linkProps={linkProps}
-          visiblePageLimit={2}
+          pageLimit={2}
         />
       ),
     },
     {
-      label: 'With visiblePageLimit set to 3, on first page',
+      label: 'With pageLimit set to 3, on first page',
       background: 'surface',
       Example: () => (
         <Pagination
@@ -203,12 +203,12 @@ export const screenshots: ComponentScreenshot = {
           page={1}
           total={10}
           linkProps={linkProps}
-          visiblePageLimit={3}
+          pageLimit={3}
         />
       ),
     },
     {
-      label: 'With visiblePageLimit set to 3, on last page',
+      label: 'With pageLimit set to 3, on last page',
       background: 'surface',
       Example: () => (
         <Pagination
@@ -216,7 +216,7 @@ export const screenshots: ComponentScreenshot = {
           page={10}
           total={10}
           linkProps={linkProps}
-          visiblePageLimit={3}
+          pageLimit={3}
         />
       ),
     },

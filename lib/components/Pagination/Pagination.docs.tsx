@@ -5,7 +5,7 @@ import source from '../../utils/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
-import { defaultVisiblePageLimit } from './Pagination';
+import { defaultPageLimit } from './Pagination';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -58,14 +58,14 @@ const docs: ComponentDocs = {
         <>
           <Text>
             The number of pages displayed can be limited using the{' '}
-            <Strong>visiblePageLimit</Strong> prop.
+            <Strong>pageLimit</Strong> prop.
           </Text>
           <Notice>
             <Text>
               To keep the design simple, only the current page, next and
               previous links are displayed on <Strong>mobile</Strong>, while on
               larger devices the limit cannot be increased above the default
-              limit of {defaultVisiblePageLimit}.
+              limit of {defaultPageLimit}.
             </Text>
           </Notice>
         </>
@@ -79,7 +79,7 @@ const docs: ComponentDocs = {
               page={getState('page')}
               total={10}
               label="Limiting the number of pages"
-              visiblePageLimit={3}
+              pageLimit={3}
               linkProps={({ page }) => ({
                 href: `#${page}`,
                 onClick: (e) => {
