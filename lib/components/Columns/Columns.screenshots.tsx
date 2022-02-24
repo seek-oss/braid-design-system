@@ -458,7 +458,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Test - component span with a one explict Column width one not',
+      label: 'Test - component span with one explict Column width and one not',
       Example: () => (
         <Columns space="small" component="span">
           <Column width="content">
