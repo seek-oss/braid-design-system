@@ -445,22 +445,28 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Test - component span with no explicit Column children',
+      label: 'Test - component span with no explicit Column widths',
       Example: () => (
         <Columns space="small" component="span">
-          <Placeholder height={60} label="First" />
-          <Placeholder height={60} label="Second" />
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
         </Columns>
       ),
     },
     {
-      label: 'Test - component span with a one explict Column and one not',
+      label: 'Test - component span with one explict Column width and one not',
       Example: () => (
         <Columns space="small" component="span">
           <Column width="content">
             <Placeholder height={60} label="First" />
           </Column>
-          <Placeholder height={60} label="Second" />
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
         </Columns>
       ),
     },

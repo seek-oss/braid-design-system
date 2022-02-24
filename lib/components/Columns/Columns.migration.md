@@ -2,7 +2,7 @@
 
 ## API Changes
 
-- Child nodes may be wrapped in a `Column` component to customise their `width`.
+- All child nodes must be wrapped in a `Column` component.
 - `collapse={boolean}` allows columns to collapse into a stack on mobile. **This is `false` by default now**.
 - `tight={boolean}` has been deprecated in favour of setting the `gutter` prop, e.g. `gutter="small"`.
 - `reverse={boolean}` no longer reverses content on mobile when the content is stacked (i.e. when `collapse={true}`). The columns will be reversed on desktop, however the document flow on mobile and screen readers is still correct.
@@ -23,9 +23,15 @@
 
 ```jsx
 <Columns space="small" collapse>
-  <Text>Content...</Text>
-  <Text>Content...</Text>
-  <Text>Content...</Text>
+  <Column>
+    <Text>Content...</Text>
+  </Column>
+  <Column>
+    <Text>Content...</Text>
+  </Column>
+  <Column>
+    <Text>Content...</Text>
+  </Column>
 </Columns>
 ```
 
@@ -45,7 +51,9 @@ If the `size` being used previously was a percentage, migrating should be a matt
 
 ```jsx
 <Columns space="gutter" collapse>
-  <MainContent />
+  <Column>
+    <MainContent />
+  </Column>
   <Column width="1/4">
     <CustomSideBar />
   </Column>
@@ -66,7 +74,9 @@ If the `size` being used was a specific pixel value, you can set the `width` to 
 
 ```jsx
 <Columns space="gutter" collapse>
-  <MainContent />
+  <Column>
+    <MainContent />
+  </Column>
   <Column width="content">
     <Box className={styles.width}>
       {/* Create a class that sets the width */}
