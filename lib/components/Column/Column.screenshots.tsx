@@ -17,9 +17,15 @@ export const screenshots: ComponentScreenshot = {
       label: 'Standard Columns',
       Example: () => (
         <Columns space="small">
-          <Placeholder height={60} />
-          <Placeholder height={60} />
-          <Placeholder height={60} />
+          <Column>
+            <Placeholder height={60} />
+          </Column>
+          <Column>
+            <Placeholder height={60} />
+          </Column>
+          <Column>
+            <Placeholder height={60} />
+          </Column>
         </Columns>
       ),
     },
@@ -32,7 +38,9 @@ export const screenshots: ComponentScreenshot = {
               <Column width={width}>
                 <Placeholder height={60} label={width} />
               </Column>
-              <Placeholder height={60} label="Fluid" />
+              <Column>
+                <Placeholder height={60} label="Fluid" />
+              </Column>
             </Columns>
           ))}
         </Stack>
@@ -44,8 +52,12 @@ export const screenshots: ComponentScreenshot = {
         <Fragment>
           <Box marginBottom="medium">
             <Columns space="small">
-              <Placeholder height={60} label="Fluid" />
-              <Placeholder height={60} label="Fluid" />
+              <Column>
+                <Placeholder height={60} label="Fluid" />
+              </Column>
+              <Column>
+                <Placeholder height={60} label="Fluid" />
+              </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">
@@ -53,7 +65,9 @@ export const screenshots: ComponentScreenshot = {
               <Column width="1/2">
                 <Placeholder height={60} label="&#189;" />
               </Column>
-              <Placeholder height={60} label="Fluid" />
+              <Column>
+                <Placeholder height={60} label="Fluid" />
+              </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">
@@ -74,7 +88,9 @@ export const screenshots: ComponentScreenshot = {
               <Column width="1/4">
                 <Placeholder height={60} label="&#188;" />
               </Column>
-              <Placeholder height={60} label="Fluid" />
+              <Column>
+                <Placeholder height={60} label="Fluid" />
+              </Column>
             </Columns>
           </Box>
           <Box marginBottom="medium">

@@ -10,8 +10,12 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Columns space="large">
-          <Placeholder height={60} />
-          <Placeholder height={60} />
+          <Column>
+            <Placeholder height={60} />
+          </Column>
+          <Column>
+            <Placeholder height={60} />
+          </Column>
         </Columns>,
       ),
   },
@@ -20,9 +24,15 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Columns space="small" alignY="top">
-          <Placeholder height={20} />
-          <Placeholder height={80} label="top" />
-          <Placeholder height={20} />
+          <Column>
+            <Placeholder height={20} />
+          </Column>
+          <Column>
+            <Placeholder height={80} label="top" />
+          </Column>
+          <Column>
+            <Placeholder height={20} />
+          </Column>
         </Columns>,
       ),
   },
@@ -31,9 +41,15 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Columns space="small" alignY="center">
-          <Placeholder height={20} />
-          <Placeholder height={80} label="center" />
-          <Placeholder height={20} />
+          <Column>
+            <Placeholder height={20} />
+          </Column>
+          <Column>
+            <Placeholder height={80} label="center" />
+          </Column>
+          <Column>
+            <Placeholder height={20} />
+          </Column>
         </Columns>,
       ),
   },
@@ -42,9 +58,15 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Columns space="small" alignY="bottom">
-          <Placeholder height={20} />
-          <Placeholder height={80} label="bottom" />
-          <Placeholder height={20} />
+          <Column>
+            <Placeholder height={20} />
+          </Column>
+          <Column>
+            <Placeholder height={80} label="bottom" />
+          </Column>
+          <Column>
+            <Placeholder height={20} />
+          </Column>
         </Columns>,
       ),
   },
@@ -99,7 +121,9 @@ export const galleryItems: ComponentExample[] = [
           <Column width="1/5">
             <Placeholder height={60} label="First" />
           </Column>
-          <Placeholder height={60} label="Second" />
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
         </Columns>,
       ),
   },
@@ -112,61 +136,81 @@ export const galleryItems: ComponentExample[] = [
             <Column width="content">
               <Placeholder height={30} label="content" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="1/5">
               <Placeholder height={30} label="1/5" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="1/4">
               <Placeholder height={30} label="1/4" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="1/3">
               <Placeholder height={30} label="1/3" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="2/5">
               <Placeholder height={30} label="2/5" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="1/2">
               <Placeholder height={30} label="1/2" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="3/5">
               <Placeholder height={30} label="3/5" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="2/3">
               <Placeholder height={30} label="2/3" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="3/4">
               <Placeholder height={30} label="3/4" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
           <Columns space="xsmall">
             <Column width="4/5">
               <Placeholder height={30} label="4/5" />
             </Column>
-            <Placeholder height={30} label="fluid" />
+            <Column>
+              <Placeholder height={30} label="fluid" />
+            </Column>
           </Columns>
         </Stack>,
       ),
