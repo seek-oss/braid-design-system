@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Optional } from 'utility-types';
 import { StateProp } from '../../playroom/playroomState';
-import { maxPages } from './paginate';
-import { Pagination as BraidPagination, PaginationProps } from './Pagination';
+import {
+  defaultPageLimit,
+  Pagination as BraidPagination,
+  PaginationProps,
+} from './Pagination';
 
 type PlayroomPaginationProps = StateProp &
   Optional<PaginationProps, 'label' | 'linkProps' | 'page' | 'total'>;
@@ -33,7 +36,7 @@ const resolveFallbackTotal = (
     return total;
   }
 
-  return resolvedPage > maxPages ? resolvedPage * 2 : defaultTotal;
+  return resolvedPage > defaultPageLimit ? resolvedPage * 2 : defaultTotal;
 };
 
 export const Pagination = ({

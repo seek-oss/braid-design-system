@@ -1,11 +1,11 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
-import { Pagination, Card } from '../';
+import { Pagination, Card, Notice } from '../';
 import source from '../../utils/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
-import { maxPages } from './paginate';
+import { defaultPageLimit } from './Pagination';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -53,15 +53,43 @@ const docs: ComponentDocs = {
   alternatives: [],
   additional: [
     {
-      label: 'Design considerations',
+      label: 'Limiting the number of pages',
       description: (
-        <Text>
-          To keep the design simple, a maximum of {maxPages} pages are displayed
-          above <Strong>tablet</Strong> screen sizes. On <Strong>mobile</Strong>{' '}
-          only the current page along with the next and previous links are
-          displayed.
-        </Text>
+        <>
+          <Text>
+            The number of pages displayed can be limited using the{' '}
+            <Strong>pageLimit</Strong> prop.
+          </Text>
+          <Notice>
+            <Text>
+              To keep the design simple, only the current page, next and
+              previous links are displayed on <Strong>mobile</Strong>, while on
+              larger devices the limit cannot be increased above the default
+              limit of {defaultPageLimit}.
+            </Text>
+          </Notice>
+        </>
       ),
+      Example: ({ setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('page', 5)}
+
+            <Pagination
+              page={getState('page')}
+              total={10}
+              label="Limiting the number of pages"
+              pageLimit={3}
+              linkProps={({ page }) => ({
+                href: `#${page}`,
+                onClick: (e) => {
+                  e.preventDefault();
+                  setState('page', page);
+                },
+              })}
+            />
+          </>,
+        ),
     },
     {
       label: 'Development considerations',
