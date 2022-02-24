@@ -1,5 +1,100 @@
 # braid-design-system
 
+## 31.6.0
+
+### Minor Changes
+
+- **Bleed:** Add component ([#1066](https://github.com/seek-oss/braid-design-system/pull/1066))
+
+  Introduce `Bleed` layout component that allows content to bleed out into the parent layout by a specified amount, useful when a content needs to negate the indent provided by a parent component.
+
+  See the [documentation](https://seek-oss.github.io/braid-design-system/components/Bleed) and [layout guide](https://seek-oss.github.io/braid-design-system/foundations/layout#bleed) for more information.
+
+  **EXAMPLE USAGE:**
+
+  ```diff
+   <Card>
+     <Stack space="gutter">
+  +    <Bleed horizontal="gutter" top="gutter">
+         <Placeholder height={200} label="Header Image" />
+  +    </Bleed>
+       <Heading level="3">Heading</Heading>
+       <Text>Text content</Text>
+     </Stack>
+   </Card>
+  ```
+
+- **Box, BoxRenderer, atoms:** Add support for `inset` shorthand ([#1069](https://github.com/seek-oss/braid-design-system/pull/1069))
+
+  Introduces the `inset` shorthand as a convenience for applying `top`, `bottom`, `left` and `right` properties.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box position="absolute" inset={0} />
+  ```
+
+  or
+
+  ```ts
+  atoms({
+    position: 'absolute',
+    inset: 0,
+  });
+  ```
+
+- **Pagination:** Add `pageLimit` support ([#1070](https://github.com/seek-oss/braid-design-system/pull/1070))
+
+  Add support for configuring the number of pages displayed using the `pageLimit` prop. The default is still set to 7, but consumers can now reduce this, useful when `Pagination` is used inside column layouts.
+
+  In addition, the layout has been stabilised, preventing the links moving when the next/prev actions are shown/hidden.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Pagination
+    ...
+    pageLimit={3}
+  />
+  ```
+
+- **Columns:** Support using span elements via component prop ([#1064](https://github.com/seek-oss/braid-design-system/pull/1064))
+
+  Setting the `component` prop to `span` will now ensure all elements controlled by `Columns` are `span`s. This is useful when using layout components inside dom elements that should not contain `div`s from a HTML validation perspective.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Columns space="medium" component="span">
+    ...
+  </Columns>
+  ```
+
+- **Drawer:** Support positioning on the left ([#1067](https://github.com/seek-oss/braid-design-system/pull/1067))
+
+  A `Drawer` can now enter from and be positioned on the left. The default remains unchanged and will enter from and be docked to the right.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Drawer
+    ...
+    position="left"
+  />
+  ```
+
+- **Inline:** Support using span elements via component prop ([#1068](https://github.com/seek-oss/braid-design-system/pull/1068))
+
+  Setting the `component` prop to `span` will now ensure all elements controlled by `Inline` are `span`s. This is useful when using layout components inside dom elements that should not contain `div`s from a HTML validation perspective.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Inline space="medium" component="span">
+    ...
+  </Inline>
+  ```
+
 ## 31.5.0
 
 ### Minor Changes
