@@ -1,6 +1,12 @@
-export const maxPages = 7;
-
-export const paginate = ({ page, total }: { page: number; total: number }) => {
+export const paginate = ({
+  page,
+  total,
+  maxPages,
+}: {
+  page: number;
+  total: number;
+  maxPages: number;
+}) => {
   const half = (maxPages - 1) / 2;
   const smallerHalf = Math.floor(half);
   const largerHalf = Math.ceil(half);
