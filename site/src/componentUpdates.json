@@ -2258,5 +2258,48 @@
         "summary": "**Stepper:** Add component\n\nSee [documentation](https://seek-oss.github.io/braid-design-system/components/Stepper) for full feature set and usage details.\n\n**EXAMPLE USAGE:**\n```jsx\n<Stepper label=\"Linear steps\" progress={3}>\n  <Step>1. First step</Step>\n  <Step>2. Second step</Step>\n  <Step>3. Third step</Step>\n  <Step>4. Forth step</Step>\n</Stepper>\n```"
       }
     ]
+  },
+  {
+    "version": "31.6.0",
+    "updates": [
+      {
+        "new": [
+          "Bleed"
+        ],
+        "summary": "**Bleed:** Add component\n\nIntroduce `Bleed` layout component that allows content to bleed out into the parent layout by a specified amount, useful when a content needs to negate the indent provided by a parent component.\n\nSee the [documentation](https://seek-oss.github.io/braid-design-system/components/Bleed) and [layout guide](https://seek-oss.github.io/braid-design-system/foundations/layout#bleed) for more information.\n\n**EXAMPLE USAGE:**\n```diff\n <Card>\n   <Stack space=\"gutter\">\n+    <Bleed horizontal=\"gutter\" top=\"gutter\">\n       <Placeholder height={200} label=\"Header Image\" />\n+    </Bleed>\n     <Heading level=\"3\">Heading</Heading>\n     <Text>Text content</Text>\n   </Stack>\n </Card>\n```"
+      },
+      {
+        "updated": [
+          "Box",
+          "BoxRenderer",
+          "atoms"
+        ],
+        "summary": "**Box, BoxRenderer, atoms:** Add support for `inset` shorthand\n\nIntroduces the `inset` shorthand as a convenience for applying `top`, `bottom`, `left` and `right` properties.\n\n**EXAMPLE USAGE:**\n```jsx\n<Box position=\"absolute\" inset={0} />\n```\nor\n```ts\natoms({\n  position: 'absolute',\n  inset: 0,\n})\n```"
+      },
+      {
+        "updated": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Add `pageLimit` support\n\nAdd support for configuring the number of pages displayed using the `pageLimit` prop. The default is still set to 7, but consumers can now reduce this, useful when `Pagination` is used inside column layouts.\n\nIn addition, the layout has been stabilised, preventing the links moving when the next/prev actions are shown/hidden.\n\n**EXAMPLE USAGE:**\n```jsx\n<Pagination\n  ...\n  pageLimit={3}\n/>\n```"
+      },
+      {
+        "updated": [
+          "Columns"
+        ],
+        "summary": "**Columns:** Support using span elements via component prop\n\nSetting the `component` prop to `span` will now ensure all elements controlled by `Columns` are `span`s. This is useful when using layout components inside dom elements that should not contain `div`s from a HTML validation perspective.\n\n**EXAMPLE USAGE:**\n```jsx\n<Columns space=\"medium\" component=\"span\">\n  ...\n</Columns>\n```"
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Support positioning on the left\n\nA `Drawer` can now enter from and be positioned on the left. The default remains unchanged and will enter from and be docked to the right.\n\n**EXAMPLE USAGE:**\n```jsx\n<Drawer\n  ...\n  position=\"left\"\n/>\n```"
+      },
+      {
+        "updated": [
+          "Inline"
+        ],
+        "summary": "**Inline:** Support using span elements via component prop\n\nSetting the `component` prop to `span` will now ensure all elements controlled by `Inline` are `span`s. This is useful when using layout components inside dom elements that should not contain `div`s from a HTML validation perspective.\n\n**EXAMPLE USAGE:**\n```jsx\n<Inline space=\"medium\" component=\"span\">\n  ...\n</Inline>\n```"
+      }
+    ]
   }
 ]
