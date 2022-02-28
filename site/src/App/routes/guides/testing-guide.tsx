@@ -92,7 +92,7 @@ const page: Page = {
         might look something like this:
       </Text>
       <Code playroom={false}>{`
-        import { render } from 'react-testing-library';
+        import { render } from '@testing-library/react';
 
         test('should open menu when clicked', () => {
           const { getByRole } = render(<MyMenu />);
