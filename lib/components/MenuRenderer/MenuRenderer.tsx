@@ -7,6 +7,7 @@ import React, {
   MouseEvent,
   ReactNode,
   Ref,
+  ReactChild,
 } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
@@ -41,9 +42,12 @@ export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
   align?: 'left' | 'right';
   offsetSpace?: ResponsiveSpace;
+  width?: keyof typeof styles.width | 'content';
+  placement?: 'top' | 'bottom';
   onOpen?: () => void;
   onClose?: () => void;
   data?: DataAttributeMap;
+  reserveIconSpace?: boolean;
   children: ReactNode;
 }
 
@@ -78,20 +82,15 @@ const initialState: State = {
   highlightIndex: CLOSED_INDEX,
 };
 
-const isDivider = (node: ReactNode) =>
-  typeof node === 'object' &&
-  node !== null &&
-  'type' in node &&
-  node.type === MenuItemDivider;
-
-const borderRadius = 'large';
-
 export const MenuRenderer = ({
   onOpen,
   onClose,
   trigger,
+  width = 'content',
   align = 'left',
   offsetSpace = 'none',
+  reserveIconSpace = false,
+  placement = 'bottom',
   children,
   data,
 }: MenuRendererProps) => {
@@ -261,78 +260,134 @@ export const MenuRenderer = ({
     },
   };
 
+  return (
+    <Box {...(data ? buildDataAttributes(data) : undefined)}>
+      <Box position="relative">
+        {trigger(triggerProps, { open })}
+
+        <Menu
+          open={open}
+          align={align}
+          width={width}
+          placement={placement}
+          offsetSpace={offsetSpace}
+          highlightIndex={highlightIndex}
+          reserveIconSpace={reserveIconSpace}
+          focusTrigger={focusTrigger}
+          dispatch={dispatch}
+        >
+          {items}
+        </Menu>
+      </Box>
+
+      {open ? (
+        <Box
+          onClick={(event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            dispatch({ type: BACKDROP_CLICK });
+          }}
+          position="fixed"
+          zIndex="dropdownBackdrop"
+          top={0}
+          left={0}
+          className={styles.backdrop}
+        />
+      ) : null}
+    </Box>
+  );
+};
+
+const isDivider = (node: ReactNode) =>
+  typeof node === 'object' &&
+  node !== null &&
+  'type' in node &&
+  node.type === MenuItemDivider;
+
+const borderRadius = 'large';
+
+interface MenuProps {
+  offsetSpace: NonNullable<MenuRendererProps['offsetSpace']>;
+  align: NonNullable<MenuRendererProps['align']>;
+  width: NonNullable<MenuRendererProps['width']>;
+  placement: NonNullable<MenuRendererProps['placement']>;
+  reserveIconSpace: NonNullable<MenuRendererProps['reserveIconSpace']>;
+  dispatch: (action: Action) => void;
+  focusTrigger: () => void;
+  highlightIndex: number;
+  open: boolean;
+  children: Array<ReactChild>;
+  position?: 'absolute' | 'relative';
+}
+export function Menu({
+  offsetSpace,
+  align,
+  width,
+  placement,
+  children,
+  open,
+  dispatch,
+  focusTrigger,
+  highlightIndex,
+  reserveIconSpace,
+  position = 'absolute',
+}: MenuProps) {
   let dividerCount = 0;
 
   return (
-    <MenuRendererContext.Provider value={true}>
-      <Box {...(data ? buildDataAttributes(data) : undefined)}>
-        <Box position="relative">
-          {trigger(triggerProps, { open })}
+    <MenuRendererContext.Provider value={{ reserveIconSpace }}>
+      <Box
+        role="menu"
+        position={position}
+        zIndex="dropdown"
+        onMouseLeave={() => {
+          dispatch({ type: MENU_MOUSE_LEAVE });
+          focusTrigger();
+        }}
+        boxShadow={placement === 'top' ? 'small' : 'medium'}
+        borderRadius={borderRadius}
+        background="surface"
+        marginTop={placement === 'bottom' ? offsetSpace : undefined}
+        marginBottom={placement === 'top' ? offsetSpace : undefined}
+        transition="fast"
+        right={align === 'right' ? 0 : undefined}
+        opacity={!open ? 0 : undefined}
+        className={[
+          !open && styles.menuIsClosed,
+          width !== 'content' && styles.width[width],
+          placement === 'top' && styles.placementBottom,
+        ]}
+      >
+        <Box paddingY="xxsmall">
+          {children.map((item, i) => {
+            if (isDivider(item)) {
+              dividerCount++;
+              return item;
+            }
 
-          <Box
-            role="menu"
-            position="absolute"
-            zIndex="dropdown"
-            onMouseLeave={() => {
-              dispatch({ type: MENU_MOUSE_LEAVE });
-              focusTrigger();
-            }}
-            boxShadow="medium"
-            borderRadius={borderRadius}
-            background="surface"
-            marginTop={offsetSpace}
-            transition="fast"
-            right={align === 'right' ? 0 : undefined}
-            opacity={!open ? 0 : undefined}
-            className={!open && styles.menuIsClosed}
-          >
-            <Box paddingY="xxsmall">
-              {items.map((item, i) => {
-                if (isDivider(item)) {
-                  dividerCount++;
-                  return item;
-                }
+            const menuItemIndex = i - dividerCount;
 
-                const menuItemIndex = i - dividerCount;
-
-                return (
-                  <MenuRendererItemContext.Provider
-                    key={menuItemIndex}
-                    value={{
-                      isHighlighted: menuItemIndex === highlightIndex,
-                      index: menuItemIndex,
-                      dispatch,
-                      focusTrigger,
-                    }}
-                  >
-                    {item}
-                  </MenuRendererItemContext.Provider>
-                );
-              })}
-            </Box>
-            <Overlay
-              boxShadow="borderNeutralLight"
-              borderRadius={borderRadius}
-              visible
-            />
-          </Box>
+            return (
+              <MenuRendererItemContext.Provider
+                key={menuItemIndex}
+                value={{
+                  isHighlighted: menuItemIndex === highlightIndex,
+                  index: menuItemIndex,
+                  dispatch,
+                  focusTrigger,
+                }}
+              >
+                {item}
+              </MenuRendererItemContext.Provider>
+            );
+          })}
         </Box>
-
-        {open ? (
-          <Box
-            onClick={(event) => {
-              event.stopPropagation();
-              event.preventDefault();
-              dispatch({ type: BACKDROP_CLICK });
-            }}
-            position="fixed"
-            zIndex="dropdownBackdrop"
-            top={0}
-            left={0}
-            className={styles.backdrop}
-          />
-        ) : null}
+        <Overlay
+          boxShadow="borderNeutralLight"
+          borderRadius={borderRadius}
+          visible
+        />
       </Box>
     </MenuRendererContext.Provider>
   );
-};
+}

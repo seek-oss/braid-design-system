@@ -1,3 +1,9 @@
 import { createContext } from 'react';
 
-export const MenuRendererContext = createContext(false);
+interface MenuRendererValues {
+  reserveIconSpace: boolean;
+}
+
+export const MenuRendererContext = createContext<MenuRendererValues | null>(
+  null,
+);

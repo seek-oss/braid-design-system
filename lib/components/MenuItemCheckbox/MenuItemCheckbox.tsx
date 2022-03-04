@@ -5,7 +5,7 @@ import { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
 import * as styles from './MenuItemCheckbox.css';
 
-interface MenuItemCheckboxProps extends Pick<MenuItemProps, 'data'> {
+interface MenuItemCheckboxProps extends Pick<MenuItemProps, 'data' | 'badge'> {
   children: ReactNode;
   onChange: (checked: boolean) => void;
   checked: boolean;
@@ -15,6 +15,7 @@ export const MenuItemCheckbox = ({
   onChange,
   checked,
   data,
+  badge,
 }: MenuItemCheckboxProps) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLButtonElement>({
     onClick: () => onChange(!checked),
@@ -30,6 +31,7 @@ export const MenuItemCheckbox = ({
       component="button"
       type="button"
       display="flex"
+      alignItems="center"
     >
       <Box
         component="span"
@@ -38,6 +40,7 @@ export const MenuItemCheckbox = ({
         position="relative"
         background={{ lightMode: 'surface' }}
         marginRight="xsmall"
+        flexShrink={0}
         className={styles.checkboxBorder}
       >
         <Box
@@ -54,7 +57,14 @@ export const MenuItemCheckbox = ({
           <IconTick size="fill" />
         </Box>
       </Box>
-      <MenuItemChildren tone={undefined}>{children}</MenuItemChildren>
+      <MenuItemChildren
+        tone={undefined}
+        icon={undefined}
+        badge={badge}
+        formElement={true}
+      >
+        {children}
+      </MenuItemChildren>
     </Box>
   );
 };

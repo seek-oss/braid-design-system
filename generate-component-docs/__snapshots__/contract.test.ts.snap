@@ -6286,8 +6286,10 @@ exports[`MenuItem 1`] = `
 Object {
   exportType: component,
   props: {
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children: ReactNode
     data?: DataAttributeMap
+    icon?: ReactNode
     onClick?: () => void
     tone?: "critical"
 },
@@ -6298,6 +6300,7 @@ exports[`MenuItemCheckbox 1`] = `
 Object {
   exportType: component,
   props: {
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     checked: boolean
     children: ReactNode
     data?: DataAttributeMap
@@ -6315,9 +6318,11 @@ exports[`MenuItemLink 1`] = `
 Object {
   exportType: component,
   props: {
+    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children: ReactNode
     data?: DataAttributeMap
     href: string
+    icon?: ReactNode
     onClick?: () => void
     rel?: string
     target?: 
@@ -6354,7 +6359,16 @@ Object {
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
     onClose?: () => void
     onOpen?: () => void
+    placement?: 
+        | "bottom"
+        | "top"
+    reserveIconSpace?: boolean
     trigger: (props: TriggerProps, state: TriggerState) => ReactNode
+    width?: 
+        | "content"
+        | "large"
+        | "medium"
+        | "small"
 },
 }
 `;
@@ -6420,6 +6434,15 @@ Object {
     label: string
     onClose?: () => void
     onOpen?: () => void
+    placement?: 
+        | "bottom"
+        | "top"
+    reserveIconSpace?: boolean
+    width?: 
+        | "content"
+        | "large"
+        | "medium"
+        | "small"
 },
 }
 `;

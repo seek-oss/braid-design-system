@@ -16,6 +16,8 @@ export const MenuItemLink = ({
   tone,
   data,
   children,
+  badge,
+  icon,
 }: MenuItemLinkProps) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLAnchorElement>({
     displayName: 'MenuItemLink',
@@ -32,7 +34,9 @@ export const MenuItemLink = ({
       target={target}
       rel={rel}
     >
-      <MenuItemChildren tone={tone}>{children}</MenuItemChildren>
+      <MenuItemChildren tone={tone} icon={icon} badge={badge}>
+        {children}
+      </MenuItemChildren>
     </Box>
   );
 };

@@ -1,4 +1,5 @@
-import { style } from '@vanilla-extract/css';
+import omit from 'lodash/omit';
+import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
 
@@ -10,4 +11,19 @@ export const backdrop = style({
 export const menuIsClosed = style({
   transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
   visibility: 'hidden',
+});
+
+const widthVar = createVar();
+const baseWidth = style({
+  width: calc(widthVar).divide(4).toString(),
+});
+
+const widths = omit(vars.contentWidth, 'xsmall', 'xlarge');
+export const width = styleVariants(widths, (w) => [
+  baseWidth,
+  { vars: { [widthVar]: w } },
+]);
+
+export const placementBottom = style({
+  bottom: '100%',
 });

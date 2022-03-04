@@ -2,7 +2,6 @@ import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import {
-  OverflowMenu,
   MenuItem,
   MenuItemLink,
   Text,
@@ -15,6 +14,13 @@ import {
   Actions,
   Button,
   IconDelete,
+  Badge,
+  Alert,
+  MenuRenderer,
+  IconChevron,
+  IconProfile,
+  IconBookmark,
+  Inline,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -22,14 +28,25 @@ const docs: ComponentDocs = {
   subComponents: ['MenuItemLink'],
   Example: () =>
     source(
-      <Box style={{ maxWidth: '100px' }}>
-        <OverflowMenu label="Options">
+      <Inline space="none">
+        <MenuRenderer
+          offsetSpace="small"
+          trigger={(triggerProps, { open }) => (
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
           <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink onClick={() => {}} href="#">
-            Link
-          </MenuItemLink>
-        </OverflowMenu>
-      </Box>,
+          <MenuItemLink href="#">Link</MenuItemLink>
+        </MenuRenderer>
+      </Inline>,
     ),
   description: (
     <Text>
@@ -38,7 +55,16 @@ const docs: ComponentDocs = {
       <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
     </Text>
   ),
-  alternatives: [],
+  alternatives: [
+    {
+      name: 'MenuItemCheckbox',
+      description: 'For displaying checkboxes within a menu.',
+    },
+    {
+      name: 'MenuItemDivider',
+      description: 'For creating groups within a menu.',
+    },
+  ],
   accessibility: (
     <Text>
       Follows the{' '}
@@ -89,16 +115,25 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState, showToast }) =>
         source(
           <>
-            <Box style={{ maxWidth: '100px' }}>
-              <OverflowMenu label="Options">
+            <Inline space="none">
+              <MenuRenderer
+                offsetSpace="small"
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text>
+                      Menu <IconChevron direction={open ? 'up' : 'down'} />
+                    </Text>
+                  </Box>
+                )}
+              >
                 <MenuItem
                   onClick={() => toggleState('confirm')}
                   tone="critical"
                 >
                   Delete
                 </MenuItem>
-              </OverflowMenu>
-            </Box>
+              </MenuRenderer>
+            </Inline>
             <Dialog
               id={id}
               width="content"
@@ -137,23 +172,87 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'See also',
+      label: 'Inserting an icon',
       description: (
-        <List space="large">
-          <Text tone="secondary">
-            <TextLink href="/components/MenuItemCheckbox">
-              MenuItemCheckbox
-            </TextLink>{' '}
-            &mdash; For displaying checkboxes within a menu.
+        <>
+          <Text>
+            For decoration and help distinguishing between menu items, an{' '}
+            <Strong>icon</Strong> can be provided. This will be placed in the
+            left of the text.
           </Text>
-          <Text tone="secondary">
-            <TextLink href="/components/MenuItemDivider">
-              MenuItemDivider
-            </TextLink>{' '}
-            &mdash; For creating groups within a menu.
-          </Text>
-        </List>
+          <Alert>
+            <Text>
+              When icons are provided for only some menu items, it is
+              recommended that you apply the{' '}
+              <TextLink href="/components/MenuRenderer#using-icons-in-the-menu">
+                reserveIconSpace
+              </TextLink>{' '}
+              prop to the menu to preserve the alignment.
+            </Text>
+          </Alert>
+        </>
       ),
+      Example: () =>
+        source(
+          <Inline space="none">
+            <MenuRenderer
+              reserveIconSpace
+              offsetSpace="small"
+              width="small"
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Menu <IconChevron direction={open ? 'up' : 'down'} />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItem onClick={() => {}} icon={<IconProfile />}>
+                Item
+              </MenuItem>
+              <MenuItem onClick={() => {}} icon={<IconBookmark />}>
+                Item
+              </MenuItem>
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+            </MenuRenderer>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Badge support',
+      description: (
+        <Text>
+          Add a <TextLink href="/components/Badge">Badge</TextLink> alongside
+          the label of the menu item using the <Strong>badge</Strong> prop.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="none">
+            <MenuRenderer
+              offsetSpace="small"
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Menu <IconChevron direction={open ? 'up' : 'down'} />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItem
+                onClick={() => {}}
+                badge={
+                  <Badge tone="promote" weight="strong">
+                    Badge
+                  </Badge>
+                }
+              >
+                Item
+              </MenuItem>
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+            </MenuRenderer>
+          </Inline>,
+        ),
     },
   ],
 };
