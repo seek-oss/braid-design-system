@@ -1947,12 +1947,24 @@ Object {
         | "true"
         | false
         | true
+    aria-haspopup?: 
+        | "dialog"
+        | "false"
+        | "grid"
+        | "listbox"
+        | "menu"
+        | "tree"
+        | "true"
+        | false
+        | true
     bleedY?: boolean
     children?: ReactNode
     data?: DataAttributeMap
     id?: string
     loading?: boolean
     onClick?: MouseEventHandler<HTMLButtonElement>
+    onKeyDown?: KeyboardEventHandler<HTMLButtonElement>
+    onKeyUp?: KeyboardEventHandler<HTMLButtonElement>
     ref?: 
         | (instance: HTMLButtonElement | null) => void
         | RefObject<HTMLButtonElement>
