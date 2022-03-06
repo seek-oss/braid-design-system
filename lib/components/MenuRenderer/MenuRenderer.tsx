@@ -12,9 +12,6 @@ import React, {
 import flattenChildren from 'react-keyed-flatten-children';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { MenuItem } from '../MenuItem/MenuItem';
-import { MenuItemCheckbox } from '../MenuItemCheckbox/MenuItemCheckbox';
-import { MenuItemLink } from '../MenuItem/MenuItemLink';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
@@ -104,10 +101,8 @@ export const MenuRenderer = ({
       (item) =>
         typeof item === 'object' &&
         'type' in item &&
-        (item.type === MenuItem ||
-          item.type === MenuItemCheckbox ||
-          item.type === MenuItemLink ||
-          item.type === MenuItemDivider),
+        // @ts-expect-error
+        item.type.__isMenuItem__,
     ),
     'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
   );

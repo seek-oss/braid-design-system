@@ -40,3 +40,4 @@ export const MenuItemLink = ({
     </Box>
   );
 };
+MenuItemLink.__isMenuItem__ = true;

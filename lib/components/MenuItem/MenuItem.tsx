@@ -34,3 +34,4 @@ export const MenuItem = ({
     </Box>
   );
 };
+MenuItem.__isMenuItem__ = true;

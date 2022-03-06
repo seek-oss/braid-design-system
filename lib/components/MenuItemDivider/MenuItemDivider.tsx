@@ -16,3 +16,4 @@ export const MenuItemDivider = () => {
     </Box>
   );
 };
+MenuItemDivider.__isMenuItem__ = true;

@@ -22,6 +22,7 @@ export const AccordionItem = ({
   onToggle,
   size,
   tone,
+  badge,
   ...restProps
 }: PlayroomAccordionItemProps) => {
   const fallbackId = useFallbackId();
@@ -40,6 +41,7 @@ export const AccordionItem = ({
       label={typeof label !== 'boolean' ? label : ''}
       size={typeof size === 'boolean' ? undefined : size}
       tone={typeof tone === 'boolean' ? undefined : tone}
+      badge={typeof badge === 'boolean' ? undefined : badge}
       {...restProps}
     />
   );
