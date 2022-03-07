@@ -209,7 +209,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           For decoration and help distinguishing between fields, an{' '}
-          <Strong>icon</Strong> can be provided. This will be placed in the left
+          <Strong>icon</Strong> can be provided. This will be placed to the left
           of the field and is not interactive.
         </Text>
       ),
