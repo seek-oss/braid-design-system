@@ -40,6 +40,7 @@ export const Column = ({ children, data, width }: ColumnProps) => {
       {...(data ? buildDataAttributes(data) : undefined)}
     >
       <Box
+        component={component}
         paddingLeft={optimizeResponsiveArray([
           collapseMobile ? 'none' : mobileSpace,
           collapseTablet ? 'none' : tabletSpace,

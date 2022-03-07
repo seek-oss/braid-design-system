@@ -1,14 +1,37 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
-import { OverflowMenu, MenuItemCheckbox, Text, TextLink, List, Box } from '..';
+import {
+  MenuItemCheckbox,
+  Text,
+  TextLink,
+  Box,
+  Strong,
+  Badge,
+  MenuRenderer,
+  Inline,
+  IconChevron,
+} from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: ({ getState, setState }) =>
     source(
-      <Box style={{ maxWidth: '150px' }}>
-        <OverflowMenu label="Checklist">
+      <Inline space="none">
+        <MenuRenderer
+          offsetSpace="small"
+          trigger={(triggerProps, { open }) => (
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
           <MenuItemCheckbox
             checked={getState('checked1')}
             onChange={setState('checked1')}
@@ -27,8 +50,8 @@ const docs: ComponentDocs = {
           >
             Checkbox
           </MenuItemCheckbox>
-        </OverflowMenu>
-      </Box>,
+        </MenuRenderer>
+      </Inline>,
     ),
   description: (
     <Text>
@@ -45,24 +68,68 @@ const docs: ComponentDocs = {
       </TextLink>
     </Text>
   ),
-  alternatives: [],
+  alternatives: [
+    {
+      name: 'MenuItem',
+      description: 'For displaying buttons and links within a menu.',
+    },
+    {
+      name: 'MenuItemDivider',
+      description: 'For creating groups within a menu.',
+    },
+  ],
   additional: [
     {
-      label: 'See also',
+      label: 'Badge support',
       description: (
-        <List space="large">
-          <Text tone="secondary">
-            <TextLink href="/components/MenuItem">MenuItem</TextLink> &mdash;
-            For displaying buttons and links within a menu.
-          </Text>
-          <Text tone="secondary">
-            <TextLink href="/components/MenuItemDivider">
-              MenuItemDivider
-            </TextLink>{' '}
-            &mdash; For creating groups within a menu.
-          </Text>
-        </List>
+        <Text>
+          Add a <TextLink href="/components/Badge">Badge</TextLink> alongside
+          the label of the menu item using the <Strong>badge</Strong> prop.
+        </Text>
       ),
+      Example: ({ getState, setState }) =>
+        source(
+          <Inline space="none">
+            <MenuRenderer
+              offsetSpace="small"
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Menu{' '}
+                    <IconChevron
+                      direction={open ? 'up' : 'down'}
+                      alignY="lowercase"
+                    />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItemCheckbox
+                checked={getState('checked1')}
+                onChange={setState('checked1')}
+              >
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={getState('checked2')}
+                onChange={setState('checked2')}
+                badge={
+                  <Badge tone="promote" weight="strong">
+                    Badge
+                  </Badge>
+                }
+              >
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={getState('checked3')}
+                onChange={setState('checked3')}
+              >
+                Checkbox
+              </MenuItemCheckbox>
+            </MenuRenderer>
+          </Inline>,
+        ),
     },
   ],
 };

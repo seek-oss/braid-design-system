@@ -2,7 +2,6 @@ import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import {
-  OverflowMenu,
   MenuItemDivider,
   MenuItem,
   MenuItemLink,
@@ -10,19 +9,32 @@ import {
   Text,
   TextLink,
   Box,
-  List,
+  Inline,
+  MenuRenderer,
+  IconChevron,
 } from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: ({ getState, setState }) =>
     source(
-      <Box style={{ maxWidth: '150px' }}>
-        <OverflowMenu label="Options">
+      <Inline space="none">
+        <MenuRenderer
+          offsetSpace="small"
+          trigger={(triggerProps, { open }) => (
+            <Box userSelect="none" cursor="pointer" {...triggerProps}>
+              <Text>
+                Menu{' '}
+                <IconChevron
+                  direction={open ? 'up' : 'down'}
+                  alignY="lowercase"
+                />
+              </Text>
+            </Box>
+          )}
+        >
           <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#" onClick={() => {}}>
-            Link
-          </MenuItemLink>
+          <MenuItemLink href="#">Link</MenuItemLink>
           <MenuItemDivider />
           <MenuItemCheckbox
             checked={getState('checked1')}
@@ -42,8 +54,8 @@ const docs: ComponentDocs = {
           >
             Checkbox
           </MenuItemCheckbox>
-        </OverflowMenu>
-      </Box>,
+        </MenuRenderer>
+      </Inline>,
     ),
   description: (
     <Text>
@@ -60,26 +72,17 @@ const docs: ComponentDocs = {
       </TextLink>
     </Text>
   ),
-  alternatives: [],
-  additional: [
+  alternatives: [
     {
-      label: 'See also',
-      description: (
-        <List space="large">
-          <Text tone="secondary">
-            <TextLink href="/components/MenuItem">MenuItem</TextLink> &mdash;
-            For displaying buttons and links within a menu.
-          </Text>
-          <Text tone="secondary">
-            <TextLink href="/components/MenuItemCheckbox">
-              MenuItemCheckbox
-            </TextLink>{' '}
-            &mdash; For displaying checkboxes within a menu.
-          </Text>
-        </List>
-      ),
+      name: 'MenuItem',
+      description: 'For displaying buttons and links within a menu.',
+    },
+    {
+      name: 'MenuItemCheckbox',
+      description: 'For displaying checkboxes within a menu.',
     },
   ],
+  additional: [],
 };
 
 export default docs;

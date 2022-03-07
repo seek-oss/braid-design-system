@@ -45,6 +45,9 @@ export interface ButtonProps extends ButtonStyleProps {
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
   children?: ReactNode;
+  onKeyUp?: NativeButtonProps['onKeyUp'];
+  onKeyDown?: NativeButtonProps['onKeyDown'];
+  'aria-haspopup'?: NativeButtonProps['aria-haspopup'];
   'aria-controls'?: NativeButtonProps['aria-controls'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
@@ -394,6 +397,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type = 'button',
       id,
       tabIndex,
+      onKeyUp,
+      onKeyDown,
+      'aria-haspopup': ariaHasPopup,
       'aria-controls': ariaControls,
       'aria-expanded': ariaExpanded,
       'aria-describedby': ariaDescribedBy,
@@ -407,6 +413,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       id={id}
       type={type}
       tabIndex={tabIndex}
+      onKeyUp={onKeyUp}
+      onKeyDown={onKeyDown}
+      aria-haspopup={ariaHasPopup}
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
       aria-describedby={ariaDescribedBy}
