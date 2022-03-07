@@ -1,4 +1,3 @@
-import omit from 'lodash/omit';
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
@@ -18,8 +17,8 @@ const baseWidth = style({
   width: calc(widthVar).divide(4).toString(),
 });
 
-const widths = omit(vars.contentWidth, 'xsmall', 'xlarge');
-export const width = styleVariants(widths, (w) => [
+const { small, medium, large } = vars.contentWidth;
+export const width = styleVariants({ small, medium, large }, (w) => [
   baseWidth,
   { vars: { [widthVar]: w } },
 ]);
