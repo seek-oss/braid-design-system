@@ -250,9 +250,9 @@ const docs: ComponentDocs = {
       label: 'Inserting an icon',
       description: (
         <Text>
-          For decoration and help distinguishing fields an <Strong>icon</Strong>{' '}
-          can be provided. This will be placed in the left of the field and is
-          not interactive.
+          For decoration and help distinguishing between fields, an{' '}
+          <Strong>icon</Strong> can be provided. This will be placed to the left
+          of the field and is not interactive.
         </Text>
       ),
       Example: ({ id, getState, setState }) =>

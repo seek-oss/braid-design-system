@@ -1,31 +1,45 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
 import {
-  OverflowMenu,
   MenuItemDivider,
   MenuItem,
   MenuItemLink,
   MenuItemCheckbox,
   Box,
+  IconChevron,
+  Text,
+  MenuRenderer,
+  Inline,
 } from '..';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
     background: 'surface',
-    Example: ({ handler, setDefaultState, getState, toggleState }) =>
+    Example: ({ setDefaultState, getState, toggleState }) =>
       source(
         <>
           {setDefaultState('checked1', false)}
           {setDefaultState('checked2', false)}
           {setDefaultState('checked3', false)}
 
-          <Box style={{ maxWidth: '120px' }}>
-            <OverflowMenu label="Options">
-              <MenuItem onClick={handler}>Button</MenuItem>
-              <MenuItemLink href="#" onClick={handler}>
-                Link
-              </MenuItemLink>
+          <Inline space="none">
+            <MenuRenderer
+              offsetSpace="small"
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Menu{' '}
+                    <IconChevron
+                      direction={open ? 'up' : 'down'}
+                      alignY="lowercase"
+                    />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItem onClick={() => {}}>Button</MenuItem>
+              <MenuItemLink href="#">Link</MenuItemLink>
               <MenuItemDivider />
               <MenuItemCheckbox
                 checked={getState('checked1')}
@@ -45,8 +59,8 @@ export const galleryItems: ComponentExample[] = [
               >
                 Checkbox
               </MenuItemCheckbox>
-            </OverflowMenu>
-          </Box>
+            </MenuRenderer>
+          </Inline>
         </>,
       ),
   },

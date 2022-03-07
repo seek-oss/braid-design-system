@@ -16,6 +16,9 @@ import {
   Dialog,
   IconDelete,
   Inline,
+  IconBookmark,
+  IconProfile,
+  MenuItemDivider,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -101,6 +104,38 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Placement',
+      description: (
+        <Text>
+          The menu is placed below the <Strong>trigger</Strong> by default, but
+          this can be customised via the <Strong>placement</Strong> prop.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="none">
+            <MenuRenderer
+              placement="top"
+              offsetSpace="small"
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Placed on top{' '}
+                    <IconChevron
+                      direction={open ? 'down' : 'up'}
+                      alignY="lowercase"
+                    />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItem onClick={() => {}}>Button</MenuItem>
+              <MenuItemLink href="#">Link</MenuItemLink>
+            </MenuRenderer>
+          </Inline>,
+        ),
+    },
+    {
       label: 'Spacing',
       description: (
         <Text>
@@ -133,6 +168,61 @@ const docs: ComponentDocs = {
               <MenuItemLink href="#">Link</MenuItemLink>
             </MenuRenderer>
           </Inline>,
+        ),
+    },
+    {
+      label: 'Width',
+      description: (
+        <>
+          <Text>
+            The <Strong>width</Strong> prop can be used to control the width of
+            the menu. By default, it is set to <Strong>content</Strong> growing
+            to the length of the longest menu item.
+          </Text>
+          <Text>
+            Alternatively, choose from <Strong>small</Strong>,{' '}
+            <Strong>medium</Strong> or <Strong>large</Strong> which are ratios
+            of the{' '}
+            <TextLink href="/css/vars#vars.contentwidth">contentWidth</TextLink>{' '}
+            scale for the selected theme.
+          </Text>
+        </>
+      ),
+      Example: ({ setState, getState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState('width', 'content')}
+            <Inline space="none">
+              <MenuRenderer
+                offsetSpace="small"
+                width={getState('width')}
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text>
+                      Menu width: <Strong>{getState('width')}</Strong>{' '}
+                      <IconChevron
+                        direction={open ? 'up' : 'down'}
+                        alignY="lowercase"
+                      />
+                    </Text>
+                  </Box>
+                )}
+              >
+                <MenuItem onClick={() => setState('width', 'content')}>
+                  Content
+                </MenuItem>
+                <MenuItem onClick={() => setState('width', 'small')}>
+                  Small
+                </MenuItem>
+                <MenuItem onClick={() => setState('width', 'medium')}>
+                  Medium
+                </MenuItem>
+                <MenuItem onClick={() => setState('width', 'large')}>
+                  Large
+                </MenuItem>
+              </MenuRenderer>
+            </Inline>
+          </>,
         ),
     },
     {
@@ -206,6 +296,51 @@ const docs: ComponentDocs = {
               </Stack>
             </Dialog>
           </>,
+        ),
+    },
+    {
+      label: 'Using icons in the menu',
+      description: (
+        <Text>
+          When using{' '}
+          <TextLink href="/components/MenuItem#inserting-an-icon">
+            menu items with icons
+          </TextLink>
+          , you may find that not all of them have or need one. In order to
+          maintain a uniform alignment across all the menu items, you can
+          provide the <Strong>reserveIconSpace</Strong> prop.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="none">
+            <MenuRenderer
+              reserveIconSpace
+              offsetSpace="small"
+              width="small"
+              trigger={(triggerProps, { open }) => (
+                <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                  <Text>
+                    Reserved icon space{' '}
+                    <IconChevron
+                      direction={open ? 'up' : 'down'}
+                      alignY="lowercase"
+                    />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItem onClick={() => {}} icon={<IconProfile />}>
+                Item
+              </MenuItem>
+              <MenuItem onClick={() => {}} icon={<IconBookmark />}>
+                Item
+              </MenuItem>
+              <MenuItemDivider />
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+            </MenuRenderer>
+          </Inline>,
         ),
     },
     {

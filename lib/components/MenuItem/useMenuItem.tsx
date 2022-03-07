@@ -6,7 +6,9 @@ import React, {
   useEffect,
   ReactNode,
   MouseEvent,
+  ReactElement,
 } from 'react';
+import { BadgeProps } from '../Badge/Badge';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { touchableText } from '../../hooks/typography';
@@ -17,7 +19,9 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { atoms } from '../../css/atoms/atoms';
+import { iconSize } from '../../hooks/useIcon';
 import * as styles from './useMenuItem.css';
+import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 
 const {
   MENU_ITEM_UP,
@@ -31,6 +35,7 @@ const {
 } = actionTypes;
 
 const menuItemChildrenSize = 'standard';
+const menuItemPaddingSize = 'small';
 
 type MenuItemTone = 'critical' | undefined;
 
@@ -146,10 +151,9 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
         styles.menuItem,
         touchableText[menuItemChildrenSize],
         atoms({
-          display: 'flex',
-          alignItems: 'center',
+          display: 'block',
           width: 'full',
-          paddingX: 'small',
+          paddingX: menuItemPaddingSize,
           cursor: 'pointer',
           textAlign: 'left',
           outline: 'none',
@@ -160,20 +164,85 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   } as const;
 }
 
-interface MenuItemChildrenProps {
+export interface MenuItemChildrenProps {
   children: ReactNode;
   tone: MenuItemTone;
+  badge: ReactElement<BadgeProps> | undefined;
+  icon: ReactNode | undefined;
+  formElement?: boolean;
 }
-function MenuItemChildren({ tone, children }: MenuItemChildrenProps) {
+function MenuItemChildren({
+  icon,
+  tone,
+  children,
+  badge,
+  formElement = false,
+}: MenuItemChildrenProps) {
+  const menuRendererContext = useContext(MenuRendererContext);
+
+  assert(
+    menuRendererContext !== null,
+    `MenuItem must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
+  );
+
+  assert(
+    // @ts-expect-error
+    !badge || badge.type.__isBadge__,
+    `MenuItem badge prop can only be an instance of Badge. e.g. <MenuItem badge={<Badge>New</Badge>}>`,
+  );
+
+  let leftSlot: ReactNode = null;
+
+  if (!formElement) {
+    if (icon) {
+      leftSlot = (
+        <Text
+          size={menuItemChildrenSize}
+          baseline={false}
+          tone={tone === 'critical' ? tone : undefined}
+        >
+          {icon}
+        </Text>
+      );
+    } else if (menuRendererContext.reserveIconSpace) {
+      leftSlot = (
+        <Box component="span" display="block" className={iconSize()} />
+      );
+    }
+  }
+
   return (
-    <Box component="span" userSelect="none">
-      <Text
-        size={menuItemChildrenSize}
-        baseline={false}
-        tone={tone === 'critical' ? tone : undefined}
-      >
-        {children}
-      </Text>
+    <Box component="span" display="flex" alignItems="center" minWidth={0}>
+      {leftSlot ? (
+        <Box
+          component="span"
+          paddingRight={menuItemPaddingSize}
+          flexShrink={0}
+          minWidth={0}
+        >
+          {leftSlot}
+        </Box>
+      ) : null}
+      <Box component="span" minWidth={0}>
+        <Text
+          size={menuItemChildrenSize}
+          baseline={false}
+          tone={tone === 'critical' ? tone : undefined}
+          truncate
+        >
+          {children}
+        </Text>
+      </Box>
+      {badge ? (
+        <Box
+          component="span"
+          paddingLeft={menuItemPaddingSize}
+          flexShrink={0}
+          minWidth={0}
+        >
+          {badge}
+        </Box>
+      ) : null}
     </Box>
   );
 }
