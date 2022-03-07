@@ -1,5 +1,79 @@
 # braid-design-system
 
+## 31.7.0
+
+### Minor Changes
+
+- **MenuRenderer, OverflowMenu:** Add menu `width` and `placement` support ([#1075](https://github.com/seek-oss/braid-design-system/pull/1075))
+
+  Provides a set of `width`s to control how wide the menu is, where `content` is the default. The available widths are ratioed off the `contentWidth`s specified on the theme.
+
+  Additionally the `placement` of the menu can choose from either `top` or `bottom` where the latter remains the default.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <MenuRenderer
+    // ...
+    width="small"
+    placement="top"
+  >
+    ...
+  </MenuRenderer>
+  ```
+
+- **MenuItem, MenuItemLink, MenuRenderer, OverflowMenu:** Add `icon` support ([#1075](https://github.com/seek-oss/braid-design-system/pull/1075))
+
+  Provides a designed slot for adding an icon to `MenuItem` and `MenuItemLink`. To compliment this we have introduced `reserveIconSpace` on both `MenuRenderer` and `OverflowMenu` so the labels in menu items without icons align with the labels of menu items with an icon.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <MenuRenderer reserveIconSpace>
+    <MenuItem
+      // ...
+      icon={<IconBookmark />}
+    >
+      Menu Item
+    </MenuItem>
+  </MenuRenderer>
+  ```
+
+- **MenuItem, MenuItemLink, MenuItemChecklist:** Add `badge` support ([#1075](https://github.com/seek-oss/braid-design-system/pull/1075))
+
+  Provides a designed slot for adding a `Badge` to all the variants of a menu item.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <MenuRenderer>
+    <MenuItem
+      // ...
+      badge={<Badge>Badge</Badge>}
+    >
+      Menu Item
+    </MenuItem>
+  </MenuRenderer>
+  ```
+
+### Patch Changes
+
+- **Button:** Support using as menu trigger ([#1075](https://github.com/seek-oss/braid-design-system/pull/1075))
+
+  Allow a `Button` to receive all of the required props for a menu trigger. As a result a `Button` now accepts `onKeyUp`, `onKeyDown` and `aria-haspopup`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <MenuRenderer
+    trigger={triggerProps => <Button {...triggerProps}>Button</Button>}
+  >
+    ...
+  </MenuRenderer>
+  ```
+
+- **Column:** Enure inner element honours `component` prop ([#1075](https://github.com/seek-oss/braid-design-system/pull/1075))
+
 ## 31.6.0
 
 ### Minor Changes
