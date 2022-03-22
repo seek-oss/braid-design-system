@@ -11,6 +11,7 @@ import {
   Heading,
 } from '../';
 import source from '../../utils/source.macro';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -220,11 +221,19 @@ const docs: ComponentDocs = {
     {
       label: 'Placeholder prompts',
       description: (
-        <Text>
-          The field prompts may be customised by providing a{' '}
-          <Strong>monthLabel</Strong> and/or <Strong>yearLabel</Strong> and will
-          be displayed to a user when no value is selected.
-        </Text>
+        <>
+          <Text>
+            The field prompts may be customised by providing a{' '}
+            <Strong>monthLabel</Strong> and/or <Strong>yearLabel</Strong> and
+            will be displayed to a user when no value is selected.
+          </Text>
+
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            placeholder text is also used as the <Strong>aria-label</Strong> for
+            each field within the fieldset.
+          </Text>
+        </>
       ),
       Example: ({ id, getState, setState }) =>
         source(

@@ -20,6 +20,8 @@ const toneToIcon = {
   positive: IconPositive,
 };
 
+export const toastDuration = 10000;
+
 const borderRadius = 'xlarge';
 
 interface ActionProps extends ToastAction {
@@ -43,7 +45,7 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
 };
 
 interface ToastProps extends InternalToast {
-  onClear: (dedupeKey: string, id: string) => void;
+  onClose: (dedupeKey: string, id: string) => void;
 }
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
   (
@@ -55,18 +57,19 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       message,
       description,
       tone,
-      onClear,
+      onClose,
+      closeLabel = 'Close',
       action,
       shouldRemove,
     },
     ref,
   ) => {
     const remove = useCallback(
-      () => onClear(dedupeKey, id),
-      [onClear, dedupeKey, id],
+      () => onClose(dedupeKey, id),
+      [onClose, dedupeKey, id],
     );
     const { stopTimeout, startTimeout } = useTimeout({
-      duration: 10000,
+      duration: toastDuration,
       onTimeout: remove,
     });
 
@@ -145,7 +148,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                     >
                       <ClearButton
                         onClick={remove}
-                        label="Clear"
+                        label={closeLabel}
                         data={
                           process.env.NODE_ENV !== 'production'
                             ? { testid: 'clearToast' }

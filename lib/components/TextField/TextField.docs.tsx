@@ -12,6 +12,7 @@ import {
   Heading,
 } from '../';
 import source from '../../utils/source.macro';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -165,7 +166,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Providing a <Strong>placeholder</Strong> will display as a prompt to
-          the user no value is selected.
+          the user when no value is entered.
         </Text>
       ),
       Example: ({ id, getState, setState }) =>
@@ -182,12 +183,20 @@ const docs: ComponentDocs = {
     {
       label: 'Clearing the field',
       description: (
-        <Text>
-          A <TextLink href="/components/IconClear">clear icon</TextLink> button
-          will appear in the field when the user has entered text. You must pass
-          a function to the <Strong>onClear</Strong> prop, which will be called
-          when the button is clicked.
-        </Text>
+        <>
+          <Text>
+            A <TextLink href="/components/IconClear">clear icon</TextLink>{' '}
+            button will appear in the field when the user has entered text. You
+            must pass a function to the <Strong>onClear</Strong> prop, which
+            will be called when the button is clicked.
+          </Text>
+
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the clear button can be customised
+            by providing a <Strong>clearLabel</Strong> prop.
+          </Text>
+        </>
       ),
       Example: ({ id, getState, setState, setDefaultState }) =>
         source(
@@ -197,9 +206,10 @@ const docs: ComponentDocs = {
             <TextField
               label="Label"
               id={id}
-              onChange={setState('textfield')}
               value={getState('textfield')}
+              onChange={setState('textfield')}
               onClear={() => setState('textfield', '')}
+              clearLabel="Clear field"
             />
           </>,
         ),

@@ -13,10 +13,33 @@ import {
 } from '../';
 import source from '../../utils/source.macro';
 import { animationDelayValueInMs } from './Loader.css';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () => source(<Loader />),
+  accessibility: (
+    <>
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria-practices/#alert">
+          WAI-ARIA Alert Pattern
+        </TextLink>
+        , announcing its presence using an{' '}
+        <TextLink href="https://www.w3.org/TR/wai-aria/#aria-live">
+          assertive
+        </TextLink>{' '}
+        level of importance, ensuring the same level of feedback is provided to
+        screen reader users.
+      </Text>
+
+      <Text tone="promote" id="translations">
+        <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+        announced message can be customised by providing the{' '}
+        <Strong>aria-label</Strong> prop.
+      </Text>
+    </>
+  ),
   alternatives: [],
   additional: [
     {

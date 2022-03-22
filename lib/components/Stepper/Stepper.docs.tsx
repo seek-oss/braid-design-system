@@ -8,6 +8,7 @@ import {
   Column,
   Columns,
   IconChevron,
+  IconLanguage,
   Inline,
   Notice,
   Stack,
@@ -41,7 +42,12 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#general-principles-of-landmark-design">
           General Principles of Landmark Design
         </TextLink>{' '}
-        it is neccessary to provide a <Strong>label</Strong>.
+        it is neccessary for it to have an <Strong>aria-label</Strong>.
+      </Text>
+      <Text tone="promote" id="translations">
+        <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+        <Strong>aria-label</Strong> can be customised by providing the{' '}
+        <Strong>label</Strong> prop.
       </Text>
       <Text>
         Implements the{' '}

@@ -222,7 +222,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             Providing a <Strong>placeholder</Strong> will display as a prompt to
-            the user no value is selected.
+            the user when no value is selected.
           </Text>
           <Notice tone="info">
             <Text>

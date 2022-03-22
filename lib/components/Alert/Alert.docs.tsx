@@ -3,6 +3,7 @@ import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
 import { Alert, Text, Strong, Stack, TextLink, List } from '../';
 import { Card } from '../Card/Card';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -96,10 +97,18 @@ const docs: ComponentDocs = {
     {
       label: 'Dismissable alerts',
       description: (
-        <Text>
-          An Alert can be made dismissable by providing an{' '}
-          <Strong>onClose</Strong> handler.
-        </Text>
+        <>
+          <Text>
+            An Alert can be made dismissable by providing an{' '}
+            <Strong>onClose</Strong> handler.
+          </Text>
+
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the close button can be customised
+            via the <Strong>closeLabel</Strong> prop.
+          </Text>
+        </>
       ),
       background: 'surface',
       Example: () =>

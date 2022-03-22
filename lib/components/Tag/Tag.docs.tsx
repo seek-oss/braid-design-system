@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Card, Inline, Tag, Strong, Text, TextLinkButton } from '../';
 import source from '../../utils/source.macro';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -21,11 +22,19 @@ const docs: ComponentDocs = {
     {
       label: 'Clearable',
       description: (
-        <Text>
-          Tags can be made clearable, by providing an <Strong>onClear</Strong>{' '}
-          handler and a <Strong>clearLabel</Strong> to describe what clicking it
-          will do.
-        </Text>
+        <>
+          <Text>
+            Tags can be made clearable, by providing an <Strong>onClear</Strong>{' '}
+            handler and a <Strong>clearLabel</Strong> to describe what clicking
+            it will do.
+          </Text>
+
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the clear button can be customised
+            by providing the <Strong>clearLabel</Strong> prop.
+          </Text>
+        </>
       ),
       background: 'surface',
       Example: ({ getState, setState, toggleState }) =>

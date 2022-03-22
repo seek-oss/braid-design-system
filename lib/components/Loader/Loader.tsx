@@ -28,6 +28,8 @@ export const Loader = ({
       delayVisibility ? styles.delay : undefined,
     ]}
     aria-label={ariaLabel}
+    role="alert"
+    aria-live="assertive"
     {...(data ? buildDataAttributes(data) : undefined)}
   >
     <svg

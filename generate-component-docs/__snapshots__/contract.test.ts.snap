@@ -89,6 +89,7 @@ Object {
     aria-labelledby: string
     autoFocus?: boolean
     automaticSelection?: boolean
+    clearLabel?: string
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
@@ -7041,6 +7042,7 @@ Object {
     autoComplete?: string
     autoFocus?: boolean
     characterLimit?: number
+    clearLabel?: string
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean

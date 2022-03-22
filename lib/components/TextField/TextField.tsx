@@ -32,6 +32,7 @@ export type TextFieldBaseProps = Omit<
   onClear?: () => void;
   placeholder?: InputProps['placeholder'];
   characterLimit?: number;
+  clearLabel?: string;
 };
 export type TextFieldLabelProps = FieldLabelVariant;
 export type TextFieldProps = TextFieldBaseProps & TextFieldLabelProps;
@@ -47,6 +48,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onClear,
       placeholder,
       characterLimit,
+      clearLabel,
       ...restProps
     },
     forwardedRef,
@@ -81,6 +83,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             <ClearField
               hide={!clearable}
               onClear={onClear}
+              label={clearLabel}
               inputRef={inputRef}
             />
           ) : null

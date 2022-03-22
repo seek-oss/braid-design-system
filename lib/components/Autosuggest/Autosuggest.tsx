@@ -266,6 +266,7 @@ export type AutosuggestBaseProps<Value> = Omit<
         value: AutosuggestValue<Value>,
       ) => Suggestions<Value> | { message: string });
   onChange: (value: AutosuggestValue<Value>) => void;
+  clearLabel?: string;
   automaticSelection?: boolean;
   hideSuggestionsOnSelection?: boolean;
   showMobileBackdrop?: boolean;
@@ -295,6 +296,7 @@ export const Autosuggest = forwardRef(function <Value>(
     onBlur = noop,
     placeholder,
     type = 'text',
+    clearLabel,
     onClear,
     translations = autosuggest,
     ...restProps
@@ -678,6 +680,7 @@ export const Autosuggest = forwardRef(function <Value>(
                 <ClearField
                   hide={!clearable}
                   onClear={onClear}
+                  label={clearLabel}
                   inputRef={inputRef}
                 />
               ) : null

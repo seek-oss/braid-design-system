@@ -1,7 +1,16 @@
 import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import source from '../../utils/source.macro';
-import { Drawer, Button, Inline, Text, TextLink, Box, Strong } from '../';
+import {
+  Drawer,
+  Button,
+  Inline,
+  Text,
+  TextLink,
+  Box,
+  Strong,
+  IconLanguage,
+} from '../';
 import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
@@ -53,7 +62,7 @@ const docs: ComponentDocs = {
         to the users{' '}
         <TextLink href="https://www.w3.org/WAI/WCAG21/Techniques/css/C39">
           reduce motion
-        </TextLink>
+        </TextLink>{' '}
         preference.
       </Text>
     </>
@@ -184,6 +193,49 @@ const docs: ComponentDocs = {
               <Placeholder height={100} width="100%" />
               <Placeholder height={100} width="100%" />
               <Placeholder height={100} width="100%" />
+            </Drawer>
+          </>,
+        ),
+    },
+    {
+      label: 'Customising the close behaviour',
+      description: (
+        <>
+          <Text>
+            The <Strong>onClose</Strong> function is called when the user either
+            click the close button inside the Drawer, or clicks on the backdrop
+            outside the Drawer.
+          </Text>
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the close button can be customised
+            by providing a <Strong>closeLabel</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
+            <Box padding="medium">
+              <Inline
+                space="small"
+                align={{ mobile: 'center', tablet: 'left' }}
+              >
+                <Button onClick={() => toggleState('dialog')}>
+                  Open dialog
+                </Button>
+              </Inline>
+            </Box>
+
+            <Drawer
+              id={id}
+              title="Drawer Title"
+              description={<Text tone="secondary">Optional description</Text>}
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
+              closeLabel="Close Drawer"
+            >
+              <Placeholder height={100} label="Drawer Content" />
             </Drawer>
           </>,
         ),

@@ -19,7 +19,7 @@ export const screenshots: ComponentScreenshot = {
             message="Critical toast"
             treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
-            onClear={() => {}}
+            onClose={() => {}}
             id="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
@@ -43,7 +43,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
-            onClear={() => {}}
+            onClose={() => {}}
             id="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
@@ -68,7 +68,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
-            onClear={() => {}}
+            onClose={() => {}}
             id="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
@@ -88,7 +88,7 @@ export const screenshots: ComponentScreenshot = {
             message="Positive toast"
             treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
-            onClear={() => {}}
+            onClose={() => {}}
             id="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
@@ -112,7 +112,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
-            onClear={() => {}}
+            onClose={() => {}}
             id="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
@@ -137,7 +137,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
-            onClear={() => {}}
+            onClose={() => {}}
             id="n/a"
             dedupeKey="n/a"
             shouldRemove={false}

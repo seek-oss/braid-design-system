@@ -12,7 +12,7 @@ interface ToasterProps {
 export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const { itemRef, remove } = useFlipList();
 
-  const onClear = useCallback(
+  const onClose = useCallback(
     (dedupeKey: string, id: string) => {
       remove(id, () => {
         removeToast(dedupeKey);
@@ -35,7 +35,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
           <ToastComponent
             ref={itemRef(id)}
             id={id}
-            onClear={onClear}
+            onClose={onClose}
             {...rest}
           />
         </Box>

@@ -9,10 +9,11 @@ import {
   Strong,
   IconPromote,
   Notice,
+  IconLanguage,
 } from '..';
 import { useThemeSettings } from '../../../site/src/App/ThemeSetting';
 import Code from '../../../site/src/App/Code/Code';
-import Toast from './Toast';
+import Toast, { toastDuration } from './Toast';
 import source from '../../utils/source.macro';
 import { useToast } from './ToastContext';
 
@@ -47,7 +48,7 @@ const docs: ComponentDocs = {
             shouldRemove={false}
             treatTheme={theme.treatTheme}
             vanillaTheme={theme.vanillaTheme}
-            onClear={() => {}}
+            onClose={() => {}}
             message="Positive toast"
             tone="positive"
           />
@@ -174,7 +175,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={() => {}}
+              onClose={() => {}}
               message="Positive message"
               tone="positive"
             />
@@ -184,7 +185,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={() => {}}
+              onClose={() => {}}
               message="Critical message"
               tone="critical"
             />
@@ -233,7 +234,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={() => {}}
+              onClose={() => {}}
               message="Positive message"
               tone="positive"
               description="Longer description providing more context for the user."
@@ -296,7 +297,7 @@ const docs: ComponentDocs = {
               shouldRemove={false}
               treatTheme={theme.treatTheme}
               vanillaTheme={theme.vanillaTheme}
-              onClear={() => {}}
+              onClose={() => {}}
               message="Positive message"
               tone="positive"
               action={{
@@ -307,6 +308,66 @@ const docs: ComponentDocs = {
           </Stack>,
         );
         /* eslint-enable no-alert */
+
+        return {
+          code,
+          value,
+        };
+      },
+    },
+    {
+      label: 'Dismissing messages',
+      description: (
+        <>
+          <Text>
+            {`A toast message can be dismissed via the close button or automatically after ${
+              toastDuration / 1000
+            } seconds.`}
+          </Text>
+
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the close button can be customised
+            by providing a <Strong>closeLabel</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: ({ id, showToast }) => {
+        const { theme } = useThemeSettings();
+
+        const { code } = source(
+          <Inline space="small" align="center">
+            <Button
+              onClick={() =>
+                showToast({
+                  tone: 'positive',
+                  message: 'Message',
+                  description: 'Using a custom close button label',
+                  closeLabel: 'Dismiss this message',
+                })
+              }
+            >
+              Show animation <IconPromote alignY="lowercase" />
+            </Button>
+          </Inline>,
+        );
+
+        const { value } = source(
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme.treatTheme}
+              vanillaTheme={theme.vanillaTheme}
+              onClose={() => {}}
+              tone="positive"
+              message="Message"
+              description="Using a custom close button label"
+              closeLabel="Dismiss this message"
+            />
+          </Stack>,
+        );
 
         return {
           code,
