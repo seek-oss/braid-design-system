@@ -5263,7 +5263,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001249
+      caniuse-lite: 1.0.30001319
       colorette: 1.2.2
       fraction.js: 4.1.1
       normalize-range: 0.1.2
@@ -5278,7 +5278,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001249
+      caniuse-lite: 1.0.30001319
       colorette: 1.2.2
       fraction.js: 4.1.1
       normalize-range: 0.1.2
@@ -5291,7 +5291,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001249
+      caniuse-lite: 1.0.30001319
       colorette: 1.2.2
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -5920,7 +5920,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001249
+      caniuse-lite: 1.0.30001319
       electron-to-chromium: 1.3.798
       escalade: 3.1.1
       node-releases: 1.1.73
@@ -5931,7 +5931,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001249
+      caniuse-lite: 1.0.30001319
       colorette: 1.2.2
       electron-to-chromium: 1.3.798
       escalade: 3.1.1
@@ -6153,13 +6153,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.16.7
-      caniuse-lite: 1.0.30001249
+      caniuse-lite: 1.0.30001319
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite/1.0.30001249:
-    resolution: {integrity: sha512-vcX4U8lwVXPdqzPWi6cAJ3FnQaqXbBqy/GZseKNQzRj37J7qZdGcBtxq/QLFNLLlfsoXLUdHw8Iwenri86Tagw==}
+  /caniuse-lite/1.0.30001319:
+    resolution: {integrity: sha512-xjlIAFHucBRSMUo1kb5D4LYgcN1M45qdKP++lhqowDpwJwGkpIRTt5qQqnhxjj1vHcI7nrJxWhCC1ATrCEBTcw==}
     dev: true
 
   /capital-case/1.0.4:
