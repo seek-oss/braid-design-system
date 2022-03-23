@@ -11,6 +11,7 @@ import {
   IconMail,
   Box,
   Strong,
+  IconLanguage,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 
@@ -49,7 +50,7 @@ const docs: ComponentDocs = {
         to the users{' '}
         <TextLink href="https://www.w3.org/WAI/WCAG21/Techniques/css/C39">
           reduce motion
-        </TextLink>
+        </TextLink>{' '}
         preference.
       </Text>
     </>
@@ -187,6 +188,48 @@ const docs: ComponentDocs = {
                   </Inline>
                 </Box>
               </Stack>
+            </Dialog>
+          </>,
+        ),
+    },
+    {
+      label: 'Customising the close behaviour',
+      description: (
+        <>
+          <Text>
+            The <Strong>onClose</Strong> function is called when the user either
+            click the close button inside the Dialog, or clicks on the backdrop
+            outside the Dialog.
+          </Text>
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the close button can be customised
+            by providing a <Strong>closeLabel</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <>
+            <Box padding="medium">
+              <Inline
+                space="small"
+                align={{ mobile: 'center', tablet: 'left' }}
+              >
+                <Button onClick={() => toggleState('dialog')}>
+                  Open dialog
+                </Button>
+              </Inline>
+            </Box>
+
+            <Dialog
+              id={id}
+              title="Dialog Title"
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
+              closeLabel="Close Dialog"
+            >
+              <Placeholder height={100} width="100%" />
             </Dialog>
           </>,
         ),

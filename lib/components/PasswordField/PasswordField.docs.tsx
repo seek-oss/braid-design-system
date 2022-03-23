@@ -10,6 +10,7 @@ import {
   Heading,
 } from '../';
 import source from '../../utils/source.macro';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -151,7 +152,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Providing a <Strong>placeholder</Strong> will display as a prompt to
-          the user no value is selected.
+          the user no value is entered.
         </Text>
       ),
       Example: ({ id, getState, setState }) =>
@@ -162,6 +163,34 @@ const docs: ComponentDocs = {
             onChange={setState('password')}
             value={getState('password')}
             placeholder="Enter password"
+          />,
+        ),
+    },
+    {
+      label: 'Toggling visibility',
+      description: (
+        <>
+          <Text>
+            The button inside the field can be used to toggle the visibility of
+            the password.
+          </Text>
+
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the toggle visibility button can be
+            customised by providing a <Strong>visibilityToggleLabel</Strong>{' '}
+            prop.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <PasswordField
+            label="Label"
+            id={id}
+            onChange={setState('password')}
+            value={getState('password')}
+            visibilityToggleLabel="Hide/show the password"
           />,
         ),
     },

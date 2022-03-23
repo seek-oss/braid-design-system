@@ -6,6 +6,7 @@ import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
 import { defaultPageLimit } from './Pagination';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -40,7 +41,12 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#general-principles-of-landmark-design">
           General Principles of Landmark Design
         </TextLink>{' '}
-        it is neccessary to provide a <Strong>label</Strong>.
+        it is neccessary for it to have an <Strong>aria-label</Strong>.
+      </Text>
+      <Text tone="promote" id="translate-nav">
+        <IconLanguage title="Translation hint" titleId="translate-nav" /> The{' '}
+        <Strong>aria-label</Strong> can be customised by providing the{' '}
+        <Strong>label</Strong> prop.
       </Text>
       <Text>
         Given <Strong>Pagination</Strong> is presented semantically as a list of
@@ -87,6 +93,46 @@ const docs: ComponentDocs = {
                   setState('page', page);
                 },
               })}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Customising the labels',
+      description: (
+        <>
+          <Text>
+            The label text for the navigation links can be customised using the{' '}
+            <Strong>previousLabel</Strong> and <Strong>nextLabel</Strong> props.
+          </Text>
+          <Text tone="promote" id="translate-page">
+            <IconLanguage title="Translation hint" titleId="translate-page" />{' '}
+            The <Strong>aria-label</Strong> for the page links can be customised
+            by providing a function to the <Strong>pageLabel</Strong> prop. The
+            function receives the page number should it be required for
+            interpolation.
+          </Text>
+        </>
+      ),
+      Example: ({ setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('page', 3)}
+
+            <Pagination
+              page={getState('page')}
+              total={10}
+              linkProps={({ page }) => ({
+                href: `#`,
+                onClick: (e) => {
+                  e.preventDefault();
+                  setState('page', page);
+                },
+              })}
+              label="Custom labels example"
+              previousLabel="Back"
+              nextLabel="Forward"
+              pageLabel={(page) => `Jump to page ${page}`}
             />
           </>,
         ),

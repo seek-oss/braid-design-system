@@ -13,6 +13,7 @@ export interface InternalToast {
   shouldRemove: boolean;
   description?: string;
   action?: ToastAction;
+  closeLabel?: string;
 }
 
 export interface Toast {
@@ -21,4 +22,5 @@ export interface Toast {
   message: string;
   description?: string;
   action?: ToastAction;
+  closeLabel?: string;
 }

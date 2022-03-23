@@ -2,11 +2,26 @@ import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../site/src/types';
 import { Rating, Stack, Inline, Text, Strong, TextLink } from '../';
+import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
   Example: () => source(<Rating size="large" rating={3} />),
+  accessibility: (
+    <>
+      <Text>
+        To support users with screen readers, an <Strong>aria-label</Strong> is
+        used to provider a description of the rating.
+      </Text>
+
+      <Text tone="promote" id="translations">
+        <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+        <Strong>aria-label</Strong> can be customised by providing the{' '}
+        <Strong>aria-label</Strong> prop.
+      </Text>
+    </>
+  ),
   alternatives: [],
   additional: [
     {
