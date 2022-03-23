@@ -119,8 +119,11 @@ const page: Page = {
                 iterate. We&rsquo;ll nest the content inside a{' '}
                 <TextLink href="/components/Box">Box</TextLink>, and add in the{' '}
                 <TextLink href="/components/Heading">Heading</TextLink>,{' '}
-                <TextLink href="/components/Button">Button</TextLink> and a
-                `Placeholder` for a marketing illustration.
+                <TextLink href="/components/Button">Button</TextLink> and a{' '}
+                <TextLink href="/guides/playroom-prototyping#placeholder">
+                  Placeholder
+                </TextLink>{' '}
+                for a marketing illustration.
               </Text>
               <Text component="p">
                 A `Placeholder` is only available in Playroom to support the
