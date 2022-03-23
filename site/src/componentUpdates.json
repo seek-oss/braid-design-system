@@ -2342,5 +2342,42 @@
         "summary": "**Column:** Enure inner element honours `component` prop"
       }
     ]
+  },
+  {
+    "version": "31.8.0",
+    "updates": [
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast:** Add `closeLabel` prop\n\nTo support translations, the close button can now be customised using the `closeLabel` prop.\n\n**EXAMPLE USAGE:**\n```jsx\n<Button\n  onClick={() =>\n    showToast({\n      closeLabel: 'Close'\n      // ...\n    })\n  }\n/>\n```"
+      },
+      {
+        "updated": [
+          "IconThumb"
+        ],
+        "summary": "**IconThumb:** Update artwork"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "TextField"
+        ],
+        "summary": "**Autosuggest, TextField:** Add `clearLabel` prop\n\nTo support translations, the clear button in the field can now be customised using the `clearLabel` prop.\n\n**EXAMPLE USAGE:**\n```jsx\n<Autosuggest\n  clearLabel=\"Clear\"\n  // ...\n/>\n```"
+      },
+      {
+        "updated": [
+          "Loader"
+        ],
+        "summary": "**Loader:** Apply WAI-ARIA alert pattern\n\nTo improve the feedback of the `Loader` provided to screen readers, we now apply the [WAI-ARIA Alert Pattern](https://www.w3.org/TR/wai-aria-practices/#alert) using an [assertive](https://www.w3.org/TR/wai-aria/#aria-live) level of importance."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Mouse leave no longer affects focus state\n\nPreviously, moving the mouse from hovering a menu item to outside of the menu would shift focus the to the menu trigger. This is not a requirement for accessibility and introduces undesired behaviour when the trigger is used in conjunction with [TooltipRenderer](https://seek-oss.github.io/braid-design-system/components/TooltipRenderer).\n\nNote: As per the [menu accessibility guidelines](https://www.w3.org/TR/wai-aria-practices-1.2/#menu), focus will still be returned to the trigger when clicking outside the menu, selecting a menu item or pressing the escape key."
+      }
+    ]
   }
 ]

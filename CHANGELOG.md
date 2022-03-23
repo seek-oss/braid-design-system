@@ -1,5 +1,53 @@
 # braid-design-system
 
+## 31.8.0
+
+### Minor Changes
+
+- **useToast:** Add `closeLabel` prop ([#1079](https://github.com/seek-oss/braid-design-system/pull/1079))
+
+  To support translations, the close button can now be customised using the `closeLabel` prop.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Button
+    onClick={() =>
+      showToast({
+        closeLabel: 'Close',
+        // ...
+      })
+    }
+  />
+  ```
+
+- **Autosuggest, TextField:** Add `clearLabel` prop ([#1079](https://github.com/seek-oss/braid-design-system/pull/1079))
+
+  To support translations, the clear button in the field can now be customised using the `clearLabel` prop.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Autosuggest
+    clearLabel="Clear"
+    // ...
+  />
+  ```
+
+- **Loader:** Apply WAI-ARIA alert pattern ([#1079](https://github.com/seek-oss/braid-design-system/pull/1079))
+
+  To improve the feedback of the `Loader` provided to screen readers, we now apply the [WAI-ARIA Alert Pattern](https://www.w3.org/TR/wai-aria-practices/#alert) using an [assertive](https://www.w3.org/TR/wai-aria/#aria-live) level of importance.
+
+### Patch Changes
+
+- **IconThumb:** Update artwork ([#1080](https://github.com/seek-oss/braid-design-system/pull/1080))
+
+- **MenuRenderer, OverflowMenu:** Mouse leave no longer affects focus state ([#1077](https://github.com/seek-oss/braid-design-system/pull/1077))
+
+  Previously, moving the mouse from hovering a menu item to outside of the menu would shift focus the to the menu trigger. This is not a requirement for accessibility and introduces undesired behaviour when the trigger is used in conjunction with [TooltipRenderer](https://seek-oss.github.io/braid-design-system/components/TooltipRenderer).
+
+  Note: As per the [menu accessibility guidelines](https://www.w3.org/TR/wai-aria-practices-1.2/#menu), focus will still be returned to the trigger when clicking outside the menu, selecting a menu item or pressing the escape key.
+
 ## 31.7.0
 
 ### Minor Changes
