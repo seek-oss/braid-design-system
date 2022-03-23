@@ -133,7 +133,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(mouseOverMenuItems[2]).toHaveFocus();
       });
 
-      it('should unfocus all menu items on mouse out', () => {
+      it('should not affect the focus on mouse out', () => {
         const { getAllByRole } = renderMenu();
 
         const { menu, menuButton, menuItems } = getElements({
@@ -148,9 +148,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
           getAllByRole,
         });
 
-        expect(mouseOutMenuItems[0]).not.toHaveFocus();
-        expect(mouseOutMenuItems[1]).not.toHaveFocus();
-        expect(mouseOutMenuItems[2]).not.toHaveFocus();
+        expect(mouseOutMenuItems[1]).toHaveFocus();
       });
 
       it('should trigger the click handler on a MenuItem', () => {

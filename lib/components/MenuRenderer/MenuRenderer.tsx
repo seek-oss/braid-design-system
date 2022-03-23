@@ -65,7 +65,6 @@ const {
   MENU_TRIGGER_TAB,
   MENU_TRIGGER_ESCAPE,
   BACKDROP_CLICK,
-  MENU_MOUSE_LEAVE,
 } = actionTypes;
 
 interface State {
@@ -154,12 +153,6 @@ export const MenuRenderer = ({
             ...state,
             open: !state.open,
             highlightIndex: state.open ? CLOSED_INDEX : 0,
-          };
-        }
-        case MENU_MOUSE_LEAVE: {
-          return {
-            ...state,
-            highlightIndex: CLOSED_INDEX,
           };
         }
         case MENU_TRIGGER_CLICK: {
@@ -335,10 +328,6 @@ export function Menu({
         role="menu"
         position={position}
         zIndex="dropdown"
-        onMouseLeave={() => {
-          dispatch({ type: MENU_MOUSE_LEAVE });
-          focusTrigger();
-        }}
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
