@@ -264,6 +264,7 @@ export const TooltipRenderer = ({
             className={atoms({
               reset: 'div',
               zIndex: 'notification',
+              pointerEvents: 'none',
               display: triggerRef && visible ? undefined : 'none',
             })}
             {...(visible
