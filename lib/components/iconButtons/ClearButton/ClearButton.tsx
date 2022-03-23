@@ -4,6 +4,7 @@ import { IconClear } from '../../icons';
 
 export type ClearButtonProps = Pick<
   IconButtonProps,
+  | 'id'
   | 'onClick'
   | 'onMouseDown'
   | 'onKeyUp'
@@ -20,6 +21,7 @@ export type ClearButtonProps = Pick<
 export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
   (
     {
+      id,
       label,
       onClick,
       onKeyUp,
@@ -35,6 +37,7 @@ export const ClearButton = forwardRef<HTMLButtonElement, ClearButtonProps>(
     forwardedRef,
   ) => (
     <IconButton
+      id={id}
       label={label}
       onClick={onClick}
       onKeyUp={onKeyUp}

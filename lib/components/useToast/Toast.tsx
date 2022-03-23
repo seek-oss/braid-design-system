@@ -147,6 +147,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                       aria-hidden
                     >
                       <ClearButton
+                        id={`${dedupeKey}-clear`}
                         onClick={remove}
                         label={closeLabel}
                         data={
