@@ -14,6 +14,8 @@ import {
   Card,
   Badge,
   Box,
+  Columns,
+  Column,
 } from '../../../../../lib/components';
 import {
   Checkbox,
@@ -57,6 +59,9 @@ const PlayroomPrototyping = () => (
 
     <List>
       <Text>
+        <TextLink href="#placeholder">Placeholder</TextLink>
+      </Text>
+      <Text>
         <TextLink href="#rendering-repetitive-content">
           Rendering repetitive content
         </TextLink>
@@ -75,6 +80,50 @@ const PlayroomPrototyping = () => (
     </List>
 
     <Divider />
+
+    <LinkableHeading level="3">Placeholder</LinkableHeading>
+    <Text>
+      When laying out a prototype you may wish to reserve space that would
+      normally be occupied by other elements in the real product. For this we
+      provide a special Playroom-only component called{' '}
+      <Strong>Placeholder</Strong>.
+    </Text>
+    <Text>
+      A Placeholder can be given a <Strong>height</Strong> and/or{' '}
+      <Strong>width</Strong>, as well as an optional <Strong>label</Strong>. You
+      can even change the <Strong>shape</Strong>, choosing between{' '}
+      <Strong>round</Strong> and <Strong>rectangle</Strong>.
+    </Text>
+    <Code>
+      <Columns space="medium">
+        <Column width="1/4">
+          <Placeholder height="100%" label="Side bar" />
+        </Column>
+        <Column>
+          <Stack space="medium">
+            <Placeholder height={80} width={80} shape="round" />
+            <Card>
+              <Stack space="small">
+                <Text weight="strong">Senior Developer</Text>
+                <Text>Sydney</Text>
+              </Stack>
+            </Card>
+            <Placeholder height={80} />
+          </Stack>
+        </Column>
+      </Columns>
+    </Code>
+    <Text>
+      Placeholder can be used to add images to your prototype as well, by simply
+      providing a url to the <Strong>image</Strong> prop. By default this will
+      fill the Placeholder with the image focusing on the center. You can
+      customise the size via the <Strong>imageSize</Strong> prop, which accepts
+      any valid{' '}
+      <TextLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-size">
+        background-size
+      </TextLink>{' '}
+      value.
+    </Text>
 
     <LinkableHeading level="3">Rendering repetitive content</LinkableHeading>
     <Text>
