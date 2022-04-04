@@ -1,7 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { externalGutter } from './ModalExternalGutter';
-import { TextBreakpoint } from '../../../themes/tokenType';
 import { responsiveStyle } from '../../../css/responsiveStyle';
 import { vars } from '../../../themes/vars.css';
 import { atoms } from '../../../css/atoms/atoms';
@@ -148,84 +147,7 @@ export const headingFocus = style({
   },
 });
 
-export const closeButtonRoot = style({
-  ':active': {
-    transform: 'scale(0.9)',
-  },
+export const closeIconOffset = style({
+  top: '-5px',
+  right: '-5px',
 });
-export const closeButtonFocus = style({
-  selectors: {
-    [`${closeButtonRoot}:focus &`]: {
-      opacity: 1,
-    },
-  },
-});
-export const closeButtonOpacity = style({
-  opacity: 0.7,
-  selectors: {
-    [`${closeButtonRoot}:hover &, ${closeButtonRoot}:focus &`]: {
-      opacity: 1,
-    },
-  },
-});
-
-const CLOSE_ICON_GUTTER_RATIO = 0.3;
-
-const calculateIconCrop = (level: '2' | '3', breakpoint: TextBreakpoint) => {
-  const size = calc.multiply(
-    vars.headingLevel[level][breakpoint].capHeight,
-    calc.add(1, CLOSE_ICON_GUTTER_RATIO),
-  );
-  const offset = calc.divide(calc.multiply(size, CLOSE_ICON_GUTTER_RATIO), 2);
-  const nudge = '1px';
-
-  return {
-    top: calc.add(calc.negate(offset), nudge),
-    right: calc.subtract(calc.negate(offset), nudge),
-  };
-};
-
-export const cropIconSpace = {
-  '2': style(
-    responsiveStyle({
-      mobile: calculateIconCrop('2', 'mobile'),
-      tablet: calculateIconCrop('2', 'tablet'),
-    }),
-  ),
-  '3': style(
-    responsiveStyle({
-      mobile: calculateIconCrop('3', 'mobile'),
-      tablet: calculateIconCrop('3', 'tablet'),
-    }),
-  ),
-};
-
-const calculateCloseIconSize = (
-  level: '2' | '3',
-  breakpoint: TextBreakpoint,
-) => {
-  const size = calc.multiply(
-    vars.headingLevel[level][breakpoint].capHeight,
-    calc.add(1, CLOSE_ICON_GUTTER_RATIO),
-  );
-
-  return {
-    width: size,
-    height: size,
-  };
-};
-
-export const closeIcon = {
-  '2': style(
-    responsiveStyle({
-      mobile: calculateCloseIconSize('2', 'mobile'),
-      tablet: calculateCloseIconSize('2', 'tablet'),
-    }),
-  ),
-  '3': style(
-    responsiveStyle({
-      mobile: calculateCloseIconSize('3', 'mobile'),
-      tablet: calculateCloseIconSize('3', 'tablet'),
-    }),
-  ),
-};

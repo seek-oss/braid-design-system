@@ -37,6 +37,10 @@ const docs: ComponentDocs = {
       description: 'For a semantic button.',
     },
     {
+      name: 'ButtonIcon',
+      description: 'For buttons containing only an icon.',
+    },
+    {
       name: 'TextLinkButton',
       description: 'For a semantic button that looks like a TextLink.',
     },

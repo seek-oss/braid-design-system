@@ -8,6 +8,7 @@ export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
 export { Badge } from '../components/Badge/Badge.playroom';
 export { Box } from '../components/Box/Box.playroom';
 export { Button } from '../components/Button/Button.playroom';
+export { ButtonIcon } from '../components/ButtonIcon/ButtonIcon.playroom';
 export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Card } from '../components/Card/Card.playroom';
 export { Checkbox } from '../components/Checkbox/Checkbox.playroom';

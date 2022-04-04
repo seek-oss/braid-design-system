@@ -44,6 +44,7 @@ const docs: ComponentDocs = {
               <Tag
                 onClear={() => toggleState('clearOne')}
                 clearLabel={'Clear "One"'}
+                id="clear-1"
               >
                 One
               </Tag>
@@ -52,6 +53,7 @@ const docs: ComponentDocs = {
               <Tag
                 onClear={() => toggleState('clearTwo')}
                 clearLabel={'Clear "Two"'}
+                id="clear-2"
               >
                 Two
               </Tag>
@@ -60,6 +62,7 @@ const docs: ComponentDocs = {
               <Tag
                 onClear={() => toggleState('clearThree')}
                 clearLabel={'Clear "Three"'}
+                id="clear-3"
               >
                 Three
               </Tag>
