@@ -93,7 +93,10 @@ interface AutosuggestState<Value> {
   isFocused: boolean;
 }
 
-interface SuggestionItemProps {
+type AutoSuggestItemProps = ReturnType<
+  ReturnType<typeof createAccessbilityProps>['getItemProps']
+>;
+interface SuggestionItemProps extends AutoSuggestItemProps {
   suggestion: Suggestion;
   highlighted: boolean;
   selected: boolean;
@@ -105,6 +108,7 @@ function SuggestionItem({
   highlighted,
   selected,
   onHover,
+  id,
   ...restProps
 }: SuggestionItemProps) {
   const { highlights = [], onClear, clearLabel } = suggestion;
@@ -125,6 +129,7 @@ function SuggestionItem({
       }}
       onMouseMove={onHover}
       onTouchStart={onHover}
+      id={id}
       {...restProps}
     >
       {/*
@@ -166,6 +171,7 @@ function SuggestionItem({
             height="touchable"
           >
             <ClearButton
+              id={`${id}-clear`}
               label={clearLabel || 'Clear suggestion'}
               onClick={(event: MouseEvent) => {
                 event.preventDefault();
@@ -678,6 +684,7 @@ export const Autosuggest = forwardRef(function <Value>(
             secondaryIcon={
               onClear ? (
                 <ClearField
+                  id={`${id}-clearfield`}
                   hide={!clearable}
                   onClear={onClear}
                   label={clearLabel}

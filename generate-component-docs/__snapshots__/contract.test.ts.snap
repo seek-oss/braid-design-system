@@ -6444,6 +6444,7 @@ Object {
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    id?: string
     label: string
     onClose?: () => void
     onOpen?: () => void
@@ -6795,6 +6796,7 @@ Object {
     children: string
     clearLabel?: string
     data?: DataAttributeMap
+    id?: string
     onClear?: () => void
 },
 }

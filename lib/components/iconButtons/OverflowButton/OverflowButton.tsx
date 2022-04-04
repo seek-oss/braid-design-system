@@ -4,6 +4,7 @@ import { IconOverflow } from '../../icons';
 
 export type OverflowButtonProps = Pick<
   IconButtonProps,
+  | 'id'
   | 'onClick'
   | 'onMouseDown'
   | 'onKeyUp'
@@ -21,6 +22,7 @@ export const OverflowButton = forwardRef<
 >(
   (
     {
+      id,
       label,
       onClick,
       onKeyUp,
@@ -34,6 +36,7 @@ export const OverflowButton = forwardRef<
     forwardedRef,
   ) => (
     <IconButton
+      id={id}
       label={label}
       onClick={onClick}
       onKeyUp={onKeyUp}

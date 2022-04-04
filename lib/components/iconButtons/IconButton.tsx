@@ -16,6 +16,7 @@ import * as styles from './IconButton.css';
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface IconButtonProps {
+  id?: string;
   label: string;
   children: (props: UseIconProps) => ReactNode;
   onClick?: NativeButtonProps['onClick'];
@@ -33,6 +34,7 @@ export interface IconButtonProps {
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
     {
+      id,
       label,
       onClick,
       onMouseDown,
@@ -84,6 +86,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       <Box
         component="button"
         type="button"
+        id={id}
         ref={forwardedRef}
         zIndex={0}
         aria-label={label}

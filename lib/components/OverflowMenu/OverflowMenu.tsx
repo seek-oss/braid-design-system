@@ -7,11 +7,13 @@ import * as styles from './OverflowMenu.css';
 interface OverflowMenuProps
   extends Omit<MenuRendererProps, 'trigger' | 'align' | 'offsetSpace'> {
   label: string;
+  id?: string;
 }
 
 export const OverflowMenu = ({
   label,
   children,
+  id,
   ...menuProps
 }: OverflowMenuProps) => (
   <MenuRenderer
@@ -21,7 +23,7 @@ export const OverflowMenu = ({
         justifyContent="flexEnd"
         className={styles.triggerOffset}
       >
-        <OverflowButton label={label} active={open} {...triggerProps} />
+        <OverflowButton id={id} label={label} active={open} {...triggerProps} />
       </Box>
     )}
     align="right"

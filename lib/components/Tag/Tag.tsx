@@ -6,18 +6,19 @@ import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-
-type AllOrNone<T> = T | { [K in keyof T]?: never };
+import { AllOrNone } from '../private/AllOrNone';
 
 export type TagProps = {
   children: string;
   data?: DataAttributeMap;
+  id?: string;
 } & AllOrNone<{ onClear: () => void; clearLabel: string }>;
 
 export const Tag = ({
   onClear,
   clearLabel = 'Clear',
   data,
+  id,
   children,
 }: TagProps) => {
   assert(
@@ -26,7 +27,11 @@ export const Tag = ({
   );
 
   return (
-    <Box display="flex" {...(data ? buildDataAttributes(data) : undefined)}>
+    <Box
+      id={id}
+      display="flex"
+      {...(data ? buildDataAttributes(data) : undefined)}
+    >
       <Box
         display="flex"
         minWidth={0}
@@ -44,7 +49,11 @@ export const Tag = ({
         </Box>
         {onClear ? (
           <Box flexShrink={0} display="flex" paddingLeft="xxsmall">
-            <ClearButton label={clearLabel} onClick={onClear} />
+            <ClearButton
+              id={id ? `${id}-clear` : undefined}
+              label={clearLabel}
+              onClick={onClear}
+            />
           </Box>
         ) : null}
       </Box>
