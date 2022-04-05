@@ -16,5 +16,7 @@ See [documentation](https://seek-oss.github.io/braid-design-system/components/Bu
 <ButtonIcon
   icon={<IconShare/>}
   label="Share"
+  id="share"
+  onClick={...}
 />
 ```
