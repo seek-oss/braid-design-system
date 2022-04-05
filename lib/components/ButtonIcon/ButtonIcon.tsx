@@ -1,3 +1,4 @@
+import assert from 'assert';
 import React, {
   AllHTMLAttributes,
   forwardRef,
@@ -82,6 +83,11 @@ const PrivateButtonIcon = forwardRef<
       size: 'standard',
       radius: 'full',
     });
+
+    assert(
+      icon.props.size === undefined,
+      "Icons cannot set the 'size' prop when passed to a ButtonIcon component",
+    );
 
     const button = (
       <Box
