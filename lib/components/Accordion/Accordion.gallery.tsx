@@ -5,6 +5,7 @@ import {
   Accordion,
   AccordionItem,
   Badge,
+  IconPromote,
   Placeholder,
 } from '../../playroom/components';
 import { ComponentExample } from '../../../site/src/types';
@@ -63,6 +64,23 @@ export const galleryItems: ComponentExample[] = [
             <Placeholder height={100} />
           </AccordionItem>
           <AccordionItem label="Item 3">
+            <Placeholder height={100} />
+          </AccordionItem>
+        </Accordion>,
+      ),
+  },
+  {
+    label: 'With an icon',
+    Example: () =>
+      source(
+        <Accordion size="standard" dividers={false}>
+          <AccordionItem label="Item 1" icon={<IconPromote />}>
+            <Placeholder height={100} />
+          </AccordionItem>
+          <AccordionItem label="Item 2" icon={<IconPromote />}>
+            <Placeholder height={100} />
+          </AccordionItem>
+          <AccordionItem label="Item 3" icon={<IconPromote />}>
             <Placeholder height={100} />
           </AccordionItem>
         </Accordion>,

@@ -9,6 +9,7 @@ import {
   Text,
   TextLink,
   Strong,
+  IconPromote,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { validSpaceValues } from './Accordion';
@@ -17,16 +18,16 @@ const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['AccordionItem'],
   migrationGuide: true,
-  Example: ({ id }) =>
+  Example: () =>
     source(
       <Accordion>
-        <AccordionItem label="Accordion item 1" id={`${id}_1`}>
+        <AccordionItem label="Accordion item 1" id="accordion_1">
           <Placeholder height={80} />
         </AccordionItem>
-        <AccordionItem label="Accordion item 2" id={`${id}_2`}>
+        <AccordionItem label="Accordion item 2" id="accordion_2">
           <Placeholder height={80} />
         </AccordionItem>
-        <AccordionItem label="Accordion item 3" id={`${id}_3`}>
+        <AccordionItem label="Accordion item 3" id="accordion_3">
           <Placeholder height={80} />
         </AccordionItem>
       </Accordion>,
@@ -83,7 +84,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Card>
             <Accordion
@@ -92,13 +93,22 @@ const docs: ComponentDocs = {
               space="xlarge"
               dividers={false}
             >
-              <AccordionItem label="Accordion item 1" id={`${id}_1`}>
+              <AccordionItem
+                label="Accordion item 1"
+                id="accordion_appearance_1"
+              >
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 2" id={`${id}_2`}>
+              <AccordionItem
+                label="Accordion item 2"
+                id="accordion_appearance_2"
+              >
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 3" id={`${id}_3`}>
+              <AccordionItem
+                label="Accordion item 3"
+                id="accordion_appearance_3"
+              >
                 <Placeholder height={80} />
               </AccordionItem>
             </Accordion>
@@ -113,15 +123,15 @@ const docs: ComponentDocs = {
           the label of the AccordionItem using the <Strong>badge</Strong> prop.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Accordion>
-            <AccordionItem label="Accordion item 1" id={`${id}_1`}>
+            <AccordionItem label="Accordion item 1" id="accordion_badge_1">
               <Placeholder height={80} />
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
+              id="accordion_badge_2"
               badge={
                 <Badge tone="promote" weight="strong">
                   Badge
@@ -130,7 +140,45 @@ const docs: ComponentDocs = {
             >
               <Placeholder height={80} />
             </AccordionItem>
-            <AccordionItem label="Accordion item 3" id={`${id}_3`}>
+            <AccordionItem label="Accordion item 3" id="accordion_badge_3">
+              <Placeholder height={80} />
+            </AccordionItem>
+          </Accordion>,
+        ),
+    },
+    {
+      label: 'Inserting an icon',
+      description: (
+        <>
+          <Text>
+            For decoration or help distinguishing between accordion items, an{' '}
+            <Strong>icon</Strong> can be provided. This will be placed to the
+            left of the label.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Accordion>
+            <AccordionItem
+              label="Accordion item 1"
+              id="accordion_icon_1"
+              icon={<IconPromote />}
+            >
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem
+              label="Accordion item 2"
+              id="accordion_icon_2"
+              icon={<IconPromote />}
+            >
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem
+              label="Accordion item 3"
+              id="accordion_icon_3"
+              icon={<IconPromote />}
+            >
               <Placeholder height={80} />
             </AccordionItem>
           </Accordion>,
@@ -146,7 +194,7 @@ const docs: ComponentDocs = {
           <Strong>onToggle</Strong> props.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, toggleState }) =>
+      Example: ({ setDefaultState, getState, toggleState }) =>
         source(
           <>
             {setDefaultState('expanded1', false)}
@@ -156,7 +204,7 @@ const docs: ComponentDocs = {
             <Accordion>
               <AccordionItem
                 label="Accordion item 1"
-                id={`${id}_1`}
+                id="accordion_state_1"
                 expanded={getState('expanded1')}
                 onToggle={() => toggleState('expanded1')}
               >
@@ -164,7 +212,7 @@ const docs: ComponentDocs = {
               </AccordionItem>
               <AccordionItem
                 label="Accordion item 2"
-                id={`${id}_2`}
+                id="accordion_state_2"
                 expanded={getState('expanded2')}
                 onToggle={() => toggleState('expanded2')}
               >
@@ -172,7 +220,7 @@ const docs: ComponentDocs = {
               </AccordionItem>
               <AccordionItem
                 label="Accordion item 3"
-                id={`${id}_3`}
+                id="accordion_state_3"
                 expanded={getState('expanded3')}
                 onToggle={() => toggleState('expanded3')}
               >
