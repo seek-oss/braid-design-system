@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Tag, Inline } from '../';
+import { Tag, Inline, IconHelp } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -39,6 +39,18 @@ export const screenshots: ComponentScreenshot = {
         <Inline space="small">
           <Tag>Tag</Tag>
           <Tag onClear={handler} clearLabel="Clear tag">
+            Tag
+          </Tag>
+        </Inline>
+      ),
+    },
+    {
+      label: 'With an icon',
+      background: 'surface',
+      Example: ({ handler }) => (
+        <Inline space="small">
+          <Tag icon={<IconHelp />}>Tag</Tag>
+          <Tag icon={<IconHelp />} onClear={handler} clearLabel="Clear tag">
             Tag
           </Tag>
         </Inline>

@@ -14,7 +14,7 @@ import {
   FieldLabelVariant,
 } from '../private/Field/Field';
 import { Box } from '../Box/Box';
-import { IconButton } from '../iconButtons/IconButton';
+import { FieldButtonIcon } from '../private/FieldButtonIcon/FieldButtonIcon';
 import { IconVisibility } from '../icons';
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
@@ -88,16 +88,12 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         alwaysShowSecondaryIcon={!disabled}
         secondaryIcon={
           disabled ? null : (
-            <IconButton
+            <FieldButtonIcon
               id={`${id}-toggle`}
               label={visibilityToggleLabel}
               onMouseDown={visibilityHandler}
-              keyboardAccessible={false}
-            >
-              {(iconProps) => (
-                <IconVisibility {...iconProps} hidden={visible} />
-              )}
-            </IconButton>
+              icon={<IconVisibility hidden={visible} />}
+            />
           )
         }
       >

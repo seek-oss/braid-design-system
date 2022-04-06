@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentExample } from '../../../site/src/types';
-import { Tag, Inline, Text, TextLinkButton } from '../';
+import { Tag, Inline, Text, TextLinkButton, IconPromote } from '../';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
@@ -8,6 +8,11 @@ export const galleryItems: ComponentExample[] = [
     label: 'Standard',
     background: 'surface',
     Example: () => source(<Tag>Tag</Tag>),
+  },
+  {
+    label: 'With an icon',
+    background: 'surface',
+    Example: () => source(<Tag icon={<IconPromote />}>Tag</Tag>),
   },
   {
     label: 'Clearable',

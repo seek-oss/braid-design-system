@@ -1,6 +1,7 @@
 import React, { Ref, useCallback, MouseEvent } from 'react';
 import { Box } from '../../Box/Box';
-import { ClearButton } from '../../iconButtons/ClearButton/ClearButton';
+import { IconClear } from '../../icons';
+import { FieldButtonIcon } from '../FieldButtonIcon/FieldButtonIcon';
 
 interface Props {
   inputRef: Ref<HTMLInputElement>;
@@ -43,11 +44,11 @@ export const ClearField = ({
       pointerEvents={hide ? 'none' : undefined}
       opacity={hide ? 0 : undefined}
     >
-      <ClearButton
+      <FieldButtonIcon
         id={`${id}-clear`}
         label={label}
+        icon={<IconClear />}
         onMouseDown={clearHandler}
-        keyboardAccessible={false}
       />
     </Box>
   );

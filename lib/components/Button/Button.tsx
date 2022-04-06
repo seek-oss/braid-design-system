@@ -214,27 +214,18 @@ const ButtonLoader = () => (
 
 export const ButtonOverlays = ({
   variant = 'solid',
-  size: sizeProp,
   tone,
-  loading,
-  children,
   keyboardFocusable = true,
-  labelSpacing = true,
   forceActive = false,
   radius = 'large',
-}: ButtonProps & {
+}: Pick<ButtonProps, 'variant' | 'tone'> & {
   keyboardFocusable?: boolean;
   radius?: 'full' | 'large';
-  labelSpacing?: boolean;
   forceActive?: boolean;
 }) => {
-  const actionsContext = useContext(ActionsContext);
-  const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
   const colorConstrast = useColorContrast();
   const lightness = useBackgroundLightness();
-  const labelMargin =
-    size === 'small' || variant === 'transparent' ? 'small' : 'medium';
 
   return (
     <>
@@ -293,47 +284,64 @@ export const ButtonOverlays = ({
           pointerEvents="none"
         />
       ) : null}
-      <Box
-        component="span"
-        position="relative"
-        display="block"
-        overflow="hidden"
-        pointerEvents="none"
-        marginX={labelSpacing ? labelMargin : undefined}
-        paddingY={
-          labelSpacing && size === 'small'
-            ? styles.constants.smallButtonPaddingSize
-            : undefined
-        }
-        className={
-          labelSpacing && size === 'standard'
-            ? touchableText.standard
-            : undefined
-        }
-        background={
-          tone === 'neutral' && variant !== 'solid'
-            ? {
-                lightMode:
-                  lightness.lightMode === 'light'
-                    ? 'customLight'
-                    : 'customDark',
-                darkMode:
-                  lightness.darkMode === 'light' ? 'customLight' : 'customDark',
-              }
-            : undefined
-        }
-      >
-        <Text
-          tone={stylesForVariant.textTone}
-          weight="medium"
-          size={size}
-          baseline={false}
-        >
-          {children}
-          {loading ? <ButtonLoader /> : null}
-        </Text>
-      </Box>
     </>
+  );
+};
+
+export const ButtonText = ({
+  children,
+  loading,
+  size: sizeProp,
+  variant = 'solid',
+  tone,
+  labelSpacing = true,
+}: ButtonProps & {
+  labelSpacing?: boolean;
+}) => {
+  const lightness = useBackgroundLightness();
+  const actionsContext = useContext(ActionsContext);
+  const size = sizeProp ?? actionsContext?.size ?? 'standard';
+  const stylesForVariant = variants[variant][tone ?? 'default'];
+  const labelMargin =
+    size === 'small' || variant === 'transparent' ? 'small' : 'medium';
+
+  return (
+    <Box
+      component="span"
+      position="relative"
+      display="block"
+      overflow="hidden"
+      pointerEvents="none"
+      marginX={labelSpacing ? labelMargin : undefined}
+      paddingY={
+        labelSpacing && size === 'small'
+          ? styles.constants.smallButtonPaddingSize
+          : undefined
+      }
+      className={
+        labelSpacing && size === 'standard' ? touchableText.standard : undefined
+      }
+      background={
+        tone === 'neutral' && variant !== 'solid'
+          ? {
+              lightMode:
+                lightness.lightMode === 'light' ? 'customLight' : 'customDark',
+              darkMode:
+                lightness.darkMode === 'light' ? 'customLight' : 'customDark',
+            }
+          : undefined
+      }
+    >
+      <Text
+        tone={stylesForVariant.textTone}
+        weight="medium"
+        size={size}
+        baseline={false}
+      >
+        {children}
+        {loading ? <ButtonLoader /> : null}
+      </Text>
+    </Box>
   );
 };
 
@@ -424,14 +432,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       {...(data ? buildDataAttributes(data) : undefined)}
       {...useButtonStyles({ variant, tone, size, bleedY, loading })}
     >
-      <ButtonOverlays
-        variant={variant}
-        tone={tone}
-        size={size}
-        loading={loading}
-      >
+      <ButtonOverlays variant={variant} tone={tone} />
+
+      <ButtonText variant={variant} tone={tone} size={size} loading={loading}>
         {children}
-      </ButtonOverlays>
+      </ButtonText>
     </Box>
   ),
 );
