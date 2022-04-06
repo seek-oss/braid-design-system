@@ -91,7 +91,7 @@ export const MenuRenderer = ({
   data,
 }: MenuRendererProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const hasOpened = useRef<boolean>(false);
+  const lastOpen = useRef(false);
   const items = flattenChildren(children);
   const itemCount = items.filter((item) => !isDivider(item)).length;
 
@@ -166,16 +166,20 @@ export const MenuRenderer = ({
   );
 
   useEffect(() => {
-    if (open) {
-      hasOpened.current = true;
+    if (lastOpen.current === open) {
+      return;
+    }
 
+    if (open) {
       if (typeof onOpen === 'function') {
         onOpen();
       }
-    } else if (typeof onClose === 'function' && hasOpened.current) {
+    } else if (typeof onClose === 'function') {
       onClose();
     }
-  }, [onClose, onOpen, open]);
+
+    lastOpen.current = open;
+  }, [onOpen, onClose, open]);
 
   const focusTrigger = () => {
     if (buttonRef && buttonRef.current) {
