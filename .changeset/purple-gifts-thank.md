@@ -7,7 +7,7 @@ updated:
   - Tag
 ---
 
-**Tag:**  Add icon support
+**Tag:** Add icon support
 
 Provides a designed slot for adding an icon to a `Tag`
 
