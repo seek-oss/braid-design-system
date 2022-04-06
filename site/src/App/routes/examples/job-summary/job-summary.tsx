@@ -17,6 +17,7 @@ import {
   IconBookmark,
   TextLink,
   List,
+  ButtonIcon,
 } from '../../../../../../lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from '../../../../../../lib/playroom/components';
@@ -66,7 +67,13 @@ const page: Page = {
                 </Stack>
               </Column>
               <Column width="content">
-                <IconBookmark />
+                <ButtonIcon
+                  variant="transparent"
+                  size="large"
+                  icon={<IconBookmark />}
+                  label="Save job"
+                  id="save-preview"
+                />
               </Column>
             </Columns>
 
@@ -413,7 +420,9 @@ const page: Page = {
         <Step
           detail={
             <Text>
-              In the second column we&rsquo;ll use the{' '}
+              In the second column we&rsquo;ll use a{' '}
+              <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink> with
+              an{' '}
               <TextLink href="/components/IconBookmark">IconBookmark</TextLink>{' '}
               as the save action. By default, `Columns` are of equal width. In
               this design however, the second column should only we as wide as
@@ -428,7 +437,13 @@ const page: Page = {
                 <Placeholder label="Job content" height={80} />
               </Column>
               <Column width="content">
-                <IconBookmark />
+                <ButtonIcon
+                  variant="transparent"
+                  size="large"
+                  icon={<IconBookmark />}
+                  label="Save job"
+                  id="save-7a"
+                />
               </Column>
             </Columns>
           </Card>
@@ -477,7 +492,13 @@ const page: Page = {
                 </Stack>
               </Column>
               <Column width="content">
-                <IconBookmark />
+                <ButtonIcon
+                  variant="transparent"
+                  size="large"
+                  icon={<IconBookmark />}
+                  label="Save job"
+                  id="save-7b"
+                />
               </Column>
             </Columns>
           </Card>
@@ -513,7 +534,13 @@ const page: Page = {
                   </Stack>
                 </Column>
                 <Column width="content">
-                  <IconBookmark />
+                  <ButtonIcon
+                    variant="transparent"
+                    size="large"
+                    icon={<IconBookmark />}
+                    label="Save job"
+                    id="save-8"
+                  />
                 </Column>
               </Columns>
 

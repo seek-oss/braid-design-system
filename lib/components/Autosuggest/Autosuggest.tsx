@@ -23,7 +23,8 @@ import {
   FieldBaseProps,
   FieldLabelVariant,
 } from '../private/Field/Field';
-import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
+import { IconClear } from '../icons';
 import { touchableText, useText } from '../../hooks/typography';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
@@ -170,8 +171,11 @@ function SuggestionItem({
             width="touchable"
             height="touchable"
           >
-            <ClearButton
+            <ButtonIcon
               id={`${id}-clear`}
+              icon={<IconClear />}
+              tone="secondary"
+              tabIndex={-1}
               label={clearLabel || 'Clear suggestion'}
               onClick={(event: MouseEvent) => {
                 event.preventDefault();
