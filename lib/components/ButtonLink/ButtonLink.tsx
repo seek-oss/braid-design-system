@@ -9,6 +9,7 @@ import buildDataAttributes, {
 import {
   ButtonOverlays,
   ButtonStyleProps,
+  ButtonText,
   useButtonStyles,
 } from '../Button/Button';
 import { Box } from '../Box/Box';
@@ -35,14 +36,11 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {...(data ? buildDataAttributes(data) : undefined)}
         {...useButtonStyles({ variant, tone, size, bleedY, loading })}
       >
-        <ButtonOverlays
-          variant={variant}
-          tone={tone}
-          size={size}
-          loading={loading}
-        >
+        <ButtonOverlays variant={variant} tone={tone} />
+
+        <ButtonText variant={variant} tone={tone} size={size} loading={loading}>
           {children}
-        </ButtonOverlays>
+        </ButtonText>
       </Box>
     );
   },

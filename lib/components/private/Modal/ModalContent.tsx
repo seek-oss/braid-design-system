@@ -14,10 +14,9 @@ import { Stack } from '../../Stack/Stack';
 import { Columns } from '../../Columns/Columns';
 import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
-import { Bleed } from '../../Bleed/Bleed';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
-import { virtualTouchable } from '../touchable/virtualTouchable';
+import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
 import * as styles from './Modal.css';
 
@@ -203,50 +202,22 @@ export const ModalContent = ({
             justifyContent="flexEnd"
             paddingTop={modalPadding}
             paddingRight={modalPadding}
-            className={position === 'center' && styles.maxSize[position]}
+            position="relative"
+            className={[
+              position === 'center' && styles.maxSize[position],
+              styles.pointerEventsAll,
+              styles.closeIconOffset,
+            ]}
           >
-            <Bleed top="xsmall" right="xsmall">
-              <Box
-                position="relative"
-                className={styles.cropIconSpace[headingLevel]}
-              >
-                <Box
-                  component="button"
-                  aria-label={closeLabel}
-                  borderRadius="full"
-                  background="surface"
-                  padding="xsmall"
-                  cursor="pointer"
-                  position="relative"
-                  onClick={onClose}
-                  outline="none"
-                  transition="touchable"
-                  className={[
-                    styles.closeButtonRoot,
-                    styles.pointerEventsAll,
-                    virtualTouchable(),
-                  ]}
-                >
-                  <Overlay
-                    boxShadow="outlineFocus"
-                    transition="fast"
-                    onlyVisibleForKeyboardNavigation
-                    borderRadius="full"
-                    className={styles.closeButtonFocus}
-                  />
-                  <Box
-                    position="relative"
-                    transition="fast"
-                    className={[
-                      styles.closeButtonOpacity,
-                      styles.closeIcon[headingLevel],
-                    ]}
-                  >
-                    <IconClear size="fill" />
-                  </Box>
-                </Box>
-              </Box>
-            </Bleed>
+            <ButtonIcon
+              id={`${id}-close`}
+              label={closeLabel}
+              icon={<IconClear />}
+              tone="secondary"
+              variant="transparent"
+              size="large"
+              onClick={onClose}
+            />
           </Box>
         </Box>
       </Box>

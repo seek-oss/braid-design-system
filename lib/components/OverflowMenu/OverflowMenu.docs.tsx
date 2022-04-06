@@ -21,7 +21,7 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Box style={{ maxWidth: '100px' }}>
-        <OverflowMenu label="Options">
+        <OverflowMenu label="Options" id="example">
           <MenuItem onClick={() => {}}>Button</MenuItem>
           <MenuItemLink href="#" onClick={() => {}}>
             Link
@@ -55,7 +55,7 @@ const docs: ComponentDocs = {
         source(
           <>
             <Box style={{ maxWidth: '100px' }}>
-              <OverflowMenu label="Options">
+              <OverflowMenu label="Options" id="destructive">
                 <MenuItem
                   onClick={() => toggleState('confirm')}
                   tone="critical"

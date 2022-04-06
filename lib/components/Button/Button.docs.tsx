@@ -32,6 +32,10 @@ const docs: ComponentDocs = {
     ),
   alternatives: [
     {
+      name: 'ButtonIcon',
+      description: 'For buttons containing only an icon.',
+    },
+    {
       name: 'ButtonLink',
       description: 'For a semantic link that looks like a button.',
     },

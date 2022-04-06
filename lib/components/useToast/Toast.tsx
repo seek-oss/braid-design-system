@@ -8,11 +8,12 @@ import { ContentBlock } from '../ContentBlock/ContentBlock';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
-import { IconPositive, IconCritical } from '../icons';
-import { ClearButton } from '../iconButtons/ClearButton/ClearButton';
+import { IconPositive, IconCritical, IconClear } from '../icons';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { useTimeout } from './useTimeout';
 import { InternalToast, ToastAction } from './ToastTypes';
 import { Keyline } from '../private/Keyline/Keyline';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import * as styles from './Toast.css';
 
 const toneToIcon = {
@@ -144,10 +145,15 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                       width="touchable"
                       display="flex"
                       justifyContent="center"
+                      alignItems="center"
+                      className={lineHeightContainer.standard}
                       aria-hidden
                     >
-                      <ClearButton
+                      <ButtonIcon
                         id={`${dedupeKey}-clear`}
+                        icon={<IconClear />}
+                        tone="secondary"
+                        variant="transparent"
                         onClick={remove}
                         label={closeLabel}
                         data={
