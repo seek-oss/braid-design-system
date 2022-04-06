@@ -6845,6 +6845,7 @@ Object {
     children: string
     clearLabel?: string
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     onClear?: () => void
 },

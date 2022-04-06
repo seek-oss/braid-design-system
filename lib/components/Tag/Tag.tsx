@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement, ReactElement } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -8,12 +8,16 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { AllOrNone } from '../private/AllOrNone';
+import { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './Tag.css';
+
+const textSize = 'standard';
 
 export type TagProps = {
   children: string;
   data?: DataAttributeMap;
   id?: string;
+  icon?: ReactElement<UseIconProps>;
 } & AllOrNone<{ onClear: () => void; clearLabel: string }>;
 
 export const Tag = ({
@@ -21,11 +25,17 @@ export const Tag = ({
   clearLabel = 'Clear',
   data,
   id,
+  icon,
   children,
 }: TagProps) => {
   assert(
     typeof children === 'undefined' || typeof children === 'string',
     'Tag may only contain a string',
+  );
+
+  assert(
+    !icon || icon.props.size === undefined,
+    "Icons cannot set the 'size' prop when passed to a Tag component",
   );
 
   return (
@@ -40,12 +50,17 @@ export const Tag = ({
         alignItems="center"
         background="neutralLight"
         paddingY={onClear ? undefined : 'xxsmall'}
-        paddingLeft="small"
+        paddingLeft={icon ? 'xsmall' : 'small'}
         paddingRight={onClear ? undefined : 'small'}
         borderRadius="full"
       >
+        {icon ? (
+          <Box paddingRight="xxsmall">
+            {cloneElement(icon, { size: textSize })}
+          </Box>
+        ) : null}
         <Box minWidth={0} title={children}>
-          <Text baseline={false} truncate>
+          <Text size={textSize} baseline={false} truncate>
             {children}
           </Text>
         </Box>

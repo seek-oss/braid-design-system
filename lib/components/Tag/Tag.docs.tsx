@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentDocs } from '../../../site/src/types';
 import { Card, Inline, Tag, Strong, Text, TextLinkButton } from '../';
 import source from '../../utils/source.macro';
-import { IconLanguage } from '../icons';
+import { IconLanguage, IconPromote } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -19,6 +19,27 @@ const docs: ComponentDocs = {
     ),
   alternatives: [{ name: 'Badge', description: 'For static labels.' }],
   additional: [
+    {
+      label: 'Inserting an icon',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            For decoration or help distinguishing between tags, an{' '}
+            <Strong>icon</Strong> can be provided. This will be placed to the
+            left of the text.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Tag icon={<IconPromote />}>One</Tag>
+            <Tag icon={<IconPromote />}>Two</Tag>
+            <Tag icon={<IconPromote />}>Three</Tag>
+          </Inline>,
+        ),
+    },
     {
       label: 'Clearable',
       description: (
