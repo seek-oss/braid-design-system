@@ -21,12 +21,16 @@ interface MenuTestSuiteParams {
 
 export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
   function renderMenu() {
-    const openHandler = jest.fn();
-    const closeHandler = jest.fn();
     const menuItemHandler = jest.fn();
     const parentHandler = jest.fn();
 
-    const TestCase = () => {
+    const TestCase = ({
+      openHandler,
+      closeHandler,
+    }: {
+      openHandler: () => void;
+      closeHandler: () => void;
+    }) => {
       const [checked, setChecked] = useState(false);
 
       return (
@@ -59,14 +63,28 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       );
     };
 
-    const { getAllByRole } = render(<TestCase />);
+    const defaultOpen = jest.fn();
+    const defaultClose = jest.fn();
+    const { getAllByRole, rerender } = render(
+      <TestCase openHandler={defaultOpen} closeHandler={defaultClose} />,
+    );
 
     return {
       getAllByRole,
-      openHandler,
-      closeHandler,
+      openHandler: defaultOpen,
+      closeHandler: defaultClose,
       menuItemHandler,
       parentHandler,
+      rerender: ({
+        openHandler,
+        closeHandler,
+      }: { openHandler?: () => void; closeHandler?: () => void } = {}) =>
+        rerender(
+          <TestCase
+            openHandler={openHandler || defaultOpen}
+            closeHandler={closeHandler || defaultClose}
+          />,
+        ),
     };
   }
 
@@ -489,6 +507,33 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(menu).toBeVisible();
         expect(closeHandler).toHaveBeenCalledTimes(0);
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemCheckbox');
+      });
+    });
+
+    describe('Open/Close handlers', () => {
+      it('should not fire the open handler when its changed', () => {
+        const { getAllByRole, openHandler, rerender } = renderMenu();
+
+        const { menuButton } = getElements({ getAllByRole });
+
+        const newOpen = jest.fn();
+        userEvent.click(menuButton);
+        expect(openHandler).toHaveBeenCalledTimes(1);
+        rerender({ openHandler: newOpen });
+        expect(newOpen).not.toHaveBeenCalled();
+      });
+
+      it('should not fire the close handler when its changed', () => {
+        const { getAllByRole, closeHandler, rerender } = renderMenu();
+
+        const { menuButton } = getElements({ getAllByRole });
+
+        const newClose = jest.fn();
+        userEvent.click(menuButton);
+        userEvent.keyboard('{esc}');
+        expect(closeHandler).toHaveBeenCalledTimes(1);
+        rerender({ closeHandler: newClose });
+        expect(newClose).not.toHaveBeenCalled();
       });
     });
   });
