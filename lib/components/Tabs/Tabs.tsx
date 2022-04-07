@@ -16,7 +16,6 @@ import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
-import { Tab } from './Tab';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
@@ -61,7 +60,8 @@ export const Tabs = (props: TabsProps) => {
 
   const tabs = Children.map(flattenChildren(children), (tab, index) => {
     assert(
-      typeof tab === 'object' && tab.type === Tab,
+      // @ts-expect-error
+      typeof tab === 'object' && tab.type.__isTab__,
       'Only Tab elements can be direct children of a Tabs',
     );
 

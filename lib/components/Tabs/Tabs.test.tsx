@@ -1,9 +1,19 @@
 import '@testing-library/jest-dom/extend-expect';
+import 'html-validate/jest';
 import React, { useState, Fragment } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
-import { Tabs, Tab, TabPanel, TabsProvider, TabPanels } from '..';
+import {
+  Tabs,
+  Tab,
+  TabPanel,
+  TabsProvider,
+  TabPanels,
+  Badge,
+  IconHome,
+} from '..';
 
 const TestPanel = ({ children }: { children: string }) => {
   const [checked, setChecked] = useState(false);
@@ -75,6 +85,24 @@ function renderTabs({
 }
 
 describe('Tabs', () => {
+  it('should render valid html structure', () => {
+    expect(
+      renderToStaticMarkup(
+        <BraidTestProvider>
+          <TabsProvider id="tabs">
+            <Tabs label="Test tabs">
+              <Tab>First</Tab>
+              <Tab badge={<Badge>Badge</Badge>}>Second</Tab>
+              <Tab icon={<IconHome />}>Second</Tab>
+            </Tabs>
+          </TabsProvider>
+        </BraidTestProvider>,
+      ),
+    ).toHTMLValidate({
+      extends: ['html-validate:recommended'],
+    });
+  });
+
   describe('Uncontrolled state', () => {
     it('should select the first tab by default', () => {
       const { getAllByRole } = renderTabs();

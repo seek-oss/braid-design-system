@@ -6,6 +6,7 @@ import {
   TabsProviderProps,
 } from './TabsProvider';
 import { Tabs as BraidTabs, TabsProps } from './Tabs';
+import { Tab as BraidTab, TabProps } from './Tab';
 
 type PlayroomTabsProviderProps = Optional<TabsProviderProps, 'id'>;
 
@@ -23,3 +24,11 @@ type PlayroomTabsProps = Optional<TabsProps, 'label'>;
 export const Tabs = ({ label, ...restProps }: PlayroomTabsProps) => (
   <BraidTabs label="" {...restProps} />
 );
+
+export const Tab = ({ icon, ...restProps }: TabProps) => (
+  <BraidTab
+    icon={typeof icon === 'boolean' ? undefined : icon}
+    {...restProps}
+  />
+);
+Tab.__isTab__ = true;
