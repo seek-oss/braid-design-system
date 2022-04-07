@@ -35,16 +35,18 @@ import { Divider } from '../Divider/Divider';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
+import { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './Tabs.css';
 
 export interface TabProps {
   children: ReactNode;
   item?: string;
   badge?: ReactElement<BadgeProps>;
+  icon?: ReactElement<UseIconProps>;
   data?: DataAttributeMap;
 }
 
-export const Tab = ({ children, data, badge, item }: TabProps) => {
+export const Tab = ({ children, data, badge, icon, item }: TabProps) => {
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
   const tabRef = useRef<HTMLButtonElement>(null);
@@ -63,6 +65,11 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   assert(
     !badge || badge.props.bleedY === undefined,
     "Badge elements cannot set the 'bleedY' prop when passed to a Tab component",
+  );
+
+  assert(
+    !icon || (icon.props.size === undefined && icon.props.tone === undefined),
+    "Icons cannot set the 'size' or 'tone' prop when passed to a Tab component",
   );
 
   if (!tabListContext) {
@@ -172,10 +179,12 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
   };
 
   const tabTextSize = 'standard';
+  const tabTone = isSelected ? 'formAccent' : 'secondary';
 
   return (
     <Box
       component="button"
+      type="button"
       {...a11y.tabProps({ tabIndex: tabListItemIndex, isSelected })}
       ref={tabRef}
       onKeyUp={onKeyUp}
@@ -212,6 +221,15 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
       className={styles.tab}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
+      {icon ? (
+        <Box
+          component="span"
+          paddingRight="xsmall"
+          className={styles.iconContainer}
+        >
+          {cloneElement(icon, { size: tabTextSize, tone: tabTone })}
+        </Box>
+      ) : null}
       {/*
         Rendering Text component to provide rendering context
         for both icons and text labels
@@ -221,17 +239,26 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         size={tabTextSize}
         weight="medium"
         align="center"
-        tone={isSelected ? 'formAccent' : 'secondary'}
+        tone={tabTone}
       >
         {children}
       </Text>
       {badge ? (
-        <Box paddingLeft="xsmall">{cloneElement(badge, { bleedY: true })}</Box>
+        <Box component="span" paddingLeft="xsmall">
+          {cloneElement(badge, { bleedY: true })}
+        </Box>
       ) : null}
 
-      <Box position="absolute" inset={0} overflow="hidden" pointerEvents="none">
+      <Box
+        component="span"
+        position="absolute"
+        inset={0}
+        overflow="hidden"
+        pointerEvents="none"
+      >
         {divider === 'minimal' ? (
           <Box
+            component="span"
             position="absolute"
             zIndex={1}
             left={0}
@@ -243,6 +270,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           </Box>
         ) : null}
         <Box
+          component="span"
           background={{ lightMode: 'neutral', darkMode: 'neutralLight' }}
           position="absolute"
           zIndex={2}
@@ -258,6 +286,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
           ]}
         />
         <Box
+          component="span"
           background="formAccent"
           position="absolute"
           zIndex={2}
@@ -274,6 +303,7 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
         />
       </Box>
       <Overlay
+        component="span"
         zIndex={1}
         boxShadow="outlineFocus"
         borderRadius="standard"
@@ -285,3 +315,5 @@ export const Tab = ({ children, data, badge, item }: TabProps) => {
     </Box>
   );
 };
+
+Tab.__isTab__ = true;

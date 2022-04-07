@@ -14,6 +14,10 @@ import {
   Strong,
   List,
   Card,
+  IconCompany,
+  IconHome,
+  IconProfile,
+  IconRecommended,
 } from '..';
 import { Placeholder } from '../../playroom/components';
 
@@ -263,6 +267,47 @@ const docs: ComponentDocs = {
                   </Tab>
                   <Tab>The third tab</Tab>
                   <Tab>The fourth tab</Tab>
+                </Tabs>
+                <TabPanels>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 1" />
+                  </TabPanel>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 2" />
+                  </TabPanel>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 3" />
+                  </TabPanel>
+                  <TabPanel>
+                    <Placeholder height={200} label="Panel 4" />
+                  </TabPanel>
+                </TabPanels>
+              </Stack>
+            </TabsProvider>
+          </Card>,
+        ),
+    },
+    {
+      label: 'Inserting an icon',
+      description: (
+        <>
+          <Text>
+            For decoration or help distinguishing between tabs, an{' '}
+            <Strong>icon</Strong> can be provided. This will be placed to the
+            left of the label.
+          </Text>
+        </>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Card>
+            <TabsProvider id={id}>
+              <Stack space="medium">
+                <Tabs label="Test tabs">
+                  <Tab icon={<IconHome />}>The first tab</Tab>
+                  <Tab icon={<IconRecommended />}>The second tab</Tab>
+                  <Tab icon={<IconCompany />}>The third tab</Tab>
+                  <Tab icon={<IconProfile />}>The fourth tab</Tab>
                 </Tabs>
                 <TabPanels>
                   <TabPanel>
