@@ -7,7 +7,7 @@ updated:
   - AccordionItem
 ---
 
-**AccordionItem:**  Add icon support
+**AccordionItem:** Add icon support
 
 Provides a designed slot for adding an icon to an `AccordionItem`
 
