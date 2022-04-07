@@ -35,6 +35,10 @@ import {
   IconMinus,
   TextDropdown,
   Strong,
+  TooltipRenderer,
+  Button,
+  Bleed,
+  Secondary,
 } from '../../../../../lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -64,7 +68,7 @@ import {
   FitToScreenDimensions,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import { IconButton } from '../../../../../lib/components/iconButtons/IconButton';
+import { ButtonIcon } from '../../../../../lib/components/ButtonIcon/ButtonIcon';
 import useIcon, { UseIconProps } from '../../../../../lib/hooks/useIcon';
 import { SVGProps } from '../../../../../lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';
@@ -589,46 +593,58 @@ const GalleryInternal = () => {
         </GalleryPanel>
 
         <GalleryPanel bottom right>
-          <Inline space="small" alignY="center">
-            <Box paddingX="xsmall">
+          <Box paddingX="xsmall">
+            <Inline space="medium" alignY="center">
               <JumpToSelector onSelect={jumpTo} />
-            </Box>
 
-            <PanelDivider />
-            <IconButton
-              label="Fit to screen"
-              onClick={fitToScreen}
-              keyboardAccessible
-            >
-              {(iconProps) => <IconFitToScreen {...iconProps} />}
-            </IconButton>
-            <IconButton
-              ref={zoomOutRef}
-              label="Zoom Out"
-              onClick={zoomOut}
-              keyboardAccessible
-            >
-              {(iconProps) => <IconMinus {...iconProps} />}
-            </IconButton>
-            <Box
-              component="button"
-              paddingX="xsmall"
-              height="full"
-              cursor="pointer"
-              title="Zoom to actual size"
-              onClick={actualSize}
-            >
-              <CurrentZoom />
-            </Box>
-            <IconButton
-              ref={zoomInRef}
-              label="Zoom In"
-              onClick={zoomIn}
-              keyboardAccessible
-            >
-              {(iconProps) => <IconAdd {...iconProps} />}
-            </IconButton>
-          </Inline>
+              <PanelDivider />
+              <ButtonIcon
+                id="fitToScreen"
+                label="Fit to screen"
+                tone="secondary"
+                variant="transparent"
+                onClick={fitToScreen}
+                icon={<IconFitToScreen />}
+              />
+              <ButtonIcon
+                id="zoomOut"
+                ref={zoomOutRef}
+                label="Zoom Out"
+                tone="secondary"
+                variant="transparent"
+                onClick={zoomOut}
+                icon={<IconMinus />}
+              />
+              <TooltipRenderer
+                id="zoomToActual"
+                tooltip={<Text>Zoom to actual size</Text>}
+              >
+                {({ triggerProps }) => (
+                  <Bleed horizontal="xxsmall">
+                    <Button
+                      variant="transparent"
+                      tone="neutral"
+                      size="small"
+                      bleedY
+                      onClick={actualSize}
+                      {...triggerProps}
+                    >
+                      <CurrentZoom />
+                    </Button>
+                  </Bleed>
+                )}
+              </TooltipRenderer>
+              <ButtonIcon
+                id="zoomIn"
+                ref={zoomInRef}
+                label="Zoom In"
+                tone="secondary"
+                variant="transparent"
+                onClick={zoomIn}
+                icon={<IconAdd />}
+              />
+            </Inline>
+          </Box>
         </GalleryPanel>
       </Box>
 
@@ -664,11 +680,7 @@ export const Gallery = () => (
 
 const CurrentZoom = () => {
   const currentZoom = useRecoilValue(zoomState);
-  return (
-    <Text size="small" tone="secondary">
-      {Math.round(currentZoom * 100)}%
-    </Text>
-  );
+  return <Secondary>{Math.round(currentZoom * 100)}%</Secondary>;
 };
 
 const jumpToPlaceholder = 'Jump to';

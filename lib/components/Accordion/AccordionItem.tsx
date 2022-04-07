@@ -29,6 +29,7 @@ import {
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './AccordionItem.css';
 
 const itemSpaceForSize = {
@@ -43,6 +44,7 @@ export type AccordionItemBaseProps = {
   children: ReactNode;
   size?: TextProps['size'];
   tone?: AccordionContextValue['tone'];
+  icon?: ReactElement<UseIconProps>;
   data?: DataAttributeMap;
   badge?: ReactElement<BadgeProps>;
 };
@@ -57,6 +59,7 @@ export const AccordionItem = ({
   badge,
   size: sizeProp,
   tone: toneProp,
+  icon,
   data,
   ...restProps
 }: AccordionItemProps) => {
@@ -89,6 +92,11 @@ export const AccordionItem = ({
     "Badge elements cannot set the 'bleedY' prop when passed to an AccordionItem component",
   );
 
+  assert(
+    !icon || icon.props.size === undefined,
+    "Icons cannot set the 'size' prop when passed to a AccordionItem component",
+  );
+
   const size = accordionContext?.size ?? sizeProp ?? 'large';
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = 'medium';
@@ -116,6 +124,7 @@ export const AccordionItem = ({
       <Box position="relative" display="flex">
         <Box
           component="button"
+          type="button"
           cursor="pointer"
           className={[styles.button, virtualTouchable()]}
           outline="none"
@@ -128,22 +137,32 @@ export const AccordionItem = ({
             If we don't add this, the bottom of the text node is visibly cropped.
             https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari
           */}
-          <Box position="relative">
-            <Columns space={itemSpace}>
+          <Box component="span" position="relative">
+            <Columns component="span" space={itemSpace}>
               <Column>
-                <Inline space="small" alignY="center">
-                  <Text size={size} weight={weight} tone={tone} component="div">
-                    {label}
-                  </Text>
-                  {badge ? cloneElement(badge, { bleedY: true }) : null}
-                </Inline>
+                <Box component="span" display="flex">
+                  {icon ? (
+                    <Box
+                      component="span"
+                      paddingRight="small"
+                      className={styles.iconContainer[size]}
+                    >
+                      {cloneElement(icon, { size, tone })}
+                    </Box>
+                  ) : null}
+                  <Inline component="span" space="small" alignY="center">
+                    <Text size={size} weight={weight} tone={tone}>
+                      {label}
+                    </Text>
+                    {badge ? cloneElement(badge, { bleedY: true }) : null}
+                  </Inline>
+                </Box>
               </Column>
               <Column width="content">
                 <Text
                   size={size}
                   weight={weight}
                   tone={tone === 'neutral' ? 'secondary' : tone}
-                  component="div"
                 >
                   <IconChevron direction={expanded ? 'up' : 'down'} />
                 </Text>

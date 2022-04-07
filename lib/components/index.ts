@@ -25,6 +25,7 @@ export { Bleed } from './Bleed/Bleed';
 export { PublicBox as Box } from './Box/Box';
 export { BoxRenderer } from './Box/BoxRenderer';
 export { Button } from './Button/Button';
+export { ButtonIcon } from './ButtonIcon/ButtonIcon';
 export { ButtonLink } from './ButtonLink/ButtonLink';
 export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';

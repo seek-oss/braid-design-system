@@ -33,6 +33,7 @@ Object {
     children: ReactNode
     data?: DataAttributeMap
     expanded?: boolean
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id: string
     label: string
     onToggle?: (expanded: boolean) => void
@@ -1985,6 +1986,55 @@ Object {
         | "ghost"
         | "soft"
         | "solid"
+        | "transparent"
+},
+}
+`;
+
+exports[`ButtonIcon 1`] = `
+Object {
+  exportType: component,
+  props: {
+    aria-expanded?: 
+        | "false"
+        | "true"
+        | false
+        | true
+    aria-haspopup?: 
+        | "dialog"
+        | "false"
+        | "grid"
+        | "listbox"
+        | "menu"
+        | "tree"
+        | "true"
+        | false
+        | true
+    bleed?: boolean
+    data?: DataAttributeMap
+    icon: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
+    id: string
+    label: string
+    onClick?: MouseEventHandler<HTMLButtonElement>
+    onKeyDown?: KeyboardEventHandler<HTMLButtonElement>
+    onKeyUp?: KeyboardEventHandler<HTMLButtonElement>
+    onMouseDown?: MouseEventHandler<HTMLButtonElement>
+    ref?: 
+        | (instance: HTMLButtonElement | null) => void
+        | RefObject<HTMLButtonElement>
+    size?: 
+        | "large"
+        | "standard"
+    tabIndex?: number
+    tone?: 
+        | "neutral"
+        | "secondary"
+    type?: 
+        | "button"
+        | "reset"
+        | "submit"
+    variant?: 
+        | "soft"
         | "transparent"
 },
 }
@@ -6796,6 +6846,7 @@ Object {
     children: string
     clearLabel?: string
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     onClear?: () => void
 },
