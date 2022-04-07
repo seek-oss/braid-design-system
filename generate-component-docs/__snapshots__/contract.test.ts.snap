@@ -6770,6 +6770,7 @@ Object {
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children: ReactNode
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     item?: string
 },
 }

@@ -11,8 +11,9 @@ export const Divider = ({ weight = 'regular' }: DividerProps) => {
   const lightness = useBackgroundLightness();
 
   return (
-    <Box position="relative">
+    <Box component="span" display="block" position="relative">
       <Box
+        component="span"
         position="absolute"
         width="full"
         className={[

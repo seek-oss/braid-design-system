@@ -9,6 +9,9 @@ import {
   TabsProvider,
   Badge,
   Card,
+  IconCompany,
+  IconHome,
+  IconRecommended,
 } from '..';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
@@ -24,9 +27,7 @@ export const galleryItems: ComponentExample[] = [
               <Tabs label="Test tabs">
                 <Tab>The first tab</Tab>
                 <Tab>The second tab</Tab>
-                <Tab badge={<Badge tone="positive">New</Badge>}>
-                  The third tab
-                </Tab>
+                <Tab>The third tab</Tab>
               </Tabs>
               <TabPanels>
                 <TabPanel>
@@ -77,7 +78,6 @@ export const galleryItems: ComponentExample[] = [
             <Tab>The first tab</Tab>
             <Tab>The second tab</Tab>
             <Tab>The third tab</Tab>
-            <Tab>The fourth tab</Tab>
           </Tabs>
           <Card>
             <TabPanels>
@@ -89,9 +89,6 @@ export const galleryItems: ComponentExample[] = [
               </TabPanel>
               <TabPanel>
                 <Placeholder height={100} label="Panel 3" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={100} label="Panel 4" />
               </TabPanel>
             </TabPanels>
           </Card>
@@ -127,11 +124,10 @@ export const galleryItems: ComponentExample[] = [
     Example: ({ id }) =>
       source(
         <TabsProvider id={id}>
-          <Tabs label="Test tabs" gutter="gutter" divider="none">
+          <Tabs label="Test tabs" divider="none">
             <Tab>The first tab</Tab>
             <Tab>The second tab</Tab>
             <Tab>The third tab</Tab>
-            <Tab>The fourth tab</Tab>
           </Tabs>
           <Card>
             <TabPanels>
@@ -144,12 +140,67 @@ export const galleryItems: ComponentExample[] = [
               <TabPanel>
                 <Placeholder height={100} label="Panel 3" />
               </TabPanel>
-              <TabPanel>
-                <Placeholder height={100} label="Panel 4" />
-              </TabPanel>
             </TabPanels>
           </Card>
         </TabsProvider>,
+      ),
+  },
+  {
+    label: 'With a badge',
+    Example: ({ id }) =>
+      source(
+        <Card>
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs">
+                <Tab>The first tab</Tab>
+                <Tab>The second tab</Tab>
+                <Tab badge={<Badge tone="positive">New</Badge>}>
+                  The third tab
+                </Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 2" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 3" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>
+        </Card>,
+      ),
+  },
+  {
+    label: 'With an icon',
+    Example: ({ id }) =>
+      source(
+        <Card>
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs">
+                <Tab icon={<IconHome />}>The first tab</Tab>
+                <Tab icon={<IconRecommended />}>The second tab</Tab>
+                <Tab icon={<IconCompany />}>The third tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 2" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 3" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>
+        </Card>,
       ),
   },
 ];

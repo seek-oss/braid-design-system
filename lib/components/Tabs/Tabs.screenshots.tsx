@@ -1,6 +1,15 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Stack, Tabs, Tab, TabPanel, TabPanels, TabsProvider, Badge } from '..';
+import {
+  Stack,
+  Tabs,
+  Tab,
+  TabPanel,
+  TabPanels,
+  TabsProvider,
+  Badge,
+  IconHome,
+} from '..';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
@@ -285,6 +294,36 @@ export const screenshots: ComponentScreenshot = {
               </TabPanel>
               <TabPanel>
                 <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+            </TabPanels>
+          </Stack>
+        </TabsProvider>
+      ),
+    },
+    {
+      label: 'With an icon',
+      Example: ({ id }) => (
+        <TabsProvider id={id}>
+          <Stack space="medium">
+            <Tabs label="Test tabs">
+              <Tab icon={<IconHome />}>The first tab</Tab>
+              <Tab icon={<IconHome />}>The second tab</Tab>
+              <Tab
+                icon={<IconHome />}
+                badge={<Badge tone="positive">New</Badge>}
+              >
+                The third tab
+              </Tab>
+            </Tabs>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 3" />
               </TabPanel>
             </TabPanels>
           </Stack>

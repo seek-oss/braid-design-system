@@ -1,4 +1,6 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
+import { responsiveStyle } from './../../css/responsiveStyle';
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -88,3 +90,25 @@ export const tabPanelFocusRing = style({
 export const divider = style({
   height: vars.borderWidth.standard,
 });
+
+const calculateForBreakpoint = (
+  breakpoint: keyof typeof vars.textSize.standard,
+) => {
+  const { lineHeight, capHeight } = vars.textSize.standard[breakpoint];
+  const offset = calc(calc(lineHeight).subtract(capHeight))
+    .divide(2)
+    .negate()
+    .toString();
+
+  return {
+    marginTop: offset,
+    marginBottom: offset,
+  };
+};
+
+export const iconContainer = style(
+  responsiveStyle({
+    mobile: calculateForBreakpoint('mobile'),
+    tablet: calculateForBreakpoint('tablet'),
+  }),
+);
