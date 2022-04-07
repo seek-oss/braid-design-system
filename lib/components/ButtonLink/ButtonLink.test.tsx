@@ -1,11 +1,28 @@
 import '@testing-library/jest-dom/extend-expect';
+import 'html-validate/jest';
 import React from 'react';
 import { render } from '@testing-library/react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { htmlToText } from '../../utils/htmlToText';
 import { BraidTestProvider } from '../../../test';
-import { makeLinkComponent, LinkComponent, ButtonLink } from '..';
+import { makeLinkComponent, LinkComponent, ButtonLink, IconSend } from '..';
 
 describe('ButtonLink', () => {
+  it('should render valid html structure', () => {
+    expect(
+      renderToStaticMarkup(
+        <BraidTestProvider>
+          <ButtonLink href="#">Button</ButtonLink>
+          <ButtonLink href="#" icon={<IconSend />}>
+            Button
+          </ButtonLink>
+        </BraidTestProvider>,
+      ),
+    ).toHTMLValidate({
+      extends: ['html-validate:recommended'],
+    });
+  });
+
   it('should render a native link by default', () => {
     const { getByRole } = render(
       <BraidTestProvider>

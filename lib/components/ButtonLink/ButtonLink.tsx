@@ -8,6 +8,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import {
   ButtonOverlays,
+  ButtonProps,
   ButtonStyleProps,
   ButtonText,
   useButtonStyles,
@@ -19,11 +20,22 @@ export interface ButtonLinkProps
     Omit<LinkComponentProps, 'className' | 'style'> {
   children?: ReactNode;
   data?: DataAttributeMap;
+  icon?: ButtonProps['icon'];
 }
 
 export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   (
-    { children, size, tone, variant, bleedY, loading, data, ...restProps },
+    {
+      children,
+      size,
+      tone,
+      variant,
+      bleedY,
+      icon,
+      loading,
+      data,
+      ...restProps
+    },
     ref,
   ) => {
     const LinkComponent = useLinkComponent(ref);
@@ -38,7 +50,13 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       >
         <ButtonOverlays variant={variant} tone={tone} />
 
-        <ButtonText variant={variant} tone={tone} size={size} loading={loading}>
+        <ButtonText
+          variant={variant}
+          tone={tone}
+          size={size}
+          loading={loading}
+          icon={icon}
+        >
           {children}
         </ButtonText>
       </Box>

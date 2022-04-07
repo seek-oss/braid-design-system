@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { ButtonLink } from '../';
+import { ButtonLink, IconSend, Stack } from '../';
 import { Inline } from '../Inline/Inline';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -66,6 +66,56 @@ export const screenshots: ComponentScreenshot = {
             Transparent
           </ButtonLink>
         </Inline>
+      ),
+    },
+    {
+      label: 'With icon',
+      Example: () => (
+        <Stack space="small">
+          <Inline space="small">
+            <ButtonLink href="#" icon={<IconSend />}>
+              Solid
+            </ButtonLink>
+            <ButtonLink href="#" icon={<IconSend />} variant="ghost">
+              Ghost
+            </ButtonLink>
+            <ButtonLink href="#" icon={<IconSend />} variant="soft">
+              Soft
+            </ButtonLink>
+            <ButtonLink href="#" icon={<IconSend />} variant="transparent">
+              Transparent
+            </ButtonLink>
+          </Inline>
+          <Inline space="small">
+            <ButtonLink href="#" size="small" icon={<IconSend />}>
+              Solid
+            </ButtonLink>
+            <ButtonLink
+              href="#"
+              size="small"
+              icon={<IconSend />}
+              variant="ghost"
+            >
+              Ghost
+            </ButtonLink>
+            <ButtonLink
+              href="#"
+              size="small"
+              icon={<IconSend />}
+              variant="soft"
+            >
+              Soft
+            </ButtonLink>
+            <ButtonLink
+              href="#"
+              size="small"
+              icon={<IconSend />}
+              variant="transparent"
+            >
+              Transparent
+            </ButtonLink>
+          </Inline>
+        </Stack>
       ),
     },
   ],

@@ -39,7 +39,7 @@ const lightModeBackgroundForTone = {
   caution: 'cautionLight',
 } as const;
 
-export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {
       tone = 'info',

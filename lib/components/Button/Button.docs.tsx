@@ -115,9 +115,9 @@ const docs: ComponentDocs = {
       background: 'surface',
       description: (
         <Text>
-          You can add an icon to the button by nesting an icon element inside.
-          The size of the icon will adjust automatically based on the size on
-          the button.
+          For decoration or help distinguishing between buttons, an{' '}
+          <Strong>icon</Strong> can be provided. This will be placed to the left
+          of the label.
         </Text>
       ),
       Example: () =>
@@ -127,16 +127,14 @@ const docs: ComponentDocs = {
               <Text tone="secondary" weight="strong">
                 Standard size
               </Text>
-              <Button>
-                <IconSend /> Send
-              </Button>
+              <Button icon={<IconSend />}>Send</Button>
             </Stack>
             <Stack space="small" align="center">
               <Text tone="secondary" weight="strong">
                 Small size
               </Text>
-              <Button size="small">
-                <IconSend /> Send
+              <Button size="small" icon={<IconSend />}>
+                Send
               </Button>
             </Stack>
           </Inline>,

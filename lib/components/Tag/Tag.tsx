@@ -34,8 +34,8 @@ export const Tag = ({
   );
 
   assert(
-    !icon || icon.props.size === undefined,
-    "Icons cannot set the 'size' prop when passed to a Tag component",
+    !icon || icon.props.size === undefined || icon.props.tone === undefined,
+    "Icons cannot set the 'size' or 'tone' prop when passed to a Tag component",
   );
 
   return (
