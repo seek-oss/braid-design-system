@@ -33,6 +33,7 @@ Object {
     children: ReactNode
     data?: DataAttributeMap
     expanded?: boolean
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id: string
     label: string
     onToggle?: (expanded: boolean) => void

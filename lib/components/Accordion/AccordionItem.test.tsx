@@ -1,11 +1,33 @@
 import '@testing-library/jest-dom/extend-expect';
+import 'html-validate/jest';
 import React, { useState } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import { BraidTestProvider } from '../../../test';
-import { AccordionItem } from '..';
+import { AccordionItem, Badge, IconHelp } from '..';
 import { htmlToText } from '../../utils/htmlToText';
 
 describe('AccordionItem', () => {
+  it('should render valid html structure', () => {
+    expect(
+      renderToStaticMarkup(
+        <BraidTestProvider>
+          <AccordionItem id="1" label="Label 1">
+            Content 1
+          </AccordionItem>
+          <AccordionItem id="2" label="Label 2" icon={<IconHelp />}>
+            Content 2
+          </AccordionItem>
+          <AccordionItem id="3" label="Label 3" badge={<Badge>Badge</Badge>}>
+            Content 3
+          </AccordionItem>
+        </BraidTestProvider>,
+      ),
+    ).toHTMLValidate({
+      extends: ['html-validate:recommended'],
+    });
+  });
+
   it('should provide internal state by default', () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>

@@ -1,4 +1,5 @@
-import { style } from '@vanilla-extract/css';
+import { responsiveStyle } from './../../css/responsiveStyle';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
 
@@ -15,3 +16,26 @@ export const focusRing = style({
     },
   },
 });
+
+const calculateForBreakpoint = (
+  textDefinition: typeof vars.textSize[keyof typeof vars.textSize],
+  breakpoint: keyof typeof vars.textSize.standard,
+) => {
+  const { lineHeight, capHeight } = textDefinition[breakpoint];
+  const offset = calc(calc(lineHeight).subtract(capHeight))
+    .divide(2)
+    .negate()
+    .toString();
+
+  return {
+    marginTop: offset,
+    marginBottom: offset,
+  };
+};
+
+export const iconContainer = styleVariants(vars.textSize, (textDefinition) =>
+  responsiveStyle({
+    mobile: calculateForBreakpoint(textDefinition, 'mobile'),
+    tablet: calculateForBreakpoint(textDefinition, 'tablet'),
+  }),
+);

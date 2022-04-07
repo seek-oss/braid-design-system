@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { AccordionItem, Accordion, Badge, Text } from '../../components';
+import {
+  AccordionItem,
+  Accordion,
+  Badge,
+  Text,
+  IconPromote,
+} from '../../components';
 import { Placeholder } from '../../playroom/components';
+import { Box } from '../Box/Box';
+import { Stack } from '../Stack/Stack';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -369,6 +377,108 @@ export const screenshots: ComponentScreenshot = {
         >
           <Text size="small">Content</Text>
         </AccordionItem>
+      ),
+    },
+    {
+      label: 'AccordionItem with an icon - should follow size',
+      Example: ({ id }) => (
+        <Box paddingY="medium">
+          <Stack space="medium" dividers>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="xsmall"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="small"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="standard"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="large"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+          </Stack>
+        </Box>
+      ),
+    },
+    {
+      label: 'AccordionItem with an icon - should follow tone',
+      Example: ({ id }) => (
+        <Box paddingY="medium">
+          <Stack space="medium" dividers>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="xsmall"
+                tone="secondary"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="small"
+                tone="secondary"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="standard"
+                tone="secondary"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+            <Box background="surface">
+              <AccordionItem
+                label="Label"
+                size="large"
+                tone="secondary"
+                id={id}
+                icon={<IconPromote />}
+              >
+                <Text size="small">Content</Text>
+              </AccordionItem>
+            </Box>
+          </Stack>
+        </Box>
       ),
     },
   ],

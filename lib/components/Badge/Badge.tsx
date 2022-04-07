@@ -68,6 +68,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 
     return (
       <Box
+        component="span"
         display="flex"
         cursor="default"
         className={[
@@ -77,6 +78,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
         {...(data ? buildDataAttributes(data) : undefined)}
       >
         <Box
+          component="span"
           id={id}
           ref={ref}
           tabIndex={tabIndex}
@@ -90,7 +92,6 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
           overflow="hidden"
         >
           <Text
-            component="span"
             size={styles.constants.textSize}
             weight="medium"
             truncate
