@@ -170,12 +170,9 @@ export const MenuRenderer = ({
       return;
     }
 
-    if (open) {
-      if (typeof onOpen === 'function') {
-        onOpen();
-      }
-    } else if (typeof onClose === 'function') {
-      onClose();
+    const handler = open ? onOpen : onClose;
+    if (handler) {
+      handler();
     }
 
     lastOpen.current = open;
