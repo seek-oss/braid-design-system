@@ -171,7 +171,7 @@ export const MenuRenderer = ({
     }
 
     const handler = open ? onOpen : onClose;
-    if (handler) {
+    if (typeof handler === 'function') {
       handler();
     }
 
