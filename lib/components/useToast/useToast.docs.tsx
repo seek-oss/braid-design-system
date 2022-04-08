@@ -32,8 +32,9 @@ const docs: ComponentDocs = {
               tone: 'positive',
             })
           }
+          icon={<IconPromote />}
         >
-          Show animation <IconPromote alignY="lowercase" />
+          Show animation
         </Button>
       </Inline>,
     );

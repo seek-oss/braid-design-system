@@ -1,8 +1,11 @@
+import assert from 'assert';
 import React, {
   useContext,
   forwardRef,
   ReactNode,
   AllHTMLAttributes,
+  ReactElement,
+  cloneElement,
 } from 'react';
 import { touchableText } from '../../hooks/typography';
 import { Box, BoxBackgroundVariant, BoxProps } from '../Box/Box';
@@ -19,6 +22,8 @@ import {
 import { Text, TextProps } from '../Text/Text';
 import { BoxShadow } from '../../css/atoms/atomicProperties';
 import ActionsContext from '../Actions/ActionsContext';
+import { UseIconProps } from '../../hooks/useIcon';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import * as styles from './Button.css';
 
 export const buttonVariants = [
@@ -44,6 +49,7 @@ export interface ButtonProps extends ButtonStyleProps {
   id?: NativeButtonProps['id'];
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
+  icon?: ReactElement<UseIconProps>;
   children?: ReactNode;
   onKeyUp?: NativeButtonProps['onKeyUp'];
   onKeyDown?: NativeButtonProps['onKeyDown'];
@@ -292,6 +298,7 @@ export const ButtonText = ({
   children,
   loading,
   size: sizeProp,
+  icon,
   variant = 'solid',
   tone,
   labelSpacing = true,
@@ -302,17 +309,24 @@ export const ButtonText = ({
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
-  const labelMargin =
+  const labelPaddingX =
     size === 'small' || variant === 'transparent' ? 'small' : 'medium';
+
+  assert(
+    !icon || (icon.props.size === undefined && icon.props.tone === undefined),
+    "Icons cannot set the 'size' or 'tone' prop when passed to a Button component",
+  );
 
   return (
     <Box
       component="span"
       position="relative"
-      display="block"
+      display="flex"
+      justifyContent="center"
+      flexWrap="wrap"
       overflow="hidden"
       pointerEvents="none"
-      marginX={labelSpacing ? labelMargin : undefined}
+      paddingX={labelSpacing ? labelPaddingX : undefined}
       paddingY={
         labelSpacing && size === 'small'
           ? styles.constants.smallButtonPaddingSize
@@ -332,6 +346,16 @@ export const ButtonText = ({
           : undefined
       }
     >
+      {icon ? (
+        <Box
+          component="span"
+          display="block"
+          paddingRight={size === 'small' ? 'xxsmall' : 'xsmall'}
+          className={negativeMargin('left', 'xxsmall')}
+        >
+          {cloneElement(icon, { size, tone: stylesForVariant.textTone })}
+        </Box>
+      ) : null}
       <Text
         tone={stylesForVariant.textTone}
         weight="medium"
@@ -399,6 +423,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       size,
       tone,
+      icon,
       bleedY,
       variant,
       loading,
@@ -434,7 +459,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     >
       <ButtonOverlays variant={variant} tone={tone} />
 
-      <ButtonText variant={variant} tone={tone} size={size} loading={loading}>
+      <ButtonText
+        variant={variant}
+        tone={tone}
+        size={size}
+        loading={loading}
+        icon={icon}
+      >
         {children}
       </ButtonText>
     </Box>

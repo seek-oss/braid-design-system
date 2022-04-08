@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../site/src/types';
-import { Button } from '../';
+import { Button, IconSend, Stack } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
@@ -118,6 +118,39 @@ export const screenshots: ComponentScreenshot = {
             </Inline>
           </Box>
         </Box>
+      ),
+    },
+    {
+      label: 'With icon',
+      Example: () => (
+        <Stack space="small">
+          <Inline space="small">
+            <Button icon={<IconSend />}>Solid</Button>
+            <Button icon={<IconSend />} variant="ghost">
+              Ghost
+            </Button>
+            <Button icon={<IconSend />} variant="soft">
+              Soft
+            </Button>
+            <Button icon={<IconSend />} variant="transparent">
+              Transparent
+            </Button>
+          </Inline>
+          <Inline space="small">
+            <Button size="small" icon={<IconSend />}>
+              Solid
+            </Button>
+            <Button size="small" icon={<IconSend />} variant="ghost">
+              Ghost
+            </Button>
+            <Button size="small" icon={<IconSend />} variant="soft">
+              Soft
+            </Button>
+            <Button size="small" icon={<IconSend />} variant="transparent">
+              Transparent
+            </Button>
+          </Inline>
+        </Stack>
       ),
     },
     {

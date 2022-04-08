@@ -148,8 +148,8 @@ Object {
     data?: DataAttributeMap
     id?: string
     ref?: 
-        | (instance: HTMLDivElement | null) => void
-        | RefObject<HTMLDivElement>
+        | (instance: HTMLSpanElement | null) => void
+        | RefObject<HTMLSpanElement>
     tabIndex?: number
     title?: string
     tone?: 
@@ -1962,6 +1962,7 @@ Object {
     bleedY?: boolean
     children?: ReactNode
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     loading?: boolean
     onClick?: MouseEventHandler<HTMLButtonElement>
@@ -2236,6 +2237,7 @@ Object {
     hidden?: boolean
     href: string
     hrefLang?: string
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     inlist?: any
     inputMode?: 

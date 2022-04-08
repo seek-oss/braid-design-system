@@ -79,9 +79,7 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Inline space="small">
-          <Button>
-            <IconSend /> Send
-          </Button>
+          <Button icon={<IconSend />}>Send</Button>
         </Inline>,
       ),
   },

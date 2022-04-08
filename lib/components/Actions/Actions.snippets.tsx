@@ -26,8 +26,8 @@ export const snippets: Snippets = [
     name: 'With a destructive action',
     code: source(
       <Actions>
-        <Button tone="critical">
-          <IconDelete /> Delete
+        <Button tone="critical" icon={<IconDelete />}>
+          Delete
         </Button>
         <Button variant="transparent">Cancel</Button>
       </Actions>,

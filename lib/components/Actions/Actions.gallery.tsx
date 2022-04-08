@@ -30,8 +30,8 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Actions>
-          <Button tone="critical">
-            <IconDelete /> Delete
+          <Button tone="critical" icon={<IconDelete />}>
+            Delete
           </Button>
           <Button variant="transparent">Cancel</Button>
         </Actions>,
