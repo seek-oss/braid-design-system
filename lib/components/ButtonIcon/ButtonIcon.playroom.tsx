@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { useFallbackId } from '../../playroom/utils';
 import {
   ButtonIcon as BraidButtonIcon,
   ButtonIconProps,
@@ -6,12 +7,14 @@ import {
 } from './ButtonIcon';
 
 export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
-  ({ variant, ...restProps }, ref) => {
+  ({ variant, id, ...restProps }, ref) => {
+    const fallbackId = useFallbackId();
     const isValidVariant = variant && buttonIconVariants.indexOf(variant) > -1;
 
     return (
       <BraidButtonIcon
         ref={ref}
+        id={id ?? fallbackId}
         variant={isValidVariant ? variant : undefined}
         {...restProps}
       />

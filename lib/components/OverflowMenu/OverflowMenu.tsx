@@ -5,7 +5,7 @@ import { IconOverflow } from '../icons';
 import { Box } from '../Box/Box';
 import * as styles from './OverflowMenu.css';
 
-interface OverflowMenuProps
+export interface OverflowMenuProps
   extends Omit<MenuRendererProps, 'trigger' | 'align' | 'offsetSpace'> {
   label: string;
   id?: string;

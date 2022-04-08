@@ -29,6 +29,7 @@ export { MenuItem } from '../components/MenuItem/MenuItem.playroom';
 export { MenuItemLink } from '../components/MenuItem/MenuItemLink.playroom';
 export { MenuItemCheckbox } from '../components/MenuItemCheckbox/MenuItemCheckbox.playroom';
 export { Notice } from '../components/Notice/Notice.playroom';
+export { OverflowMenu } from '../components/OverflowMenu/OverflowMenu.playroom';
 export { Pagination } from '../components/Pagination/Pagination.playroom';
 export { PasswordField } from '../components/PasswordField/PasswordField.playroom';
 export { Radio } from '../components/Radio/Radio.playroom';
