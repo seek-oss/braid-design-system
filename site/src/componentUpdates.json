@@ -2379,5 +2379,99 @@
         "summary": "**MenuRenderer, OverflowMenu:** Mouse leave no longer affects focus state\n\nPreviously, moving the mouse from hovering a menu item to outside of the menu would shift focus the to the menu trigger. This is not a requirement for accessibility and introduces undesired behaviour when the trigger is used in conjunction with [TooltipRenderer](https://seek-oss.github.io/braid-design-system/components/TooltipRenderer).\n\nNote: As per the [menu accessibility guidelines](https://www.w3.org/TR/wai-aria-practices-1.2/#menu), focus will still be returned to the trigger when clicking outside the menu, selecting a menu item or pressing the escape key."
       }
     ]
+  },
+  {
+    "version": "31.9.0",
+    "updates": [
+      {
+        "updated": [
+          "Divider"
+        ],
+        "summary": "**Divider:** Use span element\n\nAs the `Divider` component is not used as a container element, we now use a `span`. This allows it to be used inside `button` elements, such as a `Tab`, without producing invalid html."
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Use span element\n\nAs the `Badge` component is not used as a container element, we now use a `span`. This allows it to be used inside `button` elements, such as an `AccordionItem`, without producing invalid html."
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Ignore pointer events on tip container\n\nFix for the container of the tooltip interferring with pointer events of the tooltip trigger itself."
+      },
+      {
+        "updated": [
+          "Tab"
+        ],
+        "summary": "**Tab:** Add icon support\n\nProvides a designed slot for adding an icon to a `Tab`\n\n**EXAMPLE USAGE:**\n```jsx\n<Tab icon={<IconPromote />}>{...}</Tab>\n```"
+      },
+      {
+        "updated": [
+          "AccordionItem"
+        ],
+        "summary": "**AccordionItem:** Add icon support\n\nProvides a designed slot for adding an icon to an `AccordionItem`\n\n**EXAMPLE USAGE:**\n```jsx\n<AccordionItem\n  icon={<IconPromote />}\n  {...}\n/>\n```"
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Guard against open/close handlers firing incorrectly\n\nAdd guard to ensure open and close handlers are not re-fired when handler instances are updated."
+      },
+      {
+        "updated": [
+          "Tag"
+        ],
+        "summary": "**Tag:** Add `id` support"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Add icon support\n\nProvides a designed slot for adding an icon to a `Button` or `ButtonLink`\n\n**EXAMPLE USAGE:**\n```jsx\n<Button icon={<IconSend />}>{...}</Button>\n```"
+      },
+      {
+        "updated": [
+          "Tag"
+        ],
+        "summary": "**Tag:** Add icon support\n\nProvides a designed slot for adding an icon to a `Tag`\n\n**EXAMPLE USAGE:**\n```jsx\n<Tag\n  icon={<IconPromote />}\n  {...}\n/>\n```"
+      },
+      {
+        "updated": [
+          "OverflowMenu"
+        ],
+        "summary": "**OverflowMenu:** Add `id` support"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "PasswordField",
+          "TextField",
+          "useToast"
+        ],
+        "summary": "**Autosuggest, PasswordField, TextField, useToast:** Add `id` to internal close/clear buttons"
+      },
+      {
+        "new": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add component\n\nSee [documentation](https://seek-oss.github.io/braid-design-system/components/ButtonIcon) for full feature set.\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  icon={<IconShare/>}\n  label=\"Share\"\n  id=\"share\"\n  onClick={...}\n/>\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dialog",
+          "Drawer",
+          "OverflowMenu",
+          "Tag",
+          "TextField",
+          "useToast"
+        ],
+        "summary": "**Autosuggest, Dialog, Drawer, OverflowMenu, Tag, TextField, useToast:** Migrate to use ButtonIcon\n\nAdopt new `ButtonIcon` for clear/close actions in favour of custom internal buttons."
+      }
+    ]
   }
 ]

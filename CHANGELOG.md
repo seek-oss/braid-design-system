@@ -1,5 +1,98 @@
 # braid-design-system
 
+## 31.9.0
+
+### Minor Changes
+
+- **Tab:** Add icon support ([#1089](https://github.com/seek-oss/braid-design-system/pull/1089))
+
+  Provides a designed slot for adding an icon to a `Tab`
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tab icon={<IconPromote />}>{...}</Tab>
+  ```
+
+- **AccordionItem:** Add icon support ([#1086](https://github.com/seek-oss/braid-design-system/pull/1086))
+
+  Provides a designed slot for adding an icon to an `AccordionItem`
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <AccordionItem
+    icon={<IconPromote />}
+    {...}
+  />
+  ```
+
+- **Tag:** Add `id` support ([#1081](https://github.com/seek-oss/braid-design-system/pull/1081))
+
+- **Button, ButtonLink:** Add icon support ([#1090](https://github.com/seek-oss/braid-design-system/pull/1090))
+
+  Provides a designed slot for adding an icon to a `Button` or `ButtonLink`
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Button icon={<IconSend />}>{...}</Button>
+  ```
+
+- **Tag:** Add icon support ([#1087](https://github.com/seek-oss/braid-design-system/pull/1087))
+
+  Provides a designed slot for adding an icon to a `Tag`
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tag
+    icon={<IconPromote />}
+    {...}
+  />
+  ```
+
+- **OverflowMenu:** Add `id` support ([#1081](https://github.com/seek-oss/braid-design-system/pull/1081))
+
+- **ButtonIcon:** Add component ([#1084](https://github.com/seek-oss/braid-design-system/pull/1084))
+
+  See [documentation](https://seek-oss.github.io/braid-design-system/components/ButtonIcon) for full feature set.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon
+    icon={<IconShare/>}
+    label="Share"
+    id="share"
+    onClick={...}
+  />
+  ```
+
+### Patch Changes
+
+- **Divider:** Use span element ([#1089](https://github.com/seek-oss/braid-design-system/pull/1089))
+
+  As the `Divider` component is not used as a container element, we now use a `span`. This allows it to be used inside `button` elements, such as a `Tab`, without producing invalid html.
+
+- **Badge:** Use span element ([#1086](https://github.com/seek-oss/braid-design-system/pull/1086))
+
+  As the `Badge` component is not used as a container element, we now use a `span`. This allows it to be used inside `button` elements, such as an `AccordionItem`, without producing invalid html.
+
+- **TooltipRenderer:** Ignore pointer events on tip container ([#1082](https://github.com/seek-oss/braid-design-system/pull/1082))
+
+  Fix for the container of the tooltip interferring with pointer events of the tooltip trigger itself.
+
+- **MenuRenderer, OverflowMenu:** Guard against open/close handlers firing incorrectly ([#1088](https://github.com/seek-oss/braid-design-system/pull/1088))
+
+  Add guard to ensure open and close handlers are not re-fired when handler instances are updated.
+
+- **Autosuggest, PasswordField, TextField, useToast:** Add `id` to internal close/clear buttons ([#1081](https://github.com/seek-oss/braid-design-system/pull/1081))
+
+- **Autosuggest, Dialog, Drawer, OverflowMenu, Tag, TextField, useToast:** Migrate to use ButtonIcon ([#1084](https://github.com/seek-oss/braid-design-system/pull/1084))
+
+  Adopt new `ButtonIcon` for clear/close actions in favour of custom internal buttons.
+
 ## 31.8.0
 
 ### Minor Changes
