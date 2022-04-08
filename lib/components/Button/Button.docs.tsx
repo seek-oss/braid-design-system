@@ -196,17 +196,17 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Inline space="small">
-            <Button tone="critical">
-              <IconDelete /> Delete
+            <Button tone="critical" icon={<IconDelete />}>
+              Delete
             </Button>
-            <Button tone="critical" variant="ghost">
-              <IconDelete /> Delete
+            <Button tone="critical" icon={<IconDelete />} variant="ghost">
+              Delete
             </Button>
-            <Button tone="critical" variant="soft">
-              <IconDelete /> Delete
+            <Button tone="critical" icon={<IconDelete />} variant="soft">
+              Delete
             </Button>
-            <Button tone="critical" variant="transparent">
-              <IconDelete /> Delete
+            <Button tone="critical" icon={<IconDelete />} variant="transparent">
+              Delete
             </Button>
           </Inline>,
         ),

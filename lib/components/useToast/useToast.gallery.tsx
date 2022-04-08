@@ -226,8 +226,9 @@ export const galleryItems: ComponentExample[] = [
                 action: { label: 'Action', onClick: () => {} },
               })
             }
+            icon={<IconPromote />}
           >
-            Show animation <IconPromote alignY="lowercase" />
+            Show animation
           </Button>
         </Inline>,
       ),
