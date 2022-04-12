@@ -7,16 +7,16 @@ import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample
 import { BraidSnippet } from '../../../../lib/components/private/Snippets';
 import {
   BraidProvider,
-  Box,
   Heading,
   Stack,
   Text,
   TextLink,
   Alert,
-  Inline,
   Badge,
   List,
   Secondary,
+  Column,
+  Columns,
 } from '../../../../lib/components';
 
 import { ComponentDocs, ComponentExample } from '../../types';
@@ -287,13 +287,15 @@ export const ComponentDoc = ({
         <Route path={`/components/${componentName}/releases`}>
           <PageTitle title={`${componentName} Releases`} />
 
-          <Stack space="xlarge">
+          <Stack space="xxlarge" dividers>
             {history.length > 0 ? (
               history.map((item, index) => (
-                <Box key={index} paddingTop={index > 0 ? 'medium' : undefined}>
-                  <Stack space="large">
-                    <Inline space="small" alignY="center">
-                      <Heading level="3">v{item.version}</Heading>
+                <Stack key={index} space="large">
+                  <Columns space="small" alignY="center">
+                    <Column>
+                      <LinkableHeading level="3">{`v${item.version}`}</LinkableHeading>
+                    </Column>
+                    <Column width="content">
                       {item.time ? (
                         <Badge
                           bleedY
@@ -302,10 +304,10 @@ export const ComponentDoc = ({
                           {item.time}
                         </Badge>
                       ) : null}
-                    </Inline>
-                    <Markdown>{item.summary}</Markdown>
-                  </Stack>
-                </Box>
+                    </Column>
+                  </Columns>
+                  <Markdown>{item.summary}</Markdown>
+                </Stack>
               ))
             ) : (
               <Stack space="large">
