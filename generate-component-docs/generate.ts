@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import fs from 'fs';
 import path from 'path';
-import ts from 'typescript';
+import ts, { CompilerOptions } from 'typescript';
 import isEqual from 'lodash/isEqual';
 
 const MAX_DEPTH = 10;
@@ -10,6 +10,7 @@ const propBlacklist = ['key'];
 
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
 const componentsFile = path.join(__dirname, '../lib/components/index.ts');
+const testComponentsFile = path.join(__dirname, '../test/index.ts');
 
 const stringAliases: Record<string, string> = {
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'
@@ -51,32 +52,8 @@ export type HookDoc = {
 
 export type ExportDoc = ComponentDoc | HookDoc;
 
-export default () => {
-  const basePath = path.dirname(tsconfigPath);
-  const { config, error } = ts.readConfigFile(tsconfigPath, (filename) =>
-    // eslint-disable-next-line no-sync
-    fs.readFileSync(filename, 'utf8'),
-  );
-
-  if (error) {
-    console.error(error);
-    throw error;
-  }
-
-  const { options, errors } = ts.parseJsonConfigFileContent(
-    config,
-    ts.sys,
-    basePath,
-    {},
-    tsconfigPath,
-  );
-
-  if (errors && errors.length) {
-    console.error(errors[0]);
-    throw errors[0];
-  }
-
-  const program = ts.createProgram([componentsFile], options);
+function extractTypeInfo(file: string, options: CompilerOptions) {
+  const program = ts.createProgram([file], options);
 
   const checker = program.getTypeChecker();
 
@@ -325,10 +302,7 @@ export default () => {
   }
 
   for (const sourceFile of program.getSourceFiles()) {
-    if (
-      !sourceFile.isDeclarationFile &&
-      sourceFile.fileName === componentsFile
-    ) {
+    if (!sourceFile.isDeclarationFile && sourceFile.fileName === file) {
       const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
 
       if (moduleSymbol) {
@@ -355,4 +329,35 @@ export default () => {
       }
     }
   }
+}
+
+export default () => {
+  const basePath = path.dirname(tsconfigPath);
+  const { config, error } = ts.readConfigFile(tsconfigPath, (filename) =>
+    // eslint-disable-next-line no-sync
+    fs.readFileSync(filename, 'utf8'),
+  );
+
+  if (error) {
+    console.error(error);
+    throw error;
+  }
+
+  const { options, errors } = ts.parseJsonConfigFileContent(
+    config,
+    ts.sys,
+    basePath,
+    {},
+    tsconfigPath,
+  );
+
+  if (errors && errors.length) {
+    console.error(errors[0]);
+    throw errors[0];
+  }
+
+  return {
+    ...extractTypeInfo(componentsFile, options),
+    ...extractTypeInfo(testComponentsFile, options),
+  };
 };

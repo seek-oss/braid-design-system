@@ -25,6 +25,7 @@ const getPages = (relativePath) => {
 // Remove `colorModeStyle` from `undocumentedExports.json`
 const cssNames = getExports('css/index.ts', 'css');
 const componentNames = getExports('lib/components/index.ts');
+const testNames = getExports('test/index.ts');
 const iconNames = getExports('lib/components/icons/index.ts');
 
 const guideRoutes = getPages('site/src/App/routes/guides/index.ts');
@@ -40,7 +41,7 @@ module.exports = [
   ...exampleRoutes.map((route) => ({ route })),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   ...flatten(
-    componentNames.map((name) =>
+    [...componentNames, ...testNames].map((name) =>
       [
         { route: `/components/${name}` },
         { route: `/components/${name}/releases` },
