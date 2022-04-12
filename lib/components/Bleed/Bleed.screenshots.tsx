@@ -356,5 +356,18 @@ export const screenshots: ComponentScreenshot = {
         </Box>
       ),
     },
+    {
+      label: 'Test - Span',
+      Container,
+      Example: () => (
+        <Bleed component="span" space="large">
+          <Box
+            background="criticalLight"
+            boxShadow="borderCritical"
+            style={{ height: 150 }}
+          />
+        </Bleed>
+      ),
+    },
   ],
 };

@@ -183,6 +183,9 @@ Object {
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
     children: ReactNode
+    component?: 
+        | "div"
+        | "span"
     horizontal?: 
         | "gutter"
         | "large"
@@ -1934,6 +1937,32 @@ Object {
         vanillaTheme: string
         webFonts: { linkTag: string; }[]
     }
+},
+}
+`;
+
+exports[`BraidTestProvider 1`] = `
+Object {
+  exportType: component,
+  props: {
+    breakpoint?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+        | "wide"
+    children: ReactNode
+    linkComponent?: 
+        | ComponentClass<LinkComponentProps, any>
+        | FunctionComponent<LinkComponentProps>
+        | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
+    themeName?: 
+        | "apac"
+        | "catho"
+        | "docs"
+        | "occ"
+        | "seekAnz"
+        | "seekBusiness"
+        | "wireframe"
 },
 }
 `;
