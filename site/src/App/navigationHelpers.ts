@@ -1,5 +1,6 @@
 import groupBy from 'lodash/groupBy';
 import * as components from '../../../lib/components';
+import * as testComponents from '../../../test';
 import * as css from '../../../css';
 import { BraidSnippet } from '../../../lib/components/private/Snippets';
 import { ComponentDocs, ComponentExample, CssDoc } from '../types';
@@ -53,7 +54,10 @@ const documentedCssNames = Object.keys(css).filter(
   (name) => !undocumentedExports.css.includes(name),
 );
 
-const documentedComponentNames = Object.keys(components)
+const documentedComponentNames = Object.keys({
+  ...components,
+  ...testComponents,
+})
   .filter((name) => {
     if (name.startsWith('Icon')) {
       return false;

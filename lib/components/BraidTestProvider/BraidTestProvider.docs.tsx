@@ -22,7 +22,7 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'BraidProvider',
-      description: 'For production apps with a single theme.',
+      description: 'For production apps.',
     },
   ],
   additional: [
