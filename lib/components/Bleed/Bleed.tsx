@@ -3,6 +3,8 @@ import { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { Box, BoxProps } from '../Box/Box';
 
+export const validBleedComponents = ['div', 'span'] as const;
+
 export interface BleedProps {
   children: BoxProps['children'];
   space?: ResponsiveSpace;
@@ -12,6 +14,7 @@ export interface BleedProps {
   bottom?: ResponsiveSpace;
   left?: ResponsiveSpace;
   right?: ResponsiveSpace;
+  component?: typeof validBleedComponents[number];
 }
 
 export const Bleed = ({
@@ -23,8 +26,11 @@ export const Bleed = ({
   left,
   right,
   children,
+  component = 'div',
 }: BleedProps) => (
   <Box
+    component={component}
+    display={component === 'span' ? 'block' : undefined}
     className={[
       negativeMargin('top', top || vertical || space),
       negativeMargin('bottom', bottom || vertical || space),
@@ -32,6 +38,12 @@ export const Bleed = ({
       negativeMargin('right', right || horizontal || space),
     ]}
   >
-    <Box position="relative">{children}</Box>
+    <Box
+      component={component}
+      display={component === 'span' ? 'block' : undefined}
+      position="relative"
+    >
+      {children}
+    </Box>
   </Box>
 );
