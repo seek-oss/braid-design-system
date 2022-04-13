@@ -1,5 +1,29 @@
 # braid-design-system
 
+## 31.10.0
+
+### Minor Changes
+
+- **Bleed:** Support using span elements via component prop ([#1094](https://github.com/seek-oss/braid-design-system/pull/1094))
+
+  Setting the `component` prop to `span` will now ensure all elements controlled by `Bleed` are `span`s. This is useful when using layout components inside dom elements that should not contain `div`s from a HTML validation perspective.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Bleed space="medium" component="span">
+    ...
+  </Bleed>
+  ```
+
+### Patch Changes
+
+- **Dialog, Drawer:** Prevent sticky close button container from blocking content ([#1097](https://github.com/seek-oss/braid-design-system/pull/1097))
+
+  Fix regression introduced when migrating the close action to use `ButtonIcon`. The close action container was blocking the content of the `Dialog`/`Drawer`, and when scrolling could prevent a user from interacting with the content as it went behind the container.
+
+  Additionally, re-introduced the surface coloured background behind the button to prevent the button from visually colliding with content when scrolling.
+
 ## 31.9.0
 
 ### Minor Changes
