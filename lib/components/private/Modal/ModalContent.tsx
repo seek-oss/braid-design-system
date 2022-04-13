@@ -14,6 +14,7 @@ import { Stack } from '../../Stack/Stack';
 import { Columns } from '../../Columns/Columns';
 import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
+import { Bleed } from '../../Bleed/Bleed';
 import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
@@ -190,35 +191,33 @@ export const ModalContent = ({
           position="absolute"
           zIndex="sticky"
           top={0}
-          left={0}
-          right={0}
-          display="flex"
-          justifyContent="center"
           pointerEvents="none"
+          width="full"
+          display="flex"
+          justifyContent="flexEnd"
+          paddingTop={modalPadding}
+          paddingRight={modalPadding}
+          className={position === 'center' && styles.maxSize[position]}
         >
-          <Box
-            width="full"
-            display="flex"
-            justifyContent="flexEnd"
-            paddingTop={modalPadding}
-            paddingRight={modalPadding}
-            position="relative"
-            className={[
-              position === 'center' && styles.maxSize[position],
-              styles.pointerEventsAll,
-              styles.closeIconOffset,
-            ]}
-          >
-            <ButtonIcon
-              id={`${id}-close`}
-              label={closeLabel}
-              icon={<IconClear />}
-              tone="secondary"
-              variant="transparent"
-              size="large"
-              onClick={onClose}
-            />
-          </Box>
+          <Bleed space="xsmall">
+            <Box
+              position="relative"
+              background="surface"
+              borderRadius="full"
+              padding="xsmall"
+              className={[styles.closeIconOffset, styles.pointerEventsAll]}
+            >
+              <ButtonIcon
+                id={`${id}-close`}
+                label={closeLabel}
+                icon={<IconClear />}
+                tone="secondary"
+                variant="transparent"
+                size="large"
+                onClick={onClose}
+              />
+            </Box>
+          </Bleed>
         </Box>
       </Box>
     </Box>
