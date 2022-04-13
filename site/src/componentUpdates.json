@@ -2473,5 +2473,23 @@
         "summary": "**Autosuggest, Dialog, Drawer, OverflowMenu, Tag, TextField, useToast:** Migrate to use ButtonIcon\n\nAdopt new `ButtonIcon` for clear/close actions in favour of custom internal buttons."
       }
     ]
+  },
+  {
+    "version": "31.10.0",
+    "updates": [
+      {
+        "updated": [
+          "Bleed"
+        ],
+        "summary": "**Bleed:** Support using span elements via component prop\n\nSetting the `component` prop to `span` will now ensure all elements controlled by `Bleed` are `span`s. This is useful when using layout components inside dom elements that should not contain `div`s from a HTML validation perspective.\n\n**EXAMPLE USAGE:**\n```jsx\n<Bleed space=\"medium\" component=\"span\">\n  ...\n</Bleed>\n```"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Prevent sticky close button container from blocking content\n\nFix regression introduced when migrating the close action to use `ButtonIcon`. The close action container was blocking the content of the `Dialog`/`Drawer`, and when scrolling could prevent a user from interacting with the content as it went behind the container.\n\nAdditionally, re-introduced the surface coloured background behind the button to prevent the button from visually colliding with content when scrolling."
+      }
+    ]
   }
 ]
