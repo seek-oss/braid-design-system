@@ -1,3 +1,4 @@
+import { DeprecationMap } from './subVisitor';
 import { types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 
@@ -9,7 +10,7 @@ export const updateStringLiteral = ({
   prop,
   metadata,
 }: {
-  deprecations: Record<string, Record<string, Record<string, string>>>;
+  deprecations: DeprecationMap;
   path: StringLiteralPath;
   component: string;
   prop?: string;

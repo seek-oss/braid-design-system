@@ -2,6 +2,7 @@ import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 import { renderUntraceablePropertyWarning } from '../warning-renderer/warning';
+import { DeprecationMap } from './subVisitor';
 
 const walk = ({
   path,
@@ -123,7 +124,7 @@ const walk = ({
 };
 
 interface Context extends PluginPass {
-  deprecations: Record<string, Record<string, Record<string, string>>>;
+  deprecations: DeprecationMap;
 }
 
 export default function (): PluginObj<Context> {
@@ -137,7 +138,7 @@ export default function (): PluginObj<Context> {
       }
 
       // @ts-expect-error
-      this.deprecations = this.opts.deprecations ?? {};
+      this.deprecations = this.opts.deprecations;
     },
     visitor: {
       Program: {

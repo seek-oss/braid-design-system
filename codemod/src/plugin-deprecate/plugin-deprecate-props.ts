@@ -1,12 +1,12 @@
 import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
-import { subVisitor } from './subVisitor';
+import { DeprecationMap, subVisitor } from './subVisitor';
 import { deArray, StringLiteralPath, updateStringLiteral } from './helpers';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;
   namespace: string | null;
-  deprecations: Record<string, Record<string, Record<string, string>>>;
+  deprecations: DeprecationMap;
 }
 
 export default function (): PluginObj<Context> {
@@ -24,7 +24,7 @@ export default function (): PluginObj<Context> {
       }
 
       // @ts-expect-error
-      this.deprecations = this.opts.deprecations ?? {};
+      this.deprecations = this.opts.deprecations;
     },
     visitor: {
       Program: {

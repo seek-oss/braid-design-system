@@ -9,10 +9,15 @@ import {
 } from '../warning-renderer/warning';
 import { deArray, StringLiteralPath, updateStringLiteral } from './helpers';
 
+export type DeprecationMap = Record<
+  string,
+  Record<string, Record<string, string>>
+>;
+
 interface Context extends PluginPass {
   importNames: Map<string, string>;
   namespace: string | null;
-  deprecations: Record<string, Record<string, Record<string, string>>>;
+  deprecations: DeprecationMap;
 }
 
 interface SubVisitorContext extends Context {
@@ -27,7 +32,7 @@ export const subVisitor: Visitor<SubVisitorContext> = {
     if (path.node.expressions.length === 0) {
       if (
         this.propName &&
-        Boolean(this.deprecations?.[this.componentName]?.[this.propName])
+        Boolean(this.deprecations[this.componentName]?.[this.propName])
       ) {
         const templateValue = path.node.quasis[0].value;
 
@@ -83,7 +88,7 @@ export const subVisitor: Visitor<SubVisitorContext> = {
         this.file.metadata.warnings.push(warningString);
       } else if (
         t.isIdentifier(path.node.key) &&
-        Boolean(this.deprecations?.[this.componentName]?.[path.node.key.name])
+        Boolean(this.deprecations[this.componentName]?.[path.node.key.name])
       ) {
         path.traverse(subVisitor, {
           ...this,
