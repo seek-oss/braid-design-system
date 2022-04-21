@@ -2,6 +2,7 @@ import pluginTester from 'babel-plugin-tester';
 import dedent from 'dedent';
 
 import plugin from './plugin-deprecate-vars';
+import { v31 } from './deprecationMaps/v31';
 
 const tests: Parameters<typeof pluginTester>[0]['tests'] = [
   {
@@ -128,6 +129,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
 pluginTester({
   pluginName: 'babel-plugin-deprecate-vars',
   plugin,
+  pluginOptions: { deprecations: v31 },
   babelOptions: {
     filename: 'test-file.tsx',
     plugins: [

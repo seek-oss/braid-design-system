@@ -1,12 +1,12 @@
 import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
-import { isComponentDeprecated, isPropDeprecated } from './deprecationMap';
-import { subVisitor } from './subVisitor';
+import { DeprecationMap, subVisitor } from './subVisitor';
 import { deArray, StringLiteralPath, updateStringLiteral } from './helpers';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;
   namespace: string | null;
+  deprecations: DeprecationMap;
 }
 
 export default function (): PluginObj<Context> {
@@ -18,6 +18,13 @@ export default function (): PluginObj<Context> {
       this.file.metadata.warnings = this.file.metadata.warnings ?? [];
       // @ts-expect-error
       this.file.metadata.hasChanged = this.file.metadata.hasChanged ?? false;
+
+      if (!this.opts || !('deprecations' in this.opts)) {
+        throw new Error('A map of deprecations must be provided.');
+      }
+
+      // @ts-expect-error
+      this.deprecations = this.opts.deprecations;
     },
     visitor: {
       Program: {
@@ -33,7 +40,7 @@ export default function (): PluginObj<Context> {
                 if (
                   t.isImportSpecifier(specifier) &&
                   t.isIdentifier(specifier.imported) &&
-                  isComponentDeprecated(specifier.imported.name)
+                  Boolean(this.deprecations[specifier.imported.name])
                 ) {
                   this.importNames.set(
                     specifier.local.name,
@@ -68,7 +75,9 @@ export default function (): PluginObj<Context> {
             if (t.isJSXAttribute(attr.node)) {
               if (
                 typeof attr.node.name.name !== 'string' ||
-                !isPropDeprecated(elementName, attr.node.name.name)
+                !Boolean(
+                  this.deprecations?.[elementName]?.[attr.node.name.name],
+                )
               ) {
                 continue;
               }
@@ -77,6 +86,7 @@ export default function (): PluginObj<Context> {
 
               if (t.isStringLiteral(attributeValue.node)) {
                 updateStringLiteral({
+                  deprecations: this.deprecations,
                   path: attributeValue as StringLiteralPath,
                   component: elementName,
                   prop: attr.node.name.name,

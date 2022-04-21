@@ -2,7 +2,7 @@ import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 import { renderUntraceablePropertyWarning } from '../warning-renderer/warning';
-import { deprecationMap } from './deprecationMap';
+import { DeprecationMap } from './subVisitor';
 
 const walk = ({
   path,
@@ -123,11 +123,22 @@ const walk = ({
   }
 };
 
-export default function (): PluginObj<PluginPass> {
+interface Context extends PluginPass {
+  deprecations: DeprecationMap;
+}
+
+export default function (): PluginObj<Context> {
   return {
     pre() {
       // @ts-expect-error
       this.file.metadata.hasChanged = this.file.metadata.hasChanged ?? false;
+
+      if (!this.opts || !('deprecations' in this.opts)) {
+        throw new Error('A map of deprecations must be provided.');
+      }
+
+      // @ts-expect-error
+      this.deprecations = this.opts.deprecations;
     },
     visitor: {
       Program: {
@@ -153,7 +164,7 @@ export default function (): PluginObj<PluginPass> {
                   for (const refPath of binding.referencePaths) {
                     walk({
                       path: refPath,
-                      deprecations: deprecationMap.vars,
+                      deprecations: this.deprecations.vars,
                       code: this.file.code,
                       filename: this.filename,
                       // @ts-expect-error

@@ -1,11 +1,11 @@
 import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
-import { deprecationMap } from './deprecationMap';
-import { subVisitor } from './subVisitor';
+import { subVisitor, DeprecationMap } from './subVisitor';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;
   namespace: string | null;
+  deprecations: DeprecationMap;
 }
 
 export default function (): PluginObj<Context> {
@@ -17,6 +17,13 @@ export default function (): PluginObj<Context> {
       this.file.metadata.warnings = this.file.metadata.warnings ?? [];
       // @ts-expect-error
       this.file.metadata.hasChanged = this.file.metadata.hasChanged ?? false;
+
+      if (!this.opts || !('deprecations' in this.opts)) {
+        throw new Error('A map of deprecations must be provided.');
+      }
+
+      // @ts-expect-error
+      this.deprecations = this.opts.deprecations;
     },
     visitor: {
       Program: {
@@ -32,7 +39,7 @@ export default function (): PluginObj<Context> {
                 if (
                   t.isImportSpecifier(specifier) &&
                   t.isIdentifier(specifier.imported) &&
-                  Object.keys(deprecationMap).includes(specifier.imported.name)
+                  Boolean(this.deprecations[specifier.imported.name])
                 ) {
                   this.importNames.set(
                     specifier.local.name,
