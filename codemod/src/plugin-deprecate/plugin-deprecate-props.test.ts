@@ -1,5 +1,6 @@
 import pluginTester from 'babel-plugin-tester';
 import dedent from 'dedent';
+import { v31 } from './deprecationMaps/v31';
 
 import plugin from './plugin-deprecate-props';
 
@@ -315,6 +316,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
 pluginTester({
   pluginName: 'babel-plugin-braid-deprecate-props',
   plugin,
+  pluginOptions: { deprecations: v31 },
   babelOptions: {
     filename: 'test-file.tsx',
     plugins: [

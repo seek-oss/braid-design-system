@@ -1,26 +1,27 @@
-import { getReplacement, isPropDeprecated } from './deprecationMap';
 import { types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 
 export type StringLiteralPath = NodePath<t.StringLiteral>;
 export const updateStringLiteral = ({
+  deprecations,
   path,
   component,
   prop,
   metadata,
 }: {
+  deprecations: Record<string, Record<string, Record<string, string>>>;
   path: StringLiteralPath;
   component: string;
   prop?: string;
   metadata: { hasChanged: boolean };
 }) => {
-  if (isPropDeprecated(component, prop)) {
+  if (prop && Boolean(deprecations?.[component]?.[prop])) {
     const oldValue = path.node.value;
-    const newValue = getReplacement({
-      component,
-      prop,
-      value: path.node.value,
-    });
+
+    const currentValue = path.node.value;
+    const newValue =
+      deprecations[component][prop]?.[currentValue] ?? currentValue;
+
     if (oldValue !== newValue) {
       path.node.value = newValue;
       metadata.hasChanged = true;

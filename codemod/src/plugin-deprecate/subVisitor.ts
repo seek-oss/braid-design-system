@@ -7,16 +7,12 @@ import {
   renderUntraceableImportWarning,
   renderUntraceablePropertyWarning,
 } from '../warning-renderer/warning';
-import {
-  getReplacement,
-  isComponentDeprecated,
-  isPropDeprecated,
-} from './deprecationMap';
 import { deArray, StringLiteralPath, updateStringLiteral } from './helpers';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;
   namespace: string | null;
+  deprecations: Record<string, Record<string, Record<string, string>>>;
 }
 
 interface SubVisitorContext extends Context {
@@ -29,13 +25,17 @@ interface SubVisitorContext extends Context {
 export const subVisitor: Visitor<SubVisitorContext> = {
   TemplateLiteral(path) {
     if (path.node.expressions.length === 0) {
-      if (isPropDeprecated(this.componentName, this.propName)) {
+      if (
+        this.propName &&
+        Boolean(this.deprecations?.[this.componentName]?.[this.propName])
+      ) {
         const templateValue = path.node.quasis[0].value;
-        const newValue = getReplacement({
-          component: this.componentName,
-          prop: this.propName,
-          value: templateValue.raw,
-        });
+
+        const currentValue = templateValue.raw;
+        const newValue =
+          this.deprecations[this.componentName][this.propName]?.[
+            currentValue
+          ] ?? currentValue;
         if (templateValue.raw !== newValue) {
           templateValue.raw = newValue;
           templateValue.cooked = newValue;
@@ -47,6 +47,7 @@ export const subVisitor: Visitor<SubVisitorContext> = {
   },
   StringLiteral(path) {
     updateStringLiteral({
+      deprecations: this.deprecations,
       path,
       component: this.componentName,
       prop: this.propName,
@@ -55,11 +56,13 @@ export const subVisitor: Visitor<SubVisitorContext> = {
     });
   },
   ObjectProperty(path) {
-    if (isComponentDeprecated(this.componentName)) {
+    if (Boolean(this.deprecations[this.componentName])) {
       if (path.node.computed) {
         if (
           t.isStringLiteral(path.node.key) &&
-          isPropDeprecated(this.componentName, path.node.key.value)
+          Boolean(
+            this.deprecations?.[this.componentName]?.[path.node.key.value],
+          )
         ) {
           path.traverse(subVisitor, {
             ...this,
@@ -80,7 +83,7 @@ export const subVisitor: Visitor<SubVisitorContext> = {
         this.file.metadata.warnings.push(warningString);
       } else if (
         t.isIdentifier(path.node.key) &&
-        isPropDeprecated(this.componentName, path.node.key.name)
+        Boolean(this.deprecations?.[this.componentName]?.[path.node.key.name])
       ) {
         path.traverse(subVisitor, {
           ...this,
@@ -138,6 +141,7 @@ export const subVisitor: Visitor<SubVisitorContext> = {
 
       if (t.isStringLiteral(initPath.node)) {
         updateStringLiteral({
+          deprecations: this.deprecations,
           path: initPath as StringLiteralPath,
           component: this.componentName,
           prop: this.propName,

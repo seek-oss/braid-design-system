@@ -11,9 +11,15 @@ import atomsPlugin from './plugin-deprecate/plugin-deprecate-atoms';
 import propsPlugin from './plugin-deprecate/plugin-deprecate-props';
 import varsPlugin from './plugin-deprecate/plugin-deprecate-vars';
 import importUpdatePlugin from './plugin-deprecate/plugin-import-update';
+import { v31 } from './plugin-deprecate/deprecationMaps/v31';
 
 const pluginsForVersion = {
-  v31: [propsPlugin, atomsPlugin, varsPlugin, importUpdatePlugin],
+  v31: [
+    [propsPlugin, { deprecations: v31 }],
+    [atomsPlugin, { deprecations: v31 }],
+    [varsPlugin, { deprecations: v31 }],
+    importUpdatePlugin,
+  ],
 };
 
 type Version = keyof typeof pluginsForVersion;

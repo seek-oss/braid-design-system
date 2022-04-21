@@ -1,5 +1,6 @@
 import pluginTester from 'babel-plugin-tester';
 import dedent from 'dedent';
+import { v31 } from './deprecationMaps/v31';
 
 import plugin from './plugin-deprecate-atoms';
 
@@ -155,6 +156,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
 pluginTester({
   pluginName: 'babel-plugin-deprecate-atoms',
   plugin,
+  pluginOptions: { deprecations: v31 },
   babelOptions: {
     filename: 'test-file.tsx',
     plugins: [
