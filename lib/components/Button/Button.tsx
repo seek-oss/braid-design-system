@@ -230,7 +230,7 @@ export const ButtonOverlays = ({
   forceActive?: boolean;
 }) => {
   const stylesForVariant = variants[variant][tone ?? 'default'];
-  const colorConstrast = useColorContrast();
+  const colorContrast = useColorContrast();
   const lightness = useBackgroundLightness();
 
   return (
@@ -248,7 +248,7 @@ export const ButtonOverlays = ({
         background={
           stylesForVariant.backgroundHover &&
           typeof stylesForVariant.backgroundHover !== 'string'
-            ? colorConstrast(stylesForVariant.backgroundHover)
+            ? colorContrast(stylesForVariant.backgroundHover)
             : stylesForVariant.backgroundHover
         }
         className={[
@@ -266,7 +266,7 @@ export const ButtonOverlays = ({
         background={
           stylesForVariant.backgroundActive &&
           typeof stylesForVariant.backgroundActive !== 'string'
-            ? colorConstrast(stylesForVariant.backgroundActive)
+            ? colorContrast(stylesForVariant.backgroundActive)
             : stylesForVariant.backgroundActive
         }
         className={[
