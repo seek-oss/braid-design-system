@@ -13,6 +13,7 @@ import {
   IconSend,
   IconDelete,
   Notice,
+  Toggle,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -49,12 +50,21 @@ const docs: ComponentDocs = {
       label: 'Variants',
       background: 'surface',
       description: (
-        <Text>
-          You can customise the appearance of the button via the{' '}
-          <Strong>variant</Strong> prop, which accepts either{' '}
-          <Strong>solid</Strong>, <Strong>ghost</Strong>, <Strong>soft</Strong>{' '}
-          or <Strong>transparent</Strong>.
-        </Text>
+        <>
+          <Text>
+            You can customise the appearance of the button via the{' '}
+            <Strong>variant</Strong> prop, which accepts either{' '}
+            <Strong>solid</Strong>, <Strong>ghost</Strong>,{' '}
+            <Strong>soft</Strong> or <Strong>transparent</Strong>.
+          </Text>
+          <Notice>
+            <Text>
+              When using a <Strong>transparent</Strong> button on it’s own,
+              consider using the <TextLink href="#bleed">bleed</TextLink> prop
+              for better alignment.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: () =>
         source(
@@ -323,64 +333,107 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Vertical bleed',
+      label: 'Bleed',
       description: (
         <>
           <Text>
-            With the <Strong>bleedY</Strong> prop, you can allow the background
-            colour to bleed out into the surrounding layout.
+            The <Strong>bleed</Strong> prop allows the background colour to
+            bleed out into the surrounding layout — leaving the button to only
+            take up the space required for the label itself.
           </Text>
+          <Notice>
+            <Text>
+              The bleed is only applied vertically, with exception to the{' '}
+              <Strong>transparent</Strong> variant, which also applies
+              horizontally to facilitate better alignment with surrounding text.
+            </Text>
+          </Notice>
           <Text>
             For example, we can align a button to a{' '}
             <TextLink href="/components/Heading">Heading</TextLink> element
             using an <TextLink href="/components/Inline">Inline</TextLink>, even
             though the button is actually taller than the heading. If we didn’t
-            use the <Strong>bleedY</Strong> prop in this case, the button would
+            use the <Strong>bleed</Strong> prop in this case, the button would
             introduce unwanted space above and below the heading.
           </Text>
         </>
       ),
       background: 'surface',
-      Example: () =>
+      Example: ({ setDefaultState, toggleState, getState }) =>
         source(
-          <Stack space="large">
-            <Stack space="small">
-              <Text tone="secondary" weight="strong">
-                Standard size
-              </Text>
-              <Box
-                background="neutralLight"
-                borderRadius="standard"
-                padding="gutter"
-              >
-                <Box background="surface">
-                  <Inline space="xsmall" alignY="center">
-                    <Heading level="2">Heading</Heading>
-                    <Button bleedY>Button</Button>
-                  </Inline>
+          <>
+            {setDefaultState('bleed', true)}
+
+            <Stack space="large">
+              <Stack space="small">
+                <Toggle
+                  id="bleed"
+                  on={getState('bleed')}
+                  label="Bleed"
+                  align="right"
+                  onChange={() => toggleState('bleed')}
+                />
+                <Text tone="secondary" weight="strong">
+                  Standard size alignment
+                </Text>
+                <Box
+                  background="body"
+                  borderRadius="large"
+                  boxShadow="borderNeutralLight"
+                  padding="gutter"
+                >
+                  <Box background="surface" boxShadow="borderCriticalLight">
+                    <Inline space="xsmall" alignY="center">
+                      <Heading level="2">Heading</Heading>
+                      <Button bleed={getState('bleed')}>Solid</Button>
+                    </Inline>
+                  </Box>
                 </Box>
-              </Box>
-            </Stack>
-            <Stack space="small">
-              <Text tone="secondary" weight="strong">
-                Small size
-              </Text>
-              <Box
-                background="neutralLight"
-                borderRadius="standard"
-                padding="gutter"
-              >
-                <Box background="surface">
-                  <Inline space="xsmall" alignY="center">
-                    <Heading level="2">Heading</Heading>
-                    <Button bleedY size="small">
-                      Button
-                    </Button>
-                  </Inline>
+              </Stack>
+              <Stack space="small">
+                <Text tone="secondary" weight="strong">
+                  Small size alignment
+                </Text>
+                <Box
+                  background="body"
+                  borderRadius="large"
+                  boxShadow="borderNeutralLight"
+                  padding="gutter"
+                >
+                  <Box background="surface" boxShadow="borderCriticalLight">
+                    <Inline space="xsmall" alignY="center">
+                      <Heading level="2">Heading</Heading>
+                      <Button bleed={getState('bleed')} size="small">
+                        Solid
+                      </Button>
+                    </Inline>
+                  </Box>
                 </Box>
-              </Box>
+              </Stack>
+              <Stack space="small">
+                <Text tone="secondary" weight="strong">
+                  Transparent variant alignment
+                </Text>
+                <Box
+                  background="body"
+                  borderRadius="large"
+                  boxShadow="borderNeutralLight"
+                  padding="gutter"
+                >
+                  <Box background="surface" boxShadow="borderCriticalLight">
+                    <Stack space="gutter">
+                      <Heading level="2">Heading</Heading>
+                      <Inline space="none">
+                        <Button bleed={getState('bleed')} variant="transparent">
+                          Solid
+                        </Button>
+                      </Inline>
+                    </Stack>
+                  </Box>
+                </Box>
+              </Stack>
             </Stack>
-          </Stack>,
+          </>,
         ),
     },
   ],
