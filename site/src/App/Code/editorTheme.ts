@@ -2,11 +2,11 @@ import { palette } from '../../../../lib/color/palette';
 
 const tag = palette.blue['300'];
 const attribute = palette.blue['200'];
-const value = palette.crimson['200'];
+const value = palette.seekPink['200'];
 const punctuation = palette.blue['200'];
 const plainText = palette.seekBlue['300'];
 const meta = palette.grey['400'];
-const other = palette.crimson['200'];
+const other = palette.seekPink['200'];
 const inserted = palette.mint['300'];
 const deleted = palette.red['300'];
 
