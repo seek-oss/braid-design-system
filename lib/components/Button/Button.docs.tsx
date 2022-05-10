@@ -59,7 +59,7 @@ const docs: ComponentDocs = {
           </Text>
           <Notice>
             <Text>
-              When using a <Strong>transparent</Strong> button on it’s own,
+              When using a <Strong>transparent</Strong> button on its own,
               consider using the <TextLink href="#bleed">bleed</TextLink> prop
               for better alignment.
             </Text>
