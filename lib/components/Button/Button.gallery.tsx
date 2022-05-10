@@ -102,13 +102,13 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'With vertical bleed',
+    label: 'With bleed',
     Example: () =>
       source(
         <Inline space="small" alignY="center">
           <Heading level="4">Heading</Heading>
-          <Button bleedY>Button</Button>
-          <Button bleedY size="small">
+          <Button bleed>Button</Button>
+          <Button bleed size="small">
             Button
           </Button>
         </Inline>,

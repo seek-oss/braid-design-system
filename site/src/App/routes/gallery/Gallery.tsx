@@ -37,7 +37,6 @@ import {
   Strong,
   TooltipRenderer,
   Button,
-  Bleed,
   Secondary,
 } from '../../../../../lib/components';
 // TODO: COLORMODE RELEASE
@@ -620,18 +619,16 @@ const GalleryInternal = () => {
                 tooltip={<Text>Zoom to actual size</Text>}
               >
                 {({ triggerProps }) => (
-                  <Bleed horizontal="xxsmall">
-                    <Button
-                      variant="transparent"
-                      tone="neutral"
-                      size="small"
-                      bleedY
-                      onClick={actualSize}
-                      {...triggerProps}
-                    >
-                      <CurrentZoom />
-                    </Button>
-                  </Bleed>
+                  <Button
+                    variant="transparent"
+                    tone="neutral"
+                    size="small"
+                    bleed
+                    onClick={actualSize}
+                    {...triggerProps}
+                  >
+                    <CurrentZoom />
+                  </Button>
                 )}
               </TooltipRenderer>
               <ButtonIcon
