@@ -2491,5 +2491,17 @@
         "summary": "**Dialog, Drawer:** Prevent sticky close button container from blocking content\n\nFix regression introduced when migrating the close action to use `ButtonIcon`. The close action container was blocking the content of the `Dialog`/`Drawer`, and when scrolling could prevent a user from interacting with the content as it went behind the container.\n\nAdditionally, re-introduced the surface coloured background behind the button to prevent the button from visually colliding with content when scrolling."
       }
     ]
+  },
+  {
+    "version": "31.11.0",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Improve Button `bleed`\n\nPreviously the `bleedY` prop allowed the background of `Button` to bleed vertically into the surrounding layout. This worked well for all variants except `transparent`, which needed to bleed horizontally as well.\n\nTo support this we have introduced the `bleed` prop which will apply the bleed based on the `variant`. We have also deprecated `bleedY` which will be removed in a future release.\n\n\n**EXAMPLE USAGE:**\n```diff\n <Button\n-  bleedY\n+  bleed\n   {...}\n >\n   Button\n </Button>\n```\n\n**MIGRATION GUIDE**\n\nMigration from `bleedY` to `bleed` can be automated by running the Braid upgrade command, passing the `v31.11` version. You must provide a glob to target your project’s source files. For example:\n\n```\nyarn braid-upgrade v31.11 \"**/*.{ts,tsx}\"\n```\n\nIt is recommended to visually review the any `Button` usage with the `transparent` variant, to ensure the layout is as expected."
+      }
+    ]
   }
 ]
