@@ -96,9 +96,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Box background="neutralLight" borderRadius="standard" padding="gutter">
           <Box background="surface">
-            <Inline space="xsmall" alignY="center">
+            <Inline space="none" alignY="center">
               <Heading level="2">Heading</Heading>
-              <Button bleedY>Button</Button>
+              <Button bleed>Button</Button>
             </Inline>
           </Box>
         </Box>
@@ -110,9 +110,25 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Box background="neutralLight" borderRadius="standard" padding="gutter">
           <Box background="surface">
-            <Inline space="xsmall" alignY="center">
+            <Inline space="none" alignY="center">
               <Heading level="2">Heading</Heading>
-              <Button bleedY size="small">
+              <Button bleed size="small">
+                Button
+              </Button>
+            </Inline>
+          </Box>
+        </Box>
+      ),
+    },
+    {
+      label: 'With full bleed (transparent)',
+      background: 'surface',
+      Example: () => (
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="surface">
+            <Heading level="2">Heading</Heading>
+            <Inline space="none">
+              <Button bleed variant="transparent">
                 Button
               </Button>
             </Inline>

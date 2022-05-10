@@ -1,4 +1,5 @@
 import assert from 'assert';
+import dedent from 'dedent';
 import React, {
   useContext,
   forwardRef,
@@ -24,6 +25,7 @@ import { BoxShadow } from '../../css/atoms/atomicProperties';
 import ActionsContext from '../Actions/ActionsContext';
 import { UseIconProps } from '../../hooks/useIcon';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
+import { Bleed } from '../Bleed/Bleed';
 import * as styles from './Button.css';
 
 export const buttonVariants = [
@@ -40,7 +42,9 @@ export interface ButtonStyleProps {
   size?: ButtonSize;
   tone?: ButtonTone;
   variant?: ButtonVariant;
+  /** @deprecated Use `bleed` prop instead https://seek-oss.github.io/braid-design-system/components/Button#bleed */
   bleedY?: boolean;
+  bleed?: boolean;
   loading?: boolean;
 }
 
@@ -218,15 +222,18 @@ const ButtonLoader = () => (
   </Box>
 );
 
+const transparentPaddingX = 'small';
+const buttonRadius = 'large';
+
 export const ButtonOverlays = ({
   variant = 'solid',
   tone,
   keyboardFocusable = true,
   forceActive = false,
-  radius = 'large',
+  radius = buttonRadius,
 }: Pick<ButtonProps, 'variant' | 'tone'> & {
   keyboardFocusable?: boolean;
-  radius?: 'full' | 'large';
+  radius?: 'full' | typeof buttonRadius;
   forceActive?: boolean;
 }) => {
   const stylesForVariant = variants[variant][tone ?? 'default'];
@@ -310,7 +317,9 @@ export const ButtonText = ({
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
   const labelPaddingX =
-    size === 'small' || variant === 'transparent' ? 'small' : 'medium';
+    size === 'small' || variant === 'transparent'
+      ? transparentPaddingX
+      : 'medium';
 
   assert(
     !icon || (icon.props.size === undefined && icon.props.tone === undefined),
@@ -373,11 +382,11 @@ export const useButtonStyles = ({
   variant = 'solid',
   size: sizeProp,
   tone,
-  bleedY,
   loading,
-  radius = 'large',
+  radius = buttonRadius,
+  bleed,
 }: ButtonProps & {
-  radius?: 'full' | 'large';
+  radius?: 'full' | typeof buttonRadius;
 }): BoxProps => {
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
@@ -411,10 +420,21 @@ export const useButtonStyles = ({
       styles.root,
       size === 'small' ? virtualTouchable({ xAxis: false }) : null,
       size === 'standard' ? styles.standard : styles.small,
-      bleedY ? styles.bleedY : null,
+      bleed ? styles.bleedVerticallyToCapHeight : null,
     ],
   } as const;
 };
+
+export const ButtonContainer = ({
+  children,
+  bleed,
+  variant = 'solid',
+}: Pick<ButtonProps, 'children' | 'bleed' | 'variant'>) =>
+  bleed && variant === 'transparent' ? (
+    <Bleed horizontal={transparentPaddingX}>{children}</Bleed>
+  ) : (
+    <>{children}</>
+  );
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -425,6 +445,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       tone,
       icon,
       bleedY,
+      bleed: bleedProp,
       variant,
       loading,
       type = 'button',
@@ -439,37 +460,67 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       data,
     },
     ref,
-  ) => (
-    <Box
-      component="button"
-      ref={ref}
-      id={id}
-      type={type}
-      tabIndex={tabIndex}
-      onKeyUp={onKeyUp}
-      onKeyDown={onKeyDown}
-      aria-haspopup={ariaHasPopup}
-      aria-controls={ariaControls}
-      aria-expanded={ariaExpanded}
-      aria-describedby={ariaDescribedBy}
-      onClick={onClick}
-      disabled={loading}
-      {...(data ? buildDataAttributes(data) : undefined)}
-      {...useButtonStyles({ variant, tone, size, bleedY, loading })}
-    >
-      <ButtonOverlays variant={variant} tone={tone} />
+  ) => {
+    const bleed = bleedProp || bleedY;
 
-      <ButtonText
-        variant={variant}
-        tone={tone}
-        size={size}
-        loading={loading}
-        icon={icon}
-      >
-        {children}
-      </ButtonText>
-    </Box>
-  ),
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof bleedY !== 'undefined') {
+        // eslint-disable-next-line no-console
+        console.warn(
+          dedent`
+            The "bleedY" prop has been deprecated and will be removed in a future version. Use "bleed" instead.
+               <Button
+              %c-   bleedY
+              %c+   bleed
+               %c/>
+          `,
+          'color: red',
+          'color: green',
+          'color: inherit',
+        );
+      }
+    }
+
+    return (
+      <ButtonContainer bleed={bleed} variant={variant}>
+        <Box
+          component="button"
+          ref={ref}
+          id={id}
+          type={type}
+          tabIndex={tabIndex}
+          onKeyUp={onKeyUp}
+          onKeyDown={onKeyDown}
+          aria-haspopup={ariaHasPopup}
+          aria-controls={ariaControls}
+          aria-expanded={ariaExpanded}
+          aria-describedby={ariaDescribedBy}
+          onClick={onClick}
+          disabled={loading}
+          {...(data ? buildDataAttributes(data) : undefined)}
+          {...useButtonStyles({
+            variant,
+            tone,
+            size,
+            bleed,
+            loading,
+          })}
+        >
+          <ButtonOverlays variant={variant} tone={tone} />
+
+          <ButtonText
+            variant={variant}
+            tone={tone}
+            size={size}
+            loading={loading}
+            icon={icon}
+          >
+            {children}
+          </ButtonText>
+        </Box>
+      </ButtonContainer>
+    );
+  },
 );
 
 Button.displayName = 'Button';
