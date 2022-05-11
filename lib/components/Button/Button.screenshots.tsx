@@ -121,6 +121,22 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'With legacy bleedY (transparent)',
+      background: 'surface',
+      Example: () => (
+        <Box background="neutralLight" borderRadius="standard" padding="gutter">
+          <Box background="surface">
+            <Heading level="2">Heading</Heading>
+            <Inline space="none">
+              <Button bleedY variant="transparent">
+                Button
+              </Button>
+            </Inline>
+          </Box>
+        </Box>
+      ),
+    },
+    {
       label: 'With full bleed (transparent)',
       background: 'surface',
       Example: () => (
