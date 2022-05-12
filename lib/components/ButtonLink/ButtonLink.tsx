@@ -33,7 +33,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       tone,
       variant,
       bleedY,
-      bleed: bleedProp,
+      bleed,
       icon,
       loading,
       data,
@@ -42,8 +42,6 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     ref,
   ) => {
     const LinkComponent = useLinkComponent(ref);
-
-    const bleed = bleedProp || bleedY;
 
     if (process.env.NODE_ENV !== 'production') {
       if (typeof bleedY !== 'undefined') {
@@ -70,7 +68,13 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           ref={ref}
           {...restProps}
           {...(data ? buildDataAttributes(data) : undefined)}
-          {...useButtonStyles({ variant, tone, size, bleed, loading })}
+          {...useButtonStyles({
+            variant,
+            tone,
+            size,
+            bleed: bleed || bleedY,
+            loading,
+          })}
         >
           <ButtonOverlays variant={variant} tone={tone} />
 
