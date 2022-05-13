@@ -157,8 +157,8 @@ const docs: ComponentDocs = {
       label: 'Disabled field',
       description: (
         <Text>
-          Mark the field as disabled by passing <Strong>true</Strong> to the{' '}
-          <Strong>disabled</Strong> prop.
+          Mark the entire <Strong>RadioGroup</Strong> as disabled by passing{' '}
+          <Strong>true</Strong> to the <Strong>disabled</Strong> prop.
         </Text>
       ),
       Example: ({ id }) =>
@@ -173,6 +173,30 @@ const docs: ComponentDocs = {
             <RadioItem label="One" value="1" />
             <RadioItem label="Two" value="2" />
             <RadioItem label="Three" value="3" />
+          </RadioGroup>,
+        ),
+    },
+    {
+      label: 'Disabling at item-level',
+      description: (
+        <Text>
+          Mark an individual <Strong>RadioItem</Strong> as disabled by passing{' '}
+          <Strong>true</Strong> to its <Strong>disabled</Strong> prop.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <RadioGroup
+            id={id}
+            value={getState('radio')}
+            onChange={({ currentTarget: { value } }) =>
+              setState('radio', value)
+            }
+            label="Label"
+          >
+            <RadioItem label="One" value="1" />
+            <RadioItem label="Two" value="2" />
+            <RadioItem label="Three" value="3" disabled={true} />
           </RadioGroup>,
         ),
     },

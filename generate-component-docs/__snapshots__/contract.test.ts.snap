@@ -6673,6 +6673,7 @@ Object {
     children?: ReactNode
     data?: DataAttributeMap
     description?: ReactNode
+    disabled?: boolean
     label: ReactNode
     ref?: 
         | (instance: HTMLInputElement | null) => void
