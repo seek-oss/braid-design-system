@@ -2503,5 +2503,17 @@
         "summary": "**Button, ButtonLink:** Improve Button `bleed`\n\nPreviously the `bleedY` prop allowed the background of `Button` to bleed vertically into the surrounding layout. This worked well for all variants except `transparent`, which needed to bleed horizontally as well.\n\nTo support this we have introduced the `bleed` prop which will apply the bleed based on the `variant`. We have also deprecated `bleedY` which will be removed in a future release.\n\n\n**EXAMPLE USAGE:**\n```diff\n <Button\n-  bleedY\n+  bleed\n   {...}\n >\n   Button\n </Button>\n```\n\n**MIGRATION GUIDE**\n\nMigration from `bleedY` to `bleed` can be automated by running the Braid upgrade command, passing the `v31.11` version. You must provide a glob to target your project’s source files. For example:\n\n```\nyarn braid-upgrade v31.11 \"**/*.{ts,tsx}\"\n```\n\nIt is recommended to visually review the any `Button` usage with the `transparent` variant, to ensure the layout is as expected."
       }
     ]
+  },
+  {
+    "version": "31.11.1",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Ensure `bleedY` is backwards compatibile for `transparent` variant\n\nEnsure that `bleedY` applies bleed only vertically on `transparent` variant, isolating the new horizontal bleed to the new `bleed` prop exclusively."
+      }
+    ]
   }
 ]

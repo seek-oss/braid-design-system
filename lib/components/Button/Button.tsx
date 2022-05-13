@@ -445,7 +445,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       tone,
       icon,
       bleedY,
-      bleed: bleedProp,
+      bleed,
       variant,
       loading,
       type = 'button',
@@ -461,8 +461,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const bleed = bleedProp || bleedY;
-
     if (process.env.NODE_ENV !== 'production') {
       if (typeof bleedY !== 'undefined') {
         // eslint-disable-next-line no-console
@@ -502,7 +500,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             variant,
             tone,
             size,
-            bleed,
+            bleed: bleed || bleedY,
             loading,
           })}
         >

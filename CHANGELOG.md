@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 31.11.1
+
+### Patch Changes
+
+- **Button, ButtonLink:** Ensure `bleedY` is backwards compatibile for `transparent` variant ([#1106](https://github.com/seek-oss/braid-design-system/pull/1106))
+
+  Ensure that `bleedY` applies bleed only vertically on `transparent` variant, isolating the new horizontal bleed to the new `bleed` prop exclusively.
+
 ## 31.11.0
 
 ### Minor Changes
