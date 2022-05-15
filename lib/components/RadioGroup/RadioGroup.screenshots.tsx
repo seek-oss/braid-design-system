@@ -163,5 +163,21 @@ export const screenshots: ComponentScreenshot = {
         );
       },
     },
+    {
+      label: 'When disabled item',
+      Example: ({ handler }) => (
+        <RadioGroup
+          id="disableditem"
+          value="2"
+          onChange={handler}
+          label="Experience"
+        >
+          <RadioItem label="Less than one year" value="0" />
+          <RadioItem label="1 year" value="1" />
+          <RadioItem label="2 years" value="2" disabled />
+          <RadioItem label="3+ years " value="3" />
+        </RadioGroup>
+      ),
+    },
   ],
 };
