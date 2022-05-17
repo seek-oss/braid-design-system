@@ -149,10 +149,11 @@ export const modalTestSuite = (
       await userEvent.click(dialogOpenButton);
       await userEvent.keyboard('{Escape}');
 
-      await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-        timeout: EXIT_TIMEOUT,
-      });
-
+      if (queryByRole('dialog') !== null) {
+        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+          timeout: EXIT_TIMEOUT,
+        });
+      }
       expect(queryByRole('dialog')).not.toBeInTheDocument();
     });
 
@@ -179,9 +180,11 @@ export const modalTestSuite = (
       const closeButton = getByLabelText(CLOSE_LABEL);
       await userEvent.click(closeButton);
 
-      await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-        timeout: EXIT_TIMEOUT,
-      });
+      if (queryByRole('dialog') !== null) {
+        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+          timeout: EXIT_TIMEOUT,
+        });
+      }
       expect(closeHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).toHaveBeenCalledWith(false);
     });
