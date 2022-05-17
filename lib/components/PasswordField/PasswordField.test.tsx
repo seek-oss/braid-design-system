@@ -24,7 +24,7 @@ describe('PasswordField', () => {
     expect(input.type).toBe('password');
   });
 
-  it('should show the password as plain text when visibility button clicked', () => {
+  it('should show the password as plain text when visibility button clicked', async () => {
     const onChange = jest.fn();
     const { getByRole, getByLabelText } = render(
       <BraidTestProvider>
@@ -40,11 +40,11 @@ describe('PasswordField', () => {
     const input = getByLabelText('Password') as HTMLInputElement;
     const visibilityButton = getByRole('button');
 
-    userEvent.click(visibilityButton);
+    await userEvent.click(visibilityButton);
     expect(input.type).toBe('text');
   });
 
-  it('should call the onVisibilityToggle handler with the new visibility state when toggled', () => {
+  it('should call the onVisibilityToggle handler with the new visibility state when toggled', async () => {
     const onChange = jest.fn();
     const onVisibilityToggle = jest.fn();
     const { getByRole } = render(
@@ -60,10 +60,10 @@ describe('PasswordField', () => {
     );
 
     const visibilityButton = getByRole('button');
-    userEvent.click(visibilityButton);
+    await userEvent.click(visibilityButton);
     expect(onVisibilityToggle).toHaveBeenCalledWith(true);
 
-    userEvent.click(visibilityButton);
+    await userEvent.click(visibilityButton);
     expect(onVisibilityToggle).toHaveBeenCalledWith(false);
   });
 

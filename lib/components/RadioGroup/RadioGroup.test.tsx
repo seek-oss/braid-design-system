@@ -163,58 +163,58 @@ describe('RadioGroup', () => {
     ).toBeNull();
   });
 
-  it('select radio using space key', () => {
+  it('select radio using space key', async () => {
     const { getByLabelText } = render(<TestCase />);
 
     const option1 = getByLabelText('Option 1') as HTMLInputElement;
     const option2 = getByLabelText('Option 2') as HTMLInputElement;
 
-    userEvent.type(option1, '{space}');
+    await userEvent.type(option1, '{space}');
 
     expect(option1.checked).toBe(true);
     expect(option2.checked).toBe(false);
 
-    userEvent.type(option2, '{space}');
+    await userEvent.type(option2, '{space}');
 
     expect(option2.checked).toBe(true);
     expect(option1.checked).toBe(false);
   });
 
-  it('select radio using enter key', () => {
+  it('select radio using enter key', async () => {
     const { getByLabelText } = render(<TestCase />);
 
     const option1 = getByLabelText('Option 1') as HTMLInputElement;
     const option2 = getByLabelText('Option 2') as HTMLInputElement;
 
-    userEvent.type(option1, '{enter}');
+    await userEvent.type(option1, '{enter}');
 
     expect(option1.checked).toBe(true);
     expect(option2.checked).toBe(false);
 
-    userEvent.type(option2, '{enter}');
+    await userEvent.type(option2, '{enter}');
 
     expect(option2.checked).toBe(true);
     expect(option1.checked).toBe(false);
   });
 
-  it('select radio clicking with mouse', () => {
+  it('select radio clicking with mouse', async () => {
     const { getByLabelText } = render(<TestCase />);
 
     const option1 = getByLabelText('Option 1') as HTMLInputElement;
     const option2 = getByLabelText('Option 2') as HTMLInputElement;
 
-    userEvent.click(option1);
+    await userEvent.click(option1);
 
     expect(option1.checked).toBe(true);
     expect(option2.checked).toBe(false);
 
-    userEvent.click(option2);
+    await userEvent.click(option2);
 
     expect(option2.checked).toBe(true);
     expect(option1.checked).toBe(false);
   });
 
-  it('should handle focus state correctly when tabbing', () => {
+  it('should handle focus state correctly when tabbing', async () => {
     const { getByLabelText } = render(<TestCase />);
 
     const option1 = getByLabelText('Option 1') as HTMLInputElement;
@@ -223,28 +223,28 @@ describe('RadioGroup', () => {
 
     expect(document.body).toHaveFocus();
 
-    userEvent.tab();
+    await userEvent.tab();
     expect(option1).toHaveFocus();
 
-    userEvent.tab();
+    await userEvent.tab();
     expect(document.body).toHaveFocus();
     expect(option1.checked).toBe(false);
     expect(option2.checked).toBe(false);
     expect(option3.checked).toBe(false);
 
-    userEvent.tab({ shift: true });
+    await userEvent.tab({ shift: true });
     expect(option1).toHaveFocus();
 
-    userEvent.tab();
+    await userEvent.tab();
     expect(document.body).toHaveFocus();
 
-    userEvent.click(option2);
+    await userEvent.click(option2);
     expect(option2).toHaveFocus();
 
-    userEvent.tab();
+    await userEvent.tab();
     expect(document.body).toHaveFocus();
 
-    userEvent.tab({ shift: true });
+    await userEvent.tab({ shift: true });
     expect(option2).toHaveFocus();
   });
 });

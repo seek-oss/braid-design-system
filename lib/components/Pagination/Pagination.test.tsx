@@ -47,7 +47,7 @@ describe('Pagination', () => {
     expect(nextLink).toHaveAttribute('rel', 'next');
   });
 
-  it('should not show the Previous button on the first page', () => {
+  it('should not show the Previous button on the first page', async () => {
     const { getByLabelText, queryByLabelText } = render(
       <BraidTestProvider>
         <Pagination
@@ -63,16 +63,16 @@ describe('Pagination', () => {
 
     expect(queryByLabelText('Prev')).not.toBeVisible();
     expect(document.body).toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(getByLabelText('Pg 1')).toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(getByLabelText('Next')).toHaveFocus();
-    userEvent.tab({ shift: true });
-    userEvent.tab({ shift: true });
+    await userEvent.tab({ shift: true });
+    await userEvent.tab({ shift: true });
     expect(document.body).toHaveFocus();
   });
 
-  it('should not show the Next button on the last page', () => {
+  it('should not show the Next button on the last page', async () => {
     const { getByLabelText, queryByLabelText } = render(
       <BraidTestProvider>
         <Pagination
@@ -89,14 +89,14 @@ describe('Pagination', () => {
 
     expect(queryByLabelText('Next')).not.toBeVisible();
     expect(document.body).toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(getByLabelText('Prev')).toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(getByLabelText('Pg 8')).toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(document.body).toHaveFocus();
-    userEvent.tab({ shift: true });
-    userEvent.tab({ shift: true });
+    await userEvent.tab({ shift: true });
+    await userEvent.tab({ shift: true });
     expect(getByLabelText('Prev')).toHaveFocus();
   });
 });

@@ -12,7 +12,7 @@ const createMockClickHandler = () =>
 
 describe('TextLink', () => {
   describe('in Text', () => {
-    it('should call the click handler on click', () => {
+    it('should call the click handler on click', async () => {
       const clickHandler = createMockClickHandler();
       const { getByRole } = render(
         <BraidTestProvider>
@@ -23,13 +23,13 @@ describe('TextLink', () => {
       );
 
       const button = getByRole('button');
-      userEvent.click(button);
+      await userEvent.click(button);
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
     });
 
-    it('should call the click handler on keyboard interaction', () => {
+    it('should call the click handler on keyboard interaction', async () => {
       const clickHandler = createMockClickHandler();
       render(
         <BraidTestProvider>
@@ -39,19 +39,19 @@ describe('TextLink', () => {
         </BraidTestProvider>,
       );
 
-      userEvent.tab();
-      userEvent.keyboard('{enter}');
+      await userEvent.tab();
+      await userEvent.keyboard('{enter}');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
 
-      userEvent.keyboard('{space}');
+      await userEvent.keyboard(' ');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
     });
 
-    it('should honour the tabIndex', () => {
+    it('should honour the tabIndex', async () => {
       const { getAllByRole } = render(
         <BraidTestProvider>
           <Text>
@@ -59,20 +59,20 @@ describe('TextLink', () => {
               Not Focusable
             </TextLinkButton>
             <TextLinkButton onClick={() => {}} tabIndex={1}>
-              Focusable Second
+              Focusable First
             </TextLinkButton>
-            <TextLinkButton onClick={() => {}}>Focusable First</TextLinkButton>
+            <TextLinkButton onClick={() => {}}>Focusable Second</TextLinkButton>
           </Text>
         </BraidTestProvider>,
       );
       const buttons = getAllByRole('button');
 
       expect(document.body).toHaveFocus();
-      userEvent.tab();
-      expect(buttons[2]).toHaveFocus();
-      userEvent.tab();
+      await userEvent.tab();
       expect(buttons[1]).toHaveFocus();
-      userEvent.tab();
+      await userEvent.tab();
+      expect(buttons[2]).toHaveFocus();
+      await userEvent.tab();
       expect(document.body).toHaveFocus();
     });
   });
@@ -82,7 +82,7 @@ describe('TextLink', () => {
       jest.spyOn(console, 'warn').mockImplementation();
     });
 
-    it('should call the click handler on click', () => {
+    it('should call the click handler on click', async () => {
       const clickHandler = createMockClickHandler();
       const { getByRole } = render(
         <BraidTestProvider>
@@ -93,13 +93,13 @@ describe('TextLink', () => {
       );
 
       const button = getByRole('button');
-      userEvent.click(button);
+      await userEvent.click(button);
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
     });
 
-    it('should call the click handler on keyboard interaction', () => {
+    it('should call the click handler on keyboard interaction', async () => {
       const clickHandler = createMockClickHandler();
       render(
         <BraidTestProvider>
@@ -109,13 +109,13 @@ describe('TextLink', () => {
         </BraidTestProvider>,
       );
 
-      userEvent.tab();
-      userEvent.keyboard('{enter}');
+      await userEvent.tab();
+      await userEvent.keyboard('{enter}');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
 
-      userEvent.keyboard('{space}');
+      await userEvent.keyboard(' ');
       expect(clickHandler).toHaveBeenCalledTimes(1);
       expect(clickHandler.mock.calls[0][0].type).toEqual('click');
       clickHandler.mockClear();
