@@ -65,7 +65,7 @@ export const modalTestSuite = (
     };
   }
 
-  const EXIT_TIMEOUT = 5000;
+  const EXIT_TIMEOUT = 1500;
 
   describe(`Modal: ${name}`, () => {
     it('should not focus content when closed', async () => {
@@ -140,7 +140,7 @@ export const modalTestSuite = (
 
       await userEvent.tab({ shift: true });
       expect(buttonInside).toHaveFocus();
-    });
+    }, 45000);
 
     it('should close when hitting escape', async () => {
       const { getByTestId, queryByRole } = renderTestCase();
@@ -149,11 +149,10 @@ export const modalTestSuite = (
       await userEvent.click(dialogOpenButton);
       await userEvent.keyboard('{Escape}');
 
-      if (queryByRole('dialog') !== null) {
-        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-          timeout: EXIT_TIMEOUT,
-        });
-      }
+      await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+        timeout: EXIT_TIMEOUT,
+      });
+
       expect(queryByRole('dialog')).not.toBeInTheDocument();
     });
 
@@ -180,11 +179,9 @@ export const modalTestSuite = (
       const closeButton = getByLabelText(CLOSE_LABEL);
       await userEvent.click(closeButton);
 
-      if (queryByRole('dialog') !== null) {
-        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-          timeout: EXIT_TIMEOUT,
-        });
-      }
+      await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+        timeout: EXIT_TIMEOUT,
+      });
       expect(closeHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).toHaveBeenCalledWith(false);
     });
