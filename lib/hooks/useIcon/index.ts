@@ -42,14 +42,14 @@ type PrivateIconProps = {
   };
 };
 
-const detaultVerticalCorrection = {
+const defaultVerticalCorrection = {
   uppercase: 'none',
   lowercase: 'none',
 } as const;
 
 export default (
   { size, tone, alignY, data, ...titleProps }: UseIconProps,
-  { verticalCorrection = detaultVerticalCorrection }: PrivateIconProps = {},
+  { verticalCorrection = defaultVerticalCorrection }: PrivateIconProps = {},
   // TODO: COLORMODE RELEASE
   // Revert to BoxProps
 ): PublicBoxProps => {
