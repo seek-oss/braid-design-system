@@ -136,7 +136,7 @@ describe('Checkbox', () => {
     expect(getByRole('checkbox').getAttribute('aria-checked')).toBe('mixed');
   });
 
-  it('should toggle state correctly when controlled field is initialised to `mixed`', () => {
+  it('should toggle state correctly when controlled field is initialised to `mixed`', async () => {
     const TestCase = () => {
       const [checked, setChecked] =
         useState<ComponentProps<typeof Checkbox>['checked']>('mixed');
@@ -158,20 +158,20 @@ describe('Checkbox', () => {
     expect(checkbox.indeterminate).toBe(true);
     expect(checkbox.checked).toBe(false);
 
-    userEvent.click(checkbox);
+    await userEvent.click(checkbox);
 
     expect(checkbox.getAttribute('aria-checked')).toBe('true');
     expect(checkbox.indeterminate).toBe(false);
     expect(checkbox.checked).toBe(true);
 
-    userEvent.click(checkbox);
+    await userEvent.click(checkbox);
 
     expect(checkbox.getAttribute('aria-checked')).toBe('false');
     expect(checkbox.indeterminate).toBe(false);
     expect(checkbox.checked).toBe(false);
   });
 
-  it('should not toggle state when forced to `mixed`', () => {
+  it('should not toggle state when forced to `mixed`', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Checkbox
@@ -188,7 +188,7 @@ describe('Checkbox', () => {
     expect(checkbox.indeterminate).toBe(true);
     expect(checkbox.checked).toBe(false);
 
-    userEvent.click(checkbox);
+    await userEvent.click(checkbox);
 
     expect(checkbox.getAttribute('aria-checked')).toBe('mixed');
     expect(checkbox.indeterminate).toBe(true);

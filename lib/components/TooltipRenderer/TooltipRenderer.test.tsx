@@ -50,14 +50,14 @@ describe('TooltipRenderer', () => {
 
     const trigger = getByLabelText('Trigger');
     await act(async () => {
-      userEvent.hover(trigger);
+      await userEvent.hover(trigger);
       await tick();
     });
 
     expect(tooltip.hidden).toBe(false);
 
     await act(async () => {
-      userEvent.unhover(trigger);
+      await userEvent.unhover(trigger);
       await tick();
     });
 
@@ -84,7 +84,7 @@ describe('TooltipRenderer', () => {
 
     const trigger = getByLabelText('Trigger');
     await act(async () => {
-      userEvent.hover(trigger);
+      await userEvent.hover(trigger);
       await tick();
     });
 
@@ -121,7 +121,7 @@ describe('TooltipRenderer', () => {
     expect(document.body).toHaveFocus();
 
     await act(async () => {
-      userEvent.tab();
+      await userEvent.tab();
       await tick();
     });
 
@@ -129,7 +129,7 @@ describe('TooltipRenderer', () => {
     expect(tooltip.hidden).toBe(false);
 
     await act(async () => {
-      userEvent.tab({ shift: true });
+      await userEvent.tab({ shift: true });
       await tick();
     });
 
