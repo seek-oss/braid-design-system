@@ -112,11 +112,11 @@ describe('Tabs', () => {
       expect(firstTab.getAttribute('aria-controls')).toBe('tabs_1_panel');
     });
 
-    it('should select second tab when clicked and show second panel', () => {
+    it('should select second tab when clicked and show second panel', async () => {
       const { getAllByRole } = renderTabs();
       const [, secondTab] = getAllByRole('tab');
 
-      userEvent.click(secondTab);
+      await userEvent.click(secondTab);
 
       const visiblePanels = getAllByRole('tabpanel');
 
@@ -124,12 +124,12 @@ describe('Tabs', () => {
       expect(visiblePanels[0].id).toBe('tabs_2_panel');
     });
 
-    it('should select first tab and show first panel when toggling back from another tab', () => {
+    it('should select first tab and show first panel when toggling back from another tab', async () => {
       const { getAllByRole } = renderTabs();
       const [firstTab, secondTab] = getAllByRole('tab');
 
-      userEvent.click(secondTab);
-      userEvent.click(firstTab);
+      await userEvent.click(secondTab);
+      await userEvent.click(firstTab);
 
       const visiblePanels = getAllByRole('tabpanel');
 
@@ -137,7 +137,7 @@ describe('Tabs', () => {
       expect(visiblePanels[0].id).toBe('tabs_1_panel');
     });
 
-    it('should persist state between tab changes when renderInactivePanels is set', () => {
+    it('should persist state between tab changes when renderInactivePanels is set', async () => {
       const { getAllByRole, getByTestId } = renderTabs({
         renderInactivePanels: true,
       });
@@ -145,12 +145,12 @@ describe('Tabs', () => {
 
       let checkbox = getByTestId('panel-1-checkbox');
 
-      userEvent.click(checkbox);
+      await userEvent.click(checkbox);
 
       expect(checkbox).toBeChecked();
 
-      userEvent.click(secondTab);
-      userEvent.click(firstTab);
+      await userEvent.click(secondTab);
+      await userEvent.click(firstTab);
 
       checkbox = getByTestId('panel-1-checkbox');
 
@@ -159,7 +159,7 @@ describe('Tabs', () => {
   });
 
   describe('Controlled state', () => {
-    it('should select second tab, show second panel and fire the onChange with correct value, when clicked', () => {
+    it('should select second tab, show second panel and fire the onChange with correct value, when clicked', async () => {
       const { getAllByRole, changeHandler } = renderTabs({
         selectedItem: 'third',
       });
@@ -167,7 +167,7 @@ describe('Tabs', () => {
 
       expect(changeHandler).not.toHaveBeenCalled();
 
-      userEvent.click(secondTab);
+      await userEvent.click(secondTab);
 
       expect(changeHandler).toHaveBeenNthCalledWith(1, 1, 'second');
     });
@@ -228,9 +228,9 @@ describe('Tabs', () => {
       const visiblePanels = getAllByRole('tabpanel');
 
       expect(document.body).toHaveFocus();
-      userEvent.tab();
+      await userEvent.tab();
       expect(secondTab).toHaveFocus();
-      userEvent.tab();
+      await userEvent.tab();
       expect(visiblePanels[0]).toHaveFocus();
     });
 
@@ -239,71 +239,71 @@ describe('Tabs', () => {
       const [firstTab, secondTab, thirdTab] = getAllByRole('tab');
 
       // Focus selected tab
-      userEvent.tab();
+      await userEvent.tab();
 
       // Test horizontal navigation works
       expect(secondTab).toHaveFocus();
-      userEvent.keyboard('{arrowright}');
+      await userEvent.keyboard('{arrowright}');
       expect(thirdTab).toHaveFocus();
-      userEvent.keyboard('{arrowright}');
+      await userEvent.keyboard('{arrowright}');
       expect(firstTab).toHaveFocus();
-      userEvent.keyboard('{arrowright}');
+      await userEvent.keyboard('{arrowright}');
       expect(secondTab).toHaveFocus();
-      userEvent.keyboard('{arrowleft}');
+      await userEvent.keyboard('{arrowleft}');
       expect(firstTab).toHaveFocus();
-      userEvent.keyboard('{arrowleft}');
+      await userEvent.keyboard('{arrowleft}');
       expect(thirdTab).toHaveFocus();
-      userEvent.keyboard('{arrowleft}');
+      await userEvent.keyboard('{arrowleft}');
       expect(secondTab).toHaveFocus();
     });
 
-    it('should navigate to last tab with the end key', () => {
+    it('should navigate to last tab with the end key', async () => {
       const { getAllByRole } = renderTabs();
       const [, , thirdTab] = getAllByRole('tab');
 
       // Focus selected tab and move focus to the last tab
-      userEvent.tab();
-      userEvent.keyboard('{end}');
+      await userEvent.tab();
+      await userEvent.keyboard('{end}');
 
       expect(thirdTab).toHaveFocus();
     });
 
-    it('should navigate to first tab with the home key', () => {
+    it('should navigate to first tab with the home key', async () => {
       const { getAllByRole } = renderTabs({ selectedItem: 'third' });
       const [firstTab] = getAllByRole('tab');
 
       // Focus selected tab and mmove focus to the first tab
-      userEvent.tab();
-      userEvent.keyboard('{home}');
+      await userEvent.tab();
+      await userEvent.keyboard('{home}');
 
       expect(firstTab).toHaveFocus();
     });
 
-    it('should select the focused tab with the space key', () => {
+    it('should select the focused tab with the space key', async () => {
       const { getAllByRole } = renderTabs();
       const [, , thirdTab] = getAllByRole('tab');
 
       // Focus selected tab and move focus to the left
-      userEvent.tab();
-      userEvent.keyboard('{arrowleft}');
+      await userEvent.tab();
+      await userEvent.keyboard('{arrowleft}');
 
       // Test commit tab selection with space
-      userEvent.keyboard('{space}');
+      await userEvent.keyboard(' ');
 
       expect(thirdTab).toHaveFocus();
       expect(thirdTab.getAttribute('aria-selected')).toBe('true');
     });
 
-    it('should select the focused tab with the enter key', () => {
+    it('should select the focused tab with the enter key', async () => {
       const { getAllByRole } = renderTabs();
       const [, secondTab] = getAllByRole('tab');
 
       // Focus selected tab and move focus to the right
-      userEvent.tab();
-      userEvent.keyboard('{arrowright}');
+      await userEvent.tab();
+      await userEvent.keyboard('{arrowright}');
 
       // Test commit tab selection with enter
-      userEvent.keyboard('{enter}');
+      await userEvent.keyboard('{enter}');
 
       expect(secondTab).toHaveFocus();
       expect(secondTab.getAttribute('aria-selected')).toBe('true');

@@ -67,7 +67,7 @@ const stylesForBreakpoint = (
   };
 };
 
-export const bleedY = style({
+export const bleedVerticallyToCapHeight = style({
   selectors: {
     [`${standard}&`]: responsiveStyle({
       mobile: stylesForBreakpoint('mobile', 'standard'),

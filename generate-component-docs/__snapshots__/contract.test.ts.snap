@@ -1988,6 +1988,7 @@ Object {
         | "true"
         | false
         | true
+    bleed?: boolean
     bleedY?: boolean
     children?: ReactNode
     data?: DataAttributeMap
@@ -2238,6 +2239,7 @@ Object {
     autoCapitalize?: string
     autoCorrect?: string
     autoSave?: string
+    bleed?: boolean
     bleedY?: boolean
     children?: ReactNode
     color?: string
@@ -6671,6 +6673,7 @@ Object {
     children?: ReactNode
     data?: DataAttributeMap
     description?: ReactNode
+    disabled?: boolean
     label: ReactNode
     ref?: 
         | (instance: HTMLInputElement | null) => void
