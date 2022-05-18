@@ -32,7 +32,7 @@ export interface ComponentDocs {
   migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
-  Example?: (props: ExampleProps) => Source<ReactChild>;
+  Example?: (props: ExampleProps & PlayroomExampleProps) => Source<ReactChild>;
   alternatives: Array<{ name: string; description: string }>;
   accessibility?: ReactNodeNoStrings;
   additional?: ComponentExample[];
@@ -45,16 +45,17 @@ export interface CssDoc {
   additional?: ComponentExample[];
 }
 
-interface ExampleProps extends ReturnType<typeof useScope> {
+interface ExampleProps {
   id: string;
   handler: () => void;
 }
+interface PlayroomExampleProps extends ReturnType<typeof useScope> {}
 
 export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']>;
-  Example?: (props: ExampleProps) => Source<ReactChild>;
+  Example?: (props: ExampleProps & PlayroomExampleProps) => Source<ReactChild>;
   Container?: (props: { children: ReactNode }) => ReactElement;
   code?: string;
   showCodeByDefault?: boolean;

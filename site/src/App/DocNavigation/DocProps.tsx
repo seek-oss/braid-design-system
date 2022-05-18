@@ -167,7 +167,7 @@ const ComponentProps = ({ componentName }: { componentName: string }) => {
     return null;
   }
 
-  return Object.keys(doc.props.props).length === 0 ? null : (
+  return Object.keys(doc.props).length === 0 ? null : (
     <PropList props={doc.props.props} />
   );
 };
