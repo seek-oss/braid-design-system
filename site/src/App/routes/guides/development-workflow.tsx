@@ -340,7 +340,7 @@ const DevelopmentWorkflow = () => (
 
 const page: Page = {
   title: 'Development Workflow',
-  component: DevelopmentWorkflow,
+  element: <DevelopmentWorkflow />,
 };
 
 export default page;

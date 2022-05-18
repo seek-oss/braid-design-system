@@ -1,11 +1,5 @@
-import React, {
-  useState,
-  useRef,
-  ReactNode,
-  useEffect,
-  forwardRef,
-} from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useRef, useEffect, forwardRef } from 'react';
+import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {
   ContentBlock,
@@ -65,11 +59,7 @@ const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ),
 );
 
-interface NavigationProps {
-  children: ReactNode;
-}
-
-export const Navigation = ({ children }: NavigationProps) => {
+export const Navigation = () => {
   const lastScrollTop = useRef(0);
   const { y: scrollTop } = useWindowScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -145,7 +135,7 @@ export const Navigation = ({ children }: NavigationProps) => {
         className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
-          {children}
+          <Outlet />
         </Box>
       </Box>
 

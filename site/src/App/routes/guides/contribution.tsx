@@ -66,7 +66,7 @@ const Contribution = () => (
 
 const page: Page = {
   title: 'Contribution',
-  component: Contribution,
+  element: <Contribution />,
 };
 
 export default page;

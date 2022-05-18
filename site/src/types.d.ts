@@ -42,10 +42,7 @@ export interface CssDoc {
   banner?: ReactNodeNoStrings;
   usage: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
-  additional?: Array<{
-    label?: string;
-    description?: ReactNodeNoStrings;
-  }>;
+  additional?: ComponentExample[];
 }
 
 interface ExampleProps extends ReturnType<typeof useScope> {

@@ -36,7 +36,7 @@ const Step = ({ heading, detail, children }: StepProps) => (
 
 const page: Page = {
   title: 'Marketing Banner',
-  component: () => (
+  element: (
     <TextStack>
       <Stack space="medium">
         <Heading level="3" weight="weak">

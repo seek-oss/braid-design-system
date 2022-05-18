@@ -228,7 +228,7 @@ const DesignWorkflow = () => {
 
 const page: Page = {
   title: 'Design Workflow',
-  component: DesignWorkflow,
+  element: <DesignWorkflow />,
 };
 
 export default page;

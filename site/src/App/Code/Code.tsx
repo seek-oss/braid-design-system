@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  ReactChild,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { useState, ReactChild, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';
@@ -84,20 +78,6 @@ export const CodeButton = ({
   const [showSuccess, setShowSuccess] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const clickHandler = useCallback(
-    (e) => {
-      if (typeof onClick === 'function') {
-        onClick(e);
-
-        if (successLabel) {
-          setShowSuccess(true);
-          timerRef.current = setTimeout(() => setShowSuccess(false), 2000);
-        }
-      }
-    },
-    [onClick, successLabel],
-  );
-
   useEffect(
     () => () => {
       if (timerRef.current) {
@@ -129,7 +109,16 @@ export const CodeButton = ({
       position="relative"
       outline="none"
       className={[styles.button, className]}
-      onClick={clickHandler}
+      onClick={(e) => {
+        if (typeof onClick === 'function') {
+          onClick(e);
+
+          if (successLabel) {
+            setShowSuccess(true);
+            timerRef.current = setTimeout(() => setShowSuccess(false), 2000);
+          }
+        }
+      }}
       {...restProps}
     >
       <FieldOverlay

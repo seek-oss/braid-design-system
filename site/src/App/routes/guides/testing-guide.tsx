@@ -15,7 +15,7 @@ import { PageTitle } from '../../Seo/PageTitle';
 
 const page: Page = {
   title: 'Testing Guide',
-  component: () => (
+  element: (
     <TextStack>
       <Heading component="h1" level="2">
         <PageTitle title="Testing Guide" />
