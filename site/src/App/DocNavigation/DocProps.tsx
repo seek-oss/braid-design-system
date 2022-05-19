@@ -7,7 +7,6 @@ import {
   Inline,
   Badge,
   TooltipRenderer,
-  Heading,
   TextLink,
   IconInfo,
 } from '../../../../lib/components';
@@ -20,6 +19,7 @@ import type {
 import { DocsContext } from '../DocNavigation/DocNavigation';
 import { PageTitle } from '../Seo/PageTitle';
 import { useConfig } from '../ConfigContext';
+import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 
 type ComponentName = keyof typeof componentDocs;
 
@@ -200,7 +200,7 @@ export const DocProps = () => {
         {Array.isArray(propsToDocument) ? (
           propsToDocument.map((c) => (
             <Stack space="large" key={c}>
-              <Heading level="3">{c}</Heading>
+              <LinkableHeading level="3">{c}</LinkableHeading>
               <ComponentProps componentName={c} />
             </Stack>
           ))
@@ -209,9 +209,9 @@ export const DocProps = () => {
         )}
 
         <Stack space="large">
-          <Heading level="3" component="h4">
+          <LinkableHeading level="3" component="h4">
             Further References
-          </Heading>
+          </LinkableHeading>
           <Text>
             <TextLink href={sourceUrl}>View Source</TextLink>
           </Text>

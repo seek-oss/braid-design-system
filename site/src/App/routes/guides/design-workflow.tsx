@@ -10,6 +10,7 @@ import { TextStack } from '../../TextStack/TextStack';
 import { useConfig } from '../../ConfigContext';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
+import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
 
 const braidDesignSupportLink = (
   <TextLink href="https://seekchat.slack.com/channels/braid-design-support">
@@ -35,7 +36,9 @@ const DesignWorkflow = () => {
 
       <Divider />
 
-      <Heading level="3">How do I get started with a new concept?</Heading>
+      <LinkableHeading level="3">
+        How do I get started with a new concept?
+      </LinkableHeading>
       <Text>
         All design tools are still at your disposal. Paper and pencil, Sketch,
         Axure, Keynote... whatever you like! Iterate quickly. Don’t feel like
@@ -48,7 +51,9 @@ const DesignWorkflow = () => {
         ones.
       </Text>
 
-      <Heading level="3">Is there a library for Sketch/Figma/etc.?</Heading>
+      <LinkableHeading level="3">
+        Is there a library for Sketch/Figma/etc.?
+      </LinkableHeading>
       <Text>
         No. Braid is a living component system that’s designed to run in
         production, as opposed to being a static design library.
@@ -78,7 +83,9 @@ const DesignWorkflow = () => {
         <Text>Standardised interactions.</Text>
       </List>
 
-      <Heading level="3">How do I leverage Braid in my design process?</Heading>
+      <LinkableHeading level="3">
+        How do I leverage Braid in my design process?
+      </LinkableHeading>
       <Text>
         The best way to make use of Braid is for designers and developers to
         work closer together, and much earlier in the process than we typically
@@ -93,7 +100,7 @@ const DesignWorkflow = () => {
         a variety of screen sizes and brands.
       </Text>
 
-      <Heading level="3">What is {playroomLink}? Why should I use it?</Heading>
+      <LinkableHeading level="3">{`What is ${playroomLink}? Why should I use it?`}</LinkableHeading>
       <Text>
         {playroomLink} is a browser-based design tool that allows for real-time
         prototyping with interactive components, ensuring designers and
@@ -130,7 +137,7 @@ const DesignWorkflow = () => {
         is typically slow and error prone.
       </Text>
 
-      <Heading level="3">Do I need to write code?</Heading>
+      <LinkableHeading level="3">Do I need to write code?</LinkableHeading>
       <Text>
         Not necessarily. You might prefer to pair up with a developer to iterate
         on your designs together. It’s entirely up to you.
@@ -152,7 +159,9 @@ const DesignWorkflow = () => {
         low-level technical details of HTML and CSS.
       </Text>
 
-      <Heading level="3">When should I use high fidelity design tools?</Heading>
+      <LinkableHeading level="3">
+        When should I use high fidelity design tools?
+      </LinkableHeading>
       <Text>
         If you’ve recognised a gap in our system, feel free to use traditional
         high fidelity design tools to define that new experience. However, when
@@ -166,7 +175,7 @@ const DesignWorkflow = () => {
         any assistance.
       </Text>
 
-      <Heading level="3">Won’t this slow us down?</Heading>
+      <LinkableHeading level="3">Won’t this slow us down?</LinkableHeading>
       <Text>The goal is to actually let you design faster!</Text>
       <Text>
         If working in {playroomLink} is too slow, that’s probably a sign that
@@ -180,14 +189,16 @@ const DesignWorkflow = () => {
         continue to speed us up over the long term.
       </Text>
 
-      <Heading level="3">What if I need some help?</Heading>
+      <LinkableHeading level="3">What if I need some help?</LinkableHeading>
       <Text>
         We recommend reaching out in our {braidDesignSupportLink} Slack channel.
         We’ll be more than happy to work with you to make sure that you’re
         comfortable working in this environment.
       </Text>
 
-      <Heading level="3">What if my designs look different to Braid?</Heading>
+      <LinkableHeading level="3">
+        What if my designs look different to Braid?
+      </LinkableHeading>
       <Text>
         A design system’s job is to help standardise the look and feel of an
         entire product suite, not to match individual concept designs
@@ -212,7 +223,9 @@ const DesignWorkflow = () => {
         on how best to move forwards.
       </Text>
 
-      <Heading level="3">How do I add a new component to Braid?</Heading>
+      <LinkableHeading level="3">
+        How do I add a new component to Braid?
+      </LinkableHeading>
       <Text>
         Read our{' '}
         <TextLink href="/guides/contribution">contribution guide</TextLink>.

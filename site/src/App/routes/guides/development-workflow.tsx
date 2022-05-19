@@ -20,6 +20,7 @@ import { PageTitle } from '../../Seo/PageTitle';
 import source from '../../../../../lib/utils/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';
 import { VanillaMigrationBanner } from '../../../../../css/VanillaMigrationBanner';
+import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
 
 const DevelopmentWorkflow = () => (
   <TextStack>
@@ -34,7 +35,7 @@ const DevelopmentWorkflow = () => (
 
     <Divider />
 
-    <Heading level="3">Working with components</Heading>
+    <LinkableHeading level="3">Working with components</LinkableHeading>
     <Text>
       Braid provides consumers with a suite of components that are powered by an
       underlying themed styling system.
@@ -51,7 +52,7 @@ const DevelopmentWorkflow = () => (
       provides lower level building blocks for generating custom components.
     </Text>
 
-    <Heading level="3">High level components</Heading>
+    <LinkableHeading level="3">High level components</LinkableHeading>
     <Text>
       Braid’s high level components are most likely the ones you would come to
       expect from a design system, e.g.{' '}
@@ -85,7 +86,7 @@ const DevelopmentWorkflow = () => (
       white space. This is where our layout components come in.
     </Text>
 
-    <Heading level="3">Layout components</Heading>
+    <LinkableHeading level="3">Layout components</LinkableHeading>
     <Text>
       In order to distribute white space evenly between components, wrap sibling
       elements in a <TextLink href="/components/Stack">Stack</TextLink>{' '}
@@ -182,7 +183,7 @@ const DevelopmentWorkflow = () => (
       )}
     </Code>
 
-    <Heading level="3">Need a custom component?</Heading>
+    <LinkableHeading level="3">Need a custom component?</LinkableHeading>
     <Text>
       If you’re unable to satisfy a design using the built-in set of higher
       level components, Braid also provides consumers with the{' '}
@@ -212,7 +213,7 @@ const DevelopmentWorkflow = () => (
       autocompletion and type checking within your editor.
     </Text>
 
-    <Heading level="3">Need responsive styles?</Heading>
+    <LinkableHeading level="3">Need responsive styles?</LinkableHeading>
     <Text>
       Previously, one of the main reasons for needing to create custom CSS was
       to define responsive rules. The{' '}
@@ -237,7 +238,7 @@ const DevelopmentWorkflow = () => (
       <TextLink href="/components/Box">Box documentation.</TextLink>
     </Text>
 
-    <Heading level="3">Need semantic markup?</Heading>
+    <LinkableHeading level="3">Need semantic markup?</LinkableHeading>
     <Text>
       A key difference with Braid is that it doesn’t use a standard global CSS
       reset. Instead, element styles are reset at the component level via{' '}
@@ -257,7 +258,7 @@ const DevelopmentWorkflow = () => (
       )}
     </Code>
 
-    <Heading level="3">Still need custom CSS?</Heading>
+    <LinkableHeading level="3">Still need custom CSS?</LinkableHeading>
     <Text>
       Braid is built on top of{' '}
       <TextLink href="https://vanilla-extract.style/">vanilla-extract</TextLink>{' '}

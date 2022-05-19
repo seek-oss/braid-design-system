@@ -5,6 +5,7 @@ import * as styles from './LinkableHeading.css';
 
 interface LinkableHeadingProps {
   level?: HeadingProps['level'];
+  component?: HeadingProps['component'];
   children: string;
 }
 
@@ -13,6 +14,7 @@ const slugify = (string: string) => string.replace(/ /g, '-').toLowerCase();
 export const LinkableHeading = ({
   children,
   level = '3',
+  component,
 }: LinkableHeadingProps) => {
   const slug = slugify(children);
 
@@ -21,7 +23,7 @@ export const LinkableHeading = ({
       <Box className={styles.linkableHeading} display="inlineBlock">
         <Box id={slug} position="absolute" />
         <Link href={`#${slug}`}>
-          <Heading level={level}>
+          <Heading level={level} component={component}>
             {children}{' '}
             <Box
               component="span"

@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import {
   Box,
   Stack,
-  Inline,
   Heading,
   Badge,
   TextLink,
   Text,
+  Column,
+  Columns,
 } from '../../../../lib/components';
+import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';
 import { DocsContext } from './DocNavigation';
@@ -19,19 +21,26 @@ export const DocReleases = () => {
     <>
       <PageTitle title={`${docsName} Releases`} />
 
-      <Stack space="xlarge">
+      <Stack space="xxlarge" dividers>
         {history && history.length > 0 ? (
           history.map((item, index) => (
             <Box key={index} paddingTop={index > 0 ? 'medium' : undefined}>
               <Stack space="large">
-                <Inline space="small" alignY="center">
-                  <Heading level="3">v{item.version}</Heading>
+                <Columns space="small" alignY="center">
+                  <Column>
+                    <LinkableHeading level="3">{`v${item.version}`}</LinkableHeading>
+                  </Column>
                   {item.time ? (
-                    <Badge bleedY tone={item.isRecent ? 'promote' : 'neutral'}>
-                      {item.time}
-                    </Badge>
+                    <Column width="content">
+                      <Badge
+                        bleedY
+                        tone={item.isRecent ? 'promote' : 'neutral'}
+                      >
+                        {item.time}
+                      </Badge>
+                    </Column>
                   ) : null}
-                </Inline>
+                </Columns>
                 <Markdown>{item.summary}</Markdown>
               </Stack>
             </Box>
