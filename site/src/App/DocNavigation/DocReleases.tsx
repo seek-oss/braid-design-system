@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import {
   Box,
   Stack,
@@ -8,7 +8,6 @@ import {
   Text,
   Column,
   Columns,
-  Divider,
   List,
 } from '../../../../lib/components';
 import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
@@ -49,41 +48,41 @@ export const DocReleases = () => {
     <>
       <PageTitle title={`${docsName} Releases`} />
 
-      <Stack space="xxlarge">
+      <Stack space="xxlarge" dividers>
         {Object.keys(groupedHistory).length > 0 ? (
           Object.keys(groupedHistory).map((version, index) => {
             const historyItem = groupedHistory[version];
 
             return (
-              <Fragment key={`${version}_${index}`}>
-                {index > 0 ? <Divider /> : null}
-                <Box paddingTop={index > 0 ? 'medium' : undefined}>
-                  <Stack space="large">
-                    <Columns space="small" alignY="center">
-                      <Column>
-                        <LinkableHeading level="3">{`v${version}`}</LinkableHeading>
+              <Box
+                key={`${version}_${index}`}
+                paddingTop={index > 0 ? 'medium' : undefined}
+              >
+                <Stack space="large">
+                  <Columns space="small" alignY="center">
+                    <Column>
+                      <LinkableHeading level="3">{`v${version}`}</LinkableHeading>
+                    </Column>
+                    {historyItem.time ? (
+                      <Column width="content">
+                        <Badge
+                          bleedY
+                          tone={historyItem.isRecent ? 'promote' : 'neutral'}
+                        >
+                          {historyItem.time}
+                        </Badge>
                       </Column>
-                      {historyItem.time ? (
-                        <Column width="content">
-                          <Badge
-                            bleedY
-                            tone={historyItem.isRecent ? 'promote' : 'neutral'}
-                          >
-                            {historyItem.time}
-                          </Badge>
-                        </Column>
-                      ) : null}
-                    </Columns>
-                    <List space="xlarge">
-                      {historyItem.changesets.map((change, changeIndex) => (
-                        <Markdown key={`${version}_${index}_${changeIndex}`}>
-                          {change}
-                        </Markdown>
-                      ))}
-                    </List>
-                  </Stack>
-                </Box>
-              </Fragment>
+                    ) : null}
+                  </Columns>
+                  <List space="xlarge">
+                    {historyItem.changesets.map((change, changeIndex) => (
+                      <Markdown key={`${version}_${index}_${changeIndex}`}>
+                        {change}
+                      </Markdown>
+                    ))}
+                  </List>
+                </Stack>
+              </Box>
             );
           })
         ) : (
