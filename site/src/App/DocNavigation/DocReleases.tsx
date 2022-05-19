@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import {
   Box,
   Stack,
@@ -8,43 +8,84 @@ import {
   Text,
   Column,
   Columns,
+  Divider,
+  List,
 } from '../../../../lib/components';
 import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';
 import { DocsContext } from './DocNavigation';
 
+type GroupedHistory = Record<
+  string,
+  {
+    version: string;
+    time?: string;
+    isRecent?: boolean;
+    changesets: string[];
+  }
+>;
+
 export const DocReleases = () => {
-  const { docsName, history } = useContext(DocsContext);
+  const { docsName, history = [] } = useContext(DocsContext);
+  const groupedHistory = history.reduce(
+    (acc, { version, time, isRecent, summary }) => {
+      if (acc[version]) {
+        acc[version].changesets.push(summary);
+      } else {
+        acc[version] = {
+          version,
+          time,
+          isRecent,
+          changesets: [summary],
+        };
+      }
+      return acc;
+    },
+    {} as GroupedHistory,
+  );
 
   return (
     <>
       <PageTitle title={`${docsName} Releases`} />
 
-      <Stack space="xxlarge" dividers>
-        {history && history.length > 0 ? (
-          history.map((item, index) => (
-            <Box key={index} paddingTop={index > 0 ? 'medium' : undefined}>
-              <Stack space="large">
-                <Columns space="small" alignY="center">
-                  <Column>
-                    <LinkableHeading level="3">{`v${item.version}`}</LinkableHeading>
-                  </Column>
-                  {item.time ? (
-                    <Column width="content">
-                      <Badge
-                        bleedY
-                        tone={item.isRecent ? 'promote' : 'neutral'}
-                      >
-                        {item.time}
-                      </Badge>
-                    </Column>
-                  ) : null}
-                </Columns>
-                <Markdown>{item.summary}</Markdown>
-              </Stack>
-            </Box>
-          ))
+      <Stack space="xxlarge">
+        {Object.keys(groupedHistory).length > 0 ? (
+          Object.keys(groupedHistory).map((version, index) => {
+            const historyItem = groupedHistory[version];
+
+            return (
+              <Fragment key={`${version}_${index}`}>
+                {index > 0 ? <Divider /> : null}
+                <Box paddingTop={index > 0 ? 'medium' : undefined}>
+                  <Stack space="large">
+                    <Columns space="small" alignY="center">
+                      <Column>
+                        <LinkableHeading level="3">{`v${version}`}</LinkableHeading>
+                      </Column>
+                      {historyItem.time ? (
+                        <Column width="content">
+                          <Badge
+                            bleedY
+                            tone={historyItem.isRecent ? 'promote' : 'neutral'}
+                          >
+                            {historyItem.time}
+                          </Badge>
+                        </Column>
+                      ) : null}
+                    </Columns>
+                    <List space="xlarge">
+                      {historyItem.changesets.map((change, changeIndex) => (
+                        <Markdown key={`${version}_${index}_${changeIndex}`}>
+                          {change}
+                        </Markdown>
+                      ))}
+                    </List>
+                  </Stack>
+                </Box>
+              </Fragment>
+            );
+          })
         ) : (
           <Stack space="large">
             <Heading level="3">No release notes available</Heading>

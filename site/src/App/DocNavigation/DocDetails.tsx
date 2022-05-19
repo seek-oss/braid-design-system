@@ -16,9 +16,7 @@ import { DocExample } from './DocExample';
 
 export const DocDetails = () => {
   const { theme } = useThemeSettings();
-  const docsContext = useContext(DocsContext);
-
-  const { docs, docsName } = docsContext;
+  const { docs, docsName } = useContext(DocsContext);
 
   return docs ? (
     <>
