@@ -100,7 +100,9 @@ const DesignWorkflow = () => {
         a variety of screen sizes and brands.
       </Text>
 
-      <LinkableHeading level="3">{`What is ${playroomLink}? Why should I use it?`}</LinkableHeading>
+      <LinkableHeading level="3">
+        What is Playroom? Why should I use it?
+      </LinkableHeading>
       <Text>
         {playroomLink} is a browser-based design tool that allows for real-time
         prototyping with interactive components, ensuring designers and
