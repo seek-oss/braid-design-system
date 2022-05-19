@@ -1,6 +1,6 @@
 import '../../../lib/css/reset';
 import React, { StrictMode, useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router';
+import { Route, Routes, Navigate } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
@@ -11,14 +11,17 @@ import {
   makeLinkComponent,
 } from '../../../lib/components';
 import { Navigation } from './Navigation/Navigation';
-import home from './routes/home';
+import { HomePage } from './routes/home';
 import guides from './routes/guides';
 import foundations from './routes/foundations';
 import examples from './routes/examples';
-import components from './routes/components';
-import css from './routes/css';
-import releaseNotes from './routes/releases';
-import gallery from './routes/gallery';
+import { DocNavigation } from './DocNavigation/DocNavigation';
+import { DocDetails } from './DocNavigation/DocDetails';
+import { DocProps } from './DocNavigation/DocProps';
+import { DocReleases } from './DocNavigation/DocReleases';
+import { DocSnippets } from './DocNavigation/DocSnippets';
+import { ReleasesPage } from './routes/releases';
+import { GalleryPage } from './routes/gallery';
 import { AppMeta } from './Seo/AppMeta';
 import { darkMode } from '../../../lib/css/atoms/sprinkles.css';
 
@@ -50,8 +53,6 @@ const CustomLink = makeLinkComponent(
       />
     ),
 );
-
-const galleryPath = '/gallery';
 
 export const App = () => {
   // TODO: COLORMODE RELEASE
@@ -90,28 +91,33 @@ export const App = () => {
         <BraidProvider theme={docs} linkComponent={CustomLink}>
           <ToastProvider>
             <AppMeta />
-            <Switch>
-              <Route {...gallery[galleryPath]} path={galleryPath} />
-              <Navigation>
-                <Switch>
-                  {map(
-                    {
-                      ...home,
-                      ...guides,
-                      ...foundations,
-                      ...examples,
-                      ...components,
-                      ...css,
-                      ...releaseNotes,
-                    },
-                    (routeProps, path) => (
-                      <Route key={path} {...routeProps} path={path} />
-                    ),
-                  )}
-                  <Redirect path="/components" exact to="/" />
-                </Switch>
-              </Navigation>
-            </Switch>
+            <Routes>
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route element={<Navigation />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/releases" element={<ReleasesPage />} />
+                {map(
+                  {
+                    ...guides,
+                    ...foundations,
+                    ...examples,
+                  },
+                  (routeProps, path) => (
+                    <Route key={path} {...routeProps} path={path} />
+                  ),
+                )}
+                <Route path=":docsType">
+                  <Route path=":docsName" element={<DocNavigation />}>
+                    <Route path="" element={<DocDetails />} />
+                    <Route path="props" element={<DocProps />} />
+                    <Route path="releases" element={<DocReleases />} />
+                    <Route path="snippets" element={<DocSnippets />} />
+                  </Route>
+                  {/* Redirect for old components as homepage route */}
+                  <Route path="" element={<Navigate to="/" replace />} />
+                </Route>
+              </Route>
+            </Routes>
           </ToastProvider>
         </BraidProvider>
       </ThemeSettingProvider>

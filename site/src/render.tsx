@@ -1,7 +1,7 @@
 import { Render } from 'sku';
 import React, { ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router';
+import { StaticRouter } from 'react-router-dom/server';
 import { HeadProvider } from 'react-head';
 import dedent from 'dedent';
 import { uniq, flatten, values } from 'lodash';
@@ -52,7 +52,7 @@ const skuRender: Render<RenderContext> = {
 
     const html = renderToString(
       <HeadProvider headTags={metaTags}>
-        <StaticRouter context={{}} location={route} basename={routerBasename}>
+        <StaticRouter location={route} basename={routerBasename}>
           <ConfigProvider value={appConfig}>
             <App />
           </ConfigProvider>

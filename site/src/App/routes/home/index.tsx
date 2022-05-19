@@ -7,9 +7,8 @@ import {
   Divider,
 } from '../../../../../lib/components';
 import { useConfig } from '../../ConfigContext';
-import { Page } from '../../../types';
 
-const Home = () => {
+export const HomePage = () => {
   const { playroomUrl } = useConfig();
   return (
     <Stack space="xlarge">
@@ -94,14 +93,4 @@ const Home = () => {
       </Text>
     </Stack>
   );
-};
-
-const page: Page = {
-  title: 'Home',
-  exact: true,
-  component: Home,
-};
-
-export default {
-  '/': page,
 };

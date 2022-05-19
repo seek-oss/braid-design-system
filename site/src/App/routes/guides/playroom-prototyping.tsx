@@ -551,7 +551,7 @@ const PlayroomPrototyping = () => (
 
 const page: Page = {
   title: 'Playroom Prototyping',
-  component: PlayroomPrototyping,
+  element: <PlayroomPrototyping />,
 };
 
 export default page;
