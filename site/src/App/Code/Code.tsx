@@ -1,4 +1,4 @@
-import React, { useState, ReactChild, useEffect, useRef } from 'react';
+import React, { useState, ReactElement, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';
@@ -31,6 +31,8 @@ import editorTheme from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
+
+type ReactElementOrString = ReactElement | string;
 
 export const formatSnippet = memoize((snippet: string) => {
   // Remove id props from code snippets since they're not needed in Playroom
@@ -178,8 +180,8 @@ const isSource = function <Value>(input: any): input is Source<Value> {
 };
 
 const parseInput = (
-  input: ReactChild | Source<ReactChild>,
-): Source<ReactChild> => {
+  input: ReactElementOrString | Source<ReactElementOrString>,
+): Source<ReactElementOrString> => {
   if (typeof input === 'string') {
     const code = formatSnippet(input);
 
@@ -211,11 +213,11 @@ interface CodeProps {
   playroom?: boolean;
   collapsedByDefault?: boolean;
   children:
-    | ReactChild
-    | Source<ReactChild>
+    | ReactElementOrString
+    | Source<ReactElementOrString>
     | ((
         playroomScope: ReturnType<typeof usePlayroomScope>,
-      ) => Source<ReactChild>);
+      ) => Source<ReactElementOrString>);
 }
 const Code = ({
   playroom = true,

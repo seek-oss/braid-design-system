@@ -2,6 +2,7 @@ import { format } from 'util';
 
 const error = global.console.error;
 
+globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 global.console.error = (message: any, ...restArgs: any[]) => {
   const allArgs = [message, ...restArgs];
 

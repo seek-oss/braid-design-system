@@ -1,4 +1,4 @@
-import React, { ReactChild } from 'react';
+import React, { ReactElement } from 'react';
 import { Page } from '../../../../types';
 import {
   Heading,
@@ -25,7 +25,7 @@ import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 interface StepProps {
   heading?: string;
   detail: ReactNodeNoStrings;
-  children: ReactChild;
+  children: ReactElement;
 }
 const Step = ({ heading, detail, children }: StepProps) => (
   <Stack space="xlarge">

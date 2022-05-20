@@ -1,11 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render, fireEvent, act } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
 import { TooltipRenderer, Box, Text } from '..';
-
-const tick = async () => new Promise((resolve) => setTimeout(resolve, 0));
 
 describe('TooltipRenderer', () => {
   it('should associate the trigger with the label', async () => {
@@ -49,19 +47,11 @@ describe('TooltipRenderer', () => {
     expect(tooltip.hidden).toBe(true);
 
     const trigger = getByLabelText('Trigger');
-    await act(async () => {
-      await userEvent.hover(trigger);
-      await tick();
-    });
+    await userEvent.hover(trigger);
+    await waitFor(() => expect(tooltip.hidden).toBe(false));
 
-    expect(tooltip.hidden).toBe(false);
-
-    await act(async () => {
-      await userEvent.unhover(trigger);
-      await tick();
-    });
-
-    expect(tooltip.hidden).toBe(true);
+    await userEvent.unhover(trigger);
+    await waitFor(() => expect(tooltip.hidden).toBe(true));
   });
 
   it('should hide on scroll', async () => {
@@ -83,19 +73,11 @@ describe('TooltipRenderer', () => {
     expect(tooltip.hidden).toBe(true);
 
     const trigger = getByLabelText('Trigger');
-    await act(async () => {
-      await userEvent.hover(trigger);
-      await tick();
-    });
+    await userEvent.hover(trigger);
+    await waitFor(() => expect(tooltip.hidden).toBe(false));
 
-    expect(tooltip.hidden).toBe(false);
-
-    await act(async () => {
-      fireEvent.scroll(container);
-      await tick();
-    });
-
-    expect(tooltip.hidden).toBe(true);
+    fireEvent.scroll(container);
+    await waitFor(() => expect(tooltip.hidden).toBe(true));
   });
 
   it('should handle keyboard focus', async () => {
@@ -120,20 +102,14 @@ describe('TooltipRenderer', () => {
 
     expect(document.body).toHaveFocus();
 
-    await act(async () => {
-      await userEvent.tab();
-      await tick();
-    });
+    await userEvent.tab();
 
     expect(trigger).toHaveFocus();
-    expect(tooltip.hidden).toBe(false);
+    await waitFor(() => expect(tooltip.hidden).toBe(false));
 
-    await act(async () => {
-      await userEvent.tab({ shift: true });
-      await tick();
-    });
+    await userEvent.tab({ shift: true });
 
     expect(document.body).toHaveFocus();
-    expect(tooltip.hidden).toBe(true);
+    await waitFor(() => expect(tooltip.hidden).toBe(true));
   });
 });

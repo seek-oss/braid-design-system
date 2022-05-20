@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
+import { HelmetData } from 'react-helmet-async';
 import { RouteProps } from 'react-router';
 import { ReactNodeNoStrings } from './../../lib/components/private/ReactNodeNoStrings';
 import { Source } from '../../lib/utils/source.macro';
@@ -17,7 +18,7 @@ export interface RenderContext {
   renderDate: number;
   versionMap: { [version: string]: string };
   currentVersion: string;
-  metaTags: React.ReactElement[];
+  helmetContext: HelmetData['context'] | Record<string, never>;
 }
 
 export interface Page extends RouteProps {
@@ -32,7 +33,9 @@ export interface ComponentDocs {
   migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
-  Example?: (props: ExampleProps & PlayroomExampleProps) => Source<ReactChild>;
+  Example?: (
+    props: ExampleProps & PlayroomExampleProps,
+  ) => Source<ReactElement>;
   alternatives: Array<{ name: string; description: string }>;
   accessibility?: ReactNodeNoStrings;
   additional?: ComponentExample[];
@@ -55,7 +58,9 @@ export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']>;
-  Example?: (props: ExampleProps & PlayroomExampleProps) => Source<ReactChild>;
+  Example?: (
+    props: ExampleProps & PlayroomExampleProps,
+  ) => Source<ReactElement>;
   Container?: (props: { children: ReactNode }) => ReactElement;
   code?: string;
   showCodeByDefault?: boolean;
@@ -68,7 +73,7 @@ export interface ComponentScreenshot {
   examples: {
     label?: string;
     background?: NonNullable<BoxProps['background']>;
-    Example?: (props: ExampleProps) => ReactChild;
+    Example?: (props: ExampleProps) => ReactElement;
     Container?: (props: { children: ReactNode }) => ReactElement;
   }[];
 }

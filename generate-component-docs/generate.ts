@@ -117,7 +117,13 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
       props: Object.assign(
         {},
         ...props
-          .filter((prop) => !propBlacklist.includes(prop.getName()))
+          .filter(
+            (prop) =>
+              !(
+                propBlacklist.includes(prop.getName()) ||
+                prop.getName().startsWith('__@')
+              ),
+          )
           .map((prop) => {
             const propName = prop.getName();
 
@@ -211,13 +217,14 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
       );
 
       if (
-        isEqual(types.slice(0, 6), [
+        isEqual(types.slice(0, 7), [
           'string',
           'number',
           'false',
           'true',
-          '{}',
           'ReactElement<any, string | JSXElementConstructor<any>>',
+          'ReactFragment',
+          'ReactPortal',
         ])
       ) {
         return 'ReactNode';
