@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
-import { hydrate } from 'react-dom';
+import { hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { HeadProvider } from 'react-head';
+import { HelmetProvider } from 'react-helmet-async';
 import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
@@ -38,8 +38,9 @@ const ScrollManager = ({ children }: { children: ReactNode }) => {
 export default (app: RenderContext) => {
   initUpdates(new Date(app.renderDate), app.versionMap, app.currentVersion);
 
-  hydrate(
-    <HeadProvider>
+  hydrateRoot(
+    document.getElementById('app')!,
+    <HelmetProvider>
       <BrowserRouter basename={app.routerBasename}>
         <ConfigProvider value={app.appConfig}>
           <ScrollManager>
@@ -47,7 +48,6 @@ export default (app: RenderContext) => {
           </ScrollManager>
         </ConfigProvider>
       </BrowserRouter>
-    </HeadProvider>,
-    document.getElementById('app'),
+    </HelmetProvider>,
   );
 };

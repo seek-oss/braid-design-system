@@ -35,6 +35,7 @@ const useBackgroundColor = () => {
 
 export const GalleryPage = () => {
   const [ready, setReady] = useState(false);
+  const backgroundColor = useBackgroundColor();
 
   useEffect(() => {
     setTimeout(() => setReady(true), 100);
@@ -44,7 +45,7 @@ export const GalleryPage = () => {
     <Box
       position="fixed"
       inset={0}
-      style={{ backgroundColor: useBackgroundColor() }}
+      style={{ backgroundColor: ready ? backgroundColor : undefined }}
     >
       <PageTitle title="Gallery" />
 

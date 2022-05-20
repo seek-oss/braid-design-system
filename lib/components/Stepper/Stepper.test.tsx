@@ -190,6 +190,8 @@ describe('Stepper', () => {
       await userEvent.keyboard('{arrowleft}');
       expect(secondStep).toHaveFocus();
       await userEvent.tab();
+      expect(thirdStep).toHaveFocus();
+      await userEvent.tab();
       expect(nextEl).toHaveFocus();
       await userEvent.tab({ shift: true });
       expect(thirdStep).toHaveFocus();
@@ -333,6 +335,8 @@ describe('Stepper', () => {
       // tab flow resets roaming focus position
       await userEvent.keyboard('{arrowleft}');
       expect(secondStep).toHaveFocus();
+      await userEvent.tab();
+      expect(thirdStep).toHaveFocus();
       await userEvent.tab();
       expect(nextEl).toHaveFocus();
       await userEvent.tab({ shift: true });

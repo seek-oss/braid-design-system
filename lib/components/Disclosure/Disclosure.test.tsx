@@ -1,12 +1,13 @@
 import '@testing-library/jest-dom/extend-expect';
 import React, { useState } from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
 import { Disclosure } from '..';
 import { htmlToText } from '../../utils/htmlToText';
 
 describe('Disclosure', () => {
-  it('should provide internal state by default', () => {
+  it('should provide internal state by default', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
         <Disclosure id="content" expandLabel="Expand" collapseLabel="Collapse">
@@ -28,16 +29,16 @@ describe('Disclosure', () => {
 
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
     expect(htmlToText(button.innerHTML)).toEqual('Collapse');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('false');
     expect(htmlToText(button.innerHTML)).toEqual('Expand');
   });
 
-  it('should default the value of "collapseLabel" to "expandLabel" when not provided', () => {
+  it('should default the value of "collapseLabel" to "expandLabel" when not provided', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Disclosure id="content" expandLabel="Details">
@@ -50,11 +51,11 @@ describe('Disclosure', () => {
 
     expect(htmlToText(button.innerHTML)).toEqual('Details');
 
-    button.click();
+    await userEvent.click(button);
     expect(htmlToText(button.innerHTML)).toEqual('Details');
   });
 
-  it('should support listening to toggle events while uncontrolled', () => {
+  it('should support listening to toggle events while uncontrolled', async () => {
     const toggleHander = jest.fn();
 
     const { getByRole } = render(
@@ -72,16 +73,16 @@ describe('Disclosure', () => {
 
     const button = getByRole('button');
 
-    button.click();
+    await userEvent.click(button);
     expect(toggleHander).toHaveBeenCalledWith(true);
 
-    button.click();
+    await userEvent.click(button);
     expect(toggleHander).toHaveBeenCalledWith(false);
 
     expect(toggleHander).toHaveBeenCalledTimes(2);
   });
 
-  it('should support controlled state', () => {
+  it('should support controlled state', async () => {
     const TestCase = () => {
       const [expanded, setExpanded] = useState(true);
 
@@ -115,11 +116,11 @@ describe('Disclosure', () => {
 
     expect(button.getAttribute('aria-expanded')).toEqual('true');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('false');
     expect(htmlToText(button.innerHTML)).toEqual('Expand');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
     expect(htmlToText(button.innerHTML)).toEqual('Collapse');
   });
