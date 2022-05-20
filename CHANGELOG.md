@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 31.12.0
+
+### Minor Changes
+
+- **RadioItem:** Add `disabled` support ([#1108](https://github.com/seek-oss/braid-design-system/pull/1108))
+
+  Provide support for disabling individual `RadioItem`s within a `RadioGroup`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <RadioGroup>
+    <RadioItem label="One" value="1" />
+    <RadioItem label="Two" value="2" />
+    <RadioItem label="Three" value="3" disabled={true} />
+  </RadioGroup>
+  ```
+
+### Patch Changes
+
+- **Dropdown:** React 18 compatibility ([#1114](https://github.com/seek-oss/braid-design-system/pull/1114))
+
 ## 31.11.1
 
 ### Patch Changes
