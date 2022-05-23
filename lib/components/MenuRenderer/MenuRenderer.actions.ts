@@ -25,9 +25,24 @@ export type Action =
   | { type: typeof actionTypes.MENU_ITEM_DOWN }
   | { type: typeof actionTypes.MENU_ITEM_ESCAPE }
   | { type: typeof actionTypes.MENU_ITEM_TAB }
-  | { type: typeof actionTypes.MENU_ITEM_ENTER; formElement: boolean }
-  | { type: typeof actionTypes.MENU_ITEM_SPACE; formElement: boolean }
-  | { type: typeof actionTypes.MENU_ITEM_CLICK; formElement: boolean }
+  | {
+      type: typeof actionTypes.MENU_ITEM_ENTER;
+      formElement: boolean;
+      index: number;
+      id?: string;
+    }
+  | {
+      type: typeof actionTypes.MENU_ITEM_SPACE;
+      formElement: boolean;
+      index: number;
+      id?: string;
+    }
+  | {
+      type: typeof actionTypes.MENU_ITEM_CLICK;
+      formElement: boolean;
+      index: number;
+      id?: string;
+    }
   | { type: typeof actionTypes.MENU_ITEM_HOVER; value: number }
   | { type: typeof actionTypes.MENU_TRIGGER_ENTER }
   | { type: typeof actionTypes.MENU_TRIGGER_SPACE }

@@ -36,11 +36,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         <BraidTestProvider>
           <div onClick={parentHandler}>
             <Component onOpen={openHandler} onClose={closeHandler}>
-              <MenuItem onClick={() => menuItemHandler('MenuItem')}>
+              <MenuItem id="first" onClick={() => menuItemHandler('MenuItem')}>
                 MenuItem
               </MenuItem>
               <MenuItemDivider />
               <MenuItemLink
+                id="second"
                 href="#"
                 onClick={() => menuItemHandler('MenuItemLink')}
               >
@@ -48,6 +49,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
               </MenuItemLink>
               <MenuItemDivider />
               <MenuItemCheckbox
+                id="third"
                 checked={checked}
                 onChange={(value) => {
                   setChecked(value);
@@ -116,7 +118,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menu).toBeVisible();
         expect(menuButton).toHaveFocus();
-        expect(openHandler).toHaveBeenCalledTimes(1);
+        expect(openHandler).toHaveBeenNthCalledWith(1);
         expect(closeHandler).not.toHaveBeenCalled();
       });
 
@@ -130,7 +132,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menu).not.toBeVisible();
         expect(menuButton).toHaveFocus();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
 
       it('should set the focused menu item on mouse over', async () => {
@@ -189,7 +191,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menu).not.toBeVisible();
         expect(openHandler).not.toHaveBeenCalled();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, {
+          reason: 'selection',
+          index: 0,
+          id: 'first',
+        });
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
 
@@ -242,7 +248,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
-        expect(openHandler).toHaveBeenCalledTimes(1);
+        expect(openHandler).toHaveBeenNthCalledWith(1);
         expect(closeHandler).not.toHaveBeenCalled();
       });
 
@@ -258,7 +264,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
-        expect(openHandler).toHaveBeenCalledTimes(1);
+        expect(openHandler).toHaveBeenNthCalledWith(1);
         expect(closeHandler).not.toHaveBeenCalled();
       });
 
@@ -274,7 +280,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
-        expect(openHandler).toHaveBeenCalledTimes(1);
+        expect(openHandler).toHaveBeenNthCalledWith(1);
         expect(closeHandler).not.toHaveBeenCalled();
       });
 
@@ -290,7 +296,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         expect(menu).toBeVisible();
         expect(menuItems[2]).toHaveFocus();
-        expect(openHandler).toHaveBeenCalledTimes(1);
+        expect(openHandler).toHaveBeenNthCalledWith(1);
         expect(closeHandler).not.toHaveBeenCalled();
       });
 
@@ -309,7 +315,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(menu).not.toBeVisible();
         expect(menuButton).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
 
       it('should close the menu with tab key', async () => {
@@ -327,7 +333,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(menu).not.toBeVisible();
         expect(document.body).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
 
       it('should be able to navigate down the list and back to the start', async () => {
@@ -399,7 +405,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.keyboard('{enter}');
 
         expect(menu).not.toBeVisible();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, {
+          reason: 'selection',
+          index: 0,
+          id: 'first',
+        });
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
       });
@@ -417,7 +427,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.keyboard(' ');
 
         expect(menu).not.toBeVisible();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, {
+          reason: 'selection',
+          index: 0,
+          id: 'first',
+        });
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItem');
         expect(menuButton).toHaveFocus();
       });
@@ -434,7 +448,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.keyboard('{enter}');
 
         expect(menu).not.toBeVisible();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, {
+          reason: 'selection',
+          index: 1,
+          id: 'second',
+        });
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
       });
@@ -451,7 +469,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.keyboard(' ');
 
         expect(menu).not.toBeVisible();
-        expect(closeHandler).toHaveBeenCalledTimes(1);
+        expect(closeHandler).toHaveBeenNthCalledWith(1, {
+          reason: 'selection',
+          index: 1,
+          id: 'second',
+        });
         expect(menuItemHandler).toHaveBeenNthCalledWith(1, 'MenuItemLink');
         expect(menuButton).toHaveFocus();
       });
@@ -517,7 +539,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         const newOpen = jest.fn();
         await userEvent.click(menuButton);
-        expect(openHandler).toHaveBeenCalledTimes(1);
+        expect(openHandler).toHaveBeenNthCalledWith(1);
         rerender({ openHandler: newOpen });
         expect(newOpen).not.toHaveBeenCalled();
       });

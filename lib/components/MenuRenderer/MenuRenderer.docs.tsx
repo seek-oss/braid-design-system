@@ -19,6 +19,10 @@ import {
   IconBookmark,
   IconProfile,
   MenuItemDivider,
+  Column,
+  Columns,
+  Badge,
+  List,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -341,6 +345,107 @@ const docs: ComponentDocs = {
               <MenuItem onClick={() => {}}>Item</MenuItem>
             </MenuRenderer>
           </Inline>,
+        ),
+    },
+    {
+      label: 'Menu interactions',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            The menu accepts both an <Strong>onOpen</Strong> and an{' '}
+            <Strong>onClose</Strong> function.
+          </Text>
+          <Stack space="medium">
+            <Text>The onClose function receives the following data:</Text>
+            <List>
+              <Text>
+                <Strong>reason:</Strong> &ldquo;exit&rdquo; or
+                &ldquo;selection&rdquo;
+              </Text>
+              <Text>
+                <Strong>index:</Strong> the index of the selected menu item
+              </Text>
+              <Text>
+                <Strong>id:</Strong> the id of the selected menu item as
+                provided to the <Strong>MenuItem</Strong> component itself.
+              </Text>
+            </List>
+          </Stack>
+        </>
+      ),
+      Example: ({ setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('closeReason', {})}
+            {setDefaultState('action', '')}
+
+            <Columns space="large">
+              <Column>
+                <Inline space="none">
+                  <MenuRenderer
+                    offsetSpace="small"
+                    width="small"
+                    onOpen={() => {
+                      setState('action', 'open');
+                      setState('closeReason', {});
+                    }}
+                    onClose={(closeReason) => {
+                      setState('action', 'close');
+                      setState('closeReason', closeReason);
+                    }}
+                    trigger={(triggerProps, { open }) => (
+                      <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                        <Text>
+                          Menu{' '}
+                          <IconChevron
+                            direction={open ? 'up' : 'down'}
+                            alignY="lowercase"
+                          />
+                        </Text>
+                      </Box>
+                    )}
+                  >
+                    <MenuItem id="menuItem1" onClick={() => {}}>
+                      Item 1
+                    </MenuItem>
+                    <MenuItem id="menuItem2" onClick={() => {}}>
+                      Item 2
+                    </MenuItem>
+                    <MenuItem id="menuItem3" onClick={() => {}}>
+                      Item 3
+                    </MenuItem>
+                  </MenuRenderer>
+                </Inline>
+              </Column>
+              <Column width="content">
+                <Inline space="small" collapseBelow="tablet">
+                  {getState('action') ? (
+                    <Badge
+                      tone="info"
+                      weight="strong"
+                      bleedY
+                    >{`Action: ${getState('action')}`}</Badge>
+                  ) : null}
+                  {getState('closeReason').reason ? (
+                    <Badge tone="info" bleedY>
+                      {`Reason: ${getState('closeReason').reason}`}
+                    </Badge>
+                  ) : null}
+                  {typeof getState('closeReason').index !== 'undefined' ? (
+                    <Badge tone="info" bleedY>
+                      {`Selected index: ${getState('closeReason').index}`}
+                    </Badge>
+                  ) : null}
+                  {getState('closeReason').id ? (
+                    <Badge tone="info" bleedY>
+                      {`Selected ID: ${getState('closeReason').id}`}
+                    </Badge>
+                  ) : null}
+                </Inline>
+              </Column>
+            </Columns>
+          </>,
         ),
     },
     {

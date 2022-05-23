@@ -18,12 +18,14 @@ export const MenuItemLink = ({
   children,
   badge,
   icon,
+  id,
 }: MenuItemLinkProps) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLAnchorElement>({
     displayName: 'MenuItemLink',
     onClick,
     tone,
     data,
+    id,
   });
 
   return (
