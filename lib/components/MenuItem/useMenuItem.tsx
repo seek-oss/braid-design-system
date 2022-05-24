@@ -45,6 +45,7 @@ export interface UseMenuItemProps {
   data?: DataAttributeMap;
   displayName?: string;
   tone?: MenuItemTone;
+  id?: string;
 }
 export function useMenuItem<MenuItemElement extends HTMLElement>({
   displayName = 'MenuItem',
@@ -52,6 +53,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   tone,
   onClick,
   data,
+  id,
 }: UseMenuItemProps) {
   const menuRendererItemContext = useContext(MenuRendererItemContext);
 
@@ -102,8 +104,8 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     const action: Record<string, Action> = {
       ArrowDown: { type: MENU_ITEM_DOWN },
       ArrowUp: { type: MENU_ITEM_UP },
-      Enter: { type: MENU_ITEM_ENTER, formElement },
-      ' ': { type: MENU_ITEM_SPACE, formElement },
+      Enter: { type: MENU_ITEM_ENTER, formElement, index, id },
+      ' ': { type: MENU_ITEM_SPACE, formElement, index, id },
       Escape: { type: MENU_ITEM_ESCAPE },
     };
 
@@ -134,13 +136,14 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       role: 'menuitem',
       tabIndex: -1,
       ref: menuItemRef,
+      id,
       onKeyUp,
       onKeyDown,
       onMouseEnter: () => dispatch({ type: MENU_ITEM_HOVER, value: index }),
       onClick: (event: MouseEvent) => {
         event.stopPropagation();
 
-        dispatch({ type: MENU_ITEM_CLICK, formElement });
+        dispatch({ type: MENU_ITEM_CLICK, formElement, index, id });
 
         if (typeof onClick === 'function') {
           onClick();

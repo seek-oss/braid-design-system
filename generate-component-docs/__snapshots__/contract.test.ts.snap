@@ -6386,6 +6386,7 @@ Object {
     children: ReactNode
     data?: DataAttributeMap
     icon?: ReactNode
+    id?: string
     onClick?: () => void
     tone?: "critical"
 },
@@ -6400,6 +6401,7 @@ Object {
     checked: boolean
     children: ReactNode
     data?: DataAttributeMap
+    id?: string
     onChange: (checked: boolean) => void
 },
 }
@@ -6419,6 +6421,7 @@ Object {
     data?: DataAttributeMap
     href: string
     icon?: ReactNode
+    id?: string
     onClick?: () => void
     rel?: string
     target?: 
@@ -6453,7 +6456,7 @@ Object {
         | "xxsmall"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
-    onClose?: () => void
+    onClose?: (closeReason: CloseReason) => void
     onOpen?: () => void
     placement?: 
         | "bottom"
@@ -6529,7 +6532,7 @@ Object {
     data?: DataAttributeMap
     id?: string
     label: string
-    onClose?: () => void
+    onClose?: (closeReason: CloseReason) => void
     onOpen?: () => void
     placement?: 
         | "bottom"

@@ -7,7 +7,7 @@ import {
 } from './useMenuItem';
 
 export interface MenuItemProps
-  extends Pick<UseMenuItemProps, 'tone' | 'onClick' | 'data'> {
+  extends Pick<UseMenuItemProps, 'tone' | 'onClick' | 'data' | 'id'> {
   children: ReactNode;
   badge?: MenuItemChildrenProps['badge'];
   icon?: MenuItemChildrenProps['icon'];
@@ -19,11 +19,13 @@ export const MenuItem = ({
   tone,
   badge,
   icon,
+  id,
 }: MenuItemProps) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLButtonElement>({
     tone,
     onClick,
     data,
+    id,
   });
 
   return (

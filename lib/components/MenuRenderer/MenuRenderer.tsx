@@ -35,6 +35,15 @@ interface TriggerProps {
 interface TriggerState {
   open: boolean;
 }
+interface CloseReasonExit {
+  reason: 'exit';
+}
+interface CloseReasonSelection {
+  reason: 'selection';
+  index: number;
+  id?: string;
+}
+type CloseReason = CloseReasonSelection | CloseReasonExit;
 export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
   align?: 'left' | 'right';
@@ -42,7 +51,7 @@ export interface MenuRendererProps {
   width?: keyof typeof styles.width | 'content';
   placement?: 'top' | 'bottom';
   onOpen?: () => void;
-  onClose?: () => void;
+  onClose?: (closeReason: CloseReason) => void;
   data?: DataAttributeMap;
   reserveIconSpace?: boolean;
   children: ReactNode;
@@ -70,12 +79,15 @@ const {
 interface State {
   open: boolean;
   highlightIndex: number;
+  closeReason: CloseReason;
 }
 
 const CLOSED_INDEX = -1;
+const CLOSE_REASON_EXIT: CloseReasonExit = { reason: 'exit' };
 const initialState: State = {
   open: false,
   highlightIndex: CLOSED_INDEX,
+  closeReason: CLOSE_REASON_EXIT,
 };
 
 export const MenuRenderer = ({
@@ -106,7 +118,7 @@ export const MenuRenderer = ({
     'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
   );
 
-  const [{ open, highlightIndex }, dispatch] = useReducer(
+  const [{ open, highlightIndex, closeReason }, dispatch] = useReducer(
     (state: State, action: Action): State => {
       switch (action.type) {
         case MENU_TRIGGER_UP:
@@ -114,6 +126,7 @@ export const MenuRenderer = ({
           return {
             ...state,
             open: true,
+            closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
           };
         }
@@ -122,6 +135,7 @@ export const MenuRenderer = ({
           return {
             ...state,
             open: true,
+            closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
           };
         }
@@ -129,7 +143,14 @@ export const MenuRenderer = ({
         case MENU_TRIGGER_ESCAPE:
         case MENU_TRIGGER_TAB:
         case MENU_ITEM_ESCAPE:
-        case MENU_ITEM_TAB:
+        case MENU_ITEM_TAB: {
+          return {
+            ...state,
+            open: false,
+            closeReason: CLOSE_REASON_EXIT,
+            highlightIndex: CLOSED_INDEX,
+          };
+        }
         case MENU_ITEM_ENTER:
         case MENU_ITEM_SPACE:
         case MENU_ITEM_CLICK: {
@@ -141,6 +162,11 @@ export const MenuRenderer = ({
           return {
             ...state,
             open: false,
+            closeReason: {
+              reason: 'selection',
+              index: action.index,
+              id: action.id,
+            },
             highlightIndex: CLOSED_INDEX,
           };
         }
@@ -149,14 +175,21 @@ export const MenuRenderer = ({
         }
         case MENU_TRIGGER_ENTER:
         case MENU_TRIGGER_SPACE: {
+          const nextOpen = !state.open;
           return {
             ...state,
-            open: !state.open,
-            highlightIndex: state.open ? CLOSED_INDEX : 0,
+            open: nextOpen,
+            closeReason: CLOSE_REASON_EXIT,
+            highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
           };
         }
         case MENU_TRIGGER_CLICK: {
-          return { ...state, open: !state.open };
+          const nextOpen = !state.open;
+          return {
+            ...state,
+            open: nextOpen,
+            closeReason: CLOSE_REASON_EXIT,
+          };
         }
         default:
           return state;
@@ -170,13 +203,14 @@ export const MenuRenderer = ({
       return;
     }
 
-    const handler = open ? onOpen : onClose;
-    if (typeof handler === 'function') {
-      handler();
+    if (open && typeof onOpen === 'function') {
+      onOpen();
+    } else if (!open && typeof onClose === 'function') {
+      onClose(closeReason);
     }
 
     lastOpen.current = open;
-  }, [onOpen, onClose, open]);
+  }, [onOpen, onClose, open, closeReason]);
 
   const focusTrigger = () => {
     if (buttonRef && buttonRef.current) {
