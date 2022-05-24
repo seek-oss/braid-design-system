@@ -14,7 +14,7 @@ const walk = ({
   path: NodePath<t.Node> | null;
   deprecations: Record<string, string | Record<string, string>>;
   code: string;
-  filename: string;
+  filename?: string;
   metadata: { hasChanged: boolean };
 }) => {
   if (path) {

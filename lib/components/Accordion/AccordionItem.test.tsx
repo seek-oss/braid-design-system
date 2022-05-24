@@ -13,13 +13,17 @@ describe('AccordionItem', () => {
     expect(
       renderToStaticMarkup(
         <BraidTestProvider>
-          <AccordionItem id="1" label="Label 1">
+          <AccordionItem id="item1" label="Label 1">
             Content 1
           </AccordionItem>
-          <AccordionItem id="2" label="Label 2" icon={<IconHelp />}>
+          <AccordionItem id="item2" label="Label 2" icon={<IconHelp />}>
             Content 2
           </AccordionItem>
-          <AccordionItem id="3" label="Label 3" badge={<Badge>Badge</Badge>}>
+          <AccordionItem
+            id="item3"
+            label="Label 3"
+            badge={<Badge>Badge</Badge>}
+          >
             Content 3
           </AccordionItem>
         </BraidTestProvider>,
