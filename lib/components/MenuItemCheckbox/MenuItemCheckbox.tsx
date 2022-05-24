@@ -6,7 +6,7 @@ import { useMenuItem } from '../MenuItem/useMenuItem';
 import * as styles from './MenuItemCheckbox.css';
 
 export interface MenuItemCheckboxProps
-  extends Pick<MenuItemProps, 'data' | 'badge'> {
+  extends Pick<MenuItemProps, 'data' | 'badge' | 'id'> {
   children: ReactNode;
   onChange: (checked: boolean) => void;
   checked: boolean;
@@ -17,11 +17,13 @@ export const MenuItemCheckbox = ({
   checked,
   data,
   badge,
+  id,
 }: MenuItemCheckboxProps) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLButtonElement>({
     onClick: () => onChange(!checked),
     formElement: true,
     data,
+    id,
   });
 
   return (
