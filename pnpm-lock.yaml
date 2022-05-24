@@ -92,7 +92,7 @@ specifiers:
   recoil: ^0.7.2
   renovate-config-seek: 0.4.0
   sanitize-html: ^2.7.0
-  sku: ^11.4.0
+  sku: ^11.4.2
   surge: ^0.23.1
   svgo: ^2.8.0
   title-case: ^3.0.3
@@ -198,7 +198,7 @@ devDependencies:
   recoil: 0.7.2_react-dom@18.1.0+react@18.1.0
   renovate-config-seek: 0.4.0
   sanitize-html: 2.7.0
-  sku: 11.4.0_7927a7877f0ada60d70d193057dcf85b
+  sku: 11.4.2_7927a7877f0ada60d70d193057dcf85b
   surge: 0.23.1
   svgo: 2.8.0
   title-case: 3.0.3
@@ -16908,13 +16908,13 @@ packages:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: true
 
-  /sku/11.4.0_7927a7877f0ada60d70d193057dcf85b:
-    resolution: {integrity: sha512-RoLoAdKPyyD2y9UcQuz8nutNJKbZLnkAAFv89PDh0OaLGqA8Dt0zC3pc6Q29LLMgRzWbyOI0EZmYvdbnNSwmBA==}
+  /sku/11.4.2_7927a7877f0ada60d70d193057dcf85b:
+    resolution: {integrity: sha512-QHefH5jEdBXyW8/c/QrQde9/HrIjCUc4JW7MIuZrRKg2v9ILWXkw3AxMVpdFe5SyCmNCWik+wxzB+HmKXCTwGg==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     requiresBuild: true
     peerDependencies:
-      react: ^16.14.0 || ^17.0.0
+      react: ^16.14.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/core': 7.18.0
       '@babel/plugin-transform-react-constant-elements': 7.17.12_@babel+core@7.18.0
