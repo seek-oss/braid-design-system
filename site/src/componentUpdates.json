@@ -2532,5 +2532,17 @@
         "summary": "**Dropdown:** React 18 compatibility"
       }
     ]
+  },
+  {
+    "version": "31.13.0",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Provide context data to onClose\n\nThe `onClose` handler now receives data to allow consumers to discern why the menu closed — either by exiting or selecting an action. See the [documentation](https://seek-oss.github.io/braid-design-system/components/MenuRenderer#menu-interactions) for more details.\n\n**EXAMPLE USAGE:**\n```jsx\n<MenuRenderer\n  onClose={(closeReason) => {\n    // ...\n  }}\n/>\n```"
+      }
+    ]
   }
 ]
