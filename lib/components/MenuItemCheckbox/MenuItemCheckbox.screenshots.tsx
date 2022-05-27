@@ -11,7 +11,7 @@ const defaultProps = {
   open: true,
   dispatch: () => {},
   focusTrigger: () => {},
-  position: 'relative',
+  screenshot: true,
   placement: 'bottom',
   reserveIconSpace: false,
 } as const;
