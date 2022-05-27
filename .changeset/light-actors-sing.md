@@ -8,6 +8,6 @@ updated:
   - OverflowMenu
 ---
 
-**MenuRenderer, OverflowMenu:** Make menu modal & limit number of items
+**MenuRenderer, OverflowMenu:** Move menu to top-level modal container
 
-The menu has been made modal to prevent the being cut off inside of a container that hides overflow, for example inside a `Dialog`. Additionally the menu now also limits the height to a maximum of 8 items above tablet and 6 items on mobile.
+The menu has been moved to a top-level modal container to prevent the being cut off inside of a container that hides overflow, for example inside a `Dialog`.
