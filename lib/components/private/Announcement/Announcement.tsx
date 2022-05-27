@@ -10,34 +10,47 @@ interface AnnouncementProps {
   children: string | undefined | null;
 }
 
+const className = [
+  atoms({
+    reset: 'div',
+    position: 'absolute',
+    overflow: 'hidden',
+  }),
+  styles.root,
+].join(' ');
+
 export const Announcement = ({ children }: AnnouncementProps) => {
   const [announcementElement, setElement] = useState<HTMLElement | null>(null);
-  const className = [
-    atoms({
-      reset: 'div',
-      position: 'absolute',
-      overflow: 'hidden',
-    }),
-    styles.root,
-  ].join(' ');
 
   useEffect(() => {
-    const announcementContainerId = `braid-announcement-container-${announcementCounter++}`;
+    const announcementContainerId = 'braid-announcement-container';
+    let container = document.getElementById(announcementContainerId);
+    if (!container) {
+      container = document.createElement('div');
+      container.setAttribute('id', announcementContainerId);
+      container.setAttribute('class', className);
+      document.body.appendChild(container);
+    }
 
-    const element = document.createElement('div');
-    element.setAttribute('id', announcementContainerId);
-    element.setAttribute('class', className);
-    element.setAttribute('aria-live', 'polite');
-    element.setAttribute('aria-atomic', 'true');
+    const announcement = document.createElement('div');
+    announcement.setAttribute('id', `announcement-${announcementCounter++}`);
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    container.appendChild(announcement);
 
-    document.body.appendChild(element);
-
-    setElement(element);
+    setElement(announcement);
 
     return () => {
-      document.body.removeChild(element);
+      if (container) {
+        container.removeChild(announcement);
+
+        if (container.children.length === 0) {
+          document.body.removeChild(container);
+          announcementCounter = 0;
+        }
+      }
     };
-  }, [className]);
+  }, []);
 
   if (!announcementElement) {
     return null;

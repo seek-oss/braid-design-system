@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import {
   Stack,
   BraidProvider,
@@ -19,7 +19,7 @@ export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
 
   return docs ? (
-    <>
+    <Fragment key={docsName}>
       <PageTitle title={docsName} />
       <Stack space="xxlarge">
         {'Example' in docs && docs.Example ? (
@@ -87,6 +87,6 @@ export const DocDetails = () => {
           </Stack>
         ))}
       </Stack>
-    </>
+    </Fragment>
   ) : null;
 };

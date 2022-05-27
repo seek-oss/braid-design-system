@@ -1,5 +1,4 @@
 import React, {
-  ReactNode,
   useState,
   useEffect,
   useRef,
@@ -11,7 +10,7 @@ import React, {
 import FocusLock from 'react-focus-lock';
 import { ariaHideOthers } from './ariaHideOthers';
 import { Box } from '../../Box/Box';
-import { BraidPortal } from '../../BraidPortal/BraidPortal';
+import { ModalPortal } from '../ModalPortal/ModalPortal';
 import { externalGutter } from './ModalExternalGutter';
 import { ModalContent, ModalContentProps } from './ModalContent';
 import * as styles from './Modal.css';
@@ -26,34 +25,6 @@ export interface ModalProps
 }
 
 export const AllowCloseContext = createContext(true);
-
-interface ModalPortalProps {
-  children: ReactNode;
-}
-const ModalPortal = ({ children }: ModalPortalProps) => {
-  const [modalElement, setElement] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const modalContainerId = 'braid-modal-container';
-    let element = document.getElementById(modalContainerId);
-
-    if (!element) {
-      element = document.createElement('div');
-      element.setAttribute('id', modalContainerId);
-      element.setAttribute('class', styles.fixedStackingContext);
-
-      document.body.appendChild(element);
-    }
-
-    setElement(element);
-  }, []);
-
-  if (!modalElement) {
-    return null;
-  }
-
-  return <BraidPortal container={modalElement}>{children}</BraidPortal>;
-};
 
 // Actions
 const OPEN_MODAL = 1;

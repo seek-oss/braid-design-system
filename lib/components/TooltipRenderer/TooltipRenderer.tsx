@@ -8,7 +8,7 @@ import React, {
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
 import assert from 'assert';
-import { BraidPortal } from '../BraidPortal/BraidPortal';
+import { ModalPortal } from '../private/ModalPortal/ModalPortal';
 import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { atoms } from '../../css/atoms/atoms';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
@@ -256,7 +256,7 @@ export const TooltipRenderer = ({
       })}
 
       {triggerRef && (
-        <BraidPortal>
+        <ModalPortal>
           <div
             id={id}
             role="tooltip"
@@ -277,7 +277,7 @@ export const TooltipRenderer = ({
               {tooltip}
             </TooltipContent>
           </div>
-        </BraidPortal>
+        </ModalPortal>
       )}
     </>
   );
