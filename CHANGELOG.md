@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 31.13.1
+
+### Patch Changes
+
+- **Autosuggest:** Move suggestion list to top-level modal container ([#1119](https://github.com/seek-oss/braid-design-system/pull/1119))
+
+  The suggestion list has been moved to a top-level modal container to prevent being cut off inside of a container that hides overflow, for example inside a `Dialog`.
+
+  In addition, the `Announcement` elements internally used for providing context to a screen reader have been moved in a single top-level announcement container to keep the DOM clean.
+
+- **MenuRenderer, OverflowMenu:** Limit the number of items ([#1119](https://github.com/seek-oss/braid-design-system/pull/1119))
+
+  The menu now has a maximum height of 8 items above tablet and 6 items on mobile, beyond this the menu will scroll vertically.
+
+- **MenuRenderer, OverflowMenu:** Move menu to top-level modal container ([#1119](https://github.com/seek-oss/braid-design-system/pull/1119))
+
+  The menu has been moved to a top-level modal container to prevent the being cut off inside of a container that hides overflow, for example inside a `Dialog`.
+
+- **TooltipRenderer:** Move tooltip to shared top-level modal container ([#1119](https://github.com/seek-oss/braid-design-system/pull/1119))
+
+  Move the tooltip popup to the common top-level modal container to keep the DOM clean. No change in behaviour for consumers.
+
 ## 31.13.0
 
 ### Minor Changes

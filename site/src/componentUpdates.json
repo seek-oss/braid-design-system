@@ -2544,5 +2544,36 @@
         "summary": "**MenuRenderer, OverflowMenu:** Provide context data to onClose\n\nThe `onClose` handler now receives data to allow consumers to discern why the menu closed — either by exiting or selecting an action. See the [documentation](https://seek-oss.github.io/braid-design-system/components/MenuRenderer#menu-interactions) for more details.\n\n**EXAMPLE USAGE:**\n```jsx\n<MenuRenderer\n  onClose={(closeReason) => {\n    // ...\n  }}\n/>\n```"
       }
     ]
+  },
+  {
+    "version": "31.13.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Move suggestion list to top-level modal container\n\nThe suggestion list has been moved to a top-level modal container to prevent being cut off inside of a container that hides overflow, for example inside a `Dialog`.\n\nIn addition, the `Announcement` elements internally used for providing context to a screen reader have been moved in a single top-level announcement container to keep the DOM clean."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Limit the number of items\n\nThe menu now has a maximum height of 8 items above tablet and 6 items on mobile, beyond this the menu will scroll vertically."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Move menu to top-level modal container\n\nThe menu has been moved to a top-level modal container to prevent the being cut off inside of a container that hides overflow, for example inside a `Dialog`."
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Move tooltip to shared top-level modal container\n\nMove the tooltip popup to the common top-level modal container to keep the DOM clean. No change in behaviour for consumers."
+      }
+    ]
   }
 ]
