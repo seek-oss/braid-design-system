@@ -24,4 +24,8 @@ export const galleryItems: ComponentExample[] = [
     label: 'xsmall',
     Example: () => source(<Rating rating={1.5} size="xsmall" />),
   },
+  {
+    label: 'Single star',
+    Example: () => source(<Rating rating={3.5} showSingleStar={true} />),
+  },
 ];

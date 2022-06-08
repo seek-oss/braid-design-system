@@ -30,6 +30,10 @@ export const screenshots: ComponentScreenshot = {
       Example: () => <Rating rating={1.5} size="xsmall" />,
     },
     {
+      label: 'Single star',
+      Example: () => <Rating rating={3.5} showSingleStar={true} />,
+    },
+    {
       label: 'Rating Contrast',
       Example: () => (
         <Fragment>

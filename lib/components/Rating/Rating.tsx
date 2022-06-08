@@ -53,6 +53,7 @@ export interface RatingProps {
   rating: number;
   size?: TextProps['size'];
   showTextRating?: boolean;
+  showSingleStar?: boolean;
   'aria-label'?: string;
   data?: TextProps['data'];
 }
@@ -61,6 +62,7 @@ export const Rating = ({
   rating,
   size = 'standard',
   showTextRating = true,
+  showSingleStar = false,
   'aria-label': ariaLabel,
   data,
 }: RatingProps) => {
@@ -77,18 +79,24 @@ export const Rating = ({
           ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
         }
       >
-        {ratingArr.map((_, position) => (
-          <Box
-            key={position}
-            display="inlineBlock"
-            aria-hidden={true}
-            className={{
-              [styles.starSpacing]: position !== ratingArr.length - 1,
-            }}
-          >
-            <RatingStar percent={getPercent(rating, position)} />
+        {showSingleStar ? (
+          <Box display="inlineBlock" aria-hidden={true}>
+            <RatingStar percent={100} />
           </Box>
-        ))}
+        ) : (
+          ratingArr.map((_, position) => (
+            <Box
+              key={position}
+              display="inlineBlock"
+              aria-hidden={true}
+              className={{
+                [styles.starSpacing]: position !== ratingArr.length - 1,
+              }}
+            >
+              <RatingStar percent={getPercent(rating, position)} />
+            </Box>
+          ))
+        )}
       </Box>
       {showTextRating && (
         <Box component="span" className={styles.textSpacing} aria-hidden={true}>

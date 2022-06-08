@@ -16,4 +16,14 @@ export const snippets: Snippets = [
     name: 'Large',
     code: source(<Rating rating={3.7} size="large" />),
   },
+  {
+    name: 'Single star with Rating',
+    code: source(<Rating rating={3.7} showSingleStar={true} />),
+  },
+  {
+    name: 'Single star without Rating',
+    code: source(
+      <Rating rating={3.7} showSingleStar={true} showTextRating={false} />,
+    ),
+  },
 ];
