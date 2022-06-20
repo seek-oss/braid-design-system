@@ -77,8 +77,9 @@ const docs: ComponentDocs = {
       label: 'Single star rating',
       description: (
         <Text>
-          You can set the Rating component to only show one star, by setting the
-          prop <Strong>showSingleStar</Strong> to <Strong>true</Strong>.
+          You can set the Rating component to only show a single star, by
+          setting the prop <Strong>showSingleStar</Strong> to{' '}
+          <Strong>true</Strong>.
         </Text>
       ),
       Example: () => source(<Rating rating={4.2} showSingleStar={true} />),

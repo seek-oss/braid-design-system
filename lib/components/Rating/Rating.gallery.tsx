@@ -25,7 +25,14 @@ export const galleryItems: ComponentExample[] = [
     Example: () => source(<Rating rating={1.5} size="xsmall" />),
   },
   {
-    label: 'Single star',
-    Example: () => source(<Rating rating={3.5} showSingleStar={true} />),
+    label: 'Single star with text rating',
+    Example: () => source(<Rating rating={1.5} showSingleStar={true} />),
+  },
+  {
+    label: 'Single star without text rating',
+    Example: () =>
+      source(
+        <Rating rating={1.5} showSingleStar={true} showTextRating={false} />,
+      ),
   },
 ];
