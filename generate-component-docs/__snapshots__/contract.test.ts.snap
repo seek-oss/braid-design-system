@@ -6696,6 +6696,7 @@ Object {
     aria-label?: string
     data?: DataAttributeMap
     rating: number
+    showSingleStar?: boolean
     showTextRating?: boolean
     size?: 
         | "large"
