@@ -5,6 +5,11 @@ import { responsiveStyle } from '../../../css/responsiveStyle';
 import { vars } from '../../../themes/vars.css';
 import { atoms } from '../../../css/atoms/atoms';
 
+export const fixedStackingContext = atoms({
+  position: 'fixed',
+  zIndex: 'modal',
+});
+
 export const resetStackingContext = atoms({ position: 'relative', zIndex: 0 });
 
 export const backdrop = style({
