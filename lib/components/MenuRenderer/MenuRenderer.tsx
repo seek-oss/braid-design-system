@@ -22,7 +22,6 @@ import { MenuRendererItemContext } from './MenuRendererItemContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { ModalPortal } from '../private/ModalPortal/ModalPortal';
 import * as styles from './MenuRenderer.css';
 
 interface TriggerProps {
@@ -341,7 +340,7 @@ interface MenuProps {
   highlightIndex: number;
   open: boolean;
   children: Array<ReactChild>;
-  screenshot?: boolean;
+  position?: 'absolute' | 'relative';
 }
 export function Menu({
   offsetSpace,
@@ -354,90 +353,60 @@ export function Menu({
   focusTrigger,
   highlightIndex,
   reserveIconSpace,
-  screenshot = false,
+  position = 'absolute',
 }: MenuProps) {
   let dividerCount = 0;
-  const placementRef = useRef<HTMLSpanElement | null>(null);
-  const menuRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (placementRef.current && menuRef.current) {
-      const placementRect = placementRef.current.getBoundingClientRect();
-      menuRef.current.style.left = `${placementRect[align]}px`;
-      menuRef.current.style.top = `${placementRect.top}px`;
-
-      const viewportHeight = document.documentElement.clientHeight;
-      const { bottom: menuBottom } = menuRef.current.getBoundingClientRect();
-
-      if (open && menuBottom > viewportHeight) {
-        menuRef.current.scrollIntoView(false);
-      }
-    }
-  }, [align, placement, open]);
 
   return (
     <MenuRendererContext.Provider value={{ reserveIconSpace }}>
       <Box
-        ref={placementRef}
-        component="span"
-        position="absolute"
-        opacity={0}
-        pointerEvents="none"
-        right={align === 'right' ? 0 : undefined}
+        role="menu"
+        position={position}
+        zIndex="dropdown"
+        boxShadow={placement === 'top' ? 'small' : 'medium'}
+        borderRadius={borderRadius}
+        background="surface"
         marginTop={placement === 'bottom' ? offsetSpace : undefined}
         marginBottom={placement === 'top' ? offsetSpace : undefined}
-        className={placement === 'top' && styles.placementBottom}
-      />
-      <ModalPortal enabled={!screenshot}>
-        <Box
-          ref={menuRef}
-          role="menu"
-          position={!screenshot ? 'absolute' : undefined}
-          zIndex="modal"
-          boxShadow={placement === 'top' ? 'small' : 'medium'}
-          borderRadius={borderRadius}
-          background="surface"
-          transition="fast"
-          opacity={!open ? 0 : undefined}
-          className={[
-            !open && styles.menuIsClosed,
-            width !== 'content' && styles.width[width],
-            styles.menuPosition,
-            align === 'right' && styles.alignRight,
-            placement === 'top' && styles.placementTop,
-          ]}
-        >
-          <Box paddingY="xxsmall" className={styles.maxHeight}>
-            {children.map((item, i) => {
-              if (isDivider(item)) {
-                dividerCount++;
-                return item;
-              }
+        transition="fast"
+        right={align === 'right' ? 0 : undefined}
+        opacity={!open ? 0 : undefined}
+        className={[
+          !open && styles.menuIsClosed,
+          width !== 'content' && styles.width[width],
+          placement === 'top' && styles.placementBottom,
+        ]}
+      >
+        <Box paddingY="xxsmall">
+          {children.map((item, i) => {
+            if (isDivider(item)) {
+              dividerCount++;
+              return item;
+            }
 
-              const menuItemIndex = i - dividerCount;
+            const menuItemIndex = i - dividerCount;
 
-              return (
-                <MenuRendererItemContext.Provider
-                  key={menuItemIndex}
-                  value={{
-                    isHighlighted: menuItemIndex === highlightIndex,
-                    index: menuItemIndex,
-                    dispatch,
-                    focusTrigger,
-                  }}
-                >
-                  {item}
-                </MenuRendererItemContext.Provider>
-              );
-            })}
-          </Box>
-          <Overlay
-            boxShadow="borderNeutralLight"
-            borderRadius={borderRadius}
-            visible
-          />
+            return (
+              <MenuRendererItemContext.Provider
+                key={menuItemIndex}
+                value={{
+                  isHighlighted: menuItemIndex === highlightIndex,
+                  index: menuItemIndex,
+                  dispatch,
+                  focusTrigger,
+                }}
+              >
+                {item}
+              </MenuRendererItemContext.Provider>
+            );
+          })}
         </Box>
-      </ModalPortal>
+        <Overlay
+          boxShadow="borderNeutralLight"
+          borderRadius={borderRadius}
+          visible
+        />
+      </Box>
     </MenuRendererContext.Provider>
   );
 }
