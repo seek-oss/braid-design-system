@@ -55,6 +55,7 @@ specifiers:
   date-fns: ^2.28.0
   dedent: 0.7.0
   didyoumean2: ^5.0.0
+  enquirer: ^2.3.6
   esbuild: ^0.14.39
   fast-glob: ^3.2.11
   fs-extra: ^10.1.0
@@ -169,6 +170,7 @@ devDependencies:
   copy-to-clipboard: 3.3.1
   date-fns: 2.28.0
   didyoumean2: 5.0.0
+  enquirer: 2.3.6
   esbuild: 0.14.39
   fast-glob: 3.2.11
   fs-extra: 10.1.0
@@ -2487,6 +2489,14 @@ packages:
       - supports-color
     dev: true
 
+  /@mdx-js/react/1.6.22_react@18.1.0:
+    resolution: {integrity: sha512-TDoPum4SHdfPiGSAaRBw7ECyI8VaHpK8GJugbJIJuqyh6kzw9ZLJZW3HGL3NNrJGxcAixUvqROm+YuQOo5eXtg==}
+    peerDependencies:
+      react: ^16.13.1 || ^17.0.0
+    dependencies:
+      react: 18.1.0
+    dev: true
+
   /@mdx-js/util/1.6.22:
     resolution: {integrity: sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==}
     dev: true
@@ -3229,7 +3239,7 @@ packages:
       '@storybook/core-common': 6.5.4_5d0328c271acd7a678e253d708ff25f1
       '@storybook/core-events': 6.5.4
       '@storybook/csf': 0.0.2--canary.4566f4d.1
-      '@storybook/csf-tools': 6.5.4
+      '@storybook/csf-tools': 6.5.4_react@18.1.0
       '@storybook/manager-webpack4': 6.5.4_5d0328c271acd7a678e253d708ff25f1
       '@storybook/manager-webpack5': 6.5.4_ca58b4056bdd9f69e6efdf97d67ed844
       '@storybook/node-logger': 6.5.4
@@ -3321,7 +3331,7 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/csf-tools/6.5.4:
+  /@storybook/csf-tools/6.5.4_react@18.1.0:
     resolution: {integrity: sha512-mCAO8Ddig5PzXiI4HxiWhdLmPPpaovzVxqdh7g31k3fhpnRkQrKwftNGTW/ArFDdisMjB1+gm+ZOVACZg0pO4w==}
     peerDependencies:
       '@storybook/mdx2-csf': '*'
@@ -3337,13 +3347,14 @@ packages:
       '@babel/traverse': 7.18.0
       '@babel/types': 7.18.0
       '@storybook/csf': 0.0.2--canary.4566f4d.1
-      '@storybook/mdx1-csf': 0.0.1-canary.1.eed86d7.0_@babel+core@7.18.0
+      '@storybook/mdx1-csf': 0.0.2-canary.5.6cee405.0_@babel+core@7.18.0+react@18.1.0
       core-js: 3.22.6
       fs-extra: 9.1.0
       global: 4.4.0
       regenerator-runtime: 0.13.9
       ts-dedent: 2.2.0
     transitivePeerDependencies:
+      - react
       - supports-color
     dev: true
 
@@ -3483,14 +3494,15 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/mdx1-csf/0.0.1-canary.1.eed86d7.0_@babel+core@7.18.0:
-    resolution: {integrity: sha512-KOoTWeseRyJYU5qzEWahgNRhRLgHzPrWx4jIiK4oI9MmNx81cD0B0o24Gq04Iyt89X4jTk+VPHc5REJO1Gs99Q==}
+  /@storybook/mdx1-csf/0.0.2-canary.5.6cee405.0_@babel+core@7.18.0+react@18.1.0:
+    resolution: {integrity: sha512-LRQ086H27/Ro8jQPoXb3hb0LgYokurqqFf4eDNSv/EqvzUihGrurvpiIGfTJ6JDzWZbiX1NIsqe8dx4jKpEGMw==}
     dependencies:
       '@babel/generator': 7.18.0
       '@babel/parser': 7.18.0
       '@babel/preset-env': 7.18.0_@babel+core@7.18.0
       '@babel/types': 7.18.0
       '@mdx-js/mdx': 1.6.22
+      '@mdx-js/react': 1.6.22_react@18.1.0
       '@types/lodash': 4.14.182
       js-string-escape: 1.0.1
       loader-utils: 2.0.2
@@ -3499,6 +3511,7 @@ packages:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@babel/core'
+      - react
       - supports-color
     dev: true
 
@@ -7777,7 +7790,7 @@ packages:
     engines: {node: '>=0.10.0'}
 
   /default-browser-id/1.0.4:
-    resolution: {integrity: sha1-5Z0JpdFXuCi4dsJoFuYcPSosIDo=}
+    resolution: {integrity: sha512-qPy925qewwul9Hifs+3sx1ZYn14obHxpkX+mPD369w4Rzg+YkJBgi3SOvwUq81nWSjqGUegIgEPwD8u+HUnxlw==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     requiresBuild: true
@@ -10878,7 +10891,7 @@ packages:
     dev: true
 
   /image-size/0.5.5:
-    resolution: {integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=}
+    resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     requiresBuild: true
@@ -12209,7 +12222,7 @@ packages:
     dev: true
 
   /js-string-escape/1.0.1:
-    resolution: {integrity: sha1-4mJbrbwNZ8dTPp7cEGjFh65BN+8=}
+    resolution: {integrity: sha512-Smw4xcfIQ5LVjAOuJCvN/zIodzA/BBSsluuoSykP+lUvScIi4U6RJLfwHet5cxFnCswUjISV8oAXaqaJDY3chg==}
     engines: {node: '>= 0.8'}
     dev: true
 
@@ -12999,7 +13012,7 @@ packages:
     dev: true
 
   /mdurl/1.0.1:
-    resolution: {integrity: sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=}
+    resolution: {integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==}
     dev: true
 
   /media-typer/0.3.0:
