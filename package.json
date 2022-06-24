@@ -27,7 +27,8 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm run setup && pnpm build-codemod && changeset publish && pnpm build && pnpm deploy",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
-    "prepare": "patch-package && husky install"
+    "prepare": "patch-package && husky install",
+    "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
   "bin": {
     "braid-upgrade": "./codemod/dist/index.js"
@@ -113,6 +114,7 @@
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.28.0",
     "didyoumean2": "^5.0.0",
+    "enquirer": "^2.3.6",
     "esbuild": "^0.14.39",
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0",
