@@ -6795,6 +6795,10 @@ Object {
         | "small"
         | "standard"
         | "xsmall"
+    variant?: 
+        | "full"
+        | "minimal"
+        | "starsOnly"
 },
 }
 `;

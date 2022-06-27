@@ -2,7 +2,7 @@
 
 ## API Changes
 
-- `showStarRating` is now `true` by default.
+- The text rating is now shown by default.
 - No longer accepts `description`, instead it is recommended to use a layout component, such as `Inline`, to wrap a `Rating` and `Text` component. See migration below.
 - No longer accepts custom styling of the stars, e.g. `starClassName`.
 - No longer accepts arbitrary DOM properties, e.g. `className`. Please check that everything you need is exposed via the [public API.](https://seek-oss.github.io/braid-design-system/components/Radio)
@@ -13,7 +13,7 @@
 
 ```diff
 -<Rating rating={4} />
-+<Rating rating={4} showStarRating={false} />
++<Rating rating={4} variant="starsOnly" />
 ```
 
 #### Using with a description
