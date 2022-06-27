@@ -63,15 +63,37 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Hiding the text rating',
+      label: 'Variants',
       description: (
         <Text>
-          The text rating can be hidden by setting{' '}
-          <Strong>showTextRating</Strong> to <Strong>false</Strong>.
+          The appearance can be customised via the <Strong>variant</Strong>{' '}
+          prop, choosing from <Strong>full</Strong> (default),{' '}
+          <Strong>starsOnly</Strong> or <Strong>minimal</Strong>.
         </Text>
       ),
       Example: () =>
-        source(<Rating size="large" rating={4.2} showTextRating={false} />),
+        source(
+          <Stack space="large">
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Default
+              </Text>
+              <Rating size="large" rating={4.2} />
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Stars only
+              </Text>
+              <Rating size="large" rating={4.2} variant="starsOnly" />
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Minimal
+              </Text>
+              <Rating size="large" rating={4.2} variant="minimal" />
+            </Stack>
+          </Stack>,
+        ),
     },
   ],
 };

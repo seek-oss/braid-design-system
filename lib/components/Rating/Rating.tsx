@@ -1,5 +1,6 @@
 import React from 'react';
 import assert from 'assert';
+import dedent from 'dedent';
 import { useBackground } from '../Box/BackgroundContext';
 import useIcon, { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
@@ -52,7 +53,9 @@ const ratingArr = [...Array(5)];
 export interface RatingProps {
   rating: number;
   size?: TextProps['size'];
+  /** @deprecated Use `variant="starsOnly"` instead */
   showTextRating?: boolean;
+  variant?: 'full' | 'starsOnly' | 'minimal';
   'aria-label'?: string;
   data?: TextProps['data'];
 }
@@ -60,7 +63,8 @@ export interface RatingProps {
 export const Rating = ({
   rating,
   size = 'standard',
-  showTextRating = true,
+  showTextRating,
+  variant: variantProp,
   'aria-label': ariaLabel,
   data,
 }: RatingProps) => {
@@ -68,6 +72,28 @@ export const Rating = ({
     !rating || (rating >= 0 && rating <= 5),
     'Rating must be between 0 and 5',
   );
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof showTextRating !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The "showTextRating" prop has been deprecated and will be removed in a future version. Use \`variant="starsOnly"\` instead.
+             <Rating
+            %c-   showTextRating={false}
+            %c+   variant="starsOnly"
+             %c/>
+        `,
+        'color: red',
+        'color: green',
+        'color: inherit',
+      );
+    }
+  }
+
+  const variant = variantProp || 'full';
+  const resolvedVariant =
+    showTextRating === false && !variantProp ? 'starsOnly' : variant;
 
   return (
     <Text size={size} data={data}>
@@ -77,20 +103,26 @@ export const Rating = ({
           ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
         }
       >
-        {ratingArr.map((_, position) => (
-          <Box
-            key={position}
-            display="inlineBlock"
-            aria-hidden={true}
-            className={{
-              [styles.starSpacing]: position !== ratingArr.length - 1,
-            }}
-          >
-            <RatingStar percent={getPercent(rating, position)} />
+        {resolvedVariant === 'minimal' ? (
+          <Box display="inlineBlock" aria-hidden={true}>
+            <RatingStar percent={100} />
           </Box>
-        ))}
+        ) : (
+          ratingArr.map((_, position) => (
+            <Box
+              key={position}
+              display="inlineBlock"
+              aria-hidden={true}
+              className={{
+                [styles.starSpacing]: position !== ratingArr.length - 1,
+              }}
+            >
+              <RatingStar percent={getPercent(rating, position)} />
+            </Box>
+          ))
+        )}
       </Box>
-      {showTextRating && (
+      {resolvedVariant !== 'starsOnly' && (
         <Box component="span" className={styles.textSpacing} aria-hidden={true}>
           {rating.toFixed(1)}
         </Box>
