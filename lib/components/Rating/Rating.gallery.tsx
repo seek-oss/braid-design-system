@@ -9,8 +9,12 @@ export const galleryItems: ComponentExample[] = [
     Example: () => source(<Rating rating={3} />),
   },
   {
-    label: 'Hidden text rating',
-    Example: () => source(<Rating rating={4.2} showTextRating={false} />),
+    label: 'Variant: starsOnly',
+    Example: () => source(<Rating rating={4.2} variant="starsOnly" />),
+  },
+  {
+    label: 'Variant: minimal',
+    Example: () => source(<Rating rating={4.2} variant="minimal" />),
   },
   {
     label: 'large',
@@ -23,16 +27,5 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'xsmall',
     Example: () => source(<Rating rating={1.5} size="xsmall" />),
-  },
-  {
-    label: 'Single star with text rating',
-    Example: () => source(<Rating rating={1.5} showSingleStar={true} />),
-  },
-  {
-    label: 'Single star without text rating',
-    Example: () =>
-      source(
-        <Rating rating={1.5} showSingleStar={true} showTextRating={false} />,
-      ),
   },
 ];

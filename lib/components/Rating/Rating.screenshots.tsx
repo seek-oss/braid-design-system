@@ -14,8 +14,12 @@ export const screenshots: ComponentScreenshot = {
       Example: () => <Rating rating={3} />,
     },
     {
-      label: 'Hide the text rating',
-      Example: () => <Rating rating={4.2} showTextRating={false} />,
+      label: 'Variant: starsOnly',
+      Example: () => <Rating rating={4.2} variant="starsOnly" />,
+    },
+    {
+      label: 'Variant: minimal',
+      Example: () => <Rating rating={3.7} variant="minimal" />,
     },
     {
       label: 'large',
@@ -28,16 +32,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'xsmall',
       Example: () => <Rating rating={1.5} size="xsmall" />,
-    },
-    {
-      label: 'Single star with text rating',
-      Example: () => <Rating rating={1.5} showSingleStar={true} />,
-    },
-    {
-      label: 'Single star without text rating',
-      Example: () => (
-        <Rating rating={1.5} showSingleStar={true} showTextRating={false} />
-      ),
     },
     {
       label: 'Rating Contrast',

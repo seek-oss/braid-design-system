@@ -9,21 +9,15 @@ export const snippets: Snippets = [
     code: source(<Rating rating={3} />),
   },
   {
-    name: 'Without text rating',
-    code: source(<Rating rating={4.2} showTextRating={false} />),
-  },
-  {
     name: 'Large',
     code: source(<Rating rating={3.7} size="large" />),
   },
   {
-    name: 'Single star with text rating',
-    code: source(<Rating rating={3.7} showSingleStar={true} />),
+    name: 'Variant: starsOnly',
+    code: source(<Rating rating={4.2} variant="starsOnly" />),
   },
   {
-    name: 'Single star without text rating',
-    code: source(
-      <Rating rating={3.7} showSingleStar={true} showTextRating={false} />,
-    ),
+    name: 'Variant: minimal',
+    code: source(<Rating rating={3.7} variant="minimal" />),
   },
 ];

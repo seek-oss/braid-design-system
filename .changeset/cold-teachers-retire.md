@@ -3,14 +3,28 @@
 ---
 ---
 updated:
-  - Rating 
+  - Rating
 ---
 
-**Rating:** Add single star option
+**Rating:** Add `variant` prop and deprecate `showTextRating`
 
-Provides the `showSingleStar` prop that allows you to set the `Rating` component to only show a single star.
+Provide the `variant` prop to allow customising the appearance. This supports the new `minimal` appearance, which presents a single star alongside the text rating.
+
+Also adding the `starsOnly` variant as a replacement for the now deprecated `showTextRating={false}`.
 
 **EXAMPLE USAGE:**
 ```jsx
-<Rating rating={3.7} showSingleStar={true} />
+<Rating rating={3.7} variant="minimal" />
+```
+
+**MIGRATION GUIDE:**
+
+The `showTextRating` prop is now deprecated. If you were using this previously, please migrate to the new `variant` prop using `starsOnly`.
+
+```diff
+<Rating
+  rating={3.7}
+- showTextRating={false}
++ variant="starsOnly"
+/>
 ```
