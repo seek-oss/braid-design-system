@@ -68,91 +68,92 @@ export const modalTestSuite = (
   const EXIT_TIMEOUT = 1500;
 
   describe(`Modal: ${name}`, () => {
-    it('should not focus content when closed', () => {
+    it('should not focus content when closed', async () => {
       const { getByTestId } = renderTestCase();
 
       expect(document.body).toHaveFocus();
-      userEvent.tab();
+      await userEvent.tab();
       expect(getByTestId('buttonBefore')).toHaveFocus();
-      userEvent.tab();
-      userEvent.tab();
+      await userEvent.tab();
+      await userEvent.tab();
       expect(getByTestId('buttonAfter')).toHaveFocus();
-      userEvent.tab();
-      userEvent.tab();
+      await userEvent.tab();
+      await userEvent.tab();
       expect(document.body).toHaveFocus();
     });
 
-    it('should not be visible until open', () => {
+    it('should not be visible until open', async () => {
       const { getByTestId, queryByRole } = renderTestCase();
 
       expect(queryByRole('dialog')).not.toBeInTheDocument();
 
-      userEvent.click(getByTestId('buttonBefore'));
+      await userEvent.click(getByTestId('buttonBefore'));
 
       expect(queryByRole('dialog')).toBeVisible();
     });
 
-    it('should have the correct aria properties when open', () => {
+    it('should have the correct aria properties when open', async () => {
       const { getByTestId, queryByRole, getByLabelText } = renderTestCase();
 
       expect(queryByRole('dialog')).not.toBeInTheDocument();
 
-      userEvent.click(getByTestId('buttonBefore'));
+      await userEvent.click(getByTestId('buttonBefore'));
 
       const dialog = queryByRole('dialog');
       expect(dialog?.getAttribute('aria-modal')).toBe('true');
       expect(getByLabelText(TITLE)).toBe(dialog);
     });
 
-    it('should focus the title element', () => {
+    it('should focus the title element', async () => {
       const { getByTestId, getByText } = renderTestCase();
 
-      userEvent.click(getByTestId('buttonBefore'));
+      await userEvent.click(getByTestId('buttonBefore'));
 
       expect(getByText(TITLE)).toHaveFocus();
     });
 
-    it('should trap focus in the dialog', () => {
-      const { getByTestId, getByRole, getByText, getByLabelText } =
-        renderTestCase();
+    it('should trap focus in the dialog', async () => {
+      const { getByTestId, getByText, getByLabelText } = renderTestCase();
 
       const dialogOpenButton = getByTestId('buttonBefore');
-      userEvent.tab();
+      await userEvent.tab();
       expect(dialogOpenButton).toHaveFocus();
 
-      userEvent.click(dialogOpenButton);
+      await userEvent.click(dialogOpenButton);
       const buttonInside = getByTestId('buttonInside');
       const closeButton = getByLabelText(CLOSE_LABEL);
       const dialogTitle = getByText(TITLE);
 
       expect(dialogTitle).toHaveFocus();
 
-      userEvent.tab({ focusTrap: getByRole('dialog') });
+      await userEvent.tab();
       expect(buttonInside).toHaveFocus();
 
-      userEvent.tab({ focusTrap: getByRole('dialog') });
+      await userEvent.tab();
       expect(closeButton).toHaveFocus();
 
-      userEvent.tab({ focusTrap: getByRole('dialog') });
+      await userEvent.tab();
       expect(buttonInside).toHaveFocus();
 
-      userEvent.tab({ shift: true, focusTrap: getByRole('dialog') });
+      await userEvent.tab({ shift: true });
       expect(closeButton).toHaveFocus();
 
-      userEvent.tab({ shift: true, focusTrap: getByRole('dialog') });
+      await userEvent.tab({ shift: true });
       expect(buttonInside).toHaveFocus();
-    });
+    }, 45000);
 
     it('should close when hitting escape', async () => {
       const { getByTestId, queryByRole } = renderTestCase();
 
       const dialogOpenButton = getByTestId('buttonBefore');
-      userEvent.click(dialogOpenButton);
-      userEvent.keyboard('{escape}');
+      await userEvent.click(dialogOpenButton);
+      await userEvent.keyboard('{Escape}');
 
-      await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-        timeout: EXIT_TIMEOUT,
-      });
+      if (queryByRole('dialog') !== null) {
+        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+          timeout: EXIT_TIMEOUT,
+        });
+      }
       expect(queryByRole('dialog')).not.toBeInTheDocument();
     });
 
@@ -162,7 +163,7 @@ export const modalTestSuite = (
       expect(queryAllByRole('textbox').length).toBe(2);
 
       const dialogOpenButton = getByTestId('buttonBefore');
-      userEvent.click(dialogOpenButton);
+      await userEvent.click(dialogOpenButton);
 
       await waitFor(() => queryByRole('dialog'));
       await waitFor(() => expect(queryAllByRole('textbox').length).toBe(0));
@@ -175,13 +176,15 @@ export const modalTestSuite = (
       expect(closeHandler).not.toHaveBeenCalled();
 
       const dialogOpenButton = getByTestId('buttonBefore');
-      userEvent.click(dialogOpenButton);
+      await userEvent.click(dialogOpenButton);
       const closeButton = getByLabelText(CLOSE_LABEL);
-      userEvent.click(closeButton);
+      await userEvent.click(closeButton);
 
-      await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-        timeout: EXIT_TIMEOUT,
-      });
+      if (queryByRole('dialog') !== null) {
+        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+          timeout: EXIT_TIMEOUT,
+        });
+      }
       expect(closeHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).toHaveBeenCalledWith(false);
     });

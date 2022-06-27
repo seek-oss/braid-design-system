@@ -9,6 +9,7 @@ import {
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
+import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
 
 const Contribution = () => (
   <TextStack>
@@ -16,7 +17,7 @@ const Contribution = () => (
       <PageTitle title="Contribution" />
       Contribution
     </Heading>
-    <Heading level="3">Want to add something to Braid?</Heading>
+    <LinkableHeading level="3">Want to add something to Braid?</LinkableHeading>
     <Text>
       <Strong>We operate on a pull-based model.</Strong> Rather than trying to
       “add something” to Braid, let us know that you think something is missing
@@ -44,7 +45,7 @@ const Contribution = () => (
       users is the ultimate priority.
     </Text>
     <Divider />
-    <Heading level="3">Fixing a bug?</Heading>
+    <LinkableHeading level="3">Fixing a bug?</LinkableHeading>
     <Text>
       <Strong>
         Feel free to open a pull request, but please take care to properly
@@ -54,7 +55,7 @@ const Contribution = () => (
       why, and how your solution works at a technical level.
     </Text>
     <Divider />
-    <Heading level="3">Don’t work at SEEK?</Heading>
+    <LinkableHeading level="3">Don’t work at SEEK?</LinkableHeading>
     <Text>
       <Strong>Please consider this project read-only.</Strong> We’re happy for
       you to follow along with our work, copy it, fork it, ask us questions on
@@ -66,7 +67,7 @@ const Contribution = () => (
 
 const page: Page = {
   title: 'Contribution',
-  component: Contribution,
+  element: <Contribution />,
 };
 
 export default page;

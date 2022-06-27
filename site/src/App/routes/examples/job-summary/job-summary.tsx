@@ -1,4 +1,4 @@
-import React, { ReactChild } from 'react';
+import React, { ReactElement } from 'react';
 import { Page } from '../../../../types';
 import {
   Heading,
@@ -24,15 +24,16 @@ import { Placeholder } from '../../../../../../lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from '../../../../../../lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
+import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 
 interface StepProps {
   heading?: string;
   detail: ReactNodeNoStrings;
-  children: ReactChild;
+  children: ReactElement;
 }
 const Step = ({ heading, detail, children }: StepProps) => (
   <Stack space="xlarge">
-    {heading ? <Heading level="3">{heading}</Heading> : null}
+    {heading ? <LinkableHeading level="3">{heading}</LinkableHeading> : null}
     {detail}
     <Code>{children}</Code>
   </Stack>
@@ -40,7 +41,7 @@ const Step = ({ heading, detail, children }: StepProps) => (
 
 const page: Page = {
   title: 'Job Summary',
-  component: () => (
+  element: (
     <TextStack>
       <Stack space="medium">
         <Heading level="3" weight="weak">
@@ -569,7 +570,7 @@ const page: Page = {
       <Divider />
 
       <TextStack>
-        <Heading level="3">Next steps</Heading>
+        <LinkableHeading level="3">Next steps</LinkableHeading>
 
         <Stack space="xlarge">
           <Text>

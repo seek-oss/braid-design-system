@@ -1,5 +1,45 @@
 # braid-design-system
 
+## 31.13.0
+
+### Minor Changes
+
+- **MenuRenderer, OverflowMenu:** Provide context data to onClose ([#1115](https://github.com/seek-oss/braid-design-system/pull/1115))
+
+  The `onClose` handler now receives data to allow consumers to discern why the menu closed — either by exiting or selecting an action. See the [documentation](https://seek-oss.github.io/braid-design-system/components/MenuRenderer#menu-interactions) for more details.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <MenuRenderer
+    onClose={closeReason => {
+      // ...
+    }}
+  />
+  ```
+
+## 31.12.0
+
+### Minor Changes
+
+- **RadioItem:** Add `disabled` support ([#1108](https://github.com/seek-oss/braid-design-system/pull/1108))
+
+  Provide support for disabling individual `RadioItem`s within a `RadioGroup`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <RadioGroup>
+    <RadioItem label="One" value="1" />
+    <RadioItem label="Two" value="2" />
+    <RadioItem label="Three" value="3" disabled={true} />
+  </RadioGroup>
+  ```
+
+### Patch Changes
+
+- **Dropdown:** React 18 compatibility ([#1114](https://github.com/seek-oss/braid-design-system/pull/1114))
+
 ## 31.11.1
 
 ### Patch Changes

@@ -771,8 +771,8 @@ Object {
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "column" | "row" | "rowReverse" | "columnReverse" | null>
-        | { mobile?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; tablet?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; desktop?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; wide?: "column" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
@@ -785,8 +785,8 @@ Object {
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "nowrap" | "wrap" | null>
-        | { mobile?: "nowrap" | "wrap" | undefined; tablet?: "nowrap" | "wrap" | undefined; desktop?: "nowrap" | "wrap" | undefined; wide?: "nowrap" | "wrap" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
+        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     form?: string
     formAction?: string
     formEncType?: string
@@ -1211,8 +1211,8 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "absolute" | "relative" | null>
-        | { mobile?: "fixed" | "absolute" | "relative" | undefined; tablet?: "fixed" | "absolute" | "relative" | undefined; desktop?: "fixed" | "absolute" | "relative" | undefined; wide?: "fixed" | "absolute" | "relative" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
+        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1660,8 +1660,8 @@ Object {
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "column" | "row" | "rowReverse" | "columnReverse" | null>
-        | { mobile?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; tablet?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; desktop?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; wide?: "column" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
@@ -1674,8 +1674,8 @@ Object {
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "nowrap" | "wrap" | null>
-        | { mobile?: "nowrap" | "wrap" | undefined; tablet?: "nowrap" | "wrap" | undefined; desktop?: "nowrap" | "wrap" | undefined; wide?: "nowrap" | "wrap" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
+        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     height?: 
         | "full"
         | "touchable"
@@ -1874,8 +1874,8 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "absolute" | "relative" | null>
-        | { mobile?: "fixed" | "absolute" | "relative" | undefined; tablet?: "fixed" | "absolute" | "relative" | undefined; desktop?: "fixed" | "absolute" | "relative" | undefined; wide?: "fixed" | "absolute" | "relative" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
+        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
     right?: 0
     textAlign?: 
         | "center"
@@ -4742,6 +4742,68 @@ Object {
 }
 `;
 
+exports[`IconPlatformAndroid 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconPlatformApple 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconPositive 1`] = `
 Object {
   exportType: component,
@@ -5301,6 +5363,37 @@ Object {
 `;
 
 exports[`IconSocialTwitter 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconSocialYouTube 1`] = `
 Object {
   exportType: component,
   props: {
@@ -6386,6 +6479,7 @@ Object {
     children: ReactNode
     data?: DataAttributeMap
     icon?: ReactNode
+    id?: string
     onClick?: () => void
     tone?: "critical"
 },
@@ -6400,6 +6494,7 @@ Object {
     checked: boolean
     children: ReactNode
     data?: DataAttributeMap
+    id?: string
     onChange: (checked: boolean) => void
 },
 }
@@ -6419,6 +6514,7 @@ Object {
     data?: DataAttributeMap
     href: string
     icon?: ReactNode
+    id?: string
     onClick?: () => void
     rel?: string
     target?: 
@@ -6453,7 +6549,7 @@ Object {
         | "xxsmall"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
-    onClose?: () => void
+    onClose?: (closeReason: CloseReason) => void
     onOpen?: () => void
     placement?: 
         | "bottom"
@@ -6529,7 +6625,7 @@ Object {
     data?: DataAttributeMap
     id?: string
     label: string
-    onClose?: () => void
+    onClose?: (closeReason: CloseReason) => void
     onOpen?: () => void
     placement?: 
         | "bottom"
@@ -7841,8 +7937,7 @@ exports[`filterSuggestions 1`] = `
 Object {
   exportType: component,
   props: {
-    __@iterator@608: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
-    __@unscopables@1516: () => { copyWithin: boolean; entries: boolean; fill: boolean; find: boolean; findIndex: boolean; keys: boolean; values: boolean; }
+    at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
@@ -7851,6 +7946,8 @@ Object {
     filter: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S[]; (predicate: (value: Filterab...
     find: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (this: void, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S | undefined; (predica...
     findIndex: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
+    flat: <A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]
+    flatMap: <U, This = undefined>(callback: (this: This, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => U | readonly U[], thisArg?: This | undefined) => U[]
     forEach: (callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => void, thisArg?: any) => void
     includes: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => boolean
     indexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number

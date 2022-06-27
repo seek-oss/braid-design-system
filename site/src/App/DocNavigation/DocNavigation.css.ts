@@ -1,7 +1,7 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { colorModeStyle } from '../../../../../lib/css/colorModeStyle';
-import { vars } from '../../../../../lib/themes/vars.css';
+import { colorModeStyle } from '../../../../lib/css/colorModeStyle';
+import { vars } from '../../../../lib/themes/vars.css';
 
 const activeUnderlineVar = createVar();
 

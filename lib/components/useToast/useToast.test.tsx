@@ -39,11 +39,8 @@ function renderTestApp() {
       }),
     queryAllToasts: () => queryAllByRole('alert'),
     getAction: (actionLabel: string) => getByText(actionLabel),
-    clearToast: (container: HTMLElement) => {
-      act(() => {
-        userEvent.click(getByTestId(container, 'clearToast'));
-      });
-    },
+    clearToast: (container: HTMLElement) =>
+      userEvent.click(getByTestId(container, 'clearToast')),
     getToastByMessage: (message: string) => getByText(message),
   };
 }
@@ -60,7 +57,7 @@ describe('useToast', () => {
 
     expect(allToasts).toHaveLength(1);
 
-    clearToast(allToasts[0]);
+    await clearToast(allToasts[0]);
 
     await waitFor(() => {
       expect(queryAllToasts()).toHaveLength(0);
@@ -81,7 +78,7 @@ describe('useToast', () => {
 
     expect(allToasts).toHaveLength(3);
 
-    clearToast(allToasts[1]);
+    await clearToast(allToasts[1]);
 
     await waitFor(() => {
       expect(queryAllToasts()).toHaveLength(2);
@@ -104,7 +101,7 @@ describe('useToast', () => {
 
     const action = getAction(actionLabel);
 
-    userEvent.click(action);
+    await userEvent.click(action);
 
     expect(actionClickHandler).toHaveBeenCalledTimes(1);
 
@@ -137,7 +134,7 @@ describe('useToast', () => {
 
     const action = getAction(actionLabel2);
 
-    userEvent.click(action);
+    await userEvent.click(action);
 
     expect(actionClickHandler1).toHaveBeenCalledTimes(0);
     expect(actionClickHandler2).toHaveBeenCalledTimes(1);

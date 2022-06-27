@@ -12,10 +12,11 @@ import {
 } from '../../../../../lib/components';
 import Code from '../../Code/Code';
 import { PageTitle } from '../../Seo/PageTitle';
+import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
 
 const page: Page = {
   title: 'Testing Guide',
-  component: () => (
+  element: (
     <TextStack>
       <Heading component="h1" level="2">
         <PageTitle title="Testing Guide" />
@@ -35,7 +36,9 @@ const page: Page = {
 
       <Divider />
 
-      <Heading level="3">How do I render Braid components in Jest?</Heading>
+      <LinkableHeading level="3">
+        How do I render Braid components in Jest?
+      </LinkableHeading>
 
       <Text>
         Since Braid relies on{' '}
@@ -56,7 +59,9 @@ const page: Page = {
         testing.
       </Text>
 
-      <Heading level="3">Should I use Enyzme or React Testing Library?</Heading>
+      <LinkableHeading level="3">
+        Should I use Enyzme or React Testing Library?
+      </LinkableHeading>
 
       <Text>
         While{' '}
@@ -127,9 +132,9 @@ const page: Page = {
         </Text>
       </List>
 
-      <Heading level="3">
+      <LinkableHeading level="3">
         How do I query for elements rendered by Braid?
-      </Heading>
+      </LinkableHeading>
 
       <Text>
         As much as possible, we suggest using{' '}
@@ -174,7 +179,9 @@ const page: Page = {
         </Text>
       </List>
 
-      <Heading level="3">What about component snapshot testing?</Heading>
+      <LinkableHeading level="3">
+        What about component snapshot testing?
+      </LinkableHeading>
 
       <Text>
         The main benefit of snapshots tests is how quick they are to create,
@@ -219,7 +226,7 @@ const page: Page = {
         be quite volatile and full of irrelevant markup changes.
       </Text>
 
-      <Heading level="3">What about integration tests?</Heading>
+      <LinkableHeading level="3">What about integration tests?</LinkableHeading>
 
       <Text>
         We recommend all teams employ a small number of integration tests to

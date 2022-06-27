@@ -242,7 +242,7 @@ function TonePage() {
 
 const page: Page = {
   title: 'Tones',
-  component: TonePage,
+  element: <TonePage />,
 };
 
 export default page;

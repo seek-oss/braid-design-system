@@ -16,7 +16,7 @@ describe('Toggle', () => {
     expect(getByLabelText('My toggle').tagName).toBe('INPUT');
   });
 
-  it('associates a ref with the toggle element correctly', () => {
+  it('associates a ref with the toggle element correctly', async () => {
     const TestCase = () => {
       const ref = useRef<HTMLInputElement | null>(null);
 
@@ -35,7 +35,7 @@ describe('Toggle', () => {
     };
     const { getByRole, getByLabelText } = render(<TestCase />);
 
-    userEvent.click(getByRole('button'));
+    await userEvent.click(getByRole('button'));
 
     expect(getByLabelText('Toggle')).toHaveFocus();
   });

@@ -3,6 +3,7 @@ import 'html-validate/jest';
 import React, { useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
 import { AccordionItem, Badge, IconHelp } from '..';
 import { htmlToText } from '../../utils/htmlToText';
@@ -12,13 +13,17 @@ describe('AccordionItem', () => {
     expect(
       renderToStaticMarkup(
         <BraidTestProvider>
-          <AccordionItem id="1" label="Label 1">
+          <AccordionItem id="item1" label="Label 1">
             Content 1
           </AccordionItem>
-          <AccordionItem id="2" label="Label 2" icon={<IconHelp />}>
+          <AccordionItem id="item2" label="Label 2" icon={<IconHelp />}>
             Content 2
           </AccordionItem>
-          <AccordionItem id="3" label="Label 3" badge={<Badge>Badge</Badge>}>
+          <AccordionItem
+            id="item3"
+            label="Label 3"
+            badge={<Badge>Badge</Badge>}
+          >
             Content 3
           </AccordionItem>
         </BraidTestProvider>,
@@ -28,7 +33,7 @@ describe('AccordionItem', () => {
     });
   });
 
-  it('should provide internal state by default', () => {
+  it('should provide internal state by default', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
         <AccordionItem id="content" label="Label">
@@ -50,14 +55,14 @@ describe('AccordionItem', () => {
 
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('false');
   });
 
-  it('should support listening to toggle events while uncontrolled', () => {
+  it('should support listening to toggle events while uncontrolled', async () => {
     const toggleHander = jest.fn();
 
     const { getByRole } = render(
@@ -70,16 +75,16 @@ describe('AccordionItem', () => {
 
     const button = getByRole('button');
 
-    button.click();
+    await userEvent.click(button);
     expect(toggleHander).toHaveBeenCalledWith(true);
 
-    button.click();
+    await userEvent.click(button);
     expect(toggleHander).toHaveBeenCalledWith(false);
 
     expect(toggleHander).toHaveBeenCalledTimes(2);
   });
 
-  it('should support controlled state', () => {
+  it('should support controlled state', async () => {
     const TestCase = () => {
       const [expanded, setExpanded] = useState(true);
 
@@ -112,10 +117,10 @@ describe('AccordionItem', () => {
 
     expect(button.getAttribute('aria-expanded')).toEqual('true');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
-    button.click();
+    await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
   });
 });

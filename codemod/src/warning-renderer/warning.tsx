@@ -7,8 +7,8 @@ import { renderToString } from '../ink/ink-to-string';
 
 interface UntraceableImportWarningProps {
   code: string;
-  importLocation: t.SourceLocation | null;
-  propLocation: t.SourceLocation | null;
+  importLocation?: t.SourceLocation | null;
+  propLocation?: t.SourceLocation | null;
   variableName: string;
   propName?: string;
   importSource: string;
@@ -61,7 +61,7 @@ export const renderUntraceableImportWarning = (
 
 interface UntraceablePropertyWarningProps {
   code: string;
-  propLocation: t.SourceLocation | null;
+  propLocation?: t.SourceLocation | null;
   componentName?: string;
 }
 
@@ -106,17 +106,18 @@ export const renderUntraceablePropertyWarning = (
 ) => `\n${renderToString(<UntraceablePropertyWarning {...props} />)}\n\n`;
 
 interface RecursiveDepthProps {
-  filePath: string;
+  filePath?: string;
 }
 
 export const RecursiveDepthWarning = ({ filePath }: RecursiveDepthProps) => (
   <Stack>
     <Text>File parsing depth limit met.</Text>
-
-    <Fragment>
-      <Text>You may want to manually check the following file:</Text>
-      <Text>{filePath}</Text>
-    </Fragment>
+    {filePath ? (
+      <Fragment>
+        <Text>You may want to manually check the following file:</Text>
+        <Text>{filePath}</Text>
+      </Fragment>
+    ) : null}
   </Stack>
 );
 

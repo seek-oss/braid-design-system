@@ -43,7 +43,7 @@ const lipsum2 =
 
 const page: Page = {
   title: 'Layout',
-  component: () => (
+  element: (
     <TextStack>
       <Heading component="h1" level="2">
         <PageTitle title="Layout Foundation" />

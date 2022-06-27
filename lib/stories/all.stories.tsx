@@ -4,9 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
 import '../../reset';
 import * as themes from '../themes';
-import { ComponentExample, ComponentScreenshot } from '../../site/src/types';
+import { ComponentScreenshot } from '../../site/src/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
-import { useSourceFromExample } from '../utils/useSourceFromExample';
 import { BraidProvider, ToastProvider } from '../components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -35,12 +34,18 @@ const getComponentName = (filename: string) => {
   return matches[1];
 };
 
+const noop = () => {};
+
 interface RenderExampleProps {
-  example: ComponentExample;
+  example: ComponentScreenshot['examples'][number];
 }
 const RenderExample = ({ example }: RenderExampleProps) => {
-  const { label, Container = DefaultContainer, background = 'body' } = example;
-  const { value } = useSourceFromExample('id', example);
+  const {
+    label,
+    Container = DefaultContainer,
+    background = 'body',
+    Example,
+  } = example;
 
   return (
     <div
@@ -63,7 +68,9 @@ const RenderExample = ({ example }: RenderExampleProps) => {
         {label}
       </h4>
       <Box background={background} style={{ padding: 12 }}>
-        <Container>{value}</Container>
+        <Container>
+          {Example ? <Example id="id" handler={noop} /> : null}
+        </Container>
       </Box>
       <div style={{ paddingTop: 18 }}>
         <hr

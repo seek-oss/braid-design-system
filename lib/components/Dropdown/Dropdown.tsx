@@ -64,12 +64,14 @@ export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
               {...fieldProps}
               ref={ref}
             >
-              {!value || placeholder ? (
-                <option value="" disabled={true}>
-                  {disabled ? '' : placeholder}
-                </option>
-              ) : null}
-              {children}
+              <>
+                {!value || placeholder ? (
+                  <option value="" disabled={true}>
+                    {disabled ? '' : placeholder}
+                  </option>
+                ) : null}
+                {children}
+              </>
             </Box>
             {overlays}
             <Box

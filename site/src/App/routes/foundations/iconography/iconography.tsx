@@ -159,7 +159,7 @@ const Iconography = () => {
 
 const page: Page = {
   title: 'Iconography',
-  component: Iconography,
+  element: <Iconography />,
 };
 
 export default page;

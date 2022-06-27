@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  ReactChild,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { useState, ReactElement, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';
@@ -37,6 +31,8 @@ import editorTheme from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from '../../../../lib/playroom/useScope';
 import { PlayroomStateProvider } from '../../../../lib/playroom/playroomState';
+
+type ReactElementOrString = ReactElement | string;
 
 export const formatSnippet = memoize((snippet: string) => {
   // Remove id props from code snippets since they're not needed in Playroom
@@ -84,20 +80,6 @@ export const CodeButton = ({
   const [showSuccess, setShowSuccess] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const clickHandler = useCallback(
-    (e) => {
-      if (typeof onClick === 'function') {
-        onClick(e);
-
-        if (successLabel) {
-          setShowSuccess(true);
-          timerRef.current = setTimeout(() => setShowSuccess(false), 2000);
-        }
-      }
-    },
-    [onClick, successLabel],
-  );
-
   useEffect(
     () => () => {
       if (timerRef.current) {
@@ -129,7 +111,16 @@ export const CodeButton = ({
       position="relative"
       outline="none"
       className={[styles.button, className]}
-      onClick={clickHandler}
+      onClick={(e) => {
+        if (typeof onClick === 'function') {
+          onClick(e);
+
+          if (successLabel) {
+            setShowSuccess(true);
+            timerRef.current = setTimeout(() => setShowSuccess(false), 2000);
+          }
+        }
+      }}
       {...restProps}
     >
       <FieldOverlay
@@ -189,8 +180,8 @@ const isSource = function <Value>(input: any): input is Source<Value> {
 };
 
 const parseInput = (
-  input: ReactChild | Source<ReactChild>,
-): Source<ReactChild> => {
+  input: ReactElementOrString | Source<ReactElementOrString>,
+): Source<ReactElementOrString> => {
   if (typeof input === 'string') {
     const code = formatSnippet(input);
 
@@ -222,11 +213,11 @@ interface CodeProps {
   playroom?: boolean;
   collapsedByDefault?: boolean;
   children:
-    | ReactChild
-    | Source<ReactChild>
+    | ReactElementOrString
+    | Source<ReactElementOrString>
     | ((
         playroomScope: ReturnType<typeof usePlayroomScope>,
-      ) => Source<ReactChild>);
+      ) => Source<ReactElementOrString>);
 }
 const Code = ({
   playroom = true,

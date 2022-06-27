@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Title, Meta } from 'react-head';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const defaultTitle = 'Braid Design System';
 
@@ -10,10 +10,10 @@ export function PageTitle({ title }: PageTitleProps) {
   const normalisedTitle = title ? `${title} — ${defaultTitle}` : defaultTitle;
 
   return (
-    <Fragment>
-      <Title>{normalisedTitle}</Title>
-      <Meta property="og:title" content={normalisedTitle} />
-      <Meta property="twitter:title" content={normalisedTitle} />
-    </Fragment>
+    <Helmet>
+      <title>{normalisedTitle}</title>
+      <meta property="og:title" content={normalisedTitle} />
+      <meta property="twitter:title" content={normalisedTitle} />
+    </Helmet>
   );
 }

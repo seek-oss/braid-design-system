@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { parseToHsl, setLightness } from 'polished';
 
-import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import { Box } from '../../../../../lib/components';
 import { Logo } from '../../Logo/Logo';
@@ -34,8 +33,9 @@ const useBackgroundColor = () => {
   return bgColor;
 };
 
-const GalleryPage = () => {
+export const GalleryPage = () => {
   const [ready, setReady] = useState(false);
+  const backgroundColor = useBackgroundColor();
 
   useEffect(() => {
     setTimeout(() => setReady(true), 100);
@@ -45,7 +45,7 @@ const GalleryPage = () => {
     <Box
       position="fixed"
       inset={0}
-      style={{ backgroundColor: useBackgroundColor() }}
+      style={{ backgroundColor: ready ? backgroundColor : undefined }}
     >
       <PageTitle title="Gallery" />
 
@@ -70,14 +70,4 @@ const GalleryPage = () => {
       </Box>
     </Box>
   );
-};
-
-const page: Page = {
-  title: 'Gallery',
-  exact: true,
-  component: GalleryPage,
-};
-
-export default {
-  '/gallery': page,
 };

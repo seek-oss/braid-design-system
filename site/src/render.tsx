@@ -1,8 +1,8 @@
 import { Render } from 'sku';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router';
-import { HeadProvider } from 'react-head';
+import { StaticRouter } from 'react-router-dom/server';
+import { HelmetProvider } from 'react-helmet-async';
 import dedent from 'dedent';
 import { uniq, flatten, values } from 'lodash';
 import { App } from './App/App';
@@ -37,7 +37,7 @@ const skuRender: Render<RenderContext> = {
     };
 
     const today = new Date();
-    const metaTags: ReactElement[] = [];
+    const helmetContext: RenderContext['helmetContext'] = {};
 
     const config = {
       routerBasename,
@@ -45,19 +45,19 @@ const skuRender: Render<RenderContext> = {
       renderDate: today.getTime(),
       versionMap,
       currentVersion: version,
-      metaTags,
+      helmetContext,
     };
 
     initUpdates(today, versionMap, version);
 
     const html = renderToString(
-      <HeadProvider headTags={metaTags}>
-        <StaticRouter context={{}} location={route} basename={routerBasename}>
+      <HelmetProvider context={helmetContext}>
+        <StaticRouter location={route} basename={routerBasename}>
           <ConfigProvider value={appConfig}>
             <App />
           </ConfigProvider>
         </StaticRouter>
-      </HeadProvider>,
+      </HelmetProvider>,
     );
 
     return {
@@ -76,23 +76,22 @@ const skuRender: Render<RenderContext> = {
     currentVersion,
   }),
 
-  renderDocument: ({ headTags, bodyTags, app: { html, metaTags } }) => {
+  renderDocument: ({ headTags, bodyTags, app: { html, helmetContext } }) => {
     const webFontLinkTags = uniq(
       flatten(values(themes).map((theme) => theme.webFonts)).map(
         (font) => font.linkTag,
       ),
     ).join('');
+    const { helmet } = helmetContext;
 
     return dedent`
       <!doctype html>
       <html lang="en">
         <head>
           ${__experimentalDarkMode__}
-          ${
-            // @ts-expect-error
-            // renderToString claims it doesn't support arrays, I beg to differ
-            renderToString(metaTags)
-          }
+          ${helmet.title.toString()}
+          ${helmet.meta.toString()}
+          ${helmet.link.toString()}
           ${webFontLinkTags}
           ${headTags}
         </head>
