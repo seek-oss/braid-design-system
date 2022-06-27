@@ -1,5 +1,51 @@
 # braid-design-system
 
+## 31.14.0
+
+### Minor Changes
+
+- **Rating:** Add `variant` prop and deprecate `showTextRating` ([#1123](https://github.com/seek-oss/braid-design-system/pull/1123))
+
+  Provide the `variant` prop to allow customising the appearance. This supports the new `minimal` appearance, which presents a single star alongside the text rating.
+
+  Also adding the `starsOnly` variant as a replacement for the now deprecated `showTextRating={false}`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Rating rating={3.7} variant="minimal" />
+  ```
+
+  **MIGRATION GUIDE:**
+
+  The `showTextRating` prop is now deprecated. If you were using this previously, please migrate to the new `variant` prop using `starsOnly`.
+
+  ```diff
+  <Rating
+    rating={3.7}
+  - showTextRating={false}
+  + variant="starsOnly"
+  />
+  ```
+
+- **IconPlatformAndroid, IconPlatformApple, IconSocialYouTube:** Add new icons ([#1121](https://github.com/seek-oss/braid-design-system/pull/1121))
+
+  Add icons for the Apple and Android mobile platforms as well as YouTube
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconPlatformAndroid />
+  <IconPlatformApple />
+  <IconSocialYouTube />
+  ```
+
+### Patch Changes
+
+- **`apac` and `seekBusiness` themes:** Update colour palette ([#1104](https://github.com/seek-oss/braid-design-system/pull/1104))
+
+  The colours used in these themes have been updated to the latest design standards as they were subtly off due to coming from an incorrect source.
+
 ## 31.13.0
 
 ### Minor Changes
