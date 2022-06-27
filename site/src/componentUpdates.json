@@ -2544,5 +2544,30 @@
         "summary": "**MenuRenderer, OverflowMenu:** Provide context data to onClose\n\nThe `onClose` handler now receives data to allow consumers to discern why the menu closed — either by exiting or selecting an action. See the [documentation](https://seek-oss.github.io/braid-design-system/components/MenuRenderer#menu-interactions) for more details.\n\n**EXAMPLE USAGE:**\n```jsx\n<MenuRenderer\n  onClose={(closeReason) => {\n    // ...\n  }}\n/>\n```"
       }
     ]
+  },
+  {
+    "version": "31.14.0",
+    "updates": [
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Add `variant` prop and deprecate `showTextRating`\n\nProvide the `variant` prop to allow customising the appearance. This supports the new `minimal` appearance, which presents a single star alongside the text rating.\n\nAlso adding the `starsOnly` variant as a replacement for the now deprecated `showTextRating={false}`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Rating rating={3.7} variant=\"minimal\" />\n```\n\n**MIGRATION GUIDE:**\n\nThe `showTextRating` prop is now deprecated. If you were using this previously, please migrate to the new `variant` prop using `starsOnly`.\n\n```diff\n<Rating\n  rating={3.7}\n- showTextRating={false}\n+ variant=\"starsOnly\"\n/>\n```"
+      },
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**`apac` and `seekBusiness` themes:** Update colour palette\n\nThe colours used in these themes have been updated to the latest design standards as they were subtly off due to coming from an incorrect source."
+      },
+      {
+        "new": [
+          "IconPlatformAndroid",
+          "IconPlatformApple",
+          "IconSocialYouTube"
+        ],
+        "summary": "**IconPlatformAndroid, IconPlatformApple, IconSocialYouTube:** Add new icons\n\nAdd icons for the Apple and Android mobile platforms as well as YouTube\n\n**EXAMPLE USAGE:**\n```jsx\n<IconPlatformAndroid />\n<IconPlatformApple />\n<IconSocialYouTube />\n```"
+      }
+    ]
   }
 ]
