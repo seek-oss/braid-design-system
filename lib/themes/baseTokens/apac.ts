@@ -243,7 +243,7 @@ export const makeTokens = ({
         positiveLight: palette.mint['300'],
         promote: palette.violet['700'],
         promoteLight: palette.violet['300'],
-        rating: palette.orange[600],
+        rating: '#f57c00',
         secondary: palette.grey['500'],
         secondaryInverted: rgba('#fff', 0.65),
       },
