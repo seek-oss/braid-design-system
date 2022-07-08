@@ -97,7 +97,8 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       ref={stepRef}
       position="relative"
       outline="none"
-      display="block"
+      display="flex"
+      justifyContent={{ tablet: align === 'center' ? 'center' : undefined }}
       width="full"
       cursor={interactable ? 'pointer' : undefined}
       pointerEvents={!interactable && !active ? 'none' : undefined}
