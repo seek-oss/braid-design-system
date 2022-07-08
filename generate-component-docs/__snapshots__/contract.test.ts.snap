@@ -6870,6 +6870,9 @@ Object {
   exportType: component,
   props: {
     activeStep?: number
+    align?: 
+        | "center"
+        | "left"
     children: 
         | Step
         | Step[]

@@ -184,7 +184,7 @@ Example diff to generated changeset:
   }).catch(() => {});
 
   if (releaseNotesPrompt?.releaseNotes) {
-    updatedChangeset.push(`\n${releaseNotesPrompt?.releaseNotes}\n`);
+    updatedChangeset.push(`${releaseNotesPrompt?.releaseNotes}\n`);
   }
 
   // Standardise `Example Usage` code block
