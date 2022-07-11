@@ -169,7 +169,7 @@ Example diff to generated changeset:
   const updatedChangeset = [
     changesetsFrontMatter,
     '---',
-    braidChangeType,
+    `${braidChangeType}:`,
     ...braidChangeScopes.map((s) => `  - ${s}`),
     '---',
     formattedDetails,
