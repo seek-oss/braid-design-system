@@ -288,7 +288,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             The Stepper is center-aligned by default, but this can be customised
-            via the align prop.
+            via the <Strong>align</Strong> prop.
           </Text>
           <Notice>
             <Text>
