@@ -37,4 +37,15 @@ export const snippets: Snippets = [
       </Stepper>,
     ),
   },
+  {
+    name: 'Left aligned',
+    code: source(
+      <Stepper label="Linear steps" align="left" progress={3}>
+        <Step>1. First step</Step>
+        <Step>2. Second step</Step>
+        <Step>3. Third step</Step>
+        <Step>4. Forth step</Step>
+      </Stepper>,
+    ),
+  },
 ];

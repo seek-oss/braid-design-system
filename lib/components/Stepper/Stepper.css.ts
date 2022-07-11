@@ -141,19 +141,20 @@ export const progressTrack = style({
   top: `${calc(vars.inlineFieldSize.standard)
     .subtract(vars.borderWidth.large)
     .divide(2)}`,
-  ...responsiveStyle({
-    mobile: {
-      left: `${calc(vars.inlineFieldSize.standard).add(
-        vars.space[progressBarGap],
-      )}`,
-    },
+  left: `${calc(vars.inlineFieldSize.standard).add(
+    vars.space[progressBarGap],
+  )}`,
+});
+
+export const progressTrackCentered = style(
+  responsiveStyle({
     tablet: {
       left: `${calc('50%')
         .add(calc(vars.inlineFieldSize.standard).divide(2))
         .add(vars.space[progressBarGap])}`,
     },
   }),
-});
+);
 
 export const progressLine = style({
   background: highlightVar,

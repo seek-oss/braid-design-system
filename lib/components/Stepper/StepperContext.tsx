@@ -49,6 +49,7 @@ interface State {
   activeStep: number;
   progress: number;
   isLinear: boolean;
+  align: 'left' | 'center';
   tone: keyof typeof styles.tone;
   onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
 }
@@ -69,6 +70,7 @@ export type StepperProviderProps = {
   stepCount: number;
   progress: number;
   isLinear: boolean;
+  align: 'left' | 'center';
   tone?: keyof typeof styles.tone;
   onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
 };
@@ -101,6 +103,7 @@ export const StepperContextProvider = ({
   stepCount: stepCountProp,
   progress,
   isLinear,
+  align,
   tone = 'formAccent',
   onStepClick,
 }: StepperProviderProps) => {
@@ -164,6 +167,7 @@ export const StepperContextProvider = ({
       activeStep,
       isLinear,
       tone,
+      align,
       progress,
       onStepClick,
     },
@@ -229,6 +233,7 @@ export const StepperContextProvider = ({
         ...stepperState,
         activeStep,
         isLinear,
+        align,
         tone,
         progress,
         onStepClick,

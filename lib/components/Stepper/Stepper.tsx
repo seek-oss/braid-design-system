@@ -37,6 +37,7 @@ type StepperProps = {
   onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
   data?: DataAttributeMap;
   id?: string;
+  align?: 'left' | 'center';
 } & (LinearProps | NonLinearProps);
 
 const resolveActiveStep = (
@@ -60,6 +61,7 @@ export const Stepper = ({
   tone,
   children,
   data,
+  align = 'center',
   id,
   onStepClick,
   ...props
@@ -93,7 +95,12 @@ export const Stepper = ({
       >
         <Box
           component="li"
-          className={isLast ? styles.stretchLastAboveTablet : styles.stretch}
+          className={[
+            !isLast ? styles.stretch : undefined,
+            isLast && align === 'center'
+              ? styles.stretchLastAboveTablet
+              : undefined,
+          ]}
         >
           {child}
         </Box>
@@ -105,6 +112,7 @@ export const Stepper = ({
     <StepperContextProvider
       activeStep={activeStepNumber}
       tone={tone}
+      align={align}
       progress={progress}
       stepCount={stepItems.length}
       isLinear={isLinear}
@@ -121,7 +129,10 @@ export const Stepper = ({
           component="ol"
           display="flex"
           paddingBottom={{ mobile: 'medium', tablet: 'none' }}
-          justifyContent={{ mobile: 'spaceBetween', tablet: 'center' }}
+          justifyContent={{
+            mobile: 'spaceBetween',
+            tablet: align === 'center' ? 'center' : undefined,
+          }}
         >
           {stepItems}
         </Box>

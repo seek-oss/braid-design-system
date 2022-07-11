@@ -63,6 +63,7 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
     focusedStep,
     activeStep,
     tone,
+    align,
     progress,
     isLinear,
     onKeyUp,
@@ -96,7 +97,8 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       ref={stepRef}
       position="relative"
       outline="none"
-      display="block"
+      display="flex"
+      justifyContent={{ tablet: align === 'center' ? 'center' : undefined }}
       width="full"
       cursor={interactable ? 'pointer' : undefined}
       pointerEvents={!interactable && !active ? 'none' : undefined}
@@ -127,7 +129,10 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
           position="absolute"
           overflow="hidden"
           borderRadius="full"
-          className={styles.progressTrack}
+          className={[
+            styles.progressTrack,
+            align === 'center' ? styles.progressTrackCentered : undefined,
+          ]}
         >
           <Box
             component="span"
@@ -146,7 +151,10 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       <Stack
         component="span"
         space="medium"
-        align={{ mobile: 'left', tablet: 'center' }}
+        align={{
+          mobile: 'left',
+          tablet: align === 'center' ? 'center' : undefined,
+        }}
       >
         <Box
           component="span"
@@ -169,9 +177,15 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
           />
         </Box>
         <Hidden component="span" below="tablet">
-          <Box component="span" paddingX="xsmall" userSelect="none">
+          <Box
+            component="span"
+            display="block"
+            paddingX={align === 'center' ? 'xsmall' : undefined}
+            paddingRight={align === 'left' && !isLast ? 'xsmall' : undefined}
+            userSelect="none"
+          >
             <Text
-              align="center"
+              align={align === 'center' ? 'center' : undefined}
               weight={started ? 'strong' : undefined}
               tone={!started ? 'secondary' : undefined}
             >

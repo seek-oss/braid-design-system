@@ -54,4 +54,20 @@ export const galleryItems: ComponentExample[] = [
         </Stepper>,
       ),
   },
+  {
+    label: 'Left Aligned',
+    Example: () =>
+      source(
+        <Stepper align="left" label="Left aligned stepper" progress={3}>
+          {[
+            '1. First step',
+            '2. Second step',
+            '3. Third step',
+            '4. Forth step',
+          ].map((step) => (
+            <Step key={step}>{step}</Step>
+          ))}
+        </Stepper>,
+      ),
+  },
 ];
