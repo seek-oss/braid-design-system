@@ -11,6 +11,8 @@ import {
 } from '..';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
+import { Stack } from '../Stack/Stack';
+import { Heading } from '../Heading/Heading';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -300,6 +302,39 @@ const docs: ComponentDocs = {
               <RadioItem label="Three" value="3" />
             </RadioGroup>
           </>,
+        ),
+    },
+    {
+      label: 'Indirect or hidden field labels',
+      description: (
+        <Text>
+          In some cases it may be necessary for a field to be labelled by
+          another element or even not to have a visual label. Instead of
+          providing a <Strong>label</Strong> either <Strong>aria-label</Strong>{' '}
+          or <Strong>aria-labelledby</Strong> can be provided.
+        </Text>
+      ),
+      Example: ({ id, getState, setState }) =>
+        source(
+          <Stack space="medium">
+            <Heading level="2" id="fieldLabel">
+              Custom field label
+            </Heading>
+
+            <RadioGroup
+              id={`${id}_indirectLabel`}
+              value={getState('radio')}
+              onChange={({ currentTarget: { value } }) =>
+                setState('radio', value)
+              }
+              message="The label for this fieldset is the Heading element before it."
+              aria-labelledby="fieldLabel"
+            >
+              <RadioItem label="One" value="1" />
+              <RadioItem label="Two" value="2" />
+              <RadioItem label="Three" value="3" />
+            </RadioGroup>
+          </Stack>,
         ),
     },
   ],

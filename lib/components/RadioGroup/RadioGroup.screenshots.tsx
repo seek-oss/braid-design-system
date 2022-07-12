@@ -179,5 +179,35 @@ export const screenshots: ComponentScreenshot = {
         </RadioGroup>
       ),
     },
+    {
+      label: 'When labelling via aria-label',
+      Example: ({ handler }) => (
+        <RadioGroup
+          id="arialabel"
+          value="2"
+          onChange={handler}
+          aria-label="Label"
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>
+      ),
+    },
+    {
+      label: 'When labelling via aria-labelledby',
+      Example: ({ handler }) => (
+        <RadioGroup
+          id="arialabelledby"
+          value="2"
+          onChange={handler}
+          aria-labelledby="elementId"
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>
+      ),
+    },
   ],
 };
