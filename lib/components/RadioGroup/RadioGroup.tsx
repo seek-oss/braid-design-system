@@ -41,6 +41,7 @@ const RadioGroup = ({
   ...props
 }: RadioGroupProps) => {
   const items = flattenChildren(children);
+  const labelSpace = props.description ? 'xxsmall' : 'xsmall';
 
   assert(
     items.every(
@@ -73,7 +74,7 @@ const RadioGroup = ({
           }}
         >
           <Box
-            paddingTop={props.description ? 'xxsmall' : 'xsmall'}
+            paddingTop={'label' in props ? labelSpace : undefined}
             paddingBottom={props.message ? 'xsmall' : undefined}
           >
             <Stack space={stackSpaceForSize[size || 'standard']}>
