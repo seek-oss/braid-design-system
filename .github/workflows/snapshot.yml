@@ -31,3 +31,5 @@ jobs:
 
       - name: 'Version'
         run: pnpm exec changeset version --snapshot ${{ github.ref_name }}-${{ github.run_id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
