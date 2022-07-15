@@ -43,6 +43,14 @@ jobs:
           EOF
 
       - name: 'Publish'
-        run: pnpm run publish-package -- --no-git-tags --snapshot --tag ${{ github.ref_name }}
+        run: |
+          pnpm run publish-package -- --no-git-tags --snapshot --tag ${{ github.ref_name }} | tee ${{ github.run_number }}-output
+          SNAPSHOT_VERSION=$(grep -E -o 'New tag:\s+(.*)' ${{ github.run_number }}-output | sed -r 's/New tag:  (v)?//')
+          cat << EOF
+          ## New snapshot published!
+          \`\`\`
+          yarn add braid-design-system@$SNAPSHOT_VERSION
+          \`\`\`
+          EOF
         env:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
