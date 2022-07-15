@@ -34,8 +34,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
+      - name: Create an .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.SEEK_OSS_CI_NPM_TOKEN }}
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+
       - name: 'Publish'
         run: pnpm run publish-package -- --no-git-tags --snapshot --tag ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.SEEK_OSS_CI_NPM_TOKEN }}
