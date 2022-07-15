@@ -9,5 +9,25 @@ jobs:
     env:
       CI: true
     steps:
-      - name: 'Test annotate'
-        run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.23.1
+
+      - name: Checkout Repo
+        uses: actions/checkout@main
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+          token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
+
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@main
+        with:
+          node-version: 16.x
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: 'Version'
+        run: pnpm exec changeset version --snapshot ${{ github.ref_name }}-${{ github.run_id }}
