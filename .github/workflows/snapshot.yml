@@ -30,6 +30,6 @@ jobs:
         run: pnpm i
 
       - name: 'Version'
-        run: pnpm exec changeset version --snapshot ${{ github.ref_name }}-${{ github.run_id }}
+        run: pnpm exec changeset version --snapshot ${{ github.ref_name }} && cat package.json
         env:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
