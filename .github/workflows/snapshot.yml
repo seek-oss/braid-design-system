@@ -4,7 +4,7 @@ on: push
 
 jobs:
   annotate:
-    name: Test annotation
+    name: Publish snapshot version
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -48,9 +48,10 @@ jobs:
           pnpm run publish-package -- --no-git-tags --snapshot --tag ${{ github.ref_name }} | tee $OUTPUT
           SNAPSHOT_VERSION=$(grep -E -o 'New tag:\s+(.*)' $OUTPUT | sed -r 's/New tag:  (v)?//')
           cat << EOF >> $GITHUB_STEP_SUMMARY
-          ## New snapshot published!
+          ## :butterfly: New snapshot published!
+          Version: \`$SNAPSHOT_VERSION\`
           \`\`\`
-          yarn add braid-design-system@$SNAPSHOT_VERSION
+          yarn add braid-design-system@${{ github.ref_name }}
           \`\`\`
           EOF
         env:
