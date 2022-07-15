@@ -1,6 +1,6 @@
 name: Snapshot
 
-on: workflow_dispatch
+on: push
 
 jobs:
   annotate:
@@ -10,4 +10,4 @@ jobs:
       CI: true
     steps:
       - name: 'Test annotate'
-        run: 'echo ::notice ::This annotation should appear on the job'
+        run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
