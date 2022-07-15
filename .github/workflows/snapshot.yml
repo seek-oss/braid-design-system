@@ -35,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
       - name: 'Publish'
-        run: pnpm run publish-package --no-git-tags --snapshot --tag ${{ github.ref_name }}
+        run: pnpm run publish-package -- --no-git-tags --snapshot --tag ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.SEEK_OSS_CI_NPM_TOKEN }}
