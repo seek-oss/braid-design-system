@@ -3371,6 +3371,42 @@ Object {
 }
 `;
 
+exports[`IconArrow 1`] = `
+Object {
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    direction?: 
+        | "down"
+        | "left"
+        | "right"
+        | "up"
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconBookmark 1`] = `
 Object {
   exportType: component,
