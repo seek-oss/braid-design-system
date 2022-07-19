@@ -2569,5 +2569,34 @@
         "summary": "**IconPlatformAndroid, IconPlatformApple, IconSocialYouTube:** Add new icons\n\nAdd icons for the Apple and Android mobile platforms as well as YouTube\n\n**EXAMPLE USAGE:**\n```jsx\n<IconPlatformAndroid />\n<IconPlatformApple />\n<IconSocialYouTube />\n```"
       }
     ]
+  },
+  {
+    "version": "31.15.0",
+    "updates": [
+      {
+        "new": [
+          "IconArrow"
+        ],
+        "summary": "**IconArrow:** Add component\n\nAdd new `IconArrow` component. The orientation of the arrow can be controlled using the `direction` prop.\n\n**EXAMPLE USAGE:**\n```jsx\n<IconArrow direction=\"left\" />\n```"
+      },
+      {
+        "updated": [
+          "RadioGroup"
+        ],
+        "summary": "**RadioGroup:** Remove surrounding white space with no visual label\n\nRemoves additional white space applied above the `RadioItem`s when no visible `label` is provided, i.e. when labelling via `aria-label` or `aria-labelledby`."
+      },
+      {
+        "updated": [
+          "Stepper"
+        ],
+        "summary": "**Stepper:** Add align prop\n\nProvide the `align` prop which now includes support for `left` alignment.\n\n**EXAMPLE USAGE:**\n```jsx\n<Stepper align=\"left\">\n  ...\n</Stepper>\n```"
+      },
+      {
+        "updated": [
+          "Stepper"
+        ],
+        "summary": "**Stepper:** Fix clipping of step name in Safari\n\nFixes issue where the descenders in Step labels were being clipped only in Safari."
+      }
+    ]
   }
 ]
