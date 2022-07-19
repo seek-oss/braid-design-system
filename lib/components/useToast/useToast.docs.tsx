@@ -15,13 +15,11 @@ import { useThemeSettings } from '../../../site/src/App/ThemeSetting';
 import Code from '../../../site/src/App/Code/Code';
 import Toast, { toastDuration } from './Toast';
 import source from '../../utils/source.macro';
-import { useToast } from './ToastContext';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id }) => {
+  Example: ({ id, showToast }) => {
     const { theme } = useThemeSettings();
-    const showToast = useToast();
 
     const { code, value } = source(
       <Inline space="large" align="center">
