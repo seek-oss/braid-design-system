@@ -29,30 +29,10 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: 'Version'
-        run: pnpm exec changeset version --snapshot ${{ github.ref_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
-
-      - name: Create an .npmrc
+      - name: 'Publish'
+        uses: seek-oss/changesets-snapshot@v0
+        with:
+          pre-publish: pnpm publish-package
         env:
           NPM_TOKEN: ${{ secrets.SEEK_OSS_CI_NPM_TOKEN }}
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-
-      - name: 'Publish'
-        run: |
-          OUTPUT=${{ github.run_number }}-output
-          pnpm run publish-package -- --no-git-tags --snapshot --tag ${{ github.ref_name }} | tee $OUTPUT
-          SNAPSHOT_VERSION=$(grep -E -o 'New tag:\s+(.*)' $OUTPUT | sed -r 's/New tag:  (v)?//')
-          cat << EOF >> $GITHUB_STEP_SUMMARY
-          ## :butterfly: New snapshot published!
-          Version: \`$SNAPSHOT_VERSION\`
-          \`\`\`
-          yarn add braid-design-system@${{ github.ref_name }}
-          \`\`\`
-          EOF
-        env:
-          GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
