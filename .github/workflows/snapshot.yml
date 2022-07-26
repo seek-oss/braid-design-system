@@ -1,6 +1,6 @@
 name: Snapshot
 
-on: push
+on: workflow_dispatch
 
 jobs:
   annotate:
