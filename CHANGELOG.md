@@ -1,5 +1,39 @@
 # braid-design-system
 
+## 31.15.0
+
+### Minor Changes
+
+- **IconArrow:** Add component ([#1130](https://github.com/seek-oss/braid-design-system/pull/1130))
+
+  Add new `IconArrow` component. The orientation of the arrow can be controlled using the `direction` prop.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconArrow direction="left" />
+  ```
+
+- **Stepper:** Add align prop ([#1126](https://github.com/seek-oss/braid-design-system/pull/1126))
+
+  Provide the `align` prop which now includes support for `left` alignment.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Stepper align="left">...</Stepper>
+  ```
+
+### Patch Changes
+
+- **RadioGroup:** Remove surrounding white space with no visual label ([#1129](https://github.com/seek-oss/braid-design-system/pull/1129))
+
+  Removes additional white space applied above the `RadioItem`s when no visible `label` is provided, i.e. when labelling via `aria-label` or `aria-labelledby`.
+
+- **Stepper:** Fix clipping of step name in Safari ([#1126](https://github.com/seek-oss/braid-design-system/pull/1126))
+
+  Fixes issue where the descenders in Step labels were being clipped only in Safari.
+
 ## 31.14.0
 
 ### Minor Changes
