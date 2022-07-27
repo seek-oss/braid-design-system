@@ -25,7 +25,8 @@
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "release": "pnpm run setup && pnpm build-codemod && changeset publish && pnpm build && pnpm deploy",
+    "release": "pnpm run prepare-publish && changeset publish && pnpm build && pnpm deploy",
+    "prepare-publish": "pnpm run setup && pnpm build-codemod",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
     "prepare": "patch-package && husky install",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
