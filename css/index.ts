@@ -19,6 +19,7 @@ const {
   borderColor,
   borderRadius,
   borderWidth,
+  shadow,
 } = internalVars;
 
 const vars = {
@@ -32,6 +33,7 @@ const vars = {
   borderColor,
   borderRadius,
   borderWidth,
+  shadow,
 };
 
 function atoms(props: Omit<Atoms, 'background'>) {

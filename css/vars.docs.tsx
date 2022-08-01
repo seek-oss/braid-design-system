@@ -7,10 +7,11 @@ import {
   Stack,
   Columns,
   Column,
-  Box,
   Hidden,
   Alert,
+  List,
 } from '../lib/components';
+import { Box, BoxProps } from '../lib/components/Box/Box';
 import { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings';
 import Code from '../site/src/App/Code/Code';
 import { ThemedExample, useThemeSettings } from '../site/src/App/ThemeSetting';
@@ -21,10 +22,12 @@ const Row = ({
   group,
   name,
   children,
+  background,
 }: {
   group?: string;
   name: string;
   children: ReactNode;
+  background?: BoxProps['background'];
 }) => (
   <Columns space="large" alignY="center">
     <Column>
@@ -35,7 +38,7 @@ const Row = ({
     </Column>
     <Column width="content">
       <Box style={{ color: vars.foregroundColor.neutral as any }}>
-        <ThemedExample>
+        <ThemedExample background={background}>
           <Box display="flex">{children}</Box>
         </ThemedExample>
       </Box>
@@ -246,6 +249,29 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
       ))}
     </Stack>
   ),
+  shadow: (
+    <Stack space="small" dividers>
+      {Object.entries(vars.shadow).map(([shadowName, shadowVar]) => (
+        <Row
+          key={shadowName}
+          group="shadow"
+          name={shadowName}
+          background={{ lightMode: 'body', darkMode: 'body' }}
+        >
+          <Box display="inlineBlock" padding="xsmall" borderRadius="standard">
+            <Box
+              background={{ lightMode: 'surface', darkMode: 'surface' }}
+              style={{
+                boxShadow: shadowVar,
+                width: '32px',
+                height: '32px',
+              }}
+            />
+          </Box>
+        </Row>
+      ))}
+    </Stack>
+  ),
 } as const;
 
 const docs: CssDoc = {
@@ -283,6 +309,15 @@ const docs: CssDoc = {
           <TextLink href="/css/atoms">atoms</TextLink>.
         </Text>
       </Alert>
+      <List space="medium">
+        {Object.entries(varDocs).map(([name]) => (
+          <Text key={name}>
+            <TextLink href={`#vars.${name.toLowerCase()}`} hitArea="large">
+              {name}
+            </TextLink>
+          </Text>
+        ))}
+      </List>
     </>
   ),
   additional: Object.entries(varDocs).map(([name, value]) => ({
