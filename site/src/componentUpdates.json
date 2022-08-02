@@ -2598,5 +2598,16 @@
         "summary": "**Stepper:** Fix clipping of step name in Safari\n\nFixes issue where the descenders in Step labels were being clipped only in Safari."
       }
     ]
+  },
+  {
+    "version": "31.16.0",
+    "updates": [
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Expose shadow palette\n\nProvide access to the themed `shadow` scale on the `vars` object\n\n**EXAMPLE USAGE:**\n```jsx\nimport { vars } from 'braid-design-system/css';\n\nexport const dropShadow = style({\n  boxShadow: vars.shadow.small,\n});\n```"
+      }
+    ]
   }
 ]

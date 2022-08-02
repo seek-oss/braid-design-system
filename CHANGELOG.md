@@ -1,5 +1,23 @@
 # braid-design-system
 
+## 31.16.0
+
+### Minor Changes
+
+- **vars:** Expose shadow palette ([#1133](https://github.com/seek-oss/braid-design-system/pull/1133))
+
+  Provide access to the themed `shadow` scale on the `vars` object
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  import { vars } from 'braid-design-system/css';
+
+  export const dropShadow = style({
+    boxShadow: vars.shadow.small,
+  });
+  ```
+
 ## 31.15.0
 
 ### Minor Changes
