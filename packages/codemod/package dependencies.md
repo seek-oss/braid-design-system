@@ -8,6 +8,7 @@ A temporary manifest of the dependencies required for the codemod, until Braid b
   "@types/cli-progress": "^3.9.2",
   "@types/react": "^17.0.27",
   "@types/workerpool": "^6.1.0",
+  "babel-plugin-tester": "^10.1.0",
   "chalk": "^4.1.2",
   "cli-highlight": "^2.1.11",
   "cli-progress": "^3.9.1",
