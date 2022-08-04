@@ -9,3 +9,4 @@
 
 - Review .npmignore
 - Fill out codemode/package.json
+- Set up NX so we can run tsc inside each package (and do other monorepo stuff)

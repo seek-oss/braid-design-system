@@ -14,9 +14,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "braid-upgrade": "./codemod/dist/index.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seek-oss/braid-design-system.git",
@@ -33,6 +30,7 @@
     "@capsizecss/core": "^3.0.0",
     "@capsizecss/vanilla-extract": "^1.0.0",
     "@types/autosuggest-highlight": "^3.1.1",
+    "@types/babel-plugin-tester": "^9.0.5",
     "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.168",
     "@types/uuid": "^8.3.0",
@@ -68,8 +66,10 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
     "@types/babel-plugin-macros": "^2.8.5",
+    "@types/jest": "^28.1.6",
     "@types/react-router-dom": "^5.3.3",
     "@types/sanitize-html": "^2.6.2",
+    "@types/testing-library__jest-dom": "^5.9.1",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-tester": "^10.1.0",
     "change-case": "^4.1.2",

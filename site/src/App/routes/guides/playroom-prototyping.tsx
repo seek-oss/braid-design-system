@@ -16,14 +16,14 @@ import {
   Box,
   Columns,
   Column,
-} from '../../../../../lib/components';
+} from 'braid-design-system/lib/components';
 import {
   Checkbox,
   Drawer,
   Placeholder,
   TextField,
-} from '../../../../../lib/playroom/components';
-import source from '../../../../../lib/utils/source.macro';
+} from 'braid-design-system/lib/playroom/components';
+import source from 'braid-design-system/lib/utils/source.macro';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';

@@ -2,10 +2,9 @@
 *.less.d.ts
 coverage/
 dist-storybook/
+dist/
 report/
-site/dist/
 # end managed by sku
-
 CHANGELOG.md
 .changeset/*.md
 componentUpdates.json

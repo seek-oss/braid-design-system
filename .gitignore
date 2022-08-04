@@ -6,12 +6,6 @@ package-lock.json
 .vscode/*.json
 .idea/
 
-# managed by sku
-.eslintrc
-.prettierrc
-coverage/
 dist-storybook/
+dist/
 report/
-site/dist/
-tsconfig.json
-# end managed by sku

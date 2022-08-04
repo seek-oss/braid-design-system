@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '../../../../lib/components';
+import { Box } from 'braid-design-system/lib/components';
 
 import * as styles from './InlineCode.css';
 

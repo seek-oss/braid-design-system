@@ -9,7 +9,7 @@ import {
   TooltipRenderer,
   TextLink,
   IconInfo,
-} from '../../../../lib/components';
+} from 'braid-design-system/lib/components';
 import componentDocs from '../../../../generate-component-docs/componentDocs.json';
 import type {
   NormalisedPropType,

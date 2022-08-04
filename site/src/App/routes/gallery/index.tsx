@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { parseToHsl, setLightness } from 'polished';
 
 import { PageTitle } from '../../Seo/PageTitle';
-import { Box } from '../../../../../lib/components';
+import { Box } from 'braid-design-system/lib/components';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings } from '../../ThemeSetting';
 import { Gallery } from './Gallery';
-import { darkMode } from '../../../../../lib/css/atoms/sprinkles.css';
+import { darkMode } from 'braid-design-system/lib/css/atoms/sprinkles.css';
 import * as styles from './gallery.css';
 
 const useBackgroundColor = () => {

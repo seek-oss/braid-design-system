@@ -5,7 +5,7 @@ import {
   Stack,
   Heading,
   Divider,
-} from '../../../../../lib/components';
+} from 'braid-design-system/lib/components';
 import { useConfig } from '../../ConfigContext';
 
 export const HomePage = () => {

@@ -9,8 +9,14 @@ const aliasWhitelist = ['ClassValue'];
 const propBlacklist = ['key'];
 
 const tsconfigPath = path.join(__dirname, '../tsconfig.json');
-const componentsFile = path.join(__dirname, '../lib/components/index.ts');
-const testComponentsFile = path.join(__dirname, '../test/index.ts');
+const componentsFile = path.join(
+  __dirname,
+  '../packages/braid-design-system/lib/components/index.ts',
+);
+const testComponentsFile = path.join(
+  __dirname,
+  '../packages/braid-design-system/test/index.ts',
+);
 
 const stringAliases: Record<string, string> = {
   // with an explicit alias 'boolean' becomes a union of 'true' | 'false'

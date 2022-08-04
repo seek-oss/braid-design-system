@@ -1,7 +1,7 @@
 const path = require('path');
-const routes = require('./site/sku.routes.js');
+const routes = require('./sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const browserslist = require('./browserslist');
+const browserslist = require('../browserslist');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 

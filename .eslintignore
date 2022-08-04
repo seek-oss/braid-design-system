@@ -2,8 +2,7 @@
 *.less.d.ts
 coverage/
 dist-storybook/
+dist/
 report/
-site/dist/
 # end managed by sku
-
 codemod/dist

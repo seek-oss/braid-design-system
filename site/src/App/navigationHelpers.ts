@@ -1,8 +1,8 @@
 import groupBy from 'lodash/groupBy';
-import * as components from '../../../lib/components';
-import * as testComponents from '../../../test';
-import * as css from '../../../css';
-import { BraidSnippet } from '../../../lib/components/private/Snippets';
+import * as components from 'braid-design-system/lib/components';
+import * as testComponents from 'braid-design-system/test';
+import * as css from 'braid-design-system/css';
+import { BraidSnippet } from 'braid-design-system/lib/components/private/Snippets';
 import { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 

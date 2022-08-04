@@ -1,8 +1,8 @@
 import React, { SVGProps } from 'react';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box } from '../../../../lib/components/Box/Box';
-import useIcon, { UseIconProps } from '../../../../lib/hooks/useIcon';
+import { Box } from 'braid-design-system/lib/components/Box/Box';
+import useIcon, { UseIconProps } from 'braid-design-system/lib/hooks/useIcon';
 
 // Adapted from https://github.com/feathericons/feather
 const PlaySvg = (props: SVGProps<SVGSVGElement>) => (

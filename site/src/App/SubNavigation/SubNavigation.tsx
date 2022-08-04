@@ -10,7 +10,7 @@ import {
   Stack,
   Inline,
   Badge,
-} from '../../../../lib/components';
+} from 'braid-design-system/lib/components';
 import { ThemeToggle } from '../ThemeSetting';
 import {
   categorisedComponents,

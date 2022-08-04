@@ -22,10 +22,12 @@
     "@vanilla-extract/css-utils": "^0.1.1",
     "assert": "^2.0.0",
     "braid-design-system": "workspace:*",
+    "circular-dependency-plugin": "^5.2.2",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.28.0",
     "dedent": "0.7.0",
     "didyoumean2": "^5.0.0",
+    "fs-extra": "^10.1.0",
     "lodash": "^4.17.21",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
@@ -43,6 +45,7 @@
     "react-router-dom": "^6.3.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
-    "recoil": "^0.7.2"
+    "recoil": "^0.7.2",
+    "sku": "^11.4.2"
   }
 }

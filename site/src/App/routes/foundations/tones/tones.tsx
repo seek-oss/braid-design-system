@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoxProps } from '../../../../../../lib/components/Box/Box';
+import { BoxProps } from 'braid-design-system/lib/components/Box/Box';
 import {
   Text,
   Columns,
@@ -8,10 +8,10 @@ import {
   Stack,
   Divider,
   Hidden,
-} from '../../../../../../lib/components';
+} from 'braid-design-system/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box } from '../../../../../../lib/components/Box/Box';
+import { Box } from 'braid-design-system/lib/components/Box/Box';
 import { TextStack } from '../../../TextStack/TextStack';
 import { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';

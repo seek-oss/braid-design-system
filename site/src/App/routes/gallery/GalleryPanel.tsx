@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '../../../../../lib/components';
-import { Overlay } from '../../../../../lib/components/private/Overlay/Overlay';
-import { ReactNodeNoStrings } from '../../../../../lib/components/private/ReactNodeNoStrings';
+import { Box } from 'braid-design-system/lib/components';
+import { Overlay } from 'braid-design-system/lib/components/private/Overlay/Overlay';
+import { ReactNodeNoStrings } from 'braid-design-system/lib/components/private/ReactNodeNoStrings';
 import * as styles from './gallery.css';
 
 export const GalleryPanel = ({

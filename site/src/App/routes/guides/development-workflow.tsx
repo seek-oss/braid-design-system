@@ -12,14 +12,14 @@ import {
   Columns,
   Column,
   Box,
-} from '../../../../../lib/components';
+} from 'braid-design-system/lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
-import source from '../../../../../lib/utils/source.macro';
+import source from 'braid-design-system/lib/utils/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';
-import { VanillaMigrationBanner } from '../../../../../css/VanillaMigrationBanner';
+import { VanillaMigrationBanner } from 'braid-design-system/css/VanillaMigrationBanner';
 import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
 
 const DevelopmentWorkflow = () => (

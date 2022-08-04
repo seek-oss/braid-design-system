@@ -5,7 +5,7 @@ import {
   TextLink,
   Strong,
   Divider,
-} from '../../../../../lib/components';
+} from 'braid-design-system/lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';

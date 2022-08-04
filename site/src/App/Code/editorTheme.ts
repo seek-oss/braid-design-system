@@ -1,4 +1,4 @@
-import { palette } from '../../../../lib/color/palette';
+import { palette } from 'braid-design-system/lib/color/palette';
 
 const tag = palette.blue['300'];
 const attribute = palette.blue['200'];
