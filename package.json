@@ -17,7 +17,7 @@
     "lint": "pnpm run setup && SKU_TELEMETRY=false sku lint",
     "format": "SKU_TELEMETRY=false sku format",
     "generate-component-docs": "ts-node generate-component-docs",
-    "generate-icons": "node scripts/generateIcons.js",
+    "generate-icons": "node packages/braid-design-system/scripts/generateIcons.js",
     "setup": "SKU_TELEMETRY=false sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"pnpm generate-component-docs\" \"pnpm generate-icons\"",
     "build-codemod": "node ./codemod/scripts/build",
     "build": "pnpm run setup && NODE_ENV=production SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"playroom build\"",
@@ -28,7 +28,7 @@
     "release": "pnpm run prepare-publish && changeset publish && pnpm build && pnpm deploy",
     "prepare-publish": "pnpm run setup && pnpm build-codemod",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
-    "prepare": "patch-package && husky install",
+    "prepare": "husky install",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
   "bin": {
@@ -45,15 +45,17 @@
   },
   "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/preset-typescript": "^7.17.12",
     "@babel/runtime": "^7.18.0",
     "@changesets/cli": "^2.22.0",
     "@changesets/get-github-info": "^0.5.0",
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^28.1.6",
     "@types/lodash": "^4.14.168",
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.5",
     "@types/react-router-dom": "^5.3.3",
     "@types/sanitize-html": "^2.6.2",
     "@types/webpack-env": "^1.17.0",
@@ -67,9 +69,9 @@
     "husky": "^8.0.1",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.6.0",
-    "patch-package": "^6.4.7",
     "playroom": "^0.28.0",
-    "postinstall-postinstall": "^2.1.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "renovate-config-seek": "0.4.0",
     "sku": "^11.4.2",
     "surge": "^0.23.1",
@@ -78,5 +80,10 @@
   },
   "volta": {
     "node": "16.13.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "panzoom@9.4.2": "patches/panzoom@9.4.2.patch"
+    }
   }
 }

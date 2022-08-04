@@ -5,8 +5,6 @@ package-lock.json
 .DS_Store
 .vscode/*.json
 .idea/
-componentDocs.json
-lib/components/icons/*/*Svg.tsx
 
 # managed by sku
 .eslintrc

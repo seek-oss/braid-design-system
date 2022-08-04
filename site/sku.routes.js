@@ -3,7 +3,7 @@ const path = require('path');
 const flatten = require('lodash/flatten');
 
 const extractExports = require('./extractExports');
-const undocumentedExports = require('./site/src/undocumentedExports.json');
+const undocumentedExports = require('./src/undocumentedExports.json');
 
 const getExports = (relativePath, exportType = 'components') => {
   const sourcePath = path.join(__dirname, relativePath);
@@ -23,14 +23,21 @@ const getPages = (relativePath) => {
 
 // TODO: COLORMODE RELEASE
 // Remove `colorModeStyle` from `undocumentedExports.json`
-const cssNames = getExports('css/index.ts', 'css');
-const componentNames = getExports('lib/components/index.ts');
-const testNames = getExports('test/index.ts');
-const iconNames = getExports('lib/components/icons/index.ts');
+const cssNames = getExports(
+  '../packages/braid-design-system/css/index.ts',
+  'css',
+);
+const componentNames = getExports(
+  '../packages/braid-design-system/lib/components/index.ts',
+);
+const testNames = getExports('../packages/braid-design-system/test/index.ts');
+const iconNames = getExports(
+  '../packages/braid-design-system/lib/components/icons/index.ts',
+);
 
-const guideRoutes = getPages('site/src/App/routes/guides/index.ts');
-const foundationRoutes = getPages('site/src/App/routes/foundations/index.ts');
-const exampleRoutes = getPages('site/src/App/routes/examples/index.ts');
+const guideRoutes = getPages('src/App/routes/guides/index.ts');
+const foundationRoutes = getPages('src/App/routes/foundations/index.ts');
+const exampleRoutes = getPages('src/App/routes/examples/index.ts');
 
 module.exports = [
   { route: '/', name: 'home' },

@@ -1,5 +1,5 @@
 const path = require('path');
-const routes = require('./sku.routes.js');
+const routes = require('./site/sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const browserslist = require('./browserslist');
 
@@ -17,16 +17,17 @@ const entries = Boolean(process.env.DEBUG_IE)
 
 module.exports = {
   srcPaths: [
-    'lib',
-    'color-mode',
+    'packages/braid-design-system/color-mode',
+    'packages/braid-design-system/css',
+    'packages/braid-design-system/lib',
+    'packages/braid-design-system/reset',
+    'packages/braid-design-system/scripts',
+    'packages/braid-design-system/test',
+    'packages/braid-design-system/themes',
     'codemod/src',
-    'css',
-    'themes',
-    'site/src',
-    'scripts',
     'generate-component-docs',
-    'reset',
-    'test',
+    'scripts',
+    'site/src',
   ],
   ...entries,
   routes,
