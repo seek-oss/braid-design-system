@@ -1,0 +1,31 @@
+{
+  "extends": "nx/presets/npm.json",
+  "npmScope": "seek",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["tsc"]
+      }
+    }
+  },
+  "targets": {
+    "build": ["dist"]
+  },
+  "targetDependencies": {
+    "tsc": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": false
+    }
+  }
+}

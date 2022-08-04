@@ -1,6 +1,14 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./lib"],
+  "include": [
+    "./color-mode",
+    "./css",
+    "./lib",
+    "./reset",
+    "./scripts",
+    "./test",
+    "./themes"
+  ],
   "compilerOptions": {
     "types": [
       "@types/babel-plugin-tester",

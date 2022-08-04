@@ -1,5 +1,6 @@
 {
   "name": "braid-design-system",
+  "private": true,
   "version": "31.16.0",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
@@ -15,7 +16,7 @@
     "test": "SKU_TELEMETRY=false sku test",
     "start": "pnpm run setup && SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"playroom start\"",
     "lint": "pnpm run setup && SKU_TELEMETRY=false sku lint",
-    "tsc": "tsc",
+    "tsc": "nx run-many --target tsc --all",
     "format": "SKU_TELEMETRY=false sku format",
     "generate-component-docs": "ts-node generate-component-docs",
     "generate-icons": "node packages/braid-design-system/scripts/generateIcons.js",
@@ -32,19 +33,12 @@
     "prepare": "husky install",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
-  "bin": {
-    "braid-upgrade": "./codemod/dist/index.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seek-oss/braid-design-system.git"
   },
   "author": "SEEK",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/seek-oss/braid-design-system/issues"
-  },
-  "homepage": "https://github.com/seek-oss/braid-design-system#readme",
   "dependencies": {
     "@babel/core": "^7.18.0",
     "@babel/preset-typescript": "^7.17.12",
@@ -68,6 +62,7 @@
     "husky": "^8.0.1",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.6.0",
+    "nx": "^14.5.3",
     "playroom": "^0.28.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

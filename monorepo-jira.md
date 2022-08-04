@@ -8,5 +8,5 @@
   - Need to consider metropolis
 
 - Review .npmignore
-- Fill out codemode/package.json
+- Fill out codemod/package.json
 - Set up NX so we can run tsc inside each package (and do other monorepo stuff)
