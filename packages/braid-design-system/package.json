@@ -29,6 +29,7 @@
   },
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "dependencies": {
+    "@babel/generator": "^7.18.0",
     "@capsizecss/core": "^3.0.0",
     "@capsizecss/vanilla-extract": "^1.0.0",
     "@types/autosuggest-highlight": "^3.1.1",
@@ -68,6 +69,7 @@
     "@testing-library/user-event": "^14.2.0",
     "@types/babel-plugin-macros": "^2.8.5",
     "@types/react-router-dom": "^5.3.3",
+    "@types/sanitize-html": "^2.6.2",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-tester": "^10.1.0",
     "change-case": "^4.1.2",
@@ -76,6 +78,8 @@
     "globby": "^11.1.0",
     "html-validate": "^7.1.1",
     "react-router-dom": "^6.3.0",
+    "sanitize-html": "^2.7.0",
+    "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   }
 }
