@@ -10,12 +10,12 @@ import {
   TextLink,
   IconInfo,
 } from 'braid-design-system/lib/components';
-import componentDocs from '../../../../generate-component-docs/componentDocs.json';
+import componentDocs from '../../../componentDocs.json';
 import type {
   NormalisedPropType,
   ExportDoc,
   NormalisedInterface,
-} from '../../../../generate-component-docs/generate';
+} from 'generate-component-docs/src/generate';
 import { DocsContext } from '../DocNavigation/DocNavigation';
 import { PageTitle } from '../Seo/PageTitle';
 import { useConfig } from '../ConfigContext';
