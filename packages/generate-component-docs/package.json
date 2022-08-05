@@ -1,0 +1,20 @@
+{
+  "name": "generate-component-docs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "bin": {
+    "generate-component-docs": "./bin.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esbuild-register": "^3.3.3"
+  },
+  "devDependencies": {}
+}

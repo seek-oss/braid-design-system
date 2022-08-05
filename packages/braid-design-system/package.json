@@ -12,6 +12,7 @@
     "*.css.ts"
   ],
   "scripts": {
+    "generate-icons": "node ./scripts/generateIcons.js",
     "tsc": "tsc"
   },
   "repository": {

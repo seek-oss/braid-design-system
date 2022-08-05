@@ -227,6 +227,14 @@ importers:
       '@types/babel-plugin-tester': 9.0.5
       '@types/dedent': 0.7.0
 
+  packages/generate-component-docs:
+    specifiers:
+      esbuild-register: ^3.3.3
+      tsm: ^2.2.2
+    dependencies:
+      esbuild-register: 3.3.3
+      tsm: 2.2.2
+
   site:
     specifiers:
       '@babel/core': ^7.18.0
@@ -247,6 +255,7 @@ importers:
       dedent: 0.7.0
       didyoumean2: ^5.0.0
       fs-extra: ^10.1.0
+      generate-component-docs: workspace:*
       lodash: ^4.17.21
       npm-registry-client: ^8.6.0
       panzoom: ^9.4.2
@@ -285,6 +294,7 @@ importers:
       dedent: 0.7.0
       didyoumean2: 5.0.0
       fs-extra: 10.1.0
+      generate-component-docs: link:../packages/generate-component-docs
       lodash: 4.17.21
       npm-registry-client: 8.6.0
       panzoom: 9.4.2_6ozlkenow5f4yy4lstsbsrrv4i
@@ -5464,7 +5474,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.4
       loader-utils: 2.0.2
-      webpack: 5.72.1
+      webpack: 5.72.1_esbuild@0.13.15
     transitivePeerDependencies:
       - supports-color
 
@@ -6355,7 +6365,7 @@ packages:
       loader-utils: 2.0.2
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.72.1
+      webpack: 5.72.1_esbuild@0.13.15
 
   /babel-plugin-add-module-exports/0.2.1:
     resolution: {integrity: sha512-3AN/9V/rKuv90NG65m4tTHsI04XrCKsWbztIcW7a8H5iIN7WlvWucRtVV0V/rT4QvtA11n5Vmp20fLwfMWqp6g==}
@@ -9142,6 +9152,12 @@ packages:
       esbuild: '>=0.12 <1'
     dependencies:
       esbuild: 0.13.15
+
+  /esbuild-register/3.3.3:
+    resolution: {integrity: sha512-eFHOkutgIMJY5gc8LUp/7c+LLlDqzNi9T6AwCZ2WKKl3HmT+5ef3ZRyPPxDOynInML0fgaC50yszPKfPnjC0NQ==}
+    peerDependencies:
+      esbuild: '>=0.12 <1'
+    dev: false
 
   /esbuild-sunos-64/0.13.15:
     resolution: {integrity: sha512-lbivT9Bx3t1iWWrSnGyBP9ODriEvWDRiweAs69vI+miJoeKwHWOComSRukttbuzjZ8r1q0mQJ8Z7yUsDJ3hKdw==}
@@ -13402,7 +13418,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
-      webpack: 5.72.1
+      webpack: 5.72.1_esbuild@0.13.15
 
   /minimalistic-assert/1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
@@ -18354,6 +18370,14 @@ packages:
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
+  /tsm/2.2.2:
+    resolution: {integrity: sha512-bXkt675NbbqfwRHSSn8kSNEEHvoIUFDM9G6tUENkjEKpAEbrEzieO3PxUiRJylMw8fEGpcf5lSjadzzz12pc2A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.14.39
+    dev: false
+
   /tsutils/3.21.0_typescript@4.4.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
@@ -19050,7 +19074,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: 5.72.1
+      webpack: 5.72.1_esbuild@0.13.15
 
   /webpack-dev-server/4.0.0-rc.0_debug@4.3.4+webpack@5.72.1:
     resolution: {integrity: sha512-9S+MywBN/ecr8AbXNVUnmbFji8UTtzLR6M5Dgy6sB5Ti/73UgHn8TMhLaSBZBkY/cmSmWHDSwUXFs8lOeARpOw==}

@@ -7,7 +7,7 @@ import generate from './generate';
   const typeDocs = generate();
 
   await fs.writeFile(
-    path.join(__dirname, './componentDocs.json'),
+    path.join(process.cwd(), './componentDocs.json'),
     JSON.stringify(typeDocs, null, 2),
     'utf8',
   );

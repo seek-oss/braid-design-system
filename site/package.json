@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "generate-component-docs": "generate-component-docs"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "dedent": "0.7.0",
     "didyoumean2": "^5.0.0",
     "fs-extra": "^10.1.0",
+    "generate-component-docs": "workspace:*",
     "lodash": "^4.17.21",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
