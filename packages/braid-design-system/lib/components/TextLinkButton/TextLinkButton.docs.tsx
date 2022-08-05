@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDocs } from '../../../../../site/src/types';
 import { Text, TextLink, TextLinkButton } from '..';
 import source from '../../utils/source.macro';
 import { Strong } from '../Strong/Strong';

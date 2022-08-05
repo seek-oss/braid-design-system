@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDocs } from '../../../../../site/src/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';

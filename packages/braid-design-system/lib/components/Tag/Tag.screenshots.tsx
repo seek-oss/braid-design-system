@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Tag, Inline, IconHelp } from '../';
 
 export const screenshots: ComponentScreenshot = {

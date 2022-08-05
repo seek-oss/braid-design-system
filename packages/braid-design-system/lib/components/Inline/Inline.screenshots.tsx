@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Box, Inline } from '../';
 import { spaces } from '../../utils/docsHelpers';

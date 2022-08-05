@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Autosuggest, filterSuggestions, IconSearch, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

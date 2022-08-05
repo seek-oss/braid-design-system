@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Bleed, Box, Stack, Text } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

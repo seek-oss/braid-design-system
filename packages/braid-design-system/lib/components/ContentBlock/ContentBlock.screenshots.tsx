@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { ContentBlock } from '../';
 

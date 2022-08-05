@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDocs } from '../../../../../site/src/types';
 import { FieldMessage, Alert, Text, Strong, Stack, Box } from '../';
 import { Placeholder } from '../../playroom/components';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';
 
 export const screenshots: ComponentScreenshot = {

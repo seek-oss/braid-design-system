@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
 import '../../reset';
 import * as themes from '../themes';
-import { ComponentScreenshot } from '../../site/src/types';
+import { ComponentScreenshot } from '../../../../site/src/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
 import { BraidProvider, ToastProvider } from '../components';
 // TODO: COLORMODE RELEASE

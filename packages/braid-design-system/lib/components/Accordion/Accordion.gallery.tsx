@@ -8,7 +8,7 @@ import {
   IconPromote,
   Placeholder,
 } from '../../playroom/components';
-import { ComponentExample } from '../../../site/src/types';
+import { ComponentExample } from '../../../../../site/src/types';
 
 export const galleryItems: ComponentExample[] = [
   {

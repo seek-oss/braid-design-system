@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from '../../../site/src/types';
+import { ComponentExample } from '../../../../../site/src/types';
 import source from '../../utils/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
 import { TooltipContent, TooltipRendererProps } from './TooltipRenderer';

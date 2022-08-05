@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDocs } from '../../../../../site/src/types';
 import { Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';

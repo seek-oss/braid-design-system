@@ -13,9 +13,12 @@ import {
 } from '../lib/components';
 import { Box, BoxProps } from '../lib/components/Box/Box';
 import { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings';
-import Code from '../site/src/App/Code/Code';
-import { ThemedExample, useThemeSettings } from '../site/src/App/ThemeSetting';
-import { CssDoc } from '../site/src/types';
+import Code from '../../../site/src/App/Code/Code';
+import {
+  ThemedExample,
+  useThemeSettings,
+} from '../../../site/src/App/ThemeSetting';
+import { CssDoc } from '../../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const Row = ({

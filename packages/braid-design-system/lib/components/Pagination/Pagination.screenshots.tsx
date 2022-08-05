@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Pagination } from '../';
 import { LinkProps } from '../Link/Link';
 import { defaultPageLimit } from './Pagination';

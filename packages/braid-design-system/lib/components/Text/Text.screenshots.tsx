@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode } from 'react';
 import { titleCase } from 'title-case';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Text, Stack, Column, Columns, IconPositive } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import

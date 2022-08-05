@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import { Badge, Box, MenuItemCheckbox } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
 

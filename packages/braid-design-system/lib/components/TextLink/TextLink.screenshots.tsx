@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentScreenshot } from '../../../site/src/types';
+import { ComponentScreenshot } from '../../../../../site/src/types';
 import {
   Heading,
   IconNewWindow,

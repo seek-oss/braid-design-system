@@ -10,8 +10,8 @@ import {
   TextLink,
 } from '../lib/components';
 import { breakpoints } from '../lib/css/breakpoints';
-import Code from '../site/src/App/Code/Code';
-import { CssDoc } from '../site/src/types';
+import Code from '../../../site/src/App/Code/Code';
+import { CssDoc } from '../../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints) as Array<keyof typeof breakpoints>;

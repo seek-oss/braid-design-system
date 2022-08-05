@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDocs } from '../../../../../site/src/types';
 import { useThemeName, Text, Strong } from '../../../';
 import source from '../../utils/source.macro';
 

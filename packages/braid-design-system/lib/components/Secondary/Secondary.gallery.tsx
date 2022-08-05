@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from '../../../site/src/types';
+import { ComponentExample } from '../../../../../site/src/types';
 import { Secondary, Text } from '../';
 import source from '../../utils/source.macro';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDocs } from '../../../site/src/types';
+import { ComponentDocs } from '../../../../../site/src/types';
 import { Box, Heading, Stack, Text, Strong } from '../';
 import { TextLink } from '../TextLink/TextLink';
 

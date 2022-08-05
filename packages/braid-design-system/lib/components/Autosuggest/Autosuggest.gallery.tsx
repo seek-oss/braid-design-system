@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from '../../../site/src/types';
+import { ComponentExample } from '../../../../../site/src/types';
 import { Autosuggest, filterSuggestions, IconSearch } from '../';
 import { makeSuggestions } from './Autosuggest.docs';
 import source from '../../utils/source.macro';

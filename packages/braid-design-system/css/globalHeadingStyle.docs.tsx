@@ -3,8 +3,8 @@ import React from 'react';
 import { Alert, Stack, Strong, Text, TextLink } from '../lib/components';
 import { globalHeadingStyle } from '../lib/hooks/typography';
 import source from '../lib/utils/source.macro';
-import Code from '../site/src/App/Code/Code';
-import { CssDoc } from '../site/src/types';
+import Code from '../../../site/src/App/Code/Code';
+import { CssDoc } from '../../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const docs: CssDoc = {

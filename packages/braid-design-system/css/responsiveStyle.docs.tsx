@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import { responsiveStyle, vars, breakpoints } from '.';
 import { Notice, Strong, Text, TextLink } from '../lib/components';
 import source from '../lib/utils/source.macro';
-import Code from '../site/src/App/Code/Code';
-import { CssDoc } from '../site/src/types';
+import Code from '../../../site/src/App/Code/Code';
+import { CssDoc } from '../../../site/src/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints);
