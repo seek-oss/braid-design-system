@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc",
-    "generate-component-docs": "generate-component-docs"
+    "generate-component-docs": "generate-component-docs",
+    "start": "sku start",
+    "tsc": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -49,5 +50,6 @@
     "react-use": "^17.4.0",
     "recoil": "^0.7.2",
     "sku": "^11.4.2"
-  }
+  },
+  "skuSkipPostInstall": true
 }

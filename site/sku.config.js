@@ -5,35 +5,23 @@ const browserslist = require('../browserslist');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
-const entries = Boolean(process.env.DEBUG_IE)
-  ? {
-      clientEntry: './site/src/IE-debug/client.tsx',
-      renderEntry: './site/src/IE-debug/render.tsx',
-    }
-  : {
-      clientEntry: './site/src/client.tsx',
-      renderEntry: './site/src/render.tsx',
-    };
-
 module.exports = {
   srcPaths: [
-    'packages/braid-design-system/color-mode',
-    'packages/braid-design-system/css',
-    'packages/braid-design-system/lib',
-    'packages/braid-design-system/reset',
-    'packages/braid-design-system/scripts',
-    'packages/braid-design-system/test',
-    'packages/braid-design-system/themes',
-    'codemod/src',
-    'generate-component-docs',
-    'scripts',
-    'site/src',
+    '../packages/braid-design-system/color-mode',
+    '../packages/braid-design-system/css',
+    '../packages/braid-design-system/lib',
+    '../packages/braid-design-system/reset',
+    '../packages/braid-design-system/scripts',
+    '../packages/braid-design-system/test',
+    '../packages/braid-design-system/themes',
+    'src',
   ],
-  ...entries,
+  clientEntry: './src/client.tsx',
+  renderEntry: './src/render.tsx',
   routes,
   rootResolution: false,
-  public: './site/src/public',
-  target: './site/dist',
+  public: './src/public',
+  target: './dist',
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   supportedBrowsers: browserslist,
   setupTests: './setupTests.ts',
@@ -48,7 +36,7 @@ module.exports = {
 
     // Import Changelog as a raw string so it can be passed to the markdown renderer
     config.module.rules.push({
-      test: path.join(__dirname, 'CHANGELOG.md'),
+      test: path.join(__dirname, '../CHANGELOG.md'),
       type: 'asset/source',
     });
 

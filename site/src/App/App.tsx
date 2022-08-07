@@ -1,4 +1,4 @@
-import '../../../lib/css/reset';
+import 'braid-design-system/reset';
 import React, { StrictMode, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';

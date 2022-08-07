@@ -8,5 +8,8 @@
     "./scripts",
     "./test",
     "./themes"
-  ]
+  ],
+  "compilerOptions": {
+    "types": ["@types/jest", "@types/testing-library__jest-dom"]
+  }
 }
