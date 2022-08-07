@@ -5,18 +5,33 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["tsc"]
+        "cacheableOperations": [
+          "tsc",
+          "generate-icons",
+          "generate-component-docs"
+        ]
       }
     }
   },
   "targets": {
-    "build": ["dist"]
+    "build": ["dist"],
+    "generate-component-docs": ["componentDocs.json"]
   },
   "targetDependencies": {
     "tsc": [
       {
         "target": "build",
         "projects": "dependencies"
+      }
+    ],
+    "start": [
+      {
+        "target": "generate-icons",
+        "projects": "dependencies"
+      },
+      {
+        "target": "generate-component-docs",
+        "projects": "self"
       }
     ]
   },
