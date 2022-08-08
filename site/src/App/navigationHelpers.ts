@@ -6,11 +6,8 @@ import { BraidSnippet } from 'braid-design-system/lib/components/private/Snippet
 import { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
-const braidComponentsPath =
-  '../../../packages/braid-design-system/lib/components/';
-
 const componentDocsContext = require.context(
-  braidComponentsPath,
+  '../../../packages/braid-design-system/lib/components/',
   true,
   /.docs\.tsx$/,
 );
@@ -34,7 +31,7 @@ export const getCssDoc = (cssName: string) =>
   cssDocsContext(`./${cssName}.docs.tsx`).default as CssDoc;
 
 const snippetsContext = require.context(
-  braidComponentsPath,
+  '../../../packages/braid-design-system/lib/components/',
   true,
   /\.snippets\.tsx?$/,
 );
@@ -103,7 +100,7 @@ const getComponentNameFromFilename = (filename: string) => {
 };
 
 const galleryContext = require.context(
-  braidComponentsPath,
+  '../../../packages/braid-design-system/lib/components/',
   true,
   /.gallery\.tsx$/,
 );
