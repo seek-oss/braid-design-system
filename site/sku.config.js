@@ -40,6 +40,12 @@ module.exports = {
       type: 'asset/source',
     });
 
+    // Hack to fix 'sku/treat' imports until we kill treat
+    config.resolve.alias['sku/treat'] = path.resolve(
+      __dirname,
+      './node_modules/sku/treat',
+    );
+
     return config;
   },
   skipPackageCompatibilityCompilation: ['lodash', 'prettier'],

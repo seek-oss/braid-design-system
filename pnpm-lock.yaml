@@ -4,6 +4,9 @@ patchedDependencies:
   panzoom@9.4.2:
     hash: 6ozlkenow5f4yy4lstsbsrrv4i
     path: patches/panzoom@9.4.2.patch
+  sku@11.4.2:
+    hash: l277xo6j6qxoo2jcry6iyxyt64
+    path: patches/sku@11.4.2.patch
 
 importers:
 
@@ -174,7 +177,7 @@ importers:
       html-validate: 7.1.1
       react-router-dom: 6.3.0
       sanitize-html: 2.7.0
-      sku: 11.4.2
+      sku: 11.4.2_l277xo6j6qxoo2jcry6iyxyt64
       svgo: 2.8.0
       title-case: 3.0.3
 
@@ -311,7 +314,7 @@ importers:
       react-syntax-highlighter: 15.5.0_react@18.1.0
       react-use: 17.4.0_2q7l3o2s2f77g7novtsxtrhvne
       recoil: 0.7.2_2q7l3o2s2f77g7novtsxtrhvne
-      sku: 11.4.2_2q7l3o2s2f77g7novtsxtrhvne
+      sku: 11.4.2_l277xo6j6qxoo2jcry6iyxyt64_2q7l3o2s2f77g7novtsxtrhvne
 
 packages:
 
@@ -16888,7 +16891,7 @@ packages:
   /sisteransi/1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  /sku/11.4.2:
+  /sku/11.4.2_l277xo6j6qxoo2jcry6iyxyt64:
     resolution: {integrity: sha512-QHefH5jEdBXyW8/c/QrQde9/HrIjCUc4JW7MIuZrRKg2v9ILWXkw3AxMVpdFe5SyCmNCWik+wxzB+HmKXCTwGg==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -17029,8 +17032,9 @@ packages:
       - webpack-hot-middleware
       - webpack-plugin-serve
     dev: true
+    patched: true
 
-  /sku/11.4.2_2q7l3o2s2f77g7novtsxtrhvne:
+  /sku/11.4.2_l277xo6j6qxoo2jcry6iyxyt64_2q7l3o2s2f77g7novtsxtrhvne:
     resolution: {integrity: sha512-QHefH5jEdBXyW8/c/QrQde9/HrIjCUc4JW7MIuZrRKg2v9ILWXkw3AxMVpdFe5SyCmNCWik+wxzB+HmKXCTwGg==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -17172,6 +17176,7 @@ packages:
       - webpack-hot-middleware
       - webpack-plugin-serve
     dev: false
+    patched: true
 
   /slash/2.0.0:
     resolution: {integrity: sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==}
