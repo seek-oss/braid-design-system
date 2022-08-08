@@ -5,6 +5,8 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
+    "eslint": "eslint --ignore-path ../../.eslintignore .",
+    "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "tsc": "tsc"
   },
   "bin": {
@@ -14,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^28.1.6",
     "esbuild-register": "^3.3.3"
   },
   "devDependencies": {}

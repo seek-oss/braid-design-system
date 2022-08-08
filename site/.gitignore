@@ -1,9 +1,3 @@
 node_modules/
 dist/
 componentDocs.json
-
-# managed by sku
-dist-storybook/
-report/
-site/dist/
-# end managed by sku

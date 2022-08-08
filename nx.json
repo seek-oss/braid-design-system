@@ -6,6 +6,8 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
+          "eslint",
+          "format",
           "tsc",
           "generate-icons",
           "generate-component-docs"
@@ -19,6 +21,18 @@
   },
   "targetDependencies": {
     "tsc": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "eslint": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "format": [
       {
         "target": "build",
         "projects": "dependencies"

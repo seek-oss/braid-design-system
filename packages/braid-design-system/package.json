@@ -12,6 +12,8 @@
     "*.css.ts"
   ],
   "scripts": {
+    "eslint": "eslint --ignore-path ../../.eslintignore .",
+    "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "generate-icons": "node ./scripts/generateIcons.js",
     "tsc": "tsc"
   },
