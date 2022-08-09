@@ -1,5 +1,6 @@
 {
-  "name": "braid-design-system-site",
+  "name": "braid-site",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
