@@ -87,7 +87,6 @@
     "playroom": "^0.28.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.7.0",
-    "sku": "^11.4.2",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   }
