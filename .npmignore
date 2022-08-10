@@ -1,6 +1,6 @@
 .github/
 docs/
-generate-component-docs/
+packages/generate-component-docs/
 report/
 scripts/
 site/
