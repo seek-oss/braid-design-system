@@ -25,7 +25,7 @@
     "generate-icons": "nx run braid-design-system:generate-icons",
     "setup": "concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"pnpm generate-component-docs\" \"pnpm generate-icons\"",
     "build-codemod": "node ./packages/codemod/scripts/build",
-    "build": "pnpm run setup && NODE_ENV=production SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"pnpm nx run braid-site:build\" \"playroom build\"",
+    "build": "pnpm run setup && NODE_ENV=production SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"pnpm nx run braid-site:build\" \"pnpm nx run braid-site:playroom-build\"",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "deploy": "node scripts/deploy.js",
