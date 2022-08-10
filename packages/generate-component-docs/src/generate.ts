@@ -10,7 +10,7 @@ const propBlacklist = ['key'];
 
 const tsconfigPath = path.join(
   __dirname,
-  '../../braid-design-system//tsconfig.json',
+  '../../braid-design-system/tsconfig.json',
 );
 const componentsFile = path.join(
   __dirname,

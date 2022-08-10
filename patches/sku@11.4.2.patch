@@ -1,8 +1,11 @@
 diff --git a/bin/sku.js b/bin/sku.js
-index 0029c6c8074ae05a91b2d11fa4831fe878206c71..b388f943566d14bbbf6261a1f86cdac9f0a349df 100755
+index 0029c6c8074ae05a91b2d11fa4831fe878206c71..be6b7f1955c8b97a713c036f3815af5be6654858 100755
 --- a/bin/sku.js
 +++ b/bin/sku.js
-@@ -53,7 +53,7 @@ log(`Starting script: ${script}`);
+@@ -50,10 +50,10 @@ log(`Starting script: ${script}`);
+     case 'build':
+     case 'build-ssr':
+     case 'serve': {
 -      await configureProject();
 +      // await configureProject();
  
@@ -12,17 +15,3 @@ index 0029c6c8074ae05a91b2d11fa4831fe878206c71..b388f943566d14bbbf6261a1f86cdac9
        runScript(script);
        break;
      }
-diff --git a/scripts/postinstall.js b/scripts/postinstall.js
-index ecb0e1c7a5a99b7b46c4f69da5a46351a53ac800..848e0625de40ff259c2debf09f75cb0bf6ecf780 100755
---- a/scripts/postinstall.js
-+++ b/scripts/postinstall.js
-@@ -22,6 +22,9 @@ if (packageJsonExists) {
-     skuSkipPostInstall = false,
-     skuSkipPostinstall = false,
-   } = require(packageJson);
-+  log('packageJson', packageJson);
-+  log('skuSkipPostInstall', skuSkipPostInstall);
-+  log(require(packageJson));
- 
-   const skipPostInstall = skuSkipPostInstall || skuSkipPostinstall;
- 

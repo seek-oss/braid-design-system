@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import React from 'react';
 import { render } from '@testing-library/react';

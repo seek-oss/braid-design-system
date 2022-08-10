@@ -1,5 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
-
+import '@testing-library/jest-dom';
 import React, { ReactNode } from 'react';
 import { render, act, waitFor, getByTestId } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -26,7 +25,7 @@ function renderTestApp() {
     return <div />;
   };
 
-  const { queryAllByRole, getByText } = render(
+  const { queryAllByRole, getByText, findByText } = render(
     <App>
       <TestCase />
     </App>,
@@ -41,7 +40,7 @@ function renderTestApp() {
     getAction: (actionLabel: string) => getByText(actionLabel),
     clearToast: (container: HTMLElement) =>
       userEvent.click(getByTestId(container, 'clearToast')),
-    getToastByMessage: (message: string) => getByText(message),
+    findToastByMessage: async (message: string) => findByText(message),
   };
 }
 
@@ -65,7 +64,7 @@ describe('useToast', () => {
   });
 
   it('should handle multiple toasts', async () => {
-    const { showToast, queryAllToasts, clearToast, getToastByMessage } =
+    const { showToast, queryAllToasts, clearToast, findToastByMessage } =
       renderTestApp();
 
     expect(queryAllToasts()).toHaveLength(0);
@@ -82,9 +81,9 @@ describe('useToast', () => {
 
     await waitFor(() => {
       expect(queryAllToasts()).toHaveLength(2);
-      expect(getToastByMessage('Toast 1')).toBeInTheDocument();
-      expect(getToastByMessage('Toast 3')).toBeInTheDocument();
     });
+    expect(await findToastByMessage('Toast 1')).toBeInTheDocument();
+    expect(await findToastByMessage('Toast 3')).toBeInTheDocument();
   });
 
   it('should handle actions', async () => {
@@ -112,7 +111,7 @@ describe('useToast', () => {
   });
 
   it('should handle multiple toasts with actions', async () => {
-    const { showToast, getAction, queryAllToasts, getToastByMessage } =
+    const { showToast, getAction, queryAllToasts, findToastByMessage } =
       renderTestApp();
 
     const actionClickHandler1 = jest.fn();
@@ -142,12 +141,12 @@ describe('useToast', () => {
     await waitFor(() => {
       // Toast should be removed after action press
       expect(queryAllToasts()).toHaveLength(1);
-      expect(getToastByMessage('Some toast')).toBeInTheDocument();
     });
+    expect(await findToastByMessage('Some toast')).toBeInTheDocument();
   });
 
   it('should deduplicate toasts with the same key', async () => {
-    const { showToast, queryAllToasts, getToastByMessage } = renderTestApp();
+    const { showToast, queryAllToasts, findToastByMessage } = renderTestApp();
 
     const key1 = 'deduped-1';
     const key2 = 'deduped-2';
@@ -166,10 +165,10 @@ describe('useToast', () => {
       const allToasts = queryAllToasts();
 
       expect(allToasts).toHaveLength(4);
-      expect(getToastByMessage('Toast 2')).toBeInTheDocument();
-      expect(getToastByMessage('Toast 5')).toBeInTheDocument();
-      expect(getToastByMessage('Toast 6')).toBeInTheDocument();
-      expect(getToastByMessage('Toast 7')).toBeInTheDocument();
     });
+    expect(await findToastByMessage('Toast 2')).toBeInTheDocument();
+    expect(await findToastByMessage('Toast 5')).toBeInTheDocument();
+    expect(await findToastByMessage('Toast 6')).toBeInTheDocument();
+    expect(await findToastByMessage('Toast 7')).toBeInTheDocument();
   });
 });

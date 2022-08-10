@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import React from 'react';
 import { renderHook } from '@testing-library/react';
 import { BraidTestProvider } from '../../../test';

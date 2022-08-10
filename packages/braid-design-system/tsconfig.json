@@ -10,6 +10,6 @@
     "./themes"
   ],
   "compilerOptions": {
-    "types": ["@types/jest", "@types/testing-library__jest-dom"]
+    "types": ["@types/jest"]
   }
 }
