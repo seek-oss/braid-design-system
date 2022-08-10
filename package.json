@@ -14,8 +14,9 @@
   ],
   "scripts": {
     "test": "jest",
-    "start": "pnpm run setup && SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"playroom start\"",
+    "start": "pnpm run setup && SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"pnpm start-site\" \"pnpm start-playroom\"",
     "start-site": "pnpm nx run braid-site:start",
+    "start-playroom": "pnpm nx run braid-site:playroom",
     "lint": "pnpm run setup && manypkg check && pnpm lint:depcheck && pnpm nx run-many --target eslint --all",
     "lint:depcheck": "manypkg exec depcheck --ignore-patterns=dist --ignores=braid-design-system,generate-component-docs,@svgr/plugin-jsx,@svgr/plugin-prettier,assert,@types/jest,@testing-library/dom",
     "tsc": "nx run-many --target tsc --all",
@@ -81,7 +82,6 @@
     "jest-environment-jsdom": "^28.1.3",
     "jest-watch-typeahead": "^2.0.0",
     "lodash": "^4.17.21",
-    "mini-css-extract-plugin": "^2.6.0",
     "nx": "^14.5.3",
     "playroom": "^0.28.0",
     "prettier": "^2.6.2",

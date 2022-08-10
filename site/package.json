@@ -10,6 +10,7 @@
     "format": "eslint --ignore-path ../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "generate-component-docs": "generate-component-docs",
     "start": "SKU_TELEMETRY=false sku start",
+    "playroom": "playroom",
     "tsc": "tsc"
   },
   "keywords": [],
@@ -35,6 +36,7 @@
     "didyoumean2": "^5.0.0",
     "generate-component-docs": "*",
     "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
     "playroom": "^0.28.0",
