@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import glob from 'fast-glob';
 
-import { version } from '../package.json';
+import { version } from '../packages/braid-design-system/package.json';
 
 (async () => {
   const componentUpdateFiles = await glob('.changeset/*-data.json', {
