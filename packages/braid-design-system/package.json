@@ -14,6 +14,8 @@
   "scripts": {
     "eslint": "eslint --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
+    "storybook": "SKU_TELEMETRY=false sku storybook",
+    "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "generate-icons": "node ./scripts/generateIcons.js",
     "tsc": "tsc"
   },
