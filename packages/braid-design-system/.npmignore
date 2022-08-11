@@ -1,0 +1,10 @@
+scripts/
+site/
+./icons/
+**/__snapshots__/**/*
+*.test.tsx
+*.test.ts
+pnpm-lock.yaml
+sku.config.js
+tsconfig.json
+!lib/components/icons/*/*Svg.tsx
