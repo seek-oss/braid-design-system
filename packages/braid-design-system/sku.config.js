@@ -1,7 +1,5 @@
 const browserslist = require('../../browserslist');
 
-const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
-
 module.exports = {
   srcPaths: [
     './color-mode',
