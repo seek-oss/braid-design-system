@@ -172,6 +172,8 @@ importers:
     dependencies:
       '@capsizecss/core': 3.0.0
       '@capsizecss/vanilla-extract': 1.0.0_@vanilla-extract+css@1.7.2
+      '@types/autosuggest-highlight': 3.2.0
+      '@types/dedent': 0.7.0
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
@@ -201,10 +203,8 @@ importers:
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.2.0_2q7l3o2s2f77g7novtsxtrhvne
       '@testing-library/user-event': 14.2.0_tlwynutqiyp5mns3woioasuxnq
-      '@types/autosuggest-highlight': 3.2.0
       '@types/babel-plugin-macros': 2.8.5
       '@types/babel-plugin-tester': 9.0.5
-      '@types/dedent': 0.7.0
       '@types/jest': 28.1.6
       '@types/lodash': 4.14.182
       '@types/react-dom': 18.0.6
@@ -4402,7 +4402,7 @@ packages:
 
   /@types/autosuggest-highlight/3.2.0:
     resolution: {integrity: sha512-bTcsL4YYypjhKfPaImxuoMPiTyiUp7VGKytMr15/413IoazrOIfV/gca2ysI/IW0ftZYCPI5xppRm6IVX1Efqw==}
-    dev: true
+    dev: false
 
   /@types/babel-plugin-macros/2.8.5:
     resolution: {integrity: sha512-+NcIm/VBaSb4xaycov9f4Vmk4hMVPrgISoHEk+kalgVK6BlkwDZbXkW9kt1jCXVczTKXldL5RHIacExaWzxAkA==}
