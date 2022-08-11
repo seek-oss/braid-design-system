@@ -9,6 +9,6 @@ esbuild.buildSync({
   bundle: true,
   format: 'cjs',
   platform: 'node',
-  target: 'node12',
+  target: 'node14',
   outdir: '../dist',
 });
