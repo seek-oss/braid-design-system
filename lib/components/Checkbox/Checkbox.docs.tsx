@@ -147,21 +147,21 @@ const docs: ComponentDocs = {
           to the <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: ({ id, toggleState }) =>
         source(
           <Stack space="medium">
             <Checkbox
               id={`${id}_unchecked`}
               disabled={true}
               checked={false}
-              onChange={() => {}}
+              onChange={() => toggleState('unchecked')}
               label="Unchecked"
             />
             <Checkbox
               id={`${id}_checked`}
               disabled={true}
               checked={true}
-              onChange={() => {}}
+              onChange={() => toggleState('checked')}
               label="Checked"
             />
           </Stack>,
