@@ -3,6 +3,9 @@
   "version": "31.16.0",
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
+  "bin": {
+    "braid-upgrade": "./codemod/index.js"
+  },
   "sideEffects": [
     "lib/themes/**/*",
     "lib/css/atoms/**/*",
@@ -15,6 +18,7 @@
     "eslint": "eslint --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "storybook": "SKU_TELEMETRY=false sku storybook",
+    "build": "rm -rf ./codemod && cp -r ../codemod/dist ./codemod",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "generate-icons": "node ./scripts/generateIcons.js",
     "tsc": "tsc"
@@ -62,6 +66,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/generator": "^7.18.0",
+    "@seek/braid-codemod": "*",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",

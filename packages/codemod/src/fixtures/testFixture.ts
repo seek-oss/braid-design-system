@@ -1,6 +1,6 @@
-// @ts-ignore
+// @ts-expect-error
 import { atoms } from 'braid-design-system/css';
-// @ts-ignore
+// @ts-expect-error
 import { myShadow } from './shadows';
 
 const atomProps = {

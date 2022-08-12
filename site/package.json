@@ -5,13 +5,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "SKU_TELEMETRY=false sku build",
+    "build-site": "SKU_TELEMETRY=false sku build",
+    "build-playroom": "playroom build",
     "eslint": "eslint --ignore-path ../.eslintignore .",
     "format": "eslint --ignore-path ../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "generate-component-docs": "generate-component-docs",
-    "start": "SKU_TELEMETRY=false sku start",
+    "start-site": "SKU_TELEMETRY=false sku start",
     "playroom": "playroom",
-    "playroom-build": "playroom build",
     "tsc": "tsc"
   },
   "keywords": [],

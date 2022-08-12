@@ -1,2 +1,3 @@
 node_modules/
 lib/components/icons/*/*Svg.tsx
+codemod/

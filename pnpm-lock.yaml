@@ -118,6 +118,7 @@ importers:
       '@babel/generator': ^7.18.0
       '@capsizecss/core': ^3.0.0
       '@capsizecss/vanilla-extract': ^1.0.0
+      '@seek/braid-codemod': '*'
       '@svgr/core': ^5.5.0
       '@svgr/plugin-jsx': ^5.5.0
       '@svgr/plugin-prettier': ^5.5.0
@@ -196,6 +197,7 @@ importers:
     devDependencies:
       '@babel/core': 7.18.0
       '@babel/generator': 7.18.0
+      '@seek/braid-codemod': link:../codemod
       '@svgr/core': 5.5.0
       '@svgr/plugin-jsx': 5.5.0
       '@svgr/plugin-prettier': 5.5.0

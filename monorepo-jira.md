@@ -2,20 +2,11 @@
 
 ## TODO
 
-- how to call the codemods if they are moved to another package?
-  e.g. "bin": {
-  "braid-upgrade": "./codemod/dist/index.js"
-  },
-
-- What to do with playroom code
-
-  - Need to consider metropolis
-
-- Review .npmignore
-- Fill out codemod/package.json
+- Sort out codemod
 - Improve NX setup (caching, etc.)
+- Look through all package.json files
+  - Dependencies
+- Review .npmignore
+- Review changeset workflow
 - Ensure package deployments still work
-
-- Will we have separate changelogs, or 1 combined one?
-- changelog.js will be affected by this decision (I think)
-- Will anything else be affected by there being multiple packages?
+- Test braid in some other apps

@@ -6,30 +6,59 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
+          "build",
           "eslint",
           "format",
           "tsc",
           "generate-icons",
-          "generate-component-docs"
+          "generate-component-docs",
+          "build-playroom"
         ]
       }
     }
   },
   "targets": {
-    "build": ["dist"],
-    "generate-component-docs": ["componentDocs.json"]
+    "build": ["dist", "codemod"],
+    "generate-component-docs": ["componentDocs.json"],
+    "generate-icons": ["*Svg.tsx"]
   },
   "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      },
+      {
+        "target": "generate-icons",
+        "projects": "self"
+      },
+      {
+        "target": "generate-component-docs",
+        "projects": "self"
+      }
+    ],
     "tsc": [
       {
         "target": "build",
         "projects": "dependencies"
+      },
+      {
+        "target": "generate-icons",
+        "projects": "self"
+      },
+      {
+        "target": "generate-component-docs",
+        "projects": "self"
       }
     ],
     "eslint": [
       {
         "target": "build",
         "projects": "dependencies"
+      },
+      {
+        "target": "generate-icons",
+        "projects": "self"
       }
     ],
     "format": [
@@ -38,9 +67,15 @@
         "projects": "dependencies"
       }
     ],
+    "playroom": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
     "start": [
       {
-        "target": "generate-icons",
+        "target": "build",
         "projects": "dependencies"
       },
       {
