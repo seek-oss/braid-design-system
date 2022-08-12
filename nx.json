@@ -7,20 +7,22 @@
       "options": {
         "cacheableOperations": [
           "build",
+          "build-playroom",
           "eslint",
           "format",
-          "tsc",
-          "generate-icons",
           "generate-component-docs",
-          "build-playroom"
+          "generate-icons",
+          "tsc"
         ]
       }
     }
   },
   "targets": {
-    "build": ["dist", "codemod"],
+    "build": ["dist", "codemod-dist"],
     "generate-component-docs": ["componentDocs.json"],
-    "generate-icons": ["*Svg.tsx"]
+    "generate-icons": ["*Svg.tsx"],
+    "build-site": ["./dist/(!playroom)/**/*", "./dist/*.*"],
+    "build-playroom": ["./dist/playroom"]
   },
   "targetDependencies": {
     "build": [
@@ -31,10 +33,22 @@
       {
         "target": "generate-icons",
         "projects": "self"
+      }
+    ],
+    "build-site": [
+      {
+        "target": "build",
+        "projects": "dependencies"
       },
       {
         "target": "generate-component-docs",
         "projects": "self"
+      }
+    ],
+    "build-playroom": [
+      {
+        "target": "build",
+        "projects": "dependencies"
       }
     ],
     "tsc": [

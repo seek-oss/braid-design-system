@@ -5,22 +5,7 @@
       "dependsOn": ["start-site", "playroom"]
     },
     "build": {
-      "dependsOn": ["build-site", "build-playroom"],
-      "outputs": ["./dist"]
-    },
-    "build-site": {
-      "executor": "nx:run-script",
-      "options": {
-        "script": "build-site"
-      },
-      "outputs": ["./dist/(!playroom)/**/*", "./dist/*.*"]
-    },
-    "build-playroom": {
-      "executor": "nx:run-script",
-      "options": {
-        "script": "build-playroom"
-      },
-      "outputs": ["./dist/playroom"]
+      "dependsOn": ["build-site", "build-playroom"]
     }
   }
 }
