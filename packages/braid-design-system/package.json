@@ -15,10 +15,10 @@
     "*.css.ts"
   ],
   "scripts": {
-    "eslint": "eslint --ignore-path ../../.eslintignore .",
+    "eslint": "eslint --debug --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "storybook": "SKU_TELEMETRY=false sku storybook",
-    "build": "rm -rf ./codemod && cp -r ../codemod/dist ./codemod",
+    "build": "rm -rf ./codemod-dist && cp -r ../codemod/dist ./codemod-dist",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "generate-icons": "node ./scripts/generateIcons.js",
     "tsc": "tsc"
