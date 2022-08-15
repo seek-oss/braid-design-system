@@ -2,7 +2,6 @@
   "name": "braid-site",
   "private": true,
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build-site": "SKU_TELEMETRY=false sku build",
@@ -15,9 +14,8 @@
     "playroom": "playroom",
     "tsc": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "SEEK",
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.18.0",
     "@babel/preset-typescript": "^7.17.12",

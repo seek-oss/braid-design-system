@@ -2,4 +2,4 @@
 'braid-design-system': patch
 ---
 
-Test snapshot
+Add `react-dom` as a peer dependency

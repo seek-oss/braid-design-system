@@ -14,7 +14,6 @@ module.exports = {
   rootResolution: false,
   target: './dist',
   supportedBrowsers: browserslist,
-  setupTests: '../../testConfig/setupTests.ts',
   displayNamesProd: true,
   skipPackageCompatibilityCompilation: ['lodash', 'prettier'],
 };

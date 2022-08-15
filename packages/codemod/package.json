@@ -2,8 +2,6 @@
   "name": "@seek/braid-codemod",
   "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.ts",
   "scripts": {
     "build": "node ./scripts/build.js",
     "eslint": "eslint --ignore-path ../../.eslintignore .",
@@ -11,9 +9,8 @@
     "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
     "tsc": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "SEEK",
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.18.0",
     "@babel/plugin-syntax-jsx": "^7.17.12",

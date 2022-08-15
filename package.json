@@ -1,17 +1,7 @@
 {
   "name": "braid",
   "private": true,
-  "version": "31.16.0",
-  "description": "Themeable design system for the SEEK Group",
-  "main": "lib/components/index.ts",
-  "sideEffects": [
-    "lib/themes/**/*",
-    "lib/css/atoms/**/*",
-    "lib/css/reset/**/*",
-    "themes/**/*",
-    "reset/**/*",
-    "*.css.ts"
-  ],
+  "version": "1.0.0",
   "scripts": {
     "test": "jest",
     "start": "nx run braid-site:start",
