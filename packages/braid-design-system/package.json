@@ -4,7 +4,7 @@
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "bin": {
-    "braid-upgrade": "./codemod/index.js"
+    "braid-upgrade": "./codemod-dist/index.js"
   },
   "sideEffects": [
     "lib/themes/**/*",
