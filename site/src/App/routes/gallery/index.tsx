@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { parseToHsl, setLightness } from 'polished';
 
 import { PageTitle } from '../../Seo/PageTitle';
-import { Box } from 'braid-design-system/lib/components';
+import { Box } from 'braid-design-system';
 import { Logo } from '../../Logo/Logo';
 import { useThemeSettings } from '../../ThemeSetting';
 import { Gallery } from './Gallery';

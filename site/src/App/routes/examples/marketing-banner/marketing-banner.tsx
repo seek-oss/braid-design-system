@@ -13,7 +13,7 @@ import {
   Box,
   ContentBlock,
   Button,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from 'braid-design-system/lib/playroom/components';
 import Code from '../../../Code/Code';

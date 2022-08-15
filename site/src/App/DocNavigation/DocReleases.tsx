@@ -9,7 +9,7 @@ import {
   Column,
   Columns,
   List,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';

@@ -11,7 +11,7 @@ import {
   Button,
   Actions,
   filterSuggestions,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { TextStack } from '../../../TextStack/TextStack';
 import {
   Autosuggest,

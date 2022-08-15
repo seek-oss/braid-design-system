@@ -16,7 +16,7 @@ import {
   Box,
   Columns,
   Column,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import {
   Checkbox,
   Drawer,

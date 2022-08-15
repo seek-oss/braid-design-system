@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from 'braid-design-system/lib/components';
+import { Box } from 'braid-design-system';
 import { useTextTone } from 'braid-design-system/lib/hooks/typography';
 
 interface LogoProps {

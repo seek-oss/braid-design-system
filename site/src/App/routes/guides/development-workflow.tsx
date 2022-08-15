@@ -12,7 +12,7 @@ import {
   Columns,
   Column,
   Box,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
 import { Page } from '../../../types';

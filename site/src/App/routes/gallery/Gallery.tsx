@@ -38,7 +38,7 @@ import {
   TooltipRenderer,
   Button,
   Secondary,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-design-system/lib/components/Box/Box';
@@ -67,7 +67,7 @@ import {
   FitToScreenDimensions,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import { ButtonIcon } from 'braid-design-system/lib/components/ButtonIcon/ButtonIcon';
+import { ButtonIcon } from 'braid-design-system/lib/components';
 import useIcon, { UseIconProps } from 'braid-design-system/lib/hooks/useIcon';
 import { SVGProps } from 'braid-design-system/lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';

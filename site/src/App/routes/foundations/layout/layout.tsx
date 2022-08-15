@@ -21,7 +21,7 @@ import {
   Hidden,
   Strong,
   Bleed,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
 import tokens from 'braid-design-system/lib/themes/wireframe/tokens';

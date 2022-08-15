@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { BraidProvider, Stack } from 'braid-design-system/lib/components';
+import { BraidProvider, Stack } from 'braid-design-system';
 import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExample';
 import { ComponentExample } from '../../types';
 import Code from '../Code/Code';

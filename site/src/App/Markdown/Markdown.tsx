@@ -10,7 +10,7 @@ import {
   Strong,
   Box,
   TextLink,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { DefaultTextPropsProvider } from 'braid-design-system/lib/components/private/defaultTextProps';
 import { InlineCode } from '../InlineCode/InlineCode';
 import { LinkableHeading } from '../LinkableHeading/LinkableHeading';

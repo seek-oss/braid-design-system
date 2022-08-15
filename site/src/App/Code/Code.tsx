@@ -15,7 +15,7 @@ import {
   IconChevron,
   Hidden,
   IconPositive,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box, BoxProps } from 'braid-design-system/lib/components/Box/Box';

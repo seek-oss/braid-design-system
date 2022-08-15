@@ -1,5 +1,5 @@
 import groupBy from 'lodash/groupBy';
-import * as components from 'braid-design-system/lib/components';
+import * as components from 'braid-design-system';
 import * as testComponents from 'braid-design-system/test';
 import * as css from 'braid-design-system/css';
 import { BraidSnippet } from 'braid-design-system/lib/components/private/Snippets';

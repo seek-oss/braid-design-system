@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from 'braid-design-system/lib/components';
+import { Box } from 'braid-design-system';
 import { Overlay } from 'braid-design-system/lib/components/private/Overlay/Overlay';
 import { ReactNodeNoStrings } from 'braid-design-system/lib/components/private/ReactNodeNoStrings';
 import * as styles from './gallery.css';

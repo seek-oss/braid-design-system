@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Heading,
-  Text,
-  TextLink,
-  Divider,
-  List,
-} from 'braid-design-system/lib/components';
+import { Heading, Text, TextLink, Divider, List } from 'braid-design-system';
 import { TextStack } from '../../TextStack/TextStack';
 import { useConfig } from '../../ConfigContext';
 import { Page } from '../../../types';

@@ -9,7 +9,7 @@ import {
   BraidProvider,
   ToastProvider,
   makeLinkComponent,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { Navigation } from './Navigation/Navigation';
 import { HomePage } from './routes/home';
 import guides from './routes/guides';

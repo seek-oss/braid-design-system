@@ -6,7 +6,7 @@ import {
   TextLink,
   Secondary,
   Text,
-} from 'braid-design-system/lib/components';
+} from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-design-system/lib/playroom/playroomState';
 import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
 import { PageTitle } from '../Seo/PageTitle';

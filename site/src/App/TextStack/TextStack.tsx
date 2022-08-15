@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from 'braid-design-system/lib/components';
+import { Stack } from 'braid-design-system';
 import { StackProps } from 'braid-design-system/lib/components/Stack/Stack';
 import { ReactNodeNoStrings } from 'braid-design-system/lib/components/private/ReactNodeNoStrings';
 
