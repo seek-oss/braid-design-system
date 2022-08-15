@@ -10,6 +10,7 @@
           "build-playroom",
           "eslint",
           "format",
+          "prettier",
           "generate-component-docs",
           "generate-icons",
           "tsc"
@@ -76,6 +77,12 @@
       }
     ],
     "format": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "prettier": [
       {
         "target": "build",
         "projects": "dependencies"

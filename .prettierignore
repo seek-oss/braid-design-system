@@ -3,3 +3,4 @@ dist/
 CHANGELOG.md
 .changeset/*.md
 componentUpdates.json
+componentDocs.json
