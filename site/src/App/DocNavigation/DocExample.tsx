@@ -4,7 +4,7 @@ import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExamp
 import { ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
-import docsTheme from 'braid-design-system/lib/themes/docs';
+import docsTheme from 'braid-design-system/themes/docs';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>

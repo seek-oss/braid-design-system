@@ -42,7 +42,7 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-design-system/lib/components/Box/Box';
-import docsTheme from 'braid-design-system/lib/themes/docs';
+import docsTheme from 'braid-design-system/themes/docs';
 import { getHistory, isNew } from '../../Updates';
 import source from 'braid-design-system/lib/utils/source.macro';
 import { CopyIcon } from '../../Code/CopyIcon';

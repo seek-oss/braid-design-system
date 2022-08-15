@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
-import { docs } from 'braid-design-system/lib/themes';
+import docsTheme from 'braid-design-system/themes/docs';
 import {
   BraidProvider,
   ToastProvider,
@@ -88,7 +88,7 @@ export const App = () => {
   return (
     <StrictMode>
       <ThemeSettingProvider>
-        <BraidProvider theme={docs} linkComponent={CustomLink}>
+        <BraidProvider theme={docsTheme} linkComponent={CustomLink}>
           <ToastProvider>
             <AppMeta />
             <Routes>
