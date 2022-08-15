@@ -8,6 +8,7 @@
     "build": "node ./scripts/build.js",
     "eslint": "eslint --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
+    "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
     "tsc": "tsc"
   },
   "keywords": [],

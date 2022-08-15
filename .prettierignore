@@ -1,3 +1,4 @@
+codemod-dist/
 dist/
 CHANGELOG.md
 .changeset/*.md

@@ -9,6 +9,7 @@
     "build-playroom": "playroom build",
     "eslint": "eslint --ignore-path ../.eslintignore .",
     "format": "eslint --ignore-path ../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
+    "prettier": "prettier --ignore-path ../.prettierignore --list-different .",
     "generate-component-docs": "generate-component-docs",
     "start-site": "SKU_TELEMETRY=false sku start",
     "playroom": "playroom",

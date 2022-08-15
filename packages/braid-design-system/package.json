@@ -17,6 +17,7 @@
   "scripts": {
     "eslint": "eslint --debug --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
+    "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "build": "rm -rf ./codemod-dist && cp -r ../codemod/dist ./codemod-dist",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
