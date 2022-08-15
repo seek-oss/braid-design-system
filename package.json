@@ -5,7 +5,6 @@
   "scripts": {
     "test": "jest",
     "start": "nx run braid-site:start",
-    "start-site": "nx run braid-site:start",
     "start-playroom": "nx run braid-site:playroom",
     "lint": "pnpm manypkg:check && pnpm manypkg:depcheck && pnpm run prettier && pnpm run eslint && pnpm run tsc",
     "manypkg:check": "manypkg check",
