@@ -1,35 +1,5 @@
 # braid-design-system
 
-## 31.16.2
-
-### Patch Changes
-
-- Something
-
-  Checkbox changed
-
-  **EXAMPLE USAGE:**
-
-  ```diff
-  +foo
-  -bar;
-  ```
-
-## 31.16.1
-
-### Patch Changes
-
-- Something
-
-  Button changed
-
-  **EXAMPLE USAGE:**
-
-  ```diff
-  +foo
-  -bar;
-  ```
-
 ## 31.16.0
 
 ### Minor Changes
