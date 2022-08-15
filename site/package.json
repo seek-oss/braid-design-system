@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build-site": "SKU_TELEMETRY=false sku build",
-    "build-playroom": "playroom build",
+    "build-site": "NODE_ENV=production SKU_TELEMETRY=false sku build",
+    "build-playroom": "NODE_ENV=production playroom build",
     "eslint": "eslint --ignore-path ../.eslintignore .",
     "format": "eslint --ignore-path ../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "prettier": "prettier --ignore-path ../.prettierignore --list-different .",
