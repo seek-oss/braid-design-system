@@ -51,14 +51,14 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Stack space="gutter">
           <Checkbox
-            id={id}
+            id={`${id}_1`}
             disabled={true}
             checked={false}
             onChange={handler}
             label="Label"
           />
           <Checkbox
-            id={id}
+            id={`${id}_2`}
             disabled={true}
             checked={true}
             onChange={handler}

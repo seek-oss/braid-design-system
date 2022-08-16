@@ -388,7 +388,7 @@ export const screenshots: ComponentScreenshot = {
               <AccordionItem
                 label="Label"
                 size="xsmall"
-                id={id}
+                id={`${id}_1`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>
@@ -398,7 +398,7 @@ export const screenshots: ComponentScreenshot = {
               <AccordionItem
                 label="Label"
                 size="small"
-                id={id}
+                id={`${id}_2`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>
@@ -408,7 +408,7 @@ export const screenshots: ComponentScreenshot = {
               <AccordionItem
                 label="Label"
                 size="standard"
-                id={id}
+                id={`${id}_3`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>
@@ -418,7 +418,7 @@ export const screenshots: ComponentScreenshot = {
               <AccordionItem
                 label="Label"
                 size="large"
-                id={id}
+                id={`${id}_4`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>
@@ -438,7 +438,7 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="xsmall"
                 tone="secondary"
-                id={id}
+                id={`${id}_1`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>
@@ -449,7 +449,7 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="small"
                 tone="secondary"
-                id={id}
+                id={`${id}_2`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>
@@ -460,7 +460,7 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="standard"
                 tone="secondary"
-                id={id}
+                id={`${id}_3`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>
@@ -471,7 +471,7 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="large"
                 tone="secondary"
-                id={id}
+                id={`${id}_4`}
                 icon={<IconPromote />}
               >
                 <Text size="small">Content</Text>

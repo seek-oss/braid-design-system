@@ -61,14 +61,14 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Stack space="gutter">
           <CheckboxStandalone
-            id={id}
+            id={`${id}_unchecked`}
             disabled={true}
             checked={false}
             onChange={handler}
             aria-label="Disabled unchecked"
           />
           <CheckboxStandalone
-            id={id}
+            id={`${id}_checked`}
             disabled={true}
             checked={true}
             onChange={handler}

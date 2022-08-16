@@ -151,14 +151,14 @@ const docs: ComponentDocs = {
         source(
           <Stack space="medium">
             <Checkbox
-              id={id}
+              id={`${id}_unchecked`}
               disabled={true}
               checked={false}
-              onChange={() => toggleState('checked')}
+              onChange={() => toggleState('unchecked')}
               label="Unchecked"
             />
             <Checkbox
-              id={id}
+              id={`${id}_checked`}
               disabled={true}
               checked={true}
               onChange={() => toggleState('checked')}
