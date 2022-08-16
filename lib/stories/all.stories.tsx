@@ -1,4 +1,4 @@
-import React, { ReactNode, Fragment } from 'react';
+import React, { ReactNode, Fragment, useId } from 'react';
 import { storiesOf } from 'sku/@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
@@ -46,6 +46,7 @@ const RenderExample = ({ example }: RenderExampleProps) => {
     background = 'body',
     Example,
   } = example;
+  const id = useId();
 
   return (
     <div
@@ -69,7 +70,7 @@ const RenderExample = ({ example }: RenderExampleProps) => {
       </h4>
       <Box background={background} style={{ padding: 12 }}>
         <Container>
-          {Example ? <Example id="id" handler={noop} /> : null}
+          {Example ? <Example id={id} handler={noop} /> : null}
         </Container>
       </Box>
       <div style={{ paddingTop: 18 }}>
