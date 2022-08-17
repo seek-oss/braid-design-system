@@ -7,8 +7,7 @@
     "eslint": "eslint --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
-    "tsc": "tsc",
-    "postinstall": "pnpm build"
+    "tsc": "tsc"
   },
   "author": "SEEK",
   "license": "MIT",
