@@ -19,7 +19,7 @@
     }
   },
   "targets": {
-    "build": ["dist", "codemod-dist"],
+    "build": ["dist", "codemod/dist"],
     "generate-component-docs": ["componentDocs.json"],
     "generate-icons": ["*Svg.tsx"],
     "build-site": ["./dist/(!playroom)/**/*", "./dist/*.*"],
