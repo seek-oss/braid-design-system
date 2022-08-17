@@ -94,11 +94,7 @@
         "projects": "dependencies"
       }
     ],
-    "start": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      },
+    "start-site": [
       {
         "target": "generate-component-docs",
         "projects": "self"
