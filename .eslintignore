@@ -1,9 +1,3 @@
-# managed by sku
-*.less.d.ts
-coverage/
-dist-storybook/
-report/
-site/dist/
-# end managed by sku
-
-codemod/dist
+dist/
+node_modules/
+codemod-dist/

@@ -1,0 +1,41 @@
+{
+  "name": "@seek/braid-codemod",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "eslint": "eslint --ignore-path ../../.eslintignore .",
+    "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
+    "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
+    "tsc": "tsc"
+  },
+  "author": "SEEK",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/plugin-syntax-jsx": "^7.17.12",
+    "@babel/plugin-syntax-typescript": "^7.17.12",
+    "@babel/traverse": "^7.18.11",
+    "@types/cli-progress": "^3.11.0",
+    "@types/react": "^18.0.9",
+    "@types/workerpool": "^6.1.0",
+    "babel-plugin-tester": "^10.1.0",
+    "chalk": "^5.0.1",
+    "cli-highlight": "^2.1.11",
+    "cli-progress": "^3.11.1",
+    "dedent": "^0.7.0",
+    "esbuild": "^0.14.39",
+    "fast-glob": "^3.2.11",
+    "ink": "^3.2.0",
+    "prettier": "^2.6.2",
+    "react": "^18.1.0",
+    "recast": "^0.21.1",
+    "workerpool": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/babel-plugin-tester": "^9.0.5",
+    "@types/babel__core": "^7.1.19",
+    "@types/babel__traverse": "^7.18.0",
+    "@types/dedent": "^0.7.0"
+  }
+}

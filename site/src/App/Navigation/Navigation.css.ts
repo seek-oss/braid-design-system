@@ -1,6 +1,6 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { vars, breakpoints, responsiveStyle } from '../../../../css';
+import { vars, breakpoints, responsiveStyle } from 'braid-design-system/css';
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});

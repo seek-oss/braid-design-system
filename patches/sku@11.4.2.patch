@@ -1,0 +1,17 @@
+diff --git a/bin/sku.js b/bin/sku.js
+index 0029c6c8074ae05a91b2d11fa4831fe878206c71..be6b7f1955c8b97a713c036f3815af5be6654858 100755
+--- a/bin/sku.js
++++ b/bin/sku.js
+@@ -50,10 +50,10 @@ log(`Starting script: ${script}`);
+     case 'build':
+     case 'build-ssr':
+     case 'serve': {
+-      await configureProject();
++      // await configureProject();
+ 
+       // Intentionally not awaiting async function as it's just for logging warnings
+-      validatePeersDeps();
++      // validatePeersDeps();
+       runScript(script);
+       break;
+     }

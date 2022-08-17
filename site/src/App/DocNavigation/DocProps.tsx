@@ -9,13 +9,13 @@ import {
   TooltipRenderer,
   TextLink,
   IconInfo,
-} from '../../../../lib/components';
-import componentDocs from '../../../../generate-component-docs/componentDocs.json';
+} from 'braid-design-system';
+import componentDocs from '../../../componentDocs.json';
 import type {
   NormalisedPropType,
   ExportDoc,
   NormalisedInterface,
-} from '../../../../generate-component-docs/generate';
+} from '@seek/generate-component-docs/src/generate';
 import { DocsContext } from '../DocNavigation/DocNavigation';
 import { PageTitle } from '../Seo/PageTitle';
 import { useConfig } from '../ConfigContext';

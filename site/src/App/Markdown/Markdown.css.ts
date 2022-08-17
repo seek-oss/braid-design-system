@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { createTextStyle } from '@capsizecss/vanilla-extract';
-import { vars } from '../../../../lib/themes/vars.css';
+import { vars } from 'braid-design-system/lib/themes/vars.css';
 
 const toCapsizeValues = ({
   fontSize,

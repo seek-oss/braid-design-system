@@ -1,0 +1,9 @@
+scripts/
+icons/
+dist-storybook/
+**/__snapshots__/**/*
+*.test.tsx
+*.test.ts
+*.migration.md
+sku.config.js
+tsconfig.json

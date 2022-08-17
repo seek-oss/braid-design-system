@@ -1,19 +1,6 @@
 node_modules/
-package-lock.json
 *.log
 .cache/
 .DS_Store
 .vscode/*.json
 .idea/
-componentDocs.json
-lib/components/icons/*/*Svg.tsx
-
-# managed by sku
-.eslintrc
-.prettierrc
-coverage/
-dist-storybook/
-report/
-site/dist/
-tsconfig.json
-# end managed by sku

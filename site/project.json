@@ -1,0 +1,13 @@
+{
+  "name": "braid-site",
+  "targets": {
+    "start": {
+      "executor": "nx:noop",
+      "dependsOn": ["start-site", "playroom"]
+    },
+    "build": {
+      "executor": "nx:noop",
+      "dependsOn": ["build-site", "build-playroom"]
+    }
+  }
+}

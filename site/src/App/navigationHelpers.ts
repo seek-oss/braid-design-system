@@ -1,18 +1,22 @@
 import groupBy from 'lodash/groupBy';
-import * as components from '../../../lib/components';
-import * as testComponents from '../../../test';
-import * as css from '../../../css';
-import { BraidSnippet } from '../../../lib/components/private/Snippets';
+import * as components from 'braid-design-system';
+import * as testComponents from 'braid-design-system/test';
+import * as css from 'braid-design-system/css';
+import { BraidSnippet } from 'braid-design-system/lib/components/private/Snippets';
 import { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
-  '../../../lib/components',
+  '../../../packages/braid-design-system/lib/components/',
   true,
   /.docs\.tsx$/,
 );
 
-const cssDocsContext = require.context('../../../css', true, /.docs\.tsx$/);
+const cssDocsContext = require.context(
+  '../../../packages/braid-design-system/css',
+  true,
+  /.docs\.tsx$/,
+);
 
 export const getComponentDocs = (componentName: string) => {
   const normalizedComponentRoute = /^icon/i.test(componentName)
@@ -27,7 +31,7 @@ export const getCssDoc = (cssName: string) =>
   cssDocsContext(`./${cssName}.docs.tsx`).default as CssDoc;
 
 const snippetsContext = require.context(
-  '../../../lib/components',
+  '../../../packages/braid-design-system/lib/components/',
   true,
   /\.snippets\.tsx?$/,
 );
@@ -96,7 +100,7 @@ const getComponentNameFromFilename = (filename: string) => {
 };
 
 const galleryContext = require.context(
-  '../../../lib/components',
+  '../../../packages/braid-design-system/lib/components/',
   true,
   /.gallery\.tsx$/,
 );

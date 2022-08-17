@@ -10,10 +10,10 @@ import {
   TextField,
   IconSearch,
   Strong,
-} from '../../../../../../lib/components';
-import { Overlay } from '../../../../../../lib/components/private/Overlay/Overlay';
+} from 'braid-design-system';
+import { Overlay } from 'braid-design-system/lib/components/private/Overlay/Overlay';
 import { Page } from '../../../../types';
-import * as icons from '../../../../../../lib/components/icons';
+import * as icons from 'braid-design-system/lib/components/icons';
 import { PageTitle } from '../../../Seo/PageTitle';
 import * as styles from './iconography.css';
 

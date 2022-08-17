@@ -8,11 +8,11 @@ import { uniq, flatten, values } from 'lodash';
 import { App } from './App/App';
 import { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
-import * as themes from '../../lib/themes';
+import * as themes from 'braid-design-system/lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
 import { initUpdates } from './App/Updates';
 import packageJson from '../../package.json';
-import { __experimentalDarkMode__ } from '../../color-mode';
+import { __experimentalDarkMode__ } from 'braid-design-system/color-mode';
 
 const { version } = packageJson;
 

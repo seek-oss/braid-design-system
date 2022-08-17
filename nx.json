@@ -1,0 +1,116 @@
+{
+  "extends": "nx/presets/npm.json",
+  "npmScope": "seek",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "build-playroom",
+          "eslint",
+          "format",
+          "prettier",
+          "generate-component-docs",
+          "generate-icons",
+          "tsc"
+        ]
+      }
+    }
+  },
+  "targets": {
+    "build": ["dist", "codemod-dist"],
+    "generate-component-docs": ["componentDocs.json"],
+    "generate-icons": ["*Svg.tsx"],
+    "build-site": ["./dist/(!playroom)/**/*", "./dist/*.*"],
+    "build-playroom": ["./dist/playroom"]
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      },
+      {
+        "target": "generate-icons",
+        "projects": "self"
+      }
+    ],
+    "build-site": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      },
+      {
+        "target": "generate-component-docs",
+        "projects": "self"
+      }
+    ],
+    "build-playroom": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "tsc": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      },
+      {
+        "target": "generate-icons",
+        "projects": "self"
+      },
+      {
+        "target": "generate-component-docs",
+        "projects": "self"
+      }
+    ],
+    "eslint": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      },
+      {
+        "target": "generate-icons",
+        "projects": "self"
+      }
+    ],
+    "format": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "prettier": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "playroom": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "start": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      },
+      {
+        "target": "generate-component-docs",
+        "projects": "self"
+      }
+    ]
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": false
+    }
+  }
+}

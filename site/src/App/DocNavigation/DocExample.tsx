@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
-import { BraidProvider, Stack } from '../../../../lib/components';
-import { useSourceFromExample } from '../../../../lib/utils/useSourceFromExample';
+import { BraidProvider, Stack } from 'braid-design-system';
+import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExample';
 import { ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
-import docsTheme from '../../../../lib/themes/docs';
+import docsTheme from 'braid-design-system/themes/docs';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>

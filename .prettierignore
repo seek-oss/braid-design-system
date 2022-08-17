@@ -1,12 +1,9 @@
-# managed by sku
-*.less.d.ts
 coverage/
 dist-storybook/
 report/
-site/dist/
-# end managed by sku
-
+codemod-dist/
+dist/
 CHANGELOG.md
 .changeset/*.md
 componentUpdates.json
-codemod/dist
+componentDocs.json

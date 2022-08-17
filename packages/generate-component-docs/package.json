@@ -1,0 +1,27 @@
+{
+  "name": "@seek/generate-component-docs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "eslint": "eslint --ignore-path ../../.eslintignore .",
+    "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
+    "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
+    "tsc": "tsc"
+  },
+  "bin": {
+    "generate-component-docs": "./bin.js"
+  },
+  "author": "SEEK",
+  "license": "MIT",
+  "dependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^28.1.6",
+    "@types/lodash": "^4.14.168",
+    "esbuild": "^0.14.39",
+    "esbuild-register": "^3.3.3",
+    "fs-extra": "^10.1.0",
+    "lodash": "^4.17.21",
+    "typescript": "4.4.4"
+  }
+}

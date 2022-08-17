@@ -7,8 +7,8 @@ import React, {
 } from 'react';
 import { useLocalStorage } from 'react-use';
 
-import * as themes from '../../../../lib/themes';
-import { BraidTheme } from '../../../../lib/themes/BraidTheme';
+import * as themes from 'braid-design-system/lib/themes';
+import { BraidTheme } from 'braid-design-system/lib/themes/BraidTheme';
 type ThemeKey = keyof typeof themes;
 
 const defaultTheme = 'apac' as const;
