@@ -4,7 +4,7 @@
   "description": "Themeable design system for the SEEK Group",
   "main": "lib/components/index.ts",
   "bin": {
-    "braid-upgrade": "./codemod-dist/index.js"
+    "braid-upgrade": "./codemod-dist/bin.js"
   },
   "sideEffects": [
     "lib/themes/**/*",
@@ -20,7 +20,7 @@
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
     "storybook": "SKU_TELEMETRY=false sku storybook",
-    "build": "rm -rf ./codemod-dist && cp -r ../codemod/dist ./codemod-dist",
+    "build": "rm -f ./codemod-dist/index.js && rm -f ./codemod-dist/wrapper.js && cp ../codemod/dist/* ./codemod-dist",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "generate-icons": "node ./scripts/generateIcons.js",
     "tsc": "tsc"
@@ -98,7 +98,7 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.7.0",
-    "sku": "^11.4.2",
+    "sku": "11.4.5",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   }

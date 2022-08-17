@@ -81,7 +81,7 @@
   "pnpm": {
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
-      "sku@11.4.2": "patches/sku@11.4.2.patch"
+      "sku@11.4.5": "patches/sku@11.4.5.patch"
     }
   },
   "skuSkipPostInstall": true

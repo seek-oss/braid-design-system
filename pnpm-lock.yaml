@@ -4,9 +4,9 @@ patchedDependencies:
   panzoom@9.4.2:
     hash: 6ozlkenow5f4yy4lstsbsrrv4i
     path: patches/panzoom@9.4.2.patch
-  sku@11.4.2:
-    hash: qyvaicqgsm6jcrnbvcmq2ugvra
-    path: patches/sku@11.4.2.patch
+  sku@11.4.5:
+    hash: 5jutrt3jthugnmo43zf7yhig3u
+    path: patches/sku@11.4.5.patch
 
 importers:
 
@@ -8122,6 +8122,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+    dev: true
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -10276,6 +10277,15 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /follow-redirects/1.15.0:
+    resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+
   /follow-redirects/1.15.0_debug@4.3.1:
     resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
     engines: {node: '>=4.0'}
@@ -10286,6 +10296,7 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.1
+    dev: true
 
   /follow-redirects/1.15.0_debug@4.3.4:
     resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
@@ -11383,7 +11394,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.0_debug@4.3.1
+      follow-redirects: 1.15.0
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
