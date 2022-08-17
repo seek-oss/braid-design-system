@@ -15,7 +15,7 @@
     "*.css.ts"
   ],
   "scripts": {
-    "chromatic": "chromatic --storybook-build-dir packages/braid-design-system/dist-storybook --exit-zero-on-changes --auto-accept-changes master",
+    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --auto-accept-changes master",
     "eslint": "eslint --debug --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
