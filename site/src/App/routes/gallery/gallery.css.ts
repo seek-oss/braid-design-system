@@ -1,5 +1,5 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css';
-import { colorModeStyle } from 'braid-design-system/lib/css/colorModeStyle';
+import { colorModeStyle } from 'braid-design-system/css';
 import { vars } from 'braid-design-system/lib/themes/vars.css';
 
 export const loader = style({

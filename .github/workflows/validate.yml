@@ -37,6 +37,6 @@ jobs:
       - name: Chromatic
         run: |
           pnpm build-storybook
-          pnpm chromatic --storybook-build-dir packages/braid-design-system/dist-storybook --exit-zero-on-changes --auto-accept-changes master
+          pnpm run chromatic
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}

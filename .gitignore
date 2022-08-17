@@ -1,11 +1,8 @@
 node_modules/
-package-lock.json
 *.log
 .cache/
 .DS_Store
 .vscode/*.json
 .idea/
 
-dist-storybook/
 dist/
-report/

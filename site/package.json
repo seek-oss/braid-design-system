@@ -34,7 +34,7 @@
     "date-fns": "^2.28.0",
     "dedent": "^0.7.0",
     "didyoumean2": "^5.0.0",
-    "generate-component-docs": "*",
+    "@seek/generate-component-docs": "*",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",

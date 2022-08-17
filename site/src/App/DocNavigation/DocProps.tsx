@@ -15,7 +15,7 @@ import type {
   NormalisedPropType,
   ExportDoc,
   NormalisedInterface,
-} from 'generate-component-docs/src/generate';
+} from '@seek/generate-component-docs/src/generate';
 import { DocsContext } from '../DocNavigation/DocNavigation';
 import { PageTitle } from '../Seo/PageTitle';
 import { useConfig } from '../ConfigContext';

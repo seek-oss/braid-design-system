@@ -15,6 +15,7 @@
     "*.css.ts"
   ],
   "scripts": {
+    "chromatic": "chromatic --storybook-build-dir packages/braid-design-system/dist-storybook --exit-zero-on-changes --auto-accept-changes master",
     "eslint": "eslint --debug --ignore-path ../../.eslintignore .",
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
@@ -88,6 +89,7 @@
     "babel-plugin-tester": "^10.1.0",
     "change-case": "^4.1.2",
     "cheerio": "1.0.0-rc.11",
+    "chromatic": "^5.10.2",
     "fs-extra": "^10.1.0",
     "globby": "^11.1.0",
     "html-validate": "^7.1.1",

@@ -67,7 +67,7 @@ import {
   FitToScreenDimensions,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import { ButtonIcon } from 'braid-design-system/lib/components';
+import { ButtonIcon } from 'braid-design-system';
 import useIcon, { UseIconProps } from 'braid-design-system/lib/hooks/useIcon';
 import { SVGProps } from 'braid-design-system/lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';

@@ -1,6 +1,6 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { colorModeStyle } from 'braid-design-system/lib/css/colorModeStyle';
+import { colorModeStyle } from 'braid-design-system/css';
 import { vars } from 'braid-design-system/css';
 
 const activeUnderlineVar = createVar();

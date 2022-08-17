@@ -1,5 +1,5 @@
 {
-  "name": "generate-component-docs",
+  "name": "@seek/generate-component-docs",
   "private": true,
   "version": "1.0.0",
   "description": "",
