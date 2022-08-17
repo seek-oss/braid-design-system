@@ -67,7 +67,6 @@
     "jest-environment-jsdom": "^28.1.3",
     "jest-watch-typeahead": "^2.0.0",
     "nx": "^14.5.3",
-    "playroom": "0.28.0",
     "prettier": "^2.6.2",
     "renovate-config-seek": "0.4.0",
     "surge": "^0.23.1",
