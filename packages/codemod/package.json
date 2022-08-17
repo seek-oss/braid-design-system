@@ -8,7 +8,7 @@
     "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
     "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
     "tsc": "tsc",
-    "postinstall": "mkdir dist && touch dist/index.js"
+    "postinstall": "pnpm build"
   },
   "author": "SEEK",
   "license": "MIT",
