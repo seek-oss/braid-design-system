@@ -12,6 +12,7 @@ import React, {
   ReactElement,
   RefAttributes,
 } from 'react';
+import dedent from 'dedent';
 import parseHighlights from 'autosuggest-highlight/parse';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -264,6 +265,12 @@ const noop = () => {
 const fallbackValue = { text: '' };
 const fallbackSuggestions: Suggestion[] = [];
 
+/** @deprecated Use `noSuggestionsMessage` prop instead */
+type LegacyMessageSuggestion = {
+  /** @deprecated Use `noSuggestionsMessage` prop instead */
+  message: string;
+};
+
 export type AutosuggestBaseProps<Value> = Omit<
   FieldBaseProps,
   'value' | 'autoComplete' | 'labelId' | 'prefix'
@@ -271,10 +278,11 @@ export type AutosuggestBaseProps<Value> = Omit<
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
-    | { message: string }
+    | LegacyMessageSuggestion
     | ((
         value: AutosuggestValue<Value>,
-      ) => Suggestions<Value> | { message: string });
+      ) => Suggestions<Value> | LegacyMessageSuggestion);
+  noSuggestionsMessage?: string | { text: string; description?: string };
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
   automaticSelection?: boolean;
@@ -292,11 +300,43 @@ export type AutosuggestLabelProps = FieldLabelVariant;
 export type AutosuggestProps<Value> = AutosuggestBaseProps<Value> &
   AutosuggestLabelProps;
 
+function normaliseNoSuggestionMessage<Value>(
+  noSuggestionsMessage: AutosuggestBaseProps<Value>['noSuggestionsMessage'],
+  suggestionProp: AutosuggestBaseProps<Value>['suggestions'],
+) {
+  if (noSuggestionsMessage) {
+    return typeof noSuggestionsMessage === 'string'
+      ? { text: noSuggestionsMessage }
+      : noSuggestionsMessage;
+  }
+
+  if ('message' in suggestionProp) {
+    const message = suggestionProp.message;
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          Passing \`message\` to \`suggestions\` is deprecated and will be removed in a future version. Use "noSuggestionsMessage" instead. See the documentation for usage: https://seek-oss.github.io/braid-design-system/components/Autosuggest#messaging-when-no-suggestions-are-available
+             <Autosuggest
+            %c-   suggestions={{ message: '${message}' }}
+            %c+   noSuggestionsMessage="${message}"
+             %c/>
+        `,
+        'color: red',
+        'color: green',
+        'color: inherit',
+      );
+    }
+    return typeof message === 'string' ? { text: message } : message;
+  }
+}
+
 export const Autosuggest = forwardRef(function <Value>(
   {
     id,
     value = fallbackValue,
     suggestions: suggestionsProp = fallbackSuggestions,
+    noSuggestionsMessage: noSuggestionsMessageProp,
     onChange = noop,
     automaticSelection = false,
     showMobileBackdrop = false,
@@ -321,11 +361,11 @@ export const Autosuggest = forwardRef(function <Value>(
   const suggestions = Array.isArray(suggestionsPropValue)
     ? suggestionsPropValue
     : [];
-  const message =
-    'message' in suggestionsPropValue
-      ? suggestionsPropValue.message
-      : undefined;
-  const hasItems = suggestions.length > 0 || Boolean(message);
+  const noSuggestionsMessage = normaliseNoSuggestionMessage(
+    noSuggestionsMessageProp,
+    suggestionsPropValue,
+  );
+  const hasItems = suggestions.length > 0 || Boolean(noSuggestionsMessage);
 
   // We need a ref regardless so we can imperatively
   // focus the field when clicking the clear button
@@ -630,9 +670,6 @@ export const Autosuggest = forwardRef(function <Value>(
     isOpen &&
     (highlightedIndex === null || hasAutomaticSelection)
   ) {
-    if (message) {
-      announcements.push(message);
-    }
     if (hasSuggestions) {
       announcements.push(
         translations.suggestionsAvailableAnnouncement(suggestionCount),
@@ -648,7 +685,15 @@ export const Autosuggest = forwardRef(function <Value>(
 
       announcements.push(translations.suggestionInstructions);
     } else {
-      announcements.push(translations.noSuggestionsAvailableAnnouncement);
+      announcements.push(
+        noSuggestionsMessage
+          ? `${noSuggestionsMessage.text}${
+              noSuggestionsMessage.description
+                ? ` ${noSuggestionsMessage.description}`
+                : ''
+            }`
+          : translations.noSuggestionsAvailableAnnouncement,
+      );
     }
   }
 
@@ -724,15 +769,27 @@ export const Autosuggest = forwardRef(function <Value>(
                     className={styles.menu}
                     {...a11y.menuProps}
                   >
-                    {isOpen && message ? (
+                    {isOpen && !hasSuggestions && noSuggestionsMessage ? (
                       <Box
                         component="li"
                         paddingX="small"
                         className={touchableText.standard}
                       >
-                        <Text tone="secondary" baseline={false}>
-                          {message}
+                        <Text
+                          tone={
+                            !noSuggestionsMessage.description
+                              ? 'secondary'
+                              : undefined
+                          }
+                          baseline={false}
+                        >
+                          {noSuggestionsMessage.text}
                         </Text>
+                        {noSuggestionsMessage.description ? (
+                          <Text tone="secondary" baseline={false}>
+                            {noSuggestionsMessage.description}
+                          </Text>
+                        ) : null}
                       </Box>
                     ) : null}
                     {isOpen && hasSuggestions
