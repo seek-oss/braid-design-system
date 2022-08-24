@@ -15,7 +15,7 @@ Add support for `neutral` tone. When using a `neutral` tone, an icon may optiona
 ```jsx
 import { useToast } from "braid-design-system"
 
-export default () => {
+export const DemoButton = () => {
   const showToast = useToast();
 
   return (

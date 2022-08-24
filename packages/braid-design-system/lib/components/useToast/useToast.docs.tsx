@@ -99,7 +99,7 @@ const docs: ComponentDocs = {
             {`
           import { useToast } from 'braid-design-system';
 
-          export default () => {
+          export const Demo = () => {
             const showToast = useToast();
 
             // etc...
