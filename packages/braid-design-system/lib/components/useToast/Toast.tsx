@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { cloneElement, useCallback, useEffect } from 'react';
+import assert from 'assert';
 import { TreatProvider } from 'sku/react-treat';
 import { Stack } from '../Stack/Stack';
 import { Inline } from '../Inline/Inline';
@@ -58,6 +59,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       message,
       description,
       tone,
+      icon,
       onClose,
       closeLabel = 'Close',
       action,
@@ -81,7 +83,17 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       }
     }, [shouldRemove, remove, stopTimeout]);
 
-    const Icon = toneToIcon[tone];
+    const Icon = tone !== 'neutral' ? toneToIcon[tone] : undefined;
+
+    assert(
+      !icon || (icon.props.size === undefined && icon.props.tone === undefined),
+      "Icons cannot set the 'size' or 'tone' prop when passed to a Toast component",
+    );
+
+    assert(
+      !icon || (icon && tone === 'neutral'),
+      `Icons cannot be customised on a Toast component using '${tone}' tone`,
+    );
 
     const content = description ? (
       <Stack space="xxsmall">
@@ -135,9 +147,16 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
               >
                 <Columns space="none">
                   <Column width="content">
-                    <Box paddingRight="small">
-                      <Icon tone={tone} />
-                    </Box>
+                    {Icon ? (
+                      <Box paddingRight="small">
+                        <Icon tone={tone} />
+                      </Box>
+                    ) : null}
+                    {tone === 'neutral' && icon ? (
+                      <Box paddingRight="small">
+                        {cloneElement(icon, { tone: 'secondary' })}
+                      </Box>
+                    ) : null}
                   </Column>
                   <Column>{content}</Column>
                   <Column width="content">
@@ -165,7 +184,9 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                     </Box>
                   </Column>
                 </Columns>
-                <Keyline tone={tone} borderRadius={borderRadius} />
+                {tone !== 'neutral' ? (
+                  <Keyline tone={tone} borderRadius={borderRadius} />
+                ) : null}
               </Box>
             </ContentBlock>
           </Box>
