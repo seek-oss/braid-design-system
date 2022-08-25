@@ -601,9 +601,10 @@ const docs: ComponentDocs = {
             <Strong>noSuggestionsMessage</Strong> prop.
           </Text>
           <Text>
-            The message can either be a single piece of text, or a more
-            structured prompt by providing an object containing{' '}
-            <Strong>text</Strong> and <Strong>description</Strong>.
+            A simple message can be shown by providing a single piece of text.
+            Alternatively, a more structured prompt can be shown by providing an
+            object containing <Strong>title</Strong> and{' '}
+            <Strong>description</Strong>.
           </Text>
         </>
       ),
@@ -619,7 +620,7 @@ const docs: ComponentDocs = {
                 scrollToTopOnMobile
                 label="Label"
                 description="Focus the field to see a simple message"
-                id={id}
+                id={`${id}_noSuggestionsMessage1`}
                 value={getState('field1')}
                 onChange={setState('field1')}
                 onClear={() => resetState('field1')}
@@ -631,13 +632,13 @@ const docs: ComponentDocs = {
                 scrollToTopOnMobile
                 label="Label"
                 description="Focus the field to see more structured prompt"
-                id={id}
+                id={`${id}_noSuggestionsMessage2`}
                 value={getState('field2')}
                 onChange={setState('field2')}
                 onClear={() => resetState('field2')}
                 suggestions={[]}
                 noSuggestionsMessage={{
-                  text: 'No results found',
+                  title: 'No results found',
                   description: 'Try searching for something else',
                 }}
               />

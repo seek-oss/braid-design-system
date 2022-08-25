@@ -9,7 +9,7 @@ updated:
 
 **Autosuggest:** Add configurable message for no suggestions
 
-Provides consumers a way to give the user more context when no suggestions are available. The `noSuggestionsMessage` prop accepts either a simple message or a more structured prompt by providing an object containing **text** and **description**.
+Provides consumers a way to give the user more context when no suggestions are available. The `noSuggestionsMessage` prop accepts a simple message by providing a single piece of text. Alternatively, a more structured prompt can be shown by providing an object containing **title** and **description**.
 
 This message is only displayed when there are no available suggestions provided.
 
@@ -31,7 +31,7 @@ Or, for more a structured prompt:
   ...
   suggestions={[]}
   noSuggestionsMessage={{
-    text: "No results found",
+    title: "No results found",
     description: "Try searching for something else",
   }}
 />

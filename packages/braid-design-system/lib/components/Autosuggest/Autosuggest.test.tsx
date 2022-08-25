@@ -909,9 +909,7 @@ describe('Autosuggest', () => {
               highlights: [{ start: 0, end: 4 }],
             },
           ]}
-          noSuggestionsMessage={{
-            text: 'Custom no suggestions message.',
-          }}
+          noSuggestionsMessage="Custom no suggestions message"
         />
       </BraidTestProvider>
     );
@@ -934,7 +932,7 @@ describe('Autosuggest', () => {
     expect(getAnnouncements()).toBeNull();
   });
 
-  it('should show `noSuggestionsMessage` without a description when no suggestions provided', async () => {
+  it('should show simple `noSuggestionsMessage` when no suggestions provided', async () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
@@ -944,9 +942,7 @@ describe('Autosuggest', () => {
           onChange={() => {}}
           hideSuggestionsOnSelection={false}
           suggestions={[]}
-          noSuggestionsMessage={{
-            text: 'Custom no suggestions message.',
-          }}
+          noSuggestionsMessage="Custom no suggestions message"
         />
       </BraidTestProvider>
     );
@@ -959,10 +955,10 @@ describe('Autosuggest', () => {
     const input = getByRole('combobox');
     await userEvent.click(input);
     expect(getByRole('listitem')).toHaveTextContent(
-      'Custom no suggestions message.',
+      'Custom no suggestions message',
     );
     expect(queryByRole('option')).not.toBeInTheDocument();
-    expect(getAnnouncements()).toBe('Custom no suggestions message.');
+    expect(getAnnouncements()).toBe('Custom no suggestions message');
 
     fireEvent.blur(input);
     expect(queryByRole('listitem')).not.toBeInTheDocument();
@@ -970,7 +966,7 @@ describe('Autosuggest', () => {
     expect(getAnnouncements()).toBeNull();
   });
 
-  it('should show `noSuggestionsMessage` with a description when no suggestions provided', async () => {
+  it('should show structured `noSuggestionsMessage` when no suggestions provided', async () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
@@ -981,7 +977,7 @@ describe('Autosuggest', () => {
           hideSuggestionsOnSelection={false}
           suggestions={[]}
           noSuggestionsMessage={{
-            text: 'Custom no suggestions message.',
+            title: 'Custom no suggestions message',
             description: 'Additional no suggestions description',
           }}
         />
@@ -995,8 +991,12 @@ describe('Autosuggest', () => {
 
     const input = getByRole('combobox');
     await userEvent.click(input);
-    expect(getByRole('listitem')).toHaveTextContent(
-      'Custom no suggestions message.Additional no suggestions description',
+    const noSuggestionsMessage = getByRole('listitem');
+    expect(noSuggestionsMessage).toHaveTextContent(
+      'Custom no suggestions message',
+    );
+    expect(noSuggestionsMessage).toHaveTextContent(
+      'Additional no suggestions description',
     );
     expect(queryByRole('option')).not.toBeInTheDocument();
     expect(getAnnouncements()).toBe(

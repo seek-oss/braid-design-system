@@ -282,7 +282,7 @@ export type AutosuggestBaseProps<Value> = Omit<
     | ((
         value: AutosuggestValue<Value>,
       ) => Suggestions<Value> | LegacyMessageSuggestion);
-  noSuggestionsMessage?: string | { text: string; description?: string };
+  noSuggestionsMessage?: string | { title: string; description: string };
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
   automaticSelection?: boolean;
@@ -303,10 +303,10 @@ export type AutosuggestProps<Value> = AutosuggestBaseProps<Value> &
 function normaliseNoSuggestionMessage<Value>(
   noSuggestionsMessage: AutosuggestBaseProps<Value>['noSuggestionsMessage'],
   suggestionProp: AutosuggestBaseProps<Value>['suggestions'],
-) {
+): { title?: string; description: string } | undefined {
   if (noSuggestionsMessage) {
     return typeof noSuggestionsMessage === 'string'
-      ? { text: noSuggestionsMessage }
+      ? { description: noSuggestionsMessage }
       : noSuggestionsMessage;
   }
 
@@ -327,7 +327,7 @@ function normaliseNoSuggestionMessage<Value>(
         'color: inherit',
       );
     }
-    return typeof message === 'string' ? { text: message } : message;
+    return { description: message };
   }
 }
 
@@ -684,16 +684,14 @@ export const Autosuggest = forwardRef(function <Value>(
       }
 
       announcements.push(translations.suggestionInstructions);
+    } else if (noSuggestionsMessage) {
+      if (noSuggestionsMessage.title) {
+        announcements.push(noSuggestionsMessage.title);
+      }
+
+      announcements.push(noSuggestionsMessage.description);
     } else {
-      announcements.push(
-        noSuggestionsMessage
-          ? `${noSuggestionsMessage.text}${
-              noSuggestionsMessage.description
-                ? ` ${noSuggestionsMessage.description}`
-                : ''
-            }`
-          : translations.noSuggestionsAvailableAnnouncement,
-      );
+      announcements.push(translations.noSuggestionsAvailableAnnouncement);
     }
   }
 
@@ -760,7 +758,11 @@ export const Autosuggest = forwardRef(function <Value>(
                     display={isOpen ? 'block' : 'none'}
                     position="absolute"
                     zIndex="dropdown"
-                    background="surface"
+                    background={
+                      !hasSuggestions && noSuggestionsMessage
+                        ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+                        : 'surface'
+                    }
                     borderRadius="standard"
                     boxShadow="medium"
                     width="full"
@@ -775,21 +777,18 @@ export const Autosuggest = forwardRef(function <Value>(
                         paddingX="small"
                         className={touchableText.standard}
                       >
-                        <Text
-                          tone={
-                            !noSuggestionsMessage.description
-                              ? 'secondary'
-                              : undefined
-                          }
-                          baseline={false}
-                        >
-                          {noSuggestionsMessage.text}
-                        </Text>
-                        {noSuggestionsMessage.description ? (
-                          <Text tone="secondary" baseline={false}>
-                            {noSuggestionsMessage.description}
+                        {noSuggestionsMessage.title ? (
+                          <Text
+                            tone="secondary"
+                            weight="medium"
+                            baseline={false}
+                          >
+                            {noSuggestionsMessage.title}
                           </Text>
                         ) : null}
+                        <Text tone="secondary" baseline={false}>
+                          {noSuggestionsMessage.description}
+                        </Text>
                       </Box>
                     ) : null}
                     {isOpen && hasSuggestions
