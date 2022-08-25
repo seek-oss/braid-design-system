@@ -1,3 +1,6 @@
+import { ReactElement } from 'react';
+import { UseIconProps } from '../../hooks/useIcon';
+
 export interface ToastAction {
   label: string;
   onClick: () => void;
@@ -8,7 +11,8 @@ export interface InternalToast {
   dedupeKey: string;
   treatTheme: string;
   vanillaTheme: string;
-  tone: 'positive' | 'critical';
+  tone: 'positive' | 'critical' | 'neutral';
+  icon?: ReactElement<UseIconProps>;
   message: string;
   shouldRemove: boolean;
   description?: string;
@@ -16,11 +20,15 @@ export interface InternalToast {
   closeLabel?: string;
 }
 
-export interface Toast {
+export type Toast = {
   key?: string;
-  tone: 'positive' | 'critical';
   message: string;
   description?: string;
   action?: ToastAction;
   closeLabel?: string;
-}
+} & (
+  | {
+      tone: 'positive' | 'critical';
+    }
+  | { tone: 'neutral'; icon?: ReactElement<UseIconProps> }
+);

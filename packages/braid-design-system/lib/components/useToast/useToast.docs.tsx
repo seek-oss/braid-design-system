@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../../site/src/types';
 import {
+  Box,
   Button,
   Text,
   Stack,
@@ -10,6 +11,7 @@ import {
   IconPromote,
   Notice,
   IconLanguage,
+  IconBookmark,
 } from '..';
 import { useThemeSettings } from '../../../../../site/src/App/ThemeSetting';
 import Code from '../../../../../site/src/App/Code/Code';
@@ -97,7 +99,7 @@ const docs: ComponentDocs = {
             {`
           import { useToast } from 'braid-design-system';
 
-          export default () => {
+          export const Demo = () => {
             const showToast = useToast();
 
             // etc...
@@ -128,42 +130,78 @@ const docs: ComponentDocs = {
     {
       label: 'Tones',
       description: (
-        <Text>
-          Toasts support <Strong>positive</Strong> and <Strong>critical</Strong>{' '}
-          tones.
-        </Text>
+        <>
+          <Text>
+            Toasts support <Strong>positive</Strong>, <Strong>critical</Strong>{' '}
+            and <Strong>neutral</Strong> tones.
+          </Text>
+          <Notice>
+            <Text>
+              When using a <Strong>neutral</Strong> tone, an{' '}
+              <Strong>icon</Strong> may optionally be provided. For consistency,
+              the tone of the icon is set to <Strong>secondary</Strong> and
+              cannot be customised.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: ({ id, showToast }) => {
         const { theme } = useThemeSettings();
 
         const { code } = source(
-          <Stack space="small">
-            <Inline space="small" align="center">
-              <Button
-                onClick={() =>
-                  showToast({
-                    tone: 'positive',
-                    message: 'Positive message',
-                  })
-                }
-              >
-                Show positive toast <IconPromote alignY="lowercase" />
-              </Button>
-            </Inline>
+          <Box padding="medium">
+            <Stack space="small">
+              <Text>
+                Show toast <Strong>tone</Strong> example:
+              </Text>
+              <Inline space="small">
+                <Button
+                  onClick={() =>
+                    showToast({
+                      tone: 'positive',
+                      message: 'Positive message',
+                    })
+                  }
+                >
+                  Positive
+                </Button>
 
-            <Inline space="small" align="center">
-              <Button
-                onClick={() =>
-                  showToast({
-                    tone: 'critical',
-                    message: 'Critical message',
-                  })
-                }
-              >
-                Show critical toast <IconPromote alignY="lowercase" />
-              </Button>
-            </Inline>
-          </Stack>,
+                <Button
+                  onClick={() =>
+                    showToast({
+                      tone: 'critical',
+                      message: 'Critical message',
+                    })
+                  }
+                >
+                  Critical
+                </Button>
+
+                <Button
+                  onClick={() =>
+                    showToast({
+                      tone: 'neutral',
+                      message: 'Neutral message',
+                    })
+                  }
+                >
+                  Neutral
+                </Button>
+
+                <Button
+                  onClick={() =>
+                    showToast({
+                      tone: 'neutral',
+                      icon: <IconBookmark />,
+                      message: 'Neutral with icon',
+                    })
+                  }
+                >
+                  Neutral with icon
+                </Button>
+              </Inline>
+            </Stack>
+          </Box>,
         );
 
         const { value } = source(
@@ -187,6 +225,27 @@ const docs: ComponentDocs = {
               onClose={() => {}}
               message="Critical message"
               tone="critical"
+            />
+            <Toast
+              id={`${id}_3`}
+              dedupeKey={`${id}_3`}
+              shouldRemove={false}
+              treatTheme={theme.treatTheme}
+              vanillaTheme={theme.vanillaTheme}
+              onClose={() => {}}
+              message="Neutral message"
+              tone="neutral"
+            />
+            <Toast
+              id={`${id}_4`}
+              dedupeKey={`${id}_4`}
+              shouldRemove={false}
+              treatTheme={theme.treatTheme}
+              vanillaTheme={theme.vanillaTheme}
+              onClose={() => {}}
+              message="Neutral message with icon"
+              tone="neutral"
+              icon={<IconBookmark />}
             />
           </Stack>,
         );
