@@ -21,7 +21,7 @@
     "build-storybook": "nx run braid-design-system:build-storybook",
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "release": "pnpm prepare-publish && changeset publish && pnpm build-site && pnpm deploy",
+    "release": "pnpm prepare-publish && changeset publish && pnpm build-site && pnpm run deploy",
     "prepare-publish": "nx run braid-design-system:build",
     "version": "changeset version && ts-node scripts/versionComponentUpdates",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
@@ -66,6 +66,7 @@
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "jest-watch-typeahead": "^2.0.0",
+    "js-yaml": "^4.1.0",
     "nx": "^14.5.3",
     "prettier": "^2.6.2",
     "renovate-config-seek": "0.4.0",
