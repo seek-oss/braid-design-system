@@ -2609,5 +2609,22 @@
         "summary": "**vars:** Expose shadow palette\n\nProvide access to the themed `shadow` scale on the `vars` object\n\n**EXAMPLE USAGE:**\n```jsx\nimport { vars } from 'braid-design-system/css';\n\nexport const dropShadow = style({\n  boxShadow: vars.shadow.small,\n});\n```"
       }
     ]
+  },
+  {
+    "version": "31.17.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add configurable message for no suggestions\n\nProvides consumers a way to give the user more context when no suggestions are available. The `noSuggestionsMessage` prop accepts a simple message by providing a single piece of text. Alternatively, a more structured prompt can be shown by providing an object containing **title** and **description**.\n\nThis message is only displayed when there are no available suggestions provided.\n\n**EXAMPLE USAGE:**\nFor the simple case:\n\n```jsx\n<Autosuggest\n  ...\n  suggestions={[]}\n  noSuggestionsMessage=\"No results found\"\n/>\n```\n\nOr, for more a structured prompt:\n\n```jsx\n<Autosuggest\n  ...\n  suggestions={[]}\n  noSuggestionsMessage={{\n    title: \"No results found\",\n    description: \"Try searching for something else\",\n  }}\n/>\n```\n\n**MIGRATION GUIDE:**\n\nIn addition, the old mechanism allowing consumers to pass an object to `suggestions` containing a `message` has been deprecated. This will continue to work for now but will be removed in a future release.\n\nIt is recommended to migrate to the `noSuggestionsMessage` prop.\n\n```diff\n <Autosuggest\n   ...\n-  suggestions={{ message: 'No results found' }}\n+  noSuggestionsMessage=\"No results found\"\n />\n```"
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast:** Add neutral tone support\n\nAdd support for `neutral` tone. When using a `neutral` tone, an icon may optionally be provided. For consistency, the tone of the icon is set to **secondary** and cannot be customised.\n\n**EXAMPLE USAGE:**\n```jsx\nimport { useToast } from \"braid-design-system\"\n\nexport const DemoButton = () => {\n  const showToast = useToast();\n\n  return (\n    <Button\n      onClick={() =>\n        showToast({\n          tone: \"neutral\",\n          icon: <IconBookmark />,\n          message: \"Neutral with icon\",\n        })\n      }\n    >\n      Show Toast\n    </Button>\n  );\n}\n```"
+      }
+    ]
   }
 ]
