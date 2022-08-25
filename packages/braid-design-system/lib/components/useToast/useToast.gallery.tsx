@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from 'sku/react-treat';
 import { ComponentExample } from '../../../../../site/src/types';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { Button, IconPromote, Inline } from '..';
+import { Button, IconBookmark, IconPromote, Inline } from '..';
 import Toast from './Toast';
 import source from '../../utils/source.macro';
 
@@ -81,6 +81,88 @@ export const galleryItems: ComponentExample[] = [
               onClose={handler}
               message="Critical message"
               tone="critical"
+            />
+          </Inline>
+        ),
+      };
+    },
+  },
+  {
+    label: 'With a neutral message',
+    Example: ({ id, handler, showToast }) => {
+      const theme = useTheme();
+      const { vanillaTheme } = useBraidTheme();
+
+      const { code } = source(
+        <Inline space="small">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Neutral message',
+                tone: 'neutral',
+              })
+            }
+          >
+            Show Toast
+          </Button>
+        </Inline>,
+      );
+
+      return {
+        code,
+        value: (
+          <Inline space="gutter" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              vanillaTheme={vanillaTheme}
+              onClose={handler}
+              message="Neutral message"
+              tone="neutral"
+            />
+          </Inline>
+        ),
+      };
+    },
+  },
+  {
+    label: 'With a custom icon (neutral tone only)',
+    Example: ({ id, handler, showToast }) => {
+      const theme = useTheme();
+      const { vanillaTheme } = useBraidTheme();
+
+      const { code } = source(
+        <Inline space="small">
+          <Button
+            onClick={() =>
+              showToast({
+                message: 'Neutral message with icon',
+                tone: 'neutral',
+                icon: <IconBookmark />,
+              })
+            }
+          >
+            Show Toast
+          </Button>
+        </Inline>,
+      );
+
+      return {
+        code,
+        value: (
+          <Inline space="gutter" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              treatTheme={theme}
+              vanillaTheme={vanillaTheme}
+              onClose={handler}
+              message="Neutral message with icon"
+              tone="neutral"
+              icon={<IconBookmark />}
             />
           </Inline>
         ),
