@@ -1,5 +1,85 @@
 # braid-design-system
 
+## 31.17.0
+
+### Minor Changes
+
+- **Autosuggest:** Add configurable message for no suggestions ([#1140](https://github.com/seek-oss/braid-design-system/pull/1140))
+
+  Provides consumers a way to give the user more context when no suggestions are available. The `noSuggestionsMessage` prop accepts a simple message by providing a single piece of text. Alternatively, a more structured prompt can be shown by providing an object containing **title** and **description**.
+
+  This message is only displayed when there are no available suggestions provided.
+
+  **EXAMPLE USAGE:**
+  For the simple case:
+
+  ```jsx
+  <Autosuggest
+    ...
+    suggestions={[]}
+    noSuggestionsMessage="No results found"
+  />
+  ```
+
+  Or, for more a structured prompt:
+
+  ```jsx
+  <Autosuggest
+    ...
+    suggestions={[]}
+    noSuggestionsMessage={{
+      title: "No results found",
+      description: "Try searching for something else",
+    }}
+  />
+  ```
+
+  **MIGRATION GUIDE:**
+
+  In addition, the old mechanism allowing consumers to pass an object to `suggestions` containing a `message` has been deprecated. This will continue to work for now but will be removed in a future release.
+
+  It is recommended to migrate to the `noSuggestionsMessage` prop.
+
+  ```diff
+   <Autosuggest
+     ...
+  -  suggestions={{ message: 'No results found' }}
+  +  noSuggestionsMessage="No results found"
+   />
+  ```
+
+- **useToast:** Add neutral tone support ([#1141](https://github.com/seek-oss/braid-design-system/pull/1141))
+
+  Add support for `neutral` tone. When using a `neutral` tone, an icon may optionally be provided. For consistency, the tone of the icon is set to **secondary** and cannot be customised.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  import { useToast } from 'braid-design-system';
+
+  export const DemoButton = () => {
+    const showToast = useToast();
+
+    return (
+      <Button
+        onClick={() =>
+          showToast({
+            tone: 'neutral',
+            icon: <IconBookmark />,
+            message: 'Neutral with icon',
+          })
+        }
+      >
+        Show Toast
+      </Button>
+    );
+  };
+  ```
+
+### Patch Changes
+
+- Add `react-dom` as a peer dependency ([#1136](https://github.com/seek-oss/braid-design-system/pull/1136))
+
 ## 31.16.0
 
 ### Minor Changes
