@@ -597,53 +597,52 @@ const docs: ComponentDocs = {
         <>
           <Text>
             If no suggestions are available and you’d like to provide messaging
-            to the user, you can provide an object with a{' '}
-            <Strong>message</Strong> property to the{' '}
-            <Strong>suggestions</Strong> prop.
+            to the user, you can provide it via the{' '}
+            <Strong>noSuggestionsMessage</Strong> prop.
+          </Text>
+          <Text>
+            A simple message can be shown by providing a single piece of text.
+            Alternatively, a more structured prompt can be shown by providing an
+            object containing <Strong>title</Strong> and{' '}
+            <Strong>description</Strong>.
           </Text>
         </>
       ),
       Example: ({ id, setDefaultState, getState, setState, resetState }) =>
         source(
           <>
-            {setDefaultState('value', { text: '' })}
+            {setDefaultState('field1', { text: '' })}
+            {setDefaultState('field2', { text: '' })}
 
-            <Autosuggest
-              showMobileBackdrop
-              scrollToTopOnMobile
-              label="Label"
-              id={id}
-              value={getState('value')}
-              onChange={setState('value')}
-              onClear={() => resetState('value')}
-              suggestions={(value) => {
-                const filteredSuggestions = filterSuggestions(
-                  [
-                    {
-                      text: 'Apples',
-                      value: 1,
-                    },
-                    {
-                      text: 'Bananas',
-                      value: 2,
-                    },
-                    {
-                      text: 'Broccoli',
-                      value: 3,
-                    },
-                    {
-                      text: 'Carrots',
-                      value: 4,
-                    },
-                  ],
-                  value,
-                );
-
-                return filteredSuggestions.length > 0
-                  ? filteredSuggestions
-                  : { message: 'No results found.' };
-              }}
-            />
+            <Stack space="large">
+              <Autosuggest
+                showMobileBackdrop
+                scrollToTopOnMobile
+                label="Label"
+                description="Focus the field to see a simple message"
+                id={`${id}_noSuggestionsMessage1`}
+                value={getState('field1')}
+                onChange={setState('field1')}
+                onClear={() => resetState('field1')}
+                suggestions={[]}
+                noSuggestionsMessage="No results found"
+              />
+              <Autosuggest
+                showMobileBackdrop
+                scrollToTopOnMobile
+                label="Label"
+                description="Focus the field to see more structured prompt"
+                id={`${id}_noSuggestionsMessage2`}
+                value={getState('field2')}
+                onChange={setState('field2')}
+                onClear={() => resetState('field2')}
+                suggestions={[]}
+                noSuggestionsMessage={{
+                  title: 'No results found',
+                  description: 'Try searching for something else',
+                }}
+              />
+            </Stack>
           </>,
         ),
     },

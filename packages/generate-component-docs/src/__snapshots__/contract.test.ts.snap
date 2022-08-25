@@ -100,6 +100,9 @@ Object {
     label: ReactNode
     message?: ReactNode
     name?: string
+    noSuggestionsMessage?: 
+        | string
+        | { title: string; description: string; }
     onBlur?: () => void
     onChange: (value: AutosuggestValue<Value>) => void
     onClear?: () => void
@@ -115,9 +118,9 @@ Object {
     secondaryMessage?: ReactNode
     showMobileBackdrop?: boolean
     suggestions: 
-        | (value: AutosuggestValue<Value>) => Suggestions<Value> | { message: string; }
+        | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
+        | LegacyMessageSuggestion
         | Suggestions<Value>
-        | { message: string; }
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"

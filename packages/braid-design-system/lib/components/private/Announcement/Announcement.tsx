@@ -5,6 +5,7 @@ import { atoms } from '../../../css/atoms/atoms';
 import * as styles from '../../HiddenVisually/HiddenVisually.css';
 
 let announcementCounter = 0;
+export const containerPrefix = 'braid-announcement-container';
 
 interface AnnouncementProps {
   children: string | undefined | null;
@@ -22,7 +23,7 @@ export const Announcement = ({ children }: AnnouncementProps) => {
   ].join(' ');
 
   useEffect(() => {
-    const announcementContainerId = `braid-announcement-container-${announcementCounter++}`;
+    const announcementContainerId = `${containerPrefix}-${announcementCounter++}`;
 
     const element = document.createElement('div');
     element.setAttribute('id', announcementContainerId);
