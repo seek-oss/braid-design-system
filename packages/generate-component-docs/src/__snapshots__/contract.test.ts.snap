@@ -102,7 +102,7 @@ Object {
     name?: string
     noSuggestionsMessage?: 
         | string
-        | { text: string; description?: string | undefined; }
+        | { title: string; description: string; }
     onBlur?: () => void
     onChange: (value: AutosuggestValue<Value>) => void
     onClear?: () => void
