@@ -2,4 +2,4 @@
 'braid-design-system': patch
 ---
 
-Fix dependency issue
+Fixes an issue with a missing dependency
