@@ -158,6 +158,7 @@ importers:
       '@capsizecss/vanilla-extract': 1.0.0_@vanilla-extract+css@1.7.2
       '@types/autosuggest-highlight': 3.2.0
       '@types/dedent': 0.7.0
+      '@types/lodash': 4.14.182
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
@@ -190,7 +191,6 @@ importers:
       '@types/babel-plugin-macros': 2.8.5
       '@types/babel-plugin-tester': 9.0.5
       '@types/jest': 28.1.6
-      '@types/lodash': 4.14.182
       '@types/react-dom': 18.0.6
       '@types/react-router-dom': 5.3.3
       '@types/sanitize-html': 2.6.2
@@ -219,9 +219,9 @@ importers:
       '@babel/plugin-syntax-jsx': ^7.17.12
       '@babel/plugin-syntax-typescript': ^7.17.12
       '@babel/traverse': ^7.18.11
-      '@types/babel-plugin-tester': ^9.0.5
       '@types/babel__core': ^7.1.19
       '@types/babel__traverse': ^7.18.0
+      '@types/babel-plugin-tester': ^9.0.5
       '@types/cli-progress': ^3.11.0
       '@types/dedent': ^0.7.0
       '@types/react': ^18.0.9
@@ -259,9 +259,9 @@ importers:
       recast: 0.21.1
       workerpool: 6.2.1
     devDependencies:
-      '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.1.19
       '@types/babel__traverse': 7.18.0
+      '@types/babel-plugin-tester': 9.0.5
       '@types/dedent': 0.7.0
 
   packages/generate-component-docs:
@@ -6076,7 +6076,7 @@ packages:
   /axios/0.21.4_debug@4.3.1:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.0
+      follow-redirects: 1.15.0_debug@4.3.4
     transitivePeerDependencies:
       - debug
     dev: true
@@ -10229,15 +10229,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /follow-redirects/1.15.0:
-    resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   /follow-redirects/1.15.0_debug@4.3.4:
     resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
     engines: {node: '>=4.0'}
@@ -11328,7 +11319,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.0
+      follow-redirects: 1.15.0_debug@4.3.4
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
