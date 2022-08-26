@@ -2626,5 +2626,9 @@
         "summary": "**useToast:** Add neutral tone support\n\nAdd support for `neutral` tone. When using a `neutral` tone, an icon may optionally be provided. For consistency, the tone of the icon is set to **secondary** and cannot be customised.\n\n**EXAMPLE USAGE:**\n```jsx\nimport { useToast } from \"braid-design-system\"\n\nexport const DemoButton = () => {\n  const showToast = useToast();\n\n  return (\n    <Button\n      onClick={() =>\n        showToast({\n          tone: \"neutral\",\n          icon: <IconBookmark />,\n          message: \"Neutral with icon\",\n        })\n      }\n    >\n      Show Toast\n    </Button>\n  );\n}\n```"
       }
     ]
+  },
+  {
+    "version": "31.17.1",
+    "updates": []
   }
 ]

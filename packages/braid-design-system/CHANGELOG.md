@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 31.17.1
+
+### Patch Changes
+
+- Fixes an issue with a missing dependency ([#1143](https://github.com/seek-oss/braid-design-system/pull/1143))
+
 ## 31.17.0
 
 ### Minor Changes
