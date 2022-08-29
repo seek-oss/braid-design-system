@@ -227,7 +227,7 @@ export const MenuRenderer = ({
     // first menu item is not highlighted automatically, but considering
     // space keyboard interactions are optional this is acceptable.
     //   See Firefox bug details: https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
-    //   See WAI-ARIA keyboard iteractions: https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-12
+    //   See WAI-ARIA keyboard iteractions: https://www.w3.org/WAI/ARIA/apg/patterns/menu/#keyboard-interaction-12
     //
     // Firefox useragent check taken from the `bowser` package:
     // https://github.com/lancedikson/bowser/blob/ea8d9c54271d7b52fecd507ae8b1ba495842bc68/src/parser-browsers.js#L520

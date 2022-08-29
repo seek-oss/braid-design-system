@@ -58,7 +58,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#tabpanel">
+      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/">
         WAI ARIA Tabs Pattern.
       </TextLink>
     </Text>

@@ -35,7 +35,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#disclosure">
+      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
         WAI-ARIA Disclosure Pattern.
       </TextLink>
     </Text>

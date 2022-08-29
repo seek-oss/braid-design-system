@@ -68,7 +68,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#menu">
+      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/menu/">
         WAI-ARIA Menu Pattern.
       </TextLink>
     </Text>

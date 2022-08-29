@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
     <Stack space="large">
       <Text>
         Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices/#tooltip">
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/">
           WAI-ARIA Tooltip Pattern.
         </TextLink>
       </Text>

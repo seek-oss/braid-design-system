@@ -41,7 +41,7 @@ const docs: ComponentDocs = {
     <>
       <Text>
         Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal">
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/">
           WAI-ARIA Dialog (Modal) Pattern.
         </TextLink>
       </Text>

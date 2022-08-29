@@ -34,11 +34,11 @@ const docs: ComponentDocs = {
       <Text>
         Renders a semantic <Strong>nav</Strong> element to encapsulate the
         pagination links. Given this is a{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#aria_landmark">
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">
           Landmark Region
         </TextLink>
         , in order to comply with the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices-1.2/#general-principles-of-landmark-design">
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#x4-2-general-principles-of-landmark-design">
           General Principles of Landmark Design
         </TextLink>{' '}
         it is neccessary for it to have an <Strong>aria-label</Strong>.
