@@ -22,7 +22,7 @@ const docs: ComponentDocs = {
     <>
       <Text>
         Follows the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices/#alert">
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">
           WAI-ARIA Alert Pattern
         </TextLink>
         , announcing its presence using an{' '}

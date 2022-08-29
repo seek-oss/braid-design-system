@@ -34,7 +34,7 @@ const docs: ComponentDocs = {
   accessibility: (
     <Text>
       Follows the{' '}
-      <TextLink href="https://www.w3.org/TR/wai-aria-practices/#checkbox">
+      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/">
         WAI-ARIA Checkbox Pattern
       </TextLink>
       , supporting both dual-state and tri-state specifications.

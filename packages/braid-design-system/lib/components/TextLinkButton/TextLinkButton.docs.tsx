@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
         Even though it looks like a{' '}
         <TextLink href="/components/TextLink">TextLink</TextLink>, this is
         actually a semantic button following the{' '}
-        <TextLink href="https://www.w3.org/TR/wai-aria-practices/#button">
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">
           WAI-ARIA Button Pattern.
         </TextLink>
       </Text>
