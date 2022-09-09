@@ -9,9 +9,8 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.8.0
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2.2.2
 
       - name: Checkout Repo
         uses: actions/checkout@main
@@ -20,7 +19,7 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
-      - name: Setup Node.js 16.x
+      - name: Set up Node.js 16.x
         uses: actions/setup-node@main
         with:
           node-version: 16.x
