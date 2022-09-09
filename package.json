@@ -23,7 +23,7 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm prepare-publish && changeset publish && pnpm build-site && pnpm run deploy",
     "prepare-publish": "nx run braid-design-system:build",
-    "version": "changeset version && ts-node scripts/versionComponentUpdates",
+    "version": "changeset version && ts-node scripts/versionComponentUpdates && pnpm install --lockfile-only",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
   "repository": {
