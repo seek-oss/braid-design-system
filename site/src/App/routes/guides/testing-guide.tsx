@@ -110,6 +110,29 @@ const page: Page = {
         });
       `}</Code>
       <Text>
+        If you want to test specific user interactions with your component, the{' '}
+        <TextLink href="https://github.com/testing-library/user-event">
+          user-event
+        </TextLink>{' '}
+        library exposes a high-level API for simulating browser events:
+      </Text>
+      <Code playroom={false}>{`
+        import { render } from '@testing-library/react';
+        import userEvent from '@testing-library/user-event';
+
+        test('should focus the button after pressing tab', async () => {
+          const { getByRole } = render(<MyComponent />);
+          const user = userEvent.setup()
+
+          const button = getByRole('button');
+          expect(button).not.toHaveFocus();
+
+          await user.tab();
+
+          expect(button).toHaveFocus();
+        });
+      `}</Code>
+      <Text>
         We feel this approach to unit testing is more appropriate to Braid
         consumers for a few reasons:
       </Text>
