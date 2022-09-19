@@ -177,6 +177,12 @@ const page: Page = {
           </TextLink>{' '}
           by Kent C. Dodds.
         </Text>
+        <Text>
+          <TextLink href="https://kentcdodds.com/blog/common-mistakes-with-react-testing-library">
+            Common Mistakes with React Testing Library
+          </TextLink>{' '}
+          by Kent C. Dodds.
+        </Text>
       </List>
 
       <LinkableHeading level="3">
