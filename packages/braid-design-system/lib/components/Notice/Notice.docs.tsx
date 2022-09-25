@@ -5,7 +5,6 @@ import { Notice, Card, Text, Strong, Stack, TextLink, List } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Card rounded>
