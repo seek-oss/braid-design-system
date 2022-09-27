@@ -3,7 +3,10 @@ import { atoms as internalAtoms, Atoms } from '../lib/css/atoms/atoms';
 import { colorModeStyle } from '../lib/css/colorModeStyle';
 import { responsiveStyle } from '../lib/css/responsiveStyle';
 import { breakpoints } from '../lib/css/breakpoints';
-import { globalHeadingStyle, globalTextStyle } from '../lib/hooks/typography';
+import {
+  globalHeadingStyle,
+  globalTextStyle,
+} from '../lib/css/globalTypographyStyles';
 import type { Breakpoint } from '../lib/css/breakpoints';
 
 const {

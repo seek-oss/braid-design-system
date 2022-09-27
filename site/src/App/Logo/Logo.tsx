@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from 'braid-design-system';
-import { useTextTone } from 'braid-design-system/lib/hooks/typography';
+import * as typographyStyles from 'braid-design-system/lib/css/typography.css';
 
 interface LogoProps {
   width?: string | number;
@@ -26,7 +26,7 @@ export const Logo = ({
   return (
     <Box
       overflow="hidden"
-      className={useTextTone({ tone })}
+      className={typographyStyles.tone[tone]}
       style={{
         width: resolveToPxIfUnitless(width ? width : defaultWidth),
         height: resolveToPxIfUnitless(height ? height : defaultHeight),

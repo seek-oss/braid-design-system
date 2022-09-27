@@ -3,6 +3,7 @@ import { ComponentScreenshot } from '../../../../../site/src/types';
 import {
   Heading,
   IconNewWindow,
+  IconHome,
   Text,
   TextLink,
   Columns,
@@ -14,12 +15,11 @@ import {
 // Use public import
 import { Box } from '../Box/Box';
 import { backgrounds } from '../../utils/docsHelpers';
-import { IconHome } from '../icons';
-import { heading, tone, text } from '../../hooks/typography/typography.css';
+import { heading, tone, textSizeTrimmed } from '../../css/typography.css';
 
 const textSizes = [
   undefined, // test default case
-  ...(Object.keys(text) as Array<keyof typeof text>),
+  ...(Object.keys(textSizeTrimmed) as Array<keyof typeof textSizeTrimmed>),
 ];
 const textTones = [
   undefined, // test default case

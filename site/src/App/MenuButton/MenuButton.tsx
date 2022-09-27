@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from 'braid-design-system';
-import { useTextTone } from 'braid-design-system/lib/hooks/typography';
 import { virtualTouchable } from 'braid-design-system/lib/components/private/touchable/virtualTouchable';
+import * as typographyStyles from 'braid-design-system/lib/css/typography.css';
 import * as styles from './MenuButton.css';
 
 interface MenuButtonProps {
@@ -17,7 +17,7 @@ export const MenuButton = ({ open = false, onClick }: MenuButtonProps) => (
     className={[
       styles.root,
       virtualTouchable(),
-      useTextTone({ tone: 'neutral' }),
+      typographyStyles.tone.neutral,
       open ? styles.isOpen : undefined,
     ]}
     onClick={onClick}

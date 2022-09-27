@@ -6,20 +6,22 @@ import { OptionalTitle } from '../../components/icons/SVGTypes';
 import { PublicBoxProps } from '../../components/Box/Box';
 import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import { textSize, useTextTone, UseTextProps } from '../typography';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../../components/private/buildDataAttributes';
+import * as typographyStyles from '../../css/typography.css';
 import * as styles from './icon.css';
 
-type IconSize = NonNullable<UseTextProps['size']> | 'fill';
+type IconSize =
+  | NonNullable<keyof typeof typographyStyles.textSizeUntrimmed>
+  | 'fill';
 
 export interface IconSizeProps {
   size?: Exclude<IconSize, 'fill'>;
 }
 export const iconSize = ({ size = 'standard' }: IconSizeProps = {}) =>
-  clsx(styles.size, textSize(size));
+  clsx(styles.size, typographyStyles.textSizeUntrimmed[size]);
 
 export interface IconContainerSizeProps {
   size?: Exclude<IconSize, 'fill'>;
@@ -30,7 +32,7 @@ export const iconContainerSize = (
 
 export type UseIconProps = {
   size?: IconSize;
-  tone?: UseTextProps['tone'];
+  tone?: keyof typeof typographyStyles.tone;
   alignY?: 'uppercase' | 'lowercase';
   data?: DataAttributeMap;
 } & OptionalTitle;
@@ -57,9 +59,11 @@ export default (
   const headingContext = useContext(HeadingContext);
   const inheritedTone =
     textContext && textContext.tone ? textContext.tone : 'neutral';
-  const resolvedTone = useTextTone({ tone: tone || inheritedTone });
+  const resolvedTone = typographyStyles.tone[tone || inheritedTone];
   const toneClass =
-    tone || !(textContext && textContext.tone) ? resolvedTone : undefined;
+    tone || (!headingContext && !(textContext && textContext.tone))
+      ? resolvedTone
+      : undefined;
   const isInline = textContext || headingContext;
   const a11yProps = titleProps.title
     ? { ...titleProps, role: 'img' }

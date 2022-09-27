@@ -8,7 +8,7 @@ import {
 } from './BackgroundContext';
 import { BoxBackgroundVariant, BoxProps } from './Box';
 import { Background, BoxShadow } from '../../css/atoms/atomicProperties';
-import * as typographyStyles from '../../hooks/typography/typography.css';
+import * as typographyStyles from '../../css/typography.css';
 
 export interface ColoredBoxProps extends BoxProps {
   component: NonNullable<BoxProps['component']>;

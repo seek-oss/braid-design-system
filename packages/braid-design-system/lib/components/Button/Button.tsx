@@ -8,7 +8,7 @@ import React, {
   ReactElement,
   cloneElement,
 } from 'react';
-import { touchableText } from '../../hooks/typography';
+import { touchableText } from '../../css/typography.css';
 import { Box, BoxBackgroundVariant, BoxProps } from '../Box/Box';
 import buildDataAttributes, {
   DataAttributeMap,

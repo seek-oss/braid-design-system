@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import { useTextTone } from '../../hooks/typography';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { tone } from '../../css/typography.css';
 
 export interface SecondaryProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ export interface SecondaryProps {
 
 export const Secondary = ({ children, data, id }: SecondaryProps) => (
   <span
-    className={useTextTone({ tone: 'secondary' })}
+    className={tone.secondary}
     id={id}
     {...(data ? buildDataAttributes(data) : undefined)}
   >

@@ -1,11 +1,11 @@
 import React from 'react';
 import { createContext, useContext, ReactNode, useMemo } from 'react';
-import { UseTextProps } from '../../hooks/typography';
+import type { TextStyleProps } from '../../css/typography';
 
 interface DefaultTextProps {
-  tone?: NonNullable<UseTextProps['tone']>;
-  weight?: NonNullable<UseTextProps['weight']>;
-  size?: NonNullable<UseTextProps['size']>;
+  tone?: TextStyleProps['tone'];
+  weight?: TextStyleProps['weight'];
+  size?: TextStyleProps['size'];
 }
 
 const DefaultTextPropsContext = createContext<DefaultTextProps>({
