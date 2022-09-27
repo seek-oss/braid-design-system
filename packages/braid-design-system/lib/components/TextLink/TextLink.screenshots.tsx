@@ -77,9 +77,7 @@ export const screenshots: ComponentScreenshot = {
           {textSizes.map((size) => (
             <Text size={size} key={size}>
               A <TextLink href="#">“regular” TextLink</TextLink> inside{' '}
-              <Strong>
-                “{size === undefined ? 'undefined' : size}” size Text
-              </Strong>
+              <Strong>“{size || 'default'}”</Strong> Text
             </Text>
           ))}
         </Stack>
@@ -95,10 +93,7 @@ export const screenshots: ComponentScreenshot = {
               <TextLink href="#" weight="weak">
                 “weak” TextLink
               </TextLink>{' '}
-              inside{' '}
-              <Strong>
-                “{size === undefined ? 'undefined' : size}” size Text
-              </Strong>
+              inside <Strong>“{size || 'default'}”</Strong> Text
             </Text>
           ))}
         </Stack>
@@ -111,7 +106,7 @@ export const screenshots: ComponentScreenshot = {
           {textTones.map((t) => (
             <Text tone={t} key={t}>
               This is a <TextLink href="#">“regular” TextLink</TextLink> inside{' '}
-              <Strong>“{t || 'undefined'}” tone Text</Strong>
+              <Strong>“{t || 'default'}”</Strong> tone Text
             </Text>
           ))}
         </Stack>
@@ -127,7 +122,7 @@ export const screenshots: ComponentScreenshot = {
               <TextLink href="#" weight="weak">
                 “weak” TextLink
               </TextLink>{' '}
-              inside <Strong>“{t || 'undefined'}” tone Text</Strong>
+              inside <Strong>“{t || 'default'}”</Strong> tone Text
             </Text>
           ))}
         </Stack>
@@ -139,8 +134,8 @@ export const screenshots: ComponentScreenshot = {
         <Stack space="medium">
           {headingLevels.map((level) => (
             <Heading level={level} key={level}>
-              A <TextLink href="#">“regular” TextLink</TextLink> inside{' '}
-              <Strong>level “{level}”</Strong>
+              A <TextLink href="#">“regular” TextLink</TextLink> inside level “
+              {level}”
             </Heading>
           ))}
         </Stack>
@@ -156,7 +151,7 @@ export const screenshots: ComponentScreenshot = {
               <TextLink href="#" weight="weak">
                 “weak” TextLink
               </TextLink>{' '}
-              inside <Strong>level “{level}”</Strong>
+              inside level “{level}”
             </Heading>
           ))}
         </Stack>
@@ -171,21 +166,18 @@ export const screenshots: ComponentScreenshot = {
             <TextLink href="#">
               TextLink <IconHome />
             </TextLink>
-            .
           </Text>
           <Text tone="secondary">
             This icon matches the link colour:{' '}
             <TextLink href="#">
               TextLink <IconHome />
             </TextLink>
-            .
           </Text>
           <Text tone="critical">
             This icon matches the link colour:{' '}
             <TextLink href="#">
               TextLink <IconHome />
             </TextLink>
-            .
           </Text>
         </Stack>
       ),
@@ -199,21 +191,18 @@ export const screenshots: ComponentScreenshot = {
             <TextLink href="#" weight="weak">
               TextLink <IconHome />
             </TextLink>
-            .
           </Text>
           <Text tone="secondary">
             This icon matches the link colour:{' '}
             <TextLink href="#" weight="weak">
               TextLink <IconHome />
             </TextLink>
-            .
           </Text>
           <Text tone="critical">
             This icon matches the link colour:{' '}
             <TextLink href="#" weight="weak">
               TextLink <IconHome />
             </TextLink>
-            .
           </Text>
         </Stack>
       ),
