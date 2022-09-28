@@ -3,7 +3,7 @@ import assert from 'assert';
 import { TextContext } from './TextContext';
 import { useDefaultTextProps } from '../private/defaultTextProps';
 import { textStyles, TextStyleProps } from '../../css/typography';
-import { Typography, TypographyProps } from '../private/typography/Typography';
+import { Typography, TypographyProps } from '../private/Typography/Typography';
 
 export interface TextProps extends TypographyProps {
   size?: TextStyleProps['size'];
