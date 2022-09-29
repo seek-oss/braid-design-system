@@ -1,11 +1,10 @@
 import type { StyleRule } from '@vanilla-extract/css';
 import { vars } from '../../lib/themes/vars.css';
 import { responsiveStyle } from './responsiveStyle';
-import * as typographyStyles from '../css/typography.css';
 
 interface GlobalTextStyleProps {
-  weight?: keyof typeof typographyStyles.fontWeight;
-  size?: keyof typeof typographyStyles.textSizeUntrimmed;
+  weight?: keyof typeof vars.textWeight;
+  size?: keyof typeof vars.textSize;
 }
 
 export const globalTextStyle = ({
@@ -28,8 +27,8 @@ export const globalTextStyle = ({
 });
 
 interface GlobalHeadingProps {
-  weight?: keyof typeof typographyStyles.headingWeight;
-  level: keyof typeof typographyStyles.heading;
+  weight?: keyof typeof vars.headingWeight;
+  level: keyof typeof vars.headingLevel;
 }
 
 export const globalHeadingStyle = ({
