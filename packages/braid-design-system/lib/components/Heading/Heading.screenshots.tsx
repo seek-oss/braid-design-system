@@ -1,7 +1,7 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { heading as headingLevels } from '../../css/typography.css';
-import { Heading, Stack } from '../';
+import { heading } from '../../css/typography.css';
+import { Heading, IconPositive, Stack } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
@@ -11,89 +11,53 @@ const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
+const headingLevels = Object.keys(heading).sort() as Array<
+  keyof typeof heading
+>;
+
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
   examples: [
     {
-      label: 'Level 1',
-      Example: () => <Heading level="1">Heading Level 1</Heading>,
-    },
-    {
-      label: 'Level 1 Weak',
+      label: 'Levels',
       Example: () => (
-        <Heading level="1" weight="weak">
-          Heading Level 1 Weak
-        </Heading>
+        <Stack space="large">
+          {headingLevels.map((level) => (
+            <Heading level={level} key={level}>
+              Level {level}
+            </Heading>
+          ))}
+        </Stack>
       ),
     },
     {
-      label: 'Level 2',
-      Example: () => <Heading level="2">Heading Level 2</Heading>,
-    },
-    {
-      label: 'Level 2 Weak',
-      Example: () => (
-        <Heading level="2" weight="weak">
-          Heading Level 2 Weak
-        </Heading>
-      ),
-    },
-    {
-      label: 'Level 3',
-      Example: () => <Heading level="3">Heading Level 3</Heading>,
-    },
-    {
-      label: 'Level 3 Weak',
-      Example: () => (
-        <Heading level="3" weight="weak">
-          Heading Level 3 Weak
-        </Heading>
-      ),
-    },
-    {
-      label: 'Level 4',
-      Example: () => <Heading level="4">Heading Level 4</Heading>,
-    },
-    {
-      label: 'Level 4 Weak',
-      Example: () => (
-        <Heading level="4" weight="weak">
-          Heading Level 4 Weak
-        </Heading>
-      ),
-    },
-    {
-      label: 'Truncate a long heading',
-      Example: () => (
-        <Box style={{ width: 160 }}>
-          <Heading level="2" truncate>
-            Really long heading
-          </Heading>
-        </Box>
-      ),
-    },
-    {
-      label: 'Heading Spacing',
+      label: 'Line heights',
       background: 'surface',
-      Example: () => {
-        const levels = Object.keys(headingLevels) as Array<
-          keyof typeof headingLevels
-        >;
-
-        return (
-          <Stack space="medium">
-            {levels.sort().map((level) => (
-              <Box key={level} background="neutralLight">
-                <Heading level={level}>
-                  Level {level} Heading (Line 1)
-                  <br />
-                  Level {level} Heading (Line 2)
-                </Heading>
-              </Box>
-            ))}
-          </Stack>
-        );
-      },
+      Example: () => (
+        <Stack space="medium">
+          {headingLevels.map((level) => (
+            <Box key={level} background="neutralLight">
+              <Heading level={level}>
+                Level {level} Heading (Line 1)
+                <br />
+                Level {level} Heading (Line 2)
+              </Heading>
+            </Box>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Weight: weak',
+      Example: () => (
+        <Stack space="large">
+          {headingLevels.map((level) => (
+            <Heading level={level} weight="weak" key={level}>
+              Level {level} Weak
+            </Heading>
+          ))}
+        </Stack>
+      ),
     },
     {
       label: 'Heading Alignment',
@@ -118,13 +82,25 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Heading Contrast',
+      label: 'Truncation',
+      Example: () => (
+        <Box style={{ width: 160 }}>
+          <Heading level="2" truncate>
+            Really long heading
+          </Heading>
+        </Box>
+      ),
+    },
+    {
+      label: 'Contrast',
       Container,
       Example: () => (
         <Fragment>
           {backgrounds.map((background) => (
             <Box key={background} background={background} paddingY="xsmall">
-              <Heading level="4">{background}</Heading>
+              <Heading level="4">
+                {background} <IconPositive />
+              </Heading>
             </Box>
           ))}
         </Fragment>
