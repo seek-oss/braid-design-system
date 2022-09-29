@@ -13,7 +13,6 @@ export interface TextProps extends TypographyProps {
 }
 
 export const Text = ({
-  component,
   size: sizeProp,
   tone: toneProp,
   weight: weightProp,
@@ -45,9 +44,8 @@ export const Text = ({
   return (
     <TextContext.Provider value={textStylingProps}>
       <Typography
-        component={component || 'span'}
-        className={textStyles(textStylingProps)}
         {...typographyProps}
+        className={textStyles(textStylingProps)}
       />
     </TextContext.Provider>
   );

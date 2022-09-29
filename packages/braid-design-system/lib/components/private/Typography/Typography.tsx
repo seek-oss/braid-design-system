@@ -9,7 +9,7 @@ export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   truncate?: boolean;
   data?: DataAttributeMap;
 }
-interface PrivateTypography
+interface PrivateTypographyProps
   extends TypographyProps,
     Pick<BoxProps, 'className'> {}
 
@@ -21,7 +21,7 @@ export const Typography = ({
   truncate = false,
   data,
   children,
-}: PrivateTypography) => (
+}: PrivateTypographyProps) => (
   <Box
     id={id}
     display="block"

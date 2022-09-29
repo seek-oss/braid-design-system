@@ -60,8 +60,8 @@ export const useLinkStyles = ({
   // are automatically converted to `weak` weight.
   const isWeakDueToTextTone =
     !headingContext &&
-    (!textContext ||
-      (textContext.tone !== 'neutral' && textContext.tone !== 'secondary'));
+    textContext?.tone !== 'neutral' &&
+    textContext?.tone !== 'secondary';
 
   const linkStyles =
     weight === 'weak' || isWeakDueToTextTone

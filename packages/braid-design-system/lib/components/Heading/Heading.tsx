@@ -24,6 +24,7 @@ export const Heading = ({
 }: HeadingProps) => (
   <HeadingContext.Provider value={true}>
     <Typography
+      {...typographyProps}
       component={component || resolveDefaultComponent[level]}
       className={[
         typographyStyles.fontFamily,
@@ -31,7 +32,6 @@ export const Heading = ({
         typographyStyles.heading[level],
         typographyStyles.tone.neutral,
       ]}
-      {...typographyProps}
     />
   </HeadingContext.Provider>
 );

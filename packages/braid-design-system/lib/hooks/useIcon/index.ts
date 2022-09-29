@@ -13,9 +13,7 @@ import buildDataAttributes, {
 import * as typographyStyles from '../../css/typography.css';
 import * as styles from './icon.css';
 
-type IconSize =
-  | NonNullable<keyof typeof typographyStyles.textSizeUntrimmed>
-  | 'fill';
+type IconSize = keyof typeof typographyStyles.textSizeUntrimmed | 'fill';
 
 export interface IconSizeProps {
   size?: Exclude<IconSize, 'fill'>;
@@ -57,14 +55,11 @@ export default (
 ): PublicBoxProps => {
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
-  const inheritedTone =
-    textContext && textContext.tone ? textContext.tone : 'neutral';
-  const resolvedTone = typographyStyles.tone[tone || inheritedTone];
+  const resolvedTone =
+    typographyStyles.tone[tone || textContext?.tone || 'neutral'];
   const toneClass =
-    tone || (!headingContext && !(textContext && textContext.tone))
-      ? resolvedTone
-      : undefined;
-  const isInline = textContext || headingContext;
+    tone || (!headingContext && !textContext?.tone) ? resolvedTone : undefined;
+  const isInline = Boolean(textContext || headingContext);
   const a11yProps = titleProps.title
     ? { ...titleProps, role: 'img' }
     : { 'aria-hidden': true };
@@ -73,7 +68,9 @@ export default (
     !(size && isInline),
     `Specifying a custom \`size\` for an \`Icon\` inside the context of a \`<${
       textContext ? 'Text' : 'Heading'
-    }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/`,
+    }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/${
+      textContext ? 'Text' : 'Heading'
+    }`,
   );
 
   assert(

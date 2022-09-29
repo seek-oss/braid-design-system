@@ -13,7 +13,7 @@ export const BraidPortal = ({ children, container }: BraidPortalProps) => {
   const { vanillaTheme } = useBraidTheme();
 
   return createPortal(
-    <TextContext.Provider value={false}>
+    <TextContext.Provider value={null}>
       <VanillaThemeContainer theme={vanillaTheme} setDefaultTextTones>
         {children}
       </VanillaThemeContainer>
