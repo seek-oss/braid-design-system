@@ -3,12 +3,7 @@ import { Box } from '../../Box/Box';
 import * as styles from './Truncate.css';
 
 export const Truncate = ({ children }: { children: ReactNode }) => (
-  <Box
-    component="span"
-    display="block"
-    overflow="hidden"
-    className={styles.truncate}
-  >
+  <Box component="span" className={styles.truncate}>
     {children}
   </Box>
 );

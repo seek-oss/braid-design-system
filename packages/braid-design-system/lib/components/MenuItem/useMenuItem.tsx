@@ -11,7 +11,7 @@ import React, {
 import { BadgeProps } from '../Badge/Badge';
 import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { touchableText } from '../../hooks/typography';
+import { touchableText } from '../../css/typography.css';
 import { normalizeKey } from '../private/normalizeKey';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
 import { actionTypes, Action } from '../MenuRenderer/MenuRenderer.actions';

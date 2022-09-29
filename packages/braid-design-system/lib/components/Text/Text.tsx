@@ -1,37 +1,23 @@
-import React, { ReactNode, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import assert from 'assert';
 import { TextContext } from './TextContext';
-import { Box, BoxProps } from '../Box/Box';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
-import { useText, UseTextProps } from '../../hooks/typography';
 import { useDefaultTextProps } from '../private/defaultTextProps';
-import { Truncate } from '../private/Truncate/Truncate';
+import { textStyles, TextStyleProps } from '../../css/typography';
+import { Typography, TypographyProps } from '../private/Typography/Typography';
 
-export interface TextProps extends Pick<BoxProps, 'component'> {
-  id?: string;
-  children?: ReactNode;
-  size?: UseTextProps['size'];
-  tone?: UseTextProps['tone'];
-  weight?: UseTextProps['weight'];
-  baseline?: UseTextProps['baseline'];
-  align?: BoxProps['textAlign'];
-  truncate?: boolean;
-  data?: DataAttributeMap;
+export interface TextProps extends TypographyProps {
+  size?: TextStyleProps['size'];
+  tone?: TextStyleProps['tone'];
+  weight?: TextStyleProps['weight'];
+  baseline?: TextStyleProps['baseline'];
 }
 
 export const Text = ({
-  id,
-  component = 'span',
   size: sizeProp,
   tone: toneProp,
-  align,
   weight: weightProp,
   baseline = true,
-  truncate = false,
-  data,
-  children,
+  ...typographyProps
 }: TextProps) => {
   assert(
     !useContext(TextContext),
@@ -43,10 +29,9 @@ export const Text = ({
     weight: weightProp,
     tone: toneProp,
   });
-  const textStyles = useText({ weight, size, baseline, tone });
 
   // Prevent re-renders when context values haven't changed
-  const textContextValue = useMemo(
+  const textStylingProps = useMemo(
     () => ({
       tone,
       size,
@@ -57,17 +42,11 @@ export const Text = ({
   );
 
   return (
-    <TextContext.Provider value={textContextValue}>
-      <Box
-        id={id}
-        display="block"
-        component={component}
-        textAlign={align}
-        className={textStyles}
-        {...(data ? buildDataAttributes(data) : undefined)}
-      >
-        {truncate ? <Truncate>{children}</Truncate> : children}
-      </Box>
+    <TextContext.Provider value={textStylingProps}>
+      <Typography
+        {...typographyProps}
+        className={textStyles(textStylingProps)}
+      />
     </TextContext.Provider>
   );
 };

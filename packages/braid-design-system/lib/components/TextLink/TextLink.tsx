@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import { atoms, Atoms } from '../../css/atoms/atoms';
 import {
   useBackgroundLightness,
@@ -10,6 +10,8 @@ import {
   useLinkComponent,
   LinkComponentProps,
 } from '../BraidProvider/BraidProvider';
+import HeadingContext from '../Heading/HeadingContext';
+import { TextContext } from '../Text/TextContext';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -51,9 +53,18 @@ export const useLinkStyles = ({
 }) => {
   const backgroundLightness = useBackgroundLightness();
   const backgroundContext = useBackground();
+  const textContext = useContext(TextContext);
+  const headingContext = useContext(HeadingContext);
+
+  // Links nested inside Text components that use coloured tones
+  // are automatically converted to `weak` weight.
+  const isWeakDueToTextTone =
+    !headingContext &&
+    textContext?.tone !== 'neutral' &&
+    textContext?.tone !== 'secondary';
 
   const linkStyles =
-    weight === 'weak'
+    weight === 'weak' || isWeakDueToTextTone
       ? styles.weakLink
       : [
           isPlainBackground(backgroundContext.lightMode, 'light') ||

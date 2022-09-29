@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import { useWeight } from '../../hooks/typography';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { fontWeight } from '../../css/typography.css';
 
 export interface StrongProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ export interface StrongProps {
 
 export const Strong = ({ children, data, id }: StrongProps) => (
   <strong
-    className={useWeight('strong')}
+    className={fontWeight.strong}
     id={id}
     {...(data ? buildDataAttributes(data) : undefined)}
   >

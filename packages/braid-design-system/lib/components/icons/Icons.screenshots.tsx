@@ -4,9 +4,9 @@ import { Text, Heading, Inline, Button, Stack } from '../';
 import { UseIconProps } from '../../hooks/useIcon';
 import {
   heading as headingSizes,
-  text as textSizes,
+  textSizeUntrimmed as textSizes,
   tone as tones,
-} from '../../hooks/typography/typography.css';
+} from '../../css/typography.css';
 
 import * as icons from './index';
 

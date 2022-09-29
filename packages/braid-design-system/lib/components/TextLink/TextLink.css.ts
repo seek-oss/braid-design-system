@@ -56,16 +56,11 @@ export const weakLink = style({
   vars: weakLinkVars,
 });
 
-export const inheritLinkColor = style({});
-
 export const regularLinkLightMode = styleVariants({
   light: {
     selectors: {
       [`html:not(${darkMode}) &`]: {
         vars: lightModeRegularLinkVars,
-      },
-      [`html:not(${darkMode}) ${inheritLinkColor} > &`]: {
-        vars: weakLinkVars,
       },
     },
   },
@@ -73,9 +68,6 @@ export const regularLinkLightMode = styleVariants({
     selectors: {
       [`html:not(${darkMode}) &`]: {
         vars: darkModeRegularLinkVars,
-      },
-      [`html:not(${darkMode}) ${inheritLinkColor} > &`]: {
-        vars: weakLinkVars,
       },
     },
   },
@@ -87,18 +79,12 @@ export const regularLinkDarkMode = styleVariants({
       [`html${darkMode} &`]: {
         vars: lightModeRegularLinkVars,
       },
-      [`html${darkMode} ${inheritLinkColor} > &`]: {
-        vars: weakLinkVars,
-      },
     },
   },
   dark: {
     selectors: {
       [`html${darkMode} &`]: {
         vars: darkModeRegularLinkVars,
-      },
-      [`html${darkMode} ${inheritLinkColor} > &`]: {
-        vars: weakLinkVars,
       },
     },
   },

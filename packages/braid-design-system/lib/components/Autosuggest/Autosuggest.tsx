@@ -26,7 +26,8 @@ import {
 } from '../private/Field/Field';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
-import { touchableText, useText } from '../../hooks/typography';
+import { textStyles } from '../../css/typography';
+import { touchableText } from '../../css/typography.css';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
@@ -202,7 +203,7 @@ function GroupHeading({ children }: GroupHeadingProps) {
       className={[
         styles.groupHeading,
         touchableText.xsmall,
-        useText({
+        textStyles({
           size: 'xsmall',
           baseline: false,
           weight: 'strong',

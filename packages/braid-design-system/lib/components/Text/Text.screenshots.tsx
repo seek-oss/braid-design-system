@@ -5,7 +5,7 @@ import { Text, Stack, Column, Columns, IconPositive } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
-import { text as textSizes } from '../../hooks/typography/typography.css';
+import { textSizeUntrimmed as textSizes } from '../../css/typography.css';
 import { backgrounds, textAlignments } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (

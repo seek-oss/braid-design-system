@@ -5,7 +5,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { atoms } from '../../css/atoms/atoms';
 import * as styles from './Loader.css';
-import { useTextTone } from '../../hooks/typography';
+import * as typographyStyles from '../../css/typography.css';
 
 interface LoaderProps {
   size?: keyof typeof styles.size;
@@ -38,7 +38,7 @@ export const Loader = ({
         atoms({ reset: 'svg' }),
         styles.size[size],
         styles.currentColor,
-        useTextTone({ tone: 'neutral' }),
+        typographyStyles.tone.neutral,
       ].join(' ')}
       viewBox="0 0 300 134"
       aria-hidden

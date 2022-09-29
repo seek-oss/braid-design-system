@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import * as typographyStyles from '../../hooks/typography/typography.css';
+import * as typographyStyles from '../../css/typography.css';
 
 interface Props {
   children: ReactNode;

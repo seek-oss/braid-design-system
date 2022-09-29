@@ -10,7 +10,8 @@ import {
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Stack } from '../../Stack/Stack';
 import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
-import { useText, touchableText } from '../../../hooks/typography';
+import { textStyles } from '../../../css/typography';
+import { touchableText } from '../../../css/typography.css';
 import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
 import * as styles from './Field.css';
@@ -205,7 +206,7 @@ export const Field = ({
             className: clsx(
               styles.field,
               styles.placeholderColor,
-              useText({
+              textStyles({
                 tone: hasValue && !disabled ? 'neutral' : 'secondary',
                 size: 'standard',
                 baseline: false,

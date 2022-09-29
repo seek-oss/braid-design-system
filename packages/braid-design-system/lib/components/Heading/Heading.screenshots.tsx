@@ -1,6 +1,6 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { heading as headingLevels } from '../../hooks/typography/typography.css';
+import { heading as headingLevels } from '../../css/typography.css';
 import { Heading, Stack } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
