@@ -12,12 +12,21 @@ const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
-const textSizes = ['large', 'standard', 'small', 'xsmall'] as Array<
-  keyof typeof textSizeUntrimmed
->;
-const textWeights = ['strong', 'medium', 'weak'] as Array<
-  keyof typeof fontWeight
->;
+// type TextSize = keyof typeof textSizeUntrimmed;
+// const validateTextSizes = <T extends TextSize[]>(
+//   array: T & ([TextSize] extends [T[number]] ? unknown : 'Invalid'),
+// ) => array;
+// // Validate that all entries are included in this array.
+// // This array is being used to order the sort examples visually
+// const textSizes = validateTextSizes(['large', 'standard', 'small', 'xsmall']);
+
+// type TextWeights = keyof typeof fontWeight;
+// const validateWeights = <T extends TextWeights[]>(
+//   array: T & ([TextWeights] extends [T[number]] ? unknown : 'Invalid'),
+// ) => array;
+// // Validate that all entries are included in this array.
+// // This array is being used to order the sort examples visually
+// const textWeights = validateWeights(['strong', 'medium', 'regular']);
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
@@ -26,8 +35,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Sizes',
       Example: () => (
         <Stack space="medium">
-          {textSizes.map((size) => (
-            <Text size={size} key={size}>
+          {Object.keys(textSizeUntrimmed).map((size) => (
+            <Text size={size as keyof typeof textSizeUntrimmed} key={size}>
               {titleCase(size)}
             </Text>
           ))}
@@ -39,9 +48,9 @@ export const screenshots: ComponentScreenshot = {
       background: 'surface',
       Example: () => (
         <Stack space="medium">
-          {textSizes.map((size) => (
+          {Object.keys(textSizeUntrimmed).map((size) => (
             <Box key={size} background="neutralLight">
-              <Text size={size}>
+              <Text size={size as keyof typeof textSizeUntrimmed}>
                 {titleCase(size)} Text (Line 1)
                 <br />
                 {titleCase(size)} Text (Line 2)
@@ -55,8 +64,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Weights',
       Example: () => (
         <Stack space="medium">
-          {textWeights.map((weight) => (
-            <Text weight={weight} key={weight}>
+          {Object.keys(fontWeight).map((weight) => (
+            <Text weight={weight as keyof typeof fontWeight} key={weight}>
               {titleCase(weight)}
             </Text>
           ))}
