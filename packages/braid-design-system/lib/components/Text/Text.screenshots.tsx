@@ -12,22 +12,6 @@ const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
 
-// type TextSize = keyof typeof textSizeUntrimmed;
-// const validateTextSizes = <T extends TextSize[]>(
-//   array: T & ([TextSize] extends [T[number]] ? unknown : 'Invalid'),
-// ) => array;
-// // Validate that all entries are included in this array.
-// // This array is being used to order the sort examples visually
-// const textSizes = validateTextSizes(['large', 'standard', 'small', 'xsmall']);
-
-// type TextWeights = keyof typeof fontWeight;
-// const validateWeights = <T extends TextWeights[]>(
-//   array: T & ([TextWeights] extends [T[number]] ? unknown : 'Invalid'),
-// ) => array;
-// // Validate that all entries are included in this array.
-// // This array is being used to order the sort examples visually
-// const textWeights = validateWeights(['strong', 'medium', 'regular']);
-
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
   examples: [
