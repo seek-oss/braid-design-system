@@ -5,7 +5,7 @@ import { Text, Stack, Column, Columns, IconPositive } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
-import { textSizeUntrimmed as textSizes } from '../../css/typography.css';
+import { textSizeUntrimmed, fontWeight } from '../../css/typography.css';
 import { backgrounds, textAlignments } from '../../utils/docsHelpers';
 
 const Container = ({ children }: { children: ReactNode }) => (
@@ -15,30 +15,53 @@ const Container = ({ children }: { children: ReactNode }) => (
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
   examples: [
-    { label: 'Standard Text', Example: () => <Text>Standard text.</Text> },
     {
-      label: 'Small Text',
-      Example: () => <Text size="small">Small text.</Text>,
-    },
-    {
-      label: 'Large Text',
-      Example: () => <Text size="large">Large text.</Text>,
-    },
-    {
-      label: 'Truncating long text',
+      label: 'Sizes',
       Example: () => (
-        <Box style={{ width: 90 }}>
-          <Text truncate>Long piece of text</Text>
-        </Box>
+        <Stack space="medium">
+          {Object.keys(textSizeUntrimmed).map((size) => (
+            <Text size={size as keyof typeof textSizeUntrimmed} key={size}>
+              {titleCase(size)}
+            </Text>
+          ))}
+        </Stack>
       ),
     },
     {
-      label: 'Text on dark background',
-      background: 'neutral',
-      Container,
+      label: 'Line heights',
+      background: 'surface',
       Example: () => (
-        <Stack space="small">
-          <Text>Neutral text</Text>
+        <Stack space="medium">
+          {Object.keys(textSizeUntrimmed).map((size) => (
+            <Box key={size} background="neutralLight">
+              <Text size={size as keyof typeof textSizeUntrimmed}>
+                {titleCase(size)} Text (Line 1)
+                <br />
+                {titleCase(size)} Text (Line 2)
+              </Text>
+            </Box>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Weights',
+      Example: () => (
+        <Stack space="medium">
+          {Object.keys(fontWeight).map((weight) => (
+            <Text weight={weight as keyof typeof fontWeight} key={weight}>
+              {titleCase(weight)}
+            </Text>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Tones on dark background',
+      background: 'neutral',
+      Example: () => (
+        <Stack space="medium">
+          <Text tone="neutral">Neutral text</Text>
           <Text tone="secondary">Secondary text</Text>
           <Text tone="critical">Critical text</Text>
           <Text tone="caution">Caution text</Text>
@@ -51,7 +74,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Text Alignment',
+      label: 'Alignment',
       Container,
       Example: () => (
         <Stack space="medium">
@@ -64,7 +87,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Text Alignment (responsive)',
+      label: 'Alignment (responsive)',
       Container,
       Example: () => (
         <Text align={['right', 'center', 'left']}>
@@ -73,29 +96,15 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Text Spacing',
-      background: 'surface',
-      Container,
-      Example: () => {
-        const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
-
-        return (
-          <Stack space="medium">
-            {sizes.sort().map((size) => (
-              <Box key={size} background="neutralLight">
-                <Text size={size}>
-                  {titleCase(size)} Text (Line 1)
-                  <br />
-                  {titleCase(size)} Text (Line 2)
-                </Text>
-              </Box>
-            ))}
-          </Stack>
-        );
-      },
+      label: 'Truncation',
+      Example: () => (
+        <Box style={{ width: 90 }}>
+          <Text truncate>Long piece of text</Text>
+        </Box>
+      ),
     },
     {
-      label: 'Text Contrast',
+      label: 'Contrast',
       Container,
       Example: () => (
         <Fragment>

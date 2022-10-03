@@ -1,59 +1,70 @@
 import React from 'react';
 import { ComponentExample } from '../../../../../site/src/types';
-import { Heading } from '../';
+import { Box, Heading, Stack } from '../';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Level 1',
-    Example: () => source(<Heading level="1">Heading Level 1</Heading>),
-  },
-  {
-    label: 'Level 1 Weak',
+    label: 'Levels',
     Example: () =>
       source(
-        <Heading level="1" weight="weak">
-          Heading Level 1 Weak
-        </Heading>,
+        <Stack space="large">
+          <Heading level="1">Level 1</Heading>
+          <Heading level="2">Level 2</Heading>
+          <Heading level="3">Level 3</Heading>
+          <Heading level="4">Level 4</Heading>
+        </Stack>,
       ),
   },
   {
-    label: 'Level 2',
-    Example: () => source(<Heading level="2">Heading Level 2</Heading>),
-  },
-  {
-    label: 'Level 2 Weak',
+    label: 'Weight',
     Example: () =>
       source(
-        <Heading level="2" weight="weak">
-          Heading Level 2 Weak
-        </Heading>,
+        <Stack space="large">
+          <Heading level="1" weight="weak">
+            Level 1 Weak
+          </Heading>
+          <Heading level="2" weight="weak">
+            Level 2 Weak
+          </Heading>
+          <Heading level="3" weight="weak">
+            Level 3 Weak
+          </Heading>
+          <Heading level="4" weight="weak">
+            Level 4 Weak
+          </Heading>
+        </Stack>,
       ),
   },
   {
-    label: 'Level 3',
-    Example: () => source(<Heading level="3">Heading Level 3</Heading>),
-  },
-  {
-    label: 'Level 3 Weak',
+    label: 'Alignment',
     Example: () =>
       source(
-        <Heading level="3" weight="weak">
-          Heading Level 3 Weak
-        </Heading>,
+        <Stack space="large" dividers>
+          <Heading level="2" align="left">
+            Left (default)
+          </Heading>
+          <Heading level="2" align="center">
+            Center
+          </Heading>
+          <Heading level="2" align="right">
+            Right
+          </Heading>
+          <Heading level="2" align={{ mobile: 'center', tablet: 'left' }}>
+            Center on mobile
+          </Heading>
+        </Stack>,
       ),
   },
   {
-    label: 'Level 4',
-    Example: () => source(<Heading level="4">Heading Level 4</Heading>),
-  },
-  {
-    label: 'Level 4 Weak',
+    label: 'Truncation',
     Example: () =>
       source(
-        <Heading level="4" weight="weak">
-          Heading Level 4 Weak
-        </Heading>,
+        <Box style={{ width: 150 }}>
+          <Heading level="2" truncate>
+            Long heading
+          </Heading>
+        </Box>,
       ),
   },
 ];
