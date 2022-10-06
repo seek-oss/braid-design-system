@@ -15,14 +15,14 @@ import {
   IconChevron,
   Hidden,
   IconPositive,
+  IconCopy,
+  IconVideo,
 } from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box, BoxProps } from 'braid-design-system/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-design-system/lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from 'braid-design-system/lib/components/private/hideFocusRings/hideFocusRings';
-import { CopyIcon } from './CopyIcon';
-import { PlayIcon } from './PlayIcon';
 import * as styles from './Code.css';
 
 // @ts-ignore
@@ -255,7 +255,7 @@ const Code = ({
               title="Copy code to clipboard"
               successLabel="Copied!"
             >
-              <CopyIcon /> Copy
+              <IconCopy /> Copy
             </CodeButton>
           )}
           {/^import/m.test(code) || !playroom ? null : (
@@ -265,7 +265,7 @@ const Code = ({
               href={createUrl({ baseUrl: playroomUrl, code })}
               title="Open in Playroom"
             >
-              <PlayIcon />{' '}
+              <IconVideo />{' '}
               <Hidden inline below="tablet">
                 Open in{' '}
               </Hidden>
