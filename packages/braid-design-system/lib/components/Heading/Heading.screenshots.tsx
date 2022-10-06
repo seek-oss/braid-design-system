@@ -1,7 +1,7 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
 import { heading } from '../../css/typography.css';
-import { Heading, IconPositive, Stack } from '../';
+import { Heading, IconPositive, IconPromote, Stack } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
@@ -89,6 +89,50 @@ export const screenshots: ComponentScreenshot = {
             Really long heading
           </Heading>
         </Box>
+      ),
+    },
+    {
+      label: 'With an icon',
+      Example: () => (
+        <Stack space="large">
+          {headingLevels.map((level) => (
+            <Heading level={level} icon={<IconPromote />} key={level}>
+              Level {level} with icon
+            </Heading>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Alignment with an icon',
+      Container,
+      Example: () => (
+        <Stack space="large">
+          {textAlignments.map((alignment) => (
+            <Heading
+              level="3"
+              align={alignment}
+              icon={<IconPromote />}
+              key={alignment}
+            >
+              {alignment}
+            </Heading>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Responsive alignment with an icon',
+      Example: () => (
+        <Stack space="medium">
+          <Heading
+            level="3"
+            align={['right', 'center', 'left']}
+            icon={<IconPromote />}
+          >
+            Right aligned mobile, center on tablet, left on desktop
+          </Heading>
+        </Stack>
       ),
     },
     {

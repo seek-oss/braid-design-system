@@ -97,6 +97,7 @@ export default (
       isInline
         ? [
             styles.size,
+            styles.inlineCrop,
             styles.inline,
             styles.alignY[alignY || 'uppercase'][
               verticalCorrection[alignY || 'uppercase']

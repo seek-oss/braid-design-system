@@ -3,8 +3,13 @@ import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
 export const size = style({
-  width: '1em',
-  height: '1em',
+  width: '1.2em',
+  height: '1.2em',
+});
+
+export const inlineCrop = style({
+  marginTop: '-0.2em',
+  marginBottom: '-0.2em',
 });
 
 export const inline = style({

@@ -7,10 +7,15 @@ import { Text, Stack, Column, Columns, IconPositive } from '../';
 import { Box } from '../Box/Box';
 import { textSizeUntrimmed, fontWeight } from '../../css/typography.css';
 import { backgrounds, textAlignments } from '../../utils/docsHelpers';
+import { IconPromote } from '../icons';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
 );
+
+const textSizes = Object.keys(textSizeUntrimmed) as Array<
+  keyof typeof textSizeUntrimmed
+>;
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
@@ -19,8 +24,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Sizes',
       Example: () => (
         <Stack space="medium">
-          {Object.keys(textSizeUntrimmed).map((size) => (
-            <Text size={size as keyof typeof textSizeUntrimmed} key={size}>
+          {textSizes.map((size) => (
+            <Text size={size} key={size}>
               {titleCase(size)}
             </Text>
           ))}
@@ -32,9 +37,9 @@ export const screenshots: ComponentScreenshot = {
       background: 'surface',
       Example: () => (
         <Stack space="medium">
-          {Object.keys(textSizeUntrimmed).map((size) => (
+          {textSizes.map((size) => (
             <Box key={size} background="neutralLight">
-              <Text size={size as keyof typeof textSizeUntrimmed}>
+              <Text size={size}>
                 {titleCase(size)} Text (Line 1)
                 <br />
                 {titleCase(size)} Text (Line 2)
@@ -101,6 +106,41 @@ export const screenshots: ComponentScreenshot = {
         <Box style={{ width: 90 }}>
           <Text truncate>Long piece of text</Text>
         </Box>
+      ),
+    },
+    {
+      label: 'With an icon',
+      Example: () => (
+        <Stack space="large">
+          {textSizes.map((size) => (
+            <Text size={size} icon={<IconPromote />} key={size}>
+              {titleCase(size)} with icon
+            </Text>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Alignment with an icon',
+      Container,
+      Example: () => (
+        <Stack space="medium">
+          {textAlignments.map((alignment) => (
+            <Text align={alignment} key={alignment} icon={<IconPromote />}>
+              {titleCase(alignment)}
+            </Text>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Responsive alignment with an icon',
+      Example: () => (
+        <Stack space="medium">
+          <Text align={['right', 'center', 'left']} icon={<IconPromote />}>
+            Right aligned mobile, center on tablet, left on desktop
+          </Text>
+        </Stack>
       ),
     },
     {

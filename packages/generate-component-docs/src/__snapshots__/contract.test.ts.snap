@@ -3119,6 +3119,7 @@ Object {
         | ComponentClass<any, any>
         | FunctionComponent<any>
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     level: 
         | "1"
@@ -7221,6 +7222,7 @@ Object {
         | ComponentClass<any, any>
         | FunctionComponent<any>
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     size?: 
         | "large"

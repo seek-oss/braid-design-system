@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentExample } from '../../../../../site/src/types';
-import { Box, Heading, Stack } from '../';
+import { Box, Heading, Stack, IconPromote } from '../';
+
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
@@ -65,6 +66,26 @@ export const galleryItems: ComponentExample[] = [
             Long heading
           </Heading>
         </Box>,
+      ),
+  },
+  {
+    label: 'With an icon',
+    Example: () =>
+      source(
+        <Stack space="large">
+          <Heading level="1" icon={<IconPromote />}>
+            Level 1 with icon
+          </Heading>
+          <Heading level="2" icon={<IconPromote />}>
+            Level 2 with icon
+          </Heading>
+          <Heading level="3" icon={<IconPromote />}>
+            Level 3 with icon
+          </Heading>
+          <Heading level="4" icon={<IconPromote />}>
+            Level 4 with icon
+          </Heading>
+        </Stack>,
       ),
   },
 ];
