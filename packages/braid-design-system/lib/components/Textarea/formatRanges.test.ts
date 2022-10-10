@@ -5,7 +5,7 @@ describe('formatRanges', () => {
     const value = 'aaaaaaaaa bbbbbbbbbb';
     const ranges = [{ start: 30 }];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         "aaaaaaaaa bbbbbbbbbb",
       ]
     `);
@@ -19,7 +19,7 @@ describe('formatRanges', () => {
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         "my str",
         <Highlight>
           ing of text
@@ -37,7 +37,7 @@ describe('formatRanges', () => {
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         "my ",
         <Highlight>
           longer
@@ -64,7 +64,7 @@ describe('formatRanges', () => {
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         "my ",
         <Highlight>
           lon
@@ -95,7 +95,7 @@ describe('formatRanges', () => {
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         "aaaaaaaaaa",
         <Highlight>
           bbb
@@ -113,7 +113,7 @@ describe('formatRanges', () => {
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         "my longer text",
       ]
     `);
@@ -132,7 +132,7 @@ describe('formatRanges', () => {
       },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         "aaaaaaaaaa",
         <Highlight>
           bbb
@@ -150,7 +150,7 @@ describe('formatRanges', () => {
       { start: 10, end: 14 },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         <Highlight>
           some
         </Highlight>,
@@ -181,7 +181,7 @@ describe('formatRanges', () => {
       { start: 40, end: 44 },
     ];
     expect(formatRanges(value, ranges)).toMatchInlineSnapshot(`
-      Array [
+      [
         <Highlight>
           some
         </Highlight>,
