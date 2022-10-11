@@ -2630,5 +2630,16 @@
   {
     "version": "31.17.1",
     "updates": []
+  },
+  {
+    "version": "31.17.2",
+    "updates": [
+      {
+        "updated": [
+          "Heading"
+        ],
+        "summary": "**Heading**: Nested icons inherit text colour\n\nWhen using icons inside of a `Heading`, the default `tone` was always `neutral`, rather than inheriting the colour of the nearest component.\n\nFor example, when an icon was used inside of a `TextLink` within a `Heading`:\n```jsx\n<Heading level=\"1\">\n  Title with <TextLink>link <IconArrow /></TextLink>\n</Heading>\n// => Previously, IconArrow was the heading text colour\n// `neutral`, now inherits the `link` colour.\n```\n\nor equally, when an icon was used inside of a `Secondary` component within a `Heading`:\n```jsx\n<Heading level=\"1\">\n  Title with <Secondary>secondary <IconArrow /></Secondary>\n</Heading>\n// => Previously, IconArrow was the heading text colour\n// `neutral`, now inherits the `secondary` colour.\n```"
+      }
+    ]
   }
 ]
