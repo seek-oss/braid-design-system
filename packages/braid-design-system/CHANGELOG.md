@@ -1,5 +1,43 @@
 # braid-design-system
 
+## 31.17.2
+
+### Patch Changes
+
+- Update `@vanilla-extract/css` dependency ([#1158](https://github.com/seek-oss/braid-design-system/pull/1158))
+
+  This fixes a type error that was occurring with typescript versions >=4.5.0
+
+- **Heading**: Nested icons inherit text colour ([#1153](https://github.com/seek-oss/braid-design-system/pull/1153))
+
+  When using icons inside of a `Heading`, the default `tone` was always `neutral`, rather than inheriting the colour of the nearest component.
+
+  For example, when an icon was used inside of a `TextLink` within a `Heading`:
+
+  ```jsx
+  <Heading level="1">
+    Title with{' '}
+    <TextLink>
+      link <IconArrow />
+    </TextLink>
+  </Heading>
+  // => Previously, IconArrow was the heading text colour
+  // `neutral`, now inherits the `link` colour.
+  ```
+
+  or equally, when an icon was used inside of a `Secondary` component within a `Heading`:
+
+  ```jsx
+  <Heading level="1">
+    Title with{' '}
+    <Secondary>
+      secondary <IconArrow />
+    </Secondary>
+  </Heading>
+  // => Previously, IconArrow was the heading text colour
+  // `neutral`, now inherits the `secondary` colour.
+  ```
+
 ## 31.17.1
 
 ### Patch Changes
