@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Accordion 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNodeNoStrings
@@ -26,7 +26,7 @@ Object {
 `;
 
 exports[`AccordionItem 1`] = `
-Object {
+{
   exportType: component,
   props: {
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
@@ -50,7 +50,7 @@ Object {
 `;
 
 exports[`Actions 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNodeNoStrings
@@ -63,7 +63,7 @@ Object {
 `;
 
 exports[`Alert 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -82,7 +82,7 @@ Object {
 `;
 
 exports[`Autosuggest 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -142,7 +142,7 @@ Object {
 `;
 
 exports[`Badge 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -170,7 +170,7 @@ Object {
 `;
 
 exports[`Bleed 1`] = `
-Object {
+{
   exportType: component,
   props: {
     bottom?: 
@@ -266,7 +266,7 @@ Object {
 `;
 
 exports[`Box 1`] = `
-Object {
+{
   exportType: component,
   props: {
     about?: string
@@ -774,8 +774,8 @@ Object {
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "column" | "row" | "rowReverse" | "columnReverse" | null>
-        | { mobile?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; tablet?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; desktop?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; wide?: "column" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
@@ -788,8 +788,8 @@ Object {
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "nowrap" | "wrap" | null>
-        | { mobile?: "nowrap" | "wrap" | undefined; tablet?: "nowrap" | "wrap" | undefined; desktop?: "nowrap" | "wrap" | undefined; wide?: "nowrap" | "wrap" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
+        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     form?: string
     formAction?: string
     formEncType?: string
@@ -1214,8 +1214,8 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "absolute" | "relative" | null>
-        | { mobile?: "fixed" | "absolute" | "relative" | undefined; tablet?: "fixed" | "absolute" | "relative" | undefined; desktop?: "fixed" | "absolute" | "relative" | undefined; wide?: "fixed" | "absolute" | "relative" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
+        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1382,7 +1382,7 @@ Object {
 `;
 
 exports[`BoxRenderer 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignItems?: 
@@ -1663,8 +1663,8 @@ Object {
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "column" | "row" | "rowReverse" | "columnReverse" | null>
-        | { mobile?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; tablet?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; desktop?: "column" | "row" | "rowReverse" | "columnReverse" | undefined; wide?: "column" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
@@ -1677,8 +1677,8 @@ Object {
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "nowrap" | "wrap" | null>
-        | { mobile?: "nowrap" | "wrap" | undefined; tablet?: "nowrap" | "wrap" | undefined; desktop?: "nowrap" | "wrap" | undefined; wide?: "nowrap" | "wrap" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
+        | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     height?: 
         | "full"
         | "touchable"
@@ -1877,8 +1877,8 @@ Object {
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "absolute" | "relative" | null>
-        | { mobile?: "fixed" | "absolute" | "relative" | undefined; tablet?: "fixed" | "absolute" | "relative" | undefined; desktop?: "fixed" | "absolute" | "relative" | undefined; wide?: "fixed" | "absolute" | "relative" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
+        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
     right?: 0
     textAlign?: 
         | "center"
@@ -1910,7 +1910,7 @@ Object {
 `;
 
 exports[`BraidPortal 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -1920,7 +1920,7 @@ Object {
 `;
 
 exports[`BraidProvider 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -1945,7 +1945,7 @@ Object {
 `;
 
 exports[`BraidTestProvider 1`] = `
-Object {
+{
   exportType: component,
   props: {
     breakpoint?: 
@@ -1971,7 +1971,7 @@ Object {
 `;
 
 exports[`Button 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-controls?: string
@@ -2026,7 +2026,7 @@ Object {
 `;
 
 exports[`ButtonIcon 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-expanded?: 
@@ -2075,7 +2075,7 @@ Object {
 `;
 
 exports[`ButtonLink 1`] = `
-Object {
+{
   exportType: component,
   props: {
     about?: string
@@ -2587,7 +2587,7 @@ Object {
 `;
 
 exports[`Card 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -2612,7 +2612,7 @@ Object {
 `;
 
 exports[`Checkbox 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -2651,7 +2651,7 @@ Object {
 `;
 
 exports[`CheckboxStandalone 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -2686,7 +2686,7 @@ Object {
 `;
 
 exports[`Column 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -2707,7 +2707,7 @@ Object {
 `;
 
 exports[`Columns 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -2751,7 +2751,7 @@ Object {
 `;
 
 exports[`ContentBlock 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -2766,7 +2766,7 @@ Object {
 `;
 
 exports[`Dialog 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -2789,7 +2789,7 @@ Object {
 `;
 
 exports[`Disclosure 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -2816,7 +2816,7 @@ Object {
 `;
 
 exports[`Divider 1`] = `
-Object {
+{
   exportType: component,
   props: {
     weight?: 
@@ -2827,7 +2827,7 @@ Object {
 `;
 
 exports[`Drawer 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -2850,7 +2850,7 @@ Object {
 `;
 
 exports[`Dropdown 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -2893,7 +2893,7 @@ Object {
 `;
 
 exports[`FieldLabel 1`] = `
-Object {
+{
   exportType: component,
   props: {
     data?: DataAttributeMap
@@ -2912,7 +2912,7 @@ Object {
 `;
 
 exports[`FieldMessage 1`] = `
-Object {
+{
   exportType: component,
   props: {
     data?: DataAttributeMap
@@ -2930,7 +2930,7 @@ Object {
 `;
 
 exports[`Heading 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -3134,7 +3134,7 @@ Object {
 `;
 
 exports[`Hidden 1`] = `
-Object {
+{
   exportType: component,
   props: {
     above?: 
@@ -3333,7 +3333,7 @@ Object {
 `;
 
 exports[`HiddenVisually 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -3344,7 +3344,7 @@ Object {
 `;
 
 exports[`IconAdd 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3375,7 +3375,7 @@ Object {
 `;
 
 exports[`IconArrow 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3411,7 +3411,7 @@ Object {
 `;
 
 exports[`IconBookmark 1`] = `
-Object {
+{
   exportType: component,
   props: {
     active?: boolean
@@ -3443,7 +3443,7 @@ Object {
 `;
 
 exports[`IconCaution 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3474,7 +3474,7 @@ Object {
 `;
 
 exports[`IconChevron 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3510,7 +3510,7 @@ Object {
 `;
 
 exports[`IconClear 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3541,7 +3541,7 @@ Object {
 `;
 
 exports[`IconCompany 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3572,7 +3572,7 @@ Object {
 `;
 
 exports[`IconCompose 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3603,7 +3603,7 @@ Object {
 `;
 
 exports[`IconCopy 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3634,7 +3634,7 @@ Object {
 `;
 
 exports[`IconCreditCard 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3665,7 +3665,7 @@ Object {
 `;
 
 exports[`IconCritical 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3696,7 +3696,7 @@ Object {
 `;
 
 exports[`IconDate 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3727,7 +3727,7 @@ Object {
 `;
 
 exports[`IconDelete 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3758,7 +3758,7 @@ Object {
 `;
 
 exports[`IconDesktop 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3789,7 +3789,7 @@ Object {
 `;
 
 exports[`IconDocument 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3820,7 +3820,7 @@ Object {
 `;
 
 exports[`IconDocumentBroken 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3851,7 +3851,7 @@ Object {
 `;
 
 exports[`IconDownload 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3882,7 +3882,7 @@ Object {
 `;
 
 exports[`IconEdit 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3913,7 +3913,7 @@ Object {
 `;
 
 exports[`IconEducation 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3944,7 +3944,7 @@ Object {
 `;
 
 exports[`IconFilter 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -3975,7 +3975,7 @@ Object {
 `;
 
 exports[`IconFlag 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4006,7 +4006,7 @@ Object {
 `;
 
 exports[`IconGrid 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4037,7 +4037,7 @@ Object {
 `;
 
 exports[`IconHeart 1`] = `
-Object {
+{
   exportType: component,
   props: {
     active?: boolean
@@ -4069,7 +4069,7 @@ Object {
 `;
 
 exports[`IconHelp 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4100,7 +4100,7 @@ Object {
 `;
 
 exports[`IconHistory 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4131,7 +4131,7 @@ Object {
 `;
 
 exports[`IconHome 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4162,7 +4162,7 @@ Object {
 `;
 
 exports[`IconImage 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4193,7 +4193,7 @@ Object {
 `;
 
 exports[`IconInfo 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4224,7 +4224,7 @@ Object {
 `;
 
 exports[`IconInvoice 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4255,7 +4255,7 @@ Object {
 `;
 
 exports[`IconLanguage 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4286,7 +4286,7 @@ Object {
 `;
 
 exports[`IconLink 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4317,7 +4317,7 @@ Object {
 `;
 
 exports[`IconLinkBroken 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4348,7 +4348,7 @@ Object {
 `;
 
 exports[`IconList 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4379,7 +4379,7 @@ Object {
 `;
 
 exports[`IconLocation 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4410,7 +4410,7 @@ Object {
 `;
 
 exports[`IconMail 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4441,7 +4441,7 @@ Object {
 `;
 
 exports[`IconMinus 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4472,7 +4472,7 @@ Object {
 `;
 
 exports[`IconMobile 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4503,7 +4503,7 @@ Object {
 `;
 
 exports[`IconMoney 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4534,7 +4534,7 @@ Object {
 `;
 
 exports[`IconNewWindow 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4565,7 +4565,7 @@ Object {
 `;
 
 exports[`IconNote 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4596,7 +4596,7 @@ Object {
 `;
 
 exports[`IconNotification 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4627,7 +4627,7 @@ Object {
 `;
 
 exports[`IconOverflow 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4658,7 +4658,7 @@ Object {
 `;
 
 exports[`IconPeople 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4689,7 +4689,7 @@ Object {
 `;
 
 exports[`IconPersonAdd 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4720,7 +4720,7 @@ Object {
 `;
 
 exports[`IconPersonVerified 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4751,7 +4751,7 @@ Object {
 `;
 
 exports[`IconPhone 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4782,7 +4782,7 @@ Object {
 `;
 
 exports[`IconPlatformAndroid 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4813,7 +4813,7 @@ Object {
 `;
 
 exports[`IconPlatformApple 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4844,7 +4844,7 @@ Object {
 `;
 
 exports[`IconPositive 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4875,7 +4875,7 @@ Object {
 `;
 
 exports[`IconPrint 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4906,7 +4906,7 @@ Object {
 `;
 
 exports[`IconProfile 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4937,7 +4937,7 @@ Object {
 `;
 
 exports[`IconPromote 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4968,7 +4968,7 @@ Object {
 `;
 
 exports[`IconRecommended 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -4999,7 +4999,7 @@ Object {
 `;
 
 exports[`IconRefresh 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5030,7 +5030,7 @@ Object {
 `;
 
 exports[`IconResume 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5061,7 +5061,7 @@ Object {
 `;
 
 exports[`IconSearch 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5092,7 +5092,7 @@ Object {
 `;
 
 exports[`IconSecurity 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5123,7 +5123,7 @@ Object {
 `;
 
 exports[`IconSend 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5154,7 +5154,7 @@ Object {
 `;
 
 exports[`IconSent 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5185,7 +5185,7 @@ Object {
 `;
 
 exports[`IconSettings 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5216,7 +5216,7 @@ Object {
 `;
 
 exports[`IconShare 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5247,7 +5247,7 @@ Object {
 `;
 
 exports[`IconSocialFacebook 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5278,7 +5278,7 @@ Object {
 `;
 
 exports[`IconSocialGitHub 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5309,7 +5309,7 @@ Object {
 `;
 
 exports[`IconSocialInstagram 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5340,7 +5340,7 @@ Object {
 `;
 
 exports[`IconSocialLinkedIn 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5371,7 +5371,7 @@ Object {
 `;
 
 exports[`IconSocialMedium 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5402,7 +5402,7 @@ Object {
 `;
 
 exports[`IconSocialTwitter 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5433,7 +5433,7 @@ Object {
 `;
 
 exports[`IconSocialYouTube 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5464,7 +5464,7 @@ Object {
 `;
 
 exports[`IconStar 1`] = `
-Object {
+{
   exportType: component,
   props: {
     active?: boolean
@@ -5496,7 +5496,7 @@ Object {
 `;
 
 exports[`IconStatistics 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5527,7 +5527,7 @@ Object {
 `;
 
 exports[`IconSubCategory 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5558,7 +5558,7 @@ Object {
 `;
 
 exports[`IconTag 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5589,7 +5589,7 @@ Object {
 `;
 
 exports[`IconThumb 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5623,7 +5623,7 @@ Object {
 `;
 
 exports[`IconTick 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5654,7 +5654,7 @@ Object {
 `;
 
 exports[`IconTime 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5685,7 +5685,7 @@ Object {
 `;
 
 exports[`IconTip 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5716,7 +5716,7 @@ Object {
 `;
 
 exports[`IconUpload 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5747,7 +5747,7 @@ Object {
 `;
 
 exports[`IconVideo 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5778,7 +5778,7 @@ Object {
 `;
 
 exports[`IconVisibility 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5810,7 +5810,7 @@ Object {
 `;
 
 exports[`IconWorkExperience 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5841,7 +5841,7 @@ Object {
 `;
 
 exports[`IconZoomIn 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5872,7 +5872,7 @@ Object {
 `;
 
 exports[`IconZoomOut 1`] = `
-Object {
+{
   exportType: component,
   props: {
     alignY?: 
@@ -5903,7 +5903,7 @@ Object {
 `;
 
 exports[`Inline 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -5947,7 +5947,7 @@ Object {
 `;
 
 exports[`Link 1`] = `
-Object {
+{
   exportType: component,
   props: {
     about?: string
@@ -6449,7 +6449,7 @@ exports[`LinkComponent 1`] = `
 `;
 
 exports[`List 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNodeNoStrings
@@ -6495,7 +6495,7 @@ Object {
 `;
 
 exports[`Loader 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-label?: string
@@ -6511,7 +6511,7 @@ Object {
 `;
 
 exports[`MenuItem 1`] = `
-Object {
+{
   exportType: component,
   props: {
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
@@ -6526,7 +6526,7 @@ Object {
 `;
 
 exports[`MenuItemCheckbox 1`] = `
-Object {
+{
   exportType: component,
   props: {
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
@@ -6545,7 +6545,7 @@ exports[`MenuItemDivider 1`] = `
 `;
 
 exports[`MenuItemLink 1`] = `
-Object {
+{
   exportType: component,
   props: {
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
@@ -6568,7 +6568,7 @@ Object {
 `;
 
 exports[`MenuRenderer 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -6605,7 +6605,7 @@ Object {
 `;
 
 exports[`MonthPicker 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-label: string
@@ -6642,7 +6642,7 @@ Object {
 `;
 
 exports[`Notice 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -6657,7 +6657,7 @@ Object {
 `;
 
 exports[`OverflowMenu 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -6680,7 +6680,7 @@ Object {
 `;
 
 exports[`Pagination 1`] = `
-Object {
+{
   exportType: component,
   props: {
     data?: DataAttributeMap
@@ -6697,7 +6697,7 @@ Object {
 `;
 
 exports[`PasswordField 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -6738,7 +6738,7 @@ Object {
 `;
 
 exports[`Radio 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -6767,7 +6767,7 @@ Object {
 `;
 
 exports[`RadioGroup 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-label: string
@@ -6800,7 +6800,7 @@ Object {
 `;
 
 exports[`RadioItem 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -6822,7 +6822,7 @@ Object {
 `;
 
 exports[`Rating 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-label?: string
@@ -6843,7 +6843,7 @@ Object {
 `;
 
 exports[`Secondary 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -6854,7 +6854,7 @@ Object {
 `;
 
 exports[`Stack 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -6892,7 +6892,7 @@ Object {
 `;
 
 exports[`Step 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: string
@@ -6905,7 +6905,7 @@ Object {
 `;
 
 exports[`Stepper 1`] = `
-Object {
+{
   exportType: component,
   props: {
     activeStep?: number
@@ -6929,7 +6929,7 @@ Object {
 `;
 
 exports[`Strong 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -6940,7 +6940,7 @@ Object {
 `;
 
 exports[`Tab 1`] = `
-Object {
+{
   exportType: component,
   props: {
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
@@ -6953,7 +6953,7 @@ Object {
 `;
 
 exports[`TabPanel 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -6964,7 +6964,7 @@ Object {
 `;
 
 exports[`TabPanels 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNodeNoStrings
@@ -6974,7 +6974,7 @@ Object {
 `;
 
 exports[`Tabs 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -7005,7 +7005,7 @@ Object {
 `;
 
 exports[`TabsProvider 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -7017,7 +7017,7 @@ Object {
 `;
 
 exports[`Tag 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: string
@@ -7031,7 +7031,7 @@ Object {
 `;
 
 exports[`Text 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -7248,7 +7248,7 @@ Object {
 `;
 
 exports[`TextDropdown 1`] = `
-Object {
+{
   exportType: component,
   props: {
     data?: DataAttributeMap
@@ -7263,7 +7263,7 @@ Object {
 `;
 
 exports[`TextField 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -7315,7 +7315,7 @@ Object {
 `;
 
 exports[`TextLink 1`] = `
-Object {
+{
   exportType: component,
   props: {
     about?: string
@@ -7818,7 +7818,7 @@ Object {
 `;
 
 exports[`TextLinkButton 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-controls?: string
@@ -7844,7 +7844,7 @@ Object {
 `;
 
 exports[`Textarea 1`] = `
-Object {
+{
   exportType: component,
   props: {
     aria-describedby?: string
@@ -7889,7 +7889,7 @@ Object {
 `;
 
 exports[`ThemeNameConsumer 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: (name: string) => ReactElement<any, string | JSXElementConstructor<any>>
@@ -7898,7 +7898,7 @@ Object {
 `;
 
 exports[`Tiles 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNodeNoStrings
@@ -7934,7 +7934,7 @@ Object {
 `;
 
 exports[`ToastProvider 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: ReactNode
@@ -7943,7 +7943,7 @@ Object {
 `;
 
 exports[`Toggle 1`] = `
-Object {
+{
   exportType: component,
   props: {
     align?: 
@@ -7966,7 +7966,7 @@ Object {
 `;
 
 exports[`TooltipRenderer 1`] = `
-Object {
+{
   exportType: component,
   props: {
     children: (renderProps: { triggerProps: TriggerProps; }) => ReactNode
@@ -7980,7 +7980,7 @@ Object {
 `;
 
 exports[`filterSuggestions 1`] = `
-Object {
+{
   exportType: component,
   props: {
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
@@ -8020,7 +8020,7 @@ Object {
 `;
 
 exports[`makeLinkComponent 1`] = `
-Object {
+{
   exportType: component,
   props: {
     defaultProps?: never
@@ -8031,9 +8031,9 @@ Object {
 `;
 
 exports[`useBreakpoint 1`] = `
-Object {
+{
   exportType: hook,
-  params: Array [],
+  params: [],
   returnType: 
     | "desktop"
     | "mobile"
@@ -8043,41 +8043,41 @@ Object {
 `;
 
 exports[`useColor 1`] = `
-Object {
+{
   exportType: hook,
-  params: Array [],
+  params: [],
   returnType: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 14 more ...; secondaryInverted: string; }; background: { ...; }; },
 }
 `;
 
 exports[`useResponsiveValue 1`] = `
-Object {
+{
   exportType: hook,
-  params: Array [],
+  params: [],
   returnType: <Value>(value: RequiredResponsiveObject<Value>) => Value | null,
 }
 `;
 
 exports[`useSpace 1`] = `
-Object {
+{
   exportType: hook,
-  params: Array [],
+  params: [],
   returnType: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; }; },
 }
 `;
 
 exports[`useThemeName 1`] = `
-Object {
+{
   exportType: hook,
-  params: Array [],
+  params: [],
   returnType: string,
 }
 `;
 
 exports[`useToast 1`] = `
-Object {
+{
   exportType: hook,
-  params: Array [],
+  params: [],
   returnType: (toast: Toast) => void,
 }
 `;

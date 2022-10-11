@@ -9,7 +9,7 @@ const compilePackagesRegex = compilePackages
   .map((pkg) => `.*${escapeRegex(pkg)}`)
   .join('|');
 
-/** @type {import('@jest/types').Config.InitialOptions} */
+/** @type {import('jest').Config} */
 module.exports = {
   setupFilesAfterEnv: ['./testConfig/setupTests.ts'],
   testEnvironment: 'jsdom',
