@@ -24,7 +24,6 @@ module.exports = {
   target: './dist',
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   supportedBrowsers: browserslist,
-  setupTests: './setupTests.ts',
   displayNamesProd: true,
   dangerouslySetWebpackConfig: (config) => {
     config.plugins.push(
