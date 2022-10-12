@@ -80,7 +80,7 @@
     "@types/babel-plugin-macros": "^2.8.5",
     "@types/babel-plugin-tester": "^9.0.5",
     "@types/jest": "^29.0.0",
-    "@types/react": "^18.0.9",
+    "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
     "@types/sanitize-html": "^2.6.2",
@@ -95,11 +95,11 @@
     "globby": "^11.1.0",
     "html-validate": "^7.1.1",
     "playroom": "0.28.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.7.0",
-    "sku": "11.4.5",
+    "sku": "11.6.0",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   }
