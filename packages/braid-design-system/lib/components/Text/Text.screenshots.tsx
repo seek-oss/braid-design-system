@@ -110,6 +110,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With an icon',
+      background: 'surface',
       Example: () => (
         <Stack space="large">
           {textSizes.map((size) => (

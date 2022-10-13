@@ -93,6 +93,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With an icon',
+      background: 'surface',
       Example: () => (
         <Stack space="large">
           {headingLevels.map((level) => (
