@@ -2,14 +2,20 @@ import { style, styleVariants } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
 
+const iconScaleIncrease = 0.2;
+
 export const size = style({
-  width: '1.2em',
-  height: '1.2em',
+  width: `${1 + iconScaleIncrease}em`,
+  height: `${1 + iconScaleIncrease}em`,
+});
+
+export const cropToTextSize = style({
+  margin: `${(iconScaleIncrease / 2) * -1}em`,
 });
 
 export const inlineCrop = style({
-  marginTop: '-0.2em',
-  marginBottom: '-0.2em',
+  marginTop: `-${iconScaleIncrease}em`,
+  marginBottom: `-${iconScaleIncrease}em`,
 });
 
 export const inline = style({

@@ -96,9 +96,11 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Stack space="large">
           {headingLevels.map((level) => (
-            <Heading level={level} icon={<IconPromote />} key={level}>
-              Level {level} with icon
-            </Heading>
+            <Box key={level} background="neutralLight">
+              <Heading level={level} icon={<IconPromote />}>
+                Level {level} with icon
+              </Heading>
+            </Box>
           ))}
         </Stack>
       ),

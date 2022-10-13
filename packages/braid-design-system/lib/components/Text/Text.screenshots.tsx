@@ -113,9 +113,11 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Stack space="large">
           {textSizes.map((size) => (
-            <Text size={size} icon={<IconPromote />} key={size}>
-              {titleCase(size)} with icon
-            </Text>
+            <Box key={size} background="neutralLight">
+              <Text size={size} icon={<IconPromote />}>
+                {titleCase(size)} with icon
+              </Text>
+            </Box>
           ))}
         </Stack>
       ),

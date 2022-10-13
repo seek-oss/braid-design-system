@@ -124,7 +124,9 @@ const PrivateButtonIcon = forwardRef<
           component="span"
           display="block"
           position="relative"
-          className={size === 'large' ? iconContainerSize() : iconSize()}
+          className={
+            size === 'large' ? iconContainerSize() : iconSize({ crop: true })
+          }
         >
           {cloneElement(icon, { tone: icon.props.tone || tone, size: 'fill' })}
         </Box>
