@@ -9,4 +9,4 @@ updated:
 
 **MenuItemCheckbox:** Align with increased icon size
 
-Ensure menu item text has uniform spacing to the checkbox of `MenuItemCheckbox` and the `icon` slots of `MenuItem`.
+Ensure menu item text has uniform spacing to the checkbox of `MenuItemCheckbox` and the `icon` slot of `MenuItem`.
