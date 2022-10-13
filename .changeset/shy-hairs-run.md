@@ -9,7 +9,6 @@ updated:
 
 **ButtonIcon:** Increase standard icon size
 
-**EXAMPLE USAGE:**
-```jsx
+Adopt the increased standard icon size.
 
-```
+> Note this does not affect overall dimensions of `ButtonIcon`, or the layout of surrounding components.
