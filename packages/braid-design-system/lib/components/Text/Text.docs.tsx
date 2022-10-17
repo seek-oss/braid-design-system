@@ -1,6 +1,15 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../../site/src/types';
-import { Box, Text, Stack, Strong, TextLink, Inline, List } from '../';
+import {
+  Box,
+  Text,
+  Stack,
+  Strong,
+  TextLink,
+  Inline,
+  List,
+  IconPromote,
+} from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
@@ -193,6 +202,26 @@ const docs: ComponentDocs = {
             </Box>
           </Inline>,
         ),
+    },
+    {
+      label: 'Inserting an icon',
+      description: (
+        <>
+          <Text>
+            For decoration or help distinguishing between pieces of text, an{' '}
+            <Strong>icon</Strong> can be provided. This will be placed to the
+            left of the text.
+          </Text>
+          <Text>
+            In the case of wrapping text, the icon will remain on the left —
+            with the text not wrapping beneath it. If this is not desired, place
+            the icon inside the Text component, instead of providing it to the{' '}
+            <Strong>icon</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(<Text icon={<IconPromote />}>Text with an icon</Text>),
     },
     {
       label: 'Custom semantics',

@@ -3119,6 +3119,7 @@ exports[`Heading 1`] = `
         | ComponentClass<any, any>
         | FunctionComponent<any>
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     level: 
         | "1"
@@ -7221,6 +7222,7 @@ exports[`Text 1`] = `
         | ComponentClass<any, any>
         | FunctionComponent<any>
     data?: DataAttributeMap
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     size?: 
         | "large"

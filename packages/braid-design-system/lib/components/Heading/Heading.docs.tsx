@@ -1,7 +1,7 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import { ComponentDocs } from '../../../../../site/src/types';
-import { Box, Heading, Stack, Text, Strong, TextLink } from '../';
+import { Box, Heading, Stack, Text, Strong, TextLink, IconPromote } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -113,6 +113,30 @@ const docs: ComponentDocs = {
               Really long text that won’t fit in the layout
             </Heading>
           </Box>,
+        ),
+    },
+    {
+      label: 'Inserting an icon',
+      description: (
+        <>
+          <Text>
+            For decoration or help distinguishing between headings, an{' '}
+            <Strong>icon</Strong> can be provided. This will be placed to the
+            left of the text.
+          </Text>
+          <Text>
+            In the case of wrapping text, the icon will remain on the left —
+            with the text not wrapping beneath it. If this is not desired, place
+            the icon inside the Heading component, instead of providing it to
+            the <Strong>icon</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Heading level="2" icon={<IconPromote />}>
+            Heading with an icon
+          </Heading>,
         ),
     },
     {

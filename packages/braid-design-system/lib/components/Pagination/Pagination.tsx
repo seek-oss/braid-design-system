@@ -40,6 +40,7 @@ const PageNav = ({
   direction: 'next' | 'prev';
 }) => {
   const isPrevious = direction === 'prev';
+  const isNext = direction === 'next';
 
   return (
     <Box
@@ -49,7 +50,8 @@ const PageNav = ({
       display="flex"
       alignItems="center"
       height="touchable"
-      paddingX="xsmall"
+      paddingLeft={isNext ? 'small' : 'xsmall'}
+      paddingRight={isPrevious ? 'small' : 'xsmall'}
     >
       <Overlay
         component="span"
@@ -64,12 +66,12 @@ const PageNav = ({
           <Box
             display={isPrevious ? ['none', 'inline'] : undefined}
             component="span"
-            marginLeft={isPrevious ? 'xxsmall' : undefined}
-            marginRight={direction === 'next' ? 'xxsmall' : undefined}
+            marginLeft={isPrevious ? 'xsmall' : undefined}
+            marginRight={isNext ? 'xsmall' : undefined}
           >
             {label}
           </Box>
-          {direction === 'next' ? <IconChevron direction="right" /> : null}
+          {isNext ? <IconChevron direction="right" /> : null}
         </Text>
       </Box>
     </Box>

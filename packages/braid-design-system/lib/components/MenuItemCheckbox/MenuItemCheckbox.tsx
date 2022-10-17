@@ -3,7 +3,7 @@ import { Box } from '../Box/Box';
 import { IconTick } from '../icons/IconTick/IconTick';
 import { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
-import * as styles from './MenuItemCheckbox.css';
+import { iconSize } from '../../hooks/useIcon';
 
 export interface MenuItemCheckboxProps
   extends Pick<MenuItemProps, 'data' | 'badge' | 'id'> {
@@ -42,20 +42,18 @@ export const MenuItemCheckbox = ({
         boxShadow="borderField"
         position="relative"
         background={{ lightMode: 'surface' }}
-        marginRight="xsmall"
+        marginRight="small"
         flexShrink={0}
-        className={styles.checkboxBorder}
+        className={iconSize()}
       >
         <Box
           component="span"
           position="absolute"
-          width="full"
-          height="full"
+          inset={0}
           background="formAccent"
           borderRadius="standard"
           transition="fast"
           opacity={checked ? undefined : 0}
-          className={styles.checkboxPadding}
         >
           <IconTick size="fill" />
         </Box>

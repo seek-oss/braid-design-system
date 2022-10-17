@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Stack } from '../';
+import { Box, Text, Stack, IconPromote } from '../';
 import { ComponentExample } from '../../../../../site/src/types';
 import source from '../../utils/source.macro';
 
@@ -62,6 +62,26 @@ export const galleryItems: ComponentExample[] = [
           <Text tone="info">info</Text>
           <Text tone="positive">positive</Text>
           <Text tone="critical">critical</Text>
+        </Stack>,
+      ),
+  },
+  {
+    label: 'With an icon',
+    Example: () =>
+      source(
+        <Stack space="large">
+          <Text size="large" icon={<IconPromote />}>
+            Large with icon
+          </Text>
+          <Text size="standard" icon={<IconPromote />}>
+            Standard with icon
+          </Text>
+          <Text size="small" icon={<IconPromote />}>
+            Small with icon
+          </Text>
+          <Text size="xsmall" icon={<IconPromote />}>
+            Xsmall with icon
+          </Text>
         </Stack>,
       ),
   },

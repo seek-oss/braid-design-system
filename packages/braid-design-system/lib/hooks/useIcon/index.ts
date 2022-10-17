@@ -15,11 +15,17 @@ import * as styles from './icon.css';
 
 type IconSize = keyof typeof typographyStyles.textSizeUntrimmed | 'fill';
 
-export interface IconSizeProps {
+interface IconSizeProps {
   size?: Exclude<IconSize, 'fill'>;
+  crop?: boolean;
 }
-export const iconSize = ({ size = 'standard' }: IconSizeProps = {}) =>
-  clsx(styles.size, typographyStyles.textSizeUntrimmed[size]);
+export const iconSize = ({
+  size = 'standard',
+  crop = false,
+}: IconSizeProps = {}) =>
+  clsx(styles.size, typographyStyles.textSizeUntrimmed[size], {
+    [styles.cropToTextSize]: crop,
+  });
 
 export interface IconContainerSizeProps {
   size?: Exclude<IconSize, 'fill'>;
@@ -97,6 +103,7 @@ export default (
       isInline
         ? [
             styles.size,
+            styles.inlineCrop,
             styles.inline,
             styles.alignY[alignY || 'uppercase'][
               verticalCorrection[alignY || 'uppercase']
