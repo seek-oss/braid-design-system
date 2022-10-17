@@ -145,6 +145,34 @@ export const screenshots: ComponentScreenshot = {
         </Stack>
       ),
     },
+
+    {
+      label: 'Icon should not impact line height (Red line should not step)',
+      Example: () => (
+        <Stack space="large">
+          <Text tone="secondary">
+            Format: Icon only, Text only, Text with icon
+          </Text>
+          {textSizes.map((size) => (
+            <Box display="flex" key={size}>
+              <Text size={size}>
+                <IconPromote />
+                <Box style={{ border: '1px solid red' }} />
+              </Text>
+              <Text size={size}>
+                , Abc
+                <Box style={{ border: '1px solid red' }} />
+              </Text>
+              <Text size={size}>
+                , Abc
+                <IconPromote />
+                <Box style={{ border: '1px solid red' }} />
+              </Text>
+            </Box>
+          ))}
+        </Stack>
+      ),
+    },
     {
       label: 'Contrast',
       Container,

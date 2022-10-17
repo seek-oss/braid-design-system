@@ -1,7 +1,7 @@
 import React, { ReactNode, Fragment } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
 import { heading } from '../../css/typography.css';
-import { Heading, IconPositive, IconPromote, Stack } from '../';
+import { Heading, IconPositive, IconPromote, Stack, Text } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
@@ -135,6 +135,33 @@ export const screenshots: ComponentScreenshot = {
           >
             Right aligned mobile, center on tablet, left on desktop
           </Heading>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Icon should not impact line height (Red line should not step)',
+      Example: () => (
+        <Stack space="large">
+          <Text tone="secondary">
+            Format: Icon only, Text only, Text with icon
+          </Text>
+          {headingLevels.map((level) => (
+            <Box display="flex" key={level}>
+              <Heading level={level}>
+                <IconPromote />
+                <Box style={{ border: '1px solid red' }} />
+              </Heading>
+              <Heading level={level}>
+                , Abc
+                <Box style={{ border: '1px solid red' }} />
+              </Heading>
+              <Heading level={level}>
+                , Abc
+                <IconPromote />
+                <Box style={{ border: '1px solid red' }} />
+              </Heading>
+            </Box>
+          ))}
         </Stack>
       ),
     },
