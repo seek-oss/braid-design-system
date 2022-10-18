@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 import { IconCritical, IconPositive } from '../icons';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -19,7 +19,7 @@ export interface FieldMessageProps {
   data?: DataAttributeMap;
 }
 
-const Icon: Record<'critical' | 'positive', ReactNode> = {
+const icon: Record<'critical' | 'positive', TextProps['icon']> = {
   critical: <IconCritical tone="critical" />,
   positive: <IconPositive tone="positive" />,
 };
@@ -49,16 +49,13 @@ export const FieldMessage = ({
       justifyContent="flexEnd"
       {...(data ? buildDataAttributes(data) : undefined)}
     >
-      <Box flexGrow={1}>
-        <Text size="small" tone={tone === 'neutral' ? 'secondary' : tone}>
-          <Box display="flex" userSelect={showMessage ? undefined : 'none'}>
-            {showMessage && tone !== 'neutral' ? (
-              <Box paddingRight="xxsmall" flexShrink={0} flexGrow={0}>
-                {Icon[tone]}
-              </Box>
-            ) : null}
-            {showMessage ? message : '\u00A0'}
-          </Box>
+      <Box flexGrow={1} userSelect={showMessage ? undefined : 'none'}>
+        <Text
+          size="small"
+          tone={tone === 'neutral' ? 'secondary' : tone}
+          icon={showMessage && tone !== 'neutral' ? icon[tone] : undefined}
+        >
+          {showMessage ? message : '\u00A0'}
         </Text>
       </Box>
       {secondaryMessage && !disabled ? (

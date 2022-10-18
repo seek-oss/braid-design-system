@@ -3,7 +3,7 @@ import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Box } from '../Box/Box';
-import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
+import { Text } from '../Text/Text';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import buildDataAttributes, {
   DataAttributeMap,
@@ -33,18 +33,16 @@ export const Notice = ({ tone = 'info', data, children }: NoticeProps) => {
       aria-live="polite"
       {...(data ? buildDataAttributes(data) : undefined)}
     >
-      <Columns space="xsmall">
-        <Column width="content">
-          <Icon tone={tone} />
-        </Column>
-        <Column>
-          <Box className={textAlignedToIcon.standard}>
-            <DefaultTextPropsProvider tone={tone}>
-              {children}
-            </DefaultTextPropsProvider>
-          </Box>
-        </Column>
-      </Columns>
+      <DefaultTextPropsProvider tone={tone}>
+        <Columns space="xsmall">
+          <Column width="content">
+            <Text>
+              <Icon />
+            </Text>
+          </Column>
+          <Column>{children}</Column>
+        </Columns>
+      </DefaultTextPropsProvider>
     </Box>
   );
 };

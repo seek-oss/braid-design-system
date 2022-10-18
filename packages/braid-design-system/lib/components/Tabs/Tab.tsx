@@ -24,7 +24,7 @@ import {
   TAB_LIST_FOCUSED,
   TAB_BUTTON_CLICK,
 } from './Tabs.actions';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -35,14 +35,13 @@ import { Divider } from '../Divider/Divider';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
-import { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './Tabs.css';
 
 export interface TabProps {
   children: ReactNode;
   item?: string;
   badge?: ReactElement<BadgeProps>;
-  icon?: ReactElement<UseIconProps>;
+  icon?: TextProps['icon'];
   data?: DataAttributeMap;
 }
 
@@ -178,9 +177,6 @@ export const Tab = ({ children, data, badge, icon, item }: TabProps) => {
     }
   };
 
-  const tabTextSize = 'standard';
-  const tabTone = isSelected ? 'formAccent' : 'secondary';
-
   return (
     <Box
       component="button"
@@ -221,25 +217,12 @@ export const Tab = ({ children, data, badge, icon, item }: TabProps) => {
       className={styles.tab}
       {...(data ? buildDataAttributes(data) : undefined)}
     >
-      {icon ? (
-        <Box
-          component="span"
-          paddingRight="xsmall"
-          className={styles.iconContainer}
-        >
-          {cloneElement(icon, { size: tabTextSize, tone: tabTone })}
-        </Box>
-      ) : null}
-      {/*
-        Rendering Text component to provide rendering context
-        for both icons and text labels
-      */}
       <Text
         {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
-        size={tabTextSize}
         weight="medium"
         align="center"
-        tone={tabTone}
+        tone={isSelected ? 'formAccent' : 'secondary'}
+        icon={icon}
       >
         {children}
       </Text>

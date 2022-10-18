@@ -6,7 +6,6 @@ import React, {
   ReactNode,
   AllHTMLAttributes,
   ReactElement,
-  cloneElement,
 } from 'react';
 import { touchableText } from '../../css/typography.css';
 import { Box, BoxBackgroundVariant, BoxProps } from '../Box/Box';
@@ -355,22 +354,21 @@ export const ButtonText = ({
           : undefined
       }
     >
-      {icon ? (
-        <Box
-          component="span"
-          display="block"
-          paddingRight={size === 'small' ? 'xxsmall' : 'xsmall'}
-          className={negativeMargin('left', 'xxsmall')}
-        >
-          {cloneElement(icon, { size, tone: stylesForVariant.textTone })}
-        </Box>
-      ) : null}
       <Text
         tone={stylesForVariant.textTone}
         weight="medium"
         size={size}
         baseline={false}
       >
+        {icon ? (
+          <Box
+            component="span"
+            paddingRight="xsmall"
+            className={negativeMargin('left', 'xxsmall')}
+          >
+            {icon}
+          </Box>
+        ) : null}
         {children}
         {loading ? <ButtonLoader /> : null}
       </Text>
