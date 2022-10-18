@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Button } from '../../components';
-import { Actions } from './Actions';
+import { Button, Actions } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],

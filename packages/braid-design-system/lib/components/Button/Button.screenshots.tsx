@@ -1,11 +1,9 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Button, IconSend, Stack } from '../';
+import { Button, IconSend, Stack, Inline, Heading } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
-import { Inline } from '../Inline/Inline';
-import { Heading } from '../Heading/Heading';
 import { backgrounds } from '../../utils/docsHelpers';
 
 export const screenshots: ComponentScreenshot = {

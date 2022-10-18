@@ -3,7 +3,7 @@ import { useTheme } from 'sku/react-treat';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { ComponentScreenshot } from '../../../../../site/src/types';
 import Toast from './Toast';
-import { IconBookmark } from '..';
+import { IconBookmark } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],

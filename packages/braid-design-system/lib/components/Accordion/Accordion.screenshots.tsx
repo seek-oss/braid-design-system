@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import {
-  AccordionItem,
-  Accordion,
-  Badge,
-  Text,
-  IconPromote,
-} from '../../components';
+import { AccordionItem, Accordion, Badge, Text, IconPromote, Stack } from '../';
 import { Placeholder } from '../../playroom/components';
 import { Box } from '../Box/Box';
-import { Stack } from '../Stack/Stack';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
