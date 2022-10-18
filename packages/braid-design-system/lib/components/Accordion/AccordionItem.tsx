@@ -29,7 +29,6 @@ import {
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './AccordionItem.css';
 
 const itemSpaceForSize = {
@@ -44,7 +43,7 @@ export type AccordionItemBaseProps = {
   children: ReactNode;
   size?: TextProps['size'];
   tone?: AccordionContextValue['tone'];
-  icon?: ReactElement<UseIconProps>;
+  icon?: TextProps['icon'];
   data?: DataAttributeMap;
   badge?: ReactElement<BadgeProps>;
 };
@@ -140,23 +139,12 @@ export const AccordionItem = ({
           <Box component="span" position="relative">
             <Columns component="span" space={itemSpace}>
               <Column>
-                <Box component="span" display="flex">
-                  {icon ? (
-                    <Box
-                      component="span"
-                      paddingRight="small"
-                      className={styles.iconContainer[size]}
-                    >
-                      {cloneElement(icon, { size, tone })}
-                    </Box>
-                  ) : null}
-                  <Inline component="span" space="small" alignY="center">
-                    <Text size={size} weight={weight} tone={tone}>
-                      {label}
-                    </Text>
-                    {badge ? cloneElement(badge, { bleedY: true }) : null}
-                  </Inline>
-                </Box>
+                <Inline component="span" space="small" alignY="center">
+                  <Text size={size} weight={weight} tone={tone} icon={icon}>
+                    {label}
+                  </Text>
+                  {badge ? cloneElement(badge, { bleedY: true }) : null}
+                </Inline>
               </Column>
               <Column width="content">
                 <Text

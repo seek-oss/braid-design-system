@@ -1,23 +1,20 @@
-import React, { cloneElement, ReactElement } from 'react';
+import React from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
 import buildDataAttributes, {
   DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { AllOrNone } from '../private/AllOrNone';
-import { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './Tag.css';
-
-const textSize = 'standard';
 
 export type TagProps = {
   children: string;
   data?: DataAttributeMap;
   id?: string;
-  icon?: ReactElement<UseIconProps>;
+  icon?: TextProps['icon'];
 } & AllOrNone<{ onClear: () => void; clearLabel: string }>;
 
 export const Tag = ({
@@ -54,13 +51,8 @@ export const Tag = ({
         paddingRight={onClear ? undefined : 'small'}
         borderRadius="full"
       >
-        {icon ? (
-          <Box paddingRight="xxsmall">
-            {cloneElement(icon, { size: textSize })}
-          </Box>
-        ) : null}
         <Box minWidth={0} title={children}>
-          <Text size={textSize} baseline={false} truncate>
+          <Text baseline={false} truncate icon={icon}>
             {children}
           </Text>
         </Box>
