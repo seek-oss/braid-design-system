@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Disclosure, Text } from '..';
+import { Disclosure, Text } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],

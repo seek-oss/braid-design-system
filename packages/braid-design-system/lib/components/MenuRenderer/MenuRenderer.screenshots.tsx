@@ -7,10 +7,11 @@ import {
   MenuItemLink,
   MenuItemDivider,
   MenuItemCheckbox,
+  IconBookmark,
+  IconProfile,
 } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Menu } from './MenuRenderer';
-import { IconBookmark, IconProfile } from '../icons';
 import { vars } from '../../../css';
 import { calc } from '@vanilla-extract/css-utils';
 

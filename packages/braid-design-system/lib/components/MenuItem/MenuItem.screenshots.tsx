@@ -1,8 +1,15 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Badge, Box, MenuItem, MenuItemLink } from '../';
+import {
+  Badge,
+  Box,
+  MenuItem,
+  MenuItemLink,
+  IconBookmark,
+  IconStar,
+  IconThumb,
+} from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
-import { IconBookmark, IconStar, IconThumb } from '../icons';
 
 const defaultProps = {
   offsetSpace: 'none',

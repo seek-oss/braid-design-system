@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { ButtonLink, IconSend, Stack } from '../';
-import { Inline } from '../Inline/Inline';
+import { ButtonLink, IconSend, Stack, Inline } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>

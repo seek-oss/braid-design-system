@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Hidden } from './Hidden';
-import { Text } from '../Text/Text';
+import { Hidden, Text } from '../';
 import { Box } from '../Box/Box';
 
 export const screenshots: ComponentScreenshot = {

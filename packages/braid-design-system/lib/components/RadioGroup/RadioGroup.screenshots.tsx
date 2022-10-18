@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { RadioGroup, RadioItem } from '..';
+import { RadioGroup, RadioItem } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {

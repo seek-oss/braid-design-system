@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Stack, Text, Box } from '../';
-import { TooltipRenderer, StaticTooltipProvider } from './TooltipRenderer';
+import { Stack, Text, Box, TooltipRenderer } from '../';
+import { StaticTooltipProvider } from './TooltipRenderer';
 
 const triggerStyles = { width: 50, height: 20, background: 'pink' } as const;
 

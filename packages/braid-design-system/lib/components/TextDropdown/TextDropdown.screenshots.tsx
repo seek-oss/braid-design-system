@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Heading, Strong, Text, TextDropdown } from '..';
+import { Heading, Strong, Text, TextDropdown } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>

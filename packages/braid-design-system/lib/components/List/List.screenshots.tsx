@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { List, Text, Stack } from '..';
-import { IconTick, Placeholder } from '../../playroom/components';
+import { List, Text, Stack, IconTick } from '../';
+import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],

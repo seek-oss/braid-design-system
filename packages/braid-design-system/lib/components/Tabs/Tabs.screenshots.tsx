@@ -9,7 +9,7 @@ import {
   TabsProvider,
   Badge,
   IconHome,
-} from '..';
+} from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {

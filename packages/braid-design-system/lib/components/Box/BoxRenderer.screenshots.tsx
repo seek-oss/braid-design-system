@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
 import { BoxRenderer } from './BoxRenderer';
-import { Text } from '../Text/Text';
+import { Text } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],

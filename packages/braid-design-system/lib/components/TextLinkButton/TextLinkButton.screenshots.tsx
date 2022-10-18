@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Text, TextLinkButton } from '..';
+import { Text, TextLinkButton } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
