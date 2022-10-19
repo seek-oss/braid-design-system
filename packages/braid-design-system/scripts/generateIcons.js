@@ -168,6 +168,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
         dedent`
           import React from 'react';
           import { ComponentDocs } from '../../../../../../site/src/types';
+          import { iconDocumentation } from '../iconDocumentation';
           import source from '../../../utils/source.macro';
           import { ${iconName}, Heading, Stack } from '../../';
 
@@ -183,6 +184,7 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
                 </Stack>,
               ),
             alternatives: [],
+            additional: [iconDocumentation],
           };
 
           export default docs;

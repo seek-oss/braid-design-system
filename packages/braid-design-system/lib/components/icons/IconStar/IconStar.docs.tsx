@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../../../site/src/types';
+import { iconDocumentation } from '../iconDocumentation';
 import source from '../../../utils/source.macro';
 import { IconStar, Button, Heading, Inline, Stack, Strong, Text } from '../../';
 
@@ -49,6 +50,7 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    iconDocumentation,
   ],
 };
 
