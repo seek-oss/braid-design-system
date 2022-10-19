@@ -63,7 +63,7 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             Alternatively, rounding may be applied responsively using the{' '}
-            <Strong>roundAbove</Strong> prop, and providing either{' '}
+            <Strong>roundedAbove</Strong> prop, and providing either{' '}
             <Strong>mobile</Strong>, <Strong>tablet</Strong> or{' '}
             <Strong>desktop</Strong>. This enables card edges to be softened on
             larger screens, but squared off if it runs full bleed on smaller
