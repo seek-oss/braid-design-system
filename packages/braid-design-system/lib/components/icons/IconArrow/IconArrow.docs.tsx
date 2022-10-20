@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../../../site/src/types';
+import { iconDocumentation } from '../iconDocumentation';
 import source from '../../../utils/source.macro';
 import {
   IconArrow,
@@ -79,6 +80,7 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    iconDocumentation,
   ],
 };
 

@@ -45,6 +45,7 @@ module.exports = [
   { route: '/gallery', name: 'gallery' },
   ...guideRoutes.map((route) => ({ route })),
   ...foundationRoutes.map((route) => ({ route })),
+  { route: '/foundations/iconography/browse', name: 'browseIcons' },
   ...exampleRoutes.map((route) => ({ route })),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   ...flatten(
