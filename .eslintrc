@@ -1,3 +1,20 @@
 {
-  "extends": "seek"
+  "extends": "seek",
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      { "patterns": ["braid-src/*", "braid-site/*", "braid-design-system*"] }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.{docs,gallery,screenshots}.tsx", "site/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "warn",
+          { "patterns": ["braid-site/*", "braid-design-system*"] }
+        ]
+      }
+    }
+  ]
 }
