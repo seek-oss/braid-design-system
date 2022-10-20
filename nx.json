@@ -8,12 +8,12 @@
         "cacheableOperations": [
           "build",
           "build-playroom",
-          "eslint",
           "format",
-          "prettier",
           "generate-component-docs",
           "generate-icons",
-          "tsc"
+          "lint:eslint",
+          "lint:prettier",
+          "lint:tsc"
         ]
       }
     }
@@ -52,7 +52,7 @@
         "projects": "dependencies"
       }
     ],
-    "tsc": [
+    "lint:tsc": [
       {
         "target": "build",
         "projects": "dependencies"
@@ -66,7 +66,7 @@
         "projects": "self"
       }
     ],
-    "eslint": [
+    "lint:eslint": [
       {
         "target": "build",
         "projects": "dependencies"
@@ -82,7 +82,7 @@
         "projects": "dependencies"
       }
     ],
-    "prettier": [
+    "lint:prettier": [
       {
         "target": "build",
         "projects": "dependencies"
