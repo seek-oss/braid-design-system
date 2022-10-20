@@ -96,7 +96,6 @@ importers:
 
   packages/braid-design-system:
     specifiers:
-      '@braid-design-system/codemod': '*'
       '@braid-design-system/source.macro': '*'
       '@capsizecss/core': ^3.0.0
       '@capsizecss/vanilla-extract': ^1.0.0
@@ -174,7 +173,6 @@ importers:
       utility-types: 3.10.0
       uuid: 8.3.2
     devDependencies:
-      '@braid-design-system/codemod': link:../codemod
       '@braid-design-system/source.macro': link:../source.macro
       '@svgr/core': 5.5.0
       '@svgr/plugin-jsx': 5.5.0

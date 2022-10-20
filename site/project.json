@@ -27,5 +27,6 @@
         "script": "build-site"
       }
     }
-  }
+  },
+  "implicitDependencies": ["braid-design-system"]
 }

@@ -12,5 +12,6 @@
         "script": "copy-codemod"
       }
     }
-  }
+  },
+  "implicitDependencies": ["codemod"]
 }
