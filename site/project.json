@@ -1,13 +1,31 @@
 {
-  "name": "braid-site",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.0.0/packages/nx/schemas/project-schema.json",
   "targets": {
     "start": {
-      "executor": "nx:noop",
-      "dependsOn": ["start-site", "playroom"]
+      "dependsOn": ["start-site", "playroom"],
+      "executor": "nx:noop"
     },
     "build": {
-      "executor": "nx:noop",
-      "dependsOn": ["build-site", "build-playroom"]
+      "dependsOn": ["build-site", "build-playroom"],
+      "executor": "nx:noop"
+    },
+    "generate-component-docs": {
+      "dependsOn": ["^build"],
+      "executor": "nx:noop"
+    },
+    "start-site": {
+      "dependsOn": ["generate-component-docs"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "start-site"
+      }
+    },
+    "build-site": {
+      "dependsOn": ["generate-component-docs"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "build-site"
+      }
     }
   }
 }
