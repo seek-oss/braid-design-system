@@ -76,7 +76,7 @@ export const Card = ({
       background="surface"
       padding="gutter"
       borderRadius={resolvedRounding}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {tone ? <Keyline tone={tone} borderRadius={resolvedRounding} /> : null}
       {children}

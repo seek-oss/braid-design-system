@@ -13,7 +13,12 @@ export interface ColumnProps {
   data?: DataAttributeMap;
 }
 
-export const Column = ({ children, data, width }: ColumnProps) => {
+export const Column = ({
+  children,
+  data,
+  width,
+  ...restProps
+}: ColumnProps) => {
   const {
     collapseMobile,
     collapseTablet,
@@ -37,7 +42,7 @@ export const Column = ({ children, data, width }: ColumnProps) => {
         styles.column,
         width !== 'content' ? styles.width[width!] : null,
       ]}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Box
         component={component}

@@ -32,6 +32,7 @@ export const Inline = ({
   component = 'div',
   data,
   children,
+  ...restProps
 }: InlineProps) => {
   assert(
     validInlineComponents.includes(component),
@@ -59,7 +60,7 @@ export const Inline = ({
       component={component === 'span' ? component : undefined}
       display={component === 'span' ? 'block' : undefined}
       className={negativeMargin('top', space)}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Box
         component={component}

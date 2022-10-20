@@ -99,7 +99,7 @@ export const useLinkStyles = ({
 };
 
 export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
-  ({ weight, showVisited, hitArea, data, ...props }, ref) => {
+  ({ weight, showVisited, hitArea, data, ...restProps }, ref) => {
     const LinkComponent = useLinkComponent(ref);
     const classes = useLinkStyles({
       weight,
@@ -110,9 +110,9 @@ export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
     return (
       <LinkComponent
         ref={ref}
-        {...props}
+        {...restProps}
         className={classes}
-        {...(data ? buildDataAttributes(data) : undefined)}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
       />
     );
   },

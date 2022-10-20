@@ -50,6 +50,7 @@ export const Accordion = ({
   space: spaceProp,
   dividers = true,
   data,
+  ...restProps
 }: AccordionProps) => {
   assert(
     spaceProp === undefined ||
@@ -80,7 +81,7 @@ export const Accordion = ({
           {children}
         </Stack>
       ) : (
-        <Box {...(data ? buildDataAttributes(data) : undefined)}>
+        <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
           <Divider />
           <Box paddingY={space}>
             <Stack space={space} dividers>

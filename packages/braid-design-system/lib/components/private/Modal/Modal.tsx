@@ -128,7 +128,7 @@ export const Modal = ({
   title,
   headingLevel,
   position,
-  data,
+  ...restProps
 }: ModalProps) => {
   const [trapActive, setTrapActive] = useState(true);
   const [state, dispatch] = useReducer(reducer, INITIAL);
@@ -260,7 +260,7 @@ export const Modal = ({
             modalRef={modalRef}
             position={position}
             scrollLock={!(state === CLOSING)}
-            data={data}
+            {...restProps}
           >
             {children}
           </ModalContent>

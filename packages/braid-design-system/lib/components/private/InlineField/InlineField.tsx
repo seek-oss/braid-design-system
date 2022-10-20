@@ -63,6 +63,7 @@ export const InlineField = forwardRef<
       tabIndex,
       size = 'standard',
       'aria-describedby': ariaDescribedBy,
+      ...restProps
     },
     forwardedRef,
   ) => {
@@ -74,6 +75,7 @@ export const InlineField = forwardRef<
       <Box position="relative" zIndex={0} className={styles.root}>
         <Box display="flex">
           <StyledInput
+            {...restProps}
             type={type}
             id={id}
             checked={checked}

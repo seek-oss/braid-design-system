@@ -15,12 +15,13 @@ export const ContentBlock = ({
   width = 'medium',
   data,
   children,
+  ...restProps
 }: ContentBlockProps) => (
   <Box
     width="full"
     maxWidth={width}
     className={styles.marginAuto}
-    {...(data ? buildDataAttributes(data) : undefined)}
+    {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     {children}
   </Box>

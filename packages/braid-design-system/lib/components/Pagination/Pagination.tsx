@@ -138,6 +138,7 @@ export const Pagination = ({
   previousLabel = 'Previous',
   pageLimit = defaultPageLimit,
   data,
+  ...restProps
 }: PaginationProps) => {
   assert(total >= 1, `\`total\` must be at least 1`);
   assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
@@ -154,7 +155,7 @@ export const Pagination = ({
     <Box
       component="nav"
       aria-label={label}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Box component="ul" display="flex" justifyContent="center">
         <Box

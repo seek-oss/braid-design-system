@@ -15,7 +15,12 @@ export interface TabPanelProps {
   data?: DataAttributeMap;
 }
 
-export const TabPanel = ({ children, data, item }: TabPanelProps) => {
+export const TabPanel = ({
+  children,
+  data,
+  item,
+  ...restProps
+}: TabPanelProps) => {
   const tabsContext = useContext(TabsContext);
   const tabPanelsContext = useContext(TabPanelsContext);
 
@@ -45,7 +50,7 @@ export const TabPanel = ({ children, data, item }: TabPanelProps) => {
       position="relative"
       outline="none"
       className={styles.tabPanel}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {isSelected || renderInactive ? children : undefined}
       <Overlay

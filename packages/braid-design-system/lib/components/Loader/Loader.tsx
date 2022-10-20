@@ -19,6 +19,7 @@ export const Loader = ({
   'aria-label': ariaLabel = 'Loading',
   delayVisibility = false,
   data,
+  ...restProps
 }: LoaderProps) => (
   <Box
     display="flex"
@@ -30,7 +31,7 @@ export const Loader = ({
     aria-label={ariaLabel}
     role="alert"
     aria-live="assertive"
-    {...(data ? buildDataAttributes(data) : undefined)}
+    {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

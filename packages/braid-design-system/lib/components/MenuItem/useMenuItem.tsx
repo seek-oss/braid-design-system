@@ -54,6 +54,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   onClick,
   data,
   id,
+  ...restProps
 }: UseMenuItemProps) {
   const menuRendererItemContext = useContext(MenuRendererItemContext);
 
@@ -162,7 +163,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
           outline: 'none',
         }),
       ],
-      ...buildDataAttributes(data),
+      ...buildDataAttributes({ data, validateRestProps: restProps }),
     } as BoxProps,
   } as const;
 }

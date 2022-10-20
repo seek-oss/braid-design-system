@@ -12,6 +12,9 @@ import { atoms, Atoms } from '../../css/atoms/atoms';
 import { sprinkles, ColorModeValue } from '../../css/atoms/sprinkles.css';
 import { ColoredBox } from './ColoredBox';
 import { Background, BoxShadow } from '../../css/atoms/atomicProperties';
+import buildDataAttributes, {
+  DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export type BoxBackgroundVariant = Background | 'customDark' | 'customLight';
 
@@ -22,20 +25,33 @@ export interface BoxBaseProps extends Omit<Atoms, 'reset' | 'background'> {
 
 export interface BoxProps
   extends BoxBaseProps,
-    Omit<AllHTMLAttributes<HTMLElement>, 'width' | 'height' | 'className'> {
+    Omit<
+      AllHTMLAttributes<HTMLElement>,
+      'width' | 'height' | 'className' | 'data'
+    > {
   component?: ElementType;
+  data?: DataAttributeMap;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
-  ({ component = 'div', className, background, boxShadow, ...props }, ref) => {
+  (
+    { component = 'div', className, background, boxShadow, data, ...restProps },
+    ref,
+  ) => {
     const atomProps: Record<string, unknown> = {};
-    const nativeProps: Record<string, unknown> = {};
+    const nativeProps: Record<string, unknown> = {
+      ...(data
+        ? // Not validating rest props as Box supports native HTML element props
+          // and we do not want to warn against using the native syntax.
+          buildDataAttributes({ data, validateRestProps: false })
+        : undefined),
+    };
 
-    for (const key in props) {
+    for (const key in restProps) {
       if (sprinkles.properties.has(key as keyof Omit<Atoms, 'reset'>)) {
-        atomProps[key] = props[key as keyof typeof props];
+        atomProps[key] = restProps[key as keyof typeof restProps];
       } else {
-        nativeProps[key] = props[key as keyof typeof props];
+        nativeProps[key] = restProps[key as keyof typeof restProps];
       }
     }
 

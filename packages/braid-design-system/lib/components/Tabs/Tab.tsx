@@ -45,7 +45,14 @@ export interface TabProps {
   data?: DataAttributeMap;
 }
 
-export const Tab = ({ children, data, badge, icon, item }: TabProps) => {
+export const Tab = ({
+  children,
+  data,
+  badge,
+  icon,
+  item,
+  ...restProps
+}: TabProps) => {
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
   const tabRef = useRef<HTMLButtonElement>(null);
@@ -215,7 +222,7 @@ export const Tab = ({ children, data, badge, icon, item }: TabProps) => {
       paddingX={paddingX}
       paddingY="medium"
       className={styles.tab}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Text
         {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}

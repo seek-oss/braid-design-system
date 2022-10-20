@@ -202,7 +202,7 @@ export const Field = ({
             disabled,
             autoComplete,
             autoFocus,
-            ...buildDataAttributes(data),
+            ...buildDataAttributes({ data, validateRestProps: restProps }),
             className: clsx(
               styles.field,
               styles.placeholderColor,
