@@ -10,17 +10,24 @@
       "executor": "nx:noop"
     },
     "start-site": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["generate-component-docs"],
       "executor": "nx:run-script",
       "options": {
         "script": "start-site"
       }
     },
     "build-site": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["generate-component-docs"],
       "executor": "nx:run-script",
       "options": {
         "script": "build-site"
+      }
+    },
+    "tsc": {
+      "dependsOn": ["generate-component-docs"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "tsc"
       }
     }
   },
