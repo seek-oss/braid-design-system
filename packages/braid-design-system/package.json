@@ -16,9 +16,9 @@
   ],
   "scripts": {
     "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --auto-accept-changes master",
-    "eslint": "eslint --ignore-path ../../.eslintignore .",
-    "format": "eslint --ignore-path ../../.eslintignore --fix . && prettier --ignore-path ../.prettierignore --write .",
-    "prettier": "prettier --ignore-path ../../.prettierignore --list-different .",
+    "eslint": "eslint --cache .",
+    "format": "eslint --cache --fix . && prettier --cache --write .",
+    "prettier": "prettier --cache --list-different .",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "build": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
