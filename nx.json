@@ -30,20 +30,6 @@
       {
         "target": "build",
         "projects": "dependencies"
-      },
-      {
-        "target": "generate-icons",
-        "projects": "self"
-      }
-    ],
-    "build-site": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      },
-      {
-        "target": "generate-component-docs",
-        "projects": "self"
       }
     ],
     "build-playroom": [
@@ -56,24 +42,12 @@
       {
         "target": "build",
         "projects": "dependencies"
-      },
-      {
-        "target": "generate-icons",
-        "projects": "self"
-      },
-      {
-        "target": "generate-component-docs",
-        "projects": "self"
       }
     ],
     "eslint": [
       {
         "target": "build",
         "projects": "dependencies"
-      },
-      {
-        "target": "generate-icons",
-        "projects": "self"
       }
     ],
     "format": [
@@ -92,12 +66,6 @@
       {
         "target": "build",
         "projects": "dependencies"
-      }
-    ],
-    "start-site": [
-      {
-        "target": "generate-component-docs",
-        "projects": "self"
       }
     ]
   },

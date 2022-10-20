@@ -9,19 +9,15 @@
       "dependsOn": ["build-site", "build-playroom"],
       "executor": "nx:noop"
     },
-    "generate-component-docs": {
-      "dependsOn": ["^build"],
-      "executor": "nx:noop"
-    },
     "start-site": {
-      "dependsOn": ["generate-component-docs"],
+      "dependsOn": ["^build"],
       "executor": "nx:run-script",
       "options": {
         "script": "start-site"
       }
     },
     "build-site": {
-      "dependsOn": ["generate-component-docs"],
+      "dependsOn": ["^build"],
       "executor": "nx:run-script",
       "options": {
         "script": "build-site"

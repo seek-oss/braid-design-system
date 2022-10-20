@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.0.0/packages/nx/schemas/project-schema.json",
   "targets": {
     "build": {
-      "dependsOn": ["copy-codemod"],
+      "dependsOn": ["copy-codemod", "generate-icons"],
       "executor": "nx:noop"
     },
     "copy-codemod": {
