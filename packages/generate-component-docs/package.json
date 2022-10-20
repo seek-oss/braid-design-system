@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "build": "node ./bin.js",
     "eslint": "eslint --cache .",
     "format": "eslint --cache --fix . && prettier --cache --write .",
     "prettier": "prettier --cache --list-different .",

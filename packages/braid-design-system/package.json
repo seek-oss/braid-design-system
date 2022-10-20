@@ -20,7 +20,7 @@
     "format": "eslint --cache --fix . && prettier --cache --write .",
     "prettier": "prettier --cache --list-different .",
     "storybook": "SKU_TELEMETRY=false sku storybook",
-    "build": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
+    "copy-codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "generate-icons": "node ./scripts/generateIcons.js",
     "tsc": "tsc"
@@ -67,6 +67,7 @@
     "sku": ">=10.13.1"
   },
   "devDependencies": {
+    "@braid-design-system/codemod": "*",
     "@braid-design-system/source.macro": "*",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",

@@ -1,4 +1,5 @@
 ignores:
+  - '@braid-design-system/codemod'
   - '@svgr/plugin-jsx'
   - '@svgr/plugin-prettier'
   - '@testing-library/dom'
