@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from '../../../../../../site/src/types';
+import { iconDocumentation } from '../iconDocumentation';
 import source from '../../../utils/source.macro';
 import { IconZoomOut, Heading, Stack } from '../../';
 
@@ -15,6 +16,7 @@ const docs: ComponentDocs = {
       </Stack>,
     ),
   alternatives: [],
+  additional: [iconDocumentation],
 };
 
 export default docs;
