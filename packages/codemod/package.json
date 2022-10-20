@@ -1,5 +1,5 @@
 {
-  "name": "@seek/braid-codemod",
+  "name": "@braid-design-system/codemod",
   "private": true,
   "version": "1.0.0",
   "scripts": {

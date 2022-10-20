@@ -19,8 +19,9 @@
   "dependencies": {
     "@babel/core": "^7.18.0",
     "@babel/preset-typescript": "^7.17.12",
+    "@braid-design-system/generate-component-docs": "*",
+    "@braid-design-system/source.macro": "*",
     "@capsizecss/vanilla-extract": "^1.0.0",
-    "@seek/generate-component-docs": "*",
     "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.168",
     "@types/react": "^18.0.21",
