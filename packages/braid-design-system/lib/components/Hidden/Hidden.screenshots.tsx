@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../../../site/src/types';
+import { ComponentScreenshot } from 'braid-site/types';
 import { Hidden, Text } from '../';
 import { Box } from '../Box/Box';
 

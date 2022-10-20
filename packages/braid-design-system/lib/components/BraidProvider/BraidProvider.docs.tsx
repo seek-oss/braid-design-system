@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Text, TextLink, Strong } from '../';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'braid-site/types';
 
 const docs: ComponentDocs = {
   category: 'Logic',

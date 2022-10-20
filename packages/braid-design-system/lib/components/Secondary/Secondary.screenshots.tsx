@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../../../site/src/types';
+import { ComponentScreenshot } from 'braid-site/types';
 import { Secondary, Text, IconHome, Heading } from '../';
 
 export const screenshots: ComponentScreenshot = {

@@ -5,7 +5,7 @@ import {
   Badge,
   Placeholder,
 } from '../../playroom/components';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [

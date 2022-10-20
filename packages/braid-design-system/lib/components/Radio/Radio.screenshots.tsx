@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentScreenshot } from '../../../../../site/src/types';
+import { ComponentScreenshot } from 'braid-site/types';
 import { Badge, Radio, Text, Stack } from '../';
 
 export const screenshots: ComponentScreenshot = {

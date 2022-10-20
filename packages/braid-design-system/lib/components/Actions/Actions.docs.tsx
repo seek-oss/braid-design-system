@@ -1,6 +1,6 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
-import source from '../../utils/source.macro';
+import { ComponentDocs } from 'braid-site/types';
+import source from '@braid-design-system/source.macro';
 import { Actions, Button, TextLink, Text, Strong, Card, Stack } from '../';
 
 const docs: ComponentDocs = {

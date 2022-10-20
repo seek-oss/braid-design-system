@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from '../../../../../site/src/types';
+import { ComponentExample } from 'braid-site/types';
 import {
   Stack,
   Tabs,
@@ -14,7 +14,7 @@ import {
   IconRecommended,
 } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

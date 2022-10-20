@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../../../site/src/types';
+import { ComponentScreenshot } from 'braid-site/types';
 import { Stack, Text, Box, TooltipRenderer } from '../';
 import { StaticTooltipProvider } from './TooltipRenderer';
 

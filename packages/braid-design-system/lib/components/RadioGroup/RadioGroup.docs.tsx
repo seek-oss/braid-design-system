@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'braid-site/types';
 import {
   Badge,
   Text,
@@ -10,7 +10,7 @@ import {
   Tiles,
 } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Stack } from '../Stack/Stack';
 import { Heading } from '../Heading/Heading';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'braid-site/types';
 import {
   IconSearch,
   TextField,
@@ -11,7 +11,7 @@ import {
   Stack,
   Heading,
 } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {

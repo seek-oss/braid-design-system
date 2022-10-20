@@ -9,7 +9,7 @@ import {
   TextLink,
   List,
   Strong,
-} from 'braid-design-system';
+} from 'braid-src/lib/components';
 import Code from '../../Code/Code';
 import { PageTitle } from '../../Seo/PageTitle';
 import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';

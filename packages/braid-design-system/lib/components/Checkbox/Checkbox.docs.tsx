@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'braid-site/types';
 import {
   CheckboxStandalone,
   Badge,
@@ -11,7 +11,7 @@ import {
   TextLink,
   Alert,
 } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { ComponentExample } from '../../../../../site/src/types';
+import { ComponentExample } from 'braid-site/types';
 import { Autosuggest, filterSuggestions, IconSearch } from '../';
 import { makeSuggestions } from './Autosuggest.docs';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

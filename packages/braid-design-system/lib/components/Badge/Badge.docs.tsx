@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
-import source from '../../utils/source.macro';
+import { ComponentDocs } from 'braid-site/types';
+import source from '@braid-design-system/source.macro';
 import { Badge, Card, Inline, Heading, Text, TextLink, Strong } from '../';
 
 const docs: ComponentDocs = {

@@ -1,6 +1,6 @@
 import React from 'react';
-import source from '../../utils/source.macro';
-import { ComponentDocs } from '../../../../../site/src/types';
+import source from '@braid-design-system/source.macro';
+import { ComponentDocs } from 'braid-site/types';
 import { Hidden } from './Hidden';
 import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';

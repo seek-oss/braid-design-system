@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'braid-site/types';
 import {
   Loader,
   Columns,
@@ -11,7 +11,7 @@ import {
   Strong,
   Button,
 } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { animationDelayValueInMs } from './Loader.css';
 import { IconLanguage } from '../icons';
 

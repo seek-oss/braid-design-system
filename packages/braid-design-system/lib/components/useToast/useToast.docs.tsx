@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'braid-site/types';
 import {
   Box,
   Button,
@@ -13,10 +13,10 @@ import {
   IconLanguage,
   IconBookmark,
 } from '..';
-import { useThemeSettings } from '../../../../../site/src/App/ThemeSetting';
-import Code from '../../../../../site/src/App/Code/Code';
+import { useThemeSettings } from 'braid-site/App/ThemeSetting';
+import Code from 'braid-site/App/Code/Code';
 import Toast, { toastDuration } from './Toast';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

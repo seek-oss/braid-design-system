@@ -12,14 +12,14 @@ import {
   Columns,
   Column,
   Box,
-} from 'braid-design-system';
+} from 'braid-src/lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
-import source from 'braid-design-system/lib/utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';
-import { VanillaMigrationBanner } from 'braid-design-system/css/VanillaMigrationBanner';
+import { VanillaMigrationBanner } from 'braid-src/css/VanillaMigrationBanner';
 import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
 
 const DevelopmentWorkflow = () => (
@@ -267,7 +267,7 @@ const DevelopmentWorkflow = () => (
       theme variables by importing them from Braid’s{' '}
       <InlineCode>css</InlineCode> export:
     </Text>
-    <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
+    <Code>{`import { vars } from 'braid-src/css';`}</Code>
     <Text weight="strong">
       Before writing custom styles, we highly recommend that you read the{' '}
       <TextLink href="https://vanilla-extract.style/documentation/">
@@ -293,7 +293,7 @@ const DevelopmentWorkflow = () => (
       {dedent`
         // myComponent.css.ts
         import { style } from '@vanilla-extract/css';
-        import { vars, responsiveStyle } from 'braid-design-system/css';
+        import { vars, responsiveStyle } from 'braid-src/css';
 
         export const root = style(
           responsiveStyle({

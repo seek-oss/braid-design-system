@@ -1,8 +1,8 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'braid-site/types';
 import { Box, Bleed, Stack, Text, Strong, TextLink, Tiles } from '../';
 import { Placeholder } from '../../playroom/components';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Layout',

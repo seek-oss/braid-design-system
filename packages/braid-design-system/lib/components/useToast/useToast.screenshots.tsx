@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from 'sku/react-treat';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { ComponentScreenshot } from '../../../../../site/src/types';
+import { ComponentScreenshot } from 'braid-site/types';
 import Toast from './Toast';
 import { IconBookmark } from '../';
 

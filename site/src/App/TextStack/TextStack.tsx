@@ -1,7 +1,7 @@
 import React from 'react';
-import { Stack } from 'braid-design-system';
-import { StackProps } from 'braid-design-system/lib/components/Stack/Stack';
-import { ReactNodeNoStrings } from 'braid-design-system/lib/components/private/ReactNodeNoStrings';
+import { Stack } from 'braid-src/lib/components';
+import { StackProps } from 'braid-src/lib/components/Stack/Stack';
+import { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 
 interface TextStackProps {
   children: ReactNodeNoStrings;

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import { Text, TextDropdown } from 'braid-design-system';
-import { TextProps } from 'braid-design-system/lib/components/Text/Text';
-import * as themes from 'braid-design-system/lib/themes';
+import { Text, TextDropdown } from 'braid-src/lib/components';
+import { TextProps } from 'braid-src/lib/components/Text/Text';
+import * as themes from 'braid-src/lib/themes';
 import { documentedThemes, useThemeSettings } from './ThemeSettingContext';
 
 export function ThemeToggle({

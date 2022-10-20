@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentExample } from '../../../../../site/src/types';
+import { ComponentExample } from 'braid-site/types';
 import { Tag, Inline, Text, TextLinkButton, IconPromote } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

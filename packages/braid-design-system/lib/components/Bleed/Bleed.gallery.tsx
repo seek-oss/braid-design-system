@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { ComponentExample } from '../../../../../site/src/types';
+import { ComponentExample } from 'braid-site/types';
 import { Bleed, Box } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';
 
 const Container = ({ children }: { children: ReactNode }) => (
