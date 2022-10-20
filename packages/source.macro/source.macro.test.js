@@ -1,5 +1,6 @@
-import pluginTester from 'babel-plugin-tester';
-import plugin from 'babel-plugin-macros';
+// eslint-disable-next-line import/no-unresolved
+const { default: pluginTester } = require('babel-plugin-tester');
+const plugin = require('babel-plugin-macros');
 
 pluginTester({
   plugin,
@@ -9,7 +10,7 @@ pluginTester({
     'smoke test': {
       babelOptions: { filename: __filename },
       code: `
-        import source from './source.macro'
+        import source from './source.macro';
 
         const result = source({
           // comment
@@ -20,7 +21,7 @@ pluginTester({
     'ignores types': {
       babelOptions: { filename: __filename },
       code: `
-        import { Source } from './source.macro'
+        import { Source } from './source.macro';
 
         const foo = 'bar';
       `,
