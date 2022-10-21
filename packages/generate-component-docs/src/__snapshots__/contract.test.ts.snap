@@ -742,7 +742,7 @@ exports[`Box 1`] = `
         | "default"
         | "pointer"
     dangerouslySetInnerHTML?: { __html: string; }
-    data?: string
+    data?: DataAttributeMap
     datatype?: string
     dateTime?: string
     default?: boolean

@@ -52,7 +52,7 @@ export const Disclosure = ({
   });
 
   return (
-    <Box {...(data ? buildDataAttributes(data) : undefined)}>
+    <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
       <Box userSelect="none">
         <Text>
           <TextLinkButton hitArea="large" {...buttonProps}>

@@ -15,6 +15,7 @@ import { useTimeout } from './useTimeout';
 import { InternalToast, ToastAction } from './ToastTypes';
 import { Keyline } from '../private/Keyline/Keyline';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import buildDataAttributes from '../private/buildDataAttributes';
 import * as styles from './Toast.css';
 
 const toneToIcon = {
@@ -64,6 +65,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       closeLabel = 'Close',
       action,
       shouldRemove,
+      data,
+      ...restProps
     },
     ref,
   ) => {
@@ -132,6 +135,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           onMouseEnter={stopTimeout}
           onMouseLeave={startTimeout}
           className={vanillaTheme}
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
         >
           <Box boxShadow="large" borderRadius={borderRadius}>
             <ContentBlock width="xsmall">

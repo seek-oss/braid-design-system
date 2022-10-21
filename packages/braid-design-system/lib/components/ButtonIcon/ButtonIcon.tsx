@@ -70,6 +70,7 @@ const PrivateButtonIcon = forwardRef<
       'aria-expanded': ariaExpanded,
       tabIndex,
       data,
+      ...restProps
     },
     forwardedRef,
   ) => {
@@ -109,7 +110,7 @@ const PrivateButtonIcon = forwardRef<
         onMouseDown={onMouseDown}
         className={[buttonClasses, styles.button, virtualTouchable()]}
         tabIndex={tabIndex}
-        {...(data ? buildDataAttributes(data) : undefined)}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
         {...buttonStyleProps}
       >
         <ButtonOverlays

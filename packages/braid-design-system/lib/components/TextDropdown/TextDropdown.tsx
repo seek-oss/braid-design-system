@@ -45,6 +45,7 @@ export function TextDropdown<Value>({
   options,
   label,
   data,
+  ...restProps
 }: TextDropdownProps<Value>) {
   assert(
     (() => {
@@ -71,7 +72,7 @@ export function TextDropdown<Value>({
     <Box
       display="inlineBlock"
       position="relative"
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Box pointerEvents="none" userSelect="none">
         {currentText.text} <IconChevron alignY="lowercase" />

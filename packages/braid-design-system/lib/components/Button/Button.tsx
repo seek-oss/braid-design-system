@@ -456,6 +456,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'aria-expanded': ariaExpanded,
       'aria-describedby': ariaDescribedBy,
       data,
+      ...restProps
     },
     ref,
   ) => {
@@ -493,7 +494,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           aria-describedby={ariaDescribedBy}
           onClick={onClick}
           disabled={loading}
-          {...(data ? buildDataAttributes(data) : undefined)}
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
           {...useButtonStyles({
             variant,
             tone,

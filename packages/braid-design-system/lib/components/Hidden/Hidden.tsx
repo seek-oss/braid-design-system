@@ -30,6 +30,7 @@ export const Hidden = ({
   print,
   inline: inlineProp,
   data,
+  ...restProps
 }: HiddenProps) => {
   if (process.env.NODE_ENV === 'development' && screen) {
     // eslint-disable-next-line no-console
@@ -63,7 +64,7 @@ export const Hidden = ({
       }
       className={hiddenOnPrint ? styles.hiddenOnPrint : undefined}
       component={component || (inline ? 'span' : 'div')}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}
     </Box>

@@ -1,5 +1,118 @@
 # braid-design-system
 
+## 31.18.0
+
+### Minor Changes
+
+- **Box:** Support custom `data` prop format for attributes ([#1168](https://github.com/seek-oss/braid-design-system/pull/1168))
+
+  While `Box` already supports the native HTML syntax for data attributes, e.g. `data-testid="123"`, it now supports the **data** prop too. This allows data attributes to be provided consistently to all components.
+
+  **EXAMPLE USAGE:**
+
+  ```diff
+   <Box
+  +  data={{ testId: 'myComponent' }}
+   />
+  ```
+
+  The above example results in the following HTML attribute being set on the element:
+  `data-testId="myComponent"`.
+
+- **Text, Heading:** Add icon slots ([#1160](https://github.com/seek-oss/braid-design-system/pull/1160))
+
+  Provides a designed slot for adding an icon to `Text` and `Heading` components
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text icon={<IconPromote />}>{...}</Text>
+  ```
+
+  or with a `Heading`:
+
+  ```jsx
+  <Heading level="3" icon={<IconPromote />}>{...}</Heading>
+  ```
+
+- **useToast:** Add `data` attribute support ([#1168](https://github.com/seek-oss/braid-design-system/pull/1168))
+
+  Support applying custom data attributes to Toast elements.
+
+  **EXAMPLE USAGE:**
+
+  ```diff
+   export const Component = () => {
+     const showToast = useToast();
+
+     return (
+       <Button onClick={() =>
+         showToast({
+  +        data: { testId: 'myToastMessage' },
+           ...
+         })
+       }>
+         Show
+       </Button>
+     );
+   }
+  ```
+
+  The above example results in the following HTML attribute being set on the toast element:
+  `data-testId="myToastMessage"`.
+
+### Patch Changes
+
+- Provide dev time validation/warnings when the native data attribute format is provided to components that do not support it. ([#1168](https://github.com/seek-oss/braid-design-system/pull/1168))
+  This is required as TypeScript does not validate kebab cased properties, and Braid components do not spread abritrary props.
+
+  This validation will prevent silent failures where attributes are seemingly provided, but not applied.
+
+  For example:
+
+  ```jsx
+  <Card data-testid={123} />
+  // => Would not be applied and TypeScript would not error.
+  ```
+
+  However, now the following console warning will guide users to use the `data` prop:
+
+  ```diff
+   Braid components do not support the native data attribute format. Use the “data” prop instead.
+    <Component
+  -    data-testid={123}
+  +    data={{
+  +      testid: 123,
+  +    }}
+    />
+   For more details, see the “Data Attributes” documentation:
+   https://seek-oss.github.io/braid-design-system/components/Box#data-attributes
+  ```
+
+- **Pagination:** Increase chevron spacing on prev/next links ([#1160](https://github.com/seek-oss/braid-design-system/pull/1160))
+
+  Increases the space between the "Previous" and "Next" text and their chevron icons to balance with the larger icon size.
+
+- **MenuItemCheckbox:** Align with increased icon size ([#1160](https://github.com/seek-oss/braid-design-system/pull/1160))
+
+  Ensure menu item text has uniform spacing to the checkbox of `MenuItemCheckbox` and the `icon` slot of `MenuItem`.
+
+- **Text, Heading:** Increase icon size inside typographic elements ([#1160](https://github.com/seek-oss/braid-design-system/pull/1160))
+
+  The size of icons has been increased by 20% when used inside of `Text` and `Heading` components. There is no layout impact expected for consumers, with only the visual ratio of icon to text size changing.
+
+  This applies to icons using the new `icon` slots, as well as inline icons within the text content.
+
+  > Icons used outside of typographic elements are not affected by this change.
+
+- **ButtonIcon:** Increase standard icon size ([#1160](https://github.com/seek-oss/braid-design-system/pull/1160))
+
+  Adopt the increased standard icon size.
+
+  > Note this does not affect overall dimensions of `ButtonIcon`, or the layout of surrounding components.
+
+- Removes custom icon sizing and layout in favour of new typography icon sizes and layout. ([#1162](https://github.com/seek-oss/braid-design-system/pull/1162))
+
 ## 31.17.2
 
 ### Patch Changes

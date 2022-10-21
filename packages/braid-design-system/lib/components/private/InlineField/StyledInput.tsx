@@ -126,6 +126,7 @@ export const StyledInput = forwardRef<
       'aria-describedby': ariaDescribedBy,
       'aria-labelledby': ariaLabelledBy,
       'aria-label': ariaLabel,
+      ...restProps
     },
     forwardedRef,
   ) => {
@@ -198,7 +199,7 @@ export const StyledInput = forwardRef<
           disabled={disabled}
           ref={ref}
           tabIndex={tabIndex}
-          {...(data ? buildDataAttributes(data) : undefined)}
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
         />
         <Box
           flexShrink={0}

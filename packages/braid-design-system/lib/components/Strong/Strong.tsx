@@ -10,11 +10,11 @@ export interface StrongProps {
   data?: DataAttributeMap;
 }
 
-export const Strong = ({ children, data, id }: StrongProps) => (
+export const Strong = ({ children, data, id, ...restProps }: StrongProps) => (
   <strong
     className={fontWeight.strong}
     id={id}
-    {...(data ? buildDataAttributes(data) : undefined)}
+    {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     {children}
   </strong>

@@ -10,11 +10,16 @@ export interface SecondaryProps {
   data?: DataAttributeMap;
 }
 
-export const Secondary = ({ children, data, id }: SecondaryProps) => (
+export const Secondary = ({
+  children,
+  data,
+  id,
+  ...restProps
+}: SecondaryProps) => (
   <span
     className={tone.secondary}
     id={id}
-    {...(data ? buildDataAttributes(data) : undefined)}
+    {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     {children}
   </span>

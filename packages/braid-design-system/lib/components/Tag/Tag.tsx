@@ -24,6 +24,7 @@ export const Tag = ({
   id,
   icon,
   children,
+  ...restProps
 }: TagProps) => {
   assert(
     typeof children === 'undefined' || typeof children === 'string',
@@ -39,7 +40,7 @@ export const Tag = ({
     <Box
       id={id}
       display="flex"
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Box
         display="flex"
