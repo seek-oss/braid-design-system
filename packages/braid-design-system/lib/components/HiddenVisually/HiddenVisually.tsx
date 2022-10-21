@@ -13,7 +13,12 @@ interface HiddenVisuallyProps {
   data?: DataAttributeMap;
 }
 
-export const HiddenVisually = ({ id, data, children }: HiddenVisuallyProps) => {
+export const HiddenVisually = ({
+  id,
+  data,
+  children,
+  ...restProps
+}: HiddenVisuallyProps) => {
   const inText = Boolean(useContext(TextContext));
   const inHeading = Boolean(useContext(HeadingContext));
 
@@ -26,7 +31,7 @@ export const HiddenVisually = ({ id, data, children }: HiddenVisuallyProps) => {
       position="absolute"
       overflow="hidden"
       className={styles.root}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}
     </Box>

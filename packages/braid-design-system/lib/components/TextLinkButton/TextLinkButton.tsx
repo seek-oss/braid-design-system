@@ -36,6 +36,7 @@ export const TextLinkButton = ({
   'aria-expanded': ariaExpanded,
   'aria-describedby': ariaDescribedBy,
   tabIndex,
+  ...restProps
 }: TextLinkButtonProps) => {
   const buttonRef = useRef<HTMLSpanElement>(null);
   const classes = useLinkStyles({
@@ -67,7 +68,7 @@ export const TextLinkButton = ({
       aria-describedby={ariaDescribedBy}
       id={id}
       className={classes}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}
     </Box>

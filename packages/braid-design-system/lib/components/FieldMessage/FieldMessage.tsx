@@ -31,6 +31,7 @@ export const FieldMessage = ({
   reserveMessageSpace = true,
   disabled,
   data,
+  ...restProps
 }: FieldMessageProps) => {
   if (tones.indexOf(tone) === -1) {
     throw new Error(`Invalid tone: ${tone}`);
@@ -47,7 +48,7 @@ export const FieldMessage = ({
       id={id}
       display="flex"
       justifyContent="flexEnd"
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Box flexGrow={1} userSelect={showMessage ? undefined : 'none'}>
         <Text

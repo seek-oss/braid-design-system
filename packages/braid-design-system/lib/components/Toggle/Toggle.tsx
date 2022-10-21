@@ -37,7 +37,16 @@ const handleChange =
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
-    { id, on, onChange, label, align = 'left', size = 'standard', data },
+    {
+      id,
+      on,
+      onChange,
+      label,
+      align = 'left',
+      size = 'standard',
+      data,
+      ...restProps
+    },
     forwardedRef,
   ) => {
     const lightness = useBackgroundLightness();
@@ -49,7 +58,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         display="flex"
         flexDirection={align === 'left' ? undefined : 'rowReverse'}
         className={styles.root}
-        {...(data ? buildDataAttributes(data) : undefined)}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <Box
           component="input"

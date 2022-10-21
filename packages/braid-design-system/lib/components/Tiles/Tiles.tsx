@@ -29,10 +29,11 @@ export const Tiles = ({
   columns = 1,
   dividers = false,
   data,
+  ...restProps
 }: TilesProps) => (
   <Box
     className={negativeMargin('top', space)}
-    {...(data ? buildDataAttributes(data) : undefined)}
+    {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     <Box
       display="flex"

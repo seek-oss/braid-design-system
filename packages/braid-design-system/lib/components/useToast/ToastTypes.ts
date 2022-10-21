@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { UseIconProps } from '../../hooks/useIcon';
+import { DataAttributeMap } from '../private/buildDataAttributes';
 
 export interface ToastAction {
   label: string;
@@ -18,6 +19,7 @@ export interface InternalToast {
   description?: string;
   action?: ToastAction;
   closeLabel?: string;
+  data?: DataAttributeMap;
 }
 
 export type Toast = {
@@ -26,6 +28,7 @@ export type Toast = {
   description?: string;
   action?: ToastAction;
   closeLabel?: string;
+  data?: DataAttributeMap;
 } & (
   | {
       tone: 'positive' | 'critical';

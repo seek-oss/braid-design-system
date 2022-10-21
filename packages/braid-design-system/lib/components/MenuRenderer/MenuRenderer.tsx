@@ -101,6 +101,7 @@ export const MenuRenderer = ({
   placement = 'bottom',
   children,
   data,
+  ...restProps
 }: MenuRendererProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastOpen = useRef(false);
@@ -284,7 +285,7 @@ export const MenuRenderer = ({
   };
 
   return (
-    <Box {...(data ? buildDataAttributes(data) : undefined)}>
+    <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
       <Box position="relative">
         {trigger(triggerProps, { open })}
 

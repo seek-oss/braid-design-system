@@ -234,7 +234,7 @@
 
   ```jsx
   <MenuRenderer
-    onClose={closeReason => {
+    onClose={(closeReason) => {
       // ...
     }}
   />
@@ -533,7 +533,7 @@
 
   ```jsx
   <MenuRenderer
-    trigger={triggerProps => <Button {...triggerProps}>Button</Button>}
+    trigger={(triggerProps) => <Button {...triggerProps}>Button</Button>}
   >
     ...
   </MenuRenderer>
@@ -965,8 +965,9 @@
 
   type ThemeName = 'apac' | 'catho';
 
-  const BraidTheme = loadable.lib((props: { themeName: ThemeName }) =>
-    import(`braid-design-system/themes/${props.themeName}`),
+  const BraidTheme = loadable.lib(
+    (props: { themeName: ThemeName }) =>
+      import(`braid-design-system/themes/${props.themeName}`),
   );
 
   interface AppProps {
@@ -3625,7 +3626,7 @@
   <AccordionItem
     id="id"
     label="Label"
-    onToggle={expanded => trackSomething(expanded)}
+    onToggle={(expanded) => trackSomething(expanded)}
   >
     ...
   </AccordionItem>

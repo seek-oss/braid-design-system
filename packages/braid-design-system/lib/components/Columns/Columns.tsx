@@ -33,6 +33,7 @@ export const Columns = ({
   alignY,
   component = 'div',
   data,
+  ...restProps
 }: ColumnsProps) => {
   assert(
     validColumnsComponents.includes(component),
@@ -73,7 +74,7 @@ export const Columns = ({
         desktop: collapseDesktop ? 'none' : desktopSpace,
         wide: wideSpace,
       })}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <ColumnsContext.Provider
         value={{

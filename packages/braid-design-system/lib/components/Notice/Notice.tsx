@@ -24,14 +24,19 @@ const icons = {
   critical: IconCritical,
 };
 
-export const Notice = ({ tone = 'info', data, children }: NoticeProps) => {
+export const Notice = ({
+  tone = 'info',
+  data,
+  children,
+  ...restProps
+}: NoticeProps) => {
   const Icon = icons[tone];
 
   return (
     <Box
       role="alert"
       aria-live="polite"
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <DefaultTextPropsProvider tone={tone}>
         <Columns space="xsmall">

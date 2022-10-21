@@ -88,6 +88,7 @@ export const ModalContent = ({
   position,
   headingLevel,
   data,
+  ...restProps
 }: ModalContentProps) => {
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
@@ -151,7 +152,7 @@ export const ModalContent = ({
               styles.pointerEventsAll,
               position === 'center' && styles.maxSize[position],
             ]}
-            {...(data ? buildDataAttributes(data) : undefined)}
+            {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
             <Stack space="large">
               {illustration ? (

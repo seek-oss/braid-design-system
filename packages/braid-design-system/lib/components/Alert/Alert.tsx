@@ -67,6 +67,7 @@ export const Alert = ({
   closeLabel = 'Close',
   data,
   onClose,
+  ...restProps
 }: AlertProps) => {
   const parentBackground = useBackground();
   const Icon = icons[tone];
@@ -81,7 +82,7 @@ export const Alert = ({
       overflow="hidden"
       role="alert"
       aria-live="polite"
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Columns space="small">
         <Column width="content">

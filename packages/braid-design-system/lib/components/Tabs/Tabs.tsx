@@ -44,6 +44,7 @@ export const Tabs = (props: TabsProps) => {
     gutter,
     reserveHitArea = false,
     divider = 'minimal',
+    ...restProps
   } = props;
 
   assert(
@@ -136,7 +137,7 @@ export const Tabs = (props: TabsProps) => {
               <Box
                 {...a11y.tabListProps({ label })}
                 display="flex"
-                {...(data ? buildDataAttributes(data) : undefined)}
+                {...buildDataAttributes({ data, validateRestProps: restProps })}
                 flexWrap="nowrap"
               >
                 {tabs}

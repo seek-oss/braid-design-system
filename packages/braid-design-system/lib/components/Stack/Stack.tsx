@@ -106,6 +106,7 @@ export const Stack = ({
   align = 'left',
   dividers = false,
   data,
+  ...restProps
 }: StackProps) => {
   assert(
     validStackComponents.includes(component),
@@ -129,7 +130,7 @@ export const Stack = ({
       component={component}
       display={component === 'span' ? 'block' : undefined}
       className={negativeMargin('top', space)}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {Children.map(stackItems, (child, index) => {
         assert(

@@ -119,7 +119,7 @@ export const AccordionItem = ({
   });
 
   return (
-    <Box {...(data ? buildDataAttributes(data) : undefined)}>
+    <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
       <Box position="relative" display="flex">
         <Box
           component="button"

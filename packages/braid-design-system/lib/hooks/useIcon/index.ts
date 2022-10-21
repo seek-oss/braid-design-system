@@ -54,7 +54,7 @@ const defaultVerticalCorrection = {
 } as const;
 
 export default (
-  { size, tone, alignY, data, ...titleProps }: UseIconProps,
+  { size, tone, alignY, data, title, titleId, ...restProps }: UseIconProps,
   { verticalCorrection = defaultVerticalCorrection }: PrivateIconProps = {},
   // TODO: COLORMODE RELEASE
   // Revert to BoxProps
@@ -66,8 +66,8 @@ export default (
   const toneClass =
     tone || (!headingContext && !textContext?.tone) ? resolvedTone : undefined;
   const isInline = Boolean(textContext || headingContext);
-  const a11yProps = titleProps.title
-    ? { ...titleProps, role: 'img' }
+  const a11yProps = title
+    ? { title, titleId, role: 'img' }
     : { 'aria-hidden': true };
 
   assert(
@@ -90,7 +90,7 @@ export default (
       height: 'full',
       display: 'block',
       className: toneClass,
-      ...(data ? buildDataAttributes(data) : undefined),
+      ...buildDataAttributes({ data, validateRestProps: restProps }),
       ...a11yProps,
     };
   }
@@ -111,7 +111,7 @@ export default (
           ]
         : iconContainerSize(size),
     ],
-    ...(data ? buildDataAttributes(data) : undefined),
+    ...buildDataAttributes({ data, validateRestProps: restProps }),
     ...a11yProps,
   };
 };

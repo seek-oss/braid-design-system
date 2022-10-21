@@ -93,7 +93,7 @@ export const FieldGroup = ({
       aria-labelledby={ariaLabelledBy}
       aria-label={ariaLabel}
       aria-required={required}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Stack space={space}>
         {'label' in restProps && restProps.label ? (

@@ -64,12 +64,12 @@ export const Stepper = ({
   align = 'center',
   id,
   onStepClick,
-  ...props
+  ...restProps
 }: StepperProps) => {
   const steps = flattenChildren(children) as Array<Step>;
   const stepCount = steps.length;
   const isLinear = mode === 'linear';
-  const progress = 'progress' in props ? props.progress : 0;
+  const progress = 'progress' in restProps ? restProps.progress : 0;
   const activeStepNumber = resolveActiveStep(mode, progress, activeStep);
 
   let stepName = '';
@@ -123,7 +123,7 @@ export const Stepper = ({
         position="relative"
         aria-label={label}
         id={id}
-        {...(data ? buildDataAttributes(data) : undefined)}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <Box
           component="ol"

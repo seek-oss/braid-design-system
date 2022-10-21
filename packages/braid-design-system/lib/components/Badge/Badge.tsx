@@ -51,6 +51,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       data,
       tabIndex,
       'aria-describedby': ariaDescribedBy,
+      ...restProps
     },
     ref,
   ) => {
@@ -75,7 +76,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
           lineHeightContainer[styles.constants.textSize],
           bleedY ? styles.bleedY : null,
         ]}
-        {...(data ? buildDataAttributes(data) : undefined)}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <Box
           component="span"

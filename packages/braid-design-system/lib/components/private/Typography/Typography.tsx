@@ -25,6 +25,7 @@ export const Typography = ({
   icon,
   data,
   children,
+  ...restProps
 }: PrivateTypographyProps) => {
   const contents = truncate ? <Truncate>{children}</Truncate> : children;
 
@@ -35,7 +36,7 @@ export const Typography = ({
       component={component}
       textAlign={align}
       className={className}
-      {...(data ? buildDataAttributes(data) : undefined)}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {icon ? (
         <Box
