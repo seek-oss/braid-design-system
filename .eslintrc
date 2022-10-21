@@ -4,14 +4,19 @@
     {
       "files": ["*.{ts,tsx}"],
       "excludedFiles": [
-        "*.{docs,gallery,screenshots}.tsx",
+        "*.{docs,gallery,screenshots,stories}.tsx",
         "site/**/*.{ts,tsx}"
       ],
       "rules": {
         "no-restricted-imports": [
           "error",
           {
-            "patterns": ["braid-src/*", "braid-site/*", "braid-design-system*"]
+            "patterns": [
+              "braid-src/*",
+              "braid-site/*",
+              "braid-design-system*",
+              "../site*"
+            ]
           }
         ]
       }

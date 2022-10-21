@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from 'braid-site/types';
+import { iconDocumentation } from '../iconDocumentation.docs';
 import source from '@braid-design-system/source.macro';
 import {
   IconChevron,
@@ -79,6 +80,7 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    iconDocumentation,
   ],
 };
 

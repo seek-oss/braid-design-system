@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from 'braid-site/types';
+import { iconDocumentation } from '../iconDocumentation.docs';
 import source from '@braid-design-system/source.macro';
 import { IconStar, Button, Heading, Inline, Stack, Strong, Text } from '../../';
 
@@ -49,6 +50,7 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    iconDocumentation,
   ],
 };
 
