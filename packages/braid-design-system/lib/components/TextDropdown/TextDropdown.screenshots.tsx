@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { ComponentScreenshot } from 'braid-site/types';
+import { ComponentScreenshot } from 'site/types';
 import { Heading, Strong, Text, TextDropdown } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

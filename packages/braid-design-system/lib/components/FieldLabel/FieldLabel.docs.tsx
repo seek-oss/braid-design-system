@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import source from '@braid-design-system/source.macro';
-import { ComponentDocs } from 'braid-site/types';
+import { ComponentDocs } from 'site/types';
 import {
   FieldLabel,
   Stack,

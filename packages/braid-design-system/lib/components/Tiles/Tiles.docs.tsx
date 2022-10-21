@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'braid-site/types';
+import { ComponentDocs } from 'site/types';
 import { Tiles, Text } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import source from '@braid-design-system/source.macro';

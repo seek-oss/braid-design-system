@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode } from 'react';
 import { titleCase } from 'title-case';
-import { ComponentScreenshot } from 'braid-site/types';
+import { ComponentScreenshot } from 'site/types';
 import { Text, Stack, Column, Columns, IconPositive, IconPromote } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import

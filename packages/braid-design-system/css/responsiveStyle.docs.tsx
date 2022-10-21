@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import { responsiveStyle, vars, breakpoints } from '.';
 import { Notice, Strong, Text, TextLink } from '../lib/components';
 import source from '@braid-design-system/source.macro';
-import Code from 'braid-site/App/Code/Code';
-import { CssDoc } from 'braid-site/types';
+import Code from 'site/App/Code/Code';
+import { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints);

@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '@braid-design-system/source.macro';
-import { ComponentDocs } from 'braid-site/types';
+import { ComponentDocs } from 'site/types';
 import { Step } from './Step';
 import { Stepper } from './Stepper';
 import {

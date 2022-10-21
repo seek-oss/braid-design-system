@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { ComponentScreenshot } from 'braid-site/types';
+import { ComponentScreenshot } from 'site/types';
 import { Stack, Textarea, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

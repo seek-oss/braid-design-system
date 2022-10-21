@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextLink } from '..';
-import { ComponentExample } from 'braid-site/types';
+import { ComponentExample } from 'site/types';
 
 export const iconDocumentation: ComponentExample = {
   label: 'Customising the appearance',

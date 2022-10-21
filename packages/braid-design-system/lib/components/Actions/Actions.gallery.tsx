@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '@braid-design-system/source.macro';
-import { ComponentExample } from 'braid-site/types';
+import { ComponentExample } from 'site/types';
 import { Actions, Button, IconDelete } from '../';
 
 export const galleryItems: ComponentExample[] = [

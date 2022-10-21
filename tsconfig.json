@@ -11,7 +11,7 @@
     "lib": ["dom", "es2019"],
     "target": "es5",
     "paths": {
-      "braid-site/*": ["./site/src/*"],
+      "site/*": ["./site/src/*"],
       "braid-src/*": ["./packages/braid-design-system/*"]
     }
   },

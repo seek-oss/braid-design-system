@@ -29,7 +29,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       'braid-src': path.join(__dirname, braidSrc),
-      'braid-site': path.join(__dirname, './src'),
+      site: path.join(__dirname, './src'),
     };
 
     // Import Changelog as a raw string so it can be passed to the markdown renderer

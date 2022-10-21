@@ -5,4 +5,4 @@ ignores:
   - '@types/jest'
   - assert
   - braid-src
-  - braid-site
+  - site

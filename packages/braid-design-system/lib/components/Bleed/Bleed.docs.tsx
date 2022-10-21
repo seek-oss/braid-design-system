@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'braid-site/types';
+import { ComponentDocs } from 'site/types';
 import { Box, Bleed, Stack, Text, Strong, TextLink, Tiles } from '../';
 import { Placeholder } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';

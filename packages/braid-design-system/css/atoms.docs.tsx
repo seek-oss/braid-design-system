@@ -25,9 +25,9 @@ import {
 // Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';
 import source from '@braid-design-system/source.macro';
-import Code from 'braid-site/App/Code/Code';
-import { ThemedExample } from 'braid-site/App/ThemeSetting';
-import { CssDoc } from 'braid-site/types';
+import Code from 'site/App/Code/Code';
+import { ThemedExample } from 'site/App/ThemeSetting';
+import { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 type BoxShadowDocs = Required<Record<BoxShadow, string>>;

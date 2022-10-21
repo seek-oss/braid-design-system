@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentScreenshot } from 'braid-site/types';
+import { ComponentScreenshot } from 'site/types';
 import { Button, IconSend, Stack, Inline, Heading } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import

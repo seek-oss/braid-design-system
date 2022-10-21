@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'braid-site/types';
+import { ComponentDocs } from 'site/types';
 import { Pagination, Card, Notice } from '../';
 import source from '@braid-design-system/source.macro';
 import { Strong } from '../Strong/Strong';

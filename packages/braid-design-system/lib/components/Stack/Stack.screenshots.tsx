@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { ComponentScreenshot } from 'braid-site/types';
+import { ComponentScreenshot } from 'site/types';
 import { Box, Stack, Hidden } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { spaces } from '../../utils/docsHelpers';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from 'braid-site/types';
+import { ComponentScreenshot } from 'site/types';
 import { Card } from '../';
 import { Placeholder } from '../../playroom/components';
 

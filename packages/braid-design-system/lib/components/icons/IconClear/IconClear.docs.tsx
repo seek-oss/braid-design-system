@@ -1,6 +1,6 @@
 import React from 'react';
-import { ComponentDocs } from 'braid-site/types';
-import { iconDocumentation } from '../iconDocumentation.docs';
+import { ComponentDocs } from 'site/types';
+import { iconDocumentation } from '../iconCommon.docs';
 import source from '@braid-design-system/source.macro';
 import { IconClear, Heading, Stack } from '../../';
 

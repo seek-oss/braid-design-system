@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from 'braid-site/types';
+import { ComponentExample } from 'site/types';
 import { Dropdown, IconLocation, IconHelp, TextLink } from '../';
 import source from '@braid-design-system/source.macro';
 

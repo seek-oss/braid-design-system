@@ -13,9 +13,9 @@ import {
 } from '../lib/components';
 import { Box, BoxProps } from '../lib/components/Box/Box';
 import { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings';
-import Code from 'braid-site/App/Code/Code';
-import { ThemedExample, useThemeSettings } from 'braid-site/App/ThemeSetting';
-import { CssDoc } from 'braid-site/types';
+import Code from 'site/App/Code/Code';
+import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
+import { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const Row = ({

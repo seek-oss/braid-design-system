@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentDocs } from 'braid-site/types';
+import { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
 import { Badge, Card, Inline, Heading, Text, TextLink, Strong } from '../';
 

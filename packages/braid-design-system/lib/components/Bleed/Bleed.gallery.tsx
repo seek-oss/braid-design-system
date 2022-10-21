@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { ComponentExample } from 'braid-site/types';
+import { ComponentExample } from 'site/types';
 import { Bleed, Box } from '../';
 import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';

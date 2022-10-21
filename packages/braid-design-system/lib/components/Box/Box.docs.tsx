@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'braid-site/types';
+import { ComponentDocs } from 'site/types';
 import {
   Text,
   TextLink,
@@ -16,7 +16,7 @@ import {
 import { Box } from './Box';
 import type { SimpleBackground } from './Box';
 import source from '@braid-design-system/source.macro';
-import Code from 'braid-site/App/Code/Code';
+import Code from 'site/App/Code/Code';
 import {
   responsiveProperties,
   unresponsiveProperties,
@@ -26,7 +26,7 @@ import {
   PseudoProperties,
   BoxShadow,
 } from '../../css/atoms/atomicProperties';
-import { ThemedExample } from 'braid-site/App/ThemeSetting';
+import { ThemedExample } from 'site/App/ThemeSetting';
 
 type BackgroundDocs = Required<Record<SimpleBackground, string>>;
 const validateBackgrounds = (backgrounds: BackgroundDocs) => backgrounds;

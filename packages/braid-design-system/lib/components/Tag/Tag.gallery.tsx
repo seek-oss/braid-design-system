@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from 'braid-site/types';
+import { ComponentExample } from 'site/types';
 import { Tag, Inline, Text, TextLinkButton, IconPromote } from '../';
 import source from '@braid-design-system/source.macro';
 

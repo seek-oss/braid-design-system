@@ -8,7 +8,7 @@ import {
   IconPromote,
   Placeholder,
 } from '../../playroom/components';
-import { ComponentExample } from 'braid-site/types';
+import { ComponentExample } from 'site/types';
 
 export const galleryItems: ComponentExample[] = [
   {

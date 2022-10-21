@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from 'braid-site/types';
+import { ComponentExample } from 'site/types';
 import { Pagination } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
 
