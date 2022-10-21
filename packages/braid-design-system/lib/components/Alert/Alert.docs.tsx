@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from 'site/types';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { Alert, Text, Strong, Stack, TextLink, List } from '../';
 import { Card } from '../Card/Card';
 import { IconLanguage } from '../icons';

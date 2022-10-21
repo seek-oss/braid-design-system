@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentExample } from 'site/types';
 import { Disclosure } from '..';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { Placeholder } from '../../playroom/components';
 
 export const galleryItems: ComponentExample[] = [

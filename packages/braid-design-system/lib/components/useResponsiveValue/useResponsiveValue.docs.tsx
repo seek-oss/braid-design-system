@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from 'site/types';
 import { useResponsiveValue, Stack, Alert, Strong, Text } from '../../../';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { Notice } from '../Notice/Notice';
 
 const docs: ComponentDocs = {

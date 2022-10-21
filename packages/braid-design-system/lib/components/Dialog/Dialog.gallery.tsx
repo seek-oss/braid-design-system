@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentExample } from 'site/types';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { Dialog, Button, Inline, Stack } from '../';
 import { Placeholder } from '../../playroom/components';
 import { DialogContent } from './Dialog';

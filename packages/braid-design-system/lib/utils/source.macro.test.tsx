@@ -1,6 +1,5 @@
-// eslint-disable-next-line import/no-unresolved
-const { default: pluginTester } = require('babel-plugin-tester');
-const plugin = require('babel-plugin-macros');
+import pluginTester from 'babel-plugin-tester';
+import plugin from 'babel-plugin-macros';
 
 pluginTester({
   plugin,

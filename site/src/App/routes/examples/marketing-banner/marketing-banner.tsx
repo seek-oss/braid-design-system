@@ -19,7 +19,7 @@ import { Placeholder } from 'braid-src/lib/playroom/components';
 import Code from '../../../Code/Code';
 import { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
-import source from '@braid-design-system/source.macro';
+import source from 'braid-design-system/lib/utils/source.macro';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 
 interface StepProps {

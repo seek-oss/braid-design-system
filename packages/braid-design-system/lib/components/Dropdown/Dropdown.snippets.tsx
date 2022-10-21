@@ -1,7 +1,7 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Dropdown, IconHelp, IconLocation } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
 export const snippets: Snippets = [

@@ -2,7 +2,7 @@ import dedent from 'dedent';
 import React from 'react';
 import { Alert, Stack, Strong, Text, TextLink } from '../lib/components';
 import { globalHeadingStyle } from '../lib/css/globalTypographyStyles';
-import source from '@braid-design-system/source.macro';
+import source from '../lib/utils/source.macro';
 import Code from 'site/App/Code/Code';
 import { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentDocs } from 'site/types';
 import { useThemeName, Text, Strong } from '../../../';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Logic',

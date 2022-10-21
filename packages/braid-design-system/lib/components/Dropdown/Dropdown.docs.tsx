@@ -12,7 +12,7 @@ import {
   Heading,
   Notice,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

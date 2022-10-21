@@ -13,7 +13,8 @@
           {
             "patterns": [
               "braid-design-system**",
-              "braid-src/*",
+              "!braid-design-system/lib/utils/source.macro",
+              "braid-src/**",
               "site/**",
               "**/site/**"
             ]

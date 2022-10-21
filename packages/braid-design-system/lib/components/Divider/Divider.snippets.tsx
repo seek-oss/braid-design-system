@@ -1,7 +1,7 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { Divider } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   { name: 'Regular', code: source(<Divider />) },

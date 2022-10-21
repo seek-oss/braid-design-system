@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentExample } from 'site/types';
 import { Autosuggest, filterSuggestions, IconSearch } from '../';
 import { makeSuggestions } from './Autosuggest.docs';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

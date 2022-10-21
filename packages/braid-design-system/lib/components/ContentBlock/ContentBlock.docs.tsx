@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { ContentBlock } from '../';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 

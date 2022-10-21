@@ -10,7 +10,7 @@ import {
   Stack,
   Heading,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {

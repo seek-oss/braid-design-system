@@ -23,7 +23,7 @@ import {
   Placeholder,
   TextField,
 } from 'braid-src/lib/playroom/components';
-import source from '@braid-design-system/source.macro';
+import source from 'braid-design-system/lib/utils/source.macro';
 import { TextStack } from '../../TextStack/TextStack';
 import { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';

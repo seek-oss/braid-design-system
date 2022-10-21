@@ -24,7 +24,7 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';
-import source from '@braid-design-system/source.macro';
+import source from '../lib/utils/source.macro';
 import Code from 'site/App/Code/Code';
 import { ThemedExample } from 'site/App/ThemeSetting';
 import { CssDoc } from 'site/types';

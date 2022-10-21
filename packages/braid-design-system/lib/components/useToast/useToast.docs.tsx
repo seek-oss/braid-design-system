@@ -16,7 +16,7 @@ import {
 import { useThemeSettings } from 'site/App/ThemeSetting';
 import Code from 'site/App/Code/Code';
 import Toast, { toastDuration } from './Toast';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

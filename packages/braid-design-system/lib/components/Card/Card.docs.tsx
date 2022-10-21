@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { ComponentDocs } from 'site/types';
 import { Box, Stack, Card, Text, Tiles, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { validCardComponents } from './Card';
 
 const docs: ComponentDocs = {

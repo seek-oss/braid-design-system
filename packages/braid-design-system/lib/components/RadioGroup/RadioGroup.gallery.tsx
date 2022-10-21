@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentExample } from 'site/types';
 import { RadioGroup, RadioItem, Badge } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

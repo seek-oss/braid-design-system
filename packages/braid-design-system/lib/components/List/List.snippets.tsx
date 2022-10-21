@@ -1,7 +1,7 @@
 import React from 'react';
 import { Snippets } from '../private/Snippets';
 import { List, Text, IconTick } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 export const snippets: Snippets = [
   {

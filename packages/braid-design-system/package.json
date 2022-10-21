@@ -67,7 +67,8 @@
     "sku": ">=10.13.1"
   },
   "devDependencies": {
-    "@braid-design-system/source.macro": "*",
+    "@babel/core": "^7.18.0",
+    "@babel/generator": "^7.18.0",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
@@ -75,6 +76,8 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
+    "@types/babel-plugin-macros": "^2.8.5",
+    "@types/babel-plugin-tester": "^9.0.5",
     "@types/jest": "^29.0.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
@@ -82,6 +85,8 @@
     "@types/sanitize-html": "^2.6.2",
     "@types/testing-library__jest-dom": "^5.9.1",
     "@types/uuid": "^8.3.0",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-tester": "^10.1.0",
     "change-case": "^4.1.2",
     "cheerio": "1.0.0-rc.11",
     "chromatic": "^5.10.2",

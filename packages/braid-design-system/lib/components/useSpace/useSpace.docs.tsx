@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentDocs } from 'site/types';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { useSpace, Stack, Alert, Text, TextLink, Strong } from '../../../';
 
 const docs: ComponentDocs = {

@@ -7,7 +7,7 @@ import reactElementToJsxString from 'react-element-to-jsx-string';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'playroom/utils';
 import { useConfig } from '../ConfigContext';
-import { Source } from '@braid-design-system/source.macro';
+import { Source } from 'braid-design-system/lib/utils/source.macro';
 import {
   Stack,
   Text,

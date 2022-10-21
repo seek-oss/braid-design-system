@@ -11,7 +11,7 @@ import {
   Strong,
   Button,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { animationDelayValueInMs } from './Loader.css';
 import { IconLanguage } from '../icons';
 

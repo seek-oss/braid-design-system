@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentExample } from 'site/types';
 import { Toggle } from '../';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

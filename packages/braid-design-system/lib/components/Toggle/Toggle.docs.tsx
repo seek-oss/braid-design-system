@@ -3,7 +3,7 @@ import { ComponentDocs } from 'site/types';
 import { Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { Stack } from '../Stack/Stack';
 
 const docs: ComponentDocs = {

@@ -15,7 +15,7 @@ import {
 // Use public import
 import { Box } from './Box';
 import type { SimpleBackground } from './Box';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import Code from 'site/App/Code/Code';
 import {
   responsiveProperties,

@@ -1,5 +1,5 @@
 import React from 'react';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { ComponentDocs } from 'site/types';
 import { List, Text, TextLink, Stack, Column, Columns } from '..';
 import { IconTick, Strong } from '../../playroom/components';

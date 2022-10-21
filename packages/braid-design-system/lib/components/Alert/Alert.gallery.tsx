@@ -1,5 +1,5 @@
 import React from 'react';
-import source from '@braid-design-system/source.macro';
+import source from '../../utils/source.macro';
 import { ComponentExample } from 'site/types';
 import { Alert, Text, Stack, TextLink, List } from '../';
 
