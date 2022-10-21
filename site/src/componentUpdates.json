@@ -2641,5 +2641,65 @@
         "summary": "**Heading**: Nested icons inherit text colour\n\nWhen using icons inside of a `Heading`, the default `tone` was always `neutral`, rather than inheriting the colour of the nearest component.\n\nFor example, when an icon was used inside of a `TextLink` within a `Heading`:\n```jsx\n<Heading level=\"1\">\n  Title with <TextLink>link <IconArrow /></TextLink>\n</Heading>\n// => Previously, IconArrow was the heading text colour\n// `neutral`, now inherits the `link` colour.\n```\n\nor equally, when an icon was used inside of a `Secondary` component within a `Heading`:\n```jsx\n<Heading level=\"1\">\n  Title with <Secondary>secondary <IconArrow /></Secondary>\n</Heading>\n// => Previously, IconArrow was the heading text colour\n// `neutral`, now inherits the `secondary` colour.\n```"
       }
     ]
+  },
+  {
+    "version": "31.18.0",
+    "updates": [
+      {
+        "updated": [
+          "Box"
+        ],
+        "summary": "**Box:** Support custom `data` prop format for attributes\n\nWhile `Box` already supports the native HTML syntax for data attributes, e.g. `data-testid=\"123\"`, it now supports the **data** prop too. This allows data attributes to be provided consistently to all components.\n\n**EXAMPLE USAGE:**\n```diff\n <Box\n+  data={{ testId: 'myComponent' }}\n />\n```\nThe above example results in the following HTML attribute being set on the element:\n`data-testId=\"myComponent\"`."
+      },
+      {
+        "updated": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Increase chevron spacing on prev/next links\n\nIncreases the space between the \"Previous\" and \"Next\" text and their chevron icons to balance with the larger icon size."
+      },
+      {
+        "updated": [
+          "MenuItemCheckbox"
+        ],
+        "summary": "**MenuItemCheckbox:** Align with increased icon size\n\nEnsure menu item text has uniform spacing to the checkbox of `MenuItemCheckbox` and the `icon` slot of `MenuItem`."
+      },
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Increase icon size inside typographic elements\n\nThe size of icons has been increased by 20% when used inside of `Text` and `Heading` components. There is no layout impact expected for consumers, with only the visual ratio of icon to text size changing.\n\nThis applies to icons using the new `icon` slots, as well as inline icons within the text content.\n\n> Icons used outside of typographic elements are not affected by this change."
+      },
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Add icon slots\n\nProvides a designed slot for adding an icon to `Text` and `Heading` components\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Text icon={<IconPromote />}>{...}</Text>\n```\n\nor with a `Heading`:\n\n```jsx\n<Heading level=\"3\" icon={<IconPromote />}>{...}</Heading>\n```"
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast:** Add `data` attribute support\n\nSupport applying custom data attributes to Toast elements.\n\n**EXAMPLE USAGE:**\n```diff\n export const Component = () => {\n   const showToast = useToast();\n\n   return (\n     <Button onClick={() =>\n       showToast({\n+        data: { testId: 'myToastMessage' },\n         ...\n       })\n     }>\n       Show\n     </Button>\n   );\n }\n```\nThe above example results in the following HTML attribute being set on the toast element: \n`data-testId=\"myToastMessage\"`."
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Increase standard icon size\n\nAdopt the increased standard icon size.\n\n> Note this does not affect overall dimensions of `ButtonIcon`, or the layout of surrounding components."
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Button",
+          "FieldMessage",
+          "Notice",
+          "Tab",
+          "Tag"
+        ],
+        "summary": "Removes custom icon sizing and layout in favour of new typography icon sizes and layout."
+      }
+    ]
   }
 ]
