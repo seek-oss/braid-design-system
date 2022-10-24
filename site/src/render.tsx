@@ -27,7 +27,7 @@ const skuRender: Render<RenderContext> = {
     const versionMap = await braidVersionToDate();
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
-    const routerBasename = isGithubPages ? 'braid-src/lib/components' : '';
+    const routerBasename = isGithubPages ? 'braid-design-system/lib/components' : '';
     const playroomUrl = !CI
       ? 'http://127.0.0.1:8082'
       : `${routerBasename ? `/${routerBasename}` : ''}/playroom`;

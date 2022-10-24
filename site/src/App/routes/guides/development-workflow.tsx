@@ -267,7 +267,7 @@ const DevelopmentWorkflow = () => (
       theme variables by importing them from Braid’s{' '}
       <InlineCode>css</InlineCode> export:
     </Text>
-    <Code>{`import { vars } from 'braid-src/css';`}</Code>
+    <Code>{`import { vars } from 'braid-design-system/css';`}</Code>
     <Text weight="strong">
       Before writing custom styles, we highly recommend that you read the{' '}
       <TextLink href="https://vanilla-extract.style/documentation/">
@@ -293,7 +293,7 @@ const DevelopmentWorkflow = () => (
       {dedent`
         // myComponent.css.ts
         import { style } from '@vanilla-extract/css';
-        import { vars, responsiveStyle } from 'braid-src/css';
+        import { vars, responsiveStyle } from 'braid-design-system/css';
 
         export const root = style(
           responsiveStyle({
