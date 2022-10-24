@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentScreenshot } from 'site/types';
-import { ButtonLink, IconSend, Stack, Inline } from '../';
+import { ButtonLink, IconSend, Stack, Inline, Text } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -112,6 +112,47 @@ export const screenshots: ComponentScreenshot = {
               variant="transparent"
             >
               Transparent
+            </ButtonLink>
+          </Inline>
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'With icon, transparent variant and bleed, it should align with Text',
+      Example: () => (
+        <Stack space="small">
+          <Text icon={<IconSend />}>Text</Text>
+          <Inline space="none">
+            <ButtonLink
+              href="#"
+              icon={<IconSend />}
+              variant="transparent"
+              bleed
+            >
+              ButtonLink
+            </ButtonLink>
+          </Inline>
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'With icon, transparent variant, bleed and size small, it should align with Text',
+      Example: () => (
+        <Stack space="small">
+          <Text icon={<IconSend />} size="small">
+            Text
+          </Text>
+          <Inline space="none">
+            <ButtonLink
+              href="#"
+              icon={<IconSend />}
+              size="small"
+              variant="transparent"
+              bleed
+            >
+              ButtonLink
             </ButtonLink>
           </Inline>
         </Stack>
