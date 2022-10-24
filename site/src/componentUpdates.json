@@ -2701,5 +2701,17 @@
         "summary": "Removes custom icon sizing and layout in favour of new typography icon sizes and layout."
       }
     ]
+  },
+  {
+    "version": "31.18.1",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Improve alignment of transparent buttons with icons against Text with icons\n\nTo improve optical balance of a `Button` with an `icon`, the icon container is bled to the left to balance against the larger horizontal inset of a `standard` button.\nThis alignment correction is now only applied on `standard` sized buttons that are not using the `transparent` variant.\n\nIsolating this alignment correction enables transparent buttons to better align with other components with `icon` slots, for example:\n\n```jsx\n<Stack space=\"small\">\n  <Text icon={<IconSend />}>Text</Text>\n  <Button icon={<IconSend />} variant=\"transparent\" bleed>\n    Button\n  </Button>\n</Stack>\n```\n\nIcons and text will now be perfectly aligned between Button components and others icon slots with the same text size."
+      }
+    ]
   }
 ]
