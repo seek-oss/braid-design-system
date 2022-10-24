@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from '../../../../../site/src/types';
-import { Button, IconSend, Stack, Inline, Heading } from '../';
+import { Button, IconSend, Stack, Inline, Heading, Text } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
@@ -178,6 +178,41 @@ export const screenshots: ComponentScreenshot = {
             </Button>
             <Button size="small" icon={<IconSend />} variant="transparent">
               Transparent
+            </Button>
+          </Inline>
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'With icon, transparent variant and bleed, it should align with Text',
+      Example: () => (
+        <Stack space="small">
+          <Text icon={<IconSend />}>Text</Text>
+          <Inline space="none">
+            <Button icon={<IconSend />} variant="transparent" bleed>
+              Button
+            </Button>
+          </Inline>
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'With icon, transparent variant, bleed and size small, it should align with Text',
+      Example: () => (
+        <Stack space="small">
+          <Text icon={<IconSend />} size="small">
+            Text
+          </Text>
+          <Inline space="none">
+            <Button
+              icon={<IconSend />}
+              size="small"
+              variant="transparent"
+              bleed
+            >
+              Button
             </Button>
           </Inline>
         </Stack>
