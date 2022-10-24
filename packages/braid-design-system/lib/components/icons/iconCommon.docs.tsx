@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextLink } from '..';
+import { Text, TextLink } from '../';
 import { ComponentExample } from 'site/types';
 
 export const iconDocumentation: ComponentExample = {
