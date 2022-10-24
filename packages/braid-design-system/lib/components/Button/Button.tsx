@@ -308,6 +308,7 @@ export const ButtonText = ({
   variant = 'solid',
   tone,
   labelSpacing = true,
+  bleed,
 }: ButtonProps & {
   labelSpacing?: boolean;
 }) => {
@@ -315,10 +316,8 @@ export const ButtonText = ({
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
-  const labelPaddingX =
-    size === 'small' || variant === 'transparent'
-      ? transparentPaddingX
-      : 'medium';
+  const shouldReducePaddingX = size === 'small' || variant === 'transparent';
+  const labelPaddingX = shouldReducePaddingX ? transparentPaddingX : 'medium';
 
   assert(
     !icon || (icon.props.size === undefined && icon.props.tone === undefined),
@@ -364,7 +363,11 @@ export const ButtonText = ({
           <Box
             component="span"
             paddingRight="xsmall"
-            className={negativeMargin('left', 'xxsmall')}
+            className={
+              shouldReducePaddingX || bleed
+                ? null
+                : negativeMargin('left', 'xxsmall')
+            }
           >
             {icon}
           </Box>
@@ -511,6 +514,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             size={size}
             loading={loading}
             icon={icon}
+            bleed={bleed}
           >
             {children}
           </ButtonText>

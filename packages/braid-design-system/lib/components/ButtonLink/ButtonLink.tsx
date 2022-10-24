@@ -84,6 +84,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             size={size}
             loading={loading}
             icon={icon}
+            bleed={bleed}
           >
             {children}
           </ButtonText>
