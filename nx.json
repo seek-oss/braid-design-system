@@ -26,12 +26,6 @@
     "build-playroom": ["./dist/playroom"]
   },
   "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
     "build-playroom": [
       {
         "target": "build",
@@ -57,12 +51,6 @@
       }
     ],
     "prettier": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "playroom": [
       {
         "target": "build",
         "projects": "dependencies"

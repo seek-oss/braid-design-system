@@ -23,6 +23,13 @@
         "script": "build-site"
       }
     },
+    "playroom": {
+      "dependsOn": ["generate-component-docs"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "playroom"
+      }
+    },
     "tsc": {
       "dependsOn": ["generate-component-docs"],
       "executor": "nx:run-script",
