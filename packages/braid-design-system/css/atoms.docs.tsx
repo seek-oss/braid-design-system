@@ -8,8 +8,8 @@ import {
   unresponsiveProperties,
   UnresponsiveProperties,
   BoxShadow,
-} from '../lib/css/atoms/atomicProperties';
-import { atoms } from '../css';
+} from 'braid-src/lib/css/atoms/atomicProperties';
+import { atoms } from 'braid-src/css';
 import {
   Stack,
   Columns,
@@ -20,14 +20,14 @@ import {
   TextLink,
   Strong,
   Alert,
-} from '../lib/components';
+} from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box } from '../lib/components/Box/Box';
+import { Box } from 'braid-src/lib/components/Box/Box';
 import source from '../lib/utils/source.macro';
-import Code from '../../../site/src/App/Code/Code';
-import { ThemedExample } from '../../../site/src/App/ThemeSetting';
-import { CssDoc } from '../../../site/src/types';
+import Code from 'site/App/Code/Code';
+import { ThemedExample } from 'site/App/ThemeSetting';
+import { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 type BoxShadowDocs = Required<Record<BoxShadow, string>>;

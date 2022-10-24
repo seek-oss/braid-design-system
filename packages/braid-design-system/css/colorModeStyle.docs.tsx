@@ -1,10 +1,10 @@
 import dedent from 'dedent';
 import React from 'react';
 import { colorModeStyle, vars } from '.';
-import { Strong, Text, TextLink } from '../lib/components';
+import { Strong, Text, TextLink } from 'braid-src/lib/components';
 import source from '../lib/utils/source.macro';
-import Code from '../../../site/src/App/Code/Code';
-import { CssDoc } from '../../../site/src/types';
+import Code from 'site/App/Code/Code';
+import { CssDoc } from 'site/types';
 
 const docs: CssDoc = {
   usage: (

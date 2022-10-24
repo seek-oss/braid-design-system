@@ -1,15 +1,15 @@
-import 'braid-design-system/reset';
+import 'braid-src/reset';
 import React, { StrictMode, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
-import docsTheme from 'braid-design-system/themes/docs';
+import docsTheme from 'braid-src/themes/docs';
 import {
   BraidProvider,
   ToastProvider,
   makeLinkComponent,
-} from 'braid-design-system';
+} from 'braid-src/lib/components';
 import { Navigation } from './Navigation/Navigation';
 import { HomePage } from './routes/home';
 import guides from './routes/guides';
@@ -23,7 +23,7 @@ import { DocSnippets } from './DocNavigation/DocSnippets';
 import { ReleasesPage } from './routes/releases';
 import { GalleryPage } from './routes/gallery';
 import { AppMeta } from './Seo/AppMeta';
-import { darkMode } from 'braid-design-system/lib/css/atoms/sprinkles.css';
+import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>

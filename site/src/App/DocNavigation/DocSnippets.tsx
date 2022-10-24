@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Stack, Text, BraidProvider } from 'braid-design-system';
-import { PlayroomStateProvider } from 'braid-design-system/lib/playroom/playroomState';
+import { Stack, Text, BraidProvider } from 'braid-src/lib/components';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { PageTitle } from '../Seo/PageTitle';
 import { useThemeSettings } from '../ThemeSetting';
 import { DocsContext } from './DocNavigation';

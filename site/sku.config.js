@@ -5,17 +5,10 @@ const browserslist = require('../browserslist');
 
 const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
 
+const braidSrc = '../packages/braid-design-system';
+
 module.exports = {
-  srcPaths: [
-    '../packages/braid-design-system/color-mode',
-    '../packages/braid-design-system/css',
-    '../packages/braid-design-system/lib',
-    '../packages/braid-design-system/reset',
-    '../packages/braid-design-system/scripts',
-    '../packages/braid-design-system/test',
-    '../packages/braid-design-system/themes',
-    'src',
-  ],
+  srcPaths: ['./src', braidSrc],
   clientEntry: './src/client.tsx',
   renderEntry: './src/render.tsx',
   routes,
@@ -33,12 +26,15 @@ module.exports = {
       }),
     );
 
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'braid-src': path.join(__dirname, braidSrc),
+      site: path.join(__dirname, './src'),
+    };
+
     // Import Changelog as a raw string so it can be passed to the markdown renderer
     config.module.rules.push({
-      test: path.join(
-        __dirname,
-        '../packages/braid-design-system/CHANGELOG.md',
-      ),
+      test: path.join(__dirname, braidSrc, 'CHANGELOG.md'),
       type: 'asset/source',
     });
 

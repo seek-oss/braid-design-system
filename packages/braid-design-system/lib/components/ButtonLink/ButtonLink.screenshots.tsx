@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { ComponentScreenshot } from '../../../../../site/src/types';
+import { ComponentScreenshot } from 'site/types';
 import { ButtonLink, IconSend, Stack, Inline, Text } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

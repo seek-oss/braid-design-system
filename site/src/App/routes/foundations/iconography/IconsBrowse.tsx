@@ -9,9 +9,9 @@ import {
   TextField,
   IconSearch,
   Strong,
-} from 'braid-design-system';
-import { Overlay } from 'braid-design-system/lib/components/private/Overlay/Overlay';
-import * as icons from 'braid-design-system/lib/components/icons';
+} from 'braid-src/lib/components';
+import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
+import * as icons from 'braid-src/lib/components/icons';
 import * as styles from './IconsBrowse.css';
 
 type IconName = keyof typeof icons;

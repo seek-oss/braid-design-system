@@ -7,10 +7,10 @@ import {
   Link,
   Hidden,
   HiddenVisually,
-} from 'braid-design-system';
+} from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box, BoxProps } from 'braid-design-system/lib/components/Box/Box';
+import { Box, BoxProps } from 'braid-src/lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';

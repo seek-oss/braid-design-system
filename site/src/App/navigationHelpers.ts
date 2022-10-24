@@ -1,22 +1,18 @@
 import groupBy from 'lodash/groupBy';
-import * as components from 'braid-design-system';
-import * as testComponents from 'braid-design-system/test';
-import * as css from 'braid-design-system/css';
-import { BraidSnippet } from 'braid-design-system/lib/components/private/Snippets';
+import * as components from 'braid-src/lib/components';
+import * as testComponents from 'braid-src/test';
+import * as css from 'braid-src/css';
+import { BraidSnippet } from 'braid-src/lib/components/private/Snippets';
 import { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
-  '../../../packages/braid-design-system/lib/components/',
+  'braid-src/lib/components/',
   true,
   /.docs\.tsx$/,
 );
 
-const cssDocsContext = require.context(
-  '../../../packages/braid-design-system/css',
-  true,
-  /.docs\.tsx$/,
-);
+const cssDocsContext = require.context('braid-src/css/', true, /.docs\.tsx$/);
 
 export const getComponentDocs = (componentName: string) => {
   const normalizedComponentRoute = /^icon/i.test(componentName)
@@ -31,10 +27,11 @@ export const getCssDoc = (cssName: string) =>
   cssDocsContext(`./${cssName}.docs.tsx`).default as CssDoc;
 
 const snippetsContext = require.context(
-  '../../../packages/braid-design-system/lib/components/',
+  'braid-src/lib/components/',
   true,
   /\.snippets\.tsx?$/,
 );
+
 export const getComponentSnippets = (componentName: string) => {
   const normalizedComponentRoute = `./${componentName}/${componentName}.snippets.tsx`;
 
@@ -100,10 +97,11 @@ const getComponentNameFromFilename = (filename: string) => {
 };
 
 const galleryContext = require.context(
-  '../../../packages/braid-design-system/lib/components/',
+  'braid-src/lib/components/',
   true,
   /.gallery\.tsx$/,
 );
+
 export const galleryComponents = galleryContext.keys().map((filename) => ({
   name: getComponentNameFromFilename(filename),
   examples: galleryContext(filename).galleryItems as ComponentExample[],

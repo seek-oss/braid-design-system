@@ -19,11 +19,11 @@ import {
   IconSettings,
   IconPeople,
   IconMinus,
-} from 'braid-design-system';
+} from 'braid-src/lib/components';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 import { DocExample } from '../../../DocNavigation/DocExample';
-import { PlayroomStateProvider } from 'braid-design-system/lib/playroom/playroomState';
-import { iconScaleIncrease } from 'braid-design-system/lib/hooks/useIcon/icon.css';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';
 import source from 'braid-design-system/lib/utils/source.macro';
 
 export const IconsDetails = () => (

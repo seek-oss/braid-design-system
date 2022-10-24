@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from 'sku/react-treat';
-import { ComponentExample } from '../../../../../site/src/types';
+import { ComponentExample } from 'site/types';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { Button, IconBookmark, IconPromote, Inline } from '..';
 import Toast from './Toast';

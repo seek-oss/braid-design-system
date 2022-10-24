@@ -1,9 +1,9 @@
 coverage/
 dist-storybook/
-report/
-codemod-dist/
 dist/
-CHANGELOG.md
+report/
 .changeset/*.md
+CHANGELOG.md
 componentUpdates.json
 componentDocs.json
+pnpm-lock.yaml
