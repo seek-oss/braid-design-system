@@ -1,5 +1,11 @@
 {
-  "extends": "seek",
+  // temporary until eslint-config-seek is updated
+  "extends": ["seek", "plugin:import/typescript"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "error",
+    "import/no-duplicates": "error",
+    "import/no-relative-packages": "error"
+  },
   "overrides": [
     {
       "files": ["*.{js,ts,tsx}"],
