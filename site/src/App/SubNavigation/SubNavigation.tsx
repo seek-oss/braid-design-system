@@ -3,7 +3,14 @@ import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
-import { Text, TextLink, Box, Stack, Inline, Badge } from 'braid-design-system';
+import {
+  Text,
+  TextLink,
+  Box,
+  Stack,
+  Inline,
+  Badge,
+} from 'braid-src/lib/components';
 import { ThemeToggle } from '../ThemeSetting';
 import {
   categorisedComponents,

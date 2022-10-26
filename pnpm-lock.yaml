@@ -46,8 +46,8 @@ importers:
       jest-environment-jsdom: ^29.0.0
       jest-watch-typeahead: ^2.1.0
       js-yaml: ^4.1.0
-      nx: ^14.5.3
-      prettier: ^2.6.2
+      nx: ~15.0.0
+      prettier: ^2.7.1
       renovate-config-seek: 0.4.0
       surge: ^0.23.1
       ts-node: ^10.8.0
@@ -87,8 +87,8 @@ importers:
       jest-environment-jsdom: 29.1.2
       jest-watch-typeahead: 2.2.0_jest@29.1.2
       js-yaml: 4.1.0
-      nx: 14.5.3
-      prettier: 2.6.2
+      nx: 15.0.0
+      prettier: 2.7.1
       renovate-config-seek: 0.4.0
       surge: 0.23.1
       ts-node: 10.8.0_rbv5fvwh3qaahz6dxcho7rzsry
@@ -100,7 +100,6 @@ importers:
       '@babel/generator': ^7.18.0
       '@capsizecss/core': ^3.0.0
       '@capsizecss/vanilla-extract': ^1.0.0
-      '@seek/braid-codemod': '*'
       '@svgr/core': ^5.5.0
       '@svgr/plugin-jsx': ^5.5.0
       '@svgr/plugin-prettier': ^5.5.0
@@ -180,8 +179,7 @@ importers:
       uuid: 8.3.2
     devDependencies:
       '@babel/core': 7.18.0
-      '@babel/generator': 7.18.0
-      '@seek/braid-codemod': link:../codemod
+      '@babel/generator': 7.19.5
       '@svgr/core': 5.5.0
       '@svgr/plugin-jsx': 5.5.0
       '@svgr/plugin-prettier': 5.5.0
@@ -236,7 +234,7 @@ importers:
       esbuild: ^0.14.39
       fast-glob: ^3.2.11
       ink: ^3.2.0
-      prettier: ^2.6.2
+      prettier: ^2.7.1
       react: ^18.2.0
       recast: ^0.21.1
       workerpool: ^6.2.1
@@ -256,7 +254,7 @@ importers:
       esbuild: 0.14.39
       fast-glob: 3.2.11
       ink: 3.2.0_iapumuv4e6jcjznwuxpf4tt22e
-      prettier: 2.6.2
+      prettier: 2.7.1
       react: 18.2.0
       recast: 0.21.1
       workerpool: 6.2.1
@@ -290,8 +288,8 @@ importers:
     specifiers:
       '@babel/core': ^7.18.0
       '@babel/preset-typescript': ^7.17.12
+      '@braid-design-system/generate-component-docs': '*'
       '@capsizecss/vanilla-extract': ^1.0.0
-      '@seek/generate-component-docs': '*'
       '@types/dedent': ^0.7.0
       '@types/lodash': ^4.14.168
       '@types/react': ^18.0.21
@@ -312,7 +310,7 @@ importers:
       panzoom: ^9.4.2
       playroom: 0.28.0
       polished: ^4.1.0
-      prettier: ^2.6.2
+      prettier: ^2.7.1
       react: ^18.2.0
       react-dom: ^18.2.0
       react-element-to-jsx-string: ^15.0.0
@@ -330,8 +328,8 @@ importers:
     dependencies:
       '@babel/core': 7.18.0
       '@babel/preset-typescript': 7.17.12_@babel+core@7.18.0
+      '@braid-design-system/generate-component-docs': link:../packages/generate-component-docs
       '@capsizecss/vanilla-extract': 1.0.0_@vanilla-extract+css@1.9.1
-      '@seek/generate-component-docs': link:../packages/generate-component-docs
       '@types/dedent': 0.7.0
       '@types/lodash': 4.14.182
       '@types/react': 18.0.21
@@ -352,7 +350,7 @@ importers:
       panzoom: 9.4.2_6ozlkenow5f4yy4lstsbsrrv4i
       playroom: 0.28.0_biqbaboplfbrettd7655fr4n2y
       polished: 4.2.2
-      prettier: 2.6.2
+      prettier: 2.7.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-element-to-jsx-string: 15.0.0_biqbaboplfbrettd7655fr4n2y
@@ -449,7 +447,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.18.12
+      '@babel/generator': 7.19.5
       '@babel/helper-module-transforms': 7.18.9
       '@babel/helpers': 7.18.0
       '@babel/parser': 7.18.11
@@ -529,6 +527,14 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.18.10
+      '@jridgewell/gen-mapping': 0.3.2
+      jsesc: 2.5.2
+
+  /@babel/generator/7.19.5:
+    resolution: {integrity: sha512-DxbNz9Lz4aMZ99qPpO1raTbcrI1ZeYh+9NR9qhfkQIbFtVEqotHojEBxHzmxhVONkGt6VyrqVQcgpefMy9pqcg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/types': 7.19.4
       '@jridgewell/gen-mapping': 0.3.2
       jsesc: 2.5.2
 
@@ -2932,23 +2938,25 @@ packages:
       mkdirp: 1.0.4
       rimraf: 3.0.2
 
-  /@nrwl/cli/14.5.3:
-    resolution: {integrity: sha512-+bax9axSbsc72neRvug9jTXIk+vWwPYeZSOMWLmPc7diYgCb1JKfzh16rQQWGrxG6i6LiUcmP5Hsrl7ktaUimw==}
+  /@nrwl/cli/15.0.0:
+    resolution: {integrity: sha512-D0zAhZ375bQnoUM2HLifMzAa75A3/lC9OkkewsiVVbqaznjEIry8ezHZepgfjFRVzLr3ue7FIpDEH3iJIYzvVw==}
     dependencies:
-      nx: 14.5.3
+      nx: 15.0.0
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
+      - debug
     dev: false
 
-  /@nrwl/tao/14.5.3:
-    resolution: {integrity: sha512-FiBzwZisEs7JcksWR1G6x/flKjcnXckdFlAuQv9s9uVKPUSrvq4L5fYNGaFUPwVB8FyqsdCvP3e3gRRFXtzpDg==}
+  /@nrwl/tao/15.0.0:
+    resolution: {integrity: sha512-qup1eSWYwp/KVrw/wxeWBvYttQ9dcbQnqpXb5NQMD31SpXEZSpJB1i3GV/o6CF5qQQSNLwICXZx25rNTTQAqpg==}
     hasBin: true
     dependencies:
-      nx: 14.5.3
+      nx: 15.0.0
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
+      - debug
     dev: false
 
   /@octokit/auth-token/2.5.0:
@@ -5340,6 +5348,25 @@ packages:
   /@xtuc/long/4.2.2:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
+  /@yarnpkg/lockfile/1.1.0:
+    resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
+    dev: false
+
+  /@yarnpkg/parsers/3.0.0-rc.26:
+    resolution: {integrity: sha512-F52Zryoi6uSHi43A/htykDD7l1707TQjHeAHTKxNWJBTwvrEKWYvuu1w8bzSHpFVc06ig2KyrpHPfmeiuOip8Q==}
+    engines: {node: '>=14.15.0'}
+    dependencies:
+      js-yaml: 3.14.1
+      tslib: 2.4.0
+    dev: false
+
+  /@zkochan/js-yaml/0.0.6:
+    resolution: {integrity: sha512-nzvgl3VfhcELQ8LyVrYOru+UtAy1nrygk2+AGbTm8a5YcO6o8lSjAT+pfg3vJWxIoZKOUhrK6UU7xW/+00kQrg==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
+    dev: false
+
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
 
@@ -5911,6 +5938,16 @@ packages:
       - debug
     dev: true
 
+  /axios/1.1.3:
+    resolution: {integrity: sha512-00tXVRwKx/FZr/IDVFt4C+f9FYairX517WoGCL6dpOntqLkZofjhu43F/Xl44UOpqa+9sLFDrG/XAnFsUYgkDA==}
+    dependencies:
+      follow-redirects: 1.15.0
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /babel-jest/29.1.2_@babel+core@7.18.0:
     resolution: {integrity: sha512-IuG+F3HTHryJb7gacC7SQ59A9kO56BctUsT67uJHp1mMCHUOMXpDwOHWGifWqdWVknN2WNkCVQELPjXx0aLJ9Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -6090,7 +6127,7 @@ packages:
       '@babel/core': 7.18.0
       '@types/babel-plugin-tester': 9.0.5
       lodash.mergewith: 4.6.2
-      prettier: 2.6.2
+      prettier: 2.7.1
       strip-indent: 3.0.0
 
   /babel-plugin-transform-react-remove-prop-types/0.4.24:
@@ -9904,6 +9941,16 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /follow-redirects/1.15.0:
+    resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
   /follow-redirects/1.15.0_debug@4.3.4:
     resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
     engines: {node: '>=4.0'}
@@ -12479,8 +12526,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  /jsonc-parser/3.0.0:
-    resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
+  /jsonc-parser/3.2.0:
+    resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
     dev: false
 
   /jsonfile/4.0.0:
@@ -13789,8 +13836,8 @@ packages:
   /nwsapi/2.2.2:
     resolution: {integrity: sha512-90yv+6538zuvUMnN+zCr8LuV6bPFdq50304114vJYJ8RDyK8D5O9Phpbd6SZWgI7PwzmmfN1upeOJlvybDSgCw==}
 
-  /nx/14.5.3:
-    resolution: {integrity: sha512-Ll+v6HrDxrA0rxT3q5gok7bUKcE3jEFWTFEdxWtsogLhSTOaOvgRie8H46+i4eyS1GqtXsuPLpgyIjRAx3BEjQ==}
+  /nx/15.0.0:
+    resolution: {integrity: sha512-uh9Ou5oj7yr6Uyp4QhqW1vIVoanYn1sJM1jzOyoT17GAhhODfS0BtQgUvlmInDuRqP8LMaPg4LXFMby07U1HXg==}
     hasBin: true
     requiresBuild: true
     peerDependencies:
@@ -13802,9 +13849,13 @@ packages:
       '@swc/core':
         optional: true
     dependencies:
-      '@nrwl/cli': 14.5.3
-      '@nrwl/tao': 14.5.3
+      '@nrwl/cli': 15.0.0
+      '@nrwl/tao': 15.0.0
       '@parcel/watcher': 2.0.4
+      '@yarnpkg/lockfile': 1.1.0
+      '@yarnpkg/parsers': 3.0.0-rc.26
+      '@zkochan/js-yaml': 0.0.6
+      axios: 1.1.3
       chalk: 4.1.0
       chokidar: 3.5.3
       cli-cursor: 3.1.0
@@ -13819,12 +13870,13 @@ packages:
       glob: 7.1.4
       ignore: 5.2.0
       js-yaml: 4.1.0
-      jsonc-parser: 3.0.0
+      jsonc-parser: 3.2.0
       minimatch: 3.0.5
       npm-run-path: 4.0.1
       open: 8.4.0
       semver: 7.3.4
       string-width: 4.2.3
+      strong-log-transformer: 2.1.0
       tar-stream: 2.2.0
       tmp: 0.2.1
       tsconfig-paths: 3.14.1
@@ -13832,6 +13884,8 @@ packages:
       v8-compile-cache: 2.3.0
       yargs: 17.5.1
       yargs-parser: 21.0.1
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /oauth-sign/0.9.0:
@@ -15237,6 +15291,11 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+
   /pretty-error/2.1.2:
     resolution: {integrity: sha512-EY5oDzmsX5wvuynAByrmY0P0hcp+QpnAKbJng2A2MPjVKXCxrDSUkzghVJ4ZGPIv+JC4gX8fPUWscC0RtjsWGw==}
     dependencies:
@@ -15361,6 +15420,10 @@ packages:
     dependencies:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
+
+  /proxy-from-env/1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+    dev: false
 
   /prr/1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
@@ -17397,6 +17460,16 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       escape-string-regexp: 1.0.5
+    dev: false
+
+  /strong-log-transformer/2.1.0:
+    resolution: {integrity: sha512-B3Hgul+z0L9a236FAUC9iZsL+nVHgoCJnqCbN588DjYxvGXaXaaFbfmQ/JhvKjZwsOukuR72XbHv71Qkug0HxA==}
+    engines: {node: '>=4'}
+    hasBin: true
+    dependencies:
+      duplexer: 0.1.2
+      minimist: 1.2.6
+      through: 2.3.8
     dev: false
 
   /style-loader/1.3.0_webpack@4.46.0:

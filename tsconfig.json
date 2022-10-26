@@ -9,7 +9,11 @@
     "strict": true,
     "jsx": "preserve",
     "lib": ["dom", "es2019"],
-    "target": "es5"
+    "target": "es5",
+    "paths": {
+      "site/*": ["./site/src/*"],
+      "braid-src/*": ["./packages/braid-design-system/*"]
+    }
   },
   "include": ["./scripts"]
 }

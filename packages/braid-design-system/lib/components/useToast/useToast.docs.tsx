@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from '../../../../../site/src/types';
+import { ComponentDocs } from 'site/types';
 import {
   Box,
   Button,
@@ -13,8 +13,8 @@ import {
   IconLanguage,
   IconBookmark,
 } from '..';
-import { useThemeSettings } from '../../../../../site/src/App/ThemeSetting';
-import Code from '../../../../../site/src/App/Code/Code';
+import { useThemeSettings } from 'site/App/ThemeSetting';
+import Code from 'site/App/Code/Code';
 import Toast, { toastDuration } from './Toast';
 import source from '../../utils/source.macro';
 

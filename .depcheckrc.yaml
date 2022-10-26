@@ -1,0 +1,8 @@
+ignores:
+  - '@svgr/plugin-jsx'
+  - '@svgr/plugin-prettier'
+  - '@testing-library/dom'
+  - '@types/jest'
+  - assert
+  - braid-src
+  - site

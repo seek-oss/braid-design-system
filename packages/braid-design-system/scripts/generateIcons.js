@@ -167,8 +167,8 @@ const iconComponentsDir = path.join(baseDir, 'lib/components/icons');
         `${iconName}.docs.tsx`,
         dedent`
           import React from 'react';
-          import { ComponentDocs } from '../../../../../../site/src/types';
-          import { iconDocumentation } from '../iconDocumentation';
+          import { ComponentDocs } from 'site/types';
+          import { iconDocumentation } from '../iconCommon.docs';
           import source from '../../../utils/source.macro';
           import { ${iconName}, Heading, Stack } from '../../';
 

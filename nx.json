@@ -1,6 +1,6 @@
 {
   "extends": "nx/presets/npm.json",
-  "npmScope": "seek",
+  "npmScope": "braid-design-system",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
@@ -26,26 +26,6 @@
     "build-playroom": ["./dist/playroom"]
   },
   "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      },
-      {
-        "target": "generate-icons",
-        "projects": "self"
-      }
-    ],
-    "build-site": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      },
-      {
-        "target": "generate-component-docs",
-        "projects": "self"
-      }
-    ],
     "build-playroom": [
       {
         "target": "build",
@@ -56,24 +36,12 @@
       {
         "target": "build",
         "projects": "dependencies"
-      },
-      {
-        "target": "generate-icons",
-        "projects": "self"
-      },
-      {
-        "target": "generate-component-docs",
-        "projects": "self"
       }
     ],
     "eslint": [
       {
         "target": "build",
         "projects": "dependencies"
-      },
-      {
-        "target": "generate-icons",
-        "projects": "self"
       }
     ],
     "format": [
@@ -86,18 +54,6 @@
       {
         "target": "build",
         "projects": "dependencies"
-      }
-    ],
-    "playroom": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "start-site": [
-      {
-        "target": "generate-component-docs",
-        "projects": "self"
       }
     ]
   },

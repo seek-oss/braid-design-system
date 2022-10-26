@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from '../../../../../site/src/types';
+import { ComponentScreenshot } from 'site/types';
 import { List, Text, Stack, IconTick } from '../';
 import { Placeholder } from '../../playroom/components';
 

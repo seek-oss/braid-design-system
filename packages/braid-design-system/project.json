@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.0.0/packages/nx/schemas/project-schema.json",
+  "targets": {
+    "build": {
+      "dependsOn": ["copy-codemod", "generate-icons"],
+      "executor": "nx:noop"
+    },
+    "copy-codemod": {
+      "dependsOn": ["^build"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "copy-codemod"
+      }
+    }
+  },
+  "implicitDependencies": ["codemod"]
+}

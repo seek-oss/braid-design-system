@@ -1,6 +1,7 @@
 import fs from 'fs-extra';
 import glob from 'fast-glob';
 
+// eslint-disable-next-line no-restricted-imports
 import { version } from '../packages/braid-design-system/package.json';
 
 (async () => {
