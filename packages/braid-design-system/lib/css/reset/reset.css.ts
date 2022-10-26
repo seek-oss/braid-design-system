@@ -80,6 +80,16 @@ const input = style([
   field,
   style({
     selectors: {
+      ['&[type="number"]']: {
+        MozAppearance: 'textfield',
+      },
+      [[
+        '&[type="number"]::-webkit-inner-spin-button',
+        '&[type="number"]::-webkit-outer-spin-button',
+      ].join(',')]: {
+        WebkitAppearance: 'none',
+        margin: 0,
+      },
       '&::-ms-clear': {
         display: 'none',
       },

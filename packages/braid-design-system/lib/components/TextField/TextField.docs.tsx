@@ -10,9 +10,10 @@ import {
   IconHelp,
   Stack,
   Heading,
+  IconLanguage,
+  TextDropdown,
 } from '../';
 import source from '../../utils/source.macro';
-import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -285,6 +286,65 @@ const docs: ComponentDocs = {
               description="Chactacter limit of 50"
               characterLimit={50}
             />
+          </>,
+        ),
+    },
+    {
+      label: 'Tailoring the keyboard layout',
+      description: (
+        <>
+          <Text>
+            To improve the user experience when entering text on mobile devices,
+            the keyboard layout can be tailored to suit its content using the{' '}
+            <Strong>inputMode</Strong> prop.
+          </Text>
+          <Text>
+            Choose from the built-in{' '}
+            <TextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode">
+              inputmodes
+            </TextLink>
+            , for example: <Strong>numeric</Strong>, <Strong>email</Strong>,{' '}
+            <Strong>url</Strong>, etc. and the device will show the appropriate
+            keyboard layout.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, setState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState('inputmode', 'numeric')}
+            <Stack space="large">
+              <Text tone="secondary">
+                Selected input mode:{' '}
+                <Strong>
+                  <TextDropdown
+                    id={`${id}_mode`}
+                    label="Input mode"
+                    value={getState('inputmode')}
+                    onChange={setState('inputmode')}
+                    options={[
+                      'text',
+                      'email',
+                      'search',
+                      'numeric',
+                      'decimal',
+                      'tel',
+                      'url',
+                    ]}
+                  />
+                </Strong>
+              </Text>
+              <TextField
+                id={id}
+                label="Label"
+                onChange={setState('textfield')}
+                value={getState('textfield')}
+                inputMode={getState('inputmode')}
+              />
+              <Text tone="secondary">
+                Note: Keyboard change only visible on a mobile device
+              </Text>
+            </Stack>
           </>,
         ),
     },
