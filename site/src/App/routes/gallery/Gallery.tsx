@@ -39,6 +39,7 @@ import {
   Button,
   Secondary,
   IconCopy,
+  ButtonIcon,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -67,7 +68,6 @@ import {
   FitToScreenDimensions,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import { ButtonIcon } from 'braid-src/lib/components';
 import useIcon, { UseIconProps } from 'braid-src/lib/hooks/useIcon';
 import { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';

@@ -11,7 +11,7 @@ import { ConfigProvider } from './App/ConfigContext';
 import * as themes from 'braid-src/lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
 import { initUpdates } from './App/Updates';
-import packageJson from '../../package.json';
+import packageJson from 'braid-design-system/package.json';
 import { __experimentalDarkMode__ } from 'braid-src/color-mode';
 
 const { version } = packageJson;
