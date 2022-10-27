@@ -1,5 +1,58 @@
 # braid-design-system
 
+## 31.19.0
+
+### Minor Changes
+
+- **TextField:** Add `inputMode` and `step` support ([#1174](https://github.com/seek-oss/braid-design-system/pull/1174))
+
+  Provide support for the native `inputMode` and `step` attributes.
+
+  The `inputMode` will also be defaulted based on the specified `type`. For example: `<TextField type="number" />` will default the `inputMode` to `numeric`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <TextField inputMode="numeric" step=".01" />
+  ```
+
+### Patch Changes
+
+- **Rating:** Only fill star for scores .75 and above ([#1176](https://github.com/seek-oss/braid-design-system/pull/1176))
+
+  A star is only `filled` when the score is .75 and above. Fixes an issue where all scores .5 or above are shown as half filled stars.
+
+  **EXAMPLE USAGE:**
+  Now when a rating reaches .75 it will round up to a full star.
+
+  ```jsx
+  <Rating rating={3.75} /> // 4 filled
+  ```
+
+- **ButtonLink:** Allow native data attributes with anchor api ([#1178](https://github.com/seek-oss/braid-design-system/pull/1178))
+
+  Disables the validation against the use of data attributes on `ButtonLink`. Given it exposes the full native anchor tag api, it is **not invalid** to use the native syntax.
+
+- **Box, atoms:** Remove native buttons on number input field ([#1174](https://github.com/seek-oss/braid-design-system/pull/1174))
+
+  Extends the CSS reset behaviour of HTML input fields where `type="number"` to remove the native increment and decrement buttons.
+
+  **EXAMPLE USAGE:**
+  The following will now render a HTML input of type `number` without native buttons:
+
+  ```jsx
+  <Box component="input" type="number" />
+  ```
+
+  Additionally, if using the `atoms` function to build styles, when resetting an `input` field, the native buttons will also be removed.
+
+  ```ts
+  const customClasses = atoms({
+    reset: 'input',
+    ...
+  });
+  ```
+
 ## 31.18.1
 
 ### Patch Changes

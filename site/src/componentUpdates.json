@@ -2713,5 +2713,35 @@
         "summary": "**Button, ButtonLink:** Improve alignment of transparent buttons with icons against Text with icons\n\nTo improve optical balance of a `Button` with an `icon`, the icon container is bled to the left to balance against the larger horizontal inset of a `standard` button.\nThis alignment correction is now only applied on `standard` sized buttons that are not using the `transparent` variant.\n\nIsolating this alignment correction enables transparent buttons to better align with other components with `icon` slots, for example:\n\n```jsx\n<Stack space=\"small\">\n  <Text icon={<IconSend />}>Text</Text>\n  <Button icon={<IconSend />} variant=\"transparent\" bleed>\n    Button\n  </Button>\n</Stack>\n```\n\nIcons and text will now be perfectly aligned between Button components and others icon slots with the same text size."
       }
     ]
+  },
+  {
+    "version": "31.19.0",
+    "updates": [
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Only fill star for scores .75 and above\n\nA star is only `filled` when the score is .75 and above. Fixes an issue where all scores .5 or above are shown as half filled stars.\n\n**EXAMPLE USAGE:**\nNow when a rating reaches .75 it will round up to a full star.\n\n```jsx\n<Rating rating={3.75} /> // 4 filled\n```"
+      },
+      {
+        "updated": [
+          "ButtonLink"
+        ],
+        "summary": "**ButtonLink:** Allow native data attributes with anchor api\n\nDisables the validation against the use of data attributes on `ButtonLink`. Given it exposes the full native anchor tag api, it is **not invalid** to use the native syntax."
+      },
+      {
+        "updated": [
+          "TextField"
+        ],
+        "summary": "**TextField:** Add `inputMode` and `step` support\n\nProvide support for the native `inputMode` and `step` attributes.\n\nThe `inputMode` will also be defaulted based on the specified `type`. For example: `<TextField type=\"number\" />` will default the `inputMode` to `numeric`.\n\n**EXAMPLE USAGE:**\n```jsx\n<TextField inputMode=\"numeric\" step=\".01\" />\n```"
+      },
+      {
+        "updated": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms:** Remove native buttons on number input field\n\nExtends the CSS reset behaviour of HTML input fields where `type=\"number\"` to remove the native increment and decrement buttons.\n\n**EXAMPLE USAGE:**\nThe following will now render a HTML input of type `number` without native buttons:\n\n```jsx\n<Box component=\"input\" type=\"number\" />\n```\n\nAdditionally, if using the `atoms` function to build styles, when resetting an `input` field, the native buttons will also be removed.\n\n```ts\nconst customClasses = atoms({\n  reset: 'input',\n  ...\n});\n```"
+      }
+    ]
   }
 ]
