@@ -67,7 +67,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           component={LinkComponent}
           ref={ref}
           {...restProps}
-          {...buildDataAttributes({ data, validateRestProps: restProps })}
+          {...buildDataAttributes({ data, validateRestProps: false })}
           {...useButtonStyles({
             variant,
             tone,
