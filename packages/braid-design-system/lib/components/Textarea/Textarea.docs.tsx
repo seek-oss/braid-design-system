@@ -226,7 +226,7 @@ const docs: ComponentDocs = {
               id={id}
               onChange={setState('text')}
               value={getState('text')}
-              description="Chactacter limit of 50"
+              description="Character limit of 50"
               characterLimit={50}
             />
           </>,
