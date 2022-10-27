@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ComponentScreenshot } from 'site/types';
-import { Rating } from '../';
+import { Rating, Stack, Text } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
@@ -32,6 +32,24 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'xsmall',
       Example: () => <Rating rating={1.5} size="xsmall" />,
+    },
+    {
+      label: 'Fill test',
+      Example: () => (
+        <Stack space="medium">
+          <Text>Empty</Text>
+          <Rating rating={0} />
+          <Rating rating={0.01} />
+          <Rating rating={0.24} />
+          <Text>Half</Text>
+          <Rating rating={0.25} />
+          <Rating rating={0.74} />
+          <Text>Full</Text>
+          <Rating rating={0.75} />
+          <Rating rating={0.99} />
+          <Rating rating={1} />
+        </Stack>
+      ),
     },
     {
       label: 'Rating Contrast',
