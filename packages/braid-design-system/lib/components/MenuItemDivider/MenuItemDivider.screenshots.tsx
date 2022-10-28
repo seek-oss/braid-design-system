@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ComponentScreenshot } from 'site/types';
 import { Box, MenuItem, MenuItemCheckbox, MenuItemDivider } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
 

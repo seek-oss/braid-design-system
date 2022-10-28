@@ -1,8 +1,6 @@
 import clsx from 'clsx';
-import {
-  OptionalResponsiveValue,
-  normalizeResponsiveValue,
-} from '../css/atoms/sprinkles.css';
+import type { OptionalResponsiveValue } from '../css/atoms/sprinkles.css';
+import { normalizeResponsiveValue } from '../css/atoms/sprinkles.css';
 import { optimizeResponsiveArray } from './optimizeResponsiveArray';
 
 export const resolveResponsiveProp = <Keys extends string | number>(

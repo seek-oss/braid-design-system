@@ -1,5 +1,6 @@
 import React from 'react';
-import { Bleed as BraidBleed, BleedProps, validBleedComponents } from './Bleed';
+import type { BleedProps } from './Bleed';
+import { Bleed as BraidBleed, validBleedComponents } from './Bleed';
 
 export const Bleed = ({ component, ...restProps }: BleedProps) => (
   <BraidBleed

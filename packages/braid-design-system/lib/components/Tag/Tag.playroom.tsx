@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFallbackId } from '../../playroom/utils';
-import { Tag as BraidTag, TagProps } from './Tag';
+import type { TagProps } from './Tag';
+import { Tag as BraidTag } from './Tag';
 
 export const Tag = ({ icon, id, ...restProps }: TagProps) => {
   const fallbackId = useFallbackId();

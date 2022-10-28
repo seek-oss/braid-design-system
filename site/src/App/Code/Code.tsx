@@ -1,4 +1,5 @@
-import React, { useState, ReactElement, useEffect, useRef } from 'react';
+import type { ReactElement } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';
@@ -7,7 +8,7 @@ import reactElementToJsxString from 'react-element-to-jsx-string';
 import typescriptParser from 'prettier/parser-typescript';
 import { createUrl } from 'playroom/utils';
 import { useConfig } from '../ConfigContext';
-import { Source } from 'braid-design-system/lib/utils/source.macro';
+import type { Source } from 'braid-design-system/lib/utils/source.macro';
 import {
   Stack,
   Text,
@@ -20,7 +21,8 @@ import {
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box, BoxProps } from 'braid-src/lib/components/Box/Box';
+import type { BoxProps } from 'braid-src/lib/components/Box/Box';
+import { Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
 import * as styles from './Code.css';

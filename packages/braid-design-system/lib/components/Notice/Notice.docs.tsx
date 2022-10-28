@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import { Notice, Card, Text, Strong, Stack, TextLink, List } from '../';
 
 const docs: ComponentDocs = {

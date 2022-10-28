@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, BoxProps } from '../../Box/Box';
+import type { BoxProps } from '../../Box/Box';
+import { Box } from '../../Box/Box';
 import { hideFocusRingsClassName } from '../hideFocusRings/hideFocusRings';
 
 export interface OverlayProps

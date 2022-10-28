@@ -1,9 +1,8 @@
-import React, { AllHTMLAttributes, forwardRef, useContext } from 'react';
+import type { AllHTMLAttributes } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import assert from 'assert';
-import {
-  InlineField,
-  InlineFieldProps,
-} from '../private/InlineField/InlineField';
+import type { InlineFieldProps } from '../private/InlineField/InlineField';
+import { InlineField } from '../private/InlineField/InlineField';
 import { RadioGroupContext } from '../RadioGroup/RadioGroupContext';
 import dedent from 'dedent';
 

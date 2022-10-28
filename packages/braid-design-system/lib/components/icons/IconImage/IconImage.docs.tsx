@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import { iconDocumentation } from '../iconCommon.docs';
 import source from '../../../utils/source.macro';
 import { IconImage, Heading, Stack } from '../../';

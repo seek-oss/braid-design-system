@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ComponentScreenshot } from 'site/types';
 import { Text, Heading, Inline, Button, Stack } from '../';
-import { UseIconProps } from '../../hooks/useIcon';
+import type { UseIconProps } from '../../hooks/useIcon';
 import {
   heading as headingSizes,
   textSizeUntrimmed as textSizes,

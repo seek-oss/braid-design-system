@@ -5,7 +5,8 @@ import { render } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { htmlToText } from '../../utils/htmlToText';
 import { BraidTestProvider } from '../../../test';
-import { makeLinkComponent, LinkComponent, ButtonLink, IconSend } from '..';
+import type { LinkComponent } from '..';
+import { makeLinkComponent, ButtonLink, IconSend } from '..';
 
 describe('ButtonLink', () => {
   it('should render valid html structure', () => {

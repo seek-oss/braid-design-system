@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AllOrNone } from '../private/AllOrNone';
+import type { AllOrNone } from '../private/AllOrNone';
 
 export type DisclosureStateProps = AllOrNone<{
   expanded?: boolean;

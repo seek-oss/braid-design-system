@@ -1,5 +1,6 @@
-import React, { ReactNode, useState } from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ReactNode } from 'react';
+import React, { useState } from 'react';
+import type { ComponentScreenshot } from 'site/types';
 import { Heading, Strong, Text, TextDropdown } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

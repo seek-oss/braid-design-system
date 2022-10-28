@@ -1,18 +1,14 @@
+import type { AllHTMLAttributes, MouseEvent } from 'react';
 import React, {
   useState,
-  AllHTMLAttributes,
   forwardRef,
   Fragment,
   useCallback,
   useRef,
-  MouseEvent,
 } from 'react';
 
-import {
-  Field,
-  FieldBaseProps,
-  FieldLabelVariant,
-} from '../private/Field/Field';
+import type { FieldBaseProps, FieldLabelVariant } from '../private/Field/Field';
+import { Field } from '../private/Field/Field';
 import { Box } from '../Box/Box';
 import { FieldButtonIcon } from '../private/FieldButtonIcon/FieldButtonIcon';
 import { IconVisibility } from '../icons';

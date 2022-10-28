@@ -1,6 +1,6 @@
 import React from 'react';
 import source from '../../utils/source.macro';
-import { Snippets } from '../private/Snippets';
+import type { Snippets } from '../private/Snippets';
 import { Badge, Inline } from '../../playroom/components';
 
 export const snippets: Snippets = [

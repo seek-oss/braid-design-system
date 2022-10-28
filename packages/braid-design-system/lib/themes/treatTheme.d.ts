@@ -1,5 +1,5 @@
 declare module 'treat/theme' {
-  type TreatTheme = import('./makeBraidTheme').TreatTheme;
+  import type { TreatTheme } from './makeBraidTheme';
 
   export interface Theme extends TreatTheme {}
 }

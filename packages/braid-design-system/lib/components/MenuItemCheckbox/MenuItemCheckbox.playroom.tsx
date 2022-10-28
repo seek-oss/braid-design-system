@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  MenuItemCheckbox as BraidMenuItemCheckbox,
-  MenuItemCheckboxProps,
-} from './MenuItemCheckbox';
+import type { MenuItemCheckboxProps } from './MenuItemCheckbox';
+import { MenuItemCheckbox as BraidMenuItemCheckbox } from './MenuItemCheckbox';
 
 export const MenuItemCheckbox = ({
   badge,

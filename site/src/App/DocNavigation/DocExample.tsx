@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { BraidProvider, Stack } from 'braid-src/lib/components';
 import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExample';
-import { ComponentExample } from '../../types';
+import type { ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
 import docsTheme from 'braid-src/themes/docs';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import { useBreakpoint, Stack, Strong, Text, TextLink } from '../../../';
 import source from '../../utils/source.macro';
 

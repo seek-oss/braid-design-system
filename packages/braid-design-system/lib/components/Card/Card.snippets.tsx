@@ -1,5 +1,5 @@
 import React from 'react';
-import { Snippets } from '../private/Snippets';
+import type { Snippets } from '../private/Snippets';
 import {
   Card,
   Stack,

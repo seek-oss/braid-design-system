@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { Space } from '../../css/atoms/atoms';
-import { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
+import type { Space } from '../../css/atoms/atoms';
+import type { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
 
 export const validColumnsComponents = ['div', 'span'] as const;
 

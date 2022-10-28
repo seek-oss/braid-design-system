@@ -1,8 +1,9 @@
 import mapValues from 'lodash/mapValues';
-import { getCapHeight, FontMetrics } from '@capsizecss/core';
+import type { FontMetrics } from '@capsizecss/core';
+import { getCapHeight } from '@capsizecss/core';
 import { precomputeValues } from '@capsizecss/vanilla-extract';
 
-import { BraidTokens, TextDefinition } from './tokenType';
+import type { BraidTokens, TextDefinition } from './tokenType';
 
 const px = (v: string | number) => `${v}px`;
 

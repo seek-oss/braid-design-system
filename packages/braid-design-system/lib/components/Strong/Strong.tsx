@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { ReactNode } from 'react';
+import React from 'react';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { fontWeight } from '../../css/typography.css';
 
 export interface StrongProps {

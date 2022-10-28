@@ -1,5 +1,6 @@
-import React, { ReactElement } from 'react';
-import { Page } from '../../../../types';
+import type { ReactElement } from 'react';
+import React from 'react';
+import type { Page } from '../../../../types';
 import {
   Heading,
   Text,
@@ -17,7 +18,7 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 import Code from '../../../Code/Code';
-import { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
 import source from 'braid-design-system/lib/utils/source.macro';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';

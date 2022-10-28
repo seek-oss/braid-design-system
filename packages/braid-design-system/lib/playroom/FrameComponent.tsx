@@ -1,12 +1,13 @@
 import '../../reset';
-import React, { useEffect, Fragment, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import {
   BraidProvider,
   makeLinkComponent,
   ToastProvider,
   useResponsiveValue,
 } from '../components';
-import { BraidTheme } from '../themes/BraidTheme';
+import type { BraidTheme } from '../themes/BraidTheme';
 import { PlayroomStateProvider } from './playroomState';
 import { darkMode } from '../css/atoms/sprinkles.css';
 

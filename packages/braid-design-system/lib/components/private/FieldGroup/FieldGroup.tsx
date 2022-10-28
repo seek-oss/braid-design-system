@@ -1,14 +1,16 @@
-import React, { AllHTMLAttributes } from 'react';
+import type { AllHTMLAttributes } from 'react';
+import React from 'react';
 import { Box } from '../../Box/Box';
-import { FieldLabel, FieldLabelProps } from '../../FieldLabel/FieldLabel';
-import {
-  FieldMessage,
-  FieldMessageProps,
-} from '../../FieldMessage/FieldMessage';
-import { Stack, StackProps } from '../../Stack/Stack';
-import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
+import type { FieldLabelProps } from '../../FieldLabel/FieldLabel';
+import { FieldLabel } from '../../FieldLabel/FieldLabel';
+import type { FieldMessageProps } from '../../FieldMessage/FieldMessage';
+import { FieldMessage } from '../../FieldMessage/FieldMessage';
+import type { StackProps } from '../../Stack/Stack';
+import { Stack } from '../../Stack/Stack';
+import type { DataAttributeMap } from '../buildDataAttributes';
+import buildDataAttributes from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
-import { ReactNodeNoStrings } from '../ReactNodeNoStrings';
+import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 

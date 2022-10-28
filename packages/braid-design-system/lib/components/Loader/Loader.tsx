@@ -1,8 +1,7 @@
 import React from 'react';
 import { Box } from '../Box/Box';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { atoms } from '../../css/atoms/atoms';
 import * as styles from './Loader.css';
 import * as typographyStyles from '../../css/typography.css';

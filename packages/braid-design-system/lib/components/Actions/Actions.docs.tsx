@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import source from '../../utils/source.macro';
 import { Actions, Button, TextLink, Text, Strong, Card, Stack } from '../';
 

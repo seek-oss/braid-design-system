@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import {
   Text,
   TextLink,
@@ -17,14 +17,16 @@ import { Box } from './Box';
 import type { SimpleBackground } from './Box';
 import source from '../../utils/source.macro';
 import Code from 'site/App/Code/Code';
-import {
-  responsiveProperties,
-  unresponsiveProperties,
-  pseudoProperties,
+import type {
   UnresponsiveProperties,
   ResponsiveProperties,
   PseudoProperties,
   BoxShadow,
+} from '../../css/atoms/atomicProperties';
+import {
+  responsiveProperties,
+  unresponsiveProperties,
+  pseudoProperties,
 } from '../../css/atoms/atomicProperties';
 import { ThemedExample } from 'site/App/ThemeSetting';
 import { Notice } from '../Notice/Notice';

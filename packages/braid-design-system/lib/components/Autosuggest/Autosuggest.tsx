@@ -1,16 +1,18 @@
+import type {
+  ChangeEvent,
+  MouseEvent,
+  KeyboardEvent,
+  Ref,
+  ReactElement,
+  RefAttributes,
+} from 'react';
 import React, {
   Fragment,
   useRef,
   useReducer,
   useCallback,
-  ChangeEvent,
-  MouseEvent,
-  KeyboardEvent,
   useEffect,
   forwardRef,
-  Ref,
-  ReactElement,
-  RefAttributes,
 } from 'react';
 import dedent from 'dedent';
 import parseHighlights from 'autosuggest-highlight/parse';
@@ -19,11 +21,8 @@ import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Announcement } from '../private/Announcement/Announcement';
-import {
-  Field,
-  FieldBaseProps,
-  FieldLabelVariant,
-} from '../private/Field/Field';
+import type { FieldBaseProps, FieldLabelVariant } from '../private/Field/Field';
+import { Field } from '../private/Field/Field';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
 import { textStyles } from '../../css/typography';
@@ -36,7 +35,8 @@ import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
-import { autosuggest, AutosuggestTranslations } from '../../translations/en';
+import type { AutosuggestTranslations } from '../../translations/en';
+import { autosuggest } from '../../translations/en';
 
 import * as styles from './Autosuggest.css';
 

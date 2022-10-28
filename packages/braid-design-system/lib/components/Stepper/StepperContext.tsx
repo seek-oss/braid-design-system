@@ -1,11 +1,7 @@
-import React, {
-  createContext,
-  KeyboardEvent,
-  ReactNode,
-  useReducer,
-} from 'react';
+import type { KeyboardEvent, ReactNode } from 'react';
+import React, { createContext, useReducer } from 'react';
 import { normalizeKey } from '../private/normalizeKey';
-import * as styles from './Stepper.css';
+import type * as styles from './Stepper.css';
 
 export type StepperMode = 'linear' | 'non-linear';
 export type StepperTone = Exclude<keyof typeof styles.tone, 'formAccent'>;

@@ -1,7 +1,9 @@
 import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
-import { DeprecationMap, subVisitor } from './subVisitor';
-import { deArray, StringLiteralPath, updateStringLiteral } from './helpers';
+import type { DeprecationMap } from './subVisitor';
+import { subVisitor } from './subVisitor';
+import type { StringLiteralPath } from './helpers';
+import { deArray, updateStringLiteral } from './helpers';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;

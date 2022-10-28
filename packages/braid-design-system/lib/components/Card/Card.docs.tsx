@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import { Box, Stack, Card, Text, Tiles, Strong } from '../';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';

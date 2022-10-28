@@ -6,7 +6,7 @@ import glob from 'fast-glob';
 import workerpool from 'workerpool';
 import cliProgress from 'cli-progress';
 import chalk from 'chalk';
-import { CodemodResult } from './codemod';
+import type { CodemodResult } from './codemod';
 
 if (process.argv.length < 4) {
   console.error(

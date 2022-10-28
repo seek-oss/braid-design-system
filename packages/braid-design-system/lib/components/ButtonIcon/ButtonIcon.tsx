@@ -1,21 +1,14 @@
 import assert from 'assert';
-import React, {
-  AllHTMLAttributes,
-  forwardRef,
-  ReactElement,
-  cloneElement,
-} from 'react';
+import type { AllHTMLAttributes, ReactElement } from 'react';
+import React, { forwardRef, cloneElement } from 'react';
 import { Box } from '../Box/Box';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
-import { iconContainerSize, iconSize, UseIconProps } from '../../hooks/useIcon';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
+import type { UseIconProps } from '../../hooks/useIcon';
+import { iconContainerSize, iconSize } from '../../hooks/useIcon';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import {
-  ButtonOverlays,
-  ButtonStyleProps,
-  useButtonStyles,
-} from '../Button/Button';
+import type { ButtonStyleProps } from '../Button/Button';
+import { ButtonOverlays, useButtonStyles } from '../Button/Button';
 import { Text } from '../Text/Text';
 import { Bleed } from '../Bleed/Bleed';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';

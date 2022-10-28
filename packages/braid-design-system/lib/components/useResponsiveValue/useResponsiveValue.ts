@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { RequiredResponsiveObject } from '../../css/atoms/sprinkles.css';
+import type { RequiredResponsiveObject } from '../../css/atoms/sprinkles.css';
 
 import { breakpointContext } from '../BraidProvider/BreakpointContext';
 import { resolveResponsiveObject } from './resolveResponsiveObject';

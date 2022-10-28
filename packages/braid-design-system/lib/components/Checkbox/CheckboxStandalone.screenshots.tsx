@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ComponentScreenshot } from 'site/types';
 import { CheckboxStandalone, Stack } from '../';
 
 export const screenshots: ComponentScreenshot = {

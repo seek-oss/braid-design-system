@@ -1,9 +1,7 @@
 import React from 'react';
 import { useFallbackId } from '../../playroom/utils';
-import {
-  OverflowMenu as BraidOverflowMenu,
-  OverflowMenuProps,
-} from './OverflowMenu';
+import type { OverflowMenuProps } from './OverflowMenu';
+import { OverflowMenu as BraidOverflowMenu } from './OverflowMenu';
 
 export const OverflowMenu = ({ id, ...restProps }: OverflowMenuProps) => {
   const fallbackId = useFallbackId();

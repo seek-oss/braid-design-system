@@ -1,9 +1,10 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { App } from './App/App';
-import { RenderContext } from './types';
+import type { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import { initUpdates } from './App/Updates';
 import { useLocation } from 'react-router';

@@ -1,10 +1,12 @@
-import React, { ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { BackgroundProvider } from './BackgroundContext';
-import { atoms, Atoms } from '../../css/atoms/atoms';
-import { BoxBaseProps, SimpleBackground } from './Box';
+import type { Atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
+import type { BoxBaseProps, SimpleBackground } from './Box';
 import { useColoredBoxClasses } from './ColoredBox';
-import { BoxShadow } from '../../css/atoms/atomicProperties';
+import type { BoxShadow } from '../../css/atoms/atomicProperties';
 
 export interface BoxRendererProps extends BoxBaseProps {
   component?: Atoms['reset'];

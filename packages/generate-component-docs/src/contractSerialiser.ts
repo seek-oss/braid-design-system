@@ -1,5 +1,5 @@
 import sortBy from 'lodash/sortBy';
-import { NormalisedPropType } from './generate';
+import type { NormalisedPropType } from './generate';
 
 export const typeSerializer = {
   print: (

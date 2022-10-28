@@ -7,7 +7,8 @@ import {
   renderUntraceableImportWarning,
   renderUntraceablePropertyWarning,
 } from '../warning-renderer/warning';
-import { deArray, StringLiteralPath, updateStringLiteral } from './helpers';
+import type { StringLiteralPath } from './helpers';
+import { deArray, updateStringLiteral } from './helpers';
 
 export type DeprecationMap = Record<
   string,

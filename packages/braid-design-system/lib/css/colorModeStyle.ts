@@ -1,4 +1,4 @@
-import { StyleRule } from '@vanilla-extract/css';
+import type { StyleRule } from '@vanilla-extract/css';
 import { colorModeSelectors } from './atoms/sprinkles.css';
 
 type CSSProps = Omit<StyleRule, 'selectors' | '@media' | '@supports'>;

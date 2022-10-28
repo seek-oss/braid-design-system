@@ -3,7 +3,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { htmlToText } from '../../utils/htmlToText';
 import { BraidTestProvider } from '../../../test';
-import { makeLinkComponent, LinkComponent, Text, TextLink } from '..';
+import type { LinkComponent } from '..';
+import { makeLinkComponent, Text, TextLink } from '..';
 
 describe('TextLink', () => {
   it('should render a native link by default', () => {

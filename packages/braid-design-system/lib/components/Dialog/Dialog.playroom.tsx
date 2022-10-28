@@ -1,9 +1,11 @@
 import React from 'react';
-import { Optional } from 'utility-types';
-import { useFallbackState, StateProp } from '../../playroom/playroomState';
+import type { Optional } from 'utility-types';
+import type { StateProp } from '../../playroom/playroomState';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import { AllowCloseContext } from '../private/Modal/Modal';
-import { Dialog as BraidDialog, DialogProps } from './Dialog';
+import type { DialogProps } from './Dialog';
+import { Dialog as BraidDialog } from './Dialog';
 
 type PlayroomDialogProps = StateProp &
   Optional<DialogProps, 'id' | 'onClose' | 'open'>;

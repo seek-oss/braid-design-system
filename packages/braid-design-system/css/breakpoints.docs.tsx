@@ -11,7 +11,7 @@ import {
 } from 'braid-src/lib/components';
 import { breakpoints } from 'braid-src/lib/css/breakpoints';
 import Code from 'site/App/Code/Code';
-import { CssDoc } from 'site/types';
+import type { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const bps = Object.keys(breakpoints) as Array<keyof typeof breakpoints>;

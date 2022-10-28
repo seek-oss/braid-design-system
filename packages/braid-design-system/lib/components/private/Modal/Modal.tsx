@@ -1,11 +1,10 @@
+import type { ReactNode, Reducer } from 'react';
 import React, {
-  ReactNode,
   useState,
   useEffect,
   useRef,
   createContext,
   useContext,
-  Reducer,
   useReducer,
 } from 'react';
 import FocusLock from 'react-focus-lock';
@@ -13,7 +12,8 @@ import { ariaHideOthers } from './ariaHideOthers';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { externalGutter } from './ModalExternalGutter';
-import { ModalContent, ModalContentProps } from './ModalContent';
+import type { ModalContentProps } from './ModalContent';
+import { ModalContent } from './ModalContent';
 import * as styles from './Modal.css';
 
 export interface ModalProps
