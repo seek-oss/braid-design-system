@@ -16,6 +16,19 @@ const validTypes = {
   url: 'url',
 };
 
+const defaultInputModesForType: Record<
+  keyof typeof validTypes,
+  InputProps['inputMode']
+> = {
+  text: 'text',
+  password: 'text',
+  email: 'email',
+  search: 'search',
+  number: 'numeric',
+  tel: 'tel',
+  url: 'url',
+};
+
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
 
 export type TextFieldBaseProps = Omit<
@@ -24,6 +37,8 @@ export type TextFieldBaseProps = Omit<
 > & {
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
+  inputMode?: InputProps['inputMode'];
+  step?: InputProps['step'];
   onChange: NonNullable<InputProps['onChange']>;
   onBlur?: InputProps['onBlur'];
   onFocus?: InputProps['onFocus'];
@@ -48,6 +63,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       characterLimit,
       id,
       clearLabel,
+      inputMode,
+      step,
       ...restProps
     },
     forwardedRef,
@@ -103,6 +120,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
               onBlur={onBlur}
               placeholder={!restProps.disabled ? placeholder : undefined}
               {...fieldProps}
+              inputMode={inputMode || defaultInputModesForType[type]}
+              step={step}
               ref={inputRef}
             />
             {overlays}

@@ -7280,6 +7280,15 @@ exports[`TextField 1`] = `
     disabled?: boolean
     icon?: ReactNode
     id: string
+    inputMode?: 
+        | "decimal"
+        | "email"
+        | "none"
+        | "numeric"
+        | "search"
+        | "tel"
+        | "text"
+        | "url"
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -7295,6 +7304,9 @@ exports[`TextField 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    step?: 
+        | number
+        | string
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"

@@ -118,7 +118,7 @@ export const galleryItems: ComponentExample[] = [
             id={id}
             onChange={setState('textarea')}
             value={getState('textarea')}
-            description="Chactacter limit of 50"
+            description="Character limit of 50"
             characterLimit={50}
           />
         </>,

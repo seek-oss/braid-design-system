@@ -28,7 +28,7 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
     component = IconStarHalfSvg;
   }
 
-  if (percent > 50) {
+  if (percent >= 75) {
     component = IconStarFullSvg;
   }
 
