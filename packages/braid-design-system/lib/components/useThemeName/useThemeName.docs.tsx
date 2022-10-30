@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { useThemeName, Text, Strong } from '../../../';
+import { useThemeName, Text, Strong } from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {

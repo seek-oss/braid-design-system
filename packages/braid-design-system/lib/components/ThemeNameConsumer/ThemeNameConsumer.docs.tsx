@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '../../utils/source.macro';
-import { ThemeNameConsumer, Text, TextLink, Strong } from '../../../';
+import { ThemeNameConsumer, Text, TextLink, Strong } from '../';
 
 const docs: ComponentDocs = {
   category: 'Logic',
