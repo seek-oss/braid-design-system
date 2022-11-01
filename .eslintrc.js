@@ -9,7 +9,6 @@ const workspace = yaml.load(
 );
 
 module.exports = {
-  extends: '',
   extends: 'seek',
   settings: {
     'import/resolver': {

@@ -60,7 +60,6 @@
     "escape-string-regexp": "^4.0.0",
     "eslint": "^8.21.0",
     "eslint-config-seek": "^10.1.0",
-    "eslint-plugin-canonical": "^3.1.0",
     "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0",
     "gh-pages": "^4.0.0",
