@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
-import { Snippets as PlayroomSnippets } from 'playroom';
-import { Optional } from 'utility-types';
-import { Source } from '../../utils/source.macro';
+import type { ReactElement } from 'react';
+import type { Snippets as PlayroomSnippets } from 'playroom';
+import type { Optional } from 'utility-types';
+import type { Source } from '../../utils/source.macro';
 
 export interface BraidSnippet
   extends Omit<Optional<PlayroomSnippets[number], 'group'>, 'code'> {

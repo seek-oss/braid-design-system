@@ -1,7 +1,8 @@
 import React from 'react';
-import { ResponsiveSpace } from '../../css/atoms/atoms';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
-import { Box, BoxProps } from '../Box/Box';
+import type { BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 
 export const validBleedComponents = ['div', 'span'] as const;
 

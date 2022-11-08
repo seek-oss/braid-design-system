@@ -1,20 +1,18 @@
 import clsx from 'clsx';
 import React, { forwardRef, useContext } from 'react';
-import { atoms, Atoms } from '../../css/atoms/atoms';
+import type { Atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
 import {
   useBackgroundLightness,
   useBackground,
 } from '../Box/BackgroundContext';
-import { BoxBackgroundVariant } from '../Box/Box';
-import {
-  useLinkComponent,
-  LinkComponentProps,
-} from '../BraidProvider/BraidProvider';
+import type { BoxBackgroundVariant } from '../Box/Box';
+import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
+import { useLinkComponent } from '../BraidProvider/BraidProvider';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import * as styles from './TextLink.css';
 

@@ -1,6 +1,8 @@
 import React from 'react';
-import { Modal, ModalProps } from '../private/Modal/Modal';
-import { ModalContent, ModalContentProps } from '../private/Modal/ModalContent';
+import type { ModalProps } from '../private/Modal/Modal';
+import { Modal } from '../private/Modal/Modal';
+import type { ModalContentProps } from '../private/Modal/ModalContent';
+import { ModalContent } from '../private/Modal/ModalContent';
 
 export { AllowCloseContext } from '../private/Modal/Modal';
 

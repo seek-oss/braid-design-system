@@ -1,13 +1,9 @@
-import {
-  CSSProperties,
-  style,
-  StyleRule,
-  styleVariants,
-} from '@vanilla-extract/css';
+import type { CSSProperties, StyleRule } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { space } from '../atoms/atomicProperties';
 import { responsiveStyle } from '../responsiveStyle';
-import { breakpoints } from '../breakpoints';
+import type { breakpoints } from '../breakpoints';
 
 const stylesForBreakpoint = (
   bp: keyof typeof breakpoints,

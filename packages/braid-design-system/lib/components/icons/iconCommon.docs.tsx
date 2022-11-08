@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextLink } from '../';
-import { ComponentExample } from 'site/types';
+import type { ComponentExample } from 'site/types';
 
 export const iconDocumentation: ComponentExample = {
   label: 'Customising the appearance',

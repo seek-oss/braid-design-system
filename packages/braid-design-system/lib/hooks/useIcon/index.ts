@@ -2,14 +2,13 @@ import { useContext } from 'react';
 import assert from 'assert';
 import clsx from 'clsx';
 
-import { OptionalTitle } from '../../components/icons/SVGTypes';
-import { PublicBoxProps } from '../../components/Box/Box';
+import type { OptionalTitle } from '../../components/icons/SVGTypes';
+import type { PublicBoxProps } from '../../components/Box/Box';
 import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../../components/private/buildDataAttributes';
+import type { DataAttributeMap } from '../../components/private/buildDataAttributes';
+import buildDataAttributes from '../../components/private/buildDataAttributes';
 import * as typographyStyles from '../../css/typography.css';
 import * as styles from './icon.css';
 

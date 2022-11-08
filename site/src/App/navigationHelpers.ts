@@ -2,8 +2,8 @@ import groupBy from 'lodash/groupBy';
 import * as components from 'braid-src/lib/components';
 import * as testComponents from 'braid-src/test';
 import * as css from 'braid-src/css';
-import { BraidSnippet } from 'braid-src/lib/components/private/Snippets';
-import { ComponentDocs, ComponentExample, CssDoc } from '../types';
+import type { BraidSnippet } from 'braid-src/lib/components/private/Snippets';
+import type { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(

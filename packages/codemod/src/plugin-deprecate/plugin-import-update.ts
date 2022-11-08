@@ -1,4 +1,4 @@
-import { PluginObj, PluginPass } from '@babel/core';
+import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
 
 const packageName = 'braid-design-system';

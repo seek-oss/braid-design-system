@@ -1,7 +1,9 @@
 import React, { forwardRef } from 'react';
-import { atoms, Atoms } from '../../css/atoms/atoms';
+import type { Atoms } from '../../css/atoms/atoms';
+import { atoms } from '../../css/atoms/atoms';
 import { sprinkles } from '../../css/atoms/sprinkles.css';
-import { Box as BraidBox, BoxProps } from './Box';
+import type { BoxProps } from './Box';
+import { Box as BraidBox } from './Box';
 
 export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
   const sprinklesProps: Record<string, unknown> = {};

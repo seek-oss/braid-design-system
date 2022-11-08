@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import source from '../../utils/source.macro';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import {
   FieldLabel,
   Stack,

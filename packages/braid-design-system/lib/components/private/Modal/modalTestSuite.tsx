@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import React, { ComponentType, useState } from 'react';
+import type { ComponentType } from 'react';
+import React, { useState } from 'react';
 import {
   render,
   waitForElementToBeRemoved,
@@ -8,7 +9,7 @@ import {
 import userEvent from '@testing-library/user-event';
 import { Button } from '../../Button/Button';
 import { BraidTestProvider } from '../../../../test';
-import { ModalProps } from './Modal';
+import type { ModalProps } from './Modal';
 
 export const modalTestSuite = (
   name: string,

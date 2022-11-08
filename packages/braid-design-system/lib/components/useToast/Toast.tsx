@@ -12,7 +12,7 @@ import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconPositive, IconCritical, IconClear } from '../icons';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { useTimeout } from './useTimeout';
-import { InternalToast, ToastAction } from './ToastTypes';
+import type { InternalToast, ToastAction } from './ToastTypes';
 import { Keyline } from '../private/Keyline/Keyline';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import buildDataAttributes from '../private/buildDataAttributes';

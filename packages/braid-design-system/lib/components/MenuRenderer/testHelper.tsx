@@ -1,15 +1,11 @@
 import '@testing-library/jest-dom';
 import React, { useState } from 'react';
-import {
-  render,
-  cleanup,
-  fireEvent,
-  RenderResult,
-} from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../test';
 import { MenuItem, MenuItemLink, MenuItemCheckbox, MenuItemDivider } from '..';
-import { MenuRendererProps } from './MenuRenderer';
+import type { MenuRendererProps } from './MenuRenderer';
 
 interface MenuTestSuiteParams {
   name: string;

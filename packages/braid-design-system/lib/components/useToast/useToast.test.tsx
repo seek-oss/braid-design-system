@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { render, act, waitFor, getByTestId } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

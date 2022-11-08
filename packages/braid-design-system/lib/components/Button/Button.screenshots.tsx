@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ComponentScreenshot } from 'site/types';
 import { Button, IconSend, Stack, Inline, Heading, Text } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import

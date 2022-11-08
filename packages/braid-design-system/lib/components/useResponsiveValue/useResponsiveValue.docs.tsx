@@ -1,6 +1,6 @@
 import React from 'react';
-import { ComponentDocs } from 'site/types';
-import { useResponsiveValue, Stack, Alert, Strong, Text } from '../../../';
+import type { ComponentDocs } from 'site/types';
+import { useResponsiveValue, Stack, Alert, Strong, Text } from '../';
 import source from '../../utils/source.macro';
 import { Notice } from '../Notice/Notice';
 

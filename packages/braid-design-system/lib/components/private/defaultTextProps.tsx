@@ -1,5 +1,5 @@
-import React from 'react';
-import { createContext, useContext, ReactNode, useMemo } from 'react';
+import type { ReactNode } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import type { TextStyleProps } from '../../css/typography';
 
 interface DefaultTextProps {

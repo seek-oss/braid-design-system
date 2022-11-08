@@ -1,6 +1,7 @@
 import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
-import { subVisitor, DeprecationMap } from './subVisitor';
+import type { DeprecationMap } from './subVisitor';
+import { subVisitor } from './subVisitor';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;

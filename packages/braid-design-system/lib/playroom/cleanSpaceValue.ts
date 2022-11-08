@@ -1,4 +1,4 @@
-import { ResponsiveSpace } from '../css/atoms/atoms';
+import type { ResponsiveSpace } from '../css/atoms/atoms';
 import { space as spaceValues } from '../css/atoms/atomicProperties';
 
 const validSpaceValues = Object.keys(spaceValues);

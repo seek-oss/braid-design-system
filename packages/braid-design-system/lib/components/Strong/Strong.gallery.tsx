@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentExample } from 'site/types';
+import type { ComponentExample } from 'site/types';
 import { Strong, Text } from '../';
 import source from '../../utils/source.macro';
 

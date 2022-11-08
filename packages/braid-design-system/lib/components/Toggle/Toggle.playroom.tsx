@@ -1,8 +1,10 @@
 import React from 'react';
-import { Optional } from 'utility-types';
-import { useFallbackState, StateProp } from '../../playroom/playroomState';
+import type { Optional } from 'utility-types';
+import type { StateProp } from '../../playroom/playroomState';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import { Toggle as BraidToggle, ToggleProps } from './Toggle';
+import type { ToggleProps } from './Toggle';
+import { Toggle as BraidToggle } from './Toggle';
 
 type PlayroomToggleProps = StateProp &
   Optional<ToggleProps, 'id' | 'on' | 'onChange'>;

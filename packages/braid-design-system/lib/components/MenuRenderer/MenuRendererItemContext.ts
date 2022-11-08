@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Action } from './MenuRenderer.actions';
+import type { Action } from './MenuRenderer.actions';
 
 interface MenuRendererItemContextValues {
   isHighlighted: boolean;

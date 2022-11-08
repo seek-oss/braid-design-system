@@ -10,7 +10,8 @@ import {
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box, BoxProps } from 'braid-src/lib/components/Box/Box';
+import type { BoxProps } from 'braid-src/lib/components/Box/Box';
+import { Box } from 'braid-src/lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';

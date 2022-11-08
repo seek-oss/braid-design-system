@@ -1,12 +1,13 @@
 import React from 'react';
-import { Optional } from 'utility-types';
-import { useFallbackState, StateProp } from '../../playroom/playroomState';
+import type { Optional } from 'utility-types';
+import type { StateProp } from '../../playroom/playroomState';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import {
-  MonthPicker as BraidMonthPicker,
+import type {
   MonthPickerBaseProps,
   MonthPickerLabelProps,
 } from './MonthPicker';
+import { MonthPicker as BraidMonthPicker } from './MonthPicker';
 
 type PlayroomMonthPickerProps = StateProp &
   Optional<MonthPickerBaseProps, 'id' | 'value' | 'onChange'> &

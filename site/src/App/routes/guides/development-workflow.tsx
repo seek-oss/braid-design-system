@@ -15,7 +15,7 @@ import {
 } from 'braid-src/lib/components';
 import { TextStack } from '../../TextStack/TextStack';
 import Code from '../../Code/Code';
-import { Page } from '../../../types';
+import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import source from 'braid-design-system/lib/utils/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';

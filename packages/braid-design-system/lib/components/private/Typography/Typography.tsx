@@ -1,6 +1,9 @@
-import React, { ReactElement, ReactNode } from 'react';
-import { Box, BoxProps } from '../../Box/Box';
-import buildDataAttributes, { DataAttributeMap } from '../buildDataAttributes';
+import type { ReactElement, ReactNode } from 'react';
+import React from 'react';
+import type { BoxProps } from '../../Box/Box';
+import { Box } from '../../Box/Box';
+import type { DataAttributeMap } from '../buildDataAttributes';
+import buildDataAttributes from '../buildDataAttributes';
 import { Truncate } from '../Truncate/Truncate';
 import type { UseIconProps } from '../../../hooks/useIcon';
 import { alignToFlexAlign } from '../../../utils/align';

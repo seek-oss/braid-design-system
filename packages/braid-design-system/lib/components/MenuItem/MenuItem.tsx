@@ -1,10 +1,8 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { Box } from '../Box/Box';
-import {
-  MenuItemChildrenProps,
-  useMenuItem,
-  UseMenuItemProps,
-} from './useMenuItem';
+import type { MenuItemChildrenProps, UseMenuItemProps } from './useMenuItem';
+import { useMenuItem } from './useMenuItem';
 
 export interface MenuItemProps
   extends Pick<UseMenuItemProps, 'tone' | 'onClick' | 'data' | 'id'> {

@@ -1,6 +1,6 @@
+import type { ReactNode } from 'react';
 import React, {
   Fragment,
-  ReactNode,
   memo,
   useEffect,
   useState,
@@ -39,6 +39,7 @@ import {
   Button,
   Secondary,
   IconCopy,
+  ButtonIcon,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -47,7 +48,7 @@ import docsTheme from 'braid-src/themes/docs';
 import { getHistory, isNew } from '../../Updates';
 import source from 'braid-design-system/lib/utils/source.macro';
 import { CodeButton, formatSnippet } from '../../Code/Code';
-import { ComponentExample } from '../../../types';
+import type { ComponentExample } from '../../../types';
 import {
   useThemeSettings,
   ThemedExample,
@@ -60,16 +61,16 @@ import {
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromExample';
 import * as icons from 'braid-src/lib/components/icons';
+import type { FitToScreenDimensions } from './galleryState';
 import {
   zoom as zoomState,
   fitToScreenDimensions,
   controller as controllerState,
-  FitToScreenDimensions,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import { ButtonIcon } from 'braid-src/lib/components';
-import useIcon, { UseIconProps } from 'braid-src/lib/hooks/useIcon';
-import { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
+import type { UseIconProps } from 'braid-src/lib/hooks/useIcon';
+import useIcon from 'braid-src/lib/hooks/useIcon';
+import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';
 
 import * as styles from './gallery.css';

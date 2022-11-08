@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import React, { ComponentProps, useState } from 'react';
+import type { ComponentProps } from 'react';
+import React, { useState } from 'react';
 import { render } from '@testing-library/react';
 import { BraidTestProvider } from '../../../test';
 import { Checkbox } from '..';

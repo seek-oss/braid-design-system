@@ -2,8 +2,10 @@ import React, { useContext, useMemo } from 'react';
 import assert from 'assert';
 import { TextContext } from './TextContext';
 import { useDefaultTextProps } from '../private/defaultTextProps';
-import { textStyles, TextStyleProps } from '../../css/typography';
-import { Typography, TypographyProps } from '../private/Typography/Typography';
+import type { TextStyleProps } from '../../css/typography';
+import { textStyles } from '../../css/typography';
+import type { TypographyProps } from '../private/Typography/Typography';
+import { Typography } from '../private/Typography/Typography';
 
 export interface TextProps extends TypographyProps {
   size?: TextStyleProps['size'];

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentDocs } from 'site/types';
+import type { ComponentDocs } from 'site/types';
 import source from '../../utils/source.macro';
-import { useColor, Alert, Text, TextLink } from '../../../';
+import { useColor, Alert, Text, TextLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Logic',

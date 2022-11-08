@@ -1,13 +1,15 @@
 import dedent from 'dedent';
 import React from 'react';
-import {
-  responsiveProperties,
+import type {
   ResponsiveProperties,
-  pseudoProperties,
   PseudoProperties,
-  unresponsiveProperties,
   UnresponsiveProperties,
   BoxShadow,
+} from 'braid-src/lib/css/atoms/atomicProperties';
+import {
+  responsiveProperties,
+  pseudoProperties,
+  unresponsiveProperties,
 } from 'braid-src/lib/css/atoms/atomicProperties';
 import { atoms } from 'braid-src/css';
 import {
@@ -27,7 +29,7 @@ import { Box } from 'braid-src/lib/components/Box/Box';
 import source from '../lib/utils/source.macro';
 import Code from 'site/App/Code/Code';
 import { ThemedExample } from 'site/App/ThemeSetting';
-import { CssDoc } from 'site/types';
+import type { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 type BoxShadowDocs = Required<Record<BoxShadow, string>>;

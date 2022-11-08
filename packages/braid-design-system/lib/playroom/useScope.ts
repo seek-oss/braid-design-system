@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useToast, useResponsiveValue } from '../components';
 import { vars, atoms, breakpoints } from '../../css';
 import { usePlayroomStore } from './playroomState';
-import { darkMode, RequiredResponsiveObject } from '../css/atoms/sprinkles.css';
+import type { RequiredResponsiveObject } from '../css/atoms/sprinkles.css';
+import { darkMode } from '../css/atoms/sprinkles.css';
 
 export default function useScope() {
   const responsiveValue = useResponsiveValue();

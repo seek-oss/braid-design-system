@@ -1,28 +1,24 @@
 import assert from 'assert';
 import dedent from 'dedent';
-import React, {
-  useContext,
-  forwardRef,
-  ReactNode,
-  AllHTMLAttributes,
-  ReactElement,
-} from 'react';
+import type { ReactNode, AllHTMLAttributes, ReactElement } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import { touchableText } from '../../css/typography.css';
-import { Box, BoxBackgroundVariant, BoxProps } from '../Box/Box';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { BoxBackgroundVariant, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
+import type { ColorContrastValue } from '../Box/BackgroundContext';
 import {
-  ColorContrastValue,
   useBackgroundLightness,
   useColorContrast,
 } from '../Box/BackgroundContext';
-import { Text, TextProps } from '../Text/Text';
-import { BoxShadow } from '../../css/atoms/atomicProperties';
+import type { TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
+import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import ActionsContext from '../Actions/ActionsContext';
-import { UseIconProps } from '../../hooks/useIcon';
+import type { UseIconProps } from '../../hooks/useIcon';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { Bleed } from '../Bleed/Bleed';
 import * as styles from './Button.css';

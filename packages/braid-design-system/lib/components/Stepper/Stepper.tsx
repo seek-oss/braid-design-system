@@ -1,19 +1,15 @@
 import assert from 'assert';
-import React, { Children, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import React, { Children } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Hidden } from '../Hidden/Hidden';
-import {
-  StepContext,
-  StepperContextProvider,
-  StepperMode,
-  StepperTone,
-} from './StepperContext';
-import { Step as StepComponent, StepProps } from './Step';
+import type { StepperMode, StepperTone } from './StepperContext';
+import { StepContext, StepperContextProvider } from './StepperContext';
+import type { Step as StepComponent, StepProps } from './Step';
 import * as styles from './Stepper.css';
 
 type LinearProps = {

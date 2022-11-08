@@ -1,19 +1,11 @@
-import React, {
-  useRef,
-  useContext,
-  useEffect,
-  cloneElement,
-  KeyboardEvent,
-  ReactNode,
-  MouseEvent,
-  ReactElement,
-} from 'react';
+import type { KeyboardEvent, ReactNode, MouseEvent, ReactElement } from 'react';
+import React, { useRef, useContext, useEffect, cloneElement } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { TabsContext } from './TabsProvider';
+import type { Action } from './Tabs.actions';
 import {
-  Action,
   TAB_BUTTON_LEFT,
   TAB_BUTTON_RIGHT,
   TAB_BUTTON_HOME,
@@ -24,13 +16,13 @@ import {
   TAB_LIST_FOCUSED,
   TAB_BUTTON_CLICK,
 } from './Tabs.actions';
-import { Text, TextProps } from '../Text/Text';
-import buildDataAttributes, {
-  DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { TextProps } from '../Text/Text';
+import { Text } from '../Text/Text';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
-import { BadgeProps } from '../Badge/Badge';
+import type { BadgeProps } from '../Badge/Badge';
 import { Divider } from '../Divider/Divider';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';

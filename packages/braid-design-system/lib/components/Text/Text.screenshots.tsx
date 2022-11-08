@@ -1,6 +1,7 @@
-import React, { Fragment, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React, { Fragment } from 'react';
 import { titleCase } from 'title-case';
-import { ComponentScreenshot } from 'site/types';
+import type { ComponentScreenshot } from 'site/types';
 import { Text, Stack, Column, Columns, IconPositive, IconPromote } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import

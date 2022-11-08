@@ -1,5 +1,5 @@
 import noop from 'lodash/noop';
-import { ComponentExample } from '../../types';
+import type { ComponentExample } from '../../types';
 import useScope from 'braid-src/lib/playroom/useScope';
 
 export const useSourceFromExample = (

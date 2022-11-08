@@ -1,5 +1,4 @@
 import React from 'react';
-import { BoxProps } from 'braid-src/lib/components/Box/Box';
 import {
   Text,
   Columns,
@@ -11,9 +10,10 @@ import {
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
+import type { BoxProps } from 'braid-src/lib/components/Box/Box';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import { TextStack } from '../../../TextStack/TextStack';
-import { Page } from '../../../../types';
+import type { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import * as styles from './tones.css';

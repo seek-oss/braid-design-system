@@ -6,8 +6,8 @@ import {
   useBackground,
   useBackgroundLightness,
 } from './BackgroundContext';
-import { BoxBackgroundVariant, BoxProps } from './Box';
-import { Background, BoxShadow } from '../../css/atoms/atomicProperties';
+import type { BoxBackgroundVariant, BoxProps } from './Box';
+import type { Background, BoxShadow } from '../../css/atoms/atomicProperties';
 import * as typographyStyles from '../../css/typography.css';
 
 export interface ColoredBoxProps extends BoxProps {

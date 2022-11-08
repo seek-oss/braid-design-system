@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ComponentScreenshot } from 'site/types';
 import { Pagination } from '../';
-import { LinkProps } from '../Link/Link';
+import type { LinkProps } from '../Link/Link';
 import { defaultPageLimit } from './Pagination';
 
 const linkProps = (): LinkProps => ({ href: '#' });

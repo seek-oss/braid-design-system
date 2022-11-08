@@ -1,8 +1,8 @@
-import { DeepPartial } from 'utility-types';
+import type { DeepPartial } from 'utility-types';
 import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash/merge';
 import { palette } from '../../color/palette';
-import { BraidTokens } from '../tokenType';
+import type { BraidTokens } from '../tokenType';
 
 interface MakeTokensOptions {
   name: string;

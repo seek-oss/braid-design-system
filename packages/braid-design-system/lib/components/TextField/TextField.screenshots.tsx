@@ -1,5 +1,6 @@
-import React, { useState, ReactNode } from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ReactNode } from 'react';
+import React, { useState } from 'react';
+import type { ComponentScreenshot } from 'site/types';
 import { IconSearch, IconPhone, TextField, TextLink, Stack } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (

@@ -1,4 +1,4 @@
-import { BraidTokens } from '../tokenType';
+import type { BraidTokens } from '../tokenType';
 import { darken, desaturate, lighten, tint } from 'polished';
 import {
   findClosestAccessibleLighterColor,

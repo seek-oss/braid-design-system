@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text, Stack, IconPromote } from '../';
-import { ComponentExample } from 'site/types';
+import type { ComponentExample } from 'site/types';
 import source from '../../utils/source.macro';
 
 export const galleryItems: ComponentExample[] = [

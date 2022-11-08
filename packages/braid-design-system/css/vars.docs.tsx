@@ -1,4 +1,5 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { vars } from '.';
 import {
   Text,
@@ -11,11 +12,12 @@ import {
   Alert,
   List,
 } from '../lib/components';
-import { Box, BoxProps } from '../lib/components/Box/Box';
-import { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings';
+import type { BoxProps } from '../lib/components/Box/Box';
+import { Box } from '../lib/components/Box/Box';
+import type { ReactNodeNoStrings } from '../lib/components/private/ReactNodeNoStrings';
 import Code from 'site/App/Code/Code';
 import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
-import { CssDoc } from 'site/types';
+import type { CssDoc } from 'site/types';
 import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const Row = ({

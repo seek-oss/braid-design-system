@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import panzoom from 'panzoom';
+import type panzoom from 'panzoom';
 
 export const zoom = atom({
   key: 'zoom',

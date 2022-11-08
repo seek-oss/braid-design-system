@@ -1,12 +1,10 @@
 import React from 'react';
-import { Optional } from 'utility-types';
-import { useFallbackState, StateProp } from '../../playroom/playroomState';
+import type { Optional } from 'utility-types';
+import type { StateProp } from '../../playroom/playroomState';
+import { useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import {
-  Drawer as BraidDrawer,
-  DrawerProps,
-  AllowCloseContext,
-} from './Drawer';
+import type { DrawerProps } from './Drawer';
+import { Drawer as BraidDrawer, AllowCloseContext } from './Drawer';
 
 type PlayroomDrawerProps = StateProp &
   Optional<DrawerProps, 'id' | 'onClose' | 'open'>;

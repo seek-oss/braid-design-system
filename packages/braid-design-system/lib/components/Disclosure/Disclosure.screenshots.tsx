@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentScreenshot } from 'site/types';
+import type { ComponentScreenshot } from 'site/types';
 import { Disclosure, Text } from '../';
 
 export const screenshots: ComponentScreenshot = {

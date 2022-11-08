@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
-import { ComponentExample } from 'site/types';
+import type { ReactNode } from 'react';
+import React from 'react';
+import type { ComponentExample } from 'site/types';
 import { Bleed, Box } from '../';
 import source from '../../utils/source.macro';
 import { Placeholder } from '../../playroom/components';

@@ -12,7 +12,7 @@ import { breakpointQuery, responsiveStyle } from '../css/responsiveStyle';
 
 import { mapToProperty } from '../utils';
 import { colorModeStyle } from '../css/colorModeStyle';
-import { BoxBackgroundVariant } from '../components/Box/Box';
+import type { BoxBackgroundVariant } from '../components/Box/Box';
 
 export const fontFamily = style({
   fontFamily: vars.fontFamily,

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { buttonVariants } from '../Button/Button';
-import { Button as BraidButton, ButtonProps } from './Button';
+import type { ButtonProps } from '../Button/Button';
+import { buttonVariants, Button as BraidButton } from '../Button/Button';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant, ...restProps }, ref) => {

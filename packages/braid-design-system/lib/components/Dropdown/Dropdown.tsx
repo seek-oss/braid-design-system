@@ -1,10 +1,8 @@
-import React, { Fragment, AllHTMLAttributes, forwardRef } from 'react';
+import type { AllHTMLAttributes } from 'react';
+import React, { Fragment, forwardRef } from 'react';
 import { Box } from '../Box/Box';
-import {
-  Field,
-  FieldBaseProps,
-  FieldLabelVariant,
-} from '../private/Field/Field';
+import type { FieldBaseProps, FieldLabelVariant } from '../private/Field/Field';
+import { Field } from '../private/Field/Field';
 import { IconChevron } from '../icons';
 import * as styles from './Dropdown.css';
 import { Text } from '../Text/Text';

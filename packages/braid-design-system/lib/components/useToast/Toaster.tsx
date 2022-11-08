@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { Box } from '../Box/Box';
 import ToastComponent from './Toast';
 import { useFlipList } from './useFlipList';
-import { InternalToast } from './ToastTypes';
+import type { InternalToast } from './ToastTypes';
 
 interface ToasterProps {
   toasts: InternalToast[];

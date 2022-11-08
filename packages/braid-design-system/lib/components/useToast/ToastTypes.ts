@@ -1,6 +1,6 @@
-import { ReactElement } from 'react';
-import { UseIconProps } from '../../hooks/useIcon';
-import { DataAttributeMap } from '../private/buildDataAttributes';
+import type { ReactElement } from 'react';
+import type { UseIconProps } from '../../hooks/useIcon';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
 
 export interface ToastAction {
   label: string;
