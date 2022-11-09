@@ -1,5 +1,53 @@
 # braid-design-system
 
+## 31.20.0
+
+### Minor Changes
+
+- **Link:** Support custom `data` prop format for attributes ([#1182](https://github.com/seek-oss/braid-design-system/pull/1182))
+
+  While `Link` already supports the native HTML syntax for data attributes, e.g. `data-testid="123"`, it now supports the `data` prop too. This allows data attributes to be provided consistently to all components.
+
+  **EXAMPLE USAGE:**
+
+  ```diff
+   <Link
+  +  data={{ testId: 'myComponent' }}
+   />
+
+  ```
+
+  The above example results in the following HTML attribute being set on the element: `data-testId="myComponent"`.
+
+- **Bleed:** Add `data` attribute support ([#1182](https://github.com/seek-oss/braid-design-system/pull/1182))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Bleed data={{ testid: 123 }}>...</Bleed>
+  ```
+
+### Patch Changes
+
+- Support data attribute boolean values ([#1182](https://github.com/seek-oss/braid-design-system/pull/1182))
+
+  The `data` attribute map now supports boolean values. This provides an improvement for the developer experience, no longer having to convert values to strings explicitly.
+
+  **EXAMPLE USAGE:**
+
+  ```tsx
+  <Component
+    data={{
+      'custom-attribute': true,
+    }}
+  />
+  // => <div data-custom-attribute="true" />
+  ```
+
+- **TextLink:** Allow native data attributes with anchor api ([#1182](https://github.com/seek-oss/braid-design-system/pull/1182))
+
+  Disables the validation against the use of data attributes on `TextLink`. Given it exposes the full native anchor tag api, it is `not invalid` to use the native syntax.
+
 ## 31.19.0
 
 ### Minor Changes
