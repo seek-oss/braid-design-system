@@ -1,6 +1,6 @@
 import dedent from 'dedent';
 
-export type DataAttributeMap = Record<string, string | number>;
+export type DataAttributeMap = Record<string, string | number | boolean>;
 
 interface DataAttributeParams {
   data?: DataAttributeMap;
@@ -37,14 +37,18 @@ export default ({ data, validateRestProps }: DataAttributeParams) => {
             .join('\n')}
           %c+    data={{
           ${dataAttrs
-            .map(
-              (attr) =>
-                `+      ${attr.replace(/^data-/, '')}: ${
-                  typeof validateRestProps[attr] === 'string'
-                    ? `'${validateRestProps[attr]}'`
-                    : validateRestProps[attr]
-                },`,
-            )
+            .map((attr) => {
+              const attributeName = attr.replace(/^data-/, '');
+              const property = attributeName.includes('-')
+                ? `'${attributeName}'`
+                : attributeName;
+
+              return `+      ${property}: ${
+                typeof validateRestProps[attr] === 'string'
+                  ? `'${validateRestProps[attr]}'`
+                  : validateRestProps[attr]
+              },`;
+            })
             .join('\n')}
           +    }}
             %c/>

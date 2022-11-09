@@ -189,6 +189,7 @@ exports[`Bleed 1`] = `
     component?: 
         | "div"
         | "span"
+    data?: DataAttributeMap
     horizontal?: 
         | "gutter"
         | "large"
@@ -6126,6 +6127,7 @@ exports[`Link 1`] = `
         | true
     contextMenu?: string
     dangerouslySetInnerHTML?: { __html: string; }
+    data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
     defaultValue?: 

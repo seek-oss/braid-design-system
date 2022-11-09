@@ -3,6 +3,8 @@ import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import type { BoxProps } from '../Box/Box';
 import { Box } from '../Box/Box';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes from '../private/buildDataAttributes';
 
 export const validBleedComponents = ['div', 'span'] as const;
 
@@ -16,6 +18,7 @@ export interface BleedProps {
   left?: ResponsiveSpace;
   right?: ResponsiveSpace;
   component?: typeof validBleedComponents[number];
+  data?: DataAttributeMap;
 }
 
 export const Bleed = ({
@@ -28,6 +31,8 @@ export const Bleed = ({
   right,
   children,
   component = 'div',
+  data,
+  ...restProps
 }: BleedProps) => (
   <Box
     component={component}
@@ -38,6 +43,7 @@ export const Bleed = ({
       negativeMargin('left', left || horizontal || space),
       negativeMargin('right', right || horizontal || space),
     ]}
+    {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     <Box
       component={component}

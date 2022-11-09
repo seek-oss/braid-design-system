@@ -110,7 +110,7 @@ export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
         ref={ref}
         {...restProps}
         className={classes}
-        {...buildDataAttributes({ data, validateRestProps: restProps })}
+        {...buildDataAttributes({ data, validateRestProps: false })}
       />
     );
   },
