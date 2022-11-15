@@ -10,6 +10,7 @@ import {
   Column,
   Stack,
   Strong,
+  IconLink,
 } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -205,6 +206,30 @@ export const screenshots: ComponentScreenshot = {
             </TextLink>
           </Text>
         </Stack>
+      ),
+    },
+    {
+      label: 'With icon slot',
+      Example: () => (
+        <Text>
+          A sentence with a{' '}
+          <TextLink href="" icon={<IconLink />}>
+            TextLink
+          </TextLink>
+          .
+        </Text>
+      ),
+    },
+    {
+      label: 'With icon slot and weight weak',
+      Example: () => (
+        <Text>
+          A sentence with a{' '}
+          <TextLink href="" weight="weak" icon={<IconLink />}>
+            TextLink
+          </TextLink>
+          .
+        </Text>
       ),
     },
     {

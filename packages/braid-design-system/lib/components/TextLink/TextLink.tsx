@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import type { ReactElement } from 'react';
 import React, { forwardRef, useContext } from 'react';
 import type { Atoms } from '../../css/atoms/atoms';
 import { atoms } from '../../css/atoms/atoms';
@@ -7,6 +8,7 @@ import {
   useBackground,
 } from '../Box/BackgroundContext';
 import type { BoxBackgroundVariant } from '../Box/Box';
+import { Box } from '../Box/Box';
 import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
 import { useLinkComponent } from '../BraidProvider/BraidProvider';
 import HeadingContext from '../Heading/HeadingContext';
@@ -14,6 +16,7 @@ import { TextContext } from '../Text/TextContext';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
+import type { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './TextLink.css';
 
 export interface TextLinkStyles {
@@ -26,6 +29,7 @@ export interface TextLinkProps
   extends TextLinkStyles,
     Omit<LinkComponentProps, 'className' | 'style'> {
   data?: DataAttributeMap;
+  icon?: ReactElement<UseIconProps>;
 }
 
 const isPlainBackground = (
@@ -97,7 +101,10 @@ export const useLinkStyles = ({
 };
 
 export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
-  ({ weight, showVisited, hitArea, data, ...restProps }, ref) => {
+  (
+    { weight, showVisited, hitArea, data, icon, children, ...restProps },
+    ref,
+  ) => {
     const LinkComponent = useLinkComponent(ref);
     const classes = useLinkStyles({
       weight,
@@ -111,7 +118,14 @@ export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
         {...restProps}
         className={classes}
         {...buildDataAttributes({ data, validateRestProps: false })}
-      />
+      >
+        {icon ? (
+          <Box component="span" paddingRight="xxsmall">
+            {icon}
+          </Box>
+        ) : null}
+        {children}
+      </LinkComponent>
     );
   },
 );

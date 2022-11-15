@@ -1,5 +1,11 @@
-import type { AllHTMLAttributes, ReactNode, KeyboardEvent } from 'react';
+import type {
+  AllHTMLAttributes,
+  ReactNode,
+  KeyboardEvent,
+  ReactElement,
+} from 'react';
 import React, { useRef, useCallback } from 'react';
+import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
@@ -17,6 +23,7 @@ export interface TextLinkButtonProps
   'aria-expanded'?: NativeSpanProps['aria-expanded'];
   'aria-describedby'?: NativeSpanProps['aria-describedby'];
   tabIndex?: NativeSpanProps['tabIndex'];
+  icon?: ReactElement<UseIconProps>;
 }
 
 const noop = () => {};
@@ -31,6 +38,7 @@ export const TextLinkButton = ({
   'aria-expanded': ariaExpanded,
   'aria-describedby': ariaDescribedBy,
   tabIndex,
+  icon,
   ...restProps
 }: TextLinkButtonProps) => {
   const buttonRef = useRef<HTMLSpanElement>(null);
@@ -65,6 +73,11 @@ export const TextLinkButton = ({
       className={classes}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
+      {icon ? (
+        <Box component="span" paddingRight="xxsmall">
+          {icon}
+        </Box>
+      ) : null}
       {children}
     </Box>
   );

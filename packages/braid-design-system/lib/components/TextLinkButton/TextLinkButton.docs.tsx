@@ -1,8 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Text, TextLink, TextLinkButton } from '..';
+import { Text, TextLink, TextLinkButton, Strong, IconLink } from '..';
 import source from '../../utils/source.macro';
-import { Strong } from '../Strong/Strong';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -48,6 +47,22 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Heading">Heading</TextLink> component.
         </Text>
       ),
+    },
+    {
+      label: 'Icons',
+      description: (
+        <Text>
+          For decoration or help distinguishing between buttons, an{' '}
+          <Strong>icon</Strong> can be provided. This will be placed to the left
+          of the label.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Text>
+            <TextLinkButton icon={<IconLink />}>TextLinkButton</TextLinkButton>
+          </Text>,
+        ),
     },
   ],
 };

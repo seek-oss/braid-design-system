@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Box, Inline, Stack, Strong, Text, TextLink } from '../';
+import { Box, Inline, Stack, Strong, Text, TextLink, IconLink } from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
@@ -49,6 +49,24 @@ const docs: ComponentDocs = {
             This sentence contains a{' '}
             <TextLink href="" showVisited>
               visited TextLink.
+            </TextLink>
+          </Text>,
+        ),
+    },
+    {
+      label: 'Icons',
+      description: (
+        <Text>
+          For decoration or help distinguishing between links, an{' '}
+          <Strong>icon</Strong> can be provided. This will be placed to the left
+          of the link text.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Text>
+            <TextLink icon={<IconLink />} href="">
+              TextLink
             </TextLink>
           </Text>,
         ),
