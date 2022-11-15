@@ -9,6 +9,8 @@ import HeadingContext from '../../components/Heading/HeadingContext';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import type { DataAttributeMap } from '../../components/private/buildDataAttributes';
 import buildDataAttributes from '../../components/private/buildDataAttributes';
+import { iconInlineSize } from '../../components/icons/IconRenderer';
+import { atoms } from '../../css/atoms/atoms';
 import * as typographyStyles from '../../css/typography.css';
 import * as styles from './icon.css';
 
@@ -95,20 +97,21 @@ export default (
   }
 
   return {
-    display: isInline ? 'inlineBlock' : 'block',
-    position: isInline ? 'relative' : undefined,
     className: [
       toneClass,
       isInline
         ? [
-            styles.size,
-            styles.inlineCrop,
-            styles.inline,
-            styles.alignY[alignY || 'uppercase'][
-              verticalCorrection[alignY || 'uppercase']
-            ],
+            iconInlineSize({
+              alignY: alignY || 'uppercase',
+              verticalCorrection: verticalCorrection[alignY || 'uppercase'],
+            }),
           ]
-        : iconContainerSize(size),
+        : [
+            atoms({
+              display: 'block',
+            }),
+            iconContainerSize(size),
+          ],
     ],
     ...buildDataAttributes({ data, validateRestProps: restProps }),
     ...a11yProps,
