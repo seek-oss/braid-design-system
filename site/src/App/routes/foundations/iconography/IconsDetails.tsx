@@ -368,160 +368,167 @@ export const IconsDetails = () => (
         <LinkableHeading level="4" label="custom-icons-size">
           Sizing and alignment
         </LinkableHeading>
-        <Text>
-          To make the alignment of icons and typography as seemless as possible,
-          IconRenderer supports{' '}
-          <TextLink href="#size-inline">inline sizing</TextLink>. As a result,
-          it must be used inside either a{' '}
-          <TextLink href="/components/Text">Text</TextLink> or{' '}
-          <TextLink href="/components/Heading">Heading</TextLink> component.
-        </Text>
-        <Text>For example, here is a custom circle alongside a Heading:</Text>
-        <PlayroomStateProvider>
-          <DocExample
-            id="iconRenderer-size"
-            Example={() =>
-              source(
-                <Heading level="1">
-                  <IconRenderer>
-                    {({ className }) => (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        className={className}
-                      >
-                        <circle cx="12" cy="12" r="10" />
-                      </svg>
-                    )}
-                  </IconRenderer>{' '}
-                  Heading
-                </Heading>,
-              )
-            }
-          />
-        </PlayroomStateProvider>
-      </Stack>
-
-      <Stack space="medium">
-        <LinkableHeading level="4" label="custom-icons-colour">
-          Colour
-        </LinkableHeading>
-        <Text>
-          The Braid icon set is designed using only a single colour (black), and
-          then configured to adopt the colour of either their parent component
-          or the specified <TextLink href="#tones">tone</TextLink> prop.
-        </Text>
-        <Text>
-          If the custom icon should inherit its colour, this can be done using
-          the{' '}
-          <TextLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword">
-            currentColor
-          </TextLink>{' '}
-          value.
-        </Text>
-        <PlayroomStateProvider>
-          <DocExample
-            id="iconRenderer-colour"
-            Example={() =>
-              source(
-                <Stack space="medium">
-                  <Text size="xsmall" tone="secondary">
-                    EXAMPLE: Setting “fill=currentColor” on custom icon inside
-                    “brandAccent” Text
-                  </Text>
-                  <Text size="large" tone="brandAccent">
+        <Stack space="large">
+          <Text>
+            To make the alignment of icons and typography as seemless as
+            possible, IconRenderer supports{' '}
+            <TextLink href="#size-inline">inline sizing</TextLink>. As a result,
+            it must be used inside either a{' '}
+            <TextLink href="/components/Text">Text</TextLink> or{' '}
+            <TextLink href="/components/Heading">Heading</TextLink> component.
+          </Text>
+          <Text>For example, here is a custom circle alongside a Heading:</Text>
+          <PlayroomStateProvider>
+            <DocExample
+              id="iconRenderer-size"
+              Example={() =>
+                source(
+                  <Heading level="1">
                     <IconRenderer>
                       {({ className }) => (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           className={className}
-                          fill="currentColor"
                         >
                           <circle cx="12" cy="12" r="10" />
                         </svg>
                       )}
-                    </IconRenderer>
-                  </Text>
-                </Stack>,
-              )
-            }
-          />
-        </PlayroomStateProvider>
+                    </IconRenderer>{' '}
+                    Heading
+                  </Heading>,
+                )
+              }
+            />
+          </PlayroomStateProvider>
+        </Stack>
+      </Stack>
+
+      <Stack space="medium">
+        <LinkableHeading level="4" label="custom-icons-colour">
+          Colour
+        </LinkableHeading>
+        <Stack space="large">
+          <Text>
+            The Braid icon set is designed using only a single colour (black),
+            and then configured to adopt the colour of either their parent
+            component or the specified <TextLink href="#tones">tone</TextLink>{' '}
+            prop.
+          </Text>
+          <Text>
+            If the custom icon should inherit its colour, this can be done using
+            the{' '}
+            <TextLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword">
+              currentColor
+            </TextLink>{' '}
+            value.
+          </Text>
+          <PlayroomStateProvider>
+            <DocExample
+              id="iconRenderer-colour"
+              Example={() =>
+                source(
+                  <Stack space="medium">
+                    <Text size="xsmall" tone="secondary">
+                      EXAMPLE: Setting “fill=currentColor” on custom icon inside
+                      “brandAccent” Text
+                    </Text>
+                    <Text size="large" tone="brandAccent">
+                      <IconRenderer>
+                        {({ className }) => (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            className={className}
+                            fill="currentColor"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                          </svg>
+                        )}
+                      </IconRenderer>
+                    </Text>
+                  </Stack>,
+                )
+              }
+            />
+          </PlayroomStateProvider>
+        </Stack>
       </Stack>
 
       <Stack space="medium">
         <LinkableHeading level="4" label="custom-icons-accessibility">
           Accessibility
         </LinkableHeading>
-        <Text>
-          When using custom icons, it is important to consider their purpose to
-          the end user. Are they being used as an image? Or are they purely
-          decorative?
-        </Text>
-        <Text>
-          If they are decorative only, then it is recommended they be hidden
-          from screen readers by applying the <Strong>aria-hidden</Strong>{' '}
-          attribute as in the following example:
-        </Text>
-        <PlayroomStateProvider>
-          <DocExample
-            id="iconRenderer-a11y"
-            Example={() =>
-              source(
-                <Text size="large">
-                  <IconRenderer>
-                    {({ className }) => (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        className={className}
-                        aria-hidden
-                      >
-                        <circle cx="12" cy="12" r="10" />
-                      </svg>
-                    )}
-                  </IconRenderer>
-                </Text>,
-              )
-            }
-          />
-        </PlayroomStateProvider>
-        <Text>
-          However, if they provide value or context, then they should be titled
-          correctly as though they were an image. Below is an example of how to
-          correctly title an icon as an image:
-        </Text>
-        <PlayroomStateProvider>
-          <DocExample
-            id="iconRenderer"
-            Example={() =>
-              source(
-                <Text size="large">
-                  <IconRenderer>
-                    {({ className }) => (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        className={className}
-                        aria-labelledby="titleId"
-                        role="img"
-                      >
-                        <title id="titleId">My Custom Icon</title>
-                        <circle cx="12" cy="12" r="10" />
-                      </svg>
-                    )}
-                  </IconRenderer>
-                </Text>,
-              )
-            }
-          />
-        </PlayroomStateProvider>
-        <Text>
-          For more information read the{' '}
-          <TextLink href="#accessibility">Accessibility</TextLink> section
-          above.
-        </Text>
+        <Stack space="large">
+          <Text>
+            When using custom icons, it is important to consider their purpose
+            to the end user. Are they being used as an image? Or are they purely
+            decorative?
+          </Text>
+          <Text>
+            If they are decorative only, then it is recommended they be hidden
+            from screen readers by applying the <Strong>aria-hidden</Strong>{' '}
+            attribute as in the following example:
+          </Text>
+          <PlayroomStateProvider>
+            <DocExample
+              id="iconRenderer-a11y"
+              Example={() =>
+                source(
+                  <Text size="large">
+                    <IconRenderer>
+                      {({ className }) => (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className={className}
+                          aria-hidden
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                        </svg>
+                      )}
+                    </IconRenderer>
+                  </Text>,
+                )
+              }
+            />
+          </PlayroomStateProvider>
+          <Text>
+            However, if they provide value or context, then they should be
+            titled correctly as though they were an image. Below is an example
+            of how to correctly title an icon as an image:
+          </Text>
+          <PlayroomStateProvider>
+            <DocExample
+              id="iconRenderer"
+              Example={() =>
+                source(
+                  <Text size="large">
+                    <IconRenderer>
+                      {({ className }) => (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          className={className}
+                          aria-labelledby="titleId"
+                          role="img"
+                        >
+                          <title id="titleId">My Custom Icon</title>
+                          <circle cx="12" cy="12" r="10" />
+                        </svg>
+                      )}
+                    </IconRenderer>
+                  </Text>,
+                )
+              }
+            />
+          </PlayroomStateProvider>
+          <Text>
+            For more information read the{' '}
+            <TextLink href="#accessibility">Accessibility</TextLink> section
+            above.
+          </Text>
+        </Stack>
       </Stack>
     </Stack>
   </Stack>
