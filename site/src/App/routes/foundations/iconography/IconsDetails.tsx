@@ -412,7 +412,7 @@ export const IconsDetails = () => (
           or the specified <TextLink href="#tones">tone</TextLink> prop.
         </Text>
         <Text>
-          If the custom icon should inherit it’s colour, this can be done using
+          If the custom icon should inherit its colour, this can be done using
           the{' '}
           <TextLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword">
             currentColor
