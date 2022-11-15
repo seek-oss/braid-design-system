@@ -356,7 +356,7 @@ export const IconsDetails = () => (
       <Text>
         Braid aims to provide an icon set that caters to the majority of use
         cases spanning across many products. However, there may be a need to
-        have product specific icons outside of the library. For this use case
+        have product-specific icons outside of the library. For this use case
         consumers can use the <Strong>IconRenderer</Strong> component.
       </Text>
       <Text>
