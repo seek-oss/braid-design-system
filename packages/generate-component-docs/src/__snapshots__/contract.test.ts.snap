@@ -5031,6 +5031,15 @@ exports[`IconRefresh 1`] = `
 }
 `;
 
+exports[`IconRenderer 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ({ className }: { className: string; }) => ReactElement<any, string | JSXElementConstructor<any>> | null
+},
+}
+`;
+
 exports[`IconResume 1`] = `
 {
   exportType: component,
