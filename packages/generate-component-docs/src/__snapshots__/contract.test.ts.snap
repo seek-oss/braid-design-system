@@ -6755,7 +6755,9 @@ exports[`Radio 1`] = `
   props: {
     aria-describedby?: string
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
-    checked: boolean
+    checked: 
+        | false
+        | true
     children?: ReactNode
     data?: DataAttributeMap
     description?: ReactNode
