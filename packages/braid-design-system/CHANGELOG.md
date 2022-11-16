@@ -1,5 +1,38 @@
 # braid-design-system
 
+## 31.21.0
+
+### Minor Changes
+
+- **TextLink, TextLinkButton:** Add `icon` support ([#1184](https://github.com/seek-oss/braid-design-system/pull/1184))
+
+  Provides a designed slot for adding an `icon` to a `TextLink` or `TextLinkButton`.
+  This solves for the problem of underlining the space between the icon and text.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text>
+    <TextLink icon={<IconLink />}>...</TextLink>
+  </Text>
+  ```
+
+- **IconRenderer:** Support the sizing and alignment of custom icons ([#1185](https://github.com/seek-oss/braid-design-system/pull/1185))
+
+  Provides support for sizing and aligning custom icons with Braid’s typographic components. The new `IconRenderer` component supports being used within `Text` and `Heading` components as well as inside `icon` slots of other components.
+
+  Uses the render prop pattern to provide the required classes to style and align a custom icon.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Heading level="1">
+    <IconRenderer>
+      {({ className }) => <svg className={className}>...</svg>}
+    </IconRenderer>
+  </Heading>
+  ```
+
 ## 31.20.0
 
 ### Minor Changes
