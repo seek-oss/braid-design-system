@@ -1,29 +1,51 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Text, TextLinkButton } from '../';
+import { Text, TextLinkButton, IconLink } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'TextLinkButton inside Text',
-      Example: ({ handler }) => (
+      label: 'Default',
+      Example: () => (
         <Text>
           The link in this sentence{' '}
-          <TextLinkButton onClick={handler}>
+          <TextLinkButton>
             is actually a span with an ARIA role of button.
           </TextLinkButton>
         </Text>
       ),
     },
     {
-      label: 'Weak TextLinkButton inside Text',
-      Example: ({ handler }) => (
+      label: 'Weight weak',
+      Example: () => (
         <Text>
           The link in this sentence{' '}
-          <TextLinkButton weight="weak" onClick={handler}>
-            is actually a span with an ARIA role of button.
+          <TextLinkButton weight="weak">
+            is actually a span with an ARIA role of button
           </TextLinkButton>
+          .
+        </Text>
+      ),
+    },
+    {
+      label: 'With icon',
+      Example: () => (
+        <Text>
+          A sentence with a{' '}
+          <TextLinkButton icon={<IconLink />}>TextLinkButton</TextLinkButton>.
+        </Text>
+      ),
+    },
+    {
+      label: 'With icon and weight weak',
+      Example: () => (
+        <Text>
+          A sentence with a{' '}
+          <TextLinkButton weight="weak" icon={<IconLink />}>
+            TextLinkButton
+          </TextLinkButton>
+          .
         </Text>
       ),
     },

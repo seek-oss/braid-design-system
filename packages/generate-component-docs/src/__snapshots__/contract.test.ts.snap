@@ -7537,6 +7537,7 @@ exports[`TextLink 1`] = `
         | "standard"
     href: string
     hrefLang?: string
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     inlist?: any
     inputMode?: 
@@ -7858,6 +7859,7 @@ exports[`TextLinkButton 1`] = `
     hitArea?: 
         | "large"
         | "standard"
+    icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     onClick?: MouseEventHandler<HTMLSpanElement>
     tabIndex?: number
