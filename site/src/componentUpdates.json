@@ -2926,5 +2926,16 @@
         "summary": "**IconRenderer:** Support the sizing and alignment of custom icons\n\nProvides support for sizing and aligning custom icons with Braid’s typographic components. The new `IconRenderer` component supports being used within `Text` and `Heading` components as well as inside `icon` slots of other components.\n\nUses the render prop pattern to provide the required classes to style and align a custom icon.\n\n**EXAMPLE USAGE:**\n```jsx\n<Heading level=\"1\">\n  <IconRenderer>\n    {({ className }) => (\n      <svg className={className}>\n        ...\n      </svg>\n    )}\n  </IconRenderer>\n</Heading>\n```"
       }
     ]
+  },
+  {
+    "version": "31.21.1",
+    "updates": [
+      {
+        "updated": [
+          "TextDropdown"
+        ],
+        "summary": "**TextDropdown:** Fix a type error affecting consumers on TypeScript versions >=4.9.0"
+      }
+    ]
   }
 ]

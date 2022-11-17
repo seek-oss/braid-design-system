@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 31.21.1
+
+### Patch Changes
+
+- **TextDropdown:** Fix a type error affecting consumers on TypeScript versions >=4.9.0 ([#1187](https://github.com/seek-oss/braid-design-system/pull/1187))
+
 ## 31.21.0
 
 ### Minor Changes
