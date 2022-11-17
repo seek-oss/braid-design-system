@@ -29,8 +29,8 @@ export interface TextDropdownProps<Value> {
 export function parseSimpleToComplexOption<Value>(
   option: TextDropdownProps<Value>['options'][number],
 ) {
-  return typeof option !== 'string' &&
-    typeof option !== 'number' &&
+  return typeof option === 'object' &&
+    option !== null &&
     'text' in option &&
     'value' in option
     ? option
