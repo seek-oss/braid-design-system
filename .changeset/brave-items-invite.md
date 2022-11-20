@@ -2,11 +2,6 @@
 'braid-design-system': minor
 ---
 
----
-new:
-  - Playroom
----
-
 Expose Playroom config
 
 This allows consuming packages (e.g. Metropolis) to enhance the Playroom experience by leveraging Braid's internal Playroom configuration.
