@@ -1,13 +1,10 @@
 # Migrating to compiled Braid <!-- omit in toc -->
 
-The compiled version of braid will have explicit entrypoints.
-Imports outside of those entrypoints will no longer work.
-
 - [Examples of invalid imports within Metropolis](#examples-of-invalid-imports-within-metropolis)
   - [`import buildDataAttributes` ✅](#import-builddataattributes-)
   - [`import * as themes` ✅](#import--as-themes-)
   - [`import { UseTextProps }` ✅](#import--usetextprops--)
-  - [`import from 'braid-design-system/lib/playroom'` 👉](#import-from-braid-design-systemlibplayroom-)
+  - [`import from 'braid-design-system/lib/playroom'` ✅](#import-from-braid-design-systemlibplayroom-)
   - [`import { Placeholder }` ✅](#import--placeholder--)
   - [`import { SVGProps }` ✅](#import--svgprops--)
   - [`import { UseIconProps }` ✅](#import--useiconprops--)
@@ -27,53 +24,13 @@ Imports outside of those entrypoints will no longer work.
   - [`import { vars } from 'braid-design-system/lib/themes/vars.css'` 👉](#import--vars--from-braid-design-systemlibthemesvarscss-)
   - [`import { apac } from 'braid-design-system/lib/themes'` 👉](#import--apac--from-braid-design-systemlibthemes-)
   - [`import { HeadingLevel }` 👉](#import--headinglevel--)
-  - [`import { useText }` 👉](#import--usetext--)
+  - [`import { useText }` ✅](#import--usetext--)
 
 Emoji key:
 
 - ✅ fixed
 - 👉 proposed solution
 - ❓ solution TBD
-
-WIP: This section is the start of the rewrite of this document to be an actual migration guide rather than a Jira board.
-
-Below are common usages of private Braid API and their migration path.
-
-## Types
-
-### Component prop types
-
-Components that forward props to Braid components may need access to Braid component prop types.
-These types were accessible via deep imports:
-
-```tsx
-import { TextProps } from 'braid-design-system/lib/components/Text/Text';
-
-interface MyComponentProps {
-  tone: TextProps['tone'];
-}
-```
-
-To migrate, these props should now be derived from the components themselves:
-
-```tsx
-import { ComponentProps } from 'react';
-import { Text } from 'braid-design-system';
-
-type TextProps = ComponentProps<typeof Text>;
-
-interface MyComponentProps {
-  tone: TextProps['tone'];
-}
-```
-
-TODO: Autosuggest example as it is slightly more complicated
-TODO: Toast types since they're not available on a component but instead on `useToast`
-TODO: Icon slot type
-
-## Themes
-
-##
 
 ## Examples of invalid imports within Metropolis
 
@@ -145,7 +102,7 @@ interface Props {
 
 ---
 
-### `import from 'braid-design-system/lib/playroom'` 👉
+### `import from 'braid-design-system/lib/playroom'` ✅
 
 ```tsx
 export * from 'braid-design-system/lib/playroom/components';
@@ -581,7 +538,7 @@ interface Props {
 
 ---
 
-### `import { useText }` 👉
+### `import { useText }` ✅
 
 ```tsx
 import { useText } from 'braid-design-system/lib/hooks/typography';
