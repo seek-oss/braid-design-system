@@ -4,6 +4,7 @@
     "./color-mode",
     "./css",
     "./lib",
+    "./playroom",
     "./reset",
     "./scripts",
     "./test",
