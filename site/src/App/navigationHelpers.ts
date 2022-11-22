@@ -2,7 +2,7 @@ import groupBy from 'lodash/groupBy';
 import * as components from 'braid-src/lib/components';
 import * as testComponents from 'braid-src/test';
 import * as css from 'braid-src/css';
-import type { BraidSnippet } from 'braid-src/lib/components/private/Snippets';
+import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 import type { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
@@ -43,7 +43,7 @@ export const getComponentSnippets = (componentName: string) => {
   }
 
   const snippets = snippetsContext(normalizedComponentRoute)
-    .snippets as BraidSnippet[];
+    .snippets as Snippets;
 
   return snippets.map((snippet) => ({
     ...snippet,

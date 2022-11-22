@@ -3,7 +3,7 @@ const routes = require('./sku.routes.js');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const browserslist = require('../browserslist');
 
-const isGitHubPages = Boolean(process.env.IS_GITHUB_PAGES);
+const isGitHubPages = process.env.IS_GITHUB_PAGES === 'true';
 
 const braidSrc = '../packages/braid-design-system';
 

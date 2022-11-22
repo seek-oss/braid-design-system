@@ -12,6 +12,7 @@
     "lib/css/reset/**/*",
     "themes/**/*",
     "reset/**/*",
+    "playroom/**/*",
     "*.css.ts"
   ],
   "scripts": {

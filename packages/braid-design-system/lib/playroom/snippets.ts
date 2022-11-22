@@ -1,7 +1,8 @@
 import { flatten } from 'lodash';
-import type { BraidSnippet } from '../components/private/Snippets';
+import type { Snippets } from '../components/private/Snippets';
 
 const req = require.context('../components', true, /\.snippets\.tsx?$/);
+
 export default flatten(
   req.keys().map((filename) => {
     const matches = filename.match(/([a-zA-Z]+)\.snippets\.tsx?$/);
@@ -9,7 +10,7 @@ export default flatten(
       return [];
     }
 
-    const snippets = req(filename).snippets as BraidSnippet[];
+    const snippets = req(filename).snippets as Snippets;
 
     return snippets.map((snippet) => ({
       ...snippet,
