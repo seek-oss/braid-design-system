@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 31.22.1
+
+### Patch Changes
+
+- Fix type checking for Playroom config ([#1192](https://github.com/seek-oss/braid-design-system/pull/1192))
+
 ## 31.22.0
 
 ### Minor Changes
