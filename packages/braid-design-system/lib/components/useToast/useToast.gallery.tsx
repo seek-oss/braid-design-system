@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from 'sku/react-treat';
 import type { ComponentExample } from 'site/types';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { Button, IconBookmark, IconPromote, Inline } from '..';
@@ -10,7 +9,6 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With a positive message',
     Example: ({ id, handler, showToast }) => {
-      const theme = useTheme();
       const { vanillaTheme } = useBraidTheme();
 
       const { code } = source(
@@ -36,7 +34,6 @@ export const galleryItems: ComponentExample[] = [
               id={id}
               dedupeKey={id}
               shouldRemove={false}
-              treatTheme={theme}
               vanillaTheme={vanillaTheme}
               onClose={handler}
               message="Positive message"
@@ -50,7 +47,6 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With a critical message',
     Example: ({ id, handler, showToast }) => {
-      const theme = useTheme();
       const { vanillaTheme } = useBraidTheme();
 
       const { code } = source(
@@ -76,7 +72,6 @@ export const galleryItems: ComponentExample[] = [
               id={id}
               dedupeKey={id}
               shouldRemove={false}
-              treatTheme={theme}
               vanillaTheme={vanillaTheme}
               onClose={handler}
               message="Critical message"
@@ -90,7 +85,6 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With a neutral message',
     Example: ({ id, handler, showToast }) => {
-      const theme = useTheme();
       const { vanillaTheme } = useBraidTheme();
 
       const { code } = source(
@@ -116,7 +110,6 @@ export const galleryItems: ComponentExample[] = [
               id={id}
               dedupeKey={id}
               shouldRemove={false}
-              treatTheme={theme}
               vanillaTheme={vanillaTheme}
               onClose={handler}
               message="Neutral message"
@@ -130,7 +123,6 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With a custom icon (neutral tone only)',
     Example: ({ id, handler, showToast }) => {
-      const theme = useTheme();
       const { vanillaTheme } = useBraidTheme();
 
       const { code } = source(
@@ -157,7 +149,6 @@ export const galleryItems: ComponentExample[] = [
               id={id}
               dedupeKey={id}
               shouldRemove={false}
-              treatTheme={theme}
               vanillaTheme={vanillaTheme}
               onClose={handler}
               message="Neutral message with icon"
@@ -172,7 +163,6 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With a description',
     Example: ({ id, handler, showToast }) => {
-      const theme = useTheme();
       const { vanillaTheme } = useBraidTheme();
 
       const { code } = source(
@@ -199,7 +189,6 @@ export const galleryItems: ComponentExample[] = [
             id={id}
             dedupeKey={id}
             shouldRemove={false}
-            treatTheme={theme}
             vanillaTheme={vanillaTheme}
             onClose={handler}
             message="Toast message"
@@ -213,7 +202,6 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With an action',
     Example: ({ id, handler, showToast }) => {
-      const theme = useTheme();
       const { vanillaTheme } = useBraidTheme();
 
       const { code } = source(
@@ -239,7 +227,6 @@ export const galleryItems: ComponentExample[] = [
             id={id}
             dedupeKey={id}
             shouldRemove={false}
-            treatTheme={theme}
             vanillaTheme={vanillaTheme}
             onClose={handler}
             message="Toast message"
@@ -253,7 +240,6 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With an action and description',
     Example: ({ id, handler, showToast }) => {
-      const theme = useTheme();
       const { vanillaTheme } = useBraidTheme();
 
       const { code } = source(
@@ -281,7 +267,6 @@ export const galleryItems: ComponentExample[] = [
             id={id}
             dedupeKey={id}
             shouldRemove={false}
-            treatTheme={theme}
             vanillaTheme={vanillaTheme}
             onClose={handler}
             message="Toast message"
