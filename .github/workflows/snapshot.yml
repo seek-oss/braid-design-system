@@ -22,7 +22,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'pnpm'
+          cache: pnpm
+          node-version-file: package.json
 
       - name: Install Dependencies
         run: pnpm i
