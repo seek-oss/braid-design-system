@@ -10,18 +10,17 @@ jobs:
       CI: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@main
+        uses: actions/checkout@v3
         with:
           # This makes Actions fetch all Git history so that chromatic can diff against previous commits
           fetch-depth: 0
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v2.2.2
+        uses: pnpm/action-setup@v2
 
-      - name: Set up Node.js 16.x
-        uses: actions/setup-node@main
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
           cache: 'pnpm'
 
       - name: Install Dependencies
