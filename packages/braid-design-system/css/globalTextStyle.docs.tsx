@@ -5,10 +5,8 @@ import { globalTextStyle } from '../lib/css/globalTypographyStyles';
 import source from '../lib/utils/source.macro';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
-import { VanillaMigrationBanner } from './VanillaMigrationBanner';
 
 const docs: CssDoc = {
-  banner: <VanillaMigrationBanner />,
   usage: (
     <Code>{`import { globalTextStyle } from 'braid-design-system/css';`}</Code>
   ),
