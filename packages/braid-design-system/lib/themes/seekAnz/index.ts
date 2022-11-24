@@ -1,5 +1,1 @@
-import vanillaTheme from './seekAnzTheme.css';
-
-export default {
-  vanillaTheme,
-};
+export { default } from './seekAnzTheme.css';

@@ -13,7 +13,7 @@ import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BreakpointProvider } from './BreakpointContext';
 import { BraidThemeContext } from './BraidThemeContext';
-import type { BraidTheme } from '../../themes/BraidTheme';
+import type { BraidTheme } from '../../themes/makeBraidTheme';
 import { darkMode } from '../../css/atoms/sprinkles.css';
 import { VanillaThemeContainer } from './VanillaThemeContainer';
 

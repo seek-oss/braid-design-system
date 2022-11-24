@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
 
 import * as themes from 'braid-src/lib/themes';
-import type { BraidTheme } from 'braid-src/lib/themes/BraidTheme';
+import type { BraidTheme } from 'braid-src/lib/themes/makeBraidTheme';
 type ThemeKey = keyof typeof themes;
 
 const defaultTheme = 'apac' as const;

@@ -64,7 +64,7 @@ const fontSizeToCapHeight = (
   };
 };
 
-export default (braidTokens: BraidTokens) => {
+export const makeVanillaTheme = (braidTokens: BraidTokens) => {
   const { name, displayName, ...tokens } = braidTokens;
   const { webFont, ...typography } = tokens.typography;
   const { foreground, background } = tokens.color;
@@ -74,7 +74,8 @@ export default (braidTokens: BraidTokens) => {
     return px(tokens.grid * Math.round(tokens.touchableSize * scale));
   };
 
-  const resolvedTokens = {
+  return {
+    name,
     space: mapValues(tokens.space, (sp) => px(sp * tokens.grid)),
     touchableSize: px(tokens.touchableSize * tokens.grid),
     grid: px(tokens.grid),
@@ -110,6 +111,4 @@ export default (braidTokens: BraidTokens) => {
     transform: tokens.transforms,
     shadow: tokens.shadows,
   } as const;
-
-  return resolvedTokens;
 };

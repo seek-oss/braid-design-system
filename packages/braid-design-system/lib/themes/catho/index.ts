@@ -1,5 +1,1 @@
-import vanillaTheme from './cathoTheme.css';
-
-export default {
-  vanillaTheme,
-};
+export { default } from './cathoTheme.css';
