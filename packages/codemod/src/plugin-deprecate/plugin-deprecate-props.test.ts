@@ -9,6 +9,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     title: 'Visit Braid component only',
     code: dedent`
     import { Box } from 'braid-design-system';
+
     export default () => {
       return (
         <div background="card">
@@ -18,6 +19,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     };`,
     output: dedent`
     import { Box } from 'braid-design-system';
+
     export default () => {
       return (
         <div background="card">
@@ -30,6 +32,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     title: 'Visit Braid aliased component only',
     code: dedent`
     import { Box as BraidBox } from 'braid-design-system';
+
     export default () => {
       return (
         <div background="card">
@@ -39,6 +42,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     };`,
     output: dedent`
     import { Box as BraidBox } from 'braid-design-system';
+
     export default () => {
       return (
         <div background="card">
@@ -52,6 +56,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     code: dedent`
     import * as Braid from 'braid-design-system';
     import Box from 'braid-design-system2';
+
     export default () => {
       return (
         <div background="card">
@@ -63,6 +68,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     output: dedent`
     import * as Braid from 'braid-design-system';
     import Box from 'braid-design-system2';
+
     export default () => {
       return (
         <div background="card">
@@ -214,12 +220,15 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
       'Visit Braid component spreading object as props with non-computed keys',
     code: dedent`
     import { Box } from 'braid-design-system';
+
     const cardBackground = 'card';
     const bodyBackground = 'body';
+
     const bgColor = true ? cardBackground : bodyBackground;
     const boxProps = {
       background: bgColor,
     };
+
     export default () => {
       return (
         <div background="card">
@@ -229,12 +238,15 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     };`,
     output: dedent`
     import { Box } from 'braid-design-system';
+
     const cardBackground = 'surface';
     const bodyBackground = 'body';
+
     const bgColor = true ? cardBackground : bodyBackground;
     const boxProps = {
       background: bgColor,
     };
+
     export default () => {
       return (
         <div background="card">
@@ -323,6 +335,9 @@ pluginTester({
       '@babel/plugin-syntax-jsx',
       ['@babel/plugin-syntax-typescript', { isTSX: true }],
     ],
+    generatorOpts: {
+      retainLines: true,
+    },
   },
   tests,
 });

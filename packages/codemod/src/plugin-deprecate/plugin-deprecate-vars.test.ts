@@ -96,16 +96,20 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
       'Visit Braid theme vars destructuring multiple vars and using rest spread',
     code: dedent`
       import { vars } from 'braid-design-system/css';
+
       const { space, backgroundColor, ...rest } = vars;
       const bg = backgroundColor.card;
+
       const className = style({
         border: rest.borderColor.standard,
         background: bg,
       });`,
     output: dedent`
       import { vars } from 'braid-design-system/css';
+
       const { space, backgroundColor, ...rest } = vars;
       const bg = backgroundColor.surface;
+
       const className = style({
         border: rest.borderColor.neutralLight,
         background: bg,
@@ -136,6 +140,9 @@ pluginTester({
       '@babel/plugin-syntax-jsx',
       ['@babel/plugin-syntax-typescript', { isTSX: true }],
     ],
+    generatorOpts: {
+      retainLines: true,
+    },
   },
   tests,
 });
