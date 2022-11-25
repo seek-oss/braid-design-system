@@ -8,10 +8,12 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     title: 'Updates component import path with single import',
     code: dedent`
       import { BraidTestProvider } from 'braid-design-system';
+
       import { foo } from 'other-package';
     `,
     output: dedent`
       import { BraidTestProvider } from 'braid-design-system/test';
+
       import { foo } from 'other-package';
     `,
   },
@@ -29,11 +31,13 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
       'Moves component to separate import when multiple things are imported',
     code: dedent`
       import { vars, BraidTestProvider } from 'braid-design-system';
+
       import { foo } from 'other-package';
     `,
     output: dedent`
       import { vars } from 'braid-design-system';
       import { BraidTestProvider } from 'braid-design-system/test';
+
       import { foo } from 'other-package';
     `,
   },
@@ -60,6 +64,9 @@ pluginTester({
       '@babel/plugin-syntax-jsx',
       ['@babel/plugin-syntax-typescript', { isTSX: true }],
     ],
+    generatorOpts: {
+      retainLines: true,
+    },
   },
   tests,
 });

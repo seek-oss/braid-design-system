@@ -149,6 +149,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     title: 'Updates renamed attributes for namespaced elements',
     code: dedent`
     import * as Braid from 'braid-design-system';
+
     export default () => {
       const props = () => ({
         variant: 'soft',
@@ -159,6 +160,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     };`,
     output: dedent`
     import * as Braid from 'braid-design-system';
+
     export default () => {
       const props = () => ({
         variant: 'soft',
@@ -172,6 +174,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     title: 'Updates renamed attributes for elements renamed locally',
     code: dedent`
     import { Button as Boo } from 'braid-design-system';
+
     export default () => {
       const props = () => ({
         variant: 'soft',
@@ -182,6 +185,7 @@ const tests: Parameters<typeof pluginTester>[0]['tests'] = [
     };`,
     output: dedent`
     import { Button as Boo } from 'braid-design-system';
+
     export default () => {
       const props = () => ({
         variant: 'soft',
@@ -258,6 +262,9 @@ pluginTester({
       '@babel/plugin-syntax-jsx',
       ['@babel/plugin-syntax-typescript', { isTSX: true }],
     ],
+    generatorOpts: {
+      retainLines: true,
+    },
   },
   tests,
 });
