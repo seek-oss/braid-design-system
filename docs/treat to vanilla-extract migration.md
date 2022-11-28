@@ -3,6 +3,8 @@
 This document provides guidance for consumers looking to migrate Braid-based styles from [treat](https://seek-oss.github.io/treat) to [vanilla-extract.](http://vanilla-extract.style)
 
 Since they use different file extensions (`.css.ts` vs `.treat.ts`), we're able to ease the migration by supporting both approaches simultaneously in the same project.
+However, Braid v31 was the last version to support treat styles in addition to vanilla-extract styles.
+From v32 onwards, treat styles are no longer supported and should be migrated to vanilla-extract.
 
 While we encourage you to write new CSS with vanilla-extract files and slowly migrate your existing treat files over time, the goal is to eventually remove treat entirely to enable further improvements to build tooling.
 
