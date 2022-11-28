@@ -1,6 +1,10 @@
 import fs from 'fs';
 import { parse, print } from 'recast';
-import { transformFromAstSync, parseSync, type TransformOptions } from '@babel/core';
+import {
+  transformFromAstSync,
+  parseSync,
+  type TransformOptions,
+} from '@babel/core';
 import prettier from 'prettier';
 // @ts-expect-error
 import jsxSyntax from '@babel/plugin-syntax-jsx';
@@ -56,7 +60,7 @@ export function babelRecast({
       },
     });
 
-    const options = {
+    const options: TransformOptions = {
       cloneInputAst: false,
       configFile: false,
       babelrc: false,
@@ -67,7 +71,7 @@ export function babelRecast({
       generatorOpts: {
         retainLines: true,
       },
-    } satisfies TransformOptions;
+    };
 
     const transformResult = transformFromAstSync(ast, code, options);
 
