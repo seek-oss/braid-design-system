@@ -262,7 +262,7 @@ const docs: ComponentDocs = {
               <Stack space="medium">
                 <Tabs label="Test tabs">
                   <Tab>The first tab</Tab>
-                  <Tab badge={<Badge tone="positive">Positive</Badge>}>
+                  <Tab badge={<Badge tone="positive">New</Badge>}>
                     The second tab
                   </Tab>
                   <Tab>The third tab</Tab>

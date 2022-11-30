@@ -1,5 +1,4 @@
 import React, {
-  Children,
   useContext,
   useEffect,
   useRef,
@@ -8,6 +7,7 @@ import React, {
 } from 'react';
 import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { Box } from '../Box/Box';
 import { Divider } from '../Divider/Divider';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
@@ -18,7 +18,6 @@ import { TabsContext } from './TabsProvider';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import type { TabListContextValues } from './TabListContext';
 import { TabListContext } from './TabListContext';
 import * as styles from './Tabs.css';
 
@@ -29,8 +28,24 @@ export interface TabsProps {
   gutter?: ResponsiveSpace;
   reserveHitArea?: boolean;
   data?: DataAttributeMap;
-  divider?: TabListContextValues['divider'];
+  divider?: 'full' | 'minimal' | 'none';
 }
+
+const getActiveTabLinePosition = (
+  button: HTMLElement | null,
+): { left: number; width: number } => {
+  if (!button) {
+    return { left: 0, width: 0 };
+  }
+
+  const computedStyle = getComputedStyle(button);
+  const elWidth = button.getBoundingClientRect().width;
+  const paddingLeft = parseFloat(computedStyle.paddingLeft);
+  const paddingRight = parseFloat(computedStyle.paddingRight);
+  const width = elWidth - paddingLeft - paddingRight;
+
+  return { left: button.offsetLeft + paddingLeft, width };
+};
 
 export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
@@ -56,10 +71,11 @@ export const Tabs = (props: TabsProps) => {
     throw new Error('Tabs rendered outside TabsProvider');
   }
 
-  const { dispatch, a11y } = tabsContext;
+  const { dispatch, a11y, selectedIndex, selectedItem } = tabsContext;
   const tabItems: Array<string | number> = [];
 
-  const tabs = Children.map(flattenChildren(children), (tab, index) => {
+  const childTabs = flattenChildren(children);
+  const tabs = childTabs.map((tab, index) => {
     assert(
       // @ts-expect-error
       typeof tab === 'object' && tab.type.__isTab__,
@@ -74,7 +90,7 @@ export const Tabs = (props: TabsProps) => {
         value={{
           tabListItemIndex: index,
           scrollContainer: tabsRef.current,
-          divider,
+          isLast: childTabs.length === index + 1,
         }}
       >
         {tab}
@@ -111,6 +127,14 @@ export const Tabs = (props: TabsProps) => {
     return () => window.removeEventListener('resize', updateMask);
   }, [updateMask]);
 
+  const selectedTabIndex =
+    typeof selectedItem !== 'undefined'
+      ? tabItems.indexOf(selectedItem)
+      : selectedIndex;
+  const selectedTabButtonEl =
+    tabsContext.tabButtonElements[selectedTabIndex.toString()];
+  const activeTab = getActiveTabLinePosition(selectedTabButtonEl);
+
   return (
     <Box>
       <Box
@@ -133,14 +157,48 @@ export const Tabs = (props: TabsProps) => {
               className={align === 'center' ? styles.marginAuto : undefined}
               paddingX={gutter}
               flexWrap="nowrap"
+              position="relative"
+              zIndex={1}
             >
               <Box
                 {...a11y.tabListProps({ label })}
                 display="flex"
                 {...buildDataAttributes({ data, validateRestProps: restProps })}
                 flexWrap="nowrap"
+                position="relative"
               >
                 {tabs}
+                {divider === 'minimal' ? (
+                  <Box
+                    position="absolute"
+                    bottom={0}
+                    left={0}
+                    right={0}
+                    className={styles.divider}
+                  >
+                    <Divider />
+                  </Box>
+                ) : null}
+                {selectedTabButtonEl ? (
+                  <Box
+                    component="span"
+                    position="absolute"
+                    display="block"
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    background="formAccent"
+                    pointerEvents="none"
+                    className={[
+                      styles.tabUnderline,
+                      styles.tabUnderlineActiveDarkMode,
+                    ]}
+                    style={assignInlineVars({
+                      [styles.underlineLeft]: activeTab.left.toString(),
+                      [styles.underlineWidth]: activeTab.width.toString(),
+                    })}
+                  />
+                ) : null}
               </Box>
             </Box>
             {divider === 'full' ? (

@@ -15,6 +15,7 @@ import {
   TAB_LIST_UPDATED,
   TAB_LIST_FOCUSED,
   TAB_PANELS_UPDATED,
+  TAB_BUTTON_REGISTER,
 } from './Tabs.actions';
 import tabA11y from './tabA11y';
 
@@ -23,6 +24,7 @@ interface State {
   focusedTabIndex: number | null;
   tabItems: Array<string | number>;
   panels: number[];
+  tabButtonElements: Record<string, HTMLElement>;
 }
 
 interface TabsContextValues extends State {
@@ -97,6 +99,15 @@ export const TabsProvider = ({
             selectedIndex: action.value,
           };
         }
+        case TAB_BUTTON_REGISTER: {
+          return {
+            ...state,
+            tabButtonElements: {
+              ...state.tabButtonElements,
+              [action.tabListItemIndex.toString()]: action.tabEl,
+            },
+          };
+        }
         case TAB_LIST_FOCUSED: {
           return {
             ...state,
@@ -126,6 +137,7 @@ export const TabsProvider = ({
       focusedTabIndex: null,
       tabItems: [],
       panels: [],
+      tabButtonElements: {},
     },
   );
 
@@ -133,9 +145,10 @@ export const TabsProvider = ({
     <TabsContext.Provider
       value={{
         ...tabsState,
-        selectedIndex: selectedItem
-          ? tabsState.tabItems.indexOf(selectedItem)
-          : tabsState.selectedIndex,
+        selectedIndex:
+          typeof selectedItem !== 'undefined'
+            ? tabsState.tabItems.indexOf(selectedItem)
+            : tabsState.selectedIndex,
         selectedItem,
         dispatch,
         a11y: tabA11y({ uniqueId: id }),
