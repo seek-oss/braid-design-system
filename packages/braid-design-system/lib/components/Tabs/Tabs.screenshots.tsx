@@ -16,6 +16,100 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 1200],
   examples: [
     {
+      label: 'Active indicator - basic',
+      Example: ({ id }) => (
+        <Stack space="medium">
+          {['1', '2', '3'].map((item) => (
+            <TabsProvider id={id} selectedItem={item} key={item}>
+              <Tabs label="Standard tabs">
+                <Tab item="1">First Tab</Tab>
+                <Tab item="2">Middle Tab</Tab>
+                <Tab item="3">Last Tab</Tab>
+              </Tabs>
+            </TabsProvider>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Active indicator - with icons',
+      Example: ({ id }) => (
+        <Stack space="medium">
+          {['1', '2', '3'].map((item) => (
+            <TabsProvider id={id} selectedItem={item} key={item}>
+              <Tabs label="Icon tabs">
+                <Tab item="1" icon={<IconHome />}>
+                  First Tab
+                </Tab>
+                <Tab item="2" icon={<IconHome />}>
+                  Middle Tab
+                </Tab>
+                <Tab item="3" icon={<IconHome />}>
+                  Last Tab
+                </Tab>
+              </Tabs>
+            </TabsProvider>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Active indicator - with badge',
+      Example: ({ id }) => (
+        <Stack space="medium">
+          {['1', '2', '3'].map((item) => (
+            <TabsProvider id={id} selectedItem={item} key={item}>
+              <Tabs label="Badge tabs">
+                <Tab item="1" badge={<Badge tone="positive">New</Badge>}>
+                  First Tab
+                </Tab>
+                <Tab item="2" badge={<Badge tone="positive">New</Badge>}>
+                  Middle Tab
+                </Tab>
+                <Tab item="3" badge={<Badge tone="positive">New</Badge>}>
+                  Last Tab
+                </Tab>
+              </Tabs>
+            </TabsProvider>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Active indicator - with icons and badge',
+      Example: ({ id }) => (
+        <Stack space="medium">
+          {['1', '2', '3'].map((item) => (
+            <TabsProvider id={id} selectedItem={item} key={item}>
+              <Tabs label="Badge tabs">
+                <Tab
+                  item="1"
+                  icon={<IconHome />}
+                  badge={<Badge tone="positive">New</Badge>}
+                >
+                  First Tab
+                </Tab>
+                <Tab
+                  item="2"
+                  icon={<IconHome />}
+                  badge={<Badge tone="positive">New</Badge>}
+                >
+                  Middle Tab
+                </Tab>
+                <Tab
+                  item="3"
+                  icon={<IconHome />}
+                  badge={<Badge tone="positive">New</Badge>}
+                >
+                  Last Tab
+                </Tab>
+              </Tabs>
+            </TabsProvider>
+          ))}
+        </Stack>
+      ),
+    },
+    {
       label: 'Left aligned',
       Example: ({ id }) => (
         <TabsProvider id={id}>

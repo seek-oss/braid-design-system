@@ -3,7 +3,6 @@ import assert from 'assert';
 import flattenChildren from 'react-keyed-flatten-children';
 import { TabsContext } from './TabsProvider';
 import { TAB_PANELS_UPDATED } from './Tabs.actions';
-import { TabPanel } from './TabPanel';
 import { TabPanelsContext } from './TabPanelsContext';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
@@ -27,7 +26,8 @@ export const TabPanels = ({
 
   const panels = Children.map(flattenChildren(children), (panel, index) => {
     assert(
-      typeof panel === 'object' && panel.type === TabPanel,
+      // @ts-expect-error
+      typeof panel === 'object' && panel.type.__isTabPanel__,
       'Only TabPanel elements can be direct children of a TabPanels',
     );
 

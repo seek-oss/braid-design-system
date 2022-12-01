@@ -1,4 +1,5 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { vars } from '../../themes/vars.css';
 
@@ -10,8 +11,16 @@ export const tab = style({
   },
 });
 
-export const hairlineMarginLeft = style({
-  marginLeft: 1,
+export const cropToIconX = style({
+  marginLeft: -2,
+});
+
+export const hoveredTab = style({
+  selectors: {
+    [`${tab}:hover &`]: {
+      opacity: 1,
+    },
+  },
 });
 
 export const nowrap = style({
@@ -51,8 +60,18 @@ export const tabFocusRing = style({
   },
 });
 
+export const underlineLeft = createVar();
+export const underlineWidth = createVar();
+
+const initialUnderlineWidth = 10;
 export const tabUnderline = style({
-  height: 2,
+  height: vars.borderWidth.large,
+  width: initialUnderlineWidth,
+  transformOrigin: '0 0',
+  transition: 'transform .3s ease',
+  transform: `translateZ(0) translateX(${calc(underlineLeft).multiply(
+    '1px',
+  )}) scaleX(${calc(underlineWidth).divide(initialUnderlineWidth)})`,
 });
 
 export const tabUnderlineActiveDarkMode = style(
@@ -62,18 +81,6 @@ export const tabUnderlineActiveDarkMode = style(
     },
   }),
 );
-
-export const tabUnderlineHover = style({
-  selectors: {
-    [`${tab}:hover &`]: {
-      opacity: 1,
-    },
-  },
-});
-
-export const tabUnderlineAnimation = style({
-  transform: 'translateY(100%)',
-});
 
 export const tabPanel = style({});
 
