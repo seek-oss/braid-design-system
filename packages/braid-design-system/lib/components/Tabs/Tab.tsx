@@ -15,6 +15,7 @@ import {
   TAB_BUTTON_TAB,
   TAB_LIST_FOCUSED,
   TAB_BUTTON_CLICK,
+  TAB_BUTTON_REGISTER,
 } from './Tabs.actions';
 import type { TextProps } from '../Text/Text';
 import { Text } from '../Text/Text';
@@ -23,7 +24,6 @@ import buildDataAttributes from '../private/buildDataAttributes';
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import type { BadgeProps } from '../Badge/Badge';
-import { Divider } from '../Divider/Divider';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
@@ -37,6 +37,7 @@ export interface TabProps {
   data?: DataAttributeMap;
 }
 
+const paddingX = 'small';
 export const Tab = ({
   children,
   data,
@@ -86,14 +87,13 @@ export const Tab = ({
     a11y,
     onChange,
   } = tabsContext;
-  const { tabListItemIndex, scrollContainer, divider } = tabListContext;
+  const { tabListItemIndex, scrollContainer, isLast } = tabListContext;
   const isSelected =
     selectedIndex > -1
       ? selectedIndex === tabListItemIndex
       : selectedItem === item;
   const isFocused = focusedTabIndex === tabListItemIndex;
 
-  const paddingX = 'small';
   const { grid, space } = useSpace();
 
   useEffect(() => {
@@ -131,7 +131,17 @@ export const Tab = ({
     }
 
     firstRenderRef.current = false;
-  }, [isSelected, isFocused, scrollContainer, space, paddingX, grid, isMobile]);
+  }, [isSelected, isFocused, scrollContainer, space, grid, isMobile]);
+
+  useEffect(() => {
+    if (tabRef.current) {
+      dispatch({
+        type: TAB_BUTTON_REGISTER,
+        tabEl: tabRef.current,
+        tabListItemIndex,
+      });
+    }
+  }, [dispatch, tabListItemIndex]);
 
   const onKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
@@ -211,79 +221,65 @@ export const Tab = ({
       outline="none"
       position="relative"
       zIndex={1}
-      paddingX={paddingX}
+      paddingLeft={tabListItemIndex > 0 ? paddingX : undefined}
+      paddingRight={!isLast ? paddingX : undefined}
       paddingY="medium"
       className={styles.tab}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Text
-        {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
-        weight="medium"
-        align="center"
-        tone={isSelected ? 'formAccent' : 'secondary'}
-        icon={icon}
+      {/* Inactive */}
+      <Box
+        component="span"
+        display="block"
+        position="absolute"
+        aria-hidden
+        transition="fast"
+        opacity={isSelected ? 0 : undefined}
+        className={icon ? styles.cropToIconX : undefined}
       >
-        {children}
-      </Text>
+        <Text tone="secondary" icon={icon}>
+          {children}
+        </Text>
+      </Box>
+
+      {/* Hover */}
+      <Box
+        component="span"
+        display="block"
+        position="absolute"
+        aria-hidden
+        transition="fast"
+        opacity={0}
+        className={[
+          !isSelected ? styles.hoveredTab : undefined,
+          icon ? styles.cropToIconX : undefined,
+        ]}
+      >
+        <Text icon={icon}>{children}</Text>
+      </Box>
+
+      {/* Selected */}
+      <Box
+        component="span"
+        display="block"
+        transition="fast"
+        opacity={!isSelected ? 0 : undefined}
+        className={icon ? styles.cropToIconX : undefined}
+      >
+        <Text
+          {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
+          tone="formAccent"
+          icon={icon}
+        >
+          {children}
+        </Text>
+      </Box>
+
       {badge ? (
         <Box component="span" paddingLeft="xsmall">
           {cloneElement(badge, { bleedY: true })}
         </Box>
       ) : null}
-
-      <Box
-        component="span"
-        position="absolute"
-        inset={0}
-        overflow="hidden"
-        pointerEvents="none"
-      >
-        {divider === 'minimal' ? (
-          <Box
-            component="span"
-            position="absolute"
-            zIndex={1}
-            left={0}
-            right={0}
-            bottom={0}
-            className={styles.divider}
-          >
-            <Divider />
-          </Box>
-        ) : null}
-        <Box
-          component="span"
-          background={{ lightMode: 'neutral', darkMode: 'neutralLight' }}
-          position="absolute"
-          zIndex={2}
-          transition="fast"
-          left={0}
-          right={0}
-          bottom={0}
-          opacity={0}
-          className={[
-            styles.tabUnderlineHover,
-            styles.tabUnderline,
-            tabListItemIndex > 0 ? styles.hairlineMarginLeft : null,
-          ]}
-        />
-        <Box
-          component="span"
-          background="formAccent"
-          position="absolute"
-          zIndex={2}
-          transition="fast"
-          left={0}
-          right={0}
-          bottom={0}
-          className={[
-            styles.tabUnderline,
-            styles.tabUnderlineActiveDarkMode,
-            !isSelected ? styles.tabUnderlineAnimation : undefined,
-            tabListItemIndex > 0 ? styles.hairlineMarginLeft : null,
-          ]}
-        />
-      </Box>
       <Overlay
         component="span"
         zIndex={1}

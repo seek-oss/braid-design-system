@@ -10,6 +10,7 @@ export const TAB_BUTTON_CLICK = 7;
 export const TAB_LIST_UPDATED = 8;
 export const TAB_LIST_FOCUSED = 9;
 export const TAB_PANELS_UPDATED = 10;
+export const TAB_BUTTON_REGISTER = 11;
 
 export type Action =
   | { type: typeof TAB_BUTTON_RIGHT }
@@ -17,6 +18,11 @@ export type Action =
   | { type: typeof TAB_BUTTON_HOME }
   | { type: typeof TAB_BUTTON_END }
   | { type: typeof TAB_BUTTON_TAB }
+  | {
+      type: typeof TAB_BUTTON_REGISTER;
+      tabEl: HTMLElement;
+      tabListItemIndex: number;
+    }
   | { type: typeof TAB_BUTTON_ENTER; value: number }
   | { type: typeof TAB_BUTTON_SPACE; value: number }
   | { type: typeof TAB_BUTTON_CLICK; value: number }

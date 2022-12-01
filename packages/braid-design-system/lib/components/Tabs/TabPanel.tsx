@@ -63,3 +63,6 @@ export const TabPanel = ({
     </Box>
   );
 };
+
+TabPanel.displayName = 'TabPanel';
+TabPanel.__isTabPanel__ = true;
