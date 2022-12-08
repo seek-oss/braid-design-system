@@ -18,7 +18,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^29.0.0",
     "@types/lodash": "^4.14.168",
-    "esbuild": "^0.14.39",
+    "esbuild": "^0.15.13",
     "esbuild-register": "^3.3.3",
     "fs-extra": "^10.1.0",
     "lodash": "^4.17.21",
