@@ -1,5 +1,20 @@
 # braid-design-system
 
+## 31.22.2
+
+### Patch Changes
+
+- **Tab, Tabs:** Updated visual design ([#1180](https://github.com/seek-oss/braid-design-system/pull/1180))
+
+  The appearance of a `Tab` has been updated. Changes include:
+
+  - Tab button use `regular` text weight
+  - Hover state of inactive tab toggles `neutral` tone instead of underline
+  - Active tab indicator underlines content only, without the horizontal gutter and animates between tabs
+  - The `minimal` divider under `Tabs` underlines content only, without the horizontal gutter
+
+- The `braid-upgrade` command now tries to preserve newlines as best as possible ([#1194](https://github.com/seek-oss/braid-design-system/pull/1194))
+
 ## 31.22.1
 
 ### Patch Changes

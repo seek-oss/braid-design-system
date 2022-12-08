@@ -2945,5 +2945,17 @@
   {
     "version": "31.22.1",
     "updates": []
+  },
+  {
+    "version": "31.22.2",
+    "updates": [
+      {
+        "updated": [
+          "Tab",
+          "Tabs"
+        ],
+        "summary": "**Tab, Tabs:** Updated visual design\n\nThe appearance of a `Tab` has been updated. Changes include:\n- Tab button use `regular` text weight\n- Hover state of inactive tab toggles `neutral` tone instead of underline\n- Active tab indicator underlines content only, without the horizontal gutter and animates between tabs\n- The `minimal` divider under `Tabs` underlines content only, without the horizontal gutter"
+      }
+    ]
   }
 ]
