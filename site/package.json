@@ -57,7 +57,7 @@
     "sku": "11.7.0",
     "webpack": "^5.0.0"
   },
-  "skuSkipPostIntall": true,
+  "skuSkipPostInstall": true,
   "skuSkipConfigure": true,
   "skuSkipValidatePeerDeps": true
 }
