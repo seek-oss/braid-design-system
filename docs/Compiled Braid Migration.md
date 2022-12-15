@@ -58,7 +58,9 @@ While no existing **public** APIs have changed, this is a breaking change that w
 
 Common usages of private Braid APIs are documented below, as well as suggested remediations.
 If you depend on a private API that is not listed below, or you depend on an API that has
-no public alternative, please reach out in the #braid-support Slack channel.
+no public alternative, please reach out in the [#braid-support] Slack channel.
+
+[#braid-support]: https://seekchat.slack.com/channels/braid-support
 
 ### Issues Caused by Automatic Imports
 
