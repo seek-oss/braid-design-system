@@ -111,8 +111,7 @@ please reach out in the [#braid-support] Slack channel.
 
 Custom components that forward props to Braid components may need access to the types of some of the
 Braid component's props.
-These types should be derived from the comopnent itself using the `ComponentProps` type available
-from `react`:
+These types should be derived from the component itself using the `ComponentProps` utility type from `react`.
 
 ```diff
 // Error in Braid v32
@@ -186,7 +185,11 @@ Your app will need to be on at least `sku@11.6.0` in order to use typescript 4.7
 
 [instantiation expression]: https://devblogs.microsoft.com/typescript/announcing-typescript-4-7-beta/#instantiation-expressions
 
-### Toast types
+### Hook types
+
+Deriving the return type from a hook.
+
+#### useToast type
 
 Braid does not expose a public `Toast` component.
 Instead, toasts are shown by calling the function returned from the [`useToast` hook][usetoast docs].
