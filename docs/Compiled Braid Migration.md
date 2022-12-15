@@ -56,13 +56,23 @@ Private APIs may change behaviour, be renamed, move location, or be removed at a
 As of `braid-design-system@32.0.0`, it is no longer possible to import APIs that are not exposed from explicit entrypoints.
 While no existing **public** APIs have changed, this is a breaking change that will affect any consumers that depend on private APIs.
 
-Common usages of private Braid APIs are documented below, as well as suggested remediations.
-If you depend on a private API that is not listed below, or you depend on an API that has
+## Patterns Requiring Migration
+
+Common usages of private Braid APIs are documented below, as well as suggested remediation.
+
+> If you depend on a private API that is not listed below, or you depend on an API that has
 no public alternative, please reach out in the [#braid-support] Slack channel.
 
 [#braid-support]: https://seekchat.slack.com/channels/braid-support
 
-### Issues Caused by Automatic Imports
+- [Internal Import Paths](#internal-import-paths)
+- [Component Prop Types](#component-prop-types)
+- [Hook Types](#hook-types)
+- [Custom Icons](#custom-icons)
+
+### Internal Import Paths
+
+Typically caused by automatic import suggestions by IDEs.
 
 #### Public Components
 
