@@ -1,7 +1,7 @@
 # Compiled Braid migration
 
-`braid-design-system@32.0.0` includes some significant changes that affect how the package is
-used.
+The release of `v32` includes some significant changes that affect how the package is compiled before distribution.
+This document provides guidance for consumers needing to migrate away from accessing Braid's internal source APIs.
 
 ## Compiled Source Code
 
