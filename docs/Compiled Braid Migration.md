@@ -41,11 +41,11 @@ However, it was also possible to import private Braid APIs that were not intende
 import { vars as publicVars } from 'braid-design-system/css';
 import { vars as privateVars } from 'braid-design-system/lib/themes/vars.css';
 
-// Valid: fontFamily is available on private vars
-const { fontFamily } = privateVars;
-
 // Error: fontFamily is not available on public vars
 const { fontFamily } = publicVars;
+
+// fontFamily is available on private vars
+const { fontFamily } = privateVars;
 ```
 
 In the case of `vars`, the publicly exported `vars` object contains a subset of the properties available within the private `vars` object.
