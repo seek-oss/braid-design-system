@@ -49,14 +49,13 @@ const { fontFamily } = publicVars;
 ```
 
 In the case of `vars`, the publicly exported `vars` object contains a subset of the properties available within the private `vars` object.
-This was done intentionally in order only expose the CSS variables that are relevant to Braid consumers.
+This was done intentionally in order to only expose the CSS variables that are relevant to Braid consumers.
 
 In general, private APIs should be considered implementation detail and **should not** be depended on.
 Private APIs may change behaviour/get renamed/move location/be removed at any point in time without warning, so depending on them can result in unintended breaking changes.
 
-For these reasons, as of `braid-design-system@32.0.0`, it is no longer possible to import APIs that
-are not exposed from explicit entrypoints.
-This is a breaking change that will affect any consumers that depend on private APIs.
+As of `braid-design-system@32.0.0`, it is no longer possible to import APIs that are not exposed from explicit entrypoints.
+While no existing **public** APIs have changed, this is a breaking change that will affect any consumers that depend on private APIs.
 
 Common usages of private Braid APIs are documented below, as well as suggested remediations.
 If you depend on a private API that is not listed below, or you depend on an API that has
