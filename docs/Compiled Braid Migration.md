@@ -21,8 +21,7 @@ Braid's public API is not affected by this change.
 
 ## Explicit Entrypoints
 
-In previous versions of Braid, it was possible to import APIs from any file within the package, even
-if that file was never intentionally exposed:
+In previous versions of Braid, it was possible to import APIs from any path within the package, even if that path was never intentionally exposed publicly:
 
 ```tsx
 // Standard method of importing components
@@ -51,8 +50,8 @@ const { fontFamily } = privateVars;
 In the case of `vars`, the publicly exported `vars` object contains a subset of the properties available within the private `vars` object.
 This was done intentionally in order to only expose the CSS variables that are relevant to Braid consumers.
 
-In general, private APIs should be considered implementation detail and **should not** be depended on.
-Private APIs may change behaviour/get renamed/move location/be removed at any point in time without warning, so depending on them can result in unintended breaking changes.
+In general, private APIs should be considered implementation detail and **should not** be depended on externally.
+Private APIs may change behaviour, be renamed, move location, or be removed at any point in time without warning, so depending on them can result in unintended breaking changes.
 
 As of `braid-design-system@32.0.0`, it is no longer possible to import APIs that are not exposed from explicit entrypoints.
 While no existing **public** APIs have changed, this is a breaking change that will affect any consumers that depend on private APIs.
@@ -106,7 +105,7 @@ To migrate, these should be imported via the public `css` entrypoint:
 The `vars` object imported from `braid-design-system/lib/themes/vars.css` contains extra properties
 compared to the `vars` object imported from `braid-design-system/css`.
 If you depend on any of these extra properties and cannot find alternatives to replace them with,
-please reach out in the #braid-support Slack channel.
+please reach out in the [#braid-support] Slack channel.
 
 ### Component Prop Types
 
@@ -129,12 +128,12 @@ interface MyComponentProps {
 }
 ```
 
-### Autosuggest props
+#### Autosuggest props
 
 If your component wraps Braid's `Autosuggest` component, then you need to derive its props in a
 slightly different way.
 This is because `Autosuggest` is a generic component, so just using `ComponentProps<typeof Autosuggest>` will
-get you the prop typeinstantiated with the type `unknown`, effectively allowing any value to be
+get you the prop type instantiated with the type `unknown`, effectively allowing any value to be
 passed into the `Autosuggest` :
 
 ```tsx
@@ -232,7 +231,7 @@ should evaluate in order to migrate off this API:
 [braid icons]: https://seek-oss.github.io/braid-design-system/foundations/iconography/browse/
 [custom icon docs]: https://seek-oss.github.io/braid-design-system/foundations/iconography#using-custom-icons
 
-### Icon Slot Prop Type
+#### Icon Slot Prop Type
 
 If you wish to provide an icon slot on a component, you can derive the type of an icon component from an
 existing Braid component with an icon slot:
