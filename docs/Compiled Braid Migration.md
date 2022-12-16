@@ -197,6 +197,21 @@ Your app will need to be on at least `sku@11.6.0` in order to use typescript 4.7
 
 [instantiation expression]: https://devblogs.microsoft.com/typescript/announcing-typescript-4-7-beta/#instantiation-expressions
 
+#### Icon Slot Prop Type
+
+If you wish to provide an icon slot on a component, you can derive the type of an icon component from an existing Braid icon component:
+
+```tsx
+// Derive type from a basic icon with no props, such as `IconAdd`
+import type { IconAdd } from 'braid-design-system';
+import { ComponentProps, ReactElement } from 'react';
+
+type IconProps = ComponentProps<typeof IconAdd>;
+
+interface MyComponentProps {
+  icon?: ReactElement<IconProps>;
+}
+
 ### Hook types
 
 Deriving the return type from a hook.
@@ -254,23 +269,3 @@ Please ensure you read the [Braid custom icon docs][custom icon docs] to ensure 
 [braid icons]: https://seek-oss.github.io/braid-design-system/foundations/iconography/browse/
 [custom icon docs]: https://seek-oss.github.io/braid-design-system/foundations/iconography#using-custom-icons
 
-#### Icon Slot Prop Type
-
-If you wish to provide an icon slot on a component, you can derive the type of an icon component from an
-existing Braid component with an icon slot:
-
-```diff
-// Error in Braid v32
--import { UseIconProps } from 'braid-design-system/lib/hooks/useIcon';
-// Derive type from Button instead
-+import { Button } from 'braid-design-system';
-+import { ComponentProps, ReactElement } from 'react';
-
-+type ElementProps<T> = T extends ReactElement<infer P> ? P : never;
-+type IconProps = ElementProps<ComponentProps<typeof Button>['icon']>;
-
-interface MyComponentProps {
--  icon?: FunctionComponent<UseIconProps>;
-+  icon?: FunctionComponent<IconProps>;
-}
-```
