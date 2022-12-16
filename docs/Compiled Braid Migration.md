@@ -136,7 +136,7 @@ These types should be derived from the component itself using the `ComponentProp
 -import { TextProps } from 'braid-design-system/lib/components/Text/Text';
 // Derive props from `Text` instead
 +import { Text } from 'braid-design-system';
-+import { ComponentProps } from 'react';
++import type { ComponentProps } from 'react';
 
 +type TextProps = ComponentProps<typeof Text>;
 
@@ -154,7 +154,7 @@ get you the prop type instantiated with the type `unknown`, effectively allowing
 passed into the `Autosuggest` :
 
 ```tsx
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { Autosuggest } from 'braid-design-system';
 
 type AutosuggestProps = ComponentProps<typeof Autosuggest>;
@@ -177,7 +177,7 @@ This feature allows you to create a specialized version of a generic function th
 specific types. Since functional components are just functions, we can do this for components too:
 
 ```tsx
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { Autosuggest } from 'braid-design-system';
 
 // A specialized Autosuggest component that only accepts `string`s
@@ -209,8 +209,9 @@ If you wish to provide an icon slot on a component, you can derive the type of a
 
 ```tsx
 // Derive type from a basic icon with no props, such as `IconAdd`
+// Since we're only using `IconAdd` for its type, this can be a type-only import
 import type { IconAdd } from 'braid-design-system';
-import { ComponentProps, ReactElement } from 'react';
+import type { ComponentProps, ReactElement } from 'react';
 
 type IconProps = ComponentProps<typeof IconAdd>;
 
