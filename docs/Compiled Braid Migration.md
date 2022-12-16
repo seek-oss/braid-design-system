@@ -1,4 +1,4 @@
-# Compiled Braid migration
+# Compiled Braid Migration
 
 The release of `v32` includes some significant changes that affect how the package is compiled before distribution.
 This document provides guidance for consumers needing to migrate away from accessing Braid's internal source APIs.
@@ -7,14 +7,14 @@ This document provides guidance for consumers needing to migrate away from acces
 
 Braid's source code is written in TypeScript.
 Up until now, the `braid-design-system` package contained that same TypeScript code, pushing the
-burden of compiling that code into JavaScript onto the consumer.
+burden of compiling that code to JavaScript onto the consumer.
 SEEK's front-end development toolkit [sku] knows to compile Braid's source code as it is an implicit
-[compile package].
+[compiled package][compile package].
 
-As of `v32.0.0`, Braid's source code is now distributed as JavaScript, so consumers no longer need
+As of `v32`, the `braid-design-system` package is distributed as JavaScript, so consumers no longer need
 to compile it themselves.
 This should bring noticeable build time improvements to consumers' local and CI builds.
-Braid's public API is not affected by this change.
+Braid's public API remains unchanged and is not affected by the aforementioned modification.
 
 [sku]: https://github.com/seek-oss/sku
 [compile package]: https://seek-oss.github.io/sku/#/./docs/extra-features?id=compile-packages
@@ -40,11 +40,11 @@ However, it was also possible to import private Braid APIs that were not intende
 import { vars as publicVars } from 'braid-design-system/css';
 import { vars as privateVars } from 'braid-design-system/lib/themes/vars.css';
 
-// Error: fontFamily is not available on public vars
-const { fontFamily } = publicVars;
-
 // fontFamily is available on private vars
 const { fontFamily } = privateVars;
+
+// Error: fontFamily is not available on public vars. This is by design; see explanation below
+const { fontFamily } = publicVars;
 ```
 
 In the case of `vars`, the publicly exported `vars` object contains a subset of the properties available within the private `vars` object.
@@ -54,7 +54,7 @@ In general, private APIs should be considered implementation detail and **should
 Private APIs may change behaviour, be renamed, move location, or be removed at any point in time without warning, so depending on them can result in unintended breaking changes.
 
 As of `braid-design-system@32.0.0`, it is no longer possible to import APIs that are not exposed from explicit entrypoints.
-While no existing **public** APIs have changed, this is a breaking change that will affect any consumers that depend on private APIs.
+While no existing **public** APIs have changed, this is a breaking change _only for consumers that depend on private APIs_.
 
 ## Patterns Requiring Migration
 
