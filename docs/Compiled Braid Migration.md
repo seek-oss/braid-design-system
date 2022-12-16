@@ -211,6 +211,7 @@ type IconProps = ComponentProps<typeof IconAdd>;
 interface MyComponentProps {
   icon?: ReactElement<IconProps>;
 }
+```
 
 ### Hook types
 
