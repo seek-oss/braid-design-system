@@ -16,6 +16,12 @@ to compile it themselves.
 This should bring noticeable build time improvements to consumers' local and CI builds.
 Braid's public API remains unchanged and is not affected by the aforementioned modification.
 
+---
+
+### ⚠️ **_As a result of the above change, it is no longer possible to import APIs that are not exposed from explicit entrypoints._** ⚠️
+
+---
+
 [sku]: https://github.com/seek-oss/sku
 [compile package]: https://seek-oss.github.io/sku/#/./docs/extra-features?id=compile-packages
 
@@ -61,7 +67,7 @@ While no existing **public** APIs have changed, this is a breaking change _only 
 Common usages of private Braid APIs are documented below, as well as suggested remediation.
 
 > If you depend on a private API that is not listed below, or you depend on an API that has
-no public alternative, please reach out in the [#braid-support] Slack channel.
+> no public alternative, please reach out in the [#braid-support] Slack channel.
 
 [#braid-support]: https://seekchat.slack.com/channels/braid-support
 
@@ -256,7 +262,7 @@ should evaluate in order to migrate off this API:
 
 #### Migrate to a Braid icon
 
-Braid’s iconography suite has expanded over the years, and your custom icon may have a suitable replacement available in Braid. Consider whether the icon could be replaced by an existing [Braid icon][braid icons]. 
+Braid’s iconography suite has expanded over the years, and your custom icon may have a suitable replacement available in Braid. Consider whether the icon could be replaced by an existing [Braid icon][braid icons].
 
 #### Contribute your icon back to Braid
 
@@ -269,4 +275,3 @@ Please ensure you read the [Braid custom icon docs][custom icon docs] to ensure 
 
 [braid icons]: https://seek-oss.github.io/braid-design-system/foundations/iconography/browse/
 [custom icon docs]: https://seek-oss.github.io/braid-design-system/foundations/iconography#using-custom-icons
-
