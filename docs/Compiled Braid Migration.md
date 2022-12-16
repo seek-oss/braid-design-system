@@ -238,10 +238,18 @@ const MyComponent = ({ toast }: MyComponentProps) => {
 If you use the private `useIcon` API in a custom icon within your app, there are a few options you
 should evaluate in order to migrate off this API:
 
-1. Evaluate the usage of your custom icon across your app. If your icon is only used at one specific size,
-1. Consider whether the icon could be replaced by an existing [Braid icon][braid icons]. Braid's iconography suite has expanded over the years, and your custom icon may have a suitable replacement available in Braid.
-1. If there is no suitable replacement for your custom icon available within Braid, then it could be worth adding to Braid. If your icon represents something generic, and not something product specific (e.g. product logo), then it could be a good candidate for Braid. Please reach out in the #braid-support Slack channel if you think your custom icon would fit into Braid's iconography suite.
-1. If none of the above options are suitable for your custom icon, then you can migrate to the `IconRenderer` API. By using `IconRenderer`, you can benefit from the consistent styling and alignment afforded by the Braid icon API, with a few restrictions. Please ensure you read the [Braid custom icon docs][custom icon docs] to ensure you understand these restrictions while also adhering to accessibility requirements.
+#### Migrate to a Braid icon
+
+Braid’s iconography suite has expanded over the years, and your custom icon may have a suitable replacement available in Braid. Consider whether the icon could be replaced by an existing [Braid icon][braid icons]. 
+
+#### Contribute your icon back to Braid
+
+If there is no suitable replacement for your custom icon available within Braid, then it could be worth adding to Braid. If your icon represents something generic, and not something product specific (e.g. product logo), then it could be a good candidate for Braid. Please reach out in the [#braid-support] Slack channel if you think your custom icon would fit into Braid’s iconography suite.
+
+#### Using custom icons
+
+If none of the above options are suitable for your custom icon, then you can migrate to the `IconRenderer` API. By using `IconRenderer`, you can benefit from the consistent styling and alignment afforded by the Braid icon API.
+Please ensure you read the [Braid custom icon docs][custom icon docs] to ensure you understand the restrictions while also adhering to accessibility requirements.
 
 [braid icons]: https://seek-oss.github.io/braid-design-system/foundations/iconography/browse/
 [custom icon docs]: https://seek-oss.github.io/braid-design-system/foundations/iconography#using-custom-icons
