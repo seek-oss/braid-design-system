@@ -145,7 +145,7 @@ interface MyComponentProps {
 }
 ```
 
-#### Autosuggest props
+#### Autosuggest Props
 
 If your component wraps Braid's `Autosuggest` component, then you need to derive its props in a
 slightly different way.
@@ -172,7 +172,7 @@ const autosuggestValue: Value = {
 autosuggestValue.value = [1, 2, 3, 4, { whatever: 'you want' }];
 ```
 
-The correct way to derive `Autosuggest`'s props is to use [typescript 4.7's instantiation expression feature][instantiation expression].
+The correct way to derive `Autosuggest`'s props is to use [TypeScript 4.7's instantiation expression feature][instantiation expression].
 This feature allows you to create a specialized version of a generic function that only accepts
 specific types. Since functional components are just functions, we can do this for components too:
 
@@ -197,9 +197,9 @@ const autosuggestValue: Value = {
 autosuggestValue.value = 123;
 ```
 
-This has the obvious caveat that you must be on at least typescript 4.7 in order to use this
+This has the obvious caveat that you must be on at least TypeScript 4.7+ in order to use this
 feature.
-Your app will need to be on at least `sku@11.6.0` in order to use typescript 4.7.
+Your app will need to be on at least `sku@11.6.0` in order to use TypeScript 4.7.
 
 [instantiation expression]: https://devblogs.microsoft.com/typescript/announcing-typescript-4-7-beta/#instantiation-expressions
 
