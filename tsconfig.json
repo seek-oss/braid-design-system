@@ -4,6 +4,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "strict": true,
@@ -12,7 +13,7 @@
     "target": "es5",
     "paths": {
       "site/*": ["./site/src/*"],
-      "braid-src/*": ["./packages/braid-design-system/*"]
+      "braid-src/*": ["./packages/braid-design-system/src/*"]
     }
   },
   "include": ["./scripts"]

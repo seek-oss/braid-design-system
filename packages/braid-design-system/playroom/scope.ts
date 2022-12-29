@@ -1,1 +1,1 @@
-export { default } from '../lib/playroom/useScope';
+export { default } from '../src/lib/playroom/useScope';

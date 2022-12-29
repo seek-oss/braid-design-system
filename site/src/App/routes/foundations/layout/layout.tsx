@@ -29,7 +29,7 @@ import type { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
-import source from 'braid-design-system/lib/utils/source.macro';
+import source from 'braid-design-system/src/lib/utils/source.macro';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 
 type Space = 'none' | keyof typeof tokens.space;

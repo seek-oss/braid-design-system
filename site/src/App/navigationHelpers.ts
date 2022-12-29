@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy';
 import * as components from 'braid-src/lib/components';
-import * as testComponents from 'braid-src/test';
-import * as css from 'braid-src/css';
+import * as testComponents from 'braid-src/entries/test';
+import * as css from 'braid-src/entries/css';
 import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 import type { ComponentDocs, ComponentExample, CssDoc } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
@@ -11,8 +11,16 @@ const componentDocsContext = require.context(
   true,
   /.docs\.tsx$/,
 );
-
-const cssDocsContext = require.context('braid-src/css/', true, /.docs\.tsx$/);
+const cssDocsContext = require.context(
+  'braid-src/entries/css/',
+  true,
+  /.docs\.tsx$/,
+);
+const galleryContext = require.context(
+  'braid-src/lib/components/',
+  true,
+  /.gallery\.tsx$/,
+);
 
 export const getComponentDocs = (componentName: string) => {
   const normalizedComponentRoute = /^icon/i.test(componentName)
@@ -95,12 +103,6 @@ const getComponentNameFromFilename = (filename: string) => {
 
   return componentName;
 };
-
-const galleryContext = require.context(
-  'braid-src/lib/components/',
-  true,
-  /.gallery\.tsx$/,
-);
 
 export const galleryComponents = galleryContext.keys().map((filename) => ({
   name: getComponentNameFromFilename(filename),
