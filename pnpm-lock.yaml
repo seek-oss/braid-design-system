@@ -91,6 +91,16 @@ importers:
       ts-node: 10.8.0_jytyqnesmarciubgup2n7dsryu
       typescript: 4.9.3
 
+  fixtures/consumer:
+    specifiers:
+      braid-design-system: '*'
+      fast-glob: ^3.2.12
+      webpack: ^5.72.1
+    dependencies:
+      braid-design-system: link:../../packages/braid-design-system
+      fast-glob: 3.2.12
+      webpack: 5.72.1
+
   packages/braid-design-system:
     specifiers:
       '@babel/core': ^7.18.0
@@ -262,16 +272,6 @@ importers:
       '@types/babel__traverse': 7.18.0
       '@types/babel-plugin-tester': 9.0.5
       '@types/dedent': 0.7.0
-
-  packages/consumer:
-    specifiers:
-      braid-design-system: '*'
-      fast-glob: ^3.2.12
-      webpack: ^5.72.1
-    dependencies:
-      braid-design-system: link:../braid-design-system
-      fast-glob: 3.2.12
-      webpack: 5.72.1
 
   packages/generate-component-docs:
     specifiers:
