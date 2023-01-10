@@ -15,7 +15,7 @@ export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
-  component?: typeof validInlineComponents[number];
+  component?: (typeof validInlineComponents)[number];
   data?: DataAttributeMap;
   children: ReactNodeNoStrings;
 }

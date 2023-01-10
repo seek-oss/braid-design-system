@@ -45,7 +45,7 @@ importers:
       jest-watch-typeahead: ^2.1.0
       js-yaml: ^4.1.0
       nx: ^15.4.2
-      prettier: ^2.8.0
+      prettier: ^2.8.2
       renovate-config-seek: 0.4.0
       surge: ^0.23.1
       ts-node: ^10.8.0
@@ -88,7 +88,7 @@ importers:
       jest-watch-typeahead: 2.2.0_jest@29.1.2
       js-yaml: 4.1.0
       nx: 15.4.2
-      prettier: 2.8.0
+      prettier: 2.8.2
       renovate-config-seek: 0.4.0
       surge: 0.23.1
       ts-node: 10.8.0_jytyqnesmarciubgup2n7dsryu
@@ -239,7 +239,7 @@ importers:
       esbuild: ^0.15.13
       fast-glob: ^3.2.11
       ink: ^3.2.0
-      prettier: ^2.8.0
+      prettier: ^2.8.2
       react: ^18.2.0
       recast: ^0.21.1
       workerpool: ^6.2.1
@@ -259,7 +259,7 @@ importers:
       esbuild: 0.15.15
       fast-glob: 3.2.11
       ink: 3.2.0_iapumuv4e6jcjznwuxpf4tt22e
-      prettier: 2.8.0
+      prettier: 2.8.2
       react: 18.2.0
       recast: 0.21.1
       workerpool: 6.2.1
@@ -315,7 +315,7 @@ importers:
       panzoom: ^9.4.2
       playroom: 0.28.0
       polished: ^4.1.0
-      prettier: ^2.8.0
+      prettier: ^2.8.2
       react: ^18.2.0
       react-dom: ^18.2.0
       react-element-to-jsx-string: ^15.0.0
@@ -355,7 +355,7 @@ importers:
       panzoom: 9.4.2_6ozlkenow5f4yy4lstsbsrrv4i
       playroom: 0.28.0_biqbaboplfbrettd7655fr4n2y
       polished: 4.2.2
-      prettier: 2.8.0
+      prettier: 2.8.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-element-to-jsx-string: 15.0.0_biqbaboplfbrettd7655fr4n2y
@@ -5360,7 +5360,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       deepmerge: 4.2.2
-      prettier: 2.8.0
+      prettier: 2.8.2
     dev: true
 
   /@szmarczak/http-timer/1.1.2:
@@ -6237,7 +6237,7 @@ packages:
       fastest-validator: 1.12.0
       find-up: 5.0.0
       intl-messageformat: 9.13.0
-      prettier: 2.8.0
+      prettier: 2.8.2
     transitivePeerDependencies:
       - supports-color
 
@@ -7357,7 +7357,7 @@ packages:
       '@babel/core': 7.19.6
       '@types/babel-plugin-tester': 9.0.5
       lodash.mergewith: 4.6.2
-      prettier: 2.8.0
+      prettier: 2.8.2
       strip-indent: 3.0.0
 
   /babel-plugin-transform-react-remove-prop-types/0.4.24:
@@ -15864,7 +15864,7 @@ packages:
       parse-prop-types: 0.3.0_prop-types@15.8.1
       polished: 4.2.2
       portfinder: 1.0.28
-      prettier: 2.8.0
+      prettier: 2.8.2
       prop-types: 15.8.1
       query-string: 6.14.1
       re-resizable: 6.9.9_biqbaboplfbrettd7655fr4n2y
@@ -16604,8 +16604,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  /prettier/2.8.0:
-    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
+  /prettier/2.8.2:
+    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
 
@@ -18259,7 +18259,7 @@ packages:
       path-to-regexp: 6.2.1
       postcss: 8.4.14
       postcss-loader: 7.0.1_xvg4ntyrrwt57qzvggqcbeozu4
-      prettier: 2.8.0
+      prettier: 2.8.2
       pretty-ms: 7.0.1
       react: 18.2.0
       react-refresh: 0.14.0
@@ -18402,7 +18402,7 @@ packages:
       path-to-regexp: 6.2.1
       postcss: 8.4.14
       postcss-loader: 7.0.1_xvg4ntyrrwt57qzvggqcbeozu4
-      prettier: 2.8.0
+      prettier: 2.8.2
       pretty-ms: 7.0.1
       react: 18.2.0
       react-refresh: 0.14.0

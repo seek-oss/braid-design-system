@@ -17,7 +17,7 @@ export interface BleedProps {
   bottom?: ResponsiveSpace;
   left?: ResponsiveSpace;
   right?: ResponsiveSpace;
-  component?: typeof validBleedComponents[number];
+  component?: (typeof validBleedComponents)[number];
   data?: DataAttributeMap;
 }
 

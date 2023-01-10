@@ -18,7 +18,7 @@ export interface AccordionProps {
   dividers?: boolean;
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
-  space?: RequiredResponsiveValue<typeof validSpaceValues[number]>;
+  space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
 }
 
