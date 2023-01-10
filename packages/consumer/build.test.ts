@@ -8,7 +8,7 @@ const { SideEffectsFlagPlugin } = webpack.optimize;
 
 describe('build', () => {
   const cache = new Map();
-  const checkSideEffectts = (filePath: string): boolean => {
+  const checkSideEffects = (filePath: string): boolean => {
     // format the path the way Webpack does it internally
     const relativePath = `./${filePath}`;
     // https://github.com/webpack/webpack/blob/v5.72.1/lib/optimize/SideEffectsFlagPlugin.js#L89-L94
@@ -34,7 +34,7 @@ describe('build', () => {
 
     const filesWithSideEffects = srcFiles
       .sort()
-      .map((filePath) => checkSideEffectts(filePath) && filePath)
+      .map((filePath) => checkSideEffects(filePath) && filePath)
       .filter(Boolean);
 
     expect(filesWithSideEffects).toMatchSnapshot();
