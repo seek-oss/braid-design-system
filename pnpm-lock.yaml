@@ -36,7 +36,7 @@ importers:
       escape-string-regexp: ^4.0.0
       eslint: ^8.21.0
       eslint-config-seek: ^10.1.0
-      fast-glob: ^3.2.11
+      fast-glob: ^3.2.12
       fs-extra: ^10.1.0
       gh-pages: ^4.0.0
       jest: ^29.0.0
@@ -77,7 +77,7 @@ importers:
       escape-string-regexp: 4.0.0
       eslint: 8.21.0
       eslint-config-seek: 10.1.2_ysrbpudmimcglvncbjkczw2fle
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       fs-extra: 10.1.0
       gh-pages: 4.0.0
       jest: 29.1.2_2cnx3q6hfnpx7nryv75xx7ahte
@@ -231,7 +231,7 @@ importers:
       cli-progress: ^3.11.1
       dedent: ^0.7.0
       esbuild: ^0.15.13
-      fast-glob: ^3.2.11
+      fast-glob: ^3.2.12
       ink: ^3.2.0
       prettier: ^2.8.0
       react: ^18.2.0
@@ -251,7 +251,7 @@ importers:
       cli-progress: 3.11.1
       dedent: 0.7.0
       esbuild: 0.15.15
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       ink: 3.2.0_iapumuv4e6jcjznwuxpf4tt22e
       prettier: 2.8.0
       react: 18.2.0
@@ -266,9 +266,11 @@ importers:
   packages/consumer:
     specifiers:
       braid-design-system: '*'
+      fast-glob: ^3.2.12
       webpack: ^5.72.1
     dependencies:
       braid-design-system: link:../braid-design-system
+      fast-glob: 3.2.12
       webpack: 5.72.1
 
   packages/generate-component-docs:
@@ -9258,6 +9260,16 @@ packages:
       merge2: 1.4.1
       micromatch: 4.0.5
 
+  /fast-glob/3.2.12:
+    resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
+    engines: {node: '>=8.6.0'}
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.5
+
   /fast-glob/3.2.7:
     resolution: {integrity: sha512-rYGMRwip6lUMvYD3BTScMwT1HtAs2d71SMv66Vrxs0IekGZEjhM0pcMfjQPnknBt2zeCwQMEupiN02ZP4DiT1Q==}
     engines: {node: '>=8'}
@@ -10055,7 +10067,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 4.0.0
