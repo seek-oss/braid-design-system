@@ -265,7 +265,7 @@ importers:
 
   packages/consumer:
     specifiers:
-      braid-design-system: workspace:*
+      braid-design-system: '*'
       webpack: ^5.72.1
     dependencies:
       braid-design-system: link:../braid-design-system

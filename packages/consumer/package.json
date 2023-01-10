@@ -5,7 +5,7 @@
   "author": "SEEK",
   "license": "MIT",
   "dependencies": {
-    "braid-design-system": "workspace:*",
+    "braid-design-system": "*",
     "webpack": "^5.72.1"
   }
 }
