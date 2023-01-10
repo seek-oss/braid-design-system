@@ -81,9 +81,6 @@
   },
   "packageManager": "pnpm@7.8.0",
   "pnpm": {
-    "overrides": {
-      "rollup-plugin-dts": "5.0.0"
-    },
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch"
     }
