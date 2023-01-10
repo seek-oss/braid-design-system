@@ -104,12 +104,13 @@
     "themes/wireframe"
   ],
   "scripts": {
+    "build": "crackle package",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
     "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --auto-accept-changes master",
     "copy-codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "eslint": "eslint --cache .",
     "format": "eslint --cache --fix . && prettier --cache --write .",
-    "generate-icons": "tsx ./scripts/generateIcons.ts",
+    "generate-icons": "tsx ./scripts/generateIcons.cts",
     "prettier": "prettier --cache --list-different .",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "tsc": "tsc"
@@ -143,8 +144,6 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/generator": "^7.18.0",
-    "@crackle/cli": "0.0.0-vite-4-20221228070925",
-    "@crackle/core": "0.0.0-vite-4-20221228070925",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
