@@ -14,12 +14,11 @@
   "license": "MIT",
   "author": "SEEK",
   "sideEffects": [
-    "src/lib/themes/**/*",
-    "src/lib/css/atoms/**/*",
-    "src/lib/css/reset/**/*",
-    "src/entries/themes/**/*",
-    "**/reset/**/*",
-    "playroom/**/*",
+    "**/atoms/**",
+    "**/themes/**",
+    "**/reset/**",
+    "**/reset.*",
+    "playroom/**",
     "*.css.ts"
   ],
   "exports": {
