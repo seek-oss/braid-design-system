@@ -21,7 +21,7 @@ module.exports = {
     // Default values, but with 'ts' + 'tsx' support
     // (https://jestjs.io/docs/en/configuration.html#testmatch-array-string)
     '**/__tests__/**/*.(js|ts|tsx)',
-    '**/?(*.)+(spec|test).(js|ts|tsx)',
+    '**/(*.)+(spec|test).(js|ts|tsx)',
   ],
   testPathIgnorePatterns: [
     `<rootDir>${slash}(.*${slash})?(dist|node_modules)${slash}`,

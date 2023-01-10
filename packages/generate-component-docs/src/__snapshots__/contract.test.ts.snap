@@ -8002,6 +8002,7 @@ exports[`filterSuggestions 1`] = `
 {
   exportType: component,
   props: {
+    at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
