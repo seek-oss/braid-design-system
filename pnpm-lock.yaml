@@ -218,9 +218,9 @@ importers:
       '@babel/plugin-syntax-jsx': ^7.17.12
       '@babel/plugin-syntax-typescript': ^7.17.12
       '@babel/traverse': ^7.18.11
-      '@types/babel-plugin-tester': ^9.0.5
       '@types/babel__core': ^7.1.19
       '@types/babel__traverse': ^7.18.0
+      '@types/babel-plugin-tester': ^9.0.5
       '@types/cli-progress': ^3.11.0
       '@types/dedent': ^0.7.0
       '@types/react': ^18.0.21
@@ -258,10 +258,18 @@ importers:
       recast: 0.21.1
       workerpool: 6.2.1
     devDependencies:
-      '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.1.19
       '@types/babel__traverse': 7.18.0
+      '@types/babel-plugin-tester': 9.0.5
       '@types/dedent': 0.7.0
+
+  packages/consumer:
+    specifiers:
+      braid-design-system: workspace:*
+      webpack: ^5.72.1
+    dependencies:
+      braid-design-system: link:../braid-design-system
+      webpack: 5.72.1
 
   packages/generate-component-docs:
     specifiers:
@@ -323,7 +331,7 @@ importers:
       react-use: ^17.4.0
       recoil: ^0.7.2
       sku: 11.7.0
-      webpack: ^5.0.0
+      webpack: ^5.72.1
     dependencies:
       '@babel/core': 7.19.6
       '@babel/preset-typescript': 7.18.6_@babel+core@7.19.6
@@ -5701,7 +5709,7 @@ packages:
   /axios/0.21.4_debug@4.3.1:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.0
+      follow-redirects: 1.15.0_debug@4.3.4
     transitivePeerDependencies:
       - debug
     dev: true
@@ -9522,6 +9530,7 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dev: false
 
   /follow-redirects/1.15.0_debug@4.3.4:
     resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
@@ -10603,7 +10612,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.0
+      follow-redirects: 1.15.0_debug@4.3.4
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
