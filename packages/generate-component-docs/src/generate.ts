@@ -16,7 +16,7 @@ const componentsFile = require.resolve(
   path.join(__dirname, '../../braid-design-system/src/lib/components/index.ts'),
 );
 const testComponentsFile = require.resolve(
-  path.join(__dirname, '../../braid-design-system/src/entries/test/index.ts'),
+  path.join(__dirname, '../../braid-design-system/src/entries/test.ts'),
 );
 
 const stringAliases: Record<string, string> = {
