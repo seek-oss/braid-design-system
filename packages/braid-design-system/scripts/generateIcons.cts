@@ -156,8 +156,8 @@ const svgrConfig = {
       `${iconName}.tsx`,
       dedent/* ts */ `
         import React from 'react';
-        import { Box } from '${relative(require.resolve(`${baseDir}/src/lib/components`))}';
-        import type UseIconProps from '${relative(require.resolve(`${baseDir}/src/lib/hooks/useIcon`))}';
+        import { Box } from '${relative(require.resolve(`${baseDir}/src/lib/components/Box/Box`))}';
+        import type { UseIconProps } from '${relative(require.resolve(`${baseDir}/src/lib/hooks/useIcon`))}';
         import useIcon from '${relative(require.resolve(`${baseDir}/src/lib/hooks/useIcon`))}';
         import { ${svgComponentName} } from './${svgComponentName}';
 
