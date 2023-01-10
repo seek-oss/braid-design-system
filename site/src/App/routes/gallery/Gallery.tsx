@@ -182,7 +182,7 @@ const GalleryItem = ({
   item,
   jumpTo,
 }: {
-  item: typeof galleryComponents[number];
+  item: (typeof galleryComponents)[number];
   jumpTo: JumpTo;
 }) => {
   const { theme } = useThemeSettings();
