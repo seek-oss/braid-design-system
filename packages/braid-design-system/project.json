@@ -3,7 +3,10 @@
   "targets": {
     "build": {
       "dependsOn": ["copy-codemod", "generate-icons"],
-      "executor": "nx:noop"
+      "executor": "nx:run-script",
+      "options": {
+        "script": "build"
+      }
     },
     "copy-codemod": {
       "dependsOn": ["^build"],
