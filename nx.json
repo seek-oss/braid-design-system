@@ -49,12 +49,6 @@
         "target": "build",
         "projects": "dependencies"
       }
-    ],
-    "prettier": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
     ]
   },
   "affected": {

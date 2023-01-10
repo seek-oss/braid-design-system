@@ -33,6 +33,9 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Build
+        run: pnpm build
+
       - name: Chromatic
         run: |
           pnpm build-storybook
