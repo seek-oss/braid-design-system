@@ -182,5 +182,8 @@
     "react": "^16.8.0 || ^17 || ^18",
     "react-dom": "^16.8.0 || ^17 || ^18",
     "sku": ">=10.13.1"
-  }
+  },
+  "skuSkipPostInstall": true,
+  "skuSkipConfigure": true,
+  "skuSkipValidatePeerDeps": true
 }
