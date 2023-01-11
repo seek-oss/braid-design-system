@@ -23,89 +23,90 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.cjs.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
     "./color-mode": {
-      "types": "./color-mode/dist/index.cjs.d.ts",
-      "import": "./color-mode/dist/index.mjs",
-      "require": "./color-mode/dist/index.cjs"
+      "types": "./dist/color-mode.d.ts",
+      "import": "./dist/color-mode.mjs",
+      "require": "./dist/color-mode.cjs"
     },
     "./css": {
-      "types": "./css/dist/index.cjs.d.ts",
-      "import": "./css/dist/index.mjs",
-      "require": "./css/dist/index.cjs"
-    },
-    "./reset": {
-      "types": "./reset/dist/index.cjs.d.ts",
-      "import": "./reset/dist/index.mjs",
-      "require": "./reset/dist/index.cjs"
-    },
-    "./test": {
-      "types": "./test/dist/index.cjs.d.ts",
-      "import": "./test/dist/index.mjs",
-      "require": "./test/dist/index.cjs"
+      "types": "./dist/css.d.ts",
+      "import": "./dist/css.mjs",
+      "require": "./dist/css.cjs"
     },
     "./playroom/FrameComponent": {
-      "types": "./playroom/FrameComponent/dist/index.cjs.d.ts",
-      "import": "./playroom/FrameComponent/dist/index.mjs",
-      "require": "./playroom/FrameComponent/dist/index.cjs"
+      "types": "./dist/playroom/FrameComponent.d.ts",
+      "import": "./dist/playroom/FrameComponent.mjs",
+      "require": "./dist/playroom/FrameComponent.cjs"
     },
     "./playroom/components": {
-      "types": "./playroom/components/dist/index.cjs.d.ts",
-      "import": "./playroom/components/dist/index.mjs",
-      "require": "./playroom/components/dist/index.cjs"
+      "types": "./dist/playroom/components.d.ts",
+      "import": "./dist/playroom/components.mjs",
+      "require": "./dist/playroom/components.cjs"
     },
     "./playroom/scope": {
-      "types": "./playroom/scope/dist/index.cjs.d.ts",
-      "import": "./playroom/scope/dist/index.mjs",
-      "require": "./playroom/scope/dist/index.cjs"
+      "types": "./dist/playroom/scope.d.ts",
+      "import": "./dist/playroom/scope.mjs",
+      "require": "./dist/playroom/scope.cjs"
     },
     "./playroom/snippets": {
-      "types": "./playroom/snippets/dist/index.cjs.d.ts",
-      "import": "./playroom/snippets/dist/index.mjs",
-      "require": "./playroom/snippets/dist/index.cjs"
+      "types": "./dist/playroom/snippets.d.ts",
+      "import": "./dist/playroom/snippets.mjs",
+      "require": "./dist/playroom/snippets.cjs"
+    },
+    "./reset": {
+      "types": "./dist/reset.d.ts",
+      "import": "./dist/reset.mjs",
+      "require": "./dist/reset.cjs"
+    },
+    "./test": {
+      "types": "./dist/test.d.ts",
+      "import": "./dist/test.mjs",
+      "require": "./dist/test.cjs"
     },
     "./themes/apac": {
-      "types": "./themes/apac/dist/index.cjs.d.ts",
-      "import": "./themes/apac/dist/index.mjs",
-      "require": "./themes/apac/dist/index.cjs"
+      "types": "./dist/themes/apac.d.ts",
+      "import": "./dist/themes/apac.mjs",
+      "require": "./dist/themes/apac.cjs"
     },
     "./themes/catho": {
-      "types": "./themes/catho/dist/index.cjs.d.ts",
-      "import": "./themes/catho/dist/index.mjs",
-      "require": "./themes/catho/dist/index.cjs"
+      "types": "./dist/themes/catho.d.ts",
+      "import": "./dist/themes/catho.mjs",
+      "require": "./dist/themes/catho.cjs"
     },
     "./themes/docs": {
-      "types": "./themes/docs/dist/index.cjs.d.ts",
-      "import": "./themes/docs/dist/index.mjs",
-      "require": "./themes/docs/dist/index.cjs"
+      "types": "./dist/themes/docs.d.ts",
+      "import": "./dist/themes/docs.mjs",
+      "require": "./dist/themes/docs.cjs"
     },
     "./themes/occ": {
-      "types": "./themes/occ/dist/index.cjs.d.ts",
-      "import": "./themes/occ/dist/index.mjs",
-      "require": "./themes/occ/dist/index.cjs"
+      "types": "./dist/themes/occ.d.ts",
+      "import": "./dist/themes/occ.mjs",
+      "require": "./dist/themes/occ.cjs"
     },
     "./themes/seekAnz": {
-      "types": "./themes/seekAnz/dist/index.cjs.d.ts",
-      "import": "./themes/seekAnz/dist/index.mjs",
-      "require": "./themes/seekAnz/dist/index.cjs"
+      "types": "./dist/themes/seekAnz.d.ts",
+      "import": "./dist/themes/seekAnz.mjs",
+      "require": "./dist/themes/seekAnz.cjs"
     },
     "./themes/seekBusiness": {
-      "types": "./themes/seekBusiness/dist/index.cjs.d.ts",
-      "import": "./themes/seekBusiness/dist/index.mjs",
-      "require": "./themes/seekBusiness/dist/index.cjs"
+      "types": "./dist/themes/seekBusiness.d.ts",
+      "import": "./dist/themes/seekBusiness.mjs",
+      "require": "./dist/themes/seekBusiness.cjs"
     },
     "./themes/wireframe": {
-      "types": "./themes/wireframe/dist/index.cjs.d.ts",
-      "import": "./themes/wireframe/dist/index.mjs",
-      "require": "./themes/wireframe/dist/index.cjs"
+      "types": "./dist/themes/wireframe.d.ts",
+      "import": "./dist/themes/wireframe.mjs",
+      "require": "./dist/themes/wireframe.cjs"
     },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "bin": {
     "braid-upgrade": "./codemod/bin.js"
   },
