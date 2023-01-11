@@ -1,0 +1,12 @@
+{
+  "name": "@braid-design-system/consumer",
+  "private": true,
+  "version": "0.0.0",
+  "author": "SEEK",
+  "license": "MIT",
+  "dependencies": {
+    "braid-design-system": "*",
+    "fast-glob": "^3.2.12",
+    "webpack": "^5.72.1"
+  }
+}
