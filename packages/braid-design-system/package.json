@@ -47,6 +47,26 @@
       "import": "./test/dist/index.mjs",
       "require": "./test/dist/index.cjs"
     },
+    "./playroom/FrameComponent": {
+      "types": "./playroom/FrameComponent/dist/index.cjs.d.ts",
+      "import": "./playroom/FrameComponent/dist/index.mjs",
+      "require": "./playroom/FrameComponent/dist/index.cjs"
+    },
+    "./playroom/components": {
+      "types": "./playroom/components/dist/index.cjs.d.ts",
+      "import": "./playroom/components/dist/index.mjs",
+      "require": "./playroom/components/dist/index.cjs"
+    },
+    "./playroom/scope": {
+      "types": "./playroom/scope/dist/index.cjs.d.ts",
+      "import": "./playroom/scope/dist/index.mjs",
+      "require": "./playroom/scope/dist/index.cjs"
+    },
+    "./playroom/snippets": {
+      "types": "./playroom/snippets/dist/index.cjs.d.ts",
+      "import": "./playroom/snippets/dist/index.mjs",
+      "require": "./playroom/snippets/dist/index.cjs"
+    },
     "./themes/apac": {
       "types": "./themes/apac/dist/index.cjs.d.ts",
       "import": "./themes/apac/dist/index.mjs",
@@ -93,6 +113,10 @@
     "color-mode",
     "css",
     "dist",
+    "playroom/FrameComponent",
+    "playroom/components",
+    "playroom/scope",
+    "playroom/snippets",
     "reset",
     "test",
     "themes/apac",
@@ -183,7 +207,7 @@
     "react-dom": "^16.8.0 || ^17 || ^18",
     "sku": ">=10.13.1"
   },
-  "skuSkipPostInstall": true,
   "skuSkipConfigure": true,
+  "skuSkipPostInstall": true,
   "skuSkipValidatePeerDeps": true
 }

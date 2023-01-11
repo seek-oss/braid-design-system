@@ -14,4 +14,4 @@ if (global?.__IS_PLAYROOM_ENVIRONMENT__ !== 'clearly') {
   `);
 }
 
-export * from '../src/lib/playroom/components';
+export * from '../../lib/playroom/components';

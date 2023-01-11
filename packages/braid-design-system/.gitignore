@@ -8,6 +8,10 @@ src/lib/components/icons/*/*Svg.tsx
 /css
 /dist
 /dist-render
+/playroom/FrameComponent
+/playroom/components
+/playroom/scope
+/playroom/snippets
 /reset
 /test
 /themes/apac
