@@ -1,9 +1,9 @@
 import dedent from 'dedent';
 
-declare const global: typeof globalThis & {
+const global = globalThis as typeof globalThis & {
   __IS_PLAYROOM_ENVIRONMENT__?: string;
 };
-if (global?.__IS_PLAYROOM_ENVIRONMENT__ !== 'clearly') {
+if (global.__IS_PLAYROOM_ENVIRONMENT__ !== 'clearly') {
   throw new Error(dedent`
     Playroom prototyping components are being imported instead of Braid components.
     ‎

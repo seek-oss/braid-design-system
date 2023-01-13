@@ -15,11 +15,12 @@
   "author": "SEEK",
   "sideEffects": [
     "**/atoms/**",
+    "**/playroom/**",
     "**/reset/**",
     "**/themes/**",
     "*.css.*",
-    "dist/side-effects/**",
-    "playroom/**"
+    "dist/reset*",
+    "dist/side-effects/**"
   ],
   "exports": {
     ".": {
@@ -111,6 +112,8 @@
     "braid-upgrade": "./codemod/bin.js"
   },
   "files": [
+    "CHANGELOG.md",
+    "codemod",
     "color-mode",
     "css",
     "dist",
