@@ -15,11 +15,11 @@
   "author": "SEEK",
   "sideEffects": [
     "**/atoms/**",
-    "**/themes/**",
     "**/reset/**",
-    "**/reset.*",
-    "playroom/**",
-    "*.css.ts"
+    "**/themes/**",
+    "*.css.*",
+    "dist/side-effects/**",
+    "playroom/**"
   ],
   "exports": {
     ".": {

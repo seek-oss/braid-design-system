@@ -17,7 +17,7 @@ importers:
       '@babel/runtime': ^7.18.0
       '@changesets/cli': ^2.22.0
       '@changesets/get-github-info': ^0.5.0
-      '@crackle/cli': 0.0.0-dist-structure-20230111095845
+      '@crackle/cli': 0.0.0-side-effects-20230113010442
       '@manypkg/cli': ^0.19.1
       '@octokit/rest': ^18.12.0
       '@types/fs-extra': ^9.0.13
@@ -59,7 +59,7 @@ importers:
       '@babel/runtime': 7.18.0
       '@changesets/cli': 2.22.0
       '@changesets/get-github-info': 0.5.0
-      '@crackle/cli': 0.0.0-dist-structure-20230111095845_kwc7lzixx73qfec4uw63twsque
+      '@crackle/cli': 0.0.0-side-effects-20230113010442_kwc7lzixx73qfec4uw63twsque
       '@manypkg/cli': 0.19.1
       '@octokit/rest': 18.12.0
       '@types/fs-extra': 9.0.13
@@ -3093,11 +3093,11 @@ packages:
       - supports-color
     dev: false
 
-  /@crackle/cli/0.0.0-dist-structure-20230111095845_kwc7lzixx73qfec4uw63twsque:
-    resolution: {integrity: sha512-eC8OxjEnBg44uvh6RB1Y/PPEM91L74CQ5zN0e1LM2SplOgPMrugn3w9SVv4OQjppjUGh85qe1fmxrAJB+mTihQ==}
+  /@crackle/cli/0.0.0-side-effects-20230113010442_kwc7lzixx73qfec4uw63twsque:
+    resolution: {integrity: sha512-Q8N9tNde8ZSjbjz4S69dx/yZ4myOfuPzoCGqxAqq6vGAOlXoXWZY+OEaxMMfT8IPpo+nadpa27d7cgESl7Qnvw==}
     hasBin: true
     dependencies:
-      '@crackle/core': 0.0.0-dist-structure-20230111095845_kwc7lzixx73qfec4uw63twsque
+      '@crackle/core': 0.0.0-side-effects-20230113010442_kwc7lzixx73qfec4uw63twsque
       yargs: 17.6.2
     transitivePeerDependencies:
       - '@types/node'
@@ -3114,8 +3114,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@crackle/core/0.0.0-dist-structure-20230111095845_kwc7lzixx73qfec4uw63twsque:
-    resolution: {integrity: sha512-1OHK+Rsj6QtboLxs+iTKZlQraUEeg9WysoY3NOTlOdvZlKJ8vPEF6+x01Dca42xcndnW3pZwBFWXqng9PpWqsA==}
+  /@crackle/core/0.0.0-side-effects-20230113010442_kwc7lzixx73qfec4uw63twsque:
+    resolution: {integrity: sha512-4zgT6hO5kKoe0mVRdg2UYSlNFbwgkoqTJTSBiM81EY+mFes/56DC5pCkjHqY9GOWJfmYp/Yg7eLDppaqcMyzyA==}
     peerDependencies:
       typescript: '>=4.9.4'
     dependencies:
@@ -3138,6 +3138,7 @@ packages:
       express: 4.18.2
       fast-glob: 3.2.12
       fs-extra: 10.1.0
+      glob-to-regexp: 0.4.1
       ink: 3.2.0_iapumuv4e6jcjznwuxpf4tt22e
       pretty-ms: 7.0.1
       react: 18.2.0
