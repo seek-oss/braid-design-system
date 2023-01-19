@@ -75,7 +75,6 @@ export const makeVanillaTheme = (braidTokens: BraidTokens) => {
   };
 
   const resolvedTokens = {
-    name,
     space: mapValues(tokens.space, (sp) => px(sp * tokens.grid)),
     touchableSize: px(tokens.touchableSize * tokens.grid),
     grid: px(tokens.grid),
