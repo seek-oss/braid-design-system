@@ -54,7 +54,6 @@
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
-    "babel-plugin-treat": "^1.6.2",
     "depcheck": "^1.4.3",
     "enquirer": "^2.3.6",
     "escape-string-regexp": "^4.0.0",

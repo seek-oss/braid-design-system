@@ -1,6 +1,5 @@
 import React, { cloneElement, useCallback, useEffect } from 'react';
 import assert from 'assert';
-import { TreatProvider } from 'sku/react-treat';
 import { Stack } from '../Stack/Stack';
 import { Inline } from '../Inline/Inline';
 import { Columns } from '../Columns/Columns';
@@ -54,7 +53,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
   (
     {
       id,
-      treatTheme,
       vanillaTheme,
       dedupeKey,
       message,
@@ -126,76 +124,74 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     );
 
     return (
-      <TreatProvider theme={treatTheme}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          role="alert"
-          ref={ref}
-          onMouseEnter={stopTimeout}
-          onMouseLeave={startTimeout}
-          className={vanillaTheme}
-          {...buildDataAttributes({ data, validateRestProps: restProps })}
-        >
-          <Box boxShadow="large" borderRadius={borderRadius}>
-            <ContentBlock width="xsmall">
-              <Box
-                background="surface"
-                position="relative"
-                boxShadow="borderNeutralLight"
-                borderRadius={borderRadius}
-                paddingY="medium"
-                paddingLeft="medium"
-                overflow="hidden"
-                className={styles.toast}
-              >
-                <Columns space="none">
-                  <Column width="content">
-                    {Icon ? (
-                      <Box paddingRight="small">
-                        <Icon tone={tone} />
-                      </Box>
-                    ) : null}
-                    {tone === 'neutral' && icon ? (
-                      <Box paddingRight="small">
-                        {cloneElement(icon, { tone: 'secondary' })}
-                      </Box>
-                    ) : null}
-                  </Column>
-                  <Column>{content}</Column>
-                  <Column width="content">
-                    <Box
-                      width="touchable"
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                      className={lineHeightContainer.standard}
-                      aria-hidden
-                    >
-                      <ButtonIcon
-                        id={`${dedupeKey}-clear`}
-                        icon={<IconClear />}
-                        tone="secondary"
-                        variant="transparent"
-                        onClick={remove}
-                        label={closeLabel}
-                        data={
-                          process.env.NODE_ENV !== 'production'
-                            ? { testid: 'clearToast' }
-                            : {}
-                        }
-                      />
+      <Box
+        display="flex"
+        justifyContent="center"
+        role="alert"
+        ref={ref}
+        onMouseEnter={stopTimeout}
+        onMouseLeave={startTimeout}
+        className={vanillaTheme}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
+      >
+        <Box boxShadow="large" borderRadius={borderRadius}>
+          <ContentBlock width="xsmall">
+            <Box
+              background="surface"
+              position="relative"
+              boxShadow="borderNeutralLight"
+              borderRadius={borderRadius}
+              paddingY="medium"
+              paddingLeft="medium"
+              overflow="hidden"
+              className={styles.toast}
+            >
+              <Columns space="none">
+                <Column width="content">
+                  {Icon ? (
+                    <Box paddingRight="small">
+                      <Icon tone={tone} />
                     </Box>
-                  </Column>
-                </Columns>
-                {tone !== 'neutral' ? (
-                  <Keyline tone={tone} borderRadius={borderRadius} />
-                ) : null}
-              </Box>
-            </ContentBlock>
-          </Box>
+                  ) : null}
+                  {tone === 'neutral' && icon ? (
+                    <Box paddingRight="small">
+                      {cloneElement(icon, { tone: 'secondary' })}
+                    </Box>
+                  ) : null}
+                </Column>
+                <Column>{content}</Column>
+                <Column width="content">
+                  <Box
+                    width="touchable"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    className={lineHeightContainer.standard}
+                    aria-hidden
+                  >
+                    <ButtonIcon
+                      id={`${dedupeKey}-clear`}
+                      icon={<IconClear />}
+                      tone="secondary"
+                      variant="transparent"
+                      onClick={remove}
+                      label={closeLabel}
+                      data={
+                        process.env.NODE_ENV !== 'production'
+                          ? { testid: 'clearToast' }
+                          : {}
+                      }
+                    />
+                  </Box>
+                </Column>
+              </Columns>
+              {tone !== 'neutral' ? (
+                <Keyline tone={tone} borderRadius={borderRadius} />
+              ) : null}
+            </Box>
+          </ContentBlock>
         </Box>
-      </TreatProvider>
+      </Box>
     );
   },
 );

@@ -1,7 +1,4 @@
-import { createTheme } from '@vanilla-extract/css';
-import { vars } from '../vars.css';
-import makeVanillaTheme from '../makeVanillaTheme';
-
 import tokens from './tokens';
+import { makeBraidTheme } from '../makeBraidTheme';
 
-export default createTheme(vars, makeVanillaTheme(tokens));
+export default makeBraidTheme(tokens);

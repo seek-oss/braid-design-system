@@ -11,7 +11,6 @@ module.exports = babelJest.createTransformer({
       },
     ],
     require.resolve('babel-plugin-macros'),
-    [require.resolve('babel-plugin-treat'), { alias: 'sku/treat' }],
     require.resolve('@vanilla-extract/babel-plugin'),
     require.resolve('@babel/plugin-transform-runtime'),
     require.resolve('babel-plugin-dynamic-import-node'),

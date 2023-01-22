@@ -64,7 +64,7 @@ const fontSizeToCapHeight = (
   };
 };
 
-export default (braidTokens: BraidTokens) => {
+export const makeVanillaTheme = (braidTokens: BraidTokens) => {
   const { name, displayName, ...tokens } = braidTokens;
   const { webFont, ...typography } = tokens.typography;
   const { foreground, background } = tokens.color;
