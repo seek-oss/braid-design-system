@@ -10,7 +10,6 @@ export interface ToastAction {
 export interface InternalToast {
   id: string;
   dedupeKey: string;
-  treatTheme: string;
   vanillaTheme: string;
   tone: 'positive' | 'critical' | 'neutral';
   icon?: ReactElement<UseIconProps>;

@@ -8,7 +8,6 @@ import React, {
   useEffect,
   Fragment,
 } from 'react';
-import { useTheme } from 'sku/react-treat';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { Toaster } from './Toaster';
@@ -161,7 +160,6 @@ const ToastPortal = ({ children }: ToastPortalProps) => {
 };
 
 export const useToast = () => {
-  const treatTheme = useTheme();
   const { vanillaTheme } = useBraidTheme();
   const addToast = useContext(ToastControllerContext);
 
@@ -176,13 +174,12 @@ export const useToast = () => {
 
       addToast({
         ...toast,
-        treatTheme,
         vanillaTheme,
         id,
         dedupeKey,
         shouldRemove: false,
       });
     },
-    [treatTheme, vanillaTheme, addToast],
+    [vanillaTheme, addToast],
   );
 };

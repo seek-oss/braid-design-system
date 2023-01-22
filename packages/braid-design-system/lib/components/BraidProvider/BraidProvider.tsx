@@ -8,13 +8,12 @@ import type {
   Ref,
 } from 'react';
 import React, { createContext, useContext, forwardRef } from 'react';
-import { TreatProvider } from 'sku/react-treat';
 import { ensureResetImported } from '../../css/reset/resetTracker';
 import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
 import { BreakpointProvider } from './BreakpointContext';
 import { BraidThemeContext } from './BraidThemeContext';
-import type { BraidTheme } from '../../themes/BraidTheme';
+import type { BraidTheme } from '../../themes/makeBraidTheme';
 import { darkMode } from '../../css/atoms/sprinkles.css';
 import { VanillaThemeContainer } from './VanillaThemeContainer';
 
@@ -90,28 +89,26 @@ export const BraidProvider = ({
 
   return (
     <BraidThemeContext.Provider value={theme}>
-      <TreatProvider theme={theme.treatTheme}>
-        {styleBody ? (
-          <style type="text/css">{`
+      {styleBody ? (
+        <style type="text/css">{`
             html,body{margin:0;padding:0;background:${theme.background.lightMode}}
             html.${darkMode},html.${darkMode} body{color-scheme:dark;background:${theme.background.darkMode}}
           `}</style>
-        ) : null}
-        <VanillaThemeContainer
-          theme={theme.vanillaTheme}
-          setDefaultTextTones={!alreadyInBraidProvider}
+      ) : null}
+      <VanillaThemeContainer
+        theme={theme.vanillaTheme}
+        setDefaultTextTones={!alreadyInBraidProvider}
+      >
+        <LinkComponentContext.Provider
+          value={linkComponent || linkComponentFromContext}
         >
-          <LinkComponentContext.Provider
-            value={linkComponent || linkComponentFromContext}
-          >
-            {alreadyInBraidProvider || inTestProvider ? (
-              children
-            ) : (
-              <BreakpointProvider>{children}</BreakpointProvider>
-            )}
-          </LinkComponentContext.Provider>
-        </VanillaThemeContainer>
-      </TreatProvider>
+          {alreadyInBraidProvider || inTestProvider ? (
+            children
+          ) : (
+            <BreakpointProvider>{children}</BreakpointProvider>
+          )}
+        </LinkComponentContext.Provider>
+      </VanillaThemeContainer>
     </BraidThemeContext.Provider>
   );
 };
