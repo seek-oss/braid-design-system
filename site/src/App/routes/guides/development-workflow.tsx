@@ -19,7 +19,6 @@ import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import source from 'braid-design-system/lib/utils/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';
-import { VanillaMigrationBanner } from 'braid-src/css/VanillaMigrationBanner';
 import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
 
 const DevelopmentWorkflow = () => (
@@ -274,7 +273,6 @@ const DevelopmentWorkflow = () => (
         vanilla-extract documentation.
       </TextLink>
     </Text>
-    <VanillaMigrationBanner />
     <Text>
       While higher level Braid components don’t support custom style overrides
       (e.g. <InlineCode>className</InlineCode> and{' '}

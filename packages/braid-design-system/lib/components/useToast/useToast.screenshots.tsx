@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from 'sku/react-treat';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import type { ComponentScreenshot } from 'site/types';
 import Toast from './Toast';
@@ -11,14 +10,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Critical toast',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
             tone="critical"
             message="Critical toast"
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -31,7 +28,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Critical toast w/actions',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -42,7 +38,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Do the action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -55,7 +50,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Critical toast w/descriptions',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -67,7 +61,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -80,14 +73,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Positive toast',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
             tone="positive"
             message="Positive toast"
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -100,7 +91,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Positive toast w/actions',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -111,7 +101,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Do the action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -124,7 +113,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Positive toast w/descriptions',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -136,7 +124,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -149,14 +136,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Neutral toast',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
           <Toast
             tone="neutral"
             message="Neutral toast"
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -169,7 +154,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Neutral toast w/actions',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -180,7 +164,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Do the action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -193,7 +176,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Neutral toast w/descriptions',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -205,7 +187,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -218,7 +199,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Neutral toast with icon',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -226,7 +206,6 @@ export const screenshots: ComponentScreenshot = {
             tone="neutral"
             icon={<IconBookmark />}
             message="Neutral toast with icon"
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -239,7 +218,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Neutral toast w/actions and icon',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -251,7 +229,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Do the action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
@@ -264,7 +241,6 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Neutral toast w/descriptions and icon',
       Example: () => {
-        const treatTheme = useTheme();
         const { vanillaTheme } = useBraidTheme();
 
         return (
@@ -277,7 +253,6 @@ export const screenshots: ComponentScreenshot = {
               label: 'Action',
               onClick: () => {},
             }}
-            treatTheme={treatTheme}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
             id="n/a"
