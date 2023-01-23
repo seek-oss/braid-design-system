@@ -9,17 +9,14 @@ const MAX_DEPTH = 10;
 const aliasWhitelist = ['ClassValue'];
 const propBlacklist = ['key'];
 
-const tsconfigPath = path.join(
-  __dirname,
-  '../../braid-design-system/tsconfig.json',
+const tsconfigPath = require.resolve(
+  path.join(__dirname, '../../braid-design-system/tsconfig.json'),
 );
-const componentsFile = path.join(
-  __dirname,
-  '../../braid-design-system/lib/components/index.ts',
+const componentsFile = require.resolve(
+  path.join(__dirname, '../../braid-design-system/src/lib/components/index.ts'),
 );
-const testComponentsFile = path.join(
-  __dirname,
-  '../../braid-design-system/test/index.ts',
+const testComponentsFile = require.resolve(
+  path.join(__dirname, '../../braid-design-system/src/entries/test/index.ts'),
 );
 
 const stringAliases: Record<string, string> = {

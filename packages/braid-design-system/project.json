@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.0.0/packages/nx/schemas/project-schema.json",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.4.2/packages/nx/schemas/project-schema.json",
   "targets": {
     "build": {
       "dependsOn": ["copy-codemod", "generate-icons"],

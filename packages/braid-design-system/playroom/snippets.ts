@@ -1,1 +1,1 @@
-export { default } from '../lib/playroom/snippets';
+export { default } from '../src/lib/playroom/snippets';

@@ -1,1 +1,1 @@
-export { default } from '../lib/playroom/FrameComponent';
+export { default } from '../src/lib/playroom/FrameComponent';

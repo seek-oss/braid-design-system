@@ -41,6 +41,8 @@
     "@babel/runtime": "^7.18.0",
     "@changesets/cli": "^2.22.0",
     "@changesets/get-github-info": "^0.5.0",
+    "@crackle/cli": "0.0.0-vite-4-20221228070925",
+    "@crackle/core": "0.0.0-vite-4-20221228070925",
     "@manypkg/cli": "^0.19.1",
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
@@ -66,11 +68,12 @@
     "jest-environment-jsdom": "^29.0.0",
     "jest-watch-typeahead": "^2.1.0",
     "js-yaml": "^4.1.0",
-    "nx": "~15.0.0",
+    "nx": "^15.4.2",
     "prettier": "^2.8.0",
     "renovate-config-seek": "0.4.0",
     "surge": "^0.23.1",
     "ts-node": "^10.8.0",
+    "tsx": "^3.12.1",
     "typescript": "^4.5.0"
   },
   "volta": {
@@ -78,6 +81,9 @@
   },
   "packageManager": "pnpm@7.8.0",
   "pnpm": {
+    "overrides": {
+      "rollup-plugin-dts": "5.0.0"
+    },
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch"
     }
