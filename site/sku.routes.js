@@ -8,7 +8,9 @@ const undocumentedExports = require('./src/undocumentedExports.json');
 const braidSrc = '../packages/braid-design-system';
 
 const getExports = (relativePath, exportType = 'components') => {
-  const sourcePath = path.join(__dirname, braidSrc, relativePath);
+  const sourcePath = require.resolve(
+    path.join(__dirname, braidSrc, relativePath),
+  );
   const source = extractExports(sourcePath);
 
   return source
@@ -17,7 +19,7 @@ const getExports = (relativePath, exportType = 'components') => {
 };
 
 const getPages = (relativePath) => {
-  const sourcePath = path.join(__dirname, relativePath);
+  const sourcePath = require.resolve(path.join(__dirname, relativePath));
   const source = fs.readFileSync(sourcePath, 'utf-8'); // eslint-disable-line no-sync
 
   return source.match(/('.*')(?=:)/g).map((x) => x.split("'")[1]);
@@ -25,10 +27,10 @@ const getPages = (relativePath) => {
 
 // TODO: COLORMODE RELEASE
 // Remove `colorModeStyle` from `undocumentedExports.json`
-const cssNames = getExports('css/index.ts', 'css');
-const componentNames = getExports('lib/components/index.ts');
-const testNames = getExports('test/index.ts');
-const iconNames = getExports('lib/components/icons/index.ts');
+const cssNames = getExports('src/entries/css.ts', 'css');
+const componentNames = getExports('src/lib/components/index.ts');
+const testNames = getExports('src/entries/test.ts');
+const iconNames = getExports('src/lib/components/icons/index.ts');
 
 const guideRoutes = getPages('src/App/routes/guides/index.ts');
 const foundationRoutes = getPages('src/App/routes/foundations/index.ts');

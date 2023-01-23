@@ -26,7 +26,7 @@ import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 import { DocExample } from '../../../DocNavigation/DocExample';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';
-import source from 'braid-design-system/lib/utils/source.macro';
+import source from 'braid-design-system/src/lib/utils/source.macro';
 
 export const IconsDetails = () => (
   <Stack space="xxlarge">

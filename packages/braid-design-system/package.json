@@ -2,51 +2,129 @@
   "name": "braid-design-system",
   "version": "31.22.2",
   "description": "Themeable design system for the SEEK Group",
-  "main": "lib/components/index.ts",
-  "bin": {
-    "braid-upgrade": "./codemod/bin.js"
-  },
-  "sideEffects": [
-    "lib/themes/**/*",
-    "lib/css/atoms/**/*",
-    "lib/css/reset/**/*",
-    "themes/**/*",
-    "reset/**/*",
-    "playroom/**/*",
-    "*.css.ts"
-  ],
-  "scripts": {
-    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --auto-accept-changes master",
-    "eslint": "eslint --cache .",
-    "format": "eslint --cache --fix . && prettier --cache --write .",
-    "prettier": "prettier --cache --list-different .",
-    "storybook": "SKU_TELEMETRY=false sku storybook",
-    "copy-codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
-    "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
-    "generate-icons": "node ./scripts/generateIcons.js",
-    "tsc": "tsc"
+  "homepage": "https://seek-oss.github.io/braid-design-system/",
+  "bugs": {
+    "url": "https://github.com/seek-oss/braid-design-system/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/seek-oss/braid-design-system.git",
     "directory": "packages/braid-design-system"
   },
-  "author": "SEEK",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/seek-oss/braid-design-system/issues"
+  "author": "SEEK",
+  "sideEffects": [
+    "src/lib/themes/**/*",
+    "src/lib/css/atoms/**/*",
+    "src/lib/css/reset/**/*",
+    "src/entries/themes/**/*",
+    "**/reset/**/*",
+    "playroom/**/*",
+    "*.css.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.cjs.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./color-mode": {
+      "types": "./color-mode/dist/index.cjs.d.ts",
+      "import": "./color-mode/dist/index.mjs",
+      "require": "./color-mode/dist/index.cjs"
+    },
+    "./css": {
+      "types": "./css/dist/index.cjs.d.ts",
+      "import": "./css/dist/index.mjs",
+      "require": "./css/dist/index.cjs"
+    },
+    "./reset": {
+      "types": "./reset/dist/index.cjs.d.ts",
+      "import": "./reset/dist/index.mjs",
+      "require": "./reset/dist/index.cjs"
+    },
+    "./test": {
+      "types": "./test/dist/index.cjs.d.ts",
+      "import": "./test/dist/index.mjs",
+      "require": "./test/dist/index.cjs"
+    },
+    "./themes/apac": {
+      "types": "./themes/apac/dist/index.cjs.d.ts",
+      "import": "./themes/apac/dist/index.mjs",
+      "require": "./themes/apac/dist/index.cjs"
+    },
+    "./themes/catho": {
+      "types": "./themes/catho/dist/index.cjs.d.ts",
+      "import": "./themes/catho/dist/index.mjs",
+      "require": "./themes/catho/dist/index.cjs"
+    },
+    "./themes/docs": {
+      "types": "./themes/docs/dist/index.cjs.d.ts",
+      "import": "./themes/docs/dist/index.mjs",
+      "require": "./themes/docs/dist/index.cjs"
+    },
+    "./themes/occ": {
+      "types": "./themes/occ/dist/index.cjs.d.ts",
+      "import": "./themes/occ/dist/index.mjs",
+      "require": "./themes/occ/dist/index.cjs"
+    },
+    "./themes/seekAnz": {
+      "types": "./themes/seekAnz/dist/index.cjs.d.ts",
+      "import": "./themes/seekAnz/dist/index.mjs",
+      "require": "./themes/seekAnz/dist/index.cjs"
+    },
+    "./themes/seekBusiness": {
+      "types": "./themes/seekBusiness/dist/index.cjs.d.ts",
+      "import": "./themes/seekBusiness/dist/index.mjs",
+      "require": "./themes/seekBusiness/dist/index.cjs"
+    },
+    "./themes/wireframe": {
+      "types": "./themes/wireframe/dist/index.cjs.d.ts",
+      "import": "./themes/wireframe/dist/index.mjs",
+      "require": "./themes/wireframe/dist/index.cjs"
+    },
+    "./package.json": "./package.json"
   },
-  "homepage": "https://seek-oss.github.io/braid-design-system/",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "bin": {
+    "braid-upgrade": "./codemod/bin.js"
+  },
+  "files": [
+    "color-mode",
+    "css",
+    "dist",
+    "reset",
+    "test",
+    "themes/apac",
+    "themes/catho",
+    "themes/docs",
+    "themes/occ",
+    "themes/seekAnz",
+    "themes/seekBusiness",
+    "themes/wireframe"
+  ],
+  "scripts": {
+    "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
+    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --auto-accept-changes master",
+    "copy-codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
+    "eslint": "eslint --cache .",
+    "format": "eslint --cache --fix . && prettier --cache --write .",
+    "generate-icons": "tsx ./scripts/generateIcons.ts",
+    "prettier": "prettier --cache --list-different .",
+    "storybook": "SKU_TELEMETRY=false sku storybook",
+    "tsc": "tsc"
+  },
   "dependencies": {
     "@capsizecss/core": "^3.0.0",
     "@capsizecss/vanilla-extract": "^1.0.0",
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.168",
-    "@vanilla-extract/css": "^1.7.4",
-    "@vanilla-extract/css-utils": "^0.1.1",
+    "@vanilla-extract/css": "^1.9.2",
+    "@vanilla-extract/css-utils": "^0.1.3",
     "@vanilla-extract/dynamic": "^2.0.3",
-    "@vanilla-extract/sprinkles": "^1.3.3",
+    "@vanilla-extract/sprinkles": "^1.5.1",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "clsx": "^1.1.1",
@@ -63,14 +141,11 @@
     "utility-types": "^3.10.0",
     "uuid": "^8.3.2"
   },
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17 || ^18",
-    "react-dom": "^16.8.0 || ^17 || ^18",
-    "sku": ">=10.13.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/generator": "^7.18.0",
+    "@crackle/cli": "0.0.0-vite-4-20221228070925",
+    "@crackle/core": "0.0.0-vite-4-20221228070925",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
@@ -81,6 +156,7 @@
     "@types/babel-plugin-macros": "^2.8.5",
     "@types/babel-plugin-tester": "^9.0.5",
     "@types/jest": "^29.0.0",
+    "@types/node": "^16.11.36",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
@@ -103,5 +179,10 @@
     "sku": "11.7.0",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17 || ^18",
+    "react-dom": "^16.8.0 || ^17 || ^18",
+    "sku": ">=10.13.1"
   }
 }
