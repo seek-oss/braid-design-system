@@ -20,11 +20,11 @@ declare global {
  *
  * Example usage:
  *
- * &nbsp;&nbsp;&lt;html&gt;
- *
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;
- *
- * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Place script here --&gt;
+ * ```html
+ * <html>
+ *  <head>
+ *    <!-- Place script here -->
+ * ```
  *
  * ---
  *
