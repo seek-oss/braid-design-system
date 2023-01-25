@@ -40,7 +40,7 @@ export const colorModeQueryParamCheck = [
  * For Braid UIs embedded within the native mobile app.
  * Retrieves the native app color mode preference as discovered on page load from the query string.
  *
- * (Note: Requires the `colorModeQueryParamCheck` to have been included in the head of th document and evaluated first)
+ * (Note: Requires the `colorModeQueryParamCheck` to have been included in the head of the document and evaluated first)
  *
  * ---
  *
