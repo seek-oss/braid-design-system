@@ -44,7 +44,11 @@ export const colorModeQueryParamCheck = [
  *
  * ---
  *
- * Example usage: \``/my-url?id=123&${getColorModeQueryParam()}`\`
+ * Example usage:
+ *
+ * ```ts
+ * `/my-url?id=123&${getColorModeQueryParam()}`
+ * ```
  *
  * ---
  *
