@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 31.23.0
+
+### Minor Changes
+
+- **color-mode:** Add query-param entry ([#1205](https://github.com/seek-oss/braid-design-system/pull/1205))
+
+  Add new `query-param` entry, providing a script for resolving the color mode preference from query string, as well as a utility function for retrieving the preference for constructing subsequent links.
+
 ## 31.22.2
 
 ### Patch Changes
