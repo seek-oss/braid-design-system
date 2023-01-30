@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "31.22.2",
+  "version": "31.23.0",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -32,6 +32,11 @@
       "types": "./dist/color-mode.d.ts",
       "import": "./dist/color-mode.mjs",
       "require": "./dist/color-mode.cjs"
+    },
+    "./color-mode/query-param": {
+      "types": "./dist/color-mode/query-param.d.ts",
+      "import": "./dist/color-mode/query-param.mjs",
+      "require": "./dist/color-mode/query-param.cjs"
     },
     "./css": {
       "types": "./dist/css.d.ts",
@@ -115,12 +120,14 @@
     "CHANGELOG.md",
     "codemod",
     "color-mode",
+    "color-mode/query-param",
     "css",
     "dist",
     "playroom/FrameComponent",
     "playroom/components",
     "playroom/scope",
     "playroom/snippets",
+    "query-param",
     "reset",
     "test",
     "themes/apac",

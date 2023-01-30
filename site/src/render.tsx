@@ -12,7 +12,7 @@ import * as themes from 'braid-src/lib/themes';
 import { braidVersionToDate } from './getVersionDetails';
 import { initUpdates } from './App/Updates';
 import packageJson from 'braid-design-system/package.json';
-import { __experimentalDarkMode__ } from 'braid-src/entries/color-mode';
+import { colorModeQueryParamCheck } from 'braid-src/entries/color-mode/query-param';
 
 const { version } = packageJson;
 
@@ -88,7 +88,7 @@ const skuRender: Render<RenderContext> = {
       <!doctype html>
       <html lang="en">
         <head>
-          ${__experimentalDarkMode__}
+          ${colorModeQueryParamCheck}
           ${helmet.title.toString()}
           ${helmet.meta.toString()}
           ${helmet.link.toString()}
