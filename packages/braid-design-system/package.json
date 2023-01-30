@@ -16,7 +16,7 @@
     "*.css.ts"
   ],
   "scripts": {
-    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --auto-accept-changes master",
+    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
     "eslint": "eslint --cache .",
     "format": "eslint --cache --fix . && prettier --cache --write .",
     "prettier": "prettier --cache --list-different .",
@@ -103,5 +103,8 @@
     "sku": "11.7.0",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
-  }
+  },
+  "skuSkipPostInstall": true,
+  "skuSkipConfigure": true,
+  "skuSkipValidatePeerDeps": true
 }
