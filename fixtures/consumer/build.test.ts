@@ -20,15 +20,18 @@ describe('build', () => {
     return hasSideEffects;
   };
 
-  test('side-effects', async () => {
+  const rootDir = path.dirname(
+    require.resolve('braid-design-system/package.json'),
+  );
+
+  test('side-effects from src', async () => {
     const srcFiles = await glob(
       [
-        '**/*.{js,ts,tsx}',
-        '!**/*.{docs,gallery,playroom,screenshots,snippets,stories,test}.{ts,tsx}',
-        '!node_modules',
+        'src/**/*.{js,jsx,ts,tsx}',
+        '!**/*.{d,docs,gallery,playroom,screenshots,snippets,stories,test}.{ts,tsx}',
       ],
       {
-        cwd: path.dirname(require.resolve('braid-design-system/package.json')),
+        cwd: rootDir,
       },
     );
 
@@ -36,6 +39,18 @@ describe('build', () => {
       .sort()
       .map((filePath) => checkSideEffects(filePath) && filePath)
       .filter(Boolean);
+
+    expect(filesWithSideEffects).toMatchSnapshot();
+  });
+
+  test('side-effects from dist', async () => {
+    const distFiles = await glob(['dist/**/*.{cjs,mjs}'], {
+      cwd: rootDir,
+    });
+
+    const filesWithSideEffects = distFiles
+      .sort()
+      .filter((filePath) => checkSideEffects(filePath));
 
     expect(filesWithSideEffects).toMatchSnapshot();
   });
