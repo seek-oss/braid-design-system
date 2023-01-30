@@ -209,6 +209,7 @@ exports[`build side-effects from src 1`] = `
   "src/entries/playroom/components.ts",
   "src/entries/playroom/scope.ts",
   "src/entries/playroom/snippets.ts",
+  "src/entries/reset.ts",
   "src/entries/themes/apac.ts",
   "src/entries/themes/catho.ts",
   "src/entries/themes/docs.ts",
