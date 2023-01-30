@@ -103,5 +103,8 @@
     "sku": "11.7.0",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
-  }
+  },
+  "skuSkipPostInstall": true,
+  "skuSkipConfigure": true,
+  "skuSkipValidatePeerDeps": true
 }

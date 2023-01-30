@@ -82,8 +82,5 @@
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch"
     }
-  },
-  "skuSkipPostInstall": true,
-  "skuSkipConfigure": true,
-  "skuSkipValidatePeerDeps": true
+  }
 }
