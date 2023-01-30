@@ -5,7 +5,7 @@ import globby from 'globby';
 import cheerio from 'cheerio';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
-// @ts-ignore
+// @ts-expect-error svgo@3 has types
 import { optimize } from 'svgo';
 // @ts-expect-error svgr@6 has types
 import svgr from '@svgr/core';
@@ -133,10 +133,11 @@ const svgrConfig = {
 
     // Converts an absolute path to a relative path from the generated file
     const relative = (absPath: string) => {
-      let relativePath = path.relative(iconDir, absPath);
+      let relativePath = path.relative(iconDir, require.resolve(absPath));
       relativePath = relativePath.replace(path.extname(relativePath), '');
-      if (relativePath.endsWith('index')) relativePath = path.dirname(relativePath);
+      if (relativePath.endsWith('/index')) relativePath = path.dirname(relativePath);
       if (relativePath.endsWith('..')) relativePath += '/';
+      if (!relativePath.startsWith('.')) relativePath = `./${relativePath}`;
 
       return relativePath;
     };
@@ -156,10 +157,10 @@ const svgrConfig = {
       `${iconName}.tsx`,
       dedent/* ts */ `
         import React from 'react';
-        import { Box } from '${relative(require.resolve(`${baseDir}/src/lib/components/Box/Box`))}';
-        import type { UseIconProps } from '${relative(require.resolve(`${baseDir}/src/lib/hooks/useIcon`))}';
-        import useIcon from '${relative(require.resolve(`${baseDir}/src/lib/hooks/useIcon`))}';
-        import { ${svgComponentName} } from './${svgComponentName}';
+        import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
+        import type { UseIconProps } from '${relative(`${baseDir}/src/lib/hooks/useIcon`)}';
+        import useIcon from '${relative(`${baseDir}/src/lib/hooks/useIcon`)}';
+        import { ${svgComponentName} } from '${relative(`${iconDir}/${svgComponentName}`)}';
 
         export type ${iconName}Props = UseIconProps;
 
@@ -177,9 +178,9 @@ const svgrConfig = {
       dedent/* ts */ `
         import React from 'react';
         import type { ComponentDocs } from 'site/types';
-        import { iconDocumentation } from '../iconCommon.docs';
-        import source from '${relative(require.resolve(`${baseDir}/src/lib/utils/source.macro`))}';
-        import { ${iconName}, Heading, Stack } from '${relative(require.resolve(`${baseDir}/src/lib/components`))}';
+        import { iconDocumentation } from '${relative(`${iconComponentsDir}/iconCommon.docs`)}';
+        import source from '${relative(`${baseDir}/src/lib/utils/source.macro`)}';
+        import { ${iconName}, Heading, Stack } from '${relative(`${baseDir}/src/lib/components`)}';
 
         const docs: ComponentDocs = {
           category: 'Icon',

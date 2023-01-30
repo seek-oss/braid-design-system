@@ -22,8 +22,6 @@ module.exports = {
   supportedBrowsers: browserslist,
   displayNamesProd: true,
   dangerouslySetWebpackConfig: (config) => {
-    config.devtool = 'cheap-source-map';
-
     config.plugins.push(
       new CircularDependencyPlugin({
         exclude: /node_modules/,

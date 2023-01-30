@@ -24,7 +24,7 @@
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm prepare-publish && changeset publish && pnpm build-site && pnpm run deploy",
     "prepare-publish": "pnpm build",
-    "version": "changeset version && ts-node scripts/versionComponentUpdates && pnpm install --lockfile-only",
+    "version": "changeset version && tsx scripts/versionComponentUpdates.ts && pnpm install --lockfile-only",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
   "repository": {
@@ -51,7 +51,7 @@
     "@types/react": "^18.0.21",
     "@types/sanitize-html": "^2.6.2",
     "@types/webpack-env": "^1.17.0",
-    "@vanilla-extract/babel-plugin": "^1.1.7",
+    "@vanilla-extract/jest-transform": "^1.0.2",
     "babel-jest": "^29.0.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^3.1.0",
@@ -72,7 +72,6 @@
     "prettier": "^2.8.2",
     "renovate-config-seek": "0.4.0",
     "surge": "^0.23.1",
-    "ts-node": "^10.8.0",
     "tsx": "^3.12.1",
     "typescript": "^4.5.0"
   },

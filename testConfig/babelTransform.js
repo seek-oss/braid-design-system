@@ -11,7 +11,6 @@ module.exports = babelJest.createTransformer({
       },
     ],
     require.resolve('babel-plugin-macros'),
-    require.resolve('@vanilla-extract/babel-plugin'), // TODO: replace with @vanilla-extract/babel-plugin-debug-ids
     require.resolve('@babel/plugin-transform-runtime'),
     require.resolve('babel-plugin-dynamic-import-node'),
   ],

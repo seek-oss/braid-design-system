@@ -32,6 +32,7 @@ module.exports = {
       require.resolve('./testConfig/fileMock'),
   },
   transform: {
+    '\\.css\\.ts$': require.resolve('@vanilla-extract/jest-transform'),
     '\\.(j|t)sx?$': require.resolve('./testConfig/babelTransform.js'),
   },
   transformIgnorePatterns: [
