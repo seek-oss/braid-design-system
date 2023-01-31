@@ -37,8 +37,6 @@ jobs:
         run: pnpm test
 
       - name: Chromatic
-        run: |
-          pnpm build-storybook
-          pnpm run chromatic
+        run: pnpm chromatic
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}

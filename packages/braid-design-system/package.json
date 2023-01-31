@@ -142,7 +142,7 @@
   "scripts": {
     "build": "crackle package",
     "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
-    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --auto-accept-changes master",
+    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
     "copy-codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "eslint": "eslint --cache .",
     "format": "eslint --cache --fix . && prettier --cache --write .",
