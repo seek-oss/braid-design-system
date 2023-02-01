@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.4.2/packages/nx/schemas/project-schema.json",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"]
+  },
+  "targets": {
+    "lint": {
+      "dependsOn": ["lint:eslint", "lint:prettier", "lint:tsc"],
+      "executor": "nx:noop"
+    },
+    "format": {
+      "dependsOn": ["format:eslint", "format:prettier"],
+      "executor": "nx:noop"
+    }
+  }
+}

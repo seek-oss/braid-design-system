@@ -1,25 +1,54 @@
 {
   "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.4.2/packages/nx/schemas/project-schema.json",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"]
+  },
   "targets": {
     "build": {
-      "dependsOn": ["copy-codemod", "generate-icons"],
+      "dependsOn": ["codemod", "generate:icons"],
       "executor": "nx:run-script",
       "options": {
         "script": "build"
       }
     },
-    "copy-codemod": {
+    "codemod": {
       "dependsOn": ["^build"],
+      "inputs": ["^default"],
+      "outputs": ["{projectRoot}/codemod/dist"],
       "executor": "nx:run-script",
       "options": {
-        "script": "copy-codemod"
+        "script": "codemod"
       }
     },
-    "chromatic": {
-      "dependsOn": ["build-storybook"],
+    "generate:icons": {
+      "inputs": ["{projectRoot}/icons/*.svg", "{projectRoot}/scripts"],
+      "outputs": ["{projectRoot}/src/**/*Svg.tsx"],
       "executor": "nx:run-script",
       "options": {
-        "script": "chromatic"
+        "script": "generate:icons"
+      }
+    },
+    "lint": {
+      "dependsOn": ["lint:eslint", "lint:prettier", "lint:tsc"],
+      "executor": "nx:noop"
+    },
+    "lint:tsc": {
+      "dependsOn": ["generate:icons"],
+      "inputs": ["default", "^default"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "lint:tsc"
+      }
+    },
+    "format": {
+      "dependsOn": ["format:eslint", "format:prettier"],
+      "executor": "nx:noop"
+    },
+    "storybook:chromatic": {
+      "dependsOn": ["storybook:build"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "storybook:chromatic"
       }
     }
   },

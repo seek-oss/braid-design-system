@@ -141,15 +141,16 @@
   ],
   "scripts": {
     "build": "crackle package",
-    "build-storybook": "SKU_TELEMETRY=false sku build-storybook",
-    "chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
-    "copy-codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
-    "eslint": "eslint --cache .",
-    "format": "eslint --cache --fix . && prettier --cache --write .",
-    "generate-icons": "tsx ./scripts/generateIcons.cts",
-    "prettier": "prettier --cache --list-different .",
+    "codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
+    "lint:eslint": "eslint --cache .",
+    "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc",
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write .",
+    "generate:icons": "tsx ./scripts/generateIcons.cts",
     "storybook": "SKU_TELEMETRY=false sku storybook",
-    "tsc": "tsc"
+    "storybook:build": "SKU_TELEMETRY=false sku build-storybook",
+    "storybook:chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master"
   },
   "dependencies": {
     "@capsizecss/core": "^3.0.0",

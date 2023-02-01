@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "scripts": {
     "build": "node ./scripts/build.js",
-    "eslint": "eslint --cache .",
-    "format": "eslint --cache --fix . && prettier --cache --write .",
-    "prettier": "prettier --cache --list-different .",
-    "tsc": "tsc"
+    "lint:eslint": "eslint --cache .",
+    "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc",
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write ."
   },
   "author": "SEEK",
   "license": "MIT",
