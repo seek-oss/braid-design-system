@@ -67,7 +67,7 @@
     "jest-environment-jsdom": "^29.0.0",
     "jest-watch-typeahead": "^2.1.0",
     "js-yaml": "^4.1.0",
-    "nx": "^15.4.2",
+    "nx": "^15.6.3",
     "prettier": "^2.8.2",
     "renovate-config-seek": "0.4.0",
     "surge": "^0.23.1",
