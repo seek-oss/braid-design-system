@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "test": "jest",
+    "test": "nx run braid-design-system:generate:icons && jest",
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "nx run braid-design-system:build",

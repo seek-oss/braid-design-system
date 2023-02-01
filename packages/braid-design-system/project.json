@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.4.2/packages/nx/schemas/project-schema.json",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.6.3/packages/nx/schemas/project-schema.json",
   "namedInputs": {
     "default": ["{projectRoot}/**/*"]
   },
@@ -28,10 +28,7 @@
         "script": "generate:icons"
       }
     },
-    "lint": {
-      "dependsOn": ["lint:eslint", "lint:prettier", "lint:tsc"],
-      "executor": "nx:noop"
-    },
+    "lint": {},
     "lint:tsc": {
       "dependsOn": ["generate:icons"],
       "inputs": ["default", "^default"],
@@ -40,10 +37,7 @@
         "script": "lint:tsc"
       }
     },
-    "format": {
-      "dependsOn": ["format:eslint", "format:prettier"],
-      "executor": "nx:noop"
-    },
+    "format": {},
     "storybook:chromatic": {
       "dependsOn": ["storybook:build"],
       "executor": "nx:run-script",
