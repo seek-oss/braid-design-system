@@ -22,7 +22,7 @@
     },
     "generate:icons": {
       "inputs": ["{projectRoot}/icons/*.svg", "{projectRoot}/scripts"],
-      "outputs": ["{projectRoot}/src/**/*Svg.tsx"],
+      "outputs": ["{projectRoot}/src/**/icons/*/*Svg.tsx"],
       "executor": "nx:run-script",
       "options": {
         "script": "generate:icons"
