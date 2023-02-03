@@ -64,8 +64,8 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            You can customise the <Strong>size</Strong> and{' '}
-            <Strong>tone</Strong> props, and optionally set the{' '}
+            You can customise the <Strong>size</Strong>, <Strong>tone</Strong>{' '}
+            and <Strong>weight</Strong> props, and optionally set the{' '}
             <Strong>dividers</Strong> prop to <Strong>false.</Strong>
           </Text>
           <Text>
@@ -91,6 +91,7 @@ const docs: ComponentDocs = {
               size="standard"
               tone="secondary"
               space="xlarge"
+              weight="regular"
               dividers={false}
             >
               <AccordionItem

@@ -341,6 +341,43 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
+      label: 'Accordion regular weight',
+      Example: ({ id }) => {
+        const [expanded1, setExpanded1] = useState(false);
+        const [expanded2, setExpanded2] = useState(true);
+        const [expanded3, setExpanded3] = useState(false);
+
+        return (
+          <Accordion weight="regular">
+            <AccordionItem
+              label="Accordion item 1"
+              id={`${id}_1`}
+              expanded={expanded1}
+              onToggle={setExpanded1}
+            >
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem
+              label="Accordion item 2"
+              id={`${id}_2`}
+              expanded={expanded2}
+              onToggle={setExpanded2}
+            >
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem
+              label="Accordion item 3"
+              id={`${id}_3`}
+              expanded={expanded3}
+              onToggle={setExpanded3}
+            >
+              <Placeholder height={80} />
+            </AccordionItem>
+          </Accordion>
+        );
+      },
+    },
+    {
       label: 'Default AccordionItem',
       Example: ({ id }) => (
         <AccordionItem label="Label" id={id}>
@@ -353,6 +390,14 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id }) => (
         <AccordionItem label="Label" id={id} size="small" tone="secondary">
           <Text size="small">Content</Text>
+        </AccordionItem>
+      ),
+    },
+    {
+      label: 'AccordionItem with regular weight',
+      Example: ({ id }) => (
+        <AccordionItem label="Label" id={id} weight="regular">
+          <Text>Content</Text>
         </AccordionItem>
       ),
     },

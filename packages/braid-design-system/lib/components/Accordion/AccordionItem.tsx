@@ -36,6 +36,7 @@ export type AccordionItemBaseProps = {
   children: ReactNode;
   size?: TextProps['size'];
   tone?: AccordionContextValue['tone'];
+  weight?: AccordionContextValue['weight'];
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
   badge?: ReactElement<BadgeProps>;
@@ -51,6 +52,7 @@ export const AccordionItem = ({
   badge,
   size: sizeProp,
   tone: toneProp,
+  weight: weightProp,
   icon,
   data,
   ...restProps
@@ -64,6 +66,10 @@ export const AccordionItem = ({
   assert(
     !(accordionContext && toneProp),
     'Tone cannot be set on AccordionItem when inside Accordion. Tone should be set on Accordion instead.',
+  );
+  assert(
+    !(accordionContext && weightProp),
+    'Weight cannot be set on AccordionItem when inside Accordion. Weight should be set on Accordion instead.',
   );
 
   assert(
@@ -91,7 +97,7 @@ export const AccordionItem = ({
 
   const size = accordionContext?.size ?? sizeProp ?? 'large';
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
-  const weight = 'medium';
+  const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
 
   assert(
