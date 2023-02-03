@@ -23,6 +23,7 @@ export const AccordionItem = ({
   onToggle,
   size,
   tone,
+  weight,
   badge,
   icon,
   ...restProps
@@ -43,6 +44,7 @@ export const AccordionItem = ({
       label={typeof label !== 'boolean' ? label : ''}
       size={typeof size === 'boolean' ? undefined : size}
       tone={typeof tone === 'boolean' ? undefined : tone}
+      weight={typeof weight === 'boolean' ? undefined : weight}
       badge={typeof badge === 'boolean' ? undefined : badge}
       icon={typeof icon === 'boolean' ? undefined : icon}
       {...restProps}

@@ -21,6 +21,10 @@ exports[`Accordion 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    weight?: 
+        | "medium"
+        | "regular"
+        | "strong"
 },
 }
 `;
@@ -45,6 +49,10 @@ exports[`AccordionItem 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    weight?: 
+        | "medium"
+        | "regular"
+        | "strong"
 },
 }
 `;
