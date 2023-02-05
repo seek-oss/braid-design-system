@@ -1,5 +1,53 @@
 # braid-design-system
 
+## 31.24.0
+
+### Minor Changes
+
+- **Accordion, AccordionItem:** Add `weight` support ([#1211](https://github.com/seek-oss/braid-design-system/pull/1211))
+
+  Add support for customising the `weight` of `AccordionItem`s.
+  This can be either at an `Accordion` level or on a standalone `AccordionItem` based on design requirements.
+
+  Note, in order to maintain visual consistency, the `weight` prop can only be specified on an `AccordionItem` when outside of an `Accordion`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Accordion weight="strong">
+    <AccordionItem />
+    ...
+  </Accordion>
+  ```
+
+  or
+
+  ```jsx
+  <AccordionItem weight="strong" />
+  ```
+
+### Patch Changes
+
+- **CheckboxStandalone:** Enable alignment with Text ([#1209](https://github.com/seek-oss/braid-design-system/pull/1209))
+
+  Enables `CheckboxStandalone` to be wrapped in a `Text` component, ensuring it only occupies the same layout as text.
+  This is useful for visually aligning checkboxes in a custom layout alongside other text-based components, e.g. `AccordionItem`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Columns>
+    <Column>
+      <Text>
+        <CheckboxStandalone />
+      </Text>
+    </Column>
+    <Column>
+      <AccordionItem />
+    </Column>
+  </Columns>
+  ```
+
 ## 31.23.0
 
 ### Minor Changes
