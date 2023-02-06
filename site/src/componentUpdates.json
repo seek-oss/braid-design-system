@@ -2979,5 +2979,9 @@
         "summary": "**CheckboxStandalone:** Enable alignment with Text\n\nEnables `CheckboxStandalone` to be wrapped in a `Text` component, ensuring it only occupies the same layout as text.\nThis is useful for visually aligning checkboxes in a custom layout alongside other text-based components, e.g. `AccordionItem`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Columns>\n  <Column>\n    <Text>\n      <CheckboxStandalone />\n    </Text>\n  </Column>\n  <Column>\n    <AccordionItem />\n  </Column>\n</Columns>\n```"
       }
     ]
+  },
+  {
+    "version": "31.24.1",
+    "updates": []
   }
 ]
