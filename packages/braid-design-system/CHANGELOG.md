@@ -1,5 +1,14 @@
 # braid-design-system
 
+## 31.24.2
+
+### Patch Changes
+
+- Use theme tokens for shape of font metrics ([#1214](https://github.com/seek-oss/braid-design-system/pull/1214))
+
+  Internally some theme utilities were using Capsize’s `FontMetrics` as their expected payload, rather than correctly using the shape of the theme tokens.
+  This makes Braid compatible with Capsize v3.x.
+
 ## 31.24.1
 
 ### Patch Changes
