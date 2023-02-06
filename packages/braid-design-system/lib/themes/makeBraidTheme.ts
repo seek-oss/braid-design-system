@@ -2,7 +2,6 @@ import './treatTheme.d';
 import { createTheme } from 'sku/treat';
 import mapValues from 'lodash/mapValues';
 import values from 'lodash/values';
-import type { FontMetrics } from '@capsizecss/core';
 import { getCapHeight } from '@capsizecss/core';
 
 import { breakpoints } from '../css/breakpoints';
@@ -12,7 +11,7 @@ import type { BraidTokens, TextDefinition } from './tokenType';
 
 const fontSizeToCapHeight = (
   definition: TextDefinition,
-  fontMetrics: FontMetrics,
+  fontMetrics: BraidTokens['typography']['fontMetrics'],
 ) => {
   const { mobile, tablet } = definition;
 
