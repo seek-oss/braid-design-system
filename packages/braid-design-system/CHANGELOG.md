@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 31.24.1
+
+### Patch Changes
+
+- Whitelist only the required FontMetrics for theme tokens ([#1212](https://github.com/seek-oss/braid-design-system/pull/1212))
+
+  The latest version of `FontMetrics` type in Capsize adds more properties, and we only populate the properties we require on the theme. Whitelisting the required properties to keep the themes explicit.
+
 ## 31.24.0
 
 ### Minor Changes
