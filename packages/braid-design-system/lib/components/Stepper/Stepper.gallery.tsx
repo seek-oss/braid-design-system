@@ -13,7 +13,7 @@ export const galleryItems: ComponentExample[] = [
             '1. First step',
             '2. Second step',
             '3. Third step',
-            '4. Forth step',
+            '4. Fourth step',
           ].map((step) => (
             <Step key={step}>{step}</Step>
           ))}
@@ -29,7 +29,7 @@ export const galleryItems: ComponentExample[] = [
             '1. First step',
             '2. Second step',
             '3. Third step',
-            '4. Forth step',
+            '4. Fourth step',
           ].map((step, index) => (
             <Step key={step} complete={index === 3}>
               {step}
@@ -47,7 +47,7 @@ export const galleryItems: ComponentExample[] = [
             '1. First step',
             '2. Second step',
             '3. Third step',
-            '4. Forth step',
+            '4. Fourth step',
           ].map((step) => (
             <Step key={step}>{step}</Step>
           ))}
@@ -63,7 +63,7 @@ export const galleryItems: ComponentExample[] = [
             '1. First step',
             '2. Second step',
             '3. Third step',
-            '4. Forth step',
+            '4. Fourth step',
           ].map((step) => (
             <Step key={step}>{step}</Step>
           ))}
