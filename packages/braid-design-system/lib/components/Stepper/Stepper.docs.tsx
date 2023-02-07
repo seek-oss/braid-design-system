@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
         <Step>1. First step</Step>
         <Step>2. Second step</Step>
         <Step>3. Third step</Step>
-        <Step>4. Forth step</Step>
+        <Step>4. Fourth step</Step>
         <Step>5. Fifth step</Step>
       </Stepper>,
     ),
@@ -87,7 +87,7 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step>3. Third step</Step>
-                <Step>4. Forth step</Step>
+                <Step>4. Fourth step</Step>
               </Stepper>
               <Columns space="small">
                 <Column>
@@ -146,7 +146,7 @@ const docs: ComponentDocs = {
             <Step>1. First step</Step>
             <Step>2. Second step</Step>
             <Step complete>3. Third step</Step>
-            <Step>4. Forth step</Step>
+            <Step>4. Fourth step</Step>
           </Stepper>,
         ),
     },
@@ -199,7 +199,7 @@ const docs: ComponentDocs = {
                   3. Third step
                 </Step>
                 <Step id={4} complete={getState('complete')[4]}>
-                  4. Forth step
+                  4. Fourth step
                 </Step>
                 <Step id={5} complete={getState('complete')[5]}>
                   5. Fifth step
@@ -247,7 +247,7 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step>3. Third step</Step>
-                <Step>4. Forth step</Step>
+                <Step>4. Fourth step</Step>
                 <Step>5. Fifth step</Step>
                 <Step>6. Sixth step</Step>
               </Stepper>
