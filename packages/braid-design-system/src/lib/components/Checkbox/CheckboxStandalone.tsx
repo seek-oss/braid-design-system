@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import { Box } from '../Box/Box';
 import type { StyledInputProps } from '../private/InlineField/StyledInput';
 import { StyledInput } from '../private/InlineField/StyledInput';
+import { TextContext } from '../Text/TextContext';
 import type { CheckboxProps } from './Checkbox';
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 
@@ -23,12 +24,14 @@ export const CheckboxStandalone = forwardRef<
 
   return (
     <Box position="relative">
-      <StyledInput
-        {...restProps}
-        checked={calculatedChecked}
-        type="checkbox"
-        ref={ref}
-      />
+      <TextContext.Provider value={null}>
+        <StyledInput
+          {...restProps}
+          checked={calculatedChecked}
+          type="checkbox"
+          ref={ref}
+        />
+      </TextContext.Provider>
     </Box>
   );
 });
