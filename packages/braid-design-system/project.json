@@ -11,6 +11,13 @@
       "options": {
         "script": "copy-codemod"
       }
+    },
+    "chromatic": {
+      "dependsOn": ["build-storybook"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "chromatic"
+      }
     }
   },
   "implicitDependencies": ["codemod"]

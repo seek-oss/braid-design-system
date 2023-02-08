@@ -30,11 +30,13 @@ export const Accordion = ({
   space,
   size,
   tone,
+  weight,
   ...restProps
 }: AccordionProps) => (
   <BraidAccordion
     size={typeof size === 'boolean' ? undefined : size}
     tone={typeof tone === 'boolean' ? undefined : tone}
+    weight={typeof weight === 'boolean' ? undefined : weight}
     space={
       typeof space === 'string' || Array.isArray(space)
         ? filterSpace(space)
