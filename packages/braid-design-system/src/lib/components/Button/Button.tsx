@@ -32,7 +32,7 @@ export const buttonVariants = [
 
 type ButtonSize = 'standard' | 'small';
 type ButtonTone = 'brandAccent' | 'critical' | 'neutral';
-type ButtonVariant = typeof buttonVariants[number];
+type ButtonVariant = (typeof buttonVariants)[number];
 export interface ButtonStyleProps {
   size?: ButtonSize;
   tone?: ButtonTone;

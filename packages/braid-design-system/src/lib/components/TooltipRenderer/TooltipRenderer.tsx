@@ -97,7 +97,7 @@ export const TooltipContent = ({
 
 const validPlacements = ['top', 'bottom'] as const;
 
-type Placement = typeof validPlacements[number];
+type Placement = (typeof validPlacements)[number];
 
 export interface TooltipRendererProps {
   id: string;

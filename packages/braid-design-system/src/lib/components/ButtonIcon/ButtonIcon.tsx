@@ -27,7 +27,7 @@ export type ButtonIconProps = {
   size?: 'standard' | 'large';
   tone?: 'neutral' | 'secondary';
   type?: 'button' | 'submit' | 'reset';
-  variant?: typeof buttonIconVariants[number];
+  variant?: (typeof buttonIconVariants)[number];
   onClick?: NativeButtonProps['onClick'];
   onMouseDown?: NativeButtonProps['onMouseDown'];
   onKeyUp?: NativeButtonProps['onKeyUp'];

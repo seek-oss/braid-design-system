@@ -1,8 +1,12 @@
 ignores:
+  - '@svgr/core'
   - '@svgr/plugin-jsx'
   - '@svgr/plugin-prettier'
   - '@testing-library/dom'
   - '@types/jest'
+  - change-case
+  - cheerio
+  - svgo
   - assert
   - braid-src
   - site

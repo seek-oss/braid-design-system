@@ -10,7 +10,7 @@ import * as styles from '../../hooks/useIcon/icon.css';
 type AlignY = keyof typeof styles.alignY;
 interface IconStyles {
   alignY?: AlignY;
-  verticalCorrection?: keyof typeof styles.alignY[AlignY];
+  verticalCorrection?: keyof (typeof styles.alignY)[AlignY];
 }
 export const iconInlineSize = ({
   alignY = 'uppercase',
