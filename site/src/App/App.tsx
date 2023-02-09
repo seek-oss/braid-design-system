@@ -1,10 +1,11 @@
-import 'braid-src/reset';
+import 'braid-src/entries/reset';
+
 import React, { StrictMode, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
-import docsTheme from 'braid-src/themes/docs';
+import docsTheme from 'braid-src/entries/themes/docs';
 import {
   BraidProvider,
   ToastProvider,

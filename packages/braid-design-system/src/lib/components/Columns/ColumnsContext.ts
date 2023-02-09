@@ -17,7 +17,7 @@ interface ColumnsContextValue {
   desktopSpace: Space;
   wideSpace: Space;
   collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | null;
-  component: typeof validColumnsComponents[number];
+  component: (typeof validColumnsComponents)[number];
 }
 
 export const ColumnsContext = createContext<ColumnsContextValue>({

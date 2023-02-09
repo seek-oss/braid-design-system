@@ -26,7 +26,7 @@ const tones = [
   'info',
   'promote',
 ] as const;
-type Tone = typeof tones[number];
+type Tone = (typeof tones)[number];
 
 const usageTypes = [
   'UI',
@@ -36,7 +36,7 @@ const usageTypes = [
   'Time',
   'Payments',
 ] as const;
-type Usage = typeof usageTypes[number];
+type Usage = (typeof usageTypes)[number];
 
 interface ColorDoc {
   description: string;

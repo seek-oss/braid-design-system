@@ -27,6 +27,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
+      - name: Build
+        run: pnpm build
+
       - name: Lint
         run: pnpm lint
 
@@ -34,6 +37,6 @@ jobs:
         run: pnpm test
 
       - name: Chromatic
-        run: pnpm chromatic
+        run: pnpm storybook:chromatic
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}

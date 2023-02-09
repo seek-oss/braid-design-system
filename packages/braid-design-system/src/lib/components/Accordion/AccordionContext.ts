@@ -5,7 +5,7 @@ export const validTones = ['neutral', 'secondary'] as const;
 
 export interface AccordionContextValue {
   size?: TextProps['size'];
-  tone?: typeof validTones[number];
+  tone?: (typeof validTones)[number];
   weight?: TextProps['weight'];
 }
 

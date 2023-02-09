@@ -1,14 +1,17 @@
 const path = require('path');
-const routes = require('./sku.routes.js');
+
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+
 const browserslist = require('../browserslist');
+const routes = require('./sku.routes.js');
 
 const isGitHubPages = process.env.IS_GITHUB_PAGES === 'true';
 
-const braidSrc = '../packages/braid-design-system';
+const braidRoot = path.join(__dirname, '../packages/braid-design-system');
+const resolveFromBraid = (p) => path.join(braidRoot, p);
 
 module.exports = {
-  srcPaths: ['./src', braidSrc],
+  srcPaths: ['./src', resolveFromBraid('src')],
   clientEntry: './src/client.tsx',
   renderEntry: './src/render.tsx',
   routes,
@@ -19,6 +22,9 @@ module.exports = {
   supportedBrowsers: browserslist,
   displayNamesProd: true,
   dangerouslySetWebpackConfig: (config) => {
+    // uncomment if you need to debug issues with side-effects
+    // config.devtool = 'cheap-source-map';
+
     config.plugins.push(
       new CircularDependencyPlugin({
         exclude: /node_modules/,
@@ -28,13 +34,14 @@ module.exports = {
 
     config.resolve.alias = {
       ...config.resolve.alias,
-      'braid-src': path.join(__dirname, braidSrc),
+      'braid-src/CHANGELOG.md': resolveFromBraid('CHANGELOG.md'),
+      'braid-src': resolveFromBraid('src'),
       site: path.join(__dirname, './src'),
     };
 
     // Import Changelog as a raw string so it can be passed to the markdown renderer
     config.module.rules.push({
-      test: path.join(__dirname, braidSrc, 'CHANGELOG.md'),
+      test: resolveFromBraid('CHANGELOG.md'),
       type: 'asset/source',
     });
 

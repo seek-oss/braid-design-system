@@ -1,4 +1,25 @@
 node_modules/
-lib/components/icons/*/*Svg.tsx
 codemod/dist/
 dist-storybook/
+src/lib/components/icons/*/*Svg.tsx
+
+# managed by crackle
+/color-mode
+/color-mode/query-param
+/css
+/dist
+/dist-render
+/playroom/FrameComponent
+/playroom/components
+/playroom/scope
+/playroom/snippets
+/reset
+/test
+/themes/apac
+/themes/catho
+/themes/docs
+/themes/occ
+/themes/seekAnz
+/themes/seekBusiness
+/themes/wireframe
+# end managed by crackle

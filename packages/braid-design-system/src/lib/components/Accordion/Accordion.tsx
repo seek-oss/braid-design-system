@@ -19,7 +19,7 @@ export interface AccordionProps {
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
-  space?: RequiredResponsiveValue<typeof validSpaceValues[number]>;
+  space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
 }
 

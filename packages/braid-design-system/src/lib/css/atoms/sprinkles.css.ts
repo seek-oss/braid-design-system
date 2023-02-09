@@ -92,7 +92,7 @@ export type RequiredResponsiveValue<Value extends string | number> =
 export type RequiredResponsiveObject<Value> = Partial<
   Record<Breakpoint, Value>
 > &
-  Record<typeof breakpointNames[0], Value>;
+  Record<(typeof breakpointNames)[0], Value>;
 
 export const normalizeResponsiveValue = createNormalizeValueFn(
   responsiveAtomicProperties,
