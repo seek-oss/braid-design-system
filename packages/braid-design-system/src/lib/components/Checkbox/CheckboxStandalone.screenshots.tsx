@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import type { ComponentProps } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { CheckboxStandalone, Stack } from '../';
+import { Box, CheckboxStandalone, Column, Columns, Stack, Text } from '../';
+
+type CheckboxProps = ComponentProps<typeof CheckboxStandalone>;
+const checkboxSizes: CheckboxProps['size'][] = ['small', 'standard'];
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -87,6 +91,64 @@ export const screenshots: ComponentScreenshot = {
           aria-label="Label"
           tone="critical"
         />
+      ),
+    },
+    {
+      label: 'Text alignment',
+      Example: ({ id, handler }) => (
+        <Stack space="medium">
+          {checkboxSizes.map((size) => (
+            <Box background="surface" key={size}>
+              <Columns space="small">
+                <Column width="content">
+                  <Text size={size}>
+                    <CheckboxStandalone
+                      id={id}
+                      onChange={handler}
+                      checked={false}
+                      aria-label="Label"
+                      size={size}
+                    />
+                  </Text>
+                </Column>
+                <Column>
+                  <Text size={size}>Text alignment</Text>
+                </Column>
+              </Columns>
+            </Box>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Text alignment with wrapping lines',
+      Example: ({ id, handler }) => (
+        <Box style={{ maxWidth: 200 }}>
+          <Stack space="medium">
+            {checkboxSizes.map((size) => (
+              <Box background="surface" key={size}>
+                <Columns space="small">
+                  <Column width="content">
+                    <Text size={size}>
+                      <CheckboxStandalone
+                        id={id}
+                        onChange={handler}
+                        checked={false}
+                        aria-label="Label"
+                        size={size}
+                      />
+                    </Text>
+                  </Column>
+                  <Column>
+                    <Text size={size}>
+                      Text with really really long wrapping lines
+                    </Text>
+                  </Column>
+                </Columns>
+              </Box>
+            ))}
+          </Stack>
+        </Box>
       ),
     },
   ],

@@ -17,7 +17,10 @@ export interface BraidTokens {
   typography: {
     fontFamily: string;
     webFont: string | null;
-    fontMetrics: FontMetrics;
+    fontMetrics: Pick<
+      FontMetrics,
+      'capHeight' | 'ascent' | 'descent' | 'lineGap' | 'unitsPerEm'
+    >;
     fontWeight: Record<FontWeight, 400 | 500 | 600 | 700 | 800>;
     heading: {
       weight: {

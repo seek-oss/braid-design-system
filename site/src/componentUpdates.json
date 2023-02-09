@@ -2961,5 +2961,31 @@
   {
     "version": "31.23.0",
     "updates": []
+  },
+  {
+    "version": "31.24.0",
+    "updates": [
+      {
+        "updated": [
+          "Accordion",
+          "AccordionItem"
+        ],
+        "summary": "**Accordion, AccordionItem:** Add `weight` support\n\nAdd support for customising the `weight` of `AccordionItem`s.\nThis can be either at an `Accordion` level or on a standalone `AccordionItem` based on design requirements.\n\nNote, in order to maintain visual consistency, the `weight` prop can only be specified on an `AccordionItem` when outside of an `Accordion`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Accordion weight=\"strong\">\n  <AccordionItem />\n  ...\n</Accordion>\n```\n\nor\n\n```jsx\n<AccordionItem weight=\"strong\" />\n```"
+      },
+      {
+        "updated": [
+          "CheckboxStandalone"
+        ],
+        "summary": "**CheckboxStandalone:** Enable alignment with Text\n\nEnables `CheckboxStandalone` to be wrapped in a `Text` component, ensuring it only occupies the same layout as text.\nThis is useful for visually aligning checkboxes in a custom layout alongside other text-based components, e.g. `AccordionItem`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Columns>\n  <Column>\n    <Text>\n      <CheckboxStandalone />\n    </Text>\n  </Column>\n  <Column>\n    <AccordionItem />\n  </Column>\n</Columns>\n```"
+      }
+    ]
+  },
+  {
+    "version": "31.24.1",
+    "updates": []
+  },
+  {
+    "version": "31.24.2",
+    "updates": []
   }
 ]

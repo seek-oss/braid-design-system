@@ -18,6 +18,7 @@ export interface AccordionProps {
   dividers?: boolean;
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
+  weight?: AccordionContextValue['weight'];
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
 }
@@ -41,6 +42,7 @@ export const Accordion = ({
   children,
   size = 'large',
   tone,
+  weight,
   space: spaceProp,
   dividers = true,
   data,
@@ -63,7 +65,10 @@ export const Accordion = ({
       .join(', ')}`,
   );
 
-  const contextValue = useMemo(() => ({ size, tone }), [size, tone]);
+  const contextValue = useMemo(
+    () => ({ size, tone, weight }),
+    [size, tone, weight],
+  );
 
   const space =
     spaceProp ?? defaultSpaceForSize[dividers ? 'divided' : 'undivided'][size];

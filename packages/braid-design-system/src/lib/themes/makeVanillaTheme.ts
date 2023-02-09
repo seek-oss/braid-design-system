@@ -1,5 +1,4 @@
 import mapValues from 'lodash/mapValues';
-import type { FontMetrics } from '@capsizecss/core';
 import { getCapHeight } from '@capsizecss/core';
 import { precomputeValues } from '@capsizecss/vanilla-extract';
 
@@ -10,7 +9,7 @@ const px = (v: string | number) => `${v}px`;
 const fontSizeToCapHeight = (
   grid: number,
   definition: TextDefinition,
-  fontMetrics: FontMetrics,
+  fontMetrics: BraidTokens['typography']['fontMetrics'],
 ) => {
   const { mobile, tablet } = definition;
 
