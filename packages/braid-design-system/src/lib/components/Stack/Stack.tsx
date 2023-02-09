@@ -34,7 +34,7 @@ export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
 interface UseStackItemProps {
   align: OptionalResponsiveValue<Align>;
   space: ResponsiveSpace;
-  component: typeof validStackComponents[number];
+  component: (typeof validStackComponents)[number];
 }
 
 const useStackItem = ({ align, space, component }: UseStackItemProps) =>
@@ -94,7 +94,7 @@ const calculateHiddenStackItemProps = (
 };
 
 export interface StackProps {
-  component?: typeof validStackComponents[number];
+  component?: (typeof validStackComponents)[number];
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
   align?: OptionalResponsiveValue<Align>;

@@ -16,7 +16,7 @@ const validTones = [
   'caution',
   'critical',
 ] as const;
-type Tone = typeof validTones[number];
+type Tone = (typeof validTones)[number];
 type BadgeWeight = 'strong' | 'regular';
 export interface BadgeProps {
   tone?: Tone;

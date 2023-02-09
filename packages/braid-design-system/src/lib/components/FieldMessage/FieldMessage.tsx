@@ -8,7 +8,7 @@ import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 
 export const tones = ['neutral', 'critical', 'positive'] as const;
-type FieldTone = typeof tones[number];
+type FieldTone = (typeof tones)[number];
 
 export interface FieldMessageProps {
   id: string;

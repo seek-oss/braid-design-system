@@ -4,7 +4,7 @@ import { wireframe } from '../../themes';
 import type { AccordionProps } from './Accordion';
 import { Accordion as BraidAccordion, validSpaceValues } from './Accordion';
 
-type ValidSpaceValue = typeof validSpaceValues[number];
+type ValidSpaceValue = (typeof validSpaceValues)[number];
 
 const spaceScale = ['none', ...Object.keys(wireframe.space.space)] as Array<
   keyof typeof wireframe.space.space | 'none'

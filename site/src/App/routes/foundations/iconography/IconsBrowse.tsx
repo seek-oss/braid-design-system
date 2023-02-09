@@ -25,7 +25,7 @@ const IconTile = ({
   icon,
   suggestion = false,
 }: {
-  icon: typeof iconNames[number];
+  icon: (typeof iconNames)[number];
   suggestion?: boolean;
 }) => {
   const IconComponent = icons[icon.name];

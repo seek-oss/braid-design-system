@@ -18,7 +18,7 @@ export interface ColumnsProps extends CollapsibleAlignmentProps {
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
     | null;
-  component?: typeof validColumnsComponents[number];
+  component?: (typeof validColumnsComponents)[number];
   data?: DataAttributeMap;
 }
 

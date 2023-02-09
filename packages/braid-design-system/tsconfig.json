@@ -1,16 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "./color-mode",
-    "./css",
-    "./lib",
-    "./playroom",
-    "./reset",
-    "./scripts",
-    "./test",
-    "./themes"
-  ],
-  "compilerOptions": {
-    "types": ["@types/jest"]
-  }
+  "include": ["./src", "./scripts"]
 }

@@ -34,7 +34,7 @@ const borderRadius = 'xlarge';
 export type CardProps = {
   children: ReactNode;
   tone?: 'promote' | 'formAccent';
-  component?: typeof validCardComponents[number];
+  component?: (typeof validCardComponents)[number];
   data?: DataAttributeMap;
 } & (SimpleCardRounding | ResponsiveCardRounding);
 
