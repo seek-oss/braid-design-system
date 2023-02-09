@@ -45,7 +45,7 @@
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^29.0.0",
-    "@types/node": "^16.11.36",
+    "@types/node": "^18.13.0",
     "@types/react": "^18.0.21",
     "@types/sanitize-html": "^2.6.2",
     "@types/webpack-env": "^1.17.0",
