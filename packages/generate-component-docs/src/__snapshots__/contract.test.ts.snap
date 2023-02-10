@@ -1959,10 +1959,7 @@ exports[`BraidTestProvider 1`] = `
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     themeName?: 
         | "apac"
-        | "catho"
         | "docs"
-        | "occ"
-        | "seekAnz"
         | "seekBusiness"
         | "wireframe"
 },
