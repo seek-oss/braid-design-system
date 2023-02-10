@@ -2,11 +2,6 @@
 'braid-design-system': major
 ---
 
----
-updated:
-  - colormode
----
-
 Remove experimental color-mode check script
 
 **MIGRATION GUIDE:**
@@ -15,7 +10,7 @@ The experimental script for checking which color mode to render has been formali
 
 In the future we may add other mechanisms, such as local storage for example, but for now all existing consumers should have been migrated to the query-param check.
 
-```jsx
+```diff
 - import { __experimentalDarkMode__ } from 'braid-design-system/color-mode'
 + import { colorModeQueryParamCheck } from 'braid-design-system/color-mode/query-param'
 ```

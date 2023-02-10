@@ -30,10 +30,10 @@
 -  ...
 -</StyleGuideProvider>;
 
-+import seekAnz from 'braid-design-system/themes/seekAnz';
++import apac from 'braid-design-system/themes/apac';
 +import { Helmet } from 'react-helmet';
 +
-+<BraidProvider theme={seekAnz}>
++<BraidProvider theme={apac}>
 +  <Helmet
 +    title={
 +      locale === 'AU'
