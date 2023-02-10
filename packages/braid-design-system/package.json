@@ -29,11 +29,6 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./color-mode": {
-      "types": "./dist/color-mode.d.ts",
-      "import": "./dist/color-mode.mjs",
-      "require": "./dist/color-mode.cjs"
-    },
     "./color-mode/query-param": {
       "types": "./dist/color-mode/query-param.d.ts",
       "import": "./dist/color-mode/query-param.mjs",
