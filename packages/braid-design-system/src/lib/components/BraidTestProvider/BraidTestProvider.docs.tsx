@@ -1,5 +1,5 @@
 import React from 'react';
-import { seekAnz } from '../../themes';
+import { apac } from '../../themes';
 import type { ComponentDocs } from 'site/types';
 import { Stack, Text, Strong, TextLink, Alert } from '..';
 
@@ -40,7 +40,7 @@ const docs: ComponentDocs = {
 
         it('should do something', () => {
           render(
-            <BraidTestProvider themeName="${seekAnz.name}">
+            <BraidTestProvider themeName="${apac.name}">
               ...
             </BraidTestProvider>
           );
