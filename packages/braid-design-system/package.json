@@ -79,25 +79,10 @@
       "import": "./dist/themes/apac.mjs",
       "require": "./dist/themes/apac.cjs"
     },
-    "./themes/catho": {
-      "types": "./dist/themes/catho.d.ts",
-      "import": "./dist/themes/catho.mjs",
-      "require": "./dist/themes/catho.cjs"
-    },
     "./themes/docs": {
       "types": "./dist/themes/docs.d.ts",
       "import": "./dist/themes/docs.mjs",
       "require": "./dist/themes/docs.cjs"
-    },
-    "./themes/occ": {
-      "types": "./dist/themes/occ.d.ts",
-      "import": "./dist/themes/occ.mjs",
-      "require": "./dist/themes/occ.cjs"
-    },
-    "./themes/seekAnz": {
-      "types": "./dist/themes/seekAnz.d.ts",
-      "import": "./dist/themes/seekAnz.mjs",
-      "require": "./dist/themes/seekAnz.cjs"
     },
     "./themes/seekBusiness": {
       "types": "./dist/themes/seekBusiness.d.ts",
@@ -132,10 +117,7 @@
     "reset",
     "test",
     "themes/apac",
-    "themes/catho",
     "themes/docs",
-    "themes/occ",
-    "themes/seekAnz",
     "themes/seekBusiness",
     "themes/wireframe"
   ],
