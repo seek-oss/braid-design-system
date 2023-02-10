@@ -4,7 +4,6 @@ dist-storybook/
 src/lib/components/icons/*/*Svg.tsx
 
 # managed by crackle
-/color-mode
 /color-mode/query-param
 /css
 /dist
