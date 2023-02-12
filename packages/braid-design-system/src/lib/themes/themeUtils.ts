@@ -1,9 +1,9 @@
-import type { Style } from 'sku/treat';
+import type { StyleRule } from '@vanilla-extract/css';
 import omit from 'lodash/omit';
 import type { Breakpoint } from '../css/breakpoints';
 
 type RequiredTokens = { breakpoint: Record<Breakpoint, number> };
-type StyleWithoutMediaQueries = Exclude<Style['@media'], undefined>[string];
+type StyleWithoutMediaQueries = Exclude<StyleRule['@media'], undefined>[string];
 
 export const makeThemeUtils = (tokens: RequiredTokens) => {
   const makeMediaQuery =
@@ -33,7 +33,7 @@ export const makeThemeUtils = (tokens: RequiredTokens) => {
     tablet,
     desktop,
     wide,
-  }: ResponsiveStyle): Style => ({
+  }: ResponsiveStyle): StyleRule => ({
     ...omit(mobile, '@media'),
     ...(tablet || desktop || wide
       ? {
