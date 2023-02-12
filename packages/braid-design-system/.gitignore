@@ -2,9 +2,9 @@ node_modules/
 codemod/dist/
 dist-storybook/
 src/lib/components/icons/*/*Svg.tsx
+README.md
 
 # managed by crackle
-/color-mode
 /color-mode/query-param
 /css
 /dist
