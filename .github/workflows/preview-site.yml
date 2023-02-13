@@ -28,7 +28,7 @@ jobs:
         run: pnpm i
 
       - name: Build
-        run: pnpm build-site
+        run: pnpm build:site
 
       - name: Deploy to surge
         run: pnpm surge -p ./site/dist -d braid-design-system--${GITHUB_SHA}.surge.sh

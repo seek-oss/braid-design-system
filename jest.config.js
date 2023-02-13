@@ -21,7 +21,7 @@ module.exports = {
     // Default values, but with 'ts' + 'tsx' support
     // (https://jestjs.io/docs/en/configuration.html#testmatch-array-string)
     '**/__tests__/**/*.(js|ts|tsx)',
-    '**/?(*.)+(spec|test).(js|ts|tsx)',
+    '**/(*.)+(spec|test).(js|ts|tsx)',
   ],
   testPathIgnorePatterns: [
     `<rootDir>${slash}(.*${slash})?(dist|node_modules)${slash}`,
@@ -32,6 +32,7 @@ module.exports = {
       require.resolve('./testConfig/fileMock'),
   },
   transform: {
+    '\\.css\\.ts$': require.resolve('@vanilla-extract/jest-transform'),
     '\\.(j|t)sx?$': require.resolve('./testConfig/babelTransform.js'),
   },
   transformIgnorePatterns: [
