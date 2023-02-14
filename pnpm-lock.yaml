@@ -17,7 +17,8 @@ importers:
       '@babel/runtime': ^7.18.0
       '@changesets/cli': ^2.22.0
       '@changesets/get-github-info': ^0.5.0
-      '@crackle/cli': ^0.10.3
+      '@crackle/cli': ^0.10.4
+      '@crackle/core': ^0.18.0
       '@manypkg/cli': ^0.19.1
       '@octokit/rest': ^18.12.0
       '@types/fs-extra': ^9.0.13
@@ -59,7 +60,8 @@ importers:
       '@babel/runtime': 7.18.0
       '@changesets/cli': 2.22.0
       '@changesets/get-github-info': 0.5.0
-      '@crackle/cli': 0.10.3_mz5xcxlw2ipbobyq3y3inkexea
+      '@crackle/cli': 0.10.4_mz5xcxlw2ipbobyq3y3inkexea
+      '@crackle/core': 0.18.0_mz5xcxlw2ipbobyq3y3inkexea
       '@manypkg/cli': 0.19.1
       '@octokit/rest': 18.12.0
       '@types/fs-extra': 9.0.13
@@ -567,7 +569,6 @@ packages:
       '@babel/types': 7.20.7
       '@jridgewell/gen-mapping': 0.3.2
       jsesc: 2.5.2
-    dev: false
 
   /@babel/helper-annotate-as-pure/7.18.6:
     resolution: {integrity: sha512-duORpUiYrEpzKIop6iNbjnwKLAKnJ47csTyRACyEmWj0QdUrm5aqNJGHSSEQSUAvNW0ojX0dOmK9dZduvkfeXA==}
@@ -682,7 +683,7 @@ packages:
     resolution: {integrity: sha512-eyAYAsQmB80jNfg4baAtLeWAQHfHFiR483rzFK+BhETlGZaQC9bsfrugfXDCbRHLQbIA7U5NxhhOxN7p/dWIcg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.20.0
+      '@babel/types': 7.20.7
 
   /@babel/helper-function-name/7.19.0:
     resolution: {integrity: sha512-WAwHBINyrpqywkUH0nTnNgI5ina5TFn85HKS0pbPDfxFfhyR/aNQEn4hGi1P1JyT//I0t4OgXUlofzWILRvS5w==}
@@ -821,9 +822,9 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-function-name': 7.19.0
-      '@babel/template': 7.18.10
-      '@babel/traverse': 7.20.0
-      '@babel/types': 7.20.0
+      '@babel/template': 7.20.7
+      '@babel/traverse': 7.20.13
+      '@babel/types': 7.20.7
     transitivePeerDependencies:
       - supports-color
 
@@ -877,7 +878,6 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.20.7
-    dev: false
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.18.6_@babel+core@7.19.6:
     resolution: {integrity: sha512-Dgxsyg54Fx1d4Nge8UnvTrED63vrwOdPmyvPzlNN/boaliRP54pm3pGzZD1SJUwrBA+Cs/xdG8kXX6Mn/RfISQ==}
@@ -1956,7 +1956,6 @@ packages:
       '@babel/code-frame': 7.18.6
       '@babel/parser': 7.20.13
       '@babel/types': 7.20.7
-    dev: false
 
   /@babel/traverse/7.20.0:
     resolution: {integrity: sha512-5+cAXQNARgjRUK0JWu2UBwja4JLSO/rBMPJzpsKb+oBF5xlUuCfljQepS4XypBQoiigL0VQjTZy6WiONtUdScQ==}
@@ -1991,7 +1990,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@babel/types/7.20.0:
     resolution: {integrity: sha512-Jlgt3H0TajCW164wkTOTzHkZb075tMQMULzrLUoUeKmO7eFL96GgDxf7/Axhc5CAuKE3KFyVW1p6ysKsi2oXAg==}
@@ -2008,7 +2006,6 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
-    dev: false
 
   /@base2/pretty-print-object/1.0.1:
     resolution: {integrity: sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==}
@@ -2252,11 +2249,11 @@ packages:
       - supports-color
     dev: false
 
-  /@crackle/cli/0.10.3_mz5xcxlw2ipbobyq3y3inkexea:
-    resolution: {integrity: sha512-U3K88w6H77ffwwt63BhfvnAFTJqcBN70E9JkMuVYH2Pu6kyd1HfcyGQoDy4T2zg4tnPtNko0X0/zs4b8t2oGkA==}
+  /@crackle/cli/0.10.4_mz5xcxlw2ipbobyq3y3inkexea:
+    resolution: {integrity: sha512-QBjBl90CP1WyNhYcZyT5TGsdaCcoklCNXpHAqOOSBjImjwD2fLYuLuNHcZGlslDKfNd+Amqqzv3eYDj+yfbL5w==}
     hasBin: true
     dependencies:
-      '@crackle/core': 0.17.0_mz5xcxlw2ipbobyq3y3inkexea
+      '@crackle/core': 0.18.0_mz5xcxlw2ipbobyq3y3inkexea
       yargs: 17.6.2
     transitivePeerDependencies:
       - '@types/node'
@@ -2273,8 +2270,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@crackle/core/0.17.0_mz5xcxlw2ipbobyq3y3inkexea:
-    resolution: {integrity: sha512-KkhDGRmYu+c89E16/hJFG1rijOBzBeLgpej4d8vqYZ/9U56l+8JEoENJZTtw6QhPGOcLoxUB4KCfaivJ7BzA7w==}
+  /@crackle/core/0.18.0_mz5xcxlw2ipbobyq3y3inkexea:
+    resolution: {integrity: sha512-7sEnPKbhIY29p5XYbrN6Xb6NIaHQW+m5BuMnkSLd1o5XRWsSORiMP32iZkH1DVZcLQk4gptjDgnkAz71DlAygQ==}
     peerDependencies:
       typescript: '>=4.9.4'
     dependencies:
@@ -2296,6 +2293,7 @@ packages:
       eval: 0.1.8
       express: 4.18.2
       fast-glob: 3.2.12
+      fast-memoize: 2.5.2
       fs-extra: 10.1.0
       glob-to-regexp: 0.4.1
       ink: 3.2.0_iapumuv4e6jcjznwuxpf4tt22e
@@ -2306,6 +2304,7 @@ packages:
       rollup: 3.12.0
       rollup-plugin-dts: 5.1.1_ulw43b5iadbw5wroqe6fqamki4
       rollup-plugin-node-externals: 5.1.0_rollup@3.12.0
+      semver: 7.3.8
       serialize-javascript: 6.0.0
       serve-handler: 6.1.5
       sort-package-json: 1.57.0
@@ -5118,7 +5117,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.3.7
+      semver: 7.3.8
       tsutils: 3.21.0_typescript@4.9.3
       typescript: 4.9.3
     transitivePeerDependencies:
@@ -5138,7 +5137,7 @@ packages:
       eslint: 8.21.0
       eslint-scope: 5.1.1
       eslint-utils: 3.0.0_eslint@8.21.0
-      semver: 7.3.7
+      semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -5158,7 +5157,7 @@ packages:
       eslint: 7.32.0
       eslint-scope: 5.1.1
       eslint-utils: 3.0.0_eslint@7.32.0
-      semver: 7.3.7
+      semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -9901,6 +9900,10 @@ packages:
 
   /fast-levenshtein/2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
+
+  /fast-memoize/2.5.2:
+    resolution: {integrity: sha512-Ue0LwpDYErFbmNnZSF0UH6eImUwDmogUO1jyE+JbN2gsQz/jICm1Ve7t9QT0rNSsfJt+Hs4/S3GnsDVjL4HVrw==}
+    dev: false
 
   /fast-shallow-equal/1.0.0:
     resolution: {integrity: sha512-HPtaa38cPgWvaCFmRNhlc6NG7pv6NUHqjPgVAkWGoB9mQMwYB27/K0CvOM5Czy+qpT3e8XJ6Q4aPAnzpNpzNaw==}
@@ -16878,6 +16881,13 @@ packages:
 
   /semver/7.3.7:
     resolution: {integrity: sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+
+  /semver/7.3.8:
+    resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
