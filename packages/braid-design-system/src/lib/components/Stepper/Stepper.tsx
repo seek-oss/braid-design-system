@@ -1,7 +1,7 @@
 import assert from 'assert';
 import type { ReactElement } from 'react';
 import React, { Children } from 'react';
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from '../../utils/flattenChildren';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { Box } from '../Box/Box';

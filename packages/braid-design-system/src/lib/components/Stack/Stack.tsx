@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { Children } from 'react';
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from '../../utils/flattenChildren';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';

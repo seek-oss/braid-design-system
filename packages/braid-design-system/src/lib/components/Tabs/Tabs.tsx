@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from 'react';
 import assert from 'assert';
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from '../../utils/flattenChildren';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { Box } from '../Box/Box';
 import { Divider } from '../Divider/Divider';

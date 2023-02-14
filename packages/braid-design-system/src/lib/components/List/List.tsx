@@ -5,7 +5,7 @@ import { Text } from '../Text/Text';
 import type { StackProps } from '../Stack/Stack';
 import { Stack } from '../Stack/Stack';
 import { Box } from '../Box/Box';
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from '../../utils/flattenChildren';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   DefaultTextPropsProvider,
