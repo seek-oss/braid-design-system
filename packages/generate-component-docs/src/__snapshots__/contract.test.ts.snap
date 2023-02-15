@@ -580,6 +580,7 @@ exports[`Box 1`] = `
         | "button"
         | "canvas"
         | "caption"
+        | "center"
         | "circle"
         | "cite"
         | "clipPath"
@@ -746,7 +747,10 @@ exports[`Box 1`] = `
     contextMenu?: string
     controls?: boolean
     coords?: string
-    crossOrigin?: string
+    crossOrigin?: 
+        | ""
+        | "anonymous"
+        | "use-credentials"
     cursor?: 
         | "default"
         | "pointer"
@@ -1090,6 +1094,8 @@ exports[`Box 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLElement>
     onReset?: FormEventHandler<HTMLElement>
     onResetCapture?: FormEventHandler<HTMLElement>
+    onResize?: ReactEventHandler<HTMLElement>
+    onResizeCapture?: ReactEventHandler<HTMLElement>
     onScroll?: UIEventHandler<HTMLElement>
     onScrollCapture?: UIEventHandler<HTMLElement>
     onSeeked?: ReactEventHandler<HTMLElement>
@@ -1502,6 +1508,7 @@ exports[`BoxRenderer 1`] = `
         | "button"
         | "canvas"
         | "caption"
+        | "center"
         | "circle"
         | "cite"
         | "clipPath"
@@ -2288,6 +2295,7 @@ exports[`ButtonLink 1`] = `
     lang?: string
     loading?: boolean
     media?: string
+    nonce?: string
     onAbort?: ReactEventHandler<HTMLAnchorElement>
     onAbortCapture?: ReactEventHandler<HTMLAnchorElement>
     onAnimationEnd?: AnimationEventHandler<HTMLAnchorElement>
@@ -2416,6 +2424,8 @@ exports[`ButtonLink 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onResize?: ReactEventHandler<HTMLAnchorElement>
+    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
@@ -2958,6 +2968,7 @@ exports[`Heading 1`] = `
         | "button"
         | "canvas"
         | "caption"
+        | "center"
         | "circle"
         | "cite"
         | "clipPath"
@@ -3165,6 +3176,7 @@ exports[`Hidden 1`] = `
         | "button"
         | "canvas"
         | "caption"
+        | "center"
         | "circle"
         | "cite"
         | "clipPath"
@@ -6167,6 +6179,7 @@ exports[`Link 1`] = `
     itemType?: string
     lang?: string
     media?: string
+    nonce?: string
     onAbort?: ReactEventHandler<HTMLAnchorElement>
     onAbortCapture?: ReactEventHandler<HTMLAnchorElement>
     onAnimationEnd?: AnimationEventHandler<HTMLAnchorElement>
@@ -6295,6 +6308,8 @@ exports[`Link 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onResize?: ReactEventHandler<HTMLAnchorElement>
+    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
@@ -7073,6 +7088,7 @@ exports[`Text 1`] = `
         | "button"
         | "canvas"
         | "caption"
+        | "center"
         | "circle"
         | "cite"
         | "clipPath"
@@ -7554,6 +7570,7 @@ exports[`TextLink 1`] = `
     itemType?: string
     lang?: string
     media?: string
+    nonce?: string
     onAbort?: ReactEventHandler<HTMLAnchorElement>
     onAbortCapture?: ReactEventHandler<HTMLAnchorElement>
     onAnimationEnd?: AnimationEventHandler<HTMLAnchorElement>
@@ -7682,6 +7699,8 @@ exports[`TextLink 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onResize?: ReactEventHandler<HTMLAnchorElement>
+    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
