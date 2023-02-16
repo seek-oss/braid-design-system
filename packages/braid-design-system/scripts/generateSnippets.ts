@@ -24,15 +24,15 @@ const removeExtension = (p: string) => p.replace(path.extname(p), '');
     .sort()
     .map((relativePath) => ({
       // trim the `.snippets` extension
-      importName: `snippets$${removeExtension(path.basename(relativePath))}`,
       componentName: removeExtension(path.basename(relativePath)),
+      importName: `snippets$${removeExtension(path.basename(relativePath))}`,
       relativePath,
     }));
 
-  const snippetImportStatements = snippets
+  const importStatements = snippets
     .map(({ importName, relativePath }) => `import { snippets as ${importName} } from '${relativePath}';`)
     .join('\n');
-  const snippetExportStatement = dedent`
+  const exportStatement = dedent`
     export default [
       ${snippets
         .map(({ importName, componentName }) => `({ snippets: ${importName}, fallbackGroup: '${componentName}' })`)
@@ -46,14 +46,15 @@ const removeExtension = (p: string) => p.replace(path.extname(p), '');
     ).flat();
   `;
 
-  let snippetsIndexCode = dedent`
-    ${snippetImportStatements}
-
-    ${snippetExportStatement}
-  `;
-
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
-  snippetsIndexCode = prettier.format(snippetsIndexCode, { ...prettierOptions, parser: 'babel-ts' });
+  const snippetsIndexCode = prettier.format(
+    dedent`
+      ${importStatements}
+
+      ${exportStatement}
+    `,
+    { ...prettierOptions, parser: 'babel-ts' },
+  );
 
   console.log('Update', relativeToProject(snippetsIndexFile));
   await fs.writeFile(snippetsIndexFile, snippetsIndexCode, 'utf-8');
