@@ -125,6 +125,7 @@
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "generate:icons": "tsx ./scripts/generateIcons.cts",
+    "generate:snippets": "tsx ./scripts/generateSnippets.ts",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "storybook:build": "SKU_TELEMETRY=false sku build-storybook",
     "storybook:chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master"
