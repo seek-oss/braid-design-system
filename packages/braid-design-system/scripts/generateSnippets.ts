@@ -1,0 +1,60 @@
+/* eslint-disable no-console */
+import prettier from 'prettier';
+import fs from 'fs-extra';
+import glob from 'fast-glob';
+import path from 'path';
+import dedent from 'dedent';
+
+const baseDir = path.join(__dirname, '..');
+const componentsDir = path.join(baseDir, 'src/lib/components');
+const snippetsIndexFile = path.join(baseDir, 'src/lib/playroom/snippets.ts');
+
+const relativeToProject = (p: string) => path.relative(baseDir, p);
+const removeExtension = (p: string) => p.replace(path.extname(p), '');
+
+(async () => {
+  const snippetPaths = await glob('**/*.snippets.tsx', {
+    cwd: componentsDir,
+    absolute: true,
+    onlyFiles: false,
+  });
+
+  const snippets = snippetPaths
+    .map((componentFile) => removeExtension(path.relative(path.dirname(snippetsIndexFile), componentFile)))
+    .sort()
+    .map((relativePath) => ({
+      // trim the `.snippets` extension
+      importName: `snippets$${removeExtension(path.basename(relativePath))}`,
+      componentName: removeExtension(path.basename(relativePath)),
+      relativePath,
+    }));
+
+  const snippetImportStatements = snippets
+    .map(({ importName, relativePath }) => `import { snippets as ${importName} } from '${relativePath}';`)
+    .join('\n');
+  const snippetExportStatement = dedent`
+    export default [
+      ${snippets
+        .map(({ importName, componentName }) => `({ snippets: ${importName}, fallbackGroup: '${componentName}' })`)
+        .join(',\n')}
+    ].map(({ snippets, fallbackGroup }) =>
+      snippets.map((snippet) => ({
+        ...snippet,
+        group: snippet.group || fallbackGroup,
+        code: snippet.code.code,
+      })),
+    ).flat();
+  `;
+
+  let snippetsIndexCode = dedent`
+    ${snippetImportStatements}
+
+    ${snippetExportStatement}
+  `;
+
+  const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
+  snippetsIndexCode = prettier.format(snippetsIndexCode, { ...prettierOptions, parser: 'babel-ts' });
+
+  console.log('Update', relativeToProject(snippetsIndexFile));
+  await fs.writeFile(snippetsIndexFile, snippetsIndexCode, 'utf-8');
+})();
