@@ -16,7 +16,7 @@ const removeExtension = (p: string) => p.replace(path.extname(p), '');
   const snippetPaths = await glob('**/*.snippets.tsx', {
     cwd: componentsDir,
     absolute: true,
-    onlyFiles: false,
+    onlyFiles: true,
   });
 
   const snippets = snippetPaths

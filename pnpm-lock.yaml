@@ -144,14 +144,15 @@ importers:
       clsx: ^1.1.1
       csstype: ^3.0.6
       dedent: ^0.7.0
+      fast-glob: ^3.2.12
       fs-extra: ^10.1.0
-      globby: ^11.1.0
       gradient-parser: ^1.0.0
       html-validate: ^7.1.1
       is-mobile: ^2.2.2
       lodash: ^4.17.21
       playroom: 0.28.0
       polished: ^4.1.0
+      prettier: ^2.8.2
       react: ^18.2.0
       react-dom: ^18.2.0
       react-focus-lock: ^2.9.1
@@ -166,6 +167,7 @@ importers:
       utility-types: ^3.10.0
       uuid: ^8.3.2
     dependencies:
+      '@babel/generator': 7.20.14
       '@capsizecss/core': 3.0.0
       '@capsizecss/vanilla-extract': 1.0.0_@vanilla-extract+css@1.9.5
       '@types/autosuggest-highlight': 3.2.0
@@ -177,6 +179,7 @@ importers:
       '@vanilla-extract/sprinkles': 1.5.1_@vanilla-extract+css@1.9.5
       assert: 2.0.0
       autosuggest-highlight: 3.2.1
+      babel-plugin-macros: 3.1.0
       clsx: 1.1.1
       csstype: 3.1.0
       dedent: 0.7.0
@@ -192,7 +195,6 @@ importers:
       uuid: 8.3.2
     devDependencies:
       '@babel/core': 7.20.12
-      '@babel/generator': 7.20.14
       '@svgr/core': 5.5.0
       '@svgr/plugin-jsx': 5.5.0
       '@svgr/plugin-prettier': 5.5.0
@@ -211,15 +213,15 @@ importers:
       '@types/sanitize-html': 2.6.2
       '@types/testing-library__jest-dom': 5.14.3
       '@types/uuid': 8.3.4
-      babel-plugin-macros: 3.1.0
       babel-plugin-tester: 10.1.0_@babel+core@7.20.12
       change-case: 4.1.2
       cheerio: 1.0.0-rc.11
       chromatic: 5.10.2_@babel+core@7.20.12
+      fast-glob: 3.2.12
       fs-extra: 10.1.0
-      globby: 11.1.0
       html-validate: 7.1.1
       playroom: 0.28.0_biqbaboplfbrettd7655fr4n2y
+      prettier: 2.8.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
@@ -282,16 +284,14 @@ importers:
   packages/generate-component-docs:
     specifiers:
       '@types/fs-extra': ^9.0.13
-      '@types/jest': ^29.0.0
       '@types/lodash': ^4.14.168
       esbuild: ^0.15.13
       esbuild-register: ^3.3.3
       fs-extra: ^10.1.0
       lodash: ^4.17.21
       typescript: ^4.5.0
-    dependencies:
+    devDependencies:
       '@types/fs-extra': 9.0.13
-      '@types/jest': 29.1.2
       '@types/lodash': 4.14.182
       esbuild: 0.15.15
       esbuild-register: 3.3.3_esbuild@0.15.15
@@ -4477,7 +4477,6 @@ packages:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
       '@types/node': 18.13.0
-    dev: false
 
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
@@ -5521,11 +5520,6 @@ packages:
 
   /acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-
-  /acorn/8.8.0:
-    resolution: {integrity: sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==}
     engines: {node: '>=0.4.0'}
     hasBin: true
 
@@ -17999,7 +17993,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      acorn: 8.8.0
+      acorn: 8.8.2
       commander: 2.20.3
       source-map: 0.6.1
       source-map-support: 0.5.21
@@ -18979,7 +18973,7 @@ packages:
     engines: {node: '>= 10.13.0'}
     hasBin: true
     dependencies:
-      acorn: 8.8.0
+      acorn: 8.8.2
       acorn-walk: 8.2.0
       chalk: 4.1.2
       commander: 7.2.0

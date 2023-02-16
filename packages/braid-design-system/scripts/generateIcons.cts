@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import path from 'path';
 import fs from 'fs-extra';
-import globby from 'globby';
+import glob from 'fast-glob';
 import cheerio from 'cheerio';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
@@ -44,13 +44,13 @@ const svgrConfig = {
   },
   replaceAttrValues: { '#000': 'currentColor' },
   template: componentTemplate,
-  plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+  plugins: [require.resolve('@svgr/plugin-jsx'), require.resolve('@svgr/plugin-prettier')],
   titleProp: true,
 };
 
 (async () => {
   // First clean up any existing SVG components
-  const existingComponentPaths = await globby('*/*Svg.tsx', {
+  const existingComponentPaths = await glob('*/*Svg.tsx', {
     cwd: iconComponentsDir,
     absolute: true,
   });
@@ -61,7 +61,7 @@ const svgrConfig = {
   );
 
   // Load SVGs
-  const svgFilePaths = await globby('icons/*.svg', {
+  const svgFilePaths = await glob('icons/*.svg', {
     cwd: baseDir,
     absolute: true,
   });
@@ -215,7 +215,7 @@ const svgrConfig = {
   await Promise.all(filePromises);
 
   // Create icons/index.ts
-  const iconComponentNames = await globby(['Icon*', '!*.*'], {
+  const iconComponentNames = await glob(['Icon*', '!*.*'], {
     cwd: iconComponentsDir,
     onlyFiles: false,
   });
