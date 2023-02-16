@@ -1,8 +1,7 @@
 const { createMacro } = require('babel-plugin-macros');
 const { default: generate } = require('@babel/generator');
 
-exports.__esModule = true;
-exports.default = createMacro(({ babel: { types: t }, references }) => {
+module.exports = createMacro(({ babel: { types: t }, references }) => {
   if (!references.default) {
     return;
   }
