@@ -21,10 +21,10 @@ export interface RenderContext {
   helmetContext: HelmetData['context'] | Record<string, never>;
 }
 
-export interface Page extends RouteProps {
+export type Page = RouteProps & {
   title: string;
   badge?: 'New';
-}
+};
 
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';

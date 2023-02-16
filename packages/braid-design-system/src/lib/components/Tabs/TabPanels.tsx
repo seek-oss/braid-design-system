@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, Fragment, Children } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import assert from 'assert';
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from '../../utils/flattenChildren';
 import { TabsContext } from './TabsProvider';
 import { TAB_PANELS_UPDATED } from './Tabs.actions';
 import { TabPanelsContext } from './TabPanelsContext';
@@ -24,7 +24,7 @@ export const TabPanels = ({
   const { dispatch } = tabsContext;
   const panelItems: Array<number> = [];
 
-  const panels = Children.map(flattenChildren(children), (panel, index) => {
+  const panels = flattenChildren(children).map((panel, index) => {
     assert(
       // @ts-expect-error
       typeof panel === 'object' && panel.type.__isTabPanel__,

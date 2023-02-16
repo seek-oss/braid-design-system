@@ -6,8 +6,8 @@ import type {
   Ref,
   ReactChild,
 } from 'react';
-import React, { useRef, useReducer, useEffect } from 'react';
-import flattenChildren from 'react-keyed-flatten-children';
+import React, { Children, useRef, useReducer, useEffect } from 'react';
+import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
@@ -377,7 +377,7 @@ export function Menu({
         ]}
       >
         <Box paddingY="xxsmall">
-          {children.map((item, i) => {
+          {Children.map(children, (item, i) => {
             if (isDivider(item)) {
               dividerCount++;
               return item;

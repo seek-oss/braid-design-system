@@ -1,7 +1,7 @@
 import type { FormEvent, ReactElement } from 'react';
 import React from 'react';
 import assert from 'assert';
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from '../../utils/flattenChildren';
 import type {
   FieldGroupBaseProps,
   FieldLabelVariant,
