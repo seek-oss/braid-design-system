@@ -169,7 +169,6 @@ importers:
       utility-types: ^3.10.0
       uuid: ^8.3.2
     dependencies:
-      '@babel/generator': 7.20.14
       '@capsizecss/core': 3.0.0
       '@capsizecss/vanilla-extract': 1.0.0_@vanilla-extract+css@1.9.5
       '@types/autosuggest-highlight': 3.2.0
@@ -181,7 +180,6 @@ importers:
       '@vanilla-extract/sprinkles': 1.5.1_@vanilla-extract+css@1.9.5
       assert: 2.0.0
       autosuggest-highlight: 3.2.1
-      babel-plugin-macros: 3.1.0
       clsx: 1.1.1
       csstype: 3.1.0
       dedent: 0.7.0
@@ -197,6 +195,7 @@ importers:
       uuid: 8.3.2
     devDependencies:
       '@babel/core': 7.20.12
+      '@babel/generator': 7.20.14
       '@svgr/core': 5.5.0
       '@svgr/plugin-jsx': 5.5.0
       '@svgr/plugin-prettier': 5.5.0
@@ -216,6 +215,7 @@ importers:
       '@types/sanitize-html': 2.6.2
       '@types/testing-library__jest-dom': 5.14.3
       '@types/uuid': 8.3.4
+      babel-plugin-macros: 3.1.0
       babel-plugin-tester: 10.1.0_@babel+core@7.20.12
       babel-plugin-transform-remove-imports: 1.7.0_@babel+core@7.20.12
       change-case: 4.1.2
