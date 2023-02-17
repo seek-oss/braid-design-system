@@ -7,3 +7,4 @@ CHANGELOG.md
 componentUpdates.json
 componentDocs.json
 pnpm-lock.yaml
+**/playroom/snippets/
