@@ -58,19 +58,16 @@ const transformWithBabel = async (fileName: string) => {
     .sort()
     .map((relativePath) => ({
       componentName: path.basename(relativePath),
-      importName: `snippets$${path.basename(relativePath)}`,
       relativePath,
     }));
 
   const importStatements = snippets
-    .map(({ importName, relativePath }) => `import { snippets as ${importName} } from '${relativePath}';`)
+    .map(({ componentName, relativePath }) => `import { snippets as ${componentName} } from '${relativePath}';`)
     .join('\n');
   const exportStatement = dedent`
-    export default [
-      ${snippets
-        .map(({ importName, componentName }) => `({ snippets: ${importName}, group: '${componentName}' })`)
-        .join(',\n')}
-    ].map(({ snippets, group }) =>
+    export default Object.entries({
+      ${snippets.map(({ componentName }) => componentName).join(',\n')}
+    }).map(([group, snippets]) =>
       snippets.map((snippet) => ({
         ...snippet,
         group,
