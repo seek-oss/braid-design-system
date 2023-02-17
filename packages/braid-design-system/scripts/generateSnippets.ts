@@ -3,8 +3,7 @@ import prettier from 'prettier';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
 import path from 'path';
-import dedent from 'dedent';
-import { transformFileAsync as babelTransform } from '@babel/core';
+import { transformFileAsync } from '@babel/core';
 
 import { relativeTo } from './utils';
 
@@ -14,9 +13,8 @@ const snippetsDir = path.join(baseDir, 'src/lib/playroom/snippets');
 const snippetsIndexFile = path.join(baseDir, 'src/lib/playroom/snippets.ts');
 
 const relativeToProject = (p: string) => path.relative(baseDir, p);
-const removeExtension = (p: string) => p.replace(path.extname(p), '');
 const transformWithBabel = async (fileName: string) => {
-  const result = await babelTransform(fileName, {
+  const result = await transformFileAsync(fileName, {
     plugins: [
       [require.resolve('babel-plugin-transform-remove-imports'), { removeAll: true }],
       [require.resolve('babel-plugin-macros'), { source: { codeOnly: true } }],
@@ -42,45 +40,37 @@ const transformWithBabel = async (fileName: string) => {
 
   await fs.emptyDir(snippetsDir);
 
-  const snippets = (
-    await Promise.all(
-      snippetPaths.map(async (snippetPath) => {
-        const transformedSnippetCode = await transformWithBabel(snippetPath);
-        const transformedSnippetPath = path
-          .join(snippetsDir, path.basename(snippetPath))
-          .replace('.snippets.tsx', '.ts');
-        await fs.writeFile(transformedSnippetPath, transformedSnippetCode);
-        return transformedSnippetPath;
-      }),
-    )
-  )
-    .map((snippetsFile) => removeExtension(relativeTo(path.dirname(snippetsIndexFile), snippetsFile)))
-    .sort()
-    .map((relativePath) => ({
-      componentName: path.basename(relativePath),
-      relativePath,
-    }));
+  const importStatements: string[] = [];
+  const exportEntries: string[] = [];
 
-  const importStatements = snippets
-    .map(({ componentName, relativePath }) => `import { snippets as ${componentName} } from '${relativePath}';`)
-    .join('\n');
-  const exportStatement = dedent`
-    export default Object.entries({
-      ${snippets.map(({ componentName }) => componentName).join(',\n')}
-    }).map(([group, snippets]) =>
-      snippets.map((snippet) => ({
-        ...snippet,
-        group,
-      })),
-    ).flat();
-  `;
+  await Promise.all(
+    snippetPaths.map(async (snippetPath) => {
+      const transformedCode = await transformWithBabel(snippetPath);
+      const outputFilename = path.basename(snippetPath).replace('.snippets.tsx', '');
+      const outputPath = path.join(snippetsDir, outputFilename);
+
+      await fs.writeFile(`${outputPath}.ts`, transformedCode, 'utf-8');
+
+      const relativePath = relativeTo(path.dirname(snippetsIndexFile), outputPath);
+      const componentName = path.basename(relativePath);
+
+      importStatements.push(`import { snippets as ${componentName} } from '${relativePath}';`);
+      exportEntries.push(componentName);
+    }),
+  );
 
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
   const snippetsIndexCode = prettier.format(
-    dedent`
-      ${importStatements}
+    ` ${importStatements.sort().join('\n')}
 
-      ${exportStatement}
+      export default Object.entries({
+        ${exportEntries.sort().join(',\n')}
+      }).map(([group, snippets]) =>
+        snippets.map((snippet) => ({
+          ...snippet,
+          group,
+        })),
+      ).flat();
     `,
     { ...prettierOptions, parser: 'babel-ts' },
   );

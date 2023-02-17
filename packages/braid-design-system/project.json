@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.6.3/packages/nx/schemas/project-schema.json",
   "namedInputs": {
     "default": ["{projectRoot}/**/*"],
-    "scripts": ["{projectRoot}/scripts"]
+    "scripts": ["{projectRoot}/scripts/*"]
   },
   "targets": {
     "build": {
@@ -38,7 +38,10 @@
     },
     "generate:snippets": {
       "inputs": ["{projectRoot}/src/**/*.snippets.tsx", "scripts"],
-      "outputs": ["{projectRoot}/src/**/playroom/snippets.ts"],
+      "outputs": [
+        "{projectRoot}/src/**/playroom/snippets/*.ts",
+        "{projectRoot}/src/**/playroom/snippets.ts"
+      ],
       "executor": "nx:run-script",
       "options": {
         "script": "generate:snippets"
