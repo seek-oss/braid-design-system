@@ -15,11 +15,12 @@
   "author": "SEEK",
   "sideEffects": [
     "**/atoms/**",
+    "**/entries/playroom/components.ts",
     "**/entries/reset.ts",
-    "**/playroom/**",
     "**/reset/**",
     "**/themes/**",
     "*.css.*",
+    "dist/playroom/components.*",
     "dist/reset.*",
     "dist/side-effects/**"
   ],
