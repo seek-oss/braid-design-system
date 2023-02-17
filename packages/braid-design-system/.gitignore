@@ -2,6 +2,7 @@ node_modules/
 codemod/dist/
 dist-storybook/
 src/lib/components/icons/*/*Svg.tsx
+src/lib/playroom/snippets/*
 README.md
 
 # managed by crackle

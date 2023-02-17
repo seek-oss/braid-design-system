@@ -131,7 +131,6 @@
     "storybook:chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master"
   },
   "dependencies": {
-    "@babel/generator": "^7.18.0",
     "@capsizecss/core": "^3.0.0",
     "@capsizecss/vanilla-extract": "^1.0.0",
     "@types/autosuggest-highlight": "^3.1.1",
@@ -143,7 +142,6 @@
     "@vanilla-extract/sprinkles": "^1.5.1",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
-    "babel-plugin-macros": "^3.1.0",
     "clsx": "^1.1.1",
     "csstype": "^3.0.6",
     "dedent": "^0.7.0",
@@ -160,6 +158,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
+    "@babel/generator": "^7.18.0",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
@@ -169,6 +168,7 @@
     "@testing-library/user-event": "^14.2.0",
     "@types/babel-plugin-macros": "^2.8.5",
     "@types/babel-plugin-tester": "^9.0.5",
+    "@types/babel__core": "^7.1.19",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.21",
@@ -178,7 +178,9 @@
     "@types/sanitize-html": "^2.6.2",
     "@types/testing-library__jest-dom": "^5.9.1",
     "@types/uuid": "^8.3.0",
+    "babel-plugin-macros": "^3.1.0",
     "babel-plugin-tester": "^10.1.0",
+    "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
     "cheerio": "1.0.0-rc.11",
     "chromatic": "^5.10.2",

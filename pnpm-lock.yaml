@@ -117,6 +117,7 @@ importers:
       '@testing-library/react': ^13.2.0
       '@testing-library/user-event': ^14.2.0
       '@types/autosuggest-highlight': ^3.1.1
+      '@types/babel__core': ^7.1.19
       '@types/babel-plugin-macros': ^2.8.5
       '@types/babel-plugin-tester': ^9.0.5
       '@types/dedent': ^0.7.0
@@ -138,6 +139,7 @@ importers:
       autosuggest-highlight: ^3.1.1
       babel-plugin-macros: ^3.1.0
       babel-plugin-tester: ^10.1.0
+      babel-plugin-transform-remove-imports: ^1.7.0
       change-case: ^4.1.2
       cheerio: 1.0.0-rc.11
       chromatic: ^5.10.2
@@ -202,6 +204,7 @@ importers:
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.2.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.2.0_tlwynutqiyp5mns3woioasuxnq
+      '@types/babel__core': 7.1.19
       '@types/babel-plugin-macros': 2.8.5
       '@types/babel-plugin-tester': 9.0.5
       '@types/jest': 29.1.2
@@ -214,6 +217,7 @@ importers:
       '@types/testing-library__jest-dom': 5.14.3
       '@types/uuid': 8.3.4
       babel-plugin-tester: 10.1.0_@babel+core@7.20.12
+      babel-plugin-transform-remove-imports: 1.7.0_@babel+core@7.20.12
       change-case: 4.1.2
       cheerio: 1.0.0-rc.11
       chromatic: 5.10.2_@babel+core@7.20.12
@@ -6225,6 +6229,14 @@ packages:
 
   /babel-plugin-transform-react-remove-prop-types/0.4.24:
     resolution: {integrity: sha512-eqj0hVcJUR57/Ug2zE1Yswsw4LhuqqHhD+8v120T1cl3kjg76QwtyBrdIk4WVwK+lAhBJVYCd/v+4nc4y+8JsA==}
+
+  /babel-plugin-transform-remove-imports/1.7.0_@babel+core@7.20.12:
+    resolution: {integrity: sha512-gprmWf6ry5qrnxMyiDaxZpXzZJP6R9FRA+p0AImLIWRmSEGtlKcFprHKeGMZYkII9rJR6Q1hYou+n1fk6rWf2g==}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.20.12
+    dev: true
 
   /babel-plugin-treat/1.6.2:
     resolution: {integrity: sha512-wGqu14P09Y7L9CVcnUDxSOaOS/+A5n8PnEGg+2Vk837gB7OJ94N9974jb7qfm2kTw5pWKoEVW0N2yIVQCw10tw==}

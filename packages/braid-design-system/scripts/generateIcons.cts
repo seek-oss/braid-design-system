@@ -10,6 +10,8 @@ import { optimize } from 'svgo';
 // @ts-expect-error svgr@6 has types
 import svgr from '@svgr/core';
 
+import { relativeTo } from './utils';
+
 const baseDir = path.join(__dirname, '..');
 const iconComponentsDir = path.join(baseDir, 'src/lib/components/icons');
 
@@ -132,15 +134,7 @@ const svgrConfig = {
     }
 
     // Converts an absolute path to a relative path from the generated file
-    const relative = (absPath: string) => {
-      let relativePath = path.relative(iconDir, require.resolve(absPath));
-      relativePath = relativePath.replace(path.extname(relativePath), '');
-      if (relativePath.endsWith('/index')) relativePath = path.dirname(relativePath);
-      if (relativePath.endsWith('..')) relativePath += '/';
-      if (!relativePath.startsWith('.')) relativePath = `./${relativePath}`;
-
-      return relativePath;
-    };
+    const relative = (absPath: string) => relativeTo(iconDir, absPath);
 
     const templateFileIfMissing = async (fileName: string, contents: string) => {
       const filePath = path.join(iconDir, fileName);
