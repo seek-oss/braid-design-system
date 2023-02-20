@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "test": "nx run braid-design-system:generate:icons && jest",
+    "test": "pnpm run generate && jest",
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "nx run braid-design-system:build",
@@ -16,7 +16,9 @@
     "lint:manypkg": "manypkg check",
     "lint:depcheck": "pnpm --recursive exec depcheck",
     "format": "nx run-many --target format",
+    "generate": "nx run braid-design-system:generate",
     "generate:icons": "nx run braid-design-system:generate:icons",
+    "generate:snippets": "nx run braid-design-system:generate:snippets",
     "generate:component-docs": "nx run site:generate:component-docs",
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",

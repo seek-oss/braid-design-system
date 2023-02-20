@@ -12,6 +12,7 @@
           "build:site",
           "generate:component-docs",
           "generate:icons",
+          "generate:snippets",
           "lint:eslint",
           "lint:prettier",
           "lint:tsc"

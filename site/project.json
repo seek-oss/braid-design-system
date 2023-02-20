@@ -45,7 +45,7 @@
       }
     },
     "generate": {
-      "dependsOn": ["generate:component-docs", "^generate:icons"],
+      "dependsOn": ["generate:component-docs", "^generate"],
       "executor": "nx:noop"
     },
     "generate:component-docs": {

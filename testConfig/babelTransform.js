@@ -3,17 +3,6 @@ const { default: babelJest } = require('babel-jest');
 module.exports = babelJest.createTransformer({
   babelrc: false,
   sourceType: 'module',
-  plugins: [
-    [
-      require.resolve('babel-plugin-module-resolver'),
-      {
-        extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
-      },
-    ],
-    require.resolve('babel-plugin-macros'),
-    require.resolve('@babel/plugin-transform-runtime'),
-    require.resolve('babel-plugin-dynamic-import-node'),
-  ],
   presets: [
     [
       require.resolve('@babel/preset-typescript'),
@@ -27,5 +16,14 @@ module.exports = babelJest.createTransformer({
       require.resolve('@babel/preset-react'),
       { runtime: 'automatic', development: true },
     ],
+  ],
+  plugins: [
+    [
+      require.resolve('babel-plugin-module-resolver'),
+      { extensions: ['.ts', '.tsx', '.js', '.cjs', '.mjs'] },
+    ],
+    require.resolve('babel-plugin-macros'),
+    require.resolve('@babel/plugin-transform-runtime'),
+    require.resolve('babel-plugin-dynamic-import-node'),
   ],
 });
