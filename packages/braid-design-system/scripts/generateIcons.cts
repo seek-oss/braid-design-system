@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import path from 'path';
 import fs from 'fs-extra';
-import globby from 'globby';
+import glob from 'fast-glob';
 import cheerio from 'cheerio';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
@@ -9,6 +9,8 @@ import dedent from 'dedent';
 import { optimize } from 'svgo';
 // @ts-expect-error svgr@6 has types
 import svgr from '@svgr/core';
+
+import { relativeTo } from './utils';
 
 const baseDir = path.join(__dirname, '..');
 const iconComponentsDir = path.join(baseDir, 'src/lib/components/icons');
@@ -44,13 +46,13 @@ const svgrConfig = {
   },
   replaceAttrValues: { '#000': 'currentColor' },
   template: componentTemplate,
-  plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+  plugins: [require.resolve('@svgr/plugin-jsx'), require.resolve('@svgr/plugin-prettier')],
   titleProp: true,
 };
 
 (async () => {
   // First clean up any existing SVG components
-  const existingComponentPaths = await globby('*/*Svg.tsx', {
+  const existingComponentPaths = await glob('*/*Svg.tsx', {
     cwd: iconComponentsDir,
     absolute: true,
   });
@@ -61,7 +63,7 @@ const svgrConfig = {
   );
 
   // Load SVGs
-  const svgFilePaths = await globby('icons/*.svg', {
+  const svgFilePaths = await glob('icons/*.svg', {
     cwd: baseDir,
     absolute: true,
   });
@@ -132,15 +134,7 @@ const svgrConfig = {
     }
 
     // Converts an absolute path to a relative path from the generated file
-    const relative = (absPath: string) => {
-      let relativePath = path.relative(iconDir, require.resolve(absPath));
-      relativePath = relativePath.replace(path.extname(relativePath), '');
-      if (relativePath.endsWith('/index')) relativePath = path.dirname(relativePath);
-      if (relativePath.endsWith('..')) relativePath += '/';
-      if (!relativePath.startsWith('.')) relativePath = `./${relativePath}`;
-
-      return relativePath;
-    };
+    const relative = (absPath: string) => relativeTo(iconDir, absPath);
 
     const templateFileIfMissing = async (fileName: string, contents: string) => {
       const filePath = path.join(iconDir, fileName);
@@ -179,7 +173,7 @@ const svgrConfig = {
         import React from 'react';
         import type { ComponentDocs } from 'site/types';
         import { iconDocumentation } from '${relative(`${iconComponentsDir}/iconCommon.docs`)}';
-        import source from '${relative(`${baseDir}/src/lib/utils/source.macro`)}';
+        import source from '${relative(`${baseDir}/src/lib/utils/source.macro.cjs`)}';
         import { ${iconName}, Heading, Stack } from '${relative(`${baseDir}/src/lib/components`)}';
 
         const docs: ComponentDocs = {
@@ -215,7 +209,7 @@ const svgrConfig = {
   await Promise.all(filePromises);
 
   // Create icons/index.ts
-  const iconComponentNames = await globby(['Icon*', '!*.*'], {
+  const iconComponentNames = await glob(['Icon*', '!*.*'], {
     cwd: iconComponentsDir,
     onlyFiles: false,
   });

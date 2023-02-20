@@ -1,11 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.6.3/packages/nx/schemas/project-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*"]
+    "default": ["{projectRoot}/**/*"],
+    "scripts": ["{projectRoot}/scripts/*"]
   },
   "targets": {
     "build": {
-      "dependsOn": ["codemod", "generate:icons"],
+      "dependsOn": ["codemod", "generate"],
       "executor": "nx:run-script",
       "options": {
         "script": "build"
@@ -20,17 +21,35 @@
         "script": "codemod"
       }
     },
+    "generate": {
+      "dependsOn": ["generate:icons", "generate:snippets"],
+      "executor": "nx:noop"
+    },
     "generate:icons": {
-      "inputs": ["{projectRoot}/icons/*.svg", "{projectRoot}/scripts"],
-      "outputs": ["{projectRoot}/src/**/icons/*/*Svg.tsx"],
+      "inputs": ["{projectRoot}/icons/*.svg", "scripts"],
+      "outputs": [
+        "{projectRoot}/src/**/components/icons/*/*Svg.tsx",
+        "{projectRoot}/src/**/components/icons/index.ts"
+      ],
       "executor": "nx:run-script",
       "options": {
         "script": "generate:icons"
       }
     },
+    "generate:snippets": {
+      "inputs": ["{projectRoot}/src/**/*.snippets.tsx", "scripts"],
+      "outputs": [
+        "{projectRoot}/src/**/playroom/snippets/*.ts",
+        "{projectRoot}/src/**/playroom/snippets.ts"
+      ],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "generate:snippets"
+      }
+    },
     "lint": {},
     "lint:tsc": {
-      "dependsOn": ["generate:icons"],
+      "dependsOn": ["generate"],
       "inputs": ["default", "^default"],
       "executor": "nx:run-script",
       "options": {

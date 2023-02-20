@@ -15,9 +15,8 @@
   },
   "author": "SEEK",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "^29.0.0",
     "@types/lodash": "^4.14.168",
     "esbuild": "^0.15.13",
     "esbuild-register": "^3.3.3",

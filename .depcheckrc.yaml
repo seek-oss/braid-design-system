@@ -1,12 +1,10 @@
 ignores:
-  - '@svgr/core'
-  - '@svgr/plugin-jsx'
-  - '@svgr/plugin-prettier'
   - '@testing-library/dom'
   - '@types/jest'
-  - change-case
-  - cheerio
-  - svgo
   - assert
+  # internal
   - braid-src
   - site
+parsers:
+  '**/*.{js,cjs,ts,cts}': ['typescript']
+  '**/*.tsx': ['typescript', 'jsx']
