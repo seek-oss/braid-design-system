@@ -1,6 +1,8 @@
 import path from 'path';
 
-// Converts an absolute path to a relative path from the generated file
+/**
+ * Converts an absolute path to a relative path from the generated file
+ */
 export const relativeTo = (baseDir: string, absPath: string) => {
   let relativePath = path.relative(baseDir, require.resolve(absPath));
   relativePath = relativePath.replace(path.extname(relativePath), '');

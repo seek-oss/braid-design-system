@@ -123,7 +123,7 @@
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "generate:icons": "tsx ./scripts/generateIcons.cts",
-    "generate:snippets": "tsx ./scripts/generateSnippets.ts",
+    "generate:snippets": "tsx ./scripts/generateSnippets.cts",
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
