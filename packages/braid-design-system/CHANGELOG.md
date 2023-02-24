@@ -1,5 +1,116 @@
 # braid-design-system
 
+## 32.0.0
+
+The is a huge enablement release that sees the removal of legacy themes and [treat](https://seek-oss.github.io/treat/) our previous styling solution, as well as a migration to our new build tool [Crackle](https://github.com/seek-oss/crackle/).
+
+By moving to Crackle, Braid will now be published as a pre-compiled artefact, no longer requiring TypeScript to be transpiled by consumers. This should see faster build times and clearer boundaries between Braid and consuming applications.
+
+Outside of the removal of `treat` and the legacy themes, there is no impact on the public API of Braid. However, if a consuming web app is reaching into Braid internals, this will no longer work and require code changes.
+
+For these cases, to support teams in upgrading we have provided a [Compiled Braid Migration Guide](https://github.com/seek-oss/braid-design-system/blob/master/docs/Compiled%20Braid%20Migration.md) based on patterns observed in code bases.
+
+For more detail on the specific changes in this release, please read on.
+
+### Major Changes
+
+- Drop support for React 16. ([#1229](https://github.com/seek-oss/braid-design-system/pull/1229))
+
+  To support the pre-compilation of Braid, it is now a requirement that consumers are on React 17 or later.
+  Originally the plan was to drop React 17 as well, however the team has been able to maintain support for a little longer — but there is a catch (see migration guide below).
+
+  **MIGRATION GUIDE:**
+
+  ### React 16 consumers
+
+  As this version is no longer supported it is a requirement that consumers upgrade.
+  For more information on the differences between v16 and v17, [see the React blog][react17].
+  We strongly encourage teams to take this opportunity to upgrade to [v18][react18] as well.
+
+  ### React 17 consumers
+
+  The way React 17 exposes the `jsx-runtime` is [not compatible with ESM], which means the bundler will need instructions on how to resolve the import.
+  This can be done by adding a [fallback module resolve rule][resolve fallback] to the webpack configuration.
+
+  For [sku] consumers, this can be done as follows:
+
+  ```ts
+  // sku.config.ts
+  {
+    dangerouslySetWebpackConfig: (config) =>
+      webpackMerge(config, {
+        resolve: {
+          fallback: {
+            'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+          },
+        },
+      }),
+  }
+  ```
+
+  We recommend using [webpack-merge] to ensure both configurations are deep merged correctly.
+
+  _Note: This rule can be removed after upgrading to React 18, which has ESM support._
+
+  ### React 18 consumers
+
+  No action required.
+
+  [react17]: https://reactjs.org/blog/2020/10/20/react-v17.html
+  [react18]: https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html
+  [resolve fallback]: https://webpack.js.org/configuration/resolve/#resolvefallback
+  [not compatible with ESM]: https://github.com/facebook/react/issues/20235#issuecomment-1095345193
+  [webpack-merge]: https://www.npmjs.com/package/webpack-merge
+  [sku]: https://seek-oss.github.io/sku/
+
+- Playroom imports are now formalised entrypoints rather than path imports, and as such no longer require the file path extensions to be provided. ([#1229](https://github.com/seek-oss/braid-design-system/pull/1229))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  // playroom.config.js
+  module.exports = {
+    frameComponent: require.resolve(
+      'braid-design-system/playroom/FrameComponent',
+    ),
+    components: require.resolve('braid-design-system/playroom/components'),
+    snippets: require.resolve('braid-design-system/playroom/snippets'),
+    scope: require.resolve('braid-design-system/playroom/scope'),
+  };
+  ```
+
+- Remove legacy themes: `catho`, `occ` and `seekAnz` ([#1229](https://github.com/seek-oss/braid-design-system/pull/1229))
+
+  The `seekAnz` theme facilitated consumers migrating like-for-like from `seek-style-guide`, while the `catho` and `occ` themes intended to enable a specific use case that never eventuated.
+
+  Removing these themes allows us to move faster with upcoming theme uplift work.
+
+  **MIGRATION GUIDE:**
+
+  Any remaining consumers of the `catho`, `occ` or `seekAnz` themes should migrate to the `apac` theme like so:
+
+  ```diff
+  -import seekAnz from 'braid-design-system/themes/seekAnz';
+  +import apac from 'braid-design-system/themes/apac';
+  ```
+
+- Remove treat support ([#1229](https://github.com/seek-oss/braid-design-system/pull/1229))
+
+  [Treat](https://seek-oss.github.io/treat/) has been deprecated for nearly 2 years, superseded by [vanilla-extract](https://vanilla-extract.style/).
+  `.treat.ts` files can no longer be used for styling and should be converted to `.css.ts` (vanilla-extract) stylesheets.
+
+- Remove experimental color-mode check script ([#1229](https://github.com/seek-oss/braid-design-system/pull/1229))
+
+  The experimental script for checking which color mode to render has been formalised to an entrypoint specific to the mechanism that is being used — in this case the query parameter.
+  In the future we may add other mechanisms, such as local storage for example, but for now all existing consumers should have been migrated to the query-param check.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  - import { __experimentalDarkMode__ } from 'braid-design-system/color-mode'
+  + import { colorModeQueryParamCheck } from 'braid-design-system/color-mode/query-param'
+  ```
+
 ## 31.24.2
 
 ### Patch Changes
