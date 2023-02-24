@@ -25,5 +25,17 @@ pluginTester({
         const foo = 'bar';
       `,
     },
+    'code only': {
+      babelOptions: { filename: __filename },
+      pluginOptions: { source: { codeOnly: true } },
+      code: `
+        import source from './source.macro';
+
+        const result = source({
+          hello: () => 'world',
+          some: 'value',
+        });
+      `,
+    },
   },
 });

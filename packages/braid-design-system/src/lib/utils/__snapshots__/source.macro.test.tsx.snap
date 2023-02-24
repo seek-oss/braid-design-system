@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`source.macro code only: code only 1`] = `
+
+import source from './source.macro';
+
+const result = source({
+  hello: () => 'world',
+  some: 'value',
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = "{\\n  hello: () => 'world',\\n  some: 'value'\\n}";
+
+
+`;
+
 exports[`source.macro ignores types: ignores types 1`] = `
 
 import { Source } from './source.macro';
