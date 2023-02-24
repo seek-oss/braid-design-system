@@ -2,7 +2,7 @@
 'braid-design-system': major
 ---
 
-Playroom imports are now formalised entries points rather than path imports, and as such no longer require the file path extensions to be provided.
+Playroom imports are now formalised entrypoints rather than path imports, and as such no longer require the file path extensions to be provided.
 
 **EXAMPLE USAGE:**
 ```jsx
