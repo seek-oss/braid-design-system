@@ -2,6 +2,16 @@
 
 ## 32.0.0
 
+The is a huge enablement release that sees the removal of legacy themes and [treat](https://seek-oss.github.io/treat/) our previous styling solution, as well as a migration to our new build tool [Crackle](https://github.com/seek-oss/crackle/).
+
+By moving to Crackle, Braid will now be published as a pre-compiled artefact, no longer requiring TypeScript to be transpiled by consumers. This should see faster build times and clearer boundaries between Braid and consuming applications.
+
+Outside of the removal of `treat` and the legacy themes, there is no impact on the public API of Braid. However, if a consuming web app is reaching into Braid internals, this will no longer work and require code changes.
+
+For these cases, to support teams in upgrading we have provided a [Compiled Braid Migration Guide](https://github.com/seek-oss/braid-design-system/blob/master/docs/Compiled%20Braid%20Migration.md) based on patterns observed in code bases.
+
+For more detail on the specific changes in this release, please read on.
+
 ### Major Changes
 
 - Drop support for React 16. ([#1229](https://github.com/seek-oss/braid-design-system/pull/1229))
