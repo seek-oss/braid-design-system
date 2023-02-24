@@ -32,7 +32,7 @@ For [sku] consumers, this can be done as follows:
     }),
 }
 ```
-We recommend using [webpack-merge] to ensure the both configurations are deep merged correctly.
+We recommend using [webpack-merge] to ensure both configurations are deep merged correctly.
 
 *Note: This rule can be removed after upgrading to React 18, which has ESM support.*
 
