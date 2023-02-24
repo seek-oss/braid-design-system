@@ -11,7 +11,7 @@ Originally the plan was to drop React 17 as well, however the team has been able
 ### React 16 consumers
 As this version is no longer supported it is a requirement that consumers upgrade.
 For more information on the differences between v16 and v17, [see the React blog][react17].
-We strongly encourage teams, take this opportunity and to upgrade to [v18][react18] as well.
+We strongly encourage teams to take this opportunity to upgrade to [v18][react18] as well.
 
 ### React 17 consumers
 The way React 17 exposes the `jsx-runtime` is [not compatible with ESM], which means the bundler will need instructions on how to resolve the import.
