@@ -15,23 +15,33 @@ We strongly encourage teams to take this opportunity to upgrade to [v18][react18
 
 ### React 17 consumers
 The way React 17 exposes the `jsx-runtime` is [not compatible with ESM], which means the bundler will need instructions on how to resolve the import.
-This can be done by adding the following to the webpack config:
+This can be done by adding a [fallback module resolve rule][resolve fallback] to the webpack configuration.
+
+For [sku] consumers, this can be done as follows:
 
 ```ts
+// sku.config.ts
 {
-  resolve: {
-    fallback: {
-      'react/jsx-runtime': require.resolve('react/jsx-runtime'),
-    },
-  },
+  dangerouslySetWebpackConfig: (config) =>
+    webpackMerge(config, {
+      resolve: {
+        fallback: {
+          'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+        },
+      },
+    }),
 }
 ```
-This can be removed after migration to React 18 which does support ESM.
+We recommend using [webpack-merge] to ensure the both configurations are deep merged correctly.
+
+*Note: This rule can be removed after upgrading to React 18, which has ESM support.*
 
 ### React 18 consumers
 No action required.
 
-
 [react17]: https://reactjs.org/blog/2020/10/20/react-v17.html
 [react18]: https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html
+[resolve fallback]: https://webpack.js.org/configuration/resolve/#resolvefallback
 [not compatible with ESM]: https://github.com/facebook/react/issues/20235#issuecomment-1095345193
+[webpack-merge]: https://www.npmjs.com/package/webpack-merge
+[sku]: https://seek-oss.github.io/sku/
