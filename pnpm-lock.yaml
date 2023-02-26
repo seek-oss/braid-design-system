@@ -178,10 +178,10 @@ importers:
     dependencies:
       '@capsizecss/core':
         specifier: ^3.1.0
-        version: 3.1.0
+        version: 3.1.1
       '@capsizecss/metrics':
         specifier: ^1.1.1
-        version: 1.1.1
+        version: 1.3.0
       '@types/autosuggest-highlight':
         specifier: ^3.1.1
         version: 3.2.0
@@ -2943,13 +2943,13 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@capsizecss/core@3.1.0:
-    resolution: {integrity: sha512-MoHbXUMqJtYL+idLVSQY57OPRyPaUBGN0o1Im0JElmfRVV+X1i1i5QsQTuEJpJgYFwi4jsck7A+jt6X7XB0p8w==}
+  /@capsizecss/core@3.1.1:
+    resolution: {integrity: sha512-1YxfErFXdxcyDyc8peDwH2hiJF5U8sBY5i5HX0f/tpvabbu40w9r8VHYMOOw9Fox5O/+kf2gAhyfVe+sLnaaBA==}
     dependencies:
       csstype: 3.1.1
 
-  /@capsizecss/metrics@1.1.1:
-    resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
+  /@capsizecss/metrics@1.3.0:
+    resolution: {integrity: sha512-dcAXsrrNs2zF3MC4T5iMGsiPm1NqTSdGgYI4YG17tAXL7jxKq0eWRsOWsY/gaYMTLXllgmZ+yaiKEVQ9UmEZrA==}
     dev: false
 
   /@capsizecss/vanilla-extract@1.0.1(@vanilla-extract/css@1.14.0):
@@ -2957,7 +2957,7 @@ packages:
     peerDependencies:
       '@vanilla-extract/css': ^1.2.1
     dependencies:
-      '@capsizecss/core': 3.1.0
+      '@capsizecss/core': 3.1.1
       '@vanilla-extract/css': 1.14.0
     dev: true
 
@@ -11220,7 +11220,7 @@ packages:
       foreground-child: 3.1.1
       fs.realpath: 1.0.0
       jackspeak: 2.0.3
-      minimatch: 9.0.3
+      minimatch: 9.0.0
       minipass: 5.0.0
       path-scurry: 1.7.0
 
@@ -13885,11 +13885,18 @@ packages:
     dependencies:
       brace-expansion: 2.0.1
 
+  /minimatch@9.0.0:
+    resolution: {integrity: sha512-0jJj8AvgKqWN05mrwuqi8QYKx1WmYSUoKSxu5Qhs9prezTz10sxAHGNZe9J9cqIJzta8DWsleh2KaVaLl6Ru2w==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      brace-expansion: 2.0.1
+
   /minimatch@9.0.3:
     resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
+    dev: false
 
   /minimist-options@4.1.0:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
