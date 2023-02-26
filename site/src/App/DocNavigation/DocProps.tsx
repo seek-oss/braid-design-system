@@ -181,7 +181,7 @@ export const DocProps = () => {
   }
 
   const subfolder = /^Icon/.test(docsName) ? 'icons' : undefined;
-  const componentFolder = `packages/braid-design-system/lib/components/${
+  const componentFolder = `packages/braid-design-system/src/lib/components/${
     subfolder ? `${subfolder}/` : ''
   }${docsName}`;
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
