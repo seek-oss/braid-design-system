@@ -153,7 +153,7 @@ importers:
       html-validate: ^7.1.1
       is-mobile: ^2.2.2
       lodash: ^4.17.21
-      playroom: 0.28.2
+      playroom: 0.29.0
       polished: ^4.1.0
       prettier: ^2.8.2
       react: ^18.2.0
@@ -226,7 +226,7 @@ importers:
       fast-glob: 3.2.12
       fs-extra: 10.1.0
       html-validate: 7.1.1
-      playroom: 0.28.2_biqbaboplfbrettd7655fr4n2y
+      playroom: 0.29.0_biqbaboplfbrettd7655fr4n2y
       prettier: 2.8.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -6591,7 +6591,7 @@ packages:
   /axios/0.21.4_debug@4.3.1:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.0
+      follow-redirects: 1.15.0_debug@4.3.4
     transitivePeerDependencies:
       - debug
     dev: true
@@ -13410,7 +13410,7 @@ packages:
       type-check: 0.4.0
 
   /lie/3.1.1:
-    resolution: {integrity: sha1-mkNrLMd0bKWd56QfpGmz77dr2H4=}
+    resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
     dependencies:
       immediate: 3.0.6
 
@@ -15270,80 +15270,6 @@ packages:
     dependencies:
       find-up: 3.0.0
 
-  /playroom/0.28.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-SHg+ekW6jz+dbdeXxC65DTnOKB0rTgQ4+wp1z2FYTHc+ikuejIOCnhZH0CXYKmc6QJbKB3+emW8LvFpcQ44azQ==}
-    hasBin: true
-    peerDependencies:
-      react: ^16.8 || ^17 || ^18
-      react-dom: ^16.8 || ^17 || ^18
-    dependencies:
-      '@babel/cli': 7.21.0_@babel+core@7.21.0
-      '@babel/core': 7.21.0
-      '@babel/preset-env': 7.20.2_@babel+core@7.21.0
-      '@babel/preset-react': 7.18.6_@babel+core@7.21.0
-      '@babel/preset-typescript': 7.18.6_@babel+core@7.21.0
-      '@babel/standalone': 7.21.2
-      '@soda/friendly-errors-webpack-plugin': 1.8.1_webpack@5.75.0
-      '@types/base64-url': 2.2.0
-      '@types/codemirror': 5.60.7
-      '@types/dedent': 0.7.0
-      '@types/lodash': 4.14.191
-      '@types/lz-string': 1.3.34
-      '@types/prettier': 2.7.2
-      '@types/react': 18.0.28
-      '@types/react-dom': 18.0.11
-      '@vanilla-extract/css': 1.9.5
-      '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.5.1_@vanilla-extract+css@1.9.5
-      '@vanilla-extract/webpack-plugin': 2.1.12_webpack@5.75.0
-      babel-loader: 9.1.2_qoaxtqicpzj5p3ubthw53xafqm
-      classnames: 2.3.2
-      codemirror: 5.65.12
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      copy-to-clipboard: 3.3.3
-      css-loader: 6.7.3_webpack@5.75.0
-      current-git-branch: 1.1.0
-      dedent: 0.7.0
-      fast-glob: 3.2.12
-      find-up: 5.0.0
-      fuzzy: 0.1.3
-      history: 5.3.0
-      html-webpack-plugin: 5.5.0_webpack@5.75.0
-      intersection-observer: 0.12.2
-      localforage: 1.10.0
-      lodash: 4.17.21
-      lz-string: 1.4.4
-      mini-css-extract-plugin: 2.7.2_webpack@5.75.0
-      parse-prop-types: 0.3.0_prop-types@15.8.1
-      polished: 4.2.2
-      portfinder: 1.0.32
-      prettier: 2.8.3
-      prop-types: 15.8.1
-      query-string: 7.1.3
-      re-resizable: 6.9.9_biqbaboplfbrettd7655fr4n2y
-      react: 18.2.0
-      react-docgen-typescript: 2.2.2_typescript@4.9.3
-      react-dom: 18.2.0_react@18.2.0
-      react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
-      read-pkg-up: 7.0.1
-      scope-eval: 1.0.0
-      typescript: 4.9.3
-      use-debounce: 9.0.3_react@18.2.0
-      webpack: 5.75.0
-      webpack-dev-server: 4.11.1_webpack@5.75.0
-      webpack-merge: 5.8.0
-    transitivePeerDependencies:
-      - '@swc/core'
-      - bufferutil
-      - debug
-      - esbuild
-      - supports-color
-      - uglify-js
-      - utf-8-validate
-      - webpack-cli
-    dev: true
-
   /playroom/0.29.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-X6/zOdPD6Mw1mOm2xOM+czToKWKGFmIV1L/H6fUnjox8XjYCDXzlsQl1ZDdusGzUMHw52H4cqj+CpsJYly6SxQ==}
     hasBin: true
@@ -15416,7 +15342,6 @@ packages:
       - uglify-js
       - utf-8-validate
       - webpack-cli
-    dev: false
 
   /please-upgrade-node/3.2.0:
     resolution: {integrity: sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==}
@@ -20257,7 +20182,7 @@ packages:
       '@webassemblyjs/wasm-parser': 1.11.1
       acorn: 8.8.2
       acorn-import-assertions: 1.8.0_acorn@8.8.2
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.12.0
       es-module-lexer: 0.9.3
