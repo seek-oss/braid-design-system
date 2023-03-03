@@ -213,7 +213,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'When labelling via aria-labelledby with a description',
       Example: ({ handler }) => (
         <RadioGroup
-          id="arialabelledby"
+          id="arialabelledbywithdesc"
           value="2"
           onChange={handler}
           aria-labelledby="elementId"
