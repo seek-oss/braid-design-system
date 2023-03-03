@@ -130,6 +130,19 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'TextField with a description and no visual label ',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          aria-label="Label"
+          description="Longer description of this field"
+          id={id}
+          value=""
+          onChange={handler}
+        />
+      ),
+    },
+    {
       label: 'TextField with description',
       Container,
       Example: ({ id, handler }) => (

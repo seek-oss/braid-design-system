@@ -209,5 +209,21 @@ export const screenshots: ComponentScreenshot = {
         </RadioGroup>
       ),
     },
+    {
+      label: 'When labelling via aria-labelledby with a description',
+      Example: ({ handler }) => (
+        <RadioGroup
+          id="arialabelledby"
+          value="2"
+          onChange={handler}
+          aria-labelledby="elementId"
+          description="How many years have you been in this role?"
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>
+      ),
+    },
   ],
 };

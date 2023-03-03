@@ -65,6 +65,19 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Textarea with a description and no visual label ',
+      Container,
+      Example: ({ id, handler }) => (
+        <Textarea
+          aria-label="Label"
+          description="Longer description of this field"
+          id={id}
+          value=""
+          onChange={handler}
+        />
+      ),
+    },
+    {
       label: 'Textarea with error',
       Container,
       Example: ({ id, handler }) => (

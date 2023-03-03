@@ -25,19 +25,16 @@ export type FieldLabelVariant =
       'aria-labelledby': string;
       secondaryLabel?: never;
       tertiaryLabel?: never;
-      description?: never;
     }
   | {
       'aria-label': string;
       secondaryLabel?: never;
       tertiaryLabel?: never;
-      description?: never;
     }
   | {
       label: FieldLabelProps['label'];
       secondaryLabel?: FieldLabelProps['secondaryLabel'];
       tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
-      description?: FieldLabelProps['description'];
     };
 
 export type FieldBaseProps = {
@@ -47,6 +44,7 @@ export type FieldBaseProps = {
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
   autoComplete?: FormElementProps['autoComplete'];
+  description?: FieldLabelProps['description'];
   message?: FieldMessageProps['message'];
   secondaryMessage?: FieldMessageProps['secondaryMessage'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
@@ -100,6 +98,7 @@ export const Field = ({
   disabled,
   autoComplete,
   children,
+  description,
   message,
   secondaryMessage,
   reserveMessageSpace = false,
@@ -120,16 +119,13 @@ export const Field = ({
   );
 
   const messageId = `${id}-message`;
-  const descriptionId =
-    'description' in restProps && restProps.description
-      ? `${id}-description`
-      : undefined;
+  const descriptionId = description ? `${id}-description` : undefined;
   const fieldBackground: BoxProps['background'] = disabled
     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
     : { lightMode: 'surface' };
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
-  const hasVisualLabel = 'label' in restProps;
+  const hasVisualLabelOrDescription = 'label' in restProps || description;
   const showSecondaryIcon =
     alwaysShowSecondaryIcon || (secondaryIcon && hasValue);
 
@@ -152,7 +148,7 @@ export const Field = ({
 
   return (
     <Stack space="xsmall">
-      {hasVisualLabel ? (
+      {hasVisualLabelOrDescription ? (
         <FieldLabel
           id={labelId}
           htmlFor={id}
@@ -164,9 +160,7 @@ export const Field = ({
           tertiaryLabel={
             'tertiaryLabel' in restProps ? restProps.tertiaryLabel : undefined
           }
-          description={
-            'description' in restProps ? restProps.description : undefined
-          }
+          description={description}
           descriptionId={descriptionId}
         />
       ) : null}
