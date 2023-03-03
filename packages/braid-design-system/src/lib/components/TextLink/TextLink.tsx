@@ -18,6 +18,7 @@ import buildDataAttributes from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import type { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './TextLink.css';
+import * as typographyStyles from '../../css/typography.css';
 
 export interface TextLinkStyles {
   weight?: 'regular' | 'weak';
@@ -82,6 +83,7 @@ export const useLinkStyles = ({
   return clsx(
     styles.base,
     linkStyles,
+    typographyStyles.fontWeight.medium,
     showVisited
       ? [
           styles.visitedLightMode[backgroundLightness.lightMode],

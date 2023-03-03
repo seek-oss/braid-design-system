@@ -10,7 +10,6 @@ import { vars } from '../../themes/vars.css';
 const textLinkVars = createThemeContract({
   color: null,
   colorHover: null,
-  fontWeight: null,
   textDecoration: null,
   textDecorationHover: null,
 });
@@ -18,7 +17,6 @@ const textLinkVars = createThemeContract({
 const lightModeRegularLinkVars = assignVars(textLinkVars, {
   color: vars.foregroundColor.link,
   colorHover: vars.foregroundColor.linkHover,
-  fontWeight: vars.textWeight.medium,
   textDecoration: 'none',
   textDecorationHover: 'underline',
 });
@@ -26,7 +24,6 @@ const lightModeRegularLinkVars = assignVars(textLinkVars, {
 const darkModeRegularLinkVars = assignVars(textLinkVars, {
   color: vars.foregroundColor.linkLight,
   colorHover: vars.foregroundColor.linkLight,
-  fontWeight: vars.textWeight.medium,
   textDecoration: 'none',
   textDecorationHover: 'underline',
 });
@@ -34,14 +31,12 @@ const darkModeRegularLinkVars = assignVars(textLinkVars, {
 const weakLinkVars = assignVars(textLinkVars, {
   color: 'inherit',
   colorHover: 'inherit',
-  fontWeight: 'inherit',
   textDecoration: 'underline',
   textDecorationHover: 'underline',
 });
 
 export const base = style({
   color: textLinkVars.color,
-  fontWeight: textLinkVars.fontWeight,
   textDecoration: textLinkVars.textDecoration,
   ':hover': {
     color: textLinkVars.colorHover,
