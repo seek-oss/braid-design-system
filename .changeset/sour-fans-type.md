@@ -16,7 +16,7 @@ All size and weight properties will inherit from the parent component.
 **EXAMPLE USAGE:**
 ```jsx
 <Text>
-  Preceeding text content that is followed by a Disclosure.
+  Preceding text content that is followed by a Disclosure.
   <Disclosure expandLabel="Read more">
     ...
   </Disclosure>
