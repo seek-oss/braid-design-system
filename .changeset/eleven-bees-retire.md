@@ -9,7 +9,7 @@ updated:
 
 **Disclosure:** Add `weight` support
 
-Provides support for reducing the visual weight of the Disclosures call to action. Follows the same contextual styling rules as `TextLink`.
+Provides support for reducing the visual weight of the Disclosure's call to action. Follows the same contextual styling rules as `TextLink`.
 
 **EXAMPLE USAGE:**
 ```jsx
