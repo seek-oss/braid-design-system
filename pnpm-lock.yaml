@@ -9,6 +9,7 @@ importers:
 
   .:
     specifiers:
+      '@actions/core': ^1.10.0
       '@babel/core': ^7.18.0
       '@babel/plugin-transform-runtime': ^7.18.10
       '@babel/preset-env': ^7.18.10
@@ -51,6 +52,7 @@ importers:
       tsx: ^3.12.1
       typescript: ^4.5.0
     dependencies:
+      '@actions/core': 1.10.0
       '@babel/core': 7.21.0
       '@babel/plugin-transform-runtime': 7.18.10_@babel+core@7.21.0
       '@babel/preset-env': 7.18.10_@babel+core@7.21.0
@@ -389,6 +391,13 @@ importers:
 
 packages:
 
+  /@actions/core/1.10.0:
+    resolution: {integrity: sha512-2aZDDa3zrrZbP5ZYg159sNoLRb61nQ7awl5pSvIq5Qpj81vwDzdMRKzkWJGJuwVvWpvZKx7vspJALyvaaIQyug==}
+    dependencies:
+      '@actions/http-client': 2.0.1
+      uuid: 8.3.2
+    dev: false
+
   /@actions/core/1.8.2:
     resolution: {integrity: sha512-FXcBL7nyik8K5ODeCKlxi+vts7torOkoDAKfeh61EAkAy1HAvwn9uVzZBY0f15YcQTcZZ2/iSGBFHEuioZWfDA==}
     dependencies:
@@ -410,7 +419,6 @@ packages:
     resolution: {integrity: sha512-PIXiMVtz6VvyaRsGY268qvj57hXQEpsYogYOu2nrQhlf+XCGmZstmuZBbAybUl1nQGnvS1k1eEsQ69ZoD7xlSw==}
     dependencies:
       tunnel: 0.0.6
-    dev: true
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -19172,7 +19180,6 @@ packages:
   /tunnel/0.0.6:
     resolution: {integrity: sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==}
     engines: {node: '>=0.6.11 <=0.7.0 || >=0.7.3'}
-    dev: true
 
   /tweetnacl/0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
