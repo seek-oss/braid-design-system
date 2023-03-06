@@ -3,6 +3,8 @@ import path from 'path';
 import glob from 'fast-glob';
 import webpack from 'webpack';
 import braidPkg from 'braid-design-system/package.json'; // eslint-disable-line no-restricted-imports
+import { exec } from 'child_process';
+import { promisify } from 'util';
 
 const { SideEffectsFlagPlugin } = webpack.optimize;
 
@@ -23,6 +25,12 @@ describe('build', () => {
   const rootDir = path.dirname(
     require.resolve('braid-design-system/package.json'),
   );
+
+  beforeAll(async () => {
+    // eslint-disable-next-line no-console
+    console.log('Running `pnpm build`...');
+    await promisify(exec)('pnpm build');
+  });
 
   test('side-effects from src', async () => {
     const srcFiles = await glob(
