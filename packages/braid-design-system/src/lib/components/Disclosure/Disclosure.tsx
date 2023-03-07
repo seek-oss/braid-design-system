@@ -49,7 +49,7 @@ export const Disclosure = ({
 
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
-  const isInline = textContext || headingContext;
+  const isInline = Boolean(textContext || headingContext);
 
   const { expanded, buttonProps, contentProps } = useDisclosure({
     id,
