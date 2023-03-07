@@ -19,24 +19,22 @@ export type FieldLabelVariant =
       'aria-labelledby': string;
       secondaryLabel?: never;
       tertiaryLabel?: never;
-      description?: never;
     }
   | {
       'aria-label': string;
       secondaryLabel?: never;
       tertiaryLabel?: never;
-      description?: never;
     }
   | {
       label: FieldLabelProps['label'];
       secondaryLabel?: FieldLabelProps['secondaryLabel'];
       tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
-      description?: FieldLabelProps['description'];
     };
 
 export type FieldGroupBaseProps = {
   id: NonNullable<FormElementProps['id']>;
   disabled?: FormElementProps['disabled'];
+  description?: FieldLabelProps['description'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
@@ -98,11 +96,11 @@ export const FieldGroup = ({
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Stack space={space}>
-        {'label' in restProps && restProps.label ? (
+        {('label' in restProps && restProps.label) || description ? (
           <Box component="legend" id={labelId}>
             <FieldLabel
               htmlFor={false}
-              label={restProps.label}
+              label={'label' in restProps ? restProps.label : undefined}
               secondaryLabel={secondaryLabel}
               tertiaryLabel={tertiaryLabel}
               disabled={disabled}

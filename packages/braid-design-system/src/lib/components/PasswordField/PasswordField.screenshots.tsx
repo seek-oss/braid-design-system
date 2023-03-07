@@ -105,6 +105,22 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
+      label: 'PasswordField with a description and no visual label',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('qwerty');
+        return (
+          <PasswordField
+            aria-label="Password"
+            description="Must be 8 characters long and include a capital letter, a number and a symbol"
+            id={id}
+            value={value}
+            onChange={(ev) => setValue(ev.currentTarget.value)}
+          />
+        );
+      },
+    },
+    {
       label: 'PasswordField with critical message',
       Container,
       Example: ({ id }) => {
