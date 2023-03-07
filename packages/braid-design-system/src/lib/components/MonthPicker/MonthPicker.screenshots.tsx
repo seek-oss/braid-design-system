@@ -71,12 +71,38 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'with a description',
+      Container,
+      Example: ({ id, handler }) => (
+        <MonthPicker
+          id={id}
+          label="Started"
+          description="Longer description of this field"
+          value={{ month: 1, year: 2019 }}
+          onChange={handler}
+        />
+      ),
+    },
+    {
       label: 'No visual label',
       Container,
       Example: ({ id, handler }) => (
         <MonthPicker
           id={id}
           aria-label="Started"
+          value={{ month: 1, year: 2019 }}
+          onChange={handler}
+        />
+      ),
+    },
+    {
+      label: 'No visual label with a description',
+      Container,
+      Example: ({ id, handler }) => (
+        <MonthPicker
+          id={id}
+          aria-label="Started"
+          description="Longer description of this field"
           value={{ month: 1, year: 2019 }}
           onChange={handler}
         />

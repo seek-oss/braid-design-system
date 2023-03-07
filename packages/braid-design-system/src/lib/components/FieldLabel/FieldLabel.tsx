@@ -30,7 +30,7 @@ export const FieldLabel = ({
   descriptionId,
   data,
 }: FieldLabelProps) => {
-  if (!label) {
+  if (!label && !description) {
     return null;
   }
 
@@ -43,18 +43,20 @@ export const FieldLabel = ({
 
   return (
     <Stack space="xsmall" data={data}>
-      <Box component="span" display="flex" justifyContent="spaceBetween">
-        {htmlFor === false ? (
-          labelEl
-        ) : (
-          <label id={id} htmlFor={htmlFor}>
-            {labelEl}
-          </label>
-        )}
-        {tertiaryLabel ? <Text>&nbsp;{tertiaryLabel}</Text> : null}
-      </Box>
+      {label ? (
+        <Box component="span" display="flex" justifyContent="spaceBetween">
+          {htmlFor === false ? (
+            labelEl
+          ) : (
+            <label id={id} htmlFor={htmlFor}>
+              {labelEl}
+            </label>
+          )}
+          {tertiaryLabel ? <Text>&nbsp;{tertiaryLabel}</Text> : null}
+        </Box>
+      ) : null}
       {description ? (
-        <Box paddingY="xxsmall">
+        <Box paddingTop={label ? 'xxsmall' : undefined} paddingBottom="xxsmall">
           <Text tone="secondary" id={descriptionId}>
             {description}
           </Text>
