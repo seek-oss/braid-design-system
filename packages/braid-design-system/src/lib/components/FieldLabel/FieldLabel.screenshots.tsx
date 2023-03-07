@@ -13,54 +13,77 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Standard Field Label',
       Container,
-      Example: ({ id }) => (
-        <FieldLabel htmlFor={id} label="This is a field label" />
-      ),
+      Example: ({ id }) => <FieldLabel htmlFor={id} label="Label" />,
     },
     {
-      label: 'Field Label with secondary',
+      label: 'with secondary label',
       Container,
       Example: ({ id }) => (
         <FieldLabel
           htmlFor={id}
-          label="Username"
-          secondaryLabel="Max 30 characters"
+          label="Label"
+          secondaryLabel="Secondary Label"
         />
       ),
     },
     {
-      label: 'Field Label with tertiary label',
+      label: 'with tertiary label',
       Container,
       Example: ({ id }) => (
         <FieldLabel
           htmlFor={id}
-          label="Password"
-          tertiaryLabel={<TextLink href="#">Forgot password?</TextLink>}
+          label="Label"
+          tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
         />
       ),
     },
     {
-      label: 'Field Label with all types',
+      label: 'with description',
       Container,
       Example: ({ id }) => (
         <FieldLabel
           htmlFor={id}
-          label="Title"
-          secondaryLabel="Optional"
-          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
+          label="Label"
+          description="Description with extra information about the field"
         />
       ),
     },
     {
-      label: 'Field Label when disabled',
+      label: 'with all slots',
       Container,
       Example: ({ id }) => (
         <FieldLabel
           htmlFor={id}
-          label="Title"
+          label="Label"
+          secondaryLabel="Secondary"
+          tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
+          description="Description with extra information about the field"
+        />
+      ),
+    },
+    {
+      label: 'when disabled',
+      Container,
+      Example: ({ id }) => (
+        <FieldLabel
+          htmlFor={id}
+          label="Label"
           disabled={true}
-          secondaryLabel="Optional"
-          tertiaryLabel={<TextLink href="#">Help?</TextLink>}
+          secondaryLabel="Secondary"
+          tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
+          description="Description with extra information about the field"
+        />
+      ),
+    },
+    {
+      label: 'with description and no label',
+      Container,
+      Example: ({ id }) => (
+        <FieldLabel
+          htmlFor={id}
+          secondaryLabel="Secondary"
+          tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
+          description="Description visible without label or additional white space above"
         />
       ),
     },
