@@ -49,6 +49,7 @@ export interface ButtonProps extends ButtonStyleProps {
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
   icon?: ReactElement<UseIconProps>;
+  iconPosition?: 'leading' | 'trailing';
   children?: ReactNode;
   onKeyUp?: NativeButtonProps['onKeyUp'];
   onKeyDown?: NativeButtonProps['onKeyDown'];
@@ -301,6 +302,7 @@ export const ButtonText = ({
   loading,
   size: sizeProp,
   icon,
+  iconPosition = 'leading',
   variant = 'solid',
   tone,
   labelSpacing = true,
@@ -355,7 +357,7 @@ export const ButtonText = ({
         size={size}
         baseline={false}
       >
-        {icon ? (
+        {icon && iconPosition === 'leading' ? (
           <Box
             component="span"
             paddingRight="xsmall"
@@ -370,6 +372,19 @@ export const ButtonText = ({
         ) : null}
         {children}
         {loading ? <ButtonLoader /> : null}
+        {!loading && icon && iconPosition === 'trailing' ? (
+          <Box
+            component="span"
+            paddingLeft="xsmall"
+            className={
+              shouldReducePaddingX || bleed
+                ? null
+                : negativeMargin('right', 'xxsmall')
+            }
+          >
+            {icon}
+          </Box>
+        ) : null}
       </Text>
     </Box>
   );
@@ -441,6 +456,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       tone,
       icon,
+      iconPosition,
       bleedY,
       bleed,
       variant,
@@ -510,6 +526,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             size={size}
             loading={loading}
             icon={icon}
+            iconPosition={iconPosition}
             bleed={bleed}
           >
             {children}

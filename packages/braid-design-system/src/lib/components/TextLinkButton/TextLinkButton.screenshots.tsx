@@ -38,11 +38,39 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'With a trailing icon',
+      Example: () => (
+        <Text>
+          A sentence with an icon trailing the{' '}
+          <TextLinkButton icon={<IconLink />} iconPosition="trailing">
+            TextLinkButton
+          </TextLinkButton>
+          .
+        </Text>
+      ),
+    },
+    {
       label: 'With icon and weight weak',
       Example: () => (
         <Text>
           A sentence with a{' '}
           <TextLinkButton weight="weak" icon={<IconLink />}>
+            TextLinkButton
+          </TextLinkButton>
+          .
+        </Text>
+      ),
+    },
+    {
+      label: 'With a trailing icon and weight weak',
+      Example: () => (
+        <Text>
+          A sentence with an icon trailing the{' '}
+          <TextLinkButton
+            weight="weak"
+            icon={<IconLink />}
+            iconPosition="trailing"
+          >
             TextLinkButton
           </TextLinkButton>
           .

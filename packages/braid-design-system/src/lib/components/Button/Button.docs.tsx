@@ -14,6 +14,7 @@ import {
   IconDelete,
   Notice,
   Toggle,
+  IconArrow,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -147,6 +148,31 @@ const docs: ComponentDocs = {
                 Send
               </Button>
             </Stack>
+          </Inline>,
+        ),
+    },
+    {
+      background: 'surface',
+      description: (
+        <Text>
+          By default, an icon will be <Strong>leading</Strong> the label,
+          however this can be changed by providing <Strong>iconPosition</Strong>{' '}
+          of <Strong>trailing</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="large" alignY="center">
+            <Button icon={<IconArrow direction="left" />} variant="ghost">
+              Back
+            </Button>
+            <Button
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="ghost"
+            >
+              Next
+            </Button>
           </Inline>,
         ),
     },

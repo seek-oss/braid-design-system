@@ -1,6 +1,15 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Box, Inline, Stack, Strong, Text, TextLink, IconLink } from '../';
+import {
+  Box,
+  Inline,
+  Stack,
+  Strong,
+  Text,
+  TextLink,
+  IconLink,
+  IconArrow,
+} from '../';
 import source from '../../utils/source.macro';
 
 const docs: ComponentDocs = {
@@ -69,6 +78,34 @@ const docs: ComponentDocs = {
               TextLink
             </TextLink>
           </Text>,
+        ),
+    },
+    {
+      description: (
+        <Text>
+          By default, an icon will be <Strong>leading</Strong> the label,
+          however this can be changed by providing <Strong>iconPosition</Strong>{' '}
+          of <Strong>trailing</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="large" alignY="center">
+            <Text>
+              <TextLink icon={<IconArrow direction="left" />} href="">
+                Back
+              </TextLink>
+            </Text>
+            <Text>
+              <TextLink
+                icon={<IconArrow direction="right" />}
+                iconPosition="trailing"
+                href=""
+              >
+                Next
+              </TextLink>
+            </Text>
+          </Inline>,
         ),
     },
     {

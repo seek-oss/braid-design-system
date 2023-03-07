@@ -1999,6 +1999,9 @@ exports[`Button 1`] = `
     children?: ReactNode
     data?: DataAttributeMap
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
+    iconPosition?: 
+        | "leading"
+        | "trailing"
     id?: string
     loading?: boolean
     onClick?: MouseEventHandler<HTMLButtonElement>
@@ -2275,6 +2278,9 @@ exports[`ButtonLink 1`] = `
     href: string
     hrefLang?: string
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
+    iconPosition?: 
+        | "leading"
+        | "trailing"
     id?: string
     inlist?: any
     inputMode?: 
@@ -7551,6 +7557,9 @@ exports[`TextLink 1`] = `
     href: string
     hrefLang?: string
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
+    iconPosition?: 
+        | "leading"
+        | "trailing"
     id?: string
     inlist?: any
     inputMode?: 
@@ -7876,6 +7885,9 @@ exports[`TextLinkButton 1`] = `
         | "large"
         | "standard"
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
+    iconPosition?: 
+        | "leading"
+        | "trailing"
     id?: string
     onClick?: MouseEventHandler<HTMLSpanElement>
     tabIndex?: number

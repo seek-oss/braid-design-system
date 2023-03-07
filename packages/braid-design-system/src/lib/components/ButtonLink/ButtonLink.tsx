@@ -20,6 +20,7 @@ export interface ButtonLinkProps
   children?: ReactNode;
   data?: DataAttributeMap;
   icon?: ButtonProps['icon'];
+  iconPosition?: 'leading' | 'trailing';
 }
 
 export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
@@ -32,6 +33,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       bleedY,
       bleed,
       icon,
+      iconPosition,
       loading,
       data,
       ...restProps
@@ -81,6 +83,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             size={size}
             loading={loading}
             icon={icon}
+            iconPosition={iconPosition}
             bleed={bleed}
           >
             {children}

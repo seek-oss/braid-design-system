@@ -24,6 +24,7 @@ export interface TextLinkStyles {
   weight?: 'regular' | 'weak';
   showVisited?: boolean;
   hitArea?: 'standard' | 'large';
+  iconPosition?: 'leading' | 'trailing';
 }
 
 export interface TextLinkProps
@@ -102,9 +103,38 @@ export const useLinkStyles = ({
   );
 };
 
+export const TextLinkContent = ({
+  icon,
+  iconPosition = 'leading',
+  children,
+}: Pick<TextLinkProps, 'icon' | 'iconPosition' | 'children'>) => (
+  <>
+    {icon && iconPosition === 'leading' ? (
+      <Box component="span" paddingRight="xxsmall">
+        {icon}
+      </Box>
+    ) : null}
+    {children}
+    {icon && iconPosition === 'trailing' ? (
+      <Box component="span" paddingLeft="xxsmall">
+        {icon}
+      </Box>
+    ) : null}
+  </>
+);
+
 export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
   (
-    { weight, showVisited, hitArea, data, icon, children, ...restProps },
+    {
+      weight,
+      showVisited,
+      hitArea,
+      data,
+      icon,
+      children,
+      iconPosition,
+      ...restProps
+    },
     ref,
   ) => {
     const LinkComponent = useLinkComponent(ref);
@@ -121,12 +151,9 @@ export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
         className={classes}
         {...buildDataAttributes({ data, validateRestProps: false })}
       >
-        {icon ? (
-          <Box component="span" paddingRight="xxsmall">
-            {icon}
-          </Box>
-        ) : null}
-        {children}
+        <TextLinkContent icon={icon} iconPosition={iconPosition}>
+          {children}
+        </TextLinkContent>
       </LinkComponent>
     );
   },

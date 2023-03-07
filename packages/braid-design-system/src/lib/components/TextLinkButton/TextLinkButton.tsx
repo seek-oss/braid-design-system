@@ -10,7 +10,7 @@ import { Box } from '../Box/Box';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import type { TextLinkStyles } from '../TextLink/TextLink';
-import { useLinkStyles } from '../TextLink/TextLink';
+import { TextLinkContent, useLinkStyles } from '../TextLink/TextLink';
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps
@@ -39,6 +39,7 @@ export const TextLinkButton = ({
   'aria-describedby': ariaDescribedBy,
   tabIndex,
   icon,
+  iconPosition,
   ...restProps
 }: TextLinkButtonProps) => {
   const buttonRef = useRef<HTMLSpanElement>(null);
@@ -73,12 +74,9 @@ export const TextLinkButton = ({
       className={classes}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      {icon ? (
-        <Box component="span" paddingRight="xxsmall">
-          {icon}
-        </Box>
-      ) : null}
-      {children}
+      <TextLinkContent icon={icon} iconPosition={iconPosition}>
+        {children}
+      </TextLinkContent>
     </Box>
   );
 };
