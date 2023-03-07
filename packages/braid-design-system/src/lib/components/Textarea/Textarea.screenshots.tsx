@@ -65,7 +65,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Textarea with a description and no visual label ',
+      label: 'Textarea with a description and no visual label',
       Container,
       Example: ({ id, handler }) => (
         <Textarea
