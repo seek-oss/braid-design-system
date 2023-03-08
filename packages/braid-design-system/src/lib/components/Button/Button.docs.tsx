@@ -14,6 +14,7 @@ import {
   IconDelete,
   Notice,
   Toggle,
+  IconArrow,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -126,8 +127,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           For decoration or help distinguishing between buttons, an{' '}
-          <Strong>icon</Strong> can be provided. This will be placed to the left
-          of the label.
+          <Strong>icon</Strong> can be provided.
         </Text>
       ),
       Example: () =>
@@ -147,6 +147,27 @@ const docs: ComponentDocs = {
                 Send
               </Button>
             </Stack>
+          </Inline>,
+        ),
+    },
+    {
+      background: 'surface',
+      description: (
+        <Text>
+          By default, an icon will be <Strong>leading</Strong> the label,
+          however this can be customised by setting the{' '}
+          <Strong>iconPosition</Strong> to <Strong>trailing</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+            >
+              Next
+            </Button>
           </Inline>,
         ),
     },

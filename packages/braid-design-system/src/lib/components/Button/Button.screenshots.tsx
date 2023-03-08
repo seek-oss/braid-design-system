@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Button, IconSend, Stack, Inline, Heading, Text } from '../';
+import { Button, IconSend, Stack, Inline, Heading, Text, IconArrow } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
@@ -177,6 +177,75 @@ export const screenshots: ComponentScreenshot = {
               Soft
             </Button>
             <Button size="small" icon={<IconSend />} variant="transparent">
+              Transparent
+            </Button>
+          </Inline>
+        </Stack>
+      ),
+    },
+    {
+      label: 'With iconPosition trailing',
+      Example: () => (
+        <Stack space="small">
+          <Inline space="small">
+            <Button
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+            >
+              Solid
+            </Button>
+            <Button
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="ghost"
+            >
+              Ghost
+            </Button>
+            <Button
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="soft"
+            >
+              Soft
+            </Button>
+            <Button
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="transparent"
+            >
+              Transparent
+            </Button>
+          </Inline>
+          <Inline space="small">
+            <Button
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+            >
+              Solid
+            </Button>
+            <Button
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="ghost"
+            >
+              Ghost
+            </Button>
+            <Button
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="soft"
+            >
+              Soft
+            </Button>
+            <Button
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="transparent"
+            >
               Transparent
             </Button>
           </Inline>
