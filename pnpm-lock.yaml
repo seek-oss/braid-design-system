@@ -97,12 +97,12 @@ importers:
 
   fixtures/consumer:
     specifiers:
-      '@vanilla-extract/integration': ^6.1.1
+      '@vanilla-extract/integration': ^6.1.2
       braid-design-system: '*'
       fast-glob: ^3.2.12
       webpack: ^5.72.1
     dependencies:
-      '@vanilla-extract/integration': 6.1.1
+      '@vanilla-extract/integration': 6.1.2
       braid-design-system: link:../../packages/braid-design-system
       fast-glob: 3.2.12
       webpack: 5.72.1
@@ -5613,8 +5613,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@vanilla-extract/integration/6.1.1:
-    resolution: {integrity: sha512-JGlynmtCju+NWU5ITgs81szCo8A4hFfW1E2oAsn++JHvgU7+wyg9N0TwByZOB1/nbrHVKISzRvl1M0BeB0mZXQ==}
+  /@vanilla-extract/integration/6.1.2:
+    resolution: {integrity: sha512-80Qff+mry4aUC3O2xv6N+FzylI9L64ZZ5THXUKFueZNTTswqgnxLlT9Nsf1nQYtvaZjavorVt3qpq+aakBZHvg==}
     dependencies:
       '@babel/core': 7.21.0
       '@babel/plugin-syntax-typescript': 7.20.0_@babel+core@7.21.0

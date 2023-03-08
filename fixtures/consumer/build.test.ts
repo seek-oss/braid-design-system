@@ -24,8 +24,7 @@ describe('build', () => {
   };
 
   const ignoreVanillaFiles = (filePath: string) =>
-    // TODO: remove .css.cjs filter when this PR is released https://github.com/vanilla-extract-css/vanilla-extract/pull/1031
-    !isVanillaFile.test(filePath) && !/\.css\.cjs$/.test(filePath);
+    !isVanillaFile.test(filePath);
 
   const rootDir = path.dirname(
     require.resolve('braid-design-system/package.json'),
