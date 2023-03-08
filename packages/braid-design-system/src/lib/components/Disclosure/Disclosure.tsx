@@ -1,20 +1,26 @@
 import type { ReactNode } from 'react';
-import React from 'react';
+import React, { useContext } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Text } from '../Text/Text';
+import type { TextLinkButtonProps } from '../TextLinkButton/TextLinkButton';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
 import type { UseDisclosureProps } from './useDisclosure';
 import { useDisclosure } from './useDisclosure';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
+import { TextContext } from '../Text/TextContext';
+import HeadingContext from '../Heading/HeadingContext';
+
+import * as styles from './Disclosure.css';
 
 export type DisclosureBaseProps = {
   expandLabel: string;
   collapseLabel?: string;
   space?: ResponsiveSpace;
+  weight?: TextLinkButtonProps['weight'];
   data?: DataAttributeMap;
   children: ReactNode;
 };
@@ -28,6 +34,7 @@ export const Disclosure = ({
   space = 'medium',
   children,
   data,
+  weight,
   ...restProps
 }: DisclosureProps) => {
   assert(
@@ -39,6 +46,10 @@ export const Disclosure = ({
     typeof collapseLabel === 'undefined' || typeof collapseLabel === 'string',
     "'collapseLabel' must be a string",
   );
+
+  const textContext = useContext(TextContext);
+  const headingContext = useContext(HeadingContext);
+  const isInline = Boolean(textContext || headingContext);
 
   const { expanded, buttonProps, contentProps } = useDisclosure({
     id,
@@ -52,22 +63,39 @@ export const Disclosure = ({
         }),
   });
 
+  const trigger = (
+    <TextLinkButton hitArea="large" weight={weight} {...buttonProps}>
+      {expanded ? collapseLabel : expandLabel}
+      <Box
+        component="span"
+        paddingLeft="xxsmall"
+        className={styles.nowrap}
+        aria-hidden
+      >
+        {
+          '⁠' /* Word joiner character, a zero-width non-breaking character to prevent the chevron wrapping onto its own line */
+        }
+        <IconChevron direction={expanded ? 'up' : 'down'} alignY="lowercase" />
+      </Box>
+    </TextLinkButton>
+  );
+  const component = isInline ? 'span' : 'div';
+
   return (
-    <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
-      <Box userSelect="none">
-        <Text>
-          <TextLinkButton hitArea="large" {...buttonProps}>
-            {expanded ? collapseLabel : expandLabel}
-            <Box component="span" paddingLeft="xxsmall">
-              <IconChevron
-                direction={expanded ? 'up' : 'down'}
-                alignY="lowercase"
-              />
-            </Box>
-          </TextLinkButton>
-        </Text>
+    <Box
+      component={component}
+      display={isInline ? 'inline' : undefined}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
+    >
+      <Box
+        component={component}
+        display={isInline ? 'inline' : undefined}
+        userSelect="none"
+      >
+        {isInline ? <> {trigger}</> : <Text>{trigger}</Text>}
       </Box>
       <Box
+        component={component}
         paddingTop={space}
         display={expanded ? 'block' : 'none'}
         {...contentProps}

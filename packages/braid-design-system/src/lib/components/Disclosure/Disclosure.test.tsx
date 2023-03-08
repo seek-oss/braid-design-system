@@ -4,7 +4,6 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../entries/test';
 import { Disclosure } from '..';
-import { htmlToText } from '../../utils/htmlToText';
 
 describe('Disclosure', () => {
   it('should provide internal state by default', async () => {
@@ -16,11 +15,10 @@ describe('Disclosure', () => {
       </BraidTestProvider>,
     );
 
-    const button = getByRole('button');
+    let button = getByRole('button', { name: 'Expand' });
     const content = getByText('Content');
 
-    // Label should be inside button
-    expect(htmlToText(button.innerHTML)).toEqual('Expand');
+    expect(button).toBeInTheDocument();
 
     // 'aria-controls' should point at disclosure content
     expect(content.getAttribute('id')).toEqual(
@@ -30,16 +28,18 @@ describe('Disclosure', () => {
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
     await userEvent.click(button);
+    button = getByRole('button', { name: 'Collapse' });
     expect(button.getAttribute('aria-expanded')).toEqual('true');
-    expect(htmlToText(button.innerHTML)).toEqual('Collapse');
+    expect(button).toBeInTheDocument();
 
     await userEvent.click(button);
+    button = getByRole('button', { name: 'Expand' });
     expect(button.getAttribute('aria-expanded')).toEqual('false');
-    expect(htmlToText(button.innerHTML)).toEqual('Expand');
+    expect(button).toBeInTheDocument();
   });
 
   it('should default the value of "collapseLabel" to "expandLabel" when not provided', async () => {
-    const { getByRole } = render(
+    const { getByRole, getByText } = render(
       <BraidTestProvider>
         <Disclosure id="content" expandLabel="Details">
           Content
@@ -49,10 +49,10 @@ describe('Disclosure', () => {
 
     const button = getByRole('button');
 
-    expect(htmlToText(button.innerHTML)).toEqual('Details');
+    expect(button).toEqual(getByText('Details'));
 
     await userEvent.click(button);
-    expect(htmlToText(button.innerHTML)).toEqual('Details');
+    expect(button).toEqual(getByText('Details'));
   });
 
   it('should support listening to toggle events while uncontrolled', async () => {
@@ -106,8 +106,7 @@ describe('Disclosure', () => {
     const button = getByRole('button');
     const content = getByText('Content');
 
-    // Label should be inside button
-    expect(htmlToText(button.innerHTML)).toEqual('Collapse');
+    expect(button).toEqual(getByText('Collapse'));
 
     // 'aria-controls' should point at disclosure content
     expect(content.getAttribute('id')).toEqual(
@@ -118,10 +117,10 @@ describe('Disclosure', () => {
 
     await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('false');
-    expect(htmlToText(button.innerHTML)).toEqual('Expand');
+    expect(button).toEqual(getByText('Expand'));
 
     await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
-    expect(htmlToText(button.innerHTML)).toEqual('Collapse');
+    expect(button).toEqual(getByText('Collapse'));
   });
 });
