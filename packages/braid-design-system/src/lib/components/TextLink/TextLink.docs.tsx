@@ -67,8 +67,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           For decoration or help distinguishing between links, an{' '}
-          <Strong>icon</Strong> can be provided. This will be placed to the left
-          of the link text.
+          <Strong>icon</Strong> can be provided.
         </Text>
       ),
       Example: () =>
@@ -84,28 +83,21 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           By default, an icon will be <Strong>leading</Strong> the label,
-          however this can be changed by providing <Strong>iconPosition</Strong>{' '}
-          of <Strong>trailing</Strong>.
+          however this can be customised by setting the{' '}
+          <Strong>iconPosition</Strong> to <Strong>trailing</Strong>.
         </Text>
       ),
       Example: () =>
         source(
-          <Inline space="large" alignY="center">
-            <Text>
-              <TextLink icon={<IconArrow direction="left" />} href="">
-                Back
-              </TextLink>
-            </Text>
-            <Text>
-              <TextLink
-                icon={<IconArrow direction="right" />}
-                iconPosition="trailing"
-                href=""
-              >
-                Next
-              </TextLink>
-            </Text>
-          </Inline>,
+          <Text>
+            <TextLink
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              href=""
+            >
+              Next
+            </TextLink>
+          </Text>,
         ),
     },
     {

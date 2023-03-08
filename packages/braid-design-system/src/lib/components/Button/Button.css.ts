@@ -9,10 +9,6 @@ export const constants = {
   smallButtonPaddingSize: 'xsmall' as const,
 };
 
-export const nowrap = style({
-  whiteSpace: 'nowrap',
-});
-
 export const root = style({
   textDecoration: 'none',
 });

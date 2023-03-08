@@ -127,8 +127,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           For decoration or help distinguishing between buttons, an{' '}
-          <Strong>icon</Strong> can be provided. This will be placed to the left
-          of the label.
+          <Strong>icon</Strong> can be provided.
         </Text>
       ),
       Example: () =>
@@ -156,20 +155,16 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           By default, an icon will be <Strong>leading</Strong> the label,
-          however this can be changed by providing <Strong>iconPosition</Strong>{' '}
-          of <Strong>trailing</Strong>.
+          however this can be customised by setting the{' '}
+          <Strong>iconPosition</Strong> to <Strong>trailing</Strong>.
         </Text>
       ),
       Example: () =>
         source(
-          <Inline space="large" alignY="center">
-            <Button icon={<IconArrow direction="left" />} variant="ghost">
-              Back
-            </Button>
+          <Inline space="small">
             <Button
               icon={<IconArrow direction="right" />}
               iconPosition="trailing"
-              variant="ghost"
             >
               Next
             </Button>

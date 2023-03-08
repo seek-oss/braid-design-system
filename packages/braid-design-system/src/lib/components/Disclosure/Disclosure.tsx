@@ -9,12 +9,11 @@ import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
 import type { UseDisclosureProps } from './useDisclosure';
 import { useDisclosure } from './useDisclosure';
+import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
-
-import * as styles from './Disclosure.css';
 
 export type DisclosureBaseProps = {
   expandLabel: string;
@@ -66,17 +65,9 @@ export const Disclosure = ({
   const trigger = (
     <TextLinkButton hitArea="large" weight={weight} {...buttonProps}>
       {expanded ? collapseLabel : expandLabel}
-      <Box
-        component="span"
-        paddingLeft="xxsmall"
-        className={styles.nowrap}
-        aria-hidden
-      >
-        {
-          '⁠' /* Word joiner character, a zero-width non-breaking character to prevent the chevron wrapping onto its own line */
-        }
+      <AvoidWidowIcon iconPosition="trailing">
         <IconChevron direction={expanded ? 'up' : 'down'} alignY="lowercase" />
-      </Box>
+      </AvoidWidowIcon>
     </TextLinkButton>
   );
   const component = isInline ? 'span' : 'div';

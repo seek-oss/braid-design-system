@@ -5,6 +5,7 @@ import React, { useContext, forwardRef } from 'react';
 import { touchableText } from '../../css/typography.css';
 import type { BoxBackgroundVariant, BoxProps } from '../Box/Box';
 import { Box } from '../Box/Box';
+import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
@@ -358,40 +359,32 @@ export const ButtonText = ({
         baseline={false}
       >
         {icon && iconPosition === 'leading' ? (
-          <Box
-            component="span"
-            paddingRight="xsmall"
-            className={[
-              styles.nowrap,
+          <AvoidWidowIcon
+            iconPosition={iconPosition}
+            space="xsmall"
+            className={
               shouldReducePaddingX || bleed
                 ? null
-                : negativeMargin('left', 'xxsmall'),
-            ]}
+                : negativeMargin('left', 'xxsmall')
+            }
           >
             {icon}
-            {
-              '⁠' /* Word joiner character, a zero-width non-breaking character to prevent the icon wrapping onto its own line */
-            }
-          </Box>
+          </AvoidWidowIcon>
         ) : null}
         {children}
         {loading ? <ButtonLoader /> : null}
         {!loading && icon && iconPosition === 'trailing' ? (
-          <Box
-            component="span"
-            paddingLeft="xsmall"
-            className={[
-              styles.nowrap,
+          <AvoidWidowIcon
+            iconPosition={iconPosition}
+            space="xsmall"
+            className={
               shouldReducePaddingX || bleed
                 ? null
-                : negativeMargin('right', 'xxsmall'),
-            ]}
-          >
-            {
-              '⁠' /* Word joiner character, a zero-width non-breaking character to prevent the icon wrapping onto its own line */
+                : negativeMargin('right', 'xxsmall')
             }
+          >
             {icon}
-          </Box>
+          </AvoidWidowIcon>
         ) : null}
       </Text>
     </Box>

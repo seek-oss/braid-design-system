@@ -8,11 +8,11 @@ import {
   useBackground,
 } from '../Box/BackgroundContext';
 import type { BoxBackgroundVariant } from '../Box/Box';
-import { Box } from '../Box/Box';
 import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
 import { useLinkComponent } from '../BraidProvider/BraidProvider';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
+import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
@@ -110,15 +110,11 @@ export const TextLinkContent = ({
 }: Pick<TextLinkProps, 'icon' | 'iconPosition' | 'children'>) => (
   <>
     {icon && iconPosition === 'leading' ? (
-      <Box component="span" paddingRight="xxsmall">
-        {icon}
-      </Box>
+      <AvoidWidowIcon iconPosition={iconPosition}>{icon}</AvoidWidowIcon>
     ) : null}
     {children}
     {icon && iconPosition === 'trailing' ? (
-      <Box component="span" paddingLeft="xxsmall">
-        {icon}
-      </Box>
+      <AvoidWidowIcon iconPosition={iconPosition}>{icon}</AvoidWidowIcon>
     ) : null}
   </>
 );
