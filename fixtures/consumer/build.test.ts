@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import braidPkg from 'braid-design-system/package.json'; // eslint-disable-line no-restricted-imports
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import { cssFileFilter as isVanillaFile } from '@vanilla-extract/integration';
 
 const { SideEffectsFlagPlugin } = webpack.optimize;
 
@@ -21,6 +22,9 @@ describe('build', () => {
     );
     return hasSideEffects;
   };
+
+  const ignoreVanillaFiles = (filePath: string) =>
+    !isVanillaFile.test(filePath);
 
   const rootDir = path.dirname(
     require.resolve('braid-design-system/package.json'),
@@ -45,8 +49,8 @@ describe('build', () => {
 
     const filesWithSideEffects = srcFiles
       .sort()
-      .map((filePath) => checkSideEffects(filePath) && filePath)
-      .filter(Boolean);
+      .filter(checkSideEffects)
+      .filter(ignoreVanillaFiles);
 
     expect(filesWithSideEffects).toMatchSnapshot();
   });
@@ -58,7 +62,8 @@ describe('build', () => {
 
     const filesWithSideEffects = distFiles
       .sort()
-      .filter((filePath) => checkSideEffects(filePath));
+      .filter(checkSideEffects)
+      .filter(ignoreVanillaFiles);
 
     expect(filesWithSideEffects).toMatchSnapshot();
   });
