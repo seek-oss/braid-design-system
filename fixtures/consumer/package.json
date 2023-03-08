@@ -5,6 +5,7 @@
   "author": "SEEK",
   "license": "MIT",
   "dependencies": {
+    "@vanilla-extract/integration": "^6.1.1",
     "braid-design-system": "*",
     "fast-glob": "^3.2.12",
     "webpack": "^5.72.1"
