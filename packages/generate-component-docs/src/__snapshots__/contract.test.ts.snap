@@ -2823,6 +2823,9 @@ exports[`Disclosure 1`] = `
         | "xxsmall"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+    weight?: 
+        | "regular"
+        | "weak"
 },
 }
 `;
