@@ -13,7 +13,7 @@ module.exports = {
   themes: resolveFromBraid('lib/themes/index.ts'),
   frameComponent: resolveFromBraid('lib/playroom/FrameComponent.tsx'),
   scope: resolveFromBraid('lib/playroom/useScope.ts'),
-  typeScriptFiles: [`${braidSrc}/**/*.{ts,tsx}`],
+  typeScriptFiles: [resolveFromBraid('lib/playroom/components.ts')],
   widths: [320, 768, 1024, 1400],
   openBrowser: false,
   port: 8082,
