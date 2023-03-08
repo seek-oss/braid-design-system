@@ -9,7 +9,7 @@ updated:
 
 **Disclosure:** Add inline content support
 
-Provides support for using a Disclosure in the context of sentence, by allowing it to be nested within a typographic component, i.e. `Text`. This enables the call to action to sit inline with other copy.
+Provides support for using a Disclosure within a sentence by allowing it to be nested within a typographic component, i.e. `Text`.
 
 All size and weight properties will inherit from the parent component.
 
