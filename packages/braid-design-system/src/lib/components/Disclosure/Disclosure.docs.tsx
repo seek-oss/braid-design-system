@@ -101,10 +101,10 @@ const docs: ComponentDocs = {
       label: 'Inlining with content',
       description: (
         <Text>
-          To support being used in the context of a sentence, a Disclosure may
-          be nested within a <TextLink href="/components/Text">Text</TextLink>{' '}
-          or <TextLink href="/components/Heading">Heading</TextLink> component.
-          In this case, the text size and tone will all be inherited from the
+          A Disclosure may also be nested within a sentence, i.e. inside a{' '}
+          <TextLink href="/components/Text">Text</TextLink> or{' '}
+          <TextLink href="/components/Heading">Heading</TextLink> component. In
+          this case, the text size and tone will all be inherited from the
           parent typographic component.
         </Text>
       ),
