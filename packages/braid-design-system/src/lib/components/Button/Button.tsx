@@ -361,13 +361,17 @@ export const ButtonText = ({
           <Box
             component="span"
             paddingRight="xsmall"
-            className={
+            className={[
+              styles.nowrap,
               shouldReducePaddingX || bleed
                 ? null
-                : negativeMargin('left', 'xxsmall')
-            }
+                : negativeMargin('left', 'xxsmall'),
+            ]}
           >
             {icon}
+            {
+              '⁠' /* Word joiner character, a zero-width non-breaking character to prevent the icon wrapping onto its own line */
+            }
           </Box>
         ) : null}
         {children}
@@ -376,12 +380,16 @@ export const ButtonText = ({
           <Box
             component="span"
             paddingLeft="xsmall"
-            className={
+            className={[
+              styles.nowrap,
               shouldReducePaddingX || bleed
                 ? null
-                : negativeMargin('right', 'xxsmall')
-            }
+                : negativeMargin('right', 'xxsmall'),
+            ]}
           >
+            {
+              '⁠' /* Word joiner character, a zero-width non-breaking character to prevent the icon wrapping onto its own line */
+            }
             {icon}
           </Box>
         ) : null}
