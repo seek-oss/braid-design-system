@@ -5,6 +5,7 @@ import React, { useContext, forwardRef } from 'react';
 import { touchableText } from '../../css/typography.css';
 import type { BoxBackgroundVariant, BoxProps } from '../Box/Box';
 import { Box } from '../Box/Box';
+import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
@@ -49,6 +50,7 @@ export interface ButtonProps extends ButtonStyleProps {
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
   icon?: ReactElement<UseIconProps>;
+  iconPosition?: 'leading' | 'trailing';
   children?: ReactNode;
   onKeyUp?: NativeButtonProps['onKeyUp'];
   onKeyDown?: NativeButtonProps['onKeyDown'];
@@ -301,6 +303,7 @@ export const ButtonText = ({
   loading,
   size: sizeProp,
   icon,
+  iconPosition = 'leading',
   variant = 'solid',
   tone,
   labelSpacing = true,
@@ -355,10 +358,10 @@ export const ButtonText = ({
         size={size}
         baseline={false}
       >
-        {icon ? (
-          <Box
-            component="span"
-            paddingRight="xsmall"
+        {icon && iconPosition === 'leading' ? (
+          <AvoidWidowIcon
+            iconPosition={iconPosition}
+            space="xsmall"
             className={
               shouldReducePaddingX || bleed
                 ? null
@@ -366,10 +369,23 @@ export const ButtonText = ({
             }
           >
             {icon}
-          </Box>
+          </AvoidWidowIcon>
         ) : null}
         {children}
         {loading ? <ButtonLoader /> : null}
+        {!loading && icon && iconPosition === 'trailing' ? (
+          <AvoidWidowIcon
+            iconPosition={iconPosition}
+            space="xsmall"
+            className={
+              shouldReducePaddingX || bleed
+                ? null
+                : negativeMargin('right', 'xxsmall')
+            }
+          >
+            {icon}
+          </AvoidWidowIcon>
+        ) : null}
       </Text>
     </Box>
   );
@@ -441,6 +457,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       tone,
       icon,
+      iconPosition,
       bleedY,
       bleed,
       variant,
@@ -510,6 +527,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             size={size}
             loading={loading}
             icon={icon}
+            iconPosition={iconPosition}
             bleed={bleed}
           >
             {children}

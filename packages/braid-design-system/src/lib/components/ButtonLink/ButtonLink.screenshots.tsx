@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { ButtonLink, IconSend, Stack, Inline, Text } from '../';
+import { ButtonLink, IconSend, Stack, Inline, Text, IconArrow } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -110,6 +110,83 @@ export const screenshots: ComponentScreenshot = {
               href="#"
               size="small"
               icon={<IconSend />}
+              variant="transparent"
+            >
+              Transparent
+            </ButtonLink>
+          </Inline>
+        </Stack>
+      ),
+    },
+    {
+      label: 'With iconPosition trailing',
+      Example: () => (
+        <Stack space="small">
+          <Inline space="small">
+            <ButtonLink
+              href=""
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+            >
+              Solid
+            </ButtonLink>
+            <ButtonLink
+              href=""
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="ghost"
+            >
+              Ghost
+            </ButtonLink>
+            <ButtonLink
+              href=""
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="soft"
+            >
+              Soft
+            </ButtonLink>
+            <ButtonLink
+              href=""
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="transparent"
+            >
+              Transparent
+            </ButtonLink>
+          </Inline>
+          <Inline space="small">
+            <ButtonLink
+              href=""
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+            >
+              Solid
+            </ButtonLink>
+            <ButtonLink
+              href=""
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="ghost"
+            >
+              Ghost
+            </ButtonLink>
+            <ButtonLink
+              href=""
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
+              variant="soft"
+            >
+              Soft
+            </ButtonLink>
+            <ButtonLink
+              href=""
+              size="small"
+              icon={<IconArrow direction="right" />}
+              iconPosition="trailing"
               variant="transparent"
             >
               Transparent

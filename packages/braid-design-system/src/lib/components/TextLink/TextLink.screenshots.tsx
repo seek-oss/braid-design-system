@@ -221,11 +221,40 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'With a trailing icon',
+      Example: () => (
+        <Text>
+          A sentence with an icon trailing the{' '}
+          <TextLink href="" icon={<IconLink />} iconPosition="trailing">
+            TextLink
+          </TextLink>
+          .
+        </Text>
+      ),
+    },
+    {
       label: 'With icon slot and weight weak',
       Example: () => (
         <Text>
           A sentence with a{' '}
           <TextLink href="" weight="weak" icon={<IconLink />}>
+            TextLink
+          </TextLink>
+          .
+        </Text>
+      ),
+    },
+    {
+      label: 'With a trailing icon and weight weak',
+      Example: () => (
+        <Text>
+          A sentence with an icon trailing the{' '}
+          <TextLink
+            href=""
+            weight="weak"
+            icon={<IconLink />}
+            iconPosition="trailing"
+          >
             TextLink
           </TextLink>
           .

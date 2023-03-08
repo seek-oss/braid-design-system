@@ -8,11 +8,11 @@ import {
   useBackground,
 } from '../Box/BackgroundContext';
 import type { BoxBackgroundVariant } from '../Box/Box';
-import { Box } from '../Box/Box';
 import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
 import { useLinkComponent } from '../BraidProvider/BraidProvider';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
+import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
@@ -24,6 +24,7 @@ export interface TextLinkStyles {
   weight?: 'regular' | 'weak';
   showVisited?: boolean;
   hitArea?: 'standard' | 'large';
+  iconPosition?: 'leading' | 'trailing';
 }
 
 export interface TextLinkProps
@@ -102,9 +103,34 @@ export const useLinkStyles = ({
   );
 };
 
+export const TextLinkContent = ({
+  icon,
+  iconPosition = 'leading',
+  children,
+}: Pick<TextLinkProps, 'icon' | 'iconPosition' | 'children'>) => (
+  <>
+    {icon && iconPosition === 'leading' ? (
+      <AvoidWidowIcon iconPosition={iconPosition}>{icon}</AvoidWidowIcon>
+    ) : null}
+    {children}
+    {icon && iconPosition === 'trailing' ? (
+      <AvoidWidowIcon iconPosition={iconPosition}>{icon}</AvoidWidowIcon>
+    ) : null}
+  </>
+);
+
 export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
   (
-    { weight, showVisited, hitArea, data, icon, children, ...restProps },
+    {
+      weight,
+      showVisited,
+      hitArea,
+      data,
+      icon,
+      children,
+      iconPosition,
+      ...restProps
+    },
     ref,
   ) => {
     const LinkComponent = useLinkComponent(ref);
@@ -121,12 +147,9 @@ export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
         className={classes}
         {...buildDataAttributes({ data, validateRestProps: false })}
       >
-        {icon ? (
-          <Box component="span" paddingRight="xxsmall">
-            {icon}
-          </Box>
-        ) : null}
-        {children}
+        <TextLinkContent icon={icon} iconPosition={iconPosition}>
+          {children}
+        </TextLinkContent>
       </LinkComponent>
     );
   },
