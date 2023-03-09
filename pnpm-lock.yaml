@@ -122,9 +122,9 @@ importers:
       '@testing-library/react': ^13.2.0
       '@testing-library/user-event': ^14.2.0
       '@types/autosuggest-highlight': ^3.1.1
-      '@types/babel__core': ^7.18.0
       '@types/babel-plugin-macros': ^2.8.5
       '@types/babel-plugin-tester': ^9.0.5
+      '@types/babel__core': ^7.18.0
       '@types/dedent': ^0.7.0
       '@types/jest': ^29.0.0
       '@types/lodash': ^4.14.168
@@ -157,7 +157,7 @@ importers:
       html-validate: ^7.1.1
       is-mobile: ^2.2.2
       lodash: ^4.17.21
-      playroom: 0.30.0
+      playroom: 0.31.0
       polished: ^4.1.0
       prettier: ^2.8.2
       react: ^18.2.0
@@ -209,9 +209,9 @@ importers:
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.2.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.2.0_tlwynutqiyp5mns3woioasuxnq
-      '@types/babel__core': 7.20.0
       '@types/babel-plugin-macros': 2.8.5
       '@types/babel-plugin-tester': 9.0.5
+      '@types/babel__core': 7.20.0
       '@types/jest': 29.1.2
       '@types/node': 18.13.0
       '@types/react': 18.0.28
@@ -230,7 +230,7 @@ importers:
       fast-glob: 3.2.12
       fs-extra: 10.1.0
       html-validate: 7.1.1
-      playroom: 0.30.0_biqbaboplfbrettd7655fr4n2y
+      playroom: 0.31.0_biqbaboplfbrettd7655fr4n2y
       prettier: 2.8.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -246,9 +246,9 @@ importers:
       '@babel/plugin-syntax-jsx': ^7.17.12
       '@babel/plugin-syntax-typescript': ^7.17.12
       '@babel/traverse': ^7.18.11
+      '@types/babel-plugin-tester': ^9.0.5
       '@types/babel__core': ^7.18.0
       '@types/babel__traverse': ^7.18.0
-      '@types/babel-plugin-tester': ^9.0.5
       '@types/cli-progress': ^3.11.0
       '@types/dedent': ^0.7.0
       '@types/react': ^18.0.21
@@ -286,9 +286,9 @@ importers:
       recast: 0.21.1
       workerpool: 6.2.1
     devDependencies:
+      '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.20.0
       '@types/babel__traverse': 7.18.0
-      '@types/babel-plugin-tester': 9.0.5
       '@types/dedent': 0.7.0
 
   packages/generate-component-docs:
@@ -333,7 +333,7 @@ importers:
       mini-css-extract-plugin: ^2.6.0
       npm-registry-client: ^8.6.0
       panzoom: ^9.4.2
-      playroom: 0.30.0
+      playroom: 0.31.0
       polished: ^4.1.0
       prettier: ^2.8.2
       react: ^18.2.0
@@ -373,7 +373,7 @@ importers:
       mini-css-extract-plugin: 2.6.1_webpack@5.72.1
       npm-registry-client: 8.6.0
       panzoom: 9.4.2_6ozlkenow5f4yy4lstsbsrrv4i
-      playroom: 0.30.0_biqbaboplfbrettd7655fr4n2y
+      playroom: 0.31.0_biqbaboplfbrettd7655fr4n2y
       polished: 4.2.2
       prettier: 2.8.3
       react: 18.2.0
@@ -8276,7 +8276,7 @@ packages:
       webpack: ^4.27.0 || ^5.0.0
     dependencies:
       icss-utils: 5.1.0_postcss@8.4.21
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       postcss: 8.4.21
       postcss-modules-extract-imports: 3.0.0_postcss@8.4.21
       postcss-modules-local-by-default: 4.0.0_postcss@8.4.21
@@ -10694,7 +10694,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: false
 
   /follow-redirects/1.15.0_debug@4.3.4:
     resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
@@ -11831,7 +11830,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.0_debug@4.3.4
+      follow-redirects: 1.15.0
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -15292,8 +15291,8 @@ packages:
     dependencies:
       find-up: 3.0.0
 
-  /playroom/0.30.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-X2tqBhIZbogutREtyzZdU3pMB7x6b7TcD/VCoeE35uYMc3CGFQwFDeD5YtQdxp0GDhfo/WwSS4hl86YJn/wrlA==}
+  /playroom/0.31.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-hu3KfoxcrZRK0SnumEkpzeEXUnRvND2/qygm1K3mzaiibcyky4uczWhvpqWic24WZpVJBegz4YLw/bwx8/WAgg==}
     hasBin: true
     peerDependencies:
       react: ^16.8 || ^17 || ^18
