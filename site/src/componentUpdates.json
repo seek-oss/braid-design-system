@@ -2998,5 +2998,57 @@
         "summary": "Remove legacy themes: `catho`, `occ` and `seekAnz`\n\nThe `seekAnz` theme facilitated consumers migrating like-for-like from `seek-style-guide`, while the `catho` and `occ` themes intended to enable a specific use case that never eventuated.\n\nRemoving these themes allows us to move faster with upcoming theme uplift work.\n\n**MIGRATION GUIDE:**\n\nAny remaining consumers of the `catho`, `occ` or `seekAnz` themes should migrate to the `apac` theme like so:\n\n```diff\n-import seekAnz from 'braid-design-system/themes/seekAnz';\n+import apac from 'braid-design-system/themes/apac';\n```"
       }
     ]
+  },
+  {
+    "version": "32.1.0",
+    "updates": [
+      {
+        "updated": [
+          "Disclosure"
+        ],
+        "summary": "**Disclosure:** Add `weight` support\n\nProvides support for reducing the visual weight of the Disclosure's call to action. Follows the same contextual styling rules as `TextLink`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Disclosure weight=\"weak\">\n  ...\n</Disclosure>\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "FieldLabel",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "Show `description` on form fields when no `label` provided\n\nPreviously, a `FieldLabel` without a `label` would return nothing. However, now that form fields can opt for [indirect or hidden labels] (via `aria-label` or `aria-labelledby`), the `description` should still be shown if provided.\n\n> Note: The `secondaryLabel` and `tertiaryLabel` remain conditional based on the presence of a `label`. This is due to their location in the layout being anchored off the `label`.\n\n**EXAMPLE USAGE:**\n```jsx\n<FieldLabel\n  description=\"Description now visible without label\"\n/>\n```\n\n[indirect or hidden labels]: https://seek-oss.github.io/braid-design-system/components/TextField#indirect-or-hidden-field-labels"
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink, TextLinkButton:** Increase text weight of weak links\n\nIncreases the text weight of `weak` links to `medium`, increasing the affordance against standard text.\nAs a result, this makes the weight of all text links consistent."
+      },
+      {
+        "updated": [
+          "Disclosure"
+        ],
+        "summary": "**Disclosure:** Add inline content support\n\nProvides support for using a Disclosure within a sentence by allowing it to be nested within a typographic component, i.e. `Text`.\n\nAll size and weight properties will inherit from the parent component.\n\n**EXAMPLE USAGE:**\n```jsx\n<Text>\n  Preceding text content that is followed by a Disclosure.\n  <Disclosure expandLabel=\"Read more\">\n    ...\n  </Disclosure>\n</Text>\n```"
+      },
+      {
+        "updated": [
+          "Disclosure"
+        ],
+        "summary": "**Disclosure:** Ensure chevron does not wrap alone\n\nFixes the scenario where based on copy length and container size, the chevron could wrap independently of the rest of the label. By using a zero-width, non-breaking space, the chevron will now wrap together with the last word of the label."
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink",
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**Button, ButtonLink, TextLink, TextLinkButton:** Add support for trailing icons\n\nProvide support for choosing the position of the `icon` slot within a `Button` or `TextLink`.\n\nBy default, the `iconPosition` will be `leading` the label, but optionally, can be set to `trailing`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Button\n  icon={<IconArrow direction=\"right\" />}\n  iconPosition=\"trailing\"\n>\n  Next\n</Button>\n```"
+      }
+    ]
   }
 ]

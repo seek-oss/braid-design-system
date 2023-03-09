@@ -1,5 +1,73 @@
 # braid-design-system
 
+## 32.1.0
+
+### Minor Changes
+
+- **Disclosure:** Add `weight` support ([#1240](https://github.com/seek-oss/braid-design-system/pull/1240))
+
+  Provides support for reducing the visual weight of the Disclosure's call to action. Follows the same contextual styling rules as `TextLink`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Disclosure weight="weak">...</Disclosure>
+  ```
+
+- **Disclosure:** Add inline content support ([#1240](https://github.com/seek-oss/braid-design-system/pull/1240))
+
+  Provides support for using a Disclosure within a sentence by allowing it to be nested within a typographic component, i.e. `Text`.
+
+  All size and weight properties will inherit from the parent component.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text>
+    Preceding text content that is followed by a Disclosure.
+    <Disclosure expandLabel="Read more">...</Disclosure>
+  </Text>
+  ```
+
+- **Button, ButtonLink, TextLink, TextLinkButton:** Add support for trailing icons ([#1242](https://github.com/seek-oss/braid-design-system/pull/1242))
+
+  Provide support for choosing the position of the `icon` slot within a `Button` or `TextLink`.
+
+  By default, the `iconPosition` will be `leading` the label, but optionally, can be set to `trailing`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Button icon={<IconArrow direction="right" />} iconPosition="trailing">
+    Next
+  </Button>
+  ```
+
+### Patch Changes
+
+- Show `description` on form fields when no `label` provided ([#1239](https://github.com/seek-oss/braid-design-system/pull/1239))
+
+  Previously, a `FieldLabel` without a `label` would return nothing. However, now that form fields can opt for [indirect or hidden labels] (via `aria-label` or `aria-labelledby`), the `description` should still be shown if provided.
+
+  > Note: The `secondaryLabel` and `tertiaryLabel` remain conditional based on the presence of a `label`. This is due to their location in the layout being anchored off the `label`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <FieldLabel description="Description now visible without label" />
+  ```
+
+  [indirect or hidden labels]: https://seek-oss.github.io/braid-design-system/components/TextField#indirect-or-hidden-field-labels
+
+- **TextLink, TextLinkButton:** Increase text weight of weak links ([#1237](https://github.com/seek-oss/braid-design-system/pull/1237))
+
+  Increases the text weight of `weak` links to `medium`, increasing the affordance against standard text.
+  As a result, this makes the weight of all text links consistent.
+
+- **Disclosure:** Ensure chevron does not wrap alone ([#1240](https://github.com/seek-oss/braid-design-system/pull/1240))
+
+  Fixes the scenario where based on copy length and container size, the chevron could wrap independently of the rest of the label. By using a zero-width, non-breaking space, the chevron will now wrap together with the last word of the label.
+
 ## 32.0.0
 
 The is a huge enablement release that sees the removal of legacy themes and [treat](https://seek-oss.github.io/treat/) our previous styling solution, as well as a migration to our new build tool [Crackle](https://github.com/seek-oss/crackle/).
