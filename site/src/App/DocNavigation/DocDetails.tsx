@@ -106,24 +106,33 @@ export const DocDetails = () => {
         <Box style={{ position: 'sticky', top: 32 }} id="stickybox">
           <List>
             {hasAlternatives ? (
-              <Text>
-                <TextLink href="#alternatives">Alternatives</TextLink>
+              <Text size="small" tone="secondary">
+                <TextLink weight="weak" href="#alternatives">
+                  Alternatives
+                </TextLink>
               </Text>
             ) : null}
+
             {hasAccessibility ? (
-              <Text>
-                <TextLink href="#accessibility">Accessibility</TextLink>
+              <Text size="small" tone="secondary">
+                <TextLink weight="weak" href="#accessibility">
+                  Accessibility
+                </TextLink>
               </Text>
             ) : null}
+
             {(docs.additional ?? []).map((example) => {
               if (!example.label) {
                 return null;
               }
 
               const labelSlug = slugify(example.label);
+
               return (
-                <Text key={labelSlug}>
-                  <TextLink href={`#${labelSlug}`}>{example.label}</TextLink>
+                <Text key={labelSlug} size="small" tone="secondary">
+                  <TextLink weight="weak" href={`#${labelSlug}`}>
+                    {example.label}
+                  </TextLink>
                 </Text>
               );
             })}
