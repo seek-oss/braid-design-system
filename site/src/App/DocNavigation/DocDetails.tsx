@@ -116,7 +116,11 @@ export const DocDetails = () => {
               </Text>
             ) : null}
             {(docs.additional ?? []).map((example) => {
-              const labelSlug = slugify(example.label!);
+              if (!example.label) {
+                return null;
+              }
+
+              const labelSlug = slugify(example.label);
               return (
                 <Text key={labelSlug}>
                   <TextLink href={`#${labelSlug}`}>{example.label}</TextLink>
