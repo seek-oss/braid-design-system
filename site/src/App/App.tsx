@@ -26,6 +26,8 @@ import { GalleryPage } from './routes/gallery';
 import { AppMeta } from './Seo/AppMeta';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 
+import './App.css';
+
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
     href[0] === '/' && !/\/playroom\/?($|#)/.test(href) ? (
