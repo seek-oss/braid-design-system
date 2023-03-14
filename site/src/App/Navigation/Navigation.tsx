@@ -119,7 +119,7 @@ export const Navigation = () => {
       <Box
         background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
         position="relative"
-        overflow="hidden" // Fix stack space intercepting nav bar clicks
+        // overflow="hidden" // Fix stack space intercepting nav bar clicks
         paddingX={{
           mobile: gutterSize,
           wide: 'xxlarge',
