@@ -8,7 +8,7 @@ type LinkableHeadingProps = {
   component?: HeadingProps['component'];
 } & ({ children: string } | { children: ReactNode; label: string });
 
-const slugify = (string: string) =>
+export const slugify = (string: string) =>
   string
     .replace(/[\s?]/g, '-')
     .replace('--', '-')
