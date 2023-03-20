@@ -18,7 +18,7 @@ importers:
       '@babel/runtime': ^7.18.0
       '@changesets/cli': ^2.22.0
       '@changesets/get-github-info': ^0.5.0
-      '@crackle/cli': 0.0.0-redirect-dts-20230317055726
+      '@crackle/cli': ^0.10.10
       '@manypkg/cli': ^0.19.1
       '@octokit/rest': ^18.12.0
       '@types/fs-extra': ^9.0.13
@@ -61,7 +61,7 @@ importers:
       '@babel/runtime': 7.18.0
       '@changesets/cli': 2.22.0
       '@changesets/get-github-info': 0.5.0
-      '@crackle/cli': 0.0.0-redirect-dts-20230317055726_mjik5pmutsslpetiqdatroiqmu
+      '@crackle/cli': 0.10.10_mjik5pmutsslpetiqdatroiqmu
       '@manypkg/cli': 0.19.1
       '@octokit/rest': 18.12.0
       '@types/fs-extra': 9.0.13
@@ -2460,11 +2460,11 @@ packages:
       - supports-color
     dev: false
 
-  /@crackle/cli/0.0.0-redirect-dts-20230317055726_mjik5pmutsslpetiqdatroiqmu:
-    resolution: {integrity: sha512-xF40ph4mrV1LPIMBotRlrPcsdhk/QXHsBEE42GctMkQ6C0vpTf5u6ez9Dzqks62LvChrwm62/KDDY7lSVTAkrQ==}
+  /@crackle/cli/0.10.10_mjik5pmutsslpetiqdatroiqmu:
+    resolution: {integrity: sha512-StFdlopUDk7OWOFDTukZQxRTVG7ms5/WMp3+gZFaj4ArTEU+X3DQ2WcXzHy39x9zjiwhSxgsBLOsH/qm9Yfnhg==}
     hasBin: true
     dependencies:
-      '@crackle/core': 0.0.0-redirect-dts-20230317055726_mjik5pmutsslpetiqdatroiqmu
+      '@crackle/core': 0.21.0_mjik5pmutsslpetiqdatroiqmu
       yargs: 17.6.2
     transitivePeerDependencies:
       - '@types/node'
@@ -2481,8 +2481,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@crackle/core/0.0.0-redirect-dts-20230317055726_mjik5pmutsslpetiqdatroiqmu:
-    resolution: {integrity: sha512-7Bq7lazChmeVpgOx6ZRGoPbtFszCmcUzdJtNIXe3DV1kCOmUFh511BktsLtXMeTvQ68KNdH+MF8eQ8tx+43akA==}
+  /@crackle/core/0.21.0_mjik5pmutsslpetiqdatroiqmu:
+    resolution: {integrity: sha512-w2kzYJdst8p72tlhaOJjjdtlHr6F7up7HoZA7K3Ju1pulP7qN+3h24LTVAOJMlAI4pNqn9T134NMtpF6nV6msQ==}
     peerDependencies:
       typescript: '>=4.9.4'
     dependencies:
