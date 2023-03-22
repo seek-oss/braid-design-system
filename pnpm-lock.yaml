@@ -122,9 +122,9 @@ importers:
       '@testing-library/react': ^13.2.0
       '@testing-library/user-event': ^14.2.0
       '@types/autosuggest-highlight': ^3.1.1
-      '@types/babel__core': ^7.18.0
       '@types/babel-plugin-macros': ^2.8.5
       '@types/babel-plugin-tester': ^9.0.5
+      '@types/babel__core': ^7.18.0
       '@types/dedent': ^0.7.0
       '@types/jest': ^29.0.0
       '@types/lodash': ^4.14.168
@@ -209,9 +209,9 @@ importers:
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.2.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.2.0_tlwynutqiyp5mns3woioasuxnq
-      '@types/babel__core': 7.20.0
       '@types/babel-plugin-macros': 2.8.5
       '@types/babel-plugin-tester': 9.0.5
+      '@types/babel__core': 7.20.0
       '@types/jest': 29.1.2
       '@types/node': 18.13.0
       '@types/react': 18.0.28
@@ -246,9 +246,9 @@ importers:
       '@babel/plugin-syntax-jsx': ^7.17.12
       '@babel/plugin-syntax-typescript': ^7.17.12
       '@babel/traverse': ^7.18.11
+      '@types/babel-plugin-tester': ^9.0.5
       '@types/babel__core': ^7.18.0
       '@types/babel__traverse': ^7.18.0
-      '@types/babel-plugin-tester': ^9.0.5
       '@types/cli-progress': ^3.11.0
       '@types/dedent': ^0.7.0
       '@types/react': ^18.0.21
@@ -286,9 +286,9 @@ importers:
       recast: 0.21.1
       workerpool: 6.2.1
     devDependencies:
+      '@types/babel-plugin-tester': 9.0.5
       '@types/babel__core': 7.20.0
       '@types/babel__traverse': 7.18.0
-      '@types/babel-plugin-tester': 9.0.5
       '@types/dedent': 0.7.0
 
   packages/generate-component-docs:
