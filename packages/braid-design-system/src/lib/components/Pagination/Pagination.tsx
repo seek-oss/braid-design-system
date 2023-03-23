@@ -116,7 +116,7 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
         <Text
           baseline={false}
           align="center"
-          weight={current ? 'medium' : undefined}
+          weight={current ? 'strong' : undefined}
           tone={current ? 'formAccent' : undefined}
         >
           {number}

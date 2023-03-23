@@ -37,7 +37,7 @@ const docs: ComponentDocs = {
     ),
   description: (
     <Alert tone="info">
-      <Text weight="medium">
+      <Text weight="strong">
         This component is only required when building a custom field that isn’t
         provided by Braid.
       </Text>

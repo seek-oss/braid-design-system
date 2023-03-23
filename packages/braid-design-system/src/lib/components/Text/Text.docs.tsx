@@ -18,38 +18,26 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Stack space="large">
-        <Stack space="medium">
+        <Stack space="small">
           <Text size="large">Text size large regular</Text>
-          <Text size="large" weight="medium">
-            Text size large medium
-          </Text>
           <Text size="large" weight="strong">
             Text size large strong
           </Text>
         </Stack>
-        <Stack space="medium">
+        <Stack space="small">
           <Text size="standard">Text size standard regular</Text>
-          <Text size="standard" weight="medium">
-            Text size standard medium
-          </Text>
           <Text size="standard" weight="strong">
             Text size standard strong
           </Text>
         </Stack>
         <Stack space="small">
           <Text size="small">Text size small regular</Text>
-          <Text size="small" weight="medium">
-            Text size small medium
-          </Text>
           <Text size="small" weight="strong">
             Text size small strong
           </Text>
         </Stack>
         <Stack space="small">
           <Text size="xsmall">Text size xsmall regular</Text>
-          <Text size="xsmall" weight="medium">
-            Text size xsmall medium
-          </Text>
           <Text size="xsmall" weight="strong">
             Text size xsmall strong
           </Text>

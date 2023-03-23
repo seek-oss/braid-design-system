@@ -781,7 +781,7 @@ export const Autosuggest = forwardRef(function <Value>(
                         {noSuggestionsMessage.title ? (
                           <Text
                             tone="secondary"
-                            weight="medium"
+                            weight="strong"
                             baseline={false}
                           >
                             {noSuggestionsMessage.title}

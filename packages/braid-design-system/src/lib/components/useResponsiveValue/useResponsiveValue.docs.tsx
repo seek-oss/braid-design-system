@@ -8,7 +8,7 @@ const docs: ComponentDocs = {
   category: 'Logic',
   banner: (
     <Alert tone="caution">
-      <Text weight="medium">
+      <Text>
         The returned function returns <Strong>null</Strong> when rendering
         server-side or statically, so you should avoid this Hook where possible.
         Responsive props and media queries are preferable in most cases.

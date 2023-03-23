@@ -12,7 +12,7 @@ export interface StrongProps {
 
 export const Strong = ({ children, data, id, ...restProps }: StrongProps) => (
   <strong
-    className={fontWeight.strong}
+    className={fontWeight.medium}
     id={id}
     {...buildDataAttributes({ data, validateRestProps: restProps })}
   >

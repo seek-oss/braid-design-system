@@ -1,4 +1,5 @@
 import type { StyleRule } from '@vanilla-extract/css';
+import dedent from 'dedent';
 import { vars } from '../../lib/themes/vars.css';
 import { responsiveStyle } from './responsiveStyle';
 
@@ -10,21 +11,41 @@ interface GlobalTextStyleProps {
 export const globalTextStyle = ({
   weight = 'regular',
   size = 'standard',
-}: GlobalTextStyleProps = {}): StyleRule => ({
-  fontFamily: vars.fontFamily,
-  fontWeight: vars.textWeight[weight],
-  color: vars.foregroundColor.neutral,
-  ...responsiveStyle({
-    mobile: {
-      fontSize: vars.textSize[size].mobile.fontSize,
-      lineHeight: vars.textSize[size].mobile.lineHeight,
-    },
-    tablet: {
-      fontSize: vars.textSize[size].tablet.fontSize,
-      lineHeight: vars.textSize[size].tablet.lineHeight,
-    },
-  }),
-});
+}: GlobalTextStyleProps = {}): StyleRule => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (weight === 'medium') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          Passing \`medium\` to \`weight\` is deprecated and will be removed in a future version. Use \`strong\` instead.
+            globalTextStyle({
+            %c-   weight: "medium",
+            %c+   weight: "strong,
+            %c})
+        `,
+        'color: red',
+        'color: green',
+        'color: inherit',
+      );
+    }
+  }
+
+  return {
+    fontFamily: vars.fontFamily,
+    fontWeight: vars.textWeight[weight === 'strong' ? 'medium' : weight],
+    color: vars.foregroundColor.neutral,
+    ...responsiveStyle({
+      mobile: {
+        fontSize: vars.textSize[size].mobile.fontSize,
+        lineHeight: vars.textSize[size].mobile.lineHeight,
+      },
+      tablet: {
+        fontSize: vars.textSize[size].tablet.fontSize,
+        lineHeight: vars.textSize[size].tablet.lineHeight,
+      },
+    }),
+  };
+};
 
 interface GlobalHeadingProps {
   weight?: keyof typeof vars.headingWeight;

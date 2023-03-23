@@ -22,7 +22,6 @@ export const galleryItems: ComponentExample[] = [
       source(
         <Stack space="large">
           <Text weight="regular">Regular (default)</Text>
-          <Text weight="medium">Medium</Text>
           <Text weight="strong">Strong</Text>
         </Stack>,
       ),

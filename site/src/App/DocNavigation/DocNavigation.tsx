@@ -118,7 +118,7 @@ export const DocNavigationItem = ({
             >
               <Text
                 size="standard"
-                weight="medium"
+                weight="strong"
                 tone={hovered ? 'neutral' : 'secondary'}
               >
                 {children}

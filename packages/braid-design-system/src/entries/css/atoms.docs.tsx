@@ -454,7 +454,7 @@ const docs: CssDoc = {
                   <Column>
                     <Box paddingRight="medium">
                       <Stack space="small">
-                        <Text weight="medium">
+                        <Text weight="strong">
                           <Box style={{ wordBreak: 'break-all' }}>
                             {boxShadow}
                           </Box>

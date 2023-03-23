@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: false,
   deprecationWarning: (
-    <Text weight="medium">
+    <Text weight="strong">
       This component has been deprecated. Use{' '}
       <TextLink href="/components/RadioGroup">RadioGroup</TextLink> instead.
     </Text>

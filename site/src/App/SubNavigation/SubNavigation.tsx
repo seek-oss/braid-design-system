@@ -54,7 +54,7 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
     <Stack space="large">
       {title ? (
         <Box className={styles.uppercase}>
-          <Text size="xsmall" weight="medium" component="h2">
+          <Text size="xsmall" weight="strong" component="h2">
             {title}
           </Text>
         </Box>

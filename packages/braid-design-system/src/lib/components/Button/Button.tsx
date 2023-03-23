@@ -354,7 +354,7 @@ export const ButtonText = ({
     >
       <Text
         tone={stylesForVariant.textTone}
-        weight="medium"
+        weight="strong"
         size={size}
         baseline={false}
       >

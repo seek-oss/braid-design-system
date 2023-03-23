@@ -33,7 +33,7 @@ export const TooltipTextDefaultsProvider = ({
   return (
     <DefaultTextPropsProvider
       size={themeName === 'docs' ? 'small' : undefined}
-      weight="medium"
+      weight="strong"
     >
       {children}
     </DefaultTextPropsProvider>

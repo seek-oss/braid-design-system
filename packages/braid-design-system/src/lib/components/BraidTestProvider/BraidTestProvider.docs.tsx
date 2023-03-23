@@ -13,7 +13,7 @@ const docs: ComponentDocs = {
         unit test environments.
       </Text>
       <Alert>
-        <Text weight="medium">
+        <Text weight="strong">
           This provider should <Strong>not</Strong> be used in production code.
         </Text>
       </Alert>

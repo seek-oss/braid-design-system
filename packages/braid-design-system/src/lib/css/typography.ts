@@ -15,7 +15,7 @@ export function textStyles({
 }: TextStyleProps) {
   return [
     styles.fontFamily,
-    styles.fontWeight[weight],
+    styles.fontWeight[weight === 'strong' ? 'medium' : weight],
     styles.tone[tone],
     styles[baseline ? 'textSizeTrimmed' : 'textSizeUntrimmed'][size],
   ];

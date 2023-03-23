@@ -27,7 +27,7 @@ const tokens: BraidTokens = {
     },
     fontWeight: {
       regular: 400,
-      medium: 500,
+      medium: 600,
       strong: 700,
     },
     heading: {

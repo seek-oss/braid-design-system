@@ -15,6 +15,7 @@ import importUpdatePlugin from './plugin-deprecate/plugin-import-update';
 import propRenamePlugin from './plugin-deprecate/plugin-prop-rename';
 import { v31 } from './plugin-deprecate/deprecationMaps/v31';
 import { v31_11 } from './plugin-deprecate/deprecationMaps/v31-11';
+import { v32_2 } from './plugin-deprecate/deprecationMaps/v32-2';
 
 const pluginsForVersion = {
   v31: [
@@ -24,6 +25,10 @@ const pluginsForVersion = {
     importUpdatePlugin,
   ],
   [`v31.11`]: [[propRenamePlugin, { renames: v31_11 }]],
+  [`v32.2`]: [
+    [propsPlugin, { deprecations: v32_2 }],
+    [atomsPlugin, { deprecations: v32_2 }],
+  ],
 };
 
 type Version = keyof typeof pluginsForVersion;

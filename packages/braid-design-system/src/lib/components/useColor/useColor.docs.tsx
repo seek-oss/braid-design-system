@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   category: 'Logic',
   description: (
     <Alert tone="caution">
-      <Text weight="medium">
+      <Text weight="strong">
         You should only use this Hook if you’re unable to use{' '}
         <TextLink href="/components/Box">Box</TextLink> or{' '}
         <TextLink href="/css/vars">vars.</TextLink>

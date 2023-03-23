@@ -97,7 +97,7 @@ export const AccordionItem = ({
 
   const size = accordionContext?.size ?? sizeProp ?? 'large';
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
-  const weight = accordionContext?.weight ?? weightProp ?? 'medium';
+  const weight = accordionContext?.weight ?? weightProp ?? 'strong';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
 
   assert(

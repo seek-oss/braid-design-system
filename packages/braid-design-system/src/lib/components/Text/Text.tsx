@@ -1,5 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import assert from 'assert';
+import dedent from 'dedent';
 import { TextContext } from './TextContext';
 import { useDefaultTextProps } from '../private/defaultTextProps';
 import type { TextStyleProps } from '../../css/typography';
@@ -42,6 +43,24 @@ export const Text = ({
     }),
     [tone, size, weight, baseline],
   );
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (weight === 'medium') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          Passing \`medium\` to \`weight\` is deprecated and will be removed in a future version. Use \`strong\` instead.
+             <Text
+            %c-   weight="medium"
+            %c+   weight="strong
+             %c/>
+        `,
+        'color: red',
+        'color: green',
+        'color: inherit',
+      );
+    }
+  }
 
   return (
     <TextContext.Provider value={textStylingProps}>

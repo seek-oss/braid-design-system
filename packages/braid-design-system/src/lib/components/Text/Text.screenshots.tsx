@@ -56,6 +56,7 @@ export const screenshots: ComponentScreenshot = {
           {Object.keys(fontWeight).map((weight) => (
             <Text weight={weight as keyof typeof fontWeight} key={weight}>
               {titleCase(weight)}
+              {weight === 'medium' ? ' (deprecated)' : undefined}
             </Text>
           ))}
         </Stack>

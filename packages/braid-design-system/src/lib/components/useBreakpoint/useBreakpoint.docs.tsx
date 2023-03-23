@@ -7,7 +7,7 @@ const docs: ComponentDocs = {
   category: 'Logic',
   deprecationWarning: (
     <Stack space="large">
-      <Text weight="medium">
+      <Text>
         This Hook has been deprecated in favour of{' '}
         <Strong>
           <TextLink href="/components/useResponsiveValue">
@@ -15,12 +15,12 @@ const docs: ComponentDocs = {
           </TextLink>
         </Strong>
       </Text>
-      <Text weight="medium">
+      <Text>
         This is because <Strong>useBreakpoint</Strong> leads consumers to
         inadvertently couple themselves to the current set of breakpoints,
         making it risky for us to introduce new breakpoints.
       </Text>
-      <Text weight="medium">
+      <Text>
         For example, you may have chosen to detect large screens by checking
         that the user is on the (current) largest breakpoint (e.g.{' '}
         <Strong>{`const isDesktop = useBreakpoint() === "desktop"`}</Strong>

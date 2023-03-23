@@ -36,8 +36,4 @@ export const snippets: Snippets = [
     name: 'Weight (strong)',
     code: source(<Text weight="strong">Strong text</Text>),
   },
-  {
-    name: 'Weight (medium)',
-    code: source(<Text weight="medium">Medium text</Text>),
-  },
 ];

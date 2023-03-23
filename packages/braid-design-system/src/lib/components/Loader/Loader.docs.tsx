@@ -57,7 +57,7 @@ const docs: ComponentDocs = {
           <Columns space="xlarge" collapseBelow="tablet">
             <Column>
               <Stack space="medium" align="center">
-                <Text size="large" weight="medium" tone="secondary">
+                <Text size="large" weight="strong" tone="secondary">
                   Large
                 </Text>
                 <Loader size="large" />
@@ -66,7 +66,7 @@ const docs: ComponentDocs = {
 
             <Column>
               <Stack space="medium" align="center">
-                <Text size="standard" weight="medium" tone="secondary">
+                <Text size="standard" weight="strong" tone="secondary">
                   Standard
                 </Text>
                 <Loader size="standard" />
@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
 
             <Column>
               <Stack space="medium" align="center">
-                <Text size="small" weight="medium" tone="secondary">
+                <Text size="small" weight="strong" tone="secondary">
                   Small
                 </Text>
                 <Loader size="small" />
@@ -84,7 +84,7 @@ const docs: ComponentDocs = {
 
             <Column>
               <Stack space="medium" align="center">
-                <Text size="xsmall" weight="medium" tone="secondary">
+                <Text size="xsmall" weight="strong" tone="secondary">
                   Xsmall
                 </Text>
                 <Loader size="xsmall" />
