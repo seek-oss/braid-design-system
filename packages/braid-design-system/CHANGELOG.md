@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.1.1
+
+### Patch Changes
+
+- Prevent wrong entry point paths from appearing as suggestions in VS Code. ([#1247](https://github.com/seek-oss/braid-design-system/pull/1247))
+
+  For example, wanting to use [Braid's CSS variables](https://seek-oss.github.io/braid-design-system/css/vars) (`vars`) VS Code would suggest `braid-design-system/dist/css` instead of `braid-design-system/css`.
+
 ## 32.1.0
 
 ### Minor Changes
