@@ -4,6 +4,7 @@ import type { DeprecationMap } from './subVisitor';
 import { subVisitor } from './subVisitor';
 import type { StringLiteralPath } from './helpers';
 import { deArray, updateStringLiteral } from './helpers';
+import { isBraidImport } from './isBraidImport';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;
@@ -36,7 +37,7 @@ export default function (): PluginObj<Context> {
           for (const statement of bodyPath) {
             if (
               t.isImportDeclaration(statement.node) &&
-              /braid-design-system(?:\/css)?$/.test(statement.node.source.value)
+              isBraidImport(statement.node.source.value)
             ) {
               for (const specifier of statement.node.specifiers) {
                 if (

@@ -2,6 +2,7 @@ ignores:
   - '@testing-library/dom'
   - '@types/jest'
   - assert
+  - yoga-layout-prebuilt
   # internal
   - braid-src
   - site
