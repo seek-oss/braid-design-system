@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "32.1.0",
+  "version": "32.1.1",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -196,7 +196,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.7.0",
-    "sku": "11.7.1",
+    "sku": "11.7.2",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   },
