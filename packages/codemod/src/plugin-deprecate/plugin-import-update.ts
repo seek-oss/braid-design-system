@@ -1,5 +1,6 @@
 import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
+import { isBraidImport } from './isBraidImport';
 
 const packageName = 'braid-design-system';
 
@@ -21,7 +22,7 @@ export default function (): PluginObj<PluginPass> {
           for (const statement of bodyPath) {
             if (
               t.isImportDeclaration(statement.node) &&
-              /braid-design-system$/.test(statement.node.source.value)
+              isBraidImport(statement.node.source.value)
             ) {
               const relocations = Object.keys(relocationMap);
 

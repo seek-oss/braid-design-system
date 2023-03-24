@@ -2,6 +2,7 @@ import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 import { renderUntraceablePropertyWarning } from '../warning-renderer/warning';
+import { isBraidImport } from './isBraidImport';
 import type { DeprecationMap } from './subVisitor';
 
 const walk = ({
@@ -148,7 +149,7 @@ export default function (): PluginObj<Context> {
           for (const statement of bodyPath) {
             if (
               t.isImportDeclaration(statement.node) &&
-              /braid-design-system(?:\/css)?$/.test(statement.node.source.value)
+              isBraidImport(statement.node.source.value)
             ) {
               for (const specifier of statement.node.specifiers) {
                 if (
@@ -164,7 +165,7 @@ export default function (): PluginObj<Context> {
                   for (const refPath of binding.referencePaths) {
                     walk({
                       path: refPath,
-                      deprecations: this.deprecations.vars,
+                      deprecations: this.deprecations.vars || {},
                       code: this.file.code,
                       filename: this.filename,
                       // @ts-expect-error

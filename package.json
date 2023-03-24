@@ -83,7 +83,8 @@
   "packageManager": "pnpm@7.8.0",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom@9.4.2": "patches/panzoom@9.4.2.patch"
+      "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
+      "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"
     }
   },
   "skuSkipPostInstall": true,

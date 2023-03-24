@@ -37,6 +37,7 @@
     "@types/babel-plugin-tester": "^9.0.5",
     "@types/babel__core": "^7.18.0",
     "@types/babel__traverse": "^7.18.0",
-    "@types/dedent": "^0.7.0"
+    "@types/dedent": "^0.7.0",
+    "yoga-layout-prebuilt": "^1.10.0"
   }
 }
