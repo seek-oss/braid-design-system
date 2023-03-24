@@ -87,7 +87,7 @@ export function babelRecast({
       // @ts-expect-error
       warnings: metadata?.warnings ?? [],
       // @ts-expect-error
-      hasChanged: metadata && metadata.hasChanged ? metadata.hasChanged : false,
+      hasChanged: metadata?.hasChanged ?? false,
       // @ts-expect-error
       source: print(transformedAST).code,
     };
