@@ -3,6 +3,7 @@ import { types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 import { renderRecursiveDepthWarning } from '../warning-renderer/warning';
 import { deArray } from './helpers';
+import { isBraidImport } from './isBraidImport';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;
@@ -124,7 +125,7 @@ export default function (): PluginObj<Context> {
           for (const statement of bodyPath) {
             if (
               t.isImportDeclaration(statement.node) &&
-              /braid-design-system(?:\/css)?$/.test(statement.node.source.value)
+              isBraidImport(statement.node.source.value)
             ) {
               for (const specifier of statement.node.specifiers) {
                 if (

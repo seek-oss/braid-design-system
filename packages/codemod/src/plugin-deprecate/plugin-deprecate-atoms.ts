@@ -1,3 +1,4 @@
+import { isBraidImport } from './isBraidImport';
 import type { PluginObj, PluginPass } from '@babel/core';
 import { types as t } from '@babel/core';
 import type { DeprecationMap } from './subVisitor';
@@ -34,7 +35,7 @@ export default function (): PluginObj<Context> {
           for (const statement of bodyPath) {
             if (
               t.isImportDeclaration(statement.node) &&
-              /braid-design-system(?:\/css)?$/.test(statement.node.source.value)
+              isBraidImport(statement.node.source.value)
             ) {
               for (const specifier of statement.node.specifiers) {
                 if (

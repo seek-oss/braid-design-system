@@ -78,12 +78,13 @@
     "typescript": "^4.5.0"
   },
   "volta": {
-    "node": "18.13.0"
+    "node": "18.15.0"
   },
-  "packageManager": "pnpm@7.8.0",
+  "packageManager": "pnpm@7.30.0",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom@9.4.2": "patches/panzoom@9.4.2.patch"
+      "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
+      "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"
     }
   },
   "skuSkipPostInstall": true,

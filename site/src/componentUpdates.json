@@ -3050,5 +3050,9 @@
         "summary": "**Button, ButtonLink, TextLink, TextLinkButton:** Add support for trailing icons\n\nProvide support for choosing the position of the `icon` slot within a `Button` or `TextLink`.\n\nBy default, the `iconPosition` will be `leading` the label, but optionally, can be set to `trailing`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Button\n  icon={<IconArrow direction=\"right\" />}\n  iconPosition=\"trailing\"\n>\n  Next\n</Button>\n```"
       }
     ]
+  },
+  {
+    "version": "32.1.1",
+    "updates": []
   }
 ]
