@@ -29,5 +29,5 @@ Migration can largely be automated by running the Braid upgrade command:
 
 **MIGRATION GUIDE:**
 ```bash
-yarn braid-upgrade v32-2 "**/*.{ts,tsx}"
+yarn braid-upgrade v32.2 "**/*.{ts,tsx}"
 ```

@@ -28,6 +28,7 @@ const pluginsForVersion = {
   [`v32.2`]: [
     [propsPlugin, { deprecations: v32_2 }],
     [atomsPlugin, { deprecations: v32_2 }],
+    [varsPlugin, { deprecations: v32_2 }],
   ],
 };
 

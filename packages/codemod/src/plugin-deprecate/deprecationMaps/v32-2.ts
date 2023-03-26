@@ -9,4 +9,9 @@ export const v32_2 = {
       medium: 'strong',
     },
   },
+  vars: {
+    textWeight: {
+      strong: 'medium',
+    },
+  },
 } as const;
