@@ -140,7 +140,7 @@ export const Field = ({
         visible={tone === 'critical' && !disabled}
       />
       <FieldOverlay variant="focus" className={styles.focusOverlay} />
-      <FieldOverlay variant="hover" className={styles.hoverOverlay} />
+      <FieldOverlay variant="formAccent" className={styles.hoverOverlay} />
     </Fragment>
   );
 
