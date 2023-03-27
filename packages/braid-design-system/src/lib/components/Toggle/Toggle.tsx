@@ -126,7 +126,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             <FieldOverlay
               variant="formAccent"
               borderRadius="full"
-              className={styles.hoverOverlay}
+              className={!on ? styles.hoverOverlay : undefined}
             />
           </Box>
         </Box>
