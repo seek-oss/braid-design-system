@@ -89,7 +89,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
           }
           paddingX="xsmall"
-          borderRadius="large"
+          borderRadius="standard"
           overflow="hidden"
         >
           <Text

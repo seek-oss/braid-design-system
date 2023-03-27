@@ -199,7 +199,6 @@ function GroupHeading({ children }: GroupHeadingProps) {
   return (
     <Box
       paddingX="small"
-      borderRadius="standard"
       className={[
         styles.groupHeading,
         touchableText.xsmall,

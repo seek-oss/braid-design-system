@@ -220,7 +220,7 @@ const ButtonLoader = () => (
 );
 
 const transparentPaddingX = 'small';
-const buttonRadius = 'large';
+const buttonRadius = 'standard';
 
 export const ButtonOverlays = ({
   variant = 'solid',

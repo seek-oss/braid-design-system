@@ -503,10 +503,11 @@ exports[`Box 1`] = `
         | "full"
         | "large"
         | "none"
+        | "small"
         | "standard"
         | "xlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "large" | "xlarge" | "standard" | "none" | "full" | null>
-        | { mobile?: "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "large" | "xlarge" | "standard" | "none" | "full" | undefined; wide?: "large" | ... 4 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "small" | "large" | "xlarge" | "standard" | "none" | "full" | null>
+        | { mobile?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "small" | ... 5 more ... | undefined; wide?: "small" | ... 5 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
@@ -1450,10 +1451,11 @@ exports[`BoxRenderer 1`] = `
         | "full"
         | "large"
         | "none"
+        | "small"
         | "standard"
         | "xlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "large" | "xlarge" | "standard" | "none" | "full" | null>
-        | { mobile?: "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "large" | "xlarge" | "standard" | "none" | "full" | undefined; wide?: "large" | ... 4 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "small" | "large" | "xlarge" | "standard" | "none" | "full" | null>
+        | { mobile?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "small" | ... 5 more ... | undefined; wide?: "small" | ... 5 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
         | "borderBrandAccentLarge"
