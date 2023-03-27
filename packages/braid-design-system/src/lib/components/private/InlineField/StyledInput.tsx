@@ -146,6 +146,7 @@ export const StyledInput = forwardRef<
     const fieldBackground: BoxProps['background'] = disabled
       ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
       : { lightMode: 'surface' };
+    const defaultBorder = checked ? 'formAccent' : 'default';
 
     useEffect(() => {
       if (ref && typeof ref === 'object' && ref.current && isCheckbox) {
@@ -206,7 +207,7 @@ export const StyledInput = forwardRef<
           borderRadius={fieldBorderRadius}
         >
           <FieldOverlay
-            variant={disabled ? 'disabled' : 'default'}
+            variant={disabled ? 'disabled' : defaultBorder}
             borderRadius={fieldBorderRadius}
             visible={tone !== 'critical' || disabled}
           />
@@ -230,7 +231,7 @@ export const StyledInput = forwardRef<
             className={styles.focusOverlay}
           />
           <FieldOverlay
-            variant="hover"
+            variant="formAccent"
             borderRadius={fieldBorderRadius}
             className={styles.hoverOverlay}
           >
