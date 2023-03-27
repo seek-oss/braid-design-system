@@ -29,7 +29,7 @@ type ResponsiveCardRounding = {
   roundedAbove?: ResponsiveRangeProps['above'];
 };
 
-const borderRadius = 'xlarge';
+const borderRadius = 'large';
 
 export type CardProps = {
   children: ReactNode;

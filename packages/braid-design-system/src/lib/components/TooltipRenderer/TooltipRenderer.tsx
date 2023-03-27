@@ -40,7 +40,7 @@ export const TooltipTextDefaultsProvider = ({
   );
 };
 
-const borderRadius = 'xlarge';
+const borderRadius = 'large';
 
 export type ArrowProps = ReturnType<
   ReturnType<typeof usePopperTooltip>['getArrowProps']

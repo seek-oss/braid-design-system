@@ -9,7 +9,7 @@ export interface HighlightProps {
 export const Highlight = ({ children }: HighlightProps) => (
   <Box
     component="mark"
-    borderRadius="standard"
+    borderRadius="small"
     background={{ lightMode: 'criticalLight', darkMode: 'critical' }}
     className={styles.root}
   >

@@ -34,7 +34,7 @@ export const padding = style({
   padding: calc.add(vars.space.small, vars.grid),
 });
 
-const borderRadius = vars.borderRadius.standard;
+const borderRadius = vars.borderRadius.small;
 const offset = calc(constants.arrowSize).divide(2).negate().toString();
 export const arrow = style({
   visibility: 'hidden',

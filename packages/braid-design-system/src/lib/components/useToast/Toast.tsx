@@ -24,7 +24,7 @@ const toneToIcon = {
 
 export const toastDuration = 10000;
 
-const borderRadius = 'xlarge';
+const borderRadius = 'large';
 
 interface ActionProps extends ToastAction {
   removeToast: () => void;

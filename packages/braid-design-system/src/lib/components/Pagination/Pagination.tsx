@@ -30,7 +30,7 @@ export interface PaginationProps {
   data?: DataAttributeMap;
 }
 
-const borderRadius = 'large';
+const borderRadius = 'standard';
 
 const PageNav = ({
   label,
