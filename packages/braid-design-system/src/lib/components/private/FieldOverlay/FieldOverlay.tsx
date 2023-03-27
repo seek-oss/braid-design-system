@@ -6,7 +6,7 @@ type FieldOverlayVariant =
   | 'default'
   | 'disabled'
   | 'focus'
-  | 'hover'
+  | 'formAccent'
   | 'critical';
 export interface FieldOverlayProps
   extends Pick<
@@ -28,7 +28,7 @@ const boxShadowForVariant: Record<
   default: 'borderField',
   disabled: 'borderNeutralLight',
   focus: 'outlineFocus',
-  hover: 'borderFormAccent',
+  formAccent: 'borderFormAccent',
   critical: 'borderCritical',
 };
 

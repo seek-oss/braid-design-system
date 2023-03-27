@@ -107,7 +107,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           <Box
             position="absolute"
             background="surface"
-            boxShadow="borderField"
+            boxShadow={on ? 'borderFormAccent' : 'borderField'}
             transition="fast"
             display="flex"
             alignItems="center"
@@ -124,7 +124,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
               className={styles.focusOverlay}
             />
             <FieldOverlay
-              variant="hover"
+              variant="formAccent"
               borderRadius="full"
               className={styles.hoverOverlay}
             />
