@@ -1,3 +1,4 @@
+import courierNewMetrics from '@capsizecss/metrics/courierNew';
 import { darken, lighten, tint } from 'polished';
 import {
   findClosestAccessibleLighterColor,
@@ -6,6 +7,7 @@ import {
   isLight,
 } from '../../utils';
 import type { BraidTokens } from '../tokenType';
+import { extractFontMetricsForTheme } from '../tokenType';
 
 const formAccent = '#767676';
 const critical = '#ef3e4a';
@@ -49,15 +51,9 @@ const tokens: BraidTokens = {
   name: 'wireframe',
   displayName: 'Wireframe',
   typography: {
-    fontFamily: 'Courier, monospace',
+    fontFamily: '"Courier New", monospace',
     webFont: null,
-    fontMetrics: {
-      capHeight: 1186, // 1544 from fontkit, but should be 1186 according to fontforge
-      ascent: 1638, // 1544 from fontkit, but should be 1638 according to general metrics table
-      descent: -410, // -504 from fontkit, but should be -410 according to general metrics table
-      lineGap: 184, // 0 from fontkit, but should be 184 according to os/2 metrics table
-      unitsPerEm: 2048,
-    },
+    fontMetrics: extractFontMetricsForTheme(courierNewMetrics),
     fontWeight: {
       regular: 400,
       medium: 500,

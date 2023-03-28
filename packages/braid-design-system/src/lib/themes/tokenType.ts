@@ -1,6 +1,24 @@
 import type { FontMetrics } from '@capsizecss/core';
 import type { Breakpoint } from '../css/breakpoints';
 
+type FontMetricsForTheme = Pick<
+  FontMetrics,
+  'capHeight' | 'ascent' | 'descent' | 'lineGap' | 'unitsPerEm'
+>;
+export const extractFontMetricsForTheme = ({
+  capHeight,
+  ascent,
+  descent,
+  lineGap,
+  unitsPerEm,
+}: FontMetrics): FontMetricsForTheme => ({
+  capHeight,
+  ascent,
+  descent,
+  lineGap,
+  unitsPerEm,
+});
+
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop' | 'wide'>;
 
 type FontSizeText = {
@@ -17,10 +35,7 @@ export interface BraidTokens {
   typography: {
     fontFamily: string;
     webFont: string | null;
-    fontMetrics: Pick<
-      FontMetrics,
-      'capHeight' | 'ascent' | 'descent' | 'lineGap' | 'unitsPerEm'
-    >;
+    fontMetrics: FontMetricsForTheme;
     fontWeight: Record<FontWeight, 400 | 500 | 600 | 700 | 800>;
     heading: {
       weight: {
