@@ -17,6 +17,6 @@ export function textStyles({
     styles.fontFamily,
     styles.fontWeight[weight],
     styles.tone[tone],
-    styles[baseline ? 'textSizeTrimmed' : 'textSizeUntrimmed'][size],
+    (baseline ? styles.textSizeTrimmed : styles.textSizeUntrimmed)[size],
   ];
 }
