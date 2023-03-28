@@ -1,20 +1,14 @@
 import mapValues from 'lodash/mapValues';
-import values from 'lodash/values';
 
 import { isLight } from '../utils';
 import type { BraidTokens } from './tokenType';
 
-const makeWebFonts = ({ webFont, fontWeight }: BraidTokens['typography']) => {
+const makeWebFonts = (webFont: BraidTokens['typography']['webFont']) => {
   if (!webFont) {
     return [];
   }
 
-  const weights = values(fontWeight);
-  const linkTag = `<link href="https://fonts.googleapis.com/css?family=${encodeURIComponent(
-    `${webFont}:${weights.sort().join(',')}`,
-  )}" rel="stylesheet" />`;
-
-  return [{ linkTag }];
+  return [{ linkTag: `<link href="${webFont}" rel="stylesheet" />` }];
 };
 
 export const makeRuntimeTokens = (tokens: BraidTokens) => ({
@@ -24,7 +18,7 @@ export const makeRuntimeTokens = (tokens: BraidTokens) => ({
     lightMode: tokens.color.background.body,
     darkMode: tokens.color.background.bodyDark,
   },
-  webFonts: makeWebFonts(tokens.typography),
+  webFonts: makeWebFonts(tokens.typography.webFont),
   space: {
     grid: tokens.grid,
     space: tokens.space,
