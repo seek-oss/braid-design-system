@@ -1,6 +1,8 @@
+import appleSystemMetrics from '@capsizecss/metrics/appleSystem';
 import { darken, lighten, rgba } from 'polished';
 import { palette } from '../../color/palette';
 import type { BraidTokens } from '../tokenType';
+import { extractFontMetricsForTheme } from '../tokenType';
 
 const brandAccent = palette.grey['900'];
 const formAccent = palette.indigo['600'];
@@ -18,13 +20,7 @@ const tokens: BraidTokens = {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     webFont: null,
-    fontMetrics: {
-      capHeight: 1443,
-      ascent: 1950,
-      descent: -494,
-      lineGap: 0,
-      unitsPerEm: 2048,
-    },
+    fontMetrics: extractFontMetricsForTheme(appleSystemMetrics),
     fontWeight: {
       regular: 400,
       medium: 500,

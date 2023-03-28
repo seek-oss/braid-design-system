@@ -1,8 +1,10 @@
+import robotoMetrics from '@capsizecss/metrics/roboto';
 import type { DeepPartial } from 'utility-types';
 import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash/merge';
 import { palette } from '../../color/palette';
 import type { BraidTokens } from '../tokenType';
+import { extractFontMetricsForTheme } from '../tokenType';
 
 interface MakeTokensOptions {
   name: string;
@@ -42,13 +44,7 @@ export const makeTokens = ({
       fontFamily:
         'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
       webFont: null,
-      fontMetrics: {
-        capHeight: 1456,
-        ascent: 1900,
-        descent: -500,
-        lineGap: 0,
-        unitsPerEm: 2048,
-      },
+      fontMetrics: extractFontMetricsForTheme(robotoMetrics),
       fontWeight: {
         regular: 400,
         medium: 500,

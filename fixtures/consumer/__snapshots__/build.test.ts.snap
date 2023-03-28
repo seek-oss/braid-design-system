@@ -24,6 +24,8 @@ exports[`build side-effects from dist 1`] = `
   "dist/side-effects/lib/themes/makeRuntimeTokens.mjs",
   "dist/side-effects/lib/themes/seekBusiness/index.cjs",
   "dist/side-effects/lib/themes/seekBusiness/index.mjs",
+  "dist/side-effects/lib/themes/tokenType.cjs",
+  "dist/side-effects/lib/themes/tokenType.mjs",
   "dist/side-effects/lib/themes/wireframe/index.cjs",
   "dist/side-effects/lib/themes/wireframe/index.mjs",
   "dist/styles/lib/css/atoms/atomicProperties.cjs",
