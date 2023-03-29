@@ -3,10 +3,9 @@ import assert from 'assert';
 import type { BoxProps } from '../Box/Box';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
-import * as styles from './Badge.css';
+import { Bleed } from '../Bleed/Bleed';
 
 const validTones = [
   'promote',
@@ -39,6 +38,8 @@ const lightModeBackgroundForTone = {
   caution: 'cautionLight',
 } as const;
 
+const verticalPadding = 'xxsmall';
+
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {
@@ -67,15 +68,11 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       'Badge may only contain strings or numbers',
     );
 
-    return (
+    const content = (
       <Box
         component="span"
         display="flex"
         cursor="default"
-        className={[
-          lineHeightContainer[styles.constants.textSize],
-          bleedY ? styles.bleedY : null,
-        ]}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <Box
@@ -88,20 +85,24 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
           background={
             weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
           }
+          paddingY={verticalPadding}
           paddingX="xsmall"
           borderRadius="standard"
           overflow="hidden"
         >
-          <Text
-            size={styles.constants.textSize}
-            weight="medium"
-            truncate
-            baseline={false}
-          >
+          <Text size="xsmall" weight="medium" truncate>
             {children}
           </Text>
         </Box>
       </Box>
+    );
+
+    return bleedY ? (
+      <Bleed component="span" vertical={verticalPadding}>
+        {content}
+      </Bleed>
+    ) : (
+      content
     );
   },
 );
