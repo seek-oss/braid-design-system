@@ -2,7 +2,7 @@
 'braid-design-system': patch
 ---
 
-Fix error reading \`standard\` of undefined
+Fix error reading `standard` of undefined
 
 The use of dynamic property access left some styles exposed to being marked as unused and tree shaken away.
 
