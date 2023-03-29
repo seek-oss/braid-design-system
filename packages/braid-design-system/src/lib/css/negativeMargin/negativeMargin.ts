@@ -11,11 +11,6 @@ const directionStyles = {
   left: styles.left,
 };
 
-const preventCollapsePseudoStyles = {
-  top: styles.preventCollapsePseudo.top,
-  bottom: styles.preventCollapsePseudo.bottom,
-};
-
 export const negativeMargin = (
   direction: Exclude<keyof typeof styles, 'preventCollapsePseudo'>,
   space?: RequiredResponsiveValue<Space>,
@@ -23,7 +18,7 @@ export const negativeMargin = (
   space
     ? clsx([
         direction === 'top' || direction === 'bottom'
-          ? preventCollapsePseudoStyles[direction]
+          ? styles.preventCollapsePseudo[direction]
           : undefined,
         resolveResponsiveProp(
           space,
