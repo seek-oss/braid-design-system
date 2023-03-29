@@ -4,6 +4,13 @@ import type { RequiredResponsiveValue } from '../atoms/sprinkles.css';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './negativeMargin.css';
 
+const directionStyles = {
+  top: styles.top,
+  right: styles.right,
+  bottom: styles.bottom,
+  left: styles.left,
+};
+
 export const negativeMargin = (
   direction: Exclude<keyof typeof styles, 'preventCollapsePseudo'>,
   space?: RequiredResponsiveValue<Space>,
@@ -15,10 +22,10 @@ export const negativeMargin = (
           : undefined,
         resolveResponsiveProp(
           space,
-          styles[direction].mobile,
-          styles[direction].tablet,
-          styles[direction].desktop,
-          styles[direction].wide,
+          directionStyles[direction].mobile,
+          directionStyles[direction].tablet,
+          directionStyles[direction].desktop,
+          directionStyles[direction].wide,
         ),
       ])
     : null;
