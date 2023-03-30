@@ -2,7 +2,6 @@ import assert from 'assert';
 import dedent from 'dedent';
 import type { ReactNode, AllHTMLAttributes, ReactElement } from 'react';
 import React, { useContext, forwardRef } from 'react';
-import { touchableText } from '../../css/typography.css';
 import type { BoxBackgroundVariant, BoxProps } from '../Box/Box';
 import { Box } from '../Box/Box';
 import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
@@ -306,11 +305,8 @@ export const ButtonText = ({
   iconPosition = 'leading',
   variant = 'solid',
   tone,
-  labelSpacing = true,
   bleed,
-}: ButtonProps & {
-  labelSpacing?: boolean;
-}) => {
+}: ButtonProps) => {
   const lightness = useBackgroundLightness();
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
@@ -332,15 +328,8 @@ export const ButtonText = ({
       flexWrap="wrap"
       overflow="hidden"
       pointerEvents="none"
-      paddingX={labelSpacing ? labelPaddingX : undefined}
-      paddingY={
-        labelSpacing && size === 'small'
-          ? styles.constants.smallButtonPaddingSize
-          : undefined
-      }
-      className={
-        labelSpacing && size === 'standard' ? touchableText.standard : undefined
-      }
+      paddingX={labelPaddingX}
+      className={styles.padToMinHeight}
       background={
         tone === 'neutral' && variant !== 'solid'
           ? {
@@ -355,8 +344,8 @@ export const ButtonText = ({
       <Text
         tone={stylesForVariant.textTone}
         weight="medium"
+        align="center"
         size={size}
-        baseline={false}
       >
         {icon && iconPosition === 'leading' ? (
           <AvoidWidowIcon
