@@ -1,13 +1,14 @@
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import {
+  createVar,
+  keyframes,
+  style,
+  styleVariants,
+} from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { rgba } from 'polished';
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
-
-export const constants = {
-  smallButtonPaddingSize: 'xsmall' as const,
-};
 
 export const root = style({
   textDecoration: 'none',
@@ -39,45 +40,45 @@ export const focusOverlay = style({
   },
 });
 
-export const standard = style({});
-export const small = style({});
-
-type TextBreakpoint = keyof typeof vars.textSize.small;
-const stylesForBreakpoint = (
-  breakpoint: TextBreakpoint,
-  size: 'standard' | 'small',
-) => {
-  const height =
-    size === 'small'
-      ? calc.add(
-          calc.multiply(vars.space[constants.smallButtonPaddingSize], 2),
-          vars.textSize.small[breakpoint].lineHeight,
-        )
-      : vars.touchableSize;
-
-  const value = calc(height)
-    .subtract(vars.textSize[size][breakpoint].capHeight)
-    .divide(2)
-    .negate()
-    .toString();
-
-  return {
-    marginTop: value,
-    marginBottom: value,
-  };
+const minHeightValueForSize = {
+  standard: vars.touchableSize,
+  small: calc.multiply(vars.touchableSize, 0.8),
 };
+const capHeightToMinHeight = createVar();
+const paddingVarForBreakpoint = (
+  size: keyof typeof minHeightValueForSize,
+  breakpoint: keyof typeof vars.textSize.small,
+) => ({
+  vars: {
+    [capHeightToMinHeight]: calc(minHeightValueForSize[size])
+      .subtract(vars.textSize[size][breakpoint].capHeight)
+      .divide(2)
+      .toString(),
+  },
+});
+
+export const standard = style(
+  responsiveStyle({
+    mobile: paddingVarForBreakpoint('standard', 'mobile'),
+    tablet: paddingVarForBreakpoint('standard', 'tablet'),
+  }),
+);
+
+export const small = style(
+  responsiveStyle({
+    mobile: paddingVarForBreakpoint('small', 'mobile'),
+    tablet: paddingVarForBreakpoint('small', 'tablet'),
+  }),
+);
 
 export const bleedVerticallyToCapHeight = style({
-  selectors: {
-    [`${standard}&`]: responsiveStyle({
-      mobile: stylesForBreakpoint('mobile', 'standard'),
-      tablet: stylesForBreakpoint('tablet', 'standard'),
-    }),
-    [`${small}&`]: responsiveStyle({
-      mobile: stylesForBreakpoint('mobile', 'small'),
-      tablet: stylesForBreakpoint('tablet', 'small'),
-    }),
-  },
+  marginTop: calc(capHeightToMinHeight).negate().toString(),
+  marginBottom: calc(capHeightToMinHeight).negate().toString(),
+});
+
+export const padToMinHeight = style({
+  paddingTop: capHeightToMinHeight,
+  paddingBottom: capHeightToMinHeight,
 });
 
 const dot1 = keyframes({
