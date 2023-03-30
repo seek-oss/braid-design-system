@@ -20,9 +20,9 @@ updated:
   - vars
 ---
 
-Add `xxxsmall` and `xxxlarge` to the space scale
+Add `xxxlarge` to the space scale
 
-Extends the range of the space scale in both directions to include `xxxsmall` and `xxxlarge`.
+Extends the range of the space scale to include `xxxlarge`.
 This addition is to support an upcoming design uplift that requires greater fidelity in the scale.
 Note, the new values are also available as responsive properties.
 
@@ -37,7 +37,7 @@ Note, the new values are also available as responsive properties.
 ```ts
 import { atoms } from 'braid-design-system/css';
 
-atoms({ padding: 'xxxsmall' })
+atoms({ paddingY: 'xxxlarge' })
 ```
 
 ```ts

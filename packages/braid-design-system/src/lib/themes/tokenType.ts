@@ -66,7 +66,6 @@ export interface BraidTokens {
   touchableSize: number;
   space: {
     gutter: number;
-    xxxsmall: number;
     xxsmall: number;
     xsmall: number;
     small: number;

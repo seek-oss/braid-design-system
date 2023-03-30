@@ -151,7 +151,6 @@ export const makeTokens = ({
     touchableSize: 11,
     space: {
       gutter: 6,
-      xxxsmall: 0.5,
       xxsmall: 1,
       xsmall: 2,
       small: 3,
