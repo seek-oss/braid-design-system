@@ -160,6 +160,7 @@ const tokens: BraidTokens = {
   touchableSize: 12,
   space: {
     gutter: 6,
+    xxxsmall: 0.5,
     xxsmall: 1,
     xsmall: 2,
     small: 3,
@@ -167,6 +168,7 @@ const tokens: BraidTokens = {
     large: 8,
     xlarge: 12,
     xxlarge: 24,
+    xxxlarge: 30,
   },
   transforms: {
     touchable: 'scale(0.97)',
