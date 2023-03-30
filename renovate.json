@@ -3,7 +3,7 @@
   "commitMessagePrefix": null,
   "packageRules": [
     {
-      "packageNames": ["playroom", "@capsizecss/*"],
+      "packageNames": ["playroom", "@capsizecss/*", "@crackle/*"],
       "enabled": true
     },
     {
