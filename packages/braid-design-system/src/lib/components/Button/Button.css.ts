@@ -72,8 +72,8 @@ export const small = style(
 );
 
 export const bleedVerticallyToCapHeight = style({
-  marginTop: calc(capHeightToMinHeight).negate().toString(),
-  marginBottom: calc(capHeightToMinHeight).negate().toString(),
+  marginTop: calc.negate(capHeightToMinHeight),
+  marginBottom: calc.negate(capHeightToMinHeight),
 });
 
 export const padToMinHeight = style({
