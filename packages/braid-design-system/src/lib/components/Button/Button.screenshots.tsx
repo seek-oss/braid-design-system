@@ -1,10 +1,21 @@
 import React, { Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Button, IconSend, Stack, Inline, Heading, Text, IconArrow } from '../';
+import {
+  Button,
+  IconSend,
+  Stack,
+  Inline,
+  Heading,
+  Text,
+  IconArrow,
+  IconWorkExperience,
+} from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../Box/Box';
 import { backgrounds } from '../../utils/docsHelpers';
+
+import type { ButtonProps } from './Button';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],
@@ -371,6 +382,68 @@ export const screenshots: ComponentScreenshot = {
             </Box>
           ))}
         </Fragment>
+      ),
+    },
+    {
+      label: 'Long label',
+      Example: () => (
+        <Stack space="xsmall">
+          <Text>Long label</Text>
+          <Inline space="small">
+            {['standard', 'small'].map((s) => (
+              <Box style={{ maxWidth: 120 }} key={s}>
+                <Button size={s as ButtonProps['size']}>
+                  Long label test ({s})
+                </Button>
+              </Box>
+            ))}
+          </Inline>
+
+          <Text>Long label with icon</Text>
+          <Inline space="small">
+            {['standard', 'small'].map((s) => (
+              <Box style={{ maxWidth: 120 }} key={s}>
+                <Button
+                  icon={<IconWorkExperience />}
+                  size={s as ButtonProps['size']}
+                >
+                  long label test ({s})
+                </Button>
+              </Box>
+            ))}
+          </Inline>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Unbroken label',
+      Example: () => (
+        <Stack space="xsmall">
+          <Text>Unbroken label</Text>
+          <Inline space="small">
+            {['standard', 'small'].map((s) => (
+              <Box style={{ maxWidth: 120 }} key={s}>
+                <Button size={s as ButtonProps['size']}>
+                  unbrokenlabeltest{s}
+                </Button>
+              </Box>
+            ))}
+          </Inline>
+
+          <Text>Unbroken label with icon</Text>
+          <Inline space="small">
+            {['standard', 'small'].map((s) => (
+              <Box style={{ maxWidth: 120 }} key={s}>
+                <Button
+                  icon={<IconWorkExperience />}
+                  size={s as ButtonProps['size']}
+                >
+                  unbrokenlabeltest{s}
+                </Button>
+              </Box>
+            ))}
+          </Inline>
+        </Stack>
       ),
     },
   ],
