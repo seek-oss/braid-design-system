@@ -68,3 +68,7 @@ export const noRadiusOnRight = style({
 export const largestWidth = style({
   width: vars.borderRadius.xlarge,
 });
+
+export const width = style({
+  width: vars.grid,
+});
