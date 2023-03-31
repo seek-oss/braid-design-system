@@ -158,6 +158,7 @@ export const makeTokens = ({
       large: 8,
       xlarge: 12,
       xxlarge: 24,
+      xxxlarge: 30,
     },
     transforms: {
       touchable: 'scale(0.95)',

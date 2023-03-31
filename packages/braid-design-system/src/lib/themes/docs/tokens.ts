@@ -134,6 +134,7 @@ const tokens: BraidTokens = {
     large: 8,
     xlarge: 11,
     xxlarge: 15,
+    xxxlarge: 20,
   },
   transforms: {
     touchable: 'scale(0.97)',

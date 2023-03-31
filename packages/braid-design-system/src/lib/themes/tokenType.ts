@@ -73,6 +73,7 @@ export interface BraidTokens {
     large: number;
     xlarge: number;
     xxlarge: number;
+    xxxlarge: number;
   };
   transforms: {
     touchable: string;
