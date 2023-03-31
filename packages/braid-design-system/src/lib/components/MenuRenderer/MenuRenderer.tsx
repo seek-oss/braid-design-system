@@ -370,6 +370,7 @@ export function Menu({
         transition="fast"
         right={align === 'right' ? 0 : undefined}
         opacity={!open ? 0 : undefined}
+        overflow="hidden"
         className={[
           !open && styles.menuIsClosed,
           width !== 'content' && styles.width[width],
