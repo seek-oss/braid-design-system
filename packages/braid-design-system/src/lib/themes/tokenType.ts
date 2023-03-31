@@ -21,10 +21,15 @@ export const extractFontMetricsForTheme = ({
 
 export type TextBreakpoint = Exclude<Breakpoint, 'desktop' | 'wide'>;
 
-type FontSizeText = {
-  fontSize: number;
-  rows: number;
-};
+type FontSizeText =
+  | {
+      fontSize: number;
+      rows: number;
+    }
+  | {
+      fontSize: number;
+      lineGap: number;
+    };
 
 export type TextDefinition = Record<TextBreakpoint, FontSizeText>;
 type FontWeight = 'regular' | 'medium' | 'strong';

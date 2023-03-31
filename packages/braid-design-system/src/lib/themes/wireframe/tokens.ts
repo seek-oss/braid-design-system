@@ -68,41 +68,41 @@ const tokens: BraidTokens = {
         '1': {
           mobile: {
             fontSize: 28,
-            rows: 9,
+            lineGap: 22,
           },
           tablet: {
             fontSize: 42,
-            rows: 11,
+            lineGap: 22,
           },
         },
         '2': {
           mobile: {
             fontSize: 21,
-            rows: 8,
+            lineGap: 20,
           },
           tablet: {
             fontSize: 28,
-            rows: 9,
+            lineGap: 20,
           },
         },
         '3': {
           mobile: {
             fontSize: 21,
-            rows: 7,
+            lineGap: 18,
           },
           tablet: {
             fontSize: 21,
-            rows: 7,
+            lineGap: 18,
           },
         },
         '4': {
           mobile: {
             fontSize: 18,
-            rows: 7,
+            lineGap: 16,
           },
           tablet: {
             fontSize: 18,
-            rows: 7,
+            lineGap: 16,
           },
         },
       },
@@ -111,41 +111,41 @@ const tokens: BraidTokens = {
       xsmall: {
         mobile: {
           fontSize: 12,
-          rows: 5,
+          lineGap: 11,
         },
         tablet: {
           fontSize: 12,
-          rows: 5,
+          lineGap: 11,
         },
       },
       small: {
         mobile: {
           fontSize: 14,
-          rows: 5,
+          lineGap: 12,
         },
         tablet: {
           fontSize: 14,
-          rows: 5,
+          lineGap: 12,
         },
       },
       standard: {
         mobile: {
           fontSize: 16,
-          rows: 7,
+          lineGap: 14,
         },
         tablet: {
           fontSize: 16,
-          rows: 7,
+          lineGap: 14,
         },
       },
       large: {
         mobile: {
           fontSize: 18,
-          rows: 8,
+          lineGap: 16,
         },
         tablet: {
           fontSize: 18,
-          rows: 8,
+          lineGap: 16,
         },
       },
     },

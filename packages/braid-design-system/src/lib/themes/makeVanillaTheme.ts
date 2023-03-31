@@ -23,13 +23,33 @@ const fontSizeToCapHeight = (
     fontMetrics,
   });
 
+  const mobileConfig =
+    'lineGap' in mobile
+      ? {
+          fontSize: mobile.fontSize,
+          lineGap: mobile.lineGap,
+        }
+      : {
+          fontSize: mobile.fontSize,
+          leading: mobile.rows * grid,
+        };
+  const tabletConfig =
+    'lineGap' in tablet
+      ? {
+          fontSize: tablet.fontSize,
+          lineGap: tablet.lineGap,
+        }
+      : {
+          fontSize: tablet.fontSize,
+          leading: tablet.rows * grid,
+        };
+
   const {
     fontSize: mobileFontSize,
     lineHeight: mobileLineHeight,
     ...mobileTrims
   } = precomputeValues({
-    fontSize: mobile.fontSize,
-    leading: mobile.rows * grid,
+    ...mobileConfig,
     fontMetrics,
   });
 
@@ -38,8 +58,7 @@ const fontSizeToCapHeight = (
     lineHeight: tabletLineHeight,
     ...tabletTrims
   } = precomputeValues({
-    fontSize: tablet.fontSize,
-    leading: tablet.rows * grid,
+    ...tabletConfig,
     fontMetrics,
   });
 
@@ -67,9 +86,12 @@ export const makeVanillaTheme = (braidTokens: BraidTokens) => {
   const { name, displayName, ...tokens } = braidTokens;
   const { webFont, ...typography } = tokens.typography;
   const { foreground, background } = tokens.color;
+  const textSize = mapValues(tokens.typography.text, (definition) =>
+    fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
+  );
 
   const getInlineFieldSize = (size: 'standard' | 'small') => {
-    const scale = (typography.text[size].mobile.rows * tokens.grid) / 42;
+    const scale = parseInt(textSize[size].mobile.lineHeight, 10) / 42;
     return px(tokens.grid * Math.round(tokens.touchableSize * scale));
   };
 
@@ -86,9 +108,7 @@ export const makeVanillaTheme = (braidTokens: BraidTokens) => {
     backgroundColor: background,
     fontFamily: typography.fontFamily,
     fontMetrics: mapValues(typography.fontMetrics, String),
-    textSize: mapValues(tokens.typography.text, (definition) =>
-      fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
-    ),
+    textSize,
     textWeight: mapValues(typography.fontWeight, String),
     headingLevel: mapValues(tokens.typography.heading.level, (definition) =>
       fontSizeToCapHeight(tokens.grid, definition, typography.fontMetrics),
