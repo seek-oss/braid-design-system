@@ -1,5 +1,130 @@
 # braid-design-system
 
+## 32.2.0
+
+### Minor Changes
+
+- **Box, atoms, vars:** Add `small` to border radius scale ([#1253](https://github.com/seek-oss/braid-design-system/pull/1253))
+
+  Extends the border radius scale to include `small` as a step below `standard`.
+  This addition is to support an upcoming design uplift that requires greater fidelity in the scale.
+  Note, the new value is also available as a responsive property.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box borderRadius="small" />;
+
+  {
+    /* Or responsively: */
+  }
+  <Box borderRadius={{ mobile: 'small', tablet: 'standard' }} />;
+  ```
+
+  ```ts
+  import { atoms } from 'braid-design-system/css';
+
+  atoms({ borderRadius: 'small' });
+  ```
+
+  ```ts
+  import { vars } from 'braid-design-system/css';
+
+  const radius = vars.borderRadius.small;
+  ```
+
+- **theme:** Add support for defining line heights with lineGap ([#1267](https://github.com/seek-oss/braid-design-system/pull/1267))
+
+  Provide support for themes to define their typographic line heights via `lineGap`.
+  This allows us to reason about the white space between wrapping lines of text in the same way we think about `Stack` spacing.
+
+  For a visual preview of this mental model head over to the [Capsize website].
+
+  [Capsize website]: https://seek-oss.github.io/capsize/
+
+- Add `xxxlarge` to the space scale ([#1262](https://github.com/seek-oss/braid-design-system/pull/1262))
+
+  Extends the range of the space scale to include `xxxlarge`.
+  This addition is to support an upcoming design uplift that requires greater fidelity in the scale.
+  Note, the new value is also available as a responsive property.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Stack space="xxxlarge">...</Stack>;
+
+  {
+    /* Or responsively: */
+  }
+  <Stack space={{ mobile: 'large', tablet: 'xxxlarge' }}>...</Stack>;
+  ```
+
+  ```ts
+  import { atoms } from 'braid-design-system/css';
+
+  atoms({ paddingY: 'xxxlarge' });
+  ```
+
+  ```ts
+  import { vars } from 'braid-design-system/css';
+
+  const space = vars.space.xxxlarge;
+  ```
+
+### Patch Changes
+
+- **theme:** Add support for webfonts beyond Google Fonts ([#1255](https://github.com/seek-oss/braid-design-system/pull/1255))
+
+  Previously the `webFont` on the theme was the `familyName` and was being used to construct a link tag to a Google Fonts stylesheet and provide to consumers via a runtime token.
+  To enable fonts beyond Google Fonts, we are changing `webFont` to be a URL.
+
+  This does not impact existing themes (as there are no themes currently with a web font), and the contract of the runtime token (a constructed link tag) remains unchanged.
+
+- **MenuRenderer:** Hide overflow on menu ([#1264](https://github.com/seek-oss/braid-design-system/pull/1264))
+
+  Fixes a bug where the selection/highlight for a `MenuItem` could extend outside of the menu itself.
+
+- **Badge:** Adjust height to support different typographic scales ([#1257](https://github.com/seek-oss/braid-design-system/pull/1257))
+
+  Adjusts the height of `Badge` to be driven by the capHeight of `xsmall` text plus vertical padding, rather than `xsmall` line height.
+  This enables different typographic scales across themes, while ensuring the `Badge` height is relative.
+
+- **RadioItem, Toggle:** Use formAccent border when selected ([#1251](https://github.com/seek-oss/braid-design-system/pull/1251))
+
+  Switch to using the `formAccent` border colour, rather than the `field` border color, when in the selected state (e.g. `checked` for `RadioItem`, `on` for `Toggle`).
+
+- Fix error reading `standard` of undefined ([#1256](https://github.com/seek-oss/braid-design-system/pull/1256))
+
+  The use of dynamic property access left some styles exposed to being marked as unused and tree shaken away.
+
+  Refactoring these styles to be explicitly referenced to ensure this will not be the case.
+
+- **TooltipRenderer:** Refine padding to complement radius scale ([#1263](https://github.com/seek-oss/braid-design-system/pull/1263))
+
+  Removes the custom padding on tooltips in favour of using the space scale.
+  Previously, a custom value was used to complement the over sized radius which has now be reduced.
+
+- **Button, ButtonLink:** Improve support for different typographic scales ([#1259](https://github.com/seek-oss/braid-design-system/pull/1259))
+
+  Ensure the height of a `small` sized `Button` is not reliant on the text line height.
+
+  This enables different typographic scales across themes, while ensuring the `Button` height is relative.
+
+- **Alert, Card, useToast:** Decouple keyline width from space scale ([#1266](https://github.com/seek-oss/braid-design-system/pull/1266))
+
+  Previously the keyline width on the left determined its width using the space scale.
+  Re-aligning this to use the grid unit to enable themes with larger space scales.
+
+- Improve consistency of border radius usage across components ([#1253](https://github.com/seek-oss/braid-design-system/pull/1253))
+
+  Over time, individual components have reached for a larger radius in the scale, rather than increasing the scale at a theme level. This resulted in inconsistent use across the system, preventing uplift of the scale.
+
+  Re-aligning all components to use the scale consistently enables themes to apply very different radius scales — enabling an upcoming design uplift theme.
+
+- **Dialog, Drawer:** Reduce space between title and description ([#1265](https://github.com/seek-oss/braid-design-system/pull/1265))
+
+  Reducing the space between `title` and `description` to `small` to improve association of the header block content
+
 ## 32.1.1
 
 ### Patch Changes
