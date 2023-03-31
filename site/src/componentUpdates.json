@@ -3054,5 +3054,111 @@
   {
     "version": "32.1.1",
     "updates": []
+  },
+  {
+    "version": "32.2.0",
+    "updates": [
+      {
+        "updated": [
+          "Box",
+          "BoxRenderer",
+          "atoms",
+          "vars"
+        ],
+        "summary": "**Box, atoms, vars:** Add `small` to border radius scale\n\nExtends the border radius scale to include `small` as a step below `standard`.\nThis addition is to support an upcoming design uplift that requires greater fidelity in the scale.\nNote, the new value is also available as a responsive property.\n\n**EXAMPLE USAGE:**\n```jsx\n<Box borderRadius=\"small\" />\n\n{/* Or responsively: */}\n<Box borderRadius={{ mobile: 'small', tablet: 'standard' }} />\n```\n\n```ts\nimport { atoms } from 'braid-design-system/css';\n\natoms({ borderRadius: 'small' })\n```\n\n```ts\nimport { vars } from 'braid-design-system/css';\n\nconst radius = vars.borderRadius.small;\n```"
+      },
+      {
+        "updated": [
+          "theme"
+        ],
+        "summary": "**theme:** Add support for webfonts beyond Google Fonts\n\nPreviously the `webFont` on the theme was the `familyName` and was being used to construct a link tag to a Google Fonts stylesheet and provide to consumers via a runtime token.\nTo enable fonts beyond Google Fonts, we are changing `webFont` to be a URL.\n\nThis does not impact existing themes (as there are no themes currently with a web font), and the contract of the runtime token (a constructed link tag) remains unchanged."
+      },
+      {
+        "updated": [
+          "MenuRenderer"
+        ],
+        "summary": "**MenuRenderer:** Hide overflow on menu\n\nFixes a bug where the selection/highlight for a `MenuItem` could extend outside of the menu itself."
+      },
+      {
+        "updated": [
+          "theme"
+        ],
+        "summary": "**theme:** Add support for defining line heights with lineGap\n\nProvide support for themes to define their typographic line heights via `lineGap`.\nThis allows us to reason about the white space between wrapping lines of text in the same way we think about `Stack` spacing.\n\nFor a visual preview of this mental model head over to the [Capsize website].\n\n[Capsize website]: https://seek-oss.github.io/capsize/"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Adjust height to support different typographic scales\n\nAdjusts the height of `Badge` to be driven by the capHeight of `xsmall` text plus vertical padding, rather than `xsmall` line height.\nThis enables different typographic scales across themes, while ensuring the `Badge` height is relative."
+      },
+      {
+        "updated": [
+          "atoms",
+          "Bleed",
+          "Box",
+          "BoxRenderer",
+          "Columns",
+          "Disclosure",
+          "Inline",
+          "List",
+          "MenuRenderer",
+          "Stack",
+          "Tabs",
+          "Tiles",
+          "useSpace",
+          "vars"
+        ],
+        "summary": "Add `xxxlarge` to the space scale\n\nExtends the range of the space scale to include `xxxlarge`.\nThis addition is to support an upcoming design uplift that requires greater fidelity in the scale.\nNote, the new value is also available as a responsive property.\n\n**EXAMPLE USAGE:**\n```jsx\n<Stack space=\"xxxlarge\">...</Stack>\n\n{/* Or responsively: */}\n<Stack space={{ mobile: 'large', tablet: 'xxxlarge' }}>...</Stack>\n```\n\n```ts\nimport { atoms } from 'braid-design-system/css';\n\natoms({ paddingY: 'xxxlarge' })\n```\n\n```ts\nimport { vars } from 'braid-design-system/css';\n\nconst space = vars.space.xxxlarge;\n```"
+      },
+      {
+        "updated": [
+          "Radio",
+          "RadioItem",
+          "Toggle"
+        ],
+        "summary": "**RadioItem, Toggle:** Use formAccent border when selected\n\nSwitch to using the `formAccent` border colour, rather than the `field` border color, when in the selected state (e.g. `checked` for `RadioItem`, `on` for `Toggle`)."
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Refine padding to complement radius scale\n\nRemoves the custom padding on tooltips in favour of using the space scale.\nPreviously, a custom value was used to complement the over sized radius which has now be reduced."
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Improve support for different typographic scales\n\nEnsure the height of a `small` sized `Button` is not reliant on the text line height.\n\nThis enables different typographic scales across themes, while ensuring the `Button` height is relative."
+      },
+      {
+        "updated": [
+          "Alert",
+          "Card",
+          "useToast"
+        ],
+        "summary": "**Alert, Card, useToast:** Decouple keyline width from space scale\n\nPreviously the keyline width on the left determined its width using the space scale.\nRe-aligning this to use the grid unit to enable themes with larger space scales."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Badge",
+          "Button",
+          "Card",
+          "Pagination",
+          "Textarea",
+          "TooltipRenderer",
+          "useToast"
+        ],
+        "summary": "Improve consistency of border radius usage across components\n\nOver time, individual components have reached for a larger radius in the scale, rather than increasing the scale at a theme level. This resulted in inconsistent use across the system, preventing uplift of the scale.\n\nRe-aligning all components to use the scale consistently enables themes to apply very different radius scales — enabling an upcoming design uplift theme."
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Reduce space between title and description\n\nReducing the space between `title` and `description` to `small` to improve association of the header block content"
+      }
+    ]
   }
 ]
