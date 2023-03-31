@@ -44,7 +44,7 @@ interface ModalContentHeaderProps
 }
 const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
   ({ title, headingLevel, description, descriptionId, center }, ref) => (
-    <Stack space="medium">
+    <Stack space="small">
       <Heading level={headingLevel} align={center ? 'center' : undefined}>
         <Box
           ref={ref}
