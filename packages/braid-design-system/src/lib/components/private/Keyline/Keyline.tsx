@@ -27,8 +27,8 @@ export const Keyline = ({ tone, borderRadius }: KeylineProps) => {
         component="span"
         height="full"
         display="inlineBlock"
-        paddingLeft="xxsmall"
         className={[
+          styles.width,
           styles.tone[tone],
           styles.lightMode[backgroundLightness.lightMode],
           styles.darkMode[backgroundLightness.darkMode],
