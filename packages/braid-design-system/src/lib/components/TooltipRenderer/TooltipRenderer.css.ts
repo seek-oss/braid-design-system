@@ -29,11 +29,6 @@ export const translateZ0 = style({
   transform: 'translateZ(0)',
 });
 
-// Our space scale didn't have enough fidelity here :(
-export const padding = style({
-  padding: calc.add(vars.space.small, vars.grid),
-});
-
 const borderRadius = vars.borderRadius.small;
 const offset = calc(constants.arrowSize).divide(2).negate().toString();
 export const arrow = style({
