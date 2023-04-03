@@ -7,10 +7,6 @@ export const constants = {
   arrowSize: '12px',
 };
 
-export const background = style({
-  background: vars.foregroundColor.neutral,
-});
-
 export const maxWidth = style({
   maxWidth: constants.maxWidth,
 });
