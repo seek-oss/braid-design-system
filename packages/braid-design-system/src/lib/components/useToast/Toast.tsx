@@ -12,7 +12,6 @@ import { IconPositive, IconCritical, IconClear } from '../icons';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { useTimeout } from './useTimeout';
 import type { InternalToast, ToastAction } from './ToastTypes';
-import { Keyline } from '../private/Keyline/Keyline';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import buildDataAttributes from '../private/buildDataAttributes';
 import * as styles from './Toast.css';
@@ -37,13 +36,27 @@ const Action = ({ label, onClick, removeToast }: ActionProps) => {
 
   return (
     <Text baseline={false}>
-      <Box component="span" paddingRight="xsmall" aria-hidden>
+      <Box component="span" aria-hidden>
         <TextLinkButton onClick={handleClick} hitArea="large">
           {label}
         </TextLinkButton>
       </Box>
     </Text>
   );
+};
+
+const ToastIcon = ({ tone, icon }: Pick<InternalToast, 'tone' | 'icon'>) => {
+  if (tone !== 'neutral') {
+    const Icon = toneToIcon[tone];
+
+    return <Icon tone={tone} />;
+  }
+
+  if (icon) {
+    return cloneElement(icon, { tone });
+  }
+
+  return null;
 };
 
 interface ToastProps extends InternalToast {
@@ -84,8 +97,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       }
     }, [shouldRemove, remove, stopTimeout]);
 
-    const Icon = tone !== 'neutral' ? toneToIcon[tone] : undefined;
-
     assert(
       !icon || (icon.props.size === undefined && icon.props.tone === undefined),
       "Icons cannot set the 'size' or 'tone' prop when passed to a Toast component",
@@ -98,7 +109,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
     const content = description ? (
       <Stack space="xxsmall">
-        <Text weight="strong" baseline={false}>
+        <Text weight="medium" tone={tone} baseline={false}>
           {message}
         </Text>
         {description ? (
@@ -113,7 +124,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     ) : (
       <Inline space="xxsmall">
         <Box paddingRight="medium">
-          <Text weight="strong" baseline={false}>
+          <Text weight="medium" tone={tone} baseline={false}>
             {message}
           </Text>
         </Box>
@@ -137,34 +148,28 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
         <Box boxShadow="large" borderRadius={borderRadius}>
           <ContentBlock width="xsmall">
             <Box
-              background="surface"
+              background={{ lightMode: 'surfaceDark', darkMode: 'surface' }}
               position="relative"
-              boxShadow="borderNeutralLight"
               borderRadius={borderRadius}
               paddingY="medium"
-              paddingLeft="medium"
+              paddingX="gutter"
               overflow="hidden"
               className={styles.toast}
             >
               <Columns space="none">
-                <Column width="content">
-                  {Icon ? (
+                {tone !== 'neutral' || (tone === 'neutral' && icon) ? (
+                  <Column width="content">
                     <Box paddingRight="small">
-                      <Icon tone={tone} />
+                      <ToastIcon tone={tone} icon={icon} />
                     </Box>
-                  ) : null}
-                  {tone === 'neutral' && icon ? (
-                    <Box paddingRight="small">
-                      {cloneElement(icon, { tone: 'secondary' })}
-                    </Box>
-                  ) : null}
-                </Column>
+                  </Column>
+                ) : null}
                 <Column>{content}</Column>
                 <Column width="content">
                   <Box
                     width="touchable"
                     display="flex"
-                    justifyContent="center"
+                    justifyContent="flexEnd"
                     alignItems="center"
                     className={lineHeightContainer.standard}
                     aria-hidden
@@ -185,9 +190,6 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                   </Box>
                 </Column>
               </Columns>
-              {tone !== 'neutral' ? (
-                <Keyline tone={tone} borderRadius={borderRadius} />
-              ) : null}
             </Box>
           </ContentBlock>
         </Box>
