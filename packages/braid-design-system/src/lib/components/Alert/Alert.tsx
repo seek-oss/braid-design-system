@@ -19,7 +19,6 @@ import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
-import { Keyline } from '../private/Keyline/Keyline';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { iconContainerSize } from '../../hooks/useIcon';
 import * as styles from './Alert.css';
@@ -77,7 +76,8 @@ export const Alert = ({
     <Box
       id={id}
       background={backgroundForTone[tone]}
-      padding="medium"
+      paddingY="medium"
+      paddingX="gutter"
       borderRadius={borderRadius}
       position="relative"
       overflow="hidden"
@@ -147,7 +147,6 @@ export const Alert = ({
           visible
         />
       )}
-      <Keyline tone={tone} borderRadius={borderRadius} />
     </Box>
   );
 };
