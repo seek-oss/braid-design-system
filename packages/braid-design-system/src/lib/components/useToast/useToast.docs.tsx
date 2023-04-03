@@ -367,6 +367,65 @@ const docs: ComponentDocs = {
       },
     },
     {
+      description: (
+        <Text>
+          When an <Strong>action</Strong> is provided in addition to a{' '}
+          <Strong>description</Strong>, the layout will stack vertically to
+          better accommodate all the content.
+        </Text>
+      ),
+      Example: ({ id, showToast }) => {
+        const { theme } = useThemeSettings();
+
+        /* eslint-disable no-alert */
+        const { code } = source(
+          <Inline space="small" align="center">
+            <Button
+              onClick={() =>
+                showToast({
+                  tone: 'positive',
+                  message: 'Positive message',
+                  description:
+                    'Longer description providing more context for the user.',
+                  action: {
+                    label: 'Undo',
+                    onClick: () => alert('Undo!'),
+                  },
+                })
+              }
+            >
+              Show animation <IconPromote alignY="lowercase" />
+            </Button>
+          </Inline>,
+        );
+
+        const { value } = source(
+          <Stack space="large" align="center">
+            <Toast
+              id={id}
+              dedupeKey={id}
+              shouldRemove={false}
+              vanillaTheme={theme.vanillaTheme}
+              onClose={() => {}}
+              message="Positive message"
+              description="Longer description providing more context for the user."
+              tone="positive"
+              action={{
+                label: 'Undo',
+                onClick: () => alert('Undo!'),
+              }}
+            />
+          </Stack>,
+        );
+        /* eslint-enable no-alert */
+
+        return {
+          code,
+          value,
+        };
+      },
+    },
+    {
       label: 'Dismissing messages',
       description: (
         <>
