@@ -72,10 +72,10 @@ export const TooltipContent = ({
   >
     <Box
       boxShadow="large"
-      background="customDark"
+      background="neutral"
       borderRadius={borderRadius}
       padding="small"
-      className={[styles.background, styles.maxWidth, styles.translateZ0]}
+      className={[styles.maxWidth, styles.translateZ0]}
     >
       <TooltipTextDefaultsProvider>
         <Box position="relative" zIndex={1}>
@@ -84,7 +84,8 @@ export const TooltipContent = ({
         <Box
           {...arrowProps}
           borderRadius={borderRadius}
-          className={[styles.arrow, styles.background]}
+          background="neutral"
+          className={styles.arrow}
         />
       </TooltipTextDefaultsProvider>
     </Box>
