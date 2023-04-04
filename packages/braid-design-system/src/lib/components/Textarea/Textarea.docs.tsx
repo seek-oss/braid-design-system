@@ -255,8 +255,14 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             Supported highlight tones are <Strong>critical</Strong> and{' '}
-            <Strong>caution</Strong> and follow the <Strong>tone</Strong> set on
-            the field.
+            <Strong>caution</Strong>. Highlights follow the{' '}
+            <Strong>tone</Strong> set on the field.
+          </Text>
+          <Text>
+            Additionally, when highlighting ranges you may choose to disable the
+            built-in spell check to prevent colliding highlights. This can be
+            done be setting <Strong>spellCheck</Strong> to{' '}
+            <Strong>false</Strong>.
           </Text>
           <Alert>
             <Stack space="large">

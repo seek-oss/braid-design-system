@@ -19,6 +19,7 @@ export type TextareaBaseProps = Omit<
   onFocus?: NativeTextareaProps['onFocus'];
   onPaste?: NativeTextareaProps['onPaste'];
   placeholder?: NativeTextareaProps['placeholder'];
+  spellCheck?: NativeTextareaProps['spellCheck'];
   highlightRanges?: Array<{
     start: number;
     end?: number;
@@ -77,6 +78,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       lineLimit,
       grow = true,
       tone,
+      spellCheck,
       ...restProps
     },
     ref,
@@ -171,6 +173,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   : undefined
               }
               placeholder={!restProps.disabled ? placeholder : undefined}
+              spellCheck={spellCheck}
               className={[styles.field, className]}
               {...fieldProps}
               ref={ref}

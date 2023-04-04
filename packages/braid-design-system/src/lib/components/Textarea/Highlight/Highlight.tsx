@@ -10,14 +10,7 @@ export interface HighlightProps {
 const styleForTone = { caution, critical };
 
 export const Highlight = ({ children, tone }: HighlightProps) => (
-  <Box
-    component="mark"
-    borderRadius="small"
-    background={{
-      lightMode: tone === 'caution' ? 'cautionLight' : 'criticalLight',
-    }}
-    className={[root, styleForTone[tone]]}
-  >
+  <Box component="mark" className={[root, styleForTone[tone]]}>
     {children}
   </Box>
 );
