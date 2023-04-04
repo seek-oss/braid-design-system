@@ -122,7 +122,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             The supported tones are: <Strong>{'"critical"'}</Strong>,{' '}
-            <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
+            <Strong>{'"positive"'}</Strong>, <Strong>{'"caution"'}</Strong>, and{' '}
+            <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
@@ -170,6 +171,21 @@ const docs: ComponentDocs = {
                 value={getState('value3')}
                 onChange={setState('value3')}
                 onClear={() => resetState('value3')}
+                suggestions={filterSuggestions([
+                  { text: 'Apples', value: 1 },
+                  { text: 'Bananas', value: 2 },
+                  { text: 'Broccoli', value: 3 },
+                  { text: 'Carrots', value: 4 },
+                ])}
+                tone="caution"
+                message="Caution message"
+              />
+              <Autosuggest
+                label="Label"
+                id={`${id}_4`}
+                value={getState('value4')}
+                onChange={setState('value4')}
+                onClear={() => resetState('value4')}
                 suggestions={filterSuggestions([
                   { text: 'Apples', value: 1 },
                   { text: 'Bananas', value: 2 },

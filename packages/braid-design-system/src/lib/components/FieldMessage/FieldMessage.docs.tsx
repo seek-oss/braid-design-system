@@ -32,6 +32,17 @@ const docs: ComponentDocs = {
               message="This is a positive message."
             />
           </Stack>
+
+          <Stack space="small">
+            <Box aria-describedby="message3">
+              <Placeholder height={40} />
+            </Box>
+            <FieldMessage
+              id="message3"
+              tone="caution"
+              message="This is a caution message."
+            />
+          </Stack>
         </Stack>
       </Box>,
     ),

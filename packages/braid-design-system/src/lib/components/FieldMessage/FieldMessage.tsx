@@ -3,11 +3,11 @@ import React from 'react';
 import { Box } from '../Box/Box';
 import type { TextProps } from '../Text/Text';
 import { Text } from '../Text/Text';
-import { IconCritical, IconPositive } from '../icons';
+import { IconCaution, IconCritical, IconPositive } from '../icons';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 
-export const tones = ['neutral', 'critical', 'positive'] as const;
+export const tones = ['neutral', 'critical', 'positive', 'caution'] as const;
 type FieldTone = (typeof tones)[number];
 
 export interface FieldMessageProps {
@@ -20,9 +20,10 @@ export interface FieldMessageProps {
   data?: DataAttributeMap;
 }
 
-const icon: Record<'critical' | 'positive', TextProps['icon']> = {
+const icon: Record<'critical' | 'positive' | 'caution', TextProps['icon']> = {
   critical: <IconCritical tone="critical" />,
   positive: <IconPositive tone="positive" />,
+  caution: <IconCaution tone="caution" />,
 };
 export const FieldMessage = ({
   id,

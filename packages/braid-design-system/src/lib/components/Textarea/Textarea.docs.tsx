@@ -78,7 +78,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             The supported tones are: <Strong>{'"critical"'}</Strong>,{' '}
-            <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
+            <Strong>{'"positive"'}</Strong>, <Strong>{'"caution"'}</Strong>, and{' '}
+            <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
@@ -106,6 +107,14 @@ const docs: ComponentDocs = {
               id={`${id}_3`}
               onChange={setState('textarea3')}
               value={getState('textarea3')}
+              tone="caution"
+              message="Caution message"
+            />
+            <Textarea
+              label="Label"
+              id={`${id}_4`}
+              onChange={setState('textarea4')}
+              value={getState('textarea4')}
               tone="neutral"
               message="Neutral message"
             />

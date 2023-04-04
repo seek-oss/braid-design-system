@@ -171,7 +171,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextField with postive message',
+      label: 'TextField with positive message',
       Container,
       Example: ({ id, handler }) => (
         <TextField
@@ -180,6 +180,20 @@ export const screenshots: ComponentScreenshot = {
           value="Text value"
           message="Positive message"
           tone="positive"
+          onChange={handler}
+        />
+      ),
+    },
+    {
+      label: 'TextField with caution message',
+      Container,
+      Example: ({ id, handler }) => (
+        <TextField
+          label="Label"
+          id={id}
+          value="Text value"
+          message="Caution message"
+          tone="caution"
           onChange={handler}
         />
       ),

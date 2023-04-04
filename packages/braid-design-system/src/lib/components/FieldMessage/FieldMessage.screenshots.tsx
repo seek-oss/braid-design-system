@@ -26,6 +26,16 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Caution Field Message',
+      Example: ({ id }) => (
+        <FieldMessage
+          id={id}
+          tone="caution"
+          message="This is a caution message."
+        />
+      ),
+    },
+    {
       label: 'Neutral Field Message',
       Example: ({ id }) => (
         <FieldMessage id={id} message="This is a neutral message." />

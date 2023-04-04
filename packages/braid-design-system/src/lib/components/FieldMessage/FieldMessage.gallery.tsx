@@ -27,6 +27,17 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'Caution',
+    Example: ({ id }) =>
+      source(
+        <FieldMessage
+          id={id}
+          tone="caution"
+          message="This is a caution message."
+        />,
+      ),
+  },
+  {
     label: 'Neutral',
     Example: ({ id }) =>
       source(

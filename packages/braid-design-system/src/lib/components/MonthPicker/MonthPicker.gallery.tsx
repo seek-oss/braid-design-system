@@ -76,6 +76,20 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'With a caution message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <MonthPicker
+          label="Label"
+          id={id}
+          onChange={setState('monthpicker')}
+          value={getState('monthpicker')}
+          tone="caution"
+          message="Caution message"
+        />,
+      ),
+  },
+  {
     label: 'With a neutral message',
     Example: ({ id, getState, setState }) =>
       source(
