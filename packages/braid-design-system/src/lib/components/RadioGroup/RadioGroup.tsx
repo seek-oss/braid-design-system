@@ -22,7 +22,10 @@ export type RadioGroupBaseProps<Value = NonNullable<string | number>> =
     onChange: (event: FormEvent<HTMLInputElement>) => void;
     name?: string;
     size?: InlineFieldProps['size'];
-    tone?: Exclude<FieldGroupBaseProps['tone'], 'caution'>;
+    tone?: Extract<
+      FieldGroupBaseProps['tone'],
+      'critical' | 'positive' | 'neutral'
+    >;
   };
 export type RadioGroupLabelProps = FieldLabelVariant;
 export type RadioGroupProps<Value = NonNullable<string | number>> =

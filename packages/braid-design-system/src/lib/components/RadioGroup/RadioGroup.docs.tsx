@@ -67,27 +67,43 @@ const docs: ComponentDocs = {
             its purpose.
           </Text>
           <Text>
-            The supported tones are: <Strong>{'"critical"'}</Strong> and{' '}
-            <Strong>{'"neutral"'}</Strong>.
+            The supported tones are: <Strong>{'"critical"'}</Strong>,{' '}
+            <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
       Example: ({ id, getState, setState }) =>
         source(
-          <RadioGroup
-            id={id}
-            value={getState('radio')}
-            onChange={({ currentTarget: { value } }) =>
-              setState('radio', value)
-            }
-            label="Label"
-            tone="critical"
-            message="Critical message"
-          >
-            <RadioItem label="One" value="1" />
-            <RadioItem label="Two" value="2" />
-            <RadioItem label="Three" value="3" />
-          </RadioGroup>,
+          <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
+            <RadioGroup
+              id={id}
+              value={getState('radio')}
+              onChange={({ currentTarget: { value } }) =>
+                setState('radio', value)
+              }
+              label="Label"
+              tone="critical"
+              message="Critical message"
+            >
+              <RadioItem label="One" value="1" />
+              <RadioItem label="Two" value="2" />
+              <RadioItem label="Three" value="3" />
+            </RadioGroup>
+            <RadioGroup
+              id={`${id}_2`}
+              value={getState('radio2')}
+              onChange={({ currentTarget: { value } }) =>
+                setState('radio2', value)
+              }
+              label="Label"
+              tone="positive"
+              message="Positive message"
+            >
+              <RadioItem label="One" value="1" />
+              <RadioItem label="Two" value="2" />
+              <RadioItem label="Three" value="3" />
+            </RadioGroup>
+          </Tiles>,
         ),
     },
     {
