@@ -76,6 +76,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       lines = 3,
       lineLimit,
       grow = true,
+      tone,
       ...restProps
     },
     ref,
@@ -103,6 +104,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <Field
         {...restProps}
+        tone={tone}
         value={value}
         icon={undefined}
         prefix={undefined}
@@ -137,7 +139,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 className={[styles.highlights, className]}
                 {...fieldProps}
               >
-                {formatRanges(String(value), highlightRanges)}
+                {formatRanges(
+                  String(value),
+                  highlightRanges,
+                  tone === 'critical' || tone === 'caution' ? tone : undefined,
+                )}
               </Box>
             ) : null}
             <Box

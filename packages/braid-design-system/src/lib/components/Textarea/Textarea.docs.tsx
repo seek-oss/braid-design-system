@@ -218,7 +218,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             To prevent loss of information, exceeding the limit is permitted,
-            however the count will be presented in a critical tone.
+            however the count will be presented in a <Strong>critical</Strong>{' '}
+            tone.
           </Text>
         </>
       ),
@@ -244,12 +245,19 @@ const docs: ComponentDocs = {
     {
       label: 'Highlighting ranges',
       description: (
-        <Text>
-          To support targeted validations, specific character ranges can be
-          highlighted as critical. The <Strong>highlightRanges</Strong> prop
-          accepts and array of <Strong>start</Strong> and <Strong>end</Strong>{' '}
-          character positions.
-        </Text>
+        <>
+          <Text>
+            To support targeted validations, specific character ranges can be
+            highlighted. The <Strong>highlightRanges</Strong> prop accepts and
+            array of <Strong>start</Strong> and <Strong>end</Strong> character
+            positions.
+          </Text>
+          <Text>
+            Supported highlight tones are <Strong>critical</Strong> and{' '}
+            <Strong>caution</Strong> and follow the <Strong>tone</Strong> set on
+            the field.
+          </Text>
+        </>
       ),
       Example: ({ id, getState, setState, setDefaultState }) =>
         source(
@@ -259,16 +267,29 @@ const docs: ComponentDocs = {
               'A long piece of text with a highlighted range',
             )}
 
-            <Textarea
-              label="Label"
-              id={id}
-              onChange={setState('textarea')}
-              value={getState('textarea')}
-              tone="critical"
-              message="Critical message"
-              description="Characters 7-20 are highlighted"
-              highlightRanges={[{ start: 7, end: 20 }]}
-            />
+            <Stack space="large">
+              <Textarea
+                label="Label"
+                id={id}
+                onChange={setState('textarea')}
+                value={getState('textarea')}
+                tone="critical"
+                message="Critical message"
+                description="Characters 7-20 are highlighted"
+                highlightRanges={[{ start: 7, end: 20 }]}
+              />
+
+              <Textarea
+                label="Label"
+                id={`${id}_2`}
+                onChange={setState('textarea')}
+                value={getState('textarea')}
+                tone="caution"
+                message="Caution message"
+                description="Characters 7-20 are highlighted"
+                highlightRanges={[{ start: 7, end: 20 }]}
+              />
+            </Stack>
           </>,
         ),
     },
