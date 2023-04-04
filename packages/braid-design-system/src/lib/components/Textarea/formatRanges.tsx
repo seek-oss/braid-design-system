@@ -9,7 +9,7 @@ type ReactChild = ReactElement | string | number;
 export const formatRanges = (
   value: string,
   highlightRanges: TextareaProps['highlightRanges'],
-  tone: 'critical' | 'caution' = 'critical',
+  tone: 'critical' | 'caution',
 ): ReactChild[] => {
   if (highlightRanges && value) {
     let lastEnd = 0;

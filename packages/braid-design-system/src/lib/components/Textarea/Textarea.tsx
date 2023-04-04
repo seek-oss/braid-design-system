@@ -91,14 +91,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       },
       [highlightsRef],
     );
-
     const inputLength = String(value).length;
-    const excessCharactersRange =
-      characterLimit && inputLength > characterLimit
-        ? [{ start: characterLimit }]
-        : [];
-
-    const highlightRanges = [...excessCharactersRange, ...highlightRangesProp];
+    const hasExceededCharacterLimit =
+      characterLimit && inputLength > characterLimit;
+    const highlightTone =
+      !hasExceededCharacterLimit && (tone === 'critical' || tone === 'caution')
+        ? tone
+        : 'critical';
+    const highlightRanges = hasExceededCharacterLimit
+      ? [{ start: characterLimit }]
+      : highlightRangesProp;
     const hasHighlights = highlightRanges.length > 0;
 
     return (
@@ -139,11 +141,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 className={[styles.highlights, className]}
                 {...fieldProps}
               >
-                {formatRanges(
-                  String(value),
-                  highlightRanges,
-                  tone === 'critical' || tone === 'caution' ? tone : undefined,
-                )}
+                {formatRanges(String(value), highlightRanges, highlightTone)}
               </Box>
             ) : null}
             <Box

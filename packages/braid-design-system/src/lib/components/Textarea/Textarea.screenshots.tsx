@@ -250,7 +250,95 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Textarea highlighting a while range exceeding character limit',
+      label: 'Textarea highlighting a range in caution',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text highlighting a range',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Label"
+            tone="caution"
+            description="Characters 9-22 are invalid"
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+    {
+      label: 'Within character limit with with highlight range and no tone',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text within the limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Label"
+            description="Should show highlighted range"
+            characterLimit={50}
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+    {
+      label:
+        'Within character limit with with highlight range and explicit critical tone',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text within the limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Label"
+            tone="critical"
+            description="Should show highlighted range"
+            characterLimit={50}
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+    {
+      label:
+        'Within character limit with with highlight range and caution tone',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text within the limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Label"
+            tone="caution"
+            description="Should show highlighted range"
+            characterLimit={50}
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+    {
+      label: 'Exceeding character limit with with highlight range and no tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -263,7 +351,53 @@ export const screenshots: ComponentScreenshot = {
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
-            description="Characters 9-22 are invalid"
+            description="Should only highlight exceeding characters"
+            characterLimit={50}
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+    {
+      label:
+        'Exceeding character limit with with highlight range and explicit critical tone',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text exceeding the specified 50 character limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Label"
+            tone="critical"
+            description="Should only highlight exceeding characters"
+            characterLimit={50}
+            highlightRanges={[{ start: 9, end: 22 }]}
+          />
+        );
+      },
+    },
+    {
+      label:
+        'Exceeding character limit with with highlight range and caution tone',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState(
+          'The long piece of text exceeding the specified 50 character limit',
+        );
+
+        return (
+          <Textarea
+            id={id}
+            value={value}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            label="Label"
+            tone="caution"
+            description="Should only highlight exceeding characters"
             characterLimit={50}
             highlightRanges={[{ start: 9, end: 22 }]}
           />

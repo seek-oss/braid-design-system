@@ -9,6 +9,7 @@ import {
   Strong,
   Stack,
   Heading,
+  Alert,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -257,6 +258,19 @@ const docs: ComponentDocs = {
             <Strong>caution</Strong> and follow the <Strong>tone</Strong> set on
             the field.
           </Text>
+          <Alert>
+            <Stack space="large">
+              <Text>
+                When combining <Strong>characterLimit</Strong> and{' '}
+                <Strong>highlightRanges</Strong>, if the number of characters
+                exceeds the limit only the exceeding characters will be
+                highlighted (using <Strong>critical</Strong> tone).
+              </Text>
+              <Text>
+                Once resolved, the provided highlightRanges will then be shown.
+              </Text>
+            </Stack>
+          </Alert>
         </>
       ),
       Example: ({ id, getState, setState, setDefaultState }) =>
