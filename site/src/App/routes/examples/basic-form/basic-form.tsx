@@ -136,15 +136,17 @@ const page: Page = {
           {() =>
             source(
               <Card>
-                <Heading level="3">Add role</Heading>
-                <Autosuggest
-                  label="Job title"
-                  suggestions={filterSuggestions([
-                    { text: 'Developer' },
-                    { text: 'Designer' },
-                    { text: 'Product Manager' },
-                  ])}
-                />
+                <Stack space="large">
+                  <Heading level="3">Add role</Heading>
+                  <Autosuggest
+                    label="Job title"
+                    suggestions={filterSuggestions([
+                      { text: 'Developer' },
+                      { text: 'Designer' },
+                      { text: 'Product Manager' },
+                    ])}
+                  />
+                </Stack>
               </Card>,
             )
           }
