@@ -49,6 +49,20 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Caution message',
+      Container,
+      Example: ({ id, handler }) => (
+        <MonthPicker
+          id={id}
+          label="Started"
+          tone="caution"
+          message="This is a caution message."
+          value={{ month: 1, year: 2019 }}
+          onChange={handler}
+        />
+      ),
+    },
+    {
       label: 'Disabled',
       Container,
       Example: ({ id, handler }) => (

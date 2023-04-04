@@ -72,6 +72,20 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'With a caution message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <PasswordField
+          label="Label"
+          id={id}
+          onChange={setState('passwordfield')}
+          value={getState('passwordfield')}
+          tone="caution"
+          message="Caution message"
+        />,
+      ),
+  },
+  {
     label: 'With a neutral message',
     Example: ({ id, getState, setState }) =>
       source(

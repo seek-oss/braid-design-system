@@ -174,7 +174,51 @@ export const galleryItems: ComponentExample[] = [
             onChange={setState('value')}
             onClear={() => resetState('value')}
             tone="critical"
-            message="You must make a selection"
+            message="Critical message"
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+            )}
+          />
+        </>,
+      ),
+  },
+  {
+    label: 'With a positive message',
+    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      source(
+        <>
+          {setDefaultState('value', { text: '' })}
+
+          <Autosuggest
+            label="I like to eat"
+            id={id}
+            value={getState('value')}
+            onChange={setState('value')}
+            onClear={() => resetState('value')}
+            tone="positive"
+            message="Positive message"
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+            )}
+          />
+        </>,
+      ),
+  },
+  {
+    label: 'With a caution message',
+    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      source(
+        <>
+          {setDefaultState('value', { text: '' })}
+
+          <Autosuggest
+            label="I like to eat"
+            id={id}
+            value={getState('value')}
+            onChange={setState('value')}
+            onClear={() => resetState('value')}
+            tone="caution"
+            message="Caution message"
             suggestions={filterSuggestions(
               makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
             )}

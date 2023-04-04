@@ -124,7 +124,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             The supported tones are: <Strong>{'"critical"'}</Strong>,{' '}
-            <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
+            <Strong>{'"positive"'}</Strong>, <Strong>{'"caution"'}</Strong>, and{' '}
+            <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
@@ -160,6 +161,18 @@ const docs: ComponentDocs = {
               id={`${id}_3`}
               onChange={setState('dropdown3')}
               value={getState('dropdown3')}
+              tone="caution"
+              message="Caution message"
+              placeholder="Please select"
+            >
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </Dropdown>
+            <Dropdown
+              label="Label"
+              id={`${id}_4`}
+              onChange={setState('dropdown4')}
+              value={getState('dropdown4')}
               tone="neutral"
               message="Neutral message"
               placeholder="Please select"

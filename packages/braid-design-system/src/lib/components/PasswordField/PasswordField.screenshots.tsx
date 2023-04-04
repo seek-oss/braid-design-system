@@ -155,6 +155,23 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
+      label: 'PasswordField with caution message',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('qwerty');
+        return (
+          <PasswordField
+            label="Password"
+            id={id}
+            value={value}
+            onChange={(ev) => setValue(ev.currentTarget.value)}
+            message="Caution message"
+            tone="caution"
+          />
+        );
+      },
+    },
+    {
       label: 'PasswordField disabled',
       Container,
       Example: ({ id, handler }) => (

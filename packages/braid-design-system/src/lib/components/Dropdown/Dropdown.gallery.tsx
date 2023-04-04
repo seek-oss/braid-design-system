@@ -137,6 +137,24 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'With a caution message',
+    Example: ({ id, getState, setState }) =>
+      source(
+        <Dropdown
+          label="Label"
+          id={id}
+          onChange={setState('dropdown')}
+          value={getState('dropdown')}
+          placeholder="Please select"
+          tone="caution"
+          message="Caution message"
+        >
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </Dropdown>,
+      ),
+  },
+  {
     label: 'Disabled field',
     background: 'surface',
     Example: ({ id, getState, setState }) =>

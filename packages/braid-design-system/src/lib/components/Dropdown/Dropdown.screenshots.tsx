@@ -73,7 +73,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Dropdown in invalid state',
+      label: 'Dropdown in critical tone',
       Container,
       Example: ({ id, handler }) => (
         <Dropdown
@@ -83,6 +83,23 @@ export const screenshots: ComponentScreenshot = {
           value=""
           tone="critical"
           message="Required field"
+        >
+          <option value="1">Developer</option>
+          <option value="2">Designer</option>
+        </Dropdown>
+      ),
+    },
+    {
+      label: 'Dropdown in caution tone',
+      Container,
+      Example: ({ id, handler }) => (
+        <Dropdown
+          label="Job Title"
+          id={id}
+          onChange={handler}
+          value=""
+          tone="caution"
+          message="Caution message"
         >
           <option value="1">Developer</option>
           <option value="2">Designer</option>

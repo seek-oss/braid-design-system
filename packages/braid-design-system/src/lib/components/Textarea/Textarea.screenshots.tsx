@@ -106,6 +106,20 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Textarea with caution message',
+      Container,
+      Example: ({ id, handler }) => (
+        <Textarea
+          id={id}
+          value=""
+          onChange={handler}
+          label="Label"
+          message="Caution message"
+          tone="caution"
+        />
+      ),
+    },
+    {
       label: 'Textarea disabled',
       Container,
       Example: ({ id, handler }) => (

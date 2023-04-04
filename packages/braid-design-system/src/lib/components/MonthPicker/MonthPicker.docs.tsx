@@ -145,7 +145,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             The supported tones are: <Strong>{'"critical"'}</Strong>,{' '}
-            <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
+            <Strong>{'"positive"'}</Strong>, <Strong>{'"caution"'}</Strong>, and{' '}
+            <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
@@ -173,6 +174,14 @@ const docs: ComponentDocs = {
               id={`${id}_3`}
               onChange={setState('monthpicker3')}
               value={getState('monthpicker3')}
+              tone="caution"
+              message="Caution message"
+            />
+            <MonthPicker
+              label="Label"
+              id={`${id}_4`}
+              onChange={setState('monthpicker4')}
+              value={getState('monthpicker4')}
               tone="neutral"
               message="Neutral message"
             />

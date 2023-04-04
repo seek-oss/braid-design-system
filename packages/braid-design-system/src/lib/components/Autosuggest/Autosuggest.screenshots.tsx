@@ -128,7 +128,7 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Autosuggest with error',
+      label: 'Critical tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState<Value>({ text: '' });
@@ -142,6 +142,28 @@ export const screenshots: ComponentScreenshot = {
             onClear={() => setValue({ text: '' })}
             tone="critical"
             message="You must make a selection"
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+            )}
+          />
+        );
+      },
+    },
+    {
+      label: 'Caution tone',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState<Value>({ text: '' });
+
+        return (
+          <Autosuggest
+            label="I like to eat"
+            id={id}
+            value={value}
+            onChange={setValue}
+            onClear={() => setValue({ text: '' })}
+            tone="caution"
+            message="Caution message"
             suggestions={filterSuggestions(
               makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
             )}

@@ -74,7 +74,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             The supported tones are: <Strong>{'"critical"'}</Strong>,{' '}
-            <Strong>{'"positive"'}</Strong>, and <Strong>{'"neutral"'}</Strong>.
+            <Strong>{'"positive"'}</Strong>, <Strong>{'"caution"'}</Strong>, and{' '}
+            <Strong>{'"neutral"'}</Strong>.
           </Text>
         </>
       ),
@@ -102,6 +103,14 @@ const docs: ComponentDocs = {
               id={`${id}_3`}
               onChange={setState('passwordfield3')}
               value={getState('passwordfield3')}
+              tone="caution"
+              message="Caution message"
+            />
+            <PasswordField
+              label="Label"
+              id={`${id}_4`}
+              onChange={setState('passwordfield4')}
+              value={getState('passwordfield4')}
               tone="neutral"
               message="Neutral message"
             />

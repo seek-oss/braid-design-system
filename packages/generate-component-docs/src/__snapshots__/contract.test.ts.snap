@@ -131,6 +131,7 @@ exports[`Autosuggest 1`] = `
         | Suggestions<Value>
     tertiaryLabel?: ReactNode
     tone?: 
+        | "caution"
         | "critical"
         | "neutral"
         | "positive"
@@ -2935,6 +2936,7 @@ exports[`Dropdown 1`] = `
     secondaryLabel?: ReactNode
     tertiaryLabel?: ReactNode
     tone?: 
+        | "caution"
         | "critical"
         | "neutral"
         | "positive"
@@ -2976,6 +2978,7 @@ exports[`FieldMessage 1`] = `
     reserveMessageSpace?: boolean
     secondaryMessage?: ReactNode
     tone?: 
+        | "caution"
         | "critical"
         | "neutral"
         | "positive"
@@ -6702,6 +6705,7 @@ exports[`MonthPicker 1`] = `
     secondaryLabel?: ReactNode
     tertiaryLabel?: ReactNode
     tone?: 
+        | "caution"
         | "critical"
         | "neutral"
         | "positive"
@@ -6798,6 +6802,7 @@ exports[`PasswordField 1`] = `
     secondaryLabel?: ReactNode
     tertiaryLabel?: ReactNode
     tone?: 
+        | "caution"
         | "critical"
         | "neutral"
         | "positive"
@@ -7386,6 +7391,7 @@ exports[`TextField 1`] = `
         | string
     tertiaryLabel?: ReactNode
     tone?: 
+        | "caution"
         | "critical"
         | "neutral"
         | "positive"
@@ -7979,6 +7985,7 @@ exports[`Textarea 1`] = `
     secondaryLabel?: ReactNode
     tertiaryLabel?: ReactNode
     tone?: 
+        | "caution"
         | "critical"
         | "neutral"
         | "positive"
