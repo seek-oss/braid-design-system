@@ -16,7 +16,7 @@ updated:
 Add support for `caution` tone to form fields
 
 Provide support for applying a `caution` tone to form fields.
-Specifying this `tone` will provide the `IconCaution` alongside the provided `message`.
+Specifying this `tone` will show the `IconCaution` alongside the provided `message`.
 
 **EXAMPLE USAGE:**
 ```jsx
