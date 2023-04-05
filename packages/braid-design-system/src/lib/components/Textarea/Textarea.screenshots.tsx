@@ -271,7 +271,7 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Within character limit with with highlight range and no tone',
+      label: 'Within character limit with highlight range and no tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -293,7 +293,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Within character limit with with highlight range and explicit critical tone',
+        'Within character limit with highlight range and explicit critical tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -316,7 +316,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Within character limit with with highlight range and caution tone',
+        'Within character limit with highlight range and caution tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -338,7 +338,7 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Exceeding character limit with with highlight range and no tone',
+      label: 'Exceeding character limit with highlight range and no tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -360,7 +360,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Exceeding character limit with with highlight range and explicit critical tone',
+        'Exceeding character limit with highlight range and explicit critical tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -383,7 +383,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Exceeding character limit with with highlight range and caution tone',
+        'Exceeding character limit with highlight range and caution tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
