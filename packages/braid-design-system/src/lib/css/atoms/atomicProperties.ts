@@ -12,6 +12,8 @@ export const space = {
 
 const boxShadow = {
   ...vars.shadow,
+  borderBrandAccent: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.brandAccent}`,
+  borderBrandAccentLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.brandAccentLight}`,
   borderBrandAccentLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccent}`,
   borderBrandAccentLightLarge: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.brandAccentLight}`,
   borderCaution: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.caution}`,

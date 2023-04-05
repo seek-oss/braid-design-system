@@ -30,6 +30,7 @@ const adaptiveBackgrounds: Partial<Record<BoxBackgroundVariant, Background>> = {
 };
 
 const adaptiveBoxShadow: Partial<Record<BoxShadow, BoxShadow>> = {
+  borderBrandAccent: 'borderBrandAccentLight',
   borderBrandAccentLarge: 'borderBrandAccentLightLarge',
   borderCaution: 'borderCautionLight',
   borderCritical: 'borderCriticalLight',
