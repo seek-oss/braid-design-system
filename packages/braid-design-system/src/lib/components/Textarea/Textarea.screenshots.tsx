@@ -315,8 +315,7 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label:
-        'Within character limit with highlight range and caution tone',
+      label: 'Within character limit with highlight range and caution tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
@@ -382,8 +381,7 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label:
-        'Exceeding character limit with highlight range and caution tone',
+      label: 'Exceeding character limit with highlight range and caution tone',
       Container,
       Example: ({ id }) => {
         const [value, setValue] = useState(
