@@ -400,8 +400,12 @@ const docs: CssDoc = {
                     'Used for borders around prominent interactive elements in a dark context.',
                   borderFormAccentLightLarge:
                     'Used for large borders around prominent interactive elements in a dark context.',
+                  borderBrandAccent:
+                    'Used for borders around branded elements.',
                   borderBrandAccentLarge:
                     'Used for large borders around branded elements.',
+                  borderBrandAccentLight:
+                    'Used for borders around branded elements in a dark context.',
                   borderBrandAccentLightLarge:
                     'Used for large borders around branded elements in a dark context.',
                   borderPositive:

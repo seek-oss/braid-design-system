@@ -518,7 +518,9 @@ exports[`Box 1`] = `
         | { mobile?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "small" | ... 5 more ... | undefined; wide?: "small" | ... 5 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
+        | "borderBrandAccent"
         | "borderBrandAccentLarge"
+        | "borderBrandAccentLight"
         | "borderBrandAccentLightLarge"
         | "borderCaution"
         | "borderCautionLight"
@@ -1480,7 +1482,9 @@ exports[`BoxRenderer 1`] = `
         | { mobile?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "small" | ... 5 more ... | undefined; wide?: "small" | ... 5 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
+        | "borderBrandAccent"
         | "borderBrandAccentLarge"
+        | "borderBrandAccentLight"
         | "borderBrandAccentLightLarge"
         | "borderCaution"
         | "borderCautionLight"
