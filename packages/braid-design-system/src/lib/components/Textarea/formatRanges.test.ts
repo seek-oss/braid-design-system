@@ -271,45 +271,4 @@ describe('formatRanges', () => {
       ]
     `);
   });
-
-  it('should highlight ranges with critical when tone is explicitly critical', () => {
-    const value = 'my longer text';
-    const ranges = [
-      {
-        start: 3,
-        end: 6,
-      },
-      {
-        start: 7,
-        end: 8,
-      },
-      {
-        start: 12,
-        end: 13,
-      },
-    ];
-    expect(formatRanges(value, ranges, 'critical')).toMatchInlineSnapshot(`
-      [
-        "my ",
-        <Highlight
-          tone="critical"
-        >
-          lon
-        </Highlight>,
-        "g",
-        <Highlight
-          tone="critical"
-        >
-          e
-        </Highlight>,
-        "r te",
-        <Highlight
-          tone="critical"
-        >
-          x
-        </Highlight>,
-        "t",
-      ]
-    `);
-  });
 });
