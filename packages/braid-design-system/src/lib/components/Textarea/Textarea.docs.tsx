@@ -249,7 +249,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To support targeted validations, specific character ranges can be
-            highlighted. The <Strong>highlightRanges</Strong> prop accepts and
+            highlighted. The <Strong>highlightRanges</Strong> prop accepts an
             array of <Strong>start</Strong> and <Strong>end</Strong> character
             positions.
           </Text>
@@ -269,11 +269,11 @@ const docs: ComponentDocs = {
               <Text>
                 When combining <Strong>characterLimit</Strong> and{' '}
                 <Strong>highlightRanges</Strong>, if the number of characters
-                exceeds the limit only the exceeding characters will be
+                exceeds the limit, only the exceeding characters will be
                 highlighted (using <Strong>critical</Strong> tone).
               </Text>
               <Text>
-                Once resolved, the provided highlightRanges will then be shown.
+                Once resolved, the provided <Strong>highlightRanges</Strong> will then be shown.
               </Text>
             </Stack>
           </Alert>
