@@ -19,6 +19,7 @@ export type TextareaBaseProps = Omit<
   onFocus?: NativeTextareaProps['onFocus'];
   onPaste?: NativeTextareaProps['onPaste'];
   placeholder?: NativeTextareaProps['placeholder'];
+  spellCheck?: NativeTextareaProps['spellCheck'];
   highlightRanges?: Array<{
     start: number;
     end?: number;
@@ -76,6 +77,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       lines = 3,
       lineLimit,
       grow = true,
+      tone,
+      spellCheck,
       ...restProps
     },
     ref,
@@ -90,19 +93,22 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       },
       [highlightsRef],
     );
-
     const inputLength = String(value).length;
-    const excessCharactersRange =
-      characterLimit && inputLength > characterLimit
-        ? [{ start: characterLimit }]
-        : [];
-
-    const highlightRanges = [...excessCharactersRange, ...highlightRangesProp];
+    const hasExceededCharacterLimit =
+      characterLimit && inputLength > characterLimit;
+    const highlightTone =
+      !hasExceededCharacterLimit && (tone === 'critical' || tone === 'caution')
+        ? tone
+        : 'critical';
+    const highlightRanges = hasExceededCharacterLimit
+      ? [{ start: characterLimit }]
+      : highlightRangesProp;
     const hasHighlights = highlightRanges.length > 0;
 
     return (
       <Field
         {...restProps}
+        tone={tone}
         value={value}
         icon={undefined}
         prefix={undefined}
@@ -137,7 +143,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 className={[styles.highlights, className]}
                 {...fieldProps}
               >
-                {formatRanges(String(value), highlightRanges)}
+                {formatRanges(String(value), highlightRanges, highlightTone)}
               </Box>
             ) : null}
             <Box
@@ -167,6 +173,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   : undefined
               }
               placeholder={!restProps.disabled ? placeholder : undefined}
+              spellCheck={spellCheck}
               className={[styles.field, className]}
               {...fieldProps}
               ref={ref}

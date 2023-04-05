@@ -7983,6 +7983,11 @@ exports[`Textarea 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    spellCheck?: 
+        | "false"
+        | "true"
+        | false
+        | true
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"

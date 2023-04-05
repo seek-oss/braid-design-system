@@ -9,6 +9,7 @@ import {
   Strong,
   Stack,
   Heading,
+  Alert,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -218,7 +219,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             To prevent loss of information, exceeding the limit is permitted,
-            however the count will be presented in a critical tone.
+            however the count will be presented in a <Strong>critical</Strong>{' '}
+            tone.
           </Text>
         </>
       ),
@@ -244,12 +246,39 @@ const docs: ComponentDocs = {
     {
       label: 'Highlighting ranges',
       description: (
-        <Text>
-          To support targeted validations, specific character ranges can be
-          highlighted as critical. The <Strong>highlightRanges</Strong> prop
-          accepts and array of <Strong>start</Strong> and <Strong>end</Strong>{' '}
-          character positions.
-        </Text>
+        <>
+          <Text>
+            To support targeted validations, specific character ranges can be
+            highlighted. The <Strong>highlightRanges</Strong> prop accepts an
+            array of <Strong>start</Strong> and <Strong>end</Strong> character
+            positions.
+          </Text>
+          <Text>
+            Supported highlight tones are <Strong>critical</Strong> and{' '}
+            <Strong>caution</Strong>. Highlights follow the{' '}
+            <Strong>tone</Strong> set on the field.
+          </Text>
+          <Text>
+            Additionally, when highlighting ranges you may choose to disable the
+            built-in spell check to prevent colliding highlights. This can be
+            done be setting <Strong>spellCheck</Strong> to{' '}
+            <Strong>false</Strong>.
+          </Text>
+          <Alert>
+            <Stack space="large">
+              <Text>
+                When combining <Strong>characterLimit</Strong> and{' '}
+                <Strong>highlightRanges</Strong>, if the number of characters
+                exceeds the limit, only the exceeding characters will be
+                highlighted (using <Strong>critical</Strong> tone).
+              </Text>
+              <Text>
+                Once resolved, the provided <Strong>highlightRanges</Strong>{' '}
+                will then be shown.
+              </Text>
+            </Stack>
+          </Alert>
+        </>
       ),
       Example: ({ id, getState, setState, setDefaultState }) =>
         source(
@@ -259,16 +288,29 @@ const docs: ComponentDocs = {
               'A long piece of text with a highlighted range',
             )}
 
-            <Textarea
-              label="Label"
-              id={id}
-              onChange={setState('textarea')}
-              value={getState('textarea')}
-              tone="critical"
-              message="Critical message"
-              description="Characters 7-20 are highlighted"
-              highlightRanges={[{ start: 7, end: 20 }]}
-            />
+            <Stack space="large">
+              <Textarea
+                label="Label"
+                id={id}
+                onChange={setState('textarea')}
+                value={getState('textarea')}
+                tone="critical"
+                message="Critical message"
+                description="Characters 7-20 are highlighted"
+                highlightRanges={[{ start: 7, end: 20 }]}
+              />
+
+              <Textarea
+                label="Label"
+                id={`${id}_2`}
+                onChange={setState('textarea')}
+                value={getState('textarea')}
+                tone="caution"
+                message="Caution message"
+                description="Characters 7-20 are highlighted"
+                highlightRanges={[{ start: 7, end: 20 }]}
+              />
+            </Stack>
           </>,
         ),
     },

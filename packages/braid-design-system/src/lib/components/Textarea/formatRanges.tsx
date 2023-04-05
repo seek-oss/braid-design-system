@@ -1,12 +1,15 @@
-import type { ReactChild } from 'react';
+import type { ReactElement } from 'react';
 import React from 'react';
 import parseHighlights from 'autosuggest-highlight/parse';
 import type { TextareaProps } from './Textarea';
 import { Highlight } from './Highlight/Highlight';
 
+type ReactChild = ReactElement | string | number;
+
 export const formatRanges = (
   value: string,
   highlightRanges: TextareaProps['highlightRanges'],
+  tone: 'critical' | 'caution',
 ): ReactChild[] => {
   if (highlightRanges && value) {
     let lastEnd = 0;
@@ -47,7 +50,15 @@ export const formatRanges = (
       ]),
     ).reduce((acc, { text, highlight }, i) => {
       if (text) {
-        acc.push(highlight ? <Highlight key={i}>{text}</Highlight> : text);
+        acc.push(
+          highlight ? (
+            <Highlight key={i} tone={tone}>
+              {text}
+            </Highlight>
+          ) : (
+            text
+          ),
+        );
       }
       return acc;
     }, [] as ReactChild[]);
