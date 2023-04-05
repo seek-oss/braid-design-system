@@ -273,7 +273,8 @@ const docs: ComponentDocs = {
                 highlighted (using <Strong>critical</Strong> tone).
               </Text>
               <Text>
-                Once resolved, the provided <Strong>highlightRanges</Strong> will then be shown.
+                Once resolved, the provided <Strong>highlightRanges</Strong>{' '}
+                will then be shown.
               </Text>
             </Stack>
           </Alert>
