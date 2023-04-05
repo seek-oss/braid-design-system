@@ -10,7 +10,7 @@ updated:
 
 **Box, atoms:** Add `borderBrandAccent` variants to available boxShadows
 
-Add `borderBrandAccent` and `borderBrandAccentLight` to the available boxShadows, combining the `brandAccent` `brandAccentLight` border colours with the `standard` border width token.
+Add `borderBrandAccent` and `borderBrandAccentLight` to the available boxShadows, combining the `brandAccent` and `brandAccentLight` border colours with the `standard` border width token.
 Previously, `brandAccent` was only available with the `large` border width.
 
 **EXAMPLE USAGE:**
