@@ -1,5 +1,94 @@
 # braid-design-system
 
+## 32.3.0
+
+### Minor Changes
+
+- **Box, atoms:** Add `borderBrandAccent` variants to available boxShadows ([#1274](https://github.com/seek-oss/braid-design-system/pull/1274))
+
+  Add `borderBrandAccent` and `borderBrandAccentLight` to the available boxShadows, combining the `brandAccent` and `brandAccentLight` border colours with the `standard` border width token.
+  Previously, `brandAccent` was only available with the `large` border width.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box boxShadow="borderBrandAccent" />;
+  {
+    /* or */
+  }
+  <Box boxShadow="borderBrandAccentLight" />;
+  ```
+
+  ```ts
+  import { atoms } from 'braid-design-system/css';
+
+  atoms({ boxShadow: 'borderBrandAccent' });
+  atoms({ boxShadow: 'borderBrandAccentLight' });
+  ```
+
+- **useToast:** Design uplift with increased page contrast ([#1269](https://github.com/seek-oss/braid-design-system/pull/1269))
+
+  As a means to increase constrast against page content, the design has been updated to be presented on inverted backgrounds based on the color mode.
+  The design has also be refined to remove the sidebar/keyline (consistent with `Alert`), while also applying the `tone` to the provided `message`.
+
+- **Textarea:** Add support for disabling built-in spell checker ([#1272](https://github.com/seek-oss/braid-design-system/pull/1272))
+
+  Provide support for disabling the built-in browser spell checker using the native HTML attribute `spellCheck`.
+
+  When highlighting ranges you may choose to turn spell check off to prevent colliding highlights. This can be done be setting `spellCheck` to `false`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Textarea spellCheck={false} />
+  ```
+
+- Add support for `caution` tone to form fields ([#1271](https://github.com/seek-oss/braid-design-system/pull/1271))
+
+  Provide support for applying a `caution` tone to form fields.
+  Specifying this `tone` will show the `IconCaution` alongside the provided `message`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <TextField tone="caution" message="Caution message" />
+  ```
+
+- **Textarea:** Add support for `caution` highlightRanges ([#1272](https://github.com/seek-oss/braid-design-system/pull/1272))
+
+  Providing a `tone` of `caution` along with a set of `highlightRanges` will now apply the `caution` tone to the text being highlighted.
+  To complement this feature, the design has been uplifted to work consistently across both the `critical` and `caution` tones.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Textarea
+    tone="caution"
+    message="Caution message"
+    highlightRanges={...}
+  />
+  ```
+
+- **Alert:** Design uplift ([#1269](https://github.com/seek-oss/braid-design-system/pull/1269))
+
+  Refine the design to use consistent horizontal container inset, aligning content with elements like `Card`, as well as simplifying the design by removing the sidebar/keyline (consistent with `useToast`).
+
+### Patch Changes
+
+- **Button, ButtonLink:** Align `ghost` border width with field border width ([#1274](https://github.com/seek-oss/braid-design-system/pull/1274))
+
+  Align the border width of `ghost` variants with the border width of fields.
+  This is the final re-alignment piece to ensure all components use theme scales consistently, improving the ability of Braid themes to deliver cohesive design uplift.
+
+- **Stepper:** Reduce size of `Step` indicators ([#1275](https://github.com/seek-oss/braid-design-system/pull/1275))
+
+  Refine the design of `Step` indicators by reducing their size.
+
+- **TooltipRenderer:** Remove custom background ([#1268](https://github.com/seek-oss/braid-design-system/pull/1268))
+
+  Use the correct semantic token for the background of tooltips.
+  While there is no visual change, this is just a clean up to ensure the palette usage remains consistent.
+
 ## 32.2.0
 
 ### Minor Changes

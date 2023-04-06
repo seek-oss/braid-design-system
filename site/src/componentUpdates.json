@@ -3160,5 +3160,72 @@
         "summary": "**Dialog, Drawer:** Reduce space between title and description\n\nReducing the space between `title` and `description` to `small` to improve association of the header block content"
       }
     ]
+  },
+  {
+    "version": "32.3.0",
+    "updates": [
+      {
+        "updated": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms:** Add `borderBrandAccent` variants to available boxShadows\n\nAdd `borderBrandAccent` and `borderBrandAccentLight` to the available boxShadows, combining the `brandAccent` and `brandAccentLight` border colours with the `standard` border width token.\nPreviously, `brandAccent` was only available with the `large` border width.\n\n**EXAMPLE USAGE:**\n```jsx\n<Box boxShadow=\"borderBrandAccent\" />\n{/* or */}\n<Box boxShadow=\"borderBrandAccentLight\" />\n```\n\n\n```ts\nimport { atoms } from 'braid-design-system/css';\n\natoms({ boxShadow: 'borderBrandAccent' });\natoms({ boxShadow: 'borderBrandAccentLight' });\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Align `ghost` border width with field border width\n\nAlign the border width of `ghost` variants with the border width of fields.\nThis is the final re-alignment piece to ensure all components use theme scales consistently, improving the ability of Braid themes to deliver cohesive design uplift."
+      },
+      {
+        "updated": [
+          "Stepper"
+        ],
+        "summary": "**Stepper:** Reduce size of `Step` indicators\n\nRefine the design of `Step` indicators by reducing their size."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast:** Design uplift with increased page contrast\n\nAs a means to increase constrast against page content, the design has been updated to be presented on inverted backgrounds based on the color mode.\nThe design has also be refined to remove the sidebar/keyline (consistent with `Alert`), while also applying the `tone` to the provided `message`."
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Add support for disabling built-in spell checker\n\nProvide support for disabling the built-in browser spell checker using the native HTML attribute `spellCheck`.\n\nWhen highlighting ranges you may choose to turn spell check off to prevent colliding highlights. This can be done be setting `spellCheck` to `false`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Textarea spellCheck={false} />\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "FieldMessage",
+          "MonthPicker",
+          "PasswordField",
+          "Textarea",
+          "TextField"
+        ],
+        "summary": "Add support for `caution` tone to form fields\n\nProvide support for applying a `caution` tone to form fields.\nSpecifying this `tone` will show the `IconCaution` alongside the provided `message`.\n\n**EXAMPLE USAGE:**\n```jsx\n<TextField tone=\"caution\" message=\"Caution message\" />\n```"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Add support for `caution` highlightRanges\n\nProviding a `tone` of `caution` along with a set of `highlightRanges` will now apply the `caution` tone to the text being highlighted.\nTo complement this feature, the design has been uplifted to work consistently across both the `critical` and `caution` tones.\n\n**EXAMPLE USAGE:**\n```jsx\n<Textarea\n  tone=\"caution\"\n  message=\"Caution message\"\n  highlightRanges={...}\n/>\n```"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Remove custom background\n\nUse the correct semantic token for the background of tooltips.\nWhile there is no visual change, this is just a clean up to ensure the palette usage remains consistent."
+      },
+      {
+        "updated": [
+          "Alert"
+        ],
+        "summary": "**Alert:** Design uplift\n\nRefine the design to use consistent horizontal container inset, aligning content with elements like `Card`, as well as simplifying the design by removing the sidebar/keyline (consistent with `useToast`)."
+      }
+    ]
   }
 ]
