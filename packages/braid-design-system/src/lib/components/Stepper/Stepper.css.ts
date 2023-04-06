@@ -8,6 +8,7 @@ import { hideFocusRingsDataAttribute } from '../private/hideFocusRings/hideFocus
 
 const baseColourVar = createVar();
 const highlightVar = createVar();
+const stepIndicatorSize = vars.inlineFieldSize.small;
 
 export const tone = {
   formAccent: style(
@@ -59,8 +60,8 @@ export const step = style({
 export const indicator = style([
   atoms({ display: 'block' }),
   {
-    height: vars.inlineFieldSize.standard,
-    width: vars.inlineFieldSize.standard,
+    height: stepIndicatorSize,
+    width: stepIndicatorSize,
     color: baseColourVar,
   },
 ]);
@@ -136,21 +137,17 @@ export const progressTrack = style({
   }px)`,
   height: vars.borderWidth.large,
   width: `${calc('100%')
-    .subtract(vars.inlineFieldSize.standard)
+    .subtract(stepIndicatorSize)
     .subtract(calc(vars.space[progressBarGap]).multiply(2))}`,
-  top: `${calc(vars.inlineFieldSize.standard)
-    .subtract(vars.borderWidth.large)
-    .divide(2)}`,
-  left: `${calc(vars.inlineFieldSize.standard).add(
-    vars.space[progressBarGap],
-  )}`,
+  top: `${calc(stepIndicatorSize).subtract(vars.borderWidth.large).divide(2)}`,
+  left: `${calc(stepIndicatorSize).add(vars.space[progressBarGap])}`,
 });
 
 export const progressTrackCentered = style(
   responsiveStyle({
     tablet: {
       left: `${calc('50%')
-        .add(calc(vars.inlineFieldSize.standard).divide(2))
+        .add(calc(stepIndicatorSize).divide(2))
         .add(vars.space[progressBarGap])}`,
     },
   }),
@@ -166,7 +163,7 @@ export const progressUnfilled = style({
 });
 
 export const indicatorContainer = style({
-  width: vars.inlineFieldSize.standard,
+  width: stepIndicatorSize,
   selectors: {
     [`${step}:active &`]: {
       transform: vars.transform.touchable,
