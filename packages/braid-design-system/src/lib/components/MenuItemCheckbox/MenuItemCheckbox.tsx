@@ -4,7 +4,8 @@ import { Box } from '../Box/Box';
 import { IconTick } from '../icons/IconTick/IconTick';
 import type { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
-import { iconSize } from '../../hooks/useIcon';
+
+import * as styles from './MenuItemCheckbox.css';
 
 export interface MenuItemCheckboxProps
   extends Pick<MenuItemProps, 'data' | 'badge' | 'id'> {
@@ -45,7 +46,7 @@ export const MenuItemCheckbox = ({
         background={{ lightMode: 'surface' }}
         marginRight="small"
         flexShrink={0}
-        className={iconSize()}
+        className={styles.checkboxSize}
       >
         <Box
           component="span"
