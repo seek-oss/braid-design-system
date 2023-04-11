@@ -184,7 +184,7 @@ export const StyledInput = forwardRef<
           zIndex={1}
           className={[
             styles.realField,
-            styles.realFieldPosition[size],
+            styles.sizeVars[size],
             isMixed ? styles.isMixed : undefined,
           ]}
           cursor={!disabled ? 'pointer' : undefined}
@@ -202,7 +202,7 @@ export const StyledInput = forwardRef<
         <Box
           flexShrink={0}
           position="relative"
-          className={[styles.fakeField, styles.fakeFieldSize[size]]}
+          className={[styles.fakeField, styles.sizeVars[size]]}
           background={fieldBackground}
           borderRadius={fieldBorderRadius}
         >
