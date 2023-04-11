@@ -3,21 +3,18 @@ import { atoms } from '../../../css/atoms/atoms';
 import { colorModeStyle } from '../../../css/colorModeStyle';
 import { vars } from '../../../themes/vars.css';
 
-const space = 2;
-const lineThickness = 2;
+const space = '2px';
 
 export const root = style([
   atoms({ borderRadius: 'small' }),
   {
-    padding: space,
-    margin: -space,
+    padding: `0 ${space}`,
+    margin: `0 -${space}`,
     textDecoration: 'underline',
     textDecorationStyle: 'wavy',
     textDecorationSkipInk: 'none',
-    textDecorationThickness: lineThickness,
+    textDecorationThickness: 2,
     textUnderlineOffset: 2,
-    paddingBottom: lineThickness / 2,
-    marginBottom: -(lineThickness / 2),
   },
 ]);
 
