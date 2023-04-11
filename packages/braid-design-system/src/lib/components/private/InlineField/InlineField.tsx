@@ -1,5 +1,5 @@
 import type { ReactNode, ReactElement } from 'react';
-import React, { forwardRef } from 'react';
+import React, { cloneElement, forwardRef } from 'react';
 import { Box } from '../../Box/Box';
 import type { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import type { FieldMessageProps } from '../../FieldMessage/FieldMessage';
@@ -67,6 +67,17 @@ export const InlineField = forwardRef<
     const descriptionId = `${id}-description`;
     const hasMessage = message || reserveMessageSpace;
 
+    if (process.env.NODE_ENV !== 'production') {
+      if (badge && badge.props.bleedY !== undefined) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `Badge elements cannot set the \`bleedY\` prop when passed to a ${type
+            .charAt(0)
+            .toUpperCase()}${type.slice(1)} component`,
+        );
+      }
+    }
+
     return (
       <Box position="relative" zIndex={0} className={styles.root}>
         <Box display="flex">
@@ -93,27 +104,27 @@ export const InlineField = forwardRef<
           />
 
           <Box paddingLeft="small" flexGrow={1}>
-            <Inline space="small">
-              <Box
-                component="label"
-                htmlFor={id}
-                userSelect="none"
-                display="block"
-                cursor={!disabled ? 'pointer' : undefined}
-                className={[styles.labelOffset[size], virtualTouchable()]}
-              >
-                <Text
-                  weight={checked && !inList ? 'strong' : undefined}
-                  tone={disabled ? 'secondary' : undefined}
-                  size={size}
+            <Box className={[styles.sizeVars[size], styles.labelOffset]}>
+              <Inline space="small" alignY="center">
+                <Box
+                  component="label"
+                  htmlFor={id}
+                  userSelect="none"
+                  display="block"
+                  cursor={!disabled ? 'pointer' : undefined}
+                  className={virtualTouchable()}
                 >
-                  {label}
-                </Text>
-              </Box>
-              {badge ? (
-                <Box className={styles.badgeOffset[size]}>{badge}</Box>
-              ) : null}
-            </Inline>
+                  <Text
+                    weight={checked && !inList ? 'strong' : undefined}
+                    tone={disabled ? 'secondary' : undefined}
+                    size={size}
+                  >
+                    {label}
+                  </Text>
+                </Box>
+                {badge ? cloneElement(badge, { bleedY: true }) : null}
+              </Inline>
+            </Box>
 
             {description ? (
               <Box paddingTop="small">
