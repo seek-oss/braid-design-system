@@ -10,6 +10,7 @@ import { Text } from '../Text/Text';
 import { paginate } from './paginate';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styles from './Pagination.css';
 
 export interface PaginationProps {
@@ -82,6 +83,7 @@ const tabletButtonSpacing = 'xxsmall';
 
 const Page = ({ number, current }: { number: number; current: boolean }) => {
   const parentBackground = useBackground();
+  const isLegacyTheme = useBraidTheme().legacy;
 
   return (
     <Box
@@ -107,9 +109,10 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
         boxShadow="borderFormAccent"
         className={{
           [styles.lightModeCurrentKeyline]:
-            parentBackground.lightMode !== 'surface' && current,
-          [styles.darkModeCurrentKeyline]:
-            parentBackground.darkMode !== 'surface' && current,
+            isLegacyTheme &&
+            parentBackground.lightMode !== 'surface' &&
+            current,
+          [styles.darkModeCurrentKeyline]: current,
         }}
       />
       <Box component="span" zIndex={1} userSelect="none">

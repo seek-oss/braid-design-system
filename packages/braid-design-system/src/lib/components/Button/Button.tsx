@@ -21,6 +21,7 @@ import ActionsContext from '../Actions/ActionsContext';
 import type { UseIconProps } from '../../hooks/useIcon';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { Bleed } from '../Bleed/Bleed';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styles from './Button.css';
 
 export const buttonVariants = [
@@ -309,10 +310,14 @@ export const ButtonText = ({
 }: ButtonProps) => {
   const lightness = useBackgroundLightness();
   const actionsContext = useContext(ActionsContext);
+  const isLegacyTheme = useBraidTheme().legacy;
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone ?? 'default'];
   const shouldReducePaddingX = size === 'small' || variant === 'transparent';
-  const labelPaddingX = shouldReducePaddingX ? transparentPaddingX : 'medium';
+  const labelPaddingXForTheme = isLegacyTheme ? 'medium' : 'gutter';
+  const labelPaddingX = shouldReducePaddingX
+    ? transparentPaddingX
+    : labelPaddingXForTheme;
 
   assert(
     !icon || (icon.props.size === undefined && icon.props.tone === undefined),

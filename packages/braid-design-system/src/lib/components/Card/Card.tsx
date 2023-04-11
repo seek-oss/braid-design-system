@@ -6,6 +6,7 @@ import type { ResponsiveRangeProps } from '../../utils/resolveResponsiveRangePro
 import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 import type { BoxProps } from '../Box/Box';
 import { Box } from '../Box/Box';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
 import { Keyline } from '../private/Keyline/Keyline';
@@ -51,6 +52,7 @@ export const Card = ({
       .map((c) => `'${c}'`)
       .join(', ')}]`,
   );
+  const isLegacyTheme = useBraidTheme().legacy;
 
   let resolvedRounding: BoxProps['borderRadius'];
 
@@ -68,16 +70,19 @@ export const Card = ({
     ]);
   }
 
+  const roundingForTheme = !isLegacyTheme ? borderRadius : resolvedRounding;
+
   return (
     <Box
       component={component}
       position="relative"
       background="surface"
       padding="gutter"
-      borderRadius={resolvedRounding}
+      borderRadius={roundingForTheme}
+      boxShadow={!isLegacyTheme ? 'borderNeutralLight' : undefined}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      {tone ? <Keyline tone={tone} borderRadius={resolvedRounding} /> : null}
+      {tone ? <Keyline tone={tone} borderRadius={roundingForTheme} /> : null}
       {children}
     </Box>
   );

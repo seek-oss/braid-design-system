@@ -86,6 +86,11 @@
       "import": "./dist/themes/seekBusiness.mjs",
       "require": "./dist/themes/seekBusiness.cjs"
     },
+    "./themes/seekJobs": {
+      "types": "./dist/themes/seekJobs.d.ts",
+      "import": "./dist/themes/seekJobs.mjs",
+      "require": "./dist/themes/seekJobs.cjs"
+    },
     "./themes/wireframe": {
       "types": "./dist/themes/wireframe.d.ts",
       "import": "./dist/themes/wireframe.mjs",
@@ -116,6 +121,7 @@
     "themes/apac",
     "themes/docs",
     "themes/seekBusiness",
+    "themes/seekJobs",
     "themes/wireframe"
   ],
   "scripts": {
