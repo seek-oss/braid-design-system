@@ -180,11 +180,19 @@ const docs: ComponentDocs = {
     {
       label: 'Contextual design',
       description: (
-        <Text>
-          When inside a <TextLink href="/components/Card">Card</TextLink>, the
-          outline of the Pagination&rsquo;s active page is omitted since the
-          background has sufficient contrast without it.
-        </Text>
+        <>
+          <Notice>
+            <Text>
+              Only applicable to themes with grey body backgrounds, e.g.{' '}
+              <Strong>apac</Strong>.
+            </Text>
+          </Notice>
+          <Text>
+            When Pagination is used on a <Strong>surface</Strong> background
+            colour, i.e. in a <TextLink href="/components/Card">Card</TextLink>,
+            the outline of the active page indicator is omitted.
+          </Text>
+        </>
       ),
       Example: ({ setDefaultState, getState, setState }) =>
         source(
