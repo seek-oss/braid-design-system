@@ -16,16 +16,16 @@ Through the development of this theme, we have been able improve the fidelity of
 ```tsx
 import seekJobs from 'braid-design-system/themes/seekJobs';
 
-<BraidProvider theme={seekjobs}>
+<BraidProvider theme={seekJobs}>
   ...
 </BraidProvider>
 ```
 
 **MIGRATION**
 
-Consumers of the apac theme are not recommended to migrate independently. The seekJobs theme represents an uplifted visual identity that is part of a wider visual uplift.
+Consumers of the `apac` theme are not recommended to migrate independently. The `seekJobs` theme represents an uplifted visual identity that is part of a wider visual uplift.
 Instead, we’ll be guiding the initial teams through a staged migration in coordination with the centralised team process.
-There are some differences in how certain concepts are applied, whether it's the space scale, or `Card` usage, etc. and we will be documenting these in due course.
+There are some differences in how certain concepts are applied, whether it's the space scale, or `Card` usage, etc., and we will be documenting these in due course.
 
 If you would like to talk about migrating, please reach out to us in our **#braid-support** channel on slack.
 
