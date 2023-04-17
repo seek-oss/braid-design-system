@@ -79,7 +79,7 @@ export const InlineField = forwardRef<
     }
 
     return (
-      <Box position="relative" zIndex={0} className={styles.root}>
+      <Box position="relative">
         <Box display="flex">
           <StyledInput
             {...restProps}
@@ -136,6 +136,7 @@ export const InlineField = forwardRef<
 
             {children ? (
               <Box
+                position="relative"
                 display="none"
                 paddingTop="small"
                 className={styles.children}
