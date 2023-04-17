@@ -12,14 +12,6 @@ const sizes = {
 
 export type Size = keyof typeof sizes;
 
-// Reset the z-index at the parent level to scope
-// overrides internally.
-export const root = style({
-  ':hover': {
-    zIndex: 1,
-  },
-});
-
 const fieldSize = createVar();
 const labelCapHeight = createVar();
 export const sizeVars = styleVariants(sizes, (size) =>
@@ -68,6 +60,7 @@ export const children = style({
     [`${realField}:checked ~ * &,
       ${realField}${isMixed} ~ * &`]: {
       display: 'block',
+      zIndex: 1,
     },
   },
 });
