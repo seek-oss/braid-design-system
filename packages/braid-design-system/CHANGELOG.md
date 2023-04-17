@@ -1,5 +1,35 @@
 # braid-design-system
 
+## 32.3.1
+
+### Patch Changes
+
+- **RadioItem, Checkbox:** Fix stacking context behaviour ([#1284](https://github.com/seek-oss/braid-design-system/pull/1284))
+
+  A `RadioItem` and `Checkbox` previously created a new stacking context with an elevated `z-index` applied on hover, resulting in their labels overlaying other elements in an unpredictable ways — most noticable when [toggling nested content].
+
+  For example, toggling nested content containing an `Autosuggest`, would see the list of suggestions list would be overlayed by the next `RadioItem` on hover.
+
+  To fix this, the `z-index` is no longer elevated on hover, and additionally the nested content container applies an elevated index when the field is **checked**.
+
+  [toggling nested content]: https://seek-oss.github.io/braid-design-system/components/RadioGroup#toggling-nested-content
+
+- **Textarea:** Adjust `highlightRange` background to support different line heights ([#1279](https://github.com/seek-oss/braid-design-system/pull/1279))
+
+  Remove the vertical padding on the highlight element to prevent the background colour overlapping the wavy underline in themes with tighter line heights.
+
+- **MenuItemCheckbox:** Align checkbox size with a `small` Checkbox ([#1276](https://github.com/seek-oss/braid-design-system/pull/1276))
+
+  Align the size of a `MenuItemCheckbox` with a `small` sized `Checkbox`.
+
+- **Checkbox, RadioItem:** Fix alignment with updated Badge layout ([#1280](https://github.com/seek-oss/braid-design-system/pull/1280))
+
+  Improve layout to work with updated Badge layout which is no longer driven by line height.
+
+- **MonthPicker:** Reduce space between fields ([#1277](https://github.com/seek-oss/braid-design-system/pull/1277))
+
+  Reduce the space between the month and year fields.
+
 ## 32.3.0
 
 ### Minor Changes

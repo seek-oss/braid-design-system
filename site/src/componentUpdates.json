@@ -3227,5 +3227,44 @@
         "summary": "**Alert:** Design uplift\n\nRefine the design to use consistent horizontal container inset, aligning content with elements like `Card`, as well as simplifying the design by removing the sidebar/keyline (consistent with `useToast`)."
       }
     ]
+  },
+  {
+    "version": "32.3.1",
+    "updates": [
+      {
+        "updated": [
+          "Checkbox",
+          "RadioItem",
+          "Radio"
+        ],
+        "summary": "**RadioItem, Checkbox:** Fix stacking context behaviour\n\nA `RadioItem` and `Checkbox` previously created a new stacking context with an elevated `z-index` applied on hover, resulting in their labels overlaying other elements in an unpredictable ways — most noticable when [toggling nested content].\n\nFor example, toggling nested content containing an `Autosuggest`, would see the list of suggestions list would be overlayed by the next `RadioItem` on hover.\n\nTo fix this, the `z-index` is no longer elevated on hover, and additionally the nested content container applies an elevated index when the field is **checked**.\n\n[toggling nested content]: https://seek-oss.github.io/braid-design-system/components/RadioGroup#toggling-nested-content"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Adjust `highlightRange` background to support different line heights\n\nRemove the vertical padding on the highlight element to prevent the background colour overlapping the wavy underline in themes with tighter line heights."
+      },
+      {
+        "updated": [
+          "MenuItemCheckbox"
+        ],
+        "summary": "**MenuItemCheckbox:** Align checkbox size with a `small` Checkbox\n\nAlign the size of a `MenuItemCheckbox` with a `small` sized `Checkbox`."
+      },
+      {
+        "updated": [
+          "Checkbox",
+          "RadioItem",
+          "Radio"
+        ],
+        "summary": "**Checkbox, RadioItem:** Fix alignment with updated Badge layout\n\nImprove layout to work with updated Badge layout which is no longer driven by line height."
+      },
+      {
+        "updated": [
+          "MonthPicker"
+        ],
+        "summary": "**MonthPicker:** Reduce space between fields\n\nReduce the space between the month and year fields."
+      }
+    ]
   }
 ]
