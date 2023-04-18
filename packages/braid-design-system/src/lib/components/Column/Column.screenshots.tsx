@@ -122,5 +122,49 @@ export const screenshots: ComponentScreenshot = {
         </Fragment>
       ),
     },
+    {
+      label:
+        'Full height column, where column with shorter content has specified width',
+      Example: () => (
+        <Stack space="medium">
+          {widths.map((width) => (
+            <Columns space="small" key={width}>
+              <Column width={width}>
+                <Box height="full" background="brandAccent">
+                  <Placeholder height={40} label={width} />
+                </Box>
+              </Column>
+              <Column>
+                <Box height="full">
+                  <Placeholder height={100} label="Fluid" />
+                </Box>
+              </Column>
+            </Columns>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'Full height column, where column with shorter content has specified width',
+      Example: () => (
+        <Stack space="medium">
+          {widths.map((width) => (
+            <Columns space="small" key={width}>
+              <Column width={width}>
+                <Box height="full">
+                  <Placeholder height={100} label={width} />
+                </Box>
+              </Column>
+              <Column>
+                <Box height="full" background="brandAccent">
+                  <Placeholder height={40} label="Fluid" />
+                </Box>
+              </Column>
+            </Columns>
+          ))}
+        </Stack>
+      ),
+    },
   ],
 };
