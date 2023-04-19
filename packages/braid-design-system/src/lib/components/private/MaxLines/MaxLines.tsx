@@ -14,7 +14,11 @@ export const MaxLines = ({
   <Box
     component="span"
     className={[styles.base, lines > 1 ? styles.multiLine : undefined]}
-    style={assignInlineVars({ [styles.lineLimit]: String(lines) })}
+    style={
+      lines > 1
+        ? assignInlineVars({ [styles.lineLimit]: String(lines) })
+        : undefined
+    }
   >
     {children}
   </Box>
