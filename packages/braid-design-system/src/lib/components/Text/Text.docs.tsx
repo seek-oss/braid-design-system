@@ -9,6 +9,7 @@ import {
   Inline,
   List,
   IconPromote,
+  Alert,
 } from '../';
 import source from '../../utils/source.macro';
 
@@ -98,18 +99,37 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Truncation',
+      label: 'Limiting the number of lines',
       description: (
-        <Text>
-          If you’re displaying user-generated content that may not fit within
-          your layout, you can truncate text with the <Strong>truncate</Strong>{' '}
-          prop.
-        </Text>
+        <>
+          <Text>
+            When displaying user-generated content that may not fit within your
+            layout, you can control the number of lines to display with the{' '}
+            <Strong>maxLines</Strong> prop.
+          </Text>
+          <Alert tone="caution">
+            <Text>
+              The <Strong>truncate</Strong> prop has been deprecated in favour
+              of <Strong>{`maxLines={1}`}</Strong>, and will be removed in a
+              future version.
+            </Text>
+          </Alert>
+        </>
       ),
       Example: () =>
         source(
           <Box style={{ width: 215 }}>
-            <Text truncate>Really long text that won’t fit in the layout</Text>
+            <Stack space="large">
+              <Text maxLines={1}>
+                Text <Strong>limited to 1 line</Strong> that won’t fit in the
+                layout
+              </Text>
+              <Text maxLines={3}>
+                Another example of really long text, but{' '}
+                <Strong>limited to 3 lines</Strong>, and won’t fit in the
+                layout.
+              </Text>
+            </Stack>
           </Box>,
         ),
     },

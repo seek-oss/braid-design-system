@@ -4,15 +4,18 @@ import type { BoxProps } from '../../Box/Box';
 import { Box } from '../../Box/Box';
 import type { DataAttributeMap } from '../buildDataAttributes';
 import buildDataAttributes from '../buildDataAttributes';
-import { Truncate } from '../Truncate/Truncate';
+import { MaxLines } from '../MaxLines/MaxLines';
 import type { UseIconProps } from '../../../hooks/useIcon';
 import { alignToFlexAlign } from '../../../utils/align';
+import dedent from 'dedent';
 
 export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   children?: ReactNode;
   icon?: ReactElement<UseIconProps>;
   align?: BoxProps['textAlign'];
+  /** @deprecated Use `maxLines={1}` instead. */
   truncate?: boolean;
+  maxLines?: number;
   data?: DataAttributeMap;
 }
 interface PrivateTypographyProps
@@ -25,12 +28,37 @@ export const Typography = ({
   className,
   align,
   truncate = false,
+  maxLines,
   icon,
   data,
   children,
   ...restProps
 }: PrivateTypographyProps) => {
-  const contents = truncate ? <Truncate>{children}</Truncate> : children;
+  const lines = truncate ? 1 : maxLines;
+  const contents =
+    typeof lines === 'number' ? (
+      <MaxLines lines={lines}>{children}</MaxLines>
+    ) : (
+      children
+    );
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof truncate !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The "truncate" prop has been deprecated and will be removed in a future version. Use "maxLines" instead.
+             <Text
+            %c-   truncate
+            %c+   maxLines={1}
+             %c/>
+        `,
+        'color: red',
+        'color: green',
+        'color: inherit',
+      );
+    }
+  }
 
   return (
     <Box

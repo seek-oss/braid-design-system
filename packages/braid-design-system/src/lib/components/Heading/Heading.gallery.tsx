@@ -62,7 +62,7 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Box style={{ width: 150 }}>
-          <Heading level="2" truncate>
+          <Heading level="2" maxLines={1}>
             Long heading
           </Heading>
         </Box>,

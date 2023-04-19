@@ -1,7 +1,16 @@
 import React from 'react';
 import source from '../../utils/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Box, Heading, Stack, Text, Strong, TextLink, IconPromote } from '../';
+import {
+  Box,
+  Heading,
+  Stack,
+  Text,
+  Strong,
+  TextLink,
+  IconPromote,
+  Alert,
+} from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -98,20 +107,35 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Truncation',
+      label: 'Limiting the number of lines',
       description: (
-        <Text>
-          If you’re displaying user-generated content that may not fit within
-          your layout, you can truncate text with the <Strong>truncate</Strong>{' '}
-          prop.
-        </Text>
+        <>
+          <Text>
+            When displaying user-generated content that may not fit within your
+            layout, you can control the number of lines to display with the{' '}
+            <Strong>maxLines</Strong> prop.
+          </Text>
+          <Alert tone="caution">
+            <Text>
+              The <Strong>truncate</Strong> prop has been deprecated in favour
+              of <Strong>{`maxLines={1}`}</Strong>, and will be removed in a
+              future version.
+            </Text>
+          </Alert>
+        </>
       ),
       Example: () =>
         source(
-          <Box style={{ width: 215 }}>
-            <Heading level="2" truncate>
-              Really long text that won’t fit in the layout
-            </Heading>
+          <Box style={{ width: 240 }}>
+            <Stack space="large">
+              <Heading level="2" maxLines={1}>
+                Limited to 1 line that won’t fit in the layout
+              </Heading>
+              <Heading level="2" maxLines={3}>
+                Another example of long text, but limited to 3 lines, and won’t
+                fit in the layout.
+              </Heading>
+            </Stack>
           </Box>,
         ),
     },
