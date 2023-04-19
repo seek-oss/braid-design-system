@@ -226,7 +226,7 @@ function MenuItemChildren({
           size={menuItemChildrenSize}
           baseline={false}
           tone={tone === 'critical' ? tone : undefined}
-          truncate
+          maxLines={1}
         >
           {children}
         </Text>

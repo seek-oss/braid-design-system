@@ -53,7 +53,7 @@ export const Tag = ({
         borderRadius="full"
       >
         <Box minWidth={0} title={children}>
-          <Text baseline={false} truncate icon={icon}>
+          <Text baseline={false} maxLines={1} icon={icon}>
             {children}
           </Text>
         </Box>
