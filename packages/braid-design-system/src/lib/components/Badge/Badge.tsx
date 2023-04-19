@@ -90,7 +90,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
           borderRadius="standard"
           overflow="hidden"
         >
-          <Text size="xsmall" weight="medium" truncate>
+          <Text size="xsmall" weight="medium" maxLines={1}>
             {children}
           </Text>
         </Box>

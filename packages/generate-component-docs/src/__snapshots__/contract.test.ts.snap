@@ -3188,6 +3188,7 @@ exports[`Heading 1`] = `
         | "2"
         | "3"
         | "4"
+    maxLines?: number
     truncate?: boolean
     weight?: 
         | "regular"
@@ -7310,6 +7311,7 @@ exports[`Text 1`] = `
     data?: DataAttributeMap
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
+    maxLines?: number
     size?: 
         | "large"
         | "small"
