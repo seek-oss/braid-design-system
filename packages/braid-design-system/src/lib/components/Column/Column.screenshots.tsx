@@ -146,7 +146,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Full height column, where column with shorter content has specified width',
+        'Full height column, where column with taller content has specified width',
       Example: () => (
         <Stack space="medium">
           {widths.map((width) => (
