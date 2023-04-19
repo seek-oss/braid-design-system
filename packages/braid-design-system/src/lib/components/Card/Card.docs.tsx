@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Box, Stack, Card, Text, Tiles, Strong } from '../';
+import { Box, Stack, Card, Text, Tiles, Strong, Columns, Column } from '../';
 import { Placeholder } from '../../playroom/components';
 import source from '../../utils/source.macro';
 import { validCardComponents } from './Card';
@@ -21,6 +21,42 @@ const docs: ComponentDocs = {
     },
   ],
   additional: [
+    {
+      label: 'Controlling the height',
+      description: (
+        <>
+          <Text>
+            By default, <Strong>height</Strong> will be set to{' '}
+            <Strong>content</Strong> — growing to accomodate what is inside it.
+          </Text>
+          <Text>
+            Alternatively, choose a height of <Strong>full</Strong> to use all
+            available vertical space. This is useful when composing rows of Card
+            components that should all be equal height.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Columns space={{ mobile: 'xsmall', tablet: 'gutter' }}>
+            <Column>
+              <Card height="full">
+                <Placeholder height={60} />
+              </Card>
+            </Column>
+            <Column>
+              <Card height="full">
+                <Placeholder height={200} />
+              </Card>
+            </Column>
+            <Column>
+              <Card height="full">
+                <Placeholder height={100} />
+              </Card>
+            </Column>
+          </Columns>,
+        ),
+    },
     {
       label: 'Tones',
       description: (
