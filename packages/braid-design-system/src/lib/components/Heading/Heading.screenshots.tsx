@@ -85,7 +85,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Truncation (legacy)',
       Example: () => (
-        <Box style={{ width: 240 }}>
+        <Box style={{ width: 220 }}>
           <Heading level="2" truncate>
             Limited to 1 line that won’t fit in the layout
           </Heading>
@@ -95,7 +95,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Max lines = 1 (should be same as truncation)',
       Example: () => (
-        <Box style={{ width: 240 }}>
+        <Box style={{ width: 220 }}>
           <Heading level="2" maxLines={1}>
             Limited to 1 line that won’t fit in the layout
           </Heading>
@@ -105,7 +105,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Max lines = 3',
       Example: () => (
-        <Box style={{ width: 240 }}>
+        <Box style={{ width: 220 }}>
           <Heading level="2" maxLines={3}>
             Another example of long text, but limited to 3 lines, and won’t fit
             in the layout.
