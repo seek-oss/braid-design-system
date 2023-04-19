@@ -3266,5 +3266,37 @@
         "summary": "**MonthPicker:** Reduce space between fields\n\nReduce the space between the month and year fields."
       }
     ]
+  },
+  {
+    "version": "32.4.0",
+    "updates": [
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink, TextLinkButton:** Update underline design\n\nUplift the design of the the text underline used on `TextLink` and `TextLinkButton` components."
+      },
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Add `maxLines` support\n\nProvide support for limiting the number of lines shown by a `Text` or `Heading` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<Text maxLines={3}>\n  ...\n</Text>\n```\n\n**MIGRATION:**\n\nWith the addition of this feature, the `truncate` prop is now deprecated and will be removed in a future release.\nExisting consumers should start migrating as below:\n\n```diff\n <Text\n-   truncate\n+   maxLines={1}\n />\n```"
+      },
+      {
+        "updated": [
+          "Card"
+        ],
+        "summary": "**Card:** Add full height support\n\nProvide support for making a `Card` use all available vertical space.\nThis is useful when laying out rows of `Card` elements and having them all be equal height.\n\n**EXAMPLE USAGE:**\n```jsx\n<Card height=\"full\">\n  ...\n</Card>\n```"
+      },
+      {
+        "updated": [
+          "Columns",
+          "Column"
+        ],
+        "summary": "**Column:** Support full height content\n\nProvide support for full height content by growing all `Column` elements to be uniform in height.\n\nThis will have no effect on the content itself, but enables consumers to create designs of uniform content, such as rows of `Card` elements."
+      }
+    ]
   }
 ]

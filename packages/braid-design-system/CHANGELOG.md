@@ -1,5 +1,54 @@
 # braid-design-system
 
+## 32.4.0
+
+### Minor Changes
+
+- **Text, Heading:** Add `maxLines` support ([#1286](https://github.com/seek-oss/braid-design-system/pull/1286))
+
+  Provide support for limiting the number of lines shown by a `Text` or `Heading` component.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text maxLines={3}>...</Text>
+  ```
+
+  **MIGRATION:**
+
+  With the addition of this feature, the `truncate` prop is now deprecated and will be removed in a future release.
+  Existing consumers should start migrating as below:
+
+  ```diff
+   <Text
+  -   truncate
+  +   maxLines={1}
+   />
+  ```
+
+- **Card:** Add full height support ([#1285](https://github.com/seek-oss/braid-design-system/pull/1285))
+
+  Provide support for making a `Card` use all available vertical space.
+  This is useful when laying out rows of `Card` elements and having them all be equal height.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Card height="full">...</Card>
+  ```
+
+### Patch Changes
+
+- **TextLink, TextLinkButton:** Update underline design ([#1288](https://github.com/seek-oss/braid-design-system/pull/1288))
+
+  Uplift the design of the the text underline used on `TextLink` and `TextLinkButton` components.
+
+- **Column:** Support full height content ([#1285](https://github.com/seek-oss/braid-design-system/pull/1285))
+
+  Provide support for full height content by growing all `Column` elements to be uniform in height.
+
+  This will have no effect on the content itself, but enables consumers to create designs of uniform content, such as rows of `Card` elements.
+
 ## 32.3.1
 
 ### Patch Changes
