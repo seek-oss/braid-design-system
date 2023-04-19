@@ -101,10 +101,33 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Truncation',
+      label: 'Truncation (legacy)',
       Example: () => (
-        <Box style={{ width: 90 }}>
-          <Text truncate>Long piece of text</Text>
+        <Box style={{ width: 215 }}>
+          <Text truncate>
+            Text limited to 1 line that won’t fit in the layout
+          </Text>
+        </Box>
+      ),
+    },
+    {
+      label: 'Max lines = 1 (should be same as truncation)',
+      Example: () => (
+        <Box style={{ width: 215 }}>
+          <Text maxLines={1}>
+            Text limited to 1 line that won’t fit in the layout
+          </Text>
+        </Box>
+      ),
+    },
+    {
+      label: 'Max lines = 3',
+      Example: () => (
+        <Box style={{ width: 215 }}>
+          <Text maxLines={3}>
+            Another example of really long text, but limited to 3 lines, and
+            won’t fit in the layout.
+          </Text>
         </Box>
       ),
     },

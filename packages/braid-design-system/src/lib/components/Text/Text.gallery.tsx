@@ -46,7 +46,7 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Box style={{ width: 90 }}>
-          <Text truncate>Long piece of text</Text>
+          <Text maxLines={1}>Long piece of text</Text>
         </Box>,
       ),
   },
