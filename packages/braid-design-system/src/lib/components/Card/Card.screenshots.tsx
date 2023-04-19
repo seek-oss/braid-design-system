@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Card } from '../';
+import { Box, Card } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
@@ -76,6 +76,26 @@ export const screenshots: ComponentScreenshot = {
         <Card tone="formAccent" rounded>
           <Placeholder height={100} />
         </Card>
+      ),
+    },
+    {
+      label: 'Height full',
+      Example: () => (
+        <Box style={{ height: 300 }}>
+          <Card height="full">
+            <Placeholder height={60} />
+          </Card>
+        </Box>
+      ),
+    },
+    {
+      label: 'Height content (default)',
+      Example: () => (
+        <Box style={{ height: 300 }}>
+          <Card height="content">
+            <Placeholder height={60} />
+          </Card>
+        </Box>
       ),
     },
   ],

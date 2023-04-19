@@ -38,6 +38,7 @@ export const Column = ({
       minWidth={0}
       width={width !== 'content' ? 'full' : undefined}
       flexShrink={width === 'content' ? 0 : undefined}
+      flexGrow={1}
       className={[
         styles.column,
         width !== 'content' ? styles.width[width!] : null,

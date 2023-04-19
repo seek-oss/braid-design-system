@@ -2653,6 +2653,9 @@ exports[`Card 1`] = `
         | "main"
         | "section"
     data?: DataAttributeMap
+    height?: 
+        | "content"
+        | "full"
     rounded?: boolean
     roundedAbove?: 
         | "desktop"

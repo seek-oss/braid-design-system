@@ -35,6 +35,7 @@ export type CardProps = {
   children: ReactNode;
   tone?: 'promote' | 'formAccent';
   component?: (typeof validCardComponents)[number];
+  height?: Extract<BoxProps['height'], 'full'> | 'content';
   data?: DataAttributeMap;
 } & (SimpleCardRounding | ResponsiveCardRounding);
 
@@ -43,6 +44,7 @@ export const Card = ({
   component = 'div',
   tone,
   data,
+  height,
   ...restProps
 }: CardProps) => {
   assert(
@@ -75,6 +77,7 @@ export const Card = ({
       background="surface"
       padding="gutter"
       borderRadius={resolvedRounding}
+      height={height === 'full' ? height : undefined}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {tone ? <Keyline tone={tone} borderRadius={resolvedRounding} /> : null}
