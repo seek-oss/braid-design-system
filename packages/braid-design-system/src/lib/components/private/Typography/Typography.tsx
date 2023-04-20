@@ -43,7 +43,7 @@ export const Typography = ({
     );
 
   if (process.env.NODE_ENV !== 'production') {
-    if (typeof truncate !== 'undefined' && truncate) {
+    if (truncate) {
       // eslint-disable-next-line no-console
       console.warn(
         dedent`
