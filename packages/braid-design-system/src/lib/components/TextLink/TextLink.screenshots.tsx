@@ -335,5 +335,63 @@ export const screenshots: ComponentScreenshot = {
         </Fragment>
       ),
     },
+    {
+      label: 'Underline position wrap test',
+      Example: () => (
+        <Box style={{ maxWidth: 200 }}>
+          <Stack space="large">
+            <Text size="xsmall">
+              xsmall{' '}
+              <TextLink href="#" weight="weak">
+                Abcing wrap wrap wrap wrap wrap Wrap
+              </TextLink>
+            </Text>
+            <Text size="small">
+              small{' '}
+              <TextLink href="#" weight="weak">
+                Abcing wrap wrap wrap wrap wrap Wrap
+              </TextLink>
+            </Text>
+            <Text size="standard">
+              standard{' '}
+              <TextLink href="#" weight="weak">
+                Abcing wrap wrap wrap wr Wrap
+              </TextLink>
+            </Text>
+            <Text size="large">
+              large{' '}
+              <TextLink href="#" weight="weak">
+                Abcing wrap wrap wrap wr Wrap
+              </TextLink>
+            </Text>
+
+            <Heading level="4">
+              Heading4{' '}
+              <TextLink href="#" weight="weak">
+                Abcing wrap wrap Wrap Wrap
+              </TextLink>
+            </Heading>
+            <Heading level="3">
+              Heading3{' '}
+              <TextLink href="#" weight="weak">
+                Abcing wrap wrap Wrap
+              </TextLink>
+            </Heading>
+            <Heading level="2">
+              H2{' '}
+              <TextLink href="#" weight="weak">
+                Abcing wrap wrap Wrap
+              </TextLink>
+            </Heading>
+            <Heading level="1">
+              H1{' '}
+              <TextLink href="#" weight="weak">
+                Abing wrap Wrap Wrap
+              </TextLink>
+            </Heading>
+          </Stack>
+        </Box>
+      ),
+    },
   ],
 };
