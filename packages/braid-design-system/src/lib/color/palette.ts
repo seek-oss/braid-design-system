@@ -9,6 +9,7 @@ export const palette = {
     300: '#ABB3C1',
     200: '#D2D7DF',
     100: '#EAECF1',
+    75: '#F3F5F7',
     50: '#F7F8FB',
   },
   seekPink: {
