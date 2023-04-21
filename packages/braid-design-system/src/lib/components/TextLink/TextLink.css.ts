@@ -39,7 +39,7 @@ export const base = style({
   color: textLinkVars.color,
   textDecoration: textLinkVars.textDecoration,
   textDecorationThickness: '0.1em',
-  textUnderlineOffset: '0.32em',
+  textUnderlineOffset: 3,
   ':hover': {
     color: textLinkVars.colorHover,
     textDecoration: textLinkVars.textDecorationHover,
