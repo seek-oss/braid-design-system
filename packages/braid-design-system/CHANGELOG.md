@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 32.4.1
+
+### Patch Changes
+
+- **Text, Heading:** Only show truncate deprecation message when true ([#1289](https://github.com/seek-oss/braid-design-system/pull/1289))
+
+  Only show the truncate deprecation message when `truncate` is provided and set to `true`
+
+- **TextLink, TextLinkButton:** Improve underline position for wrapping text ([#1290](https://github.com/seek-oss/braid-design-system/pull/1290))
+
+  Refine the underline position to be consistent across the whole typographic hierarchy, ensuring it does not interfere with wrapping lines of text.
+
 ## 32.4.0
 
 ### Minor Changes
