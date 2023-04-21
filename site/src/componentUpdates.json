@@ -3298,5 +3298,24 @@
         "summary": "**Column:** Support full height content\n\nProvide support for full height content by growing all `Column` elements to be uniform in height.\n\nThis will have no effect on the content itself, but enables consumers to create designs of uniform content, such as rows of `Card` elements."
       }
     ]
+  },
+  {
+    "version": "32.4.1",
+    "updates": [
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Only show truncate deprecation message when true\n\nOnly show the truncate deprecation message when `truncate` is provided and set to `true`"
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink, TextLinkButton:** Improve underline position for wrapping text\n\nRefine the underline position to be consistent across the whole typographic hierarchy, ensuring it does not interfere with wrapping lines of text."
+      }
+    ]
   }
 ]
