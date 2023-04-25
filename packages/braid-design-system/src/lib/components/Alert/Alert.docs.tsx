@@ -1,8 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '../../utils/source.macro';
-import { Alert, Text, Strong, Stack, TextLink, List } from '../';
-import { Card } from '../Card/Card';
+import { Alert, Card, Text, Strong, Stack, TextLink, List, Notice } from '../';
 import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
@@ -10,25 +9,23 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Card rounded>
-        <Stack space="medium">
-          <Alert tone="promote">
-            <Text>This is a promoted message.</Text>
-          </Alert>
-          <Alert tone="info">
-            <Text>This is an informative message.</Text>
-          </Alert>
-          <Alert tone="positive">
-            <Text>This is a positive message.</Text>
-          </Alert>
-          <Alert tone="caution">
-            <Text>This is a cautionary message.</Text>
-          </Alert>
-          <Alert tone="critical">
-            <Text>This is a critical message.</Text>
-          </Alert>
-        </Stack>
-      </Card>,
+      <Stack space="medium">
+        <Alert tone="promote">
+          <Text>This is a promoted message.</Text>
+        </Alert>
+        <Alert tone="info">
+          <Text>This is an informative message.</Text>
+        </Alert>
+        <Alert tone="positive">
+          <Text>This is a positive message.</Text>
+        </Alert>
+        <Alert tone="caution">
+          <Text>This is a cautionary message.</Text>
+        </Alert>
+        <Alert tone="critical">
+          <Text>This is a critical message.</Text>
+        </Alert>
+      </Stack>,
     ),
   accessibility: (
     <Text>
@@ -76,7 +73,6 @@ const docs: ComponentDocs = {
           </Text>
         </Stack>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Alert tone="info">
@@ -110,7 +106,6 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
       Example: () =>
         /* eslint-disable no-alert */
         source(
@@ -128,10 +123,16 @@ const docs: ComponentDocs = {
       label: 'Contextual design',
       description: (
         <>
+          <Notice>
+            <Text>
+              Only applicable to themes with grey body backgrounds, e.g.{' '}
+              <Strong>apac</Strong>.
+            </Text>
+          </Notice>
           <Text>
-            When outside of a <TextLink href="/components/Card">Card</TextLink>,
-            an outline is used to provide sufficient contrast against the
-            background.
+            When an Alert is used on a <Strong>surface</Strong> background
+            colour, i.e. in a <TextLink href="/components/Card">Card</TextLink>,
+            the outline is omitted.
           </Text>
           {/*
           TODO: COLORMODE RELEASE
@@ -147,23 +148,25 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="medium">
-            <Alert tone="promote">
-              <Text>This is a promoted message.</Text>
-            </Alert>
-            <Alert tone="info">
-              <Text>This is an informative message.</Text>
-            </Alert>
-            <Alert tone="positive">
-              <Text>This is a positive message.</Text>
-            </Alert>
-            <Alert tone="caution">
-              <Text>This is a cautionary message.</Text>
-            </Alert>
-            <Alert tone="critical">
-              <Text>This is a critical message.</Text>
-            </Alert>
-          </Stack>,
+          <Card>
+            <Stack space="medium">
+              <Alert tone="promote">
+                <Text>This is a promoted message.</Text>
+              </Alert>
+              <Alert tone="info">
+                <Text>This is an informative message.</Text>
+              </Alert>
+              <Alert tone="positive">
+                <Text>This is a positive message.</Text>
+              </Alert>
+              <Alert tone="caution">
+                <Text>This is a cautionary message.</Text>
+              </Alert>
+              <Alert tone="critical">
+                <Text>This is a critical message.</Text>
+              </Alert>
+            </Stack>
+          </Card>,
         ),
     },
   ],

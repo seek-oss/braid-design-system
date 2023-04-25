@@ -1987,7 +1987,7 @@ exports[`BraidProvider 1`] = `
         | FunctionComponent<LinkComponentProps>
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
-    theme: { vanillaTheme: string; name: string; displayName: string; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; xxsmall: number; ... 6 more ...; xxxlarge: number; }; }; color: { ...; }; backgroundLightness: { ...; }; }
+    theme: { vanillaTheme: string; name: string; displayName: string; legacy: boolean; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; ... 7 more ...; xxxlarge: number; }; }; color: { ...; }; backgroundLightness: { ...; }; }
 },
 }
 `;
@@ -2010,6 +2010,7 @@ exports[`BraidTestProvider 1`] = `
         | "apac"
         | "docs"
         | "seekBusiness"
+        | "seekJobs"
         | "wireframe"
 },
 }

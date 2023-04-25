@@ -50,6 +50,7 @@ const getHoverColor = (x: string) =>
 const tokens: BraidTokens = {
   name: 'wireframe',
   displayName: 'Wireframe',
+  legacy: false,
   typography: {
     fontFamily: '"Courier New", monospace',
     webFont: null,

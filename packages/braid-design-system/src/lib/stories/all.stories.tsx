@@ -124,11 +124,19 @@ Object.keys(allStories)
         displayName: 'apacDark',
         name: 'apacDark',
       });
+
+      storyThemes.push({
+        ...themes.seekJobs,
+        displayName: 'seekJobsDark',
+        name: 'seekJobsDark',
+      });
     }
 
     storyThemes.forEach((theme) => {
       const renderStory = () => {
-        if (theme.name === 'apacDark') {
+        const isDark =
+          theme.name === 'apacDark' || theme.name === 'seekJobsDark';
+        if (isDark) {
           document.documentElement.classList.add(darkMode);
         } else {
           document.documentElement.classList.remove(darkMode);
@@ -148,14 +156,10 @@ Object.keys(allStories)
                   }
                   .artboard {
                     --deepColor: ${
-                      theme.name === 'apacDark'
-                        ? `rgba(255, 255, 255, .1)`
-                        : `rgba(0, 0, 0, .05)`
+                      isDark ? `rgba(255, 255, 255, .1)` : `rgba(0, 0, 0, .05)`
                     };
                     --cubeSize: 12px;
-                    background-color: ${
-                      theme.name === 'apacDark' ? `black` : `white`
-                    };
+                    background-color: ${isDark ? `black` : `white`};
                     background-image: linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor)),
                       linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor));
                     background-size: calc(var(--cubeSize) * 2) calc(var(--cubeSize) * 2);

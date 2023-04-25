@@ -19,6 +19,20 @@ interface MakeTokensOptions {
   brandAccentSoftHover: string;
   tokenOverrides?: DeepPartial<BraidTokens>;
 }
+
+const legacyViolet = {
+  900: '#1E0B65',
+  800: '#341B87',
+  700: '#512EAA',
+  600: '#6C41CE',
+  500: '#8B5CEB',
+  400: '#AD84F2',
+  300: '#C6ACF5',
+  200: '#E1D1F9',
+  100: '#F1E8FD',
+  50: '#FAF5FE',
+};
+
 export const makeTokens = ({
   name,
   displayName,
@@ -40,6 +54,7 @@ export const makeTokens = ({
   const tokens: BraidTokens = {
     name,
     displayName,
+    legacy: true,
     typography: {
       fontFamily:
         'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
@@ -196,8 +211,8 @@ export const makeTokens = ({
         neutralInverted: white,
         positive: palette.mint['700'],
         positiveLight: palette.mint['300'],
-        promote: palette.violet['700'],
-        promoteLight: palette.violet['300'],
+        promote: legacyViolet['700'],
+        promoteLight: legacyViolet['300'],
       },
     },
     focusRingSize: 3,
@@ -233,14 +248,14 @@ export const makeTokens = ({
         link: formAccent,
         linkLight: palette.indigo['300'],
         linkHover: formAccent,
-        linkVisited: palette.violet['700'],
-        linkLightVisited: palette.violet['300'],
+        linkVisited: legacyViolet['700'],
+        linkLightVisited: legacyViolet['300'],
         neutral: palette.grey['700'],
         neutralInverted: white,
         positive: palette.mint['700'],
         positiveLight: palette.mint['300'],
-        promote: palette.violet['700'],
-        promoteLight: palette.violet['300'],
+        promote: legacyViolet['700'],
+        promoteLight: legacyViolet['300'],
         rating: '#f57c00',
         secondary: palette.grey['500'],
         secondaryInverted: rgba('#fff', 0.65),
@@ -281,8 +296,8 @@ export const makeTokens = ({
         neutralSoftHover: darken(0.025, palette.grey['50']),
         positive: palette.mint['700'],
         positiveLight: palette.mint['100'],
-        promote: palette.violet['700'],
-        promoteLight: palette.violet['100'],
+        promote: legacyViolet['700'],
+        promoteLight: legacyViolet['100'],
         surface: white,
         surfaceDark: palette.grey['800'],
       },

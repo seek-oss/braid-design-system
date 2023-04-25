@@ -21,6 +21,7 @@ import buildDataAttributes from '../private/buildDataAttributes';
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { iconContainerSize } from '../../hooks/useIcon';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
@@ -69,6 +70,7 @@ export const Alert = ({
   onClose,
   ...restProps
 }: AlertProps) => {
+  const isLegacyTheme = useBraidTheme().legacy;
   const parentBackground = useBackground();
   const Icon = icons[tone];
 
@@ -140,7 +142,7 @@ export const Alert = ({
           </Column>
         ) : null}
       </Columns>
-      {parentBackground.lightMode !== 'surface' && (
+      {isLegacyTheme && parentBackground.lightMode !== 'surface' && (
         <Overlay
           borderRadius={borderRadius}
           boxShadow={{ lightMode: borderForTone[tone] }}

@@ -16,6 +16,7 @@ const secondary = palette.grey['500'];
 const tokens: BraidTokens = {
   name: 'docs',
   displayName: 'Docs',
+  legacy: false,
   typography: {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
