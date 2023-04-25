@@ -1,13 +1,19 @@
 import type { ReactNode } from 'react';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { titleCase } from 'title-case';
 import type { ComponentScreenshot } from 'site/types';
-import { Text, Stack, Column, Columns, IconPositive, IconPromote } from '../';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { Box } from '../Box/Box';
+import {
+  Box,
+  Text,
+  Stack,
+  Column,
+  Columns,
+  IconPositive,
+  IconPromote,
+} from '../';
 import { textSizeUntrimmed, fontWeight } from '../../css/typography.css';
-import { backgrounds, textAlignments } from '../../utils/docsHelpers';
+import { textAlignments } from '../../utils/docsHelpers';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -201,24 +207,22 @@ export const screenshots: ComponentScreenshot = {
       label: 'Contrast',
       Container,
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="xsmall">
-              <Columns space="medium">
-                <Column>
-                  <Text size="small">
-                    {background} <IconPositive />
-                  </Text>
-                </Column>
-                <Column width="content">
-                  <Text size="small" tone="secondary">
-                    Secondary <IconPositive />
-                  </Text>
-                </Column>
-              </Columns>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          {(background) => (
+            <Columns space="medium">
+              <Column>
+                <Text size="small">
+                  {background} <IconPositive />
+                </Text>
+              </Column>
+              <Column width="content">
+                <Text size="small" tone="secondary">
+                  Secondary <IconPositive />
+                </Text>
+              </Column>
+            </Columns>
+          )}
+        </BackgroundContrastTest>
       ),
     },
   ],

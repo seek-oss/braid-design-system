@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import type { ComponentProps } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box, CheckboxStandalone, Column, Columns, Stack, Text } from '../';
+import {
+  Box,
+  CheckboxStandalone,
+  Column,
+  Columns,
+  Stack,
+  Text,
+  Tiles,
+} from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 type CheckboxProps = ComponentProps<typeof CheckboxStandalone>;
 const checkboxSizes: CheckboxProps['size'][] = ['small', 'standard'];
@@ -148,6 +157,29 @@ export const screenshots: ComponentScreenshot = {
               </Box>
             ))}
           </Stack>
+        </Box>
+      ),
+    },
+    {
+      label: 'Contrast',
+      Example: ({ id, handler }) => (
+        <Box maxWidth="xsmall">
+          <BackgroundContrastTest>
+            <Tiles space="small" columns={2}>
+              <CheckboxStandalone
+                id={id}
+                checked={false}
+                onChange={handler}
+                aria-label="Label"
+              />
+              <CheckboxStandalone
+                id={id}
+                checked={true}
+                onChange={handler}
+                aria-label="Label"
+              />
+            </Tiles>
+          </BackgroundContrastTest>
         </Box>
       ),
     },

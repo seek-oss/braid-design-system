@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+import { colorModeStyle } from '../../../css/colorModeStyle';
 import { vars } from '../../../themes/vars.css';
 
 export const field = style({});
@@ -21,6 +22,14 @@ const textLeftOffset = '2px';
 export const iconSpace = style({
   paddingLeft: calc.subtract(vars.touchableSize, textLeftOffset),
 });
+
+export const hideBorderOnDarkBackgroundInLightMode = style(
+  colorModeStyle({
+    lightMode: {
+      opacity: 0,
+    },
+  }),
+);
 
 export const focusOverlay = style({
   selectors: {

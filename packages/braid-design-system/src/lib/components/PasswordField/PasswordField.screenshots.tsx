@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { PasswordField, Stack, TextLink } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -210,20 +211,18 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'PasswordField on Brand Background',
-      background: 'brand',
+      label: 'Contrast',
       Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('qwerty');
-        return (
+      Example: ({ id, handler }) => (
+        <BackgroundContrastTest>
           <PasswordField
-            label="Password"
+            label="Label"
             id={id}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-            value={value}
+            onChange={handler}
+            value="Text value"
           />
-        );
-      },
+        </BackgroundContrastTest>
+      ),
     },
   ],
 };

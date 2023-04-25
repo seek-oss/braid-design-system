@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Toggle, Box } from '../';
+import { Toggle, Box, Tiles } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -88,6 +89,19 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           onChange={handler}
         />
+      ),
+    },
+    {
+      label: 'Contrast',
+      Example: ({ id, handler }) => (
+        <Box maxWidth="xsmall">
+          <BackgroundContrastTest>
+            <Tiles space="small" columns={2}>
+              <Toggle on={true} label="Label" id={id} onChange={handler} />
+              <Toggle on={false} label="Label" id={id} onChange={handler} />
+            </Tiles>
+          </BackgroundContrastTest>
+        </Box>
       ),
     },
   ],

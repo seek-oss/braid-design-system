@@ -1,12 +1,10 @@
 import type { ReactNode } from 'react';
-import React, { Fragment } from 'react';
+import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { heading } from '../../css/typography.css';
-import { Heading, IconPositive, IconPromote, Stack, Text } from '../';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { Box } from '../Box/Box';
-import { backgrounds, textAlignments } from '../../utils/docsHelpers';
+import { Box, Heading, IconPositive, IconPromote, Stack, Text } from '../';
+import { textAlignments } from '../../utils/docsHelpers';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -191,15 +189,13 @@ export const screenshots: ComponentScreenshot = {
       label: 'Contrast',
       Container,
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} paddingY="xsmall">
-              <Heading level="4">
-                {background} <IconPositive />
-              </Heading>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          {(background) => (
+            <Heading level="4">
+              {background} <IconPositive />
+            </Heading>
+          )}
+        </BackgroundContrastTest>
       ),
     },
   ],

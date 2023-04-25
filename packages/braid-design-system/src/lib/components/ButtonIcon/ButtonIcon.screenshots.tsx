@@ -1,10 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { ButtonIcon, Inline, Heading, IconBookmark } from '../';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { Box } from '../Box/Box';
-import { backgrounds } from '../../utils/docsHelpers';
+import { Box, ButtonIcon, Inline, Heading, IconBookmark } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -183,22 +180,18 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Contrast',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="small">
-              <Inline space="medium">
-                <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="1" />
-                <ButtonIcon
-                  variant="transparent"
-                  bleed={false}
-                  icon={<IconBookmark />}
-                  label="Bookmark"
-                  id="1"
-                />
-              </Inline>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          <Inline space="medium">
+            <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="1" />
+            <ButtonIcon
+              variant="transparent"
+              bleed={false}
+              icon={<IconBookmark />}
+              label="Bookmark"
+              id="1"
+            />
+          </Inline>
+        </BackgroundContrastTest>
       ),
     },
   ],

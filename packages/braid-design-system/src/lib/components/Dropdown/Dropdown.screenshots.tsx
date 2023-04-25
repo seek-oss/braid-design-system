@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Dropdown, IconLocation, Stack } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -157,23 +158,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Dropdown on Brand Background',
-      background: 'brand',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown
-          label="Job Title"
-          id={id}
-          onChange={handler}
-          value=""
-          placeholder="Please select a role title"
-        >
-          <option value="1">Developer</option>
-          <option value="2">Designer</option>
-        </Dropdown>
-      ),
-    },
-    {
       label: 'Dropdown with no visual label',
       Container,
       Example: ({ id, handler }) => (
@@ -187,6 +171,24 @@ export const screenshots: ComponentScreenshot = {
           <option value="1">Developer</option>
           <option value="2">Designer</option>
         </Dropdown>
+      ),
+    },
+    {
+      label: 'Contrast',
+      Container,
+      Example: ({ id, handler }) => (
+        <BackgroundContrastTest>
+          <Dropdown
+            label="Job Title"
+            id={id}
+            onChange={handler}
+            value=""
+            placeholder="Please select a role title"
+          >
+            <option value="1">Developer</option>
+            <option value="2">Designer</option>
+          </Dropdown>
+        </BackgroundContrastTest>
       ),
     },
   ],

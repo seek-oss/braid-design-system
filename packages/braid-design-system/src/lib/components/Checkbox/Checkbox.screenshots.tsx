@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Badge, Checkbox, Stack, Text } from '../';
+import { Badge, Box, Checkbox, Stack, Text, Tiles } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -183,6 +184,29 @@ export const screenshots: ComponentScreenshot = {
         >
           <Text>This text is visible when the button is checked.</Text>
         </Checkbox>
+      ),
+    },
+    {
+      label: 'Contrast',
+      Example: ({ id, handler }) => (
+        <Box maxWidth="xsmall">
+          <BackgroundContrastTest>
+            <Tiles space="small" columns={2}>
+              <Checkbox
+                id={id}
+                checked={false}
+                onChange={handler}
+                label="Label"
+              />
+              <Checkbox
+                id={id}
+                checked={true}
+                onChange={handler}
+                label="Label"
+              />
+            </Tiles>
+          </BackgroundContrastTest>
+        </Box>
       ),
     },
   ],

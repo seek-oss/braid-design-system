@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { IconSearch, IconPhone, TextField, TextLink, Stack } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -237,19 +238,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'TextField on Brand Background',
-      background: 'brand',
-      Container,
-      Example: ({ id, handler }) => (
-        <TextField
-          label="Label"
-          id={id}
-          onChange={handler}
-          value="Text value"
-        />
-      ),
-    },
-    {
       label: 'TextField with prefix',
       Container,
       Example: ({ id, handler }) => (
@@ -313,6 +301,20 @@ export const screenshots: ComponentScreenshot = {
           label="Label"
           characterLimit={9}
         />
+      ),
+    },
+    {
+      label: 'Contrast',
+      Container,
+      Example: ({ id, handler }) => (
+        <BackgroundContrastTest>
+          <TextField
+            label="Label"
+            id={id}
+            onChange={handler}
+            value="Text value"
+          />
+        </BackgroundContrastTest>
       ),
     },
   ],

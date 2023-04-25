@@ -107,7 +107,6 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           <Box
             position="absolute"
             background="surface"
-            boxShadow={on ? 'borderFormAccent' : 'borderField'}
             transition="fast"
             display="flex"
             alignItems="center"
@@ -115,6 +114,15 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             borderRadius="full"
             className={styles.slider[size]}
           >
+            <FieldOverlay
+              variant={on ? 'formAccent' : 'default'}
+              borderRadius="full"
+              visible
+              className={{
+                [styles.hideBorderOnDarkBackgroundInLightMode]:
+                  lightness.lightMode === 'dark',
+              }}
+            />
             <FieldOverlay className={styles.icon}>
               <IconTick tone="formAccent" size="fill" />
             </FieldOverlay>

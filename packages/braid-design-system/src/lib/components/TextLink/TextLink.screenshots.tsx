@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import {
+  Box,
   Heading,
   IconNewWindow,
   IconHome,
@@ -12,11 +13,8 @@ import {
   Strong,
   IconLink,
 } from '../';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { Box } from '../Box/Box';
-import { backgrounds } from '../../utils/docsHelpers';
 import { heading, tone, textSizeTrimmed } from '../../css/typography.css';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const textSizes = [
   undefined, // test default case
@@ -264,75 +262,71 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Text Contrast',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background, i) => (
-            <Box key={i} background={background} padding="small">
-              <Columns space="xlarge">
-                <Column>
-                  <Text>{background}</Text>
-                </Column>
-                <Column width="content">
-                  <Text>
-                    <TextLink href="#">
-                      Default <IconNewWindow />
-                    </TextLink>
-                  </Text>
-                </Column>
-                <Column width="content">
-                  <Text>
-                    <TextLink href="#" weight="regular">
-                      Regular <IconNewWindow />
-                    </TextLink>
-                  </Text>
-                </Column>
-                <Column>
-                  <Text>
-                    <TextLink href="#" weight="weak">
-                      Weak <IconNewWindow />
-                    </TextLink>
-                  </Text>
-                </Column>
-              </Columns>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          {(background) => (
+            <Columns space="xlarge">
+              <Column>
+                <Text>{background}</Text>
+              </Column>
+              <Column width="content">
+                <Text>
+                  <TextLink href="#">
+                    Default <IconNewWindow />
+                  </TextLink>
+                </Text>
+              </Column>
+              <Column width="content">
+                <Text>
+                  <TextLink href="#" weight="regular">
+                    Regular <IconNewWindow />
+                  </TextLink>
+                </Text>
+              </Column>
+              <Column>
+                <Text>
+                  <TextLink href="#" weight="weak">
+                    Weak <IconNewWindow />
+                  </TextLink>
+                </Text>
+              </Column>
+            </Columns>
+          )}
+        </BackgroundContrastTest>
       ),
     },
     {
       label: 'Heading Contrast',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background, i) => (
-            <Box key={i} background={background} padding="small">
-              <Columns space="xlarge">
-                <Column>
-                  <Heading level="4">{background}</Heading>
-                </Column>
-                <Column width="content">
-                  <Heading level="4">
-                    <TextLink href="#">
-                      Default <IconNewWindow />
-                    </TextLink>
-                  </Heading>
-                </Column>
-                <Column width="content">
-                  <Heading level="4">
-                    <TextLink href="#" weight="regular">
-                      Regular <IconNewWindow />
-                    </TextLink>
-                  </Heading>
-                </Column>
-                <Column>
-                  <Heading level="4">
-                    <TextLink href="#" weight="weak">
-                      Weak <IconNewWindow />
-                    </TextLink>
-                  </Heading>
-                </Column>
-              </Columns>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          {(background) => (
+            <Columns space="xlarge">
+              <Column>
+                <Heading level="4">{background}</Heading>
+              </Column>
+              <Column width="content">
+                <Heading level="4">
+                  <TextLink href="#">
+                    Default <IconNewWindow />
+                  </TextLink>
+                </Heading>
+              </Column>
+              <Column width="content">
+                <Heading level="4">
+                  <TextLink href="#" weight="regular">
+                    Regular <IconNewWindow />
+                  </TextLink>
+                </Heading>
+              </Column>
+              <Column>
+                <Heading level="4">
+                  <TextLink href="#" weight="weak">
+                    Weak <IconNewWindow />
+                  </TextLink>
+                </Heading>
+              </Column>
+            </Columns>
+          )}
+        </BackgroundContrastTest>
       ),
     },
     {

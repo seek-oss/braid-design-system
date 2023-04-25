@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import {
+  Box,
   Button,
   IconSend,
   Stack,
@@ -10,12 +11,9 @@ import {
   IconArrow,
   IconWorkExperience,
 } from '../';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { Box } from '../Box/Box';
-import { backgrounds } from '../../utils/docsHelpers';
 
 import type { ButtonProps } from './Button';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],
@@ -301,87 +299,71 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Contrast',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="small">
-              <Inline space="small">
-                <Button>Solid</Button>
-                <Button variant="ghost">Ghost</Button>
-                <Button variant="soft">Soft</Button>
-                <Button variant="transparent">Transparent</Button>
-              </Inline>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          <Inline space="small">
+            <Button>Solid</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="soft">Soft</Button>
+            <Button variant="transparent">Transparent</Button>
+          </Inline>
+        </BackgroundContrastTest>
       ),
     },
     {
       label: 'Contrast - critical',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="small">
-              <Inline space="small">
-                <Button tone="critical">Solid</Button>
-                <Button tone="critical" variant="ghost">
-                  Ghost
-                </Button>
-                <Button tone="critical" variant="soft">
-                  Soft
-                </Button>
-                <Button tone="critical" variant="transparent">
-                  Transparent
-                </Button>
-              </Inline>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          <Inline space="small">
+            <Button tone="critical">Solid</Button>
+            <Button tone="critical" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="critical" variant="soft">
+              Soft
+            </Button>
+            <Button tone="critical" variant="transparent">
+              Transparent
+            </Button>
+          </Inline>
+        </BackgroundContrastTest>
       ),
     },
     {
       label: 'Contrast - brandAccent',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="small">
-              <Inline space="small">
-                <Button tone="brandAccent">Solid</Button>
-                <Button tone="brandAccent" variant="ghost">
-                  Ghost
-                </Button>
-                <Button tone="brandAccent" variant="soft">
-                  Soft
-                </Button>
-                <Button tone="brandAccent" variant="transparent">
-                  Transparent
-                </Button>
-              </Inline>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          <Inline space="small">
+            <Button tone="brandAccent">Solid</Button>
+            <Button tone="brandAccent" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="brandAccent" variant="soft">
+              Soft
+            </Button>
+            <Button tone="brandAccent" variant="transparent">
+              Transparent
+            </Button>
+          </Inline>
+        </BackgroundContrastTest>
       ),
     },
     {
       label: 'Contrast - neutral',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="small">
-              <Inline space="small">
-                <Button tone="neutral">Solid</Button>
-                <Button tone="neutral" variant="ghost">
-                  Ghost
-                </Button>
-                <Button tone="neutral" variant="soft">
-                  Soft
-                </Button>
-                <Button tone="neutral" variant="transparent">
-                  Transparent
-                </Button>
-              </Inline>
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          <Inline space="small">
+            <Button tone="neutral">Solid</Button>
+            <Button tone="neutral" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="neutral" variant="soft">
+              Soft
+            </Button>
+            <Button tone="neutral" variant="transparent">
+              Transparent
+            </Button>
+          </Inline>
+        </BackgroundContrastTest>
       ),
     },
     {

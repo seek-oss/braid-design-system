@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Autosuggest, filterSuggestions, IconSearch, Stack } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -232,6 +233,23 @@ export const screenshots: ComponentScreenshot = {
           />
         );
       },
+    },
+    {
+      label: 'Contrast',
+      Container,
+      Example: ({ id, handler }) => (
+        <BackgroundContrastTest>
+          <Autosuggest
+            label="I like to eat"
+            id={id}
+            value={{ text: '' }}
+            onChange={handler}
+            suggestions={filterSuggestions(
+              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+            )}
+          />
+        </BackgroundContrastTest>
+      ),
     },
   ],
 };

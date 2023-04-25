@@ -4,6 +4,7 @@ import { vars } from '../../../themes/vars.css';
 import { hitArea } from '../touchable/hitArea';
 import { debugTouchable } from '../touchable/debugTouchable';
 import { responsiveStyle } from '../../../css/responsiveStyle';
+import { colorModeStyle } from '../../../css/colorModeStyle';
 
 const sizes = {
   standard: 'standard',
@@ -48,6 +49,13 @@ export const realField = style([
 export const fakeField = style({
   height: fieldSize,
   width: fieldSize,
+  selectors: {
+    // Overrides `surface` background of checked checkbox
+    // to make `formAccent` edge crisp on dark background
+    [`${realField}[type="checkbox"]:checked ~ &`]: {
+      background: 'transparent',
+    },
+  },
 });
 
 export const labelOffset = style({
@@ -73,6 +81,14 @@ export const selected = style({
     },
   },
 });
+
+export const hideBorderOnDarkBackgroundInLightMode = style(
+  colorModeStyle({
+    lightMode: {
+      opacity: 0,
+    },
+  }),
+);
 
 export const focusOverlay = style({
   selectors: {

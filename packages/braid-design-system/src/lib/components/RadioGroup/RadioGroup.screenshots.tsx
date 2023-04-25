@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { RadioGroup, RadioItem } from '../';
+import { Box, RadioGroup, RadioItem } from '../';
 import { Placeholder } from '../../playroom/components';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -223,6 +224,19 @@ export const screenshots: ComponentScreenshot = {
           <RadioItem label="Two" value="2" />
           <RadioItem label="Three" value="3" />
         </RadioGroup>
+      ),
+    },
+    {
+      label: 'Contrast',
+      Example: ({ id, handler }) => (
+        <Box maxWidth="xsmall">
+          <BackgroundContrastTest>
+            <RadioGroup id={id} value={1} onChange={handler} label="Experience">
+              <RadioItem label="Less than one year" value="0" />
+              <RadioItem label="1 year" value="1" />
+            </RadioGroup>
+          </BackgroundContrastTest>
+        </Box>
       ),
     },
   ],
