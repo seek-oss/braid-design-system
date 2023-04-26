@@ -1,5 +1,35 @@
 # braid-design-system
 
+## 32.5.0
+
+### Minor Changes
+
+- Hide field borders in dark containers ([#1294](https://github.com/seek-oss/braid-design-system/pull/1294))
+
+  Reduce visual noise when a form field is displayed in a dark container by hiding the default border.
+  As fields are light on light backgrounds, the border is used to delineate its bounds against the container, which is not relevant in a dark container.
+
+- Add `seekJobs` theme ([#1281](https://github.com/seek-oss/braid-design-system/pull/1281))
+
+  The `seekJobs` theme encapsulates the system changes necessary to apply and deliver the updated visual design language for SEEK Jobs.
+  Through the development of this theme, we have been able improve the fidelity of the various scales in our tokens, while also ensuring that the tokens themselves are consumed and applied more consistently throughout the system itself.
+
+  **EXAMPLE USAGE:**
+
+  ```tsx
+  import seekJobs from 'braid-design-system/themes/seekJobs';
+
+  <BraidProvider theme={seekJobs}>...</BraidProvider>;
+  ```
+
+  **MIGRATION**
+
+  Consumers of the `apac` theme are not recommended to migrate independently. The `seekJobs` theme represents an uplifted visual identity that is part of a wider visual uplift.
+  Instead, we’ll be guiding the initial teams through a staged migration in coordination with the centralised team process.
+  There are some differences in how certain concepts are applied, whether it's the space scale, or `Card` usage, etc., and we will be documenting these in due course.
+
+  If you would like to talk about migrating, please reach out to us in our **#braid-support** channel on slack.
+
 ## 32.4.1
 
 ### Patch Changes
