@@ -231,7 +231,7 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Box maxWidth="xsmall">
           <BackgroundContrastTest>
-            <RadioGroup id={id} value={1} onChange={handler} label="Experience">
+            <RadioGroup id={id} value="1" onChange={handler} label="Experience">
               <RadioItem label="Less than one year" value="0" />
               <RadioItem label="1 year" value="1" />
             </RadioGroup>
