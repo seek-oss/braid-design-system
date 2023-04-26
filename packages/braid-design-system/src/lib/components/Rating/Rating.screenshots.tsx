@@ -1,10 +1,7 @@
-import React, { Fragment } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import React from 'react';
 import { Rating, Stack, Text } from '../';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { Box } from '../Box/Box';
-import { backgrounds } from '../../utils/docsHelpers';
+import type { ComponentScreenshot } from 'site/types';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -54,13 +51,9 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Rating Contrast',
       Example: () => (
-        <Fragment>
-          {backgrounds.map((background) => (
-            <Box key={background} background={background} padding="xsmall">
-              <Rating rating={1.5} size="xsmall" />
-            </Box>
-          ))}
-        </Fragment>
+        <BackgroundContrastTest>
+          <Rating rating={1.5} size="xsmall" />
+        </BackgroundContrastTest>
       ),
     },
   ],

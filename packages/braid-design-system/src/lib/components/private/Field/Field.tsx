@@ -17,6 +17,7 @@ import { touchableText } from '../../../css/typography.css';
 import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
 import * as styles from './Field.css';
+import { useBackgroundLightness } from '../../Box/BackgroundContext';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 
@@ -129,11 +130,16 @@ export const Field = ({
   const showSecondaryIcon =
     alwaysShowSecondaryIcon || (secondaryIcon && hasValue);
 
+  const { lightMode } = useBackgroundLightness();
+
   const overlays = (
     <Fragment>
       <FieldOverlay
         variant={disabled ? 'disabled' : 'default'}
         visible={tone !== 'critical' || disabled}
+        className={{
+          [styles.hideBorderOnDarkBackgroundInLightMode]: lightMode === 'dark',
+        }}
       />
       <FieldOverlay
         variant="critical"

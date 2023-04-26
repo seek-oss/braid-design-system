@@ -9,6 +9,7 @@ import type { BoxProps } from '../../Box/Box';
 import { Box } from '../../Box/Box';
 import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
+import { useBackgroundLightness } from '../../Box/BackgroundContext';
 
 const tones = ['neutral', 'critical'] as const;
 export type InlineFieldTone = (typeof tones)[number];
@@ -155,6 +156,8 @@ export const StyledInput = forwardRef<
       }
     }, [ref, isMixed, isCheckbox]);
 
+    const { lightMode } = useBackgroundLightness();
+
     // Internal consumers of this private component must constrain
     // this in a position relative container. This is left as a
     // fragment to support sibling selectors to the input in
@@ -210,6 +213,10 @@ export const StyledInput = forwardRef<
             variant={disabled ? 'disabled' : defaultBorder}
             borderRadius={fieldBorderRadius}
             visible={tone !== 'critical' || disabled}
+            className={{
+              [styles.hideBorderOnDarkBackgroundInLightMode]:
+                lightMode === 'dark',
+            }}
           />
           <FieldOverlay
             variant="critical"

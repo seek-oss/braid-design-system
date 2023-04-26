@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { MonthPicker, Stack } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -148,6 +149,20 @@ export const screenshots: ComponentScreenshot = {
             '12',
           ]}
         />
+      ),
+    },
+    {
+      label: 'Contrast',
+      Container,
+      Example: ({ id, handler }) => (
+        <BackgroundContrastTest>
+          <MonthPicker
+            id={id}
+            label="Started"
+            value={{ month: undefined, year: undefined }}
+            onChange={handler}
+          />
+        </BackgroundContrastTest>
       ),
     },
   ],

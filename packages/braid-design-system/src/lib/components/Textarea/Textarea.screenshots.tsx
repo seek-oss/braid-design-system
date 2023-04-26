@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Stack, Textarea, TextLink } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -403,21 +404,18 @@ export const screenshots: ComponentScreenshot = {
       },
     },
     {
-      label: 'Textarea on Brand Background',
-      background: 'brand',
+      label: 'Contrast',
       Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('');
-
-        return (
+      Example: ({ id, handler }) => (
+        <BackgroundContrastTest>
           <Textarea
             label="Label"
             id={id}
-            onChange={(e) => setValue(e.currentTarget.value)}
-            value={value}
+            onChange={handler}
+            value="Text value"
           />
-        );
-      },
+        </BackgroundContrastTest>
+      ),
     },
   ],
 };

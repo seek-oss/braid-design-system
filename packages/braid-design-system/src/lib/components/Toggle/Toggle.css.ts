@@ -147,6 +147,14 @@ export const icon = style({
   },
 });
 
+export const hideBorderOnDarkBackgroundInLightMode = style(
+  colorModeStyle({
+    lightMode: {
+      opacity: 0,
+    },
+  }),
+);
+
 export const focusOverlay = style({
   selectors: {
     [`${realField}:focus + ${slideContainer} &,

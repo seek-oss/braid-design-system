@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Badge, Radio, Text, Stack } from '../';
+import { Badge, Radio, Text, Stack, Tiles, Box } from '../';
+import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -132,6 +133,19 @@ export const screenshots: ComponentScreenshot = {
         >
           <Text>This text is visible when the radio button is checked.</Text>
         </Radio>
+      ),
+    },
+    {
+      label: 'Contrast',
+      Example: ({ id, handler }) => (
+        <Box maxWidth="small">
+          <BackgroundContrastTest>
+            <Tiles space="small" columns={2}>
+              <Radio id={id} checked={false} onChange={handler} label="Label" />
+              <Radio id={id} checked={true} onChange={handler} label="Label" />
+            </Tiles>
+          </BackgroundContrastTest>
+        </Box>
       ),
     },
   ],
