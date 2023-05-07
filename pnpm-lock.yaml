@@ -344,8 +344,8 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0
       sku:
-        specifier: 11.10.1
-        version: 11.10.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 11.11.0
+        version: 11.11.0(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       svgo:
         specifier: ^2.8.0
         version: 2.8.0
@@ -567,8 +567,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(react-dom@18.2.0)(react@18.2.0)
       sku:
-        specifier: 11.10.1
-        version: 11.10.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 11.11.0
+        version: 11.11.0(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       webpack:
         specifier: ^5.72.1
         version: 5.72.1(esbuild@0.17.10)
@@ -3137,12 +3137,6 @@ packages:
       - supports-color
     dev: false
 
-  /@formatjs/ecma402-abstract@1.11.6:
-    resolution: {integrity: sha512-6TcI+IroIK+GTWXBJ643LBJklmCBsqLt1sUTGWfzdBcI5Y6b1L1iamrJB1B5OAQLnhzWveLbmzPYHYsFEZfeig==}
-    dependencies:
-      '@formatjs/intl-localematcher': 0.2.27
-      tslib: 2.4.0
-
   /@formatjs/ecma402-abstract@1.15.0:
     resolution: {integrity: sha512-7bAYAv0w4AIao9DNg0avfOLTCPE9woAgs6SpXuMq11IN3A+l+cq8ghczwqSZBM11myvPSJA7vLn72q0rJ0QK6Q==}
     dependencies:
@@ -3154,13 +3148,6 @@ packages:
     dependencies:
       tslib: 2.5.0
 
-  /@formatjs/icu-messageformat-parser@2.1.2:
-    resolution: {integrity: sha512-FYQ2pkgbDJxJlst/U5MU2H7+bR9HrZ4x8J4c0etrya24pJzQxYguVlAhc2S6NoEImlQ2LmIIGsURaBQu9bCtew==}
-    dependencies:
-      '@formatjs/ecma402-abstract': 1.11.6
-      '@formatjs/icu-skeleton-parser': 1.3.8
-      tslib: 2.4.0
-
   /@formatjs/icu-messageformat-parser@2.4.0:
     resolution: {integrity: sha512-6Dh5Z/gp4F/HovXXu/vmd0If5NbYLB5dZrmhWVNb+BOGOEU3wt7Z/83KY1dtd7IDhAnYHasbmKE1RbTE0J+3hw==}
     dependencies:
@@ -3168,22 +3155,11 @@ packages:
       '@formatjs/icu-skeleton-parser': 1.4.0
       tslib: 2.5.0
 
-  /@formatjs/icu-skeleton-parser@1.3.8:
-    resolution: {integrity: sha512-CVdsPMs/KvrIDKhMDw8bSq/Zst2bhdn/bTUfVCHi/c/bj462lChIJmW/JP/FaGKgZzdG8slGyVIFLonpG4uqFA==}
-    dependencies:
-      '@formatjs/ecma402-abstract': 1.11.6
-      tslib: 2.4.0
-
   /@formatjs/icu-skeleton-parser@1.4.0:
     resolution: {integrity: sha512-Qq347VM616rVLkvN6QsKJELazRyNlbCiN47LdH0Mc5U7E2xV0vatiVhGqd3KFgbc055BvtnUXR7XX60dCGFuWg==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.15.0
       tslib: 2.5.0
-
-  /@formatjs/intl-localematcher@0.2.27:
-    resolution: {integrity: sha512-XHYcVas2ebDTh3VtfdluvbTjqyMUHqFHARnuJo5KYF/0MKOTmozVSK7PJGnu1IEHdmRdTWuG6TB+2RnkasaxVw==}
-    dependencies:
-      tslib: 2.4.0
 
   /@formatjs/intl-localematcher@0.2.32:
     resolution: {integrity: sha512-k/MEBstff4sttohyEpXxCmC3MqbUn9VvHGlZ8fauLzkbwXmVrEeyzS+4uhrvAk9DWU9/7otYWxyDox4nT/KVLQ==}
@@ -5885,7 +5861,7 @@ packages:
   /@vocab/core@1.3.0:
     resolution: {integrity: sha512-WqZpUZ5u03yM5xnXwbmItWaA/StaA52J24eTMtIIia6ggHDHrxkHxK2VN5CWYWya3FqVDWSbfK1AuzUevPEm+A==}
     dependencies:
-      '@formatjs/icu-messageformat-parser': 2.1.2
+      '@formatjs/icu-messageformat-parser': 2.4.0
       chalk: 4.1.2
       chokidar: 3.5.3
       debug: 4.3.4(supports-color@8.1.1)
@@ -17562,8 +17538,8 @@ packages:
   /sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  /sku@11.10.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Ddk7kOqNMpQR2YjyO1rDJs8iK3IM6FdMyZzUMhbs0+RhBrxCCF2k408VTf5xFyWjkpjlTzVerG4uOukQ3YamKg==}
+  /sku@11.11.0(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8kE+Q0dcOQQ8xONMgzDRfbSmIugdxryWcLcH8qjYo0/2EbhASLaF1JwFO+WwkCfhJOBJYJjCqJ4TSYFylx3FVg==}
     engines: {node: '>=14.15'}
     hasBin: true
     requiresBuild: true
@@ -18941,9 +18917,6 @@ packages:
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-
-  /tslib@2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
   /tslib@2.5.0:
     resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
