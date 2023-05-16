@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import type { Optional } from 'utility-types';
 import type { StateProp } from '../../playroom/playroomState';
-import type { PaginationProps } from './Pagination';
-import { defaultPageLimit, Pagination as BraidPagination } from './Pagination';
+import {
+  type PaginationProps,
+  defaultPageLimit,
+  Pagination as BraidPagination,
+} from './Pagination';
 
 type PlayroomPaginationProps = StateProp &
   Optional<PaginationProps, 'label' | 'linkProps' | 'page' | 'total'>;

@@ -1,9 +1,7 @@
-import type { ReactElement } from 'react';
-import React from 'react';
+import React, { type ReactElement } from 'react';
 import clsx from 'clsx';
 import { BackgroundProvider } from './BackgroundContext';
-import type { Atoms } from '../../css/atoms/atoms';
-import { atoms } from '../../css/atoms/atoms';
+import { type Atoms, atoms } from '../../css/atoms/atoms';
 import type { BoxBaseProps, SimpleBackground } from './Box';
 import { useColoredBoxClasses } from './ColoredBox';
 import type { BoxShadow } from '../../css/atoms/atomicProperties';

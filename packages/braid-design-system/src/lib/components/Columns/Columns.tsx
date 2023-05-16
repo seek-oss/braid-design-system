@@ -1,15 +1,17 @@
 import assert from 'assert';
-import type { ReactElement } from 'react';
-import React from 'react';
+import React, { type ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import type { ColumnProps } from '../Column/Column';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
-import type { CollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
-import { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
+import {
+  type CollapsibleAlignmentProps,
+  resolveCollapsibleAlignmentProps,
+} from '../../utils/collapsibleAlignmentProps';
 import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {

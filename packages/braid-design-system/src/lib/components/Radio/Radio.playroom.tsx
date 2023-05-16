@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import type { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import type { RadioProps } from './Radio';
-import { Radio as BraidRadio } from './Radio';
+import { type RadioProps, Radio as BraidRadio } from './Radio';
 
 type PlayroomRadioProps = Optional<RadioProps, 'id' | 'checked' | 'onChange'>;
 

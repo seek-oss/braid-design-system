@@ -1,13 +1,12 @@
 import React from 'react';
-import type { StateProp } from '../../playroom/playroomState';
-import { useFallbackState } from '../../playroom/playroomState';
+import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import type {
-  DisclosureProps,
-  DisclosureBaseProps,
-  DisclosureStateProps,
+import {
+  type DisclosureProps,
+  type DisclosureBaseProps,
+  type DisclosureStateProps,
+  Disclosure as BraidDisclosure,
 } from './Disclosure';
-import { Disclosure as BraidDisclosure } from './Disclosure';
 
 type OptionalProps = 'id';
 type PlayroomDisclosureProps = StateProp &

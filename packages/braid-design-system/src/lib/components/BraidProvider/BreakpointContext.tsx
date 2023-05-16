@@ -1,8 +1,7 @@
 // Adapted version of https://github.com/streamich/react-use/blob/master/src/useMedia.ts
 import type { ReactNode } from 'react';
 import React, { useEffect, useState, createContext } from 'react';
-import type { Breakpoint } from '../../css/breakpoints';
-import { breakpoints } from '../../css/breakpoints';
+import { type Breakpoint, breakpoints } from '../../css/breakpoints';
 
 const minWidthQuery = (breakpoint: number) =>
   window.matchMedia(`(min-width: ${breakpoint}px)`);

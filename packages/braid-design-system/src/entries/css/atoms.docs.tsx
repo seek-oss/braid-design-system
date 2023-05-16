@@ -1,12 +1,10 @@
 import dedent from 'dedent';
 import React from 'react';
-import type {
-  ResponsiveProperties,
-  PseudoProperties,
-  UnresponsiveProperties,
-  BoxShadow,
-} from 'braid-src/lib/css/atoms/atomicProperties';
 import {
+  type ResponsiveProperties,
+  type PseudoProperties,
+  type UnresponsiveProperties,
+  type BoxShadow,
   responsiveProperties,
   pseudoProperties,
   unresponsiveProperties,

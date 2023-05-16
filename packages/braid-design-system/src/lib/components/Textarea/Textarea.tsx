@@ -1,9 +1,19 @@
-import type { AllHTMLAttributes, UIEvent, FormEvent } from 'react';
-import React, { forwardRef, useState, useRef, useCallback } from 'react';
+import React, {
+  type AllHTMLAttributes,
+  type UIEvent,
+  type FormEvent,
+  forwardRef,
+  useState,
+  useRef,
+  useCallback,
+} from 'react';
 import { Box } from '../Box/Box';
 import { formatRanges } from './formatRanges';
-import type { FieldBaseProps, FieldLabelVariant } from '../private/Field/Field';
-import { Field } from '../private/Field/Field';
+import {
+  type FieldBaseProps,
+  type FieldLabelVariant,
+  Field,
+} from '../private/Field/Field';
 import { getCharacterLimitStatus } from '../private/Field/getCharacterLimitStatus';
 import * as styles from './Textarea.css';
 

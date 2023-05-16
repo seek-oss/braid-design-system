@@ -1,5 +1,9 @@
-import type { PluginObj, PluginPass, Visitor } from '@babel/core';
-import { types as t } from '@babel/core';
+import {
+  type PluginObj,
+  type PluginPass,
+  type Visitor,
+  types as t,
+} from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 import { renderRecursiveDepthWarning } from '../warning-renderer/warning';
 import { deArray } from './helpers';

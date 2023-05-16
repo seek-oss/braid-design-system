@@ -1,17 +1,18 @@
-import type { ReactNode } from 'react';
-import React, { useContext } from 'react';
+import React, { type ReactNode, useContext } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Text } from '../Text/Text';
-import type { TextLinkButtonProps } from '../TextLinkButton/TextLinkButton';
-import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
+import {
+  type TextLinkButtonProps,
+  TextLinkButton,
+} from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
-import type { UseDisclosureProps } from './useDisclosure';
-import { useDisclosure } from './useDisclosure';
+import { type UseDisclosureProps, useDisclosure } from './useDisclosure';
 import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 

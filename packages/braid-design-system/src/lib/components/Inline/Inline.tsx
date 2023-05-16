@@ -6,10 +6,13 @@ import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import type { CollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
-import { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import {
+  type CollapsibleAlignmentProps,
+  resolveCollapsibleAlignmentProps,
+} from '../../utils/collapsibleAlignmentProps';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 

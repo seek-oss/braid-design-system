@@ -1,20 +1,21 @@
 import clsx from 'clsx';
-import type { ReactElement } from 'react';
-import React, { forwardRef, useContext } from 'react';
-import type { Atoms } from '../../css/atoms/atoms';
-import { atoms } from '../../css/atoms/atoms';
+import React, { type ReactElement, forwardRef, useContext } from 'react';
+import { type Atoms, atoms } from '../../css/atoms/atoms';
 import {
   useBackgroundLightness,
   useBackground,
 } from '../Box/BackgroundContext';
 import type { BoxBackgroundVariant } from '../Box/Box';
-import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
-import { useLinkComponent } from '../BraidProvider/BraidProvider';
+import {
+  type LinkComponentProps,
+  useLinkComponent,
+} from '../BraidProvider/BraidProvider';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
 import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import type { UseIconProps } from '../../hooks/useIcon';
 import * as styles from './TextLink.css';

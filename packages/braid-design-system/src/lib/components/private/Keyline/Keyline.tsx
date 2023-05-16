@@ -1,6 +1,5 @@
 import React from 'react';
-import type { BoxProps } from '../../Box/Box';
-import { Box } from '../../Box/Box';
+import { type BoxProps, Box } from '../../Box/Box';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import * as styles from './Keyline.css';
 

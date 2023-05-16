@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { BraidProvider, Stack } from 'braid-src/lib/components';
 import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExample';
 import type { ComponentExample } from '../../types';

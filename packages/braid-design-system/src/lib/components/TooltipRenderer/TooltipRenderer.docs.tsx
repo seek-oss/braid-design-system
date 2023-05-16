@@ -12,8 +12,8 @@ import {
   Strong,
   Button,
 } from '..';
-import type { TooltipRendererProps } from './TooltipRenderer';
 import {
+  type TooltipRendererProps,
   StaticTooltipProvider,
   TooltipTextDefaultsProvider,
 } from './TooltipRenderer';

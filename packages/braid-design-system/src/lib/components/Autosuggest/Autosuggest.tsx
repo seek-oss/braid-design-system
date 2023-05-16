@@ -1,12 +1,10 @@
-import type {
-  ChangeEvent,
-  MouseEvent,
-  KeyboardEvent,
-  Ref,
-  ReactElement,
-  RefAttributes,
-} from 'react';
 import React, {
+  type ChangeEvent,
+  type MouseEvent,
+  type KeyboardEvent,
+  type Ref,
+  type ReactElement,
+  type RefAttributes,
   Fragment,
   useRef,
   useReducer,
@@ -21,8 +19,11 @@ import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
 import { Announcement } from '../private/Announcement/Announcement';
-import type { FieldBaseProps, FieldLabelVariant } from '../private/Field/Field';
-import { Field } from '../private/Field/Field';
+import {
+  type FieldBaseProps,
+  type FieldLabelVariant,
+  Field,
+} from '../private/Field/Field';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
 import { textStyles } from '../../css/typography';
@@ -35,8 +36,10 @@ import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
 import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
-import type { AutosuggestTranslations } from '../../translations/en';
-import { autosuggest } from '../../translations/en';
+import {
+  type AutosuggestTranslations,
+  autosuggest,
+} from '../../translations/en';
 
 import * as styles from './Autosuggest.css';
 

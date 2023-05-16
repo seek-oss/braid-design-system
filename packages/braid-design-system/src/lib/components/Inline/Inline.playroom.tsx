@@ -1,7 +1,10 @@
 import React from 'react';
 import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
-import type { InlineProps } from './Inline';
-import { Inline as BraidInline, validInlineComponents } from './Inline';
+import {
+  type InlineProps,
+  Inline as BraidInline,
+  validInlineComponents,
+} from './Inline';
 
 export const Inline = ({
   space,

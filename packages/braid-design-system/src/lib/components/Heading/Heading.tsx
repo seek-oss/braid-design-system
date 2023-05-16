@@ -1,8 +1,9 @@
-import type { ReactNode } from 'react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import HeadingContext from './HeadingContext';
-import type { TypographyProps } from '../private/Typography/Typography';
-import { Typography } from '../private/Typography/Typography';
+import {
+  type TypographyProps,
+  Typography,
+} from '../private/Typography/Typography';
 import * as typographyStyles from '../../css/typography.css';
 
 const resolveDefaultComponent = {

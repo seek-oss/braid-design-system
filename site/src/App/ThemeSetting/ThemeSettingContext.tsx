@@ -1,5 +1,10 @@
-import type { ReactNode } from 'react';
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  type ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
 import { useLocalStorage } from 'react-use';
 
 import * as themes from 'braid-src/lib/themes';

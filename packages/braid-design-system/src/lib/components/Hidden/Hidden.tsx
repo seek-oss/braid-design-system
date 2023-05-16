@@ -1,13 +1,14 @@
-import type { ReactNode } from 'react';
-import React, { useContext } from 'react';
-import type { BoxProps } from '../Box/Box';
-import { Box } from '../Box/Box';
+import React, { type ReactNode, useContext } from 'react';
+import { type BoxProps, Box } from '../Box/Box';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
-import type { ResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
-import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import {
+  type ResponsiveRangeProps,
+  resolveResponsiveRangeProps,
+} from '../../utils/resolveResponsiveRangeProps';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styles from './Hidden.css';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 

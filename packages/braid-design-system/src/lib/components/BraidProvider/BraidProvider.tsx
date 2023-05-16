@@ -1,13 +1,15 @@
 import assert from 'assert';
 import dedent from 'dedent';
-import type {
-  ReactNode,
-  AnchorHTMLAttributes,
-  ForwardRefRenderFunction,
-  ComponentType,
-  Ref,
+import React, {
+  type ReactNode,
+  type AnchorHTMLAttributes,
+  type ForwardRefRenderFunction,
+  type ComponentType,
+  type Ref,
+  createContext,
+  useContext,
+  forwardRef,
 } from 'react';
-import React, { createContext, useContext, forwardRef } from 'react';
 import { ensureResetImported } from '../../css/reset/resetTracker';
 import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';

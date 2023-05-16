@@ -1,17 +1,17 @@
 import assert from 'assert';
-import type { ReactNode, AllHTMLAttributes } from 'react';
-import React, { Fragment } from 'react';
+import React, { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
 import clsx from 'clsx';
-import type { BoxProps } from '../../Box/Box';
-import { Box } from '../../Box/Box';
-import type { FieldLabelProps } from '../../FieldLabel/FieldLabel';
-import { FieldLabel } from '../../FieldLabel/FieldLabel';
-import type { FieldMessageProps } from '../../FieldMessage/FieldMessage';
-import { FieldMessage } from '../../FieldMessage/FieldMessage';
+import { type BoxProps, Box } from '../../Box/Box';
+import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
+import {
+  type FieldMessageProps,
+  FieldMessage,
+} from '../../FieldMessage/FieldMessage';
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Stack } from '../../Stack/Stack';
-import type { DataAttributeMap } from '../buildDataAttributes';
-import buildDataAttributes from '../buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../buildDataAttributes';
 import { textStyles } from '../../../css/typography';
 import { touchableText } from '../../../css/typography.css';
 import { Text } from '../../Text/Text';

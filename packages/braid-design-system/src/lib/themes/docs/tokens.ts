@@ -1,8 +1,7 @@
 import appleSystemMetrics from '@capsizecss/metrics/appleSystem';
 import { darken, lighten, rgba } from 'polished';
 import { palette } from '../../color/palette';
-import type { BraidTokens } from '../tokenType';
-import { extractFontMetricsForTheme } from '../tokenType';
+import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
 
 const brandAccent = palette.grey['900'];
 const formAccent = palette.indigo['600'];

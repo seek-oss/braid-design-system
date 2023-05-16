@@ -1,5 +1,4 @@
-import type { PluginObj, PluginPass } from '@babel/core';
-import { types as t } from '@babel/core';
+import { type PluginObj, type PluginPass, types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 import { renderUntraceablePropertyWarning } from '../warning-renderer/warning';
 import { isBraidImport } from './isBraidImport';

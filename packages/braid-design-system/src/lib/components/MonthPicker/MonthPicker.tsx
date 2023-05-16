@@ -1,5 +1,9 @@
-import type { ChangeEvent, FocusEvent } from 'react';
-import React, { createRef, Fragment } from 'react';
+import React, {
+  type ChangeEvent,
+  type FocusEvent,
+  createRef,
+  Fragment,
+} from 'react';
 import { isMobile } from 'is-mobile';
 import assert from 'assert';
 import { Box } from '../Box/Box';
@@ -7,11 +11,11 @@ import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Field } from '../private/Field/Field';
-import type {
-  FieldLabelVariant,
-  FieldGroupBaseProps,
+import {
+  type FieldLabelVariant,
+  type FieldGroupBaseProps,
+  FieldGroup,
 } from '../private/FieldGroup/FieldGroup';
-import { FieldGroup } from '../private/FieldGroup/FieldGroup';
 import * as styles from './MonthPicker.css';
 
 interface MonthPickerValue {
