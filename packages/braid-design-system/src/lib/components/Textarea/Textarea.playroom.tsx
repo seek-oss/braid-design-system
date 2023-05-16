@@ -1,10 +1,12 @@
 import React from 'react';
 import type { Optional } from 'utility-types';
-import type { StateProp } from '../../playroom/playroomState';
-import { useFallbackState } from '../../playroom/playroomState';
+import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import type { TextareaBaseProps, TextareaLabelProps } from './Textarea';
-import { Textarea as BraidTextarea } from './Textarea';
+import {
+  type TextareaBaseProps,
+  type TextareaLabelProps,
+  Textarea as BraidTextarea,
+} from './Textarea';
 
 type PlayroomTextareaProps = StateProp &
   Optional<TextareaBaseProps, 'id' | 'value' | 'onChange'> &

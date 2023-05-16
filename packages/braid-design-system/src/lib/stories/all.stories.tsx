@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React, { Fragment, useId } from 'react';
+import React, { type ReactNode, Fragment, useId } from 'react';
 import { storiesOf } from 'sku/@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';

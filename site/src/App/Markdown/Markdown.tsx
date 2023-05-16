@@ -1,5 +1,4 @@
-import type { ReactElement } from 'react';
-import React from 'react';
+import React, { type ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { CodeBlock } from '../Code/Code';

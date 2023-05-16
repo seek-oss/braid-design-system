@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Space } from '../../../css/atoms/atoms';
-import type { BoxProps } from '../../Box/Box';
-import { Box } from '../../Box/Box';
+import { type BoxProps, Box } from '../../Box/Box';
 
 import * as styles from './AvoidWidowIcon.css';
 

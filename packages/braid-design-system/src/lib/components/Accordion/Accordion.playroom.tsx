@@ -1,8 +1,11 @@
 import React from 'react';
 import { mapResponsiveValue } from '../../css/atoms/sprinkles.css';
 import { wireframe } from '../../themes';
-import type { AccordionProps } from './Accordion';
-import { Accordion as BraidAccordion, validSpaceValues } from './Accordion';
+import {
+  type AccordionProps,
+  Accordion as BraidAccordion,
+  validSpaceValues,
+} from './Accordion';
 
 type ValidSpaceValue = (typeof validSpaceValues)[number];
 

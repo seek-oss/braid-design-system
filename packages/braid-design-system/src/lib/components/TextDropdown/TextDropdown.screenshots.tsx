@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React, { useState } from 'react';
+import React, { type ReactNode, useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Heading, Strong, Text, TextDropdown } from '../';
 

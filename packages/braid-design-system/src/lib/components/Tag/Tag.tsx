@@ -1,12 +1,12 @@
 import React from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import type { TextProps } from '../Text/Text';
-import { Text } from '../Text/Text';
+import { type TextProps, Text } from '../Text/Text';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import type { AllOrNone } from '../private/AllOrNone';
 import * as styles from './Tag.css';
 

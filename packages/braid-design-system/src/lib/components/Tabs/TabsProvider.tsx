@@ -1,9 +1,8 @@
-import type { ReactNode } from 'react';
-import React, { createContext, useReducer } from 'react';
+import React, { type ReactNode, createContext, useReducer } from 'react';
 
 import { getNextIndex } from '../private/getNextIndex';
-import type { Action } from './Tabs.actions';
 import {
+  type Action,
   TAB_BUTTON_LEFT,
   TAB_BUTTON_RIGHT,
   TAB_BUTTON_HOME,

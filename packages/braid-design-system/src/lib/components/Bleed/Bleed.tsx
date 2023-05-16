@@ -1,10 +1,10 @@
 import React from 'react';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
-import type { BoxProps } from '../Box/Box';
-import { Box } from '../Box/Box';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import { type BoxProps, Box } from '../Box/Box';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export const validBleedComponents = ['div', 'span'] as const;
 

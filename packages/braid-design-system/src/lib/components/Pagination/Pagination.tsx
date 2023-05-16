@@ -3,13 +3,13 @@ import assert from 'assert';
 import { Box } from '../Box/Box';
 import { useBackground } from '../Box/BackgroundContext';
 import { IconChevron } from '../icons';
-import type { LinkProps } from '../Link/Link';
-import { Link } from '../Link/Link';
+import { type LinkProps, Link } from '../Link/Link';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Text } from '../Text/Text';
 import { paginate } from './paginate';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styles from './Pagination.css';
 

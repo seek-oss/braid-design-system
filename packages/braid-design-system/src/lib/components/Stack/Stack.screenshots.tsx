@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React, { Fragment } from 'react';
+import React, { type ReactNode, Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Box, Stack, Hidden } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';

@@ -12,8 +12,9 @@ import { Box } from '../Box/Box';
 import { Divider } from '../Divider/Divider';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { TAB_LIST_UPDATED } from './Tabs.actions';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { TabsContext } from './TabsProvider';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';

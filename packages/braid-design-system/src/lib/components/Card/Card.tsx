@@ -1,14 +1,15 @@
 import assert from 'assert';
-import type { ReactNode } from 'react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import type { ResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
-import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
-import type { BoxProps } from '../Box/Box';
-import { Box } from '../Box/Box';
+import {
+  type ResponsiveRangeProps,
+  resolveResponsiveRangeProps,
+} from '../../utils/resolveResponsiveRangeProps';
+import { type BoxProps, Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { Keyline } from '../private/Keyline/Keyline';
 
 export const validCardComponents = [

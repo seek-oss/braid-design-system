@@ -1,13 +1,12 @@
 import React from 'react';
-import type { StateProp } from '../../playroom/playroomState';
-import { useFallbackState } from '../../playroom/playroomState';
+import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import type {
-  AccordionItemProps,
-  AccordionItemBaseProps,
-  AccordionItemStateProps,
+import {
+  type AccordionItemProps,
+  type AccordionItemBaseProps,
+  type AccordionItemStateProps,
+  AccordionItem as BraidAccordionItem,
 } from './AccordionItem';
-import { AccordionItem as BraidAccordionItem } from './AccordionItem';
 
 type OptionalProps = 'id';
 type PlayroomAccordionItemProps = StateProp &

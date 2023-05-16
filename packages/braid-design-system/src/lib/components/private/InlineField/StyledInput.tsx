@@ -1,12 +1,17 @@
-import type { ChangeEvent, AllHTMLAttributes } from 'react';
-import React, { useEffect, forwardRef, useRef } from 'react';
+import React, {
+  type ChangeEvent,
+  type AllHTMLAttributes,
+  useEffect,
+  forwardRef,
+  useRef,
+} from 'react';
 
 import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { IconMinus, IconTick } from '../../icons';
-import type { DataAttributeMap } from '../buildDataAttributes';
-import buildDataAttributes from '../buildDataAttributes';
-import type { BoxProps } from '../../Box/Box';
-import { Box } from '../../Box/Box';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../buildDataAttributes';
+import { type BoxProps, Box } from '../../Box/Box';
 import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';

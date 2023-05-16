@@ -1,7 +1,10 @@
 import React from 'react';
 import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
-import type { StackProps } from './Stack';
-import { Stack as BraidStack, validStackComponents } from './Stack';
+import {
+  type StackProps,
+  Stack as BraidStack,
+  validStackComponents,
+} from './Stack';
 
 export const Stack = ({
   space,

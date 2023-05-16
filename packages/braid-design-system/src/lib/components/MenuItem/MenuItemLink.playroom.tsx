@@ -1,6 +1,8 @@
 import React from 'react';
-import type { MenuItemLinkProps } from './MenuItemLink';
-import { MenuItemLink as BraidMenuItemLink } from './MenuItemLink';
+import {
+  type MenuItemLinkProps,
+  MenuItemLink as BraidMenuItemLink,
+} from './MenuItemLink';
 
 export const MenuItemLink = ({ badge, ...restProps }: MenuItemLinkProps) => (
   <BraidMenuItemLink

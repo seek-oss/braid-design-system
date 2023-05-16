@@ -17,13 +17,11 @@ import { Box } from './Box';
 import type { SimpleBackground } from './Box';
 import source from '../../utils/source.macro';
 import Code from 'site/App/Code/Code';
-import type {
-  UnresponsiveProperties,
-  ResponsiveProperties,
-  PseudoProperties,
-  BoxShadow,
-} from '../../css/atoms/atomicProperties';
 import {
+  type UnresponsiveProperties,
+  type ResponsiveProperties,
+  type PseudoProperties,
+  type BoxShadow,
   responsiveProperties,
   unresponsiveProperties,
   pseudoProperties,

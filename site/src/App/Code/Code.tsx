@@ -1,5 +1,4 @@
-import type { ReactElement } from 'react';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { type ReactElement, useState, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash/memoize';

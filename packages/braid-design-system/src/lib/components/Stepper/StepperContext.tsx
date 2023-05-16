@@ -1,5 +1,9 @@
-import type { KeyboardEvent, ReactNode } from 'react';
-import React, { createContext, useReducer } from 'react';
+import React, {
+  type KeyboardEvent,
+  type ReactNode,
+  createContext,
+  useReducer,
+} from 'react';
 import { normalizeKey } from '../private/normalizeKey';
 import type * as styles from './Stepper.css';
 

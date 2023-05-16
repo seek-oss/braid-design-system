@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { IconTick } from '../icons/IconTick/IconTick';
 import type { MenuItemProps } from '../MenuItem/MenuItem';

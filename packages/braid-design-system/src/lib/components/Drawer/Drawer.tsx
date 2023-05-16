@@ -1,9 +1,10 @@
 import assert from 'assert';
 import React from 'react';
-import type { ModalProps } from '../private/Modal/Modal';
-import { Modal } from '../private/Modal/Modal';
-import type { ModalContentProps } from '../private/Modal/ModalContent';
-import { ModalContent } from '../private/Modal/ModalContent';
+import { type ModalProps, Modal } from '../private/Modal/Modal';
+import {
+  type ModalContentProps,
+  ModalContent,
+} from '../private/Modal/ModalContent';
 export { AllowCloseContext } from '../private/Modal/Modal';
 
 const validWidths = ['small', 'medium', 'large'] as const;

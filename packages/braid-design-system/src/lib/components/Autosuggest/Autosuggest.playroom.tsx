@@ -1,13 +1,12 @@
 import React from 'react';
 import type { Optional } from 'utility-types';
-import type { StateProp } from '../../playroom/playroomState';
-import { useFallbackState } from '../../playroom/playroomState';
+import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import type {
-  AutosuggestBaseProps,
-  AutosuggestLabelProps,
+import {
+  type AutosuggestBaseProps,
+  type AutosuggestLabelProps,
+  Autosuggest as BraidAutosuggest,
 } from './Autosuggest';
-import { Autosuggest as BraidAutosuggest } from './Autosuggest';
 
 type PlayroomAutosuggestProps<Value> = StateProp &
   Optional<AutosuggestBaseProps<Value>, 'id' | 'value' | 'onChange'> &

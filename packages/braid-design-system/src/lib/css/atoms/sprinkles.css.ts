@@ -1,17 +1,14 @@
 import { style } from '@vanilla-extract/css';
-import type {
-  ConditionalValue,
-  RequiredConditionalValue,
-} from '@vanilla-extract/sprinkles';
 import {
+  type ConditionalValue,
+  type RequiredConditionalValue,
   defineProperties,
   createSprinkles,
   createMapValueFn,
   createNormalizeValueFn,
 } from '@vanilla-extract/sprinkles';
 
-import type { Breakpoint } from '../breakpoints';
-import { breakpoints, breakpointNames } from '../breakpoints';
+import { type Breakpoint, breakpoints, breakpointNames } from '../breakpoints';
 import {
   responsiveProperties,
   unresponsiveProperties,

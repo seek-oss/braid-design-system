@@ -1,5 +1,4 @@
-import type { PluginPass, Visitor } from '@babel/core';
-import { types as t } from '@babel/core';
+import { type PluginPass, type Visitor, types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
 
 import {
@@ -7,8 +6,11 @@ import {
   renderUntraceableImportWarning,
   renderUntraceablePropertyWarning,
 } from '../warning-renderer/warning';
-import type { StringLiteralPath } from './helpers';
-import { deArray, updateStringLiteral } from './helpers';
+import {
+  type StringLiteralPath,
+  deArray,
+  updateStringLiteral,
+} from './helpers';
 
 export type DeprecationMap = Record<
   string,

@@ -1,14 +1,14 @@
-import type { AllHTMLAttributes } from 'react';
-import React from 'react';
+import React, { type AllHTMLAttributes } from 'react';
 import { Box } from '../../Box/Box';
-import type { FieldLabelProps } from '../../FieldLabel/FieldLabel';
-import { FieldLabel } from '../../FieldLabel/FieldLabel';
-import type { FieldMessageProps } from '../../FieldMessage/FieldMessage';
-import { FieldMessage } from '../../FieldMessage/FieldMessage';
-import type { StackProps } from '../../Stack/Stack';
-import { Stack } from '../../Stack/Stack';
-import type { DataAttributeMap } from '../buildDataAttributes';
-import buildDataAttributes from '../buildDataAttributes';
+import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
+import {
+  type FieldMessageProps,
+  FieldMessage,
+} from '../../FieldMessage/FieldMessage';
+import { type StackProps, Stack } from '../../Stack/Stack';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 

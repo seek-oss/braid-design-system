@@ -1,5 +1,6 @@
-import type { ReactNode, Reducer } from 'react';
 import React, {
+  type ReactNode,
+  type Reducer,
   useState,
   useEffect,
   useRef,
@@ -12,8 +13,7 @@ import { ariaHideOthers } from './ariaHideOthers';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { externalGutter } from './ModalExternalGutter';
-import type { ModalContentProps } from './ModalContent';
-import { ModalContent } from './ModalContent';
+import { type ModalContentProps, ModalContent } from './ModalContent';
 import * as styles from './Modal.css';
 
 export interface ModalProps
