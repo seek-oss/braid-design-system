@@ -1,8 +1,13 @@
-import type { ReactNode, KeyboardEvent, Ref } from 'react';
-import React, { useRef, forwardRef, Fragment } from 'react';
+import React, {
+  type ReactNode,
+  type KeyboardEvent,
+  type Ref,
+  useRef,
+  forwardRef,
+  Fragment,
+} from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
-import type { BoxProps } from '../../Box/Box';
-import { Box } from '../../Box/Box';
+import { type BoxProps, Box } from '../../Box/Box';
 import { normalizeKey } from '../normalizeKey';
 import { Heading } from '../../Heading/Heading';
 import { Stack } from '../../Stack/Stack';
@@ -13,8 +18,9 @@ import { Bleed } from '../../Bleed/Bleed';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
-import type { DataAttributeMap } from '../buildDataAttributes';
-import buildDataAttributes from '../buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../buildDataAttributes';
 import * as styles from './Modal.css';
 
 export interface ModalContentProps {

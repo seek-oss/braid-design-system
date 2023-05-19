@@ -1,21 +1,25 @@
 import assert from 'assert';
 import dedent from 'dedent';
-import type { ReactNode, AllHTMLAttributes, ReactElement } from 'react';
-import React, { useContext, forwardRef } from 'react';
-import type { BoxBackgroundVariant, BoxProps } from '../Box/Box';
-import { Box } from '../Box/Box';
+import React, {
+  type ReactNode,
+  type AllHTMLAttributes,
+  type ReactElement,
+  useContext,
+  forwardRef,
+} from 'react';
+import { type BoxBackgroundVariant, type BoxProps, Box } from '../Box/Box';
 import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
-import type { ColorContrastValue } from '../Box/BackgroundContext';
 import {
+  type ColorContrastValue,
   useBackgroundLightness,
   useColorContrast,
 } from '../Box/BackgroundContext';
-import type { TextProps } from '../Text/Text';
-import { Text } from '../Text/Text';
+import { type TextProps, Text } from '../Text/Text';
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import ActionsContext from '../Actions/ActionsContext';
 import type { UseIconProps } from '../../hooks/useIcon';

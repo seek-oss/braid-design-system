@@ -1,17 +1,19 @@
 import React, { Children } from 'react';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
-import type { DividerProps } from '../Divider/Divider';
-import { Divider } from '../Divider/Divider';
+import { type DividerProps, Divider } from '../Divider/Divider';
 import type { Space } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import * as styles from './Tiles.css';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import type { RequiredResponsiveValue } from '../../css/atoms/sprinkles.css';
-import { mapResponsiveValue } from '../../css/atoms/sprinkles.css';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import {
+  type RequiredResponsiveValue,
+  mapResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;

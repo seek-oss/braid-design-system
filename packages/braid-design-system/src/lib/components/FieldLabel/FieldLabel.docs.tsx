@@ -1,5 +1,4 @@
-import React from 'react';
-import type { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import source from '../../utils/source.macro';
 import type { ComponentDocs } from 'site/types';
 import {

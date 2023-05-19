@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Text } from 'ink';
-import type { Theme } from 'cli-highlight';
-import { highlight } from 'cli-highlight';
+import { type Theme, highlight } from 'cli-highlight';
 
 export interface Props {
   code: string;

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { useFallbackId } from '../../playroom/utils';
-import type { ButtonIconProps } from './ButtonIcon';
 import {
+  type ButtonIconProps,
   ButtonIcon as BraidButtonIcon,
   buttonIconVariants,
 } from './ButtonIcon';

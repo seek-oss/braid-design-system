@@ -1,6 +1,8 @@
 import React, { forwardRef } from 'react';
-import type { InlineFieldProps } from '../private/InlineField/InlineField';
-import { InlineField } from '../private/InlineField/InlineField';
+import {
+  type InlineFieldProps,
+  InlineField,
+} from '../private/InlineField/InlineField';
 import type { CheckboxChecked } from '../private/InlineField/StyledInput';
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 

@@ -1,15 +1,21 @@
 import assert from 'assert';
 import React, { useMemo } from 'react';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import type { RequiredResponsiveValue } from '../../css/atoms/sprinkles.css';
-import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import {
+  type RequiredResponsiveValue,
+  normalizeResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Divider } from '../Divider/Divider';
-import type { AccordionContextValue } from './AccordionContext';
-import { AccordionContext, validTones } from './AccordionContext';
+import {
+  type AccordionContextValue,
+  AccordionContext,
+  validTones,
+} from './AccordionContext';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 

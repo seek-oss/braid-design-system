@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 import fs from 'fs';
 import path from 'path';
-import type { CompilerOptions } from 'typescript';
-import ts from 'typescript';
+import ts, { type CompilerOptions } from 'typescript';
 import isEqual from 'lodash/isEqual';
 
 const MAX_DEPTH = 10;

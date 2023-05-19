@@ -3,8 +3,7 @@ import type { DeepPartial } from 'utility-types';
 import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash/merge';
 import { palette } from '../../color/palette';
-import type { BraidTokens } from '../tokenType';
-import { extractFontMetricsForTheme } from '../tokenType';
+import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
 
 interface MakeTokensOptions {
   name: string;

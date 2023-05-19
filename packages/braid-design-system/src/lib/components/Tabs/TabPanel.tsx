@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react';
-import React, { useContext } from 'react';
+import React, { type ReactNode, useContext } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { Overlay } from '../private/Overlay/Overlay';
 import { TabsContext } from './TabsProvider';
 import { TabPanelsContext } from './TabPanelsContext';

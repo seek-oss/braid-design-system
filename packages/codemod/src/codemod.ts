@@ -1,7 +1,10 @@
 import fs from 'fs';
 import { parse, print } from 'recast';
-import type { TransformOptions } from '@babel/core';
-import { transformFromAstSync, parseSync } from '@babel/core';
+import {
+  type TransformOptions,
+  transformFromAstSync,
+  parseSync,
+} from '@babel/core';
 import prettier from 'prettier';
 // @ts-expect-error
 import jsxSyntax from '@babel/plugin-syntax-jsx';

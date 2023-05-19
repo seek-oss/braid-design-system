@@ -1,12 +1,15 @@
 import dedent from 'dedent';
-import type { ReactNode } from 'react';
-import React, { forwardRef } from 'react';
-import type { LinkComponentProps } from '../BraidProvider/BraidProvider';
-import { useLinkComponent } from '../BraidProvider/BraidProvider';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
-import type { ButtonProps, ButtonStyleProps } from '../Button/Button';
+import React, { type ReactNode, forwardRef } from 'react';
 import {
+  type LinkComponentProps,
+  useLinkComponent,
+} from '../BraidProvider/BraidProvider';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
+import {
+  type ButtonProps,
+  type ButtonStyleProps,
   ButtonContainer,
   ButtonOverlays,
   ButtonText,

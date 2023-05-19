@@ -48,6 +48,13 @@
       }
     },
     "lint": {},
+    "lint:eslint": {
+      "dependsOn": ["prelint:eslint"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "lint:eslint"
+      }
+    },
     "lint:tsc": {
       "dependsOn": ["generate"],
       "inputs": ["default", "^default"],
@@ -57,6 +64,13 @@
       }
     },
     "format": {},
+    "format:eslint": {
+      "dependsOn": ["preformat:eslint"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "format:eslint"
+      }
+    },
     "storybook:chromatic": {
       "dependsOn": ["storybook:build"],
       "executor": "nx:run-script",

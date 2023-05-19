@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
-import type { Dispatch } from 'react';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { type Dispatch, useState, useRef, useEffect } from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../entries/test';

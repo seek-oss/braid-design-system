@@ -1,6 +1,8 @@
 import React from 'react';
-import type { MenuRendererProps } from '../MenuRenderer/MenuRenderer';
-import { MenuRenderer } from '../MenuRenderer/MenuRenderer';
+import {
+  type MenuRendererProps,
+  MenuRenderer,
+} from '../MenuRenderer/MenuRenderer';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconOverflow } from '../icons';
 import { Box } from '../Box/Box';

@@ -6,8 +6,7 @@ import {
   getLightVariant,
   isLight,
 } from '../../utils';
-import type { BraidTokens } from '../tokenType';
-import { extractFontMetricsForTheme } from '../tokenType';
+import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
 
 const formAccent = '#767676';
 const critical = '#ef3e4a';
