@@ -14,7 +14,7 @@ jobs:
       - uses: fkirc/skip-duplicate-actions@v5
         id: skip_check
         with:
-          concurrent_skipping: same_content
+          concurrent_skipping: same_content_newer
           cancel_others: true
 
   test:
