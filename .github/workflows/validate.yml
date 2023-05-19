@@ -1,10 +1,22 @@
 name: Validate
 
-on: push
+on:
+  - push
+  - pull_request
 
 jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - uses: fkirc/skip-duplicate-actions@v5
+        id: skip_check
+
   test:
     name: Lint & Test
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     env:
       CI: true
