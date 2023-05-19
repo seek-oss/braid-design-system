@@ -1,13 +1,13 @@
-import type { ReactNode } from 'react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';
 

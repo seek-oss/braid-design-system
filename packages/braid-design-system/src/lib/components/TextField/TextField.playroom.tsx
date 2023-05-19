@@ -1,10 +1,12 @@
 import React from 'react';
 import type { Optional } from 'utility-types';
-import type { StateProp } from '../../playroom/playroomState';
-import { useFallbackState } from '../../playroom/playroomState';
+import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
-import type { TextFieldBaseProps, TextFieldLabelProps } from './TextField';
-import { TextField as BraidTextField } from './TextField';
+import {
+  type TextFieldBaseProps,
+  type TextFieldLabelProps,
+  TextField as BraidTextField,
+} from './TextField';
 
 type PlayroomTextFieldProps = StateProp &
   Optional<TextFieldBaseProps, 'id' | 'value' | 'onChange'> &

@@ -1,9 +1,8 @@
-import type { ReactElement, ReactNode } from 'react';
-import React from 'react';
-import type { BoxProps } from '../../Box/Box';
-import { Box } from '../../Box/Box';
-import type { DataAttributeMap } from '../buildDataAttributes';
-import buildDataAttributes from '../buildDataAttributes';
+import React, { type ReactElement, type ReactNode } from 'react';
+import { type BoxProps, Box } from '../../Box/Box';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../buildDataAttributes';
 import { MaxLines } from '../MaxLines/MaxLines';
 import type { UseIconProps } from '../../../hooks/useIcon';
 import { alignToFlexAlign } from '../../../utils/align';

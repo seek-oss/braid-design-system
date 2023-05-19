@@ -1,12 +1,15 @@
 import assert from 'assert';
-import type {
-  KeyboardEvent,
-  MouseEvent,
-  ReactNode,
-  Ref,
-  ReactChild,
+import React, {
+  type KeyboardEvent,
+  type MouseEvent,
+  type ReactNode,
+  type Ref,
+  type ReactChild,
+  Children,
+  useRef,
+  useReducer,
+  useEffect,
 } from 'react';
-import React, { Children, useRef, useReducer, useEffect } from 'react';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
@@ -14,12 +17,12 @@ import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
-import type { Action } from './MenuRenderer.actions';
-import { actionTypes } from './MenuRenderer.actions';
+import { type Action, actionTypes } from './MenuRenderer.actions';
 import { MenuRendererContext } from './MenuRendererContext';
 import { MenuRendererItemContext } from './MenuRendererItemContext';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styles from './MenuRenderer.css';
 
 interface TriggerProps {

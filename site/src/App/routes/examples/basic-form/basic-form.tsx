@@ -1,5 +1,4 @@
-import type { ComponentProps } from 'react';
-import React from 'react';
+import React, { type ComponentProps } from 'react';
 import type { Page } from '../../../../types';
 import {
   Heading,

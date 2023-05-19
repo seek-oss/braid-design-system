@@ -1,16 +1,21 @@
-import type {
-  AllHTMLAttributes,
-  ReactNode,
-  KeyboardEvent,
-  ReactElement,
+import React, {
+  type AllHTMLAttributes,
+  type ReactNode,
+  type KeyboardEvent,
+  type ReactElement,
+  useRef,
+  useCallback,
 } from 'react';
-import React, { useRef, useCallback } from 'react';
 import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
-import type { TextLinkStyles } from '../TextLink/TextLink';
-import { TextLinkContent, useLinkStyles } from '../TextLink/TextLink';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
+import {
+  type TextLinkStyles,
+  TextLinkContent,
+  useLinkStyles,
+} from '../TextLink/TextLink';
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps

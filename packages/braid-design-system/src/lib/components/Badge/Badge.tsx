@@ -1,10 +1,10 @@
 import React, { forwardRef, Children } from 'react';
 import assert from 'assert';
-import type { BoxProps } from '../Box/Box';
-import { Box } from '../Box/Box';
+import { type BoxProps, Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { Bleed } from '../Bleed/Bleed';
 
 const validTones = [

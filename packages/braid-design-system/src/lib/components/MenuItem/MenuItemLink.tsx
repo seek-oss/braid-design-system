@@ -1,6 +1,5 @@
 import React from 'react';
-import type { LinkProps } from '../Link/Link';
-import { Link } from '../Link/Link';
+import { type LinkProps, Link } from '../Link/Link';
 import { useMenuItem } from './useMenuItem';
 import type { MenuItemProps } from './MenuItem';
 import { Box } from '../Box/Box';

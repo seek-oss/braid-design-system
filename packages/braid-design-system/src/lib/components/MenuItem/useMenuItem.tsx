@@ -1,17 +1,23 @@
 import assert from 'assert';
-import type { KeyboardEvent, ReactNode, MouseEvent, ReactElement } from 'react';
-import React, { useContext, useRef, useEffect } from 'react';
+import React, {
+  type KeyboardEvent,
+  type ReactNode,
+  type MouseEvent,
+  type ReactElement,
+  useContext,
+  useRef,
+  useEffect,
+} from 'react';
 import type { BadgeProps } from '../Badge/Badge';
-import type { BoxProps } from '../Box/Box';
-import { Box } from '../Box/Box';
+import { type BoxProps, Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { touchableText } from '../../css/typography.css';
 import { normalizeKey } from '../private/normalizeKey';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
-import type { Action } from '../MenuRenderer/MenuRenderer.actions';
-import { actionTypes } from '../MenuRenderer/MenuRenderer.actions';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import { type Action, actionTypes } from '../MenuRenderer/MenuRenderer.actions';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { atoms } from '../../css/atoms/atoms';
 import { iconSize } from '../../hooks/useIcon';
 import * as styles from './useMenuItem.css';

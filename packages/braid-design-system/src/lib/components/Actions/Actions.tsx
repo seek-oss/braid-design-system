@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import ActionsContext from './ActionsContext';
-import type { InlineProps } from '../Inline/Inline';
-import { Inline } from '../Inline/Inline';
+import { type InlineProps, Inline } from '../Inline/Inline';
 import type { ButtonProps } from '../Button/Button';
 
 export interface ActionsProps {

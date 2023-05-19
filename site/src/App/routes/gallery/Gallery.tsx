@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
 import React, {
+  type ReactNode,
   Fragment,
   memo,
   useEffect,
@@ -61,15 +61,14 @@ import {
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromExample';
 import * as icons from 'braid-src/lib/components/icons';
-import type { FitToScreenDimensions } from './galleryState';
 import {
+  type FitToScreenDimensions,
   zoom as zoomState,
   fitToScreenDimensions,
   controller as controllerState,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import type { UseIconProps } from 'braid-src/lib/hooks/useIcon';
-import useIcon from 'braid-src/lib/hooks/useIcon';
+import useIcon, { type UseIconProps } from 'braid-src/lib/hooks/useIcon';
 import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';
 

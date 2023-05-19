@@ -1,7 +1,6 @@
 import React from 'react';
 import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
-import type { ColumnsProps } from './Columns';
-import { Columns as BraidColumns } from './Columns';
+import { type ColumnsProps, Columns as BraidColumns } from './Columns';
 import { validColumnsComponents } from './ColumnsContext';
 
 export const Columns = ({

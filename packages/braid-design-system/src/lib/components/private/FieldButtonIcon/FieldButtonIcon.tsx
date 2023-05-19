@@ -1,7 +1,5 @@
-import type { MouseEvent } from 'react';
-import React, { useCallback, forwardRef } from 'react';
-import type { ButtonIconProps } from '../../ButtonIcon/ButtonIcon';
-import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
+import React, { type MouseEvent, useCallback, forwardRef } from 'react';
+import { type ButtonIconProps, ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 
 export const FieldButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   ({ label, onClick, onMouseDown, ...restProps }, forwardedRef) => {

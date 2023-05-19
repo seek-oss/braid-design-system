@@ -1,7 +1,6 @@
 import assert from 'assert';
 import clsx from 'clsx';
-import type { ReactElement } from 'react';
-import { useContext } from 'react';
+import { type ReactElement, useContext } from 'react';
 import { atoms } from '../../css/atoms/atoms';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';

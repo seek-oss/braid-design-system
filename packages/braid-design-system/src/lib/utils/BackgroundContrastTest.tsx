@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../components/Box/Box';

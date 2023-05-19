@@ -1,16 +1,13 @@
-import type { FormEvent, ReactElement } from 'react';
-import React from 'react';
+import React, { type FormEvent, type ReactElement } from 'react';
 import assert from 'assert';
 import flattenChildren from '../../utils/flattenChildren';
-import type {
-  FieldGroupBaseProps,
-  FieldLabelVariant,
+import {
+  type FieldGroupBaseProps,
+  type FieldLabelVariant,
+  FieldGroup,
 } from '../private/FieldGroup/FieldGroup';
-import { FieldGroup } from '../private/FieldGroup/FieldGroup';
-import type { RadioItemProps } from '../RadioGroup/RadioItem';
-import { RadioItem } from '../RadioGroup/RadioItem';
-import type { StackProps } from '../Stack/Stack';
-import { Stack } from '../Stack/Stack';
+import { type RadioItemProps, RadioItem } from '../RadioGroup/RadioItem';
+import { type StackProps, Stack } from '../Stack/Stack';
 import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 import { Box } from '../Box/Box';
 import type { InlineFieldProps } from '../private/InlineField/InlineField';

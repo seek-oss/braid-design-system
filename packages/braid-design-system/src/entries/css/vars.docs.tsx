@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { type ReactNode, useEffect, useRef, useState } from 'react';
 import { vars } from 'braid-src/entries/css';
 import {
   Text,
@@ -12,8 +11,7 @@ import {
   Alert,
   List,
 } from 'braid-src/lib/components';
-import type { BoxProps } from 'braid-src/lib/components/Box/Box';
-import { Box } from 'braid-src/lib/components/Box/Box';
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import Code from 'site/App/Code/Code';
 import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';

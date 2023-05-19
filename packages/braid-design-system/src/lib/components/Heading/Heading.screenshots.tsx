@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { heading } from '../../css/typography.css';
 import { Box, Heading, IconPositive, IconPromote, Stack, Text } from '../';

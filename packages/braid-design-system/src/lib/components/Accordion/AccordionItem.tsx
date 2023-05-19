@@ -1,27 +1,34 @@
-import type { ReactElement, ReactNode } from 'react';
-import React, { cloneElement, useContext } from 'react';
+import React, {
+  type ReactElement,
+  type ReactNode,
+  cloneElement,
+  useContext,
+} from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
-import type { TextProps } from '../Text/Text';
-import { Text } from '../Text/Text';
+import { type TextProps, Text } from '../Text/Text';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
 import { Inline } from '../Inline/Inline';
 import type { BadgeProps } from '../Badge/Badge';
 import { IconChevron } from '../icons';
-import type {
-  UseDisclosureProps,
-  DisclosureStateProps,
+import {
+  type UseDisclosureProps,
+  type DisclosureStateProps,
+  useDisclosure,
 } from '../Disclosure/useDisclosure';
-import { useDisclosure } from '../Disclosure/useDisclosure';
 
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
-import type { AccordionContextValue } from './AccordionContext';
-import { AccordionContext, validTones } from './AccordionContext';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import {
+  type AccordionContextValue,
+  AccordionContext,
+  validTones,
+} from './AccordionContext';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import * as styles from './AccordionItem.css';
 
 const itemSpaceForSize = {

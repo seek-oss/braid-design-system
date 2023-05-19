@@ -1,11 +1,19 @@
-import type { KeyboardEvent, ReactNode, MouseEvent, ReactElement } from 'react';
-import React, { useRef, useContext, useEffect, cloneElement } from 'react';
+import React, {
+  type KeyboardEvent,
+  type ReactNode,
+  type MouseEvent,
+  type ReactElement,
+  useRef,
+  useContext,
+  useEffect,
+  cloneElement,
+} from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { normalizeKey } from '../private/normalizeKey';
 import { TabsContext } from './TabsProvider';
-import type { Action } from './Tabs.actions';
 import {
+  type Action,
   TAB_BUTTON_LEFT,
   TAB_BUTTON_RIGHT,
   TAB_BUTTON_HOME,
@@ -17,10 +25,10 @@ import {
   TAB_BUTTON_CLICK,
   TAB_BUTTON_REGISTER,
 } from './Tabs.actions';
-import type { TextProps } from '../Text/Text';
-import { Text } from '../Text/Text';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
+import { type TextProps, Text } from '../Text/Text';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { TabListContext } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import type { BadgeProps } from '../Badge/Badge';

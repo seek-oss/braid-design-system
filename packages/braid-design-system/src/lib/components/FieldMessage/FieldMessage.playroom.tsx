@@ -1,8 +1,11 @@
 import React from 'react';
 import type { Optional } from 'utility-types';
 import { useFallbackId } from '../../playroom/utils';
-import type { FieldMessageProps } from './FieldMessage';
-import { FieldMessage as BraidFieldMessage, tones } from './FieldMessage';
+import {
+  type FieldMessageProps,
+  FieldMessage as BraidFieldMessage,
+  tones,
+} from './FieldMessage';
 
 type PlayroomFieldMessageProps = Optional<FieldMessageProps, 'id'>;
 

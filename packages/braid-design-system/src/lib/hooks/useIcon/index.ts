@@ -7,8 +7,9 @@ import type { PublicBoxProps } from '../../components/Box/Box';
 import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
-import type { DataAttributeMap } from '../../components/private/buildDataAttributes';
-import buildDataAttributes from '../../components/private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../../components/private/buildDataAttributes';
 import { iconInlineSize } from '../../components/icons/IconRenderer';
 import { atoms } from '../../css/atoms/atoms';
 import * as typographyStyles from '../../css/typography.css';

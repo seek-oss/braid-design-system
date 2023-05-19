@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
-import type { ComponentType } from 'react';
-import React, { useState } from 'react';
+import React, { type ComponentType, useState } from 'react';
 import {
   render,
   waitForElementToBeRemoved,

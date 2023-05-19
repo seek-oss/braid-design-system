@@ -1,7 +1,9 @@
 import React, { forwardRef } from 'react';
 import { Box } from '../Box/Box';
-import type { StyledInputProps } from '../private/InlineField/StyledInput';
-import { StyledInput } from '../private/InlineField/StyledInput';
+import {
+  type StyledInputProps,
+  StyledInput,
+} from '../private/InlineField/StyledInput';
 import { TextContext } from '../Text/TextContext';
 import type { CheckboxProps } from './Checkbox';
 import { resolveCheckedGroup } from './resolveCheckedGroup';

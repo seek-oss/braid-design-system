@@ -1,16 +1,25 @@
-import type { ReactNode, ReactElement } from 'react';
-import React, { cloneElement, forwardRef } from 'react';
+import React, {
+  type ReactNode,
+  type ReactElement,
+  cloneElement,
+  forwardRef,
+} from 'react';
 import { Box } from '../../Box/Box';
 import type { FieldLabelProps } from '../../FieldLabel/FieldLabel';
-import type { FieldMessageProps } from '../../FieldMessage/FieldMessage';
-import { FieldMessage } from '../../FieldMessage/FieldMessage';
+import {
+  type FieldMessageProps,
+  FieldMessage,
+} from '../../FieldMessage/FieldMessage';
 import { Text } from '../../Text/Text';
 import { virtualTouchable } from '../touchable/virtualTouchable';
 import { mergeIds } from '../mergeIds';
 import type { BadgeProps } from '../../Badge/Badge';
 import { Inline } from '../../Inline/Inline';
-import type { StyledInputProps, PrivateStyledInputProps } from './StyledInput';
-import { StyledInput } from './StyledInput';
+import {
+  type StyledInputProps,
+  type PrivateStyledInputProps,
+  StyledInput,
+} from './StyledInput';
 import * as styles from './InlineField.css';
 
 type InlineFieldBaseProps = {
