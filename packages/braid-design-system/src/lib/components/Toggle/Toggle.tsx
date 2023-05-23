@@ -7,7 +7,7 @@ import React, {
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
-import { IconTick } from '../icons';
+import { IconTick } from '../icons/IconTick/IconTick';
 import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
