@@ -14,7 +14,7 @@ export const Inline = ({
   ...restProps
 }: InlineProps) => (
   <BraidInline
-    space={cleanSpaceValue(space)}
+    space={cleanSpaceValue(space) || 'none'}
     align={typeof align !== 'boolean' ? align : undefined}
     alignY={typeof alignY !== 'boolean' ? alignY : undefined}
     component={
