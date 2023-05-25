@@ -77,6 +77,27 @@ describe('TextLink', () => {
     });
   });
 
+  it('should honour aria-label if provided', () => {
+    const { getByLabelText, queryByLabelText } = render(
+      <BraidTestProvider>
+        <Text>
+          <TextLinkButton
+            onClick={createMockClickHandler()}
+            aria-label="Alternate label"
+          >
+            Link text
+          </TextLinkButton>
+        </Text>
+      </BraidTestProvider>,
+    );
+    const buttonEl = getByLabelText('Alternate label');
+    expect(buttonEl.tagName).toBe('SPAN');
+    expect(buttonEl.textContent).toBe('Link text');
+
+    const button = queryByLabelText('Link text');
+    expect(button).toBeNull();
+  });
+
   describe('in Actions', () => {
     beforeAll(() => {
       jest.spyOn(console, 'warn').mockImplementation();

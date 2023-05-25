@@ -2037,6 +2037,7 @@ exports[`Button 1`] = `
         | "true"
         | false
         | true
+    aria-label?: string
     bleed?: boolean
     bleedY?: boolean
     children?: ReactNode
@@ -7942,6 +7943,7 @@ exports[`TextLinkButton 1`] = `
         | "true"
         | false
         | true
+    aria-label?: string
     children: ReactNode
     data?: DataAttributeMap
     hitArea?: 
