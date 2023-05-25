@@ -13,7 +13,7 @@ export const Stack = ({
   ...restProps
 }: StackProps) => (
   <BraidStack
-    space={cleanSpaceValue(space)}
+    space={cleanSpaceValue(space) || 'none'}
     align={typeof align !== 'boolean' ? align : undefined}
     component={
       component && validStackComponents.indexOf(component) > -1
