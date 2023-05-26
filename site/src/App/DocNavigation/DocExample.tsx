@@ -41,7 +41,7 @@ export const DocExample = ({
             <Container>{value}</Container>
           </ThemedExample>
         ) : null}
-        {codeAsString ? (
+        {code !== false && codeAsString ? (
           <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
             {codeAsString}
           </Code>

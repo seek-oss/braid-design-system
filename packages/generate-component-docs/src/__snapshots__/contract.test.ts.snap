@@ -6797,6 +6797,26 @@ exports[`OverflowMenu 1`] = `
 }
 `;
 
+exports[`PageBlock 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    component?: 
+        | "article"
+        | "aside"
+        | "div"
+        | "main"
+        | "nav"
+        | "section"
+    data?: DataAttributeMap
+    width?: 
+        | "large"
+        | "medium"
+},
+}
+`;
+
 exports[`Pagination 1`] = `
 {
   exportType: component,

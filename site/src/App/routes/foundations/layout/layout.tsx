@@ -21,6 +21,7 @@ import {
   Hidden,
   Strong,
   Bleed,
+  PageBlock,
 } from 'braid-src/lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
@@ -84,6 +85,9 @@ const page: Page = {
         </Text>
         <Text>
           <TextLink href="#contentblock">ContentBlock</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#pageblock">PageBlock</TextLink>
         </Text>
         <Text>
           <TextLink href="#bleed">Bleed</TextLink>
@@ -768,6 +772,41 @@ const page: Page = {
               <Text>Hello World</Text>
             </Card>
           </ContentBlock>,
+        )}
+      </Code>
+
+      <Divider />
+
+      <LinkableHeading>PageBlock</LinkableHeading>
+      <Text>
+        For top-level sections, in addition to limiting the width of content on
+        the screen, it is also important to standardise the gutter between
+        content and the edge of the screen. For this Braid provides the{' '}
+        <TextLink href="/components/PageBlock">PageBlock</TextLink> component,
+        which defines responsive gutters around a{' '}
+        <TextLink href="#contentblock">ContentBlock</TextLink>.
+      </Text>
+      <Code>
+        {source(
+          <PageBlock>
+            <Card>
+              <Text>Hello World</Text>
+            </Card>
+          </PageBlock>,
+        )}
+      </Code>
+      <Text>
+        To standardise our page-level block widths, the{' '}
+        <TextLink href="/components/PageBlock#maximum-width">width</TextLink>{' '}
+        prop accepts either <Strong>medium</Strong> or <Strong>large</Strong>.
+      </Text>
+      <Code>
+        {source(
+          <PageBlock width="large">
+            <Card>
+              <Text>Hello World</Text>
+            </Card>
+          </PageBlock>,
         )}
       </Code>
 
