@@ -1,5 +1,39 @@
 # braid-design-system
 
+## 32.6.0
+
+### Minor Changes
+
+- **PageBlock:** Add new component ([#1307](https://github.com/seek-oss/braid-design-system/pull/1307))
+
+  Provides a top-level page container, constraining the content width (using `ContentBlock`) while establishing common screen gutters on smaller devices.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <PageBlock width="large">...</PageBlock>
+  ```
+
+- **Button, TextLinkButton:** Add `aria-label` support ([#1304](https://github.com/seek-oss/braid-design-system/pull/1304))
+
+  Provide support for `aria-label`, enabling additional context to be given to assistive technologies where context is typically visual.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Button aria-label="Save job">Save</Button>
+  ```
+
+- **IconMessage:** Add new component ([#1303](https://github.com/seek-oss/braid-design-system/pull/1303))
+
+  Add new `IconMessage` component.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconMessage />
+  ```
+
 ## 32.5.0
 
 ### Minor Changes
