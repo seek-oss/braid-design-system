@@ -1,10 +1,26 @@
 name: Validate
 
-on: push
+on:
+  - push
+  - pull_request
 
 jobs:
+  skip_check:
+    name: Check concurrent runs
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - uses: fkirc/skip-duplicate-actions@v5
+        id: skip_check
+        with:
+          concurrent_skipping: same_content_newer
+          cancel_others: true
+
   test:
     name: Lint & Test
+    needs: skip_check
+    if: needs.skip_check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     env:
       CI: true
