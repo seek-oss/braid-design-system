@@ -27,6 +27,7 @@ export interface TextLinkButtonProps
   'aria-controls'?: NativeSpanProps['aria-controls'];
   'aria-expanded'?: NativeSpanProps['aria-expanded'];
   'aria-describedby'?: NativeSpanProps['aria-describedby'];
+  'aria-label'?: NativeSpanProps['aria-label'];
   tabIndex?: NativeSpanProps['tabIndex'];
   icon?: ReactElement<UseIconProps>;
 }
@@ -42,6 +43,7 @@ export const TextLinkButton = ({
   'aria-controls': ariaControls,
   'aria-expanded': ariaExpanded,
   'aria-describedby': ariaDescribedBy,
+  'aria-label': ariaLabel,
   tabIndex,
   icon,
   iconPosition,
@@ -75,6 +77,7 @@ export const TextLinkButton = ({
       aria-controls={ariaControls}
       aria-expanded={ariaExpanded}
       aria-describedby={ariaDescribedBy}
+      aria-label={ariaLabel}
       id={id}
       className={classes}
       {...buildDataAttributes({ data, validateRestProps: restProps })}

@@ -2037,6 +2037,7 @@ exports[`Button 1`] = `
         | "true"
         | false
         | true
+    aria-label?: string
     bleed?: boolean
     bleedY?: boolean
     children?: ReactNode
@@ -4479,6 +4480,37 @@ exports[`IconLocation 1`] = `
 `;
 
 exports[`IconMail 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconMessage 1`] = `
 {
   exportType: component,
   props: {
@@ -7942,6 +7974,7 @@ exports[`TextLinkButton 1`] = `
         | "true"
         | false
         | true
+    aria-label?: string
     children: ReactNode
     data?: DataAttributeMap
     hitArea?: 
