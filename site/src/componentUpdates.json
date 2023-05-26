@@ -3344,5 +3344,29 @@
         "summary": "Add `seekJobs` theme\n\nThe `seekJobs` theme encapsulates the system changes necessary to apply and deliver the updated visual design language for SEEK Jobs.\nThrough the development of this theme, we have been able improve the fidelity of the various scales in our tokens, while also ensuring that the tokens themselves are consumed and applied more consistently throughout the system itself.\n\n**EXAMPLE USAGE:**\n```tsx\nimport seekJobs from 'braid-design-system/themes/seekJobs';\n\n<BraidProvider theme={seekJobs}>\n  ...\n</BraidProvider>\n```\n\n**MIGRATION**\n\nConsumers of the `apac` theme are not recommended to migrate independently. The `seekJobs` theme represents an uplifted visual identity that is part of a wider visual uplift.\nInstead, we’ll be guiding the initial teams through a staged migration in coordination with the centralised team process.\nThere are some differences in how certain concepts are applied, whether it's the space scale, or `Card` usage, etc., and we will be documenting these in due course.\n\nIf you would like to talk about migrating, please reach out to us in our **#braid-support** channel on slack."
       }
     ]
+  },
+  {
+    "version": "32.6.0",
+    "updates": [
+      {
+        "new": [
+          "PageBlock"
+        ],
+        "summary": "**PageBlock:** Add new component\n\nProvides a top-level page container, constraining the content width (using `ContentBlock`) while establishing common screen gutters on smaller devices.\n\n**EXAMPLE USAGE:**\n```jsx\n<PageBlock width=\"large\">\n  ...\n</PageBlock>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "TextLinkButton"
+        ],
+        "summary": "**Button, TextLinkButton:** Add `aria-label` support\n\nProvide support for `aria-label`, enabling additional context to be given to assistive technologies where context is typically visual.\n\n**EXAMPLE USAGE:**\n```jsx\n<Button aria-label=\"Save job\">Save</Button>\n```"
+      },
+      {
+        "new": [
+          "IconMessage"
+        ],
+        "summary": "**IconMessage:** Add new component\n\nAdd new `IconMessage` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<IconMessage />\n```"
+      }
+    ]
   }
 ]
