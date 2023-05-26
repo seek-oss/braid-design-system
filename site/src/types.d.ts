@@ -62,7 +62,7 @@ export interface ComponentExample {
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;
   Container?: (props: { children: ReactNode }) => ReactElement;
-  code?: string;
+  code?: string | false;
   showCodeByDefault?: boolean;
   playroom?: boolean;
 }

@@ -21,7 +21,9 @@ const docs: ComponentDocs = {
       the content it wraps.
     </Text>
   ),
-  alternatives: [],
+  alternatives: [
+    { name: 'PageBlock', description: 'For page-level layout blocks' },
+  ],
   additional: [
     {
       label: 'Maximum width',
