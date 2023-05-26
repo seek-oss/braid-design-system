@@ -57,7 +57,7 @@ const docs: ComponentDocs = {
           <Text>
             Uses <Strong>{gutters.mobile}</Strong> space on{' '}
             <TextLink href="/css/breakpoints">mobile</TextLink> and the semantic{' '}
-            <Strong>{gutters.tablet}</Strong> on
+            <Strong>{gutters.tablet}</Strong> on{' '}
             <TextLink href="/css/breakpoints">tablet</TextLink> and above.
           </Text>
         </>
