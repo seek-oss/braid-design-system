@@ -33,6 +33,7 @@ export { IconLinkBroken } from './IconLinkBroken/IconLinkBroken';
 export { IconList } from './IconList/IconList';
 export { IconLocation } from './IconLocation/IconLocation';
 export { IconMail } from './IconMail/IconMail';
+export { IconMessage } from './IconMessage/IconMessage';
 export { IconMinus } from './IconMinus/IconMinus';
 export { IconMobile } from './IconMobile/IconMobile';
 export { IconMoney } from './IconMoney/IconMoney';

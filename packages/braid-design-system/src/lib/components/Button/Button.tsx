@@ -62,6 +62,7 @@ export interface ButtonProps extends ButtonStyleProps {
   'aria-controls'?: NativeButtonProps['aria-controls'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
+  'aria-label'?: NativeButtonProps['aria-label'];
   tabIndex?: NativeButtonProps['tabIndex'];
   data?: DataAttributeMap;
 }
@@ -469,6 +470,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'aria-controls': ariaControls,
       'aria-expanded': ariaExpanded,
       'aria-describedby': ariaDescribedBy,
+      'aria-label': ariaLabel,
       data,
       ...restProps
     },
@@ -506,6 +508,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           aria-controls={ariaControls}
           aria-expanded={ariaExpanded}
           aria-describedby={ariaDescribedBy}
+          aria-label={ariaLabel}
           onClick={onClick}
           disabled={loading}
           {...buildDataAttributes({ data, validateRestProps: restProps })}
