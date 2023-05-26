@@ -426,7 +426,7 @@ const page: Page = {
               an{' '}
               <TextLink href="/components/IconBookmark">IconBookmark</TextLink>{' '}
               as the save action. By default, `Columns` are of equal width. In
-              this design however, the second column should only we as wide as
+              this design however, the second column should only be as wide as
               the save action itself. This can be controlled by setting the
               `Column` to have a &ldquo;width&rdquo; of &ldquo;content&rdquo;.
             </Text>
