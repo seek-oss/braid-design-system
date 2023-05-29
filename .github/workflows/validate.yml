@@ -16,6 +16,8 @@ jobs:
         with:
           concurrent_skipping: same_content_newer
           cancel_others: true
+          # We want to skip only concurrent runs. Subsequent runs/retries should be allowed.
+          skip_after_successful_duplicate: false
 
   test:
     name: Lint & Test
@@ -53,6 +55,7 @@ jobs:
         run: pnpm test
 
       - name: Chromatic
+        if: github.ref != 'refs/heads/master'
         run: pnpm storybook:chromatic
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}
