@@ -10,6 +10,7 @@ const isGitHubPages = process.env.IS_GITHUB_PAGES === 'true';
 const braidRoot = path.join(__dirname, '../packages/braid-design-system');
 const resolveFromBraid = (p) => path.join(braidRoot, p);
 
+/** @type {import("sku").SkuConfig} */
 module.exports = {
   srcPaths: ['./src', resolveFromBraid('src')],
   clientEntry: './src/client.tsx',
