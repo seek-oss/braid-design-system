@@ -14,7 +14,7 @@ import { Stack } from '../../Stack/Stack';
 import { Columns } from '../../Columns/Columns';
 import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
-import { Bleed } from '../../Bleed/Bleed';
+import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
@@ -40,7 +40,7 @@ export interface ModalContentProps {
   data?: DataAttributeMap;
 }
 
-const modalPadding = ['gutter', 'large'] as const;
+const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
 
 interface ModalContentHeaderProps
   extends Pick<ModalContentProps, 'headingLevel' | 'description'> {
@@ -50,7 +50,11 @@ interface ModalContentHeaderProps
 }
 const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
   ({ title, headingLevel, description, descriptionId, center }, ref) => (
-    <Stack space="small">
+    <Stack
+      space={
+        headingLevel === '2' ? { mobile: 'small', tablet: 'medium' } : 'small'
+      }
+    >
       <Heading level={headingLevel} align={center ? 'center' : undefined}>
         <Box
           ref={ref}
@@ -149,7 +153,8 @@ export const ModalContent = ({
             height={
               position === 'right' || position === 'left' ? 'full' : undefined
             }
-            padding={modalPadding}
+            paddingY={modalPadding}
+            paddingX={position !== 'center' ? pageBlockGutters : modalPadding}
             className={[
               styles.pointerEventsAll,
               position === 'center' && styles.maxSize[position],
@@ -199,28 +204,25 @@ export const ModalContent = ({
           display="flex"
           justifyContent="flexEnd"
           paddingTop={modalPadding}
-          paddingRight={modalPadding}
+          paddingRight={position !== 'center' ? pageBlockGutters : modalPadding}
           className={position === 'center' && styles.maxSize[position]}
         >
-          <Bleed space="xsmall">
-            <Box
-              position="relative"
-              background="surface"
-              borderRadius="full"
-              padding="xsmall"
-              className={[styles.closeIconOffset, styles.pointerEventsAll]}
-            >
-              <ButtonIcon
-                id={`${id}-close`}
-                label={closeLabel}
-                icon={<IconClear />}
-                tone="secondary"
-                variant="transparent"
-                size="large"
-                onClick={onClose}
-              />
-            </Box>
-          </Bleed>
+          <Box
+            position="relative"
+            background="surface"
+            borderRadius="full"
+            className={[styles.closeIconOffset, styles.pointerEventsAll]}
+          >
+            <ButtonIcon
+              id={`${id}-close`}
+              label={closeLabel}
+              icon={<IconClear />}
+              tone="secondary"
+              variant="transparent"
+              size="large"
+              onClick={onClose}
+            />
+          </Box>
         </Box>
       </Box>
     </Box>

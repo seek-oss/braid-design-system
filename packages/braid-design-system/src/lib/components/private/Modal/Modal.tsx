@@ -239,8 +239,8 @@ export const Modal = ({
           padding={position === 'center' ? externalGutter : undefined}
           className={[
             styles.modalContainer,
-            position === 'left' ||
-              (position === 'right' && styles.horiztontalTransition),
+            (position === 'left' || position === 'right') &&
+              styles.horiztontalTransition,
             state === OPENING && styles.entrance[position],
             state === CLOSING &&
               position in styles.exit &&
