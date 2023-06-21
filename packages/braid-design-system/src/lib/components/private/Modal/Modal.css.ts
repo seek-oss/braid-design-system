@@ -1,3 +1,4 @@
+import { rgba } from 'polished';
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { externalGutter } from './ModalExternalGutter';
@@ -16,10 +17,12 @@ export const resetStackingContext = atoms({ position: 'relative', zIndex: 0 });
 export const backdrop = style(
   colorModeStyle({
     lightMode: {
-      background: 'rgba(0, 0, 0, .4)',
+      background: '#000',
+      opacity: 0.4,
     },
     darkMode: {
-      background: 'rgba(0, 0, 0, .6)',
+      background: '#000',
+      opacity: 0.6,
     },
   }),
 );
