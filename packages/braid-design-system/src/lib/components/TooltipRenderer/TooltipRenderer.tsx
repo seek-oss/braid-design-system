@@ -155,6 +155,12 @@ export const TooltipRenderer = ({
             offset: [0, space.small * grid],
           },
         },
+        {
+          name: 'arrow',
+          options: {
+            padding: space.xsmall * grid,
+          },
+        },
         ...(isStatic
           ? [
               {

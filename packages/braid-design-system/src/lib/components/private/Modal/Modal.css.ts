@@ -4,6 +4,7 @@ import { externalGutter } from './ModalExternalGutter';
 import { responsiveStyle } from '../../../css/responsiveStyle';
 import { vars } from '../../../themes/vars.css';
 import { atoms } from '../../../css/atoms/atoms';
+import { colorModeStyle } from '../../../css/colorModeStyle';
 
 export const fixedStackingContext = atoms({
   position: 'fixed',
@@ -12,9 +13,18 @@ export const fixedStackingContext = atoms({
 
 export const resetStackingContext = atoms({ position: 'relative', zIndex: 0 });
 
-export const backdrop = style({
-  background: 'rgba(0, 0, 0, .4)',
-});
+export const backdrop = style(
+  colorModeStyle({
+    lightMode: {
+      background: '#000',
+      opacity: 0.4,
+    },
+    darkMode: {
+      background: '#000',
+      opacity: 0.6,
+    },
+  }),
+);
 
 const reducedMotion = style({
   '@media': {
@@ -35,7 +45,7 @@ export const entrance = {
     reducedMotion,
     style(
       responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(140%)' },
+        mobile: { opacity: 1, transform: 'translateX(110%)' },
         tablet: { opacity: 0, transform: 'translateX(40px)' },
       }),
     ),
@@ -44,7 +54,7 @@ export const entrance = {
     reducedMotion,
     style(
       responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(-140%)' },
+        mobile: { opacity: 1, transform: 'translateX(-110%)' },
         tablet: { opacity: 0, transform: 'translateX(-40px)' },
       }),
     ),
@@ -56,7 +66,7 @@ export const exit = {
     reducedMotion,
     style(
       responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(140%)' },
+        mobile: { opacity: 1, transform: 'translateX(110%)' },
         tablet: { opacity: 0, transform: 'translateX(10px)' },
       }),
     ),
@@ -65,7 +75,7 @@ export const exit = {
     reducedMotion,
     style(
       responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(-140%)' },
+        mobile: { opacity: 1, transform: 'translateX(-110%)' },
         tablet: { opacity: 0, transform: 'translateX(-10px)' },
       }),
     ),
