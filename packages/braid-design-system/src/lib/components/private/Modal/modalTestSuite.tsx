@@ -9,6 +9,7 @@ import userEvent from '@testing-library/user-event';
 import { Button } from '../../Button/Button';
 import { BraidTestProvider } from '../../../../entries/test';
 import type { ModalProps } from './Modal';
+import type { Optional } from 'utility-types';
 
 export const modalTestSuite = (
   name: string,
@@ -22,7 +23,7 @@ export const modalTestSuite = (
   const CLOSE_LABEL = 'Close button';
   const TITLE = 'Test Title';
 
-  const TestCase = ({ close }: { close: (newOpenState: boolean) => void }) => {
+  const TestCase = ({ onClose }: Pick<ModalProps, 'onClose'>) => {
     const [open, setOpen] = useState(false);
     return (
       <div>
@@ -36,8 +37,12 @@ export const modalTestSuite = (
           closeLabel={CLOSE_LABEL}
           open={open}
           onClose={(newOpenState) => {
+            const result = onClose(newOpenState);
+            if (result === false) {
+              return result;
+            }
+
             setOpen(newOpenState);
-            close(newOpenState);
           }}
         >
           <Button data={{ testid: 'buttonInside' }}>Inside</Button>
@@ -52,16 +57,16 @@ export const modalTestSuite = (
     );
   };
 
-  function renderTestCase() {
-    const closeHandler = jest.fn();
-
+  function renderTestCase({
+    onClose = jest.fn(),
+  }: Optional<Pick<ModalProps, 'onClose'>> = {}) {
     return {
       ...render(
         <BraidTestProvider>
-          <TestCase close={closeHandler} />
+          <TestCase onClose={onClose} />
         </BraidTestProvider>,
       ),
-      closeHandler,
+      closeHandler: onClose,
     };
   }
 
@@ -187,6 +192,43 @@ export const modalTestSuite = (
       }
       expect(closeHandler).toHaveBeenCalledTimes(1);
       expect(closeHandler).toHaveBeenCalledWith(false);
+    });
+
+    it('should not close if onClose returns `false`', async () => {
+      const onClose = jest
+        .fn()
+        .mockReturnValueOnce(false)
+        .mockReturnValueOnce(undefined);
+
+      const { getByTestId, getByLabelText, closeHandler, queryByRole } =
+        renderTestCase({
+          onClose,
+        });
+
+      expect(closeHandler).not.toHaveBeenCalled();
+
+      const dialogOpenButton = getByTestId('buttonBefore');
+      await userEvent.click(dialogOpenButton);
+      const closeButton = getByLabelText(CLOSE_LABEL);
+      await userEvent.click(closeButton);
+
+      expect(closeHandler).toHaveBeenCalledTimes(1);
+      expect(closeHandler).toHaveBeenCalledWith(false);
+
+      expect(queryByRole('dialog')).toBeVisible();
+
+      onClose.mockReset();
+      await userEvent.click(closeButton);
+
+      expect(closeHandler).toHaveBeenCalledTimes(1);
+      expect(closeHandler).toHaveBeenCalledWith(false);
+
+      if (queryByRole('dialog') !== null) {
+        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+          timeout: EXIT_TIMEOUT,
+        });
+      }
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
     });
   });
 };

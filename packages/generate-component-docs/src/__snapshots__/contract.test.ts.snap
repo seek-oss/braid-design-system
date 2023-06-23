@@ -2835,7 +2835,7 @@ exports[`Dialog 1`] = `
     description?: ReactNodeNoStrings
     id: string
     illustration?: ReactNodeNoStrings
-    onClose: (openState: false) => void
+    onClose: (openState: false) => false | void
     open: boolean
     title: string
     width?: 
@@ -2899,7 +2899,7 @@ exports[`Drawer 1`] = `
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
     id: string
-    onClose: (openState: false) => void
+    onClose: (openState: false) => false | void
     open: boolean
     position?: 
         | "left"

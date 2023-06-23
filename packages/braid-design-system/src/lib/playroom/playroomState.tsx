@@ -124,7 +124,7 @@ export function useFallbackState<Value, Handler extends Callback>(
         );
       }
 
-      (handler || noop)(...args);
+      return (handler || noop)(...args);
     };
 
   const handleChange = wrapChangeHandler(onChange || noop);
