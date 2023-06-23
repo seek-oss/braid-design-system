@@ -12,6 +12,7 @@ import {
   Box,
   Strong,
   IconLanguage,
+  Checkbox,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 
@@ -230,6 +231,61 @@ const docs: ComponentDocs = {
               closeLabel="Close Dialog"
             >
               <Placeholder height={100} width="100%" />
+            </Dialog>
+          </>,
+        ),
+    },
+
+    {
+      description: (
+        <Text>
+          To prevent the Dialog from closing, e.g. due to validation, this
+          function should return <Strong>false</Strong>.
+        </Text>
+      ),
+      Example: ({ id, getState, toggleState, setState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState('valid', false)}
+            {setDefaultState('showError', false)}
+
+            <Box padding="medium">
+              <Inline
+                space="small"
+                align={{ mobile: 'center', tablet: 'left' }}
+              >
+                <Button onClick={() => toggleState('dialog')}>
+                  Open validated dialog
+                </Button>
+              </Inline>
+            </Box>
+
+            <Dialog
+              id={id}
+              title="Dialog Title"
+              open={getState('dialog')}
+              onClose={() => {
+                if (getState('valid') === false) {
+                  setState('showError', true);
+                  return false;
+                }
+
+                setState('showError', false);
+                toggleState('dialog');
+              }}
+              closeLabel="Close Dialog"
+            >
+              <Checkbox
+                id="valid"
+                label="Can this Dialog be closed?"
+                checked={getState('valid')}
+                onChange={() => {
+                  setState('showError', false);
+                  toggleState('valid');
+                }}
+                tone={getState('showError') ? 'critical' : undefined}
+                message={getState('showError') ? 'Required field' : undefined}
+              />
             </Dialog>
           </>,
         ),

@@ -22,7 +22,7 @@ export interface ModalProps
     'onClose' | 'scrollLock' | 'headingRef' | 'modalRef'
   > {
   open: boolean;
-  onClose: (openState: false) => void;
+  onClose: (openState: false) => void | false;
 }
 
 export const AllowCloseContext = createContext(true);
@@ -146,7 +146,14 @@ export const Modal = ({
 
   const initiateClose = () => {
     if (allowClose) {
-      dispatch(CLOSE_MODAL);
+      const result = closeHandlerRef.current(false);
+      if (result === false) {
+        return result;
+      }
+
+      if (openRef.current) {
+        dispatch(CLOSE_MODAL);
+      }
     }
   };
 
@@ -155,19 +162,16 @@ export const Modal = ({
     dispatch(open ? OPEN_MODAL : CLOSE_MODAL);
   }, [open]);
 
+  const closing = state === CLOSING;
   useEffect(() => {
-    if (state === CLOSING) {
+    if (closing) {
       const timer = setTimeout(() => {
         dispatch(ANIMATION_COMPLETE);
       }, ANIMATION_DURATION);
 
       return () => clearTimeout(timer);
     }
-
-    if (state === CLOSED && openRef.current) {
-      closeHandlerRef.current(false);
-    }
-  }, [state]);
+  }, [closing]);
 
   const shouldAriaHideOthers = state === OPEN || state === CLOSING;
   useEffect(() => {
