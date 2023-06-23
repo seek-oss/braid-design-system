@@ -3368,5 +3368,47 @@
         "summary": "**IconMessage:** Add new component\n\nAdd new `IconMessage` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<IconMessage />\n```"
       }
     ]
+  },
+  {
+    "version": "32.7.0",
+    "updates": [
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Fix arrow overlapping tooltip corner radius\n\nFix for an edge case where the arrow on a small tooltip could the overlap the corner radius of the tooltip."
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Darken backdrop in dark mode\n\nIncrease the weight of the backdrop in dark mode to ensure the content is suffiently obscured."
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Fix entrance animation from `left` position\n\nApply the entrance animation correctly for a `Drawer` using the `left` position.\nAlso reduced the horizontal overshoot for the transition for a smoother feel."
+      },
+      {
+        "updated": [
+          "Drawer",
+          "Dialog"
+        ],
+        "summary": "**Drawer, Dialog:** Support validation blocking closure of modal\n\nTo prevent a `Dialog` or `Drawer` from closing, e.g. due to validation, the `onClose` function can now return **false**.\n\n**EXAMPLE USAGE:**\n```jsx\n<Drawer\n  open={open}\n  onClose={() => {\n    const valid = runValidation();\n    if (!valid) {\n      return false;\n    }\n\n    setOpen(false);\n  }}\n/>\n```"
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Increase space between `title` and `description` on tablet"
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Align horizontal gutters with PageBlock\n\nGiven a `Drawer` is full width on a mobile device, applying the same horizontal gutter rules as `PageBlock` makes sense.\nThis ensures content on a mobile will have the same available space whether its in the page, or inside a `Drawer`."
+      }
+    ]
   }
 ]

@@ -1,5 +1,51 @@
 # braid-design-system
 
+## 32.7.0
+
+### Minor Changes
+
+- **Drawer, Dialog:** Support validation blocking closure of modal ([#1318](https://github.com/seek-oss/braid-design-system/pull/1318))
+
+  To prevent a `Dialog` or `Drawer` from closing, e.g. due to validation, the `onClose` function can now return **false**.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Drawer
+    open={open}
+    onClose={() => {
+      const valid = runValidation();
+      if (!valid) {
+        return false;
+      }
+
+      setOpen(false);
+    }}
+  />
+  ```
+
+### Patch Changes
+
+- **TooltipRenderer:** Fix arrow overlapping tooltip corner radius ([#1316](https://github.com/seek-oss/braid-design-system/pull/1316))
+
+  Fix for an edge case where the arrow on a small tooltip could the overlap the corner radius of the tooltip.
+
+- **Drawer:** Darken backdrop in dark mode ([#1316](https://github.com/seek-oss/braid-design-system/pull/1316))
+
+  Increase the weight of the backdrop in dark mode to ensure the content is suffiently obscured.
+
+- **Drawer:** Fix entrance animation from `left` position ([#1316](https://github.com/seek-oss/braid-design-system/pull/1316))
+
+  Apply the entrance animation correctly for a `Drawer` using the `left` position.
+  Also reduced the horizontal overshoot for the transition for a smoother feel.
+
+- **Drawer:** Increase space between `title` and `description` on tablet ([#1316](https://github.com/seek-oss/braid-design-system/pull/1316))
+
+- **Drawer:** Align horizontal gutters with PageBlock ([#1316](https://github.com/seek-oss/braid-design-system/pull/1316))
+
+  Given a `Drawer` is full width on a mobile device, applying the same horizontal gutter rules as `PageBlock` makes sense.
+  This ensures content on a mobile will have the same available space whether its in the page, or inside a `Drawer`.
+
 ## 32.6.0
 
 ### Minor Changes
