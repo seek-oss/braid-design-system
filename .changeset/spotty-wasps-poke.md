@@ -15,13 +15,14 @@ To prevent a `Dialog` or `Drawer` from closing, e.g. due to validation, the `onC
 **EXAMPLE USAGE:**
 ```jsx
 <Drawer
+  open={open}
   onClose={() => {
     const valid = runValidation();
     if (!valid) {
       return false;
     }
 
-    closeDrawer();
+    setOpen(false);
   }}
 />
 ```
