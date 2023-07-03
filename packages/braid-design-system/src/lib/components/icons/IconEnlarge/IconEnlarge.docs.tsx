@@ -9,7 +9,7 @@ import {
   Strong,
   Text,
   Inline,
-  Button,
+  ButtonIcon,
 } from '../../';
 
 const docs: ComponentDocs = {
@@ -17,32 +17,55 @@ const docs: ComponentDocs = {
   migrationGuide: true,
   Example: () =>
     source(
-      <Stack space="none" align="center">
-        <Heading component="div" level="1">
-          <IconEnlarge />
-        </Heading>
-      </Stack>,
+      <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">
+        <Stack space="medium" align="center">
+          <Heading component="div" level="1">
+            <IconEnlarge />
+          </Heading>
+          <Text tone="secondary" size="small" align="center">
+            INACTIVE
+          </Text>
+        </Stack>
+        <Stack space="medium" align="center">
+          <Heading component="div" level="1">
+            <IconEnlarge active />
+          </Heading>
+          <Text tone="secondary" size="small" align="center">
+            ACTIVE
+          </Text>
+        </Stack>
+      </Inline>,
     ),
   alternatives: [],
   additional: [
     {
       label: 'Toggling active state',
+      background: 'surface',
       description: (
         <Text>
           Often used to toggle between englarged and reduced states, setting the{' '}
           <Strong>active</Strong> prop to <Strong>true</Strong> will reverse the
-          icon's intent.
+          icon&rsquo;s intent.
         </Text>
       ),
       Example: ({ getState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
-            <IconEnlarge active={getState('active')} />
-            <Inline space="small">
-              <Button onClick={() => toggleState('active')}>
-                {getState('active') ? 'inactive' : 'active'}
-              </Button>
-            </Inline>
+          <Stack space="large">
+            <ButtonIcon
+              icon={<IconEnlarge active={getState('active')} />}
+              size="large"
+              label={
+                getState('active')
+                  ? 'Enlarge: active = true'
+                  : 'Enlarge: active = false'
+              }
+              id="toggle-example"
+              onClick={() => toggleState('active')}
+            />
+
+            <Text tone="secondary" size="small">
+              (Click icon above to toggle)
+            </Text>
           </Stack>,
         ),
     },

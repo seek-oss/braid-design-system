@@ -4,7 +4,7 @@ import { iconDocumentation } from '../iconCommon.docs';
 import source from '../../../utils/source.macro';
 import {
   IconBookmark,
-  Button,
+  ButtonIcon,
   Heading,
   Inline,
   Stack,
@@ -40,6 +40,7 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Toggling active state',
+      background: 'surface',
       description: (
         <Text>
           The bookmark can be marked as active using the <Strong>active</Strong>{' '}
@@ -48,13 +49,22 @@ const docs: ComponentDocs = {
       ),
       Example: ({ getState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
-            <IconBookmark active={getState('active')} />
-            <Inline space="small">
-              <Button onClick={() => toggleState('active')}>
-                {getState('active') ? 'inactive' : 'active'}
-              </Button>
-            </Inline>
+          <Stack space="large">
+            <ButtonIcon
+              icon={<IconBookmark active={getState('active')} />}
+              size="large"
+              label={
+                getState('active')
+                  ? 'Bookmark: active = true'
+                  : 'Bookmark: active = false'
+              }
+              id="toggle-example"
+              onClick={() => toggleState('active')}
+            />
+
+            <Text tone="secondary" size="small">
+              (Click icon above to toggle)
+            </Text>
           </Stack>,
         ),
     },
