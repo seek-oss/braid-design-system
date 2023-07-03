@@ -17,6 +17,7 @@ export { IconDocumentBroken } from './IconDocumentBroken/IconDocumentBroken';
 export { IconDownload } from './IconDownload/IconDownload';
 export { IconEdit } from './IconEdit/IconEdit';
 export { IconEducation } from './IconEducation/IconEducation';
+export { IconEnlarge } from './IconEnlarge/IconEnlarge';
 export { IconFilter } from './IconFilter/IconFilter';
 export { IconFlag } from './IconFlag/IconFlag';
 export { IconGrid } from './IconGrid/IconGrid';
