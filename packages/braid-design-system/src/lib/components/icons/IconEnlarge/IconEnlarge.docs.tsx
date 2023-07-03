@@ -3,13 +3,13 @@ import type { ComponentDocs } from 'site/types';
 import { iconDocumentation } from '../iconCommon.docs';
 import source from '../../../utils/source.macro';
 import {
-  IconBookmark,
-  ButtonIcon,
+  IconEnlarge,
   Heading,
-  Inline,
   Stack,
   Strong,
   Text,
+  Inline,
+  ButtonIcon,
 } from '../../';
 
 const docs: ComponentDocs = {
@@ -20,7 +20,7 @@ const docs: ComponentDocs = {
       <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">
         <Stack space="medium" align="center">
           <Heading component="div" level="1">
-            <IconBookmark />
+            <IconEnlarge />
           </Heading>
           <Text tone="secondary" size="small" align="center">
             INACTIVE
@@ -28,7 +28,7 @@ const docs: ComponentDocs = {
         </Stack>
         <Stack space="medium" align="center">
           <Heading component="div" level="1">
-            <IconBookmark active />
+            <IconEnlarge active />
           </Heading>
           <Text tone="secondary" size="small" align="center">
             ACTIVE
@@ -43,20 +43,21 @@ const docs: ComponentDocs = {
       background: 'surface',
       description: (
         <Text>
-          The bookmark can be marked as active using the <Strong>active</Strong>{' '}
-          prop.
+          Often used to toggle between englarged and reduced states, setting the{' '}
+          <Strong>active</Strong> prop to <Strong>true</Strong> will reverse the
+          icon&rsquo;s intent.
         </Text>
       ),
       Example: ({ getState, toggleState }) =>
         source(
           <Stack space="large">
             <ButtonIcon
-              icon={<IconBookmark active={getState('active')} />}
+              icon={<IconEnlarge active={getState('active')} />}
               size="large"
               label={
                 getState('active')
-                  ? 'Bookmark: active = true'
-                  : 'Bookmark: active = false'
+                  ? 'Enlarge: active = true'
+                  : 'Enlarge: active = false'
               }
               id="toggle-example"
               onClick={() => toggleState('active')}

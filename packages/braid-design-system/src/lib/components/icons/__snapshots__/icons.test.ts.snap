@@ -496,6 +496,56 @@ export const IconEducationSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconEnlargeActiveSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import type { SVGProps } from '../SVGTypes';
+
+export const IconEnlargeActiveSvg = ({
+  title,
+  titleId,
+  ...props
+}: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M10.382 13.077A1 1 0 0 0 10 13H6a1 1 0 1 0 0 2h1.586l-3.293 3.293a1 1 0 1 0 1.414 1.414L9 16.414V18a1 1 0 1 0 2 0v-4a.999.999 0 0 0-.618-.923Zm9.325-8.784a1 1 0 0 0-1.414 0L15 7.586V6a1 1 0 1 0-2 0v4a1 1 0 0 0 .618.923A1 1 0 0 0 14 11h4a1 1 0 1 0 0-2h-1.586l3.293-3.293a1 1 0 0 0 0-1.414Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconEnlargeSvg should match snapshot 1`] = `
+"import React from 'react';
+
+import type { SVGProps } from '../SVGTypes';
+
+export const IconEnlargeSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M19.923 4.618A.999.999 0 0 0 19 4h-4a1 1 0 1 0 0 2h1.586l-3.293 3.293a1 1 0 1 0 1.414 1.414L18 7.414V9a1 1 0 1 0 2 0V5c0-.13-.026-.26-.077-.382Zm-10.63 8.675L6 16.586V15a1 1 0 1 0-2 0v4a1 1 0 0 0 .618.923A1 1 0 0 0 5 20h4a1 1 0 1 0 0-2H7.414l3.293-3.293a1 1 0 1 0-1.414-1.414Z" />
+  </svg>
+);
+"
+`;
+
 exports[`IconFilterSvg should match snapshot 1`] = `
 "import React from 'react';
 
