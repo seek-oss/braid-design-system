@@ -31,7 +31,7 @@ const docs: ComponentDocs = {
         <Text>
           Often used to toggle between englarged and reduced states, setting the{' '}
           <Strong>active</Strong> prop to <Strong>true</Strong> will reverse the
-          icons intent.
+          icon's intent.
         </Text>
       ),
       Example: ({ getState, toggleState }) =>
