@@ -1,5 +1,23 @@
 # braid-design-system
 
+## 32.8.0
+
+### Minor Changes
+
+- **IconEnlarge:** Add new component ([#1320](https://github.com/seek-oss/braid-design-system/pull/1320))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconEnlarge />
+  ```
+
+  The `active` prop can be used to toggle the icon into the "reduce" state:
+
+  ```jsx
+  <IconEnlarge active={true} />
+  ```
+
 ## 32.7.0
 
 ### Minor Changes

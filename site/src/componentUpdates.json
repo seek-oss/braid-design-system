@@ -3410,5 +3410,16 @@
         "summary": "**Drawer:** Align horizontal gutters with PageBlock\n\nGiven a `Drawer` is full width on a mobile device, applying the same horizontal gutter rules as `PageBlock` makes sense.\nThis ensures content on a mobile will have the same available space whether its in the page, or inside a `Drawer`."
       }
     ]
+  },
+  {
+    "version": "32.8.0",
+    "updates": [
+      {
+        "new": [
+          "IconEnlarge"
+        ],
+        "summary": "**IconEnlarge:** Add new component\n\n**EXAMPLE USAGE:**\n\n```jsx\n<IconEnlarge />\n```\n\nThe `active` prop can be used to toggle the icon into the \"reduce\" state:\n\n```jsx\n<IconEnlarge active={true} />\n```"
+      }
+    ]
   }
 ]
