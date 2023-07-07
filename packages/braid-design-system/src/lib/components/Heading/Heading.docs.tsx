@@ -173,7 +173,7 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             When using custom backgrounds or images on a{' '}
-            <TextLink href="components/Box">Box</TextLink> component, this
+            <TextLink href="/components/Box">Box</TextLink> component, this
             behaviour can be applied by setting the <Strong>background</Strong>{' '}
             to either <Strong>customLight</Strong> or{' '}
             <Strong>customDark</Strong>.
