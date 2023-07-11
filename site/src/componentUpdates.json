@@ -3421,5 +3421,9 @@
         "summary": "**IconEnlarge:** Add new component\n\n**EXAMPLE USAGE:**\n\n```jsx\n<IconEnlarge />\n```\n\nThe `active` prop can be used to toggle the icon into the \"reduce\" state:\n\n```jsx\n<IconEnlarge active={true} />\n```"
       }
     ]
+  },
+  {
+    "version": "32.8.1",
+    "updates": []
   }
 ]
