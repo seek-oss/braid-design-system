@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.8.1
+
+### Patch Changes
+
+- **seekJobs:** Update visited link colour tokens ([#1323](https://github.com/seek-oss/braid-design-system/pull/1323))
+
+  Darken the visited link colour tokens within the `seekjobs` theme.
+
 ## 32.8.0
 
 ### Minor Changes
