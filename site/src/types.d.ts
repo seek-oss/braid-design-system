@@ -73,6 +73,7 @@ export interface ComponentScreenshot {
   examples: {
     label?: string;
     background?: NonNullable<BoxProps['background']>;
+    gutter?: boolean;
     Example?: (props: ExampleProps) => ReactElement;
     Container?: (props: { children: ReactNode }) => ReactElement;
   }[];

@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Inline, Stack, Box } from '../';
 import { Placeholder } from '../../playroom/components';
 import { DialogContent } from './Dialog';
+import * as styles from '../private/Modal/Modal.css';
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <Box position="relative">
+    <Box position="absolute" padding="small">
+      <Placeholder height={100} width="100%" label="Page content" />
+    </Box>
+    <Box
+      position="absolute"
+      height="full"
+      width="full"
+      className={styles.backdrop}
+    />
+    <Box position="relative" zIndex="modal">
+      {children}
+    </Box>
+  </Box>
+);
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 1200],
   examples: [
     {
       label: 'Default layout',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -22,6 +42,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Illustration layout',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -49,6 +71,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout with a description',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -65,6 +89,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Content width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <Box display="flex" alignItems="center" justifyContent="center">
           <DialogContent
@@ -81,6 +107,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Xsmall width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -95,6 +123,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Small width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -109,6 +139,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Medium width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -123,6 +155,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Large width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -137,6 +171,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Handle long-unbroken title',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DialogContent
           id={id}
@@ -150,6 +186,34 @@ export const screenshots: ComponentScreenshot = {
             width="100%"
             label="Handle long-unbroken title"
           />
+        </DialogContent>
+      ),
+    },
+    {
+      label: 'Test: Close button layout',
+      gutter: false,
+      Container,
+      Example: ({ id }) => (
+        <DialogContent
+          id={id}
+          title="Default test"
+          onClose={() => {}}
+          width="medium"
+          scrollLock={false}
+        >
+          <Box style={{ height: 100 }} />
+          <Box
+            position="absolute"
+            inset={0}
+            style={{ background: '#4964E9' }}
+            background="customDark"
+          >
+            <Placeholder
+              height="100%"
+              width="100%"
+              label="Close button should be on top of content and have a gutter"
+            />
+          </Box>
         </DialogContent>
       ),
     },

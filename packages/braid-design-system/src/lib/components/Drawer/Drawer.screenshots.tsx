@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
+import { Box } from '../Box/Box';
 import { Placeholder } from '../../playroom/components';
 import { DrawerContent } from './Drawer';
+import * as styles from '../private/Modal/Modal.css';
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <Box position="relative">
+    <Box position="absolute" padding="small">
+      <Placeholder height={100} width="100%" label="Page content" />
+    </Box>
+    <Box
+      position="absolute"
+      height="full"
+      width="full"
+      className={styles.backdrop}
+    />
+    <Box position="relative" zIndex="modal">
+      {children}
+    </Box>
+  </Box>
+);
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 1200],
   examples: [
     {
       label: 'Default layout',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DrawerContent
           id={id}
@@ -22,6 +43,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout with a description',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DrawerContent
           id={id}
@@ -38,6 +61,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Small width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DrawerContent
           id={id}
@@ -52,6 +77,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Medium width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DrawerContent
           id={id}
@@ -66,6 +93,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Layout: Large width',
+      gutter: false,
+      Container,
       Example: ({ id }) => (
         <DrawerContent
           id={id}
@@ -75,6 +104,34 @@ export const screenshots: ComponentScreenshot = {
           scrollLock={false}
         >
           <Placeholder height={100} width="100%" label="Large Drawer" />
+        </DrawerContent>
+      ),
+    },
+    {
+      label: 'Test: Close button layout',
+      gutter: false,
+      Container,
+      Example: ({ id }) => (
+        <DrawerContent
+          id={id}
+          title="Default test"
+          onClose={() => {}}
+          width="medium"
+          scrollLock={false}
+        >
+          <Box style={{ height: 100 }} />
+          <Box
+            position="absolute"
+            inset={0}
+            style={{ background: '#4964E9' }}
+            background="customDark"
+          >
+            <Placeholder
+              height="100%"
+              width="100%"
+              label="Close button should be on top of content and have a gutter"
+            />
+          </Box>
         </DrawerContent>
       ),
     },

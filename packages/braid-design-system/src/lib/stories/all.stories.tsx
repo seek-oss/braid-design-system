@@ -44,6 +44,7 @@ const RenderExample = ({ example }: RenderExampleProps) => {
     label,
     Container = DefaultContainer,
     background = 'body',
+    gutter = true,
     Example,
   } = example;
   const id = useId();
@@ -68,7 +69,7 @@ const RenderExample = ({ example }: RenderExampleProps) => {
       >
         {label}
       </h4>
-      <Box background={background} style={{ padding: 12 }}>
+      <Box background={background} style={gutter ? { padding: 12 } : undefined}>
         <Container>
           {Example ? <Example id={id} handler={noop} /> : null}
         </Container>
