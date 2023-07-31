@@ -14,6 +14,7 @@ import { Stack } from '../../Stack/Stack';
 import { Columns } from '../../Columns/Columns';
 import { Column } from '../../Column/Column';
 import { Overlay } from '../Overlay/Overlay';
+import { Bleed } from '../../Bleed/Bleed';
 import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { IconClear } from '../../icons';
@@ -207,22 +208,25 @@ export const ModalContent = ({
           paddingRight={position !== 'center' ? pageBlockGutters : modalPadding}
           className={position === 'center' && styles.maxSize[position]}
         >
-          <Box
-            position="relative"
-            background="surface"
-            borderRadius="full"
-            className={[styles.closeIconOffset, styles.pointerEventsAll]}
-          >
-            <ButtonIcon
-              id={`${id}-close`}
-              label={closeLabel}
-              icon={<IconClear />}
-              tone="secondary"
-              variant="transparent"
-              size="large"
-              onClick={onClose}
-            />
-          </Box>
+          <Bleed space="xsmall">
+            <Box
+              position="relative"
+              background="surface"
+              borderRadius="full"
+              padding="xsmall"
+              className={[styles.closeIconOffset, styles.pointerEventsAll]}
+            >
+              <ButtonIcon
+                id={`${id}-close`}
+                label={closeLabel}
+                icon={<IconClear />}
+                tone="secondary"
+                variant="transparent"
+                size="large"
+                onClick={onClose}
+              />
+            </Box>
+          </Bleed>
         </Box>
       </Box>
     </Box>
