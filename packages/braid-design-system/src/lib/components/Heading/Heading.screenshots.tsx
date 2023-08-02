@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import React, { Fragment, type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { heading } from '../../css/typography.css';
 import { Box, Heading, IconPositive, IconPromote, Stack, Text } from '../';
@@ -13,6 +13,13 @@ const headingLevels = Object.keys(heading).sort() as Array<
   keyof typeof heading
 >;
 
+const thaiLevels: Record<(typeof headingLevels)[number], string> = {
+  '1': 'ระดับหนึ่ง',
+  '2': 'ระดับสอง',
+  '3': 'ระดับสาม',
+  '4': 'ระดับสี่',
+};
+
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
   examples: [
@@ -22,7 +29,7 @@ export const screenshots: ComponentScreenshot = {
         <Stack space="large">
           {headingLevels.map((level) => (
             <Heading level={level} key={level}>
-              Level {level}
+              Level {level} - {thaiLevels[level]}
             </Heading>
           ))}
         </Stack>
@@ -36,9 +43,9 @@ export const screenshots: ComponentScreenshot = {
           {headingLevels.map((level) => (
             <Box key={level} background="neutralLight">
               <Heading level={level}>
-                Level {level} Heading (Line 1)
+                Level {level} - {thaiLevels[level]} (Line 1)
                 <br />
-                Level {level} Heading (Line 2)
+                Level {level} - {thaiLevels[level]} (Line 2)
               </Heading>
             </Box>
           ))}
@@ -51,7 +58,7 @@ export const screenshots: ComponentScreenshot = {
         <Stack space="large">
           {headingLevels.map((level) => (
             <Heading level={level} weight="weak" key={level}>
-              Level {level} Weak
+              Level {level} - {thaiLevels[level]} Weak
             </Heading>
           ))}
         </Stack>
@@ -165,21 +172,38 @@ export const screenshots: ComponentScreenshot = {
             Format: Icon only, Text only, Text with icon
           </Text>
           {headingLevels.map((level) => (
-            <Box display="flex" key={level}>
-              <Heading level={level}>
-                <IconPromote />
-                <Box style={{ border: '1px solid red' }} />
-              </Heading>
-              <Heading level={level}>
-                , Abc
-                <Box style={{ border: '1px solid red' }} />
-              </Heading>
-              <Heading level={level}>
-                , Abc
-                <IconPromote />
-                <Box style={{ border: '1px solid red' }} />
-              </Heading>
-            </Box>
+            <Fragment key={level}>
+              <Box display="flex">
+                <Heading level={level}>
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Heading>
+                <Heading level={level}>
+                  , Abc
+                  <Box style={{ border: '1px solid red' }} />
+                </Heading>
+                <Heading level={level}>
+                  , Abc
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Heading>
+              </Box>
+              <Box display="flex">
+                <Heading level={level}>
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Heading>
+                <Heading level={level}>
+                  , เอบีซี
+                  <Box style={{ border: '1px solid red' }} />
+                </Heading>
+                <Heading level={level}>
+                  , เอบีซี
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Heading>
+              </Box>
+            </Fragment>
           ))}
         </Stack>
       ),
