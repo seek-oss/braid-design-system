@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.8.2
+
+### Patch Changes
+
+- **Drawer, Dialog:** Increase gutter around close button ([#1328](https://github.com/seek-oss/braid-design-system/pull/1328))
+
+  Fix for a regression where the gutter around the close button was reduced — resulting in visually clashing with the content when scrolling.
+
 ## 32.8.1
 
 ### Patch Changes
