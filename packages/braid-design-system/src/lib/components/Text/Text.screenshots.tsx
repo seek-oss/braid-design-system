@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import React, { Fragment, type ReactNode } from 'react';
 import { titleCase } from 'title-case';
 import type { ComponentScreenshot } from 'site/types';
 import {
@@ -21,6 +21,20 @@ const Container = ({ children }: { children: ReactNode }) => (
 const textSizes = Object.keys(textSizeUntrimmed) as Array<
   keyof typeof textSizeUntrimmed
 >;
+const textWeights = Object.keys(fontWeight) as Array<keyof typeof fontWeight>;
+
+const thaiSizes: Record<(typeof textSizes)[number], string> = {
+  xsmall: 'เล็กพิเศษ',
+  small: 'เล็ก',
+  standard: 'ฐาน',
+  large: 'ใหญ่',
+};
+
+const thaiWeights: Record<(typeof textWeights)[number], string> = {
+  regular: 'ประจำ',
+  medium: 'มัธยม',
+  strong: 'มั่นคง',
+};
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
@@ -31,7 +45,7 @@ export const screenshots: ComponentScreenshot = {
         <Stack space="medium">
           {textSizes.map((size) => (
             <Text size={size} key={size}>
-              {titleCase(size)}
+              {titleCase(size)} - {thaiSizes[size]}
             </Text>
           ))}
         </Stack>
@@ -45,9 +59,9 @@ export const screenshots: ComponentScreenshot = {
           {textSizes.map((size) => (
             <Box key={size} background="neutralLight">
               <Text size={size}>
-                {titleCase(size)} Text (Line 1)
+                {titleCase(size)} - {thaiSizes[size]} (Line 1)
                 <br />
-                {titleCase(size)} Text (Line 2)
+                {titleCase(size)} - {thaiSizes[size]} (Line 2)
               </Text>
             </Box>
           ))}
@@ -58,9 +72,9 @@ export const screenshots: ComponentScreenshot = {
       label: 'Weights',
       Example: () => (
         <Stack space="medium">
-          {Object.keys(fontWeight).map((weight) => (
+          {textWeights.map((weight) => (
             <Text weight={weight as keyof typeof fontWeight} key={weight}>
-              {titleCase(weight)}
+              {titleCase(weight)} - {thaiWeights[weight]}
             </Text>
           ))}
         </Stack>
@@ -183,21 +197,38 @@ export const screenshots: ComponentScreenshot = {
             Format: Icon only, Text only, Text with icon
           </Text>
           {textSizes.map((size) => (
-            <Box display="flex" key={size}>
-              <Text size={size}>
-                <IconPromote />
-                <Box style={{ border: '1px solid red' }} />
-              </Text>
-              <Text size={size}>
-                , Abc
-                <Box style={{ border: '1px solid red' }} />
-              </Text>
-              <Text size={size}>
-                , Abc
-                <IconPromote />
-                <Box style={{ border: '1px solid red' }} />
-              </Text>
-            </Box>
+            <Fragment key={size}>
+              <Box display="flex">
+                <Text size={size}>
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Text>
+                <Text size={size}>
+                  , Abc
+                  <Box style={{ border: '1px solid red' }} />
+                </Text>
+                <Text size={size}>
+                  , Abc
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Text>
+              </Box>
+              <Box display="flex">
+                <Text size={size}>
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Text>
+                <Text size={size}>
+                  , เอบีซี
+                  <Box style={{ border: '1px solid red' }} />
+                </Text>
+                <Text size={size}>
+                  , เอบีซี
+                  <IconPromote />
+                  <Box style={{ border: '1px solid red' }} />
+                </Text>
+              </Box>
+            </Fragment>
           ))}
         </Stack>
       ),
