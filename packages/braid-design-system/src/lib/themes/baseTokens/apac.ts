@@ -4,6 +4,9 @@ import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash/merge';
 import { palette } from '../../color/palette';
 import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
+import { semiBoldWeight, thaiPatchFamilyName } from './mediumWeightPatch';
+
+import './mediumWeightPatch.css';
 
 interface MakeTokensOptions {
   name: string;
@@ -55,13 +58,12 @@ export const makeTokens = ({
     displayName,
     legacy: true,
     typography: {
-      fontFamily:
-        'Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+      fontFamily: `Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif, ${thaiPatchFamilyName}`,
       webFont: null,
       fontMetrics: extractFontMetricsForTheme(robotoMetrics),
       fontWeight: {
         regular: 400,
-        medium: 500,
+        medium: semiBoldWeight,
         strong: 700,
       },
       heading: {
