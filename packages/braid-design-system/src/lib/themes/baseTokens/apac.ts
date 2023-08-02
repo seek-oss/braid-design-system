@@ -58,7 +58,7 @@ export const makeTokens = ({
     displayName,
     legacy: true,
     typography: {
-      fontFamily: `Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif, ${thaiPatchFamilyName}`,
+      fontFamily: `Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, ${thaiPatchFamilyName}, sans-serif`,
       webFont: null,
       fontMetrics: extractFontMetricsForTheme(robotoMetrics),
       fontWeight: {
