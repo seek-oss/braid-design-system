@@ -3425,5 +3425,17 @@
   {
     "version": "32.8.1",
     "updates": []
+  },
+  {
+    "version": "32.8.2",
+    "updates": [
+      {
+        "updated": [
+          "Drawer",
+          "Dialog"
+        ],
+        "summary": "**Drawer, Dialog:** Increase gutter around close button\n\nFix for a regression where the gutter around the close button was reduced — resulting in visually clashing with the content when scrolling."
+      }
+    ]
   }
 ]
