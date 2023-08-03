@@ -2,7 +2,7 @@ import { globalFontFace } from '@vanilla-extract/css';
 import { semiBoldWeight, thaiPatchFamilyName } from './mediumWeightPatch';
 
 /*
-  This patch is designed to co-erce the semi-bold font weight
+  This patch is designed to coerce the semi-bold font weight
   to bold for fonts that do not handle weights between regular
   and bold.
 
