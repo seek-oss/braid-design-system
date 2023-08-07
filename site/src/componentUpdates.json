@@ -3437,5 +3437,16 @@
         "summary": "**Drawer, Dialog:** Increase gutter around close button\n\nFix for a regression where the gutter around the close button was reduced — resulting in visually clashing with the content when scrolling."
       }
     ]
+  },
+  {
+    "version": "32.8.3",
+    "updates": [
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**apac, seekBusiness:** Increase `medium` font weight\n\nThe unicode range of Thai characters is not satisfied by the preferred fonts specified for the `apac` theme, resulting in these characters falling through and being rendered by `sans-serif` — which applies a platform-specific font.\nThese system fonts do not have support for the semi-bold weight chosen for `medium`, resulting in the visual weight of `medium` text being rounded down to `regular` — providing no differentiation relative to other text in the UI.\n\nIn addition, due to both `Helvetica` and `Arial` not having a `medium` weight, these fallbacks also have the same problem, even for Latin characters.\n\nBy increasing the value of `medium`, it will now round to `strong` when the rendered font cannot satisfy `medium` — preventing the loss of hierarchy.\n\nThis only affects apac-based themes, namely `apac` and `seekBusiness`."
+      }
+    ]
   }
 ]
