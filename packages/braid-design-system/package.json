@@ -205,7 +205,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.7.0",
-    "sku": "12.1.2",
+    "sku": "12.3.2",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   },
