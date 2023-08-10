@@ -95,11 +95,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
     getAllByRole: RenderResult['getAllByRole'];
   }) {
     return {
-      menuButton: getAllByRole((_, el) =>
-        Boolean(el?.getAttribute('aria-haspopup')),
-      )[0],
+      menuButton: getAllByRole('button')[0],
       menu: getAllByRole('menu', { hidden: true })[0],
-      menuItems: getAllByRole(/menuitem|menuitemcheckbox/, { hidden: true }),
+      menuItems: [
+        ...getAllByRole('menuitem', { hidden: true }),
+        ...getAllByRole('menuitemcheckbox', { hidden: true }),
+      ],
     };
   }
 
