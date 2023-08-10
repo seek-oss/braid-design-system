@@ -8,6 +8,6 @@
     "@vanilla-extract/integration": "^6.1.2",
     "braid-design-system": "*",
     "fast-glob": "^3.2.12",
-    "webpack": "^5.72.1"
+    "webpack": "^5.76.0"
   }
 }
