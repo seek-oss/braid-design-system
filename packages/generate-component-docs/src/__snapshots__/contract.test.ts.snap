@@ -6829,6 +6829,18 @@ exports[`OverflowMenu 1`] = `
 }
 `;
 
+exports[`Page 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+    footer: ReactNode
+    footerPosition?: "belowFold"
+},
+}
+`;
+
 exports[`PageBlock 1`] = `
 {
   exportType: component,

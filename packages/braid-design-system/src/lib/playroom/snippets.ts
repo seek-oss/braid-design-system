@@ -24,6 +24,7 @@ import { snippets as Loader } from './snippets/Loader';
 import { snippets as MonthPicker } from './snippets/MonthPicker';
 import { snippets as Notice } from './snippets/Notice';
 import { snippets as OverflowMenu } from './snippets/OverflowMenu';
+import { snippets as Page } from './snippets/Page';
 import { snippets as PageBlock } from './snippets/PageBlock';
 import { snippets as Pagination } from './snippets/Pagination';
 import { snippets as PasswordField } from './snippets/PasswordField';
@@ -71,6 +72,7 @@ export default Object.entries({
   MonthPicker,
   Notice,
   OverflowMenu,
+  Page,
   PageBlock,
   Pagination,
   PasswordField,

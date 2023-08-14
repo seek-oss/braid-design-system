@@ -22,14 +22,16 @@ import {
   Strong,
   Bleed,
   PageBlock,
+  Page,
 } from 'braid-src/lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
 import tokens from 'braid-src/lib/themes/wireframe/tokens';
-import type { Page } from '../../../../types';
+import type { Page as DocsPage } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
+import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
 import source from 'braid-design-system/src/lib/utils/source.macro';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 
@@ -42,7 +44,41 @@ const lipsum1 =
 const lipsum2 =
   'Phasellus ipsum tortor, aliquet dapibus fermentum in, mollis vel metus. Vestibulum malesuada ante eu velit malesuada, nec ultricies sapien finibus. Aenean rutrum in sem a ullamcorper. Integer ut euismod urna. Interdum et malesuada fames ac ante ipsum primis in faucibus.';
 
-const page: Page = {
+const defaultPage = source(
+  <Page
+    footer={
+      <Box background="promoteLight">
+        <Placeholder label="Footer" height={100} />
+      </Box>
+    }
+  >
+    <Placeholder label="Header" height={50} />
+    <Placeholder label="Content" height={50} />
+  </Page>,
+);
+const belowFoldPage = source(
+  <Page
+    footer={
+      <Box background="promoteLight">
+        <Placeholder label="Footer" height={100} />
+      </Box>
+    }
+    footerPosition="belowFold"
+  >
+    <Placeholder label="Header" height={50} />
+    <Placeholder label="Content" height={50} />
+  </Page>,
+);
+const sourceForDefaultPage = {
+  code: defaultPage.code,
+  value: <ContainerForPageDocs>{defaultPage.value}</ContainerForPageDocs>,
+};
+const sourceForBelowFoldPage = {
+  code: belowFoldPage.code,
+  value: <ContainerForPageDocs>{belowFoldPage.value}</ContainerForPageDocs>,
+};
+
+const page: DocsPage = {
   title: 'Layout',
   element: (
     <TextStack>
@@ -88,6 +124,9 @@ const page: Page = {
         </Text>
         <Text>
           <TextLink href="#pageblock">PageBlock</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#page">Page</TextLink>
         </Text>
         <Text>
           <TextLink href="#bleed">Bleed</TextLink>
@@ -809,6 +848,26 @@ const page: Page = {
           </PageBlock>,
         )}
       </Code>
+
+      <Divider />
+
+      <LinkableHeading>Page</LinkableHeading>
+      <Text>
+        For establishing consistent page-level layout, Braid provides the{' '}
+        <TextLink href="/components/Page">Page</TextLink> component —
+        responsible for managing the relationship between the footer and the
+        main content. This ensures at a minimum the footer is always positioned
+        at the bottom of the screen, pushed beyond as the page content grows.
+      </Text>
+      <Code>{sourceForDefaultPage}</Code>
+      <Text>
+        For pages with dynamic content it is recommended to place the footer out
+        of view by setting the <Strong>footerPosition</Strong> prop to{' '}
+        <Strong>belowFold</Strong>. This prevents the footer from popping in and
+        out of view when the page content changes, e.g. toggling between a
+        loading indicator and content.
+      </Text>
+      <Code>{sourceForBelowFoldPage}</Code>
 
       <Divider />
 
