@@ -57,12 +57,12 @@ const docs: ComponentDocs = {
   alternatives: [],
   additional: [
     {
-      label: 'Establishing a top level layout',
+      label: 'Establishing a top-level layout',
       description: (
         <>
           <Text>
             For pages with a limited amount of content, typically the footer
-            would stack below the content — sitting unexpectedly high within in
+            would stack below the content — sitting unexpectedly high within
             the page.
           </Text>
           <Text>

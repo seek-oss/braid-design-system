@@ -9,7 +9,7 @@ new:
 
 **Page:** Add component
 
-The new `Page` component establishes a consistent page-level layout, by managing the relationship between the footer and the main content.
+The new `Page` component establishes a consistent page-level layout by managing the relationship between the footer and the main content.
 
 By default, for pages with limited content the `footer` will at a minimum be placed at the bottom of the screen, pushed beyond as the page content grows.
 
