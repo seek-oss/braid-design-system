@@ -1,7 +1,9 @@
+import { calc } from '@vanilla-extract/css-utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import React, { type ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Box, Notice, Stack, Strong, Text, TextLink, Tiles } from '..';
+import { vars } from '../../themes/vars.css';
 import source from '../../utils/source.macro';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Page } from './Page';
@@ -12,7 +14,7 @@ const screenHeight = 350;
 const ScreenOverlay = () => (
   <Box
     boxShadow="borderNeutralLarge"
-    borderRadius="large"
+    borderRadius="standard"
     position="absolute"
     top={0}
     left={0}
@@ -23,6 +25,7 @@ const ScreenOverlay = () => (
   />
 );
 
+const screenBorderWidth = vars.borderWidth.large;
 export const ContainerForPageDocs = ({ children }: { children: ReactNode }) => (
   <Box display="flex" justifyContent="center">
     <Box
@@ -30,12 +33,17 @@ export const ContainerForPageDocs = ({ children }: { children: ReactNode }) => (
       width="full"
       background="surface"
       style={{
-        ...assignInlineVars({ [heightLimit]: `${screenHeight}px` }),
+        ...assignInlineVars({
+          [heightLimit]: calc(screenHeight)
+            .multiply('1px')
+            .subtract(calc(screenBorderWidth).multiply('2'))
+            .toString(),
+        }),
         maxWidth: screenHeight * 1.6,
       }}
     >
       <ScreenOverlay />
-      {children}
+      <Box style={{ padding: screenBorderWidth }}>{children}</Box>
     </Box>
   </Box>
 );
@@ -62,8 +70,8 @@ const docs: ComponentDocs = {
         <>
           <Text>
             For pages with a limited amount of content, typically the footer
-            would stack below the content — sitting unexpectedly high within
-            the page.
+            would stack below the content — sitting unexpectedly high within the
+            page.
           </Text>
           <Text>
             The <Strong>Page</Strong> component provides a simple way to
