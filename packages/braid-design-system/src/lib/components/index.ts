@@ -57,6 +57,7 @@ export { OverflowMenu } from './OverflowMenu/OverflowMenu';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Notice } from './Notice/Notice';
 export { PageBlock } from './PageBlock/PageBlock';
+export { Page } from './Page/Page';
 export { Pagination } from './Pagination/Pagination';
 export { PasswordField } from './PasswordField/PasswordField';
 export { Radio } from './Radio/Radio';
