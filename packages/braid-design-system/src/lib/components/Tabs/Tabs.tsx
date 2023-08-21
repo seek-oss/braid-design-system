@@ -19,13 +19,15 @@ import { TabsContext } from './TabsProvider';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { TabListContext } from './TabListContext';
+import { TabListContext, type TabTone } from './TabListContext';
 import * as styles from './Tabs.css';
+import { Text } from '../Text/Text';
 
 export interface TabsProps {
   children: ReactNodeNoStrings;
   label: string;
   align?: 'left' | 'center';
+  tone?: TabTone;
   gutter?: ResponsiveSpace;
   reserveHitArea?: boolean;
   data?: DataAttributeMap;
@@ -60,6 +62,7 @@ export const Tabs = (props: TabsProps) => {
     gutter,
     reserveHitArea = false,
     divider = 'minimal',
+    tone = 'formAccent',
     ...restProps
   } = props;
 
@@ -92,6 +95,7 @@ export const Tabs = (props: TabsProps) => {
           tabListItemIndex: index,
           scrollContainer: tabsRef.current,
           isLast: childTabs.length === index + 1,
+          tone,
         }}
       >
         {tab}
@@ -181,24 +185,23 @@ export const Tabs = (props: TabsProps) => {
                   </Box>
                 ) : null}
                 {selectedTabButtonEl ? (
-                  <Box
-                    component="span"
-                    position="absolute"
-                    display="block"
-                    left={0}
-                    right={0}
-                    bottom={0}
-                    background="formAccent"
-                    pointerEvents="none"
-                    className={[
-                      styles.tabUnderline,
-                      styles.tabUnderlineActiveDarkMode,
-                    ]}
-                    style={assignInlineVars({
-                      [styles.underlineLeft]: activeTab.left.toString(),
-                      [styles.underlineWidth]: activeTab.width.toString(),
-                    })}
-                  />
+                  <Text tone={tone} baseline={false}>
+                    {/* wrapping in Text to follow the currentColor based on colour mode and tone */}
+                    <Box
+                      component="span"
+                      position="absolute"
+                      display="block"
+                      left={0}
+                      right={0}
+                      bottom={0}
+                      pointerEvents="none"
+                      className={styles.tabUnderline}
+                      style={assignInlineVars({
+                        [styles.underlineLeft]: activeTab.left.toString(),
+                        [styles.underlineWidth]: activeTab.width.toString(),
+                      })}
+                    />
+                  </Text>
                 ) : null}
               </Box>
             </Box>

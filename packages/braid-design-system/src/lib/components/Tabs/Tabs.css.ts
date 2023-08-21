@@ -66,6 +66,7 @@ export const underlineWidth = createVar();
 const initialUnderlineWidth = 10;
 export const tabUnderline = style({
   height: vars.borderWidth.large,
+  background: 'currentcolor',
   width: initialUnderlineWidth,
   transformOrigin: '0 0',
   transition: 'transform .3s ease',
@@ -73,14 +74,6 @@ export const tabUnderline = style({
     '1px',
   )}) scaleX(${calc(underlineWidth).divide(initialUnderlineWidth)})`,
 });
-
-export const tabUnderlineActiveDarkMode = style(
-  colorModeStyle({
-    darkMode: {
-      background: vars.borderColor.formAccentLight,
-    },
-  }),
-);
 
 export const tabPanel = style({});
 

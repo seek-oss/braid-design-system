@@ -95,7 +95,7 @@ export const Tab = ({
     a11y,
     onChange,
   } = tabsContext;
-  const { tabListItemIndex, scrollContainer, isLast } = tabListContext;
+  const { tabListItemIndex, scrollContainer, isLast, tone } = tabListContext;
   const isSelected =
     selectedIndex > -1
       ? selectedIndex === tabListItemIndex
@@ -276,7 +276,7 @@ export const Tab = ({
       >
         <Text
           {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
-          tone="formAccent"
+          tone={tone}
           icon={icon}
         >
           {children}
