@@ -56,7 +56,7 @@ export const TabPanel = ({
       <Overlay
         zIndex={1}
         boxShadow="outlineFocus"
-        borderRadius="standard"
+        borderRadius="large"
         className={styles.tabPanelFocusRing}
         onlyVisibleForKeyboardNavigation
       />
