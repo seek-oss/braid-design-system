@@ -40,7 +40,7 @@ export const Page = ({
           className={
             footerPosition === 'belowFold' ? styles.fullHeight : undefined
           }
-          paddingBottom="xxlarge"
+          paddingBottom="xxxlarge"
         >
           {children}
         </Box>
