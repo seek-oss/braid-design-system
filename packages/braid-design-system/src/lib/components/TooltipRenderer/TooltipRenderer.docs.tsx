@@ -70,7 +70,18 @@ const docs: ComponentDocs = {
         </TooltipRenderer>
       </Inline>,
     ),
-  alternatives: [],
+  alternatives: [
+    {
+      name: 'Dialog',
+      description:
+        'For exposing additional content in a modal with richer formatting.',
+    },
+    {
+      name: 'Disclosure',
+      description:
+        'For revealing content inline with a light visual treatment.',
+    },
+  ],
   accessibility: (
     <Stack space="large">
       <Text>
