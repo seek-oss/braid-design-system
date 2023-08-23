@@ -1,5 +1,32 @@
 # braid-design-system
 
+## 32.9.0
+
+### Minor Changes
+
+- **Page:** Add component ([#1343](https://github.com/seek-oss/braid-design-system/pull/1343))
+
+  The new `Page` component establishes a consistent page-level layout by managing the relationship between the footer and the main content.
+
+  By default, for pages with limited content the `footer` will at a minimum be placed at the bottom of the screen, pushed beyond as the page content grows.
+
+  For pages with dynamic content, it is recommended to place the footer out of view by setting the `footerPosition` prop to `belowFold` to prevent the footer from popping in and out of view when the page content changes, e.g. toggling between a loading indicator and content.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Page footer={<Footer />}>
+    <Header />
+    {/* page content... */}
+  </Page>
+  ```
+
+### Patch Changes
+
+- **TabPanel:** Align focus outline radius to scale ([#1345](https://github.com/seek-oss/braid-design-system/pull/1345))
+
+  Increase the radius of the focus outline to better align to the scale. A `TabPanel` is typically a "large" element containing entire sections of UI, so using the `large` radius to better align to the radius scale.
+
 ## 32.8.3
 
 ### Patch Changes

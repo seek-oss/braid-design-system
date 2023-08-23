@@ -3448,5 +3448,22 @@
         "summary": "**apac, seekBusiness:** Increase `medium` font weight\n\nThe unicode range of Thai characters is not satisfied by the preferred fonts specified for the `apac` theme, resulting in these characters falling through and being rendered by `sans-serif` — which applies a platform-specific font.\nThese system fonts do not have support for the semi-bold weight chosen for `medium`, resulting in the visual weight of `medium` text being rounded down to `regular` — providing no differentiation relative to other text in the UI.\n\nIn addition, due to both `Helvetica` and `Arial` not having a `medium` weight, these fallbacks also have the same problem, even for Latin characters.\n\nBy increasing the value of `medium`, it will now round to `strong` when the rendered font cannot satisfy `medium` — preventing the loss of hierarchy.\n\nThis only affects apac-based themes, namely `apac` and `seekBusiness`."
       }
     ]
+  },
+  {
+    "version": "32.9.0",
+    "updates": [
+      {
+        "new": [
+          "Page"
+        ],
+        "summary": "**Page:** Add component\n\nThe new `Page` component establishes a consistent page-level layout by managing the relationship between the footer and the main content.\n\nBy default, for pages with limited content the `footer` will at a minimum be placed at the bottom of the screen, pushed beyond as the page content grows.\n\nFor pages with dynamic content, it is recommended to place the footer out of view by setting the `footerPosition` prop to `belowFold` to prevent the footer from popping in and out of view when the page content changes, e.g. toggling between a loading indicator and content.\n\n**EXAMPLE USAGE:**\n```jsx\n<Page footer={<Footer />}>\n  <Header />\n  {/* page content... */}\n</Page>\n```"
+      },
+      {
+        "updated": [
+          "TabPanel"
+        ],
+        "summary": "**TabPanel:** Align focus outline radius to scale\n\nIncrease the radius of the focus outline to better align to the scale. A `TabPanel` is typically a \"large\" element containing entire sections of UI, so using the `large` radius to better align to the radius scale."
+      }
+    ]
   }
 ]
