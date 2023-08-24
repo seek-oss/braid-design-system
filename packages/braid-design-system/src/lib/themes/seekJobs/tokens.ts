@@ -161,9 +161,9 @@ export default makeTokens({
       foreground: {
         formAccent: palette.violet['500'],
         formAccentLight: palette.violet['300'],
-        link: palette.violet['500'],
-        linkHover: palette.violet['500'],
-        linkLight: palette.violet['300'],
+        link: palette.grey['700'],
+        linkHover: palette.grey['700'],
+        linkLight: '#fff',
         linkVisited: palette.purple['800'],
         linkLightVisited: palette.purple['200'],
         promote: palette.purple['700'],

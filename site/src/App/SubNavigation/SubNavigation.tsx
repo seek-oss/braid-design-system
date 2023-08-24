@@ -1,15 +1,17 @@
 import React from 'react';
+import { useMatch } from 'react-router';
 import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
 import {
   Text,
-  TextLink,
+  ButtonLink,
   Box,
   Stack,
   Inline,
   Badge,
+  Bleed,
 } from 'braid-src/lib/components';
 import { ThemeToggle } from '../ThemeSetting';
 import {
@@ -44,6 +46,38 @@ interface SubNavigationItem {
   target?: string;
 }
 
+const SubNavItem = ({
+  name,
+  badge,
+  path,
+  onClick,
+  target,
+}: SubNavigationItem) => {
+  const active = useMatch({ path, end: true });
+
+  return (
+    <Inline space="medium" alignY="center">
+      <Bleed horizontal={active ? 'small' : undefined}>
+        <ButtonLink
+          variant={active ? 'soft' : 'transparent'}
+          size="small"
+          bleed
+          href={path}
+          onClick={onClick}
+          target={target}
+        >
+          {name}
+        </ButtonLink>
+      </Bleed>
+      {badge ? (
+        <Badge bleedY tone={toneForBadge(badge)}>
+          {badge}
+        </Badge>
+      ) : null}
+    </Inline>
+  );
+};
+
 interface SubNavigationGroup {
   title?: string;
   items: SubNavigationItem[];
@@ -60,25 +94,16 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
         </Box>
       ) : null}
 
-      <Stack component="ul" space="medium">
+      <Stack component="ul" space="gutter">
         {items.map(({ name, badge, path, onClick, target }) => (
-          <Inline space="xsmall" alignY="center" key={name}>
-            <Text>
-              <TextLink
-                href={path}
-                onClick={onClick}
-                hitArea="large"
-                target={target}
-              >
-                {name}
-              </TextLink>
-            </Text>
-            {badge ? (
-              <Badge bleedY tone={toneForBadge(badge)}>
-                {badge}
-              </Badge>
-            ) : null}
-          </Inline>
+          <SubNavItem
+            name={name}
+            badge={badge}
+            path={path}
+            onClick={onClick}
+            target={target}
+            key={name}
+          />
         ))}
       </Stack>
     </Stack>

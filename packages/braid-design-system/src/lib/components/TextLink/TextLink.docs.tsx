@@ -103,11 +103,18 @@ const docs: ComponentDocs = {
     {
       label: 'Design considerations',
       description: (
-        <Text>
-          By default, a TextLink uses colour and underline on hover to create
-          affordance. Optionally you can decrease their visual weight by setting{' '}
-          <Strong>weight</Strong> to <Strong>weak</Strong>.
-        </Text>
+        <>
+          <Text>
+            By default, a TextLink will follow the link colour of the theme and
+            use a <Strong>medium</Strong> font weight to create affordance
+            against surrounding text.
+          </Text>
+          <Text>
+            Optionally, you can decrease the visual weight by setting{' '}
+            <Strong>weight</Strong> to <Strong>weak</Strong> — the link now
+            following the default text colour and weight.
+          </Text>
+        </>
       ),
       Example: () =>
         source(
@@ -137,7 +144,8 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To avoid clashing colours, when on a background other than{' '}
-            <Strong>surface</Strong>, TextLink will default its{' '}
+            <Strong>surface</Strong>, <Strong>body</Strong> or{' '}
+            <Strong>neutralLight</Strong>, TextLink will default its{' '}
             <Strong>weight</Strong> to <Strong>weak</Strong>. In addition, when
             placed on a dark background, it may be inverted based on the{' '}
             <TextLink href="/components/Text#contrast">

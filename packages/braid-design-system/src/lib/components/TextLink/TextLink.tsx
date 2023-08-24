@@ -85,7 +85,7 @@ export const useLinkStyles = ({
   return clsx(
     styles.base,
     linkStyles,
-    typographyStyles.fontWeight.medium,
+    weight !== 'weak' ? typographyStyles.fontWeight.medium : undefined,
     showVisited
       ? [
           styles.visitedLightMode[backgroundLightness.lightMode],
