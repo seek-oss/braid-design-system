@@ -79,7 +79,9 @@ const RadioGroup = ({
         >
           <Box
             paddingTop={'label' in props ? labelSpace : undefined}
-            paddingBottom={props.message ? 'xsmall' : undefined}
+            paddingBottom={
+              props.message || props.reserveMessageSpace ? 'xsmall' : undefined
+            }
           >
             <Stack space={stackSpaceForSize[size || 'standard']}>
               {items.map((item, i) => (
