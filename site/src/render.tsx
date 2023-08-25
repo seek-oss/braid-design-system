@@ -33,7 +33,8 @@ const skuRender: Render<RenderContext> = {
 
     const playroomUrl = !CI
       ? 'http://127.0.0.1:8082'
-      : `${routerBasename ? `/${routerBasename}` : ''}/playroom`;
+      : `${routerBasename}/playroom`;
+
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
