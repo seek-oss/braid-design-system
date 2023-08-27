@@ -9,6 +9,8 @@ import {
   Columns,
   Column,
   Box,
+  ButtonLink,
+  Inline,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { LinkableHeading, slugify } from '../LinkableHeading/LinkableHeading';
@@ -16,6 +18,19 @@ import { PageTitle } from '../Seo/PageTitle';
 import { useThemeSettings } from '../ThemeSetting';
 import { DocsContext } from './DocNavigation';
 import { DocExample } from './DocExample';
+
+import { leftAlignedAnchors } from './DocDetails.css';
+
+const SubNavButton = ({ text, href }: { text: string; href: string }) => (
+  // Disgusting hack
+  <Box className={leftAlignedAnchors}>
+    <Inline space="medium" alignY="center">
+      <ButtonLink tone="neutral" size="small" variant="transparent" href={href}>
+        {text}
+      </ButtonLink>
+    </Inline>
+  </Box>
+);
 
 export const DocDetails = () => {
   const { theme } = useThemeSettings();
@@ -30,7 +45,7 @@ export const DocDetails = () => {
 
   const hasAccessibility = 'accessibility' in docs && docs.accessibility;
   return (
-    <Columns space="large" collapseBelow="wide">
+    <Columns space="xlarge" collapseBelow="wide">
       <Column>
         <PageTitle title={docsName} />
         <Stack space="xxlarge">
@@ -104,21 +119,13 @@ export const DocDetails = () => {
 
       <Column width="1/4">
         <Box style={{ position: 'sticky', top: 32 }} id="stickybox">
-          <List>
+          <Stack space="none">
             {hasAlternatives ? (
-              <Text size="small" tone="secondary">
-                <TextLink weight="weak" href="#alternatives">
-                  Alternatives
-                </TextLink>
-              </Text>
+              <SubNavButton text="Alternatives" href="#alternatives" />
             ) : null}
 
             {hasAccessibility ? (
-              <Text size="small" tone="secondary">
-                <TextLink weight="weak" href="#accessibility">
-                  Accessibility
-                </TextLink>
-              </Text>
+              <SubNavButton text="Accessibility" href="#accessibility" />
             ) : null}
 
             {(docs.additional ?? []).map((example) => {
@@ -129,14 +136,10 @@ export const DocDetails = () => {
               const labelSlug = slugify(example.label);
 
               return (
-                <Text key={labelSlug} size="small" tone="secondary">
-                  <TextLink weight="weak" href={`#${labelSlug}`}>
-                    {example.label}
-                  </TextLink>
-                </Text>
+                <SubNavButton text={example.label} href={`#${labelSlug}`} />
               );
             })}
-          </List>
+          </Stack>
         </Box>
       </Column>
     </Columns>
