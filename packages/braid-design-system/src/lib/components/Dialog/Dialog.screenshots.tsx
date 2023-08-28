@@ -4,6 +4,7 @@ import { Inline, Stack, Box } from '../';
 import { Placeholder } from '../../playroom/components';
 import { DialogContent } from './Dialog';
 import * as styles from '../private/Modal/Modal.css';
+import { externalGutter } from '../private/Modal/ModalExternalGutter';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box position="relative">
@@ -16,7 +17,7 @@ const Container = ({ children }: { children: ReactNode }) => (
       width="full"
       className={styles.backdrop}
     />
-    <Box position="relative" zIndex="modal">
+    <Box position="relative" zIndex="modal" padding={externalGutter}>
       {children}
     </Box>
   </Box>
