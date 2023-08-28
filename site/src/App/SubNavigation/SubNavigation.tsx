@@ -57,11 +57,10 @@ const SubNavItem = ({
 
   return (
     <Inline space="medium" alignY="center">
-      <Bleed horizontal={active ? 'small' : undefined}>
+      <Bleed horizontal="small">
         <ButtonLink
           variant={active ? 'soft' : 'transparent'}
           size="small"
-          bleed
           href={path}
           onClick={onClick}
           target={target}
@@ -85,7 +84,7 @@ interface SubNavigationGroup {
 
 const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
   <Box component="nav">
-    <Stack space="large">
+    <Stack space="small">
       {title ? (
         <Box className={styles.uppercase}>
           <Text size="xsmall" weight="medium" component="h2">
@@ -94,7 +93,7 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
         </Box>
       ) : null}
 
-      <Stack component="ul" space="gutter">
+      <Stack component="ul" space="none">
         {items.map(({ name, badge, path, onClick, target }) => (
           <SubNavItem
             name={name}
@@ -127,30 +126,32 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
   };
 
   return (
-    <Stack space="xlarge">
-      <ThemeToggle />
+    <Stack space="large">
+      <Stack space="medium">
+        <ThemeToggle />
 
-      <SubNavigationGroup
-        items={[
-          {
-            name: 'Releases',
-            path: '/releases',
-            onClick: onSelect,
-          },
-          {
-            name: 'Gallery',
-            path: '/gallery',
-          },
-          {
-            name: 'Playroom',
-            path: playroomUrl,
-          },
-          {
-            name: 'GitHub',
-            path: 'https://github.com/seek-oss/braid-design-system',
-          },
-        ]}
-      />
+        <SubNavigationGroup
+          items={[
+            {
+              name: 'Releases',
+              path: '/releases',
+              onClick: onSelect,
+            },
+            {
+              name: 'Gallery',
+              path: '/gallery',
+            },
+            {
+              name: 'Playroom',
+              path: playroomUrl,
+            },
+            {
+              name: 'GitHub',
+              path: 'https://github.com/seek-oss/braid-design-system',
+            },
+          ]}
+        />
+      </Stack>
 
       <SubNavigationGroup
         title="Guides"
