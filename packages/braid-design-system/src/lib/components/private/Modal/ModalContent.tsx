@@ -139,6 +139,7 @@ export const ModalContent = ({
         height={
           position === 'right' || position === 'left' ? 'full' : undefined
         }
+        overflow={position !== 'center' ? 'hidden' : undefined}
         width={width !== 'content' ? 'full' : undefined}
         maxWidth={width !== 'content' ? width : undefined}
       >
