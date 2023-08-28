@@ -10,4 +10,4 @@ updated:
 
 **docs:** Lighten soft background tokens
 
-Lightening the `brandAccentSoft` and `formAccentSoft` background tokens for the `docs` theme.
+Lighten the `brandAccentSoft` and `formAccentSoft` background tokens for the `docs` theme.
