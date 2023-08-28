@@ -115,6 +115,7 @@ export const ModalContent = ({
   const justifyContent = (
     { left: 'flexStart', center: 'center', right: 'flexEnd' } as const
   )[position];
+  const modalRadius = position === 'center' ? 'xlarge' : undefined;
 
   return (
     <Box
@@ -140,6 +141,8 @@ export const ModalContent = ({
           position === 'right' || position === 'left' ? 'full' : undefined
         }
         overflow={position !== 'center' ? 'hidden' : undefined}
+        boxShadow="large"
+        borderRadius={modalRadius}
         width={width !== 'content' ? 'full' : undefined}
         maxWidth={width !== 'content' ? width : undefined}
       >
@@ -147,10 +150,9 @@ export const ModalContent = ({
         <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
           <Box
             background="surface"
-            borderRadius={position === 'center' ? 'xlarge' : undefined}
+            borderRadius={modalRadius}
             overflow="auto"
             position="relative"
-            boxShadow="large"
             width={width !== 'content' ? 'full' : undefined}
             height={
               position === 'right' || position === 'left' ? 'full' : undefined
