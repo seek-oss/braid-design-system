@@ -3465,5 +3465,22 @@
         "summary": "**TabPanel:** Align focus outline radius to scale\n\nIncrease the radius of the focus outline to better align to the scale. A `TabPanel` is typically a \"large\" element containing entire sections of UI, so using the `large` radius to better align to the radius scale."
       }
     ]
+  },
+  {
+    "version": "32.9.1",
+    "updates": [
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Prevent close button protruding in left position\n\nFixes an issue where the close button could protrude from a `Drawer`.\nThis was only visible when setting `position` to `left` and between a small range of screen widths — above 660px (`small` content width) and below 768px (`tablet` breakpoint)."
+      },
+      {
+        "updated": [
+          "RadioGroup"
+        ],
+        "summary": "**RadioGroup:** Ensure `reserveMessageSpace` prevents layout shift correctly\n\nConsider the `reserveMessageSpace` prop as well as `message` when conditionally applying internal padding between radio list and field message."
+      }
+    ]
   }
 ]

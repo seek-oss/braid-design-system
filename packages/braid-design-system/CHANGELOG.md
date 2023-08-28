@@ -1,5 +1,18 @@
 # braid-design-system
 
+## 32.9.1
+
+### Patch Changes
+
+- **Drawer:** Prevent close button protruding in left position ([#1351](https://github.com/seek-oss/braid-design-system/pull/1351))
+
+  Fixes an issue where the close button could protrude from a `Drawer`.
+  This was only visible when setting `position` to `left` and between a small range of screen widths — above 660px (`small` content width) and below 768px (`tablet` breakpoint).
+
+- **RadioGroup:** Ensure `reserveMessageSpace` prevents layout shift correctly ([#1349](https://github.com/seek-oss/braid-design-system/pull/1349))
+
+  Consider the `reserveMessageSpace` prop as well as `message` when conditionally applying internal padding between radio list and field message.
+
 ## 32.9.0
 
 ### Minor Changes
