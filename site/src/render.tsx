@@ -17,7 +17,7 @@ import { colorModeQueryParamCheck } from 'braid-src/entries/color-mode/query-par
 const { version } = packageJson;
 
 const skuRender: Render<RenderContext> = {
-  renderApp: async ({ route }) => {
+  renderApp: async ({ route: inputRoute }) => {
     const {
       IS_GITHUB_PAGES: isGithubPages,
       GITHUB_SHA: prSha,
@@ -27,10 +27,14 @@ const skuRender: Render<RenderContext> = {
     const versionMap = await braidVersionToDate();
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
-    const routerBasename = isGithubPages ? 'braid-design-system' : '';
+
+    const routerBasename = isGithubPages ? '/braid-design-system' : '';
+    const route = `${routerBasename}${inputRoute}`;
+
     const playroomUrl = !CI
       ? 'http://127.0.0.1:8082'
-      : `${routerBasename ? `/${routerBasename}` : ''}/playroom`;
+      : `${routerBasename}/playroom`;
+
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
