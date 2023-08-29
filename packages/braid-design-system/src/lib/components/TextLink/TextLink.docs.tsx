@@ -111,7 +111,7 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             Optionally, you can decrease the visual weight by setting{' '}
-            <Strong>weight</Strong> to <Strong>weak</Strong> — the link now
+            <Strong>weight</Strong> to <Strong>weak</Strong> — with the link now
             following the default text colour and weight.
           </Text>
         </>
