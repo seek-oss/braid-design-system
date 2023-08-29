@@ -30,6 +30,12 @@ jobs:
       - name: Build
         run: pnpm build:site
 
+      - name: Add a fallback
+        run: echo "<h1>Shouldn't be seeing this!</h1>" > site/dist/200.html
+
+      - name: Check the contents
+        run: ls -la site/dist
+
       - name: Deploy to surge
         run: pnpm surge -p ./site/dist -d braid-design-system--${GITHUB_SHA}.surge.sh
         env:
