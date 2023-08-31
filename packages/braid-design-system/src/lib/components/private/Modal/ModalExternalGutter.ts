@@ -1,1 +1,5 @@
-export const externalGutter = ['xsmall', 'gutter', 'xlarge'] as const;
+export const externalGutter = {
+  mobile: 'xsmall',
+  tablet: 'gutter',
+  desktop: 'xlarge',
+} as const;
