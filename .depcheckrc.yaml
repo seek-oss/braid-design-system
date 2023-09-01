@@ -6,6 +6,3 @@ ignores:
   # internal
   - braid-src
   - site
-parsers:
-  '**/*.{js,cjs,ts,cts}': ['typescript']
-  '**/*.tsx': ['typescript', 'jsx']
