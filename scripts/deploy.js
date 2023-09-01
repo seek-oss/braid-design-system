@@ -32,3 +32,5 @@ ghpages.publish(basePath, makeConfig(), function (err) {
     log('Deployment complete!');
   }
 });
+
+// test chromatic ancestor
