@@ -15,7 +15,6 @@ jobs:
         id: skip_check
         with:
           concurrent_skipping: same_content_newer
-          cancel_others: true
           # We want to skip only concurrent runs. Subsequent runs/retries should be allowed.
           skip_after_successful_duplicate: false
 
