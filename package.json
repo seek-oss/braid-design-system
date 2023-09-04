@@ -58,7 +58,7 @@
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^7.6.0",
-    "depcheck": "^1.4.3",
+    "depcheck": "^1.4.5",
     "enquirer": "^2.3.6",
     "escape-string-regexp": "^4.0.0",
     "eslint": "^8.21.0",
