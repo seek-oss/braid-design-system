@@ -1,5 +1,50 @@
 # braid-design-system
 
+## 32.10.0
+
+### Minor Changes
+
+- **seekJobs:** Change link colour to neutral ([#1347](https://github.com/seek-oss/braid-design-system/pull/1347))
+
+  Changing the `foregroundColor` token for `link` on the `seekJobs` theme to align with neutral text.
+  Our different approach to using colour has seen links dialled back to compete less with other messaging and CTAs.
+
+  This affects the following usages across the system:
+
+  - `vars.foregroundColor.link`
+  - `Text` (using `tone="link"`)
+  - `TextLink` and (`TextLinkButton`)
+
+### Patch Changes
+
+- **TextLink, TextLinkButton:** Underline regular links in non-legacy themes ([#1347](https://github.com/seek-oss/braid-design-system/pull/1347))
+
+  To improve affordance beyond primarily being colour, a `TextLink` (and `TextLinkButton`) will now always be underlined, in line with [best practice accessibility guidelines].
+
+  Given this has not been the case previously, this decision has been applied to non-legacy themes only, as such only affecting consumers of `seekJobs`, `docs` and `wireframe`.
+
+  [best practice accessibility guidelines]: https://webaim.org/techniques/hypertext/link_text#appearance
+
+- **TextLink, TextLinkButton:** Apply themed focus outline ([#1347](https://github.com/seek-oss/braid-design-system/pull/1347))
+
+  Apply a focus outline using the relevant focus attributes from the theme, bringing `TextLink` (and `TextLinkButton`) into line with the focus treatment applied to rest of the system.
+
+- **TextLink, TextLinkButton:** Reduce `weak` links to `regular` font weight ([#1347](https://github.com/seek-oss/braid-design-system/pull/1347))
+
+  The font weight of a `weak` link is now reduced to `regular` weight, reducing the link's visual prominence in addition to following the neutral text colour.
+
+- **docs:** Lighten soft background tokens ([#1347](https://github.com/seek-oss/braid-design-system/pull/1347))
+
+  Lighten the `brandAccentSoft` and `formAccentSoft` background tokens for the `docs` theme.
+
+- **Dialog, Drawer:** Adapt max height to available viewport space ([#1352](https://github.com/seek-oss/braid-design-system/pull/1352))
+
+  Make use of the new [dynamic viewport units] for applying a max height to modal elements such as `Dialog` and `Drawer`. These new units take into account dynamic browser toolbars that expand and contract as the user scrolls, ensuring the browser interface never obscures the web site content.
+
+  Fix also incorporates fallback for older browsers to use regular viewport units.
+
+  [Dynamic Viewport units]: https://web.dev/viewport-units/
+
 ## 32.9.2
 
 ### Patch Changes
