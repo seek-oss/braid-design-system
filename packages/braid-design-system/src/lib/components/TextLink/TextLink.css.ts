@@ -10,39 +10,31 @@ import { vars } from '../../themes/vars.css';
 const textLinkVars = createThemeContract({
   color: null,
   colorHover: null,
-  textDecoration: null,
-  textDecorationHover: null,
 });
 
 const lightModeRegularLinkVars = assignVars(textLinkVars, {
   color: vars.foregroundColor.link,
   colorHover: vars.foregroundColor.linkHover,
-  textDecoration: 'none',
-  textDecorationHover: 'underline',
 });
 
 const darkModeRegularLinkVars = assignVars(textLinkVars, {
   color: vars.foregroundColor.linkLight,
   colorHover: vars.foregroundColor.linkLight,
-  textDecoration: 'none',
-  textDecorationHover: 'underline',
 });
 
 const weakLinkVars = assignVars(textLinkVars, {
   color: 'inherit',
   colorHover: 'inherit',
-  textDecoration: 'underline',
-  textDecorationHover: 'underline',
 });
 
 export const base = style({
   color: textLinkVars.color,
-  textDecoration: textLinkVars.textDecoration,
-  textDecorationThickness: '0.1em',
+  textDecoration: vars.linkDecoration,
+  textDecorationThickness: '0.08em',
   textUnderlineOffset: 3,
   ':hover': {
     color: textLinkVars.colorHover,
-    textDecoration: textLinkVars.textDecorationHover,
+    textDecoration: 'underline',
     /*
       Duplicating the thickness rule due to inconsistent support
       for shorthand properties of `text-decoration`. Without this,
@@ -52,15 +44,19 @@ export const base = style({
       We also cannot use the long-form `text-decoration-line` due
       to browser support policy of Edge 16+.
     */
-    textDecorationThickness: '0.1em',
+    textDecorationThickness: '0.08em',
   },
-  ':focus': {
+  ':focus-visible': {
     color: textLinkVars.colorHover,
+    outline: `${vars.focusRingSize} solid ${vars.borderColor.focus}`,
+    outlineOffset: '0.2em',
+    borderRadius: vars.borderRadius.small,
   },
 });
 
 export const weakLink = style({
   vars: weakLinkVars,
+  textDecoration: 'underline',
 });
 
 export const regularLinkLightMode = styleVariants({
