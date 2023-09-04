@@ -3482,5 +3482,9 @@
         "summary": "**RadioGroup:** Ensure `reserveMessageSpace` prevents layout shift correctly\n\nConsider the `reserveMessageSpace` prop as well as `message` when conditionally applying internal padding between radio list and field message."
       }
     ]
+  },
+  {
+    "version": "32.9.2",
+    "updates": []
   }
 ]
