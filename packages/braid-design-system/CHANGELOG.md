@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 32.9.2
+
+### Patch Changes
+
+- Update dependencies for codemod ([#1353](https://github.com/seek-oss/braid-design-system/pull/1353))
+
 ## 32.9.1
 
 ### Patch Changes
