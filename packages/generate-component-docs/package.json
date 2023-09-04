@@ -15,13 +15,15 @@
   },
   "author": "SEEK",
   "license": "MIT",
-  "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
-    "@types/lodash": "^4.14.168",
-    "esbuild": "^0.15.13",
-    "esbuild-register": "^3.3.3",
+  "dependencies": {
+    "esbuild": "^0.19.2",
+    "esbuild-register": "^3.4.2",
     "fs-extra": "^10.1.0",
     "lodash": "^4.17.21",
     "typescript": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.14.168"
   }
 }
