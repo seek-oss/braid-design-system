@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { externalGutter } from './ModalExternalGutter';
 import { responsiveStyle } from '../../../css/responsiveStyle';
@@ -94,57 +94,62 @@ export const horiztontalTransition = style(
   }),
 );
 
-export const modalContainer = style({
-  maxHeight: '100vh',
-  maxWidth: '100vw',
-});
-
 export const pointerEventsAll = style({
   pointerEvents: 'all',
 });
 
+const gutterSizeVar = createVar();
+const fullHeightVar = createVar();
+const fullWidthVar = createVar();
+
 const viewportHeight = style({
-  maxHeight: '100vh',
+  maxHeight: fullHeightVar,
 });
 
 export const maxSize = {
-  center: style(
+  center: style([
+    {
+      maxHeight: calc.subtract(fullHeightVar, calc.multiply(gutterSizeVar, 2)),
+      maxWidth: calc.subtract(fullWidthVar, calc.multiply(gutterSizeVar, 2)),
+    },
     responsiveStyle({
       mobile: {
-        maxHeight: calc.subtract(
-          '100vh',
-          calc.multiply(vars.space[externalGutter[0]], 2),
-        ),
-        maxWidth: calc.subtract(
-          '100vw',
-          calc.multiply(vars.space[externalGutter[0]], 2),
-        ),
+        vars: {
+          [gutterSizeVar]: vars.space[externalGutter.mobile],
+        },
       },
       tablet: {
-        maxHeight: calc.subtract(
-          '100vh',
-          calc.multiply(vars.space[externalGutter[1]], 2),
-        ),
-        maxWidth: calc.subtract(
-          '100vw',
-          calc.multiply(vars.space[externalGutter[1]], 2),
-        ),
+        vars: {
+          [gutterSizeVar]: vars.space[externalGutter.tablet],
+        },
       },
       desktop: {
-        maxHeight: calc.subtract(
-          '100vh',
-          calc.multiply(vars.space[externalGutter[2]], 2),
-        ),
-        maxWidth: calc.subtract(
-          '100vw',
-          calc.multiply(vars.space[externalGutter[2]], 2),
-        ),
+        vars: {
+          [gutterSizeVar]: vars.space[externalGutter.desktop],
+        },
       },
     }),
-  ),
+  ]),
   right: viewportHeight,
   left: viewportHeight,
 };
+
+export const modalContainer = style({
+  vars: {
+    [fullHeightVar]: '100vh',
+    [fullWidthVar]: '100vw',
+  },
+  '@supports': {
+    '(height: 1dvh)': {
+      vars: {
+        [fullHeightVar]: '100dvh',
+        [fullWidthVar]: '100dvw',
+      },
+    },
+  },
+  maxHeight: fullHeightVar,
+  maxWidth: fullWidthVar,
+});
 
 export const headingRoot = style({
   overflowWrap: 'break-word',
