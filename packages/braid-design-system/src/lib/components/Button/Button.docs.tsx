@@ -25,7 +25,7 @@ const docs: ComponentDocs = {
     source(
       <Card rounded>
         <Inline space="small" collapseBelow="desktop">
-          <Button>Solid</Button>
+          <Button variant="solid">Solid</Button>
           <Button variant="ghost">Ghost</Button>
           <Button variant="soft">Soft</Button>
           <Button variant="transparent">Transparent</Button>
@@ -78,6 +78,125 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Branding',
+      background: 'surface',
+      description: (
+        <Text>
+          For hero actions that want to leverage the brand colour, you can set
+          the button’s <Strong>tone</Strong> to <Strong>brandAccent.</Strong>
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button tone="brandAccent" variant="solid">
+              Search
+            </Button>
+            <Button tone="brandAccent" variant="ghost">
+              Search
+            </Button>
+            <Button tone="brandAccent" variant="soft">
+              Search
+            </Button>
+            <Button tone="brandAccent" variant="transparent">
+              Search
+            </Button>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Destructive actions',
+      background: 'surface',
+      description: (
+        <Text>
+          For destructive actions like “Delete” you can set the button’s{' '}
+          <Strong>tone</Strong> to <Strong>critical.</Strong>
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button tone="critical" icon={<IconDelete />} variant="solid">
+              Delete
+            </Button>
+            <Button tone="critical" icon={<IconDelete />} variant="ghost">
+              Delete
+            </Button>
+            <Button tone="critical" icon={<IconDelete />} variant="soft">
+              Delete
+            </Button>
+            <Button tone="critical" icon={<IconDelete />} variant="transparent">
+              Delete
+            </Button>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Emphasizing actions',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            For cases where actions need to be emphasized, the{' '}
+            <Strong>tone</Strong> can be set to <Strong>formAccent</Strong>.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button tone="formAccent" variant="solid">
+              Solid
+            </Button>
+            <Button tone="formAccent" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="formAccent" variant="soft">
+              Soft
+            </Button>
+            <Button tone="formAccent" variant="transparent">
+              Transparent
+            </Button>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'De-emphasized actions',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            For cases where actions need to be de-emphasized, the{' '}
+            <Strong>tone</Strong> can be set to <Strong>neutral</Strong>.
+          </Text>
+          <Text>
+            This makes the button follow the default text colour, including{' '}
+            <TextLink href="#contextual-design">
+              inverting on dark surfaces
+            </TextLink>{' '}
+            to improve contrast.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Button tone="neutral" variant="solid">
+              Solid
+            </Button>
+            <Button tone="neutral" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="neutral" variant="soft">
+              Soft
+            </Button>
+            <Button tone="neutral" variant="transparent">
+              Transparent
+            </Button>
+          </Inline>,
+        ),
+    },
+    {
       label: 'Sizes',
       background: 'surface',
       description: (
@@ -95,7 +214,7 @@ const docs: ComponentDocs = {
                 Standard size
               </Text>
               <Inline space="small" collapseBelow="desktop">
-                <Button>Solid</Button>
+                <Button variant="solid">Solid</Button>
                 <Button variant="ghost">Ghost</Button>
                 <Button variant="soft">Soft</Button>
                 <Button variant="transparent">Transparent</Button>
@@ -106,7 +225,9 @@ const docs: ComponentDocs = {
                 Small size
               </Text>
               <Inline space="small" collapseBelow="desktop">
-                <Button size="small">Solid</Button>
+                <Button variant="solid" size="small">
+                  Solid
+                </Button>
                 <Button variant="ghost" size="small">
                   Ghost
                 </Button>
@@ -191,92 +312,6 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Branding',
-      background: 'surface',
-      description: (
-        <Text>
-          For hero actions that want to leverage the brand colour, you can set
-          the button’s <Strong>tone</Strong> to <Strong>brandAccent.</Strong>
-        </Text>
-      ),
-      Example: () =>
-        source(
-          <Inline space="small">
-            <Button tone="brandAccent">Search</Button>
-            <Button tone="brandAccent" variant="ghost">
-              Search
-            </Button>
-            <Button tone="brandAccent" variant="soft">
-              Search
-            </Button>
-            <Button tone="brandAccent" variant="transparent">
-              Search
-            </Button>
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Destructive actions',
-      background: 'surface',
-      description: (
-        <Text>
-          For destructive actions like “Delete” you can set the button’s{' '}
-          <Strong>tone</Strong> to <Strong>critical.</Strong>
-        </Text>
-      ),
-      Example: () =>
-        source(
-          <Inline space="small">
-            <Button tone="critical" icon={<IconDelete />}>
-              Delete
-            </Button>
-            <Button tone="critical" icon={<IconDelete />} variant="ghost">
-              Delete
-            </Button>
-            <Button tone="critical" icon={<IconDelete />} variant="soft">
-              Delete
-            </Button>
-            <Button tone="critical" icon={<IconDelete />} variant="transparent">
-              Delete
-            </Button>
-          </Inline>,
-        ),
-    },
-    {
-      label: 'De-emphasized actions',
-      background: 'surface',
-      description: (
-        <>
-          <Text>
-            For cases where actions need to be de-emphasized, the{' '}
-            <Strong>tone</Strong> can be set to <Strong>neutral.</Strong>
-          </Text>
-          <Text>
-            This makes the button follow the default text colour, including{' '}
-            <TextLink href="#contextual-design">
-              inverting on dark surfaces
-            </TextLink>{' '}
-            to improve contrast.
-          </Text>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Inline space="small">
-            <Button tone="neutral">Solid</Button>
-            <Button tone="neutral" variant="ghost">
-              Ghost
-            </Button>
-            <Button tone="neutral" variant="soft">
-              Soft
-            </Button>
-            <Button tone="neutral" variant="transparent">
-              Transparent
-            </Button>
-          </Inline>,
-        ),
-    },
-    {
       label: 'Contextual design',
       description: (
         <>
@@ -289,8 +324,8 @@ const docs: ComponentDocs = {
           </Text>
           <Notice>
             <Text>
-              A <Strong>solid</Strong> button with a <Strong>neutral</Strong>{' '}
-              tone will also be inverted to improve contrast.
+              Buttons with a <Strong>neutral</Strong> tone are inverted to
+              improve contrast.
             </Text>
           </Notice>
           <Text>
@@ -308,13 +343,23 @@ const docs: ComponentDocs = {
           <Box background="neutral">
             <Stack space="small">
               <Inline space="small">
-                <Button>Solid</Button>
-                <Button variant="ghost">Ghost</Button>
-                <Button variant="soft">Soft</Button>
-                <Button variant="transparent">Transparent</Button>
+                <Button tone="formAccent" variant="solid">
+                  Solid
+                </Button>
+                <Button tone="formAccent" variant="ghost">
+                  Ghost
+                </Button>
+                <Button tone="formAccent" variant="soft">
+                  Soft
+                </Button>
+                <Button tone="formAccent" variant="transparent">
+                  Transparent
+                </Button>
               </Inline>
               <Inline space="small">
-                <Button tone="brandAccent">Solid</Button>
+                <Button tone="brandAccent" variant="solid">
+                  Solid
+                </Button>
                 <Button tone="brandAccent" variant="ghost">
                   Ghost
                 </Button>
@@ -326,7 +371,9 @@ const docs: ComponentDocs = {
                 </Button>
               </Inline>
               <Inline space="small">
-                <Button tone="critical">Solid</Button>
+                <Button tone="critical" variant="solid">
+                  Solid
+                </Button>
                 <Button tone="critical" variant="ghost">
                   Ghost
                 </Button>
@@ -338,7 +385,9 @@ const docs: ComponentDocs = {
                 </Button>
               </Inline>
               <Inline space="small">
-                <Button tone="neutral">Solid</Button>
+                <Button tone="neutral" variant="solid">
+                  Solid
+                </Button>
                 <Button tone="neutral" variant="ghost">
                   Ghost
                 </Button>
@@ -406,7 +455,13 @@ const docs: ComponentDocs = {
                   <Box background="surface" boxShadow="borderCriticalLight">
                     <Inline space="xsmall" alignY="center">
                       <Heading level="2">Heading</Heading>
-                      <Button bleed={getState('bleed')}>Solid</Button>
+                      <Button
+                        bleed={getState('bleed')}
+                        tone="formAccent"
+                        variant="solid"
+                      >
+                        Button
+                      </Button>
                     </Inline>
                   </Box>
                 </Box>
@@ -424,8 +479,13 @@ const docs: ComponentDocs = {
                   <Box background="surface" boxShadow="borderCriticalLight">
                     <Inline space="xsmall" alignY="center">
                       <Heading level="2">Heading</Heading>
-                      <Button bleed={getState('bleed')} size="small">
-                        Solid
+                      <Button
+                        bleed={getState('bleed')}
+                        size="small"
+                        tone="formAccent"
+                        variant="solid"
+                      >
+                        Button
                       </Button>
                     </Inline>
                   </Box>
@@ -445,8 +505,12 @@ const docs: ComponentDocs = {
                     <Stack space="gutter">
                       <Heading level="2">Heading</Heading>
                       <Inline space="none">
-                        <Button bleed={getState('bleed')} variant="transparent">
-                          Solid
+                        <Button
+                          bleed={getState('bleed')}
+                          variant="transparent"
+                          tone="formAccent"
+                        >
+                          Button
                         </Button>
                       </Inline>
                     </Stack>

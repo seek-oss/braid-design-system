@@ -5,33 +5,22 @@ import { Button, Heading, Inline, IconSend } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default',
-    background: 'surface',
-    Example: () =>
-      source(
-        <Inline space="small">
-          <Button>Submit</Button>
-          <Button variant="ghost">Submit</Button>
-          <Button variant="soft">Submit</Button>
-          <Button variant="transparent">Submit</Button>
-        </Inline>,
-      ),
-  },
-  {
     label: 'Critical',
     background: 'surface',
     Example: () =>
       source(
         <Inline space="small">
-          <Button tone="critical">Delete</Button>
+          <Button tone="critical" variant="solid">
+            Solid
+          </Button>
           <Button tone="critical" variant="ghost">
-            Delete
+            Ghost
           </Button>
           <Button tone="critical" variant="soft">
-            Delete
+            Soft
           </Button>
           <Button tone="critical" variant="transparent">
-            Delete
+            Transparent
           </Button>
         </Inline>,
       ),
@@ -42,15 +31,38 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Inline space="small">
-          <Button tone="brandAccent">Search</Button>
+          <Button tone="brandAccent" variant="solid">
+            Solid
+          </Button>
           <Button tone="brandAccent" variant="ghost">
-            Search
+            Ghost
           </Button>
           <Button tone="brandAccent" variant="soft">
-            Search
+            Soft
           </Button>
           <Button tone="brandAccent" variant="transparent">
-            Search
+            Transparent
+          </Button>
+        </Inline>,
+      ),
+  },
+  {
+    label: 'FormAccent',
+    background: 'surface',
+    Example: () =>
+      source(
+        <Inline space="small">
+          <Button tone="formAccent" variant="solid">
+            Solid
+          </Button>
+          <Button tone="formAccent" variant="ghost">
+            Ghost
+          </Button>
+          <Button tone="formAccent" variant="soft">
+            Soft
+          </Button>
+          <Button tone="formAccent" variant="transparent">
+            Transparent
           </Button>
         </Inline>,
       ),
@@ -61,15 +73,17 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Inline space="small">
-          <Button tone="neutral">Search</Button>
+          <Button tone="neutral" variant="solid">
+            Solid
+          </Button>
           <Button tone="neutral" variant="ghost">
-            Search
+            Ghost
           </Button>
           <Button tone="neutral" variant="soft">
-            Search
+            Soft
           </Button>
           <Button tone="neutral" variant="transparent">
-            Search
+            Transparent
           </Button>
         </Inline>,
       ),

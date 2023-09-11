@@ -36,7 +36,7 @@ export const buttonVariants = [
 ] as const;
 
 type ButtonSize = 'standard' | 'small';
-type ButtonTone = 'brandAccent' | 'critical' | 'neutral';
+type ButtonTone = 'formAccent' | 'brandAccent' | 'critical' | 'neutral';
 type ButtonVariant = (typeof buttonVariants)[number];
 export interface ButtonStyleProps {
   size?: ButtonSize;
@@ -84,12 +84,9 @@ type ButtonStyles = {
   boxShadow: BoxShadow | undefined;
 };
 
-const variants: Record<
-  ButtonVariant,
-  Record<'default' | ButtonTone, ButtonStyles>
-> = {
+const variants: Record<ButtonVariant, Record<ButtonTone, ButtonStyles>> = {
   solid: {
-    default: {
+    formAccent: {
       textTone: undefined,
       background: 'formAccent',
       backgroundHover: 'formAccentHover',
@@ -119,7 +116,7 @@ const variants: Record<
     },
   },
   soft: {
-    default: {
+    formAccent: {
       textTone: 'formAccent',
       background: { light: 'formAccentSoft', dark: 'customDark' },
       backgroundHover: 'formAccentSoftHover',
@@ -149,7 +146,7 @@ const variants: Record<
     },
   },
   transparent: {
-    default: {
+    formAccent: {
       textTone: 'formAccent',
       background: undefined,
       backgroundHover: 'formAccentSoftHover',
@@ -179,7 +176,7 @@ const variants: Record<
     },
   },
   ghost: {
-    default: {
+    formAccent: {
       textTone: 'formAccent',
       background: undefined,
       backgroundHover: 'formAccentSoftHover',
@@ -238,7 +235,7 @@ export const ButtonOverlays = ({
   radius?: 'full' | typeof buttonRadius;
   forceActive?: boolean;
 }) => {
-  const stylesForVariant = variants[variant][tone ?? 'default'];
+  const stylesForVariant = variants[variant][tone ?? 'formAccent'];
   const colorContrast = useColorContrast();
   const lightness = useBackgroundLightness();
 
@@ -317,7 +314,7 @@ export const ButtonText = ({
   const actionsContext = useContext(ActionsContext);
   const isLegacyTheme = useBraidTheme().legacy;
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const stylesForVariant = variants[variant][tone ?? 'default'];
+  const stylesForVariant = variants[variant][tone ?? 'formAccent'];
   const shouldReducePaddingX = size === 'small' || variant === 'transparent';
   const labelPaddingXForTheme = isLegacyTheme ? 'medium' : 'gutter';
   const labelPaddingX = shouldReducePaddingX
@@ -402,7 +399,7 @@ export const useButtonStyles = ({
 }): BoxProps => {
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const stylesForVariant = variants[variant][tone ?? 'default'];
+  const stylesForVariant = variants[variant][tone ?? 'formAccent'];
   const colorConstrast = useColorContrast();
   const lightness = useBackgroundLightness();
 
