@@ -43,12 +43,12 @@ export type UseIconProps = {
   data?: DataAttributeMap;
 } & OptionalTitle;
 
-type PrivateIconProps = {
+interface PrivateIconProps {
   verticalCorrection?: {
     lowercase: keyof typeof styles.alignY.lowercase;
     uppercase: keyof typeof styles.alignY.uppercase;
   };
-};
+}
 
 const defaultVerticalCorrection = {
   uppercase: 'none',

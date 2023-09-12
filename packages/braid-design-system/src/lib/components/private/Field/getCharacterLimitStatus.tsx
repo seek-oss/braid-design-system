@@ -3,7 +3,7 @@ import { Text } from '../../Text/Text';
 
 interface CharacterLimitProps {
   characterLimit: number;
-  value: string | number | ReadonlyArray<string>;
+  value: string | number | readonly string[];
 }
 
 export const getCharacterLimitStatus = ({

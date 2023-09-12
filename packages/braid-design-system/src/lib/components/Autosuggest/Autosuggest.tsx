@@ -269,10 +269,10 @@ const fallbackValue = { text: '' };
 const fallbackSuggestions: Suggestion[] = [];
 
 /** @deprecated Use `noSuggestionsMessage` prop instead */
-type LegacyMessageSuggestion = {
+interface LegacyMessageSuggestion {
   /** @deprecated Use `noSuggestionsMessage` prop instead */
   message: string;
-};
+}
 
 export type AutosuggestBaseProps<Value> = Omit<
   FieldBaseProps,

@@ -64,7 +64,7 @@ interface StepperContextValues extends State {
 
 export const StepperContext = createContext<StepperContextValues | null>(null);
 
-export type StepperProviderProps = {
+export interface StepperProviderProps {
   children: ReactNode;
   activeStep: number;
   stepCount: number;
@@ -73,7 +73,7 @@ export type StepperProviderProps = {
   align: 'left' | 'center';
   tone?: keyof typeof styles.tone;
   onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
-};
+}
 
 const getNextStep = (
   moveAmount: 1 | -1,

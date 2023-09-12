@@ -7,8 +7,7 @@ export function resolveResponsiveObject<Value>(
 ): Value | null {
   let resolvedValue: Value | null = null;
 
-  for (let i = 0; i < breakpointNames.length; i++) {
-    const currentBreakpointName = breakpointNames[i];
+  for (const currentBreakpointName of breakpointNames) {
     const valueForBreakpoint = value[currentBreakpointName];
 
     if (valueForBreakpoint !== undefined) {

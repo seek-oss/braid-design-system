@@ -197,7 +197,7 @@ const PlayroomPrototyping = () => (
                 title: 'Product Manager',
                 location: 'Canberra',
               },
-            ] as Array<MockJob>)}
+            ] as MockJob[])}
 
             <Stack space="medium">
               {getState('jobs').map((job: MockJob) => (
@@ -215,7 +215,7 @@ const PlayroomPrototyping = () => (
         return {
           ...result,
           code: result.code
-            .replace(/ as Array<MockJob>/g, '')
+            .replace(/ as MockJob\[\]/g, '')
             .replace(/: MockJob/g, ''),
         };
       }}
@@ -264,7 +264,7 @@ const PlayroomPrototyping = () => (
                 title: 'Product Manager',
                 location: 'Canberra',
               },
-            ] as Array<MockJob>)}
+            ] as MockJob[])}
 
             <Stack space="medium">
               {getState('jobs').map((job: MockJob) => (
@@ -287,7 +287,7 @@ const PlayroomPrototyping = () => (
         return {
           ...result,
           code: result.code
-            .replace(/ as Array<MockJob>/g, '')
+            .replace(/ as MockJob\[\]/g, '')
             .replace(/: MockJob/g, ''),
         };
       }}

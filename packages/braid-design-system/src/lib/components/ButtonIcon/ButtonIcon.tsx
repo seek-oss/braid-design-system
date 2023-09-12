@@ -25,13 +25,12 @@ import { Bleed } from '../Bleed/Bleed';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';
 import * as styles from './ButtonIcon.css';
 
-export const buttonIconVariants: Extract<
-  ButtonStyleProps['variant'],
-  'soft' | 'transparent'
->[] = ['soft', 'transparent'];
+export const buttonIconVariants: Array<
+  Extract<ButtonStyleProps['variant'], 'soft' | 'transparent'>
+> = ['soft', 'transparent'];
 
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
-export type ButtonIconProps = {
+export interface ButtonIconProps {
   id: string;
   icon: ReactElement<UseIconProps>;
   label: string;
@@ -48,7 +47,7 @@ export type ButtonIconProps = {
   tabIndex?: number;
   data?: DataAttributeMap;
   bleed?: boolean;
-};
+}
 
 const padding = 'xsmall';
 
