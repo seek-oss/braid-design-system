@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "@vanilla-extract/integration": "^6.1.2",
-    "braid-design-system": "*",
+    "braid-design-system": "workspace:*",
     "fast-glob": "^3.2.12",
     "webpack": "^5.76.0"
   }
