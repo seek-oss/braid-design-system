@@ -11,7 +11,9 @@ const docs: ComponentDocs = {
     source(
       <Card rounded>
         <Inline space="small" collapseBelow="desktop">
-          <ButtonLink href="#">Solid</ButtonLink>
+          <ButtonLink href="#" variant="solid">
+            Solid
+          </ButtonLink>
           <ButtonLink href="#" variant="ghost">
             Ghost
           </ButtonLink>
