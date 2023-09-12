@@ -83,6 +83,10 @@
   },
   "packageManager": "pnpm@7.30.0",
   "pnpm": {
+    "overrides": {
+      "@braid-design-system/generate-component-docs": "workspace:*",
+      "braid-design-system": "workspace:*"
+    },
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
       "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"

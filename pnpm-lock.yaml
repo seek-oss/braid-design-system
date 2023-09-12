@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+overrides:
+  '@braid-design-system/generate-component-docs': workspace:*
+  braid-design-system: workspace:*
+
 patchedDependencies:
   panzoom@9.4.2:
     hash: 6ozlkenow5f4yy4lstsbsrrv4i
@@ -447,7 +451,7 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       typescript:
-        specifier: '*'
+        specifier: ~5.1.6
         version: 5.1.6
     devDependencies:
       '@types/fs-extra':
