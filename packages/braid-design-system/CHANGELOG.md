@@ -1,5 +1,21 @@
 # braid-design-system
 
+## 32.11.0
+
+### Minor Changes
+
+- **Button, ButtonLink:** Provide `formAccent` as the name for undefined tone ([#1359](https://github.com/seek-oss/braid-design-system/pull/1359))
+
+  Formalise the name of the `undefined` tone as `formAccent`, making it more discoverable as an accent available for increased prominence.
+
+  Note: Consumers should only apply this tone where an action should be emphasized explicitly. The `undefined` value is still valid for buttons that should follow the default button style of the theme.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Button tone="formAccent">...</Button>
+  ```
+
 ## 32.10.0
 
 ### Minor Changes

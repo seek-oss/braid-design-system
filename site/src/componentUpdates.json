@@ -3535,5 +3535,17 @@
         "summary": "**Dialog, Drawer:** Adapt max height to available viewport space\n\nMake use of the new [dynamic viewport units] for applying a max height to modal elements such as `Dialog` and `Drawer`. These new units take into account dynamic browser toolbars that expand and contract as the user scrolls, ensuring the browser interface never obscures the web site content.\n\nFix also incorporates fallback for older browsers to use regular viewport units.\n\n\n[Dynamic Viewport units]: https://web.dev/viewport-units/"
       }
     ]
+  },
+  {
+    "version": "32.11.0",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Provide `formAccent` as the name for undefined tone\n\nFormalise the name of the `undefined` tone as `formAccent`, making it more discoverable as an accent available for increased prominence.\n\nNote: Consumers should only apply this tone where an action should be emphasized explicitly. The `undefined` value is still valid for buttons that should follow the default button style of the theme.\n\n**EXAMPLE USAGE:**\n```jsx\n<Button tone=\"formAccent\">\n  ...\n</Button>\n```"
+      }
+    ]
   }
 ]
