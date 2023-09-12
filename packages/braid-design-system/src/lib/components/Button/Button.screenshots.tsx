@@ -19,13 +19,14 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],
   examples: [
     {
-      label: 'Default',
+      label: 'Default variant for tone',
       Example: () => (
         <Inline space="small">
-          <Button>Solid</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="soft">Soft</Button>
-          <Button variant="transparent">Transparent</Button>
+          <Button>No tone</Button>
+          <Button tone="brandAccent">brandAccent</Button>
+          <Button tone="critical">critical</Button>
+          <Button tone="formAccent">formAccent</Button>
+          <Button tone="neutral">neutral</Button>
         </Inline>
       ),
     },
@@ -33,7 +34,9 @@ export const screenshots: ComponentScreenshot = {
       label: 'Critical',
       Example: () => (
         <Inline space="small">
-          <Button tone="critical">Solid</Button>
+          <Button tone="critical" variant="solid">
+            Solid
+          </Button>
           <Button tone="critical" variant="ghost">
             Ghost
           </Button>
@@ -50,7 +53,9 @@ export const screenshots: ComponentScreenshot = {
       label: 'BrandAccent',
       Example: () => (
         <Inline space="small">
-          <Button tone="brandAccent">Solid</Button>
+          <Button tone="brandAccent" variant="solid">
+            Solid
+          </Button>
           <Button tone="brandAccent" variant="ghost">
             Ghost
           </Button>
@@ -64,10 +69,31 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'FormAccent',
+      Example: () => (
+        <Inline space="small">
+          <Button tone="formAccent" variant="solid">
+            Solid
+          </Button>
+          <Button tone="formAccent" variant="ghost">
+            Ghost
+          </Button>
+          <Button tone="formAccent" variant="soft">
+            Soft
+          </Button>
+          <Button tone="formAccent" variant="transparent">
+            Transparent
+          </Button>
+        </Inline>
+      ),
+    },
+    {
       label: 'Neutral',
       Example: () => (
         <Inline space="small">
-          <Button tone="neutral">Solid</Button>
+          <Button tone="neutral" variant="solid">
+            Solid
+          </Button>
           <Button tone="neutral" variant="ghost">
             Ghost
           </Button>
@@ -84,7 +110,9 @@ export const screenshots: ComponentScreenshot = {
       label: 'Small size',
       Example: () => (
         <Inline space="small">
-          <Button size="small">Solid</Button>
+          <Button size="small" variant="solid">
+            Solid
+          </Button>
           <Button size="small" variant="ghost">
             Ghost
           </Button>
@@ -164,7 +192,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Stack space="small">
           <Inline space="small">
-            <Button icon={<IconSend />}>Solid</Button>
+            <Button icon={<IconSend />} variant="solid">
+              Solid
+            </Button>
             <Button icon={<IconSend />} variant="ghost">
               Ghost
             </Button>
@@ -176,7 +206,7 @@ export const screenshots: ComponentScreenshot = {
             </Button>
           </Inline>
           <Inline space="small">
-            <Button size="small" icon={<IconSend />}>
+            <Button size="small" icon={<IconSend />} variant="solid">
               Solid
             </Button>
             <Button size="small" icon={<IconSend />} variant="ghost">
@@ -200,6 +230,7 @@ export const screenshots: ComponentScreenshot = {
             <Button
               icon={<IconArrow direction="right" />}
               iconPosition="trailing"
+              variant="solid"
             >
               Solid
             </Button>
@@ -230,6 +261,7 @@ export const screenshots: ComponentScreenshot = {
               size="small"
               icon={<IconArrow direction="right" />}
               iconPosition="trailing"
+              variant="solid"
             >
               Solid
             </Button>
@@ -301,7 +333,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <BackgroundContrastTest>
           <Inline space="small">
-            <Button>Solid</Button>
+            <Button variant="solid">Solid</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="soft">Soft</Button>
             <Button variant="transparent">Transparent</Button>
@@ -314,7 +346,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <BackgroundContrastTest>
           <Inline space="small">
-            <Button tone="critical">Solid</Button>
+            <Button tone="critical" variant="solid">
+              Solid
+            </Button>
             <Button tone="critical" variant="ghost">
               Ghost
             </Button>
@@ -333,7 +367,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <BackgroundContrastTest>
           <Inline space="small">
-            <Button tone="brandAccent">Solid</Button>
+            <Button tone="brandAccent" variant="solid">
+              Solid
+            </Button>
             <Button tone="brandAccent" variant="ghost">
               Ghost
             </Button>
@@ -352,7 +388,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <BackgroundContrastTest>
           <Inline space="small">
-            <Button tone="neutral">Solid</Button>
+            <Button tone="neutral" variant="solid">
+              Solid
+            </Button>
             <Button tone="neutral" variant="ghost">
               Ghost
             </Button>
