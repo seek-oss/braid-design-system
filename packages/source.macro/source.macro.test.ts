@@ -5,10 +5,16 @@ pluginTester({
   plugin,
   pluginName: 'source.macro',
   snapshot: true,
+  babelOptions: {
+    filename: 'dummy.tsx',
+    plugins: [
+      require.resolve('@babel/plugin-syntax-jsx'),
+      [require.resolve('@babel/plugin-syntax-typescript'), { isTSX: true }],
+    ],
+  },
   tests: {
     'smoke test': {
-      babelOptions: { filename: __filename },
-      code: `
+      code: /* ts */ `
         import source from './source.macro';
 
         const result = source({
@@ -17,18 +23,25 @@ pluginTester({
         });
       `,
     },
+    'react component': {
+      code: /* ts */ `
+        import source from './source.macro';
+
+        const result = source(
+          <div />
+        );
+      `,
+    },
     'ignores types': {
-      babelOptions: { filename: __filename },
-      code: `
-        import { Source } from './source.macro';
+      code: /* ts */ `
+        import type { Source } from './source.macro';
 
         const foo = 'bar';
       `,
     },
     'code only': {
-      babelOptions: { filename: __filename },
       pluginOptions: { source: { codeOnly: true } },
-      code: `
+      code: /* ts */ `
         import source from './source.macro';
 
         const result = source({

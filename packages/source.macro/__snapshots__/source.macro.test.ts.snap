@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`source.macro 1. smoke test: 1. smoke test 1`] = `
+
+
+import source from './source.macro';
+
+const result = source({
+  // comment
+  hello: () => 'world'
+});
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = {
+  code: "{\\n  // comment\\n  hello: () => 'world'\\n}",
+  value: {
+    // comment
+    hello: () => 'world',
+  },
+};
+
+`;
+
+exports[`source.macro 2. react component: 2. react component 1`] = `
+
+
+import source from './source.macro';
+
+const result = source(
+  <div />
+);
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = {
+  code: '<div />',
+  value: <div />,
+};
+
+`;
+
+exports[`source.macro 3. ignores types: 3. ignores types 1`] = `
+
+
+import type { Source } from './source.macro';
+
+const foo = 'bar';
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = 'bar';
+
+`;
+
+exports[`source.macro 4. code only: 4. code only 1`] = `
+
+
+import source from './source.macro';
+
+const result = source({
+  hello: () => 'world',
+  some: 'value',
+});
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = "{\\n  hello: () => 'world',\\n  some: 'value'\\n}";
+
+`;

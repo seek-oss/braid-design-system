@@ -85,6 +85,7 @@
   "pnpm": {
     "overrides": {
       "@braid-design-system/generate-component-docs": "workspace:*",
+      "@braid-design-system/source.macro": "workspace:*",
       "braid-design-system": "workspace:*"
     },
     "patchedDependencies": {
