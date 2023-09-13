@@ -224,9 +224,29 @@ const ButtonLoader = () => (
 const transparentPaddingX = 'small';
 const buttonRadius = 'standard';
 
+const resolveToneAndVariant = ({
+  variant: variantProp,
+  tone: toneProp,
+  legacy,
+}: Pick<ButtonProps, 'variant' | 'tone'> & { legacy: boolean }) => {
+  if (legacy) {
+    return {
+      variant: variantProp ?? 'solid',
+      tone: toneProp ?? 'formAccent',
+    };
+  }
+
+  const fallbackVariant = toneProp ? 'solid' : 'ghost';
+
+  return {
+    variant: variantProp ?? fallbackVariant,
+    tone: toneProp ?? 'neutral',
+  };
+};
+
 export const ButtonOverlays = ({
-  variant = 'solid',
-  tone,
+  variant: variantProp,
+  tone: toneProp,
   keyboardFocusable = true,
   forceActive = false,
   radius = buttonRadius,
@@ -235,7 +255,13 @@ export const ButtonOverlays = ({
   radius?: 'full' | typeof buttonRadius;
   forceActive?: boolean;
 }) => {
-  const stylesForVariant = variants[variant][tone ?? 'formAccent'];
+  const { variant, tone } = resolveToneAndVariant({
+    variant: variantProp,
+    tone: toneProp,
+    legacy: useBraidTheme().legacy,
+  });
+
+  const stylesForVariant = variants[variant][tone];
   const colorContrast = useColorContrast();
   const lightness = useBackgroundLightness();
 
@@ -306,15 +332,21 @@ export const ButtonText = ({
   size: sizeProp,
   icon,
   iconPosition = 'leading',
-  variant = 'solid',
-  tone,
+  variant: variantProp,
+  tone: toneProp,
   bleed,
 }: ButtonProps) => {
+  const { variant, tone } = resolveToneAndVariant({
+    variant: variantProp,
+    tone: toneProp,
+    legacy: useBraidTheme().legacy,
+  });
+
   const lightness = useBackgroundLightness();
   const actionsContext = useContext(ActionsContext);
   const isLegacyTheme = useBraidTheme().legacy;
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const stylesForVariant = variants[variant][tone ?? 'formAccent'];
+  const stylesForVariant = variants[variant][tone];
   const shouldReducePaddingX = size === 'small' || variant === 'transparent';
   const labelPaddingXForTheme = isLegacyTheme ? 'medium' : 'gutter';
   const labelPaddingX = shouldReducePaddingX
@@ -388,18 +420,24 @@ export const ButtonText = ({
 };
 
 export const useButtonStyles = ({
-  variant = 'solid',
+  variant: variantProp,
   size: sizeProp,
-  tone,
+  tone: toneProp,
   loading,
   radius = buttonRadius,
   bleed,
 }: ButtonProps & {
   radius?: 'full' | typeof buttonRadius;
 }): BoxProps => {
+  const { variant, tone } = resolveToneAndVariant({
+    variant: variantProp,
+    tone: toneProp,
+    legacy: useBraidTheme().legacy,
+  });
+
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
-  const stylesForVariant = variants[variant][tone ?? 'formAccent'];
+  const stylesForVariant = variants[variant][tone];
   const colorConstrast = useColorContrast();
   const lightness = useBackgroundLightness();
 
