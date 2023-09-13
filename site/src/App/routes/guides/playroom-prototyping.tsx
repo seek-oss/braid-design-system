@@ -178,8 +178,11 @@ const PlayroomPrototyping = () => (
       </Text>
     </Notice>
     <Code>
-      {({ setDefaultState, getState }) => {
-        const result = source(
+      {({ setDefaultState, getState: getStateUntyped }) => {
+        // We shadow the `getState` function to provide a return type.
+        // We do this to avoid having to remove types from the code snippet.
+        const getState = getStateUntyped as (key: string) => MockJob[];
+        return source(
           <>
             {setDefaultState('jobs', [
               {
@@ -197,10 +200,10 @@ const PlayroomPrototyping = () => (
                 title: 'Product Manager',
                 location: 'Canberra',
               },
-            ] as MockJob[])}
+            ])}
 
             <Stack space="medium">
-              {getState('jobs').map((job: MockJob) => (
+              {getState('jobs').map((job) => (
                 <Card key={job.id}>
                   <Stack space="small">
                     <Text weight="strong">{job.title}</Text>
@@ -211,13 +214,6 @@ const PlayroomPrototyping = () => (
             </Stack>
           </>,
         );
-
-        return {
-          ...result,
-          code: result.code
-            .replace(/ as MockJob\[\]/g, '')
-            .replace(/: MockJob/g, ''),
-        };
       }}
     </Code>
     <Text>
@@ -244,8 +240,11 @@ const PlayroomPrototyping = () => (
       </Text>
     </Notice>
     <Code>
-      {({ setDefaultState, getState }) => {
-        const result = source(
+      {({ setDefaultState, getState: getStateUntyped }) => {
+        // We shadow the `getState` function to provide a return type.
+        // We do this to avoid having to remove types from the code snippet.
+        const getState = getStateUntyped as (key: string) => MockJob[];
+        return source(
           <>
             {setDefaultState('jobs', [
               {
@@ -264,10 +263,10 @@ const PlayroomPrototyping = () => (
                 title: 'Product Manager',
                 location: 'Canberra',
               },
-            ] as MockJob[])}
+            ])}
 
             <Stack space="medium">
-              {getState('jobs').map((job: MockJob) => (
+              {getState('jobs').map((job) => (
                 <Card key={job.id} tone={job.featured ? 'promote' : undefined}>
                   <Stack space="small">
                     {job.featured && (
@@ -283,13 +282,6 @@ const PlayroomPrototyping = () => (
             </Stack>
           </>,
         );
-
-        return {
-          ...result,
-          code: result.code
-            .replace(/ as MockJob\[\]/g, '')
-            .replace(/: MockJob/g, ''),
-        };
       }}
     </Code>
 
