@@ -11,7 +11,7 @@ import {
   Heading,
   Alert,
 } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

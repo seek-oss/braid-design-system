@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentExample } from 'site/types';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
 import { type TooltipRendererProps, TooltipContent } from './TooltipRenderer';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';

@@ -173,7 +173,7 @@ const svgrConfig = {
         import React from 'react';
         import type { ComponentDocs } from 'site/types';
         import { iconDocumentation } from '${relative(`${iconComponentsDir}/iconCommon.docs`)}';
-        import source from '${relative(`${baseDir}/src/lib/utils/source.macro.cjs`)}';
+        import source from '@braid-design-system/source.macro';
         import { ${iconName}, Heading, Stack } from '${relative(`${baseDir}/src/lib/components`)}';
 
         const docs: ComponentDocs = {
