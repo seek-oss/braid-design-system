@@ -3,7 +3,7 @@ import dedent from 'dedent';
 
 import plugin from './plugin-import-update';
 
-const tests: Parameters<typeof pluginTester>[0]['tests'] = [
+const tests: NonNullable<Parameters<typeof pluginTester>[0]>['tests'] = [
   {
     title: 'Updates component import path with single import',
     code: dedent`
