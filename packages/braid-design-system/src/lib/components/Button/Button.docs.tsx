@@ -60,8 +60,8 @@ const choosingRightButtonDoc = [
         <Text>
           To compliment this, when a <Strong>tone</Strong> is purposefully
           applied to a button, the default variant becomes{' '}
-          <Strong>solid</Strong> to maximise its impact — allowing the
-          visual prominence to be reduced as needed.
+          <Strong>solid</Strong> to maximise its impact — allowing the visual
+          prominence to be reduced as needed.
         </Text>
       </>
     ),
