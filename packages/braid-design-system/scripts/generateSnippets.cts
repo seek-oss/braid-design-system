@@ -62,15 +62,21 @@ const transformWithBabel = async (fileName: string) => {
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
   const snippetsIndexCode = prettier.format(
     ` ${importStatements.sort().join('\n')}
+      import { homePage } from './gradConnHomeSnippet';
 
-      export default Object.entries({
-        ${exportEntries.sort().join(',\n')}
-      }).map(([group, snippets]) =>
-        snippets.map((snippet) => ({
-          ...snippet,
-          group,
-        })),
-      ).flat();
+
+      export default [
+        homePage,
+        ...Object.entries({
+          ${exportEntries.sort().join(',\n')}
+        }).map(([group, snippets]) =>
+            snippets.map((snippet) => ({
+              ...snippet,
+              group,
+            })),
+          )
+          .flat(),
+      ];
     `,
     { ...prettierOptions, parser: 'babel-ts' },
   );

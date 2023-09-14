@@ -31,7 +31,7 @@ jobs:
         run: pnpm build:site
 
       - name: Deploy to surge
-        run: pnpm surge -p ./site/dist -d braid-design-system--${GITHUB_SHA}.surge.sh
+        run: pnpm surge -p ./site/dist -d braid-design-system--${GITHUB_REF_NAME}.surge.sh
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

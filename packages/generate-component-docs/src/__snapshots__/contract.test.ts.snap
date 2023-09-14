@@ -2009,6 +2009,7 @@ exports[`BraidTestProvider 1`] = `
     themeName?: 
         | "apac"
         | "docs"
+        | "gradConnection"
         | "seekBusiness"
         | "seekJobs"
         | "wireframe"
