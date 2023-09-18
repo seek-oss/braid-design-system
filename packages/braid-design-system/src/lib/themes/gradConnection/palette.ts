@@ -17,6 +17,7 @@ export const palette = {
     300: '#CCD6DE',
     200: '#DDE6EE',
     100: '#F0F5FC',
+    75: '#F5F7FB',
     50: '#F9FBFF',
   },
   red: {

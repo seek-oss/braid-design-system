@@ -218,7 +218,7 @@ export default {
       secondaryInverted: rgba('#fff', 0.65),
     },
     background: {
-      body: palette.grey['50'],
+      body: palette.grey['75'],
       bodyDark: darkLayer1,
       brand: palette.brandGreen['500'],
       brandAccent: palette.brandGreen['500'],
