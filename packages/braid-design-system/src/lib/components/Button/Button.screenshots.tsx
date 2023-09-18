@@ -333,10 +333,18 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <BackgroundContrastTest>
           <Inline space="small">
-            <Button variant="solid">Solid</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="soft">Soft</Button>
-            <Button variant="transparent">Transparent</Button>
+            <Button tone="formAccent" variant="solid">
+              Solid
+            </Button>
+            <Button tone="formAccent" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="formAccent" variant="soft">
+              Soft
+            </Button>
+            <Button tone="formAccent" variant="transparent">
+              Transparent
+            </Button>
           </Inline>
         </BackgroundContrastTest>
       ),
