@@ -18,6 +18,101 @@ import {
 } from '../';
 import source from '../../utils/source.macro';
 
+const choosingRightButtonDoc = [
+  {
+    label: 'Choosing the right button',
+    description: (
+      <>
+        <Text>
+          By default, a button has a <Strong>neutral</Strong> tone and uses the{' '}
+          <Strong>ghost</Strong> variant, allowing the visual prominence to be
+          increased or decreased as required.
+        </Text>
+
+        <Text>
+          This enables colour to be applied as accents and with purpose, rather
+          than by default — improving the management of user attention and
+          supporting a more declarative hierarchy of actions.
+        </Text>
+      </>
+    ),
+    background: 'surface',
+    playroom: false,
+    code: false,
+    Example: () =>
+      source(
+        <Stack space="small">
+          <Text size="small" tone="secondary">
+            Default is a <Strong>neutral</Strong> tone and{' '}
+            <Strong>ghost</Strong> variant:
+          </Text>
+          <Inline space="none">
+            <Button variant="ghost" tone="neutral">
+              Button
+            </Button>
+          </Inline>
+        </Stack>,
+      ),
+  },
+  {
+    description: (
+      <>
+        <Text>
+          To compliment this, when a <Strong>tone</Strong> is purposefully
+          applied to a button, the default variant becomes{' '}
+          <Strong>solid</Strong> to maximise its impact — allowing the visual
+          prominence to be reduced as needed.
+        </Text>
+      </>
+    ),
+    background: 'surface',
+    playroom: false,
+    code: false,
+    Example: () =>
+      source(
+        <Stack space="small">
+          <Text size="small" tone="secondary">
+            Default variant becomes <Strong>solid</Strong> when a{' '}
+            <Strong>tone</Strong> is applied:
+          </Text>
+          <Inline space="none">
+            <Button tone="critical">Button</Button>
+          </Inline>
+        </Stack>,
+      ),
+  },
+  {
+    description: (
+      <>
+        <Text>
+          As the approach to colour in our experiences has changed over time, so
+          too has the default visual prominence for buttons. For this reason,
+          older themes such as <Strong>apac</Strong> and{' '}
+          <Strong>seekBusiness</Strong> continue to have the default tone of{' '}
+          <Strong>formAccent</Strong> and a <Strong>solid</Strong> variant.
+        </Text>
+      </>
+    ),
+    background: 'surface',
+    playroom: false,
+    code: false,
+    Example: () =>
+      source(
+        <Stack space="small">
+          <Text size="small" tone="secondary">
+            Historical default was the <Strong>formAccent</Strong> tone and{' '}
+            <Strong>solid</Strong> variant:
+          </Text>
+          <Inline space="none">
+            <Button variant="solid" tone="formAccent">
+              Button
+            </Button>
+          </Inline>
+        </Stack>,
+      ),
+  },
+] as const;
+
 const docs: ComponentDocs = {
   category: 'Content',
   migrationGuide: true,
@@ -140,6 +235,12 @@ const docs: ComponentDocs = {
             For cases where actions need to be emphasized, the{' '}
             <Strong>tone</Strong> can be set to <Strong>formAccent</Strong>.
           </Text>
+          <Notice>
+            <Text>
+              This is the default tone in the <Strong>apac</Strong> and{' '}
+              <Strong>seekBusiness</Strong> themes.
+            </Text>
+          </Notice>
         </>
       ),
       Example: () =>
@@ -176,6 +277,12 @@ const docs: ComponentDocs = {
             </TextLink>{' '}
             to improve contrast.
           </Text>
+          <Notice>
+            <Text>
+              This is the default tone for <Strong>seekJobs</Strong> and other
+              non-legacy themes.
+            </Text>
+          </Notice>
         </>
       ),
       Example: () =>
@@ -242,6 +349,7 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    ...choosingRightButtonDoc,
     {
       label: 'Icons',
       background: 'surface',
