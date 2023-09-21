@@ -1,8 +1,7 @@
-import { extractFontMetricsForTheme } from './../tokenType';
 import { lighten, darken, saturate, rgba, desaturate } from 'polished';
 import inter from '@capsizecss/metrics/inter';
 import { palette } from './palette';
-import type { BraidTokens } from '../tokenType';
+import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
 
 const darkLayer1 = darken(0.05, palette.grey['800']);
 const darkLayer2 = palette.grey['800'];

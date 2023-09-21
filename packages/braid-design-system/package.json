@@ -81,6 +81,11 @@
       "import": "./dist/themes/docs.mjs",
       "require": "./dist/themes/docs.cjs"
     },
+    "./themes/gradConnection": {
+      "types": "./dist/themes/gradConnection.d.ts",
+      "import": "./dist/themes/gradConnection.mjs",
+      "require": "./dist/themes/gradConnection.cjs"
+    },
     "./themes/seekBusiness": {
       "types": "./dist/themes/seekBusiness.d.ts",
       "import": "./dist/themes/seekBusiness.mjs",
