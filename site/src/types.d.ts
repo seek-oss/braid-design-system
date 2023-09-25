@@ -26,6 +26,14 @@ export type Page = RouteProps & {
   badge?: 'New';
 };
 
+type NavigationSection =
+  | 'guides'
+  | 'foundations'
+  | 'examples'
+  | 'components'
+  | 'css'
+  | 'logic';
+
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
@@ -36,7 +44,11 @@ export interface ComponentDocs {
   Example?: (
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;
-  alternatives: Array<{ name: string; description: string }>;
+  alternatives: Array<{
+    name: string;
+    description: string;
+    section?: NavigationSection;
+  }>;
   accessibility?: ReactNodeNoStrings;
   additional?: ComponentExample[];
 }
