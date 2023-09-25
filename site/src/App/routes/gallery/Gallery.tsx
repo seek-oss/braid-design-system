@@ -312,7 +312,7 @@ const GalleryItem = ({
                         ) : (
                           <TextLink
                             weight="weak"
-                            href={`/components/${alt.name}`}
+                            href={`/${alt.section || 'components'}/${alt.name}`}
                             hitArea="large"
                             target="_blank"
                           >
