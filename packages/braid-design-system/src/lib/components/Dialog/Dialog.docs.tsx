@@ -8,36 +8,69 @@ import {
   Text,
   Stack,
   TextLink,
-  IconMail,
+  IconImage,
   Box,
   Strong,
   IconLanguage,
   Checkbox,
+  Alert,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { DialogContent } from './Dialog';
+import { DialogPreview } from './Dialog.screenshots';
+
+const Screen = () => (
+  <Box
+    position="absolute"
+    inset={0}
+    borderRadius="xlarge"
+    boxShadow="borderNeutralLarge"
+    pointerEvents="none"
+  />
+);
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, toggleState }) =>
-    source(
+  examplebackground: false,
+  Example: ({ id, getState, toggleState }) => {
+    const { code } = source(
       <>
-        <Box padding="medium">
-          <Inline space="small" align={{ mobile: 'center', tablet: 'left' }}>
-            <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
-          </Inline>
-        </Box>
+        <Inline space="small">
+          <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
+        </Inline>
 
         <Dialog
           id={id}
-          title="Dialog Title"
+          title="Title"
           description={<Text tone="secondary">Optional description</Text>}
           open={getState('dialog')}
           onClose={() => toggleState('dialog')}
         >
-          <Placeholder height={100} width="100%" />
+          <Placeholder height={100} width="100%" label="Dialog Content" />
         </Dialog>
       </>,
-    ),
+    );
+
+    return {
+      code,
+      value: (
+        <Box borderRadius="xlarge" overflow="hidden">
+          <DialogPreview>
+            <DialogContent
+              id={id}
+              title="Title"
+              description={<Text tone="secondary">Optional description</Text>}
+              onClose={() => {}}
+              scrollLock={false}
+            >
+              <Placeholder height={100} width="100%" label="Dialog Content" />
+            </DialogContent>
+            <Screen />
+          </DialogPreview>
+        </Box>
+      ),
+    };
+  },
   accessibility: (
     <>
       <Text>
@@ -71,12 +104,95 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
+      label: 'Title and description',
+      description: (
+        <>
+          <Text>
+            The <Strong>title</Strong> prop provides an accessible name
+            announced to the user when the Dialog is opened. Optionally, a{' '}
+            <Strong>description</Strong> can be provided and will be announced
+            by a screen reader as well as visually forming part of the header
+            block.
+          </Text>
+          <Alert>
+            <Text>
+              Open in Playroom and enable your screen reader to preview the
+              announcements.
+            </Text>
+          </Alert>
+        </>
+      ),
+      background: false,
+      Example: ({ id, getState, toggleState }) => {
+        const { code } = source(
+          <>
+            <Inline space="small">
+              <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
+            </Inline>
+
+            <Dialog
+              id={id}
+              title="Example Title"
+              description={
+                <Text tone="secondary">
+                  An optional description of the Dialog content
+                </Text>
+              }
+              open={getState('dialog')}
+              onClose={() => toggleState('dialog')}
+            >
+              <Placeholder height={100} width="100%" label="Dialog Content" />
+            </Dialog>
+          </>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DialogPreview>
+                <DialogContent
+                  id={id}
+                  title="Example Title"
+                  description={
+                    <Text tone="secondary">
+                      An optional description of the Dialog content
+                    </Text>
+                  }
+                  onClose={() => {}}
+                  scrollLock={false}
+                >
+                  <Placeholder
+                    height={100}
+                    width="100%"
+                    label="Dialog Content"
+                  />
+                </DialogContent>
+                <Screen />
+              </DialogPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
       label: 'Design considerations',
       description: (
-        <Text>
-          Dialogs should only be used as a last resort when other in-flow
-          alternatives are not suitable.
-        </Text>
+        <>
+          <Text>
+            Recommended for prompting the user to make a decision or confirm an
+            action. For more detailed content or user input (e.g. forms),
+            consider using a{' '}
+            <TextLink href="/components/Drawer">Drawer</TextLink> instead.
+          </Text>
+          <Alert tone="caution">
+            <Text>
+              The presentation of a Dialog should always be directly connected
+              to a user action, such as a button click.{' '}
+              <Strong>Opening on page load should be avoided.</Strong>
+            </Text>
+          </Alert>
+        </>
       ),
     },
     {
@@ -101,25 +217,23 @@ const docs: ComponentDocs = {
       Example: ({ id, setState, getState, resetState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline space="small" align="center">
-                <Button onClick={() => setState('width', 'content')}>
-                  Content width
-                </Button>
-                <Button onClick={() => setState('width', 'xsmall')}>
-                  XSmall width
-                </Button>
-                <Button onClick={() => setState('width', 'small')}>
-                  Small width
-                </Button>
-                <Button onClick={() => setState('width', 'medium')}>
-                  Medium width
-                </Button>
-                <Button onClick={() => setState('width', 'large')}>
-                  Large width
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small" align="center">
+              <Button onClick={() => setState('width', 'content')}>
+                Content width
+              </Button>
+              <Button onClick={() => setState('width', 'xsmall')}>
+                XSmall width
+              </Button>
+              <Button onClick={() => setState('width', 'small')}>
+                Small width
+              </Button>
+              <Button onClick={() => setState('width', 'medium')}>
+                Medium width
+              </Button>
+              <Button onClick={() => setState('width', 'large')}>
+                Large width
+              </Button>
+            </Inline>
 
             <Dialog
               id={id}
@@ -145,53 +259,58 @@ const docs: ComponentDocs = {
           the <Strong>illustration</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
-        source(
+      background: false,
+      Example: ({ id, getState, toggleState }) => {
+        const { code } = source(
           <>
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('dialog')}>
-                  Open illustrated dialog
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
+            </Inline>
 
             <Dialog
               id={id}
               title="Illustrated Example"
               illustration={
-                <Box style={{ height: 100, width: 100 }}>
-                  <IconMail size="fill" />
+                <Box style={{ height: 72, width: 72 }}>
+                  <IconImage size="fill" />
                 </Box>
               }
               open={getState('dialog')}
               onClose={() => toggleState('dialog')}
             >
-              <Stack space="xlarge" align="center">
-                <Placeholder width="100%" height={100} />
-                <Box padding="medium">
-                  <Inline
-                    space="small"
-                    align={{ mobile: 'center', tablet: 'left' }}
-                  >
-                    <Button onClick={() => toggleState('dialog')}>
-                      Got it
-                    </Button>
-                    <Button
-                      variant="transparent"
-                      onClick={() => toggleState('dialog')}
-                    >
-                      Cancel
-                    </Button>
-                  </Inline>
-                </Box>
-              </Stack>
+              <Placeholder height={100} width="100%" label="Dialog Content" />
             </Dialog>
           </>,
-        ),
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DialogPreview>
+                <DialogContent
+                  id={id}
+                  title="Illustrated Example"
+                  illustration={
+                    <Box style={{ height: 72, width: 72 }}>
+                      <IconImage size="fill" />
+                    </Box>
+                  }
+                  onClose={() => {}}
+                  scrollLock={false}
+                >
+                  <Placeholder
+                    height={100}
+                    width="100%"
+                    label="Dialog Content"
+                  />
+                </DialogContent>
+                <Screen />
+              </DialogPreview>
+            </Box>
+          ),
+        };
+      },
     },
     {
       label: 'Customising the close behaviour',
@@ -212,16 +331,9 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('dialog')}>
-                  Open dialog
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
+            </Inline>
 
             <Dialog
               id={id}
@@ -235,7 +347,6 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
-
     {
       description: (
         <Text>
@@ -249,16 +360,11 @@ const docs: ComponentDocs = {
             {setDefaultState('valid', false)}
             {setDefaultState('showError', false)}
 
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('dialog')}>
-                  Open validated dialog
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('dialog')}>
+                Open validated dialog
+              </Button>
+            </Inline>
 
             <Dialog
               id={id}
@@ -307,16 +413,11 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('dialog')}>
-                  Open scrolling dialog
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('dialog')}>
+                Open scrolling dialog
+              </Button>
+            </Inline>
 
             <Dialog
               id={id}
@@ -344,16 +445,12 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('firstDialog')}>
-                  Open nested dialog
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('firstDialog')}>
+                Open nested dialog
+              </Button>
+            </Inline>
+
             <Dialog
               id={`${id}_3`}
               title="Third Dialog"

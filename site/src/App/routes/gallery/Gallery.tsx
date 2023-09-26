@@ -162,7 +162,7 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
           ) : null}
         </Columns>
         {value ? (
-          <ThemedExample background={background}>
+          <ThemedExample background={background || undefined}>
             <Container>
               <Box height="full" width="full" style={{ cursor: 'auto' }}>
                 {value}
