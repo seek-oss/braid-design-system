@@ -19,6 +19,7 @@ import { MenuButton } from '../MenuButton/MenuButton';
 import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styles from './Navigation.css';
+import { ThemeToggle } from '../ThemeSetting';
 
 const Header = ({
   menuOpen,
@@ -28,26 +29,29 @@ const Header = ({
   menuClick: () => void;
 }) => (
   <Box paddingY={headerSpaceY} paddingX={gutterSize}>
-    <Text component="div" baseline={false}>
-      <Box display="flex" alignItems="center">
-        <Hidden print>
-          <Box
-            paddingRight="medium"
-            display={{
-              mobile: 'flex',
-              wide: 'none',
-            }}
-            alignItems="center"
-          >
-            <MenuButton open={menuOpen} onClick={menuClick} />
-          </Box>
-        </Hidden>
-        <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
-          <Logo iconOnly height={menuButtonSize} />
-          <HiddenVisually>Braid Logo</HiddenVisually>
-        </Link>
+    <Box display="flex" alignItems="center">
+      <Hidden print>
+        <Box
+          paddingRight="medium"
+          display={{
+            mobile: 'flex',
+            wide: 'none',
+          }}
+          alignItems="center"
+        >
+          <MenuButton open={menuOpen} onClick={menuClick} />
+        </Box>
+      </Hidden>
+      <Box paddingRight="medium">
+        <Text component="div" baseline={false}>
+          <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
+            <Logo iconOnly height={menuButtonSize} />
+            <HiddenVisually>Braid Logo</HiddenVisually>
+          </Link>
+        </Text>
       </Box>
-    </Text>
+      <ThemeToggle />
+    </Box>
   </Box>
 );
 
@@ -97,7 +101,6 @@ export const Navigation = () => {
         <FixedContentBlock
           overflow="auto"
           bottom={0}
-          paddingY="small"
           paddingX={gutterSize}
           paddingBottom="xxlarge"
           width="full"
@@ -106,7 +109,6 @@ export const Navigation = () => {
             wide: 'block',
           }}
           zIndex="sticky"
-          background="body"
           className={[
             styles.subNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
@@ -124,10 +126,7 @@ export const Navigation = () => {
           mobile: gutterSize,
           wide: 'xxlarge',
         }}
-        paddingY={{
-          mobile: 'small',
-          tablet: 'xxsmall',
-        }}
+        paddingY="small"
         paddingBottom="xxlarge"
         marginBottom="xxlarge"
         transition="fast"
@@ -143,7 +142,7 @@ export const Navigation = () => {
         top={0}
         left={0}
         right={0}
-        boxShadow="small"
+        boxShadow={!isMenuOpen ? 'small' : undefined}
         display={['block', 'none']}
         pointerEvents={showStickyHeader ? undefined : 'none'}
         zIndex="sticky"
