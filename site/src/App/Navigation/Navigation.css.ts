@@ -60,6 +60,11 @@ const backgroundVar = createVar();
 const shadowVar = createVar();
 const transparent = 'rgba(0, 0, 0, 0)';
 const scrollShadows = style([
+  {
+    backgroundPosition: 'center top',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'local, scroll',
+  },
   colorModeStyle({
     lightMode: {
       vars: {
@@ -70,10 +75,7 @@ const scrollShadows = style([
         `linear-gradient(${backgroundVar} 30%, ${transparent})`,
         `radial-gradient(farthest-side at 50% 0, ${shadowVar}, ${transparent})`,
       ].join(', '),
-      backgroundPosition: 'center top',
-      backgroundRepeat: 'no-repeat',
       backgroundSize: '100% 40px, 100% 18px',
-      backgroundAttachment: 'local, scroll',
     },
     darkMode: {
       vars: {
@@ -84,10 +86,7 @@ const scrollShadows = style([
         `linear-gradient(45deg, ${backgroundVar}, ${backgroundVar})`,
         `linear-gradient(90deg, ${transparent}, ${shadowVar} 15%, ${shadowVar} 85%, ${transparent})`,
       ].join(', '),
-      backgroundPosition: 'center top',
-      backgroundRepeat: 'no-repeat',
       backgroundSize: '100% 2px',
-      backgroundAttachment: 'local, scroll',
     },
   }),
 ]);
