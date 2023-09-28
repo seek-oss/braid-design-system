@@ -13,7 +13,6 @@ import {
   Badge,
   Bleed,
 } from 'braid-src/lib/components';
-import { ThemeToggle } from '../ThemeSetting';
 import {
   categorisedComponents,
   documentedComponents,
@@ -128,31 +127,27 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
   return (
     <Stack space="large">
-      <Stack space="medium">
-        <ThemeToggle />
-
-        <SubNavigationGroup
-          items={[
-            {
-              name: 'Releases',
-              path: '/releases',
-              onClick: onSelect,
-            },
-            {
-              name: 'Gallery',
-              path: '/gallery',
-            },
-            {
-              name: 'Playroom',
-              path: playroomUrl,
-            },
-            {
-              name: 'GitHub',
-              path: 'https://github.com/seek-oss/braid-design-system',
-            },
-          ]}
-        />
-      </Stack>
+      <SubNavigationGroup
+        items={[
+          {
+            name: 'Releases',
+            path: '/releases',
+            onClick: onSelect,
+          },
+          {
+            name: 'Gallery',
+            path: '/gallery',
+          },
+          {
+            name: 'Playroom',
+            path: playroomUrl,
+          },
+          {
+            name: 'GitHub',
+            path: 'https://github.com/seek-oss/braid-design-system',
+          },
+        ]}
+      />
 
       <SubNavigationGroup
         title="Guides"
