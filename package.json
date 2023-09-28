@@ -72,7 +72,7 @@
     "jest-watch-typeahead": "^2.1.0",
     "js-yaml": "^4.1.0",
     "nx": "^15.6.3",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.8",
     "renovate-config-seek": "0.4.0",
     "surge": "^0.23.1",
     "tsx": "^3.12.1",
