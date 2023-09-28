@@ -2063,6 +2063,7 @@ exports[`Button 1`] = `
     tone?: 
         | "brandAccent"
         | "critical"
+        | "formAccent"
         | "neutral"
     type?: 
         | "button"
@@ -2625,6 +2626,7 @@ exports[`ButtonLink 1`] = `
     tone?: 
         | "brandAccent"
         | "critical"
+        | "formAccent"
         | "neutral"
     translate?: 
         | "no"

@@ -10,19 +10,22 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Default',
+      label: 'Default variants for tone',
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <ButtonLink href="#">Solid</ButtonLink>
-          <ButtonLink href="#" variant="ghost">
-            Ghost
+          <ButtonLink href="#">No tone</ButtonLink>
+          <ButtonLink href="#" tone="brandAccent">
+            brandAccent
           </ButtonLink>
-          <ButtonLink href="#" variant="soft">
-            Soft
+          <ButtonLink href="#" tone="critical">
+            critical
           </ButtonLink>
-          <ButtonLink href="#" variant="transparent">
-            Transparent
+          <ButtonLink href="#" tone="formAccent">
+            formAccent
+          </ButtonLink>
+          <ButtonLink href="#" tone="neutral">
+            neutral
           </ButtonLink>
         </Inline>
       ),
@@ -32,7 +35,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <ButtonLink href="#" tone="critical">
+          <ButtonLink href="#" tone="critical" variant="solid">
             Solid
           </ButtonLink>
           <ButtonLink href="#" tone="critical" variant="ghost">
@@ -52,7 +55,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <Inline space="small" collapseBelow="desktop">
-          <ButtonLink href="#" tone="brandAccent">
+          <ButtonLink href="#" tone="brandAccent" variant="solid">
             Solid
           </ButtonLink>
           <ButtonLink href="#" tone="brandAccent" variant="ghost">
@@ -68,11 +71,51 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'FormAccent',
+      Container,
+      Example: () => (
+        <Inline space="small" collapseBelow="desktop">
+          <ButtonLink href="#" tone="formAccent" variant="solid">
+            Solid
+          </ButtonLink>
+          <ButtonLink href="#" tone="formAccent" variant="ghost">
+            Ghost
+          </ButtonLink>
+          <ButtonLink href="#" tone="formAccent" variant="soft">
+            Soft
+          </ButtonLink>
+          <ButtonLink href="#" tone="formAccent" variant="transparent">
+            Transparent
+          </ButtonLink>
+        </Inline>
+      ),
+    },
+    {
+      label: 'Neutral',
+      Container,
+      Example: () => (
+        <Inline space="small" collapseBelow="desktop">
+          <ButtonLink href="#" tone="neutral" variant="solid">
+            Solid
+          </ButtonLink>
+          <ButtonLink href="#" tone="neutral" variant="ghost">
+            Ghost
+          </ButtonLink>
+          <ButtonLink href="#" tone="neutral" variant="soft">
+            Soft
+          </ButtonLink>
+          <ButtonLink href="#" tone="neutral" variant="transparent">
+            Transparent
+          </ButtonLink>
+        </Inline>
+      ),
+    },
+    {
       label: 'With icon',
       Example: () => (
         <Stack space="small">
           <Inline space="small">
-            <ButtonLink href="#" icon={<IconSend />}>
+            <ButtonLink href="#" icon={<IconSend />} variant="solid">
               Solid
             </ButtonLink>
             <ButtonLink href="#" icon={<IconSend />} variant="ghost">
@@ -86,7 +129,12 @@ export const screenshots: ComponentScreenshot = {
             </ButtonLink>
           </Inline>
           <Inline space="small">
-            <ButtonLink href="#" size="small" icon={<IconSend />}>
+            <ButtonLink
+              href="#"
+              size="small"
+              icon={<IconSend />}
+              variant="solid"
+            >
               Solid
             </ButtonLink>
             <ButtonLink
@@ -126,6 +174,7 @@ export const screenshots: ComponentScreenshot = {
               href=""
               icon={<IconArrow direction="right" />}
               iconPosition="trailing"
+              variant="solid"
             >
               Solid
             </ButtonLink>
@@ -160,6 +209,7 @@ export const screenshots: ComponentScreenshot = {
               size="small"
               icon={<IconArrow direction="right" />}
               iconPosition="trailing"
+              variant="solid"
             >
               Solid
             </ButtonLink>

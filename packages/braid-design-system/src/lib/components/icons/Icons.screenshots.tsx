@@ -146,10 +146,10 @@ export const screenshots: ComponentScreenshot = {
             const IconComponent = icons[icon];
             return (
               <Inline key={icon} space="small">
-                <Button>
+                <Button variant="solid">
                   <IconComponent /> Upper
                 </Button>
-                <Button>
+                <Button variant="solid">
                   Lower <IconComponent alignY="lowercase" />
                 </Button>
               </Inline>
