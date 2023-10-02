@@ -6,20 +6,21 @@ import { DialogContent } from './Dialog';
 import * as styles from '../private/Modal/Modal.css';
 import { externalGutter } from '../private/Modal/ModalExternalGutter';
 
-const Container = ({ children }: { children: ReactNode }) => (
+export const DialogPreview = ({ children }: { children: ReactNode }) => (
   <Box position="relative">
-    <Box position="absolute" padding="small">
-      <Placeholder height={100} width="100%" label="Page content" />
-    </Box>
-    <Box
-      position="absolute"
-      height="full"
-      width="full"
-      className={styles.backdrop}
-    />
+    <Box position="absolute" inset={0} className={styles.backdrop} />
     <Box position="relative" zIndex="modal" padding={externalGutter}>
       {children}
     </Box>
+  </Box>
+);
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <Box>
+    <Box position="absolute" padding="small">
+      <Placeholder height={100} width="100%" label="Page content" />
+    </Box>
+    <DialogPreview>{children}</DialogPreview>
   </Box>
 );
 

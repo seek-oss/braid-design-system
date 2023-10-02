@@ -35,9 +35,12 @@ export const DocExample = ({
 
   return (
     <BraidProvider styleBody={false} theme={docsTheme}>
-      <Stack space="xxsmall">
+      <Stack space={background === false ? 'medium' : 'xxsmall'}>
         {value ? (
-          <ThemedExample background={background}>
+          <ThemedExample
+            background={background || undefined}
+            transparent={background === false}
+          >
             <Container>{value}</Container>
           </ThemedExample>
         ) : null}

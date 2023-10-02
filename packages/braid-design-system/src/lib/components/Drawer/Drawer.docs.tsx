@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ComponentProps, type ReactElement } from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '../../utils/source.macro';
 import {
@@ -7,49 +7,65 @@ import {
   Inline,
   Text,
   TextLink,
-  Box,
   Strong,
   IconLanguage,
   Checkbox,
+  Alert,
+  Box,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { DrawerContent } from './Drawer';
+import { DrawerPreview } from './Drawer.screenshots';
+
+const Screen = () => (
+  <Box
+    position="absolute"
+    inset={0}
+    borderRadius="xlarge"
+    boxShadow="borderNeutralLarge"
+    pointerEvents="none"
+    zIndex="modal"
+  />
+);
+
+type DrawerElement = ReactElement<ComponentProps<typeof Drawer>>;
+const drawerPreviewPropsFromSourceValue = (element: DrawerElement) => ({
+  ...element.props,
+  onClose: () => {},
+  scrollLock: false,
+});
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, toggleState }) =>
-    source(
-      <>
-        <Box padding="medium">
-          <Inline space="small" align={{ mobile: 'center', tablet: 'left' }}>
-            <Button onClick={() => toggleState('drawer')}>Open drawer</Button>
-          </Inline>
-        </Box>
+  examplebackground: false,
+  Example: ({ id }) => {
+    const { code, value } = source<DrawerElement>(
+      <Drawer
+        id={id}
+        title="Title"
+        description={<Text tone="secondary">Optional description</Text>}
+        width="small"
+        open={true}
+        onClose={() => {}}
+      >
+        <Placeholder height={200} width="100%" label="Drawer Content" />
+      </Drawer>,
+    );
 
-        <Drawer
-          id={id}
-          title="Drawer Title"
-          description={<Text tone="secondary">Optional description</Text>}
-          open={getState('drawer')}
-          onClose={() => toggleState('drawer')}
-        >
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-          <Placeholder height={100} width="100%" />
-        </Drawer>
-      </>,
-    ),
+    return {
+      code,
+      value: (
+        <Box borderRadius="xlarge" overflow="hidden">
+          <DrawerPreview>
+            <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+              <Placeholder height={200} width="100%" label="Drawer Content" />
+            </DrawerContent>
+            <Screen />
+          </DrawerPreview>
+        </Box>
+      ),
+    };
+  },
   accessibility: (
     <>
       <Text>
@@ -83,11 +99,71 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
+      label: 'Title and description',
+      description: (
+        <>
+          <Text>
+            The <Strong>title</Strong> prop provides an accessible name
+            announced to the user when the Drawer is opened. Optionally, a{' '}
+            <Strong>description</Strong> can be provided and will be announced
+            by a screen reader as well as visually forming part of the header
+            block.
+          </Text>
+          <Alert>
+            <Text>
+              Open in Playroom and enable your screen reader to preview the
+              announcements.
+            </Text>
+          </Alert>
+        </>
+      ),
+      background: false,
+      Example: ({ id }) => {
+        const { code, value } = source<DrawerElement>(
+          <Drawer
+            id={id}
+            title="Example Title"
+            description={
+              <Text tone="secondary">
+                An optional description of the Drawer content
+              </Text>
+            }
+            width="small"
+            open={true}
+            onClose={() => {}}
+          >
+            <Placeholder height={200} width="100%" label="Drawer Content" />
+          </Drawer>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DrawerPreview>
+                <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                  <Placeholder
+                    height={200}
+                    width="100%"
+                    label="Drawer Content"
+                  />
+                </DrawerContent>
+                <Screen />
+              </DrawerPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
       label: 'Design considerations',
       description: (
         <Text>
-          Drawers should only be used as a last resort when other in-flow
-          alternatives are not suitable.
+          Recommended for providing a focused or drill-down view into a subset
+          of the page content, e.g. viewing more details about a list item, or
+          editing a piece of data/information. For a smaller amount content or
+          to prompt the user, consider using a{' '}
+          <TextLink href="/components/Dialog">Dialog</TextLink> instead.
         </Text>
       ),
     },
@@ -106,45 +182,44 @@ const docs: ComponentDocs = {
       description: (
         <Text>There are a variety of standard widths to choose from.</Text>
       ),
-      Example: ({ id, setState, getState, resetState }) =>
+      Example: ({ id, setState, getState, toggleState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline space="small" align="center">
-                <Button onClick={() => setState('width', 'small')}>
-                  Small width
-                </Button>
-                <Button onClick={() => setState('width', 'medium')}>
-                  Medium width
-                </Button>
-                <Button onClick={() => setState('width', 'large')}>
-                  Large width
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button
+                onClick={() => {
+                  setState('width', 'small');
+                  setState('open', true);
+                }}
+              >
+                Small width
+              </Button>
+              <Button
+                onClick={() => {
+                  setState('width', 'medium');
+                  setState('open', true);
+                }}
+              >
+                Medium width
+              </Button>
+              <Button
+                onClick={() => {
+                  setState('width', 'large');
+                  setState('open', true);
+                }}
+              >
+                Large width
+              </Button>
+            </Inline>
 
             <Drawer
               id={id}
               title={`Width: ${getState('width')}`}
-              open={getState('width') !== undefined}
+              open={getState('open')}
               width={getState('width')}
-              onClose={() => resetState('width')}
+              onClose={() => toggleState('open')}
             >
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
+              <Placeholder height={600} width="100%" label="Drawer Content" />
             </Drawer>
           </>,
         ),
@@ -158,42 +233,36 @@ const docs: ComponentDocs = {
           prop.
         </Text>
       ),
-      Example: ({ id, setState, getState, resetState }) =>
+      Example: ({ id, setState, getState, toggleState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline space="small" align="center">
-                <Button onClick={() => setState('position', 'left')}>
-                  Open from left
-                </Button>
-                <Button onClick={() => setState('position', 'right')}>
-                  Open from right
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button
+                onClick={() => {
+                  setState('position', 'left');
+                  setState('open', true);
+                }}
+              >
+                Open from left
+              </Button>
+              <Button
+                onClick={() => {
+                  setState('position', 'right');
+                  setState('open', true);
+                }}
+              >
+                Open from right
+              </Button>
+            </Inline>
 
             <Drawer
               id={id}
               title={`Position: ${getState('position')}`}
-              open={getState('position') !== undefined}
+              open={getState('open')}
               position={getState('position')}
-              onClose={() => resetState('position')}
+              onClose={() => toggleState('open')}
             >
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
-              <Placeholder height={100} width="100%" />
+              <Placeholder height={600} width="100%" label="Drawer Content" />
             </Drawer>
           </>,
         ),
@@ -217,16 +286,9 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('drawer')}>
-                  Open drawer
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('drawer')}>Open drawer</Button>
+            </Inline>
 
             <Drawer
               id={id}
@@ -235,7 +297,7 @@ const docs: ComponentDocs = {
               onClose={() => toggleState('drawer')}
               closeLabel="Close Drawer"
             >
-              <Placeholder height={100} label="Drawer Content" />
+              <Placeholder height={600} width="100%" label="Drawer Content" />
             </Drawer>
           </>,
         ),
@@ -253,16 +315,11 @@ const docs: ComponentDocs = {
             {setDefaultState('valid', false)}
             {setDefaultState('showError', false)}
 
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('drawer')}>
-                  Open validated drawer
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('drawer')}>
+                Open validated drawer
+              </Button>
+            </Inline>
 
             <Drawer
               id={id}
@@ -305,16 +362,12 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState }) =>
         source(
           <>
-            <Box padding="medium">
-              <Inline
-                space="small"
-                align={{ mobile: 'center', tablet: 'left' }}
-              >
-                <Button onClick={() => toggleState('firstDrawer')}>
-                  Open nested drawer
-                </Button>
-              </Inline>
-            </Box>
+            <Inline space="small">
+              <Button onClick={() => toggleState('firstDrawer')}>
+                Open nested drawer
+              </Button>
+            </Inline>
+
             <Drawer
               id={`${id}_3`}
               title="Third Drawer"

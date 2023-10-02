@@ -5,20 +5,21 @@ import { Placeholder } from '../../playroom/components';
 import { DrawerContent } from './Drawer';
 import * as styles from '../private/Modal/Modal.css';
 
-const Container = ({ children }: { children: ReactNode }) => (
+export const DrawerPreview = ({ children }: { children: ReactNode }) => (
   <Box position="relative">
-    <Box position="absolute" padding="small">
-      <Placeholder height={100} width="100%" label="Page content" />
-    </Box>
-    <Box
-      position="absolute"
-      height="full"
-      width="full"
-      className={styles.backdrop}
-    />
+    <Box position="absolute" inset={0} className={styles.backdrop} />
     <Box position="relative" zIndex="modal">
       {children}
     </Box>
+  </Box>
+);
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <Box overflow="hidden">
+    <Box position="absolute" padding="small">
+      <Placeholder height={100} width="100%" label="Page content" />
+    </Box>
+    <DrawerPreview>{children}</DrawerPreview>
   </Box>
 );
 

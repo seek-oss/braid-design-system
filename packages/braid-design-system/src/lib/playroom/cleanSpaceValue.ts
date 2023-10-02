@@ -12,8 +12,10 @@ export const cleanSpaceValue = (space?: ResponsiveSpace) => {
         breakpointNames.includes(bp as (typeof breakpointNames)[number]) &&
         validSpaceValues.includes(space[bp as keyof typeof space]),
     );
+  const validArray =
+    Array.isArray(space) && space.some((s) => validSpaceValues.includes(s));
   const validSpace =
     typeof space === 'string' && validSpaceValues.includes(space);
 
-  return validSpace || validResponsiveObject ? space : undefined;
+  return validSpace || validResponsiveObject || validArray ? space : undefined;
 };

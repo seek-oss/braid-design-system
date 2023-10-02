@@ -68,7 +68,11 @@ const docs: ComponentDocs = {
   alternatives: [
     { name: 'Box', description: 'For custom layouts.' },
     { name: 'Hidden', description: 'For responsively hiding content.' },
-    { name: 'responsiveStyle', description: 'For custom styles.' },
+    {
+      name: 'responsiveStyle',
+      description: 'For custom styles.',
+      section: 'css',
+    },
   ],
   additional: [
     {
