@@ -28,6 +28,7 @@ export const DocDetails = () => {
               <DocExample
                 id={`${docsName}_example`}
                 Example={docs.Example}
+                background={docs.examplebackground}
                 showCodeByDefault={docs.category === 'Logic'}
               />
             </PlayroomStateProvider>
