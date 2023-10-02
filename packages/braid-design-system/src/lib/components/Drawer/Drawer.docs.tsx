@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ComponentProps, type ReactElement } from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '../../utils/source.macro';
 import {
@@ -28,27 +28,28 @@ const Screen = () => (
   />
 );
 
+type DrawerElement = ReactElement<ComponentProps<typeof Drawer>>;
+const drawerPreviewPropsFromSourceValue = (element: DrawerElement) => ({
+  ...element.props,
+  onClose: () => {},
+  scrollLock: false,
+});
+
 const docs: ComponentDocs = {
   category: 'Content',
   examplebackground: false,
-  Example: ({ id, getState, toggleState }) => {
-    const { code } = source(
-      <>
-        <Inline space="small">
-          <Button onClick={() => toggleState('drawer')}>Open drawer</Button>
-        </Inline>
-
-        <Drawer
-          id={id}
-          title="Title"
-          description={<Text tone="secondary">Optional description</Text>}
-          width="small"
-          open={getState('drawer')}
-          onClose={() => toggleState('drawer')}
-        >
-          <Placeholder height={200} width="100%" label="Drawer Content" />
-        </Drawer>
-      </>,
+  Example: ({ id }) => {
+    const { code, value } = source<DrawerElement>(
+      <Drawer
+        id={id}
+        title="Title"
+        description={<Text tone="secondary">Optional description</Text>}
+        width="small"
+        open={true}
+        onClose={() => {}}
+      >
+        <Placeholder height={200} width="100%" label="Drawer Content" />
+      </Drawer>,
     );
 
     return {
@@ -56,14 +57,7 @@ const docs: ComponentDocs = {
       value: (
         <Box borderRadius="xlarge" overflow="hidden">
           <DrawerPreview>
-            <DrawerContent
-              id={id}
-              title="Title"
-              width="small"
-              description={<Text tone="secondary">Optional description</Text>}
-              onClose={() => {}}
-              scrollLock={false}
-            >
+            <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
               <Placeholder height={200} width="100%" label="Drawer Content" />
             </DrawerContent>
             <Screen />
@@ -124,28 +118,22 @@ const docs: ComponentDocs = {
         </>
       ),
       background: false,
-      Example: ({ id, getState, toggleState }) => {
-        const { code } = source(
-          <>
-            <Inline space="small">
-              <Button onClick={() => toggleState('drawer')}>Open drawer</Button>
-            </Inline>
-
-            <Drawer
-              id={id}
-              title="Example Title"
-              description={
-                <Text tone="secondary">
-                  An optional description of the Drawer content
-                </Text>
-              }
-              width="small"
-              open={getState('drawer')}
-              onClose={() => toggleState('drawer')}
-            >
-              <Placeholder height={200} width="100%" label="Drawer Content" />
-            </Drawer>
-          </>,
+      Example: ({ id }) => {
+        const { code, value } = source<DrawerElement>(
+          <Drawer
+            id={id}
+            title="Example Title"
+            description={
+              <Text tone="secondary">
+                An optional description of the Drawer content
+              </Text>
+            }
+            width="small"
+            open={true}
+            onClose={() => {}}
+          >
+            <Placeholder height={200} width="100%" label="Drawer Content" />
+          </Drawer>,
         );
 
         return {
@@ -153,18 +141,7 @@ const docs: ComponentDocs = {
           value: (
             <Box borderRadius="xlarge" overflow="hidden">
               <DrawerPreview>
-                <DrawerContent
-                  id={id}
-                  title="Example Title"
-                  description={
-                    <Text tone="secondary">
-                      An optional description of the Drawer content
-                    </Text>
-                  }
-                  width="small"
-                  onClose={() => {}}
-                  scrollLock={false}
-                >
+                <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
                   <Placeholder
                     height={200}
                     width="100%"

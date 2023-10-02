@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ComponentProps, type ReactElement } from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '../../utils/source.macro';
 import {
@@ -29,26 +29,27 @@ const Screen = () => (
   />
 );
 
+type DialogElement = ReactElement<ComponentProps<typeof Dialog>>;
+const dialogPreviewPropsFromSourceValue = (element: DialogElement) => ({
+  ...element.props,
+  onClose: () => {},
+  scrollLock: false,
+});
+
 const docs: ComponentDocs = {
   category: 'Content',
   examplebackground: false,
-  Example: ({ id, getState, toggleState }) => {
-    const { code } = source(
-      <>
-        <Inline space="small">
-          <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
-        </Inline>
-
-        <Dialog
-          id={id}
-          title="Title"
-          description={<Text tone="secondary">Optional description</Text>}
-          open={getState('dialog')}
-          onClose={() => toggleState('dialog')}
-        >
-          <Placeholder height={100} width="100%" label="Dialog Content" />
-        </Dialog>
-      </>,
+  Example: ({ id }) => {
+    const { code, value } = source<DialogElement>(
+      <Dialog
+        id={id}
+        title="Title"
+        description={<Text tone="secondary">Optional description</Text>}
+        open={true}
+        onClose={() => {}}
+      >
+        <Placeholder height={100} width="100%" label="Dialog Content" />
+      </Dialog>,
     );
 
     return {
@@ -56,13 +57,7 @@ const docs: ComponentDocs = {
       value: (
         <Box borderRadius="xlarge" overflow="hidden">
           <DialogPreview>
-            <DialogContent
-              id={id}
-              title="Title"
-              description={<Text tone="secondary">Optional description</Text>}
-              onClose={() => {}}
-              scrollLock={false}
-            >
+            <DialogContent {...dialogPreviewPropsFromSourceValue(value)}>
               <Placeholder height={100} width="100%" label="Dialog Content" />
             </DialogContent>
             <Screen />
@@ -123,27 +118,21 @@ const docs: ComponentDocs = {
         </>
       ),
       background: false,
-      Example: ({ id, getState, toggleState }) => {
-        const { code } = source(
-          <>
-            <Inline space="small">
-              <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
-            </Inline>
-
-            <Dialog
-              id={id}
-              title="Example Title"
-              description={
-                <Text tone="secondary">
-                  An optional description of the Dialog content
-                </Text>
-              }
-              open={getState('dialog')}
-              onClose={() => toggleState('dialog')}
-            >
-              <Placeholder height={100} width="100%" label="Dialog Content" />
-            </Dialog>
-          </>,
+      Example: ({ id }) => {
+        const { code, value } = source<DialogElement>(
+          <Dialog
+            id={id}
+            title="Example Title"
+            description={
+              <Text tone="secondary">
+                An optional description of the Dialog content
+              </Text>
+            }
+            open={true}
+            onClose={() => {}}
+          >
+            <Placeholder height={100} width="100%" label="Dialog Content" />
+          </Dialog>,
         );
 
         return {
@@ -151,17 +140,7 @@ const docs: ComponentDocs = {
           value: (
             <Box borderRadius="xlarge" overflow="hidden">
               <DialogPreview>
-                <DialogContent
-                  id={id}
-                  title="Example Title"
-                  description={
-                    <Text tone="secondary">
-                      An optional description of the Dialog content
-                    </Text>
-                  }
-                  onClose={() => {}}
-                  scrollLock={false}
-                >
+                <DialogContent {...dialogPreviewPropsFromSourceValue(value)}>
                   <Placeholder
                     height={100}
                     width="100%"
@@ -260,27 +239,21 @@ const docs: ComponentDocs = {
         </Text>
       ),
       background: false,
-      Example: ({ id, getState, toggleState }) => {
-        const { code } = source(
-          <>
-            <Inline space="small">
-              <Button onClick={() => toggleState('dialog')}>Open dialog</Button>
-            </Inline>
-
-            <Dialog
-              id={id}
-              title="Illustrated Example"
-              illustration={
-                <Box style={{ height: 72, width: 72 }}>
-                  <IconImage size="fill" />
-                </Box>
-              }
-              open={getState('dialog')}
-              onClose={() => toggleState('dialog')}
-            >
-              <Placeholder height={100} width="100%" label="Dialog Content" />
-            </Dialog>
-          </>,
+      Example: ({ id }) => {
+        const { code, value } = source<DialogElement>(
+          <Dialog
+            id={id}
+            title="Illustrated Example"
+            illustration={
+              <Box style={{ height: 72, width: 72 }}>
+                <IconImage size="fill" />
+              </Box>
+            }
+            open={true}
+            onClose={() => {}}
+          >
+            <Placeholder height={100} width="100%" label="Dialog Content" />
+          </Dialog>,
         );
 
         return {
@@ -288,17 +261,7 @@ const docs: ComponentDocs = {
           value: (
             <Box borderRadius="xlarge" overflow="hidden">
               <DialogPreview>
-                <DialogContent
-                  id={id}
-                  title="Illustrated Example"
-                  illustration={
-                    <Box style={{ height: 72, width: 72 }}>
-                      <IconImage size="fill" />
-                    </Box>
-                  }
-                  onClose={() => {}}
-                  scrollLock={false}
-                >
+                <DialogContent {...dialogPreviewPropsFromSourceValue(value)}>
                   <Placeholder
                     height={100}
                     width="100%"
