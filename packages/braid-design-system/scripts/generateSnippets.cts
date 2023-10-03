@@ -88,7 +88,7 @@ const transformWithBabel = async (fileName: string) => {
       }).map(([group, snippets]) =>
         snippets.map((snippet) => ({
           ...snippet,
-          group: snippet.group || group,
+          group: 'group' in snippet ? snippet.group : group,
         })),
       )
       .flat();
