@@ -41,6 +41,7 @@ export interface ComponentDocs {
   migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
+  examplebackground?: NonNullable<BoxProps['background']> | false;
   Example?: (
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;
@@ -69,7 +70,7 @@ interface PlayroomExampleProps extends ReturnType<typeof useScope> {}
 export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;
-  background?: NonNullable<BoxProps['background']>;
+  background?: NonNullable<BoxProps['background']> | false;
   Example?: (
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;
