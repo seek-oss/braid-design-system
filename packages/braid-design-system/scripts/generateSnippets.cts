@@ -38,45 +38,60 @@ const transformWithBabel = async (fileName: string) => {
     onlyFiles: true,
   });
 
+  const pageSnippetPaths = await glob('**/*.snippets.tsx', {
+    cwd: path.join(baseDir, 'src/lib/playroom'),
+    absolute: true,
+    onlyFiles: true,
+  });
+
   await fs.emptyDir(snippetsDir);
 
   const importStatements: string[] = [];
   const exportEntries: string[] = [];
+  const pageEntries: string[] = [];
 
-  await Promise.all(
-    snippetPaths.map(async (snippetPath) => {
-      const transformedCode = await transformWithBabel(snippetPath);
-      const outputFilename = path.basename(snippetPath).replace('.snippets.tsx', '');
-      const outputPath = path.join(snippetsDir, outputFilename);
+  const parseSnippet = async (snippetPath: string) => {
+    const transformedCode = await transformWithBabel(snippetPath);
+    const outputFilename = path.basename(snippetPath).replace('.snippets.tsx', '');
+    const outputPath = path.join(snippetsDir, outputFilename);
 
-      await fs.writeFile(`${outputPath}.ts`, transformedCode, 'utf-8');
+    await fs.writeFile(`${outputPath}.ts`, transformedCode, 'utf-8');
 
-      const relativePath = relativeTo(path.dirname(snippetsIndexFile), outputPath);
-      const componentName = path.basename(relativePath);
+    const relativePath = relativeTo(path.dirname(snippetsIndexFile), outputPath);
+    const componentName = path.basename(relativePath);
 
-      importStatements.push(`import { snippets as ${componentName} } from '${relativePath}';`);
+    importStatements.push(`import { snippets as ${componentName} } from '${relativePath}';`);
+
+    return componentName;
+  };
+
+  await Promise.all([
+    ...snippetPaths.map(async (snippetPath) => {
+      const componentName = await parseSnippet(snippetPath);
+
       exportEntries.push(componentName);
     }),
-  );
+    ...pageSnippetPaths.map(async (snippetPath) => {
+      const componentName = await parseSnippet(snippetPath);
+
+      pageEntries.push(componentName);
+    }),
+  ]);
 
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
   const snippetsIndexCode = prettier.format(
     ` ${importStatements.sort().join('\n')}
-      import { homePage } from './gradConnHomeSnippet';
 
-
-      export default [
-        homePage,
-        ...Object.entries({
-          ${exportEntries.sort().join(',\n')}
-        }).map(([group, snippets]) =>
-            snippets.map((snippet) => ({
-              ...snippet,
-              group,
-            })),
-          )
-          .flat(),
-      ];
+      export default Object.entries({
+        ${pageEntries.sort().join(',\n')},
+        ${exportEntries.sort().join(',\n')}
+      }).map(([group, snippets]) =>
+        snippets.map((snippet) => ({
+          ...snippet,
+          group: snippet.group || group,
+        })),
+      )
+      .flat();
     `,
     { ...prettierOptions, parser: 'babel-ts' },
   );
