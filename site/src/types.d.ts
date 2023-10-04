@@ -16,7 +16,7 @@ export interface RenderContext {
   routerBasename: string;
   appConfig: AppConfig;
   renderDate: number;
-  versionMap: { [version: string]: string };
+  versionMap: Record<string, string>;
   currentVersion: string;
   helmetContext: HelmetData['context'] | Record<string, never>;
 }
@@ -83,11 +83,11 @@ export interface ComponentExample {
 export interface ComponentScreenshot {
   screenshotWidths: Array<320 | 768 | 992 | 1200>;
   screenshotOnlyInWireframe?: boolean;
-  examples: {
+  examples: Array<{
     label?: string;
     background?: NonNullable<BoxProps['background']>;
     gutter?: boolean;
     Example?: (props: ExampleProps) => ReactElement;
     Container?: (props: { children: ReactNode }) => ReactElement;
-  }[];
+  }>;
 }

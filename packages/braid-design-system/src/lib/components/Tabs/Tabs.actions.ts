@@ -28,4 +28,4 @@ export type Action =
   | { type: typeof TAB_BUTTON_CLICK; value: number }
   | { type: typeof TAB_LIST_UPDATED; tabItems: Array<string | number> }
   | { type: typeof TAB_LIST_FOCUSED; value: number }
-  | { type: typeof TAB_PANELS_UPDATED; panels: Array<number> };
+  | { type: typeof TAB_PANELS_UPDATED; panels: number[] };

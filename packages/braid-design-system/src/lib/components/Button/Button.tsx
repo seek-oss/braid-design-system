@@ -67,7 +67,7 @@ export interface ButtonProps extends ButtonStyleProps {
   data?: DataAttributeMap;
 }
 
-type ButtonStyles = {
+interface ButtonStyles {
   textTone: TextProps['tone'];
   background:
     | ColorContrastValue<BoxBackgroundVariant>
@@ -82,7 +82,7 @@ type ButtonStyles = {
     | BoxBackgroundVariant
     | undefined;
   boxShadow: BoxShadow | undefined;
-};
+}
 
 const variants: Record<ButtonVariant, Record<ButtonTone, ButtonStyles>> = {
   solid: {

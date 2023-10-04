@@ -16,22 +16,22 @@ import {
 import type { Step as StepComponent, StepProps } from './Step';
 import * as styles from './Stepper.css';
 
-type LinearProps = {
+interface LinearProps {
   mode?: 'linear';
   progress: number;
   activeStep?: number;
-};
+}
 
-type NonLinearProps = {
+interface NonLinearProps {
   mode: 'non-linear';
   activeStep: number;
-};
+}
 
 type Step = ReactElement<StepProps, typeof StepComponent>;
 
 type StepperProps = {
   label: string;
-  children: Array<Step> | Step;
+  children: Step[] | Step;
   mode?: StepperMode;
   tone?: StepperTone;
   onStepClick?: (step: { id?: string | number; stepNumber: number }) => void;
@@ -66,7 +66,7 @@ export const Stepper = ({
   onStepClick,
   ...restProps
 }: StepperProps) => {
-  const steps = flattenChildren(children) as Array<Step>;
+  const steps = flattenChildren(children) as Step[];
   const stepCount = steps.length;
   const isLinear = mode === 'linear';
   const progress = 'progress' in restProps ? restProps.progress : 0;

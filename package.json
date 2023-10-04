@@ -62,7 +62,7 @@
     "enquirer": "^2.3.6",
     "escape-string-regexp": "^4.0.0",
     "eslint": "^8.21.0",
-    "eslint-config-seek": "^11.1.1",
+    "eslint-config-seek": "^12.0.1",
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
     "gh-pages": "^4.0.0",
@@ -72,17 +72,21 @@
     "jest-watch-typeahead": "^2.1.0",
     "js-yaml": "^4.1.0",
     "nx": "^15.6.3",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.8",
     "renovate-config-seek": "0.4.0",
     "surge": "^0.23.1",
     "tsx": "^3.12.1",
-    "typescript": "^4.5.0"
+    "typescript": "~5.1.6"
   },
   "volta": {
     "node": "18.15.0"
   },
   "packageManager": "pnpm@7.30.0",
   "pnpm": {
+    "overrides": {
+      "@braid-design-system/generate-component-docs": "workspace:*",
+      "braid-design-system": "workspace:*"
+    },
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
       "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"

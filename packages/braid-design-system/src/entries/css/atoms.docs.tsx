@@ -35,7 +35,7 @@ const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
 interface AtomicPropertyProps {
   name: string;
   modifier?: string;
-  values: Array<string>;
+  values: string[];
 }
 function AtomicProperty({ name, modifier, values }: AtomicPropertyProps) {
   return (
@@ -111,7 +111,7 @@ const docs: CssDoc = {
           <Box paddingBottom="large">
             <Tiles space="xlarge" columns={{ mobile: 1, tablet: 2 }}>
               {(
-                Object.keys(responsiveProperties) as Array<ResponsiveProperties>
+                Object.keys(responsiveProperties) as ResponsiveProperties[]
               ).map((prop) => (
                 <AtomicProperty
                   key={prop}
@@ -120,7 +120,7 @@ const docs: CssDoc = {
                   values={Object.keys(responsiveProperties[prop])}
                 />
               ))}
-              {(Object.keys(pseudoProperties) as Array<PseudoProperties>).map(
+              {(Object.keys(pseudoProperties) as PseudoProperties[]).map(
                 (prop) => (
                   <AtomicProperty
                     key={prop}
@@ -131,9 +131,7 @@ const docs: CssDoc = {
                 ),
               )}
               {(
-                Object.keys(
-                  unresponsiveProperties,
-                ) as Array<UnresponsiveProperties>
+                Object.keys(unresponsiveProperties) as UnresponsiveProperties[]
               ).map((prop) => (
                 <AtomicProperty
                   key={prop}

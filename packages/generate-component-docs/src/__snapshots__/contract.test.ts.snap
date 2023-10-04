@@ -127,8 +127,10 @@ exports[`Autosuggest 1`] = `
     showMobileBackdrop?: boolean
     suggestions: 
         | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
-        | LegacyMessageSuggestion
         | Suggestions<Value>
+        | {
+            message: string
+        }
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -8209,12 +8211,12 @@ exports[`filterSuggestions 1`] = `
   props: {
     at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
-    copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
+    copyWithin: (target: number, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
     every: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): this is S[]; (predicate: (value: ...
     fill: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>
     filter: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S[]; (predicate: (value: Filterab...
-    find: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (this: void, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S | undefined; (predica...
+    find: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S | undefined; (predicate: (value: ...
     findIndex: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, obj: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => number
     flat: <A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]
     flatMap: <U, This = undefined>(callback: (this: This, value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => U | readonly U[], thisArg?: This | undefined) => U[]

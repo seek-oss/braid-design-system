@@ -1,4 +1,4 @@
-dist/
+dist*/
 dist-storybook/
 node_modules/
 
