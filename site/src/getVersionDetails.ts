@@ -1,7 +1,7 @@
 // @ts-expect-error
 import RegClient from 'npm-registry-client';
 
-type VersionMap = { [version: string]: string };
+type VersionMap = Record<string, string>;
 
 let inFlight: Promise<VersionMap> | undefined;
 let cache: VersionMap;

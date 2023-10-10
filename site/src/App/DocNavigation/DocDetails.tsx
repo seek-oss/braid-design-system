@@ -28,6 +28,7 @@ export const DocDetails = () => {
               <DocExample
                 id={`${docsName}_example`}
                 Example={docs.Example}
+                background={docs.examplebackground}
                 showCodeByDefault={docs.category === 'Logic'}
               />
             </PlayroomStateProvider>
@@ -44,7 +45,9 @@ export const DocDetails = () => {
             <List space="large">
               {docs.alternatives.map((alt) => (
                 <Text key={`${alt.name}`}>
-                  <TextLink href={`/components/${alt.name}`}>
+                  <TextLink
+                    href={`/${alt.section || 'components'}/${alt.name}`}
+                  >
                     {alt.name}
                   </TextLink>{' '}
                   <Secondary>— {alt.description}</Secondary>

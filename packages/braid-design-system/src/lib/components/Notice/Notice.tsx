@@ -11,11 +11,11 @@ import buildDataAttributes, {
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';
 
-export type NoticeProps = {
+export interface NoticeProps {
   tone?: Tone;
   data?: DataAttributeMap;
   children: ReactNode;
-};
+}
 
 const icons = {
   positive: IconPositive,

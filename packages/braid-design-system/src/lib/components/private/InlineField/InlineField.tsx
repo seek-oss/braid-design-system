@@ -22,14 +22,14 @@ import {
 } from './StyledInput';
 import * as styles from './InlineField.css';
 
-type InlineFieldBaseProps = {
+interface InlineFieldBaseProps {
   label: NonNullable<FieldLabelProps['label']>;
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   children?: ReactNode;
   description?: ReactNode;
   badge?: ReactElement<BadgeProps>;
-};
+}
 
 export type InlineFieldProps = Omit<
   StyledInputProps,

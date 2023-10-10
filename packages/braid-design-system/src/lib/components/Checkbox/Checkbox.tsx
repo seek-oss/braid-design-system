@@ -7,7 +7,7 @@ import type { CheckboxChecked } from '../private/InlineField/StyledInput';
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 
 export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {
-  checked: CheckboxChecked | Array<boolean>;
+  checked: CheckboxChecked | boolean[];
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

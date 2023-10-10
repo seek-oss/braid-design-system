@@ -11,11 +11,11 @@ let uncontrolledNodes = new WeakMap<HTMLElement, boolean>();
 let markerMap: Record<string, WeakMap<HTMLElement, number>> = {};
 let lockCount = 0;
 
-type Options = {
+interface Options {
   parentNode?: typeof defaultParent;
   markerName?: string;
   delay?: number;
-};
+}
 
 export const ariaHideOthers = (
   originalTarget: HTMLElement | HTMLElement[],

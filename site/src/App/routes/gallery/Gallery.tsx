@@ -162,7 +162,7 @@ const RenderExample = ({ id, example }: RenderExampleProps) => {
           ) : null}
         </Columns>
         {value ? (
-          <ThemedExample background={background}>
+          <ThemedExample background={background || undefined}>
             <Container>
               <Box height="full" width="full" style={{ cursor: 'auto' }}>
                 {value}
@@ -312,7 +312,7 @@ const GalleryItem = ({
                         ) : (
                           <TextLink
                             weight="weak"
-                            href={`/components/${alt.name}`}
+                            href={`/${alt.section || 'components'}/${alt.name}`}
                             hitArea="large"
                             target="_blank"
                           >

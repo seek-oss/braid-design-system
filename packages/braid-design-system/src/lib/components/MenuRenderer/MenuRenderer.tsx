@@ -341,7 +341,7 @@ interface MenuProps {
   focusTrigger: () => void;
   highlightIndex: number;
   open: boolean;
-  children: Array<ReactChild>;
+  children: ReactChild[];
   position?: 'absolute' | 'relative';
 }
 export function Menu({

@@ -75,7 +75,7 @@ $> yarn braid-upgrade v31 "**/*.{ts,tsx}"
   }
 
   Promise.all(jobs)
-    .then((results: Array<CodemodResult>) => {
+    .then((results: CodemodResult[]) => {
       progress.stop();
 
       for (const result of results) {
