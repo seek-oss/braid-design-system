@@ -41,7 +41,7 @@ export const Loader = ({
         styles.currentColor,
         typographyStyles.tone.neutral,
       ].join(' ')}
-      viewBox="0 0 300 134"
+      viewBox="0 0 302 134"
       aria-hidden
     >
       <circle className={styles.circle} cy="67" cx="40" r="40" />
