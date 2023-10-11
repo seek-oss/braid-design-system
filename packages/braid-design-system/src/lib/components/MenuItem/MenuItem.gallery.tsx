@@ -13,7 +13,7 @@ import {
   IconBookmark,
   IconClear,
 } from '..';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

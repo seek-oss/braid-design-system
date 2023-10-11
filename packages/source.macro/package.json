@@ -1,0 +1,27 @@
+{
+  "name": "@braid-design-system/source.macro",
+  "version": "0.0.0",
+  "main": "source.macro.cjs",
+  "types": "source.macro.d.ts",
+  "files": [
+    "source.macro.cjs",
+    "source.macro.d.ts"
+  ],
+  "scripts": {
+    "lint:eslint": "eslint --cache .",
+    "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc",
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write ."
+  },
+  "dependencies": {
+    "@babel/generator": "^7.22.15",
+    "babel-plugin-macros": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.17.12",
+    "@babel/plugin-syntax-typescript": "^7.17.12",
+    "@types/babel-plugin-macros": "^3.1.0",
+    "babel-plugin-tester": "^11.0.4"
+  }
+}

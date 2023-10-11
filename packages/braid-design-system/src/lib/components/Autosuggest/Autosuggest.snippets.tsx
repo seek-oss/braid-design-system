@@ -1,7 +1,7 @@
 import React from 'react';
 import { Autosuggest, IconLocation } from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const snippets: Snippets = [
   {

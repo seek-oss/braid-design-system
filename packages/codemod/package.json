@@ -20,7 +20,6 @@
     "@types/cli-progress": "^3.11.0",
     "@types/react": "^18.0.21",
     "@types/workerpool": "^6.1.0",
-    "babel-plugin-tester": "^10.1.0",
     "chalk": "^5.0.1",
     "cli-highlight": "^2.1.11",
     "cli-progress": "^3.11.1",
@@ -34,10 +33,10 @@
     "workerpool": "^6.2.1"
   },
   "devDependencies": {
-    "@types/babel-plugin-tester": "^9.0.5",
-    "@types/babel__core": "^7.18.0",
-    "@types/babel__traverse": "^7.18.0",
+    "@types/babel__core": "^7.20.1",
+    "@types/babel__traverse": "^7.20.1",
     "@types/dedent": "^0.7.0",
+    "babel-plugin-tester": "^11.0.4",
     "yoga-layout-prebuilt": "^1.10.0"
   }
 }
