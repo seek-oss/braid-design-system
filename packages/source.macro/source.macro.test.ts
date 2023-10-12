@@ -39,6 +39,21 @@ pluginTester({
         const foo = 'bar';
       `,
     },
+    'with new lines': {
+      code: /* ts */ `
+        import source from './source.macro';
+
+        const options = source(() => {
+          sideEffect();
+
+          return [
+            { value: "1", label: "Option 1" },
+            { value: "2", label: "Option 2" },
+            { value: "3", label: "Option 3" },
+          ];
+        });
+      `,
+    },
     'code only': {
       pluginOptions: { source: { codeOnly: true } },
       code: /* ts */ `
