@@ -56,7 +56,48 @@ const foo = 'bar';
 
 `;
 
-exports[`source.macro 4. code only: 4. code only 1`] = `
+exports[`source.macro 4. with new lines: 4. with new lines 1`] = `
+
+
+import source from './source.macro';
+
+const options = source(() => {
+  sideEffect();
+
+  return [
+    { value: "1", label: "Option 1" },
+    { value: "2", label: "Option 2" },
+    { value: "3", label: "Option 3" },
+  ];
+});
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const options = {
+  code: '() => {\\n  sideEffect();\\n\\n  return [\\n  { value: "1", label: "Option 1" },\\n  { value: "2", label: "Option 2" },\\n  { value: "3", label: "Option 3" }];\\n\\n}',
+  value: () => {
+    sideEffect();
+    return [
+      {
+        value: '1',
+        label: 'Option 1',
+      },
+      {
+        value: '2',
+        label: 'Option 2',
+      },
+      {
+        value: '3',
+        label: 'Option 3',
+      },
+    ];
+  },
+};
+
+`;
+
+exports[`source.macro 5. code only: 5. code only 1`] = `
 
 
 import source from './source.macro';
