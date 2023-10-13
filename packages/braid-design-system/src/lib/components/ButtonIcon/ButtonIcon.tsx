@@ -29,13 +29,15 @@ export const buttonIconVariants: Array<
   Extract<ButtonStyleProps['variant'], 'soft' | 'transparent'>
 > = ['soft', 'transparent'];
 
+export const buttonIconTones = ['neutral', 'secondary'] as const;
+
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonIconProps {
   id: string;
   icon: ReactElement<UseIconProps>;
   label: string;
   size?: 'standard' | 'large';
-  tone?: 'neutral' | 'secondary';
+  tone?: (typeof buttonIconTones)[number];
   type?: 'button' | 'submit' | 'reset';
   variant?: (typeof buttonIconVariants)[number];
   onClick?: NativeButtonProps['onClick'];
