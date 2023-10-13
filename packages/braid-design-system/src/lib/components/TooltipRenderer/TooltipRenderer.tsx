@@ -4,6 +4,7 @@ import React, {
   useState,
   useEffect,
   useContext,
+  useRef,
 } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
@@ -108,6 +109,21 @@ export interface TooltipRendererProps {
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
 }
 
+const normaliseRect = (domRect?: DOMRect) => ({
+  top: Math.round(domRect?.top || 0),
+  left: Math.round(domRect?.left || 0),
+  height: Math.round(domRect?.height || 0),
+  width: Math.round(domRect?.width || 0),
+});
+
+const doesBoundingBoxNeedUpdating = (
+  element: HTMLElement | null,
+  previousRect: ReturnType<typeof normaliseRect>,
+) => {
+  const currentRect = normaliseRect(element?.getBoundingClientRect());
+  return JSON.stringify(currentRect) !== JSON.stringify(previousRect);
+};
+
 export const TooltipRenderer = ({
   id,
   tooltip,
@@ -125,6 +141,12 @@ export const TooltipRenderer = ({
   const [controlledVisible, setControlledVisible] = useState(false);
   const [opacity, setOpacity] = useState<0 | 100>(0);
   const { grid, space } = useSpace();
+  const triggerBoundingBoxRef = useRef<ReturnType<typeof normaliseRect>>(
+    normaliseRect(),
+  );
+  const tooltipBoundingRectRef = useRef<ReturnType<typeof normaliseRect>>(
+    normaliseRect(),
+  );
 
   const {
     visible,
@@ -134,12 +156,21 @@ export const TooltipRenderer = ({
     setTriggerRef,
     triggerRef,
     getArrowProps,
+    update,
   } = usePopperTooltip(
     {
       placement,
       trigger: [isMobile() ? 'click' : 'hover', 'focus'],
       visible: isStatic || controlledVisible,
-      onVisibleChange: setControlledVisible,
+      onVisibleChange: (newState) => {
+        setControlledVisible(newState);
+        triggerBoundingBoxRef.current = normaliseRect(
+          triggerRef?.getBoundingClientRect(),
+        );
+        tooltipBoundingRectRef.current = normaliseRect(
+          tooltipRef?.getBoundingClientRect(),
+        );
+      },
     },
     {
       modifiers: [
@@ -174,6 +205,24 @@ export const TooltipRenderer = ({
       ],
     },
   );
+
+  // If the tooltip is visible and the size or position of either the trigger
+  // or the tooltip has changed, then update the tooltip size and position.
+  if (
+    controlledVisible &&
+    update &&
+    (doesBoundingBoxNeedUpdating(triggerRef, triggerBoundingBoxRef.current) ||
+      doesBoundingBoxNeedUpdating(tooltipRef, tooltipBoundingRectRef.current))
+  ) {
+    triggerBoundingBoxRef.current = normaliseRect(
+      triggerRef?.getBoundingClientRect(),
+    );
+    tooltipBoundingRectRef.current = normaliseRect(
+      tooltipRef?.getBoundingClientRect(),
+    );
+
+    update();
+  }
 
   useEffect(() => {
     if (visible) {
