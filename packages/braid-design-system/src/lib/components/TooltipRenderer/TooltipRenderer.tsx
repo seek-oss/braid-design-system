@@ -115,6 +115,7 @@ const normaliseRect = (domRect?: DOMRect) => ({
   height: Math.round(domRect?.height || 0),
   width: Math.round(domRect?.width || 0),
 });
+const defaultRect = normaliseRect();
 
 const doesBoundingBoxNeedUpdating = (
   element: HTMLElement | null,
@@ -141,12 +142,10 @@ export const TooltipRenderer = ({
   const [controlledVisible, setControlledVisible] = useState(false);
   const [opacity, setOpacity] = useState<0 | 100>(0);
   const { grid, space } = useSpace();
-  const triggerBoundingBoxRef = useRef<ReturnType<typeof normaliseRect>>(
-    normaliseRect(),
-  );
-  const tooltipBoundingRectRef = useRef<ReturnType<typeof normaliseRect>>(
-    normaliseRect(),
-  );
+  const triggerBoundingBoxRef =
+    useRef<ReturnType<typeof normaliseRect>>(defaultRect);
+  const tooltipBoundingRectRef =
+    useRef<ReturnType<typeof normaliseRect>>(defaultRect);
 
   const {
     visible,
@@ -163,13 +162,13 @@ export const TooltipRenderer = ({
       trigger: [isMobile() ? 'click' : 'hover', 'focus'],
       visible: isStatic || controlledVisible,
       onVisibleChange: (newState) => {
-        setControlledVisible(newState);
         triggerBoundingBoxRef.current = normaliseRect(
           triggerRef?.getBoundingClientRect(),
         );
         tooltipBoundingRectRef.current = normaliseRect(
           tooltipRef?.getBoundingClientRect(),
         );
+        setControlledVisible(newState);
       },
     },
     {
