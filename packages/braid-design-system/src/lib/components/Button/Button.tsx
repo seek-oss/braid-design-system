@@ -35,8 +35,15 @@ export const buttonVariants = [
   'transparent',
 ] as const;
 
+export const buttonTones = [
+  'formAccent',
+  'brandAccent',
+  'critical',
+  'neutral',
+] as const;
+
 type ButtonSize = 'standard' | 'small';
-type ButtonTone = 'formAccent' | 'brandAccent' | 'critical' | 'neutral';
+type ButtonTone = (typeof buttonTones)[number];
 type ButtonVariant = (typeof buttonVariants)[number];
 export interface ButtonStyleProps {
   size?: ButtonSize;
