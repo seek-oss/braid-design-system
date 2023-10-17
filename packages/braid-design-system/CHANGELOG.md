@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.12.2
+
+### Patch Changes
+
+- **TooltipRenderer:** Re-evaluate position when `trigger` or `children` changes ([#1374](https://github.com/seek-oss/braid-design-system/pull/1374))
+
+  Fixes an issue where the tooltip would not re-evaluate its position when the `trigger` or `children` prop changed while the tooltip was already open.
+
 ## 32.12.1
 
 ### Patch Changes
