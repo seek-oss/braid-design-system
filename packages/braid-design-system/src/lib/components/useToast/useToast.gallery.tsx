@@ -3,7 +3,7 @@ import type { ComponentExample } from 'site/types';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { Button, IconBookmark, IconPromote, Inline } from '..';
 import Toast from './Toast';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

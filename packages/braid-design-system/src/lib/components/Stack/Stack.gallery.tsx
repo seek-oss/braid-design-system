@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentExample } from 'site/types';
 import { Stack, Hidden } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const galleryItems: ComponentExample[] = [
   {

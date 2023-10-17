@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.12.1
+
+### Patch Changes
+
+- When animating an SVG circle, it seems that the width changes slightly, which on Loader was causing the right-most one to push off the boundaries of the SVG View Box. ([#1370](https://github.com/seek-oss/braid-design-system/pull/1370))
+
+  This has been fixed so clipping should no longer occur.
+
 ## 32.12.0
 
 ### Minor Changes
