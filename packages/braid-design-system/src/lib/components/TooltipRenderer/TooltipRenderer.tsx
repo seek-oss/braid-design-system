@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useContext,
   useRef,
+  useLayoutEffect,
 } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
@@ -205,23 +206,25 @@ export const TooltipRenderer = ({
     },
   );
 
-  // If the tooltip is visible and the size or position of either the trigger
-  // or the tooltip has changed, then update the tooltip size and position.
-  if (
-    controlledVisible &&
-    update &&
-    (doesBoundingBoxNeedUpdating(triggerRef, triggerBoundingBoxRef.current) ||
-      doesBoundingBoxNeedUpdating(tooltipRef, tooltipBoundingRectRef.current))
-  ) {
-    triggerBoundingBoxRef.current = normaliseRect(
-      triggerRef?.getBoundingClientRect(),
-    );
-    tooltipBoundingRectRef.current = normaliseRect(
-      tooltipRef?.getBoundingClientRect(),
-    );
+  useLayoutEffect(() => {
+    // If the tooltip is visible and the size or position of either the trigger
+    // or the tooltip has changed, then update the tooltip size and position.
+    if (
+      controlledVisible &&
+      update &&
+      (doesBoundingBoxNeedUpdating(triggerRef, triggerBoundingBoxRef.current) ||
+        doesBoundingBoxNeedUpdating(tooltipRef, tooltipBoundingRectRef.current))
+    ) {
+      triggerBoundingBoxRef.current = normaliseRect(
+        triggerRef?.getBoundingClientRect(),
+      );
+      tooltipBoundingRectRef.current = normaliseRect(
+        tooltipRef?.getBoundingClientRect(),
+      );
 
-    update();
-  }
+      update();
+    }
+  });
 
   useEffect(() => {
     if (visible) {
