@@ -16,7 +16,7 @@
     "@babel/core": "^7.18.0",
     "@babel/plugin-syntax-jsx": "^7.17.12",
     "@babel/plugin-syntax-typescript": "^7.17.12",
-    "@babel/traverse": "^7.18.11",
+    "@babel/traverse": "^7.23.2",
     "@types/cli-progress": "^3.11.0",
     "@types/react": "^18.0.21",
     "@types/workerpool": "^6.1.0",
