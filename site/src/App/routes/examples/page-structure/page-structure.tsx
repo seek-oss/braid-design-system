@@ -1,4 +1,5 @@
 import React, { type ComponentProps, type ReactElement } from 'react';
+import source from '@braid-design-system/source.macro';
 import type { Page as PageType } from '../../../../types';
 import {
   Heading,
@@ -19,7 +20,6 @@ import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactN
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
-import source from 'braid-design-system/src/lib/utils/source.macro';
 
 interface StepProps {
   heading?: string;
@@ -315,14 +315,23 @@ const page: PageType = {
         <Step
           heading="4. Limiting the content width"
           detail={
-            <Text>
-              With the vertical space now handled, we can now turn our attention
-              to the content width and establish consistent responsive gutters
-              to the edge of the screen. For this we will use the{' '}
-              <TextLink href="/components/PageBlock">PageBlock</TextLink>{' '}
-              component, providing a centered block for the content with a
-              choice of max width.
-            </Text>
+            <>
+              <Text>
+                With the vertical space now handled, we can now turn our
+                attention to the content width and establish consistent
+                responsive gutters to the edge of the screen. For this we will
+                use the{' '}
+                <TextLink href="/components/PageBlock">PageBlock</TextLink>{' '}
+                component, providing a centered block for the content with a
+                choice of max width.
+              </Text>
+
+              <Text>
+                Note that each section of the page content is wrapped
+                separately. This allow sections to have different max widths,
+                while maintaining a common screen gutter on small devices.
+              </Text>
+            </>
           }
         >
           {() => {
