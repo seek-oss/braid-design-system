@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 32.12.3
+
+### Patch Changes
+
+- Fix an arbitrary code execution [vulnerability](https://github.com/seek-oss/braid-design-system/security/dependabot/25) ([#1377](https://github.com/seek-oss/braid-design-system/pull/1377))
+
 ## 32.12.2
 
 ### Patch Changes
