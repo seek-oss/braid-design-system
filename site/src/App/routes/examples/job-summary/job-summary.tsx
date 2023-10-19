@@ -112,7 +112,7 @@ const page: Page = {
         using <TextLink href="/playroom">Playroom</TextLink>.
       </Text>
 
-      <Text tone="secondary">
+      <Text>
         At any stage you can click the &ldquo;Open in Playroom&rdquo; button
         under the examples to view the design across themes and viewports.
       </Text>

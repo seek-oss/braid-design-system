@@ -16,28 +16,30 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 import Code from '../../../Code/Code';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
+import { fullHeight } from 'braid-src/lib/components/Page/Page.css';
 
 interface StepProps {
   heading?: string;
-  detail: ReactNodeNoStrings;
+  detail: ComponentProps<typeof Stack>['children'];
   children: ComponentProps<typeof Code>['children'];
+  conclusion?: ComponentProps<typeof Stack>['children'];
 }
-const Step = ({ heading, detail, children }: StepProps) => (
+const Step = ({ heading, detail, children, conclusion }: StepProps) => (
   <Stack space="xlarge">
     {heading ? <LinkableHeading level="3">{heading}</LinkableHeading> : null}
     {detail}
     <Code>{children}</Code>
+    {conclusion}
   </Stack>
 );
 const widths = {
-  medium: '60%',
-  large: '85%',
+  medium: '300px',
+  large: '400px',
 };
-const PageBlock = ({
+const ContentBlock = ({
   width,
   children,
 }: {
@@ -46,37 +48,28 @@ const PageBlock = ({
 }) => (
   <Box style={{ maxWidth: widths[width], margin: '0 auto' }}>{children}</Box>
 );
-
-type PageDensity = 'tight' | 'loose';
-const scaledSpace: Record<PageDensity, ComponentProps<typeof Stack>['space']> =
-  {
-    tight: 'xxlarge',
-    loose: 'xxxlarge',
-  };
-const scaledHeading: Record<
-  PageDensity,
-  ComponentProps<typeof Heading>['level']
-> = {
-  tight: '2',
-  loose: '1',
-};
-
-const scaleExamples = ({
-  code,
-  density,
+const PageBlock = ({
+  width,
+  children,
 }: {
-  code: string;
-  density: PageDensity;
-}) => {
+  width: keyof typeof widths;
+  children: ReactElement;
+}) => (
+  <Box paddingX="xsmall">
+    <ContentBlock width={width}>{children}</ContentBlock>
+  </Box>
+);
+
+const scaleExamples = ({ code }: { code: string }) => {
   let newCode = code
-    // Increase Stack space to recommended value from `scaledSpace` above
-    .replace(/(space=\")\w+([\"])/, `$1${scaledSpace[density]}$2`)
+    // Increase Stack space to recommended starting value for page section spacing
+    .replace('space="large"', 'space="xxlarge"')
     // Replace Text component with real Heading component
     .replace(/Text/g, 'Heading')
     // Remove now irrelevant `size` prop (and leading space)
     .replace(/\ssize=\".+\"/, '')
-    // Replace now irrelevant `weight` value with recommended value from `scaledHeading` above
-    .replace('weight="strong"', `level="${scaledHeading[density]}"`);
+    // Replace now irrelevant `weight` value with recommended page title heading level
+    .replace('weight="strong"', `level="2"`);
 
   // Find Placeholders with height props and double them for non-docs site usage
   const placeholderHeights = newCode.matchAll(/height={(\d+)}/g);
@@ -117,7 +110,7 @@ const page: PageType = {
         {() => {
           const { code, value } = source(
             <Page
-              footer={<Placeholder label="Footer" height={100} />}
+              footer={<Placeholder label="Footer" height={90} />}
               footerPosition="belowFold"
             >
               <Stack space="large">
@@ -139,10 +132,7 @@ const page: PageType = {
           );
 
           return {
-            code: scaleExamples({
-              code,
-              density: 'loose',
-            }),
+            code: scaleExamples({ code }),
             value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
           };
         }}
@@ -161,7 +151,7 @@ const page: PageType = {
         using <TextLink href="/playroom">Playroom</TextLink>.
       </Text>
 
-      <Text tone="secondary">
+      <Text>
         At any stage you can click the &ldquo;Open in Playroom&rdquo; button
         under the examples to view the design across themes and viewports.
       </Text>
@@ -170,26 +160,77 @@ const page: PageType = {
 
       <Stack space="xxlarge">
         <Step
-          heading="1. Laying out a new page"
+          heading="1. Adding initial content"
           detail={
             <Text>
-              To get started, we&rsquo;ll use a{' '}
-              <TextLink href="/components/Page">Page</TextLink> component to
-              establish the top-level layout. We will pass a{' '}
-              <Strong>Placeholder</Strong> to use in the <Strong>footer</Strong>{' '}
-              slot, which ensures that the footer is at least placed at the
-              bottom of the screen, if not beyond as the page content grows.
+              Let&rsquo;s start by adding some placeholder content to our page —
+              a header, a page heading, a couple of content sections and a
+              footer.
             </Text>
+          }
+          conclusion={
+            <>
+              <Text>
+                You&rsquo;ll notice that the footer is sitting unexpectedly high
+                — it&rsquo;s half way up the page! This is a common problem when
+                laying out a page with limited content. Ideally, the footer
+                would sit at least at the bottom of the screen, if not beyond as
+                the content grows.
+              </Text>
+              <Text>Let&rsquo;s address this next.</Text>
+            </>
           }
         >
           {() => {
             const { code, value } = source(
-              <Page footer={<Placeholder label="Footer" height={100} />}>
+              <>
                 <Placeholder label="Header" height={40} />
+                <Text weight="strong">Page Heading</Text>
+                <Placeholder label="Section" height={50} />
+                <Placeholder label="Section" height={50} />
+                <Placeholder label="Footer" height={90} />
+              </>,
+            );
+            return {
+              code: scaleExamples({ code }),
+              value: (
+                <ContainerForPageDocs>
+                  <Box className={fullHeight}>{value}</Box>
+                </ContainerForPageDocs>
+              ),
+            };
+          }}
+        </Step>
+
+        <Step
+          heading="2. Establishing a top-level layout"
+          detail={
+            <>
+              <Text>
+                Braid provides a{' '}
+                <TextLink href="/components/Page">Page</TextLink> component to
+                establish a top-level layout. All that is required, is to wrap
+                it around the content, and pass the footer to the{' '}
+                <Strong>footer</Strong> prop.
+              </Text>
+              <Text>
+                This will ensure that the footer is at least placed at the
+                bottom of the screen, if not beyond as the page content grows.
+              </Text>
+            </>
+          }
+        >
+          {() => {
+            const { code, value } = source(
+              <Page footer={<Placeholder label="Footer" height={90} />}>
+                <Placeholder label="Header" height={40} />
+                <Text weight="strong">Page Heading</Text>
+                <Placeholder label="Section" height={50} />
+                <Placeholder label="Section" height={50} />
               </Page>,
             );
             return {
-              code,
+              code: scaleExamples({ code }),
               value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
             };
           }}
@@ -198,65 +239,41 @@ const page: PageType = {
         <Step
           heading="2. Footer positioning"
           detail={
+            <>
+              <Text>
+                If your page has dynamic content, such as search results that
+                change when filtered, it is recommended to place the footer out
+                of view permanently to prevent it from popping in and out of
+                view when the results change.
+              </Text>
+              <Text>
+                We do this by setting the <Strong>footerPosition</Strong> prop
+                to <Strong>belowFold</Strong>.
+              </Text>
+            </>
+          }
+          conclusion={
             <Text>
-              For pages with dynamic content, it is recommended to place the
-              footer out of view by setting the <Strong>footerPosition</Strong>{' '}
-              prop to <Strong>belowFold</Strong>. This prevents the footer from
-              popping in and out of view when the page content changes, e.g.
-              toggling between a loading indicator and content.
+              With the footer position decided, we now can turn our attention
+              back to the content, which is in need of some space — the question
+              is how much?
             </Text>
           }
         >
           {() => {
             const { code, value } = source(
               <Page
-                footer={<Placeholder label="Footer" height={100} />}
+                footer={<Placeholder label="Footer" height={90} />}
                 footerPosition="belowFold"
               >
                 <Placeholder label="Header" height={40} />
-              </Page>,
-            );
-            return {
-              code,
-              value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
-            };
-          }}
-        </Step>
-
-        <Step
-          heading="3. Adding content"
-          detail={
-            <Text>
-              Now let&rsquo;s add a page title using the{' '}
-              <TextLink href="/components/Heading">Heading</TextLink> component,
-              as well as some additional{' '}
-              <TextLink href="/guides/playroom-prototyping#placeholder">
-                Placeholders
-              </TextLink>{' '}
-              to demonstrate the sections of our page.
-            </Text>
-          }
-        >
-          {() => {
-            const { code, value } = source(
-              <Page
-                footer={<Placeholder label="Footer" height={100} />}
-                footerPosition="belowFold"
-              >
-                <Placeholder label="Header" height={40} />
-
                 <Text weight="strong">Page Heading</Text>
-
                 <Placeholder label="Section" height={50} />
-
                 <Placeholder label="Section" height={50} />
               </Page>,
             );
             return {
-              code: scaleExamples({
-                code,
-                density: 'loose',
-              }),
+              code: scaleExamples({ code }),
               value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
             };
           }}
@@ -267,19 +284,20 @@ const page: PageType = {
           detail={
             <>
               <Text>
-                You&rsquo;ll notice that there is no space between the content.
-                This is actually a good thing! We now get to consider the
-                density of our page and adjust the spacing accordingly. To
-                achieve this, we&rsquo;ll use a{' '}
-                <TextLink href="/components/Stack">Stack</TextLink> component
-                which applies space evenly between its child elements.
+                To adjust vertical spacing we&rsquo;ll use the{' '}
+                <TextLink href="/components/Stack">Stack</TextLink> component,
+                which applies space evenly between its child elements. Wrapping
+                our content in this way, allows the vertical rhythm between
+                sections to be controlled consistently by specifying the{' '}
+                <Strong>space</Strong> prop.
               </Text>
               <Text>
-                The specified heading level of the page title is a good guide
-                for determining how much <Strong>space</Strong> to use — if
-                using a heading level 1 consider using <Strong>xxxlarge</Strong>
-                , if using a heading level 2 consider using{' '}
-                <Strong>xxlarge</Strong>.
+                The amount of space will ultimately depend on the desired
+                density of content being laid out. A good starting point for
+                page sections is <Strong>xxlarge</Strong>, stepping up to{' '}
+                <Strong>xxxlarge</Strong> for larger, content heavy areas (such
+                as dashboards or column layouts) that may require more vertical
+                separation to delineate sections.
               </Text>
             </>
           }
@@ -287,7 +305,7 @@ const page: PageType = {
           {() => {
             const { code, value } = source(
               <Page
-                footer={<Placeholder label="Footer" height={100} />}
+                footer={<Placeholder label="Footer" height={90} />}
                 footerPosition="belowFold"
               >
                 <Stack space="large">
@@ -303,10 +321,7 @@ const page: PageType = {
             );
 
             return {
-              code: scaleExamples({
-                code,
-                density: 'loose',
-              }),
+              code: scaleExamples({ code }),
               value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
             };
           }}
@@ -317,27 +332,127 @@ const page: PageType = {
           detail={
             <>
               <Text>
-                With the vertical space now handled, we can now turn our
-                attention to the content width and establish consistent
-                responsive gutters to the edge of the screen. For this we will
-                use the{' '}
-                <TextLink href="/components/PageBlock">PageBlock</TextLink>{' '}
-                component, providing a centered block for the content with a
-                choice of max width.
+                With vertical space now handled, let&rsquo;s focus on the
+                content width. We can use the{' '}
+                <TextLink href="/components/ContentBlock">
+                  ContentBlock
+                </TextLink>{' '}
+                component, which will provide a centered block for our content
+                with a choice of maximum width.
               </Text>
 
               <Text>
-                Note that each section of the page content is wrapped
-                separately. This allow sections to have different max widths,
-                while maintaining a common screen gutter on small devices.
+                Choose the <Strong>width</Strong> based on the content and its
+                layout. Are you using a column layout? What is the maximum line
+                length of the content? For this example we will use{' '}
+                <Strong>large</Strong>.
               </Text>
+
+              <Text>
+                Wrapping each section separately enables having different max
+                widths, or highlighting in a container with a background colour.
+              </Text>
+            </>
+          }
+          conclusion={
+            <>
+              <Text>
+                We are pretty close now. You may notice however, that the
+                content is touching the edge of the screen in the mobile
+                preview. This occurs when the maximum width of the content width
+                is greater than the screen width.
+              </Text>
+
+              <Text>Let&rsquo;s establish some screen gutters next.</Text>
             </>
           }
         >
           {() => {
             const { code, value } = source(
               <Page
-                footer={<Placeholder label="Footer" height={100} />}
+                footer={<Placeholder label="Footer" height={90} />}
+                footerPosition="belowFold"
+              >
+                <Stack space="large">
+                  <Placeholder label="Header" height={40} />
+
+                  <ContentBlock width="large">
+                    <Text weight="strong">Page Heading</Text>
+                  </ContentBlock>
+
+                  <ContentBlock width="large">
+                    <Placeholder label="Section" height={50} />
+                  </ContentBlock>
+
+                  <ContentBlock width="large">
+                    <Placeholder label="Section" height={50} />
+                  </ContentBlock>
+                </Stack>
+              </Page>,
+            );
+
+            return {
+              code: scaleExamples({ code }),
+              value: (
+                <Inline space="xlarge" align="center">
+                  <Box style={{ width: 180 }}>
+                    <Stack space="xsmall">
+                      <Text size="xsmall" tone="secondary">
+                        MOBILE
+                      </Text>
+                      <ContainerForPageDocs>{value}</ContainerForPageDocs>
+                    </Stack>
+                  </Box>
+
+                  <Box style={{ width: 500, maxWidth: '100%' }}>
+                    <Stack space="xsmall">
+                      <Text size="xsmall" tone="secondary">
+                        DESKTOP
+                      </Text>
+                      <Box width="full">
+                        <ContainerForPageDocs>{value}</ContainerForPageDocs>
+                      </Box>
+                    </Stack>
+                  </Box>
+                </Inline>
+              ),
+            };
+          }}
+        </Step>
+
+        <Step
+          heading="5. Applying consistent screen gutters"
+          detail={
+            <>
+              <Text>
+                While a ContentBlock is great fot constraining content width
+                within containers that already have their own padding, for
+                top-level containers we want to establish consistent gutters
+                between the content and the edge of the screen. For this Braid
+                provides the{' '}
+                <TextLink href="/components/PageBlock">PageBlock</TextLink>{' '}
+                component, recommended in favour of ContentBlock for top-level
+                page sections.
+              </Text>
+
+              <Text>
+                Let&rsquo;s go ahead and replace our usage of{' '}
+                <Strong>&ldquo;ContentBlock&rdquo;</Strong> with{' '}
+                <Strong>&ldquo;PageBlock&rdquo;</Strong>.
+              </Text>
+            </>
+          }
+          conclusion={
+            <Text>
+              And that&rsquo;s it! We have successfully established our
+              top-level page structure.
+            </Text>
+          }
+        >
+          {() => {
+            const { code, value } = source(
+              <Page
+                footer={<Placeholder label="Footer" height={90} />}
                 footerPosition="belowFold"
               >
                 <Stack space="large">
@@ -359,10 +474,7 @@ const page: PageType = {
             );
 
             return {
-              code: scaleExamples({
-                code,
-                density: 'loose',
-              }),
+              code: scaleExamples({ code }),
               value: (
                 <Inline space="xlarge" align="center">
                   <Box style={{ width: 180 }}>
@@ -404,10 +516,8 @@ const page: PageType = {
           </Text>
           <Text>You may want to consider:</Text>
           <List>
-            <Text>
-              Grouping page sections by adjusting their surrounding space
-            </Text>
-            <Text>Adding a full bleed coloured box</Text>
+            <Text>Adding additional content to the page sections</Text>
+            <Text>Adding a full bleed coloured container to a section</Text>
           </List>
         </Stack>
       </TextStack>
