@@ -198,7 +198,7 @@ const page: PageType = {
         </ExampleStep>
 
         <ExampleStep
-          heading="2. Footer positioning"
+          heading="3. Footer positioning"
           detail={
             <>
               <Text>
@@ -241,7 +241,7 @@ const page: PageType = {
         </ExampleStep>
 
         <ExampleStep
-          heading="3. Adjusting the content density"
+          heading="4. Adjusting the content density"
           detail={
             <>
               <Text>
@@ -289,7 +289,7 @@ const page: PageType = {
         </ExampleStep>
 
         <ExampleStep
-          heading="4. Limiting the content width"
+          heading="5. Limiting the content width"
           detail={
             <>
               <Text>
@@ -382,7 +382,7 @@ const page: PageType = {
         </ExampleStep>
 
         <ExampleStep
-          heading="5. Applying consistent screen gutters"
+          heading="6. Applying consistent screen gutters"
           detail={
             <>
               <Text>
