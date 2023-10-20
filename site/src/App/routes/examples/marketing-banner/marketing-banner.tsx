@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react';
+import React from 'react';
 import type { Page } from '../../../../types';
 import {
   Heading,
@@ -17,37 +17,15 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 import Code from '../../../Code/Code';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import { PageTitle } from '../../../Seo/PageTitle';
 import source from '@braid-design-system/source.macro';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
-
-interface StepProps {
-  heading?: string;
-  detail: ReactNodeNoStrings;
-  children: ReactElement;
-}
-const Step = ({ heading, detail, children }: StepProps) => (
-  <Stack space="xlarge">
-    {heading ? <LinkableHeading level="3">{heading}</LinkableHeading> : null}
-    {detail}
-    <Code>{children}</Code>
-  </Stack>
-);
+import { ExampleIntro, ExampleStep, ExampleTitle } from '../components';
 
 const page: Page = {
   title: 'Marketing Banner',
   element: (
     <TextStack>
-      <Stack space="medium">
-        <Heading level="3" weight="weak">
-          <PageTitle title="Marketing Banner Example" />
-          Examples /
-        </Heading>
-        <Heading component="h1" level="2">
-          Marketing Banner
-        </Heading>
-      </Stack>
+      <ExampleTitle title="Marketing Banner" />
 
       <Code collapsedByDefault>
         {source(
@@ -89,28 +67,12 @@ const page: Page = {
         )}
       </Code>
 
-      <Heading level="3">How do I build this example for myself?</Heading>
-
-      <Text>
-        Designs like this are rarely built top-to-bottom in a single pass.
-        Instead, they typically start very simple, with further details and
-        refinements added in layers.
-      </Text>
-      <Text>
-        To give you a sense of what this looks like, the following tutorial will
-        guide you through the design process that you might go through when
-        using <TextLink href="/playroom">Playroom</TextLink>.
-      </Text>
-
-      <Text>
-        At any stage you can click the &ldquo;Open in Playroom&rdquo; button
-        under the examples to view the design across themes and viewports.
-      </Text>
+      <ExampleIntro />
 
       <Divider />
 
       <Stack space="xlarge">
-        <Step
+        <ExampleStep
           heading="1. Create the container and basic content"
           detail={
             <Stack space="xlarge">
@@ -147,9 +109,9 @@ const page: Page = {
             <Button>Show me</Button>
             <Placeholder height={300} label="Marketing illustration" />
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="2. Lay out the content"
           detail={
             <Stack space="xlarge">
@@ -179,9 +141,9 @@ const page: Page = {
               <Placeholder height={300} />
             </Column>
           </Columns>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Text>
               We can go ahead and add this layout into our `Box` and populate
@@ -202,9 +164,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="3. Space out the content"
           detail={
             <Text>
@@ -230,9 +192,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Text>
               In terms of spacing, we can also observe that the columns are
@@ -256,9 +218,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="4. Add visual hierarchy"
           detail={
             <Text>
@@ -283,9 +245,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Stack space="xlarge">
               <Text component="p">
@@ -318,9 +280,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="5. Add some colour"
           detail={
             <>
@@ -357,7 +319,7 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
         <Text>
           It&rsquo;s worth noting that, as the background colour changes, the
@@ -367,7 +329,7 @@ const page: Page = {
           across different colours in different themes.
         </Text>
 
-        <Step
+        <ExampleStep
           heading="6. Adjust the space in our `Box`"
           detail={
             <Stack space="xlarge">
@@ -416,7 +378,7 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
         <Text component="p">
           Things are starting to come together now. If you click the &ldquo;Open
@@ -426,7 +388,7 @@ const page: Page = {
 
         <Text component="p">We&rsquo;ll address this next.</Text>
 
-        <Step
+        <ExampleStep
           heading="7. Make the layout responsive"
           detail={
             <Stack space="xlarge">
@@ -462,7 +424,7 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
         <Text component="p">
           Now if you &ldquo;Open in Playroom&rdquo;, our layout is looking much
@@ -471,7 +433,7 @@ const page: Page = {
           mobile.
         </Text>
 
-        <Step
+        <ExampleStep
           heading="10. Align content responsively"
           detail={
             <Stack space="xlarge">
@@ -525,7 +487,7 @@ const page: Page = {
               </Column>
             </Columns>
           </Box>
-        </Step>
+        </ExampleStep>
 
         <Text component="p">
           Now if you click the &ldquo;Open in Playroom&rsquo; button on the code
@@ -534,7 +496,7 @@ const page: Page = {
           spans the full width. Let&rsquo;s tackle this next.
         </Text>
 
-        <Step
+        <ExampleStep
           heading="9. Constrain layout on larger screens"
           detail={
             <Stack space="xlarge">
@@ -576,9 +538,9 @@ const page: Page = {
               </Columns>
             </ContentBlock>
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="10. Polish!"
           detail={
             <Stack space="xlarge">
@@ -625,9 +587,9 @@ const page: Page = {
               </Columns>
             </ContentBlock>
           </Box>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Stack space="xlarge">
               <Text component="p">
@@ -674,7 +636,7 @@ const page: Page = {
               </Columns>
             </ContentBlock>
           </Box>
-        </Step>
+        </ExampleStep>
       </Stack>
 
       <Divider />

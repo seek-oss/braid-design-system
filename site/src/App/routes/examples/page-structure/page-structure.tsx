@@ -1,8 +1,7 @@
-import React, { type ComponentProps, type ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import source from '@braid-design-system/source.macro';
 import type { Page as PageType } from '../../../../types';
 import {
-  Heading,
   Text,
   Divider,
   Stack,
@@ -16,25 +15,11 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 import Code from '../../../Code/Code';
-import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
 import { fullHeight } from 'braid-src/lib/components/Page/Page.css';
+import { ExampleIntro, ExampleTitle, ExampleStep } from '../components';
 
-interface StepProps {
-  heading?: string;
-  detail: ComponentProps<typeof Stack>['children'];
-  children: ComponentProps<typeof Code>['children'];
-  conclusion?: ComponentProps<typeof Stack>['children'];
-}
-const Step = ({ heading, detail, children, conclusion }: StepProps) => (
-  <Stack space="xlarge">
-    {heading ? <LinkableHeading level="3">{heading}</LinkableHeading> : null}
-    {detail}
-    <Code>{children}</Code>
-    {conclusion}
-  </Stack>
-);
 const widths = {
   medium: '300px',
   large: '400px',
@@ -96,15 +81,7 @@ const page: PageType = {
   badge: 'New',
   element: (
     <TextStack>
-      <Stack space="medium">
-        <Heading level="3" weight="weak">
-          <PageTitle title="Page Structure Example" />
-          Examples /
-        </Heading>
-        <Heading component="h1" level="2">
-          Page Structure
-        </Heading>
-      </Stack>
+      <ExampleTitle title="Page Structure" />
 
       <Code collapsedByDefault>
         {() => {
@@ -138,28 +115,12 @@ const page: PageType = {
         }}
       </Code>
 
-      <Heading level="3">How do I build this example for myself?</Heading>
-
-      <Text>
-        Designs like this are rarely built top-to-bottom in a single pass.
-        Instead, they typically start very simple, with further details and
-        refinements added in layers.
-      </Text>
-      <Text>
-        To give you a sense of what this looks like, the following tutorial will
-        guide you through the design process that you might go through when
-        using <TextLink href="/playroom">Playroom</TextLink>.
-      </Text>
-
-      <Text>
-        At any stage you can click the &ldquo;Open in Playroom&rdquo; button
-        under the examples to view the design across themes and viewports.
-      </Text>
+      <ExampleIntro />
 
       <Divider />
 
       <Stack space="xxlarge">
-        <Step
+        <ExampleStep
           heading="1. Adding initial content"
           detail={
             <Text>
@@ -200,9 +161,9 @@ const page: PageType = {
               ),
             };
           }}
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="2. Establishing a top-level layout"
           detail={
             <>
@@ -211,7 +172,7 @@ const page: PageType = {
                 <TextLink href="/components/Page">Page</TextLink> component to
                 establish a top-level layout. All that is required, is to wrap
                 it around the content, and pass the footer to the{' '}
-                <Strong>footer</Strong> prop.
+                <Strong>footer</Strong> property.
               </Text>
               <Text>
                 This will ensure that the footer is at least placed at the
@@ -234,9 +195,9 @@ const page: PageType = {
               value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
             };
           }}
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="2. Footer positioning"
           detail={
             <>
@@ -247,8 +208,8 @@ const page: PageType = {
                 view when the results change.
               </Text>
               <Text>
-                We do this by setting the <Strong>footerPosition</Strong> prop
-                to <Strong>belowFold</Strong>.
+                We do this by setting the <Strong>footerPosition</Strong> to{' '}
+                <Strong>belowFold</Strong>.
               </Text>
             </>
           }
@@ -277,19 +238,19 @@ const page: PageType = {
               value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
             };
           }}
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="3. Adjusting the content density"
           detail={
             <>
               <Text>
                 To adjust vertical spacing we&rsquo;ll use the{' '}
                 <TextLink href="/components/Stack">Stack</TextLink> component,
-                which applies space evenly between its child elements. Wrapping
-                our content in this way, allows the vertical rhythm between
-                sections to be controlled consistently by specifying the{' '}
-                <Strong>space</Strong> prop.
+                which applies space evenly between the elements contained within
+                it. Wrapping our content in this way, allows the vertical rhythm
+                between sections to be controlled consistently by specifying a{' '}
+                <Strong>space</Strong> value.
               </Text>
               <Text>
                 The amount of space will ultimately depend on the desired
@@ -325,9 +286,9 @@ const page: PageType = {
               value: <ContainerForPageDocs>{value}</ContainerForPageDocs>,
             };
           }}
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="4. Limiting the content width"
           detail={
             <>
@@ -418,9 +379,9 @@ const page: PageType = {
               ),
             };
           }}
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="5. Applying consistent screen gutters"
           detail={
             <>
@@ -500,7 +461,7 @@ const page: PageType = {
               ),
             };
           }}
-        </Step>
+        </ExampleStep>
       </Stack>
 
       <Divider />

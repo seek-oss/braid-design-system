@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react';
+import React from 'react';
 import type { Page } from '../../../../types';
 import {
   Heading,
@@ -22,36 +22,14 @@ import {
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 import Code from '../../../Code/Code';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import { PageTitle } from '../../../Seo/PageTitle';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
-
-interface StepProps {
-  heading?: string;
-  detail: ReactNodeNoStrings;
-  children: ReactElement;
-}
-const Step = ({ heading, detail, children }: StepProps) => (
-  <Stack space="xlarge">
-    {heading ? <LinkableHeading level="3">{heading}</LinkableHeading> : null}
-    {detail}
-    <Code>{children}</Code>
-  </Stack>
-);
+import { ExampleIntro, ExampleStep, ExampleTitle } from '../components';
 
 const page: Page = {
   title: 'Job Summary',
   element: (
     <TextStack>
-      <Stack space="medium">
-        <Heading level="3" weight="weak">
-          <PageTitle title="Job Summary Example" />
-          Examples /
-        </Heading>
-        <Heading component="h1" level="2">
-          Job Summary
-        </Heading>
-      </Stack>
+      <ExampleTitle title="Job Summary" />
 
       <Code collapsedByDefault>
         <Card>
@@ -99,28 +77,12 @@ const page: Page = {
         </Card>
       </Code>
 
-      <Heading level="3">How do I build this example for myself?</Heading>
-
-      <Text>
-        Designs like this are rarely built top-to-bottom in a single pass.
-        Instead, they typically start very simple, with further details and
-        refinements added in layers.
-      </Text>
-      <Text>
-        To give you a sense of what this looks like, the following tutorial will
-        guide you through the design process that you might go through when
-        using <TextLink href="/playroom">Playroom</TextLink>.
-      </Text>
-
-      <Text>
-        At any stage you can click the &ldquo;Open in Playroom&rdquo; button
-        under the examples to view the design across themes and viewports.
-      </Text>
+      <ExampleIntro />
 
       <Divider />
 
       <Stack space="xxlarge">
-        <Step
+        <ExampleStep
           heading="1. Create card with basic content"
           detail={
             <Text>
@@ -145,9 +107,9 @@ const page: Page = {
             </Text>
             <Text>2d ago</Text>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="2. Space out the content"
           detail={
             <Text>
@@ -173,9 +135,9 @@ const page: Page = {
               <Text>2d ago</Text>
             </Stack>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="3. Group content"
           detail={
             <Text>
@@ -209,9 +171,9 @@ const page: Page = {
               <Text>2d ago</Text>
             </Stack>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="4. Use size and tone to provide hierarchy"
           detail={
             <Text>
@@ -252,9 +214,9 @@ const page: Page = {
               </Text>
             </Stack>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="5. Add icons"
           detail={
             <Text>
@@ -293,9 +255,9 @@ const page: Page = {
               </Text>
             </Stack>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="6. Add a splash of colour"
           detail={
             <Text>
@@ -335,9 +297,9 @@ const page: Page = {
               </Text>
             </Stack>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Stack space="xlarge">
               <Text>
@@ -387,9 +349,9 @@ const page: Page = {
               </Text>
             </Stack>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="7. Add an action to the corner of the card"
           detail={
             <Stack space="xlarge">
@@ -416,9 +378,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Text>
               In the second column we&rsquo;ll use a{' '}
@@ -448,9 +410,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Text>
               Now that we&rsquo;ve adjusted the layout, let&rsquo;s reinstate
@@ -503,9 +465,9 @@ const page: Page = {
               </Column>
             </Columns>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="8. Polish!"
           detail={
             <Stack space="xlarge">
@@ -564,7 +526,7 @@ const page: Page = {
               </Text>
             </Stack>
           </Card>
-        </Step>
+        </ExampleStep>
       </Stack>
 
       <Divider />

@@ -1,4 +1,4 @@
-import React, { type ComponentProps } from 'react';
+import React from 'react';
 import type { Page } from '../../../../types';
 import {
   Heading,
@@ -20,37 +20,15 @@ import {
   Textarea,
 } from 'braid-src/lib/playroom/components';
 import Code from '../../../Code/Code';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import { PageTitle } from '../../../Seo/PageTitle';
 import source from '@braid-design-system/source.macro';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
-
-interface StepProps {
-  heading?: string;
-  detail: ReactNodeNoStrings;
-  children: ComponentProps<typeof Code>['children'];
-}
-const Step = ({ heading, detail, children }: StepProps) => (
-  <Stack space="xlarge">
-    {heading ? <LinkableHeading level="3">{heading}</LinkableHeading> : null}
-    {detail}
-    <Code>{children}</Code>
-  </Stack>
-);
+import { ExampleIntro, ExampleStep, ExampleTitle } from '../components';
 
 const page: Page = {
   title: 'Basic Form',
   element: (
     <TextStack>
-      <Stack space="medium">
-        <Heading level="3" weight="weak">
-          <PageTitle title="Basic Form Example" />
-          Examples /
-        </Heading>
-        <Heading component="h1" level="2">
-          Basic Form
-        </Heading>
-      </Stack>
+      <ExampleTitle title="Basic Form" />
 
       <Code collapsedByDefault>
         {() =>
@@ -84,28 +62,12 @@ const page: Page = {
         }
       </Code>
 
-      <Heading level="3">How do I build this example for myself?</Heading>
-
-      <Text>
-        Designs like this are rarely built top-to-bottom in a single pass.
-        Instead, they typically start very simple, with further details and
-        refinements added in layers.
-      </Text>
-      <Text>
-        To give you a sense of what this looks like, the following tutorial will
-        guide you through the design process that you might go through when
-        using <TextLink href="/playroom">Playroom</TextLink>.
-      </Text>
-
-      <Text>
-        At any stage you can click the &ldquo;Open in Playroom&rdquo; button
-        under the examples to view the design across themes and viewports.
-      </Text>
+      <ExampleIntro />
 
       <Divider />
 
       <Stack space="xxlarge">
-        <Step
+        <ExampleStep
           heading="1. Create the card with a heading"
           detail={
             <Text>
@@ -119,9 +81,9 @@ const page: Page = {
           <Card>
             <Heading level="3">Add role</Heading>
           </Card>
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="2. Add the first field"
           detail={
             <Text>
@@ -147,9 +109,9 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="3. Space out the content"
           detail={
             <Text>
@@ -179,9 +141,9 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="4. Add some more fields"
           detail={
             <Stack space="xlarge">
@@ -220,9 +182,9 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="5. Add additional information to a field"
           detail={
             <Stack space="xlarge">
@@ -261,9 +223,9 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Text component="p">
               While we&rsquo;re at it, we can also add a `description` to
@@ -296,9 +258,9 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="6. Add the button"
           detail={
             <Text>
@@ -333,9 +295,9 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           detail={
             <Stack space="xlarge">
               <Text component="p">
@@ -379,9 +341,9 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
 
-        <Step
+        <ExampleStep
           heading="7. Polish!"
           detail={
             <Stack space="xlarge">
@@ -429,7 +391,7 @@ const page: Page = {
               </Card>,
             )
           }
-        </Step>
+        </ExampleStep>
       </Stack>
 
       <Divider />
