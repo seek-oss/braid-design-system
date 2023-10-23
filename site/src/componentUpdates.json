@@ -3589,5 +3589,17 @@
   {
     "version": "32.12.3",
     "updates": []
+  },
+  {
+    "version": "32.12.4",
+    "updates": [
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink, TextLinkButton:** Ensure consistent underline thickness on weak links\n\nA subtle bug affecting weak links was resulting in a change in underline thickness on hover.\nThis bug has been fixed such that weak links now always have the same underline thickness regardless of hover state."
+      }
+    ]
   }
 ]

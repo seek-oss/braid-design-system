@@ -1,5 +1,14 @@
 # braid-design-system
 
+## 32.12.4
+
+### Patch Changes
+
+- **TextLink, TextLinkButton:** Ensure consistent underline thickness on weak links ([#1380](https://github.com/seek-oss/braid-design-system/pull/1380))
+
+  A subtle bug affecting weak links was resulting in a change in underline thickness on hover.
+  This bug has been fixed such that weak links now always have the same underline thickness regardless of hover state.
+
 ## 32.12.3
 
 ### Patch Changes
