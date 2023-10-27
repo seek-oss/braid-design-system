@@ -9,4 +9,4 @@ If there were, it would check the `userAgent` to determine if it was inside jsdo
 
 Node 21 has a `navigator` object, but it doesn't have a `userAgent` property, so this check was failing (cannot read property 'indexOf' of undefined).
 
-The userAgent check now includes an optional chaining operator to prevent this error.
+The "are we in JSDom" check in the BraidProvider has now been reworked slightly to account for the potentially existing but empty `navigator` object.
