@@ -70,8 +70,6 @@ export interface BraidProviderProps {
   children: ReactNode;
 }
 
-// Node 21 introduces an empty navigator object, so checks need a little more logic to them
-
 export const BraidProvider = ({
   theme,
   styleBody = true,
