@@ -86,7 +86,7 @@ export const BraidProvider = ({
   assert(
     inTestProvider ||
       typeof navigator === 'undefined' ||
-      typeof navigator.userAgent === 'undefined' ||
+      navigator.userAgent === undefined ||
       navigator.userAgent.indexOf('jsdom') === -1,
     `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
   );
