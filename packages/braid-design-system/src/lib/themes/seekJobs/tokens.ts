@@ -5,33 +5,6 @@ import { makeTokens } from '../baseTokens/apac';
 const brandAccent = palette.seekPink['500'];
 const brandAccentSoft = palette.seekPink['50'];
 
-const formAccentPalette = {
-  saturated: {
-    900: '#041659',
-    800: '#09257B',
-    700: '#103AA3',
-    600: '#164FC8',
-    500: '#236AE7',
-    400: '#5391F0',
-    300: '#87B5F5',
-    200: '#BFD8FA',
-    100: '#E0EEFD',
-    50: '#F2F9FE',
-  },
-  regular: {
-    900: '#081C60',
-    800: '#122F83',
-    700: '#1E47A9',
-    600: '#2A60CD',
-    500: '#4B84E7',
-    400: '#6AA1F3',
-    300: '#99BFF7',
-    200: '#C9DEFA',
-    100: '#E5F0FD',
-    50: '#F0F7FE',
-  },
-};
-
 export default makeTokens({
   name: 'seekJobs',
   displayName: 'SEEK Jobs',
@@ -176,9 +149,9 @@ export default makeTokens({
         xlarge: '24px',
       },
       color: {
-        formAccent: formAccentPalette.regular['700'],
-        formAccentLight: formAccentPalette.regular['300'],
-        focus: rgba(formAccentPalette.regular['300'], 0.7),
+        formAccent: palette.seekBlueLight['700'],
+        formAccentLight: palette.seekBlueLight['300'],
+        focus: rgba(palette.seekBlueLight['300'], 0.7),
         promote: palette.purple['700'],
         promoteLight: palette.purple['300'],
         neutralLight: palette.grey['100'],
@@ -186,8 +159,8 @@ export default makeTokens({
     },
     color: {
       foreground: {
-        formAccent: formAccentPalette.regular['700'],
-        formAccentLight: formAccentPalette.regular['300'],
+        formAccent: palette.seekBlueLight['700'],
+        formAccentLight: palette.seekBlueLight['300'],
         link: palette.grey['700'],
         linkHover: palette.grey['700'],
         linkLight: '#fff',
@@ -200,12 +173,12 @@ export default makeTokens({
       background: {
         body: '#fff',
         bodyDark: palette.grey['800'],
-        formAccent: formAccentPalette.regular['700'],
-        formAccentActive: darken(0.05, formAccentPalette.regular['700']),
-        formAccentHover: lighten(0.075, formAccentPalette.regular['700']),
-        formAccentSoft: formAccentPalette.regular['50'],
-        formAccentSoftActive: darken(0.05, formAccentPalette.regular['50']),
-        formAccentSoftHover: darken(0.025, formAccentPalette.regular['50']),
+        formAccent: palette.seekBlueLight['700'],
+        formAccentActive: darken(0.05, palette.seekBlueLight['700']),
+        formAccentHover: lighten(0.075, palette.seekBlueLight['700']),
+        formAccentSoft: palette.seekBlueLight['50'],
+        formAccentSoftActive: darken(0.05, palette.seekBlueLight['50']),
+        formAccentSoftHover: darken(0.025, palette.seekBlueLight['50']),
         promote: palette.purple['700'],
         promoteLight: palette.purple['100'],
         neutralLight: palette.grey['75'],
