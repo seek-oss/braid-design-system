@@ -3574,5 +3574,36 @@
   {
     "version": "32.12.1",
     "updates": []
+  },
+  {
+    "version": "32.12.2",
+    "updates": [
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Re-evaluate position when `trigger` or `children` changes\n\nFixes an issue where the tooltip would not re-evaluate its position when the `trigger` or `children` prop changed while the tooltip was already open."
+      }
+    ]
+  },
+  {
+    "version": "32.12.3",
+    "updates": []
+  },
+  {
+    "version": "32.12.4",
+    "updates": [
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink, TextLinkButton:** Ensure consistent underline thickness on weak links\n\nA subtle bug affecting weak links was resulting in a change in underline thickness on hover.\nThis bug has been fixed such that weak links now always have the same underline thickness regardless of hover state."
+      }
+    ]
+  },
+  {
+    "version": "32.12.5",
+    "updates": []
   }
 ]
