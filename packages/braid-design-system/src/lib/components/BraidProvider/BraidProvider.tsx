@@ -82,10 +82,12 @@ export const BraidProvider = ({
 
   useHideFocusRings(!(alreadyInBraidProvider || inTestProvider));
 
+  // Node 21 introduces an empty navigator object, so checks need a little more logic to them
   assert(
-    typeof navigator !== 'object' ||
-      navigator.userAgent.indexOf('jsdom') === -1 ||
-      inTestProvider,
+    inTestProvider ||
+      typeof navigator === 'undefined' ||
+      navigator.userAgent === undefined ||
+      navigator.userAgent.indexOf('jsdom') === -1,
     `Rendering 'BraidProvider' in Jest is not supported as it expects a browser environment. Please switch to 'BraidTestProvider'. See the docs for more info: https://seek-oss.github.io/braid-design-system/components/BraidTestProvider`,
   );
 

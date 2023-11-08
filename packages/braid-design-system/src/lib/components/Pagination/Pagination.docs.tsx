@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Pagination, Card, Notice } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';

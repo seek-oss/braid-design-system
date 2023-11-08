@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Link, Text, TextLink } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Logic',

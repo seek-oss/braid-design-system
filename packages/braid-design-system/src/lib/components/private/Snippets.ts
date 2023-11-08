@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import type { Snippets as PlayroomSnippets } from 'playroom';
 import type { Optional } from 'utility-types';
-import type { Source } from '../../utils/source.macro';
+import type { Source } from '@braid-design-system/source.macro';
 
 interface BraidSnippet
   extends Omit<Optional<PlayroomSnippets[number], 'group'>, 'code'> {

@@ -4,7 +4,7 @@ import React, { type ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Box, Notice, Stack, Strong, Text, TextLink, Tiles } from '..';
 import { vars } from '../../themes/vars.css';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Page } from './Page';
 import { heightLimit } from './Page.css';

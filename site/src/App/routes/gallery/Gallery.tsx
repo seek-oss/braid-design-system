@@ -46,7 +46,7 @@ import {
 import { Box } from 'braid-src/lib/components/Box/Box';
 import docsTheme from 'braid-src/entries/themes/docs';
 import { getHistory, isNew } from '../../Updates';
-import source from 'braid-design-system/src/lib/utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { CodeButton, formatSnippet } from '../../Code/Code';
 import type { ComponentExample } from '../../../types';
 import {

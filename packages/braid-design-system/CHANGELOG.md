@@ -1,5 +1,49 @@
 # braid-design-system
 
+## 32.12.5
+
+### Patch Changes
+
+- The Braid Provider contains some code to check that it's running in a browser context (otherwise a BraidTestProvider should be used). ([#1382](https://github.com/seek-oss/braid-design-system/pull/1382))
+
+  Part of this check was looking to see if there was a `navigator` object, which was not available in Node.
+  If there were, it would check the `userAgent` to determine if it was inside jsdom.
+
+  Node 21 has a `navigator` object, but it doesn't have a `userAgent` property, so this check was failing (cannot read property 'indexOf' of undefined).
+
+  The "are we in JSDom" check in the BraidProvider has now been reworked slightly to account for the potentially existing but empty `navigator` object.
+
+## 32.12.4
+
+### Patch Changes
+
+- **TextLink, TextLinkButton:** Ensure consistent underline thickness on weak links ([#1380](https://github.com/seek-oss/braid-design-system/pull/1380))
+
+  A subtle bug affecting weak links was resulting in a change in underline thickness on hover.
+  This bug has been fixed such that weak links now always have the same underline thickness regardless of hover state.
+
+## 32.12.3
+
+### Patch Changes
+
+- Fix an arbitrary code execution [vulnerability](https://github.com/seek-oss/braid-design-system/security/dependabot/25) ([#1377](https://github.com/seek-oss/braid-design-system/pull/1377))
+
+## 32.12.2
+
+### Patch Changes
+
+- **TooltipRenderer:** Re-evaluate position when `trigger` or `children` changes ([#1374](https://github.com/seek-oss/braid-design-system/pull/1374))
+
+  Fixes an issue where the tooltip would not re-evaluate its position when the `trigger` or `children` prop changed while the tooltip was already open.
+
+## 32.12.1
+
+### Patch Changes
+
+- When animating an SVG circle, it seems that the width changes slightly, which on Loader was causing the right-most one to push off the boundaries of the SVG View Box. ([#1370](https://github.com/seek-oss/braid-design-system/pull/1370))
+
+  This has been fixed so clipping should no longer occur.
+
 ## 32.12.0
 
 ### Minor Changes
