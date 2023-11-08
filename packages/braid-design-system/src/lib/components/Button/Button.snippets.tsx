@@ -6,7 +6,7 @@ import { Button } from '../../playroom/components';
 export const snippets: Snippets = [
   {
     name: 'Solid',
-    code: source(<Button>Button</Button>),
+    code: source(<Button variant="solid">Button</Button>),
   },
   {
     name: 'Ghost',
@@ -22,7 +22,11 @@ export const snippets: Snippets = [
   },
   {
     name: 'Critical Solid',
-    code: source(<Button tone="critical">Button</Button>),
+    code: source(
+      <Button tone="critical" variant="solid">
+        Button
+      </Button>,
+    ),
   },
   {
     name: 'Critical Ghost',
@@ -50,7 +54,11 @@ export const snippets: Snippets = [
   },
   {
     name: 'BrandAccent Solid',
-    code: source(<Button tone="brandAccent">Button</Button>),
+    code: source(
+      <Button tone="brandAccent" variant="solid">
+        Button
+      </Button>,
+    ),
   },
   {
     name: 'BrandAccent Ghost',
@@ -78,7 +86,11 @@ export const snippets: Snippets = [
   },
   {
     name: 'Neutral Solid',
-    code: source(<Button tone="neutral">Button</Button>),
+    code: source(
+      <Button tone="neutral" variant="solid">
+        Button
+      </Button>,
+    ),
   },
   {
     name: 'Neutral Ghost',
@@ -106,7 +118,11 @@ export const snippets: Snippets = [
   },
   {
     name: 'Small Solid',
-    code: source(<Button size="small">Button</Button>),
+    code: source(
+      <Button size="small" variant="solid">
+        Button
+      </Button>,
+    ),
   },
   {
     name: 'Small Ghost',
