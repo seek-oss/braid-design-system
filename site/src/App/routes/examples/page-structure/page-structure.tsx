@@ -87,22 +87,22 @@ const page: PageType = {
         {() => {
           const { code, value } = source(
             <Page
-              footer={<Placeholder label="Footer" height={90} />}
+              footer={<Placeholder label="Footer" height={30} />}
               footerPosition="belowFold"
             >
               <Stack space="large">
-                <Placeholder label="Header" height={40} />
+                <Placeholder label="Header" height={30} />
 
                 <PageBlock width="large">
                   <Text weight="strong">Page Heading</Text>
                 </PageBlock>
 
                 <PageBlock width="large">
-                  <Placeholder label="Section" height={50} />
+                  <Placeholder label="Section" height={45} />
                 </PageBlock>
 
                 <PageBlock width="large">
-                  <Placeholder label="Section" height={50} />
+                  <Placeholder label="Section" height={45} />
                 </PageBlock>
               </Stack>
             </Page>,
@@ -145,11 +145,11 @@ const page: PageType = {
           {() => {
             const { code, value } = source(
               <>
-                <Placeholder label="Header" height={40} />
+                <Placeholder label="Header" height={30} />
                 <Text weight="strong">Page Heading</Text>
-                <Placeholder label="Section" height={50} />
-                <Placeholder label="Section" height={50} />
-                <Placeholder label="Footer" height={90} />
+                <Placeholder label="Section" height={45} />
+                <Placeholder label="Section" height={45} />
+                <Placeholder label="Footer" height={30} />
               </>,
             );
             return {
@@ -183,11 +183,11 @@ const page: PageType = {
         >
           {() => {
             const { code, value } = source(
-              <Page footer={<Placeholder label="Footer" height={90} />}>
-                <Placeholder label="Header" height={40} />
+              <Page footer={<Placeholder label="Footer" height={30} />}>
+                <Placeholder label="Header" height={30} />
                 <Text weight="strong">Page Heading</Text>
-                <Placeholder label="Section" height={50} />
-                <Placeholder label="Section" height={50} />
+                <Placeholder label="Section" height={45} />
+                <Placeholder label="Section" height={45} />
               </Page>,
             );
             return {
@@ -224,13 +224,13 @@ const page: PageType = {
           {() => {
             const { code, value } = source(
               <Page
-                footer={<Placeholder label="Footer" height={90} />}
+                footer={<Placeholder label="Footer" height={30} />}
                 footerPosition="belowFold"
               >
-                <Placeholder label="Header" height={40} />
+                <Placeholder label="Header" height={30} />
                 <Text weight="strong">Page Heading</Text>
-                <Placeholder label="Section" height={50} />
-                <Placeholder label="Section" height={50} />
+                <Placeholder label="Section" height={45} />
+                <Placeholder label="Section" height={45} />
               </Page>,
             );
             return {
@@ -266,17 +266,17 @@ const page: PageType = {
           {() => {
             const { code, value } = source(
               <Page
-                footer={<Placeholder label="Footer" height={90} />}
+                footer={<Placeholder label="Footer" height={30} />}
                 footerPosition="belowFold"
               >
                 <Stack space="large">
-                  <Placeholder label="Header" height={40} />
+                  <Placeholder label="Header" height={30} />
 
                   <Text weight="strong">Page Heading</Text>
 
-                  <Placeholder label="Section" height={50} />
+                  <Placeholder label="Section" height={45} />
 
-                  <Placeholder label="Section" height={50} />
+                  <Placeholder label="Section" height={45} />
                 </Stack>
               </Page>,
             );
@@ -331,22 +331,22 @@ const page: PageType = {
           {() => {
             const { code, value } = source(
               <Page
-                footer={<Placeholder label="Footer" height={90} />}
+                footer={<Placeholder label="Footer" height={30} />}
                 footerPosition="belowFold"
               >
                 <Stack space="large">
-                  <Placeholder label="Header" height={40} />
+                  <Placeholder label="Header" height={30} />
 
                   <ContentBlock width="large">
                     <Text weight="strong">Page Heading</Text>
                   </ContentBlock>
 
                   <ContentBlock width="large">
-                    <Placeholder label="Section" height={50} />
+                    <Placeholder label="Section" height={45} />
                   </ContentBlock>
 
                   <ContentBlock width="large">
-                    <Placeholder label="Section" height={50} />
+                    <Placeholder label="Section" height={45} />
                   </ContentBlock>
                 </Stack>
               </Page>,
@@ -413,22 +413,22 @@ const page: PageType = {
           {() => {
             const { code, value } = source(
               <Page
-                footer={<Placeholder label="Footer" height={90} />}
+                footer={<Placeholder label="Footer" height={30} />}
                 footerPosition="belowFold"
               >
                 <Stack space="large">
-                  <Placeholder label="Header" height={40} />
+                  <Placeholder label="Header" height={30} />
 
                   <PageBlock width="large">
                     <Text weight="strong">Page Heading</Text>
                   </PageBlock>
 
                   <PageBlock width="large">
-                    <Placeholder label="Section" height={50} />
+                    <Placeholder label="Section" height={45} />
                   </PageBlock>
 
                   <PageBlock width="large">
-                    <Placeholder label="Section" height={50} />
+                    <Placeholder label="Section" height={45} />
                   </PageBlock>
                 </Stack>
               </Page>,
