@@ -3605,5 +3605,16 @@
   {
     "version": "32.12.5",
     "updates": []
+  },
+  {
+    "version": "32.13.0",
+    "updates": [
+      {
+        "updated": [
+          "seekJobs"
+        ],
+        "summary": "**seekJobs:** Update `formAccent` colour\n\nThe `formAccent` tone, used through our form fields and buttons, is being updated to a derivative of the SEEK brand blue.\n\nAs this update only relates to the `seekJobs` theme, consumers of other themes will not be affected."
+      }
+    ]
   }
 ]
