@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 32.13.0
+
+### Minor Changes
+
+- **seekJobs:** Update `formAccent` colour ([#1387](https://github.com/seek-oss/braid-design-system/pull/1387))
+
+  The `formAccent` tone, used through our form fields and buttons, is being updated to a derivative of the SEEK brand blue.
+
+  As this update only relates to the `seekJobs` theme, consumers of other themes will not be affected.
+
 ## 32.12.5
 
 ### Patch Changes
