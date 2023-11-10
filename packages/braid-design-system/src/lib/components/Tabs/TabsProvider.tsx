@@ -35,12 +35,12 @@ interface TabsContextValues extends State {
 
 export const TabsContext = createContext<TabsContextValues | null>(null);
 
-export type TabsProviderProps = {
+export interface TabsProviderProps {
   children: ReactNode;
   id: string;
   selectedItem?: string;
   onChange?: (selectedIndex: number, selectedItem?: string) => void;
-};
+}
 
 export const TabsProvider = ({
   children,

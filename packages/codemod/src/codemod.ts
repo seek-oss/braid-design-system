@@ -106,7 +106,7 @@ export function babelRecast({
 
 export interface CodemodResult {
   updated: boolean;
-  warnings: Array<string>;
+  warnings: string[];
   error?: string;
   filePath: string;
 }

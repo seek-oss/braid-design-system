@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Card, Inline, Tag, Strong, Text, TextLinkButton } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { IconLanguage, IconPromote } from '../icons';
 
 const docs: ComponentDocs = {

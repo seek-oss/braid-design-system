@@ -14,7 +14,7 @@ import type { InlineFieldProps } from '../private/InlineField/InlineField';
 
 export type RadioGroupBaseProps<Value = NonNullable<string | number>> =
   FieldGroupBaseProps & {
-    children: ReactElement<RadioItemProps>[];
+    children: Array<ReactElement<RadioItemProps>>;
     value: Value;
     onChange: (event: FormEvent<HTMLInputElement>) => void;
     name?: string;

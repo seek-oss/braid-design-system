@@ -22,7 +22,7 @@ export const TabPanels = ({
   }
 
   const { dispatch } = tabsContext;
-  const panelItems: Array<number> = [];
+  const panelItems: number[] = [];
 
   const panels = flattenChildren(children).map((panel, index) => {
     assert(

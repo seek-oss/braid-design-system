@@ -2,7 +2,7 @@ import dedent from 'dedent';
 import React, { Fragment } from 'react';
 import { responsiveStyle, vars, breakpoints } from 'braid-src/entries/css';
 import { Notice, Strong, Text, TextLink } from 'braid-src/lib/components';
-import source from '../../lib/utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
 

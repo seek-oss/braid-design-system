@@ -12,7 +12,7 @@ import {
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 type CheckboxProps = ComponentProps<typeof CheckboxStandalone>;
-const checkboxSizes: CheckboxProps['size'][] = ['small', 'standard'];
+const checkboxSizes: Array<CheckboxProps['size']> = ['small', 'standard'];
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],

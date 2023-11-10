@@ -28,9 +28,7 @@ type Actions =
 
 interface ToastState {
   toasts: InternalToast[];
-  queuedToasts: {
-    [dedupeKey: string]: InternalToast | undefined;
-  };
+  queuedToasts: Record<string, InternalToast | undefined>;
 }
 
 function reducer(state: ToastState, action: Actions): ToastState {

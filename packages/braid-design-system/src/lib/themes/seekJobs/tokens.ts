@@ -1,4 +1,4 @@
-import { lighten, darken, saturate, rgba } from 'polished';
+import { lighten, darken, rgba } from 'polished';
 import { palette } from '../../color/palette';
 import { makeTokens } from '../baseTokens/apac';
 
@@ -149,9 +149,9 @@ export default makeTokens({
         xlarge: '24px',
       },
       color: {
-        formAccent: palette.violet['500'],
-        formAccentLight: palette.violet['300'],
-        focus: rgba(palette.violet['300'], 0.7),
+        formAccent: palette.seekBlueLight['700'],
+        formAccentLight: palette.seekBlueLight['300'],
+        focus: rgba(palette.seekBlueLight['300'], 0.7),
         promote: palette.purple['700'],
         promoteLight: palette.purple['300'],
         neutralLight: palette.grey['100'],
@@ -159,8 +159,8 @@ export default makeTokens({
     },
     color: {
       foreground: {
-        formAccent: palette.violet['500'],
-        formAccentLight: palette.violet['300'],
+        formAccent: palette.seekBlueLight['700'],
+        formAccentLight: palette.seekBlueLight['300'],
         link: palette.grey['700'],
         linkHover: palette.grey['700'],
         linkLight: '#fff',
@@ -173,12 +173,12 @@ export default makeTokens({
       background: {
         body: '#fff',
         bodyDark: palette.grey['800'],
-        formAccent: palette.violet['500'],
-        formAccentActive: darken(0.05, palette.violet['500']),
-        formAccentHover: saturate(0.5, lighten(0.075, palette.violet['500'])),
-        formAccentSoft: palette.violet['50'],
-        formAccentSoftActive: darken(0.05, palette.violet['50']),
-        formAccentSoftHover: darken(0.025, palette.violet['50']),
+        formAccent: palette.seekBlueLight['700'],
+        formAccentActive: darken(0.05, palette.seekBlueLight['700']),
+        formAccentHover: lighten(0.075, palette.seekBlueLight['700']),
+        formAccentSoft: palette.seekBlueLight['50'],
+        formAccentSoftActive: darken(0.05, palette.seekBlueLight['50']),
+        formAccentSoftHover: darken(0.025, palette.seekBlueLight['50']),
         promote: palette.purple['700'],
         promoteLight: palette.purple['100'],
         neutralLight: palette.grey['75'],

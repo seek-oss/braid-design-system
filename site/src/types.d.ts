@@ -2,7 +2,7 @@ import type { ReactNode, ReactElement } from 'react';
 import type { HelmetData } from 'react-helmet-async';
 import type { RouteProps } from 'react-router';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import type { Source } from 'braid-design-system/src/lib/utils/source.macro';
+import type { Source } from '@braid-design-system/source.macro';
 import type { BoxProps } from 'braid-src/lib/components/Box/Box';
 import type useScope from 'braid-src/lib/playroom/useScope';
 
@@ -16,7 +16,7 @@ export interface RenderContext {
   routerBasename: string;
   appConfig: AppConfig;
   renderDate: number;
-  versionMap: { [version: string]: string };
+  versionMap: Record<string, string>;
   currentVersion: string;
   helmetContext: HelmetData['context'] | Record<string, never>;
 }
@@ -83,11 +83,11 @@ export interface ComponentExample {
 export interface ComponentScreenshot {
   screenshotWidths: Array<320 | 768 | 992 | 1200>;
   screenshotOnlyInWireframe?: boolean;
-  examples: {
+  examples: Array<{
     label?: string;
     background?: NonNullable<BoxProps['background']>;
     gutter?: boolean;
     Example?: (props: ExampleProps) => ReactElement;
     Container?: (props: { children: ReactNode }) => ReactElement;
-  }[];
+  }>;
 }

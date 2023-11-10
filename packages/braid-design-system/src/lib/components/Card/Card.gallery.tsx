@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentExample } from 'site/types';
 import { Card, Text, Stack, Tiles } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';
 
 export const galleryItems: ComponentExample[] = [

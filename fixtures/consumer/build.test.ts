@@ -10,7 +10,7 @@ import { cssFileFilter as isVanillaFile } from '@vanilla-extract/integration';
 const { SideEffectsFlagPlugin } = webpack.optimize;
 
 describe('build', () => {
-  const cache = new Map();
+  const cache = new Map<string, RegExp>();
   const checkSideEffects = (filePath: string): boolean => {
     // format the path the way Webpack does it internally
     const relativePath = `./${filePath}`;
@@ -20,7 +20,7 @@ describe('build', () => {
       braidPkg.sideEffects,
       cache,
     );
-    return hasSideEffects;
+    return Boolean(hasSideEffects);
   };
 
   const ignoreVanillaFiles = (filePath: string) =>
@@ -34,7 +34,7 @@ describe('build', () => {
     // eslint-disable-next-line no-console
     console.log('Running `pnpm build`...');
     await promisify(exec)('pnpm build');
-  });
+  }, 60_000);
 
   test('side-effects from src', async () => {
     const srcFiles = await glob(

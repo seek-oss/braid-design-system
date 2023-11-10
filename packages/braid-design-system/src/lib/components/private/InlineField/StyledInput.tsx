@@ -24,7 +24,7 @@ export type CheckboxChecked =
   | 'mixed';
 
 type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
-export type StyledInputProps = {
+export interface StyledInputProps {
   id: NonNullable<InputElementProps['id']>;
   onChange: NonNullable<InputElementProps['onChange']>;
   value?: InputElementProps['value'];
@@ -37,7 +37,7 @@ export type StyledInputProps = {
   data?: DataAttributeMap;
   required?: boolean;
   size?: Size;
-};
+}
 
 export type PrivateStyledInputProps = StyledInputProps & {
   type: 'radio' | 'checkbox';

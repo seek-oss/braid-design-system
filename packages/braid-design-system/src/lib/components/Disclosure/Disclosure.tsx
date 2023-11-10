@@ -16,14 +16,14 @@ import buildDataAttributes, {
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 
-export type DisclosureBaseProps = {
+export interface DisclosureBaseProps {
   expandLabel: string;
   collapseLabel?: string;
   space?: ResponsiveSpace;
   weight?: TextLinkButtonProps['weight'];
   data?: DataAttributeMap;
   children: ReactNode;
-};
+}
 export type DisclosureProps = DisclosureBaseProps & UseDisclosureProps;
 export type { DisclosureStateProps } from './useDisclosure';
 

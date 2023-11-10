@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import {
   type RenderResult,
   render,

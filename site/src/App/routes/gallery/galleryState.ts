@@ -6,11 +6,11 @@ export const zoom = atom({
   default: 1,
 });
 
-export type FitToScreenDimensions = {
+export interface FitToScreenDimensions {
   x: number;
   y: number;
   scale: number;
-};
+}
 export const fitToScreenDimensions = atom<FitToScreenDimensions | null>({
   key: 'fitToScreenDimensions',
   default: null,

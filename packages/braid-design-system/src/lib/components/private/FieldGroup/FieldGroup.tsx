@@ -31,7 +31,7 @@ export type FieldLabelVariant =
       tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
     };
 
-export type FieldGroupBaseProps = {
+export interface FieldGroupBaseProps {
   id: NonNullable<FormElementProps['id']>;
   disabled?: FormElementProps['disabled'];
   description?: FieldLabelProps['description'];
@@ -40,7 +40,7 @@ export type FieldGroupBaseProps = {
   tone?: FieldMessageProps['tone'];
   required?: boolean;
   data?: DataAttributeMap;
-};
+}
 
 interface FieldGroupRenderProps {
   disabled?: FieldGroupBaseProps['disabled'];

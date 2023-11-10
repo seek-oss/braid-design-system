@@ -27,34 +27,35 @@ const stringAliases: Record<string, string> = {
 
 export interface NormalisedInterface {
   type: 'interface';
-  props: {
-    [propName: string]: {
+  props: Record<
+    string,
+    {
       propName: string;
       required: boolean;
       type: NormalisedPropType;
       deprecated: boolean;
       tags: Array<{ name: string; text: string }>;
       description?: string;
-    };
-  };
+    }
+  >;
 }
 
 export type NormalisedPropType =
   | string
-  | { type: 'union'; types: Array<NormalisedPropType> }
-  | { type: 'alias'; alias: string; params: Array<NormalisedPropType> }
+  | { type: 'union'; types: NormalisedPropType[] }
+  | { type: 'alias'; alias: string; params: NormalisedPropType[] }
   | NormalisedInterface;
 
-export type ComponentDoc = {
+export interface ComponentDoc {
   exportType: 'component';
   props: NormalisedInterface;
-};
+}
 
-export type HookDoc = {
+export interface HookDoc {
   exportType: 'hook';
   params: NormalisedPropType[];
   returnType: NormalisedPropType;
-};
+}
 
 export type ExportDoc = ComponentDoc | HookDoc;
 

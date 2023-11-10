@@ -22,7 +22,7 @@ import {
 import Code from '../../../Code/Code';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
-import source from 'braid-design-system/src/lib/utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
 
 interface StepProps {

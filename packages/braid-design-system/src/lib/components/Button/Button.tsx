@@ -35,8 +35,15 @@ export const buttonVariants = [
   'transparent',
 ] as const;
 
+export const buttonTones = [
+  'formAccent',
+  'brandAccent',
+  'critical',
+  'neutral',
+] as const;
+
 type ButtonSize = 'standard' | 'small';
-type ButtonTone = 'formAccent' | 'brandAccent' | 'critical' | 'neutral';
+type ButtonTone = (typeof buttonTones)[number];
 type ButtonVariant = (typeof buttonVariants)[number];
 export interface ButtonStyleProps {
   size?: ButtonSize;
@@ -67,7 +74,7 @@ export interface ButtonProps extends ButtonStyleProps {
   data?: DataAttributeMap;
 }
 
-type ButtonStyles = {
+interface ButtonStyles {
   textTone: TextProps['tone'];
   background:
     | ColorContrastValue<BoxBackgroundVariant>
@@ -82,7 +89,7 @@ type ButtonStyles = {
     | BoxBackgroundVariant
     | undefined;
   boxShadow: BoxShadow | undefined;
-};
+}
 
 const variants: Record<ButtonVariant, Record<ButtonTone, ButtonStyles>> = {
   solid: {

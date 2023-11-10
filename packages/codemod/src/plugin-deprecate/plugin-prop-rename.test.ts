@@ -4,7 +4,7 @@ import dedent from 'dedent';
 import { v31_11 } from './deprecationMaps/v31-11';
 import plugin from './plugin-prop-rename';
 
-const tests: Parameters<typeof pluginTester>[0]['tests'] = [
+const tests: NonNullable<Parameters<typeof pluginTester>[0]>['tests'] = [
   {
     title: 'Visit Braid component only',
     code: dedent`

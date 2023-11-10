@@ -8,7 +8,7 @@ type ReactChild = ReactElement | string | number;
 export default function flattenChildren(
   children: ReactNode,
   depth: number = 0,
-  keys: (string | number)[] = [],
+  keys: Array<string | number> = [],
 ): ReactChild[] {
   return Children.toArray(children).reduce(
     (acc: ReactChild[], node, nodeIndex) => {

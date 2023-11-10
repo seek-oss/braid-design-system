@@ -74,7 +74,7 @@ export const useColoredBoxClasses = ({
     customLight: 'light',
   } as const;
 
-  const classList: Array<string> = [];
+  const classList: string[] = [];
 
   if (boxShadow) {
     const normalisedBoxShadows = normalisedBoxShadow(boxShadow);

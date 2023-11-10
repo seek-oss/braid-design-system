@@ -16,7 +16,7 @@ import {
   Toggle,
   IconArrow,
 } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 const choosingRightButtonDoc = [
   {

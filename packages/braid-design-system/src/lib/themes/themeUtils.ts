@@ -2,7 +2,9 @@ import type { StyleRule } from '@vanilla-extract/css';
 import omit from 'lodash/omit';
 import type { Breakpoint } from '../css/breakpoints';
 
-type RequiredTokens = { breakpoint: Record<Breakpoint, number> };
+interface RequiredTokens {
+  breakpoint: Record<Breakpoint, number>;
+}
 type StyleWithoutMediaQueries = Exclude<StyleRule['@media'], undefined>[string];
 
 export const makeThemeUtils = (tokens: RequiredTokens) => {

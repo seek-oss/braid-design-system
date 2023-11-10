@@ -38,7 +38,7 @@ const itemSpaceForSize = {
   large: 'large',
 } as const;
 
-export type AccordionItemBaseProps = {
+export interface AccordionItemBaseProps {
   label: string;
   children: ReactNode;
   size?: TextProps['size'];
@@ -47,7 +47,7 @@ export type AccordionItemBaseProps = {
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
   badge?: ReactElement<BadgeProps>;
-};
+}
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
 export type AccordionItemStateProps = DisclosureStateProps;

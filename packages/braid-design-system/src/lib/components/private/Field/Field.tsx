@@ -38,7 +38,7 @@ export type FieldLabelVariant =
       tertiaryLabel?: FieldLabelProps['tertiaryLabel'];
     };
 
-export type FieldBaseProps = {
+export interface FieldBaseProps {
   id: NonNullable<FormElementProps['id']>;
   value?: FormElementProps['value'];
   labelId?: string;
@@ -56,7 +56,7 @@ export type FieldBaseProps = {
   icon?: ReactNode;
   prefix?: string;
   required?: boolean;
-};
+}
 
 type PassthroughProps =
   | 'id'

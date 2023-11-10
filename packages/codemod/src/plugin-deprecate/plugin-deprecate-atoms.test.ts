@@ -4,7 +4,7 @@ import { v31 } from './deprecationMaps/v31';
 
 import plugin from './plugin-deprecate-atoms';
 
-const tests: Parameters<typeof pluginTester>[0]['tests'] = [
+const tests: NonNullable<Parameters<typeof pluginTester>[0]>['tests'] = [
   {
     title: 'Visit Braid atoms calls',
     code: dedent`

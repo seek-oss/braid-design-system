@@ -21,15 +21,15 @@ export const validCardComponents = [
   'section',
 ] as const;
 
-type SimpleCardRounding = {
+interface SimpleCardRounding {
   rounded?: boolean;
   roundedAbove?: never;
-};
+}
 
-type ResponsiveCardRounding = {
+interface ResponsiveCardRounding {
   rounded?: never;
   roundedAbove?: ResponsiveRangeProps['above'];
-};
+}
 
 const borderRadius = 'large';
 

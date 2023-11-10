@@ -75,15 +75,15 @@ const CharacterBullet = ({ length = 1, children }: CharacterBulletProps) => (
   </Box>
 );
 
-type ListTypeCharacter = {
+interface ListTypeCharacter {
   type?: 'bullet' | 'number' | 'alpha' | 'roman';
   icon?: never;
-};
+}
 
-type ListTypeIcon = {
+interface ListTypeIcon {
   type: 'icon';
   icon: ReactNode;
-};
+}
 
 export type ListProps = {
   children: StackProps['children'];

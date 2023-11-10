@@ -5,11 +5,11 @@ import { differenceInMonths, format } from 'date-fns';
 import releases from '../../componentUpdates.json';
 
 function memo<P extends string | number, R>(
-  fn: (...params: Array<P>) => R,
-): (...params: Array<P>) => R {
+  fn: (...params: P[]) => R,
+): (...params: P[]) => R {
   const cache = new Map<string, R>();
 
-  return (...params: Array<P>) => {
+  return (...params: P[]) => {
     const key = params.join('');
 
     const cachedValue = cache.get(key);
@@ -28,38 +28,38 @@ function memo<P extends string | number, R>(
 
 interface New {
   summary: string;
-  new: Array<string>;
+  new: string[];
 }
 
 interface Updated {
   summary: string;
-  updated: Array<string>;
+  updated: string[];
 }
 
 type Update = Updated | New;
 
 export interface Release {
   version: string;
-  updates: Array<Update>;
+  updates: Update[];
 }
 
 let renderDate: Date;
 let currentVersion: string;
-let versionMap: { [version: string]: string };
+let versionMap: Record<string, string>;
 let newThings: Set<string>;
 let updatedThings: Set<string>;
 let componentReleases: Map<string, Set<string>>;
 
-const intersection = (a: Array<string>, b: Array<string>) =>
+const intersection = (a: string[], b: string[]) =>
   a.filter((value) => b.includes(value));
-const hasIntersection = (a: Array<string>, b: Array<string>) =>
+const hasIntersection = (a: string[], b: string[]) =>
   intersection(a, b).length > 0;
 
-const allReleases = releases as Array<Release>;
+const allReleases = releases as Release[];
 
 export const initUpdates = (
   newRenderDate: Date,
-  newVersionMap: { [version: string]: string },
+  newVersionMap: Record<string, string>,
   newCurrentVersion: string,
 ) => {
   renderDate = newRenderDate;
@@ -110,20 +110,20 @@ export const getCurrentVersionInfo = () => ({
   date: versionMap[currentVersion],
 });
 
-const getNew = memo((...names: Array<string>) =>
+const getNew = memo((...names: string[]) =>
   intersection(names, Array.from(newThings.values())),
 );
 
-export const isNew = (...names: Array<string>) => getNew(...names).length > 0;
+export const isNew = (...names: string[]) => getNew(...names).length > 0;
 
-const getUpdated = memo((...names: Array<string>) =>
+const getUpdated = memo((...names: string[]) =>
   intersection(names, Array.from(updatedThings.values())),
 );
 
-export const isUpdated = (...names: Array<string>) =>
+export const isUpdated = (...names: string[]) =>
   getUpdated(...names).length > 0;
 
-export const getHistory = memo((...names: Array<string>) => {
+export const getHistory = memo((...names: string[]) => {
   let releventReleases = new Set<string>();
 
   for (const name of names) {

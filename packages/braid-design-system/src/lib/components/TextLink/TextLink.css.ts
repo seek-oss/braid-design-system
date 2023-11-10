@@ -27,16 +27,18 @@ const weakLinkVars = assignVars(textLinkVars, {
   colorHover: 'inherit',
 });
 
+const textDecorationThickness = '0.08em';
+
 export const base = style({
   color: textLinkVars.color,
   textDecoration: vars.linkDecoration,
-  textDecorationThickness: '0.08em',
+  textDecorationThickness,
   textUnderlineOffset: 3,
   ':hover': {
     color: textLinkVars.colorHover,
     textDecoration: 'underline',
     /*
-      Duplicating the thickness rule due to inconsistent support
+      Duplicating the thickness property due to inconsistent support
       for shorthand properties of `text-decoration`. Without this,
       applying the above decoration rule resets the thickness in
       browsers that do support shorthands.
@@ -44,7 +46,7 @@ export const base = style({
       We also cannot use the long-form `text-decoration-line` due
       to browser support policy of Edge 16+.
     */
-    textDecorationThickness: '0.08em',
+    textDecorationThickness,
   },
   ':focus-visible': {
     color: textLinkVars.colorHover,
@@ -57,6 +59,14 @@ export const base = style({
 export const weakLink = style({
   vars: weakLinkVars,
   textDecoration: 'underline',
+  /*
+    Duplicating the thickness property again as the `textDecoration`
+    property above overrides the `textDecorationThickness` property
+    in the `base` style due to CSS rule ordering. Without this property,
+    weak links were receiving `auto` thickness instead of the desired
+    value.
+  */
+  textDecorationThickness,
 });
 
 export const regularLinkLightMode = styleVariants({

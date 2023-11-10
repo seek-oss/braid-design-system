@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Snippets } from '../private/Snippets';
 import { IconHelp, MonthPicker } from '../../playroom/components';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
 export const snippets: Snippets = [

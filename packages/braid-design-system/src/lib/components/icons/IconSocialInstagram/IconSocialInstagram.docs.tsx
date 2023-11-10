@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { iconDocumentation } from '../iconCommon.docs';
-import source from '../../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { IconSocialInstagram, Heading, Stack } from '../../';
 
 const docs: ComponentDocs = {

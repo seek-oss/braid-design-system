@@ -17,7 +17,6 @@ module.exports = {
           {
             patterns: [
               'braid-design-system**',
-              '!braid-design-system/src/lib/utils/source.macro',
               'braid-src/**',
               'site/**',
               '**/site/**',

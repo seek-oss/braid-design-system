@@ -1,5 +1,6 @@
 {
   "files.associations": {
     "*ignore-sync": "ini"
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Box, PageBlock, TextLink } from '../';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { gutters, validPageBlockComponents } from './PageBlock';

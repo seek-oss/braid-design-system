@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`source.macro 1. smoke test: 1. smoke test 1`] = `
+
+
+import source from './source.macro';
+
+const result = source({
+  // comment
+  hello: () => 'world'
+});
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = {
+  code: "{\\n  // comment\\n  hello: () => 'world'\\n}",
+  value: {
+    // comment
+    hello: () => 'world',
+  },
+};
+
+`;
+
+exports[`source.macro 2. react component: 2. react component 1`] = `
+
+
+import source from './source.macro';
+
+const result = source(
+  <div />
+);
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = {
+  code: '<div />',
+  value: <div />,
+};
+
+`;
+
+exports[`source.macro 3. ignores types: 3. ignores types 1`] = `
+
+
+import type { Source } from './source.macro';
+
+const foo = 'bar';
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = 'bar';
+
+`;
+
+exports[`source.macro 4. with new lines: 4. with new lines 1`] = `
+
+
+import source from './source.macro';
+
+const options = source(() => {
+  sideEffect();
+
+  return [
+    { value: "1", label: "Option 1" },
+    { value: "2", label: "Option 2" },
+    { value: "3", label: "Option 3" },
+  ];
+});
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const options = {
+  code: '() => {\\n  sideEffect();\\n\\n  return [\\n  { value: "1", label: "Option 1" },\\n  { value: "2", label: "Option 2" },\\n  { value: "3", label: "Option 3" }];\\n\\n}',
+  value: () => {
+    sideEffect();
+    return [
+      {
+        value: '1',
+        label: 'Option 1',
+      },
+      {
+        value: '2',
+        label: 'Option 2',
+      },
+      {
+        value: '3',
+        label: 'Option 3',
+      },
+    ];
+  },
+};
+
+`;
+
+exports[`source.macro 5. code only: 5. code only 1`] = `
+
+
+import source from './source.macro';
+
+const result = source({
+  hello: () => 'world',
+  some: 'value',
+});
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = "{\\n  hello: () => 'world',\\n  some: 'value'\\n}";
+
+`;

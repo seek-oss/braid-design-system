@@ -3,10 +3,10 @@ import type { BoxBackgroundVariant } from './Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { mapColorModeValue } from '../../css/atoms/sprinkles.css';
 
-type BackgroundContextValue = {
+interface BackgroundContextValue {
   lightMode: BoxBackgroundVariant;
   darkMode: BoxBackgroundVariant;
-};
+}
 
 const backgroundContext = createContext<BackgroundContextValue>({
   lightMode: 'body',

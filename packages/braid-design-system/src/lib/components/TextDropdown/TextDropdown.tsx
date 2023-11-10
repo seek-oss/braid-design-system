@@ -21,7 +21,7 @@ export interface TextDropdownProps<Value> {
   value: Value;
   onChange: (value: Value) => void;
   onBlur?: () => void;
-  options: TextDropdownValue<Value>[];
+  options: Array<TextDropdownValue<Value>>;
   label: string;
   data?: DataAttributeMap;
 }

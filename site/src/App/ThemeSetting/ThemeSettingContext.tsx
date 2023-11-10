@@ -33,7 +33,7 @@ export function useThemeSettings() {
   return themeSettings;
 }
 
-export const documentedThemes = Object.keys(themes) as Array<ThemeKey>;
+export const documentedThemes = Object.keys(themes) as ThemeKey[];
 const useThemePreference = () => {
   const [theme, setTheme] = useLocalStorage<ThemeKey>(
     'theme-preference',

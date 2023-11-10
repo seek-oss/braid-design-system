@@ -9,7 +9,9 @@ module.exports = createMacro(
 
     references.default.forEach(({ parentPath }) => {
       const value = parentPath.node.arguments[0] || t.identifier('undefined');
-      const code = t.stringLiteral(generate(value).code);
+      const code = t.stringLiteral(
+        generate(value, { retainLines: true }).code.replace(/^\n+/, ''),
+      );
 
       return parentPath.replaceWith(
         codeOnly

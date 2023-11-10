@@ -6,7 +6,7 @@ import {
   IconSearch,
   IconHelp,
 } from '../../playroom/components';
-import source from '../../utils/source.macro';
+import source from '@braid-design-system/source.macro';
 
 export const snippets: Snippets = [
   {
