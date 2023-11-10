@@ -189,16 +189,19 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Tooltip Position',
+      label: 'Tooltip Placement',
       background: 'surface',
       description: (
         <>
           <Text>
-            The preferred tooltip position can be specified via the{' '}
-            <Strong>tooltipPosition</Strong> prop, which accepts either{' '}
-            <Strong>bottom</Strong> or <Strong>top</Strong>. By default, the
-            tooltip will prefer to render above the button depending on the
-            available screen area.
+            Tooltips are positioned above the <Strong>ButtonIcon</Strong> by
+            default, but you can configure this via the{' '}
+            <Strong>tooltipPlacement</Strong> prop which accepts either{' '}
+            <Strong>top</Strong> or <Strong>bottom</Strong>. See{' '}
+            <TextLink href="/components/TooltipRenderer">
+              TooltipRenderer
+            </TextLink>{' '}
+            for more information.
           </Text>
         </>
       ),
@@ -209,9 +212,9 @@ const docs: ComponentDocs = {
               <ButtonIcon
                 size="standard"
                 icon={<IconArrow direction={'up'} />}
-                label="Top tooltip"
+                label="The tooltipPlacement is “top”"
                 id="size-1"
-                tooltipPosition="top"
+                tooltipPlacement="top"
               />
               <Text tone="secondary" size="xsmall">
                 TOP
@@ -221,9 +224,9 @@ const docs: ComponentDocs = {
               <ButtonIcon
                 size="standard"
                 icon={<IconArrow direction={'down'} />}
-                label="Bottom tooltip"
+                label="The tooltipPlacement is “bottom”"
                 id="size-2"
-                tooltipPosition="bottom"
+                tooltipPlacement="bottom"
               />
               <Text tone="secondary" size="xsmall">
                 BOTTOM
