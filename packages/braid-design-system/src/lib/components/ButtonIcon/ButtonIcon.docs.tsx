@@ -20,6 +20,7 @@ import {
   IconOverflow,
   IconAdd,
   Card,
+  IconArrow,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -182,6 +183,50 @@ const docs: ComponentDocs = {
               />
               <Text tone="secondary" size="xsmall">
                 SECONDARY
+              </Text>
+            </Inline>
+          </Stack>,
+        ),
+    },
+    {
+      label: 'Tooltip Position',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            The preferred tooltip position can be specified via the{' '}
+            <Strong>tooltipPosition</Strong> prop, which accepts either{' '}
+            <Strong>bottom</Strong> or <Strong>top</Strong>. By default, the
+            tooltip will prefer to render above the button depending on the
+            available screen area.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="gutter">
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
+                size="standard"
+                icon={<IconArrow direction={'up'} />}
+                label="Top tooltip"
+                id="size-1"
+                tooltipPosition="top"
+              />
+              <Text tone="secondary" size="xsmall">
+                TOP
+              </Text>
+            </Inline>
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
+                size="standard"
+                icon={<IconArrow direction={'down'} />}
+                label="Bottom tooltip"
+                id="size-2"
+                tooltipPosition="bottom"
+              />
+              <Text tone="secondary" size="xsmall">
+                BOTTOM
               </Text>
             </Inline>
           </Stack>,
