@@ -68,7 +68,7 @@ const PrivateButtonIcon = forwardRef<
       variant = 'soft',
       type = 'button',
       bleed,
-      tooltipPlacement = `bottom`,
+      tooltipPlacement,
       onClick,
       onMouseDown,
       onKeyUp,
