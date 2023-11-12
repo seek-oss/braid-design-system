@@ -1,9 +1,8 @@
-import robotoMetrics from '@capsizecss/metrics/roboto';
 import type { DeepPartial } from 'utility-types';
 import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash/merge';
 import { palette } from '../../color/palette';
-import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
+import type { BraidTokens } from '../tokenType';
 
 interface MakeTokensOptions {
   name: string;
@@ -19,19 +18,6 @@ interface MakeTokensOptions {
   tokenOverrides?: DeepPartial<BraidTokens>;
 }
 
-const legacyViolet = {
-  900: '#1E0B65',
-  800: '#341B87',
-  700: '#512EAA',
-  600: '#6C41CE',
-  500: '#8B5CEB',
-  400: '#AD84F2',
-  300: '#C6ACF5',
-  200: '#E1D1F9',
-  100: '#F1E8FD',
-  50: '#FAF5FE',
-};
-
 export const makeTokens = ({
   name,
   displayName,
@@ -45,22 +31,26 @@ export const makeTokens = ({
   brandAccentSoftHover,
   tokenOverrides = {},
 }: MakeTokensOptions): BraidTokens => {
-  const formAccent = palette.indigo['500'];
   const critical = palette.red['700'];
-  const focus = rgba(palette.indigo['300'], 0.7);
   const white = '#fff';
 
   const tokens: BraidTokens = {
     name,
     displayName,
-    legacy: true,
+    legacy: false,
     typography: {
-      fontFamily: `Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif`,
-      webFont: null,
-      fontMetrics: extractFontMetricsForTheme(robotoMetrics),
+      fontFamily: 'SeekSans, "SeekSans Fallback", Arial',
+      webFont: 'https://www.seek.com.au/static/shared-web/seeksans.css',
+      fontMetrics: {
+        capHeight: 783,
+        ascent: 1057,
+        descent: -274,
+        lineGap: 0,
+        unitsPerEm: 1000,
+      },
       fontWeight: {
         regular: 400,
-        medium: 600,
+        medium: 500,
         strong: 700,
       },
       heading: {
@@ -72,87 +62,98 @@ export const makeTokens = ({
           '1': {
             mobile: {
               fontSize: 28,
-              rows: 9,
+              lineGap: 11,
             },
             tablet: {
-              fontSize: 42,
-              rows: 11,
+              fontSize: 36,
+              lineGap: 14,
             },
           },
           '2': {
             mobile: {
-              fontSize: 21,
-              rows: 8,
+              fontSize: 24,
+              lineGap: 11,
             },
             tablet: {
-              fontSize: 28,
-              rows: 9,
+              fontSize: 30,
+              lineGap: 13,
             },
           },
           '3': {
             mobile: {
-              fontSize: 21,
-              rows: 7,
+              fontSize: 22,
+              lineGap: 10,
             },
             tablet: {
-              fontSize: 21,
-              rows: 7,
+              fontSize: 24,
+              lineGap: 11,
             },
           },
           '4': {
             mobile: {
-              fontSize: 18,
-              rows: 7,
+              fontSize: 20,
+              lineGap: 9,
             },
             tablet: {
-              fontSize: 18,
-              rows: 7,
+              fontSize: 20,
+              lineGap: 9,
             },
           },
         },
       },
       text: {
-        xsmall: {
+        large: {
           mobile: {
-            fontSize: 12,
-            rows: 5,
+            fontSize: 18,
+            lineGap: 13,
           },
           tablet: {
-            fontSize: 12,
-            rows: 5,
-          },
-        },
-        small: {
-          mobile: {
-            fontSize: 14,
-            rows: 5,
-          },
-          tablet: {
-            fontSize: 14,
-            rows: 5,
+            fontSize: 18,
+            lineGap: 13,
           },
         },
         standard: {
           mobile: {
             fontSize: 16,
-            rows: 6,
+            lineGap: 12,
           },
           tablet: {
             fontSize: 16,
-            rows: 6,
+            lineGap: 12,
           },
         },
-        large: {
+        small: {
           mobile: {
-            fontSize: 18,
-            rows: 7,
+            fontSize: 14,
+            lineGap: 10,
           },
           tablet: {
-            fontSize: 18,
-            rows: 7,
+            fontSize: 14,
+            lineGap: 10,
+          },
+        },
+        xsmall: {
+          mobile: {
+            fontSize: 12,
+            lineGap: 9,
+          },
+          tablet: {
+            fontSize: 12,
+            lineGap: 9,
           },
         },
       },
+    },
+    space: {
+      gutter: 8,
+      xxsmall: 2,
+      xsmall: 3,
+      small: 4,
+      medium: 6,
+      large: 8,
+      xlarge: 12,
+      xxlarge: 16,
+      xxxlarge: 24,
     },
     contentWidth: {
       xsmall: 400,
@@ -161,35 +162,18 @@ export const makeTokens = ({
       large: 1280,
     },
     grid: 4,
-    touchableSize: 11,
-    space: {
-      gutter: 6,
-      xxsmall: 1,
-      xsmall: 2,
-      small: 3,
-      medium: 5,
-      large: 8,
-      xlarge: 12,
-      xxlarge: 24,
-      xxxlarge: 30,
-    },
-    transforms: {
-      touchable: 'scale(0.95)',
-    },
-    transitions: {
-      fast: 'transform .125s ease, opacity .125s ease',
-      touchable: 'transform 0.2s cubic-bezier(0.02, 1.505, 0.745, 1.235)',
-    },
+    focusRingSize: 6,
+    touchableSize: 12,
     border: {
-      radius: {
-        small: '2px',
-        standard: '4px',
-        large: '6px',
-        xlarge: '10px',
-      },
       width: {
-        standard: 1,
-        large: 2,
+        standard: 2,
+        large: 4,
+      },
+      radius: {
+        small: '4px',
+        standard: '8px',
+        large: '16px',
+        xlarge: '24px',
       },
       color: {
         brandAccent,
@@ -199,21 +183,27 @@ export const makeTokens = ({
         critical,
         criticalLight: palette.red['300'],
         field: palette.grey['400'],
-        focus,
-        formAccent,
-        formAccentLight: palette.indigo['300'],
+        focus: rgba(palette.seekBlueLight['300'], 0.7),
+        formAccent: palette.seekBlueLight['700'],
+        formAccentLight: palette.seekBlueLight['300'],
         info: palette.blue['700'],
         infoLight: palette.blue['300'],
         neutral: palette.grey['700'],
-        neutralLight: palette.grey['200'],
         neutralInverted: white,
+        neutralLight: palette.grey['100'],
         positive: palette.mint['700'],
         positiveLight: palette.mint['300'],
-        promote: legacyViolet['700'],
-        promoteLight: legacyViolet['300'],
+        promote: palette.purple['700'],
+        promoteLight: palette.purple['300'],
       },
     },
-    focusRingSize: 3,
+    transforms: {
+      touchable: 'scale(0.95)',
+    },
+    transitions: {
+      fast: 'transform .125s ease, opacity .125s ease',
+      touchable: 'transform 0.2s cubic-bezier(0.02, 1.505, 0.745, 1.235)',
+    },
     shadows: {
       small: [
         `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
@@ -239,28 +229,28 @@ export const makeTokens = ({
         cautionLight: palette.yellow['300'],
         critical,
         criticalLight: palette.red['300'],
-        formAccent,
-        formAccentLight: palette.indigo['300'],
+        formAccent: palette.seekBlueLight['700'],
+        formAccentLight: palette.seekBlueLight['300'],
         info: palette.blue['700'],
         infoLight: palette.blue['300'],
-        link: formAccent,
-        linkLight: palette.indigo['300'],
-        linkHover: formAccent,
-        linkVisited: legacyViolet['700'],
-        linkLightVisited: legacyViolet['300'],
+        link: palette.grey['700'],
+        linkHover: palette.grey['700'],
+        linkLight: white,
+        linkLightVisited: palette.purple['200'],
+        linkVisited: palette.purple['800'],
         neutral: palette.grey['700'],
         neutralInverted: white,
         positive: palette.mint['700'],
         positiveLight: palette.mint['300'],
-        promote: legacyViolet['700'],
-        promoteLight: legacyViolet['300'],
-        rating: '#f57c00',
+        promote: palette.purple['700'],
+        promoteLight: palette.purple['300'],
+        rating: palette.orange['600'],
         secondary: palette.grey['500'],
-        secondaryInverted: rgba('#fff', 0.65),
+        secondaryInverted: rgba(white, 0.65),
       },
       background: {
-        body: palette.grey['50'],
-        bodyDark: palette.grey['900'],
+        body: white,
+        bodyDark: palette.grey['800'],
         brand,
         brandAccent,
         brandAccentActive,
@@ -277,25 +267,25 @@ export const makeTokens = ({
         criticalSoft: palette.red['50'],
         criticalSoftActive: darken(0.05, palette.red['50']),
         criticalSoftHover: darken(0.025, palette.red['50']),
-        formAccent,
-        formAccentActive: darken(0.05, formAccent),
-        formAccentHover: saturate(0.5, lighten(0.075, formAccent)),
-        formAccentSoft: palette.indigo['50'],
-        formAccentSoftActive: darken(0.05, palette.indigo['50']),
-        formAccentSoftHover: darken(0.025, palette.indigo['50']),
+        formAccent: palette.seekBlueLight['700'],
+        formAccentActive: darken(0.05, palette.seekBlueLight['700']),
+        formAccentHover: lighten(0.075, palette.seekBlueLight['700']),
+        formAccentSoft: palette.seekBlueLight['50'],
+        formAccentSoftActive: darken(0.05, palette.seekBlueLight['50']),
+        formAccentSoftHover: darken(0.025, palette.seekBlueLight['50']),
         info: palette.blue['700'],
         infoLight: palette.blue['100'],
         neutral: palette.grey['700'],
         neutralActive: darken(0.05, palette.grey['700']),
         neutralHover: lighten(0.05, palette.grey['700']),
-        neutralLight: palette.grey['100'],
-        neutralSoft: palette.grey['50'],
-        neutralSoftActive: darken(0.05, palette.grey['50']),
-        neutralSoftHover: darken(0.025, palette.grey['50']),
+        neutralLight: palette.grey['75'],
+        neutralSoft: palette.grey['75'],
+        neutralSoftActive: darken(0.05, palette.grey['75']),
+        neutralSoftHover: darken(0.025, palette.grey['75']),
         positive: palette.mint['700'],
         positiveLight: palette.mint['100'],
-        promote: legacyViolet['700'],
-        promoteLight: legacyViolet['100'],
+        promote: palette.purple['700'],
+        promoteLight: palette.purple['100'],
         surface: white,
         surfaceDark: palette.grey['800'],
       },
