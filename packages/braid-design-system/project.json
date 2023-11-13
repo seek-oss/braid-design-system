@@ -49,10 +49,17 @@
     },
     "lint": {},
     "lint:eslint": {
-      "dependsOn": ["prelint:eslint"],
+      "dependsOn": ["prelint:eslint", "generate"],
       "executor": "nx:run-script",
       "options": {
         "script": "lint:eslint"
+      }
+    },
+    "lint:prettier": {
+      "dependsOn": ["generate"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "lint:prettier"
       }
     },
     "lint:tsc": {
