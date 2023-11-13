@@ -68,6 +68,8 @@ const svgrConfig = {
     absolute: true,
   });
 
+  console.log({ svgFilePaths });
+
   const filePromises = svgFilePaths.map(async (svgFilePath) => {
     // Split out the icon variants (e.g. bookmark-active.svg)
     const [svgName, variantName] = path.basename(svgFilePath, '.svg').split('-');
