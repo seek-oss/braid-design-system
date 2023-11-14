@@ -160,7 +160,7 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
     return (
       <TooltipRenderer
         id={`${id}-tooltip`}
-        tooltip={<Text>{label} </Text>}
+        tooltip={<Text>{label}</Text>}
         placement={tooltipPlacement}
       >
         {({ triggerProps: { ref: triggerRef, ...triggerProps } }) => (
