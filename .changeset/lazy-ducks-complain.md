@@ -33,7 +33,7 @@ The default value is `top`.
   <Inline space="gutter" alignY="center">
     <ButtonIcon
       size="standard"
-      icon={<IconArrow direction={'down'}/>}
+      icon={<IconArrow direction="down"/>}
       label="The tooltipPlacement is “bottom”"
       id="size-2"
       tooltipPlacement="bottom"
