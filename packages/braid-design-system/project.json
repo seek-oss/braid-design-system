@@ -26,6 +26,11 @@
       "executor": "nx:noop"
     },
     "generate:icons": {
+      "inputs": ["{projectRoot}/icons/*.svg", "scripts"],
+      "outputs": [
+        "{projectRoot}/src/**/components/icons/*/*Svg.tsx",
+        "{projectRoot}/src/**/components/icons/index.ts"
+      ],
       "executor": "nx:run-script",
       "options": {
         "script": "generate:icons"
