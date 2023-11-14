@@ -51,7 +51,9 @@ jobs:
         run: pnpm lint
 
       - name: Test
-        run: pnpm test
+        run: |
+          pnpm test
+          pnpm test:fixtures
 
       - name: Chromatic
         run: pnpm storybook:chromatic
