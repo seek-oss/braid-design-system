@@ -213,7 +213,7 @@ const docs: ComponentDocs = {
                 size="standard"
                 icon={<IconArrow direction="up" />}
                 label="The tooltipPlacement is “top”"
-                id="size-1"
+                id="tooltip-placement-1"
                 tooltipPlacement="top"
               />
               <Text tone="secondary" size="xsmall">
@@ -225,7 +225,7 @@ const docs: ComponentDocs = {
                 size="standard"
                 icon={<IconArrow direction="down" />}
                 label="The tooltipPlacement is “bottom”"
-                id="size-2"
+                id="tooltip-placement-2"
                 tooltipPlacement="bottom"
               />
               <Text tone="secondary" size="xsmall">
