@@ -194,9 +194,9 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Tooltips are positioned above the <Strong>ButtonIcon</Strong> by
-            default, but you can configure this via the{' '}
-            <Strong>tooltipPlacement</Strong> prop which accepts either{' '}
+            By default, the <Strong>label</Strong> is presented as a tooltip on
+            top of the button. However, this can be configured via the{' '}
+            <Strong>tooltipPlacement</Strong> prop, which accepts either{' '}
             <Strong>top</Strong> or <Strong>bottom</Strong>. See{' '}
             <TextLink href="/components/TooltipRenderer">
               TooltipRenderer
