@@ -211,7 +211,7 @@ const docs: ComponentDocs = {
             <Inline space="gutter" alignY="center">
               <ButtonIcon
                 size="standard"
-                icon={<IconArrow direction={'up'} />}
+                icon={<IconArrow direction="up" />}
                 label="The tooltipPlacement is “top”"
                 id="size-1"
                 tooltipPlacement="top"
@@ -223,7 +223,7 @@ const docs: ComponentDocs = {
             <Inline space="gutter" alignY="center">
               <ButtonIcon
                 size="standard"
-                icon={<IconArrow direction={'down'} />}
+                icon={<IconArrow direction="down" />}
                 label="The tooltipPlacement is “bottom”"
                 id="size-2"
                 tooltipPlacement="bottom"
