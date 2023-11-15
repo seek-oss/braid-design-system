@@ -4,9 +4,7 @@
 
 ---
 updated:
-
 - ButtonIcon
-
 ---
 
 Add optional `tooltipPlacement` prop to `ButtonIcon`
