@@ -2116,6 +2116,9 @@ exports[`ButtonIcon 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    tooltipPlacement?: 
+        | "bottom"
+        | "top"
     type?: 
         | "button"
         | "reset"
