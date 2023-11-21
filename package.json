@@ -8,6 +8,7 @@
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "nx run braid-design-system:build",
+    "build:docs-design": "nx run documentation-design:build",
     "build:site": "nx run site:build",
     "storybook": "nx run braid-design-system:storybook",
     "storybook:build": "nx run braid-design-system:storybook:build",

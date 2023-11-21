@@ -1,0 +1,32 @@
+{
+  "name": "@braid-design-system/documentation-design",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "SEEK",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "crackle package",
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write .",
+    "lint:eslint": "eslint --cache .",
+    "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {}
+}

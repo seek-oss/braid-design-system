@@ -423,7 +423,13 @@ importers:
         version: 11.0.4(@babel/core@7.21.0)
       yoga-layout-prebuilt:
         specifier: ^1.10.0
-        version: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
+        version: 1.10.0_bohigvh5hpnbocmxkl4e5ainua
+
+  packages/documentation-design:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
 
   packages/generate-component-docs:
     dependencies:
@@ -542,7 +548,7 @@ importers:
         version: 8.6.0
       panzoom:
         specifier: ^9.4.2
-        version: 9.4.2(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
+        version: 9.4.2_6ozlkenow5f4yy4lstsbsrrv4i
       playroom:
         specifier: 0.32.1
         version: 0.32.1(react-dom@18.2.0)(react@18.2.0)
@@ -12821,7 +12827,7 @@ packages:
       widest-line: 3.1.0
       wrap-ansi: 6.2.0
       ws: 7.5.7
-      yoga-layout-prebuilt: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
+      yoga-layout-prebuilt: 1.10.0_bohigvh5hpnbocmxkl4e5ainua
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -15442,7 +15448,7 @@ packages:
   /pako@0.2.9:
     resolution: {integrity: sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==}
 
-  /panzoom@9.4.2(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i):
+  /panzoom@9.4.2_6ozlkenow5f4yy4lstsbsrrv4i:
     resolution: {integrity: sha512-sQLr0t6EmNFXpZHag0HQVtOKqF9xjF7iZdgWg3Ss1o7uh2QZLvcrz7S0Cl8M0d2TkPZ69JfPJdknXN3I0e/2aQ==}
     dependencies:
       amator: 1.1.0
@@ -19940,7 +19946,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /yoga-layout-prebuilt@1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua):
+  /yoga-layout-prebuilt@1.10.0_bohigvh5hpnbocmxkl4e5ainua:
     resolution: {integrity: sha512-YnOmtSbv4MTf7RGJMK0FvZ+KD8OEe/J5BNnR0GHhD8J/XcG/Qvxgszm0Un6FTHWW4uHlTgP0IztiXQnGyIR45g==}
     engines: {node: '>=8'}
     dependencies:
