@@ -427,7 +427,10 @@ importers:
         version: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
 
   packages/documentation-design:
-    dependencies:
+    devDependencies:
+      braid-design-system:
+        specifier: workspace:*
+        version: link:../braid-design-system
       react:
         specifier: ^18.2.0
         version: 18.2.0

@@ -28,7 +28,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "braid-design-system": "^32.0.0",
+    "braid-design-system": "*",
     "react": "^18.2.0"
   },
   "peerDependencies": {
