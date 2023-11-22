@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`build Vanilla Extract files imported as side-effects 1`] = `
+### dist/playroom/components.mjs:
+4 │ import "../styles/lib/themes/apac/apacTheme.css.mjs";
+5 │ import "../styles/lib/themes/seekJobs/seekJobs.css.mjs";
+6 │ import "../styles/lib/themes/seekBusiness/seekBusinessTheme.css.mjs";
+8 │ import "../styles/lib/themes/docs/docsTheme.css.mjs";
+
+### dist/reset.mjs:
+2 │ import "./styles/lib/themes/apac/apacTheme.css.mjs";
+3 │ import "./styles/lib/themes/docs/docsTheme.css.mjs";
+4 │ import "./styles/lib/themes/seekBusiness/seekBusinessTheme.css.mjs";
+5 │ import "./styles/lib/themes/seekJobs/seekJobs.css.mjs";
+6 │ import "./styles/lib/themes/wireframe/wireframeTheme.css.mjs";
+
+### dist/side-effects/lib/css/reset/index.mjs:
+2 │ import "../../../../styles/lib/css/reset/reset.css.mjs";
+3 │ import "../../../../styles/lib/css/atoms/sprinkles.css.mjs";
+
+### dist/side-effects/lib/themes/apac/index.mjs:
+1 │ import "../../../../styles/lib/themes/apac/apacTheme.css.mjs";
+
+### dist/side-effects/lib/themes/docs/index.mjs:
+1 │ import "../../../../styles/lib/themes/docs/docsTheme.css.mjs";
+
+### dist/side-effects/lib/themes/seekBusiness/index.mjs:
+1 │ import "../../../../styles/lib/themes/seekBusiness/seekBusinessTheme.css.mjs";
+
+### dist/side-effects/lib/themes/seekJobs/index.mjs:
+1 │ import "../../../../styles/lib/themes/seekJobs/seekJobs.css.mjs";
+
+### dist/side-effects/lib/themes/wireframe/index.mjs:
+1 │ import "../../../../styles/lib/themes/wireframe/wireframeTheme.css.mjs";
+`;
+
 exports[`build side-effects from dist 1`] = `
 [
   "dist/playroom/components.cjs",
