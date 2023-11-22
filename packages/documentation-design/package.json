@@ -26,7 +26,9 @@
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@vanilla-extract/css": "^1.9.2"
+  },
   "devDependencies": {
     "braid-design-system": "*",
     "react": "^18.2.0"

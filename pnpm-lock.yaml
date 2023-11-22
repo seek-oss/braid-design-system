@@ -427,6 +427,10 @@ importers:
         version: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
 
   packages/documentation-design:
+    dependencies:
+      '@vanilla-extract/css':
+        specifier: ^1.9.2
+        version: 1.14.0
     devDependencies:
       braid-design-system:
         specifier: workspace:*
@@ -7610,7 +7614,6 @@ packages:
       media-query-parser: 2.0.2
       modern-ahocorasick: 1.0.1
       outdent: 0.8.0
-    dev: false
 
   /@vanilla-extract/css@1.9.5:
     resolution: {integrity: sha512-aVSv6q24zelKRtWx/l9yshU3gD1uCDMZ2ZGcIiYnAcPfyLryrG/1X5DxtyiPKcyI/hZWoteHofsN//2q9MvzOA==}
@@ -7636,7 +7639,7 @@ packages:
   /@vanilla-extract/integration@5.0.0:
     resolution: {integrity: sha512-HwglsIxGYtV4IXFfyQ6GzZLFoaWaW+QkNx8UhXbgsCWUoPqpSbioukCOA+SuSuzsIcEZ3hkD0Y5ixITQNtnzjQ==}
     dependencies:
-      '@vanilla-extract/css': 1.9.5
+      '@vanilla-extract/css': 1.14.0
       esbuild: 0.11.23
       eval: 0.1.6
       find-up: 5.0.0
@@ -7650,7 +7653,7 @@ packages:
       '@babel/core': 7.21.0
       '@babel/plugin-syntax-typescript': 7.21.4(@babel/core@7.21.0)
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.1
-      '@vanilla-extract/css': 1.9.5
+      '@vanilla-extract/css': 1.14.0
       esbuild: 0.16.17
       eval: 0.1.6
       find-up: 5.0.0
@@ -7726,12 +7729,20 @@ packages:
   /@vanilla-extract/private@1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
 
+  /@vanilla-extract/sprinkles@1.5.1(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-xPYpeEZEC1mhiPqWCBPGdIHkpFaaQIbaAfG9W2JyIW0byqTP7CoaxdYNMPjhZuoV5lkTI14SJg8Bt+fZqmV5yQ==}
+    peerDependencies:
+      '@vanilla-extract/css': ^1.0.0
+    dependencies:
+      '@vanilla-extract/css': 1.14.0
+
   /@vanilla-extract/sprinkles@1.5.1(@vanilla-extract/css@1.9.5):
     resolution: {integrity: sha512-xPYpeEZEC1mhiPqWCBPGdIHkpFaaQIbaAfG9W2JyIW0byqTP7CoaxdYNMPjhZuoV5lkTI14SJg8Bt+fZqmV5yQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
       '@vanilla-extract/css': 1.9.5
+    dev: false
 
   /@vanilla-extract/vite-plugin@3.9.2(@types/node@18.13.0)(vite@4.5.0):
     resolution: {integrity: sha512-WYgWiEs+nw+lNazyW0Ixp0MMgtNgPL+8fFKrol1V5XoNIzRrYPGfuLhRI7PwheSWQVGF7OOer0kUWQcLey1vOQ==}
@@ -15463,7 +15474,6 @@ packages:
 
   /modern-ahocorasick@1.0.1:
     resolution: {integrity: sha512-yoe+JbhTClckZ67b2itRtistFKf8yPYelHLc7e5xAwtNAXxM6wJTUx2C7QeVSJFDzKT7bCIFyBVybPMKvmB9AA==}
-    dev: false
 
   /moniker@0.1.2:
     resolution: {integrity: sha1-hy37pXXc6o+gSlE1sT1fJL7MyX4=}
@@ -16399,9 +16409,9 @@ packages:
       '@types/prettier': 2.7.2
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
-      '@vanilla-extract/css': 1.9.5
+      '@vanilla-extract/css': 1.14.0
       '@vanilla-extract/css-utils': 0.1.3
-      '@vanilla-extract/sprinkles': 1.5.1(@vanilla-extract/css@1.9.5)
+      '@vanilla-extract/sprinkles': 1.5.1(@vanilla-extract/css@1.14.0)
       '@vanilla-extract/webpack-plugin': 2.1.12(webpack@5.88.2)
       babel-loader: 9.1.2(@babel/core@7.22.10)(webpack@5.88.2)
       classnames: 2.3.2
