@@ -3,11 +3,13 @@ import path from 'path';
 import glob from 'fast-glob';
 import webpack from 'webpack';
 import braidPkg from 'braid-design-system/package.json'; // eslint-disable-line no-restricted-imports
-import { exec } from 'child_process';
+import { exec as _exec } from 'child_process';
 import { promisify } from 'util';
+import { rgPath } from '@vscode/ripgrep';
 import { cssFileFilter as isVanillaFile } from '@vanilla-extract/integration';
 
 const { SideEffectsFlagPlugin } = webpack.optimize;
+const exec = promisify(_exec);
 
 describe('build', () => {
   const cache = new Map<string, RegExp>();
@@ -33,7 +35,7 @@ describe('build', () => {
   beforeAll(async () => {
     // eslint-disable-next-line no-console
     console.log('Running `pnpm build`...');
-    await promisify(exec)('pnpm build');
+    await exec('pnpm build');
   }, 60_000);
 
   test('side-effects from src', async () => {
@@ -66,5 +68,49 @@ describe('build', () => {
       .filter(ignoreVanillaFiles);
 
     expect(filesWithSideEffects).toMatchSnapshot();
+  });
+
+  test('Vanilla Extract files imported as side-effects', async () => {
+    const filePrefix = '### ';
+    const getFiles = async (
+      cwd: string,
+      search: RegExp,
+      searchPath: string,
+    ) => {
+      const options = [
+        '--context=0',
+        '--color=never',
+        '--heading',
+        '--line-number',
+        '--no-ignore',
+        `--regexp='${search.source}'`,
+        '--sort=path',
+      ];
+      const rgArgs = [...options, searchPath];
+
+      const { stdout } = await exec(`${rgPath} ${rgArgs.join(' ')}`, {
+        cwd,
+      });
+
+      return stdout
+        .split('\n')
+        .map((line) =>
+          line.startsWith(`${searchPath}/`) ? `${filePrefix}${line}:` : line,
+        )
+        .map((line) => line.replace(/^(\d+):/, '$1 │ '))
+        .join('\n');
+    };
+
+    const filesWithVanillaStyles = await getFiles(
+      rootDir,
+      /import ".*\.css\.mjs"/,
+      'dist',
+    );
+
+    expect.addSnapshotSerializer({
+      test: (val) => typeof val === 'string' && val.startsWith(filePrefix),
+      print: (val) => (val as string).trim(),
+    });
+    expect(filesWithVanillaStyles).toMatchSnapshot();
   });
 });
