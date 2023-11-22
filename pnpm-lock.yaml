@@ -548,8 +548,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.2(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
       playroom:
-        specifier: 0.0.0-smaller-react-pragmas-20231121042217
-        version: 0.0.0-smaller-react-pragmas-20231121042217(esbuild@0.17.10)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.0.0-smaller-react-pragmas-20231122225316
+        version: 0.0.0-smaller-react-pragmas-20231122225316(esbuild@0.17.10)(react-dom@18.2.0)(react@18.2.0)
       polished:
         specifier: ^4.1.0
         version: 4.2.2
@@ -649,6 +649,7 @@ packages:
     optionalDependencies:
       '@nicolo-ribaudo/chokidar-2': 2.1.8-no-fsevents.3
       chokidar: 3.5.3
+    dev: true
 
   /@babel/code-frame@7.22.13:
     resolution: {integrity: sha512-XktuhWlJ5g+3TJXc5upd9Ks1HutSArik6jf2eAjYFyIOf4ej3RN+184cZbzDvbPnuTJIUhPKKJE3cIsYTiAT3w==}
@@ -1048,6 +1049,14 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.23.0
+
+  /@babel/parser@7.23.4:
+    resolution: {integrity: sha512-vf3Xna6UEprW+7t6EtOmFpHNAuxw3xqPZghy+brsnusscJRW5BMUzzHZc5ICjULee81WeUV2jjakG09MDglJXQ==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@babel/types': 7.23.0
+    dev: false
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@7.18.6(@babel/core@7.21.0):
     resolution: {integrity: sha512-Dgxsyg54Fx1d4Nge8UnvTrED63vrwOdPmyvPzlNN/boaliRP54pm3pGzZD1SJUwrBA+Cs/xdG8kXX6Mn/RfISQ==}
@@ -2870,6 +2879,7 @@ packages:
   /@babel/standalone@7.23.4:
     resolution: {integrity: sha512-cXT2Xi9YVJEi7kLjqoeZBXjrNt1PASOh4Zi3jp5yXT06Gt4ZeRETfYH9y5x3RQhFTpNxaA1300lzK1obiy6tcQ==}
     engines: {node: '>=6.9.0'}
+    dev: true
 
   /@babel/template@7.22.15:
     resolution: {integrity: sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==}
@@ -4352,6 +4362,7 @@ packages:
   /@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3:
     resolution: {integrity: sha512-s88O1aVtXftvp5bCPB7WnmXc5IwOZZ7YPuwNPt+GtOOXpPvad1LfbmjYv+qII7zP6RU2QGnqve27dnLycEnyEQ==}
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
@@ -10458,6 +10469,7 @@ packages:
 
   /fs-readdir-recursive@1.1.0:
     resolution: {integrity: sha512-GNanXlVr2pf02+sPN40XN8HG+ePaNcvM0q5mZBd668Obwb0yD5GiUbZOFgwn8kGMY6I3mdyDJzieUy3PTYyTRA==}
+    dev: true
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
@@ -14230,19 +14242,18 @@ packages:
     dependencies:
       find-up: 3.0.0
 
-  /playroom@0.0.0-smaller-react-pragmas-20231121042217(esbuild@0.17.10)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-RJ5TueT3UsIRq1o9UKjYDgrJyNyB7dG4BN5uxuYeXr4nNGJid/rHyNY+JYxEtxydlHfMe4WzFpikFUiasuP/1w==}
+  /playroom@0.0.0-smaller-react-pragmas-20231122225316(esbuild@0.17.10)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-X0IWhXLPSkOp+QQhtciphcjBdfmw0epSfDt/Ee9PZq7XxXtw8BnkZ3slLn55W02Z4mByXNnZJibIp6Ru+5GjGg==}
     hasBin: true
     peerDependencies:
       react: ^17 || ^18
       react-dom: ^17 || ^18
     dependencies:
-      '@babel/cli': 7.21.0(@babel/core@7.22.10)
       '@babel/core': 7.22.10
+      '@babel/parser': 7.23.4
       '@babel/preset-env': 7.22.2(@babel/core@7.22.10)
       '@babel/preset-react': 7.22.5(@babel/core@7.22.10)
       '@babel/preset-typescript': 7.21.5(@babel/core@7.22.10)
-      '@babel/standalone': 7.23.4
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.88.2)
       '@types/base64-url': 2.2.0
       '@types/codemirror': 5.60.7
