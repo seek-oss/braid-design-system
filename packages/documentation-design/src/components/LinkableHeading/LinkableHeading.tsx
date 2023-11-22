@@ -1,7 +1,9 @@
-import React, { type ReactNode } from 'react';
-import { Heading, Box, IconLink, Link } from 'braid-src/lib/components';
-import type { HeadingProps } from 'braid-src/lib/components/Heading/Heading';
+import React, { type ReactNode, type ComponentProps } from 'react';
+import 'braid-design-system/reset';
+import { Heading, Box, IconLink, Link } from 'braid-design-system';
 import * as styles from './LinkableHeading.css';
+
+type HeadingProps = ComponentProps<typeof Heading>;
 
 type LinkableHeadingProps = {
   level?: HeadingProps['level'];
