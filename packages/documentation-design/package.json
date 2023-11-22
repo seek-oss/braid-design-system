@@ -26,8 +26,13 @@
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "braid-design-system": "^32.0.0",
     "react": "^18.2.0"
   },
-  "devDependencies": {}
+  "peerDependencies": {
+    "braid-design-system": "^32.0.0",
+    "react": "^18.2.0"
+  }
 }
