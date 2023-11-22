@@ -14,12 +14,10 @@
   "license": "MIT",
   "author": "SEEK",
   "sideEffects": [
-    "**/atoms/**",
     "**/components/BraidProvider/BraidProvider.*",
     "**/entries/playroom/components.ts",
     "**/entries/reset.ts",
     "**/reset/**",
-    "**/themes/**",
     "*.css.*",
     "dist/playroom/components.*",
     "dist/reset.*",
