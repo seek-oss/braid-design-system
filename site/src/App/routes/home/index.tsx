@@ -7,11 +7,13 @@ import {
   Divider,
 } from 'braid-src/lib/components';
 import { useConfig } from '../../ConfigContext';
+import { SideBarNavigationGroup } from '@braid-design-system/documentation-design';
 
 export const HomePage = () => {
   const { playroomUrl } = useConfig();
   return (
     <Stack space="xlarge">
+      <SideBarNavigationGroup />
       <Heading component="h1" level="2">
         Braid Design System
       </Heading>

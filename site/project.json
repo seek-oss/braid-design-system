@@ -9,7 +9,7 @@
       "executor": "nx:noop"
     },
     "start:site": {
-      "dependsOn": ["generate"],
+      "dependsOn": ["generate", "^dev"],
       "executor": "nx:run-script",
       "options": {
         "script": "start:site"

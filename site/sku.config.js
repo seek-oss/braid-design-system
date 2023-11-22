@@ -22,6 +22,7 @@ module.exports = {
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   supportedBrowsers: browserslist,
   displayNamesProd: true,
+  compilePackages: ['@braid-design-system/documentation-design'],
   dangerouslySetWebpackConfig: (config) => {
     // uncomment if you need to debug issues with side-effects
     // config.devtool = 'cheap-source-map';

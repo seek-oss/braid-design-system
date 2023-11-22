@@ -18,6 +18,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "crackle dev --webpack",
     "build": "crackle package",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
