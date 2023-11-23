@@ -8,7 +8,7 @@
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "nx run braid-design-system:build",
-    "build:docs-design": "nx run docs-ui:build",
+    "build:docs-ui": "nx run docs-ui:build",
     "build:site": "nx run site:build",
     "storybook": "nx run braid-design-system:storybook",
     "storybook:build": "nx run braid-design-system:storybook:build",
@@ -25,7 +25,7 @@
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm prepare-publish && changeset publish && pnpm build:site && pnpm run deploy",
-    "prepare-publish": "pnpm build && tsx scripts/copyReadme.cts",
+    "prepare-publish": "pnpm build && pnpm docs-ui && tsx scripts/copyReadme.cts",
     "version": "changeset version && tsx scripts/versionComponentUpdates.cts && pnpm install --lockfile-only",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
