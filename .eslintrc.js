@@ -9,7 +9,7 @@ module.exports = {
       files: ['*.{js,ts,tsx}'],
       excludedFiles: [
         '*.{docs,gallery,screenshots,stories}.tsx',
-        'packages/documentation-design/**/*.{ts,tsx}',
+        'packages/docs-ui/**/*.{ts,tsx}',
         'site/**/*.{ts,tsx}',
       ],
       rules: {
@@ -27,7 +27,7 @@ module.exports = {
       },
     },
     {
-      files: ['packages/documentation-design/**/*.{js,ts,tsx}'],
+      files: ['packages/docs-ui/**/*.{js,ts,tsx}'],
       rules: {
         'no-restricted-imports': [
           'error',

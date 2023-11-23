@@ -8,7 +8,7 @@
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "nx run braid-design-system:build",
-    "build:docs-design": "nx run documentation-design:build",
+    "build:docs-design": "nx run docs-ui:build",
     "build:site": "nx run site:build",
     "storybook": "nx run braid-design-system:storybook",
     "storybook:build": "nx run braid-design-system:storybook:build",
@@ -86,7 +86,7 @@
   "packageManager": "pnpm@7.30.0",
   "pnpm": {
     "overrides": {
-      "@braid-design-system/documentation-design": "workspace:*",
+      "@braid-design-system/docs-ui": "workspace:*",
       "@braid-design-system/generate-component-docs": "workspace:*",
       "@braid-design-system/source.macro": "workspace:*",
       "braid-design-system": "workspace:*"

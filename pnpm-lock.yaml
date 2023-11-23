@@ -1,7 +1,7 @@
 lockfileVersion: '6.0'
 
 overrides:
-  '@braid-design-system/documentation-design': workspace:*
+  '@braid-design-system/docs-ui': workspace:*
   '@braid-design-system/generate-component-docs': workspace:*
   '@braid-design-system/source.macro': workspace:*
   braid-design-system: workspace:*
@@ -426,7 +426,7 @@ importers:
         specifier: ^1.10.0
         version: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
 
-  packages/documentation-design:
+  packages/docs-ui:
     dependencies:
       '@vanilla-extract/css':
         specifier: ^1.9.2
@@ -494,9 +494,9 @@ importers:
       '@babel/preset-typescript':
         specifier: ^7.17.12
         version: 7.18.6(@babel/core@7.21.0)
-      '@braid-design-system/documentation-design':
+      '@braid-design-system/docs-ui':
         specifier: workspace:*
-        version: link:../packages/documentation-design
+        version: link:../packages/docs-ui
       '@braid-design-system/generate-component-docs':
         specifier: workspace:*
         version: link:../packages/generate-component-docs
