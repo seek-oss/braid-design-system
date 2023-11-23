@@ -1,5 +1,20 @@
 # braid-design-system
 
+## 32.14.0
+
+### Minor Changes
+
+- Add optional `tooltipPlacement` prop to `ButtonIcon` ([#1390](https://github.com/seek-oss/braid-design-system/pull/1390))
+
+  The `tooltipPlacement` prop allows you to specify the placement of the tooltip to either `top` or `bottom`.
+  The default value is `top`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon tooltipPlacement="bottom" />
+  ```
+
 ## 32.13.0
 
 ### Minor Changes
