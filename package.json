@@ -25,7 +25,7 @@
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm prepare-publish && changeset publish && pnpm build:site && pnpm run deploy",
-    "prepare-publish": "pnpm build && pnpm docs-ui && tsx scripts/copyReadme.cts",
+    "prepare-publish": "pnpm build && pnpm build:docs-ui && tsx scripts/copyReadme.cts",
     "version": "changeset version && tsx scripts/versionComponentUpdates.cts && pnpm install --lockfile-only",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
