@@ -45,7 +45,7 @@
     "@babel/runtime": "^7.18.0",
     "@changesets/cli": "^2.22.0",
     "@changesets/get-github-info": "^0.5.0",
-    "@crackle/cli": "^0.12.4",
+    "@crackle/cli": "0.0.0-vite-5-20231123061728",
     "@manypkg/cli": "^0.19.1",
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
