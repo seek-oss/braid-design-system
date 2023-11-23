@@ -97,7 +97,7 @@ describe('build', () => {
         .map((line) =>
           line.startsWith(`${searchPath}/`) ? `${filePrefix}${line}:` : line,
         )
-        .map((line) => line.replace(/^(\d+):/, '$1 │ '))
+        .map((line) => line.replace(/^(\d+)(:|-)/, '$1 │ '))
         .join('\n');
     };
 
