@@ -32,7 +32,7 @@ module.exports = {
         'no-restricted-imports': [
           'error',
           {
-            patterns: ['braid-src/**'],
+            patterns: ['braid-src/**', 'site/**', '**/site/**'],
           },
         ],
       },
