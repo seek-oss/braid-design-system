@@ -1,4 +1,6 @@
-# 📚 docs-ui
+![Braid Docs UI Logo](braid-docs-ui-logo.svg)
+
+# docs-ui
 
 Components for building documentation sites with a consistent user experience to the [Braid Design System] website.
 
