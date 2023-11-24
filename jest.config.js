@@ -11,7 +11,7 @@ const compilePackagesRegex = compilePackages
 
 /** @type {import('jest').Config} */
 module.exports = {
-  setupFilesAfterEnv: ['./testConfig/setupTests.ts'],
+  setupFilesAfterEnv: ['./jest/setupTests.ts'],
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {
     url: 'http://localhost', // @see https://github.com/facebook/jest/issues/6766,
@@ -30,11 +30,11 @@ module.exports = {
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|svg)$':
-      require.resolve('./testConfig/fileMock'),
+      require.resolve('./jest/fileMock'),
   },
   transform: {
     '\\.css\\.ts$': require.resolve('@vanilla-extract/jest-transform'),
-    '\\.(j|t)sx?$': require.resolve('./testConfig/babelTransform.js'),
+    '\\.(j|t)sx?$': require.resolve('./jest/babelTransform.js'),
   },
   transformIgnorePatterns: [
     // Allow 'compilePackages' code to be transformed in tests by overriding
