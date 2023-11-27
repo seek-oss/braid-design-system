@@ -123,6 +123,7 @@
     "themes/wireframe"
   ],
   "scripts": {
+    "dev": "crackle dev --webpack",
     "build": "crackle package",
     "codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "preformat:eslint": "ignore-sync .eslintignore-sync",
