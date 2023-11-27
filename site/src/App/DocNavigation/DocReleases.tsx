@@ -10,7 +10,7 @@ import {
   Columns,
   List,
 } from 'braid-src/lib/components';
-import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';
 import { DocsContext } from './DocNavigation';

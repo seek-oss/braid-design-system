@@ -22,7 +22,7 @@ import {
   List,
   IconRenderer,
 } from 'braid-src/lib/components';
-import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { DocExample } from '../../../DocNavigation/DocExample';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';

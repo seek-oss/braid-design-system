@@ -23,7 +23,7 @@ import Code from '../../../Code/Code';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
 import source from '@braid-design-system/source.macro';
-import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 interface StepProps {
   heading?: string;
