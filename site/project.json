@@ -27,7 +27,7 @@
       "executor": "nx:noop"
     },
     "build:site": {
-      "dependsOn": ["generate"],
+      "dependsOn": ["generate", "^build"],
       "inputs": ["default", "^default"],
       "outputs": ["dist/(!playroom)/**/*"],
       "executor": "nx:run-script",
