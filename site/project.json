@@ -58,7 +58,7 @@
     },
     "lint": {},
     "lint:tsc": {
-      "dependsOn": ["generate"],
+      "dependsOn": ["generate", "^dev"],
       "executor": "nx:run-script",
       "options": {
         "script": "lint:tsc"
