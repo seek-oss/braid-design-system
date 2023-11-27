@@ -497,6 +497,9 @@ importers:
       '@babel/preset-typescript':
         specifier: ^7.17.12
         version: 7.21.5(@babel/core@7.23.3)
+      '@braid-design-system/docs-ui':
+        specifier: workspace:*
+        version: link:../packages/docs-ui
       '@braid-design-system/generate-component-docs':
         specifier: workspace:*
         version: link:../packages/generate-component-docs
