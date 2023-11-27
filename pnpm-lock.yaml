@@ -1,6 +1,7 @@
 lockfileVersion: '6.0'
 
 overrides:
+  '@braid-design-system/docs-ui': workspace:*
   '@braid-design-system/generate-component-docs': workspace:*
   '@braid-design-system/source.macro': workspace:*
   braid-design-system: workspace:*
@@ -428,6 +429,19 @@ importers:
       yoga-layout-prebuilt:
         specifier: ^1.10.0
         version: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
+
+  packages/docs-ui:
+    dependencies:
+      '@vanilla-extract/css':
+        specifier: ^1.9.2
+        version: 1.14.0
+    devDependencies:
+      braid-design-system:
+        specifier: workspace:*
+        version: link:../braid-design-system
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
 
   packages/generate-component-docs:
     dependencies:
