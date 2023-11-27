@@ -5,9 +5,11 @@
   "author": "SEEK",
   "license": "MIT",
   "dependencies": {
+    "braid-design-system": "*"
+  },
+  "devDependencies": {
     "@vanilla-extract/integration": "^6.1.2",
     "@vscode/ripgrep": "^1.15.9",
-    "braid-design-system": "*",
     "fast-glob": "^3.2.12",
     "webpack": "^5.76.0"
   }

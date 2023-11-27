@@ -32,12 +32,6 @@ describe('build', () => {
     require.resolve('braid-design-system/package.json'),
   );
 
-  beforeAll(async () => {
-    // eslint-disable-next-line no-console
-    console.log('Running `pnpm build`...');
-    await exec('pnpm build');
-  }, 60_000);
-
   test('side-effects from src', async () => {
     const srcFiles = await glob(
       [
@@ -110,7 +104,7 @@ describe('build', () => {
     expect.addSnapshotSerializer({
       test: (val) => typeof val === 'string' && val.startsWith(filePrefix),
       print: (val) => (val as string).trim(),
-    });
+    } satisfies jest.SnapshotSerializerPlugin);
     expect(filesWithVanillaStyles).toMatchSnapshot();
   });
 });
