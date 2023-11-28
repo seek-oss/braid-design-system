@@ -81,9 +81,9 @@
     "typescript": "~5.1.6"
   },
   "volta": {
-    "node": "18.15.0"
+    "node": "20.10.0"
   },
-  "packageManager": "pnpm@7.30.0",
+  "packageManager": "pnpm@8.11.0",
   "pnpm": {
     "overrides": {
       "@braid-design-system/docs-ui": "workspace:*",
