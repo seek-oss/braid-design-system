@@ -30,11 +30,11 @@ export const LinkableHeading = ({
         <Box id={slug} position="absolute" />
         <Link href={`#${slug}`}>
           <Heading level={level} component={component}>
-            {restProps.children}{' '}
+            {restProps.children}
             <Box
               component="span"
               transition="fast"
-              marginLeft="xxsmall"
+              marginLeft="xsmall"
               opacity={0}
               className={styles.hashLink}
             >
