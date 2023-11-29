@@ -4,6 +4,8 @@ import React, {
   useRef,
   useState,
   useCallback,
+  type ReactElement,
+  type ComponentProps,
 } from 'react';
 import assert from 'assert';
 import flattenChildren from '../../utils/flattenChildren';
@@ -21,6 +23,8 @@ import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { TabListContext } from './TabListContext';
 import * as styles from './Tabs.css';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+import type { Tab } from './Tab';
 
 export interface TabsProps {
   children: ReactNodeNoStrings;
@@ -32,11 +36,20 @@ export interface TabsProps {
   divider?: 'full' | 'minimal' | 'none';
 }
 
+interface TabLinePosition {
+  left: number;
+  width: number;
+}
+
+const tabLinePositionDefault: TabLinePosition = { left: 0, width: 0 };
+
+// This must be called within a `useLayoutEffect` because `.getComputedStyle` and `.getBoundingClientRect` force a reflow
+// https://gist.github.com/paulirish/5d52fb081b3570c81e3a
 const getActiveTabLinePosition = (
   button: HTMLElement | null,
-): { left: number; width: number } => {
+): TabLinePosition => {
   if (!button) {
-    return { left: 0, width: 0 };
+    return tabLinePositionDefault;
   }
 
   const computedStyle = getComputedStyle(button);
@@ -51,6 +64,9 @@ const getActiveTabLinePosition = (
 export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
   const tabsRef = useRef<HTMLElement>(null);
+  const [activeTabPosition, setActiveTabPosition] = useState(
+    tabLinePositionDefault,
+  );
 
   const {
     children,
@@ -75,7 +91,9 @@ export const Tabs = (props: TabsProps) => {
   const { dispatch, a11y, selectedIndex, selectedItem } = tabsContext;
   const tabItems: Array<string | number> = [];
 
-  const childTabs = flattenChildren(children);
+  const childTabs = flattenChildren(children) as unknown as Array<
+    ReactElement<ComponentProps<typeof Tab>>
+  >;
   const tabs = childTabs.map((tab, index) => {
     assert(
       // @ts-expect-error
@@ -108,6 +126,9 @@ export const Tabs = (props: TabsProps) => {
     space: { grid, space },
   } = useBraidTheme();
   const [showMask, setShowMask] = useState(true);
+
+  // This must be called within a `useLayoutEffect` because `.scrollLeft`, `.scrollWidth` and `.offsetWidth` force a reflow
+  // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
   const updateMask = useCallback(() => {
     if (!tabsRef.current) {
       return;
@@ -121,7 +142,7 @@ export const Tabs = (props: TabsProps) => {
     );
   }, [tabsRef, setShowMask, grid, space]);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     updateMask();
 
     window.addEventListener('resize', updateMask);
@@ -134,7 +155,10 @@ export const Tabs = (props: TabsProps) => {
       : selectedIndex;
   const selectedTabButtonEl =
     tabsContext.tabButtonElements[selectedTabIndex.toString()];
-  const activeTab = getActiveTabLinePosition(selectedTabButtonEl);
+
+  useIsomorphicLayoutEffect(() => {
+    setActiveTabPosition(getActiveTabLinePosition(selectedTabButtonEl));
+  }, [selectedTabButtonEl]);
 
   return (
     <Box>
@@ -195,8 +219,9 @@ export const Tabs = (props: TabsProps) => {
                       styles.tabUnderlineActiveDarkMode,
                     ]}
                     style={assignInlineVars({
-                      [styles.underlineLeft]: activeTab.left.toString(),
-                      [styles.underlineWidth]: activeTab.width.toString(),
+                      [styles.underlineLeft]: activeTabPosition.left.toString(),
+                      [styles.underlineWidth]:
+                        activeTabPosition.width.toString(),
                     })}
                   />
                 ) : null}
