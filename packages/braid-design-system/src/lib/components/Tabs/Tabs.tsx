@@ -26,8 +26,6 @@ import * as styles from './Tabs.css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import type { Tab } from './Tab';
 
-// dummy comment
-
 export interface TabsProps {
   children: ReactNodeNoStrings;
   label: string;
