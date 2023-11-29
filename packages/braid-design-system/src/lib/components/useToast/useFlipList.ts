@@ -1,4 +1,5 @@
-import { useMemo, useCallback, useLayoutEffect } from 'react';
+import { useMemo, useCallback } from 'react';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 const animationTimeout = 300;
 
@@ -61,7 +62,7 @@ export const useFlipList = () => {
   const refs = useMemo(() => new Map<string, HTMLElement | null>(), []);
   const positions = useMemo(() => new Map<string, number>(), []);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const animations: Array<{
       element: HTMLElement;
       transforms: Transform[];
