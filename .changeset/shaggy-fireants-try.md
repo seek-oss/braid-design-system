@@ -1,7 +1,5 @@
 ---
-'braid-design-system': minor
-'@braid-design-system/docs-ui': minor
-'site': minor
+'@braid-design-system/docs-ui': patch
 ---
 
 Add Braid 'docs-ui' package to the Braid Docs Site for usage.
