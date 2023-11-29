@@ -61,8 +61,6 @@ const getActiveTabLinePosition = (
   return { left: button.offsetLeft + paddingLeft, width };
 };
 
-// dummy comment
-
 export const Tabs = (props: TabsProps) => {
   const tabsContext = useContext(TabsContext);
   const tabsRef = useRef<HTMLElement>(null);
