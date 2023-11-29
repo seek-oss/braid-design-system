@@ -5,11 +5,23 @@ exports[`build Vanilla Extract files imported as side-effects 1`] = `
 1 │ import "./styles/lib/css/reset/reset.css.mjs";
 2 │ import "./styles/lib/css/atoms/sprinkles.css.mjs";
 
-### dist/themes/apac.mjs:
-2 │ import "../styles/lib/themes/docs/docsTheme.css.mjs";
-3 │ import "../styles/lib/themes/seekBusiness/seekBusinessTheme.css.mjs";
-4 │ import "../styles/lib/themes/seekJobs/seekJobs.css.mjs";
-5 │ import "../styles/lib/themes/wireframe/wireframeTheme.css.mjs";
+### dist/styles/lib/components/private/hideFocusRings/hideFocusRings.mjs:
+1 │ import "./hideFocusRings.css.mjs";
+
+### dist/styles/lib/themes/apac/index.mjs:
+1 │ import "./apacTheme.css.mjs";
+
+### dist/styles/lib/themes/docs/index.mjs:
+1 │ import "./docsTheme.css.mjs";
+
+### dist/styles/lib/themes/seekBusiness/index.mjs:
+1 │ import "./seekBusinessTheme.css.mjs";
+
+### dist/styles/lib/themes/seekJobs/index.mjs:
+1 │ import "./seekJobs.css.mjs";
+
+### dist/styles/lib/themes/wireframe/index.mjs:
+1 │ import "./wireframeTheme.css.mjs";
 `;
 
 exports[`build side-effects from dist 1`] = `
