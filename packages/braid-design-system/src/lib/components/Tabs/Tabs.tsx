@@ -43,7 +43,7 @@ interface TabLinePosition {
 
 const tabLinePositionDefault: TabLinePosition = { left: 0, width: 0 };
 
-// This must be called within a `useLayoutEffect` because `.getComputedStyle` and `.getBoundingClientRect` force a reflow
+// This must be called within a `useLayoutEffect` because `.getComputedStyle()` and `.getBoundingClientRect()` force a reflow
 // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
 const getActiveTabLinePosition = (
   button: HTMLElement | null,
