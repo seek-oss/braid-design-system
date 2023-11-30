@@ -2,4 +2,9 @@
 'braid-design-system': patch
 ---
 
-DRAFT: Fix tab line position
+---
+updated:
+  - Tabs
+---
+
+**Tabs:** Improve positioning of the active underline
