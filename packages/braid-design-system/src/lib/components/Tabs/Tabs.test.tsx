@@ -16,8 +16,8 @@ import {
 } from '..';
 
 // We have the test environment set to `jsdom`, but the actual code runs in Node.js.
-// So, we will get the error that "useLayoutEffect does nothing on the server".
-// To avoid the error, we need to manually switch to `useEffect`.
+// That means we will get the error that "useLayoutEffect does nothing on the server".
+// To avoid the error we need to manually switch to `useEffect`.
 jest.mock('../../hooks/useIsomorphicLayoutEffect', () => ({
   useIsomorphicLayoutEffect: jest.requireActual('react').useEffect,
 }));
