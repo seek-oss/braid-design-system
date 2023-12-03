@@ -29,6 +29,7 @@ module.exports = {
 
     config.plugins.push(
       new CircularDependencyPlugin({
+        // ensure the plugin doesn't complain about compiled Braid code
         exclude: /node_modules|braid-design-system\/dist.*/,
         failOnError: true,
       }),
