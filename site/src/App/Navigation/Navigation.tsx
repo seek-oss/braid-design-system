@@ -15,7 +15,7 @@ import { Box } from 'braid-src/lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
 import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
-import { MenuButton } from '../MenuButton/MenuButton';
+import { MenuButton } from '@braid-design-system/docs-ui';
 import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styles from './Navigation.css';
