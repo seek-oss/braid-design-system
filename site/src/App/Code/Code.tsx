@@ -37,20 +37,9 @@ import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
 type ReactElementOrString = ReactElement | string;
 
-const supportedLanguageHighlighters = {
-  diff,
-  jsx,
-  tsx,
-} as const;
-type SupportedLanguage = keyof typeof supportedLanguageHighlighters;
-
-(Object.keys(supportedLanguageHighlighters) as SupportedLanguage[]).forEach(
-  (language) =>
-    SyntaxHighlighter.registerLanguage(
-      language,
-      supportedLanguageHighlighters[language],
-    ),
-);
+for (const [name, language] of Object.entries({ diff, jsx, tsx })) {
+  SyntaxHighlighter.registerLanguage(name, language);
+}
 
 export const formatSnippet = memoize((snippet: string) => {
   // Remove id props from code snippets since they're not needed in Playroom
