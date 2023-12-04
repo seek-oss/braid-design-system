@@ -16,5 +16,5 @@
       "braid-src/*": ["./packages/braid-design-system/src/*"]
     }
   },
-  "include": ["./fixtures", "./scripts"]
+  "include": ["./integration", "./scripts"]
 }

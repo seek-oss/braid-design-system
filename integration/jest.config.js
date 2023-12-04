@@ -7,6 +7,6 @@ const {
 /** @type {import('jest').Config} */
 module.exports = {
   ...rootJestConfig,
-  displayName: 'fixtures',
+  displayName: 'integration',
   rootDir: __dirname,
 };
