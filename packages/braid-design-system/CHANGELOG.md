@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 32.14.1
+
+### Patch Changes
+
+- **TooltipRenderer:** Fix `useLayoutEffect` warnings during SSR ([#1407](https://github.com/seek-oss/braid-design-system/pull/1407))
+
+- **Tabs:** Improve positioning of the active underline ([#1407](https://github.com/seek-oss/braid-design-system/pull/1407))
+
+- Fixes a bug where the reset module mistakenly included all the tokens for all the themes. ([#1405](https://github.com/seek-oss/braid-design-system/pull/1405))
+
+  Additionally, this includes significant compilation improvements to ensure that only styles for the components being used are included — speeding up build times and reducing the overall CSS bundle size.
+
 ## 32.14.0
 
 ### Minor Changes
