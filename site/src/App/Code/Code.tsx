@@ -26,14 +26,31 @@ import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/Fiel
 import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
 import * as styles from './Code.css';
 
-// @ts-ignore
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import editorTheme from './editorTheme';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
+import { editorTheme } from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
 type ReactElementOrString = ReactElement | string;
+
+const supportedLanguageHighlighters = {
+  diff,
+  jsx,
+  tsx,
+} as const;
+type SupportedLanguage = keyof typeof supportedLanguageHighlighters;
+
+(Object.keys(supportedLanguageHighlighters) as SupportedLanguage[]).forEach(
+  (language) =>
+    SyntaxHighlighter.registerLanguage(
+      language,
+      supportedLanguageHighlighters[language],
+    ),
+);
 
 export const formatSnippet = memoize((snippet: string) => {
   // Remove id props from code snippets since they're not needed in Playroom
