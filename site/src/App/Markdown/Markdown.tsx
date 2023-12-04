@@ -20,7 +20,7 @@ const Code = ({
   language,
   value,
 }: {
-  language: SupportedLanguage;
+  language: SupportedLanguage | null;
   value: string;
 }) => (
   <Box paddingBottom="medium">
