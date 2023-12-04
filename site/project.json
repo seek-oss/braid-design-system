@@ -27,7 +27,7 @@
       "executor": "nx:noop"
     },
     "build:site": {
-      "dependsOn": ["generate"],
+      "dependsOn": ["generate", "^dev"],
       "inputs": ["default", "^default"],
       "outputs": ["dist/(!playroom)/**/*"],
       "executor": "nx:run-script",
@@ -58,7 +58,7 @@
     },
     "lint": {},
     "lint:tsc": {
-      "dependsOn": ["generate"],
+      "dependsOn": ["generate", "^dev"],
       "executor": "nx:run-script",
       "options": {
         "script": "lint:tsc"
