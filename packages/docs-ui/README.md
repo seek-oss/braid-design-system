@@ -10,6 +10,7 @@ npm install @braid-design-system/docs-ui
 ```
 
 - [LinkableHeading](#linkableheading)
+- [MenuButton](#menubutton)
 
 ## Usage
 
