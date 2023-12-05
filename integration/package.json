@@ -1,9 +1,10 @@
 {
-  "name": "@braid-design-system/integration",
-  "private": true,
+  "name": "@braid-design-system/integration-tests",
   "version": "0.0.0",
-  "author": "SEEK",
+  "private": true,
+  "description": "deps needed for integration tests",
   "license": "MIT",
+  "author": "SEEK",
   "dependencies": {
     "braid-design-system": "*"
   },
