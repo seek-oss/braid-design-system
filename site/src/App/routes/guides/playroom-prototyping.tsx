@@ -28,7 +28,7 @@ import { TextStack } from '../../TextStack/TextStack';
 import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import Code from '../../Code/Code';
-import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 interface MockJob {
   id: number;

@@ -3616,5 +3616,33 @@
         "summary": "**seekJobs:** Update `formAccent` colour\n\nThe `formAccent` tone, used through our form fields and buttons, is being updated to a derivative of the SEEK brand blue.\n\nAs this update only relates to the `seekJobs` theme, consumers of other themes will not be affected."
       }
     ]
+  },
+  {
+    "version": "32.14.0",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "Add optional `tooltipPlacement` prop to `ButtonIcon`\n\nThe `tooltipPlacement` prop allows you to specify the placement of the tooltip to either `top` or `bottom`.\nThe default value is `top`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<ButtonIcon\n  tooltipPlacement=\"bottom\"\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "32.14.1",
+    "updates": [
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Fix `useLayoutEffect` warnings during SSR"
+      },
+      {
+        "updated": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Improve positioning of the active underline"
+      }
+    ]
   }
 ]

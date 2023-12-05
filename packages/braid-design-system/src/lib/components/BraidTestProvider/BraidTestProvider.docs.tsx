@@ -1,5 +1,5 @@
 import React from 'react';
-import { apac } from '../../themes';
+import apac from '../../themes/apac';
 import type { ComponentDocs } from 'site/types';
 import { Stack, Text, Strong, TextLink, Alert } from '..';
 

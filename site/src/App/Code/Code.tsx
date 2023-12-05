@@ -26,14 +26,24 @@ import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/Fiel
 import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
 import * as styles from './Code.css';
 
-// @ts-ignore
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import editorTheme from './editorTheme';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
+import { editorTheme } from './editorTheme';
 import { ThemedExample } from '../ThemeSetting';
 import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
 type ReactElementOrString = ReactElement | string;
+
+// `jsx` and `tsx` implicitly register `js` and `ts`
+for (const [name, language] of Object.entries({ diff, jsx, tsx })) {
+  SyntaxHighlighter.registerLanguage(name, language);
+}
+
+const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx'] as const;
+export type SupportedLanguage = (typeof supportedLanguages)[number];
 
 export const formatSnippet = memoize((snippet: string) => {
   // Remove id props from code snippets since they're not needed in Playroom
@@ -152,24 +162,36 @@ export const CodeBlock = ({
   language = 'tsx',
 }: {
   children: string;
-  language?: string;
-}) => (
-  <Box
-    position="relative"
-    padding="xxsmall"
-    borderRadius="large"
-    background="surfaceDark"
-    className={styles.code}
-  >
-    <Box padding={['medium', 'medium', 'large']}>
-      <Text size="small" component="pre" baseline={false}>
-        <SyntaxHighlighter language={language} style={editorTheme}>
-          {children}
-        </SyntaxHighlighter>
-      </Text>
+  language?: SupportedLanguage | null;
+}) => {
+  // `null` is the language when a code block contains no longuage tag.
+  // We resolve it to a valid language or `undefined` to match the syntax highlighter's `language` type.
+  const resolvedLanguage = language || undefined;
+
+  if (resolvedLanguage && !supportedLanguages.includes(resolvedLanguage)) {
+    throw new Error(
+      `Unsupported syntax highlighter language: ${resolvedLanguage}. Please register the language if you wish to support it.`,
+    );
+  }
+
+  return (
+    <Box
+      position="relative"
+      padding="xxsmall"
+      borderRadius="large"
+      background="surfaceDark"
+      className={styles.code}
+    >
+      <Box padding={['medium', 'medium', 'large']}>
+        <Text size="small" component="pre" baseline={false}>
+          <SyntaxHighlighter language={resolvedLanguage} style={editorTheme}>
+            {children}
+          </SyntaxHighlighter>
+        </Text>
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 const isSource = function <Value>(input: any): input is Source<Value> {
   return (

@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "32.13.0",
+  "version": "32.14.1",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -14,12 +14,10 @@
   "license": "MIT",
   "author": "SEEK",
   "sideEffects": [
-    "**/atoms/**",
     "**/components/BraidProvider/BraidProvider.*",
     "**/entries/playroom/components.ts",
     "**/entries/reset.ts",
     "**/reset/**",
-    "**/themes/**",
     "*.css.*",
     "dist/playroom/components.*",
     "dist/reset.*",
@@ -125,6 +123,7 @@
     "themes/wireframe"
   ],
   "scripts": {
+    "dev": "crackle dev --webpack",
     "build": "crackle package",
     "codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "preformat:eslint": "ignore-sync .eslintignore-sync",
@@ -196,13 +195,13 @@
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
     "html-validate": "^7.1.1",
-    "playroom": "0.32.1",
+    "playroom": "0.34.0",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.7.0",
-    "sku": "12.3.3",
+    "sku": "12.4.7",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   },

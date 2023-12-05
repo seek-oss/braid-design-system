@@ -1,7 +1,7 @@
 import React, { type ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { CodeBlock } from '../Code/Code';
+import { CodeBlock, type SupportedLanguage } from '../Code/Code';
 import {
   Text,
   Heading,
@@ -13,10 +13,16 @@ import {
 } from 'braid-src/lib/components';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
 import { InlineCode } from '../InlineCode/InlineCode';
-import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { standardText } from './Markdown.css';
 
-const Code = ({ language, value }: { language: string; value: string }) => (
+const Code = ({
+  language,
+  value,
+}: {
+  language: SupportedLanguage | null;
+  value: string;
+}) => (
   <Box paddingBottom="medium">
     <CodeBlock language={language}>{value}</CodeBlock>
   </Box>

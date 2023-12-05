@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "scripts": {
     "test": "pnpm run generate && jest",
-    "test:fixtures": "jest --config fixtures/jest.config.js",
+    "test:fixtures": "pnpm run build && jest --config fixtures/jest.config.js",
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "nx run braid-design-system:build",
+    "build:docs-ui": "nx run docs-ui:build",
     "build:site": "nx run site:build",
     "storybook": "nx run braid-design-system:storybook",
     "storybook:build": "nx run braid-design-system:storybook:build",
@@ -24,7 +25,7 @@
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm prepare-publish && changeset publish && pnpm build:site && pnpm run deploy",
-    "prepare-publish": "pnpm build && tsx scripts/copyReadme.cts",
+    "prepare-publish": "pnpm build && pnpm build:docs-ui && tsx scripts/copyReadme.cts",
     "version": "changeset version && tsx scripts/versionComponentUpdates.cts && pnpm install --lockfile-only",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },
@@ -44,7 +45,7 @@
     "@babel/runtime": "^7.18.0",
     "@changesets/cli": "^2.22.0",
     "@changesets/get-github-info": "^0.5.0",
-    "@crackle/cli": "^0.12.0",
+    "@crackle/cli": "^0.12.5",
     "@manypkg/cli": "^0.19.1",
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
@@ -80,11 +81,12 @@
     "typescript": "~5.1.6"
   },
   "volta": {
-    "node": "18.15.0"
+    "node": "20.10.0"
   },
-  "packageManager": "pnpm@7.30.0",
+  "packageManager": "pnpm@8.11.0",
   "pnpm": {
     "overrides": {
+      "@braid-design-system/docs-ui": "workspace:*",
       "@braid-design-system/generate-component-docs": "workspace:*",
       "@braid-design-system/source.macro": "workspace:*",
       "braid-design-system": "workspace:*"
