@@ -25,7 +25,7 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     `<rootDir>${slash}(.*${slash})?(dist|node_modules)${slash}`,
-    `<rootDir>/fixtures`, // these have a separate Jest config
+    `<rootDir>/integration`, // these have a separate Jest config
   ],
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   moduleNameMapper: {

@@ -44,16 +44,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Build
-        run: pnpm build
-
       - name: Lint
         run: pnpm lint
 
-      - name: Test
+      - name: Build & Test
         run: |
           pnpm test
-          pnpm test:fixtures
+          # build must be run just before integration tests
+          pnpm build
+          pnpm test:integration
 
       - name: Chromatic
         run: pnpm storybook:chromatic

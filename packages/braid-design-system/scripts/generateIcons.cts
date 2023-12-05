@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
@@ -10,7 +9,7 @@ import { optimize } from 'svgo';
 // @ts-expect-error svgr@6 has types
 import svgr from '@svgr/core';
 
-import { relativeTo } from './utils';
+import { debugLog, relativeTo } from './utils';
 
 const baseDir = path.join(__dirname, '..');
 const iconComponentsDir = path.join(baseDir, 'src/lib/components/icons');
@@ -139,10 +138,10 @@ const svgrConfig = {
     const templateFileIfMissing = async (fileName: string, contents: string) => {
       const filePath = path.join(iconDir, fileName);
       if (await fs.pathExists(filePath)) {
-        console.log('Skip', relativeToProject(filePath));
+        debugLog('Skip', relativeToProject(filePath));
         return;
       }
-      console.log('Write', relativeToProject(filePath));
+      debugLog('Write', relativeToProject(filePath));
       await fs.writeFile(filePath, `${contents}\n`, 'utf-8');
     };
 
@@ -219,6 +218,6 @@ const svgrConfig = {
     .join('\n')
     .concat('\n');
   const iconsIndexPath = path.join(iconComponentsDir, 'index.ts');
-  console.log('Update', relativeToProject(iconsIndexPath));
+  debugLog('Update', relativeToProject(iconsIndexPath));
   await fs.writeFile(iconsIndexPath, iconExports, 'utf-8');
 })();

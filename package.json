@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "test": "pnpm run generate && jest",
-    "test:fixtures": "pnpm run build && jest --config fixtures/jest.config.js",
+    "test:integration": "jest --config integration/jest.config.js",
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "nx run braid-design-system:build",
