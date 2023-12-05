@@ -1,11 +1,10 @@
-/* eslint-disable no-console */
 import prettier from 'prettier';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
 import path from 'path';
 import { transformFileAsync } from '@babel/core';
 
-import { relativeTo } from './utils';
+import { debugLog, relativeTo } from './utils';
 
 const baseDir = path.join(__dirname, '..');
 const componentsDir = path.join(baseDir, 'src/lib/components');
@@ -75,6 +74,6 @@ const transformWithBabel = async (fileName: string) => {
     { ...prettierOptions, parser: 'babel-ts' },
   );
 
-  console.log('Update', relativeToProject(snippetsIndexFile));
+  debugLog('Update', relativeToProject(snippetsIndexFile));
   await fs.writeFile(snippetsIndexFile, snippetsIndexCode, 'utf-8');
 })();

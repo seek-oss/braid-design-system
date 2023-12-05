@@ -152,11 +152,11 @@ importers:
         specifier: ~5.1.6
         version: 5.1.6
 
-  fixtures/consumer:
+  integration:
     dependencies:
       braid-design-system:
         specifier: workspace:*
-        version: link:../../packages/braid-design-system
+        version: link:../packages/braid-design-system
     devDependencies:
       '@vanilla-extract/integration':
         specifier: ^6.1.2
