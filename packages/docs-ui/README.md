@@ -34,5 +34,24 @@ import { LinkableHeading } from '@braid-design-system/docs-ui';
 | children  | `string`         | Visible heading content, converted to slug (e.g. &ldquo;section-heading&rdquo;) to be used as hash link.                                                                  |
 | label     | `string`         | Override the slug used as the hash link.<br/><br/>_Note: If the content of the heading is more than a simple string that can be slugified, then the `label` is required._ |
 
+### `MenuButton`
+
+A hamburger button that opens a menu when clicked. The button transforms into a close icon when the menu is open.
+
+#### Example
+
+```tsx
+import { MenuButton } from '@braid-design-system/docs-ui';
+
+<MenuButton open={menuOpen} onClick={handleOnClick} />;
+```
+
+#### Props
+
+| props   | value        | description                                                                             |
+| ------- | ------------ | --------------------------------------------------------------------------------------- |
+| open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon. |
+| onClick | `() => void` | A callback function to handle button clicks.                                            |
+
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
