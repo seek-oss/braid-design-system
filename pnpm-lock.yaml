@@ -50,8 +50,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0
       '@crackle/cli':
-        specifier: ^0.12.5
-        version: 0.12.5(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2)
+        specifier: ^0.13.0
+        version: 0.13.0(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2)
       '@manypkg/cli':
         specifier: ^0.19.1
         version: 0.19.1
@@ -3158,8 +3158,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@crackle/babel-plugin-remove-exports@0.2.1:
-    resolution: {integrity: sha512-TDwrGKexErRKuBVuT0VBEbfLInAH5LWjhon4x7EL1zpqsTGcA+2EZYO+bU71aGzW9NNWChTifWT34Y0Lm1LXtw==}
+  /@crackle/babel-plugin-remove-exports@0.3.0:
+    resolution: {integrity: sha512-BMWSuQcRq873HWR+mReVqmerZVrA9Wz5lcrafYb8k0GpfAy6Fe9V5pGAY3AhQ1R3KCemMu2NIEnrQQICI0OQUg==}
     dependencies:
       '@babel/core': 7.23.3
       '@babel/traverse': 7.23.4
@@ -3167,11 +3167,11 @@ packages:
       - supports-color
     dev: false
 
-  /@crackle/cli@0.12.5(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2):
-    resolution: {integrity: sha512-eRpq/yp7JzivXgkfuYKwU8BtKg1iK8LYP9zgxfcLGPY8fIZquwXQP+ZWMYv7oCagV86166fWo9Py6YfUWE2qRQ==}
+  /@crackle/cli@0.13.0(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2):
+    resolution: {integrity: sha512-Y+haLr5j3C3KdoggQx5NCaGtfFeJavAzp18web5m35jsEZ9ULRy3xz16YMF8Na40auceCnGEgU+2BCN3aPuPjA==}
     hasBin: true
     dependencies:
-      '@crackle/core': 0.29.0(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2)
+      '@crackle/core': 0.31.0(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2)
       yargs: 17.6.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -3192,16 +3192,16 @@ packages:
       - webpack
     dev: false
 
-  /@crackle/core@0.29.0(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2):
-    resolution: {integrity: sha512-Knc4fT2SoeTSF7UVv1nCRqcZ8m8/fweFkHzTpfLHNhFlf93RgHwfLVccCL2DddjaHR0W0B1sly5YeZ3vUALy9A==}
+  /@crackle/core@0.31.0(@types/node@18.13.0)(@types/react@18.0.28)(babel-plugin-macros@3.1.0)(typescript@5.1.6)(webpack@5.88.2):
+    resolution: {integrity: sha512-AdoTe7lu9GzzSL9y2BxaR61oxcAPShVHrrI+yHbc1C9OSVyH/A1EOgux9E3kCEBsAolm91DaYTX7dRpEGYoJ6g==}
     peerDependencies:
-      typescript: '>=5.0.4'
+      typescript: '>=5.2.2'
     dependencies:
       '@babel/core': 7.23.3
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.3)
       '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.23.3)
-      '@crackle/babel-plugin-remove-exports': 0.2.1
-      '@crackle/router': 0.3.0(react-dom@18.2.0)(react@18.2.0)
+      '@crackle/babel-plugin-remove-exports': 0.3.0
+      '@crackle/router': 0.4.0(react-dom@18.2.0)(react@18.2.0)
       '@ungap/structured-clone': 1.2.0
       '@vanilla-extract/css': 1.14.0
       '@vanilla-extract/integration': 6.2.4(@types/node@18.13.0)(less@4.1.2)
@@ -3255,8 +3255,8 @@ packages:
       - webpack
     dev: false
 
-  /@crackle/router@0.3.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-1UpUv85cVXzDx1pFr8cRVlPAEzG/qDF8lt+21CDl/vZxrLEe9nh6DpEtqCwACS6AhtJ69zm1S6jlJlaUJL2ddQ==}
+  /@crackle/router@0.4.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-vewQyRdCW3UH2+6N/Dnm3ER31eKi2ctP8dyN7530GBUEO6R4FLqaLIueAi8lf8L4k13HnEjxUQSp4UOvx6K+FQ==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
