@@ -78,7 +78,7 @@
     "renovate-config-seek": "0.4.0",
     "surge": "^0.23.1",
     "tsx": "^3.12.1",
-    "typescript": "~5.1.6"
+    "typescript": "~5.2.2"
   },
   "volta": {
     "node": "20.10.0"
