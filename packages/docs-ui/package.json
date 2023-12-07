@@ -5,7 +5,10 @@
   "author": "SEEK",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": {
+        "import": "./dist/index.d.mts",
+        "require": "./dist/index.d.ts"
+      },
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
@@ -18,8 +21,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "crackle dev --webpack",
     "build": "crackle package",
+    "dev": "crackle dev --webpack",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "lint:eslint": "eslint --cache .",

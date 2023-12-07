@@ -8214,7 +8214,7 @@ exports[`filterSuggestions 1`] = `
   props: {
     at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
-    copyWithin: (target: number, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<Value>
+    copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
     every: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): this is S[]; (predicate: (value: ...
     fill: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>
