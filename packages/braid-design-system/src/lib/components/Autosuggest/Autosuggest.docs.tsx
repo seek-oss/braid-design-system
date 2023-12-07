@@ -91,8 +91,8 @@ const docs: ComponentDocs = {
               label="Label"
               secondaryLabel="optional"
               tertiaryLabel={
-                <TextLink href="#">
-                  <IconHelp /> Help
+                <TextLink href="#" icon={<IconHelp />}>
+                  Help
                 </TextLink>
               }
               id={id}
