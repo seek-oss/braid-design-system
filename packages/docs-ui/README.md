@@ -37,7 +37,7 @@ import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 ### `MenuButton`
 
-A hamburger button that opens a menu when clicked. The button transforms into a close icon when the menu is open.
+A hamburger button used for showing and hiding the Navigation Sidebar on mobile devices.
 
 #### Example
 
@@ -52,7 +52,7 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 | props   | value        | description                                                                             |
 | ------- | ------------ | --------------------------------------------------------------------------------------- |
 | open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon. |
-| onClick | `() => void` | A callback function to handle button clicks.                                            |
+| onClick | `() => void` | A callback function to handle button presses.                                           |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
