@@ -49,10 +49,10 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 
 #### Props
 
-| props   | value        | description                                                                             |
-| ------- | ------------ | --------------------------------------------------------------------------------------- |
-| open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon. |
-| onClick | `() => void` | A callback function to handle button presses.                                           |
+| props   | value        | description                                                                                                   |
+| ------- | ------------ | ------------------------------------------------------------------------------------------------------------- |
+| open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
+| onClick | `() => void` | A callback function to handle button presses.                                                                 |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
