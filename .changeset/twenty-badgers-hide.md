@@ -3,4 +3,4 @@
 '@braid-design-system/docs-ui': patch
 ---
 
-Now providing types correctly according to https://arethetypeswrong.github.io
+Provide correct types according to https://arethetypeswrong.github.io
