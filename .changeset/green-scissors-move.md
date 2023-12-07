@@ -2,4 +2,5 @@
 '@braid-design-system/docs-ui': minor
 ---
 
-added other components
+Add `MenuButton` component to `docs-ui` package.
+This component is used to show and hide the Navigation Sidebar on mobile devices.
