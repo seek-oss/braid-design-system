@@ -10,12 +10,14 @@ npm install @braid-design-system/docs-ui
 ```
 
 - [LinkableHeading](#linkableheading)
+- [MenuButton](#menubutton)
 
 ## Usage
 
 ### `LinkableHeading`
 
-A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within documentation pages.
+A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within
+documentation pages.
 
 #### Example
 
@@ -33,6 +35,25 @@ import { LinkableHeading } from '@braid-design-system/docs-ui';
 | component | `string`         | HTML element to render, e.g. &ldquo;h1&rdquo;, &ldquo;h2&rdquo;, etc.                                                                                                     |
 | children  | `string`         | Visible heading content, converted to slug (e.g. &ldquo;section-heading&rdquo;) to be used as hash link.                                                                  |
 | label     | `string`         | Override the slug used as the hash link.<br/><br/>_Note: If the content of the heading is more than a simple string that can be slugified, then the `label` is required._ |
+
+### `MenuButton`
+
+A hamburger button used for showing and hiding the Navigation Sidebar on mobile devices.
+
+#### Example
+
+```tsx
+import { MenuButton } from '@braid-design-system/docs-ui';
+
+<MenuButton open={menuOpen} onClick={handleOnClick} />;
+```
+
+#### Props
+
+| props   | value        | description                                                                                                   |
+| ------- | ------------ | ------------------------------------------------------------------------------------------------------------- |
+| open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
+| onClick | `() => void` | A callback function to handle button presses (defaults to `false`).                                           |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
