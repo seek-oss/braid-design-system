@@ -16,7 +16,8 @@ npm install @braid-design-system/docs-ui
 
 ### `LinkableHeading`
 
-A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within documentation pages.
+A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within
+documentation pages.
 
 #### Example
 
@@ -52,7 +53,7 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 | props   | value        | description                                                                                                   |
 | ------- | ------------ | ------------------------------------------------------------------------------------------------------------- |
 | open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
-| onClick | `() => void` | A callback function to handle button presses.                                                                 |
+| onClick | `() => void` | A callback function to handle button presses (defaults to `false`).                                           |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
