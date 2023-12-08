@@ -1,5 +1,15 @@
 # @braid-design-system/docs-ui
 
+## 1.1.0
+
+### Minor Changes
+
+- Add `MenuButton` component used to show and hide the navigation sidebar on mobile devices. ([#1409](https://github.com/seek-oss/braid-design-system/pull/1409))
+
+### Patch Changes
+
+- Provide correct types according to https://arethetypeswrong.github.io ([#1413](https://github.com/seek-oss/braid-design-system/pull/1413))
+
 ## 1.0.0
 
 ### Major Changes
