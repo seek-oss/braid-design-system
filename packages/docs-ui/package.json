@@ -30,8 +30,7 @@
     "lint:tsc": "tsc"
   },
   "dependencies": {
-    "@vanilla-extract/css": "^1.9.2",
-    "react-router": "^6.20.1"
+    "@vanilla-extract/css": "^1.9.2"
   },
   "devDependencies": {
     "braid-design-system": "*",
