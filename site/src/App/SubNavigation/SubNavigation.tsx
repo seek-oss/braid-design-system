@@ -1,18 +1,9 @@
 import React from 'react';
-import { useMatch } from 'react-router';
 import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
-import {
-  Text,
-  ButtonLink,
-  Box,
-  Stack,
-  Inline,
-  Badge,
-  Bleed,
-} from 'braid-src/lib/components';
+import { Text, Box, Stack } from 'braid-src/lib/components';
 import {
   categorisedComponents,
   documentedComponents,
@@ -21,66 +12,40 @@ import {
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';
 import * as styles from './SubNavigation.css';
+import {
+  NavigationItem,
+  type SubNavigationItem,
+} from '@braid-design-system/docs-ui';
+import { useMatch } from 'react-router';
 
 type BadgeLabel = 'New' | 'Deprecated';
-
-const toneForBadge = (badgeLabel: BadgeLabel) => {
-  const toneMap = {
-    Deprecated: 'caution',
-    New: 'positive',
-  } as const;
-
-  return toneMap[badgeLabel];
-};
 
 const componentsList = documentedComponents.filter(
   ({ category }) => category !== 'Logic',
 );
 
-interface SubNavigationItem {
-  badge?: BadgeLabel;
-  name: string;
-  path: string;
-  onClick?: () => void;
-  target?: string;
-}
-
-const SubNavItem = ({
-  name,
-  badge,
-  path,
-  onClick,
-  target,
-}: SubNavigationItem) => {
-  const active = useMatch({ path, end: true });
-
-  return (
-    <Inline space="medium" alignY="center">
-      <Bleed horizontal="small">
-        <ButtonLink
-          variant={active ? 'soft' : 'transparent'}
-          tone="formAccent"
-          size="small"
-          href={path}
-          onClick={onClick}
-          target={target}
-        >
-          {name}
-        </ButtonLink>
-      </Bleed>
-      {badge ? (
-        <Badge bleedY tone={toneForBadge(badge)}>
-          {badge}
-        </Badge>
-      ) : null}
-    </Inline>
-  );
-};
-
 interface SubNavigationGroup {
   title?: string;
   items: SubNavigationItem[];
 }
+
+// Todo: rename and refactor
+// This const is a workaround to avoid using the useMatch hook outside a top level component
+const NavItem = ({ name, badge, path, onClick, target }: SubNavigationItem) => {
+  const active = Boolean(useMatch({ path, end: true }));
+
+  return (
+    <NavigationItem
+      name={name}
+      badge={badge}
+      path={path}
+      onClick={onClick}
+      target={target}
+      key={name}
+      active={active}
+    />
+  );
+};
 
 const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
   <Box component="nav">
@@ -95,7 +60,7 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
 
       <Stack component="ul" space="none">
         {items.map(({ name, badge, path, onClick, target }) => (
-          <SubNavItem
+          <NavItem
             name={name}
             badge={badge}
             path={path}
@@ -112,6 +77,7 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
 interface SubNavigationProps {
   onSelect?: () => void;
 }
+
 export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
   const { playroomUrl } = useConfig();
 
