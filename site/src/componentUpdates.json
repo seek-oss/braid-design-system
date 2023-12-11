@@ -3644,5 +3644,9 @@
         "summary": "**Tabs:** Improve positioning of the active underline"
       }
     ]
+  },
+  {
+    "version": "32.14.2",
+    "updates": []
   }
 ]

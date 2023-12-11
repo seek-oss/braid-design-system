@@ -9,15 +9,14 @@ Components for building documentation sites with a consistent user experience to
 npm install @braid-design-system/docs-ui
 ```
 
-- [LinkableHeading](#linkableheading)
-- [MenuButton](#menubutton)
+- [`LinkableHeading`](#linkableheading)
+- [`MenuButton`](#menubutton)
 
 ## Usage
 
 ### `LinkableHeading`
 
-A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within
-documentation pages.
+A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within documentation pages.
 
 #### Example
 

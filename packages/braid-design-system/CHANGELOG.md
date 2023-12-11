@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 32.14.2
+
+### Patch Changes
+
+- Provide correct types according to https://arethetypeswrong.github.io ([#1413](https://github.com/seek-oss/braid-design-system/pull/1413))
+
 ## 32.14.1
 
 ### Patch Changes
