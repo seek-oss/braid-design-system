@@ -31,7 +31,7 @@ interface SubNavigationGroup {
 
 // Todo: rename and refactor
 // This const is a workaround to avoid using the useMatch hook outside a top level component
-const NavItem = ({ name, badge, path, onClick, target }: SubNavigationItem) => {
+const NavItem = ({ name, badge, path, onClick }: SubNavigationItem) => {
   const active = Boolean(useMatch({ path, end: true }));
 
   return (
@@ -40,7 +40,6 @@ const NavItem = ({ name, badge, path, onClick, target }: SubNavigationItem) => {
       badge={badge}
       path={path}
       onClick={onClick}
-      target={target}
       key={name}
       active={active}
     />
@@ -59,13 +58,12 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
       ) : null}
 
       <Stack component="ul" space="none">
-        {items.map(({ name, badge, path, onClick, target }) => (
+        {items.map(({ name, badge, path, onClick }) => (
           <NavItem
             name={name}
             badge={badge}
             path={path}
             onClick={onClick}
-            target={target}
             key={name}
           />
         ))}

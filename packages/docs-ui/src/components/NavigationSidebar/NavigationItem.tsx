@@ -26,7 +26,6 @@ export const NavigationItem = ({
   badge,
   path,
   onClick,
-  target,
   active,
 }: SubNavigationItem) => (
   <Inline space="medium" alignY="center">
@@ -37,7 +36,6 @@ export const NavigationItem = ({
         size="small"
         href={path}
         onClick={onClick}
-        target={target}
       >
         {name}
       </ButtonLink>
