@@ -13,8 +13,8 @@ const toneForBadge = (badgeLabel: BadgeLabel) => {
 };
 
 export interface SubNavigationItem {
-  badge?: BadgeLabel;
   name: string;
+  badge?: BadgeLabel;
   path: string;
   onClick?: () => void;
   target?: string;
