@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/seek-oss/braid-design-system/HEAD/packages/docs-ui/images/braid-docs-ui-logo.svg#gh-light-mode-only" alt="Braid Docs UI" title="Braid Docs UI" width="80px">
 <img src="https://raw.githubusercontent.com/seek-oss/braid-design-system/HEAD/packages/docs-ui/images/braid-docs-ui-logo-inverted.svg#gh-dark-mode-only" alt="Braid Docs UI" title="Braid Docs UI" width="80px" />
 
-# docs-ui <!-- omit in toc -->
+# docs-ui
 
 Components for building documentation sites with a consistent user experience to the [Braid Design System] website.
 
@@ -9,13 +9,8 @@ Components for building documentation sites with a consistent user experience to
 npm install @braid-design-system/docs-ui
 ```
 
-- [Usage](#usage)
-  - [`LinkableHeading`](#linkableheading)
-    - [Example](#example)
-    - [Props](#props)
-  - [`MenuButton`](#menubutton)
-    - [Example](#example-1)
-    - [Props](#props-1)
+- [`LinkableHeading`](#linkableheading)
+- [`MenuButton`](#menubutton)
 
 ## Usage
 
