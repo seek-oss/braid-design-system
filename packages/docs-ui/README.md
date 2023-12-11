@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/seek-oss/braid-design-system/HEAD/packages/docs-ui/images/braid-docs-ui-logo.svg#gh-light-mode-only" alt="Braid Docs UI" title="Braid Docs UI" width="80px">
 <img src="https://raw.githubusercontent.com/seek-oss/braid-design-system/HEAD/packages/docs-ui/images/braid-docs-ui-logo-inverted.svg#gh-dark-mode-only" alt="Braid Docs UI" title="Braid Docs UI" width="80px" />
 
-# docs-ui
+# docs-ui <!-- omit in toc -->
 
 Components for building documentation sites with a consistent user experience to the [Braid Design System] website.
 
@@ -9,20 +9,19 @@ Components for building documentation sites with a consistent user experience to
 npm install @braid-design-system/docs-ui
 ```
 
-- [docs-ui](#docs-ui)
-  - [Usage](#usage)
-    - [`LinkableHeading`](#linkableheading)
-      - [Example](#example)
-      - [Props](#props)
-    - [`MenuButton`](#menubutton)
-      - [Example](#example-1)
-      - [Props](#props-1)
+- [Usage](#usage)
+  - [`LinkableHeading`](#linkableheading)
+    - [Example](#example)
+    - [Props](#props)
+  - [`MenuButton`](#menubutton)
+    - [Example](#example-1)
+    - [Props](#props-1)
 
 ## Usage
 
 ### `LinkableHeading`
 
-A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within documentation  pages.
+A heading wrapped in a link to a hash that is generated based on the heading content, enabling deep links within documentation pages.
 
 #### Example
 
