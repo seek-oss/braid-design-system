@@ -6,6 +6,11 @@ import { getCurrentVersionInfo } from '../Updates';
 
 export function AppMeta() {
   const isBrowser = typeof window !== 'undefined';
+  let faviconFileName = 'favicon';
+
+  if (isBrowser && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    faviconFileName += '-inverted';
+  }
 
   return (
     <Fragment>
@@ -24,57 +29,24 @@ export function AppMeta() {
           name="twitter:image"
           content="https://seek-oss.github.io/braid-design-system/og-icon.png"
         />
-        {isBrowser ? (
-          window.matchMedia('(prefers-color-scheme: dark)').matches ? (
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="https://seek-oss.github.io/braid-design-system/favicon-inverted-16x16.png"
-            />
-          ) : (
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href="https://seek-oss.github.io/braid-design-system/favicon-16x16.png"
-            />
-          )
-        ) : null}
-        {isBrowser ? (
-          window.matchMedia('(prefers-color-scheme: dark)').matches ? (
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="https://seek-oss.github.io/braid-design-system/favicon-inverted-32x32.png"
-            />
-          ) : (
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href="https://seek-oss.github.io/braid-design-system/favicon-32x32.png"
-            />
-          )
-        ) : null}
-        {isBrowser ? (
-          window.matchMedia('(prefers-color-scheme: dark)').matches ? (
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="96x96"
-              href="https://seek-oss.github.io/braid-design-system/favicon-inverted-96x96.png"
-            />
-          ) : (
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="96x96"
-              href="https://seek-oss.github.io/braid-design-system/favicon-96x96.png"
-            />
-          )
-        ) : null}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href={`https://seek-oss.github.io/braid-design-system/${faviconFileName}-16x16.png`}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href={`https://seek-oss.github.io/braid-design-system/${faviconFileName}-32x32.png`}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href={`https://seek-oss.github.io/braid-design-system/${faviconFileName}-96x96.png`}
+        />
 
         {/* @ts-expect-error */}
         <meta name="twitter:label1" value="Latest release" />
