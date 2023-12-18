@@ -3,7 +3,7 @@ import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
-import { Text, Box, Stack } from 'braid-src/lib/components';
+import { Stack } from 'braid-src/lib/components';
 import {
   categorisedComponents,
   documentedComponents,
@@ -11,49 +11,13 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';
-import * as styles from './SubNavigation.css';
-import {
-  NavigationItem,
-  type SubNavigationItem,
-} from '@braid-design-system/docs-ui';
+import { NavigationGroup } from '@braid-design-system/docs-ui';
 import { matchPath, useLocation, useMatch } from 'react-router';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
 const componentsList = documentedComponents.filter(
   ({ category }) => category !== 'Logic',
-);
-
-interface SubNavigationGroup {
-  title?: string;
-  items: SubNavigationItem[];
-}
-
-const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
-  <Box component="nav">
-    <Stack space="small">
-      {title ? (
-        <Box className={styles.uppercase}>
-          <Text size="xsmall" weight="medium" component="h2">
-            {title}
-          </Text>
-        </Box>
-      ) : null}
-
-      <Stack component="ul" space="none">
-        {items.map(({ name, badge, path, active, onClick }) => (
-          <NavigationItem
-            name={name}
-            badge={badge}
-            path={path}
-            active={active}
-            onClick={onClick}
-            key={name}
-          />
-        ))}
-      </Stack>
-    </Stack>
-  </Box>
 );
 
 interface SubNavigationProps {
@@ -82,7 +46,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
   return (
     <Stack space="large">
-      <SubNavigationGroup
+      <NavigationGroup
         items={[
           {
             name: 'Releases',
@@ -105,7 +69,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         ]}
       />
 
-      <SubNavigationGroup
+      <NavigationGroup
         title="Guides"
         items={map(guides, (guide, path) => ({
           name: guide.title,
@@ -116,7 +80,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SubNavigationGroup
+      <NavigationGroup
         title="Foundations"
         items={map(foundations, (foundation, path) => ({
           name: foundation.title,
@@ -127,7 +91,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SubNavigationGroup
+      <NavigationGroup
         title="Examples"
         items={map(examples, (example, path) => ({
           name: example.title,
@@ -138,7 +102,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SubNavigationGroup
+      <NavigationGroup
         title="Components"
         items={componentsList.map((docs) => ({
           name: docs.name,
@@ -149,7 +113,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SubNavigationGroup
+      <NavigationGroup
         title="CSS"
         items={documentedCss.map((doc) => ({
           name: doc.name,
@@ -160,7 +124,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SubNavigationGroup
+      <NavigationGroup
         title="Logic"
         items={categorisedComponents.Logic.map((docs) => ({
           name: docs.name,
