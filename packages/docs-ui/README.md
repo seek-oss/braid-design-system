@@ -67,11 +67,11 @@ import { SideNavigationGroup } from '@braid-design-system/docs-ui';
 
 #### Props
 
-| props     | value                 | description                                                             |
-| --------- | --------------------- | ----------------------------------------------------------------------- |
-| title     | `string`              | Title of the Navigation Group.                                          |
-| hideTitle | `boolean`             | Optional to visually hide the group title.                              |
-| items     | `SubNavigationItem[]' | An array of items in the sidebar, each linking to a specific docs page. |
+| props     | value                                                                                                                                                                                                                                    | description                                                             |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| title     | `string`                                                                                                                                                                                                                                 | Title of the Navigation Group.                                          |
+| hideTitle | `boolean`                                                                                                                                                                                                                                | Optional to visually hide the group title.                              |
+| items     | Array<{<br/>&nbsp;&nbsp;name: `string`<br/>&nbsp;&nbsp;path: `string`<br/>&nbsp;&nbsp;badge?: `'New' \| 'Deprecated'`<br/>&nbsp;&nbsp;onClick?: `() => void`<br/>&nbsp;&nbsp;target?: `string`<br/>&nbsp;&nbsp;active?: `boolean`<br/>}> | An array of items in the sidebar, each linking to a specific docs page. |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
