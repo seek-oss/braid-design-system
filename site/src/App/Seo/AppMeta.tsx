@@ -33,19 +33,19 @@ export function AppMeta() {
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href={`https://seek-oss.github.io/braid-design-system/${faviconFileName}-16x16.png`}
+          href={`/${faviconFileName}-16x16.png`}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href={`https://seek-oss.github.io/braid-design-system/${faviconFileName}-32x32.png`}
+          href={`/${faviconFileName}-32x32.png`}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="96x96"
-          href={`https://seek-oss.github.io/braid-design-system/${faviconFileName}-96x96.png`}
+          href={`/${faviconFileName}-96x96.png`}
         />
 
         {/* @ts-expect-error */}
