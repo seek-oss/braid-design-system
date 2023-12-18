@@ -21,7 +21,7 @@ export interface SubNavigationItem {
   active?: boolean;
 }
 
-export const NavigationItem = ({
+export const SideNavigationItem = ({
   name,
   badge,
   path,

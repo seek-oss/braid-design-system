@@ -1,14 +1,17 @@
-import { NavigationItem, type SubNavigationItem } from './NavigationItem';
+import {
+  SideNavigationItem,
+  type SubNavigationItem,
+} from './SideNavigationItem';
 import { Box, Stack, Text } from 'braid-design-system';
-import * as styles from './Navigation.css';
+import * as styles from './SideNavigation.css';
 import React from 'react';
 
-interface NavigationGroup {
+interface SideNavigationGroup {
   title?: string;
   items: SubNavigationItem[];
 }
 
-export const NavigationGroup = ({ title, items }: NavigationGroup) => (
+export const SideNavigationGroup = ({ title, items }: SideNavigationGroup) => (
   <Box component="nav">
     <Stack space="small">
       {title ? (
@@ -21,7 +24,7 @@ export const NavigationGroup = ({ title, items }: NavigationGroup) => (
 
       <Stack component="ul" space="none">
         {items.map(({ name, badge, path, active, onClick }) => (
-          <NavigationItem
+          <SideNavigationItem
             name={name}
             badge={badge}
             path={path}
