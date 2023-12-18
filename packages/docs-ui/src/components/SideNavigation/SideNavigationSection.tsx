@@ -6,12 +6,15 @@ import { Box, Stack, Text } from 'braid-design-system';
 import * as styles from './SideNavigation.css';
 import React from 'react';
 
-interface SideNavigationGroup {
+interface SideNavigationSection {
   title?: string;
   items: SubNavigationItem[];
 }
 
-export const SideNavigationGroup = ({ title, items }: SideNavigationGroup) => (
+export const SideNavigationSection = ({
+  title,
+  items,
+}: SideNavigationSection) => (
   <Box component="nav">
     <Stack space="small">
       {title ? (

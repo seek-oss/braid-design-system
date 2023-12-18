@@ -11,7 +11,7 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';
-import { SideNavigationGroup } from '@braid-design-system/docs-ui';
+import { SideNavigationSection } from '@braid-design-system/docs-ui';
 import { matchPath, useLocation } from 'react-router';
 
 type BadgeLabel = 'New' | 'Deprecated';
@@ -46,7 +46,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
 
   return (
     <Stack space="large">
-      <SideNavigationGroup
+      <SideNavigationSection
         items={[
           {
             name: 'Releases',
@@ -69,7 +69,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         ]}
       />
 
-      <SideNavigationGroup
+      <SideNavigationSection
         title="Guides"
         items={map(guides, (guide, path) => ({
           name: guide.title,
@@ -80,7 +80,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SideNavigationGroup
+      <SideNavigationSection
         title="Foundations"
         items={map(foundations, (foundation, path) => ({
           name: foundation.title,
@@ -91,7 +91,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SideNavigationGroup
+      <SideNavigationSection
         title="Examples"
         items={map(examples, (example, path) => ({
           name: example.title,
@@ -102,7 +102,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SideNavigationGroup
+      <SideNavigationSection
         title="Components"
         items={componentsList.map((docs) => ({
           name: docs.name,
@@ -113,7 +113,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SideNavigationGroup
+      <SideNavigationSection
         title="CSS"
         items={documentedCss.map((doc) => ({
           name: doc.name,
@@ -124,7 +124,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         }))}
       />
 
-      <SideNavigationGroup
+      <SideNavigationSection
         title="Logic"
         items={categorisedComponents.Logic.map((docs) => ({
           name: docs.name,
