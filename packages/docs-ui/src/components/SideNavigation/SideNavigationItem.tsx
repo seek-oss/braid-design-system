@@ -2,14 +2,11 @@ import { Badge, Bleed, ButtonLink, Inline } from 'braid-design-system';
 import React from 'react';
 
 type BadgeLabel = 'New' | 'Deprecated';
+type BadgeProps = ComponentProps<typeof Badge>;
 
-const toneForBadge = (badgeLabel: BadgeLabel) => {
-  const toneMap = {
-    Deprecated: 'caution',
-    New: 'positive',
-  } as const;
-
-  return toneMap[badgeLabel];
+const toneForBadge: Record<BadgeLabel, BadgeProps['tone']> = {
+  Deprecated: 'caution',
+  New: 'positive',
 };
 
 export interface SubNavigationItem {
