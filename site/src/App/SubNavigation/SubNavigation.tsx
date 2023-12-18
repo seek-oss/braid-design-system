@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
@@ -16,7 +16,7 @@ import {
   NavigationItem,
   type SubNavigationItem,
 } from '@braid-design-system/docs-ui';
-import { useMatch } from 'react-router';
+import { matchPath, useLocation, useMatch } from 'react-router';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -28,23 +28,6 @@ interface SubNavigationGroup {
   title?: string;
   items: SubNavigationItem[];
 }
-
-// Todo: rename and refactor
-// This const is a workaround to avoid using the useMatch hook outside a top level component
-const NavItem = ({ name, badge, path, onClick }: SubNavigationItem) => {
-  const active = Boolean(useMatch({ path, end: true }));
-
-  return (
-    <NavigationItem
-      name={name}
-      badge={badge}
-      path={path}
-      onClick={onClick}
-      key={name}
-      active={active}
-    />
-  );
-};
 
 const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
   <Box component="nav">
@@ -58,11 +41,12 @@ const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
       ) : null}
 
       <Stack component="ul" space="none">
-        {items.map(({ name, badge, path, onClick }) => (
-          <NavItem
+        {items.map(({ name, badge, path, active, onClick }) => (
+          <NavigationItem
             name={name}
             badge={badge}
             path={path}
+            active={active}
             onClick={onClick}
             key={name}
           />
@@ -89,6 +73,13 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
     }
   };
 
+  const { pathname: currentPath } = useLocation();
+  const isActive = useMemo(
+    () => (path: string) =>
+      Boolean(matchPath({ path, end: true }, currentPath)),
+    [currentPath],
+  );
+
   return (
     <Stack space="large">
       <SubNavigationGroup
@@ -96,6 +87,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           {
             name: 'Releases',
             path: '/releases',
+            active: Boolean(useMatch({ path: '/releases', end: true })),
             onClick: onSelect,
           },
           {
@@ -119,6 +111,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           name: guide.title,
           badge: guide.badge,
           path,
+          active: isActive(path),
           onClick: onSelect,
         }))}
       />
@@ -129,6 +122,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           name: foundation.title,
           badge: foundation.badge,
           path,
+          active: isActive(path),
           onClick: onSelect,
         }))}
       />
@@ -139,6 +133,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           name: example.title,
           badge: example.badge,
           path,
+          active: isActive(path),
           onClick: onSelect,
         }))}
       />
@@ -149,6 +144,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           name: docs.name,
           badge: getBadge(docs),
           path: `/components/${docs.name}`,
+          active: isActive(`/components/${docs.name}`),
           onClick: onSelect,
         }))}
       />
@@ -159,6 +155,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           name: doc.name,
           badge: getBadge(doc),
           path: `/css/${doc.name}`,
+          active: isActive(`/css/${doc.name}`),
           onClick: onSelect,
         }))}
       />
@@ -169,6 +166,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           name: docs.name,
           badge: getBadge(docs),
           path: `/components/${docs.name}`,
+          active: isActive(`/components/${docs.name}`),
           onClick: onSelect,
         }))}
       />
