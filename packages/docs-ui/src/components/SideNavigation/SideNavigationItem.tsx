@@ -1,5 +1,5 @@
 import { Badge, Bleed, ButtonLink, Inline } from 'braid-design-system';
-import React from 'react';
+import React, { type ComponentProps } from 'react';
 
 type BadgeLabel = 'New' | 'Deprecated';
 type BadgeProps = ComponentProps<typeof Badge>;
@@ -38,7 +38,7 @@ export const SideNavigationItem = ({
       </ButtonLink>
     </Bleed>
     {badge ? (
-      <Badge bleedY tone={toneForBadge(badge)}>
+      <Badge bleedY tone={toneForBadge[badge]}>
         {badge}
       </Badge>
     ) : null}
