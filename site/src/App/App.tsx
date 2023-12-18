@@ -25,7 +25,6 @@ import { ReleasesPage } from './routes/releases';
 import { GalleryPage } from './routes/gallery';
 import { AppMeta } from './Seo/AppMeta';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
-import { SubNavigation } from 'site/App/SubNavigation/SubNavigation';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -95,13 +94,7 @@ export const App = () => {
             <AppMeta />
             <Routes>
               <Route path="/gallery" element={<GalleryPage />} />
-              <Route
-                element={
-                  <Navigation>
-                    <SubNavigation />
-                  </Navigation>
-                }
-              >
+              <Route element={<Navigation />}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/releases" element={<ReleasesPage />} />
                 {map(
