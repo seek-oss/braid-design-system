@@ -13,7 +13,6 @@ import {
 import type { BoxProps } from 'braid-src/lib/components/Box/Box';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
-import { SubNavigation } from '../SubNavigation/SubNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '@braid-design-system/docs-ui';
 import { Logo } from '../Logo/Logo';
@@ -63,7 +62,7 @@ const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ),
 );
 
-export const Navigation = () => {
+export const Navigation = ({ children }: any) => {
   const lastScrollTop = useRef(0);
   const { y: scrollTop } = useWindowScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -114,7 +113,7 @@ export const Navigation = () => {
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <SubNavigation onSelect={() => setMenuOpen(false)} />
+          {children}
         </FixedContentBlock>
       </RemoveScroll>
 
