@@ -11,7 +11,7 @@ npm install @braid-design-system/docs-ui
 
 - [`LinkableHeading`](#linkableheading)
 - [`MenuButton`](#menubutton)
-- [`NavigationItem`](#navigationitem)
+- [`SideNavigationGroup`](#sidenavigationgroup)
 
 ## Usage
 
@@ -55,35 +55,22 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 | open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
 | onClick | `() => void` | A callback function to handle button presses (defaults to `false`).                                           |
 
-### `NavigationItem`
+### `SideNavigationGroup`
 
-A single item in the Navigation Sidebar, used to link to a specific docs page.
-
-#### Example
+A group of SideNavigationItems, with a title.
 
 ```tsx
-import { NavigationItem } from '@braid-design-system/docs-ui';
+import { SideNavigationGroup } from '@braid-design-system/docs-ui';
 
-<NavigationItem
-  name={name}
-  badge={badge}
-  path={path}
-  onClick={onClick}
-  target={target}
-  key={name}
-  active={active}
-/>;
+<SideNavigationGroup title={title} items={items} />;
 ```
 
 #### Props
 
-| props   | value                                   | description                                                                                                  |
-| ------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| name    | `string`                                | Title of the item.                                                                                           |
-| badge   | `badgeLabel`: 'New' &#124; 'Deprecated' | Optional label displayed next to the item, to indicate if it is either `New` or `Deprecated`.                |
-| path    | `string`                                | The link destination when the item is selected.                                                              |
-| onClick | `() => void`                            | A callback function to handle side effects when selecting the item (such as closing the Navigation Sidebar). |
-| active  | `booloean`                              | Indicates whether the Item is currently selected or not (if selected, the item will be highlighted).         |
+| props | value                 | description                                                             |
+| ----- | --------------------- | ----------------------------------------------------------------------- |
+| title | `string`              | Title of the Navigation Group.                                          |
+| items | `SubNavigationItem[]' | An array of items in the sidebar, each linking to a specific docs page. |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
