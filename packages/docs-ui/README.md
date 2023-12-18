@@ -57,7 +57,7 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 
 ### `SideNavigationGroup`
 
-A group of SideNavigationItems, with an optional title.
+A group of SideNavigationItems designed for the side bar.
 
 ```tsx
 import { SideNavigationGroup } from '@braid-design-system/docs-ui';
@@ -67,10 +67,11 @@ import { SideNavigationGroup } from '@braid-design-system/docs-ui';
 
 #### Props
 
-| props | value                 | description                                                             |
-| ----- | --------------------- | ----------------------------------------------------------------------- |
-| title | `string`              | Optional title of the Navigation Group.                                 |
-| items | `SubNavigationItem[]' | An array of items in the sidebar, each linking to a specific docs page. |
+| props     | value                 | description                                                             |
+| --------- | --------------------- | ----------------------------------------------------------------------- |
+| title     | `string`              | Title of the Navigation Group.                                          |
+| hideTitle | `boolean`             | Optional to visually hide the group title.                              |
+| items     | `SubNavigationItem[]' | An array of items in the sidebar, each linking to a specific docs page. |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/

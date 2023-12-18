@@ -47,6 +47,8 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
   return (
     <Stack space="large">
       <SideNavigationSection
+        title="Resources"
+        hideTitle={true}
         items={[
           {
             name: 'Releases',

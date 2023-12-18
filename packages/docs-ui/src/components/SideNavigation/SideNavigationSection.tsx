@@ -2,28 +2,36 @@ import {
   SideNavigationItem,
   type SubNavigationItem,
 } from './SideNavigationItem';
-import { Box, Stack, Text } from 'braid-design-system';
+import { Box, HiddenVisually, Stack, Text } from 'braid-design-system';
 import * as styles from './SideNavigation.css';
 import React from 'react';
 
 interface SideNavigationSection {
-  title?: string;
+  title: string;
+  hideTitle?: boolean;
   items: SubNavigationItem[];
 }
 
 export const SideNavigationSection = ({
   title,
+  hideTitle,
   items,
 }: SideNavigationSection) => (
   <Box component="nav">
     <Stack space="small">
-      {title ? (
-        <Box className={styles.uppercase}>
+      <Box className={styles.uppercase}>
+        {hideTitle ? (
+          <HiddenVisually>
+            <Text size="xsmall" weight="medium" component="h2">
+              {title}
+            </Text>
+          </HiddenVisually>
+        ) : (
           <Text size="xsmall" weight="medium" component="h2">
             {title}
           </Text>
-        </Box>
-      ) : null}
+        )}
+      </Box>
 
       <Stack component="ul" space="none">
         {items.map(({ name, badge, path, active, onClick }) => (
