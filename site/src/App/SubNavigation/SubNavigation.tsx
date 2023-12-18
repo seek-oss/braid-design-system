@@ -12,7 +12,7 @@ import {
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';
 import { SideNavigationGroup } from '@braid-design-system/docs-ui';
-import { matchPath, useLocation, useMatch } from 'react-router';
+import { matchPath, useLocation } from 'react-router';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -51,7 +51,7 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
           {
             name: 'Releases',
             path: '/releases',
-            active: Boolean(useMatch({ path: '/releases', end: true })),
+            active: isActive('/releases'),
             onClick: onSelect,
           },
           {
