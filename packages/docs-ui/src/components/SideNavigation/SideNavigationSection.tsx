@@ -1,15 +1,12 @@
-import {
-  SideNavigationItem,
-  type SubNavigationItem,
-} from './SideNavigationItem';
 import { Box, HiddenVisually, Stack, Text } from 'braid-design-system';
 import * as styles from './SideNavigation.css';
 import React from 'react';
+import { SideNavigationItem } from './SideNavigationItem';
 
 interface SideNavigationSection {
   title: string;
   hideTitle?: boolean;
-  items: SubNavigationItem[];
+  items: SideNavigationItem[];
 }
 
 export const SideNavigationSection = ({

@@ -9,7 +9,7 @@ const toneForBadge: Record<BadgeLabel, BadgeProps['tone']> = {
   New: 'positive',
 };
 
-export interface SubNavigationItem {
+export interface SideNavigationItem {
   name: string;
   badge?: BadgeLabel;
   path: string;
@@ -24,7 +24,7 @@ export const SideNavigationItem = ({
   path,
   onClick,
   active,
-}: SubNavigationItem) => (
+}: SideNavigationItem) => (
   <Inline space="medium" alignY="center">
     <Bleed horizontal="small">
       <ButtonLink
