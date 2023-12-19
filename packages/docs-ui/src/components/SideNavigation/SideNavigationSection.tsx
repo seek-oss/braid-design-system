@@ -16,19 +16,19 @@ export const SideNavigationSection = ({
 }: SideNavigationSection) => (
   <Box component="nav">
     <Stack space="small">
-      <Box className={styles.uppercase}>
-        {hideTitle ? (
-          <HiddenVisually>
-            <Text size="xsmall" weight="medium" component="h2">
-              {title}
-            </Text>
-          </HiddenVisually>
-        ) : (
+      {hideTitle ? (
+        <HiddenVisually>
           <Text size="xsmall" weight="medium" component="h2">
             {title}
           </Text>
-        )}
-      </Box>
+        </HiddenVisually>
+      ) : (
+        <Box className={styles.uppercase}>
+          <Text size="xsmall" weight="medium" component="h2">
+            {title}
+          </Text>
+        </Box>
+      )}
 
       <Stack component="ul" space="none">
         {items.map(({ name, badge, path, active, onClick }) => (
