@@ -20,11 +20,11 @@ const componentsList = documentedComponents.filter(
   ({ category }) => category !== 'Logic',
 );
 
-interface SubNavigationProps {
+interface SideNavigationProps {
   onSelect?: () => void;
 }
 
-export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
+export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   const { playroomUrl } = useConfig();
 
   const getBadge = (docs: any): BadgeLabel | undefined => {

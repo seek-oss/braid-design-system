@@ -17,7 +17,7 @@ const Iconography = () => (
       Iconography
     </Heading>
 
-    <DocNavigationBar title="Subnavigation">
+    <DocNavigationBar title="Sidenavigation">
       <DocNavigationItem href="/foundations/iconography">
         Details
       </DocNavigationItem>
