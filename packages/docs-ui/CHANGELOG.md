@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 1.2.0
+
+### Minor Changes
+
+- Add `SideNavigationSection` component used to create groups of links in the side bar. ([#1415](https://github.com/seek-oss/braid-design-system/pull/1415))
+
 ## 1.1.0
 
 ### Minor Changes
