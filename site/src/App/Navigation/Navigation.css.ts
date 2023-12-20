@@ -91,7 +91,7 @@ const scrollShadows = style([
   }),
 ]);
 
-export const subNavigationContainer = style([
+export const sideNavigationContainer = style([
   headerOffset,
   fixedWidthAboveMobile,
   hideOnMobileWhenClosed,

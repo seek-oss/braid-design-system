@@ -13,7 +13,7 @@ import {
 import type { BoxProps } from 'braid-src/lib/components/Box/Box';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
-import { SubNavigation } from '../SubNavigation/SubNavigation';
+import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { MenuButton } from '@braid-design-system/docs-ui';
 import { Logo } from '../Logo/Logo';
@@ -110,11 +110,11 @@ export const Navigation = () => {
           }}
           zIndex="sticky"
           className={[
-            styles.subNavigationContainer,
+            styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <SubNavigation onSelect={() => setMenuOpen(false)} />
+          <SideNavigation onSelect={() => setMenuOpen(false)} />
         </FixedContentBlock>
       </RemoveScroll>
 

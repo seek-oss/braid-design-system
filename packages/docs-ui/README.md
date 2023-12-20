@@ -11,6 +11,7 @@ npm install @braid-design-system/docs-ui
 
 - [`LinkableHeading`](#linkableheading)
 - [`MenuButton`](#menubutton)
+- [`SideNavigationSection`](#sidenavigationsection)
 
 ## Usage
 
@@ -53,6 +54,24 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 | ------- | ------------ | ------------------------------------------------------------------------------------------------------------- |
 | open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
 | onClick | `() => void` | A callback function to handle button presses (defaults to `false`).                                           |
+
+### `SideNavigationSection`
+
+A navigation section containing a list of links, designed for the side bar.
+
+```tsx
+import { SideNavigationSection } from '@braid-design-system/docs-ui';
+
+<SideNavigationSection title={title} items={items} />;
+```
+
+#### Props
+
+| props     | value                                                                                                                                                                                                                                    | description                                                             |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| title     | `string`                                                                                                                                                                                                                                 | Title of the Navigation Section.                                        |
+| hideTitle | `boolean`                                                                                                                                                                                                                                | Optional to visually hide the group title.                              |
+| items     | Array<{<br/>&nbsp;&nbsp;name: `string`<br/>&nbsp;&nbsp;path: `string`<br/>&nbsp;&nbsp;badge?: `'New' \| 'Deprecated'`<br/>&nbsp;&nbsp;onClick?: `() => void`<br/>&nbsp;&nbsp;target?: `string`<br/>&nbsp;&nbsp;active?: `boolean`<br/>}> | An array of items in the sidebar, each linking to a specific docs page. |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
