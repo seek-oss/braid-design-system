@@ -57,7 +57,7 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 
 ### `SideNavigationSection`
 
-A group of SideNavigationItems designed for the side bar.
+A navigation section containing a list of links, designed for the side bar.
 
 ```tsx
 import { SideNavigationSection } from '@braid-design-system/docs-ui';
