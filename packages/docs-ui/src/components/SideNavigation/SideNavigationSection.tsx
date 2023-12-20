@@ -37,12 +37,12 @@ export const SideNavigationSection = ({
 }: SideNavigationSection) => (
   <Box component="nav">
     {hideTitle ? (
-      <>
+      <Stack space="none">
         <HiddenVisually>
           <Title title={title} />
         </HiddenVisually>
         <ItemList items={items} />
-      </>
+      </Stack>
     ) : (
       <Stack space="small">
         <Box className={styles.uppercase}>
