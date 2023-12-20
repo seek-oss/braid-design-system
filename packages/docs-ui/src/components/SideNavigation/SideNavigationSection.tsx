@@ -9,9 +9,9 @@ interface SideNavigationSection {
   items: SideNavigationItem[];
 }
 
-const Title = ({ title }: { title: string }) => (
+const Title = ({ children }: { children: string }) => (
   <Text size="xsmall" weight="medium" component="h2">
-    {title}
+    {children}
   </Text>
 );
 
@@ -39,14 +39,14 @@ export const SideNavigationSection = ({
     {hideTitle ? (
       <Stack space="none">
         <HiddenVisually>
-          <Title title={title} />
+          <Title>{title}</Title>
         </HiddenVisually>
         <ItemList items={items} />
       </Stack>
     ) : (
       <Stack space="small">
         <Box className={styles.uppercase}>
-          <Title title={title} />
+          <Title>{title}</Title>
         </Box>
         <ItemList items={items} />
       </Stack>
