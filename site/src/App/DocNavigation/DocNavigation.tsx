@@ -206,7 +206,7 @@ export const DocNavigation = () => {
         <Heading level="2" component="h1">
           {docsName}
         </Heading>
-        <DocNavigationBar title="Sidenavigation">
+        <DocNavigationBar title="Side Navigation">
           <DocNavigationItem href={`/${docsType}/${docsName}`}>
             Details
           </DocNavigationItem>
