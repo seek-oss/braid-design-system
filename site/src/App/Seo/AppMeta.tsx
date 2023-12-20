@@ -5,6 +5,13 @@ import { PageTitle } from './PageTitle';
 import { getCurrentVersionInfo } from '../Updates';
 
 export function AppMeta() {
+  const isBrowser = typeof window !== 'undefined';
+  let faviconFileName = 'favicon';
+
+  if (isBrowser && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    faviconFileName += '-inverted';
+  }
+
   return (
     <Fragment>
       <PageTitle />
@@ -26,20 +33,21 @@ export function AppMeta() {
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="https://seek-oss.github.io/braid-design-system/favicon-16x16.png"
+          href={`/${faviconFileName}-16x16.png`}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="https://seek-oss.github.io/braid-design-system/favicon-32x32.png"
+          href={`/${faviconFileName}-32x32.png`}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="96x96"
-          href="https://seek-oss.github.io/braid-design-system/favicon-96x96.png"
+          href={`/${faviconFileName}-96x96.png`}
         />
+
         {/* @ts-expect-error */}
         <meta name="twitter:label1" value="Latest release" />
         {/* @ts-expect-error */}
