@@ -9,39 +9,47 @@ interface SideNavigationSection {
   items: SideNavigationItem[];
 }
 
+const Title = ({ title }: { title: string }) => (
+  <Text size="xsmall" weight="medium" component="h2">
+    {title}
+  </Text>
+);
+
+const ItemList = ({ items }: { items: SideNavigationItem[] }) => (
+  <Stack component="ul" space="none">
+    {items.map(({ name, badge, path, active, onClick }: SideNavigationItem) => (
+      <SideNavigationItem
+        name={name}
+        badge={badge}
+        path={path}
+        active={active}
+        onClick={onClick}
+        key={name}
+      />
+    ))}
+  </Stack>
+);
+
 export const SideNavigationSection = ({
   title,
   hideTitle,
   items,
 }: SideNavigationSection) => (
   <Box component="nav">
-    <Stack space="small">
-      {hideTitle ? (
+    {hideTitle ? (
+      <>
         <HiddenVisually>
-          <Text size="xsmall" weight="medium" component="h2">
-            {title}
-          </Text>
+          <Title title={title} />
         </HiddenVisually>
-      ) : (
+        <ItemList items={items} />
+      </>
+    ) : (
+      <Stack space="small">
         <Box className={styles.uppercase}>
-          <Text size="xsmall" weight="medium" component="h2">
-            {title}
-          </Text>
+          <Title title={title} />
         </Box>
-      )}
-
-      <Stack component="ul" space="none">
-        {items.map(({ name, badge, path, active, onClick }) => (
-          <SideNavigationItem
-            name={name}
-            badge={badge}
-            path={path}
-            active={active}
-            onClick={onClick}
-            key={name}
-          />
-        ))}
+        <ItemList items={items} />
       </Stack>
-    </Stack>
+    )}
   </Box>
 );
