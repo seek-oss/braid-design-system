@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 import { PageTitle } from './PageTitle';
 import { getCurrentVersionInfo } from '../Updates';
+import { useHref } from 'react-router';
 
 export function AppMeta() {
   const isBrowser = typeof window !== 'undefined';
@@ -11,6 +12,10 @@ export function AppMeta() {
   if (isBrowser && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     faviconFileName += '-inverted';
   }
+
+  const favicon16Href = useHref(`/${faviconFileName}-16x16.png`);
+  const favicon32Href = useHref(`/${faviconFileName}-32x32.png`);
+  const favicon96Href = useHref(`/${faviconFileName}-96x96.png`);
 
   return (
     <Fragment>
@@ -29,24 +34,9 @@ export function AppMeta() {
           name="twitter:image"
           content="https://seek-oss.github.io/braid-design-system/og-icon.png"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={`/${faviconFileName}-16x16.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`/${faviconFileName}-32x32.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href={`/${faviconFileName}-96x96.png`}
-        />
+        <link rel="icon" type="image/png" sizes="16x16" href={favicon16Href} />
+        <link rel="icon" type="image/png" sizes="32x32" href={favicon32Href} />
+        <link rel="icon" type="image/png" sizes="96x96" href={favicon96Href} />
 
         {/* @ts-expect-error */}
         <meta name="twitter:label1" value="Latest release" />
