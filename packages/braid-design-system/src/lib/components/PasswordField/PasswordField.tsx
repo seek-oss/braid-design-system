@@ -21,7 +21,7 @@ type InputProps = AllHTMLAttributes<HTMLInputElement>;
 
 export type PasswordFieldBaseProps = Omit<
   FieldBaseProps,
-  'value' | 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
+  'value' | 'secondaryMessage' | 'icon' | 'prefix'
 > & {
   value: NonNullable<InputProps['value']>;
   onChange: NonNullable<InputProps['onChange']>;
@@ -82,7 +82,6 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         value={value}
         icon={undefined}
         prefix={undefined}
-        labelId={undefined}
         disabled={disabled}
         secondaryMessage={null}
         alwaysShowSecondaryIcon={!disabled}

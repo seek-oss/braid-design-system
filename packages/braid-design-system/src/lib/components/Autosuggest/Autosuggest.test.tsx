@@ -395,6 +395,43 @@ describe('Autosuggest', () => {
       expect(result).toBe(input);
     });
 
+    it('associates field with aria-label correctly', () => {
+      const { getByLabelText } = render(
+        <BraidTestProvider>
+          <Autosuggest
+            id="id"
+            aria-label="Hidden field label"
+            value={{ text: '' }}
+            onChange={() => {}}
+            suggestions={[]}
+          />
+        </BraidTestProvider>,
+      );
+
+      expect(getByLabelText('Hidden field label').tagName).toBe('INPUT');
+      expect(
+        getByLabelText('Hidden field label').getAttribute('aria-labelledby'),
+      ).toBeNull();
+    });
+
+    it('associates field with aria-labelledby correctly', () => {
+      const { getByLabelText } = render(
+        <BraidTestProvider>
+          <div id="fieldLabel">My field</div>
+          <Autosuggest
+            id="id"
+            aria-labelledby="fieldLabel"
+            value={{ text: '' }}
+            onChange={() => {}}
+            suggestions={[]}
+          />
+        </BraidTestProvider>,
+      );
+
+      expect(getByLabelText('My field').tagName).toBe('INPUT');
+      expect(getByLabelText('My field').getAttribute('aria-label')).toBeNull();
+    });
+
     it('should support standard suggestions', async () => {
       const { input, queryByLabelText } = renderAutosuggest({
         value: { text: '' },

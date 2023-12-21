@@ -11,6 +11,7 @@ import {
   Alert,
   List,
   Stack,
+  Heading,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
 
@@ -660,6 +661,53 @@ const docs: ComponentDocs = {
               />
             </Stack>
           </>,
+        ),
+    },
+    {
+      label: 'Indirect or hidden field labels',
+      description: (
+        <Text>
+          In some cases it may be necessary for a field to be labelled by
+          another element or even not to have a visual label. Instead of
+          providing a <Strong>label</Strong> either <Strong>aria-label</Strong>{' '}
+          or <Strong>aria-labelledby</Strong> can be provided.
+        </Text>
+      ),
+      Example: ({ id, getState, setState, resetState }) =>
+        source(
+          <Stack space="large">
+            <Heading level="2" id="field1Label">
+              Custom field label
+            </Heading>
+
+            <Autosuggest
+              aria-labelledby="field1Label"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions([
+                { text: 'Apples', value: 1 },
+                { text: 'Bananas', value: 2 },
+                { text: 'Broccoli', value: 3 },
+                { text: 'Carrots', value: 4 },
+              ])}
+            />
+
+            <Autosuggest
+              aria-label="Hidden label for field"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions([
+                { text: 'Apples', value: 1 },
+                { text: 'Bananas', value: 2 },
+                { text: 'Broccoli', value: 3 },
+                { text: 'Carrots', value: 4 },
+              ])}
+            />
+          </Stack>,
         ),
     },
   ],

@@ -41,7 +41,6 @@ export type FieldLabelVariant =
 export interface FieldBaseProps {
   id: NonNullable<FormElementProps['id']>;
   value?: FormElementProps['value'];
-  labelId?: string;
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
   autoComplete?: FormElementProps['autoComplete'];
@@ -94,7 +93,6 @@ type InternalFieldProps = FieldBaseProps &
 export const Field = ({
   id,
   value,
-  labelId,
   name,
   disabled,
   autoComplete,
@@ -156,7 +154,6 @@ export const Field = ({
     <Stack space="xsmall">
       {hasVisualLabelOrDescription ? (
         <FieldLabel
-          id={labelId}
           htmlFor={id}
           label={'label' in restProps ? restProps.label : undefined}
           disabled={disabled}
