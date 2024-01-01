@@ -256,8 +256,8 @@ importers:
         specifier: workspace:*
         version: link:../source.macro
       '@capsizecss/vanilla-extract':
-        specifier: 0.0.0-upgrade-vanilla-extract-20231221044049
-        version: 0.0.0-upgrade-vanilla-extract-20231221044049(@vanilla-extract/css@1.14.0)
+        specifier: fix-build
+        version: 0.0.0-fix-build-20240101223331(@vanilla-extract/css@1.14.0)
       '@svgr/core':
         specifier: ^5.5.0
         version: 5.5.0
@@ -2944,10 +2944,10 @@ packages:
     resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
     dev: false
 
-  /@capsizecss/vanilla-extract@0.0.0-upgrade-vanilla-extract-20231221044049(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-GHu4Lo+DJiUKyZ+OflPwx+F1lYO1rCEFHRlrrZCHzocy5jhw24WzfRHVBKcJ+7Ag3MX4SZCIaQzmkDYcgkTDZg==}
+  /@capsizecss/vanilla-extract@0.0.0-fix-build-20240101223331(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-MOZ22UuhtPCek3bWi92CP9aHaUXVd71cNxu5t80uzsQ7RzL0MR1QDkUSA7pXtb3QDW2fThxPvkcYXzwxtckTkw==}
     peerDependencies:
-      '@vanilla-extract/css': ^1.4.0
+      '@vanilla-extract/css': ^1.2.1
     dependencies:
       '@capsizecss/core': 3.1.0
       '@vanilla-extract/css': 1.14.0
