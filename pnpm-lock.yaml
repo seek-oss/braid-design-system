@@ -256,8 +256,8 @@ importers:
         specifier: workspace:*
         version: link:../source.macro
       '@capsizecss/vanilla-extract':
-        specifier: fix-build
-        version: 0.0.0-fix-build-20240101223331(@vanilla-extract/css@1.14.0)
+        specifier: ^1.0.1
+        version: 1.0.1(@vanilla-extract/css@1.14.0)
       '@svgr/core':
         specifier: ^5.5.0
         version: 5.5.0
@@ -2944,8 +2944,8 @@ packages:
     resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
     dev: false
 
-  /@capsizecss/vanilla-extract@0.0.0-fix-build-20240101223331(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-MOZ22UuhtPCek3bWi92CP9aHaUXVd71cNxu5t80uzsQ7RzL0MR1QDkUSA7pXtb3QDW2fThxPvkcYXzwxtckTkw==}
+  /@capsizecss/vanilla-extract@1.0.1(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-rx0t14CVPHtwplOS075NqvquTaAa7Q6ir6uAH3Za1vm37k2Gn7TmafTE8kaepB+r42K0E6NvTAIv/8PJoRlcoQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.2.1
     dependencies:
