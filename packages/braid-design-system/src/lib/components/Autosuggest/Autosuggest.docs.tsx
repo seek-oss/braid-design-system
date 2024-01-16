@@ -682,7 +682,7 @@ const docs: ComponentDocs = {
 
             <Autosuggest
               aria-labelledby="field1Label"
-              id={id}
+              id={`${id}_1`}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -696,7 +696,7 @@ const docs: ComponentDocs = {
 
             <Autosuggest
               aria-label="Hidden label for field"
-              id={id}
+              id={`${id}_2`}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
