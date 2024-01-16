@@ -40,7 +40,7 @@ type InputProps = AllHTMLAttributes<HTMLInputElement>;
 
 export type TextFieldBaseProps = Omit<
   FieldBaseProps,
-  'value' | 'labelId' | 'secondaryMessage'
+  'value' | 'secondaryMessage'
 > & {
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
@@ -93,7 +93,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {...restProps}
         id={id}
         value={value}
-        labelId={undefined}
         secondaryMessage={
           characterLimit
             ? getCharacterLimitStatus({
