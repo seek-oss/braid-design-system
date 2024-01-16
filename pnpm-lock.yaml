@@ -179,9 +179,6 @@ importers:
       '@capsizecss/metrics':
         specifier: ^1.1.1
         version: 1.1.1
-      '@capsizecss/vanilla-extract':
-        specifier: ^1.0.0
-        version: 1.0.0(@vanilla-extract/css@1.14.0)
       '@types/autosuggest-highlight':
         specifier: ^3.1.1
         version: 3.2.0
@@ -258,6 +255,9 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../source.macro
+      '@capsizecss/vanilla-extract':
+        specifier: ^1.0.1
+        version: 1.0.1(@vanilla-extract/css@1.14.0)
       '@svgr/core':
         specifier: ^5.5.0
         version: 5.5.0
@@ -511,9 +511,6 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../packages/source.macro
-      '@capsizecss/vanilla-extract':
-        specifier: ^1.0.0
-        version: 1.0.0(@vanilla-extract/css@1.14.0)
       '@types/dedent':
         specifier: ^0.7.0
         version: 0.7.0
@@ -2942,20 +2939,19 @@ packages:
     resolution: {integrity: sha512-MoHbXUMqJtYL+idLVSQY57OPRyPaUBGN0o1Im0JElmfRVV+X1i1i5QsQTuEJpJgYFwi4jsck7A+jt6X7XB0p8w==}
     dependencies:
       csstype: 3.1.1
-    dev: false
 
   /@capsizecss/metrics@1.1.1:
     resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
     dev: false
 
-  /@capsizecss/vanilla-extract@1.0.0(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-/cY34CgCAmuf6SmpgPXmDJaIdJOaRe37MsoeZIeZme4k0F0HFts+poTxq4m8UtBH7LRxpUkfUHDoRO9OYjjVBg==}
+  /@capsizecss/vanilla-extract@1.0.1(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-rx0t14CVPHtwplOS075NqvquTaAa7Q6ir6uAH3Za1vm37k2Gn7TmafTE8kaepB+r42K0E6NvTAIv/8PJoRlcoQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.2.1
     dependencies:
       '@capsizecss/core': 3.1.0
       '@vanilla-extract/css': 1.14.0
-    dev: false
+    dev: true
 
   /@changesets/apply-release-plan@6.0.0:
     resolution: {integrity: sha512-gp6nIdVdfYdwKww2+f8whckKmvfE4JEm4jJgBhTmooi0uzHWhnxvk6JIzQi89qEAMINN0SeVNnXiAtbFY0Mj3w==}

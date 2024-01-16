@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { createTextStyle } from '@capsizecss/vanilla-extract';
+import { createTextStyle } from 'braid-src/lib/css/capsize.css';
 import { vars } from 'braid-src/lib/themes/vars.css';
 
 const toCapsizeValues = ({
