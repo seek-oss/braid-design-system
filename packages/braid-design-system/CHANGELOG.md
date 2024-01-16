@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.14.3
+
+### Patch Changes
+
+- **Autosuggest:** Fix aria-label and aria-labelledby features ([#1420](https://github.com/seek-oss/braid-design-system/pull/1420))
+
+  Fixes an issue where the `aria-label` and `aria-labelledby` props provided by a consumer were being overidden internally by the `Autosuggest` component.
+
 ## 32.14.2
 
 ### Patch Changes
