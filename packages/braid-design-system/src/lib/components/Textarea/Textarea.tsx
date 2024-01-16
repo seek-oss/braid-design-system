@@ -21,7 +21,7 @@ type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;
 
 export type TextareaBaseProps = Omit<
   FieldBaseProps,
-  'value' | 'labelId' | 'secondaryMessage' | 'icon' | 'prefix'
+  'value' | 'secondaryMessage' | 'icon' | 'prefix'
 > & {
   value: NonNullable<NativeTextareaProps['value']>;
   onChange: NonNullable<NativeTextareaProps['onChange']>;
@@ -122,7 +122,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         value={value}
         icon={undefined}
         prefix={undefined}
-        labelId={undefined}
         secondaryMessage={
           characterLimit
             ? getCharacterLimitStatus({
