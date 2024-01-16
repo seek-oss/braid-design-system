@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 32.14.4
+
+### Patch Changes
+
+- Inline Vanilla Extract styles imported from Capsize ([#1423](https://github.com/seek-oss/braid-design-system/pull/1423))
+
 ## 32.14.3
 
 ### Patch Changes
