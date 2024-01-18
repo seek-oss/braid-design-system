@@ -27,6 +27,7 @@ const Header = ({
       menuOpen={menuOpen}
       menuClick={menuClick}
       logo={<Logo iconOnly height={menuButtonSize} />}
+      logoLabel="Braid Logo"
       themeToggle={<ThemeToggle />}
     />
   </Box>
