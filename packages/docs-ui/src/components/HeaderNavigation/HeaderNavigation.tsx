@@ -15,7 +15,6 @@ export const HeaderNavigation = ({
   logo,
   themeToggle,
 }: HeaderNavigationProps) => (
-  // Todo - fix padding sizes
   <Box display="flex" alignItems="center">
     <Hidden print>
       <Box
