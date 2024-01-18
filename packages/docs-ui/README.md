@@ -79,7 +79,7 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 
 ### `HeaderNavigation`
 
-A navigation section containing a list of links, designed for the side bar.
+Header Layout for the site logo, theme selector and `MenuButton`.
 
 ```tsx
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
