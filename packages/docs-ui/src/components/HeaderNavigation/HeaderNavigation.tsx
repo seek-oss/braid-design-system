@@ -3,14 +3,14 @@ import { Box, Hidden, HiddenVisually, Link, Text } from 'braid-design-system';
 import { MenuButton } from '../MenuButton/MenuButton';
 
 interface HeaderNavigationProps {
-  menuOpen: boolean;
+  menuOpen?: boolean;
   menuClick: () => void;
   logo: React.ReactNode;
   themeToggle: React.ReactNode;
 }
 
 export const HeaderNavigation = ({
-  menuOpen,
+  menuOpen = false,
   menuClick,
   logo,
   themeToggle,
