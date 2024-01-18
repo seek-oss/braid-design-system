@@ -12,6 +12,7 @@ npm install @braid-design-system/docs-ui
 - [`LinkableHeading`](#linkableheading)
 - [`MenuButton`](#menubutton)
 - [`SideNavigationSection`](#sidenavigationsection)
+- [`HeaderNavigation`](#headernavigation)
 
 ## Usage
 
@@ -72,6 +73,28 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 | title     | `string`                                                                                                                                                                                                                                 | Title of the Navigation Section.                                        |
 | hideTitle | `boolean`                                                                                                                                                                                                                                | Optional to visually hide the group title.                              |
 | items     | Array<{<br/>&nbsp;&nbsp;name: `string`<br/>&nbsp;&nbsp;path: `string`<br/>&nbsp;&nbsp;badge?: `'New' \| 'Deprecated'`<br/>&nbsp;&nbsp;onClick?: `() => void`<br/>&nbsp;&nbsp;target?: `string`<br/>&nbsp;&nbsp;active?: `boolean`<br/>}> | An array of items in the sidebar, each linking to a specific docs page. |
+
+[`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
+[Braid Design System]: https://seek-oss.github.io/braid-design-system/
+
+### `HeaderNavigation`
+
+A navigation section containing a list of links, designed for the side bar.
+
+```tsx
+import { SideNavigationSection } from '@braid-design-system/docs-ui';
+
+<SideNavigationSection title={title} items={items} />;
+```
+
+#### Props
+
+| props       | value             | description                                                                                                   |
+| ----------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| menuOpen    | `boolean`         | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
+| menuClick   | `() => void`      | A callback function to handle presses of the menu button (defaults to `false`).                               |
+| logo        | `React.ReactNode` | A React component slot for the logo of your site (which should act as a link to your homepage).               |
+| themeToggle | `React.ReactNode` | A React component slot for a theme selector.                                                                  |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
