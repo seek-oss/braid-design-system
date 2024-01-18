@@ -79,7 +79,7 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 
 ### `HeaderNavigation`
 
-Header Layout for the site logo, theme selector and a `MenuButton` on smaller screens.
+Layout for the site logo, theme selector and a `MenuButton` on smaller screens.
 
 ```tsx
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
