@@ -16,29 +16,27 @@ export const HeaderNavigation = ({
   themeToggle,
 }: HeaderNavigationProps) => (
   // Todo - fix padding sizes
-  <Box paddingY="small" paddingX="small">
-    <Box display="flex" alignItems="center">
-      <Hidden print>
-        <Box
-          paddingRight="medium"
-          display={{
-            mobile: 'flex',
-            wide: 'none',
-          }}
-          alignItems="center"
-        >
-          <MenuButton open={menuOpen} onClick={menuClick} />
-        </Box>
-      </Hidden>
-      <Box paddingRight="medium">
-        <Text component="div" baseline={false}>
-          <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
-            {logo}
-            <HiddenVisually>Braid Logo</HiddenVisually>
-          </Link>
-        </Text>
+  <Box display="flex" alignItems="center">
+    <Hidden print>
+      <Box
+        paddingRight="medium"
+        display={{
+          mobile: 'flex',
+          wide: 'none',
+        }}
+        alignItems="center"
+      >
+        <MenuButton open={menuOpen} onClick={menuClick} />
       </Box>
-      {themeToggle}
+    </Hidden>
+    <Box paddingRight="medium">
+      <Text component="div" baseline={false}>
+        <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
+          {logo}
+          <HiddenVisually>Braid Logo</HiddenVisually>
+        </Link>
+      </Text>
     </Box>
+    {themeToggle}
   </Box>
 );
