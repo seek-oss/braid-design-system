@@ -93,8 +93,8 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 | ----------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
 | menuOpen    | `boolean`         | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
 | menuClick   | `() => void`      | A callback function to handle presses of the menu button (defaults to `false`).                               |
-| logo        | `React.ReactNode` | A React component slot for the logo of your site (which should act as a link to your homepage).               |
-| themeToggle | `React.ReactNode` | A React component slot for a theme selector.                                                                  |
+| logo        | `React.ReactNode` | A React component for the logo of your site (which should act as a link to your homepage).                    |
+| themeToggle | `React.ReactNode` | A React component for a theme selector.                                                                       |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
