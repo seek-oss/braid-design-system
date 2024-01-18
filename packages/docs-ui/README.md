@@ -54,7 +54,7 @@ import { MenuButton } from '@braid-design-system/docs-ui';
 | props   | value        | description                                                                                                   |
 | ------- | ------------ | ------------------------------------------------------------------------------------------------------------- |
 | open    | `boolean`    | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
-| onClick | `() => void` | A callback function to handle button presses (defaults to `false`).                                           |
+| onClick | `() => void` | A callback function to handle button presses.                                                                 |
 
 ### `SideNavigationSection`
 
@@ -88,6 +88,7 @@ import { HeaderNavigation } from '@braid-design-system/docs-ui';
   menuOpen={menuOpen}
   menuClick={handleMenuClick}
   logo={<Logo />}
+  logoLabel="Braid Logo"
   themeToggle={<ThemeToggle />}
 />;
 ```
@@ -97,8 +98,9 @@ import { HeaderNavigation } from '@braid-design-system/docs-ui';
 | props       | value             | description                                                                                                   |
 | ----------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
 | menuOpen    | `boolean`         | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
-| menuClick   | `() => void`      | A callback function to handle presses of the menu button (defaults to `false`).                               |
+| menuClick   | `() => void`      | An optional callback function to handle presses of the menu button.                                           |
 | logo        | `React.ReactNode` | A React component for the logo of your site (which should act as a link to your homepage).                    |
+| logoLabel   | `string`          | A accessibility label for the logo.                                                                           |
 | themeToggle | `React.ReactNode` | A React component for a theme selector.                                                                       |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading

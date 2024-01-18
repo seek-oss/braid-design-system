@@ -4,7 +4,7 @@ import { MenuButton } from '../MenuButton/MenuButton';
 
 interface HeaderNavigationProps {
   menuOpen?: boolean;
-  menuClick: () => void;
+  menuClick?: () => void;
   logo: React.ReactNode;
   logoLabel: string;
   themeToggle: React.ReactNode;
@@ -12,7 +12,7 @@ interface HeaderNavigationProps {
 
 export const HeaderNavigation = ({
   menuOpen = false,
-  menuClick,
+  menuClick = () => {},
   logo,
   logoLabel,
   themeToggle,
