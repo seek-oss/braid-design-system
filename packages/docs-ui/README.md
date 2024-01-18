@@ -82,9 +82,14 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 A navigation section containing a list of links, designed for the side bar.
 
 ```tsx
-import { SideNavigationSection } from '@braid-design-system/docs-ui';
+import { HeaderNavigation } from '@braid-design-system/docs-ui';
 
-<SideNavigationSection title={title} items={items} />;
+<HeaderNavigation
+  menuOpen={menuOpen}
+  menuClick={handleMenuClick}
+  logo={<Logo />}
+  themeToggle={<ThemeToggle />}
+/>;
 ```
 
 #### Props
