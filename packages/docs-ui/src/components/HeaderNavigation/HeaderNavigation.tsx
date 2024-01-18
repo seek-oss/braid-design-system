@@ -6,6 +6,7 @@ interface HeaderNavigationProps {
   menuOpen?: boolean;
   menuClick: () => void;
   logo: React.ReactNode;
+  logoLabel: string;
   themeToggle: React.ReactNode;
 }
 
@@ -13,6 +14,7 @@ export const HeaderNavigation = ({
   menuOpen = false,
   menuClick,
   logo,
+  logoLabel,
   themeToggle,
 }: HeaderNavigationProps) => (
   <Box display="flex" alignItems="center">
@@ -32,7 +34,7 @@ export const HeaderNavigation = ({
       <Text component="div" baseline={false}>
         <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
           {logo}
-          <HiddenVisually>Braid Logo</HiddenVisually>
+          <HiddenVisually>{logoLabel}</HiddenVisually>
         </Link>
       </Text>
     </Box>
