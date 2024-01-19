@@ -1,13 +1,13 @@
-import type React from 'react';
+import type { ReactNode } from 'react';
 import { Box, Hidden, HiddenVisually, Link, Text } from 'braid-design-system';
 import { MenuButton } from '../MenuButton/MenuButton';
 
 interface HeaderNavigationProps {
   menuOpen?: boolean;
   menuClick?: () => void;
-  logo: React.ReactNode;
+  logo: ReactNode;
   logoLabel: string;
-  themeToggle: React.ReactNode;
+  themeToggle: ReactNode;
 }
 
 export const HeaderNavigation = ({
