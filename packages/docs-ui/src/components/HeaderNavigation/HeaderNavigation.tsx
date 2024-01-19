@@ -7,7 +7,7 @@ interface HeaderNavigationProps {
   menuClick?: () => void;
   logo: ReactNode;
   logoLabel: string;
-  themeToggle: ReactNode;
+  themeToggle?: ReactNode;
 }
 
 export const HeaderNavigation = ({
@@ -15,7 +15,7 @@ export const HeaderNavigation = ({
   menuClick = () => {},
   logo,
   logoLabel,
-  themeToggle,
+  themeToggle = null,
 }: HeaderNavigationProps) => (
   <Box display="flex" alignItems="center">
     <Hidden print>

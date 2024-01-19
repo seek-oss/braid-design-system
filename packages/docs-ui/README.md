@@ -79,7 +79,7 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 
 ### `HeaderNavigation`
 
-Layout for the site logo, theme selector and a `MenuButton` on smaller screens.
+Layout for the site logo, a `MenuButton` on smaller screens, and an optional theme selector.
 
 ```tsx
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
@@ -101,7 +101,7 @@ import { HeaderNavigation } from '@braid-design-system/docs-ui';
 | menuClick   | `() => void`      | An optional callback function to handle events when the menu button is triggered.                             |
 | logo        | `React.ReactNode` | A React component for the logo of your site (which should act as a link to your homepage).                    |
 | logoLabel   | `string`          | An accessibility label for the logo.                                                                          |
-| themeToggle | `React.ReactNode` | A React component for a theme selector.                                                                       |
+| themeToggle | `React.ReactNode` | An optional React component for a theme selector.                                                             |
 
 [`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 [Braid Design System]: https://seek-oss.github.io/braid-design-system/
