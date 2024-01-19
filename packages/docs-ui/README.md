@@ -88,7 +88,7 @@ import { HeaderNavigation } from '@braid-design-system/docs-ui';
   menuOpen={menuOpen}
   menuClick={handleMenuClick}
   logo={<Logo />}
-  logoLabel="Braid Logo"
+  logoLabel={logoLabel}
   themeToggle={<ThemeToggle />}
 />;
 ```
