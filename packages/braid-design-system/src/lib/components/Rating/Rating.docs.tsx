@@ -1,7 +1,7 @@
 import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Rating, Stack, Inline, Text, Strong, TextLink } from '../';
+import { Rating, Stack, Inline, Text, Strong, TextLink, Notice } from '../';
 import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
@@ -24,6 +24,39 @@ const docs: ComponentDocs = {
   ),
   alternatives: [],
   additional: [
+    {
+      label: 'Variants',
+      description: (
+        <Text>
+          The appearance can be customised via the <Strong>variant</Strong>{' '}
+          prop, choosing from <Strong>full</Strong> (default),{' '}
+          <Strong>starsOnly</Strong> or <Strong>minimal</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Default
+              </Text>
+              <Rating size="large" rating={4.2} />
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Stars only
+              </Text>
+              <Rating size="large" rating={4.2} variant="starsOnly" />
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Minimal
+              </Text>
+              <Rating size="large" rating={4.2} variant="minimal" />
+            </Stack>
+          </Stack>,
+        ),
+    },
     {
       label: 'Sizing',
       description: (
@@ -63,35 +96,42 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Variants',
+      label: 'Weight',
       description: (
-        <Text>
-          The appearance can be customised via the <Strong>variant</Strong>{' '}
-          prop, choosing from <Strong>full</Strong> (default),{' '}
-          <Strong>starsOnly</Strong> or <Strong>minimal</Strong>.
-        </Text>
+        <>
+          <Text>
+            Supports the same weight scale available on the{' '}
+            <TextLink href="/components/Text">Text</TextLink> component.
+          </Text>
+          <Notice>
+            <Text>
+              Note: Setting the <Strong>weight</Strong> prop is only valid when
+              using a <Strong>variant</Strong> that displays the text rating.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: () =>
         source(
-          <Stack space="large">
-            <Stack space="small">
-              <Text tone="secondary" weight="strong">
-                Default
+          <Stack space="gutter">
+            <Inline space="small">
+              <Rating weight="regular" rating={3} />
+              <Text tone="secondary" weight="regular">
+                regular
               </Text>
-              <Rating size="large" rating={4.2} />
-            </Stack>
-            <Stack space="small">
-              <Text tone="secondary" weight="strong">
-                Stars only
+            </Inline>
+            <Inline space="small">
+              <Rating weight="medium" rating={3} />
+              <Text tone="secondary" weight="medium">
+                medium
               </Text>
-              <Rating size="large" rating={4.2} variant="starsOnly" />
-            </Stack>
-            <Stack space="small">
+            </Inline>
+            <Inline space="small">
+              <Rating weight="strong" rating={3} />
               <Text tone="secondary" weight="strong">
-                Minimal
+                strong
               </Text>
-              <Rating size="large" rating={4.2} variant="minimal" />
-            </Stack>
+            </Inline>
           </Stack>,
         ),
     },
