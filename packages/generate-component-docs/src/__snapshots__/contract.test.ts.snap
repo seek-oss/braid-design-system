@@ -7030,6 +7030,10 @@ exports[`Rating 1`] = `
         | "full"
         | "minimal"
         | "starsOnly"
+    weight?: 
+        | "medium"
+        | "regular"
+        | "strong"
 },
 }
 `;
