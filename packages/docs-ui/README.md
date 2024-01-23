@@ -14,6 +14,8 @@ npm install @braid-design-system/docs-ui
 - [`SideNavigationSection`](#sidenavigationsection)
 - [`HeaderNavigation`](#headernavigation)
 
+[Braid Design System]: https://seek-oss.github.io/braid-design-system/
+
 ## Usage
 
 ### `LinkableHeading`
@@ -36,6 +38,8 @@ import { LinkableHeading } from '@braid-design-system/docs-ui';
 | component | `string`         | HTML element to render, e.g. &ldquo;h1&rdquo;, &ldquo;h2&rdquo;, etc.                                                                                                     |
 | children  | `string`         | Visible heading content, converted to slug (e.g. &ldquo;section-heading&rdquo;) to be used as hash link.                                                                  |
 | label     | `string`         | Override the slug used as the hash link.<br/><br/>_Note: If the content of the heading is more than a simple string that can be slugified, then the `label` is required._ |
+
+[`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
 
 ### `MenuButton`
 
@@ -74,9 +78,6 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 | hideTitle | `boolean`                                                                                                                                                                                                                                | Optional to visually hide the group title.                              |
 | items     | Array<{<br/>&nbsp;&nbsp;name: `string`<br/>&nbsp;&nbsp;path: `string`<br/>&nbsp;&nbsp;badge?: `'New' \| 'Deprecated'`<br/>&nbsp;&nbsp;onClick?: `() => void`<br/>&nbsp;&nbsp;target?: `string`<br/>&nbsp;&nbsp;active?: `boolean`<br/>}> | An array of items in the sidebar, each linking to a specific docs page. |
 
-[`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
-[Braid Design System]: https://seek-oss.github.io/braid-design-system/
-
 ### `HeaderNavigation`
 
 Layout for the site logo, a `MenuButton` on smaller screens, and an optional theme selector.
@@ -102,6 +103,3 @@ import { HeaderNavigation } from '@braid-design-system/docs-ui';
 | logo        | `React.ReactNode` | A React component for the logo of your site (which should act as a link to your homepage).                    |
 | logoLabel   | `string`          | An accessibility label for the logo.                                                                          |
 | themeToggle | `React.ReactNode` | An optional React component for a theme selector.                                                             |
-
-[`HeadingLevel`]: https://seek-oss.github.io/braid-design-system/components/Heading
-[Braid Design System]: https://seek-oss.github.io/braid-design-system/
