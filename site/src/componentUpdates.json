@@ -3667,5 +3667,16 @@
   {
     "version": "32.14.4",
     "updates": []
+  },
+  {
+    "version": "32.15.0",
+    "updates": [
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Add `weight` support\n\nProvide a `weight` prop to customise the weight of the text rating alongside the stars.\n\n**EXAMPLE USAGE:**\n```jsx\n<Rating rating={3} weight=\"strong\" />\n```"
+      }
+    ]
   }
 ]
