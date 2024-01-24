@@ -352,8 +352,8 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0
       sku:
-        specifier: 12.4.7
-        version: 12.4.7(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.4.9
+        version: 12.4.9(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       svgo:
         specifier: ^2.8.0
         version: 2.8.0
@@ -614,8 +614,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(react-dom@18.2.0)(react@18.2.0)
       sku:
-        specifier: 12.4.7
-        version: 12.4.7(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.4.9
+        version: 12.4.9(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       webpack:
         specifier: ^5.76.0
         version: 5.88.2(esbuild@0.19.7)
@@ -16456,8 +16456,8 @@ packages:
   /sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  /sku@12.4.7(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-V7CYha+mDwP1AfBLNZi7YVGdyyKbg0TQA1k1i3DsutgeZJBz8abyCmk4Qr1bSAG+WXPdPTLL2fCAg/rl6wZ2Qw==}
+  /sku@12.4.9(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-oFUVCq0YkB7q/JWEr4B0gr//ky0WG4l067tbqDgFrpPlOjKqV5CsJT0ArQHAa7QK22so8DY0usLvpccaGZcmHQ==}
     engines: {node: '>=18.12'}
     hasBin: true
     requiresBuild: true
