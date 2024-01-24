@@ -228,8 +228,8 @@ importers:
         specifier: ^4.1.0
         version: 4.2.2
       react-focus-lock:
-        specifier: ^2.9.1
-        version: 2.9.1(@types/react@18.0.28)(react@18.2.0)
+        specifier: ^2.9.7
+        version: 2.9.7(@types/react@18.0.28)(react@18.2.0)
       react-is:
         specifier: ^18.2.0
         version: 18.2.0
@@ -10721,8 +10721,8 @@ packages:
     resolution: {integrity: sha512-s90OlXqzWj1xc4yUtqD1Gr8pGVx0/5rk9gsqPrOYF1kBAPMH4opkmzdWgQ8aNe3Pckqtwr8DlYGbfE2GnW+zsg==}
     engines: {node: '>=0.4.0'}
 
-  /focus-lock@0.11.2:
-    resolution: {integrity: sha512-pZ2bO++NWLHhiKkgP1bEXHhR1/OjVcSvlCJ98aNJDFeb7H5OOQaO+SKOZle6041O9rv2tmbrO4JzClAvDUHf0g==}
+  /focus-lock@1.0.0:
+    resolution: {integrity: sha512-a8Ge6cdKh9za/GZR/qtigTAk7SrGore56EFcoMshClsh7FLk1zwszc/ltuMfKhx56qeuyL/jWQ4J4axou0iJ9w==}
     engines: {node: '>=10'}
     dependencies:
       tslib: 2.5.0
@@ -15421,8 +15421,8 @@ packages:
     resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
     dev: false
 
-  /react-focus-lock@2.9.1(@types/react@18.0.28)(react@18.2.0):
-    resolution: {integrity: sha512-pSWOQrUmiKLkffPO6BpMXN7SNKXMsuOakl652IBuALAu1esk+IcpJyM+ALcYzPTTFz1rD0R54aB9A4HuP5t1Wg==}
+  /react-focus-lock@2.9.7(@types/react@18.0.28)(react@18.2.0):
+    resolution: {integrity: sha512-EfhX040SELLqnQ9JftqsmQCG49iByg8F5X5m19Er+n371OaETZ35dlNPZrLOOTlnnwD4c2Zv0KDgabDTc7dPHw==}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -15432,7 +15432,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.3
       '@types/react': 18.0.28
-      focus-lock: 0.11.2
+      focus-lock: 1.0.0
       prop-types: 15.8.1
       react: 18.2.0
       react-clientside-effect: 1.2.6(react@18.2.0)

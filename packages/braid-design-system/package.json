@@ -200,7 +200,7 @@
     "is-mobile": "^2.2.2",
     "lodash": "^4.17.21",
     "polished": "^4.1.0",
-    "react-focus-lock": "^2.9.1",
+    "react-focus-lock": "^2.9.7",
     "react-is": "^18.2.0",
     "react-popper-tooltip": "^4.3.1",
     "react-remove-scroll": "^2.5.3",
