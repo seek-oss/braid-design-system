@@ -99,7 +99,8 @@ import { HeaderNavigation } from '@braid-design-system/docs-ui';
 | props       | value             | description                                                                                                   |
 | ----------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
 | menuOpen    | `boolean`         | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
-| menuClick   | `() => void`      | An optional callback function to handle events when the menu button is triggered.                             |
+| menuClick   | `() => void`      | An optional callback function to handle events when the menu button is clicked.                               |
 | logo        | `React.ReactNode` | A React component for the logo of your site (which should act as a link to your homepage).                    |
 | logoLabel   | `string`          | An accessibility label for the logo.                                                                          |
+| logoHref    | `string`          | An optional href which sets the link for when the logo is clicked.                                            |
 | themeToggle | `React.ReactNode` | An optional React component for a theme selector.                                                             |

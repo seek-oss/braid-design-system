@@ -7,6 +7,7 @@ interface HeaderNavigationProps {
   menuClick?: () => void;
   logo: ReactNode;
   logoLabel: string;
+  logoHref?: string;
   themeToggle?: ReactNode;
 }
 
@@ -15,6 +16,7 @@ export const HeaderNavigation = ({
   menuClick = () => {},
   logo,
   logoLabel,
+  logoHref = '/',
   themeToggle = null,
 }: HeaderNavigationProps) => (
   <Box display="flex" alignItems="center">
@@ -32,7 +34,7 @@ export const HeaderNavigation = ({
     </Hidden>
     <Box paddingRight="medium">
       <Text component="div" baseline={false}>
-        <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
+        <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
           {logo}
           <HiddenVisually>{logoLabel}</HiddenVisually>
         </Link>
