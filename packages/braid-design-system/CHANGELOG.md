@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 32.15.1
+
+### Patch Changes
+
+- Update `react-focus-lock` to avoid build warnings in Rollup and Vite ([#1433](https://github.com/seek-oss/braid-design-system/pull/1433))
+
 ## 32.15.0
 
 ### Minor Changes
