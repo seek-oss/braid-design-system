@@ -1,4 +1,4 @@
-@keyframes gppvr94 {
+@keyframes _1ewc5z54 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-.gppvr91 {
+._1ewc5z51 {
   z-index: 100;
   background: #1c2230;
-  color: var(--cpypmez);
+  color: var(--_3tquy7z);
 }
-.gppvr93 > svg > path {
+._1ewc5z53 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: gppvr94;
+  animation-name: _1ewc5z54;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,7 +25,7 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-.gppvr95 {
+._1ewc5z55 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
