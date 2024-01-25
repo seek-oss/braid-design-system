@@ -7460,7 +7460,7 @@ packages:
   /axios@1.6.2:
     resolution: {integrity: sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==}
     dependencies:
-      follow-redirects: 1.15.0(debug@4.3.4)
+      follow-redirects: 1.15.5
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -10793,6 +10793,16 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
+
+  /follow-redirects@1.15.5:
+    resolution: {integrity: sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
 
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -16662,7 +16672,7 @@ packages:
       '@vocab/phrase': 1.2.4
       '@vocab/pseudo-localize': 1.0.1
       '@vocab/webpack': 1.2.5(webpack@5.88.2)
-      '@zendesk/babel-plugin-react-displayname': github.com/zendesk/babel-plugin-react-displayname/7a837f2(@babel/core@7.23.3)(@babel/preset-react@7.22.5)
+      '@zendesk/babel-plugin-react-displayname': git@github.com+zendesk/babel-plugin-react-displayname/7a837f2(@babel/core@7.23.3)(@babel/preset-react@7.22.5)
       autoprefixer: 10.4.7(postcss@8.4.31)
       babel-jest: 29.1.2(@babel/core@7.23.3)
       babel-loader: 9.1.2(@babel/core@7.23.3)(webpack@5.88.2)
@@ -18938,9 +18948,9 @@ packages:
       '@types/yoga-layout': 1.9.2
     patched: true
 
-  github.com/zendesk/babel-plugin-react-displayname/7a837f2(@babel/core@7.23.3)(@babel/preset-react@7.22.5):
-    resolution: {tarball: https://codeload.github.com/zendesk/babel-plugin-react-displayname/tar.gz/7a837f2}
-    id: github.com/zendesk/babel-plugin-react-displayname/7a837f2
+  git@github.com+zendesk/babel-plugin-react-displayname/7a837f2(@babel/core@7.23.3)(@babel/preset-react@7.22.5):
+    resolution: {commit: 7a837f2, repo: git@github.com:zendesk/babel-plugin-react-displayname.git, type: git}
+    id: git@github.com+zendesk/babel-plugin-react-displayname/7a837f2
     name: '@zendesk/babel-plugin-react-displayname'
     version: 1.0.0
     peerDependencies:
