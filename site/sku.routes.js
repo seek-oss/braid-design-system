@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const flatten = require('lodash/flatten');
 
 const extractExports = require('./extractExports');
 const undocumentedExports = require('./src/undocumentedExports.json');
@@ -40,32 +39,27 @@ module.exports = [
   { route: '/', name: 'home' },
   { route: '/releases', name: 'releases' },
   { route: '/gallery', name: 'gallery' },
-  ...guideRoutes.map((route) => ({ route })),
-  ...foundationRoutes.map((route) => ({ route })),
+  guideRoutes.map((route) => ({ route })),
+  foundationRoutes.map((route) => ({ route })),
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
-  ...exampleRoutes.map((route) => ({ route })),
+  exampleRoutes.map((route) => ({ route })),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
-  ...flatten(
-    [...componentNames, ...testNames].map((name) =>
-      [
-        { route: `/components/${name}` },
-        { route: `/components/${name}/releases` },
-        { route: `/components/${name}/snippets` },
-        !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
-      ].filter(Boolean),
-    ),
-  ),
-  ...flatten(
-    cssNames.map((name) => [
-      { route: `/css/${name}` },
-      { route: `/css/${name}/releases` },
-    ]),
-  ),
-  ...flatten(
-    iconNames.map((name) => [
-      { route: `/components/${name}`, name },
-      { route: `/components/${name}/props` },
+  [...componentNames, ...testNames].flatMap((name) =>
+    [
+      { route: `/components/${name}` },
       { route: `/components/${name}/releases` },
-    ]),
+      { route: `/components/${name}/snippets` },
+      !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
+    ].filter(Boolean),
   ),
-];
+  cssNames.flatMap((name) => [
+    { route: `/css/${name}` },
+    { route: `/css/${name}/releases` },
+  ]),
+
+  iconNames.flatMap((name) => [
+    { route: `/components/${name}`, name },
+    { route: `/components/${name}/props` },
+    { route: `/components/${name}/releases` },
+  ]),
+].flat();
