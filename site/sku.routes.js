@@ -61,5 +61,11 @@ module.exports = [
       { route: `/css/${name}/releases` },
     ]),
   ),
-  ...iconNames.map((name) => ({ route: `/components/${name}`, name })),
+  ...flatten(
+    iconNames.map((name) => [
+      { route: `/components/${name}`, name },
+      { route: `/components/${name}/props` },
+      { route: `/components/${name}/releases` },
+    ]),
+  ),
 ];
