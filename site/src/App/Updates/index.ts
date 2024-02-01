@@ -1,5 +1,3 @@
-import flatten from 'lodash/flatten';
-
 import { differenceInMonths, format } from 'date-fns';
 
 import releases from '../../componentUpdates.json';
@@ -137,40 +135,39 @@ export const getHistory = memo((...names: string[]) => {
     return [];
   }
 
-  return flatten(
-    allReleases
-      .filter(({ version }) => releventReleases.has(version))
-      .map(({ version, updates }) =>
-        updates
-          .filter((update) =>
-            'new' in update
-              ? hasIntersection(update.new, names)
-              : hasIntersection(update.updated, names),
-          )
-          .map((update) => {
-            const versionReleaseDate = versionMap[version]
-              ? new Date(versionMap[version])
-              : undefined;
+  return allReleases
+    .filter(({ version }) => releventReleases.has(version))
+    .flatMap(({ version, updates }) =>
+      updates
+        .filter((update) =>
+          'new' in update
+            ? hasIntersection(update.new, names)
+            : hasIntersection(update.updated, names),
+        )
+        .map((update) => {
+          const versionReleaseDate = versionMap[version]
+            ? new Date(versionMap[version])
+            : undefined;
 
-            return {
-              version,
-              time: versionReleaseDate
-                ? format(versionReleaseDate, 'PP')
-                : undefined,
-              rawTime: versionReleaseDate?.getTime(),
-              type: 'new' in update ? 'added' : 'updated',
-              summary: update.summary,
-              isRecent: Boolean(
-                versionReleaseDate &&
-                  differenceInMonths(renderDate, versionReleaseDate) < 2,
-              ),
-            };
-          }),
-      ),
-  ).sort((a, b) => {
-    if (b.rawTime && a.rawTime) {
-      return b.rawTime - a.rawTime;
-    }
-    return 0;
-  });
+          return {
+            version,
+            time: versionReleaseDate
+              ? format(versionReleaseDate, 'PP')
+              : undefined,
+            rawTime: versionReleaseDate?.getTime(),
+            type: 'new' in update ? 'added' : 'updated',
+            summary: update.summary,
+            isRecent: Boolean(
+              versionReleaseDate &&
+                differenceInMonths(renderDate, versionReleaseDate) < 2,
+            ),
+          };
+        }),
+    )
+    .sort((a, b) => {
+      if (b.rawTime && a.rawTime) {
+        return b.rawTime - a.rawTime;
+      }
+      return 0;
+    });
 });
