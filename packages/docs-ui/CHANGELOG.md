@@ -1,5 +1,17 @@
 # @braid-design-system/docs-ui
 
+## 2.1.0
+
+### Minor Changes
+
+- Add optional `logoHref` prop to `HeaderNavigation`, which allows you to customise the route when clicking the `Logo`. ([#1435](https://github.com/seek-oss/braid-design-system/pull/1435))
+
+## 2.0.0
+
+### Minor Changes
+
+- Add `HeaderNavigation` component, used for showing site Logo, theme picker, and displaying the `MenuButton` component on smaller screens. ([#1429](https://github.com/seek-oss/braid-design-system/pull/1429))
+
 ## 1.2.0
 
 ### Minor Changes

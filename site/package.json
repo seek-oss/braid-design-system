@@ -42,7 +42,7 @@
     "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
-    "playroom": "0.34.0",
+    "playroom": "0.34.2",
     "polished": "^4.1.0",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
@@ -57,7 +57,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
     "recoil": "^0.7.2",
-    "sku": "12.4.7",
+    "sku": "12.4.9",
     "webpack": "^5.76.0"
   },
   "skuSkipPostInstall": true,

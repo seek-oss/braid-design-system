@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "32.14.4",
+  "version": "32.15.1",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -200,7 +200,7 @@
     "is-mobile": "^2.2.2",
     "lodash": "^4.17.21",
     "polished": "^4.1.0",
-    "react-focus-lock": "^2.9.1",
+    "react-focus-lock": "^2.9.7",
     "react-is": "^18.2.0",
     "react-popper-tooltip": "^4.3.1",
     "react-remove-scroll": "^2.5.3",
@@ -237,13 +237,13 @@
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
     "html-validate": "^7.1.1",
-    "playroom": "0.34.0",
+    "playroom": "0.34.2",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.7.0",
-    "sku": "12.4.7",
+    "sku": "12.4.9",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   },

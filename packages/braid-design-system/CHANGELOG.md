@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 32.15.1
+
+### Patch Changes
+
+- Update `react-focus-lock` to avoid build warnings in Rollup and Vite ([#1433](https://github.com/seek-oss/braid-design-system/pull/1433))
+
+## 32.15.0
+
+### Minor Changes
+
+- **Rating:** Add `weight` support ([#1430](https://github.com/seek-oss/braid-design-system/pull/1430))
+
+  Provide a `weight` prop to customise the weight of the text rating alongside the stars.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Rating rating={3} weight="strong" />
+  ```
+
 ## 32.14.4
 
 ### Patch Changes
