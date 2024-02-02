@@ -1,5 +1,43 @@
 # braid-design-system
 
+## 32.16.0
+
+### Minor Changes
+
+- **IconSocialX:** Add new icon ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
+  Add the new `IconSocialX` component to the suite of social icons, enabling teams to migrate across from `IconSocialTwitter` which has now been marked as deprecated.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconSocialX />
+  ```
+
+  **MIGRATION GUIDE:**
+  Teams should migrate from `IconSocialTwitter` to `IconSocialX` at their earliest convenience. The `IconSocialTwitter` component will be removed in a future release.
+
+  ```diff
+  -<IconSocialTwitter />
+  +<IconSocialX />
+  ```
+
+- **IconSort:** Add new icon ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconSort />
+  ```
+
+### Patch Changes
+
+- **Icons:** Update social icons ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
+  Update the suite of social icons to be more uniformly sized alongside each other as well as updating the Medium icon to reflect the latest branding.
+
+- **IconMoney:** Update artwork to be currency agnostic ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
 ## 32.15.1
 
 ### Patch Changes
