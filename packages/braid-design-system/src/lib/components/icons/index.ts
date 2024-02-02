@@ -68,6 +68,7 @@ export { IconSocialLinkedIn } from './IconSocialLinkedIn/IconSocialLinkedIn';
 export { IconSocialMedium } from './IconSocialMedium/IconSocialMedium';
 export { IconSocialTwitter } from './IconSocialTwitter/IconSocialTwitter';
 export { IconSocialYouTube } from './IconSocialYouTube/IconSocialYouTube';
+export { IconSort } from './IconSort/IconSort';
 export { IconStar } from './IconStar/IconStar';
 export { IconStatistics } from './IconStatistics/IconStatistics';
 export { IconSubCategory } from './IconSubCategory/IconSubCategory';
