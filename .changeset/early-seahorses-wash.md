@@ -7,7 +7,7 @@ updated:
   - Badge
 ---
 
-Allow `Badge` to take arrays of values.
+**Badge**: Allow `Badge` to take arrays of values
 
 Previously, `Badge` only accepted a `string` as children, to prevent the use of other components inside a `Badge`.
 
