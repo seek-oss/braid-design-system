@@ -167,7 +167,7 @@
   "scripts": {
     "build": "crackle package",
     "codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
-    "dev": "crackle dev --webpack",
+    "dev": "crackle dev --shim=none",
     "preformat:eslint": "ignore-sync .eslintignore-sync",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
