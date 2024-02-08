@@ -12,4 +12,4 @@ However, inserting some kind of variable inside the `Badge` will be typed as arr
 // Error: Type '{ children: string[]; }' is not assignable to type 'BadgeProps'.
 ```
 
-This change allows `Badge` to accept arrays of strings or numbers, which will be joined with no separator to respect the spacing in the JSX.
+This change allows `Badge` to accept a string, number, or array thereof.
