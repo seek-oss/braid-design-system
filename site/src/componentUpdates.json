@@ -3682,5 +3682,39 @@
   {
     "version": "32.15.1",
     "updates": []
+  },
+  {
+    "version": "32.16.0",
+    "updates": [
+      {
+        "new": [
+          "IconSocialX"
+        ],
+        "summary": "**IconSocialX:** Add new icon\n\nAdd the new `IconSocialX` component to the suite of social icons, enabling teams to migrate across from `IconSocialTwitter` which has now been marked as deprecated.\n\n**EXAMPLE USAGE:**\n```jsx\n<IconSocialX />\n```\n\n**MIGRATION GUIDE:**\nTeams should migrate from `IconSocialTwitter` to `IconSocialX` at their earliest convenience. The `IconSocialTwitter` component will be removed in a future release.\n\n```diff\n-<IconSocialTwitter />\n+<IconSocialX />\n```"
+      },
+      {
+        "updated": [
+          "IconSocialFacebook",
+          "IconSocialGitHub",
+          "IconSocialInstagram",
+          "IconSocialLinkedIn",
+          "IconSocialMedium",
+          "IconSocialYouTube"
+        ],
+        "summary": "**Icons:** Update social icons\n\nUpdate the suite of social icons to be more uniformly sized alongside each other as well as updating the Medium icon to reflect the latest branding."
+      },
+      {
+        "updated": [
+          "IconMoney"
+        ],
+        "summary": "**IconMoney:** Update artwork to be currency agnostic"
+      },
+      {
+        "new": [
+          "IconSort"
+        ],
+        "summary": "**IconSort:** Add new icon\n\n**EXAMPLE USAGE:**\n```jsx\n<IconSort />\n```"
+      }
+    ]
   }
 ]
