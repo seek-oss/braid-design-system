@@ -316,7 +316,7 @@ const docs: ComponentDocs = {
             For example, when designing a form, instead of disabling the submit
             button when a required field is missing, allow the user to attempt
             to submit and fail. Validation feedback can then be provided
-            informing the user of what they must to do progress.
+            informing the user of what they must do to progress.
           </Text>
         </>
       ),
