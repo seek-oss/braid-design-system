@@ -11,10 +11,6 @@ export const tab = style({
   },
 });
 
-export const cropToIconX = style({
-  marginLeft: -2,
-});
-
 export const hoveredTab = style({
   selectors: {
     [`${tab}:hover &`]: {
