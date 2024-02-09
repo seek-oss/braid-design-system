@@ -80,7 +80,7 @@
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
     "surge": "^0.23.1",
-    "tsx": "^3.12.1",
+    "tsx": "^4.7.0",
     "typescript": "~5.2.2"
   },
   "volta": {
