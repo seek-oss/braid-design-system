@@ -10,6 +10,7 @@
     "build": "nx run braid-design-system:build",
     "build:docs-ui": "nx run docs-ui:build",
     "build:site": "nx run site:build",
+    "postbuild": "concurrently --group 'pnpm:test:integration' 'pnpm:validate'",
     "storybook": "nx run braid-design-system:storybook",
     "storybook:build": "nx run braid-design-system:storybook:build",
     "storybook:chromatic": "nx run braid-design-system:storybook:chromatic",
@@ -17,6 +18,7 @@
     "lint:all": "nx run-many --target=lint",
     "lint:manypkg": "manypkg check",
     "lint:depcheck": "pnpm --recursive exec depcheck",
+    "validate": "nx run-many --target=validate",
     "format": "nx run-many --target format",
     "generate": "nx run braid-design-system:generate",
     "generate:icons": "nx run braid-design-system:generate:icons",
@@ -76,6 +78,7 @@
     "nx": "^15.6.3",
     "prettier": "^2.8.8",
     "renovate-config-seek": "0.4.0",
+    "skott": "^0.32.1",
     "surge": "^0.23.1",
     "tsx": "^4.7.0",
     "typescript": "~5.2.2"

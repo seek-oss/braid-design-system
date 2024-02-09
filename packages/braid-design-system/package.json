@@ -179,7 +179,10 @@
     "lint:tsc": "tsc",
     "storybook": "SKU_TELEMETRY=false sku storybook",
     "storybook:build": "SKU_TELEMETRY=false sku build-storybook",
-    "storybook:chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master"
+    "storybook:chromatic": "chromatic --storybook-build-dir ./dist-storybook --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
+    "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
+    "validate:src": "pnpm %skott src",
+    "validate:dist": "pnpm %skott dist/index.mjs"
   },
   "dependencies": {
     "@capsizecss/core": "^3.1.0",
