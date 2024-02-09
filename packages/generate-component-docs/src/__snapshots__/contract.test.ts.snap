@@ -158,7 +158,10 @@ exports[`Badge 1`] = `
   props: {
     aria-describedby?: string
     bleedY?: boolean
-    children: string
+    children: 
+        | (string | number)[]
+        | number
+        | string
     data?: DataAttributeMap
     id?: string
     ref?: 
