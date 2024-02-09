@@ -1,39 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`build Vanilla Extract files imported as side-effects 1`] = `
-### dist/reset.mjs:
-1 │ import "./styles/lib/css/reset/reset.css.mjs";
-2 │ import "./styles/lib/css/atoms/sprinkles.css.mjs";
-
-### dist/styles/lib/components/private/hideFocusRings/hideFocusRings.mjs:
+### dist/lib/components/private/hideFocusRings/hideFocusRings.mjs:
 1 │ import "./hideFocusRings.css.mjs";
 
-### dist/styles/lib/themes/apac/index.mjs:
+### dist/lib/themes/apac/index.mjs:
 1 │ import "./apacTheme.css.mjs";
 
-### dist/styles/lib/themes/docs/index.mjs:
+### dist/lib/themes/docs/index.mjs:
 1 │ import "./docsTheme.css.mjs";
 
-### dist/styles/lib/themes/seekBusiness/index.mjs:
+### dist/lib/themes/seekBusiness/index.mjs:
 1 │ import "./seekBusinessTheme.css.mjs";
 
-### dist/styles/lib/themes/seekJobs/index.mjs:
+### dist/lib/themes/seekJobs/index.mjs:
 1 │ import "./seekJobs.css.mjs";
 
-### dist/styles/lib/themes/wireframe/index.mjs:
+### dist/lib/themes/wireframe/index.mjs:
 1 │ import "./wireframeTheme.css.mjs";
+
+### dist/reset.mjs:
+1 │ import "./lib/css/reset/reset.css.mjs";
+2 │ import "./lib/css/atoms/sprinkles.css.mjs";
 `;
 
 exports[`build side-effects from dist 1`] = `
 [
+  "dist/lib/components/BraidProvider/BraidProvider.cjs",
+  "dist/lib/components/BraidProvider/BraidProvider.mjs",
+  "dist/lib/css/reset/resetTracker.cjs",
+  "dist/lib/css/reset/resetTracker.mjs",
   "dist/playroom/components.cjs",
   "dist/playroom/components.mjs",
   "dist/reset.cjs",
   "dist/reset.mjs",
-  "dist/side-effects/lib/components/BraidProvider/BraidProvider.cjs",
-  "dist/side-effects/lib/components/BraidProvider/BraidProvider.mjs",
-  "dist/side-effects/lib/css/reset/resetTracker.cjs",
-  "dist/side-effects/lib/css/reset/resetTracker.mjs",
 ]
 `;
 
