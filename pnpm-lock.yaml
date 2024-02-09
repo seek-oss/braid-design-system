@@ -50,8 +50,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0
       '@crackle/cli':
-        specifier: ^0.15.0
-        version: 0.15.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
+        specifier: 0.0.0-dev-entry-path-20240209050323
+        version: 0.0.0-dev-entry-path-20240209050323(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
       '@manypkg/cli':
         specifier: ^0.19.1
         version: 0.19.1
@@ -3171,11 +3171,11 @@ packages:
       - supports-color
     dev: false
 
-  /@crackle/cli@0.15.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
-    resolution: {integrity: sha512-t8+Xlm2sJ1ruvXWSyR+1Ijn/xsz705/3UBI64yXQPwVrKZ2fK3BLYY2FpiHjxYfaW4gGa3KDrPf9/1UN8pYPLQ==}
+  /@crackle/cli@0.0.0-dev-entry-path-20240209050323(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
+    resolution: {integrity: sha512-JKoUEbs6j3f8Ez3ApAJIdcJToGcyFXjDxc4E5XJBjJ6JYet87ZT2dPXbYqN0Gm9PlYX7ud8RNl9r4+Ehx8RGaw==}
     hasBin: true
     dependencies:
-      '@crackle/core': 0.33.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
+      '@crackle/core': 0.0.0-dev-entry-path-20240209050323(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
       yargs: 17.6.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -3192,8 +3192,8 @@ packages:
       - webpack
     dev: false
 
-  /@crackle/core@0.33.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
-    resolution: {integrity: sha512-bbhCw8S/IQG615/TTFWg/Zz53PjkxAXiHOq2kN44PVVYbMku7x1Qz+4kg9udXVKU+pbGZv4EFOYn66Gli14zUw==}
+  /@crackle/core@0.0.0-dev-entry-path-20240209050323(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
+    resolution: {integrity: sha512-0ZhXCcFeveKv5jKpwo2DF/bQpLmeYpVAZ49an5w/TRlSXkbH/RxrnO54/0cf+TEIbDaf8yFGmcCL8Hq0aI3KSA==}
     peerDependencies:
       typescript: '>=5.2.2'
     dependencies:
