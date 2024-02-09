@@ -1,4 +1,4 @@
-@keyframes _1ewc5z54 {
+@keyframes _1smqqk54 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-._1ewc5z51 {
+._1smqqk51 {
   z-index: 100;
   background: #1c2230;
-  color: var(--_3tquy7z);
+  color: var(--_130eh6jz);
 }
-._1ewc5z53 > svg > path {
+._1smqqk53 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: _1ewc5z54;
+  animation-name: _1smqqk54;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,7 +25,7 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-._1ewc5z55 {
+._1smqqk55 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
