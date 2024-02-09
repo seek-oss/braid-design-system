@@ -11,7 +11,7 @@ updated:
 
 Previously, `Badge` only accepted a `string` as children, to prevent the use of other components inside a `Badge`.
 
-However, inserting some kind of variable inside the `Badge` will be typed as array of strings, which means the following very reasonable use case was not allowed:
+However, when a variable is included with text inside the `Badge`, the children property is interpreted as an array. This prevents a very reasonable use case from being allowed:
 
 ```tsx
 <Badge>{jobs.length} Jobs</Badge>
