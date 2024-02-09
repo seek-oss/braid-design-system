@@ -50,9 +50,8 @@ jobs:
       - name: Build & Test
         run: |
           pnpm test
-          # build must be run just before integration tests
           pnpm build
-          pnpm test:integration
+          pnpm postbuild
 
       - name: Chromatic
         run: pnpm storybook:chromatic

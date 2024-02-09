@@ -27,7 +27,10 @@
     "format:prettier": "prettier --cache --write .",
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
-    "lint:tsc": "tsc"
+    "lint:tsc": "tsc",
+    "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
+    "validate:src": "pnpm %skott src",
+    "validate:dist": "pnpm %skott dist/index.mjs"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.9.2"
