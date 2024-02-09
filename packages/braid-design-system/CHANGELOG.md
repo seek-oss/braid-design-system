@@ -1,5 +1,31 @@
 # braid-design-system
 
+## 32.16.1
+
+### Patch Changes
+
+- **Tab:** Remove cropping of the icon slot ([#1447](https://github.com/seek-oss/braid-design-system/pull/1447))
+
+  Previously the `icon` slot on a `Tab` was cropped on the left to improve alignment with the active tab indicator.
+  For most icons in a `Tab`, this was subtle polish, but for others it had the undesirable side effect of clipping the side of the icon.
+
+  Removing the cropping until we have a better solution for trimming whitespace around icons.
+
+- **Badge**: Allow `Badge` to take arrays of values ([#1443](https://github.com/seek-oss/braid-design-system/pull/1443))
+
+  Previously, `Badge` only accepted a `string` as children, to prevent the use of other components inside a `Badge`.
+
+  However, when a variable is included with text inside the `Badge`, the children property is interpreted as an array. This prevents a very reasonable use case from being allowed:
+
+  ```tsx
+  <Badge>{jobs.length} Jobs</Badge>
+  // Error: Type '{ children: string[]; }' is not assignable to type 'BadgeProps'.
+  ```
+
+  This change allows `Badge` to accept a string, number, or array thereof.
+
+- Fix circular dependencies ([#1444](https://github.com/seek-oss/braid-design-system/pull/1444))
+
 ## 32.16.0
 
 ### Minor Changes

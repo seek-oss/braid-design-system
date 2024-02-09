@@ -3716,5 +3716,22 @@
         "summary": "**IconSort:** Add new icon\n\n**EXAMPLE USAGE:**\n```jsx\n<IconSort />\n```"
       }
     ]
+  },
+  {
+    "version": "32.16.1",
+    "updates": [
+      {
+        "updated": [
+          "Tab"
+        ],
+        "summary": "**Tab:** Remove cropping of the icon slot\n\nPreviously the `icon` slot on a `Tab` was cropped on the left to improve alignment with the active tab indicator.\nFor most icons in a `Tab`, this was subtle polish, but for others it had the undesirable side effect of clipping the side of the icon.\n\nRemoving the cropping until we have a better solution for trimming whitespace around icons."
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge**: Allow `Badge` to take arrays of values\n\nPreviously, `Badge` only accepted a `string` as children, to prevent the use of other components inside a `Badge`.\n\nHowever, when a variable is included with text inside the `Badge`, the children property is interpreted as an array. This prevents a very reasonable use case from being allowed:\n\n```tsx\n<Badge>{jobs.length} Jobs</Badge>\n// Error: Type '{ children: string[]; }' is not assignable to type 'BadgeProps'.\n```\n\nThis change allows `Badge` to accept a string, number, or array thereof."
+      }
+    ]
   }
 ]
