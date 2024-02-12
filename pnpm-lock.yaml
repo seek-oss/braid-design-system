@@ -177,11 +177,11 @@ importers:
   packages/braid-design-system:
     dependencies:
       '@capsizecss/core':
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: 0.0.0-crackle-20240208083429
+        version: 0.0.0-crackle-20240208083429
       '@capsizecss/metrics':
-        specifier: ^1.1.1
-        version: 1.1.1
+        specifier: 0.0.0-crackle-20240208083429
+        version: 0.0.0-crackle-20240208083429
       '@types/autosuggest-highlight':
         specifier: ^3.1.1
         version: 3.2.0
@@ -259,8 +259,8 @@ importers:
         specifier: workspace:*
         version: link:../source.macro
       '@capsizecss/vanilla-extract':
-        specifier: ^1.0.1
-        version: 1.0.1(@vanilla-extract/css@1.14.0)
+        specifier: 0.0.0-crackle-20240208083429
+        version: 0.0.0-crackle-20240208083429(@vanilla-extract/css@1.14.0)
       '@svgr/core':
         specifier: ^5.5.0
         version: 5.5.0
@@ -2943,21 +2943,21 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@capsizecss/core@3.1.0:
-    resolution: {integrity: sha512-MoHbXUMqJtYL+idLVSQY57OPRyPaUBGN0o1Im0JElmfRVV+X1i1i5QsQTuEJpJgYFwi4jsck7A+jt6X7XB0p8w==}
+  /@capsizecss/core@0.0.0-crackle-20240208083429:
+    resolution: {integrity: sha512-w1mtCBIEkbppsUJasyqjnfUaHg0772W6f8rmwuAVEGkecZ9Ly79eFd8qHfLCmyJy7NA8WaZRrpeOOqoguvbTGw==}
     dependencies:
       csstype: 3.1.1
 
-  /@capsizecss/metrics@1.1.1:
-    resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
+  /@capsizecss/metrics@0.0.0-crackle-20240208083429:
+    resolution: {integrity: sha512-6DO2nov+55QrWYRT+U+XdKgQEGQ5kdO17FhoMV+0AN7vWt25LxSJ4HG9mGrEKK0XXX5FIvDBa/KnikXl8jVcNA==}
     dev: false
 
-  /@capsizecss/vanilla-extract@1.0.1(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-rx0t14CVPHtwplOS075NqvquTaAa7Q6ir6uAH3Za1vm37k2Gn7TmafTE8kaepB+r42K0E6NvTAIv/8PJoRlcoQ==}
+  /@capsizecss/vanilla-extract@0.0.0-crackle-20240208083429(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-vUjs9KzYKN4T4NYMITH1m3NX30QKduTfHZ7m5Q+M4gQrWE17X0busdn6vIzmUfMzEkTvQo7Kncoii+m/dW8qXQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.2.1
     dependencies:
-      '@capsizecss/core': 3.1.0
+      '@capsizecss/core': 0.0.0-crackle-20240208083429
       '@vanilla-extract/css': 1.14.0
     dev: true
 
