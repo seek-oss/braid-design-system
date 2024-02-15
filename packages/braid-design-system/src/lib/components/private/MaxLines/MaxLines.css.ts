@@ -2,7 +2,7 @@ import { createVar, style } from '@vanilla-extract/css';
 import { atoms } from '../../../../entries/css';
 
 /*
-Fixes a bug when using -webkit-box, where the descender of the last line
+Fixes a bug when using -webkit-box, where the descender on the last line
 of text could be cropped based on the combination of line height and
 font size.
 */
