@@ -177,11 +177,14 @@ importers:
   packages/braid-design-system:
     dependencies:
       '@capsizecss/core':
-        specifier: 0.0.0-crackle-20240208083429
-        version: 0.0.0-crackle-20240208083429
+        specifier: 0.0.0-master-20240214212615
+        version: 0.0.0-master-20240214212615
       '@capsizecss/metrics':
-        specifier: 0.0.0-crackle-20240208083429
-        version: 0.0.0-crackle-20240208083429
+        specifier: 0.0.0-master-20240214212615
+        version: 0.0.0-master-20240214212615
+      '@capsizecss/vanilla-extract':
+        specifier: 0.0.0-master-20240214212615
+        version: 0.0.0-master-20240214212615(@vanilla-extract/css@1.14.0)
       '@types/autosuggest-highlight':
         specifier: ^3.1.1
         version: 3.2.0
@@ -258,9 +261,6 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../source.macro
-      '@capsizecss/vanilla-extract':
-        specifier: 0.0.0-crackle-20240208083429
-        version: 0.0.0-crackle-20240208083429(@vanilla-extract/css@1.14.0)
       '@svgr/core':
         specifier: ^5.5.0
         version: 5.5.0
@@ -2943,23 +2943,24 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@capsizecss/core@0.0.0-crackle-20240208083429:
-    resolution: {integrity: sha512-w1mtCBIEkbppsUJasyqjnfUaHg0772W6f8rmwuAVEGkecZ9Ly79eFd8qHfLCmyJy7NA8WaZRrpeOOqoguvbTGw==}
+  /@capsizecss/core@0.0.0-master-20240214212615:
+    resolution: {integrity: sha512-cyQVWQ79YuDI47DlFpY0Rrq9cnzS193GmkNKNlYYj/8xSdNAvAhrduTRVkgnMoY5QfimFrSiIVIglQbq6DHoeA==}
     dependencies:
       csstype: 3.1.1
-
-  /@capsizecss/metrics@0.0.0-crackle-20240208083429:
-    resolution: {integrity: sha512-6DO2nov+55QrWYRT+U+XdKgQEGQ5kdO17FhoMV+0AN7vWt25LxSJ4HG9mGrEKK0XXX5FIvDBa/KnikXl8jVcNA==}
     dev: false
 
-  /@capsizecss/vanilla-extract@0.0.0-crackle-20240208083429(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-vUjs9KzYKN4T4NYMITH1m3NX30QKduTfHZ7m5Q+M4gQrWE17X0busdn6vIzmUfMzEkTvQo7Kncoii+m/dW8qXQ==}
+  /@capsizecss/metrics@0.0.0-master-20240214212615:
+    resolution: {integrity: sha512-vcOUvo2+L0fUFS6jBuiK6i3RlTP2d3Ak1i5cdnCRpGF5xhTp4Meq0CJnkjnE00hULkv0AIguKtmGruBG2Rp7OQ==}
+    dev: false
+
+  /@capsizecss/vanilla-extract@0.0.0-master-20240214212615(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-e5Z6M67in1w0MrqaBdUNQSLvpeSusZpaZx5qxqV6n+IE8tQX9uiVoGqPYJgAwGKPBpZKhnQNBYdZVSF8CIBv1g==}
     peerDependencies:
       '@vanilla-extract/css': ^1.2.1
     dependencies:
-      '@capsizecss/core': 0.0.0-crackle-20240208083429
+      '@capsizecss/core': 0.0.0-master-20240214212615
       '@vanilla-extract/css': 1.14.0
-    dev: true
+    dev: false
 
   /@changesets/apply-release-plan@6.0.0:
     resolution: {integrity: sha512-gp6nIdVdfYdwKww2+f8whckKmvfE4JEm4jJgBhTmooi0uzHWhnxvk6JIzQi89qEAMINN0SeVNnXiAtbFY0Mj3w==}
