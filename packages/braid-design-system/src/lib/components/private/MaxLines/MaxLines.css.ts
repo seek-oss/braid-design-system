@@ -24,6 +24,7 @@ export const multiLine = style({
       display: '-webkit-box',
       WebkitLineClamp: lineLimit,
       WebkitBoxOrient: 'vertical',
+      paddingBottom: '0.1em',
     },
   },
 });
