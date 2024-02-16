@@ -259,8 +259,8 @@ importers:
         specifier: workspace:*
         version: link:../source.macro
       '@capsizecss/vanilla-extract':
-        specifier: ^1.0.1
-        version: 1.0.1(@vanilla-extract/css@1.14.0)
+        specifier: ^2.0.0
+        version: 2.0.0(@vanilla-extract/css@1.14.0)
       '@svgr/core':
         specifier: ^5.5.0
         version: 5.5.0
@@ -2947,17 +2947,24 @@ packages:
     resolution: {integrity: sha512-MoHbXUMqJtYL+idLVSQY57OPRyPaUBGN0o1Im0JElmfRVV+X1i1i5QsQTuEJpJgYFwi4jsck7A+jt6X7XB0p8w==}
     dependencies:
       csstype: 3.1.1
+    dev: false
+
+  /@capsizecss/core@4.0.0:
+    resolution: {integrity: sha512-fcQRqAa4aqYqrsa1qNi72JllUkdcEG0vX4ix2YDhYT+O2l/+M7OVTBqqZFM26GytO/Iqsrt7xdzAv9Ca7oagzg==}
+    dependencies:
+      csstype: 3.1.1
+    dev: true
 
   /@capsizecss/metrics@1.1.1:
     resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
     dev: false
 
-  /@capsizecss/vanilla-extract@1.0.1(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-rx0t14CVPHtwplOS075NqvquTaAa7Q6ir6uAH3Za1vm37k2Gn7TmafTE8kaepB+r42K0E6NvTAIv/8PJoRlcoQ==}
+  /@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-6FNLEOcAYo2AklxT7XVEm9Yam2hv76DLEhD6RWK3hJ87Nb9i95Y+rdYHJ3LBlbrzb+ZVJXxzZvg5OAZAqr/K3Q==}
     peerDependencies:
-      '@vanilla-extract/css': ^1.2.1
+      '@vanilla-extract/css': ^1.4.0
     dependencies:
-      '@capsizecss/core': 3.1.0
+      '@capsizecss/core': 4.0.0
       '@vanilla-extract/css': 1.14.0
     dev: true
 

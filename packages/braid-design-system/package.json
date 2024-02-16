@@ -214,7 +214,7 @@
     "@babel/core": "^7.18.0",
     "@babel/plugin-transform-typescript": "^7.20.13",
     "@braid-design-system/source.macro": "*",
-    "@capsizecss/vanilla-extract": "^1.0.1",
+    "@capsizecss/vanilla-extract": "^2.0.0",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
