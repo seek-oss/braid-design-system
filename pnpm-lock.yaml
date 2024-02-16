@@ -180,8 +180,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0
       '@capsizecss/metrics':
-        specifier: ^1.1.1
-        version: 1.1.1
+        specifier: ^2.0.0
+        version: 2.0.0
       '@types/autosuggest-highlight':
         specifier: ^3.1.1
         version: 3.2.0
@@ -2948,8 +2948,8 @@ packages:
     dependencies:
       csstype: 3.1.1
 
-  /@capsizecss/metrics@1.1.1:
-    resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
+  /@capsizecss/metrics@2.0.0:
+    resolution: {integrity: sha512-tbYOyIXIMqWZJ2mw2JXvpQiecgTpvioBmduzUEJ+55xGbJz4AtlcatiuNI/rVYiOLLLvGuOOxpkuaY8qAxN63g==}
     dev: false
 
   /@capsizecss/vanilla-extract@1.0.1(@vanilla-extract/css@1.14.0):
