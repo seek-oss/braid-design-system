@@ -177,8 +177,8 @@ importers:
   packages/braid-design-system:
     dependencies:
       '@capsizecss/core':
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^4.0.0
+        version: 4.0.0
       '@capsizecss/metrics':
         specifier: ^1.1.1
         version: 1.1.1
@@ -2947,6 +2947,13 @@ packages:
     resolution: {integrity: sha512-MoHbXUMqJtYL+idLVSQY57OPRyPaUBGN0o1Im0JElmfRVV+X1i1i5QsQTuEJpJgYFwi4jsck7A+jt6X7XB0p8w==}
     dependencies:
       csstype: 3.1.1
+    dev: true
+
+  /@capsizecss/core@4.0.0:
+    resolution: {integrity: sha512-fcQRqAa4aqYqrsa1qNi72JllUkdcEG0vX4ix2YDhYT+O2l/+M7OVTBqqZFM26GytO/Iqsrt7xdzAv9Ca7oagzg==}
+    dependencies:
+      csstype: 3.1.1
+    dev: false
 
   /@capsizecss/metrics@1.1.1:
     resolution: {integrity: sha512-YFONV2KvBPYr3FCJTMCZ5rkTHbaVCqO37VYJo9HrrzU2aLcWk5JPQln64yMmKtWUj5Pwi1vIqeFqCoYQxd20gg==}
