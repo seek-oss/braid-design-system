@@ -1,6 +1,17 @@
 import { createVar, style } from '@vanilla-extract/css';
 import { atoms } from '../../../../entries/css';
 
+/*
+Fixes a bug when using -webkit-box, where the descender on the last line
+of text could be cropped based on the combination of line height and
+font size.
+*/
+const descenderCropFixOffset = '0.1em';
+const negateDescenderCropFixOffset = `-${descenderCropFixOffset}`;
+export const descenderCropFixForWebkitBox = style({
+  marginBottom: negateDescenderCropFixOffset,
+});
+
 export const base = style([
   atoms({
     display: 'block',
@@ -10,6 +21,11 @@ export const base = style([
   {
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
+    selectors: {
+      [`${descenderCropFixForWebkitBox} &`]: {
+        paddingBottom: descenderCropFixOffset,
+      },
+    },
   },
 ]);
 
