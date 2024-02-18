@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.16.2
+
+### Patch Changes
+
+- **Text, Heading:** Fix `maxLines` cropping of decending characters ([#1451](https://github.com/seek-oss/braid-design-system/pull/1451))
+
+  Fixes a bug when using -webkit-box, where the descender on the last line of text could be cropped based on the combination of line height and font size.
+
 ## 32.16.1
 
 ### Patch Changes
