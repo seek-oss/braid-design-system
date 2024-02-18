@@ -3733,5 +3733,17 @@
         "summary": "**Badge**: Allow `Badge` to take arrays of values\n\nPreviously, `Badge` only accepted a `string` as children, to prevent the use of other components inside a `Badge`.\n\nHowever, when a variable is included with text inside the `Badge`, the children property is interpreted as an array. This prevents a very reasonable use case from being allowed:\n\n```tsx\n<Badge>{jobs.length} Jobs</Badge>\n// Error: Type '{ children: string[]; }' is not assignable to type 'BadgeProps'.\n```\n\nThis change allows `Badge` to accept a string, number, or array thereof."
       }
     ]
+  },
+  {
+    "version": "32.16.2",
+    "updates": [
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Fix `maxLines` cropping of decending characters\n\nFixes a bug when using -webkit-box, where the descender on the last line of text could be cropped based on the combination of line height and font size."
+      }
+    ]
   }
 ]
