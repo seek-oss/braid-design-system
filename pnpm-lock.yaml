@@ -177,14 +177,14 @@ importers:
   packages/braid-design-system:
     dependencies:
       '@capsizecss/core':
-        specifier: 0.0.0-master-20240214212615
-        version: 0.0.0-master-20240214212615
+        specifier: ^4.0.0
+        version: 4.0.0
       '@capsizecss/metrics':
-        specifier: 0.0.0-master-20240214212615
-        version: 0.0.0-master-20240214212615
+        specifier: ^2.0.0
+        version: 2.0.0
       '@capsizecss/vanilla-extract':
-        specifier: 0.0.0-master-20240214212615
-        version: 0.0.0-master-20240214212615(@vanilla-extract/css@1.14.0)
+        specifier: ^2.0.0
+        version: 2.0.0(@vanilla-extract/css@1.14.0)
       '@types/autosuggest-highlight':
         specifier: ^3.1.1
         version: 3.2.0
@@ -515,8 +515,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/source.macro
       '@capsizecss/vanilla-extract':
-        specifier: 0.0.0-master-20240214212615
-        version: 0.0.0-master-20240214212615(@vanilla-extract/css@1.14.0)
+        specifier: ^2.0.0
+        version: 2.0.0(@vanilla-extract/css@1.14.0)
       '@types/dedent':
         specifier: ^0.7.0
         version: 0.7.0
@@ -2946,22 +2946,22 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@capsizecss/core@0.0.0-master-20240214212615:
-    resolution: {integrity: sha512-cyQVWQ79YuDI47DlFpY0Rrq9cnzS193GmkNKNlYYj/8xSdNAvAhrduTRVkgnMoY5QfimFrSiIVIglQbq6DHoeA==}
+  /@capsizecss/core@4.0.0:
+    resolution: {integrity: sha512-fcQRqAa4aqYqrsa1qNi72JllUkdcEG0vX4ix2YDhYT+O2l/+M7OVTBqqZFM26GytO/Iqsrt7xdzAv9Ca7oagzg==}
     dependencies:
       csstype: 3.1.1
     dev: false
 
-  /@capsizecss/metrics@0.0.0-master-20240214212615:
-    resolution: {integrity: sha512-vcOUvo2+L0fUFS6jBuiK6i3RlTP2d3Ak1i5cdnCRpGF5xhTp4Meq0CJnkjnE00hULkv0AIguKtmGruBG2Rp7OQ==}
+  /@capsizecss/metrics@2.0.0:
+    resolution: {integrity: sha512-tbYOyIXIMqWZJ2mw2JXvpQiecgTpvioBmduzUEJ+55xGbJz4AtlcatiuNI/rVYiOLLLvGuOOxpkuaY8qAxN63g==}
     dev: false
 
-  /@capsizecss/vanilla-extract@0.0.0-master-20240214212615(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-e5Z6M67in1w0MrqaBdUNQSLvpeSusZpaZx5qxqV6n+IE8tQX9uiVoGqPYJgAwGKPBpZKhnQNBYdZVSF8CIBv1g==}
+  /@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-6FNLEOcAYo2AklxT7XVEm9Yam2hv76DLEhD6RWK3hJ87Nb9i95Y+rdYHJ3LBlbrzb+ZVJXxzZvg5OAZAqr/K3Q==}
     peerDependencies:
-      '@vanilla-extract/css': ^1.2.1
+      '@vanilla-extract/css': ^1.4.0
     dependencies:
-      '@capsizecss/core': 0.0.0-master-20240214212615
+      '@capsizecss/core': 4.0.0
       '@vanilla-extract/css': 1.14.0
     dev: false
 
