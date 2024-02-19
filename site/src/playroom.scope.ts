@@ -1,3 +1,3 @@
 import 'braid-src/entries/reset';
 
-export { default } from 'braid-src/entries/playroom/scope';
+export { default } from 'braid-design-system/playroom/scope';

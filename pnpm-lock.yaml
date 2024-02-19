@@ -50,8 +50,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0
       '@crackle/cli':
-        specifier: ^0.15.0
-        version: 0.15.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
+        specifier: ^0.15.2
+        version: 0.15.2(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
       '@manypkg/cli':
         specifier: ^0.19.1
         version: 0.19.1
@@ -3175,11 +3175,11 @@ packages:
       - supports-color
     dev: false
 
-  /@crackle/cli@0.15.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
-    resolution: {integrity: sha512-t8+Xlm2sJ1ruvXWSyR+1Ijn/xsz705/3UBI64yXQPwVrKZ2fK3BLYY2FpiHjxYfaW4gGa3KDrPf9/1UN8pYPLQ==}
+  /@crackle/cli@0.15.2(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
+    resolution: {integrity: sha512-7zKTBN5S3n45itP67YSsHGpcjOayezqbGUDVEpg+xoESdlI2Vs07d1DMgWztNuT7z+Se+MWgWQcYaakOL8+PQA==}
     hasBin: true
     dependencies:
-      '@crackle/core': 0.33.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
+      '@crackle/core': 0.33.1(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2)
       yargs: 17.6.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -3196,8 +3196,8 @@ packages:
       - webpack
     dev: false
 
-  /@crackle/core@0.33.0(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
-    resolution: {integrity: sha512-bbhCw8S/IQG615/TTFWg/Zz53PjkxAXiHOq2kN44PVVYbMku7x1Qz+4kg9udXVKU+pbGZv4EFOYn66Gli14zUw==}
+  /@crackle/core@0.33.1(@types/node@18.13.0)(babel-plugin-macros@3.1.0)(typescript@5.2.2)(webpack@5.88.2):
+    resolution: {integrity: sha512-nDBljqHyc4EiVmB1AlUN8JxZNIsJONi3yGOUVJDB5zUEBThnanjtuj7kOdtdoyLB+cg2xSMk48Ax83TnltTcaQ==}
     peerDependencies:
       typescript: '>=5.2.2'
     dependencies:
