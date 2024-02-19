@@ -12,10 +12,12 @@ module.exports = {
   components: require.resolve('./src/playroom.components.ts'),
   snippets: resolveFromBraid('entries/playroom/snippets.ts'),
   themes: resolveFromBraid('lib/themes/index.ts'),
+  defaultThemes: ['apac', 'seekJobs'],
   frameComponent: require.resolve('./src/playroom.frame.ts'),
   scope: require.resolve('./src/playroom.scope.ts'),
   typeScriptFiles: [resolveFromBraid('entries/playroom/components.ts')],
-  widths: [320, 768, 1024, 1400],
+  widths: [320, 390, 768, 1024, 1280, 1440, 1600],
+  defaultWidths: [390, 768, 1280],
   openBrowser: false,
   port: 8082,
   webpackConfig: () => ({
