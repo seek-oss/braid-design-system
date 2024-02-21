@@ -30,7 +30,7 @@ import tokens from 'braid-src/lib/themes/wireframe/tokens';
 import type { Page as DocsPage } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
-import { LinkableHeading } from '../../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
 import source from '@braid-design-system/source.macro';
 import { Placeholder } from 'braid-src/lib/playroom/components';

@@ -1,21 +1,15 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
-import {
-  ContentBlock,
-  Text,
-  Link,
-  Hidden,
-  HiddenVisually,
-} from 'braid-src/lib/components';
+import { ContentBlock } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
 import type { BoxProps } from 'braid-src/lib/components/Box/Box';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
-import { SubNavigation } from '../SubNavigation/SubNavigation';
+import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
-import { MenuButton } from '../MenuButton/MenuButton';
+import { HeaderNavigation } from '@braid-design-system/docs-ui';
 import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styles from './Navigation.css';
@@ -29,29 +23,13 @@ const Header = ({
   menuClick: () => void;
 }) => (
   <Box paddingY={headerSpaceY} paddingX={gutterSize}>
-    <Box display="flex" alignItems="center">
-      <Hidden print>
-        <Box
-          paddingRight="medium"
-          display={{
-            mobile: 'flex',
-            wide: 'none',
-          }}
-          alignItems="center"
-        >
-          <MenuButton open={menuOpen} onClick={menuClick} />
-        </Box>
-      </Hidden>
-      <Box paddingRight="medium">
-        <Text component="div" baseline={false}>
-          <Link href="/" tabIndex={menuOpen ? -1 : undefined}>
-            <Logo iconOnly height={menuButtonSize} />
-            <HiddenVisually>Braid Logo</HiddenVisually>
-          </Link>
-        </Text>
-      </Box>
-      <ThemeToggle />
-    </Box>
+    <HeaderNavigation
+      menuOpen={menuOpen}
+      menuClick={menuClick}
+      logo={<Logo iconOnly height={menuButtonSize} />}
+      logoLabel="Braid Logo"
+      themeToggle={<ThemeToggle />}
+    />
   </Box>
 );
 
@@ -110,11 +88,11 @@ export const Navigation = () => {
           }}
           zIndex="sticky"
           className={[
-            styles.subNavigationContainer,
+            styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <SubNavigation onSelect={() => setMenuOpen(false)} />
+          <SideNavigation onSelect={() => setMenuOpen(false)} />
         </FixedContentBlock>
       </RemoveScroll>
 

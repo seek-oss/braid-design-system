@@ -32,7 +32,6 @@ const Iconography = () => (
 
 const page: Page = {
   title: 'Iconography',
-  badge: 'New',
   element: <Iconography />,
   children: (
     <>

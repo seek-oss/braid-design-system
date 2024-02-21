@@ -22,13 +22,15 @@ module.exports = {
   publicPath: isGitHubPages ? '/braid-design-system/' : '/',
   supportedBrowsers: browserslist,
   displayNamesProd: true,
+  compilePackages: ['@braid-design-system/docs-ui'],
   dangerouslySetWebpackConfig: (config) => {
     // uncomment if you need to debug issues with side-effects
     // config.devtool = 'cheap-source-map';
 
     config.plugins.push(
       new CircularDependencyPlugin({
-        exclude: /node_modules/,
+        // ensure the plugin doesn't complain about compiled Braid code
+        exclude: /node_modules|braid-design-system\/dist.*/,
         failOnError: true,
       }),
     );

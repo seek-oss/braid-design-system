@@ -15,8 +15,8 @@ export const snippets: Snippets = [
         label="Label"
         secondaryLabel="optional"
         tertiaryLabel={
-          <TextLink href="#">
-            <IconHelp /> Help
+          <TextLink href="#" icon={<IconHelp />}>
+            Help
           </TextLink>
         }
       />,

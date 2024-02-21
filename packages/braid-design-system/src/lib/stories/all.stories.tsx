@@ -1,8 +1,9 @@
+import '../../entries/reset';
+
 import React, { type ReactNode, Fragment, useId } from 'react';
 import { storiesOf } from 'sku/@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 import { uniq, flatten, values } from 'lodash';
-import '../css/reset';
 import * as themes from '../themes';
 import type { ComponentScreenshot } from 'site/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';

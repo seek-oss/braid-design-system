@@ -1,4 +1,3 @@
-import '../css/reset';
 import { useEffect, useState } from 'react';
 import { useToast, useResponsiveValue } from '../components';
 import { vars, atoms, breakpoints } from '../../entries/css';

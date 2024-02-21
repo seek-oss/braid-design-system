@@ -5,19 +5,22 @@ interface AutosuggestProps {
   highlightedIndex: number | null;
   isOpen: boolean;
 }
+
+/*
+Provides all the required accessibility props for the Autosuggest component,
+with exception of the field label. Whether using `label`, `aria-label` or
+`aria-labelledby`, the association with the input is handled via the
+`fieldProps` on the Field component.
+*/
 export const createAccessbilityProps = ({
   id,
   highlightedIndex,
   isOpen,
 }: AutosuggestProps) => {
   const menuId = `${id}-menu`;
-  const labelId = `${id}-label`;
   const assistiveDescriptionId = `${id}-aria-description`;
 
   return {
-    labelProps: {
-      id: labelId,
-    },
     inputProps: {
       id,
       role: 'combobox',
@@ -25,7 +28,6 @@ export const createAccessbilityProps = ({
       'aria-owns': isOpen ? menuId : undefined, // backwards compatibility for screenreaders implementing ARIA 1.0
       'aria-controls': menuId,
       'aria-expanded': isOpen,
-      'aria-labelledby': labelId,
       'aria-autocomplete': 'list',
       'aria-activedescendant':
         typeof highlightedIndex === 'number'

@@ -28,8 +28,8 @@ export const galleryItems: ComponentExample[] = [
           value={getState('textfield')}
           secondaryLabel="optional"
           tertiaryLabel={
-            <TextLink href="#">
-              <IconHelp /> Help
+            <TextLink href="#" icon={<IconHelp />}>
+              Help
             </TextLink>
           }
         />,

@@ -276,7 +276,7 @@ interface LegacyMessageSuggestion {
 
 export type AutosuggestBaseProps<Value> = Omit<
   FieldBaseProps,
-  'value' | 'autoComplete' | 'labelId' | 'prefix'
+  'value' | 'autoComplete' | 'prefix'
 > & {
   value: AutosuggestValue<Value>;
   suggestions:
@@ -728,7 +728,6 @@ export const Autosuggest = forwardRef(function <Value>(
           <Field
             {...restProps}
             id={id}
-            labelId={a11y.labelProps.id}
             value={value.text}
             prefix={undefined}
             secondaryIcon={

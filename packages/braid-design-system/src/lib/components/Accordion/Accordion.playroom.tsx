@@ -1,6 +1,6 @@
 import React from 'react';
 import { mapResponsiveValue } from '../../css/atoms/sprinkles.css';
-import { wireframe } from '../../themes';
+import wireframe from '../../themes/wireframe';
 import {
   type AccordionProps,
   Accordion as BraidAccordion,

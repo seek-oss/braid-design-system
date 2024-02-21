@@ -12,7 +12,7 @@ import {
 } from 'braid-src/lib/components';
 import Code from '../../Code/Code';
 import { PageTitle } from '../../Seo/PageTitle';
-import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 const page: Page = {
   title: 'Testing Guide',

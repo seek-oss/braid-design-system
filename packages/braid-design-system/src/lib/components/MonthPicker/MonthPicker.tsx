@@ -57,7 +57,6 @@ type ChangeHandler = (value: MonthPickerValue) => void;
 export type MonthPickerBaseProps = Omit<
   FieldGroupBaseProps,
   | 'value'
-  | 'labelId'
   | 'aria-describedby'
   | 'name'
   | 'autoComplete'
@@ -204,7 +203,6 @@ const MonthPicker = ({
       {...restProps}
       icon={undefined}
       prefix={undefined}
-      labelId={undefined}
       name={undefined}
       autoComplete={undefined}
       secondaryMessage={null}

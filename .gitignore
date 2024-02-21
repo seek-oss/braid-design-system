@@ -1,6 +1,8 @@
-node_modules/
-*.log
 .cache/
+.idea/
+.nx/
+node_modules/
+
 .DS_Store
 .eslintcache
-.idea/
+*.log

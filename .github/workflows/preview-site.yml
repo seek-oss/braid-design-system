@@ -7,7 +7,7 @@ on:
 
 jobs:
   preview:
-    name: Build & deploy
+    name: Build & Deploy
     runs-on: ubuntu-latest
     env:
       CI: true

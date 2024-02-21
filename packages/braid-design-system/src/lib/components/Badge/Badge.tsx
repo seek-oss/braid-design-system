@@ -7,6 +7,8 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { Bleed } from '../Bleed/Bleed';
 
+type ValueOrArray<T> = T | T[];
+
 const validTones = [
   'promote',
   'info',
@@ -22,7 +24,7 @@ export interface BadgeProps {
   weight?: BadgeWeight;
   bleedY?: boolean;
   title?: string;
-  children: string;
+  children: ValueOrArray<string | number>;
   id?: string;
   data?: DataAttributeMap;
   tabIndex?: BoxProps['tabIndex'];
@@ -39,6 +41,18 @@ const lightModeBackgroundForTone = {
 } as const;
 
 const verticalPadding = 'xxsmall';
+
+const stringifyChildren = (children: BadgeProps['children']): string => {
+  if (typeof children === 'string') {
+    return children;
+  }
+
+  if (typeof children === 'number') {
+    return children.toString();
+  }
+
+  return children.join('');
+};
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
@@ -81,7 +95,10 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
           ref={ref}
           tabIndex={tabIndex}
           aria-describedby={ariaDescribedBy}
-          title={title ?? (!ariaDescribedBy ? children : undefined)}
+          title={
+            title ??
+            (!ariaDescribedBy ? stringifyChildren(children) : undefined)
+          }
           background={
             weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
           }

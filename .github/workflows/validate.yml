@@ -44,14 +44,14 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Build
-        run: pnpm build
-
       - name: Lint
         run: pnpm lint
 
-      - name: Test
-        run: pnpm test
+      - name: Build & Test
+        run: |
+          pnpm test
+          pnpm build
+          pnpm postbuild
 
       - name: Chromatic
         run: pnpm storybook:chromatic

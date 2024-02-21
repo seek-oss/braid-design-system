@@ -2,18 +2,19 @@ const path = require('path');
 const SkuWebpackPlugin = require('sku/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const browserslist = require('../browserslist');
+const { DefinePlugin } = require('webpack');
 
 const braidSrc = path.join(__dirname, '../packages/braid-design-system/src');
 const resolveFromBraid = (p) => require.resolve(path.join(braidSrc, p));
 
 module.exports = {
   outputPath: './dist/playroom',
-  components: resolveFromBraid('lib/playroom/components.ts'),
-  snippets: resolveFromBraid('lib/playroom/snippets.ts'),
+  components: require.resolve('./src/playroom.components.ts'),
+  snippets: resolveFromBraid('entries/playroom/snippets.ts'),
   themes: resolveFromBraid('lib/themes/index.ts'),
-  frameComponent: resolveFromBraid('lib/playroom/FrameComponent.tsx'),
-  scope: resolveFromBraid('lib/playroom/useScope.ts'),
-  typeScriptFiles: [resolveFromBraid('lib/playroom/components.ts')],
+  frameComponent: require.resolve('./src/playroom.frame.ts'),
+  scope: require.resolve('./src/playroom.scope.ts'),
+  typeScriptFiles: [resolveFromBraid('entries/playroom/components.ts')],
   widths: [320, 768, 1024, 1400],
   openBrowser: false,
   port: 8082,
@@ -24,6 +25,11 @@ module.exports = {
         // We want to override Playroom's loaders and only use sku's ones.
         { test: /\.css$/, use: [] },
       ],
+    },
+    resolve: {
+      alias: {
+        'braid-src': braidSrc,
+      },
     },
     plugins: [
       new MiniCssExtractPlugin({
@@ -37,6 +43,9 @@ module.exports = {
         displayNamesProd: true,
         removeAssertionsInProduction: false,
         MiniCssExtractPlugin,
+      }),
+      new DefinePlugin({
+        'globalThis.__IS_PLAYROOM_ENVIRONMENT__': JSON.stringify('clearly'),
       }),
     ],
   }),

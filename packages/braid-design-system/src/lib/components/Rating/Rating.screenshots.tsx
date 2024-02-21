@@ -19,16 +19,28 @@ export const screenshots: ComponentScreenshot = {
       Example: () => <Rating rating={3.7} variant="minimal" />,
     },
     {
-      label: 'large',
+      label: 'Size: large',
       Example: () => <Rating rating={3} size="large" />,
     },
     {
-      label: 'small',
+      label: 'Size: small',
       Example: () => <Rating rating={2} size="small" />,
     },
     {
-      label: 'xsmall',
+      label: 'Size: xsmall',
       Example: () => <Rating rating={1.5} size="xsmall" />,
+    },
+    {
+      label: 'Weight: regular',
+      Example: () => <Rating rating={3} weight="regular" />,
+    },
+    {
+      label: 'Weight: medium',
+      Example: () => <Rating rating={2} weight="medium" />,
+    },
+    {
+      label: 'Weight: strong',
+      Example: () => <Rating rating={1.5} weight="strong" />,
     },
     {
       label: 'Fill test',

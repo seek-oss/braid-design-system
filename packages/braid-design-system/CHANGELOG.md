@@ -1,5 +1,144 @@
 # braid-design-system
 
+## 32.16.2
+
+### Patch Changes
+
+- **Text, Heading:** Fix `maxLines` cropping of decending characters ([#1451](https://github.com/seek-oss/braid-design-system/pull/1451))
+
+  Fixes a bug when using -webkit-box, where the descender on the last line of text could be cropped based on the combination of line height and font size.
+
+## 32.16.1
+
+### Patch Changes
+
+- **Tab:** Remove cropping of the icon slot ([#1447](https://github.com/seek-oss/braid-design-system/pull/1447))
+
+  Previously the `icon` slot on a `Tab` was cropped on the left to improve alignment with the active tab indicator.
+  For most icons in a `Tab`, this was subtle polish, but for others it had the undesirable side effect of clipping the side of the icon.
+
+  Removing the cropping until we have a better solution for trimming whitespace around icons.
+
+- **Badge**: Allow `Badge` to take arrays of values ([#1443](https://github.com/seek-oss/braid-design-system/pull/1443))
+
+  Previously, `Badge` only accepted a `string` as children, to prevent the use of other components inside a `Badge`.
+
+  However, when a variable is included with text inside the `Badge`, the children property is interpreted as an array. This prevents a very reasonable use case from being allowed:
+
+  ```tsx
+  <Badge>{jobs.length} Jobs</Badge>
+  // Error: Type '{ children: string[]; }' is not assignable to type 'BadgeProps'.
+  ```
+
+  This change allows `Badge` to accept a string, number, or array thereof.
+
+- Fix circular dependencies ([#1444](https://github.com/seek-oss/braid-design-system/pull/1444))
+
+## 32.16.0
+
+### Minor Changes
+
+- **IconSocialX:** Add new icon ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
+  Add the new `IconSocialX` component to the suite of social icons, enabling teams to migrate across from `IconSocialTwitter` which has now been marked as deprecated.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconSocialX />
+  ```
+
+  **MIGRATION GUIDE:**
+  Teams should migrate from `IconSocialTwitter` to `IconSocialX` at their earliest convenience. The `IconSocialTwitter` component will be removed in a future release.
+
+  ```diff
+  -<IconSocialTwitter />
+  +<IconSocialX />
+  ```
+
+- **IconSort:** Add new icon ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconSort />
+  ```
+
+### Patch Changes
+
+- **Icons:** Update social icons ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
+  Update the suite of social icons to be more uniformly sized alongside each other as well as updating the Medium icon to reflect the latest branding.
+
+- **IconMoney:** Update artwork to be currency agnostic ([#1438](https://github.com/seek-oss/braid-design-system/pull/1438))
+
+## 32.15.1
+
+### Patch Changes
+
+- Update `react-focus-lock` to avoid build warnings in Rollup and Vite ([#1433](https://github.com/seek-oss/braid-design-system/pull/1433))
+
+## 32.15.0
+
+### Minor Changes
+
+- **Rating:** Add `weight` support ([#1430](https://github.com/seek-oss/braid-design-system/pull/1430))
+
+  Provide a `weight` prop to customise the weight of the text rating alongside the stars.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Rating rating={3} weight="strong" />
+  ```
+
+## 32.14.4
+
+### Patch Changes
+
+- Inline Vanilla Extract styles imported from Capsize ([#1423](https://github.com/seek-oss/braid-design-system/pull/1423))
+
+## 32.14.3
+
+### Patch Changes
+
+- **Autosuggest:** Fix aria-label and aria-labelledby features ([#1420](https://github.com/seek-oss/braid-design-system/pull/1420))
+
+  Fixes an issue where the `aria-label` and `aria-labelledby` props provided by a consumer were being overidden internally by the `Autosuggest` component.
+
+## 32.14.2
+
+### Patch Changes
+
+- Provide correct types according to https://arethetypeswrong.github.io ([#1413](https://github.com/seek-oss/braid-design-system/pull/1413))
+
+## 32.14.1
+
+### Patch Changes
+
+- **TooltipRenderer:** Fix `useLayoutEffect` warnings during SSR ([#1407](https://github.com/seek-oss/braid-design-system/pull/1407))
+
+- **Tabs:** Improve positioning of the active underline ([#1407](https://github.com/seek-oss/braid-design-system/pull/1407))
+
+- Fixes a bug where the reset module mistakenly included all the tokens for all the themes. ([#1405](https://github.com/seek-oss/braid-design-system/pull/1405))
+
+  Additionally, this includes significant compilation improvements to ensure that only styles for the components being used are included — speeding up build times and reducing the overall CSS bundle size.
+
+## 32.14.0
+
+### Minor Changes
+
+- Add optional `tooltipPlacement` prop to `ButtonIcon` ([#1390](https://github.com/seek-oss/braid-design-system/pull/1390))
+
+  The `tooltipPlacement` prop allows you to specify the placement of the tooltip to either `top` or `bottom`.
+  The default value is `top`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon tooltipPlacement="bottom" />
+  ```
+
 ## 32.13.0
 
 ### Minor Changes

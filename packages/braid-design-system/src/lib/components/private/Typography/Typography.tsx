@@ -7,6 +7,7 @@ import { MaxLines } from '../MaxLines/MaxLines';
 import type { UseIconProps } from '../../../hooks/useIcon';
 import { alignToFlexAlign } from '../../../utils/align';
 import dedent from 'dedent';
+import { descenderCropFixForWebkitBox } from '../MaxLines/MaxLines.css';
 
 export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   children?: ReactNode;
@@ -34,12 +35,12 @@ export const Typography = ({
   ...restProps
 }: PrivateTypographyProps) => {
   const lines = truncate ? 1 : maxLines;
-  const contents =
-    typeof lines === 'number' ? (
-      <MaxLines lines={lines}>{children}</MaxLines>
-    ) : (
-      children
-    );
+  const isTruncated = typeof lines === 'number';
+  const contents = isTruncated ? (
+    <MaxLines lines={lines}>{children}</MaxLines>
+  ) : (
+    children
+  );
 
   if (process.env.NODE_ENV !== 'production') {
     if (truncate) {
@@ -65,7 +66,10 @@ export const Typography = ({
       display="block"
       component={component}
       textAlign={align}
-      className={className}
+      className={[
+        className,
+        isTruncated ? descenderCropFixForWebkitBox : undefined,
+      ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {icon ? (

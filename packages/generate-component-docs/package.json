@@ -1,26 +1,43 @@
 {
   "name": "@braid-design-system/generate-component-docs",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "description": "",
-  "scripts": {
-    "lint:eslint": "eslint --cache .",
-    "lint:prettier": "prettier --cache --list-different .",
-    "lint:tsc": "tsc",
-    "format:eslint": "eslint --cache --fix .",
-    "format:prettier": "prettier --cache --write ."
+  "license": "MIT",
+  "author": "SEEK",
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.mts",
+        "require": "./dist/index.d.ts"
+      },
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "bin": {
     "generate-component-docs": "./bin.js"
   },
-  "author": "SEEK",
-  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write .",
+    "lint:eslint": "eslint --cache .",
+    "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc"
+  },
   "dependencies": {
     "esbuild": "^0.19.2",
     "esbuild-register": "^3.4.2",
     "fs-extra": "^10.1.0",
     "lodash": "^4.17.21",
-    "typescript": "~5.1.6"
+    "typescript": "~5.2.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

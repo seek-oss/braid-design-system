@@ -3616,5 +3616,134 @@
         "summary": "**seekJobs:** Update `formAccent` colour\n\nThe `formAccent` tone, used through our form fields and buttons, is being updated to a derivative of the SEEK brand blue.\n\nAs this update only relates to the `seekJobs` theme, consumers of other themes will not be affected."
       }
     ]
+  },
+  {
+    "version": "32.14.0",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "Add optional `tooltipPlacement` prop to `ButtonIcon`\n\nThe `tooltipPlacement` prop allows you to specify the placement of the tooltip to either `top` or `bottom`.\nThe default value is `top`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<ButtonIcon\n  tooltipPlacement=\"bottom\"\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "32.14.1",
+    "updates": [
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Fix `useLayoutEffect` warnings during SSR"
+      },
+      {
+        "updated": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Improve positioning of the active underline"
+      }
+    ]
+  },
+  {
+    "version": "32.14.2",
+    "updates": []
+  },
+  {
+    "version": "32.14.2",
+    "updates": []
+  },
+  {
+    "version": "32.14.3",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Fix aria-label and aria-labelledby features\n\nFixes an issue where the `aria-label` and `aria-labelledby` props provided by a consumer were being overidden internally by the `Autosuggest` component."
+      }
+    ]
+  },
+  {
+    "version": "32.14.4",
+    "updates": []
+  },
+  {
+    "version": "32.15.0",
+    "updates": [
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Add `weight` support\n\nProvide a `weight` prop to customise the weight of the text rating alongside the stars.\n\n**EXAMPLE USAGE:**\n```jsx\n<Rating rating={3} weight=\"strong\" />\n```"
+      }
+    ]
+  },
+  {
+    "version": "32.15.1",
+    "updates": []
+  },
+  {
+    "version": "32.16.0",
+    "updates": [
+      {
+        "new": [
+          "IconSocialX"
+        ],
+        "summary": "**IconSocialX:** Add new icon\n\nAdd the new `IconSocialX` component to the suite of social icons, enabling teams to migrate across from `IconSocialTwitter` which has now been marked as deprecated.\n\n**EXAMPLE USAGE:**\n```jsx\n<IconSocialX />\n```\n\n**MIGRATION GUIDE:**\nTeams should migrate from `IconSocialTwitter` to `IconSocialX` at their earliest convenience. The `IconSocialTwitter` component will be removed in a future release.\n\n```diff\n-<IconSocialTwitter />\n+<IconSocialX />\n```"
+      },
+      {
+        "updated": [
+          "IconSocialFacebook",
+          "IconSocialGitHub",
+          "IconSocialInstagram",
+          "IconSocialLinkedIn",
+          "IconSocialMedium",
+          "IconSocialYouTube"
+        ],
+        "summary": "**Icons:** Update social icons\n\nUpdate the suite of social icons to be more uniformly sized alongside each other as well as updating the Medium icon to reflect the latest branding."
+      },
+      {
+        "updated": [
+          "IconMoney"
+        ],
+        "summary": "**IconMoney:** Update artwork to be currency agnostic"
+      },
+      {
+        "new": [
+          "IconSort"
+        ],
+        "summary": "**IconSort:** Add new icon\n\n**EXAMPLE USAGE:**\n```jsx\n<IconSort />\n```"
+      }
+    ]
+  },
+  {
+    "version": "32.16.1",
+    "updates": [
+      {
+        "updated": [
+          "Tab"
+        ],
+        "summary": "**Tab:** Remove cropping of the icon slot\n\nPreviously the `icon` slot on a `Tab` was cropped on the left to improve alignment with the active tab indicator.\nFor most icons in a `Tab`, this was subtle polish, but for others it had the undesirable side effect of clipping the side of the icon.\n\nRemoving the cropping until we have a better solution for trimming whitespace around icons."
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge**: Allow `Badge` to take arrays of values\n\nPreviously, `Badge` only accepted a `string` as children, to prevent the use of other components inside a `Badge`.\n\nHowever, when a variable is included with text inside the `Badge`, the children property is interpreted as an array. This prevents a very reasonable use case from being allowed:\n\n```tsx\n<Badge>{jobs.length} Jobs</Badge>\n// Error: Type '{ children: string[]; }' is not assignable to type 'BadgeProps'.\n```\n\nThis change allows `Badge` to accept a string, number, or array thereof."
+      }
+    ]
+  },
+  {
+    "version": "32.16.2",
+    "updates": [
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Fix `maxLines` cropping of decending characters\n\nFixes a bug when using -webkit-box, where the descender on the last line of text could be cropped based on the combination of line height and font size."
+      }
+    ]
   }
 ]

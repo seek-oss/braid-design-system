@@ -17,6 +17,7 @@ import type { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
 import * as styles from './tones.css';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 const tones = [
   'critical',
@@ -143,7 +144,7 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
 
   return (
     <Stack space="small">
-      <Columns space="medium">
+      <Columns space="medium" alignY="center">
         <Column width="content">
           <ThemedExample>
             <Box background={swatch} className={styles.square} />
@@ -151,7 +152,7 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
         </Column>
         <Column>
           <Box height="touchable" display="flex" alignItems="center">
-            <Heading level="4">{tone}</Heading>
+            <LinkableHeading level="3">{tone}</LinkableHeading>
           </Box>
         </Column>
       </Columns>

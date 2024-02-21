@@ -49,6 +49,7 @@ export interface ButtonIconProps {
   tabIndex?: number;
   data?: DataAttributeMap;
   bleed?: boolean;
+  tooltipPlacement?: 'bottom' | 'top';
 }
 
 const padding = 'xsmall';
@@ -67,6 +68,7 @@ const PrivateButtonIcon = forwardRef<
       variant = 'soft',
       type = 'button',
       bleed,
+      tooltipPlacement,
       onClick,
       onMouseDown,
       onKeyUp,
@@ -147,7 +149,7 @@ const PrivateButtonIcon = forwardRef<
 );
 
 export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
-  ({ id, label, ...restProps }, forwardedRef) => {
+  ({ id, label, tooltipPlacement, ...restProps }, forwardedRef) => {
     if (!id) {
       // Remove when we have enough React 18 adoption, in favour of tooltip with `useId()`
       return (
@@ -156,7 +158,11 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
     }
 
     return (
-      <TooltipRenderer id={`${id}-tooltip`} tooltip={<Text>{label}</Text>}>
+      <TooltipRenderer
+        id={`${id}-tooltip`}
+        tooltip={<Text>{label}</Text>}
+        placement={tooltipPlacement}
+      >
         {({ triggerProps: { ref: triggerRef, ...triggerProps } }) => (
           <PrivateButtonIcon
             id={id}

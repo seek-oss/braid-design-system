@@ -1,18 +1,9 @@
-import React from 'react';
-import { useMatch } from 'react-router';
+import React, { useMemo } from 'react';
 import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
-import {
-  Text,
-  ButtonLink,
-  Box,
-  Stack,
-  Inline,
-  Badge,
-  Bleed,
-} from 'braid-src/lib/components';
+import { Stack } from 'braid-src/lib/components';
 import {
   categorisedComponents,
   documentedComponents,
@@ -20,99 +11,20 @@ import {
 } from '../navigationHelpers';
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';
-import * as styles from './SubNavigation.css';
+import { SideNavigationSection } from '@braid-design-system/docs-ui';
+import { matchPath, useLocation } from 'react-router';
 
 type BadgeLabel = 'New' | 'Deprecated';
-
-const toneForBadge = (badgeLabel: BadgeLabel) => {
-  const toneMap = {
-    Deprecated: 'caution',
-    New: 'positive',
-  } as const;
-
-  return toneMap[badgeLabel];
-};
 
 const componentsList = documentedComponents.filter(
   ({ category }) => category !== 'Logic',
 );
 
-interface SubNavigationItem {
-  badge?: BadgeLabel;
-  name: string;
-  path: string;
-  onClick?: () => void;
-  target?: string;
-}
-
-const SubNavItem = ({
-  name,
-  badge,
-  path,
-  onClick,
-  target,
-}: SubNavigationItem) => {
-  const active = useMatch({ path, end: true });
-
-  return (
-    <Inline space="medium" alignY="center">
-      <Bleed horizontal="small">
-        <ButtonLink
-          variant={active ? 'soft' : 'transparent'}
-          tone="formAccent"
-          size="small"
-          href={path}
-          onClick={onClick}
-          target={target}
-        >
-          {name}
-        </ButtonLink>
-      </Bleed>
-      {badge ? (
-        <Badge bleedY tone={toneForBadge(badge)}>
-          {badge}
-        </Badge>
-      ) : null}
-    </Inline>
-  );
-};
-
-interface SubNavigationGroup {
-  title?: string;
-  items: SubNavigationItem[];
-}
-
-const SubNavigationGroup = ({ title, items }: SubNavigationGroup) => (
-  <Box component="nav">
-    <Stack space="small">
-      {title ? (
-        <Box className={styles.uppercase}>
-          <Text size="xsmall" weight="medium" component="h2">
-            {title}
-          </Text>
-        </Box>
-      ) : null}
-
-      <Stack component="ul" space="none">
-        {items.map(({ name, badge, path, onClick, target }) => (
-          <SubNavItem
-            name={name}
-            badge={badge}
-            path={path}
-            onClick={onClick}
-            target={target}
-            key={name}
-          />
-        ))}
-      </Stack>
-    </Stack>
-  </Box>
-);
-
-interface SubNavigationProps {
+interface SideNavigationProps {
   onSelect?: () => void;
 }
-export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
+
+export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   const { playroomUrl } = useConfig();
 
   const getBadge = (docs: any): BadgeLabel | undefined => {
@@ -125,13 +37,23 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
     }
   };
 
+  const { pathname: currentPath } = useLocation();
+  const isActive = useMemo(
+    () => (path: string) =>
+      Boolean(matchPath({ path, end: true }, currentPath)),
+    [currentPath],
+  );
+
   return (
     <Stack space="large">
-      <SubNavigationGroup
+      <SideNavigationSection
+        title="Resources"
+        hideTitle={true}
         items={[
           {
             name: 'Releases',
             path: '/releases',
+            active: isActive('/releases'),
             onClick: onSelect,
           },
           {
@@ -149,62 +71,68 @@ export const SubNavigation = ({ onSelect }: SubNavigationProps) => {
         ]}
       />
 
-      <SubNavigationGroup
+      <SideNavigationSection
         title="Guides"
         items={map(guides, (guide, path) => ({
           name: guide.title,
           badge: guide.badge,
           path,
+          active: isActive(path),
           onClick: onSelect,
         }))}
       />
 
-      <SubNavigationGroup
+      <SideNavigationSection
         title="Foundations"
         items={map(foundations, (foundation, path) => ({
           name: foundation.title,
           badge: foundation.badge,
           path,
+          active: isActive(path),
           onClick: onSelect,
         }))}
       />
 
-      <SubNavigationGroup
+      <SideNavigationSection
         title="Examples"
         items={map(examples, (example, path) => ({
           name: example.title,
           badge: example.badge,
           path,
+          active: isActive(path),
           onClick: onSelect,
         }))}
       />
 
-      <SubNavigationGroup
+      <SideNavigationSection
         title="Components"
         items={componentsList.map((docs) => ({
           name: docs.name,
           badge: getBadge(docs),
           path: `/components/${docs.name}`,
+          active: isActive(`/components/${docs.name}`),
           onClick: onSelect,
         }))}
       />
 
-      <SubNavigationGroup
+      <SideNavigationSection
         title="CSS"
         items={documentedCss.map((doc) => ({
           name: doc.name,
           badge: getBadge(doc),
           path: `/css/${doc.name}`,
+          active: isActive(`/css/${doc.name}`),
           onClick: onSelect,
         }))}
       />
 
-      <SubNavigationGroup
+      <SideNavigationSection
         title="Logic"
         items={categorisedComponents.Logic.map((docs) => ({
           name: docs.name,
           badge: getBadge(docs),
           path: `/components/${docs.name}`,
+          active: isActive(`/components/${docs.name}`),
           onClick: onSelect,
         }))}
       />

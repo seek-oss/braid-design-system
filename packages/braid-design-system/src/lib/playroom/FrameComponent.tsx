@@ -1,4 +1,3 @@
-import '../css/reset';
 import React, { type ReactNode, useEffect, Fragment } from 'react';
 import {
   BraidProvider,

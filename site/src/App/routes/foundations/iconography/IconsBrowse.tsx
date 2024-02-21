@@ -34,7 +34,7 @@ const IconTile = ({
     <Link href={`/components/${icon.name}`}>
       <Box
         position="relative"
-        display={'flex'}
+        display="flex"
         flexDirection="column"
         alignItems="center"
         paddingY="medium"

@@ -50,19 +50,29 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
 };
 
 const ratingArr = [...Array(5)];
-export interface RatingProps {
+interface RatingBaseProps {
   rating: number;
   size?: TextProps['size'];
   /** @deprecated Use `variant="starsOnly"` instead */
   showTextRating?: boolean;
-  variant?: 'full' | 'starsOnly' | 'minimal';
   'aria-label'?: string;
   data?: TextProps['data'];
 }
+type RatingVariants = 'full' | 'starsOnly' | 'minimal';
+
+export type RatingProps = RatingBaseProps &
+  (
+    | { weight?: never; variant?: RatingVariants }
+    | {
+        weight: TextProps['weight'];
+        variant?: Exclude<RatingVariants, 'starsOnly'>;
+      }
+  );
 
 export const Rating = ({
   rating,
   size = 'standard',
+  weight,
   showTextRating,
   variant: variantProp,
   'aria-label': ariaLabel,
@@ -72,6 +82,10 @@ export const Rating = ({
     !rating || (rating >= 0 && rating <= 5),
     'Rating must be between 0 and 5',
   );
+
+  const variant = variantProp || 'full';
+  const resolvedVariant =
+    showTextRating === false && !variantProp ? 'starsOnly' : variant;
 
   if (process.env.NODE_ENV !== 'production') {
     if (typeof showTextRating !== 'undefined') {
@@ -89,14 +103,25 @@ export const Rating = ({
         'color: inherit',
       );
     }
+
+    if (typeof weight !== 'undefined' && resolvedVariant === 'starsOnly') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The "weight" prop is not valid with the "starsOnly" variant as there is no visible text. Either remove the \`weight\` prop or choose an alternative \`variant\`.
+             <Rating
+            %c-  weight="strong"
+            %c   variant="starsOnly"
+             />
+        `,
+        'color: red',
+        'color: inherit',
+      );
+    }
   }
 
-  const variant = variantProp || 'full';
-  const resolvedVariant =
-    showTextRating === false && !variantProp ? 'starsOnly' : variant;
-
   return (
-    <Text size={size} data={data}>
+    <Text size={size} data={data} weight={weight}>
       <Box
         display="inlineBlock"
         aria-label={

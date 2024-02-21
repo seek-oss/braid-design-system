@@ -4,17 +4,18 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
+    "module": "ES2022",
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "strict": true,
     "jsx": "preserve",
-    "lib": ["dom", "es2019"],
+    "lib": ["dom", "ES2022"],
     "target": "es5",
     "paths": {
       "site/*": ["./site/src/*"],
       "braid-src/*": ["./packages/braid-design-system/src/*"]
     }
   },
-  "include": ["./fixtures", "./scripts"]
+  "include": ["./integration", "./scripts"]
 }

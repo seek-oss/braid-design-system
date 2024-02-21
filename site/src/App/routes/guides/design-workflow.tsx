@@ -10,7 +10,7 @@ import { TextStack } from '../../TextStack/TextStack';
 import { useConfig } from '../../ConfigContext';
 import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
-import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 const braidDesignSupportLink = (
   <TextLink href="https://seekchat.slack.com/channels/braid-design-support">

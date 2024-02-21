@@ -158,7 +158,10 @@ exports[`Badge 1`] = `
   props: {
     aria-describedby?: string
     bleedY?: boolean
-    children: string
+    children: 
+        | (string | number)[]
+        | number
+        | string
     data?: DataAttributeMap
     id?: string
     ref?: 
@@ -2117,6 +2120,9 @@ exports[`ButtonIcon 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    tooltipPlacement?: 
+        | "bottom"
+        | "top"
     type?: 
         | "button"
         | "reset"
@@ -5579,7 +5585,69 @@ exports[`IconSocialTwitter 1`] = `
 }
 `;
 
+exports[`IconSocialX 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconSocialYouTube 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconSort 1`] = `
 {
   exportType: component,
   props: {
@@ -7028,6 +7096,10 @@ exports[`Rating 1`] = `
         | "full"
         | "minimal"
         | "starsOnly"
+    weight?: 
+        | "medium"
+        | "regular"
+        | "strong"
 },
 }
 `;
@@ -8212,7 +8284,7 @@ exports[`filterSuggestions 1`] = `
   props: {
     at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
-    copyWithin: (target: number, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<Value>
+    copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
     entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
     every: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): this is S[]; (predicate: (value: ...
     fill: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>

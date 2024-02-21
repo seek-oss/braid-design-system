@@ -1,0 +1,17 @@
+{
+  "name": "@braid-design-system/integration-tests",
+  "version": "0.0.0",
+  "private": true,
+  "description": "deps needed for integration tests",
+  "license": "MIT",
+  "author": "SEEK",
+  "dependencies": {
+    "braid-design-system": "*"
+  },
+  "devDependencies": {
+    "@vanilla-extract/integration": "^6.1.2",
+    "@vscode/ripgrep": "^1.15.9",
+    "fast-glob": "^3.2.12",
+    "webpack": "^5.76.0"
+  }
+}

@@ -243,7 +243,6 @@ export const Tab = ({
         aria-hidden
         transition="fast"
         opacity={isSelected ? 0 : undefined}
-        className={icon ? styles.cropToIconX : undefined}
       >
         <Text tone="secondary" icon={icon}>
           {children}
@@ -258,10 +257,7 @@ export const Tab = ({
         aria-hidden
         transition="fast"
         opacity={0}
-        className={[
-          !isSelected ? styles.hoveredTab : undefined,
-          icon ? styles.cropToIconX : undefined,
-        ]}
+        className={!isSelected ? styles.hoveredTab : undefined}
       >
         <Text icon={icon}>{children}</Text>
       </Box>
@@ -272,7 +268,6 @@ export const Tab = ({
         display="block"
         transition="fast"
         opacity={!isSelected ? 0 : undefined}
-        className={icon ? styles.cropToIconX : undefined}
       >
         <Text
           {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}

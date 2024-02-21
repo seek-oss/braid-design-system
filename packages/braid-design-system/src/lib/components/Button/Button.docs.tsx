@@ -304,6 +304,24 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Disabled actions',
+      description: (
+        <>
+          <Text>
+            A <Strong>Button</Strong> cannot be disabled. This is a deliberate
+            design decision to encourage more accessible patterns that inform
+            the user about what is required to progress.
+          </Text>
+          <Text>
+            For example, when designing a form, instead of disabling the submit
+            button when a required field is missing, allow the user to attempt
+            to submit and fail. Validation feedback can then be provided
+            informing the user of what they must do to progress.
+          </Text>
+        </>
+      ),
+    },
+    {
       label: 'Sizes',
       background: 'surface',
       description: (

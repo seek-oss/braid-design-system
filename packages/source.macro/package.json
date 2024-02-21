@@ -1,6 +1,9 @@
 {
   "name": "@braid-design-system/source.macro",
   "version": "0.1.1",
+  "exports": {
+    "./package.json": "./package.json"
+  },
   "main": "source.macro.cjs",
   "types": "source.macro.d.ts",
   "files": [
@@ -8,11 +11,11 @@
     "source.macro.d.ts"
   ],
   "scripts": {
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write .",
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
-    "lint:tsc": "tsc",
-    "format:eslint": "eslint --cache --fix .",
-    "format:prettier": "prettier --cache --write ."
+    "lint:tsc": "tsc"
   },
   "dependencies": {
     "@babel/generator": "^7.22.15",

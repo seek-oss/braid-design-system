@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Snippets } from '../private/Snippets';
-import { FieldLabel, TextLink } from '../../playroom/components';
+import { FieldLabel, TextLink, IconHelp } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
 
 export const snippets: Snippets = [
@@ -18,7 +18,11 @@ export const snippets: Snippets = [
       <FieldLabel
         label="Label"
         secondaryLabel="Optional"
-        tertiaryLabel={<TextLink href="#">Help?</TextLink>}
+        tertiaryLabel={
+          <TextLink href="#" icon={<IconHelp />}>
+            Help
+          </TextLink>
+        }
       />,
     ),
   },

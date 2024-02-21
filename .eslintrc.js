@@ -9,6 +9,7 @@ module.exports = {
       files: ['*.{js,ts,tsx}'],
       excludedFiles: [
         '*.{docs,gallery,screenshots,stories}.tsx',
+        'packages/docs-ui/**/*.{ts,tsx}',
         'site/**/*.{ts,tsx}',
       ],
       rules: {
@@ -21,6 +22,17 @@ module.exports = {
               'site/**',
               '**/site/**',
             ],
+          },
+        ],
+      },
+    },
+    {
+      files: ['packages/docs-ui/**/*.{js,ts,tsx}'],
+      rules: {
+        'no-restricted-imports': [
+          'error',
+          {
+            patterns: ['braid-src/**', 'site/**', '**/site/**'],
           },
         ],
       },

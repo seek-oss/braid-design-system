@@ -15,7 +15,7 @@ type ValidDropdownChildren = AllHTMLAttributes<
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
 export type DropdownBaseProps = Omit<
   FieldBaseProps,
-  'value' | 'labelId' | 'secondaryMessage' | 'prefix'
+  'value' | 'secondaryMessage' | 'prefix'
 > & {
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
@@ -44,7 +44,6 @@ export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
       <Field
         {...restProps}
         disabled={disabled}
-        labelId={undefined}
         prefix={undefined}
         secondaryMessage={null}
         value={value}

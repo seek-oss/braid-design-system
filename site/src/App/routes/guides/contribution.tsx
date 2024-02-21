@@ -9,7 +9,7 @@ import {
 import { TextStack } from '../../TextStack/TextStack';
 import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
-import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 const Contribution = () => (
   <TextStack>

@@ -27,8 +27,8 @@ export const galleryItems: ComponentExample[] = [
           value={getState('monthpicker')}
           secondaryLabel="optional"
           tertiaryLabel={
-            <TextLink href="#">
-              <IconHelp /> Help
+            <TextLink href="#" icon={<IconHelp />}>
+              Help
             </TextLink>
           }
         />,

@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useContext,
   useRef,
-  useLayoutEffect,
 } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import isMobile from 'is-mobile';
@@ -18,6 +17,7 @@ import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 import { Box } from '../Box/Box';
 import * as styles from './TooltipRenderer.css';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({
@@ -206,7 +206,7 @@ export const TooltipRenderer = ({
     },
   );
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // If the tooltip is visible and the size or position of either the trigger
     // or the tooltip has changed, then update the tooltip size and position.
     if (

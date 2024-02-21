@@ -19,7 +19,7 @@ import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import source from '@braid-design-system/source.macro';
 import { InlineCode } from '../../InlineCode/InlineCode';
-import { LinkableHeading } from '../../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 const DevelopmentWorkflow = () => (
   <TextStack>

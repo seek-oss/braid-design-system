@@ -19,7 +19,7 @@ import type {
 import { DocsContext } from '../DocNavigation/DocNavigation';
 import { PageTitle } from '../Seo/PageTitle';
 import { useConfig } from '../ConfigContext';
-import { LinkableHeading } from '../LinkableHeading/LinkableHeading';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 type ComponentName = keyof typeof componentDocs;
 

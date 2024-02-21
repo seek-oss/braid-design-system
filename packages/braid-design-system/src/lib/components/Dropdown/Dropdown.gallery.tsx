@@ -56,8 +56,8 @@ export const galleryItems: ComponentExample[] = [
           placeholder="Please select"
           secondaryLabel="optional"
           tertiaryLabel={
-            <TextLink href="#">
-              <IconHelp /> Help
+            <TextLink href="#" icon={<IconHelp />}>
+              Help
             </TextLink>
           }
         >

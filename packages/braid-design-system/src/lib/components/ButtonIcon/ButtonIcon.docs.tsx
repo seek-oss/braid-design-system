@@ -20,6 +20,7 @@ import {
   IconOverflow,
   IconAdd,
   Card,
+  IconArrow,
 } from '..';
 
 const docs: ComponentDocs = {
@@ -182,6 +183,53 @@ const docs: ComponentDocs = {
               />
               <Text tone="secondary" size="xsmall">
                 SECONDARY
+              </Text>
+            </Inline>
+          </Stack>,
+        ),
+    },
+    {
+      label: 'Tooltip Placement',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            By default, the <Strong>label</Strong> is presented as a tooltip on
+            top of the button. However, this can be configured via the{' '}
+            <Strong>tooltipPlacement</Strong> prop, which accepts either{' '}
+            <Strong>top</Strong> or <Strong>bottom</Strong>. See{' '}
+            <TextLink href="/components/TooltipRenderer">
+              TooltipRenderer
+            </TextLink>{' '}
+            for more information.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="gutter">
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
+                size="standard"
+                icon={<IconArrow direction="up" />}
+                label="The tooltipPlacement is “top”"
+                id="tooltip-placement-1"
+                tooltipPlacement="top"
+              />
+              <Text tone="secondary" size="xsmall">
+                TOP
+              </Text>
+            </Inline>
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
+                size="standard"
+                icon={<IconArrow direction="down" />}
+                label="The tooltipPlacement is “bottom”"
+                id="tooltip-placement-2"
+                tooltipPlacement="bottom"
+              />
+              <Text tone="secondary" size="xsmall">
+                BOTTOM
               </Text>
             </Inline>
           </Stack>,

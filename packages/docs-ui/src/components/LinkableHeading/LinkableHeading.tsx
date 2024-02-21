@@ -1,7 +1,8 @@
-import React, { type ReactNode } from 'react';
-import { Heading, Box, IconLink, Link } from 'braid-src/lib/components';
-import type { HeadingProps } from 'braid-src/lib/components/Heading/Heading';
+import React, { type ReactNode, type ComponentProps } from 'react';
+import { Heading, Box, IconLink, Link } from 'braid-design-system';
 import * as styles from './LinkableHeading.css';
+
+type HeadingProps = ComponentProps<typeof Heading>;
 
 type LinkableHeadingProps = {
   level?: HeadingProps['level'];
@@ -29,11 +30,11 @@ export const LinkableHeading = ({
         <Box id={slug} position="absolute" />
         <Link href={`#${slug}`}>
           <Heading level={level} component={component}>
-            {restProps.children}{' '}
+            {restProps.children}
             <Box
               component="span"
               transition="fast"
-              marginLeft="xxsmall"
+              marginLeft="xsmall"
               opacity={0}
               className={styles.hashLink}
             >

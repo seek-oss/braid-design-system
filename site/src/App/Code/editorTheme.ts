@@ -10,7 +10,7 @@ const other = palette.seekPink['200'];
 const inserted = palette.mint['300'];
 const deleted = palette.red['300'];
 
-export default {
+export const editorTheme = {
   'code[class*="language-"]': {
     whiteSpace: 'pre',
     color: plainText,
@@ -102,4 +102,4 @@ export default {
   'deleted-sign': {
     color: deleted,
   },
-};
+} satisfies Record<string, React.CSSProperties>;
