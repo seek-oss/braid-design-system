@@ -1,34 +1,17 @@
 {
   "name": "@braid-design-system/codemod",
-  "version": "0.0.0",
   "private": true,
-  "license": "MIT",
-  "author": "SEEK",
-  "exports": {
-    ".": {
-      "types": {
-        "import": "./dist/index.d.mts",
-        "require": "./dist/index.d.ts"
-      },
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./package.json": "./package.json"
-  },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "version": "0.0.0",
   "scripts": {
     "build": "node ./scripts/build.js",
-    "format:eslint": "eslint --cache --fix .",
-    "format:prettier": "prettier --cache --write .",
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
-    "lint:tsc": "tsc"
+    "lint:tsc": "tsc",
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write ."
   },
+  "author": "SEEK",
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.18.0",
     "@babel/plugin-syntax-jsx": "^7.17.12",

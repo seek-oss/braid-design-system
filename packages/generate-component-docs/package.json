@@ -1,37 +1,20 @@
 {
   "name": "@braid-design-system/generate-component-docs",
-  "version": "0.0.0",
   "private": true,
+  "version": "0.0.0",
   "description": "",
-  "license": "MIT",
-  "author": "SEEK",
-  "exports": {
-    ".": {
-      "types": {
-        "import": "./dist/index.d.mts",
-        "require": "./dist/index.d.ts"
-      },
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./package.json": "./package.json"
+  "scripts": {
+    "lint:eslint": "eslint --cache .",
+    "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc",
+    "format:eslint": "eslint --cache --fix .",
+    "format:prettier": "prettier --cache --write ."
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "bin": {
     "generate-component-docs": "./bin.js"
   },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "format:eslint": "eslint --cache --fix .",
-    "format:prettier": "prettier --cache --write .",
-    "lint:eslint": "eslint --cache .",
-    "lint:prettier": "prettier --cache --list-different .",
-    "lint:tsc": "tsc"
-  },
+  "author": "SEEK",
+  "license": "MIT",
   "dependencies": {
     "esbuild": "^0.19.2",
     "esbuild-register": "^3.4.2",
