@@ -177,11 +177,14 @@ importers:
   packages/braid-design-system:
     dependencies:
       '@capsizecss/core':
-        specifier: ^3.1.0
-        version: 3.1.1
+        specifier: ^4.0.0
+        version: 4.0.0
       '@capsizecss/metrics':
-        specifier: ^1.1.1
-        version: 1.3.0
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@capsizecss/vanilla-extract':
+        specifier: ^2.0.0
+        version: 2.0.0(@vanilla-extract/css@1.14.0)
       '@types/autosuggest-highlight':
         specifier: ^3.1.1
         version: 3.2.0
@@ -258,9 +261,6 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../source.macro
-      '@capsizecss/vanilla-extract':
-        specifier: ^1.0.1
-        version: 1.0.1(@vanilla-extract/css@1.14.0)
       '@svgr/core':
         specifier: ^5.5.0
         version: 5.5.0
@@ -514,6 +514,9 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../packages/source.macro
+      '@capsizecss/vanilla-extract':
+        specifier: ^2.0.0
+        version: 2.0.0(@vanilla-extract/css@1.14.0)
       '@types/dedent':
         specifier: ^0.7.0
         version: 0.7.0
@@ -557,8 +560,8 @@ importers:
         specifier: ^0.7.0
         version: 0.7.0
       didyoumean2:
-        specifier: ^5.0.0
-        version: 5.0.0
+        specifier: ^6.0.1
+        version: 6.0.1
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -2943,23 +2946,24 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@capsizecss/core@3.1.1:
-    resolution: {integrity: sha512-1YxfErFXdxcyDyc8peDwH2hiJF5U8sBY5i5HX0f/tpvabbu40w9r8VHYMOOw9Fox5O/+kf2gAhyfVe+sLnaaBA==}
+  /@capsizecss/core@4.0.0:
+    resolution: {integrity: sha512-fcQRqAa4aqYqrsa1qNi72JllUkdcEG0vX4ix2YDhYT+O2l/+M7OVTBqqZFM26GytO/Iqsrt7xdzAv9Ca7oagzg==}
     dependencies:
       csstype: 3.1.1
-
-  /@capsizecss/metrics@1.3.0:
-    resolution: {integrity: sha512-dcAXsrrNs2zF3MC4T5iMGsiPm1NqTSdGgYI4YG17tAXL7jxKq0eWRsOWsY/gaYMTLXllgmZ+yaiKEVQ9UmEZrA==}
     dev: false
 
-  /@capsizecss/vanilla-extract@1.0.1(@vanilla-extract/css@1.14.0):
-    resolution: {integrity: sha512-rx0t14CVPHtwplOS075NqvquTaAa7Q6ir6uAH3Za1vm37k2Gn7TmafTE8kaepB+r42K0E6NvTAIv/8PJoRlcoQ==}
+  /@capsizecss/metrics@2.0.0:
+    resolution: {integrity: sha512-tbYOyIXIMqWZJ2mw2JXvpQiecgTpvioBmduzUEJ+55xGbJz4AtlcatiuNI/rVYiOLLLvGuOOxpkuaY8qAxN63g==}
+    dev: false
+
+  /@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.14.0):
+    resolution: {integrity: sha512-6FNLEOcAYo2AklxT7XVEm9Yam2hv76DLEhD6RWK3hJ87Nb9i95Y+rdYHJ3LBlbrzb+ZVJXxzZvg5OAZAqr/K3Q==}
     peerDependencies:
-      '@vanilla-extract/css': ^1.2.1
+      '@vanilla-extract/css': ^1.4.0
     dependencies:
-      '@capsizecss/core': 3.1.1
+      '@capsizecss/core': 4.0.0
       '@vanilla-extract/css': 1.14.0
-    dev: true
+    dev: false
 
   /@changesets/apply-release-plan@6.0.0:
     resolution: {integrity: sha512-gp6nIdVdfYdwKww2+f8whckKmvfE4JEm4jJgBhTmooi0uzHWhnxvk6JIzQi89qEAMINN0SeVNnXiAtbFY0Mj3w==}
@@ -9406,15 +9410,6 @@ packages:
 
   /diacritic@0.0.2:
     resolution: {integrity: sha512-iQCeDkSPwkfwWPr+HZZ49WRrM2FSI9097Q9w7agyRCdLcF9Eh2Ek0sHKcmMWx2oZVBjRBE/sziGFjZu0uf1Jbg==}
-    dev: false
-
-  /didyoumean2@5.0.0:
-    resolution: {integrity: sha512-Plha9WCF08aSGB39IsOhlk0AHecwcXtq/gMbHgylRNEv7JV3lnlt7akfdax7mnUHndEuuh57CmBaKSSXns7+YA==}
-    engines: {node: '>=12.13'}
-    dependencies:
-      '@babel/runtime': 7.22.3
-      fastest-levenshtein: 1.0.12
-      lodash.deburr: 4.1.0
     dev: false
 
   /didyoumean2@6.0.1:

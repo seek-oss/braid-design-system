@@ -5,8 +5,8 @@ import {
   styleVariants,
 } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+import { createTextStyle } from '@capsizecss/vanilla-extract';
 
-import { createTextStyle } from './capsize.css';
 import { vars } from '../themes/vars.css';
 import { breakpointQuery, responsiveStyle } from '../css/responsiveStyle';
 
