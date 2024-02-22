@@ -3745,5 +3745,16 @@
         "summary": "**Text, Heading:** Fix `maxLines` cropping of decending characters\n\nFixes a bug when using -webkit-box, where the descender on the last line of text could be cropped based on the combination of line height and font size."
       }
     ]
+  },
+  {
+    "version": "32.16.3",
+    "updates": [
+      {
+        "updated": [
+          "Checkbox"
+        ],
+        "summary": "**Checkbox:** Improve tri-state handling\n\nFixes a bug in [tri-state] `Checkbox` where transitioning from `mixed` to `checked` could result in the visual presentation being out of sync with the desired state.\n\n[tri-state]: https://seek-oss.github.io/braid-design-system/components/Checkbox#tri-state-support"
+      }
+    ]
   }
 ]

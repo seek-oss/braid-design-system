@@ -133,11 +133,8 @@ export const StyledInput = forwardRef<
     },
     forwardedRef,
   ) => {
-    // We need a ref regardless so we can imperatively
-    // focus the field when clicking the clear button
     const defaultRef = useRef<HTMLInputElement | null>(null);
     const ref = forwardedRef || defaultRef;
-    const indeterminateRef = useRef(false);
 
     if (tones.indexOf(tone) === -1) {
       throw new Error(`Invalid tone: ${tone}`);
@@ -153,13 +150,36 @@ export const StyledInput = forwardRef<
       ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
       : { lightMode: 'surface' };
     const defaultBorder = checked ? 'formAccent' : 'default';
+    const indeterminateRef = useRef(isMixed);
+    const lastChecked = useRef<CheckboxChecked | null>(null);
+    indeterminateRef.current = isMixed;
 
+    // If a checkbox updates and its `checked` state has changed,
+    // update the indeterminate state of the HTML element
+    if (
+      isCheckbox &&
+      checked !== lastChecked.current &&
+      ref &&
+      typeof ref === 'object' &&
+      ref.current
+    ) {
+      ref.current.indeterminate = indeterminateRef.current;
+    }
+
+    // Update the indeterminate state of the HTML element on mount
+    // if it's a checkbox
     useEffect(() => {
-      if (ref && typeof ref === 'object' && ref.current && isCheckbox) {
-        ref.current.indeterminate = isMixed;
-        indeterminateRef.current = isMixed;
+      if (isCheckbox && ref && typeof ref === 'object' && ref.current) {
+        ref.current.indeterminate = indeterminateRef.current;
       }
-    }, [ref, isMixed, isCheckbox]);
+    }, [ref, isCheckbox]);
+
+    // Keep a reference to the last checked state to compare
+    useEffect(() => {
+      if (isCheckbox) {
+        lastChecked.current = checked;
+      }
+    }, [isCheckbox, checked]);
 
     const { lightMode } = useBackgroundLightness();
 
@@ -175,18 +195,18 @@ export const StyledInput = forwardRef<
           id={id}
           name={name}
           value={value}
-          onChange={
-            isMixed
-              ? (e: ChangeEvent<HTMLInputElement>) => {
-                  if (ref && typeof ref === 'object' && ref.current) {
-                    ref.current.indeterminate = indeterminateRef.current;
-                  }
-                  if (typeof onChange === 'function') {
-                    onChange(e);
-                  }
-                }
-              : onChange
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            if (isMixed) {
+              // Browser will automatically toggle `indeterminate`
+              // to true. Resetting to the current value, ensuring it
+              // will update reactively based on the `checked` prop.
+              e.currentTarget.indeterminate = isMixed;
+            }
+
+            if (typeof onChange === 'function') {
+              onChange(e);
+            }
+          }}
           checked={checked === 'mixed' ? false : checked}
           position="absolute"
           zIndex={1}

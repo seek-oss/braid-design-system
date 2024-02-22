@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 32.16.3
+
+### Patch Changes
+
+- Update Capsize dependencies ([#1456](https://github.com/seek-oss/braid-design-system/pull/1456))
+
+- **Checkbox:** Improve tri-state handling ([#1458](https://github.com/seek-oss/braid-design-system/pull/1458))
+
+  Fixes a bug in [tri-state] `Checkbox` where transitioning from `mixed` to `checked` could result in the visual presentation being out of sync with the desired state.
+
+  [tri-state]: https://seek-oss.github.io/braid-design-system/components/Checkbox#tri-state-support
+
 ## 32.16.2
 
 ### Patch Changes
