@@ -197,7 +197,7 @@ export const StyledInput = forwardRef<
           value={value}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             if (isMixed) {
-              // Browser will automatically toggle to `indeterminate`
+              // Browser will automatically toggle `indeterminate`
               // to true. Resetting to the current value, ensuring it
               // will update reactively based on the `checked` prop.
               e.currentTarget.indeterminate = isMixed;
