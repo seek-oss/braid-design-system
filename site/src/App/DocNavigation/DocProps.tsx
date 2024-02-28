@@ -176,15 +176,9 @@ export const DocProps = () => {
   const { docsName = '', docs } = useContext(DocsContext);
   const { sourceUrlPrefix } = useConfig();
 
-  // This is temporary while we find the source of the missing props page issue
-  /* eslint-disable no-console */
-
   if (!docs || !isValidComponentName(docsName)) {
-    console.log('Returning null for props page of', docsName);
     return null;
   }
-
-  /* eslint-enable no-console */
 
   const subfolder = /^Icon/.test(docsName) ? 'icons' : undefined;
   const componentFolder = `packages/braid-design-system/src/lib/components/${
