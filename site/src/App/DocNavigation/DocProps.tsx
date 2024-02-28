@@ -182,7 +182,7 @@ export const DocProps = () => {
 
   // @ts-expect-error docsName hasn't been narrowed
   console.log('Component Docs Entry:', componentDocs[docsName]);
-
+        
   if (!docs || !isValidComponentName(docsName)) {
     console.log('Returning null for props page of', docsName);
     return null;
