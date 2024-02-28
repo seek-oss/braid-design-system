@@ -87,6 +87,7 @@ export { ToastProvider, useToast } from './useToast/ToastContext';
 export { TooltipRenderer } from './TooltipRenderer/TooltipRenderer';
 
 import * as Icons from './icons';
+// eslint-disable-next-line no-console
 console.log('Icons: ', Icons);
 
 export * from './icons';
