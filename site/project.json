@@ -45,12 +45,12 @@
       }
     },
     "generate": {
-      "dependsOn": ["generate:component-docs"],
+      "dependsOn": ["generate:component-docs", "^generate"],
       "executor": "nx:noop"
     },
     "generate:component-docs": {
       "inputs": ["^default"],
-      "dependsOn": ["^generate"],
+      "dependsOn": ["^generate:icons"],
       "outputs": ["{projectRoot}/componentDocs.json"],
       "executor": "nx:run-script",
       "options": {
