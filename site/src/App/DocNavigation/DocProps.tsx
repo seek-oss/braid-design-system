@@ -176,6 +176,10 @@ export const DocProps = () => {
   const { docsName = '', docs } = useContext(DocsContext);
   const { sourceUrlPrefix } = useConfig();
 
+  // This is temporary while we find the source of the missing props page issue
+  // eslint-disable-next-line no-console
+  console.table({ docsName, docs });
+
   if (!docs || !isValidComponentName(docsName)) {
     return null;
   }
