@@ -178,7 +178,6 @@ export const DocProps = () => {
 
   // This is temporary while we find the source of the missing props page issue
   /* eslint-disable no-console */
-  console.table({ docsName, docs });
 
   if (!docs || !isValidComponentName(docsName)) {
     console.log('Returning null for props page of', docsName);

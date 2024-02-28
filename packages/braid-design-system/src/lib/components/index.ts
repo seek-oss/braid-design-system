@@ -86,4 +86,7 @@ export { Toggle } from './Toggle/Toggle';
 export { ToastProvider, useToast } from './useToast/ToastContext';
 export { TooltipRenderer } from './TooltipRenderer/TooltipRenderer';
 
+import * as Icons from './icons';
+console.log('Icons: ', Icons);
+
 export * from './icons';
