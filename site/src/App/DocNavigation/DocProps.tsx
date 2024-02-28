@@ -176,9 +176,19 @@ export const DocProps = () => {
   const { docsName = '', docs } = useContext(DocsContext);
   const { sourceUrlPrefix } = useConfig();
 
+  // This is temporary while we find the source of the missing props page issue
+  /* eslint-disable no-console */
+  console.table({ docsName, docs });
+
+  // @ts-expect-error docsName hasn't been narrowed
+  console.log('Component Docs Entry:', componentDocs[docsName]);
+
   if (!docs || !isValidComponentName(docsName)) {
+    console.log('Returning null for props page of', docsName);
     return null;
   }
+
+  /* eslint-enable no-console */
 
   const subfolder = /^Icon/.test(docsName) ? 'icons' : undefined;
   const componentFolder = `packages/braid-design-system/src/lib/components/${
