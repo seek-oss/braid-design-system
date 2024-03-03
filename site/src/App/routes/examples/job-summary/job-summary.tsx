@@ -79,14 +79,14 @@ const page: Page = {
             </Columns>
 
             <Stack space="small">
-              <Text size="small" tone="secondary">
-                <IconLocation /> Melbourne
+              <Text size="small" tone="secondary" icon={<IconLocation />}>
+                Melbourne
               </Text>
-              <Text size="small" tone="secondary">
-                <IconTag /> Information Technology
+              <Text size="small" tone="secondary" icon={<IconTag />}>
+                Information Technology
               </Text>
-              <Text size="small" tone="secondary">
-                <IconMoney /> 150k+
+              <Text size="small" tone="secondary" icon={<IconMoney />}>
+                150k+
               </Text>
             </Stack>
             <Text>
@@ -273,14 +273,14 @@ const page: Page = {
               </Stack>
 
               <Stack space="xsmall">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
+                <Text tone="secondary" size="small" icon={<IconLocation />}>
+                  Melbourne
                 </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
+                <Text tone="secondary" size="small" icon={<IconTag />}>
+                  Information Technology
                 </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
+                <Text tone="secondary" size="small" icon={<IconMoney />}>
+                  150k+
                 </Text>
               </Stack>
 
@@ -315,14 +315,14 @@ const page: Page = {
               </Stack>
 
               <Stack space="xsmall">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
+                <Text tone="secondary" size="small" icon={<IconLocation />}>
+                  Melbourne
                 </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
+                <Text tone="secondary" size="small" icon={<IconTag />}>
+                  Information Technology
                 </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
+                <Text tone="secondary" size="small" icon={<IconMoney />}>
+                  150k+
                 </Text>
               </Stack>
 
@@ -367,14 +367,14 @@ const page: Page = {
               </Stack>
 
               <Stack space="xsmall">
-                <Text tone="secondary" size="small">
-                  <IconLocation /> Melbourne
+                <Text tone="secondary" size="small" icon={<IconLocation />}>
+                  Melbourne
                 </Text>
-                <Text tone="secondary" size="small">
-                  <IconTag /> Information Technology
+                <Text tone="secondary" size="small" icon={<IconTag />}>
+                  Information Technology
                 </Text>
-                <Text tone="secondary" size="small">
-                  <IconMoney /> 150k+
+                <Text tone="secondary" size="small" icon={<IconMoney />}>
+                  150k+
                 </Text>
               </Stack>
 
@@ -472,14 +472,14 @@ const page: Page = {
                   </Stack>
 
                   <Stack space="xsmall">
-                    <Text tone="secondary" size="small">
-                      <IconLocation /> Melbourne
+                    <Text tone="secondary" size="small" icon={<IconLocation />}>
+                      Melbourne
                     </Text>
-                    <Text tone="secondary" size="small">
-                      <IconTag /> Information Technology
+                    <Text tone="secondary" size="small" icon={<IconTag />}>
+                      Information Technology
                     </Text>
-                    <Text tone="secondary" size="small">
-                      <IconMoney /> 150k+
+                    <Text tone="secondary" size="small" icon={<IconMoney />}>
+                      150k+
                     </Text>
                   </Stack>
 
@@ -546,14 +546,14 @@ const page: Page = {
               </Columns>
 
               <Stack space="small">
-                <Text size="small" tone="secondary">
-                  <IconLocation /> Melbourne
+                <Text size="small" tone="secondary" icon={<IconLocation />}>
+                  Melbourne
                 </Text>
-                <Text size="small" tone="secondary">
-                  <IconTag /> Information Technology
+                <Text size="small" tone="secondary" icon={<IconTag />}>
+                  Information Technology
                 </Text>
-                <Text size="small" tone="secondary">
-                  <IconMoney /> 150k+
+                <Text size="small" tone="secondary" icon={<IconMoney />}>
+                  150k+
                 </Text>
               </Stack>
               <Text>
