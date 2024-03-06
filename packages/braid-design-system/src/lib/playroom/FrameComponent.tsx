@@ -1,4 +1,9 @@
-import React, { type ReactNode, useEffect, Fragment } from 'react';
+import React, {
+  type ReactNode,
+  useEffect,
+  Fragment,
+  type ComponentProps,
+} from 'react';
 import {
   BraidProvider,
   makeLinkComponent,
@@ -12,6 +17,9 @@ import { darkMode } from '../css/atoms/sprinkles.css';
 interface Props {
   theme: BraidTheme;
   children: ReactNode;
+  defaultPlayroomState?: ComponentProps<
+    typeof PlayroomStateProvider
+  >['defaultState'];
 }
 
 const PlayroomLink = makeLinkComponent(
@@ -39,7 +47,7 @@ const ResponsiveReady = ({ children }: { children: ReactNode }) => {
   return <>{responsiveReady ? children : null}</>;
 };
 
-export default ({ theme, children }: Props) => {
+export default ({ theme, children, defaultPlayroomState }: Props) => {
   // TODO: COLORMODE RELEASE
   // Remove color mode toggle
   useEffect(() => {
@@ -77,7 +85,7 @@ export default ({ theme, children }: Props) => {
           __html: theme.webFonts.map((font) => font.linkTag).join(''),
         }}
       />
-      <PlayroomStateProvider>
+      <PlayroomStateProvider defaultState={defaultPlayroomState}>
         <BraidProvider theme={theme} linkComponent={PlayroomLink}>
           <ToastProvider>
             <ResponsiveReady>{children}</ResponsiveReady>
