@@ -245,7 +245,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
-    "sanitize-html": "^2.7.0",
+    "sanitize-html": "^2.12.1",
     "sku": "12.4.10",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
