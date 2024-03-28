@@ -192,16 +192,6 @@ const svgrConfig = {
         export default docs;
       `,
     );
-
-    // Create migration guide, if it doesn't already exist
-    await templateFileIfMissing(
-      `${iconName}.migration.md`,
-      dedent`
-        # ${iconName} Migration Guide
-
-        Please refer to the [Icon Migration Guide.](../Icon.migration.md)
-      `,
-    );
   });
 
   await Promise.all(filePromises);
