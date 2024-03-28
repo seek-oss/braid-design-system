@@ -3756,5 +3756,9 @@
         "summary": "**Checkbox:** Improve tri-state handling\n\nFixes a bug in [tri-state] `Checkbox` where transitioning from `mixed` to `checked` could result in the visual presentation being out of sync with the desired state.\n\n[tri-state]: https://seek-oss.github.io/braid-design-system/components/Checkbox#tri-state-support"
       }
     ]
+  },
+  {
+    "version": "32.16.4",
+    "updates": []
   }
 ]
