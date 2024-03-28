@@ -17,7 +17,6 @@ import { validSpaceValues } from './Accordion';
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['AccordionItem'],
-  migrationGuide: true,
   Example: () =>
     source(
       <Accordion>

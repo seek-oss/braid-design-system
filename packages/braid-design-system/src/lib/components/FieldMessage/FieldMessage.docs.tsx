@@ -6,7 +6,6 @@ import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Box style={{ maxWidth: 400 }}>

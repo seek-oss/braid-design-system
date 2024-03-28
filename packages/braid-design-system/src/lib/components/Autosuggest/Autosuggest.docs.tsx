@@ -26,7 +26,6 @@ export const makeSuggestions = (
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: ({ id, setDefaultState, getState, setState, resetState }) =>
     source(
       <>

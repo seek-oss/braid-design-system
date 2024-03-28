@@ -9,7 +9,6 @@ import { gutters, validPageBlockComponents } from './PageBlock';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  migrationGuide: true,
   Example: () =>
     source(
       <PageBlock width="medium">

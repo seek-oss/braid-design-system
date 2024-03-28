@@ -5,7 +5,6 @@ import { Badge, Card, Inline, Heading, Text, TextLink, Strong } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Card rounded>

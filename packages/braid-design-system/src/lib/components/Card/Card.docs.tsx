@@ -7,7 +7,6 @@ import { validCardComponents } from './Card';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  migrationGuide: true,
   Example: () =>
     source(
       <Card rounded>

@@ -38,7 +38,6 @@ export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
   banner?: ReactNodeNoStrings;
-  migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
   examplebackground?: NonNullable<BoxProps['background']> | false;

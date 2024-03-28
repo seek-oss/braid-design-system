@@ -14,7 +14,6 @@ import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Text>

@@ -177,8 +177,7 @@ const svgrConfig = {
 
         const docs: ComponentDocs = {
           category: 'Icon',
-          migrationGuide: true,
-          Example: () =>
+                    Example: () =>
             source(
               <Stack space="none" align="center">
                 <Heading component="div" level="1">
@@ -191,16 +190,6 @@ const svgrConfig = {
         };
 
         export default docs;
-      `,
-    );
-
-    // Create migration guide, if it doesn't already exist
-    await templateFileIfMissing(
-      `${iconName}.migration.md`,
-      dedent`
-        # ${iconName} Migration Guide
-
-        Please refer to the [Icon Migration Guide.](../Icon.migration.md)
       `,
     );
   });

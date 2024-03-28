@@ -6,7 +6,6 @@ import { IconLanguage, IconPromote } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Card rounded>

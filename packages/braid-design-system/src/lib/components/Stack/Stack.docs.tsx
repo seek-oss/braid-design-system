@@ -6,7 +6,6 @@ import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  migrationGuide: true,
   Example: () =>
     source(
       <Stack space="large">
