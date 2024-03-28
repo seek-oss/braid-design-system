@@ -7,7 +7,6 @@ import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  migrationGuide: true,
   subComponents: ['Column'],
   Example: () =>
     source(

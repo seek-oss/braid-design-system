@@ -5,7 +5,6 @@ import { Actions, Button, TextLink, Text, Strong, Card, Stack } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Card rounded>

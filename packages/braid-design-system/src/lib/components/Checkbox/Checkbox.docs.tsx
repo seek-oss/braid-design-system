@@ -17,7 +17,6 @@ import { Placeholder } from '../../playroom/components';
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['CheckboxStandalone'],
-  migrationGuide: true,
   Example: ({ id, setDefaultState, getState, toggleState }) =>
     source(
       <>

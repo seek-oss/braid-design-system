@@ -8,7 +8,6 @@ import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  migrationGuide: true,
   Example: () =>
     source(
       <ContentBlock width="small">

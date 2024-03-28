@@ -15,7 +15,6 @@ import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: ({ id, getState, setState }) =>
     source(
       <MonthPicker

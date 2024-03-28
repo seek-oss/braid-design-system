@@ -14,7 +14,6 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Stack space="large">

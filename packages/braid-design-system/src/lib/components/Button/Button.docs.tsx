@@ -115,7 +115,6 @@ const choosingRightButtonDoc = [
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Card rounded>

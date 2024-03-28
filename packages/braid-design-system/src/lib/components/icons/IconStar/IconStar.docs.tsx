@@ -6,7 +6,6 @@ import { IconStar, Button, Heading, Inline, Stack, Strong, Text } from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
-  migrationGuide: true,
   Example: () =>
     source(
       <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">

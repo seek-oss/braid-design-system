@@ -8,7 +8,6 @@ import { Stack } from '../Stack/Stack';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: ({ id, getState, toggleState }) =>
     source(
       <Toggle
