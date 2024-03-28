@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 32.16.4
+
+### Patch Changes
+
+- Update Capsize dependencies ([#1477](https://github.com/seek-oss/braid-design-system/pull/1477))
+
 ## 32.16.3
 
 ### Patch Changes
