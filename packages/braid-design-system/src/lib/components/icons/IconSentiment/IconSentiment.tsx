@@ -6,23 +6,23 @@ import { IconSentimentSvg } from './IconSentimentSvg';
 import { IconSentimentNegativeSvg } from './IconSentimentNegativeSvg';
 import { IconSentimentPositiveSvg } from './IconSentimentPositiveSvg';
 
-type Emotion = 'positive' | 'negative' | 'neutral';
+type Feeling = 'positive' | 'negative' | 'neutral';
 
 export type IconSentimentProps = UseIconProps & {
-  emotion?: Emotion;
+  feeling?: Feeling;
 };
 
-const emotions: Record<Emotion, React.ComponentType> = {
+const feelingToIcon: Record<Feeling, React.ComponentType> = {
   positive: IconSentimentPositiveSvg,
   negative: IconSentimentNegativeSvg,
   neutral: IconSentimentSvg,
 };
 
 export const IconSentiment = ({
-  emotion = 'neutral',
+  feeling = 'neutral',
   ...props
 }: IconSentimentProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={emotions[emotion]} {...iconProps} />;
+  return <Box component={feelingToIcon[feeling]} {...iconProps} />;
 };

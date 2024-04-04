@@ -5562,7 +5562,7 @@ exports[`IconSentiment 1`] = `
         | "lowercase"
         | "uppercase"
     data?: DataAttributeMap
-    emotion?: 
+    feeling?: 
         | "negative"
         | "neutral"
         | "positive"
