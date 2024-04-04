@@ -4,14 +4,12 @@
 
 ---
 updated:
-  - IconPromote
   - IconCritical
   - IconLanguage
 ---
 
 Update semantic icon assets.
 
-`IconPromote`: Move from sparkle to megaphone. Enables introduction of `IconAI` to adopt a sparkles variation.
 `IconCritical`: Move from circle to diamond outline. Increase the visual distinction from `IconInfo`.
 `IconLanguage`: Move from globe to characters. Better represents the concept of language. Previous asset available as `IconGlobe`.
 

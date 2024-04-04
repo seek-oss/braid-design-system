@@ -8,6 +8,7 @@ new:
   - IconCareer
   - IconCategory
   - IconExperience
+  - IconGift
   - IconGlobe
   - IconRocket
   - IconSentiment

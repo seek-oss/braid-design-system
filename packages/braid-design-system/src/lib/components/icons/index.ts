@@ -24,6 +24,7 @@ export { IconEnlarge } from './IconEnlarge/IconEnlarge';
 export { IconExperience } from './IconExperience/IconExperience';
 export { IconFilter } from './IconFilter/IconFilter';
 export { IconFlag } from './IconFlag/IconFlag';
+export { IconGift } from './IconGift/IconGift';
 export { IconGlobe } from './IconGlobe/IconGlobe';
 export { IconGrid } from './IconGrid/IconGrid';
 export { IconHeart } from './IconHeart/IconHeart';
