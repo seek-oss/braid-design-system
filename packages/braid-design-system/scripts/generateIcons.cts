@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
 // @ts-expect-error svgo@3 has types
@@ -97,7 +97,7 @@ const svgrConfig = {
     }).data;
 
     // Validate SVG before import
-    const $ = cheerio.load(optimisedSvg);
+    const $ = load(optimisedSvg);
     $('svg *').each((i, el) => {
       const $el = $(el);
 
@@ -111,7 +111,8 @@ const svgrConfig = {
       });
     });
 
-    const iconName = `Icon${pascalCase(svgName)}`;
+    const isAllCaps = svgName.toUpperCase() === svgName;
+    const iconName = `Icon${isAllCaps ? svgName : pascalCase(svgName)}`;
     const svgComponentName = `${iconName}${variantName ? pascalCase(variantName) : ''}Svg`;
     const svgComponent = await svgr(optimisedSvg, svgrConfig, {
       componentName: svgComponentName,
