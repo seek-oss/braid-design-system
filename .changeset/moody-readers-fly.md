@@ -16,5 +16,5 @@ Update semantic icon assets.
 
 **MIGRATION GUIDE**
 
-As the above are updates to semantics icons, consumers are unaffected if their usage follows the icons semantic intent.
+As the above are updates to semantics icons, consumers are unaffected if their usage follows the icon's semantic intent.
 For those choosing the icon based on its visual appearance, please review the usage and consider decoupling from the semantic system icon for safer upgrades.
