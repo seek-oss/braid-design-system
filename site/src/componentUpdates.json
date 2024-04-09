@@ -3756,5 +3756,31 @@
         "summary": "**Checkbox:** Improve tri-state handling\n\nFixes a bug in [tri-state] `Checkbox` where transitioning from `mixed` to `checked` could result in the visual presentation being out of sync with the desired state.\n\n[tri-state]: https://seek-oss.github.io/braid-design-system/components/Checkbox#tri-state-support"
       }
     ]
+  },
+  {
+    "version": "32.17.0",
+    "updates": [
+      {
+        "updated": [
+          "IconCritical",
+          "IconLanguage"
+        ],
+        "summary": "Update semantic icon assets.\n\n`IconCritical`: Move from circle to diamond outline. Increase the visual distinction from `IconInfo`.\n`IconLanguage`: Move from globe to characters. Better represents the concept of language. Previous asset available as `IconGlobe`.\n\n\n**MIGRATION GUIDE**\n\nAs the above are updates to semantics icons, consumers are unaffected if their usage follows the icon's semantic intent.\nFor those choosing the icon based on its visual appearance, please review the usage and consider decoupling from the semantic system icon for safer upgrades."
+      },
+      {
+        "new": [
+          "IconAI",
+          "IconCareer",
+          "IconCategory",
+          "IconExperience",
+          "IconGift",
+          "IconGlobe",
+          "IconRocket",
+          "IconSentiment",
+          "IconSkills"
+        ],
+        "summary": "Add new icons to the library"
+      }
+    ]
   }
 ]
