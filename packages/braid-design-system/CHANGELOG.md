@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 32.17.0
+
+### Minor Changes
+
+- Update semantic icon assets. ([#1481](https://github.com/seek-oss/braid-design-system/pull/1481))
+
+  `IconCritical`: Move from circle to diamond outline. Increase the visual distinction from `IconInfo`.
+  `IconLanguage`: Move from globe to characters. Better represents the concept of language. Previous asset available as `IconGlobe`.
+
+  **MIGRATION GUIDE**
+
+  As the above are updates to semantics icons, consumers are unaffected if their usage follows the icon's semantic intent.
+  For those choosing the icon based on its visual appearance, please review the usage and consider decoupling from the semantic system icon for safer upgrades.
+
+- Add new icons to the library ([#1481](https://github.com/seek-oss/braid-design-system/pull/1481))
+
+### Patch Changes
+
+- Update Capsize dependencies ([#1477](https://github.com/seek-oss/braid-design-system/pull/1477))
+
 ## 32.16.3
 
 ### Patch Changes
