@@ -24,5 +24,10 @@ export const IconSentiment = ({
 }: IconSentimentProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={feelingToIcon[feeling]} {...iconProps} />;
+  return (
+    <Box
+      component={feelingToIcon[feeling] || feelingToIcon.neutral}
+      {...iconProps}
+    />
+  );
 };
