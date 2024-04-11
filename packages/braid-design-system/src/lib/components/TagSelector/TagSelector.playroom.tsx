@@ -1,4 +1,13 @@
 import React from 'react';
-import { TagSelector as BraidTagSelector } from '../TagSelector/TagSelector';
+import {
+  type TagSelectorProps,
+  TagSelector as BraidTagSelector,
+} from '../TagSelector/TagSelector';
 
-export const TagSelector = () => <BraidTagSelector />;
+export const TagSelector = ({
+  tags,
+  ariaLabel,
+  ...restProps
+}: TagSelectorProps) => (
+  <BraidTagSelector tags={tags} ariaLabel={ariaLabel} {...restProps} />
+);
