@@ -85,5 +85,6 @@ export { Tiles } from './Tiles/Tiles';
 export { Toggle } from './Toggle/Toggle';
 export { ToastProvider, useToast } from './useToast/ToastContext';
 export { TooltipRenderer } from './TooltipRenderer/TooltipRenderer';
+export { TagSelector } from './TagSelector/TagSelector';
 
 export * from './icons';
