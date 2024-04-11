@@ -1,4 +1,5 @@
-import React from 'react';
+import type React from 'react';
+import { useState } from 'react';
 
 import * as styles from './TagSelector.css';
 
@@ -8,7 +9,21 @@ export interface TagSelectorProps {
 }
 
 export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
-  const [isFocussed, setIsFocussed] = React.useState(false);
+  const [isFocussed, setIsFocussed] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+      case 'ArrowDown':
+        setActiveIndex((prevIndex) => Math.min(prevIndex + 1, tags.length - 1));
+        break;
+      case 'ArrowUp':
+        setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className={styles.Wrapper}>
@@ -21,10 +36,11 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
           aria-controls="available-tags"
           aria-autocomplete="list"
           aria-expanded="false"
-          data-active-option="item1"
-          aria-activedescendant=""
+          data-active-option={`item${activeIndex}`}
+          aria-activedescendant={`item${activeIndex}`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
+          onKeyDown={handleKeyDown}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
         {isFocussed && (
@@ -35,7 +51,12 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
             {tags.map((tag, index) => (
-              <li key={index} role="option" id={`item${index}`}>
+              <li
+                key={index}
+                role="option"
+                id={`item${index}`}
+                className={index === activeIndex ? styles.ActiveTagOption : ''}
+              >
                 {tag}
               </li>
             ))}

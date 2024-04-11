@@ -16,3 +16,7 @@ export const Dropdown = style({
   backgroundColor: 'white',
   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)',
 });
+
+export const ActiveTagOption = style({
+  backgroundColor: 'lightgrey',
+});
