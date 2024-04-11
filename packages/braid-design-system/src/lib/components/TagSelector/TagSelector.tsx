@@ -2,7 +2,25 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 
 import * as styles from './TagSelector.css';
-import { set } from 'lodash';
+
+interface TagOptionProps {
+  tag: string;
+  index: number;
+  activeIndex: number;
+}
+
+// Todo - rename
+const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => (
+  <li
+    key={index}
+    // Todo - create better unique id
+    role="option"
+    id={`item-${tag}`}
+    className={index === activeIndex ? styles.ActiveTagOption : ''}
+  >
+    {tag}
+  </li>
+);
 
 export interface TagSelectorProps {
   tags: string[];
@@ -67,15 +85,12 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
             {filteredTags.map((tag, index) => (
-              <li
+              <TagOption
+                tag={tag}
+                index={index}
+                activeIndex={activeIndex}
                 key={index}
-                role="option"
-                // Todo - create better unique id
-                id={`item-${tag}`}
-                className={index === activeIndex ? styles.ActiveTagOption : ''}
-              >
-                {tag}
-              </li>
+              />
             ))}
           </ul>
         )}
