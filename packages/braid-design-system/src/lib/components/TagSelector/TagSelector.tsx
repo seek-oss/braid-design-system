@@ -1,7 +1,8 @@
 import type React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as styles from './TagSelector.css';
+import { set } from 'lodash';
 
 export interface TagSelectorProps {
   tags: string[];
@@ -9,15 +10,28 @@ export interface TagSelectorProps {
 }
 
 export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
+  const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [filteredTags, setFilteredTags] = useState(tags);
+
+  useEffect(() => {
+    setFilteredTags(
+      tags.filter((tag) => tag.toLowerCase().includes(input.toLowerCase())),
+    );
+    setActiveIndex(-1);
+  }, [input, tags]);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
       case 'ArrowDown':
-        setActiveIndex((prevIndex) => Math.min(prevIndex + 1, tags.length - 1));
+        event.preventDefault();
+        setActiveIndex((prevIndex) =>
+          Math.min(prevIndex + 1, filteredTags.length - 1),
+        );
         break;
       case 'ArrowUp':
+        event.preventDefault();
         setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0));
         break;
       default:
@@ -31,13 +45,15 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
       <div className="combo-wrap">
         <input
           type="text"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
           id="tag-selector"
           role="combobox"
           aria-controls="available-tags"
           aria-autocomplete="list"
           aria-expanded="false"
-          data-active-option={`item${activeIndex}`}
-          aria-activedescendant={`item${activeIndex}`}
+          data-active-option={`item-${filteredTags[activeIndex]}`}
+          aria-activedescendant={`item-${filteredTags[activeIndex]}`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
           onKeyDown={handleKeyDown}
@@ -50,11 +66,12 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
             role="listbox"
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
-            {tags.map((tag, index) => (
+            {filteredTags.map((tag, index) => (
               <li
                 key={index}
                 role="option"
-                id={`item${index}`}
+                // Todo - create better unique id
+                id={`item-${tag}`}
                 className={index === activeIndex ? styles.ActiveTagOption : ''}
               >
                 {tag}
