@@ -55,6 +55,7 @@ const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => {
         htmlFor={checkboxId}
         className={styles.TagOpenLabel}
         onClick={handleClick}
+        onMouseDown={(event) => event.preventDefault()}
       >
         <input
           type="checkbox"
@@ -122,8 +123,7 @@ export const TagSelector = ({
           onKeyDown={handleKeyDown}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
-        {/* Todo - remove !isFocussed */}
-        {(isFocussed || !isFocussed) && (
+        {isFocussed && (
           <ul
             className={styles.Dropdown}
             id="available-tags"
