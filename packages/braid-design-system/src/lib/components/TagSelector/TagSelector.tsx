@@ -25,9 +25,10 @@ interface TagOptionProps {
   tag: string;
   index: number;
   activeIndex: number;
+  onSelect?: (tag: string) => void;
 }
 
-const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => {
+const TagOption = ({ tag, index, activeIndex, onSelect }: TagOptionProps) => {
   const checkboxId = `checkbox-${tag}`;
 
   const handleClick = (event: React.MouseEvent) => {
@@ -35,6 +36,9 @@ const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => {
     const checkbox = document.getElementById(checkboxId) as HTMLInputElement;
     if (checkbox) {
       checkbox.checked = !checkbox.checked;
+      if (onSelect) {
+        onSelect(tag);
+      }
     }
   };
 
@@ -73,12 +77,14 @@ export interface TagSelectorProps {
   options: string[];
   selectedTags?: string[];
   ariaLabel?: string;
+  onSelect?: (tag: string) => void;
 }
-// todo - add onSelect
+
 export const TagSelector = ({
   options,
   selectedTags,
   ariaLabel,
+  onSelect,
 }: TagSelectorProps) => {
   const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
@@ -107,6 +113,9 @@ export const TagSelector = ({
           ) as HTMLInputElement;
           if (checkbox) {
             checkbox.checked = !checkbox.checked;
+            if (onSelect) {
+              onSelect(options[activeIndex]);
+            }
           }
         }
 
@@ -152,6 +161,7 @@ export const TagSelector = ({
                 index={index}
                 activeIndex={activeIndex}
                 key={index}
+                onSelect={onSelect}
               />
             ))}
           </ul>
