@@ -31,7 +31,7 @@ export interface TagSelectorProps {
   tags: string[];
   ariaLabel?: string;
 }
-
+// todo - add selectedItems array as well, rename tags to options. add onSelect
 export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
   const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
@@ -59,6 +59,7 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
         <input
           type="text"
           value={input}
+          // Todo - maybe this is controlled by the consumer
           onChange={(event) => setInput(event.target.value)}
           id="tag-selector"
           role="combobox"
