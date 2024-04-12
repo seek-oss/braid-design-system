@@ -10,7 +10,6 @@ import {
   TextLink,
   IconPromote,
   Alert,
-  TagSelector,
 } from '../';
 
 const docs: ComponentDocs = {
@@ -19,7 +18,6 @@ const docs: ComponentDocs = {
     source(
       <Stack space="large">
         <Stack space="medium">
-          <TagSelector />
           <Heading level="1">Heading Level 1 Regular</Heading>
           <Heading level="1" weight="weak">
             Heading Level 1 Weak
