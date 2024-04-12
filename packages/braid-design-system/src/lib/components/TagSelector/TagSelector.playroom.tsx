@@ -5,9 +5,9 @@ import {
 } from '../TagSelector/TagSelector';
 
 export const TagSelector = ({
-  tags,
+  options,
   ariaLabel,
   ...restProps
 }: TagSelectorProps) => (
-  <BraidTagSelector tags={tags} ariaLabel={ariaLabel} {...restProps} />
+  <BraidTagSelector options={options} ariaLabel={ariaLabel} {...restProps} />
 );

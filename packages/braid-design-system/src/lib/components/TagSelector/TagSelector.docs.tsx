@@ -5,7 +5,7 @@ import { TagSelector } from './TagSelector';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: () => source(<TagSelector tags={['this', 'that']} />),
+  Example: () => source(<TagSelector options={['this', 'that']} />),
   alternatives: [
     {
       name: 'Tag',

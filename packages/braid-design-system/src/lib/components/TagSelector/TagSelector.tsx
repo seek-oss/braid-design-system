@@ -28,11 +28,11 @@ const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => (
 );
 
 export interface TagSelectorProps {
-  tags: string[];
+  options: string[];
   ariaLabel?: string;
 }
 // todo - add selectedItems array as well, rename tags to options. add onSelect
-export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
+export const TagSelector = ({ options, ariaLabel }: TagSelectorProps) => {
   const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -41,7 +41,9 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        setActiveIndex((prevIndex) => Math.min(prevIndex + 1, tags.length - 1));
+        setActiveIndex((prevIndex) =>
+          Math.min(prevIndex + 1, options.length - 1),
+        );
         break;
       case 'ArrowUp':
         event.preventDefault();
@@ -66,8 +68,8 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
           aria-controls="available-tags"
           aria-autocomplete="list"
           aria-expanded="false"
-          data-active-option={`item-${tags[activeIndex]}`}
-          aria-activedescendant={`item-${tags[activeIndex]}`}
+          data-active-option={`item-${options[activeIndex]}`}
+          aria-activedescendant={`item-${options[activeIndex]}`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
           onKeyDown={handleKeyDown}
@@ -80,9 +82,9 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
             role="listbox"
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
-            {tags.map((tag, index) => (
+            {options.map((option, index) => (
               <TagOption
-                tag={tag}
+                tag={option}
                 index={index}
                 activeIndex={activeIndex}
                 key={index}
