@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import * as styles from './TagSelector.css';
 
@@ -36,22 +36,12 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
   const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [filteredTags, setFilteredTags] = useState(tags);
-
-  useEffect(() => {
-    setFilteredTags(
-      tags.filter((tag) => tag.toLowerCase().includes(input.toLowerCase())),
-    );
-    setActiveIndex(-1);
-  }, [input, tags]);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        setActiveIndex((prevIndex) =>
-          Math.min(prevIndex + 1, filteredTags.length - 1),
-        );
+        setActiveIndex((prevIndex) => Math.min(prevIndex + 1, tags.length - 1));
         break;
       case 'ArrowUp':
         event.preventDefault();
@@ -75,8 +65,8 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
           aria-controls="available-tags"
           aria-autocomplete="list"
           aria-expanded="false"
-          data-active-option={`item-${filteredTags[activeIndex]}`}
-          aria-activedescendant={`item-${filteredTags[activeIndex]}`}
+          data-active-option={`item-${tags[activeIndex]}`}
+          aria-activedescendant={`item-${tags[activeIndex]}`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
           onKeyDown={handleKeyDown}
@@ -89,7 +79,7 @@ export const TagSelector = ({ tags, ariaLabel }: TagSelectorProps) => {
             role="listbox"
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
-            {filteredTags.map((tag, index) => (
+            {tags.map((tag, index) => (
               <TagOption
                 tag={tag}
                 index={index}
