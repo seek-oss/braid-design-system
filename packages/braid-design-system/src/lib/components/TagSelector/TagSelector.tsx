@@ -35,7 +35,6 @@ const TagOption = ({ tag, index, activeIndex, onSelect }: TagOptionProps) => {
     event.preventDefault();
     const checkbox = document.getElementById(checkboxId) as HTMLInputElement;
     if (checkbox) {
-      checkbox.checked = !checkbox.checked;
       if (onSelect) {
         onSelect(tag);
       }
@@ -112,7 +111,6 @@ export const TagSelector = ({
             'input[type="checkbox"]',
           ) as HTMLInputElement;
           if (checkbox) {
-            checkbox.checked = !checkbox.checked;
             if (onSelect) {
               onSelect(options[activeIndex]);
             }
