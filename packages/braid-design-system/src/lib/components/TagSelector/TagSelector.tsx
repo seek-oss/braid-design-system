@@ -96,6 +96,20 @@ export const TagSelector = ({
         event.preventDefault();
         setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0));
         break;
+      case 'Enter':
+        event.preventDefault();
+        const activeDescendant = document.getElementById(
+          `item-${options[activeIndex]}`,
+        );
+        if (activeDescendant) {
+          const checkbox = activeDescendant.querySelector(
+            'input[type="checkbox"]',
+          ) as HTMLInputElement;
+          if (checkbox) {
+            checkbox.checked = !checkbox.checked;
+          }
+        }
+
       default:
         break;
     }
@@ -103,7 +117,9 @@ export const TagSelector = ({
 
   return (
     <div className={styles.Wrapper}>
-      <SelectedTags tags={selectedTags || []} />
+      {(selectedTags || []).length > 0 && (
+        <SelectedTags tags={selectedTags || []} />
+      )}
       <label htmlFor="tag-selector">Select tag</label>
       <div className="combo-wrap">
         <input
