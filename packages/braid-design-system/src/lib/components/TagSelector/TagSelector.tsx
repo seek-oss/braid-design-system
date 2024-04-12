@@ -3,6 +3,24 @@ import { useState } from 'react';
 
 import * as styles from './TagSelector.css';
 
+interface SelectedTagProps {
+  tags: string[];
+}
+
+const SelectedTags = ({ tags }: SelectedTagProps) => (
+  <div>
+    <ul className={styles.SelectedTagsList}>
+      {tags.map((tag, index) => (
+        <li key={index} className={styles.SelectedTag}>
+          <span>{tag}</span>
+          {/* Todo - add remove button */}
+          {/* <button aria-label={`Remove ${tag}`}>X</button> */}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
 interface TagOptionProps {
   tag: string;
   index: number;
@@ -29,10 +47,15 @@ const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => (
 
 export interface TagSelectorProps {
   options: string[];
+  selectedTags?: string[];
   ariaLabel?: string;
 }
-// todo - add selectedItems array as well, rename tags to options. add onSelect
-export const TagSelector = ({ options, ariaLabel }: TagSelectorProps) => {
+// todo - add onSelect
+export const TagSelector = ({
+  options,
+  selectedTags,
+  ariaLabel,
+}: TagSelectorProps) => {
   const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -56,6 +79,7 @@ export const TagSelector = ({ options, ariaLabel }: TagSelectorProps) => {
 
   return (
     <div className={styles.Wrapper}>
+      <SelectedTags tags={selectedTags || []} />
       <label htmlFor="tag-selector">Select tag</label>
       <div className="combo-wrap">
         <input

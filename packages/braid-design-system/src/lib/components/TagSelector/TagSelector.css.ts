@@ -3,7 +3,6 @@ import { style } from '@vanilla-extract/css';
 export const Wrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: '8px',
   position: 'relative',
 });
 
@@ -25,4 +24,17 @@ export const InactiveTagOption = style({
 export const ActiveTagOption = style({
   backgroundColor: 'lightgrey',
   listStyle: 'none',
+});
+
+export const SelectedTagsList = style({
+  listStyle: 'none',
+  padding: 0,
+  display: 'flex',
+  gap: '6px',
+});
+
+export const SelectedTag = style({
+  display: 'inline-block',
+  backgroundColor: 'lightgrey',
+  padding: '4px',
 });
