@@ -16,9 +16,14 @@ const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => (
     // Todo - create better unique id
     role="option"
     id={`item-${tag}`}
-    className={index === activeIndex ? styles.ActiveTagOption : ''}
+    className={
+      index === activeIndex ? styles.ActiveTagOption : styles.InactiveTagOption
+    }
   >
-    {tag}
+    <label htmlFor={`checkbox-${tag}`}>
+      <input type="checkbox" id={`checkbox-${tag}`} />
+      <span>{tag}</span>
+    </label>
   </li>
 );
 

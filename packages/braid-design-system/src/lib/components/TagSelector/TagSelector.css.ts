@@ -17,6 +17,12 @@ export const Dropdown = style({
   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)',
 });
 
+// Todo combine InactiveTagOption and ActiveTagOption styles properly
+export const InactiveTagOption = style({
+  listStyle: 'none',
+});
+
 export const ActiveTagOption = style({
   backgroundColor: 'lightgrey',
+  listStyle: 'none',
 });
