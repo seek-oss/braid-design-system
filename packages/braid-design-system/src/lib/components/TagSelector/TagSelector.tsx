@@ -27,23 +27,46 @@ interface TagOptionProps {
   activeIndex: number;
 }
 
-// Todo - rename
-const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => (
-  <li
-    key={index}
-    // Todo - create better unique id
-    role="option"
-    id={`item-${tag}`}
-    className={
-      index === activeIndex ? styles.ActiveTagOption : styles.InactiveTagOption
+const TagOption = ({ tag, index, activeIndex }: TagOptionProps) => {
+  const checkboxId = `checkbox-${tag}`;
+
+  const handleClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    const checkbox = document.getElementById(checkboxId) as HTMLInputElement;
+    if (checkbox) {
+      checkbox.checked = !checkbox.checked;
     }
-  >
-    <label htmlFor={`checkbox-${tag}`}>
-      <input type="checkbox" id={`checkbox-${tag}`} />
-      <span>{tag}</span>
-    </label>
-  </li>
-);
+  };
+
+  const handleCheckboxClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
+  return (
+    <li
+      key={index}
+      role="option"
+      id={`item-${tag}`}
+      className={
+        index === activeIndex ? styles.ActiveTagOption : styles.TagOption
+      }
+    >
+      <label
+        htmlFor={checkboxId}
+        className={styles.TagOpenLabel}
+        onClick={handleClick}
+      >
+        <input
+          type="checkbox"
+          id={checkboxId}
+          onClick={handleCheckboxClick}
+          className={styles.TagOptionCheckbox}
+        />
+        <span>{tag}</span>
+      </label>
+    </li>
+  );
+};
 
 export interface TagSelectorProps {
   options: string[];
@@ -99,7 +122,8 @@ export const TagSelector = ({
           onKeyDown={handleKeyDown}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
-        {isFocussed && (
+        {/* Todo - remove !isFocussed */}
+        {(isFocussed || !isFocussed) && (
           <ul
             className={styles.Dropdown}
             id="available-tags"

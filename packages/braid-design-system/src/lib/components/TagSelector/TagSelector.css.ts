@@ -16,8 +16,7 @@ export const Dropdown = style({
   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)',
 });
 
-// Todo combine InactiveTagOption and ActiveTagOption styles properly
-export const InactiveTagOption = style({
+export const TagOption = style({
   listStyle: 'none',
 
   ':hover': {
@@ -26,8 +25,23 @@ export const InactiveTagOption = style({
 });
 
 export const ActiveTagOption = style({
-  backgroundColor: 'lightgrey',
   listStyle: 'none',
+  backgroundColor: 'lightgrey',
+
+  ':hover': {
+    backgroundColor: 'lightgrey',
+  },
+});
+
+export const TagOpenLabel = style({
+  cursor: 'pointer',
+  display: 'block',
+  userSelect: 'none',
+});
+
+// Todo - try remove this style
+export const TagOptionCheckbox = style({
+  cursor: 'pointer',
 });
 
 export const SelectedTagsList = style({
