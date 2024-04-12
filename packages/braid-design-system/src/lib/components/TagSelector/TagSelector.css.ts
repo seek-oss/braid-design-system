@@ -19,6 +19,10 @@ export const Dropdown = style({
 // Todo combine InactiveTagOption and ActiveTagOption styles properly
 export const InactiveTagOption = style({
   listStyle: 'none',
+
+  ':hover': {
+    backgroundColor: 'gainsboro',
+  },
 });
 
 export const ActiveTagOption = style({
