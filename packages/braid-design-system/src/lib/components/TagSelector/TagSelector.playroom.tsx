@@ -4,10 +4,6 @@ import {
   TagSelector as BraidTagSelector,
 } from '../TagSelector/TagSelector';
 
-export const TagSelector = ({
-  options,
-  ariaLabel,
-  ...restProps
-}: TagSelectorProps) => (
-  <BraidTagSelector options={options} ariaLabel={ariaLabel} {...restProps} />
+export const TagSelector = ({ ...restProps }: TagSelectorProps) => (
+  <BraidTagSelector {...restProps} />
 );
