@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as styles from './TagSelector.css';
 
@@ -26,16 +26,23 @@ interface TagOptionProps {
   index: number;
   activeIndex: number;
   onSelect?: (tag: string) => void;
+  checked?: boolean;
 }
 
-const TagOption = ({ tag, index, activeIndex, onSelect }: TagOptionProps) => {
+const TagOption = ({
+  tag,
+  index,
+  activeIndex,
+  onSelect,
+  checked,
+}: TagOptionProps) => {
   const checkboxId = `checkbox-${tag}`;
 
+  // Todo - refactor handleClick logic
   const handleClick = (event: React.MouseEvent) => {
     event.preventDefault();
     const checkbox = document.getElementById(checkboxId) as HTMLInputElement;
     if (checkbox) {
-      // checkbox.checked = !checkbox.checked;
       if (onSelect) {
         onSelect(tag);
       }
@@ -66,13 +73,14 @@ const TagOption = ({ tag, index, activeIndex, onSelect }: TagOptionProps) => {
           id={checkboxId}
           onClick={handleCheckboxClick}
           className={styles.TagOptionCheckbox}
+          checked={checked}
+          onChange={onSelect ? () => onSelect(tag) : undefined}
         />
         <span>{tag}</span>
       </label>
     </li>
   );
 };
-
 export interface TagSelectorProps {
   options: string[];
   selectedTags?: string[];
@@ -90,39 +98,51 @@ export const TagSelector = ({
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Todo - add back use effect
+  // useEffect(() => {
+  //   setActiveIndex(0);
+  // }, [input]);
+
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
         setActiveIndex((prevIndex) =>
-          Math.min(prevIndex + 1, options.length - 1),
+          Math.min(prevIndex + 1, dropdownOptions.length - 1),
         );
         break;
       case 'ArrowUp':
         event.preventDefault();
         setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0));
         break;
+
+      // Todo - refactor this logic
       case 'Enter':
         event.preventDefault();
-        const activeDescendant = document.getElementById(
-          `item-${options[activeIndex]}`,
-        );
-        if (activeDescendant) {
-          const checkbox = activeDescendant.querySelector(
-            'input[type="checkbox"]',
-          ) as HTMLInputElement;
-          if (checkbox) {
-            // checkbox.checked = !checkbox.checked;
+        const inputElement = document.getElementById(
+          'tag-selector',
+        ) as HTMLInputElement;
+        if (inputElement) {
+          const activeDescendantId = inputElement.getAttribute(
+            'aria-activedescendant',
+          );
+          if (activeDescendantId) {
+            const activeTag = activeDescendantId.replace('item-', '');
             if (onSelect) {
-              onSelect(options[activeIndex]);
+              onSelect(activeTag);
             }
           }
         }
-
+        break;
       default:
         break;
     }
   };
+
+  const dropdownOptions = [
+    ...(selectedTags || []).filter((tag) => !options.includes(tag)),
+    ...options,
+  ];
 
   return (
     <div className={styles.Wrapper}>
@@ -155,13 +175,16 @@ export const TagSelector = ({
             role="listbox"
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
-            {options.map((option, index) => (
+            {dropdownOptions.map((tag, index) => (
+              // Todo - add filter
+              // .filter((tag) => tag.toLowerCase().includes(input.toLowerCase()))
               <TagOption
-                tag={option}
+                tag={tag}
                 index={index}
                 activeIndex={activeIndex}
-                key={index}
+                key={tag}
                 onSelect={onSelect}
+                checked={selectedTags?.includes(tag) || false}
               />
             ))}
           </ul>
