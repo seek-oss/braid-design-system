@@ -1,8 +1,7 @@
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import * as styles from './TagSelector.css';
-import { get } from 'lodash';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -79,7 +78,6 @@ const TagOption = ({
   );
 };
 
-// Todo - rename
 export interface Tag {
   description: string;
   id: string;
@@ -101,37 +99,13 @@ export const TagSelector = ({
   const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [dropdownOptions, setDropdownOptions] = useState<Tag[]>(options);
 
-  // Todo - see if this can be done without useEffect
-  useEffect(() => {
-    function getDropdownOptions() {
-      const uniqueSelectedTags = [
-        ...(selectedTags || []).filter(
-          (tag) => !options.some((option) => option.id === tag.id),
-        ),
-      ];
-
-      const unfilteredOptions = [...uniqueSelectedTags, ...options];
-
-      if (input) {
-        return unfilteredOptions.filter((option) =>
-          option.description.toLowerCase().includes(input.toLowerCase()),
-        );
-      }
-
-      return unfilteredOptions;
-    }
-
-    function updateActiveIndex() {
-      if (activeIndex >= dropdownOptions.length || activeIndex < 0) {
-        setActiveIndex(0);
-      }
-    }
-
-    setDropdownOptions(getDropdownOptions());
-    updateActiveIndex();
-  }, [input, options, selectedTags, activeIndex, dropdownOptions]);
+  const uniqueSelectedTags = [
+    ...(selectedTags || []).filter(
+      (tag) => !options.some((option) => option.id === tag.id),
+    ),
+  ];
+  const dropdownOptions = [...uniqueSelectedTags, ...options];
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -157,28 +131,6 @@ export const TagSelector = ({
         break;
     }
   };
-
-  // const getDropdownOptions = () => {
-  //   const uniqueSelectedTags = (selectedTags || []) as Tag[];
-
-  //   const unfilteredOptions = [...uniqueSelectedTags, ...options];
-
-  //   if (input) {
-  //     return unfilteredOptions.filter((option) =>
-  //       option.description.toLowerCase().includes(input.toLowerCase()),
-  //     );
-  //   }
-
-  //   return unfilteredOptions;
-  // };
-
-  // Todo - delete this
-  // const dropdownOptions = [
-  //   ...(selectedTags || []).filter(
-  //     (tag) => !options.some((option) => option.id === tag.id),
-  //   ),
-  //   ...options,
-  // ];
 
   return (
     <div className={styles.Wrapper}>
