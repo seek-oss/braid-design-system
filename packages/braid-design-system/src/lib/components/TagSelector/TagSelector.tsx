@@ -23,16 +23,14 @@ const SelectedTags = ({ tags }: SelectedTagProps) => (
 
 interface TagOptionProps {
   tag: Tag;
-  index: number;
-  activeIndex: number;
+  activeOption: string | undefined;
   onSelect?: (tag: Tag) => void;
   checked?: boolean;
 }
 
 const TagOption = ({
   tag: selectedTag,
-  index,
-  activeIndex,
+  activeOption,
   onSelect,
   checked,
 }: TagOptionProps) => {
@@ -51,11 +49,13 @@ const TagOption = ({
 
   return (
     <li
-      key={index}
+      key={selectedTag.id}
       role="option"
       id={selectedTag.id}
       className={
-        index === activeIndex ? styles.ActiveTagOption : styles.TagOption
+        selectedTag.id === activeOption
+          ? styles.ActiveTagOption
+          : styles.TagOption
       }
     >
       <label
@@ -96,10 +96,6 @@ export const TagSelector = ({
   ariaLabel,
   onSelect,
 }: TagSelectorProps) => {
-  const [input, setInput] = useState('');
-  const [isFocussed, setIsFocussed] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const uniqueSelectedTags = [
     ...(selectedTags || []).filter(
       (tag) => !options.some((option) => option.id === tag.id),
@@ -107,23 +103,45 @@ export const TagSelector = ({
   ];
   const dropdownOptions = [...uniqueSelectedTags, ...options];
 
+  const [input, setInput] = useState('');
+  const [isFocussed, setIsFocussed] = useState(false);
+  const [activeOption, setActiveOption] = useState<string | undefined>(
+    dropdownOptions[0].id,
+  );
+
+  function getIndexOfActiveOption() {
+    return dropdownOptions.findIndex((option) => option.id === activeOption);
+  }
+
   const handleKeyDown = (event: React.KeyboardEvent) => {
+    const prevIndex = getIndexOfActiveOption();
+
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        setActiveIndex((prevIndex) =>
-          Math.min(prevIndex + 1, dropdownOptions.length - 1),
-        );
+
+        if (prevIndex + 1 === dropdownOptions.length) {
+          setActiveOption(dropdownOptions[0].id);
+        } else {
+          setActiveOption(dropdownOptions[prevIndex + 1].id);
+        }
+
         break;
       case 'ArrowUp':
         event.preventDefault();
-        setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+
+        if (prevIndex === 0) {
+          setActiveOption(dropdownOptions[dropdownOptions.length - 1].id);
+        } else {
+          setActiveOption(dropdownOptions[prevIndex - 1].id);
+        }
+
         break;
 
       case 'Enter':
         event.preventDefault();
         if (onSelect) {
-          onSelect(dropdownOptions[activeIndex]);
+          onSelect(dropdownOptions[prevIndex]);
         }
         break;
 
@@ -149,8 +167,8 @@ export const TagSelector = ({
           aria-controls="available-tags"
           aria-autocomplete="list"
           aria-expanded="false"
-          data-active-option={`item-${options[activeIndex]}`}
-          aria-activedescendant={`item-${options[activeIndex]}`}
+          data-active-option={`item-${options[getIndexOfActiveOption()]}`}
+          aria-activedescendant={`item-${options[getIndexOfActiveOption()]}`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
           onKeyDown={handleKeyDown}
@@ -163,11 +181,10 @@ export const TagSelector = ({
             role="listbox"
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
-            {dropdownOptions.map((tag, index) => (
+            {dropdownOptions.map((tag) => (
               <TagOption
                 tag={tag}
-                index={index}
-                activeIndex={activeIndex}
+                activeOption={activeOption}
                 key={tag.id}
                 onSelect={onSelect}
                 checked={
