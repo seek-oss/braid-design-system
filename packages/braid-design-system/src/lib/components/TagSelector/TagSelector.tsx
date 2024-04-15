@@ -29,17 +29,18 @@ interface TagOptionProps {
 }
 
 const TagOption = ({
-  tag: selectedTag,
+  tag,
   activeOption,
   onSelect,
   checked,
 }: TagOptionProps) => {
-  const checkboxId = `checkbox-${selectedTag.id}`;
+  // Todo - change id
+  const checkboxId = `checkbox-${tag.id}`;
 
-  const handleClick = (event: React.MouseEvent, tag: Tag) => {
+  const handleClick = (event: React.MouseEvent, clickedTag: Tag) => {
     event.preventDefault();
     if (onSelect) {
-      onSelect(tag);
+      onSelect(clickedTag);
     }
   };
 
@@ -49,19 +50,17 @@ const TagOption = ({
 
   return (
     <li
-      key={selectedTag.id}
+      key={tag.id}
       role="option"
-      id={selectedTag.id}
+      id={tag.id}
       className={
-        selectedTag.id === activeOption
-          ? styles.ActiveTagOption
-          : styles.TagOption
+        tag.id === activeOption ? styles.ActiveTagOption : styles.TagOption
       }
     >
       <label
         htmlFor={checkboxId}
         className={styles.TagOpenLabel}
-        onClick={(event) => handleClick(event, selectedTag)}
+        onClick={(event) => handleClick(event, tag)}
         onMouseDown={(event) => event.preventDefault()}
       >
         <input
@@ -70,9 +69,10 @@ const TagOption = ({
           onClick={handleCheckboxClick}
           className={styles.TagOptionCheckbox}
           checked={checked}
-          onChange={onSelect ? () => onSelect(selectedTag) : undefined}
+          aria-checked={checked}
+          onChange={onSelect ? () => onSelect(tag) : undefined}
         />
-        <span>{selectedTag.description}</span>
+        <span>{tag.description}</span>
       </label>
     </li>
   );
@@ -160,15 +160,19 @@ export const TagSelector = ({
         <input
           type="text"
           value={input}
-          // Todo - maybe this is controlled by the consumer
+          // Todo - make this element controlled by the consumer
           onChange={(event) => setInput(event.target.value)}
           id="tag-selector"
           role="combobox"
           aria-controls="available-tags"
           aria-autocomplete="list"
           aria-expanded="false"
-          data-active-option={`item-${options[getIndexOfActiveOption()]}`}
-          aria-activedescendant={`item-${options[getIndexOfActiveOption()]}`}
+          data-active-option={`checkbox-${
+            dropdownOptions[getIndexOfActiveOption()].id
+          }`}
+          aria-activedescendant={`checkbox-${
+            dropdownOptions[getIndexOfActiveOption()].id
+          }`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
           onKeyDown={handleKeyDown}
