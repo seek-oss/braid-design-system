@@ -4,7 +4,7 @@ import { useState } from 'react';
 import * as styles from './TagSelector.css';
 
 interface SelectedTagProps {
-  tags: string[];
+  tags: Tag[];
 }
 
 const SelectedTags = ({ tags }: SelectedTagProps) => (
@@ -12,7 +12,7 @@ const SelectedTags = ({ tags }: SelectedTagProps) => (
     <ul className={styles.SelectedTagsList}>
       {tags.map((tag, index) => (
         <li key={index} className={styles.SelectedTag}>
-          <span>{tag}</span>
+          <span>{tag.description}</span>
           {/* Todo - add remove button */}
           {/* <button aria-label={`Remove ${tag}`}>X</button> */}
         </li>
@@ -22,10 +22,10 @@ const SelectedTags = ({ tags }: SelectedTagProps) => (
 );
 
 interface TagOptionProps {
-  tag: string;
+  tag: Tag;
   index: number;
   activeIndex: number;
-  onSelect?: (tag: string) => void;
+  onSelect?: (tag: Tag) => void;
   checked?: boolean;
 }
 
@@ -76,16 +76,23 @@ const TagOption = ({
           checked={checked}
           onChange={onSelect ? () => onSelect(tag) : undefined}
         />
-        <span>{tag}</span>
+        <span>{tag.description}</span>
       </label>
     </li>
   );
 };
+
+// Todo - rename
+export interface Tag {
+  description: string;
+  id: string;
+}
+
 export interface TagSelectorProps {
-  options: string[];
-  selectedTags?: string[];
+  options: Tag[];
+  selectedTags?: Tag[];
   ariaLabel?: string;
-  onSelect?: (tag: string) => void;
+  onSelect?: (tag: Tag) => void;
 }
 
 export const TagSelector = ({
@@ -117,30 +124,32 @@ export const TagSelector = ({
         break;
 
       // Todo - refactor this logic
-      case 'Enter':
-        event.preventDefault();
-        const inputElement = document.getElementById(
-          'tag-selector',
-        ) as HTMLInputElement;
-        if (inputElement) {
-          const activeDescendantId = inputElement.getAttribute(
-            'aria-activedescendant',
-          );
-          if (activeDescendantId) {
-            const activeTag = activeDescendantId.replace('item-', '');
-            if (onSelect) {
-              onSelect(activeTag);
-            }
-          }
-        }
-        break;
+      // case 'Enter':
+      //   event.preventDefault();
+      //   const inputElement = document.getElementById(
+      //     'tag-selector',
+      //   ) as HTMLInputElement;
+      //   if (inputElement) {
+      //     const activeDescendantId = inputElement.getAttribute(
+      //       'aria-activedescendant',
+      //     );
+      //     if (activeDescendantId) {
+      //       const activeTag = activeDescendantId.replace('item-', '');
+      //       if (onSelect) {
+      //         onSelect(activeTag);
+      //       }
+      //     }
+      //   }
+      //   break;
       default:
         break;
     }
   };
 
   const dropdownOptions = [
-    ...(selectedTags || []).filter((tag) => !options.includes(tag)),
+    ...(selectedTags || []).filter(
+      (tag) => !options.some((option) => option.id === tag.id),
+    ),
     ...options,
   ];
 
@@ -176,15 +185,17 @@ export const TagSelector = ({
             {...(ariaLabel && { 'aria-label': ariaLabel })}
           >
             {dropdownOptions.map((tag, index) => (
-              // Todo - add filter
-              // .filter((tag) => tag.toLowerCase().includes(input.toLowerCase()))
               <TagOption
                 tag={tag}
                 index={index}
                 activeIndex={activeIndex}
-                key={tag}
+                key={tag.id}
                 onSelect={onSelect}
-                checked={selectedTags?.includes(tag) || false}
+                checked={
+                  selectedTags?.some(
+                    (selectedTag) => selectedTag.id === tag.id,
+                  ) || false
+                }
               />
             ))}
           </ul>

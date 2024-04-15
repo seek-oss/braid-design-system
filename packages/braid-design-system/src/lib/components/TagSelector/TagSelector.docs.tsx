@@ -1,23 +1,33 @@
 import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { TagSelector } from './TagSelector';
+import { type Tag, TagSelector } from './TagSelector';
 import { Heading, Stack } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () => {
     const [standardSelectedTags, setStandardSelectedTags] = React.useState<
-      string[]
+      Tag[]
     >([]);
-    const standardOptions = ['this', 'that', 'the other', 'another one'];
+    const standardOptions = [
+      { description: 'this', id: 'thisStandardOptions' },
+      { description: 'that', id: 'thatStandardOptions' },
+      { description: 'the other', id: 'theOtherStandardOptions' },
+      { description: 'another one', id: 'anotherOneStandardOptions' },
+    ];
 
-    const [preSelectedTags, setPreSelectedTags] = React.useState<string[]>([
-      'first',
-      'second',
-      'third',
+    const [preSelectedTags, setPreSelectedTags] = React.useState<Tag[]>([
+      { description: 'first', id: 'firstPreSelected' },
+      { description: 'second', id: 'secondPreSelected' },
+      { description: 'third', id: 'thirdPreSelected' },
     ]);
-    const preOptions = ['this', 'that', 'the other', 'another one'];
+    const preOptions = [
+      { description: 'this', id: 'thisPreOptions' },
+      { description: 'that', id: 'thatPreOptions' },
+      { description: 'the other', id: 'theOtherPreOptions' },
+      { description: 'another one', id: 'anotherOnePreOptions' },
+    ];
 
     return source(
       <Stack space="xxlarge">
@@ -27,9 +37,12 @@ const docs: ComponentDocs = {
             options={standardOptions}
             selectedTags={standardSelectedTags}
             onSelect={(tag) => {
+              console.log(`selected ${tag.description}`); // eslint-disable-line no-console
               setStandardSelectedTags((tags) =>
-                tags.includes(tag)
-                  ? tags.filter((t) => t !== tag)
+                // if tag is already in selected tags, remove it
+                // otherwise, add it
+                tags.some((t) => t.id === tag.id)
+                  ? tags.filter((t) => t.id !== tag.id)
                   : [...tags, tag],
               );
             }}
@@ -41,9 +54,10 @@ const docs: ComponentDocs = {
             options={preOptions}
             selectedTags={preSelectedTags}
             onSelect={(tag) => {
+              console.log(`selected ${tag.description}`); // eslint-disable-line no-console
               setPreSelectedTags((tags) =>
-                tags.includes(tag)
-                  ? tags.filter((t) => t !== tag)
+                tags.some((t) => t.id === tag.id)
+                  ? tags.filter((t) => t.id !== tag.id)
                   : [...tags, tag],
               );
             }}
