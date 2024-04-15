@@ -14,6 +14,7 @@ export const Dropdown = style({
   top: '100%',
   backgroundColor: 'white',
   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)',
+  zIndex: 2,
 });
 
 export const TagOption = style({

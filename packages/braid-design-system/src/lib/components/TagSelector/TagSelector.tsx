@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import * as styles from './TagSelector.css';
 
@@ -98,7 +98,7 @@ export const TagSelector = ({
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Todo - add back use effect
+  // Todo - add back use effect when we have a filter
   // useEffect(() => {
   //   setActiveIndex(0);
   // }, [input]);
