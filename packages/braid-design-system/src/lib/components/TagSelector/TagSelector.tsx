@@ -2,19 +2,31 @@ import type React from 'react';
 import { useState } from 'react';
 
 import * as styles from './TagSelector.css';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
+import { IconClear } from '../icons';
+import { Inline } from '../Inline/Inline';
 
 interface SelectedTagProps {
   tags: Tag[];
+  onSelect: (tag: Tag) => void;
 }
 
-const SelectedTags = ({ tags }: SelectedTagProps) => (
+const SelectedTags = ({ tags, onSelect }: SelectedTagProps) => (
   <div>
     <ul className={styles.SelectedTagsList}>
       {tags.map((tag, index) => (
         <li key={index} className={styles.SelectedTag}>
-          <span>{tag.description}</span>
-          {/* Todo - add remove button */}
-          {/* <button aria-label={`Remove ${tag}`}>X</button> */}
+          <Inline space="xxsmall">
+            <span>{tag.description}</span>
+            <ButtonIcon
+              icon={<IconClear />}
+              label={`Remove ${tag.description}`}
+              onClick={() => onSelect(tag)}
+              id={`remove-${tag.id}`}
+              variant="transparent"
+              size="standard"
+            />
+          </Inline>
         </li>
       ))}
     </ul>
@@ -24,7 +36,7 @@ const SelectedTags = ({ tags }: SelectedTagProps) => (
 interface TagOptionProps {
   tag: Tag;
   activeOption: string | undefined;
-  onSelect?: (tag: Tag) => void;
+  onSelect: (tag: Tag) => void;
   checked?: boolean;
 }
 
@@ -156,7 +168,7 @@ export const TagSelector = ({
   return (
     <div className={styles.Wrapper}>
       {(selectedTags || []).length > 0 && (
-        <SelectedTags tags={selectedTags || []} />
+        <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
       )}
       <label htmlFor="tag-selector">Select tag</label>
       <div className="combo-wrap">

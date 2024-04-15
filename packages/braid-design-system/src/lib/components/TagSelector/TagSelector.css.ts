@@ -55,5 +55,5 @@ export const SelectedTagsList = style({
 export const SelectedTag = style({
   display: 'inline-block',
   backgroundColor: 'lightgrey',
-  padding: '4px',
+  padding: '16px',
 });
