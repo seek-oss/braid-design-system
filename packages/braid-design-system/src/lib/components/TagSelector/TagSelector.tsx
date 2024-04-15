@@ -30,22 +30,18 @@ interface TagOptionProps {
 }
 
 const TagOption = ({
-  tag,
+  tag: selectedTag,
   index,
   activeIndex,
   onSelect,
   checked,
 }: TagOptionProps) => {
-  const checkboxId = `checkbox-${tag}`;
+  const checkboxId = `checkbox-${selectedTag.id}`;
 
-  // Todo - refactor handleClick logic
-  const handleClick = (event: React.MouseEvent) => {
+  const handleClick = (event: React.MouseEvent, tag: Tag) => {
     event.preventDefault();
-    const checkbox = document.getElementById(checkboxId) as HTMLInputElement;
-    if (checkbox) {
-      if (onSelect) {
-        onSelect(tag);
-      }
+    if (onSelect) {
+      onSelect(tag);
     }
   };
 
@@ -57,7 +53,7 @@ const TagOption = ({
     <li
       key={index}
       role="option"
-      id={`item-${tag}`}
+      id={selectedTag.id}
       className={
         index === activeIndex ? styles.ActiveTagOption : styles.TagOption
       }
@@ -65,7 +61,7 @@ const TagOption = ({
       <label
         htmlFor={checkboxId}
         className={styles.TagOpenLabel}
-        onClick={handleClick}
+        onClick={(event) => handleClick(event, selectedTag)}
         onMouseDown={(event) => event.preventDefault()}
       >
         <input
@@ -74,9 +70,9 @@ const TagOption = ({
           onClick={handleCheckboxClick}
           className={styles.TagOptionCheckbox}
           checked={checked}
-          onChange={onSelect ? () => onSelect(tag) : undefined}
+          onChange={onSelect ? () => onSelect(selectedTag) : undefined}
         />
-        <span>{tag.description}</span>
+        <span>{selectedTag.description}</span>
       </label>
     </li>
   );
@@ -123,24 +119,13 @@ export const TagSelector = ({
         setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0));
         break;
 
-      // Todo - refactor this logic
-      // case 'Enter':
-      //   event.preventDefault();
-      //   const inputElement = document.getElementById(
-      //     'tag-selector',
-      //   ) as HTMLInputElement;
-      //   if (inputElement) {
-      //     const activeDescendantId = inputElement.getAttribute(
-      //       'aria-activedescendant',
-      //     );
-      //     if (activeDescendantId) {
-      //       const activeTag = activeDescendantId.replace('item-', '');
-      //       if (onSelect) {
-      //         onSelect(activeTag);
-      //       }
-      //     }
-      //   }
-      //   break;
+      case 'Enter':
+        event.preventDefault();
+        if (onSelect) {
+          onSelect(dropdownOptions[activeIndex]);
+        }
+        break;
+
       default:
         break;
     }
