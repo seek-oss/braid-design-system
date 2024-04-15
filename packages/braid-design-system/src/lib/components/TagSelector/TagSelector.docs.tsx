@@ -3,6 +3,7 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 import { type Tag, TagSelector } from './TagSelector';
 import { Heading, Stack } from '../';
+import { set } from 'lodash';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -45,6 +46,7 @@ const docs: ComponentDocs = {
                   ? tags.filter((t) => t.id !== tag.id)
                   : [...tags, tag],
               );
+              setStandardValue('');
             }}
             value={standardValue}
             onChange={(event) => setStandardValue(event.target.value)}
@@ -62,6 +64,7 @@ const docs: ComponentDocs = {
                   ? tags.filter((t) => t.id !== tag.id)
                   : [...tags, tag],
               );
+              setPreValue('');
             }}
             value={preValue}
             onChange={(event) => setPreValue(event.target.value)}
