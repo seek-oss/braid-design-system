@@ -168,10 +168,10 @@ export const TagSelector = ({
           aria-autocomplete="list"
           aria-expanded="false"
           data-active-option={`checkbox-${
-            dropdownOptions[getIndexOfActiveOption()].id
+            dropdownOptions[getIndexOfActiveOption()]?.id
           }`}
           aria-activedescendant={`checkbox-${
-            dropdownOptions[getIndexOfActiveOption()].id
+            dropdownOptions[getIndexOfActiveOption()]?.id
           }`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
