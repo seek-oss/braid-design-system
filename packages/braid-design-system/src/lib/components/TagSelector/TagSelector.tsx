@@ -46,7 +46,6 @@ const TagOption = ({
   onSelect,
   checked,
 }: TagOptionProps) => {
-  // Todo - change id
   const checkboxId = `checkbox-${tag.id}`;
 
   const handleClick = (event: React.MouseEvent, clickedTag: Tag) => {
@@ -90,6 +89,19 @@ const TagOption = ({
   );
 };
 
+function ensureCustomTagsNotUsed(
+  options: Tag[],
+  selectedTags: Tag[],
+) {
+  for (const tag of selectedTags) {
+    if (!options.find((option) => option.id === tag.id)) {
+      throw new Error(
+        `Invalid prop: selectedTags contains a tag not present in options: ${tag.id}`,
+      );
+    }
+  }
+}
+
 export interface Tag {
   description: string;
   id: string;
@@ -102,6 +114,7 @@ export interface TagSelectorProps {
   onSelect: (tag: Tag) => void;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  customTags?: boolean;
 }
 
 export const TagSelector = ({
@@ -111,7 +124,12 @@ export const TagSelector = ({
   onSelect,
   value,
   onChange,
+  customTags = false,
 }: TagSelectorProps) => {
+  if (!customTags && selectedTags) {
+    ensureCustomTagsNotUsed(options, selectedTags);
+  }
+
   const uniqueSelectedTags = [
     ...(selectedTags || []).filter(
       (tag) => !options.some((option) => option.id === tag.id),

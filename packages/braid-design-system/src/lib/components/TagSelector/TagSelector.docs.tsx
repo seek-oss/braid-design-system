@@ -3,7 +3,6 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 import { type Tag, TagSelector } from './TagSelector';
 import { Heading, Stack } from '../';
-import { set } from 'lodash';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -57,6 +56,7 @@ const docs: ComponentDocs = {
           <TagSelector
             options={preOptions}
             selectedTags={preSelectedTags}
+            customTags={true}
             onSelect={(tag) => {
               console.log(`selected ${tag.description}`); // eslint-disable-line no-console
               setPreSelectedTags((tags) =>
