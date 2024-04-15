@@ -16,6 +16,7 @@ const docs: ComponentDocs = {
       { description: 'the other', id: 'theOtherStandardOptions' },
       { description: 'another one', id: 'anotherOneStandardOptions' },
     ];
+    const [standardValue, setStandardValue] = React.useState<string>('');
 
     const [preSelectedTags, setPreSelectedTags] = React.useState<Tag[]>([
       { description: 'first', id: 'firstPreSelected' },
@@ -28,6 +29,7 @@ const docs: ComponentDocs = {
       { description: 'the other', id: 'theOtherPreOptions' },
       { description: 'another one', id: 'anotherOnePreOptions' },
     ];
+    const [preValue, setPreValue] = React.useState<string>('');
 
     return source(
       <Stack space="xxlarge">
@@ -44,6 +46,8 @@ const docs: ComponentDocs = {
                   : [...tags, tag],
               );
             }}
+            value={standardValue}
+            onChange={(event) => setStandardValue(event.target.value)}
           />
         </Stack>
         <Stack space="small">
@@ -59,6 +63,8 @@ const docs: ComponentDocs = {
                   : [...tags, tag],
               );
             }}
+            value={preValue}
+            onChange={(event) => setPreValue(event.target.value)}
           />
         </Stack>
       </Stack>,

@@ -87,7 +87,9 @@ export interface TagSelectorProps {
   options: Tag[];
   selectedTags?: Tag[];
   ariaLabel?: string;
-  onSelect?: (tag: Tag) => void;
+  onSelect: (tag: Tag) => void;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const TagSelector = ({
@@ -95,6 +97,8 @@ export const TagSelector = ({
   selectedTags,
   ariaLabel,
   onSelect,
+  value,
+  onChange,
 }: TagSelectorProps) => {
   const uniqueSelectedTags = [
     ...(selectedTags || []).filter(
@@ -103,7 +107,6 @@ export const TagSelector = ({
   ];
   const dropdownOptions = [...uniqueSelectedTags, ...options];
 
-  const [input, setInput] = useState('');
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeOption, setActiveOption] = useState<string | undefined>(
     dropdownOptions[0].id,
@@ -159,9 +162,8 @@ export const TagSelector = ({
       <div className="combo-wrap">
         <input
           type="text"
-          value={input}
-          // Todo - make this element controlled by the consumer
-          onChange={(event) => setInput(event.target.value)}
+          value={value}
+          onChange={onChange}
           id="tag-selector"
           role="combobox"
           aria-controls="available-tags"
