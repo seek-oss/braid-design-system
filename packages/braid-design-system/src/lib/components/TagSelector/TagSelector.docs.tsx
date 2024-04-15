@@ -39,8 +39,6 @@ const docs: ComponentDocs = {
             onSelect={(tag) => {
               console.log(`selected ${tag.description}`); // eslint-disable-line no-console
               setStandardSelectedTags((tags) =>
-                // if tag is already in selected tags, remove it
-                // otherwise, add it
                 tags.some((t) => t.id === tag.id)
                   ? tags.filter((t) => t.id !== tag.id)
                   : [...tags, tag],
