@@ -39,6 +39,7 @@ interface TagOptionProps {
   activeOption: string | undefined;
   onSelect: (tag: Tag) => void;
   checked?: boolean;
+  value: string;
 }
 
 const TagOption = ({
@@ -46,13 +47,15 @@ const TagOption = ({
   activeOption,
   onSelect,
   checked,
+  value,
 }: TagOptionProps) => {
   const checkboxId = `checkbox-${tag.id}`;
 
   const handleClick = (event: React.MouseEvent, clickedTag: Tag) => {
     event.preventDefault();
     if (onSelect) {
-      onSelect(clickedTag);
+      handleOnSelect(clickedTag, value, onSelect);
+      // onSelect(clickedTag);
     }
   };
 
@@ -97,6 +100,17 @@ function ensureCustomTagsNotUsed(options: Tag[], selectedTags: Tag[]) {
         `Invalid prop: selectedTags contains a tag not present in options: ${tag.id}`,
       );
     }
+  }
+}
+
+function handleOnSelect(tag: Tag, value: string, onSelect: (tag: Tag) => void) {
+  if (tag.description.startsWith('Add "')) {
+    onSelect({
+      description: value,
+      id: `${tag.id}-${value}`,
+    });
+  } else {
+    onSelect(tag);
   }
 }
 
@@ -158,7 +172,6 @@ export const TagSelector = ({
   function getIndexOfActiveOption() {
     if (!activeOption) return -1;
 
-    // if activeOption is not in dropdownOptions, return -1
     if (!dropdownOptions.find((option) => option.id === activeOption)) {
       return -1;
     }
@@ -167,7 +180,7 @@ export const TagSelector = ({
   }
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    const prevIndex = getIndexOfActiveOption();
+    const currentIndex = getIndexOfActiveOption();
 
     switch (event.key) {
       case 'ArrowDown':
@@ -175,37 +188,38 @@ export const TagSelector = ({
 
         console.log('activeOption', activeOption); // eslint-disable-line no-console
 
-        if (prevIndex + 1 === dropdownOptions.length) {
+        if (currentIndex + 1 === dropdownOptions.length) {
           setActiveOption(dropdownOptions[0].id);
-        } else if (prevIndex === -1) {
+        } else if (currentIndex === -1) {
           setActiveOption(dropdownOptions[0].id);
         } else {
-          setActiveOption(dropdownOptions[prevIndex + 1].id);
+          setActiveOption(dropdownOptions[currentIndex + 1].id);
         }
 
         break;
       case 'ArrowUp':
         event.preventDefault();
 
-        if (prevIndex === 0) {
+        if (currentIndex === 0) {
           setActiveOption(dropdownOptions[dropdownOptions.length - 1].id);
+        } else if (currentIndex === -1) {
+          setActiveOption(dropdownOptions[0].id);
         } else {
-          setActiveOption(dropdownOptions[prevIndex - 1].id);
+          setActiveOption(dropdownOptions[currentIndex - 1].id);
         }
 
         break;
 
       case 'Enter':
         event.preventDefault();
+        if (currentIndex === -1) return;
+
         if (onSelect) {
-          if (dropdownOptions[prevIndex].description.startsWith('Add "')) {
-            onSelect({
-              description: value,
-              id: `${id}-${value}`,
-            });
-          } else {
-            onSelect(dropdownOptions[prevIndex]);
-          }
+          handleOnSelect(
+            dropdownOptions[getIndexOfActiveOption()],
+            value,
+            onSelect,
+          );
         }
         break;
 
@@ -259,6 +273,7 @@ export const TagSelector = ({
                     (selectedTag) => selectedTag.id === tag.id,
                   ) || false
                 }
+                value={value}
               />
             ))}
           </ul>

@@ -52,7 +52,7 @@ const docs: ComponentDocs = {
           />
         </Stack>
         <Stack space="small">
-          <Heading level="2">Tag Selector with pre-selections</Heading>
+          <Heading level="2">Tag Selector with Custom Tags</Heading>
           <TagSelector
             options={preOptions}
             selectedTags={preSelectedTags}
