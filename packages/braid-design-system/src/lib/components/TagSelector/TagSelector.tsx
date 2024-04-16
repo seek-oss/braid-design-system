@@ -1,10 +1,11 @@
 import type React from 'react';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 import * as styles from './TagSelector.css';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
 import { Inline } from '../Inline/Inline';
+import type { Tag } from '../Tag/Tag';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -89,10 +90,7 @@ const TagOption = ({
   );
 };
 
-function ensureCustomTagsNotUsed(
-  options: Tag[],
-  selectedTags: Tag[],
-) {
+function ensureCustomTagsNotUsed(options: Tag[], selectedTags: Tag[]) {
   for (const tag of selectedTags) {
     if (!options.find((option) => option.id === tag.id)) {
       throw new Error(
@@ -126,23 +124,39 @@ export const TagSelector = ({
   onChange,
   customTags = false,
 }: TagSelectorProps) => {
+  const id = useId();
+
   if (!customTags && selectedTags) {
     ensureCustomTagsNotUsed(options, selectedTags);
   }
 
-  const uniqueSelectedTags = [
+  const customSelectedTags = [
     ...(selectedTags || []).filter(
       (tag) => !options.some((option) => option.id === tag.id),
     ),
   ];
-  const dropdownOptions = [...uniqueSelectedTags, ...options];
+
+  const dropdownOptions = [
+    ...(customTags && value
+      ? [{ description: `Add "${value}"`, id: `${id}-add-${value}` }]
+      : []),
+    ...customSelectedTags,
+    ...options,
+  ];
 
   const [isFocussed, setIsFocussed] = useState(false);
   const [activeOption, setActiveOption] = useState<string | undefined>(
-    dropdownOptions[0].id,
+    undefined,
   );
 
   function getIndexOfActiveOption() {
+    if (!activeOption) return -1;
+
+    // if activeOption is not in dropdownOptions, return -1
+    if (!dropdownOptions.find((option) => option.id === activeOption)) {
+      return -1;
+    }
+
     return dropdownOptions.findIndex((option) => option.id === activeOption);
   }
 
@@ -153,7 +167,15 @@ export const TagSelector = ({
       case 'ArrowDown':
         event.preventDefault();
 
+        // console.log('dropdownOptions[0]: ', dropdownOptions[0]); // eslint-disable-line no-console
+        // console.log('prevIndex: ', prevIndex); // eslint-disable-line no-console
+
+        console.log('activeOption', activeOption); // eslint-disable-line no-console
+
         if (prevIndex + 1 === dropdownOptions.length) {
+          setActiveOption(dropdownOptions[0].id);
+        } else if (prevIndex === -1) {
+          console.log('in here'); // eslint-disable-line no-console
           setActiveOption(dropdownOptions[0].id);
         } else {
           setActiveOption(dropdownOptions[prevIndex + 1].id);
@@ -174,7 +196,14 @@ export const TagSelector = ({
       case 'Enter':
         event.preventDefault();
         if (onSelect) {
-          onSelect(dropdownOptions[prevIndex]);
+          if (dropdownOptions[prevIndex].description.startsWith('Add "')) {
+            onSelect({
+              description: value,
+              id: `${id}-${value}`,
+            });
+          } else {
+            onSelect(dropdownOptions[prevIndex]);
+          }
         }
         break;
 
