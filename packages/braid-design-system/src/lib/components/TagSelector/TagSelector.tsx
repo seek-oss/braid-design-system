@@ -136,12 +136,18 @@ export const TagSelector = ({
     ),
   ];
 
+  const unFilteredDropdownOptionsWithoutCustomTag = [
+    ...customSelectedTags,
+    ...options,
+  ];
+
   const dropdownOptions = [
     ...(customTags && value
       ? [{ description: `Add "${value}"`, id: `${id}-add-${value}` }]
       : []),
-    ...customSelectedTags,
-    ...options,
+    ...unFilteredDropdownOptionsWithoutCustomTag.filter((tag) =>
+      tag.description.toLowerCase().includes(value.toLowerCase()),
+    ),
   ];
 
   const [isFocussed, setIsFocussed] = useState(false);
@@ -167,15 +173,11 @@ export const TagSelector = ({
       case 'ArrowDown':
         event.preventDefault();
 
-        // console.log('dropdownOptions[0]: ', dropdownOptions[0]); // eslint-disable-line no-console
-        // console.log('prevIndex: ', prevIndex); // eslint-disable-line no-console
-
         console.log('activeOption', activeOption); // eslint-disable-line no-console
 
         if (prevIndex + 1 === dropdownOptions.length) {
           setActiveOption(dropdownOptions[0].id);
         } else if (prevIndex === -1) {
-          console.log('in here'); // eslint-disable-line no-console
           setActiveOption(dropdownOptions[0].id);
         } else {
           setActiveOption(dropdownOptions[prevIndex + 1].id);
