@@ -84,8 +84,9 @@ const TagOption = ({
           onClick={handleCheckboxClick}
           className={styles.TagOptionCheckbox}
           checked={checked}
-          aria-checked={checked}
           onChange={onSelect ? () => onSelect(tag) : undefined}
+          role="presentation"
+          tabIndex={-1}
         />
         <span>{tag.description}</span>
       </label>
@@ -244,9 +245,7 @@ export const TagSelector = ({
           aria-controls="available-tags"
           aria-autocomplete="list"
           aria-expanded="false"
-          data-active-option={`checkbox-${
-            dropdownOptions[getIndexOfActiveOption()]?.id
-          }`}
+          // Todo - potentially remove "checkbox-" prefix
           aria-activedescendant={`checkbox-${
             dropdownOptions[getIndexOfActiveOption()]?.id
           }`}
