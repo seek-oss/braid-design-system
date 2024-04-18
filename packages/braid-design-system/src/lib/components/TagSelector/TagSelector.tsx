@@ -232,7 +232,10 @@ export const TagSelector = ({
   };
 
   return (
-    <div className={styles.Wrapper}>
+    <div
+      className={styles.Wrapper}
+      {...(ariaLabel && { 'aria-label': ariaLabel })}
+    >
       {(selectedTags || []).length > 0 && (
         <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
       )}
@@ -257,12 +260,7 @@ export const TagSelector = ({
         />
         <span aria-hidden="true" data-trigger="multiselect" />
         {isFocussed && (
-          <ul
-            className={styles.Dropdown}
-            id="available-tags"
-            role="listbox"
-            {...(ariaLabel && { 'aria-label': ariaLabel })}
-          >
+          <ul className={styles.Dropdown} id="available-tags" role="listbox">
             {dropdownOptions.map((tag) => (
               <TagOption
                 tag={tag}
