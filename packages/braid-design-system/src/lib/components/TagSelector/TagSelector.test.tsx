@@ -2,18 +2,15 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import type React from 'react';
 import { BraidTestProvider } from '../../../entries/test';
-import { type Tag, TagSelector } from './TagSelector';
+import { type Tag, TagSelector, type TagSelectorProps } from './TagSelector';
 import { render } from '@testing-library/react';
 import { useState } from 'react';
 
 function renderTagSelector({
   options,
-  selectedTags: selectedTagsProp,
+  selectedTags: selectedTagsProp = [],
   ariaLabel,
-}: {
-  // Todo - Replace this with Pick of TagSelector props
-  options: Tag[];
-  selectedTags: Tag[];
+}: Pick<TagSelectorProps, 'options' | 'selectedTags'> & {
   ariaLabel?: string;
 }) {
   const TestCase = () => {
