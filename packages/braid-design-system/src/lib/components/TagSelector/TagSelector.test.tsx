@@ -54,4 +54,23 @@ describe('TagSelector', () => {
 
     expect(getByLabelText('Actual Label')).toBeInTheDocument();
   });
+
+  // Todo - should select option on click
+
+  // Todo - should pass through focus and blur events
+
+  // Todo - should forward refs
+
+  // Todo - ARIA labels
+
+  // Todo - keyboard access
+
+  // Todo - should select an option on enter after navigating
+
+  // Todo - should show `noOptionsMessage` message when no options are provided
+  // This functionality will need to be added to the component itself
+
+  // Todo - should not show `noOptionsMessage` when options are provided
+
+  // Todo - automatic selection
 });
