@@ -56,6 +56,7 @@ describe('TagSelector', () => {
   });
 
   // Todo - should select option on click
+  // This functionality will need to be added to the component itself
 
   // Todo - should pass through focus and blur events
 

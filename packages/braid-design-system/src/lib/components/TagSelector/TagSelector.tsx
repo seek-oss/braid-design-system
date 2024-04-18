@@ -1,4 +1,4 @@
-import type React from 'react';
+import type { KeyboardEvent } from 'react';
 import { useId, useState } from 'react';
 
 import * as styles from './TagSelector.css';
@@ -6,6 +6,7 @@ import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
 import { Inline } from '../Inline/Inline';
 import type { Tag } from '../Tag/Tag';
+import { normalizeKey } from '../private/normalizeKey';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -182,10 +183,11 @@ export const TagSelector = ({
     return dropdownOptions.findIndex((option) => option.id === activeOption);
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const onKeyDown = (event: KeyboardEvent) => {
+    const targetKey = normalizeKey(event);
     const currentIndex = getIndexOfActiveOption();
 
-    switch (event.key) {
+    switch (targetKey) {
       case 'ArrowDown':
         event.preventDefault();
 
@@ -256,7 +258,7 @@ export const TagSelector = ({
           }`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
-          onKeyDown={handleKeyDown}
+          onKeyDown={onKeyDown}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
         {isFocussed && (
