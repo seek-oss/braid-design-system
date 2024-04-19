@@ -160,7 +160,9 @@ interface TagSelectorState {
 export interface TagSelectorProps {
   options: Tag[];
   selectedTags?: Tag[];
+  // remove ariaLabel prop?
   ariaLabel?: string;
+  label: string;
   onSelect: (tag: Tag) => void;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -172,6 +174,7 @@ export const TagSelector = ({
   options,
   selectedTags,
   ariaLabel,
+  label,
   onSelect,
   value,
   onChange,
@@ -315,7 +318,7 @@ export const TagSelector = ({
       {(selectedTags || []).length > 0 && (
         <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
       )}
-      <label htmlFor="tag-selector">Select tag</label>
+      <label htmlFor="tag-selector">{label}</label>
       <div className="combo-wrap">
         <input
           type="text"

@@ -15,7 +15,8 @@ function renderTagSelector({
   options,
   selectedTags: selectedTagsProp = [],
   ariaLabel,
-}: Pick<TagSelectorProps, 'value' | 'options' | 'selectedTags'> & {
+  label,
+}: Pick<TagSelectorProps, 'value' | 'options' | 'selectedTags' | 'label'> & {
   ariaLabel?: string;
 }) {
   const changeHandler = jest.fn();
@@ -28,6 +29,7 @@ function renderTagSelector({
     return (
       <BraidTestProvider>
         <TagSelector
+          label={label}
           options={options}
           selectedTags={selectedTags}
           onSelect={(tag) => {
@@ -62,6 +64,7 @@ describe('TagSelector', () => {
       options: [{ description: 'Apples', id: 'apples' }],
       selectedTags: [],
       ariaLabel: 'Actual Label',
+      label: 'Select tags',
     });
 
     expect(getByLabelText('Actual Label')).toBeInTheDocument();
@@ -73,6 +76,7 @@ describe('TagSelector', () => {
         value: '',
         options: [{ description: 'Apples', id: 'apples' }],
         selectedTags: [],
+        label: 'Select tags',
       });
 
     await userEvent.click(input);
@@ -97,11 +101,21 @@ describe('TagSelector', () => {
     });
   });
 
-  // Todo - should pass through focus and blur events
-
-  // Todo - should forward refs
-
   // Todo - ARIA labels
+  describe('ARIA labels', () => {
+    it('should associate the field label with the input', () => {
+      const { queryByLabelText, input } = renderTagSelector({
+        value: '',
+        options: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [],
+        label: 'Fruit',
+      });
+
+      const result = queryByLabelText('Fruit');
+
+      expect(result).toBe(input);
+    });
+  });
 
   // Todo - keyboard access
 
