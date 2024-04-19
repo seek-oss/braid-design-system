@@ -157,70 +157,6 @@ type Action =
 interface TagSelectorState {
   isFocussed: boolean;
   activeOption: string | undefined;
-  dropdownOptions: Tag[];
-  value: string;
-  onSelect: (tag: Tag) => void;
-}
-
-function reducer(state: TagSelectorState, action: Action) {
-  const currentIndex = getIndexOfActiveOption({
-    dropdownOptions: state.dropdownOptions,
-    activeOption: state.activeOption,
-  });
-  const optionsLength = state.dropdownOptions.length;
-
-  // Todo - refactor so that when you get to the end of the list, reset position to the start and vice versa
-  switch (action.type) {
-    case INPUT_FOCUS:
-      return { ...state, isFocussed: true };
-    case INPUT_BLUR:
-      return { ...state, isFocussed: false };
-
-    // Todo - refactor this
-    case INPUT_ARROW_DOWN:
-      if (currentIndex + 1 === optionsLength || currentIndex === -1) {
-        return { ...state, activeOption: state.dropdownOptions[0].id };
-      }
-
-      return {
-        ...state,
-        activeOption: state.dropdownOptions[currentIndex + 1].id,
-      };
-
-    // Todo - refactor this
-    case INPUT_ARROW_UP:
-      if (currentIndex === 0) {
-        return {
-          ...state,
-          activeOption: state.dropdownOptions[optionsLength - 1].id,
-        };
-      } else if (currentIndex === -1) {
-        return {
-          ...state,
-          activeOption: state.dropdownOptions[0].id,
-        };
-      }
-
-      return {
-        ...state,
-        activeOption: state.dropdownOptions[currentIndex - 1].id,
-      };
-
-    case INPUT_ENTER:
-      if (currentIndex !== -1) {
-
-        
-        handleOnSelect(
-          state.dropdownOptions[currentIndex],
-          state.value,
-          state.onSelect,
-        );
-      }
-      return state;
-
-    default:
-      return state;
-  }
 }
 
 export interface TagSelectorProps {
@@ -269,12 +205,67 @@ export const TagSelector = ({
     ),
   ];
 
+  function reducer(state: TagSelectorState, action: Action) {
+    const currentIndex = getIndexOfActiveOption({
+      dropdownOptions,
+      activeOption: state.activeOption,
+    });
+
+    // Todo - refactor so that when you get to the end of the list, reset position to the start and vice versa
+    switch (action.type) {
+      case INPUT_FOCUS:
+        return { ...state, isFocussed: true };
+      case INPUT_BLUR:
+        return { ...state, isFocussed: false };
+
+      // Todo - refactor this
+      case INPUT_ARROW_DOWN:
+        if (
+          currentIndex + 1 === dropdownOptions.length ||
+          currentIndex === -1
+        ) {
+          return { ...state, activeOption: dropdownOptions[0].id };
+        }
+
+        console.log('in here 3'); // eslint-disable-line no-console
+        return {
+          ...state,
+          activeOption: dropdownOptions[currentIndex + 1].id,
+        };
+
+      // Todo - refactor this
+      case INPUT_ARROW_UP:
+        if (currentIndex === 0) {
+          return {
+            ...state,
+            activeOption: dropdownOptions[dropdownOptions.length - 1].id,
+          };
+        } else if (currentIndex === -1) {
+          return {
+            ...state,
+            activeOption: dropdownOptions[0].id,
+          };
+        }
+
+        return {
+          ...state,
+          activeOption: dropdownOptions[currentIndex - 1].id,
+        };
+
+      case INPUT_ENTER:
+        if (currentIndex !== -1) {
+          handleOnSelect(dropdownOptions[currentIndex], value, onSelect);
+        }
+        return state;
+
+      default:
+        return state;
+    }
+  }
+
   const [{ isFocussed, activeOption }, dispatch] = useReducer(reducer, {
     isFocussed: false,
     activeOption: undefined,
-    dropdownOptions,
-    value,
-    onSelect,
   });
 
   const onKeyDown = (event: KeyboardEvent) => {
