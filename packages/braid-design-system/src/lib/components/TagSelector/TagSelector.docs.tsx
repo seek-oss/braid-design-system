@@ -37,7 +37,7 @@ const docs: ComponentDocs = {
             options={standardOptions}
             selectedTags={standardSelectedTags}
             onSelect={(tag) => {
-              console.log(`selected ${tag.description}`); // eslint-disable-line no-console
+              // console.log(`selected ${tag.description}`); // eslint-disable-line no-console
               setStandardSelectedTags((tags) =>
                 tags.some((t) => t.id === tag.id)
                   ? tags.filter((t) => t.id !== tag.id)
@@ -56,7 +56,7 @@ const docs: ComponentDocs = {
             selectedTags={preSelectedTags}
             customTags={true}
             onSelect={(tag) => {
-              console.log(`selected ${tag.description}`); // eslint-disable-line no-console
+              // console.log(`selected ${tag.description}`); // eslint-disable-line no-console
               setPreSelectedTags((tags) =>
                 tags.some((t) => t.id === tag.id)
                   ? tags.filter((t) => t.id !== tag.id)

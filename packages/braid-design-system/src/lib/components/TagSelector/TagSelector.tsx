@@ -1,5 +1,5 @@
 import type { KeyboardEvent } from 'react';
-import { useId, useState } from 'react';
+import { useId, useReducer } from 'react';
 
 import * as styles from './TagSelector.css';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
@@ -107,6 +107,8 @@ function ensureCustomTagsNotUsed(options: Tag[], selectedTags: Tag[]) {
 
 function handleOnSelect(tag: Tag, value: string, onSelect: (tag: Tag) => void) {
   // Add zero-width space to ensure the tag is not an exact match
+  if (!onSelect) return;
+
   if (tag.description.startsWith('Add "​')) {
     onSelect({
       description: value,
@@ -138,6 +140,89 @@ export interface Tag {
   id: string;
 }
 
+// Action type IDs (allows action type names to be minified)
+const INPUT_FOCUS = 0;
+const INPUT_BLUR = 1;
+const INPUT_ARROW_DOWN = 2;
+const INPUT_ARROW_UP = 3;
+const INPUT_ENTER = 4;
+
+type Action =
+  | { type: typeof INPUT_FOCUS }
+  | { type: typeof INPUT_BLUR }
+  | { type: typeof INPUT_ARROW_DOWN }
+  | { type: typeof INPUT_ARROW_UP }
+  | { type: typeof INPUT_ENTER };
+
+interface TagSelectorState {
+  isFocussed: boolean;
+  activeOption: string | undefined;
+  dropdownOptions: Tag[];
+  value: string;
+  onSelect: (tag: Tag) => void;
+}
+
+function reducer(state: TagSelectorState, action: Action) {
+  const currentIndex = getIndexOfActiveOption({
+    dropdownOptions: state.dropdownOptions,
+    activeOption: state.activeOption,
+  });
+  const optionsLength = state.dropdownOptions.length;
+
+  // Todo - refactor so that when you get to the end of the list, reset position to the start and vice versa
+  switch (action.type) {
+    case INPUT_FOCUS:
+      return { ...state, isFocussed: true };
+    case INPUT_BLUR:
+      return { ...state, isFocussed: false };
+
+    // Todo - refactor this
+    case INPUT_ARROW_DOWN:
+      if (currentIndex + 1 === optionsLength || currentIndex === -1) {
+        return { ...state, activeOption: state.dropdownOptions[0].id };
+      }
+
+      return {
+        ...state,
+        activeOption: state.dropdownOptions[currentIndex + 1].id,
+      };
+
+    // Todo - refactor this
+    case INPUT_ARROW_UP:
+      if (currentIndex === 0) {
+        return {
+          ...state,
+          activeOption: state.dropdownOptions[optionsLength - 1].id,
+        };
+      } else if (currentIndex === -1) {
+        return {
+          ...state,
+          activeOption: state.dropdownOptions[0].id,
+        };
+      }
+
+      return {
+        ...state,
+        activeOption: state.dropdownOptions[currentIndex - 1].id,
+      };
+
+    case INPUT_ENTER:
+      if (currentIndex !== -1) {
+
+        
+        handleOnSelect(
+          state.dropdownOptions[currentIndex],
+          state.value,
+          state.onSelect,
+        );
+      }
+      return state;
+
+    default:
+      return state;
+  }
+}
+
 export interface TagSelectorProps {
   options: Tag[];
   selectedTags?: Tag[];
@@ -157,8 +242,6 @@ export const TagSelector = ({
   onChange,
   customTags = false,
 }: TagSelectorProps) => {
-  const id = useId();
-
   if (!customTags && selectedTags) {
     ensureCustomTagsNotUsed(options, selectedTags);
   }
@@ -174,6 +257,8 @@ export const TagSelector = ({
     ...options,
   ];
 
+  const id = useId();
+
   const dropdownOptions = [
     ...(customTags && value
       ? // Add zero-width space to ensure the tag is not an exact match
@@ -184,10 +269,13 @@ export const TagSelector = ({
     ),
   ];
 
-  const [isFocussed, setIsFocussed] = useState(false);
-  const [activeOption, setActiveOption] = useState<string | undefined>(
-    undefined,
-  );
+  const [{ isFocussed, activeOption }, dispatch] = useReducer(reducer, {
+    isFocussed: false,
+    activeOption: undefined,
+    dropdownOptions,
+    value,
+    onSelect,
+  });
 
   const onKeyDown = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -199,29 +287,11 @@ export const TagSelector = ({
     switch (targetKey) {
       case 'ArrowDown':
         event.preventDefault();
-
-        console.log('activeOption', activeOption); // eslint-disable-line no-console
-
-        if (currentIndex + 1 === dropdownOptions.length) {
-          setActiveOption(dropdownOptions[0].id);
-        } else if (currentIndex === -1) {
-          setActiveOption(dropdownOptions[0].id);
-        } else {
-          setActiveOption(dropdownOptions[currentIndex + 1].id);
-        }
-
-        break;
+        dispatch({ type: INPUT_ARROW_DOWN });
+        return;
       case 'ArrowUp':
         event.preventDefault();
-
-        if (currentIndex === 0) {
-          setActiveOption(dropdownOptions[dropdownOptions.length - 1].id);
-        } else if (currentIndex === -1) {
-          setActiveOption(dropdownOptions[0].id);
-        } else {
-          setActiveOption(dropdownOptions[currentIndex - 1].id);
-        }
-
+        dispatch({ type: INPUT_ARROW_UP });
         break;
 
       case 'Enter':
@@ -269,8 +339,8 @@ export const TagSelector = ({
               getIndexOfActiveOption({ dropdownOptions, activeOption })
             ]?.id
           }`}
-          onFocus={() => setIsFocussed(true)}
-          onBlur={() => setIsFocussed(false)}
+          onFocus={() => dispatch({ type: INPUT_FOCUS })}
+          onBlur={() => dispatch({ type: INPUT_BLUR })}
           onKeyDown={onKeyDown}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
