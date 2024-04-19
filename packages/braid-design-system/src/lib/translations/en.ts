@@ -18,3 +18,17 @@ export const autosuggest: AutosuggestTranslations = {
   suggestionAutoSelectedAnnouncement: (suggestion) =>
     `Suggestion ${suggestion} is automatically selected`,
 };
+
+export interface TagSelectorTranslations {
+  optionInstructions: string;
+  optionsAvailableAnnouncement: (optionCount: number) => string;
+  noOptionsAvailableAnnouncement: string;
+}
+
+export const tagSelector: TagSelectorTranslations = {
+  optionInstructions:
+    'Use up and down arrow keys to navigate. Press enter to select',
+  optionsAvailableAnnouncement: (optionCount) =>
+    `${optionCount} option${optionCount === 1 ? '' : 's'} available`,
+  noOptionsAvailableAnnouncement: 'No options available',
+};

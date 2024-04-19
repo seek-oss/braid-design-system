@@ -7,6 +7,11 @@ import { IconClear } from '../icons';
 import { Inline } from '../Inline/Inline';
 import type { Tag } from '../Tag/Tag';
 import { normalizeKey } from '../private/normalizeKey';
+import { Announcement } from '../private/Announcement/Announcement';
+import {
+  type TagSelectorTranslations,
+  tagSelector,
+} from '../../translations/en';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -160,6 +165,7 @@ export interface TagSelectorProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   customTags?: boolean;
+  translations?: TagSelectorTranslations;
 }
 
 export const TagSelector = ({
@@ -170,6 +176,7 @@ export const TagSelector = ({
   value,
   onChange,
   customTags = false,
+  translations = tagSelector,
 }: TagSelectorProps) => {
   if (!customTags && selectedTags) {
     ensureCustomTagsNotUsed(options, selectedTags);
@@ -282,6 +289,24 @@ export const TagSelector = ({
     }
   };
 
+  const announcements = [];
+  const optionsCount = dropdownOptions.length;
+  const hasOptions = optionsCount > 0;
+
+  // Announce when the field is focused and no options have been manually highlighted
+  if (isFocussed && activeOption == null) {
+    // Todo - fix this text
+    if (hasOptions) {
+      announcements.push(
+        translations.optionsAvailableAnnouncement(optionsCount),
+      );
+
+      announcements.push(translations.optionInstructions);
+    } else {
+      announcements.push(translations.noOptionsAvailableAnnouncement);
+    }
+  }
+
   return (
     <div
       className={styles.Wrapper}
@@ -331,6 +356,7 @@ export const TagSelector = ({
           </ul>
         )}
       </div>
+      <Announcement>{announcements.join('. ')}</Announcement>
     </div>
   );
 };
