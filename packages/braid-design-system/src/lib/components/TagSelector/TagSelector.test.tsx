@@ -21,7 +21,7 @@ function renderTagSelector({
   const changeHandler = jest.fn();
 
   const TestCase = () => {
-    const [selectedTags, setSelectedTags] = useState<Tag[]>(selectedTagsProp);
+    const selectedTags = selectedTagsProp;
 
     const [value, setValue] = useState<string>('');
 
@@ -31,12 +31,8 @@ function renderTagSelector({
           options={options}
           selectedTags={selectedTags}
           onSelect={(tag) => {
-            setSelectedTags((tags) =>
-              tags.some((t) => t.id === tag.id)
-                ? tags.filter((t) => t.id !== tag.id)
-                : [...tags, tag],
-            );
             setValue('');
+            changeHandler(tag);
           }}
           value={value}
           onChange={(event) => setValue(event.target.value)}
@@ -46,11 +42,17 @@ function renderTagSelector({
     );
   };
 
-  const { getByRole, getByLabelText } = render(<TestCase />);
+  const { getByRole, getByLabelText, queryByLabelText } = render(<TestCase />);
   const input = getByRole('combobox');
   const getInputValue = () => input.getAttribute('value');
 
-  return { input, getInputValue, changeHandler, getByLabelText };
+  return {
+    input,
+    getInputValue,
+    changeHandler,
+    getByLabelText,
+    queryByLabelText,
+  };
 }
 
 describe('TagSelector', () => {
@@ -65,13 +67,13 @@ describe('TagSelector', () => {
     expect(getByLabelText('Actual Label')).toBeInTheDocument();
   });
 
-  // Todo - should select option on click
   it('should select option on click', async () => {
-    const { input, changeHandler, getInputValue } = renderTagSelector({
-      value: '',
-      options: [{ description: 'Apples', id: 'apples' }],
-      selectedTags: [],
-    });
+    const { input, changeHandler, getInputValue, queryByLabelText } =
+      renderTagSelector({
+        value: '',
+        options: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [],
+      });
 
     await userEvent.click(input);
     expect(getInputValue()).toBe('');
@@ -80,6 +82,19 @@ describe('TagSelector', () => {
     expect(getAnnouncements()).toBe(
       '1 option available. Use up and down arrow keys to navigate. Press enter to select',
     );
+
+    const option = queryByLabelText('Apples') as HTMLInputElement;
+    if (!option) {
+      throw new Error('Option not found');
+    }
+
+    await userEvent.click(option);
+
+    expect(getInputValue()).toBe('');
+    expect(changeHandler).toHaveBeenCalledWith({
+      description: 'Apples',
+      id: 'apples',
+    });
   });
 
   // Todo - should pass through focus and blur events
