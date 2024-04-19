@@ -145,14 +145,12 @@ const INPUT_FOCUS = 0;
 const INPUT_BLUR = 1;
 const INPUT_ARROW_DOWN = 2;
 const INPUT_ARROW_UP = 3;
-const INPUT_ENTER = 4;
 
 type Action =
   | { type: typeof INPUT_FOCUS }
   | { type: typeof INPUT_BLUR }
   | { type: typeof INPUT_ARROW_DOWN }
-  | { type: typeof INPUT_ARROW_UP }
-  | { type: typeof INPUT_ENTER };
+  | { type: typeof INPUT_ARROW_UP };
 
 interface TagSelectorState {
   isFocussed: boolean;
@@ -211,14 +209,13 @@ export const TagSelector = ({
       activeOption: state.activeOption,
     });
 
-    // Todo - refactor so that when you get to the end of the list, reset position to the start and vice versa
     switch (action.type) {
       case INPUT_FOCUS:
         return { ...state, isFocussed: true };
+
       case INPUT_BLUR:
         return { ...state, isFocussed: false };
 
-      // Todo - refactor this
       case INPUT_ARROW_DOWN:
         if (
           currentIndex + 1 === dropdownOptions.length ||
@@ -227,23 +224,16 @@ export const TagSelector = ({
           return { ...state, activeOption: dropdownOptions[0].id };
         }
 
-        console.log('in here 3'); // eslint-disable-line no-console
         return {
           ...state,
           activeOption: dropdownOptions[currentIndex + 1].id,
         };
 
-      // Todo - refactor this
       case INPUT_ARROW_UP:
-        if (currentIndex === 0) {
+        if (currentIndex === 0 || currentIndex === -1) {
           return {
             ...state,
             activeOption: dropdownOptions[dropdownOptions.length - 1].id,
-          };
-        } else if (currentIndex === -1) {
-          return {
-            ...state,
-            activeOption: dropdownOptions[0].id,
           };
         }
 
@@ -251,12 +241,6 @@ export const TagSelector = ({
           ...state,
           activeOption: dropdownOptions[currentIndex - 1].id,
         };
-
-      case INPUT_ENTER:
-        if (currentIndex !== -1) {
-          handleOnSelect(dropdownOptions[currentIndex], value, onSelect);
-        }
-        return state;
 
       default:
         return state;
