@@ -54,10 +54,7 @@ const TagOption = ({
 
   const handleClick = (event: React.MouseEvent, clickedTag: Tag) => {
     event.preventDefault();
-    if (onSelect) {
-      handleOnSelect(clickedTag, value, onSelect);
-      // onSelect(clickedTag);
-    }
+    handleOnSelect(clickedTag, value, onSelect);
   };
 
   const handleCheckboxClick = (event: React.MouseEvent) => {
@@ -107,8 +104,6 @@ function ensureCustomTagsNotUsed(options: Tag[], selectedTags: Tag[]) {
 
 function handleOnSelect(tag: Tag, value: string, onSelect: (tag: Tag) => void) {
   // Add zero-width space to ensure the tag is not an exact match
-  if (!onSelect) return;
-
   if (tag.description.startsWith('Add "​')) {
     onSelect({
       description: value,
@@ -273,15 +268,13 @@ export const TagSelector = ({
         event.preventDefault();
         if (currentIndex === -1) return;
 
-        if (onSelect) {
-          handleOnSelect(
-            dropdownOptions[
-              getIndexOfActiveOption({ dropdownOptions, activeOption })
-            ],
-            value,
-            onSelect,
-          );
-        }
+        handleOnSelect(
+          dropdownOptions[
+            getIndexOfActiveOption({ dropdownOptions, activeOption })
+          ],
+          value,
+          onSelect,
+        );
         break;
 
       default:
