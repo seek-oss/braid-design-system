@@ -117,6 +117,22 @@ function handleOnSelect(tag: Tag, value: string, onSelect: (tag: Tag) => void) {
   }
 }
 
+function getIndexOfActiveOption({
+  dropdownOptions,
+  activeOption,
+}: {
+  dropdownOptions: Tag[];
+  activeOption: string | undefined;
+}) {
+  if (!activeOption) return -1;
+
+  if (!dropdownOptions.find((option) => option.id === activeOption)) {
+    return -1;
+  }
+
+  return dropdownOptions.findIndex((option) => option.id === activeOption);
+}
+
 export interface Tag {
   description: string;
   id: string;
@@ -173,19 +189,12 @@ export const TagSelector = ({
     undefined,
   );
 
-  function getIndexOfActiveOption() {
-    if (!activeOption) return -1;
-
-    if (!dropdownOptions.find((option) => option.id === activeOption)) {
-      return -1;
-    }
-
-    return dropdownOptions.findIndex((option) => option.id === activeOption);
-  }
-
   const onKeyDown = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
-    const currentIndex = getIndexOfActiveOption();
+    const currentIndex = getIndexOfActiveOption({
+      dropdownOptions,
+      activeOption,
+    });
 
     switch (targetKey) {
       case 'ArrowDown':
@@ -221,7 +230,9 @@ export const TagSelector = ({
 
         if (onSelect) {
           handleOnSelect(
-            dropdownOptions[getIndexOfActiveOption()],
+            dropdownOptions[
+              getIndexOfActiveOption({ dropdownOptions, activeOption })
+            ],
             value,
             onSelect,
           );
@@ -254,7 +265,9 @@ export const TagSelector = ({
           aria-expanded="false"
           // Todo - potentially remove "checkbox-" prefix
           aria-activedescendant={`checkbox-${
-            dropdownOptions[getIndexOfActiveOption()]?.id
+            dropdownOptions[
+              getIndexOfActiveOption({ dropdownOptions, activeOption })
+            ]?.id
           }`}
           onFocus={() => setIsFocussed(true)}
           onBlur={() => setIsFocussed(false)}
