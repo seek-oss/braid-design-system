@@ -35,7 +35,7 @@ import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
-import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
+import { createAccessibilityProps, getItemId } from './createAccessbilityProps';
 import {
   type AutosuggestTranslations,
   autosuggest,
@@ -100,7 +100,7 @@ interface AutosuggestState<Value> {
 }
 
 type AutoSuggestItemProps = ReturnType<
-  ReturnType<typeof createAccessbilityProps>['getItemProps']
+  ReturnType<typeof createAccessibilityProps>['getItemProps']
 >;
 interface SuggestionItemProps extends AutoSuggestItemProps {
   suggestion: Suggestion;
@@ -650,7 +650,7 @@ export const Autosuggest = forwardRef(function <Value>(
     },
   };
 
-  const a11y = createAccessbilityProps({
+  const a11y = createAccessibilityProps({
     id,
     isOpen,
     highlightedIndex,
