@@ -1,3 +1,5 @@
+import { get } from 'lodash';
+
 interface TagSelectorProps {
   id: string;
   activeOption: string | undefined;
@@ -16,17 +18,27 @@ export const createAccessibilityProps = ({
     inputProps: {
       id,
       role: 'combobox',
-      // 'listbox' may not be the correct role here
-      'aria-haspopup': 'true',
+      'aria-haspopup': 'listbox',
       'aria-owns': isFocused ? menuId : undefined,
       'aria-controls': menuId,
       'aria-expanded': isFocused,
       'aria-autocomplete': 'list',
-      // Todo - potentially remove "checkbox-" prefix
-      'aria-activedescendant': `checkbox-${activeOption}`,
+      'aria-activedescendant': activeOption,
       'aria-describedby': assistiveDescriptionId,
       autoComplete: 'off',
       spellCheck: false,
     } as const,
+
+    getDropdownOptionProps: ({
+      optionId,
+      description,
+    }: {
+      optionId: string;
+      description: string;
+    }) => ({
+      id: optionId,
+      role: 'option',
+      'aria-label': description,
+    }),
   };
 };

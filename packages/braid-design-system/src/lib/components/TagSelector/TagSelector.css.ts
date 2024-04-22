@@ -18,6 +18,7 @@ export const Dropdown = style({
 });
 
 export const TagOption = style({
+  cursor: 'pointer',
   listStyle: 'none',
 
   ':hover': {
@@ -26,23 +27,13 @@ export const TagOption = style({
 });
 
 export const ActiveTagOption = style({
+  cursor: 'pointer',
   listStyle: 'none',
   backgroundColor: 'lightgrey',
 
   ':hover': {
     backgroundColor: 'lightgrey',
   },
-});
-
-export const TagOpenLabel = style({
-  cursor: 'pointer',
-  display: 'block',
-  userSelect: 'none',
-});
-
-// Todo - try remove this style
-export const TagOptionCheckbox = style({
-  cursor: 'pointer',
 });
 
 export const SelectedTagsList = style({

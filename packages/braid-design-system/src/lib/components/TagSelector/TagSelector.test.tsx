@@ -83,12 +83,11 @@ describe('TagSelector', () => {
     await userEvent.click(input);
     expect(getInputValue()).toBe('');
     expect(changeHandler).not.toHaveBeenCalled();
-    // Announcements functionality will need to be added to the component itself
     expect(getAnnouncements()).toBe(
       '1 option available. Use up and down arrow keys to navigate. Press enter to select',
     );
 
-    const option = queryByLabelText('Apples') as HTMLInputElement;
+    const option = queryByLabelText('Apples');
     if (!option) {
       throw new Error('Option not found');
     }

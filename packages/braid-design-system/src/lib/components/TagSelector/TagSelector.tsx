@@ -45,7 +45,6 @@ interface TagOptionProps {
   tag: Tag;
   activeOption: string | undefined;
   onSelect: (tag: Tag) => void;
-  checked?: boolean;
   value: string;
 }
 
@@ -53,18 +52,12 @@ const TagOption = ({
   tag,
   activeOption,
   onSelect,
-  checked,
   value,
+  ...restProps
 }: TagOptionProps) => {
-  const checkboxId = `checkbox-${tag.id}`;
-
   const handleClick = (event: React.MouseEvent, clickedTag: Tag) => {
     event.preventDefault();
     handleOnSelect(clickedTag, value, onSelect);
-  };
-
-  const handleCheckboxClick = (event: React.MouseEvent) => {
-    event.stopPropagation();
   };
 
   return (
@@ -75,25 +68,12 @@ const TagOption = ({
       className={
         tag.id === activeOption ? styles.ActiveTagOption : styles.TagOption
       }
+      onClick={(event) => handleClick(event, tag)}
+      onMouseDown={(event) => event.preventDefault()}
+      tabIndex={-1}
+      {...restProps}
     >
-      <label
-        htmlFor={checkboxId}
-        className={styles.TagOpenLabel}
-        onClick={(event) => handleClick(event, tag)}
-        onMouseDown={(event) => event.preventDefault()}
-      >
-        <input
-          type="checkbox"
-          id={checkboxId}
-          onClick={handleCheckboxClick}
-          className={styles.TagOptionCheckbox}
-          checked={checked}
-          onChange={onSelect ? () => onSelect(tag) : undefined}
-          role="presentation"
-          tabIndex={-1}
-        />
-        <span>{tag.description}</span>
-      </label>
+      <span>{tag.description}</span>
     </li>
   );
 };
@@ -341,12 +321,11 @@ export const TagSelector = ({
                 activeOption={activeOption}
                 key={tag.id}
                 onSelect={onSelect}
-                checked={
-                  selectedTags?.some(
-                    (selectedTag) => selectedTag.id === tag.id,
-                  ) || false
-                }
                 value={value}
+                {...a11y.getDropdownOptionProps({
+                  optionId: tag.id,
+                  description: tag.description,
+                })}
               />
             ))}
           </ul>
