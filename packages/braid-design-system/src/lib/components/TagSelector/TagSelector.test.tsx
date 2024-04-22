@@ -107,7 +107,7 @@ describe('TagSelector', () => {
     it('should associate the field label with the input', () => {
       const { queryByLabelText, input } = renderTagSelector({
         value: '',
-        options: [{ description: 'Apples', id: 'apples' }],
+        options: [],
         selectedTags: [],
         label: 'Fruit',
       });
@@ -123,7 +123,7 @@ describe('TagSelector', () => {
           <TagSelector
             id="id"
             label="Fruit"
-            options={[{ description: 'Apples', id: 'apples' }]}
+            options={[]}
             selectedTags={[]}
             aria-label="Hidden field label"
             value=""
@@ -137,6 +137,27 @@ describe('TagSelector', () => {
       expect(
         getByLabelText('Hidden field label').getAttribute('aria-labelledby'),
       ).toBeNull();
+    });
+
+    it('associates field with aria-labelledby correctly', () => {
+      const { getByLabelText } = render(
+        <BraidTestProvider>
+          <div id="fieldLabel">My field</div>
+          <TagSelector
+            id="id"
+            label="Fruit"
+            options={[]}
+            selectedTags={[]}
+            aria-labelledby="fieldLabel"
+            value=""
+            onSelect={() => {}}
+            onChange={() => {}}
+          />
+        </BraidTestProvider>,
+      );
+
+      expect(getByLabelText('My field').tagName).toBe('INPUT');
+      expect(getByLabelText('My field').getAttribute('aria-label')).toBeNull();
     });
   });
 
