@@ -330,11 +330,7 @@ export const TagSelector = ({
           aria-autocomplete="list"
           aria-expanded="false"
           // Todo - potentially remove "checkbox-" prefix
-          aria-activedescendant={`checkbox-${
-            dropdownOptions[
-              getIndexOfActiveOption({ dropdownOptions, activeOption })
-            ]?.id
-          }`}
+          aria-activedescendant={`checkbox-${activeOption}`}
           onFocus={() => dispatch({ type: INPUT_FOCUS })}
           onBlur={() => dispatch({ type: INPUT_BLUR })}
           onKeyDown={onKeyDown}
