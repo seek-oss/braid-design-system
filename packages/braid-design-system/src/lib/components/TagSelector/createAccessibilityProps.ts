@@ -1,5 +1,3 @@
-import { get } from 'lodash';
-
 interface TagSelectorProps {
   id: string;
   activeOption: string | undefined;

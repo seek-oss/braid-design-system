@@ -126,15 +126,22 @@ const INPUT_FOCUS = 0;
 const INPUT_BLUR = 1;
 const INPUT_ARROW_DOWN = 2;
 const INPUT_ARROW_UP = 3;
+const INPUT_ENTER = 4;
+const INPUT_ESCAPE = 5;
+const INPUT_CHANGE = 6;
 
 type Action =
   | { type: typeof INPUT_FOCUS }
   | { type: typeof INPUT_BLUR }
   | { type: typeof INPUT_ARROW_DOWN }
-  | { type: typeof INPUT_ARROW_UP };
+  | { type: typeof INPUT_ARROW_UP }
+  | { type: typeof INPUT_ENTER }
+  | { type: typeof INPUT_ESCAPE }
+  | { type: typeof INPUT_CHANGE };
 
 interface TagSelectorState {
   isFocussed: boolean;
+  showOptionsIfAvailable: boolean;
   activeOption: string | undefined;
 }
 
@@ -192,10 +199,10 @@ export const TagSelector = ({
 
     switch (action.type) {
       case INPUT_FOCUS:
-        return { ...state, isFocussed: true };
+        return { ...state, isFocussed: true, showOptionsIfAvailable: true };
 
       case INPUT_BLUR:
-        return { ...state, isFocussed: false };
+        return { ...state, isFocussed: false, showOptionsIfAvailable: false };
 
       case INPUT_ARROW_DOWN:
         if (
@@ -223,15 +230,33 @@ export const TagSelector = ({
           activeOption: dropdownOptions[currentIndex - 1].id,
         };
 
+      case INPUT_ENTER:
+      // Todo
+
+      case INPUT_ESCAPE:
+        return {
+          ...state,
+          showOptionsIfAvailable: false,
+          activeOption: undefined,
+        };
+
+      case INPUT_CHANGE:
+        return {
+          ...state,
+          showOptionsIfAvailable: true,
+        };
+
       default:
         return state;
     }
   }
 
-  const [{ isFocussed, activeOption }, dispatch] = useReducer(reducer, {
-    isFocussed: false,
-    activeOption: undefined,
-  });
+  const [{ isFocussed, showOptionsIfAvailable, activeOption }, dispatch] =
+    useReducer(reducer, {
+      isFocussed: false,
+      showOptionsIfAvailable: false,
+      activeOption: undefined,
+    });
 
   const onKeyDown = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -245,6 +270,7 @@ export const TagSelector = ({
         event.preventDefault();
         dispatch({ type: INPUT_ARROW_DOWN });
         return;
+
       case 'ArrowUp':
         event.preventDefault();
         dispatch({ type: INPUT_ARROW_UP });
@@ -261,6 +287,11 @@ export const TagSelector = ({
           value,
           onSelect,
         );
+        break;
+
+      case 'Escape':
+        event.preventDefault();
+        dispatch({ type: INPUT_ESCAPE });
         break;
 
       default:
@@ -292,6 +323,8 @@ export const TagSelector = ({
     }
   }
 
+  const isOpen = showOptionsIfAvailable && hasOptions;
+
   return (
     <div
       className={styles.Wrapper}
@@ -306,14 +339,17 @@ export const TagSelector = ({
           {...restProps}
           type="text"
           value={value}
-          onChange={onChange}
+          onChange={(event) => {
+            dispatch({ type: INPUT_CHANGE });
+            onChange(event);
+          }}
           onFocus={() => dispatch({ type: INPUT_FOCUS })}
           onBlur={() => dispatch({ type: INPUT_BLUR })}
           onKeyDown={onKeyDown}
           {...a11y.inputProps}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
-        {isFocussed && (
+        {isOpen && (
           <ul className={styles.Dropdown} id={`${id}-menu`} role="listbox">
             {dropdownOptions.map((tag) => (
               <TagOption
