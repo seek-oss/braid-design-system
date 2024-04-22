@@ -159,6 +159,23 @@ describe('TagSelector', () => {
       expect(getByLabelText('My field').tagName).toBe('INPUT');
       expect(getByLabelText('My field').getAttribute('aria-label')).toBeNull();
     });
+
+    it('should support standard options', async () => {
+      const { input, queryByLabelText } = renderTagSelector({
+        value: '',
+        options: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [],
+        label: 'Select tags',
+      });
+
+      await userEvent.click(input);
+
+      expect(getAnnouncements()).toBe(
+        '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+
+      expect(queryByLabelText('Apples')).toBeInTheDocument();
+    });
   });
 
   // Todo - keyboard access
