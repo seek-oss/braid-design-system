@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import type React from 'react';
 import { BraidTestProvider } from '../../../entries/test';
-import { type Tag, TagSelector, type TagSelectorProps } from './TagSelector';
+import { TagSelector, type TagSelectorProps } from './TagSelector';
 import { render } from '@testing-library/react';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
@@ -29,6 +29,7 @@ function renderTagSelector({
     return (
       <BraidTestProvider>
         <TagSelector
+          id="Select tags"
           label={label}
           options={options}
           selectedTags={selectedTags}
@@ -114,6 +115,28 @@ describe('TagSelector', () => {
       const result = queryByLabelText('Fruit');
 
       expect(result).toBe(input);
+    });
+
+    it('associates field with aria-label correctly', () => {
+      const { getByLabelText } = render(
+        <BraidTestProvider>
+          <TagSelector
+            id="id"
+            label="Fruit"
+            options={[{ description: 'Apples', id: 'apples' }]}
+            selectedTags={[]}
+            aria-label="Hidden field label"
+            value=""
+            onSelect={() => {}}
+            onChange={() => {}}
+          />
+        </BraidTestProvider>,
+      );
+
+      expect(getByLabelText('Hidden field label').tagName).toBe('INPUT');
+      expect(
+        getByLabelText('Hidden field label').getAttribute('aria-labelledby'),
+      ).toBeNull();
     });
   });
 

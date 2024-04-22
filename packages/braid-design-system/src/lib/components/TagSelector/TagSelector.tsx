@@ -182,6 +182,7 @@ export const TagSelector = ({
   onChange,
   customTags = false,
   translations = tagSelector,
+  ...restProps
 }: TagSelectorProps) => {
   if (!customTags && selectedTags) {
     ensureCustomTagsNotUsed(options, selectedTags);
@@ -329,13 +330,14 @@ export const TagSelector = ({
       <label htmlFor="tag-selector">{label}</label>
       <div className="combo-wrap">
         <input
+          {...restProps}
           type="text"
           value={value}
           onChange={onChange}
-          {...a11y.inputProps}
           onFocus={() => dispatch({ type: INPUT_FOCUS })}
           onBlur={() => dispatch({ type: INPUT_BLUR })}
           onKeyDown={onKeyDown}
+          {...a11y.inputProps}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
         {isFocussed && (
