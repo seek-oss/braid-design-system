@@ -188,25 +188,18 @@ export const TagSelector = ({
     ensureCustomTagsNotUsed(options, selectedTags);
   }
 
-  const customSelectedTags = [
-    ...(selectedTags || []).filter(
-      (tag) => !options.some((option) => option.id === tag.id),
-    ),
-  ];
-
-  const unFilteredDropdownOptionsWithoutCustomTag = [
-    ...customSelectedTags,
-    ...options,
-  ];
-
   const id = useId();
+
+  const unSelectedOptions = options.filter(
+    (option) => !selectedTags?.some((tag) => tag.id === option.id),
+  );
 
   const dropdownOptions = [
     ...(customTags && value
       ? // Add zero-width space to ensure the tag is not an exact match
         [{ description: `Add "​${value}"`, id: `${id}-add-${value}` }]
       : []),
-    ...unFilteredDropdownOptionsWithoutCustomTag.filter((tag) =>
+    ...unSelectedOptions.filter((tag) =>
       tag.description.toLowerCase().includes(value.toLowerCase()),
     ),
   ];

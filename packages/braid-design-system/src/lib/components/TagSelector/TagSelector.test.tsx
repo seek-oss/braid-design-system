@@ -179,6 +179,9 @@ describe('TagSelector', () => {
   });
 
   // Todo - keyboard access
+  // describe('keyboard access', () => {
+  //   it()
+  // });
 
   // Todo - should select an option on enter after navigating
 
