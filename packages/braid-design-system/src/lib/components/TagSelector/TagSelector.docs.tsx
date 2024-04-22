@@ -34,6 +34,7 @@ const docs: ComponentDocs = {
         <Stack space="small">
           <Heading level="2">Standard Tag Selector</Heading>
           <TagSelector
+            id="standardTagSelector"
             label="Select tags"
             options={standardOptions}
             selectedTags={standardSelectedTags}
@@ -53,6 +54,7 @@ const docs: ComponentDocs = {
         <Stack space="small">
           <Heading level="2">Tag Selector with Custom Tags</Heading>
           <TagSelector
+            id="preTagSelector"
             label="Select tags or add new ones"
             options={preOptions}
             selectedTags={preSelectedTags}

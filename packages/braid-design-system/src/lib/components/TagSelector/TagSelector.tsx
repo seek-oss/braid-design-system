@@ -12,6 +12,7 @@ import {
   type TagSelectorTranslations,
   tagSelector,
 } from '../../translations/en';
+import { createAccessibilityProps } from './createAccessibilityProps';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -158,6 +159,7 @@ interface TagSelectorState {
 }
 
 export interface TagSelectorProps {
+  id: string;
   options: Tag[];
   selectedTags?: Tag[];
   // remove ariaLabel prop?
@@ -296,6 +298,12 @@ export const TagSelector = ({
   const optionsCount = dropdownOptions.length;
   const hasOptions = optionsCount > 0;
 
+  const a11y = createAccessibilityProps({
+    id: 'tag-selector',
+    activeOption,
+    isFocused: isFocussed,
+  });
+
   // Announce when the field is focused and no options have been manually highlighted
   if (isFocussed && activeOption == null) {
     // Todo - fix this text
@@ -324,20 +332,14 @@ export const TagSelector = ({
           type="text"
           value={value}
           onChange={onChange}
-          id="tag-selector"
-          role="combobox"
-          aria-controls="available-tags"
-          aria-autocomplete="list"
-          aria-expanded="false"
-          // Todo - potentially remove "checkbox-" prefix
-          aria-activedescendant={`checkbox-${activeOption}`}
+          {...a11y.inputProps}
           onFocus={() => dispatch({ type: INPUT_FOCUS })}
           onBlur={() => dispatch({ type: INPUT_BLUR })}
           onKeyDown={onKeyDown}
         />
         <span aria-hidden="true" data-trigger="multiselect" />
         {isFocussed && (
-          <ul className={styles.Dropdown} id="available-tags" role="listbox">
+          <ul className={styles.Dropdown} id={`${id}-menu`} role="listbox">
             {dropdownOptions.map((tag) => (
               <TagOption
                 tag={tag}
