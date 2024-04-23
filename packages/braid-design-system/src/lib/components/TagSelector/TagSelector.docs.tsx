@@ -72,19 +72,6 @@ const docs: ComponentDocs = {
             onChange={(updatedValue) => setPreValue(updatedValue)}
           />
         </Stack>
-        <Stack space="small">
-          <Heading level="2">Random test one</Heading>
-          <TagSelector
-            id="preTagSelector"
-            label="Select tags or add new ones"
-            options={[]}
-            selectedTags={[]}
-            customTags={true}
-            onSelect={() => {}}
-            value=""
-            onChange={(updatedValue) => setPreValue(updatedValue)}
-          />
-        </Stack>
       </Stack>,
     );
   },

@@ -406,6 +406,4 @@ describe('TagSelector', () => {
     await userEvent.click(input);
     expect(getAnnouncements()).toBe('No options available');
   });
-
-  // Todo - automatic selection
 });

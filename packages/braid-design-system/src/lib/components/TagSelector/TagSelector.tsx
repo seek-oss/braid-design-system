@@ -210,6 +210,10 @@ export const TagSelector = ({
         };
 
       case INPUT_ARROW_DOWN:
+        if (dropdownOptions.length === 0) {
+          return state;
+        }
+
         if (
           currentIndex + 1 === dropdownOptions.length ||
           state.activeOption === undefined
@@ -223,10 +227,16 @@ export const TagSelector = ({
 
         return {
           ...state,
-          activeOption: dropdownOptions[currentIndex + 1].id,
+          activeOption: dropdownOptions
+            ? dropdownOptions[currentIndex + 1]?.id ?? dropdownOptions[0]?.id
+            : undefined,
         };
 
       case INPUT_ARROW_UP:
+        if (dropdownOptions.length === 0) {
+          return state;
+        }
+
         if (currentIndex === 0 || state.activeOption === undefined) {
           return {
             ...state,
@@ -237,7 +247,10 @@ export const TagSelector = ({
 
         return {
           ...state,
-          activeOption: dropdownOptions[currentIndex - 1].id,
+          activeOption:
+            dropdownOptions[currentIndex - 1]?.id ??
+            dropdownOptions[dropdownOptions.length - 1]?.id ??
+            undefined,
         };
 
       case INPUT_ENTER:
