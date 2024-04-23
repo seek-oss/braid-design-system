@@ -1,9 +1,10 @@
+import { fireEvent, render } from '@testing-library/react';
+
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import type React from 'react';
 import { BraidTestProvider } from '../../../entries/test';
 import { TagSelector, type TagSelectorProps } from './TagSelector';
-import { fireEvent, render } from '@testing-library/react';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { containerPrefix } from '../private/Announcement/Announcement';
@@ -12,6 +13,7 @@ const getAnnouncements = () =>
   document.body.querySelector(`[id*=${containerPrefix}]`)?.textContent || null;
 
 function renderTagSelector({
+  value: initialValue,
   options,
   selectedTags: selectedTagsProp = [],
   ariaLabel,
@@ -29,7 +31,7 @@ function renderTagSelector({
   const TestCase = () => {
     const selectedTags = selectedTagsProp;
 
-    const [value, setValue] = useState<string>('');
+    const [value, setValue] = useState<string>(initialValue);
 
     return (
       <BraidTestProvider>
@@ -73,6 +75,45 @@ function renderTagSelector({
 }
 
 describe('TagSelector', () => {
+  it('should toggle dropdown visibility on focus and blur', async () => {
+    const { input, queryByLabelText } = renderTagSelector({
+      value: '',
+      options: [{ description: 'Apples', id: 'apples' }],
+      selectedTags: [],
+      label: 'Select tags',
+    });
+
+    expect(queryByLabelText('Apples')).toBeNull();
+
+    await userEvent.click(input);
+    expect(queryByLabelText('Apples')).toBeInTheDocument();
+    expect(getAnnouncements()).toBe(
+      '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+    );
+
+    fireEvent.blur(input);
+    expect(queryByLabelText('Apples')).toBe(null);
+    expect(getAnnouncements()).toBeNull();
+  });
+
+  // Todo - show text highlights (refer to Autosuggest.test.tsx)
+
+  it('should support options as a function', async () => {
+    const { input, getInputValue, queryByLabelText } = renderTagSelector({
+      value: 'Apples',
+      options: (value) => [{ description: value, id: 'apples' }],
+      selectedTags: [],
+      label: 'Select tags',
+    });
+
+    expect(queryByLabelText('Apples')).toBeNull();
+    expect(getInputValue()).toBe('Apples');
+
+    await userEvent.click(input);
+
+    expect(queryByLabelText('Apples')).toBeInTheDocument();
+  });
+
   it('should honour aria-label if provided', () => {
     const { getByLabelText } = renderTagSelector({
       value: '',

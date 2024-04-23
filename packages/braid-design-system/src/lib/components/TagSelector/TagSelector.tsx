@@ -145,9 +145,11 @@ interface TagSelectorState {
   activeOption: string | undefined;
 }
 
+const fallbackOptions: Tag[] = [];
+
 export interface TagSelectorProps {
   id: string;
-  options: Tag[];
+  options: Tag[] | ((value: string) => Tag[]);
   selectedTags?: Tag[];
   // remove ariaLabel prop?
   ariaLabel?: string;
@@ -160,7 +162,7 @@ export interface TagSelectorProps {
 }
 
 export const TagSelector = ({
-  options,
+  options: optionsProp = fallbackOptions,
   selectedTags,
   ariaLabel,
   label,
@@ -171,6 +173,11 @@ export const TagSelector = ({
   translations = tagSelector,
   ...restProps
 }: TagSelectorProps) => {
+  const optionsPropValue =
+    typeof optionsProp === 'function' ? optionsProp(value) : optionsProp;
+
+  const options = Array.isArray(optionsPropValue) ? optionsPropValue : [];
+
   if (!customTags && selectedTags) {
     ensureCustomTagsNotUsed(options, selectedTags);
   }
