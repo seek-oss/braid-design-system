@@ -1,5 +1,4 @@
 import { fireEvent, render } from '@testing-library/react';
-
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import type React from 'react';
@@ -15,7 +14,7 @@ const getAnnouncements = () =>
 function renderTagSelector({
   value: initialValue,
   options,
-  selectedTags: selectedTagsProp = [],
+  selectedTags,
   ariaLabel,
   label,
   customTags = false,
@@ -29,8 +28,6 @@ function renderTagSelector({
   const changeHandler = jest.fn();
 
   const TestCase = () => {
-    const selectedTags = selectedTagsProp;
-
     const [value, setValue] = useState<string>(initialValue);
 
     return (
@@ -56,14 +53,19 @@ function renderTagSelector({
     );
   };
 
-  const { getByRole, queryByRole, getByLabelText, queryByLabelText } = render(
-    <TestCase />,
-  );
+  const {
+    getByRole,
+    queryByRole,
+    queryByText,
+    getByLabelText,
+    queryByLabelText,
+  } = render(<TestCase />);
   const input = getByRole('combobox');
   const getInputValue = () => input.getAttribute('value');
 
   return {
     input,
+    queryByText,
     getByRole,
     queryByRole,
     getInputValue,
@@ -75,6 +77,24 @@ function renderTagSelector({
 }
 
 describe('TagSelector', () => {
+  it('should render selected tags', () => {
+    const { queryByText } = renderTagSelector({
+      customTags: true,
+      value: '',
+      options: [],
+      selectedTags: [
+        { description: 'Apples', id: 'apples' },
+        { description: 'Bananas', id: 'bananas' },
+        { description: 'Carrots', id: 'carrots' },
+      ],
+      label: 'Select tags',
+    });
+
+    expect(queryByText('Apples')).toBeInTheDocument();
+    expect(queryByText('Bananas')).toBeInTheDocument();
+    expect(queryByText('Carrots')).toBeInTheDocument();
+  });
+
   it('should toggle dropdown visibility on focus and blur', async () => {
     const { input, queryByLabelText } = renderTagSelector({
       value: '',
@@ -112,6 +132,21 @@ describe('TagSelector', () => {
     await userEvent.click(input);
 
     expect(queryByLabelText('Apples')).toBeInTheDocument();
+  });
+
+  it('should support selectedTags as a function', async () => {
+    const { getInputValue, queryByText } = renderTagSelector({
+      customTags: true,
+      value: 'Apples',
+      options: [],
+      selectedTags: (value) => [
+        { description: `Selected ${value}`, id: 'apples' },
+      ],
+      label: 'Select tags',
+    });
+
+    expect(getInputValue()).toBe('Apples');
+    expect(queryByText('Selected Apples')).toBeInTheDocument();
   });
 
   it('should honour aria-label if provided', () => {
