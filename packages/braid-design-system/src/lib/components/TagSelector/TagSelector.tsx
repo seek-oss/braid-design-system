@@ -236,7 +236,10 @@ export const TagSelector = ({
         };
 
       case INPUT_ENTER:
-        if (value === '' && state.activeOption === undefined) {
+        if (
+          (value === '' || customTags === false) &&
+          state.activeOption === undefined
+        ) {
           return {
             ...state,
             showOptionsIfAvailable: false,

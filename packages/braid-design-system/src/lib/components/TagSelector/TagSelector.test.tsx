@@ -16,7 +16,11 @@ function renderTagSelector({
   selectedTags: selectedTagsProp = [],
   ariaLabel,
   label,
-}: Pick<TagSelectorProps, 'value' | 'options' | 'selectedTags' | 'label'> & {
+  customTags = false,
+}: Pick<
+  TagSelectorProps,
+  'value' | 'options' | 'selectedTags' | 'label' | 'customTags'
+> & {
   ariaLabel?: string;
 }) {
   const selectHandler = jest.fn();
@@ -34,6 +38,7 @@ function renderTagSelector({
           label={label}
           options={options}
           selectedTags={selectedTags}
+          customTags={customTags}
           onSelect={(tag) => {
             setValue('');
             selectHandler(tag);
@@ -106,7 +111,6 @@ describe('TagSelector', () => {
     });
   });
 
-  // Todo - ARIA labels
   describe('ARIA labels', () => {
     it('should associate the field label with the input', () => {
       const { queryByLabelText, input } = renderTagSelector({
@@ -182,7 +186,6 @@ describe('TagSelector', () => {
     });
   });
 
-  // Todo - keyboard access
   describe('keyboard access', () => {
     it("shouldn't select anything and close the dropdown on enter with no active option and no input", async () => {
       const { input, selectHandler, getInputValue, queryByLabelText } =
@@ -276,6 +279,8 @@ describe('TagSelector', () => {
       await userEvent.keyboard('{Escape}');
       expect(getInputValue()).toBe('');
       expect(queryByLabelText('Apples')).toBe(null); // Ensure dropdown has closed
+
+      expect(input).toHaveFocus();
     });
 
     it('should select a suggestion on enter after navigating a single option', async () => {
@@ -300,6 +305,65 @@ describe('TagSelector', () => {
         description: 'Apples',
         id: 'apples',
       });
+    });
+
+    it("should submit the input's value if customTags are enabled with no active options when pressing enter", async () => {
+      const { input, changeHandler } = renderTagSelector({
+        value: '',
+        options: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [],
+        label: 'Select tags',
+        customTags: true,
+      });
+
+      await userEvent.click(input);
+      expect(getAnnouncements()).toBe(
+        '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+
+      await userEvent.paste('Bananas');
+      await userEvent.keyboard('{enter}');
+      expect(changeHandler).toHaveBeenNthCalledWith(1, 'Bananas');
+    });
+
+    it('should hide dropdown but keep the input focussed with no active option and custom tags disabled when pressing enter', async () => {
+      const { input, queryByLabelText } = renderTagSelector({
+        value: '',
+        options: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [],
+        label: 'Select tags',
+      });
+
+      await userEvent.click(input);
+      expect(getAnnouncements()).toBe(
+        '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+      expect(queryByLabelText('Apples')).toBeInTheDocument();
+
+      await userEvent.keyboard('{enter}');
+      expect(queryByLabelText('Apples')).toBe(null); // Ensure dropdown has closed
+      expect(input).toHaveFocus();
+    });
+
+    it('should show dropdown when it is hidden after input change', async () => {
+      const { input, queryByLabelText } = renderTagSelector({
+        value: '',
+        options: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [],
+        label: 'Select tags',
+      });
+
+      await userEvent.click(input);
+      expect(getAnnouncements()).toBe(
+        '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+      expect(queryByLabelText('Apples')).toBeInTheDocument();
+
+      await userEvent.keyboard('{Escape}');
+      expect(queryByLabelText('Apples')).toBe(null); // Ensure dropdown has closed
+
+      await userEvent.paste('app');
+      expect(queryByLabelText('Apples')).toBeInTheDocument();
     });
   });
 
