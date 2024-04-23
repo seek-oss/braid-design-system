@@ -154,7 +154,7 @@ export interface TagSelectorProps {
   label: string;
   onSelect: (tag: Tag) => void;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: string) => void;
   customTags?: boolean;
   translations?: TagSelectorTranslations;
 }
@@ -364,7 +364,7 @@ export const TagSelector = ({
           value={value}
           onChange={(event) => {
             dispatch({ type: INPUT_CHANGE });
-            onChange(event);
+            onChange(event.target.value);
           }}
           onFocus={() => dispatch({ type: INPUT_FOCUS })}
           onBlur={() => dispatch({ type: INPUT_BLUR })}
