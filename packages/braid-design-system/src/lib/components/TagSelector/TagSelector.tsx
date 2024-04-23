@@ -207,9 +207,13 @@ export const TagSelector = ({
       case INPUT_ARROW_DOWN:
         if (
           currentIndex + 1 === dropdownOptions.length ||
-          currentIndex === -1
+          state.activeOption === undefined
         ) {
-          return { ...state, activeOption: dropdownOptions[0].id };
+          return {
+            ...state,
+            activeOption: dropdownOptions[0].id,
+            showOptionsIfAvailable: true,
+          };
         }
 
         return {
@@ -218,10 +222,11 @@ export const TagSelector = ({
         };
 
       case INPUT_ARROW_UP:
-        if (currentIndex === 0 || currentIndex === -1) {
+        if (currentIndex === 0 || state.activeOption === undefined) {
           return {
             ...state,
             activeOption: dropdownOptions[dropdownOptions.length - 1].id,
+            showOptionsIfAvailable: true,
           };
         }
 
@@ -231,7 +236,17 @@ export const TagSelector = ({
         };
 
       case INPUT_ENTER:
-      // Todo
+        if (value === '' && state.activeOption === undefined) {
+          return {
+            ...state,
+            showOptionsIfAvailable: false,
+          };
+        }
+
+        return {
+          ...state,
+          activeOption: undefined,
+        };
 
       case INPUT_ESCAPE:
         return {
@@ -260,10 +275,6 @@ export const TagSelector = ({
 
   const onKeyDown = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
-    const currentIndex = getIndexOfActiveOption({
-      dropdownOptions,
-      activeOption,
-    });
 
     switch (targetKey) {
       case 'ArrowDown':
@@ -278,15 +289,28 @@ export const TagSelector = ({
 
       case 'Enter':
         event.preventDefault();
-        if (currentIndex === -1) return;
+        dispatch({ type: INPUT_ENTER });
 
-        handleOnSelect(
-          dropdownOptions[
-            getIndexOfActiveOption({ dropdownOptions, activeOption })
-          ],
-          value,
-          onSelect,
-        );
+        if (value !== '' && activeOption === undefined && customTags) {
+          handleOnSelect(
+            { description: value, id: `${id}-add-${value}` },
+            value,
+            onSelect,
+          );
+
+          break;
+        }
+
+        if (activeOption) {
+          handleOnSelect(
+            dropdownOptions[
+              getIndexOfActiveOption({ dropdownOptions, activeOption })
+            ],
+            value,
+            onSelect,
+          );
+        }
+
         break;
 
       case 'Escape':
