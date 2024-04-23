@@ -277,6 +277,30 @@ describe('TagSelector', () => {
       expect(getInputValue()).toBe('');
       expect(queryByLabelText('Apples')).toBe(null); // Ensure dropdown has closed
     });
+
+    it('should select a suggestion on enter after navigating a single option', async () => {
+      const { input, selectHandler } = renderTagSelector({
+        value: '',
+        options: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [],
+        label: 'Select tags',
+      });
+
+      await userEvent.click(input);
+      expect(getAnnouncements()).toBe(
+        '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+
+      await userEvent.keyboard('{arrowdown}');
+      expect(input).toHaveAttribute('aria-activedescendant', 'apples');
+
+      await userEvent.keyboard('{enter}');
+
+      expect(selectHandler).toHaveBeenCalledWith({
+        description: 'Apples',
+        id: 'apples',
+      });
+    });
   });
 
   // Todo - should select an option on enter after navigating
