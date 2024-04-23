@@ -178,9 +178,30 @@ describe('TagSelector', () => {
   });
 
   // Todo - keyboard access
-  // describe('keyboard access', () => {
-  //   it()
-  // });
+  describe('keyboard access', () => {
+    it("shouldn't select anything and close the dropdown on enter with no active option and no input", async () => {
+      const { input, changeHandler, getInputValue, queryByLabelText } =
+        renderTagSelector({
+          value: '',
+          options: [{ description: 'Apples', id: 'apples' }],
+          selectedTags: [],
+          label: 'Select tags',
+        });
+
+      await userEvent.click(input);
+
+      expect(getAnnouncements()).toBe(
+        '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+
+      await userEvent.keyboard('{enter}');
+
+      expect(getInputValue()).toBe('');
+      expect(changeHandler).not.toHaveBeenCalled();
+      expect(queryByLabelText('Apples')).toBeNull(); // Ensure dropdown is closed
+      expect(getAnnouncements()).toBeNull(); // Todo
+    });
+  });
 
   // Todo - should select an option on enter after navigating
 

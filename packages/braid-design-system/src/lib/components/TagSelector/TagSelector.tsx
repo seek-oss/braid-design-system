@@ -333,21 +333,20 @@ export const TagSelector = ({
     isFocused: isFocussed,
   });
 
+  const isOpen = showOptionsIfAvailable && hasOptions;
+
   // Announce when the field is focused and no options have been manually highlighted
   if (isFocussed && activeOption == null) {
-    // Todo - fix this text
-    if (hasOptions) {
+    if (isOpen) {
       announcements.push(
         translations.optionsAvailableAnnouncement(optionsCount),
       );
 
       announcements.push(translations.optionInstructions);
-    } else {
+    } else if (!isOpen && !hasOptions) {
       announcements.push(translations.noOptionsAvailableAnnouncement);
     }
   }
-
-  const isOpen = showOptionsIfAvailable && hasOptions;
 
   return (
     <div
