@@ -48,7 +48,7 @@ const docs: ComponentDocs = {
               setStandardValue('');
             }}
             value={standardValue}
-            onChange={(event) => setStandardValue(event.target.value)}
+            onChange={(updatedValue) => setStandardValue(updatedValue)}
           />
         </Stack>
         <Stack space="small">
@@ -69,7 +69,7 @@ const docs: ComponentDocs = {
               setPreValue('');
             }}
             value={preValue}
-            onChange={(event) => setPreValue(event.target.value)}
+            onChange={(updatedValue) => setPreValue(updatedValue)}
           />
         </Stack>
       </Stack>,

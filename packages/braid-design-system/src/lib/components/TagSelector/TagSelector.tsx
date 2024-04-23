@@ -316,6 +316,7 @@ export const TagSelector = ({
       case 'Escape':
         event.preventDefault();
         dispatch({ type: INPUT_ESCAPE });
+        onChange('');
         break;
 
       default:

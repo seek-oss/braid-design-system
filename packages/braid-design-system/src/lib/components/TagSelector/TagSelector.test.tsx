@@ -19,6 +19,7 @@ function renderTagSelector({
 }: Pick<TagSelectorProps, 'value' | 'options' | 'selectedTags' | 'label'> & {
   ariaLabel?: string;
 }) {
+  const selectHandler = jest.fn();
   const changeHandler = jest.fn();
 
   const TestCase = () => {
@@ -35,10 +36,13 @@ function renderTagSelector({
           selectedTags={selectedTags}
           onSelect={(tag) => {
             setValue('');
-            changeHandler(tag);
+            selectHandler(tag);
           }}
           value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onChange={(...args) => {
+            setValue(...args);
+            changeHandler(...args);
+          }}
           ariaLabel={ariaLabel || undefined}
         />
       </BraidTestProvider>
@@ -52,6 +56,7 @@ function renderTagSelector({
   return {
     input,
     getInputValue,
+    selectHandler,
     changeHandler,
     getByLabelText,
     queryByLabelText,
@@ -72,7 +77,7 @@ describe('TagSelector', () => {
   });
 
   it('should select option on click', async () => {
-    const { input, changeHandler, getInputValue, queryByLabelText } =
+    const { input, selectHandler, getInputValue, queryByLabelText } =
       renderTagSelector({
         value: '',
         options: [{ description: 'Apples', id: 'apples' }],
@@ -82,7 +87,7 @@ describe('TagSelector', () => {
 
     await userEvent.click(input);
     expect(getInputValue()).toBe('');
-    expect(changeHandler).not.toHaveBeenCalled();
+    expect(selectHandler).not.toHaveBeenCalled();
     expect(getAnnouncements()).toBe(
       '1 option available. Use up and down arrow keys to navigate. Press enter to select',
     );
@@ -95,7 +100,7 @@ describe('TagSelector', () => {
     await userEvent.click(option);
 
     expect(getInputValue()).toBe('');
-    expect(changeHandler).toHaveBeenCalledWith({
+    expect(selectHandler).toHaveBeenCalledWith({
       description: 'Apples',
       id: 'apples',
     });
@@ -180,7 +185,7 @@ describe('TagSelector', () => {
   // Todo - keyboard access
   describe('keyboard access', () => {
     it("shouldn't select anything and close the dropdown on enter with no active option and no input", async () => {
-      const { input, changeHandler, getInputValue, queryByLabelText } =
+      const { input, selectHandler, getInputValue, queryByLabelText } =
         renderTagSelector({
           value: '',
           options: [{ description: 'Apples', id: 'apples' }],
@@ -197,13 +202,13 @@ describe('TagSelector', () => {
       await userEvent.keyboard('{enter}');
 
       expect(getInputValue()).toBe('');
-      expect(changeHandler).not.toHaveBeenCalled();
+      expect(selectHandler).not.toHaveBeenCalled();
       expect(queryByLabelText('Apples')).toBeNull(); // Ensure dropdown is closed
       expect(getAnnouncements()).toBeNull();
     });
 
     it('should select an option on enter after navigating the dropdown', async () => {
-      const { input, changeHandler, getInputValue } = renderTagSelector({
+      const { input, selectHandler, getInputValue } = renderTagSelector({
         value: '',
         options: [
           { description: 'Apples', id: 'apples' },
@@ -234,14 +239,43 @@ describe('TagSelector', () => {
       expect(input).toHaveAttribute('aria-activedescendant', 'carrots');
 
       // Ensure no changes have been committed yet
-      expect(changeHandler).not.toHaveBeenCalled();
+      expect(selectHandler).not.toHaveBeenCalled();
 
       await userEvent.keyboard('{enter}');
 
-      expect(changeHandler).toHaveBeenCalledWith({
+      expect(selectHandler).toHaveBeenCalledWith({
         description: 'Carrots',
         id: 'carrots',
       });
+    });
+
+    it('should first clear the suggestion preview and then reset the input when pressing escape', async () => {
+      const { input, queryByLabelText, changeHandler, getInputValue } =
+        renderTagSelector({
+          value: '',
+          options: [
+            { description: 'Apples', id: 'apples' },
+            { description: 'Bananas', id: 'bananas' },
+            { description: 'Carrots', id: 'carrots' },
+          ],
+          selectedTags: [],
+          label: 'Select tags',
+        });
+
+      await userEvent.click(input);
+      expect(getAnnouncements()).toBe(
+        '3 options available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+
+      await userEvent.paste('app');
+      expect(changeHandler).toHaveBeenNthCalledWith(1, 'app');
+
+      await userEvent.keyboard('{arrowdown}');
+      expect(input).toHaveAttribute('aria-activedescendant', 'apples');
+
+      await userEvent.keyboard('{Escape}');
+      expect(getInputValue()).toBe('');
+      expect(queryByLabelText('Apples')).toBe(null); // Ensure dropdown has closed
     });
   });
 
