@@ -199,7 +199,7 @@ describe('TagSelector', () => {
       expect(getInputValue()).toBe('');
       expect(changeHandler).not.toHaveBeenCalled();
       expect(queryByLabelText('Apples')).toBeNull(); // Ensure dropdown is closed
-      expect(getAnnouncements()).toBeNull(); // Todo
+      expect(getAnnouncements()).toBeNull();
     });
   });
 
