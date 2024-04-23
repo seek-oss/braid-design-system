@@ -3,7 +3,7 @@ import 'html-validate/jest';
 import type React from 'react';
 import { BraidTestProvider } from '../../../entries/test';
 import { TagSelector, type TagSelectorProps } from './TagSelector';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { containerPrefix } from '../private/Announcement/Announcement';
@@ -54,12 +54,16 @@ function renderTagSelector({
     );
   };
 
-  const { getByRole, getByLabelText, queryByLabelText } = render(<TestCase />);
+  const { getByRole, queryByRole, getByLabelText, queryByLabelText } = render(
+    <TestCase />,
+  );
   const input = getByRole('combobox');
   const getInputValue = () => input.getAttribute('value');
 
   return {
     input,
+    getByRole,
+    queryByRole,
     getInputValue,
     selectHandler,
     changeHandler,
@@ -367,12 +371,41 @@ describe('TagSelector', () => {
     });
   });
 
-  // Todo - should select an option on enter after navigating
+  it("should not show 'noOptionsMessage' when options are provided", async () => {
+    const { input, getByRole, queryByRole } = renderTagSelector({
+      value: '',
+      options: [{ description: 'Apples', id: 'apples' }],
+      selectedTags: [],
+      label: 'Select tags',
+    });
 
-  // Todo - should show `noOptionsMessage` message when no options are provided
-  // This functionality will need to be added to the component itself
+    expect(queryByRole('option')).not.toBeInTheDocument();
+    expect(queryByRole('listitem')).not.toBeInTheDocument();
+    expect(getAnnouncements()).toBeNull();
 
-  // Todo - should not show `noOptionsMessage` when options are provided
+    await userEvent.click(input);
+    expect(getByRole('option')).toHaveTextContent('Apples');
+    expect(getAnnouncements()).toBe(
+      '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+    );
+
+    fireEvent.blur(input);
+    expect(getAnnouncements()).toBeNull();
+  });
+
+  it("should show 'noOptionsMessage' message when no options are provided", async () => {
+    const { input } = renderTagSelector({
+      value: '',
+      options: [],
+      selectedTags: [],
+      label: 'Select tags',
+    });
+
+    expect(getAnnouncements()).toBeNull();
+
+    await userEvent.click(input);
+    expect(getAnnouncements()).toBe('No options available');
+  });
 
   // Todo - automatic selection
 });

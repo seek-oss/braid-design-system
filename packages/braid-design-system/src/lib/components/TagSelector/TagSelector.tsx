@@ -202,7 +202,12 @@ export const TagSelector = ({
         return { ...state, isFocussed: true, showOptionsIfAvailable: true };
 
       case INPUT_BLUR:
-        return { ...state, isFocussed: false, showOptionsIfAvailable: false };
+        return {
+          ...state,
+          isFocussed: false,
+          showOptionsIfAvailable: false,
+          activeOption: undefined,
+        };
 
       case INPUT_ARROW_DOWN:
         if (
