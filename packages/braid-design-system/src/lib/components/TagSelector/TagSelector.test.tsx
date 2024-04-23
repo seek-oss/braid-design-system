@@ -201,6 +201,48 @@ describe('TagSelector', () => {
       expect(queryByLabelText('Apples')).toBeNull(); // Ensure dropdown is closed
       expect(getAnnouncements()).toBeNull();
     });
+
+    it('should select an option on enter after navigating the dropdown', async () => {
+      const { input, changeHandler, getInputValue } = renderTagSelector({
+        value: '',
+        options: [
+          { description: 'Apples', id: 'apples' },
+          { description: 'Bananas', id: 'bananas' },
+          { description: 'Carrots', id: 'carrots' },
+        ],
+        selectedTags: [],
+        label: 'Select tags',
+      });
+
+      expect(getInputValue()).toBe('');
+
+      await userEvent.click(input);
+      expect(getAnnouncements()).toBe(
+        '3 options available. Use up and down arrow keys to navigate. Press enter to select',
+      );
+
+      await userEvent.keyboard('{arrowdown}');
+      expect(getAnnouncements()).toBeNull();
+      expect(input).toHaveAttribute('aria-activedescendant', 'apples');
+
+      await userEvent.keyboard('{arrowdown}');
+      expect(getAnnouncements()).toBeNull();
+      expect(input).toHaveAttribute('aria-activedescendant', 'bananas');
+
+      await userEvent.keyboard('{arrowdown}');
+      expect(getAnnouncements()).toBeNull();
+      expect(input).toHaveAttribute('aria-activedescendant', 'carrots');
+
+      // Ensure no changes have been committed yet
+      expect(changeHandler).not.toHaveBeenCalled();
+
+      await userEvent.keyboard('{enter}');
+
+      expect(changeHandler).toHaveBeenCalledWith({
+        description: 'Carrots',
+        id: 'carrots',
+      });
+    });
   });
 
   // Todo - should select an option on enter after navigating
