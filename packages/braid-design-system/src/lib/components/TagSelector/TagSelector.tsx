@@ -13,6 +13,8 @@ import {
   tagSelector,
 } from '../../translations/en';
 import { createAccessibilityProps } from './createAccessibilityProps';
+import { Box } from '../Box/Box';
+import { Stack } from '../Stack/Stack';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -20,12 +22,12 @@ interface SelectedTagProps {
 }
 
 const SelectedTags = ({ tags, onSelect }: SelectedTagProps) => (
-  <div>
-    <ul className={styles.SelectedTagsList}>
+  <Box>
+    <Box component="ul" className={styles.SelectedTagsList}>
       {tags.map((tag, index) => (
-        <li key={index} className={styles.SelectedTag}>
+        <Box component="li" key={index} className={styles.SelectedTag}>
           <Inline space="xxsmall">
-            <span>{tag.description}</span>
+            <Box component="span">{tag.description}</Box>
             <ButtonIcon
               icon={<IconClear />}
               label={`Remove ${tag.description}`}
@@ -35,10 +37,10 @@ const SelectedTags = ({ tags, onSelect }: SelectedTagProps) => (
               size="standard"
             />
           </Inline>
-        </li>
+        </Box>
       ))}
-    </ul>
-  </div>
+    </Box>
+  </Box>
 );
 
 interface TagOptionProps {
@@ -61,7 +63,8 @@ const TagOption = ({
   };
 
   return (
-    <li
+    <Box
+      component="li"
       key={tag.id}
       role="option"
       id={tag.id}
@@ -73,8 +76,8 @@ const TagOption = ({
       tabIndex={-1}
       {...restProps}
     >
-      <span>{tag.description}</span>
-    </li>
+      <Box component="span">{tag.description}</Box>
+    </Box>
   );
 };
 
@@ -386,48 +389,52 @@ export const TagSelector = ({
   }
 
   return (
-    <div
-      className={styles.Wrapper}
-      {...(ariaLabel && { 'aria-label': ariaLabel })}
-    >
-      {(selectedTags || []).length > 0 && (
-        <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
-      )}
-      <label htmlFor="tag-selector">{label}</label>
-      <div className="combo-wrap">
-        <input
-          {...restProps}
-          type="text"
-          value={value}
-          onChange={(event) => {
-            dispatch({ type: INPUT_CHANGE });
-            onChange(event.target.value);
-          }}
-          onFocus={() => dispatch({ type: INPUT_FOCUS })}
-          onBlur={() => dispatch({ type: INPUT_BLUR })}
-          onKeyDown={onKeyDown}
-          {...a11y.inputProps}
-        />
-        <span aria-hidden="true" data-trigger="multiselect" />
-        {isOpen && (
-          <ul className={styles.Dropdown} id={`${id}-menu`} role="listbox">
-            {dropdownOptions.map((tag) => (
-              <TagOption
-                tag={tag}
-                activeOption={activeOption}
-                key={tag.id}
-                onSelect={onSelect}
-                value={value}
-                {...a11y.getDropdownOptionProps({
-                  optionId: tag.id,
-                  description: tag.description,
-                })}
-              />
-            ))}
-          </ul>
+    <Box position="relative" {...(ariaLabel && { 'aria-label': ariaLabel })}>
+      <Stack space="xxsmall">
+        {(selectedTags || []).length > 0 && (
+          <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
         )}
-      </div>
-      <Announcement>{announcements.join('. ')}</Announcement>
-    </div>
+        <label htmlFor="tag-selector">{label}</label>
+        <Box className="combo-wrap">
+          <input
+            {...restProps}
+            type="text"
+            value={value}
+            onChange={(event) => {
+              dispatch({ type: INPUT_CHANGE });
+              onChange(event.target.value);
+            }}
+            onFocus={() => dispatch({ type: INPUT_FOCUS })}
+            onBlur={() => dispatch({ type: INPUT_BLUR })}
+            onKeyDown={onKeyDown}
+            {...a11y.inputProps}
+          />
+          <span aria-hidden="true" data-trigger="multiselect" />
+          {isOpen ? (
+            <Box
+              component="ul"
+              className={styles.Dropdown}
+              id={`${id}-menu`}
+              role="listbox"
+            >
+              {dropdownOptions.map((tag) => (
+                <TagOption
+                  tag={tag}
+                  activeOption={activeOption}
+                  key={tag.id}
+                  onSelect={onSelect}
+                  value={value}
+                  {...a11y.getDropdownOptionProps({
+                    optionId: tag.id,
+                    description: tag.description,
+                  })}
+                />
+              ))}
+            </Box>
+          ) : null}
+        </Box>
+        <Announcement>{announcements.join('. ')}</Announcement>
+      </Stack>
+    </Box>
   );
 };

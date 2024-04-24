@@ -1,11 +1,5 @@
 import { style } from '@vanilla-extract/css';
 
-export const Wrapper = style({
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-});
-
 export const Dropdown = style({
   border: '2px solid black',
   width: 'fit-content',
