@@ -48,6 +48,7 @@ const docs: ComponentDocs = {
               setStandardValue('');
             }}
             value={standardValue}
+            onClear={() => setStandardValue('')}
             onChange={(updatedValue) => setStandardValue(updatedValue)}
             noOptionsMessage="No tags found"
           />
@@ -70,6 +71,7 @@ const docs: ComponentDocs = {
               setPreValue('');
             }}
             value={preValue}
+            onClear={() => setPreValue('')}
             onChange={(updatedValue) => setPreValue(updatedValue)}
             noOptionsMessage="No tags found"
           />

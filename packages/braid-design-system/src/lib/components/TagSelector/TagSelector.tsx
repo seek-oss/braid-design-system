@@ -1,5 +1,5 @@
 import type { KeyboardEvent } from 'react';
-import { useId, useReducer } from 'react';
+import { useId, useReducer, useRef } from 'react';
 
 import * as styles from '../Autosuggest/Autosuggest.css';
 import { Inline } from '../Inline/Inline';
@@ -16,7 +16,7 @@ import { touchableText } from '../../css/typography.css';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Field } from '../private/Field/Field';
-import { has } from 'lodash';
+import { ClearField } from '../private/Field/ClearField';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -161,12 +161,12 @@ export interface TagSelectorProps {
   id: string;
   options: Tag[] | ((value: string) => Tag[]);
   selectedTags: Tag[] | ((value: string) => Tag[]);
-  // remove ariaLabel prop?
-  ariaLabel?: string;
   label: string;
-  onSelect: (tag: Tag) => void;
   value: string;
+  onSelect: (tag: Tag) => void;
   onChange: (value: string) => void;
+  onClear?: () => void;
+  ariaLabel?: string;
   customTags?: boolean;
   translations?: TagSelectorTranslations;
   noOptionsMessage?: string;
@@ -176,11 +176,12 @@ export const TagSelector = ({
   id,
   options: optionsProp = fallbackOptions,
   selectedTags: selectedTagsProp = fallbackSelectedTags,
-  ariaLabel,
   label,
-  onSelect,
   value,
+  onSelect,
   onChange,
+  onClear,
+  ariaLabel,
   customTags = false,
   translations = tagSelector,
   noOptionsMessage,
@@ -377,6 +378,14 @@ export const TagSelector = ({
     }
   };
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const clearable = Boolean(
+    typeof onClear !== 'undefined' &&
+      typeof value !== 'undefined' &&
+      value.length > 0,
+  );
+
   const announcements = [];
   const optionsCount = dropdownOptions.length;
   const hasOptions = optionsCount > 0;
@@ -412,7 +421,23 @@ export const TagSelector = ({
           <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
         )}
         <Box className="combo-wrap">
-          <Field {...restProps} value={value} label={label} id={id}>
+          <Field
+            {...restProps}
+            value={value}
+            label={label}
+            id={id}
+            secondaryIcon={
+              onClear ? (
+                <ClearField
+                  id={`${id}-clearfield`}
+                  hide={!clearable}
+                  onClear={onClear}
+                  label="Clear"
+                  inputRef={inputRef}
+                />
+              ) : null
+            }
+          >
             {(overlays, fieldProps, icon, secondaryIcon) => (
               <Box width="full">
                 <Box
