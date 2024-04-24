@@ -16,6 +16,7 @@ import { touchableText } from '../../css/typography.css';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Field } from '../private/Field/Field';
+import { has } from 'lodash';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -438,7 +439,11 @@ export const TagSelector = ({
               component="ul"
               position="absolute"
               zIndex="dropdown"
-              background="surface"
+              background={
+                !hasOptions && noOptionsMessage
+                  ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+                  : 'surface'
+              }
               borderRadius="standard"
               boxShadow="medium"
               width="full"
