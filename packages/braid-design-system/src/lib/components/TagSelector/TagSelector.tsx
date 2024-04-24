@@ -96,8 +96,7 @@ function ensureCustomTagsNotUsed(options: Tag[], selectedTags: Tag[]) {
 }
 
 function handleOnSelect(tag: Tag, value: string, onSelect: (tag: Tag) => void) {
-  // Add zero-width space to ensure the tag is not an exact match
-  if (tag.description.startsWith('Add "​')) {
+  if (tag.description.startsWith('Add "')) {
     onSelect({
       description: value,
       id: `${tag.id}-${value}`,
@@ -210,8 +209,7 @@ export const TagSelector = ({
 
   const dropdownOptions = [
     ...(customTags && value
-      ? // Add zero-width space to ensure the tag is not an exact match
-        [{ description: `Add "​${value}"`, id: `${customTagId}-add-${value}` }]
+      ? [{ description: `Add "${value}"`, id: `${customTagId}-add-${value}` }]
       : []),
     ...unSelectedOptions.filter((tag) =>
       tag.description.toLowerCase().includes(value.toLowerCase()),
