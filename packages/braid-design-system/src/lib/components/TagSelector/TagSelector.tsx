@@ -15,6 +15,7 @@ import {
 import { createAccessibilityProps } from './createAccessibilityProps';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
+import { Field } from '../private/Field/Field';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -391,25 +392,33 @@ export const TagSelector = ({
 
   return (
     <Box position="relative" {...(ariaLabel && { 'aria-label': ariaLabel })}>
-      <Stack space="xxsmall">
+      <Stack space="small">
         {(selectedTags || []).length > 0 && (
           <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
         )}
-        <label htmlFor={id}>{label}</label>
         <Box className="combo-wrap">
-          <input
-            {...restProps}
-            type="text"
-            value={value}
-            onChange={(event) => {
-              dispatch({ type: INPUT_CHANGE });
-              onChange(event.target.value);
-            }}
-            onFocus={() => dispatch({ type: INPUT_FOCUS })}
-            onBlur={() => dispatch({ type: INPUT_BLUR })}
-            onKeyDown={onKeyDown}
-            {...a11y.inputProps}
-          />
+          <Field {...restProps} value={value} label={label} id={id}>
+            {(overlays, fieldProps, icon, secondaryIcon) => (
+              <Box width="full">
+                <Box
+                  {...fieldProps}
+                  component="input"
+                  value={value}
+                  onChange={(event) => {
+                    dispatch({ type: INPUT_CHANGE });
+                    onChange((event.target as HTMLInputElement).value);
+                  }}
+                  onFocus={() => dispatch({ type: INPUT_FOCUS })}
+                  onBlur={() => dispatch({ type: INPUT_BLUR })}
+                  onKeyDown={onKeyDown}
+                  {...a11y.inputProps}
+                />
+                {icon}
+                {overlays}
+                {secondaryIcon}
+              </Box>
+            )}
+          </Field>
           <span aria-hidden="true" data-trigger="multiselect" />
           {isOpen ? (
             <Box
