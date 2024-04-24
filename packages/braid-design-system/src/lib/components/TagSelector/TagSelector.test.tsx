@@ -93,6 +93,7 @@ describe('TagSelector', () => {
       label: 'Select tags',
     });
 
+    // Todo - maybe a more sophisticated check for if the tags are showing
     expect(queryByText('Apples')).toBeInTheDocument();
     expect(queryByText('Bananas')).toBeInTheDocument();
     expect(queryByText('Carrots')).toBeInTheDocument();
