@@ -1,15 +1,27 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
+import { vars } from '../../themes/vars.css';
+import { responsiveStyle } from '../../css/responsiveStyle';
 
-export const Dropdown = style({
-  border: '2px solid black',
-  width: 'fit-content',
-  paddingInlineEnd: '16px',
-  position: 'absolute',
-  top: '100%',
-  backgroundColor: 'white',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)',
-  zIndex: 2,
-});
+// Todo - see if you can reuse style from Autosuggest.css.ts
+const calcMenuHeight = (numSuggestions: number) =>
+  calc(vars.touchableSize)
+    .multiply(numSuggestions)
+    .add(vars.space.xxsmall)
+    .toString();
+
+// Todo - see if you can reuse style from Autosuggest.css.ts
+export const menu = style(
+  responsiveStyle({
+    mobile: {
+      maxHeight: calcMenuHeight(6),
+      overflowY: 'auto',
+    },
+    tablet: {
+      maxHeight: calcMenuHeight(8),
+    },
+  }),
+);
 
 export const TagOption = style({
   cursor: 'pointer',

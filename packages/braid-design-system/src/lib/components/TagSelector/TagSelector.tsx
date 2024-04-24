@@ -423,7 +423,16 @@ export const TagSelector = ({
           {isOpen ? (
             <Box
               component="ul"
-              className={styles.Dropdown}
+              display={isOpen ? 'block' : 'none'}
+              position="absolute"
+              zIndex="dropdown"
+              background="surface"
+              borderRadius="standard"
+              boxShadow="medium"
+              width="full"
+              marginTop="xxsmall"
+              paddingY="xxsmall"
+              className={styles.menu}
               id={`${customTagId}-menu`}
               role="listbox"
             >
