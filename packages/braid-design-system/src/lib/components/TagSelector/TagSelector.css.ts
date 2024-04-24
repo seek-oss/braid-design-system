@@ -23,25 +23,7 @@ export const menu = style(
   }),
 );
 
-export const TagOption = style({
-  cursor: 'pointer',
-  listStyle: 'none',
-
-  ':hover': {
-    backgroundColor: 'gainsboro',
-  },
-});
-
-export const ActiveTagOption = style({
-  cursor: 'pointer',
-  listStyle: 'none',
-  backgroundColor: 'lightgrey',
-
-  ':hover': {
-    backgroundColor: 'lightgrey',
-  },
-});
-
+// Todo - remove
 export const SelectedTagsList = style({
   listStyle: 'none',
   padding: 0,
@@ -49,6 +31,7 @@ export const SelectedTagsList = style({
   gap: '6px',
 });
 
+// Todo - remove
 export const SelectedTag = style({
   display: 'inline-block',
   backgroundColor: 'lightgrey',

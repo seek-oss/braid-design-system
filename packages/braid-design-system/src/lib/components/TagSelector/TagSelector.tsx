@@ -6,6 +6,7 @@ import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconClear } from '../icons';
 import { Inline } from '../Inline/Inline';
 import type { Tag } from '../Tag/Tag';
+import { Text } from '../Text/Text';
 import { normalizeKey } from '../private/normalizeKey';
 import { Announcement } from '../private/Announcement/Announcement';
 import {
@@ -13,6 +14,7 @@ import {
   tagSelector,
 } from '../../translations/en';
 import { createAccessibilityProps } from './createAccessibilityProps';
+import { touchableText } from '../../css/typography.css';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Field } from '../private/Field/Field';
@@ -49,6 +51,7 @@ interface TagOptionProps {
   activeOption: string | undefined;
   onSelect: (tag: Tag) => void;
   value: string;
+  onHover: () => void;
 }
 
 const TagOption = ({
@@ -56,6 +59,7 @@ const TagOption = ({
   activeOption,
   onSelect,
   value,
+  onHover,
   ...restProps
 }: TagOptionProps) => {
   const handleClick = (event: React.MouseEvent, clickedTag: Tag) => {
@@ -66,18 +70,27 @@ const TagOption = ({
   return (
     <Box
       component="li"
-      key={tag.id}
+      cursor="pointer"
+      onMouseDown={(event) => event.preventDefault()}
+      onMouseMove={onHover}
+      onTouchStart={onHover}
       role="option"
       id={tag.id}
-      className={
-        tag.id === activeOption ? styles.ActiveTagOption : styles.TagOption
-      }
       onClick={(event) => handleClick(event, tag)}
-      onMouseDown={(event) => event.preventDefault()}
       tabIndex={-1}
       {...restProps}
     >
-      <Box component="span">{tag.description}</Box>
+      <Box
+        component="span"
+        display="flex"
+        justifyContent="spaceBetween"
+        background={tag.id === activeOption ? 'formAccentSoft' : undefined}
+        paddingX="small"
+      >
+        <Box className={touchableText.standard}>
+          <Text baseline={false}>{tag.description}</Text>
+        </Box>
+      </Box>
     </Box>
   );
 };
@@ -133,6 +146,7 @@ const INPUT_ARROW_UP = 3;
 const INPUT_ENTER = 4;
 const INPUT_ESCAPE = 5;
 const INPUT_CHANGE = 6;
+const SUGGESTION_MOUSE_ENTER = 7;
 
 type Action =
   | { type: typeof INPUT_FOCUS }
@@ -141,7 +155,8 @@ type Action =
   | { type: typeof INPUT_ARROW_UP }
   | { type: typeof INPUT_ENTER }
   | { type: typeof INPUT_ESCAPE }
-  | { type: typeof INPUT_CHANGE };
+  | { type: typeof INPUT_CHANGE }
+  | { type: typeof SUGGESTION_MOUSE_ENTER; id: string };
 
 interface TagSelectorState {
   isFocussed: boolean;
@@ -302,6 +317,12 @@ export const TagSelector = ({
           showOptionsIfAvailable: true,
         };
 
+      case SUGGESTION_MOUSE_ENTER:
+        return {
+          ...state,
+          activeOption: action.id,
+        };
+
       default:
         return state;
     }
@@ -443,6 +464,12 @@ export const TagSelector = ({
                   key={tag.id}
                   onSelect={onSelect}
                   value={value}
+                  onHover={() => {
+                    dispatch({
+                      type: SUGGESTION_MOUSE_ENTER,
+                      id: tag.id,
+                    });
+                  }}
                   {...a11y.getDropdownOptionProps({
                     optionId: tag.id,
                     description: tag.description,
