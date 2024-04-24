@@ -166,6 +166,7 @@ export interface TagSelectorProps {
 }
 
 export const TagSelector = ({
+  id,
   options: optionsProp = fallbackOptions,
   selectedTags: selectedTagsProp = fallbackSelectedTags,
   ariaLabel,
@@ -193,7 +194,7 @@ export const TagSelector = ({
     ensureCustomTagsNotUsed(options, selectedTags);
   }
 
-  const id = useId();
+  const customTagId = useId();
 
   const unSelectedOptions = options.filter(
     (option) => !selectedTags?.some((tag) => tag.id === option.id),
@@ -202,7 +203,7 @@ export const TagSelector = ({
   const dropdownOptions = [
     ...(customTags && value
       ? // Add zero-width space to ensure the tag is not an exact match
-        [{ description: `Add "​${value}"`, id: `${id}-add-${value}` }]
+        [{ description: `Add "​${value}"`, id: `${customTagId}-add-${value}` }]
       : []),
     ...unSelectedOptions.filter((tag) =>
       tag.description.toLowerCase().includes(value.toLowerCase()),
@@ -332,7 +333,7 @@ export const TagSelector = ({
 
         if (value !== '' && activeOption === undefined && customTags) {
           handleOnSelect(
-            { description: value, id: `${id}-add-${value}` },
+            { description: value, id: `${customTagId}-add-${value}` },
             value,
             onSelect,
           );
@@ -368,7 +369,7 @@ export const TagSelector = ({
   const hasOptions = optionsCount > 0;
 
   const a11y = createAccessibilityProps({
-    id: 'tag-selector',
+    id,
     activeOption,
     isFocused: isFocussed,
   });
@@ -394,7 +395,7 @@ export const TagSelector = ({
         {(selectedTags || []).length > 0 && (
           <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
         )}
-        <label htmlFor="tag-selector">{label}</label>
+        <label htmlFor={id}>{label}</label>
         <Box className="combo-wrap">
           <input
             {...restProps}
@@ -414,7 +415,7 @@ export const TagSelector = ({
             <Box
               component="ul"
               className={styles.Dropdown}
-              id={`${id}-menu`}
+              id={`${customTagId}-menu`}
               role="listbox"
             >
               {dropdownOptions.map((tag) => (
