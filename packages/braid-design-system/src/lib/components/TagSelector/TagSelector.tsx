@@ -169,6 +169,7 @@ export interface TagSelectorProps {
   onChange: (value: string) => void;
   customTags?: boolean;
   translations?: TagSelectorTranslations;
+  noOptionsMessage?: string;
 }
 
 export const TagSelector = ({
@@ -182,6 +183,7 @@ export const TagSelector = ({
   onChange,
   customTags = false,
   translations = tagSelector,
+  noOptionsMessage,
   ...restProps
 }: TagSelectorProps) => {
   const optionsPropValue =
@@ -386,18 +388,21 @@ export const TagSelector = ({
     isFocused: isFocussed,
   });
 
-  const isOpen = showOptionsIfAvailable && hasOptions;
+  const isOpen = showOptionsIfAvailable && (hasOptions || noOptionsMessage);
 
   // Announce when the field is focused and no options have been manually highlighted
-  if (isFocussed && activeOption == null) {
-    if (isOpen) {
+  if (isFocussed && !activeOption) {
+    if (isOpen && hasOptions) {
       announcements.push(
         translations.optionsAvailableAnnouncement(optionsCount),
       );
-
       announcements.push(translations.optionInstructions);
-    } else if (!isOpen && !hasOptions) {
-      announcements.push(translations.noOptionsAvailableAnnouncement);
+    } else if (!hasOptions) {
+      if (noOptionsMessage) {
+        announcements.push(noOptionsMessage);
+      } else {
+        announcements.push(translations.noOptionsAvailableAnnouncement);
+      }
     }
   }
 
@@ -430,11 +435,9 @@ export const TagSelector = ({
               </Box>
             )}
           </Field>
-          <span aria-hidden="true" data-trigger="multiselect" />
           {isOpen ? (
             <Box
               component="ul"
-              display={isOpen ? 'block' : 'none'}
               position="absolute"
               zIndex="dropdown"
               background="surface"
@@ -447,25 +450,39 @@ export const TagSelector = ({
               id={`${customTagId}-menu`}
               role="listbox"
             >
-              {dropdownOptions.map((tag) => (
-                <TagOption
-                  tag={tag}
-                  activeOption={activeOption}
-                  key={tag.id}
-                  onSelect={onSelect}
-                  value={value}
-                  onHover={() => {
-                    dispatch({
-                      type: SUGGESTION_MOUSE_ENTER,
-                      id: tag.id,
-                    });
-                  }}
-                  {...a11y.getDropdownOptionProps({
-                    optionId: tag.id,
-                    description: tag.description,
-                  })}
-                />
-              ))}
+              {!hasOptions && noOptionsMessage ? (
+                <Box
+                  component="li"
+                  paddingX="small"
+                  className={touchableText.standard}
+                  cursor="default"
+                >
+                  <Text tone="secondary" weight="medium" baseline={false}>
+                    {noOptionsMessage}
+                  </Text>
+                </Box>
+              ) : null}
+              {hasOptions
+                ? dropdownOptions.map((tag) => (
+                    <TagOption
+                      tag={tag}
+                      activeOption={activeOption}
+                      key={tag.id}
+                      onSelect={onSelect}
+                      value={value}
+                      onHover={() => {
+                        dispatch({
+                          type: SUGGESTION_MOUSE_ENTER,
+                          id: tag.id,
+                        });
+                      }}
+                      {...a11y.getDropdownOptionProps({
+                        optionId: tag.id,
+                        description: tag.description,
+                      })}
+                    />
+                  ))
+                : null}
             </Box>
           ) : null}
         </Box>

@@ -18,11 +18,13 @@ function renderTagSelector({
   ariaLabel,
   label,
   customTags = false,
+  noOptionsMessage,
 }: Pick<
   TagSelectorProps,
   'value' | 'options' | 'selectedTags' | 'label' | 'customTags'
 > & {
   ariaLabel?: string;
+  noOptionsMessage?: string;
 }) {
   const selectHandler = jest.fn();
   const changeHandler = jest.fn();
@@ -48,6 +50,7 @@ function renderTagSelector({
             changeHandler(...args);
           }}
           ariaLabel={ariaLabel || undefined}
+          noOptionsMessage={noOptionsMessage || undefined}
         />
       </BraidTestProvider>
     );
@@ -447,7 +450,7 @@ describe('TagSelector', () => {
     });
   });
 
-  it("should not show 'noOptionsMessage' when options are provided", async () => {
+  it('should announce no options message when options are available', async () => {
     const { input, getByRole, queryByRole } = renderTagSelector({
       value: '',
       options: [{ description: 'Apples', id: 'apples' }],
@@ -469,7 +472,7 @@ describe('TagSelector', () => {
     expect(getAnnouncements()).toBeNull();
   });
 
-  it("should show 'noOptionsMessage' message when no options are provided", async () => {
+  it('should announce no options message message when no options are available', async () => {
     const { input } = renderTagSelector({
       value: '',
       options: [],
@@ -481,5 +484,32 @@ describe('TagSelector', () => {
 
     await userEvent.click(input);
     expect(getAnnouncements()).toBe('No options available');
+  });
+
+  it("should show and announce custom 'noOptionsMessage' if provided when no options are available", async () => {
+    const { input, queryByRole, getByRole } = renderTagSelector({
+      value: '',
+      options: [],
+      selectedTags: [],
+      label: 'Select tags',
+      noOptionsMessage: 'Custom no options message',
+    });
+
+    expect(queryByRole('listitem')).not.toBeInTheDocument();
+    expect(queryByRole('option')).not.toBeInTheDocument();
+    expect(getAnnouncements()).toBeNull();
+
+    await userEvent.click(input);
+
+    const noOptionsMessage = getByRole('listitem');
+    expect(noOptionsMessage).toHaveTextContent('Custom no options message');
+    expect(queryByRole('option')).not.toBeInTheDocument();
+    expect(getAnnouncements()).toBe('Custom no options message');
+
+    fireEvent.blur(input);
+
+    expect(queryByRole('listitem')).not.toBeInTheDocument();
+    expect(queryByRole('option')).not.toBeInTheDocument();
+    expect(getAnnouncements()).toBeNull();
   });
 });

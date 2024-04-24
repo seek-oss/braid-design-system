@@ -49,6 +49,7 @@ const docs: ComponentDocs = {
             }}
             value={standardValue}
             onChange={(updatedValue) => setStandardValue(updatedValue)}
+            noOptionsMessage="No tags found"
           />
         </Stack>
         <Stack space="small">
@@ -70,6 +71,7 @@ const docs: ComponentDocs = {
             }}
             value={preValue}
             onChange={(updatedValue) => setPreValue(updatedValue)}
+            noOptionsMessage="No tags found"
           />
         </Stack>
       </Stack>,
