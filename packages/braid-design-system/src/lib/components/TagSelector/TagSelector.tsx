@@ -1,11 +1,9 @@
 import type { KeyboardEvent } from 'react';
 import { useId, useReducer } from 'react';
 
-import * as styles from './TagSelector.css';
-import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
-import { IconClear } from '../icons';
+import * as styles from '../Autosuggest/Autosuggest.css';
 import { Inline } from '../Inline/Inline';
-import type { Tag } from '../Tag/Tag';
+import { Tag } from '../Tag/Tag';
 import { Text } from '../Text/Text';
 import { normalizeKey } from '../private/normalizeKey';
 import { Announcement } from '../private/Announcement/Announcement';
@@ -25,25 +23,17 @@ interface SelectedTagProps {
 }
 
 const SelectedTags = ({ tags, onSelect }: SelectedTagProps) => (
-  <Box>
-    <Box component="ul" className={styles.SelectedTagsList}>
-      {tags.map((tag, index) => (
-        <Box component="li" key={index} className={styles.SelectedTag}>
-          <Inline space="xxsmall">
-            <Box component="span">{tag.description}</Box>
-            <ButtonIcon
-              icon={<IconClear />}
-              label={`Remove ${tag.description}`}
-              onClick={() => onSelect(tag)}
-              id={`remove-${tag.id}`}
-              variant="transparent"
-              size="standard"
-            />
-          </Inline>
-        </Box>
-      ))}
-    </Box>
-  </Box>
+  <Inline space="small" alignY="center">
+    {tags.map((tag) => (
+      <Tag
+        key={`selected-${tag.id}`}
+        onClear={() => onSelect(tag)}
+        clearLabel={`Clear ${tag.description}`}
+      >
+        {tag.description}
+      </Tag>
+    ))}
+  </Inline>
 );
 
 interface TagOptionProps {
@@ -413,7 +403,7 @@ export const TagSelector = ({
 
   return (
     <Box position="relative" {...(ariaLabel && { 'aria-label': ariaLabel })}>
-      <Stack space="small">
+      <Stack space="large">
         {(selectedTags || []).length > 0 && (
           <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
         )}
