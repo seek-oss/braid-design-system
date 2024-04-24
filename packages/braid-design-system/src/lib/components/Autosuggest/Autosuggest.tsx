@@ -35,7 +35,10 @@ import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
-import { createAccessibilityProps, getItemId } from './createAccessbilityProps';
+import {
+  createAccessibilityProps,
+  getItemId,
+} from './createAccessibilityProps';
 import {
   type AutosuggestTranslations,
   autosuggest,
