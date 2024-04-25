@@ -339,7 +339,7 @@ export const TagSelector = ({
       case 'ArrowUp':
         event.preventDefault();
         dispatch({ type: INPUT_ARROW_UP });
-        break;
+        return;
 
       case 'Enter':
         event.preventDefault();
@@ -352,7 +352,7 @@ export const TagSelector = ({
             onSelect,
           );
 
-          break;
+          return;
         }
 
         if (activeOption) {
@@ -365,16 +365,16 @@ export const TagSelector = ({
           );
         }
 
-        break;
+        return;
 
       case 'Escape':
         event.preventDefault();
         dispatch({ type: INPUT_ESCAPE });
         onChange('');
-        break;
+        return;
 
       default:
-        break;
+        return;
     }
   };
 
