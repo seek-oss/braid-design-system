@@ -1,90 +1,72 @@
-import { useState } from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { type Tag, TagSelector } from './TagSelector';
-import { Heading, Stack } from '../';
+import { TagSelector } from './TagSelector';
+import { Text, TextLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: () => {
-    const [standardSelectedTags, setStandardSelectedTags] = useState<Tag[]>([]);
-    const standardOptions = [
-      { description: 'this', id: 'thisStandardOptions' },
-      { description: 'that', id: 'thatStandardOptions' },
-      { description: 'the other', id: 'theOtherStandardOptions' },
-      { description: 'another one', id: 'anotherOneStandardOptions' },
-    ];
-    const [standardValue, setStandardValue] = useState<string>('');
+  Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+    source(
+      <>
+        {setDefaultState('value', '')}
+        {setDefaultState('selectedTags', [])}
 
-    const [preSelectedTags, setPreSelectedTags] = useState<Tag[]>([
-      { description: 'first', id: 'firstPreSelected' },
-      { description: 'second', id: 'secondPreSelected' },
-      { description: 'third', id: 'thirdPreSelected' },
-    ]);
-    const preOptions = [
-      { description: 'this', id: 'thisPreOptions' },
-      { description: 'that', id: 'thatPreOptions' },
-      { description: 'the other', id: 'theOtherPreOptions' },
-      { description: 'another one', id: 'anotherOnePreOptions' },
-    ];
-    const [preValue, setPreValue] = useState<string>('');
-
-    return source(
-      <Stack space="xxlarge">
-        <Stack space="small">
-          <Heading level="2">Standard Tag Selector</Heading>
-          <TagSelector
-            id="standardTagSelector"
-            label="Select tags"
-            options={standardOptions}
-            selectedTags={standardSelectedTags}
-            onSelect={(tag) => {
-              // console.log(`selected ${tag.description}`); // eslint-disable-line no-console
-              setStandardSelectedTags((tags) =>
-                tags.some((t) => t.id === tag.id)
-                  ? tags.filter((t) => t.id !== tag.id)
-                  : [...tags, tag],
-              );
-              setStandardValue('');
-            }}
-            value={standardValue}
-            onClear={() => setStandardValue('')}
-            onChange={(updatedValue) => setStandardValue(updatedValue)}
-            noOptionsMessage="No tags found"
-          />
-        </Stack>
-        <Stack space="small">
-          <Heading level="2">Tag Selector with Custom Tags</Heading>
-          <TagSelector
-            id="preTagSelector"
-            label="Select tags or add new ones"
-            options={preOptions}
-            selectedTags={preSelectedTags}
-            customTags={true}
-            onSelect={(tag) => {
-              // console.log(`selected ${tag.description}`); // eslint-disable-line no-console
-              setPreSelectedTags((tags) =>
-                tags.some((t) => t.id === tag.id)
-                  ? tags.filter((t) => t.id !== tag.id)
-                  : [...tags, tag],
-              );
-              setPreValue('');
-            }}
-            value={preValue}
-            onClear={() => setPreValue('')}
-            onChange={(updatedValue) => setPreValue(updatedValue)}
-            noOptionsMessage="No tags found"
-          />
-        </Stack>
-      </Stack>,
-    );
-  },
+        <TagSelector
+          id={id}
+          options={[
+            { description: 'Apples', id: '1' },
+            { description: 'Bananas', id: '2' },
+            { description: 'Oranges', id: '3' },
+            { description: 'Pears', id: '4' },
+          ]}
+          selectedTags={getState('selectedTags')}
+          label="Label"
+          value={getState('value')}
+          noOptionsMessage="No options"
+          onSelect={(selectedTag) => {
+            setState('selectedTags', [
+              ...getState('selectedTags'),
+              selectedTag,
+            ]);
+            resetState('value');
+          }}
+          onRemove={(removedTag) => {
+            const selectedTags = getState('selectedTags').slice();
+            const index = selectedTags.indexOf(removedTag);
+            if (index !== -1) {
+              selectedTags.splice(index, 1);
+              setState('selectedTags', selectedTags);
+            }
+          }}
+          onChange={() => setState('value')}
+          onClear={() => resetState('value')}
+        />
+      </>,
+    ),
+  accessibility: (
+    <Text>
+      Follows the{' '}
+      <TextLink href="https://www.w3.org/TR/wai-aria-1.2/#combobox">
+        WAI-ARIA Combobox Pattern.
+      </TextLink>
+    </Text>
+  ),
   alternatives: [
     {
+      name: 'Autosuggest',
+      description: 'For lists with a single select option',
+    },
+    {
+      name: 'Checkbox',
+      description: 'For selecting multiple options',
+    },
+    {
       name: 'Tag',
-      description: '...',
+      description: 'For free tags',
     },
   ],
+  // Todo - example with pre-selected tags
+  // Todo - example with custom tags
 };
 
 export default docs;

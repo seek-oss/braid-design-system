@@ -49,6 +49,7 @@ function renderTagSelector({
             setValue(...args);
             changeHandler(...args);
           }}
+          onRemove={() => {}}
           ariaLabel={ariaLabel || undefined}
           noOptionsMessage={noOptionsMessage || undefined}
         />
@@ -236,6 +237,7 @@ describe('TagSelector', () => {
             value=""
             onSelect={() => {}}
             onChange={() => {}}
+            onRemove={() => {}}
           />
         </BraidTestProvider>,
       );
@@ -259,6 +261,7 @@ describe('TagSelector', () => {
             value=""
             onSelect={() => {}}
             onChange={() => {}}
+            onRemove={() => {}}
           />
         </BraidTestProvider>,
       );

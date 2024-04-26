@@ -22,15 +22,15 @@ import { RemoveScroll } from 'react-remove-scroll';
 
 interface SelectedTagProps {
   tags: Tag[];
-  onSelect: (tag: Tag) => void;
+  onRemove: (tag: Tag) => void;
 }
 
-const SelectedTags = ({ tags, onSelect }: SelectedTagProps) => (
+const SelectedTags = ({ tags, onRemove }: SelectedTagProps) => (
   <Inline space="small" alignY="center">
     {tags.map((tag) => (
       <Tag
         key={`selected-${tag.id}`}
-        onClear={() => onSelect(tag)}
+        onClear={() => onRemove(tag)}
         clearLabel={`Clear ${tag.description}`}
       >
         {tag.description}
@@ -179,6 +179,7 @@ export interface TagSelectorProps {
   label: string;
   value: string;
   onSelect: (tag: Tag) => void;
+  onRemove: (tag: Tag) => void;
   onChange: (value: string) => void;
   onClear?: () => void;
   ariaLabel?: string;
@@ -194,6 +195,7 @@ export const TagSelector = ({
   label,
   value,
   onSelect,
+  onRemove,
   onChange,
   onClear,
   ariaLabel,
@@ -433,7 +435,7 @@ export const TagSelector = ({
     <Box position="relative" {...(ariaLabel && { 'aria-label': ariaLabel })}>
       <Stack space="large">
         {(selectedTags || []).length > 0 && (
-          <SelectedTags tags={selectedTags || []} onSelect={onSelect} />
+          <SelectedTags tags={selectedTags || []} onRemove={onRemove} />
         )}
         <Box className="combo-wrap">
           <Field
