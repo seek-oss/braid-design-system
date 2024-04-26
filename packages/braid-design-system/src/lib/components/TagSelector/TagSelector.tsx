@@ -89,9 +89,11 @@ const TagOption = ({
       >
         <Box className={touchableText.standard}>
           <Text baseline={false}>
-            {suggestionParts.map(({ highlight, text }, index) =>
-              highlight ? <Strong key={index}>{text}</Strong> : text,
-            )}
+            {tag.description.startsWith('Add "')
+              ? tag.description
+              : suggestionParts.map(({ highlight, text }, index) =>
+                  highlight ? <Strong key={index}>{text}</Strong> : text,
+                )}
           </Text>
         </Box>
       </Box>
