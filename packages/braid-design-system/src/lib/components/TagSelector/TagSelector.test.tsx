@@ -15,7 +15,6 @@ function renderTagSelector({
   value: initialValue,
   options,
   selectedTags,
-  ariaLabel,
   label,
   customTags = false,
   noOptionsMessage,
@@ -50,7 +49,6 @@ function renderTagSelector({
             changeHandler(...args);
           }}
           onRemove={() => {}}
-          ariaLabel={ariaLabel || undefined}
           noOptionsMessage={noOptionsMessage || undefined}
         />
       </BraidTestProvider>
@@ -167,18 +165,6 @@ describe('TagSelector', () => {
 
     expect(getInputValue()).toBe('Apples');
     expect(queryByText('Selected Apples')).toBeInTheDocument();
-  });
-
-  it('should honour aria-label if provided', () => {
-    const { getByLabelText } = renderTagSelector({
-      value: '',
-      options: [{ description: 'Apples', id: 'apples' }],
-      selectedTags: [],
-      ariaLabel: 'Actual Label',
-      label: 'Select tags',
-    });
-
-    expect(getByLabelText('Actual Label')).toBeInTheDocument();
   });
 
   it('should select option on click', async () => {

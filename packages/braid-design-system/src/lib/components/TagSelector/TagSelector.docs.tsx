@@ -1,7 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 import { TagSelector } from './TagSelector';
-import { Text, TextLink } from '../';
+import { Strong, Text, TextLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -9,7 +9,10 @@ const docs: ComponentDocs = {
     source(
       <>
         {setDefaultState('value', '')}
-        {setDefaultState('selectedTags', [])}
+        {setDefaultState('selectedTags', [
+          { description: 'Apples', id: '1' },
+          { description: 'Bananas', id: '2' },
+        ])}
 
         <TagSelector
           id={id}
@@ -22,7 +25,7 @@ const docs: ComponentDocs = {
           selectedTags={getState('selectedTags')}
           label="Label"
           value={getState('value')}
-          noOptionsMessage="No options"
+          noOptionsMessage="No options available"
           onSelect={(selectedTag) => {
             setState('selectedTags', [
               ...getState('selectedTags'),
@@ -38,7 +41,7 @@ const docs: ComponentDocs = {
               setState('selectedTags', selectedTags);
             }
           }}
-          onChange={() => setState('value')}
+          onChange={setState('value')}
           onClear={() => resetState('value')}
         />
       </>,
@@ -65,8 +68,109 @@ const docs: ComponentDocs = {
       description: 'For free tags',
     },
   ],
-  // Todo - example with pre-selected tags
-  // Todo - example with custom tags
+  additional: [
+    {
+      label: 'Custom tags',
+      description: (
+        <Text>
+          To allow any tags to be entered, <Strong>customTags</Strong> can be
+          enabled.
+        </Text>
+      ),
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value1', '')}
+            {setDefaultState('selectedTags1', [
+              { description: 'Never', id: '5' },
+              { description: 'Gonna', id: '6' },
+              { description: 'Give', id: '7' },
+              { description: 'You', id: '8' },
+              { description: 'Up', id: '9' },
+            ])}
+
+            <TagSelector
+              customTags
+              id={`${id}_1`}
+              options={[
+                { description: 'Apples', id: '1' },
+                { description: 'Bananas', id: '2' },
+                { description: 'Oranges', id: '3' },
+                { description: 'Pears', id: '4' },
+              ]}
+              selectedTags={getState('selectedTags1')}
+              label="Label"
+              value={getState('value1')}
+              noOptionsMessage="No options available"
+              onSelect={(selectedTag1) => {
+                setState('selectedTags1', [
+                  ...getState('selectedTags1'),
+                  selectedTag1,
+                ]);
+                resetState('value1');
+              }}
+              onRemove={(removedTag1) => {
+                const selectedTags1 = getState('selectedTags1').slice();
+                const index = selectedTags1.indexOf(removedTag1);
+                if (index !== -1) {
+                  selectedTags1.splice(index, 1);
+                  setState('selectedTags1', selectedTags1);
+                }
+              }}
+              onChange={setState('value1')}
+              onClear={() => resetState('value1')}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Hidden field label',
+      description: (
+        <Text>
+          In cases where the field label should be visually hidden, you can
+          provide an <Strong>aria-label</Strong> instead.
+        </Text>
+      ),
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value2', '')}
+            {setDefaultState('selectedTags2', [])}
+
+            <TagSelector
+              id={`${id}_2`}
+              options={[
+                { description: 'Apples', id: '1' },
+                { description: 'Bananas', id: '2' },
+                { description: 'Oranges', id: '3' },
+                { description: 'Pears', id: '4' },
+              ]}
+              selectedTags={getState('selectedTags2')}
+              aria-label="Label"
+              value={getState('value2')}
+              noOptionsMessage="No options available"
+              onSelect={(selectedTag1) => {
+                setState('selectedTags2', [
+                  ...getState('selectedTags2'),
+                  selectedTag1,
+                ]);
+                resetState('value2');
+              }}
+              onRemove={(removedTag1) => {
+                const selectedTags2 = getState('selectedTags2').slice();
+                const index = selectedTags2.indexOf(removedTag1);
+                if (index !== -1) {
+                  selectedTags2.splice(index, 1);
+                  setState('selectedTags2', selectedTags2);
+                }
+              }}
+              onChange={setState('value2')}
+              onClear={() => resetState('value2')}
+            />
+          </>,
+        ),
+    },
+  ],
 };
 
 export default docs;

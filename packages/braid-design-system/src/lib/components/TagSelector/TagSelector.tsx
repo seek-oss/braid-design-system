@@ -182,7 +182,6 @@ export interface TagSelectorProps {
   onRemove: (tag: Tag) => void;
   onChange: (value: string) => void;
   onClear?: () => void;
-  ariaLabel?: string;
   customTags?: boolean;
   translations?: TagSelectorTranslations;
   noOptionsMessage?: string;
@@ -198,7 +197,6 @@ export const TagSelector = ({
   onRemove,
   onChange,
   onClear,
-  ariaLabel,
   customTags = false,
   translations = tagSelector,
   noOptionsMessage,
@@ -432,7 +430,7 @@ export const TagSelector = ({
   }
 
   return (
-    <Box position="relative" {...(ariaLabel && { 'aria-label': ariaLabel })}>
+    <Box position="relative">
       <Stack space="large">
         {(selectedTags || []).length > 0 && (
           <SelectedTags tags={selectedTags || []} onRemove={onRemove} />
