@@ -17,6 +17,7 @@ import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Field } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
+import { Strong } from '../Strong/Strong';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -58,6 +59,13 @@ const TagOption = ({
     handleOnSelect(clickedTag, value, onSelect);
   };
 
+  const suggestionParts = tag.description
+    .split(new RegExp(`(${value})`, 'gi'))
+    .map((text) => ({
+      highlight: text.toLowerCase() === value.toLowerCase(),
+      text,
+    }));
+
   return (
     <Box
       component="li"
@@ -79,7 +87,11 @@ const TagOption = ({
         paddingX="small"
       >
         <Box className={touchableText.standard}>
-          <Text baseline={false}>{tag.description}</Text>
+          <Text baseline={false}>
+            {suggestionParts.map(({ highlight, text }, index) =>
+              highlight ? <Strong key={index}>{text}</Strong> : text,
+            )}
+          </Text>
         </Box>
       </Box>
     </Box>

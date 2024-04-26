@@ -120,7 +120,22 @@ describe('TagSelector', () => {
     expect(getAnnouncements()).toBeNull();
   });
 
-  // Todo - show text highlights (refer to Autosuggest.test.tsx)
+  it('should show text highlights', async () => {
+    const { input, queryByText } = renderTagSelector({
+      value: 'Appl',
+      options: [{ description: 'Apples', id: 'apples' }],
+      selectedTags: [],
+      label: 'Select tags',
+    });
+
+    await userEvent.click(input);
+
+    const highlight = queryByText('Appl');
+    expect(highlight && highlight.tagName).toBe('STRONG');
+    expect(getAnnouncements()).toBe(
+      '1 option available. Use up and down arrow keys to navigate. Press enter to select',
+    );
+  });
 
   it('should support options as a function', async () => {
     const { input, getInputValue, queryByLabelText } = renderTagSelector({
