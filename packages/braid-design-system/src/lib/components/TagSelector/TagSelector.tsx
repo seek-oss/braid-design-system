@@ -14,7 +14,6 @@ import {
 import { createAccessibilityProps } from './createAccessibilityProps';
 import { touchableText } from '../../css/typography.css';
 import { Box } from '../Box/Box';
-import { Stack } from '../Stack/Stack';
 import { Field } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
 import { Strong } from '../Strong/Strong';
@@ -435,108 +434,110 @@ export const TagSelector = ({
 
   return (
     <Box position="relative">
-      <Stack space="large">
-        {(selectedTags || []).length > 0 && (
-          <SelectedTags tags={selectedTags || []} onRemove={onRemove} />
-        )}
-        <Box className="combo-wrap">
-          <Field
-            {...restProps}
-            value={value}
-            label={label || undefined}
-            id={id}
-            secondaryIcon={
-              onClear ? (
-                <ClearField
-                  id={`${id}-clearfield`}
-                  hide={!clearable}
-                  onClear={onClear}
-                  label="Clear"
-                  inputRef={inputRef}
-                />
-              ) : null
-            }
-          >
-            {(overlays, fieldProps, icon, secondaryIcon) => (
-              <Box width="full">
-                <Box
-                  {...fieldProps}
-                  component="input"
-                  value={value}
-                  onChange={(event) => {
-                    dispatch({ type: INPUT_CHANGE });
-                    onChange((event.target as HTMLInputElement).value);
-                  }}
-                  onFocus={() => dispatch({ type: INPUT_FOCUS })}
-                  onBlur={() => dispatch({ type: INPUT_BLUR })}
-                  onKeyDown={onKeyDown}
-                  {...a11y.inputProps}
-                />
-                {icon}
-                {overlays}
-                {secondaryIcon}
+      <Box className="combo-wrap">
+        <Field
+          {...restProps}
+          value={value}
+          label={label || undefined}
+          id={id}
+          secondaryIcon={
+            onClear ? (
+              <ClearField
+                id={`${id}-clearfield`}
+                hide={!clearable}
+                onClear={onClear}
+                label="Clear"
+                inputRef={inputRef}
+              />
+            ) : null
+          }
+          leadingContent={
+            (selectedTags || []).length > 0 ? (
+              <Box paddingX="xsmall" paddingTop="small">
+                <SelectedTags tags={selectedTags || []} onRemove={onRemove} />
               </Box>
-            )}
-          </Field>
-          {isOpen ? (
-            <RemoveScroll>
+            ) : undefined
+          }
+        >
+          {(overlays, fieldProps, icon, secondaryIcon) => (
+            <Box width="full">
               <Box
-                component="ul"
-                position="absolute"
-                zIndex="dropdown"
-                background={
-                  !hasOptions && noOptionsMessage
-                    ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
-                    : 'surface'
-                }
-                borderRadius="standard"
-                boxShadow="medium"
-                width="full"
-                marginTop="xxsmall"
-                paddingY="xxsmall"
-                className={styles.menu}
-                id={`${customTagId}-menu`}
-                role="listbox"
-              >
-                {!hasOptions && noOptionsMessage ? (
-                  <Box
-                    component="li"
-                    paddingX="small"
-                    className={touchableText.standard}
-                    cursor="default"
-                  >
-                    <Text tone="secondary" weight="medium" baseline={false}>
-                      {noOptionsMessage}
-                    </Text>
-                  </Box>
-                ) : null}
-                {hasOptions
-                  ? dropdownOptions.map((tag) => (
-                      <TagOption
-                        tag={tag}
-                        activeOption={activeOption}
-                        key={tag.id}
-                        onSelect={onSelect}
-                        value={value}
-                        onHover={() => {
-                          dispatch({
-                            type: SUGGESTION_MOUSE_ENTER,
-                            id: tag.id,
-                          });
-                        }}
-                        {...a11y.getDropdownOptionProps({
-                          optionId: tag.id,
-                          description: tag.description,
-                        })}
-                      />
-                    ))
-                  : null}
-              </Box>
-            </RemoveScroll>
-          ) : null}
-        </Box>
-        <Announcement>{announcements.join('. ')}</Announcement>
-      </Stack>
+                {...fieldProps}
+                component="input"
+                value={value}
+                onChange={(event) => {
+                  dispatch({ type: INPUT_CHANGE });
+                  onChange((event.target as HTMLInputElement).value);
+                }}
+                onFocus={() => dispatch({ type: INPUT_FOCUS })}
+                onBlur={() => dispatch({ type: INPUT_BLUR })}
+                onKeyDown={onKeyDown}
+                {...a11y.inputProps}
+              />
+              {icon}
+              {overlays}
+              {secondaryIcon}
+            </Box>
+          )}
+        </Field>
+        {isOpen ? (
+          <RemoveScroll>
+            <Box
+              component="ul"
+              position="absolute"
+              zIndex="dropdown"
+              background={
+                !hasOptions && noOptionsMessage
+                  ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+                  : 'surface'
+              }
+              borderRadius="standard"
+              boxShadow="medium"
+              width="full"
+              marginTop="xxsmall"
+              paddingY="xxsmall"
+              className={styles.menu}
+              id={`${customTagId}-menu`}
+              role="listbox"
+            >
+              {!hasOptions && noOptionsMessage ? (
+                <Box
+                  component="li"
+                  paddingX="small"
+                  className={touchableText.standard}
+                  cursor="default"
+                >
+                  <Text tone="secondary" weight="medium" baseline={false}>
+                    {noOptionsMessage}
+                  </Text>
+                </Box>
+              ) : null}
+              {hasOptions
+                ? dropdownOptions.map((tag) => (
+                    <TagOption
+                      tag={tag}
+                      activeOption={activeOption}
+                      key={tag.id}
+                      onSelect={onSelect}
+                      value={value}
+                      onHover={() => {
+                        dispatch({
+                          type: SUGGESTION_MOUSE_ENTER,
+                          id: tag.id,
+                        });
+                      }}
+                      {...a11y.getDropdownOptionProps({
+                        optionId: tag.id,
+                        description: tag.description,
+                      })}
+                    />
+                  ))
+                : null}
+            </Box>
+          </RemoveScroll>
+        ) : null}
+      </Box>
+      <Announcement>{announcements.join('. ')}</Announcement>
     </Box>
   );
 };
