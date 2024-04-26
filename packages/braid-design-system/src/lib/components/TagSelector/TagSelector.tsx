@@ -203,8 +203,12 @@ export const TagSelector = ({
   ...restProps
 }: TagSelectorProps) => {
   const tagOptionsPropValue =
-    typeof tagOptionsProp === 'function' ? tagOptionsProp(value) : tagOptionsProp;
-  const tagOptions = Array.isArray(tagOptionsPropValue) ? tagOptionsPropValue : [];
+    typeof tagOptionsProp === 'function'
+      ? tagOptionsProp(value)
+      : tagOptionsProp;
+  const tagOptions = Array.isArray(tagOptionsPropValue)
+    ? tagOptionsPropValue
+    : [];
 
   const selectedTagsPropValue =
     typeof selectedTagsProp === 'function'
