@@ -7577,6 +7577,34 @@ exports[`Tag 1`] = `
 }
 `;
 
+exports[`TagSelector 1`] = `
+{
+  exportType: component,
+  props: {
+    customTags?: boolean
+    id: string
+    label?: string
+    noOptionsMessage?: string
+    onChange: (value: string) => void
+    onClear?: () => void
+    onRemove: (tag: Tag) => void
+    onSelect: (tag: Tag) => void
+    selectedTags: 
+        | (value: string) => Tag[]
+        | Tag[]
+    tagOptions: 
+        | (value: string) => Tag[]
+        | Tag[]
+    translations?: {
+        noOptionsAvailableAnnouncement: string
+        optionInstructions: string
+        optionsAvailableAnnouncement: (optionCount: number) => string
+    }
+    value: string
+},
+}
+`;
+
 exports[`Text 1`] = `
 {
   exportType: component,
