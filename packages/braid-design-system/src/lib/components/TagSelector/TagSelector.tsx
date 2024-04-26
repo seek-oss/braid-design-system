@@ -176,7 +176,7 @@ export interface TagSelectorProps {
   id: string;
   options: Tag[] | ((value: string) => Tag[]);
   selectedTags: Tag[] | ((value: string) => Tag[]);
-  label: string;
+  label?: string;
   value: string;
   onSelect: (tag: Tag) => void;
   onRemove: (tag: Tag) => void;
@@ -441,7 +441,7 @@ export const TagSelector = ({
           <Field
             {...restProps}
             value={value}
-            label={label}
+            label={label || undefined}
             id={id}
             secondaryIcon={
               onClear ? (
