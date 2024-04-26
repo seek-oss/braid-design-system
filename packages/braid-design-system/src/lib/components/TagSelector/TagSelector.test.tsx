@@ -13,14 +13,14 @@ const getAnnouncements = () =>
 
 function renderTagSelector({
   value: initialValue,
-  options,
+  tagOptions,
   selectedTags,
   label,
   customTags = false,
   noOptionsMessage,
 }: Pick<
   TagSelectorProps,
-  'value' | 'options' | 'selectedTags' | 'label' | 'customTags'
+  'value' | 'tagOptions' | 'selectedTags' | 'label' | 'customTags'
 > & {
   ariaLabel?: string;
   noOptionsMessage?: string;
@@ -36,7 +36,7 @@ function renderTagSelector({
         <TagSelector
           id="Select tags"
           label={label}
-          options={options}
+          tagOptions={tagOptions}
           selectedTags={selectedTags}
           customTags={customTags}
           onSelect={(tag) => {
@@ -83,7 +83,7 @@ describe('TagSelector', () => {
     const { queryByText } = renderTagSelector({
       customTags: true,
       value: '',
-      options: [],
+      tagOptions: [],
       selectedTags: [
         { description: 'Apples', id: 'apples' },
         { description: 'Bananas', id: 'bananas' },
@@ -101,7 +101,7 @@ describe('TagSelector', () => {
   it('should toggle dropdown visibility on focus and blur', async () => {
     const { input, queryByLabelText } = renderTagSelector({
       value: '',
-      options: [{ description: 'Apples', id: 'apples' }],
+      tagOptions: [{ description: 'Apples', id: 'apples' }],
       selectedTags: [],
       label: 'Select tags',
     });
@@ -122,7 +122,7 @@ describe('TagSelector', () => {
   it('should show text highlights', async () => {
     const { input, queryByText } = renderTagSelector({
       value: 'Appl',
-      options: [{ description: 'Apples', id: 'apples' }],
+      tagOptions: [{ description: 'Apples', id: 'apples' }],
       selectedTags: [],
       label: 'Select tags',
     });
@@ -139,7 +139,7 @@ describe('TagSelector', () => {
   it('should support options as a function', async () => {
     const { input, getInputValue, queryByLabelText } = renderTagSelector({
       value: 'Apples',
-      options: (value) => [{ description: value, id: 'apples' }],
+      tagOptions: (value) => [{ description: value, id: 'apples' }],
       selectedTags: [],
       label: 'Select tags',
     });
@@ -156,7 +156,7 @@ describe('TagSelector', () => {
     const { getInputValue, queryByText } = renderTagSelector({
       customTags: true,
       value: 'Apples',
-      options: [],
+      tagOptions: [],
       selectedTags: (value) => [
         { description: `Selected ${value}`, id: 'apples' },
       ],
@@ -171,7 +171,7 @@ describe('TagSelector', () => {
     const { input, selectHandler, getInputValue, queryByLabelText } =
       renderTagSelector({
         value: '',
-        options: [{ description: 'Apples', id: 'apples' }],
+        tagOptions: [{ description: 'Apples', id: 'apples' }],
         selectedTags: [],
         label: 'Select tags',
       });
@@ -201,7 +201,7 @@ describe('TagSelector', () => {
     it('should associate the field label with the input', () => {
       const { queryByLabelText, input } = renderTagSelector({
         value: '',
-        options: [],
+        tagOptions: [],
         selectedTags: [],
         label: 'Fruit',
       });
@@ -217,7 +217,7 @@ describe('TagSelector', () => {
           <TagSelector
             id="id"
             label="Fruit"
-            options={[]}
+            tagOptions={[]}
             selectedTags={[]}
             aria-label="Hidden field label"
             value=""
@@ -241,7 +241,7 @@ describe('TagSelector', () => {
           <TagSelector
             id="id"
             label="Fruit"
-            options={[]}
+            tagOptions={[]}
             selectedTags={[]}
             aria-labelledby="fieldLabel"
             value=""
@@ -259,7 +259,7 @@ describe('TagSelector', () => {
     it('should support standard options', async () => {
       const { input, queryByLabelText } = renderTagSelector({
         value: '',
-        options: [{ description: 'Apples', id: 'apples' }],
+        tagOptions: [{ description: 'Apples', id: 'apples' }],
         selectedTags: [],
         label: 'Select tags',
       });
@@ -279,7 +279,7 @@ describe('TagSelector', () => {
       const { input, selectHandler, getInputValue, queryByLabelText } =
         renderTagSelector({
           value: '',
-          options: [{ description: 'Apples', id: 'apples' }],
+          tagOptions: [{ description: 'Apples', id: 'apples' }],
           selectedTags: [],
           label: 'Select tags',
         });
@@ -301,7 +301,7 @@ describe('TagSelector', () => {
     it('should select an option on enter after navigating the dropdown', async () => {
       const { input, selectHandler, getInputValue } = renderTagSelector({
         value: '',
-        options: [
+        tagOptions: [
           { description: 'Apples', id: 'apples' },
           { description: 'Bananas', id: 'bananas' },
           { description: 'Carrots', id: 'carrots' },
@@ -344,7 +344,7 @@ describe('TagSelector', () => {
       const { input, queryByLabelText, changeHandler, getInputValue } =
         renderTagSelector({
           value: '',
-          options: [
+          tagOptions: [
             { description: 'Apples', id: 'apples' },
             { description: 'Bananas', id: 'bananas' },
             { description: 'Carrots', id: 'carrots' },
@@ -374,7 +374,7 @@ describe('TagSelector', () => {
     it('should select a suggestion on enter after navigating a single option', async () => {
       const { input, selectHandler } = renderTagSelector({
         value: '',
-        options: [{ description: 'Apples', id: 'apples' }],
+        tagOptions: [{ description: 'Apples', id: 'apples' }],
         selectedTags: [],
         label: 'Select tags',
       });
@@ -398,7 +398,7 @@ describe('TagSelector', () => {
     it("should submit the input's value if customTags are enabled with no active options when pressing enter", async () => {
       const { input, changeHandler } = renderTagSelector({
         value: '',
-        options: [{ description: 'Apples', id: 'apples' }],
+        tagOptions: [{ description: 'Apples', id: 'apples' }],
         selectedTags: [],
         label: 'Select tags',
         customTags: true,
@@ -417,7 +417,7 @@ describe('TagSelector', () => {
     it('should hide dropdown but keep the input focussed with no active option and custom tags disabled when pressing enter', async () => {
       const { input, queryByLabelText } = renderTagSelector({
         value: '',
-        options: [{ description: 'Apples', id: 'apples' }],
+        tagOptions: [{ description: 'Apples', id: 'apples' }],
         selectedTags: [],
         label: 'Select tags',
       });
@@ -436,7 +436,7 @@ describe('TagSelector', () => {
     it('should show dropdown when it is hidden after input change', async () => {
       const { input, queryByLabelText } = renderTagSelector({
         value: '',
-        options: [{ description: 'Apples', id: 'apples' }],
+        tagOptions: [{ description: 'Apples', id: 'apples' }],
         selectedTags: [],
         label: 'Select tags',
       });
@@ -458,7 +458,7 @@ describe('TagSelector', () => {
   it('should announce no options message when options are available', async () => {
     const { input, getByRole, queryByRole } = renderTagSelector({
       value: '',
-      options: [{ description: 'Apples', id: 'apples' }],
+      tagOptions: [{ description: 'Apples', id: 'apples' }],
       selectedTags: [],
       label: 'Select tags',
     });
@@ -480,7 +480,7 @@ describe('TagSelector', () => {
   it('should announce no options message message when no options are available', async () => {
     const { input } = renderTagSelector({
       value: '',
-      options: [],
+      tagOptions: [],
       selectedTags: [],
       label: 'Select tags',
     });
@@ -494,7 +494,7 @@ describe('TagSelector', () => {
   it("should show and announce custom 'noOptionsMessage' if provided when no options are available", async () => {
     const { input, queryByRole, getByRole } = renderTagSelector({
       value: '',
-      options: [],
+      tagOptions: [],
       selectedTags: [],
       label: 'Select tags',
       noOptionsMessage: 'Custom no options message',

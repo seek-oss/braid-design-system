@@ -16,7 +16,7 @@ const docs: ComponentDocs = {
 
         <TagSelector
           id={id}
-          options={[
+          tagOptions={[
             { description: 'Apples', id: '1' },
             { description: 'Bananas', id: '2' },
             { description: 'Oranges', id: '3' },
@@ -92,7 +92,7 @@ const docs: ComponentDocs = {
             <TagSelector
               customTags
               id={`${id}_1`}
-              options={[
+              tagOptions={[
                 { description: 'Apples', id: '1' },
                 { description: 'Bananas', id: '2' },
                 { description: 'Oranges', id: '3' },
@@ -139,7 +139,7 @@ const docs: ComponentDocs = {
 
             <TagSelector
               id={`${id}_2`}
-              options={[
+              tagOptions={[
                 { description: 'Apples', id: '1' },
                 { description: 'Bananas', id: '2' },
                 { description: 'Oranges', id: '3' },

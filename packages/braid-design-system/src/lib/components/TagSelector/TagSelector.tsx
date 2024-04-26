@@ -169,12 +169,12 @@ interface TagSelectorState {
   activeOption: string | undefined;
 }
 
-const fallbackOptions: Tag[] = [];
+const fallbackTagOptions: Tag[] = [];
 const fallbackSelectedTags: Tag[] = [];
 
 export interface TagSelectorProps {
   id: string;
-  options: Tag[] | ((value: string) => Tag[]);
+  tagOptions: Tag[] | ((value: string) => Tag[]);
   selectedTags: Tag[] | ((value: string) => Tag[]);
   label?: string;
   value: string;
@@ -189,7 +189,7 @@ export interface TagSelectorProps {
 
 export const TagSelector = ({
   id,
-  options: optionsProp = fallbackOptions,
+  tagOptions: tagOptionsProp = fallbackTagOptions,
   selectedTags: selectedTagsProp = fallbackSelectedTags,
   label,
   value,
@@ -202,9 +202,9 @@ export const TagSelector = ({
   noOptionsMessage,
   ...restProps
 }: TagSelectorProps) => {
-  const optionsPropValue =
-    typeof optionsProp === 'function' ? optionsProp(value) : optionsProp;
-  const options = Array.isArray(optionsPropValue) ? optionsPropValue : [];
+  const tagOptionsPropValue =
+    typeof tagOptionsProp === 'function' ? tagOptionsProp(value) : tagOptionsProp;
+  const tagOptions = Array.isArray(tagOptionsPropValue) ? tagOptionsPropValue : [];
 
   const selectedTagsPropValue =
     typeof selectedTagsProp === 'function'
@@ -215,12 +215,12 @@ export const TagSelector = ({
     : [];
 
   if (!customTags && selectedTags) {
-    ensureCustomTagsNotUsed(options, selectedTags);
+    ensureCustomTagsNotUsed(tagOptions, selectedTags);
   }
 
   const customTagId = useId();
 
-  const unSelectedOptions = options.filter(
+  const unSelectedOptions = tagOptions.filter(
     (option) => !selectedTags?.some((tag) => tag.id === option.id),
   );
 
