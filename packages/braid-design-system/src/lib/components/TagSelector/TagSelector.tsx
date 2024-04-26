@@ -18,6 +18,7 @@ import { Stack } from '../Stack/Stack';
 import { Field } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
 import { Strong } from '../Strong/Strong';
+import { RemoveScroll } from 'react-remove-scroll';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -472,58 +473,60 @@ export const TagSelector = ({
             )}
           </Field>
           {isOpen ? (
-            <Box
-              component="ul"
-              position="absolute"
-              zIndex="dropdown"
-              background={
-                !hasOptions && noOptionsMessage
-                  ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
-                  : 'surface'
-              }
-              borderRadius="standard"
-              boxShadow="medium"
-              width="full"
-              marginTop="xxsmall"
-              paddingY="xxsmall"
-              className={styles.menu}
-              id={`${customTagId}-menu`}
-              role="listbox"
-            >
-              {!hasOptions && noOptionsMessage ? (
-                <Box
-                  component="li"
-                  paddingX="small"
-                  className={touchableText.standard}
-                  cursor="default"
-                >
-                  <Text tone="secondary" weight="medium" baseline={false}>
-                    {noOptionsMessage}
-                  </Text>
-                </Box>
-              ) : null}
-              {hasOptions
-                ? dropdownOptions.map((tag) => (
-                    <TagOption
-                      tag={tag}
-                      activeOption={activeOption}
-                      key={tag.id}
-                      onSelect={onSelect}
-                      value={value}
-                      onHover={() => {
-                        dispatch({
-                          type: SUGGESTION_MOUSE_ENTER,
-                          id: tag.id,
-                        });
-                      }}
-                      {...a11y.getDropdownOptionProps({
-                        optionId: tag.id,
-                        description: tag.description,
-                      })}
-                    />
-                  ))
-                : null}
-            </Box>
+            <RemoveScroll>
+              <Box
+                component="ul"
+                position="absolute"
+                zIndex="dropdown"
+                background={
+                  !hasOptions && noOptionsMessage
+                    ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+                    : 'surface'
+                }
+                borderRadius="standard"
+                boxShadow="medium"
+                width="full"
+                marginTop="xxsmall"
+                paddingY="xxsmall"
+                className={styles.menu}
+                id={`${customTagId}-menu`}
+                role="listbox"
+              >
+                {!hasOptions && noOptionsMessage ? (
+                  <Box
+                    component="li"
+                    paddingX="small"
+                    className={touchableText.standard}
+                    cursor="default"
+                  >
+                    <Text tone="secondary" weight="medium" baseline={false}>
+                      {noOptionsMessage}
+                    </Text>
+                  </Box>
+                ) : null}
+                {hasOptions
+                  ? dropdownOptions.map((tag) => (
+                      <TagOption
+                        tag={tag}
+                        activeOption={activeOption}
+                        key={tag.id}
+                        onSelect={onSelect}
+                        value={value}
+                        onHover={() => {
+                          dispatch({
+                            type: SUGGESTION_MOUSE_ENTER,
+                            id: tag.id,
+                          });
+                        }}
+                        {...a11y.getDropdownOptionProps({
+                          optionId: tag.id,
+                          description: tag.description,
+                        })}
+                      />
+                    ))
+                  : null}
+              </Box>
+            </RemoveScroll>
           ) : null}
         </Box>
         <Announcement>{announcements.join('. ')}</Announcement>
