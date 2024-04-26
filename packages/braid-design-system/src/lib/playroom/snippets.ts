@@ -36,6 +36,7 @@ import { snippets as Stepper } from './snippets/Stepper';
 import { snippets as Strong } from './snippets/Strong';
 import { snippets as Tabs } from './snippets/Tabs';
 import { snippets as Tag } from './snippets/Tag';
+import { snippets as TagSelector } from './snippets/TagSelector';
 import { snippets as Text } from './snippets/Text';
 import { snippets as TextDropdown } from './snippets/TextDropdown';
 import { snippets as TextField } from './snippets/TextField';
@@ -84,6 +85,7 @@ export default Object.entries({
   Strong,
   Tabs,
   Tag,
+  TagSelector,
   Text,
   TextDropdown,
   TextField,
