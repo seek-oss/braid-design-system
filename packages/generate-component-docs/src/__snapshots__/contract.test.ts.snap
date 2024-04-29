@@ -7584,9 +7584,11 @@ exports[`TagSelector 1`] = `
 {
   exportType: component,
   props: {
+    aria-label: string
+    aria-labelledby: string
     customTags?: boolean
     id: string
-    label?: string
+    label?: ReactNode
     noOptionsMessage?: string
     onChange: (value: string) => void
     onClear?: () => void

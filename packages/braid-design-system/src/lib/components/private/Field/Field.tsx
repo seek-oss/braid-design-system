@@ -81,6 +81,7 @@ interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
 type InternalFieldProps = FieldBaseProps &
   FieldLabelVariant & {
     secondaryIcon?: ReactNode;
+    alwaysShowSecondaryIcon?: boolean;
     children(
       overlays: ReactNode,
       props: FieldRenderProps,
