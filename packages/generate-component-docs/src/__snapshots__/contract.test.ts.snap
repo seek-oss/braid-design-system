@@ -106,6 +106,7 @@ exports[`Autosuggest 1`] = `
     icon?: ReactNode
     id: string
     label: ReactNode
+    leadingContent?: ReactNode
     message?: ReactNode
     name?: string
     noSuggestionsMessage?: 
@@ -116,7 +117,6 @@ exports[`Autosuggest 1`] = `
     onClear?: () => void
     onFocus?: () => void
     placeholder?: string
-    preContent?: ReactNode
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
@@ -2942,13 +2942,13 @@ exports[`Dropdown 1`] = `
     icon?: ReactNode
     id: string
     label: ReactNode
+    leadingContent?: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLSelectElement>
     onChange: FormEventHandler<HTMLSelectElement>
     onFocus?: FocusEventHandler<HTMLSelectElement>
     placeholder?: string
-    preContent?: ReactNode
     ref?: 
         | (instance: HTMLSelectElement | null) => void
         | RefObject<HTMLSelectElement>
@@ -7250,6 +7250,7 @@ exports[`PasswordField 1`] = `
     disabled?: boolean
     id: string
     label: ReactNode
+    leadingContent?: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
@@ -7257,7 +7258,6 @@ exports[`PasswordField 1`] = `
     onFocus?: FocusEventHandler<HTMLInputElement>
     onVisibilityToggle?: (visible: boolean) => void
     placeholder?: string
-    preContent?: ReactNode
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
@@ -7869,6 +7869,7 @@ exports[`TextField 1`] = `
         | "text"
         | "url"
     label: ReactNode
+    leadingContent?: ReactNode
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
@@ -7876,7 +7877,6 @@ exports[`TextField 1`] = `
     onClear?: () => void
     onFocus?: FocusEventHandler<HTMLInputElement>
     placeholder?: string
-    preContent?: ReactNode
     prefix?: string
     ref?: 
         | (instance: HTMLInputElement | null) => void
@@ -8467,6 +8467,7 @@ exports[`Textarea 1`] = `
     highlightRanges?: { start: number; end?: number | undefined; }[]
     id: string
     label: ReactNode
+    leadingContent?: ReactNode
     lineLimit?: number
     lines?: number
     message?: ReactNode
@@ -8476,7 +8477,6 @@ exports[`Textarea 1`] = `
     onFocus?: FocusEventHandler<HTMLTextAreaElement>
     onPaste?: ClipboardEventHandler<HTMLTextAreaElement>
     placeholder?: string
-    preContent?: ReactNode
     ref?: 
         | (instance: HTMLTextAreaElement | null) => void
         | RefObject<HTMLTextAreaElement>
