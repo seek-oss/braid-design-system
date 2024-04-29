@@ -41,24 +41,18 @@ const SelectedTags = ({ tags, onRemove }: SelectedTagProps) => (
 interface TagOptionProps {
   tag: Tag;
   activeOption: string | undefined;
-  onSelect: (tag: Tag) => void;
   value: string;
+  onClick: () => void;
   onHover: () => void;
 }
 
 const TagOption = ({
   tag,
   activeOption,
-  onSelect,
   value,
   onHover,
   ...restProps
 }: TagOptionProps) => {
-  const handleClick = (event: React.MouseEvent, clickedTag: Tag) => {
-    event.preventDefault();
-    handleOnSelect(clickedTag, value, onSelect);
-  };
-
   const suggestionParts = tag.description
     .split(new RegExp(`(${value})`, 'gi'))
     .map((text) => ({
@@ -75,7 +69,6 @@ const TagOption = ({
       onTouchStart={onHover}
       role="option"
       id={tag.id}
-      onClick={(event) => handleClick(event, tag)}
       tabIndex={-1}
       {...restProps}
     >
@@ -150,7 +143,8 @@ const INPUT_ARROW_UP = 3;
 const INPUT_ENTER = 4;
 const INPUT_ESCAPE = 5;
 const INPUT_CHANGE = 6;
-const SUGGESTION_MOUSE_ENTER = 7;
+const OPTION_MOUSE_ENTER = 7;
+const OPTION_MOUSE_CLICK = 8;
 
 type Action =
   | { type: typeof INPUT_FOCUS }
@@ -160,7 +154,8 @@ type Action =
   | { type: typeof INPUT_ENTER }
   | { type: typeof INPUT_ESCAPE }
   | { type: typeof INPUT_CHANGE }
-  | { type: typeof SUGGESTION_MOUSE_ENTER; id: string };
+  | { type: typeof OPTION_MOUSE_ENTER; id: string }
+  | { type: typeof OPTION_MOUSE_CLICK };
 
 interface TagSelectorState {
   isFocussed: boolean;
@@ -261,7 +256,7 @@ export const TagSelector = ({
 
         if (
           currentIndex + 1 === dropdownOptions.length ||
-          state.activeOption === undefined
+          !state.activeOption
         ) {
           return {
             ...state,
@@ -282,7 +277,7 @@ export const TagSelector = ({
           return state;
         }
 
-        if (currentIndex === 0 || state.activeOption === undefined) {
+        if (currentIndex === 0 || !state.activeOption) {
           return {
             ...state,
             activeOption: dropdownOptions[dropdownOptions.length - 1].id,
@@ -299,10 +294,7 @@ export const TagSelector = ({
         };
 
       case INPUT_ENTER:
-        if (
-          (value === '' || customTags === false) &&
-          state.activeOption === undefined
-        ) {
+        if ((value === '' || customTags === false) && !state.activeOption) {
           return {
             ...state,
             showOptionsIfAvailable: false,
@@ -326,11 +318,16 @@ export const TagSelector = ({
           ...state,
           showOptionsIfAvailable: true,
         };
-
-      case SUGGESTION_MOUSE_ENTER:
+      case OPTION_MOUSE_ENTER:
         return {
           ...state,
           activeOption: action.id,
+        };
+
+      case OPTION_MOUSE_CLICK:
+        return {
+          ...state,
+          activeOption: undefined,
         };
 
       default:
@@ -363,7 +360,7 @@ export const TagSelector = ({
         event.preventDefault();
         dispatch({ type: INPUT_ENTER });
 
-        if (value !== '' && activeOption === undefined && customTags) {
+        if (value !== '' && !activeOption && customTags) {
           handleOnSelect(
             { description: value, id: `${customTagId}-add-${value}` },
             value,
@@ -518,11 +515,14 @@ export const TagSelector = ({
                       tag={tag}
                       activeOption={activeOption}
                       key={tag.id}
-                      onSelect={onSelect}
                       value={value}
+                      onClick={() => {
+                        dispatch({ type: OPTION_MOUSE_CLICK });
+                        handleOnSelect(tag, value, onSelect);
+                      }}
                       onHover={() => {
                         dispatch({
-                          type: SUGGESTION_MOUSE_ENTER,
+                          type: OPTION_MOUSE_ENTER,
                           id: tag.id,
                         });
                       }}
