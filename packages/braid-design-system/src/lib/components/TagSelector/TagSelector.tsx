@@ -18,6 +18,7 @@ import { Field } from '../private/Field/Field';
 import { ClearField } from '../private/Field/ClearField';
 import { Strong } from '../Strong/Strong';
 import { RemoveScroll } from 'react-remove-scroll';
+import type { FieldLabelProps } from '../FieldLabel/FieldLabel';
 
 interface SelectedTagProps {
   tags: Tag[];
@@ -166,11 +167,10 @@ interface TagSelectorState {
 const fallbackTagOptions: Tag[] = [];
 const fallbackSelectedTags: Tag[] = [];
 
-export interface TagSelectorProps {
+export interface TagSelectorBaseProps {
   id: string;
   tagOptions: Tag[] | ((value: string) => Tag[]);
   selectedTags: Tag[] | ((value: string) => Tag[]);
-  label?: string;
   value: string;
   onSelect: (tag: Tag) => void;
   onRemove: (tag: Tag) => void;
@@ -179,13 +179,27 @@ export interface TagSelectorProps {
   customTags?: boolean;
   translations?: TagSelectorTranslations;
   noOptionsMessage?: string;
+  label?: FieldLabelProps['label'];
 }
+
+export type TagSelectorLabelProps =
+  | {
+      'aria-labelledby': string;
+      label?: never;
+    }
+  | {
+      'aria-label': string;
+      label?: never;
+    }
+  | {
+      label: FieldLabelProps['label'];
+    };
+export type TagSelectorProps = TagSelectorBaseProps & TagSelectorLabelProps;
 
 export const TagSelector = ({
   id,
   tagOptions: tagOptionsProp = fallbackTagOptions,
   selectedTags: selectedTagsProp = fallbackSelectedTags,
-  label,
   value,
   onSelect,
   onRemove,
@@ -435,7 +449,6 @@ export const TagSelector = ({
         <Field
           {...restProps}
           value={value}
-          label={label || undefined}
           id={id}
           secondaryIcon={
             onClear ? (

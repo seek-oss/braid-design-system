@@ -3,6 +3,8 @@ import {
   type TagSelectorProps,
   TagSelector as BraidTagSelector,
   type Tag,
+  type TagSelectorLabelProps,
+  type TagSelectorBaseProps,
 } from '../TagSelector/TagSelector';
 import {
   type StateProp,
@@ -59,9 +61,10 @@ function useFallbackSelectedTagsState(
 type PlayroomTagSelectorProps = StateProp &
   SelectedTagsStateProp &
   Optional<
-    TagSelectorProps,
+    TagSelectorBaseProps,
     'id' | 'value' | 'onChange' | 'selectedTags' | 'onSelect' | 'onRemove'
-  >;
+  > &
+  TagSelectorLabelProps;
 
 export function TagSelector({
   id,
