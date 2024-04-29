@@ -191,6 +191,7 @@ describe('TagSelector', () => {
     await userEvent.click(option);
 
     expect(getInputValue()).toBe('');
+    expect(input).not.toHaveAttribute('aria-activedescendant');
     expect(selectHandler).toHaveBeenCalledWith({
       description: 'Apples',
       id: 'apples',
