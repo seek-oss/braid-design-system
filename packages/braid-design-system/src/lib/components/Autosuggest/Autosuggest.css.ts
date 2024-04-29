@@ -19,8 +19,8 @@ const calcMenuHeight = (numSuggestions: number) =>
     .add(vars.space.xxsmall)
     .toString();
 
-export const menu = style(
-  responsiveStyle({
+export const menu = style({
+  ...responsiveStyle({
     mobile: {
       maxHeight: calcMenuHeight(6),
       overflowY: 'auto',
@@ -29,7 +29,8 @@ export const menu = style(
       maxHeight: calcMenuHeight(8),
     },
   }),
-);
+  top: '100%',
+});
 
 export const groupHeading = style({
   textTransform: 'uppercase',

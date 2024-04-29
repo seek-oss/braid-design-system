@@ -746,7 +746,7 @@ export const Autosuggest = forwardRef(function <Value>(
             }
           >
             {(overlays, fieldProps, icon, secondaryIcon) => (
-              <Box width="full">
+              <Fragment>
                 <Box
                   component="input"
                   {...fieldProps}
@@ -836,7 +836,7 @@ export const Autosuggest = forwardRef(function <Value>(
                 </RemoveScroll>
                 {overlays}
                 {secondaryIcon}
-              </Box>
+              </Fragment>
             )}
           </Field>
         </Box>
