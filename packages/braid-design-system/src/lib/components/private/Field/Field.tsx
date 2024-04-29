@@ -111,7 +111,7 @@ export const Field = ({
   icon,
   prefix,
   required,
-  leadingContent: preContent,
+  leadingContent,
   ...restProps
 }: InternalFieldProps) => {
   assert(
@@ -178,8 +178,12 @@ export const Field = ({
         flexDirection="column"
         className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
       >
-        <>
-          {preContent ? preContent : null}
+        {leadingContent ? (
+          <Box paddingX={fieldPadding} paddingTop={fieldPadding}>
+            {leadingContent}
+          </Box>
+        ) : null}
+        <Box display="flex">
           {children(
             overlays,
             {
@@ -228,7 +232,7 @@ export const Field = ({
                 height="touchable"
                 width="touchable"
                 pointerEvents="none"
-                top={0}
+                bottom={0}
                 left={0}
               >
                 <Text baseline={false} tone={prefix ? 'secondary' : undefined}>
@@ -245,7 +249,7 @@ export const Field = ({
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                top={0}
+                bottom={0}
                 right={0}
               >
                 {secondaryIcon}
@@ -271,7 +275,7 @@ export const Field = ({
               </Box>
             ) : null,
           )}
-        </>
+        </Box>
       </Box>
 
       {message || secondaryMessage || reserveMessageSpace ? (

@@ -31,7 +31,7 @@ export function TagSelector({
     blankValue,
   );
 
-  // Todo - handle default selectedTags state
+  // Todo - create separate useFallbackState hook for tagSelector
 
   return (
     <BraidTagSelector

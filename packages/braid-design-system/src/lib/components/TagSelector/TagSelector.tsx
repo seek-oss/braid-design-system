@@ -1,5 +1,5 @@
 import type { KeyboardEvent } from 'react';
-import { useId, useReducer, useRef } from 'react';
+import { Fragment, useId, useReducer, useRef } from 'react';
 
 import * as styles from '../Autosuggest/Autosuggest.css';
 import { Inline } from '../Inline/Inline';
@@ -450,14 +450,14 @@ export const TagSelector = ({
           }
           leadingContent={
             (selectedTags || []).length > 0 ? (
-              <Box paddingX="xsmall" paddingTop="small">
-                <SelectedTags tags={selectedTags || []} onRemove={onRemove} />
-              </Box>
+              <SelectedTags tags={selectedTags || []} onRemove={onRemove} />
             ) : undefined
           }
         >
-          {(overlays, fieldProps, icon, secondaryIcon) => (
-            <Box width="full">
+          {(overlays, fieldProps, icon, secondaryIcon, prefix) => (
+            <Fragment>
+              {prefix}
+              {icon}
               <Box
                 {...fieldProps}
                 component="input"
@@ -471,10 +471,9 @@ export const TagSelector = ({
                 onKeyDown={onKeyDown}
                 {...a11y.inputProps}
               />
-              {icon}
               {overlays}
               {secondaryIcon}
-            </Box>
+            </Fragment>
           )}
         </Field>
         {isOpen ? (
