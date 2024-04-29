@@ -1,19 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   type TagSelectorProps,
   TagSelector as BraidTagSelector,
+  type Tag,
 } from '../TagSelector/TagSelector';
-import { type StateProp, useFallbackState } from '../../playroom/playroomState';
+import {
+  type StateProp,
+  useFallbackState,
+  usePlayroomStore,
+} from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
 import type { Optional } from 'utility-types';
 
+interface SelectedTagsStateProp {
+  selectedTagsState?: string;
+}
+
+function useFallbackSelectedTagsState(
+  stateKey: string | undefined,
+  value: TagSelectorProps['selectedTags'] | undefined,
+  defaultValue?: Tag[],
+  onSelect?: TagSelectorProps['onSelect'],
+  onRemove?: TagSelectorProps['onRemove'],
+): [NonNullable<Tag[]>, (element: Tag) => void, (element: Tag) => void] {
+  const playroomState = usePlayroomStore();
+  const [internalStateValue, setInternalStateValue] = useState(
+    defaultValue || [],
+  );
+
+  const addElement = (element: Tag) => {
+    if (value === undefined) {
+      (stateKey ? playroomState.setState(stateKey) : setInternalStateValue)(
+        (prev) => [...prev, element],
+      );
+    }
+  };
+
+  const removeElement = (element: Tag) => {
+    if (value === undefined) {
+      (stateKey ? playroomState.setState(stateKey) : setInternalStateValue)(
+        (prev) => prev.filter((e) => e !== element),
+      );
+    }
+  };
+
+  const resolvedValue =
+    value ??
+    (stateKey
+      ? playroomState.getState(stateKey) ?? defaultValue
+      : internalStateValue);
+
+  const handleAddElement = onSelect || addElement;
+  const handleRemoveElement = onRemove || removeElement;
+
+  return [resolvedValue, handleAddElement, handleRemoveElement];
+}
+
 type PlayroomTagSelectorProps = StateProp &
-  Optional<TagSelectorProps, 'id' | 'value' | 'onChange' | 'selectedTags'>;
+  SelectedTagsStateProp &
+  Optional<
+    TagSelectorProps,
+    'id' | 'value' | 'onChange' | 'selectedTags' | 'onSelect' | 'onRemove'
+  >;
 
 export function TagSelector({
   id,
   stateName,
   value,
+  selectedTagsState: selectedTagsStateName,
   selectedTags,
   onSelect,
   onRemove,
@@ -31,15 +85,27 @@ export function TagSelector({
     blankValue,
   );
 
-  // Todo - create separate useFallbackState hook for tagSelector
+  const blankSelectedTags: Tag[] = [];
+  const [selectedTagsState, handleSelectTag, handleRemoveTag] =
+    useFallbackSelectedTagsState(
+      selectedTagsStateName,
+      selectedTags,
+      blankSelectedTags,
+      onSelect,
+      onRemove,
+    );
 
   return (
     <BraidTagSelector
       id={id ?? fallbackId}
       value={state}
-      selectedTags={selectedTags || []}
-      onSelect={onSelect}
-      onRemove={onRemove}
+      selectedTags={selectedTagsState || []}
+      onSelect={(selectedTag) => {
+        handleSelectTag(selectedTag);
+        handleChange(blankValue);
+        onClear?.();
+      }}
+      onRemove={handleRemoveTag}
       onChange={handleChange}
       onClear={() => {
         handleChange(blankValue);

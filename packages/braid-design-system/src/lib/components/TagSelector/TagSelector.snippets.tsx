@@ -15,8 +15,6 @@ export const snippets: Snippets = [
           { description: 'Bananas', id: '2' },
           { description: 'Carrots', id: '3' },
         ]}
-        onSelect={() => {}}
-        onRemove={() => {}}
       />,
     ),
   },
