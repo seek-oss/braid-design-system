@@ -11,10 +11,6 @@ export const placeholderColor = style({
   },
 });
 
-export const secondaryIconSpace = style({
-  paddingRight: vars.touchableSize,
-});
-
 // This offset is to account for the extra few pixels that the text
 // sits off the left of its container. Need to offset this so that
 // the white space does not look imbalanced.

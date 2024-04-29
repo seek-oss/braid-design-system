@@ -81,7 +81,6 @@ interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
 type InternalFieldProps = FieldBaseProps &
   FieldLabelVariant & {
     secondaryIcon?: ReactNode;
-    alwaysShowSecondaryIcon?: boolean;
     children(
       overlays: ReactNode,
       props: FieldRenderProps,
@@ -106,7 +105,6 @@ export const Field = ({
   'aria-describedby': ariaDescribedBy,
   data,
   secondaryIcon,
-  alwaysShowSecondaryIcon = false,
   autoFocus,
   icon,
   prefix,
@@ -127,8 +125,6 @@ export const Field = ({
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
   const hasVisualLabelOrDescription = 'label' in restProps || description;
-  const showSecondaryIcon =
-    alwaysShowSecondaryIcon || (secondaryIcon && hasValue);
 
   const { lightMode } = useBackgroundLightness();
 
@@ -176,7 +172,6 @@ export const Field = ({
         borderRadius="standard"
         display="flex"
         flexDirection="column"
-        className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
       >
         {leadingContent ? (
           <Box paddingX={fieldPadding} paddingTop={fieldPadding}>
@@ -192,7 +187,7 @@ export const Field = ({
               background: fieldBackground,
               width: 'full',
               paddingLeft: fieldPadding,
-              paddingRight: showSecondaryIcon ? undefined : fieldPadding,
+              paddingRight: fieldPadding,
               borderRadius: 'standard',
               outline: 'none',
               'aria-describedby': mergeIds(
@@ -243,14 +238,11 @@ export const Field = ({
             secondaryIcon ? (
               <Box
                 component="span"
-                position="absolute"
                 width="touchable"
                 height="touchable"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                bottom={0}
-                right={0}
               >
                 {secondaryIcon}
               </Box>
