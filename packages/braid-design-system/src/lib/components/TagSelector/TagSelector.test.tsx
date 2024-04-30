@@ -26,6 +26,7 @@ function renderTagSelector({
   noOptionsMessage?: string;
 }) {
   const selectHandler = jest.fn();
+  const removeHandler = jest.fn();
   const changeHandler = jest.fn();
 
   const TestCase = () => {
@@ -48,7 +49,7 @@ function renderTagSelector({
             setValue(...args);
             changeHandler(...args);
           }}
-          onRemove={() => {}}
+          onRemove={removeHandler}
           noOptionsMessage={noOptionsMessage || undefined}
         />
       </BraidTestProvider>
@@ -59,6 +60,7 @@ function renderTagSelector({
     getByRole,
     queryByRole,
     queryByText,
+    queryByTitle,
     getByLabelText,
     queryByLabelText,
   } = render(<TestCase />);
@@ -68,10 +70,12 @@ function renderTagSelector({
   return {
     input,
     queryByText,
+    queryByTitle,
     getByRole,
     queryByRole,
     getInputValue,
     selectHandler,
+    removeHandler,
     changeHandler,
     getByLabelText,
     queryByLabelText,
@@ -338,6 +342,27 @@ describe('TagSelector', () => {
       expect(selectHandler).toHaveBeenCalledWith({
         description: 'Carrots',
         id: 'carrots',
+      });
+    });
+
+    it('should remove a selected tag after clicking the clear button', async () => {
+      const { queryByTitle, removeHandler } = renderTagSelector({
+        value: '',
+        tagOptions: [{ description: 'Apples', id: 'apples' }],
+        selectedTags: [{ description: 'Apples', id: 'apples' }],
+        label: 'Select tags',
+      });
+
+      const clearButton = queryByTitle('Clear Apples');
+      if (!clearButton) {
+        throw new Error('Clear button not found');
+      }
+
+      await userEvent.click(clearButton);
+
+      expect(removeHandler).toHaveBeenCalledWith({
+        description: 'Apples',
+        id: 'apples',
       });
     });
 
