@@ -176,6 +176,7 @@ export interface TagSelectorBaseProps {
   onRemove: (tag: Tag) => void;
   onChange: (value: string) => void;
   onClear?: () => void;
+  placeholder?: string;
   customTags?: boolean;
   translations?: TagSelectorTranslations;
   noOptionsMessage?: string;
@@ -205,6 +206,7 @@ export const TagSelector = ({
   onRemove,
   onChange,
   onClear,
+  placeholder,
   customTags = false,
   translations = tagSelector,
   noOptionsMessage,
@@ -483,6 +485,7 @@ export const TagSelector = ({
                 onBlur={() => dispatch({ type: INPUT_BLUR })}
                 onKeyDown={onKeyDown}
                 {...a11y.inputProps}
+                {...(placeholder ? { placeholder } : null)}
               />
               {overlays}
               {secondaryIcon}

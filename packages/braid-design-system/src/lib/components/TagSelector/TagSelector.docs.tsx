@@ -124,18 +124,21 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Hidden field label',
+      label: 'Placeholder prompt',
       description: (
         <Text>
-          In cases where the field label should be visually hidden, you can
-          provide an <Strong>aria-label</Strong> instead.
+          Providing a <Strong>placeholder</Strong> will display a prompt to the
+          user when there is no input value.
         </Text>
       ),
       Example: ({ id, setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value2', '')}
-            {setDefaultState('selectedTags2', [])}
+            {setDefaultState('selectedTags2', [
+              { description: 'Apples', id: '1' },
+              { description: 'Bananas', id: '2' },
+            ])}
 
             <TagSelector
               id={`${id}_2`}
@@ -146,7 +149,8 @@ const docs: ComponentDocs = {
                 { description: 'Pears', id: '4' },
               ]}
               selectedTags={getState('selectedTags2')}
-              aria-label="Label"
+              label="Label"
+              placeholder="Enter text"
               value={getState('value2')}
               noOptionsMessage="No options available"
               onSelect={(selectedTag1) => {
@@ -166,6 +170,53 @@ const docs: ComponentDocs = {
               }}
               onChange={setState('value2')}
               onClear={() => resetState('value2')}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Hidden field label',
+      description: (
+        <Text>
+          In cases where the field label should be visually hidden, you can
+          provide an <Strong>aria-label</Strong> instead.
+        </Text>
+      ),
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value3', '')}
+            {setDefaultState('selectedTags3', [])}
+
+            <TagSelector
+              id={`${id}_3`}
+              tagOptions={[
+                { description: 'Apples', id: '1' },
+                { description: 'Bananas', id: '2' },
+                { description: 'Oranges', id: '3' },
+                { description: 'Pears', id: '4' },
+              ]}
+              selectedTags={getState('selectedTags3')}
+              aria-label="Label"
+              value={getState('value3')}
+              noOptionsMessage="No options available"
+              onSelect={(selectedTag1) => {
+                setState('selectedTags3', [
+                  ...getState('selectedTags3'),
+                  selectedTag1,
+                ]);
+                resetState('value3');
+              }}
+              onRemove={(removedTag1) => {
+                const selectedTags3 = getState('selectedTags3').slice();
+                const index = selectedTags3.indexOf(removedTag1);
+                if (index !== -1) {
+                  selectedTags3.splice(index, 1);
+                  setState('selectedTags3', selectedTags3);
+                }
+              }}
+              onChange={setState('value3')}
+              onClear={() => resetState('value3')}
             />
           </>,
         ),
