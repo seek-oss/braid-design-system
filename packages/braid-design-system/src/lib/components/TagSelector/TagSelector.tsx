@@ -330,6 +330,18 @@ export const TagSelector = ({
         };
 
       case INPUT_CHANGE:
+        const activeOptionInDropdown =
+          state.activeOption &&
+          !dropdownOptions.find((option) => option.id === state.activeOption);
+
+        if (!activeOptionInDropdown) {
+          return {
+            ...state,
+            activeOption: undefined,
+            showOptionsIfAvailable: true,
+          };
+        }
+
         return {
           ...state,
           showOptionsIfAvailable: true,
