@@ -7,6 +7,9 @@ import { Divider, type DividerProps } from '../Divider/Divider';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
+import { Children } from 'react';
+import assert from 'assert';
+import { Hidden, type HiddenProps } from '../Hidden/Hidden';
 
 export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
 
@@ -53,6 +56,7 @@ export const Stack = ({
   data,
   ...restProps
 }: StackProps) => {
+  const isList = component === 'ol' || component === 'ul';
   const stackItems = flattenChildren(children);
   const stackItemsWithDividers = !dividers
     ? stackItems
@@ -70,7 +74,22 @@ export const Stack = ({
       component={component}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      {stackItemsWithDividers}
+      {Children.map(stackItemsWithDividers, (child) => {
+        assert(
+          !(
+            typeof child === 'object' &&
+            child.type === Hidden &&
+            (child.props as HiddenProps).inline !== undefined
+          ),
+          'The "inline" prop is invalid on Hidden elements within a Stack',
+        );
+
+        if (isList) {
+          return <Box component="li">{child}</Box>;
+        }
+
+        return child;
+      })}
     </Box>
   );
 };
