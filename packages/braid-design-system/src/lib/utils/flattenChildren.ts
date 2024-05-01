@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 import { Children, isValidElement, cloneElement } from 'react';
 import { isFragment } from 'react-is';
 
-type ReactChild = ReactElement | string | number;
+export type ReactChild = ReactElement | string | number;
 
 export default function flattenChildren(
   children: ReactNode,
