@@ -1,15 +1,65 @@
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
+import {
+  normalizeResponsiveValue,
+  type OptionalResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
 import { type Align, alignToFlexAlign } from '../../utils/align';
 import flattenChildren, { type ReactChild } from '../../utils/flattenChildren';
 import { Divider, type DividerProps } from '../Divider/Divider';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
-import { Children } from 'react';
+import { Children, type ReactNode } from 'react';
 import assert from 'assert';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 import { Hidden, type HiddenProps } from '../Hidden/Hidden';
+
+const extractHiddenPropsFromChild = (child: ReactNode) =>
+  child && typeof child === 'object' && 'type' in child && child.type === Hidden
+    ? (child.props as HiddenProps)
+    : null;
+
+const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
+  screen
+    ? ([true, true, true, true] as const)
+    : resolveResponsiveRangeProps({
+        above,
+        below,
+      });
+
+const calculateHiddenStackItemDisplayProps = (
+  child: ReactChild,
+  [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide]: Readonly<
+    [boolean, boolean, boolean, boolean]
+  >,
+) => {
+  // Todo - see if this redundant check can be removed with better type checking
+  if (typeof child !== 'object' || child.type !== Hidden) {
+    return {};
+  }
+
+  const normalizedValue = normalizeResponsiveValue(
+    child.props.display !== undefined ? child.props.display : 'block',
+  );
+
+  const {
+    mobile: displayMobile = 'block',
+    tablet: displayTablet = displayMobile,
+    desktop: displayDesktop = displayTablet,
+    wide: displayWide = displayDesktop,
+  } = normalizedValue;
+
+  return {
+    display: optimizeResponsiveArray([
+      hiddenOnMobile ? 'none' : displayMobile,
+      hiddenOnTablet ? 'none' : displayTablet,
+      hiddenOnDesktop ? 'none' : displayDesktop,
+      hiddenOnWide ? 'none' : displayWide,
+    ]),
+  };
+};
 
 export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
 
@@ -85,7 +135,25 @@ export const Stack = ({
         );
 
         if (isList) {
-          return <Box component="li">{child}</Box>;
+          if (typeof child !== 'object' || child.type !== Hidden) {
+            return <Box component="li">{child}</Box>;
+          }
+
+          const hiddenProps = extractHiddenPropsFromChild(child);
+          const hidden = hiddenProps
+            ? resolveHiddenProps(hiddenProps)
+            : ([false, false, false, false] as const);
+
+          const displayProps = calculateHiddenStackItemDisplayProps(
+            child,
+            hidden,
+          );
+
+          return (
+            <Box component="li" {...displayProps}>
+              {child}
+            </Box>
+          );
         }
 
         return child;
