@@ -151,9 +151,9 @@ export const Stack = ({
             ? resolveHiddenProps(hiddenProps)
             : ([false, false, false, false] as const);
 
-          const displayProps = !isHiddenChild(child)
-            ? {}
-            : calculateHiddenStackItemDisplayProps(child, hidden);
+          const displayProps = isHiddenChild(child)
+            ? calculateHiddenStackItemDisplayProps(child, hidden)
+            : {};
 
           return (
             <Box component="li" {...displayProps}>
