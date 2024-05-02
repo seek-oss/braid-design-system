@@ -114,10 +114,7 @@ export const Stack = ({
   const stackItems = flattenChildren(children);
   const stackItemsWithDividers = !dividers
     ? stackItems
-    : addDividersToStackItems(
-        stackItems,
-        dividers === true ? undefined : dividers,
-      );
+    : addDividersToStackItems(stackItems, dividers);
 
   return (
     <Box
