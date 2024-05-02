@@ -10,16 +10,23 @@ import { Divider, type DividerProps } from '../Divider/Divider';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 import buildDataAttributes from '../private/buildDataAttributes';
-import { Children, type ReactNode } from 'react';
+import { Children, type ReactElement, type ReactNode } from 'react';
 import assert from 'assert';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 import { Hidden, type HiddenProps } from '../Hidden/Hidden';
 
+function isHiddenChild(child: ReactNode): child is ReactElement {
+  return Boolean(
+    child &&
+      typeof child === 'object' &&
+      'type' in child &&
+      child.type === Hidden,
+  );
+}
+
 const extractHiddenPropsFromChild = (child: ReactNode) =>
-  child && typeof child === 'object' && 'type' in child && child.type === Hidden
-    ? (child.props as HiddenProps)
-    : null;
+  isHiddenChild(child) ? child.props : null;
 
 const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
   screen
@@ -29,14 +36,16 @@ const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
         below,
       });
 
-type HiddenItem = React.ReactElement<any, typeof Hidden> & ReactChild;
-
 const calculateHiddenStackItemDisplayProps = (
-  child: HiddenItem,
+  child: ReactChild,
   [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide]: Readonly<
     [boolean, boolean, boolean, boolean]
   >,
 ) => {
+  if (typeof child !== 'object' || ('type' in child && child.type !== Hidden)) {
+    return {};
+  }
+
   const normalizedValue = normalizeResponsiveValue(
     child.props.display !== undefined ? child.props.display : 'block',
   );
@@ -128,33 +137,29 @@ export const Stack = ({
       {Children.map(stackItemsWithDividers, (child) => {
         assert(
           !(
-            typeof child === 'object' &&
-            child.type === Hidden &&
+            isHiddenChild(child) &&
             (child.props as HiddenProps).inline !== undefined
           ),
           'The "inline" prop is invalid on Hidden elements within a Stack',
         );
 
         if (isList) {
-          if (typeof child === 'object' && child.type === Hidden) {
-            const hiddenProps = extractHiddenPropsFromChild(child);
-            const hidden = hiddenProps
-              ? resolveHiddenProps(hiddenProps)
-              : ([false, false, false, false] as const);
+          const hiddenProps = isHiddenChild(child)
+            ? extractHiddenPropsFromChild(child)
+            : null;
+          const hidden = hiddenProps
+            ? resolveHiddenProps(hiddenProps)
+            : ([false, false, false, false] as const);
 
-            const displayProps = calculateHiddenStackItemDisplayProps(
-              child as HiddenItem,
-              hidden,
-            );
+          const displayProps = !isHiddenChild(child)
+            ? {}
+            : calculateHiddenStackItemDisplayProps(child, hidden);
 
-            return (
-              <Box component="li" {...displayProps}>
-                {child}
-              </Box>
-            );
-          }
-
-          return <Box component="li">{child}</Box>;
+          return (
+            <Box component="li" {...displayProps}>
+              {child}
+            </Box>
+          );
         }
 
         return child;
