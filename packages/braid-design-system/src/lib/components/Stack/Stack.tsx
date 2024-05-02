@@ -29,17 +29,14 @@ const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
         below,
       });
 
+type HiddenItem = React.ReactElement<any, typeof Hidden> & ReactChild;
+
 const calculateHiddenStackItemDisplayProps = (
-  child: ReactChild,
+  child: HiddenItem,
   [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide]: Readonly<
     [boolean, boolean, boolean, boolean]
   >,
 ) => {
-  // Todo - see if this redundant check can be removed with better type checking
-  if (typeof child !== 'object' || child.type !== Hidden) {
-    return {};
-  }
-
   const normalizedValue = normalizeResponsiveValue(
     child.props.display !== undefined ? child.props.display : 'block',
   );
@@ -135,25 +132,25 @@ export const Stack = ({
         );
 
         if (isList) {
-          if (typeof child !== 'object' || child.type !== Hidden) {
-            return <Box component="li">{child}</Box>;
+          if (typeof child === 'object' && child.type === Hidden) {
+            const hiddenProps = extractHiddenPropsFromChild(child);
+            const hidden = hiddenProps
+              ? resolveHiddenProps(hiddenProps)
+              : ([false, false, false, false] as const);
+
+            const displayProps = calculateHiddenStackItemDisplayProps(
+              child as HiddenItem,
+              hidden,
+            );
+
+            return (
+              <Box component="li" {...displayProps}>
+                {child}
+              </Box>
+            );
           }
 
-          const hiddenProps = extractHiddenPropsFromChild(child);
-          const hidden = hiddenProps
-            ? resolveHiddenProps(hiddenProps)
-            : ([false, false, false, false] as const);
-
-          const displayProps = calculateHiddenStackItemDisplayProps(
-            child,
-            hidden,
-          );
-
-          return (
-            <Box component="li" {...displayProps}>
-              {child}
-            </Box>
-          );
+          return <Box component="li">{child}</Box>;
         }
 
         return child;
