@@ -103,6 +103,13 @@ export const Stack = ({
   data,
   ...restProps
 }: StackProps) => {
+  assert(
+    validStackComponents.includes(component),
+    `Invalid Stack component: '${component}'. Should be one of [${validStackComponents
+      .map((c) => `'${c}'`)
+      .join(', ')}]`,
+  );
+
   const isList = component === 'ol' || component === 'ul';
   const stackItems = flattenChildren(children);
   const stackItemsWithDividers = !dividers
