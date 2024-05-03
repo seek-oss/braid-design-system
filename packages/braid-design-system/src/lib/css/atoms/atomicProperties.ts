@@ -98,6 +98,7 @@ export const responsiveProperties = {
     inline: 'inline',
     inlineBlock: 'inline-block',
     flex: 'flex',
+    grid: 'grid',
   },
   position: ['relative', 'absolute', 'fixed'],
   borderRadius: {
@@ -105,6 +106,7 @@ export const responsiveProperties = {
     full: '9999px',
     ...vars.borderRadius,
   },
+  gap: space,
   paddingTop: space,
   paddingBottom: space,
   paddingRight: space,
@@ -136,6 +138,14 @@ export const responsiveProperties = {
   },
   flexShrink: [0],
   flexGrow: [0, 1],
+  gridTemplateColumns: {
+    1: 'repeat(1, 1fr)',
+    2: 'repeat(2, 1fr)',
+    3: 'repeat(3, 1fr)',
+    4: 'repeat(4, 1fr)',
+    5: 'repeat(5, 1fr)',
+    6: 'repeat(6, 1fr)',
+  },
   textAlign: ['left', 'center', 'right'],
 } as const;
 
