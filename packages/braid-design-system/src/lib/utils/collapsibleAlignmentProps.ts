@@ -71,12 +71,7 @@ export function resolveCollapsibleAlignmentProps({
         : childrenArray;
     },
     collapsibleAlignmentProps: {
-      display: optimizeResponsiveArray([
-        collapseMobile ? 'block' : 'flex',
-        collapseTablet ? 'block' : 'flex',
-        collapseDesktop ? 'block' : 'flex',
-        'flex',
-      ]),
+      display: 'flex',
       flexDirection: optimizeResponsiveArray([
         collapseMobile ? 'column' : 'row',
         // eslint-disable-next-line no-nested-ternary
