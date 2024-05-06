@@ -82,11 +82,9 @@ const docs: ComponentDocs = {
           <>
             {setDefaultState('value1', '')}
             {setDefaultState('selectedTags1', [
-              { description: 'Never', id: '5' },
-              { description: 'Gonna', id: '6' },
-              { description: 'Give', id: '7' },
-              { description: 'You', id: '8' },
-              { description: 'Up', id: '9' },
+              { description: 'Foo', id: '5' },
+              { description: 'Bar', id: '6' },
+              { description: 'Baz', id: '7' },
             ])}
 
             <TagSelector
