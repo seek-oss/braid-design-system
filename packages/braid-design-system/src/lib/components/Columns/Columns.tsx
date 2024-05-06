@@ -48,6 +48,7 @@ export const Columns = ({
     <Box
       component={component}
       gap={space}
+      display="flex"
       {...collapsibleAlignmentProps}
       {...restProps}
     >
