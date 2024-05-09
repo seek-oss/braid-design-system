@@ -230,9 +230,9 @@ export const Modal = ({
           opacity={state !== OPEN ? 0 : undefined}
           pointerEvents={state === CLOSING ? 'none' : undefined}
           className={[
-            styles.backdrop,
-            position === 'left' ||
-              (position === 'right' && styles.horiztontalTransition),
+            (state === OPEN || state === OPENING) && styles.backdrop,
+            (position === 'left' || position === 'right') &&
+              styles.horizontalTransition,
           ]}
         />
 
@@ -242,14 +242,14 @@ export const Modal = ({
           zIndex="modal"
           pointerEvents="none"
           transition="fast"
-          opacity={state !== OPEN ? 0 : undefined}
+          opacity={state !== OPEN && state !== OPENING ? 0 : undefined}
           paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
           paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
           padding={position === 'center' ? externalGutter : undefined}
           className={[
             styles.modalContainer,
             (position === 'left' || position === 'right') &&
-              styles.horiztontalTransition,
+              styles.horizontalTransition,
             state === OPENING && styles.entrance[position],
             state === CLOSING &&
               position in styles.exit &&

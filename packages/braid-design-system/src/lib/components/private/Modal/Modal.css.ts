@@ -67,7 +67,7 @@ export const exit = {
     style(
       responsiveStyle({
         mobile: { opacity: 1, transform: 'translateX(110%)' },
-        tablet: { opacity: 0, transform: 'translateX(10px)' },
+        tablet: { opacity: 0, transform: 'translateX(40px)' },
       }),
     ),
   ],
@@ -76,14 +76,14 @@ export const exit = {
     style(
       responsiveStyle({
         mobile: { opacity: 1, transform: 'translateX(-110%)' },
-        tablet: { opacity: 0, transform: 'translateX(-10px)' },
+        tablet: { opacity: 0, transform: 'translateX(-40px)' },
       }),
     ),
   ],
 };
 
 const easeOut = 'cubic-bezier(0.4, 0, 0, 1)';
-export const horiztontalTransition = style(
+export const horizontalTransition = style(
   responsiveStyle({
     mobile: {
       transition: `transform .3s ${easeOut}, opacity .3s ${easeOut}`,
