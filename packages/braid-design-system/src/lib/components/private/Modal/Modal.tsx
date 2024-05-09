@@ -88,6 +88,7 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
           return OPENING;
         }
       }
+      return prevState;
     }
 
     case CLOSE_MODAL: {
@@ -97,6 +98,7 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
           return CLOSING;
         }
       }
+      return prevState;
     }
 
     case ANIMATION_COMPLETE: {
@@ -109,10 +111,13 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
           return OPEN;
         }
       }
+      return prevState;
+    }
+
+    default: {
+      return prevState;
     }
   }
-
-  return prevState;
 };
 
 const ANIMATION_DURATION = 300;
