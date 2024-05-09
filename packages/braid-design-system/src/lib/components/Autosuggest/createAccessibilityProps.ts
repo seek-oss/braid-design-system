@@ -12,7 +12,7 @@ with exception of the field label. Whether using `label`, `aria-label` or
 `aria-labelledby`, the association with the input is handled via the
 `fieldProps` on the Field component.
 */
-export const createAccessbilityProps = ({
+export const createAccessibilityProps = ({
   id,
   highlightedIndex,
   isOpen,
