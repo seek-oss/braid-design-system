@@ -241,6 +241,7 @@ export const Modal = ({
           zIndex="modal"
           pointerEvents="none"
           transition={
+            // Disable exit transition for center modals
             position === 'center' && state !== OPEN && state !== OPENING
               ? undefined
               : 'fast'
