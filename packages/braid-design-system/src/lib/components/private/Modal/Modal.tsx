@@ -226,7 +226,6 @@ export const Modal = ({
           position="fixed"
           inset={0}
           zIndex="modalBackdrop"
-          transition={position === 'center' ? 'fast' : undefined}
           opacity={state !== OPEN ? 0 : undefined}
           pointerEvents={state === CLOSING ? 'none' : undefined}
           className={[
@@ -241,7 +240,11 @@ export const Modal = ({
           inset={0}
           zIndex="modal"
           pointerEvents="none"
-          transition="fast"
+          transition={
+            position === 'center' && state !== OPEN && state !== OPENING
+              ? undefined
+              : 'fast'
+          }
           opacity={state !== OPEN && state !== OPENING ? 0 : undefined}
           paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
           paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
