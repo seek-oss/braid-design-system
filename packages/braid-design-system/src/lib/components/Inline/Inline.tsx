@@ -1,15 +1,12 @@
-import assert from 'assert';
-import React, { Children } from 'react';
-import flattenChildren from '../../utils/flattenChildren';
-
-import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
-  type CollapsibleAlignmentProps,
   resolveCollapsibleAlignmentProps,
+  type CollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
+import { Box } from '../Box/Box';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import flattenChildren from '../../utils/flattenChildren';
+import { Children } from 'react';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -34,54 +31,31 @@ export const Inline = ({
   children,
   ...restProps
 }: InlineProps) => {
-  assert(
-    validInlineComponents.includes(component),
-    `Invalid Inline component: '${component}'. Should be one of [${validInlineComponents
-      .map((c) => `'${c}'`)
-      .join(', ')}]`,
-  );
-
-  const isList = component === 'ol' || component === 'ul';
-  const inlineItemComponent = isList ? 'li' : component;
-
-  const {
-    collapsibleAlignmentProps,
-    collapsibleAlignmentChildProps,
-    orderChildren,
-  } = resolveCollapsibleAlignmentProps({
+  const { collapsibleAlignmentProps } = resolveCollapsibleAlignmentProps({
     align,
     alignY,
     collapseBelow,
     reverse,
   });
 
+  const isList = component === 'ol' || component === 'ul';
+
   return (
     <Box
-      component={component === 'span' ? component : undefined}
-      display={component === 'span' ? 'block' : undefined}
-      className={negativeMargin('top', space)}
+      component={component}
+      display="flex"
+      gap={space}
+      flexWrap="wrap"
+      {...collapsibleAlignmentProps}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Box
-        component={component}
-        className={negativeMargin('left', space)}
-        flexWrap="wrap"
-        {...collapsibleAlignmentProps}
-      >
-        {Children.map(orderChildren(flattenChildren(children)), (child) =>
-          child !== null && child !== undefined ? (
-            <Box
-              component={inlineItemComponent}
-              minWidth={0}
-              marginLeft={space}
-              marginTop={space}
-              {...collapsibleAlignmentChildProps}
-            >
-              {child}
-            </Box>
-          ) : null,
-        )}
-      </Box>
+      {Children.map(flattenChildren(children), (child) => {
+        if (isList) {
+          return <Box component="li">{child}</Box>;
+        }
+
+        return child;
+      })}
     </Box>
   );
 };

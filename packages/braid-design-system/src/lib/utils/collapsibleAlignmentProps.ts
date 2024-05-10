@@ -1,4 +1,3 @@
-import { type ReactNode, Children } from 'react';
 import {
   type OptionalResponsiveValue,
   normalizeResponsiveValue,
@@ -64,19 +63,7 @@ export function resolveCollapsibleAlignmentProps({
     collapseMobile,
     collapseTablet,
     collapseDesktop,
-    orderChildren: (children: ReactNode) => {
-      const childrenArray = Children.toArray(children);
-      return !collapseMobile && !collapseTablet && reverse
-        ? childrenArray.reverse()
-        : childrenArray;
-    },
     collapsibleAlignmentProps: {
-      display: optimizeResponsiveArray([
-        collapseMobile ? 'block' : 'flex',
-        collapseTablet ? 'block' : 'flex',
-        collapseDesktop ? 'block' : 'flex',
-        'flex',
-      ]),
       flexDirection: optimizeResponsiveArray([
         collapseMobile ? 'column' : 'row',
         // eslint-disable-next-line no-nested-ternary
@@ -100,26 +87,6 @@ export function resolveCollapsibleAlignmentProps({
           ])
         : undefined,
       alignItems: alignY ? alignYToFlexAlign(alignY) : undefined,
-    },
-    collapsibleAlignmentChildProps: {
-      display: optimizeResponsiveArray([
-        collapseMobile && justifyContentMobile !== 'flexStart'
-          ? 'flex'
-          : 'block',
-        collapseTablet && justifyContentTablet !== 'flexStart'
-          ? 'flex'
-          : 'block',
-        collapseDesktop && justifyContentDesktop !== 'flexStart'
-          ? 'flex'
-          : 'block',
-        'block',
-      ]),
-      justifyContent: optimizeResponsiveArray([
-        justifyContentMobile,
-        justifyContentTablet,
-        justifyContentDesktop,
-        justifyContentWide,
-      ]),
     },
   } as const;
 }
