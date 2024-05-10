@@ -43,7 +43,6 @@ export const Inline = ({
   return (
     <Box
       component={component}
-      display="flex"
       gap={space}
       flexWrap="wrap"
       {...collapsibleAlignmentProps}
