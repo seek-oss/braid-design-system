@@ -7,7 +7,7 @@ updated:
   - Stack
 ---
 
-Update `Stack` to use CSS gap for spacing between children. Hidden elements  will now be ignored by `Stack`'s spacing.
+Update `Stack` to use CSS gap for spacing between children. Hidden elements will now be ignored by `Stack`'s spacing.
 
 **EXAMPLE USAGE:**
 ```jsx
