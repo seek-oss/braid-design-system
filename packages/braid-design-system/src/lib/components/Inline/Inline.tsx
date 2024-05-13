@@ -5,11 +5,11 @@ import {
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import flattenChildren from '../../utils/flattenChildren';
-import { Children } from 'react';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import flattenChildren from '../../utils/flattenChildren';
+import { Children } from 'react';
 
 export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 
