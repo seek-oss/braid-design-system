@@ -1,20 +1,21 @@
+import React, { type ReactNode, Children, type ReactElement } from 'react';
+import flattenChildren, { type ReactChild } from '../../utils/flattenChildren';
+import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import {
-  normalizeResponsiveValue,
-  type OptionalResponsiveValue,
-} from '../../css/atoms/sprinkles.css';
+import { type DividerProps, Divider } from '../Divider/Divider';
+import { type HiddenProps, Hidden } from '../Hidden/Hidden';
 import { type Align, alignToFlexAlign } from '../../utils/align';
-import flattenChildren, { type ReactChild } from '../../utils/flattenChildren';
-import { Divider, type DividerProps } from '../Divider/Divider';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import buildDataAttributes from '../private/buildDataAttributes';
-import { Children, type ReactElement, type ReactNode } from 'react';
-import assert from 'assert';
-import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
-import { Hidden, type HiddenProps } from '../Hidden/Hidden';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import {
+  type OptionalResponsiveValue,
+  normalizeResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 function isHiddenChild(child: ReactNode): child is ReactElement {
   return Boolean(
