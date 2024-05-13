@@ -106,9 +106,9 @@ export interface StackProps {
 
 export const Stack = ({
   component = 'div',
-  space,
   children,
-  align,
+  space = 'none',
+  align = 'left',
   dividers = false,
   data,
   ...restProps
