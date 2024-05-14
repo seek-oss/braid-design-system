@@ -46,7 +46,7 @@ const calculateHiddenStackItemDisplayProps = (
     [boolean, boolean, boolean, boolean]
   >,
 ): ResponsiveArray<any> => {
-  if (typeof child !== 'object' || ('type' in child && child.type !== Hidden)) {
+  if (!isHiddenChild(child)) {
     return ['block', 'block', 'block', 'block'];
   }
 
