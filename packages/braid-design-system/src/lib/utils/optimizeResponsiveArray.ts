@@ -1,4 +1,4 @@
-type ResponsiveArray<Value extends string | number> =
+export type ResponsiveArray<Value extends string | number> =
   ReadonlyArray<Value | null> & { length: 2 | 3 | 4 } & { 0: Value | null };
 
 export const optimizeResponsiveArray = <Value extends string | number>(

@@ -7,7 +7,10 @@ import { type DividerProps, Divider } from '../Divider/Divider';
 import { type HiddenProps, Hidden } from '../Hidden/Hidden';
 import { type Align, alignToFlexAlign } from '../../utils/align';
 import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
-import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import {
+  type ResponsiveArray,
+  optimizeResponsiveArray,
+} from '../../utils/optimizeResponsiveArray';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   type OptionalResponsiveValue,
@@ -42,9 +45,9 @@ const calculateHiddenStackItemDisplayProps = (
   [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide]: Readonly<
     [boolean, boolean, boolean, boolean]
   >,
-) => {
+): ResponsiveArray<any> => {
   if (typeof child !== 'object' || ('type' in child && child.type !== Hidden)) {
-    return {};
+    return ['block', 'block', 'block', 'block'];
   }
 
   const normalizedValue = normalizeResponsiveValue(
@@ -58,46 +61,12 @@ const calculateHiddenStackItemDisplayProps = (
     wide: displayWide = displayDesktop,
   } = normalizedValue;
 
-  return {
-    display: optimizeResponsiveArray([
-      hiddenOnMobile ? 'none' : displayMobile,
-      hiddenOnTablet ? 'none' : displayTablet,
-      hiddenOnDesktop ? 'none' : displayDesktop,
-      hiddenOnWide ? 'none' : displayWide,
-    ]),
-  };
-};
-
-// Todo - remove this duplicate function
-const calculateHiddenStackItemDisplayPropsNonOptimized = (
-  child: ReactChild,
-  [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide]: Readonly<
-    [boolean, boolean, boolean, boolean]
-  >,
-) => {
-  if (typeof child !== 'object' || ('type' in child && child.type !== Hidden)) {
-    return {};
-  }
-
-  const normalizedValue = normalizeResponsiveValue(
-    child.props.display !== undefined ? child.props.display : 'block',
-  );
-
-  const {
-    mobile: displayMobile = 'block',
-    tablet: displayTablet = displayMobile,
-    desktop: displayDesktop = displayTablet,
-    wide: displayWide = displayDesktop,
-  } = normalizedValue;
-
-  return {
-    display: [
-      hiddenOnMobile ? 'none' : displayMobile,
-      hiddenOnTablet ? 'none' : displayTablet,
-      hiddenOnDesktop ? 'none' : displayDesktop,
-      hiddenOnWide ? 'none' : displayWide,
-    ],
-  };
+  return [
+    hiddenOnMobile ? 'none' : displayMobile,
+    hiddenOnTablet ? 'none' : displayTablet,
+    hiddenOnDesktop ? 'none' : displayDesktop,
+    hiddenOnWide ? 'none' : displayWide,
+  ];
 };
 
 export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
@@ -190,13 +159,15 @@ export const Stack = ({
         const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide] =
           hidden;
 
-        const displayProps = isHiddenChild(child)
-          ? calculateHiddenStackItemDisplayProps(child, hidden)
-          : ({ display: 'block' } as const);
+        const displayProps = calculateHiddenStackItemDisplayProps(
+          child,
+          hidden,
+        );
 
-        // Todo - remove this const, rely on one displayPropsNonOptimized
-        const displayPropsNonOptimized = isHiddenChild(child)
-          ? calculateHiddenStackItemDisplayPropsNonOptimized(child, hidden)
+        const optimizedDisplayProps = displayProps
+          ? {
+              display: optimizeResponsiveArray(displayProps),
+            }
           : ({ display: 'block' } as const);
 
         if (firstItemOnMobile === null && !hiddenOnMobile) {
@@ -219,33 +190,29 @@ export const Stack = ({
         const dividerDisplayProps = optimizeResponsiveArray([
           firstItemOnMobile === null ||
           index === firstItemOnMobile ||
-          (displayPropsNonOptimized.display &&
-            displayPropsNonOptimized.display[0] === 'none')
+          displayProps[0] === 'none'
             ? 'none'
             : 'block',
           firstItemOnTablet === null ||
           index === firstItemOnTablet ||
-          (displayPropsNonOptimized.display &&
-            displayPropsNonOptimized.display[1] === 'none')
+          displayProps[1] === 'none'
             ? 'none'
             : 'block',
           firstItemOnDesktop === null ||
           index === firstItemOnDesktop ||
-          (displayPropsNonOptimized.display &&
-            displayPropsNonOptimized.display[2] === 'none')
+          displayProps[2] === 'none'
             ? 'none'
             : 'block',
           firstItemOnWide === null ||
           index === firstItemOnWide ||
-          (displayPropsNonOptimized.display &&
-            displayPropsNonOptimized.display[3] === 'none')
+          displayProps[3] === 'none'
             ? 'none'
             : 'block',
         ]) as OptionalResponsiveValue<'block' | 'none'>;
 
         if (isList) {
           return (
-            <Box component="li" {...displayProps}>
+            <Box component="li" {...optimizedDisplayProps}>
               {dividers ? (
                 <Box display={dividerDisplayProps} paddingBottom={space}>
                   <StackDivider dividers={dividers} />
