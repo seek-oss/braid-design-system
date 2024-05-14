@@ -87,6 +87,22 @@ const StackDivider = ({
   </Box>
 );
 
+function getDividerDisplayProp(
+  firstItemOnScreenSize: number | null,
+  index: number,
+  displayProp: 'none' | 'block',
+): 'none' | 'block' {
+  if (
+    firstItemOnScreenSize === null ||
+    index === firstItemOnScreenSize ||
+    displayProp === 'none'
+  ) {
+    return 'none';
+  }
+
+  return 'block';
+}
+
 export interface StackProps {
   component?: (typeof validStackComponents)[number];
   children: ReactNodeNoStrings;
@@ -138,7 +154,7 @@ export const Stack = ({
           'The "inline" prop is invalid on Hidden elements within a Stack',
         );
 
-        // If it is not a list and there are no dividers, there is no hidden work to do
+        // If it is not a list and there are no dividers, there is no work to do
         if (!isList && !dividers) {
           return child;
         }
@@ -175,29 +191,12 @@ export const Stack = ({
           firstItemOnWide = index;
         }
 
-        // Todo - refactor?
         const dividerDisplayProps = optimizeResponsiveArray([
-          firstItemOnMobile === null ||
-          index === firstItemOnMobile ||
-          displayProps[0] === 'none'
-            ? 'none'
-            : 'block',
-          firstItemOnTablet === null ||
-          index === firstItemOnTablet ||
-          displayProps[1] === 'none'
-            ? 'none'
-            : 'block',
-          firstItemOnDesktop === null ||
-          index === firstItemOnDesktop ||
-          displayProps[2] === 'none'
-            ? 'none'
-            : 'block',
-          firstItemOnWide === null ||
-          index === firstItemOnWide ||
-          displayProps[3] === 'none'
-            ? 'none'
-            : 'block',
-        ]) as OptionalResponsiveValue<'block' | 'none'>;
+          getDividerDisplayProp(firstItemOnMobile, index, displayProps[0]),
+          getDividerDisplayProp(firstItemOnTablet, index, displayProps[1]),
+          getDividerDisplayProp(firstItemOnDesktop, index, displayProps[2]),
+          getDividerDisplayProp(firstItemOnWide, index, displayProps[3]),
+        ]);
 
         if (isList) {
           const optimizedDisplayProps = displayProps
