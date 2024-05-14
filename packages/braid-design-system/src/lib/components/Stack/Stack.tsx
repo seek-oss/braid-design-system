@@ -80,16 +80,9 @@ interface StackDividerProps {
 const StackDivider = ({
   dividers,
   display = 'block',
-  index,
   ...restProps
 }: StackDividerProps) => (
-  <Box
-    component="span"
-    width="full"
-    display={display}
-    {...restProps}
-    id={index}
-  >
+  <Box component="span" width="full" display={display} {...restProps}>
     {typeof dividers === 'string' ? <Divider weight={dividers} /> : <Divider />}
   </Box>
 );
@@ -127,9 +120,6 @@ export const Stack = ({
   let firstItemOnDesktop: number | null = null;
   let firstItemOnWide: number | null = null;
 
-  // Todo - reorder returns so these are only being calculated when needed
-  // Todo - handle Hidden "screen" prop
-
   return (
     <Box
       display="flex"
@@ -148,6 +138,11 @@ export const Stack = ({
           'The "inline" prop is invalid on Hidden elements within a Stack',
         );
 
+        // If it is not a list and there are no dividers, there is no hidden work to do
+        if (!isList && !dividers) {
+          return child;
+        }
+
         const hiddenProps = isHiddenChild(child)
           ? extractHiddenPropsFromChild(child)
           : null;
@@ -163,12 +158,6 @@ export const Stack = ({
           child,
           hidden,
         );
-
-        const optimizedDisplayProps = displayProps
-          ? {
-              display: optimizeResponsiveArray(displayProps),
-            }
-          : ({ display: 'block' } as const);
 
         if (firstItemOnMobile === null && !hiddenOnMobile) {
           firstItemOnMobile = index;
@@ -211,6 +200,12 @@ export const Stack = ({
         ]) as OptionalResponsiveValue<'block' | 'none'>;
 
         if (isList) {
+          const optimizedDisplayProps = displayProps
+            ? {
+                display: optimizeResponsiveArray(displayProps),
+              }
+            : ({ display: 'block' } as const);
+
           return (
             <Box component="li" {...optimizedDisplayProps}>
               {dividers ? (
@@ -223,31 +218,14 @@ export const Stack = ({
           );
         }
 
-        if (isHiddenChild(child)) {
-          return (
-            <>
-              {dividers ? (
-                <StackDivider
-                  dividers={dividers}
-                  display={dividerDisplayProps}
-                  index={`divider-${index}`}
-                />
-              ) : null}
-              {child}
-            </>
-          );
-        }
-
-        if (dividers) {
-          return (
-            <>
+        return (
+          <>
+            {dividers ? (
               <StackDivider dividers={dividers} display={dividerDisplayProps} />
-              {child}
-            </>
-          );
-        }
-
-        return child;
+            ) : null}
+            {child}
+          </>
+        );
       })}
     </Box>
   );
