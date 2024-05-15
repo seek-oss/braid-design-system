@@ -180,8 +180,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       '@capsizecss/metrics':
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^3.0.0
+        version: 3.1.0
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.0
         version: 2.0.0(@vanilla-extract/css@1.14.0)
@@ -2952,8 +2952,8 @@ packages:
       csstype: 3.1.1
     dev: false
 
-  /@capsizecss/metrics@2.2.0:
-    resolution: {integrity: sha512-DkFIser1KbGxWyG2hhQQeCit72TnOQDx5pr9bkA7+XlIy7qv+4lYtslH3bidVxm2qkY2guAgypSIPYuQQuk70A==}
+  /@capsizecss/metrics@3.1.0:
+    resolution: {integrity: sha512-NYReSO1ifvDr3vhJsfAW2S2mHbHsNpbQwESk9+Vh/jBBGRpQBirmReFE2nG+ZN0AktHoFIavVPsCyw/RMxh8vQ==}
     dev: false
 
   /@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.14.0):

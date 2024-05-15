@@ -186,7 +186,7 @@
   },
   "dependencies": {
     "@capsizecss/core": "^4.1.0",
-    "@capsizecss/metrics": "^2.2.0",
+    "@capsizecss/metrics": "^3.0.0",
     "@capsizecss/vanilla-extract": "^2.0.0",
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/dedent": "^0.7.0",
