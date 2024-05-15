@@ -355,8 +355,8 @@ importers:
         specifier: ^2.12.1
         version: 2.13.0
       sku:
-        specifier: 12.5.1
-        version: 12.5.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.6.1
+        version: 12.6.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       svgo:
         specifier: ^2.8.0
         version: 2.8.0
@@ -620,8 +620,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(react-dom@18.2.0)(react@18.2.0)
       sku:
-        specifier: 12.5.1
-        version: 12.5.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.6.1
+        version: 12.6.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       webpack:
         specifier: ^5.76.0
         version: 5.88.2(esbuild@0.19.12)
@@ -17040,8 +17040,8 @@ packages:
       - supports-color
     dev: false
 
-  /sku@12.5.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-SyULkGtBoIolhGcuRZsZFUlOpcLrXfqKQQP9Ji8vhHK0t9moLY6QNU5TtXVXAUcyna47tyyVu5Vek7b4QEMiyQ==}
+  /sku@12.6.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-pku0SHZpyMb1Hioc700xDSh16nEfF2Crg079xeVLsi8JoAXMFv55wqU2kQknS7Jhp+ukxCPI1nxdYnEB+EfsLQ==}
     engines: {node: '>=18.12'}
     hasBin: true
     requiresBuild: true
