@@ -7,4 +7,4 @@ updated:
   - Drawer
 ---
 
-Fix minor bug which prevented `Drawer` exit animation.
+Fix minor bug which disabled `Drawer` and `Dialog` exit animations.
