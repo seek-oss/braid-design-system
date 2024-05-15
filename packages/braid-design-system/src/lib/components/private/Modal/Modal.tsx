@@ -228,11 +228,7 @@ export const Modal = ({
           zIndex="modalBackdrop"
           opacity={state !== OPEN ? 0 : undefined}
           pointerEvents={state === CLOSING ? 'none' : undefined}
-          className={[
-            (state === OPEN || state === OPENING) && styles.backdrop,
-            (position === 'left' || position === 'right') &&
-              styles.horizontalTransition,
-          ]}
+          className={[styles.backdrop, styles.transition[position]]}
         />
 
         <Box
@@ -240,24 +236,15 @@ export const Modal = ({
           inset={0}
           zIndex="modal"
           pointerEvents="none"
-          transition={
-            // Disable exit transition for center modals
-            position === 'center' && state !== OPEN && state !== OPENING
-              ? undefined
-              : 'fast'
-          }
-          opacity={state !== OPEN && state !== OPENING ? 0 : undefined}
+          opacity={state !== OPEN ? 0 : undefined}
           paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
           paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
           padding={position === 'center' ? externalGutter : undefined}
           className={[
             styles.modalContainer,
-            (position === 'left' || position === 'right') &&
-              styles.horizontalTransition,
+            styles.transition[position],
             state === OPENING && styles.entrance[position],
-            state === CLOSING &&
-              position in styles.exit &&
-              styles.exit[position as keyof typeof styles.exit],
+            state === CLOSING && styles.exit[position],
           ]}
         >
           <ModalContent

@@ -14,6 +14,7 @@ import {
   IconLanguage,
   Checkbox,
   Alert,
+  TextDropdown,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { DialogContent } from './Dialog';
@@ -193,33 +194,39 @@ const docs: ComponentDocs = {
           of the dialog.
         </Text>
       ),
-      Example: ({ id, setState, getState, resetState }) =>
+
+      Example: ({ id, setDefaultState, setState, getState }) =>
         source(
           <>
-            <Inline space="small" align="center">
-              <Button onClick={() => setState('width', 'content')}>
-                Content width
-              </Button>
-              <Button onClick={() => setState('width', 'xsmall')}>
-                XSmall width
-              </Button>
-              <Button onClick={() => setState('width', 'small')}>
-                Small width
-              </Button>
-              <Button onClick={() => setState('width', 'medium')}>
-                Medium width
-              </Button>
-              <Button onClick={() => setState('width', 'large')}>
-                Large width
-              </Button>
-            </Inline>
+            {setDefaultState('open', false)}
+            {setDefaultState('width', 'xsmall')}
+
+            <Stack space="medium">
+              <Text>
+                Select width:{' '}
+                <Strong>
+                  <TextDropdown
+                    id="width"
+                    label="Width"
+                    options={['content', 'xsmall', 'small', 'medium', 'large']}
+                    value={getState('width')}
+                    onChange={(width) => setState('width', width)}
+                  />
+                </Strong>
+              </Text>
+              <Inline space="none">
+                <Button onClick={() => setState('open', true)}>
+                  Open dialog
+                </Button>
+              </Inline>
+            </Stack>
 
             <Dialog
               id={id}
               title={`Width: ${getState('width')}`}
-              open={getState('width') !== undefined}
+              open={getState('open')}
               width={getState('width')}
-              onClose={() => resetState('width')}
+              onClose={() => setState('open', false)}
             >
               {getState('width') === 'content' ? (
                 <Placeholder height={100} width={200} label="200px wide" />

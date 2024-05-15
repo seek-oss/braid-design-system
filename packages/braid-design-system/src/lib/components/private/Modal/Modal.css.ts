@@ -34,56 +34,43 @@ const reducedMotion = style({
   },
 });
 
+const rightAnimation = style([
+  reducedMotion,
+  responsiveStyle({
+    mobile: { opacity: 1, transform: 'translateX(110%)' },
+    tablet: { opacity: 0, transform: 'translateX(40px)' },
+  }),
+]);
+
+const leftAnimation = style([
+  reducedMotion,
+  responsiveStyle({
+    mobile: { opacity: 1, transform: 'translateX(-110%)' },
+    tablet: { opacity: 0, transform: 'translateX(-40px)' },
+  }),
+]);
+
+const centerAnimation = style([
+  reducedMotion,
+  {
+    transform: 'scale(.8)',
+  },
+]);
+
 export const entrance = {
-  center: [
-    reducedMotion,
-    style({
-      transform: 'scale(.8)',
-    }),
-  ],
-  right: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(110%)' },
-        tablet: { opacity: 0, transform: 'translateX(40px)' },
-      }),
-    ),
-  ],
-  left: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(-110%)' },
-        tablet: { opacity: 0, transform: 'translateX(-40px)' },
-      }),
-    ),
-  ],
+  center: centerAnimation,
+  right: rightAnimation,
+  left: leftAnimation,
 };
 
 export const exit = {
-  right: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(110%)' },
-        tablet: { opacity: 0, transform: 'translateX(40px)' },
-      }),
-    ),
-  ],
-  left: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(-110%)' },
-        tablet: { opacity: 0, transform: 'translateX(-40px)' },
-      }),
-    ),
-  ],
+  center: centerAnimation,
+  right: rightAnimation,
+  left: leftAnimation,
 };
 
 const easeOut = 'cubic-bezier(0.4, 0, 0, 1)';
-export const horizontalTransition = style(
+const horizontalTransition = style(
   responsiveStyle({
     mobile: {
       transition: `transform .3s ${easeOut}, opacity .3s ${easeOut}`,
@@ -93,6 +80,12 @@ export const horizontalTransition = style(
     },
   }),
 );
+
+export const transition = {
+  center: atoms({ transition: 'fast' }),
+  right: horizontalTransition,
+  left: horizontalTransition,
+};
 
 export const pointerEventsAll = style({
   pointerEvents: 'all',
