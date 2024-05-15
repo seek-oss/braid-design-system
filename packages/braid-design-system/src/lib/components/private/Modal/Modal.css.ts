@@ -16,12 +16,10 @@ export const resetStackingContext = atoms({ position: 'relative', zIndex: 0 });
 export const backdrop = style(
   colorModeStyle({
     lightMode: {
-      background: '#000',
-      opacity: 0.4,
+      background: 'rgba(0, 0, 0, 0.4)',
     },
     darkMode: {
-      background: '#000',
-      opacity: 0.6,
+      background: 'rgba(0, 0, 0, 0.6)',
     },
   }),
 );
