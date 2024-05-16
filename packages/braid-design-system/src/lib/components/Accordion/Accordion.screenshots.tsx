@@ -469,18 +469,16 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Virtual touch target',
-      Example: ({ id, handler }) => {
-        return (
-          <Box
-            background="surface"
-            data={{ [debugTouchableAttrForDataProp]: '' }}
-          >
-            <AccordionItem label="Accordion item" id={id} onToggle={handler}>
-              <Placeholder height={80} />
-            </AccordionItem>
-          </Box>
-        );
-      },
+      Example: ({ id, handler }) => (
+        <Box
+          background="surface"
+          data={{ [debugTouchableAttrForDataProp]: '' }}
+        >
+          <AccordionItem label="Accordion item" id={id} onToggle={handler}>
+            <Placeholder height={80} />
+          </AccordionItem>
+        </Box>
+      ),
     },
     {
       label: 'AccordionItem with an icon - should follow tone',

@@ -118,42 +118,40 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Virtual touch target',
-      Example: () => {
-        return (
-          <Stack space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
-            <Inline space="large">
-              <ButtonIcon
-                icon={<IconBookmark />}
-                label="Bookmark"
-                size="standard"
-                id="1"
-              />
-              <ButtonIcon
-                icon={<IconBookmark />}
-                label="Bookmark"
-                size="large"
-                id="2"
-              />
-            </Inline>
-            <Inline space="large">
-              <ButtonIcon
-                icon={<IconBookmark />}
-                label="Bookmark"
-                size="standard"
-                variant="transparent"
-                id="3"
-              />
-              <ButtonIcon
-                icon={<IconBookmark />}
-                label="Bookmark"
-                size="large"
-                variant="transparent"
-                id="4"
-              />
-            </Inline>
-          </Stack>
-        );
-      },
+      Example: () => (
+        <Stack space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
+          <Inline space="large">
+            <ButtonIcon
+              icon={<IconBookmark />}
+              label="Bookmark"
+              size="standard"
+              id="1"
+            />
+            <ButtonIcon
+              icon={<IconBookmark />}
+              label="Bookmark"
+              size="large"
+              id="2"
+            />
+          </Inline>
+          <Inline space="large">
+            <ButtonIcon
+              icon={<IconBookmark />}
+              label="Bookmark"
+              size="standard"
+              variant="transparent"
+              id="3"
+            />
+            <ButtonIcon
+              icon={<IconBookmark />}
+              label="Bookmark"
+              size="large"
+              variant="transparent"
+              id="4"
+            />
+          </Inline>
+        </Stack>
+      ),
     },
     {
       label: 'Transparent - bleed on (default)',
