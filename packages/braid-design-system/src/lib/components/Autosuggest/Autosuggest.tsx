@@ -412,6 +412,8 @@ export const Autosuggest = forwardRef(function <Value>(
             highlightedIndex: nextIndex,
           };
         }
+
+        return state;
       }
 
       case INPUT_ARROW_UP: {
@@ -429,6 +431,8 @@ export const Autosuggest = forwardRef(function <Value>(
             highlightedIndex: nextIndex,
           };
         }
+
+        return state;
       }
 
       case INPUT_CHANGE: {
