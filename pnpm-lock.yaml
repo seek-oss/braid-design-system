@@ -177,11 +177,11 @@ importers:
   packages/braid-design-system:
     dependencies:
       '@capsizecss/core':
-        specifier: ^4.1.0
-        version: 4.1.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@capsizecss/metrics':
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^3.0.0
+        version: 3.1.0
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.0
         version: 2.0.0(@vanilla-extract/css@1.14.0)
@@ -355,8 +355,8 @@ importers:
         specifier: ^2.12.1
         version: 2.13.0
       sku:
-        specifier: 12.5.1
-        version: 12.5.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.6.1
+        version: 12.6.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       svgo:
         specifier: ^2.8.0
         version: 2.8.0
@@ -620,8 +620,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(react-dom@18.2.0)(react@18.2.0)
       sku:
-        specifier: 12.5.1
-        version: 12.5.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.6.1
+        version: 12.6.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0)
       webpack:
         specifier: ^5.76.0
         version: 5.88.2(esbuild@0.19.12)
@@ -2946,14 +2946,14 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@capsizecss/core@4.1.0:
-    resolution: {integrity: sha512-Slv4dZLUNmaBEi4Wtowr64fSAqXgpGMlSIlQf6fA3Icv2y5xYi6SJvT/mA3IKkO1NlwPR6sTX5ZnMD3jBA2YFQ==}
+  /@capsizecss/core@4.1.2:
+    resolution: {integrity: sha512-5tMjLsVsaEEwJ816y3eTfhhTIyUWNFt58x6YcHni0eV5tta8MGDOAIe+CV5ICb5pguXgDpNGLprqhPqBWtkFSg==}
     dependencies:
       csstype: 3.1.1
     dev: false
 
-  /@capsizecss/metrics@2.2.0:
-    resolution: {integrity: sha512-DkFIser1KbGxWyG2hhQQeCit72TnOQDx5pr9bkA7+XlIy7qv+4lYtslH3bidVxm2qkY2guAgypSIPYuQQuk70A==}
+  /@capsizecss/metrics@3.1.0:
+    resolution: {integrity: sha512-NYReSO1ifvDr3vhJsfAW2S2mHbHsNpbQwESk9+Vh/jBBGRpQBirmReFE2nG+ZN0AktHoFIavVPsCyw/RMxh8vQ==}
     dev: false
 
   /@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.14.0):
@@ -2961,7 +2961,7 @@ packages:
     peerDependencies:
       '@vanilla-extract/css': ^1.4.0
     dependencies:
-      '@capsizecss/core': 4.1.0
+      '@capsizecss/core': 4.1.2
       '@vanilla-extract/css': 1.14.0
     dev: false
 
@@ -17040,8 +17040,8 @@ packages:
       - supports-color
     dev: false
 
-  /sku@12.5.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-SyULkGtBoIolhGcuRZsZFUlOpcLrXfqKQQP9Ji8vhHK0t9moLY6QNU5TtXVXAUcyna47tyyVu5Vek7b4QEMiyQ==}
+  /sku@12.6.1(@types/node@18.13.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-pku0SHZpyMb1Hioc700xDSh16nEfF2Crg079xeVLsi8JoAXMFv55wqU2kQknS7Jhp+ukxCPI1nxdYnEB+EfsLQ==}
     engines: {node: '>=18.12'}
     hasBin: true
     requiresBuild: true

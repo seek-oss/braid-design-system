@@ -10,6 +10,7 @@ import {
   Text,
   TextLink,
   Alert,
+  Divider,
 } from '../';
 import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';
@@ -243,7 +244,7 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id, getState, setState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Checkbox
               id={id}
               label="Select all"
@@ -254,6 +255,9 @@ const docs: ComponentDocs = {
                 setState('three', checked);
               }}
             />
+
+            <Divider />
+
             <Stack space="medium">
               <Checkbox
                 id={`${id}_1`}

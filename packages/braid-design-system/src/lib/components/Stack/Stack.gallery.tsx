@@ -50,28 +50,6 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Dividers',
-    Example: () =>
-      source(
-        <Stack space="gutter" dividers>
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>,
-      ),
-  },
-  {
-    label: 'Strong dividers',
-    Example: () =>
-      source(
-        <Stack space="gutter" dividers="strong">
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>,
-      ),
-  },
-  {
     label: 'Responsively hiding stack items',
     Example: () =>
       source(

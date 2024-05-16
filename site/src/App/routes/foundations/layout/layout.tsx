@@ -295,32 +295,16 @@ const page: DocsPage = {
         )}
       </Code>
       <Text>
-        To visually break up content, you can insert dividers between all stack
-        elements by setting the{' '}
-        <TextLink href="/components/Stack#dividers">dividers</TextLink> prop on
-        Stack:
-      </Text>
-      <Code>
-        {source(
-          <Card>
-            <Stack space="gutter" dividers={true}>
-              <Heading level="3">Heading</Heading>
-              <Text>{lipsum1}</Text>
-              <Text>{lipsum2}</Text>
-            </Stack>
-          </Card>,
-        )}
-      </Code>
-      <Text>
-        If you’d prefer to take control over the placement of dividers, you can
-        use the <TextLink href="/components/Divider">Divider</TextLink>{' '}
-        component directly:
+        To visually break up content, you can insert dividers between elements
+        with the <TextLink href="/components/Divider">Divider</TextLink>{' '}
+        component.
       </Text>
       <Code>
         {source(
           <Card>
             <Stack space="gutter">
               <Heading level="3">Heading</Heading>
+              <Divider />
               <Text>{lipsum1}</Text>
               <Divider />
               <Text>{lipsum2}</Text>

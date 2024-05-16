@@ -24,9 +24,9 @@ describe('Stack', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Stack component="ul" space="small">
-          <Text>1</Text>
-          <Text>2</Text>
-          <Text>3</Text>
+          <Text component="li">1</Text>
+          <Text component="li">2</Text>
+          <Text component="li">3</Text>
         </Stack>
       </BraidTestProvider>,
     );
@@ -43,9 +43,9 @@ describe('Stack', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Stack component="ol" space="small">
-          <Text>1</Text>
-          <Text>2</Text>
-          <Text>3</Text>
+          <Text component="li">1</Text>
+          <Text component="li">2</Text>
+          <Text component="li">3</Text>
         </Stack>
       </BraidTestProvider>,
     );

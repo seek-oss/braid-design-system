@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Box,
   Column,
@@ -8,6 +8,7 @@ import {
   Stack,
   Text,
   TextLink,
+  Divider,
 } from 'braid-src/lib/components';
 import { breakpoints } from 'braid-src/lib/css/breakpoints';
 import Code from 'site/App/Code/Code';
@@ -42,27 +43,32 @@ const docs: CssDoc = {
             themes to maintain a consistent set of conditions when designing experiences.`}
           </Text>
           <Box maxWidth="xsmall">
-            <Stack space="gutter" dividers>
+            <Stack space="gutter">
               {bps.map((b, index) => (
-                <Columns space="small" alignY="center" key={b}>
-                  <Column width="content">
-                    <Box
-                      display="flex"
-                      justifyContent="center"
-                      style={{ width: 30 }}
-                    >
-                      {iconForBp[b]}
-                    </Box>
-                  </Column>
-                  <Column>
-                    <Text baseline={false} weight="strong">
-                      {b}
-                    </Text>
-                  </Column>
-                  <Column width="content">
-                    <Text>{`${breakpoints[b]}${index !== 0 ? 'px' : ''}`}</Text>
-                  </Column>
-                </Columns>
+                <Fragment key={b}>
+                  {index !== 0 && <Divider />}
+                  <Columns space="small" alignY="center">
+                    <Column width="content">
+                      <Box
+                        display="flex"
+                        justifyContent="center"
+                        style={{ width: 30 }}
+                      >
+                        {iconForBp[b]}
+                      </Box>
+                    </Column>
+                    <Column>
+                      <Text baseline={false} weight="strong">
+                        {b}
+                      </Text>
+                    </Column>
+                    <Column width="content">
+                      <Text>{`${breakpoints[b]}${
+                        index !== 0 ? 'px' : ''
+                      }`}</Text>
+                    </Column>
+                  </Columns>
+                </Fragment>
               ))}
             </Stack>
           </Box>

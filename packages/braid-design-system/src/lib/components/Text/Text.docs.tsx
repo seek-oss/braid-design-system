@@ -10,6 +10,7 @@ import {
   List,
   IconPromote,
   Alert,
+  Divider,
 } from '../';
 import source from '@braid-design-system/source.macro';
 
@@ -87,10 +88,13 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Text align="left">Left</Text>
+            <Divider />
             <Text align="center">Center</Text>
+            <Divider />
             <Text align="right">Right</Text>
+            <Divider />
             <Text align={{ mobile: 'center', tablet: 'left' }}>
               Center on mobile
             </Text>

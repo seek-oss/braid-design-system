@@ -1,4 +1,10 @@
-import React, { type ReactNode, useEffect, useRef, useState } from 'react';
+import React, {
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+  Fragment,
+} from 'react';
 import { vars } from 'braid-src/entries/css';
 import {
   Text,
@@ -10,6 +16,7 @@ import {
   Hidden,
   Alert,
   List,
+  Divider,
 } from 'braid-src/lib/components';
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
@@ -96,178 +103,210 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
     </Row>
   ),
   contentWidth: (
-    <Stack space="medium" dividers>
-      {Object.entries(vars.contentWidth).map(([widthName, widthVar]) => (
-        <Row key={widthName} group="contentWidth" name={widthName}>
-          <Text>
-            <ContentWidthValue var={widthVar} />
-          </Text>
-        </Row>
+    <Stack space="medium">
+      {Object.entries(vars.contentWidth).map(([widthName, widthVar], index) => (
+        <Fragment key={widthName}>
+          {index !== 0 && <Divider />}
+          <Row group="contentWidth" name={widthName}>
+            <Text>
+              <ContentWidthValue var={widthVar} />
+            </Text>
+          </Row>
+        </Fragment>
       ))}
     </Stack>
   ),
   space: (
-    <Stack space="medium" dividers>
-      {Object.entries(vars.space).map(([spaceName, spaceVar]) => (
-        <Row key={spaceName} group="space" name={spaceName}>
-          <Box
-            style={{
-              background: 'currentColor',
-              borderRadius: '2px',
-              width: spaceVar,
-              height: '16px',
-            }}
-          />
-        </Row>
+    <Stack space="medium">
+      {Object.entries(vars.space).map(([spaceName, spaceVar], index) => (
+        <Fragment key={spaceName}>
+          {index !== 0 && <Divider />}
+          <Row group="space" name={spaceName}>
+            <Box
+              style={{
+                background: 'currentColor',
+                borderRadius: '2px',
+                width: spaceVar,
+                height: '16px',
+              }}
+            />
+          </Row>
+        </Fragment>
       ))}
     </Stack>
   ),
   foregroundColor: (
-    <Stack space="small" dividers>
-      {Object.entries(vars.foregroundColor).map(([colorName, colorVar]) => (
-        <Row key={colorName} group="foregroundColor" name={colorName}>
-          <Box
-            background="body"
-            display="inlineBlock"
-            padding="xsmall"
-            borderRadius="standard"
-          >
-            <Box
-              borderRadius="standard"
-              style={{
-                background: colorVar,
-                width: '32px',
-                height: '32px',
-              }}
-            />
-          </Box>
-        </Row>
-      ))}
+    <Stack space="small">
+      {Object.entries(vars.foregroundColor).map(
+        ([colorName, colorVar], index) => (
+          <Fragment key={colorName}>
+            {index !== 0 && <Divider />}
+            <Row group="foregroundColor" name={colorName}>
+              <Box
+                background="body"
+                display="inlineBlock"
+                padding="xsmall"
+                borderRadius="standard"
+              >
+                <Box
+                  borderRadius="standard"
+                  style={{
+                    background: colorVar,
+                    width: '32px',
+                    height: '32px',
+                  }}
+                />
+              </Box>
+            </Row>
+          </Fragment>
+        ),
+      )}
     </Stack>
   ),
   backgroundColor: (
-    <Stack space="small" dividers>
-      {Object.entries(vars.backgroundColor).map(([colorName, colorVar]) => (
-        <Row key={colorName} group="backgroundColor" name={colorName}>
-          <Box
-            background="body"
-            display="inlineBlock"
-            padding="xsmall"
-            borderRadius="standard"
-          >
-            <Box
-              borderRadius="standard"
-              style={{
-                background: colorVar,
-                width: '32px',
-                height: '32px',
-              }}
-            />
-          </Box>
-        </Row>
-      ))}
+    <Stack space="small">
+      {Object.entries(vars.backgroundColor).map(
+        ([colorName, colorVar], index) => (
+          <Fragment key={colorName}>
+            {index !== 0 && <Divider />}
+            <Row group="backgroundColor" name={colorName}>
+              <Box
+                background="body"
+                display="inlineBlock"
+                padding="xsmall"
+                borderRadius="standard"
+              >
+                <Box
+                  borderRadius="standard"
+                  style={{
+                    background: colorVar,
+                    width: '32px',
+                    height: '32px',
+                  }}
+                />
+              </Box>
+            </Row>
+          </Fragment>
+        ),
+      )}
     </Stack>
   ),
   textWeight: (
-    <Stack space="medium" dividers>
-      {Object.entries(vars.textWeight).map(([weight, weightVar]) => (
-        <Row key={weight} group="textWeight" name={weight}>
-          <Text size="large">
-            <span style={{ fontWeight: weightVar }}>Aa</span>
-          </Text>
-        </Row>
+    <Stack space="medium">
+      {Object.entries(vars.textWeight).map(([weight, weightVar], index) => (
+        <Fragment key={weight}>
+          {index !== 0 && <Divider />}
+          <Row group="textWeight" name={weight}>
+            <Text size="large">
+              <span style={{ fontWeight: weightVar }}>Aa</span>
+            </Text>
+          </Row>
+        </Fragment>
       ))}
     </Stack>
   ),
   borderColor: (
-    <Stack space="small" dividers>
-      {Object.entries(vars.borderColor).map(([colorName, colorVar]) => (
-        <Row key={colorName} group="borderColor" name={colorName}>
-          <Box
-            background="body"
-            display="inlineBlock"
-            padding="xsmall"
-            borderRadius="standard"
-          >
+    <Stack space="small">
+      {Object.entries(vars.borderColor).map(([colorName, colorVar], index) => (
+        <Fragment key={colorName}>
+          {index !== 0 && <Divider />}
+          <Row group="borderColor" name={colorName}>
             <Box
+              background="body"
+              display="inlineBlock"
+              padding="xsmall"
               borderRadius="standard"
-              style={{
-                border: `2px solid ${colorVar}`,
-                width: '32px',
-                height: '32px',
-              }}
-            />
-          </Box>
-        </Row>
+            >
+              <Box
+                borderRadius="standard"
+                style={{
+                  border: `2px solid ${colorVar}`,
+                  width: '32px',
+                  height: '32px',
+                }}
+              />
+            </Box>
+          </Row>
+        </Fragment>
       ))}
     </Stack>
   ),
   borderWidth: (
-    <Stack space="small" dividers>
-      {Object.entries(vars.borderWidth).map(([widthName, widthVar]) => (
-        <Row key={widthName} group="borderWidth" name={widthName}>
-          <Box
-            background="body"
-            display="inlineBlock"
-            padding="xsmall"
-            borderRadius="standard"
-          >
+    <Stack space="small">
+      {Object.entries(vars.borderWidth).map(([widthName, widthVar], index) => (
+        <Fragment key={widthName}>
+          {index !== 0 && <Divider />}
+          <Row group="borderWidth" name={widthName}>
             <Box
+              background="body"
+              display="inlineBlock"
+              padding="xsmall"
               borderRadius="standard"
-              style={{
-                border: `${widthVar} solid currentColor`,
-                width: '32px',
-                height: '32px',
-              }}
-            />
-          </Box>
-        </Row>
+            >
+              <Box
+                borderRadius="standard"
+                style={{
+                  border: `${widthVar} solid currentColor`,
+                  width: '32px',
+                  height: '32px',
+                }}
+              />
+            </Box>
+          </Row>
+        </Fragment>
       ))}
     </Stack>
   ),
   borderRadius: (
-    <Stack space="small" dividers>
-      {Object.entries(vars.borderRadius).map(([radiusName, radiusVar]) => (
-        <Row key={radiusName} group="borderRadius" name={radiusName}>
-          <Box
-            background="body"
-            display="inlineBlock"
-            padding="xsmall"
-            borderRadius="standard"
-          >
-            <Box
-              style={{
-                border: `2px solid currentColor`,
-                borderRadius: radiusVar,
-                width: '32px',
-                height: '32px',
-              }}
-            />
-          </Box>
-        </Row>
-      ))}
+    <Stack space="small">
+      {Object.entries(vars.borderRadius).map(
+        ([radiusName, radiusVar], index) => (
+          <Fragment key={radiusName}>
+            {index !== 0 && <Divider />}
+            <Row group="borderRadius" name={radiusName}>
+              <Box
+                background="body"
+                display="inlineBlock"
+                padding="xsmall"
+                borderRadius="standard"
+              >
+                <Box
+                  style={{
+                    border: `2px solid currentColor`,
+                    borderRadius: radiusVar,
+                    width: '32px',
+                    height: '32px',
+                  }}
+                />
+              </Box>
+            </Row>
+          </Fragment>
+        ),
+      )}
     </Stack>
   ),
   shadow: (
-    <Stack space="small" dividers>
-      {Object.entries(vars.shadow).map(([shadowName, shadowVar]) => (
-        <Row
-          key={shadowName}
-          group="shadow"
-          name={shadowName}
-          background={{ lightMode: 'body', darkMode: 'body' }}
-        >
-          <Box display="inlineBlock" padding="xsmall" borderRadius="standard">
-            <Box
-              background={{ lightMode: 'surface', darkMode: 'surface' }}
-              style={{
-                boxShadow: shadowVar,
-                width: '32px',
-                height: '32px',
-              }}
-            />
-          </Box>
-        </Row>
+    <Stack space="small">
+      {Object.entries(vars.shadow).map(([shadowName, shadowVar], index) => (
+        <Fragment key={shadowName}>
+          {index !== 0 && <Divider />}
+          <Row
+            group="shadow"
+            name={shadowName}
+            background={{ lightMode: 'body', darkMode: 'body' }}
+          >
+            <Box display="inlineBlock" padding="xsmall" borderRadius="standard">
+              <Box
+                background={{ lightMode: 'surface', darkMode: 'surface' }}
+                style={{
+                  boxShadow: shadowVar,
+                  width: '32px',
+                  height: '32px',
+                }}
+              />
+            </Box>
+          </Row>
+        </Fragment>
       ))}
     </Stack>
   ),

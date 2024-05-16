@@ -1,6 +1,6 @@
 import React, { type ReactNode, Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box, Stack, Hidden } from '../';
+import { Box, Stack, Hidden, Divider } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { spaces } from '../../utils/docsHelpers';
 
@@ -54,28 +54,6 @@ export const screenshots: ComponentScreenshot = {
           <Placeholder height={40} width={40} />
           <Placeholder height={40} width={60} />
           <Placeholder height={40} width={80} />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Dividers',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers>
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Strong dividers',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers="strong">
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
         </Stack>
       ),
     },
@@ -155,23 +133,28 @@ export const screenshots: ComponentScreenshot = {
         'Test - Hidden stack items with dividers (should show 4 + 5 + 6 on mobile, 3 + 4 + 5 + 6 on tablet, 2 + 3 + 4 + 6 on desktop, 1 + 2 + 3 + 4 on wide)',
       Container,
       Example: () => (
-        <Stack space="gutter" dividers>
+        <Stack space="gutter">
           <Hidden below="wide">
             <Placeholder height={40} label="1" />
           </Hidden>
+          <Divider />
           <Hidden below="desktop">
             <Placeholder height={40} label="2" />
           </Hidden>
+          <Divider />
           <Hidden below="tablet">
             <Placeholder height={40} label="3" />
           </Hidden>
+          <Divider />
           <Placeholder height={40} label="4" />
           <Hidden above="tablet">
             <Placeholder height={40} label="5" />
           </Hidden>
+          <Divider />
           <Hidden above="desktop">
             <Placeholder height={40} label="6" />
           </Hidden>
+          <Divider />
           <Hidden screen>
             <Placeholder height={40} label="This should not be visible" />
           </Hidden>

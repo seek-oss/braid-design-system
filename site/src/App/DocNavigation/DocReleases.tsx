@@ -48,7 +48,7 @@ export const DocReleases = () => {
     <>
       <PageTitle title={`${docsName} Releases`} />
 
-      <Stack space="xxlarge" dividers>
+      <Box>
         {Object.keys(groupedHistory).length > 0 ? (
           Object.keys(groupedHistory).map((version, index) => {
             const historyItem = groupedHistory[version];
@@ -96,7 +96,7 @@ export const DocReleases = () => {
             </Text>
           </Stack>
         )}
-      </Stack>
+      </Box>
     </>
   );
 };

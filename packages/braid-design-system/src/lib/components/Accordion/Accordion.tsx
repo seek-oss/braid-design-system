@@ -1,5 +1,5 @@
 import assert from 'assert';
-import React, { useMemo } from 'react';
+import React, { Children, Fragment, useMemo } from 'react';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   type RequiredResponsiveValue,
@@ -89,8 +89,13 @@ export const Accordion = ({
         <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
           <Divider />
           <Box paddingY={space}>
-            <Stack space={space} dividers>
-              {children}
+            <Stack space={space}>
+              {Children.map(children, (child, index) => (
+                <Fragment>
+                  {index > 0 && <Divider />}
+                  {child}
+                </Fragment>
+              ))}
             </Stack>
           </Box>
           <Divider />

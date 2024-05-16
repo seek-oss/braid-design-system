@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Stack, IconPromote } from '../';
+import { Box, Text, Stack, IconPromote, Divider } from '../';
 import type { ComponentExample } from 'site/types';
 import source from '@braid-design-system/source.macro';
 
@@ -31,10 +31,13 @@ export const galleryItems: ComponentExample[] = [
     label: 'Alignment',
     Example: () =>
       source(
-        <Stack space="large" dividers>
+        <Stack space="large">
           <Text align="left">Left (default)</Text>
+          <Divider />
           <Text align="center">Center</Text>
+          <Divider />
           <Text align="right">Right</Text>
+          <Divider />
           <Text align={{ mobile: 'center', tablet: 'left' }}>
             Center on mobile
           </Text>

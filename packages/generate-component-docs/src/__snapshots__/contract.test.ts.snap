@@ -7441,11 +7441,6 @@ exports[`Stack 1`] = `
         | "span"
         | "ul"
     data?: DataAttributeMap
-    dividers?: 
-        | "regular"
-        | "strong"
-        | false
-        | true
     space: 
         | "gutter"
         | "large"

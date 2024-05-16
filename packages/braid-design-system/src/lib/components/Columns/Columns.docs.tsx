@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Columns, Column, Strong, Text, Stack } from '../';
+import { Columns, Column, Strong, Text, Stack, Divider } from '../';
 import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
@@ -188,7 +188,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Columns space="small" alignY="top">
               <Column>
                 <Placeholder height={20} />
@@ -200,6 +200,7 @@ const docs: ComponentDocs = {
                 <Placeholder height={20} />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" alignY="center">
               <Column>
                 <Placeholder height={20} />
@@ -211,6 +212,7 @@ const docs: ComponentDocs = {
                 <Placeholder height={20} />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" alignY="bottom">
               <Column>
                 <Placeholder height={20} />
@@ -236,7 +238,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Columns space="small" align="left">
               <Column width="1/5">
                 <Placeholder height={20} label="left" />
@@ -245,6 +247,7 @@ const docs: ComponentDocs = {
                 <Placeholder height={20} />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" align="center">
               <Column width="1/5">
                 <Placeholder height={20} />
@@ -253,6 +256,7 @@ const docs: ComponentDocs = {
                 <Placeholder height={20} label="center" />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" align="right">
               <Column width="1/5">
                 <Placeholder height={20} />

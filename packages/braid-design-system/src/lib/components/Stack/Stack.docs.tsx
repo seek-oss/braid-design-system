@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Stack, Hidden, Text, TextLink, Strong } from '../';
+import { Stack, Hidden, Text, TextLink, Strong, Divider } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import source from '@braid-design-system/source.macro';
 
@@ -68,17 +68,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="medium" dividers>
+          <Stack space="medium">
             <Stack space="gutter" align="left">
               <Placeholder width={60} height={40} label="left" />
               <Placeholder width={80} height={40} />
               <Placeholder width={60} height={40} />
             </Stack>
+            <Divider />
             <Stack space="gutter" align="center">
               <Placeholder width={60} height={40} />
               <Placeholder width={80} height={40} label="center" />
               <Placeholder width={60} height={40} />
             </Stack>
+            <Divider />
             <Stack space="gutter" align="right">
               <Placeholder width={60} height={40} />
               <Placeholder width={80} height={40} />
@@ -87,32 +89,6 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    {
-      label: 'Dividers',
-      description: (
-        <Text>
-          Dividers can be placed between each item using the{' '}
-          <Strong>dividers</Strong> prop. Supports both <Strong>regular</Strong>{' '}
-          and <Strong>strong</Strong> variants
-        </Text>
-      ),
-      Example: () =>
-        source(
-          <Stack space="xxlarge">
-            <Stack space="medium" dividers>
-              <Placeholder height={30} />
-              <Placeholder height={30} label="regular" />
-              <Placeholder height={30} />
-            </Stack>
-            <Stack space="medium" dividers="strong">
-              <Placeholder height={30} />
-              <Placeholder height={30} label="strong" />
-              <Placeholder height={30} />
-            </Stack>
-          </Stack>,
-        ),
-    },
-
     {
       label: 'Responsively hiding stack items',
       description: (
