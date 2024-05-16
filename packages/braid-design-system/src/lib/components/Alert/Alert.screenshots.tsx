@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Alert, Text, Stack, TextLink, List } from '../';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -26,6 +27,19 @@ export const screenshots: ComponentScreenshot = {
       label: 'Dismissible alert',
       Example: () => (
         <Alert tone="info" onClose={() => {}} closeLabel="Close info alert">
+          <Text>This is an important piece of information.</Text>
+        </Alert>
+      ),
+    },
+    {
+      label: 'Dismissible alert (virtual touch target)',
+      Example: () => (
+        <Alert
+          tone="info"
+          onClose={() => {}}
+          closeLabel="Close info alert"
+          data={{ [debugTouchableAttrForDataProp]: '' }}
+        >
           <Text>This is an important piece of information.</Text>
         </Alert>
       ),

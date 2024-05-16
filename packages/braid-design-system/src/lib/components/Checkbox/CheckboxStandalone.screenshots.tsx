@@ -5,11 +5,13 @@ import {
   CheckboxStandalone,
   Column,
   Columns,
+  Inline,
   Stack,
   Text,
   Tiles,
 } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 type CheckboxProps = ComponentProps<typeof CheckboxStandalone>;
 const checkboxSizes: Array<CheckboxProps['size']> = ['small', 'standard'];
@@ -100,6 +102,31 @@ export const screenshots: ComponentScreenshot = {
           tone="critical"
         />
       ),
+    },
+    {
+      label: 'Virtual touch target',
+      Example: ({ id }) => {
+        const [state, setState] = useState(false);
+        return (
+          <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
+            <CheckboxStandalone
+              id={`${id}-1`}
+              checked={state}
+              onChange={() => setState(!state)}
+              aria-label="Label"
+              size="small"
+            />
+
+            <CheckboxStandalone
+              id={`${id}-2`}
+              checked={state}
+              onChange={() => setState(!state)}
+              aria-label="Label"
+              size="standard"
+            />
+          </Inline>
+        );
+      },
     },
     {
       label: 'Text alignment',

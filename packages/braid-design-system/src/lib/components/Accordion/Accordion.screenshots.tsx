@@ -3,6 +3,7 @@ import type { ComponentScreenshot } from 'site/types';
 import { AccordionItem, Accordion, Badge, Text, IconPromote, Stack } from '../';
 import { Placeholder } from '../../playroom/components';
 import { Box } from '../Box/Box';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -465,6 +466,21 @@ export const screenshots: ComponentScreenshot = {
           </Stack>
         </Box>
       ),
+    },
+    {
+      label: 'Virtual touch target',
+      Example: ({ id, handler }) => {
+        return (
+          <Box
+            background="surface"
+            data={{ [debugTouchableAttrForDataProp]: '' }}
+          >
+            <AccordionItem label="Accordion item" id={id} onToggle={handler}>
+              <Placeholder height={80} />
+            </AccordionItem>
+          </Box>
+        );
+      },
     },
     {
       label: 'AccordionItem with an icon - should follow tone',
