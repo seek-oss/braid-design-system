@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import type React from 'react';
 import { useState } from 'react';
 import {
   type RenderResult,

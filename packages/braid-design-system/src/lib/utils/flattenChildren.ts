@@ -1,6 +1,11 @@
 // Copied and modified from https://github.com/grrowl/react-keyed-flatten-children/blob/0b4fd6dad491905e73551c9d4496198f6b87eb41/index.ts
-import type { ReactElement, ReactNode } from 'react';
-import { Children, isValidElement, cloneElement } from 'react';
+import {
+  type ReactElement,
+  type ReactNode,
+  Children,
+  isValidElement,
+  cloneElement,
+} from 'react';
 import { isFragment } from 'react-is';
 
 type ReactChild = ReactElement | string | number;
