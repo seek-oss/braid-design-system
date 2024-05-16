@@ -7,7 +7,7 @@ updated:
   - MenuButton
 ---
 
-**MenuButton:** Decouple from internal Braid styles
+**MenuButton:** Improve virtual touch target positioning for narrow elements
 
-Decouple the `MenuButton` component from internal Braid code.
-The component now manages its own styles that ensure the menu button maintains a sufficient virtual hit area.
+To maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area
+This change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area.
