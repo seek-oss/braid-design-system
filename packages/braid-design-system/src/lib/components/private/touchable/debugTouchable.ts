@@ -5,7 +5,7 @@ export const debugTouchable = ({ after = false } = {}): StyleRule =>
     ? {}
     : {
         selectors: {
-          [`[data-braid-debug] &${after ? ':after' : ''}`]: {
+          [`[data-braid-debug] &${after ? '::after' : ''}`]: {
             background: 'red',
             opacity: 0.2,
           },

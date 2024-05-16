@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from 'braid-design-system';
-import { virtualTouchable } from '../../private/touchable/virtualTouchable';
 import * as styles from './MenuButton.css';
 
 interface MenuButtonProps {
@@ -13,11 +12,7 @@ export const MenuButton = ({ open = false, onClick }: MenuButtonProps) => (
     component="button"
     cursor="pointer"
     position="relative"
-    className={[
-      styles.root,
-      virtualTouchable(),
-      open ? styles.isOpen : undefined,
-    ]}
+    className={[styles.root, open ? styles.isOpen : undefined]}
     onClick={onClick}
     aria-label={open ? 'Close menu' : 'Open menu'}
   >

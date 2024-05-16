@@ -11,7 +11,6 @@ import {
   FieldMessage,
 } from '../../FieldMessage/FieldMessage';
 import { Text } from '../../Text/Text';
-import { virtualTouchable } from '../touchable/virtualTouchable';
 import { mergeIds } from '../mergeIds';
 import type { BadgeProps } from '../../Badge/Badge';
 import { Inline } from '../../Inline/Inline';
@@ -20,6 +19,7 @@ import {
   type PrivateStyledInputProps,
   StyledInput,
 } from './StyledInput';
+import { virtualTouchable } from '../touchable/virtualTouchable.css';
 import * as styles from './InlineField.css';
 
 interface InlineFieldBaseProps {
@@ -121,7 +121,7 @@ export const InlineField = forwardRef<
                   userSelect="none"
                   display="block"
                   cursor={!disabled ? 'pointer' : undefined}
-                  className={virtualTouchable()}
+                  className={virtualTouchable}
                 >
                   <Text
                     weight={checked && !inList ? 'strong' : undefined}

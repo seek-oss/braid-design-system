@@ -8,11 +8,11 @@ import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
 import { IconTick } from '../icons';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import * as styles from './Toggle.css';
 import type { Size } from './Toggle.css';
 
@@ -153,7 +153,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           flexGrow={align === 'justify' ? 1 : undefined}
           userSelect="none"
           cursor="pointer"
-          className={[styles.label[size], virtualTouchable()]}
+          className={[styles.label[size], virtualTouchable]}
         >
           <Text baseline={false} weight={on ? 'strong' : undefined} size={size}>
             {label}

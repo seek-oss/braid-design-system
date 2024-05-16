@@ -13,7 +13,6 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   type ColorContrastValue,
   useBackgroundLightness,
@@ -472,7 +471,6 @@ export const useButtonStyles = ({
         ? styles.invertedBackgroundsDarkMode.soft
         : null,
       styles.root,
-      size === 'small' ? virtualTouchable({ xAxis: false }) : null,
       size === 'standard' ? styles.standard : styles.small,
       bleed ? styles.bleedVerticallyToCapHeight : null,
     ],

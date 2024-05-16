@@ -16,8 +16,8 @@ import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import type { UseIconProps } from '../../hooks/useIcon';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import * as styles from './TextLink.css';
 import * as typographyStyles from '../../css/typography.css';
 
@@ -100,7 +100,7 @@ export const useLinkStyles = ({
     atoms({
       cursor: 'pointer',
     }),
-    hitArea === 'large' && virtualTouchable(),
+    hitArea === 'large' && virtualTouchable,
   );
 };
 
