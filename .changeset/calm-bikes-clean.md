@@ -7,4 +7,4 @@ updated:
   - Autosuggest
 ---
 
-Optimise `Autosuggest` state management handling.
+Ensure all paths through `AutoSuggest` state updates are handled.
