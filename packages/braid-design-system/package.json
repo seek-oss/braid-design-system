@@ -185,7 +185,7 @@
     "validate:dist": "pnpm %skott dist/index.mjs"
   },
   "dependencies": {
-    "@capsizecss/core": "^4.1.0",
+    "@capsizecss/core": "^4.1.2",
     "@capsizecss/metrics": "^3.0.0",
     "@capsizecss/vanilla-extract": "^2.0.0",
     "@types/autosuggest-highlight": "^3.1.1",
