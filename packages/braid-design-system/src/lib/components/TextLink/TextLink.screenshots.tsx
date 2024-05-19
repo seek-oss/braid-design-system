@@ -64,7 +64,7 @@ export const screenshots: ComponentScreenshot = {
         <Text data={{ [debugTouchableAttrForDataProp]: '' }}>
           This is the{' '}
           <TextLink href="" hitArea="large">
-            vitrual touch target
+            virtual touch target
           </TextLink>
           .
         </Text>
