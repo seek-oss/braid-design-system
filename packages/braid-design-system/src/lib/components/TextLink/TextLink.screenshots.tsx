@@ -62,9 +62,9 @@ export const screenshots: ComponentScreenshot = {
       label: 'hitArea: large (virtual touch target)',
       Example: () => (
         <Text data={{ [debugTouchableAttrForDataProp]: '' }}>
-          This is a{' '}
+          This is the{' '}
           <TextLink href="" hitArea="large">
-            visited TextLink
+            vitrual touch target
           </TextLink>
           .
         </Text>
