@@ -22,6 +22,7 @@ import {
 import { Text } from '../Text/Text';
 import { Bleed } from '../Bleed/Bleed';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';
+import type { Space } from '../../css/atoms/atoms';
 import * as styles from './ButtonIcon.css';
 
 export const buttonIconVariants: Array<
@@ -30,12 +31,13 @@ export const buttonIconVariants: Array<
 
 export const buttonIconTones = ['neutral', 'secondary'] as const;
 
+type ButtonIconSize = 'small' | 'standard' | 'large';
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonIconProps {
   id: string;
   icon: ReactElement<UseIconProps>;
   label: string;
-  size?: 'standard' | 'large';
+  size?: ButtonIconSize;
   tone?: (typeof buttonIconTones)[number];
   type?: 'button' | 'submit' | 'reset';
   variant?: (typeof buttonIconVariants)[number];
@@ -51,7 +53,11 @@ export interface ButtonIconProps {
   tooltipPlacement?: 'bottom' | 'top';
 }
 
-const padding = 'xsmall';
+const padding: Record<ButtonIconSize, Space> = {
+  small: 'xxsmall',
+  standard: 'xsmall',
+  large: 'xsmall',
+};
 
 const PrivateButtonIcon = forwardRef<
   HTMLButtonElement,
@@ -87,7 +93,7 @@ const PrivateButtonIcon = forwardRef<
     } = useButtonStyles({
       variant,
       tone: 'neutral',
-      size: 'standard',
+      size: size === 'small' ? 'small' : 'standard',
       radius: 'full',
     });
 
@@ -109,7 +115,7 @@ const PrivateButtonIcon = forwardRef<
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
-        padding={padding}
+        padding={padding[size]}
         onClick={onClick}
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
@@ -132,7 +138,9 @@ const PrivateButtonIcon = forwardRef<
           display="block"
           position="relative"
           className={
-            size === 'large' ? iconContainerSize() : iconSize({ crop: true })
+            size === 'large'
+              ? iconContainerSize()
+              : iconSize({ size, crop: true })
           }
         >
           {cloneElement(icon, { tone: icon.props.tone || tone, size: 'fill' })}
@@ -143,7 +151,7 @@ const PrivateButtonIcon = forwardRef<
     const shouldBleed =
       (typeof bleed === 'undefined' && variant === 'transparent') || bleed;
 
-    return shouldBleed ? <Bleed space={padding}>{button}</Bleed> : button;
+    return shouldBleed ? <Bleed space={padding[size]}>{button}</Bleed> : button;
   },
 );
 

@@ -125,6 +125,17 @@ const docs: ComponentDocs = {
           <Stack space="gutter">
             <Inline space="gutter" alignY="center">
               <ButtonIcon
+                size="small"
+                icon={<IconEdit />}
+                label="Small size"
+                id="size-0"
+              />
+              <Text tone="secondary" size="xsmall">
+                SMALL
+              </Text>
+            </Inline>
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
                 size="standard"
                 icon={<IconEdit />}
                 label="Standard size"

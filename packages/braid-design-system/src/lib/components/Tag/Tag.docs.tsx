@@ -1,8 +1,8 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Card, Inline, Tag, Strong, Text, TextLinkButton } from '../';
+import { Card, Inline, Tag, Strong, Text, TextLinkButton, Stack } from '../';
 import source from '@braid-design-system/source.macro';
-import { IconLanguage, IconPromote } from '../icons';
+import { IconLanguage, IconTag } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -33,10 +33,93 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Inline space="small">
-            <Tag icon={<IconPromote />}>One</Tag>
-            <Tag icon={<IconPromote />}>Two</Tag>
-            <Tag icon={<IconPromote />}>Three</Tag>
+            <Tag icon={<IconTag />}>One</Tag>
+            <Tag icon={<IconTag />}>Two</Tag>
+            <Tag icon={<IconTag />}>Three</Tag>
           </Inline>,
+        ),
+    },
+    {
+      label: 'Size',
+      background: 'surface',
+      description: (
+        <>
+          <Text>TBD</Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Stack space="small">
+              <Inline space="small">
+                <Tag>One</Tag>
+                <Tag>Two</Tag>
+                <Tag>Three</Tag>
+              </Inline>
+              <Inline space="small">
+                <Tag icon={<IconTag />}>One</Tag>
+                <Tag icon={<IconTag />}>Two</Tag>
+                <Tag icon={<IconTag />}>Three</Tag>
+              </Inline>
+              <Inline space="small">
+                <Tag icon={<IconTag />}>One</Tag>
+                <Tag
+                  clearLabel={'Clear "One"'}
+                  onClear={() => {}}
+                  icon={<IconTag />}
+                >
+                  Two
+                </Tag>
+                <Tag
+                  clearLabel={'Clear "One"'}
+                  onClear={() => {}}
+                  icon={<IconTag />}
+                >
+                  Three
+                </Tag>
+              </Inline>
+            </Stack>
+
+            <Stack space="xsmall">
+              <Inline space="xsmall">
+                <Tag size="small">One</Tag>
+                <Tag size="small">Two</Tag>
+                <Tag size="small">Three</Tag>
+              </Inline>
+              <Inline space="xsmall">
+                <Tag size="small" icon={<IconTag />}>
+                  One
+                </Tag>
+                <Tag size="small" icon={<IconTag />}>
+                  Two
+                </Tag>
+                <Tag size="small" icon={<IconTag />}>
+                  Three
+                </Tag>
+              </Inline>
+              <Inline space="xsmall">
+                <Tag size="small" icon={<IconTag />}>
+                  One
+                </Tag>
+                <Tag
+                  size="small"
+                  clearLabel={'Clear "One"'}
+                  onClear={() => {}}
+                  icon={<IconTag />}
+                >
+                  Two
+                </Tag>
+                <Tag
+                  size="small"
+                  clearLabel={'Clear "One"'}
+                  onClear={() => {}}
+                  icon={<IconTag />}
+                >
+                  Three
+                </Tag>
+              </Inline>
+            </Stack>
+          </Stack>,
         ),
     },
     {

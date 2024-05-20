@@ -184,6 +184,7 @@ function SuggestionItem({
               icon={<IconClear />}
               tone="secondary"
               tabIndex={-1}
+              size="small"
               label={clearLabel || 'Clear suggestion'}
               onClick={(event: MouseEvent) => {
                 event.preventDefault();

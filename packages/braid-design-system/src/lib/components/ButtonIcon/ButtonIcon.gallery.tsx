@@ -77,25 +77,31 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Large size',
+    label: 'Sizes',
     background: 'surface',
     Example: () =>
       source(
         <Inline space="small">
           <ButtonIcon
+            size="small"
+            variant="soft"
+            icon={<IconAdd />}
+            label="Add"
+            id="buttonicon-size-1"
+          />
+          <ButtonIcon
+            size="standard"
+            variant="soft"
+            icon={<IconAdd />}
+            label="Add"
+            id="buttonicon-size-2"
+          />
+          <ButtonIcon
             size="large"
             variant="soft"
             icon={<IconAdd />}
             label="Add"
-            id="buttonicon-large-1"
-          />
-          <ButtonIcon
-            size="large"
-            variant="transparent"
-            bleed={false}
-            icon={<IconAdd />}
-            label="Add"
-            id="buttonicon-large-2"
+            id="buttonicon-size-3"
           />
         </Inline>,
       ),

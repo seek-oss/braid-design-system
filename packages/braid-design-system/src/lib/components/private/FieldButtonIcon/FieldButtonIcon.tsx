@@ -34,6 +34,7 @@ export const FieldButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
         label={label}
         tone="secondary"
         variant="transparent"
+        size="small"
         onClick={onClick}
         onMouseDown={handleMouseDown}
         tabIndex={-1}
