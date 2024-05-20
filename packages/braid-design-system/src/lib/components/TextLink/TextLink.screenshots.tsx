@@ -15,6 +15,7 @@ import {
 } from '../';
 import { heading, tone, textSizeTrimmed } from '../../css/typography.css';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 const textSizes = [
   undefined, // test default case
@@ -54,6 +55,18 @@ export const screenshots: ComponentScreenshot = {
           <TextLink href="#" hitArea="large">
             TextLink
           </TextLink>
+        </Text>
+      ),
+    },
+    {
+      label: 'hitArea: large (virtual touch target)',
+      Example: () => (
+        <Text data={{ [debugTouchableAttrForDataProp]: '' }}>
+          This is the{' '}
+          <TextLink href="" hitArea="large">
+            virtual touch target
+          </TextLink>
+          .
         </Text>
       ),
     },

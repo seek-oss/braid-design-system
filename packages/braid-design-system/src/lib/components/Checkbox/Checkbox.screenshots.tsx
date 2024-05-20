@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Badge, Box, Checkbox, Stack, Text, Tiles } from '../';
+import { Badge, Box, Checkbox, Inline, Stack, Text, Tiles } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -185,6 +186,31 @@ export const screenshots: ComponentScreenshot = {
           <Text>This text is visible when the button is checked.</Text>
         </Checkbox>
       ),
+    },
+    {
+      label: 'Virtual touch target',
+      Example: ({ id }) => {
+        const [state, setState] = useState(false);
+        return (
+          <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
+            <Checkbox
+              id={`${id}-1`}
+              checked={state}
+              onChange={() => setState(!state)}
+              label="Label"
+              size="small"
+            />
+
+            <Checkbox
+              id={`${id}-2`}
+              checked={state}
+              onChange={() => setState(!state)}
+              label="Label"
+              size="standard"
+            />
+          </Inline>
+        );
+      },
     },
     {
       label: 'Contrast',

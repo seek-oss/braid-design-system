@@ -1,7 +1,8 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Toggle, Box, Tiles } from '../';
+import { Toggle, Box, Tiles, Inline } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -89,6 +90,28 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           onChange={handler}
         />
+      ),
+    },
+
+    {
+      label: 'Virtual touch target',
+      Example: ({ id, handler }) => (
+        <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
+          <Toggle
+            on={true}
+            size="small"
+            label="Small"
+            id={`${id}-1`}
+            onChange={handler}
+          />
+          <Toggle
+            on={true}
+            size="standard"
+            label="Standard"
+            id={`${id}-2`}
+            onChange={handler}
+          />
+        </Inline>
       ),
     },
     {

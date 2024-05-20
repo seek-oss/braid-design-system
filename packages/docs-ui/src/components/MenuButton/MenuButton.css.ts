@@ -1,11 +1,15 @@
 import { style } from '@vanilla-extract/css';
+import { virtualTouchable } from '../../private/virtualTouchable.css';
 
 export const isOpen = style({});
 
-export const root = style({
-  width: '18px',
-  height: '14px',
-});
+export const root = style([
+  {
+    width: '18px',
+    height: '14px',
+  },
+  virtualTouchable,
+]);
 
 export const bar = style({
   height: '2px',

@@ -14,7 +14,6 @@ import {
   iconContainerSize,
   iconSize,
 } from '../../hooks/useIcon';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   type ButtonStyleProps,
   ButtonOverlays,
@@ -115,7 +114,7 @@ const PrivateButtonIcon = forwardRef<
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
-        className={[buttonClasses, styles.button, virtualTouchable()]}
+        className={[buttonClasses, styles.button]}
         tabIndex={tabIndex}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
         {...buttonStyleProps}
