@@ -15,16 +15,32 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Soft - large',
+      label: 'Soft',
       background: 'surface',
       Example: () => (
-        <ButtonIcon
-          variant="soft"
-          size="large"
-          icon={<IconBookmark />}
-          label="Bookmark"
-          id="1"
-        />
+        <Inline space="large" alignY="center">
+          <ButtonIcon
+            variant="soft"
+            size="small"
+            icon={<IconBookmark />}
+            label="Small"
+            id="1"
+          />
+          <ButtonIcon
+            variant="soft"
+            size="standard"
+            icon={<IconBookmark />}
+            label="Standard"
+            id="2"
+          />
+          <ButtonIcon
+            variant="soft"
+            size="large"
+            icon={<IconBookmark />}
+            label="Large"
+            id="3"
+          />
+        </Inline>
       ),
     },
     {
@@ -82,25 +98,29 @@ export const screenshots: ComponentScreenshot = {
       label: 'Transparent',
       background: 'surface',
       Example: () => (
-        <ButtonIcon
-          variant="transparent"
-          icon={<IconBookmark />}
-          label="Bookmark"
-          id="1"
-        />
-      ),
-    },
-    {
-      label: 'Transparent - large',
-      background: 'surface',
-      Example: () => (
-        <ButtonIcon
-          variant="transparent"
-          size="large"
-          icon={<IconBookmark />}
-          label="Bookmark"
-          id="1"
-        />
+        <Inline space="large" alignY="center">
+          <ButtonIcon
+            variant="transparent"
+            size="small"
+            icon={<IconBookmark />}
+            label="Small"
+            id="1"
+          />
+          <ButtonIcon
+            variant="transparent"
+            size="standard"
+            icon={<IconBookmark />}
+            label="Standard"
+            id="2"
+          />
+          <ButtonIcon
+            variant="transparent"
+            size="large"
+            icon={<IconBookmark />}
+            label="Large"
+            id="3"
+          />
+        </Inline>
       ),
     },
     {
@@ -122,32 +142,48 @@ export const screenshots: ComponentScreenshot = {
         <Stack space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
           <Inline space="large">
             <ButtonIcon
+              variant="soft"
               icon={<IconBookmark />}
               label="Bookmark"
-              size="standard"
+              size="small"
               id="1"
             />
             <ButtonIcon
+              variant="soft"
+              icon={<IconBookmark />}
+              label="Bookmark"
+              size="standard"
+              id="2"
+            />
+            <ButtonIcon
+              variant="soft"
               icon={<IconBookmark />}
               label="Bookmark"
               size="large"
-              id="2"
+              id="3"
             />
           </Inline>
           <Inline space="large">
             <ButtonIcon
+              variant="transparent"
+              icon={<IconBookmark />}
+              label="Bookmark"
+              size="small"
+              id="4"
+            />
+            <ButtonIcon
+              variant="transparent"
               icon={<IconBookmark />}
               label="Bookmark"
               size="standard"
-              variant="transparent"
-              id="3"
+              id="5"
             />
             <ButtonIcon
+              variant="transparent"
               icon={<IconBookmark />}
               label="Bookmark"
               size="large"
-              variant="transparent"
-              id="4"
+              id="6"
             />
           </Inline>
         </Stack>

@@ -11,11 +11,13 @@ import {
   IconShare,
   IconAdd,
   IconClear,
+  Stack,
+  Text,
 } from '../';
 
 export const galleryItems: ComponentExample[] = [
   {
-    label: 'Default',
+    label: 'Soft',
     background: 'surface',
     Example: () =>
       source(
@@ -81,29 +83,41 @@ export const galleryItems: ComponentExample[] = [
     background: 'surface',
     Example: () =>
       source(
-        <Inline space="small">
-          <ButtonIcon
-            size="small"
-            variant="soft"
-            icon={<IconAdd />}
-            label="Add"
-            id="buttonicon-size-1"
-          />
-          <ButtonIcon
-            size="standard"
-            variant="soft"
-            icon={<IconAdd />}
-            label="Add"
-            id="buttonicon-size-2"
-          />
-          <ButtonIcon
-            size="large"
-            variant="soft"
-            icon={<IconAdd />}
-            label="Add"
-            id="buttonicon-size-3"
-          />
-        </Inline>,
+        <Stack space="medium">
+          <Inline space="medium" alignY="center">
+            <ButtonIcon
+              size="small"
+              icon={<IconAdd />}
+              label="Small size"
+              id="size-0"
+            />
+            <Text tone="secondary" size="xsmall">
+              SMALL
+            </Text>
+          </Inline>
+          <Inline space="medium" alignY="center">
+            <ButtonIcon
+              size="standard"
+              icon={<IconAdd />}
+              label="Standard size"
+              id="size-1"
+            />
+            <Text tone="secondary" size="xsmall">
+              STANDARD
+            </Text>
+          </Inline>
+          <Inline space="medium" alignY="center">
+            <ButtonIcon
+              size="large"
+              icon={<IconAdd />}
+              label="Large size"
+              id="size-2"
+            />
+            <Text tone="secondary" size="xsmall">
+              LARGE
+            </Text>
+          </Inline>
+        </Stack>,
       ),
   },
   {

@@ -30,8 +30,9 @@ export const buttonIconVariants: Array<
 > = ['soft', 'transparent'];
 
 export const buttonIconTones = ['neutral', 'secondary'] as const;
+export const buttonIconSizes = ['small', 'standard', 'large'] as const;
 
-type ButtonIconSize = 'small' | 'standard' | 'large';
+type ButtonIconSize = (typeof buttonIconSizes)[number];
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonIconProps {
   id: string;
@@ -98,7 +99,7 @@ const PrivateButtonIcon = forwardRef<
     });
 
     assert(
-      icon.props.size === undefined,
+      icon && icon.props.size === undefined,
       "Icons cannot set the 'size' prop when passed to a ButtonIcon component",
     );
 

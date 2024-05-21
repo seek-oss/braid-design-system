@@ -33,6 +33,17 @@ export const snippets: Snippets = [
     ),
   },
   {
+    name: 'Small',
+    code: source(
+      <ButtonIcon
+        size="small"
+        icon={<IconAdd />}
+        label="Add"
+        id="buttonicon-small"
+      />,
+    ),
+  },
+  {
     name: 'Large',
     code: source(
       <ButtonIcon
