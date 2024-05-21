@@ -2114,6 +2114,7 @@ exports[`ButtonIcon 1`] = `
         | RefObject<HTMLButtonElement>
     size?: 
         | "large"
+        | "small"
         | "standard"
     tabIndex?: number
     tone?: 
@@ -7573,6 +7574,9 @@ exports[`Tag 1`] = `
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     onClear?: () => void
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;
