@@ -1,8 +1,17 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Card, Inline, Tag, Strong, Text, TextLinkButton, Stack } from '../';
+import {
+  Card,
+  Inline,
+  Tag,
+  Strong,
+  Text,
+  TextLinkButton,
+  Stack,
+  IconLanguage,
+  IconTag,
+} from '../';
 import source from '@braid-design-system/source.macro';
-import { IconLanguage, IconTag } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -19,104 +28,38 @@ const docs: ComponentDocs = {
   alternatives: [{ name: 'Badge', description: 'For static labels.' }],
   additional: [
     {
-      label: 'Inserting an icon',
+      label: 'Sizes',
       background: 'surface',
       description: (
         <>
           <Text>
-            For decoration or help distinguishing between tags, an{' '}
-            <Strong>icon</Strong> can be provided. This will be placed to the
-            left of the text.
+            You can customise the size of the tag via the <Strong>size</Strong>{' '}
+            prop, which accepts either <Strong>standard</Strong> or{' '}
+            <Strong>small</Strong>.
           </Text>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Inline space="small">
-            <Tag icon={<IconTag />}>One</Tag>
-            <Tag icon={<IconTag />}>Two</Tag>
-            <Tag icon={<IconTag />}>Three</Tag>
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Size',
-      background: 'surface',
-      description: (
-        <>
-          <Text>TBD</Text>
         </>
       ),
       Example: () =>
         source(
           <Stack space="large">
             <Stack space="small">
-              <Inline space="small">
+              <Text size="xsmall" tone="secondary">
+                STANDARD
+              </Text>
+              <Inline space="small" alignY="center">
                 <Tag>One</Tag>
                 <Tag>Two</Tag>
                 <Tag>Three</Tag>
               </Inline>
-              <Inline space="small">
-                <Tag icon={<IconTag />}>One</Tag>
-                <Tag icon={<IconTag />}>Two</Tag>
-                <Tag icon={<IconTag />}>Three</Tag>
-              </Inline>
-              <Inline space="small">
-                <Tag icon={<IconTag />}>One</Tag>
-                <Tag
-                  clearLabel={'Clear "One"'}
-                  onClear={() => {}}
-                  icon={<IconTag />}
-                >
-                  Two
-                </Tag>
-                <Tag
-                  clearLabel={'Clear "One"'}
-                  onClear={() => {}}
-                  icon={<IconTag />}
-                >
-                  Three
-                </Tag>
-              </Inline>
             </Stack>
-
-            <Stack space="xsmall">
-              <Inline space="xsmall">
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                SMALL
+              </Text>
+              <Inline space="xsmall" alignY="center">
                 <Tag size="small">One</Tag>
                 <Tag size="small">Two</Tag>
                 <Tag size="small">Three</Tag>
-              </Inline>
-              <Inline space="xsmall">
-                <Tag size="small" icon={<IconTag />}>
-                  One
-                </Tag>
-                <Tag size="small" icon={<IconTag />}>
-                  Two
-                </Tag>
-                <Tag size="small" icon={<IconTag />}>
-                  Three
-                </Tag>
-              </Inline>
-              <Inline space="xsmall">
-                <Tag size="small" icon={<IconTag />}>
-                  One
-                </Tag>
-                <Tag
-                  size="small"
-                  clearLabel={'Clear "One"'}
-                  onClear={() => {}}
-                  icon={<IconTag />}
-                >
-                  Two
-                </Tag>
-                <Tag
-                  size="small"
-                  clearLabel={'Clear "One"'}
-                  onClear={() => {}}
-                  icon={<IconTag />}
-                >
-                  Three
-                </Tag>
               </Inline>
             </Stack>
           </Stack>,
@@ -183,6 +126,27 @@ const docs: ComponentDocs = {
                 Reset
               </TextLinkButton>
             </Text>
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Inserting an icon',
+      background: 'surface',
+      description: (
+        <>
+          <Text>
+            For decoration or help distinguishing between tags, an{' '}
+            <Strong>icon</Strong> can be provided. This will be placed to the
+            left of the text.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Tag icon={<IconTag />}>One</Tag>
+            <Tag icon={<IconTag />}>Two</Tag>
+            <Tag icon={<IconTag />}>Three</Tag>
           </Inline>,
         ),
     },

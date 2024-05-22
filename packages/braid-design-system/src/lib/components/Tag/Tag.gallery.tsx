@@ -10,6 +10,11 @@ export const galleryItems: ComponentExample[] = [
     Example: () => source(<Tag>Tag</Tag>),
   },
   {
+    label: 'Small',
+    background: 'surface',
+    Example: () => source(<Tag size="small">Tag</Tag>),
+  },
+  {
     label: 'With an icon',
     background: 'surface',
     Example: () => source(<Tag icon={<IconPromote />}>Tag</Tag>),

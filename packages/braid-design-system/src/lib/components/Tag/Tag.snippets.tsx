@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Snippets } from '../private/Snippets';
-import { Inline, Tag } from '../../playroom/components';
+import { IconTag, Inline, Tag } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
 
 export const snippets: Snippets = [
@@ -11,6 +11,16 @@ export const snippets: Snippets = [
         <Tag>Tag</Tag>
         <Tag>Tag</Tag>
         <Tag>Tag</Tag>
+      </Inline>,
+    ),
+  },
+  {
+    name: 'Small',
+    code: source(
+      <Inline space="xsmall">
+        <Tag size="small">Tag</Tag>
+        <Tag size="small">Tag</Tag>
+        <Tag size="small">Tag</Tag>
       </Inline>,
     ),
   },
@@ -27,6 +37,16 @@ export const snippets: Snippets = [
         <Tag onClear={() => {}} clearLabel="Clear">
           Tag
         </Tag>
+      </Inline>,
+    ),
+  },
+  {
+    name: 'With icon',
+    code: source(
+      <Inline space="small">
+        <Tag icon={<IconTag />}>Tag</Tag>
+        <Tag icon={<IconTag />}>Tag</Tag>
+        <Tag icon={<IconTag />}>Tag</Tag>
       </Inline>,
     ),
   },

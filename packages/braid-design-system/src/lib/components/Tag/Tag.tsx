@@ -11,9 +11,11 @@ import type { AllOrNone } from '../private/AllOrNone';
 import type { Space } from '../../css/atoms/atoms';
 import * as styles from './Tag.css';
 
+export const tagSizes = ['small', 'standard'] as const;
+
 export type TagProps = {
   children: string;
-  size?: 'small' | 'standard';
+  size?: (typeof tagSizes)[number];
   data?: DataAttributeMap;
   id?: string;
   icon?: TextProps['icon'];
