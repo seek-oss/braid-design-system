@@ -7574,6 +7574,9 @@ exports[`Tag 1`] = `
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     onClear?: () => void
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;
