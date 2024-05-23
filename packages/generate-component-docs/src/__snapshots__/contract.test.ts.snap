@@ -2114,6 +2114,7 @@ exports[`ButtonIcon 1`] = `
         | RefObject<HTMLButtonElement>
     size?: 
         | "large"
+        | "small"
         | "standard"
     tabIndex?: number
     tone?: 

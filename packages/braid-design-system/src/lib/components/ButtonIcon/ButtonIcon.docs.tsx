@@ -110,19 +110,33 @@ const docs: ComponentDocs = {
         <>
           <Text>
             The button size can be customised via the <Strong>size</Strong>{' '}
-            prop, which accepts either <Strong>standard</Strong> or{' '}
-            <Strong>large</Strong>.
+            prop, which accepts either <Strong>small</Strong>,{' '}
+            <Strong>standard</Strong> (default) or <Strong>large</Strong>.
           </Text>
-          <Text>
-            Both follow the standard text definition from the theme, where{' '}
-            <Strong>standard</Strong> follows the text size and{' '}
-            <Strong>large</Strong> follows the line height.
-          </Text>
+          <Notice>
+            <Text>
+              The <Strong>standard</Strong> and <Strong>large</Strong> sizes
+              both follow the standard text definition from the theme, where{' '}
+              <Strong>standard</Strong> follows the text size and{' '}
+              <Strong>large</Strong> follows the line height.
+            </Text>
+          </Notice>
         </>
       ),
       Example: () =>
         source(
           <Stack space="gutter">
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
+                size="small"
+                icon={<IconEdit />}
+                label="Small size"
+                id="size-0"
+              />
+              <Text tone="secondary" size="xsmall">
+                SMALL
+              </Text>
+            </Inline>
             <Inline space="gutter" alignY="center">
               <ButtonIcon
                 size="standard"
