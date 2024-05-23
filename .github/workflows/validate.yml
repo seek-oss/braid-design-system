@@ -7,7 +7,6 @@ on:
 jobs:
   test:
     name: Lint & Test
-    needs: skip_check
     if: (github.event_name != 'pull_request' && !github.event.pull_request.head.repo.fork) || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork)
     runs-on: ubuntu-latest
     env:
