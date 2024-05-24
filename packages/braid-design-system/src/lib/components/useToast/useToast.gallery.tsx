@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentExample } from 'site/types';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { Button, IconBookmark, IconPromote, Inline } from '..';
+import { Button, IconBookmark, Inline } from '..';
 import Toast from './Toast';
 import source from '@braid-design-system/source.macro';
 
@@ -293,7 +293,6 @@ export const galleryItems: ComponentExample[] = [
                 action: { label: 'Action', onClick: () => {} },
               })
             }
-            icon={<IconPromote />}
           >
             Show animation
           </Button>
