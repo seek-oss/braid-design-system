@@ -3782,5 +3782,78 @@
         "summary": "Add new icons to the library"
       }
     ]
+  },
+  {
+    "version": "32.18.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "Ensure all paths through `AutoSuggest` state updates are handled."
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "Fix minor bug which prevented the `Drawer` exit animation from occurring."
+      },
+      {
+        "updated": [
+          "IconPromote"
+        ],
+        "summary": "**IconPromote:** Update semantic icon from sparkles to a megaphone\n\nWith the introduction of `IconAI` recently adopting the sparkles artwork (aligning with the industry trend), the `IconPromote` semantic is now updated to use a megaphone instead of sparkles.\n\nThis change will run through all semantic usages, for example `Alert`, `Notice`, etc."
+      },
+      {
+        "new": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add `small` size\n\nIntroduce a new `small` size for `ButtonIcon` component.\nThis size sits alongside the existing `standard` and `large` sizes.\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  size=\"small\"\n  icon={<IconEdit />}\n  label=\"Small size\"\n/>\n```"
+      },
+      {
+        "updated": [
+          "Dialog"
+        ],
+        "summary": "Add exit animation to `Dialog` which mirrors the existing entrance animation."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "PasswordField",
+          "TextField"
+        ],
+        "summary": "Adopt `small` sized `ButtonIcon` for field actions\n\nSwitch over to `small` (previously `standard`) sized `ButtonIcon` for field actions such as clear field, or toggle password visibility."
+      },
+      {
+        "new": [
+          "Tag"
+        ],
+        "summary": "**Tag:** Add `small` size\n\nIntroduce a new `small` size for `Tag` component.\nThis size sits alongside the existing `standard` size, which is the default.\n\n**EXAMPLE USAGE:**\n```jsx\n<Tag size=\"small\">\n  Tag\n</Tag>\n```"
+      },
+      {
+        "updated": [
+          "MenuButton"
+        ],
+        "summary": "**MenuButton:** Improve virtual touch target positioning for narrow elements\n\nTo maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.\nThis change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area."
+      },
+      {
+        "updated": [
+          "Accordion",
+          "AccordionItem",
+          "Alert",
+          "Button",
+          "ButtonLink",
+          "ButtonIcon",
+          "Checkbox",
+          "RadioItem",
+          "Radio",
+          "TextDropdown",
+          "TextLink",
+          "TextLinkButton",
+          "Toggle"
+        ],
+        "summary": "Improve virtual touch target positioning for narrow elements\n\nTo maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.\nThis change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area."
+      }
+    ]
   }
 ]
