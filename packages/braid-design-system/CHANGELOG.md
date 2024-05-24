@@ -1,5 +1,58 @@
 # braid-design-system
 
+## 32.18.0
+
+### Minor Changes
+
+- **IconPromote:** Update semantic icon from sparkles to a megaphone ([#1500](https://github.com/seek-oss/braid-design-system/pull/1500))
+
+  With the introduction of `IconAI` recently adopting the sparkles artwork (aligning with the industry trend), the `IconPromote` semantic is now updated to use a megaphone instead of sparkles.
+
+  This change will run through all semantic usages, for example `Alert`, `Notice`, etc.
+
+- **ButtonIcon:** Add `small` size ([#1496](https://github.com/seek-oss/braid-design-system/pull/1496))
+
+  Introduce a new `small` size for `ButtonIcon` component.
+  This size sits alongside the existing `standard` and `large` sizes.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon size="small" icon={<IconEdit />} label="Small size" />
+  ```
+
+- Add exit animation to `Dialog` which mirrors the existing entrance animation. ([#1489](https://github.com/seek-oss/braid-design-system/pull/1489))
+
+- **Tag:** Add `small` size ([#1497](https://github.com/seek-oss/braid-design-system/pull/1497))
+
+  Introduce a new `small` size for `Tag` component.
+  This size sits alongside the existing `standard` size, which is the default.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tag size="small">Tag</Tag>
+  ```
+
+### Patch Changes
+
+- Ensure all paths through `AutoSuggest` state updates are handled. ([#1486](https://github.com/seek-oss/braid-design-system/pull/1486))
+
+- Fix minor bug which prevented the `Drawer` exit animation from occurring. ([#1489](https://github.com/seek-oss/braid-design-system/pull/1489))
+
+- Update Capsize dependencies ([#1484](https://github.com/seek-oss/braid-design-system/pull/1484))
+
+- Adopt `small` sized `ButtonIcon` for field actions ([#1496](https://github.com/seek-oss/braid-design-system/pull/1496))
+
+  Switch over to `small` (previously `standard`) sized `ButtonIcon` for field actions such as clear field, or toggle password visibility.
+
+- Update Crackle CLI dependency ([#1480](https://github.com/seek-oss/braid-design-system/pull/1480))
+
+- Improve virtual touch target positioning for narrow elements ([#1493](https://github.com/seek-oss/braid-design-system/pull/1493))
+
+  To maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.
+  This change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area.
+
 ## 32.17.0
 
 ### Minor Changes
