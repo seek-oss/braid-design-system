@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentExample } from 'site/types';
-import { Tag, Inline, Text, TextLinkButton, IconPromote } from '../';
+import { Tag, Inline, Text, TextLinkButton, IconTag } from '../';
 import source from '@braid-design-system/source.macro';
 
 export const galleryItems: ComponentExample[] = [
@@ -17,7 +17,7 @@ export const galleryItems: ComponentExample[] = [
   {
     label: 'With an icon',
     background: 'surface',
-    Example: () => source(<Tag icon={<IconPromote />}>Tag</Tag>),
+    Example: () => source(<Tag icon={<IconTag />}>Tag</Tag>),
   },
   {
     label: 'Clearable',

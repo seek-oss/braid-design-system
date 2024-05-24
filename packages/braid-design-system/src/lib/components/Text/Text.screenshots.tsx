@@ -8,7 +8,7 @@ import {
   Column,
   Columns,
   IconPositive,
-  IconPromote,
+  IconImage,
 } from '../';
 import { textSizeUntrimmed, fontWeight } from '../../css/typography.css';
 import { textAlignments } from '../../utils/docsHelpers';
@@ -157,7 +157,7 @@ export const screenshots: ComponentScreenshot = {
         <Stack space="large">
           {textSizes.map((size) => (
             <Box key={size} background="neutralLight">
-              <Text size={size} icon={<IconPromote />}>
+              <Text size={size} icon={<IconImage />}>
                 {titleCase(size)} with icon
               </Text>
             </Box>
@@ -171,7 +171,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Stack space="medium">
           {textAlignments.map((alignment) => (
-            <Text align={alignment} key={alignment} icon={<IconPromote />}>
+            <Text align={alignment} key={alignment} icon={<IconImage />}>
               {titleCase(alignment)}
             </Text>
           ))}
@@ -182,7 +182,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Responsive alignment with an icon',
       Example: () => (
         <Stack space="medium">
-          <Text align={['right', 'center', 'left']} icon={<IconPromote />}>
+          <Text align={['right', 'center', 'left']} icon={<IconImage />}>
             Right aligned mobile, center on tablet, left on desktop
           </Text>
         </Stack>
@@ -200,7 +200,7 @@ export const screenshots: ComponentScreenshot = {
             <Fragment key={size}>
               <Box display="flex">
                 <Text size={size}>
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Text>
                 <Text size={size}>
@@ -209,13 +209,13 @@ export const screenshots: ComponentScreenshot = {
                 </Text>
                 <Text size={size}>
                   , Abc
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Text>
               </Box>
               <Box display="flex">
                 <Text size={size}>
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Text>
                 <Text size={size}>
@@ -224,7 +224,7 @@ export const screenshots: ComponentScreenshot = {
                 </Text>
                 <Text size={size}>
                   , เอบีซี
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Text>
               </Box>

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentExample } from 'site/types';
-import { Box, Heading, Stack, IconPromote } from '../';
+import { Box, Heading, Stack, IconImage } from '../';
 
 import source from '@braid-design-system/source.macro';
 
@@ -73,16 +73,16 @@ export const galleryItems: ComponentExample[] = [
     Example: () =>
       source(
         <Stack space="large">
-          <Heading level="1" icon={<IconPromote />}>
+          <Heading level="1" icon={<IconImage />}>
             Level 1 with icon
           </Heading>
-          <Heading level="2" icon={<IconPromote />}>
+          <Heading level="2" icon={<IconImage />}>
             Level 2 with icon
           </Heading>
-          <Heading level="3" icon={<IconPromote />}>
+          <Heading level="3" icon={<IconImage />}>
             Level 3 with icon
           </Heading>
-          <Heading level="4" icon={<IconPromote />}>
+          <Heading level="4" icon={<IconImage />}>
             Level 4 with icon
           </Heading>
         </Stack>,
