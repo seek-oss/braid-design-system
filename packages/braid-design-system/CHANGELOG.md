@@ -1,5 +1,14 @@
 # braid-design-system
 
+## 32.18.1
+
+### Patch Changes
+
+- Dependency updates: ([#1502](https://github.com/seek-oss/braid-design-system/pull/1502))
+  - `dedent`: `^1.5.1`
+  - `clsx`: `^2.1.1`
+  - `is-mobile`: `^4.0.0`
+
 ## 32.18.0
 
 ### Minor Changes
