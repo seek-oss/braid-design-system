@@ -32,11 +32,18 @@ const docs: ComponentDocs = {
     {
       label: 'Maximum width',
       description: (
-        <Text>
-          Use the <Strong>width</Strong> prop to adjust the maximum width of the
-          page container. Choose from either <Strong>medium</Strong> or{' '}
-          <Strong>large</Strong>.
-        </Text>
+        <>
+          <Text>
+            Use the <Strong>width</Strong> prop to adjust the maximum width of
+            the page container. Choose from either <Strong>small</Strong>,{' '}
+            <Strong>medium</Strong> or <Strong>large</Strong>.
+          </Text>
+          <Text>
+            Setting the <Strong>width</Strong> to <Strong>full</Strong> will
+            allow the content to grow to the full width while maintaining
+            consistent screen gutters.
+          </Text>
+        </>
       ),
       Example: () =>
         source(

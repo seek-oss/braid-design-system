@@ -7212,8 +7212,10 @@ exports[`PageBlock 1`] = `
         | "section"
     data?: DataAttributeMap
     width?: 
+        | "full"
         | "large"
         | "medium"
+        | "small"
 },
 }
 `;
