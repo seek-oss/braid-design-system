@@ -1,6 +1,7 @@
 import React, { type ReactNode } from 'react';
 import { Box, Text } from '../../';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
+import { TextContext } from '../../Text/TextContext';
 import { atoms } from '../../../css/atoms/atoms';
 import wireframe from '../../../themes/wireframe';
 import * as styles from './Placeholder.css';
@@ -82,7 +83,9 @@ export const Placeholder = ({
         backgroundSize: imageSize,
       }}
     >
-      <PlaceholderContent label={label} image={image} />
+      <TextContext.Provider value={null}>
+        <PlaceholderContent label={label} image={image} />
+      </TextContext.Provider>
     </Box>
   );
 };
