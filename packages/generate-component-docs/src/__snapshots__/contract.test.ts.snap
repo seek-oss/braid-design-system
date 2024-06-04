@@ -2825,6 +2825,9 @@ exports[`ContentBlock 1`] = `
 {
   exportType: component,
   props: {
+    align?: 
+        | "center"
+        | "left"
     children: ReactNode
     data?: DataAttributeMap
     width?: 

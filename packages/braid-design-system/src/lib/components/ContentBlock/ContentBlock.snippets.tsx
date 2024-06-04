@@ -36,4 +36,12 @@ export const snippets: Snippets = [
       </ContentBlock>,
     ),
   },
+  {
+    name: 'Left aligned',
+    code: source(
+      <ContentBlock width="small" align="left">
+        <Placeholder height={100} />
+      </ContentBlock>,
+    ),
+  },
 ];

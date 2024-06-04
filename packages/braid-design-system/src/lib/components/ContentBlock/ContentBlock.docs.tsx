@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { ContentBlock } from '../';
+import { ContentBlock, Stack } from '../';
 import source from '@braid-design-system/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
@@ -16,8 +16,8 @@ const docs: ComponentDocs = {
     ),
   description: (
     <Text>
-      Provides a container that both centers and constrains the maximum width of
-      the content it wraps.
+      Provides a container to constrain the maximum width of the content it
+      wraps.
     </Text>
   ),
   alternatives: [
@@ -37,6 +37,26 @@ const docs: ComponentDocs = {
           <ContentBlock width="xsmall">
             <Placeholder height={100} />
           </ContentBlock>,
+        ),
+    },
+    {
+      label: 'Alignment',
+      description: (
+        <Text>
+          By default, the content will be center aligned to its parent, but this
+          can be customised via the <Strong>align</Strong> prop.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <ContentBlock width="xsmall" align="center">
+              <Placeholder height={100} label="Center aligned (default)" />
+            </ContentBlock>
+            <ContentBlock width="xsmall" align="left">
+              <Placeholder height={100} label="Left aligned" />
+            </ContentBlock>
+          </Stack>,
         ),
     },
   ],
