@@ -43,7 +43,7 @@ const docs: ComponentDocs = {
       label: 'Alignment',
       description: (
         <Text>
-          By default, the content will be center aligned to its parent, but this
+          By default, the content will be center-aligned to its parent, but this
           can be customised via the <Strong>align</Strong> prop.
         </Text>
       ),

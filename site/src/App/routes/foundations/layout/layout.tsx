@@ -788,7 +788,7 @@ const page: DocsPage = {
         applications will want to limit the width of content on the screen. In
         order to address this, Braid provides the{' '}
         <TextLink href="/components/ContentBlock">ContentBlock</TextLink>{' '}
-        component that sets a maximum width and horizontally center aligns the
+        component that sets a maximum width and horizontally center-aligns the
         block by default.
       </Text>
       <Code>
@@ -816,7 +816,7 @@ const page: DocsPage = {
         )}
       </Code>
       <Text>
-        To manage line length or form field sizes you may choose to left align
+        To manage line length or form field sizes you may choose to left-align
         the block. This can be done via the{' '}
         <TextLink href="/components/ContentBlock#alignment">align</TextLink>{' '}
         prop:
@@ -873,7 +873,7 @@ const page: DocsPage = {
         choose a{' '}
         <TextLink href="/components/PageBlock#maximum-width">width</TextLink> of{' '}
         <Strong>full</Strong>. This allows content to extend to the full
-        available width while still maintaining the standardised responsive
+        available width while still maintaining the standard responsive
         gutters.
       </Text>
 
