@@ -873,8 +873,7 @@ const page: DocsPage = {
         choose a{' '}
         <TextLink href="/components/PageBlock#maximum-width">width</TextLink> of{' '}
         <Strong>full</Strong>. This allows content to extend to the full
-        available width while still maintaining the standard responsive
-        gutters.
+        available width while still maintaining the standard responsive gutters.
       </Text>
 
       <Divider />
