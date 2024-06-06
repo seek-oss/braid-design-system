@@ -801,7 +801,7 @@ const page: DocsPage = {
         )}
       </Code>
       <Text>
-        If you’d like a to increase or decrease the width of the block, you can
+        If you’d like to increase or decrease the width of the block, you can
         optionally provide the{' '}
         <TextLink href="/components/ContentBlock#maximum-width">width</TextLink>{' '}
         prop:
