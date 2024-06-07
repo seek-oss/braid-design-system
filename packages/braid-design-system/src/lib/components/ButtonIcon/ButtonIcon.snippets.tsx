@@ -5,7 +5,6 @@ import {
   ButtonIcon,
   IconAdd,
   IconBookmark,
-  IconClear,
   IconHelp,
 } from '../../playroom/components';
 
@@ -55,13 +54,13 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Secondary',
+    name: 'Form accent',
     code: source(
       <ButtonIcon
-        tone="secondary"
-        icon={<IconClear />}
-        label="Close"
-        id="buttonicon-secondary"
+        tone="formAccent"
+        icon={<IconAdd />}
+        label="Add"
+        id="buttonicon-formAccent"
       />,
     ),
   },

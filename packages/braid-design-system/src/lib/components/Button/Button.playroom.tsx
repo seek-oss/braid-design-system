@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react';
 import {
   type ButtonProps,
   buttonVariants,
-  buttonTones,
   Button as BraidButton,
 } from '../Button/Button';
+import { buttonTones } from './buttonTones';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant, tone, ...restProps }, ref) => {

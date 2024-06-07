@@ -167,9 +167,9 @@ const docs: ComponentDocs = {
       background: 'surface',
       description: (
         <Text>
-          By default, the foreground color of the icon follows neutral text,
-          however, this can be de-emphasised via the <Strong>tone</Strong> prop
-          by selecting <Strong>secondary</Strong>.
+          By default, the button adopts the <Strong>neutral</Strong> tone,
+          however, actions can be emphasised by setting the{' '}
+          <Strong>tone</Strong> prop to <Strong>formAccent</Strong>.
         </Text>
       ),
       Example: () =>
@@ -178,7 +178,7 @@ const docs: ComponentDocs = {
             <Inline space="gutter" alignY="center">
               <ButtonIcon
                 tone="neutral"
-                variant="transparent"
+                variant="soft"
                 icon={<IconClear />}
                 label="Neutral tone"
                 id="tone-1"
@@ -189,14 +189,14 @@ const docs: ComponentDocs = {
             </Inline>
             <Inline space="gutter" alignY="center">
               <ButtonIcon
-                tone="secondary"
-                variant="transparent"
+                tone="formAccent"
+                variant="soft"
                 icon={<IconClear />}
-                label="Secondary tone"
+                label="Form Accent tone"
                 id="tone-2"
               />
               <Text tone="secondary" size="xsmall">
-                SECONDARY
+                FORMACCENT
               </Text>
             </Inline>
           </Stack>,
