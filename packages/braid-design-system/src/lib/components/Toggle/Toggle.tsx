@@ -16,6 +16,7 @@ import buildDataAttributes, {
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import * as styles from './Toggle.css';
 import type { Size } from './Toggle.css';
+import dedent from 'dedent';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
@@ -54,6 +55,18 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     },
     forwardedRef,
   ) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (bleedY === undefined) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          dedent`
+          Please specify bleed with the "bleedY" prop.
+          Bleed will be the default in a future version.
+          To maintain the current appearance, set "bleedY" to "false"`,
+        );
+      }
+    }
+
     const lightness = useBackgroundLightness();
 
     const content = (

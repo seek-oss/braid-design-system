@@ -15,6 +15,7 @@ const docs: ComponentDocs = {
         id={id}
         on={getState('toggle')}
         onChange={() => toggleState('toggle')}
+        bleedY={false}
       />,
     ),
   alternatives: [
@@ -40,6 +41,7 @@ const docs: ComponentDocs = {
               on={getState('toggle1')}
               onChange={() => toggleState('toggle1')}
               align="left"
+              bleedY={false}
             />
             <Toggle
               label="Justify"
@@ -47,6 +49,7 @@ const docs: ComponentDocs = {
               on={getState('toggle2')}
               onChange={() => toggleState('toggle2')}
               align="justify"
+              bleedY={false}
             />
             <Toggle
               label="Right"
@@ -54,6 +57,7 @@ const docs: ComponentDocs = {
               on={getState('toggle3')}
               onChange={() => toggleState('toggle3')}
               align="right"
+              bleedY={false}
             />
           </Stack>,
         ),
@@ -76,6 +80,7 @@ const docs: ComponentDocs = {
               on={getState('two')}
               onChange={() => toggleState('two')}
               size="standard"
+              bleedY={false}
             />
             <Toggle
               id={`${id}_small`}
@@ -83,6 +88,7 @@ const docs: ComponentDocs = {
               on={getState('one')}
               onChange={() => toggleState('one')}
               size="small"
+              bleedY={false}
             />
           </Stack>,
         ),
