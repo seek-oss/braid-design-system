@@ -44,7 +44,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       onChange,
       label,
       align = 'left',
-      togglePosition = 'leading',
+      togglePosition = align === 'left' ? 'leading' : 'trailing',
       size = 'standard',
       data,
       ...restProps
@@ -53,24 +53,15 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ) => {
     const lightness = useBackgroundLightness();
 
-    // Todo - fix type. pick from sprinkles?
-    let flexDirection: 'row' | 'rowReverse' | undefined;
-    if (align !== 'left' || togglePosition === 'trailing') {
-      flexDirection = 'rowReverse';
-    }
+    const flexDirection: 'row' | 'rowReverse' =
+      togglePosition === 'trailing' ? 'rowReverse' : 'row';
 
-    // Todo - fix type. pick from sprinkles?
-    let justifyContent: 'spaceBetween' | 'flexEnd' | undefined;
-    if (align === 'justify') {
-      justifyContent = 'spaceBetween';
-    } else if (togglePosition === 'trailing') {
-      justifyContent = 'flexEnd';
-    }
-
-    // Todo - refactor with gap after browser policy change
-    // Todo - come up with exhaustive cases for this
-    const toggleLeftOfLabel: boolean =
-      align === 'left' && togglePosition !== 'trailing';
+    const justifyContent: 'flexEnd' | 'flexStart' =
+      (align === 'left' && togglePosition === 'trailing') ||
+      (align === 'justify' && togglePosition === 'leading') ||
+      (align === 'right' && togglePosition === 'leading')
+        ? 'flexEnd'
+        : 'flexStart';
 
     return (
       <Box
@@ -168,13 +159,28 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         <Box
           component="label"
           htmlFor={id}
-          paddingLeft={toggleLeftOfLabel ? 'xsmall' : undefined}
-          paddingRight={!toggleLeftOfLabel ? 'xsmall' : undefined}
+          // Todo - Replace paddings with flex-gap after browser policy change
+          /*
+          Apply padding by default to prevent padding disappearing
+          during partial completion of togglePosition prop in Playroom
+          */
+          paddingLeft={togglePosition === 'trailing' ? undefined : 'xsmall'}
+          paddingRight={togglePosition === 'leading' ? undefined : 'xsmall'}
+          flexGrow={align === 'justify' ? 1 : undefined}
           userSelect="none"
           cursor="pointer"
           className={[styles.label[size], virtualTouchable]}
         >
-          <Text baseline={false} weight={on ? 'strong' : undefined} size={size}>
+          <Text
+            baseline={false}
+            weight={on ? 'strong' : undefined}
+            size={size}
+            align={
+              align === 'justify' && togglePosition === 'leading'
+                ? 'right'
+                : undefined
+            }
+          >
             {label}
           </Text>
         </Box>
