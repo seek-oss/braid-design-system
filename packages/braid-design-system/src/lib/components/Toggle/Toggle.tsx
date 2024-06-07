@@ -7,6 +7,7 @@ import React, {
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
+import { Bleed } from '../Bleed/Bleed';
 import { IconTick } from '../icons';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
@@ -25,6 +26,7 @@ export interface ToggleProps {
   onChange: ChangeHandler;
   align?: 'left' | 'right' | 'justify';
   size?: Size;
+  bleedY?: boolean;
   data?: DataAttributeMap;
 }
 
@@ -35,6 +37,8 @@ const handleChange =
     }
   };
 
+const verticalPadding = 'xxsmall';
+
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
@@ -44,6 +48,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       label,
       align = 'left',
       size = 'standard',
+      bleedY = false,
       data,
       ...restProps
     },
@@ -51,7 +56,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ) => {
     const lightness = useBackgroundLightness();
 
-    return (
+    const content = (
       <Box
         position="relative"
         zIndex={0}
@@ -160,6 +165,12 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           </Text>
         </Box>
       </Box>
+    );
+
+    return bleedY ? (
+      <Bleed vertical={verticalPadding}>{content}</Bleed>
+    ) : (
+      content
     );
   },
 );
