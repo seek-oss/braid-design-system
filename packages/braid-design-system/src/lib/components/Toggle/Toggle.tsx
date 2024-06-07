@@ -53,23 +53,18 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ) => {
     const lightness = useBackgroundLightness();
 
-    const flexDirection: 'row' | 'rowReverse' =
-      togglePosition === 'trailing' ? 'rowReverse' : 'row';
-
-    const justifyContent: 'flexEnd' | 'flexStart' =
+    const alignToEnd =
       (align === 'left' && togglePosition === 'trailing') ||
       (align === 'justify' && togglePosition === 'leading') ||
-      (align === 'right' && togglePosition === 'leading')
-        ? 'flexEnd'
-        : 'flexStart';
+      (align === 'right' && togglePosition === 'leading');
 
     return (
       <Box
         position="relative"
         zIndex={0}
         display="flex"
-        flexDirection={flexDirection}
-        justifyContent={justifyContent}
+        flexDirection={togglePosition === 'trailing' ? 'rowReverse' : 'row'}
+        justifyContent={alignToEnd ? 'flexEnd' : undefined}
         className={styles.root}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
