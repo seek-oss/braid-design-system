@@ -62,6 +62,23 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Space between the label and toggle preserved',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Box display="flex">
+          <Toggle
+            on={true}
+            align="justify"
+            label="Justified"
+            id={id}
+            onChange={handler}
+          />
+        </Box>
+      ),
+    },
+    {
       label: 'Left aligned with leading toggle position',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -155,23 +172,6 @@ export const screenshots: ComponentScreenshot = {
           id={id}
           onChange={handler}
         />
-      ),
-    },
-    {
-      label: 'Space between the label and toggle preserved',
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: ({ id, handler }) => (
-        <Box display="flex">
-          <Toggle
-            on={true}
-            align="justify"
-            label="Justified"
-            id={id}
-            onChange={handler}
-          />
-        </Box>
       ),
     },
     {
