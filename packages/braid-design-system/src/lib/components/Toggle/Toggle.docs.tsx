@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Toggle } from '../';
+import { TextLink, Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import source from '@braid-design-system/source.macro';
@@ -15,7 +15,7 @@ const docs: ComponentDocs = {
         id={id}
         on={getState('toggle')}
         onChange={() => toggleState('toggle')}
-        bleedY={false}
+        bleedY
       />,
     ),
   alternatives: [
@@ -41,7 +41,7 @@ const docs: ComponentDocs = {
               on={getState('toggle1')}
               onChange={() => toggleState('toggle1')}
               align="left"
-              bleedY={false}
+              bleedY
             />
             <Toggle
               label="Justify"
@@ -49,7 +49,7 @@ const docs: ComponentDocs = {
               on={getState('toggle2')}
               onChange={() => toggleState('toggle2')}
               align="justify"
-              bleedY={false}
+              bleedY
             />
             <Toggle
               label="Right"
@@ -57,7 +57,38 @@ const docs: ComponentDocs = {
               on={getState('toggle3')}
               onChange={() => toggleState('toggle3')}
               align="right"
-              bleedY={false}
+              bleedY
+            />
+          </Stack>,
+        ),
+    },
+    {
+      label: 'Vertical bleed',
+      description: (
+        <Fragment>
+          <Text>
+            With the <Strong>bleedY</Strong> prop, you can remove excess
+            vertical space created by the toggle handle.
+          </Text>
+          <Text>
+            For example, you can include a toggle in a{' '}
+            <TextLink href="/components/Stack">Stack</TextLink> with all text
+            evenly spaced.
+          </Text>
+        </Fragment>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <Stack space="medium">
+            <Text>Text</Text>
+            <Text>Text</Text>
+            <Toggle
+              label="Vertical bleed"
+              id={`${id}_toggle_bleed`}
+              on={!getState('disableVerticalBleed')}
+              onChange={() => toggleState('disableVerticalBleed')}
+              align="justify"
+              bleedY={!getState('disableVerticalBleed')}
             />
           </Stack>,
         ),
