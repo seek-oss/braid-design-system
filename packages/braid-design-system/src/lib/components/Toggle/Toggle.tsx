@@ -24,6 +24,7 @@ export interface ToggleProps {
   on: boolean;
   onChange: ChangeHandler;
   align?: 'left' | 'right' | 'justify';
+  togglePosition?: 'leading' | 'trailing';
   size?: Size;
   data?: DataAttributeMap;
 }
@@ -43,6 +44,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       onChange,
       label,
       align = 'left',
+      togglePosition = 'leading',
       size = 'standard',
       data,
       ...restProps
@@ -51,12 +53,32 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ) => {
     const lightness = useBackgroundLightness();
 
+    // Todo - fix type. pick from sprinkles?
+    let flexDirection: 'row' | 'rowReverse' | undefined;
+    if (align !== 'left' || togglePosition === 'trailing') {
+      flexDirection = 'rowReverse';
+    }
+
+    // Todo - fix type. pick from sprinkles?
+    let justifyContent: 'spaceBetween' | 'flexEnd' | undefined;
+    if (align === 'justify') {
+      justifyContent = 'spaceBetween';
+    } else if (togglePosition === 'trailing') {
+      justifyContent = 'flexEnd';
+    }
+
+    // Todo - refactor with gap after browser policy change
+    // Todo - come up with exhaustive cases for this
+    const toggleLeftOfLabel: boolean =
+      align === 'left' && togglePosition !== 'trailing';
+
     return (
       <Box
         position="relative"
         zIndex={0}
         display="flex"
-        flexDirection={align === 'left' ? undefined : 'rowReverse'}
+        flexDirection={flexDirection}
+        justifyContent={justifyContent}
         className={styles.root}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
@@ -146,11 +168,8 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         <Box
           component="label"
           htmlFor={id}
-          paddingLeft={align === 'left' ? 'xsmall' : undefined}
-          paddingRight={
-            align === 'right' || align === 'justify' ? 'xsmall' : undefined
-          }
-          flexGrow={align === 'justify' ? 1 : undefined}
+          paddingLeft={toggleLeftOfLabel ? 'xsmall' : undefined}
+          paddingRight={!toggleLeftOfLabel ? 'xsmall' : undefined}
           userSelect="none"
           cursor="pointer"
           className={[styles.label[size], virtualTouchable]}
