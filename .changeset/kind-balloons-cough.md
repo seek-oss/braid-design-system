@@ -11,7 +11,7 @@ updated:
 
 Introduces support for the `formAccent` tone on `ButtonIcon`.
 
-The new tone sits alongside the existing `neutral` tone, while the `secondary` tone is now deprecated and to be removed in a future version (see [Migration Guide] below).
+The new tone sits alongside the existing `neutral` tone, while the `secondary` tone is now deprecated and will be removed in a future version (see [Migration Guide] below).
 
 **EXAMPLE USAGE:**
 ```jsx
