@@ -25,6 +25,7 @@ import type { UseIconProps } from '../../hooks/useIcon';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { Bleed } from '../Bleed/Bleed';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import type { buttonTones } from './buttonTones';
 import * as styles from './Button.css';
 
 export const buttonVariants = [
@@ -32,13 +33,6 @@ export const buttonVariants = [
   'ghost',
   'soft',
   'transparent',
-] as const;
-
-export const buttonTones = [
-  'formAccent',
-  'brandAccent',
-  'critical',
-  'neutral',
 ] as const;
 
 type ButtonSize = 'standard' | 'small';

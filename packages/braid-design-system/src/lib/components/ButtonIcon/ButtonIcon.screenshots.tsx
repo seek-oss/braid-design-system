@@ -44,19 +44,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Soft - secondary',
-      background: 'surface',
-      Example: () => (
-        <ButtonIcon
-          variant="soft"
-          tone="secondary"
-          icon={<IconBookmark />}
-          label="Bookmark"
-          id="1"
-        />
-      ),
-    },
-    {
       label: 'Soft - bleed on',
       background: 'surface',
       Example: () => (
@@ -124,16 +111,47 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Transparent - secondary',
+      label: 'Tone - formAccent',
       background: 'surface',
       Example: () => (
-        <ButtonIcon
-          variant="transparent"
-          tone="secondary"
-          icon={<IconBookmark />}
-          label="Bookmark"
-          id="1"
-        />
+        <Inline space="large" alignY="center">
+          <ButtonIcon
+            variant="transparent"
+            tone="formAccent"
+            icon={<IconBookmark />}
+            label="Bookmark"
+            id="1"
+          />
+          <ButtonIcon
+            variant="soft"
+            tone="formAccent"
+            icon={<IconBookmark />}
+            label="Bookmark"
+            id="1"
+          />
+        </Inline>
+      ),
+    },
+    {
+      label: 'Tone - secondary (deprecated)',
+      background: 'surface',
+      Example: () => (
+        <Inline space="large" alignY="center">
+          <ButtonIcon
+            variant="transparent"
+            tone="secondary"
+            icon={<IconBookmark />}
+            label="Bookmark"
+            id="1"
+          />
+          <ButtonIcon
+            variant="soft"
+            tone="secondary"
+            icon={<IconBookmark />}
+            label="Bookmark"
+            id="1"
+          />
+        </Inline>
       ),
     },
     {

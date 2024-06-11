@@ -121,27 +121,52 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
-    label: 'Secondary',
+    label: 'Tone',
     background: 'surface',
     Example: () =>
       source(
-        <Inline space="small">
-          <ButtonIcon
-            tone="secondary"
-            variant="soft"
-            icon={<IconClear />}
-            label="Close"
-            id="buttonicon-secondary-1"
-          />
-          <ButtonIcon
-            tone="secondary"
-            variant="transparent"
-            bleed={false}
-            icon={<IconClear />}
-            label="Close"
-            id="buttonicon-secondary-2"
-          />
-        </Inline>,
+        <Stack space="medium">
+          <Inline space="small" alignY="center">
+            <ButtonIcon
+              tone="neutral"
+              variant="soft"
+              icon={<IconClear />}
+              label="Close"
+              id="buttonicon-neutral-1"
+            />
+            <ButtonIcon
+              tone="neutral"
+              variant="transparent"
+              bleed={false}
+              icon={<IconClear />}
+              label="Close"
+              id="buttonicon-neutral-2"
+            />
+            <Text tone="secondary" size="xsmall">
+              NEUTRAL
+            </Text>
+          </Inline>
+          <Inline space="small" alignY="center">
+            <ButtonIcon
+              tone="formAccent"
+              variant="soft"
+              icon={<IconAdd />}
+              label="Add"
+              id="buttonicon-formAccent-1"
+            />
+            <ButtonIcon
+              tone="formAccent"
+              variant="transparent"
+              bleed={false}
+              icon={<IconAdd />}
+              label="Add"
+              id="buttonicon-formAccent-2"
+            />
+            <Text tone="secondary" size="xsmall">
+              FORMACCENT
+            </Text>
+          </Inline>
+        </Stack>,
       ),
   },
   {

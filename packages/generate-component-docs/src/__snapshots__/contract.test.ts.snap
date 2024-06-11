@@ -2118,6 +2118,7 @@ exports[`ButtonIcon 1`] = `
         | "standard"
     tabIndex?: number
     tone?: 
+        | "formAccent"
         | "neutral"
         | "secondary"
     tooltipPlacement?: 

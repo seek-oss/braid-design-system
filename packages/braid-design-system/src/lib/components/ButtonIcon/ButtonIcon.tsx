@@ -24,12 +24,15 @@ import { Bleed } from '../Bleed/Bleed';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';
 import type { Space } from '../../css/atoms/atoms';
 import * as styles from './ButtonIcon.css';
+import dedent from 'dedent';
 
 export const buttonIconVariants: Array<
   Extract<ButtonStyleProps['variant'], 'soft' | 'transparent'>
 > = ['soft', 'transparent'];
 
-export const buttonIconTones = ['neutral', 'secondary'] as const;
+export const buttonIconTones: Array<
+  Extract<ButtonStyleProps['tone'], 'neutral' | 'formAccent'> | 'secondary'
+> = ['neutral', 'formAccent', 'secondary'];
 export const buttonIconSizes = ['small', 'standard', 'large'] as const;
 
 type ButtonIconSize = (typeof buttonIconSizes)[number];
@@ -87,13 +90,35 @@ const PrivateButtonIcon = forwardRef<
     },
     forwardedRef,
   ) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (tone === 'secondary') {
+        // eslint-disable-next-line no-console
+        console.warn(
+          dedent`
+            The "secondary" tone has been deprecated for \`ButtonIcon\` and will be removed in a future version. Apply the "tone" directly to the icon.
+               <ButtonIcon
+              %c-   tone="secondary"
+              %c-   icon={<Icon />}
+              %c+   icon={<Icon tone="secondary" />}
+               %c/>
+          `,
+          'color: red',
+          'color: red',
+          'color: green',
+          'color: inherit',
+        );
+      }
+    }
+
+    const buttonTone = tone === 'secondary' ? 'neutral' : tone;
+
     const {
       className: buttonClasses,
       width: _,
       ...buttonStyleProps
     } = useButtonStyles({
       variant,
-      tone: 'neutral',
+      tone: buttonTone,
       size: size === 'small' ? 'small' : 'standard',
       radius: 'full',
     });
@@ -128,7 +153,7 @@ const PrivateButtonIcon = forwardRef<
       >
         <ButtonOverlays
           variant={variant}
-          tone="neutral"
+          tone={buttonTone}
           radius="full"
           keyboardFocusable={typeof tabIndex === 'undefined' || tabIndex >= 0}
           forceActive={ariaExpanded === 'true' || ariaExpanded === true}
