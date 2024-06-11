@@ -30,6 +30,19 @@ export const galleryItems: ComponentExample[] = [
       ),
   },
   {
+    label: 'Toggle Position: "leading" | "trailing"',
+    Example: ({ id, getState, toggleState }) =>
+      source(
+        <Toggle
+          togglePosition="trailing"
+          label="Trailing toggle"
+          id={id}
+          on={getState('toggle')}
+          onChange={() => toggleState('toggle')}
+        />,
+      ),
+  },
+  {
     label: 'Toggle Alignment: "left" | "justify" | "right"',
     Example: ({ id, getState, toggleState }) =>
       source(
