@@ -92,6 +92,21 @@ export const screenshots: ComponentScreenshot = {
         />
       ),
     },
+    {
+      label: 'With bleedY',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          label="Vertical bleed"
+          id={id}
+          onChange={handler}
+          bleedY
+        />
+      ),
+    },
 
     {
       label: 'Virtual touch target',
