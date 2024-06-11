@@ -44,7 +44,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       onChange,
       label,
       align = 'left',
-      togglePosition = align === 'left' ? 'leading' : 'trailing',
+      togglePosition,
       size = 'standard',
       data,
       ...restProps
@@ -53,16 +53,21 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ) => {
     const lightness = useBackgroundLightness();
 
+    const defaultTogglePosition = align === 'left' ? 'leading' : 'trailing';
+    const appliedTogglePosition = togglePosition || defaultTogglePosition;
+
     const alignToEnd =
-      (align === 'left' && togglePosition === 'trailing') ||
-      (align === 'justify' && togglePosition === 'leading') ||
-      (align === 'right' && togglePosition === 'leading');
+      (align === 'left' && appliedTogglePosition === 'trailing') ||
+      (align === 'justify' && appliedTogglePosition === 'leading') ||
+      (align === 'right' && appliedTogglePosition === 'leading');
 
     return (
       <Box
         zIndex={0}
         display="flex"
-        flexDirection={togglePosition === 'trailing' ? 'rowReverse' : 'row'}
+        flexDirection={
+          appliedTogglePosition === 'trailing' ? 'rowReverse' : 'row'
+        }
         justifyContent={alignToEnd ? 'flexEnd' : undefined}
         className={styles.root}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
@@ -158,10 +163,14 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           // Todo - Replace paddings with flex-gap after browser policy change
           /*
           Apply padding by default to prevent padding disappearing
-          during partial completion of togglePosition prop in Playroom
+          during partial completion of togglePosition and align props in Playroom
           */
-          paddingLeft={togglePosition === 'trailing' ? undefined : 'xsmall'}
-          paddingRight={togglePosition === 'leading' ? undefined : 'xsmall'}
+          paddingLeft={
+            appliedTogglePosition === 'trailing' ? undefined : 'xsmall'
+          }
+          paddingRight={
+            appliedTogglePosition === 'leading' ? undefined : 'xsmall'
+          }
           flexGrow={align === 'justify' ? 1 : undefined}
           userSelect="none"
           cursor="pointer"
@@ -172,7 +181,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             weight={on ? 'strong' : undefined}
             size={size}
             align={
-              align === 'justify' && togglePosition === 'leading'
+              align === 'justify' && appliedTogglePosition === 'leading'
                 ? 'right'
                 : undefined
             }
