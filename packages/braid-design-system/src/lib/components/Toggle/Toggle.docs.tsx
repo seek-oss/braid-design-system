@@ -61,10 +61,17 @@ const docs: ComponentDocs = {
     {
       label: 'Toggle position',
       description: (
-        <Text>
-          Toggles can be positioned before or after the label via the{' '}
-          <Strong>togglePosition</Strong> prop.
-        </Text>
+        <>
+          <Text>
+            By default, the position of the toggle relative to the label text
+            will be determined by its <Strong>align</Strong> prop.
+          </Text>
+          <Text>
+            This can be overridden by setting the{' '}
+            <Strong>togglePosition</Strong> prop to either{' '}
+            <Strong>leading</Strong> or <Strong>trailing</Strong>.
+          </Text>
+        </>
       ),
       Example: ({ id, getState, toggleState }) =>
         source(
