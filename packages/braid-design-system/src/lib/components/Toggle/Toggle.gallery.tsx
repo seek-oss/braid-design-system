@@ -42,4 +42,17 @@ export const galleryItems: ComponentExample[] = [
         />,
       ),
   },
+  {
+    label: 'Vertical bleed',
+    Example: ({ id, getState, toggleState }) =>
+      source(
+        <Toggle
+          label="Vertical bleed"
+          id={id}
+          on={getState('toggle')}
+          onChange={() => toggleState('toggle')}
+          bleedY
+        />,
+      ),
+  },
 ];
