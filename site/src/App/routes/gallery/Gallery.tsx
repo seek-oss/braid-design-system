@@ -13,7 +13,7 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from 'recoil';
-import { chunk, memoize } from 'lodash';
+import { chunk, memoize, range } from 'lodash';
 import copy from 'copy-to-clipboard';
 import panzoom from 'panzoom';
 
@@ -337,28 +337,34 @@ interface StageProps {
   title: string;
   jumpTo: JumpTo;
 }
-const Stage = ({ setName, jumpTo, title }: StageProps) => (
-  <Box data-braid-component-name={title}>
-    <Stack space="xxlarge">
-      <Box padding="xxlarge">
-        <Heading component="h2" level="1">
-          <span style={{ fontSize: '3em' }}>{title}</span>
-        </Heading>
-      </Box>
-      <Box>
-        {getRowsFor(setName).map((row, index) => (
-          <Columns space="none" key={index}>
-            {row.map((item) => (
-              <Column key={item.name} width="content">
-                <GalleryItem item={item} jumpTo={jumpTo} />
-              </Column>
-            ))}
-          </Columns>
-        ))}
-      </Box>
-    </Stack>
-  </Box>
-);
+const Stage = ({ setName, jumpTo, title }: StageProps) => {
+  const items = getRowsFor(setName);
+
+  return (
+    <Box data-braid-component-name={title}>
+      <Stack space="xxlarge">
+        <Box padding="xxlarge">
+          <Heading component="h2" level="1">
+            <span style={{ fontSize: '3em' }}>{title}</span>
+          </Heading>
+        </Box>
+        <Box>
+          {items.map((row, index) => (
+            <Columns space="none" key={index}>
+              {range(items.length).map((item) => (
+                <Column key={item} width={row[item] ? 'content' : undefined}>
+                  {row[item] ? (
+                    <GalleryItem item={row[item]} jumpTo={jumpTo} />
+                  ) : null}
+                </Column>
+              ))}
+            </Columns>
+          ))}
+        </Box>
+      </Stack>
+    </Box>
+  );
+};
 
 const jumpToEdgeThreshold = 80;
 
