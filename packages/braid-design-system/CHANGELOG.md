@@ -1,5 +1,58 @@
 # braid-design-system
 
+## 32.19.0
+
+### Minor Changes
+
+- **PageBlock:** Add `small` and `full` width options ([#1504](https://github.com/seek-oss/braid-design-system/pull/1504))
+
+  Add `small` to available `width` options of `PageBlock` to support narrower max width for page content.
+
+  Also introducing `full` as a `width` option to enable full width content, while still maintaining consistent screen gutters.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <PageBlock width="small">...</PageBlock>
+  ```
+
+- **ContentBlock:** Add support for left alignment ([#1507](https://github.com/seek-oss/braid-design-system/pull/1507))
+
+  Introduces horizontal alignment support for `ContentBlock`, enabling content to be constrained to a max width and aligned to the left.
+
+  Useful inside of larger `PageBlock` or `ContentBlock` elements when constraining the content for readability or length of form fields.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ContentBlock align="left">...</ContentBlock>
+  ```
+
+- **ButtonIcon:** Add `formAccent` tone ([#1508](https://github.com/seek-oss/braid-design-system/pull/1508))
+
+  Introduces support for the `formAccent` tone on `ButtonIcon`.
+
+  The new tone sits alongside the existing `neutral` tone, while the `secondary` tone is now deprecated and will be removed in a future version (see [Migration Guide] below).
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon tone="formAccent" icon={<IconAdd />} />
+  ```
+
+  **MIGRATION GUIDE:**
+
+  For consumers of the now deprecated `secondary` tone, you can pro-actively migrate away from it by moving the `tone` to the icon itself:
+
+  ```diff
+   <ButtonIcon
+  -  tone="secondary"
+  -  icon={<IconAdd />}
+  +  icon={<IconAdd tone="secondary" />}
+  ```
+
+  [Migration Guide]: #migration-guide
+
 ## 32.18.1
 
 ### Patch Changes
