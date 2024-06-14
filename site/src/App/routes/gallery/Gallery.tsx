@@ -80,13 +80,10 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 
 const COLUMN_SIZE = 4;
 
-const galleryComponents = allGalleryComponents.map(
-  ({ itemWidth, examples, ...rest }) => ({
-    ...rest,
-    itemWidth,
-    examples: chunk(examples, COLUMN_SIZE),
-  }),
-);
+const galleryComponents = allGalleryComponents.map(({ examples, ...rest }) => ({
+  ...rest,
+  examples: chunk(examples, COLUMN_SIZE),
+}));
 
 const galleryComponentNames = allGalleryComponents.map(({ name }) => name);
 
