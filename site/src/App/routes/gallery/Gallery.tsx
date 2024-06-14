@@ -600,19 +600,17 @@ const GalleryInternal = () => {
               <ButtonIcon
                 id="fitToScreen"
                 label="Fit to screen"
-                tone="secondary"
                 variant="transparent"
                 onClick={fitToScreen}
-                icon={<IconFitToScreen />}
+                icon={<IconFitToScreen tone="secondary" />}
               />
               <ButtonIcon
                 id="zoomOut"
                 ref={zoomOutRef}
                 label="Zoom Out"
-                tone="secondary"
                 variant="transparent"
                 onClick={zoomOut}
-                icon={<IconMinus />}
+                icon={<IconMinus tone="secondary" />}
               />
               <TooltipRenderer
                 id="zoomToActual"
@@ -635,10 +633,9 @@ const GalleryInternal = () => {
                 id="zoomIn"
                 ref={zoomInRef}
                 label="Zoom In"
-                tone="secondary"
                 variant="transparent"
                 onClick={zoomIn}
-                icon={<IconAdd />}
+                icon={<IconAdd tone="secondary" />}
               />
             </Inline>
           </Box>
