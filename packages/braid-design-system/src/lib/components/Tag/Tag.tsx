@@ -77,9 +77,8 @@ export const Tag = ({
               // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
               // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
               id={id ? `${id}-clear` : undefined}
-              icon={<IconClear />}
+              icon={<IconClear tone="secondary" />}
               label={clearLabel}
-              tone="secondary"
               size="small"
               variant="transparent"
               onClick={onClear}

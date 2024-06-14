@@ -176,8 +176,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
                   >
                     <ButtonIcon
                       id={`${dedupeKey}-clear`}
-                      icon={<IconClear />}
-                      tone="secondary"
+                      icon={<IconClear tone="secondary" />}
                       variant="transparent"
                       onClick={remove}
                       label={closeLabel}
