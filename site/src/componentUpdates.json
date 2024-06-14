@@ -3882,5 +3882,22 @@
         "summary": "**ButtonIcon:** Add `formAccent` tone\n\nIntroduces support for the `formAccent` tone on `ButtonIcon`.\n\nThe new tone sits alongside the existing `neutral` tone, while the `secondary` tone is now deprecated and will be removed in a future version (see [Migration Guide] below).\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon tone=\"formAccent\" icon={<IconAdd />} />\n```\n\n**MIGRATION GUIDE:**\n\nFor consumers of the now deprecated `secondary` tone, you can pro-actively migrate away from it by moving the `tone` to the icon itself:\n\n```diff\n <ButtonIcon\n-  tone=\"secondary\"\n-  icon={<IconAdd />}\n+  icon={<IconAdd tone=\"secondary\" />}\n```\n\n\n[Migration Guide]: #migration-guide"
       }
     ]
+  },
+  {
+    "version": "32.19.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest",
+          "Dialog",
+          "Drawer",
+          "PasswordField",
+          "Tag",
+          "TextField",
+          "useToast"
+        ],
+        "summary": "Move secondary ButtonIcon tone to icons\n\nFollowing the deprecation of the `secondary` tone of `ButtonIcon`, this updates all internal usages to apply the `secondary` tone directly to the icon."
+      }
+    ]
   }
 ]
