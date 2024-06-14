@@ -66,6 +66,11 @@ interface ExampleProps {
 }
 interface PlayroomExampleProps extends ReturnType<typeof useScope> {}
 
+export interface GalleryComponent {
+  itemWidth?: 'icon' | 'standard' | 'wide';
+  examples: ComponentExample[];
+}
+
 export interface ComponentExample {
   label?: string;
   description?: ReactNodeNoStrings;

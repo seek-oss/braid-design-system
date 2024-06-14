@@ -87,34 +87,37 @@ const galleryComponents = allGalleryComponents.map(({ examples, ...rest }) => ({
 
 const galleryComponentNames = allGalleryComponents.map(({ name }) => name);
 
-export const galleryIcons = Object.keys(icons).map((iconName) => {
-  const IconComponent = icons[iconName as keyof typeof icons];
+export const galleryIcons: typeof galleryComponents = Object.keys(icons).map(
+  (iconName) => {
+    const IconComponent = icons[iconName as keyof typeof icons];
 
-  return {
-    name: iconName,
-    examples: [
-      [
-        {
-          Container: ({ children }: { children: ReactNode }) => (
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              paddingY="medium"
-              paddingX="xxlarge"
-            >
-              <Box flexShrink={0} style={{ height: 60, width: 60 }}>
-                {children}
+    return {
+      name: iconName,
+      itemWidth: 'icon',
+      examples: [
+        [
+          {
+            Container: ({ children }: { children: ReactNode }) => (
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                paddingY="medium"
+                paddingX="xxlarge"
+              >
+                <Box flexShrink={0} style={{ height: 60, width: 60 }}>
+                  {children}
+                </Box>
               </Box>
-            </Box>
-          ),
-          Example: () => source(<IconComponent size="fill" />),
-          code: `<${iconName} />`,
-        },
+            ),
+            Example: () => source(<IconComponent size="fill" />),
+            code: `<${iconName} />`,
+          },
+        ],
       ],
-    ],
-  };
-});
+    };
+  },
+);
 
 type SetName = 'components' | 'icons';
 const getRowsFor = memoize((type: SetName) => {
@@ -198,6 +201,12 @@ const GalleryItem = ({
   ).length;
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
+  const widthMap = {
+    icon: undefined,
+    standard: '700px',
+    wide: '1500px',
+  };
+
   const isAnIcon = componentDocs.category === 'Icon';
 
   return (
@@ -265,7 +274,7 @@ const GalleryItem = ({
                   <Box
                     component={isAnIcon ? undefined : 'section'}
                     style={{
-                      width: isAnIcon ? undefined : '700px',
+                      width: widthMap[item.itemWidth],
                     }}
                     key={`${example.label}_${index}`}
                     className={styles.animationsOnlyOnHover}
