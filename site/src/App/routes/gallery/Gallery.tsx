@@ -93,6 +93,7 @@ export const galleryIcons: typeof galleryComponents = Object.keys(icons).map(
 
     return {
       name: iconName,
+      itemWidth: 'icon',
       examples: [
         [
           {
@@ -201,6 +202,12 @@ const GalleryItem = ({
   ).length;
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
+  const widthMap = {
+    icon: undefined,
+    standard: '700px',
+    wide: '1500px',
+  };
+
   const isAnIcon = componentDocs.category === 'Icon';
 
   return (
@@ -268,7 +275,7 @@ const GalleryItem = ({
                   <Box
                     component={isAnIcon ? undefined : 'section'}
                     style={{
-                      width: isAnIcon ? undefined : '700px',
+                      width: widthMap[item.itemWidth],
                     }}
                     key={`${example.label}_${index}`}
                     className={styles.animationsOnlyOnHover}
@@ -609,19 +616,17 @@ const GalleryInternal = () => {
               <ButtonIcon
                 id="fitToScreen"
                 label="Fit to screen"
-                tone="secondary"
                 variant="transparent"
                 onClick={fitToScreen}
-                icon={<IconFitToScreen />}
+                icon={<IconFitToScreen tone="secondary" />}
               />
               <ButtonIcon
                 id="zoomOut"
                 ref={zoomOutRef}
                 label="Zoom Out"
-                tone="secondary"
                 variant="transparent"
                 onClick={zoomOut}
-                icon={<IconMinus />}
+                icon={<IconMinus tone="secondary" />}
               />
               <TooltipRenderer
                 id="zoomToActual"
@@ -644,10 +649,9 @@ const GalleryInternal = () => {
                 id="zoomIn"
                 ref={zoomInRef}
                 label="Zoom In"
-                tone="secondary"
                 variant="transparent"
                 onClick={zoomIn}
-                icon={<IconAdd />}
+                icon={<IconAdd tone="secondary" />}
               />
             </Inline>
           </Box>
