@@ -371,9 +371,12 @@ const Stage = ({ setName, jumpTo, title }: StageProps) => {
         </Box>
         <Box>
           {items.map((row, index) => (
-            <Columns space="none" key={index}>
+            <Columns space="none" key={`row-${index}`}>
               {range(rowLength).map((item) => (
-                <Column key={item} width={row[item] ? 'content' : undefined}>
+                <Column
+                  key={`rowItem-${item}`}
+                  width={row[item] ? 'content' : undefined}
+                >
                   {row[item] ? (
                     <GalleryItem item={row[item]} jumpTo={jumpTo} />
                   ) : null}
