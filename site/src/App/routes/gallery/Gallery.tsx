@@ -13,7 +13,7 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from 'recoil';
-import { chunk, memoize } from 'lodash';
+import { chunk, memoize, range } from 'lodash';
 import copy from 'copy-to-clipboard';
 import panzoom from 'panzoom';
 
@@ -112,6 +112,7 @@ export const galleryIcons: typeof galleryComponents = Object.keys(icons).map(
             ),
             Example: () => source(<IconComponent size="fill" />),
             code: `<${iconName} />`,
+            background: 'surface',
           },
         ],
       ],
@@ -136,43 +137,52 @@ const getRowsFor = memoize((type: SetName) => {
 interface RenderExampleProps {
   id: string;
   example: ComponentExample;
+  isIcon: boolean;
 }
-const RenderExample = ({ id, example }: RenderExampleProps) => {
+const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
   const { label, Container = DefaultContainer, background } = example;
   const { code, value } = useSourceFromExample(id, example);
 
+  const CopyCodeButton = () => (
+    <Columns space="medium" alignY="center">
+      <Column>
+        {label ? (
+          <Text component="h5" tone="secondary">
+            {label}
+          </Text>
+        ) : null}
+      </Column>
+      {code ? (
+        <Column width="content">
+          <CodeButton
+            title="Copy code to clipboard"
+            onClick={() => copy(formatSnippet(code))}
+            successLabel="Copied!"
+          >
+            <IconCopy /> Copy code
+          </CodeButton>
+        </Column>
+      ) : null}
+    </Columns>
+  );
+
+  const children = [
+    <CopyCodeButton key="copyCode" />,
+    value ? (
+      <ThemedExample background={background || undefined} key="themedExample">
+        <Container>
+          <Box height="full" width="full" style={{ cursor: 'auto' }}>
+            {value}
+          </Box>
+        </Container>
+      </ThemedExample>
+    ) : null,
+  ];
+
   return (
     <BraidProvider styleBody={false} theme={docsTheme}>
-      <Stack space="small">
-        <Columns space="medium" alignY="center">
-          <Column>
-            {label ? (
-              <Text component="h5" tone="secondary">
-                {label}
-              </Text>
-            ) : null}
-          </Column>
-          {code ? (
-            <Column width="content">
-              <CodeButton
-                title="Copy code to clipboard"
-                onClick={() => copy(formatSnippet(code))}
-                successLabel="Copied!"
-              >
-                <IconCopy /> Copy code
-              </CodeButton>
-            </Column>
-          ) : null}
-        </Columns>
-        {value ? (
-          <ThemedExample background={background || undefined}>
-            <Container>
-              <Box height="full" width="full" style={{ cursor: 'auto' }}>
-                {value}
-              </Box>
-            </Container>
-          </ThemedExample>
-        ) : null}
+      <Stack space={isIcon ? 'xxsmall' : 'small'}>
+        {isIcon ? children.reverse() : children}
       </Stack>
     </BraidProvider>
   );
@@ -207,28 +217,28 @@ const GalleryItem = ({
     wide: '1500px',
   };
 
-  const isAnIcon = componentDocs.category === 'Icon';
+  const isIcon = componentDocs.category === 'Icon';
 
   return (
     <Box
       component="article"
       background="surface"
       borderRadius="xlarge"
-      padding={isAnIcon ? 'large' : 'xxlarge'}
-      margin={isAnIcon ? 'small' : 'xxlarge'}
+      padding={isIcon ? 'large' : 'xxlarge'}
+      margin={isIcon ? 'small' : 'xxlarge'}
       data-braid-component-name={item.name}
       tabIndex={0}
       onDoubleClick={() => jumpTo(item.name)}
     >
-      <Stack space={isAnIcon ? 'small' : 'xxlarge'}>
+      <Stack space={isIcon ? 'medium' : 'xxlarge'}>
         <Box position="relative">
           <Inline space="small" alignY="center">
-            <Heading component="h3" level={isAnIcon ? '3' : '2'}>
+            <Heading component="h3" level={isIcon ? '3' : '2'}>
               <TextLink
                 href={`/components/${item.name}`}
                 target="gallery-detail"
               >
-                {isAnIcon ? item.name.replace('Icon', '') : item.name}
+                {isIcon ? item.name.replace('Icon', '') : item.name}
               </TextLink>
             </Heading>
             {markAsNew ? (
@@ -272,7 +282,7 @@ const GalleryItem = ({
               <Stack space="xlarge">
                 {exampleChunk.map((example, index) => (
                   <Box
-                    component={isAnIcon ? undefined : 'section'}
+                    component={isIcon ? undefined : 'section'}
                     style={{
                       width: widthMap[item.itemWidth],
                     }}
@@ -286,6 +296,7 @@ const GalleryItem = ({
                             index + 1 + idx * COLUMN_SIZE
                           }`}
                           example={example}
+                          isIcon={isIcon}
                         />
                       </PlayroomStateProvider>
                     </BraidProvider>
@@ -346,28 +357,38 @@ interface StageProps {
   title: string;
   jumpTo: JumpTo;
 }
-const Stage = ({ setName, jumpTo, title }: StageProps) => (
-  <Box data-braid-component-name={title}>
-    <Stack space="xxlarge">
-      <Box padding="xxlarge">
-        <Heading component="h2" level="1">
-          <span style={{ fontSize: '3em' }}>{title}</span>
-        </Heading>
-      </Box>
-      <Box>
-        {getRowsFor(setName).map((row, index) => (
-          <Columns space="none" key={index}>
-            {row.map((item) => (
-              <Column key={item.name} width="content">
-                <GalleryItem item={item} jumpTo={jumpTo} />
-              </Column>
-            ))}
-          </Columns>
-        ))}
-      </Box>
-    </Stack>
-  </Box>
-);
+const Stage = ({ setName, jumpTo, title }: StageProps) => {
+  const items = getRowsFor(setName);
+  const rowLength = items[0].length;
+
+  return (
+    <Box data-braid-component-name={title}>
+      <Stack space="xxlarge">
+        <Box padding="xxlarge">
+          <Heading component="h2" level="1">
+            <span style={{ fontSize: '3em' }}>{title}</span>
+          </Heading>
+        </Box>
+        <Box>
+          {items.map((row, index) => (
+            <Columns space="none" key={`row-${index}`}>
+              {range(rowLength).map((item) => (
+                <Column
+                  key={`rowItem-${item}`}
+                  width={row[item] ? 'content' : undefined}
+                >
+                  {row[item] ? (
+                    <GalleryItem item={row[item]} jumpTo={jumpTo} />
+                  ) : null}
+                </Column>
+              ))}
+            </Columns>
+          ))}
+        </Box>
+      </Stack>
+    </Box>
+  );
+};
 
 const jumpToEdgeThreshold = 80;
 
