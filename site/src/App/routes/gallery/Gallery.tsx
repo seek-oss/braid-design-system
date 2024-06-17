@@ -181,9 +181,7 @@ const RenderExample = ({ id, example, isAnIcon }: RenderExampleProps) => {
 
   return (
     <BraidProvider styleBody={false} theme={docsTheme}>
-      <Stack space="small">
-        {isAnIcon ? children.slice().reverse() : children}
-      </Stack>
+      <Stack space="small">{isAnIcon ? children.reverse() : children}</Stack>
     </BraidProvider>
   );
 };
