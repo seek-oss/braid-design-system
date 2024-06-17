@@ -137,43 +137,52 @@ const getRowsFor = memoize((type: SetName) => {
 interface RenderExampleProps {
   id: string;
   example: ComponentExample;
+  isAnIcon: boolean;
 }
-const RenderExample = ({ id, example }: RenderExampleProps) => {
+const RenderExample = ({ id, example, isAnIcon }: RenderExampleProps) => {
   const { label, Container = DefaultContainer, background } = example;
   const { code, value } = useSourceFromExample(id, example);
+
+  const CopyCodeButton = () => (
+    <Columns space="medium" alignY="center">
+      <Column>
+        {label ? (
+          <Text component="h5" tone="secondary">
+            {label}
+          </Text>
+        ) : null}
+      </Column>
+      {code ? (
+        <Column width="content">
+          <CodeButton
+            title="Copy code to clipboard"
+            onClick={() => copy(formatSnippet(code))}
+            successLabel="Copied!"
+          >
+            <IconCopy /> Copy code
+          </CodeButton>
+        </Column>
+      ) : null}
+    </Columns>
+  );
+
+  const children = [
+    <CopyCodeButton key="copyCode" />,
+    value ? (
+      <ThemedExample background={background || undefined} key="themedExample">
+        <Container>
+          <Box height="full" width="full" style={{ cursor: 'auto' }}>
+            {value}
+          </Box>
+        </Container>
+      </ThemedExample>
+    ) : null,
+  ];
 
   return (
     <BraidProvider styleBody={false} theme={docsTheme}>
       <Stack space="small">
-        <Columns space="medium" alignY="center">
-          <Column>
-            {label ? (
-              <Text component="h5" tone="secondary">
-                {label}
-              </Text>
-            ) : null}
-          </Column>
-          {code ? (
-            <Column width="content">
-              <CodeButton
-                title="Copy code to clipboard"
-                onClick={() => copy(formatSnippet(code))}
-                successLabel="Copied!"
-              >
-                <IconCopy /> Copy code
-              </CodeButton>
-            </Column>
-          ) : null}
-        </Columns>
-        {value ? (
-          <ThemedExample background={background || undefined}>
-            <Container>
-              <Box height="full" width="full" style={{ cursor: 'auto' }}>
-                {value}
-              </Box>
-            </Container>
-          </ThemedExample>
-        ) : null}
+        {isAnIcon ? children.slice().reverse() : children}
       </Stack>
     </BraidProvider>
   );
@@ -287,6 +296,7 @@ const GalleryItem = ({
                             index + 1 + idx * COLUMN_SIZE
                           }`}
                           example={example}
+                          isAnIcon={isAnIcon}
                         />
                       </PlayroomStateProvider>
                     </BraidProvider>
