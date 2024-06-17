@@ -137,9 +137,9 @@ const getRowsFor = memoize((type: SetName) => {
 interface RenderExampleProps {
   id: string;
   example: ComponentExample;
-  isAnIcon: boolean;
+  isIcon: boolean;
 }
-const RenderExample = ({ id, example, isAnIcon }: RenderExampleProps) => {
+const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
   const { label, Container = DefaultContainer, background } = example;
   const { code, value } = useSourceFromExample(id, example);
 
@@ -181,7 +181,7 @@ const RenderExample = ({ id, example, isAnIcon }: RenderExampleProps) => {
 
   return (
     <BraidProvider styleBody={false} theme={docsTheme}>
-      <Stack space="small">{isAnIcon ? children.reverse() : children}</Stack>
+      <Stack space="small">{isIcon ? children.reverse() : children}</Stack>
     </BraidProvider>
   );
 };
@@ -215,28 +215,28 @@ const GalleryItem = ({
     wide: '1500px',
   };
 
-  const isAnIcon = componentDocs.category === 'Icon';
+  const isIcon = componentDocs.category === 'Icon';
 
   return (
     <Box
       component="article"
       background="surface"
       borderRadius="xlarge"
-      padding={isAnIcon ? 'large' : 'xxlarge'}
-      margin={isAnIcon ? 'small' : 'xxlarge'}
+      padding={isIcon ? 'large' : 'xxlarge'}
+      margin={isIcon ? 'small' : 'xxlarge'}
       data-braid-component-name={item.name}
       tabIndex={0}
       onDoubleClick={() => jumpTo(item.name)}
     >
-      <Stack space={isAnIcon ? 'medium' : 'xxlarge'}>
+      <Stack space={isIcon ? 'medium' : 'xxlarge'}>
         <Box position="relative">
           <Inline space="small" alignY="center">
-            <Heading component="h3" level={isAnIcon ? '3' : '2'}>
+            <Heading component="h3" level={isIcon ? '3' : '2'}>
               <TextLink
                 href={`/components/${item.name}`}
                 target="gallery-detail"
               >
-                {isAnIcon ? item.name.replace('Icon', '') : item.name}
+                {isIcon ? item.name.replace('Icon', '') : item.name}
               </TextLink>
             </Heading>
             {markAsNew ? (
@@ -280,7 +280,7 @@ const GalleryItem = ({
               <Stack space="xlarge">
                 {exampleChunk.map((example, index) => (
                   <Box
-                    component={isAnIcon ? undefined : 'section'}
+                    component={isIcon ? undefined : 'section'}
                     style={{
                       width: widthMap[item.itemWidth],
                     }}
@@ -294,7 +294,7 @@ const GalleryItem = ({
                             index + 1 + idx * COLUMN_SIZE
                           }`}
                           example={example}
-                          isAnIcon={isAnIcon}
+                          isIcon={isIcon}
                         />
                       </PlayroomStateProvider>
                     </BraidProvider>
