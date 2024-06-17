@@ -8,11 +8,13 @@ import * as styles from './ContentBlock.css';
 export interface ContentBlockProps {
   children: ReactNode;
   width?: BoxProps['maxWidth'];
+  align?: 'left' | 'center';
   data?: DataAttributeMap;
 }
 
 export const ContentBlock = ({
   width = 'medium',
+  align = 'center',
   data,
   children,
   ...restProps
@@ -20,7 +22,7 @@ export const ContentBlock = ({
   <Box
     width="full"
     maxWidth={width}
-    className={styles.marginAuto}
+    className={align === 'left' ? undefined : styles.marginAuto}
     {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     {children}

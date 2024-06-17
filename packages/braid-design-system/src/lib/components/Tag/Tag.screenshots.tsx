@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Tag, Inline, IconHelp } from '../';
+import { Tag, Inline, IconTag, Stack } from '../';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -8,15 +9,34 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Standard Tag',
       background: 'surface',
-      Example: () => <Tag>Tag</Tag>,
+      Example: ({ handler }) => (
+        <Inline space="small">
+          <Tag>Tag</Tag>
+          <Tag icon={<IconTag />}>Tag</Tag>
+          <Tag icon={<IconTag />} onClear={handler} clearLabel="Clear">
+            Tag
+          </Tag>
+        </Inline>
+      ),
     },
     {
-      label: 'Clearable Tag',
+      label: 'Small Tag',
       background: 'surface',
       Example: ({ handler }) => (
-        <Tag onClear={handler} clearLabel="Clear tag">
-          Tag
-        </Tag>
+        <Inline space="xsmall">
+          <Tag size="small">Tag</Tag>
+          <Tag size="small" icon={<IconTag />}>
+            Tag
+          </Tag>
+          <Tag
+            size="small"
+            icon={<IconTag />}
+            onClear={handler}
+            clearLabel="Clear"
+          >
+            Tag
+          </Tag>
+        </Inline>
       ),
     },
     {
@@ -33,27 +53,35 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Test: Standard and clearable tags should be equal height',
+      label: 'Virtual touch target',
       background: 'surface',
       Example: ({ handler }) => (
-        <Inline space="small">
-          <Tag>Tag</Tag>
-          <Tag onClear={handler} clearLabel="Clear tag">
-            Tag
-          </Tag>
-        </Inline>
-      ),
-    },
-    {
-      label: 'With an icon',
-      background: 'surface',
-      Example: ({ handler }) => (
-        <Inline space="small">
-          <Tag icon={<IconHelp />}>Tag</Tag>
-          <Tag icon={<IconHelp />} onClear={handler} clearLabel="Clear tag">
-            Tag
-          </Tag>
-        </Inline>
+        <Stack space="large">
+          <Inline space="xsmall" data={{ [debugTouchableAttrForDataProp]: '' }}>
+            <Tag size="small">Tag</Tag>
+            <Tag size="small" onClear={handler} clearLabel="Clear">
+              Tag
+            </Tag>
+            <Tag
+              size="small"
+              icon={<IconTag />}
+              onClear={handler}
+              clearLabel="Clear"
+            >
+              Tag
+            </Tag>
+          </Inline>
+
+          <Inline space="small" data={{ [debugTouchableAttrForDataProp]: '' }}>
+            <Tag>Tag</Tag>
+            <Tag onClear={handler} clearLabel="Clear">
+              Tag
+            </Tag>
+            <Tag icon={<IconTag />} onClear={handler} clearLabel="Clear">
+              Tag
+            </Tag>
+          </Inline>
+        </Stack>
       ),
     },
   ],

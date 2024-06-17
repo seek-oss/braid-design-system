@@ -788,7 +788,8 @@ const page: DocsPage = {
         applications will want to limit the width of content on the screen. In
         order to address this, Braid provides the{' '}
         <TextLink href="/components/ContentBlock">ContentBlock</TextLink>{' '}
-        component that sets a maximum width and centres content horizontally.
+        component that sets a maximum width and horizontally center-aligns the
+        block by default.
       </Text>
       <Code>
         {source(
@@ -800,13 +801,29 @@ const page: DocsPage = {
         )}
       </Code>
       <Text>
-        If you’d like a larger content block, you can optionally provide the{' '}
+        If you’d like to increase or decrease the width of the block, you can
+        optionally provide the{' '}
         <TextLink href="/components/ContentBlock#maximum-width">width</TextLink>{' '}
         prop:
       </Text>
       <Code>
         {source(
-          <ContentBlock width="large">
+          <ContentBlock width="small">
+            <Card>
+              <Text>Hello World</Text>
+            </Card>
+          </ContentBlock>,
+        )}
+      </Code>
+      <Text>
+        To manage line length or form field sizes you may choose to left-align
+        the block. This can be done via the{' '}
+        <TextLink href="/components/ContentBlock#alignment">align</TextLink>{' '}
+        prop:
+      </Text>
+      <Code>
+        {source(
+          <ContentBlock width="small" align="left">
             <Card>
               <Text>Hello World</Text>
             </Card>
@@ -837,7 +854,8 @@ const page: DocsPage = {
       <Text>
         To standardise our page-level block widths, the{' '}
         <TextLink href="/components/PageBlock#maximum-width">width</TextLink>{' '}
-        prop accepts either <Strong>medium</Strong> or <Strong>large</Strong>.
+        prop accepts either <Strong>small</Strong>, <Strong>medium</Strong> or{' '}
+        <Strong>large</Strong>.
       </Text>
       <Code>
         {source(
@@ -848,6 +866,15 @@ const page: DocsPage = {
           </PageBlock>,
         )}
       </Code>
+
+      <Text>
+        Additionally, a{' '}
+        <TextLink href="/components/PageBlock">PageBlock</TextLink> can also
+        choose a{' '}
+        <TextLink href="/components/PageBlock#maximum-width">width</TextLink> of{' '}
+        <Strong>full</Strong>. This allows content to extend to the full
+        available width while still maintaining the standard responsive gutters.
+      </Text>
 
       <Divider />
 

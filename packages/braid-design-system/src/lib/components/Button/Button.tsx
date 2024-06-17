@@ -13,7 +13,6 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   type ColorContrastValue,
   useBackgroundLightness,
@@ -26,6 +25,7 @@ import type { UseIconProps } from '../../hooks/useIcon';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { Bleed } from '../Bleed/Bleed';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import type { buttonTones } from './buttonTones';
 import * as styles from './Button.css';
 
 export const buttonVariants = [
@@ -33,13 +33,6 @@ export const buttonVariants = [
   'ghost',
   'soft',
   'transparent',
-] as const;
-
-export const buttonTones = [
-  'formAccent',
-  'brandAccent',
-  'critical',
-  'neutral',
 ] as const;
 
 type ButtonSize = 'standard' | 'small';
@@ -472,7 +465,6 @@ export const useButtonStyles = ({
         ? styles.invertedBackgroundsDarkMode.soft
         : null,
       styles.root,
-      size === 'small' ? virtualTouchable({ xAxis: false }) : null,
       size === 'standard' ? styles.standard : styles.small,
       bleed ? styles.bleedVerticallyToCapHeight : null,
     ],

@@ -13,8 +13,7 @@ import {
 } from '../';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box } from './Box';
-import type { SimpleBackground } from './Box';
+import { type SimpleBackground, Box } from './Box';
 import source from '@braid-design-system/source.macro';
 import Code from 'site/App/Code/Code';
 import {

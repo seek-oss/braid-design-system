@@ -18,7 +18,6 @@ import {
   useDisclosure,
 } from '../Disclosure/useDisclosure';
 
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 import { Overlay } from '../private/Overlay/Overlay';
 import {
@@ -131,7 +130,7 @@ export const AccordionItem = ({
           component="button"
           type="button"
           cursor="pointer"
-          className={[styles.button, virtualTouchable()]}
+          className={styles.button}
           outline="none"
           width="full"
           textAlign="left"

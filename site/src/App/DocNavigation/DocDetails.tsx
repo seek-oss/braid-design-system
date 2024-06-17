@@ -46,6 +46,7 @@ export const DocDetails = () => {
               {docs.alternatives.map((alt) => (
                 <Text key={`${alt.name}`}>
                   <TextLink
+                    hitArea="large"
                     href={`/${alt.section || 'components'}/${alt.name}`}
                   >
                     {alt.name}

@@ -110,19 +110,33 @@ const docs: ComponentDocs = {
         <>
           <Text>
             The button size can be customised via the <Strong>size</Strong>{' '}
-            prop, which accepts either <Strong>standard</Strong> or{' '}
-            <Strong>large</Strong>.
+            prop, which accepts either <Strong>small</Strong>,{' '}
+            <Strong>standard</Strong> (default) or <Strong>large</Strong>.
           </Text>
-          <Text>
-            Both follow the standard text definition from the theme, where{' '}
-            <Strong>standard</Strong> follows the text size and{' '}
-            <Strong>large</Strong> follows the line height.
-          </Text>
+          <Notice>
+            <Text>
+              The <Strong>standard</Strong> and <Strong>large</Strong> sizes
+              both follow the standard text definition from the theme, where{' '}
+              <Strong>standard</Strong> follows the text size and{' '}
+              <Strong>large</Strong> follows the line height.
+            </Text>
+          </Notice>
         </>
       ),
       Example: () =>
         source(
           <Stack space="gutter">
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
+                size="small"
+                icon={<IconEdit />}
+                label="Small size"
+                id="size-0"
+              />
+              <Text tone="secondary" size="xsmall">
+                SMALL
+              </Text>
+            </Inline>
             <Inline space="gutter" alignY="center">
               <ButtonIcon
                 size="standard"
@@ -153,9 +167,9 @@ const docs: ComponentDocs = {
       background: 'surface',
       description: (
         <Text>
-          By default, the foreground color of the icon follows neutral text,
-          however, this can be de-emphasised via the <Strong>tone</Strong> prop
-          by selecting <Strong>secondary</Strong>.
+          By default, the button adopts the <Strong>neutral</Strong> tone,
+          however, actions can be emphasised by setting the{' '}
+          <Strong>tone</Strong> prop to <Strong>formAccent</Strong>.
         </Text>
       ),
       Example: () =>
@@ -164,7 +178,7 @@ const docs: ComponentDocs = {
             <Inline space="gutter" alignY="center">
               <ButtonIcon
                 tone="neutral"
-                variant="transparent"
+                variant="soft"
                 icon={<IconClear />}
                 label="Neutral tone"
                 id="tone-1"
@@ -175,14 +189,14 @@ const docs: ComponentDocs = {
             </Inline>
             <Inline space="gutter" alignY="center">
               <ButtonIcon
-                tone="secondary"
-                variant="transparent"
+                tone="formAccent"
+                variant="soft"
                 icon={<IconClear />}
-                label="Secondary tone"
+                label="Form Accent tone"
                 id="tone-2"
               />
               <Text tone="secondary" size="xsmall">
-                SECONDARY
+                FORMACCENT
               </Text>
             </Inline>
           </Stack>,

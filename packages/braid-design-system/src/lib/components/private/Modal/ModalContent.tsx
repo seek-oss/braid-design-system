@@ -222,8 +222,7 @@ export const ModalContent = ({
               <ButtonIcon
                 id={`${id}-close`}
                 label={closeLabel}
-                icon={<IconClear />}
-                tone="secondary"
+                icon={<IconClear tone="secondary" />}
                 variant="transparent"
                 size="large"
                 onClick={onClose}

@@ -8,7 +8,7 @@ import {
   TextLink,
   Inline,
   List,
-  IconPromote,
+  IconImage,
   Alert,
 } from '../';
 import source from '@braid-design-system/source.macro';
@@ -240,7 +240,7 @@ const docs: ComponentDocs = {
         </>
       ),
       Example: () =>
-        source(<Text icon={<IconPromote />}>Text with an icon</Text>),
+        source(<Text icon={<IconImage />}>Text with an icon</Text>),
     },
     {
       label: 'Custom semantics',

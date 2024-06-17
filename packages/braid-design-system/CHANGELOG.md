@@ -1,5 +1,128 @@
 # braid-design-system
 
+## 32.19.1
+
+### Patch Changes
+
+- Move secondary ButtonIcon tone to icons ([#1512](https://github.com/seek-oss/braid-design-system/pull/1512))
+
+  Following the deprecation of the `secondary` tone of `ButtonIcon`, this updates all internal usages to apply the `secondary` tone directly to the icon.
+
+## 32.19.0
+
+### Minor Changes
+
+- **PageBlock:** Add `small` and `full` width options ([#1504](https://github.com/seek-oss/braid-design-system/pull/1504))
+
+  Add `small` to available `width` options of `PageBlock` to support narrower max width for page content.
+
+  Also introducing `full` as a `width` option to enable full width content, while still maintaining consistent screen gutters.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <PageBlock width="small">...</PageBlock>
+  ```
+
+- **ContentBlock:** Add support for left alignment ([#1507](https://github.com/seek-oss/braid-design-system/pull/1507))
+
+  Introduces horizontal alignment support for `ContentBlock`, enabling content to be constrained to a max width and aligned to the left.
+
+  Useful inside of larger `PageBlock` or `ContentBlock` elements when constraining the content for readability or length of form fields.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ContentBlock align="left">...</ContentBlock>
+  ```
+
+- **ButtonIcon:** Add `formAccent` tone ([#1508](https://github.com/seek-oss/braid-design-system/pull/1508))
+
+  Introduces support for the `formAccent` tone on `ButtonIcon`.
+
+  The new tone sits alongside the existing `neutral` tone, while the `secondary` tone is now deprecated and will be removed in a future version (see [Migration Guide] below).
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon tone="formAccent" icon={<IconAdd />} />
+  ```
+
+  **MIGRATION GUIDE:**
+
+  For consumers of the now deprecated `secondary` tone, you can pro-actively migrate away from it by moving the `tone` to the icon itself:
+
+  ```diff
+   <ButtonIcon
+  -  tone="secondary"
+  -  icon={<IconAdd />}
+  +  icon={<IconAdd tone="secondary" />}
+  ```
+
+  [Migration Guide]: #migration-guide
+
+## 32.18.1
+
+### Patch Changes
+
+- Dependency updates: ([#1502](https://github.com/seek-oss/braid-design-system/pull/1502))
+  - `dedent`: `^1.5.1`
+  - `clsx`: `^2.1.1`
+  - `is-mobile`: `^4.0.0`
+
+## 32.18.0
+
+### Minor Changes
+
+- **IconPromote:** Update semantic icon from sparkles to a megaphone ([#1500](https://github.com/seek-oss/braid-design-system/pull/1500))
+
+  With the introduction of `IconAI` recently adopting the sparkles artwork (aligning with the industry trend), the `IconPromote` semantic is now updated to use a megaphone instead of sparkles.
+
+  This change will run through all semantic usages, for example `Alert`, `Notice`, etc.
+
+- **ButtonIcon:** Add `small` size ([#1496](https://github.com/seek-oss/braid-design-system/pull/1496))
+
+  Introduce a new `small` size for `ButtonIcon` component.
+  This size sits alongside the existing `standard` and `large` sizes.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon size="small" icon={<IconEdit />} label="Small size" />
+  ```
+
+- Add exit animation to `Dialog` which mirrors the existing entrance animation. ([#1489](https://github.com/seek-oss/braid-design-system/pull/1489))
+
+- **Tag:** Add `small` size ([#1497](https://github.com/seek-oss/braid-design-system/pull/1497))
+
+  Introduce a new `small` size for `Tag` component.
+  This size sits alongside the existing `standard` size, which is the default.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tag size="small">Tag</Tag>
+  ```
+
+### Patch Changes
+
+- Ensure all paths through `AutoSuggest` state updates are handled. ([#1486](https://github.com/seek-oss/braid-design-system/pull/1486))
+
+- Fix minor bug which prevented the `Drawer` exit animation from occurring. ([#1489](https://github.com/seek-oss/braid-design-system/pull/1489))
+
+- Update Capsize dependencies ([#1484](https://github.com/seek-oss/braid-design-system/pull/1484))
+
+- Adopt `small` sized `ButtonIcon` for field actions ([#1496](https://github.com/seek-oss/braid-design-system/pull/1496))
+
+  Switch over to `small` (previously `standard`) sized `ButtonIcon` for field actions such as clear field, or toggle password visibility.
+
+- Update Crackle CLI dependency ([#1480](https://github.com/seek-oss/braid-design-system/pull/1480))
+
+- Improve virtual touch target positioning for narrow elements ([#1493](https://github.com/seek-oss/braid-design-system/pull/1493))
+
+  To maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.
+  This change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area.
+
 ## 32.17.0
 
 ### Minor Changes

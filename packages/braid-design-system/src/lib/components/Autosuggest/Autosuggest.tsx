@@ -181,9 +181,9 @@ function SuggestionItem({
           >
             <ButtonIcon
               id={`${id}-clear`}
-              icon={<IconClear />}
-              tone="secondary"
+              icon={<IconClear tone="secondary" />}
               tabIndex={-1}
+              size="small"
               label={clearLabel || 'Clear suggestion'}
               onClick={(event: MouseEvent) => {
                 event.preventDefault();
@@ -412,6 +412,8 @@ export const Autosuggest = forwardRef(function <Value>(
             highlightedIndex: nextIndex,
           };
         }
+
+        return state;
       }
 
       case INPUT_ARROW_UP: {
@@ -429,6 +431,8 @@ export const Autosuggest = forwardRef(function <Value>(
             highlightedIndex: nextIndex,
           };
         }
+
+        return state;
       }
 
       case INPUT_CHANGE: {

@@ -2115,9 +2115,11 @@ exports[`ButtonIcon 1`] = `
         | RefObject<HTMLButtonElement>
     size?: 
         | "large"
+        | "small"
         | "standard"
     tabIndex?: number
     tone?: 
+        | "formAccent"
         | "neutral"
         | "secondary"
     tooltipPlacement?: 
@@ -2825,6 +2827,9 @@ exports[`ContentBlock 1`] = `
 {
   exportType: component,
   props: {
+    align?: 
+        | "center"
+        | "left"
     children: ReactNode
     data?: DataAttributeMap
     width?: 
@@ -7213,8 +7218,10 @@ exports[`PageBlock 1`] = `
         | "section"
     data?: DataAttributeMap
     width?: 
+        | "full"
         | "large"
         | "medium"
+        | "small"
 },
 }
 `;
@@ -7576,6 +7583,9 @@ exports[`Tag 1`] = `
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     onClear?: () => void
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;
