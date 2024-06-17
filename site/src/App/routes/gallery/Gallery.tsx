@@ -349,6 +349,7 @@ interface StageProps {
 }
 const Stage = ({ setName, jumpTo, title }: StageProps) => {
   const items = getRowsFor(setName);
+  const rowLength = items[0].length;
 
   return (
     <Box data-braid-component-name={title}>
@@ -361,7 +362,7 @@ const Stage = ({ setName, jumpTo, title }: StageProps) => {
         <Box>
           {items.map((row, index) => (
             <Columns space="none" key={index}>
-              {range(items.length).map((item) => (
+              {range(rowLength).map((item) => (
                 <Column key={item} width={row[item] ? 'content' : undefined}>
                   {row[item] ? (
                     <GalleryItem item={row[item]} jumpTo={jumpTo} />
