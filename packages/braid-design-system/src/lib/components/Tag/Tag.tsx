@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type AllHTMLAttributes } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
@@ -12,6 +12,7 @@ import type { Space } from '../../css/atoms/atoms';
 import * as styles from './Tag.css';
 
 export const tagSizes = ['small', 'standard'] as const;
+type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 
 export type TagProps = {
   children: string;
@@ -19,7 +20,7 @@ export type TagProps = {
   data?: DataAttributeMap;
   id?: string;
   icon?: TextProps['icon'];
-} & AllOrNone<{ onClear: () => void; clearLabel: string }>;
+} & AllOrNone<{ onClear: NativeButtonProps['onClick']; clearLabel: string }>;
 
 const paddingXForSize: Record<NonNullable<TagProps['size']>, Space> = {
   small: 'xsmall',
