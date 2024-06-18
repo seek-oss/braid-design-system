@@ -58,8 +58,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
 
     const alignToEnd =
       (align === 'left' && appliedTogglePosition === 'trailing') ||
-      (align === 'justify' && appliedTogglePosition === 'leading') ||
-      (align === 'right' && appliedTogglePosition === 'leading');
+      (align !== 'left' && appliedTogglePosition === 'leading');
 
     return (
       <Box
