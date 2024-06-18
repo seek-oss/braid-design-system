@@ -8553,6 +8553,9 @@ exports[`Toggle 1`] = `
     size?: 
         | "small"
         | "standard"
+    togglePosition?: 
+        | "leading"
+        | "trailing"
 },
 }
 `;

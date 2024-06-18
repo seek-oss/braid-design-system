@@ -20,4 +20,8 @@ export const snippets: Snippets = [
     name: 'Justified',
     code: source(<Toggle label="Label" align="justify" />),
   },
+  {
+    name: 'Trailing toggle position',
+    code: source(<Toggle label="Label" togglePosition="trailing" />),
+  },
 ];

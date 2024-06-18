@@ -59,6 +59,41 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Toggle position',
+      description: (
+        <>
+          <Text>
+            By default, the position of the toggle relative to the label text
+            will be determined by its <Strong>align</Strong> prop.
+          </Text>
+          <Text>
+            This can be overridden by setting the{' '}
+            <Strong>togglePosition</Strong> prop to either{' '}
+            <Strong>leading</Strong> or <Strong>trailing</Strong>.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, toggleState }) =>
+        source(
+          <Stack space="large" dividers>
+            <Toggle
+              label="Leading"
+              id={`${id}_leading`}
+              on={getState('toggleLeading')}
+              onChange={() => toggleState('toggleLeading')}
+              togglePosition="leading"
+            />
+            <Toggle
+              label="Trailing"
+              id={`${id}_trailing`}
+              on={getState('toggleTrailing')}
+              onChange={() => toggleState('toggleTrailing')}
+              togglePosition="trailing"
+            />
+          </Stack>,
+        ),
+    },
+    {
       label: 'Sizes',
       description: (
         <Text>
