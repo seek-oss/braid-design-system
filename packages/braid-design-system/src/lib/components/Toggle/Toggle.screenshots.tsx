@@ -32,7 +32,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Right aligned',
+      label: 'Right aligned with default toggle position',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
@@ -47,7 +47,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Justified',
+      label: 'Justified with default toggle position',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
@@ -76,6 +76,102 @@ export const screenshots: ComponentScreenshot = {
             onChange={handler}
           />
         </Box>
+      ),
+    },
+    {
+      label: 'Left aligned with leading toggle position',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          align="left"
+          togglePosition="leading"
+          label="Aligned left, leading toggle"
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
+    {
+      label: 'Left aligned with trailing toggle position',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          align="left"
+          togglePosition="trailing"
+          label="Aligned left, trailing toggle"
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
+    {
+      label: 'Justified with leading toggle position',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          align="justify"
+          togglePosition="leading"
+          label="Justified, leading toggle"
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
+    {
+      label: 'Justified with trailing toggle position',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          align="justify"
+          togglePosition="trailing"
+          label="Justified, trailing toggle"
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
+    {
+      label: 'Right aligned with leading toggle position',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          align="right"
+          togglePosition="leading"
+          label="Right aligned, leading toggle"
+          id={id}
+          onChange={handler}
+        />
+      ),
+    },
+    {
+      label: 'Right aligned with trailing toggle position',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Toggle
+          on={true}
+          align="right"
+          togglePosition="trailing"
+          label="Right aligned, trailing toggle"
+          id={id}
+          onChange={handler}
+        />
       ),
     },
     {
