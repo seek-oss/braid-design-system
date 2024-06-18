@@ -1,5 +1,5 @@
 ---
-'braid-design-system': minor
+'braid-design-system': patch
 ---
 
 ---
@@ -7,16 +7,4 @@ updated:
   - Tag
 ---
 
-The `onClear` handler now accepts a click event object as an argument.
-
-**EXAMPLE USAGE:**
-```jsx
-<Tag
-  onClear={(event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-    toggleTag();
-  }}
->
-  Tag
-</Tag>
-```
+**Tag**: Add missing click event parameter to `onClear` prop type
