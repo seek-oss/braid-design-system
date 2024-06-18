@@ -7579,7 +7579,7 @@ exports[`Tag 1`] = `
     data?: DataAttributeMap
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
-    onClear?: () => void
+    onClear?: MouseEventHandler<HTMLButtonElement>
     size?: 
         | "small"
         | "standard"
