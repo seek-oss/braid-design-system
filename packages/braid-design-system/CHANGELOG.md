@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 32.19.1
+
+### Patch Changes
+
+- Move secondary ButtonIcon tone to icons ([#1512](https://github.com/seek-oss/braid-design-system/pull/1512))
+
+  Following the deprecation of the `secondary` tone of `ButtonIcon`, this updates all internal usages to apply the `secondary` tone directly to the icon.
+
 ## 32.19.0
 
 ### Minor Changes

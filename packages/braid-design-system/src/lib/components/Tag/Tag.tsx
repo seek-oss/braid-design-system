@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type AllHTMLAttributes } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
@@ -12,6 +12,7 @@ import type { Space } from '../../css/atoms/atoms';
 import * as styles from './Tag.css';
 
 export const tagSizes = ['small', 'standard'] as const;
+type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 
 export type TagProps = {
   children: string;
@@ -19,7 +20,7 @@ export type TagProps = {
   data?: DataAttributeMap;
   id?: string;
   icon?: TextProps['icon'];
-} & AllOrNone<{ onClear: () => void; clearLabel: string }>;
+} & AllOrNone<{ onClear: NativeButtonProps['onClick']; clearLabel: string }>;
 
 const paddingXForSize: Record<NonNullable<TagProps['size']>, Space> = {
   small: 'xsmall',
@@ -77,9 +78,8 @@ export const Tag = ({
               // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
               // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
               id={id ? `${id}-clear` : undefined}
-              icon={<IconClear />}
+              icon={<IconClear tone="secondary" />}
               label={clearLabel}
-              tone="secondary"
               size="small"
               variant="transparent"
               onClick={onClear}

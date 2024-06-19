@@ -26,6 +26,7 @@ export interface ToggleProps {
   on: boolean;
   onChange: ChangeHandler;
   align?: 'left' | 'right' | 'justify';
+  togglePosition?: 'leading' | 'trailing';
   size?: Size;
   bleedY?: boolean;
   data?: DataAttributeMap;
@@ -39,7 +40,6 @@ const handleChange =
   };
 
 const verticalPadding = 'xxsmall';
-
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
@@ -48,6 +48,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       onChange,
       label,
       align = 'left',
+      togglePosition,
       size = 'standard',
       bleedY = false,
       data,
@@ -69,111 +70,142 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
 
     const lightness = useBackgroundLightness();
 
+    const defaultTogglePosition = align === 'left' ? 'leading' : 'trailing';
+    const appliedTogglePosition = togglePosition || defaultTogglePosition;
+
+    const alignToEnd =
+      (align === 'left' && appliedTogglePosition === 'trailing') ||
+      (align !== 'left' && appliedTogglePosition === 'leading');
+
     const content = (
       <Box
         position="relative"
         zIndex={0}
         display="flex"
-        flexDirection={align === 'left' ? undefined : 'rowReverse'}
+        flexDirection={
+          appliedTogglePosition === 'trailing' ? 'rowReverse' : 'row'
+        }
+        justifyContent={alignToEnd ? 'flexEnd' : undefined}
         className={styles.root}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
-        <Box
-          component="input"
-          type="checkbox"
-          id={id}
-          checked={on}
-          onChange={handleChange(onChange)}
-          position="absolute"
-          zIndex={1}
-          cursor="pointer"
-          opacity={0}
-          className={[
-            styles.realField,
-            styles.realFieldPosition[size],
-            styles.fieldSize[size],
-          ]}
-          ref={forwardedRef}
-        />
-        <Box
-          position="relative"
-          display="flex"
-          alignItems="center"
-          flexShrink={0}
-          className={[
-            styles.slideContainer,
-            styles.slideContainerSize[size],
-            styles.fieldSize[size],
-          ]}
-        >
+        <Box position="relative">
           <Box
+            component="input"
+            type="checkbox"
+            id={id}
+            checked={on}
+            onChange={handleChange(onChange)}
             position="absolute"
-            width="full"
-            overflow="hidden"
-            borderRadius="full"
+            zIndex={1}
+            cursor="pointer"
+            opacity={0}
             className={[
-              styles.slideTrack[size],
-              styles.slideTrackMask,
-              styles.slideTrackBgLightMode[lightness.lightMode],
-              styles.slideTrackBgDarkMode[lightness.darkMode],
+              styles.realField,
+              styles.realFieldPosition[size],
+              styles.fieldSize[size],
+            ]}
+            ref={forwardedRef}
+          />
+          <Box
+            position="relative"
+            display="flex"
+            alignItems="center"
+            flexShrink={0}
+            className={[
+              styles.slideContainer,
+              styles.slideContainerSize[size],
+              styles.fieldSize[size],
             ]}
           >
             <Box
               position="absolute"
               width="full"
-              height="full"
-              background="formAccent"
+              overflow="hidden"
+              borderRadius="full"
+              className={[
+                styles.slideTrack[size],
+                styles.slideTrackMask,
+                styles.slideTrackBgLightMode[lightness.lightMode],
+                styles.slideTrackBgDarkMode[lightness.darkMode],
+              ]}
+            >
+              <Box
+                position="absolute"
+                width="full"
+                height="full"
+                background="formAccent"
+                transition="fast"
+                className={styles.slideTrackSelected}
+              />
+            </Box>
+            <Box
+              position="absolute"
+              background="surface"
               transition="fast"
-              className={styles.slideTrackSelected}
-            />
-          </Box>
-          <Box
-            position="absolute"
-            background="surface"
-            transition="fast"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            borderRadius="full"
-            className={styles.slider[size]}
-          >
-            <FieldOverlay
-              variant={on ? 'formAccent' : 'default'}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
               borderRadius="full"
-              visible
-              className={{
-                [styles.hideBorderOnDarkBackgroundInLightMode]:
-                  lightness.lightMode === 'dark',
-              }}
-            />
-            <FieldOverlay className={styles.icon}>
-              <IconTick tone="formAccent" size="fill" />
-            </FieldOverlay>
-            <FieldOverlay
-              variant="focus"
-              borderRadius="full"
-              className={styles.focusOverlay}
-            />
-            <FieldOverlay
-              variant="formAccent"
-              borderRadius="full"
-              className={!on ? styles.hoverOverlay : undefined}
-            />
+              className={styles.slider[size]}
+            >
+              <FieldOverlay
+                variant={on ? 'formAccent' : 'default'}
+                borderRadius="full"
+                visible
+                className={{
+                  [styles.hideBorderOnDarkBackgroundInLightMode]:
+                    lightness.lightMode === 'dark',
+                }}
+              />
+              <FieldOverlay className={styles.icon}>
+                <IconTick tone="formAccent" size="fill" />
+              </FieldOverlay>
+              <FieldOverlay
+                variant="focus"
+                borderRadius="full"
+                className={styles.focusOverlay}
+              />
+              <FieldOverlay
+                variant="formAccent"
+                borderRadius="full"
+                className={!on ? styles.hoverOverlay : undefined}
+              />
+            </Box>
           </Box>
         </Box>
         <Box
           component="label"
           htmlFor={id}
-          paddingLeft={align === 'left' ? 'xsmall' : undefined}
-          paddingRight={
-            align === 'right' || align === 'justify' ? 'xsmall' : undefined
+          // Todo - Replace paddings with flex-gap after browser policy change
+          /*
+          Apply padding by default to prevent padding disappearing
+          during partial completion of togglePosition and align props in Playroom
+          */
+          paddingLeft={
+            appliedTogglePosition === 'trailing' ? undefined : 'xsmall'
           }
+          paddingRight={
+            appliedTogglePosition === 'leading' ? undefined : 'xsmall'
+          }
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
           flexGrow={align === 'justify' ? 1 : undefined}
           userSelect="none"
           cursor="pointer"
           className={[styles.label[size], virtualTouchable]}
         >
-          <Text baseline={false} weight={on ? 'strong' : undefined} size={size}>
+          <Text
+            baseline={false}
+            weight={on ? 'strong' : undefined}
+            size={size}
+            align={
+              align === 'justify' && appliedTogglePosition === 'leading'
+                ? 'right'
+                : undefined
+            }
+          >
             {label}
           </Text>
         </Box>
