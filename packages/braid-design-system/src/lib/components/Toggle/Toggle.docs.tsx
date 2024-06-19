@@ -134,29 +134,36 @@ const docs: ComponentDocs = {
         <Fragment>
           <Text>
             With the <Strong>bleedY</Strong> prop, you can remove excess
-            vertical space created by the toggle handle.
+            vertical space created by the toggle input.
           </Text>
           <Text>
             For example, you can include a toggle in a{' '}
             <TextLink href="/components/Stack">Stack</TextLink> with all text
-            evenly spaced.
+            evenly spaced. If you disable the vertical bleed in this example,
+            the toggle input will introduce unwanted space before and after the
+            toggle label.
           </Text>
         </Fragment>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ id, setDefaultState, getState, toggleState }) =>
         source(
-          <Stack space="medium">
-            <Text>Text</Text>
-            <Text>Text</Text>
-            <Toggle
-              label="Vertical bleed"
-              id={`${id}_toggle_bleed`}
-              on={!getState('disableVerticalBleed')}
-              onChange={() => toggleState('disableVerticalBleed')}
-              align="justify"
-              bleedY={!getState('disableVerticalBleed')}
-            />
-          </Stack>,
+          <>
+            {setDefaultState('verticalBleed', true)}
+            <Stack space="medium">
+              <Text>Text</Text>
+              <Text>Text</Text>
+              <Toggle
+                label="Vertical bleed"
+                id={`${id}_toggle_bleed`}
+                on={getState('verticalBleed')}
+                onChange={() => toggleState('verticalBleed')}
+                align="left"
+                togglePosition="trailing"
+                bleedY={getState('verticalBleed')}
+              />
+              <Text>Text</Text>
+            </Stack>
+          </>,
         ),
     },
     {
