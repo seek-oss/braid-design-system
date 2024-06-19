@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
-import { TextLink, Toggle } from '../';
+import { Box, TextLink, Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import source from '@braid-design-system/source.macro';
@@ -15,6 +15,7 @@ const docs: ComponentDocs = {
         id={id}
         on={getState('toggle')}
         onChange={() => toggleState('toggle')}
+        bleedY
       />,
     ),
   alternatives: [
@@ -40,6 +41,7 @@ const docs: ComponentDocs = {
               on={getState('toggle1')}
               onChange={() => toggleState('toggle1')}
               align="left"
+              bleedY
             />
             <Toggle
               label="Justify"
@@ -47,6 +49,7 @@ const docs: ComponentDocs = {
               on={getState('toggle2')}
               onChange={() => toggleState('toggle2')}
               align="justify"
+              bleedY
             />
             <Toggle
               label="Right"
@@ -54,6 +57,7 @@ const docs: ComponentDocs = {
               on={getState('toggle3')}
               onChange={() => toggleState('toggle3')}
               align="right"
+              bleedY
             />
           </Stack>,
         ),
@@ -82,6 +86,7 @@ const docs: ComponentDocs = {
               on={getState('toggleLeading')}
               onChange={() => toggleState('toggleLeading')}
               togglePosition="leading"
+              bleedY
             />
             <Toggle
               label="Trailing"
@@ -89,6 +94,7 @@ const docs: ComponentDocs = {
               on={getState('toggleTrailing')}
               onChange={() => toggleState('toggleTrailing')}
               togglePosition="trailing"
+              bleedY
             />
           </Stack>,
         ),
@@ -117,6 +123,7 @@ const docs: ComponentDocs = {
               on={getState('toggleLeading')}
               onChange={() => toggleState('toggleLeading')}
               togglePosition="leading"
+              bleedY
             />
             <Toggle
               label="Trailing"
@@ -124,6 +131,7 @@ const docs: ComponentDocs = {
               on={getState('toggleTrailing')}
               onChange={() => toggleState('toggleTrailing')}
               togglePosition="trailing"
+              bleedY
             />
           </Stack>,
         ),
@@ -138,10 +146,10 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             For example, you can include a toggle in a{' '}
-            <TextLink href="/components/Stack">Stack</TextLink> with all text
-            evenly spaced. If you disable the vertical bleed in this example,
-            the toggle input will introduce unwanted space before and after the
-            toggle label.
+            <TextLink href="/components/Stack">Stack</TextLink> with even
+            vertical spacing. If you disable the <Strong>bleedY</Strong> prop
+            below, the toggle input will introduce unwanted space before and
+            after the toggle label.
           </Text>
         </Fragment>
       ),
@@ -152,15 +160,18 @@ const docs: ComponentDocs = {
             <Stack space="medium">
               <Text>Text</Text>
               <Text>Text</Text>
-              <Toggle
-                label="Vertical bleed"
-                id={`${id}_toggle_bleed`}
-                on={getState('verticalBleed')}
-                onChange={() => toggleState('verticalBleed')}
-                align="left"
-                togglePosition="trailing"
-                bleedY={getState('verticalBleed')}
-              />
+              <Box background="surface" boxShadow="borderCriticalLight">
+                <Toggle
+                  label="BleedY"
+                  id={`${id}_toggle_bleed`}
+                  on={getState('verticalBleed')}
+                  onChange={() => toggleState('verticalBleed')}
+                  align="left"
+                  togglePosition="trailing"
+                  bleedY={getState('verticalBleed')}
+                />
+              </Box>
+
               <Text>Text</Text>
             </Stack>
           </>,
@@ -177,13 +188,14 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id, getState, toggleState }) =>
         source(
-          <Stack space="medium">
+          <Stack space="large">
             <Toggle
               id={`${id}_standard`}
               label="Standard"
               on={getState('two')}
               onChange={() => toggleState('two')}
               size="standard"
+              bleedY
             />
             <Toggle
               id={`${id}_small`}
@@ -191,6 +203,7 @@ const docs: ComponentDocs = {
               on={getState('one')}
               onChange={() => toggleState('one')}
               size="small"
+              bleedY
             />
           </Stack>,
         ),
