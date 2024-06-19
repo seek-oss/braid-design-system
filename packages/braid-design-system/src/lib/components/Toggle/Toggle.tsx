@@ -170,6 +170,9 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           paddingRight={
             appliedTogglePosition === 'leading' ? undefined : 'xsmall'
           }
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
           flexGrow={align === 'justify' ? 1 : undefined}
           userSelect="none"
           cursor="pointer"

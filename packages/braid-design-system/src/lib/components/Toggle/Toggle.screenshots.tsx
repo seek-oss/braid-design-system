@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Toggle, Box, Tiles, Inline } from '../';
+import { Toggle, Box, Tiles, Inline, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
@@ -188,7 +188,36 @@ export const screenshots: ComponentScreenshot = {
         />
       ),
     },
-
+    {
+      label: 'With Inline text (standard size)',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Inline space="xsmall" alignY="center">
+          <Toggle on={true} label="Toggle" id={id} onChange={handler} />
+          <Text>Inline text</Text>
+        </Inline>
+      ),
+    },
+    {
+      label: 'With Inline text (small size)',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id, handler }) => (
+        <Inline space="xsmall" alignY="center">
+          <Toggle
+            on={true}
+            label="Toggle"
+            id={id}
+            onChange={handler}
+            size="small"
+          />
+          <Text size="small">Inline text</Text>
+        </Inline>
+      ),
+    },
     {
       label: 'Virtual touch target',
       Example: ({ id, handler }) => (
