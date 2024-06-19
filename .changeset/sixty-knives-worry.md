@@ -7,4 +7,4 @@ updated:
   - Toggle
 ---
 
-**Toggle**: Fix label text vertical centering
+**Toggle:** Improve label text vertical alignment at `small` size
