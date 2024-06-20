@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
-import { Text, Toggle, Stack } from '../';
+import { Toggle } from '../';
 import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
@@ -14,6 +14,7 @@ export const galleryItems: GalleryComponent = {
             id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
+            bleedY
           />,
         ),
     },
@@ -27,6 +28,7 @@ export const galleryItems: GalleryComponent = {
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
             size="small"
+            bleedY
           />,
         ),
     },
@@ -40,6 +42,7 @@ export const galleryItems: GalleryComponent = {
             id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
+            bleedY
           />,
         ),
     },
@@ -53,25 +56,8 @@ export const galleryItems: GalleryComponent = {
             id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
+            bleedY
           />,
-        ),
-    },
-    {
-      label: 'Vertical bleed',
-      Example: ({ id, getState, toggleState }) =>
-        source(
-          <Stack space="medium">
-            <Text>Text</Text>
-            <Text>Text</Text>
-            <Toggle
-              label="Vertical bleed"
-              id={id}
-              on={getState('toggle')}
-              onChange={() => toggleState('toggle')}
-              togglePosition="trailing"
-              bleedY
-            />
-          </Stack>,
         ),
     },
   ],
