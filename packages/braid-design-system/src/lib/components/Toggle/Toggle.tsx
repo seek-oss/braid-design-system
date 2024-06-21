@@ -61,9 +61,9 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         // eslint-disable-next-line no-console
         console.warn(
           dedent`
-          Please specify bleed with the "bleedY" prop.
-          Bleed will be the default in a future version.
-          To maintain the current appearance, set "bleedY" to "false"`,
+          Please specify an explicit value for the "bleedY" prop.
+          The default value of "bleedY" will change to "true" in a future version.
+          To maintain the current appearance, set "bleedY" to "false".`,
         );
       }
     }
