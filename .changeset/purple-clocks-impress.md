@@ -13,5 +13,5 @@ Introduces the `bleedY` prop, allowing you to remove excess vertical space creat
 
 **EXAMPLE USAGE:**
 ```jsx
-<Toggle label="Label" bleedY/>
+<Toggle label="Label" bleedY />
 ```
