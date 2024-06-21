@@ -111,8 +111,8 @@ const docs: ComponentDocs = {
             For example, you can include a toggle in a{' '}
             <TextLink href="/components/Stack">Stack</TextLink> with even
             vertical spacing. If you disable the <Strong>bleedY</Strong> prop
-            below, the toggle input will introduce unwanted space before and
-            after the toggle label.
+            below, the toggle input will introduce unwanted space above and
+            below the toggle label.
           </Text>
         </Fragment>
       ),
