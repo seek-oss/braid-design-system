@@ -245,21 +245,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Without bleedY',
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: ({ id, handler }) => (
-        <Toggle
-          on={true}
-          label="Without vertical bleed"
-          id={id}
-          onChange={handler}
-          bleedY={false}
-        />
-      ),
-    },
-    {
       label: 'Virtual touch target',
       Example: ({ id, handler }) => (
         <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>

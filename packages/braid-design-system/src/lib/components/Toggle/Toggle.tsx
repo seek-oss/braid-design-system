@@ -40,6 +40,7 @@ const handleChange =
   };
 
 const verticalPadding = 'xxsmall';
+
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
@@ -61,9 +62,17 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         // eslint-disable-next-line no-console
         console.warn(
           dedent`
-          Please specify an explicit value for the "bleedY" prop.
-          The default value of "bleedY" will change to "true" in a future version.
-          To maintain the current appearance, set "bleedY" to "false".`,
+          Vertical bleed will become standard in a future version, which will affect your layout.
+          Please add the "bleedY" prop with a value of "true" and optimise your layout.
+          `,
+        );
+      }
+      if (bleedY === false) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          dedent`
+          Using "bleedY" set to "false" will be deprecated in a future version.
+          Please set the "bleedY" prop to "true" and optimise your layout.`,
         );
       }
     }
@@ -171,9 +180,9 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         htmlFor={id}
         // Todo - Replace paddings with flex-gap after browser policy change
         /*
-      Apply padding by default to prevent padding disappearing
-      during partial completion of togglePosition and align props in Playroom
-      */
+        Apply padding by default to prevent padding disappearing
+        during partial completion of togglePosition and align props in Playroom
+        */
         paddingLeft={
           appliedTogglePosition === 'trailing' ? undefined : 'xsmall'
         }
