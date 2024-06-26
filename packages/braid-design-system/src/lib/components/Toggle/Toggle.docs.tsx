@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Box, TextLink, Toggle } from '../';
+import { Alert, Box, TextLink, Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import source from '@braid-design-system/source.macro';
@@ -104,15 +104,28 @@ const docs: ComponentDocs = {
       description: (
         <Fragment>
           <Text>
-            With the <Strong>bleedY</Strong> prop, you can remove excess
-            vertical space created by the toggle input.
+            The <Strong>bleedY</Strong> prop removes the excess vertical space
+            created by the toggle input — ensuring it’s only as tall as the{' '}
+            provided label text.
           </Text>
           <Text>
-            For example, you can include a toggle in a{' '}
-            <TextLink href="/components/Stack">Stack</TextLink> with even
-            vertical spacing. If you disable the <Strong>bleedY</Strong> prop
-            below, the toggle input will introduce unwanted space above and
-            below the toggle label.
+            This better aligns with the{' '}
+            <TextLink href="/foundations/layout">layout principles</TextLink> of
+            the system, enabling the surrounding white space to be controlled by
+            the parent layout component, e.g.{' '}
+            <TextLink href="/components/Stack">Stack</TextLink>.
+          </Text>
+          <Alert tone="caution">
+            <Text>
+              In the future this will become the standard behaviour. Migrating
+              layouts to work with this option now is recommended.
+            </Text>
+          </Alert>
+          <Text>
+            In the following example, a{' '}
+            <TextLink href="/components/Stack">Stack</TextLink> controls the
+            space between child elements. Switching the toggle off introduces
+            unwanted space above and below the label.
           </Text>
         </Fragment>
       ),
