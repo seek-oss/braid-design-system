@@ -102,8 +102,8 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           opacity={0}
           className={[
             styles.realField,
-            styles.realFieldPosition[size],
             styles.fieldSize[size],
+            !bleedY && styles.realFieldPosition[size],
           ]}
           ref={forwardedRef}
         />
