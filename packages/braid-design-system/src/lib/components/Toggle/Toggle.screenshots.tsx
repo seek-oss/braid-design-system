@@ -45,8 +45,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label:
-        'Right aligned with default toggle position with default toggle position',
+      label: 'Right aligned with default toggle position',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
@@ -62,8 +61,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label:
-        'Justified with default toggle position with default toggle position',
+      label: 'Justified with default toggle position',
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
@@ -219,7 +217,7 @@ export const screenshots: ComponentScreenshot = {
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
       Example: ({ id, handler }) => (
-        <Inline space="xsmall" alignY="center">
+        <Inline space="xsmall">
           <Toggle on={true} label="Toggle" id={id} onChange={handler} bleedY />
           <Text>Inline text</Text>
         </Inline>
@@ -231,7 +229,7 @@ export const screenshots: ComponentScreenshot = {
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
       Example: ({ id, handler }) => (
-        <Inline space="xsmall" alignY="center">
+        <Inline space="xsmall">
           <Toggle
             on={true}
             label="Toggle"
