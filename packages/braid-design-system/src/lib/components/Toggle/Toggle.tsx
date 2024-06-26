@@ -223,7 +223,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           appliedTogglePosition === 'trailing' ? 'rowReverse' : 'row'
         }
         justifyContent={alignToEnd ? 'flexEnd' : undefined}
-        className={[styles.root]}
+        className={styles.root}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <ToggleInput />
