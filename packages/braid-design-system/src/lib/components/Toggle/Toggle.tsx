@@ -7,7 +7,6 @@ import React, {
 import { Box } from '../Box/Box';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import { Text } from '../Text/Text';
-import { Bleed } from '../Bleed/Bleed';
 import { IconTick } from '../icons';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import buildDataAttributes, {
@@ -38,8 +37,6 @@ const handleChange =
       onChange(event.target.checked);
     }
   };
-
-const verticalPadding = 'xxsmall';
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
@@ -87,7 +84,12 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       (align !== 'left' && appliedTogglePosition === 'leading');
 
     const ToggleInput = () => (
-      <Box position="relative">
+      <Box
+        position="relative"
+        className={bleedY && styles.bleedToCapHeight[size]}
+        display={bleedY ? 'flex' : undefined}
+        alignItems={bleedY ? 'center' : undefined}
+      >
         <Box
           component="input"
           type="checkbox"
@@ -195,10 +197,10 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         flexGrow={align === 'justify' ? 1 : undefined}
         userSelect="none"
         cursor="pointer"
-        className={[styles.label[size], virtualTouchable]}
+        className={virtualTouchable}
       >
         <Text
-          baseline={false}
+          baseline={bleedY}
           weight={on ? 'strong' : undefined}
           size={size}
           align={
@@ -212,7 +214,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       </Box>
     );
 
-    const content = (
+    return (
       <Box
         position="relative"
         zIndex={0}
@@ -221,18 +223,12 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           appliedTogglePosition === 'trailing' ? 'rowReverse' : 'row'
         }
         justifyContent={alignToEnd ? 'flexEnd' : undefined}
-        className={styles.root}
+        className={[styles.root]}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <ToggleInput />
         <ToggleLabel />
       </Box>
-    );
-
-    return bleedY ? (
-      <Bleed vertical={verticalPadding}>{content}</Bleed>
-    ) : (
-      content
     );
   },
 );
