@@ -12,7 +12,7 @@ import {
   Alert,
   BraidProvider,
 } from '../';
-import docsTheme from 'braid-design-system/themes/docs';
+import docsTheme from 'braid-src/lib/themes/docs';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type SimpleBackground, Box } from './Box';
