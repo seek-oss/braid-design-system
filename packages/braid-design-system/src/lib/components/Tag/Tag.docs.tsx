@@ -80,8 +80,8 @@ const docs: ComponentDocs = {
           </Text>
 
           <Text>
-            Alternatively, providing an <Strong>onAdd</Strong> handler and a{' '}
-            <Strong>addLabel</Strong>, will insert a{' '}
+            Alternatively, providing an <Strong>onAdd</Strong> handler and an{' '}
+            <Strong>addLabel</Strong> will insert a{' '}
             <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>{' '}
             component with an add icon to the right of the tag label.
           </Text>
