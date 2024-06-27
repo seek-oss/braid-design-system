@@ -136,7 +136,7 @@ const docs: ComponentDocs = {
             <Stack space="medium">
               <Text>Text</Text>
               <Text>Text</Text>
-              <Box background="surface" boxShadow="borderCriticalLight">
+              <Box boxShadow="borderCriticalLight">
                 <Toggle
                   label="BleedY"
                   id={`${id}_toggle_bleed`}
