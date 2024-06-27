@@ -13,7 +13,7 @@ import {
   Badge,
   Strong,
   List,
-  Card,
+  Box,
   IconCompany,
   IconHome,
   IconProfile,
@@ -26,34 +26,30 @@ const docs: ComponentDocs = {
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
   Example: ({ id }) =>
     source(
-      <Card rounded>
-        <TabsProvider id={id}>
-          <Stack space="medium">
-            <Tabs label="Test tabs">
-              <Tab>The first tab</Tab>
-              <Tab>The second tab</Tab>
-              <Tab>The third tab</Tab>
-              <Tab badge={<Badge tone="positive">New</Badge>}>
-                The fourth tab
-              </Tab>
-            </Tabs>
-            <TabPanels>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 1" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 2" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 3" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={200} label="Panel 4" />
-              </TabPanel>
-            </TabPanels>
-          </Stack>
-        </TabsProvider>
-      </Card>,
+      <TabsProvider id={id}>
+        <Stack space="medium">
+          <Tabs label="Test tabs">
+            <Tab>The first tab</Tab>
+            <Tab>The second tab</Tab>
+            <Tab>The third tab</Tab>
+            <Tab badge={<Badge tone="positive">New</Badge>}>The fourth tab</Tab>
+          </Tabs>
+          <TabPanels>
+            <TabPanel>
+              <Placeholder height={200} label="Panel 1" />
+            </TabPanel>
+            <TabPanel>
+              <Placeholder height={200} label="Panel 2" />
+            </TabPanel>
+            <TabPanel>
+              <Placeholder height={200} label="Panel 3" />
+            </TabPanel>
+            <TabPanel>
+              <Placeholder height={200} label="Panel 4" />
+            </TabPanel>
+          </TabPanels>
+        </Stack>
+      </TabsProvider>,
     ),
   accessibility: (
     <Text>
@@ -115,24 +111,22 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id }) =>
         source(
-          <Card>
-            <TabsProvider id={id}>
-              <Stack space="medium">
-                <Tabs label="Test tabs" align="center">
-                  <Tab>The first tab</Tab>
-                  <Tab>The second tab</Tab>
-                </Tabs>
-                <TabPanels>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 1" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 2" />
-                  </TabPanel>
-                </TabPanels>
-              </Stack>
-            </TabsProvider>
-          </Card>,
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs" align="center">
+                <Tab>The first tab</Tab>
+                <Tab>The second tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>,
         ),
     },
     {
@@ -147,24 +141,22 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id }) =>
         source(
-          <Card>
-            <TabsProvider id={`${id}_1`}>
-              <Stack space="medium">
-                <Tabs label="Test tabs" divider="full">
-                  <Tab>The first tab</Tab>
-                  <Tab>The second tab</Tab>
-                </Tabs>
-                <TabPanels>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 1" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 2" />
-                  </TabPanel>
-                </TabPanels>
-              </Stack>
-            </TabsProvider>
-          </Card>,
+          <TabsProvider id={`${id}_1`}>
+            <Stack space="medium">
+              <Tabs label="Test tabs" divider="full">
+                <Tab>The first tab</Tab>
+                <Tab>The second tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>,
         ),
     },
     {
@@ -186,7 +178,11 @@ const docs: ComponentDocs = {
               <Tab>The third tab</Tab>
               <Tab>The fourth tab</Tab>
             </Tabs>
-            <Card>
+            <Box
+              background="surface"
+              boxShadow="borderNeutralLight"
+              padding="gutter"
+            >
               <TabPanels>
                 <TabPanel>
                   <Placeholder height={200} label="Panel 1" />
@@ -201,7 +197,7 @@ const docs: ComponentDocs = {
                   <Placeholder height={200} label="Panel 4" />
                 </TabPanel>
               </TabPanels>
-            </Card>
+            </Box>
           </TabsProvider>,
         ),
     },
@@ -228,7 +224,11 @@ const docs: ComponentDocs = {
               <Tab>The third tab</Tab>
               <Tab>The fourth tab</Tab>
             </Tabs>
-            <Card>
+            <Box
+              background="surface"
+              boxShadow="borderNeutralLight"
+              padding="gutter"
+            >
               <TabPanels>
                 <TabPanel>
                   <Placeholder height={200} label="Panel 1" />
@@ -243,7 +243,7 @@ const docs: ComponentDocs = {
                   <Placeholder height={200} label="Panel 4" />
                 </TabPanel>
               </TabPanels>
-            </Card>
+            </Box>
           </TabsProvider>,
         ),
     },
@@ -257,34 +257,32 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id }) =>
         source(
-          <Card>
-            <TabsProvider id={id}>
-              <Stack space="medium">
-                <Tabs label="Test tabs">
-                  <Tab>The first tab</Tab>
-                  <Tab badge={<Badge tone="positive">New</Badge>}>
-                    The second tab
-                  </Tab>
-                  <Tab>The third tab</Tab>
-                  <Tab>The fourth tab</Tab>
-                </Tabs>
-                <TabPanels>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 1" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 2" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 3" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 4" />
-                  </TabPanel>
-                </TabPanels>
-              </Stack>
-            </TabsProvider>
-          </Card>,
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs">
+                <Tab>The first tab</Tab>
+                <Tab badge={<Badge tone="positive">New</Badge>}>
+                  The second tab
+                </Tab>
+                <Tab>The third tab</Tab>
+                <Tab>The fourth tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 3" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 4" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>,
         ),
     },
     {
@@ -300,32 +298,30 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id }) =>
         source(
-          <Card>
-            <TabsProvider id={id}>
-              <Stack space="medium">
-                <Tabs label="Test tabs">
-                  <Tab icon={<IconHome />}>The first tab</Tab>
-                  <Tab icon={<IconRecommended />}>The second tab</Tab>
-                  <Tab icon={<IconCompany />}>The third tab</Tab>
-                  <Tab icon={<IconProfile />}>The fourth tab</Tab>
-                </Tabs>
-                <TabPanels>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 1" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 2" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 3" />
-                  </TabPanel>
-                  <TabPanel>
-                    <Placeholder height={200} label="Panel 4" />
-                  </TabPanel>
-                </TabPanels>
-              </Stack>
-            </TabsProvider>
-          </Card>,
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs">
+                <Tab icon={<IconHome />}>The first tab</Tab>
+                <Tab icon={<IconRecommended />}>The second tab</Tab>
+                <Tab icon={<IconCompany />}>The third tab</Tab>
+                <Tab icon={<IconProfile />}>The fourth tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 3" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 4" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>,
         ),
     },
     {
@@ -349,18 +345,13 @@ const docs: ComponentDocs = {
               selectedItem={getState('tab')}
               onChange={(index, item) => setState('tab', item)}
             >
-              <Tabs
-                label="Test tabs"
-                gutter="gutter"
-                divider="none"
-                reserveHitArea
-              >
-                <Tab item="first">The first tab</Tab>
-                <Tab item="second">The second tab</Tab>
-                <Tab item="third">The third tab</Tab>
-                <Tab item="fourth">The fourth tab</Tab>
-              </Tabs>
-              <Card>
+              <Stack space="medium">
+                <Tabs label="Test tabs" divider="none" reserveHitArea>
+                  <Tab item="first">The first tab</Tab>
+                  <Tab item="second">The second tab</Tab>
+                  <Tab item="third">The third tab</Tab>
+                  <Tab item="fourth">The fourth tab</Tab>
+                </Tabs>
                 <TabPanels>
                   <TabPanel item="first">
                     <Placeholder height={200} label="Panel 1" />
@@ -375,7 +366,7 @@ const docs: ComponentDocs = {
                     <Placeholder height={200} label="Panel 4" />
                   </TabPanel>
                 </TabPanels>
-              </Card>
+              </Stack>
             </TabsProvider>
           </>,
         ),

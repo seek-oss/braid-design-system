@@ -6,7 +6,6 @@ import source from '@braid-design-system/source.macro';
 export const galleryItems: GalleryComponent = {
   examples: [
     {
-      background: 'surface',
       Example: ({ handler }) =>
         source(
           <Box style={{ maxWidth: '100px' }}>

@@ -371,102 +371,93 @@ const docs: CssDoc = {
               ways when upgrading Braid.
             </Text>
           </Alert>
-          <ThemedExample>
-            <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
-              {Object.entries(
-                validateBoxShadows({
-                  small: 'Used for small shadows.',
-                  medium: 'Used for medium shadows.',
-                  large: 'Used for large shadows.',
-                  borderNeutral: 'Used for neutral element borders.',
-                  borderNeutralLarge: 'Used for large neutral element borders.',
-                  borderNeutralInverted:
-                    'Used for neutral borders on dark backgrounds.',
-                  borderNeutralInvertedLarge:
-                    'Used for large neutral borders on dark backgrounds.',
-                  borderNeutralLight: 'Used for light neutral element borders.',
-                  borderField: 'Used for borders around form fields.',
-                  outlineFocus:
-                    'Used for focus states of interactive elements.',
-                  borderFormAccent:
-                    'Used for borders around prominent interactive elements.',
-                  borderFormAccentLarge:
-                    'Used for large borders around prominent interactive elements.',
-                  borderFormAccentLight:
-                    'Used for borders around prominent interactive elements in a dark context.',
-                  borderFormAccentLightLarge:
-                    'Used for large borders around prominent interactive elements in a dark context.',
-                  borderBrandAccent:
-                    'Used for borders around branded elements.',
-                  borderBrandAccentLarge:
-                    'Used for large borders around branded elements.',
-                  borderBrandAccentLight:
-                    'Used for borders around branded elements in a dark context.',
-                  borderBrandAccentLightLarge:
-                    'Used for large borders around branded elements in a dark context.',
-                  borderPositive:
-                    'Used for borders around “positive” elements.',
-                  borderPositiveLight:
-                    'Used for borders around “positiveLight” elements.',
-                  borderCritical:
-                    'Used for borders around “critical” elements.',
-                  borderCriticalLarge:
-                    'Used for large borders around “critical” elements.',
-                  borderCriticalLight:
-                    'Used for borders around “criticalLight” elements.',
-                  borderCriticalLightLarge:
-                    'Used for large borders around “criticalLight” elements.',
-                  borderCaution: 'Used for borders around “caution” elements.',
-                  borderCautionLight:
-                    'Used for borders around “cautionLight” elements.',
-                  borderInfo: 'Used for borders around “info” elements.',
-                  borderInfoLight:
-                    'Used for borders around “infoLight” elements.',
-                  borderPromote: 'Used for borders around “promote” elements.',
-                  borderPromoteLight:
-                    'Used for borders around “promoteLight” elements.',
-                }),
-              ).map(([boxShadow, description]) => (
-                <Columns key={boxShadow} space="medium" alignY="center">
-                  <Column width="content">
+          <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
+            {Object.entries(
+              validateBoxShadows({
+                small: 'Used for small shadows.',
+                medium: 'Used for medium shadows.',
+                large: 'Used for large shadows.',
+                borderNeutral: 'Used for neutral element borders.',
+                borderNeutralLarge: 'Used for large neutral element borders.',
+                borderNeutralInverted:
+                  'Used for neutral borders on dark backgrounds.',
+                borderNeutralInvertedLarge:
+                  'Used for large neutral borders on dark backgrounds.',
+                borderNeutralLight: 'Used for light neutral element borders.',
+                borderField: 'Used for borders around form fields.',
+                outlineFocus: 'Used for focus states of interactive elements.',
+                borderFormAccent:
+                  'Used for borders around prominent interactive elements.',
+                borderFormAccentLarge:
+                  'Used for large borders around prominent interactive elements.',
+                borderFormAccentLight:
+                  'Used for borders around prominent interactive elements in a dark context.',
+                borderFormAccentLightLarge:
+                  'Used for large borders around prominent interactive elements in a dark context.',
+                borderBrandAccent: 'Used for borders around branded elements.',
+                borderBrandAccentLarge:
+                  'Used for large borders around branded elements.',
+                borderBrandAccentLight:
+                  'Used for borders around branded elements in a dark context.',
+                borderBrandAccentLightLarge:
+                  'Used for large borders around branded elements in a dark context.',
+                borderPositive: 'Used for borders around “positive” elements.',
+                borderPositiveLight:
+                  'Used for borders around “positiveLight” elements.',
+                borderCritical: 'Used for borders around “critical” elements.',
+                borderCriticalLarge:
+                  'Used for large borders around “critical” elements.',
+                borderCriticalLight:
+                  'Used for borders around “criticalLight” elements.',
+                borderCriticalLightLarge:
+                  'Used for large borders around “criticalLight” elements.',
+                borderCaution: 'Used for borders around “caution” elements.',
+                borderCautionLight:
+                  'Used for borders around “cautionLight” elements.',
+                borderInfo: 'Used for borders around “info” elements.',
+                borderInfoLight:
+                  'Used for borders around “infoLight” elements.',
+                borderPromote: 'Used for borders around “promote” elements.',
+                borderPromoteLight:
+                  'Used for borders around “promoteLight” elements.',
+              }),
+            ).map(([boxShadow, description]) => (
+              <Columns key={boxShadow} space="medium" alignY="center">
+                <Column width="content">
+                  <ThemedExample
+                    darkCanvas={
+                      boxShadow.includes('Light') ||
+                      boxShadow.includes('Inverted')
+                    }
+                  >
                     <Box
-                      background={{
-                        lightMode: boxShadow.includes('Inverted')
-                          ? 'neutral'
-                          : 'surface',
-                        darkMode: /^border|outline/.test(boxShadow)
-                          ? 'surfaceDark'
-                          : 'surface',
+                      background={
+                        ['small', 'medium', 'large'].includes(boxShadow)
+                          ? 'surface'
+                          : undefined
+                      }
+                      boxShadow={{
+                        lightMode: boxShadow as keyof BoxShadowDocs,
+                        darkMode: boxShadow as keyof BoxShadowDocs,
                       }}
                       borderRadius="standard"
-                      padding="gutter"
-                    >
-                      <Box
-                        boxShadow={{
-                          lightMode: boxShadow as keyof BoxShadowDocs,
-                          darkMode: boxShadow as keyof BoxShadowDocs,
-                        }}
-                        borderRadius="standard"
-                        padding="gutter"
-                      />
-                    </Box>
-                  </Column>
-                  <Column>
-                    <Box paddingRight="medium">
-                      <Stack space="small">
-                        <Text weight="medium">
-                          <Box style={{ wordBreak: 'break-all' }}>
-                            {boxShadow}
-                          </Box>
-                        </Text>
-                        <Text tone="secondary">{description}</Text>
-                      </Stack>
-                    </Box>
-                  </Column>
-                </Columns>
-              ))}
-            </Tiles>
-          </ThemedExample>
+                      padding="medium"
+                    />
+                  </ThemedExample>
+                </Column>
+                <Column>
+                  <Stack space="medium">
+                    <Text weight="strong">
+                      <Box component="span" style={{ wordBreak: 'break-all' }}>
+                        {boxShadow}
+                      </Box>
+                    </Text>
+                    <Text tone="secondary">{description}</Text>
+                  </Stack>
+                </Column>
+              </Columns>
+            ))}
+          </Tiles>
         </>
       ),
     },

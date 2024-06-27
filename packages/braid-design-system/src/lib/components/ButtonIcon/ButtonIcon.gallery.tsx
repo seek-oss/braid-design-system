@@ -19,7 +19,6 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Soft',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="small">
@@ -48,7 +47,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Transparent',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="medium">
@@ -81,7 +79,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Sizes',
-      background: 'surface',
       Example: () =>
         source(
           <Stack space="medium">
@@ -123,7 +120,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Tone',
-      background: 'surface',
       Example: () =>
         source(
           <Stack space="medium">
@@ -172,7 +168,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With bleed',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="small" alignY="center">

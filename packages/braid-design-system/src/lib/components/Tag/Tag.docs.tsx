@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import {
-  Card,
   Inline,
   Tag,
   Strong,
@@ -17,19 +16,16 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
-        <Inline space="small">
-          <Tag>One</Tag>
-          <Tag>Two</Tag>
-          <Tag>Three</Tag>
-        </Inline>
-      </Card>,
+      <Inline space="small">
+        <Tag>One</Tag>
+        <Tag>Two</Tag>
+        <Tag>Three</Tag>
+      </Inline>,
     ),
   alternatives: [{ name: 'Badge', description: 'For static labels.' }],
   additional: [
     {
       label: 'Sizes',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -82,7 +78,6 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
       Example: ({ getState, setState, toggleState }) =>
         source(
           <Inline space="small" alignY="center">
@@ -131,7 +126,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Inserting an icon',
-      background: 'surface',
       description: (
         <>
           <Text>

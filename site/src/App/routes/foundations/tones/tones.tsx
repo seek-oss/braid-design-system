@@ -145,7 +145,7 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
     <Stack space="small">
       <Columns space="medium" alignY="center">
         <Column width="content">
-          <ThemedExample>
+          <ThemedExample transparent>
             <Box background={swatch} className={styles.square} />
           </ThemedExample>
         </Column>
@@ -214,7 +214,7 @@ function TonePage() {
         {tones.map((tone) => (
           <Column key={tone}>
             <Stack space={['none', 'xsmall']}>
-              <ThemedExample>
+              <ThemedExample transparent>
                 <Box
                   background={toneDocs[tone].swatch}
                   width="full"

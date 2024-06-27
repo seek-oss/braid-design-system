@@ -40,7 +40,7 @@ export interface ComponentDocs {
   banner?: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
-  examplebackground?: NonNullable<BoxProps['background']> | false;
+  examplebackground?: false;
   Example?: (
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;

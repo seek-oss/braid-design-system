@@ -7,7 +7,6 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Positive',
-      background: 'surface',
       Example: () => source(<Badge tone="positive">Positive</Badge>),
     },
     {
@@ -21,7 +20,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Critical',
-      background: 'surface',
       Example: () => source(<Badge tone="critical">Critical</Badge>),
     },
     {
@@ -35,7 +33,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Caution',
-      background: 'surface',
       Example: () => source(<Badge tone="caution">Caution</Badge>),
     },
     {
@@ -49,7 +46,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Info',
-      background: 'surface',
       Example: () => source(<Badge tone="info">Info</Badge>),
     },
     {
@@ -63,7 +59,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Promote',
-      background: 'surface',
       Example: () => source(<Badge tone="promote">Promote</Badge>),
     },
     {
@@ -77,7 +72,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Neutral',
-      background: 'surface',
       Example: () => source(<Badge tone="neutral">Neutral</Badge>),
     },
     {

@@ -2,7 +2,6 @@ import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import {
   Button,
-  Card,
   Stack,
   Box,
   Heading,
@@ -36,7 +35,6 @@ const choosingRightButtonDoc = [
         </Text>
       </>
     ),
-    background: 'surface',
     playroom: false,
     code: false,
     Example: () =>
@@ -65,7 +63,6 @@ const choosingRightButtonDoc = [
         </Text>
       </>
     ),
-    background: 'surface',
     playroom: false,
     code: false,
     Example: () =>
@@ -93,7 +90,6 @@ const choosingRightButtonDoc = [
         </Text>
       </>
     ),
-    background: 'surface',
     playroom: false,
     code: false,
     Example: () =>
@@ -117,14 +113,12 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
-        <Inline space="small" collapseBelow="desktop">
-          <Button variant="solid">Solid</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="soft">Soft</Button>
-          <Button variant="transparent">Transparent</Button>
-        </Inline>
-      </Card>,
+      <Inline space="small" collapseBelow="desktop">
+        <Button variant="solid">Solid</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="soft">Soft</Button>
+        <Button variant="transparent">Transparent</Button>
+      </Inline>,
     ),
   alternatives: [
     {
@@ -143,7 +137,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Variants',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -173,7 +166,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Branding',
-      background: 'surface',
       description: (
         <Text>
           For hero actions that want to leverage the brand colour, you can set
@@ -200,7 +192,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Destructive actions',
-      background: 'surface',
       description: (
         <Text>
           For destructive actions like “Delete” you can set the button’s{' '}
@@ -227,7 +218,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Emphasizing actions',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -262,7 +252,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'De-emphasized actions',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -322,7 +311,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Sizes',
-      background: 'surface',
       description: (
         <Text>
           You can customise the size of the button via the <Strong>size</Strong>{' '}
@@ -369,7 +357,6 @@ const docs: ComponentDocs = {
     ...choosingRightButtonDoc,
     {
       label: 'Icons',
-      background: 'surface',
       description: (
         <Text>
           For decoration or help distinguishing between buttons, an{' '}
@@ -379,13 +366,13 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Inline space="gutter" alignY="center">
-            <Stack space="small" align="center">
+            <Stack space="small">
               <Text tone="secondary" weight="strong">
                 Standard size
               </Text>
               <Button icon={<IconSend />}>Send</Button>
             </Stack>
-            <Stack space="small" align="center">
+            <Stack space="small">
               <Text tone="secondary" weight="strong">
                 Small size
               </Text>
@@ -397,7 +384,6 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      background: 'surface',
       description: (
         <Text>
           By default, an icon will be <Strong>leading</Strong> the label,
@@ -419,7 +405,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Loading Button',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -553,14 +538,13 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
       Example: ({ setDefaultState, toggleState, getState }) =>
         source(
           <>
             {setDefaultState('bleed', true)}
 
-            <Stack space="large">
-              <Stack space="small">
+            <Stack space="xlarge">
+              <Stack space="large">
                 <Toggle
                   id="bleed"
                   on={getState('bleed')}
@@ -571,75 +555,54 @@ const docs: ComponentDocs = {
                 <Text tone="secondary" weight="strong">
                   Standard size alignment
                 </Text>
-                <Box
-                  background="body"
-                  borderRadius="large"
-                  boxShadow="borderNeutralLight"
-                  padding="gutter"
-                >
-                  <Box background="surface" boxShadow="borderCriticalLight">
-                    <Inline space="xsmall" alignY="center">
-                      <Heading level="2">Heading</Heading>
-                      <Button
-                        bleed={getState('bleed')}
-                        tone="formAccent"
-                        variant="solid"
-                      >
-                        Button
-                      </Button>
-                    </Inline>
-                  </Box>
+                <Box boxShadow="borderCriticalLight">
+                  <Inline space="xsmall" alignY="center">
+                    <Heading level="2">Heading</Heading>
+                    <Button
+                      bleed={getState('bleed')}
+                      tone="formAccent"
+                      variant="solid"
+                    >
+                      Button
+                    </Button>
+                  </Inline>
                 </Box>
               </Stack>
-              <Stack space="small">
+              <Stack space="medium">
                 <Text tone="secondary" weight="strong">
                   Small size alignment
                 </Text>
-                <Box
-                  background="body"
-                  borderRadius="large"
-                  boxShadow="borderNeutralLight"
-                  padding="gutter"
-                >
-                  <Box background="surface" boxShadow="borderCriticalLight">
-                    <Inline space="xsmall" alignY="center">
-                      <Heading level="2">Heading</Heading>
+                <Box boxShadow="borderCriticalLight">
+                  <Inline space="xsmall" alignY="center">
+                    <Heading level="2">Heading</Heading>
+                    <Button
+                      bleed={getState('bleed')}
+                      size="small"
+                      tone="formAccent"
+                      variant="solid"
+                    >
+                      Button
+                    </Button>
+                  </Inline>
+                </Box>
+              </Stack>
+              <Stack space="medium">
+                <Text tone="secondary" weight="strong">
+                  Transparent variant alignment
+                </Text>
+                <Box boxShadow="borderCriticalLight">
+                  <Stack space="gutter">
+                    <Heading level="2">Heading</Heading>
+                    <Inline space="none">
                       <Button
                         bleed={getState('bleed')}
-                        size="small"
+                        variant="transparent"
                         tone="formAccent"
-                        variant="solid"
                       >
                         Button
                       </Button>
                     </Inline>
-                  </Box>
-                </Box>
-              </Stack>
-              <Stack space="small">
-                <Text tone="secondary" weight="strong">
-                  Transparent variant alignment
-                </Text>
-                <Box
-                  background="body"
-                  borderRadius="large"
-                  boxShadow="borderNeutralLight"
-                  padding="gutter"
-                >
-                  <Box background="surface" boxShadow="borderCriticalLight">
-                    <Stack space="gutter">
-                      <Heading level="2">Heading</Heading>
-                      <Inline space="none">
-                        <Button
-                          bleed={getState('bleed')}
-                          variant="transparent"
-                          tone="formAccent"
-                        >
-                          Button
-                        </Button>
-                      </Inline>
-                    </Stack>
-                  </Box>
+                  </Stack>
                 </Box>
               </Stack>
             </Stack>

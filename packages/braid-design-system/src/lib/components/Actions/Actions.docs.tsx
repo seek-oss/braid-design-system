@@ -1,19 +1,17 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
-import { Actions, Button, TextLink, Text, Strong, Card, Stack } from '../';
+import { Actions, Button, TextLink, Text, Strong, Stack } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
-        <Actions>
-          <Button>Button 1</Button>
-          <Button>Button 2</Button>
-          <Button variant="transparent">Button 3</Button>
-        </Actions>
-      </Card>,
+      <Actions>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button variant="transparent">Button 3</Button>
+      </Actions>,
     ),
   alternatives: [
     {

@@ -108,7 +108,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Menu interactions',
-      background: 'surface',
       description: (
         <>
           <Text>

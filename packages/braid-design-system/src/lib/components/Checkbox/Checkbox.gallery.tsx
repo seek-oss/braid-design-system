@@ -67,7 +67,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'States',
-      background: 'surface',
       Example: ({ id, handler }) =>
         source(
           <Stack space="medium">

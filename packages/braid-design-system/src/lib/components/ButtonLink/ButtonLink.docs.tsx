@@ -1,29 +1,27 @@
 import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { ButtonLink, Strong, Text, Card, Inline } from '../';
+import { ButtonLink, Strong, Text, Inline } from '../';
 import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
-        <Inline space="small" collapseBelow="desktop">
-          <ButtonLink href="#" variant="solid">
-            Solid
-          </ButtonLink>
-          <ButtonLink href="#" variant="ghost">
-            Ghost
-          </ButtonLink>
-          <ButtonLink href="#" variant="soft">
-            Soft
-          </ButtonLink>
-          <ButtonLink href="#" variant="transparent">
-            Transparent
-          </ButtonLink>
-        </Inline>
-      </Card>,
+      <Inline space="small" collapseBelow="desktop">
+        <ButtonLink href="#" variant="solid">
+          Solid
+        </ButtonLink>
+        <ButtonLink href="#" variant="ghost">
+          Ghost
+        </ButtonLink>
+        <ButtonLink href="#" variant="soft">
+          Soft
+        </ButtonLink>
+        <ButtonLink href="#" variant="transparent">
+          Transparent
+        </ButtonLink>
+      </Inline>,
     ),
   accessibility: (
     <Text>

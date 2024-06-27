@@ -135,7 +135,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Disabled field',
-      background: 'surface',
       Example: ({ id, getState, setState }) =>
         source(
           <TextField

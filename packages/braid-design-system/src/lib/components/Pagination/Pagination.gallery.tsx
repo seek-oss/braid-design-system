@@ -7,7 +7,6 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      background: 'surface',
       Example: () => source(<Pagination />),
     },
   ],

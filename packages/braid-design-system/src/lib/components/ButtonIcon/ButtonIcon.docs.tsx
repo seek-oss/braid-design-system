@@ -19,7 +19,6 @@ import {
   Notice,
   IconOverflow,
   IconAdd,
-  Card,
   IconArrow,
 } from '..';
 
@@ -27,14 +26,12 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
-        <Inline space="small">
-          <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="example-1" />
-          <ButtonIcon icon={<IconAdd />} label="Add" id="example-2" />
-          <ButtonIcon icon={<IconShare />} label="Share" id="example-3" />
-          <ButtonIcon icon={<IconOverflow />} label="More" id="example-4" />
-        </Inline>
-      </Card>,
+      <Inline space="small">
+        <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="example-1" />
+        <ButtonIcon icon={<IconAdd />} label="Add" id="example-2" />
+        <ButtonIcon icon={<IconShare />} label="Share" id="example-3" />
+        <ButtonIcon icon={<IconOverflow />} label="More" id="example-4" />
+      </Inline>,
     ),
   accessibility: (
     <>
@@ -66,7 +63,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Variants',
-      background: 'surface',
       description: (
         <Text>
           The button appearance can be customised via the{' '}
@@ -105,7 +101,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Sizes',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -164,7 +159,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Tone',
-      background: 'surface',
       description: (
         <Text>
           By default, the button adopts the <Strong>neutral</Strong> tone,
@@ -204,7 +198,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Tooltip Placement',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -251,7 +244,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Bleed',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -277,46 +269,34 @@ const docs: ComponentDocs = {
               <Text tone="secondary" size="xsmall">
                 BLEED
               </Text>
-              <Box
-                background="neutralLight"
-                borderRadius="standard"
-                padding="gutter"
-              >
-                <Box background="surface">
-                  <Inline space="small" alignY="center">
-                    <Heading level="2">Heading</Heading>
-                    <ButtonIcon
-                      bleed={true}
-                      size="large"
-                      icon={<IconHelp />}
-                      label="Bleed"
-                      id="bleed-1"
-                    />
-                  </Inline>
-                </Box>
+              <Box boxShadow="borderCriticalLight">
+                <Inline space="small" alignY="center">
+                  <Heading level="2">Heading</Heading>
+                  <ButtonIcon
+                    bleed={true}
+                    size="large"
+                    icon={<IconHelp />}
+                    label="Bleed"
+                    id="bleed-1"
+                  />
+                </Inline>
               </Box>
             </Stack>
             <Stack space="small">
               <Text tone="secondary" size="xsmall">
                 NO BLEED
               </Text>
-              <Box
-                background="neutralLight"
-                borderRadius="standard"
-                padding="gutter"
-              >
-                <Box background="surface">
-                  <Inline space="small" alignY="center">
-                    <Heading level="2">Heading</Heading>
-                    <ButtonIcon
-                      bleed={false}
-                      size="large"
-                      icon={<IconHelp />}
-                      label="No Bleed"
-                      id="bleed-2"
-                    />
-                  </Inline>
-                </Box>
+              <Box boxShadow="borderCriticalLight">
+                <Inline space="small" alignY="center">
+                  <Heading level="2">Heading</Heading>
+                  <ButtonIcon
+                    bleed={false}
+                    size="large"
+                    icon={<IconHelp />}
+                    label="No Bleed"
+                    id="bleed-2"
+                  />
+                </Inline>
               </Box>
             </Stack>
           </Stack>,
