@@ -27,6 +27,14 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
+      - name: Cache babel-loader
+        id: babel-loader-cache
+        uses: actions/cache@v4
+        with:
+          path: 'site/node_modules/.cache/babel-loader'
+          key: babel-loader-${{ runner.os }}-${{ hashFiles('./pnpm-lock.yaml') }}
+          restore-keys: babel-loader-${{ runner.os }}-
+
       - name: Build
         run: pnpm build:site
 
