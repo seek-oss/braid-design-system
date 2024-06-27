@@ -4,7 +4,7 @@ import { Tag, Inline, IconTag, Stack } from '../';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
+  screenshotWidths: [768],
   examples: [
     {
       label: 'Standard Tag',
@@ -14,6 +14,9 @@ export const screenshots: ComponentScreenshot = {
           <Tag>Tag</Tag>
           <Tag icon={<IconTag />}>Tag</Tag>
           <Tag icon={<IconTag />} onClear={handler} clearLabel="Clear">
+            Tag
+          </Tag>
+          <Tag icon={<IconTag />} onAdd={handler} addLabel="Add">
             Tag
           </Tag>
         </Inline>
@@ -36,6 +39,9 @@ export const screenshots: ComponentScreenshot = {
           >
             Tag
           </Tag>
+          <Tag size="small" icon={<IconTag />} onAdd={handler} addLabel="Add">
+            Tag
+          </Tag>
         </Inline>
       ),
     },
@@ -43,13 +49,36 @@ export const screenshots: ComponentScreenshot = {
       label: 'Truncated Tag',
       background: 'surface',
       Example: ({ handler }) => (
-        <Tag onClear={handler} clearLabel="Clear tag">
-          The quick brown fox jumps over the lazy dog. The quick brown fox jumps
-          over the lazy dog. The quick brown fox jumps over the lazy dog. The
-          quick brown fox jumps over the lazy dog. The quick brown fox jumps
-          over the lazy dog. The quick brown fox jumps over the lazy dog. The
-          quick brown fox jumps over the lazy dog.
-        </Tag>
+        <Stack space="small">
+          <Tag>
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
+          <Tag icon={<IconTag />}>
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
+          <Tag onClear={handler} clearLabel="Clear tag">
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
+          <Tag icon={<IconTag />} onClear={handler} clearLabel="Clear tag">
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
+        </Stack>
       ),
     },
     {
@@ -58,26 +87,19 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ handler }) => (
         <Stack space="large">
           <Inline space="xsmall" data={{ [debugTouchableAttrForDataProp]: '' }}>
-            <Tag size="small">Tag</Tag>
             <Tag size="small" onClear={handler} clearLabel="Clear">
               Tag
             </Tag>
-            <Tag
-              size="small"
-              icon={<IconTag />}
-              onClear={handler}
-              clearLabel="Clear"
-            >
+            <Tag size="small" onAdd={handler} addLabel="Add">
               Tag
             </Tag>
           </Inline>
 
           <Inline space="small" data={{ [debugTouchableAttrForDataProp]: '' }}>
-            <Tag>Tag</Tag>
             <Tag onClear={handler} clearLabel="Clear">
               Tag
             </Tag>
-            <Tag icon={<IconTag />} onClear={handler} clearLabel="Clear">
+            <Tag onAdd={handler} addLabel="Add">
               Tag
             </Tag>
           </Inline>
