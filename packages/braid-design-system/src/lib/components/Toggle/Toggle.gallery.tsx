@@ -14,6 +14,7 @@ export const galleryItems: GalleryComponent = {
             id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
+            bleedY
           />,
         ),
     },
@@ -27,6 +28,7 @@ export const galleryItems: GalleryComponent = {
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
             size="small"
+            bleedY
           />,
         ),
     },
@@ -40,6 +42,7 @@ export const galleryItems: GalleryComponent = {
             id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
+            bleedY
           />,
         ),
     },
@@ -53,6 +56,7 @@ export const galleryItems: GalleryComponent = {
             id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
+            bleedY
           />,
         ),
     },
