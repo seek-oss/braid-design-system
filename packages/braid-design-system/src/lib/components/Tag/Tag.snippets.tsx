@@ -41,6 +41,22 @@ export const snippets: Snippets = [
     ),
   },
   {
+    name: 'Addable',
+    code: source(
+      <Inline space="small">
+        <Tag onAdd={() => {}} addLabel="Add">
+          Tag
+        </Tag>
+        <Tag onAdd={() => {}} addLabel="Add">
+          Tag
+        </Tag>
+        <Tag onAdd={() => {}} addLabel="Add">
+          Tag
+        </Tag>
+      </Inline>,
+    ),
+  },
+  {
     name: 'With icon',
     code: source(
       <Inline space="small">

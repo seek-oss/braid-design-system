@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
-import { Tag, Inline, Text, TextLinkButton, IconTag } from '../';
+import { Tag, Inline, IconTag } from '../';
 import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
@@ -18,39 +18,16 @@ export const galleryItems: GalleryComponent = {
       Example: () => source(<Tag icon={<IconTag />}>Tag</Tag>),
     },
     {
-      label: 'Clearable',
-      Example: ({ getState, setState }) =>
+      label: 'Actionable',
+      Example: () =>
         source(
           <Inline space="small" alignY="center">
-            <Tag>One</Tag>
-            {!getState('clearTwo') ? (
-              <Tag
-                onClear={() => setState('clearTwo', true)}
-                clearLabel={'Clear "Two"'}
-              >
-                Two
-              </Tag>
-            ) : null}
-            {!getState('clearThree') ? (
-              <Tag
-                onClear={() => setState('clearThree', true)}
-                clearLabel={'Clear "Three"'}
-              >
-                Three
-              </Tag>
-            ) : null}
-            <Text tone="secondary">
-              <TextLinkButton
-                weight="weak"
-                hitArea="large"
-                onClick={() => {
-                  setState('clearTwo', false);
-                  setState('clearThree', false);
-                }}
-              >
-                Reset
-              </TextLinkButton>
-            </Text>
+            <Tag addLabel="Add" onAdd={() => {}}>
+              Addable
+            </Tag>
+            <Tag clearLabel="Clear" onClear={() => {}}>
+              Clearable
+            </Tag>
           </Inline>,
         ),
     },
