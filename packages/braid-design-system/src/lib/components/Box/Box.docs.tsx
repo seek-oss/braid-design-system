@@ -10,7 +10,9 @@ import {
   Column,
   Strong,
   Alert,
+  BraidProvider,
 } from '../';
+import docsTheme from 'braid-src/lib/themes/docs';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type SimpleBackground, Box } from './Box';
@@ -434,7 +436,7 @@ const docs: ComponentDocs = {
             <Strong>customLight</Strong> or <Strong>customDark</Strong>.
           </Text>
           <Stack space="xxsmall">
-            <ThemedExample background="body">
+            <ThemedExample>
               <Stack space="large">
                 <Box
                   padding="medium"
@@ -495,6 +497,8 @@ const docs: ComponentDocs = {
           </Alert>
         </>
       ),
+      code: false,
+      background: false,
       Example: () => {
         const { code, value } = source(
           <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
@@ -553,40 +557,26 @@ const docs: ComponentDocs = {
             ).map(([background, description]) => (
               <Columns key={background} space="medium" alignY="center">
                 <Column width="content">
-                  <Box
-                    background="surface"
-                    borderRadius="large"
-                    padding="gutter"
-                  >
+                  <ThemedExample>
                     <Box
                       background={{
                         lightMode: background as keyof BackgroundDocs,
                         darkMode: background as keyof BackgroundDocs,
                       }}
-                      boxShadow={
-                        (
-                          {
-                            surface: { lightMode: 'borderNeutralLight' },
-                            surfaceDark: { darkMode: 'borderNeutral' },
-                          } as const
-                        )[background]
-                      }
-                      borderRadius="large"
-                      padding="gutter"
+                      borderRadius="standard"
+                      padding="medium"
                     />
-                  </Box>
+                  </ThemedExample>
                 </Column>
                 <Column>
-                  <Box paddingRight="medium">
-                    <Stack space="small">
-                      <Text weight="medium">
-                        <Box style={{ wordBreak: 'break-all' }}>
-                          {background}
-                        </Box>
-                      </Text>
-                      <Text tone="secondary">{description}</Text>
-                    </Stack>
-                  </Box>
+                  <Stack space="medium">
+                    <Text weight="strong">
+                      <Box component="span" style={{ wordBreak: 'break-all' }}>
+                        {background}
+                      </Box>
+                    </Text>
+                    <Text tone="secondary">{description}</Text>
+                  </Stack>
                 </Column>
               </Columns>
             ))}
@@ -597,7 +587,11 @@ const docs: ComponentDocs = {
           code: code
             .replace('validateBackgrounds', '')
             .replace(' as keyof BackgroundDocs', ''),
-          value,
+          value: (
+            <BraidProvider styleBody={false} theme={docsTheme}>
+              {value}
+            </BraidProvider>
+          ),
         };
       },
     },
@@ -626,6 +620,8 @@ const docs: ComponentDocs = {
           </Alert>
         </>
       ),
+      code: false,
+      background: false,
       Example: () => {
         const { code, value } = source(
           <Tiles space="large" columns={{ mobile: 1, desktop: 2 }}>
@@ -681,39 +677,36 @@ const docs: ComponentDocs = {
             ).map(([boxShadow, description]) => (
               <Columns key={boxShadow} space="medium" alignY="center">
                 <Column width="content">
-                  <Box
-                    background={{
-                      lightMode: boxShadow.includes('Inverted')
-                        ? 'neutral'
-                        : 'surface',
-                      darkMode: /^border|outline/.test(boxShadow)
-                        ? 'surfaceDark'
-                        : 'surface',
-                    }}
-                    borderRadius="large"
-                    padding="gutter"
+                  <ThemedExample
+                    darkCanvas={
+                      boxShadow.includes('Light') ||
+                      boxShadow.includes('Inverted')
+                    }
                   >
                     <Box
+                      background={
+                        ['small', 'medium', 'large'].includes(boxShadow)
+                          ? 'surface'
+                          : undefined
+                      }
                       boxShadow={{
                         lightMode: boxShadow as keyof BoxShadowDocs,
                         darkMode: boxShadow as keyof BoxShadowDocs,
                       }}
-                      borderRadius="large"
-                      padding="gutter"
+                      borderRadius="standard"
+                      padding="medium"
                     />
-                  </Box>
+                  </ThemedExample>
                 </Column>
                 <Column>
-                  <Box paddingRight="medium">
-                    <Stack space="small">
-                      <Text weight="medium">
-                        <Box style={{ wordBreak: 'break-all' }}>
-                          {boxShadow}
-                        </Box>
-                      </Text>
-                      <Text tone="secondary">{description}</Text>
-                    </Stack>
-                  </Box>
+                  <Stack space="medium">
+                    <Text weight="strong">
+                      <Box component="span" style={{ wordBreak: 'break-all' }}>
+                        {boxShadow}
+                      </Box>
+                    </Text>
+                    <Text tone="secondary">{description}</Text>
+                  </Stack>
                 </Column>
               </Columns>
             ))}
@@ -724,7 +717,11 @@ const docs: ComponentDocs = {
           code: code
             .replace('validateBoxShadows', '')
             .replace(' as keyof BoxShadowDocs', ''),
-          value,
+          value: (
+            <BraidProvider styleBody={false} theme={docsTheme}>
+              {value}
+            </BraidProvider>
+          ),
         };
       },
     },

@@ -16,7 +16,6 @@ import source from '@braid-design-system/source.macro';
 export const galleryItems: GalleryComponent = {
   examples: [
     {
-      background: 'surface',
       Example: ({ setDefaultState, getState, toggleState }) =>
         source(
           <>

@@ -26,7 +26,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Sizes',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -94,7 +93,6 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
       Example: ({ setDefaultState, getState, setState }) => {
         const { code, value } = source(
           <>
@@ -158,7 +156,6 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Inserting an icon',
-      background: 'surface',
       description: (
         <>
           <Text>

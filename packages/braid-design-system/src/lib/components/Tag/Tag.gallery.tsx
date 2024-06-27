@@ -7,22 +7,18 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      background: 'surface',
       Example: () => source(<Tag>Tag</Tag>),
     },
     {
       label: 'Small',
-      background: 'surface',
       Example: () => source(<Tag size="small">Tag</Tag>),
     },
     {
       label: 'With an icon',
-      background: 'surface',
       Example: () => source(<Tag icon={<IconTag />}>Tag</Tag>),
     },
     {
       label: 'Actionable',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="small" alignY="center">

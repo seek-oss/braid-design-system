@@ -7,12 +7,14 @@ import * as styles from './ThemedExample.css';
 interface ThemedExampleProps {
   background?: BoxProps['background'];
   transparent?: boolean;
+  darkCanvas?: boolean;
   children: ReactNode;
 }
 
 export function ThemedExample({
   background,
   transparent = false,
+  darkCanvas = false,
   children,
 }: ThemedExampleProps) {
   const { theme, ready } = useThemeSettings();
@@ -21,19 +23,30 @@ export function ThemedExample({
     <Box opacity={!ready ? 0 : undefined} transition="fast">
       <BraidProvider styleBody={false} theme={theme}>
         <Box
-          boxShadow={
-            transparent
-              ? undefined
-              : {
-                  lightMode: background ? 'borderNeutralLight' : undefined,
-                  darkMode: 'borderNeutralLarge',
-                }
-          }
-          background={transparent ? undefined : background || 'body'}
-          padding={transparent ? undefined : ['small', 'medium', 'large']}
-          className={styles.unthemedBorderRadius}
+          background={darkCanvas ? 'bodyDark' : 'body'}
+          style={{ backgroundColor: 'transparent' }}
+          borderRadius="large"
         >
-          {children}
+          <Box
+            boxShadow={
+              transparent || (background && background !== 'surface')
+                ? undefined
+                : 'borderNeutralLight'
+            }
+            background={!darkCanvas ? background : undefined}
+            borderRadius="large"
+            padding={transparent ? undefined : 'gutter'}
+            className={
+              transparent
+                ? undefined
+                : [
+                    styles.canvas,
+                    darkCanvas ? styles.explicitDark : styles.adaptiveCanvas,
+                  ]
+            }
+          >
+            {children}
+          </Box>
         </Box>
       </BraidProvider>
     </Box>

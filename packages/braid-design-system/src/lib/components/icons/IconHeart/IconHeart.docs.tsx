@@ -39,7 +39,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Toggling active state',
-      background: 'surface',
       description: (
         <Text>
           The star can be marked as active using the <Strong>active</Strong>{' '}

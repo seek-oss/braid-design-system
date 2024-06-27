@@ -15,7 +15,6 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Default',
-      background: 'surface',
       Example: ({ setDefaultState, getState, toggleState }) =>
         source(
           <>
@@ -62,7 +61,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a Badge',
-      background: 'surface',
       Example: ({ setDefaultState, getState, toggleState }) =>
         source(
           <>

@@ -181,18 +181,16 @@ export const CodeBlock = ({
   return (
     <Box
       position="relative"
-      padding="xxsmall"
-      borderRadius="large"
+      padding="gutter"
+      borderRadius="xlarge"
       background="surfaceDark"
       className={styles.code}
     >
-      <Box padding={['medium', 'medium', 'large']}>
-        <Text size="small" component="pre" baseline={false}>
-          <SyntaxHighlighter language={resolvedLanguage} style={editorTheme}>
-            {children}
-          </SyntaxHighlighter>
-        </Text>
-      </Box>
+      <Text size="small" component="pre" baseline={false}>
+        <SyntaxHighlighter language={resolvedLanguage} style={editorTheme}>
+          {children}
+        </SyntaxHighlighter>
+      </Text>
     </Box>
   );
 };

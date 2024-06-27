@@ -7,7 +7,6 @@ import {
   TextLink,
   Text,
   Strong,
-  Box,
   Alert,
   List,
   Stack,
@@ -558,52 +557,48 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            You can optionally display an overlay behind the field on mobile
-            using the <Strong>showMobileBackdrop</Strong> prop. Note that, for
-            this visual style to work, the field needs to be on a dark
-            background.
+            An overlay can optionally be displayed behind the field on mobile
+            using the <Strong>showMobileBackdrop</Strong> prop.
           </Text>
           <Text>
-            You can also scroll the field to the top of the viewport on focus
-            using the <Strong>scrollToTopOnMobile</Strong> prop.
+            Additionally, you can also scroll the field to the top of the
+            viewport on focus using the <Strong>scrollToTopOnMobile</Strong>{' '}
+            prop.
           </Text>
         </>
       ),
-      background: 'brand',
       Example: ({ id, setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
-            <Box height="full" background="brand">
-              <Autosuggest
-                showMobileBackdrop
-                scrollToTopOnMobile
-                label="Label"
-                id={id}
-                value={getState('value')}
-                onChange={setState('value')}
-                onClear={() => resetState('value')}
-                suggestions={filterSuggestions([
-                  {
-                    text: 'Apples',
-                    value: 1,
-                  },
-                  {
-                    text: 'Bananas',
-                    value: 2,
-                  },
-                  {
-                    text: 'Broccoli',
-                    value: 3,
-                  },
-                  {
-                    text: 'Carrots',
-                    value: 4,
-                  },
-                ])}
-              />
-            </Box>
+            <Autosuggest
+              showMobileBackdrop
+              scrollToTopOnMobile
+              label="Label"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions([
+                {
+                  text: 'Apples',
+                  value: 1,
+                },
+                {
+                  text: 'Bananas',
+                  value: 2,
+                },
+                {
+                  text: 'Broccoli',
+                  value: 3,
+                },
+                {
+                  text: 'Carrots',
+                  value: 4,
+                },
+              ])}
+            />
           </>,
         ),
     },

@@ -39,7 +39,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Changing the feeling',
-      background: 'surface',
       description: (
         <Text>
           The sentiment of the icon can be changed using the{' '}
