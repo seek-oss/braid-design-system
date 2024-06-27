@@ -112,7 +112,6 @@ export const galleryIcons: typeof galleryComponents = Object.keys(icons).map(
             ),
             Example: () => source(<IconComponent size="fill" />),
             code: `<${iconName} />`,
-            background: 'surface',
           },
         ],
       ],
@@ -140,7 +139,7 @@ interface RenderExampleProps {
   isIcon: boolean;
 }
 const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
-  const { label, Container = DefaultContainer, background } = example;
+  const { label, Container = DefaultContainer } = example;
   const { code, value } = useSourceFromExample(id, example);
 
   const CopyCodeButton = () => (
@@ -169,7 +168,7 @@ const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
   const children = [
     <CopyCodeButton key="copyCode" />,
     value ? (
-      <ThemedExample background={background || undefined} key="themedExample">
+      <ThemedExample key="themedExample">
         <Container>
           <Box height="full" width="full" style={{ cursor: 'auto' }}>
             {value}

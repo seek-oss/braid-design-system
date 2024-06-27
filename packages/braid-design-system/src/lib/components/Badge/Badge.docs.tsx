@@ -1,44 +1,42 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
-import { Badge, Card, Inline, Heading, Text, TextLink, Strong } from '../';
+import { Badge, Box, Inline, Heading, Text, TextLink, Strong } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
-        <Inline space="medium" align="center">
-          <Inline space="medium" collapseBelow="desktop" align="center">
-            <Badge tone="positive">Positive</Badge>
-            <Badge tone="promote">Promote</Badge>
-            <Badge tone="info">Info</Badge>
-            <Badge tone="neutral">Neutral</Badge>
-            <Badge tone="caution">Caution</Badge>
-            <Badge tone="critical">Critical</Badge>
-          </Inline>
-          <Inline space="medium" collapseBelow="desktop" align="center">
-            <Badge weight="strong" tone="positive">
-              Positive
-            </Badge>
-            <Badge weight="strong" tone="promote">
-              Promote
-            </Badge>
-            <Badge weight="strong" tone="info">
-              Info
-            </Badge>
-            <Badge weight="strong" tone="neutral">
-              Neutral
-            </Badge>
-            <Badge weight="strong" tone="caution">
-              Caution
-            </Badge>
-            <Badge weight="strong" tone="critical">
-              Critical
-            </Badge>
-          </Inline>
+      <Inline space="medium" align="center">
+        <Inline space="medium" collapseBelow="desktop" align="center">
+          <Badge tone="positive">Positive</Badge>
+          <Badge tone="promote">Promote</Badge>
+          <Badge tone="info">Info</Badge>
+          <Badge tone="neutral">Neutral</Badge>
+          <Badge tone="caution">Caution</Badge>
+          <Badge tone="critical">Critical</Badge>
         </Inline>
-      </Card>,
+        <Inline space="medium" collapseBelow="desktop" align="center">
+          <Badge weight="strong" tone="positive">
+            Positive
+          </Badge>
+          <Badge weight="strong" tone="promote">
+            Promote
+          </Badge>
+          <Badge weight="strong" tone="info">
+            Info
+          </Badge>
+          <Badge weight="strong" tone="neutral">
+            Neutral
+          </Badge>
+          <Badge weight="strong" tone="caution">
+            Caution
+          </Badge>
+          <Badge weight="strong" tone="critical">
+            Critical
+          </Badge>
+        </Inline>
+      </Inline>,
     ),
   alternatives: [
     {
@@ -55,7 +53,6 @@ const docs: ComponentDocs = {
           <Strong>strong</Strong>.
         </Text>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="medium" align="center">
@@ -98,15 +95,16 @@ const docs: ComponentDocs = {
           </Text>
         </Fragment>
       ),
-      background: 'surface',
       Example: () =>
         source(
-          <Inline space="xsmall" alignY="center">
-            <Heading level="4">Heading</Heading>
-            <Badge tone="positive" bleedY>
-              New
-            </Badge>
-          </Inline>,
+          <Box boxShadow="borderCriticalLight">
+            <Inline space="xsmall" alignY="center">
+              <Heading level="4">Heading</Heading>
+              <Badge tone="positive" bleedY>
+                New
+              </Badge>
+            </Inline>
+          </Box>,
         ),
     },
   ],

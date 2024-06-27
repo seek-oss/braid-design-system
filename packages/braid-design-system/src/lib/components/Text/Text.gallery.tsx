@@ -53,7 +53,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Tones',
-      background: 'surface',
       Example: () =>
         source(
           <Stack space="large">

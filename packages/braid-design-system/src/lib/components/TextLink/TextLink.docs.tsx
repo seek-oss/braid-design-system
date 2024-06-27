@@ -157,7 +157,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: { lightMode: 'surface', darkMode: 'bodyDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Stack space="large">

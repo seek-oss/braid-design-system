@@ -7,7 +7,6 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Critical',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="small">
@@ -28,7 +27,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'BrandAccent',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="small">
@@ -49,7 +47,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'FormAccent',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="small">
@@ -70,7 +67,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Neutral',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="small">

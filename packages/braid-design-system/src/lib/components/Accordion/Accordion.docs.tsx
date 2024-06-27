@@ -5,7 +5,6 @@ import {
   Accordion,
   AccordionItem,
   Badge,
-  Card,
   Text,
   TextLink,
   Strong,
@@ -85,34 +84,23 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Card>
-            <Accordion
-              size="standard"
-              tone="secondary"
-              space="xlarge"
-              weight="regular"
-              dividers={false}
-            >
-              <AccordionItem
-                label="Accordion item 1"
-                id="accordion_appearance_1"
-              >
-                <Placeholder height={80} />
-              </AccordionItem>
-              <AccordionItem
-                label="Accordion item 2"
-                id="accordion_appearance_2"
-              >
-                <Placeholder height={80} />
-              </AccordionItem>
-              <AccordionItem
-                label="Accordion item 3"
-                id="accordion_appearance_3"
-              >
-                <Placeholder height={80} />
-              </AccordionItem>
-            </Accordion>
-          </Card>,
+          <Accordion
+            size="standard"
+            tone="secondary"
+            space="xlarge"
+            weight="regular"
+            dividers={false}
+          >
+            <AccordionItem label="Accordion item 1" id="accordion_appearance_1">
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem label="Accordion item 2" id="accordion_appearance_2">
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem label="Accordion item 3" id="accordion_appearance_3">
+              <Placeholder height={80} />
+            </AccordionItem>
+          </Accordion>,
         ),
     },
     {

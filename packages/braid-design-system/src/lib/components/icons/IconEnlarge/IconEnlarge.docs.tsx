@@ -39,7 +39,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Toggling active state',
-      background: 'surface',
       description: (
         <Text>
           Often used to toggle between englarged and reduced states, setting the{' '}

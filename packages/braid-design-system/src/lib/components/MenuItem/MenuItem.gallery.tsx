@@ -19,7 +19,6 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Default',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="none">
@@ -45,7 +44,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With an icon',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="none">
@@ -77,7 +75,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a Badge',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="none">
@@ -113,7 +110,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical tone',
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="none">

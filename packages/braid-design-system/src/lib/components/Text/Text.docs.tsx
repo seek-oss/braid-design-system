@@ -151,7 +151,6 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -180,7 +179,6 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -197,7 +195,6 @@ const docs: ComponentDocs = {
           text tone will be matched by default.
         </Text>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
