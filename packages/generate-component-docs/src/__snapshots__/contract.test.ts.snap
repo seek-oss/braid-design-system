@@ -7574,11 +7574,13 @@ exports[`Tag 1`] = `
 {
   exportType: component,
   props: {
+    addLabel?: string
     children: string
     clearLabel?: string
     data?: DataAttributeMap
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
+    onAdd?: MouseEventHandler<HTMLButtonElement>
     onClear?: MouseEventHandler<HTMLButtonElement>
     size?: 
         | "small"

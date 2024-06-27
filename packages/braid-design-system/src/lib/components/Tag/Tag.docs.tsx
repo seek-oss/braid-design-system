@@ -1,12 +1,11 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import {
-  Card,
   Inline,
   Tag,
   Strong,
   Text,
-  TextLinkButton,
+  TextLink,
   Stack,
   IconLanguage,
   IconTag,
@@ -17,13 +16,11 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
-        <Inline space="small">
-          <Tag>One</Tag>
-          <Tag>Two</Tag>
-          <Tag>Three</Tag>
-        </Inline>
-      </Card>,
+      <Inline space="small">
+        <Tag>One</Tag>
+        <Tag>Two</Tag>
+        <Tag>Three</Tag>
+      </Inline>,
     ),
   alternatives: [{ name: 'Badge', description: 'For static labels.' }],
   additional: [
@@ -66,68 +63,98 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Clearable',
+      label: 'Actionable tags',
       description: (
         <>
           <Text>
-            Tags can be made clearable, by providing an <Strong>onClear</Strong>{' '}
-            handler and a <Strong>clearLabel</Strong> to describe what clicking
-            it will do.
+            Tags can be made actionable to support either being “cleared” or
+            “added”.
+          </Text>
+
+          <Text>
+            By providing an <Strong>onClear</Strong> handler and a{' '}
+            <Strong>clearLabel</Strong>, a{' '}
+            <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>{' '}
+            component with a clear icon will be added to the right of the tag
+            label.
+          </Text>
+
+          <Text>
+            Alternatively, providing an <Strong>onAdd</Strong> handler and an{' '}
+            <Strong>addLabel</Strong> will insert a{' '}
+            <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>{' '}
+            component with an add icon to the right of the tag label.
           </Text>
 
           <Text tone="promote" id="translations">
             <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
-            <Strong>aria-label</Strong> for the clear button can be customised
-            by providing the <Strong>clearLabel</Strong> prop.
+            <Strong>aria-label</Strong> for the button can be customised by
+            providing the relevant <Strong>clearLabel</Strong> or{' '}
+            <Strong>addLabel</Strong> prop.
           </Text>
         </>
       ),
       background: 'surface',
-      Example: ({ getState, setState, toggleState }) =>
-        source(
-          <Inline space="small" alignY="center">
-            {!getState('clearOne') ? (
-              <Tag
-                onClear={() => toggleState('clearOne')}
-                clearLabel={'Clear "One"'}
-                id="clear-1"
-              >
-                One
-              </Tag>
-            ) : null}
-            {!getState('clearTwo') ? (
-              <Tag
-                onClear={() => toggleState('clearTwo')}
-                clearLabel={'Clear "Two"'}
-                id="clear-2"
-              >
-                Two
-              </Tag>
-            ) : null}
-            {!getState('clearThree') ? (
-              <Tag
-                onClear={() => toggleState('clearThree')}
-                clearLabel={'Clear "Three"'}
-                id="clear-3"
-              >
-                Three
-              </Tag>
-            ) : null}
-            <Text tone="secondary">
-              <TextLinkButton
-                weight="weak"
-                hitArea="large"
-                onClick={() => {
-                  setState('clearOne', false);
-                  setState('clearTwo', false);
-                  setState('clearThree', false);
-                }}
-              >
-                Reset
-              </TextLinkButton>
-            </Text>
-          </Inline>,
-        ),
+      Example: ({ setDefaultState, getState, setState }) => {
+        const { code, value } = source(
+          <>
+            {setDefaultState('selected', ['One', 'Two', 'Three'])}
+
+            <Stack space="large">
+              <Stack space="small">
+                <Text size="xsmall" tone="secondary">
+                  ADDABLE
+                </Text>
+                <Inline space="small" alignY="center">
+                  {['One', 'Two', 'Three', 'Four', 'Five']
+                    .filter((tag) => !getState('selected').includes(tag))
+                    .map((tag) => (
+                      <Tag
+                        key={tag}
+                        onAdd={() =>
+                          setState('selected', [...getState('selected'), tag])
+                        }
+                        addLabel={`Add "${tag}"`}
+                        id={`add-${tag}`}
+                      >
+                        {tag}
+                      </Tag>
+                    ))}
+                </Inline>
+              </Stack>
+              <Stack space="small">
+                <Text size="xsmall" tone="secondary">
+                  CLEARABLE
+                </Text>
+                <Inline space="small" alignY="center">
+                  {getState('selected').map((selectedTag: string) => (
+                    <Tag
+                      key={selectedTag}
+                      onClear={() => {
+                        setState(
+                          'selected',
+                          getState('selected').filter(
+                            (tag: string) => tag !== selectedTag,
+                          ),
+                        );
+                      }}
+                      clearLabel={`Clear "${selectedTag}"`}
+                      id={`clear-${selectedTag}`}
+                    >
+                      {selectedTag}
+                    </Tag>
+                  ))}
+                </Inline>
+              </Stack>
+            </Stack>
+          </>,
+        );
+
+        return {
+          code: code.replaceAll(': string', ''),
+          value,
+        };
+      },
     },
     {
       label: 'Inserting an icon',
