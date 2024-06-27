@@ -128,19 +128,10 @@ export const slider = styleVariants(sizes, (size) => {
   };
 });
 
-export const icon = style({
-  transform: 'scale(.75)',
-  selectors: {
-    [`${realField}:active + ${slideContainer} &`]: {
-      transform: 'scale(.75) rotate(-25deg)',
-    },
-    [`${realField}:checked + ${slideContainer} &`]: {
-      opacity: 1,
-    },
-    [`${realField}:active:checked + ${slideContainer} &`]: {
-      transform: 'scale(.75) rotate(6deg)',
-    },
-  },
+// Subtly scale the outline overlay to prevent thumb background
+// antialiasing bleeding outside outline.
+export const sliderThumbOutlineFix = style({
+  transform: 'scale(1.04)',
 });
 
 export const hideBorderOnDarkBackgroundInLightMode = style(
