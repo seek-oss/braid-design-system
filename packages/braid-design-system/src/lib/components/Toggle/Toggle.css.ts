@@ -5,11 +5,19 @@ import { hitArea } from '../private/touchable/hitArea';
 import { debugTouchable } from '../private/touchable/debugTouchable';
 import { rgba } from 'polished';
 import { colorModeStyle } from '../../css/colorModeStyle';
+import { responsiveStyle } from '../../css/responsiveStyle';
 
 const sizes = {
   standard: 'standard',
   small: 'small',
 } as const;
+
+export const bleedToCapHeight = styleVariants(sizes, (size) =>
+  responsiveStyle({
+    mobile: { height: vars.textSize[size].mobile.capHeight },
+    tablet: { height: vars.textSize[size].tablet.capHeight },
+  }),
+);
 
 export type Size = keyof typeof sizes;
 
@@ -37,18 +45,6 @@ export const realFieldPosition = styleVariants(sizes, (size) => ({
     .negate()
     .toString(),
 }));
-
-export const label = styleVariants(sizes, (size) => {
-  const padding = calc(vars.inlineFieldSize[size])
-    .subtract(vars.textSize.standard.mobile.lineHeight)
-    .divide(2)
-    .toString();
-
-  return {
-    paddingTop: padding,
-    paddingBottom: padding,
-  };
-});
 
 export const fieldSize = styleVariants(sizes, (size) => ({
   width: calc.multiply(vars.inlineFieldSize[size], toggleWidthRatio),
