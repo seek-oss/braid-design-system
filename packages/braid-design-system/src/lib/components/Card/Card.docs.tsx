@@ -6,7 +6,7 @@ import source from '@braid-design-system/source.macro';
 import { validCardComponents } from './Card';
 
 const docs: ComponentDocs = {
-  category: 'Layout',
+  category: 'Content',
   Example: () =>
     source(
       <Card rounded>

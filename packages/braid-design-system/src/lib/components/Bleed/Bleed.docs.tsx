@@ -1,14 +1,15 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Box, Bleed, Stack, Text, Strong, TextLink, Tiles } from '../';
+import { Box, Bleed, Stack, Text, Strong, TextLink, Tiles, Toggle } from '../';
 import { Placeholder } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
+import { vars } from '../../themes/vars.css';
 
 const docs: ComponentDocs = {
   category: 'Layout',
   Example: () =>
     source(
-      <Box padding="large" background="surface">
+      <Box marginX="large" boxShadow="borderNeutral">
         <Stack space="medium">
           <Placeholder height={40} />
           <Bleed horizontal="large">
@@ -66,14 +67,23 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Box
-            padding="large"
-            boxShadow="borderNeutralLight"
-            background="surface"
-          >
-            <Bleed vertical="large">
+          <Box marginY="large" boxShadow="borderNeutral">
+            <Tiles space="medium" columns={3}>
               <Placeholder height={100} />
-            </Bleed>
+              <Bleed vertical="large">
+                <Box
+                  boxShadow="borderPromoteLight"
+                  background="promoteLight"
+                  height="full"
+                >
+                  <Placeholder
+                    height={`calc(100px + (${vars.space.large} * 2))`}
+                    label="vertical"
+                  />
+                </Box>
+              </Bleed>
+              <Placeholder height={100} />
+            </Tiles>
           </Box>,
         ),
     },
@@ -87,14 +97,16 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Box
-            padding="large"
-            boxShadow="borderNeutralLight"
-            background="surface"
-          >
-            <Bleed horizontal="large">
-              <Placeholder height={100} />
-            </Bleed>
+          <Box marginX="large" boxShadow="borderNeutral">
+            <Stack space="medium">
+              <Placeholder height={40} />
+              <Bleed horizontal="large">
+                <Box boxShadow="borderPromoteLight" background="promoteLight">
+                  <Placeholder height={40} label="horizontal" />
+                </Box>
+              </Bleed>
+              <Placeholder height={40} />
+            </Stack>
           </Box>,
         ),
     },
@@ -110,41 +122,71 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Tiles columns={2} space="gutter">
-            <Box
-              padding="large"
-              boxShadow="borderNeutralLight"
-              background="surface"
-            >
-              <Bleed top="large">
-                <Placeholder height={80} label="top" />
-              </Bleed>
+            <Box marginTop="large" boxShadow="borderNeutral">
+              <Tiles space="medium" columns={3}>
+                <Placeholder height={100} />
+                <Bleed top="large">
+                  <Box
+                    boxShadow="borderPromoteLight"
+                    background="promoteLight"
+                    height="full"
+                  >
+                    <Placeholder
+                      height={`calc(100px + ${vars.space.large})`}
+                      label="top"
+                    />
+                  </Box>
+                </Bleed>
+                <Placeholder height={100} />
+              </Tiles>
             </Box>
-            <Box
-              padding="large"
-              boxShadow="borderNeutralLight"
-              background="surface"
-            >
-              <Bleed bottom="large">
-                <Placeholder height={80} label="bottom" />
-              </Bleed>
+            <Box marginBottom="large" boxShadow="borderNeutral">
+              <Tiles space="medium" columns={3}>
+                <Placeholder height={100} />
+                <Bleed bottom="large">
+                  <Box
+                    boxShadow="borderPromoteLight"
+                    background="promoteLight"
+                    height="full"
+                  >
+                    <Placeholder
+                      height={`calc(100px + ${vars.space.large})`}
+                      label="bottom"
+                    />
+                  </Box>
+                </Bleed>
+                <Placeholder height={100} />
+              </Tiles>
             </Box>
-            <Box
-              padding="large"
-              boxShadow="borderNeutralLight"
-              background="surface"
-            >
-              <Bleed left="large">
-                <Placeholder height={80} label="left" />
-              </Bleed>
+            <Box marginLeft="large" boxShadow="borderNeutral">
+              <Stack space="small">
+                <Placeholder height={30} />
+                <Bleed left="large">
+                  <Box
+                    boxShadow="borderPromoteLight"
+                    background="promoteLight"
+                    height="full"
+                  >
+                    <Placeholder height={40} label="left" />
+                  </Box>
+                </Bleed>
+                <Placeholder height={30} />
+              </Stack>
             </Box>
-            <Box
-              padding="large"
-              boxShadow="borderNeutralLight"
-              background="surface"
-            >
-              <Bleed right="large">
-                <Placeholder height={80} label="right" />
-              </Bleed>
+            <Box marginRight="large" boxShadow="borderNeutral">
+              <Stack space="small">
+                <Placeholder height={30} />
+                <Bleed right="large">
+                  <Box
+                    boxShadow="borderPromoteLight"
+                    background="promoteLight"
+                    height="full"
+                  >
+                    <Placeholder height={40} label="right" />
+                  </Box>
+                </Bleed>
+                <Placeholder height={30} />
+              </Stack>
             </Box>
           </Tiles>,
         ),
@@ -157,17 +199,49 @@ const docs: ComponentDocs = {
           using the <Strong>space</Strong> prop.
         </Text>
       ),
-      Example: () =>
+      Example: ({ setDefaultState, getState, toggleState }) =>
         source(
-          <Box
-            padding="large"
-            boxShadow="borderNeutralLight"
-            background="surface"
-          >
-            <Bleed space="large">
-              <Placeholder height={100} />
-            </Bleed>
-          </Box>,
+          <>
+            {setDefaultState('bleed', true)}
+            <Stack space="large">
+              <Toggle
+                align="right"
+                label="Toggle bleed"
+                id="all-directions"
+                bleedY
+                on={getState('bleed')}
+                onChange={() => toggleState('bleed')}
+              />
+
+              <Box position="relative" marginX="large">
+                <Stack space="large">
+                  <Placeholder height={40} />
+                  <Box position="relative">
+                    <Bleed space={getState('bleed') ? 'large' : 'none'}>
+                      <Box
+                        boxShadow="borderPromoteLight"
+                        background="promoteLight"
+                      >
+                        <Placeholder
+                          height={
+                            getState('bleed')
+                              ? `calc(40px + (${vars.space.large} * 2))`
+                              : 40
+                          }
+                          label="all directions"
+                        />
+                      </Box>
+                    </Bleed>
+                    <Box position="absolute" inset={0}>
+                      <Placeholder height={40} label=" " />
+                    </Box>
+                  </Box>
+                  <Placeholder height={40} />
+                </Stack>
+                <Box position="absolute" inset={0} boxShadow="borderNeutral" />
+              </Box>
+            </Stack>
+          </>,
         ),
     },
   ],
