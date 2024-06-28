@@ -7,25 +7,20 @@ export const unthemedBorderRadius = style({
 });
 
 const bgColor = createVar();
-const cubeColor = createVar();
-const cubeSize = createVar();
+const dotColor = createVar();
+const dotSize = createVar();
 export const canvas = style([
   {
     vars: {
-      [cubeSize]: '12px',
+      [dotSize]: '12px',
     },
-    backgroundColor: bgColor,
-    backgroundImage: [
-      `linear-gradient(45deg, ${cubeColor} 25%, transparent 25%, transparent 75%, ${cubeColor} 75%, ${cubeColor})`,
-      `linear-gradient(45deg, ${cubeColor} 25%, transparent 25%, transparent 75%, ${cubeColor} 75%, ${cubeColor})`,
-    ].join(', '),
-    backgroundSize: `calc(${cubeSize} * 2) calc(${cubeSize} * 2)`,
-    backgroundPosition: `0 0, ${cubeSize} ${cubeSize}`,
+    backgroundImage: `radial-gradient(${dotColor} 1px, transparent 0)`,
+    backgroundSize: `${dotSize} ${dotSize}`,
   },
 ]);
 
 const darkVars = {
-  [cubeColor]: 'rgba(255,255,255, .08)',
+  [dotColor]: 'rgba(255,255,255, .1)',
   [bgColor]: tokens.color.background.bodyDark,
 };
 export const explicitDark = style({
@@ -36,7 +31,7 @@ export const adaptiveCanvas = style(
   colorModeStyle({
     lightMode: {
       vars: {
-        [cubeColor]: 'rgba(0,0,0, .04)',
+        [dotColor]: 'rgba(0,0,0, .1)',
         [bgColor]: tokens.color.background.body,
       },
     },
