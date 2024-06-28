@@ -3899,5 +3899,52 @@
         "summary": "Move secondary ButtonIcon tone to icons\n\nFollowing the deprecation of the `secondary` tone of `ButtonIcon`, this updates all internal usages to apply the `secondary` tone directly to the icon."
       }
     ]
+  },
+  {
+    "version": "32.20.0",
+    "updates": [
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Add `togglePosition` prop\n\nIntroduces the `togglePosition` prop, enabling the toggle to either be `leading` or `trailing` its label text.\n\n**EXAMPLE USAGE:**\n```jsx\n<Toggle togglePosition=\"trailing\" label=\"Label\" />\n```"
+      },
+      {
+        "updated": [
+          "Tag"
+        ],
+        "summary": "**Tag**: Add missing click event parameter to `onClear` prop type"
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Add `bleedY` prop\n\nIntroduces the `bleedY` prop, enabling vertical bleed for the `Toggle` component. This removes excess vertical space created by the `Toggle` input.\n\n**EXAMPLE USAGE:**\n```jsx\n<Toggle label=\"Label\" bleedY />\n```\n\n**MIGRATION GUIDE:**\n\nVertical bleed will become standard for the `Toggle` component in a future version. Please use the `bleedY` prop with a value of `true` and update your layout accordingly."
+      },
+      {
+        "updated": [
+          "Tag"
+        ],
+        "summary": "**Tag:** Introduce \"addable\" support\n\nTag actions have been extended to now support being “added”.\nA `Tag` will include a small add icon button when both an `onAdd` handler and `addLabel` prop are provided.\n\n**EXAMPLE USAGE:**\n```jsx\n<Tag onAdd={() => {...}} addLabel=\"Add Tag\" />\n```"
+      },
+      {
+        "updated": [
+          "seekJobs"
+        ],
+        "summary": "**seekJobs:** Use Tahoma for Thai fallback font\n\nCurrently in the `seekJobs` theme, the fallback font for the Thai character set resolves to the default system font which differs by operating system.\nBy choosing a deterministic fallback that is available across operating systems, we can use [Capsize] to [improve the alignment] with the SEEK Sans web font, and reduce Cumulative Layout Shift for experiences that use Thai.\n\nAdditionally, adding `sans-serif` as an ultimate fallback in the event that we ever fall all the way through the stack on an obscure operating system.\n\n[Capsize]: https://seek-oss.github.io/capsize/\n[improve the alignment]: https://github.com/seek-oss/capsize?tab=readme-ov-file#createfontstack"
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Improve label text vertical alignment at `small` size"
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Remove tick icon & fix antialias haze when selected\n\nSimplying the selected state design by removing the tick icon from the toggle thumb.\n\nAlso fixes the antialias haze that appears around the thumb when selected."
+      }
+    ]
   }
 ]
