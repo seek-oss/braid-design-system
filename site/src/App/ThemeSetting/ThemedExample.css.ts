@@ -9,13 +9,16 @@ export const unthemedBorderRadius = style({
 
 const dotColor = createVar();
 const dotSize = createVar();
+const dotOffset = createVar();
 export const canvas = style([
   {
     vars: {
-      [dotSize]: '8px',
+      [dotSize]: `${tokens.grid * 2}px`,
+      [dotOffset]: `calc((${dotSize} / 2) * -1)`,
     },
     backgroundImage: `radial-gradient(${dotColor} 1px, transparent 0)`,
     backgroundSize: `${dotSize} ${dotSize}`,
+    backgroundPosition: `${dotOffset} ${dotOffset}`,
   },
 ]);
 
