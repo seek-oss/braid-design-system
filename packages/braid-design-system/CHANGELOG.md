@@ -1,5 +1,66 @@
 # braid-design-system
 
+## 32.20.0
+
+### Minor Changes
+
+- **Toggle:** Add `togglePosition` prop ([#1509](https://github.com/seek-oss/braid-design-system/pull/1509))
+
+  Introduces the `togglePosition` prop, enabling the toggle to either be `leading` or `trailing` its label text.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Toggle togglePosition="trailing" label="Label" />
+  ```
+
+- **Toggle:** Add `bleedY` prop ([#1519](https://github.com/seek-oss/braid-design-system/pull/1519))
+
+  Introduces the `bleedY` prop, enabling vertical bleed for the `Toggle` component. This removes excess vertical space created by the `Toggle` input.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Toggle label="Label" bleedY />
+  ```
+
+  **MIGRATION GUIDE:**
+
+  Vertical bleed will become standard for the `Toggle` component in a future version. Please use the `bleedY` prop with a value of `true` and update your layout accordingly.
+
+- **Tag:** Introduce "addable" support ([#1521](https://github.com/seek-oss/braid-design-system/pull/1521))
+
+  Tag actions have been extended to now support being “added”.
+  A `Tag` will include a small add icon button when both an `onAdd` handler and `addLabel` prop are provided.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tag onAdd={() => {...}} addLabel="Add Tag" />
+  ```
+
+- **seekJobs:** Use Tahoma for Thai fallback font ([#1527](https://github.com/seek-oss/braid-design-system/pull/1527))
+
+  Currently in the `seekJobs` theme, the fallback font for the Thai character set resolves to the default system font which differs by operating system.
+  By choosing a deterministic fallback that is available across operating systems, we can use [Capsize] to [improve the alignment] with the SEEK Sans web font, and reduce Cumulative Layout Shift for experiences that use Thai.
+
+  Additionally, adding `sans-serif` as an ultimate fallback in the event that we ever fall all the way through the stack on an obscure operating system.
+
+  [Capsize]: https://seek-oss.github.io/capsize/
+  [improve the alignment]: https://github.com/seek-oss/capsize?tab=readme-ov-file#createfontstack
+
+### Patch Changes
+
+- **Tag**: Add missing click event parameter to `onClear` prop type ([#1516](https://github.com/seek-oss/braid-design-system/pull/1516))
+
+- **Toggle:** Improve label text vertical alignment at `small` size ([#1518](https://github.com/seek-oss/braid-design-system/pull/1518))
+
+- **Toggle:** Remove tick icon & fix antialias haze when selected ([#1525](https://github.com/seek-oss/braid-design-system/pull/1525))
+
+  Simplying the selected state design by removing the tick icon from the toggle thumb.
+
+  Also fixes the antialias haze that appears around the thumb when selected.
+
 ## 32.19.1
 
 ### Patch Changes
