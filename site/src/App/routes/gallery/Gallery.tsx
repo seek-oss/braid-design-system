@@ -80,14 +80,24 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 
 const COLUMN_SIZE = 4;
 
-const galleryComponents = allGalleryComponents.map(({ examples, ...rest }) => ({
-  ...rest,
-  examples: chunk(examples, COLUMN_SIZE),
-}));
-
 const galleryComponentNames = allGalleryComponents.map(({ name }) => name);
 
-export const galleryIcons: typeof galleryComponents = Object.keys(icons).map(
+const allStandardGalleryComponents = allGalleryComponents.map(
+  ({ examples, ...rest }) => ({
+    ...rest,
+    examples: chunk(examples, COLUMN_SIZE),
+  }),
+);
+
+const galleryContentComponents = allStandardGalleryComponents.filter(
+  (component) => getComponentDocs(component.name).category === 'Content',
+);
+
+const galleryLayoutComponents = allStandardGalleryComponents.filter(
+  (component) => getComponentDocs(component.name).category === 'Layout',
+);
+
+const galleryIcons: typeof galleryContentComponents = Object.keys(icons).map(
   (iconName) => {
     const IconComponent = icons[iconName as keyof typeof icons];
 
@@ -119,16 +129,21 @@ export const galleryIcons: typeof galleryComponents = Object.keys(icons).map(
   },
 );
 
-type SetName = 'components' | 'icons';
+type SetName = 'components' | 'layout' | 'icons';
 const getRowsFor = memoize((type: SetName) => {
-  const items = type === 'components' ? galleryComponents : galleryIcons;
+  const componentTypeMap = {
+    components: galleryContentComponents,
+    icons: galleryIcons,
+    layout: galleryLayoutComponents,
+  };
+
+  const items = componentTypeMap[type];
 
   const ratio = Math.max(
-    (window.innerWidth / window.innerHeight) *
-      (type === 'components' ? 0.65 : 0.5),
+    (window.innerWidth / window.innerHeight) * (type === 'icons' ? 0.5 : 0.65),
     1,
   );
-  const rowLength = Math.floor(Math.sqrt(items.length) * ratio);
+  const rowLength = Math.ceil(Math.sqrt(items.length) * ratio);
 
   return chunk(items, rowLength);
 });
@@ -193,7 +208,7 @@ const GalleryItem = ({
   item,
   jumpTo,
 }: {
-  item: (typeof galleryComponents)[number];
+  item: (typeof allStandardGalleryComponents)[number];
   jumpTo: JumpTo;
 }) => {
   const { theme } = useThemeSettings();
@@ -685,6 +700,9 @@ const GalleryInternal = () => {
         >
           <Box component="section">
             <Stage setName="components" title="Components" jumpTo={jumpTo} />
+          </Box>
+          <Box component="section" style={{ paddingLeft: 800 }}>
+            <Stage setName="layout" title="Layout" jumpTo={jumpTo} />
           </Box>
           <Box component="section" style={{ paddingLeft: 800 }}>
             <Stage setName="icons" title="Icons" jumpTo={jumpTo} />
