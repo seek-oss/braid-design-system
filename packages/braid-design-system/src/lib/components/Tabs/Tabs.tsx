@@ -21,10 +21,10 @@ import { TabsContext } from './TabsProvider';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { TabListContext } from './TabListContext';
+import { TabListContext, type TabSize } from './TabListContext';
 import * as styles from './Tabs.css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
-import type { Tab } from './Tab';
+import { dividerSpacingForSize, type Tab } from './Tab';
 
 export interface TabsProps {
   children: ReactNodeNoStrings;
@@ -33,6 +33,7 @@ export interface TabsProps {
   gutter?: ResponsiveSpace;
   reserveHitArea?: boolean;
   data?: DataAttributeMap;
+  size?: TabSize;
   divider?: 'full' | 'minimal' | 'none';
 }
 
@@ -73,6 +74,7 @@ export const Tabs = (props: TabsProps) => {
     label,
     data,
     align = 'left',
+    size = 'standard',
     gutter,
     reserveHitArea = false,
     divider = 'minimal',
@@ -110,6 +112,7 @@ export const Tabs = (props: TabsProps) => {
           tabListItemIndex: index,
           scrollContainer: tabsRef.current,
           isLast: childTabs.length === index + 1,
+          size,
         }}
       >
         {tab}
@@ -163,7 +166,11 @@ export const Tabs = (props: TabsProps) => {
   return (
     <Box>
       <Box
-        className={reserveHitArea ? undefined : negativeMargin('top', 'medium')}
+        className={
+          reserveHitArea
+            ? undefined
+            : negativeMargin('top', dividerSpacingForSize[size])
+        }
       >
         <Box position="relative">
           <Box
