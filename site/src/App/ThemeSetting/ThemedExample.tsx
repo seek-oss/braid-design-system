@@ -23,8 +23,7 @@ export function ThemedExample({
     <Box opacity={!ready ? 0 : undefined} transition="fast">
       <BraidProvider styleBody={false} theme={theme}>
         <Box
-          background={darkCanvas ? 'bodyDark' : 'body'}
-          style={{ backgroundColor: 'transparent' }}
+          background={darkCanvas ? 'customDark' : undefined}
           borderRadius="large"
         >
           <Box
