@@ -331,33 +331,6 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Client-side filtering',
-      description: (
-        <>
-          <Text>
-            The logic for filtering suggestions typically lives on the server
-            rather than the client because it’s impractical to send all possible
-            suggestions over the network. However, when prototyping in Playroom
-            or working with smaller datasets, you may want to perform this
-            filtering on the client instead. For this case, we provide a{' '}
-            <Strong>filterSuggestions</Strong> function to make this as painless
-            as possible.
-          </Text>
-          <Text>
-            If filtering is being performed on the server, this can be safely
-            omitted.
-          </Text>
-          <Alert tone="info">
-            <Text>
-              All examples on this page, except where noted, use the{' '}
-              <Strong>filterSuggestions</Strong> function to demonstrate
-              real-world filtering behaviour.
-            </Text>
-          </Alert>
-        </>
-      ),
-    },
-    {
       label: 'Automatic selection',
       description: (
         <>
@@ -487,47 +460,114 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Suggestion highlights',
+      label: 'Client-side filtering',
       description: (
         <>
-          {/* Todo - callout autosuggest-highlight? */}
           <Text>
-            Suggestion items can optionally contain a highlight range. In other
-            examples on this page, highlights are automatically handled by the{' '}
-            <Strong>filterSuggestions</Strong> function, highlighting the
-            portion of each suggestion that matches the search value.
+            The logic for filtering suggestions typically lives on the server
+            rather than the client because it’s impractical to send all possible
+            suggestions over the network. However, when prototyping in Playroom
+            or working with smaller datasets, you may want to perform this
+            filtering on the client instead. For this case, we provide a{' '}
+            <Strong>filterSuggestions</Strong> function to make this as painless
+            as possible.
           </Text>
           <Text>
-            If you are not using <Strong>filterSuggestions</Strong>, you can
-            provide a highlight range to each suggestion, as shown in the
-            example below.
+            If filtering is being performed on the server, this can be safely
+            omitted.
+          </Text>
+          <Alert tone="info">
+            <Text>
+              All examples on this page, except where noted, use the{' '}
+              <Strong>filterSuggestions</Strong> function to demonstrate
+              real-world filtering behaviour.
+            </Text>
+          </Alert>
+        </>
+      ),
+    },
+    {
+      label: 'Automatic suggestion highlights',
+      description: (
+        <>
+          <Text>
+            While the <Strong>filterSuggestions</Strong> function will handle
+            highlights for you, you may need to separate the logic of
+            highlighting from filtering.
+          </Text>
+          <Text>
+            You can use the <Strong>automaticHighlights</Strong> prop to
+            automatically handle highlighting for you. In the following example,
+            while <Strong>filterSuggestions</Strong> is not used, highlights
+            work as expected.
           </Text>
           <Notice tone="info">
             <Text>
-              The following example does not use accept input and does not use
-              the <Strong>filterSuggestions</Strong> function.
+              <Strong>automaticHighlights</Strong> can be configured further by
+              providing an <Strong>options</Strong> object.
             </Text>
           </Notice>
         </>
       ),
-      Example: ({ id }) =>
+      Example: ({ id, setDefaultState, setState, getState, resetState }) =>
         source(
           <>
+            {setDefaultState('value', { text: '' })}
+
             <Autosuggest
               label="Label"
-              id={id}
-              value={{ text: 'App' }}
-              onChange={() => {}}
+              id={`${id}_highlights1`}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              automaticHighlights
+              suggestions={[
+                { text: 'Apples' },
+                { text: 'Bananas' },
+                { text: 'Carrots' },
+              ]}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Custom suggestion highlights',
+      description: (
+        <>
+          <Text>
+            If <Strong>automaticHighlights</Strong> is not suitable for your use
+            case, you can provide explicit highlight ranges for each suggestion.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              This is a simplified example that does not use{' '}
+              <Strong>filterSuggestions</Strong>. Suggestions will not change
+              from your input.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: ({ id, setDefaultState, setState, getState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
+
+            <Autosuggest
+              label="Label"
+              id={`${id}_highlights3`}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
               suggestions={[
                 {
                   text: 'Apples',
                   value: 1,
-                  highlights: [{ start: 0, end: 3 }],
+                  highlights: [{ start: 0, end: 2 }],
                 },
                 {
-                  text: 'Apples and bananas',
+                  text: 'Bananas',
                   value: 2,
-                  highlights: [{ start: 0, end: 3 }],
+                  highlights: [{ start: 0, end: 2 }],
                 },
               ]}
             />

@@ -201,8 +201,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       autosuggest-highlight:
-        specifier: ^3.1.1
-        version: 3.2.1
+        specifier: ^3.3.4
+        version: 3.3.4
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -6887,10 +6887,10 @@ packages:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
-  /autosuggest-highlight@3.2.1:
-    resolution: {integrity: sha512-PZk89g6W6cyE+fbnWF2CCIUAmP55o5wceKVqqL6oosgvbWHKa2Mes6nRC/PGj7OwqBgIy65Nd21Dw3h6qodOmg==}
+  /autosuggest-highlight@3.3.4:
+    resolution: {integrity: sha512-j6RETBD2xYnrVcoV1S5R4t3WxOlWZKyDQjkwnggDPSjF5L4jV98ZltBpvPvbkM1HtoSe5o+bNrTHyjPbieGeYA==}
     dependencies:
-      diacritic: 0.0.2
+      remove-accents: 0.4.4
     dev: false
 
   /available-typed-arrays@1.0.7:
@@ -8643,10 +8643,6 @@ packages:
       debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
-
-  /diacritic@0.0.2:
-    resolution: {integrity: sha512-iQCeDkSPwkfwWPr+HZZ49WRrM2FSI9097Q9w7agyRCdLcF9Eh2Ek0sHKcmMWx2oZVBjRBE/sziGFjZu0uf1Jbg==}
-    dev: false
 
   /didyoumean2@6.0.1:
     resolution: {integrity: sha512-PSy0zQwMg5O+LjT5Mz7vnKC8I7DfWLPF6M7oepqW7WP5mn2CY3hz46xZOa1GJY+KVfyXhdmz6+tdgXwrHlZc5g==}
@@ -15428,6 +15424,10 @@ packages:
       mdast-util-from-markdown: 0.8.5
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /remove-accents@0.4.4:
+    resolution: {integrity: sha512-EpFcOa/ISetVHEXqu+VwI96KZBmq+a8LJnGkaeFw45epGlxIZz5dhEEnNZMsQXgORu3qaMoLX4qJCzOik6ytAg==}
     dev: false
 
   /renderkid@3.0.0:

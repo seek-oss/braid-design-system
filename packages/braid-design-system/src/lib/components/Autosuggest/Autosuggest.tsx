@@ -14,6 +14,7 @@ import React, {
 } from 'react';
 import dedent from 'dedent';
 import parseHighlights from 'autosuggest-highlight/parse';
+import matchHighlights from 'autosuggest-highlight/match';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
@@ -277,6 +278,8 @@ interface LegacyMessageSuggestion {
   message: string;
 }
 
+type MatchHighlightsOptions = Parameters<typeof matchHighlights>[2];
+
 export type AutosuggestBaseProps<Value> = Omit<
   FieldBaseProps,
   'value' | 'autoComplete' | 'prefix'
@@ -292,6 +295,7 @@ export type AutosuggestBaseProps<Value> = Omit<
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
   automaticSelection?: boolean;
+  automaticHighlights?: boolean | MatchHighlightsOptions;
   hideSuggestionsOnSelection?: boolean;
   showMobileBackdrop?: boolean;
   scrollToTopOnMobile?: boolean;
@@ -337,6 +341,15 @@ function normaliseNoSuggestionMessage<Value>(
   }
 }
 
+function getAutomaticHighlights(
+  suggestion: string,
+  value: string,
+  options?: MatchHighlightsOptions,
+): SuggestionMatch {
+  const matches = matchHighlights(suggestion, value, options);
+  return matches.map(([start, end]) => ({ start, end }));
+}
+
 export const Autosuggest = forwardRef(function <Value>(
   {
     id,
@@ -345,6 +358,7 @@ export const Autosuggest = forwardRef(function <Value>(
     noSuggestionsMessage: noSuggestionsMessageProp,
     onChange = noop,
     automaticSelection = false,
+    automaticHighlights = false,
     showMobileBackdrop = false,
     scrollToTopOnMobile = true,
     hideSuggestionsOnSelection = true,
@@ -372,6 +386,23 @@ export const Autosuggest = forwardRef(function <Value>(
     suggestionsPropValue,
   );
   const hasItems = suggestions.length > 0 || Boolean(noSuggestionsMessage);
+
+  const hasExplicitHighlights = suggestions.some(
+    (suggestion) => 'highlights' in suggestion,
+  );
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (automaticHighlights && hasExplicitHighlights) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          In Autosuggest, you are using the "automaticHighlights" prop with suggestions that already have highlights.
+          The provided highlights will be overridden.
+          If you want to use your own highlights, set "automaticHighlights" to false.
+          `,
+      );
+    }
+  }
 
   // We need a ref regardless so we can imperatively
   // focus the field when clicking the clear button
@@ -568,7 +599,7 @@ export const Autosuggest = forwardRef(function <Value>(
       }
     }
     // re-running this effect if the suggestionCount changes
-    // to ensure asychronous updates aren't left out of view.
+    // to ensure asynchronous updates aren't left out of view.
   }, [isOpen, isMobile, suggestionCount]);
 
   const inputProps = {
@@ -804,6 +835,15 @@ export const Autosuggest = forwardRef(function <Value>(
                       ? normalisedSuggestions.map((suggestion, index) => {
                           const { text } = suggestion;
                           const groupHeading = groupHeadingIndexes.get(index);
+                          const highlights = automaticHighlights
+                            ? getAutomaticHighlights(
+                                suggestion.text,
+                                value.text,
+                                typeof automaticHighlights === 'boolean'
+                                  ? {}
+                                  : automaticHighlights,
+                              )
+                            : undefined;
 
                           return (
                             <Fragment key={index + text}>
@@ -811,7 +851,10 @@ export const Autosuggest = forwardRef(function <Value>(
                                 <GroupHeading>{groupHeading}</GroupHeading>
                               ) : null}
                               <SuggestionItem
-                                suggestion={suggestion}
+                                suggestion={{
+                                  ...suggestion,
+                                  ...(highlights && { highlights }),
+                                }}
                                 highlighted={highlightedIndex === index}
                                 selected={value === suggestion}
                                 onClick={() => {
