@@ -1,5 +1,5 @@
 coverage/
-storybook-static/
+storybook-static
 dist/
 report/
 .changeset/*.md

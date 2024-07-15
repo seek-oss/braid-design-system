@@ -1,6 +1,5 @@
 node_modules/
 codemod/dist/
-storybook-static/
 src/lib/components/icons/*/*Svg.tsx
 src/lib/playroom/snippets/*
 README.md
