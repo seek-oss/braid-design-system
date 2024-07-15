@@ -11,6 +11,7 @@ import {
   List,
   Stack,
   Heading,
+  Notice,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
 
@@ -342,12 +343,15 @@ const docs: ComponentDocs = {
             <Strong>filterSuggestions</Strong> function to make this as painless
             as possible.
           </Text>
+          <Text>
+            If filtering is being performed on the server, this can be safely
+            omitted.
+          </Text>
           <Alert tone="info">
             <Text>
-              All examples on this page use the{' '}
+              All examples on this page, except where noted, use the{' '}
               <Strong>filterSuggestions</Strong> function to demonstrate
-              real-world filtering behaviour, but this can be safely omitted if
-              the filtering is being performed server-side.
+              real-world filtering behaviour.
             </Text>
           </Alert>
         </>
@@ -478,6 +482,54 @@ const docs: ComponentDocs = {
                   value: 4,
                 },
               ])}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Suggestion highlights',
+      description: (
+        <>
+          {/* Todo - callout autosuggest-highlight? */}
+          <Text>
+            Suggestion items can optionally contain a highlight range. In other
+            examples on this page, highlights are automatically handled by the{' '}
+            <Strong>filterSuggestions</Strong> function, highlighting the
+            portion of each suggestion that matches the search value.
+          </Text>
+          <Text>
+            If you are not using <Strong>filterSuggestions</Strong>, you can
+            provide a highlight range to each suggestion, as shown in the
+            example below.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              The following example does not use accept input and does not use
+              the <Strong>filterSuggestions</Strong> function.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: ({ id }) =>
+        source(
+          <>
+            <Autosuggest
+              label="Label"
+              id={id}
+              value={{ text: 'App' }}
+              onChange={() => {}}
+              suggestions={[
+                {
+                  text: 'Apples',
+                  value: 1,
+                  highlights: [{ start: 0, end: 3 }],
+                },
+                {
+                  text: 'Apples and bananas',
+                  value: 2,
+                  highlights: [{ start: 0, end: 3 }],
+                },
+              ]}
             />
           </>,
         ),
