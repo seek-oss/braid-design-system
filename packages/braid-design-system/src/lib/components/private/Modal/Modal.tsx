@@ -23,6 +23,7 @@ export interface ModalProps
   > {
   open: boolean;
   onClose: (openState: false) => void | false;
+  removeOnClose?: boolean;
 }
 
 export const AllowCloseContext = createContext(true);
@@ -133,6 +134,7 @@ export const Modal = ({
   title,
   headingLevel,
   position,
+  removeOnClose = true,
   ...restProps
 }: ModalProps) => {
   const [trapActive, setTrapActive] = useState(true);
@@ -202,11 +204,17 @@ export const Modal = ({
     };
   }, [trapActive]);
 
-  return state === OPENING || state === OPEN || state === CLOSING ? (
+  const closedInDom =
+    (state === CLOSED || state === INITIAL) && removeOnClose === false;
+
+  return state === OPENING ||
+    state === OPEN ||
+    state === CLOSING ||
+    closedInDom ? (
     <ModalPortal>
       <FocusLock
         className={styles.resetStackingContext}
-        disabled={!trapActive}
+        disabled={!trapActive || closedInDom}
         autoFocus={false}
         onActivation={() => {
           if (state === OPEN) {
@@ -222,6 +230,7 @@ export const Modal = ({
         returnFocus
       >
         <Box
+          display={closedInDom ? 'none' : undefined}
           onClick={state === OPEN ? initiateClose : undefined}
           position="fixed"
           inset={0}
@@ -232,6 +241,7 @@ export const Modal = ({
         />
 
         <Box
+          display={closedInDom ? 'none' : undefined}
           position="fixed"
           inset={0}
           zIndex="modal"

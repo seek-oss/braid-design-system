@@ -2852,6 +2852,7 @@ exports[`Dialog 1`] = `
     illustration?: ReactNodeNoStrings
     onClose: (openState: false) => false | void
     open: boolean
+    removeOnClose?: boolean
     title: string
     width?: 
         | "content"
@@ -2919,6 +2920,7 @@ exports[`Drawer 1`] = `
     position?: 
         | "left"
         | "right"
+    removeOnClose?: boolean
     title: string
     width?: 
         | "large"
