@@ -278,7 +278,7 @@ interface LegacyMessageSuggestion {
   message: string;
 }
 
-type MatchHighlightsOptions = Parameters<typeof matchHighlights>[2];
+type HighlightOptions = 'matching' | 'remaining';
 
 export type AutosuggestBaseProps<Value> = Omit<
   FieldBaseProps,
@@ -295,7 +295,7 @@ export type AutosuggestBaseProps<Value> = Omit<
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
   automaticSelection?: boolean;
-  automaticHighlights?: boolean | MatchHighlightsOptions;
+  automaticHighlights?: HighlightOptions;
   hideSuggestionsOnSelection?: boolean;
   showMobileBackdrop?: boolean;
   scrollToTopOnMobile?: boolean;
@@ -341,13 +341,19 @@ function normaliseNoSuggestionMessage<Value>(
   }
 }
 
-function getAutomaticHighlights(
+export function highlightSuggestions(
   suggestion: string,
   value: string,
-  options?: MatchHighlightsOptions,
+  variant: HighlightOptions = 'matching',
 ): SuggestionMatch {
-  const matches = matchHighlights(suggestion, value, options);
-  return matches.map(([start, end]) => ({ start, end }));
+  const matches = matchHighlights(suggestion, value);
+
+  const formattedMatches =
+    variant === 'remaining'
+      ? matches.map(([_, end]) => ({ start: end, end: suggestion.length }))
+      : matches.map(([start, end]) => ({ start, end }));
+
+  return formattedMatches;
 }
 
 export const Autosuggest = forwardRef(function <Value>(
@@ -358,7 +364,7 @@ export const Autosuggest = forwardRef(function <Value>(
     noSuggestionsMessage: noSuggestionsMessageProp,
     onChange = noop,
     automaticSelection = false,
-    automaticHighlights = false,
+    automaticHighlights,
     showMobileBackdrop = false,
     scrollToTopOnMobile = true,
     hideSuggestionsOnSelection = true,
@@ -836,14 +842,12 @@ export const Autosuggest = forwardRef(function <Value>(
                           const { text } = suggestion;
                           const groupHeading = groupHeadingIndexes.get(index);
                           const highlights = automaticHighlights
-                            ? getAutomaticHighlights(
+                            ? highlightSuggestions(
                                 suggestion.text,
                                 value.text,
-                                typeof automaticHighlights === 'boolean'
-                                  ? {}
-                                  : automaticHighlights,
+                                automaticHighlights,
                               )
-                            : undefined;
+                            : suggestion.highlights;
 
                           return (
                             <Fragment key={index + text}>
@@ -853,7 +857,7 @@ export const Autosuggest = forwardRef(function <Value>(
                               <SuggestionItem
                                 suggestion={{
                                   ...suggestion,
-                                  ...(highlights && { highlights }),
+                                  highlights,
                                 }}
                                 highlighted={highlightedIndex === index}
                                 selected={value === suggestion}

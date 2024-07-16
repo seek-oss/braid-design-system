@@ -98,6 +98,9 @@ exports[`Autosuggest 1`] = `
     aria-labelledby: string
     autoFocus?: boolean
     automaticSelection?: boolean
+    automaticHighlights?: 
+        | "matching"
+        | "remaining"
     clearLabel?: string
     data?: DataAttributeMap
     description?: ReactNode
