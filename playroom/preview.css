@@ -1,4 +1,4 @@
-@keyframes nc15ju4 {
+@keyframes z9l94v4 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-.nc15ju1 {
+.z9l94v1 {
   z-index: 100;
   background: #1c2230;
-  color: var(--_1symhbq9);
+  color: var(--soloz59);
 }
-.nc15ju3 > svg > path {
+.z9l94v3 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: nc15ju4;
+  animation-name: z9l94v4;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,7 +25,7 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-.nc15ju5 {
+.z9l94v5 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
