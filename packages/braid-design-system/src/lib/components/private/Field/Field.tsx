@@ -151,7 +151,7 @@ export const Field = ({
   const fieldPadding = 'small';
 
   return (
-    <Stack space="xsmall">
+    <Stack space="small">
       {hasVisualLabelOrDescription ? (
         <FieldLabel
           htmlFor={id}
@@ -168,116 +168,118 @@ export const Field = ({
         />
       ) : null}
 
-      <Box
-        position="relative"
-        background={fieldBackground}
-        borderRadius="standard"
-        display="flex"
-        className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
-      >
-        {children(
-          overlays,
-          {
-            id,
-            name,
-            background: fieldBackground,
-            width: 'full',
-            paddingLeft: fieldPadding,
-            paddingRight: showSecondaryIcon ? undefined : fieldPadding,
-            borderRadius: 'standard',
-            outline: 'none',
-            'aria-describedby': mergeIds(
-              ariaDescribedBy,
-              message || secondaryMessage ? messageId : undefined,
-              descriptionId,
-            ),
-            'aria-required': required,
-            ...('aria-label' in restProps
-              ? { 'aria-label': restProps['aria-label'] }
-              : {}),
-            ...('aria-labelledby' in restProps
-              ? { 'aria-labelledby': restProps['aria-labelledby'] }
-              : {}),
-            disabled,
-            autoComplete,
-            autoFocus,
-            ...buildDataAttributes({ data, validateRestProps: restProps }),
-            className: clsx(
-              styles.field,
-              styles.placeholderColor,
-              textStyles({
-                tone: hasValue && !disabled ? 'neutral' : 'secondary',
-                size: 'standard',
-                baseline: false,
-              }),
-              touchableText.standard,
-              icon && !prefix ? styles.iconSpace : null,
-            ),
-          },
-          icon ? (
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              position="absolute"
-              height="touchable"
-              width="touchable"
-              pointerEvents="none"
-              top={0}
-              left={0}
-            >
-              <Text baseline={false} tone={prefix ? 'secondary' : undefined}>
-                {icon}
-              </Text>
-            </Box>
-          ) : null,
-          secondaryIcon ? (
-            <Box
-              component="span"
-              position="absolute"
-              width="touchable"
-              height="touchable"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              top={0}
-              right={0}
-            >
-              {secondaryIcon}
-            </Box>
-          ) : null,
-          prefix ? (
-            <Box
-              component="label"
-              htmlFor={id}
-              display="flex"
-              alignItems="center"
-              paddingLeft={icon ? undefined : fieldPadding}
-              height="touchable"
-              flexShrink={0}
-              className={icon ? styles.iconSpace : null}
-            >
-              <Text tone="secondary" baseline={false}>
-                {prefix}
-              </Text>
-              <Box padding={fieldPadding} paddingRight="none" height="full">
-                <Box height="full" className={styles.verticalDivider} />
+      <Stack space="xsmall">
+        <Box
+          position="relative"
+          background={fieldBackground}
+          borderRadius="standard"
+          display="flex"
+          className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
+        >
+          {children(
+            overlays,
+            {
+              id,
+              name,
+              background: fieldBackground,
+              width: 'full',
+              paddingLeft: fieldPadding,
+              paddingRight: showSecondaryIcon ? undefined : fieldPadding,
+              borderRadius: 'standard',
+              outline: 'none',
+              'aria-describedby': mergeIds(
+                ariaDescribedBy,
+                message || secondaryMessage ? messageId : undefined,
+                descriptionId,
+              ),
+              'aria-required': required,
+              ...('aria-label' in restProps
+                ? { 'aria-label': restProps['aria-label'] }
+                : {}),
+              ...('aria-labelledby' in restProps
+                ? { 'aria-labelledby': restProps['aria-labelledby'] }
+                : {}),
+              disabled,
+              autoComplete,
+              autoFocus,
+              ...buildDataAttributes({ data, validateRestProps: restProps }),
+              className: clsx(
+                styles.field,
+                styles.placeholderColor,
+                textStyles({
+                  tone: hasValue && !disabled ? 'neutral' : 'secondary',
+                  size: 'standard',
+                  baseline: false,
+                }),
+                touchableText.standard,
+                icon && !prefix ? styles.iconSpace : null,
+              ),
+            },
+            icon ? (
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                position="absolute"
+                height="touchable"
+                width="touchable"
+                pointerEvents="none"
+                top={0}
+                left={0}
+              >
+                <Text baseline={false} tone={prefix ? 'secondary' : undefined}>
+                  {icon}
+                </Text>
               </Box>
-            </Box>
-          ) : null,
-        )}
-      </Box>
+            ) : null,
+            secondaryIcon ? (
+              <Box
+                component="span"
+                position="absolute"
+                width="touchable"
+                height="touchable"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                top={0}
+                right={0}
+              >
+                {secondaryIcon}
+              </Box>
+            ) : null,
+            prefix ? (
+              <Box
+                component="label"
+                htmlFor={id}
+                display="flex"
+                alignItems="center"
+                paddingLeft={icon ? undefined : fieldPadding}
+                height="touchable"
+                flexShrink={0}
+                className={icon ? styles.iconSpace : null}
+              >
+                <Text tone="secondary" baseline={false}>
+                  {prefix}
+                </Text>
+                <Box padding={fieldPadding} paddingRight="none" height="full">
+                  <Box height="full" className={styles.verticalDivider} />
+                </Box>
+              </Box>
+            ) : null,
+          )}
+        </Box>
 
-      {message || secondaryMessage || reserveMessageSpace ? (
-        <FieldMessage
-          id={messageId}
-          tone={tone}
-          disabled={disabled}
-          message={message}
-          secondaryMessage={secondaryMessage}
-          reserveMessageSpace={reserveMessageSpace}
-        />
-      ) : null}
+        {message || secondaryMessage || reserveMessageSpace ? (
+          <FieldMessage
+            id={messageId}
+            tone={tone}
+            disabled={disabled}
+            message={message}
+            secondaryMessage={secondaryMessage}
+            reserveMessageSpace={reserveMessageSpace}
+          />
+        ) : null}
+      </Stack>
     </Stack>
   );
 };

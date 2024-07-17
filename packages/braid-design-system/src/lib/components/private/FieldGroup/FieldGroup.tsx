@@ -5,7 +5,7 @@ import {
   type FieldMessageProps,
   FieldMessage,
 } from '../../FieldMessage/FieldMessage';
-import { type StackProps, Stack } from '../../Stack/Stack';
+import { Stack } from '../../Stack/Stack';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
@@ -50,7 +50,6 @@ interface FieldGroupRenderProps {
 type InternalFieldGroupProps = FieldGroupBaseProps &
   FieldLabelVariant & {
     role?: FormElementProps['role'];
-    space?: StackProps['space'];
     children(props: FieldGroupRenderProps): ReactNodeNoStrings;
   };
 
@@ -66,7 +65,6 @@ export const FieldGroup = ({
   tone,
   required,
   role,
-  space = 'xsmall',
   data,
   ...restProps
 }: InternalFieldGroupProps) => {
@@ -95,7 +93,7 @@ export const FieldGroup = ({
       aria-required={required}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Stack space={space}>
+      <Stack space="small">
         {('label' in restProps && restProps.label) || description ? (
           <Box component="legend" id={labelId}>
             <FieldLabel

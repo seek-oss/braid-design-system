@@ -9,7 +9,6 @@ import {
 import { type RadioItemProps, RadioItem } from '../RadioGroup/RadioItem';
 import { type StackProps, Stack } from '../Stack/Stack';
 import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
-import { Box } from '../Box/Box';
 import type { InlineFieldProps } from '../private/InlineField/InlineField';
 
 export type RadioGroupBaseProps<Value = NonNullable<string | number>> =
@@ -29,8 +28,8 @@ export type RadioGroupProps<Value = NonNullable<string | number>> =
   RadioGroupBaseProps<Value> & RadioGroupLabelProps;
 
 const stackSpaceForSize = {
-  small: 'small',
-  standard: 'medium',
+  small: 'xsmall',
+  standard: 'small',
 } as Record<NonNullable<RadioGroupProps['size']>, StackProps['space']>;
 
 const RadioGroup = ({
@@ -45,7 +44,6 @@ const RadioGroup = ({
   ...props
 }: RadioGroupProps) => {
   const items = flattenChildren(children);
-  const labelSpace = props.description ? 'xxsmall' : 'xsmall';
 
   assert(
     items.every(
@@ -61,7 +59,6 @@ const RadioGroup = ({
       {...props}
       disabled={disabled}
       tone={tone}
-      space="small"
       role="radiogroup"
     >
       {(fieldGroupProps) => (
@@ -77,20 +74,13 @@ const RadioGroup = ({
             ...fieldGroupProps,
           }}
         >
-          <Box
-            paddingTop={'label' in props ? labelSpace : undefined}
-            paddingBottom={
-              props.message || props.reserveMessageSpace ? 'xsmall' : undefined
-            }
-          >
-            <Stack space={stackSpaceForSize[size || 'standard']}>
-              {items.map((item, i) => (
-                <RadioItemContext.Provider key={i} value={i}>
-                  {item}
-                </RadioItemContext.Provider>
-              ))}
-            </Stack>
-          </Box>
+          <Stack space={stackSpaceForSize[size || 'standard']}>
+            {items.map((item, i) => (
+              <RadioItemContext.Provider key={i} value={i}>
+                {item}
+              </RadioItemContext.Provider>
+            ))}
+          </Stack>
         </RadioGroupContext.Provider>
       )}
     </FieldGroup>
