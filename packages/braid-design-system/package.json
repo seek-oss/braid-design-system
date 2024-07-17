@@ -211,7 +211,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/plugin-transform-typescript": "^7.20.13",
-    "@braid-design-system/source.macro": "*",
+    "@braid-design-system/source.macro": "workspace:*",
     "@storybook/react": "7.6.20",
     "@storybook/react-webpack5": "7.6.20",
     "@svgr/core": "^5.5.0",
