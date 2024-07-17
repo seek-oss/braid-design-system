@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "SEEK",
   "dependencies": {
-    "braid-design-system": "*"
+    "braid-design-system": "workspace:*"
   },
   "devDependencies": {
     "@vanilla-extract/integration": "^6.1.2",
