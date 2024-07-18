@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
 import {
@@ -11,8 +11,12 @@ import {
   Stack,
   Heading,
   Notice,
+  Column,
+  Columns,
+  TextField,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
+import { highlightSuggestions } from './Autosuggest';
 
 export const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,
@@ -466,32 +470,82 @@ const docs: ComponentDocs = {
             A portion of each suggestion item can be highlighted to indicate
             portions matching the input value. You can use the{' '}
             <Strong>automaticHighlights</Strong> prop to highlight either the{' '}
-            <Strong>matching</Strong> portion of each suggestion or the{' '}
-            <Strong>remaining</Strong> portion.
+            <Strong>matching</Strong> or <Strong>remaining</Strong> portion of
+            each suggestion.
           </Text>
         </>
       ),
-      Example: ({ id, setDefaultState, setState, getState, resetState }) =>
-        source(
-          <>
-            {setDefaultState('value', { text: '' })}
+      Example: ({ id, setDefaultState, setState, getState }) => {
+        const suggestion = 'Apples';
 
-            <Autosuggest
-              label="Label"
-              id={`${id}_automaticHighlights`}
-              value={getState('value')}
-              onChange={setState('value')}
-              onClear={() => resetState('value')}
-              automaticHighlights="matching"
-              suggestions={[
-                { text: 'Apples' },
-                { text: 'Bananas' },
-                { text: 'Carrots' },
-              ]}
-            />
+        function handleOnChange(event: React.FormEvent<HTMLInputElement>) {
+          const value = event.currentTarget.value;
+          let matching = '';
+          let remaining = suggestion;
+
+          setState('textfield', value);
+
+          if (value) {
+            const match = highlightSuggestions(suggestion, value);
+
+            if (match[0]) {
+              matching = suggestion.substring(match[0].start, match[0].end);
+              remaining = suggestion.substring(match[0].end);
+            }
+          }
+
+          setState('suggestionMatch', matching);
+          setState('suggestionRemainder', remaining);
+        }
+
+        return source(
+          <>
+            {setDefaultState('textfield', 'App')}
+            {setDefaultState('suggestionMatch', 'App')}
+            {setDefaultState('suggestionRemainder', 'les')}
+
+            <Stack space="large">
+              <TextField
+                label="Label"
+                id={id}
+                onChange={handleOnChange}
+                value={getState('textfield')}
+              />
+              <Columns space="gutter">
+                <Column>
+                  <Stack space="small">
+                    <Text size="small" tone="secondary">
+                      Highlight <Strong>matching</Strong>
+                    </Text>
+                    <Text>
+                      <Strong>{getState('suggestionMatch')}</Strong>
+                      {getState('suggestionRemainder')}
+                    </Text>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Stack space="small">
+                    <Text size="small" tone="secondary">
+                      Highlight <Strong>remaining</Strong>
+                    </Text>
+                    {getState('suggestionRemainder') === suggestion ? (
+                      <Text>{getState('suggestionRemainder')}</Text>
+                    ) : (
+                      <Text>
+                        {getState('suggestionMatch')}
+                        <Strong>{getState('suggestionRemainder')}</Strong>
+                      </Text>
+                    )}
+                  </Stack>
+                </Column>
+              </Columns>
+            </Stack>
           </>,
-        ),
+        );
+      },
+      code: false,
     },
+
     {
       description: (
         <>
