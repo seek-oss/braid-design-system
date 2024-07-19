@@ -101,9 +101,6 @@ exports[`Autosuggest 1`] = `
         | "matching"
         | "remaining"
     automaticSelection?: boolean
-    automaticHighlights?: 
-        | "matching"
-        | "remaining"
     clearLabel?: string
     data?: DataAttributeMap
     description?: ReactNode
