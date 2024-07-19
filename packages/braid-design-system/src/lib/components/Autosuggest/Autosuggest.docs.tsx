@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
 import {
@@ -7,13 +7,18 @@ import {
   TextLink,
   Text,
   Strong,
-  Alert,
   List,
   Stack,
   Heading,
   Notice,
+  Column,
+  Columns,
+  TextField,
+  Inline,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
+import { highlightSuggestions } from './Autosuggest';
+import parseHighlights from 'autosuggest-highlight/parse';
 
 export const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,
@@ -460,6 +465,99 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Suggestion highlights',
+      description: (
+        <>
+          <Text>
+            A portion of each suggestion item can be highlighted to indicate
+            portions matching the input value. You can use the{' '}
+            <Strong>automaticHighlights</Strong> prop to highlight either the{' '}
+            <Strong>matching</Strong> or <Strong>remaining</Strong> portion of
+            each suggestion.
+          </Text>
+        </>
+      ),
+      Example: ({ id, setDefaultState, setState, getState }) =>
+        source(
+          <>
+            {setDefaultState('textfield', 'App')}
+            {setDefaultState('suggestion', 'Apples')}
+
+            <Stack space="large">
+              <TextField
+                label="Label"
+                id={id}
+                onChange={setState('textfield')}
+                value={getState('textfield')}
+              />
+              <Columns space="gutter">
+                {['matching', 'remaining'].map((highlightType) => (
+                  <Column key={highlightType}>
+                    <Stack space="small">
+                      <Text size="small" tone="secondary">
+                        Highlight <Strong>{highlightType}</Strong>
+                      </Text>
+                      <Inline space="none">
+                        {parseHighlights(
+                          getState('suggestion'),
+                          highlightSuggestions(
+                            getState('suggestion'),
+                            getState('textfield'),
+                            highlightType === 'matching'
+                              ? 'matching'
+                              : 'remaining',
+                          ).map(({ start, end }) => [start, end]),
+                        ).map((part, index) => (
+                          <Text
+                            key={index}
+                            weight={part.highlight ? 'strong' : 'regular'}
+                          >
+                            {part.text}
+                          </Text>
+                        ))}
+                      </Inline>
+                    </Stack>
+                  </Column>
+                ))}
+              </Columns>
+            </Stack>
+          </>,
+        ),
+      code: false,
+    },
+
+    {
+      description: (
+        <>
+          <Text>
+            If <Strong>automaticHighlights</Strong> is not suitable for your use
+            case, you can provide explicit highlight ranges for each suggestion.
+          </Text>
+        </>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Autosuggest
+            label="Label"
+            id={`${id}_highlights`}
+            value={{ text: 'App' }}
+            onChange={() => {}}
+            suggestions={[
+              {
+                text: 'Apples',
+                value: 1,
+                highlights: [{ start: 2, end: 6 }],
+              },
+              {
+                text: 'Bananas',
+                value: 2,
+                highlights: [{ start: 0, end: 3 }],
+              },
+            ]}
+          />,
+        ),
+    },
+    {
       label: 'Client-side filtering',
       description: (
         <>
@@ -468,111 +566,27 @@ const docs: ComponentDocs = {
             rather than the client because it’s impractical to send all possible
             suggestions over the network. However, when prototyping in Playroom
             or working with smaller datasets, you may want to perform this
-            filtering on the client instead. For this case, we provide a{' '}
-            <Strong>filterSuggestions</Strong> function to make this as painless
-            as possible.
+            filtering on the client instead.
+          </Text>
+          <Text>
+            For this case, we provide a <Strong>filterSuggestions</Strong>{' '}
+            function to make this as painless as possible. This also handles
+            highlights for you, using <Strong>automaticHighlights</Strong> set
+            to <Strong>matching</Strong>.
           </Text>
           <Text>
             If filtering is being performed on the server, this can be safely
             omitted.
           </Text>
-          <Alert tone="info">
+          <Notice tone="info">
             <Text>
-              All examples on this page, except where noted, use the{' '}
+              Most examples on this page use the{' '}
               <Strong>filterSuggestions</Strong> function to demonstrate
               real-world filtering behaviour.
             </Text>
-          </Alert>
-        </>
-      ),
-    },
-    {
-      label: 'Automatic suggestion highlights',
-      description: (
-        <>
-          <Text>
-            While the <Strong>filterSuggestions</Strong> function will handle
-            highlights for you, you may need to separate the logic of
-            highlighting from filtering.
-          </Text>
-          <Text>
-            You can use the <Strong>automaticHighlights</Strong> prop to
-            automatically handle highlighting for you. In the following example,
-            while <Strong>filterSuggestions</Strong> is not used, highlights
-            work as expected.
-          </Text>
-          <Notice tone="info">
-            <Text>
-              <Strong>automaticHighlights</Strong> can be configured further by
-              providing an <Strong>options</Strong> object.
-            </Text>
           </Notice>
         </>
       ),
-      Example: ({ id, setDefaultState, setState, getState, resetState }) =>
-        source(
-          <>
-            {setDefaultState('value', { text: '' })}
-
-            <Autosuggest
-              label="Label"
-              id={`${id}_highlights1`}
-              value={getState('value')}
-              onChange={setState('value')}
-              onClear={() => resetState('value')}
-              automaticHighlights
-              suggestions={[
-                { text: 'Apples' },
-                { text: 'Bananas' },
-                { text: 'Carrots' },
-              ]}
-            />
-          </>,
-        ),
-    },
-    {
-      label: 'Custom suggestion highlights',
-      description: (
-        <>
-          <Text>
-            If <Strong>automaticHighlights</Strong> is not suitable for your use
-            case, you can provide explicit highlight ranges for each suggestion.
-          </Text>
-          <Notice tone="info">
-            <Text>
-              This is a simplified example that does not use{' '}
-              <Strong>filterSuggestions</Strong>. Suggestions will not change
-              from your input.
-            </Text>
-          </Notice>
-        </>
-      ),
-      Example: ({ id, setDefaultState, setState, getState, resetState }) =>
-        source(
-          <>
-            {setDefaultState('value', { text: '' })}
-
-            <Autosuggest
-              label="Label"
-              id={`${id}_highlights3`}
-              value={getState('value')}
-              onChange={setState('value')}
-              onClear={() => resetState('value')}
-              suggestions={[
-                {
-                  text: 'Apples',
-                  value: 1,
-                  highlights: [{ start: 0, end: 2 }],
-                },
-                {
-                  text: 'Bananas',
-                  value: 2,
-                  highlights: [{ start: 0, end: 2 }],
-                },
-              ]}
-            />
-          </>,
-        ),
     },
     {
       label: 'Clearable suggestions',
