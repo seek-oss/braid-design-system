@@ -14,9 +14,11 @@ import {
   Column,
   Columns,
   TextField,
+  Inline,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
 import { highlightSuggestions } from './Autosuggest';
+import parseHighlights from 'autosuggest-highlight/parse';
 
 export const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,
@@ -475,74 +477,52 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, setDefaultState, setState, getState }) => {
-        const suggestion = 'Apples';
-
-        function handleOnChange(event: React.FormEvent<HTMLInputElement>) {
-          const value = event.currentTarget.value;
-          let matching = '';
-          let remaining = suggestion;
-
-          setState('textfield', value);
-
-          if (value) {
-            const match = highlightSuggestions(suggestion, value);
-
-            if (match[0]) {
-              matching = suggestion.substring(match[0].start, match[0].end);
-              remaining = suggestion.substring(match[0].end);
-            }
-          }
-
-          setState('suggestionMatch', matching);
-          setState('suggestionRemainder', remaining);
-        }
-
-        return source(
+      Example: ({ id, setDefaultState, setState, getState }) =>
+        source(
           <>
             {setDefaultState('textfield', 'App')}
-            {setDefaultState('suggestionMatch', 'App')}
-            {setDefaultState('suggestionRemainder', 'les')}
+            {setDefaultState('suggestion', 'Apples')}
 
             <Stack space="large">
               <TextField
                 label="Label"
                 id={id}
-                onChange={handleOnChange}
+                onChange={setState('textfield')}
                 value={getState('textfield')}
               />
               <Columns space="gutter">
-                <Column>
-                  <Stack space="small">
-                    <Text size="small" tone="secondary">
-                      Highlight <Strong>matching</Strong>
-                    </Text>
-                    <Text>
-                      <Strong>{getState('suggestionMatch')}</Strong>
-                      {getState('suggestionRemainder')}
-                    </Text>
-                  </Stack>
-                </Column>
-                <Column>
-                  <Stack space="small">
-                    <Text size="small" tone="secondary">
-                      Highlight <Strong>remaining</Strong>
-                    </Text>
-                    {getState('suggestionRemainder') === suggestion ? (
-                      <Text>{getState('suggestionRemainder')}</Text>
-                    ) : (
-                      <Text>
-                        {getState('suggestionMatch')}
-                        <Strong>{getState('suggestionRemainder')}</Strong>
+                {['matching', 'remaining'].map((highlightType) => (
+                  <Column key={highlightType}>
+                    <Stack space="small">
+                      <Text size="small" tone="secondary">
+                        Highlight <Strong>{highlightType}</Strong>
                       </Text>
-                    )}
-                  </Stack>
-                </Column>
+                      <Inline space="none">
+                        {parseHighlights(
+                          getState('suggestion'),
+                          highlightSuggestions(
+                            getState('suggestion'),
+                            getState('textfield'),
+                            highlightType === 'matching'
+                              ? 'matching'
+                              : 'remaining',
+                          ).map(({ start, end }) => [start, end]),
+                        ).map((part, index) => (
+                          <Text
+                            key={index}
+                            weight={part.highlight ? 'strong' : 'regular'}
+                          >
+                            {part.text}
+                          </Text>
+                        ))}
+                      </Inline>
+                    </Stack>
+                  </Column>
+                ))}
               </Columns>
             </Stack>
           </>,
-        );
-      },
+        ),
       code: false,
     },
 

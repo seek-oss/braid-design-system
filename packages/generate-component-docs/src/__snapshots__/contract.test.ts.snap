@@ -97,6 +97,9 @@ exports[`Autosuggest 1`] = `
     aria-label: string
     aria-labelledby: string
     autoFocus?: boolean
+    automaticHighlights?: 
+        | "matching"
+        | "remaining"
     automaticSelection?: boolean
     automaticHighlights?: 
         | "matching"
