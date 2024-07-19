@@ -402,9 +402,9 @@ export const Autosuggest = forwardRef(function <Value>(
       // eslint-disable-next-line no-console
       console.warn(
         dedent`
-          In Autosuggest, you are using the "automaticHighlights" prop with suggestions that already have highlights.
-          The provided highlights will be overridden.
-          If you want to use your own highlights, set "automaticHighlights" to false.
+          In Autosuggest, you are using the "automaticHighlights" prop with suggestions that have individual highlight ranges.
+          Your provided highlight ranges will be overridden.
+          If you want to use your own highlight ranges, remove the "automaticHighlights" prop.
           `,
       );
     }
