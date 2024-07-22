@@ -468,10 +468,10 @@ const docs: ComponentDocs = {
       label: 'Suggestion highlights',
       description: (
         <Text>
-          Suggestion items can be highlighted based on the input value using
-          the <Strong>automaticHighlights</Strong> prop. Choose between
-          highlighting the <Strong>matching</Strong> or{' '}
-          <Strong>remaining</Strong> portion of each suggestion.
+          Suggestion items can be highlighted based on the input value using the{' '}
+          <Strong>suggestionHighlight</Strong> prop. Choose between highlighting
+          the <Strong>matching</Strong> or <Strong>remaining</Strong> portion of
+          each suggestion.
         </Text>
       ),
       Example: ({ id, setDefaultState, setState, getState }) =>
@@ -527,31 +527,36 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            If <Strong>automaticHighlights</Strong> is not suitable for your use
+            If <Strong>suggestionHighlight</Strong> is not suitable for your use
             case, you can provide explicit highlight ranges for each suggestion.
           </Text>
         </>
       ),
-      Example: ({ id }) =>
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
         source(
-          <Autosuggest
-            label="Label"
-            id={`${id}_highlights`}
-            value={{ text: 'App' }}
-            onChange={() => {}}
-            suggestions={[
-              {
-                text: 'Apples',
-                value: 1,
-                highlights: [{ start: 2, end: 6 }],
-              },
-              {
-                text: 'Bananas',
-                value: 2,
-                highlights: [{ start: 0, end: 3 }],
-              },
-            ]}
-          />,
+          <>
+            {setDefaultState('value', { text: 'App' })}
+
+            <Autosuggest
+              label="Label"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={[
+                {
+                  text: 'Apples',
+                  value: 1,
+                  highlights: [{ start: 2, end: 6 }],
+                },
+                {
+                  text: 'Bananas',
+                  value: 2,
+                  highlights: [{ start: 0, end: 3 }],
+                },
+              ]}
+            />
+          </>,
         ),
     },
     {
@@ -568,7 +573,7 @@ const docs: ComponentDocs = {
           <Text>
             For this case, we provide a <Strong>filterSuggestions</Strong>{' '}
             function to make this as painless as possible. This also handles
-            highlights for you, using <Strong>automaticHighlights</Strong> set
+            highlights for you, using <Strong>suggestionHighlight</Strong> set
             to <Strong>matching</Strong>.
           </Text>
           <Text>

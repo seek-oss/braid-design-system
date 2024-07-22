@@ -7,11 +7,11 @@ updated:
   - Autosuggest
 ---
 
-**Autosuggest:** Add `automaticHighlights` prop
+**Autosuggest:** Add `suggestionHighlight` prop
 
-Introduces the `automaticHighlights` prop, which uses the input value to automatically highlight either the `matching` or `remaining` portion of each suggestion.
+Introduces the `suggestionHighlight` prop, which uses the input value to automatically highlight either the `matching` or `remaining` portion of each suggestion.
 
 **EXAMPLE USAGE:**
 ```jsx
-<Autosuggest automaticHighlights="matching">
+<Autosuggest suggestionHighlight="matching">
 ```

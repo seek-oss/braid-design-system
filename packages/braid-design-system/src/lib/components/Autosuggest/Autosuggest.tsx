@@ -295,7 +295,7 @@ export type AutosuggestBaseProps<Value> = Omit<
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
   automaticSelection?: boolean;
-  automaticHighlights?: HighlightOptions;
+  suggestionHighlight?: HighlightOptions;
   hideSuggestionsOnSelection?: boolean;
   showMobileBackdrop?: boolean;
   scrollToTopOnMobile?: boolean;
@@ -364,7 +364,7 @@ export const Autosuggest = forwardRef(function <Value>(
     noSuggestionsMessage: noSuggestionsMessageProp,
     onChange = noop,
     automaticSelection = false,
-    automaticHighlights,
+    suggestionHighlight,
     showMobileBackdrop = false,
     scrollToTopOnMobile = true,
     hideSuggestionsOnSelection = true,
@@ -398,13 +398,13 @@ export const Autosuggest = forwardRef(function <Value>(
   );
 
   if (process.env.NODE_ENV !== 'production') {
-    if (automaticHighlights && hasExplicitHighlights) {
+    if (suggestionHighlight && hasExplicitHighlights) {
       // eslint-disable-next-line no-console
       console.warn(
         dedent`
-          In Autosuggest, you are using the "automaticHighlights" prop with suggestions that have individual highlight ranges.
+          In Autosuggest, you are using the "suggestionHighlight" prop with suggestions that have individual highlight ranges.
           Your provided highlight ranges will be overridden.
-          If you want to use your own highlight ranges, remove the "automaticHighlights" prop.
+          If you want to use your own highlight ranges, remove the "suggestionHighlight" prop.
           `,
       );
     }
@@ -841,11 +841,11 @@ export const Autosuggest = forwardRef(function <Value>(
                       ? normalisedSuggestions.map((suggestion, index) => {
                           const { text } = suggestion;
                           const groupHeading = groupHeadingIndexes.get(index);
-                          const highlights = automaticHighlights
+                          const highlights = suggestionHighlight
                             ? highlightSuggestions(
                                 suggestion.text,
                                 value.text,
-                                automaticHighlights,
+                                suggestionHighlight,
                               )
                             : suggestion.highlights;
 

@@ -97,9 +97,6 @@ exports[`Autosuggest 1`] = `
     aria-label: string
     aria-labelledby: string
     autoFocus?: boolean
-    automaticHighlights?: 
-        | "matching"
-        | "remaining"
     automaticSelection?: boolean
     clearLabel?: string
     data?: DataAttributeMap
@@ -129,6 +126,9 @@ exports[`Autosuggest 1`] = `
     secondaryLabel?: ReactNode
     secondaryMessage?: ReactNode
     showMobileBackdrop?: boolean
+    suggestionHighlight?: 
+        | "matching"
+        | "remaining"
     suggestions: 
         | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
         | Suggestions<Value>
