@@ -7,5 +7,4 @@ module.exports = {
   supportedBrowsers: browserslist,
   displayNamesProd: true,
   skipPackageCompatibilityCompilation: ['lodash', 'prettier'],
-  storybookStoryStore: false,
 };

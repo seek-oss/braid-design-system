@@ -1,4 +1,6 @@
 const path = require('path');
+// Todo - shouldn't need eslint disable
+// eslint-disable-next-line import/no-unresolved
 const SkuWebpackPlugin = require('sku/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const browserslist = require('../browserslist');

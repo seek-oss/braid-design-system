@@ -122,6 +122,7 @@ exports[`Autosuggest 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     scrollToTopOnMobile?: boolean
@@ -170,6 +171,7 @@ exports[`Badge 1`] = `
     ref?: 
         | (instance: HTMLSpanElement | null) => void
         | RefObject<HTMLSpanElement>
+        | string
     tabIndex?: number
     title?: string
     tone?: 
@@ -319,6 +321,8 @@ exports[`Box 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -332,6 +336,7 @@ exports[`Box 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -345,6 +350,7 @@ exports[`Box 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -451,6 +457,7 @@ exports[`Box 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -716,8 +723,10 @@ exports[`Box 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -760,6 +769,7 @@ exports[`Box 1`] = `
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
@@ -773,7 +783,7 @@ exports[`Box 1`] = `
     cursor?: 
         | "default"
         | "pointer"
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     dateTime?: string
@@ -1103,9 +1113,7 @@ exports[`Box 1`] = `
     onPointerDown?: PointerEventHandler<HTMLElement>
     onPointerDownCapture?: PointerEventHandler<HTMLElement>
     onPointerEnter?: PointerEventHandler<HTMLElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLElement>
     onPointerLeave?: PointerEventHandler<HTMLElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLElement>
     onPointerMove?: PointerEventHandler<HTMLElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLElement>
     onPointerOut?: PointerEventHandler<HTMLElement>
@@ -1273,10 +1281,12 @@ exports[`Box 1`] = `
     ref?: 
         | (instance: HTMLElement | null) => void
         | RefObject<HTMLElement>
+        | string
     rel?: string
     required?: boolean
     resource?: string
     results?: number
+    rev?: string
     reversed?: boolean
     right?: 0
     role?: 
@@ -1661,8 +1671,10 @@ exports[`BoxRenderer 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -2062,6 +2074,7 @@ exports[`Button 1`] = `
     ref?: 
         | (instance: HTMLButtonElement | null) => void
         | RefObject<HTMLButtonElement>
+        | string
     size?: 
         | "small"
         | "standard"
@@ -2115,6 +2128,7 @@ exports[`ButtonIcon 1`] = `
     ref?: 
         | (instance: HTMLButtonElement | null) => void
         | RefObject<HTMLButtonElement>
+        | string
     size?: 
         | "large"
         | "small"
@@ -2155,6 +2169,8 @@ exports[`ButtonLink 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -2168,6 +2184,7 @@ exports[`ButtonLink 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -2181,6 +2198,7 @@ exports[`ButtonLink 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -2287,6 +2305,7 @@ exports[`ButtonLink 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -2305,19 +2324,22 @@ exports[`ButtonLink 1`] = `
     aria-valuetext?: string
     autoCapitalize?: string
     autoCorrect?: string
+    autoFocus?: boolean
     autoSave?: string
     bleed?: boolean
     bleedY?: boolean
     children?: ReactNode
     color?: string
+    content?: string
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
     contextMenu?: string
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
@@ -2471,9 +2493,7 @@ exports[`ButtonLink 1`] = `
     onPointerDown?: PointerEventHandler<HTMLAnchorElement>
     onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerMove?: PointerEventHandler<HTMLAnchorElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerOut?: PointerEventHandler<HTMLAnchorElement>
@@ -2523,13 +2543,13 @@ exports[`ButtonLink 1`] = `
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
-    placeholder?: string
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
+        | string
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -2543,6 +2563,7 @@ exports[`ButtonLink 1`] = `
     rel?: string
     resource?: string
     results?: number
+    rev?: string
     role?: 
         | "alert"
         | "alertdialog"
@@ -2708,6 +2729,7 @@ exports[`Checkbox 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     size?: 
@@ -2744,6 +2766,7 @@ exports[`CheckboxStandalone 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     size?: 
         | "small"
@@ -2958,6 +2981,7 @@ exports[`Dropdown 1`] = `
     ref?: 
         | (instance: HTMLSelectElement | null) => void
         | RefObject<HTMLSelectElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -3163,8 +3187,10 @@ exports[`Heading 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -3372,8 +3398,10 @@ exports[`Hidden 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -6470,6 +6498,8 @@ exports[`Link 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -6483,6 +6513,7 @@ exports[`Link 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -6496,6 +6527,7 @@ exports[`Link 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -6602,6 +6634,7 @@ exports[`Link 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -6620,18 +6653,21 @@ exports[`Link 1`] = `
     aria-valuetext?: string
     autoCapitalize?: string
     autoCorrect?: string
+    autoFocus?: boolean
     autoSave?: string
     children?: ReactNode
     className?: ClassValue
     color?: string
+    content?: string
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
     contextMenu?: string
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
@@ -6780,9 +6816,7 @@ exports[`Link 1`] = `
     onPointerDown?: PointerEventHandler<HTMLAnchorElement>
     onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerMove?: PointerEventHandler<HTMLAnchorElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerOut?: PointerEventHandler<HTMLAnchorElement>
@@ -6832,13 +6866,13 @@ exports[`Link 1`] = `
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
-    placeholder?: string
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
+        | string
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -6852,6 +6886,7 @@ exports[`Link 1`] = `
     rel?: string
     resource?: string
     results?: number
+    rev?: string
     role?: 
         | "alert"
         | "alertdialog"
@@ -7268,6 +7303,7 @@ exports[`PasswordField 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -7306,6 +7342,7 @@ exports[`Radio 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     tone?: 
         | "critical"
         | "neutral"
@@ -7364,6 +7401,7 @@ exports[`RadioItem 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     value: 
         | number
         | readonly string[]
@@ -7743,8 +7781,10 @@ exports[`Text 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -7864,6 +7904,7 @@ exports[`TextField 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -7909,6 +7950,8 @@ exports[`TextLink 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -7922,6 +7965,7 @@ exports[`TextLink 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -7935,6 +7979,7 @@ exports[`TextLink 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -8041,6 +8086,7 @@ exports[`TextLink 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -8059,17 +8105,20 @@ exports[`TextLink 1`] = `
     aria-valuetext?: string
     autoCapitalize?: string
     autoCorrect?: string
+    autoFocus?: boolean
     autoSave?: string
     children?: ReactNode
     color?: string
+    content?: string
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
     contextMenu?: string
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
@@ -8225,9 +8274,7 @@ exports[`TextLink 1`] = `
     onPointerDown?: PointerEventHandler<HTMLAnchorElement>
     onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerMove?: PointerEventHandler<HTMLAnchorElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerOut?: PointerEventHandler<HTMLAnchorElement>
@@ -8277,13 +8324,13 @@ exports[`TextLink 1`] = `
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
-    placeholder?: string
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
+        | string
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -8297,6 +8344,7 @@ exports[`TextLink 1`] = `
     rel?: string
     resource?: string
     results?: number
+    rev?: string
     role?: 
         | "alert"
         | "alertdialog"
@@ -8462,6 +8510,7 @@ exports[`Textarea 1`] = `
     ref?: 
         | (instance: HTMLTextAreaElement | null) => void
         | RefObject<HTMLTextAreaElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -8556,6 +8605,7 @@ exports[`Toggle 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     size?: 
         | "small"
         | "standard"
