@@ -467,15 +467,12 @@ const docs: ComponentDocs = {
     {
       label: 'Suggestion highlights',
       description: (
-        <>
-          <Text>
-            A portion of each suggestion item can be highlighted to indicate
-            portions matching the input value. You can use the{' '}
-            <Strong>automaticHighlights</Strong> prop to highlight either the{' '}
-            <Strong>matching</Strong> or <Strong>remaining</Strong> portion of
-            each suggestion.
-          </Text>
-        </>
+        <Text>
+          Suggestion items can be highlighted based on the input value using
+          the <Strong>automaticHighlights</Strong> prop. Choose between
+          highlighting the <Strong>matching</Strong> or{' '}
+          <Strong>remaining</Strong> portion of each suggestion.
+        </Text>
       ),
       Example: ({ id, setDefaultState, setState, getState }) =>
         source(
