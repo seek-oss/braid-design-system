@@ -7,5 +7,11 @@
   "baseBranch": "master",
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
-  }
+  },
+  "ignore": [
+    "@braid-design-system/codemod",
+    "@braid-design-system/generate-component-docs",
+    "@braid-design-system/integration-tests",
+    "site"
+  ]
 }
