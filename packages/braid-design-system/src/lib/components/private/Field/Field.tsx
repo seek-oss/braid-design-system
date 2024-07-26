@@ -124,7 +124,8 @@ export const Field = ({
     : { lightMode: 'surface' };
 
   const hasValue = typeof value === 'string' ? value.length > 0 : value != null;
-  const hasVisualLabelOrDescription = 'label' in restProps || description;
+  const hasVisualLabelOrDescription =
+    ('label' in restProps && restProps.label) || description;
   const showSecondaryIcon =
     alwaysShowSecondaryIcon || (secondaryIcon && hasValue);
 
