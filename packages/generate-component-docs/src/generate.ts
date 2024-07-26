@@ -57,6 +57,24 @@ export interface HookDoc {
   returnType: NormalisedPropType;
 }
 
+const unionAliases = {
+  ReactNode: [
+    'string',
+    'number',
+    'false',
+    'true',
+    'ReactElement<any, string | JSXElementConstructor<any>>',
+    'Iterable<ReactNode>',
+    'ReactPortal',
+  ],
+  ReactNodeNoStrings: [
+    'false',
+    'true',
+    'ReactElement<any, string | JSXElementConstructor<any>>',
+    'ReactNodeArray',
+  ],
+} as const;
+
 export type ExportDoc = ComponentDoc | HookDoc;
 
 function extractTypeInfo(file: string, options: CompilerOptions) {
@@ -223,28 +241,11 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
         checker.typeToString(unionItem),
       );
 
-      if (
-        isEqual(types.slice(0, 7), [
-          'string',
-          'number',
-          'false',
-          'true',
-          'ReactElement<any, string | JSXElementConstructor<any>>',
-          'ReactFragment',
-          'ReactPortal',
-        ])
-      ) {
+      if (isEqual(types.slice(0, 7), unionAliases.ReactNode)) {
         return 'ReactNode';
       }
 
-      if (
-        isEqual(types, [
-          'false',
-          'true',
-          'ReactElement<any, string | JSXElementConstructor<any>>',
-          'ReactNodeArray',
-        ])
-      ) {
+      if (isEqual(types, unionAliases.ReactNodeNoStrings)) {
         return 'ReactNodeNoStrings';
       }
 
