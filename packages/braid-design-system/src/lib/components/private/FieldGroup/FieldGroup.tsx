@@ -5,7 +5,7 @@ import {
   type FieldMessageProps,
   FieldMessage,
 } from '../../FieldMessage/FieldMessage';
-import { Stack } from '../../Stack/Stack';
+import { type StackProps, Stack } from '../../Stack/Stack';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
@@ -50,6 +50,7 @@ interface FieldGroupRenderProps {
 type InternalFieldGroupProps = FieldGroupBaseProps &
   FieldLabelVariant & {
     role?: FormElementProps['role'];
+    messageSpace?: StackProps['space'];
     children(props: FieldGroupRenderProps): ReactNodeNoStrings;
   };
 
@@ -62,6 +63,7 @@ export const FieldGroup = ({
   description,
   message,
   reserveMessageSpace = false,
+  messageSpace = 'xsmall',
   tone,
   required,
   role,
@@ -108,23 +110,25 @@ export const FieldGroup = ({
           </Box>
         ) : null}
 
-        {children({
-          disabled,
-          'aria-describedby': mergeIds(
-            message ? messageId : undefined,
-            descriptionId,
-          ),
-        })}
+        <Stack space={messageSpace}>
+          {children({
+            disabled,
+            'aria-describedby': mergeIds(
+              message ? messageId : undefined,
+              descriptionId,
+            ),
+          })}
 
-        {message || reserveMessageSpace ? (
-          <FieldMessage
-            id={messageId}
-            tone={tone}
-            disabled={disabled}
-            message={message}
-            reserveMessageSpace={reserveMessageSpace}
-          />
-        ) : null}
+          {message || reserveMessageSpace ? (
+            <FieldMessage
+              id={messageId}
+              tone={tone}
+              disabled={disabled}
+              message={message}
+              reserveMessageSpace={reserveMessageSpace}
+            />
+          ) : null}
+        </Stack>
       </Stack>
     </Box>
   );

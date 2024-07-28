@@ -60,6 +60,7 @@ const RadioGroup = ({
       disabled={disabled}
       tone={tone}
       role="radiogroup"
+      messageSpace="small"
     >
       {(fieldGroupProps) => (
         <RadioGroupContext.Provider
