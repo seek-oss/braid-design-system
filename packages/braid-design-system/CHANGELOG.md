@@ -1,5 +1,56 @@
 # braid-design-system
 
+## 32.21.0
+
+### Minor Changes
+
+- **IconHash:** Add component ([#1543](https://github.com/seek-oss/braid-design-system/pull/1543))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconHash />
+  ```
+
+- Improve internal form field spacing ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Refined the spacing between internal elements of form fields to align with the latest spacing guidelines.
+
+  This change impacts the `Stack` spacing between `label` and `description`, the form field itself and the `message` slots.
+
+- **Autosuggest:** Add `suggestionHighlight` prop ([#1536](https://github.com/seek-oss/braid-design-system/pull/1536))
+
+  Introduces the `suggestionHighlight` prop, which uses the input value to automatically highlight either the `matching` or `remaining` portion of each suggestion.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Autosuggest suggestionHighlight="matching">
+  ```
+
+### Patch Changes
+
+- Refine the Checkbox, Radio, Toggle & MenuItemCheckbox size ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Refines the size of the inline field elements including the `RadioItem`, `Checkbox`, `Toggle` and `MenuItemCheckbox` components.
+
+  Primarily impacts consumers of the `seekJobs` theme, seeing a reduction across all sizes.
+
+- Ensure no space above field with `undefined` label ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Fixes an issue where passing `undefined` as the `label` to a form field would result in an unwanted space above the field.
+
+- **Badge:** Ensure label follows correct tone ([#1544](https://github.com/seek-oss/braid-design-system/pull/1544))
+
+  Ensure that the foreground text of a `Badge` always follows the correct tone for the background colour.
+  Fixes a bug where using a `Badge` in a `List` that overrides the default tone would result in the `Badge` text following the `List` tone instead of the `Badge` tone.
+
+- Fix warning in React 18.3.0 when using useToast. ([#1534](https://github.com/seek-oss/braid-design-system/pull/1534))
+
+- **MonthPicker:** Reduce space between month and year fields ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Reducing the space between month and year fields to improve correlation between the two fields within the greater context of a form.
+
 ## 32.20.0
 
 ### Minor Changes
