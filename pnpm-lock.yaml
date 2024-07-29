@@ -195,7 +195,7 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0
       autosuggest-highlight:
-        specifier: ^3.1.1
+        specifier: ^3.3.4
         version: 3.3.4
       clsx:
         specifier: ^2.1.1

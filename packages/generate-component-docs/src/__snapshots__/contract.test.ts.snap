@@ -126,6 +126,9 @@ exports[`Autosuggest 1`] = `
     secondaryLabel?: ReactNode
     secondaryMessage?: ReactNode
     showMobileBackdrop?: boolean
+    suggestionHighlight?: 
+        | "matching"
+        | "remaining"
     suggestions: 
         | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
         | Suggestions<Value>
