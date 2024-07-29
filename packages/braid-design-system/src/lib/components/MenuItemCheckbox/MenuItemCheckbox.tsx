@@ -43,7 +43,7 @@ export const MenuItemCheckbox = ({
         boxShadow="borderField"
         position="relative"
         background={{ lightMode: 'surface' }}
-        marginRight="small"
+        marginRight="xsmall"
         flexShrink={0}
         className={styles.checkboxSize}
       >

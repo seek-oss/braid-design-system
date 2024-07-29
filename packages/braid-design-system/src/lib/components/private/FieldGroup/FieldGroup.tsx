@@ -50,7 +50,7 @@ interface FieldGroupRenderProps {
 type InternalFieldGroupProps = FieldGroupBaseProps &
   FieldLabelVariant & {
     role?: FormElementProps['role'];
-    space?: StackProps['space'];
+    messageSpace?: StackProps['space'];
     children(props: FieldGroupRenderProps): ReactNodeNoStrings;
   };
 
@@ -63,10 +63,10 @@ export const FieldGroup = ({
   description,
   message,
   reserveMessageSpace = false,
+  messageSpace = 'xsmall',
   tone,
   required,
   role,
-  space = 'xsmall',
   data,
   ...restProps
 }: InternalFieldGroupProps) => {
@@ -95,7 +95,7 @@ export const FieldGroup = ({
       aria-required={required}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Stack space={space}>
+      <Stack space="small">
         {('label' in restProps && restProps.label) || description ? (
           <Box component="legend" id={labelId}>
             <FieldLabel
@@ -110,23 +110,25 @@ export const FieldGroup = ({
           </Box>
         ) : null}
 
-        {children({
-          disabled,
-          'aria-describedby': mergeIds(
-            message ? messageId : undefined,
-            descriptionId,
-          ),
-        })}
+        <Stack space={messageSpace}>
+          {children({
+            disabled,
+            'aria-describedby': mergeIds(
+              message ? messageId : undefined,
+              descriptionId,
+            ),
+          })}
 
-        {message || reserveMessageSpace ? (
-          <FieldMessage
-            id={messageId}
-            tone={tone}
-            disabled={disabled}
-            message={message}
-            reserveMessageSpace={reserveMessageSpace}
-          />
-        ) : null}
+          {message || reserveMessageSpace ? (
+            <FieldMessage
+              id={messageId}
+              tone={tone}
+              disabled={disabled}
+              message={message}
+              reserveMessageSpace={reserveMessageSpace}
+            />
+          ) : null}
+        </Stack>
       </Stack>
     </Box>
   );

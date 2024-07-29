@@ -90,7 +90,9 @@ export const makeVanillaTheme = (braidTokens: BraidTokens) => {
   );
 
   const getInlineFieldSize = (size: 'standard' | 'small') => {
-    const scale = parseInt(textSize[size].mobile.lineHeight, 10) / 42;
+    const scale =
+      parseInt(textSize[size].mobile.lineHeight, 10) /
+      (tokens.touchableSize * tokens.grid);
     return px(tokens.grid * Math.round(tokens.touchableSize * scale));
   };
 
