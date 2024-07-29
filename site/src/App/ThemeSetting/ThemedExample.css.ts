@@ -7,6 +7,7 @@ export const unthemedBorderRadius = style({
   borderRadius: tokens.border.radius.large,
 });
 
+const bgColor = createVar();
 const dotColor = createVar();
 const dotSize = createVar();
 const dotOffset = createVar();
@@ -16,6 +17,7 @@ export const canvas = style([
       [dotSize]: `${tokens.grid * 2}px`,
       [dotOffset]: `calc((${dotSize} / 2) * -1)`,
     },
+    backgroundColor: bgColor,
     backgroundImage: `radial-gradient(${dotColor} 1px, transparent 0)`,
     backgroundSize: `${dotSize} ${dotSize}`,
     backgroundPosition: `${dotOffset} ${dotOffset}`,
@@ -23,7 +25,8 @@ export const canvas = style([
 ]);
 
 const darkVars = {
-  [dotColor]: palette.grey[800],
+  [dotColor]: palette.grey[700],
+  [bgColor]: palette.grey[800],
 };
 export const explicitDark = style({
   vars: darkVars,
@@ -34,6 +37,7 @@ export const adaptiveCanvas = style(
     lightMode: {
       vars: {
         [dotColor]: palette.grey[100],
+        [bgColor]: 'white',
       },
     },
     darkMode: {

@@ -177,7 +177,7 @@ const svgrConfig = {
 
         const docs: ComponentDocs = {
           category: 'Icon',
-                    Example: () =>
+          Example: () =>
             source(
               <Stack space="none" align="center">
                 <Heading component="div" level="1">

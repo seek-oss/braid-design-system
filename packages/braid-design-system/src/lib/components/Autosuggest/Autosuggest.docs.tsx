@@ -7,12 +7,18 @@ import {
   TextLink,
   Text,
   Strong,
-  Alert,
   List,
   Stack,
   Heading,
+  Notice,
+  Column,
+  Columns,
+  TextField,
+  Inline,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
+import { highlightSuggestions } from './Autosuggest';
+import parseHighlights from 'autosuggest-highlight/parse';
 
 export const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,
@@ -330,30 +336,6 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Client-side filtering',
-      description: (
-        <>
-          <Text>
-            The logic for filtering suggestions typically lives on the server
-            rather than the client because it’s impractical to send all possible
-            suggestions over the network. However, when prototyping in Playroom
-            or working with smaller datasets, you may want to perform this
-            filtering on the client instead. For this case, we provide a{' '}
-            <Strong>filterSuggestions</Strong> function to make this as painless
-            as possible.
-          </Text>
-          <Alert tone="info">
-            <Text>
-              All examples on this page use the{' '}
-              <Strong>filterSuggestions</Strong> function to demonstrate
-              real-world filtering behaviour, but this can be safely omitted if
-              the filtering is being performed server-side.
-            </Text>
-          </Alert>
-        </>
-      ),
-    },
-    {
       label: 'Automatic selection',
       description: (
         <>
@@ -481,6 +463,132 @@ const docs: ComponentDocs = {
             />
           </>,
         ),
+    },
+    {
+      label: 'Suggestion highlights',
+      description: (
+        <Text>
+          Suggestion items can be highlighted based on the input value using the{' '}
+          <Strong>suggestionHighlight</Strong> prop. Choose between highlighting
+          the <Strong>matching</Strong> or <Strong>remaining</Strong> portion of
+          each suggestion.
+        </Text>
+      ),
+      Example: ({ id, setDefaultState, setState, getState }) =>
+        source(
+          <>
+            {setDefaultState('textfield', 'App')}
+            {setDefaultState('suggestion', 'Apples')}
+
+            <Stack space="large">
+              <TextField
+                label="Label"
+                id={id}
+                onChange={setState('textfield')}
+                value={getState('textfield')}
+              />
+              <Columns space="gutter">
+                {['matching', 'remaining'].map((highlightType) => (
+                  <Column key={highlightType}>
+                    <Stack space="small">
+                      <Text size="small" tone="secondary">
+                        Highlight <Strong>{highlightType}</Strong>
+                      </Text>
+                      <Inline space="none">
+                        {parseHighlights(
+                          getState('suggestion'),
+                          highlightSuggestions(
+                            getState('suggestion'),
+                            getState('textfield'),
+                            highlightType === 'matching'
+                              ? 'matching'
+                              : 'remaining',
+                          ).map(({ start, end }) => [start, end]),
+                        ).map((part, index) => (
+                          <Text
+                            key={index}
+                            weight={part.highlight ? 'strong' : 'regular'}
+                          >
+                            {part.text}
+                          </Text>
+                        ))}
+                      </Inline>
+                    </Stack>
+                  </Column>
+                ))}
+              </Columns>
+            </Stack>
+          </>,
+        ),
+      code: false,
+    },
+
+    {
+      description: (
+        <>
+          <Text>
+            If <Strong>suggestionHighlight</Strong> is not suitable for your use
+            case, you can provide explicit highlight ranges for each suggestion.
+          </Text>
+        </>
+      ),
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: 'App' })}
+
+            <Autosuggest
+              label="Label"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={[
+                {
+                  text: 'Apples',
+                  value: 1,
+                  highlights: [{ start: 2, end: 6 }],
+                },
+                {
+                  text: 'Bananas',
+                  value: 2,
+                  highlights: [{ start: 0, end: 3 }],
+                },
+              ]}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Client-side filtering',
+      description: (
+        <>
+          <Text>
+            The logic for filtering suggestions typically lives on the server
+            rather than the client because it’s impractical to send all possible
+            suggestions over the network. However, when prototyping in Playroom
+            or working with smaller datasets, you may want to perform this
+            filtering on the client instead.
+          </Text>
+          <Text>
+            For this case, we provide a <Strong>filterSuggestions</Strong>{' '}
+            function to make this as painless as possible. This also handles
+            highlights for you, using <Strong>suggestionHighlight</Strong> set
+            to <Strong>matching</Strong>.
+          </Text>
+          <Text>
+            If filtering is being performed on the server, this can be safely
+            omitted.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              Most examples on this page use the{' '}
+              <Strong>filterSuggestions</Strong> function to demonstrate
+              real-world filtering behaviour.
+            </Text>
+          </Notice>
+        </>
+      ),
     },
     {
       label: 'Clearable suggestions',
