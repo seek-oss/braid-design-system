@@ -3946,5 +3946,76 @@
         "summary": "**Toggle:** Remove tick icon & fix antialias haze when selected\n\nSimplying the selected state design by removing the tick icon from the toggle thumb.\n\nAlso fixes the antialias haze that appears around the thumb when selected."
       }
     ]
+  },
+  {
+    "version": "32.21.0",
+    "updates": [
+      {
+        "new": [
+          "IconHash"
+        ],
+        "summary": "**IconHash:** Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<IconHash />\n```"
+      },
+      {
+        "updated": [
+          "Checkbox",
+          "CheckboxStandalone",
+          "MenuItemCheckbox",
+          "RadioItem",
+          "Toggle"
+        ],
+        "summary": "Refine the Checkbox, Radio, Toggle & MenuItemCheckbox size\n\nRefines the size of the inline field elements including the `RadioItem`, `Checkbox`, `Toggle` and `MenuItemCheckbox` components.\n\nPrimarily impacts consumers of the `seekJobs` theme, seeing a reduction across all sizes."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "PasswordField",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "Ensure no space above field with `undefined` label\n\nFixes an issue where passing `undefined` as the `label` to a form field would result in an unwanted space above the field."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "TextField",
+          "Textarea",
+          "Checkbox",
+          "RadioItem",
+          "RadioGroup",
+          "FieldLabel",
+          "FieldMessage"
+        ],
+        "summary": "Improve internal form field spacing\n\nRefined the spacing between internal elements of form fields to align with the latest spacing guidelines.\n\nThis change impacts the `Stack` spacing between `label` and `description`, the form field itself and the `message` slots."
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add `suggestionHighlight` prop\n\nIntroduces the `suggestionHighlight` prop, which uses the input value to automatically highlight either the `matching` or `remaining` portion of each suggestion.\n\n**EXAMPLE USAGE:**\n```jsx\n<Autosuggest suggestionHighlight=\"matching\">\n```"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Ensure label follows correct tone\n\nEnsure that the foreground text of a `Badge` always follows the correct tone for the background colour.\nFixes a bug where using a `Badge` in a `List` that overrides the default tone would result in the `Badge` text following the `List` tone instead of the `Badge` tone."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "Fix warning in React 18.3.0 when using useToast."
+      },
+      {
+        "updated": [
+          "MonthPicker"
+        ],
+        "summary": "**MonthPicker:** Reduce space between month and year fields\n\nReducing the space between month and year fields to improve correlation between the two fields within the greater context of a form."
+      }
+    ]
   }
 ]
