@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Badge, Inline, Heading } from '../';
+import { Badge, Inline, Heading, List } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -106,6 +106,17 @@ export const screenshots: ComponentScreenshot = {
         <Badge tone="neutral" weight="strong">
           Neutral
         </Badge>
+      ),
+    },
+    {
+      label: 'Test: Badge text should follow tone not default set by `List`',
+      Example: () => (
+        <List tone="secondary">
+          <Badge tone="critical">Critical</Badge>
+          <Badge tone="critical" weight="strong">
+            Critical
+          </Badge>
+        </List>
       ),
     },
   ],
