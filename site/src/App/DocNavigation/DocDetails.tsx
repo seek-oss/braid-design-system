@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import {
   Stack,
-  BraidProvider,
   List,
   TextLink,
   Secondary,
@@ -10,12 +9,10 @@ import {
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { PageTitle } from '../Seo/PageTitle';
-import { useThemeSettings } from '../ThemeSetting';
 import { DocsContext } from './DocNavigation';
 import { DocExample } from './DocExample';
 
 export const DocDetails = () => {
-  const { theme } = useThemeSettings();
   const { docs, docsName } = useContext(DocsContext);
 
   return docs ? (
@@ -23,16 +20,14 @@ export const DocDetails = () => {
       <PageTitle title={docsName} />
       <Stack space="xxlarge">
         {'Example' in docs && docs.Example ? (
-          <BraidProvider styleBody={false} theme={theme}>
-            <PlayroomStateProvider>
-              <DocExample
-                id={`${docsName}_example`}
-                Example={docs.Example}
-                background={docs.examplebackground}
-                showCodeByDefault={docs.category === 'Logic'}
-              />
-            </PlayroomStateProvider>
-          </BraidProvider>
+          <PlayroomStateProvider>
+            <DocExample
+              id={`${docsName}_example`}
+              Example={docs.Example}
+              background={docs.examplebackground}
+              showCodeByDefault={docs.category === 'Logic'}
+            />
+          </PlayroomStateProvider>
         ) : null}
 
         {docs.description ? (
@@ -72,21 +67,19 @@ export const DocDetails = () => {
             ) : null}
             {example.description ?? null}
             {example.code || example.Example ? (
-              <BraidProvider styleBody={false} theme={theme}>
-                <PlayroomStateProvider>
-                  <DocExample
-                    id={String(index)}
-                    code={example.code}
-                    Example={example.Example}
-                    Container={example.Container}
-                    background={example.background}
-                    showCodeByDefault={
-                      example.showCodeByDefault || example.Example === undefined
-                    }
-                    playroom={example.playroom}
-                  />
-                </PlayroomStateProvider>
-              </BraidProvider>
+              <PlayroomStateProvider>
+                <DocExample
+                  id={String(index)}
+                  code={example.code}
+                  Example={example.Example}
+                  Container={example.Container}
+                  background={example.background}
+                  showCodeByDefault={
+                    example.showCodeByDefault || example.Example === undefined
+                  }
+                  playroom={example.playroom}
+                />
+              </PlayroomStateProvider>
             ) : null}
           </Stack>
         ))}
