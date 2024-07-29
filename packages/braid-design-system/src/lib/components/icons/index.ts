@@ -27,6 +27,7 @@ export { IconFlag } from './IconFlag/IconFlag';
 export { IconGift } from './IconGift/IconGift';
 export { IconGlobe } from './IconGlobe/IconGlobe';
 export { IconGrid } from './IconGrid/IconGrid';
+export { IconHash } from './IconHash/IconHash';
 export { IconHeart } from './IconHeart/IconHeart';
 export { IconHelp } from './IconHelp/IconHelp';
 export { IconHistory } from './IconHistory/IconHistory';
