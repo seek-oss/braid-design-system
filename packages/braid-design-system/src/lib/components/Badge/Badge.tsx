@@ -6,6 +6,7 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { Bleed } from '../Bleed/Bleed';
+import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 
 type ValueOrArray<T> = T | T[];
 
@@ -83,35 +84,39 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     );
 
     const content = (
-      <Box
-        component="span"
-        display="flex"
-        cursor="default"
-        {...buildDataAttributes({ data, validateRestProps: restProps })}
-      >
+      // Ensures the foreground text tone follows the default
+      // for the selected background colour
+      <DefaultTextPropsProvider tone="neutral">
         <Box
           component="span"
-          id={id}
-          ref={ref}
-          tabIndex={tabIndex}
-          aria-describedby={ariaDescribedBy}
-          title={
-            title ??
-            (!ariaDescribedBy ? stringifyChildren(children) : undefined)
-          }
-          background={
-            weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
-          }
-          paddingY={verticalPadding}
-          paddingX="xsmall"
-          borderRadius="standard"
-          overflow="hidden"
+          display="flex"
+          cursor="default"
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
         >
-          <Text size="xsmall" weight="medium" maxLines={1}>
-            {children}
-          </Text>
+          <Box
+            component="span"
+            id={id}
+            ref={ref}
+            tabIndex={tabIndex}
+            aria-describedby={ariaDescribedBy}
+            title={
+              title ??
+              (!ariaDescribedBy ? stringifyChildren(children) : undefined)
+            }
+            background={
+              weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
+            }
+            paddingY={verticalPadding}
+            paddingX="xsmall"
+            borderRadius="standard"
+            overflow="hidden"
+          >
+            <Text size="xsmall" weight="medium" maxLines={1}>
+              {children}
+            </Text>
+          </Box>
         </Box>
-      </Box>
+      </DefaultTextPropsProvider>
     );
 
     return bleedY ? (
