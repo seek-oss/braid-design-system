@@ -1,40 +1,18 @@
 import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { GalleryComponent } from 'site/types';
-import { Actions, Button, IconDelete } from '../';
+import { Actions, Button } from '../';
 
 export const galleryItems: GalleryComponent = {
   examples: [
     {
-      label: 'With multiple buttons',
+      label: 'Standard size',
       Example: () =>
         source(
           <Actions>
             <Button>Button 1</Button>
             <Button>Button 2</Button>
             <Button variant="transparent">Button 3</Button>
-          </Actions>,
-        ),
-    },
-    {
-      label: 'With a branded action',
-      Example: () =>
-        source(
-          <Actions>
-            <Button tone="brandAccent">Button 1</Button>
-            <Button variant="transparent">Button 2</Button>
-          </Actions>,
-        ),
-    },
-    {
-      label: 'With a destructive action',
-      Example: () =>
-        source(
-          <Actions>
-            <Button tone="critical" icon={<IconDelete />}>
-              Delete
-            </Button>
-            <Button variant="transparent">Cancel</Button>
           </Actions>,
         ),
     },
