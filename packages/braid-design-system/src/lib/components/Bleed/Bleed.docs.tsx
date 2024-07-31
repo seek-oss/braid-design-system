@@ -24,7 +24,7 @@ const docs: ComponentDocs = {
   description: (
     <Text>
       The <Strong>Bleed</Strong> component allows its content to extend out into
-      the surrounding layout. As such it is important to ensure that size and
+      the surrounding layout. As such, it is important to ensure that size and
       direction of the bleed is accommodated by the parent layout.
     </Text>
   ),
