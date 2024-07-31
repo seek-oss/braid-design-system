@@ -277,8 +277,8 @@ const docs: ComponentDocs = {
           <Text>
             Columns can be collapsed into a single vertical stack responsively
             using the <Strong>collapseBelow</Strong> prop and specifying the
-            name of the breakpoint, e.g. <Strong>collapseBelow="tablet"</Strong>
-            .
+            name of the breakpoint, e.g.{' '}
+            <Strong>collapseBelow=&ldquo;tablet&rdquo;</Strong>.
           </Text>
           <Text>
             The following results in three columns from the{' '}
