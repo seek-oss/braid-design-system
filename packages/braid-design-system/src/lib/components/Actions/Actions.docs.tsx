@@ -34,7 +34,7 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'Inline',
-      description: 'For fine-grained control of spacing and alignment.',
+      description: 'For laying out flowing content that is allowed to wrap.',
     },
     {
       name: 'Columns',

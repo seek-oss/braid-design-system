@@ -21,96 +21,76 @@ export const galleryItems: GalleryComponent = {
         ),
     },
     {
-      label: 'Vertical align top',
+      label: 'Vertical alignment',
       Example: () =>
         source(
-          <Columns space="small" alignY="top">
-            <Column>
-              <Placeholder height={20} />
-            </Column>
-            <Column>
-              <Placeholder height={80} label="top" />
-            </Column>
-            <Column>
-              <Placeholder height={20} />
-            </Column>
-          </Columns>,
+          <Stack space="large" dividers>
+            <Columns space="small" alignY="top">
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+              <Column>
+                <Placeholder height={80} label="top" />
+              </Column>
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+            <Columns space="small" alignY="center">
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+              <Column>
+                <Placeholder height={80} label="center" />
+              </Column>
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+            <Columns space="small" alignY="bottom">
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+              <Column>
+                <Placeholder height={80} label="bottom" />
+              </Column>
+              <Column>
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+          </Stack>,
         ),
     },
     {
-      label: 'Vertical align center',
+      label: 'Horizontal alignment',
       Example: () =>
         source(
-          <Columns space="small" alignY="center">
-            <Column>
-              <Placeholder height={20} />
-            </Column>
-            <Column>
-              <Placeholder height={80} label="center" />
-            </Column>
-            <Column>
-              <Placeholder height={20} />
-            </Column>
-          </Columns>,
-        ),
-    },
-    {
-      label: 'Vertical align bottom',
-      Example: () =>
-        source(
-          <Columns space="small" alignY="bottom">
-            <Column>
-              <Placeholder height={20} />
-            </Column>
-            <Column>
-              <Placeholder height={80} label="bottom" />
-            </Column>
-            <Column>
-              <Placeholder height={20} />
-            </Column>
-          </Columns>,
-        ),
-    },
-    {
-      label: 'Horizontal align left',
-      Example: () =>
-        source(
-          <Columns space="small" align="left">
-            <Column width="1/5">
-              <Placeholder height={20} label="left" />
-            </Column>
-            <Column width="1/5">
-              <Placeholder height={20} />
-            </Column>
-          </Columns>,
-        ),
-    },
-    {
-      label: 'Horizontal align center',
-      Example: () =>
-        source(
-          <Columns space="small" align="center">
-            <Column width="1/5">
-              <Placeholder height={20} label="center" />
-            </Column>
-            <Column width="1/5">
-              <Placeholder height={20} />
-            </Column>
-          </Columns>,
-        ),
-    },
-    {
-      label: 'Horizontal align right',
-      Example: () =>
-        source(
-          <Columns space="small" align="right">
-            <Column width="1/5">
-              <Placeholder height={20} label="right" />
-            </Column>
-            <Column width="1/5">
-              <Placeholder height={20} />
-            </Column>
-          </Columns>,
+          <Stack space="large" dividers>
+            <Columns space="small" align="left">
+              <Column width="1/5">
+                <Placeholder height={20} label="left" />
+              </Column>
+              <Column width="1/5">
+                <Placeholder height={20} />
+              </Column>
+            </Columns>
+            <Columns space="small" align="center">
+              <Column width="1/5">
+                <Placeholder height={20} />
+              </Column>
+              <Column width="1/5">
+                <Placeholder height={20} label="center" />
+              </Column>
+            </Columns>
+            <Columns space="small" align="right">
+              <Column width="1/5">
+                <Placeholder height={20} />
+              </Column>
+              <Column width="1/5">
+                <Placeholder height={20} label="right" />
+              </Column>
+            </Columns>
+          </Stack>,
         ),
     },
 
