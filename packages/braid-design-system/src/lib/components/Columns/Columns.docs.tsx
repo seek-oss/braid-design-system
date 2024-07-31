@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Columns, Column, Strong, Text, Stack } from '../';
+import { Columns, Column, Strong, Text, Stack, Tiles } from '../';
 import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
@@ -22,10 +22,16 @@ const docs: ComponentDocs = {
         </Column>
       </Columns>,
     ),
+  description: (
+    <Text>
+      The <Strong>Columns</Strong> component is used for laying out content
+      horizontally, with fine-grained control of widths, spacing and alignment.
+    </Text>
+  ),
   alternatives: [
     {
       name: 'Inline',
-      description: 'For fine-grained control of spacing and alignment.',
+      description: 'For laying out flowing content that is allowed to wrap.',
     },
     {
       name: 'Tiles',
@@ -267,26 +273,51 @@ const docs: ComponentDocs = {
     {
       label: 'Collapsing across breakpoints',
       description: (
-        <Text>
-          Columns can be collapsed into a single vertical stack responsively
-          using the <Strong>collapseBelow</Strong> prop. The following results
-          in three columns from the <Strong>tablet</Strong> breakpoint upwards,
-          but collapse into a vertical stack on <Strong>mobile</Strong>.
-        </Text>
+        <>
+          <Text>
+            Columns can be collapsed into a single vertical stack responsively
+            using the <Strong>collapseBelow</Strong> prop and specifying the
+            name of the breakpoint, e.g. <Strong>collapseBelow="tablet"</Strong>
+            .
+          </Text>
+          <Text>
+            The following results in three columns from the{' '}
+            <Strong>tablet</Strong> breakpoint upwards, and collapses into a
+            vertical stack on <Strong>mobile</Strong>.
+          </Text>
+        </>
       ),
+      code: false,
       Example: () =>
         source(
-          <Columns space="small" collapseBelow="tablet">
-            <Column>
-              <Placeholder height={60} />
-            </Column>
-            <Column>
-              <Placeholder height={60} />
-            </Column>
-            <Column>
-              <Placeholder height={60} />
-            </Column>
-          </Columns>,
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Columns space="small" collapseBelow="tablet">
+                <Column>
+                  <Placeholder height={60} />
+                </Column>
+                <Column>
+                  <Placeholder height={60} />
+                </Column>
+                <Column>
+                  <Placeholder height={60} />
+                </Column>
+              </Columns>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Stack space="small">
+                <Placeholder height={60} />
+                <Placeholder height={60} />
+                <Placeholder height={60} />
+              </Stack>
+            </Stack>
+          </Tiles>,
         ),
     },
     {

@@ -21,6 +21,13 @@ const docs: ComponentDocs = {
         </Stack>
       </Box>,
     ),
+  description: (
+    <Text>
+      The <Strong>Bleed</Strong> component allows its content to extend out into
+      the surrounding layout. As such it is important to ensure that size and
+      direction of the bleed is accommodated by the parent layout.
+    </Text>
+  ),
   alternatives: [
     {
       name: 'Box',
@@ -33,9 +40,8 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Applies a negative margin to allow the content to bleed out into a
-            the surrounding layout. As such it is important to ensure that size
-            and direction of the bleed is accommodated by the parent layout.
+            Applies a negative margin to allow the content to bleed out into the
+            surrounding layout.
           </Text>
           <Text>
             All bleed directions accept values from the{' '}
