@@ -145,7 +145,7 @@ const docs: ComponentDocs = {
               />
               <Stack space="medium">
                 <Divider />
-                {new Array(3).fill(null).map((_, index) => (
+                {new Array(3).fill('').map(() => (
                   <>
                     <Box boxShadow="borderCriticalLight">
                       <Columns space="medium" alignY="center">
