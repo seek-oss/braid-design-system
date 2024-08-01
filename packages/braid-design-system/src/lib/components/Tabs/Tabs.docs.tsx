@@ -334,8 +334,8 @@ const docs: ComponentDocs = {
       label: 'Size',
       description: (
         <Text>
-          You can customise the size of the Tabs via the <Strong>size</Strong>{' '}
-          prop, which accepts either <Strong>standard</Strong> or{' '}
+          Customise the size of the Tabs via the <Strong>size</Strong> prop,
+          which accepts either <Strong>standard</Strong> or{' '}
           <Strong>small.</Strong>
         </Text>
       ),
