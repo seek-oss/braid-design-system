@@ -9,7 +9,7 @@ export const inline = style({
   verticalAlign: 'middle',
   marginBottom: calc(vars.space[verticalPadding]).negate().toString(),
   marginTop: calc(vars.space[verticalPadding])
-    .add('.25em') // subtle offset to improve alignment across all text sizes and themes
+    .add('.2em') // subtle offset to improve alignment across all text sizes and themes
     .negate()
     .toString(),
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Badge, Inline, Heading, List, Text, Stack, Box } from '../';
+import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 
 const textSizes = Object.keys(textSizeUntrimmed) as Array<
@@ -146,34 +146,42 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Stack space="large">
           {textSizes.map((size) => (
-            <Box key={size} position="relative">
-              <Box style={{ border: '1px solid red' }} />
-              <Text size={size}>
-                <Badge tone="positive" weight="strong">
-                  Badge
-                </Badge>{' '}
-                Lorem impsum{' '}
-                <Badge tone="positive" weight="strong">
-                  Badge
-                </Badge>
-              </Text>
-              <Box style={{ border: '1px solid red' }} />
-            </Box>
+            <Tiles key={size} space="none" columns={2}>
+              <Box position="relative">
+                <Box style={{ border: '1px solid red' }} />
+                <Text size={size}>
+                  Hg{' '}
+                  <Badge tone="positive" weight="strong">
+                    Badge
+                  </Badge>
+                </Text>
+                <Box style={{ border: '1px solid red' }} />
+              </Box>
+              <Box position="relative">
+                <Box style={{ border: '1px solid green' }} />
+                <Text size={size}>Hg</Text>
+                <Box style={{ border: '1px solid green' }} />
+              </Box>
+            </Tiles>
           ))}
           {headingLevels.reverse().map((level) => (
-            <Box key={level} position="relative">
-              <Box style={{ border: '1px solid red' }} />
-              <Heading level={level}>
-                <Badge tone="positive" weight="strong">
-                  Badge
-                </Badge>{' '}
-                Lorem{' '}
-                <Badge tone="positive" weight="strong">
-                  Badge
-                </Badge>
-              </Heading>
-              <Box style={{ border: '1px solid red' }} />
-            </Box>
+            <Tiles key={level} space="none" columns={2}>
+              <Box position="relative">
+                <Box style={{ border: '1px solid red' }} />
+                <Heading level={level}>
+                  Hg{' '}
+                  <Badge tone="positive" weight="strong">
+                    Badge
+                  </Badge>
+                </Heading>
+                <Box style={{ border: '1px solid red' }} />
+              </Box>
+              <Box position="relative">
+                <Box style={{ border: '1px solid green' }} />
+                <Heading level={level}>Hg</Heading>
+                <Box style={{ border: '1px solid green' }} />
+              </Box>
+            </Tiles>
           ))}
         </Stack>
       ),
