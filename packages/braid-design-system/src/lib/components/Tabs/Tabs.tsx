@@ -161,7 +161,7 @@ export const Tabs = (props: TabsProps) => {
 
   useIsomorphicLayoutEffect(() => {
     setActiveTabPosition(getActiveTabLinePosition(selectedTabButtonEl));
-  }, [selectedTabButtonEl]);
+  }, [selectedTabButtonEl, size]);
 
   return (
     <Box>

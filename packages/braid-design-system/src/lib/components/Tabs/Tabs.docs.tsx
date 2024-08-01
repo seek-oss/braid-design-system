@@ -18,7 +18,6 @@ import {
   IconHome,
   IconProfile,
   IconRecommended,
-  Notice,
 } from '..';
 import { Placeholder } from '../../playroom/components';
 
@@ -52,6 +51,12 @@ const docs: ComponentDocs = {
         </Stack>
       </TabsProvider>,
     ),
+  description: (
+    <Text>
+      Tabs provides a horizontally arranged group of buttons that control the
+      visibility of the associated tab panels.
+    </Text>
+  ),
   accessibility: (
     <Text>
       Follows the{' '}
@@ -328,16 +333,11 @@ const docs: ComponentDocs = {
     {
       label: 'Size',
       description: (
-        <>
-          <Text>
-            You can customise the size of the Tabs via the <Strong>size</Strong>{' '}
-            prop, which accepts either <Strong>standard</Strong> or{' '}
-            <Strong>small.</Strong>
-          </Text>
-          <Notice tone="critical">
-            <Text>Insert usage guidelines here</Text>
-          </Notice>
-        </>
+        <Text>
+          You can customise the size of the Tabs via the <Strong>size</Strong>{' '}
+          prop, which accepts either <Strong>standard</Strong> or{' '}
+          <Strong>small.</Strong>
+        </Text>
       ),
       Example: ({ id }) =>
         source(
