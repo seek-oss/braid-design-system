@@ -21,15 +21,13 @@ export const TabsProvider = ({
 
 type PlayroomTabsProps = Optional<TabsProps, 'label'>;
 
-export const Tabs = ({ label, size, ...restProps }: PlayroomTabsProps) => {
-  return (
-    <BraidTabs
-      label=""
-      size={size === 'small' ? size : 'standard'}
-      {...restProps}
-    />
-  );
-};
+export const Tabs = ({ label, size, ...restProps }: PlayroomTabsProps) => (
+  <BraidTabs
+    label=""
+    size={size === 'small' ? size : 'standard'}
+    {...restProps}
+  />
+);
 
 export const Tab = ({ icon, ...restProps }: TabProps) => (
   <BraidTab
