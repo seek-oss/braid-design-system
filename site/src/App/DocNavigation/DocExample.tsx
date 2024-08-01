@@ -1,10 +1,9 @@
 import React, { type ReactNode } from 'react';
-import { BraidProvider, Stack } from 'braid-src/lib/components';
+import { Stack } from 'braid-src/lib/components';
 import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExample';
 import type { ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
-import docsTheme from 'braid-src/entries/themes/docs';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>
@@ -34,22 +33,20 @@ export const DocExample = ({
   });
 
   return (
-    <BraidProvider styleBody={false} theme={docsTheme}>
-      <Stack space={background === false ? 'medium' : 'xxsmall'}>
-        {value ? (
-          <ThemedExample
-            background={background || undefined}
-            transparent={background === false}
-          >
-            <Container>{value}</Container>
-          </ThemedExample>
-        ) : null}
-        {code !== false && codeAsString ? (
-          <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
-            {codeAsString}
-          </Code>
-        ) : null}
-      </Stack>
-    </BraidProvider>
+    <Stack space={background === false ? 'medium' : 'xxsmall'}>
+      {value ? (
+        <ThemedExample
+          background={background || undefined}
+          transparent={background === false}
+        >
+          <Container>{value}</Container>
+        </ThemedExample>
+      ) : null}
+      {code !== false && codeAsString ? (
+        <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
+          {codeAsString}
+        </Code>
+      ) : null}
+    </Stack>
   );
 };

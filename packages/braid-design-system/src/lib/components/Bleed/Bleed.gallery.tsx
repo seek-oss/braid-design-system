@@ -1,20 +1,13 @@
-import React, { type ReactNode } from 'react';
+import React from 'react';
 import type { GalleryComponent } from 'site/types';
-import { Bleed, Box } from '../';
+import { Bleed } from '../';
 import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';
-
-const Container = ({ children }: { children: ReactNode }) => (
-  <Box padding="gutter" boxShadow="borderNeutralLight" background="surface">
-    {children}
-  </Box>
-);
 
 export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Horizontally',
-      Container,
       Example: () =>
         source(
           <Bleed horizontal="gutter">
@@ -24,7 +17,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Vertically',
-      Container,
       Example: () =>
         source(
           <Bleed vertical="gutter">
@@ -34,7 +26,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'To the top',
-      Container,
       Example: () =>
         source(
           <Bleed top="gutter">
@@ -44,7 +35,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'To the bottom',
-      Container,
       Example: () =>
         source(
           <Bleed bottom="gutter">
@@ -54,7 +44,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'To the left',
-      Container,
       Example: () =>
         source(
           <Bleed left="gutter">
@@ -64,7 +53,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'To the right',
-      Container,
       Example: () =>
         source(
           <Bleed right="gutter">
@@ -74,7 +62,6 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'On all sides',
-      Container,
       Example: () =>
         source(
           <Bleed space="gutter">

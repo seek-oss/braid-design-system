@@ -23,7 +23,11 @@ export function ThemedExample({
     <Box opacity={!ready ? 0 : undefined} transition="fast">
       <BraidProvider styleBody={false} theme={theme}>
         <Box
-          background={darkCanvas ? 'customDark' : undefined}
+          background={
+            darkCanvas
+              ? 'customDark'
+              : { lightMode: 'customLight', darkMode: 'customDark' }
+          }
           borderRadius="large"
         >
           <Box
