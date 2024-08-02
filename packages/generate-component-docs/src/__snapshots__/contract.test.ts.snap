@@ -7626,6 +7626,9 @@ exports[`Tabs 1`] = `
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
     label: string
     reserveHitArea?: boolean
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;
