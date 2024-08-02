@@ -424,5 +424,35 @@ export const screenshots: ComponentScreenshot = {
         </TabsProvider>
       ),
     },
+    {
+      label: 'Size small',
+      Example: ({ id }) => (
+        <TabsProvider id={id}>
+          <Stack space="medium">
+            <Tabs label="Test tabs" size="small">
+              <Tab icon={<IconHome />}>The first tab</Tab>
+              <Tab icon={<IconHome />}>The second tab</Tab>
+              <Tab
+                icon={<IconHome />}
+                badge={<Badge tone="positive">New</Badge>}
+              >
+                The third tab
+              </Tab>
+            </Tabs>
+            <TabPanels>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 2" />
+              </TabPanel>
+              <TabPanel>
+                <Placeholder height={200} label="Panel 3" />
+              </TabPanel>
+            </TabPanels>
+          </Stack>
+        </TabsProvider>
+      ),
+    },
   ],
 };

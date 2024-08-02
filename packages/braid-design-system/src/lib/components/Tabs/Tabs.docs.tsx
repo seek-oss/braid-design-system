@@ -51,6 +51,12 @@ const docs: ComponentDocs = {
         </Stack>
       </TabsProvider>,
     ),
+  description: (
+    <Text>
+      Tabs provides a horizontally arranged group of buttons that control the
+      visibility of the associated tab panels.
+    </Text>
+  ),
   accessibility: (
     <Text>
       Follows the{' '}
@@ -322,6 +328,52 @@ const docs: ComponentDocs = {
               </TabPanels>
             </Stack>
           </TabsProvider>,
+        ),
+    },
+    {
+      label: 'Size',
+      description: (
+        <Text>
+          Customise the size of the Tabs via the <Strong>size</Strong> prop,
+          which accepts either <Strong>standard</Strong> or{' '}
+          <Strong>small.</Strong>
+        </Text>
+      ),
+      Example: ({ id }) =>
+        source(
+          <Stack space="xlarge">
+            <Stack space="medium">
+              <Text size="small" tone="secondary">
+                Standard tabs
+              </Text>
+              <TabsProvider id={`${id}_std`}>
+                <Tabs label="Standard tabs">
+                  <Tab>The first tab</Tab>
+                  <Tab>The second tab</Tab>
+                  <Tab>The third tab</Tab>
+                  <Tab badge={<Badge tone="positive">New</Badge>}>
+                    The fourth tab
+                  </Tab>
+                </Tabs>
+              </TabsProvider>
+            </Stack>
+            <Stack space="medium">
+              <Text size="small" tone="secondary">
+                Small tabs
+              </Text>
+
+              <TabsProvider id={`${id}_small`}>
+                <Tabs label="Small tabs" size="small">
+                  <Tab>The first tab</Tab>
+                  <Tab>The second tab</Tab>
+                  <Tab>The third tab</Tab>
+                  <Tab badge={<Badge tone="positive">New</Badge>}>
+                    The fourth tab
+                  </Tab>
+                </Tabs>
+              </TabsProvider>
+            </Stack>
+          </Stack>,
         ),
     },
     {

@@ -18,7 +18,7 @@ import source from '@braid-design-system/source.macro';
 export const galleryItems: GalleryComponent = {
   examples: [
     {
-      label: 'Left aligned',
+      label: 'Align left',
       Example: ({ id }) =>
         source(
           <TabsProvider id={id}>
@@ -44,7 +44,7 @@ export const galleryItems: GalleryComponent = {
         ),
     },
     {
-      label: 'Center aligned',
+      label: 'Align center',
       Example: ({ id }) =>
         source(
           <TabsProvider id={id}>
@@ -62,30 +62,6 @@ export const galleryItems: GalleryComponent = {
                 </TabPanel>
               </TabPanels>
             </Stack>
-          </TabsProvider>,
-        ),
-    },
-    {
-      label: 'With gutter',
-      Example: ({ id }) =>
-        source(
-          <TabsProvider id={id}>
-            <Tabs label="Test tabs" gutter="gutter" divider="none">
-              <Tab>The first tab</Tab>
-              <Tab>The second tab</Tab>
-              <Tab>The third tab</Tab>
-            </Tabs>
-            <TabPanels>
-              <TabPanel>
-                <Placeholder height={100} label="Panel 1" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={100} label="Panel 2" />
-              </TabPanel>
-              <TabPanel>
-                <Placeholder height={100} label="Panel 3" />
-              </TabPanel>
-            </TabPanels>
           </TabsProvider>,
         ),
     },
@@ -173,6 +149,32 @@ export const galleryItems: GalleryComponent = {
                 <Tab icon={<IconHome />}>The first tab</Tab>
                 <Tab icon={<IconRecommended />}>The second tab</Tab>
                 <Tab icon={<IconCompany />}>The third tab</Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 2" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={100} label="Panel 3" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>,
+        ),
+    },
+    {
+      label: 'Size small',
+      Example: ({ id }) =>
+        source(
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Test tabs" size="small">
+                <Tab>First Tab</Tab>
+                <Tab>Second Tab</Tab>
+                <Tab>The third tab</Tab>
               </Tabs>
               <TabPanels>
                 <TabPanel>
