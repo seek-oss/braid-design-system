@@ -112,7 +112,10 @@ export const InlineField = forwardRef<
           />
 
           <Box paddingLeft="xsmall" flexGrow={1}>
-            <Box className={[styles.sizeVars[size], styles.labelOffset]}>
+            <Box
+              display="flex"
+              className={[styles.sizeVars[size], styles.labelOffset]}
+            >
               <Box
                 component="label"
                 htmlFor={id}
