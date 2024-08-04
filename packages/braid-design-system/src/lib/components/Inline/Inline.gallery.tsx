@@ -1,7 +1,7 @@
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Inline } from '../';
+import { Inline, Stack } from '../';
 import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
@@ -10,7 +10,7 @@ export const galleryItems: GalleryComponent = {
       label: 'Spacing',
       Example: () =>
         source(
-          <Inline space="large">
+          <Inline space="small">
             <Placeholder width={48} height={48} />
             <Placeholder width={48} height={48} />
             <Placeholder width={48} height={48} />
@@ -20,69 +20,49 @@ export const galleryItems: GalleryComponent = {
         ),
     },
     {
-      label: 'Vertical align top',
+      label: 'Vertical alignment',
       Example: () =>
         source(
-          <Inline space="small" alignY="top">
-            <Placeholder width={60} height={20} />
-            <Placeholder width={80} height={60} label="top" />
-            <Placeholder width={60} height={20} />
-          </Inline>,
+          <Stack space="medium" dividers align="center">
+            <Inline space="small" alignY="top">
+              <Placeholder width={60} height={20} />
+              <Placeholder width={80} height={60} label="top" />
+              <Placeholder width={60} height={20} />
+            </Inline>
+            <Inline space="small" alignY="center">
+              <Placeholder width={60} height={20} />
+              <Placeholder width={80} height={60} label="center" />
+              <Placeholder width={60} height={20} />
+            </Inline>
+            <Inline space="small" alignY="bottom">
+              <Placeholder width={60} height={20} />
+              <Placeholder width={80} height={60} label="bottom" />
+              <Placeholder width={60} height={20} />
+            </Inline>
+          </Stack>,
         ),
     },
     {
-      label: 'Vertical align center',
+      label: 'Horizontal alignment',
       Example: () =>
         source(
-          <Inline space="small" alignY="center">
-            <Placeholder width={60} height={20} />
-            <Placeholder width={80} height={60} label="center" />
-            <Placeholder width={60} height={20} />
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Vertical align bottom',
-      Example: () =>
-        source(
-          <Inline space="small" alignY="bottom">
-            <Placeholder width={60} height={20} />
-            <Placeholder width={80} height={60} label="bottom" />
-            <Placeholder width={60} height={20} />
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Horizontal align left',
-      Example: () =>
-        source(
-          <Inline space="small" align="left">
-            <Placeholder width={80} height={60} label="left" />
-            <Placeholder width={80} height={60} />
-            <Placeholder width={80} height={60} />
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Horizontal align center',
-      Example: () =>
-        source(
-          <Inline space="small" align="center">
-            <Placeholder width={80} height={60} />
-            <Placeholder width={80} height={60} label="center" />
-            <Placeholder width={80} height={60} />
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Horizontal align right',
-      Example: () =>
-        source(
-          <Inline space="small" align="right">
-            <Placeholder width={80} height={60} />
-            <Placeholder width={80} height={60} />
-            <Placeholder width={80} height={60} label="right" />
-          </Inline>,
+          <Stack space="medium" dividers>
+            <Inline space="small" align="left">
+              <Placeholder width={60} height={50} label="left" />
+              <Placeholder width={80} height={50} />
+              <Placeholder width={60} height={50} />
+            </Inline>
+            <Inline space="small" align="center">
+              <Placeholder width={60} height={50} />
+              <Placeholder width={80} height={50} label="center" />
+              <Placeholder width={60} height={50} />
+            </Inline>
+            <Inline space="small" align="right">
+              <Placeholder width={60} height={50} />
+              <Placeholder width={80} height={50} />
+              <Placeholder width={60} height={50} label="right" />
+            </Inline>
+          </Stack>,
         ),
     },
   ],
