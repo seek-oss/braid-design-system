@@ -166,7 +166,7 @@ const docs: ComponentDocs = {
               <Text tone="secondary" size="small">
                 On “tablet” and above
               </Text>
-              <Inline space="small" collapseBelow="tablet">
+              <Inline space="small">
                 <Placeholder width={48} height={48} />
                 <Placeholder width={48} height={48} />
                 <Placeholder width={48} height={48} />
