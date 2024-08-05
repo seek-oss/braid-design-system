@@ -5,11 +5,17 @@ import { ColumnsContext } from '../Columns/ColumnsContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import {
+  resolveResponsiveRangeProps,
+  type ResponsiveRangeProps,
+} from '../../utils/resolveResponsiveRangeProps';
 import * as styles from './Column.css';
 
 export interface ColumnProps {
   children: ReactNode;
   width?: keyof typeof styles.width | 'content';
+  hideBelow?: ResponsiveRangeProps['below'];
+  hideAbove?: ResponsiveRangeProps['above'];
   data?: DataAttributeMap;
 }
 
@@ -17,6 +23,8 @@ export const Column = ({
   children,
   data,
   width,
+  hideBelow,
+  hideAbove,
   ...restProps
 }: ColumnProps) => {
   const {
@@ -30,11 +38,21 @@ export const Column = ({
     collapsibleAlignmentChildProps,
     component,
   } = useContext(ColumnsContext);
+  const [hideOnMobile, hideOnTablet, hideOnDesktop, hideOnWide] =
+    resolveResponsiveRangeProps({
+      below: hideBelow,
+      above: hideAbove,
+    });
 
   return (
     <Box
       component={component}
-      display={component === 'span' ? 'block' : undefined}
+      display={optimizeResponsiveArray([
+        hideOnMobile ? 'none' : 'block',
+        hideOnTablet ? 'none' : 'block',
+        hideOnDesktop ? 'none' : 'block',
+        hideOnWide ? 'none' : 'block',
+      ])}
       minWidth={0}
       width={width !== 'content' ? 'full' : undefined}
       flexShrink={width === 'content' ? 0 : undefined}
