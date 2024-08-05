@@ -295,7 +295,7 @@ const docs: ComponentDocs = {
               <Text tone="secondary" size="small">
                 On “tablet” and above
               </Text>
-              <Columns space="small" collapseBelow="tablet">
+              <Columns space="small">
                 <Column>
                   <Placeholder height={60} />
                 </Column>

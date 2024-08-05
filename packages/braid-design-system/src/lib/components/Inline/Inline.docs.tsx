@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Inline, Stack, Strong, Text, TextLink } from '../';
+import { Inline, Stack, Strong, Text, TextLink, Tiles } from '../';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
@@ -23,6 +23,12 @@ const docs: ComponentDocs = {
         <Placeholder width={40} height={48} />
       </Inline>,
     ),
+  description: (
+    <Text>
+      The <Strong>Inline</Strong> component is designed for laying out flowing
+      content that is allowed to wrap over multiple lines.
+    </Text>
+  ),
   alternatives: [
     {
       name: 'Columns',
@@ -138,22 +144,45 @@ const docs: ComponentDocs = {
     {
       label: 'Collapsing across breakpoints',
       description: (
-        <Text>
-          Items can be collapsed into a single vertical stack responsively using
-          the <Strong>collapseBelow</Strong> prop. The following will collapse
-          the list of items into a vertical stack below <Strong>tablet</Strong>.
-        </Text>
+        <>
+          <Text>
+            Inlines can be collapsed into a single vertical stack responsively
+            using the <Strong>collapseBelow</Strong> prop and specifying the
+            name of the breakpoint, e.g.{' '}
+            <Strong>collapseBelow=&ldquo;tablet&rdquo;</Strong>.
+          </Text>
+          <Text>
+            The following results in three inline elements from the{' '}
+            <Strong>tablet</Strong> breakpoint upwards, and collapses into a
+            vertical stack on <Strong>mobile</Strong>.
+          </Text>
+        </>
       ),
+      code: false,
       Example: () =>
         source(
-          <Inline space="small" collapseBelow="tablet">
-            <Placeholder width={48} height={48} />
-            <Placeholder width={48} height={48} />
-            <Placeholder width={48} height={48} />
-            <Placeholder width={48} height={48} />
-            <Placeholder width={48} height={48} />
-            <Placeholder width={48} height={48} />
-          </Inline>,
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Inline space="small">
+                <Placeholder width={48} height={48} />
+                <Placeholder width={48} height={48} />
+                <Placeholder width={48} height={48} />
+              </Inline>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Stack space="small">
+                <Placeholder width={48} height={48} />
+                <Placeholder width={48} height={48} />
+                <Placeholder width={48} height={48} />
+              </Stack>
+            </Stack>
+          </Tiles>,
         ),
     },
   ],
