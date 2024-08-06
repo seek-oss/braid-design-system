@@ -158,9 +158,8 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      code: false,
-      Example: () =>
-        source(
+      Example: () => {
+        const { value: visual } = source(
           <Tiles space="xlarge" columns={[1, 2]}>
             <Stack space="small">
               <Text tone="secondary" size="small">
@@ -183,7 +182,21 @@ const docs: ComponentDocs = {
               </Stack>
             </Stack>
           </Tiles>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <Inline space="small" collapseBelow="tablet">
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+          </Inline>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
   ],
 };

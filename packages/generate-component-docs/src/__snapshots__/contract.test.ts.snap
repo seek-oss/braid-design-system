@@ -2788,6 +2788,14 @@ exports[`Column 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
     width?: 
         | "1/2"
         | "1/3"
