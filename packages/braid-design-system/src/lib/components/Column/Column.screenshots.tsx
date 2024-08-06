@@ -10,7 +10,7 @@ const widths = [
 ] as const;
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
+  screenshotWidths: [320, 768, 1200],
   screenshotOnlyInWireframe: true,
   examples: [
     {
@@ -164,6 +164,73 @@ export const screenshots: ComponentScreenshot = {
             </Columns>
           ))}
         </Stack>
+      ),
+    },
+    {
+      label: 'Hide second column below desktop',
+      Example: () => (
+        <Columns space="small">
+          <Column>
+            <Placeholder height={60} label="Visible 1" />
+          </Column>
+          <Column hideBelow="desktop">
+            <Placeholder height={60} label="Visible Desktop & above" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Visible 3" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Hide second column above tablet',
+      Example: () => (
+        <Columns space="small">
+          <Column>
+            <Placeholder height={60} label="Visible 1" />
+          </Column>
+          <Column hideAbove="tablet">
+            <Placeholder height={60} label="Visible Mobile & Tablet" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Visible 3" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Hide second column below tablet when collapsed',
+      Example: () => (
+        <Columns space="small" collapseBelow="tablet">
+          <Column>
+            <Placeholder height={60} label="Visible 1" />
+          </Column>
+          <Column hideBelow="tablet">
+            <Placeholder
+              height={60}
+              label="Visible Tablet & above (collapsed below tablet)"
+            />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Visible 3" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
+      label: 'Hide second column below desktop and above mobile',
+      Example: () => (
+        <Columns space="small">
+          <Column>
+            <Placeholder height={60} label="Visible 1" />
+          </Column>
+          <Column hideBelow="desktop" hideAbove="mobile">
+            <Placeholder height={60} label="Hidden Tablet Only" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Visible 3" />
+          </Column>
+        </Columns>
       ),
     },
   ],
