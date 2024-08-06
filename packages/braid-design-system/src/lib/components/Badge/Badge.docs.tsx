@@ -1,13 +1,27 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
-import { Badge, Box, Inline, Heading, Text, TextLink, Strong } from '../';
+import {
+  Badge,
+  Box,
+  Inline,
+  Text,
+  TextLink,
+  Strong,
+  Stack,
+  Columns,
+  Column,
+  Toggle,
+  ButtonIcon,
+  IconOverflow,
+  Divider,
+} from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Inline space="medium" align="center">
+      <Stack space="medium" align="center">
         <Inline space="medium" collapseBelow="desktop" align="center">
           <Badge tone="positive">Positive</Badge>
           <Badge tone="promote">Promote</Badge>
@@ -36,7 +50,7 @@ const docs: ComponentDocs = {
             Critical
           </Badge>
         </Inline>
-      </Inline>,
+      </Stack>,
     ),
   alternatives: [
     {
@@ -78,6 +92,26 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Inlining with text',
+      description: (
+        <Text>
+          When aligning badges inline alongside flowing text, it is recommended
+          to place the badge inside the{' '}
+          <TextLink href="/component/Text">Text</TextLink> (or{' '}
+          <TextLink href="/component/Heading">Heading</TextLink>) component.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Text>
+            Text content{' '}
+            <Badge tone="positive" weight="strong">
+              Badge
+            </Badge>
+          </Text>,
+        ),
+    },
+    {
       label: 'Vertical bleed',
       description: (
         <Fragment>
@@ -86,25 +120,62 @@ const docs: ComponentDocs = {
             colour to bleed out into the surrounding layout.
           </Text>
           <Text>
-            For example, we can align a badge to a{' '}
-            <TextLink href="/components/Heading">Heading</TextLink> element
-            using an <TextLink href="/components/Inline">Inline</TextLink>, even
-            though the badge is actually taller than the heading. If we didn’t
-            use the <Strong>bleedY</Strong> prop in this case, the badge would
-            introduce unwanted space above and below the heading.
+            For example, if we consider aligning a badge alongside other content
+            in a <TextLink href="/components/Columns">Columns</TextLink> layout.
+            With the badge being taller than the neighbouring content, it adds
+            undesired white space to each row. By applying the{' '}
+            <Strong>bleedY</Strong> prop, the space between rows remains
+            declarative and consistent regardless of the presence of the badge.
           </Text>
         </Fragment>
       ),
-      Example: () =>
+      code: false,
+      Example: ({ setDefaultState, getState, toggleState }) =>
         source(
-          <Box boxShadow="borderCriticalLight">
-            <Inline space="xsmall" alignY="center">
-              <Heading level="4">Heading</Heading>
-              <Badge tone="positive" bleedY>
-                New
-              </Badge>
-            </Inline>
-          </Box>,
+          <>
+            {setDefaultState('bleed', true)}
+
+            <Stack space="large">
+              <Toggle
+                id="bleed"
+                label="Bleed"
+                align="right"
+                on={getState('bleed')}
+                onChange={() => toggleState('bleed')}
+              />
+              <Stack space="medium">
+                <Divider />
+                {new Array(3).fill('').map(() => (
+                  <>
+                    <Box boxShadow="borderCriticalLight">
+                      <Columns space="medium" alignY="center">
+                        <Column width="content">
+                          <Badge tone="positive" bleedY={getState('bleed')}>
+                            Badge
+                          </Badge>
+                        </Column>
+                        <Column>
+                          <Text>
+                            <TextLink href="">Title link</TextLink>
+                          </Text>
+                        </Column>
+                        <Column width="content">
+                          <ButtonIcon
+                            id="icon"
+                            variant="transparent"
+                            size="small"
+                            label="Options"
+                            icon={<IconOverflow />}
+                          />
+                        </Column>
+                      </Columns>
+                    </Box>
+                    <Divider />
+                  </>
+                ))}
+              </Stack>
+            </Stack>
+          </>,
         ),
     },
   ],

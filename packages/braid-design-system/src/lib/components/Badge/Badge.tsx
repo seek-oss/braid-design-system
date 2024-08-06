@@ -1,4 +1,4 @@
-import React, { forwardRef, Children } from 'react';
+import React, { forwardRef, Children, useContext } from 'react';
 import assert from 'assert';
 import { type BoxProps, Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -7,6 +7,9 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { Bleed } from '../Bleed/Bleed';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import { TextContext } from '../Text/TextContext';
+import HeadingContext from '../Heading/HeadingContext';
+import * as styles from './Badge.css';
 
 type ValueOrArray<T> = T | T[];
 
@@ -40,8 +43,6 @@ const lightModeBackgroundForTone = {
   neutral: 'neutralLight',
   caution: 'cautionLight',
 } as const;
-
-const verticalPadding = 'xxsmall';
 
 const stringifyChildren = (children: BadgeProps['children']): string => {
   if (typeof children === 'string') {
@@ -83,44 +84,56 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       'Badge may only contain strings or numbers',
     );
 
+    const textContext = useContext(TextContext);
+    const headingContext = useContext(HeadingContext);
+    const isInline = Boolean(textContext || headingContext);
+
+    assert(
+      !isInline || (isInline && bleedY === false),
+      'A `Badge` cannot use `bleedY` when rendered inside a `Text` or `Heading` component.',
+    );
+
     const content = (
       // Ensures the foreground text tone follows the default
       // for the selected background colour
       <DefaultTextPropsProvider tone="neutral">
-        <Box
-          component="span"
-          display="flex"
-          cursor="default"
-          {...buildDataAttributes({ data, validateRestProps: restProps })}
-        >
+        <TextContext.Provider value={null}>
           <Box
             component="span"
-            id={id}
-            ref={ref}
-            tabIndex={tabIndex}
-            aria-describedby={ariaDescribedBy}
-            title={
-              title ??
-              (!ariaDescribedBy ? stringifyChildren(children) : undefined)
-            }
-            background={
-              weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
-            }
-            paddingY={verticalPadding}
-            paddingX="xsmall"
-            borderRadius="standard"
-            overflow="hidden"
+            display="flex"
+            cursor="default"
+            className={isInline ? styles.inline : undefined}
+            {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <Text size="xsmall" weight="medium" maxLines={1}>
-              {children}
-            </Text>
+            <Box
+              component="span"
+              id={id}
+              ref={ref}
+              tabIndex={tabIndex}
+              aria-describedby={ariaDescribedBy}
+              title={
+                title ??
+                (!ariaDescribedBy ? stringifyChildren(children) : undefined)
+              }
+              background={
+                weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
+              }
+              paddingY={styles.verticalPadding}
+              paddingX="xsmall"
+              borderRadius="standard"
+              overflow="hidden"
+            >
+              <Text size="xsmall" weight="medium" maxLines={1}>
+                {children}
+              </Text>
+            </Box>
           </Box>
-        </Box>
+        </TextContext.Provider>
       </DefaultTextPropsProvider>
     );
 
     return bleedY ? (
-      <Bleed component="span" vertical={verticalPadding}>
+      <Bleed component="span" vertical={styles.verticalPadding}>
         {content}
       </Bleed>
     ) : (

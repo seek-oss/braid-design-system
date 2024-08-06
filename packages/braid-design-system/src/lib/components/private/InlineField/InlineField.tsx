@@ -13,7 +13,6 @@ import {
 import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
 import type { BadgeProps } from '../../Badge/Badge';
-import { Inline } from '../../Inline/Inline';
 import {
   type StyledInputProps,
   type PrivateStyledInputProps,
@@ -113,26 +112,33 @@ export const InlineField = forwardRef<
           />
 
           <Box paddingLeft="xsmall" flexGrow={1}>
-            <Box className={[styles.sizeVars[size], styles.labelOffset]}>
-              <Inline space="small" alignY="center">
-                <Box
-                  component="label"
-                  htmlFor={id}
-                  userSelect="none"
-                  display="block"
-                  cursor={!disabled ? 'pointer' : undefined}
-                  className={virtualTouchable}
+            <Box
+              display="flex"
+              className={[styles.sizeVars[size], styles.labelOffset]}
+            >
+              <Box
+                component="label"
+                htmlFor={id}
+                userSelect="none"
+                display="block"
+                cursor={!disabled ? 'pointer' : undefined}
+                className={virtualTouchable}
+              >
+                <Text
+                  weight={checked && !inList ? 'strong' : undefined}
+                  tone={disabled ? 'secondary' : undefined}
+                  size={size}
                 >
-                  <Text
-                    weight={checked && !inList ? 'strong' : undefined}
-                    tone={disabled ? 'secondary' : undefined}
-                    size={size}
-                  >
-                    {label}
-                  </Text>
-                </Box>
-                {badge ? cloneElement(badge, { bleedY: true }) : null}
-              </Inline>
+                  {badge ? (
+                    <Box component="span" paddingRight="xsmall">
+                      {label}
+                    </Box>
+                  ) : (
+                    label
+                  )}
+                  {badge ? cloneElement(badge, {}) : null}
+                </Text>
+              </Box>
             </Box>
 
             {description ? (

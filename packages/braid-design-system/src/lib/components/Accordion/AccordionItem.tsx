@@ -9,7 +9,6 @@ import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
 import { Columns } from '../Columns/Columns';
 import { Column } from '../Column/Column';
-import { Inline } from '../Inline/Inline';
 import type { BadgeProps } from '../Badge/Badge';
 import { IconChevron } from '../icons';
 import {
@@ -144,12 +143,16 @@ export const AccordionItem = ({
           <Box component="span" position="relative">
             <Columns component="span" space={itemSpace}>
               <Column>
-                <Inline component="span" space="small" alignY="center">
-                  <Text size={size} weight={weight} tone={tone} icon={icon}>
-                    {label}
-                  </Text>
-                  {badge ? cloneElement(badge, { bleedY: true }) : null}
-                </Inline>
+                <Text size={size} weight={weight} tone={tone} icon={icon}>
+                  {badge ? (
+                    <Box component="span" paddingRight="xsmall">
+                      {label}
+                    </Box>
+                  ) : (
+                    label
+                  )}
+                  {badge ? cloneElement(badge, {}) : null}
+                </Text>
               </Column>
               <Column width="content">
                 <Text

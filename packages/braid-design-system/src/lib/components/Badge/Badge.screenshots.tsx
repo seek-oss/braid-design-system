@@ -1,6 +1,14 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Badge, Inline, Heading, List } from '../';
+import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
+import { heading, textSizeUntrimmed } from '../../css/typography.css';
+
+const textSizes = Object.keys(textSizeUntrimmed) as Array<
+  keyof typeof textSizeUntrimmed
+>;
+const headingLevels = Object.keys(heading).sort() as Array<
+  keyof typeof heading
+>;
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -117,6 +125,65 @@ export const screenshots: ComponentScreenshot = {
             Critical
           </Badge>
         </List>
+      ),
+    },
+    {
+      label: 'Test: Badge should not impact line height of text',
+      Example: () => (
+        <Text>
+          Incididunt consequat id nisi est dolore ipsum culpa eiusmod aliquip
+          est deserunt incididunt aliqua culpa.{' '}
+          <Badge tone="critical" weight="strong">
+            Critical
+          </Badge>{' '}
+          Incididunt consequat id nisi est dolore ipsum culpa eiusmod aliquip
+          est deserunt incididunt aliqua culpa.
+        </Text>
+      ),
+    },
+    {
+      label: 'Test: Badge should not impact line height of text',
+      Example: () => (
+        <Stack space="large">
+          {textSizes.map((size) => (
+            <Tiles key={size} space="none" columns={2}>
+              <Box position="relative">
+                <Box style={{ border: '1px solid red' }} />
+                <Text size={size}>
+                  Hg{' '}
+                  <Badge tone="positive" weight="strong">
+                    Badge
+                  </Badge>
+                </Text>
+                <Box style={{ border: '1px solid red' }} />
+              </Box>
+              <Box position="relative">
+                <Box style={{ border: '1px solid green' }} />
+                <Text size={size}>Hg</Text>
+                <Box style={{ border: '1px solid green' }} />
+              </Box>
+            </Tiles>
+          ))}
+          {headingLevels.reverse().map((level) => (
+            <Tiles key={level} space="none" columns={2}>
+              <Box position="relative">
+                <Box style={{ border: '1px solid red' }} />
+                <Heading level={level}>
+                  Hg{' '}
+                  <Badge tone="positive" weight="strong">
+                    Badge
+                  </Badge>
+                </Heading>
+                <Box style={{ border: '1px solid red' }} />
+              </Box>
+              <Box position="relative">
+                <Box style={{ border: '1px solid green' }} />
+                <Heading level={level}>Hg</Heading>
+                <Box style={{ border: '1px solid green' }} />
+              </Box>
+            </Tiles>
+          ))}
+        </Stack>
       ),
     },
   ],
