@@ -6,8 +6,6 @@ import {
   Divider,
   Card,
   Stack,
-  Columns,
-  Column,
   Badge,
   IconTag,
   Rating,
@@ -18,6 +16,7 @@ import {
   TextLink,
   List,
   ButtonIcon,
+  Spread,
 } from 'braid-src/lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import { Placeholder } from 'braid-src/lib/playroom/components';
@@ -55,51 +54,47 @@ const page: Page = {
 
       <Code collapsedByDefault>
         <Card>
-          <Stack space="gutter">
-            <Columns space="gutter">
-              <Column>
-                <Stack space="small">
-                  <Badge tone="positive">New</Badge>
-                  <Heading level="3">Product Designer</Heading>
-                  <Inline space="small">
-                    <Text tone="secondary">Braid Design Pty Ltd</Text>
-                    <Rating rating={4.5} />
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column width="content">
-                <ButtonIcon
-                  variant="transparent"
-                  size="large"
-                  icon={<IconBookmark />}
-                  label="Save job"
-                  id="save-preview"
-                />
-              </Column>
-            </Columns>
+          <Stack space="large">
+            <Spread space="small">
+              <Stack space="small">
+                <Badge tone="positive">New</Badge>
+                <Heading level="4">Product Designer</Heading>
+                <Inline space="small" alignY="center">
+                  <Text>Braid Design Pty Ltd</Text>
+                  <Rating rating={4.5} />
+                </Inline>
+              </Stack>
+              <ButtonIcon
+                variant="transparent"
+                size="large"
+                icon={<IconBookmark />}
+                label="Save job"
+                id="save-preview"
+              />
+            </Spread>
 
             <Stack space="small">
-              <Text size="small" tone="secondary" icon={<IconLocation />}>
+              <Text tone="secondary" icon={<IconLocation />}>
                 Melbourne
               </Text>
-              <Text size="small" tone="secondary" icon={<IconTag />}>
+              <Text tone="secondary" icon={<IconTag />}>
                 Information Technology
               </Text>
-              <Text size="small" tone="secondary" icon={<IconMoney />}>
+              <Text tone="secondary" icon={<IconMoney />}>
                 150k+
               </Text>
             </Stack>
             <Text>
               Long description of card details providing more information.
             </Text>
-            <Text tone="secondary" size="xsmall">
+            <Text tone="secondary" size="small">
               2d ago
             </Text>
           </Stack>
         </Card>
       </Code>
 
-      <Heading level="3">How do I build this example for myself?</Heading>
+      <Heading level="4">How do I build this example for myself?</Heading>
 
       <Text>
         Designs like this are rarely built top-to-bottom in a single pass.
@@ -135,7 +130,7 @@ const page: Page = {
           }
         >
           <Card>
-            <Heading level="3">Product Designer</Heading>
+            <Heading level="4">Product Designer</Heading>
             <Text>Braid Design Pty Ltd</Text>
             <Text>Melbourne</Text>
             <Text>Information Technology</Text>
@@ -161,8 +156,8 @@ const page: Page = {
           }
         >
           <Card>
-            <Stack space="gutter">
-              <Heading level="3">Product Designer</Heading>
+            <Stack space="large">
+              <Heading level="4">Product Designer</Heading>
               <Text>Braid Design Pty Ltd</Text>
               <Text>Melbourne</Text>
               <Text>Information Technology</Text>
@@ -190,9 +185,9 @@ const page: Page = {
           }
         >
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Stack space="small">
-                <Heading level="3">Product Designer</Heading>
+                <Heading level="4">Product Designer</Heading>
                 <Text>Braid Design Pty Ltd</Text>
               </Stack>
 
@@ -225,29 +220,23 @@ const page: Page = {
           }
         >
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Stack space="small">
-                <Heading level="3">Product Designer</Heading>
-                <Text tone="secondary">Braid Design Pty Ltd</Text>
+                <Heading level="4">Product Designer</Heading>
+                <Text>Braid Design Pty Ltd</Text>
               </Stack>
 
               <Stack space="small">
-                <Text tone="secondary" size="small">
-                  Melbourne
-                </Text>
-                <Text tone="secondary" size="small">
-                  Information Technology
-                </Text>
-                <Text tone="secondary" size="small">
-                  150k+
-                </Text>
+                <Text tone="secondary">Melbourne</Text>
+                <Text tone="secondary">Information Technology</Text>
+                <Text tone="secondary">150k+</Text>
               </Stack>
 
               <Text>
                 Long description of card details providing more information.
               </Text>
 
-              <Text tone="secondary" size="xsmall">
+              <Text tone="secondary" size="small">
                 2d ago
               </Text>
             </Stack>
@@ -266,20 +255,20 @@ const page: Page = {
           }
         >
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Stack space="small">
-                <Heading level="3">Product Designer</Heading>
-                <Text tone="secondary">Braid Design Pty Ltd</Text>
+                <Heading level="4">Product Designer</Heading>
+                <Text>Braid Design Pty Ltd</Text>
               </Stack>
 
-              <Stack space="xsmall">
-                <Text tone="secondary" size="small" icon={<IconLocation />}>
+              <Stack space="small">
+                <Text tone="secondary" icon={<IconLocation />}>
                   Melbourne
                 </Text>
-                <Text tone="secondary" size="small" icon={<IconTag />}>
+                <Text tone="secondary" icon={<IconTag />}>
                   Information Technology
                 </Text>
-                <Text tone="secondary" size="small" icon={<IconMoney />}>
+                <Text tone="secondary" icon={<IconMoney />}>
                   150k+
                 </Text>
               </Stack>
@@ -288,7 +277,7 @@ const page: Page = {
                 Long description of card details providing more information.
               </Text>
 
-              <Text tone="secondary" size="xsmall">
+              <Text tone="secondary" size="small">
                 2d ago
               </Text>
             </Stack>
@@ -307,21 +296,21 @@ const page: Page = {
           }
         >
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Stack space="small">
                 <Badge tone="positive">New</Badge>
-                <Heading level="3">Product Designer</Heading>
-                <Text tone="secondary">Braid Design Pty Ltd</Text>
+                <Heading level="4">Product Designer</Heading>
+                <Text>Braid Design Pty Ltd</Text>
               </Stack>
 
-              <Stack space="xsmall">
-                <Text tone="secondary" size="small" icon={<IconLocation />}>
+              <Stack space="small">
+                <Text tone="secondary" icon={<IconLocation />}>
                   Melbourne
                 </Text>
-                <Text tone="secondary" size="small" icon={<IconTag />}>
+                <Text tone="secondary" icon={<IconTag />}>
                   Information Technology
                 </Text>
-                <Text tone="secondary" size="small" icon={<IconMoney />}>
+                <Text tone="secondary" icon={<IconMoney />}>
                   150k+
                 </Text>
               </Stack>
@@ -330,7 +319,7 @@ const page: Page = {
                 Long description of card details providing more information.
               </Text>
 
-              <Text tone="secondary" size="xsmall">
+              <Text tone="secondary" size="small">
                 2d ago
               </Text>
             </Stack>
@@ -356,24 +345,24 @@ const page: Page = {
           }
         >
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Stack space="small">
                 <Badge tone="positive">New</Badge>
-                <Heading level="3">Product Designer</Heading>
-                <Inline space="small">
-                  <Text tone="secondary">Braid Design Pty Ltd</Text>
+                <Heading level="4">Product Designer</Heading>
+                <Inline space="small" alignY="center">
+                  <Text>Braid Design Pty Ltd</Text>
                   <Rating rating={4.5} />
                 </Inline>
               </Stack>
 
-              <Stack space="xsmall">
-                <Text tone="secondary" size="small" icon={<IconLocation />}>
+              <Stack space="small">
+                <Text tone="secondary" icon={<IconLocation />}>
                   Melbourne
                 </Text>
-                <Text tone="secondary" size="small" icon={<IconTag />}>
+                <Text tone="secondary" icon={<IconTag />}>
                   Information Technology
                 </Text>
-                <Text tone="secondary" size="small" icon={<IconMoney />}>
+                <Text tone="secondary" icon={<IconMoney />}>
                   150k+
                 </Text>
               </Stack>
@@ -382,7 +371,7 @@ const page: Page = {
                 Long description of card details providing more information.
               </Text>
 
-              <Text tone="secondary" size="xsmall">
+              <Text tone="secondary" size="small">
                 2d ago
               </Text>
             </Stack>
@@ -396,8 +385,8 @@ const page: Page = {
               <Text>
                 Sometimes adding new features can necessitate changing the
                 layout. First, we&rsquo;ll use a{' '}
-                <TextLink href="/components/columns">Columns</TextLink>{' '}
-                component to break up our card into two columns.
+                <TextLink href="/components/spread">Spread</TextLink> component
+                to separate our content and action.
               </Text>
               <Text tone="secondary">
                 NOTE: To make this easier to follow, we&rsquo;ve replaced the
@@ -407,170 +396,101 @@ const page: Page = {
           }
         >
           <Card>
-            <Columns space="gutter">
-              <Column>
-                <Placeholder label="Job content" height={80} />
-              </Column>
-              <Column>
-                <Placeholder label="Save action" height={80} />
-              </Column>
-            </Columns>
+            <Spread space="small">
+              <Placeholder label="Job content" height={80} />
+              <Placeholder label="Save action" height={80} />
+            </Spread>
           </Card>
         </Step>
 
         <Step
           detail={
             <Text>
-              In the second column we&rsquo;ll use a{' '}
+              For the save action we&rsquo;ll use a{' '}
               <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink> with
               an{' '}
-              <TextLink href="/components/IconBookmark">IconBookmark</TextLink>{' '}
-              as the save action. By default, `Columns` are of equal width. In
-              this design however, the second column should only be as wide as
-              the save action itself. This can be controlled by setting the
-              `Column` to have a &ldquo;width&rdquo; of &ldquo;content&rdquo;.
+              <TextLink href="/components/IconBookmark">IconBookmark</TextLink>.
+              We can now replace our &ldquo;Save action&rdquo; Placeholder with
+              the ButtonIcon.
             </Text>
           }
         >
           <Card>
-            <Columns space="gutter">
-              <Column>
-                <Placeholder label="Job content" height={80} />
-              </Column>
-              <Column width="content">
-                <ButtonIcon
-                  variant="transparent"
-                  size="large"
-                  icon={<IconBookmark />}
-                  label="Save job"
-                  id="save-7a"
-                />
-              </Column>
-            </Columns>
+            <Spread space="small">
+              <Placeholder label="Job content" height={80} />
+              <ButtonIcon
+                variant="transparent"
+                size="large"
+                icon={<IconBookmark />}
+                label="Save job"
+                id="save-7a"
+              />
+            </Spread>
           </Card>
         </Step>
 
         <Step
           detail={
             <Text>
-              Now that we&rsquo;ve adjusted the layout, let&rsquo;s reinstate
-              our job content in the main column.
+              Now that we&rsquo;ve added the action, let&rsquo;s reinstate our
+              content by replacing the &ldquo;Job content&rdquo; Placeholder.
             </Text>
           }
         >
           <Card>
-            <Columns space="gutter">
-              <Column>
-                <Stack space="gutter">
-                  <Stack space="small">
-                    <Badge tone="positive">New</Badge>
-                    <Heading level="3">Product Designer</Heading>
-                    <Inline space="small">
-                      <Text tone="secondary">Braid Design Pty Ltd</Text>
-                      <Rating rating={4.5} />
-                    </Inline>
-                  </Stack>
+            <Spread space="small">
+              <Stack space="large">
+                <Stack space="small">
+                  <Badge tone="positive">New</Badge>
+                  <Heading level="4">Product Designer</Heading>
+                  <Inline space="small" alignY="center">
+                    <Text>Braid Design Pty Ltd</Text>
+                    <Rating rating={4.5} />
+                  </Inline>
+                </Stack>
 
-                  <Stack space="xsmall">
-                    <Text tone="secondary" size="small" icon={<IconLocation />}>
-                      Melbourne
-                    </Text>
-                    <Text tone="secondary" size="small" icon={<IconTag />}>
-                      Information Technology
-                    </Text>
-                    <Text tone="secondary" size="small" icon={<IconMoney />}>
-                      150k+
-                    </Text>
-                  </Stack>
-
-                  <Text>
-                    Long description of card details providing more information.
+                <Stack space="small">
+                  <Text tone="secondary" icon={<IconLocation />}>
+                    Melbourne
                   </Text>
-
-                  <Text tone="secondary" size="xsmall">
-                    2d ago
+                  <Text tone="secondary" icon={<IconTag />}>
+                    Information Technology
+                  </Text>
+                  <Text tone="secondary" icon={<IconMoney />}>
+                    150k+
                   </Text>
                 </Stack>
-              </Column>
-              <Column width="content">
-                <ButtonIcon
-                  variant="transparent"
-                  size="large"
-                  icon={<IconBookmark />}
-                  label="Save job"
-                  id="save-7b"
-                />
-              </Column>
-            </Columns>
-          </Card>
-        </Step>
 
-        <Step
-          heading="8. Polish!"
-          detail={
-            <Stack space="xlarge">
-              <Text>
-                Now that we have all our elements in place we can polish until
-                we are happy. Adjusting white space between elements, or even
-                responsively, to achieve the desired goal.
-              </Text>
-              <Text>
-                In this case, we might loosen up the metadata section by
-                increasing the space to &ldquo;small&rdquo;.
-              </Text>
-            </Stack>
-          }
-        >
-          <Card>
-            <Stack space="gutter">
-              <Columns space="gutter">
-                <Column>
-                  <Stack space="small">
-                    <Badge tone="positive">New</Badge>
-                    <Heading level="3">Product Designer</Heading>
-                    <Inline space="small">
-                      <Text tone="secondary">Braid Design Pty Ltd</Text>
-                      <Rating rating={4.5} />
-                    </Inline>
-                  </Stack>
-                </Column>
-                <Column width="content">
-                  <ButtonIcon
-                    variant="transparent"
-                    size="large"
-                    icon={<IconBookmark />}
-                    label="Save job"
-                    id="save-8"
-                  />
-                </Column>
-              </Columns>
+                <Text>
+                  Long description of card details providing more information.
+                </Text>
 
-              <Stack space="small">
-                <Text size="small" tone="secondary" icon={<IconLocation />}>
-                  Melbourne
-                </Text>
-                <Text size="small" tone="secondary" icon={<IconTag />}>
-                  Information Technology
-                </Text>
-                <Text size="small" tone="secondary" icon={<IconMoney />}>
-                  150k+
+                <Text tone="secondary" size="small">
+                  2d ago
                 </Text>
               </Stack>
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-              <Text tone="secondary" size="xsmall">
-                2d ago
-              </Text>
-            </Stack>
+              <ButtonIcon
+                variant="transparent"
+                size="large"
+                icon={<IconBookmark />}
+                label="Save job"
+                id="save-7b"
+              />
+            </Spread>
           </Card>
         </Step>
+
+        <Text>
+          Now that we have all our elements in place we can polish until we are
+          happy. Adjusting white space between elements, or even responsively,
+          to achieve the desired goal.
+        </Text>
       </Stack>
 
       <Divider />
 
       <TextStack>
-        <LinkableHeading level="3">Next steps</LinkableHeading>
+        <LinkableHeading level="4">Next steps</LinkableHeading>
 
         <Stack space="xlarge">
           <Text>

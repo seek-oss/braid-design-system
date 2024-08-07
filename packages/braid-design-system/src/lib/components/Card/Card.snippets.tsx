@@ -5,8 +5,7 @@ import {
   Stack,
   Heading,
   Text,
-  Columns,
-  Column,
+  Spread,
   OverflowMenu,
   MenuItem,
   Placeholder,
@@ -18,8 +17,8 @@ export const snippets: Snippets = [
     name: 'With Heading',
     code: source(
       <Card>
-        <Stack space="gutter">
-          <Heading level="3">Heading</Heading>
+        <Stack space="large">
+          <Heading level="4">Heading</Heading>
           <Text>Text</Text>
         </Stack>
       </Card>,
@@ -29,7 +28,7 @@ export const snippets: Snippets = [
     name: 'With promote tone',
     code: source(
       <Card tone="promote">
-        <Stack space="gutter">
+        <Stack space="large">
           <Placeholder height={200} />
         </Stack>
       </Card>,
@@ -39,7 +38,7 @@ export const snippets: Snippets = [
     name: 'With formAccent tone',
     code: source(
       <Card tone="formAccent">
-        <Stack space="gutter">
+        <Stack space="large">
           <Placeholder height={200} />
         </Stack>
       </Card>,
@@ -49,7 +48,7 @@ export const snippets: Snippets = [
     name: 'With rounded corners',
     code: source(
       <Card rounded>
-        <Stack space="gutter">
+        <Stack space="large">
           <Placeholder height={200} />
         </Stack>
       </Card>,
@@ -59,17 +58,13 @@ export const snippets: Snippets = [
     name: 'With Overflow Menu',
     code: source(
       <Card>
-        <Stack space="gutter">
-          <Columns space="gutter">
-            <Column>
-              <Heading level="3">Heading</Heading>
-            </Column>
-            <Column width="content">
-              <OverflowMenu label="Options">
-                <MenuItem>Menu Item</MenuItem>
-              </OverflowMenu>
-            </Column>
-          </Columns>
+        <Stack space="large">
+          <Spread space="small" alignY="center">
+            <Heading level="4">Heading</Heading>
+            <OverflowMenu label="Options">
+              <MenuItem>Menu Item</MenuItem>
+            </OverflowMenu>
+          </Spread>
           <Text>Text</Text>
         </Stack>
       </Card>,

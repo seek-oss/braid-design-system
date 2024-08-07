@@ -15,8 +15,7 @@ import {
   Button,
   IconDelete,
   Badge,
-  Column,
-  Columns,
+  Spread,
   Inline,
   List,
 } from '../';
@@ -138,60 +137,56 @@ const docs: ComponentDocs = {
             {setDefaultState('closeReason', {})}
             {setDefaultState('action', '')}
 
-            <Columns space="large">
-              <Column>
-                <Box style={{ maxWidth: '100px' }}>
-                  <OverflowMenu
-                    label="Options"
-                    id="example"
-                    onOpen={() => {
-                      setState('action', 'open');
-                      setState('closeReason', {});
-                    }}
-                    onClose={(closeReason) => {
-                      setState('action', 'close');
-                      setState('closeReason', closeReason);
-                    }}
-                  >
-                    <MenuItem id="menuItem1" onClick={() => {}}>
-                      Item 1
-                    </MenuItem>
-                    <MenuItem id="menuItem2" onClick={() => {}}>
-                      Item 2
-                    </MenuItem>
-                    <MenuItem id="menuItem3" onClick={() => {}}>
-                      Item 3
-                    </MenuItem>
-                  </OverflowMenu>
-                </Box>
-              </Column>
-              <Column width="content">
-                <Inline space="small" collapseBelow="tablet">
-                  {getState('action') ? (
-                    <Badge
-                      tone="info"
-                      weight="strong"
-                      bleedY
-                    >{`Action: ${getState('action')}`}</Badge>
-                  ) : null}
-                  {getState('closeReason').reason ? (
-                    <Badge tone="info" bleedY>
-                      {`Reason: ${getState('closeReason').reason}`}
-                    </Badge>
-                  ) : null}
-                  {typeof getState('closeReason').index !== 'undefined' ? (
-                    <Badge tone="info" bleedY>
-                      {`Selected index: ${getState('closeReason').index}`}
-                    </Badge>
-                  ) : null}
-                  {getState('closeReason').id ? (
-                    <Badge tone="info" bleedY>
-                      {`Selected ID: ${getState('closeReason').id}`}
-                    </Badge>
-                  ) : null}
-                </Inline>
-              </Column>
-            </Columns>
+            <Spread space="large">
+              <Box width="full" style={{ maxWidth: '100px' }}>
+                <OverflowMenu
+                  label="Options"
+                  id="example"
+                  onOpen={() => {
+                    setState('action', 'open');
+                    setState('closeReason', {});
+                  }}
+                  onClose={(closeReason) => {
+                    setState('action', 'close');
+                    setState('closeReason', closeReason);
+                  }}
+                >
+                  <MenuItem id="menuItem1" onClick={() => {}}>
+                    Item 1
+                  </MenuItem>
+                  <MenuItem id="menuItem2" onClick={() => {}}>
+                    Item 2
+                  </MenuItem>
+                  <MenuItem id="menuItem3" onClick={() => {}}>
+                    Item 3
+                  </MenuItem>
+                </OverflowMenu>
+              </Box>
+              <Inline space="small" collapseBelow="tablet">
+                {getState('action') ? (
+                  <Badge
+                    tone="info"
+                    weight="strong"
+                    bleedY
+                  >{`Action: ${getState('action')}`}</Badge>
+                ) : null}
+                {getState('closeReason').reason ? (
+                  <Badge tone="info" bleedY>
+                    {`Reason: ${getState('closeReason').reason}`}
+                  </Badge>
+                ) : null}
+                {typeof getState('closeReason').index !== 'undefined' ? (
+                  <Badge tone="info" bleedY>
+                    {`Selected index: ${getState('closeReason').index}`}
+                  </Badge>
+                ) : null}
+                {getState('closeReason').id ? (
+                  <Badge tone="info" bleedY>
+                    {`Selected ID: ${getState('closeReason').id}`}
+                  </Badge>
+                ) : null}
+              </Inline>
+            </Spread>
           </>,
         ),
     },
