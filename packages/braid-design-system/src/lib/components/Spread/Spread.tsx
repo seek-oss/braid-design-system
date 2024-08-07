@@ -10,7 +10,7 @@ import {
 } from '../../utils/align';
 import { type RequiredResponsiveValue, responsiveGap } from './Spread.css';
 
-interface SpreadProps {
+export interface SpreadProps {
   children: ReactNodeNoStrings;
   space: RequiredResponsiveValue<Space>;
   direction?: 'horizontal' | 'vertical';
