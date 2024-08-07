@@ -641,7 +641,7 @@ const page: DocsPage = {
 
       <LinkableHeading>Spread</LinkableHeading>
       <Text>
-        If you’d like to spread components to opposite ends of its container
+        If you’d like to spread components to opposite ends of a container
         while maintaining a minimum amount of space in between them, Braid
         provides the <TextLink href="/components/Spread">Spread</TextLink>{' '}
         component.

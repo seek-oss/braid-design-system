@@ -9,11 +9,11 @@ new:
 
 **Spread:** Add new layout component
 
-Introduce a new layout component, `Spread`, used to justify content with both an equally distribute and a specify the minimum amount of space in between each child.
+Introduce a new layout component, `Spread`, used to justify content with both an equally distributed and a specified minimum amount of space in between each child.
 
 **EXAMPLE USAGE:**
 
-The `Spread` component will work horizontally by default:
+The `Spread` component works horizontally by default:
 
 ```jsx
 <Spread space="small" alignY="center">
