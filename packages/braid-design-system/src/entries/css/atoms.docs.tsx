@@ -136,7 +136,11 @@ const docs: CssDoc = {
                 <AtomicProperty
                   key={prop}
                   name={prop}
-                  values={Object.keys(unresponsiveProperties[prop])}
+                  values={
+                    Array.isArray(unresponsiveProperties[prop])
+                      ? Object.values(unresponsiveProperties[prop])
+                      : Object.keys(unresponsiveProperties[prop])
+                  }
                 />
               ))}
             </Tiles>
