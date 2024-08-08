@@ -14,6 +14,12 @@ const docs: ComponentDocs = {
         <Placeholder height={40} />
       </Stack>,
     ),
+  description: (
+    <Text>
+      Defines the vertical rhythm of its child elements, interleaving a uniform
+      amount of space between each element.
+    </Text>
+  ),
   alternatives: [
     {
       name: 'Box',
