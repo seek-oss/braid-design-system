@@ -5,6 +5,7 @@ import { Placeholder } from '../private/Placeholder/Placeholder';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768, 992, 1200],
+  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Horizontal',
@@ -29,6 +30,14 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Spread space="large">
           <Placeholder height={60} width="100%" />
+          <Placeholder height={60} width="100%" />
+        </Spread>
+      ),
+    },
+    {
+      label: 'Horizontal single child full width',
+      Example: () => (
+        <Spread space="large">
           <Placeholder height={60} width="100%" />
         </Spread>
       ),
