@@ -4017,5 +4017,43 @@
         "summary": "**MonthPicker:** Reduce space between month and year fields\n\nReducing the space between month and year fields to improve correlation between the two fields within the greater context of a form."
       }
     ]
+  },
+  {
+    "version": "32.22.0",
+    "updates": [
+      {
+        "new": [
+          "Column"
+        ],
+        "summary": "**Column:** Add support for hide above/below breakpoint\n\nIntroduce new `hideAbove` and `hideBelow` props on column for responsively hiding columns across breakpoint.\n\nThese props can be used either separately or in combination to optimise content display across different screen sizes.\n\n**EXAMPLE USAGE:**\n```jsx\n<Columns space=\"small\">\n  <Column>\n    <Placeholder height={60} label=\"Always visible\" />\n  </Column>\n  <Column hideBelow=\"tablet\">\n    <Placeholder height={60} label=\"Tablet and above\" />\n  </Column>\n  <Column hideAbove=\"mobile\">\n    <Placeholder height={60} label=\"Mobile Only\" />\n  </Column>\n</Columns>\n```"
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Checkbox",
+          "CheckboxStandalone",
+          "RadioItem"
+        ],
+        "summary": "Move `badge` slot inside label\n\nRelocate the `badge` slot inside the `label` slot enabling the `Badge` to sit alongside the last word in wrapping lines of text."
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Enable usage inside typographic components\n\nA `Badge` can now be nested inside typographic components, e.g. `Text` and `Heading`, as an inline element alongside text.\nPreviously a `Badge` had to be aligned against text using an `Inline` component, which would result in the `Badge` dropping below the text when the copy wrapped.\n\n**EXAMPLE USAGE:**\n```jsx\n<Text>\n  Lorem ipsum velit in <Badge>amet</Badge>.\n</Text>\n```"
+      },
+      {
+        "new": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Add `size` support\n\nIntroduces the ability to customise the `size` of the `Tab` components in the tab list.\nAvailable sizes are `standard` (default) and `small`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Tabs size=\"small\">\n  <Tab>First tab</Tab>\n  <Tab>Second tab</Tab>\n  <Tab>Third tab</Tab>\n</Tabs>\n```"
+      },
+      {
+        "new": [
+          "Spread"
+        ],
+        "summary": "**Spread:** Add new layout component\n\nIntroduce a new layout component, `Spread`, used to justify content with both an equally distributed and a specified minimum amount of space in between each child.\n\n**EXAMPLE USAGE:**\n\nThe `Spread` component works horizontally by default:\n\n```jsx\n<Spread space=\"small\" alignY=\"center\">\n  <Heading level=\"4\">Heading</Heading>\n\n  <OverflowMenu label=\"Options\">\n    <MenuItem>First</MenuItem>\n    <MenuItem>Second</MenuItem>\n  </OverflowMenu>\n</Spread>\n```\n\nBut can be switched to `vertical` via the `direction` prop:\n\n```jsx\n<Spread space=\"large\" direction=\"vertical\">\n  <Stack space=\"small\">\n    <Heading level=\"4\">Heading</Heading>\n    <Text>Text</Text>\n  </Stack>\n\n  <Text size=\"small\" tone=\"secondary\">\n    Date\n  </Text>\n</Spread>\n```"
+      }
+    ]
   }
 ]

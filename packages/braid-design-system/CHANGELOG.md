@@ -1,5 +1,99 @@
 # braid-design-system
 
+## 32.22.0
+
+### Minor Changes
+
+- **Column:** Add support for hide above/below breakpoint ([#1553](https://github.com/seek-oss/braid-design-system/pull/1553))
+
+  Introduce new `hideAbove` and `hideBelow` props on column for responsively hiding columns across breakpoint.
+
+  These props can be used either separately or in combination to optimise content display across different screen sizes.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Columns space="small">
+    <Column>
+      <Placeholder height={60} label="Always visible" />
+    </Column>
+    <Column hideBelow="tablet">
+      <Placeholder height={60} label="Tablet and above" />
+    </Column>
+    <Column hideAbove="mobile">
+      <Placeholder height={60} label="Mobile Only" />
+    </Column>
+  </Columns>
+  ```
+
+- **Badge:** Enable usage inside typographic components ([#1547](https://github.com/seek-oss/braid-design-system/pull/1547))
+
+  A `Badge` can now be nested inside typographic components, e.g. `Text` and `Heading`, as an inline element alongside text.
+  Previously a `Badge` had to be aligned against text using an `Inline` component, which would result in the `Badge` dropping below the text when the copy wrapped.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text>
+    Lorem ipsum velit in <Badge>amet</Badge>.
+  </Text>
+  ```
+
+- **Tabs:** Add `size` support ([#1550](https://github.com/seek-oss/braid-design-system/pull/1550))
+
+  Introduces the ability to customise the `size` of the `Tab` components in the tab list.
+  Available sizes are `standard` (default) and `small`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tabs size="small">
+    <Tab>First tab</Tab>
+    <Tab>Second tab</Tab>
+    <Tab>Third tab</Tab>
+  </Tabs>
+  ```
+
+- **Spread:** Add new layout component ([#1554](https://github.com/seek-oss/braid-design-system/pull/1554))
+
+  Introduce a new layout component, `Spread`, used to justify content with both an equally distributed and a specified minimum amount of space in between each child.
+
+  **EXAMPLE USAGE:**
+
+  The `Spread` component works horizontally by default:
+
+  ```jsx
+  <Spread space="small" alignY="center">
+    <Heading level="4">Heading</Heading>
+
+    <OverflowMenu label="Options">
+      <MenuItem>First</MenuItem>
+      <MenuItem>Second</MenuItem>
+    </OverflowMenu>
+  </Spread>
+  ```
+
+  But can be switched to `vertical` via the `direction` prop:
+
+  ```jsx
+  <Spread space="large" direction="vertical">
+    <Stack space="small">
+      <Heading level="4">Heading</Heading>
+      <Text>Text</Text>
+    </Stack>
+
+    <Text size="small" tone="secondary">
+      Date
+    </Text>
+  </Spread>
+  ```
+
+### Patch Changes
+
+- Move `badge` slot inside label ([#1547](https://github.com/seek-oss/braid-design-system/pull/1547))
+
+  Relocate the `badge` slot inside the `label` slot enabling the `Badge` to sit alongside the last word in wrapping lines of text.
+
 ## 32.21.0
 
 ### Minor Changes
