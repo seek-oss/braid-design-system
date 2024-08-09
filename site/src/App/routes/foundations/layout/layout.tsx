@@ -23,6 +23,7 @@ import {
   Bleed,
   PageBlock,
   Page,
+  Spread,
 } from 'braid-src/lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
@@ -115,6 +116,9 @@ const page: DocsPage = {
         </Text>
         <Text>
           <TextLink href="#columns">Columns</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#spread">Spread</TextLink>
         </Text>
         <Text>
           <TextLink href="#tiles">Tiles</TextLink>
@@ -540,40 +544,30 @@ const page: DocsPage = {
         as the content within it.
       </Text>
       <Text>
-        For example, if you wanted a card with a left-aligned{' '}
-        <TextLink href="/components/Heading">Heading</TextLink> and a
-        right-aligned{' '}
-        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>:
+        For example, if you wanted a column to be as large as its illustration
+        followed by a second column that filled the space:
       </Text>
       <Code>
         {source(
           <Card>
-            <Stack space="medium">
-              <Columns space="small">
-                <Column>
-                  <Heading level="3">Card heading</Heading>
-                </Column>
-                <Column width="content">
-                  <OverflowMenu label="Options">
-                    <MenuItem
-                      onClick={() => {
-                        /* */
-                      }}
-                    >
-                      First
-                    </MenuItem>
-                    <MenuItem
-                      onClick={() => {
-                        /* */
-                      }}
-                    >
-                      Second
-                    </MenuItem>
-                  </OverflowMenu>
-                </Column>
-              </Columns>
-              <Text>Card content</Text>
-            </Stack>
+            <Columns space="medium" alignY="center">
+              <Column width="content">
+                <Placeholder
+                  shape="round"
+                  height={128}
+                  width={128}
+                  label="Illustration"
+                />
+              </Column>
+              <Column>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse dignissim dapibus elit, vel egestas felis pharetra
+                  non. Cras malesuada, massa nec ultricies efficitur, lectus
+                  ante consequat magna, a porttitor massa ex ut quam.
+                </Text>
+              </Column>
+            </Columns>
           </Card>,
         )}
       </Code>
@@ -640,6 +634,75 @@ const page: DocsPage = {
               </Card>
             </Column>
           </Columns>,
+        )}
+      </Code>
+
+      <Divider />
+
+      <LinkableHeading>Spread</LinkableHeading>
+      <Text>
+        If you’d like to spread components to opposite ends of a container while
+        maintaining a minimum amount of space in between them, Braid provides
+        the <TextLink href="/components/Spread">Spread</TextLink> component.
+      </Text>
+
+      <Text>
+        An example might be a card with a left-aligned{' '}
+        <TextLink href="/components/Heading">Heading</TextLink> and a
+        right-aligned{' '}
+        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>:
+      </Text>
+
+      <Code>
+        {source(
+          <Card>
+            <Spread space="small">
+              <Heading level="4">Heading</Heading>
+              <OverflowMenu label="Options">
+                <MenuItem>First</MenuItem>
+                <MenuItem>Second</MenuItem>
+              </OverflowMenu>
+            </Spread>
+          </Card>,
+        )}
+      </Code>
+
+      <Text>
+        By default, components will be spread horizontally but you can change
+        the direction to vertical by providing the{' '}
+        <TextLink href="/components/Spread#direction">direction</TextLink> prop.
+      </Text>
+
+      <Text>
+        This is useful when aligning content vertically across containers while
+        maintaining predicatable spacing — particularly when wrapping text comes
+        into play.
+      </Text>
+
+      <Code collapsedByDefault>
+        {source(
+          <Tiles space="small" columns={3}>
+            <Card height="full">
+              <Spread space="medium" direction="vertical">
+                <Text>
+                  Minim aliqua nulla id excepteur labore amet do dolore.
+                </Text>
+                <Text tone="secondary">Duis</Text>
+              </Spread>
+            </Card>
+            <Card height="full">
+              <Spread space="medium" direction="vertical">
+                <Text>Minim aliqua nulla id.</Text>
+                <Text tone="secondary">Duis</Text>
+              </Spread>
+            </Card>
+            <Card height="full">
+              <Spread space="medium" direction="vertical">
+                <Text>Minim aliqua nulla id excepteur labore.</Text>
+                <Text tone="secondary">Duis</Text>
+              </Spread>
+            </Card>
+          </Tiles>,
         )}
       </Code>
 

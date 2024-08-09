@@ -19,8 +19,7 @@ import {
   IconBookmark,
   IconProfile,
   MenuItemDivider,
-  Column,
-  Columns,
+  Spread,
   Badge,
   List,
 } from '..';
@@ -379,71 +378,65 @@ const docs: ComponentDocs = {
             {setDefaultState('closeReason', {})}
             {setDefaultState('action', '')}
 
-            <Columns space="large">
-              <Column>
-                <Inline space="none">
-                  <MenuRenderer
-                    offsetSpace="small"
-                    width="small"
-                    onOpen={() => {
-                      setState('action', 'open');
-                      setState('closeReason', {});
-                    }}
-                    onClose={(closeReason) => {
-                      setState('action', 'close');
-                      setState('closeReason', closeReason);
-                    }}
-                    trigger={(triggerProps, { open }) => (
-                      <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                        <Text>
-                          Menu{' '}
-                          <IconChevron
-                            direction={open ? 'up' : 'down'}
-                            alignY="lowercase"
-                          />
-                        </Text>
-                      </Box>
-                    )}
-                  >
-                    <MenuItem id="menuItem1" onClick={() => {}}>
-                      Item 1
-                    </MenuItem>
-                    <MenuItem id="menuItem2" onClick={() => {}}>
-                      Item 2
-                    </MenuItem>
-                    <MenuItem id="menuItem3" onClick={() => {}}>
-                      Item 3
-                    </MenuItem>
-                  </MenuRenderer>
-                </Inline>
-              </Column>
-              <Column width="content">
-                <Inline space="small" collapseBelow="tablet">
-                  {getState('action') ? (
-                    <Badge
-                      tone="info"
-                      weight="strong"
-                      bleedY
-                    >{`Action: ${getState('action')}`}</Badge>
-                  ) : null}
-                  {getState('closeReason').reason ? (
-                    <Badge tone="info" bleedY>
-                      {`Reason: ${getState('closeReason').reason}`}
-                    </Badge>
-                  ) : null}
-                  {typeof getState('closeReason').index !== 'undefined' ? (
-                    <Badge tone="info" bleedY>
-                      {`Selected index: ${getState('closeReason').index}`}
-                    </Badge>
-                  ) : null}
-                  {getState('closeReason').id ? (
-                    <Badge tone="info" bleedY>
-                      {`Selected ID: ${getState('closeReason').id}`}
-                    </Badge>
-                  ) : null}
-                </Inline>
-              </Column>
-            </Columns>
+            <Spread space="large">
+              <MenuRenderer
+                offsetSpace="small"
+                width="small"
+                onOpen={() => {
+                  setState('action', 'open');
+                  setState('closeReason', {});
+                }}
+                onClose={(closeReason) => {
+                  setState('action', 'close');
+                  setState('closeReason', closeReason);
+                }}
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text>
+                      Menu{' '}
+                      <IconChevron
+                        direction={open ? 'up' : 'down'}
+                        alignY="lowercase"
+                      />
+                    </Text>
+                  </Box>
+                )}
+              >
+                <MenuItem id="menuItem1" onClick={() => {}}>
+                  Item 1
+                </MenuItem>
+                <MenuItem id="menuItem2" onClick={() => {}}>
+                  Item 2
+                </MenuItem>
+                <MenuItem id="menuItem3" onClick={() => {}}>
+                  Item 3
+                </MenuItem>
+              </MenuRenderer>
+              <Inline space="small" collapseBelow="tablet">
+                {getState('action') ? (
+                  <Badge
+                    tone="info"
+                    weight="strong"
+                    bleedY
+                  >{`Action: ${getState('action')}`}</Badge>
+                ) : null}
+                {getState('closeReason').reason ? (
+                  <Badge tone="info" bleedY>
+                    {`Reason: ${getState('closeReason').reason}`}
+                  </Badge>
+                ) : null}
+                {typeof getState('closeReason').index !== 'undefined' ? (
+                  <Badge tone="info" bleedY>
+                    {`Selected index: ${getState('closeReason').index}`}
+                  </Badge>
+                ) : null}
+                {getState('closeReason').id ? (
+                  <Badge tone="info" bleedY>
+                    {`Selected ID: ${getState('closeReason').id}`}
+                  </Badge>
+                ) : null}
+              </Inline>
+            </Spread>
           </>,
         ),
     },

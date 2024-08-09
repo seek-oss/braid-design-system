@@ -34,6 +34,11 @@ const docs: ComponentDocs = {
       description: 'For laying out flowing content that is allowed to wrap.',
     },
     {
+      name: 'Spread',
+      description:
+        'For justifying content with equally distributed space in between.',
+    },
+    {
       name: 'Tiles',
       description: 'For laying out content over many columns and rows.',
     },

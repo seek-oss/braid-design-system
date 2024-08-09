@@ -7485,6 +7485,42 @@ exports[`Secondary 1`] = `
 }
 `;
 
+exports[`Spread 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+        | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", Align>>
+        | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
+    alignY?: 
+        | "bottom"
+        | "center"
+        | "top"
+        | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", AlignY>>
+        | ResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
+    children: ReactNodeNoStrings
+    direction?: 
+        | "horizontal"
+        | "vertical"
+    space: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | "xxxlarge"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+},
+}
+`;
+
 exports[`Stack 1`] = `
 {
   exportType: component,

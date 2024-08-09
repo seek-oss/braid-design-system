@@ -31,6 +31,7 @@ import { snippets as PasswordField } from './snippets/PasswordField';
 import { snippets as RadioGroup } from './snippets/RadioGroup';
 import { snippets as Rating } from './snippets/Rating';
 import { snippets as Secondary } from './snippets/Secondary';
+import { snippets as Spread } from './snippets/Spread';
 import { snippets as Stack } from './snippets/Stack';
 import { snippets as Stepper } from './snippets/Stepper';
 import { snippets as Strong } from './snippets/Strong';
@@ -79,6 +80,7 @@ export default Object.entries({
   RadioGroup,
   Rating,
   Secondary,
+  Spread,
   Stack,
   Stepper,
   Strong,

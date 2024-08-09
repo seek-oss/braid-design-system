@@ -40,6 +40,7 @@ import {
   Secondary,
   IconCopy,
   ButtonIcon,
+  Spread,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -158,26 +159,22 @@ const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
   const { code, value } = useSourceFromExample(id, example);
 
   const CopyCodeButton = () => (
-    <Columns space="medium" alignY="center">
-      <Column>
-        {label ? (
-          <Text component="h5" tone="secondary">
-            {label}
-          </Text>
-        ) : null}
-      </Column>
-      {code ? (
-        <Column width="content">
-          <CodeButton
-            title="Copy code to clipboard"
-            onClick={() => copy(formatSnippet(code))}
-            successLabel="Copied!"
-          >
-            <IconCopy /> Copy code
-          </CodeButton>
-        </Column>
+    <Spread space="medium" alignY="center">
+      {label ? (
+        <Text component="h5" tone="secondary">
+          {label}
+        </Text>
       ) : null}
-    </Columns>
+      {code ? (
+        <CodeButton
+          title="Copy code to clipboard"
+          onClick={() => copy(formatSnippet(code))}
+          successLabel="Copied!"
+        >
+          <IconCopy /> Copy code
+        </CodeButton>
+      ) : null}
+    </Spread>
   );
 
   const children = [
