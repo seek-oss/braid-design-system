@@ -254,8 +254,7 @@
   },
   "peerDependencies": {
     "react": "^17 || ^18",
-    "react-dom": "^17 || ^18",
-    "sku": ">=10.13.1"
+    "react-dom": "^17 || ^18"
   },
   "skuSkipConfigure": true,
   "skuSkipPostInstall": true,
