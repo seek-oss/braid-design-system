@@ -72,6 +72,10 @@ const docs: ComponentDocs = {
       name: 'Notice',
       description: 'For lighter in-flow messaging.',
     },
+    {
+      name: 'Nudge',
+      description: 'For a actionable messages to drive user behaviour.',
+    },
   ],
   additional: [
     {

@@ -7244,6 +7244,26 @@ exports[`Notice 1`] = `
 }
 `;
 
+exports[`Nudge 1`] = `
+{
+  exportType: component,
+  props: {
+    actionLabel: ReactNode
+    children: ReactNodeNoStrings
+    closeLabel?: string
+    id?: string
+    illustration?: ReactNode
+    onActionClick: MouseEventHandler<HTMLButtonElement>
+    onClose?: MouseEventHandler<HTMLButtonElement>
+    size?: 
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+},
+}
+`;
+
 exports[`OverflowMenu 1`] = `
 {
   exportType: component,

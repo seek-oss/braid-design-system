@@ -56,6 +56,7 @@ export { MenuItemLink } from './MenuItem/MenuItemLink';
 export { OverflowMenu } from './OverflowMenu/OverflowMenu';
 export { MonthPicker } from './MonthPicker/MonthPicker';
 export { Notice } from './Notice/Notice';
+export { Nudge } from './Nudge/Nudge';
 export { PageBlock } from './PageBlock/PageBlock';
 export { Page } from './Page/Page';
 export { Pagination } from './Pagination/Pagination';

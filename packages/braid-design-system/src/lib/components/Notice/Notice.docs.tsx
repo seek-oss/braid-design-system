@@ -49,6 +49,10 @@ const docs: ComponentDocs = {
       description: 'For a stronger visual treatment.',
     },
     {
+      name: 'Nudge',
+      description: 'For a actionable messages to drive user behaviour.',
+    },
+    {
       name: 'useToast',
       description: 'For asynchronous messages that float above the page.',
     },
