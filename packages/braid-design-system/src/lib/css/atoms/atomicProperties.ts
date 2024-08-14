@@ -105,6 +105,7 @@ export const responsiveProperties = {
     full: '9999px',
     ...vars.borderRadius,
   },
+  gap: space,
   paddingTop: space,
   paddingBottom: space,
   paddingRight: space,

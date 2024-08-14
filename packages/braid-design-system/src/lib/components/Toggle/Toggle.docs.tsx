@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Alert, Box, TextLink, Toggle } from '../';
+import { Alert, Box, Divider, TextLink, Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import source from '@braid-design-system/source.macro';
@@ -34,7 +34,7 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id, getState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Toggle
               label="Left"
               id={`${id}_1`}
@@ -43,6 +43,7 @@ const docs: ComponentDocs = {
               align="left"
               bleedY
             />
+            <Divider />
             <Toggle
               label="Justify"
               id={`${id}_2`}
@@ -51,6 +52,7 @@ const docs: ComponentDocs = {
               align="justify"
               bleedY
             />
+            <Divider />
             <Toggle
               label="Right"
               id={`${id}_3`}
@@ -79,7 +81,7 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id, getState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Toggle
               label="Leading"
               id={`${id}_leading`}
@@ -88,6 +90,7 @@ const docs: ComponentDocs = {
               togglePosition="leading"
               bleedY
             />
+            <Divider />
             <Toggle
               label="Trailing"
               id={`${id}_trailing`}

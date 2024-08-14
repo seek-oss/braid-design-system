@@ -1,7 +1,7 @@
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Columns, Column, Stack } from '../';
+import { Columns, Column, Stack, Divider } from '../';
 import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
@@ -24,7 +24,7 @@ export const galleryItems: GalleryComponent = {
       label: 'Vertical alignment',
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Columns space="small" alignY="top">
               <Column>
                 <Placeholder height={20} />
@@ -36,6 +36,7 @@ export const galleryItems: GalleryComponent = {
                 <Placeholder height={20} />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" alignY="center">
               <Column>
                 <Placeholder height={20} />
@@ -47,6 +48,7 @@ export const galleryItems: GalleryComponent = {
                 <Placeholder height={20} />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" alignY="bottom">
               <Column>
                 <Placeholder height={20} />
@@ -65,7 +67,7 @@ export const galleryItems: GalleryComponent = {
       label: 'Horizontal alignment',
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Columns space="small" align="left">
               <Column width="1/5">
                 <Placeholder height={20} label="left" />
@@ -74,6 +76,7 @@ export const galleryItems: GalleryComponent = {
                 <Placeholder height={20} />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" align="center">
               <Column width="1/5">
                 <Placeholder height={20} />
@@ -82,6 +85,7 @@ export const galleryItems: GalleryComponent = {
                 <Placeholder height={20} label="center" />
               </Column>
             </Columns>
+            <Divider />
             <Columns space="small" align="right">
               <Column width="1/5">
                 <Placeholder height={20} />

@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { AccordionItem, Accordion, Badge, Text, IconImage, Stack } from '../';
+import {
+  AccordionItem,
+  Accordion,
+  Badge,
+  Text,
+  IconImage,
+  Stack,
+  Divider,
+} from '../';
 import { Placeholder } from '../../playroom/components';
 import { Box } from '../Box/Box';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
@@ -422,7 +430,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'AccordionItem with an icon - should follow size',
       Example: ({ id }) => (
         <Box paddingY="medium">
-          <Stack space="medium" dividers>
+          <Stack space="medium">
             <Box background="surface">
               <AccordionItem
                 label="Label"
@@ -433,6 +441,7 @@ export const screenshots: ComponentScreenshot = {
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
+            <Divider />
             <Box background="surface">
               <AccordionItem
                 label="Label"
@@ -443,6 +452,7 @@ export const screenshots: ComponentScreenshot = {
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
+            <Divider />
             <Box background="surface">
               <AccordionItem
                 label="Label"
@@ -453,6 +463,7 @@ export const screenshots: ComponentScreenshot = {
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
+            <Divider />
             <Box background="surface">
               <AccordionItem
                 label="Label"
@@ -484,7 +495,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'AccordionItem with an icon - should follow tone',
       Example: ({ id }) => (
         <Box paddingY="medium">
-          <Stack space="medium" dividers>
+          <Stack space="medium">
             <Box background="surface">
               <AccordionItem
                 label="Label"
@@ -496,6 +507,7 @@ export const screenshots: ComponentScreenshot = {
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
+            <Divider />
             <Box background="surface">
               <AccordionItem
                 label="Label"
@@ -507,6 +519,7 @@ export const screenshots: ComponentScreenshot = {
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
+            <Divider />
             <Box background="surface">
               <AccordionItem
                 label="Label"
@@ -518,6 +531,7 @@ export const screenshots: ComponentScreenshot = {
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
+            <Divider />
             <Box background="surface">
               <AccordionItem
                 label="Label"

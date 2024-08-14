@@ -2,7 +2,16 @@ import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { iconDocumentation } from '../iconCommon.docs';
 import source from '@braid-design-system/source.macro';
-import { IconStar, Button, Heading, Inline, Stack, Strong, Text } from '../../';
+import {
+  IconStar,
+  Button,
+  Heading,
+  Inline,
+  Stack,
+  Strong,
+  Text,
+  Divider,
+} from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
@@ -39,8 +48,9 @@ const docs: ComponentDocs = {
       ),
       Example: ({ getState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <IconStar active={getState('active')} />
+            <Divider />
             <Inline space="small">
               <Button onClick={() => toggleState('active')}>
                 {getState('active') ? 'inactive' : 'active'}

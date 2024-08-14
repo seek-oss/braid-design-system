@@ -1,6 +1,5 @@
 import assert from 'assert';
-import React, { useMemo } from 'react';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import React, { Children, type ReactNode, useMemo } from 'react';
 import {
   type RequiredResponsiveValue,
   normalizeResponsiveValue,
@@ -16,11 +15,12 @@ import {
   AccordionContext,
   validTones,
 } from './AccordionContext';
+import flattenChildren from '../../utils/flattenChildren';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
 export interface AccordionProps {
-  children: ReactNodeNoStrings;
+  children: ReactNode;
   dividers?: boolean;
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
@@ -89,8 +89,21 @@ export const Accordion = ({
         <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
           <Divider />
           <Box paddingY={space}>
-            <Stack space={space} dividers>
-              {children}
+            <Stack space={space}>
+              {Children.map(flattenChildren(children), (child, index) =>
+                index > 0 ? (
+                  <>
+                    <Divider
+                      weight={
+                        typeof dividers === 'string' ? dividers : undefined
+                      }
+                    />
+                    {child}
+                  </>
+                ) : (
+                  child
+                ),
+              )}
             </Stack>
           </Box>
           <Divider />

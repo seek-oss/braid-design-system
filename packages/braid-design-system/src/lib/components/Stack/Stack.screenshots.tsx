@@ -58,28 +58,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Dividers',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers>
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Strong dividers',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers="strong">
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>
-      ),
-    },
-    {
       label:
         'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
       Container,
@@ -146,34 +124,6 @@ export const screenshots: ComponentScreenshot = {
               height={40}
               label="This should not be visible"
             />
-          </Hidden>
-        </Stack>
-      ),
-    },
-    {
-      label:
-        'Test - Hidden stack items with dividers (should show 4 + 5 + 6 on mobile, 3 + 4 + 5 + 6 on tablet, 2 + 3 + 4 + 6 on desktop, 1 + 2 + 3 + 4 on wide)',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers>
-          <Hidden below="wide">
-            <Placeholder height={40} label="1" />
-          </Hidden>
-          <Hidden below="desktop">
-            <Placeholder height={40} label="2" />
-          </Hidden>
-          <Hidden below="tablet">
-            <Placeholder height={40} label="3" />
-          </Hidden>
-          <Placeholder height={40} label="4" />
-          <Hidden above="tablet">
-            <Placeholder height={40} label="5" />
-          </Hidden>
-          <Hidden above="desktop">
-            <Placeholder height={40} label="6" />
-          </Hidden>
-          <Hidden screen>
-            <Placeholder height={40} label="This should not be visible" />
           </Hidden>
         </Stack>
       ),
