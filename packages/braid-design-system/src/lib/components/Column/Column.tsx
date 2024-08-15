@@ -27,17 +27,7 @@ export const Column = ({
   hideAbove,
   ...restProps
 }: ColumnProps) => {
-  const {
-    collapseMobile,
-    collapseTablet,
-    collapseDesktop,
-    mobileSpace,
-    tabletSpace,
-    desktopSpace,
-    wideSpace,
-    collapsibleAlignmentChildProps,
-    component,
-  } = useContext(ColumnsContext);
+  const { component } = useContext(ColumnsContext);
   const [hideOnMobile, hideOnTablet, hideOnDesktop, hideOnWide] =
     resolveResponsiveRangeProps({
       below: hideBelow,
@@ -63,30 +53,7 @@ export const Column = ({
       ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Box
-        component={component}
-        paddingLeft={optimizeResponsiveArray([
-          collapseMobile ? 'none' : mobileSpace,
-          collapseTablet ? 'none' : tabletSpace,
-          collapseDesktop ? 'none' : desktopSpace,
-          wideSpace,
-        ])}
-        paddingTop={
-          collapseMobile || collapseTablet || collapseDesktop
-            ? optimizeResponsiveArray([
-                collapseMobile ? mobileSpace : 'none',
-                collapseTablet ? tabletSpace : 'none',
-                collapseDesktop ? desktopSpace : 'none',
-                'none',
-              ])
-            : undefined
-        }
-        height="full"
-        {...collapsibleAlignmentChildProps}
-        className={styles.columnContent}
-      >
-        {children}
-      </Box>
+      {children}
     </Box>
   );
 };

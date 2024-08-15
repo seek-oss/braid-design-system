@@ -3,12 +3,10 @@ import React, { type ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import type { ColumnProps } from '../Column/Column';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import {
   type CollapsibleAlignmentProps,
   resolveCollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
-import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -42,22 +40,7 @@ export const Columns = ({
       .join(', ')}]`,
   );
 
-  const normalizedSpace = normalizeResponsiveValue(space);
-  const {
-    mobile: mobileSpace = 'none',
-    tablet: tabletSpace = mobileSpace,
-    desktop: desktopSpace = tabletSpace,
-    wide: wideSpace = desktopSpace,
-  } = normalizedSpace;
-
-  const {
-    collapsibleAlignmentProps,
-    collapsibleAlignmentChildProps,
-    collapseMobile,
-    collapseTablet,
-    collapseDesktop,
-    orderChildren,
-  } = resolveCollapsibleAlignmentProps({
+  const { collapsibleAlignmentProps } = resolveCollapsibleAlignmentProps({
     collapseBelow,
     align,
     alignY,
@@ -68,28 +51,16 @@ export const Columns = ({
     <Box
       component={component}
       {...collapsibleAlignmentProps}
-      className={negativeMargin('left', {
-        mobile: collapseMobile ? 'none' : mobileSpace,
-        tablet: collapseTablet ? 'none' : tabletSpace,
-        desktop: collapseDesktop ? 'none' : desktopSpace,
-        wide: wideSpace,
-      })}
+      display="flex"
+      gap={space}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <ColumnsContext.Provider
         value={{
-          collapseMobile,
-          collapseTablet,
-          collapseDesktop,
-          mobileSpace,
-          tabletSpace,
-          desktopSpace,
-          wideSpace,
-          collapsibleAlignmentChildProps,
           component,
         }}
       >
-        {orderChildren(children)}
+        {children}
       </ColumnsContext.Provider>
     </Box>
   );
