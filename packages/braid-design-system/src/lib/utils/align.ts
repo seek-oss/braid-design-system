@@ -4,7 +4,7 @@ import {
 } from '../css/atoms/sprinkles.css';
 
 export type Align = 'left' | 'center' | 'right';
-export type AlignY = 'top' | 'center' | 'bottom';
+export type AlignY = 'top' | 'center' | 'fill' | 'bottom';
 
 const alignToFlexAlignLookup = {
   left: 'flexStart',
@@ -22,6 +22,7 @@ export const alignToFlexAlign = (
 const alignYToFlexAlignLookup = {
   top: 'flexStart',
   center: 'center',
+  fill: 'stretch',
   bottom: 'flexEnd',
 } as const;
 

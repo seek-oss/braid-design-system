@@ -2,7 +2,6 @@ import assert from 'assert';
 import React, { type ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import type { ColumnProps } from '../Column/Column';
-import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import {
   type CollapsibleAlignmentProps,
   resolveCollapsibleAlignmentProps,
@@ -11,9 +10,9 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
+import * as styles from './Columns.css';
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
-  space: ResponsiveSpace;
   children:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
@@ -40,7 +39,8 @@ export const Columns = ({
       .join(', ')}]`,
   );
 
-  const { collapsibleAlignmentProps } = resolveCollapsibleAlignmentProps({
+  const collapsibleAlignmentProps = resolveCollapsibleAlignmentProps({
+    space,
     collapseBelow,
     align,
     alignY,
@@ -51,15 +51,10 @@ export const Columns = ({
     <Box
       component={component}
       {...collapsibleAlignmentProps}
-      display="flex"
-      gap={space}
+      className={styles.columns}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <ColumnsContext.Provider
-        value={{
-          component,
-        }}
-      >
+      <ColumnsContext.Provider value={{ component }}>
         {children}
       </ColumnsContext.Provider>
     </Box>

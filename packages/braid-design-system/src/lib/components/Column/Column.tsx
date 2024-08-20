@@ -13,11 +13,21 @@ import * as styles from './Column.css';
 
 export interface ColumnProps {
   children: ReactNode;
-  width?: keyof typeof styles.width | 'content';
+  width?: keyof typeof styles.fixedWidths | 'content';
   hideBelow?: ResponsiveRangeProps['below'];
   hideAbove?: ResponsiveRangeProps['above'];
   data?: DataAttributeMap;
 }
+
+const getClassForWidth = (width: ColumnProps['width']) => {
+  if (width) {
+    return width === 'content'
+      ? styles.contentColumn
+      : styles.fixedWidths[width];
+  }
+
+  return styles.fluidColumn;
+};
 
 export const Column = ({
   children,
@@ -43,14 +53,7 @@ export const Column = ({
         hideOnDesktop ? 'none' : 'block',
         hideOnWide ? 'none' : 'block',
       ])}
-      minWidth={0}
-      width={width !== 'content' ? 'full' : undefined}
-      flexShrink={width === 'content' ? 0 : undefined}
-      flexGrow={1}
-      className={[
-        styles.column,
-        width !== 'content' ? styles.width[width!] : null,
-      ]}
+      className={getClassForWidth(width)}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}

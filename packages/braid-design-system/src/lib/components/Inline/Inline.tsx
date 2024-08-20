@@ -1,8 +1,6 @@
-import assert from 'assert';
 import React from 'react';
 
-import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../../css/atoms/atoms';
+import { Box, type BoxProps } from '../Box/Box';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   type CollapsibleAlignmentProps,
@@ -12,11 +10,12 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+import * as styles from './Inline.css';
+
 export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
-  space: ResponsiveSpace;
-  component?: (typeof validInlineComponents)[number];
+  component?: BoxProps['component'];
   data?: DataAttributeMap;
   children: ReactNodeNoStrings;
 }
@@ -24,7 +23,7 @@ export interface InlineProps extends CollapsibleAlignmentProps {
 export const Inline = ({
   space = 'none',
   align,
-  alignY,
+  alignY = 'fill',
   collapseBelow,
   reverse,
   component = 'div',
@@ -32,14 +31,8 @@ export const Inline = ({
   children,
   ...restProps
 }: InlineProps) => {
-  assert(
-    validInlineComponents.includes(component),
-    `Invalid Inline component: '${component}'. Should be one of [${validInlineComponents
-      .map((c) => `'${c}'`)
-      .join(', ')}]`,
-  );
-
-  const { collapsibleAlignmentProps } = resolveCollapsibleAlignmentProps({
+  const collapsibleAlignmentProps = resolveCollapsibleAlignmentProps({
+    space,
     align,
     alignY,
     collapseBelow,
@@ -50,9 +43,7 @@ export const Inline = ({
     <Box
       component={component}
       {...collapsibleAlignmentProps}
-      display="flex"
-      gap={space}
-      flexWrap="wrap"
+      className={styles.fitContent}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}

@@ -95,6 +95,7 @@ export const responsiveProperties = {
   display: {
     none: 'none',
     block: 'block',
+    grid: 'grid',
     inline: 'inline',
     inlineBlock: 'inline-block',
     flex: 'flex',
@@ -118,6 +119,7 @@ export const responsiveProperties = {
     flexStart: 'flex-start',
     center: 'center',
     flexEnd: 'flex-end',
+    stretch: 'stretch',
   },
   justifyContent: {
     flexStart: 'flex-start',

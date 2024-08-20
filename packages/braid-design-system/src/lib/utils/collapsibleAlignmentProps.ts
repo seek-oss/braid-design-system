@@ -1,4 +1,3 @@
-import { type ReactNode, Children } from 'react';
 import {
   type OptionalResponsiveValue,
   normalizeResponsiveValue,
@@ -14,6 +13,7 @@ import {
   alignToFlexAlign,
   alignYToFlexAlign,
 } from './align';
+import type { ResponsiveSpace } from '../css/atoms/atoms';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {
@@ -27,7 +27,21 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
   return alignment;
 }
 
+const resolveDirection = ({
+  collapse,
+  reverse,
+}: {
+  collapse?: boolean;
+  reverse: boolean;
+}) => {
+  if (collapse) {
+    return 'column';
+  }
+  return reverse ? 'rowReverse' : 'row';
+};
+
 export interface CollapsibleAlignmentProps {
+  space: ResponsiveSpace;
   collapseBelow?: ResponsiveRangeProps['below'];
   align?: OptionalResponsiveValue<Align>;
   alignY?: OptionalResponsiveValue<AlignY>;
@@ -37,8 +51,9 @@ export interface CollapsibleAlignmentProps {
 export function resolveCollapsibleAlignmentProps({
   align,
   alignY,
+  space,
   collapseBelow,
-  reverse,
+  reverse = false,
 }: CollapsibleAlignmentProps) {
   const [collapseMobile, collapseTablet, collapseDesktop] =
     resolveResponsiveRangeProps({
@@ -61,65 +76,36 @@ export function resolveCollapsibleAlignmentProps({
   } = normalizedAlign;
 
   return {
-    collapseMobile,
-    collapseTablet,
-    collapseDesktop,
-    orderChildren: (children: ReactNode) => {
-      const childrenArray = Children.toArray(children);
-      return !collapseMobile && !collapseTablet && reverse
-        ? childrenArray.reverse()
-        : childrenArray;
-    },
-    collapsibleAlignmentProps: {
-      display: optimizeResponsiveArray([
-        collapseMobile ? 'block' : 'flex',
-        collapseTablet ? 'block' : 'flex',
-        collapseDesktop ? 'block' : 'flex',
-        'flex',
-      ]),
-      flexDirection: optimizeResponsiveArray([
-        collapseMobile ? 'column' : 'row',
-        // eslint-disable-next-line no-nested-ternary
-        collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
-        // eslint-disable-next-line no-nested-ternary
-        collapseDesktop ? 'column' : rowReverseDesktop ? 'rowReverse' : 'row',
-        rowReverseWide ? 'rowReverse' : 'row',
-      ]),
-      justifyContent: align
-        ? optimizeResponsiveArray([
-            justifyContentMobile,
-            rowReverseTablet
-              ? invertAlignment(justifyContentTablet)
-              : justifyContentTablet,
-            rowReverseDesktop
-              ? invertAlignment(justifyContentDesktop)
-              : justifyContentDesktop,
-            rowReverseWide
-              ? invertAlignment(justifyContentWide)
-              : justifyContentWide,
-          ])
-        : undefined,
-      alignItems: alignY ? alignYToFlexAlign(alignY) : undefined,
-    },
-    collapsibleAlignmentChildProps: {
-      display: optimizeResponsiveArray([
-        collapseMobile && justifyContentMobile !== 'flexStart'
-          ? 'flex'
-          : 'block',
-        collapseTablet && justifyContentTablet !== 'flexStart'
-          ? 'flex'
-          : 'block',
-        collapseDesktop && justifyContentDesktop !== 'flexStart'
-          ? 'flex'
-          : 'block',
-        'block',
-      ]),
-      justifyContent: optimizeResponsiveArray([
-        justifyContentMobile,
-        justifyContentTablet,
-        justifyContentDesktop,
-        justifyContentWide,
-      ]),
-    },
+    display: 'flex',
+    gap: space,
+    flexDirection: collapseBelow
+      ? optimizeResponsiveArray([
+          resolveDirection({ collapse: collapseMobile, reverse }),
+          resolveDirection({
+            collapse: collapseTablet,
+            reverse: rowReverseTablet,
+          }),
+          resolveDirection({
+            collapse: collapseDesktop,
+            reverse: rowReverseDesktop,
+          }),
+          resolveDirection({ reverse: rowReverseWide }),
+        ])
+      : resolveDirection({ reverse }),
+    justifyContent: align
+      ? optimizeResponsiveArray([
+          justifyContentMobile,
+          rowReverseTablet
+            ? invertAlignment(justifyContentTablet)
+            : justifyContentTablet,
+          rowReverseDesktop
+            ? invertAlignment(justifyContentDesktop)
+            : justifyContentDesktop,
+          rowReverseWide
+            ? invertAlignment(justifyContentWide)
+            : justifyContentWide,
+        ])
+      : undefined,
+    alignItems: alignY ? alignYToFlexAlign(alignY) : undefined,
   } as const;
 }
