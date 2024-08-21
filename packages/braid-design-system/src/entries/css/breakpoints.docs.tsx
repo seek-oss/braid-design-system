@@ -46,6 +46,7 @@ const docs: CssDoc = {
             <Stack space="gutter">
               {bps.map((b, index) => (
                 <>
+                  {index > 0 ? <Divider /> : null}
                   <Columns space="small" alignY="center" key={b}>
                     <Column width="content">
                       <Box
@@ -67,7 +68,6 @@ const docs: CssDoc = {
                       }`}</Text>
                     </Column>
                   </Columns>
-                  {index < bps.length - 1 ? <Divider /> : null}
                 </>
               ))}
             </Stack>

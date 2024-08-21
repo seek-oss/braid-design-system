@@ -1,5 +1,5 @@
-import React, { type ReactNode } from 'react';
-import assert from 'assert';
+import React from 'react';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { type Align, alignToFlexAlign } from '../../utils/align';
@@ -8,11 +8,28 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-export const validStackComponents = ['div', 'span', 'ol', 'ul'] as const;
+const validStackComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'ul',
+  'ol',
+  'li',
+  'details',
+  'summary',
+  'dd',
+  'dl',
+  'dt',
+] as const;
 
 export interface StackProps {
   component?: (typeof validStackComponents)[number];
-  children: ReactNode;
+  children: ReactNodeNoStrings;
   space: ResponsiveSpace;
   align?: OptionalResponsiveValue<Align>;
   data?: DataAttributeMap;
@@ -25,24 +42,15 @@ export const Stack = ({
   align = 'left',
   data,
   ...restProps
-}: StackProps) => {
-  assert(
-    validStackComponents.includes(component),
-    `Invalid Stack component: '${component}'. Should be one of [${validStackComponents
-      .map((c) => `'${c}'`)
-      .join(', ')}]`,
-  );
-
-  return (
-    <Box
-      component={component}
-      display="flex"
-      flexDirection="column"
-      gap={space}
-      alignItems={align === 'left' ? undefined : alignToFlexAlign(align)}
-      {...buildDataAttributes({ data, validateRestProps: restProps })}
-    >
-      {children}
-    </Box>
-  );
-};
+}: StackProps) => (
+  <Box
+    component={component}
+    display="flex"
+    flexDirection="column"
+    gap={space}
+    alignItems={align === 'left' ? 'stretch' : alignToFlexAlign(align)}
+    {...buildDataAttributes({ data, validateRestProps: restProps })}
+  >
+    {children}
+  </Box>
+);

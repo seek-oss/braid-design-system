@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Stack, Hidden, Text, TextLink, Strong, Divider } from '../';
+import { Stack, Text, TextLink, Strong, Divider } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import source from '@braid-design-system/source.macro';
 
@@ -95,52 +95,19 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    // {
-    //   label: 'Dividers',
-    //   description: (
-    //     <Text>
-    //       Dividers can be placed between each item using the{' '}
-    //       <Strong>dividers</Strong> prop. Supports both <Strong>regular</Strong>{' '}
-    //       and <Strong>strong</Strong> variants
-    //     </Text>
-    //   ),
-    //   Example: () =>
-    //     source(
-    //       <Stack space="xxlarge">
-    //         <Stack space="medium" dividers>
-    //           <Placeholder height={30} />
-    //           <Placeholder height={30} label="regular" />
-    //           <Placeholder height={30} />
-    //         </Stack>
-    //         <Stack space="medium" dividers="strong">
-    //           <Placeholder height={30} />
-    //           <Placeholder height={30} label="strong" />
-    //           <Placeholder height={30} />
-    //         </Stack>
-    //       </Stack>,
-    //     ),
-    // },
     {
-      label: 'Responsively hiding stack items',
+      label: 'Semantic elements',
       description: (
         <Text>
-          The <TextLink href="/components/Hidden">Hidden</TextLink> component
-          can be used to responsively hide specific items.
+          By default, Stack renders a <Strong>div</Strong> element. You can
+          customise this via the <Strong>component</Strong> prop.
         </Text>
       ),
-      Example: () =>
-        source(
-          <Stack space="gutter">
-            <Placeholder height={40} label="1" />
-            <Hidden below="tablet">
-              <Placeholder height={40} label="2" />
-            </Hidden>
-            <Hidden above="mobile">
-              <Placeholder height={40} label="3" />
-            </Hidden>
-            <Placeholder height={40} label="4" />
-          </Stack>,
-        ),
+      code: source(
+        <Stack component="span" space="small">
+          ...
+        </Stack>,
+      ).code,
     },
   ],
 };

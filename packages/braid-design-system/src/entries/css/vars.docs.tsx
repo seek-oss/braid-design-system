@@ -118,6 +118,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
     <Stack space="large">
       {Object.entries(vars.space).map(([spaceName, spaceVar], index) => (
         <>
+          {index > 0 ? <Divider /> : null}
           <Row key={spaceName} group="space" name={spaceName} hideCanvas>
             <Box
               style={{
@@ -128,7 +129,6 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
               }}
             />
           </Row>
-          {index < Object.entries(vars.space).length - 1 ? <Divider /> : null}
         </>
       ))}
     </Stack>
@@ -281,6 +281,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
     <Stack space="small">
       {Object.entries(vars.shadow).map(([shadowName, shadowVar], index) => (
         <>
+          {index > 0 ? <Divider /> : null}
           <Row key={shadowName} group="shadow" name={shadowName}>
             <Box
               background="surface"
@@ -291,7 +292,6 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
               }}
             />
           </Row>
-          {index < Object.entries(vars.shadow).length - 1 ? <Divider /> : null}
         </>
       ))}
     </Stack>
