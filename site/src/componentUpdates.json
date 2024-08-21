@@ -4055,5 +4055,22 @@
         "summary": "**Spread:** Add new layout component\n\nIntroduce a new layout component, `Spread`, used to justify content with both an equally distributed and a specified minimum amount of space in between each child.\n\n**EXAMPLE USAGE:**\n\nThe `Spread` component works horizontally by default:\n\n```jsx\n<Spread space=\"small\" alignY=\"center\">\n  <Heading level=\"4\">Heading</Heading>\n\n  <OverflowMenu label=\"Options\">\n    <MenuItem>First</MenuItem>\n    <MenuItem>Second</MenuItem>\n  </OverflowMenu>\n</Spread>\n```\n\nBut can be switched to `vertical` via the `direction` prop:\n\n```jsx\n<Spread space=\"large\" direction=\"vertical\">\n  <Stack space=\"small\">\n    <Heading level=\"4\">Heading</Heading>\n    <Text>Text</Text>\n  </Stack>\n\n  <Text size=\"small\" tone=\"secondary\">\n    Date\n  </Text>\n</Spread>\n```"
       }
     ]
+  },
+  {
+    "version": "32.23.0",
+    "updates": [
+      {
+        "new": [
+          "Spread"
+        ],
+        "summary": "**Spread:** Add `component` prop support\n\nEnable support for changing the underlying HTML element of the `Spread` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<Spread component=\"span\">\n  ...\n</Spread>\n```"
+      },
+      {
+        "new": [
+          "Spread"
+        ],
+        "summary": "**Spread:** Add `data` prop support\n\n**EXAMPLE USAGE:**\n```jsx\n<Spread data={{ test: 123 }}>\n  ...\n</Spread>\n```"
+      }
+    ]
   }
 ]

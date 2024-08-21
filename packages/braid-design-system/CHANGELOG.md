@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 32.23.0
+
+### Minor Changes
+
+- **Spread:** Add `component` prop support ([#1559](https://github.com/seek-oss/braid-design-system/pull/1559))
+
+  Enable support for changing the underlying HTML element of the `Spread` component.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Spread component="span">...</Spread>
+  ```
+
+- **Spread:** Add `data` prop support ([#1559](https://github.com/seek-oss/braid-design-system/pull/1559))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Spread data={{ test: 123 }}>...</Spread>
+  ```
+
 ## 32.22.0
 
 ### Minor Changes

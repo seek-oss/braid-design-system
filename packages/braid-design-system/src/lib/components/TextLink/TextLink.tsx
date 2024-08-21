@@ -64,9 +64,7 @@ export const useLinkStyles = ({
   // Links nested inside Text components that use coloured tones
   // are automatically converted to `weak` weight.
   const isWeakDueToTextTone =
-    !headingContext &&
-    textContext?.tone !== 'neutral' &&
-    textContext?.tone !== 'secondary';
+    !headingContext && textContext?.tone !== 'neutral';
 
   const linkStyles =
     weight === 'weak' || isWeakDueToTextTone
