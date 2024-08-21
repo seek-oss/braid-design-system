@@ -105,7 +105,8 @@ const docs: ComponentDocs = {
       ),
       code: source(
         <Stack component="span" space="small">
-          ...
+          <Placeholder height={40} />
+          <Placeholder height={40} />
         </Stack>,
       ).code,
     },

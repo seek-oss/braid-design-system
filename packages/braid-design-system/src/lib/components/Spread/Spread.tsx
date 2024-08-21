@@ -1,4 +1,3 @@
-import type { Space } from '../../css/atoms/atoms';
 import { Box, type BoxProps } from '../Box/Box';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
@@ -8,15 +7,26 @@ import {
   type Align,
   alignToFlexAlign,
 } from '../../utils/align';
-import { type RequiredResponsiveValue, responsiveGap } from './Spread.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+const validSpreadComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'li',
+] as const;
+
 export interface SpreadProps {
-  component?: BoxProps['component'];
+  component?: (typeof validSpreadComponents)[number];
   children: ReactNodeNoStrings;
-  space: RequiredResponsiveValue<Space>;
+  space: BoxProps['gap'];
   direction?: 'horizontal' | 'vertical';
   align?: OptionalResponsiveValue<Align>;
   alignY?: OptionalResponsiveValue<AlignY>;
@@ -52,7 +62,7 @@ export const Spread = ({
       height={isVertical ? 'full' : undefined}
       justifyContent="spaceBetween"
       alignItems={alignItems}
-      className={responsiveGap({ gap: space })}
+      gap={space}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}

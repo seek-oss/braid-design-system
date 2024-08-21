@@ -125,6 +125,21 @@ const docs: ComponentDocs = {
           </Tiles>,
         ),
     },
+    {
+      label: 'Semantic elements',
+      description: (
+        <Text>
+          By default, Spread renders a <Strong>div</Strong> element. You can
+          customise this via the <Strong>component</Strong> prop.
+        </Text>
+      ),
+      code: source(
+        <Spread component="span" space="small">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Spread>,
+      ).code,
+    },
   ],
 };
 
