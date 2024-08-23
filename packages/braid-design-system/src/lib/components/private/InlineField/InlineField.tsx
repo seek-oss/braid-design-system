@@ -73,7 +73,7 @@ export const InlineField = forwardRef<
   ) => {
     const messageId = `${id}-message`;
     const descriptionId = `${id}-description`;
-    const hasMessage = message || reserveMessageSpace;
+    const hasMessage = (message && !disabled) || reserveMessageSpace;
 
     if (process.env.NODE_ENV !== 'production') {
       if (badge && badge.props.bleedY !== undefined) {

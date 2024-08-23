@@ -44,6 +44,22 @@ export const screenshots: ComponentScreenshot = {
             onChange={handler}
             label="Disabled checked"
           />
+          <Radio
+            id={`${id}_3`}
+            disabled={true}
+            checked={false}
+            onChange={handler}
+            label="Disabled unchecked & critical"
+            tone="critical"
+          />
+          <Radio
+            id={`${id}_4`}
+            disabled={true}
+            checked={true}
+            onChange={handler}
+            label="Disabled checked & critical"
+            tone="critical"
+          />
         </Stack>
       ),
     },

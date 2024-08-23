@@ -154,6 +154,23 @@ export const screenshots: ComponentScreenshot = {
             placeholder="Placeholder text"
             onChange={handler}
           />
+          <Textarea
+            label="With critical tone"
+            id={`${id}_5`}
+            value=""
+            disabled={true}
+            tone="critical"
+            onChange={handler}
+          />
+          <Textarea
+            label="With critical tone and message"
+            id={`${id}_6`}
+            value=""
+            disabled={true}
+            tone="critical"
+            message="Message"
+            onChange={handler}
+          />
         </Stack>
       ),
     },

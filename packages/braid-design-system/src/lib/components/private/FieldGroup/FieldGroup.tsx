@@ -119,7 +119,7 @@ export const FieldGroup = ({
             ),
           })}
 
-          {message || reserveMessageSpace ? (
+          {(message && !disabled) || reserveMessageSpace ? (
             <FieldMessage
               id={messageId}
               tone={tone}

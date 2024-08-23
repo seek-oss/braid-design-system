@@ -57,14 +57,72 @@ export const screenshots: ComponentScreenshot = {
             disabled={true}
             checked={false}
             onChange={handler}
-            label="Label"
+            label="Unchecked"
           />
           <Checkbox
             id={`${id}_2`}
             disabled={true}
             checked={true}
             onChange={handler}
-            label="Label"
+            label="Checked"
+          />
+          <Checkbox
+            id={`${id}_3`}
+            disabled={true}
+            checked="mixed"
+            onChange={handler}
+            label="Mixed"
+          />
+          <Checkbox
+            id={`${id}_4`}
+            disabled={true}
+            checked={false}
+            onChange={handler}
+            label="Unchecked & critical"
+            tone="critical"
+          />
+          <Checkbox
+            id={`${id}_5`}
+            disabled={true}
+            checked={true}
+            onChange={handler}
+            label="Checked & critical"
+            tone="critical"
+          />
+          <Checkbox
+            id={`${id}_6`}
+            disabled={true}
+            checked="mixed"
+            onChange={handler}
+            label="Mixed & critical"
+            tone="critical"
+          />
+          <Checkbox
+            id={`${id}_7`}
+            disabled={true}
+            checked={false}
+            onChange={handler}
+            label="Unchecked, critical & message"
+            tone="critical"
+            message="Message"
+          />
+          <Checkbox
+            id={`${id}_8`}
+            disabled={true}
+            checked={true}
+            onChange={handler}
+            label="Checked, critical & message"
+            tone="critical"
+            message="Message"
+          />
+          <Checkbox
+            id={`${id}_9`}
+            disabled={true}
+            checked="mixed"
+            onChange={handler}
+            label="Mixed, critical & message"
+            tone="critical"
+            message="Message"
           />
         </Stack>
       ),

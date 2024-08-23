@@ -270,7 +270,7 @@ export const Field = ({
           )}
         </Box>
 
-        {message || secondaryMessage || reserveMessageSpace ? (
+        {((message || secondaryMessage) && !disabled) || reserveMessageSpace ? (
           <FieldMessage
             id={messageId}
             tone={tone}

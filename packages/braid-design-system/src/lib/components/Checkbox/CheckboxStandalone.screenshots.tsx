@@ -75,18 +75,49 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ id, handler }) => (
         <Stack space="gutter">
           <CheckboxStandalone
-            id={`${id}_unchecked`}
+            id={`${id}_1`}
             disabled={true}
             checked={false}
             onChange={handler}
-            aria-label="Disabled unchecked"
+            aria-label="Unchecked"
           />
           <CheckboxStandalone
-            id={`${id}_checked`}
+            id={`${id}_2`}
             disabled={true}
             checked={true}
             onChange={handler}
-            aria-label="Disabled checked"
+            aria-label="Checked"
+          />
+          <CheckboxStandalone
+            id={`${id}_3`}
+            disabled={true}
+            checked="mixed"
+            onChange={handler}
+            aria-label="Mixed"
+          />
+          <CheckboxStandalone
+            id={`${id}_4`}
+            disabled={true}
+            checked={false}
+            onChange={handler}
+            aria-label="Unchecked & critical"
+            tone="critical"
+          />
+          <CheckboxStandalone
+            id={`${id}_5`}
+            disabled={true}
+            checked={true}
+            onChange={handler}
+            aria-label="Checked & critical"
+            tone="critical"
+          />
+          <CheckboxStandalone
+            id={`${id}_6`}
+            disabled={true}
+            checked="mixed"
+            onChange={handler}
+            aria-label="Mixed & critical"
+            tone="critical"
           />
         </Stack>
       ),
