@@ -94,16 +94,15 @@ const Indicator = ({
     </Box>
   ) : (
     <Box
-      background={
-        disabled
-          ? { lightMode: 'neutralLight', darkMode: 'surfaceDark' }
-          : 'formAccent'
-      }
+      background={!disabled ? 'formAccent' : undefined}
       transition="fast"
       width="full"
       height="full"
       borderRadius="full"
-      className={styles.radioIndicator}
+      className={[
+        styles.radioIndicator,
+        disabled ? styles.disabledRadioIndicator : undefined,
+      ]}
     />
   );
 };
@@ -235,9 +234,16 @@ export const StyledInput = forwardRef<
           borderRadius={fieldBorderRadius}
         >
           <FieldOverlay
+            background={isCheckbox ? accentBackground : undefined}
+            borderRadius={fieldBorderRadius}
+            className={styles.selected}
+          >
+            <Indicator type={type} disabled={disabled} checked={checked} />
+          </FieldOverlay>
+          <FieldOverlay
             variant={disabled ? 'disabled' : defaultBorder}
             borderRadius={fieldBorderRadius}
-            visible={tone !== 'critical' || disabled}
+            visible={type === 'radio' || !checked || disabled}
             className={{
               [styles.hideBorderOnDarkBackgroundInLightMode]:
                 lightMode === 'dark',
@@ -248,15 +254,6 @@ export const StyledInput = forwardRef<
             borderRadius={fieldBorderRadius}
             visible={tone === 'critical' && !disabled}
           />
-          <FieldOverlay
-            variant={tone === 'critical' && isCheckbox ? tone : undefined}
-            background={isCheckbox ? accentBackground : undefined}
-            borderRadius={fieldBorderRadius}
-            className={styles.selected}
-          >
-            <Indicator type={type} disabled={disabled} checked={checked} />
-          </FieldOverlay>
-
           <FieldOverlay
             variant="focus"
             borderRadius={fieldBorderRadius}

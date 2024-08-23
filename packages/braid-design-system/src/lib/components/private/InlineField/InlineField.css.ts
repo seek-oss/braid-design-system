@@ -115,6 +115,20 @@ export const indicator = style({
   },
 });
 
+export const disabledRadioIndicator = style([
+  {
+    opacity: 0.3,
+  },
+  colorModeStyle({
+    lightMode: {
+      backgroundColor: vars.foregroundColor.secondary,
+    },
+    darkMode: {
+      backgroundColor: vars.foregroundColor.secondaryInverted,
+    },
+  }),
+]);
+
 const checkboxScale = style({
   transform: 'scale(0.85)',
   selectors: {
