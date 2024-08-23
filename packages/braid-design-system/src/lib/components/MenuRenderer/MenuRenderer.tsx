@@ -380,7 +380,7 @@ export function Menu({
           placement === 'top' && styles.placementBottom,
         ]}
       >
-        <Box paddingY="xxsmall">
+        <Box paddingY="xxsmall" className={styles.menuHeightLimit}>
           {Children.map(children, (item, i) => {
             if (isDivider(item)) {
               dividerCount++;
