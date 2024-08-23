@@ -81,6 +81,23 @@ export const screenshots: ComponentScreenshot = {
             value={{}}
             onChange={handler}
           />
+          <MonthPicker
+            id={`${id}_3`}
+            label="With critical tone"
+            disabled={true}
+            tone="critical"
+            value={{}}
+            onChange={handler}
+          />
+          <MonthPicker
+            id={`${id}_4`}
+            label="With critical tone and message"
+            disabled={true}
+            tone="critical"
+            message="Message"
+            value={{}}
+            onChange={handler}
+          />
         </Stack>
       ),
     },
