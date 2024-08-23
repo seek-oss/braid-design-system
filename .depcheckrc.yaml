@@ -7,3 +7,5 @@ ignores:
   # internal
   - braid-src
   - site
+  # Used for generate-component-docs bin
+  - site
