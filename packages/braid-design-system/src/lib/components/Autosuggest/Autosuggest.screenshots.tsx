@@ -210,6 +210,25 @@ export const screenshots: ComponentScreenshot = {
             onChange={handler}
             suggestions={[]}
           />
+          <Autosuggest
+            label="With critical tone"
+            id={`${id}_5`}
+            value={{ text: '' }}
+            disabled={true}
+            tone="critical"
+            onChange={handler}
+            suggestions={[]}
+          />
+          <Autosuggest
+            label="With critical tone and message"
+            id={`${id}_6`}
+            value={{ text: '' }}
+            disabled={true}
+            tone="critical"
+            message="Message"
+            onChange={handler}
+            suggestions={[]}
+          />
         </Stack>
       ),
     },
