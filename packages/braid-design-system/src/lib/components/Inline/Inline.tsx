@@ -11,6 +11,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 
 import * as styles from './Inline.css';
+import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 
 export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 
@@ -39,11 +40,25 @@ export const Inline = ({
     reverse,
   });
 
+  const [collapseMobile, collapseTablet, collapseDesktop, collapseWide] =
+    resolveResponsiveRangeProps({
+      below: collapseBelow,
+    });
+
   return (
     <Box
       component={component}
       {...collapsibleAlignmentProps}
-      className={styles.fitContent}
+      className={
+        collapseBelow
+          ? {
+              [styles.fitContentMobile]: !collapseMobile,
+              [styles.fitContentTablet]: !collapseTablet,
+              [styles.fitContentDesktop]: !collapseDesktop,
+              [styles.fitContentWide]: !collapseWide,
+            }
+          : styles.fitContentMobile
+      }
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}

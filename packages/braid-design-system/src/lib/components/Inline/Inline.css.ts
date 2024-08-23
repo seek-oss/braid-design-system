@@ -1,7 +1,25 @@
 import { globalStyle, style } from '@vanilla-extract/css';
+import { responsiveStyle } from '../../css/responsiveStyle';
 
-export const fitContent = style({});
+export const fitContentMobile = style({});
+export const fitContentTablet = style({});
+export const fitContentDesktop = style({});
+export const fitContentWide = style({});
 
-globalStyle(`${fitContent} > *`, {
+const fitContentStyleRule = {
   flexBasis: 'fit-content',
-});
+};
+
+globalStyle(`${fitContentMobile} > *`, fitContentStyleRule);
+globalStyle(
+  `${fitContentTablet} > *`,
+  responsiveStyle({ tablet: fitContentStyleRule }),
+);
+globalStyle(
+  `${fitContentDesktop} > *`,
+  responsiveStyle({ desktop: fitContentStyleRule }),
+);
+globalStyle(
+  `${fitContentWide} > *`,
+  responsiveStyle({ wide: fitContentStyleRule }),
+);

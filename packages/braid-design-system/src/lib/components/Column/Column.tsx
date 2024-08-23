@@ -46,7 +46,7 @@ export const Column = ({
 
   return (
     <Box
-      component={component}
+      component={component} // <- WRONG, add component prop on Column. Document Columns without Column
       display={optimizeResponsiveArray([
         hideOnMobile ? 'none' : 'block',
         hideOnTablet ? 'none' : 'block',
