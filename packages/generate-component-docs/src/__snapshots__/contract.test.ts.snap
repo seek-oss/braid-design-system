@@ -8923,7 +8923,7 @@ exports[`filterSuggestions 1`] = `
     some: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => boolean
     sort: (compareFn?: ((a: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, b: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>) => number) | undefined) => FilterableSuggestions<...>
     splice: { (start: number, deleteCount?: number | undefined): (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]; (start: number, deleteCount: number, ...items: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
-    toLocaleString: () => string
+    toLocaleString: { (): string; (locales: string | string[], options?: (NumberFormatOptions & DateTimeFormatOptions) | undefined): string; }
     toString: () => string
     unshift: (...items: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]) => number
     values: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
