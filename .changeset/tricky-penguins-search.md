@@ -4,7 +4,10 @@
 
 ---
 updated:
+  - Inline
+  - Columns
   - Stack
+  - Tiles
 ---
 
-**Stack:** Migrate to flex gap internally
+Migrate to flex gap internally
