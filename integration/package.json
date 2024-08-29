@@ -9,7 +9,7 @@
     "braid-design-system": "workspace:*"
   },
   "devDependencies": {
-    "@vanilla-extract/integration": "^6.1.2",
+    "@vanilla-extract/integration": "^7.1.9",
     "@vscode/ripgrep": "^1.15.9",
     "fast-glob": "^3.2.12",
     "webpack": "^5.76.0"

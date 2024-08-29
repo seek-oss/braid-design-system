@@ -4072,5 +4072,45 @@
         "summary": "**Spread:** Add `data` prop support\n\n**EXAMPLE USAGE:**\n```jsx\n<Spread data={{ test: 123 }}>\n  ...\n</Spread>\n```"
       }
     ]
+  },
+  {
+    "version": "32.23.1",
+    "updates": [
+      {
+        "updated": [
+          "RadioItem"
+        ],
+        "summary": "**RadioItem:** Improve `checked` visual affordance when `disabled`\n\nImprove the visual affordance of the `checked` state when `disabled` across all themes and colour modes."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Limit the menu height\n\nLimit the menu to show a maximum of around 10 items before scrolling (a little less so it's evident there is more to scroll to)."
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink:** Default to weak inside secondary tone\n\nAlign the `secondary` tone with other non-neutral text tones, making the foreground color of links inherit the tone of the wrapping `Text` component.\n\n**EXAMPLE USAGE:**\nIn the following example the `TextLink` will now follow the `secondary` tone from the wrapping `Text` component:\n\n```jsx\n<Text tone=\"secondary\">\n  <TextLink href=\"#\">Link</TextLink>\n</Text>\n```\n\nPreviously this would have retained the default link colour from the theme."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "Radio",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "Standardise `disabled` & `critical` state across form fields\n\nImproves the consistency of form fields when combining both `disabled` and `critical` tone, which includes:\n- Hiding `critical` borders\n- Hiding `message` and not reserving space for it unless explicitly providing the `reserveMessageSpace` prop."
+      }
+    ]
   }
 ]

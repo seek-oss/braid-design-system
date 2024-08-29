@@ -1,5 +1,39 @@
 # braid-design-system
 
+## 32.23.1
+
+### Patch Changes
+
+- **RadioItem:** Improve `checked` visual affordance when `disabled` ([#1564](https://github.com/seek-oss/braid-design-system/pull/1564))
+
+  Improve the visual affordance of the `checked` state when `disabled` across all themes and colour modes.
+
+- **MenuRenderer, OverflowMenu:** Limit the menu height ([#1567](https://github.com/seek-oss/braid-design-system/pull/1567))
+
+  Limit the menu to show a maximum of around 10 items before scrolling (a little less so it's evident there is more to scroll to).
+
+- **TextLink:** Default to weak inside secondary tone ([#1561](https://github.com/seek-oss/braid-design-system/pull/1561))
+
+  Align the `secondary` tone with other non-neutral text tones, making the foreground color of links inherit the tone of the wrapping `Text` component.
+
+  **EXAMPLE USAGE:**
+  In the following example the `TextLink` will now follow the `secondary` tone from the wrapping `Text` component:
+
+  ```jsx
+  <Text tone="secondary">
+    <TextLink href="#">Link</TextLink>
+  </Text>
+  ```
+
+  Previously this would have retained the default link colour from the theme.
+
+- Standardise `disabled` & `critical` state across form fields ([#1564](https://github.com/seek-oss/braid-design-system/pull/1564))
+
+  Improves the consistency of form fields when combining both `disabled` and `critical` tone, which includes:
+
+  - Hiding `critical` borders
+  - Hiding `message` and not reserving space for it unless explicitly providing the `reserveMessageSpace` prop.
+
 ## 32.23.0
 
 ### Minor Changes
