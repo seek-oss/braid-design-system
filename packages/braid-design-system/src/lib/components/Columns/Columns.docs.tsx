@@ -1,7 +1,16 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Columns, Column, Strong, Text, Stack, Tiles, Divider } from '../';
+import {
+  Columns,
+  Column,
+  Strong,
+  Text,
+  Stack,
+  Tiles,
+  Divider,
+  Notice,
+} from '../';
 import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
@@ -192,10 +201,21 @@ const docs: ComponentDocs = {
     {
       label: 'Vertical alignment',
       description: (
-        <Text>
-          Columns with content of varying height can be vertically aligned using
-          the <Strong>alignY</Strong> prop. Responsive values are supported.
-        </Text>
+        <>
+          <Text>
+            Columns with content of varying height can be vertically aligned
+            using the <Strong>alignY</Strong> prop. Responsive values are
+            supported.
+          </Text>
+          <Notice>
+            <Text>
+              When using <Strong>fill</Strong>, if you are not wrapping content
+              in a <Strong>Column</Strong> component, ensure you are not setting
+              the height as a percentage as this will not be respected by the
+              flex container.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: () =>
         source(
@@ -233,6 +253,18 @@ const docs: ComponentDocs = {
               </Column>
               <Column>
                 <Placeholder height={20} />
+              </Column>
+            </Columns>
+            <Divider />
+            <Columns space="small" alignY="fill">
+              <Column>
+                <Placeholder height="100%" />
+              </Column>
+              <Column>
+                <Placeholder height={80} label="fill" />
+              </Column>
+              <Column>
+                <Placeholder height="100%" />
               </Column>
             </Columns>
           </Stack>,
