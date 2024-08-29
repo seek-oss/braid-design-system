@@ -202,6 +202,21 @@ const docs: ComponentDocs = {
         };
       },
     },
+    {
+      label: 'Semantic elements',
+      description: (
+        <Text>
+          By default, Inline renders a <Strong>div</Strong> element. You can
+          customise this via the <Strong>component</Strong> prop.
+        </Text>
+      ),
+      code: source(
+        <Inline component="span" space="small">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Inline>,
+      ).code,
+    },
   ],
 };
 

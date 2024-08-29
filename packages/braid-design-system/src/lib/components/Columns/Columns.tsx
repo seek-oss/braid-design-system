@@ -9,10 +9,31 @@ import {
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
 import * as styles from './Columns.css';
+import {
+  normalizeResponsiveValue,
+  type RequiredResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
+import { alignYToFlexAlign, type AlignYWithFill } from '../../utils/align';
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
+
+const validColumnsComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'ul',
+  'ol',
+  'li',
+] as const;
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
+  alignY?: RequiredResponsiveValue<AlignYWithFill>;
   children:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
@@ -43,20 +64,41 @@ export const Columns = ({
     space,
     collapseBelow,
     align,
-    alignY,
     reverse,
   });
+
+  const [collapseMobile, collapseTablet, collapseDesktop] =
+    resolveResponsiveRangeProps({
+      below: collapseBelow,
+    });
+
+  const defaultAlignY = alignYToFlexAlign(alignY) || 'flexStart';
+  const normalizedAlignY = normalizeResponsiveValue(defaultAlignY);
+  const {
+    mobile: alignItemsMobile = 'flexStart',
+    tablet: alignItemsTablet = alignItemsMobile,
+    desktop: alignItemsDesktop = alignItemsTablet,
+    wide: alignItemsWide = alignItemsDesktop,
+  } = normalizedAlignY;
 
   return (
     <Box
       component={component}
       {...collapsibleAlignmentProps}
+      alignItems={
+        collapseBelow
+          ? optimizeResponsiveArray([
+              collapseMobile ? 'stretch' : alignItemsMobile,
+              collapseTablet ? 'stretch' : alignItemsTablet,
+              collapseDesktop ? 'stretch' : alignItemsDesktop,
+              alignItemsWide,
+            ])
+          : defaultAlignY
+      }
       className={styles.columns}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <ColumnsContext.Provider value={{ component }}>
-        {children}
-      </ColumnsContext.Provider>
+      {children}
     </Box>
   );
 };

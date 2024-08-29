@@ -1,7 +1,7 @@
 import React from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { Box } from '../Box/Box';
-import type { Space } from '../../css/atoms/atoms';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -14,7 +14,7 @@ import * as styles from './Tiles.css';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
-  space: RequiredResponsiveValue<Space>;
+  space: ResponsiveSpace;
   columns: RequiredResponsiveValue<number>;
   data?: DataAttributeMap;
 }

@@ -426,7 +426,7 @@ const docs: ComponentDocs = {
       label: 'Reversing the column order',
       description: (
         <Text>
-          By default, columns are rendered in document order, which also doubles
+          By default, Columns are rendered in document order, which also doubles
           as the screen reader order. If you need the columns to be visually
           reversed, you can provide the <Strong>reverse</Strong> prop.
         </Text>
@@ -442,6 +442,25 @@ const docs: ComponentDocs = {
             </Column>
           </Columns>,
         ),
+    },
+    {
+      label: 'Semantic elements',
+      description: (
+        <Text>
+          By default, Columns and Column render a <Strong>div</Strong> element.
+          You can customise this via the <Strong>component</Strong> prop.
+        </Text>
+      ),
+      code: source(
+        <Columns space="small" component="ul">
+          <Column component="li">
+            <Placeholder height={40} />
+          </Column>
+          <Column component="li">
+            <Placeholder height={40} />
+          </Column>
+        </Columns>,
+      ).code,
     },
   ],
 };

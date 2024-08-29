@@ -7,7 +7,8 @@ export const fitContentDesktop = style({});
 export const fitContentWide = style({});
 
 const fitContentStyleRule = {
-  flexBasis: 'fit-content',
+  flexBasis: 'auto',
+  width: 'auto',
 };
 
 globalStyle(`${fitContentMobile} > *`, fitContentStyleRule);

@@ -4,7 +4,8 @@ import {
 } from '../css/atoms/sprinkles.css';
 
 export type Align = 'left' | 'center' | 'right';
-export type AlignY = 'top' | 'center' | 'fill' | 'bottom';
+export type AlignY = 'top' | 'center' | 'bottom';
+export type AlignYWithFill = AlignY | 'fill';
 
 const alignToFlexAlignLookup = {
   left: 'flexStart',
@@ -27,7 +28,7 @@ const alignYToFlexAlignLookup = {
 } as const;
 
 export const alignYToFlexAlign = (
-  alignY: OptionalResponsiveValue<AlignY> | undefined,
+  alignY: OptionalResponsiveValue<AlignY | AlignYWithFill> | undefined,
 ) =>
   alignY
     ? mapResponsiveValue(alignY, (value) => alignYToFlexAlignLookup[value])

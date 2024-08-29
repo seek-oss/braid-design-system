@@ -1,7 +1,6 @@
-import React, { type ReactNode, useContext } from 'react';
+import React, { type ReactNode } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
-import { ColumnsContext } from '../Columns/ColumnsContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -11,7 +10,22 @@ import {
 } from '../../utils/resolveResponsiveRangeProps';
 import * as styles from './Column.css';
 
+const validColumnComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'ul',
+  'ol',
+  'li',
+] as const;
+
 export interface ColumnProps {
+  component?: (typeof validColumnComponents)[number];
   children: ReactNode;
   width?: keyof typeof styles.fixedWidths | 'content';
   hideBelow?: ResponsiveRangeProps['below'];
@@ -30,6 +44,7 @@ const getClassForWidth = (width: ColumnProps['width']) => {
 };
 
 export const Column = ({
+  component,
   children,
   data,
   width,
@@ -37,7 +52,6 @@ export const Column = ({
   hideAbove,
   ...restProps
 }: ColumnProps) => {
-  const { component } = useContext(ColumnsContext);
   const [hideOnMobile, hideOnTablet, hideOnDesktop, hideOnWide] =
     resolveResponsiveRangeProps({
       below: hideBelow,
@@ -46,7 +60,7 @@ export const Column = ({
 
   return (
     <Box
-      component={component} // <- WRONG, add component prop on Column. Document Columns without Column
+      component={component}
       display={optimizeResponsiveArray([
         hideOnMobile ? 'none' : 'block',
         hideOnTablet ? 'none' : 'block',

@@ -7,12 +7,7 @@ import {
   resolveResponsiveRangeProps,
 } from './resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from './optimizeResponsiveArray';
-import {
-  type Align,
-  type AlignY,
-  alignToFlexAlign,
-  alignYToFlexAlign,
-} from './align';
+import { type Align, alignToFlexAlign } from './align';
 import type { ResponsiveSpace } from '../css/atoms/atoms';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
@@ -27,30 +22,15 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
   return alignment;
 }
 
-const resolveDirection = ({
-  collapse,
-  reverse,
-}: {
-  collapse?: boolean;
-  reverse: boolean;
-}) => {
-  if (collapse) {
-    return 'column';
-  }
-  return reverse ? 'rowReverse' : 'row';
-};
-
 export interface CollapsibleAlignmentProps {
   space: ResponsiveSpace;
   collapseBelow?: ResponsiveRangeProps['below'];
   align?: OptionalResponsiveValue<Align>;
-  alignY?: OptionalResponsiveValue<AlignY>;
   reverse?: boolean;
 }
 
 export function resolveCollapsibleAlignmentProps({
   align,
-  alignY,
   space,
   collapseBelow,
   reverse = false,
@@ -60,6 +40,7 @@ export function resolveCollapsibleAlignmentProps({
       below: collapseBelow,
     });
 
+  const rowReverse = reverse ? 'rowReverse' : 'row';
   const rowReverseTablet = collapseMobile && reverse;
   const rowReverseDesktop = (collapseMobile || collapseTablet) && reverse;
   const rowReverseWide =
@@ -80,18 +61,14 @@ export function resolveCollapsibleAlignmentProps({
     gap: space,
     flexDirection: collapseBelow
       ? optimizeResponsiveArray([
-          resolveDirection({ collapse: collapseMobile, reverse }),
-          resolveDirection({
-            collapse: collapseTablet,
-            reverse: rowReverseTablet,
-          }),
-          resolveDirection({
-            collapse: collapseDesktop,
-            reverse: rowReverseDesktop,
-          }),
-          resolveDirection({ reverse: rowReverseWide }),
+          collapseMobile ? 'column' : 'row',
+          // eslint-disable-next-line no-nested-ternary
+          collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
+          // eslint-disable-next-line no-nested-ternary
+          collapseDesktop ? 'column' : rowReverseDesktop ? 'rowReverse' : 'row',
+          rowReverseWide ? 'rowReverse' : 'row',
         ])
-      : resolveDirection({ reverse }),
+      : rowReverse,
     justifyContent: align
       ? optimizeResponsiveArray([
           justifyContentMobile,
@@ -106,6 +83,5 @@ export function resolveCollapsibleAlignmentProps({
             : justifyContentWide,
         ])
       : undefined,
-    alignItems: alignY ? alignYToFlexAlign(alignY) : undefined,
   } as const;
 }
