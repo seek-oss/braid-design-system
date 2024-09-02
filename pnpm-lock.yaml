@@ -352,8 +352,8 @@ importers:
         specifier: ^2.12.1
         version: 2.13.0
       sku:
-        specifier: 13.1.0
-        version: 13.1.0(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 13.1.1
+        version: 13.1.1(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       storybook:
         specifier: 7.6.20
         version: 7.6.20
@@ -611,8 +611,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       sku:
-        specifier: 13.1.0
-        version: 13.1.0(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(webpack@5.91.0(@swc/core@1.7.14)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 13.1.1
+        version: 13.1.1(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(webpack@5.91.0(@swc/core@1.7.14)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       webpack:
         specifier: ^5.76.0
         version: 5.91.0(@swc/core@1.7.14)
@@ -631,10 +631,6 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
-
-  '@antfu/ni@0.21.12':
-    resolution: {integrity: sha512-2aDL3WUv8hMJb2L3r/PIQWsTLyq7RQr3v9xD16fiz6O8ys1xEyLhhTOv8gxtZvJiTzjTF5pHoArvRdesGL1DMQ==}
-    hasBin: true
 
   '@arr/every@1.0.1':
     resolution: {integrity: sha512-UQFQ6SgyJ6LX42W8rHCs8KVc0JS0tzVL9ct4XYedJukskYVWTo49tNiMEK9C2HTyarbNiT/RVIRSY82vH+6sTg==}
@@ -7017,6 +7013,9 @@ packages:
     resolution: {integrity: sha512-cbH9IAIJHNj9uXi196JVsRlt7cHKak6u/e6AkL/bkRelZ7rlL3X1YKxsZwa36xipOEKAsdtmaG6aAJoM1fx2zA==}
     engines: {node: '>=14.16'}
 
+  package-manager-detector@0.2.0:
+    resolution: {integrity: sha512-E385OSk9qDcXhcM9LNSe4sdhx8a9mAPrZ4sMLW+tmxl5ZuGtPUcdFu+MPP2jbgiWAZ6Pfe5soGFMd+0Db5Vrog==}
+
   pako@0.2.9:
     resolution: {integrity: sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==}
 
@@ -8223,8 +8222,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@13.1.0:
-    resolution: {integrity: sha512-LyS0jCAfzAEdvHLP7V9CxtunhxJIbu3zgm2/9Qrk07w6WdfyhMWdlCc+DE3vq8qrWCq5sNgjF34FYv+LPAjJsw==}
+  sku@13.1.1:
+    resolution: {integrity: sha512-LclZC+PPCCk1QZ4oIrW8WfTLC97w/hG+jEcH69rqK+g+v4kizWpK3b4PDwzMrwHU1v/GMFxI5au3AnuMbuE+KQ==}
     engines: {node: '>=18.20'}
     hasBin: true
     peerDependencies:
@@ -9419,8 +9418,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
-
-  '@antfu/ni@0.21.12': {}
 
   '@arr/every@1.0.1': {}
 
@@ -17620,6 +17617,8 @@ snapshots:
       registry-url: 6.0.1
       semver: 7.6.3
 
+  package-manager-detector@0.2.0: {}
+
   pako@0.2.9: {}
 
   panzoom@9.4.2(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i):
@@ -19118,9 +19117,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@13.1.0(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@13.1.1(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
-      '@antfu/ni': 0.21.12
       '@babel/core': 7.24.5
       '@babel/plugin-transform-react-constant-elements': 7.22.3(@babel/core@7.24.5)
       '@babel/plugin-transform-react-inline-elements': 7.21.0(@babel/core@7.24.5)
@@ -19133,7 +19131,6 @@ snapshots:
       '@loadable/component': 5.15.2(react@18.3.1)
       '@loadable/server': 5.15.2(@loadable/component@5.15.2(react@18.3.1))(react@18.3.1)
       '@loadable/webpack-plugin': 5.15.2(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20))
-      '@manypkg/find-root': 2.2.2
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(react-refresh@0.14.0)(type-fest@3.13.1)(webpack-dev-server@5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20))
       '@swc/core': 1.7.14
       '@types/express': 4.17.21
@@ -19193,6 +19190,7 @@ snapshots:
       nano-memoize: 3.0.16
       node-html-parser: 6.1.1
       open: 7.4.2
+      package-manager-detector: 0.2.0
       path-to-regexp: 6.2.1
       picomatch: 3.0.1
       postcss: 8.4.41
@@ -19244,9 +19242,8 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  sku@13.1.0(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(webpack@5.91.0(@swc/core@1.7.14)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@13.1.1(@storybook/react-webpack5@7.6.20(@babel/core@7.24.5)(@swc/core@1.7.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.5.4)(webpack-dev-server@5.0.2(webpack@5.91.0(@swc/core@1.7.14)))(webpack-hot-middleware@2.26.1))(@types/node@18.13.0)(@types/react@18.3.3)(react@18.3.1)(sass@1.54.3)(terser@5.31.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
-      '@antfu/ni': 0.21.12
       '@babel/core': 7.24.5
       '@babel/plugin-transform-react-constant-elements': 7.22.3(@babel/core@7.24.5)
       '@babel/plugin-transform-react-inline-elements': 7.21.0(@babel/core@7.24.5)
@@ -19259,7 +19256,6 @@ snapshots:
       '@loadable/component': 5.15.2(react@18.3.1)
       '@loadable/server': 5.15.2(@loadable/component@5.15.2(react@18.3.1))(react@18.3.1)
       '@loadable/webpack-plugin': 5.15.2(webpack@5.91.0(@swc/core@1.7.14))
-      '@manypkg/find-root': 2.2.2
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(react-refresh@0.14.0)(type-fest@3.13.1)(webpack-dev-server@5.0.2(webpack@5.91.0(@swc/core@1.7.14)))(webpack-hot-middleware@2.26.1)(webpack@5.91.0(@swc/core@1.7.14))
       '@swc/core': 1.7.14
       '@types/express': 4.17.21
@@ -19319,6 +19315,7 @@ snapshots:
       nano-memoize: 3.0.16
       node-html-parser: 6.1.1
       open: 7.4.2
+      package-manager-detector: 0.2.0
       path-to-regexp: 6.2.1
       picomatch: 3.0.1
       postcss: 8.4.41
