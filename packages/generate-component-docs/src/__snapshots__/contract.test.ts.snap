@@ -2866,10 +2866,9 @@ exports[`Columns 1`] = `
     alignY?: 
         | "bottom"
         | "center"
-        | "fill"
         | "top"
-        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", AlignYWithFill>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, AlignYWithFill | null>
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", AlignY>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
     children: 
         | (ReactElement<ColumnProps, string | JSXElementConstructor<any>> | null)[]
         | ReactElement<ColumnProps, string | JSXElementConstructor<any>>

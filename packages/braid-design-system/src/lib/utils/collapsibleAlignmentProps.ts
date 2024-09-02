@@ -8,7 +8,6 @@ import {
 } from './resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from './optimizeResponsiveArray';
 import { type Align, alignToFlexAlign } from './align';
-import type { ResponsiveSpace } from '../css/atoms/atoms';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {
@@ -23,7 +22,6 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
 }
 
 export interface CollapsibleAlignmentProps {
-  space: ResponsiveSpace;
   collapseBelow?: ResponsiveRangeProps['below'];
   align?: OptionalResponsiveValue<Align>;
   reverse?: boolean;
@@ -31,7 +29,6 @@ export interface CollapsibleAlignmentProps {
 
 export function resolveCollapsibleAlignmentProps({
   align,
-  space,
   collapseBelow,
   reverse = false,
 }: CollapsibleAlignmentProps) {
@@ -58,7 +55,6 @@ export function resolveCollapsibleAlignmentProps({
 
   return {
     display: 'flex',
-    gap: space,
     flexDirection: collapseBelow
       ? optimizeResponsiveArray([
           collapseMobile ? 'column' : 'row',

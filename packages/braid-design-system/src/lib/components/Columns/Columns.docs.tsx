@@ -255,18 +255,6 @@ const docs: ComponentDocs = {
                 <Placeholder height={20} />
               </Column>
             </Columns>
-            <Divider />
-            <Columns space="small" alignY="fill">
-              <Column>
-                <Placeholder height="100%" />
-              </Column>
-              <Column>
-                <Placeholder height={80} label="fill" />
-              </Column>
-              <Column>
-                <Placeholder height="100%" />
-              </Column>
-            </Columns>
           </Stack>,
         ),
     },

@@ -1,6 +1,7 @@
-import React, { type ReactNode } from 'react';
+import React, { type ReactNode, useContext } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
+import { ColumnsContext } from '../Columns/ColumnsContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -9,6 +10,8 @@ import {
   type ResponsiveRangeProps,
 } from '../../utils/resolveResponsiveRangeProps';
 import * as styles from './Column.css';
+import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
+import { alignToFlexAlign } from '../../utils/align';
 
 const validColumnComponents = [
   'div',
@@ -27,21 +30,11 @@ const validColumnComponents = [
 export interface ColumnProps {
   component?: (typeof validColumnComponents)[number];
   children: ReactNode;
-  width?: keyof typeof styles.fixedWidths | 'content';
+  width?: keyof typeof styles.width | 'content';
   hideBelow?: ResponsiveRangeProps['below'];
   hideAbove?: ResponsiveRangeProps['above'];
   data?: DataAttributeMap;
 }
-
-const getClassForWidth = (width: ColumnProps['width']) => {
-  if (width) {
-    return width === 'content'
-      ? styles.contentColumn
-      : styles.fixedWidths[width];
-  }
-
-  return styles.fluidColumn;
-};
 
 export const Column = ({
   component,
@@ -52,22 +45,83 @@ export const Column = ({
   hideAbove,
   ...restProps
 }: ColumnProps) => {
+  const {
+    collapseMobile,
+    collapseTablet,
+    collapseDesktop,
+    mobileSpace,
+    tabletSpace,
+    desktopSpace,
+    wideSpace,
+    align,
+  } = useContext(ColumnsContext);
   const [hideOnMobile, hideOnTablet, hideOnDesktop, hideOnWide] =
     resolveResponsiveRangeProps({
       below: hideBelow,
       above: hideAbove,
     });
 
+  const collapsible = collapseMobile || collapseTablet || collapseDesktop;
+  const normalizedAlign = normalizeResponsiveValue(
+    alignToFlexAlign(align) || 'flexStart',
+  );
+  const {
+    mobile: justifyContentMobile = 'flexStart',
+    tablet: justifyContentTablet = justifyContentMobile,
+    desktop: justifyContentDesktop = justifyContentTablet,
+    wide: justifyContentWide = justifyContentDesktop,
+  } = normalizedAlign;
+
+  const alignment = {
+    mobile: collapseMobile && align !== 'left' ? 'flex' : 'block',
+    tablet: collapseTablet && align !== 'left' ? 'flex' : 'block',
+    desktop: collapseDesktop && align !== 'left' ? 'flex' : 'block',
+    wide: align !== 'left' ? 'flex' : 'block',
+  } as const;
+
   return (
     <Box
       component={component}
       display={optimizeResponsiveArray([
-        hideOnMobile ? 'none' : 'block',
-        hideOnTablet ? 'none' : 'block',
-        hideOnDesktop ? 'none' : 'block',
-        hideOnWide ? 'none' : 'block',
+        hideOnMobile ? 'none' : alignment.mobile,
+        hideOnTablet ? 'none' : alignment.tablet,
+        hideOnDesktop ? 'none' : alignment.desktop,
+        hideOnWide ? 'none' : alignment.wide,
       ])}
-      className={getClassForWidth(width)}
+      minWidth={0}
+      width={width !== 'content' ? 'full' : undefined}
+      flexShrink={width ? 0 : undefined}
+      flexGrow={width !== 'content' ? 0 : 1}
+      className={[
+        collapsible ? styles.noSpaceBeforeFirstWhenCollapsed : null,
+        width !== 'content' ? styles.width[width!] : null,
+      ]}
+      paddingLeft={optimizeResponsiveArray([
+        collapseMobile ? 'none' : mobileSpace,
+        collapseTablet ? 'none' : tabletSpace,
+        collapseDesktop ? 'none' : desktopSpace,
+        wideSpace,
+      ])}
+      paddingTop={
+        collapsible
+          ? optimizeResponsiveArray([
+              collapseMobile ? mobileSpace : 'none',
+              collapseTablet ? tabletSpace : 'none',
+              collapseDesktop ? desktopSpace : 'none',
+              'none',
+            ])
+          : undefined
+      }
+      justifyContent={
+        collapsible
+          ? optimizeResponsiveArray([
+              justifyContentMobile,
+              justifyContentTablet,
+              justifyContentDesktop,
+              justifyContentWide,
+            ])
+          : undefined
+      }
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}

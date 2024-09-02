@@ -6,7 +6,6 @@ export const Columns = ({
   space,
   align,
   alignY,
-  component,
   ...restProps
 }: ColumnsProps) => (
   <BraidColumns

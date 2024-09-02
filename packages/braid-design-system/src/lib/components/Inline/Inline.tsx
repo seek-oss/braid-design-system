@@ -18,6 +18,7 @@ import {
 } from '../../css/atoms/sprinkles.css';
 import { type AlignY, alignYToFlexAlign } from '../../utils/align';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import { ResponsiveSpace } from '../../css/atoms/atoms';
 
 export const validInlineComponents = [
   'div',
@@ -30,6 +31,7 @@ export const validInlineComponents = [
 ] as const;
 
 export interface InlineProps extends CollapsibleAlignmentProps {
+  space: ResponsiveSpace;
   alignY?: OptionalResponsiveValue<AlignY>;
   component?: (typeof validInlineComponents)[number];
   data?: DataAttributeMap;
@@ -48,7 +50,6 @@ export const Inline = ({
   ...restProps
 }: InlineProps) => {
   const collapsibleAlignmentProps = resolveCollapsibleAlignmentProps({
-    space,
     align,
     collapseBelow,
     reverse,
@@ -72,6 +73,7 @@ export const Inline = ({
     <Box
       component={component}
       {...collapsibleAlignmentProps}
+      gap={space}
       alignItems={
         collapseBelow
           ? optimizeResponsiveArray([

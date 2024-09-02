@@ -5,7 +5,6 @@ import {
 
 export type Align = 'left' | 'center' | 'right';
 export type AlignY = 'top' | 'center' | 'bottom';
-export type AlignYWithFill = AlignY | 'fill';
 
 const alignToFlexAlignLookup = {
   left: 'flexStart',
@@ -23,12 +22,11 @@ export const alignToFlexAlign = (
 const alignYToFlexAlignLookup = {
   top: 'flexStart',
   center: 'center',
-  fill: 'stretch',
   bottom: 'flexEnd',
 } as const;
 
 export const alignYToFlexAlign = (
-  alignY: OptionalResponsiveValue<AlignY | AlignYWithFill> | undefined,
+  alignY: OptionalResponsiveValue<AlignY> | undefined,
 ) =>
   alignY
     ? mapResponsiveValue(alignY, (value) => alignYToFlexAlignLookup[value])

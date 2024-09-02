@@ -5,7 +5,6 @@
 ---
 updated:
   - Inline
-  - Columns
   - Stack
   - Tiles
 ---
