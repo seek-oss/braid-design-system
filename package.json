@@ -85,9 +85,9 @@
     "typescript": "~5.5.4"
   },
   "volta": {
-    "node": "20.10.0"
+    "node": "20.17.0"
   },
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.9.0",
   "pnpm": {
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
