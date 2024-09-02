@@ -42,7 +42,7 @@
     "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
-    "playroom": "0.38.0",
+    "playroom": "0.38.1",
     "polished": "^4.1.0",
     "prettier": "^2.8.8",
     "react": "^18.3.1",
