@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Box } from '../Box/Box';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   type CollapsibleAlignmentProps,
@@ -9,16 +10,7 @@ import {
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-
 import * as styles from './Inline.css';
-import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
-import {
-  normalizeResponsiveValue,
-  type OptionalResponsiveValue,
-} from '../../css/atoms/sprinkles.css';
-import { type AlignY, alignYToFlexAlign } from '../../utils/align';
-import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import { ResponsiveSpace } from '../../css/atoms/atoms';
 
 export const validInlineComponents = [
   'div',
@@ -32,7 +24,6 @@ export const validInlineComponents = [
 
 export interface InlineProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
-  alignY?: OptionalResponsiveValue<AlignY>;
   component?: (typeof validInlineComponents)[number];
   data?: DataAttributeMap;
   children: ReactNodeNoStrings;
@@ -49,41 +40,24 @@ export const Inline = ({
   children,
   ...restProps
 }: InlineProps) => {
-  const collapsibleAlignmentProps = resolveCollapsibleAlignmentProps({
+  const {
+    collapseMobile,
+    collapseTablet,
+    collapseDesktop,
+    collapsibleAlignmentProps,
+  } = resolveCollapsibleAlignmentProps({
     align,
+    alignY,
+    defaultAlignItems: 'flexStart',
     collapseBelow,
     reverse,
   });
-
-  const [collapseMobile, collapseTablet, collapseDesktop, collapseWide] =
-    resolveResponsiveRangeProps({
-      below: collapseBelow,
-    });
-
-  const defaultAlignY = alignYToFlexAlign(alignY) || 'flexStart';
-  const normalizedAlignY = normalizeResponsiveValue(defaultAlignY);
-  const {
-    mobile: alignItemsMobile = 'flexStart',
-    tablet: alignItemsTablet = alignItemsMobile,
-    desktop: alignItemsDesktop = alignItemsTablet,
-    wide: alignItemsWide = alignItemsDesktop,
-  } = normalizedAlignY;
 
   return (
     <Box
       component={component}
       {...collapsibleAlignmentProps}
       gap={space}
-      alignItems={
-        collapseBelow
-          ? optimizeResponsiveArray([
-              collapseMobile ? 'stretch' : alignItemsMobile,
-              collapseTablet ? 'stretch' : alignItemsTablet,
-              collapseDesktop ? 'stretch' : alignItemsDesktop,
-              alignItemsWide,
-            ])
-          : defaultAlignY
-      }
       flexWrap="wrap"
       className={
         collapseBelow
@@ -91,7 +65,7 @@ export const Inline = ({
               [styles.fitContentMobile]: !collapseMobile,
               [styles.fitContentTablet]: !collapseTablet,
               [styles.fitContentDesktop]: !collapseDesktop,
-              [styles.fitContentWide]: !collapseWide,
+              [styles.fitContentWide]: true,
             }
           : styles.fitContentMobile
       }

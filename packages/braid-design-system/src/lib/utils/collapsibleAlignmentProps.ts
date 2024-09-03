@@ -7,7 +7,12 @@ import {
   resolveResponsiveRangeProps,
 } from './resolveResponsiveRangeProps';
 import { optimizeResponsiveArray } from './optimizeResponsiveArray';
-import { type Align, alignToFlexAlign } from './align';
+import {
+  type Align,
+  alignToFlexAlign,
+  AlignY,
+  alignYToFlexAlign,
+} from './align';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {
@@ -24,14 +29,21 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
 export interface CollapsibleAlignmentProps {
   collapseBelow?: ResponsiveRangeProps['below'];
   align?: OptionalResponsiveValue<Align>;
+  alignY?: OptionalResponsiveValue<AlignY>;
   reverse?: boolean;
+}
+
+interface PrivateCollapsibleProps {
+  defaultAlignItems: 'flexStart' | 'center' | 'flexEnd' | 'stretch';
 }
 
 export function resolveCollapsibleAlignmentProps({
   align,
+  alignY,
   collapseBelow,
   reverse = false,
-}: CollapsibleAlignmentProps) {
+  defaultAlignItems,
+}: CollapsibleAlignmentProps & PrivateCollapsibleProps) {
   const [collapseMobile, collapseTablet, collapseDesktop] =
     resolveResponsiveRangeProps({
       below: collapseBelow,
@@ -53,31 +65,58 @@ export function resolveCollapsibleAlignmentProps({
     wide: justifyContentWide = justifyContentDesktop,
   } = normalizedAlign;
 
+  const normalizedAlignY = normalizeResponsiveValue(
+    alignYToFlexAlign(alignY) || defaultAlignItems,
+  );
+  const {
+    mobile: alignItemsMobile = defaultAlignItems,
+    tablet: alignItemsTablet = alignItemsMobile,
+    desktop: alignItemsDesktop = alignItemsTablet,
+    wide: alignItemsWide = alignItemsDesktop,
+  } = normalizedAlignY;
+
   return {
-    display: 'flex',
-    flexDirection: collapseBelow
-      ? optimizeResponsiveArray([
-          collapseMobile ? 'column' : 'row',
-          // eslint-disable-next-line no-nested-ternary
-          collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
-          // eslint-disable-next-line no-nested-ternary
-          collapseDesktop ? 'column' : rowReverseDesktop ? 'rowReverse' : 'row',
-          rowReverseWide ? 'rowReverse' : 'row',
-        ])
-      : rowReverse,
-    justifyContent: align
-      ? optimizeResponsiveArray([
-          justifyContentMobile,
-          rowReverseTablet
-            ? invertAlignment(justifyContentTablet)
-            : justifyContentTablet,
-          rowReverseDesktop
-            ? invertAlignment(justifyContentDesktop)
-            : justifyContentDesktop,
-          rowReverseWide
-            ? invertAlignment(justifyContentWide)
-            : justifyContentWide,
-        ])
-      : undefined,
+    collapseMobile,
+    collapseTablet,
+    collapseDesktop,
+    collapsibleAlignmentProps: {
+      display: 'flex',
+      flexDirection: collapseBelow
+        ? optimizeResponsiveArray([
+            collapseMobile ? 'column' : 'row',
+            // eslint-disable-next-line no-nested-ternary
+            collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
+            // eslint-disable-next-line no-nested-ternary
+            collapseDesktop
+              ? 'column'
+              : rowReverseDesktop
+              ? 'rowReverse'
+              : 'row',
+            rowReverseWide ? 'rowReverse' : 'row',
+          ])
+        : rowReverse,
+      justifyContent: align
+        ? optimizeResponsiveArray([
+            justifyContentMobile,
+            rowReverseTablet
+              ? invertAlignment(justifyContentTablet)
+              : justifyContentTablet,
+            rowReverseDesktop
+              ? invertAlignment(justifyContentDesktop)
+              : justifyContentDesktop,
+            rowReverseWide
+              ? invertAlignment(justifyContentWide)
+              : justifyContentWide,
+          ])
+        : undefined,
+      alignItems: collapseBelow
+        ? optimizeResponsiveArray([
+            collapseMobile ? 'stretch' : alignItemsMobile,
+            collapseTablet ? 'stretch' : alignItemsTablet,
+            collapseDesktop ? 'stretch' : alignItemsDesktop,
+            alignItemsWide,
+          ])
+        : defaultAlignItems,
+    },
   } as const;
 }

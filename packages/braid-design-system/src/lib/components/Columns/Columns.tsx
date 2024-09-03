@@ -1,23 +1,17 @@
 import React, { type ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import type { ColumnProps } from '../Column/Column';
-import { ResponsiveSpace } from '../../css/atoms/atoms';
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import {
   type CollapsibleAlignmentProps,
   resolveCollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
-import {
-  normalizeResponsiveValue,
-  type RequiredResponsiveValue,
-} from '../../css/atoms/sprinkles.css';
+import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { ColumnsContext } from './ColumnsContext';
-import { AlignY, alignYToFlexAlign } from '../../utils/align';
-import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import { resolveResponsiveRangeProps } from '../../utils/resolveResponsiveRangeProps';
 
 const validColumnsComponents = [
   'div',
@@ -35,7 +29,6 @@ const validColumnsComponents = [
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
-  alignY?: RequiredResponsiveValue<AlignY>;
   children:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>
@@ -63,40 +56,23 @@ export const Columns = ({
     wide: wideSpace = desktopSpace,
   } = normalizedSpace;
 
-  const collapsibleAlignmentProps = resolveCollapsibleAlignmentProps({
+  const {
+    collapseMobile,
+    collapseTablet,
+    collapseDesktop,
+    collapsibleAlignmentProps,
+  } = resolveCollapsibleAlignmentProps({
     collapseBelow,
     align,
+    alignY,
+    defaultAlignItems: 'stretch',
     reverse,
   });
-
-  const [collapseMobile, collapseTablet, collapseDesktop] =
-    resolveResponsiveRangeProps({
-      below: collapseBelow,
-    });
-
-  const defaultAlignY = alignYToFlexAlign(alignY) || 'stretch';
-  const normalizedAlignY = normalizeResponsiveValue(defaultAlignY);
-  const {
-    mobile: alignItemsMobile = 'stretch',
-    tablet: alignItemsTablet = alignItemsMobile,
-    desktop: alignItemsDesktop = alignItemsTablet,
-    wide: alignItemsWide = alignItemsDesktop,
-  } = normalizedAlignY;
 
   return (
     <Box
       component={component}
       {...collapsibleAlignmentProps}
-      alignItems={
-        collapseBelow
-          ? optimizeResponsiveArray([
-              collapseMobile ? 'stretch' : alignItemsMobile,
-              collapseTablet ? 'stretch' : alignItemsTablet,
-              collapseDesktop ? 'stretch' : alignItemsDesktop,
-              alignItemsWide,
-            ])
-          : defaultAlignY
-      }
       className={negativeMargin('left', {
         mobile: collapseMobile ? 'none' : mobileSpace,
         tablet: collapseTablet ? 'none' : tabletSpace,

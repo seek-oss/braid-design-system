@@ -9,9 +9,9 @@ import {
   resolveResponsiveRangeProps,
   type ResponsiveRangeProps,
 } from '../../utils/resolveResponsiveRangeProps';
-import * as styles from './Column.css';
-import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import { alignToFlexAlign } from '../../utils/align';
+import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
+import * as styles from './Column.css';
 
 const validColumnComponents = [
   'div',
@@ -72,7 +72,7 @@ export const Column = ({
     wide: justifyContentWide = justifyContentDesktop,
   } = normalizedAlign;
 
-  const alignment = {
+  const display = {
     mobile: collapseMobile && align !== 'left' ? 'flex' : 'block',
     tablet: collapseTablet && align !== 'left' ? 'flex' : 'block',
     desktop: collapseDesktop && align !== 'left' ? 'flex' : 'block',
@@ -83,10 +83,10 @@ export const Column = ({
     <Box
       component={component}
       display={optimizeResponsiveArray([
-        hideOnMobile ? 'none' : alignment.mobile,
-        hideOnTablet ? 'none' : alignment.tablet,
-        hideOnDesktop ? 'none' : alignment.desktop,
-        hideOnWide ? 'none' : alignment.wide,
+        hideOnMobile ? 'none' : display.mobile,
+        hideOnTablet ? 'none' : display.tablet,
+        hideOnDesktop ? 'none' : display.desktop,
+        hideOnWide ? 'none' : display.wide,
       ])}
       minWidth={0}
       width={width !== 'content' ? 'full' : undefined}
