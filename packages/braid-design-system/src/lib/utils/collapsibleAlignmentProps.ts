@@ -9,8 +9,8 @@ import {
 import { optimizeResponsiveArray } from './optimizeResponsiveArray';
 import {
   type Align,
+  type AlignY,
   alignToFlexAlign,
-  AlignY,
   alignYToFlexAlign,
 } from './align';
 
@@ -33,7 +33,7 @@ export interface CollapsibleAlignmentProps {
   reverse?: boolean;
 }
 
-interface PrivateCollapsibleProps {
+interface WithDefaultAlignItems {
   defaultAlignItems: 'flexStart' | 'center' | 'flexEnd' | 'stretch';
 }
 
@@ -41,9 +41,9 @@ export function resolveCollapsibleAlignmentProps({
   align,
   alignY,
   collapseBelow,
-  reverse = false,
+  reverse,
   defaultAlignItems,
-}: CollapsibleAlignmentProps & PrivateCollapsibleProps) {
+}: CollapsibleAlignmentProps & WithDefaultAlignItems) {
   const [collapseMobile, collapseTablet, collapseDesktop] =
     resolveResponsiveRangeProps({
       below: collapseBelow,
