@@ -17,11 +17,11 @@ While we could have conditionally maintained this behaviour, it would have resul
 **MIRATION GUIDE:**
 For `Stack`s with static children you can manually interleave `Divider` components:
 ```diff
--<Stack dividers>
-+<Stack>
+-<Stack space="..." dividers>
++<Stack space="...">
    <Component>{item}</Component>
 +  <Divider />
-   <Component>{item}</Component>
+   <Component>{item}</Component>****
 +  <Divider />
    <Component>{item}</Component>
  </Stack>
@@ -29,14 +29,14 @@ For `Stack`s with static children you can manually interleave `Divider` componen
 
 For `Stack`s with dynamic children you can conditionally render `Divider` components:
 ```diff
--<Stack dividers>
-+<Stack>
+-<Stack space="..." dividers>
++<Stack space="...">
   {items.map((item, index) => (
 -    <Component>{item}</Component>
-+    <>
++    <Fragment key={...}>
 +      {index > 0 ? <Divider /> : null}
 +      <Component>{item}</Component>
-+    </>
++    </Fragment>
   ))}
 </Stack>
 ```
@@ -48,10 +48,10 @@ For this you can conditionally hide the `Divider` on breakpoints showing more th
 +<Tiles columns={{mobile: 1, tablet: 2}}>
   {items.map((item, index) => (
 -    <Component>{item}</Component>
-+    <>
++    <Fragment key={...}>
 +      {index > 0 ? <Hidden above="mobile"><Divider /></Hidden> : null}
 +      <Component>{item}</Component>
-+    </>
++    </Fragment>
   ))}
 </Tiles>
 ```

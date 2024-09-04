@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Box,
   Column,
@@ -45,9 +45,9 @@ const docs: CssDoc = {
           <Box maxWidth="xsmall">
             <Stack space="gutter">
               {bps.map((b, index) => (
-                <>
+                <Fragment key={b}>
                   {index > 0 ? <Divider /> : null}
-                  <Columns space="small" alignY="center" key={b}>
+                  <Columns space="small" alignY="center">
                     <Column width="content">
                       <Box
                         display="flex"
@@ -68,7 +68,7 @@ const docs: CssDoc = {
                       }`}</Text>
                     </Column>
                   </Columns>
-                </>
+                </Fragment>
               ))}
             </Stack>
           </Box>

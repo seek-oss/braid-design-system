@@ -1,4 +1,10 @@
-import React, { type ReactNode, useEffect, useRef, useState } from 'react';
+import React, {
+  Fragment,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { vars } from 'braid-src/entries/css';
 import {
   Text,
@@ -101,23 +107,21 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
   contentWidth: (
     <Stack space="large">
       {Object.entries(vars.contentWidth).map(([widthName, widthVar], index) => (
-        <>
+        <Fragment key={widthName}>
+          {index > 0 ? <Divider /> : null}
           <Row key={widthName} group="contentWidth" name={widthName} hideCanvas>
             <Text>
               <ContentWidthValue var={widthVar} />
             </Text>
           </Row>
-          {index < Object.entries(vars.contentWidth).length - 1 ? (
-            <Divider />
-          ) : null}
-        </>
+        </Fragment>
       ))}
     </Stack>
   ),
   space: (
     <Stack space="large">
       {Object.entries(vars.space).map(([spaceName, spaceVar], index) => (
-        <>
+        <Fragment key={spaceName}>
           {index > 0 ? <Divider /> : null}
           <Row key={spaceName} group="space" name={spaceName} hideCanvas>
             <Box
@@ -129,7 +133,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
               }}
             />
           </Row>
-        </>
+        </Fragment>
       ))}
     </Stack>
   ),
@@ -137,7 +141,8 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
     <Stack space="small">
       {Object.entries(vars.foregroundColor).map(
         ([colorName, colorVar], index) => (
-          <>
+          <Fragment key={colorName}>
+            {index > 0 ? <Divider /> : null}
             <Row
               key={colorName}
               group="foregroundColor"
@@ -157,10 +162,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
                 </Box>
               </Text>
             </Row>
-            {index < Object.entries(vars.foregroundColor).length - 1 ? (
-              <Divider />
-            ) : null}
-          </>
+          </Fragment>
         ),
       )}
     </Stack>
@@ -169,7 +171,8 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
     <Stack space="small">
       {Object.entries(vars.backgroundColor).map(
         ([colorName, colorVar], index) => (
-          <>
+          <Fragment key={colorName}>
+            {index > 0 ? <Divider /> : null}
             <Row key={colorName} group="backgroundColor" name={colorName}>
               <Box
                 borderRadius="standard"
@@ -180,10 +183,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
                 }}
               />
             </Row>
-            {index < Object.entries(vars.backgroundColor).length - 1 ? (
-              <Divider />
-            ) : null}
-          </>
+          </Fragment>
         ),
       )}
     </Stack>
@@ -191,23 +191,22 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
   textWeight: (
     <Stack space="medium">
       {Object.entries(vars.textWeight).map(([weight, weightVar], index) => (
-        <>
+        <Fragment key={weight}>
+          {index > 0 ? <Divider /> : null}
           <Row key={weight} group="textWeight" name={weight}>
             <Text size="large">
               <span style={{ fontWeight: weightVar }}>Aa</span>
             </Text>
           </Row>
-          {index < Object.entries(vars.textWeight).length - 1 ? (
-            <Divider />
-          ) : null}
-        </>
+        </Fragment>
       ))}
     </Stack>
   ),
   borderColor: (
     <Stack space="small">
       {Object.entries(vars.borderColor).map(([colorName, colorVar], index) => (
-        <>
+        <Fragment key={colorName}>
+          {index > 0 ? <Divider /> : null}
           <Row
             key={colorName}
             group="borderColor"
@@ -225,17 +224,15 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
               }}
             />
           </Row>
-          {index < Object.entries(vars.borderColor).length - 1 ? (
-            <Divider />
-          ) : null}
-        </>
+        </Fragment>
       ))}
     </Stack>
   ),
   borderWidth: (
     <Stack space="small">
       {Object.entries(vars.borderWidth).map(([widthName, widthVar], index) => (
-        <>
+        <Fragment key={widthName}>
+          {index > 0 ? <Divider /> : null}
           <Row key={widthName} group="borderWidth" name={widthName}>
             <Box
               borderRadius="standard"
@@ -246,10 +243,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
               }}
             />
           </Row>
-          {index < Object.entries(vars.borderWidth).length - 1 ? (
-            <Divider />
-          ) : null}
-        </>
+        </Fragment>
       ))}
     </Stack>
   ),
@@ -257,7 +251,8 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
     <Stack space="small">
       {Object.entries(vars.borderRadius).map(
         ([radiusName, radiusVar], index) => (
-          <>
+          <Fragment key={radiusName}>
+            {index > 0 ? <Divider /> : null}
             <Row key={radiusName} group="borderRadius" name={radiusName}>
               <Box
                 style={{
@@ -269,10 +264,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
                 }}
               />
             </Row>
-            {index < Object.entries(vars.borderRadius).length - 1 ? (
-              <Divider />
-            ) : null}
-          </>
+          </Fragment>
         ),
       )}
     </Stack>
@@ -280,7 +272,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
   shadow: (
     <Stack space="small">
       {Object.entries(vars.shadow).map(([shadowName, shadowVar], index) => (
-        <>
+        <Fragment key={shadowName}>
           {index > 0 ? <Divider /> : null}
           <Row key={shadowName} group="shadow" name={shadowName}>
             <Box
@@ -292,7 +284,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
               }}
             />
           </Row>
-        </>
+        </Fragment>
       ))}
     </Stack>
   ),
