@@ -12,21 +12,7 @@ import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { ColumnsContext } from './ColumnsContext';
-
-const validColumnsComponents = [
-  'div',
-  'span',
-  'p',
-  'article',
-  'section',
-  'main',
-  'nav',
-  'aside',
-  'ul',
-  'ol',
-  'li',
-] as const;
+import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
@@ -63,10 +49,10 @@ export const Columns = ({
   } = normalizedSpace;
 
   const {
+    collapsibleAlignmentProps,
     collapseMobile,
     collapseTablet,
     collapseDesktop,
-    collapsibleAlignmentProps,
   } = resolveCollapsibleAlignmentProps({
     collapseBelow,
     align,
@@ -97,6 +83,7 @@ export const Columns = ({
           desktopSpace,
           wideSpace,
           align,
+          component,
         }}
       >
         {children}

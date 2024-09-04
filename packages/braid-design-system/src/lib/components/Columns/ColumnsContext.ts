@@ -3,6 +3,20 @@ import type { Space } from '../../css/atoms/atoms';
 import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
 import type { Align } from '../../utils/align';
 
+export const validColumnsComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'ul',
+  'ol',
+  'li',
+] as const;
+
 interface ColumnsContextValue {
   collapseMobile: boolean;
   collapseTablet: boolean;
@@ -12,6 +26,7 @@ interface ColumnsContextValue {
   desktopSpace: Space;
   wideSpace: Space;
   align: OptionalResponsiveValue<Align>;
+  component: (typeof validColumnsComponents)[number];
 }
 
 export const ColumnsContext = createContext<ColumnsContextValue>({
@@ -23,4 +38,5 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
   desktopSpace: 'none',
   wideSpace: 'none',
   align: 'left',
+  component: 'div',
 });

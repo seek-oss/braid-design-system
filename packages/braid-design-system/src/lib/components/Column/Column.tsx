@@ -54,6 +54,7 @@ export const Column = ({
     desktopSpace,
     wideSpace,
     align,
+    component: columnsComponent,
   } = useContext(ColumnsContext);
   const [hideOnMobile, hideOnTablet, hideOnDesktop, hideOnWide] =
     resolveResponsiveRangeProps({
@@ -81,7 +82,7 @@ export const Column = ({
 
   return (
     <Box
-      component={component}
+      component={component || columnsComponent === 'span' ? 'span' : 'div'}
       display={optimizeResponsiveArray([
         hideOnMobile ? 'none' : display.mobile,
         hideOnTablet ? 'none' : display.tablet,

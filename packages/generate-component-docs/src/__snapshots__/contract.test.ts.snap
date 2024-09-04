@@ -2867,8 +2867,8 @@ exports[`Columns 1`] = `
         | "bottom"
         | "center"
         | "top"
-        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", AlignY>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
+        | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", AlignY>>
+        | ResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
     children: 
         | (ReactElement<ColumnProps, string | JSXElementConstructor<any>> | null)[]
         | ReactElement<ColumnProps, string | JSXElementConstructor<any>>
