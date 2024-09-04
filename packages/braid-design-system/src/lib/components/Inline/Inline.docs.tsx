@@ -1,7 +1,16 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Divider, Inline, Stack, Strong, Text, TextLink, Tiles } from '../';
+import {
+  Divider,
+  Inline,
+  Notice,
+  Stack,
+  Strong,
+  Text,
+  TextLink,
+  Tiles,
+} from '../';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
@@ -180,9 +189,9 @@ const docs: ComponentDocs = {
                 Below “tablet”
               </Text>
               <Stack space="small">
-                <Placeholder width={48} height={48} />
-                <Placeholder width={48} height={48} />
-                <Placeholder width={48} height={48} />
+                <Placeholder height={48} />
+                <Placeholder height={48} />
+                <Placeholder height={48} />
               </Stack>
             </Stack>
           </Tiles>,
@@ -193,6 +202,70 @@ const docs: ComponentDocs = {
             <Placeholder width={48} height={48} />
             <Placeholder width={48} height={48} />
             <Placeholder width={48} height={48} />
+          </Inline>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
+    },
+    {
+      label: 'Reversing the order',
+      description: (
+        <>
+          <Text>
+            By default, Inline renders its content in document order, which also
+            doubles as the screen reader order. The visual order can be flipped
+            using the <Strong>reverse</Strong> prop.
+          </Text>
+          <Notice>
+            <Stack space="medium">
+              <Text>
+                Reversing is only applied in combination with the{' '}
+                <Strong>collapseBelow</Strong> prop. This ensures the content is
+                reversed on the same row, and follow the document order when
+                collapsed.
+              </Text>
+              <Text>
+                This is useful when navigating forward within a flow, where the
+                primary action is on the right when inline, and on top when
+                collapsed. For this reason, the default the horizontal alignment
+                when reversed is to the <Strong>right</Strong>.
+              </Text>
+            </Stack>
+          </Notice>
+        </>
+      ),
+      Example: () => {
+        const { value: visual } = source(
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Inline space="small" collapseBelow="tablet" align="right">
+                <Placeholder width={75} height={48} label="Second" />
+                <Placeholder width={75} height={48} label="First" />
+              </Inline>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Stack space="small">
+                <Placeholder height={48} label="First" />
+                <Placeholder height={48} label="Second" />
+              </Stack>
+            </Stack>
+          </Tiles>,
+        );
+
+        const { code: codeDemo } = source(
+          <Inline space="small" collapseBelow="tablet" reverse>
+            <Placeholder width={75} height={48} label="First" />
+            <Placeholder width={75} height={48} label="Second" />
           </Inline>,
         );
 

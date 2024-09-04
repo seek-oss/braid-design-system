@@ -49,7 +49,6 @@ export function resolveCollapsibleAlignmentProps({
       below: collapseBelow,
     });
 
-  const rowReverse = reverse ? 'rowReverse' : 'row';
   const rowReverseTablet = collapseMobile && reverse;
   const rowReverseDesktop = (collapseMobile || collapseTablet) && reverse;
   const rowReverseWide =
@@ -81,20 +80,14 @@ export function resolveCollapsibleAlignmentProps({
     collapseDesktop,
     collapsibleAlignmentProps: {
       display: 'flex',
-      flexDirection: collapseBelow
-        ? optimizeResponsiveArray([
-            collapseMobile ? 'column' : 'row',
-            // eslint-disable-next-line no-nested-ternary
-            collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
-            // eslint-disable-next-line no-nested-ternary
-            collapseDesktop
-              ? 'column'
-              : rowReverseDesktop
-              ? 'rowReverse'
-              : 'row',
-            rowReverseWide ? 'rowReverse' : 'row',
-          ])
-        : rowReverse,
+      flexDirection: optimizeResponsiveArray([
+        collapseMobile ? 'column' : 'row',
+        // eslint-disable-next-line no-nested-ternary
+        collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
+        // eslint-disable-next-line no-nested-ternary
+        collapseDesktop ? 'column' : rowReverseDesktop ? 'rowReverse' : 'row',
+        rowReverseWide ? 'rowReverse' : 'row',
+      ]),
       justifyContent: align
         ? optimizeResponsiveArray([
             justifyContentMobile,

@@ -1,3 +1,4 @@
+import assert from 'assert';
 import React, { type ReactElement } from 'react';
 import { Box } from '../Box/Box';
 import type { ColumnProps } from '../Column/Column';
@@ -48,6 +49,11 @@ export const Columns = ({
   data,
   ...restProps
 }: ColumnsProps) => {
+  assert(
+    !reverse || (reverse && collapseBelow),
+    'The `reverse` prop should only be applied in combination with the `collapseBelow` prop.\nIf you do not want to collapse responsively, it is recommended to reorder the order of the content directly.\n\nSee documentation for details: https://seek-oss.github.io/braid-design-system/components/Columns#reversing-the-column-order',
+  );
+
   const normalizedSpace = normalizeResponsiveValue(space);
   const {
     mobile: mobileSpace = 'none',

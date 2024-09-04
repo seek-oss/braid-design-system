@@ -1,4 +1,5 @@
 import React from 'react';
+import assert from 'assert';
 
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
@@ -40,6 +41,11 @@ export const Inline = ({
   children,
   ...restProps
 }: InlineProps) => {
+  assert(
+    !reverse || (reverse && collapseBelow),
+    'The `reverse` prop should only be applied in combination with the `collapseBelow` prop.\nIf you do not want to collapse responsively, it is recommended to reorder the order of the content directly.\n\nSee documentation for details: https://seek-oss.github.io/braid-design-system/components/Inline#reversing-the-order',
+  );
+
   const {
     collapseMobile,
     collapseTablet,

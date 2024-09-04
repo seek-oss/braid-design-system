@@ -1,7 +1,16 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Columns, Column, Strong, Text, Stack, Tiles, Divider } from '../';
+import {
+  Columns,
+  Column,
+  Strong,
+  Text,
+  Stack,
+  Tiles,
+  Divider,
+  Notice,
+} from '../';
 import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
@@ -425,15 +434,53 @@ const docs: ComponentDocs = {
     {
       label: 'Reversing the column order',
       description: (
-        <Text>
-          By default, Columns are rendered in document order, which also doubles
-          as the screen reader order. If you need the columns to be visually
-          reversed, you can provide the <Strong>reverse</Strong> prop.
-        </Text>
+        <>
+          <Text>
+            By default, Columns are rendered in document order, which also
+            doubles as the screen reader order. If you need the columns to be
+            visually reversed, you can provide the <Strong>reverse</Strong>{' '}
+            prop.
+          </Text>
+          <Notice>
+            <Text>
+              Reversing is only applied in combination with the{' '}
+              <Strong>collapseBelow</Strong> prop. This ensures the columns are
+              reversed on the same row, and follow the document order when
+              collapsed.
+            </Text>
+          </Notice>
+        </>
       ),
-      Example: () =>
-        source(
-          <Columns space="small" reverse>
+      Example: () => {
+        const { value: visual } = source(
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Columns space="small">
+                <Column>
+                  <Placeholder height={60} label="Second" />
+                </Column>
+                <Column width="1/4">
+                  <Placeholder height={60} label="First" />
+                </Column>
+              </Columns>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Stack space="small">
+                <Placeholder height={60} label="First" />
+                <Placeholder height={60} label="Second" />
+              </Stack>
+            </Stack>
+          </Tiles>,
+        );
+
+        const { code: codeDemo } = source(
+          <Columns space="small" collapseBelow="tablet" reverse>
             <Column width="1/5">
               <Placeholder height={60} label="First" />
             </Column>
@@ -441,7 +488,13 @@ const docs: ComponentDocs = {
               <Placeholder height={60} label="Second" />
             </Column>
           </Columns>,
-        ),
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Semantic elements',
