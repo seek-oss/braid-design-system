@@ -12,7 +12,7 @@ import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
+import { ColumnsContext, type validColumnsComponents } from './ColumnsContext';
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
   space: ResponsiveSpace;
