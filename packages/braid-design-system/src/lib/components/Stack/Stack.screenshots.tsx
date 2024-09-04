@@ -59,7 +59,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
+        'Test - Should handle fragments (6 placeholders should be evenly spaced)',
       Container,
       Example: () => (
         <Stack space="small">

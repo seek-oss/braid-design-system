@@ -77,7 +77,7 @@ export const Column = ({
     mobile: collapseMobile && align !== 'left' ? 'flex' : 'block',
     tablet: collapseTablet && align !== 'left' ? 'flex' : 'block',
     desktop: collapseDesktop && align !== 'left' ? 'flex' : 'block',
-    wide: align !== 'left' ? 'flex' : 'block',
+    wide: 'block',
   } as const;
 
   return (

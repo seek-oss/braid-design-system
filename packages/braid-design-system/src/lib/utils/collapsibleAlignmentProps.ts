@@ -64,8 +64,11 @@ export function resolveCollapsibleAlignmentProps({
     wide: justifyContentWide = justifyContentDesktop,
   } = normalizedAlign;
 
+  const resolvedNonCollapsedAlignItems = alignY
+    ? alignYToFlexAlign(alignY) || defaultAlignItems
+    : defaultAlignItems;
   const normalizedAlignY = normalizeResponsiveValue(
-    alignYToFlexAlign(alignY) || defaultAlignItems,
+    resolvedNonCollapsedAlignItems,
   );
   const {
     mobile: alignItemsMobile = defaultAlignItems,
@@ -109,7 +112,7 @@ export function resolveCollapsibleAlignmentProps({
             collapseDesktop ? 'stretch' : alignItemsDesktop,
             alignItemsWide,
           ])
-        : defaultAlignItems,
+        : resolvedNonCollapsedAlignItems,
     },
   } as const;
 }
