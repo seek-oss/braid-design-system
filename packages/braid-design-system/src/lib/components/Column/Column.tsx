@@ -92,7 +92,7 @@ export const Column = ({
       minWidth={0}
       width={width !== 'content' ? 'full' : undefined}
       flexShrink={width ? 0 : undefined}
-      flexGrow={width !== 'content' ? 0 : 1}
+      flexGrow={width ? 0 : 1}
       className={[
         collapsible ? styles.noSpaceBeforeFirstWhenCollapsed : null,
         width !== 'content' ? styles.width[width!] : null,
