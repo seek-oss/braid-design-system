@@ -107,9 +107,9 @@ export function resolveCollapsibleAlignmentProps({
         : undefined,
       alignItems: collapseBelow
         ? optimizeResponsiveArray([
-            collapseMobile ? 'stretch' : alignItemsMobile,
-            collapseTablet ? 'stretch' : alignItemsTablet,
-            collapseDesktop ? 'stretch' : alignItemsDesktop,
+            collapseMobile ? justifyContentMobile : alignItemsMobile,
+            collapseTablet ? justifyContentTablet : alignItemsTablet,
+            collapseDesktop ? justifyContentDesktop : alignItemsDesktop,
             alignItemsWide,
           ])
         : resolvedNonCollapsedAlignItems,
