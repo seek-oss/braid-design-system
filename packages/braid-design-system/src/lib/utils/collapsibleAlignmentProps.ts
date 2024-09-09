@@ -86,7 +86,7 @@ export function resolveCollapsibleAlignmentProps({
     collapseDesktop && alignDesktop === 'flexStart' ? 'stretch' : alignDesktop,
     alignYWide,
   ] as const;
-  console.log(collapsedAlignItems);
+
   return {
     collapseMobile,
     collapseTablet,
