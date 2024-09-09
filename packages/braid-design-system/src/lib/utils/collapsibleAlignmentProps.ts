@@ -49,33 +49,43 @@ export function resolveCollapsibleAlignmentProps({
       below: collapseBelow,
     });
 
-  const rowReverseTablet = collapseMobile && reverse;
-  const rowReverseDesktop = (collapseMobile || collapseTablet) && reverse;
-  const rowReverseWide =
-    (collapseMobile || collapseTablet || collapseDesktop) && reverse;
+  // DIRECTION
+  const rowDirection = collapseBelow && reverse ? 'rowReverse' : 'row';
+  const flexDirection = [
+    collapseMobile ? 'column' : 'row',
+    collapseTablet ? 'column' : rowDirection,
+    collapseDesktop ? 'column' : rowDirection,
+    rowDirection,
+  ] as const;
 
+  // VERTICAL ALIGNMENT
+  const nonCollapsedAlignItems = alignYToFlexAlign(alignY) || defaultAlignItems;
+  const normalizedAlignY = normalizeResponsiveValue(nonCollapsedAlignItems);
+  const {
+    mobile: alignYMobile = defaultAlignItems,
+    tablet: alignYTablet = alignYMobile,
+    desktop: alignYDesktop = alignYTablet,
+    wide: alignYWide = alignYDesktop,
+  } = normalizedAlignY;
+
+  // HORIZONTAL ALIGNMENT
   const normalizedAlign = normalizeResponsiveValue(
     alignToFlexAlign(align) || 'flexStart',
   );
   const {
-    mobile: justifyContentMobile = 'flexStart',
-    tablet: justifyContentTablet = justifyContentMobile,
-    desktop: justifyContentDesktop = justifyContentTablet,
-    wide: justifyContentWide = justifyContentDesktop,
+    mobile: alignMobile = 'flexStart',
+    tablet: alignTablet = alignMobile,
+    desktop: alignDesktop = alignTablet,
+    wide: alignWide = alignDesktop,
   } = normalizedAlign;
 
-  const resolvedNonCollapsedAlignItems = alignY
-    ? alignYToFlexAlign(alignY) || defaultAlignItems
-    : defaultAlignItems;
-  const normalizedAlignY = normalizeResponsiveValue(
-    resolvedNonCollapsedAlignItems,
-  );
-  const {
-    mobile: alignItemsMobile = defaultAlignItems,
-    tablet: alignItemsTablet = alignItemsMobile,
-    desktop: alignItemsDesktop = alignItemsTablet,
-    wide: alignItemsWide = alignItemsDesktop,
-  } = normalizedAlignY;
+  // COLLAPSED HORIZONTAL ALIGNMENT
+  const collapsedAlignItems = [
+    collapseMobile && align === 'left' ? 'stretch' : alignMobile,
+    collapseTablet && align === 'left' ? 'stretch' : alignTablet,
+    collapseDesktop && align === 'left' ? 'stretch' : alignDesktop,
+    alignYWide,
+  ] as const;
 
   return {
     collapseMobile,
@@ -83,36 +93,23 @@ export function resolveCollapsibleAlignmentProps({
     collapseDesktop,
     collapsibleAlignmentProps: {
       display: 'flex',
-      flexDirection: optimizeResponsiveArray([
-        collapseMobile ? 'column' : 'row',
-        // eslint-disable-next-line no-nested-ternary
-        collapseTablet ? 'column' : rowReverseTablet ? 'rowReverse' : 'row',
-        // eslint-disable-next-line no-nested-ternary
-        collapseDesktop ? 'column' : rowReverseDesktop ? 'rowReverse' : 'row',
-        rowReverseWide ? 'rowReverse' : 'row',
-      ]),
+      flexDirection: optimizeResponsiveArray(flexDirection),
       justifyContent: align
         ? optimizeResponsiveArray([
-            justifyContentMobile,
-            rowReverseTablet
-              ? invertAlignment(justifyContentTablet)
-              : justifyContentTablet,
-            rowReverseDesktop
-              ? invertAlignment(justifyContentDesktop)
-              : justifyContentDesktop,
-            rowReverseWide
-              ? invertAlignment(justifyContentWide)
-              : justifyContentWide,
+            alignMobile,
+            reverse ? invertAlignment(alignTablet) : alignTablet,
+            reverse ? invertAlignment(alignDesktop) : alignDesktop,
+            reverse ? invertAlignment(alignWide) : alignWide,
           ])
         : undefined,
       alignItems: collapseBelow
         ? optimizeResponsiveArray([
-            collapseMobile ? justifyContentMobile : alignItemsMobile,
-            collapseTablet ? justifyContentTablet : alignItemsTablet,
-            collapseDesktop ? justifyContentDesktop : alignItemsDesktop,
-            alignItemsWide,
+            collapseMobile ? collapsedAlignItems[0] : alignYMobile,
+            collapseTablet ? collapsedAlignItems[1] : alignYTablet,
+            collapseDesktop ? collapsedAlignItems[2] : alignYDesktop,
+            collapsedAlignItems[3],
           ])
-        : resolvedNonCollapsedAlignItems,
+        : nonCollapsedAlignItems,
     },
   } as const;
 }

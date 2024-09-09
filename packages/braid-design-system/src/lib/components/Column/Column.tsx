@@ -70,13 +70,17 @@ export const Column = ({
     mobile: justifyContentMobile = 'flexStart',
     tablet: justifyContentTablet = justifyContentMobile,
     desktop: justifyContentDesktop = justifyContentTablet,
-    wide: justifyContentWide = justifyContentDesktop,
   } = normalizedAlign;
 
+  const collapseToFlexContainer = {
+    mobile: collapseMobile && align !== 'left',
+    tablet: collapseTablet && align !== 'left',
+    desktop: collapseDesktop && align !== 'left',
+  };
   const display = {
-    mobile: collapseMobile && align !== 'left' ? 'flex' : 'block',
-    tablet: collapseTablet && align !== 'left' ? 'flex' : 'block',
-    desktop: collapseDesktop && align !== 'left' ? 'flex' : 'block',
+    mobile: collapseToFlexContainer.mobile ? 'flex' : 'block',
+    tablet: collapseToFlexContainer.tablet ? 'flex' : 'block',
+    desktop: collapseToFlexContainer.desktop ? 'flex' : 'block',
     wide: 'block',
   } as const;
 
@@ -116,10 +120,10 @@ export const Column = ({
       justifyContent={
         collapsible
           ? optimizeResponsiveArray([
-              justifyContentMobile,
-              justifyContentTablet,
-              justifyContentDesktop,
-              justifyContentWide,
+              collapseToFlexContainer.mobile ? justifyContentMobile : null,
+              collapseToFlexContainer.tablet ? justifyContentTablet : null,
+              collapseToFlexContainer.desktop ? justifyContentDesktop : null,
+              null,
             ])
           : undefined
       }
