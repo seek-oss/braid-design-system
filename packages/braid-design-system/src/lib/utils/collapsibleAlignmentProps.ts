@@ -76,7 +76,7 @@ export function resolveCollapsibleAlignmentProps({
     mobile: alignMobile = 'flexStart',
     tablet: alignTablet = alignMobile,
     desktop: alignDesktop = alignTablet,
-    wide: alignWide = alignTablet,
+    wide: alignWide = alignDesktop,
   } = normalizedAlign;
 
   // COLLAPSED HORIZONTAL ALIGNMENT
@@ -84,7 +84,7 @@ export function resolveCollapsibleAlignmentProps({
     collapseMobile && alignMobile === 'flexStart' ? 'stretch' : alignMobile,
     collapseTablet && alignTablet === 'flexStart' ? 'stretch' : alignTablet,
     collapseDesktop && alignDesktop === 'flexStart' ? 'stretch' : alignDesktop,
-    alignYWide,
+    // wide doesnt collapse, no check needed here
   ] as const;
 
   return {
@@ -96,7 +96,7 @@ export function resolveCollapsibleAlignmentProps({
       flexDirection: optimizeResponsiveArray(flexDirection),
       justifyContent: align
         ? optimizeResponsiveArray([
-            alignMobile,
+            alignMobile, // mobile doesnt reverse, no check needed here
             reverse ? invertAlignment(alignTablet) : alignTablet,
             reverse ? invertAlignment(alignDesktop) : alignDesktop,
             reverse ? invertAlignment(alignWide) : alignWide,
@@ -107,7 +107,7 @@ export function resolveCollapsibleAlignmentProps({
             collapseMobile ? collapsedAlignItems[0] : alignYMobile,
             collapseTablet ? collapsedAlignItems[1] : alignYTablet,
             collapseDesktop ? collapsedAlignItems[2] : alignYDesktop,
-            collapsedAlignItems[3],
+            alignYWide, // wide doesnt collapse, no check needed here
           ])
         : nonCollapsedAlignItems,
     },
