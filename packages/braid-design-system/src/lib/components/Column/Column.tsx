@@ -73,9 +73,9 @@ export const Column = ({
   } = normalizedAlign;
 
   const collapseToFlexContainer = {
-    mobile: collapseMobile && align !== 'left',
-    tablet: collapseTablet && align !== 'left',
-    desktop: collapseDesktop && align !== 'left',
+    mobile: collapseMobile && justifyContentMobile !== 'flexStart',
+    tablet: collapseTablet && justifyContentTablet !== 'flexStart',
+    desktop: collapseDesktop && justifyContentDesktop !== 'flexStart',
   };
   const display = {
     mobile: collapseToFlexContainer.mobile ? 'flex' : 'block',

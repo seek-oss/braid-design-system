@@ -76,17 +76,17 @@ export function resolveCollapsibleAlignmentProps({
     mobile: alignMobile = 'flexStart',
     tablet: alignTablet = alignMobile,
     desktop: alignDesktop = alignTablet,
-    wide: alignWide = alignDesktop,
+    wide: alignWide = alignTablet,
   } = normalizedAlign;
 
   // COLLAPSED HORIZONTAL ALIGNMENT
   const collapsedAlignItems = [
-    collapseMobile && align === 'left' ? 'stretch' : alignMobile,
-    collapseTablet && align === 'left' ? 'stretch' : alignTablet,
-    collapseDesktop && align === 'left' ? 'stretch' : alignDesktop,
+    collapseMobile && alignMobile === 'flexStart' ? 'stretch' : alignMobile,
+    collapseTablet && alignTablet === 'flexStart' ? 'stretch' : alignTablet,
+    collapseDesktop && alignDesktop === 'flexStart' ? 'stretch' : alignDesktop,
     alignYWide,
   ] as const;
-
+  console.log(collapsedAlignItems);
   return {
     collapseMobile,
     collapseTablet,
