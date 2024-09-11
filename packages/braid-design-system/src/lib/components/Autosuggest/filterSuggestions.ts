@@ -1,10 +1,10 @@
 import assert from 'assert';
-import matchHighlights from 'autosuggest-highlight/match';
-import type {
-  AutosuggestValue,
-  Suggestion,
-  Suggestions,
-  GroupedSuggestions,
+import {
+  type AutosuggestValue,
+  type Suggestion,
+  type Suggestions,
+  type GroupedSuggestions,
+  highlightSuggestions,
 } from './Autosuggest';
 
 type FilterableSuggestion<Value> = Omit<Suggestion<Value>, 'highlights'>;
@@ -14,17 +14,16 @@ type FilterableGroupedSuggestions<Value> = Omit<
 > & { suggestions: Array<FilterableSuggestion<Value>> };
 
 function matchSuggestion<Value>(suggestion: Suggestion<Value>, query: string) {
-  const groupMatches = matchHighlights(
+  const highlights = highlightSuggestions(
     suggestion.label ?? suggestion.text,
     query,
-  ) as Array<[number, number]>;
-
-  return !groupMatches.length
-    ? null
-    : {
+  );
+  return highlights.length
+    ? {
         ...suggestion,
-        highlights: groupMatches.map(([start, end]) => ({ start, end })),
-      };
+        highlights,
+      }
+    : null;
 }
 
 type InputValue<Value> = string | AutosuggestValue<Value>;

@@ -29,12 +29,13 @@ import { type TextProps, Text } from '../Text/Text';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { TabListContext } from './TabListContext';
+import { TabListContext, type TabSize } from './TabListContext';
 import { Overlay } from '../private/Overlay/Overlay';
 import type { BadgeProps } from '../Badge/Badge';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
+import type { BraidTokens } from '../../themes/tokenType';
 import * as styles from './Tabs.css';
 
 export interface TabProps {
@@ -45,7 +46,18 @@ export interface TabProps {
   data?: DataAttributeMap;
 }
 
-const paddingX = 'small';
+export const dividerSpacingForSize: Record<
+  TabSize,
+  keyof BraidTokens['space']
+> = {
+  standard: 'medium',
+  small: 'small',
+} as const;
+
+const paddingXForTabSize: Record<TabSize, keyof BraidTokens['space']> = {
+  standard: 'small',
+  small: 'xsmall',
+} as const;
 export const Tab = ({
   children,
   data,
@@ -95,7 +107,7 @@ export const Tab = ({
     a11y,
     onChange,
   } = tabsContext;
-  const { tabListItemIndex, scrollContainer, isLast } = tabListContext;
+  const { tabListItemIndex, scrollContainer, isLast, size } = tabListContext;
   const isSelected =
     selectedIndex > -1
       ? selectedIndex === tabListItemIndex
@@ -125,21 +137,21 @@ export const Tab = ({
         smoothScroll(tabRef.current, {
           scrollContainer,
           direction: 'horizontal',
-          offset: space[paddingX] * grid * 3,
+          offset: space[paddingXForTabSize[size]] * grid * 3,
           ...(firstRenderRef.current ? { duration: 0 } : { speed: 0.7 }),
         });
       } else {
         smoothScrollIntoView(tabRef.current, {
           scrollContainer,
           direction: 'horizontal',
-          offset: space[paddingX] * grid * 6,
+          offset: space[paddingXForTabSize[size]] * grid * 6,
           ...(firstRenderRef.current ? { duration: 0 } : { speed: 0.7 }),
         });
       }
     }
 
     firstRenderRef.current = false;
-  }, [isSelected, isFocused, scrollContainer, space, grid, isMobile]);
+  }, [isSelected, isFocused, scrollContainer, space, grid, isMobile, size]);
 
   useEffect(() => {
     if (tabRef.current) {
@@ -229,9 +241,9 @@ export const Tab = ({
       outline="none"
       position="relative"
       zIndex={1}
-      paddingLeft={tabListItemIndex > 0 ? paddingX : undefined}
-      paddingRight={!isLast ? paddingX : undefined}
-      paddingY="medium"
+      paddingLeft={tabListItemIndex > 0 ? paddingXForTabSize[size] : undefined}
+      paddingRight={!isLast ? paddingXForTabSize[size] : undefined}
+      paddingY={dividerSpacingForSize[size]}
       className={styles.tab}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
@@ -244,7 +256,7 @@ export const Tab = ({
         transition="fast"
         opacity={isSelected ? 0 : undefined}
       >
-        <Text tone="secondary" icon={icon}>
+        <Text size={size} tone="secondary" icon={icon}>
           {children}
         </Text>
       </Box>
@@ -259,7 +271,9 @@ export const Tab = ({
         opacity={0}
         className={!isSelected ? styles.hoveredTab : undefined}
       >
-        <Text icon={icon}>{children}</Text>
+        <Text size={size} icon={icon}>
+          {children}
+        </Text>
       </Box>
 
       {/* Selected */}
@@ -271,6 +285,7 @@ export const Tab = ({
       >
         <Text
           {...a11y.tabLabelProps({ tabIndex: tabListItemIndex })}
+          size={size}
           tone="formAccent"
           icon={icon}
         >

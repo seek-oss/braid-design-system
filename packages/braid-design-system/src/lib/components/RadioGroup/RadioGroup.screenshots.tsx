@@ -3,6 +3,7 @@ import type { ComponentScreenshot } from 'site/types';
 import { Box, RadioGroup, RadioItem } from '../';
 import { Placeholder } from '../../playroom/components';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -219,6 +220,39 @@ export const screenshots: ComponentScreenshot = {
           onChange={handler}
           aria-labelledby="elementId"
           description="How many years have you been in this role?"
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>
+      ),
+    },
+    {
+      label: 'Virtual touch target (standard)',
+      Example: ({ handler }) => (
+        <RadioGroup
+          id="radiolist1"
+          value="2"
+          onChange={handler}
+          label="Experience"
+          data={{ [debugTouchableAttrForDataProp]: '' }}
+        >
+          <RadioItem label="One" value="1" />
+          <RadioItem label="Two" value="2" />
+          <RadioItem label="Three" value="3" />
+        </RadioGroup>
+      ),
+    },
+    {
+      label: 'Virtual touch target (small)',
+      Example: ({ handler }) => (
+        <RadioGroup
+          id="radiolist1"
+          value="2"
+          onChange={handler}
+          label="Experience"
+          size="small"
+          data={{ [debugTouchableAttrForDataProp]: '' }}
         >
           <RadioItem label="One" value="1" />
           <RadioItem label="Two" value="2" />

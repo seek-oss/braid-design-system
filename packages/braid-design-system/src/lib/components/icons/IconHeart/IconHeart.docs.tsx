@@ -14,7 +14,6 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Icon',
-  migrationGuide: true,
   Example: () =>
     source(
       <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">
@@ -40,7 +39,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Toggling active state',
-      background: 'surface',
       description: (
         <Text>
           The star can be marked as active using the <Strong>active</Strong>{' '}

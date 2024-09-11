@@ -119,12 +119,16 @@ exports[`Autosuggest 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     scrollToTopOnMobile?: boolean
     secondaryLabel?: ReactNode
     secondaryMessage?: ReactNode
     showMobileBackdrop?: boolean
+    suggestionHighlight?: 
+        | "matching"
+        | "remaining"
     suggestions: 
         | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
         | Suggestions<Value>
@@ -167,6 +171,7 @@ exports[`Badge 1`] = `
     ref?: 
         | (instance: HTMLSpanElement | null) => void
         | RefObject<HTMLSpanElement>
+        | string
     tabIndex?: number
     title?: string
     tone?: 
@@ -316,6 +321,8 @@ exports[`Box 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -329,6 +336,7 @@ exports[`Box 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -342,6 +350,7 @@ exports[`Box 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -448,6 +457,7 @@ exports[`Box 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -713,8 +723,10 @@ exports[`Box 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -757,6 +769,7 @@ exports[`Box 1`] = `
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
@@ -770,7 +783,7 @@ exports[`Box 1`] = `
     cursor?: 
         | "default"
         | "pointer"
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     dateTime?: string
@@ -1100,9 +1113,7 @@ exports[`Box 1`] = `
     onPointerDown?: PointerEventHandler<HTMLElement>
     onPointerDownCapture?: PointerEventHandler<HTMLElement>
     onPointerEnter?: PointerEventHandler<HTMLElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLElement>
     onPointerLeave?: PointerEventHandler<HTMLElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLElement>
     onPointerMove?: PointerEventHandler<HTMLElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLElement>
     onPointerOut?: PointerEventHandler<HTMLElement>
@@ -1270,10 +1281,12 @@ exports[`Box 1`] = `
     ref?: 
         | (instance: HTMLElement | null) => void
         | RefObject<HTMLElement>
+        | string
     rel?: string
     required?: boolean
     resource?: string
     results?: number
+    rev?: string
     reversed?: boolean
     right?: 0
     role?: 
@@ -1658,8 +1671,10 @@ exports[`BoxRenderer 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -2060,6 +2075,7 @@ exports[`Button 1`] = `
     ref?: 
         | (instance: HTMLButtonElement | null) => void
         | RefObject<HTMLButtonElement>
+        | string
     size?: 
         | "small"
         | "standard"
@@ -2113,11 +2129,14 @@ exports[`ButtonIcon 1`] = `
     ref?: 
         | (instance: HTMLButtonElement | null) => void
         | RefObject<HTMLButtonElement>
+        | string
     size?: 
         | "large"
+        | "small"
         | "standard"
     tabIndex?: number
     tone?: 
+        | "formAccent"
         | "neutral"
         | "secondary"
     tooltipPlacement?: 
@@ -2151,6 +2170,8 @@ exports[`ButtonLink 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -2164,6 +2185,7 @@ exports[`ButtonLink 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -2177,6 +2199,7 @@ exports[`ButtonLink 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -2283,6 +2306,7 @@ exports[`ButtonLink 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -2301,19 +2325,22 @@ exports[`ButtonLink 1`] = `
     aria-valuetext?: string
     autoCapitalize?: string
     autoCorrect?: string
+    autoFocus?: boolean
     autoSave?: string
     bleed?: boolean
     bleedY?: boolean
     children?: ReactNode
     color?: string
+    content?: string
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
     contextMenu?: string
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
@@ -2467,9 +2494,7 @@ exports[`ButtonLink 1`] = `
     onPointerDown?: PointerEventHandler<HTMLAnchorElement>
     onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerMove?: PointerEventHandler<HTMLAnchorElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerOut?: PointerEventHandler<HTMLAnchorElement>
@@ -2519,13 +2544,13 @@ exports[`ButtonLink 1`] = `
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
-    placeholder?: string
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
+        | string
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -2539,6 +2564,7 @@ exports[`ButtonLink 1`] = `
     rel?: string
     resource?: string
     results?: number
+    rev?: string
     role?: 
         | "alert"
         | "alertdialog"
@@ -2704,6 +2730,7 @@ exports[`Checkbox 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     size?: 
@@ -2740,6 +2767,7 @@ exports[`CheckboxStandalone 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     size?: 
         | "small"
@@ -2761,6 +2789,14 @@ exports[`Column 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
     width?: 
         | "1/2"
         | "1/3"
@@ -2825,6 +2861,9 @@ exports[`ContentBlock 1`] = `
 {
   exportType: component,
   props: {
+    align?: 
+        | "center"
+        | "left"
     children: ReactNode
     data?: DataAttributeMap
     width?: 
@@ -2951,6 +2990,7 @@ exports[`Dropdown 1`] = `
     ref?: 
         | (instance: HTMLSelectElement | null) => void
         | RefObject<HTMLSelectElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -3156,8 +3196,10 @@ exports[`Heading 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -3365,8 +3407,10 @@ exports[`Hidden 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -3420,6 +3464,37 @@ exports[`HiddenVisually 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     id?: string
+},
+}
+`;
+
+exports[`IconAI 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
 },
 }
 `;
@@ -3496,6 +3571,69 @@ exports[`IconBookmark 1`] = `
   exportType: component,
   props: {
     active?: boolean
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconCareer 1`] = `
+{
+  exportType: component,
+  props: {
+    active?: boolean
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconCategory 1`] = `
+{
+  exportType: component,
+  props: {
     alignY?: 
         | "lowercase"
         | "uppercase"
@@ -4056,6 +4194,37 @@ exports[`IconEnlarge 1`] = `
 }
 `;
 
+exports[`IconExperience 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconFilter 1`] = `
 {
   exportType: component,
@@ -4118,7 +4287,100 @@ exports[`IconFlag 1`] = `
 }
 `;
 
+exports[`IconGift 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconGlobe 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconGrid 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconHash 1`] = `
 {
   exportType: component,
   props: {
@@ -5213,6 +5475,37 @@ exports[`IconResume 1`] = `
 }
 `;
 
+exports[`IconRocket 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconSearch 1`] = `
 {
   exportType: component,
@@ -5337,6 +5630,41 @@ exports[`IconSent 1`] = `
 }
 `;
 
+exports[`IconSentiment 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    feeling?: 
+        | "negative"
+        | "neutral"
+        | "positive"
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconSettings 1`] = `
 {
   exportType: component,
@@ -5369,6 +5697,37 @@ exports[`IconSettings 1`] = `
 `;
 
 exports[`IconShare 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconSkills 1`] = `
 {
   exportType: component,
   props: {
@@ -6179,6 +6538,8 @@ exports[`Link 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -6192,6 +6553,7 @@ exports[`Link 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -6205,6 +6567,7 @@ exports[`Link 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -6311,6 +6674,7 @@ exports[`Link 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -6329,18 +6693,21 @@ exports[`Link 1`] = `
     aria-valuetext?: string
     autoCapitalize?: string
     autoCorrect?: string
+    autoFocus?: boolean
     autoSave?: string
     children?: ReactNode
     className?: ClassValue
     color?: string
+    content?: string
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
     contextMenu?: string
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
@@ -6489,9 +6856,7 @@ exports[`Link 1`] = `
     onPointerDown?: PointerEventHandler<HTMLAnchorElement>
     onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerMove?: PointerEventHandler<HTMLAnchorElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerOut?: PointerEventHandler<HTMLAnchorElement>
@@ -6541,13 +6906,13 @@ exports[`Link 1`] = `
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
-    placeholder?: string
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
+        | string
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -6561,6 +6926,7 @@ exports[`Link 1`] = `
     rel?: string
     resource?: string
     results?: number
+    rev?: string
     role?: 
         | "alert"
         | "alertdialog"
@@ -6928,8 +7294,10 @@ exports[`PageBlock 1`] = `
         | "section"
     data?: DataAttributeMap
     width?: 
+        | "full"
         | "large"
         | "medium"
+        | "small"
 },
 }
 `;
@@ -6975,6 +7343,7 @@ exports[`PasswordField 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -7013,6 +7382,7 @@ exports[`Radio 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     tone?: 
         | "critical"
         | "neutral"
@@ -7071,6 +7441,7 @@ exports[`RadioItem 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     value: 
         | number
         | readonly string[]
@@ -7111,6 +7482,224 @@ exports[`Secondary 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     id?: string
+},
+}
+`;
+
+exports[`Spread 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+        | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", Align>>
+        | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
+    alignY?: 
+        | "bottom"
+        | "center"
+        | "top"
+        | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", AlignY>>
+        | ResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
+    children: ReactNodeNoStrings
+    component?: 
+        | "a"
+        | "abbr"
+        | "address"
+        | "animate"
+        | "animateMotion"
+        | "animateTransform"
+        | "area"
+        | "article"
+        | "aside"
+        | "audio"
+        | "b"
+        | "base"
+        | "bdi"
+        | "bdo"
+        | "big"
+        | "blockquote"
+        | "body"
+        | "br"
+        | "button"
+        | "canvas"
+        | "caption"
+        | "center"
+        | "circle"
+        | "cite"
+        | "clipPath"
+        | "code"
+        | "col"
+        | "colgroup"
+        | "data"
+        | "datalist"
+        | "dd"
+        | "defs"
+        | "del"
+        | "desc"
+        | "details"
+        | "dfn"
+        | "dialog"
+        | "div"
+        | "dl"
+        | "dt"
+        | "ellipse"
+        | "em"
+        | "embed"
+        | "feBlend"
+        | "feColorMatrix"
+        | "feComponentTransfer"
+        | "feComposite"
+        | "feConvolveMatrix"
+        | "feDiffuseLighting"
+        | "feDisplacementMap"
+        | "feDistantLight"
+        | "feDropShadow"
+        | "feFlood"
+        | "feFuncA"
+        | "feFuncB"
+        | "feFuncG"
+        | "feFuncR"
+        | "feGaussianBlur"
+        | "feImage"
+        | "feMerge"
+        | "feMergeNode"
+        | "feMorphology"
+        | "feOffset"
+        | "fePointLight"
+        | "feSpecularLighting"
+        | "feSpotLight"
+        | "feTile"
+        | "feTurbulence"
+        | "fieldset"
+        | "figcaption"
+        | "figure"
+        | "filter"
+        | "footer"
+        | "foreignObject"
+        | "form"
+        | "g"
+        | "h1"
+        | "h2"
+        | "h3"
+        | "h4"
+        | "h5"
+        | "h6"
+        | "head"
+        | "header"
+        | "hgroup"
+        | "hr"
+        | "html"
+        | "i"
+        | "iframe"
+        | "image"
+        | "img"
+        | "input"
+        | "ins"
+        | "kbd"
+        | "keygen"
+        | "label"
+        | "legend"
+        | "li"
+        | "line"
+        | "linearGradient"
+        | "link"
+        | "main"
+        | "map"
+        | "mark"
+        | "marker"
+        | "mask"
+        | "menu"
+        | "menuitem"
+        | "meta"
+        | "metadata"
+        | "meter"
+        | "mpath"
+        | "nav"
+        | "noindex"
+        | "noscript"
+        | "object"
+        | "ol"
+        | "optgroup"
+        | "option"
+        | "output"
+        | "p"
+        | "param"
+        | "path"
+        | "pattern"
+        | "picture"
+        | "polygon"
+        | "polyline"
+        | "pre"
+        | "progress"
+        | "q"
+        | "radialGradient"
+        | "rect"
+        | "rp"
+        | "rt"
+        | "ruby"
+        | "s"
+        | "samp"
+        | "script"
+        | "search"
+        | "section"
+        | "select"
+        | "set"
+        | "slot"
+        | "small"
+        | "source"
+        | "span"
+        | "stop"
+        | "strong"
+        | "style"
+        | "sub"
+        | "summary"
+        | "sup"
+        | "svg"
+        | "switch"
+        | "symbol"
+        | "table"
+        | "tbody"
+        | "td"
+        | "template"
+        | "text"
+        | "textPath"
+        | "textarea"
+        | "tfoot"
+        | "th"
+        | "thead"
+        | "time"
+        | "title"
+        | "tr"
+        | "track"
+        | "tspan"
+        | "u"
+        | "ul"
+        | "use"
+        | "var"
+        | "video"
+        | "view"
+        | "wbr"
+        | "webview"
+        | ComponentClass<any, any>
+        | FunctionComponent<any>
+    data?: DataAttributeMap
+    direction?: 
+        | "horizontal"
+        | "vertical"
+    space: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | "xxxlarge"
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
 },
 }
 `;
@@ -7264,6 +7853,9 @@ exports[`Tabs 1`] = `
         | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
     label: string
     reserveHitArea?: boolean
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;
@@ -7284,12 +7876,17 @@ exports[`Tag 1`] = `
 {
   exportType: component,
   props: {
+    addLabel?: string
     children: string
     clearLabel?: string
     data?: DataAttributeMap
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
-    onClear?: () => void
+    onAdd?: MouseEventHandler<HTMLButtonElement>
+    onClear?: MouseEventHandler<HTMLButtonElement>
+    size?: 
+        | "small"
+        | "standard"
 },
 }
 `;
@@ -7445,8 +8042,10 @@ exports[`Text 1`] = `
         | "s"
         | "samp"
         | "script"
+        | "search"
         | "section"
         | "select"
+        | "set"
         | "slot"
         | "small"
         | "source"
@@ -7566,6 +8165,7 @@ exports[`TextField 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -7611,6 +8211,8 @@ exports[`TextLink 1`] = `
         | "inline"
         | "list"
         | "none"
+    aria-braillelabel?: string
+    aria-brailleroledescription?: string
     aria-busy?: 
         | "false"
         | "true"
@@ -7624,6 +8226,7 @@ exports[`TextLink 1`] = `
         | true
     aria-colcount?: number
     aria-colindex?: number
+    aria-colindextext?: string
     aria-colspan?: number
     aria-controls?: string
     aria-current?: 
@@ -7637,6 +8240,7 @@ exports[`TextLink 1`] = `
         | false
         | true
     aria-describedby?: string
+    aria-description?: string
     aria-details?: string
     aria-disabled?: 
         | "false"
@@ -7743,6 +8347,7 @@ exports[`TextLink 1`] = `
     aria-roledescription?: string
     aria-rowcount?: number
     aria-rowindex?: number
+    aria-rowindextext?: string
     aria-rowspan?: number
     aria-selected?: 
         | "false"
@@ -7761,17 +8366,20 @@ exports[`TextLink 1`] = `
     aria-valuetext?: string
     autoCapitalize?: string
     autoCorrect?: string
+    autoFocus?: boolean
     autoSave?: string
     children?: ReactNode
     color?: string
+    content?: string
     contentEditable?: 
         | "false"
         | "inherit"
+        | "plaintext-only"
         | "true"
         | false
         | true
     contextMenu?: string
-    dangerouslySetInnerHTML?: { __html: string; }
+    dangerouslySetInnerHTML?: { __html: string | TrustedHTML; }
     data?: DataAttributeMap
     datatype?: string
     defaultChecked?: boolean
@@ -7927,9 +8535,7 @@ exports[`TextLink 1`] = `
     onPointerDown?: PointerEventHandler<HTMLAnchorElement>
     onPointerDownCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerEnter?: PointerEventHandler<HTMLAnchorElement>
-    onPointerEnterCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerLeave?: PointerEventHandler<HTMLAnchorElement>
-    onPointerLeaveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerMove?: PointerEventHandler<HTMLAnchorElement>
     onPointerMoveCapture?: PointerEventHandler<HTMLAnchorElement>
     onPointerOut?: PointerEventHandler<HTMLAnchorElement>
@@ -7979,13 +8585,13 @@ exports[`TextLink 1`] = `
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     ping?: string
-    placeholder?: string
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
         | (instance: HTMLAnchorElement | null) => void
         | RefObject<HTMLAnchorElement>
+        | string
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -7999,6 +8605,7 @@ exports[`TextLink 1`] = `
     rel?: string
     resource?: string
     results?: number
+    rev?: string
     role?: 
         | "alert"
         | "alertdialog"
@@ -8164,6 +8771,7 @@ exports[`Textarea 1`] = `
     ref?: 
         | (instance: HTMLTextAreaElement | null) => void
         | RefObject<HTMLTextAreaElement>
+        | string
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -8249,6 +8857,7 @@ exports[`Toggle 1`] = `
         | "justify"
         | "left"
         | "right"
+    bleedY?: boolean
     data?: DataAttributeMap
     id: string
     label: ReactNode
@@ -8257,9 +8866,13 @@ exports[`Toggle 1`] = `
     ref?: 
         | (instance: HTMLInputElement | null) => void
         | RefObject<HTMLInputElement>
+        | string
     size?: 
         | "small"
         | "standard"
+    togglePosition?: 
+        | "leading"
+        | "trailing"
 },
 }
 `;
@@ -8311,7 +8924,7 @@ exports[`filterSuggestions 1`] = `
     some: (predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => unknown, thisArg?: any) => boolean
     sort: (compareFn?: ((a: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, b: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>) => number) | undefined) => FilterableSuggestions<...>
     splice: { (start: number, deleteCount?: number | undefined): (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]; (start: number, deleteCount: number, ...items: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
-    toLocaleString: () => string
+    toLocaleString: { (): string; (locales: string | string[], options?: (NumberFormatOptions & DateTimeFormatOptions) | undefined): string; }
     toString: () => string
     unshift: (...items: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]) => number
     values: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>

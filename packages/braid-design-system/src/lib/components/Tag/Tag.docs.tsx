@@ -1,27 +1,161 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Card, Inline, Tag, Strong, Text, TextLinkButton } from '../';
+import {
+  Inline,
+  Tag,
+  Strong,
+  Text,
+  TextLink,
+  Stack,
+  IconLanguage,
+  IconTag,
+} from '../';
 import source from '@braid-design-system/source.macro';
-import { IconLanguage, IconPromote } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
-      <Card rounded>
-        <Inline space="small">
-          <Tag>One</Tag>
-          <Tag>Two</Tag>
-          <Tag>Three</Tag>
-        </Inline>
-      </Card>,
+      <Inline space="small">
+        <Tag>One</Tag>
+        <Tag>Two</Tag>
+        <Tag>Three</Tag>
+      </Inline>,
     ),
   alternatives: [{ name: 'Badge', description: 'For static labels.' }],
   additional: [
     {
+      label: 'Sizes',
+      description: (
+        <>
+          <Text>
+            You can customise the size of the tag via the <Strong>size</Strong>{' '}
+            prop, which accepts either <Strong>standard</Strong> or{' '}
+            <Strong>small</Strong>.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                STANDARD
+              </Text>
+              <Inline space="small" alignY="center">
+                <Tag>One</Tag>
+                <Tag>Two</Tag>
+                <Tag>Three</Tag>
+              </Inline>
+            </Stack>
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                SMALL
+              </Text>
+              <Inline space="xsmall" alignY="center">
+                <Tag size="small">One</Tag>
+                <Tag size="small">Two</Tag>
+                <Tag size="small">Three</Tag>
+              </Inline>
+            </Stack>
+          </Stack>,
+        ),
+    },
+    {
+      label: 'Actionable tags',
+      description: (
+        <>
+          <Text>
+            Tags can be made actionable to support either being “cleared” or
+            “added”.
+          </Text>
+
+          <Text>
+            By providing an <Strong>onClear</Strong> handler and a{' '}
+            <Strong>clearLabel</Strong>, a{' '}
+            <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>{' '}
+            component with a clear icon will be added to the right of the tag
+            label.
+          </Text>
+
+          <Text>
+            Alternatively, providing an <Strong>onAdd</Strong> handler and an{' '}
+            <Strong>addLabel</Strong> will insert a{' '}
+            <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>{' '}
+            component with an add icon to the right of the tag label.
+          </Text>
+
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
+            <Strong>aria-label</Strong> for the button can be customised by
+            providing the relevant <Strong>clearLabel</Strong> or{' '}
+            <Strong>addLabel</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: ({ setDefaultState, getState, setState }) => {
+        const { code, value } = source(
+          <>
+            {setDefaultState('selected', ['One', 'Two', 'Three'])}
+
+            <Stack space="large">
+              <Stack space="small">
+                <Text size="xsmall" tone="secondary">
+                  ADDABLE
+                </Text>
+                <Inline space="small" alignY="center">
+                  {['One', 'Two', 'Three', 'Four', 'Five']
+                    .filter((tag) => !getState('selected').includes(tag))
+                    .map((tag) => (
+                      <Tag
+                        key={tag}
+                        onAdd={() =>
+                          setState('selected', [...getState('selected'), tag])
+                        }
+                        addLabel={`Add "${tag}"`}
+                        id={`add-${tag}`}
+                      >
+                        {tag}
+                      </Tag>
+                    ))}
+                </Inline>
+              </Stack>
+              <Stack space="small">
+                <Text size="xsmall" tone="secondary">
+                  CLEARABLE
+                </Text>
+                <Inline space="small" alignY="center">
+                  {getState('selected').map((selectedTag: string) => (
+                    <Tag
+                      key={selectedTag}
+                      onClear={() => {
+                        setState(
+                          'selected',
+                          getState('selected').filter(
+                            (tag: string) => tag !== selectedTag,
+                          ),
+                        );
+                      }}
+                      clearLabel={`Clear "${selectedTag}"`}
+                      id={`clear-${selectedTag}`}
+                    >
+                      {selectedTag}
+                    </Tag>
+                  ))}
+                </Inline>
+              </Stack>
+            </Stack>
+          </>,
+        );
+
+        return {
+          code: code.replaceAll(': string', ''),
+          value,
+        };
+      },
+    },
+    {
       label: 'Inserting an icon',
-      background: 'surface',
       description: (
         <>
           <Text>
@@ -34,73 +168,9 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Inline space="small">
-            <Tag icon={<IconPromote />}>One</Tag>
-            <Tag icon={<IconPromote />}>Two</Tag>
-            <Tag icon={<IconPromote />}>Three</Tag>
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Clearable',
-      description: (
-        <>
-          <Text>
-            Tags can be made clearable, by providing an <Strong>onClear</Strong>{' '}
-            handler and a <Strong>clearLabel</Strong> to describe what clicking
-            it will do.
-          </Text>
-
-          <Text tone="promote" id="translations">
-            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
-            <Strong>aria-label</Strong> for the clear button can be customised
-            by providing the <Strong>clearLabel</Strong> prop.
-          </Text>
-        </>
-      ),
-      background: 'surface',
-      Example: ({ getState, setState, toggleState }) =>
-        source(
-          <Inline space="small" alignY="center">
-            {!getState('clearOne') ? (
-              <Tag
-                onClear={() => toggleState('clearOne')}
-                clearLabel={'Clear "One"'}
-                id="clear-1"
-              >
-                One
-              </Tag>
-            ) : null}
-            {!getState('clearTwo') ? (
-              <Tag
-                onClear={() => toggleState('clearTwo')}
-                clearLabel={'Clear "Two"'}
-                id="clear-2"
-              >
-                Two
-              </Tag>
-            ) : null}
-            {!getState('clearThree') ? (
-              <Tag
-                onClear={() => toggleState('clearThree')}
-                clearLabel={'Clear "Three"'}
-                id="clear-3"
-              >
-                Three
-              </Tag>
-            ) : null}
-            <Text tone="secondary">
-              <TextLinkButton
-                weight="weak"
-                hitArea="large"
-                onClick={() => {
-                  setState('clearOne', false);
-                  setState('clearTwo', false);
-                  setState('clearThree', false);
-                }}
-              >
-                Reset
-              </TextLinkButton>
-            </Text>
+            <Tag icon={<IconTag />}>One</Tag>
+            <Tag icon={<IconTag />}>Two</Tag>
+            <Tag icon={<IconTag />}>Three</Tag>
           </Inline>,
         ),
     },

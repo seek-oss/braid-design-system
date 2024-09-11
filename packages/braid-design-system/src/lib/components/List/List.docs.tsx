@@ -6,7 +6,6 @@ import { IconTick, Strong } from '../../playroom/components';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Columns space="large" collapseBelow="desktop">

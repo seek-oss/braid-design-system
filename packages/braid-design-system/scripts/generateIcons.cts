@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
 // @ts-expect-error svgo@3 has types
@@ -97,7 +97,7 @@ const svgrConfig = {
     }).data;
 
     // Validate SVG before import
-    const $ = cheerio.load(optimisedSvg);
+    const $ = load(optimisedSvg);
     $('svg *').each((i, el) => {
       const $el = $(el);
 
@@ -111,7 +111,8 @@ const svgrConfig = {
       });
     });
 
-    const iconName = `Icon${pascalCase(svgName)}`;
+    const isAllCaps = svgName.toUpperCase() === svgName;
+    const iconName = `Icon${isAllCaps ? svgName : pascalCase(svgName)}`;
     const svgComponentName = `${iconName}${variantName ? pascalCase(variantName) : ''}Svg`;
     const svgComponent = await svgr(optimisedSvg, svgrConfig, {
       componentName: svgComponentName,
@@ -151,8 +152,7 @@ const svgrConfig = {
       dedent/* ts */ `
         import React from 'react';
         import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
-        import type { UseIconProps } from '${relative(`${baseDir}/src/lib/hooks/useIcon`)}';
-        import useIcon from '${relative(`${baseDir}/src/lib/hooks/useIcon`)}';
+        import useIcon, { type UseIconProps } from '${relative(`${baseDir}/src/lib/hooks/useIcon`)}';
         import { ${svgComponentName} } from '${relative(`${iconDir}/${svgComponentName}`)}';
 
         export type ${iconName}Props = UseIconProps;
@@ -177,7 +177,6 @@ const svgrConfig = {
 
         const docs: ComponentDocs = {
           category: 'Icon',
-          migrationGuide: true,
           Example: () =>
             source(
               <Stack space="none" align="center">
@@ -191,16 +190,6 @@ const svgrConfig = {
         };
 
         export default docs;
-      `,
-    );
-
-    // Create migration guide, if it doesn't already exist
-    await templateFileIfMissing(
-      `${iconName}.migration.md`,
-      dedent`
-        # ${iconName} Migration Guide
-
-        Please refer to the [Icon Migration Guide.](../Icon.migration.md)
       `,
     );
   });

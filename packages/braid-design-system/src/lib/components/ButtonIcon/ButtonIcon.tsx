@@ -14,7 +14,6 @@ import {
   iconContainerSize,
   iconSize,
 } from '../../hooks/useIcon';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import {
   type ButtonStyleProps,
   ButtonOverlays,
@@ -23,20 +22,26 @@ import {
 import { Text } from '../Text/Text';
 import { Bleed } from '../Bleed/Bleed';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';
+import type { Space } from '../../css/atoms/atoms';
 import * as styles from './ButtonIcon.css';
+import dedent from 'dedent';
 
 export const buttonIconVariants: Array<
   Extract<ButtonStyleProps['variant'], 'soft' | 'transparent'>
 > = ['soft', 'transparent'];
 
-export const buttonIconTones = ['neutral', 'secondary'] as const;
+export const buttonIconTones: Array<
+  Extract<ButtonStyleProps['tone'], 'neutral' | 'formAccent'> | 'secondary'
+> = ['neutral', 'formAccent', 'secondary'];
+export const buttonIconSizes = ['small', 'standard', 'large'] as const;
 
+type ButtonIconSize = (typeof buttonIconSizes)[number];
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonIconProps {
   id: string;
   icon: ReactElement<UseIconProps>;
   label: string;
-  size?: 'standard' | 'large';
+  size?: ButtonIconSize;
   tone?: (typeof buttonIconTones)[number];
   type?: 'button' | 'submit' | 'reset';
   variant?: (typeof buttonIconVariants)[number];
@@ -52,7 +57,11 @@ export interface ButtonIconProps {
   tooltipPlacement?: 'bottom' | 'top';
 }
 
-const padding = 'xsmall';
+const padding: Record<ButtonIconSize, Space> = {
+  small: 'xxsmall',
+  standard: 'xsmall',
+  large: 'xsmall',
+};
 
 const PrivateButtonIcon = forwardRef<
   HTMLButtonElement,
@@ -81,19 +90,41 @@ const PrivateButtonIcon = forwardRef<
     },
     forwardedRef,
   ) => {
+    if (process.env.NODE_ENV !== 'production') {
+      if (tone === 'secondary') {
+        // eslint-disable-next-line no-console
+        console.warn(
+          dedent`
+            The "secondary" tone has been deprecated for \`ButtonIcon\` and will be removed in a future version. Apply the "tone" directly to the icon.
+               <ButtonIcon
+              %c-   tone="secondary"
+              %c-   icon={<Icon />}
+              %c+   icon={<Icon tone="secondary" />}
+               %c/>
+          `,
+          'color: red',
+          'color: red',
+          'color: green',
+          'color: inherit',
+        );
+      }
+    }
+
+    const buttonTone = tone === 'secondary' ? 'neutral' : tone;
+
     const {
       className: buttonClasses,
       width: _,
       ...buttonStyleProps
     } = useButtonStyles({
       variant,
-      tone: 'neutral',
-      size: 'standard',
+      tone: buttonTone,
+      size: size === 'small' ? 'small' : 'standard',
       radius: 'full',
     });
 
     assert(
-      icon.props.size === undefined,
+      icon && icon.props.size === undefined,
       "Icons cannot set the 'size' prop when passed to a ButtonIcon component",
     );
 
@@ -110,19 +141,19 @@ const PrivateButtonIcon = forwardRef<
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
-        padding={padding}
+        padding={padding[size]}
         onClick={onClick}
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
-        className={[buttonClasses, styles.button, virtualTouchable()]}
+        className={[buttonClasses, styles.button]}
         tabIndex={tabIndex}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
         {...buttonStyleProps}
       >
         <ButtonOverlays
           variant={variant}
-          tone="neutral"
+          tone={buttonTone}
           radius="full"
           keyboardFocusable={typeof tabIndex === 'undefined' || tabIndex >= 0}
           forceActive={ariaExpanded === 'true' || ariaExpanded === true}
@@ -133,7 +164,9 @@ const PrivateButtonIcon = forwardRef<
           display="block"
           position="relative"
           className={
-            size === 'large' ? iconContainerSize() : iconSize({ crop: true })
+            size === 'large'
+              ? iconContainerSize()
+              : iconSize({ size, crop: true })
           }
         >
           {cloneElement(icon, { tone: icon.props.tone || tone, size: 'fill' })}
@@ -144,7 +177,7 @@ const PrivateButtonIcon = forwardRef<
     const shouldBleed =
       (typeof bleed === 'undefined' && variant === 'transparent') || bleed;
 
-    return shouldBleed ? <Bleed space={padding}>{button}</Bleed> : button;
+    return shouldBleed ? <Bleed space={padding[size]}>{button}</Bleed> : button;
   },
 );
 

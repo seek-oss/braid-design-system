@@ -1,6 +1,7 @@
 import React, { type ReactNode, useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Heading, Strong, Text, TextDropdown } from '../';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -69,6 +70,26 @@ export const screenshots: ComponentScreenshot = {
                 options={['Relevance', 'Keyword']}
               />
             </Strong>
+          </Text>
+        );
+      },
+    },
+    {
+      label: 'Virtual touch target',
+      Container,
+      Example: ({ id }) => {
+        const [value, setValue] = useState('Relevance');
+
+        return (
+          <Text data={{ [debugTouchableAttrForDataProp]: '' }}>
+            Sort by{' '}
+            <TextDropdown
+              label="Sort order"
+              id={id}
+              onChange={setValue}
+              value={value}
+              options={['Relevance', 'Keyword']}
+            />
           </Text>
         );
       },

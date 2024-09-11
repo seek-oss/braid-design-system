@@ -18,7 +18,6 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import { iconContainerSize } from '../../hooks/useIcon';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styles from './Alert.css';
@@ -108,11 +107,7 @@ export const Alert = ({
               display="flex"
               alignItems="center"
               justifyContent="center"
-              className={[
-                styles.closeButton,
-                iconContainerSize(),
-                virtualTouchable(),
-              ]}
+              className={[styles.closeButton, iconContainerSize()]}
             >
               <Overlay
                 component="span"

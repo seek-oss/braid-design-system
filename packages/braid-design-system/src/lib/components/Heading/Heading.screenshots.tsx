@@ -1,7 +1,7 @@
 import React, { Fragment, type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { heading } from '../../css/typography.css';
-import { Box, Heading, IconPositive, IconPromote, Stack, Text } from '../';
+import { Box, Heading, IconPositive, IconImage, Stack, Text } from '../';
 import { textAlignments } from '../../utils/docsHelpers';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
@@ -130,7 +130,7 @@ export const screenshots: ComponentScreenshot = {
         <Stack space="large">
           {headingLevels.map((level) => (
             <Box key={level} background="neutralLight">
-              <Heading level={level} icon={<IconPromote />}>
+              <Heading level={level} icon={<IconImage />}>
                 Level {level} with icon
               </Heading>
             </Box>
@@ -147,7 +147,7 @@ export const screenshots: ComponentScreenshot = {
             <Heading
               level="3"
               align={alignment}
-              icon={<IconPromote />}
+              icon={<IconImage />}
               key={alignment}
             >
               {alignment}
@@ -163,7 +163,7 @@ export const screenshots: ComponentScreenshot = {
           <Heading
             level="3"
             align={['right', 'center', 'left']}
-            icon={<IconPromote />}
+            icon={<IconImage />}
           >
             Right aligned mobile, center on tablet, left on desktop
           </Heading>
@@ -181,7 +181,7 @@ export const screenshots: ComponentScreenshot = {
             <Fragment key={level}>
               <Box display="flex">
                 <Heading level={level}>
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Heading>
                 <Heading level={level}>
@@ -190,13 +190,13 @@ export const screenshots: ComponentScreenshot = {
                 </Heading>
                 <Heading level={level}>
                   , Abc
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Heading>
               </Box>
               <Box display="flex">
                 <Heading level={level}>
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Heading>
                 <Heading level={level}>
@@ -205,7 +205,7 @@ export const screenshots: ComponentScreenshot = {
                 </Heading>
                 <Heading level={level}>
                   , เอบีซี
-                  <IconPromote />
+                  <IconImage />
                   <Box style={{ border: '1px solid red' }} />
                 </Heading>
               </Box>

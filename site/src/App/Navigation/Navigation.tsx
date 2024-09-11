@@ -4,8 +4,7 @@ import { useWindowScroll, useInterval } from 'react-use';
 import { ContentBlock } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import type { BoxProps } from 'braid-src/lib/components/Box/Box';
-import { Box } from 'braid-src/lib/components/Box/Box';
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { RemoveScroll } from 'react-remove-scroll';
 import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 import { useScrollLock } from '../useScrollLock/useScrollLock';

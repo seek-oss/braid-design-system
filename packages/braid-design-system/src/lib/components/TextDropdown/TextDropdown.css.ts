@@ -1,11 +1,15 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
+import { debugTouchable } from '../private/touchable/debugTouchable';
 import { virtualTouchableRules } from '../private/touchable/virtualTouchableRules';
 
-export const select = style({
-  ...virtualTouchableRules,
-});
+export const select = style([
+  {
+    ...virtualTouchableRules,
+  },
+  debugTouchable(),
+]);
 
 export const focusOverlay = [
   style({

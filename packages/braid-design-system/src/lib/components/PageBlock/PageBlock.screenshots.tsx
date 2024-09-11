@@ -15,6 +15,14 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Small',
+      Example: () => (
+        <PageBlock width="small">
+          <Placeholder height={100} />
+        </PageBlock>
+      ),
+    },
+    {
       label: 'Medium',
       Example: () => (
         <PageBlock width="medium">
@@ -26,6 +34,14 @@ export const screenshots: ComponentScreenshot = {
       label: 'Large',
       Example: () => (
         <PageBlock width="large">
+          <Placeholder height={100} />
+        </PageBlock>
+      ),
+    },
+    {
+      label: 'Full',
+      Example: () => (
+        <PageBlock width="full">
           <Placeholder height={100} />
         </PageBlock>
       ),

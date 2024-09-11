@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentExample } from 'site/types';
+import type { GalleryComponent } from 'site/types';
 import source from '@braid-design-system/source.macro';
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
 import { type TooltipRendererProps, TooltipContent } from './TooltipRenderer';
@@ -33,66 +33,68 @@ const MockTooltipContent = ({
   </Box>
 );
 
-export const galleryItems: ComponentExample[] = [
-  {
-    label: 'Single line of text',
-    Example: () =>
-      source(
-        <MockTooltipContent placement="top">
-          <Text>Tooltip</Text>
-        </MockTooltipContent>,
-      ),
-  },
-  {
-    label: 'Multiple lines of text',
-    Example: () =>
-      source(
-        <MockTooltipContent placement="top">
-          <Text>
-            The quick brown fox jumps over the lazy dog. The quick brown fox
-            jumps over the lazy dog. The quick brown fox jumps over the lazy
-            dog.
-          </Text>
-        </MockTooltipContent>,
-      ),
-  },
-  {
-    label: 'Custom formatting',
-    Example: () =>
-      source(
-        <MockTooltipContent placement="top">
-          <Stack space="medium">
-            <Text weight="strong">Strong text</Text>
+export const galleryItems: GalleryComponent = {
+  examples: [
+    {
+      label: 'Single line of text',
+      Example: () =>
+        source(
+          <MockTooltipContent placement="top">
+            <Text>Tooltip</Text>
+          </MockTooltipContent>,
+        ),
+    },
+    {
+      label: 'Multiple lines of text',
+      Example: () =>
+        source(
+          <MockTooltipContent placement="top">
             <Text>
               The quick brown fox jumps over the lazy dog. The quick brown fox
               jumps over the lazy dog. The quick brown fox jumps over the lazy
               dog.
             </Text>
-          </Stack>
-        </MockTooltipContent>,
-      ),
-  },
-  {
-    label: 'Preview animation',
-    Example: ({ id }) =>
-      source(
-        <Inline space="small">
-          <TooltipRenderer
-            id={id}
-            tooltip={
+          </MockTooltipContent>,
+        ),
+    },
+    {
+      label: 'Custom formatting',
+      Example: () =>
+        source(
+          <MockTooltipContent placement="top">
+            <Stack space="medium">
+              <Text weight="strong">Strong text</Text>
               <Text>
-                This is a tooltip! If you provide enough content, the text will
-                wrap onto multiple lines.
+                The quick brown fox jumps over the lazy dog. The quick brown fox
+                jumps over the lazy dog. The quick brown fox jumps over the lazy
+                dog.
               </Text>
-            }
-          >
-            {({ triggerProps }) => (
-              <Box aria-label="Help" {...triggerProps}>
-                <IconHelp />
-              </Box>
-            )}
-          </TooltipRenderer>
-        </Inline>,
-      ),
-  },
-];
+            </Stack>
+          </MockTooltipContent>,
+        ),
+    },
+    {
+      label: 'Preview animation',
+      Example: ({ id }) =>
+        source(
+          <Inline space="small">
+            <TooltipRenderer
+              id={id}
+              tooltip={
+                <Text>
+                  This is a tooltip! If you provide enough content, the text
+                  will wrap onto multiple lines.
+                </Text>
+              }
+            >
+              {({ triggerProps }) => (
+                <Box aria-label="Help" {...triggerProps}>
+                  <IconHelp />
+                </Box>
+              )}
+            </TooltipRenderer>
+          </Inline>,
+        ),
+    },
+  ],
+};

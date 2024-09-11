@@ -6,7 +6,7 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],
   examples: [
     {
-      label: 'Standard Actions',
+      label: 'Standard size',
       Example: () => (
         <Actions>
           <Button>Button 1</Button>
@@ -16,7 +16,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Small Actions',
+      label: 'Small size',
       Example: () => (
         <Actions size="small">
           <Button>Button 1</Button>

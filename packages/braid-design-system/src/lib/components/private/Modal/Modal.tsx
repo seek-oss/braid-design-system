@@ -88,6 +88,7 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
           return OPENING;
         }
       }
+      return prevState;
     }
 
     case CLOSE_MODAL: {
@@ -97,6 +98,7 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
           return CLOSING;
         }
       }
+      return prevState;
     }
 
     case ANIMATION_COMPLETE: {
@@ -109,10 +111,13 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
           return OPEN;
         }
       }
+      return prevState;
+    }
+
+    default: {
+      return prevState;
     }
   }
-
-  return prevState;
 };
 
 const ANIMATION_DURATION = 300;
@@ -221,14 +226,9 @@ export const Modal = ({
           position="fixed"
           inset={0}
           zIndex="modalBackdrop"
-          transition={position === 'center' ? 'fast' : undefined}
           opacity={state !== OPEN ? 0 : undefined}
           pointerEvents={state === CLOSING ? 'none' : undefined}
-          className={[
-            styles.backdrop,
-            position === 'left' ||
-              (position === 'right' && styles.horiztontalTransition),
-          ]}
+          className={[styles.backdrop, styles.transition[position]]}
         />
 
         <Box
@@ -236,19 +236,15 @@ export const Modal = ({
           inset={0}
           zIndex="modal"
           pointerEvents="none"
-          transition="fast"
           opacity={state !== OPEN ? 0 : undefined}
           paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
           paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
           padding={position === 'center' ? externalGutter : undefined}
           className={[
             styles.modalContainer,
-            (position === 'left' || position === 'right') &&
-              styles.horiztontalTransition,
+            styles.transition[position],
             state === OPENING && styles.entrance[position],
-            state === CLOSING &&
-              position in styles.exit &&
-              styles.exit[position as keyof typeof styles.exit],
+            state === CLOSING && styles.exit[position],
           ]}
         >
           <ModalContent

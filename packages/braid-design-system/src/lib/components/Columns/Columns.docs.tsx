@@ -1,13 +1,12 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Columns, Column, Strong, Text, Stack } from '../';
+import { Columns, Column, Strong, Text, Stack, Tiles } from '../';
 import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
 
 const docs: ComponentDocs = {
   category: 'Layout',
-  migrationGuide: true,
   subComponents: ['Column'],
   Example: () =>
     source(
@@ -23,10 +22,21 @@ const docs: ComponentDocs = {
         </Column>
       </Columns>,
     ),
+  description: (
+    <Text>
+      The <Strong>Columns</Strong> component is used for laying out content
+      horizontally, with fine-grained control of widths, spacing and alignment.
+    </Text>
+  ),
   alternatives: [
     {
       name: 'Inline',
-      description: 'For fine-grained control of spacing and alignment.',
+      description: 'For laying out flowing content that is allowed to wrap.',
+    },
+    {
+      name: 'Spread',
+      description:
+        'For justifying content with equally distributed space in between.',
     },
     {
       name: 'Tiles',
@@ -266,17 +276,129 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Column visibility',
+      description: (
+        <>
+          <Text>
+            Columns can be hidden responsively using the{' '}
+            <Strong>hideBelow</Strong> and/or <Strong>hideAbove</Strong> prop,
+            by specifying the name of the breakpoint, e.g.{' '}
+            <Strong>hideBelow=&ldquo;tablet&rdquo;</Strong>.
+          </Text>
+          <Text>
+            Consider the three column layout below, applying{' '}
+            <Strong>hideBelow=&ldquo;tablet&rdquo;</Strong> to the second
+            column. Three columns will be shown from the <Strong>tablet</Strong>{' '}
+            breakpoint upwards, and the second column will be hidden on{' '}
+            <Strong>mobile</Strong>.
+          </Text>
+        </>
+      ),
+      Example: () => {
+        const { value: visual } = source(
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Columns space="small">
+                <Column>
+                  <Placeholder height={60} label="One" />
+                </Column>
+                <Column>
+                  <Placeholder height={60} label="Two" />
+                </Column>
+                <Column>
+                  <Placeholder height={60} label="Three" />
+                </Column>
+              </Columns>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Columns space="small">
+                <Column>
+                  <Placeholder height={60} label="One" />
+                </Column>
+                <Column>
+                  <Placeholder height={60} label="Three" />
+                </Column>
+              </Columns>
+            </Stack>
+          </Tiles>,
+        );
+
+        const { code: codeDemo } = source(
+          <Columns space="small">
+            <Column>
+              <Placeholder height={60} label="One" />
+            </Column>
+            <Column hideBelow="tablet">
+              <Placeholder height={60} label="Two" />
+            </Column>
+            <Column>
+              <Placeholder height={60} label="Three" />
+            </Column>
+          </Columns>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
+    },
+    {
       label: 'Collapsing across breakpoints',
       description: (
-        <Text>
-          Columns can be collapsed into a single vertical stack responsively
-          using the <Strong>collapseBelow</Strong> prop. The following results
-          in three columns from the <Strong>tablet</Strong> breakpoint upwards,
-          but collapse into a vertical stack on <Strong>mobile</Strong>.
-        </Text>
+        <>
+          <Text>
+            Columns can be collapsed into a single vertical stack responsively
+            using the <Strong>collapseBelow</Strong> prop and specifying the
+            name of the breakpoint, e.g.{' '}
+            <Strong>collapseBelow=&ldquo;tablet&rdquo;</Strong>.
+          </Text>
+          <Text>
+            The following results in three columns from the{' '}
+            <Strong>tablet</Strong> breakpoint upwards, and collapses into a
+            vertical stack on <Strong>mobile</Strong>.
+          </Text>
+        </>
       ),
-      Example: () =>
-        source(
+      Example: () => {
+        const { value: visual } = source(
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Columns space="small">
+                <Column>
+                  <Placeholder height={60} />
+                </Column>
+                <Column>
+                  <Placeholder height={60} />
+                </Column>
+                <Column>
+                  <Placeholder height={60} />
+                </Column>
+              </Columns>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Stack space="small">
+                <Placeholder height={60} />
+                <Placeholder height={60} />
+                <Placeholder height={60} />
+              </Stack>
+            </Stack>
+          </Tiles>,
+        );
+
+        const { code: codeDemo } = source(
           <Columns space="small" collapseBelow="tablet">
             <Column>
               <Placeholder height={60} />
@@ -288,7 +410,13 @@ const docs: ComponentDocs = {
               <Placeholder height={60} />
             </Column>
           </Columns>,
-        ),
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Reversing the column order',

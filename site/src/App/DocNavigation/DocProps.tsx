@@ -185,7 +185,6 @@ export const DocProps = () => {
     subfolder ? `${subfolder}/` : ''
   }${docsName}`;
   const sourceUrl = `${sourceUrlPrefix}/${componentFolder}`;
-  const migrationGuideUrl = `${sourceUrlPrefix}/${componentFolder}/${docsName}.migration.md`;
 
   const propsToDocument =
     'subComponents' in docs && docs.subComponents
@@ -215,11 +214,6 @@ export const DocProps = () => {
           <Text>
             <TextLink href={sourceUrl}>View Source</TextLink>
           </Text>
-          {'migrationGuide' in docs && docs.migrationGuide ? (
-            <Text>
-              <TextLink href={migrationGuideUrl}>Migration Guide</TextLink>
-            </Text>
-          ) : null}
         </Stack>
       </Stack>
     </>

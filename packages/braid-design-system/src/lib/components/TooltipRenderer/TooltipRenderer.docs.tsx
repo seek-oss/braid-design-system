@@ -125,7 +125,6 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
       Example: ({ id }) =>
         source(
           <Inline space="small">

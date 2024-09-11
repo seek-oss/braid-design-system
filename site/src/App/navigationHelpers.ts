@@ -3,7 +3,12 @@ import * as components from 'braid-src/lib/components';
 import * as testComponents from 'braid-src/entries/test';
 import * as css from 'braid-src/entries/css';
 import type { Snippets } from 'braid-src/lib/components/private/Snippets';
-import type { ComponentDocs, ComponentExample, CssDoc } from '../types';
+import type {
+  ComponentDocs,
+  ComponentExample,
+  CssDoc,
+  GalleryComponent,
+} from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
 const componentDocsContext = require.context(
@@ -106,5 +111,9 @@ const getComponentNameFromFilename = (filename: string) => {
 
 export const galleryComponents = galleryContext.keys().map((filename) => ({
   name: getComponentNameFromFilename(filename),
-  examples: galleryContext(filename).galleryItems as ComponentExample[],
+  itemWidth:
+    (galleryContext(filename).galleryItems
+      .itemWidth as GalleryComponent['itemWidth']) || 'standard',
+  examples: galleryContext(filename).galleryItems
+    .examples as ComponentExample[],
 }));

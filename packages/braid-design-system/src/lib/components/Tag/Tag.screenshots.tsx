@@ -1,59 +1,109 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Tag, Inline, IconHelp } from '../';
+import { Tag, Inline, IconTag, Stack } from '../';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
+  screenshotWidths: [768],
   examples: [
     {
       label: 'Standard Tag',
       background: 'surface',
-      Example: () => <Tag>Tag</Tag>,
+      Example: ({ handler }) => (
+        <Inline space="small">
+          <Tag>Tag</Tag>
+          <Tag icon={<IconTag />}>Tag</Tag>
+          <Tag icon={<IconTag />} onClear={handler} clearLabel="Clear">
+            Tag
+          </Tag>
+          <Tag icon={<IconTag />} onAdd={handler} addLabel="Add">
+            Tag
+          </Tag>
+        </Inline>
+      ),
     },
     {
-      label: 'Clearable Tag',
+      label: 'Small Tag',
       background: 'surface',
       Example: ({ handler }) => (
-        <Tag onClear={handler} clearLabel="Clear tag">
-          Tag
-        </Tag>
+        <Inline space="xsmall">
+          <Tag size="small">Tag</Tag>
+          <Tag size="small" icon={<IconTag />}>
+            Tag
+          </Tag>
+          <Tag
+            size="small"
+            icon={<IconTag />}
+            onClear={handler}
+            clearLabel="Clear"
+          >
+            Tag
+          </Tag>
+          <Tag size="small" icon={<IconTag />} onAdd={handler} addLabel="Add">
+            Tag
+          </Tag>
+        </Inline>
       ),
     },
     {
       label: 'Truncated Tag',
       background: 'surface',
       Example: ({ handler }) => (
-        <Tag onClear={handler} clearLabel="Clear tag">
-          The quick brown fox jumps over the lazy dog. The quick brown fox jumps
-          over the lazy dog. The quick brown fox jumps over the lazy dog. The
-          quick brown fox jumps over the lazy dog. The quick brown fox jumps
-          over the lazy dog. The quick brown fox jumps over the lazy dog. The
-          quick brown fox jumps over the lazy dog.
-        </Tag>
-      ),
-    },
-    {
-      label: 'Test: Standard and clearable tags should be equal height',
-      background: 'surface',
-      Example: ({ handler }) => (
-        <Inline space="small">
-          <Tag>Tag</Tag>
+        <Stack space="small">
+          <Tag>
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
+          <Tag icon={<IconTag />}>
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
           <Tag onClear={handler} clearLabel="Clear tag">
-            Tag
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
           </Tag>
-        </Inline>
+          <Tag icon={<IconTag />} onClear={handler} clearLabel="Clear tag">
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+            dog. The quick brown fox jumps over the lazy dog.
+          </Tag>
+        </Stack>
       ),
     },
     {
-      label: 'With an icon',
+      label: 'Virtual touch target',
       background: 'surface',
       Example: ({ handler }) => (
-        <Inline space="small">
-          <Tag icon={<IconHelp />}>Tag</Tag>
-          <Tag icon={<IconHelp />} onClear={handler} clearLabel="Clear tag">
-            Tag
-          </Tag>
-        </Inline>
+        <Stack space="large">
+          <Inline space="xsmall" data={{ [debugTouchableAttrForDataProp]: '' }}>
+            <Tag size="small" onClear={handler} clearLabel="Clear">
+              Tag
+            </Tag>
+            <Tag size="small" onAdd={handler} addLabel="Add">
+              Tag
+            </Tag>
+          </Inline>
+
+          <Inline space="small" data={{ [debugTouchableAttrForDataProp]: '' }}>
+            <Tag onClear={handler} clearLabel="Clear">
+              Tag
+            </Tag>
+            <Tag onAdd={handler} addLabel="Add">
+              Tag
+            </Tag>
+          </Inline>
+        </Stack>
       ),
     },
   ],

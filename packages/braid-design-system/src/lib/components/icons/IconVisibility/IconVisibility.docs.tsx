@@ -14,7 +14,6 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Icon',
-  migrationGuide: true,
   Example: () =>
     source(
       <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">

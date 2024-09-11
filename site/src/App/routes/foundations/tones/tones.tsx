@@ -10,8 +10,7 @@ import {
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import type { BoxProps } from 'braid-src/lib/components/Box/Box';
-import { Box } from 'braid-src/lib/components/Box/Box';
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { TextStack } from '../../../TextStack/TextStack';
 import type { Page } from '../../../../types';
 import { ThemedExample } from '../../../ThemeSetting';
@@ -146,7 +145,7 @@ const ToneDefinition = ({ tone }: { tone: Tone }) => {
     <Stack space="small">
       <Columns space="medium" alignY="center">
         <Column width="content">
-          <ThemedExample>
+          <ThemedExample transparent>
             <Box background={swatch} className={styles.square} />
           </ThemedExample>
         </Column>
@@ -215,7 +214,7 @@ function TonePage() {
         {tones.map((tone) => (
           <Column key={tone}>
             <Stack space={['none', 'xsmall']}>
-              <ThemedExample>
+              <ThemedExample transparent>
                 <Box
                   background={toneDocs[tone].swatch}
                   width="full"

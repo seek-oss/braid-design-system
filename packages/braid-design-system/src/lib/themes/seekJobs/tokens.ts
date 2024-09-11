@@ -19,7 +19,7 @@ export default makeTokens({
   tokenOverrides: {
     legacy: false,
     typography: {
-      fontFamily: 'SeekSans, "SeekSans Fallback", Arial',
+      fontFamily: 'SeekSans, "SeekSans Fallback", Arial, Tahoma, sans-serif',
       webFont: 'https://www.seek.com.au/static/shared-web/seeksans.css',
       fontMetrics: {
         capHeight: 783,

@@ -1,8 +1,3 @@
-require('esbuild'); // depcheck doesn't know it's used by esbuild-register
-const { register } = require('esbuild-register/dist/node');
+#!/usr/bin/env -S pnpm tsx
 
-register({
-  target: 'node14',
-});
-
-require('./src/index.ts');
+import './src/index.ts';

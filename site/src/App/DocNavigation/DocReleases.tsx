@@ -6,8 +6,7 @@ import {
   Badge,
   TextLink,
   Text,
-  Column,
-  Columns,
+  Spread,
   List,
 } from 'braid-src/lib/components';
 import { LinkableHeading } from '@braid-design-system/docs-ui';
@@ -59,21 +58,17 @@ export const DocReleases = () => {
                 paddingTop={index > 0 ? 'medium' : undefined}
               >
                 <Stack space="large">
-                  <Columns space="small" alignY="center">
-                    <Column>
-                      <LinkableHeading level="3">{`v${version}`}</LinkableHeading>
-                    </Column>
+                  <Spread space="small" alignY="center">
+                    <LinkableHeading level="3">{`v${version}`}</LinkableHeading>
                     {historyItem.time ? (
-                      <Column width="content">
-                        <Badge
-                          bleedY
-                          tone={historyItem.isRecent ? 'promote' : 'neutral'}
-                        >
-                          {historyItem.time}
-                        </Badge>
-                      </Column>
+                      <Badge
+                        bleedY
+                        tone={historyItem.isRecent ? 'promote' : 'neutral'}
+                      >
+                        {historyItem.time}
+                      </Badge>
                     ) : null}
-                  </Columns>
+                  </Spread>
                   <List space="xlarge">
                     {historyItem.changesets.map((change, changeIndex) => (
                       <Markdown key={`${version}_${index}_${changeIndex}`}>

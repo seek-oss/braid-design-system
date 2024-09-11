@@ -41,7 +41,7 @@ export const FieldLabel = ({
   );
 
   return (
-    <Stack space="xsmall" data={data}>
+    <Stack space="small" data={data}>
       {label ? (
         <Box component="span" display="flex" justifyContent="spaceBetween">
           {htmlFor === false ? (
@@ -55,11 +55,9 @@ export const FieldLabel = ({
         </Box>
       ) : null}
       {description ? (
-        <Box paddingTop={label ? 'xxsmall' : undefined} paddingBottom="xxsmall">
-          <Text tone="secondary" id={descriptionId}>
-            {description}
-          </Text>
-        </Box>
+        <Text tone="secondary" id={descriptionId}>
+          {description}
+        </Text>
       ) : null}
     </Stack>
   );

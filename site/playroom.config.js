@@ -1,4 +1,6 @@
 const path = require('path');
+// Todo - shouldn't need eslint disable
+// eslint-disable-next-line import/no-unresolved
 const SkuWebpackPlugin = require('sku/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const browserslist = require('../browserslist');
@@ -12,10 +14,12 @@ module.exports = {
   components: require.resolve('./src/playroom.components.ts'),
   snippets: resolveFromBraid('entries/playroom/snippets.ts'),
   themes: resolveFromBraid('lib/themes/index.ts'),
+  defaultVisibleThemes: ['apac', 'seekJobs'],
   frameComponent: require.resolve('./src/playroom.frame.ts'),
   scope: require.resolve('./src/playroom.scope.ts'),
   typeScriptFiles: [resolveFromBraid('entries/playroom/components.ts')],
-  widths: [320, 768, 1024, 1400],
+  widths: [320, 390, 768, 1024, 1280, 1440, 1600],
+  defaultVisibleWidths: [390, 768, 1280],
   openBrowser: false,
   port: 8082,
   webpackConfig: () => ({

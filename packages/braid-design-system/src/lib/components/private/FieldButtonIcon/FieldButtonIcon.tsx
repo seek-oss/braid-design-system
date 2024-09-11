@@ -1,8 +1,13 @@
-import React, { type MouseEvent, useCallback, forwardRef } from 'react';
+import React, {
+  type MouseEvent,
+  useCallback,
+  forwardRef,
+  cloneElement,
+} from 'react';
 import { type ButtonIconProps, ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 
 export const FieldButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
-  ({ label, onClick, onMouseDown, ...restProps }, forwardedRef) => {
+  ({ label, onClick, onMouseDown, icon, ...restProps }, forwardedRef) => {
     const handleMouseDown = useCallback(
       (event: MouseEvent<HTMLButtonElement>) => {
         if (typeof onMouseDown !== 'function') {
@@ -32,8 +37,9 @@ export const FieldButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
       <ButtonIcon
         ref={forwardedRef}
         label={label}
-        tone="secondary"
+        icon={cloneElement(icon, { tone: icon.props.tone || 'secondary' })}
         variant="transparent"
+        size="small"
         onClick={onClick}
         onMouseDown={handleMouseDown}
         tabIndex={-1}

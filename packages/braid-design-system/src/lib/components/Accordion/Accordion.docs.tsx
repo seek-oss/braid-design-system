@@ -5,11 +5,10 @@ import {
   Accordion,
   AccordionItem,
   Badge,
-  Card,
   Text,
   TextLink,
   Strong,
-  IconPromote,
+  IconImage,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { validSpaceValues } from './Accordion';
@@ -17,7 +16,6 @@ import { validSpaceValues } from './Accordion';
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['AccordionItem'],
-  migrationGuide: true,
   Example: () =>
     source(
       <Accordion>
@@ -86,34 +84,23 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Card>
-            <Accordion
-              size="standard"
-              tone="secondary"
-              space="xlarge"
-              weight="regular"
-              dividers={false}
-            >
-              <AccordionItem
-                label="Accordion item 1"
-                id="accordion_appearance_1"
-              >
-                <Placeholder height={80} />
-              </AccordionItem>
-              <AccordionItem
-                label="Accordion item 2"
-                id="accordion_appearance_2"
-              >
-                <Placeholder height={80} />
-              </AccordionItem>
-              <AccordionItem
-                label="Accordion item 3"
-                id="accordion_appearance_3"
-              >
-                <Placeholder height={80} />
-              </AccordionItem>
-            </Accordion>
-          </Card>,
+          <Accordion
+            size="standard"
+            tone="secondary"
+            space="xlarge"
+            weight="regular"
+            dividers={false}
+          >
+            <AccordionItem label="Accordion item 1" id="accordion_appearance_1">
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem label="Accordion item 2" id="accordion_appearance_2">
+              <Placeholder height={80} />
+            </AccordionItem>
+            <AccordionItem label="Accordion item 3" id="accordion_appearance_3">
+              <Placeholder height={80} />
+            </AccordionItem>
+          </Accordion>,
         ),
     },
     {
@@ -164,21 +151,21 @@ const docs: ComponentDocs = {
             <AccordionItem
               label="Accordion item 1"
               id="accordion_icon_1"
-              icon={<IconPromote />}
+              icon={<IconImage />}
             >
               <Placeholder height={80} />
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
               id="accordion_icon_2"
-              icon={<IconPromote />}
+              icon={<IconImage />}
             >
               <Placeholder height={80} />
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
               id="accordion_icon_3"
-              icon={<IconPromote />}
+              icon={<IconImage />}
             >
               <Placeholder height={80} />
             </AccordionItem>

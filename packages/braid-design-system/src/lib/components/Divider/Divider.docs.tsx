@@ -1,24 +1,22 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Divider, Card, Stack, Text, Strong } from '../';
+import { Divider, Stack, Text, Strong } from '../';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Layout',
   Example: () =>
     source(
-      <Card rounded>
-        <Stack space="xlarge">
-          <Stack space="medium">
-            <Text tone="secondary">Regular weight</Text>
-            <Divider />
-          </Stack>
-          <Stack space="medium">
-            <Text tone="secondary">Strong weight</Text>
-            <Divider weight="strong" />
-          </Stack>
+      <Stack space="xlarge">
+        <Stack space="medium">
+          <Text tone="secondary">Regular weight</Text>
+          <Divider />
         </Stack>
-      </Card>,
+        <Stack space="medium">
+          <Text tone="secondary">Strong weight</Text>
+          <Divider weight="strong" />
+        </Stack>
+      </Stack>,
     ),
   accessibility: (
     <Text>

@@ -14,7 +14,6 @@ import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Text>
@@ -158,7 +157,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: { lightMode: 'surface', darkMode: 'bodyDark' },
+      background: 'surface',
       Example: () =>
         source(
           <Stack space="large">

@@ -82,10 +82,6 @@ export const App = () => (
 );
 ```
 
-## Style Guide Migration
-
-If you're migrating from an existing style guide, please refer to the [Style Guide Migration](./docs/Style%20Guide%20Migration.md) guide.
-
 ## Local Development
 
 This project uses [pnpm](https://pnpm.io/) for development dependencies.

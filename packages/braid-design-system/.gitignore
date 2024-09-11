@@ -1,9 +1,9 @@
 node_modules/
 codemod/dist/
-dist-storybook/
 src/lib/components/icons/*/*Svg.tsx
 src/lib/playroom/snippets/*
 README.md
+storybook-static
 
 # managed by crackle
 /color-mode/query-param

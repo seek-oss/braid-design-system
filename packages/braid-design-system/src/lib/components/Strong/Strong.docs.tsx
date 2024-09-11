@@ -5,7 +5,6 @@ import { Strong, Text, TextLink } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Text size="large">

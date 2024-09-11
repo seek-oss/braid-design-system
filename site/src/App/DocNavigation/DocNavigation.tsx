@@ -198,7 +198,11 @@ export const DocNavigation = () => {
     history = getHistory(...relevantNames);
   }
 
-  const updateCount = history.filter((item) => item.isRecent).length;
+  const updateCount = Array.from(
+    new Set(
+      history.filter(({ isRecent }) => isRecent).map(({ version }) => version),
+    ),
+  ).length;
 
   return (
     <Stack space={['xlarge', 'xxlarge']}>

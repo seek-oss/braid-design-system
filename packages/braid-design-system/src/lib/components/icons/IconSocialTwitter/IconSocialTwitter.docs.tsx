@@ -6,7 +6,6 @@ import { IconSocialTwitter, Heading, Stack, Text, TextLink } from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
-  migrationGuide: true,
   deprecationWarning: (
     <Text>
       This component has been deprecated and will be removed in a future

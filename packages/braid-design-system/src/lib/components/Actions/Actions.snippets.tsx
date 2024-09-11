@@ -1,35 +1,15 @@
 import React from 'react';
-import { Actions, Button, IconDelete } from '../../playroom/components';
+import { Actions, Button } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
 import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'With multiple buttons',
+    name: 'Standard size',
     code: source(
       <Actions>
-        <Button>Submit</Button>
-        <Button variant="transparent">Cancel</Button>
-      </Actions>,
-    ),
-  },
-  {
-    name: 'With a branded action',
-    code: source(
-      <Actions>
-        <Button tone="brandAccent">Submit</Button>
-        <Button variant="transparent">Cancel</Button>
-      </Actions>,
-    ),
-  },
-  {
-    name: 'With a destructive action',
-    code: source(
-      <Actions>
-        <Button tone="critical" icon={<IconDelete />}>
-          Delete
-        </Button>
-        <Button variant="transparent">Cancel</Button>
+        <Button>Button 1</Button>
+        <Button variant="transparent">Button 2</Button>
       </Actions>,
     ),
   },

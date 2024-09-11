@@ -8,7 +8,6 @@ import {
   Inline,
   TextLink,
   Strong,
-  IconPromote,
   Notice,
   IconLanguage,
   IconBookmark,
@@ -32,7 +31,6 @@ const docs: ComponentDocs = {
               tone: 'positive',
             })
           }
-          icon={<IconPromote />}
         >
           Show animation
         </Button>
@@ -274,7 +272,7 @@ const docs: ComponentDocs = {
                 })
               }
             >
-              Show animation <IconPromote alignY="lowercase" />
+              Show animation
             </Button>
           </Inline>,
         );
@@ -336,7 +334,7 @@ const docs: ComponentDocs = {
                 })
               }
             >
-              Show animation <IconPromote alignY="lowercase" />
+              Show animation
             </Button>
           </Inline>,
         );
@@ -394,7 +392,7 @@ const docs: ComponentDocs = {
                 })
               }
             >
-              Show animation <IconPromote alignY="lowercase" />
+              Show animation
             </Button>
           </Inline>,
         );
@@ -457,7 +455,7 @@ const docs: ComponentDocs = {
                 })
               }
             >
-              Show animation <IconPromote alignY="lowercase" />
+              Show animation
             </Button>
           </Inline>,
         );

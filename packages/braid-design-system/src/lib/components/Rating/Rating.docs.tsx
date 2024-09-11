@@ -6,7 +6,6 @@ import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () => source(<Rating size="large" rating={3} />),
   accessibility: (
     <>

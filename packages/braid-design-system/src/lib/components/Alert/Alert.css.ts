@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
-export const closeButton = style({});
+export const closeButton = style([{}, virtualTouchable]);
 
 export const closeButtonFocus = style({
   selectors: {

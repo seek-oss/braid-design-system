@@ -35,6 +35,7 @@ export { PasswordField } from '../components/PasswordField/PasswordField.playroo
 export { Radio } from '../components/Radio/Radio.playroom';
 export { RadioGroup } from '../components/RadioGroup/RadioGroup.playroom';
 export { Rating } from '../components/Rating/Rating.playroom';
+export { Spread } from '../components/Spread/Spread.playroom';
 export { Stack } from '../components/Stack/Stack.playroom';
 export { TabsProvider, Tabs, Tab } from '../components/Tabs/Tabs.playroom';
 export { Tag } from '../components/Tag/Tag.playroom';

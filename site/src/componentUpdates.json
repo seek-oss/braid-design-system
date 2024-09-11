@@ -3756,5 +3756,361 @@
         "summary": "**Checkbox:** Improve tri-state handling\n\nFixes a bug in [tri-state] `Checkbox` where transitioning from `mixed` to `checked` could result in the visual presentation being out of sync with the desired state.\n\n[tri-state]: https://seek-oss.github.io/braid-design-system/components/Checkbox#tri-state-support"
       }
     ]
+  },
+  {
+    "version": "32.17.0",
+    "updates": [
+      {
+        "updated": [
+          "IconCritical",
+          "IconLanguage"
+        ],
+        "summary": "Update semantic icon assets.\n\n`IconCritical`: Move from circle to diamond outline. Increase the visual distinction from `IconInfo`.\n`IconLanguage`: Move from globe to characters. Better represents the concept of language. Previous asset available as `IconGlobe`.\n\n\n**MIGRATION GUIDE**\n\nAs the above are updates to semantics icons, consumers are unaffected if their usage follows the icon's semantic intent.\nFor those choosing the icon based on its visual appearance, please review the usage and consider decoupling from the semantic system icon for safer upgrades."
+      },
+      {
+        "new": [
+          "IconAI",
+          "IconCareer",
+          "IconCategory",
+          "IconExperience",
+          "IconGift",
+          "IconGlobe",
+          "IconRocket",
+          "IconSentiment",
+          "IconSkills"
+        ],
+        "summary": "Add new icons to the library"
+      }
+    ]
+  },
+  {
+    "version": "32.18.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "Ensure all paths through `AutoSuggest` state updates are handled."
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "Fix minor bug which prevented the `Drawer` exit animation from occurring."
+      },
+      {
+        "updated": [
+          "IconPromote"
+        ],
+        "summary": "**IconPromote:** Update semantic icon from sparkles to a megaphone\n\nWith the introduction of `IconAI` recently adopting the sparkles artwork (aligning with the industry trend), the `IconPromote` semantic is now updated to use a megaphone instead of sparkles.\n\nThis change will run through all semantic usages, for example `Alert`, `Notice`, etc."
+      },
+      {
+        "new": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add `small` size\n\nIntroduce a new `small` size for `ButtonIcon` component.\nThis size sits alongside the existing `standard` and `large` sizes.\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  size=\"small\"\n  icon={<IconEdit />}\n  label=\"Small size\"\n/>\n```"
+      },
+      {
+        "updated": [
+          "Dialog"
+        ],
+        "summary": "Add exit animation to `Dialog` which mirrors the existing entrance animation."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "PasswordField",
+          "TextField"
+        ],
+        "summary": "Adopt `small` sized `ButtonIcon` for field actions\n\nSwitch over to `small` (previously `standard`) sized `ButtonIcon` for field actions such as clear field, or toggle password visibility."
+      },
+      {
+        "new": [
+          "Tag"
+        ],
+        "summary": "**Tag:** Add `small` size\n\nIntroduce a new `small` size for `Tag` component.\nThis size sits alongside the existing `standard` size, which is the default.\n\n**EXAMPLE USAGE:**\n```jsx\n<Tag size=\"small\">\n  Tag\n</Tag>\n```"
+      },
+      {
+        "updated": [
+          "MenuButton"
+        ],
+        "summary": "**MenuButton:** Improve virtual touch target positioning for narrow elements\n\nTo maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.\nThis change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area."
+      },
+      {
+        "updated": [
+          "Accordion",
+          "AccordionItem",
+          "Alert",
+          "Button",
+          "ButtonLink",
+          "ButtonIcon",
+          "Checkbox",
+          "RadioItem",
+          "Radio",
+          "TextDropdown",
+          "TextLink",
+          "TextLinkButton",
+          "Toggle"
+        ],
+        "summary": "Improve virtual touch target positioning for narrow elements\n\nTo maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.\nThis change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area."
+      }
+    ]
+  },
+  {
+    "version": "32.18.1",
+    "updates": []
+  },
+  {
+    "version": "32.19.0",
+    "updates": [
+      {
+        "updated": [
+          "PageBlock"
+        ],
+        "summary": "**PageBlock:** Add `small` and `full` width options\n\nAdd `small` to available `width` options of `PageBlock` to support narrower max width for page content.\n\nAlso introducing `full` as a `width` option to enable full width content, while still maintaining consistent screen gutters.\n\n**EXAMPLE USAGE:**\n```jsx\n<PageBlock width=\"small\">\n  ...\n</PageBlock>\n```"
+      },
+      {
+        "updated": [
+          "ContentBlock"
+        ],
+        "summary": "**ContentBlock:** Add support for left alignment\n\nIntroduces horizontal alignment support for `ContentBlock`, enabling content to be constrained to a max width and aligned to the left.\n\nUseful inside of larger `PageBlock` or `ContentBlock` elements when constraining the content for readability or length of form fields.\n\n**EXAMPLE USAGE:**\n```jsx\n<ContentBlock align=\"left\">\n  ...\n</ContentBlock>\n```"
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add `formAccent` tone\n\nIntroduces support for the `formAccent` tone on `ButtonIcon`.\n\nThe new tone sits alongside the existing `neutral` tone, while the `secondary` tone is now deprecated and will be removed in a future version (see [Migration Guide] below).\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon tone=\"formAccent\" icon={<IconAdd />} />\n```\n\n**MIGRATION GUIDE:**\n\nFor consumers of the now deprecated `secondary` tone, you can pro-actively migrate away from it by moving the `tone` to the icon itself:\n\n```diff\n <ButtonIcon\n-  tone=\"secondary\"\n-  icon={<IconAdd />}\n+  icon={<IconAdd tone=\"secondary\" />}\n```\n\n\n[Migration Guide]: #migration-guide"
+      }
+    ]
+  },
+  {
+    "version": "32.19.1",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest",
+          "Dialog",
+          "Drawer",
+          "PasswordField",
+          "Tag",
+          "TextField",
+          "useToast"
+        ],
+        "summary": "Move secondary ButtonIcon tone to icons\n\nFollowing the deprecation of the `secondary` tone of `ButtonIcon`, this updates all internal usages to apply the `secondary` tone directly to the icon."
+      }
+    ]
+  },
+  {
+    "version": "32.20.0",
+    "updates": [
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Add `togglePosition` prop\n\nIntroduces the `togglePosition` prop, enabling the toggle to either be `leading` or `trailing` its label text.\n\n**EXAMPLE USAGE:**\n```jsx\n<Toggle togglePosition=\"trailing\" label=\"Label\" />\n```"
+      },
+      {
+        "updated": [
+          "Tag"
+        ],
+        "summary": "**Tag**: Add missing click event parameter to `onClear` prop type"
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Add `bleedY` prop\n\nIntroduces the `bleedY` prop, enabling vertical bleed for the `Toggle` component. This removes excess vertical space created by the `Toggle` input.\n\n**EXAMPLE USAGE:**\n```jsx\n<Toggle label=\"Label\" bleedY />\n```\n\n**MIGRATION GUIDE:**\n\nVertical bleed will become standard for the `Toggle` component in a future version. Please use the `bleedY` prop with a value of `true` and update your layout accordingly."
+      },
+      {
+        "updated": [
+          "Tag"
+        ],
+        "summary": "**Tag:** Introduce \"addable\" support\n\nTag actions have been extended to now support being “added”.\nA `Tag` will include a small add icon button when both an `onAdd` handler and `addLabel` prop are provided.\n\n**EXAMPLE USAGE:**\n```jsx\n<Tag onAdd={() => {...}} addLabel=\"Add Tag\" />\n```"
+      },
+      {
+        "updated": [
+          "seekJobs"
+        ],
+        "summary": "**seekJobs:** Use Tahoma for Thai fallback font\n\nCurrently in the `seekJobs` theme, the fallback font for the Thai character set resolves to the default system font which differs by operating system.\nBy choosing a deterministic fallback that is available across operating systems, we can use [Capsize] to [improve the alignment] with the SEEK Sans web font, and reduce Cumulative Layout Shift for experiences that use Thai.\n\nAdditionally, adding `sans-serif` as an ultimate fallback in the event that we ever fall all the way through the stack on an obscure operating system.\n\n[Capsize]: https://seek-oss.github.io/capsize/\n[improve the alignment]: https://github.com/seek-oss/capsize?tab=readme-ov-file#createfontstack"
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Improve label text vertical alignment at `small` size"
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Remove tick icon & fix antialias haze when selected\n\nSimplying the selected state design by removing the tick icon from the toggle thumb.\n\nAlso fixes the antialias haze that appears around the thumb when selected."
+      }
+    ]
+  },
+  {
+    "version": "32.21.0",
+    "updates": [
+      {
+        "new": [
+          "IconHash"
+        ],
+        "summary": "**IconHash:** Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<IconHash />\n```"
+      },
+      {
+        "updated": [
+          "Checkbox",
+          "CheckboxStandalone",
+          "MenuItemCheckbox",
+          "RadioItem",
+          "Toggle"
+        ],
+        "summary": "Refine the Checkbox, Radio, Toggle & MenuItemCheckbox size\n\nRefines the size of the inline field elements including the `RadioItem`, `Checkbox`, `Toggle` and `MenuItemCheckbox` components.\n\nPrimarily impacts consumers of the `seekJobs` theme, seeing a reduction across all sizes."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "PasswordField",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "Ensure no space above field with `undefined` label\n\nFixes an issue where passing `undefined` as the `label` to a form field would result in an unwanted space above the field."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "TextField",
+          "Textarea",
+          "Checkbox",
+          "RadioItem",
+          "RadioGroup",
+          "FieldLabel",
+          "FieldMessage"
+        ],
+        "summary": "Improve internal form field spacing\n\nRefined the spacing between internal elements of form fields to align with the latest spacing guidelines.\n\nThis change impacts the `Stack` spacing between `label` and `description`, the form field itself and the `message` slots."
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add `suggestionHighlight` prop\n\nIntroduces the `suggestionHighlight` prop, which uses the input value to automatically highlight either the `matching` or `remaining` portion of each suggestion.\n\n**EXAMPLE USAGE:**\n```jsx\n<Autosuggest suggestionHighlight=\"matching\">\n```"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Ensure label follows correct tone\n\nEnsure that the foreground text of a `Badge` always follows the correct tone for the background colour.\nFixes a bug where using a `Badge` in a `List` that overrides the default tone would result in the `Badge` text following the `List` tone instead of the `Badge` tone."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "Fix warning in React 18.3.0 when using useToast."
+      },
+      {
+        "updated": [
+          "MonthPicker"
+        ],
+        "summary": "**MonthPicker:** Reduce space between month and year fields\n\nReducing the space between month and year fields to improve correlation between the two fields within the greater context of a form."
+      }
+    ]
+  },
+  {
+    "version": "32.22.0",
+    "updates": [
+      {
+        "new": [
+          "Column"
+        ],
+        "summary": "**Column:** Add support for hide above/below breakpoint\n\nIntroduce new `hideAbove` and `hideBelow` props on column for responsively hiding columns across breakpoint.\n\nThese props can be used either separately or in combination to optimise content display across different screen sizes.\n\n**EXAMPLE USAGE:**\n```jsx\n<Columns space=\"small\">\n  <Column>\n    <Placeholder height={60} label=\"Always visible\" />\n  </Column>\n  <Column hideBelow=\"tablet\">\n    <Placeholder height={60} label=\"Tablet and above\" />\n  </Column>\n  <Column hideAbove=\"mobile\">\n    <Placeholder height={60} label=\"Mobile Only\" />\n  </Column>\n</Columns>\n```"
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Checkbox",
+          "CheckboxStandalone",
+          "RadioItem"
+        ],
+        "summary": "Move `badge` slot inside label\n\nRelocate the `badge` slot inside the `label` slot enabling the `Badge` to sit alongside the last word in wrapping lines of text."
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Enable usage inside typographic components\n\nA `Badge` can now be nested inside typographic components, e.g. `Text` and `Heading`, as an inline element alongside text.\nPreviously a `Badge` had to be aligned against text using an `Inline` component, which would result in the `Badge` dropping below the text when the copy wrapped.\n\n**EXAMPLE USAGE:**\n```jsx\n<Text>\n  Lorem ipsum velit in <Badge>amet</Badge>.\n</Text>\n```"
+      },
+      {
+        "new": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Add `size` support\n\nIntroduces the ability to customise the `size` of the `Tab` components in the tab list.\nAvailable sizes are `standard` (default) and `small`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Tabs size=\"small\">\n  <Tab>First tab</Tab>\n  <Tab>Second tab</Tab>\n  <Tab>Third tab</Tab>\n</Tabs>\n```"
+      },
+      {
+        "new": [
+          "Spread"
+        ],
+        "summary": "**Spread:** Add new layout component\n\nIntroduce a new layout component, `Spread`, used to justify content with both an equally distributed and a specified minimum amount of space in between each child.\n\n**EXAMPLE USAGE:**\n\nThe `Spread` component works horizontally by default:\n\n```jsx\n<Spread space=\"small\" alignY=\"center\">\n  <Heading level=\"4\">Heading</Heading>\n\n  <OverflowMenu label=\"Options\">\n    <MenuItem>First</MenuItem>\n    <MenuItem>Second</MenuItem>\n  </OverflowMenu>\n</Spread>\n```\n\nBut can be switched to `vertical` via the `direction` prop:\n\n```jsx\n<Spread space=\"large\" direction=\"vertical\">\n  <Stack space=\"small\">\n    <Heading level=\"4\">Heading</Heading>\n    <Text>Text</Text>\n  </Stack>\n\n  <Text size=\"small\" tone=\"secondary\">\n    Date\n  </Text>\n</Spread>\n```"
+      }
+    ]
+  },
+  {
+    "version": "32.23.0",
+    "updates": [
+      {
+        "new": [
+          "Spread"
+        ],
+        "summary": "**Spread:** Add `component` prop support\n\nEnable support for changing the underlying HTML element of the `Spread` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<Spread component=\"span\">\n  ...\n</Spread>\n```"
+      },
+      {
+        "new": [
+          "Spread"
+        ],
+        "summary": "**Spread:** Add `data` prop support\n\n**EXAMPLE USAGE:**\n```jsx\n<Spread data={{ test: 123 }}>\n  ...\n</Spread>\n```"
+      }
+    ]
+  },
+  {
+    "version": "32.23.1",
+    "updates": [
+      {
+        "updated": [
+          "RadioItem"
+        ],
+        "summary": "**RadioItem:** Improve `checked` visual affordance when `disabled`\n\nImprove the visual affordance of the `checked` state when `disabled` across all themes and colour modes."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Limit the menu height\n\nLimit the menu to show a maximum of around 10 items before scrolling (a little less so it's evident there is more to scroll to)."
+      },
+      {
+        "updated": [
+          "TextLink",
+          "TextLinkButton"
+        ],
+        "summary": "**TextLink:** Default to weak inside secondary tone\n\nAlign the `secondary` tone with other non-neutral text tones, making the foreground color of links inherit the tone of the wrapping `Text` component.\n\n**EXAMPLE USAGE:**\nIn the following example the `TextLink` will now follow the `secondary` tone from the wrapping `Text` component:\n\n```jsx\n<Text tone=\"secondary\">\n  <TextLink href=\"#\">Link</TextLink>\n</Text>\n```\n\nPreviously this would have retained the default link colour from the theme."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "Radio",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "Standardise `disabled` & `critical` state across form fields\n\nImproves the consistency of form fields when combining both `disabled` and `critical` tone, which includes:\n- Hiding `critical` borders\n- Hiding `message` and not reserving space for it unless explicitly providing the `reserveMessageSpace` prop."
+      }
+    ]
   }
 ]

@@ -1,5 +1,5 @@
 dist*/
-dist-storybook/
+storybook-static
 node_modules/
 
 !/.*.js

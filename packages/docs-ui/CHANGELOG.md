@@ -1,5 +1,16 @@
 # @braid-design-system/docs-ui
 
+## 2.1.1
+
+### Patch Changes
+
+- Update Crackle CLI dependency ([#1480](https://github.com/seek-oss/braid-design-system/pull/1480))
+
+- **MenuButton:** Improve virtual touch target positioning for narrow elements ([#1493](https://github.com/seek-oss/braid-design-system/pull/1493))
+
+  To maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.
+  This change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area.
+
 ## 2.1.0
 
 ### Minor Changes

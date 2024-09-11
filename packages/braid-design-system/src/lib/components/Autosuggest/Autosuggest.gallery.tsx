@@ -1,229 +1,231 @@
 import React from 'react';
-import type { ComponentExample } from 'site/types';
+import type { GalleryComponent } from 'site/types';
 import { Autosuggest, filterSuggestions, IconSearch } from '../';
 import { makeSuggestions } from './Autosuggest.docs';
 import source from '@braid-design-system/source.macro';
 
-export const galleryItems: ComponentExample[] = [
-  {
-    label: 'Standard suggestions',
-    Example: ({ id, setDefaultState, getState, setState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
-          {setDefaultState('showRecent', true)}
+export const galleryItems: GalleryComponent = {
+  examples: [
+    {
+      label: 'Standard suggestions',
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
+            {setDefaultState('showRecent', true)}
 
-          <Autosuggest
-            label="I like to eat"
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            suggestions={filterSuggestions([
-              ...(getState('showRecent') && getState('value').text === ''
-                ? [
-                    {
-                      text: 'Apples',
-                      onClear: () => setState('showRecent', false),
-                    },
-                  ]
-                : []),
-              ...makeSuggestions([
-                ...(getState('value').text !== '' ? ['Apples'] : []),
-                'Bananas',
-                'Broccoli',
-                'Carrots',
-              ]),
-            ])}
-          />
-        </>,
-      ),
-  },
-  {
-    label: 'Grouped suggestions',
-    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
-
-          <Autosuggest
-            label="I like to eat"
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            suggestions={filterSuggestions([
-              {
-                label: 'Fruit',
-                suggestions: makeSuggestions(['Apples', 'Bananas']),
-              },
-              {
-                label: 'Vegetables',
-                suggestions: makeSuggestions(['Broccoli', 'Carrots'], 2),
-              },
-            ])}
-          />
-        </>,
-      ),
-  },
-  {
-    label: 'Standard suggestions with descriptions',
-    Example: ({ id, setDefaultState, getState, setState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
-          {setDefaultState('showRecent', true)}
-
-          <Autosuggest
-            label="I like to eat"
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            suggestions={filterSuggestions([
-              ...(getState('showRecent') && getState('value').text === ''
-                ? [
-                    {
-                      text: 'Apples',
-                      description: 'Juicy and delicious',
-                      onClear: () => setState('showRecent', false),
-                    },
-                  ]
-                : []),
-              ...makeSuggestions([
-                ...(getState('value').text !== ''
-                  ? [{ text: 'Apples', description: 'Juicy and delicious' }]
+            <Autosuggest
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions([
+                ...(getState('showRecent') && getState('value').text === ''
+                  ? [
+                      {
+                        text: 'Apples',
+                        onClear: () => setState('showRecent', false),
+                      },
+                    ]
                   : []),
-                { text: 'Bananas', description: 'High in potassium' },
-                { text: 'Broccoli', description: 'Looks like a tree' },
-                { text: 'Carrots', description: 'Orange and crunchy' },
-              ]),
-            ])}
-          />
-        </>,
-      ),
-  },
-  {
-    label: 'Grouped suggestions with descriptions',
-    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
-
-          <Autosuggest
-            label="I like to eat"
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            suggestions={filterSuggestions([
-              {
-                label: 'Fruit',
-                suggestions: makeSuggestions([
-                  { text: 'Apples', description: 'Juicy and delicious' },
-                  { text: 'Bananas', description: 'High in potassium' },
+                ...makeSuggestions([
+                  ...(getState('value').text !== '' ? ['Apples'] : []),
+                  'Bananas',
+                  'Broccoli',
+                  'Carrots',
                 ]),
-              },
-              {
-                label: 'Vegetables',
-                suggestions: makeSuggestions(
-                  [
-                    { text: 'Broccoli', description: 'Looks like a tree' },
-                    { text: 'Carrots', description: 'Orange and crunchy' },
-                  ],
-                  2,
-                ),
-              },
-            ])}
-          />
-        </>,
-      ),
-  },
-  {
-    label: 'Standard suggestions with an icon',
-    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
+              ])}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Grouped suggestions',
+      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
 
-          <Autosuggest
-            label="I like to eat"
-            icon={<IconSearch />}
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        </>,
-      ),
-  },
-  {
-    label: 'With a critical message',
-    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
+            <Autosuggest
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions([
+                {
+                  label: 'Fruit',
+                  suggestions: makeSuggestions(['Apples', 'Bananas']),
+                },
+                {
+                  label: 'Vegetables',
+                  suggestions: makeSuggestions(['Broccoli', 'Carrots'], 2),
+                },
+              ])}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Standard suggestions with descriptions',
+      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
+            {setDefaultState('showRecent', true)}
 
-          <Autosuggest
-            label="I like to eat"
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            tone="critical"
-            message="Critical message"
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        </>,
-      ),
-  },
-  {
-    label: 'With a positive message',
-    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
+            <Autosuggest
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions([
+                ...(getState('showRecent') && getState('value').text === ''
+                  ? [
+                      {
+                        text: 'Apples',
+                        description: 'Juicy and delicious',
+                        onClear: () => setState('showRecent', false),
+                      },
+                    ]
+                  : []),
+                ...makeSuggestions([
+                  ...(getState('value').text !== ''
+                    ? [{ text: 'Apples', description: 'Juicy and delicious' }]
+                    : []),
+                  { text: 'Bananas', description: 'High in potassium' },
+                  { text: 'Broccoli', description: 'Looks like a tree' },
+                  { text: 'Carrots', description: 'Orange and crunchy' },
+                ]),
+              ])}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Grouped suggestions with descriptions',
+      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
 
-          <Autosuggest
-            label="I like to eat"
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            tone="positive"
-            message="Positive message"
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        </>,
-      ),
-  },
-  {
-    label: 'With a caution message',
-    Example: ({ id, getState, setState, setDefaultState, resetState }) =>
-      source(
-        <>
-          {setDefaultState('value', { text: '' })}
+            <Autosuggest
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions([
+                {
+                  label: 'Fruit',
+                  suggestions: makeSuggestions([
+                    { text: 'Apples', description: 'Juicy and delicious' },
+                    { text: 'Bananas', description: 'High in potassium' },
+                  ]),
+                },
+                {
+                  label: 'Vegetables',
+                  suggestions: makeSuggestions(
+                    [
+                      { text: 'Broccoli', description: 'Looks like a tree' },
+                      { text: 'Carrots', description: 'Orange and crunchy' },
+                    ],
+                    2,
+                  ),
+                },
+              ])}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'Standard suggestions with an icon',
+      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
 
-          <Autosuggest
-            label="I like to eat"
-            id={id}
-            value={getState('value')}
-            onChange={setState('value')}
-            onClear={() => resetState('value')}
-            tone="caution"
-            message="Caution message"
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        </>,
-      ),
-  },
-];
+            <Autosuggest
+              label="I like to eat"
+              icon={<IconSearch />}
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              suggestions={filterSuggestions(
+                makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+              )}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'With a critical message',
+      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
+
+            <Autosuggest
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              tone="critical"
+              message="Critical message"
+              suggestions={filterSuggestions(
+                makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+              )}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'With a positive message',
+      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
+
+            <Autosuggest
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              tone="positive"
+              message="Positive message"
+              suggestions={filterSuggestions(
+                makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+              )}
+            />
+          </>,
+        ),
+    },
+    {
+      label: 'With a caution message',
+      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('value', { text: '' })}
+
+            <Autosuggest
+              label="I like to eat"
+              id={id}
+              value={getState('value')}
+              onChange={setState('value')}
+              onClear={() => resetState('value')}
+              tone="caution"
+              message="Caution message"
+              suggestions={filterSuggestions(
+                makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+              )}
+            />
+          </>,
+        ),
+    },
+  ],
+};

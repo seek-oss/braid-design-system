@@ -9,12 +9,14 @@ export interface ActionsProps {
   data?: InlineProps['data'];
 }
 
+export const actionsSpace = 'xsmall';
+
 export const Actions = ({ size, data, children }: ActionsProps) => {
   const contextValue = useMemo(() => ({ size }), [size]);
 
   return (
     <ActionsContext.Provider value={contextValue}>
-      <Inline collapseBelow="tablet" space="xsmall" data={data}>
+      <Inline collapseBelow="tablet" space={actionsSpace} data={data}>
         {children}
       </Inline>
     </ActionsContext.Provider>

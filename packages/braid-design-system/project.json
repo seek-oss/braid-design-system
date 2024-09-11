@@ -21,6 +21,13 @@
         "script": "codemod"
       }
     },
+    "dev": {
+      "dependsOn": ["generate:icons"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "dev"
+      }
+    },
     "generate": {
       "dependsOn": ["generate:icons", "generate:snippets"],
       "executor": "nx:noop"

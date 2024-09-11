@@ -8,14 +8,13 @@ import {
   TextLink,
   Inline,
   List,
-  IconPromote,
+  IconImage,
   Alert,
 } from '../';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Stack space="large">
@@ -152,7 +151,6 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -181,7 +179,6 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -198,7 +195,6 @@ const docs: ComponentDocs = {
           text tone will be matched by default.
         </Text>
       ),
-      background: 'surface',
       Example: () =>
         source(
           <Inline space="gutter">
@@ -241,7 +237,7 @@ const docs: ComponentDocs = {
         </>
       ),
       Example: () =>
-        source(<Text icon={<IconPromote />}>Text with an icon</Text>),
+        source(<Text icon={<IconImage />}>Text with an icon</Text>),
     },
     {
       label: 'Custom semantics',

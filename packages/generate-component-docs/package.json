@@ -16,11 +16,10 @@
   "author": "SEEK",
   "license": "MIT",
   "dependencies": {
-    "esbuild": "^0.19.2",
-    "esbuild-register": "^3.4.2",
     "fs-extra": "^10.1.0",
     "lodash": "^4.17.21",
-    "typescript": "~5.2.2"
+    "tsx": "^4.7.0",
+    "typescript": "~5.5.4"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

@@ -59,15 +59,27 @@ export const tabFocusRing = style({
 export const underlineLeft = createVar();
 export const underlineWidth = createVar();
 
-const initialUnderlineWidth = 10;
+const initialUnderlineWidth = 100;
+const underlineRadius = createVar();
+const underlineScale = createVar();
 export const tabUnderline = style({
+  vars: {
+    [underlineRadius]: calc(vars.borderRadius.small)
+      .divide(underlineScale)
+      .toString(),
+    [underlineScale]: calc(underlineWidth)
+      .divide(initialUnderlineWidth)
+      .toString(),
+  },
   height: vars.borderWidth.large,
+  borderTopLeftRadius: underlineRadius,
+  borderTopRightRadius: underlineRadius,
   width: initialUnderlineWidth,
   transformOrigin: '0 0',
   transition: 'transform .3s ease',
   transform: `translateZ(0) translateX(${calc(underlineLeft).multiply(
     '1px',
-  )}) scaleX(${calc(underlineWidth).divide(initialUnderlineWidth)})`,
+  )}) scaleX(${underlineScale})`,
 });
 
 export const tabUnderlineActiveDarkMode = style(

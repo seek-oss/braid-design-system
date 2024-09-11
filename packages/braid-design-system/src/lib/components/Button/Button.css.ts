@@ -9,6 +9,7 @@ import { rgba } from 'polished';
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { vars } from '../../themes/vars.css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 export const root = style({
   textDecoration: 'none',
@@ -64,12 +65,13 @@ export const standard = style(
   }),
 );
 
-export const small = style(
+export const small = style([
+  virtualTouchable,
   responsiveStyle({
     mobile: paddingVarForBreakpoint('small', 'mobile'),
     tablet: paddingVarForBreakpoint('small', 'tablet'),
   }),
-);
+]);
 
 export const bleedVerticallyToCapHeight = style({
   marginTop: calc.negate(capHeightToMinHeight),

@@ -16,7 +16,6 @@ import { Heading } from '../Heading/Heading';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   subComponents: ['RadioItem'],
   Example: ({ id, getState, setState }) =>
     source(

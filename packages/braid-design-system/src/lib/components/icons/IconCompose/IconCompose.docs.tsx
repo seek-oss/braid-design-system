@@ -6,7 +6,6 @@ import { IconCompose, Heading, Stack } from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
-  migrationGuide: true,
   Example: () =>
     source(
       <Stack space="none" align="center">

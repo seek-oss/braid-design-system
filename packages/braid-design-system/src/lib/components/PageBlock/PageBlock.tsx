@@ -21,7 +21,9 @@ export const gutters = { mobile: 'xsmall', tablet: 'gutter' } as const;
 
 interface Props {
   children: ReactNode;
-  width?: Extract<ContentBlockProps['width'], 'medium' | 'large'>;
+  width?:
+    | Extract<ContentBlockProps['width'], 'small' | 'medium' | 'large'>
+    | 'full';
   component?: (typeof validPageBlockComponents)[number];
   data?: DataAttributeMap;
 }
@@ -44,7 +46,11 @@ export const PageBlock = ({
       paddingX={gutters}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <ContentBlock width={width}>{children}</ContentBlock>
+      {width === 'full' ? (
+        children
+      ) : (
+        <ContentBlock width={width}>{children}</ContentBlock>
+      )}
     </Box>
   );
 };

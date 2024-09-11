@@ -8,13 +8,12 @@ import {
   Text,
   Strong,
   TextLink,
-  IconPromote,
+  IconImage,
   Alert,
 } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: () =>
     source(
       <Stack space="large">
@@ -158,7 +157,7 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Heading level="2" icon={<IconPromote />}>
+          <Heading level="2" icon={<IconImage />}>
             Heading with an icon
           </Heading>,
         ),

@@ -168,10 +168,11 @@ export const useToast = () => {
   return useCallback(
     (toast: Toast) => {
       const id = `${toastCounter++}`;
-      const dedupeKey = toast.key ?? id;
+      const { key, ...rest } = toast;
+      const dedupeKey = key ?? id;
 
       addToast({
-        ...toast,
+        ...rest,
         vanillaTheme,
         id,
         dedupeKey,

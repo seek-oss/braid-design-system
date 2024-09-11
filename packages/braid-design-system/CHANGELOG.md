@@ -1,5 +1,410 @@
 # braid-design-system
 
+## 32.23.1
+
+### Patch Changes
+
+- **RadioItem:** Improve `checked` visual affordance when `disabled` ([#1564](https://github.com/seek-oss/braid-design-system/pull/1564))
+
+  Improve the visual affordance of the `checked` state when `disabled` across all themes and colour modes.
+
+- **MenuRenderer, OverflowMenu:** Limit the menu height ([#1567](https://github.com/seek-oss/braid-design-system/pull/1567))
+
+  Limit the menu to show a maximum of around 10 items before scrolling (a little less so it's evident there is more to scroll to).
+
+- **TextLink:** Default to weak inside secondary tone ([#1561](https://github.com/seek-oss/braid-design-system/pull/1561))
+
+  Align the `secondary` tone with other non-neutral text tones, making the foreground color of links inherit the tone of the wrapping `Text` component.
+
+  **EXAMPLE USAGE:**
+  In the following example the `TextLink` will now follow the `secondary` tone from the wrapping `Text` component:
+
+  ```jsx
+  <Text tone="secondary">
+    <TextLink href="#">Link</TextLink>
+  </Text>
+  ```
+
+  Previously this would have retained the default link colour from the theme.
+
+- Standardise `disabled` & `critical` state across form fields ([#1564](https://github.com/seek-oss/braid-design-system/pull/1564))
+
+  Improves the consistency of form fields when combining both `disabled` and `critical` tone, which includes:
+
+  - Hiding `critical` borders
+  - Hiding `message` and not reserving space for it unless explicitly providing the `reserveMessageSpace` prop.
+
+## 32.23.0
+
+### Minor Changes
+
+- **Spread:** Add `component` prop support ([#1559](https://github.com/seek-oss/braid-design-system/pull/1559))
+
+  Enable support for changing the underlying HTML element of the `Spread` component.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Spread component="span">...</Spread>
+  ```
+
+- **Spread:** Add `data` prop support ([#1559](https://github.com/seek-oss/braid-design-system/pull/1559))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Spread data={{ test: 123 }}>...</Spread>
+  ```
+
+## 32.22.0
+
+### Minor Changes
+
+- **Column:** Add support for hide above/below breakpoint ([#1553](https://github.com/seek-oss/braid-design-system/pull/1553))
+
+  Introduce new `hideAbove` and `hideBelow` props on column for responsively hiding columns across breakpoint.
+
+  These props can be used either separately or in combination to optimise content display across different screen sizes.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Columns space="small">
+    <Column>
+      <Placeholder height={60} label="Always visible" />
+    </Column>
+    <Column hideBelow="tablet">
+      <Placeholder height={60} label="Tablet and above" />
+    </Column>
+    <Column hideAbove="mobile">
+      <Placeholder height={60} label="Mobile Only" />
+    </Column>
+  </Columns>
+  ```
+
+- **Badge:** Enable usage inside typographic components ([#1547](https://github.com/seek-oss/braid-design-system/pull/1547))
+
+  A `Badge` can now be nested inside typographic components, e.g. `Text` and `Heading`, as an inline element alongside text.
+  Previously a `Badge` had to be aligned against text using an `Inline` component, which would result in the `Badge` dropping below the text when the copy wrapped.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Text>
+    Lorem ipsum velit in <Badge>amet</Badge>.
+  </Text>
+  ```
+
+- **Tabs:** Add `size` support ([#1550](https://github.com/seek-oss/braid-design-system/pull/1550))
+
+  Introduces the ability to customise the `size` of the `Tab` components in the tab list.
+  Available sizes are `standard` (default) and `small`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tabs size="small">
+    <Tab>First tab</Tab>
+    <Tab>Second tab</Tab>
+    <Tab>Third tab</Tab>
+  </Tabs>
+  ```
+
+- **Spread:** Add new layout component ([#1554](https://github.com/seek-oss/braid-design-system/pull/1554))
+
+  Introduce a new layout component, `Spread`, used to justify content with both an equally distributed and a specified minimum amount of space in between each child.
+
+  **EXAMPLE USAGE:**
+
+  The `Spread` component works horizontally by default:
+
+  ```jsx
+  <Spread space="small" alignY="center">
+    <Heading level="4">Heading</Heading>
+
+    <OverflowMenu label="Options">
+      <MenuItem>First</MenuItem>
+      <MenuItem>Second</MenuItem>
+    </OverflowMenu>
+  </Spread>
+  ```
+
+  But can be switched to `vertical` via the `direction` prop:
+
+  ```jsx
+  <Spread space="large" direction="vertical">
+    <Stack space="small">
+      <Heading level="4">Heading</Heading>
+      <Text>Text</Text>
+    </Stack>
+
+    <Text size="small" tone="secondary">
+      Date
+    </Text>
+  </Spread>
+  ```
+
+### Patch Changes
+
+- Move `badge` slot inside label ([#1547](https://github.com/seek-oss/braid-design-system/pull/1547))
+
+  Relocate the `badge` slot inside the `label` slot enabling the `Badge` to sit alongside the last word in wrapping lines of text.
+
+## 32.21.0
+
+### Minor Changes
+
+- **IconHash:** Add component ([#1543](https://github.com/seek-oss/braid-design-system/pull/1543))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconHash />
+  ```
+
+- Improve internal form field spacing ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Refined the spacing between internal elements of form fields to align with the latest spacing guidelines.
+
+  This change impacts the `Stack` spacing between `label` and `description`, the form field itself and the `message` slots.
+
+- **Autosuggest:** Add `suggestionHighlight` prop ([#1536](https://github.com/seek-oss/braid-design-system/pull/1536))
+
+  Introduces the `suggestionHighlight` prop, which uses the input value to automatically highlight either the `matching` or `remaining` portion of each suggestion.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Autosuggest suggestionHighlight="matching">
+  ```
+
+### Patch Changes
+
+- Refine the Checkbox, Radio, Toggle & MenuItemCheckbox size ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Refines the size of the inline field elements including the `RadioItem`, `Checkbox`, `Toggle` and `MenuItemCheckbox` components.
+
+  Primarily impacts consumers of the `seekJobs` theme, seeing a reduction across all sizes.
+
+- Ensure no space above field with `undefined` label ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Fixes an issue where passing `undefined` as the `label` to a form field would result in an unwanted space above the field.
+
+- **Badge:** Ensure label follows correct tone ([#1544](https://github.com/seek-oss/braid-design-system/pull/1544))
+
+  Ensure that the foreground text of a `Badge` always follows the correct tone for the background colour.
+  Fixes a bug where using a `Badge` in a `List` that overrides the default tone would result in the `Badge` text following the `List` tone instead of the `Badge` tone.
+
+- Fix warning in React 18.3.0 when using useToast. ([#1534](https://github.com/seek-oss/braid-design-system/pull/1534))
+
+- **MonthPicker:** Reduce space between month and year fields ([#1541](https://github.com/seek-oss/braid-design-system/pull/1541))
+
+  Reducing the space between month and year fields to improve correlation between the two fields within the greater context of a form.
+
+## 32.20.0
+
+### Minor Changes
+
+- **Toggle:** Add `togglePosition` prop ([#1509](https://github.com/seek-oss/braid-design-system/pull/1509))
+
+  Introduces the `togglePosition` prop, enabling the toggle to either be `leading` or `trailing` its label text.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Toggle togglePosition="trailing" label="Label" />
+  ```
+
+- **Toggle:** Add `bleedY` prop ([#1519](https://github.com/seek-oss/braid-design-system/pull/1519))
+
+  Introduces the `bleedY` prop, enabling vertical bleed for the `Toggle` component. This removes excess vertical space created by the `Toggle` input.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Toggle label="Label" bleedY />
+  ```
+
+  **MIGRATION GUIDE:**
+
+  Vertical bleed will become standard for the `Toggle` component in a future version. Please use the `bleedY` prop with a value of `true` and update your layout accordingly.
+
+- **Tag:** Introduce "addable" support ([#1521](https://github.com/seek-oss/braid-design-system/pull/1521))
+
+  Tag actions have been extended to now support being “added”.
+  A `Tag` will include a small add icon button when both an `onAdd` handler and `addLabel` prop are provided.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tag onAdd={() => {...}} addLabel="Add Tag" />
+  ```
+
+- **seekJobs:** Use Tahoma for Thai fallback font ([#1527](https://github.com/seek-oss/braid-design-system/pull/1527))
+
+  Currently in the `seekJobs` theme, the fallback font for the Thai character set resolves to the default system font which differs by operating system.
+  By choosing a deterministic fallback that is available across operating systems, we can use [Capsize] to [improve the alignment] with the SEEK Sans web font, and reduce Cumulative Layout Shift for experiences that use Thai.
+
+  Additionally, adding `sans-serif` as an ultimate fallback in the event that we ever fall all the way through the stack on an obscure operating system.
+
+  [Capsize]: https://seek-oss.github.io/capsize/
+  [improve the alignment]: https://github.com/seek-oss/capsize?tab=readme-ov-file#createfontstack
+
+### Patch Changes
+
+- **Tag**: Add missing click event parameter to `onClear` prop type ([#1516](https://github.com/seek-oss/braid-design-system/pull/1516))
+
+- **Toggle:** Improve label text vertical alignment at `small` size ([#1518](https://github.com/seek-oss/braid-design-system/pull/1518))
+
+- **Toggle:** Remove tick icon & fix antialias haze when selected ([#1525](https://github.com/seek-oss/braid-design-system/pull/1525))
+
+  Simplying the selected state design by removing the tick icon from the toggle thumb.
+
+  Also fixes the antialias haze that appears around the thumb when selected.
+
+## 32.19.1
+
+### Patch Changes
+
+- Move secondary ButtonIcon tone to icons ([#1512](https://github.com/seek-oss/braid-design-system/pull/1512))
+
+  Following the deprecation of the `secondary` tone of `ButtonIcon`, this updates all internal usages to apply the `secondary` tone directly to the icon.
+
+## 32.19.0
+
+### Minor Changes
+
+- **PageBlock:** Add `small` and `full` width options ([#1504](https://github.com/seek-oss/braid-design-system/pull/1504))
+
+  Add `small` to available `width` options of `PageBlock` to support narrower max width for page content.
+
+  Also introducing `full` as a `width` option to enable full width content, while still maintaining consistent screen gutters.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <PageBlock width="small">...</PageBlock>
+  ```
+
+- **ContentBlock:** Add support for left alignment ([#1507](https://github.com/seek-oss/braid-design-system/pull/1507))
+
+  Introduces horizontal alignment support for `ContentBlock`, enabling content to be constrained to a max width and aligned to the left.
+
+  Useful inside of larger `PageBlock` or `ContentBlock` elements when constraining the content for readability or length of form fields.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ContentBlock align="left">...</ContentBlock>
+  ```
+
+- **ButtonIcon:** Add `formAccent` tone ([#1508](https://github.com/seek-oss/braid-design-system/pull/1508))
+
+  Introduces support for the `formAccent` tone on `ButtonIcon`.
+
+  The new tone sits alongside the existing `neutral` tone, while the `secondary` tone is now deprecated and will be removed in a future version (see [Migration Guide] below).
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon tone="formAccent" icon={<IconAdd />} />
+  ```
+
+  **MIGRATION GUIDE:**
+
+  For consumers of the now deprecated `secondary` tone, you can pro-actively migrate away from it by moving the `tone` to the icon itself:
+
+  ```diff
+   <ButtonIcon
+  -  tone="secondary"
+  -  icon={<IconAdd />}
+  +  icon={<IconAdd tone="secondary" />}
+  ```
+
+  [Migration Guide]: #migration-guide
+
+## 32.18.1
+
+### Patch Changes
+
+- Dependency updates: ([#1502](https://github.com/seek-oss/braid-design-system/pull/1502))
+  - `dedent`: `^1.5.1`
+  - `clsx`: `^2.1.1`
+  - `is-mobile`: `^4.0.0`
+
+## 32.18.0
+
+### Minor Changes
+
+- **IconPromote:** Update semantic icon from sparkles to a megaphone ([#1500](https://github.com/seek-oss/braid-design-system/pull/1500))
+
+  With the introduction of `IconAI` recently adopting the sparkles artwork (aligning with the industry trend), the `IconPromote` semantic is now updated to use a megaphone instead of sparkles.
+
+  This change will run through all semantic usages, for example `Alert`, `Notice`, etc.
+
+- **ButtonIcon:** Add `small` size ([#1496](https://github.com/seek-oss/braid-design-system/pull/1496))
+
+  Introduce a new `small` size for `ButtonIcon` component.
+  This size sits alongside the existing `standard` and `large` sizes.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon size="small" icon={<IconEdit />} label="Small size" />
+  ```
+
+- Add exit animation to `Dialog` which mirrors the existing entrance animation. ([#1489](https://github.com/seek-oss/braid-design-system/pull/1489))
+
+- **Tag:** Add `small` size ([#1497](https://github.com/seek-oss/braid-design-system/pull/1497))
+
+  Introduce a new `small` size for `Tag` component.
+  This size sits alongside the existing `standard` size, which is the default.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tag size="small">Tag</Tag>
+  ```
+
+### Patch Changes
+
+- Ensure all paths through `AutoSuggest` state updates are handled. ([#1486](https://github.com/seek-oss/braid-design-system/pull/1486))
+
+- Fix minor bug which prevented the `Drawer` exit animation from occurring. ([#1489](https://github.com/seek-oss/braid-design-system/pull/1489))
+
+- Update Capsize dependencies ([#1484](https://github.com/seek-oss/braid-design-system/pull/1484))
+
+- Adopt `small` sized `ButtonIcon` for field actions ([#1496](https://github.com/seek-oss/braid-design-system/pull/1496))
+
+  Switch over to `small` (previously `standard`) sized `ButtonIcon` for field actions such as clear field, or toggle password visibility.
+
+- Update Crackle CLI dependency ([#1480](https://github.com/seek-oss/braid-design-system/pull/1480))
+
+- Improve virtual touch target positioning for narrow elements ([#1493](https://github.com/seek-oss/braid-design-system/pull/1493))
+
+  To maintain accessibility for smaller interactive elements, Braid uses a virtual touch target to maintain the minimum hit area.
+  This change ensures that the virtual element is always centered to the visual target, in particular when the width of the visual target is narrower than the minimum hit area.
+
+## 32.17.0
+
+### Minor Changes
+
+- Update semantic icon assets. ([#1481](https://github.com/seek-oss/braid-design-system/pull/1481))
+
+  `IconCritical`: Move from circle to diamond outline. Increase the visual distinction from `IconInfo`.
+  `IconLanguage`: Move from globe to characters. Better represents the concept of language. Previous asset available as `IconGlobe`.
+
+  **MIGRATION GUIDE**
+
+  As the above are updates to semantics icons, consumers are unaffected if their usage follows the icon's semantic intent.
+  For those choosing the icon based on its visual appearance, please review the usage and consider decoupling from the semantic system icon for safer upgrades.
+
+- Add new icons to the library ([#1481](https://github.com/seek-oss/braid-design-system/pull/1481))
+
+### Patch Changes
+
+- Update Capsize dependencies ([#1477](https://github.com/seek-oss/braid-design-system/pull/1477))
+
 ## 32.16.3
 
 ### Patch Changes

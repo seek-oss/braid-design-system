@@ -14,6 +14,7 @@ import React, {
 } from 'react';
 import dedent from 'dedent';
 import parseHighlights from 'autosuggest-highlight/parse';
+import matchHighlights from 'autosuggest-highlight/match';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
@@ -35,7 +36,10 @@ import { smoothScroll } from '../private/smoothScroll';
 import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
-import { createAccessbilityProps, getItemId } from './createAccessbilityProps';
+import {
+  createAccessibilityProps,
+  getItemId,
+} from './createAccessibilityProps';
 import {
   type AutosuggestTranslations,
   autosuggest,
@@ -100,7 +104,7 @@ interface AutosuggestState<Value> {
 }
 
 type AutoSuggestItemProps = ReturnType<
-  ReturnType<typeof createAccessbilityProps>['getItemProps']
+  ReturnType<typeof createAccessibilityProps>['getItemProps']
 >;
 interface SuggestionItemProps extends AutoSuggestItemProps {
   suggestion: Suggestion;
@@ -178,9 +182,9 @@ function SuggestionItem({
           >
             <ButtonIcon
               id={`${id}-clear`}
-              icon={<IconClear />}
-              tone="secondary"
+              icon={<IconClear tone="secondary" />}
               tabIndex={-1}
+              size="small"
               label={clearLabel || 'Clear suggestion'}
               onClick={(event: MouseEvent) => {
                 event.preventDefault();
@@ -274,6 +278,8 @@ interface LegacyMessageSuggestion {
   message: string;
 }
 
+type HighlightOptions = 'matching' | 'remaining';
+
 export type AutosuggestBaseProps<Value> = Omit<
   FieldBaseProps,
   'value' | 'autoComplete' | 'prefix'
@@ -289,6 +295,7 @@ export type AutosuggestBaseProps<Value> = Omit<
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
   automaticSelection?: boolean;
+  suggestionHighlight?: HighlightOptions;
   hideSuggestionsOnSelection?: boolean;
   showMobileBackdrop?: boolean;
   scrollToTopOnMobile?: boolean;
@@ -334,6 +341,21 @@ function normaliseNoSuggestionMessage<Value>(
   }
 }
 
+export function highlightSuggestions(
+  suggestion: string,
+  value: string,
+  variant: HighlightOptions = 'matching',
+): SuggestionMatch {
+  const matches = matchHighlights(suggestion, value);
+
+  const formattedMatches =
+    variant === 'remaining'
+      ? matches.map(([_, end]) => ({ start: end, end: suggestion.length }))
+      : matches.map(([start, end]) => ({ start, end }));
+
+  return formattedMatches;
+}
+
 export const Autosuggest = forwardRef(function <Value>(
   {
     id,
@@ -342,6 +364,7 @@ export const Autosuggest = forwardRef(function <Value>(
     noSuggestionsMessage: noSuggestionsMessageProp,
     onChange = noop,
     automaticSelection = false,
+    suggestionHighlight,
     showMobileBackdrop = false,
     scrollToTopOnMobile = true,
     hideSuggestionsOnSelection = true,
@@ -369,6 +392,23 @@ export const Autosuggest = forwardRef(function <Value>(
     suggestionsPropValue,
   );
   const hasItems = suggestions.length > 0 || Boolean(noSuggestionsMessage);
+
+  const hasExplicitHighlights = suggestions.some(
+    (suggestion) => 'highlights' in suggestion,
+  );
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (suggestionHighlight && hasExplicitHighlights) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          In Autosuggest, you are using the "suggestionHighlight" prop with suggestions that have individual highlight ranges.
+          Your provided highlight ranges will be overridden.
+          If you want to use your own highlight ranges, remove the "suggestionHighlight" prop.
+          `,
+      );
+    }
+  }
 
   // We need a ref regardless so we can imperatively
   // focus the field when clicking the clear button
@@ -409,6 +449,8 @@ export const Autosuggest = forwardRef(function <Value>(
             highlightedIndex: nextIndex,
           };
         }
+
+        return state;
       }
 
       case INPUT_ARROW_UP: {
@@ -426,6 +468,8 @@ export const Autosuggest = forwardRef(function <Value>(
             highlightedIndex: nextIndex,
           };
         }
+
+        return state;
       }
 
       case INPUT_CHANGE: {
@@ -561,7 +605,7 @@ export const Autosuggest = forwardRef(function <Value>(
       }
     }
     // re-running this effect if the suggestionCount changes
-    // to ensure asychronous updates aren't left out of view.
+    // to ensure asynchronous updates aren't left out of view.
   }, [isOpen, isMobile, suggestionCount]);
 
   const inputProps = {
@@ -650,7 +694,7 @@ export const Autosuggest = forwardRef(function <Value>(
     },
   };
 
-  const a11y = createAccessbilityProps({
+  const a11y = createAccessibilityProps({
     id,
     isOpen,
     highlightedIndex,
@@ -797,6 +841,13 @@ export const Autosuggest = forwardRef(function <Value>(
                       ? normalisedSuggestions.map((suggestion, index) => {
                           const { text } = suggestion;
                           const groupHeading = groupHeadingIndexes.get(index);
+                          const highlights = suggestionHighlight
+                            ? highlightSuggestions(
+                                suggestion.text,
+                                value.text,
+                                suggestionHighlight,
+                              )
+                            : suggestion.highlights;
 
                           return (
                             <Fragment key={index + text}>
@@ -804,7 +855,10 @@ export const Autosuggest = forwardRef(function <Value>(
                                 <GroupHeading>{groupHeading}</GroupHeading>
                               ) : null}
                               <SuggestionItem
-                                suggestion={suggestion}
+                                suggestion={{
+                                  ...suggestion,
+                                  highlights,
+                                }}
                                 highlighted={highlightedIndex === index}
                                 selected={value === suggestion}
                                 onClick={() => {

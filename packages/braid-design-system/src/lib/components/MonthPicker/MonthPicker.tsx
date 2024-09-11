@@ -229,7 +229,7 @@ const MonthPicker = ({
   const customFieldGroup = (
     <FieldGroup id={id} tone={tone} disabled={disabled} {...restProps}>
       {(fieldGroupProps) => (
-        <Columns space="small">
+        <Columns space="xsmall">
           <Column>
             <Dropdown
               id={monthId}

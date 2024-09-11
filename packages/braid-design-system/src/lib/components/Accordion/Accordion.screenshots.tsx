@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { AccordionItem, Accordion, Badge, Text, IconPromote, Stack } from '../';
+import { AccordionItem, Accordion, Badge, Text, IconImage, Stack } from '../';
 import { Placeholder } from '../../playroom/components';
 import { Box } from '../Box/Box';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -427,7 +428,7 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="xsmall"
                 id={`${id}_1`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>
@@ -437,7 +438,7 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="small"
                 id={`${id}_2`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>
@@ -447,7 +448,7 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="standard"
                 id={`${id}_3`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>
@@ -457,12 +458,25 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="large"
                 id={`${id}_4`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
           </Stack>
+        </Box>
+      ),
+    },
+    {
+      label: 'Virtual touch target',
+      Example: ({ id, handler }) => (
+        <Box
+          background="surface"
+          data={{ [debugTouchableAttrForDataProp]: '' }}
+        >
+          <AccordionItem label="Accordion item" id={id} onToggle={handler}>
+            <Placeholder height={80} />
+          </AccordionItem>
         </Box>
       ),
     },
@@ -477,7 +491,7 @@ export const screenshots: ComponentScreenshot = {
                 size="xsmall"
                 tone="secondary"
                 id={`${id}_1`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>
@@ -488,7 +502,7 @@ export const screenshots: ComponentScreenshot = {
                 size="small"
                 tone="secondary"
                 id={`${id}_2`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>
@@ -499,7 +513,7 @@ export const screenshots: ComponentScreenshot = {
                 size="standard"
                 tone="secondary"
                 id={`${id}_3`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>
@@ -510,7 +524,7 @@ export const screenshots: ComponentScreenshot = {
                 size="large"
                 tone="secondary"
                 id={`${id}_4`}
-                icon={<IconPromote />}
+                icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
               </AccordionItem>

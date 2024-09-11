@@ -5,7 +5,6 @@ import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: false,
   deprecationWarning: (
     <Text weight="medium">
       This component has been deprecated. Use{' '}

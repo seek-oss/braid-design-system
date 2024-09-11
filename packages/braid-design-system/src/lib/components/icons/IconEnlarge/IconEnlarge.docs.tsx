@@ -14,7 +14,6 @@ import {
 
 const docs: ComponentDocs = {
   category: 'Icon',
-  migrationGuide: true,
   Example: () =>
     source(
       <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">
@@ -40,7 +39,6 @@ const docs: ComponentDocs = {
   additional: [
     {
       label: 'Toggling active state',
-      background: 'surface',
       description: (
         <Text>
           Often used to toggle between englarged and reduced states, setting the{' '}

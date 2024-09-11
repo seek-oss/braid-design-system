@@ -13,7 +13,7 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from 'recoil';
-import { chunk, memoize } from 'lodash';
+import { chunk, memoize, range } from 'lodash';
 import copy from 'copy-to-clipboard';
 import panzoom from 'panzoom';
 
@@ -40,6 +40,7 @@ import {
   Secondary,
   IconCopy,
   ButtonIcon,
+  Spread,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -80,52 +81,70 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 
 const COLUMN_SIZE = 4;
 
-const galleryComponents = allGalleryComponents.map(({ examples, ...rest }) => ({
-  ...rest,
-  examples: chunk(examples, COLUMN_SIZE),
-}));
-
 const galleryComponentNames = allGalleryComponents.map(({ name }) => name);
 
-export const galleryIcons = Object.keys(icons).map((iconName) => {
-  const IconComponent = icons[iconName as keyof typeof icons];
+const allStandardGalleryComponents = allGalleryComponents.map(
+  ({ examples, ...rest }) => ({
+    ...rest,
+    examples: chunk(examples, COLUMN_SIZE),
+  }),
+);
 
-  return {
-    name: iconName,
-    examples: [
-      [
-        {
-          Container: ({ children }: { children: ReactNode }) => (
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              paddingY="medium"
-              paddingX="xxlarge"
-            >
-              <Box flexShrink={0} style={{ height: 60, width: 60 }}>
-                {children}
+const galleryContentComponents = allStandardGalleryComponents.filter(
+  (component) => getComponentDocs(component.name).category === 'Content',
+);
+
+const galleryLayoutComponents = allStandardGalleryComponents.filter(
+  (component) => getComponentDocs(component.name).category === 'Layout',
+);
+
+const galleryIcons: typeof galleryContentComponents = Object.keys(icons).map(
+  (iconName) => {
+    const IconComponent = icons[iconName as keyof typeof icons];
+
+    return {
+      name: iconName,
+      itemWidth: 'icon',
+      examples: [
+        [
+          {
+            Container: ({ children }: { children: ReactNode }) => (
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                paddingY="medium"
+                paddingX="xxlarge"
+              >
+                <Box flexShrink={0} style={{ height: 60, width: 60 }}>
+                  {children}
+                </Box>
               </Box>
-            </Box>
-          ),
-          Example: () => source(<IconComponent size="fill" />),
-          code: `<${iconName} />`,
-        },
+            ),
+            Example: () => source(<IconComponent size="fill" />),
+            code: `<${iconName} />`,
+          },
+        ],
       ],
-    ],
-  };
-});
+    };
+  },
+);
 
-type SetName = 'components' | 'icons';
+type SetName = 'components' | 'layout' | 'icons';
 const getRowsFor = memoize((type: SetName) => {
-  const items = type === 'components' ? galleryComponents : galleryIcons;
+  const componentTypeMap = {
+    components: galleryContentComponents,
+    icons: galleryIcons,
+    layout: galleryLayoutComponents,
+  };
+
+  const items = componentTypeMap[type];
 
   const ratio = Math.max(
-    (window.innerWidth / window.innerHeight) *
-      (type === 'components' ? 0.65 : 0.5),
+    (window.innerWidth / window.innerHeight) * (type === 'icons' ? 0.5 : 0.65),
     1,
   );
-  const rowLength = Math.floor(Math.sqrt(items.length) * ratio);
+  const rowLength = Math.ceil(Math.sqrt(items.length) * ratio);
 
   return chunk(items, rowLength);
 });
@@ -133,43 +152,48 @@ const getRowsFor = memoize((type: SetName) => {
 interface RenderExampleProps {
   id: string;
   example: ComponentExample;
+  isIcon: boolean;
 }
-const RenderExample = ({ id, example }: RenderExampleProps) => {
-  const { label, Container = DefaultContainer, background } = example;
+const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
+  const { label, Container = DefaultContainer } = example;
   const { code, value } = useSourceFromExample(id, example);
+
+  const CopyCodeButton = () => (
+    <Spread space="medium" alignY="center">
+      {label ? (
+        <Text component="h5" tone="secondary">
+          {label}
+        </Text>
+      ) : null}
+      {code ? (
+        <CodeButton
+          title="Copy code to clipboard"
+          onClick={() => copy(formatSnippet(code))}
+          successLabel="Copied!"
+        >
+          <IconCopy /> Copy code
+        </CodeButton>
+      ) : null}
+    </Spread>
+  );
+
+  const children = [
+    <CopyCodeButton key="copyCode" />,
+    value ? (
+      <ThemedExample key="themedExample">
+        <Container>
+          <Box height="full" width="full" style={{ cursor: 'auto' }}>
+            {value}
+          </Box>
+        </Container>
+      </ThemedExample>
+    ) : null,
+  ];
 
   return (
     <BraidProvider styleBody={false} theme={docsTheme}>
-      <Stack space="small">
-        <Columns space="medium" alignY="center">
-          <Column>
-            {label ? (
-              <Text component="h5" tone="secondary">
-                {label}
-              </Text>
-            ) : null}
-          </Column>
-          {code ? (
-            <Column width="content">
-              <CodeButton
-                title="Copy code to clipboard"
-                onClick={() => copy(formatSnippet(code))}
-                successLabel="Copied!"
-              >
-                <IconCopy /> Copy code
-              </CodeButton>
-            </Column>
-          ) : null}
-        </Columns>
-        {value ? (
-          <ThemedExample background={background || undefined}>
-            <Container>
-              <Box height="full" width="full" style={{ cursor: 'auto' }}>
-                {value}
-              </Box>
-            </Container>
-          </ThemedExample>
-        ) : null}
+      <Stack space={isIcon ? 'xxsmall' : 'small'}>
+        {isIcon ? children.reverse() : children}
       </Stack>
     </BraidProvider>
   );
@@ -181,7 +205,7 @@ const GalleryItem = ({
   item,
   jumpTo,
 }: {
-  item: (typeof galleryComponents)[number];
+  item: (typeof allStandardGalleryComponents)[number];
   jumpTo: JumpTo;
 }) => {
   const { theme } = useThemeSettings();
@@ -198,28 +222,34 @@ const GalleryItem = ({
   ).length;
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
-  const isAnIcon = componentDocs.category === 'Icon';
+  const widthMap = {
+    icon: undefined,
+    standard: '700px',
+    wide: '1500px',
+  };
+
+  const isIcon = componentDocs.category === 'Icon';
 
   return (
     <Box
       component="article"
       background="surface"
       borderRadius="xlarge"
-      padding={isAnIcon ? 'large' : 'xxlarge'}
-      margin={isAnIcon ? 'small' : 'xxlarge'}
+      padding={isIcon ? 'large' : 'xxlarge'}
+      margin={isIcon ? 'small' : 'xxlarge'}
       data-braid-component-name={item.name}
       tabIndex={0}
       onDoubleClick={() => jumpTo(item.name)}
     >
-      <Stack space={isAnIcon ? 'small' : 'xxlarge'}>
+      <Stack space={isIcon ? 'medium' : 'xxlarge'}>
         <Box position="relative">
           <Inline space="small" alignY="center">
-            <Heading component="h3" level={isAnIcon ? '3' : '2'}>
+            <Heading component="h3" level={isIcon ? '3' : '2'}>
               <TextLink
                 href={`/components/${item.name}`}
                 target="gallery-detail"
               >
-                {isAnIcon ? item.name.replace('Icon', '') : item.name}
+                {isIcon ? item.name.replace('Icon', '') : item.name}
               </TextLink>
             </Heading>
             {markAsNew ? (
@@ -263,9 +293,9 @@ const GalleryItem = ({
               <Stack space="xlarge">
                 {exampleChunk.map((example, index) => (
                   <Box
-                    component={isAnIcon ? undefined : 'section'}
+                    component={isIcon ? undefined : 'section'}
                     style={{
-                      width: isAnIcon ? undefined : '700px',
+                      width: widthMap[item.itemWidth],
                     }}
                     key={`${example.label}_${index}`}
                     className={styles.animationsOnlyOnHover}
@@ -277,6 +307,7 @@ const GalleryItem = ({
                             index + 1 + idx * COLUMN_SIZE
                           }`}
                           example={example}
+                          isIcon={isIcon}
                         />
                       </PlayroomStateProvider>
                     </BraidProvider>
@@ -337,28 +368,38 @@ interface StageProps {
   title: string;
   jumpTo: JumpTo;
 }
-const Stage = ({ setName, jumpTo, title }: StageProps) => (
-  <Box data-braid-component-name={title}>
-    <Stack space="xxlarge">
-      <Box padding="xxlarge">
-        <Heading component="h2" level="1">
-          <span style={{ fontSize: '3em' }}>{title}</span>
-        </Heading>
-      </Box>
-      <Box>
-        {getRowsFor(setName).map((row, index) => (
-          <Columns space="none" key={index}>
-            {row.map((item) => (
-              <Column key={item.name} width="content">
-                <GalleryItem item={item} jumpTo={jumpTo} />
-              </Column>
-            ))}
-          </Columns>
-        ))}
-      </Box>
-    </Stack>
-  </Box>
-);
+const Stage = ({ setName, jumpTo, title }: StageProps) => {
+  const items = getRowsFor(setName);
+  const rowLength = items[0].length;
+
+  return (
+    <Box data-braid-component-name={title}>
+      <Stack space="xxlarge">
+        <Box padding="xxlarge">
+          <Heading component="h2" level="1">
+            <span style={{ fontSize: '3em' }}>{title}</span>
+          </Heading>
+        </Box>
+        <Box>
+          {items.map((row, index) => (
+            <Columns space="none" key={`row-${index}`}>
+              {range(rowLength).map((item) => (
+                <Column
+                  key={`rowItem-${item}`}
+                  width={row[item] ? 'content' : undefined}
+                >
+                  {row[item] ? (
+                    <GalleryItem item={row[item]} jumpTo={jumpTo} />
+                  ) : null}
+                </Column>
+              ))}
+            </Columns>
+          ))}
+        </Box>
+      </Stack>
+    </Box>
+  );
+};
 
 const jumpToEdgeThreshold = 80;
 
@@ -600,19 +641,17 @@ const GalleryInternal = () => {
               <ButtonIcon
                 id="fitToScreen"
                 label="Fit to screen"
-                tone="secondary"
                 variant="transparent"
                 onClick={fitToScreen}
-                icon={<IconFitToScreen />}
+                icon={<IconFitToScreen tone="secondary" />}
               />
               <ButtonIcon
                 id="zoomOut"
                 ref={zoomOutRef}
                 label="Zoom Out"
-                tone="secondary"
                 variant="transparent"
                 onClick={zoomOut}
-                icon={<IconMinus />}
+                icon={<IconMinus tone="secondary" />}
               />
               <TooltipRenderer
                 id="zoomToActual"
@@ -635,10 +674,9 @@ const GalleryInternal = () => {
                 id="zoomIn"
                 ref={zoomInRef}
                 label="Zoom In"
-                tone="secondary"
                 variant="transparent"
                 onClick={zoomIn}
-                icon={<IconAdd />}
+                icon={<IconAdd tone="secondary" />}
               />
             </Inline>
           </Box>
@@ -659,6 +697,9 @@ const GalleryInternal = () => {
         >
           <Box component="section">
             <Stage setName="components" title="Components" jumpTo={jumpTo} />
+          </Box>
+          <Box component="section" style={{ paddingLeft: 800 }}>
+            <Stage setName="layout" title="Layout" jumpTo={jumpTo} />
           </Box>
           <Box component="section" style={{ paddingLeft: 800 }}>
             <Stage setName="icons" title="Icons" jumpTo={jumpTo} />

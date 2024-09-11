@@ -5,9 +5,9 @@ import source from '@braid-design-system/source.macro';
 
 export const snippets: Snippets = [
   {
-    name: 'Small space',
+    name: 'Xsmall space',
     code: source(
-      <Inline space="small">
+      <Inline space="xsmall">
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
@@ -15,9 +15,9 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Medium space',
+    name: 'Vertically centered',
     code: source(
-      <Inline space="medium">
+      <Inline space="small" alignY="center">
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
@@ -31,26 +31,6 @@ export const snippets: Snippets = [
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
         <Placeholder width={48} height={48} />
-      </Inline>,
-    ),
-  },
-  {
-    name: 'Responsive horizontal alignment',
-    code: source(
-      <Inline space="small" align={{ mobile: 'center', tablet: 'left' }}>
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-        <Placeholder width={48} height={48} />
-      </Inline>,
-    ),
-  },
-  {
-    name: 'Vertically centered',
-    code: source(
-      <Inline space="small" alignY="center">
-        <Placeholder width={48} height={40} />
-        <Placeholder width={48} height={100} />
-        <Placeholder width={48} height={60} />
       </Inline>,
     ),
   },

@@ -16,8 +16,8 @@ import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { virtualTouchable } from '../private/touchable/virtualTouchable';
 import type { UseIconProps } from '../../hooks/useIcon';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import * as styles from './TextLink.css';
 import * as typographyStyles from '../../css/typography.css';
 
@@ -64,9 +64,7 @@ export const useLinkStyles = ({
   // Links nested inside Text components that use coloured tones
   // are automatically converted to `weak` weight.
   const isWeakDueToTextTone =
-    !headingContext &&
-    textContext?.tone !== 'neutral' &&
-    textContext?.tone !== 'secondary';
+    !headingContext && textContext?.tone !== 'neutral';
 
   const linkStyles =
     weight === 'weak' || isWeakDueToTextTone
@@ -100,7 +98,7 @@ export const useLinkStyles = ({
     atoms({
       cursor: 'pointer',
     }),
-    hitArea === 'large' && virtualTouchable(),
+    hitArea === 'large' && virtualTouchable,
   );
 };
 

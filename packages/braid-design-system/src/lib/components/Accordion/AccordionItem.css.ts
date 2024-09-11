@@ -1,8 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
-export const button = style({});
+export const button = style([{}, virtualTouchable]);
 
 export const focusRing = style({
   top: calc.negate(vars.space.xsmall),

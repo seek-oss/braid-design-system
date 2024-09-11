@@ -7,7 +7,7 @@ export const snippets: Snippets = [
   {
     name: '2 Columns',
     code: source(
-      <Columns space="gutter">
+      <Columns space="large">
         <Column>
           <Placeholder height={60} label="Column" />
         </Column>
@@ -18,9 +18,9 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: '2 Columns (Collapse Below Tablet)',
+    name: 'Collapse Below Tablet',
     code: source(
-      <Columns space="gutter" collapseBelow="tablet">
+      <Columns space="large" collapseBelow="tablet">
         <Column>
           <Placeholder height={60} label="Column" />
         </Column>
@@ -31,33 +31,27 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: '3 Columns',
+    name: 'Content width second column',
     code: source(
-      <Columns space="gutter">
+      <Columns space="small">
         <Column>
           <Placeholder height={60} label="Column" />
         </Column>
-        <Column>
-          <Placeholder height={60} label="Column" />
-        </Column>
-        <Column>
+        <Column width="content">
           <Placeholder height={60} label="Column" />
         </Column>
       </Columns>,
     ),
   },
   {
-    name: '3 Columns (Collapse Below Tablet)',
+    name: 'Split View',
     code: source(
-      <Columns space="gutter" collapseBelow="tablet">
-        <Column>
-          <Placeholder height={60} label="Column" />
+      <Columns space="xlarge" collapseBelow="tablet">
+        <Column width="2/5">
+          <Placeholder height={400} label="List" />
         </Column>
         <Column>
-          <Placeholder height={60} label="Column" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Column" />
+          <Placeholder height={100} label="Detail" />
         </Column>
       </Columns>,
     ),
@@ -65,7 +59,7 @@ export const snippets: Snippets = [
   {
     name: 'Main Content With Sidebar',
     code: source(
-      <Columns space="gutter" collapseBelow="tablet">
+      <Columns space="xlarge" collapseBelow="tablet">
         <Column width="2/3">
           <Placeholder height={400} label="Main" />
         </Column>

@@ -20,8 +20,7 @@ import {
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
-import type { BoxProps } from 'braid-src/lib/components/Box/Box';
-import { Box } from 'braid-src/lib/components/Box/Box';
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
 import * as styles from './Code.css';
@@ -107,8 +106,13 @@ export const CodeButton = ({
       userSelect="none"
       pointerEvents="none"
     >
-      <Text size="xsmall" baseline={false} tone="positive">
-        <IconPositive /> {successLabel}
+      <Text
+        size="xsmall"
+        baseline={false}
+        tone="positive"
+        icon={<IconPositive />}
+      >
+        {successLabel}
       </Text>
     </Box>
   ) : (
@@ -177,18 +181,16 @@ export const CodeBlock = ({
   return (
     <Box
       position="relative"
-      padding="xxsmall"
-      borderRadius="large"
+      padding="gutter"
+      borderRadius="xlarge"
       background="surfaceDark"
       className={styles.code}
     >
-      <Box padding={['medium', 'medium', 'large']}>
-        <Text size="small" component="pre" baseline={false}>
-          <SyntaxHighlighter language={resolvedLanguage} style={editorTheme}>
-            {children}
-          </SyntaxHighlighter>
-        </Text>
-      </Box>
+      <Text size="small" component="pre" baseline={false}>
+        <SyntaxHighlighter language={resolvedLanguage} style={editorTheme}>
+          {children}
+        </SyntaxHighlighter>
+      </Text>
     </Box>
   );
 };

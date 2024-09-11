@@ -15,7 +15,6 @@ import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  migrationGuide: true,
   Example: ({ id, getState, setState }) =>
     source(
       <Textarea

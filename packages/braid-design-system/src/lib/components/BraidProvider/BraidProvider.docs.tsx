@@ -4,7 +4,6 @@ import type { ComponentDocs } from 'site/types';
 
 const docs: ComponentDocs = {
   category: 'Logic',
-  migrationGuide: true,
   description: (
     <Text>Provides the necessary theming context for all components.</Text>
   ),

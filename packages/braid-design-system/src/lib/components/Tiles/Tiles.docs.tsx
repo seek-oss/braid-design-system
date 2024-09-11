@@ -21,6 +21,13 @@ const docs: ComponentDocs = {
         <Placeholder height={80} />
       </Tiles>,
     ),
+  description: (
+    <Text>
+      The <Strong>Tiles</Strong> component is used to lay out a collection of
+      elements left to right, top to bottom — wrapping across a specified number
+      of columns.
+    </Text>
+  ),
   alternatives: [
     {
       name: 'Columns',
@@ -28,7 +35,7 @@ const docs: ComponentDocs = {
     },
     {
       name: 'Inline',
-      description: 'For fine-grained control of spacing and alignment.',
+      description: 'For laying out flowing content that is allowed to wrap.',
     },
     {
       name: 'Box',

@@ -11,15 +11,14 @@ import {
   FieldMessage,
 } from '../../FieldMessage/FieldMessage';
 import { Text } from '../../Text/Text';
-import { virtualTouchable } from '../touchable/virtualTouchable';
 import { mergeIds } from '../mergeIds';
 import type { BadgeProps } from '../../Badge/Badge';
-import { Inline } from '../../Inline/Inline';
 import {
   type StyledInputProps,
   type PrivateStyledInputProps,
   StyledInput,
 } from './StyledInput';
+import { virtualTouchable } from '../touchable/virtualTouchable.css';
 import * as styles from './InlineField.css';
 
 interface InlineFieldBaseProps {
@@ -74,7 +73,7 @@ export const InlineField = forwardRef<
   ) => {
     const messageId = `${id}-message`;
     const descriptionId = `${id}-description`;
-    const hasMessage = message || reserveMessageSpace;
+    const hasMessage = (message && !disabled) || reserveMessageSpace;
 
     if (process.env.NODE_ENV !== 'production') {
       if (badge && badge.props.bleedY !== undefined) {
@@ -112,27 +111,34 @@ export const InlineField = forwardRef<
             ref={forwardedRef}
           />
 
-          <Box paddingLeft="small" flexGrow={1}>
-            <Box className={[styles.sizeVars[size], styles.labelOffset]}>
-              <Inline space="small" alignY="center">
-                <Box
-                  component="label"
-                  htmlFor={id}
-                  userSelect="none"
-                  display="block"
-                  cursor={!disabled ? 'pointer' : undefined}
-                  className={virtualTouchable()}
+          <Box paddingLeft="xsmall" flexGrow={1}>
+            <Box
+              display="flex"
+              className={[styles.sizeVars[size], styles.labelOffset]}
+            >
+              <Box
+                component="label"
+                htmlFor={id}
+                userSelect="none"
+                display="block"
+                cursor={!disabled ? 'pointer' : undefined}
+                className={virtualTouchable}
+              >
+                <Text
+                  weight={checked && !inList ? 'strong' : undefined}
+                  tone={disabled ? 'secondary' : undefined}
+                  size={size}
                 >
-                  <Text
-                    weight={checked && !inList ? 'strong' : undefined}
-                    tone={disabled ? 'secondary' : undefined}
-                    size={size}
-                  >
-                    {label}
-                  </Text>
-                </Box>
-                {badge ? cloneElement(badge, { bleedY: true }) : null}
-              </Inline>
+                  {badge ? (
+                    <Box component="span" paddingRight="xsmall">
+                      {label}
+                    </Box>
+                  ) : (
+                    label
+                  )}
+                  {badge ? cloneElement(badge, {}) : null}
+                </Text>
+              </Box>
             </Box>
 
             {description ? (

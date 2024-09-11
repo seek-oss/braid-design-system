@@ -14,6 +14,7 @@ import {
 
 import type { ButtonProps } from './Button';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],
@@ -110,6 +111,25 @@ export const screenshots: ComponentScreenshot = {
       label: 'Small size',
       Example: () => (
         <Inline space="small">
+          <Button size="small" variant="solid">
+            Solid
+          </Button>
+          <Button size="small" variant="ghost">
+            Ghost
+          </Button>
+          <Button size="small" variant="soft">
+            Soft
+          </Button>
+          <Button size="small" variant="transparent">
+            Transparent
+          </Button>
+        </Inline>
+      ),
+    },
+    {
+      label: 'Small size (virtual touch target)',
+      Example: () => (
+        <Inline space="small" data={{ [debugTouchableAttrForDataProp]: '' }}>
           <Button size="small" variant="solid">
             Solid
           </Button>

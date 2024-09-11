@@ -92,17 +92,17 @@ export const IconsDetails = () => (
                   <Text size="xsmall" tone="secondary">
                     DECORATIVE (i.e. hidden, will not be read)
                   </Text>
-                  <Text size="large">
-                    <IconTag />
-                  </Text>
+                  <IconTag size="large" />
                 </Stack>
                 <Stack space="medium">
                   <Text size="xsmall" tone="secondary">
                     IMAGE (i.e. Read as “Classification”)
                   </Text>
-                  <Text size="large">
-                    <IconTag title="Classification" titleId="iconId" />
-                  </Text>
+                  <IconTag
+                    title="Classification"
+                    titleId="iconId"
+                    size="large"
+                  />
                 </Stack>
               </Tiles>,
             )

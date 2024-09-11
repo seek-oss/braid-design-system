@@ -16,12 +16,10 @@ export const resetStackingContext = atoms({ position: 'relative', zIndex: 0 });
 export const backdrop = style(
   colorModeStyle({
     lightMode: {
-      background: '#000',
-      opacity: 0.4,
+      background: 'rgba(0, 0, 0, 0.4)',
     },
     darkMode: {
-      background: '#000',
-      opacity: 0.6,
+      background: 'rgba(0, 0, 0, 0.6)',
     },
   }),
 );
@@ -34,56 +32,43 @@ const reducedMotion = style({
   },
 });
 
+const rightAnimation = style([
+  reducedMotion,
+  responsiveStyle({
+    mobile: { opacity: 1, transform: 'translateX(110%)' },
+    tablet: { opacity: 0, transform: 'translateX(40px)' },
+  }),
+]);
+
+const leftAnimation = style([
+  reducedMotion,
+  responsiveStyle({
+    mobile: { opacity: 1, transform: 'translateX(-110%)' },
+    tablet: { opacity: 0, transform: 'translateX(-40px)' },
+  }),
+]);
+
+const centerAnimation = style([
+  reducedMotion,
+  {
+    transform: 'scale(.8)',
+  },
+]);
+
 export const entrance = {
-  center: [
-    reducedMotion,
-    style({
-      transform: 'scale(.8)',
-    }),
-  ],
-  right: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(110%)' },
-        tablet: { opacity: 0, transform: 'translateX(40px)' },
-      }),
-    ),
-  ],
-  left: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(-110%)' },
-        tablet: { opacity: 0, transform: 'translateX(-40px)' },
-      }),
-    ),
-  ],
+  center: centerAnimation,
+  right: rightAnimation,
+  left: leftAnimation,
 };
 
 export const exit = {
-  right: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(110%)' },
-        tablet: { opacity: 0, transform: 'translateX(10px)' },
-      }),
-    ),
-  ],
-  left: [
-    reducedMotion,
-    style(
-      responsiveStyle({
-        mobile: { opacity: 1, transform: 'translateX(-110%)' },
-        tablet: { opacity: 0, transform: 'translateX(-10px)' },
-      }),
-    ),
-  ],
+  center: centerAnimation,
+  right: rightAnimation,
+  left: leftAnimation,
 };
 
 const easeOut = 'cubic-bezier(0.4, 0, 0, 1)';
-export const horiztontalTransition = style(
+const horizontalTransition = style(
   responsiveStyle({
     mobile: {
       transition: `transform .3s ${easeOut}, opacity .3s ${easeOut}`,
@@ -93,6 +78,12 @@ export const horiztontalTransition = style(
     },
   }),
 );
+
+export const transition = {
+  center: atoms({ transition: 'fast' }),
+  right: horizontalTransition,
+  left: horizontalTransition,
+};
 
 export const pointerEventsAll = style({
   pointerEvents: 'all',

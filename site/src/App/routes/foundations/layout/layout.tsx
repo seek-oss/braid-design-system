@@ -23,6 +23,7 @@ import {
   Bleed,
   PageBlock,
   Page,
+  Spread,
 } from 'braid-src/lib/components';
 import { TextStack } from '../../../TextStack/TextStack';
 import Code from '../../../Code/Code';
@@ -102,10 +103,10 @@ const page: DocsPage = {
 
       <List>
         <Text>
-          <TextLink href="#box">Box</TextLink>
+          <TextLink href="#spacing">Spacing</TextLink>
         </Text>
         <Text>
-          <TextLink href="#card">Card</TextLink>
+          <TextLink href="#box">Box</TextLink>
         </Text>
         <Text>
           <TextLink href="#stack">Stack</TextLink>
@@ -115,6 +116,9 @@ const page: DocsPage = {
         </Text>
         <Text>
           <TextLink href="#columns">Columns</TextLink>
+        </Text>
+        <Text>
+          <TextLink href="#spread">Spread</TextLink>
         </Text>
         <Text>
           <TextLink href="#tiles">Tiles</TextLink>
@@ -142,27 +146,57 @@ const page: DocsPage = {
         this scale rather than generating custom spacing rules.
       </Text>
       <Stack space="small">
-        {spaceScale.map((space) => (
-          <Columns key={space} space="xsmall" alignY="center">
-            <Column width="content">
-              <Box style={{ width: 100 }}>
-                <Text baseline={false}>{space}</Text>
-              </Box>
-            </Column>
-            <Column>
-              <Box display="flex">
-                <ThemedExample transparent>
-                  <Box
-                    background="formAccent"
-                    paddingLeft={space}
-                    paddingTop="medium"
-                  />
-                </ThemedExample>
-              </Box>
-            </Column>
-          </Columns>
-        ))}
+        {spaceScale
+          .filter((s) => s !== 'gutter')
+          .map((space) => (
+            <Columns key={space} space="xsmall" alignY="center">
+              <Column width="content">
+                <Box style={{ width: 100 }}>
+                  <Text baseline={false}>{space}</Text>
+                </Box>
+              </Column>
+              <Column>
+                <Box display="flex">
+                  <ThemedExample transparent>
+                    <Box
+                      background="formAccent"
+                      paddingLeft={space}
+                      paddingTop="medium"
+                    />
+                  </ThemedExample>
+                </Box>
+              </Column>
+            </Columns>
+          ))}
       </Stack>
+
+      <Text>
+        In addition to the scale, Braid has a semantic value{' '}
+        <Strong>gutter</Strong> — used to maintain consistent insets across
+        components, e.g. <TextLink href="/components/Card">Card</TextLink>,{' '}
+        <TextLink href="/components/Alert">Alert</TextLink>,{' '}
+        <TextLink href="/components/Button">Button</TextLink>, etc. This value
+        should only be used for aligning to this concept.
+      </Text>
+
+      <Columns space="xsmall" alignY="center">
+        <Column width="content">
+          <Box style={{ width: 100 }}>
+            <Text baseline={false}>gutter</Text>
+          </Box>
+        </Column>
+        <Column>
+          <Box display="flex">
+            <ThemedExample transparent>
+              <Box
+                background="formAccent"
+                paddingLeft="gutter"
+                paddingTop="medium"
+              />
+            </ThemedExample>
+          </Box>
+        </Column>
+      </Columns>
 
       <Divider />
 
@@ -238,23 +272,6 @@ const page: DocsPage = {
 
       <Divider />
 
-      <LinkableHeading>Card</LinkableHeading>
-      <Text>
-        Rather than nesting content in arbitrary{' '}
-        <TextLink href="#box">Box</TextLink> elements, you may prefer to use
-        standard <TextLink href="/components/Card">Card</TextLink> elements
-        instead.
-      </Text>
-      <Code>
-        {source(
-          <Card>
-            <Text>Lorem ipsum dolor sit amet.</Text>
-          </Card>,
-        )}
-      </Code>
-
-      <Divider />
-
       <LinkableHeading>Stack</LinkableHeading>
       <Text>
         The most common white space on screen is between elements stacked
@@ -270,13 +287,11 @@ const page: DocsPage = {
       </Text>
       <Code>
         {source(
-          <Card>
-            <Stack space="large">
-              <Heading level="3">Heading</Heading>
-              <Text>{lipsum1}</Text>
-              <Text>{lipsum2}</Text>
-            </Stack>
-          </Card>,
+          <Stack space="large">
+            <Heading level="3">Heading</Heading>
+            <Text>{lipsum1}</Text>
+            <Text>{lipsum2}</Text>
+          </Stack>,
         )}
       </Code>
       <Text>
@@ -285,13 +300,11 @@ const page: DocsPage = {
       </Text>
       <Code>
         {source(
-          <Card>
-            <Stack space={{ mobile: 'medium', tablet: 'large' }}>
-              <Heading level="3">Heading</Heading>
-              <Text>{lipsum1}</Text>
-              <Text>{lipsum2}</Text>
-            </Stack>
-          </Card>,
+          <Stack space={{ mobile: 'medium', tablet: 'large' }}>
+            <Heading level="3">Heading</Heading>
+            <Text>{lipsum1}</Text>
+            <Text>{lipsum2}</Text>
+          </Stack>,
         )}
       </Code>
       <Text>
@@ -302,13 +315,11 @@ const page: DocsPage = {
       </Text>
       <Code>
         {source(
-          <Card>
-            <Stack space="gutter" dividers={true}>
-              <Heading level="3">Heading</Heading>
-              <Text>{lipsum1}</Text>
-              <Text>{lipsum2}</Text>
-            </Stack>
-          </Card>,
+          <Stack space="large" dividers={true}>
+            <Heading level="3">Heading</Heading>
+            <Text>{lipsum1}</Text>
+            <Text>{lipsum2}</Text>
+          </Stack>,
         )}
       </Code>
       <Text>
@@ -318,26 +329,24 @@ const page: DocsPage = {
       </Text>
       <Code>
         {source(
-          <Card>
-            <Stack space="gutter">
-              <Heading level="3">Heading</Heading>
-              <Text>{lipsum1}</Text>
-              <Divider />
-              <Text>{lipsum2}</Text>
-            </Stack>
-          </Card>,
+          <Stack space="large">
+            <Heading level="3">Heading</Heading>
+            <Text>{lipsum1}</Text>
+            <Divider />
+            <Text>{lipsum2}</Text>
+          </Stack>,
         )}
       </Code>
       <Text>
         Multiple <TextLink href="/components/Stack">Stack</TextLink> components
         can be nested to create more complex white space rules. For example, if
         you wanted to create multiple grouped blocks of text like you might see
-        on a job summary card:
+        in a <TextLink href="/components/Card">Card</TextLink>:
       </Text>
       <Code>
         {source(
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Heading level="4">Heading</Heading>
               <Stack space="small">
                 <Text>Line 1</Text>
@@ -355,23 +364,21 @@ const page: DocsPage = {
       </Code>
       <Text>
         <TextLink href="/components/Stack">Stack</TextLink> also supports
-        horizontal alignment. For example, if you wanted to centre align all
-        content within a card:
+        horizontal alignment. For example, if you wanted to centre align all of
+        its content:
       </Text>
       <Code>
         {source(
-          <Card>
-            <Stack space="medium" align="center">
-              <IconPromote tone="promote" />
-              <Badge tone="promote">Badge</Badge>
-              <Heading align="center" level="4">
-                Heading Text
-              </Heading>
-              <Text align="center" tone="secondary">
-                Lorem ipsum dolor sit amet.
-              </Text>
-            </Stack>
-          </Card>,
+          <Stack space="medium" align="center">
+            <IconPromote tone="promote" />
+            <Badge tone="promote">Badge</Badge>
+            <Heading align="center" level="4">
+              Heading Text
+            </Heading>
+            <Text align="center" tone="secondary">
+              Lorem ipsum dolor sit amet.
+            </Text>
+          </Stack>,
         )}
       </Code>
       <Text>
@@ -382,15 +389,13 @@ const page: DocsPage = {
       </Text>
       <Code>
         {source(
-          <Card>
-            <Stack space="medium" align="center">
-              <Text>Item 1</Text>
-              <Hidden below="tablet">
-                <Text>Item 2</Text>
-              </Hidden>
-              <Text>Item 3</Text>
-            </Stack>
-          </Card>,
+          <Stack space="medium" align="center">
+            <Text>Item 1</Text>
+            <Hidden below="tablet">
+              <Text>Item 2</Text>
+            </Hidden>
+            <Text>Item 3</Text>
+          </Stack>,
         )}
       </Code>
 
@@ -405,19 +410,17 @@ const page: DocsPage = {
 
       <Code>
         {source(
-          <Card>
-            <Inline space="small">
-              <Badge>Lorem ipsum</Badge>
-              <Badge>Dolor</Badge>
-              <Badge>Sit amet</Badge>
-              <Badge>Consectetur</Badge>
-              <Badge>Adipiscing elit</Badge>
-              <Badge>Suspendisse dignissim</Badge>
-              <Badge>Dapibus elit</Badge>
-              <Badge>Vel egestas felis</Badge>
-              <Badge>Pharetra non</Badge>
-            </Inline>
-          </Card>,
+          <Inline space="small">
+            <Badge>Lorem ipsum</Badge>
+            <Badge>Dolor</Badge>
+            <Badge>Sit amet</Badge>
+            <Badge>Consectetur</Badge>
+            <Badge>Adipiscing elit</Badge>
+            <Badge>Suspendisse dignissim</Badge>
+            <Badge>Dapibus elit</Badge>
+            <Badge>Vel egestas felis</Badge>
+            <Badge>Pharetra non</Badge>
+          </Inline>,
         )}
       </Code>
 
@@ -429,19 +432,17 @@ const page: DocsPage = {
 
       <Code>
         {source(
-          <Card>
-            <Inline space="small" align="center">
-              <Badge>Lorem ipsum</Badge>
-              <Badge>Dolor</Badge>
-              <Badge>Sit amet</Badge>
-            </Inline>
-          </Card>,
+          <Inline space="small" align="center">
+            <Badge>Lorem ipsum</Badge>
+            <Badge>Dolor</Badge>
+            <Badge>Sit amet</Badge>
+          </Inline>,
         )}
       </Code>
 
       <Text>
-        If you’d like the columns to stack vertically on smaller screens, you
-        can provide the{' '}
+        If you’d like the items to stack vertically on smaller screens, you can
+        provide the{' '}
         <TextLink href="/components/Inline#collapsing-across-breakpoints">
           collapseBelow
         </TextLink>{' '}
@@ -453,12 +454,10 @@ const page: DocsPage = {
       </Text>
       <Code>
         {source(
-          <Card>
-            <Inline space="small" collapseBelow="tablet">
-              <Button>Submit</Button>
-              <Button variant="ghost">Cancel</Button>
-            </Inline>
-          </Card>,
+          <Inline space="small" collapseBelow="tablet">
+            <Button>Submit</Button>
+            <Button variant="ghost">Cancel</Button>
+          </Inline>,
         )}
       </Code>
 
@@ -545,40 +544,30 @@ const page: DocsPage = {
         as the content within it.
       </Text>
       <Text>
-        For example, if you wanted a card with a left-aligned{' '}
-        <TextLink href="/components/Heading">Heading</TextLink> and a
-        right-aligned{' '}
-        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>:
+        For example, if you wanted a column to be as large as its illustration
+        followed by a second column that filled the space:
       </Text>
       <Code>
         {source(
           <Card>
-            <Stack space="medium">
-              <Columns space="small">
-                <Column>
-                  <Heading level="3">Card heading</Heading>
-                </Column>
-                <Column width="content">
-                  <OverflowMenu label="Options">
-                    <MenuItem
-                      onClick={() => {
-                        /* */
-                      }}
-                    >
-                      First
-                    </MenuItem>
-                    <MenuItem
-                      onClick={() => {
-                        /* */
-                      }}
-                    >
-                      Second
-                    </MenuItem>
-                  </OverflowMenu>
-                </Column>
-              </Columns>
-              <Text>Card content</Text>
-            </Stack>
+            <Columns space="medium" alignY="center">
+              <Column width="content">
+                <Placeholder
+                  shape="round"
+                  height={128}
+                  width={128}
+                  label="Illustration"
+                />
+              </Column>
+              <Column>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse dignissim dapibus elit, vel egestas felis pharetra
+                  non. Cras malesuada, massa nec ultricies efficitur, lectus
+                  ante consequat magna, a porttitor massa ex ut quam.
+                </Text>
+              </Column>
+            </Columns>
           </Card>,
         )}
       </Code>
@@ -645,6 +634,75 @@ const page: DocsPage = {
               </Card>
             </Column>
           </Columns>,
+        )}
+      </Code>
+
+      <Divider />
+
+      <LinkableHeading>Spread</LinkableHeading>
+      <Text>
+        If you’d like to spread components to opposite ends of a container while
+        maintaining a minimum amount of space in between them, Braid provides
+        the <TextLink href="/components/Spread">Spread</TextLink> component.
+      </Text>
+
+      <Text>
+        An example might be a card with a left-aligned{' '}
+        <TextLink href="/components/Heading">Heading</TextLink> and a
+        right-aligned{' '}
+        <TextLink href="/components/OverflowMenu">OverflowMenu</TextLink>:
+      </Text>
+
+      <Code>
+        {source(
+          <Card>
+            <Spread space="small">
+              <Heading level="4">Heading</Heading>
+              <OverflowMenu label="Options">
+                <MenuItem>First</MenuItem>
+                <MenuItem>Second</MenuItem>
+              </OverflowMenu>
+            </Spread>
+          </Card>,
+        )}
+      </Code>
+
+      <Text>
+        By default, components will be spread horizontally but you can change
+        the direction to vertical by providing the{' '}
+        <TextLink href="/components/Spread#direction">direction</TextLink> prop.
+      </Text>
+
+      <Text>
+        This is useful when aligning content vertically across containers while
+        maintaining predicatable spacing — particularly when wrapping text comes
+        into play.
+      </Text>
+
+      <Code collapsedByDefault>
+        {source(
+          <Tiles space="small" columns={3}>
+            <Card height="full">
+              <Spread space="medium" direction="vertical">
+                <Text>
+                  Minim aliqua nulla id excepteur labore amet do dolore.
+                </Text>
+                <Text tone="secondary">Duis</Text>
+              </Spread>
+            </Card>
+            <Card height="full">
+              <Spread space="medium" direction="vertical">
+                <Text>Minim aliqua nulla id.</Text>
+                <Text tone="secondary">Duis</Text>
+              </Spread>
+            </Card>
+            <Card height="full">
+              <Spread space="medium" direction="vertical">
+                <Text>Minim aliqua nulla id excepteur labore.</Text>
+                <Text tone="secondary">Duis</Text>
+              </Spread>
+            </Card>
+          </Tiles>,
         )}
       </Code>
 
@@ -788,7 +846,8 @@ const page: DocsPage = {
         applications will want to limit the width of content on the screen. In
         order to address this, Braid provides the{' '}
         <TextLink href="/components/ContentBlock">ContentBlock</TextLink>{' '}
-        component that sets a maximum width and centres content horizontally.
+        component that sets a maximum width and horizontally center-aligns the
+        block by default.
       </Text>
       <Code>
         {source(
@@ -800,13 +859,29 @@ const page: DocsPage = {
         )}
       </Code>
       <Text>
-        If you’d like a larger content block, you can optionally provide the{' '}
+        If you’d like to increase or decrease the width of the block, you can
+        optionally provide the{' '}
         <TextLink href="/components/ContentBlock#maximum-width">width</TextLink>{' '}
         prop:
       </Text>
       <Code>
         {source(
-          <ContentBlock width="large">
+          <ContentBlock width="small">
+            <Card>
+              <Text>Hello World</Text>
+            </Card>
+          </ContentBlock>,
+        )}
+      </Code>
+      <Text>
+        To manage line length or form field sizes you may choose to left-align
+        the block. This can be done via the{' '}
+        <TextLink href="/components/ContentBlock#alignment">align</TextLink>{' '}
+        prop:
+      </Text>
+      <Code>
+        {source(
+          <ContentBlock width="small" align="left">
             <Card>
               <Text>Hello World</Text>
             </Card>
@@ -837,7 +912,8 @@ const page: DocsPage = {
       <Text>
         To standardise our page-level block widths, the{' '}
         <TextLink href="/components/PageBlock#maximum-width">width</TextLink>{' '}
-        prop accepts either <Strong>medium</Strong> or <Strong>large</Strong>.
+        prop accepts either <Strong>small</Strong>, <Strong>medium</Strong> or{' '}
+        <Strong>large</Strong>.
       </Text>
       <Code>
         {source(
@@ -848,6 +924,15 @@ const page: DocsPage = {
           </PageBlock>,
         )}
       </Code>
+
+      <Text>
+        Additionally, a{' '}
+        <TextLink href="/components/PageBlock">PageBlock</TextLink> can also
+        choose a{' '}
+        <TextLink href="/components/PageBlock#maximum-width">width</TextLink> of{' '}
+        <Strong>full</Strong>. This allows content to extend to the full
+        available width while still maintaining the standard responsive gutters.
+      </Text>
 
       <Divider />
 
@@ -886,7 +971,7 @@ const page: DocsPage = {
       <Code>
         {source(
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Placeholder height={200} label="Header Image" />
               <Heading level="3">Heading</Heading>
               <Text>Text content</Text>
@@ -908,7 +993,7 @@ const page: DocsPage = {
       <Code>
         {source(
           <Card>
-            <Stack space="gutter">
+            <Stack space="large">
               <Bleed horizontal="gutter" top="gutter">
                 <Placeholder height={200} label="Header Image" />
               </Bleed>

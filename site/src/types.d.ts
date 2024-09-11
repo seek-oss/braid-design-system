@@ -38,10 +38,9 @@ export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
   banner?: ReactNodeNoStrings;
-  migrationGuide?: boolean;
   description?: ReactNodeNoStrings;
   subComponents?: string[];
-  examplebackground?: NonNullable<BoxProps['background']> | false;
+  examplebackground?: false;
   Example?: (
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;
@@ -66,6 +65,11 @@ interface ExampleProps {
   handler: () => void;
 }
 interface PlayroomExampleProps extends ReturnType<typeof useScope> {}
+
+export interface GalleryComponent {
+  itemWidth?: 'icon' | 'standard' | 'wide';
+  examples: ComponentExample[];
+}
 
 export interface ComponentExample {
   label?: string;

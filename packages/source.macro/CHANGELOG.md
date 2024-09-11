@@ -1,5 +1,11 @@
 # @braid-design-system/source.macro
 
+## 0.1.2
+
+### Patch Changes
+
+- Update Crackle CLI dependency ([#1480](https://github.com/seek-oss/braid-design-system/pull/1480))
+
 ## 0.1.1
 
 ### Patch Changes
