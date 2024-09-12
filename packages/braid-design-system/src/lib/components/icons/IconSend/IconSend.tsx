@@ -13,5 +13,9 @@ export const IconSend = (props: IconSendProps) => {
     },
   });
 
-  return <Box component={IconSendSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSendSvg} {...iconProps} />
+    </Box>
+  );
 };

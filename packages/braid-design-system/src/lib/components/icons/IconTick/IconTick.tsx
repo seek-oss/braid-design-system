@@ -8,5 +8,9 @@ export type IconTickProps = UseIconProps;
 export const IconTick = (props: IconTickProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconTickSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconTickSvg} {...iconProps} />
+    </Box>
+  );
 };

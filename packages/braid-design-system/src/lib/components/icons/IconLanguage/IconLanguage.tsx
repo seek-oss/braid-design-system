@@ -8,5 +8,9 @@ export type IconLanguageProps = UseIconProps;
 export const IconLanguage = (props: IconLanguageProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconLanguageSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconLanguageSvg} {...iconProps} />
+    </Box>
+  );
 };

@@ -13,5 +13,9 @@ export const IconWorkExperience = (props: IconWorkExperienceProps) => {
     },
   });
 
-  return <Box component={IconWorkExperienceSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconWorkExperienceSvg} {...iconProps} />
+    </Box>
+  );
 };

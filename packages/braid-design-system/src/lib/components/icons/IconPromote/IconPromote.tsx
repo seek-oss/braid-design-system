@@ -8,5 +8,9 @@ export type IconPromoteProps = UseIconProps;
 export const IconPromote = (props: IconPromoteProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconPromoteSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconPromoteSvg} {...iconProps} />
+    </Box>
+  );
 };

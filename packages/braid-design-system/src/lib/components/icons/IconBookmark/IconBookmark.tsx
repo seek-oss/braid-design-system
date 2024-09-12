@@ -15,9 +15,11 @@ export const IconBookmark = ({
   const iconProps = useIcon(props);
 
   return (
-    <Box
-      component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
-      {...iconProps}
-    />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
+        {...iconProps}
+      />
+    </Box>
   );
 };

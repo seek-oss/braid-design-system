@@ -8,5 +8,9 @@ export type IconNewWindowProps = UseIconProps;
 export const IconNewWindow = (props: IconNewWindowProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconNewWindowSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconNewWindowSvg} {...iconProps} />
+    </Box>
+  );
 };

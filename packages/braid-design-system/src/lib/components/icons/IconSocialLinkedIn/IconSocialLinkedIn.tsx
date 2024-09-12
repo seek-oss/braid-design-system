@@ -8,5 +8,9 @@ export type IconSocialLinkedInProps = UseIconProps;
 export const IconSocialLinkedIn = (props: IconSocialLinkedInProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconSocialLinkedInSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSocialLinkedInSvg} {...iconProps} />
+    </Box>
+  );
 };

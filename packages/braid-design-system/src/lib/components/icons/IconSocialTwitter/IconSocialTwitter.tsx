@@ -9,5 +9,9 @@ export type IconSocialTwitterProps = UseIconProps;
 export const IconSocialTwitter = (props: IconSocialTwitterProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconSocialXSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSocialXSvg} {...iconProps} />
+    </Box>
+  );
 };

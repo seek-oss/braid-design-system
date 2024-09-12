@@ -8,5 +8,9 @@ export type IconHashProps = UseIconProps;
 export const IconHash = (props: IconHashProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconHashSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconHashSvg} {...iconProps} />
+    </Box>
+  );
 };

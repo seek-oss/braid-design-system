@@ -8,5 +8,9 @@ export type IconGridProps = UseIconProps;
 export const IconGrid = (props: IconGridProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconGridSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconGridSvg} {...iconProps} />
+    </Box>
+  );
 };

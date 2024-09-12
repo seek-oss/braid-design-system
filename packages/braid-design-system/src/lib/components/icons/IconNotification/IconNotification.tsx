@@ -8,5 +8,9 @@ export type IconNotificationProps = UseIconProps;
 export const IconNotification = (props: IconNotificationProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconNotificationSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconNotificationSvg} {...iconProps} />
+    </Box>
+  );
 };

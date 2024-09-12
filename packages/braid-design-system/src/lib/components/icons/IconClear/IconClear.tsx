@@ -8,5 +8,9 @@ export type IconClearProps = UseIconProps;
 export const IconClear = (props: IconClearProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconClearSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconClearSvg} {...iconProps} />
+    </Box>
+  );
 };

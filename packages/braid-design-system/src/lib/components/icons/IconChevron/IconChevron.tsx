@@ -15,18 +15,20 @@ export const IconChevron = ({
   const { className, ...iconProps } = useIcon(props);
 
   return (
-    <Box
-      component={IconChevronSvg}
-      className={[
-        styles.root,
-        className,
-        {
-          [styles.up]: direction === 'up',
-          [styles.left]: direction === 'left',
-          [styles.right]: direction === 'right',
-        },
-      ]}
-      {...iconProps}
-    />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={IconChevronSvg}
+        className={[
+          styles.root,
+          className,
+          {
+            [styles.up]: direction === 'up',
+            [styles.left]: direction === 'left',
+            [styles.right]: direction === 'right',
+          },
+        ]}
+        {...iconProps}
+      />
+    </Box>
   );
 };

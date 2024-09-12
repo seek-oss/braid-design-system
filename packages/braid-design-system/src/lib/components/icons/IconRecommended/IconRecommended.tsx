@@ -8,5 +8,9 @@ export type IconRecommendedProps = UseIconProps;
 export const IconRecommended = (props: IconRecommendedProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconRecommendedSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconRecommendedSvg} {...iconProps} />
+    </Box>
+  );
 };

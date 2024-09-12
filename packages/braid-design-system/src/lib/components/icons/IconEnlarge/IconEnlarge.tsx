@@ -12,9 +12,11 @@ export const IconEnlarge = ({ active = false, ...props }: IconEnlargeProps) => {
   const iconProps = useIcon(props);
 
   return (
-    <Box
-      component={active ? IconEnlargeActiveSvg : IconEnlargeSvg}
-      {...iconProps}
-    />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={active ? IconEnlargeActiveSvg : IconEnlargeSvg}
+        {...iconProps}
+      />
+    </Box>
   );
 };

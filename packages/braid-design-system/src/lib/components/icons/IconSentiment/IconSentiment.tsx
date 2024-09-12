@@ -24,9 +24,11 @@ export const IconSentiment = ({
   const iconProps = useIcon(props);
 
   return (
-    <Box
-      component={feelingToIcon[feeling] || feelingToIcon.neutral}
-      {...iconProps}
-    />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={feelingToIcon[feeling] || feelingToIcon.neutral}
+        {...iconProps}
+      />
+    </Box>
   );
 };

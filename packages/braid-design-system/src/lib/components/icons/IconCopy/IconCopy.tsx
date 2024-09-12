@@ -8,5 +8,9 @@ export type IconCopyProps = UseIconProps;
 export const IconCopy = (props: IconCopyProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconCopySvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconCopySvg} {...iconProps} />
+    </Box>
+  );
 };

@@ -8,5 +8,9 @@ export type IconPositiveProps = UseIconProps;
 export const IconPositive = (props: IconPositiveProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconPositiveSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconPositiveSvg} {...iconProps} />
+    </Box>
+  );
 };

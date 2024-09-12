@@ -8,5 +8,9 @@ export type IconCriticalProps = UseIconProps;
 export const IconCritical = (props: IconCriticalProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconCriticalSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconCriticalSvg} {...iconProps} />
+    </Box>
+  );
 };

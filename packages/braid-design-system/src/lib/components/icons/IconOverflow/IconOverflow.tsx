@@ -8,5 +8,9 @@ export type IconOverflowProps = UseIconProps;
 export const IconOverflow = (props: IconOverflowProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconOverflowSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconOverflowSvg} {...iconProps} />
+    </Box>
+  );
 };

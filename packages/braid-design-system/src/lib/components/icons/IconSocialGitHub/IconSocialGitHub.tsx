@@ -8,5 +8,9 @@ export type IconSocialGitHubProps = UseIconProps;
 export const IconSocialGitHub = (props: IconSocialGitHubProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconSocialGitHubSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSocialGitHubSvg} {...iconProps} />
+    </Box>
+  );
 };

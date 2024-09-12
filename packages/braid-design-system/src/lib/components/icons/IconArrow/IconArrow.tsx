@@ -12,18 +12,20 @@ export const IconArrow = ({ direction = 'up', ...props }: IconArrowProps) => {
   const { className, ...iconProps } = useIcon(props);
 
   return (
-    <Box
-      component={IconArrowSvg}
-      className={[
-        styles.root,
-        className,
-        {
-          [styles.rotate]: direction === 'right' || direction === 'left',
-          [styles.flip]: direction === 'down',
-          [styles.mirror]: direction === 'left',
-        },
-      ]}
-      {...iconProps}
-    />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={IconArrowSvg}
+        className={[
+          styles.root,
+          className,
+          {
+            [styles.rotate]: direction === 'right' || direction === 'left',
+            [styles.flip]: direction === 'down',
+            [styles.mirror]: direction === 'left',
+          },
+        ]}
+        {...iconProps}
+      />
+    </Box>
   );
 };

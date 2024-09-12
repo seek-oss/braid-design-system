@@ -8,5 +8,9 @@ export type IconResumeProps = UseIconProps;
 export const IconResume = (props: IconResumeProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconResumeSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconResumeSvg} {...iconProps} />
+    </Box>
+  );
 };

@@ -8,5 +8,9 @@ export type IconCategoryProps = UseIconProps;
 export const IconCategory = (props: IconCategoryProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconCategorySvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconCategorySvg} {...iconProps} />
+    </Box>
+  );
 };

@@ -8,5 +8,9 @@ export type IconPlatformAndroidProps = UseIconProps;
 export const IconPlatformAndroid = (props: IconPlatformAndroidProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconPlatformAndroidSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconPlatformAndroidSvg} {...iconProps} />
+    </Box>
+  );
 };

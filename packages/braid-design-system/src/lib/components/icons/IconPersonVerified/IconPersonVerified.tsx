@@ -8,5 +8,9 @@ export type IconPersonVerifiedProps = UseIconProps;
 export const IconPersonVerified = (props: IconPersonVerifiedProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconPersonVerifiedSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconPersonVerifiedSvg} {...iconProps} />
+    </Box>
+  );
 };

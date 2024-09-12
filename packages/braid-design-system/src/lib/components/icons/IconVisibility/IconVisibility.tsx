@@ -12,9 +12,11 @@ export const IconVisibility = ({ hidden, ...props }: IconVisibilityProps) => {
   const iconProps = useIcon(props);
 
   return (
-    <Box
-      component={hidden ? IconVisibilityHiddenSvg : IconVisibilitySvg}
-      {...iconProps}
-    />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={hidden ? IconVisibilityHiddenSvg : IconVisibilitySvg}
+        {...iconProps}
+      />
+    </Box>
   );
 };

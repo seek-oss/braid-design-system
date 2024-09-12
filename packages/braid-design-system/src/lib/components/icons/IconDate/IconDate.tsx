@@ -8,5 +8,9 @@ export type IconDateProps = UseIconProps;
 export const IconDate = (props: IconDateProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconDateSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconDateSvg} {...iconProps} />
+    </Box>
+  );
 };

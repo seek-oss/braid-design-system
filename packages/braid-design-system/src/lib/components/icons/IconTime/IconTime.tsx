@@ -8,5 +8,9 @@ export type IconTimeProps = UseIconProps;
 export const IconTime = (props: IconTimeProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconTimeSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconTimeSvg} {...iconProps} />
+    </Box>
+  );
 };

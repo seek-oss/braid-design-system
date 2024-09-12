@@ -13,5 +13,9 @@ export const IconDownload = (props: IconDownloadProps) => {
     },
   });
 
-  return <Box component={IconDownloadSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconDownloadSvg} {...iconProps} />
+    </Box>
+  );
 };

@@ -8,5 +8,9 @@ export type IconSearchProps = UseIconProps;
 export const IconSearch = (props: IconSearchProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconSearchSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSearchSvg} {...iconProps} />
+    </Box>
+  );
 };

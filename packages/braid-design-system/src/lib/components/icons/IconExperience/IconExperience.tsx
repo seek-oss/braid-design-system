@@ -8,5 +8,9 @@ export type IconExperienceProps = UseIconProps;
 export const IconExperience = (props: IconExperienceProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconExperienceSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconExperienceSvg} {...iconProps} />
+    </Box>
+  );
 };

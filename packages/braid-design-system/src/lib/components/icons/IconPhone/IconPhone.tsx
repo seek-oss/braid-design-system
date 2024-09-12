@@ -8,5 +8,9 @@ export type IconPhoneProps = UseIconProps;
 export const IconPhone = (props: IconPhoneProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconPhoneSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconPhoneSvg} {...iconProps} />
+    </Box>
+  );
 };

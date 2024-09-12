@@ -12,6 +12,11 @@ export const IconStar = ({ active = false, ...props }: IconStarProps) => {
   const iconProps = useIcon(props);
 
   return (
-    <Box component={active ? IconStarActiveSvg : IconStarSvg} {...iconProps} />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={active ? IconStarActiveSvg : IconStarSvg}
+        {...iconProps}
+      />
+    </Box>
   );
 };

@@ -8,5 +8,9 @@ export type IconInfoProps = UseIconProps;
 export const IconInfo = (props: IconInfoProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconInfoSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconInfoSvg} {...iconProps} />
+    </Box>
+  );
 };

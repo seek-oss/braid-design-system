@@ -8,5 +8,9 @@ export type IconCreditCardProps = UseIconProps;
 export const IconCreditCard = (props: IconCreditCardProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconCreditCardSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconCreditCardSvg} {...iconProps} />
+    </Box>
+  );
 };

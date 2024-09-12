@@ -8,5 +8,9 @@ export type IconSortProps = UseIconProps;
 export const IconSort = (props: IconSortProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconSortSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSortSvg} {...iconProps} />
+    </Box>
+  );
 };

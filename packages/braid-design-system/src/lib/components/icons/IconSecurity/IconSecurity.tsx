@@ -8,5 +8,9 @@ export type IconSecurityProps = UseIconProps;
 export const IconSecurity = (props: IconSecurityProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconSecuritySvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSecuritySvg} {...iconProps} />
+    </Box>
+  );
 };

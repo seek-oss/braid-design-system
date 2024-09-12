@@ -8,5 +8,9 @@ export type IconAiProps = UseIconProps;
 export const IconAI = (props: IconAiProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconAISvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconAISvg} {...iconProps} />
+    </Box>
+  );
 };

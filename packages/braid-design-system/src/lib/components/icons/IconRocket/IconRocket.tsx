@@ -8,5 +8,9 @@ export type IconRocketProps = UseIconProps;
 export const IconRocket = (props: IconRocketProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconRocketSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconRocketSvg} {...iconProps} />
+    </Box>
+  );
 };

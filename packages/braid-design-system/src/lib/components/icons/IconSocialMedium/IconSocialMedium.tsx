@@ -8,5 +8,9 @@ export type IconSocialMediumProps = UseIconProps;
 export const IconSocialMedium = (props: IconSocialMediumProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconSocialMediumSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconSocialMediumSvg} {...iconProps} />
+    </Box>
+  );
 };

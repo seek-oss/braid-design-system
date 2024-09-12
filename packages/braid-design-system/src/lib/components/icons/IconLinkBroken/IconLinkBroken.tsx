@@ -8,5 +8,9 @@ export type IconLinkBrokenProps = UseIconProps;
 export const IconLinkBroken = (props: IconLinkBrokenProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconLinkBrokenSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconLinkBrokenSvg} {...iconProps} />
+    </Box>
+  );
 };

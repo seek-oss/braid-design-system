@@ -8,5 +8,9 @@ export type IconZoomInProps = UseIconProps;
 export const IconZoomIn = (props: IconZoomInProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconZoomInSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconZoomInSvg} {...iconProps} />
+    </Box>
+  );
 };

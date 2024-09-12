@@ -13,5 +13,9 @@ export const IconUpload = (props: IconUploadProps) => {
     },
   });
 
-  return <Box component={IconUploadSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconUploadSvg} {...iconProps} />
+    </Box>
+  );
 };

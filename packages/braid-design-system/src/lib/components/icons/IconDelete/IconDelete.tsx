@@ -8,5 +8,9 @@ export type IconDeleteProps = UseIconProps;
 export const IconDelete = (props: IconDeleteProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconDeleteSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconDeleteSvg} {...iconProps} />
+    </Box>
+  );
 };

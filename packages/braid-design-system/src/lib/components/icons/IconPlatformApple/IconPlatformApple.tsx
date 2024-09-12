@@ -8,5 +8,9 @@ export type IconPlatformAppleProps = UseIconProps;
 export const IconPlatformApple = (props: IconPlatformAppleProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconPlatformAppleSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconPlatformAppleSvg} {...iconProps} />
+    </Box>
+  );
 };

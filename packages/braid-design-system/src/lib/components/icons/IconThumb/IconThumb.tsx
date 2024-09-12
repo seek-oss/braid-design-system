@@ -12,16 +12,18 @@ export const IconThumb = ({ direction = 'up', ...props }: IconThumbProps) => {
   const { className, ...iconProps } = useIcon(props);
 
   return (
-    <Box
-      component={IconThumbSvg}
-      className={[
-        styles.root,
-        className,
-        {
-          [styles.down]: direction === 'down',
-        },
-      ]}
-      {...iconProps}
-    />
+    <Box component="span" display="inlineBlock">
+      <Box
+        component={IconThumbSvg}
+        className={[
+          styles.root,
+          className,
+          {
+            [styles.down]: direction === 'down',
+          },
+        ]}
+        {...iconProps}
+      />
+    </Box>
   );
 };

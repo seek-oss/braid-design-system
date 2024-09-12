@@ -8,5 +8,9 @@ export type IconMailProps = UseIconProps;
 export const IconMail = (props: IconMailProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconMailSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconMailSvg} {...iconProps} />
+    </Box>
+  );
 };

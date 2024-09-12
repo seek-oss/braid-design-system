@@ -8,5 +8,9 @@ export type IconLocationProps = UseIconProps;
 export const IconLocation = (props: IconLocationProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconLocationSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconLocationSvg} {...iconProps} />
+    </Box>
+  );
 };

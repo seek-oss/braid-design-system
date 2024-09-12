@@ -13,5 +13,9 @@ export const IconEdit = (props: IconEditProps) => {
     },
   });
 
-  return <Box component={IconEditSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconEditSvg} {...iconProps} />
+    </Box>
+  );
 };

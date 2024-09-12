@@ -8,5 +8,9 @@ export type IconShareProps = UseIconProps;
 export const IconShare = (props: IconShareProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconShareSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconShareSvg} {...iconProps} />
+    </Box>
+  );
 };

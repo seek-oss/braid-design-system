@@ -8,5 +8,9 @@ export type IconVideoProps = UseIconProps;
 export const IconVideo = (props: IconVideoProps) => {
   const iconProps = useIcon(props);
 
-  return <Box component={IconVideoSvg} {...iconProps} />;
+  return (
+    <Box component="span" display="inlineBlock">
+      <Box component={IconVideoSvg} {...iconProps} />
+    </Box>
+  );
 };
