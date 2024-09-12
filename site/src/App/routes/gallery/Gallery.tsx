@@ -768,7 +768,15 @@ const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
 );
 
 const IconFitToScreen = (props: UseIconProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return <Box component={IconFitToScreenSvg} {...iconProps} />;
+  const iconElement = <Box component={IconFitToScreenSvg} {...iconProps} />;
+
+  return isInline ? (
+    <Box component="span" display="inlineBlock">
+      {iconElement}
+    </Box>
+  ) : (
+    iconElement
+  );
 };
