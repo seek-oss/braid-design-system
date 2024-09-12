@@ -6,11 +6,15 @@ import { IconSubCategorySvg } from './IconSubCategorySvg';
 export type IconSubCategoryProps = UseIconProps;
 
 export const IconSubCategory = (props: IconSubCategoryProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconSubCategorySvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconSubCategorySvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

@@ -6,11 +6,15 @@ import { IconVideoSvg } from './IconVideoSvg';
 export type IconVideoProps = UseIconProps;
 
 export const IconVideo = (props: IconVideoProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconVideoSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconVideoSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

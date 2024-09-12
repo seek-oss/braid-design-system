@@ -6,11 +6,15 @@ import { IconNewWindowSvg } from './IconNewWindowSvg';
 export type IconNewWindowProps = UseIconProps;
 
 export const IconNewWindow = (props: IconNewWindowProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconNewWindowSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconNewWindowSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

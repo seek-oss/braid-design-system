@@ -6,11 +6,15 @@ import { IconHashSvg } from './IconHashSvg';
 export type IconHashProps = UseIconProps;
 
 export const IconHash = (props: IconHashProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconHashSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconHashSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

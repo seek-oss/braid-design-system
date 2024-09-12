@@ -9,14 +9,20 @@ export type IconHeartProps = UseIconProps & {
 };
 
 export const IconHeart = ({ active = false, ...props }: IconHeartProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={active ? IconHeartActiveSvg : IconHeartSvg}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={active ? IconHeartActiveSvg : IconHeartSvg}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

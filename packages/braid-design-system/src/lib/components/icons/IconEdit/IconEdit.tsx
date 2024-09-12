@@ -6,16 +6,20 @@ import { IconEditSvg } from './IconEditSvg';
 export type IconEditProps = UseIconProps;
 
 export const IconEdit = (props: IconEditProps) => {
-  const iconProps = useIcon(props, {
+  const { isInline, boxProps: iconProps } = useIcon(props, {
     verticalCorrection: {
       uppercase: 'none',
       lowercase: 'up',
     },
   });
 
-  return (
+  const iconElement = <Box component={IconEditSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconEditSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

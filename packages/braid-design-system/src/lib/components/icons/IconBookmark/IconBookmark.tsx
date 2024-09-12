@@ -12,14 +12,20 @@ export const IconBookmark = ({
   active = false,
   ...props
 }: IconBookmarkProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

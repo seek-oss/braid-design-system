@@ -6,11 +6,15 @@ import { IconSocialYouTubeSvg } from './IconSocialYouTubeSvg';
 export type IconSocialYouTubeProps = UseIconProps;
 
 export const IconSocialYouTube = (props: IconSocialYouTubeProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconSocialYouTubeSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconSocialYouTubeSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

@@ -9,14 +9,17 @@ export type IconStarProps = UseIconProps & {
 };
 
 export const IconStar = ({ active = false, ...props }: IconStarProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box component={active ? IconStarActiveSvg : IconStarSvg} {...iconProps} />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={active ? IconStarActiveSvg : IconStarSvg}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

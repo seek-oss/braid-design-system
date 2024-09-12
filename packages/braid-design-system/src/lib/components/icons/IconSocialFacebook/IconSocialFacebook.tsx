@@ -6,11 +6,15 @@ import { IconSocialFacebookSvg } from './IconSocialFacebookSvg';
 export type IconSocialFacebookProps = UseIconProps;
 
 export const IconSocialFacebook = (props: IconSocialFacebookProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconSocialFacebookSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconSocialFacebookSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

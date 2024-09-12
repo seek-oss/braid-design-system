@@ -6,11 +6,15 @@ import { IconProfileSvg } from './IconProfileSvg';
 export type IconProfileProps = UseIconProps;
 
 export const IconProfile = (props: IconProfileProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconProfileSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconProfileSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

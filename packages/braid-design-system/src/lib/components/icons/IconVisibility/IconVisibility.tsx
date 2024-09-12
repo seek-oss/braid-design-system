@@ -9,14 +9,20 @@ export type IconVisibilityProps = UseIconProps & {
 };
 
 export const IconVisibility = ({ hidden, ...props }: IconVisibilityProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={hidden ? IconVisibilityHiddenSvg : IconVisibilitySvg}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={hidden ? IconVisibilityHiddenSvg : IconVisibilitySvg}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

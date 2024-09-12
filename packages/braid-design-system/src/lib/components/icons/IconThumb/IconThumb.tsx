@@ -9,21 +9,30 @@ export type IconThumbProps = UseIconProps & {
 };
 
 export const IconThumb = ({ direction = 'up', ...props }: IconThumbProps) => {
-  const { className, ...iconProps } = useIcon(props);
+  const {
+    isInline,
+    boxProps: { className, ...iconProps },
+  } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={IconThumbSvg}
+      className={[
+        styles.root,
+        className,
+        {
+          [styles.down]: direction === 'down',
+        },
+      ]}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={IconThumbSvg}
-        className={[
-          styles.root,
-          className,
-          {
-            [styles.down]: direction === 'down',
-          },
-        ]}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

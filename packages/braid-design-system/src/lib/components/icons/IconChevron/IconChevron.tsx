@@ -12,23 +12,32 @@ export const IconChevron = ({
   direction = 'down',
   ...props
 }: IconChevronProps) => {
-  const { className, ...iconProps } = useIcon(props);
+  const {
+    isInline,
+    boxProps: { className, ...iconProps },
+  } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={IconChevronSvg}
+      className={[
+        styles.root,
+        className,
+        {
+          [styles.up]: direction === 'up',
+          [styles.left]: direction === 'left',
+          [styles.right]: direction === 'right',
+        },
+      ]}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={IconChevronSvg}
-        className={[
-          styles.root,
-          className,
-          {
-            [styles.up]: direction === 'up',
-            [styles.left]: direction === 'left',
-            [styles.right]: direction === 'right',
-          },
-        ]}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

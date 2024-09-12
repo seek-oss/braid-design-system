@@ -6,11 +6,15 @@ import { IconZoomOutSvg } from './IconZoomOutSvg';
 export type IconZoomOutProps = UseIconProps;
 
 export const IconZoomOut = (props: IconZoomOutProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconZoomOutSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconZoomOutSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

@@ -6,16 +6,20 @@ import { IconSendSvg } from './IconSendSvg';
 export type IconSendProps = UseIconProps;
 
 export const IconSend = (props: IconSendProps) => {
-  const iconProps = useIcon(props, {
+  const { isInline, boxProps: iconProps } = useIcon(props, {
     verticalCorrection: {
       uppercase: 'none',
       lowercase: 'up',
     },
   });
 
-  return (
+  const iconElement = <Box component={IconSendSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconSendSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

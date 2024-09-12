@@ -6,11 +6,15 @@ import { IconZoomInSvg } from './IconZoomInSvg';
 export type IconZoomInProps = UseIconProps;
 
 export const IconZoomIn = (props: IconZoomInProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconZoomInSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconZoomInSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

@@ -6,11 +6,15 @@ import { IconSocialGitHubSvg } from './IconSocialGitHubSvg';
 export type IconSocialGitHubProps = UseIconProps;
 
 export const IconSocialGitHub = (props: IconSocialGitHubProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconSocialGitHubSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconSocialGitHubSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

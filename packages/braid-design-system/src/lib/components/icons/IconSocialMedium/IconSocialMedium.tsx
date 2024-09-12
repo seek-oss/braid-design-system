@@ -6,11 +6,15 @@ import { IconSocialMediumSvg } from './IconSocialMediumSvg';
 export type IconSocialMediumProps = UseIconProps;
 
 export const IconSocialMedium = (props: IconSocialMediumProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconSocialMediumSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconSocialMediumSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

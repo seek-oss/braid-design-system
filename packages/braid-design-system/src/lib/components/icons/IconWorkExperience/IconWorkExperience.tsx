@@ -6,16 +6,20 @@ import { IconWorkExperienceSvg } from './IconWorkExperienceSvg';
 export type IconWorkExperienceProps = UseIconProps;
 
 export const IconWorkExperience = (props: IconWorkExperienceProps) => {
-  const iconProps = useIcon(props, {
+  const { isInline, boxProps: iconProps } = useIcon(props, {
     verticalCorrection: {
       uppercase: 'up',
       lowercase: 'up',
     },
   });
 
-  return (
+  const iconElement = <Box component={IconWorkExperienceSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconWorkExperienceSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

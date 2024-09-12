@@ -9,14 +9,20 @@ export type IconEnlargeProps = UseIconProps & {
 };
 
 export const IconEnlarge = ({ active = false, ...props }: IconEnlargeProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={active ? IconEnlargeActiveSvg : IconEnlargeSvg}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={active ? IconEnlargeActiveSvg : IconEnlargeSvg}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

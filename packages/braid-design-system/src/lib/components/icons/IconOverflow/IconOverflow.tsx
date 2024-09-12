@@ -6,11 +6,15 @@ import { IconOverflowSvg } from './IconOverflowSvg';
 export type IconOverflowProps = UseIconProps;
 
 export const IconOverflow = (props: IconOverflowProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconOverflowSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconOverflowSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

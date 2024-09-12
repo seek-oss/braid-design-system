@@ -21,14 +21,20 @@ export const IconSentiment = ({
   feeling = 'neutral',
   ...props
 }: IconSentimentProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={feelingToIcon[feeling] || feelingToIcon.neutral}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={feelingToIcon[feeling] || feelingToIcon.neutral}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

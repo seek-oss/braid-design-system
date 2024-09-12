@@ -6,11 +6,15 @@ import { IconPlatformAppleSvg } from './IconPlatformAppleSvg';
 export type IconPlatformAppleProps = UseIconProps;
 
 export const IconPlatformApple = (props: IconPlatformAppleProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconPlatformAppleSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconPlatformAppleSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

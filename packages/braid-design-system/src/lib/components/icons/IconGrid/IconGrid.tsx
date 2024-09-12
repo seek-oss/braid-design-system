@@ -6,11 +6,15 @@ import { IconGridSvg } from './IconGridSvg';
 export type IconGridProps = UseIconProps;
 
 export const IconGrid = (props: IconGridProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconGridSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconGridSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

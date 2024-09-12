@@ -9,23 +9,32 @@ export type IconArrowProps = UseIconProps & {
 };
 
 export const IconArrow = ({ direction = 'up', ...props }: IconArrowProps) => {
-  const { className, ...iconProps } = useIcon(props);
+  const {
+    isInline,
+    boxProps: { className, ...iconProps },
+  } = useIcon(props);
 
-  return (
+  const iconElement = (
+    <Box
+      component={IconArrowSvg}
+      className={[
+        styles.root,
+        className,
+        {
+          [styles.rotate]: direction === 'right' || direction === 'left',
+          [styles.flip]: direction === 'down',
+          [styles.mirror]: direction === 'left',
+        },
+      ]}
+      {...iconProps}
+    />
+  );
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box
-        component={IconArrowSvg}
-        className={[
-          styles.root,
-          className,
-          {
-            [styles.rotate]: direction === 'right' || direction === 'left',
-            [styles.flip]: direction === 'down',
-            [styles.mirror]: direction === 'left',
-          },
-        ]}
-        {...iconProps}
-      />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

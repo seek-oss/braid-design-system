@@ -6,11 +6,15 @@ import { IconCreditCardSvg } from './IconCreditCardSvg';
 export type IconCreditCardProps = UseIconProps;
 
 export const IconCreditCard = (props: IconCreditCardProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconCreditCardSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconCreditCardSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };

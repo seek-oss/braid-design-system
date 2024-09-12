@@ -7,11 +7,15 @@ export type IconSocialTwitterProps = UseIconProps;
 
 /** @deprecated - use IconSocialX instead */
 export const IconSocialTwitter = (props: IconSocialTwitterProps) => {
-  const iconProps = useIcon(props);
+  const { isInline, boxProps: iconProps } = useIcon(props);
 
-  return (
+  const iconElement = <Box component={IconSocialXSvg} {...iconProps} />;
+
+  return isInline ? (
     <Box component="span" display="inlineBlock">
-      <Box component={IconSocialXSvg} {...iconProps} />
+      {iconElement}
     </Box>
+  ) : (
+    iconElement
   );
 };
