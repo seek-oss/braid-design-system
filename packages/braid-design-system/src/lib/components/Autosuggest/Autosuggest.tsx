@@ -347,10 +347,11 @@ export function highlightSuggestions(
   value: string,
   variant: HighlightOptions = 'matching',
 ): SuggestionMatch {
+  const matchedHighlights = matchHighlights(suggestion, value);
   const matches =
     variant === 'matching'
-      ? matchHighlights(suggestion, value)
-      : reverseMatches(suggestion, matchHighlights(suggestion, value));
+      ? matchedHighlights
+      : reverseMatches(suggestion, matchedHighlights);
 
   return matches.map(([start, end]) => ({ start, end }));
 }
