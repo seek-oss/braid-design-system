@@ -12,7 +12,7 @@ updated:
 
 In preparation for migrating Braid layout components to use [CSS gap], the `dividers` prop has been deprecated on `Stack` and `Tiles`.
 
-Consumers are incouraged to migrate now in advance of its removal in v33.
+Consumers are encouraged to migrate now in advance of its removal in v33.
 
 #### Migration Guide
 

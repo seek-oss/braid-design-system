@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Inline, Stack, Strong, Text, TextLink, Tiles } from '../';
+import { Divider, Inline, Stack, Strong, Text, TextLink, Tiles } from '../';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
@@ -93,17 +93,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="medium" dividers align="center">
+          <Stack space="medium" align="center">
             <Inline space="small" alignY="top">
               <Placeholder width={60} height={20} />
               <Placeholder width={80} height={60} label="top" />
               <Placeholder width={60} height={20} />
             </Inline>
+            <Divider />
             <Inline space="small" alignY="center">
               <Placeholder width={60} height={20} />
               <Placeholder width={80} height={60} label="center" />
               <Placeholder width={60} height={20} />
             </Inline>
+            <Divider />
             <Inline space="small" alignY="bottom">
               <Placeholder width={60} height={20} />
               <Placeholder width={80} height={60} label="bottom" />
@@ -122,17 +124,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="medium" dividers>
+          <Stack space="medium">
             <Inline space="small" align="left">
               <Placeholder width={60} height={50} label="left" />
               <Placeholder width={80} height={50} />
               <Placeholder width={60} height={50} />
             </Inline>
+            <Divider />
             <Inline space="small" align="center">
               <Placeholder width={60} height={50} />
               <Placeholder width={80} height={50} label="center" />
               <Placeholder width={60} height={50} />
             </Inline>
+            <Divider />
             <Inline space="small" align="right">
               <Placeholder width={60} height={50} />
               <Placeholder width={80} height={50} />

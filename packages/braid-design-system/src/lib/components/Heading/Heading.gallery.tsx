@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
-import { Box, Heading, Stack, IconImage } from '../';
+import { Box, Heading, Stack, IconImage, Divider } from '../';
 
 import source from '@braid-design-system/source.macro';
 
@@ -42,16 +42,19 @@ export const galleryItems: GalleryComponent = {
       label: 'Alignment',
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Heading level="2" align="left">
               Left (default)
             </Heading>
+            <Divider />
             <Heading level="2" align="center">
               Center
             </Heading>
+            <Divider />
             <Heading level="2" align="right">
               Right
             </Heading>
+            <Divider />
             <Heading level="2" align={{ mobile: 'center', tablet: 'left' }}>
               Center on mobile
             </Heading>
