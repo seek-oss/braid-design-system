@@ -473,12 +473,11 @@ const docs: ComponentDocs = {
           each suggestion.
         </Text>
       ),
-      Example: ({ id, setDefaultState, setState, getState }) => {
-        const suggestion = 'Apples and Bananas';
-
-        return source(
+      Example: ({ id, setDefaultState, setState, getState }) =>
+        source(
           <>
             {setDefaultState('textfield', 'App')}
+            {setDefaultState('suggestion', 'Apples and Bananas')}
 
             <Stack space="large">
               <TextField
@@ -496,9 +495,9 @@ const docs: ComponentDocs = {
                       </Text>
                       <Text>
                         {parseHighlights(
-                          suggestion,
+                          getState('suggestion'),
                           highlightSuggestions(
-                            suggestion,
+                            getState('suggestion'),
                             getState('textfield'),
                             highlightType === 'matching'
                               ? 'matching'
@@ -518,8 +517,7 @@ const docs: ComponentDocs = {
               </Columns>
             </Stack>
           </>,
-        );
-      },
+        ),
       code: false,
     },
 
