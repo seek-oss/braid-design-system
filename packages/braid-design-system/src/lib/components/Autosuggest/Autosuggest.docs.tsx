@@ -14,7 +14,6 @@ import {
   Column,
   Columns,
   TextField,
-  Inline,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
 import { highlightSuggestions } from './Autosuggest';
@@ -474,11 +473,12 @@ const docs: ComponentDocs = {
           each suggestion.
         </Text>
       ),
-      Example: ({ id, setDefaultState, setState, getState }) =>
-        source(
+      Example: ({ id, setDefaultState, setState, getState }) => {
+        const suggestion = 'Apples and Bananas';
+
+        return source(
           <>
             {setDefaultState('textfield', 'App')}
-            {setDefaultState('suggestion', 'Apples')}
 
             <Stack space="large">
               <TextField
@@ -494,32 +494,32 @@ const docs: ComponentDocs = {
                       <Text size="small" tone="secondary">
                         Highlight <Strong>{highlightType}</Strong>
                       </Text>
-                      <Inline space="none">
+                      <Text>
                         {parseHighlights(
-                          getState('suggestion'),
+                          suggestion,
                           highlightSuggestions(
-                            getState('suggestion'),
+                            suggestion,
                             getState('textfield'),
                             highlightType === 'matching'
                               ? 'matching'
                               : 'remaining',
                           ).map(({ start, end }) => [start, end]),
-                        ).map((part, index) => (
-                          <Text
-                            key={index}
-                            weight={part.highlight ? 'strong' : 'regular'}
-                          >
-                            {part.text}
-                          </Text>
-                        ))}
-                      </Inline>
+                        ).map((part, index) =>
+                          part.highlight ? (
+                            <Strong key={index}>{part.text}</Strong>
+                          ) : (
+                            part.text
+                          ),
+                        )}
+                      </Text>
                     </Stack>
                   </Column>
                 ))}
               </Columns>
             </Stack>
           </>,
-        ),
+        );
+      },
       code: false,
     },
 
