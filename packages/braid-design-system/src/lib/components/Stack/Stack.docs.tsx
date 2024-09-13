@@ -95,6 +95,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Dividers',
+      deprecated: true,
       description: (
         <Text>
           Dividers can be placed between each item using the{' '}

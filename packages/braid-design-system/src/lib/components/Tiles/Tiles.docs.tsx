@@ -103,6 +103,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Dividers',
+      deprecated: true,
       description: (
         <Text>
           When in a single column, dividers can be placed between each tile

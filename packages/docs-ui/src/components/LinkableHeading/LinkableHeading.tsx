@@ -1,12 +1,18 @@
-import React, { type ReactNode, type ComponentProps } from 'react';
-import { Heading, Box, IconLink, Link } from 'braid-design-system';
+import React, {
+  type ReactNode,
+  type ComponentProps,
+  ReactElement,
+} from 'react';
+import { Heading, Box, IconLink, Link, Badge } from 'braid-design-system';
 import * as styles from './LinkableHeading.css';
 
+type BadgeProps = ComponentProps<typeof Badge>;
 type HeadingProps = ComponentProps<typeof Heading>;
 
 type LinkableHeadingProps = {
   level?: HeadingProps['level'];
   component?: HeadingProps['component'];
+  badge?: ReactElement<BadgeProps>;
 } & ({ children: string } | { children: ReactNode; label: string });
 
 const slugify = (string: string) =>
@@ -19,6 +25,7 @@ const slugify = (string: string) =>
 export const LinkableHeading = ({
   level = '3',
   component,
+  badge,
   ...restProps
 }: LinkableHeadingProps) => {
   const label = 'label' in restProps ? restProps.label : restProps.children;
@@ -30,7 +37,14 @@ export const LinkableHeading = ({
         <Box id={slug} position="absolute" />
         <Link href={`#${slug}`}>
           <Heading level={level} component={component}>
-            {restProps.children}
+            {badge ? (
+              <Box component="span" paddingRight="xsmall">
+                {restProps.children}
+              </Box>
+            ) : (
+              restProps.children
+            )}
+            {badge}
             <Box
               component="span"
               transition="fast"
