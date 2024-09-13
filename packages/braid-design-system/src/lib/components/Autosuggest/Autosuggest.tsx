@@ -44,6 +44,7 @@ import {
   type AutosuggestTranslations,
   autosuggest,
 } from '../../translations/en';
+import { reverseMatches } from './reverseMatches';
 
 import * as styles from './Autosuggest.css';
 
@@ -346,14 +347,13 @@ export function highlightSuggestions(
   value: string,
   variant: HighlightOptions = 'matching',
 ): SuggestionMatch {
-  const matches = matchHighlights(suggestion, value);
+  const matchedHighlights = matchHighlights(suggestion, value);
+  const matches =
+    variant === 'matching'
+      ? matchedHighlights
+      : reverseMatches(suggestion, matchedHighlights);
 
-  const formattedMatches =
-    variant === 'remaining'
-      ? matches.map(([_, end]) => ({ start: end, end: suggestion.length }))
-      : matches.map(([start, end]) => ({ start, end }));
-
-  return formattedMatches;
+  return matches.map(([start, end]) => ({ start, end }));
 }
 
 export const Autosuggest = forwardRef(function <Value>(
