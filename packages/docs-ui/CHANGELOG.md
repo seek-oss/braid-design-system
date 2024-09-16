@@ -1,5 +1,19 @@
 # @braid-design-system/docs-ui
 
+## 2.2.0
+
+### Minor Changes
+
+- **LinkableHeading:** Add `badge` support ([#1574](https://github.com/seek-oss/braid-design-system/pull/1574))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <LinkableHeading level="3" badge={<Badge tone="caution">Deprecated</Badge>}>
+    Heading
+  </LinkableHeading>
+  ```
+
 ## 2.1.1
 
 ### Patch Changes
