@@ -6,14 +6,14 @@ Previously, to enable gap-like behaviour layout components iterated over their c
 
 Migrating to CSS gap mitigates all of the above trade offs.
 
-However, because `Stack` and `Tiles` no longer iterate over their children, the `dividers` feature is no longer feasible to implement centrally.
+However, because `Stack` and `Tiles` no longer iterate over their children, implementing the `dividers` feature centrally is no longer feasible.
 
-While we could have conditionally maintained this behaviour, it would have resulted in inconsistent edge cases when using `dividers` and not, e.g. if a child component rendered nothing or a hidden element, the `divider` would still be rendered, resulting in an inconsistent layout.
+While we could have conditionally maintained this behaviour, it would have resulted in inconsistent edge cases when using `dividers`. E.g. if a child component rendered nothing or a hidden element, the `divider` would still be rendered, resulting in an inconsistent layout.
 
 ## Migration guide
 
 Braid already provides the [`Divider` component], so migrating away from the `dividers` prop is a matter of inserting a `Divider` as required into your layout.
-How you migrate will depend on whether the children of your layout component are static or being iterable.
+How you migrate will depend on whether the children of your layout component are static or being iterated over.
 
 ### `Stack`
 
