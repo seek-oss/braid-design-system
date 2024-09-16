@@ -2,7 +2,7 @@
 
 Following the update to SEEK&rsquo;s Browser Support Policy, we are now able to leverage [CSS gap] in Braid, and more importantly, our layout components. This will be landing in Braid in the v33 release.
 
-Previously, to enable gap-like behaviour layout components iterated over their children, wrapping them in container elements and applying padding. The trade off of this technique was an increased number of DOM elements and the introduction of unwanted space if the child element was hidden or return `null` — requiring developers to hoist logic to the parent component.
+Previously, to enable gap-like behaviour layout components iterated over their children, wrapping them in container elements and applying padding. The trade off of this technique was an increased number of DOM elements and the introduction of unwanted space if the child element was hidden or returned `null` — requiring developers to hoist logic to the parent component.
 
 Migrating to CSS gap mitigates all of the above trade offs.
 
