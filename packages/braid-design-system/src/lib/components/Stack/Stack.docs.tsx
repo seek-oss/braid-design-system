@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Stack, Hidden, Text, TextLink, Strong } from '../';
+import { Stack, Hidden, Text, TextLink, Strong, Divider } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import source from '@braid-design-system/source.macro';
 
@@ -74,17 +74,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="medium" dividers>
+          <Stack space="medium">
             <Stack space="gutter" align="left">
               <Placeholder width={60} height={40} label="left" />
               <Placeholder width={80} height={40} />
               <Placeholder width={60} height={40} />
             </Stack>
+            <Divider />
             <Stack space="gutter" align="center">
               <Placeholder width={60} height={40} />
               <Placeholder width={80} height={40} label="center" />
               <Placeholder width={60} height={40} />
             </Stack>
+            <Divider />
             <Stack space="gutter" align="right">
               <Placeholder width={60} height={40} />
               <Placeholder width={80} height={40} />
@@ -95,6 +97,7 @@ const docs: ComponentDocs = {
     },
     {
       label: 'Dividers',
+      deprecated: true,
       description: (
         <Text>
           Dividers can be placed between each item using the{' '}

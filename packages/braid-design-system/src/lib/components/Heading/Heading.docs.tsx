@@ -10,6 +10,7 @@ import {
   TextLink,
   IconImage,
   Alert,
+  Divider,
 } from '../';
 
 const docs: ComponentDocs = {
@@ -89,16 +90,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Heading level="2" align="left">
               Left
             </Heading>
+            <Divider />
             <Heading level="2" align="center">
               Center
             </Heading>
+            <Divider />
             <Heading level="2" align="right">
               Right
             </Heading>
+            <Divider />
             <Heading level="2" align={{ mobile: 'center', tablet: 'left' }}>
               Center on mobile
             </Heading>
