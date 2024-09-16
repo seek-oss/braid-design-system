@@ -56,10 +56,7 @@ export const DocReleases = () => {
             return (
               <Fragment key={`${version}_${index}`}>
                 {index > 0 ? (
-                  <Box
-                    paddingBottom="medium"
-                    // key={`${version}_${index}_divider`}
-                  >
+                  <Box paddingBottom="medium">
                     <Divider />
                   </Box>
                 ) : null}

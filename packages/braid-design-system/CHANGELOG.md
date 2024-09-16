@@ -1,5 +1,35 @@
 # braid-design-system
 
+## 32.24.0
+
+### Minor Changes
+
+- **Autosuggest**: Optimise automatic scrolling to selected suggestion by using native browser methods. ([#1571](https://github.com/seek-oss/braid-design-system/pull/1571))
+
+### Patch Changes
+
+- **Stack, Tiles:** Deprecate `dividers` prop ([#1574](https://github.com/seek-oss/braid-design-system/pull/1574))
+
+  In preparation for migrating Braid layout components to use [CSS gap], the `dividers` prop has been deprecated on `Stack` and `Tiles`.
+
+  Consumers are encouraged to migrate now in advance of its removal in v33.
+
+  #### Migration Guide
+
+  See [the migration guide] for details on how to migrate off the `dividers` prop.
+
+  [CSS gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
+  [migration guide]: https://github.com/seek-oss/braid-design-system/blob/master/docs/Removing%20dividers%20support%20from%20layout%20components.md
+
+- **Autosuggest**: Improve handling of `suggestionHighlight` prop when set to `remaining` ([#1572](https://github.com/seek-oss/braid-design-system/pull/1572))
+
+  Fixes a bug in `Autosuggest` when using `suggestionHighlight` prop set to `remaining`.
+  If the input contained multiple words, the highlighted portion would be appended to the end of matching suggestions.
+
+- **Divider:** Ensure full width in flex container ([#1574](https://github.com/seek-oss/braid-design-system/pull/1574))
+
+  Ensures the `Divider` component remains full width when used as a flex child inside a flex container.
+
 ## 32.23.1
 
 ### Patch Changes

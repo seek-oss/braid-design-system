@@ -33,7 +33,6 @@ import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
-import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
 import {
@@ -44,6 +43,7 @@ import {
   type AutosuggestTranslations,
   autosuggest,
 } from '../../translations/en';
+import { reverseMatches } from './reverseMatches';
 
 import * as styles from './Autosuggest.css';
 
@@ -346,14 +346,13 @@ export function highlightSuggestions(
   value: string,
   variant: HighlightOptions = 'matching',
 ): SuggestionMatch {
-  const matches = matchHighlights(suggestion, value);
+  const matchedHighlights = matchHighlights(suggestion, value);
+  const matches =
+    variant === 'matching'
+      ? matchedHighlights
+      : reverseMatches(suggestion, matchedHighlights);
 
-  const formattedMatches =
-    variant === 'remaining'
-      ? matches.map(([_, end]) => ({ start: end, end: suggestion.length }))
-      : matches.map(([start, end]) => ({ start, end }));
-
-  return formattedMatches;
+  return matches.map(([start, end]) => ({ start, end }));
 }
 
 export const Autosuggest = forwardRef(function <Value>(
@@ -582,7 +581,7 @@ export const Autosuggest = forwardRef(function <Value>(
       ? document.getElementById(getItemId(id, highlightedIndex))
       : null;
 
-  useScrollIntoView(highlightedItem, menuRef.current);
+  highlightedItem?.scrollIntoView({ block: 'nearest' });
 
   useEffect(() => {
     dispatch({

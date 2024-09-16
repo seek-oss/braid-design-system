@@ -5,6 +5,7 @@ import {
   TextLink,
   Secondary,
   Text,
+  Badge,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { LinkableHeading } from '@braid-design-system/docs-ui';
@@ -63,7 +64,16 @@ export const DocDetails = () => {
         {(docs.additional || []).map((example, index) => (
           <Stack space="large" key={index}>
             {example.label ? (
-              <LinkableHeading level="3">{example.label}</LinkableHeading>
+              <LinkableHeading
+                level="3"
+                badge={
+                  example.deprecated ? (
+                    <Badge tone="caution">Deprecated</Badge>
+                  ) : undefined
+                }
+              >
+                {example.label}
+              </LinkableHeading>
             ) : null}
             {example.description ?? null}
             {example.code || example.Example ? (

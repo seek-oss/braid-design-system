@@ -14,7 +14,6 @@ import {
   Column,
   Columns,
   TextField,
-  Inline,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
 import { highlightSuggestions } from './Autosuggest';
@@ -478,7 +477,7 @@ const docs: ComponentDocs = {
         source(
           <>
             {setDefaultState('textfield', 'App')}
-            {setDefaultState('suggestion', 'Apples')}
+            {setDefaultState('suggestion', 'Apples and Bananas')}
 
             <Stack space="large">
               <TextField
@@ -494,7 +493,7 @@ const docs: ComponentDocs = {
                       <Text size="small" tone="secondary">
                         Highlight <Strong>{highlightType}</Strong>
                       </Text>
-                      <Inline space="none">
+                      <Text>
                         {parseHighlights(
                           getState('suggestion'),
                           highlightSuggestions(
@@ -504,15 +503,14 @@ const docs: ComponentDocs = {
                               ? 'matching'
                               : 'remaining',
                           ).map(({ start, end }) => [start, end]),
-                        ).map((part, index) => (
-                          <Text
-                            key={index}
-                            weight={part.highlight ? 'strong' : 'regular'}
-                          >
-                            {part.text}
-                          </Text>
-                        ))}
-                      </Inline>
+                        ).map((part, index) =>
+                          part.highlight ? (
+                            <Strong key={index}>{part.text}</Strong>
+                          ) : (
+                            part.text
+                          ),
+                        )}
+                      </Text>
                     </Stack>
                   </Column>
                 ))}
