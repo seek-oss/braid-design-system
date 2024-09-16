@@ -4121,7 +4121,7 @@
           "Stack",
           "Tiles"
         ],
-        "summary": "**Stack, Tiles:** Deprecate `dividers` prop\n\nIn preparation for migrating Braid layout components to use [CSS gap], the `dividers` prop has been deprecated on `Stack` and `Tiles`.\n\nConsumers are encouraged to migrate now in advance of its removal in v33.\n\n#### Migration Guide\n\nSee [the migration guide] for details on how to migrate off the `dividers` prop.\n\n[CSS gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap\n[migration guide]: https://github.com/seek-oss/braid-design-system/blob/master/docs/Removing%20dividers%20support%20from%20layout%20components.md"
+        "summary": "**Stack, Tiles:** Deprecate `dividers` prop\n\nIn preparation for migrating Braid layout components to use [CSS gap], the `dividers` prop has been deprecated on `Stack` and `Tiles`.\n\nConsumers are encouraged to migrate now in advance of its removal in v33.\n\n#### Migration Guide\n\nSee [migration guide] for details on how to migrate off the `dividers` prop.\n\n[CSS gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap\n[migration guide]: https://github.com/seek-oss/braid-design-system/blob/master/docs/Removing%20dividers%20support%20from%20layout%20components.md"
       },
       {
         "updated": [
