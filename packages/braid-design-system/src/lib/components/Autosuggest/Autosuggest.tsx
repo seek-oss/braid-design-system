@@ -33,7 +33,6 @@ import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
-import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
 import {
@@ -582,7 +581,7 @@ export const Autosuggest = forwardRef(function <Value>(
       ? document.getElementById(getItemId(id, highlightedIndex))
       : null;
 
-  useScrollIntoView(highlightedItem, menuRef.current);
+  highlightedItem?.scrollIntoView({ block: 'nearest' });
 
   useEffect(() => {
     dispatch({
