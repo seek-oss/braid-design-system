@@ -11,10 +11,10 @@ import {
   Box,
   TextLink,
 } from 'braid-src/lib/components';
+import { TextContext } from 'braid-src/lib/components/Text/TextContext';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
 import { InlineCode } from '../InlineCode/InlineCode';
 import { LinkableHeading } from '@braid-design-system/docs-ui';
-import { standardText } from './Markdown.css';
 
 const Code = ({
   language,
@@ -23,9 +23,11 @@ const Code = ({
   language: SupportedLanguage | null;
   value: string;
 }) => (
-  <Box paddingBottom="medium">
-    <CodeBlock language={language}>{value}</CodeBlock>
-  </Box>
+  <TextContext.Provider value={null}>
+    <Box paddingBottom="medium">
+      <CodeBlock language={language}>{value}</CodeBlock>
+    </Box>
+  </TextContext.Provider>
 );
 
 const paragraph = ({ children }: any) => (
@@ -75,9 +77,11 @@ const renderers = {
   },
   paragraph,
   list: ({ children }: { children: any }) => (
-    <Box paddingBottom="medium">
-      <List space="medium">{children}</List>
-    </Box>
+    <TextContext.Provider value={null}>
+      <Box paddingBottom="medium">
+        <List space="medium">{children}</List>
+      </Box>
+    </TextContext.Provider>
   ),
   listItem: ({ children }: { children: any }) => {
     const childList = React.Children.toArray(children);
@@ -87,17 +91,14 @@ const renderers = {
       return <Stack space="medium">{children}</Stack>;
     }
 
-    return (
-      <Box component="span" className={standardText}>
-        {children}
-      </Box>
-    );
+    return <Text>{children}</Text>;
   },
   strong: Strong,
   emphasis: Strong,
   inlineCode: InlineCode,
   code: Code,
   link: TextLink,
+  linkReference: TextLink,
   blockquote: ({ children }: any) => (
     <Box paddingX="gutter" paddingY="small" background="neutralLight">
       <Box paddingTop="small">
@@ -113,5 +114,15 @@ interface MarkdownProps {
   children: string;
 }
 export function Markdown({ children }: MarkdownProps) {
-  return <ReactMarkdown renderers={renderers}>{children}</ReactMarkdown>;
+  return (
+    <ReactMarkdown
+      renderers={renderers}
+      allowNode={
+        /* Don't render a node for link definitions */
+        (node) => node.type !== 'definition'
+      }
+    >
+      {children}
+    </ReactMarkdown>
+  );
 }
