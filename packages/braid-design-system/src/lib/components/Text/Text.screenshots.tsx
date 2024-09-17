@@ -140,6 +140,16 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Max lines = 1 (in flex container, should be same as truncation)',
+      Example: () => (
+        <Box display="flex" style={{ width: 215 }}>
+          <Text maxLines={1}>
+            Text limited to 1 line that won’t fit in the layout
+          </Text>
+        </Box>
+      ),
+    },
+    {
       label: 'Max lines = 3',
       Example: () => (
         <Box style={{ width: 215 }}>
