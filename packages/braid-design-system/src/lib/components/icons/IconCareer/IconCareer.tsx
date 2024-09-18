@@ -1,20 +1,20 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconCareerSvg } from './IconCareerSvg';
 import { IconCareerActiveSvg } from './IconCareerActiveSvg';
 
-export type IconCareerProps = UseIconProps & {
+export type IconCareerProps = IconContainerProps & {
   active?: boolean;
 };
 
-export const IconCareer = ({ active = false, ...props }: IconCareerProps) => {
-  const iconProps = useIcon(props);
-
-  return (
-    <Box
-      component={active ? IconCareerActiveSvg : IconCareerSvg}
-      {...iconProps}
-    />
-  );
-};
+export const IconCareer = ({ active = false, ...props }: IconCareerProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => (
+      <Box
+        component={active ? IconCareerActiveSvg : IconCareerSvg}
+        {...boxProps}
+      />
+    )}
+  </IconContainer>
+);

@@ -1,17 +1,18 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconEditSvg } from './IconEditSvg';
 
-export type IconEditProps = UseIconProps;
+export type IconEditProps = IconContainerProps;
 
-export const IconEdit = (props: IconEditProps) => {
-  const iconProps = useIcon(props, {
-    verticalCorrection: {
+export const IconEdit = (props: IconEditProps) => (
+  <IconContainer
+    {...props}
+    verticalCorrection={{
       uppercase: 'none',
       lowercase: 'up',
-    },
-  });
-
-  return <Box component={IconEditSvg} {...iconProps} />;
-};
+    }}
+  >
+    {(boxProps) => <Box component={IconEditSvg} {...boxProps} />}
+  </IconContainer>
+);

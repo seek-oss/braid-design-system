@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconPlatformAndroidSvg } from './IconPlatformAndroidSvg';
 
-export type IconPlatformAndroidProps = UseIconProps;
+export type IconPlatformAndroidProps = IconContainerProps;
 
-export const IconPlatformAndroid = (props: IconPlatformAndroidProps) => {
-  const iconProps = useIcon(props);
-
-  return <Box component={IconPlatformAndroidSvg} {...iconProps} />;
-};
+export const IconPlatformAndroid = (props: IconPlatformAndroidProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconPlatformAndroidSvg} {...boxProps} />}
+  </IconContainer>
+);
