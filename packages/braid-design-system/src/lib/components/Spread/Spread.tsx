@@ -8,7 +8,12 @@ import {
   type Align,
   alignToFlexAlign,
 } from '../../utils/align';
-import { type RequiredResponsiveValue, responsiveGap } from './Spread.css';
+import {
+  fitContent,
+  maxWidth,
+  type RequiredResponsiveValue,
+  responsiveGap,
+} from './Spread.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -29,7 +34,7 @@ export const Spread = ({
   space,
   direction = 'horizontal',
   align,
-  alignY,
+  alignY = 'top',
   data,
   ...restProps
 }: SpreadProps) => {
@@ -39,7 +44,7 @@ export const Spread = ({
 
   if (align && isVertical) {
     alignItems = alignToFlexAlign(align);
-  } else if (alignY && isHorizontal) {
+  } else if (isHorizontal) {
     alignItems = alignYToFlexAlign(alignY);
   }
 
@@ -52,7 +57,11 @@ export const Spread = ({
       height={isVertical ? 'full' : undefined}
       justifyContent="spaceBetween"
       alignItems={alignItems}
-      className={responsiveGap({ gap: space })}
+      className={[
+        isHorizontal ? fitContent : undefined,
+        isVertical ? maxWidth : undefined,
+        responsiveGap({ gap: space }),
+      ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}
