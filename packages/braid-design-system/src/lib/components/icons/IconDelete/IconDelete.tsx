@@ -1,20 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconDeleteSvg } from './IconDeleteSvg';
 
-export type IconDeleteProps = UseIconProps;
+export type IconDeleteProps = IconContainerProps;
 
-export const IconDelete = (props: IconDeleteProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = <Box component={IconDeleteSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconDelete = (props: IconDeleteProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconDeleteSvg} {...boxProps} />}
+  </IconContainer>
+);

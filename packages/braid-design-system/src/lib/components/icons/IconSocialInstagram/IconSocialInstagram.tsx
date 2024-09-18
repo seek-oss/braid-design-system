@@ -1,20 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconSocialInstagramSvg } from './IconSocialInstagramSvg';
 
-export type IconSocialInstagramProps = UseIconProps;
+export type IconSocialInstagramProps = IconContainerProps;
 
-export const IconSocialInstagram = (props: IconSocialInstagramProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = <Box component={IconSocialInstagramSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconSocialInstagram = (props: IconSocialInstagramProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconSocialInstagramSvg} {...boxProps} />}
+  </IconContainer>
+);

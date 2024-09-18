@@ -1,31 +1,23 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconBookmarkSvg } from './IconBookmarkSvg';
 import { IconBookmarkActiveSvg } from './IconBookmarkActiveSvg';
 
-export type IconBookmarkProps = UseIconProps & {
+export type IconBookmarkProps = IconContainerProps & {
   active?: boolean;
 };
 
 export const IconBookmark = ({
   active = false,
   ...props
-}: IconBookmarkProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = (
-    <Box
-      component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
-      {...iconProps}
-    />
-  );
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+}: IconBookmarkProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => (
+      <Box
+        component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
+        {...boxProps}
+      />
+    )}
+  </IconContainer>
+);

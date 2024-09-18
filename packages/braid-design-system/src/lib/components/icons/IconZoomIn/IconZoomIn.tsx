@@ -1,20 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconZoomInSvg } from './IconZoomInSvg';
 
-export type IconZoomInProps = UseIconProps;
+export type IconZoomInProps = IconContainerProps;
 
-export const IconZoomIn = (props: IconZoomInProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = <Box component={IconZoomInSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconZoomIn = (props: IconZoomInProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconZoomInSvg} {...boxProps} />}
+  </IconContainer>
+);

@@ -1,20 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconCreditCardSvg } from './IconCreditCardSvg';
 
-export type IconCreditCardProps = UseIconProps;
+export type IconCreditCardProps = IconContainerProps;
 
-export const IconCreditCard = (props: IconCreditCardProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = <Box component={IconCreditCardSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconCreditCard = (props: IconCreditCardProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconCreditCardSvg} {...boxProps} />}
+  </IconContainer>
+);

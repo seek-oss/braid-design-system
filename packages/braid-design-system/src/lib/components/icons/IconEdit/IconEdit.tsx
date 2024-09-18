@@ -1,25 +1,18 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconEditSvg } from './IconEditSvg';
 
-export type IconEditProps = UseIconProps;
+export type IconEditProps = IconContainerProps;
 
-export const IconEdit = (props: IconEditProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props, {
-    verticalCorrection: {
+export const IconEdit = (props: IconEditProps) => (
+  <IconContainer
+    {...props}
+    verticalCorrection={{
       uppercase: 'none',
       lowercase: 'up',
-    },
-  });
-
-  const iconElement = <Box component={IconEditSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+    }}
+  >
+    {(boxProps) => <Box component={IconEditSvg} {...boxProps} />}
+  </IconContainer>
+);

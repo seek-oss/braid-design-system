@@ -1,20 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconSocialFacebookSvg } from './IconSocialFacebookSvg';
 
-export type IconSocialFacebookProps = UseIconProps;
+export type IconSocialFacebookProps = IconContainerProps;
 
-export const IconSocialFacebook = (props: IconSocialFacebookProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = <Box component={IconSocialFacebookSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconSocialFacebook = (props: IconSocialFacebookProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconSocialFacebookSvg} {...boxProps} />}
+  </IconContainer>
+);

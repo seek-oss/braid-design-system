@@ -1,28 +1,20 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconVisibilitySvg } from './IconVisibilitySvg';
 import { IconVisibilityHiddenSvg } from './IconVisibilityHiddenSvg';
 
-export type IconVisibilityProps = UseIconProps & {
+export type IconVisibilityProps = IconContainerProps & {
   hidden?: boolean;
 };
 
-export const IconVisibility = ({ hidden, ...props }: IconVisibilityProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = (
-    <Box
-      component={hidden ? IconVisibilityHiddenSvg : IconVisibilitySvg}
-      {...iconProps}
-    />
-  );
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconVisibility = ({ hidden, ...props }: IconVisibilityProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => (
+      <Box
+        component={hidden ? IconVisibilityHiddenSvg : IconVisibilitySvg}
+        {...boxProps}
+      />
+    )}
+  </IconContainer>
+);

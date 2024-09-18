@@ -1,20 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconMobileSvg } from './IconMobileSvg';
 
-export type IconMobileProps = UseIconProps;
+export type IconMobileProps = IconContainerProps;
 
-export const IconMobile = (props: IconMobileProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = <Box component={IconMobileSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconMobile = (props: IconMobileProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconMobileSvg} {...boxProps} />}
+  </IconContainer>
+);

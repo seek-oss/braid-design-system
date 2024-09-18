@@ -1,20 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconClearSvg } from './IconClearSvg';
 
-export type IconClearProps = UseIconProps;
+export type IconClearProps = IconContainerProps;
 
-export const IconClear = (props: IconClearProps) => {
-  const { isInline, boxProps: iconProps } = useIcon(props);
-
-  const iconElement = <Box component={IconClearSvg} {...iconProps} />;
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+export const IconClear = (props: IconClearProps) => (
+  <IconContainer {...props}>
+    {(boxProps) => <Box component={IconClearSvg} {...boxProps} />}
+  </IconContainer>
+);

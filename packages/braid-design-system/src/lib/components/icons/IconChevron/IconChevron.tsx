@@ -1,43 +1,32 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconChevronSvg } from './IconChevronSvg';
 import * as styles from './IconChevron.css';
 
-export type IconChevronProps = UseIconProps & {
+export type IconChevronProps = IconContainerProps & {
   direction?: 'up' | 'down' | 'left' | 'right';
 };
 
 export const IconChevron = ({
-  direction = 'down',
+  direction = 'up',
   ...props
-}: IconChevronProps) => {
-  const {
-    isInline,
-    boxProps: { className, ...iconProps },
-  } = useIcon(props);
-
-  const iconElement = (
-    <Box
-      component={IconChevronSvg}
-      className={[
-        styles.root,
-        className,
-        {
-          [styles.up]: direction === 'up',
-          [styles.left]: direction === 'left',
-          [styles.right]: direction === 'right',
-        },
-      ]}
-      {...iconProps}
-    />
-  );
-
-  return isInline ? (
-    <Box component="span" display="inlineBlock">
-      {iconElement}
-    </Box>
-  ) : (
-    iconElement
-  );
-};
+}: IconChevronProps) => (
+  <IconContainer {...props}>
+    {({ className, ...iconProps }) => (
+      <Box
+        component={IconChevronSvg}
+        className={[
+          styles.root,
+          className,
+          {
+            [styles.up]: direction === 'up',
+            [styles.left]: direction === 'left',
+            [styles.right]: direction === 'right',
+          },
+        ]}
+        {...iconProps}
+      />
+    )}
+  </IconContainer>
+);
