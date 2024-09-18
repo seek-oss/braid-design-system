@@ -70,6 +70,7 @@ export const Typography = ({
         className,
         isTruncated ? descenderCropFixForWebkitBox : undefined,
       ]}
+      minWidth={isTruncated ? 0 : undefined}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {icon ? (

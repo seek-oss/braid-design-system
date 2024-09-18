@@ -16,7 +16,7 @@
 
   #### Migration Guide
 
-  See [the migration guide] for details on how to migrate off the `dividers` prop.
+  See [migration guide] for details on how to migrate off the `dividers` prop.
 
   [CSS gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
   [migration guide]: https://github.com/seek-oss/braid-design-system/blob/master/docs/Removing%20dividers%20support%20from%20layout%20components.md

@@ -23,7 +23,6 @@
     "@braid-design-system/docs-ui": "workspace:*",
     "@braid-design-system/generate-component-docs": "workspace:*",
     "@braid-design-system/source.macro": "workspace:*",
-    "@capsizecss/vanilla-extract": "^2.0.0",
     "@types/lodash": "^4.14.168",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
