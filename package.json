@@ -46,7 +46,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.17.12",
     "@babel/runtime": "^7.18.0",
-    "@changesets/cli": "^2.22.0",
+    "@changesets/cli": "^2.27.8",
     "@changesets/get-github-info": "^0.5.0",
     "@crackle/cli": "^0.15.2",
     "@manypkg/cli": "^0.21.4",
