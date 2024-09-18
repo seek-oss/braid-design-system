@@ -1,3 +1,4 @@
+import { globalStyle, style } from '@vanilla-extract/css';
 import {
   defineProperties,
   createSprinkles,
@@ -5,6 +6,17 @@ import {
 } from '@vanilla-extract/sprinkles';
 import { breakpoints } from '../../css/breakpoints';
 import { space } from '../../css/atoms/atomicProperties';
+
+export const fitContent = style({});
+globalStyle(`${fitContent} > *`, {
+  flexBasis: 'auto',
+  width: 'auto',
+});
+
+export const maxWidth = style({});
+globalStyle(`${maxWidth} > *`, {
+  maxWidth: '100%',
+});
 
 const responsiveGapProperties = defineProperties({
   defaultCondition: 'mobile',
