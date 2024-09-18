@@ -7,6 +7,6 @@ export type IconDocumentBrokenProps = IconContainerProps;
 
 export const IconDocumentBroken = (props: IconDocumentBrokenProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconDocumentBrokenSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconDocumentBrokenSvg} {...svgProps} />}
   </IconContainer>
 );

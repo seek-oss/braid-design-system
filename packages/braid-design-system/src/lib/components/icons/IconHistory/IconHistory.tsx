@@ -7,6 +7,6 @@ export type IconHistoryProps = IconContainerProps;
 
 export const IconHistory = (props: IconHistoryProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconHistorySvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconHistorySvg} {...svgProps} />}
   </IconContainer>
 );

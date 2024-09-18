@@ -7,6 +7,6 @@ export type IconLinkBrokenProps = IconContainerProps;
 
 export const IconLinkBroken = (props: IconLinkBrokenProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconLinkBrokenSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconLinkBrokenSvg} {...svgProps} />}
   </IconContainer>
 );

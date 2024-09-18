@@ -7,6 +7,6 @@ export type IconSortProps = IconContainerProps;
 
 export const IconSort = (props: IconSortProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconSortSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSortSvg} {...svgProps} />}
   </IconContainer>
 );

@@ -7,6 +7,6 @@ export type IconNewWindowProps = IconContainerProps;
 
 export const IconNewWindow = (props: IconNewWindowProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconNewWindowSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconNewWindowSvg} {...svgProps} />}
   </IconContainer>
 );

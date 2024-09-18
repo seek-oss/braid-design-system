@@ -7,6 +7,6 @@ export type IconPersonVerifiedProps = IconContainerProps;
 
 export const IconPersonVerified = (props: IconPersonVerifiedProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconPersonVerifiedSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconPersonVerifiedSvg} {...svgProps} />}
   </IconContainer>
 );

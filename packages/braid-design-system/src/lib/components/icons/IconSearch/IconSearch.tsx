@@ -7,6 +7,6 @@ export type IconSearchProps = IconContainerProps;
 
 export const IconSearch = (props: IconSearchProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconSearchSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSearchSvg} {...svgProps} />}
   </IconContainer>
 );

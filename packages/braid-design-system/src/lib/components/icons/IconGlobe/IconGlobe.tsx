@@ -7,6 +7,6 @@ export type IconGlobeProps = IconContainerProps;
 
 export const IconGlobe = (props: IconGlobeProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconGlobeSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconGlobeSvg} {...svgProps} />}
   </IconContainer>
 );

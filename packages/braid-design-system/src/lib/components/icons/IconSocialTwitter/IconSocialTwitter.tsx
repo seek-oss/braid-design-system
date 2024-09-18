@@ -8,6 +8,6 @@ export type IconSocialTwitterProps = IconContainerProps;
 /** @deprecated - use IconSocialX instead */
 export const IconSocialTwitter = (props: IconSocialTwitterProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconSocialXSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSocialXSvg} {...svgProps} />}
   </IconContainer>
 );

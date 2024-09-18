@@ -13,6 +13,6 @@ export const IconUpload = (props: IconUploadProps) => (
       lowercase: 'up',
     }}
   >
-    {(boxProps) => <Box component={IconUploadSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconUploadSvg} {...svgProps} />}
   </IconContainer>
 );

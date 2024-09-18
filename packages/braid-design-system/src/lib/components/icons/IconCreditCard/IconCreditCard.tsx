@@ -7,6 +7,6 @@ export type IconCreditCardProps = IconContainerProps;
 
 export const IconCreditCard = (props: IconCreditCardProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconCreditCardSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconCreditCardSvg} {...svgProps} />}
   </IconContainer>
 );

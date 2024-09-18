@@ -13,6 +13,6 @@ export const IconWorkExperience = (props: IconWorkExperienceProps) => (
       lowercase: 'up',
     }}
   >
-    {(boxProps) => <Box component={IconWorkExperienceSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconWorkExperienceSvg} {...svgProps} />}
   </IconContainer>
 );

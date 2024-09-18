@@ -10,10 +10,10 @@ export type IconHeartProps = IconContainerProps & {
 
 export const IconHeart = ({ active = false, ...props }: IconHeartProps) => (
   <IconContainer {...props}>
-    {(boxProps) => (
+    {(svgProps) => (
       <Box
         component={active ? IconHeartActiveSvg : IconHeartSvg}
-        {...boxProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

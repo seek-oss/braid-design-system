@@ -7,6 +7,6 @@ export type IconCriticalProps = IconContainerProps;
 
 export const IconCritical = (props: IconCriticalProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconCriticalSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconCriticalSvg} {...svgProps} />}
   </IconContainer>
 );

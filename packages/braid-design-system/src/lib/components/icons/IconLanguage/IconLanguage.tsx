@@ -7,6 +7,6 @@ export type IconLanguageProps = IconContainerProps;
 
 export const IconLanguage = (props: IconLanguageProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconLanguageSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconLanguageSvg} {...svgProps} />}
   </IconContainer>
 );

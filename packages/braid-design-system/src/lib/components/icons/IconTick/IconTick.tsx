@@ -7,6 +7,6 @@ export type IconTickProps = IconContainerProps;
 
 export const IconTick = (props: IconTickProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconTickSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconTickSvg} {...svgProps} />}
   </IconContainer>
 );

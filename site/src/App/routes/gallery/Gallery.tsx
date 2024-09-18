@@ -772,6 +772,6 @@ const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
 
 const IconFitToScreen = (props: IconContainerProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconFitToScreenSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconFitToScreenSvg} {...svgProps} />}
   </IconContainer>
 );

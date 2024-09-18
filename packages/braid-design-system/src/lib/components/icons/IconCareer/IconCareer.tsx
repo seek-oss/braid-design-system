@@ -10,10 +10,10 @@ export type IconCareerProps = IconContainerProps & {
 
 export const IconCareer = ({ active = false, ...props }: IconCareerProps) => (
   <IconContainer {...props}>
-    {(boxProps) => (
+    {(svgProps) => (
       <Box
         component={active ? IconCareerActiveSvg : IconCareerSvg}
-        {...boxProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

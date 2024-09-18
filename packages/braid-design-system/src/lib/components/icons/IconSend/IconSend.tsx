@@ -13,6 +13,6 @@ export const IconSend = (props: IconSendProps) => (
       lowercase: 'up',
     }}
   >
-    {(boxProps) => <Box component={IconSendSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSendSvg} {...svgProps} />}
   </IconContainer>
 );

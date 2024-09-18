@@ -161,7 +161,7 @@ const svgrConfig = {
 
         export const ${iconName} = (props: ${iconName}Props) => (
           <IconContainer {...props}>
-            {(boxProps) => <Box component={${svgComponentName}} {...boxProps} />}
+            {(svgProps) => <Box component={${svgComponentName}} {...svgProps} />}
           </IconContainer>
         );
       `,
