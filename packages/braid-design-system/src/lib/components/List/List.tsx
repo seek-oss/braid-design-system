@@ -123,7 +123,7 @@ export const List = ({
           const resolvedIndex = index + (start - 1);
 
           return (
-            <Box display="flex">
+            <Box component="li" display="flex">
               <Text component="div" size={size} tone={tone}>
                 <Box
                   display="flex"
