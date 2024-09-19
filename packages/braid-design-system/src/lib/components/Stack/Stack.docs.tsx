@@ -144,6 +144,21 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    {
+      label: 'Semantic elements',
+      description: (
+        <Text>
+          By default, Stack renders a <Strong>div</Strong> element. You can
+          customise this via the <Strong>component</Strong> prop.
+        </Text>
+      ),
+      code: source(
+        <Stack component="span" space="small">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Stack>,
+      ).code,
+    },
   ],
 };
 
