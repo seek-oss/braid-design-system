@@ -1,23 +1,23 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconBookmarkSvg } from './IconBookmarkSvg';
 import { IconBookmarkActiveSvg } from './IconBookmarkActiveSvg';
 
-export type IconBookmarkProps = UseIconProps & {
+export type IconBookmarkProps = IconContainerProps & {
   active?: boolean;
 };
 
 export const IconBookmark = ({
   active = false,
   ...props
-}: IconBookmarkProps) => {
-  const iconProps = useIcon(props);
-
-  return (
-    <Box
-      component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
-      {...iconProps}
-    />
-  );
-};
+}: IconBookmarkProps) => (
+  <IconContainer {...props}>
+    {(svgProps) => (
+      <Box
+        component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
+        {...svgProps}
+      />
+    )}
+  </IconContainer>
+);

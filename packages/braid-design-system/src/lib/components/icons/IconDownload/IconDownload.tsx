@@ -1,17 +1,18 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconDownloadSvg } from './IconDownloadSvg';
 
-export type IconDownloadProps = UseIconProps;
+export type IconDownloadProps = IconContainerProps;
 
-export const IconDownload = (props: IconDownloadProps) => {
-  const iconProps = useIcon(props, {
-    verticalCorrection: {
+export const IconDownload = (props: IconDownloadProps) => (
+  <IconContainer
+    {...props}
+    verticalCorrection={{
       uppercase: 'none',
       lowercase: 'up',
-    },
-  });
-
-  return <Box component={IconDownloadSvg} {...iconProps} />;
-};
+    }}
+  >
+    {(svgProps) => <Box component={IconDownloadSvg} {...svgProps} />}
+  </IconContainer>
+);
