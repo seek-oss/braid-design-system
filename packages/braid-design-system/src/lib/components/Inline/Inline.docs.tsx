@@ -223,8 +223,8 @@ const docs: ComponentDocs = {
           <Text>
             This is useful when navigating forward within a flow, where the
             primary action is on the right when inline, and on top when
-            collapsed. For this reason, the default horizontal alignment
-            when reversed is to the <Strong>right</Strong>.
+            collapsed. For this reason, the default horizontal alignment when
+            reversed is to the <Strong>right</Strong>.
           </Text>
           <Notice>
             <Text>
