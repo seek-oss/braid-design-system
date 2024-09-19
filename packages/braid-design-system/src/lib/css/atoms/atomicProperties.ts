@@ -95,7 +95,6 @@ export const responsiveProperties = {
   display: {
     none: 'none',
     block: 'block',
-    grid: 'grid',
     inline: 'inline',
     inlineBlock: 'inline-block',
     flex: 'flex',

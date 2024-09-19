@@ -799,12 +799,11 @@ exports[`Box 1`] = `
     display?: 
         | "block"
         | "flex"
-        | "grid"
         | "inline"
         | "inlineBlock"
         | "none"
-        | ResponsiveArray<1 | 2 | 3 | 4, "grid" | "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
-        | { mobile?: "grid" | "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "grid" | "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "grid" | ... 5 more ... | undefined; wide?: "grid" | ... 5 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
+        | { mobile?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; wide?: "none" | ... 4 more ... | undefined; }
     download?: any
     draggable?: 
         | "false"
@@ -1731,12 +1730,11 @@ exports[`BoxRenderer 1`] = `
     display?: 
         | "block"
         | "flex"
-        | "grid"
         | "inline"
         | "inlineBlock"
         | "none"
-        | ResponsiveArray<1 | 2 | 3 | 4, "grid" | "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
-        | { mobile?: "grid" | "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "grid" | "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "grid" | ... 5 more ... | undefined; wide?: "grid" | ... 5 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
+        | { mobile?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; wide?: "none" | ... 4 more ... | undefined; }
     flexDirection?: 
         | "column"
         | "columnReverse"

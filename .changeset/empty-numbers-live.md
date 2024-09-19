@@ -19,11 +19,26 @@ For `Stack`s with static children you can manually interleave `Divider` componen
 ```diff
 -<Stack space="..." dividers>
 +<Stack space="...">
-   <Component>{item}</Component>
+   <Component />
 +  <Divider />
-   <Component>{item}</Component>****
+   <Component />
 +  <Divider />
-   <Component>{item}</Component>
+   <Component />
+ </Stack>
+```
+
+Or for conditionally rendering children you can return a [React Fragment], including the `Divider` and child:
+```diff
+-<Stack space="..." dividers>
++<Stack space="...">
+   <Component />
+   {condition ? (
+-    <Component />
++    <>
++      <Divider />
++      <Component />
++    </>
+   ) : null}
  </Stack>
 ```
 

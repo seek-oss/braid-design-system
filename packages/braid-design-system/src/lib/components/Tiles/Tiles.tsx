@@ -35,7 +35,6 @@ export const Tiles = ({
 
   return (
     <Box
-      display="grid"
       gap={space}
       className={styles.tiles}
       style={assignInlineVars({

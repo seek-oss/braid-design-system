@@ -9,6 +9,7 @@ export const wideColumnsVar = createVar();
 
 export const tiles = style([
   {
+    display: 'grid',
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
   },
   responsiveStyle({
