@@ -1,6 +1,18 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Text, Heading, Inline, Button, Stack } from '../';
+import {
+  Text,
+  Heading,
+  Inline,
+  Button,
+  Stack,
+  Spread,
+  Box,
+  IconAI,
+  IconAdd,
+  IconArrow,
+  IconBookmark,
+} from '../';
 import type { UseIconProps } from '../../hooks/useIcon';
 import {
   heading as headingSizes,
@@ -9,6 +21,7 @@ import {
 } from '../../css/typography.css';
 
 import * as icons from './index';
+import { vars } from '../../themes/vars.css';
 
 type IconName = keyof typeof icons;
 const iconNames = Object.keys(icons).map((icon) => icon as IconName);
@@ -157,6 +170,48 @@ export const screenshots: ComponentScreenshot = {
           })}
         </Stack>
       ),
+    },
+    {
+      label:
+        'Test: inline sizing comparing `Inline` (left) to custom flex container (right)',
+      Example: () => {
+        const sizes = Object.keys(textSizes) as Array<keyof typeof textSizes>;
+
+        return (
+          <Stack space="large">
+            {sizes.map((size) => (
+              <Text size={size} key={size}>
+                <Box
+                  maxWidth="xsmall"
+                  style={{
+                    borderTop: '2px solid red',
+                    borderBottom: '2px solid red',
+                  }}
+                >
+                  <Spread space="small">
+                    <Inline space="small">
+                      <IconAI />
+                      <IconAdd />
+                      <IconArrow />
+                      <IconBookmark />
+                    </Inline>
+                    <Box
+                      display="flex"
+                      flexWrap="wrap"
+                      style={{ gap: vars.space.small }}
+                    >
+                      <IconAI />
+                      <IconAdd />
+                      <IconArrow />
+                      <IconBookmark />
+                    </Box>
+                  </Spread>
+                </Box>
+              </Text>
+            ))}
+          </Stack>
+        );
+      },
     },
   ],
 };

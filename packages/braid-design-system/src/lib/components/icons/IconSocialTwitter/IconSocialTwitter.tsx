@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconSocialXSvg } from '../IconSocialX/IconSocialXSvg';
 
-export type IconSocialTwitterProps = UseIconProps;
+export type IconSocialTwitterProps = IconContainerProps;
 
 /** @deprecated - use IconSocialX instead */
-export const IconSocialTwitter = (props: IconSocialTwitterProps) => {
-  const iconProps = useIcon(props);
-
-  return <Box component={IconSocialXSvg} {...iconProps} />;
-};
+export const IconSocialTwitter = (props: IconSocialTwitterProps) => (
+  <IconContainer {...props}>
+    {(svgProps) => <Box component={IconSocialXSvg} {...svgProps} />}
+  </IconContainer>
+);

@@ -69,7 +69,10 @@ import {
   controller as controllerState,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import useIcon, { type UseIconProps } from 'braid-src/lib/hooks/useIcon';
+import {
+  IconContainer,
+  type IconContainerProps,
+} from 'braid-src/lib/components/icons/IconContainer';
 import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';
 
@@ -767,8 +770,8 @@ const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
   </svg>
 );
 
-const IconFitToScreen = (props: UseIconProps) => {
-  const iconProps = useIcon(props);
-
-  return <Box component={IconFitToScreenSvg} {...iconProps} />;
-};
+const IconFitToScreen = (props: IconContainerProps) => (
+  <IconContainer {...props}>
+    {(svgProps) => <Box component={IconFitToScreenSvg} {...svgProps} />}
+  </IconContainer>
+);
