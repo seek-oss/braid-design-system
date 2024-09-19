@@ -7,6 +7,6 @@ export type IconZoomInProps = IconContainerProps;
 
 export const IconZoomIn = (props: IconZoomInProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconZoomInSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconZoomInSvg} {...svgProps} />}
   </IconContainer>
 );

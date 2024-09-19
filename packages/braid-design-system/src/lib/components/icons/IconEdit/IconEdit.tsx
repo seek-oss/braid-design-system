@@ -13,6 +13,6 @@ export const IconEdit = (props: IconEditProps) => (
       lowercase: 'up',
     }}
   >
-    {(boxProps) => <Box component={IconEditSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconEditSvg} {...svgProps} />}
   </IconContainer>
 );

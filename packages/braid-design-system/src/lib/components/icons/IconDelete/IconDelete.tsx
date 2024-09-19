@@ -7,6 +7,6 @@ export type IconDeleteProps = IconContainerProps;
 
 export const IconDelete = (props: IconDeleteProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconDeleteSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconDeleteSvg} {...svgProps} />}
   </IconContainer>
 );

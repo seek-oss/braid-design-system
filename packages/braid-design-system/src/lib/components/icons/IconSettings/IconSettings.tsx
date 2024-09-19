@@ -7,6 +7,6 @@ export type IconSettingsProps = IconContainerProps;
 
 export const IconSettings = (props: IconSettingsProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconSettingsSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSettingsSvg} {...svgProps} />}
   </IconContainer>
 );

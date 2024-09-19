@@ -10,10 +10,10 @@ export type IconEnlargeProps = IconContainerProps & {
 
 export const IconEnlarge = ({ active = false, ...props }: IconEnlargeProps) => (
   <IconContainer {...props}>
-    {(boxProps) => (
+    {(svgProps) => (
       <Box
         component={active ? IconEnlargeActiveSvg : IconEnlargeSvg}
-        {...boxProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

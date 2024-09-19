@@ -10,7 +10,7 @@ export type IconThumbProps = IconContainerProps & {
 
 export const IconThumb = ({ direction = 'up', ...props }: IconThumbProps) => (
   <IconContainer {...props}>
-    {({ className, ...iconProps }) => (
+    {({ className, ...svgProps }) => (
       <Box
         component={IconThumbSvg}
         className={[
@@ -20,7 +20,7 @@ export const IconThumb = ({ direction = 'up', ...props }: IconThumbProps) => (
             [styles.down]: direction === 'down',
           },
         ]}
-        {...iconProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

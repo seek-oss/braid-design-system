@@ -10,7 +10,7 @@ export type IconArrowProps = IconContainerProps & {
 
 export const IconArrow = ({ direction = 'up', ...props }: IconArrowProps) => (
   <IconContainer {...props}>
-    {({ className, ...iconProps }) => (
+    {({ className, ...svgProps }) => (
       <Box
         component={IconArrowSvg}
         className={[
@@ -22,7 +22,7 @@ export const IconArrow = ({ direction = 'up', ...props }: IconArrowProps) => (
             [styles.mirror]: direction === 'left',
           },
         ]}
-        {...iconProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

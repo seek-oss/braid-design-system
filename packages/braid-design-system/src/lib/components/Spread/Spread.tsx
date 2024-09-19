@@ -11,6 +11,7 @@ import {
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import * as styles from './Spread.css';
 
 const validSpreadComponents = [
   'div',
@@ -40,7 +41,7 @@ export const Spread = ({
   space,
   direction = 'horizontal',
   align,
-  alignY,
+  alignY = 'top',
   data,
   ...restProps
 }: SpreadProps) => {
@@ -50,7 +51,7 @@ export const Spread = ({
 
   if (align && isVertical) {
     alignItems = alignToFlexAlign(align);
-  } else if (alignY && isHorizontal) {
+  } else if (isHorizontal) {
     alignItems = alignYToFlexAlign(alignY);
   }
 
@@ -64,6 +65,10 @@ export const Spread = ({
       justifyContent="spaceBetween"
       alignItems={alignItems}
       gap={space}
+      className={[
+        isHorizontal ? styles.fitContent : undefined,
+        isVertical ? styles.maxWidth : undefined,
+      ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}

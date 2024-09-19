@@ -60,7 +60,7 @@ export default (
   { verticalCorrection = defaultVerticalCorrection }: PrivateIconProps = {},
   // TODO: COLORMODE RELEASE
   // Revert to BoxProps
-): { isInline: boolean; boxProps: PublicBoxProps } => {
+): { isInline: boolean; svgProps: PublicBoxProps } => {
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
   const resolvedTone =
@@ -89,7 +89,7 @@ export default (
   if (size === 'fill') {
     return {
       isInline: false,
-      boxProps: {
+      svgProps: {
         width: 'full',
         height: 'full',
         display: 'block',
@@ -102,7 +102,7 @@ export default (
 
   return {
     isInline,
-    boxProps: {
+    svgProps: {
       className: [
         toneClass,
         isInline

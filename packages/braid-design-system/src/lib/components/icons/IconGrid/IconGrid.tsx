@@ -7,6 +7,6 @@ export type IconGridProps = IconContainerProps;
 
 export const IconGrid = (props: IconGridProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconGridSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconGridSvg} {...svgProps} />}
   </IconContainer>
 );

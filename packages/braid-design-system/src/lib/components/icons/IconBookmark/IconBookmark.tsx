@@ -13,10 +13,10 @@ export const IconBookmark = ({
   ...props
 }: IconBookmarkProps) => (
   <IconContainer {...props}>
-    {(boxProps) => (
+    {(svgProps) => (
       <Box
         component={active ? IconBookmarkActiveSvg : IconBookmarkSvg}
-        {...boxProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

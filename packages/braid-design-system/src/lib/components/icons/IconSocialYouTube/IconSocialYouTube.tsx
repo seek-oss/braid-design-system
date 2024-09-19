@@ -7,6 +7,6 @@ export type IconSocialYouTubeProps = IconContainerProps;
 
 export const IconSocialYouTube = (props: IconSocialYouTubeProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconSocialYouTubeSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSocialYouTubeSvg} {...svgProps} />}
   </IconContainer>
 );

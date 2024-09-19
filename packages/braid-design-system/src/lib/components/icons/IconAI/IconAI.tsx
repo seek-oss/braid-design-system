@@ -7,6 +7,6 @@ export type IconAiProps = IconContainerProps;
 
 export const IconAI = (props: IconAiProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconAISvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconAISvg} {...svgProps} />}
   </IconContainer>
 );

@@ -7,6 +7,6 @@ export type IconPlatformAndroidProps = IconContainerProps;
 
 export const IconPlatformAndroid = (props: IconPlatformAndroidProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconPlatformAndroidSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconPlatformAndroidSvg} {...svgProps} />}
   </IconContainer>
 );

@@ -7,6 +7,6 @@ export type IconOverflowProps = IconContainerProps;
 
 export const IconOverflow = (props: IconOverflowProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconOverflowSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconOverflowSvg} {...svgProps} />}
   </IconContainer>
 );

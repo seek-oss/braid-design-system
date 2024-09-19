@@ -7,6 +7,6 @@ export type IconClearProps = IconContainerProps;
 
 export const IconClear = (props: IconClearProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconClearSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconClearSvg} {...svgProps} />}
   </IconContainer>
 );

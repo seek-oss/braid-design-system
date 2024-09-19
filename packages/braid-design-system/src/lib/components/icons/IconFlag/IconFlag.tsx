@@ -7,6 +7,6 @@ export type IconFlagProps = IconContainerProps;
 
 export const IconFlag = (props: IconFlagProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconFlagSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconFlagSvg} {...svgProps} />}
   </IconContainer>
 );

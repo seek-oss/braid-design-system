@@ -9,11 +9,11 @@ export type IconChevronProps = IconContainerProps & {
 };
 
 export const IconChevron = ({
-  direction = 'up',
+  direction = 'down',
   ...props
 }: IconChevronProps) => (
   <IconContainer {...props}>
-    {({ className, ...iconProps }) => (
+    {({ className, ...svgProps }) => (
       <Box
         component={IconChevronSvg}
         className={[
@@ -25,7 +25,7 @@ export const IconChevron = ({
             [styles.right]: direction === 'right',
           },
         ]}
-        {...iconProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

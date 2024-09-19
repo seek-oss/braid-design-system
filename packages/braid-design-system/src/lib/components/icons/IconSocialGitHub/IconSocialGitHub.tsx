@@ -7,6 +7,6 @@ export type IconSocialGitHubProps = IconContainerProps;
 
 export const IconSocialGitHub = (props: IconSocialGitHubProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconSocialGitHubSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSocialGitHubSvg} {...svgProps} />}
   </IconContainer>
 );

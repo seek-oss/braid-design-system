@@ -7,6 +7,6 @@ export type IconRecommendedProps = IconContainerProps;
 
 export const IconRecommended = (props: IconRecommendedProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconRecommendedSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconRecommendedSvg} {...svgProps} />}
   </IconContainer>
 );

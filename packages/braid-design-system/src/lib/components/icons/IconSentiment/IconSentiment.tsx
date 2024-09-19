@@ -22,10 +22,10 @@ export const IconSentiment = ({
   ...props
 }: IconSentimentProps) => (
   <IconContainer {...props}>
-    {(boxProps) => (
+    {(svgProps) => (
       <Box
         component={feelingToIcon[feeling] || feelingToIcon.neutral}
-        {...boxProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

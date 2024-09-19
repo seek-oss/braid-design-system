@@ -10,10 +10,10 @@ export type IconVisibilityProps = IconContainerProps & {
 
 export const IconVisibility = ({ hidden, ...props }: IconVisibilityProps) => (
   <IconContainer {...props}>
-    {(boxProps) => (
+    {(svgProps) => (
       <Box
         component={hidden ? IconVisibilityHiddenSvg : IconVisibilitySvg}
-        {...boxProps}
+        {...svgProps}
       />
     )}
   </IconContainer>

@@ -7,6 +7,6 @@ export type IconCautionProps = IconContainerProps;
 
 export const IconCaution = (props: IconCautionProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconCautionSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconCautionSvg} {...svgProps} />}
   </IconContainer>
 );

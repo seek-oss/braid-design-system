@@ -7,6 +7,6 @@ export type IconExperienceProps = IconContainerProps;
 
 export const IconExperience = (props: IconExperienceProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconExperienceSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconExperienceSvg} {...svgProps} />}
   </IconContainer>
 );

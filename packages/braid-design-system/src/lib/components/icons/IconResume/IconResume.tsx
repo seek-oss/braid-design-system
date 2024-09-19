@@ -7,6 +7,6 @@ export type IconResumeProps = IconContainerProps;
 
 export const IconResume = (props: IconResumeProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconResumeSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconResumeSvg} {...svgProps} />}
   </IconContainer>
 );

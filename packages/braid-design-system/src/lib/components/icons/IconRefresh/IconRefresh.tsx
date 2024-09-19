@@ -7,6 +7,6 @@ export type IconRefreshProps = IconContainerProps;
 
 export const IconRefresh = (props: IconRefreshProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconRefreshSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconRefreshSvg} {...svgProps} />}
   </IconContainer>
 );

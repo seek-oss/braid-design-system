@@ -7,6 +7,6 @@ export type IconTimeProps = IconContainerProps;
 
 export const IconTime = (props: IconTimeProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconTimeSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconTimeSvg} {...svgProps} />}
   </IconContainer>
 );

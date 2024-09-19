@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Spread, Tiles } from '../';
+import { Box, Spread, Stack, Text, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 export const screenshots: ComponentScreenshot = {
@@ -17,28 +17,40 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Horizontal single full width',
+      label:
+        'Horizontal single full width (should be content width and spread to each side)',
       Example: () => (
         <Spread space="large">
-          <Placeholder height={60} width="100%" />
-          <Placeholder height={60} width={80} />
+          <Box background="neutral" width="full" padding="small">
+            <Text>100% width</Text>
+          </Box>
+          <Box background="neutral" style={{ width: 80 }} padding="small">
+            <Text>80px</Text>
+          </Box>
         </Spread>
       ),
     },
     {
-      label: 'Horizontal both full width',
+      label:
+        'Horizontal both full width (should be content width and spread to each side)',
       Example: () => (
         <Spread space="large">
-          <Placeholder height={60} width="100%" />
-          <Placeholder height={60} width="100%" />
+          <Box background="neutral" width="full" padding="small">
+            <Text>100% width</Text>
+          </Box>
+          <Box background="neutral" width="full" padding="small">
+            <Text>100% width</Text>
+          </Box>
         </Spread>
       ),
     },
     {
-      label: 'Horizontal single child full width',
+      label: 'Horizontal single child full width (should be content width)',
       Example: () => (
         <Spread space="large">
-          <Placeholder height={60} width="100%" />
+          <Box background="neutral" width="full" padding="small">
+            <Text>100% width</Text>
+          </Box>
         </Spread>
       ),
     },
@@ -173,6 +185,63 @@ export const screenshots: ComponentScreenshot = {
           <Placeholder height={60} width="100%" />
           <Placeholder height={60} width={80} />
         </Spread>
+      ),
+    },
+    {
+      label:
+        'Test: Horizontal without alignY (`Content` should align top and not stretch)',
+      Example: () => (
+        <Spread space="large">
+          <Box background="neutral" style={{ width: 105 }} padding="small">
+            <Text>Wrapping lines of content</Text>
+          </Box>
+          <Box background="promote" padding="small">
+            <Text>Content</Text>
+          </Box>
+        </Spread>
+      ),
+    },
+    {
+      label:
+        'Test: Text truncation horizontal, should consume available space without pushing `Content` out of screen',
+      Example: () => (
+        <Spread space="large" alignY="center">
+          <Text maxLines={1}>
+            Should end in ellipsis. Another example of really really long text
+            that will truncate even on the largest of screen resolutions.
+          </Text>
+          <Box background="neutral" padding="small">
+            <Text>Content</Text>
+          </Box>
+        </Spread>
+      ),
+    },
+    {
+      label:
+        'Test: Text truncation vertical, should be limited to container width and respect `align` prop',
+      Example: () => (
+        <Stack space="xlarge">
+          {(['left', 'center', 'right'] as const).map((align) => (
+            <Spread
+              space="medium"
+              direction="vertical"
+              align={align}
+              key={align}
+            >
+              <Text maxLines={1}>
+                Should end in ellipsis. Another example of really really long
+                text that will truncate even on the largest of screen
+                resolutions.
+              </Text>
+              <Box background="promote" padding="small">
+                <Text>Align {align}</Text>
+              </Box>
+              <Box background="neutral" width="full" padding="large">
+                <Text>Full width</Text>
+              </Box>
+            </Spread>
+          ))}
+        </Stack>
       ),
     },
   ],

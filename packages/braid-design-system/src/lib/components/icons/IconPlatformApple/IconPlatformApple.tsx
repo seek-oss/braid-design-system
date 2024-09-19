@@ -7,6 +7,6 @@ export type IconPlatformAppleProps = IconContainerProps;
 
 export const IconPlatformApple = (props: IconPlatformAppleProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconPlatformAppleSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconPlatformAppleSvg} {...svgProps} />}
   </IconContainer>
 );

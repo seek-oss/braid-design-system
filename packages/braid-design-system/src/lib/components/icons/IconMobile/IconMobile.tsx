@@ -7,6 +7,6 @@ export type IconMobileProps = IconContainerProps;
 
 export const IconMobile = (props: IconMobileProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconMobileSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconMobileSvg} {...svgProps} />}
   </IconContainer>
 );

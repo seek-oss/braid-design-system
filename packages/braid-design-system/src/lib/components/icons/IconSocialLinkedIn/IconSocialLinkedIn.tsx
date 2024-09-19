@@ -7,6 +7,6 @@ export type IconSocialLinkedInProps = IconContainerProps;
 
 export const IconSocialLinkedIn = (props: IconSocialLinkedInProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconSocialLinkedInSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconSocialLinkedInSvg} {...svgProps} />}
   </IconContainer>
 );

@@ -7,6 +7,6 @@ export type IconLocationProps = IconContainerProps;
 
 export const IconLocation = (props: IconLocationProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconLocationSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconLocationSvg} {...svgProps} />}
   </IconContainer>
 );

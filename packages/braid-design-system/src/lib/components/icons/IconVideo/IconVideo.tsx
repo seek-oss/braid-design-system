@@ -7,6 +7,6 @@ export type IconVideoProps = IconContainerProps;
 
 export const IconVideo = (props: IconVideoProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconVideoSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconVideoSvg} {...svgProps} />}
   </IconContainer>
 );

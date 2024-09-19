@@ -7,6 +7,6 @@ export type IconPositiveProps = IconContainerProps;
 
 export const IconPositive = (props: IconPositiveProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconPositiveSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconPositiveSvg} {...svgProps} />}
   </IconContainer>
 );

@@ -7,6 +7,6 @@ export type IconHashProps = IconContainerProps;
 
 export const IconHash = (props: IconHashProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconHashSvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconHashSvg} {...svgProps} />}
   </IconContainer>
 );

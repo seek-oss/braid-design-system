@@ -7,6 +7,6 @@ export type IconCopyProps = IconContainerProps;
 
 export const IconCopy = (props: IconCopyProps) => (
   <IconContainer {...props}>
-    {(boxProps) => <Box component={IconCopySvg} {...boxProps} />}
+    {(svgProps) => <Box component={IconCopySvg} {...svgProps} />}
   </IconContainer>
 );

@@ -19,7 +19,7 @@ type RatingStar = {
 const RatingStar = ({ percent, ...restProps }: RatingStar) => {
   const currentBg = useBackground();
   const {
-    boxProps: { className, ...iconProps },
+    svgProps: { className, ...svgProps },
   } = useIcon(restProps);
 
   let component = IconStarEmptySvg;
@@ -35,7 +35,7 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
   return (
     <Box
       component={component}
-      {...iconProps}
+      {...svgProps}
       className={[
         className,
         {
