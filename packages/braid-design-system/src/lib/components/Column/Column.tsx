@@ -1,7 +1,10 @@
 import React, { type ReactNode, useContext } from 'react';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import { Box } from '../Box/Box';
-import { ColumnsContext } from '../Columns/ColumnsContext';
+import {
+  ColumnsContext,
+  type validColumnsComponents,
+} from '../Columns/ColumnsContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -35,6 +38,20 @@ export interface ColumnProps {
   hideAbove?: ResponsiveRangeProps['above'];
   data?: DataAttributeMap;
 }
+
+const componentForParent = (
+  columnComponent: (typeof validColumnsComponents)[number],
+) => {
+  if (columnComponent === 'span') {
+    return 'span';
+  }
+
+  if (columnComponent === 'ol' || columnComponent === 'ul') {
+    return 'li';
+  }
+
+  return 'div';
+};
 
 export const Column = ({
   component,
@@ -86,7 +103,7 @@ export const Column = ({
 
   return (
     <Box
-      component={component || columnsComponent === 'span' ? 'span' : 'div'}
+      component={component || componentForParent(columnsComponent)}
       display={optimizeResponsiveArray([
         hideOnMobile ? 'none' : display.mobile,
         hideOnTablet ? 'none' : display.tablet,
