@@ -22,15 +22,31 @@ For `Stack`s with static children you can manually interleave `Divider` componen
 ```diff
 -<Stack space="..." dividers>
 +<Stack space="...">
-   <Component>{item}</Component>
+   <Component />
 +  <Divider />
-   <Component>{item}</Component>****
+   <Component />
 +  <Divider />
-   <Component>{item}</Component>
+   <Component />
  </Stack>
 ```
 
-For `Stack`s with iterable children you can conditionally render `Divider` components, before each item (except the first):
+Or for conditionally rendering children you can return a [React Fragment], including the `Divider` and child:
+
+```diff
+-<Stack space="..." dividers>
++<Stack space="...">
+   <Component />
+   {condition ? (
+-    <Component />
++    <>
++      <Divider />
++      <Component />
++    </>
+   ) : null}
+ </Stack>
+```
+
+For `Stack`s with iterable children you can return a [React Fragment] and conditionally render the `Divider` component as the first child, before each item (except the first):
 
 ```diff
 -<Stack space="..." dividers>
@@ -44,6 +60,8 @@ For `Stack`s with iterable children you can conditionally render `Divider` compo
   ))}
 </Stack>
 ```
+
+[React Fragment]: https://react.dev/reference/react/Fragment
 
 ### `Tiles`
 
