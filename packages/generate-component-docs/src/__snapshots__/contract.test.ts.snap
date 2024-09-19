@@ -305,9 +305,8 @@ exports[`Box 1`] = `
         | "center"
         | "flexEnd"
         | "flexStart"
-        | "stretch"
-        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "stretch" | "flexStart" | "flexEnd" | null>
-        | { mobile?: "center" | "stretch" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "stretch" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "stretch" | "flexStart" | "flexEnd" | undefined; wide?: "center" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "flexStart" | "flexEnd" | null>
+        | { mobile?: "center" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | undefined; wide?: "center" | ... 2 more ... | undefined; }
     allowFullScreen?: boolean
     allowTransparency?: boolean
     alt?: string
@@ -1462,9 +1461,8 @@ exports[`BoxRenderer 1`] = `
         | "center"
         | "flexEnd"
         | "flexStart"
-        | "stretch"
-        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "stretch" | "flexStart" | "flexEnd" | null>
-        | { mobile?: "center" | "stretch" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "stretch" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "stretch" | "flexStart" | "flexEnd" | undefined; wide?: "center" | ... 3 more ... | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "flexStart" | "flexEnd" | null>
+        | { mobile?: "center" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | undefined; wide?: "center" | ... 2 more ... | undefined; }
     background?: 
         | "body"
         | "brand"

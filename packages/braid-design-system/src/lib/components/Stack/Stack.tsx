@@ -48,7 +48,7 @@ export const Stack = ({
     display="flex"
     flexDirection="column"
     gap={space}
-    alignItems={align === 'left' ? 'stretch' : alignToFlexAlign(align)}
+    alignItems={align !== 'left' ? alignToFlexAlign(align) : undefined}
     {...buildDataAttributes({ data, validateRestProps: restProps })}
   >
     {children}

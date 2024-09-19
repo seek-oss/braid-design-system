@@ -33,8 +33,12 @@ export interface CollapsibleAlignmentProps {
   reverse?: boolean;
 }
 
-interface WithDefaultAlignItems {
-  defaultAlignItems: 'flexStart' | 'center' | 'flexEnd' | 'stretch';
+interface PrivateCollapsibleAlignmentConfig {
+  /**
+   * Sets flex items to be only as tall as their content (using `flexStart`)
+   * rather than growing to fit the largest sibling (using the default `stretch`).
+   */
+  inlineItems: boolean;
 }
 
 export function resolveCollapsibleAlignmentProps({
@@ -42,12 +46,14 @@ export function resolveCollapsibleAlignmentProps({
   alignY,
   collapseBelow,
   reverse,
-  defaultAlignItems,
-}: CollapsibleAlignmentProps & WithDefaultAlignItems) {
+  inlineItems = false,
+}: CollapsibleAlignmentProps & PrivateCollapsibleAlignmentConfig) {
   const [collapseMobile, collapseTablet, collapseDesktop] =
     resolveResponsiveRangeProps({
       below: collapseBelow,
     });
+
+  const defaultAlignItems = inlineItems ? 'flexStart' : undefined;
 
   // DIRECTION
   const rowDirection = collapseBelow && reverse ? 'rowReverse' : 'row';
@@ -60,9 +66,11 @@ export function resolveCollapsibleAlignmentProps({
 
   // VERTICAL ALIGNMENT
   const nonCollapsedAlignItems = alignYToFlexAlign(alignY) || defaultAlignItems;
-  const normalizedAlignY = normalizeResponsiveValue(nonCollapsedAlignItems);
+  const normalizedAlignY = normalizeResponsiveValue(
+    nonCollapsedAlignItems || {},
+  );
   const {
-    mobile: alignYMobile = defaultAlignItems,
+    mobile: alignYMobile = defaultAlignItems || null,
     tablet: alignYTablet = alignYMobile,
     desktop: alignYDesktop = alignYTablet,
     wide: alignYWide = alignYDesktop,
@@ -81,9 +89,9 @@ export function resolveCollapsibleAlignmentProps({
 
   // COLLAPSED HORIZONTAL ALIGNMENT
   const collapsedAlignItems = [
-    collapseMobile && alignMobile === 'flexStart' ? 'stretch' : alignMobile,
-    collapseTablet && alignTablet === 'flexStart' ? 'stretch' : alignTablet,
-    collapseDesktop && alignDesktop === 'flexStart' ? 'stretch' : alignDesktop,
+    collapseMobile && alignMobile === 'flexStart' ? null : alignMobile,
+    collapseTablet && alignTablet === 'flexStart' ? null : alignTablet,
+    collapseDesktop && alignDesktop === 'flexStart' ? null : alignDesktop,
     // wide doesnt collapse, no check needed here
   ] as const;
 

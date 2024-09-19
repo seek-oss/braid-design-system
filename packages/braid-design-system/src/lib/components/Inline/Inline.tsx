@@ -54,9 +54,9 @@ export const Inline = ({
   } = resolveCollapsibleAlignmentProps({
     align,
     alignY,
-    defaultAlignItems: 'flexStart',
     collapseBelow,
     reverse,
+    inlineItems: true,
   });
 
   return (

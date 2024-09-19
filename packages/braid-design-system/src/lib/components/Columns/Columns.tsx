@@ -57,8 +57,8 @@ export const Columns = ({
     collapseBelow,
     align,
     alignY,
-    defaultAlignItems: 'stretch',
     reverse,
+    inlineItems: false,
   });
 
   return (
