@@ -341,6 +341,19 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Reverse',
+      Example: () => (
+        <Columns space="small" collapseBelow="tablet" reverse>
+          <Column>
+            <Placeholder height={60} label="First" />
+          </Column>
+          <Column>
+            <Placeholder height={60} label="Second" />
+          </Column>
+        </Columns>
+      ),
+    },
+    {
       label:
         'Test: Collapsed "content" columns should be full width when setting "alignY"',
       Example: () => (

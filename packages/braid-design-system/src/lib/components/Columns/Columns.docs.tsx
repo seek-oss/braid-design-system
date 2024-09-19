@@ -443,9 +443,9 @@ const docs: ComponentDocs = {
           </Text>
           <Notice>
             <Text>
-              Reversing is only applied in combination with the{' '}
-              <Strong>collapseBelow</Strong> prop. This ensures the columns are
-              reversed on the same row, and follow the document order when
+              Reverse is only applied in combination with the{' '}
+              <Strong>collapseBelow</Strong> prop to ensure the columns are
+              reversed on the same row, but follow the document order when
               collapsed.
             </Text>
           </Notice>
@@ -517,11 +517,11 @@ const docs: ComponentDocs = {
         </>
       ),
       code: source(
-        <Columns space="small" component="ul">
-          <Column component="li">
+        <Columns space="small" component="span">
+          <Column>
             <Placeholder height={40} />
           </Column>
-          <Column component="li">
+          <Column>
             <Placeholder height={40} />
           </Column>
         </Columns>,
