@@ -207,13 +207,12 @@ function GroupHeading({ children }: GroupHeadingProps) {
     <Box
       paddingX="small"
       className={[
-        styles.groupHeading,
         touchableText.xsmall,
         textStyles({
-          size: 'xsmall',
-          baseline: false,
+          size: 'small',
+          baseline: true,
           weight: 'strong',
-          tone: 'formAccent',
+          tone: 'secondary',
         }),
       ]}
       data-testid={

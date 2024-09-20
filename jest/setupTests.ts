@@ -6,9 +6,6 @@ import { format, TextEncoder, TextDecoder } from 'util';
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
-// Mocking for `jsdom`
-window.HTMLElement.prototype.scrollIntoView = function () {};
-
 const error = global.console.error;
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
