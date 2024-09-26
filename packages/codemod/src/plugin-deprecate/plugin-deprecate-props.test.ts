@@ -101,7 +101,7 @@ const tests: NonNullable<Parameters<typeof pluginTester>[0]>['tests'] = [
   },
   {
     title:
-      'Visit Braid component where non-deprecated props preceed a deprecated prop in the prop list',
+      'Visit Braid component where non-deprecated props precede a deprecated prop in the prop list',
     code: dedent`
     import { Box } from 'braid-design-system';
     export default () => {
