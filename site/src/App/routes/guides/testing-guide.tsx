@@ -71,9 +71,8 @@ const page: Page = {
         . In fact, we use it internally in the Braid codebase. Unlike other
         testing libraries such as{' '}
         <TextLink href="https://enzymejs.github.io/enzyme/">Enzyme</TextLink>,{' '}
-        React Testing Library makes it difficult to test implementation details,
-        encouraging you to write tests that more closely resemble how your
-        software is used.
+        React Testing Library encourages you to write more effective unit tests
+        by decoupling them from implementation detail.
       </Text>
       <Text>
         For example, the vast majority of React Testing Library&rsquo;s API is
