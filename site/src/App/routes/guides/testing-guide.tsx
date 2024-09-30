@@ -60,19 +60,19 @@ const page: Page = {
       </Text>
 
       <LinkableHeading level="3">
-        Should I use Enyzme or React Testing Library?
+        Which testing library should I use?
       </LinkableHeading>
 
       <Text>
-        While{' '}
-        <TextLink href="https://enzymejs.github.io/enzyme/">Enzyme</TextLink>{' '}
-        works perfectly well, we recommend{' '}
+        We recommend using{' '}
         <TextLink href="https://testing-library.com/docs/react-testing-library/intro">
           React Testing Library
         </TextLink>
-        . In fact, we use it internally in the Braid codebase. We feel it
-        encourages you to write more effective unit tests by decoupling them
-        from implementation detail.
+        . In fact, we use it internally in the Braid codebase. Unlike other
+        testing libraries such as{' '}
+        <TextLink href="https://enzymejs.github.io/enzyme/">Enzyme</TextLink>,{' '}
+        React Testing Library encourages you to write more effective unit tests
+        by decoupling them from implementation detail.
       </Text>
       <Text>
         For example, the vast majority of React Testing Library&rsquo;s API is
@@ -88,8 +88,8 @@ const page: Page = {
         <TextLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
           role based querying
         </TextLink>{' '}
-        that leverages the accessibilty of your application for testing
-        purposes. This has the attractive side effect of making accessibilty
+        that leverages the accessibility of your application for testing
+        purposes. This has the attractive side effect of making accessibility
         much more prominent during the development process.
       </Text>
       <Text>
@@ -121,8 +121,8 @@ const page: Page = {
         import userEvent from '@testing-library/user-event';
 
         test('should focus the button after pressing tab', async () => {
-          const { getByRole } = render(<MyComponent />);
           const user = userEvent.setup()
+          const { getByRole } = render(<MyComponent />);
 
           const button = getByRole('button');
           expect(button).not.toHaveFocus();
@@ -155,6 +155,14 @@ const page: Page = {
         </Text>
       </List>
 
+      <Text>
+        See{' '}
+        <TextLink href="https://kentcdodds.com/blog/introducing-the-react-testing-library">
+          Introducing The React Testing Library
+        </TextLink>{' '}
+        by Kent C. Dodds, for a more detailed explanation of its benefits.
+      </Text>
+
       <LinkableHeading level="3">
         How do I query for elements rendered by Braid?
       </LinkableHeading>
@@ -164,7 +172,7 @@ const page: Page = {
         <TextLink href="https://testing-library.com/docs/dom-testing-library/api-queries#byrole">
           role based querying
         </TextLink>{' '}
-        to maximise accessibilty. Queries based on text content, title text,
+        to maximise accessibility. Queries based on text content, title text,
         labels and display values are also good options. Some Braid components
         allow passing{' '}
         <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
@@ -203,6 +211,12 @@ const page: Page = {
         <Text>
           <TextLink href="https://kentcdodds.com/blog/common-mistakes-with-react-testing-library">
             Common Mistakes with React Testing Library
+          </TextLink>{' '}
+          by Kent C. Dodds.
+        </Text>
+        <Text>
+          <TextLink href="https://kentcdodds.com/blog/how-to-test-custom-react-hooks">
+            How to Test Custom React Hooks
           </TextLink>{' '}
           by Kent C. Dodds.
         </Text>
