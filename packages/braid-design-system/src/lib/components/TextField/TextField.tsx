@@ -91,6 +91,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     return (
       <Field
         {...restProps}
+        componentName="TextField"
         id={id}
         value={value}
         secondaryMessage={

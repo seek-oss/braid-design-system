@@ -1,5 +1,35 @@
 # braid-design-system
 
+## 32.24.1
+
+### Patch Changes
+
+- **BraidTestProvider:** Provide `scrollIntoView` stub function for jsdom ([#1590](https://github.com/seek-oss/braid-design-system/pull/1590))
+
+  Fixes an issue where `scrollIntoView` is not defined in jsdom, causing tests to fail with the following error:
+
+  ```
+  Error: Uncaught [TypeError: highlightedItem?.scrollIntoView is not a function]
+  ```
+
+- **Autosuggest:** Update suggestion group heading design ([#1581](https://github.com/seek-oss/braid-design-system/pull/1581))
+
+  Updating the design of the suggestion group headings, moving from `formAccent` to `secondary` tone, from all caps to provided casing, and from `xsmall` to `small` size.
+
+- **Text, Heading:** Ensure `maxLines` truncates correctly when used as the direct child of a flex container. ([#1580](https://github.com/seek-oss/braid-design-system/pull/1580))
+
+- Validate accessible field labels in development ([#1591](https://github.com/seek-oss/braid-design-system/pull/1591))
+
+  Introduce development-time validation for the `label` prop on form fields to guard against blank values and guide towards the alternative labelling options that are available.
+  This validation helps ensure that all fields are accessible to screen readers and other assistive technologies.
+
+- **Spread:** Apply content width to children ([#1583](https://github.com/seek-oss/braid-design-system/pull/1583))
+
+  Align the behaviour of children in `Spread` to be the same as `Inline` children.
+  This makes their behaviour more predicatable when spreading full width elements, while also ensuring child elements are not stretched vertically.
+
+- **Icons:** Support rendering inline as child of a flex container ([#1585](https://github.com/seek-oss/braid-design-system/pull/1585))
+
 ## 32.24.0
 
 ### Minor Changes
@@ -2049,7 +2079,7 @@ For more detail on the specific changes in this release, please read on.
 
   ```jsx
   <MenuRenderer
-    onClose={closeReason => {
+    onClose={(closeReason) => {
       // ...
     }}
   />
@@ -2348,7 +2378,7 @@ For more detail on the specific changes in this release, please read on.
 
   ```jsx
   <MenuRenderer
-    trigger={triggerProps => <Button {...triggerProps}>Button</Button>}
+    trigger={(triggerProps) => <Button {...triggerProps}>Button</Button>}
   >
     ...
   </MenuRenderer>
@@ -2780,8 +2810,9 @@ For more detail on the specific changes in this release, please read on.
 
   type ThemeName = 'apac' | 'catho';
 
-  const BraidTheme = loadable.lib((props: { themeName: ThemeName }) =>
-    import(`braid-design-system/themes/${props.themeName}`),
+  const BraidTheme = loadable.lib(
+    (props: { themeName: ThemeName }) =>
+      import(`braid-design-system/themes/${props.themeName}`),
   );
 
   interface AppProps {
@@ -5440,7 +5471,7 @@ For more detail on the specific changes in this release, please read on.
   <AccordionItem
     id="id"
     label="Label"
-    onToggle={expanded => trackSomething(expanded)}
+    onToggle={(expanded) => trackSomething(expanded)}
   >
     ...
   </AccordionItem>

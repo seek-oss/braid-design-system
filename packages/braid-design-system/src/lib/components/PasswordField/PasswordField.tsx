@@ -78,6 +78,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
     return (
       <Field
         {...restProps}
+        componentName="PasswordField"
         id={id}
         value={value}
         icon={undefined}

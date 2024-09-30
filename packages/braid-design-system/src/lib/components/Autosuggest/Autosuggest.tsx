@@ -769,6 +769,7 @@ export const Autosuggest = forwardRef(function <Value>(
         <Box position="relative" ref={rootRef}>
           <Field
             {...restProps}
+            componentName="Autosuggest"
             id={id}
             value={value.text}
             prefix={undefined}

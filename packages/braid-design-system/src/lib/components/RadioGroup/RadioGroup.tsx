@@ -57,6 +57,7 @@ const RadioGroup = ({
     <FieldGroup
       id={id}
       {...props}
+      componentName="RadioGroup"
       disabled={disabled}
       tone={tone}
       role="radiogroup"
