@@ -8942,18 +8942,6 @@ exports[`makeLinkComponent 1`] = `
 }
 `;
 
-exports[`useBreakpoint 1`] = `
-{
-  exportType: hook,
-  params: [],
-  returnType: 
-    | "desktop"
-    | "mobile"
-    | "tablet"
-    | null,
-}
-`;
-
 exports[`useColor 1`] = `
 {
   exportType: hook,
