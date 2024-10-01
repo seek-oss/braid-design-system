@@ -7456,7 +7456,6 @@ exports[`Rating 1`] = `
     aria-label?: string
     data?: DataAttributeMap
     rating: number
-    showTextRating?: boolean
     size?: 
         | "large"
         | "small"
