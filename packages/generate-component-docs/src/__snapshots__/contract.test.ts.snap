@@ -130,11 +130,8 @@ exports[`Autosuggest 1`] = `
         | "matching"
         | "remaining"
     suggestions: 
-        | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
+        | (value: AutosuggestValue<Value>) => Suggestions<Value>
         | Suggestions<Value>
-        | {
-            message: string
-        }
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
