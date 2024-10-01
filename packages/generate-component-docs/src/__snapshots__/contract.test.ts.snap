@@ -3246,7 +3246,6 @@ exports[`Heading 1`] = `
         | "3"
         | "4"
     maxLines?: number
-    truncate?: boolean
     weight?: 
         | "regular"
         | "weak"
@@ -8103,7 +8102,6 @@ exports[`Text 1`] = `
         | "positive"
         | "promote"
         | "secondary"
-    truncate?: boolean
     weight?: 
         | "medium"
         | "regular"
