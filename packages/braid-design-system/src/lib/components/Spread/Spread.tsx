@@ -18,8 +18,20 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+const validSpreadComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'li',
+] as const;
+
 export interface SpreadProps {
-  component?: BoxProps['component'];
+  component?: (typeof validSpreadComponents)[number];
   children: ReactNodeNoStrings;
   space: RequiredResponsiveValue<Space>;
   direction?: 'horizontal' | 'vertical';
