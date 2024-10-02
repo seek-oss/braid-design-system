@@ -1,5 +1,4 @@
 import assert from 'assert';
-import dedent from 'dedent';
 import React, {
   type ReactNode,
   type AllHTMLAttributes,
@@ -42,8 +41,6 @@ export interface ButtonStyleProps {
   size?: ButtonSize;
   tone?: ButtonTone;
   variant?: ButtonVariant;
-  /** @deprecated Use `bleed` prop instead https://seek-oss.github.io/braid-design-system/components/Button#bleed */
-  bleedY?: boolean;
   bleed?: boolean;
   loading?: boolean;
 }
@@ -491,7 +488,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       tone,
       icon,
       iconPosition,
-      bleedY,
       bleed,
       variant,
       loading,
@@ -509,68 +505,48 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ...restProps
     },
     ref,
-  ) => {
-    if (process.env.NODE_ENV !== 'production') {
-      if (typeof bleedY !== 'undefined') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          dedent`
-            The "bleedY" prop has been deprecated and will be removed in a future version. Use "bleed" instead.
-               <Button
-              %c-   bleedY
-              %c+   bleed
-               %c/>
-          `,
-          'color: red',
-          'color: green',
-          'color: inherit',
-        );
-      }
-    }
+  ) => (
+    <ButtonContainer bleed={bleed} variant={variant}>
+      <Box
+        component="button"
+        ref={ref}
+        id={id}
+        type={type}
+        tabIndex={tabIndex}
+        onKeyUp={onKeyUp}
+        onKeyDown={onKeyDown}
+        aria-haspopup={ariaHasPopup}
+        aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
+        aria-describedby={ariaDescribedBy}
+        aria-label={ariaLabel}
+        onClick={onClick}
+        disabled={loading}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
+        {...useButtonStyles({
+          variant,
+          tone,
+          size,
+          bleed,
+          loading,
+        })}
+      >
+        <ButtonOverlays variant={variant} tone={tone} />
 
-    return (
-      <ButtonContainer bleed={bleed} variant={variant}>
-        <Box
-          component="button"
-          ref={ref}
-          id={id}
-          type={type}
-          tabIndex={tabIndex}
-          onKeyUp={onKeyUp}
-          onKeyDown={onKeyDown}
-          aria-haspopup={ariaHasPopup}
-          aria-controls={ariaControls}
-          aria-expanded={ariaExpanded}
-          aria-describedby={ariaDescribedBy}
-          aria-label={ariaLabel}
-          onClick={onClick}
-          disabled={loading}
-          {...buildDataAttributes({ data, validateRestProps: restProps })}
-          {...useButtonStyles({
-            variant,
-            tone,
-            size,
-            bleed: bleed || bleedY,
-            loading,
-          })}
+        <ButtonText
+          variant={variant}
+          tone={tone}
+          size={size}
+          loading={loading}
+          icon={icon}
+          iconPosition={iconPosition}
+          bleed={bleed}
         >
-          <ButtonOverlays variant={variant} tone={tone} />
-
-          <ButtonText
-            variant={variant}
-            tone={tone}
-            size={size}
-            loading={loading}
-            icon={icon}
-            iconPosition={iconPosition}
-            bleed={bleed}
-          >
-            {children}
-          </ButtonText>
-        </Box>
-      </ButtonContainer>
-    );
-  },
+          {children}
+        </ButtonText>
+      </Box>
+    </ButtonContainer>
+  ),
 );
 
 Button.displayName = 'Button';
