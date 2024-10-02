@@ -13,8 +13,20 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import * as styles from './Spread.css';
 
+const validSpreadComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'li',
+] as const;
+
 export interface SpreadProps {
-  component?: BoxProps['component'];
+  component?: (typeof validSpreadComponents)[number];
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
   direction?: 'horizontal' | 'vertical';
