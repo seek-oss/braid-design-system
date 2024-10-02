@@ -203,6 +203,7 @@ const svgrConfig = {
     cwd: iconComponentsDir,
     onlyFiles: false,
   });
+
   const iconExports = iconComponentNames
     .map((componentFile) => path.basename(componentFile, '.tsx'))
     .map((component) => `export { ${component} } from './${component}/${component}';`)
