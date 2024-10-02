@@ -87,19 +87,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Truncation (legacy)',
-      Example: () => (
-        <Box style={{ width: 220 }}>
-          <Box style={{ border: '1px solid red' }} />
-          <Heading level="2" truncate>
-            Limiting to 1 line that won’t fit in the layout
-          </Heading>
-          <Box style={{ border: '1px solid red' }} />
-        </Box>
-      ),
-    },
-    {
-      label: 'Max lines = 1 (should be same as truncation)',
+      label: 'Max lines = 1',
       Example: () => (
         <Box style={{ width: 220 }}>
           <Box style={{ border: '1px solid red' }} />
@@ -111,7 +99,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Max lines = 1 (in flex container, should be same as truncation)',
+      label: 'Max lines = 1 (in flex container)',
       Example: () => (
         <Box display="flex" flexDirection="column" style={{ width: 220 }}>
           <Box style={{ border: '1px solid red' }} />

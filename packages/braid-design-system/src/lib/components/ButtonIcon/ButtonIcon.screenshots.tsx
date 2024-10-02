@@ -133,28 +133,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Tone - secondary (deprecated)',
-      background: 'surface',
-      Example: () => (
-        <Inline space="large" alignY="center">
-          <ButtonIcon
-            variant="transparent"
-            tone="secondary"
-            icon={<IconBookmark />}
-            label="Bookmark"
-            id="1"
-          />
-          <ButtonIcon
-            variant="soft"
-            tone="secondary"
-            icon={<IconBookmark />}
-            label="Bookmark"
-            id="1"
-          />
-        </Inline>
-      ),
-    },
-    {
       label: 'Virtual touch target',
       Example: () => (
         <Stack space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
@@ -261,8 +239,8 @@ export const screenshots: ComponentScreenshot = {
           <ButtonIcon
             bleed={false}
             variant="transparent"
-            tone="secondary"
-            icon={<IconBookmark active tone="formAccent" />}
+            tone="formAccent"
+            icon={<IconBookmark active tone="brandAccent" />}
             label="Bookmark"
             id="1"
           />
