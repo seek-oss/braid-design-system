@@ -10,9 +10,9 @@ updated:
 
 **Stack, Tiles:** Remove `divider` support
 
-As part of migrating our layout components to leverage flex gap, the `Stack` & `Tiles` no longer iterate over their children, making `dividers` no longer feasible to implement centrally.
+As part of migrating our layout components to leverage flex gap, the `Stack` & `Tiles` components no longer iterate over their children, making `dividers` no longer feasible to implement centrally.
 
-While we could have conditionally maintained this behaviour, it would have resulted in inconsistent edge cases when using `dividers` and not, e.g. if a child component rendered nothing or a hidden element, the `divider` would still be rendered, resulting in an inconsistent layout.
+While we could have exposed an API to apply this behaviour conditionally, there are edge cases that cannot be handled correctly without consumer-side rendering logic, such as when child components render nothing or a hidden element.
 
 ### MIGRATION GUIDE:
 For `Stack`s with static children you can manually interleave `Divider` components:
