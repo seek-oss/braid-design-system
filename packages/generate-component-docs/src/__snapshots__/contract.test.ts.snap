@@ -2134,7 +2134,6 @@ exports[`ButtonIcon 1`] = `
     tone?: 
         | "formAccent"
         | "neutral"
-        | "secondary"
     tooltipPlacement?: 
         | "bottom"
         | "top"
