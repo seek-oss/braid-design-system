@@ -112,15 +112,15 @@ export const screenshots: ComponentScreenshot = {
         <Tiles space="large" columns={3}>
           <Spread direction="vertical" space="large">
             <Placeholder height={60} width={50} />
-            <Placeholder height={20} width={80} />
+            <Placeholder height={20} />
           </Spread>
           <Spread direction="vertical" space="large">
             <Placeholder height={20} width={50} />
-            <Placeholder height={20} width={80} />
+            <Placeholder height={20} />
           </Spread>
           <Spread direction="vertical" space="large">
             <Placeholder height={100} width={50} />
-            <Placeholder height={20} width={80} />
+            <Placeholder height={20} />
           </Spread>
         </Tiles>
       ),
