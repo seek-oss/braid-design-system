@@ -271,12 +271,6 @@ const noop = () => {
 const fallbackValue = { text: '' };
 const fallbackSuggestions: Suggestion[] = [];
 
-/** @deprecated Use `noSuggestionsMessage` prop instead */
-interface LegacyMessageSuggestion {
-  /** @deprecated Use `noSuggestionsMessage` prop instead */
-  message: string;
-}
-
 type HighlightOptions = 'matching' | 'remaining';
 
 export type AutosuggestBaseProps<Value> = Omit<
@@ -286,10 +280,7 @@ export type AutosuggestBaseProps<Value> = Omit<
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
-    | LegacyMessageSuggestion
-    | ((
-        value: AutosuggestValue<Value>,
-      ) => Suggestions<Value> | LegacyMessageSuggestion);
+    | ((value: AutosuggestValue<Value>) => Suggestions<Value>);
   noSuggestionsMessage?: string | { title: string; description: string };
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
@@ -311,33 +302,10 @@ export type AutosuggestProps<Value> = AutosuggestBaseProps<Value> &
 
 function normaliseNoSuggestionMessage<Value>(
   noSuggestionsMessage: AutosuggestBaseProps<Value>['noSuggestionsMessage'],
-  suggestionProp: AutosuggestBaseProps<Value>['suggestions'],
 ): { title?: string; description: string } | undefined {
-  if (noSuggestionsMessage) {
-    return typeof noSuggestionsMessage === 'string'
-      ? { description: noSuggestionsMessage }
-      : noSuggestionsMessage;
-  }
-
-  if ('message' in suggestionProp) {
-    const message = suggestionProp.message;
-    if (process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        dedent`
-          Passing \`message\` to \`suggestions\` is deprecated and will be removed in a future version. Use "noSuggestionsMessage" instead. See the documentation for usage: https://seek-oss.github.io/braid-design-system/components/Autosuggest#messaging-when-no-suggestions-are-available
-             <Autosuggest
-            %c-   suggestions={{ message: '${message}' }}
-            %c+   noSuggestionsMessage="${message}"
-             %c/>
-        `,
-        'color: red',
-        'color: green',
-        'color: inherit',
-      );
-    }
-    return { description: message };
-  }
+  return typeof noSuggestionsMessage === 'string'
+    ? { description: noSuggestionsMessage }
+    : noSuggestionsMessage;
 }
 
 export function highlightSuggestions(
@@ -387,7 +355,6 @@ export const Autosuggest = forwardRef(function <Value>(
     : [];
   const noSuggestionsMessage = normaliseNoSuggestionMessage(
     noSuggestionsMessageProp,
-    suggestionsPropValue,
   );
   const hasItems = suggestions.length > 0 || Boolean(noSuggestionsMessage);
 
