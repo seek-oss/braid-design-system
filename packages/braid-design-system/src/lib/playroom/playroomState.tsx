@@ -5,7 +5,7 @@ import React, {
   useState,
   useMemo,
 } from 'react';
-import curry from 'lodash/curry';
+import curry from 'lodash.curry';
 
 export interface StateProp {
   stateName?: string;
