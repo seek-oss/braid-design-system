@@ -7563,9 +7563,21 @@ exports[`Stack 1`] = `
         | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
     children: ReactNodeNoStrings
     component?: 
+        | "article"
+        | "aside"
+        | "dd"
+        | "details"
         | "div"
+        | "dl"
+        | "dt"
+        | "li"
+        | "main"
+        | "nav"
         | "ol"
+        | "p"
+        | "section"
         | "span"
+        | "summary"
         | "ul"
     data?: DataAttributeMap
     space: 
