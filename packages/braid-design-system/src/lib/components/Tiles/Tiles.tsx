@@ -26,11 +26,19 @@ export const Tiles = ({
   data,
   ...restProps
 }: TilesProps) => {
+  /**
+   * Defaulting the normalised column values to empty strings so that when
+   * parsed to strings for `assignInlineVars`, they are correctly omitted
+   * from the style attribute when not defined.
+   *
+   * Without this, `undefined` would be parsed to the string "undefined",
+   * requiring additional logic to omit them manually from the style attribute.
+   */
   const {
-    mobile: mobileColumns,
-    tablet: tabletColumns,
-    desktop: desktopColumns,
-    wide: wideColumns,
+    mobile: mobileColumns = '',
+    tablet: tabletColumns = '',
+    desktop: desktopColumns = '',
+    wide: wideColumns = '',
   } = normalizeResponsiveValue(columns);
 
   return (
@@ -38,16 +46,10 @@ export const Tiles = ({
       gap={space}
       className={styles.tiles}
       style={assignInlineVars({
-        ...(mobileColumns
-          ? { [styles.mobileColumnsVar]: `${mobileColumns}` }
-          : {}),
-        ...(tabletColumns
-          ? { [styles.tabletColumnsVar]: `${tabletColumns}` }
-          : {}),
-        ...(desktopColumns
-          ? { [styles.desktopColumnsVar]: `${desktopColumns}` }
-          : {}),
-        ...(wideColumns ? { [styles.wideColumnsVar]: `${wideColumns}` } : {}),
+        [styles.mobileColumnsVar]: String(mobileColumns),
+        [styles.tabletColumnsVar]: String(tabletColumns),
+        [styles.desktopColumnsVar]: String(desktopColumns),
+        [styles.wideColumnsVar]: String(wideColumns),
       })}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
