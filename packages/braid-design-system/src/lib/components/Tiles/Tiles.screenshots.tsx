@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Tiles, Box, Text } from '../';
+import { Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const exampleRows = 3;
@@ -25,30 +25,6 @@ export const screenshots: ComponentScreenshot = {
         <Tiles space="xsmall" columns={[1, 4]}>
           {[...new Array(4 * exampleRows)].map((_, i) => (
             <Placeholder key={i} height={40} />
-          ))}
-        </Tiles>
-      ),
-    },
-    {
-      label: 'Dividers (when in a single column)',
-      Example: () => (
-        <Tiles space={['none', 'small']} columns={[1, 2]} dividers>
-          {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Box background="surface" padding="gutter" key={i}>
-              <Text>Tile</Text>
-            </Box>
-          ))}
-        </Tiles>
-      ),
-    },
-    {
-      label: 'Strong dividers (when in a single column)',
-      Example: () => (
-        <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
-          {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Box background="surface" padding="gutter" key={i}>
-              <Text>Tile</Text>
-            </Box>
           ))}
         </Tiles>
       ),

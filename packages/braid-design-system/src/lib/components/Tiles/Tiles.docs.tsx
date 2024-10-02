@@ -101,25 +101,6 @@ const docs: ComponentDocs = {
           </Tiles>,
         ),
     },
-    {
-      label: 'Dividers',
-      deprecated: true,
-      description: (
-        <Text>
-          When in a single column, dividers can be placed between each tile
-          using the <Strong>dividers</Strong> prop. Supports both{' '}
-          <Strong>regular</Strong> and <Strong>strong</Strong> variants.
-        </Text>
-      ),
-      Example: () =>
-        source(
-          <Tiles space="medium" columns={1} dividers>
-            <Placeholder height={80} />
-            <Placeholder height={80} />
-            <Placeholder height={80} />
-          </Tiles>,
-        ),
-    },
   ],
 };
 
