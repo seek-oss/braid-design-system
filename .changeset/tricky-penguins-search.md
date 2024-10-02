@@ -4,6 +4,7 @@
 
 ---
 updated:
+  - Stack
   - Tiles
 ---
 
