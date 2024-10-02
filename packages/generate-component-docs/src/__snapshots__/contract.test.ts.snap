@@ -7380,38 +7380,6 @@ exports[`PasswordField 1`] = `
 }
 `;
 
-exports[`Radio 1`] = `
-{
-  exportType: component,
-  props: {
-    aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
-    checked: 
-        | false
-        | true
-    children?: ReactNode
-    data?: DataAttributeMap
-    description?: ReactNode
-    disabled?: boolean
-    id: string
-    label: ReactNode
-    name?: string
-    onChange: FormEventHandler<HTMLInputElement>
-    ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
-    tone?: 
-        | "critical"
-        | "neutral"
-    value?: 
-        | number
-        | readonly string[]
-        | string
-},
-}
-`;
-
 exports[`RadioGroup 1`] = `
 {
   exportType: component,

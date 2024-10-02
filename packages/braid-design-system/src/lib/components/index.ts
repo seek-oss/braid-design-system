@@ -59,7 +59,6 @@ export { PageBlock } from './PageBlock/PageBlock';
 export { Page } from './Page/Page';
 export { Pagination } from './Pagination/Pagination';
 export { PasswordField } from './PasswordField/PasswordField';
-export { Radio } from './Radio/Radio';
 export { RadioGroup } from './RadioGroup/RadioGroup';
 export { RadioItem } from './RadioGroup/RadioItem';
 export { Rating } from './Rating/Rating';
