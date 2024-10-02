@@ -838,6 +838,19 @@ exports[`Box 1`] = `
     frameBorder?: 
         | number
         | string
+    gap?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | "xxxlarge"
+        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     headers?: string
     height?: 
         | "full"
@@ -1740,6 +1753,19 @@ exports[`BoxRenderer 1`] = `
         | "wrap"
         | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
         | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
+    gap?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | "xxxlarge"
+        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     height?: 
         | "full"
         | "touchable"
@@ -7691,6 +7717,7 @@ exports[`Spread 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
 },
 }
 `;
