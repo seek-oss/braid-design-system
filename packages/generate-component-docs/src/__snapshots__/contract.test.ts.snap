@@ -130,11 +130,8 @@ exports[`Autosuggest 1`] = `
         | "matching"
         | "remaining"
     suggestions: 
-        | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
+        | (value: AutosuggestValue<Value>) => Suggestions<Value>
         | Suggestions<Value>
-        | {
-            message: string
-        }
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7455,7 +7452,6 @@ exports[`Rating 1`] = `
     aria-label?: string
     data?: DataAttributeMap
     rating: number
-    showTextRating?: boolean
     size?: 
         | "large"
         | "small"
@@ -8938,18 +8934,6 @@ exports[`makeLinkComponent 1`] = `
     displayName?: string
     propTypes?: never
 },
-}
-`;
-
-exports[`useBreakpoint 1`] = `
-{
-  exportType: hook,
-  params: [],
-  returnType: 
-    | "desktop"
-    | "mobile"
-    | "tablet"
-    | null,
 }
 `;
 
