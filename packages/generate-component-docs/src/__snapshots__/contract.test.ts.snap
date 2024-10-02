@@ -2056,7 +2056,6 @@ exports[`Button 1`] = `
         | true
     aria-label?: string
     bleed?: boolean
-    bleedY?: boolean
     children?: ReactNode
     data?: DataAttributeMap
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
@@ -2323,7 +2322,6 @@ exports[`ButtonLink 1`] = `
     autoFocus?: boolean
     autoSave?: string
     bleed?: boolean
-    bleedY?: boolean
     children?: ReactNode
     color?: string
     content?: string
