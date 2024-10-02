@@ -130,11 +130,8 @@ exports[`Autosuggest 1`] = `
         | "matching"
         | "remaining"
     suggestions: 
-        | (value: AutosuggestValue<Value>) => LegacyMessageSuggestion | Suggestions<Value>
+        | (value: AutosuggestValue<Value>) => Suggestions<Value>
         | Suggestions<Value>
-        | {
-            message: string
-        }
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -841,6 +838,19 @@ exports[`Box 1`] = `
     frameBorder?: 
         | number
         | string
+    gap?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | "xxxlarge"
+        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     headers?: string
     height?: 
         | "full"
@@ -1743,6 +1753,19 @@ exports[`BoxRenderer 1`] = `
         | "wrap"
         | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
         | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
+    gap?: 
+        | "gutter"
+        | "large"
+        | "medium"
+        | "none"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | "xxxlarge"
+        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     height?: 
         | "full"
         | "touchable"
@@ -2059,7 +2082,6 @@ exports[`Button 1`] = `
         | true
     aria-label?: string
     bleed?: boolean
-    bleedY?: boolean
     children?: ReactNode
     data?: DataAttributeMap
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
@@ -2137,7 +2159,6 @@ exports[`ButtonIcon 1`] = `
     tone?: 
         | "formAccent"
         | "neutral"
-        | "secondary"
     tooltipPlacement?: 
         | "bottom"
         | "top"
@@ -2327,7 +2348,6 @@ exports[`ButtonLink 1`] = `
     autoFocus?: boolean
     autoSave?: string
     bleed?: boolean
-    bleedY?: boolean
     children?: ReactNode
     color?: string
     content?: string
@@ -3246,7 +3266,6 @@ exports[`Heading 1`] = `
         | "3"
         | "4"
     maxLines?: number
-    truncate?: boolean
     weight?: 
         | "regular"
         | "weak"
@@ -7424,7 +7443,6 @@ exports[`Rating 1`] = `
     aria-label?: string
     data?: DataAttributeMap
     rating: number
-    showTextRating?: boolean
     size?: 
         | "large"
         | "small"
@@ -7471,186 +7489,15 @@ exports[`Spread 1`] = `
         | ResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
     children: ReactNodeNoStrings
     component?: 
-        | "a"
-        | "abbr"
-        | "address"
-        | "animate"
-        | "animateMotion"
-        | "animateTransform"
-        | "area"
         | "article"
         | "aside"
-        | "audio"
-        | "b"
-        | "base"
-        | "bdi"
-        | "bdo"
-        | "big"
-        | "blockquote"
-        | "body"
-        | "br"
-        | "button"
-        | "canvas"
-        | "caption"
-        | "center"
-        | "circle"
-        | "cite"
-        | "clipPath"
-        | "code"
-        | "col"
-        | "colgroup"
-        | "data"
-        | "datalist"
-        | "dd"
-        | "defs"
-        | "del"
-        | "desc"
-        | "details"
-        | "dfn"
-        | "dialog"
         | "div"
-        | "dl"
-        | "dt"
-        | "ellipse"
-        | "em"
-        | "embed"
-        | "feBlend"
-        | "feColorMatrix"
-        | "feComponentTransfer"
-        | "feComposite"
-        | "feConvolveMatrix"
-        | "feDiffuseLighting"
-        | "feDisplacementMap"
-        | "feDistantLight"
-        | "feDropShadow"
-        | "feFlood"
-        | "feFuncA"
-        | "feFuncB"
-        | "feFuncG"
-        | "feFuncR"
-        | "feGaussianBlur"
-        | "feImage"
-        | "feMerge"
-        | "feMergeNode"
-        | "feMorphology"
-        | "feOffset"
-        | "fePointLight"
-        | "feSpecularLighting"
-        | "feSpotLight"
-        | "feTile"
-        | "feTurbulence"
-        | "fieldset"
-        | "figcaption"
-        | "figure"
-        | "filter"
-        | "footer"
-        | "foreignObject"
-        | "form"
-        | "g"
-        | "h1"
-        | "h2"
-        | "h3"
-        | "h4"
-        | "h5"
-        | "h6"
-        | "head"
-        | "header"
-        | "hgroup"
-        | "hr"
-        | "html"
-        | "i"
-        | "iframe"
-        | "image"
-        | "img"
-        | "input"
-        | "ins"
-        | "kbd"
-        | "keygen"
-        | "label"
-        | "legend"
         | "li"
-        | "line"
-        | "linearGradient"
-        | "link"
         | "main"
-        | "map"
-        | "mark"
-        | "marker"
-        | "mask"
-        | "menu"
-        | "menuitem"
-        | "meta"
-        | "metadata"
-        | "meter"
-        | "mpath"
         | "nav"
-        | "noindex"
-        | "noscript"
-        | "object"
-        | "ol"
-        | "optgroup"
-        | "option"
-        | "output"
         | "p"
-        | "param"
-        | "path"
-        | "pattern"
-        | "picture"
-        | "polygon"
-        | "polyline"
-        | "pre"
-        | "progress"
-        | "q"
-        | "radialGradient"
-        | "rect"
-        | "rp"
-        | "rt"
-        | "ruby"
-        | "s"
-        | "samp"
-        | "script"
-        | "search"
         | "section"
-        | "select"
-        | "set"
-        | "slot"
-        | "small"
-        | "source"
         | "span"
-        | "stop"
-        | "strong"
-        | "style"
-        | "sub"
-        | "summary"
-        | "sup"
-        | "svg"
-        | "switch"
-        | "symbol"
-        | "table"
-        | "tbody"
-        | "td"
-        | "template"
-        | "text"
-        | "textPath"
-        | "textarea"
-        | "tfoot"
-        | "th"
-        | "thead"
-        | "time"
-        | "title"
-        | "tr"
-        | "track"
-        | "tspan"
-        | "u"
-        | "ul"
-        | "use"
-        | "var"
-        | "video"
-        | "view"
-        | "wbr"
-        | "webview"
-        | ComponentClass<any, any>
-        | FunctionComponent<any>
     data?: DataAttributeMap
     direction?: 
         | "horizontal"
@@ -7667,6 +7514,7 @@ exports[`Spread 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
 },
 }
 `;
@@ -7683,16 +7531,23 @@ exports[`Stack 1`] = `
         | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
     children: ReactNodeNoStrings
     component?: 
+        | "article"
+        | "aside"
+        | "dd"
+        | "details"
         | "div"
+        | "dl"
+        | "dt"
+        | "li"
+        | "main"
+        | "nav"
         | "ol"
+        | "p"
+        | "section"
         | "span"
+        | "summary"
         | "ul"
     data?: DataAttributeMap
-    dividers?: 
-        | "regular"
-        | "strong"
-        | false
-        | true
     space: 
         | "gutter"
         | "large"
@@ -8071,7 +7926,6 @@ exports[`Text 1`] = `
         | "positive"
         | "promote"
         | "secondary"
-    truncate?: boolean
     weight?: 
         | "medium"
         | "regular"
@@ -8785,11 +8639,6 @@ exports[`Tiles 1`] = `
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", 1 | 2 | 3 | 4 | 5 | 6>
         | RequiredResponsiveArray<1 | 2 | 3 | 4, 1 | 2 | 3 | 4 | 5 | 6 | null>
     data?: DataAttributeMap
-    dividers?: 
-        | "regular"
-        | "strong"
-        | false
-        | true
     space: 
         | "gutter"
         | "large"
@@ -8907,18 +8756,6 @@ exports[`makeLinkComponent 1`] = `
     displayName?: string
     propTypes?: never
 },
-}
-`;
-
-exports[`useBreakpoint 1`] = `
-{
-  exportType: hook,
-  params: [],
-  returnType: 
-    | "desktop"
-    | "mobile"
-    | "tablet"
-    | null,
 }
 `;
 
