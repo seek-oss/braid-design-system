@@ -1,10 +1,8 @@
-import dedent from 'dedent';
 import React, { type ReactNode, Children } from 'react';
 import flattenChildren from '../../utils/flattenChildren';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { type DividerProps, Divider } from '../Divider/Divider';
 import { type HiddenProps, Hidden } from '../Hidden/Hidden';
 import * as hiddenStyles from '../Hidden/Hidden.css';
 import { type Align, alignToFlexAlign } from '../../utils/align';
@@ -96,15 +94,6 @@ export interface StackProps {
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
   align?: OptionalResponsiveValue<Align>;
-  /**
-   * @deprecated Will be removed in v33 to enable [CSS gap] in layout components.
-   *
-   * See [migration guide] for details.
-   *
-   * [CSS gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
-   * [migration guide]: https://github.com/seek-oss/braid-design-system/blob/master/docs/Removing%20dividers%20support%20from%20layout%20components.md
-   * */
-  dividers?: boolean | DividerProps['weight'];
   data?: DataAttributeMap;
 }
 
@@ -113,7 +102,6 @@ export const Stack = ({
   children,
   space = 'none',
   align = 'left',
-  dividers,
   data,
   ...restProps
 }: StackProps) => {
@@ -123,34 +111,6 @@ export const Stack = ({
       .map((c) => `'${c}'`)
       .join(', ')}]`,
   );
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof dividers !== 'undefined') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        dedent`
-          The "dividers" prop is deprecated and will be removed in v33 to enable CSS gap in layout components.
-          Update your usage now to make upgrading easier by manually inserting "Divider" components as required:
-            %c- <Stack space="..." dividers>
-            %c+ <Stack space="...">
-            %c    <Component>{item}</Component>
-            %c+   <Divider />
-            %c    <Component>{item}</Component>****
-            %c+   <Divider />
-            %c    <Component>{item}</Component>
-              </Stack>
-          See migration guide for details: https://github.com/seek-oss/braid-design-system/blob/master/docs/Removing%20dividers%20support%20from%20layout%20components.md
-        `,
-        'color: red',
-        'color: green',
-        'color: inherit',
-        'color: green',
-        'color: inherit',
-        'color: green',
-        'color: inherit',
-      );
-    }
-  }
 
   const stackItemProps = useStackItem({ space, align, component });
   const stackItems = flattenChildren(children);
@@ -217,25 +177,6 @@ export const Stack = ({
               ? calculateHiddenStackItemProps(stackItemProps, hidden)
               : stackItemProps)}
           >
-            {dividers && index > 0 ? (
-              <Box
-                component="span"
-                width="full"
-                paddingBottom={space}
-                display={optimizeResponsiveArray([
-                  index === firstItemOnMobile ? 'none' : 'block',
-                  index === firstItemOnTablet ? 'none' : 'block',
-                  index === firstItemOnDesktop ? 'none' : 'block',
-                  index === firstItemOnWide ? 'none' : 'block',
-                ])}
-              >
-                {typeof dividers === 'string' ? (
-                  <Divider weight={dividers} />
-                ) : (
-                  <Divider />
-                )}
-              </Box>
-            ) : null}
             {hiddenProps ? hiddenProps.children : child}
           </Box>
         );
