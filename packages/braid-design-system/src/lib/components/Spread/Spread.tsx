@@ -1,7 +1,7 @@
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box, type BoxProps } from '../Box/Box';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
-import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import {
   alignYToFlexAlign,
   type AlignY,
