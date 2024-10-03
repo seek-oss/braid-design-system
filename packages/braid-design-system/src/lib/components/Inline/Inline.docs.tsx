@@ -228,7 +228,7 @@ const docs: ComponentDocs = {
           </Text>
           <Notice>
             <Text>
-              Reverse should only be applied in combination with the{' '}
+              Reverse is only applied in combination with the{' '}
               <Strong>collapseBelow</Strong> prop to ensure the content is
               reversed on the same row, but follows the document order when
               collapsed.
