@@ -14,7 +14,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
 
-export interface ColumnsProps extends CollapsibleAlignmentProps {
+export type ColumnsProps = CollapsibleAlignmentProps & {
   space: ResponsiveSpace;
   children:
     | Array<ReactElement<ColumnProps> | null>
@@ -22,7 +22,7 @@ export interface ColumnsProps extends CollapsibleAlignmentProps {
     | null;
   component?: (typeof validColumnsComponents)[number];
   data?: DataAttributeMap;
-}
+};
 
 export const Columns = ({
   children,
@@ -40,6 +40,11 @@ export const Columns = ({
     `Invalid Columns component: '${component}'. Should be one of [${validColumnsComponents
       .map((c) => `'${c}'`)
       .join(', ')}]`,
+  );
+
+  assert(
+    !reverse || (reverse && collapseBelow),
+    'The `reverse` prop should only be applied in combination with the `collapseBelow` prop.\nIf you do not want to collapse responsively, it is recommended to reorder the content directly.\n\nSee documentation for details: https://seek-oss.github.io/braid-design-system/components/Columns#reversing-the-column-order',
   );
 
   const normalizedSpace = normalizeResponsiveValue(space);
