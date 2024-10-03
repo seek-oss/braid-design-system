@@ -16,19 +16,19 @@ import buildDataAttributes, {
 
 export const validInlineComponents = ['div', 'span', 'ol', 'ul'] as const;
 
-export interface InlineProps extends CollapsibleAlignmentProps {
+export type InlineProps = CollapsibleAlignmentProps & {
   space: ResponsiveSpace;
   component?: (typeof validInlineComponents)[number];
   data?: DataAttributeMap;
   children: ReactNodeNoStrings;
-}
+};
 
 export const Inline = ({
   space = 'none',
   align,
   alignY,
   collapseBelow,
-  reverse,
+  reverse = false,
   component = 'div',
   data,
   children,
@@ -39,6 +39,11 @@ export const Inline = ({
     `Invalid Inline component: '${component}'. Should be one of [${validInlineComponents
       .map((c) => `'${c}'`)
       .join(', ')}]`,
+  );
+
+  assert(
+    !reverse || (reverse && collapseBelow),
+    'The `reverse` prop should only be applied in combination with the `collapseBelow` prop.\nIf you do not want to collapse responsively, it is recommended to reorder the content directly.\n\nSee documentation for details: https://seek-oss.github.io/braid-design-system/components/Inline#reversing-the-order',
   );
 
   const isList = component === 'ol' || component === 'ul';

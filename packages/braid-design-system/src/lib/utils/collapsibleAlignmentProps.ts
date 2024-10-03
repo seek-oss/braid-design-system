@@ -27,12 +27,19 @@ function invertAlignment<Alignment extends string>(alignment: Alignment) {
   return alignment;
 }
 
-export interface CollapsibleAlignmentProps {
-  collapseBelow?: ResponsiveRangeProps['below'];
+export type CollapsibleAlignmentProps = {
   align?: OptionalResponsiveValue<Align>;
   alignY?: OptionalResponsiveValue<AlignY>;
-  reverse?: boolean;
-}
+} & (
+  | {
+      reverse?: never;
+      collapseBelow?: ResponsiveRangeProps['below'];
+    }
+  | {
+      reverse: boolean;
+      collapseBelow: ResponsiveRangeProps['below'];
+    }
+);
 
 export function resolveCollapsibleAlignmentProps({
   align,

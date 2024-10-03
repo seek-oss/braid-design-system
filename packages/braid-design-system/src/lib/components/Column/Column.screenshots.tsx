@@ -101,7 +101,7 @@ export const screenshots: ComponentScreenshot = {
             </Column>
           </Columns>
 
-          <Columns space="small" reverse>
+          <Columns space="small" collapseBelow="tablet" reverse>
             <Column width="1/3">
               <Placeholder height={60} label="&#8531;" />
             </Column>
