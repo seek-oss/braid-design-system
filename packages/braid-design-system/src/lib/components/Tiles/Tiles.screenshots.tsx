@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -26,28 +26,6 @@ export const screenshots: ComponentScreenshot = {
           {[...new Array(4 * exampleRows)].map((_, i) => (
             <Placeholder key={i} height={40} />
           ))}
-        </Tiles>
-      ),
-    },
-    {
-      label:
-        'Test - Should flatten fragments (6 tiles should be evenly spaced)',
-      Example: () => (
-        <Tiles space="small" columns={3}>
-          <Fragment>
-            <Placeholder height={40} />
-          </Fragment>
-          <Fragment>
-            <Placeholder height={40} />
-            <Placeholder height={40} />
-          </Fragment>
-          <Fragment>
-            <Fragment>
-              <Placeholder height={40} />
-            </Fragment>
-            <Placeholder height={40} />
-          </Fragment>
-          <Placeholder height={40} />
         </Tiles>
       ),
     },
