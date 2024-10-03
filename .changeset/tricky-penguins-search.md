@@ -4,6 +4,7 @@
 
 ---
 updated:
+  - Inline
   - Stack
   - Tiles
 ---
