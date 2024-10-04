@@ -1,6 +1,6 @@
 import React, { type ReactNode, Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box, Stack, Hidden } from '../';
+import { Box, Stack, Hidden, Heading, Text, Strong } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { spaces } from '../../utils/docsHelpers';
 
@@ -158,6 +158,57 @@ export const screenshots: ComponentScreenshot = {
           <Placeholder height={40} width={40} />
           <Placeholder height={40} width={60} />
           <Placeholder height={40} width={80} />
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Default text alignment (left)',
+      Container,
+      Example: () => (
+        <Stack space="large" align="left">
+          <Heading level="3">Default heading alignment (left).</Heading>
+          <Text>
+            <Strong>Default text alignment (left).</Strong> Est quis incididunt
+            do laboris eiusmod et..
+          </Text>
+          <Text align="right">
+            <Strong>Explicit right alignment.</Strong> Pariatur ad aute esse
+            esse sunt aliqua.
+          </Text>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Default text alignment (center)',
+      Container,
+      Example: () => (
+        <Stack space="large" align="center">
+          <Heading level="3">Default heading alignment (center).</Heading>
+          <Text>
+            <Strong>Default text alignment (center).</Strong> Est quis
+            incididunt do laboris eiusmod et..
+          </Text>
+          <Text align="right">
+            <Strong>Explicit right alignment.</Strong> Pariatur ad aute esse
+            esse sunt aliqua.
+          </Text>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Default text alignment (right)',
+      Container,
+      Example: () => (
+        <Stack space="large" align="right">
+          <Heading level="3">Default heading alignment (right).</Heading>
+          <Text>
+            <Strong>Default text alignment (right).</Strong> Est quis incididunt
+            do laboris eiusmod et..
+          </Text>
+          <Text align="center">
+            <Strong>Explicit center alignment.</Strong> Pariatur ad aute esse
+            esse sunt aliqua.
+          </Text>
         </Stack>
       ),
     },
