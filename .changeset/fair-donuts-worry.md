@@ -12,7 +12,7 @@ Removing support for React 17 allows us to simplify and streamline a lot of our 
 ### MIGRATION GUIDE:
 Consumers still on v17 should follow the [How to Upgrade to React 18 guide].
 
-For [sku] consumers who upgraded to Braid v32 and added the "`jsx-runtime` workaround for ESM incompatibility", this can now be safely removed this from their webpack configuration once updated to React 18:
+For [sku] consumers who upgraded to Braid v32 and added the "`jsx-runtime` workaround for ESM incompatibility", this can now be safely removed from their webpack configuration once updated to React 18:
 
 ```diff
 // sku.config.ts
