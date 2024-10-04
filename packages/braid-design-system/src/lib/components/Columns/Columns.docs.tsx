@@ -499,10 +499,22 @@ const docs: ComponentDocs = {
     {
       label: 'Semantic elements',
       description: (
-        <Text>
-          By default, Columns renders a <Strong>div</Strong> element. You can
-          customise this via the <Strong>component</Strong> prop.
-        </Text>
+        <>
+          <Text>
+            By default, Columns and Column render a <Strong>div</Strong>{' '}
+            element. You can customise this via the <Strong>component</Strong>{' '}
+            prop.
+          </Text>
+          <Notice>
+            <Text>
+              Certain components on Columns will change the default element used
+              by Column. E.g. <Strong>ol</Strong> and <Strong>ul</Strong> will
+              use an <Strong>li</Strong>, and <Strong>span</Strong> will use a{' '}
+              <Strong>span</Strong>. However the user provided{' '}
+              <Strong>component</Strong> prop will take precedence.
+            </Text>
+          </Notice>
+        </>
       ),
       code: source(
         <Columns space="small" component="span">
