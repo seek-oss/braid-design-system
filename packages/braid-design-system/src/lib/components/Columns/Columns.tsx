@@ -12,7 +12,7 @@ import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { ColumnsContext, validColumnsComponents } from './ColumnsContext';
+import { ColumnsContext, type validColumnsComponents } from './ColumnsContext';
 
 export type ColumnsProps = CollapsibleAlignmentProps & {
   space: ResponsiveSpace;
@@ -29,19 +29,12 @@ export const Columns = ({
   collapseBelow,
   reverse = false,
   space = 'none',
-  align,
+  align = 'left',
   alignY,
   component = 'div',
   data,
   ...restProps
 }: ColumnsProps) => {
-  assert(
-    validColumnsComponents.includes(component),
-    `Invalid Columns component: '${component}'. Should be one of [${validColumnsComponents
-      .map((c) => `'${c}'`)
-      .join(', ')}]`,
-  );
-
   assert(
     !reverse || (reverse && collapseBelow),
     'The `reverse` prop should only be applied in combination with the `collapseBelow` prop.\nIf you do not want to collapse responsively, it is recommended to reorder the content directly.\n\nSee documentation for details: https://seek-oss.github.io/braid-design-system/components/Columns#reversing-the-column-order',
@@ -57,16 +50,15 @@ export const Columns = ({
 
   const {
     collapsibleAlignmentProps,
-    collapsibleAlignmentChildProps,
     collapseMobile,
     collapseTablet,
     collapseDesktop,
-    orderChildren,
   } = resolveCollapsibleAlignmentProps({
     collapseBelow,
     align,
     alignY,
     reverse,
+    inlineItems: false,
   });
 
   return (
@@ -90,11 +82,11 @@ export const Columns = ({
           tabletSpace,
           desktopSpace,
           wideSpace,
-          collapsibleAlignmentChildProps,
+          align,
           component,
         }}
       >
-        {orderChildren(children)}
+        {children}
       </ColumnsContext.Provider>
     </Box>
   );
