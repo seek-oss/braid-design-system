@@ -39,18 +39,28 @@ export const Stack = ({
   component = 'div',
   children,
   space = 'none',
-  align = 'left',
+  align: alignProp,
   data,
   ...restProps
-}: StackProps) => (
-  <Box
-    component={component}
-    display="flex"
-    flexDirection="column"
-    gap={space}
-    alignItems={align !== 'left' ? alignToFlexAlign(align) : undefined}
-    {...buildDataAttributes({ data, validateRestProps: restProps })}
-  >
-    {children}
-  </Box>
-);
+}: StackProps) => {
+  /**
+   * Creating a seam between the provided prop and the default value
+   * to enable only setting the text alignment when the `align` prop
+   * is provided — not when it's defaulted.
+   */
+  const align = alignProp || 'left';
+
+  return (
+    <Box
+      component={component}
+      display="flex"
+      flexDirection="column"
+      gap={space}
+      alignItems={align !== 'left' ? alignToFlexAlign(align) : undefined}
+      textAlign={alignProp}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
+    >
+      {children}
+    </Box>
+  );
+};
