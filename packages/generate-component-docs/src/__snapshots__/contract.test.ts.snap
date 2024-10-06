@@ -2807,6 +2807,18 @@ exports[`Column 1`] = `
   exportType: component,
   props: {
     children: ReactNode
+    component?: 
+        | "article"
+        | "aside"
+        | "div"
+        | "li"
+        | "main"
+        | "nav"
+        | "ol"
+        | "p"
+        | "section"
+        | "span"
+        | "ul"
     data?: DataAttributeMap
     hideAbove?: 
         | "desktop"
@@ -2855,8 +2867,17 @@ exports[`Columns 1`] = `
         | "tablet"
         | "wide"
     component?: 
+        | "article"
+        | "aside"
         | "div"
+        | "li"
+        | "main"
+        | "nav"
+        | "ol"
+        | "p"
+        | "section"
         | "span"
+        | "ul"
     data?: DataAttributeMap
     reverse?: boolean
     space: 
@@ -6486,7 +6507,10 @@ exports[`Inline 1`] = `
         | "wide"
     component?: 
         | "div"
+        | "li"
+        | "nav"
         | "ol"
+        | "p"
         | "span"
         | "ul"
     data?: DataAttributeMap
@@ -7345,38 +7369,6 @@ exports[`PasswordField 1`] = `
         | readonly string[]
         | string
     visibilityToggleLabel?: string
-},
-}
-`;
-
-exports[`Radio 1`] = `
-{
-  exportType: component,
-  props: {
-    aria-describedby?: string
-    badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
-    checked: 
-        | false
-        | true
-    children?: ReactNode
-    data?: DataAttributeMap
-    description?: ReactNode
-    disabled?: boolean
-    id: string
-    label: ReactNode
-    name?: string
-    onChange: FormEventHandler<HTMLInputElement>
-    ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
-    tone?: 
-        | "critical"
-        | "neutral"
-    value?: 
-        | number
-        | readonly string[]
-        | string
 },
 }
 `;
@@ -8631,14 +8623,9 @@ exports[`Tiles 1`] = `
   props: {
     children: ReactNodeNoStrings
     columns: 
-        | 1
-        | 2
-        | 3
-        | 4
-        | 5
-        | 6
-        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", 1 | 2 | 3 | 4 | 5 | 6>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, 1 | 2 | 3 | 4 | 5 | 6 | null>
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", number>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, number | null>
+        | number
     data?: DataAttributeMap
     space: 
         | "gutter"

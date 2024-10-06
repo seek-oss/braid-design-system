@@ -4,7 +4,9 @@
 
 ---
 updated:
+  - Inline
   - Stack
+  - Tiles
 ---
 
 Migrate to CSS `gap` internally.
