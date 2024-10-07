@@ -26,6 +26,7 @@ export interface ToggleProps {
   align?: 'left' | 'right' | 'justify';
   togglePosition?: 'leading' | 'trailing';
   size?: Size;
+  /** @deprecated `bleedY` is enabled by default, and configuration will be removed in a future version */
   bleedY?: boolean;
   data?: DataAttributeMap;
 }
@@ -47,7 +48,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       align = 'left',
       togglePosition,
       size = 'standard',
-      bleedY = false,
+      bleedY: _bleedY,
       data,
       ...restProps
     },
@@ -56,24 +57,20 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     const lightness = useBackgroundLightness();
 
     if (process.env.NODE_ENV !== 'production') {
-      if (bleedY === undefined) {
+      if (typeof _bleedY !== 'undefined') {
         // eslint-disable-next-line no-console
         console.warn(
           dedent`
-          Vertical bleed will become standard in a future version, which will affect your layout.
-          Please add the "bleedY" prop with a value of "true" and optimise your layout.
-          `,
-        );
-      }
-      if (bleedY === false) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          dedent`
-          Using "bleedY" set to "false" will be deprecated in a future version.
-          Please set the "bleedY" prop to "true" and optimise your layout.`,
+            ${
+              _bleedY
+                ? `The "bleedY" prop has been deprecated and will be removed in a future version. "bleedY" is enabled by default, so this prop can safely be removed with no layout impact.`
+                : `The "bleedY" prop has been deprecated and will be removed in a future version. "bleedY" is now enabled by default. Please remove the "bleedY" prop and optimize your layout.`
+            }`,
         );
       }
     }
+
+    const bleedY = _bleedY ?? true;
 
     const defaultTogglePosition = align === 'left' ? 'leading' : 'trailing';
     const appliedTogglePosition = togglePosition || defaultTogglePosition;
@@ -185,11 +182,6 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         <Box
           component="label"
           htmlFor={id}
-          // Todo - Replace paddings with flex-gap after browser policy change
-          /*
-          Apply padding by default to prevent padding disappearing
-          during partial completion of togglePosition and align props in Playroom
-          */
           paddingLeft={
             appliedTogglePosition === 'trailing' ? undefined : 'xsmall'
           }
