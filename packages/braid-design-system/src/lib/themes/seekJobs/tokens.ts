@@ -125,7 +125,7 @@ export default makeTokens({
       },
     },
     space: {
-      gutter: 8,
+      gutter: 6,
       xxsmall: 2,
       xsmall: 3,
       small: 4,
