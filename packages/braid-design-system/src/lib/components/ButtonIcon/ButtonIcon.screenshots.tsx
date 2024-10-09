@@ -2,6 +2,7 @@ import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Box, ButtonIcon, Inline, Heading, IconBookmark, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { LayoutTest } from '../../utils/LayoutTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
@@ -262,6 +263,14 @@ export const screenshots: ComponentScreenshot = {
             />
           </Inline>
         </BackgroundContrastTest>
+      ),
+    },
+    {
+      label: 'Layout',
+      Example: () => (
+        <LayoutTest>
+          <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="1" />
+        </LayoutTest>
       ),
     },
   ],
