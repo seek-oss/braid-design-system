@@ -14,7 +14,7 @@
 
 ## Setup
 
-> This guide is currently optimised for usage with [sku](https://github.com/seek-oss/sku), since it's configured to support Braid out of the box. If your project has a custom build setup, you'll need some extra guidance from project contributors to configure your bundler.
+> This guide is currently optimised for usage with [sku], since it's configured to support Braid out of the box. If your project has a custom build setup, you'll need some extra guidance from project contributors to configure your bundler.
 
 In your sku project, first install this library:
 
@@ -99,6 +99,43 @@ Start a local Storybook server:
 $ pnpm storybook
 ```
 
+## Building with Braid
+
+### Styling with [Vanilla Extract]
+
+Braid uses Vanilla Extract for styling, enabling the authoring of CSS in TypeScript in a way that can be statically extracted at build time, generating reusable atomic CSS classes.
+
+This requires use of a bundler plugin to collect the extracted styles (see Vanilla Extract&rsquo;s [integration] documentation), either injecting them into the document or a separate CSS stylesheet.
+
+At SEEK this is done via [sku] as part of the build process.
+
+[Vanilla Extract]: https://vanilla-extract.style/
+[integration]: https://vanilla-extract.style/documentation/getting-started
+
+### Assertions
+
+To ensure correct usage of it&rsquo;s components, Braid performs some precondition and invariant checking at runtime using the [assert] library.
+
+To prevent these checks from being included in production builds and distrupting the end user experience, it is recommended that `assert` calls are stripped at build time using the [unassert](https://www.npmjs.com/package/unassert) library.
+
+At SEEK this is done via [sku] as part of the build process via [Babel] with the [babel-plugin-unassert] plugin.
+
+[assert]: https://www.npmjs.com/package/assert
+[unassert]: https://www.npmjs.com/package/unassert
+[Babel]: https://babeljs.io/
+[babel-plugin-unassert]: https://github.com/unassert-js/babel-plugin-unassert
+
+### Dev-time Warnings
+
+Additionally, Braid provides dev and build time warnings for softer communications such as deprecations — conditionally logging to the console based on the specified `process.env.NODE_ENV`, expecting an environment of either `development` or `production`.
+
+To prevent these checks from being included in production, it is recommended to strip them from the production bundle.
+
+At SEEK this is done via [sku] as part of the build process, replacing `process.env.NODE_ENV` with the configured environment as a `string` via the [webpack optimization] configuration.
+This gives the bundler the opportunity to remove the dead code at build time, if configured as part of the minification process.
+
+[webpack optimization]: https://webpack.js.org/configuration/optimization/#optimizationnodeenv
+
 ## Contributing
 
 Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
@@ -110,3 +147,5 @@ Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## License
 
 MIT.
+
+[sku]: https://github.com/seek-oss/sku
