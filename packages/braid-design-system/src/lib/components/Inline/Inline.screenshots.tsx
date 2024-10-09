@@ -344,7 +344,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Test - truncation should work an (all examples should truncate below)',
+        'Test - truncation should be visible on all examples below',
       Container,
       Example: () => (
         <Inline space="small">

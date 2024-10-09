@@ -31,7 +31,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label:
-        'Test - truncation should work and showing two equal tiles with truncated text',
+        'Test - truncation should be visible on both tiles below, as well as both tiles being equally sized',
       Example: () => (
         <Tiles space="small" columns={2}>
           <Box
