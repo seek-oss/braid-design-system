@@ -1,4 +1,9 @@
-import { createVar, fallbackVar, style } from '@vanilla-extract/css';
+import {
+  createVar,
+  fallbackVar,
+  globalStyle,
+  style,
+} from '@vanilla-extract/css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 const columns = createVar();
@@ -44,3 +49,7 @@ export const tiles = style([
     },
   }),
 ]);
+
+globalStyle(`${tiles} > *`, {
+  minWidth: 0,
+});
