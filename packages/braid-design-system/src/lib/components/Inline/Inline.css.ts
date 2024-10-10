@@ -9,6 +9,7 @@ export const fitContentWide = style({});
 const fitContentStyleRule = {
   flexBasis: 'auto',
   width: 'auto',
+  minWidth: 0,
 };
 
 globalStyle(`${fitContentMobile} > *`, fitContentStyleRule);
