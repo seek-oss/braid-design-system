@@ -342,5 +342,39 @@ export const screenshots: ComponentScreenshot = {
         </Inline>
       ),
     },
+    {
+      label: 'Test - truncation should be visible on all examples below',
+      Container,
+      Example: () => (
+        <Inline space="small">
+          <Box
+            style={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
+            occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
+            proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
+            officia quis magna occaecat nostrud.
+          </Box>
+          <Box>
+            <Box
+              style={{
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
+              occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
+              proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
+              officia quis magna occaecat nostrud.
+            </Box>
+          </Box>
+        </Inline>
+      ),
+    },
   ],
 };
