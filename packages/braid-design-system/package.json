@@ -254,10 +254,6 @@
   },
   "peerDependencies": {
     "react": "^18",
-    "react-dom": "^18",
-    "sku": ">=10.13.1"
-  },
-  "skuSkipConfigure": true,
-  "skuSkipPostInstall": true,
-  "skuSkipValidatePeerDeps": true
+    "react-dom": "^18"
+  }
 }
