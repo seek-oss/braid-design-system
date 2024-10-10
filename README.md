@@ -114,7 +114,7 @@ At SEEK this is done via [sku] as part of the build process.
 
 ### Assertions
 
-To ensure correct usage of it&rsquo;s components, Braid performs some precondition and invariant checking at runtime using the [assert] library.
+To ensure correct usage of its components, Braid performs some precondition and invariant checking at runtime using the [assert] library.
 
 To prevent these checks from being included in production builds and distrupting the end user experience, it is recommended that `assert` calls are stripped at build time using the [unassert](https://www.npmjs.com/package/unassert) library.
 
