@@ -2,6 +2,7 @@ import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
+import { LayoutTest } from '../../utils/LayoutTest';
 
 const textSizes = Object.keys(textSizeUntrimmed) as Array<
   keyof typeof textSizeUntrimmed
@@ -184,6 +185,24 @@ export const screenshots: ComponentScreenshot = {
             </Tiles>
           ))}
         </Stack>
+      ),
+    },
+    {
+      label: 'Layout',
+      Example: () => (
+        <Box maxWidth="xsmall">
+          <LayoutTest>
+            <Box>
+              <Badge tone="positive" weight="strong">
+                Lorem et veniam
+              </Badge>
+              <Badge tone="positive" weight="strong">
+                Culpa Lorem et veniam tempor eiusmod fugiat mollit cillum. Do
+                velit eu in.
+              </Badge>
+            </Box>
+          </LayoutTest>
+        </Box>
       ),
     },
   ],

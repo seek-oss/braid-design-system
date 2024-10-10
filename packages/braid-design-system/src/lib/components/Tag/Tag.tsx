@@ -82,48 +82,40 @@ export const Tag = ({
     <Box
       id={id}
       display="flex"
+      gap="xxsmall"
+      alignItems="center"
+      background={addable ? 'formAccentSoft' : 'neutralLight'}
+      paddingY="xxsmall"
+      paddingX={paddingXForSize[size]}
+      paddingRight={hasButton ? 'xsmall' : paddingXForSize[size]}
+      borderRadius="full"
+      title={children}
+      maxWidth="content"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Box
-        display="flex"
-        minWidth={0}
-        alignItems="center"
-        background={addable ? 'formAccentSoft' : 'neutralLight'}
-        paddingY="xxsmall"
-        paddingX={paddingXForSize[size]}
-        paddingRight={hasButton ? 'xsmall' : paddingXForSize[size]}
-        borderRadius="full"
+      <Text
+        size={size}
+        baseline={false}
+        maxLines={1}
+        tone={addable ? 'formAccent' : undefined}
       >
-        <Box minWidth={0} title={children}>
-          <Text
-            size={size}
-            baseline={false}
-            maxLines={1}
-            tone={addable ? 'formAccent' : undefined}
-          >
-            {icon} {children}
-          </Text>
+        {icon} {children}
+      </Text>
+      {hasButton ? (
+        <Box className={styles.clearGutter}>
+          <ButtonIcon
+            // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
+            // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
+            id={id ? `${id}-${buttonType}` : undefined}
+            icon={addable ? <IconAdd /> : <IconClear tone="secondary" />}
+            label={label}
+            size="small"
+            tone={addable ? 'formAccent' : 'neutral'}
+            variant="transparent"
+            onClick={handler}
+          />
         </Box>
-        {hasButton ? (
-          <Box
-            flexShrink={0}
-            marginLeft="xxsmall"
-            className={styles.clearGutter}
-          >
-            <ButtonIcon
-              // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
-              // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
-              id={id ? `${id}-${buttonType}` : undefined}
-              icon={addable ? <IconAdd /> : <IconClear tone="secondary" />}
-              label={label}
-              size="small"
-              tone={addable ? 'formAccent' : 'neutral'}
-              variant="transparent"
-              onClick={handler}
-            />
-          </Box>
-        ) : null}
-      </Box>
+      ) : null}
     </Box>
   );
 };

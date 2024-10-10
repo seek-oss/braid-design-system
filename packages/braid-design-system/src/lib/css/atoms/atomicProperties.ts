@@ -76,7 +76,10 @@ export const unresponsiveProperties = {
   minWidth: {
     0: '0%',
   },
-  maxWidth: vars.contentWidth,
+  maxWidth: {
+    ...vars.contentWidth,
+    content: 'fit-content',
+  },
   transition: vars.transition,
 } as const;
 
