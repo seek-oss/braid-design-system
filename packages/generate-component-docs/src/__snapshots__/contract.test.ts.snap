@@ -995,6 +995,7 @@ exports[`Box 1`] = `
         | string
     maxLength?: number
     maxWidth?: 
+        | "content"
         | "large"
         | "medium"
         | "small"
@@ -1870,6 +1871,7 @@ exports[`BoxRenderer 1`] = `
         | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     maxWidth?: 
+        | "content"
         | "large"
         | "medium"
         | "small"
@@ -2907,6 +2909,7 @@ exports[`ContentBlock 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     width?: 
+        | "content"
         | "large"
         | "medium"
         | "small"

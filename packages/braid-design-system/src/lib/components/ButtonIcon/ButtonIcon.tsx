@@ -124,6 +124,7 @@ const PrivateButtonIcon = forwardRef<
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
         className={[buttonClasses, styles.button]}
+        maxWidth="content"
         tabIndex={tabIndex}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
         {...buttonStyleProps}
