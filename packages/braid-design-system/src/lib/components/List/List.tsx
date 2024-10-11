@@ -117,6 +117,7 @@ export const List = ({
       <Stack
         component={/^(bullet|icon)$/.test(type) ? 'ul' : 'ol'}
         space={space}
+        align="left"
         data={data}
       >
         {Children.map(listItems, (listItem, index) => {
