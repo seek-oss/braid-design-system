@@ -293,5 +293,21 @@ export const screenshots: ComponentScreenshot = {
         </Box>
       ),
     },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Example: ({ id, handler }) => (
+        <Stack space="large" align="center">
+          <Checkbox
+            id={id}
+            checked={false}
+            onChange={handler}
+            label="Dolor cillum elit aliquip velit reprehenderit."
+            tone="critical"
+            message="Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit."
+            description="Nulla amet dolor sunt elit consequat proident eiusmod id. Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit."
+          />
+        </Stack>
+      ),
+    },
   ],
 };

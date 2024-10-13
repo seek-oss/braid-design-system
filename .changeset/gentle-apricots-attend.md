@@ -4,9 +4,19 @@
 
 ---
 updated:
+  - Alert
+  - Card
+  - Checkbox
+  - Dialog
+  - Drawer
+  - FieldLabel
+  - FieldMessage
   - List
+  - Notice
+  - RadioItem
+  - Toggle
 ---
 
-**List**: Ensure list item text is left aligned
+Ensure content is left aligned by default
 
-Applies left alignment to text within list items, to ensure consistent alignment even when inside centered layout containers.
+Applies left alignment to content, to ensure consistent alignment even when inside centered layout containers.

@@ -88,7 +88,7 @@ export const InlineField = forwardRef<
 
     return (
       <Box position="relative">
-        <Box display="flex">
+        <Box display="flex" textAlign="left">
           <StyledInput
             {...restProps}
             type={type}

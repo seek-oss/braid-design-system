@@ -3,6 +3,8 @@ import type { ComponentScreenshot } from 'site/types';
 import { Box } from '../Box/Box';
 import { Placeholder } from '../../playroom/components';
 import { DrawerContent } from './Drawer';
+import { Stack } from '../Stack/Stack';
+import { Text } from '../Text/Text';
 import * as styles from '../private/Modal/Modal.css';
 
 export const DrawerPreview = ({ children }: { children: ReactNode }) => (
@@ -134,6 +136,27 @@ export const screenshots: ComponentScreenshot = {
             />
           </Box>
         </DrawerContent>
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      gutter: false,
+      Container,
+      Example: ({ id }) => (
+        <Stack space="large" align="center">
+          <DrawerContent
+            id={id}
+            title="Default test"
+            onClose={() => {}}
+            width="medium"
+            scrollLock={false}
+          >
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque sodales hendrerit nulla.
+            </Text>
+          </DrawerContent>
+        </Stack>
       ),
     },
   ],

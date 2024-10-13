@@ -89,6 +89,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         }
         justifyContent={alignToEnd ? 'flexEnd' : undefined}
         className={styles.root}
+        textAlign="left"
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <Box
