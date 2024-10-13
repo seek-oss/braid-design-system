@@ -98,7 +98,7 @@ export const List = ({
   children,
   size: sizeProp,
   tone: toneProp,
-  space = 'medium',
+  space: spaceProp,
   type = 'bullet',
   start = 1,
   data,
@@ -108,6 +108,10 @@ export const List = ({
     size: sizeProp,
     tone: toneProp,
   });
+
+  const defaultSpace = size === 'xsmall' ? 'xsmall' : 'small';
+  const space = spaceProp ? spaceProp : defaultSpace;
+
   const listItems = flattenChildren(children) as ReactNodeNoStrings[];
   const lastNumberLength =
     type === 'number' ? (listItems.length + (start - 1)).toString().length : -1;

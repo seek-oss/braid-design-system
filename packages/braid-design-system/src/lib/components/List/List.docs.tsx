@@ -125,7 +125,7 @@ const docs: ComponentDocs = {
         source(
           <Columns space="large" collapseBelow="desktop">
             <Column>
-              <List tone="secondary" size="large" space="gutter">
+              <List tone="secondary" size="large" space="large">
                 <Text>Large</Text>
                 <Text>Large</Text>
                 <Text>Large</Text>
@@ -146,7 +146,7 @@ const docs: ComponentDocs = {
               </List>
             </Column>
             <Column>
-              <List tone="secondary" size="xsmall" space="small">
+              <List tone="secondary" size="xsmall" space="xsmall">
                 <Text>Xsmall</Text>
                 <Text>Xsmall</Text>
                 <Text>Xsmall</Text>
