@@ -36,6 +36,7 @@ export const Notice = ({
     <Box
       role="alert"
       aria-live="polite"
+      textAlign="left"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <DefaultTextPropsProvider tone={tone}>
