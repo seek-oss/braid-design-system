@@ -113,40 +113,39 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Tone, size and space',
+      label: 'Tone and size',
       description: (
         <Text>
           Lists support the same sizes and tones as{' '}
-          <TextLink href="/components/Text">Text</TextLink>, and the same
-          spacing as <TextLink href="/components/Stack">Stack</TextLink>.
+          <TextLink href="/components/Text">Text</TextLink>.
         </Text>
       ),
       Example: () =>
         source(
           <Columns space="large" collapseBelow="desktop">
             <Column>
-              <List tone="secondary" size="large" space="large">
+              <List tone="secondary" size="large">
                 <Text>Large</Text>
                 <Text>Large</Text>
                 <Text>Large</Text>
               </List>
             </Column>
             <Column>
-              <List tone="secondary" size="standard" space="medium">
+              <List tone="secondary" size="standard">
                 <Text>Standard</Text>
                 <Text>Standard</Text>
                 <Text>Standard</Text>
               </List>
             </Column>
             <Column>
-              <List tone="secondary" size="small" space="small">
+              <List tone="secondary" size="small">
                 <Text>Small</Text>
                 <Text>Small</Text>
                 <Text>Small</Text>
               </List>
             </Column>
             <Column>
-              <List tone="secondary" size="xsmall" space="xsmall">
+              <List tone="secondary" size="xsmall">
                 <Text>Xsmall</Text>
                 <Text>Xsmall</Text>
                 <Text>Xsmall</Text>
