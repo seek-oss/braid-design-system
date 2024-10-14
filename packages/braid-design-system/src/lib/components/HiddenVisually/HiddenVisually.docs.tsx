@@ -13,9 +13,7 @@ const docs: ComponentDocs = {
         <HiddenVisually> Hello world.</HiddenVisually>
       </Text>,
     ),
-  alternatives: [
-    { name: 'Hidden', description: 'For hiding content responsively.' },
-  ],
+  alternatives: [{ name: 'Hidden', description: 'For hiding content.' }],
   accessibility: (
     <Text>
       Provides content to assistive technologies while hiding it from the

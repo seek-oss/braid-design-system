@@ -6,32 +6,36 @@ import { Text } from '../Text/Text';
 import { Stack } from '../Stack/Stack';
 import { Strong } from '../Strong/Strong';
 import { Placeholder } from '../../playroom/components';
+import { Tiles } from '../Tiles/Tiles';
 
 const docs: ComponentDocs = {
   category: 'Layout',
   Example: () =>
     source(
       <Stack space="small">
+        <Hidden>
+          <Placeholder label="1. Hidden always" height={60} />
+        </Hidden>
         <Hidden below="wide">
-          <Placeholder label="1. Hidden below wide" height={60} />
+          <Placeholder label="2. Hidden below wide" height={60} />
         </Hidden>
         <Hidden below="desktop">
-          <Placeholder label="2. Hidden below desktop" height={60} />
+          <Placeholder label="3. Hidden below desktop" height={60} />
         </Hidden>
         <Hidden below="tablet">
-          <Placeholder label="3. Hidden below tablet" height={60} />
+          <Placeholder label="4. Hidden below tablet" height={60} />
         </Hidden>
         <Hidden above="mobile">
-          <Placeholder label="4. Hidden above mobile" height={60} />
+          <Placeholder label="5. Hidden above mobile" height={60} />
         </Hidden>
         <Hidden above="tablet">
-          <Placeholder label="5. Hidden above tablet" height={60} />
-        </Hidden>
-        <Hidden above="desktop">
           <Placeholder label="6. Hidden above tablet" height={60} />
         </Hidden>
+        <Hidden above="desktop">
+          <Placeholder label="7. Hidden above tablet" height={60} />
+        </Hidden>
         <Hidden print>
-          <Placeholder label="7. Hidden on print" height={60} />
+          <Placeholder label="8. Hidden on print" height={60} />
         </Hidden>
       </Stack>,
     ),
@@ -54,29 +58,48 @@ const docs: ComponentDocs = {
           <Strong>&ldquo;wide&rdquo;</Strong>.
         </Text>
       ),
-      Example: () =>
-        source(
+      Example: () => {
+        const { value: visual } = source(
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Placeholder label="One" height={60} />
+              <Placeholder label="Two" height={60} />
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Placeholder label="Three" height={60} />
+              <Placeholder label="Four" height={60} />
+            </Stack>
+          </Tiles>,
+        );
+
+        const { code: codeDemo } = source(
           <Stack space="small">
-            <Hidden below="wide">
-              <Placeholder label="1. Hidden below wide" height={60} />
-            </Hidden>
-            <Hidden below="desktop">
-              <Placeholder label="2. Hidden below desktop" height={60} />
+            <Hidden below="tablet">
+              <Placeholder label="One" height={60} />
             </Hidden>
             <Hidden below="tablet">
-              <Placeholder label="3. Hidden below tablet" height={60} />
+              <Placeholder label="Two" height={60} />
             </Hidden>
             <Hidden above="mobile">
-              <Placeholder label="4. Hidden above mobile" height={60} />
+              <Placeholder label="Three" height={60} />
             </Hidden>
-            <Hidden above="tablet">
-              <Placeholder label="5. Hidden above tablet" height={60} />
-            </Hidden>
-            <Hidden above="desktop">
-              <Placeholder label="6. Hidden above desktop" height={60} />
+            <Hidden above="mobile">
+              <Placeholder label="Four" height={60} />
             </Hidden>
           </Stack>,
-        ),
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Hiding on print',

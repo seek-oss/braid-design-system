@@ -122,13 +122,14 @@ export const List = ({
       <Stack
         component={/^(bullet|icon)$/.test(type) ? 'ul' : 'ol'}
         space={space}
+        align="left"
         data={data}
       >
         {Children.map(listItems, (listItem, index) => {
           const resolvedIndex = index + (start - 1);
 
           return (
-            <Box display="flex">
+            <Box component="li" display="flex">
               <Text component="div" size={size} tone={tone}>
                 <Box
                   display="flex"

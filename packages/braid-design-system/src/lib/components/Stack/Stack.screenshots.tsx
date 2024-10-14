@@ -1,6 +1,6 @@
 import React, { type ReactNode, Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box, Stack, Hidden } from '../';
+import { Box, Stack, Hidden, Heading, Text, Strong } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { spaces } from '../../utils/docsHelpers';
 
@@ -58,30 +58,8 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Dividers',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers>
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Strong dividers',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers="strong">
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-          <Placeholder height={40} />
-        </Stack>
-      ),
-    },
-    {
       label:
-        'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
+        'Test - Should handle fragments (6 placeholders should be evenly spaced)',
       Container,
       Example: () => (
         <Stack space="small">
@@ -151,34 +129,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label:
-        'Test - Hidden stack items with dividers (should show 4 + 5 + 6 on mobile, 3 + 4 + 5 + 6 on tablet, 2 + 3 + 4 + 6 on desktop, 1 + 2 + 3 + 4 on wide)',
-      Container,
-      Example: () => (
-        <Stack space="gutter" dividers>
-          <Hidden below="wide">
-            <Placeholder height={40} label="1" />
-          </Hidden>
-          <Hidden below="desktop">
-            <Placeholder height={40} label="2" />
-          </Hidden>
-          <Hidden below="tablet">
-            <Placeholder height={40} label="3" />
-          </Hidden>
-          <Placeholder height={40} label="4" />
-          <Hidden above="tablet">
-            <Placeholder height={40} label="5" />
-          </Hidden>
-          <Hidden above="desktop">
-            <Placeholder height={40} label="6" />
-          </Hidden>
-          <Hidden screen>
-            <Placeholder height={40} label="This should not be visible" />
-          </Hidden>
-        </Stack>
-      ),
-    },
-    {
       label: 'Test - Span align to left',
       Container,
       Example: () => (
@@ -208,6 +158,57 @@ export const screenshots: ComponentScreenshot = {
           <Placeholder height={40} width={40} />
           <Placeholder height={40} width={60} />
           <Placeholder height={40} width={80} />
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Default text alignment (left)',
+      Container,
+      Example: () => (
+        <Stack space="large" align="left">
+          <Heading level="3">Default heading alignment (left).</Heading>
+          <Text>
+            <Strong>Default text alignment (left).</Strong> Est quis incididunt
+            do laboris eiusmod et..
+          </Text>
+          <Text align="right">
+            <Strong>Explicit right alignment.</Strong> Pariatur ad aute esse
+            esse sunt aliqua.
+          </Text>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Default text alignment (center)',
+      Container,
+      Example: () => (
+        <Stack space="large" align="center">
+          <Heading level="3">Default heading alignment (center).</Heading>
+          <Text>
+            <Strong>Default text alignment (center).</Strong> Est quis
+            incididunt do laboris eiusmod et..
+          </Text>
+          <Text align="right">
+            <Strong>Explicit right alignment.</Strong> Pariatur ad aute esse
+            esse sunt aliqua.
+          </Text>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Test - Default text alignment (right)',
+      Container,
+      Example: () => (
+        <Stack space="large" align="right">
+          <Heading level="3">Default heading alignment (right).</Heading>
+          <Text>
+            <Strong>Default text alignment (right).</Strong> Est quis incididunt
+            do laboris eiusmod et..
+          </Text>
+          <Text align="center">
+            <Strong>Explicit center alignment.</Strong> Pariatur ad aute esse
+            esse sunt aliqua.
+          </Text>
         </Stack>
       ),
     },

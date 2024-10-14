@@ -1,4 +1,3 @@
-import dedent from 'dedent';
 import React, { type ReactNode, forwardRef } from 'react';
 import {
   type LinkComponentProps,
@@ -33,7 +32,6 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       size,
       tone,
       variant,
-      bleedY,
       bleed,
       icon,
       iconPosition,
@@ -44,24 +42,6 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     ref,
   ) => {
     const LinkComponent = useLinkComponent(ref);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (typeof bleedY !== 'undefined') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          dedent`
-            The "bleedY" prop has been deprecated and will be removed in a future version. Use "bleed" instead.
-               <Button
-              %c-   bleedY
-              %c+   bleed
-               %c/>
-          `,
-          'color: red',
-          'color: green',
-          'color: inherit',
-        );
-      }
-    }
 
     return (
       <ButtonContainer bleed={bleed} variant={variant}>
@@ -74,7 +54,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             variant,
             tone,
             size,
-            bleed: bleed || bleedY,
+            bleed,
             loading,
           })}
         >

@@ -97,12 +97,11 @@ export const galleryItems: GalleryComponent = {
           </Stack>,
         ),
     },
-
     {
       label: 'Reversing the column order',
       Example: () =>
         source(
-          <Columns space="small" reverse>
+          <Columns space="small" collapseBelow="tablet" reverse>
             <Column width="1/5">
               <Placeholder height={60} label="First" />
             </Column>

@@ -55,8 +55,6 @@ const ratingArr = [...Array(5)];
 interface RatingBaseProps {
   rating: number;
   size?: TextProps['size'];
-  /** @deprecated Use `variant="starsOnly"` instead */
-  showTextRating?: boolean;
   'aria-label'?: string;
   data?: TextProps['data'];
 }
@@ -75,8 +73,7 @@ export const Rating = ({
   rating,
   size = 'standard',
   weight,
-  showTextRating,
-  variant: variantProp,
+  variant = 'full',
   'aria-label': ariaLabel,
   data,
 }: RatingProps) => {
@@ -85,28 +82,8 @@ export const Rating = ({
     'Rating must be between 0 and 5',
   );
 
-  const variant = variantProp || 'full';
-  const resolvedVariant =
-    showTextRating === false && !variantProp ? 'starsOnly' : variant;
-
   if (process.env.NODE_ENV !== 'production') {
-    if (typeof showTextRating !== 'undefined') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        dedent`
-          The "showTextRating" prop has been deprecated and will be removed in a future version. Use \`variant="starsOnly"\` instead.
-             <Rating
-            %c-   showTextRating={false}
-            %c+   variant="starsOnly"
-             %c/>
-        `,
-        'color: red',
-        'color: green',
-        'color: inherit',
-      );
-    }
-
-    if (typeof weight !== 'undefined' && resolvedVariant === 'starsOnly') {
+    if (typeof weight !== 'undefined' && variant === 'starsOnly') {
       // eslint-disable-next-line no-console
       console.warn(
         dedent`
@@ -130,7 +107,7 @@ export const Rating = ({
           ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
         }
       >
-        {resolvedVariant === 'minimal' ? (
+        {variant === 'minimal' ? (
           <Box display="inlineBlock" aria-hidden={true}>
             <RatingStar percent={100} />
           </Box>
@@ -149,7 +126,7 @@ export const Rating = ({
           ))
         )}
       </Box>
-      {resolvedVariant !== 'starsOnly' && (
+      {variant !== 'starsOnly' && (
         <Box component="span" className={styles.textSpacing} aria-hidden={true}>
           {rating.toFixed(1)}
         </Box>

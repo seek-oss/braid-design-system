@@ -1,5 +1,5 @@
 import assert from 'assert';
-import React, { useMemo } from 'react';
+import React, { Children, useMemo } from 'react';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   type RequiredResponsiveValue,
@@ -8,7 +8,6 @@ import {
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Divider } from '../Divider/Divider';
 import {
@@ -16,6 +15,7 @@ import {
   AccordionContext,
   validTones,
 } from './AccordionContext';
+import flattenChildren from '../../utils/flattenChildren';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
@@ -81,21 +81,29 @@ export const Accordion = ({
 
   return (
     <AccordionContext.Provider value={contextValue}>
-      {!dividers ? (
-        <Stack space={space} data={data}>
-          {children}
-        </Stack>
-      ) : (
-        <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
-          <Divider />
-          <Box paddingY={space}>
-            <Stack space={space} dividers>
-              {children}
-            </Stack>
-          </Box>
-          <Divider />
-        </Box>
-      )}
+      <Stack
+        space={space}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
+      >
+        {!dividers ? (
+          children
+        ) : (
+          <>
+            <Divider />
+            {Children.map(flattenChildren(children), (child, index) => (
+              <>
+                {index > 0 ? (
+                  <Divider
+                    weight={typeof dividers === 'string' ? dividers : undefined}
+                  />
+                ) : null}
+                {child}
+              </>
+            ))}
+            <Divider />
+          </>
+        )}
+      </Stack>
     </AccordionContext.Provider>
   );
 };

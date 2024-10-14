@@ -190,7 +190,7 @@
     "@capsizecss/vanilla-extract": "^2.0.0",
     "@vanilla-extract/css": "^1.9.2",
     "@vanilla-extract/css-utils": "^0.1.3",
-    "@vanilla-extract/dynamic": "^2.0.3",
+    "@vanilla-extract/dynamic": "^2.1.2",
     "@vanilla-extract/sprinkles": "^1.5.1",
     "assert": "^2.0.0",
     "autosuggest-highlight": "^3.3.4",
@@ -253,11 +253,7 @@
     "title-case": "^3.0.3"
   },
   "peerDependencies": {
-    "react": "^17 || ^18",
-    "react-dom": "^17 || ^18",
-    "sku": ">=10.13.1"
-  },
-  "skuSkipConfigure": true,
-  "skuSkipPostInstall": true,
-  "skuSkipValidatePeerDeps": true
+    "react": "^18",
+    "react-dom": "^18"
+  }
 }

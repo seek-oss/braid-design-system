@@ -15,7 +15,6 @@ const docs: ComponentDocs = {
         id={id}
         on={getState('toggle')}
         onChange={() => toggleState('toggle')}
-        bleedY
       />,
     ),
   alternatives: [
@@ -41,7 +40,6 @@ const docs: ComponentDocs = {
               on={getState('toggle1')}
               onChange={() => toggleState('toggle1')}
               align="left"
-              bleedY
             />
             <Divider />
             <Toggle
@@ -50,7 +48,6 @@ const docs: ComponentDocs = {
               on={getState('toggle2')}
               onChange={() => toggleState('toggle2')}
               align="justify"
-              bleedY
             />
             <Divider />
             <Toggle
@@ -59,7 +56,6 @@ const docs: ComponentDocs = {
               on={getState('toggle3')}
               onChange={() => toggleState('toggle3')}
               align="right"
-              bleedY
             />
           </Stack>,
         ),
@@ -88,7 +84,6 @@ const docs: ComponentDocs = {
               on={getState('toggleLeading')}
               onChange={() => toggleState('toggleLeading')}
               togglePosition="leading"
-              bleedY
             />
             <Divider />
             <Toggle
@@ -97,13 +92,13 @@ const docs: ComponentDocs = {
               on={getState('toggleTrailing')}
               onChange={() => toggleState('toggleTrailing')}
               togglePosition="trailing"
-              bleedY
             />
           </Stack>,
         ),
     },
     {
       label: 'Vertical bleed',
+      deprecated: true,
       description: (
         <Fragment>
           <Text>
@@ -120,8 +115,10 @@ const docs: ComponentDocs = {
           </Text>
           <Alert tone="caution">
             <Text>
-              In the future this will become the standard behaviour. Migrating
-              layouts to work with this option now is recommended.
+              Vertical bleed is enabled by default, and will become the standard
+              in the future. It is recommended to remove the{' '}
+              <Strong>bleedY</Strong>
+              prop now and migrate your layout accordingly.
             </Text>
           </Alert>
           <Text>
@@ -174,7 +171,6 @@ const docs: ComponentDocs = {
               on={getState('two')}
               onChange={() => toggleState('two')}
               size="standard"
-              bleedY
             />
             <Toggle
               id={`${id}_small`}
@@ -182,7 +178,6 @@ const docs: ComponentDocs = {
               on={getState('one')}
               onChange={() => toggleState('one')}
               size="small"
-              bleedY
             />
           </Stack>,
         ),
