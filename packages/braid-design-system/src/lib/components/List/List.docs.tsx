@@ -162,7 +162,7 @@ const docs: ComponentDocs = {
           <Strong>xsmall</Strong> spacing if the <Strong>size</Strong> prop is
           set to either <Strong>small</Strong> or <Strong>xsmall</Strong>. This
           can be changed via the <Strong>space</Strong> prop, which supports the
-          same the same spacing as{' '}
+          same spacing as{' '}
           <TextLink href="/components/Stack">Stack</TextLink>.
         </Text>
       ),
