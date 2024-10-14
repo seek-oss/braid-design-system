@@ -111,7 +111,7 @@ export const List = ({
 
   const defaultSpace =
     size === 'xsmall' || size === 'small' ? 'xsmall' : 'small';
-  const space = spaceProp ? spaceProp : defaultSpace;
+  const space = spaceProp || defaultSpace;
 
   const listItems = flattenChildren(children) as ReactNodeNoStrings[];
   const lastNumberLength =
