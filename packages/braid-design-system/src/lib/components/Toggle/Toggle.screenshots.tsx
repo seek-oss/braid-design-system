@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Toggle, Box, Tiles, Inline, Text } from '../';
+import { Toggle, Box, Tiles, Inline, Text, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
@@ -250,6 +250,19 @@ export const screenshots: ComponentScreenshot = {
             </Tiles>
           </BackgroundContrastTest>
         </Box>
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Example: ({ id, handler }) => (
+        <Stack space="large" align="center">
+          <Toggle
+            on={true}
+            label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
+            id={id}
+            onChange={handler}
+          />
+        </Stack>
       ),
     },
   ],

@@ -49,6 +49,7 @@ export const FieldMessage = ({
       id={id}
       display="flex"
       justifyContent="flexEnd"
+      textAlign="left"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Box flexGrow={1} userSelect={showMessage ? undefined : 'none'}>

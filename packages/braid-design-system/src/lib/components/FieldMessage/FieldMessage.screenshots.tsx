@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { FieldMessage } from '../';
+import { FieldMessage, Stack } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -52,6 +52,21 @@ export const screenshots: ComponentScreenshot = {
           tone="critical"
           message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
         />
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Container: ({ children }) => (
+        <div style={{ maxWidth: '300px' }}>{children}</div>
+      ),
+      Example: ({ id }) => (
+        <Stack space="large" align="center">
+          <FieldMessage
+            id={id}
+            tone="critical"
+            message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
+          />
+        </Stack>
       ),
     },
   ],
