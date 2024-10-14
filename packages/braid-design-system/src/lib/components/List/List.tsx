@@ -109,7 +109,8 @@ export const List = ({
     tone: toneProp,
   });
 
-  const defaultSpace = size === 'xsmall' ? 'xsmall' : 'small';
+  const defaultSpace =
+    size === 'xsmall' || size === 'small' ? 'xsmall' : 'small';
   const space = spaceProp ? spaceProp : defaultSpace;
 
   const listItems = flattenChildren(children) as ReactNodeNoStrings[];
