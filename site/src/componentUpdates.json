@@ -4285,5 +4285,208 @@
         "summary": "**Icons:** Support rendering inline as child of a flex container"
       }
     ]
+  },
+  {
+    "version": "33.0.0",
+    "updates": [
+      {
+        "updated": [
+          "Stack",
+          "Inline"
+        ],
+        "summary": "**Stack, Inline:** Consumers need to render `li` elements\n\nWhen setting `component` to `ul` or `ol` on `Stack` or `Inline`, consumers need to ensure they render children as `li` elements.\nPreviously Braid owned an intermediate HTML element, ensuring it was an `li` when required.\nMoving to CSS gap means child elements are no longer being wrapped, requiring consumers to update their child elements to the correct HTML element, e.g. `li`.\n\n**MIGRATION GUIDE:**\n```diff\n <Stack component=\"ul\">\n-  <Text>Item 1</Text>\n+  <Text component=\"li\">Item 1</Text>\n-  <Text>Item 2</Text>\n+  <Text component=\"li\">Item 2</Text>\n </Stack>\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Remove deprecated message syntax from `suggestions` prop\n\nRemove the deprecated message syntax from the `suggestions` prop in favour of the `noSuggestionsMessage` prop.\n\n### MIGRATION GUIDE:\n\n```diff\n <Autosuggest\n   ...\n-  suggestions={{ message: 'No results found' }}\n+  suggestions={[]}\n+  noSuggestionsMessage=\"No results found\"\n />\n```"
+      },
+      {
+        "updated": [
+          "Tiles"
+        ],
+        "summary": "**Tiles:** Remove `columns` limit\n\nThe `columns` prop was previously limited from 1 to 6.\nWith the migration to [CSS Grid] this limit no longer applies.\n\nNote: Responsive values are also still supported, e.g. `columns={{ mobile: 1, tablet: 8 }}`.\n\n**EXAMPLE USAGE:**\n```jsx\n<Tiles columns={8}>\n  ...\n</Tiles>\n```\n\n[CSS Grid]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid"
+      },
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Remove deprecated `truncate` prop\n\nRemove the deprecated `truncate` prop in favour of the `maxLines` prop which accepts a number of lines to truncate the text to.\n\n### MIGRATION GUIDE:\n\n```diff\n <Text\n-   truncate\n+   maxLines={1}\n />\n```"
+      },
+      {
+        "new": [
+          "Column"
+        ],
+        "summary": "**Column:** Add `component` support\n\nWith `Columns` no longer adding intermediary elements, consumers are free to control the underlying HTML element of the `Column` themselves via the `component` prop.\nValid options are kept to a white list of elements relevant to `Column` that do not require other HTML attributes, keeping in mind that props are not blindly spread in Braid.\n\n**EXAMPLE USAGE:**\n```jsx\n<Columns component=\"ul\">\n  <Column component=\"li\">\n    ...\n  </Column>\n  <Column component=\"li\">\n    ...\n  </Column>\n</Columns>\n```"
+      },
+      {
+        "updated": [
+          "Stack",
+          "Tiles"
+        ],
+        "summary": "**Stack, Tiles:** Remove `divider` support\n\nAs part of migrating our layout components to leverage flex gap, the `Stack` & `Tiles` components no longer iterate over their children, making `dividers` no longer feasible to implement centrally.\n\nWhile we could have exposed an API to apply this behaviour conditionally, there are edge cases that cannot be handled correctly without consumer-side rendering logic, such as when child components render nothing or a hidden element.\n\n### MIGRATION GUIDE:\nFor `Stack`s with static children you can manually interleave `Divider` components:\n```diff\n-<Stack space=\"...\" dividers>\n+<Stack space=\"...\">\n   <Component />\n+  <Divider />\n   <Component />\n+  <Divider />\n   <Component />\n </Stack>\n```\n\nOr for conditionally rendering children you can return a [React Fragment], including the `Divider` and child:\n```diff\n-<Stack space=\"...\" dividers>\n+<Stack space=\"...\">\n   <Component />\n   {condition ? (\n-    <Component />\n+    <>\n+      <Divider />\n+      <Component />\n+    </>\n   ) : null}\n </Stack>\n```\n\nFor `Stack`s with iterable children you can return a [React Fragment] and conditionally render the `Divider` component as the first child, before each item (except the first):\n```diff\n-<Stack space=\"...\" dividers>\n+<Stack space=\"...\">\n  {items.map((item, index) => (\n-    <Component>{item}</Component>\n+    <Fragment key={...}>\n+      {index > 0 ? <Divider /> : null}\n+      <Component>{item}</Component>\n+    </Fragment>\n  ))}\n</Stack>\n```\n\nFor `Tiles` the `dividers` prop was only applied when showing a single column.\n\nFor this you can conditionally render the `Divider` in a `Stack` with the same spacing as specified on the `Tiles` instance, and hide it on breakpoints showing more than one column.\n\nHere is an example of this with static children:\n\n```diff\n-<Tiles space=\"...\" columns={{mobile: 1, tablet: 2}} dividers>\n+<Tiles space=\"...\" columns={{mobile: 1, tablet: 2}}>\n    <Component>{item}</Component>\n+   <Stack space=\"...\">\n+     <Hidden above=\"mobile\">\n+       <Divider />\n+     </Hidden>\n      <Component>{item}</Component>\n+   </Stack>\n+   <Stack space=\"...\">\n+     <Hidden above=\"mobile\">\n+       <Divider />\n+     </Hidden>\n      <Component>{item}</Component>\n+   </Stack>\n</Tiles>\n```\n\nHere is an example of this with iterable children:\n\n```diff\n-<Tiles space=\"...\" columns={{mobile: 1, tablet: 2}} dividers>\n+<Tiles space=\"...\" columns={{mobile: 1, tablet: 2}}>\n  {items.map((item, index) => (\n-    <Component>{item}</Component>\n+    <Stack space=\"...\" key={...}>\n+      {index > 0 ? (\n+        <Hidden above=\"mobile\">\n+          <Divider />\n+        </Hidden>\n+      ) : null}\n       <Component>{item}</Component>\n+    </Stack>\n  ))}\n</Tiles>\n```"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Remove deprecated `bleedY` prop\n\nRemove the deprecated `bleedY` prop from the `Button` and `ButtonLink` components.\nConsumers should use the `bleed` prop instead, which bleeds based on the selected `variant`.\n\n### MIGRATION GUIDE:\n\n```diff\n <Button\n-  bleedY\n+  bleed\n   {...}\n >\n   Button\n </Button>\n```"
+      },
+      {
+        "updated": [
+          "Alert",
+          "Card",
+          "Checkbox",
+          "Dialog",
+          "Drawer",
+          "FieldLabel",
+          "FieldMessage",
+          "List",
+          "Notice",
+          "RadioItem",
+          "Toggle"
+        ],
+        "summary": "Ensure content is left aligned by default\n\nApplies left alignment to content, to ensure consistent alignment even when inside centered layout containers."
+      },
+      {
+        "updated": [
+          "Radio"
+        ],
+        "summary": "**Radio:** Remove deprecated component\n\nRemove deprecated `Radio` component in favour of `RadioGroup` with `RadioItem` children.\n\n### MIGRATION GUIDE:\n\n```diff\n- <Radio checked={checked} onChange={handleOnChange} label=\"Option\" />\n+ <RadioGroup \n+   value={value}\n+   onChange={handleOnChange}\n+   label=\"Options\"\n+ >\n+   <RadioItem value=\"1\">Option</RadioItem>\n+ </RadioGroup>\n```"
+      },
+      {
+        "updated": [
+          "Column"
+        ],
+        "summary": "**Column:** Prevent growing when `content` width specified\n\nEnsure that when a column `width` is specified, the column does not grow or shrink.\nOnly a column with no `width` specified will fluidly adapt to the available space.\n\nFixes a bug when all `Column` components have a defined `width`, a column specifying `content` width would incorrectly grow to consume the available space."
+      },
+      {
+        "updated": [
+          "seekJobs"
+        ],
+        "summary": "**seekJobs:** Reduce size of `gutter` token\n\nThe size of the `gutter` token on the `seekJobs` theme will be reduced from `large` (i.e. 32px), to `medium` (i.e. 24px).\nThis is a semantic token that runs through many system components, and consumers are encouraged to perform a visual design audit to ensure experiences are laid out as intended."
+      },
+      {
+        "updated": [
+          "Hidden"
+        ],
+        "summary": "**Hidden:** Hide content by default.\n\n`Hidden` will now hide content if no hidden conditions are specified, i.e. if no `above`, `below`, or `print` props are provided.\nConsumers should review usage of the component without these props to ensure `Hidden` behaves as expected."
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Remove deprecated `secondary` tone\n\nRemove the deprecated `secondary` tone from `ButtonIcon` in favour of providing the `tone` directly to the `Icon` itself.\n\n### MIGRATION GUIDE:\n\n```diff\n <ButtonIcon\n-  tone=\"secondary\"\n-  icon={<IconAdd />}\n+  icon={<IconAdd tone=\"secondary\" />}\n />\n```"
+      },
+      {
+        "updated": [
+          "useColor"
+        ],
+        "summary": "**useColor:** Align `background` tokens with `Box` and `vars`\n\nAlign the available `background` tokens between `Box`, `vars`, and the `useColor` Hook.\nRemoves the `surfaceDark` and `bodyDark` tokens that were mistakenly exposed in the `useColor` Hook."
+      },
+      {
+        "new": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms:** Add `content` to `maxWidth`\n\nAdd the `content` option to the `maxWidth` property on the  styling atoms.\nThis will ensure an element is only as wide as its content.\n\n**EXAMPLE USAGE:**\n```jsx\n<Box maxWidth=\"content\" />\n```\n\n```ts\nimport { atoms } from 'braid-design-system/css';\n\natoms({\n  maxWidth: 'content',\n})\n```"
+      },
+      {
+        "updated": [
+          "IconSocialTwitter"
+        ],
+        "summary": "**IconSocialTwitter:** Remove deprecated icon.\n\nRemove the deprecated `IconSocialTwitter` icon.\nConsumers should use the `IconSocialX` icon instead.\n\n\n### MIGRATION GUIDE:\n\n```diff\n- <IconSocialTwitter />\n+ <IconSocialX />\n```"
+      },
+      {
+        "updated": [
+          "PageBlock",
+          "Drawer"
+        ],
+        "summary": "**PageBlock, Drawer:** Increase screen gutter on mobile\n\nIncrease the horizontal screen gutter from `xsmall` (i.e. 12px) to `small` (i.e. 16px) on mobile devices."
+      },
+      {
+        "updated": [
+          "useBreakpoint"
+        ],
+        "summary": "**useBreakpoint:** Remove deprecated Hook\n\nThis Hook has been deprecated since [v30.1.0] in favour of `useResponsiveValue`, to prevent consumers from inadvertently coupling themselves to the current set of breakpoints, making it risky for us to introduce new breakpoints.\n\nSee the [migration guide] for more information.\n\n[v30.1.0]: https://seek-oss.github.io/braid-design-system/components/useBreakpoint/releases/#v30.1.0\n[migration guide]: https://seek-oss.github.io/braid-design-system/components/useBreakpoint/releases/#v30.1.0"
+      },
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Remove deprecated `showTextRating` prop\n\nRemove the deprecated `showTextRating` prop in favour of `variant=\"starsOnly\"`.\n\n### MIGRATION GUIDE:\n\n```diff\n <Rating\n   rating={3.7}\n-  showTextRating={false}\n+  variant=\"starsOnly\"\n />\n```"
+      },
+      {
+        "updated": [
+          "Stack"
+        ],
+        "summary": "**Stack:** Set default text alignment based on `align`\n\nAs a convenience, the `align` prop sets the text alignment for the container, meaning any nested `Text` or `Heading` components will inherit this alignment by default.\n\nThis can be overridden by setting the alignment explicitly on the relevant `Text` or `Heading` component."
+      },
+      {
+        "updated": [
+          "Columns",
+          "Inline"
+        ],
+        "summary": "**Columns, Inline:** Only respect `reverse` in combination with `collapseBelow`\n\nThe `reverse` prop is only respected in combination with `collapseBelow`.\nThis ensures the content is reversed on the same row, but follows the document order when collapsed.\n\nIf content needs to be reversed without `collapseBelow` then it should be reversed in the document/source order directly."
+      },
+      {
+        "updated": [
+          "Hidden"
+        ],
+        "summary": "**Hidden:** Deprecate `screen` prop.\n\nDeprecate `screen` prop.\nTo provide content to screen readers without rendering it to the screen, consumers should use `HiddenVisually` instead.\n\n### MIGRATION GUIDE:\n\n```diff\n- <Hidden screen>\n+ <Hidden>\n```"
+      },
+      {
+        "updated": [
+          "Badge",
+          "ButtonIcon",
+          "Tag"
+        ],
+        "summary": "Apply max width to all inline components\n\nApply a `maxWidth` of `content` to ensure component widths are controlled by their content — not growing to the size of their container."
+      },
+      {
+        "updated": [
+          "Columns",
+          "Inline",
+          "Stack"
+        ],
+        "summary": "**Stack, Inline, Columns:** Widen `component` support\n\nWith `Stack`, `Columns` and `Inline` no longer adding intermediary elements, the `component` prop can now accept a wider range of elements.\nValid options are kept to a white list of elements relevant to `Stack` that do not require other HTML attributes, keeping in mind that props are not blindly spread in Braid."
+      },
+      {
+        "updated": [
+          "Spread"
+        ],
+        "summary": "**Spread:** Narrow `component` options to valid layout elements\n\nNot all HTML elements make sense to be a layout container, e.g. `input`, so scoping the `component` prop to only surface relevant element types."
+      },
+      {
+        "new": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms:** Add responsive `gap` support\n\nAdd the `gap` property to the available styling atoms, inclusive of responsive spacing values.\n\n**EXAMPLE USAGE:**\n```jsx\n<Box gap=\"small\" />\n```\n\n```jsx\nimport { atoms } from 'braid-design-system/css';\n\natoms({ gap: 'small' });\n```"
+      },
+      {
+        "updated": [
+          "Inline",
+          "Stack",
+          "Tiles"
+        ],
+        "summary": "Migrate to CSS `gap` internally.\n\nWith the browser support policy now enabling adoption of CSS [gap], Braid’s layout components are now able to lean into the platform directly for its declarative, parent-driven approach to white space management.\n\nPreviously to enable gap-like behaviour, layout components iterated over their children wrapping them in container elements that applied padding.\nThe trade off of this technique was increased number of DOM elements and the introduction of unwanted space if the child element was hidden or returned `null`, requiring developers to hoist logic to the parent component.\n\n[gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap"
+      },
+      {
+        "updated": [
+          "Toggle"
+        ],
+        "summary": "**Toggle:** Enable `bleedY` by default, and deprecate `bleedY` prop.\n\nDeprecate the `bleedY` prop on `Toggle` component, and enable `bleedY` by default.\nConsumers should remove use of the `bleedY` prop, and if previously not setting `bleedY` to true, should update their layout accordingly.\n\n### MIGRATION GUIDE:\n\n```diff\n- <Toggle bleedY />\n+ <Toggle />\n```"
+      },
+      {
+        "updated": [
+          "List"
+        ],
+        "summary": "**List**: Reduce default space between list items\n\nReduce the default space between list items from `medium` to `small` or `xsmall` if the `size` prop is set to either `small` or `xsmall`."
+      }
+    ]
   }
 ]

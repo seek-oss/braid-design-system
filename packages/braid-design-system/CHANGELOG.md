@@ -1,5 +1,432 @@
 # braid-design-system
 
+## 33.0.0
+
+### Major Changes
+
+- **Stack, Inline:** Consumers need to render `li` elements ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  When setting `component` to `ul` or `ol` on `Stack` or `Inline`, consumers need to ensure they render children as `li` elements.
+  Previously Braid owned an intermediate HTML element, ensuring it was an `li` when required.
+  Moving to CSS gap means child elements are no longer being wrapped, requiring consumers to update their child elements to the correct HTML element, e.g. `li`.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+   <Stack component="ul">
+  -  <Text>Item 1</Text>
+  +  <Text component="li">Item 1</Text>
+  -  <Text>Item 2</Text>
+  +  <Text component="li">Item 2</Text>
+   </Stack>
+  ```
+
+- **Autosuggest:** Remove deprecated message syntax from `suggestions` prop ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Remove the deprecated message syntax from the `suggestions` prop in favour of the `noSuggestionsMessage` prop.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+   <Autosuggest
+     ...
+  -  suggestions={{ message: 'No results found' }}
+  +  suggestions={[]}
+  +  noSuggestionsMessage="No results found"
+   />
+  ```
+
+- **Text, Heading:** Remove deprecated `truncate` prop ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Remove the deprecated `truncate` prop in favour of the `maxLines` prop which accepts a number of lines to truncate the text to.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+   <Text
+  -   truncate
+  +   maxLines={1}
+   />
+  ```
+
+- **Stack, Tiles:** Remove `divider` support ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  As part of migrating our layout components to leverage flex gap, the `Stack` & `Tiles` components no longer iterate over their children, making `dividers` no longer feasible to implement centrally.
+
+  While we could have exposed an API to apply this behaviour conditionally, there are edge cases that cannot be handled correctly without consumer-side rendering logic, such as when child components render nothing or a hidden element.
+
+  ### MIGRATION GUIDE:
+
+  For `Stack`s with static children you can manually interleave `Divider` components:
+
+  ```diff
+  -<Stack space="..." dividers>
+  +<Stack space="...">
+     <Component />
+  +  <Divider />
+     <Component />
+  +  <Divider />
+     <Component />
+   </Stack>
+  ```
+
+  Or for conditionally rendering children you can return a [React Fragment], including the `Divider` and child:
+
+  ```diff
+  -<Stack space="..." dividers>
+  +<Stack space="...">
+     <Component />
+     {condition ? (
+  -    <Component />
+  +    <>
+  +      <Divider />
+  +      <Component />
+  +    </>
+     ) : null}
+   </Stack>
+  ```
+
+  For `Stack`s with iterable children you can return a [React Fragment] and conditionally render the `Divider` component as the first child, before each item (except the first):
+
+  ```diff
+  -<Stack space="..." dividers>
+  +<Stack space="...">
+    {items.map((item, index) => (
+  -    <Component>{item}</Component>
+  +    <Fragment key={...}>
+  +      {index > 0 ? <Divider /> : null}
+  +      <Component>{item}</Component>
+  +    </Fragment>
+    ))}
+  </Stack>
+  ```
+
+  For `Tiles` the `dividers` prop was only applied when showing a single column.
+
+  For this you can conditionally render the `Divider` in a `Stack` with the same spacing as specified on the `Tiles` instance, and hide it on breakpoints showing more than one column.
+
+  Here is an example of this with static children:
+
+  ```diff
+  -<Tiles space="..." columns={{mobile: 1, tablet: 2}} dividers>
+  +<Tiles space="..." columns={{mobile: 1, tablet: 2}}>
+      <Component>{item}</Component>
+  +   <Stack space="...">
+  +     <Hidden above="mobile">
+  +       <Divider />
+  +     </Hidden>
+        <Component>{item}</Component>
+  +   </Stack>
+  +   <Stack space="...">
+  +     <Hidden above="mobile">
+  +       <Divider />
+  +     </Hidden>
+        <Component>{item}</Component>
+  +   </Stack>
+  </Tiles>
+  ```
+
+  Here is an example of this with iterable children:
+
+  ```diff
+  -<Tiles space="..." columns={{mobile: 1, tablet: 2}} dividers>
+  +<Tiles space="..." columns={{mobile: 1, tablet: 2}}>
+    {items.map((item, index) => (
+  -    <Component>{item}</Component>
+  +    <Stack space="..." key={...}>
+  +      {index > 0 ? (
+  +        <Hidden above="mobile">
+  +          <Divider />
+  +        </Hidden>
+  +      ) : null}
+         <Component>{item}</Component>
+  +    </Stack>
+    ))}
+  </Tiles>
+  ```
+
+- Drop support for React 17.x ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  To enable Braid to leverage newer React APIs, we are no longer providing support for React v17.x.
+  React 18 was released in March 2022 and consumers were encouraged to upgrade to this as part of the Braid v32 release in Feb 2023 (which dropped React 16 support).
+
+  Removing support for React 17 allows us to simplify and streamline a lot of our component APIs, which will have downstream improvements on consumer codebases.
+
+  ### MIGRATION GUIDE:
+
+  Consumers still on v17 should follow the [How to Upgrade to React 18 guide].
+
+  For [sku] consumers who upgraded to Braid v32 and added the "`jsx-runtime` workaround for ESM incompatibility", this can now be safely removed from their webpack configuration once updated to React 18:
+
+  ```diff
+  // sku.config.ts
+  {
+    dangerouslySetWebpackConfig: (config) =>
+      webpackMerge(config, {
+  -      resolve: {
+  -        fallback: {
+  -          'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+  -        },
+  -      },
+      }),
+  }
+  ```
+
+  [sku]: https://seek-oss.github.io/sku/
+  [How to Upgrade to React 18 guide]: https://react.dev/blog/2022/03/08/react-18-upgrade-guide
+  [migration guide]: https://seek-oss.github.io/braid-design-system/releases#32.0.0
+
+- **Button, ButtonLink:** Remove deprecated `bleedY` prop ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Remove the deprecated `bleedY` prop from the `Button` and `ButtonLink` components.
+  Consumers should use the `bleed` prop instead, which bleeds based on the selected `variant`.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+   <Button
+  -  bleedY
+  +  bleed
+     {...}
+   >
+     Button
+   </Button>
+  ```
+
+- **Radio:** Remove deprecated component ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Remove deprecated `Radio` component in favour of `RadioGroup` with `RadioItem` children.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+  - <Radio checked={checked} onChange={handleOnChange} label="Option" />
+  + <RadioGroup
+  +   value={value}
+  +   onChange={handleOnChange}
+  +   label="Options"
+  + >
+  +   <RadioItem value="1">Option</RadioItem>
+  + </RadioGroup>
+  ```
+
+- **Column:** Prevent growing when `content` width specified ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Ensure that when a column `width` is specified, the column does not grow or shrink.
+  Only a column with no `width` specified will fluidly adapt to the available space.
+
+  Fixes a bug when all `Column` components have a defined `width`, a column specifying `content` width would incorrectly grow to consume the available space.
+
+- **Hidden:** Hide content by default. ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  `Hidden` will now hide content if no hidden conditions are specified, i.e. if no `above`, `below`, or `print` props are provided.
+  Consumers should review usage of the component without these props to ensure `Hidden` behaves as expected.
+
+- **ButtonIcon:** Remove deprecated `secondary` tone ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Remove the deprecated `secondary` tone from `ButtonIcon` in favour of providing the `tone` directly to the `Icon` itself.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+   <ButtonIcon
+  -  tone="secondary"
+  -  icon={<IconAdd />}
+  +  icon={<IconAdd tone="secondary" />}
+   />
+  ```
+
+- **useColor:** Align `background` tokens with `Box` and `vars` ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Align the available `background` tokens between `Box`, `vars`, and the `useColor` Hook.
+  Removes the `surfaceDark` and `bodyDark` tokens that were mistakenly exposed in the `useColor` Hook.
+
+- **useBreakpoint:** Remove deprecated Hook ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  This Hook has been deprecated since [v30.1.0] in favour of `useResponsiveValue`, to prevent consumers from inadvertently coupling themselves to the current set of breakpoints, making it risky for us to introduce new breakpoints.
+
+  See the [migration guide] for more information.
+
+  [v30.1.0]: https://seek-oss.github.io/braid-design-system/components/useBreakpoint/releases/#v30.1.0
+  [migration guide]: https://seek-oss.github.io/braid-design-system/components/useBreakpoint/releases/#v30.1.0
+
+- **Rating:** Remove deprecated `showTextRating` prop ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Remove the deprecated `showTextRating` prop in favour of `variant="starsOnly"`.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+   <Rating
+     rating={3.7}
+  -  showTextRating={false}
+  +  variant="starsOnly"
+   />
+  ```
+
+- **Stack:** Set default text alignment based on `align` ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  As a convenience, the `align` prop sets the text alignment for the container, meaning any nested `Text` or `Heading` components will inherit this alignment by default.
+
+  This can be overridden by setting the alignment explicitly on the relevant `Text` or `Heading` component.
+
+- **Columns, Inline:** Only respect `reverse` in combination with `collapseBelow` ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  The `reverse` prop is only respected in combination with `collapseBelow`.
+  This ensures the content is reversed on the same row, but follows the document order when collapsed.
+
+  If content needs to be reversed without `collapseBelow` then it should be reversed in the document/source order directly.
+
+- **Spread:** Narrow `component` options to valid layout elements ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Not all HTML elements make sense to be a layout container, e.g. `input`, so scoping the `component` prop to only surface relevant element types.
+
+- Migrate to CSS `gap` internally. ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  With the browser support policy now enabling adoption of CSS [gap], Braid’s layout components are now able to lean into the platform directly for its declarative, parent-driven approach to white space management.
+
+  Previously to enable gap-like behaviour, layout components iterated over their children wrapping them in container elements that applied padding.
+  The trade off of this technique was increased number of DOM elements and the introduction of unwanted space if the child element was hidden or returned `null`, requiring developers to hoist logic to the parent component.
+
+  [gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
+
+- **Toggle:** Enable `bleedY` by default, and deprecate `bleedY` prop. ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Deprecate the `bleedY` prop on `Toggle` component, and enable `bleedY` by default.
+  Consumers should remove use of the `bleedY` prop, and if previously not setting `bleedY` to true, should update their layout accordingly.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+  - <Toggle bleedY />
+  + <Toggle />
+  ```
+
+- **List**: Reduce default space between list items ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Reduce the default space between list items from `medium` to `small` or `xsmall` if the `size` prop is set to either `small` or `xsmall`.
+
+### Minor Changes
+
+- **Tiles:** Remove `columns` limit ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  The `columns` prop was previously limited from 1 to 6.
+  With the migration to [CSS Grid] this limit no longer applies.
+
+  Note: Responsive values are also still supported, e.g. `columns={{ mobile: 1, tablet: 8 }}`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Tiles columns={8}>...</Tiles>
+  ```
+
+  [CSS Grid]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid
+
+- **Column:** Add `component` support ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  With `Columns` no longer adding intermediary elements, consumers are free to control the underlying HTML element of the `Column` themselves via the `component` prop.
+  Valid options are kept to a white list of elements relevant to `Column` that do not require other HTML attributes, keeping in mind that props are not blindly spread in Braid.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Columns component="ul">
+    <Column component="li">...</Column>
+    <Column component="li">...</Column>
+  </Columns>
+  ```
+
+- **seekJobs:** Reduce size of `gutter` token ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  The size of the `gutter` token on the `seekJobs` theme will be reduced from `large` (i.e. 32px), to `medium` (i.e. 24px).
+  This is a semantic token that runs through many system components, and consumers are encouraged to perform a visual design audit to ensure experiences are laid out as intended.
+
+- **Box, atoms:** Add `content` to `maxWidth` ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Add the `content` option to the `maxWidth` property on the styling atoms.
+  This will ensure an element is only as wide as its content.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box maxWidth="content" />
+  ```
+
+  ```ts
+  import { atoms } from 'braid-design-system/css';
+
+  atoms({
+    maxWidth: 'content',
+  });
+  ```
+
+- **IconSocialTwitter:** Remove deprecated icon. ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Remove the deprecated `IconSocialTwitter` icon.
+  Consumers should use the `IconSocialX` icon instead.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+  - <IconSocialTwitter />
+  + <IconSocialX />
+  ```
+
+- **PageBlock, Drawer:** Increase screen gutter on mobile ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Increase the horizontal screen gutter from `xsmall` (i.e. 12px) to `small` (i.e. 16px) on mobile devices.
+
+- Remove sku peer dependency ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Braid no longer has a peer dependency on [sku], however there are build-time requirements that remain — which are now documented.
+  SEEK consumers should continue to use [sku] for building Braid-based web experiences.
+
+  [sku]: https://seek-oss.github.io/sku/
+
+- **Hidden:** Deprecate `screen` prop. ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Deprecate `screen` prop.
+  To provide content to screen readers without rendering it to the screen, consumers should use `HiddenVisually` instead.
+
+  ### MIGRATION GUIDE:
+
+  ```diff
+  - <Hidden screen>
+  + <Hidden>
+  ```
+
+- **Stack, Inline, Columns:** Widen `component` support ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  With `Stack`, `Columns` and `Inline` no longer adding intermediary elements, the `component` prop can now accept a wider range of elements.
+  Valid options are kept to a white list of elements relevant to `Stack` that do not require other HTML attributes, keeping in mind that props are not blindly spread in Braid.
+
+- **Box, atoms:** Add responsive `gap` support ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Add the `gap` property to the available styling atoms, inclusive of responsive spacing values.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box gap="small" />
+  ```
+
+  ```jsx
+  import { atoms } from 'braid-design-system/css';
+
+  atoms({ gap: 'small' });
+  ```
+
+### Patch Changes
+
+- Ensure content is left aligned by default ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Applies left alignment to content, to ensure consistent alignment even when inside centered layout containers.
+
+- Apply max width to all inline components ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
+
+  Apply a `maxWidth` of `content` to ensure component widths are controlled by their content — not growing to the size of their container.
+
 ## 32.24.1
 
 ### Patch Changes

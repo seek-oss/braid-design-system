@@ -1,6 +1,6 @@
 {
   "name": "@braid-design-system/docs-ui",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "license": "MIT",
   "author": "SEEK",
   "exports": {
@@ -40,7 +40,7 @@
     "react": "^18.3.1"
   },
   "peerDependencies": {
-    "braid-design-system": "^32.15.1",
+    "braid-design-system": "^33.0.0",
     "react": "^18.2.0"
   }
 }

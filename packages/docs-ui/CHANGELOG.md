@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 3.0.0
+
+### Major Changes
+
+- Bump Braid peer dependency to v33 ([#1628](https://github.com/seek-oss/braid-design-system/pull/1628))
+
 ## 2.2.0
 
 ### Minor Changes
