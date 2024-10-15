@@ -2,6 +2,28 @@
 
 ## 33.0.0
 
+This release is a huge milestone for Braid with upgrades occurring across a number of key areas:
+
+### Migrate layout components to [CSS Gap]
+With SEEKs Browser Support Policy now enabling adoption of [CSS gap], Braid's layout components are now able to lean into the platform directly for its declarative, parent-driven approach to white space management.
+
+The result is on average our experiences receive around a 20% reduction in DOM elements, more performant rendering, better composability without the introduction of intermediary elements and a better debug experience in dev tools.
+
+The key tradeoff is the removal of `dividers` functionality which is explained further [here].
+
+### Reduce `gutter` size in `seekJobs` theme
+The size of the `gutter` token on the `seekJobs` theme has been reduced from `large` (i.e. 32px), to `medium` (i.e. 24px).
+This is a semantic token that runs through many system components, and consumer should perform a visual design audit to ensure experiences are laid out as intended.
+
+### Other key changes
+- Remove support for React v17.x
+- Removal of deprecated features
+
+[CSS Gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
+[here]: https://github.com/seek-oss/braid-design-system/blob/8177e4c6b502536e8f37811f5eef735ff265f1c6/docs/Removing%20dividers%20support%20from%20layout%20components.md
+
+See full changelog below 👇 
+
 ### Major Changes
 
 - **Stack, Inline:** Consumers need to render `li` elements ([#1626](https://github.com/seek-oss/braid-design-system/pull/1626))
