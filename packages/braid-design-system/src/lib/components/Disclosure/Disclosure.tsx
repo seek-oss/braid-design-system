@@ -66,7 +66,7 @@ export const Disclosure = ({
 
   assert(
     typeof sizeProp === 'undefined' || !isInline,
-    `Specifying a custom \`size\` for an \`Disclosure\` inside the context of a \`<${
+    `Specifying a custom \`size\` for a \`Disclosure\` inside the context of a \`<${
       textContext ? 'Text' : 'Heading'
     }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Disclosure`,
   );
