@@ -2,7 +2,7 @@ import React, { type ReactNode, useContext } from 'react';
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { Text } from '../Text/Text';
+import { Text, type TextProps } from '../Text/Text';
 import {
   type TextLinkButtonProps,
   TextLinkButton,
@@ -15,11 +15,13 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
+import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 
 export interface DisclosureBaseProps {
   expandLabel: string;
   collapseLabel?: string;
   space?: ResponsiveSpace;
+  size?: TextProps['size'];
   weight?: TextLinkButtonProps['weight'];
   data?: DataAttributeMap;
   children: ReactNode;
@@ -27,11 +29,22 @@ export interface DisclosureBaseProps {
 export type DisclosureProps = DisclosureBaseProps & UseDisclosureProps;
 export type { DisclosureStateProps } from './useDisclosure';
 
+const defaultSpaceForSize: Record<
+  NonNullable<DisclosureProps['size']>,
+  ResponsiveSpace
+> = {
+  large: 'medium',
+  standard: 'medium',
+  xsmall: 'small',
+  small: 'small',
+};
+
 export const Disclosure = ({
   id,
   expandLabel,
   collapseLabel = expandLabel,
-  space = 'medium',
+  space,
+  size: sizeProp,
   children,
   data,
   weight,
@@ -51,6 +64,13 @@ export const Disclosure = ({
   const headingContext = useContext(HeadingContext);
   const isInline = Boolean(textContext || headingContext);
 
+  assert(
+    typeof sizeProp === 'undefined' || !isInline,
+    `Specifying a custom \`size\` for an \`Disclosure\` inside the context of a \`<${
+      textContext ? 'Text' : 'Heading'
+    }>\` component is invalid. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Disclosure`,
+  );
+
   const { expanded, buttonProps, contentProps } = useDisclosure({
     id,
     ...(restProps.expanded !== undefined
@@ -62,6 +82,15 @@ export const Disclosure = ({
           onToggle: restProps.onToggle,
         }),
   });
+
+  const size = sizeProp ?? textContext?.size ?? 'standard';
+  const defaultSpace = isInline
+    ? /*
+       * If inline, only use `xxsmall` as the space between the trigger
+       * and the content will include the line height of the text
+       */
+      'xxsmall'
+    : defaultSpaceForSize[size];
 
   const trigger = (
     <TextLinkButton hitArea="large" weight={weight} {...buttonProps}>
@@ -84,15 +113,21 @@ export const Disclosure = ({
         display={isInline ? 'inline' : undefined}
         userSelect="none"
       >
-        {isInline ? <> {trigger}</> : <Text>{trigger}</Text>}
+        {isInline ? <> {trigger}</> : <Text size={size}>{trigger}</Text>}
       </Box>
       <Box
         component={component}
-        paddingTop={space}
+        paddingTop={space ?? defaultSpace}
         display={expanded ? 'block' : 'none'}
         {...contentProps}
       >
-        {children}
+        {isInline ? (
+          children
+        ) : (
+          <DefaultTextPropsProvider size={size}>
+            {children}
+          </DefaultTextPropsProvider>
+        )}
       </Box>
     </Box>
   );
