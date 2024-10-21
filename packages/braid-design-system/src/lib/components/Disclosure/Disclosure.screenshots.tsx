@@ -1,11 +1,16 @@
 import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Disclosure, Text } from '../';
+import { Disclosure, Stack, Text } from '../';
 import { Box } from '../Box/Box';
+import { textSizeUntrimmed } from '../../css/typography.css';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box style={{ maxWidth: 250 }}>{children}</Box>
 );
+
+const textSizes = Object.keys(textSizeUntrimmed) as Array<
+  keyof typeof textSizeUntrimmed
+>;
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -180,6 +185,47 @@ export const screenshots: ComponentScreenshot = {
           vel nunc auctor facilisis. Quisque neque sapien, aliquam eget eros id,
           facilisis sodales nisl.
         </Text>
+      ),
+    },
+    {
+      label: 'Sizes and default spacing',
+      Example: ({ id, handler }) => (
+        <Stack space="large">
+          {textSizes.map((size) => (
+            <Disclosure
+              key={size}
+              id={`${id}_${size}`}
+              expandLabel={`${size.charAt(0).toUpperCase()}${size.slice(
+                1,
+              )} size`}
+              size={size}
+              expanded={true}
+              onToggle={handler}
+            >
+              <Text>Defaults to {size} text size</Text>
+            </Disclosure>
+          ))}
+        </Stack>
+      ),
+    },
+    {
+      label: 'Inline: Sizes and default spacing',
+      Example: ({ id, handler }) => (
+        <Stack space="large">
+          {textSizes.map((size) => (
+            <Text size={size} key={size}>
+              Inline disclosure in{' '}
+              <Disclosure
+                id={`${id}_${size}`}
+                expandLabel={`${size} size`}
+                expanded={true}
+                onToggle={handler}
+              >
+                Defaults to {size} text size
+              </Disclosure>
+            </Text>
+          ))}
+        </Stack>
       ),
     },
   ],

@@ -2952,6 +2952,11 @@ exports[`Disclosure 1`] = `
     expanded?: boolean
     id: string
     onToggle?: (expanded: boolean) => void
+    size?: 
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
     space?: 
         | "gutter"
         | "large"
