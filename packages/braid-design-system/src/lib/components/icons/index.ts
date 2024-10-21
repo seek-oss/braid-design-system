@@ -1,6 +1,7 @@
 export { IconAI } from './IconAI/IconAI';
 export { IconAdd } from './IconAdd/IconAdd';
 export { IconArrow } from './IconArrow/IconArrow';
+export { IconAttachment } from './IconAttachment/IconAttachment';
 export { IconBookmark } from './IconBookmark/IconBookmark';
 export { IconCareer } from './IconCareer/IconCareer';
 export { IconCategory } from './IconCategory/IconCategory';
