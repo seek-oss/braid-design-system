@@ -4488,5 +4488,28 @@
         "summary": "**List**: Reduce default space between list items\n\nReduce the default space between list items from `medium` to `small` or `xsmall` if the `size` prop is set to either `small` or `xsmall`."
       }
     ]
+  },
+  {
+    "version": "33.1.0",
+    "updates": [
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast**: Ensure content is left aligned\n\nApplies left alignment to `Toast` content to ensure intended alignment, regardless of other styles applied."
+      },
+      {
+        "new": [
+          "IconAttachment"
+        ],
+        "summary": "**IconAttachment:** Add component\n\nAdd `IconAttachment` to icon suite\n\n**EXAMPLE USAGE:**\n```jsx\n<IconAttachment />\n```"
+      },
+      {
+        "updated": [
+          "Disclosure"
+        ],
+        "summary": "**Disclosure:** Add `size` support\n\nIntroduce the `size` prop to the `Disclosure` component, providing the same options as the `Text` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<Disclosure\n  size=\"small\"\n>\n  ...\n</Disclosure>\n```"
+      }
+    ]
   }
 ]
