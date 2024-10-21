@@ -86,8 +86,8 @@ export const Disclosure = ({
   const size = sizeProp ?? textContext?.size ?? 'standard';
   const defaultSpace = isInline
     ? /*
-       * If inline, only use `xxsmall` as the space between the trigger
-       * and the content will include the line height of the text
+       * If inline, only use `xxsmall` space between the trigger and the content
+       * to compensate for the additional space created by the line height of text.
        */
       'xxsmall'
     : defaultSpaceForSize[size];
