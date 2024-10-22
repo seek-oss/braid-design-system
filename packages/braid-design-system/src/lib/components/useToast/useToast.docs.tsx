@@ -14,7 +14,7 @@ import {
 } from '..';
 import { useThemeSettings } from 'site/App/ThemeSetting';
 import Code from 'site/App/Code/Code';
-import Toast, { toastDuration } from './Toast';
+import Toast from './Toast';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
@@ -428,9 +428,9 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            {`A toast message can be dismissed via the close button or automatically after ${
-              toastDuration / 1000
-            } seconds.`}
+            A toast message can be dismissed via the close button or
+            automatically after a timeout period depending on its content
+            length.
           </Text>
 
           <Text tone="promote" id="translations">

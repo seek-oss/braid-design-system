@@ -16,12 +16,15 @@ import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import buildDataAttributes from '../private/buildDataAttributes';
 import * as styles from './Toast.css';
 
+const minimumToastDuration = 5 * 1000;
+const actionableToastDuration = 10 * 1000;
+
+const toastCharactersPerSecond = 120;
+
 const toneToIcon = {
   critical: IconCritical,
   positive: IconPositive,
 };
-
-export const toastDuration = 10000;
 
 const borderRadius = 'large';
 
@@ -81,12 +84,19 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     },
     ref,
   ) => {
+    const toastCharacterCount =
+      message.length + (description ? description.length : 0);
+
+    const toastDuration =
+      minimumToastDuration +
+      Math.ceil(toastCharacterCount / toastCharactersPerSecond) * 1000;
+
     const remove = useCallback(
       () => onClose(dedupeKey, id),
       [onClose, dedupeKey, id],
     );
     const { stopTimeout, startTimeout } = useTimeout({
-      duration: toastDuration,
+      duration: action ? actionableToastDuration : toastDuration,
       onTimeout: remove,
     });
 
