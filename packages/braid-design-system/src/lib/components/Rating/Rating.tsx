@@ -8,6 +8,7 @@ import { type TextProps, Text } from '../Text/Text';
 import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
 import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
 import { IconStarActiveSvg as IconStarFullSvg } from '../icons/IconStar/IconStarActiveSvg';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 import * as styles from './Rating.css';
 
 const getPercent = (rating: number, position: number) =>
@@ -127,7 +128,7 @@ export const Rating = ({
         )}
       </Box>
       {variant !== 'starsOnly' && (
-        <Box component="span" className={styles.textSpacing} aria-hidden={true}>
+        <Box component="span" paddingLeft={iconSlotSpace} aria-hidden={true}>
           {rating.toFixed(1)}
         </Box>
       )}

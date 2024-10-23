@@ -22,6 +22,7 @@ import { atoms } from '../../css/atoms/atoms';
 import { iconSize } from '../../hooks/useIcon';
 import * as styles from './useMenuItem.css';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 
 const {
   MENU_ITEM_UP,
@@ -35,7 +36,6 @@ const {
 } = actionTypes;
 
 const menuItemChildrenSize = 'standard';
-const menuItemPaddingSize = 'small';
 
 type MenuItemTone = 'critical' | undefined;
 
@@ -157,7 +157,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
         atoms({
           display: 'block',
           width: 'full',
-          paddingX: menuItemPaddingSize,
+          paddingX: 'small',
           cursor: 'pointer',
           textAlign: 'left',
           outline: 'none',
@@ -220,7 +220,7 @@ function MenuItemChildren({
       {leftSlot ? (
         <Box
           component="span"
-          paddingRight={menuItemPaddingSize}
+          paddingRight={iconSlotSpace}
           flexShrink={0}
           minWidth={0}
         >
@@ -240,7 +240,7 @@ function MenuItemChildren({
       {badge ? (
         <Box
           component="span"
-          paddingLeft={menuItemPaddingSize}
+          paddingLeft={iconSlotSpace}
           flexShrink={0}
           minWidth={0}
         >

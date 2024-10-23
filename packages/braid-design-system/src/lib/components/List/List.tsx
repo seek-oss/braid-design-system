@@ -9,6 +9,7 @@ import {
   useDefaultTextProps,
 } from '../private/defaultTextProps';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 import * as styles from './List.css';
 
 function numberToAlpha(inputNumber: number) {
@@ -178,11 +179,7 @@ export const List = ({
                   })()}
                 </Box>
               </Text>
-              <Box
-                minWidth={0}
-                width="full"
-                paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}
-              >
+              <Box minWidth={0} width="full" paddingLeft={iconSlotSpace}>
                 {listItem}
               </Box>
             </Box>

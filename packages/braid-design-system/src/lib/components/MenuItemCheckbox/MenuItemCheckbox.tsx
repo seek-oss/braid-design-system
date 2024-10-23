@@ -3,6 +3,7 @@ import { Box } from '../Box/Box';
 import { IconTick } from '../icons/IconTick/IconTick';
 import type { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 
 import * as styles from './MenuItemCheckbox.css';
 
@@ -43,7 +44,7 @@ export const MenuItemCheckbox = ({
         boxShadow="borderField"
         position="relative"
         background={{ lightMode: 'surface' }}
-        marginRight="xsmall"
+        marginRight={iconSlotSpace}
         flexShrink={0}
         className={styles.checkboxSize}
       >
