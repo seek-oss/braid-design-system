@@ -2,7 +2,6 @@ import React, { type ReactNode, Children } from 'react';
 import { type TextProps, Text } from '../Text/Text';
 import { type StackProps, Stack } from '../Stack/Stack';
 import { Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import flattenChildren from '../../utils/flattenChildren';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
@@ -10,7 +9,6 @@ import {
   useDefaultTextProps,
 } from '../private/defaultTextProps';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
-import { iconSlotSpace } from '../private/iconSlotSpace';
 import * as styles from './List.css';
 
 function numberToAlpha(inputNumber: number) {
@@ -110,8 +108,6 @@ export const List = ({
     size: sizeProp,
     tone: toneProp,
   });
-  const legacy = useBraidTheme().legacy;
-  const legacyIconSpace = size === 'xsmall' ? 'xsmall' : 'small';
 
   const defaultSpace =
     size === 'xsmall' || size === 'small' ? 'xsmall' : 'small';
@@ -185,7 +181,7 @@ export const List = ({
               <Box
                 minWidth={0}
                 width="full"
-                paddingLeft={legacy ? legacyIconSpace : iconSlotSpace}
+                paddingLeft={size === 'xsmall' ? 'xsmall' : 'small'}
               >
                 {listItem}
               </Box>

@@ -9,7 +9,6 @@ updated:
   - ButtonLink
   - FieldMessage
   - Heading
-  - List
   - MenuItem
   - MenuItemCheckbox
   - Notice
