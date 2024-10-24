@@ -7,7 +7,7 @@ updated:
   - useToast
 ---
 
-**useToast**: Support dynamic dismiss timeout duration
+**useToast**: Reduce auto dismiss timeout and dynamically increase it based on content length.
 
-Previously, all toasts would automatically dismiss after 10 seconds.
-This update adjusts the timeout duration for toasts based on their content length, ensuring users have enough time to read the message, while minimising the time content is obscured by the toast.
+Reduce auto dismiss timeout to 5 seconds (previously 10 seconds) as a baseline.
+The timeout will increase based on the content length, ensuring users have enough time to read the message, while minimising the time content is obscured by the toast.
