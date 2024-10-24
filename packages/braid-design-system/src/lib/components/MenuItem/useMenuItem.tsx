@@ -23,6 +23,7 @@ import { iconSize } from '../../hooks/useIcon';
 import * as styles from './useMenuItem.css';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 import { iconSlotSpace } from '../private/iconSlotSpace';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 const {
   MENU_ITEM_UP,
@@ -183,6 +184,8 @@ function MenuItemChildren({
   formElement = false,
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
+  const legacy = useBraidTheme().legacy;
+  const horizontalSpace = legacy ? 'small' : iconSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -220,7 +223,7 @@ function MenuItemChildren({
       {leftSlot ? (
         <Box
           component="span"
-          paddingRight={iconSlotSpace}
+          paddingRight={horizontalSpace}
           flexShrink={0}
           minWidth={0}
         >
@@ -240,7 +243,7 @@ function MenuItemChildren({
       {badge ? (
         <Box
           component="span"
-          paddingLeft={iconSlotSpace}
+          paddingLeft={horizontalSpace}
           flexShrink={0}
           minWidth={0}
         >
