@@ -7,6 +7,7 @@ import { MaxLines } from '../MaxLines/MaxLines';
 import type { UseIconProps } from '../../../hooks/useIcon';
 import { alignToFlexAlign } from '../../../utils/align';
 import { descenderCropFixForWebkitBox } from '../MaxLines/MaxLines.css';
+import { iconSlotSpace } from '../iconSlotSpace';
 
 export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   children?: ReactNode;
@@ -59,7 +60,7 @@ export const Typography = ({
           <Box
             component="span"
             display="block"
-            paddingRight="xsmall"
+            paddingRight={iconSlotSpace}
             flexGrow={0}
             flexShrink={0}
             minWidth={0}

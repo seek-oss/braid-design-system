@@ -386,7 +386,6 @@ export const ButtonText = ({
         {icon && iconPosition === 'leading' ? (
           <AvoidWidowIcon
             iconPosition={iconPosition}
-            space="xsmall"
             className={
               shouldReducePaddingX || bleed
                 ? null
@@ -401,7 +400,6 @@ export const ButtonText = ({
         {!loading && icon && iconPosition === 'trailing' ? (
           <AvoidWidowIcon
             iconPosition={iconPosition}
-            space="xsmall"
             className={
               shouldReducePaddingX || bleed
                 ? null

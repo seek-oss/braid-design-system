@@ -2,12 +2,14 @@ import React from 'react';
 import assert from 'assert';
 import dedent from 'dedent';
 import { useBackground } from '../Box/BackgroundContext';
-import useIcon, { type UseIconProps } from '../../hooks/useIcon';
+import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
 import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
 import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
+import { IconContainer } from '../icons/IconContainer';
 import { IconStarActiveSvg as IconStarFullSvg } from '../icons/IconStar/IconStarActiveSvg';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 import * as styles from './Rating.css';
 
 const getPercent = (rating: number, position: number) =>
@@ -18,10 +20,6 @@ type RatingStar = {
 } & UseIconProps;
 const RatingStar = ({ percent, ...restProps }: RatingStar) => {
   const currentBg = useBackground();
-  const {
-    svgProps: { className, ...svgProps },
-  } = useIcon(restProps);
-
   let component = IconStarEmptySvg;
 
   if (percent >= 25 && percent < 75) {
@@ -33,21 +31,27 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
   }
 
   return (
-    <Box
-      component={component}
-      {...svgProps}
-      className={[
-        className,
-        {
-          [styles.lightModeStarColor]:
-            currentBg.lightMode === 'body' || currentBg.lightMode === 'surface',
-        },
-        {
-          [styles.darkModeStarColor]:
-            currentBg.darkMode === 'body' || currentBg.darkMode === 'surface',
-        },
-      ]}
-    />
+    <IconContainer {...restProps}>
+      {({ className, ...svgProps }) => (
+        <Box
+          component={component}
+          {...svgProps}
+          className={[
+            className,
+            {
+              [styles.lightModeStarColor]:
+                currentBg.lightMode === 'body' ||
+                currentBg.lightMode === 'surface',
+            },
+            {
+              [styles.darkModeStarColor]:
+                currentBg.darkMode === 'body' ||
+                currentBg.darkMode === 'surface',
+            },
+          ]}
+        />
+      )}
+    </IconContainer>
   );
 };
 
@@ -102,32 +106,22 @@ export const Rating = ({
   return (
     <Text size={size} data={data} weight={weight}>
       <Box
-        display="inlineBlock"
+        component="span"
+        className={styles.inlineFlex}
         aria-label={
           ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
         }
       >
         {variant === 'minimal' ? (
-          <Box display="inlineBlock" aria-hidden={true}>
-            <RatingStar percent={100} />
-          </Box>
+          <RatingStar percent={100} />
         ) : (
           ratingArr.map((_, position) => (
-            <Box
-              key={position}
-              display="inlineBlock"
-              aria-hidden={true}
-              className={{
-                [styles.starSpacing]: position !== ratingArr.length - 1,
-              }}
-            >
-              <RatingStar percent={getPercent(rating, position)} />
-            </Box>
+            <RatingStar key={position} percent={getPercent(rating, position)} />
           ))
         )}
       </Box>
       {variant !== 'starsOnly' && (
-        <Box component="span" className={styles.textSpacing} aria-hidden={true}>
+        <Box component="span" paddingLeft={iconSlotSpace} aria-hidden={true}>
           {rating.toFixed(1)}
         </Box>
       )}

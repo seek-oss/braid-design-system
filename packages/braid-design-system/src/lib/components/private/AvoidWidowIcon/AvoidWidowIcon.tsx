@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Space } from '../../../css/atoms/atoms';
 import { type BoxProps, Box } from '../../Box/Box';
+import { iconSlotSpace } from '../iconSlotSpace';
 
 import * as styles from './AvoidWidowIcon.css';
 
@@ -12,13 +13,12 @@ interface Props extends Pick<BoxProps, 'children' | 'className'> {
 export const AvoidWidowIcon = ({
   children,
   iconPosition,
-  space = 'xxsmall',
   className,
 }: Props) => (
   <Box
     component="span"
-    paddingRight={iconPosition === 'leading' ? space : undefined}
-    paddingLeft={iconPosition === 'trailing' ? space : undefined}
+    paddingRight={iconPosition === 'leading' ? iconSlotSpace : undefined}
+    paddingLeft={iconPosition === 'trailing' ? iconSlotSpace : undefined}
     className={[styles.nowrap, className]}
     aria-hidden
   >
