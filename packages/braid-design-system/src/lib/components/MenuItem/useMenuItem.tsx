@@ -187,6 +187,7 @@ function MenuItemChildren({
   const menuRendererContext = useContext(MenuRendererContext);
   const legacy = useBraidTheme().legacy;
   const iconSpace = legacy ? 'small' : iconSlotSpace;
+  const badgeSpace = legacy ? 'small' : badgeSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -244,7 +245,7 @@ function MenuItemChildren({
       {badge ? (
         <Box
           component="span"
-          paddingLeft={badgeSlotSpace}
+          paddingLeft={badgeSpace}
           flexShrink={0}
           minWidth={0}
         >
