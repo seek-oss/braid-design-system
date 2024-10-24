@@ -18,6 +18,7 @@ export const darkModeStarColor = style(
   }),
 );
 
-export const starSpacing = style({
-  paddingRight: '1px',
+export const inlineFlex = style({
+  display: 'inline-flex',
+  gap: '1px',
 });
