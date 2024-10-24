@@ -4,6 +4,7 @@ import { IconTick } from '../icons/IconTick/IconTick';
 import type { MenuItemProps } from '../MenuItem/MenuItem';
 import { useMenuItem } from '../MenuItem/useMenuItem';
 import { iconSlotSpace } from '../private/iconSlotSpace';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 import * as styles from './MenuItemCheckbox.css';
 
@@ -27,6 +28,8 @@ export const MenuItemCheckbox = ({
     data,
     id,
   });
+  const legacy = useBraidTheme().legacy;
+  const iconSpace = legacy ? 'xsmall' : iconSlotSpace;
 
   return (
     <Box
@@ -44,7 +47,7 @@ export const MenuItemCheckbox = ({
         boxShadow="borderField"
         position="relative"
         background={{ lightMode: 'surface' }}
-        marginRight={iconSlotSpace}
+        marginRight={iconSpace}
         flexShrink={0}
         className={styles.checkboxSize}
       >
