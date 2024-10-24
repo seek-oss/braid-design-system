@@ -22,8 +22,9 @@ import { atoms } from '../../css/atoms/atoms';
 import { iconSize } from '../../hooks/useIcon';
 import * as styles from './useMenuItem.css';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
-import { iconSlotSpace } from '../private/iconSlotSpace';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { iconSlotSpace } from '../private/iconSlotSpace';
+import { badgeSlotSpace } from '../private/badgeSlotSpace';
 
 const {
   MENU_ITEM_UP,
@@ -185,7 +186,7 @@ function MenuItemChildren({
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
   const legacy = useBraidTheme().legacy;
-  const horizontalSpace = legacy ? 'small' : iconSlotSpace;
+  const iconSpace = legacy ? 'small' : iconSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -223,7 +224,7 @@ function MenuItemChildren({
       {leftSlot ? (
         <Box
           component="span"
-          paddingRight={horizontalSpace}
+          paddingRight={iconSpace}
           flexShrink={0}
           minWidth={0}
         >
@@ -243,7 +244,7 @@ function MenuItemChildren({
       {badge ? (
         <Box
           component="span"
-          paddingLeft={horizontalSpace}
+          paddingLeft={badgeSlotSpace}
           flexShrink={0}
           minWidth={0}
         >
