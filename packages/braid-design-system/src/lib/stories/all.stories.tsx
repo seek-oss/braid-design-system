@@ -15,8 +15,7 @@ import { darkMode } from '../css/atoms/sprinkles.css';
 const webFontLinkTags = Array.from(
   new Set(
     Object.values(themes)
-      .map((theme) => theme.webFonts)
-      .flat()
+      .flatMap((theme) => theme.webFonts)
       .map((font) => font.linkTag),
   ),
 ).join('');
