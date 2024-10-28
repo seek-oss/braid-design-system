@@ -7,6 +7,7 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
   IconAI: ['gpt', 'artificial', 'smart', 'sparkle', 'stars'],
   IconAdd: ['plus'],
   IconArrow: ['up', 'down', 'left', 'right'],
+  IconAttachment: ['paperclip', 'clip', 'file'],
   IconBookmark: ['save', 'ribbon'],
   IconCareer: ['job', 'work', 'compass', 'safari'],
   IconCategory: ['shapes'],
