@@ -1,4 +1,4 @@
-import mapValues from 'lodash/mapValues';
+import { mapValues } from '../utils/mapValues';
 
 import { isLight } from '../utils';
 import type { BraidTokens } from './tokenType';

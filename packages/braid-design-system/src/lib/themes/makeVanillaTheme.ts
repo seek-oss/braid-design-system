@@ -1,4 +1,4 @@
-import mapValues from 'lodash/mapValues';
+import { mapValues } from '../utils/mapValues';
 import { getCapHeight, precomputeValues } from '@capsizecss/core';
 
 import type { BraidTokens, TextDefinition } from './tokenType';
