@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useMemo } from 'react';
-import partition from 'lodash/partition';
+import partition from 'lodash.partition';
 import {
   Box,
   Text,

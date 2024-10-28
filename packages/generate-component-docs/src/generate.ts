@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import ts, { type CompilerOptions } from 'typescript';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'lodash.isequal';
 
 const MAX_DEPTH = 10;
 const aliasWhitelist = ['ClassValue'];
