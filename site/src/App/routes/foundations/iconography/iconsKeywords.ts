@@ -57,6 +57,7 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
     'identity',
     'identification',
     'certification',
+    'license',
   ],
   IconLinkBroken: ['brokenlink', 'chain', 'broken', 'error'],
   IconList: ['lines', 'queue', 'stack'],
