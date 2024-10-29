@@ -27,6 +27,7 @@ import {
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import * as styles from './AccordionItem.css';
 
 const itemSpaceForSize = {
@@ -145,7 +146,7 @@ export const AccordionItem = ({
               <Column>
                 <Text size={size} weight={weight} tone={tone} icon={icon}>
                   {badge ? (
-                    <Box component="span" paddingRight="xsmall">
+                    <Box component="span" paddingRight={badgeSlotSpace}>
                       {label}
                     </Box>
                   ) : (

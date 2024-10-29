@@ -22,6 +22,9 @@ import { atoms } from '../../css/atoms/atoms';
 import { iconSize } from '../../hooks/useIcon';
 import * as styles from './useMenuItem.css';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { iconSlotSpace } from '../private/iconSlotSpace';
+import { badgeSlotSpace } from '../private/badgeSlotSpace';
 
 const {
   MENU_ITEM_UP,
@@ -35,7 +38,6 @@ const {
 } = actionTypes;
 
 const menuItemChildrenSize = 'standard';
-const menuItemPaddingSize = 'small';
 
 type MenuItemTone = 'critical' | undefined;
 
@@ -157,7 +159,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
         atoms({
           display: 'block',
           width: 'full',
-          paddingX: menuItemPaddingSize,
+          paddingX: 'small',
           cursor: 'pointer',
           textAlign: 'left',
           outline: 'none',
@@ -183,6 +185,9 @@ function MenuItemChildren({
   formElement = false,
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
+  const legacy = useBraidTheme().legacy;
+  const iconSpace = legacy ? 'small' : iconSlotSpace;
+  const badgeSpace = legacy ? 'small' : badgeSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -220,7 +225,7 @@ function MenuItemChildren({
       {leftSlot ? (
         <Box
           component="span"
-          paddingRight={menuItemPaddingSize}
+          paddingRight={iconSpace}
           flexShrink={0}
           minWidth={0}
         >
@@ -240,7 +245,7 @@ function MenuItemChildren({
       {badge ? (
         <Box
           component="span"
-          paddingLeft={menuItemPaddingSize}
+          paddingLeft={badgeSpace}
           flexShrink={0}
           minWidth={0}
         >
