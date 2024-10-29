@@ -51,6 +51,13 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
   IconInvoice: ['bill', 'payment', 'receipt'],
   IconLanguage: ['translate', 'letters'],
   IconLink: ['chain'],
+  IconLicence: [
+    'card',
+    'permit',
+    'identity',
+    'identification',
+    'certification',
+  ],
   IconLinkBroken: ['brokenlink', 'chain', 'broken', 'error'],
   IconList: ['lines', 'queue', 'stack'],
   IconLocation: ['pin', 'marker', 'place', 'map', 'gps'],
