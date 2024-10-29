@@ -4,14 +4,14 @@
 
 ---
 updated:
-  - IconLicense
+  - IconLicence
 ---
 
-**IconLicense:** Add component
+**IconLicence:** Add component
 
-Add `IconLicense` to icon suite
+Add `IconLicence` to icon suite
 
 **EXAMPLE USAGE:**
 ```jsx
-<IconLicense />
+<IconLicence />
 ```

@@ -2,7 +2,7 @@ import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { iconDocumentation } from '../iconCommon.docs';
 import source from '@braid-design-system/source.macro';
-import { IconLicense, Heading, Stack } from '../../';
+import { IconLicence, Heading, Stack } from '../../';
 
 const docs: ComponentDocs = {
   category: 'Icon',
@@ -10,7 +10,7 @@ const docs: ComponentDocs = {
     source(
       <Stack space="none" align="center">
         <Heading component="div" level="1">
-          <IconLicense />
+          <IconLicence />
         </Heading>
       </Stack>,
     ),

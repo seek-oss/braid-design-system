@@ -1050,12 +1050,12 @@ export const IconLanguageSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconLicenseSvg should match snapshot 1`] = `
+exports[`IconLicenceSvg should match snapshot 1`] = `
 "import React from 'react';
 
 import type { SVGProps } from '../SVGTypes';
 
-export const IconLicenseSvg = ({ title, titleId, ...props }: SVGProps) => (
+export const IconLicenceSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"

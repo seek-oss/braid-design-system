@@ -4738,7 +4738,7 @@ exports[`IconLanguage 1`] = `
 }
 `;
 
-exports[`IconLicense 1`] = `
+exports[`IconLicence 1`] = `
 {
   exportType: component,
   props: {
