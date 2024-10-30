@@ -33,7 +33,6 @@ jobs:
         with:
           path: 'site/node_modules/.cache/babel-loader'
           key: babel-loader-${{ runner.os }}-${{ hashFiles('./pnpm-lock.yaml') }}
-          restore-keys: babel-loader-${{ runner.os }}-
 
       - name: Build
         run: pnpm build:site
