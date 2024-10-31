@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
 import {
-  Inline,
+  Tiles,
   Box,
   Text,
   Link,
@@ -137,11 +137,14 @@ export const IconsBrowse = () => {
         ) : null}
       </Stack>
 
-      <Inline space={['none', 'medium']}>
+      <Tiles
+        space="none"
+        columns={{ mobile: 4, tablet: 6, desktop: 7, wide: 6 }}
+      >
         {iconList.map((icon) => (
           <IconTile key={icon.name} icon={icon} suggestion={isDisambiguated} />
         ))}
-      </Inline>
+      </Tiles>
     </Stack>
   );
 };
