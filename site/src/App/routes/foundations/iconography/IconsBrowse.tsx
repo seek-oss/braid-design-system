@@ -40,6 +40,7 @@ const IconTile = ({
         flexDirection="column"
         alignItems="center"
         paddingY="medium"
+        paddingX="xsmall"
         cursor="pointer"
         className={styles.iconContainer}
       >
@@ -49,8 +50,8 @@ const IconTile = ({
             tone={suggestion ? 'secondary' : undefined}
           />
         </Box>
-        <Box paddingTop="medium">
-          <Text tone="secondary" size="xsmall">
+        <Box paddingTop="medium" width="full">
+          <Text tone="secondary" size="xsmall" maxLines={1} align="center">
             {icon.displayName}
           </Text>
         </Box>
@@ -139,7 +140,7 @@ export const IconsBrowse = () => {
 
       <Tiles
         space="none"
-        columns={{ mobile: 4, tablet: 6, desktop: 7, wide: 6 }}
+        columns={{ mobile: 3, tablet: 6, desktop: 7, wide: 6 }}
       >
         {iconList.map((icon) => (
           <IconTile key={icon.name} icon={icon} suggestion={isDisambiguated} />
