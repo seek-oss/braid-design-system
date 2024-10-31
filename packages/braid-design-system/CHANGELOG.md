@@ -1,10 +1,66 @@
 # braid-design-system
 
+## 33.1.0
+
+### Minor Changes
+
+- **IconLicence:** Add component ([#1640](https://github.com/seek-oss/braid-design-system/pull/1640))
+
+  Add `IconLicence` to icon suite
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconLicence />
+  ```
+
+- **IconAttachment:** Add component ([#1635](https://github.com/seek-oss/braid-design-system/pull/1635))
+
+  Add `IconAttachment` to icon suite
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconAttachment />
+  ```
+
+- **Disclosure:** Add `size` support ([#1633](https://github.com/seek-oss/braid-design-system/pull/1633))
+
+  Introduce the `size` prop to the `Disclosure` component, providing the same options as the `Text` component.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Disclosure size="small">...</Disclosure>
+  ```
+
+### Patch Changes
+
+- Standardise icon slot spacing ([#1638](https://github.com/seek-oss/braid-design-system/pull/1638))
+
+  Normalise the space between the `icon` slot and component content across the system.
+
+- **Rating:** Simplify internal layout ([#1638](https://github.com/seek-oss/braid-design-system/pull/1638))
+
+  Simplify the internal HTML and layout of the `Rating` component.
+  This change should not affect the appearance or behavior of the component.
+
+- Remove lodash dependency ([#1639](https://github.com/seek-oss/braid-design-system/pull/1639))
+
+- **useToast**: Ensure content is left aligned ([#1630](https://github.com/seek-oss/braid-design-system/pull/1630))
+
+  Applies left alignment to `Toast` content to ensure intended alignment, regardless of other styles applied.
+
+- **IconRocket:** Update design ([#1636](https://github.com/seek-oss/braid-design-system/pull/1636))
+
+  Update the design asset for `IconRocket`
+
 ## 33.0.0
 
 This release is a huge milestone for Braid with upgrades occurring across a number of key areas:
 
 ### Migrate layout components to [CSS Gap]
+
 With SEEKs Browser Support Policy now enabling adoption of [CSS gap], Braid's layout components are now able to lean into the platform directly for its declarative, parent-driven approach to white space management.
 
 The result is on average our experiences receive around a 20% reduction in DOM elements, more performant rendering, better composability without the introduction of intermediary elements and a better debug experience in dev tools.
@@ -12,17 +68,19 @@ The result is on average our experiences receive around a 20% reduction in DOM e
 The key tradeoff is the removal of `dividers` functionality which is explained further [here].
 
 ### Reduce `gutter` size in `seekJobs` theme
+
 The size of the `gutter` token on the `seekJobs` theme has been reduced from `large` (i.e. 32px), to `medium` (i.e. 24px).
 This is a semantic token that runs through many system components, and consumer should perform a visual design audit to ensure experiences are laid out as intended.
 
 ### Other key changes
+
 - Remove support for React v17.x
 - Removal of deprecated features
 
 [CSS Gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
 [here]: https://github.com/seek-oss/braid-design-system/blob/8177e4c6b502536e8f37811f5eef735ff265f1c6/docs/Removing%20dividers%20support%20from%20layout%20components.md
 
-See full changelog below 👇 
+See full changelog below 👇
 
 ### Major Changes
 

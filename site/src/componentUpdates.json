@@ -4488,5 +4488,62 @@
         "summary": "**List**: Reduce default space between list items\n\nReduce the default space between list items from `medium` to `small` or `xsmall` if the `size` prop is set to either `small` or `xsmall`."
       }
     ]
+  },
+  {
+    "version": "33.1.0",
+    "updates": [
+      {
+        "updated": [
+          "IconLicence"
+        ],
+        "summary": "**IconLicence:** Add component\n\nAdd `IconLicence` to icon suite\n\n**EXAMPLE USAGE:**\n```jsx\n<IconLicence />\n```"
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Button",
+          "ButtonLink",
+          "FieldMessage",
+          "Heading",
+          "MenuItem",
+          "MenuItemCheckbox",
+          "Notice",
+          "Rating",
+          "Tab",
+          "Text"
+        ],
+        "summary": "Standardise icon slot spacing\n\nNormalise the space between the `icon` slot and component content across the system."
+      },
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Simplify internal layout\n\nSimplify the internal HTML and layout of the `Rating` component.\nThis change should not affect the appearance or behavior of the component."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast**: Ensure content is left aligned\n\nApplies left alignment to `Toast` content to ensure intended alignment, regardless of other styles applied."
+      },
+      {
+        "updated": [
+          "IconRocket"
+        ],
+        "summary": "**IconRocket:** Update design\n\nUpdate the design asset for `IconRocket`"
+      },
+      {
+        "new": [
+          "IconAttachment"
+        ],
+        "summary": "**IconAttachment:** Add component\n\nAdd `IconAttachment` to icon suite\n\n**EXAMPLE USAGE:**\n```jsx\n<IconAttachment />\n```"
+      },
+      {
+        "updated": [
+          "Disclosure"
+        ],
+        "summary": "**Disclosure:** Add `size` support\n\nIntroduce the `size` prop to the `Disclosure` component, providing the same options as the `Text` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<Disclosure\n  size=\"small\"\n>\n  ...\n</Disclosure>\n```"
+      }
+    ]
   }
 ]
