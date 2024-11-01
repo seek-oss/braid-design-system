@@ -137,6 +137,7 @@ export const Navigation = () => {
                 <TextLink
                   href={`https://github.com/seek-oss/braid-design-system/compare/master...${config.branchName}`}
                   target="_blank"
+                  weight="weak"
                 >
                   <Strong>{config.branchName}</Strong>
                 </TextLink>
