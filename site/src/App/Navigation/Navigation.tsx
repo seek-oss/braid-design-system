@@ -133,7 +133,7 @@ export const Navigation = () => {
               padding="medium"
             >
               <Text icon={<IconRocket />}>
-                Preview:{' '}
+                Branch preview:{' '}
                 <TextLink
                   href={`https://github.com/seek-oss/braid-design-system/compare/master...${config.branchName}`}
                   target="_blank"
