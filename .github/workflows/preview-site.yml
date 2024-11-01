@@ -36,14 +36,20 @@ jobs:
 
       - name: Build
         run: pnpm build:site
-
-      - name: Deploy to surge
-        run: pnpm surge -p ./site/dist -d braid-design-system--${GITHUB_SHA}.surge.sh
         env:
-          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          BASE_NAME: /braid-design-system/preview/${{ github.sha }}
+          BRANCH_NAME: ${{ github.ref_name }}
+
+      - name: Deploy preview site
+        uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # 4.6.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: ./site/dist
+          target-folder: preview/${{ github.sha }}
+          commit-message: Preview of `${{ github.ref_name }}`
 
       - name: Update PR status
         run: pnpm post-commit-status
         env:
+          BASE_NAME: /braid-design-system/preview/${{ github.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

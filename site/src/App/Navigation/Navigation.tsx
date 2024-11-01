@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
-import { ContentBlock } from 'braid-src/lib/components';
+import {
+  ContentBlock,
+  IconRocket,
+  Strong,
+  Text,
+  TextLink,
+} from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
@@ -13,6 +19,7 @@ import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styles from './Navigation.css';
 import { ThemeToggle } from '../ThemeSetting';
+import { useConfig } from '../ConfigContext';
 
 const Header = ({
   menuOpen,
@@ -46,6 +53,7 @@ export const Navigation = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
+  const config = useConfig();
 
   const location = useLocation();
   useEffect(() => setDirection(null), [location]);
@@ -112,6 +120,29 @@ export const Navigation = () => {
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
           <Outlet />
+          {config.branchName && (
+            <Box
+              position="fixed"
+              zIndex="sticky"
+              bottom={0}
+              right={0}
+              margin="medium"
+              boxShadow="small"
+              borderRadius="large"
+              background="cautionLight"
+              padding="medium"
+            >
+              <Text icon={<IconRocket />}>
+                Preview:{' '}
+                <TextLink
+                  href={`https://github.com/seek-oss/braid-design-system/compare/master...${config.branchName}`}
+                  target="_blank"
+                >
+                  <Strong>{config.branchName}</Strong>
+                </TextLink>
+              </Text>
+            </Box>
+          )}
         </Box>
       </Box>
 

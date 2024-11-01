@@ -12,11 +12,11 @@ const writeSummary = async ({ title, link }) => {
   try {
     console.log('Posting commit status to GitHub...');
 
-    const { GITHUB_TOKEN, GITHUB_SHA } = process.env;
+    const { GITHUB_TOKEN, GITHUB_SHA, BASE_NAME } = process.env;
 
-    if (!GITHUB_TOKEN || !GITHUB_SHA) {
+    if (!GITHUB_TOKEN || !GITHUB_SHA || !BASE_NAME) {
       throw new Error(
-        'GITHUB_TOKEN and GITHUB_SHA environment variables must be present',
+        'GITHUB_TOKEN, GITHUB_SHA & BASE_NAME environment variables must be present',
       );
     }
 
@@ -25,7 +25,7 @@ const writeSummary = async ({ title, link }) => {
       auth: GITHUB_TOKEN,
     });
 
-    const previewUrl = `https://braid-design-system--${GITHUB_SHA}.surge.sh`;
+    const previewUrl = `https://seek-oss.github.io${BASE_NAME}`;
 
     await octokit.repos.createCommitStatus({
       owner: 'seek-oss',
