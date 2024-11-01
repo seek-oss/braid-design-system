@@ -766,6 +766,7 @@ export const Autosuggest = forwardRef(function <Value>(
                 {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
                 <RemoveScroll ref={menuRef} enabled={isOpen} forwardProps>
                   <Box
+                    textAlign="left"
                     component="ul"
                     display={isOpen ? 'block' : 'none'}
                     position="absolute"
