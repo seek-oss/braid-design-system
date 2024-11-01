@@ -3,8 +3,9 @@ import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {
   ContentBlock,
+  Disclosure,
+  IconNewWindow,
   IconRocket,
-  Strong,
   Text,
   TextLink,
 } from 'braid-src/lib/components';
@@ -53,7 +54,7 @@ export const Navigation = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
-  const config = useConfig();
+  const { branchName, headBranchName } = useConfig();
 
   const location = useLocation();
   useEffect(() => setDirection(null), [location]);
@@ -120,7 +121,7 @@ export const Navigation = () => {
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
           <Outlet />
-          {config.branchName && (
+          {branchName && (
             <Box
               position="fixed"
               zIndex="sticky"
@@ -134,13 +135,31 @@ export const Navigation = () => {
             >
               <Text icon={<IconRocket />}>
                 Branch preview:{' '}
-                <TextLink
-                  href={`https://github.com/seek-oss/braid-design-system/compare/master...${config.branchName}`}
-                  target="_blank"
-                  weight="weak"
+                <Disclosure
+                  id="preview-site-info"
+                  expandLabel={branchName}
+                  space="none"
                 >
-                  <Strong>{config.branchName}</Strong>
-                </TextLink>
+                  <TextLink
+                    href="https://seek-oss.github.io/braid-design-system/"
+                    target="_blank"
+                    weight="weak"
+                    icon={<IconNewWindow />}
+                    iconPosition="trailing"
+                  >
+                    Production site
+                  </TextLink>
+                  <br />
+                  <TextLink
+                    href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
+                    target="_blank"
+                    weight="weak"
+                    icon={<IconNewWindow />}
+                    iconPosition="trailing"
+                  >
+                    View diff on GitHub
+                  </TextLink>
+                </Disclosure>
               </Text>
             </Box>
           )}

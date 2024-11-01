@@ -39,6 +39,7 @@ jobs:
         env:
           BASE_NAME: /braid-design-system/preview/${{ github.sha }}
           BRANCH_NAME: ${{ github.ref_name }}
+          HEAD_BRANCH_NAME: ${{ github.head_ref }}
 
       - name: Deploy preview site
         uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # 4.6.0

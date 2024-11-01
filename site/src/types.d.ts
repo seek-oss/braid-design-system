@@ -10,6 +10,7 @@ export interface AppConfig {
   playroomUrl: string;
   sourceUrlPrefix: string;
   branchName?: string;
+  headBranchName?: string;
 }
 
 export interface RenderContext {

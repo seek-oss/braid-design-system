@@ -20,6 +20,7 @@ const skuRender: Render<RenderContext> = {
     const {
       BASE_NAME: routerBasename = '',
       BRANCH_NAME: branchName = '',
+      HEAD_BRANCH_NAME: headBranchName = 'master',
       GITHUB_SHA: prSha,
       CI,
     } = process.env;
@@ -38,6 +39,7 @@ const skuRender: Render<RenderContext> = {
       playroomUrl,
       sourceUrlPrefix,
       branchName,
+      headBranchName,
     };
 
     const today = new Date();
