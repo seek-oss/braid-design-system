@@ -48,13 +48,60 @@ const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ),
 );
 
+const PreviewBranchPanel = () => {
+  const { pathname, hash } = useLocation();
+  const { branchName, headBranchName } = useConfig();
+
+  return branchName ? (
+    <Box
+      position="fixed"
+      zIndex="sticky"
+      bottom={0}
+      right={0}
+      margin="medium"
+      boxShadow="small"
+      borderRadius="large"
+      background="cautionLight"
+      padding="medium"
+    >
+      <Text icon={<IconRocket />}>
+        Branch preview:{' '}
+        <Disclosure
+          id="preview-site-info"
+          expandLabel={branchName}
+          space="none"
+        >
+          <TextLink
+            href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
+            target="_blank"
+            weight="weak"
+            icon={<IconNewWindow />}
+            iconPosition="trailing"
+          >
+            Production site
+          </TextLink>
+          <br />
+          <TextLink
+            href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
+            target="_blank"
+            weight="weak"
+            icon={<IconNewWindow />}
+            iconPosition="trailing"
+          >
+            View diff on GitHub
+          </TextLink>
+        </Disclosure>
+      </Text>
+    </Box>
+  ) : null;
+};
+
 export const Navigation = () => {
   const lastScrollTop = useRef(0);
   const { y: scrollTop } = useWindowScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
-  const { branchName, headBranchName } = useConfig();
 
   const location = useLocation();
   useEffect(() => setDirection(null), [location]);
@@ -121,48 +168,7 @@ export const Navigation = () => {
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
           <Outlet />
-          {branchName && (
-            <Box
-              position="fixed"
-              zIndex="sticky"
-              bottom={0}
-              right={0}
-              margin="medium"
-              boxShadow="small"
-              borderRadius="large"
-              background="cautionLight"
-              padding="medium"
-            >
-              <Text icon={<IconRocket />}>
-                Branch preview:{' '}
-                <Disclosure
-                  id="preview-site-info"
-                  expandLabel={branchName}
-                  space="none"
-                >
-                  <TextLink
-                    href="https://seek-oss.github.io/braid-design-system/"
-                    target="_blank"
-                    weight="weak"
-                    icon={<IconNewWindow />}
-                    iconPosition="trailing"
-                  >
-                    Production site
-                  </TextLink>
-                  <br />
-                  <TextLink
-                    href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
-                    target="_blank"
-                    weight="weak"
-                    icon={<IconNewWindow />}
-                    iconPosition="trailing"
-                  >
-                    View diff on GitHub
-                  </TextLink>
-                </Disclosure>
-              </Text>
-            </Box>
-          )}
+          <PreviewBranchPanel />
         </Box>
       </Box>
 

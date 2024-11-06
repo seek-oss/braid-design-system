@@ -4,6 +4,7 @@ import type { AppConfig } from '../types';
 const defaultConfig: AppConfig = {
   playroomUrl: '/',
   sourceUrlPrefix: '',
+  headBranchName: 'master',
 };
 
 const context = createContext(defaultConfig);
