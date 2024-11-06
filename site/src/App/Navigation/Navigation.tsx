@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {
+  BraidProvider,
   ContentBlock,
   Hidden,
   IconChevron,
@@ -24,6 +25,7 @@ import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styles from './Navigation.css';
 import { ThemeToggle } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
+import { gradConnection } from 'braid-src/lib/themes';
 
 const Header = ({
   menuOpen,
@@ -57,71 +59,73 @@ const PreviewBranchPanel = () => {
   const { branchName, headBranchName } = useConfig();
 
   return branchName ? (
-    <Box
-      position="fixed"
-      zIndex="sticky"
-      bottom={0}
-      right={0}
-      padding={previewPanelSpace}
-      className={styles.maxWidthFull}
-    >
+    <BraidProvider theme={gradConnection} styleBody={false}>
       <Box
-        boxShadow="small"
-        borderRadius="large"
-        background="cautionLight"
+        position="fixed"
+        zIndex="sticky"
+        bottom={0}
+        right={0}
         padding={previewPanelSpace}
-        paddingRight="none" // Move to margin below the Menu appears flush with the edge
-        display="flex"
-        flexWrap="nowrap"
-        gap="xsmall"
+        className={styles.maxWidthFull}
       >
-        <Text icon={<IconRocket />}>
-          Branch<Hidden below="tablet">&nbsp;preview</Hidden>:
-        </Text>
-        <Box minWidth={0}>
-          <MenuRenderer
-            placement="top"
-            align="right"
-            offsetSpace={previewPanelSpace}
-            trigger={(triggerProps, { open }) => (
-              <Box
-                userSelect="none"
-                cursor="pointer"
-                marginRight={previewPanelSpace} // Ensure menu appears flush with the edge of container
-                {...triggerProps}
-                display="flex"
-                gap="xxsmall"
+        <Box
+          boxShadow="small"
+          borderRadius="large"
+          background="formAccentSoft"
+          padding={previewPanelSpace}
+          paddingRight="none" // Move to margin below the Menu appears flush with the edge
+          display="flex"
+          flexWrap="nowrap"
+          gap="xsmall"
+        >
+          <Text tone="formAccent" icon={<IconRocket />}>
+            Branch<Hidden below="tablet">&nbsp;preview</Hidden>:
+          </Text>
+          <Box minWidth={0}>
+            <MenuRenderer
+              placement="top"
+              align="right"
+              offsetSpace={previewPanelSpace}
+              trigger={(triggerProps, { open }) => (
+                <Box
+                  userSelect="none"
+                  cursor="pointer"
+                  marginRight={previewPanelSpace} // Ensure menu appears flush with the edge of container
+                  {...triggerProps}
+                  display="flex"
+                  gap="xxsmall"
+                >
+                  <Text tone="formAccent" weight="strong" maxLines={1}>
+                    {branchName}{' '}
+                  </Text>
+                  <Text tone="formAccent">
+                    <IconChevron
+                      direction={open ? 'down' : 'up'}
+                      alignY="lowercase"
+                    />
+                  </Text>
+                </Box>
+              )}
+            >
+              <MenuItemLink
+                href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
+                target="_blank"
+                icon={<IconNewWindow />}
               >
-                <Text weight="strong" maxLines={1}>
-                  {branchName}{' '}
-                </Text>
-                <Text>
-                  <IconChevron
-                    direction={open ? 'down' : 'up'}
-                    alignY="lowercase"
-                  />
-                </Text>
-              </Box>
-            )}
-          >
-            <MenuItemLink
-              href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
-              target="_blank"
-              icon={<IconNewWindow />}
-            >
-              Production site
-            </MenuItemLink>
-            <MenuItemLink
-              href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
-              target="_blank"
-              icon={<IconSocialGitHub />}
-            >
-              View diff on GitHub
-            </MenuItemLink>
-          </MenuRenderer>
+                Production site
+              </MenuItemLink>
+              <MenuItemLink
+                href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
+                target="_blank"
+                icon={<IconSocialGitHub />}
+              >
+                View diff on GitHub
+              </MenuItemLink>
+            </MenuRenderer>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </BraidProvider>
   ) : null;
 };
 
