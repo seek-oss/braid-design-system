@@ -27,7 +27,7 @@
     "generate:component-docs": "nx run site:generate:component-docs",
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
-    "release": "pnpm prepare-publish && changeset publish && pnpm build:site && pnpm run deploy",
+    "release": "pnpm prepare-publish && changeset publish",
     "prepare-publish": "pnpm build && pnpm build:docs-ui && tsx scripts/copyReadme.cts",
     "version": "changeset version && tsx scripts/versionComponentUpdates.cts && pnpm install --lockfile-only",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
@@ -70,7 +70,6 @@
     "eslint-config-seek": "^13.0.0",
     "fast-glob": "^3.2.12",
     "fs-extra": "^10.1.0",
-    "gh-pages": "^4.0.0",
     "ignore-sync": "^7.0.0",
     "jest": "^29.0.0",
     "jest-environment-jsdom": "^29.0.0",
@@ -80,14 +79,13 @@
     "prettier": "^2.8.8",
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
-    "surge": "^0.23.1",
     "tsx": "^4.7.0",
     "typescript": "~5.5.4"
   },
   "volta": {
     "node": "20.18.0"
   },
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.12.3",
   "pnpm": {
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",

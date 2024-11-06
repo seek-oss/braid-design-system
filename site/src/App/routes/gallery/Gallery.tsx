@@ -13,7 +13,8 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from 'recoil';
-import { chunk, memoize, range } from 'lodash';
+import chunk from 'lodash.chunk';
+import memoize from 'lodash.memoize';
 import copy from 'copy-to-clipboard';
 import panzoom from 'panzoom';
 
@@ -386,7 +387,7 @@ const Stage = ({ setName, jumpTo, title }: StageProps) => {
         <Box>
           {items.map((row, index) => (
             <Columns space="none" key={`row-${index}`}>
-              {range(rowLength).map((item) => (
+              {Array.from({ length: rowLength }).map((_, item) => (
                 <Column
                   key={`rowItem-${item}`}
                   width={row[item] ? 'content' : undefined}

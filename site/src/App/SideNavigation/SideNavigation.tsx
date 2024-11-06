@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import map from 'lodash/map';
 import guides from '../routes/guides';
 import foundations from '../routes/foundations';
 import examples from '../routes/examples';
@@ -73,7 +72,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
 
       <SideNavigationSection
         title="Guides"
-        items={map(guides, (guide, path) => ({
+        items={Object.entries(guides).map(([path, guide]) => ({
           name: guide.title,
           badge: guide.badge,
           path,
@@ -84,7 +83,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
 
       <SideNavigationSection
         title="Foundations"
-        items={map(foundations, (foundation, path) => ({
+        items={Object.entries(foundations).map(([path, foundation]) => ({
           name: foundation.title,
           badge: foundation.badge,
           path,
@@ -95,7 +94,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
 
       <SideNavigationSection
         title="Examples"
-        items={map(examples, (example, path) => ({
+        items={Object.entries(examples).map(([path, example]) => ({
           name: example.title,
           badge: example.badge,
           path,

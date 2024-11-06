@@ -108,3 +108,7 @@ globalStyle('html, body', {
   margin: 0,
   minHeight: '100%',
 });
+
+export const maxWidthFull = style({
+  maxWidth: '100%',
+});
