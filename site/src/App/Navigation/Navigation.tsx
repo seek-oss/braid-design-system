@@ -3,6 +3,7 @@ import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {
   ContentBlock,
+  Hidden,
   IconChevron,
   IconNewWindow,
   IconRocket,
@@ -61,53 +62,68 @@ const PreviewBranchPanel = () => {
       zIndex="sticky"
       bottom={0}
       right={0}
-      margin={previewPanelSpace}
-      boxShadow="small"
-      borderRadius="large"
-      background="cautionLight"
       padding={previewPanelSpace}
-      paddingRight="none" // Move to margin below the Menu appears flush with the edge
-      display="flex"
-      flexWrap="nowrap"
-      gap="xsmall"
+      className={styles.maxWidthFull}
     >
-      <Text icon={<IconRocket />}>Branch preview:</Text>
-      <MenuRenderer
-        placement="top"
-        align="right"
-        offsetSpace={previewPanelSpace}
-        trigger={(triggerProps, { open }) => (
-          <Box
-            userSelect="none"
-            cursor="pointer"
-            marginRight={previewPanelSpace} // Ensure menu appears flush with the edge of container
-            {...triggerProps}
-          >
-            <Text weight="strong">
-              {branchName}{' '}
-              <IconChevron
-                direction={open ? 'down' : 'up'}
-                alignY="lowercase"
-              />
-            </Text>
-          </Box>
-        )}
+      <Box
+        boxShadow="small"
+        borderRadius="large"
+        background="cautionLight"
+        padding={previewPanelSpace}
+        paddingRight="none" // Move to margin below the Menu appears flush with the edge
+        display="flex"
+        flexWrap="nowrap"
+        gap="xsmall"
       >
-        <MenuItemLink
-          href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
-          target="_blank"
-          icon={<IconNewWindow />}
-        >
-          Production site
-        </MenuItemLink>
-        <MenuItemLink
-          href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
-          target="_blank"
-          icon={<IconSocialGitHub />}
-        >
-          View diff on GitHub
-        </MenuItemLink>
-      </MenuRenderer>
+        <Text>
+          <IconRocket />
+        </Text>
+        <Hidden below="tablet">
+          <Text>Branch preview:</Text>
+        </Hidden>
+        <Box minWidth={0}>
+          <MenuRenderer
+            placement="top"
+            align="right"
+            offsetSpace={previewPanelSpace}
+            trigger={(triggerProps, { open }) => (
+              <Box
+                userSelect="none"
+                cursor="pointer"
+                marginRight={previewPanelSpace} // Ensure menu appears flush with the edge of container
+                {...triggerProps}
+                display="flex"
+                gap="xsmall"
+              >
+                <Text weight="strong" maxLines={1}>
+                  {branchName}{' '}
+                </Text>
+                <Text>
+                  <IconChevron
+                    direction={open ? 'down' : 'up'}
+                    alignY="lowercase"
+                  />
+                </Text>
+              </Box>
+            )}
+          >
+            <MenuItemLink
+              href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
+              target="_blank"
+              icon={<IconNewWindow />}
+            >
+              Production site
+            </MenuItemLink>
+            <MenuItemLink
+              href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
+              target="_blank"
+              icon={<IconSocialGitHub />}
+            >
+              View diff on GitHub
+            </MenuItemLink>
+          </MenuRenderer>
+        </Box>
+      </Box>
     </Box>
   ) : null;
 };
