@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
+      SITE_PREVIEW_PATH: ${{ github.ref_name }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -35,3 +36,18 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: pnpm build:site
+        env:
+          BASE_NAME: /braid-design-system/${{ env.SITE_PREVIEW_PATH }}
+          BRANCH_NAME: ${{ github.ref_name }}
+          HEAD_BRANCH_NAME: ${{ github.head_ref }}
+
+      - name: Deploy preview site
+        uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # 4.6.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: ./site/dist
+          target-folder: ${{ env.SITE_PREVIEW_PATH }}
+          commit-message: Preview of `${{ github.ref_name }}`
