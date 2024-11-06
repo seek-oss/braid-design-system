@@ -10,6 +10,9 @@ exports[`build Vanilla Extract files imported as side-effects 1`] = `
 ### dist/lib/themes/docs/index.mjs:
 1 │ import "./docsTheme.css.mjs";
 
+### dist/lib/themes/gradConnection/index.mjs:
+1 │ import "./gradConnection.css.mjs";
+
 ### dist/lib/themes/seekBusiness/index.mjs:
 1 │ import "./seekBusinessTheme.css.mjs";
 
