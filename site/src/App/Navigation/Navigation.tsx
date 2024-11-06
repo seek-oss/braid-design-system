@@ -105,9 +105,7 @@ const PreviewBranchPanel = () => {
             )}
           >
             <MenuItemLink
-              href={`https://seek-oss.github.io/braid-design-system${pathname}${
-                !pathname.endsWith('/') ? '/' : ''
-              }${hash}`}
+              href={`https://seek-oss.github.io/braid-design-system${pathname}${hash}`}
               target="_blank"
               icon={<IconNewWindow />}
             >
