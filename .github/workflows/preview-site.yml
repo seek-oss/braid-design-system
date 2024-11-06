@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
+      SITE_PREVIEW_PATH: preview/${{ github.sha }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -37,7 +38,7 @@ jobs:
       - name: Build
         run: pnpm build:site
         env:
-          BASE_NAME: /braid-design-system/preview/${{ github.sha }}
+          BASE_NAME: /braid-design-system/${{ env.SITE_PREVIEW_PATH }}
           BRANCH_NAME: ${{ github.ref_name }}
           HEAD_BRANCH_NAME: ${{ github.head_ref }}
 
@@ -46,11 +47,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           folder: ./site/dist
-          target-folder: preview/${{ github.sha }}
+          target-folder: ${{ env.SITE_PREVIEW_PATH }}
           commit-message: Preview of `${{ github.ref_name }}`
 
       - name: Update PR status
         run: pnpm post-commit-status
         env:
-          BASE_NAME: /braid-design-system/preview/${{ github.sha }}
+          BASE_NAME: /braid-design-system/${{ env.SITE_PREVIEW_PATH }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
