@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { List, Text, Stack, IconTick } from '../';
+import { List, Text, Stack, IconTick, Box } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
@@ -203,6 +203,31 @@ export const screenshots: ComponentScreenshot = {
         <List>
           <Placeholder height={60} />
         </List>
+      ),
+    },
+    {
+      label: 'Test: List should be left aligned in a centered Stack',
+      Example: () => (
+        <Stack space="large" align="center">
+          <List>
+            <Text>Enim elit eu et culpa non esse voluptate labore in ea.</Text>
+            <Text>Exercitation incididunt consequat.</Text>
+            <Text>Incididunt irure aliquip cillum occaecat irure.</Text>
+          </List>
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'Test: List should be left aligned in an element using centered text alignment',
+      Example: () => (
+        <Box textAlign="center">
+          <List>
+            <Text>Enim elit eu et culpa non esse voluptate labore in ea.</Text>
+            <Text>Exercitation incididunt consequat.</Text>
+            <Text>Incididunt irure aliquip cillum occaecat irure.</Text>
+          </List>
+        </Box>
       ),
     },
   ],

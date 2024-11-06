@@ -30,7 +30,3 @@ export const menu = style(
     },
   }),
 );
-
-export const groupHeading = style({
-  textTransform: 'uppercase',
-});

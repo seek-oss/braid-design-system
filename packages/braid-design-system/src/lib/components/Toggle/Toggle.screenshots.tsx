@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Toggle, Box, Tiles, Inline, Text } from '../';
+import { Toggle, Box, Tiles, Inline, Text, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
@@ -10,25 +10,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Toggle off',
       Example: ({ id, handler }) => (
-        <Toggle
-          on={false}
-          label="Toggled off"
-          id={id}
-          onChange={handler}
-          bleedY
-        />
+        <Toggle on={false} label="Toggled off" id={id} onChange={handler} />
       ),
     },
     {
       label: 'Toggle on',
       Example: ({ id, handler }) => (
-        <Toggle
-          on={true}
-          label="Toggled on"
-          id={id}
-          onChange={handler}
-          bleedY
-        />
+        <Toggle on={true} label="Toggled on" id={id} onChange={handler} />
       ),
     },
     {
@@ -40,7 +28,6 @@ export const screenshots: ComponentScreenshot = {
           label="Small"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -56,7 +43,6 @@ export const screenshots: ComponentScreenshot = {
           label="Aligned right"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -72,7 +58,6 @@ export const screenshots: ComponentScreenshot = {
           label="Justified"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -89,7 +74,6 @@ export const screenshots: ComponentScreenshot = {
             label="Justified"
             id={id}
             onChange={handler}
-            bleedY
           />
         </Box>
       ),
@@ -107,7 +91,6 @@ export const screenshots: ComponentScreenshot = {
           label="Aligned left, leading toggle"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -124,7 +107,6 @@ export const screenshots: ComponentScreenshot = {
           label="Aligned left, trailing toggle"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -141,7 +123,6 @@ export const screenshots: ComponentScreenshot = {
           label="Justified, leading toggle"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -158,7 +139,6 @@ export const screenshots: ComponentScreenshot = {
           label="Justified, trailing toggle"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -175,7 +155,6 @@ export const screenshots: ComponentScreenshot = {
           label="Right aligned, leading toggle"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -192,7 +171,6 @@ export const screenshots: ComponentScreenshot = {
           label="Right aligned, trailing toggle"
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -207,7 +185,6 @@ export const screenshots: ComponentScreenshot = {
           label="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
           id={id}
           onChange={handler}
-          bleedY
         />
       ),
     },
@@ -218,7 +195,7 @@ export const screenshots: ComponentScreenshot = {
       ),
       Example: ({ id, handler }) => (
         <Inline space="xsmall">
-          <Toggle on={true} label="Toggle" id={id} onChange={handler} bleedY />
+          <Toggle on={true} label="Toggle" id={id} onChange={handler} />
           <Text>Inline text</Text>
         </Inline>
       ),
@@ -236,7 +213,6 @@ export const screenshots: ComponentScreenshot = {
             id={id}
             onChange={handler}
             size="small"
-            bleedY
           />
           <Text size="small">Inline text</Text>
         </Inline>
@@ -252,7 +228,6 @@ export const screenshots: ComponentScreenshot = {
             label="Small"
             id={`${id}-1`}
             onChange={handler}
-            bleedY
           />
           <Toggle
             on={true}
@@ -260,7 +235,6 @@ export const screenshots: ComponentScreenshot = {
             label="Standard"
             id={`${id}-2`}
             onChange={handler}
-            bleedY
           />
         </Inline>
       ),
@@ -271,23 +245,24 @@ export const screenshots: ComponentScreenshot = {
         <Box maxWidth="xsmall">
           <BackgroundContrastTest>
             <Tiles space="small" columns={2}>
-              <Toggle
-                on={true}
-                label="Label"
-                id={id}
-                onChange={handler}
-                bleedY
-              />
-              <Toggle
-                on={false}
-                label="Label"
-                id={id}
-                onChange={handler}
-                bleedY
-              />
+              <Toggle on={true} label="Label" id={id} onChange={handler} />
+              <Toggle on={false} label="Label" id={id} onChange={handler} />
             </Tiles>
           </BackgroundContrastTest>
         </Box>
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Example: ({ id, handler }) => (
+        <Stack space="large" align="center">
+          <Toggle
+            on={true}
+            label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
+            id={id}
+            onChange={handler}
+          />
+        </Stack>
       ),
     },
   ],

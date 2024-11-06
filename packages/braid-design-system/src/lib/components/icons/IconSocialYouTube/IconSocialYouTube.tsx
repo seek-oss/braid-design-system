@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconSocialYouTubeSvg } from './IconSocialYouTubeSvg';
 
-export type IconSocialYouTubeProps = UseIconProps;
+export type IconSocialYouTubeProps = IconContainerProps;
 
-export const IconSocialYouTube = (props: IconSocialYouTubeProps) => {
-  const iconProps = useIcon(props);
-
-  return <Box component={IconSocialYouTubeSvg} {...iconProps} />;
-};
+export const IconSocialYouTube = (props: IconSocialYouTubeProps) => (
+  <IconContainer {...props}>
+    {(svgProps) => <Box component={IconSocialYouTubeSvg} {...svgProps} />}
+  </IconContainer>
+);

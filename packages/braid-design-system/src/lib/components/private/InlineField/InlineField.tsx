@@ -19,6 +19,7 @@ import {
   StyledInput,
 } from './StyledInput';
 import { virtualTouchable } from '../touchable/virtualTouchable.css';
+import { badgeSlotSpace } from '../badgeSlotSpace';
 import * as styles from './InlineField.css';
 
 interface InlineFieldBaseProps {
@@ -88,7 +89,7 @@ export const InlineField = forwardRef<
 
     return (
       <Box position="relative">
-        <Box display="flex">
+        <Box display="flex" textAlign="left">
           <StyledInput
             {...restProps}
             type={type}
@@ -130,7 +131,7 @@ export const InlineField = forwardRef<
                   size={size}
                 >
                   {badge ? (
-                    <Box component="span" paddingRight="xsmall">
+                    <Box component="span" paddingRight={badgeSlotSpace}>
                       {label}
                     </Box>
                   ) : (

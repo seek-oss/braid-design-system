@@ -43,6 +43,7 @@ export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
     return (
       <Field
         {...restProps}
+        componentName="Dropdown"
         disabled={disabled}
         prefix={undefined}
         secondaryMessage={null}

@@ -3,7 +3,6 @@ import 'braid-src/entries/reset';
 import React, { StrictMode, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import map from 'lodash/map';
 import { ThemeSettingProvider } from './ThemeSetting';
 import docsTheme from 'braid-src/entries/themes/docs';
 import {
@@ -97,16 +96,13 @@ export const App = () => {
               <Route element={<Navigation />}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/releases" element={<ReleasesPage />} />
-                {map(
-                  {
-                    ...guides,
-                    ...foundations,
-                    ...examples,
-                  },
-                  (routeProps, path) => (
-                    <Route key={path} {...routeProps} path={path} />
-                  ),
-                )}
+                {Object.entries({
+                  ...guides,
+                  ...foundations,
+                  ...examples,
+                }).map(([path, routeProps]) => (
+                  <Route key={path} {...routeProps} path={path} />
+                ))}
                 <Route path=":docsType">
                   <Route path=":docsName" element={<DocNavigation />}>
                     <Route path="" element={<DocDetails />} />

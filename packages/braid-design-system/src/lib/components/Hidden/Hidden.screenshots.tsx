@@ -8,6 +8,19 @@ export const screenshots: ComponentScreenshot = {
   screenshotOnlyInWireframe: true,
   examples: [
     {
+      label: 'Hidden always',
+      Example: () => (
+        <>
+          <Text>The following line is hidden always:</Text>
+          <Hidden>
+            <Box paddingTop="small">
+              <Text>Hidden always.</Text>
+            </Box>
+          </Hidden>
+        </>
+      ),
+    },
+    {
       label: 'Hidden below tablet',
       Example: () => (
         <>

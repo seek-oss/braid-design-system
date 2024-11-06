@@ -10,6 +10,7 @@ import {
   Text,
   Strong,
   Button,
+  Divider,
 } from '../../';
 
 const docs: ComponentDocs = {
@@ -46,8 +47,9 @@ const docs: ComponentDocs = {
       ),
       Example: ({ getState, setState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <IconThumb direction={getState('direction')} />
+            <Divider />
             <Inline space="small">
               <Button onClick={() => setState('direction', 'up')}>up</Button>
               <Button onClick={() => setState('direction', 'down')}>

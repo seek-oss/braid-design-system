@@ -1,6 +1,6 @@
 import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { FieldLabel, TextLink } from '../';
+import { FieldLabel, Stack, TextLink } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -84,6 +84,22 @@ export const screenshots: ComponentScreenshot = {
           tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
           description="Description visible without label or additional white space above"
         />
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Container,
+      Example: () => (
+        <Stack space="large" align="center">
+          <FieldLabel
+            htmlFor={false}
+            label="Enim elit eu et culpa non esse voluptate labore in ea."
+            secondaryLabel="Secondary"
+            tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
+            description="Enim elit eu et culpa non esse voluptate labore in ea. Incididunt
+            irure aliquip cillum occaecat irure."
+          />
+        </Stack>
       ),
     },
   ],

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@0.3.0/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@3.0.3/schema.json",
   "changelog": "./changelog",
   "commit": false,
   "linked": [],
@@ -8,10 +8,8 @@
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
   },
-  "ignore": [
-    "@braid-design-system/codemod",
-    "@braid-design-system/generate-component-docs",
-    "@braid-design-system/integration-tests",
-    "site"
-  ]
+  "privatePackages": { "version": false, "tag": false },
+  "snapshot": {
+    "useCalculatedVersion": true
+  }
 }

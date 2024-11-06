@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Alert, Box, TextLink, Toggle } from '../';
+import { Alert, Box, Divider, TextLink, Toggle } from '../';
 import { Text } from '../Text/Text';
 import { Strong } from '../Strong/Strong';
 import source from '@braid-design-system/source.macro';
@@ -15,7 +15,6 @@ const docs: ComponentDocs = {
         id={id}
         on={getState('toggle')}
         onChange={() => toggleState('toggle')}
-        bleedY
       />,
     ),
   alternatives: [
@@ -34,30 +33,29 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id, getState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Toggle
               label="Left"
               id={`${id}_1`}
               on={getState('toggle1')}
               onChange={() => toggleState('toggle1')}
               align="left"
-              bleedY
             />
+            <Divider />
             <Toggle
               label="Justify"
               id={`${id}_2`}
               on={getState('toggle2')}
               onChange={() => toggleState('toggle2')}
               align="justify"
-              bleedY
             />
+            <Divider />
             <Toggle
               label="Right"
               id={`${id}_3`}
               on={getState('toggle3')}
               onChange={() => toggleState('toggle3')}
               align="right"
-              bleedY
             />
           </Stack>,
         ),
@@ -79,28 +77,28 @@ const docs: ComponentDocs = {
       ),
       Example: ({ id, getState, toggleState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Toggle
               label="Leading"
               id={`${id}_leading`}
               on={getState('toggleLeading')}
               onChange={() => toggleState('toggleLeading')}
               togglePosition="leading"
-              bleedY
             />
+            <Divider />
             <Toggle
               label="Trailing"
               id={`${id}_trailing`}
               on={getState('toggleTrailing')}
               onChange={() => toggleState('toggleTrailing')}
               togglePosition="trailing"
-              bleedY
             />
           </Stack>,
         ),
     },
     {
       label: 'Vertical bleed',
+      deprecated: true,
       description: (
         <Fragment>
           <Text>
@@ -117,8 +115,10 @@ const docs: ComponentDocs = {
           </Text>
           <Alert tone="caution">
             <Text>
-              In the future this will become the standard behaviour. Migrating
-              layouts to work with this option now is recommended.
+              Vertical bleed is enabled by default, and will become the standard
+              in the future. It is recommended to remove the{' '}
+              <Strong>bleedY</Strong>
+              prop now and migrate your layout accordingly.
             </Text>
           </Alert>
           <Text>
@@ -171,7 +171,6 @@ const docs: ComponentDocs = {
               on={getState('two')}
               onChange={() => toggleState('two')}
               size="standard"
-              bleedY
             />
             <Toggle
               id={`${id}_small`}
@@ -179,7 +178,6 @@ const docs: ComponentDocs = {
               on={getState('one')}
               onChange={() => toggleState('one')}
               size="small"
-              bleedY
             />
           </Stack>,
         ),

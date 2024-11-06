@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box, Card } from '../';
+import { Box, Card, Stack, Text } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const screenshots: ComponentScreenshot = {
@@ -96,6 +96,19 @@ export const screenshots: ComponentScreenshot = {
             <Placeholder height={60} />
           </Card>
         </Box>
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Example: () => (
+        <Stack space="large" align="center">
+          <Card height="content">
+            <Text>
+              Enim elit eu et culpa non esse voluptate labore in ea. Incididunt
+              irure aliquip cillum occaecat irure.
+            </Text>
+          </Card>
+        </Stack>
       ),
     },
   ],

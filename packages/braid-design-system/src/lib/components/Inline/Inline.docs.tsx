@@ -1,7 +1,16 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Inline, Stack, Strong, Text, TextLink, Tiles } from '../';
+import {
+  Divider,
+  Inline,
+  Notice,
+  Stack,
+  Strong,
+  Text,
+  TextLink,
+  Tiles,
+} from '../';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
@@ -93,17 +102,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="medium" dividers align="center">
+          <Stack space="medium" align="center">
             <Inline space="small" alignY="top">
               <Placeholder width={60} height={20} />
               <Placeholder width={80} height={60} label="top" />
               <Placeholder width={60} height={20} />
             </Inline>
+            <Divider />
             <Inline space="small" alignY="center">
               <Placeholder width={60} height={20} />
               <Placeholder width={80} height={60} label="center" />
               <Placeholder width={60} height={20} />
             </Inline>
+            <Divider />
             <Inline space="small" alignY="bottom">
               <Placeholder width={60} height={20} />
               <Placeholder width={80} height={60} label="bottom" />
@@ -122,17 +133,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="medium" dividers>
+          <Stack space="medium">
             <Inline space="small" align="left">
               <Placeholder width={60} height={50} label="left" />
               <Placeholder width={80} height={50} />
               <Placeholder width={60} height={50} />
             </Inline>
+            <Divider />
             <Inline space="small" align="center">
               <Placeholder width={60} height={50} />
               <Placeholder width={80} height={50} label="center" />
               <Placeholder width={60} height={50} />
             </Inline>
+            <Divider />
             <Inline space="small" align="right">
               <Placeholder width={60} height={50} />
               <Placeholder width={80} height={50} />
@@ -176,9 +189,9 @@ const docs: ComponentDocs = {
                 Below “tablet”
               </Text>
               <Stack space="small">
-                <Placeholder width={48} height={48} />
-                <Placeholder width={48} height={48} />
-                <Placeholder width={48} height={48} />
+                <Placeholder height={48} />
+                <Placeholder height={48} />
+                <Placeholder height={48} />
               </Stack>
             </Stack>
           </Tiles>,
@@ -197,6 +210,83 @@ const docs: ComponentDocs = {
           value: visual,
         };
       },
+    },
+    {
+      label: 'Reversing the order',
+      description: (
+        <>
+          <Text>
+            By default, Inline renders its content in document order, which also
+            doubles as the screen reader order. The visual order can be flipped
+            using the <Strong>reverse</Strong> prop.
+          </Text>
+          <Text>
+            This is useful when navigating forward within a flow, where the
+            primary action is on the right when inline, and on top when
+            collapsed. For this reason, the default horizontal alignment when
+            reversed is to the <Strong>right</Strong>.
+          </Text>
+          <Notice>
+            <Text>
+              Reverse is only applied in combination with the{' '}
+              <Strong>collapseBelow</Strong> prop to ensure the content is
+              reversed on the same row, but follows the document order when
+              collapsed.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: () => {
+        const { value: visual } = source(
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Inline space="small" align="right">
+                <Placeholder height={48} label="Second" />
+                <Placeholder height={48} label="First" />
+              </Inline>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Stack space="small">
+                <Placeholder height={48} label="First" />
+                <Placeholder height={48} label="Second" />
+              </Stack>
+            </Stack>
+          </Tiles>,
+        );
+
+        const { code: codeDemo } = source(
+          <Inline space="small" collapseBelow="tablet" reverse>
+            <Placeholder height={48} label="First" />
+            <Placeholder height={48} label="Second" />
+          </Inline>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
+    },
+    {
+      label: 'Semantic elements',
+      description: (
+        <Text>
+          By default, Inline renders a <Strong>div</Strong> element. You can
+          customise this via the <Strong>component</Strong> prop.
+        </Text>
+      ),
+      code: source(
+        <Inline component="span" space="small">
+          <Placeholder width={40} height={40} />
+          <Placeholder width={40} height={40} />
+        </Inline>,
+      ).code,
     },
   ],
 };

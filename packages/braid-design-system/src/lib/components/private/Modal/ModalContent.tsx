@@ -130,6 +130,7 @@ export const ModalContent = ({
       height="full"
       display="flex"
       alignItems="center"
+      textAlign="left"
       justifyContent={justifyContent}
     >
       <Box

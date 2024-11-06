@@ -17,7 +17,7 @@ export const validPageBlockComponents = [
   'nav',
 ] as const;
 
-export const gutters = { mobile: 'xsmall', tablet: 'gutter' } as const;
+export const gutters = { mobile: 'small', tablet: 'gutter' } as const;
 
 interface Props {
   children: ReactNode;

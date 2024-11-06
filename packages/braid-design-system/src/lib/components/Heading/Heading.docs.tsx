@@ -9,7 +9,7 @@ import {
   Strong,
   TextLink,
   IconImage,
-  Alert,
+  Divider,
 } from '../';
 
 const docs: ComponentDocs = {
@@ -89,16 +89,19 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Heading level="2" align="left">
               Left
             </Heading>
+            <Divider />
             <Heading level="2" align="center">
               Center
             </Heading>
+            <Divider />
             <Heading level="2" align="right">
               Right
             </Heading>
+            <Divider />
             <Heading level="2" align={{ mobile: 'center', tablet: 'left' }}>
               Center on mobile
             </Heading>
@@ -108,20 +111,11 @@ const docs: ComponentDocs = {
     {
       label: 'Limiting the number of lines',
       description: (
-        <>
-          <Text>
-            When displaying user-generated content that may not fit within your
-            layout, you can control the number of lines to display with the{' '}
-            <Strong>maxLines</Strong> prop.
-          </Text>
-          <Alert tone="caution">
-            <Text>
-              The <Strong>truncate</Strong> prop has been deprecated in favour
-              of <Strong>{`maxLines={1}`}</Strong>, and will be removed in a
-              future version.
-            </Text>
-          </Alert>
-        </>
+        <Text>
+          When displaying user-generated content that may not fit within your
+          layout, you can control the number of lines to display with the{' '}
+          <Strong>maxLines</Strong> prop.
+        </Text>
       ),
       Example: () =>
         source(

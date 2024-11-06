@@ -32,7 +32,6 @@ export { Notice } from '../components/Notice/Notice.playroom';
 export { OverflowMenu } from '../components/OverflowMenu/OverflowMenu.playroom';
 export { Pagination } from '../components/Pagination/Pagination.playroom';
 export { PasswordField } from '../components/PasswordField/PasswordField.playroom';
-export { Radio } from '../components/Radio/Radio.playroom';
 export { RadioGroup } from '../components/RadioGroup/RadioGroup.playroom';
 export { Rating } from '../components/Rating/Rating.playroom';
 export { Spread } from '../components/Spread/Spread.playroom';

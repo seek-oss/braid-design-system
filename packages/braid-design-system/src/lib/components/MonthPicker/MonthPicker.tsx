@@ -201,6 +201,7 @@ const MonthPicker = ({
       disabled={disabled}
       value={customValueToString(currentValue)}
       {...restProps}
+      componentName="MonthPicker"
       icon={undefined}
       prefix={undefined}
       name={undefined}
@@ -227,7 +228,13 @@ const MonthPicker = ({
   );
 
   const customFieldGroup = (
-    <FieldGroup id={id} tone={tone} disabled={disabled} {...restProps}>
+    <FieldGroup
+      id={id}
+      tone={tone}
+      disabled={disabled}
+      componentName="MonthPicker"
+      {...restProps}
+    >
       {(fieldGroupProps) => (
         <Columns space="xsmall">
           <Column>

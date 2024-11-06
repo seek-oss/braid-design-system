@@ -894,42 +894,6 @@ describe('Autosuggest', () => {
     expect(getAnnouncements()).toBeNull();
   });
 
-  it('should support legacy no results messages via `suggestions`', async () => {
-    // Hide deprecation warning from test log
-    jest.spyOn(console, 'warn').mockImplementation(() => {});
-
-    const TestCase = () => (
-      <BraidTestProvider>
-        <Autosuggest
-          id="fruit"
-          label="Fruit"
-          value={{ text: '' }}
-          onChange={() => {}}
-          hideSuggestionsOnSelection={false}
-          suggestions={{ message: 'Legacy no suggestions message' }}
-        />
-      </BraidTestProvider>
-    );
-
-    const { getByRole, queryByRole } = render(<TestCase />);
-    expect(queryByRole('listitem')).not.toBeInTheDocument();
-    expect(getAnnouncements()).toBeNull();
-
-    const input = getByRole('combobox');
-    await userEvent.click(input);
-    expect(queryByRole('listitem')).toHaveTextContent(
-      'Legacy no suggestions message',
-    );
-    expect(getAnnouncements()).toBe('Legacy no suggestions message');
-
-    fireEvent.blur(input);
-    expect(queryByRole('listitem')).not.toBeInTheDocument();
-    expect(getAnnouncements()).toBeNull();
-
-    // Restore console warnings
-    jest.spyOn(console, 'warn').mockRestore();
-  });
-
   it('should not show `noSuggestionsMessage` when suggestions are provided', async () => {
     const TestCase = () => (
       <BraidTestProvider>

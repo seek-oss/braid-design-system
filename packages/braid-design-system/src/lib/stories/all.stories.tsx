@@ -3,7 +3,6 @@ import '../../entries/reset';
 import React, { type ReactNode, Fragment, useId } from 'react';
 import { storiesOf } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
-import { uniq, flatten, values } from 'lodash';
 import * as themes from '../themes';
 import type { ComponentScreenshot } from 'site/types';
 import { PlayroomStateProvider } from '../playroom/playroomState';
@@ -13,9 +12,11 @@ import { BraidProvider, ToastProvider } from '../components';
 import { Box } from '../components/Box/Box';
 import { darkMode } from '../css/atoms/sprinkles.css';
 
-const webFontLinkTags = uniq(
-  flatten(values(themes).map((theme) => theme.webFonts)).map(
-    (font) => font.linkTag,
+const webFontLinkTags = Array.from(
+  new Set(
+    Object.values(themes)
+      .flatMap((theme) => theme.webFonts)
+      .map((font) => font.linkTag),
   ),
 ).join('');
 document.head.innerHTML += webFontLinkTags;
@@ -109,7 +110,7 @@ Object.keys(allStories)
   .forEach((componentName) => {
     const stories = storiesOf(componentName, module);
     const docs = allStories[componentName];
-    const storyThemes = values(themes).filter((theme) => {
+    const storyThemes = Object.values(themes).filter((theme) => {
       if (theme.name === 'docs') {
         return false;
       }

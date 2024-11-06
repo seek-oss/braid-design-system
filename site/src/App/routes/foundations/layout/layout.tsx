@@ -308,36 +308,6 @@ const page: DocsPage = {
         )}
       </Code>
       <Text>
-        To visually break up content, you can insert dividers between all stack
-        elements by setting the{' '}
-        <TextLink href="/components/Stack#dividers">dividers</TextLink> prop on
-        Stack:
-      </Text>
-      <Code>
-        {source(
-          <Stack space="large" dividers={true}>
-            <Heading level="3">Heading</Heading>
-            <Text>{lipsum1}</Text>
-            <Text>{lipsum2}</Text>
-          </Stack>,
-        )}
-      </Code>
-      <Text>
-        If you’d prefer to take control over the placement of dividers, you can
-        use the <TextLink href="/components/Divider">Divider</TextLink>{' '}
-        component directly:
-      </Text>
-      <Code>
-        {source(
-          <Stack space="large">
-            <Heading level="3">Heading</Heading>
-            <Text>{lipsum1}</Text>
-            <Divider />
-            <Text>{lipsum2}</Text>
-          </Stack>,
-        )}
-      </Code>
-      <Text>
         Multiple <TextLink href="/components/Stack">Stack</TextLink> components
         can be nested to create more complex white space rules. For example, if
         you wanted to create multiple grouped blocks of text like you might see
@@ -762,50 +732,6 @@ const page: DocsPage = {
           <Tiles
             columns={{ mobile: 1, tablet: 3 }}
             space={{ mobile: 'xsmall', tablet: 'small' }}
-          >
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-            <Card>
-              <Text>Tile</Text>
-            </Card>
-          </Tiles>,
-        )}
-      </Code>
-
-      <Text>
-        When the tiles are collapsed to a single column, you can optionally show
-        dividers between them with the{' '}
-        <TextLink href="/components/Tiles#dividers">dividers</TextLink> prop:
-      </Text>
-
-      <Code>
-        {source(
-          <Tiles
-            columns={{ mobile: 1, tablet: 3 }}
-            space={{ mobile: 'none', tablet: 'small' }}
-            dividers
           >
             <Card>
               <Text>Tile</Text>

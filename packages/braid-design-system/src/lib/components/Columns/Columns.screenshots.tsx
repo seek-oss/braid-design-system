@@ -343,7 +343,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Reverse',
       Example: () => (
-        <Columns space="small" reverse>
+        <Columns space="small" collapseBelow="tablet" reverse>
           <Column>
             <Placeholder height={60} label="First" />
           </Column>

@@ -8,6 +8,7 @@ import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';
 
@@ -36,10 +37,11 @@ export const Notice = ({
     <Box
       role="alert"
       aria-live="polite"
+      textAlign="left"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <DefaultTextPropsProvider tone={tone}>
-        <Columns space="xsmall">
+        <Columns space={iconSlotSpace}>
           <Column width="content">
             <Text>
               <Icon />

@@ -11,10 +11,17 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import * as styles from './Hidden.css';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import dedent from 'dedent';
 
 export interface HiddenProps extends ResponsiveRangeProps {
   children: ReactNode;
   component?: BoxProps['component'];
+  /**
+   * @deprecated The "screen" prop is deprecated and will be removed in a future release.
+   *
+   * For content designed to improve the screen reader experience, please use use the `HiddenVisually` component instead.
+   * Alternatively, for content designed to be hidden unconditionally, remove the `screen` prop.
+   * */
   screen?: boolean;
   print?: boolean;
   inline?: boolean;
@@ -32,11 +39,16 @@ export const Hidden = ({
   data,
   ...restProps
 }: HiddenProps) => {
-  if (process.env.NODE_ENV === 'development' && screen) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `You used the "screen" prop on Hidden, but this probably doesn't do what you expect. If you're trying to provide content to screen readers without rendering it to the screen, use the <HiddenVisually> component instead. The "screen" prop is likely to be deprecated in a future release.`,
-    );
+  if (process.env.NODE_ENV === 'development') {
+    if (typeof screen !== 'undefined') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+        The "screen" prop is deprecated and will be removed in a future release.
+        For content designed to improve the screen reader experience, please use use the <HiddenVisually> component instead.
+        Alternatively, for content designed to be hidden unconditionally, remove the "screen" prop.`,
+      );
+    }
   }
 
   const inText = Boolean(useContext(TextContext));
@@ -44,6 +56,9 @@ export const Hidden = ({
 
   const hiddenOnScreen = Boolean(screen);
   const hiddenOnPrint = Boolean(print);
+
+  const hiddenAlways = hiddenOnScreen || (!above && !below && !print);
+
   const [hiddenOnMobile, hiddenOnTablet, hiddenOnDesktop, hiddenOnWide] =
     resolveResponsiveRangeProps({ above, below });
 
@@ -53,7 +68,7 @@ export const Hidden = ({
   return (
     <Box
       display={
-        hiddenOnScreen
+        hiddenAlways
           ? 'none'
           : optimizeResponsiveArray([
               hiddenOnMobile ? 'none' : display,

@@ -60,7 +60,7 @@ export default (
   { verticalCorrection = defaultVerticalCorrection }: PrivateIconProps = {},
   // TODO: COLORMODE RELEASE
   // Revert to BoxProps
-): PublicBoxProps => {
+): { isInline: boolean; svgProps: PublicBoxProps } => {
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
   const resolvedTone =
@@ -88,33 +88,39 @@ export default (
 
   if (size === 'fill') {
     return {
-      width: 'full',
-      height: 'full',
-      display: 'block',
-      className: toneClass,
-      ...buildDataAttributes({ data, validateRestProps: restProps }),
-      ...a11yProps,
+      isInline: false,
+      svgProps: {
+        width: 'full',
+        height: 'full',
+        display: 'block',
+        className: toneClass,
+        ...buildDataAttributes({ data, validateRestProps: restProps }),
+        ...a11yProps,
+      },
     };
   }
 
   return {
-    className: [
-      toneClass,
-      isInline
-        ? [
-            iconInlineSize({
-              alignY: alignY || 'uppercase',
-              verticalCorrection: verticalCorrection[alignY || 'uppercase'],
-            }),
-          ]
-        : [
-            atoms({
-              display: 'block',
-            }),
-            iconContainerSize(size),
-          ],
-    ],
-    ...buildDataAttributes({ data, validateRestProps: restProps }),
-    ...a11yProps,
+    isInline,
+    svgProps: {
+      className: [
+        toneClass,
+        isInline
+          ? [
+              iconInlineSize({
+                alignY: alignY || 'uppercase',
+                verticalCorrection: verticalCorrection[alignY || 'uppercase'],
+              }),
+            ]
+          : [
+              atoms({
+                display: 'block',
+              }),
+              iconContainerSize(size),
+            ],
+      ],
+      ...buildDataAttributes({ data, validateRestProps: restProps }),
+      ...a11yProps,
+    },
   };
 };

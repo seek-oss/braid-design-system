@@ -1,5 +1,4 @@
 import type { StyleRule } from '@vanilla-extract/css';
-import omit from 'lodash/omit';
 import type { Breakpoint } from '../css/breakpoints';
 
 interface RequiredTokens {
@@ -36,7 +35,7 @@ export const makeThemeUtils = (tokens: RequiredTokens) => {
     desktop,
     wide,
   }: ResponsiveStyle): StyleRule => ({
-    ...omit(mobile, '@media'),
+    ...mobile,
     ...(tablet || desktop || wide
       ? {
           '@media': {

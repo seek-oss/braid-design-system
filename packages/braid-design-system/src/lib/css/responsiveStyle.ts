@@ -1,12 +1,13 @@
-import omit from 'lodash/omit';
-import mapValues from 'lodash/mapValues';
+import { mapValues } from '../utils/mapValues';
 import type { StyleRule } from '@vanilla-extract/css';
 import { breakpoints } from './breakpoints';
+
+const { mobile: _, ...breakpointsAboveMobile } = breakpoints;
 
 type CSSProps = Omit<StyleRule, '@media' | '@supports'>;
 
 export const breakpointQuery = mapValues(
-  omit(breakpoints, 'mobile'),
+  breakpointsAboveMobile,
   (bp) => `screen and (min-width: ${bp}px)`,
 );
 
@@ -37,7 +38,7 @@ export const responsiveStyle = ({
   desktop,
   wide,
 }: ResponsiveStyle): StyleRule => ({
-  ...omit(mobile, '@media'),
+  ...mobile,
   ...(tablet || desktop || wide
     ? {
         '@media': {

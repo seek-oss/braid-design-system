@@ -9,13 +9,7 @@ describe('Toggle', () => {
   it('associates toggle with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Toggle
-          id="field"
-          label="My toggle"
-          onChange={() => {}}
-          on={false}
-          bleedY
-        />
+        <Toggle id="field" label="My toggle" onChange={() => {}} on={false} />
       </BraidTestProvider>,
     );
 
@@ -35,7 +29,6 @@ describe('Toggle', () => {
             on={false}
             onChange={() => {}}
             ref={ref}
-            bleedY
           />
         </BraidTestProvider>
       );

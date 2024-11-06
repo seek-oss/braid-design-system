@@ -100,33 +100,30 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
         <TextContext.Provider value={null}>
           <Box
             component="span"
-            display="flex"
+            id={id}
+            ref={ref}
+            tabIndex={tabIndex}
+            aria-describedby={ariaDescribedBy}
+            title={
+              title ??
+              (!ariaDescribedBy ? stringifyChildren(children) : undefined)
+            }
+            background={
+              weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
+            }
+            paddingY={styles.verticalPadding}
+            paddingX="xsmall"
+            borderRadius="standard"
+            overflow="hidden"
             cursor="default"
+            maxWidth="content"
+            display={!isInline ? 'flex' : undefined}
             className={isInline ? styles.inline : undefined}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <Box
-              component="span"
-              id={id}
-              ref={ref}
-              tabIndex={tabIndex}
-              aria-describedby={ariaDescribedBy}
-              title={
-                title ??
-                (!ariaDescribedBy ? stringifyChildren(children) : undefined)
-              }
-              background={
-                weight === 'strong' ? tone : lightModeBackgroundForTone[tone]
-              }
-              paddingY={styles.verticalPadding}
-              paddingX="xsmall"
-              borderRadius="standard"
-              overflow="hidden"
-            >
-              <Text size="xsmall" weight="medium" maxLines={1}>
-                {children}
-              </Text>
-            </Box>
+            <Text size="xsmall" weight="medium" maxLines={1}>
+              {children}
+            </Text>
           </Box>
         </TextContext.Provider>
       </DefaultTextPropsProvider>

@@ -11,6 +11,7 @@ import buildDataAttributes, {
 } from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
+import dedent from 'dedent';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 
@@ -52,6 +53,7 @@ type InternalFieldGroupProps = FieldGroupBaseProps &
     role?: FormElementProps['role'];
     messageSpace?: StackProps['space'];
     children(props: FieldGroupRenderProps): ReactNodeNoStrings;
+    componentName: string;
   };
 
 export const FieldGroup = ({
@@ -68,6 +70,7 @@ export const FieldGroup = ({
   required,
   role,
   data,
+  componentName,
   ...restProps
 }: InternalFieldGroupProps) => {
   const labelId = `${id}-label`;
@@ -82,6 +85,26 @@ export const FieldGroup = ({
     ariaLabelledBy = restProps['aria-labelledby'];
   } else if ('aria-label' in restProps && restProps['aria-label']) {
     ariaLabel = restProps['aria-label'];
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      'label' in restProps &&
+      typeof restProps.label === 'string' &&
+      restProps.label.trim().length === 0 &&
+      !('aria-label' in restProps) &&
+      !('aria-labelledby' in restProps)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The "label" prop is required as the accessible name for a ${componentName}.
+          If you are labelling the ${componentName} with another element or using a non-visual label please provide the appropriate props, either "aria-label" or "aria-labelledby".
+
+          See the ${componentName} documentation for more information: https://seek-oss.github.io/braid-design-system/components/${componentName}#indirect-or-hidden-field-labels
+        `,
+      );
+    }
   }
 
   return (

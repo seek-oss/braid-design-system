@@ -55,5 +55,18 @@ export const screenshots: ComponentScreenshot = {
         </Notice>
       ),
     },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Example: () => (
+        <Stack space="large" align="center">
+          <Notice tone="positive">
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque sodales hendrerit nulla.
+            </Text>
+          </Notice>
+        </Stack>
+      ),
+    },
   ],
 };

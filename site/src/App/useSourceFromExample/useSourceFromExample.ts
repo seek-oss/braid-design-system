@@ -1,7 +1,7 @@
-import noop from 'lodash/noop';
 import type { ComponentExample } from '../../types';
 import useScope from 'braid-src/lib/playroom/useScope';
 
+const noop = () => {};
 export const useSourceFromExample = (
   id: string,
   { Example, code: codeOverride }: Pick<ComponentExample, 'Example' | 'code'>,

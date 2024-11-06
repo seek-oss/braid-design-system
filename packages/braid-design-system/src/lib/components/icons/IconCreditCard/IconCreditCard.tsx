@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconCreditCardSvg } from './IconCreditCardSvg';
 
-export type IconCreditCardProps = UseIconProps;
+export type IconCreditCardProps = IconContainerProps;
 
-export const IconCreditCard = (props: IconCreditCardProps) => {
-  const iconProps = useIcon(props);
-
-  return <Box component={IconCreditCardSvg} {...iconProps} />;
-};
+export const IconCreditCard = (props: IconCreditCardProps) => (
+  <IconContainer {...props}>
+    {(svgProps) => <Box component={IconCreditCardSvg} {...svgProps} />}
+  </IconContainer>
+);

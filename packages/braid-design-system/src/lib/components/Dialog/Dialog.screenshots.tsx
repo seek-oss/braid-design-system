@@ -1,6 +1,6 @@
 import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Inline, Stack, Box } from '../';
+import { Inline, Stack, Box, Text } from '../';
 import { Placeholder } from '../../playroom/components';
 import { DialogContent } from './Dialog';
 import * as styles from '../private/Modal/Modal.css';
@@ -217,6 +217,27 @@ export const screenshots: ComponentScreenshot = {
             />
           </Box>
         </DialogContent>
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      gutter: false,
+      Container,
+      Example: ({ id }) => (
+        <Stack space="large" align="center">
+          <DialogContent
+            id={id}
+            title="Default test"
+            onClose={() => {}}
+            width="medium"
+            scrollLock={false}
+          >
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque sodales hendrerit nulla.
+            </Text>
+          </DialogContent>
+        </Stack>
       ),
     },
   ],

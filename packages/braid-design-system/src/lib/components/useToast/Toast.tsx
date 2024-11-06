@@ -138,6 +138,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       <Box
         display="flex"
         justifyContent="center"
+        textAlign="left"
         role="alert"
         ref={ref}
         onMouseEnter={stopTimeout}

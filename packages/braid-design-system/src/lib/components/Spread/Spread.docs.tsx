@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Spread, Stack, Strong, Text, Tiles } from '../';
+import { Divider, Spread, Stack, Strong, Text, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import source from '@braid-design-system/source.macro';
 
@@ -75,15 +75,17 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Spread space="small" alignY="top">
               <Placeholder height={30} width={80} label="top" />
               <Placeholder height={100} width={50} />
             </Spread>
+            <Divider />
             <Spread space="small" alignY="center">
               <Placeholder height={30} width={80} label="center" />
               <Placeholder height={100} width={50} />
             </Spread>
+            <Divider />
             <Spread space="small" alignY="bottom">
               <Placeholder height={30} width={80} label="bottom" />
               <Placeholder height={100} width={50} />
@@ -122,6 +124,21 @@ const docs: ComponentDocs = {
             </Spread>
           </Tiles>,
         ),
+    },
+    {
+      label: 'Semantic elements',
+      description: (
+        <Text>
+          By default, Spread renders a <Strong>div</Strong> element. You can
+          customise this via the <Strong>component</Strong> prop.
+        </Text>
+      ),
+      code: source(
+        <Spread component="span" space="small">
+          <Placeholder height={40} />
+          <Placeholder height={40} />
+        </Spread>,
+      ).code,
     },
   ],
 };

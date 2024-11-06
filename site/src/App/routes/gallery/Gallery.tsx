@@ -13,7 +13,8 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from 'recoil';
-import { chunk, memoize, range } from 'lodash';
+import chunk from 'lodash.chunk';
+import memoize from 'lodash.memoize';
 import copy from 'copy-to-clipboard';
 import panzoom from 'panzoom';
 
@@ -69,7 +70,10 @@ import {
   controller as controllerState,
 } from './galleryState';
 import { GalleryPanel } from './GalleryPanel';
-import useIcon, { type UseIconProps } from 'braid-src/lib/hooks/useIcon';
+import {
+  IconContainer,
+  type IconContainerProps,
+} from 'braid-src/lib/components/icons/IconContainer';
 import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
 import { Logo } from '../../Logo/Logo';
 
@@ -383,7 +387,7 @@ const Stage = ({ setName, jumpTo, title }: StageProps) => {
         <Box>
           {items.map((row, index) => (
             <Columns space="none" key={`row-${index}`}>
-              {range(rowLength).map((item) => (
+              {Array.from({ length: rowLength }).map((_, item) => (
                 <Column
                   key={`rowItem-${item}`}
                   width={row[item] ? 'content' : undefined}
@@ -767,8 +771,8 @@ const IconFitToScreenSvg = ({ title, titleId, ...props }: SVGProps) => (
   </svg>
 );
 
-const IconFitToScreen = (props: UseIconProps) => {
-  const iconProps = useIcon(props);
-
-  return <Box component={IconFitToScreenSvg} {...iconProps} />;
-};
+const IconFitToScreen = (props: IconContainerProps) => (
+  <IconContainer {...props}>
+    {(svgProps) => <Box component={IconFitToScreenSvg} {...svgProps} />}
+  </IconContainer>
+);

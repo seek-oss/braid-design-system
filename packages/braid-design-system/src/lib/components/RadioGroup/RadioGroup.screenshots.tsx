@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box, RadioGroup, RadioItem } from '../';
+import { Box, RadioGroup, RadioItem, Stack } from '../';
 import { Placeholder } from '../../playroom/components';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
@@ -278,6 +278,32 @@ export const screenshots: ComponentScreenshot = {
             )}
           </BackgroundContrastTest>
         </Box>
+      ),
+    },
+    {
+      label: 'Test: should be left aligned in a centered Stack',
+      Example: ({ handler }) => (
+        <Stack space="large" align="center">
+          <RadioGroup
+            id="arialabelledbywithdesc"
+            value="2"
+            onChange={handler}
+            label="Dolor cillum elit aliquip velit reprehenderit."
+            tone="critical"
+            message="Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit."
+            description="Nulla amet dolor sunt elit consequat proident eiusmod id. Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit."
+          >
+            <RadioItem label="Veniam voluptate minim consectetur." value="1" />
+            <RadioItem
+              label="Ex magna amet quis esse Lorem commodo. Consequat aliquip commodo ipsum reprehenderit."
+              value="2"
+            />
+            <RadioItem
+              label="Consequat tempor cupidatat pariatur ea eiusmod proident sit cupidatat magna duis."
+              value="3"
+            />
+          </RadioGroup>
+        </Stack>
       ),
     },
   ],

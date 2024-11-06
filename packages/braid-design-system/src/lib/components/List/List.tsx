@@ -98,7 +98,7 @@ export const List = ({
   children,
   size: sizeProp,
   tone: toneProp,
-  space = 'medium',
+  space: spaceProp,
   type = 'bullet',
   start = 1,
   data,
@@ -108,6 +108,11 @@ export const List = ({
     size: sizeProp,
     tone: toneProp,
   });
+
+  const defaultSpace =
+    size === 'xsmall' || size === 'small' ? 'xsmall' : 'small';
+  const space = spaceProp || defaultSpace;
+
   const listItems = flattenChildren(children) as ReactNodeNoStrings[];
   const lastNumberLength =
     type === 'number' ? (listItems.length + (start - 1)).toString().length : -1;
@@ -117,13 +122,14 @@ export const List = ({
       <Stack
         component={/^(bullet|icon)$/.test(type) ? 'ul' : 'ol'}
         space={space}
+        align="left"
         data={data}
       >
         {Children.map(listItems, (listItem, index) => {
           const resolvedIndex = index + (start - 1);
 
           return (
-            <Box display="flex">
+            <Box component="li" display="flex">
               <Text component="div" size={size} tone={tone}>
                 <Box
                   display="flex"

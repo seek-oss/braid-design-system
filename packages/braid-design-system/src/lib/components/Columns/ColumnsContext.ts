@@ -1,12 +1,21 @@
 import { createContext } from 'react';
 import type { Space } from '../../css/atoms/atoms';
-import type { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
+import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
+import type { Align } from '../../utils/align';
 
-export const validColumnsComponents = ['div', 'span'] as const;
-
-type CollapsibleAlignmentChildProps = ReturnType<
-  typeof resolveCollapsibleAlignmentProps
->['collapsibleAlignmentChildProps'];
+export const validColumnsComponents = [
+  'div',
+  'span',
+  'p',
+  'article',
+  'section',
+  'main',
+  'nav',
+  'aside',
+  'ul',
+  'ol',
+  'li',
+] as const;
 
 interface ColumnsContextValue {
   collapseMobile: boolean;
@@ -16,7 +25,7 @@ interface ColumnsContextValue {
   tabletSpace: Space;
   desktopSpace: Space;
   wideSpace: Space;
-  collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | null;
+  align: OptionalResponsiveValue<Align>;
   component: (typeof validColumnsComponents)[number];
 }
 
@@ -28,6 +37,6 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
   tabletSpace: 'none',
   desktopSpace: 'none',
   wideSpace: 'none',
-  collapsibleAlignmentChildProps: null,
+  align: 'left',
   component: 'div',
 });

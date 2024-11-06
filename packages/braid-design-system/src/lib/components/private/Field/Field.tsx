@@ -1,3 +1,4 @@
+import dedent from 'dedent';
 import assert from 'assert';
 import React, { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
 import clsx from 'clsx';
@@ -88,6 +89,7 @@ type InternalFieldProps = FieldBaseProps &
       secondaryIcon: ReactNode,
       prefix: ReactNode,
     ): ReactNode;
+    componentName: string;
   };
 
 export const Field = ({
@@ -110,12 +112,33 @@ export const Field = ({
   icon,
   prefix,
   required,
+  componentName,
   ...restProps
 }: InternalFieldProps) => {
   assert(
     prefix === undefined || typeof prefix === 'string',
     'Prefix must be a string',
   );
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      'label' in restProps &&
+      typeof restProps.label === 'string' &&
+      restProps.label.trim().length === 0 &&
+      !('aria-label' in restProps) &&
+      !('aria-labelledby' in restProps)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The "label" prop is required as the accessible name for a ${componentName}.
+          If you are labelling the ${componentName} with another element or using a non-visual label please provide the appropriate props, either "aria-label" or "aria-labelledby".
+
+          See the ${componentName} documentation for more information: https://seek-oss.github.io/braid-design-system/components/${componentName}#indirect-or-hidden-field-labels
+        `,
+      );
+    }
+  }
 
   const messageId = `${id}-message`;
   const descriptionId = description ? `${id}-description` : undefined;

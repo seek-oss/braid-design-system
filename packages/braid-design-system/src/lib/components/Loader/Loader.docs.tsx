@@ -10,6 +10,7 @@ import {
   TextLink,
   Strong,
   Button,
+  Divider,
 } from '../';
 import source from '@braid-design-system/source.macro';
 import { animationDelayValueInMs } from './Loader.css';
@@ -108,9 +109,9 @@ const docs: ComponentDocs = {
           <>
             {setDefaultState('counter', 0)}
 
-            <Stack space="large" dividers>
+            <Stack space="large">
               <Loader delayVisibility key={getState('counter')} />
-
+              <Divider />
               <Inline space="medium">
                 <Button
                   onClick={() => setState('counter', getState('counter') + 1)}

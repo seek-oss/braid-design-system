@@ -83,6 +83,7 @@ export const Alert = ({
       overflow="hidden"
       role="alert"
       aria-live="polite"
+      textAlign="left"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Columns space="small">

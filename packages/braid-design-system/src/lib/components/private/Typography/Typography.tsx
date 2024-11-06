@@ -6,15 +6,13 @@ import buildDataAttributes, {
 import { MaxLines } from '../MaxLines/MaxLines';
 import type { UseIconProps } from '../../../hooks/useIcon';
 import { alignToFlexAlign } from '../../../utils/align';
-import dedent from 'dedent';
 import { descenderCropFixForWebkitBox } from '../MaxLines/MaxLines.css';
+import { iconSlotSpace } from '../iconSlotSpace';
 
 export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   children?: ReactNode;
   icon?: ReactElement<UseIconProps>;
   align?: BoxProps['textAlign'];
-  /** @deprecated Use `maxLines={1}` instead. */
-  truncate?: boolean;
   maxLines?: number;
   data?: DataAttributeMap;
 }
@@ -27,38 +25,18 @@ export const Typography = ({
   component = 'span',
   className,
   align,
-  truncate = false,
   maxLines,
   icon,
   data,
   children,
   ...restProps
 }: PrivateTypographyProps) => {
-  const lines = truncate ? 1 : maxLines;
-  const isTruncated = typeof lines === 'number';
+  const isTruncated = typeof maxLines === 'number';
   const contents = isTruncated ? (
-    <MaxLines lines={lines}>{children}</MaxLines>
+    <MaxLines lines={maxLines}>{children}</MaxLines>
   ) : (
     children
   );
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (truncate) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        dedent`
-          The "truncate" prop has been deprecated and will be removed in a future version. Use "maxLines" instead.
-             <Text
-            %c-   truncate
-            %c+   maxLines={1}
-             %c/>
-        `,
-        'color: red',
-        'color: green',
-        'color: inherit',
-      );
-    }
-  }
 
   return (
     <Box
@@ -70,6 +48,7 @@ export const Typography = ({
         className,
         isTruncated ? descenderCropFixForWebkitBox : undefined,
       ]}
+      minWidth={isTruncated ? 0 : undefined}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {icon ? (
@@ -81,7 +60,7 @@ export const Typography = ({
           <Box
             component="span"
             display="block"
-            paddingRight="xsmall"
+            paddingRight={iconSlotSpace}
             flexGrow={0}
             flexShrink={0}
             minWidth={0}

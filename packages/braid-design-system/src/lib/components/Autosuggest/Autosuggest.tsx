@@ -33,7 +33,6 @@ import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
-import { useScrollIntoView } from './useScrollIntoView';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { RemoveScroll } from 'react-remove-scroll';
 import {
@@ -44,6 +43,7 @@ import {
   type AutosuggestTranslations,
   autosuggest,
 } from '../../translations/en';
+import { reverseMatches } from './reverseMatches';
 
 import * as styles from './Autosuggest.css';
 
@@ -207,13 +207,12 @@ function GroupHeading({ children }: GroupHeadingProps) {
     <Box
       paddingX="small"
       className={[
-        styles.groupHeading,
         touchableText.xsmall,
         textStyles({
-          size: 'xsmall',
-          baseline: false,
+          size: 'small',
+          baseline: true,
           weight: 'strong',
-          tone: 'formAccent',
+          tone: 'secondary',
         }),
       ]}
       data-testid={
@@ -272,12 +271,6 @@ const noop = () => {
 const fallbackValue = { text: '' };
 const fallbackSuggestions: Suggestion[] = [];
 
-/** @deprecated Use `noSuggestionsMessage` prop instead */
-interface LegacyMessageSuggestion {
-  /** @deprecated Use `noSuggestionsMessage` prop instead */
-  message: string;
-}
-
 type HighlightOptions = 'matching' | 'remaining';
 
 export type AutosuggestBaseProps<Value> = Omit<
@@ -287,10 +280,7 @@ export type AutosuggestBaseProps<Value> = Omit<
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
-    | LegacyMessageSuggestion
-    | ((
-        value: AutosuggestValue<Value>,
-      ) => Suggestions<Value> | LegacyMessageSuggestion);
+    | ((value: AutosuggestValue<Value>) => Suggestions<Value>);
   noSuggestionsMessage?: string | { title: string; description: string };
   onChange: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
@@ -312,33 +302,10 @@ export type AutosuggestProps<Value> = AutosuggestBaseProps<Value> &
 
 function normaliseNoSuggestionMessage<Value>(
   noSuggestionsMessage: AutosuggestBaseProps<Value>['noSuggestionsMessage'],
-  suggestionProp: AutosuggestBaseProps<Value>['suggestions'],
 ): { title?: string; description: string } | undefined {
-  if (noSuggestionsMessage) {
-    return typeof noSuggestionsMessage === 'string'
-      ? { description: noSuggestionsMessage }
-      : noSuggestionsMessage;
-  }
-
-  if ('message' in suggestionProp) {
-    const message = suggestionProp.message;
-    if (process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        dedent`
-          Passing \`message\` to \`suggestions\` is deprecated and will be removed in a future version. Use "noSuggestionsMessage" instead. See the documentation for usage: https://seek-oss.github.io/braid-design-system/components/Autosuggest#messaging-when-no-suggestions-are-available
-             <Autosuggest
-            %c-   suggestions={{ message: '${message}' }}
-            %c+   noSuggestionsMessage="${message}"
-             %c/>
-        `,
-        'color: red',
-        'color: green',
-        'color: inherit',
-      );
-    }
-    return { description: message };
-  }
+  return typeof noSuggestionsMessage === 'string'
+    ? { description: noSuggestionsMessage }
+    : noSuggestionsMessage;
 }
 
 export function highlightSuggestions(
@@ -346,14 +313,13 @@ export function highlightSuggestions(
   value: string,
   variant: HighlightOptions = 'matching',
 ): SuggestionMatch {
-  const matches = matchHighlights(suggestion, value);
+  const matchedHighlights = matchHighlights(suggestion, value);
+  const matches =
+    variant === 'matching'
+      ? matchedHighlights
+      : reverseMatches(suggestion, matchedHighlights);
 
-  const formattedMatches =
-    variant === 'remaining'
-      ? matches.map(([_, end]) => ({ start: end, end: suggestion.length }))
-      : matches.map(([start, end]) => ({ start, end }));
-
-  return formattedMatches;
+  return matches.map(([start, end]) => ({ start, end }));
 }
 
 export const Autosuggest = forwardRef(function <Value>(
@@ -389,7 +355,6 @@ export const Autosuggest = forwardRef(function <Value>(
     : [];
   const noSuggestionsMessage = normaliseNoSuggestionMessage(
     noSuggestionsMessageProp,
-    suggestionsPropValue,
   );
   const hasItems = suggestions.length > 0 || Boolean(noSuggestionsMessage);
 
@@ -582,7 +547,7 @@ export const Autosuggest = forwardRef(function <Value>(
       ? document.getElementById(getItemId(id, highlightedIndex))
       : null;
 
-  useScrollIntoView(highlightedItem, menuRef.current);
+  highlightedItem?.scrollIntoView({ block: 'nearest' });
 
   useEffect(() => {
     dispatch({
@@ -771,6 +736,7 @@ export const Autosuggest = forwardRef(function <Value>(
         <Box position="relative" ref={rootRef}>
           <Field
             {...restProps}
+            componentName="Autosuggest"
             id={id}
             value={value.text}
             prefix={undefined}
@@ -800,6 +766,7 @@ export const Autosuggest = forwardRef(function <Value>(
                 {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
                 <RemoveScroll ref={menuRef} enabled={isOpen} forwardProps>
                   <Box
+                    textAlign="left"
                     component="ul"
                     display={isOpen ? 'block' : 'none'}
                     position="absolute"

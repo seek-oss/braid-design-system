@@ -2,6 +2,7 @@ import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { Box, ButtonIcon, Inline, Heading, IconBookmark, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { LayoutTest } from '../../utils/LayoutTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
@@ -133,28 +134,6 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Tone - secondary (deprecated)',
-      background: 'surface',
-      Example: () => (
-        <Inline space="large" alignY="center">
-          <ButtonIcon
-            variant="transparent"
-            tone="secondary"
-            icon={<IconBookmark />}
-            label="Bookmark"
-            id="1"
-          />
-          <ButtonIcon
-            variant="soft"
-            tone="secondary"
-            icon={<IconBookmark />}
-            label="Bookmark"
-            id="1"
-          />
-        </Inline>
-      ),
-    },
-    {
       label: 'Virtual touch target',
       Example: () => (
         <Stack space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
@@ -261,8 +240,8 @@ export const screenshots: ComponentScreenshot = {
           <ButtonIcon
             bleed={false}
             variant="transparent"
-            tone="secondary"
-            icon={<IconBookmark active tone="formAccent" />}
+            tone="formAccent"
+            icon={<IconBookmark active tone="brandAccent" />}
             label="Bookmark"
             id="1"
           />
@@ -284,6 +263,14 @@ export const screenshots: ComponentScreenshot = {
             />
           </Inline>
         </BackgroundContrastTest>
+      ),
+    },
+    {
+      label: 'Layout',
+      Example: () => (
+        <LayoutTest>
+          <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="1" />
+        </LayoutTest>
       ),
     },
   ],

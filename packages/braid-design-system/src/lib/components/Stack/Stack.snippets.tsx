@@ -23,6 +23,15 @@ export const snippets: Snippets = [
     ),
   },
   {
+    name: 'Titled content',
+    code: source(
+      <Stack space="small">
+        <Heading level="4">Heading</Heading>
+        <Text>Standard Text</Text>
+      </Stack>,
+    ),
+  },
+  {
     name: 'Content groups',
     code: source(
       <Stack space="medium">

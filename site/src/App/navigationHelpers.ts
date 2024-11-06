@@ -1,4 +1,3 @@
-import groupBy from 'lodash/groupBy';
 import * as components from 'braid-src/lib/components';
 import * as testComponents from 'braid-src/entries/test';
 import * as css from 'braid-src/entries/css';
@@ -93,9 +92,15 @@ export const documentedComponents = documentedComponentNames.map((name) => {
   return { name, ...docs };
 });
 
-export const categorisedComponents = groupBy(
-  documentedComponents,
-  (component) => component.category,
+export const categorisedComponents = documentedComponents.reduce(
+  (acc, component) => ({
+    ...acc,
+    [component.category]: [...(acc[component.category] || []), component],
+  }),
+  {} as Record<
+    (typeof documentedComponents)[number]['category'],
+    Array<(typeof documentedComponents)[number]>
+  >,
 );
 
 const getComponentNameFromFilename = (filename: string) => {

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Box, PageBlock, TextLink } from '../';
+import { Box, ContentBlock, PageBlock, Stack, TextLink } from '../';
 import source from '@braid-design-system/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
@@ -68,18 +68,55 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      playroom: false,
-      code: false,
-      Example: () =>
-        source(
-          <Box background="formAccent">
+      Example: () => {
+        const { value: visual } = source(
+          <Stack space="xlarge">
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                On “tablet” and above
+              </Text>
+              <Box background="promote" paddingX={gutters.tablet}>
+                <ContentBlock width="medium">
+                  <Box background="surface">
+                    <Placeholder height={100} />
+                  </Box>
+                </ContentBlock>
+              </Box>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                Below “tablet”
+              </Text>
+              <Box
+                background="promote"
+                paddingX={gutters.mobile}
+                maxWidth="xsmall"
+              >
+                <ContentBlock width="medium">
+                  <Box background="surface">
+                    <Placeholder height={100} />
+                  </Box>
+                </ContentBlock>
+              </Box>
+            </Stack>
+          </Stack>,
+        );
+
+        const { code: codeDemo } = source(
+          <Box background="promote">
             <PageBlock width="medium">
               <Box background="surface">
                 <Placeholder height={100} />
               </Box>
             </PageBlock>
           </Box>,
-        ),
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
 
     {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '../../Box/Box';
-import useIcon, { type UseIconProps } from '../../../hooks/useIcon';
+import { IconContainer, type IconContainerProps } from '../IconContainer';
 import { IconComposeSvg } from './IconComposeSvg';
 
-export type IconComposeProps = UseIconProps;
+export type IconComposeProps = IconContainerProps;
 
-export const IconCompose = (props: IconComposeProps) => {
-  const iconProps = useIcon(props);
-
-  return <Box component={IconComposeSvg} {...iconProps} />;
-};
+export const IconCompose = (props: IconComposeProps) => (
+  <IconContainer {...props}>
+    {(svgProps) => <Box component={IconComposeSvg} {...svgProps} />}
+  </IconContainer>
+);

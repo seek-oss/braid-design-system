@@ -58,16 +58,5 @@ export const galleryItems: GalleryComponent = {
           </Tiles>,
         ),
     },
-    {
-      label: 'Dividers (when in single column)',
-      Example: () =>
-        source(
-          <Tiles space="medium" columns={1} dividers>
-            <Placeholder height={80} />
-            <Placeholder height={80} />
-            <Placeholder height={80} />
-          </Tiles>,
-        ),
-    },
   ],
 };

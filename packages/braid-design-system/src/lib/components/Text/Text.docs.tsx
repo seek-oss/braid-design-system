@@ -9,7 +9,7 @@ import {
   Inline,
   List,
   IconImage,
-  Alert,
+  Divider,
 } from '../';
 import source from '@braid-design-system/source.macro';
 
@@ -87,10 +87,13 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Text align="left">Left</Text>
+            <Divider />
             <Text align="center">Center</Text>
+            <Divider />
             <Text align="right">Right</Text>
+            <Divider />
             <Text align={{ mobile: 'center', tablet: 'left' }}>
               Center on mobile
             </Text>
@@ -100,20 +103,11 @@ const docs: ComponentDocs = {
     {
       label: 'Limiting the number of lines',
       description: (
-        <>
-          <Text>
-            When displaying user-generated content that may not fit within your
-            layout, you can control the number of lines to display with the{' '}
-            <Strong>maxLines</Strong> prop.
-          </Text>
-          <Alert tone="caution">
-            <Text>
-              The <Strong>truncate</Strong> prop has been deprecated in favour
-              of <Strong>{`maxLines={1}`}</Strong>, and will be removed in a
-              future version.
-            </Text>
-          </Alert>
-        </>
+        <Text>
+          When displaying user-generated content that may not fit within your
+          layout, you can control the number of lines to display with the{' '}
+          <Strong>maxLines</Strong> prop.
+        </Text>
       ),
       Example: () =>
         source(

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
-import { Spread, Stack, Tiles } from '../';
+import { Divider, Spread, Stack, Tiles } from '../';
 import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
@@ -40,15 +40,17 @@ export const galleryItems: GalleryComponent = {
       label: 'Vertical alignment',
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Spread space="small" alignY="top">
               <Placeholder height={30} width={80} label="top" />
               <Placeholder height={100} width={50} />
             </Spread>
+            <Divider />
             <Spread space="small" alignY="center">
               <Placeholder height={30} width={80} label="center" />
               <Placeholder height={100} width={50} />
             </Spread>
+            <Divider />
             <Spread space="small" alignY="bottom">
               <Placeholder height={30} width={80} label="bottom" />
               <Placeholder height={100} width={50} />
@@ -60,15 +62,17 @@ export const galleryItems: GalleryComponent = {
       label: 'Horizontal alignment',
       Example: () =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <Spread space="small" direction="vertical" align="left">
               <Placeholder height={60} width={80} label="left" />
               <Placeholder height={30} width={50} />
             </Spread>
+            <Divider />
             <Spread space="small" direction="vertical" align="center">
               <Placeholder height={30} width={80} label="center" />
               <Placeholder height={30} width={100} />
             </Spread>
+            <Divider />
             <Spread space="small" direction="vertical" align="right">
               <Placeholder height={90} width={80} label="right" />
               <Placeholder height={30} width={50} />

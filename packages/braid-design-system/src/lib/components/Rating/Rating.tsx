@@ -2,12 +2,14 @@ import React from 'react';
 import assert from 'assert';
 import dedent from 'dedent';
 import { useBackground } from '../Box/BackgroundContext';
-import useIcon, { type UseIconProps } from '../../hooks/useIcon';
+import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
 import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
 import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
+import { IconContainer } from '../icons/IconContainer';
 import { IconStarActiveSvg as IconStarFullSvg } from '../icons/IconStar/IconStarActiveSvg';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 import * as styles from './Rating.css';
 
 const getPercent = (rating: number, position: number) =>
@@ -18,8 +20,6 @@ type RatingStar = {
 } & UseIconProps;
 const RatingStar = ({ percent, ...restProps }: RatingStar) => {
   const currentBg = useBackground();
-  const { className, ...iconProps } = useIcon(restProps);
-
   let component = IconStarEmptySvg;
 
   if (percent >= 25 && percent < 75) {
@@ -31,21 +31,27 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
   }
 
   return (
-    <Box
-      component={component}
-      {...iconProps}
-      className={[
-        className,
-        {
-          [styles.lightModeStarColor]:
-            currentBg.lightMode === 'body' || currentBg.lightMode === 'surface',
-        },
-        {
-          [styles.darkModeStarColor]:
-            currentBg.darkMode === 'body' || currentBg.darkMode === 'surface',
-        },
-      ]}
-    />
+    <IconContainer {...restProps}>
+      {({ className, ...svgProps }) => (
+        <Box
+          component={component}
+          {...svgProps}
+          className={[
+            className,
+            {
+              [styles.lightModeStarColor]:
+                currentBg.lightMode === 'body' ||
+                currentBg.lightMode === 'surface',
+            },
+            {
+              [styles.darkModeStarColor]:
+                currentBg.darkMode === 'body' ||
+                currentBg.darkMode === 'surface',
+            },
+          ]}
+        />
+      )}
+    </IconContainer>
   );
 };
 
@@ -53,8 +59,6 @@ const ratingArr = [...Array(5)];
 interface RatingBaseProps {
   rating: number;
   size?: TextProps['size'];
-  /** @deprecated Use `variant="starsOnly"` instead */
-  showTextRating?: boolean;
   'aria-label'?: string;
   data?: TextProps['data'];
 }
@@ -73,8 +77,7 @@ export const Rating = ({
   rating,
   size = 'standard',
   weight,
-  showTextRating,
-  variant: variantProp,
+  variant = 'full',
   'aria-label': ariaLabel,
   data,
 }: RatingProps) => {
@@ -83,28 +86,8 @@ export const Rating = ({
     'Rating must be between 0 and 5',
   );
 
-  const variant = variantProp || 'full';
-  const resolvedVariant =
-    showTextRating === false && !variantProp ? 'starsOnly' : variant;
-
   if (process.env.NODE_ENV !== 'production') {
-    if (typeof showTextRating !== 'undefined') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        dedent`
-          The "showTextRating" prop has been deprecated and will be removed in a future version. Use \`variant="starsOnly"\` instead.
-             <Rating
-            %c-   showTextRating={false}
-            %c+   variant="starsOnly"
-             %c/>
-        `,
-        'color: red',
-        'color: green',
-        'color: inherit',
-      );
-    }
-
-    if (typeof weight !== 'undefined' && resolvedVariant === 'starsOnly') {
+    if (typeof weight !== 'undefined' && variant === 'starsOnly') {
       // eslint-disable-next-line no-console
       console.warn(
         dedent`
@@ -123,32 +106,22 @@ export const Rating = ({
   return (
     <Text size={size} data={data} weight={weight}>
       <Box
-        display="inlineBlock"
+        component="span"
+        className={styles.inlineFlex}
         aria-label={
           ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
         }
       >
-        {resolvedVariant === 'minimal' ? (
-          <Box display="inlineBlock" aria-hidden={true}>
-            <RatingStar percent={100} />
-          </Box>
+        {variant === 'minimal' ? (
+          <RatingStar percent={100} />
         ) : (
           ratingArr.map((_, position) => (
-            <Box
-              key={position}
-              display="inlineBlock"
-              aria-hidden={true}
-              className={{
-                [styles.starSpacing]: position !== ratingArr.length - 1,
-              }}
-            >
-              <RatingStar percent={getPercent(rating, position)} />
-            </Box>
+            <RatingStar key={position} percent={getPercent(rating, position)} />
           ))
         )}
       </Box>
-      {resolvedVariant !== 'starsOnly' && (
-        <Box component="span" className={styles.textSpacing} aria-hidden={true}>
+      {variant !== 'starsOnly' && (
+        <Box component="span" paddingLeft={iconSlotSpace} aria-hidden={true}>
           {rating.toFixed(1)}
         </Box>
       )}

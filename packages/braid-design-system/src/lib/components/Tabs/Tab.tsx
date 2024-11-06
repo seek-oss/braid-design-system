@@ -36,6 +36,7 @@ import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
 import { useSpace } from '../useSpace/useSpace';
 import type { BraidTokens } from '../../themes/tokenType';
+import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import * as styles from './Tabs.css';
 
 export interface TabProps {
@@ -294,7 +295,7 @@ export const Tab = ({
       </Box>
 
       {badge ? (
-        <Box component="span" paddingLeft="xsmall">
+        <Box component="span" paddingLeft={badgeSlotSpace}>
           {cloneElement(badge, { bleedY: true })}
         </Box>
       ) : null}

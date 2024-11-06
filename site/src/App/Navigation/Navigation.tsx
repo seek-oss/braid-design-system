@@ -1,7 +1,17 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
-import { ContentBlock } from 'braid-src/lib/components';
+import {
+  ContentBlock,
+  Hidden,
+  IconChevron,
+  IconNewWindow,
+  IconRocket,
+  IconSocialGitHub,
+  MenuItemLink,
+  MenuRenderer,
+  Text,
+} from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
@@ -13,6 +23,7 @@ import { Logo } from '../Logo/Logo';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styles from './Navigation.css';
 import { ThemeToggle } from '../ThemeSetting';
+import { useConfig } from '../ConfigContext';
 
 const Header = ({
   menuOpen,
@@ -39,6 +50,80 @@ const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
     </Box>
   ),
 );
+
+const previewPanelSpace = 'medium';
+const PreviewBranchPanel = () => {
+  const { pathname, hash } = useLocation();
+  const { branchName, headBranchName } = useConfig();
+
+  return branchName ? (
+    <Box
+      position="fixed"
+      zIndex="sticky"
+      bottom={0}
+      right={0}
+      padding={previewPanelSpace}
+      className={styles.maxWidthFull}
+    >
+      <Box
+        boxShadow="small"
+        borderRadius="large"
+        background="cautionLight"
+        padding={previewPanelSpace}
+        paddingRight="none" // Move to margin below the Menu appears flush with the edge
+        display="flex"
+        flexWrap="nowrap"
+        gap="xsmall"
+      >
+        <Text icon={<IconRocket />}>
+          Branch<Hidden below="tablet">&nbsp;preview</Hidden>:
+        </Text>
+        <Box minWidth={0}>
+          <MenuRenderer
+            placement="top"
+            align="right"
+            offsetSpace={previewPanelSpace}
+            trigger={(triggerProps, { open }) => (
+              <Box
+                userSelect="none"
+                cursor="pointer"
+                marginRight={previewPanelSpace} // Ensure menu appears flush with the edge of container
+                {...triggerProps}
+                display="flex"
+                gap="xxsmall"
+              >
+                <Text weight="strong" maxLines={1}>
+                  {branchName}{' '}
+                </Text>
+                <Text>
+                  <IconChevron
+                    direction={open ? 'down' : 'up'}
+                    alignY="lowercase"
+                  />
+                </Text>
+              </Box>
+            )}
+          >
+            <MenuItemLink
+              href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
+              target="_blank"
+              icon={<IconNewWindow />}
+            >
+              Production site
+            </MenuItemLink>
+            <MenuItemLink
+              href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
+              target="_blank"
+              icon={<IconSocialGitHub />}
+            >
+              View diff on GitHub
+            </MenuItemLink>
+          </MenuRenderer>
+        </Box>
+      </Box>
+    </Box>
+  ) : null;
+};
 
 export const Navigation = () => {
   const lastScrollTop = useRef(0);
@@ -112,6 +197,7 @@ export const Navigation = () => {
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
           <Outlet />
+          <PreviewBranchPanel />
         </Box>
       </Box>
 

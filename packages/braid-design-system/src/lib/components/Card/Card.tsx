@@ -84,6 +84,7 @@ export const Card = ({
       borderRadius={roundingForTheme}
       boxShadow={!isLegacyTheme ? 'borderNeutralLight' : undefined}
       height={height === 'full' ? height : undefined}
+      textAlign="left"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {tone ? <Keyline tone={tone} borderRadius={roundingForTheme} /> : null}

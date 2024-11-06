@@ -1,17 +1,13 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
-export const column = style({});
-
-export const columnContent = style({
-  selectors: {
-    [`${column}:first-child > &`]: {
-      paddingTop: 0,
-    },
+export const noSpaceBeforeFirstWhenCollapsed = style({
+  ':first-child': {
+    paddingTop: 0,
   },
 });
 
 const getSizeStyle = (scale: number) => ({
-  flex: `0 0 ${scale * 100}%`,
+  flexBasis: `${scale * 100}%`,
 });
 
 export const width = styleVariants({

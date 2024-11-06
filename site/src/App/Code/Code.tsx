@@ -1,7 +1,7 @@
 import React, { type ReactElement, useState, useEffect, useRef } from 'react';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
-import memoize from 'lodash/memoize';
+import memoize from 'lodash.memoize';
 import prettier from 'prettier/standalone';
 import reactElementToJsxString from 'react-element-to-jsx-string';
 import typescriptParser from 'prettier/parser-typescript';

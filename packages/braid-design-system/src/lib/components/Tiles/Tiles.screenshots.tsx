@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Tiles, Box, Text } from '../';
+import { Box, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const exampleRows = 3;
@@ -30,48 +30,36 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Dividers (when in a single column)',
-      Example: () => (
-        <Tiles space={['none', 'small']} columns={[1, 2]} dividers>
-          {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Box background="surface" padding="gutter" key={i}>
-              <Text>Tile</Text>
-            </Box>
-          ))}
-        </Tiles>
-      ),
-    },
-    {
-      label: 'Strong dividers (when in a single column)',
-      Example: () => (
-        <Tiles space={['none', 'small']} columns={[1, 2]} dividers="strong">
-          {[...new Array(2 * exampleRows)].map((_, i) => (
-            <Box background="surface" padding="gutter" key={i}>
-              <Text>Tile</Text>
-            </Box>
-          ))}
-        </Tiles>
-      ),
-    },
-    {
       label:
-        'Test - Should flatten fragments (6 tiles should be evenly spaced)',
+        'Test - truncation should be visible on both tiles below, as well as both tiles being equally sized',
       Example: () => (
-        <Tiles space="small" columns={3}>
-          <Fragment>
-            <Placeholder height={40} />
-          </Fragment>
-          <Fragment>
-            <Placeholder height={40} />
-            <Placeholder height={40} />
-          </Fragment>
-          <Fragment>
-            <Fragment>
-              <Placeholder height={40} />
-            </Fragment>
-            <Placeholder height={40} />
-          </Fragment>
-          <Placeholder height={40} />
+        <Tiles space="small" columns={2}>
+          <Box
+            style={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
+            occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
+            proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
+            officia quis magna occaecat nostrud.
+          </Box>
+          <Box>
+            <Box
+              style={{
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
+              occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
+              proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
+              officia quis magna occaecat nostrud.
+            </Box>
+          </Box>
         </Tiles>
       ),
     },

@@ -41,7 +41,7 @@ export const FieldLabel = ({
   );
 
   return (
-    <Stack space="small" data={data}>
+    <Stack space="small" align="left" data={data}>
       {label ? (
         <Box component="span" display="flex" justifyContent="spaceBetween">
           {htmlFor === false ? (

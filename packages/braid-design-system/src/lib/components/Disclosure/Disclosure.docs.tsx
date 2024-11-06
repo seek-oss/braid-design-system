@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Disclosure, Text, TextLink, Strong } from '..';
+import { Disclosure, Text, TextLink, Strong, Stack, Notice } from '..';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
@@ -43,32 +43,6 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Custom space',
-      description: (
-        <Text>
-          The space between the disclosure label and content can be customised
-          via the <Strong>space</Strong> prop.
-        </Text>
-      ),
-      Example: ({ id, setDefaultState, getState, setState }) =>
-        source(
-          <>
-            {setDefaultState('expanded', true)}
-
-            <Disclosure
-              id={id}
-              expandLabel="Show content"
-              collapseLabel="Hide content"
-              expanded={getState('expanded')}
-              onToggle={setState('expanded')}
-              space="small"
-            >
-              <Text>Content</Text>
-            </Disclosure>
-          </>,
-        ),
-    },
-    {
       label: 'Visual weight',
       description: (
         <Text>
@@ -90,6 +64,102 @@ const docs: ComponentDocs = {
               collapseLabel="Hide content"
               expanded={getState('expanded')}
               onToggle={setState('expanded')}
+            >
+              <Text>Content</Text>
+            </Disclosure>
+          </>,
+        ),
+    },
+    {
+      label: 'Sizing',
+      description: (
+        <>
+          <Text>
+            The size can be customised via the <Strong>size</Strong> prop, which
+            accepts the same sizes as the{' '}
+            <TextLink href="/components/Text">Text</TextLink> component.
+          </Text>
+          <Notice>
+            <Text>
+              The provided <Strong>size</Strong> will also be used as the
+              default size for <TextLink href="/components/Text">Text</TextLink>{' '}
+              components within the content of the disclosure.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: ({ id, handler }) =>
+        source(
+          <Stack space="large">
+            <Disclosure
+              id={`${id}_1`}
+              expandLabel="Large size"
+              size="large"
+              expanded={true}
+              onToggle={handler}
+            >
+              <Text>
+                Defaults to <Strong>large</Strong> text size
+              </Text>
+            </Disclosure>
+            <Disclosure
+              id={`${id}_2`}
+              expandLabel="Standard size"
+              size="standard"
+              expanded={true}
+              onToggle={handler}
+            >
+              <Text>
+                Defaults to <Strong>standard</Strong> text size
+              </Text>
+            </Disclosure>
+            <Disclosure
+              id={`${id}_3`}
+              expandLabel="Small size"
+              size="small"
+              expanded={true}
+              onToggle={handler}
+            >
+              <Text>
+                Defaults to <Strong>small</Strong> text size
+              </Text>
+            </Disclosure>
+            <Disclosure
+              id={`${id}_4`}
+              expandLabel="Xsmall size"
+              size="xsmall"
+              expanded={true}
+              onToggle={handler}
+            >
+              <Text>
+                Defaults to <Strong>xsmall</Strong> text size
+              </Text>
+            </Disclosure>
+          </Stack>,
+        ),
+    },
+    {
+      label: 'Custom space',
+      description: (
+        <Text>
+          The default space between the disclosure label and content will be
+          determined by the <TextLink href="#sizing">size</TextLink>.
+          Alternatively, this can be customised via the <Strong>space</Strong>{' '}
+          prop.
+        </Text>
+      ),
+      Example: ({ id, setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('expanded', true)}
+
+            <Disclosure
+              id={id}
+              expandLabel="Show content"
+              collapseLabel="Hide content"
+              expanded={getState('expanded')}
+              onToggle={setState('expanded')}
+              space="large"
             >
               <Text>Content</Text>
             </Disclosure>

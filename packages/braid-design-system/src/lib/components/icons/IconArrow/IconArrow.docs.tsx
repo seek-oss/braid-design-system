@@ -10,6 +10,7 @@ import {
   Stack,
   Strong,
   Text,
+  Divider,
 } from '../../';
 
 const docs: ComponentDocs = {
@@ -62,8 +63,9 @@ const docs: ComponentDocs = {
       ),
       Example: ({ getState, setState }) =>
         source(
-          <Stack space="large" dividers>
+          <Stack space="large">
             <IconArrow direction={getState('direction')} />
+            <Divider />
             <Inline space="small">
               <Button onClick={() => setState('direction', 'down')}>
                 down

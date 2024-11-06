@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
 import {
-  Inline,
+  Tiles,
   Box,
   Text,
   Link,
@@ -11,14 +11,16 @@ import {
   Strong,
 } from 'braid-src/lib/components';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
+import { iconsKeywords } from './iconsKeywords';
 import * as icons from 'braid-src/lib/components/icons';
 import * as styles from './IconsBrowse.css';
 
-type IconName = keyof typeof icons;
+export type IconName = keyof typeof icons;
 
 const iconNames = Object.keys(icons).map((icon) => ({
   name: icon as IconName,
   displayName: icon.replace(/^Icon/, ''),
+  keywords: iconsKeywords[icon as IconName],
 }));
 
 const IconTile = ({
@@ -38,6 +40,7 @@ const IconTile = ({
         flexDirection="column"
         alignItems="center"
         paddingY="medium"
+        paddingX="xsmall"
         cursor="pointer"
         className={styles.iconContainer}
       >
@@ -47,8 +50,8 @@ const IconTile = ({
             tone={suggestion ? 'secondary' : undefined}
           />
         </Box>
-        <Box paddingTop="medium">
-          <Text tone="secondary" size="xsmall">
+        <Box paddingTop="medium" width="full">
+          <Text tone="secondary" size="xsmall" maxLines={1} align="center">
             {icon.displayName}
           </Text>
         </Box>
@@ -90,9 +93,10 @@ export const IconsBrowse = () => {
 
             setSearchTerm(searchText);
             const filteredList = iconNames.filter(
-              ({ name }) =>
+              ({ name, keywords }) =>
                 searchText.length === 0 ||
-                name.toLowerCase().indexOf(searchText.toLowerCase()) > -1,
+                name.toLowerCase().indexOf(searchText.toLowerCase()) > -1 ||
+                keywords.some((keyword) => keyword.startsWith(searchText)),
             );
 
             if (filteredList.length === 0) {
@@ -134,11 +138,14 @@ export const IconsBrowse = () => {
         ) : null}
       </Stack>
 
-      <Inline space={['none', 'medium']}>
+      <Tiles
+        space="none"
+        columns={{ mobile: 3, tablet: 6, desktop: 7, wide: 6 }}
+      >
         {iconList.map((icon) => (
           <IconTile key={icon.name} icon={icon} suggestion={isDisambiguated} />
         ))}
-      </Inline>
+      </Tiles>
     </Stack>
   );
 };

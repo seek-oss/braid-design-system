@@ -113,40 +113,84 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Tone, size and space',
+      label: 'Tone and size',
       description: (
         <Text>
           Lists support the same sizes and tones as{' '}
-          <TextLink href="/components/Text">Text</TextLink>, and the same
-          spacing as <TextLink href="/components/Stack">Stack</TextLink>.
+          <TextLink href="/components/Text">Text</TextLink>.
         </Text>
       ),
       Example: () =>
         source(
           <Columns space="large" collapseBelow="desktop">
             <Column>
-              <List tone="secondary" size="large" space="gutter">
+              <List tone="secondary" size="large">
                 <Text>Large</Text>
                 <Text>Large</Text>
                 <Text>Large</Text>
               </List>
             </Column>
             <Column>
-              <List tone="secondary" size="standard" space="medium">
+              <List tone="secondary" size="standard">
                 <Text>Standard</Text>
                 <Text>Standard</Text>
                 <Text>Standard</Text>
               </List>
             </Column>
             <Column>
-              <List tone="secondary" size="small" space="small">
+              <List tone="secondary" size="small">
                 <Text>Small</Text>
                 <Text>Small</Text>
                 <Text>Small</Text>
               </List>
             </Column>
             <Column>
-              <List tone="secondary" size="xsmall" space="small">
+              <List tone="secondary" size="xsmall">
+                <Text>Xsmall</Text>
+                <Text>Xsmall</Text>
+                <Text>Xsmall</Text>
+              </List>
+            </Column>
+          </Columns>,
+        ),
+    },
+    {
+      label: 'Spacing',
+      description: (
+        <Text>
+          By default, Lists will use <Strong>small</Strong> spacing, or{' '}
+          <Strong>xsmall</Strong> spacing if the <Strong>size</Strong> prop is
+          set to either <Strong>small</Strong> or <Strong>xsmall</Strong>. This
+          can be changed via the <Strong>space</Strong> prop, which supports the
+          same spacing as <TextLink href="/components/Stack">Stack</TextLink>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Columns space="large" collapseBelow="desktop">
+            <Column>
+              <List space="large">
+                <Text>Large</Text>
+                <Text>Large</Text>
+                <Text>Large</Text>
+              </List>
+            </Column>
+            <Column>
+              <List space="medium">
+                <Text>Standard</Text>
+                <Text>Standard</Text>
+                <Text>Standard</Text>
+              </List>
+            </Column>
+            <Column>
+              <List space="small">
+                <Text>Small</Text>
+                <Text>Small</Text>
+                <Text>Small</Text>
+              </List>
+            </Column>
+            <Column>
+              <List space="xsmall">
                 <Text>Xsmall</Text>
                 <Text>Xsmall</Text>
                 <Text>Xsmall</Text>

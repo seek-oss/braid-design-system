@@ -152,16 +152,18 @@ const svgrConfig = {
       dedent/* ts */ `
         import React from 'react';
         import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
-        import useIcon, { type UseIconProps } from '${relative(`${baseDir}/src/lib/hooks/useIcon`)}';
+        import { IconContainer, type IconContainerProps } from '${relative(
+          `${baseDir}/src/lib/components/icons/IconContainer`,
+        )}';
         import { ${svgComponentName} } from '${relative(`${iconDir}/${svgComponentName}`)}';
 
-        export type ${iconName}Props = UseIconProps;
+        export type ${iconName}Props = IconContainerProps;
 
-        export const ${iconName} = (props: ${iconName}Props) => {
-          const iconProps = useIcon(props);
-
-          return <Box component={${svgComponentName}} {...iconProps} />;
-        };
+        export const ${iconName} = (props: ${iconName}Props) => (
+          <IconContainer {...props}>
+            {(svgProps) => <Box component={${svgComponentName}} {...svgProps} />}
+          </IconContainer>
+        );
       `,
     );
 
@@ -201,6 +203,7 @@ const svgrConfig = {
     cwd: iconComponentsDir,
     onlyFiles: false,
   });
+
   const iconExports = iconComponentNames
     .map((componentFile) => path.basename(componentFile, '.tsx'))
     .map((component) => `export { ${component} } from './${component}/${component}';`)

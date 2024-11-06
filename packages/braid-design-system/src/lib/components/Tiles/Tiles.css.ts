@@ -1,24 +1,55 @@
-import { styleVariants } from '@vanilla-extract/css';
-import type { Breakpoint } from '../../css/breakpoints';
+import {
+  createVar,
+  fallbackVar,
+  globalStyle,
+  style,
+} from '@vanilla-extract/css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
-const columnsWidths = {
-  1: '100%',
-  2: `${100 / 2}%`,
-  3: `${100 / 3}%`,
-  4: `${100 / 4}%`,
-  5: `${100 / 5}%`,
-  6: `${100 / 6}%`,
-} as const;
+const columns = createVar();
+export const mobileColumnsVar = createVar();
+export const tabletColumnsVar = createVar();
+export const desktopColumnsVar = createVar();
+export const wideColumnsVar = createVar();
 
-const makeColumnsAtoms = (breakpoint: Breakpoint) =>
-  styleVariants(
-    columnsWidths,
-    (width) => responsiveStyle({ [breakpoint]: { flex: `0 0 ${width}` } }),
-    `columns_${breakpoint}`,
-  );
+export const tiles = style([
+  {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+  },
+  responsiveStyle({
+    mobile: {
+      vars: {
+        [columns]: mobileColumnsVar,
+      },
+    },
+    tablet: {
+      vars: {
+        [columns]: fallbackVar(tabletColumnsVar, mobileColumnsVar),
+      },
+    },
+    desktop: {
+      vars: {
+        [columns]: fallbackVar(
+          desktopColumnsVar,
+          tabletColumnsVar,
+          mobileColumnsVar,
+        ),
+      },
+    },
+    wide: {
+      vars: {
+        [columns]: fallbackVar(
+          wideColumnsVar,
+          desktopColumnsVar,
+          tabletColumnsVar,
+          mobileColumnsVar,
+        ),
+      },
+    },
+  }),
+]);
 
-export const columnsMobile = makeColumnsAtoms('mobile');
-export const columnsTablet = makeColumnsAtoms('tablet');
-export const columnsDesktop = makeColumnsAtoms('desktop');
-export const columnsWide = makeColumnsAtoms('wide');
+globalStyle(`${tiles} > *`, {
+  minWidth: 0,
+});

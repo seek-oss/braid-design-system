@@ -118,6 +118,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <Field
         {...restProps}
+        componentName="Textarea"
         tone={tone}
         value={value}
         icon={undefined}

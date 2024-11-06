@@ -4,7 +4,6 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
 import dedent from 'dedent';
-import { uniq, flatten, values } from 'lodash';
 import { App } from './App/App';
 import type { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
@@ -19,7 +18,9 @@ const { version } = packageJson;
 const skuRender: Render<RenderContext> = {
   renderApp: async ({ route: inputRoute }) => {
     const {
-      IS_GITHUB_PAGES: isGithubPages,
+      BASE_NAME: routerBasename = '',
+      BRANCH_NAME: branchName = '',
+      HEAD_BRANCH_NAME: headBranchName,
       GITHUB_SHA: prSha,
       CI,
     } = process.env;
@@ -28,7 +29,6 @@ const skuRender: Render<RenderContext> = {
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
 
-    const routerBasename = isGithubPages ? '/braid-design-system' : '';
     const route = `${routerBasename}${inputRoute}`;
 
     const playroomUrl = !CI
@@ -38,6 +38,8 @@ const skuRender: Render<RenderContext> = {
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
+      branchName,
+      headBranchName: headBranchName || 'master',
     };
 
     const today = new Date();
@@ -81,9 +83,11 @@ const skuRender: Render<RenderContext> = {
   }),
 
   renderDocument: ({ headTags, bodyTags, app: { html, helmetContext } }) => {
-    const webFontLinkTags = uniq(
-      flatten(values(themes).map((theme) => theme.webFonts)).map(
-        (font) => font.linkTag,
+    const webFontLinkTags = Array.from(
+      new Set(
+        Object.values(themes)
+          .flatMap((theme) => theme.webFonts)
+          .map((font) => font.linkTag),
       ),
     ).join('');
     const { helmet } = helmetContext;

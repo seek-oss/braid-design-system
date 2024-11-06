@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import {
   Box,
   Stack,
@@ -8,6 +8,7 @@ import {
   Text,
   Spread,
   List,
+  Divider,
 } from 'braid-src/lib/components';
 import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { Markdown } from '../Markdown/Markdown';
@@ -47,16 +48,18 @@ export const DocReleases = () => {
     <>
       <PageTitle title={`${docsName} Releases`} />
 
-      <Stack space="xxlarge" dividers>
+      <Stack space="xxlarge">
         {Object.keys(groupedHistory).length > 0 ? (
           Object.keys(groupedHistory).map((version, index) => {
             const historyItem = groupedHistory[version];
 
             return (
-              <Box
-                key={`${version}_${index}`}
-                paddingTop={index > 0 ? 'medium' : undefined}
-              >
+              <Fragment key={`${version}_${index}`}>
+                {index > 0 ? (
+                  <Box paddingBottom="medium">
+                    <Divider />
+                  </Box>
+                ) : null}
                 <Stack space="large">
                   <Spread space="small" alignY="center">
                     <LinkableHeading level="3">{`v${version}`}</LinkableHeading>
@@ -77,7 +80,7 @@ export const DocReleases = () => {
                     ))}
                   </List>
                 </Stack>
-              </Box>
+              </Fragment>
             );
           })
         ) : (

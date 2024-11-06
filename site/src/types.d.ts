@@ -9,6 +9,8 @@ import type useScope from 'braid-src/lib/playroom/useScope';
 export interface AppConfig {
   playroomUrl: string;
   sourceUrlPrefix: string;
+  branchName?: string;
+  headBranchName: string;
 }
 
 export interface RenderContext {
@@ -73,6 +75,7 @@ export interface GalleryComponent {
 
 export interface ComponentExample {
   label?: string;
+  deprecated?: boolean;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']> | false;
   Example?: (

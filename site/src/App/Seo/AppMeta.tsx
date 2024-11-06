@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { PageTitle } from './PageTitle';
 import { getCurrentVersionInfo } from '../Updates';
 import { useHref } from 'react-router';
+import { useConfig } from '../ConfigContext';
 
 export function AppMeta() {
   const isBrowser = typeof window !== 'undefined';
@@ -16,6 +17,17 @@ export function AppMeta() {
   const favicon16Href = useHref(`/${faviconFileName}-16x16.png`);
   const favicon32Href = useHref(`/${faviconFileName}-32x32.png`);
   const favicon96Href = useHref(`/${faviconFileName}-96x96.png`);
+
+  const { branchName } = useConfig();
+  const dataItem = branchName
+    ? {
+        label: 'Preview deployment',
+        value: `Branch: ${branchName}`,
+      }
+    : {
+        label: 'Latest release',
+        value: getCurrentVersionInfo().version,
+      };
 
   return (
     <Fragment>
@@ -39,9 +51,9 @@ export function AppMeta() {
         <link rel="icon" type="image/png" sizes="96x96" href={favicon96Href} />
 
         {/* @ts-expect-error */}
-        <meta name="twitter:label1" value="Latest release" />
+        <meta name="twitter:label1" value={dataItem.label} />
         {/* @ts-expect-error */}
-        <meta name="twitter:data1" value={getCurrentVersionInfo().version} />
+        <meta name="twitter:data1" value={dataItem.value} />
       </Helmet>
     </Fragment>
   );

@@ -76,7 +76,10 @@ export const unresponsiveProperties = {
   minWidth: {
     0: '0%',
   },
-  maxWidth: vars.contentWidth,
+  maxWidth: {
+    ...vars.contentWidth,
+    content: 'fit-content',
+  },
   transition: vars.transition,
 } as const;
 
@@ -105,6 +108,7 @@ export const responsiveProperties = {
     full: '9999px',
     ...vars.borderRadius,
   },
+  gap: space,
   paddingTop: space,
   paddingBottom: space,
   paddingRight: space,
