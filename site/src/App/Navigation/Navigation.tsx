@@ -3,11 +3,13 @@ import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {
   ContentBlock,
-  Disclosure,
+  IconChevron,
   IconNewWindow,
   IconRocket,
+  IconSocialGitHub,
+  MenuItemLink,
+  MenuRenderer,
   Text,
-  TextLink,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -48,6 +50,7 @@ const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ),
 );
 
+const previewPanelSpace = 'medium';
 const PreviewBranchPanel = () => {
   const { pathname, hash } = useLocation();
   const { branchName, headBranchName } = useConfig();
@@ -58,40 +61,53 @@ const PreviewBranchPanel = () => {
       zIndex="sticky"
       bottom={0}
       right={0}
-      margin="medium"
+      margin={previewPanelSpace}
       boxShadow="small"
       borderRadius="large"
       background="cautionLight"
-      padding="medium"
+      padding={previewPanelSpace}
+      paddingRight="none" // Move to margin below the Menu appears flush with the edge
+      display="flex"
+      flexWrap="nowrap"
+      gap="xsmall"
     >
-      <Text icon={<IconRocket />}>
-        Branch preview:{' '}
-        <Disclosure
-          id="preview-site-info"
-          expandLabel={branchName}
-          space="none"
+      <Text icon={<IconRocket />}>Branch preview:</Text>
+      <MenuRenderer
+        placement="top"
+        align="right"
+        offsetSpace={previewPanelSpace}
+        trigger={(triggerProps, { open }) => (
+          <Box
+            userSelect="none"
+            cursor="pointer"
+            marginRight={previewPanelSpace} // Ensure menu appears flush with the edge of container
+            {...triggerProps}
+          >
+            <Text weight="strong">
+              {branchName}{' '}
+              <IconChevron
+                direction={open ? 'down' : 'up'}
+                alignY="lowercase"
+              />
+            </Text>
+          </Box>
+        )}
+      >
+        <MenuItemLink
+          href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
+          target="_blank"
+          icon={<IconNewWindow />}
         >
-          <TextLink
-            href={`https://seek-oss.github.io/braid-design-system${pathname}/${hash}`}
-            target="_blank"
-            weight="weak"
-            icon={<IconNewWindow />}
-            iconPosition="trailing"
-          >
-            Production site
-          </TextLink>
-          <br />
-          <TextLink
-            href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
-            target="_blank"
-            weight="weak"
-            icon={<IconNewWindow />}
-            iconPosition="trailing"
-          >
-            View diff on GitHub
-          </TextLink>
-        </Disclosure>
-      </Text>
+          Production site
+        </MenuItemLink>
+        <MenuItemLink
+          href={`https://github.com/seek-oss/braid-design-system/compare/${headBranchName}...${branchName}`}
+          target="_blank"
+          icon={<IconSocialGitHub />}
+        >
+          View diff on GitHub
+        </MenuItemLink>
+      </MenuRenderer>
     </Box>
   ) : null;
 };
