@@ -5,8 +5,6 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 const browserslist = require('../browserslist');
 const routes = require('./sku.routes.js');
 
-const isGitHubPages = process.env.IS_GITHUB_PAGES === 'true';
-
 const braidRoot = path.join(__dirname, '../packages/braid-design-system');
 const resolveFromBraid = (p) => path.join(braidRoot, p);
 
@@ -19,7 +17,7 @@ module.exports = {
   rootResolution: false,
   public: './src/public',
   target: './dist',
-  publicPath: isGitHubPages ? '/braid-design-system/' : '/',
+  publicPath: `${process.env.BASE_NAME}/`,
   supportedBrowsers: browserslist,
   displayNamesProd: true,
   compilePackages: ['@braid-design-system/docs-ui'],

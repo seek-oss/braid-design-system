@@ -18,7 +18,9 @@ const { version } = packageJson;
 const skuRender: Render<RenderContext> = {
   renderApp: async ({ route: inputRoute }) => {
     const {
-      IS_GITHUB_PAGES: isGithubPages,
+      BASE_NAME: routerBasename = '',
+      BRANCH_NAME: branchName = '',
+      HEAD_BRANCH_NAME: headBranchName,
       GITHUB_SHA: prSha,
       CI,
     } = process.env;
@@ -27,7 +29,6 @@ const skuRender: Render<RenderContext> = {
 
     const sourceUrlPrefix = `${githubUrl}${prSha || 'master'}`;
 
-    const routerBasename = isGithubPages ? '/braid-design-system' : '';
     const route = `${routerBasename}${inputRoute}`;
 
     const playroomUrl = !CI
@@ -37,6 +38,8 @@ const skuRender: Render<RenderContext> = {
     const appConfig = {
       playroomUrl,
       sourceUrlPrefix,
+      branchName,
+      headBranchName: headBranchName || 'master',
     };
 
     const today = new Date();

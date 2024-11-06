@@ -39,4 +39,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          IS_GITHUB_PAGES: true
+
+      - name: Build site
+        run: pnpm build:site
+        env:
+          BASE_NAME: /braid-design-system
+
+      - name: Deploy site
+        uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # 4.6.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: ./site/dist

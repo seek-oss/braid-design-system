@@ -9,6 +9,8 @@ import type useScope from 'braid-src/lib/playroom/useScope';
 export interface AppConfig {
   playroomUrl: string;
   sourceUrlPrefix: string;
+  branchName?: string;
+  headBranchName: string;
 }
 
 export interface RenderContext {
