@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: pnpm build:site
         env:
-          BASE_NAME: /braid-design-system/${{ github.sha }}
+          BASE_NAME: /braid-design-system/${{ github.ref_name }}
           BRANCH_NAME: ${{ github.ref_name }}
           HEAD_BRANCH_NAME: ${{ github.head_ref }}
 
@@ -52,5 +52,5 @@ jobs:
       - name: Update PR status
         run: pnpm post-commit-status
         env:
-          BASE_NAME: /braid-design-system/preview/${{ github.sha }}
+          BASE_NAME: /braid-design-system/${{ github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
