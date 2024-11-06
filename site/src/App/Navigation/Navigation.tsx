@@ -75,12 +75,9 @@ const PreviewBranchPanel = () => {
         flexWrap="nowrap"
         gap="xsmall"
       >
-        <Text>
-          <IconRocket />
+        <Text icon={<IconRocket />}>
+          Branch<Hidden below="tablet">&nbsp;preview</Hidden>:
         </Text>
-        <Hidden below="tablet">
-          <Text>Branch preview:</Text>
-        </Hidden>
         <Box minWidth={0}>
           <MenuRenderer
             placement="top"
@@ -93,7 +90,7 @@ const PreviewBranchPanel = () => {
                 marginRight={previewPanelSpace} // Ensure menu appears flush with the edge of container
                 {...triggerProps}
                 display="flex"
-                gap="xsmall"
+                gap="xxsmall"
               >
                 <Text weight="strong" maxLines={1}>
                   {branchName}{' '}
