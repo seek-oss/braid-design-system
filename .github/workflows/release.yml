@@ -50,3 +50,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           folder: ./site/dist
+          # Preserve the preview deployment folder and custom grad-connection site
+          clean-exclude: |
+            preview/*
+            grad-connection/*
+          single-commit: true
