@@ -26,7 +26,7 @@ import {
   IconDownload,
   ContentBlock,
   IconSocialFacebook,
-  IconSocialTwitter,
+  IconSocialX,
   IconSocialLinkedIn,
   IconSocialInstagram,
   Text,
@@ -826,7 +826,7 @@ export const snippets = [
               <Column width="content">
                 <Inline space="small">
                   <IconSocialFacebook tone="secondary" />
-                  <IconSocialTwitter tone="secondary" />
+                  <IconSocialX tone="secondary" />
                   <IconSocialLinkedIn tone="secondary" />
                   <IconSocialInstagram tone="secondary" />
                 </Inline>
