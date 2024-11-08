@@ -70,6 +70,9 @@ const docs: ComponentDocs = {
             This component has only been designed to use standard size text. Any
             other size of text will break the alignment with the icon.
           </Text>
+          <Text>
+            The tone should be set on the Alert component and not on the text as this will lead to inconsistent blending.
+          </Text>
         </Stack>
       ),
       Example: () =>
