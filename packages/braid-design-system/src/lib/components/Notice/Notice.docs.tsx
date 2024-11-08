@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
             other size of text will break the alignment with the icon.
           </Text>
           <Text>
-            The tone should be set on the Alert component and not on the text as this will lead to inconsistent blending.
+            The tone should be set on the Notice component and not on the text as this will lead to inconsistent blending.
           </Text>
         </Stack>
       ),
