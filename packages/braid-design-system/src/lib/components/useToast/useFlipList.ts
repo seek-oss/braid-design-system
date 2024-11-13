@@ -95,6 +95,8 @@ export const useFlipList = (expanded: boolean) => {
 
         const collapsedHeight = '8px';
         const collapsedScale = position === 1 ? 0.9 : 0.8;
+        const collapsedHeightOffset =
+          position < visibleStackedToasts ? position * 4 : 0;
 
         if (position > 0) {
           // Move animation for toasts that are not the first
@@ -108,7 +110,7 @@ export const useFlipList = (expanded: boolean) => {
                 to: expanded
                   ? px(fullHeight)
                   : `${
-                      position <= visibleStackedToasts
+                      position < visibleStackedToasts
                         ? calc(collapsedHeight).add(vars.space[toastGap])
                         : '0px'
                     }`,
@@ -116,7 +118,9 @@ export const useFlipList = (expanded: boolean) => {
               {
                 property: 'transform',
                 from: transform,
-                to: expanded ? undefined : `scaleX(${collapsedScale})`,
+                to: expanded
+                  ? undefined
+                  : `translateY(${collapsedHeightOffset}px) scaleX(${collapsedScale})`,
               },
               {
                 property: 'opacity',
