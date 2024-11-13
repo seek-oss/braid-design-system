@@ -1,14 +1,22 @@
+import { calc } from '@vanilla-extract/css-utils';
 import { useMemo, useCallback } from 'react';
 
+import { vars } from '../../../entries/css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+
+import { toastGap } from './consts';
+
+const px = (v: string | number) => `${v}px`;
 
 const animationTimeout = 300;
 
-const entranceTransition = 'transform 0.2s ease, opacity 0.2s ease';
-const exitTransition = 'opacity 0.1s ease';
+const entranceTransition = 'all 0.2s ease';
+const exitTransition = 'opacity 0.2s ease, height 0.2s ease';
+
+const visibleStackedToasts = 3;
 
 interface Transform {
-  property: 'opacity' | 'transform' | 'scale';
+  property: 'opacity' | 'transform' | 'scale' | 'height';
   from?: string;
   to?: string;
 }
@@ -59,7 +67,7 @@ const animate = (
   });
 };
 
-export const useFlipList = () => {
+export const useFlipList = (expanded: boolean) => {
   const refs = useMemo(() => new Map<string, HTMLElement | null>(), []);
   const positions = useMemo(() => new Map<string, number>(), []);
 
@@ -72,34 +80,88 @@ export const useFlipList = () => {
 
     Array.from(refs.entries()).forEach(([toastKey, element]) => {
       if (element) {
-        const prevTop = positions.get(toastKey);
-        const { top, height } = element.getBoundingClientRect();
+        const index = Array.from(refs.keys()).indexOf(toastKey);
+        const toastsLength = refs.size;
+        const position = toastsLength - index - 1;
 
-        if (typeof prevTop === 'number' && prevTop !== top) {
-          // Move animation
+        const { scale, opacity } = element.style;
+        const height = element.getBoundingClientRect().height;
+
+        element.style.scale = '1';
+        element.style.height = 'auto';
+        const fullHeight = element.getBoundingClientRect().height;
+
+        element.style.height = px(height);
+        element.style.scale = scale;
+
+        const collapsedHeight = '8px';
+
+        const prevTop = positions.get(toastKey);
+        const isNew = typeof prevTop !== 'number';
+
+        const collapsedScale = position === 1 ? 0.9 : 0.8;
+
+        if (position > 0) {
+          // Move animation for toasts that are not the first
           animations.push({
             element,
             transition: entranceTransition,
             transforms: [
               {
-                property: 'transform',
-                from: `translateY(${prevTop - top}px)`,
+                property: 'height',
+                from: px(height),
+                to: expanded
+                  ? px(fullHeight)
+                  : `${
+                      position <= visibleStackedToasts
+                        ? calc(collapsedHeight).add(vars.space[toastGap])
+                        : '0px'
+                    }`,
+              },
+              {
+                property: 'scale',
+                from: scale,
+                to: expanded ? '1' : `${collapsedScale}`,
+              },
+              {
+                property: 'opacity',
+                from: opacity,
+                to: position < visibleStackedToasts || expanded ? '1' : '0',
               },
             ],
           });
-        } else if (typeof prevTop !== 'number') {
+        } else if (isNew) {
           // Enter animation
           animations.push({
             element,
             transition: entranceTransition,
             transforms: [
               {
-                property: 'transform',
-                from: `translateY(${height}px)`,
-              },
-              {
                 property: 'opacity',
                 from: '0',
+              },
+              {
+                property: 'height',
+                from: '0px',
+                to: px(fullHeight),
+              },
+            ],
+          });
+        } else {
+          // Move animation for the first toast
+          animations.push({
+            element,
+            transition: entranceTransition,
+            transforms: [
+              {
+                property: 'height',
+                from: px(height),
+                to: px(fullHeight),
+              },
+              {
+                property: 'scale',
+                from: scale,
+                to: '1',
               },
             ],
           });
@@ -128,6 +190,11 @@ export const useFlipList = () => {
             {
               property: 'opacity',
               to: '0',
+            },
+            {
+              property: 'height',
+              from: element.style.height,
+              to: '0px',
             },
           ],
           exitTransition,
