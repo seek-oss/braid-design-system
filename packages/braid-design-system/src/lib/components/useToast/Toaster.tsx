@@ -1,17 +1,23 @@
-import { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { Box } from '../Box/Box';
+import { ContentBlock } from '../ContentBlock/ContentBlock';
 
 import ToastComponent from './Toast';
 import type { InternalToast } from './ToastTypes';
+import { toastWidth } from './consts';
 import { useFlipList } from './useFlipList';
+
+import * as styles from './Toaster.css';
 
 interface ToasterProps {
   toasts: InternalToast[];
   removeToast: (key: string) => void;
 }
+
 export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
-  const { itemRef, remove } = useFlipList();
+  const [expanded, setExpanded] = useState(false);
+  const { itemRef, remove } = useFlipList(expanded);
 
   const onClose = useCallback(
     (dedupeKey: string, id: string) => {
@@ -24,23 +30,35 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
 
   return (
     <Box
+      className={styles.toaster}
       position="fixed"
       zIndex="notification"
       width="full"
-      pointerEvents="none"
-      paddingX="gutter"
-      bottom={0}
     >
-      {toasts.map(({ id, ...rest }) => (
-        <Box key={id} paddingBottom="small">
-          <ToastComponent
-            ref={itemRef(id)}
-            id={id}
-            onClose={onClose}
-            {...rest}
-          />
+      <ContentBlock width={toastWidth}>
+        <Box
+          pointerEvents={toasts.length === 0 ? 'none' : undefined}
+          boxShadow="borderCritical" // Todo - remove
+          marginX="gutter"
+          marginBottom="xsmall"
+          onMouseEnter={() => setExpanded(true)}
+          onMouseLeave={() => setExpanded(false)}
+          onFocus={() => setExpanded(true)}
+          onBlur={() => setExpanded(false)}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {toasts.map(({ id, ...rest }) => (
+            <ToastComponent
+              key={id}
+              ref={itemRef(id)}
+              id={id}
+              onClose={onClose}
+              expanded={expanded}
+              {...rest}
+            />
+          ))}
         </Box>
-      ))}
+      </ContentBlock>
     </Box>
   );
 };
