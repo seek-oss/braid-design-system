@@ -83,22 +83,17 @@ export const useFlipList = (expanded: boolean) => {
         const index = Array.from(refs.keys()).indexOf(toastKey);
         const toastsLength = refs.size;
         const position = toastsLength - index - 1;
+        const { opacity, transform } = element.style;
 
-        const { scale, opacity } = element.style;
         const height = element.getBoundingClientRect().height;
-
-        element.style.scale = '1';
         element.style.height = 'auto';
         const fullHeight = element.getBoundingClientRect().height;
-
         element.style.height = px(height);
-        element.style.scale = scale;
-
-        const collapsedHeight = '8px';
 
         const prevTop = positions.get(toastKey);
         const isNew = typeof prevTop !== 'number';
 
+        const collapsedHeight = '8px';
         const collapsedScale = position === 1 ? 0.9 : 0.8;
 
         if (position > 0) {
@@ -119,9 +114,9 @@ export const useFlipList = (expanded: boolean) => {
                     }`,
               },
               {
-                property: 'scale',
-                from: scale,
-                to: expanded ? '1' : `${collapsedScale}`,
+                property: 'transform',
+                from: transform,
+                to: expanded ? undefined : `scaleX(${collapsedScale})`,
               },
               {
                 property: 'opacity',
@@ -159,9 +154,8 @@ export const useFlipList = (expanded: boolean) => {
                 to: px(fullHeight),
               },
               {
-                property: 'scale',
-                from: scale,
-                to: '1',
+                property: 'transform',
+                from: transform,
               },
             ],
           });
