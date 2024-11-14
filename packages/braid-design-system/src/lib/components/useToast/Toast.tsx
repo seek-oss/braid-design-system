@@ -151,9 +151,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           role="alert"
           ref={ref}
           className={[vanillaTheme, styles.toast]}
-          overflow="hidden"
-          boxShadow="large"
           borderRadius={borderRadius}
+          boxShadow="large"
           {...buildDataAttributes({ data, validateRestProps: restProps })}
         >
           <Box
@@ -164,6 +163,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
             paddingX="gutter"
             marginTop={toastGap}
             width="full"
+            boxShadow="borderNeutral"
+            overflow="hidden"
           >
             <Columns space="none">
               {tone !== 'neutral' || (tone === 'neutral' && icon) ? (

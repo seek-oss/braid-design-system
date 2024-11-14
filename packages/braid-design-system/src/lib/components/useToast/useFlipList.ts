@@ -1,8 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
-import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../../entries/css';
-import { toastGap } from './consts';
 
 const px = (v: string | number) => `${v}px`;
 
@@ -91,10 +89,7 @@ export const useFlipList = (expanded: boolean) => {
         const prevTop = positions.get(id);
         const isNew = typeof prevTop !== 'number';
 
-        const collapsedHeight = '8px';
         const collapsedScale = position === 1 ? 0.9 : 0.8;
-        const collapsedHeightOffset =
-          position < visibleStackedToasts ? position * 4 : 0;
 
         if (position > 0) {
           // Move animation for toasts that are not the first
@@ -108,17 +103,13 @@ export const useFlipList = (expanded: boolean) => {
                 to: expanded
                   ? px(fullHeight)
                   : `${
-                      position < visibleStackedToasts
-                        ? calc(collapsedHeight).add(vars.space[toastGap])
-                        : '0px'
+                      position < visibleStackedToasts ? vars.space.small : '0px'
                     }`,
               },
               {
                 property: 'transform',
                 from: transform,
-                to: expanded
-                  ? undefined
-                  : `translateY(${collapsedHeightOffset}px) scaleX(${collapsedScale})`,
+                to: expanded ? undefined : `scaleX(${collapsedScale})`,
               },
               {
                 property: 'opacity',
