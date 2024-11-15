@@ -38,7 +38,6 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       <ContentBlock width={toastWidth}>
         <Box
           pointerEvents={toasts.length === 0 ? 'none' : undefined}
-          // boxShadow="borderCritical" // Todo - remove
           marginX="gutter"
           marginBottom="xsmall"
           onMouseEnter={() => setExpanded(true)}

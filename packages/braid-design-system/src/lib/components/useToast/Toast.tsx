@@ -34,10 +34,14 @@ interface ActionProps extends ToastAction {
   removeToast: () => void;
 }
 const Action = ({ label, onClick, removeToast }: ActionProps) => {
-  const handleClick = useCallback(() => {
-    removeToast();
-    onClick();
-  }, [removeToast, onClick]);
+  const handleClick = useCallback(
+    (event: React.MouseEvent) => {
+      event.stopPropagation();
+      removeToast();
+      onClick();
+    },
+    [removeToast, onClick],
+  );
 
   return (
     <Text baseline={false}>
