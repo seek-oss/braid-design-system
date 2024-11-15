@@ -63,9 +63,11 @@ const animate = (
   });
 };
 
+type toastState = undefined | 'entered' | 'exiting';
+
 export const useFlipList = (expanded: boolean) => {
   const refs = useMemo(() => new Map<string, HTMLElement | null>(), []);
-  const positions = useMemo(() => new Map<string, number>(), []);
+  const toastStates = useMemo(() => new Map<string, toastState>(), []);
 
   useIsomorphicLayoutEffect(() => {
     const animations: Array<{
@@ -75,19 +77,18 @@ export const useFlipList = (expanded: boolean) => {
     }> = [];
 
     Array.from(refs.entries()).forEach(([id, element]) => {
-      if (element) {
+      if (element && toastStates.get(id) !== 'exiting') {
         const index = Array.from(refs.keys()).indexOf(id);
-        const toastsLength = refs.size;
+        const toastsLength = Array.from(refs.values()).filter(
+          (value) => value !== null,
+        ).length;
         const position = toastsLength - index - 1;
-        const { opacity, transform } = element.style;
 
+        const { opacity, transform } = element.style;
         const height = element.getBoundingClientRect().height;
         element.style.height = 'auto';
         const fullHeight = element.getBoundingClientRect().height;
         element.style.height = px(height);
-
-        const prevTop = positions.get(id);
-        const isNew = typeof prevTop !== 'number';
 
         const collapsedScale = position === 1 ? 0.9 : 0.8;
 
@@ -118,7 +119,7 @@ export const useFlipList = (expanded: boolean) => {
               },
             ],
           });
-        } else if (isNew) {
+        } else if (toastStates.get(id) !== 'entered') {
           // Enter animation
           animations.push({
             element,
@@ -136,7 +137,6 @@ export const useFlipList = (expanded: boolean) => {
             ],
           });
         } else {
-          // Move animation for the first toast
           animations.push({
             element,
             transition: entranceTransition,
@@ -154,7 +154,7 @@ export const useFlipList = (expanded: boolean) => {
           });
         }
 
-        positions.set(id, element.getBoundingClientRect().top);
+        toastStates.set(id, 'entered');
       } else {
         refs.delete(id);
       }
@@ -170,6 +170,7 @@ export const useFlipList = (expanded: boolean) => {
       const element = refs.get(id);
 
       if (element) {
+        toastStates.set(id, 'exiting');
         // Removal animation
         animate(
           element,
@@ -189,7 +190,7 @@ export const useFlipList = (expanded: boolean) => {
         );
       }
     },
-    [refs],
+    [refs, toastStates],
   );
 
   const itemRef = useCallback(
