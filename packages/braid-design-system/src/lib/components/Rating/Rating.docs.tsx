@@ -11,7 +11,7 @@ const docs: ComponentDocs = {
     <>
       <Text>
         To support users with screen readers, an <Strong>aria-label</Strong> is
-        used to provider a description of the rating.
+        used to provide a description of the rating.
       </Text>
 
       <Text tone="promote" id="translations">
