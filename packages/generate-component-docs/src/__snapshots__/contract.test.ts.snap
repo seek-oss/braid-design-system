@@ -7710,6 +7710,81 @@ exports[`TabPanels 1`] = `
 }
 `;
 
+exports[`Table 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "center"
+        | "top"
+    children: ReactNode
+    columnWidths?: (string | number)[]
+    data?: DataAttributeMap
+    fullBleed?: boolean
+    label: string
+},
+}
+`;
+
+exports[`TableBody 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableCell 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+    children: ReactNode
+    data?: DataAttributeMap
+    header?: boolean
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
+    nowrap?: boolean
+    width?: 
+        | "auto"
+        | "content"
+        | number
+    wrap?: boolean
+},
+}
+`;
+
+exports[`TableHeader 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableRow 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
 exports[`Tabs 1`] = `
 {
   exportType: component,

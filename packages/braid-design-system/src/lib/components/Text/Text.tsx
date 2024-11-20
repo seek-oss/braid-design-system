@@ -19,6 +19,7 @@ export const Text = ({
   size: sizeProp,
   tone: toneProp,
   weight: weightProp,
+  maxLines: maxLinesProp,
   baseline = true,
   ...typographyProps
 }: TextProps) => {
@@ -27,10 +28,11 @@ export const Text = ({
     'Text components should not be nested within each other',
   );
 
-  const { size, weight, tone } = useDefaultTextProps({
+  const { size, weight, tone, maxLines } = useDefaultTextProps({
     size: sizeProp,
     weight: weightProp,
     tone: toneProp,
+    maxLines: maxLinesProp,
   });
 
   // Prevent re-renders when context values haven't changed
@@ -47,6 +49,7 @@ export const Text = ({
   return (
     <TextContext.Provider value={textStylingProps}>
       <Typography
+        maxLines={maxLines}
         {...typographyProps}
         className={textStyles(textStylingProps)}
       />
