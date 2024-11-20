@@ -118,7 +118,7 @@ export const TableCell = ({
       <DefaultTextPropsProvider
         size="small"
         weight={isHeaderCell ? 'strong' : undefined}
-        maxLines={width && nowrap ? 1 : undefined}
+        maxLines={width !== 'auto' && nowrap ? 1 : undefined}
       >
         {align !== 'left' ? (
           <Inline space="none" align={align}>
