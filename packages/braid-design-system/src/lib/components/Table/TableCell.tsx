@@ -29,7 +29,9 @@ interface TableCellProps {
   wrap?: boolean;
   nowrap?: boolean;
   data?: DataAttributeMap;
-  width?: 'content' | 'auto' | number;
+  width?: 'content' | 'auto' | string; // percentage only
+  minWidth?: number;
+  maxWidth?: number;
 }
 export const TableCell = ({
   header,
@@ -38,8 +40,10 @@ export const TableCell = ({
   hideBelow,
   align = 'left',
   wrap,
-  nowrap,
+  nowrap = true,
   width = 'auto',
+  minWidth,
+  maxWidth,
   data,
   ...restProps
 }: TableCellProps) => {
@@ -95,8 +99,10 @@ export const TableCell = ({
          */
         // [styles.nowrap]: preventWrapping,
         [styles.nowrap]: nowrap, // !wrap,
-        [styles.contentWidth]: width === 'content',
-        [styles.fixedWidth]: width && width !== 'content' && width !== 'auto',
+        // [styles.contentWidth]: width === 'content',
+        [styles.fixedWidth]: width && width !== 'auto',
+        [styles.minWidth]: typeof minWidth !== 'undefined',
+        [styles.maxWidth]: typeof maxWidth !== 'undefined',
         [styles.alignYCenter]: tableContext.alignY === 'center',
         [styles.borderBottom]: true,
         [styles.showOnTablet]: !hideOnTablet && hideOnMobile,
@@ -107,11 +113,23 @@ export const TableCell = ({
       }}
       style={
         // width ? { width: width === 'content' ? '1%' : width } : undefined
-        width !== 'content' && width !== 'auto'
-          ? assignInlineVars({
-              [styles.fixedWidthVar]: `${width}px`,
-            })
-          : undefined
+        {
+          ...(width !== 'auto'
+            ? assignInlineVars({
+                [styles.fixedWidthVar]: width === 'content' ? '1%' : width,
+              })
+            : undefined),
+          ...(typeof minWidth !== 'undefined'
+            ? assignInlineVars({
+                [styles.minWidthVar]: `${minWidth}px`,
+              })
+            : undefined),
+          ...(typeof maxWidth !== 'undefined'
+            ? assignInlineVars({
+                [styles.maxWidthVar]: `${maxWidth}px`,
+              })
+            : undefined),
+        }
       }
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >

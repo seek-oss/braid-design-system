@@ -16,7 +16,6 @@ export const tableContainer = style([
     overflowX: 'auto',
     overflowY: 'hidden',
     scrollbarWidth: 'none',
-    // whiteSpace: 'nowrap',
     '::-webkit-scrollbar': {
       width: 0,
       height: 0,
@@ -48,6 +47,7 @@ export const table = style([
     borderCollapse: 'separate',
     border: `${borderWidth} solid ${borderColor}`,
     fontVariantNumeric: 'tabular-nums',
+    wordBreak: 'break-word', // MAYBE?.
   },
   colorModeStyle({
     lightMode: {
@@ -106,20 +106,33 @@ export const nowrap = style({
   whiteSpace: 'nowrap',
 });
 
-export const contentWidth = style({
-  width: '1%', // is this necessary?
-  // maxWidth: 'fit-content',
-  // minWidth: 'fit-content',
-});
+// export const contentWidth = style({
+//   width: '1%', // is this necessary?
+//   // maxWidth: 'fit-content',
+//   // minWidth: 'fit-content',
+// });
 
+export const minWidthVar = createVar();
+export const maxWidthVar = createVar();
 export const fixedWidthVar = createVar();
 export const fixedWidth = style({
   // boxSizing: 'content-box', // MAYBE? for exact pixel values.
   // overflowX: 'hidden', // MAYBE?.
-  wordBreak: 'break-word', // MAYBE?.
   width: fixedWidthVar,
-  maxWidth: fixedWidthVar,
-  minWidth: fixedWidthVar,
+  // maxWidth: fixedWidthVar,
+});
+
+export const minWidth = style({
+  // boxSizing: 'content-box', // MAYBE? for exact pixel values.
+  // overflowX: 'hidden', // MAYBE?.
+  // maxWidth: fixedWidthVar,
+  minWidth: minWidthVar,
+});
+export const maxWidth = style({
+  // boxSizing: 'content-box', // MAYBE? for exact pixel values.
+  // overflowX: 'hidden', // MAYBE?.
+  // maxWidth: fixedWidthVar,
+  maxWidth: maxWidthVar,
 });
 
 export const borderBottom = style({
