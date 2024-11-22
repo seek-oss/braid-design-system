@@ -66,7 +66,6 @@ export const Table = ({
     }
   }, []);
 
-  // <Stack space="small">
   const table = (
     <Box
       ref={containerRef}
@@ -91,17 +90,6 @@ export const Table = ({
       </Box>
     </Box>
   );
-  // {/* <Box
-  //   display={{ tablet: 'none' }}
-  //   paddingLeft={fullBleed ? 'gutter' : undefined}
-  // >
-  //   <Notice tone="info">
-  //     <Text size="small">
-  //       Swipe to see more <IconArrow direction="right" />
-  //     </Text>
-  //   </Notice>
-  // </Box> */}
-  // </Stack>
 
   return (
     <TableContext.Provider value={{ fullBleed, alignY, columnWidths }}>

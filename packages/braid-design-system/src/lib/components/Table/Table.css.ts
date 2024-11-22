@@ -47,7 +47,7 @@ export const table = style([
     borderCollapse: 'separate',
     border: `${borderWidth} solid ${borderColor}`,
     fontVariantNumeric: 'tabular-nums',
-    wordBreak: 'break-word', // MAYBE?.
+    wordBreak: 'break-word',
   },
   colorModeStyle({
     lightMode: {
@@ -106,32 +106,18 @@ export const nowrap = style({
   whiteSpace: 'nowrap',
 });
 
-// export const contentWidth = style({
-//   width: '1%', // is this necessary?
-//   // maxWidth: 'fit-content',
-//   // minWidth: 'fit-content',
-// });
+export const softWidthVar = createVar();
+export const softWidth = style({
+  width: softWidthVar,
+});
 
 export const minWidthVar = createVar();
-export const maxWidthVar = createVar();
-export const fixedWidthVar = createVar();
-export const fixedWidth = style({
-  // boxSizing: 'content-box', // MAYBE? for exact pixel values.
-  // overflowX: 'hidden', // MAYBE?.
-  width: fixedWidthVar,
-  // maxWidth: fixedWidthVar,
-});
-
 export const minWidth = style({
-  // boxSizing: 'content-box', // MAYBE? for exact pixel values.
-  // overflowX: 'hidden', // MAYBE?.
-  // maxWidth: fixedWidthVar,
   minWidth: minWidthVar,
 });
+
+export const maxWidthVar = createVar();
 export const maxWidth = style({
-  // boxSizing: 'content-box', // MAYBE? for exact pixel values.
-  // overflowX: 'hidden', // MAYBE?.
-  // maxWidth: fixedWidthVar,
   maxWidth: maxWidthVar,
 });
 

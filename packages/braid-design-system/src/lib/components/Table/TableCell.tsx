@@ -8,7 +8,6 @@ import {
   type ResponsiveRangeProps,
 } from '../../utils/resolveResponsiveRangeProps';
 import {
-  // TableCellIndexContext,
   TableContext,
   TableHeaderContext,
   TableRowContext,
@@ -20,6 +19,7 @@ import buildDataAttributes, {
 
 import * as styles from './Table.css';
 
+type Percentage = `${number}%`;
 interface TableCellProps {
   header?: boolean;
   children: ReactNode;
@@ -27,11 +27,10 @@ interface TableCellProps {
   hideAbove?: ResponsiveRangeProps['above'];
   align?: 'left' | 'right' | 'center';
   wrap?: boolean;
-  nowrap?: boolean;
-  data?: DataAttributeMap;
-  width?: 'content' | 'auto' | string; // percentage only
+  width?: 'content' | 'auto' | Percentage;
   minWidth?: number;
   maxWidth?: number;
+  data?: DataAttributeMap;
 }
 export const TableCell = ({
   header,
@@ -39,8 +38,7 @@ export const TableCell = ({
   hideAbove,
   hideBelow,
   align = 'left',
-  wrap,
-  nowrap = true,
+  wrap = false,
   width = 'auto',
   minWidth,
   maxWidth,
@@ -56,7 +54,6 @@ export const TableCell = ({
   const tableHeaderContext = useContext(TableHeaderContext);
   const tableRowContext = useContext(TableRowContext);
   const tableContext = useContext(TableContext);
-  // const tableCellIndexContext = useContext(TableCellIndexContext);
 
   assert(
     tableRowContext,
@@ -68,11 +65,8 @@ export const TableCell = ({
   const isHeaderCell =
     typeof header !== 'undefined' ? header : tableHeaderContext;
 
-  // const width = tableContext.columnWidths[tableCellIndexContext];
-  // const preventWrapping =
-  //   typeof nowrap !== 'undefined'
-  //     ? nowrap
-  //     : !isHeaderCell && (!width || width === 'auto');
+  const softWidth = width === 'content' ? '1%' : width;
+  const hasMaxWidth = typeof maxWidth !== 'undefined';
 
   return (
     <Box
@@ -97,12 +91,10 @@ export const TableCell = ({
          * columns to be wider than they need to be to display the data.
          * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#displaying_large_tables_in_small_spaces
          */
-        // [styles.nowrap]: preventWrapping,
-        [styles.nowrap]: nowrap, // !wrap,
-        // [styles.contentWidth]: width === 'content',
-        [styles.fixedWidth]: width && width !== 'auto',
+        [styles.nowrap]: !wrap,
+        [styles.softWidth]: width && width !== 'auto',
         [styles.minWidth]: typeof minWidth !== 'undefined',
-        [styles.maxWidth]: typeof maxWidth !== 'undefined',
+        [styles.maxWidth]: hasMaxWidth,
         [styles.alignYCenter]: tableContext.alignY === 'center',
         [styles.borderBottom]: true,
         [styles.showOnTablet]: !hideOnTablet && hideOnMobile,
@@ -111,32 +103,19 @@ export const TableCell = ({
         [styles.showOnWide]:
           !hideOnWide && (hideOnDesktop || hideOnTablet || hideOnMobile),
       }}
-      style={
-        // width ? { width: width === 'content' ? '1%' : width } : undefined
-        {
-          ...(width !== 'auto'
-            ? assignInlineVars({
-                [styles.fixedWidthVar]: width === 'content' ? '1%' : width,
-              })
-            : undefined),
-          ...(typeof minWidth !== 'undefined'
-            ? assignInlineVars({
-                [styles.minWidthVar]: `${minWidth}px`,
-              })
-            : undefined),
-          ...(typeof maxWidth !== 'undefined'
-            ? assignInlineVars({
-                [styles.maxWidthVar]: `${maxWidth}px`,
-              })
-            : undefined),
-        }
-      }
+      style={assignInlineVars({
+        [styles.softWidthVar]: width !== 'auto' ? softWidth : undefined,
+        [styles.minWidthVar]:
+          typeof minWidth !== 'undefined' ? `${minWidth}px` : undefined,
+        [styles.maxWidthVar]:
+          typeof maxWidth !== 'undefined' ? `${maxWidth}px` : undefined,
+      })}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <DefaultTextPropsProvider
         size="small"
         weight={isHeaderCell ? 'strong' : undefined}
-        maxLines={width !== 'auto' && nowrap ? 1 : undefined}
+        maxLines={hasMaxWidth && !wrap ? 1 : undefined}
       >
         {align !== 'left' ? (
           <Inline space="none" align={align}>
