@@ -315,18 +315,6 @@ export const screenshots: ComponentScreenshot = {
             gap="small"
             style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
           >
-            <ButtonLink href="#" icon={<IconSend />} iconPosition="leading">
-              Non elit
-            </ButtonLink>
-            <ButtonLink href="#" icon={<IconSend />} iconPosition="leading">
-              Non elit do do incididunt nostrud
-            </ButtonLink>
-          </Box>
-          <Box
-            display="flex"
-            gap="small"
-            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
-          >
             <ButtonLink href="#" icon={<IconSend />} iconPosition="trailing">
               Non elit
             </ButtonLink>
