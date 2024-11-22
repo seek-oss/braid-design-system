@@ -24,6 +24,9 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import * as styles from './MenuRenderer.css';
+import { triggerVars } from './MenuRenderer.css';
+import { BraidPortal } from '../BraidPortal/BraidPortal';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -59,6 +62,7 @@ export interface MenuRendererProps {
 }
 
 const {
+  CLIENT_ENVIRONMENT,
   MENU_TRIGGER_UP,
   MENU_ITEM_UP,
   MENU_TRIGGER_DOWN,
@@ -75,20 +79,43 @@ const {
   MENU_TRIGGER_TAB,
   MENU_TRIGGER_ESCAPE,
   BACKDROP_CLICK,
+  WINDOW_RESIZE,
 } = actionTypes;
 
+type position = { top: number; bottom: number; left: number; right: number };
+
+const getPosition = (element: HTMLElement | null): position | undefined => {
+  if (!element) {
+    return undefined;
+  }
+
+  const { top, bottom, left, right } = element.getBoundingClientRect();
+  const { scrollX, scrollY, innerWidth, innerHeight } = window;
+
+  return {
+    top: innerHeight - top - scrollY,
+    bottom: bottom + scrollY,
+    left: left + scrollX,
+    right: innerWidth - right - scrollX,
+  };
+};
+
 interface State {
+  onClient: boolean;
   open: boolean;
   highlightIndex: number;
   closeReason: CloseReason;
+  triggerPosition?: position;
 }
 
 const CLOSED_INDEX = -1;
 const CLOSE_REASON_EXIT: CloseReasonExit = { reason: 'exit' };
 const initialState: State = {
+  onClient: false,
   open: false,
   highlightIndex: CLOSED_INDEX,
   closeReason: CLOSE_REASON_EXIT,
+  triggerPosition: undefined,
 };
 
 export const MenuRenderer = ({
@@ -120,85 +147,109 @@ export const MenuRenderer = ({
     'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
   );
 
-  const [{ open, highlightIndex, closeReason }, dispatch] = useReducer(
-    (state: State, action: Action): State => {
-      switch (action.type) {
-        case MENU_TRIGGER_UP:
-        case MENU_ITEM_UP: {
-          return {
-            ...state,
-            open: true,
-            closeReason: CLOSE_REASON_EXIT,
-            highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
-          };
-        }
-        case MENU_TRIGGER_DOWN:
-        case MENU_ITEM_DOWN: {
-          return {
-            ...state,
-            open: true,
-            closeReason: CLOSE_REASON_EXIT,
-            highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
-          };
-        }
-        case BACKDROP_CLICK:
-        case MENU_TRIGGER_ESCAPE:
-        case MENU_TRIGGER_TAB:
-        case MENU_ITEM_ESCAPE:
-        case MENU_ITEM_TAB: {
-          return {
-            ...state,
-            open: false,
-            closeReason: CLOSE_REASON_EXIT,
-            highlightIndex: CLOSED_INDEX,
-          };
-        }
-        case MENU_ITEM_ENTER:
-        case MENU_ITEM_SPACE:
-        case MENU_ITEM_CLICK: {
-          // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
-          if ('formElement' in action && action.formElement) {
-            return state;
-          }
-
-          return {
-            ...state,
-            open: false,
-            closeReason: {
-              reason: 'selection',
-              index: action.index,
-              id: action.id,
-            },
-            highlightIndex: CLOSED_INDEX,
-          };
-        }
-        case MENU_ITEM_HOVER: {
-          return { ...state, highlightIndex: action.value };
-        }
-        case MENU_TRIGGER_ENTER:
-        case MENU_TRIGGER_SPACE: {
-          const nextOpen = !state.open;
-          return {
-            ...state,
-            open: nextOpen,
-            closeReason: CLOSE_REASON_EXIT,
-            highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
-          };
-        }
-        case MENU_TRIGGER_CLICK: {
-          const nextOpen = !state.open;
-          return {
-            ...state,
-            open: nextOpen,
-            closeReason: CLOSE_REASON_EXIT,
-          };
-        }
-        default:
-          return state;
-      }
+  const [
+    {
+      onClient: hasRenderedOnClient,
+      open,
+      highlightIndex,
+      closeReason,
+      triggerPosition,
     },
-    initialState,
-  );
+    dispatch,
+  ] = useReducer((state: State, action: Action): State => {
+    switch (action.type) {
+      case CLIENT_ENVIRONMENT: {
+        return { ...state, onClient: true };
+      }
+      case MENU_TRIGGER_UP:
+      case MENU_ITEM_UP: {
+        return {
+          ...state,
+          open: true,
+          closeReason: CLOSE_REASON_EXIT,
+          highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
+          triggerPosition: buttonRef && getPosition(buttonRef.current),
+        };
+      }
+      case MENU_TRIGGER_DOWN:
+      case MENU_ITEM_DOWN: {
+        return {
+          ...state,
+          open: true,
+          closeReason: CLOSE_REASON_EXIT,
+          highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
+          triggerPosition: buttonRef && getPosition(buttonRef.current),
+        };
+      }
+      case BACKDROP_CLICK:
+      case MENU_TRIGGER_ESCAPE:
+      case MENU_TRIGGER_TAB:
+      case MENU_ITEM_ESCAPE:
+      case MENU_ITEM_TAB: {
+        return {
+          ...state,
+          open: false,
+          closeReason: CLOSE_REASON_EXIT,
+          highlightIndex: CLOSED_INDEX,
+        };
+      }
+      case MENU_ITEM_ENTER:
+      case MENU_ITEM_SPACE:
+      case MENU_ITEM_CLICK: {
+        // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
+        if ('formElement' in action && action.formElement) {
+          return state;
+        }
+
+        return {
+          ...state,
+          open: false,
+          closeReason: {
+            reason: 'selection',
+            index: action.index,
+            id: action.id,
+          },
+          highlightIndex: CLOSED_INDEX,
+        };
+      }
+      case MENU_ITEM_HOVER: {
+        return { ...state, highlightIndex: action.value };
+      }
+      case MENU_TRIGGER_ENTER:
+      case MENU_TRIGGER_SPACE: {
+        const nextOpen = !state.open;
+        return {
+          ...state,
+          open: nextOpen,
+          closeReason: CLOSE_REASON_EXIT,
+          highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
+          triggerPosition: buttonRef && getPosition(buttonRef.current),
+        };
+      }
+      case MENU_TRIGGER_CLICK: {
+        const nextOpen = !state.open;
+
+        return {
+          ...state,
+          open: nextOpen,
+          closeReason: CLOSE_REASON_EXIT,
+          triggerPosition: buttonRef && getPosition(buttonRef.current),
+        };
+      }
+      case WINDOW_RESIZE: {
+        return {
+          ...state,
+          triggerPosition: buttonRef && getPosition(buttonRef.current),
+        };
+      }
+      default:
+        return state;
+    }
+  }, initialState);
+
+  useEffect(() => {
+    dispatch({ type: CLIENT_ENVIRONMENT });
+  }, []);
 
   useEffect(() => {
     if (lastOpen.current === open) {
@@ -219,6 +270,18 @@ export const MenuRenderer = ({
       buttonRef.current.focus();
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      dispatch({ type: WINDOW_RESIZE });
+    };
+
+    if (open) {
+      window.addEventListener('resize', handleResize);
+    } else {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, [open]);
 
   const onTriggerKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
@@ -290,19 +353,22 @@ export const MenuRenderer = ({
       <Box position="relative">
         {trigger(triggerProps, { open })}
 
-        <Menu
-          open={open}
-          align={align}
-          width={width}
-          placement={placement}
-          offsetSpace={offsetSpace}
-          highlightIndex={highlightIndex}
-          reserveIconSpace={reserveIconSpace}
-          focusTrigger={focusTrigger}
-          dispatch={dispatch}
-        >
-          {items}
-        </Menu>
+        {hasRenderedOnClient && (
+          <Menu
+            open={open}
+            align={align}
+            width={width}
+            placement={placement}
+            offsetSpace={offsetSpace}
+            highlightIndex={highlightIndex}
+            reserveIconSpace={reserveIconSpace}
+            focusTrigger={focusTrigger}
+            dispatch={dispatch}
+            triggerPosition={triggerPosition}
+          >
+            {items}
+          </Menu>
+        )}
       </Box>
 
       {open ? (
@@ -342,8 +408,9 @@ interface MenuProps {
   highlightIndex: number;
   open: boolean;
   children: ReactChild[];
-  position?: 'absolute' | 'relative';
+  triggerPosition?: position;
 }
+
 export function Menu({
   offsetSpace,
   align,
@@ -355,61 +422,71 @@ export function Menu({
   focusTrigger,
   highlightIndex,
   reserveIconSpace,
-  position = 'absolute',
+  triggerPosition,
 }: MenuProps) {
   let dividerCount = 0;
 
+  const inlineVars =
+    triggerPosition &&
+    assignInlineVars({
+      [triggerVars[placement]]: `${triggerPosition[placement]}px`,
+      [triggerVars[align]]: `${triggerPosition[align]}px`,
+    });
+
   return (
-    <MenuRendererContext.Provider value={{ reserveIconSpace }}>
-      <Box
-        role="menu"
-        position={position}
-        zIndex="dropdown"
-        boxShadow={placement === 'top' ? 'small' : 'medium'}
-        borderRadius={borderRadius}
-        background="surface"
-        marginTop={placement === 'bottom' ? offsetSpace : undefined}
-        marginBottom={placement === 'top' ? offsetSpace : undefined}
-        transition="fast"
-        right={align === 'right' ? 0 : undefined}
-        opacity={!open ? 0 : undefined}
-        overflow="hidden"
-        className={[
-          !open && styles.menuIsClosed,
-          width !== 'content' && styles.width[width],
-          placement === 'top' && styles.placementBottom,
-        ]}
-      >
-        <Box paddingY={styles.menuYPadding} className={styles.menuHeightLimit}>
-          {Children.map(children, (item, i) => {
-            if (isDivider(item)) {
-              dividerCount++;
-              return item;
-            }
-
-            const menuItemIndex = i - dividerCount;
-
-            return (
-              <MenuRendererItemContext.Provider
-                key={menuItemIndex}
-                value={{
-                  isHighlighted: menuItemIndex === highlightIndex,
-                  index: menuItemIndex,
-                  dispatch,
-                  focusTrigger,
-                }}
-              >
-                {item}
-              </MenuRendererItemContext.Provider>
-            );
-          })}
-        </Box>
-        <Overlay
-          boxShadow="borderNeutralLight"
+    <BraidPortal>
+      <MenuRendererContext.Provider value={{ reserveIconSpace }}>
+        <Box
+          role="menu"
+          position="absolute"
+          style={inlineVars}
+          zIndex="dropdown"
+          boxShadow={placement === 'top' ? 'small' : 'medium'}
           borderRadius={borderRadius}
-          visible
-        />
-      </Box>
-    </MenuRendererContext.Provider>
+          background="surface"
+          marginTop={placement === 'bottom' ? offsetSpace : undefined}
+          marginBottom={placement === 'top' ? offsetSpace : undefined}
+          transition="fast"
+          opacity={!open ? 0 : undefined}
+          overflow="hidden"
+          className={[
+            styles.menuPosition,
+            !open && styles.menuIsClosed,
+            width !== 'content' && styles.width[width],
+          ]}
+        >
+          <Box
+            paddingY={styles.menuYPadding}
+            className={styles.menuHeightLimit}
+          >
+            {Children.map(children, (item, i) => {
+              if (isDivider(item)) {
+                dividerCount++;
+                return item;
+              }
+              const menuItemIndex = i - dividerCount;
+              return (
+                <MenuRendererItemContext.Provider
+                  key={menuItemIndex}
+                  value={{
+                    isHighlighted: menuItemIndex === highlightIndex,
+                    index: menuItemIndex,
+                    dispatch,
+                    focusTrigger,
+                  }}
+                >
+                  {item}
+                </MenuRendererItemContext.Provider>
+              );
+            })}
+          </Box>
+          <Overlay
+            boxShadow="borderNeutralLight"
+            borderRadius={borderRadius}
+            visible
+          />
+        </Box>
+      </MenuRendererContext.Provider>
+    </BraidPortal>
   );
 }

@@ -7,6 +7,21 @@ export const backdrop = style({
   height: '100vh',
 });
 
+export const triggerVars = {
+  top: createVar(),
+  left: createVar(),
+  bottom: createVar(),
+  right: createVar(),
+};
+
+// Top and bottom reversed to allow for a more natural API
+export const menuPosition = style({
+  top: triggerVars.bottom,
+  bottom: triggerVars.top,
+  left: triggerVars.left,
+  right: triggerVars.right,
+});
+
 export const menuIsClosed = style({
   transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
   visibility: 'hidden',
@@ -22,10 +37,6 @@ export const width = styleVariants({ small, medium, large }, (w) => [
   baseWidth,
   { vars: { [widthVar]: w } },
 ]);
-
-export const placementBottom = style({
-  bottom: '100%',
-});
 
 export const menuYPadding = 'xxsmall';
 
