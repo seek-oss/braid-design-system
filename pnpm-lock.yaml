@@ -169,7 +169,7 @@ importers:
         version: 4.1.2
       '@capsizecss/metrics':
         specifier: ^3.0.0
-        version: 3.3.0
+        version: 3.4.0
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.0
         version: 2.0.0(@vanilla-extract/css@1.15.5(babel-plugin-macros@3.1.0))
@@ -748,6 +748,10 @@ packages:
 
   '@babel/helper-plugin-utils@7.24.8':
     resolution: {integrity: sha512-FFWx5142D8h2Mgr/iPVGH5G7w6jDn4jUSpZTyDnQO0Yn7Ks2Kuz6Pci8H6MPCoUJegd/UZQ3tAvfLCxQSnWWwg==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-plugin-utils@7.25.9':
+    resolution: {integrity: sha512-kSMlyUVdWe25rEsRGviIgOWnoT/nfABVWlqt9N19/dIPWViAOW2s9wznP5tURbs/IDuNk4gPy3YdYRgH3uxhBw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-remap-async-to-generator@7.24.7':
@@ -1370,8 +1374,8 @@ packages:
   '@capsizecss/core@4.1.2':
     resolution: {integrity: sha512-5tMjLsVsaEEwJ816y3eTfhhTIyUWNFt58x6YcHni0eV5tta8MGDOAIe+CV5ICb5pguXgDpNGLprqhPqBWtkFSg==}
 
-  '@capsizecss/metrics@3.3.0':
-    resolution: {integrity: sha512-WAQtKgyz7fZDEMuERSLPmWXuV53O/HDJZLof8BMWEX1GTWYiiNdqGA6j56+GCSSeVyzYDxkBnm5taIh0YyW6fQ==}
+  '@capsizecss/metrics@3.4.0':
+    resolution: {integrity: sha512-hIn8MAHxLvwyUh6ZvLQHDt2GPShBz6+gxBs1JTD9GleBkht1AZvtCFo0adr7bQvYYuQzUJeKi69zqlAwgKMHNA==}
 
   '@capsizecss/vanilla-extract@2.0.0':
     resolution: {integrity: sha512-6FNLEOcAYo2AklxT7XVEm9Yam2hv76DLEhD6RWK3hJ87Nb9i95Y+rdYHJ3LBlbrzb+ZVJXxzZvg5OAZAqr/K3Q==}
@@ -9356,6 +9360,8 @@ snapshots:
 
   '@babel/helper-plugin-utils@7.24.8': {}
 
+  '@babel/helper-plugin-utils@7.25.9': {}
+
   '@babel/helper-remap-async-to-generator@7.24.7(@babel/core@7.24.5)':
     dependencies:
       '@babel/core': 7.24.5
@@ -9468,7 +9474,7 @@ snapshots:
   '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.24.5)':
     dependencies:
       '@babel/core': 7.24.5
-      '@babel/helper-plugin-utils': 7.24.8
+      '@babel/helper-plugin-utils': 7.25.9
 
   '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.24.5)':
     dependencies:
@@ -10152,7 +10158,7 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
-  '@capsizecss/metrics@3.3.0': {}
+  '@capsizecss/metrics@3.4.0': {}
 
   '@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.15.5(babel-plugin-macros@3.1.0))':
     dependencies:
@@ -12826,7 +12832,7 @@ snapshots:
   '@zendesk/babel-plugin-react-displayname@https://codeload.github.com/zendesk/babel-plugin-react-displayname/tar.gz/7a837f2(@babel/core@7.24.5)(@babel/preset-react@7.24.7(@babel/core@7.24.5))':
     dependencies:
       '@babel/core': 7.24.5
-      '@babel/helper-plugin-utils': 7.24.8
+      '@babel/helper-plugin-utils': 7.25.9
       '@babel/preset-react': 7.24.7(@babel/core@7.24.5)
 
   '@zkochan/js-yaml@0.0.6':
