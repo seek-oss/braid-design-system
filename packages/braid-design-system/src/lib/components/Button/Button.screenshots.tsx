@@ -478,5 +478,45 @@ export const screenshots: ComponentScreenshot = {
         </Stack>
       ),
     },
+    {
+      label:
+        'Vertically centered labels in containers that stretch elements to fill',
+      Example: () => (
+        <Stack space="small">
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <Button>Non elit</Button>
+            <Button>Non elit do do incididunt nostrud</Button>
+          </Box>
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <Button icon={<IconWorkExperience />} iconPosition="leading">
+              Non elit
+            </Button>
+            <Button icon={<IconWorkExperience />} iconPosition="leading">
+              Non elit do do incididunt nostrud
+            </Button>
+          </Box>
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <Button icon={<IconWorkExperience />} iconPosition="trailing">
+              Non elit
+            </Button>
+            <Button icon={<IconWorkExperience />} iconPosition="trailing">
+              Non elit do do incididunt nostrud
+            </Button>
+          </Box>
+        </Stack>
+      ),
+    },
   ],
 };
