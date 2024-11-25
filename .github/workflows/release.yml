@@ -32,6 +32,7 @@ jobs:
         run: pnpm i
 
       - name: Create Release Pull Request or Publish to npm
+        id: changesets
         uses: changesets/action@v1
         with:
           version: pnpm run version
@@ -41,17 +42,19 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build site
+        if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs.hasChangesets == 'false'
         run: pnpm build:site
         env:
           BASE_NAME: /braid-design-system
 
       - name: Deploy site
+        if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs.hasChangesets == 'false'
         uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # 4.6.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           folder: ./site/dist
           # Preserve the preview deployment folder and custom grad-connection site
           clean-exclude: |
-            preview/*
-            grad-connection/*
+            /preview/*
+            /grad-connection/*
           single-commit: true
