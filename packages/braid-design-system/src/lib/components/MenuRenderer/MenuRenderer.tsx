@@ -4,7 +4,6 @@ import React, {
   type MouseEvent,
   type ReactNode,
   type Ref,
-  type ReactChild,
   Children,
   useRef,
   useReducer,
@@ -407,7 +406,7 @@ interface MenuProps {
   focusTrigger: () => void;
   highlightIndex: number;
   open: boolean;
-  children: ReactChild[];
+  children: ReactNode[];
   triggerPosition?: position;
 }
 
