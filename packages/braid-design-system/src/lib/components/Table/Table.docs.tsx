@@ -580,6 +580,71 @@ const docs: ComponentDocs = {
       },
     },
     {
+      label: 'Wrapping',
+      description: (
+        <>
+          <Text>
+            By default, all <Strong>TableCell</Strong> components are prevented
+            from wrapping their content. This keep rows a consistent height and
+            means the content can influence the column width.
+          </Text>
+          <Text>
+            If desired, wrapping can be enabled by setting the{' '}
+            <Strong>wrap</Strong> prop to <Strong>true</Strong> on a per-cell
+            basis.
+          </Text>
+        </>
+      ),
+      Example: ({ setDefaultState, getState }) =>
+        source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1:
+                  'Id nisi consequat enim exercitation non fugiat ipsum ut ea.',
+                column2:
+                  'Incididunt eu anim eu pariatur dolore dolore fugiat qui ipsum tempor ex laborum voluptate sint.',
+                column3:
+                  'Culpa labore minim consectetur ut officia ea ea cupidatat excepteur ipsum.',
+              },
+              {
+                column1: 'Adipiscing',
+                column2: 'Elit',
+                column3: 'Praesent',
+              },
+            ])}
+            <Table label="Column visibility example">
+              <TableHeader>
+                <TableCell>
+                  <Text>Lorem</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>Ipsum</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>Dolor</Text>
+                </TableCell>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row}>
+                    <TableCell wrap>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell wrap>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell wrap>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </>,
+        ),
+    },
+    {
       label: 'Column visibility',
       description: (
         <>
@@ -736,68 +801,6 @@ const docs: ComponentDocs = {
           value: visual,
         };
       },
-    },
-    {
-      label: 'Wrapping',
-      description: (
-        <>
-          <Text>
-            By default, all <Strong>TableCell</Strong> components are prevented
-            from wrapping their content. This keep rows a consistent height and
-            means the content can influence the column width.
-          </Text>
-          <Text>
-            If desired, wrapping can be enabled by setting the{' '}
-            <Strong>wrap</Strong> prop to <Strong>true</Strong> on a per-cell
-            basis.
-          </Text>
-        </>
-      ),
-      Example: ({ setDefaultState, getState }) =>
-        source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-            ])}
-            <Table label="Column visibility example">
-              <TableHeader>
-                <TableCell>
-                  <Text>Lorem</Text>
-                </TableCell>
-                <TableCell hideBelow="tablet">
-                  <Text>Ipsum</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Dolor</Text>
-                </TableCell>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
-                    <TableCell>
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell hideBelow="tablet">
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        ),
     },
     {
       label: 'Full bleed',
