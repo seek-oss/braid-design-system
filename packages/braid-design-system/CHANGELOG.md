@@ -1,5 +1,33 @@
 # braid-design-system
 
+## 33.2.0
+
+### Minor Changes
+
+- Add new icons to the library ([#1655](https://github.com/seek-oss/braid-design-system/pull/1655))
+  - `IconCoverLetter`
+  - `IconChecklist`
+  - `IconDisallow`
+  - `IconBluetooth`
+  - `IconQR`
+
+### Patch Changes
+
+- Update the following icon assets: ([#1655](https://github.com/seek-oss/braid-design-system/pull/1655))
+  - `IconNote`
+  - `IconResume`
+  - `IconDocument`
+  - `IconDocumentBroken`
+  - `IconHeart`
+- **Button, ButtonLink:** Ensure label is vertically centered ([#1656](https://github.com/seek-oss/braid-design-system/pull/1656))
+
+  Fixes a bug where a `ButtonLink` label would not be vertically centered inside containers that stretch elements to fill the available space, such as `Tiles`.
+  While the issue did not affect `Button`, the fix was applied to both components to ensure there is no reliance on browser default styling.
+
+- **Autosuggest**: Ensure content is left aligned ([#1642](https://github.com/seek-oss/braid-design-system/pull/1642))
+
+  Applies left alignment to `Autosuggest` dropdown content to ensure consistent alignment, even when inside centered layout containers.
+
 ## 33.1.0
 
 ### Minor Changes

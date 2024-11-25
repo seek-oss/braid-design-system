@@ -4545,5 +4545,43 @@
         "summary": "**Disclosure:** Add `size` support\n\nIntroduce the `size` prop to the `Disclosure` component, providing the same options as the `Text` component.\n\n**EXAMPLE USAGE:**\n```jsx\n<Disclosure\n  size=\"small\"\n>\n  ...\n</Disclosure>\n```"
       }
     ]
+  },
+  {
+    "version": "33.2.0",
+    "updates": [
+      {
+        "updated": [
+          "IconNote",
+          "IconResume",
+          "IconDocument",
+          "IconDocumentBroken",
+          "IconHeart"
+        ],
+        "summary": "Update the following icon assets:\n  - `IconNote`\n  - `IconResume`\n  - `IconDocument`\n  - `IconDocumentBroken`\n  - `IconHeart`"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Ensure label is vertically centered\n\nFixes a bug where a `ButtonLink` label would not be vertically centered inside containers that stretch elements to fill the available space, such as `Tiles`.\nWhile the issue did not affect `Button`, the fix was applied to both components to ensure there is no reliance on browser default styling."
+      },
+      {
+        "new": [
+          "IconCoverLetter",
+          "IconChecklist",
+          "IconDisallow",
+          "IconBluetooth",
+          "IconQR"
+        ],
+        "summary": "Add new icons to the library\n  - `IconCoverLetter`\n  - `IconChecklist`\n  - `IconDisallow`\n  - `IconBluetooth`\n  - `IconQR`"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Ensure content is left aligned\n\nApplies left alignment to `Autosuggest` dropdown content to ensure consistent alignment, even when inside centered layout containers."
+      }
+    ]
   }
 ]
