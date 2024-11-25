@@ -259,5 +259,23 @@ export const screenshots: ComponentScreenshot = {
         </Box>
       ),
     },
+    {
+      label: 'With overflow hidden',
+      Example: () => (
+        <Box style={{ maxWidth: '150px', height: '44px' }} overflow="hidden">
+          <MenuRenderer
+            offsetSpace="small"
+            trigger={(triggerProps) => (
+              <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                <Placeholder height={44} label="Menu trigger" />
+              </Box>
+            )}
+          >
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItemLink href="#">Link</MenuItemLink>
+          </MenuRenderer>
+        </Box>
+      ),
+    },
   ],
 };

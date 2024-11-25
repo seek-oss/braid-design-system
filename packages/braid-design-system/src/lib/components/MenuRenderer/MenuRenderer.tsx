@@ -353,20 +353,22 @@ export const MenuRenderer = ({
         {trigger(triggerProps, { open })}
 
         {hasRenderedOnClient && (
-          <Menu
-            open={open}
-            align={align}
-            width={width}
-            placement={placement}
-            offsetSpace={offsetSpace}
-            highlightIndex={highlightIndex}
-            reserveIconSpace={reserveIconSpace}
-            focusTrigger={focusTrigger}
-            dispatch={dispatch}
-            triggerPosition={triggerPosition}
-          >
-            {items}
-          </Menu>
+          <BraidPortal>
+            <Menu
+              open={open}
+              align={align}
+              width={width}
+              placement={placement}
+              offsetSpace={offsetSpace}
+              highlightIndex={highlightIndex}
+              reserveIconSpace={reserveIconSpace}
+              focusTrigger={focusTrigger}
+              dispatch={dispatch}
+              triggerPosition={triggerPosition}
+            >
+              {items}
+            </Menu>
+          </BraidPortal>
         )}
       </Box>
 
@@ -433,59 +435,54 @@ export function Menu({
     });
 
   return (
-    <BraidPortal>
-      <MenuRendererContext.Provider value={{ reserveIconSpace }}>
-        <Box
-          role="menu"
-          position="absolute"
-          style={inlineVars}
-          zIndex="dropdown"
-          boxShadow={placement === 'top' ? 'small' : 'medium'}
-          borderRadius={borderRadius}
-          background="surface"
-          marginTop={placement === 'bottom' ? offsetSpace : undefined}
-          marginBottom={placement === 'top' ? offsetSpace : undefined}
-          transition="fast"
-          opacity={!open ? 0 : undefined}
-          overflow="hidden"
-          className={[
-            styles.menuPosition,
-            !open && styles.menuIsClosed,
-            width !== 'content' && styles.width[width],
-          ]}
-        >
-          <Box
-            paddingY={styles.menuYPadding}
-            className={styles.menuHeightLimit}
-          >
-            {Children.map(children, (item, i) => {
-              if (isDivider(item)) {
-                dividerCount++;
-                return item;
-              }
-              const menuItemIndex = i - dividerCount;
-              return (
-                <MenuRendererItemContext.Provider
-                  key={menuItemIndex}
-                  value={{
-                    isHighlighted: menuItemIndex === highlightIndex,
-                    index: menuItemIndex,
-                    dispatch,
-                    focusTrigger,
-                  }}
-                >
-                  {item}
-                </MenuRendererItemContext.Provider>
-              );
-            })}
-          </Box>
-          <Overlay
-            boxShadow="borderNeutralLight"
-            borderRadius={borderRadius}
-            visible
-          />
+    <MenuRendererContext.Provider value={{ reserveIconSpace }}>
+      <Box
+        role="menu"
+        position="absolute"
+        style={inlineVars}
+        zIndex="dropdown"
+        boxShadow={placement === 'top' ? 'small' : 'medium'}
+        borderRadius={borderRadius}
+        background="surface"
+        marginTop={placement === 'bottom' ? offsetSpace : undefined}
+        marginBottom={placement === 'top' ? offsetSpace : undefined}
+        transition="fast"
+        opacity={!open ? 0 : undefined}
+        overflow="hidden"
+        className={[
+          styles.menuPosition,
+          !open && styles.menuIsClosed,
+          width !== 'content' && styles.width[width],
+        ]}
+      >
+        <Box paddingY={styles.menuYPadding} className={styles.menuHeightLimit}>
+          {Children.map(children, (item, i) => {
+            if (isDivider(item)) {
+              dividerCount++;
+              return item;
+            }
+            const menuItemIndex = i - dividerCount;
+            return (
+              <MenuRendererItemContext.Provider
+                key={menuItemIndex}
+                value={{
+                  isHighlighted: menuItemIndex === highlightIndex,
+                  index: menuItemIndex,
+                  dispatch,
+                  focusTrigger,
+                }}
+              >
+                {item}
+              </MenuRendererItemContext.Provider>
+            );
+          })}
         </Box>
-      </MenuRendererContext.Provider>
-    </BraidPortal>
+        <Overlay
+          boxShadow="borderNeutralLight"
+          borderRadius={borderRadius}
+          visible
+        />
+      </Box>
+    </MenuRendererContext.Provider>
   );
 }
