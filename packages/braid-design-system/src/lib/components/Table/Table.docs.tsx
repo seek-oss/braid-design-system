@@ -24,10 +24,7 @@ const docs: ComponentDocs = {
   category: 'Layout',
   Example: () =>
     source(
-      <Table
-        label="Table hero example"
-        columnWidths={['content', 'auto', 'content']}
-      >
+      <Table label="Table hero example">
         <TableHeader>
           <TableCell>
             <Text>Lorem</Text>
@@ -94,15 +91,22 @@ const docs: ComponentDocs = {
         </TextLink>{' '}
         use cases.
       </Text>
+      <Text>
+        All <Strong>Table</Strong> components require an accessible name
+        describing the data represented within. This must be provided using the{' '}
+        <Strong>label</Strong> prop.
+      </Text>
     </Stack>
   ),
   additional: [
     {
-      label: 'Table data',
+      label: 'Table structure',
       description: (
         <Text>
-          Tables must contain a <Strong>TableBody</Strong> component as the
-          container for all the rows of tabular data.
+          A <Strong>Table</Strong> must include a <Strong>TableBody</Strong>{' '}
+          with one or more <Strong>TableRow</Strong> components, with each
+          containing <Strong>TableCell</Strong> components that represent each
+          column of the tabular data.
         </Text>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -155,9 +159,13 @@ const docs: ComponentDocs = {
       label: 'Column headings',
       description: (
         <Text>
-          Providing a <Strong>TableHeader</Strong> component with a{' '}
-          <Strong>TableCell</Strong> for each column will include a row of
-          headings associated as the title for each column.
+          A <Strong>TableHeader</Strong> component can be placed before the{' '}
+          <Strong>TableBody</Strong>, providing a header row that defaults all{' '}
+          <Strong>TableCell</Strong> components inside to be{' '}
+          <TextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">
+            table header elements
+          </TextLink>{' '}
+          with relevant styling.
         </Text>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -274,11 +282,23 @@ const docs: ComponentDocs = {
     },
     {
       description: (
-        <Text>
-          This may be combined with{' '}
-          <TextLink href="#column-headings">column headings</TextLink> to
-          achieve two-dimensional table headers.
-        </Text>
+        <>
+          <Text>
+            This may be combined with{' '}
+            <TextLink href="#column-headings">column headings</TextLink> to
+            achieve two-dimensional table headers.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              For empty header cells it is recommended to provide a non-visual
+              label for the column using the{' '}
+              <TextLink href="/components/HiddenVisually">
+                HiddenVisually
+              </TextLink>{' '}
+              component.
+            </Text>
+          </Notice>
+        </>
       ),
       Example: ({ setDefaultState, getState }) => {
         const { code, value } = source(
@@ -306,7 +326,6 @@ const docs: ComponentDocs = {
             <Table label="Table dual axis heading example">
               <TableHeader>
                 <TableCell>
-                  {/* DOCUMENT THIS */}
                   <HiddenVisually>Time</HiddenVisually>
                 </TableCell>
                 <TableCell>
@@ -499,6 +518,13 @@ const docs: ComponentDocs = {
             Supported alignments are <Strong>left</Strong> (default),{' '}
             <Strong>center</Strong> and <Strong>right</Strong>.
           </Text>
+          <Notice tone="info">
+            <Text>
+              As alignment is set at a cell level, remember to consider the
+              alignment of both the row data <Strong>AND</Strong> the column
+              header too.
+            </Text>
+          </Notice>
         </>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -571,6 +597,13 @@ const docs: ComponentDocs = {
             breakpoint upwards, and the second column will be hidden on{' '}
             <Strong>mobile</Strong>.
           </Text>
+          <Notice tone="info">
+            <Text>
+              As visibility is set at a cell level, remember to consider the
+              visibility of both the row data <Strong>AND</Strong> the column
+              header too.
+            </Text>
+          </Notice>
         </>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -708,116 +741,63 @@ const docs: ComponentDocs = {
       label: 'Wrapping',
       description: (
         <>
-          <Notice tone="critical">
-            <Text>Coming soon...</Text>
-          </Notice>
+          <Text>
+            By default, all <Strong>TableCell</Strong> components are prevented
+            from wrapping their content. This keep rows a consistent height and
+            means the content can influence the column width.
+          </Text>
+          <Text>
+            If desired, wrapping can be enabled by setting the{' '}
+            <Strong>wrap</Strong> prop to <Strong>true</Strong> on a per-cell
+            basis.
+          </Text>
         </>
-        //       <Stack space="medium">
-        //         <LinkableHeading level="4">Data cells</LinkableHeading>
-        //         <Text>
-        //           Content within table data cells <Strong>will not wrap</Strong>{' '}
-        //           onto multiple lines, instead their content will determine the
-        //           column width. However, when explicitly setting the{' '}
-        //           <TextLink href="#column-width">columnWidths</TextLink> prop, data
-        //           cells <Strong>will wrap</Strong> to ensure the column adheres to
-        //           the specified width.
-        //         </Text>
-        //         <Text>
-        //           The default behaviour can be overridden on a per-cell basis by
-        //           setting <Strong>nowrap</Strong> to <Strong>true</Strong> or{' '}
-        //           <Strong>false</Strong> as required.
-        //         </Text>
-        //       </Stack>
-
-        //       <DocExample
-        //         id="data-cell-wrap"
-        //         Example={() => source(
-        //           <Tiles space="xlarge" columns={[1, 2]}>
-        //             <Table label="Tabular data example">
-        //               <TableBody>
-        //                 <TableRow>
-        //                   <TableCell>
-        //                     <Text>Content</Text>
-        //                   </TableCell>
-        //                   <TableCell hideBelow="tablet">
-        //                     <Text>Content</Text>
-        //                   </TableCell>
-        //                   <TableCell>
-        //                     <Text>Content</Text>
-        //                   </TableCell>
-        //                 </TableRow>
-        //               </TableBody>
-        //             </Table>
-        //             <Table label="Tabular data example">
-        //               <TableBody>
-        //                 <TableRow>
-        //                   <TableCell>
-        //                     <Text>Content</Text>
-        //                   </TableCell>
-        //                   <TableCell hideBelow="tablet">
-        //                     <Text>Content</Text>
-        //                   </TableCell>
-        //                   <TableCell>
-        //                     <Text>Content</Text>
-        //                   </TableCell>
-        //                 </TableRow>
-        //               </TableBody>
-        //             </Table>
-        //           </Tiles>,
-        //         )}
-        //       />
-
-        //       <Stack space="medium">
-        //         <LinkableHeading level="4">Header cells</LinkableHeading>
-        //         <Text>
-        //           By default, table header cells <Strong>will wrap</Strong> to avoid
-        //           long titles resulting in columns being wider required for their
-        //           data. This can be overridden on a per-cell basis by setting{' '}
-        //           <Strong>nowrap</Strong> to <Strong>true</Strong>.
-        //         </Text>
-        //       </Stack>
-        //     </>
-        //   ),
-        //   Example: () =>
-        //     source(
-        //       <Table label="Tabular data example">
-        //         {/* <TableHeader>
-        //           <TableCell>
-        //             <Text>City</Text>
-        //           </TableCell>
-        //           <TableCell hideBelow="tablet">
-        //             <Text>Candidates</Text>
-        //           </TableCell>
-        //           <TableCell>
-        //             <Text>Actions</Text>
-        //           </TableCell>
-        //         </TableHeader>
-        //         <TableBody>
-        //           <TableRow>
-        //             <TableCell>
-        //               <Text>Content</Text>
-        //             </TableCell>
-        //             <TableCell hideBelow="tablet">
-        //               <Text>Content</Text>
-        //             </TableCell>
-        //             <TableCell>
-        //               <Text>Content</Text>
-        //             </TableCell>
-        //           </TableRow>
-        //           <TableRow>
-        //             <TableCell>
-        //               <Text>Content</Text>
-        //             </TableCell>
-        //             <TableCell hideBelow="tablet">
-        //               <Text>Content</Text>
-        //             </TableCell>
-        //             <TableCell>
-        //               <Text>Content</Text>
-        //             </TableCell>
-        //           </TableRow>
-        //         </TableBody> */}
-        //       </Table>,
       ),
+      Example: ({ setDefaultState, getState }) =>
+        source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1: 'Sit',
+                column2: 'Amet',
+                column3: 'Consectetur',
+              },
+              {
+                column1: 'Adipiscing',
+                column2: 'Elit',
+                column3: 'Praesent',
+              },
+            ])}
+            <Table label="Column visibility example">
+              <TableHeader>
+                <TableCell>
+                  <Text>Lorem</Text>
+                </TableCell>
+                <TableCell hideBelow="tablet">
+                  <Text>Ipsum</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>Dolor</Text>
+                </TableCell>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row}>
+                    <TableCell>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell hideBelow="tablet">
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </>,
+        ),
     },
     {
       label: 'Full bleed',

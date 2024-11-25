@@ -1,9 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { Box } from '../Box/Box';
-// import { IconArrow } from '../icons/IconArrow/IconArrow';
-// import { Notice } from '../Notice/Notice';
-// import { Stack } from '../Stack/Stack';
-// import { Text } from '../Text/Text';
 import { TableContext } from './TableContext';
 import { Bleed } from '../Bleed/Bleed';
 import buildDataAttributes, {
@@ -15,7 +11,6 @@ export interface TableProps {
   label: string;
   fullBleed?: boolean;
   alignY?: 'top' | 'center';
-  columnWidths?: Array<string | number>;
   children: ReactNode;
   data?: DataAttributeMap;
 }
@@ -54,7 +49,6 @@ export const Table = ({
   alignY = 'center',
   children,
   label,
-  columnWidths = [],
   data,
   ...restProps
 }: TableProps) => {
@@ -92,7 +86,7 @@ export const Table = ({
   );
 
   return (
-    <TableContext.Provider value={{ fullBleed, alignY, columnWidths }}>
+    <TableContext.Provider value={{ fullBleed, alignY }}>
       {fullBleed ? <Bleed horizontal="gutter">{table}</Bleed> : table}
     </TableContext.Provider>
   );

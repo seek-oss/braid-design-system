@@ -1,11 +1,10 @@
 import assert from 'assert';
-import { Children, useContext, type ReactNode } from 'react';
+import { useContext, type ReactNode } from 'react';
 import {
   TableRowContext,
   TableHeaderContext,
   TableContext,
   TableBodyContext,
-  TableCellIndexContext,
 } from './TableContext';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -39,11 +38,7 @@ export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
   return (
     <TableRowContext.Provider value={true}>
       <tr {...buildDataAttributes({ data, validateRestProps: restProps })}>
-        {Children.map(children, (cell, index) => (
-          <TableCellIndexContext.Provider value={index}>
-            {cell}
-          </TableCellIndexContext.Provider>
-        ))}
+        {children}
       </tr>
     </TableRowContext.Provider>
   );
