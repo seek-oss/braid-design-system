@@ -8,6 +8,7 @@ import React, {
   useRef,
   useReducer,
   useEffect,
+  useState,
 } from 'react';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
@@ -61,7 +62,6 @@ export interface MenuRendererProps {
 }
 
 const {
-  CLIENT_ENVIRONMENT,
   MENU_TRIGGER_UP,
   MENU_ITEM_UP,
   MENU_TRIGGER_DOWN,
@@ -100,7 +100,6 @@ const getPosition = (element: HTMLElement | null): position | undefined => {
 };
 
 interface State {
-  onClient: boolean;
   open: boolean;
   highlightIndex: number;
   closeReason: CloseReason;
@@ -110,7 +109,6 @@ interface State {
 const CLOSED_INDEX = -1;
 const CLOSE_REASON_EXIT: CloseReasonExit = { reason: 'exit' };
 const initialState: State = {
-  onClient: false,
   open: false,
   highlightIndex: CLOSED_INDEX,
   closeReason: CLOSE_REASON_EXIT,
@@ -146,109 +144,94 @@ export const MenuRenderer = ({
     'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
   );
 
-  const [
-    {
-      onClient: hasRenderedOnClient,
-      open,
-      highlightIndex,
-      closeReason,
-      triggerPosition,
-    },
-    dispatch,
-  ] = useReducer((state: State, action: Action): State => {
-    switch (action.type) {
-      case CLIENT_ENVIRONMENT: {
-        return { ...state, onClient: true };
-      }
-      case MENU_TRIGGER_UP:
-      case MENU_ITEM_UP: {
-        return {
-          ...state,
-          open: true,
-          closeReason: CLOSE_REASON_EXIT,
-          highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
-          triggerPosition: buttonRef && getPosition(buttonRef.current),
-        };
-      }
-      case MENU_TRIGGER_DOWN:
-      case MENU_ITEM_DOWN: {
-        return {
-          ...state,
-          open: true,
-          closeReason: CLOSE_REASON_EXIT,
-          highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
-          triggerPosition: buttonRef && getPosition(buttonRef.current),
-        };
-      }
-      case BACKDROP_CLICK:
-      case MENU_TRIGGER_ESCAPE:
-      case MENU_TRIGGER_TAB:
-      case MENU_ITEM_ESCAPE:
-      case MENU_ITEM_TAB: {
-        return {
-          ...state,
-          open: false,
-          closeReason: CLOSE_REASON_EXIT,
-          highlightIndex: CLOSED_INDEX,
-        };
-      }
-      case MENU_ITEM_ENTER:
-      case MENU_ITEM_SPACE:
-      case MENU_ITEM_CLICK: {
-        // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
-        if ('formElement' in action && action.formElement) {
-          return state;
+  const [{ open, highlightIndex, closeReason, triggerPosition }, dispatch] =
+    useReducer((state: State, action: Action): State => {
+      switch (action.type) {
+        case MENU_TRIGGER_UP:
+        case MENU_ITEM_UP: {
+          return {
+            ...state,
+            open: true,
+            closeReason: CLOSE_REASON_EXIT,
+            highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
+            triggerPosition: buttonRef && getPosition(buttonRef.current),
+          };
         }
+        case MENU_TRIGGER_DOWN:
+        case MENU_ITEM_DOWN: {
+          return {
+            ...state,
+            open: true,
+            closeReason: CLOSE_REASON_EXIT,
+            highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
+            triggerPosition: buttonRef && getPosition(buttonRef.current),
+          };
+        }
+        case BACKDROP_CLICK:
+        case MENU_TRIGGER_ESCAPE:
+        case MENU_TRIGGER_TAB:
+        case MENU_ITEM_ESCAPE:
+        case MENU_ITEM_TAB: {
+          return {
+            ...state,
+            open: false,
+            closeReason: CLOSE_REASON_EXIT,
+            highlightIndex: CLOSED_INDEX,
+          };
+        }
+        case MENU_ITEM_ENTER:
+        case MENU_ITEM_SPACE:
+        case MENU_ITEM_CLICK: {
+          // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
+          if ('formElement' in action && action.formElement) {
+            return state;
+          }
 
-        return {
-          ...state,
-          open: false,
-          closeReason: {
-            reason: 'selection',
-            index: action.index,
-            id: action.id,
-          },
-          highlightIndex: CLOSED_INDEX,
-        };
-      }
-      case MENU_ITEM_HOVER: {
-        return { ...state, highlightIndex: action.value };
-      }
-      case MENU_TRIGGER_ENTER:
-      case MENU_TRIGGER_SPACE: {
-        const nextOpen = !state.open;
-        return {
-          ...state,
-          open: nextOpen,
-          closeReason: CLOSE_REASON_EXIT,
-          highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
-          triggerPosition: buttonRef && getPosition(buttonRef.current),
-        };
-      }
-      case MENU_TRIGGER_CLICK: {
-        const nextOpen = !state.open;
+          return {
+            ...state,
+            open: false,
+            closeReason: {
+              reason: 'selection',
+              index: action.index,
+              id: action.id,
+            },
+            highlightIndex: CLOSED_INDEX,
+          };
+        }
+        case MENU_ITEM_HOVER: {
+          return { ...state, highlightIndex: action.value };
+        }
+        case MENU_TRIGGER_ENTER:
+        case MENU_TRIGGER_SPACE: {
+          const nextOpen = !state.open;
+          return {
+            ...state,
+            open: nextOpen,
+            closeReason: CLOSE_REASON_EXIT,
+            highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
+            triggerPosition: buttonRef && getPosition(buttonRef.current),
+          };
+        }
+        case MENU_TRIGGER_CLICK: {
+          const nextOpen = !state.open;
 
-        return {
-          ...state,
-          open: nextOpen,
-          closeReason: CLOSE_REASON_EXIT,
-          triggerPosition: buttonRef && getPosition(buttonRef.current),
-        };
+          return {
+            ...state,
+            open: nextOpen,
+            closeReason: CLOSE_REASON_EXIT,
+            triggerPosition: buttonRef && getPosition(buttonRef.current),
+          };
+        }
+        case WINDOW_RESIZE: {
+          return {
+            ...state,
+            triggerPosition: buttonRef && getPosition(buttonRef.current),
+          };
+        }
+        default:
+          return state;
       }
-      case WINDOW_RESIZE: {
-        return {
-          ...state,
-          triggerPosition: buttonRef && getPosition(buttonRef.current),
-        };
-      }
-      default:
-        return state;
-    }
-  }, initialState);
-
-  useEffect(() => {
-    dispatch({ type: CLIENT_ENVIRONMENT });
-  }, []);
+    }, initialState);
 
   useEffect(() => {
     if (lastOpen.current === open) {
@@ -354,10 +337,9 @@ export const MenuRenderer = ({
       <Box position="relative">
         {trigger(triggerProps, { open })}
 
-        {hasRenderedOnClient && (
+        {open && (
           <BraidPortal>
             <Menu
-              open={open}
               align={align}
               width={width}
               placement={placement}
@@ -409,10 +391,11 @@ interface MenuProps {
   dispatch: (action: Action) => void;
   focusTrigger: () => void;
   highlightIndex: number;
-  open: boolean;
   children: ReactNode[];
   triggerPosition?: position;
 }
+
+const RENDER_DURATION = 1;
 
 export function Menu({
   offsetSpace,
@@ -420,7 +403,6 @@ export function Menu({
   width,
   placement,
   children,
-  open,
   dispatch,
   focusTrigger,
   highlightIndex,
@@ -428,6 +410,20 @@ export function Menu({
   triggerPosition,
 }: MenuProps) {
   let dividerCount = 0;
+
+  const [opening, setOpening] = useState(true);
+
+  useEffect(() => {
+    if (opening) {
+      const timer = setTimeout(() => {
+        setOpening(false);
+      }, RENDER_DURATION);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [opening]);
 
   const inlineVars =
     triggerPosition &&
@@ -449,11 +445,11 @@ export function Menu({
         marginTop={placement === 'bottom' ? offsetSpace : undefined}
         marginBottom={placement === 'top' ? offsetSpace : undefined}
         transition="fast"
-        opacity={!open ? 0 : undefined}
+        opacity={opening ? 0 : undefined}
         overflow="hidden"
         className={[
           styles.menuPosition,
-          !open && styles.menuIsClosed,
+          opening && styles.entrance,
           width !== 'content' && styles.width[width],
         ]}
       >

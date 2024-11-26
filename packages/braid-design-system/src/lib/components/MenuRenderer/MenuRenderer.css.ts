@@ -22,7 +22,7 @@ export const menuPosition = style({
   right: triggerVars.right,
 });
 
-export const menuIsClosed = style({
+export const entrance = style({
   transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
   visibility: 'hidden',
 });
