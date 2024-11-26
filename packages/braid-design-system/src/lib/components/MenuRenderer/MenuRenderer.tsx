@@ -277,9 +277,11 @@ export const MenuRenderer = ({
 
     if (open) {
       window.addEventListener('resize', handleResize);
-    } else {
-      window.removeEventListener('resize', handleResize);
     }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [open]);
 
   const onTriggerKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
