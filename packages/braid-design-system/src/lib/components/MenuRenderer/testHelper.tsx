@@ -66,11 +66,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
     const defaultOpen = jest.fn();
     const defaultClose = jest.fn();
-    const { getAllByRole, rerender } = render(
+    const { queryAllByRole, getAllByRole, rerender } = render(
       <TestCase openHandler={defaultOpen} closeHandler={defaultClose} />,
     );
 
     return {
+      queryAllByRole,
       getAllByRole,
       openHandler: defaultOpen,
       closeHandler: defaultClose,
@@ -89,13 +90,22 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
     };
   }
 
-  function getElements({
+  function getTrigger({
     getAllByRole,
   }: {
     getAllByRole: RenderResult['getAllByRole'];
   }) {
     return {
       menuButton: getAllByRole('button')[0],
+    };
+  }
+
+  function getMenu({
+    getAllByRole,
+  }: {
+    getAllByRole: RenderResult['getAllByRole'];
+  }) {
+    return {
       menu: getAllByRole('menu', { hidden: true })[0],
       menuItems: [
         ...getAllByRole('menuitem', { hidden: true }),
@@ -109,13 +119,14 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       afterEach(cleanup);
 
       it('should open menu when clicked', async () => {
-        const { getAllByRole, openHandler, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, openHandler, closeHandler } =
+          renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
-
-        expect(menu).not.toBeVisible();
+        const { menuButton } = getTrigger({ getAllByRole });
+        expect(queryAllByRole('menu')).toHaveLength(0);
 
         await userEvent.click(menuButton);
+        const { menu } = getMenu({ getAllByRole });
 
         expect(menu).toBeVisible();
         expect(menuButton).toHaveFocus();
@@ -124,14 +135,14 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should toggle the menu when clicked again', async () => {
-        const { getAllByRole, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, closeHandler } = renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({ getAllByRole });
 
         await userEvent.click(menuButton);
         await userEvent.click(menuButton);
 
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
         expect(menuButton).toHaveFocus();
         expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
@@ -139,14 +150,17 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should set the focused menu item on mouse over', async () => {
         const { getAllByRole } = renderMenu();
 
-        const { menuButton, menuItems: initialMenuItems } = getElements({
+        const { menuButton } = getTrigger({
           getAllByRole,
         });
 
         await userEvent.click(menuButton);
+
+        const { menuItems: initialMenuItems } = getMenu({ getAllByRole });
+
         fireEvent.mouseOver(initialMenuItems[2]);
 
-        const { menuItems: mouseOverMenuItems } = getElements({
+        const { menuItems: mouseOverMenuItems } = getMenu({
           getAllByRole,
         });
 
@@ -156,15 +170,20 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should not affect the focus on mouse out', async () => {
         const { getAllByRole } = renderMenu();
 
-        const { menu, menuButton, menuItems } = getElements({
+        const { menuButton } = getTrigger({
           getAllByRole,
         });
 
         await userEvent.click(menuButton);
+
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
+
         fireEvent.mouseOver(menuItems[1]);
         fireEvent.mouseOut(menu);
 
-        const { menuItems: mouseOutMenuItems } = getElements({
+        const { menuItems: mouseOutMenuItems } = getMenu({
           getAllByRole,
         });
 
@@ -180,9 +199,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
           parentHandler,
         } = renderMenu();
 
-        const { menu, menuButton, menuItems } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         await userEvent.click(menuButton);
+
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
+
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
         expect(menu).toBeVisible();
@@ -209,9 +235,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         const { getAllByRole, openHandler, closeHandler, menuItemHandler } =
           renderMenu();
 
-        const { menu, menuButton, menuItems } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         await userEvent.click(menuButton);
+
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
+
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
 
         expect(menu).toBeVisible();
@@ -221,8 +254,11 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         await userEvent.click(menuItemCheckbox);
 
-        const updatedElements = getElements({ getAllByRole });
-        const updatedMenuItem = updatedElements.menuItems[2];
+        const { menuItems: updatedMenuItems } = getMenu({
+          getAllByRole,
+        });
+
+        const updatedMenuItem = updatedMenuItems[2];
 
         expect(updatedMenuItem.getAttribute('aria-checked')).toBe('true');
 
@@ -238,14 +274,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       afterEach(cleanup);
 
       it('should open the menu with enter key', async () => {
-        const { getAllByRole, openHandler, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, openHandler, closeHandler } =
+          renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
 
         await userEvent.tab();
         await userEvent.keyboard('{enter}');
-        const { menuItems } = getElements({ getAllByRole });
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
 
         expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
@@ -254,14 +292,17 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should open the menu with space key', async () => {
-        const { getAllByRole, openHandler, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, openHandler, closeHandler } =
+          renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
 
         await userEvent.tab();
         await userEvent.keyboard(' ');
-        const { menuItems } = getElements({ getAllByRole });
+
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
 
         expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
@@ -270,14 +311,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should open the menu with down arrow key', async () => {
-        const { getAllByRole, openHandler, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, openHandler, closeHandler } =
+          renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
 
         await userEvent.tab();
         await userEvent.keyboard('{arrowdown}');
-        const { menuItems } = getElements({ getAllByRole });
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
 
         expect(menu).toBeVisible();
         expect(menuItems[0]).toHaveFocus();
@@ -286,14 +329,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should open the menu with up arrow key', async () => {
-        const { getAllByRole, openHandler, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, openHandler, closeHandler } =
+          renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
 
         await userEvent.tab();
         await userEvent.keyboard('{arrowup}');
-        const { menuItems } = getElements({ getAllByRole });
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
 
         expect(menu).toBeVisible();
         expect(menuItems[2]).toHaveFocus();
@@ -302,9 +347,10 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should close the menu with escape key', async () => {
-        const { getAllByRole, openHandler, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, openHandler, closeHandler } =
+          renderMenu();
 
-        const { menu, menuButton } = getElements({
+        const { menuButton } = getTrigger({
           getAllByRole,
         });
 
@@ -313,16 +359,17 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         await userEvent.keyboard('{Escape}');
 
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
         expect(menuButton).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
 
       it('should close the menu with tab key', async () => {
-        const { getAllByRole, openHandler, closeHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, openHandler, closeHandler } =
+          renderMenu();
 
-        const { menu, menuButton } = getElements({
+        const { menuButton } = getTrigger({
           getAllByRole,
         });
 
@@ -331,72 +378,90 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         await userEvent.tab();
 
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
         expect(document.body).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
 
       it('should be able to navigate down the list and back to the start', async () => {
-        const { getAllByRole } = renderMenu();
+        const { queryAllByRole, getAllByRole } = renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
 
         await userEvent.tab();
         await userEvent.keyboard('{arrowdown}');
-        const firstDown = getElements({ getAllByRole });
-        const firstMenuItem = firstDown.menuItems[0];
+        const { menuItems: firstDownMenuItems } = getMenu({
+          getAllByRole,
+        });
+
+        const firstMenuItem = firstDownMenuItems[0];
         expect(firstMenuItem).toHaveFocus();
 
         await userEvent.keyboard('{arrowdown}');
-        const secondDown = getElements({ getAllByRole });
-        const secondMenuItem = secondDown.menuItems[1];
+        const { menuItems: secondDownMenuItems } = getMenu({
+          getAllByRole,
+        });
+        const secondMenuItem = secondDownMenuItems[1];
         expect(secondMenuItem).toHaveFocus();
 
         await userEvent.keyboard('{arrowdown}');
-        const thirdDown = getElements({ getAllByRole });
-        const thirdMenuItem = thirdDown.menuItems[2];
+        const { menuItems: thirdDownMenuItems } = getMenu({
+          getAllByRole,
+        });
+        const thirdMenuItem = thirdDownMenuItems[2];
         expect(thirdMenuItem).toHaveFocus();
 
         await userEvent.keyboard('{arrowdown}');
-        const forthDown = getElements({ getAllByRole });
-        const firstMenuItemAgain = forthDown.menuItems[0];
+        const { menuItems: forthDownMenuItems } = getMenu({
+          getAllByRole,
+        });
+        const firstMenuItemAgain = forthDownMenuItems[0];
         expect(firstMenuItemAgain).toHaveFocus();
       });
 
       it('should be able to navigate up the list and back to the end', async () => {
-        const { getAllByRole } = renderMenu();
+        const { queryAllByRole, getAllByRole } = renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
 
         await userEvent.tab();
         await userEvent.keyboard('{arrowup}');
-        const firstUp = getElements({ getAllByRole });
-        const thirdMenuItem = firstUp.menuItems[2];
+        const { menuItems: firstUpMenuItems } = getMenu({
+          getAllByRole,
+        });
+        const thirdMenuItem = firstUpMenuItems[2];
         expect(thirdMenuItem).toHaveFocus();
 
         await userEvent.keyboard('{arrowup}');
-        const secondUp = getElements({ getAllByRole });
-        const secondMenuItem = secondUp.menuItems[1];
+        const { menuItems: secondUpMenuItems } = getMenu({
+          getAllByRole,
+        });
+        const secondMenuItem = secondUpMenuItems[1];
         expect(secondMenuItem).toHaveFocus();
 
         await userEvent.keyboard('{arrowup}');
-        const thirdUp = getElements({ getAllByRole });
-        const firstMenuItem = thirdUp.menuItems[0];
+        const { menuItems: thirdUpMenuItems } = getMenu({
+          getAllByRole,
+        });
+        const firstMenuItem = thirdUpMenuItems[0];
         expect(firstMenuItem).toHaveFocus();
 
         await userEvent.keyboard('{arrowup}');
-        const forthUp = getElements({ getAllByRole });
-        const lastMenuItemAgain = forthUp.menuItems[2];
+        const { menuItems: forthUpMenuItems } = getMenu({
+          getAllByRole,
+        });
+        const lastMenuItemAgain = forthUpMenuItems[2];
         expect(lastMenuItemAgain).toHaveFocus();
       });
 
       it('should trigger the click handler on MenuItem when selecting it with enter', async () => {
-        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, closeHandler, menuItemHandler } =
+          renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         // Open menu
         await userEvent.tab();
@@ -405,7 +470,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         // Action the item
         await userEvent.keyboard('{enter}');
 
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
         expect(closeHandler).toHaveBeenNthCalledWith(1, {
           reason: 'selection',
           index: 0,
@@ -416,9 +481,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should trigger the click handler on MenuItem when selecting it with space', async () => {
-        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, closeHandler, menuItemHandler } =
+          renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         // Open menu
         await userEvent.tab();
@@ -427,7 +495,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         // Action the item
         await userEvent.keyboard(' ');
 
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
         expect(closeHandler).toHaveBeenNthCalledWith(1, {
           reason: 'selection',
           index: 0,
@@ -438,9 +506,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should trigger the click handler on MenuItemLink when selecting it with enter', async () => {
-        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, closeHandler, menuItemHandler } =
+          renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         // Open menu
         await userEvent.tab();
@@ -448,7 +519,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.keyboard('{arrowdown}');
         await userEvent.keyboard('{enter}');
 
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
         expect(closeHandler).toHaveBeenNthCalledWith(1, {
           reason: 'selection',
           index: 1,
@@ -459,9 +530,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       });
 
       it('should trigger the click handler on MenuItemLink when selecting it with space', async () => {
-        const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
+        const { queryAllByRole, getAllByRole, closeHandler, menuItemHandler } =
+          renderMenu();
 
-        const { menu, menuButton } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         // Open menu
         await userEvent.tab();
@@ -469,7 +543,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.keyboard('{arrowdown}');
         await userEvent.keyboard(' ');
 
-        expect(menu).not.toBeVisible();
+        expect(queryAllByRole('menu')).toHaveLength(0);
         expect(closeHandler).toHaveBeenNthCalledWith(1, {
           reason: 'selection',
           index: 1,
@@ -482,16 +556,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should toggle the state on MenuItemCheckbox when selecting it with enter', async () => {
         const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-
         // Open menu
         await userEvent.tab();
         await userEvent.keyboard('{enter}');
         await userEvent.keyboard('{arrowdown}');
         await userEvent.keyboard('{arrowdown}');
 
-        const thirdDown = getElements({ getAllByRole });
-        const thirdMenuItem = thirdDown.menuItems[2];
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
+        const thirdMenuItem = menuItems[2];
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('false');
 
@@ -508,16 +582,17 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should toggle the state on MenuItemCheckbox when selecting it with space', async () => {
         const { getAllByRole, closeHandler, menuItemHandler } = renderMenu();
 
-        const { menu } = getElements({ getAllByRole });
-
         // Open menu
         await userEvent.tab();
         await userEvent.keyboard('{enter}');
         await userEvent.keyboard('{arrowdown}');
         await userEvent.keyboard('{arrowdown}');
 
-        const thirdDown = getElements({ getAllByRole });
-        const thirdMenuItem = thirdDown.menuItems[2];
+        const { menu, menuItems } = getMenu({
+          getAllByRole,
+        });
+
+        const thirdMenuItem = menuItems[2];
 
         expect(thirdMenuItem.getAttribute('aria-checked')).toBe('false');
 
@@ -536,7 +611,9 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should not fire the open handler when its changed', async () => {
         const { getAllByRole, openHandler, rerender } = renderMenu();
 
-        const { menuButton } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         const newOpen = jest.fn();
         await userEvent.click(menuButton);
@@ -548,7 +625,9 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       it('should not fire the close handler when its changed', async () => {
         const { getAllByRole, closeHandler, rerender } = renderMenu();
 
-        const { menuButton } = getElements({ getAllByRole });
+        const { menuButton } = getTrigger({
+          getAllByRole,
+        });
 
         const newClose = jest.fn();
         await userEvent.click(menuButton);
