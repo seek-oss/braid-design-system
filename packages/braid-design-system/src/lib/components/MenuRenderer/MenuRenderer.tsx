@@ -128,6 +128,7 @@ export const MenuRenderer = ({
   data,
   ...restProps
 }: MenuRendererProps) => {
+  const menuContainerRef = useRef<HTMLButtonElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastOpen = useRef(false);
   const items = flattenChildren(children);
@@ -154,7 +155,8 @@ export const MenuRenderer = ({
             open: true,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
-            triggerPosition: buttonRef && getPosition(buttonRef.current),
+            triggerPosition:
+              menuContainerRef && getPosition(menuContainerRef.current),
           };
         }
         case MENU_TRIGGER_DOWN:
@@ -164,7 +166,8 @@ export const MenuRenderer = ({
             open: true,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
-            triggerPosition: buttonRef && getPosition(buttonRef.current),
+            triggerPosition:
+              menuContainerRef && getPosition(menuContainerRef.current),
           };
         }
         case BACKDROP_CLICK:
@@ -209,7 +212,8 @@ export const MenuRenderer = ({
             open: nextOpen,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
-            triggerPosition: buttonRef && getPosition(buttonRef.current),
+            triggerPosition:
+              menuContainerRef && getPosition(menuContainerRef.current),
           };
         }
         case MENU_TRIGGER_CLICK: {
@@ -219,13 +223,15 @@ export const MenuRenderer = ({
             ...state,
             open: nextOpen,
             closeReason: CLOSE_REASON_EXIT,
-            triggerPosition: buttonRef && getPosition(buttonRef.current),
+            triggerPosition:
+              menuContainerRef && getPosition(menuContainerRef.current),
           };
         }
         case WINDOW_RESIZE: {
           return {
             ...state,
-            triggerPosition: buttonRef && getPosition(buttonRef.current),
+            triggerPosition:
+              menuContainerRef && getPosition(menuContainerRef.current),
           };
         }
         default:
@@ -334,7 +340,7 @@ export const MenuRenderer = ({
 
   return (
     <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
-      <Box position="relative">
+      <Box position="relative" ref={menuContainerRef}>
         {trigger(triggerProps, { open })}
 
         {open && (
