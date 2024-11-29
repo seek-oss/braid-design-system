@@ -82,15 +82,7 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">
           WAI-ARIA Table Pattern
         </TextLink>
-        , primarily supporting the{' '}
-        <TextLink href="https://www.w3.org/WAI/tutorials/tables/one-header/">
-          Tables with One Header
-        </TextLink>{' '}
-        and{' '}
-        <TextLink href="https://www.w3.org/WAI/tutorials/tables/two-header/">
-          Tables with Two Headers
-        </TextLink>{' '}
-        use cases.
+        .
       </Text>
       <Text>
         All <Strong>Table</Strong> components require an accessible name
