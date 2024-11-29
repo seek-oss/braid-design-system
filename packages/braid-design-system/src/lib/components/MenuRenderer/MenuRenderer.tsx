@@ -27,6 +27,7 @@ import * as styles from './MenuRenderer.css';
 import { triggerVars } from './MenuRenderer.css';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -339,11 +340,14 @@ export const MenuRenderer = ({
   };
 
   return (
-    <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
-      <Box position="relative" ref={menuContainerRef}>
-        {trigger(triggerProps, { open })}
+    <Box
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
+      ref={menuContainerRef}
+    >
+      {trigger(triggerProps, { open })}
 
-        {open && (
+      {open ? (
+        <>
           <BraidPortal>
             <Menu
               align={align}
@@ -359,22 +363,19 @@ export const MenuRenderer = ({
               {items}
             </Menu>
           </BraidPortal>
-        )}
-      </Box>
-
-      {open ? (
-        <Box
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            dispatch({ type: BACKDROP_CLICK });
-          }}
-          position="fixed"
-          zIndex="dropdownBackdrop"
-          top={0}
-          left={0}
-          className={styles.backdrop}
-        />
+          <Box
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              dispatch({ type: BACKDROP_CLICK });
+            }}
+            position="fixed"
+            zIndex="dropdownBackdrop"
+            top={0}
+            left={0}
+            className={styles.backdrop}
+          />
+        </>
       ) : null}
     </Box>
   );
@@ -419,7 +420,7 @@ export function Menu({
 
   const [opening, setOpening] = useState(true);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (opening) {
       const timer = setTimeout(() => {
         setOpening(false);
@@ -429,7 +430,7 @@ export function Menu({
         clearTimeout(timer);
       };
     }
-  }, [opening]);
+  }, []);
 
   const inlineVars =
     triggerPosition &&
@@ -443,7 +444,6 @@ export function Menu({
       <Box
         role="menu"
         position="absolute"
-        style={inlineVars}
         zIndex="dropdown"
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
@@ -453,6 +453,7 @@ export function Menu({
         transition="fast"
         opacity={opening ? 0 : undefined}
         overflow="hidden"
+        style={inlineVars}
         className={[
           styles.menuPosition,
           opening && styles.entrance,
