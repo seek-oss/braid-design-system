@@ -28,6 +28,15 @@ const defaultProps = {
   placement: 'bottom',
 } as const;
 
+const triggerHeight = 44;
+
+const triggerPosition = {
+  top: triggerHeight,
+  left: 0,
+  bottom: 0, // this value is ignored when placement is top
+  right: 0, // this value is ignored when align is left
+};
+
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
@@ -39,7 +48,7 @@ export const screenshots: ComponentScreenshot = {
             offsetSpace="small"
             trigger={(triggerProps) => (
               <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Placeholder height={44} label="Menu trigger" />
+                <Placeholder height={triggerHeight} label="Menu trigger" />
               </Box>
             )}
           >
@@ -58,7 +67,7 @@ export const screenshots: ComponentScreenshot = {
             offsetSpace="small"
             trigger={(triggerProps) => (
               <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Placeholder height={44} label="Menu trigger" />
+                <Placeholder height={triggerHeight} label="Menu trigger" />
               </Box>
             )}
           >
@@ -76,7 +85,7 @@ export const screenshots: ComponentScreenshot = {
           offsetSpace="small"
           trigger={(triggerProps) => (
             <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Placeholder height={44} label="Menu trigger" />
+              <Placeholder height={triggerHeight} label="Menu trigger" />
             </Box>
           )}
         >
@@ -90,7 +99,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Box display="flex">
           <Box position="relative">
-            <Placeholder height={44} label="Menu trigger" />
+            <Placeholder height={triggerHeight} label="Menu trigger" />
             <Menu {...defaultProps} placement="bottom">
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -104,7 +113,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Box display="flex">
           <Box position="relative">
-            <Placeholder height={44} label="Menu trigger" />
+            <Placeholder height={triggerHeight} label="Menu trigger" />
             <Menu {...defaultProps} placement="bottom" offsetSpace="small">
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -120,15 +129,16 @@ export const screenshots: ComponentScreenshot = {
           display="flex"
           style={{
             paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-            marginBottom: calc(vars.touchableSize)
-              .multiply(1.5)
-              .negate()
-              .toString(),
           }}
         >
           <Box position="relative">
-            <Placeholder height={44} label="Menu trigger" />
-            <Menu {...defaultProps} placement="top">
+            <Placeholder height={triggerHeight} label="Menu trigger" />
+            <Menu
+              {...defaultProps}
+              placement="top"
+              triggerPosition={triggerPosition}
+              position="absolute"
+            >
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
             </Menu>
@@ -143,15 +153,17 @@ export const screenshots: ComponentScreenshot = {
           display="flex"
           style={{
             paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-            marginBottom: calc(vars.touchableSize)
-              .multiply(1.5)
-              .negate()
-              .toString(),
           }}
         >
           <Box position="relative">
             <Placeholder height={44} label="Menu trigger" />
-            <Menu {...defaultProps} placement="top" offsetSpace="small">
+            <Menu
+              {...defaultProps}
+              placement="top"
+              offsetSpace="small"
+              triggerPosition={triggerPosition}
+              position="absolute"
+            >
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
             </Menu>
@@ -256,24 +268,6 @@ export const screenshots: ComponentScreenshot = {
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
           </Menu>
-        </Box>
-      ),
-    },
-    {
-      label: 'With overflow hidden',
-      Example: () => (
-        <Box style={{ maxWidth: '150px', height: '44px' }} overflow="hidden">
-          <MenuRenderer
-            offsetSpace="small"
-            trigger={(triggerProps) => (
-              <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Placeholder height={44} label="Menu trigger" />
-              </Box>
-            )}
-          >
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItemLink href="#">Link</MenuItemLink>
-          </MenuRenderer>
         </Box>
       ),
     },
