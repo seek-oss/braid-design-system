@@ -1,4 +1,9 @@
-import { createVar, style, styleVariants } from '@vanilla-extract/css';
+import {
+  createVar,
+  keyframes,
+  style,
+  styleVariants,
+} from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
 
@@ -22,9 +27,13 @@ export const menuPosition = style({
   right: triggerVars.right,
 });
 
-export const entrance = style({
-  transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
-  visibility: 'hidden',
+export const animation = style({
+  animation: `${keyframes({
+    from: {
+      transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
+      opacity: 0,
+    },
+  })} .125s ease forwards`,
 });
 
 const widthVar = createVar();

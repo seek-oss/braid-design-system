@@ -8,7 +8,6 @@ import React, {
   useRef,
   useReducer,
   useEffect,
-  useState,
 } from 'react';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
@@ -27,7 +26,6 @@ import * as styles from './MenuRenderer.css';
 import { triggerVars } from './MenuRenderer.css';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -400,9 +398,8 @@ interface MenuProps {
   highlightIndex: number;
   children: ReactNode[];
   triggerPosition?: position;
+  position?: 'absolute' | 'relative'; // 'relative' is used for screenshot testing
 }
-
-const RENDER_DURATION = 1;
 
 export function Menu({
   offsetSpace,
@@ -415,22 +412,9 @@ export function Menu({
   highlightIndex,
   reserveIconSpace,
   triggerPosition,
+  position = 'absolute',
 }: MenuProps) {
   let dividerCount = 0;
-
-  const [opening, setOpening] = useState(true);
-
-  useIsomorphicLayoutEffect(() => {
-    if (opening) {
-      const timer = setTimeout(() => {
-        setOpening(false);
-      }, RENDER_DURATION);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, []);
 
   const inlineVars =
     triggerPosition &&
@@ -443,7 +427,7 @@ export function Menu({
     <MenuRendererContext.Provider value={{ reserveIconSpace }}>
       <Box
         role="menu"
-        position="absolute"
+        position={position}
         zIndex="dropdown"
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
@@ -451,12 +435,11 @@ export function Menu({
         marginTop={placement === 'bottom' ? offsetSpace : undefined}
         marginBottom={placement === 'top' ? offsetSpace : undefined}
         transition="fast"
-        opacity={opening ? 0 : undefined}
         overflow="hidden"
         style={inlineVars}
         className={[
           styles.menuPosition,
-          opening && styles.entrance,
+          styles.animation,
           width !== 'content' && styles.width[width],
         ]}
       >
