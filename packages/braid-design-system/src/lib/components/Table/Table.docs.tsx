@@ -1015,7 +1015,7 @@ const docs: ComponentDocs = {
                         <TableCell>
                           <Text>{row.column1}</Text>
                         </TableCell>
-                        <TableCell hideBelow="tablet">
+                        <TableCell>
                           <Text>{row.column2}</Text>
                         </TableCell>
                         <TableCell>
