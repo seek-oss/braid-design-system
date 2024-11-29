@@ -369,8 +369,8 @@ const docs: ComponentDocs = {
             longest content within the column.
           </Text>
           <Text>
-            If the table content is larger than the available space, eacha
-            column will be as wide as its longest cell and the table will scroll
+            If the table content is larger than the available space, each column
+            will be as wide as its longest cell and the table will scroll
             horizontally. However, if the table content is smaller than the
             available space, the additional space will be distributed
             automatically across the columns.
