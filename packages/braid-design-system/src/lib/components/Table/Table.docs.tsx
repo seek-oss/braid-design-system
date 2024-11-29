@@ -394,8 +394,8 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, getState }) =>
-        source(
+      Example: ({ setDefaultState, getState }) => {
+        const { code, value } = source(
           <>
             {setDefaultState('rows', [
               {
@@ -461,7 +461,13 @@ const docs: ComponentDocs = {
               </TableBody>
             </Table>
           </>,
-        ),
+        );
+
+        return {
+          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          value,
+        };
+      },
     },
     {
       description: (
@@ -488,8 +494,8 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, getState }) =>
-        source(
+      Example: ({ setDefaultState, getState }) => {
+        const { code, value } = source(
           <>
             {setDefaultState('rows', [
               {
@@ -555,7 +561,13 @@ const docs: ComponentDocs = {
               </TableBody>
             </Table>
           </>,
-        ),
+        );
+
+        return {
+          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          value,
+        };
+      },
     },
     {
       label: 'Vertical alignment',
@@ -763,8 +775,8 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ setDefaultState, getState }) =>
-        source(
+      Example: ({ setDefaultState, getState }) => {
+        const { code, value } = source(
           <>
             {setDefaultState('rows', [
               {
@@ -810,7 +822,13 @@ const docs: ComponentDocs = {
               </TableBody>
             </Table>
           </>,
-        ),
+        );
+
+        return {
+          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          value,
+        };
+      },
     },
     {
       label: 'Column visibility',
