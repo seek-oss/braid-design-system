@@ -1,39 +1,7 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css';
 import { vars } from '../../themes/vars.css';
 import { colorModeStyle } from '../../css/colorModeStyle';
-import { atoms } from '../../css/atoms/atoms';
 import { responsiveStyle } from '../../css/responsiveStyle';
-
-// TABLE WRAPPER
-const scrollOverlayWidth = createVar();
-export const tableContainer = style([
-  atoms({ position: 'relative' }),
-  {
-    vars: {
-      [scrollOverlayWidth]: '80px',
-    },
-    WebkitOverflowScrolling: 'touch',
-    overflowX: 'auto',
-    overflowY: 'hidden',
-    scrollbarWidth: 'none',
-    '::-webkit-scrollbar': {
-      width: 0,
-      height: 0,
-    },
-  },
-]);
-
-export const maskLeft = style({
-  maskImage: `linear-gradient(90deg, rgba(0,0,0,0) 0, rgba(0,0,0,1) ${scrollOverlayWidth})`,
-});
-
-export const maskRight = style({
-  maskImage: `linear-gradient(90deg, rgba(0,0,0,1) calc(100% - ${scrollOverlayWidth}), rgba(0,0,0,0) 100%)`,
-});
-
-export const maskBoth = style({
-  maskImage: `linear-gradient(90deg, rgba(0,0,0,0) 0, rgba(0,0,0,1) ${scrollOverlayWidth}, rgba(0,0,0,1) calc(100% - ${scrollOverlayWidth}), rgba(0,0,0,0) 100%)`,
-});
 
 // TABLE
 const borderColor = createVar();

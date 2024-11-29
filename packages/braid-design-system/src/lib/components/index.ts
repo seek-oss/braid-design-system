@@ -62,6 +62,7 @@ export { PasswordField } from './PasswordField/PasswordField';
 export { RadioGroup } from './RadioGroup/RadioGroup';
 export { RadioItem } from './RadioGroup/RadioItem';
 export { Rating } from './Rating/Rating';
+export { ScrollContainer } from './ScrollContainer/ScrollContainer';
 export { Secondary } from './Secondary/Secondary';
 export { Spread } from './Spread/Spread';
 export { Stack } from './Stack/Stack';

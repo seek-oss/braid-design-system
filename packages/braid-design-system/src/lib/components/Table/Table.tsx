@@ -1,7 +1,8 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { TableContext } from './TableContext';
 import { Bleed } from '../Bleed/Bleed';
+import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -15,35 +16,6 @@ export interface TableProps {
   data?: DataAttributeMap;
 }
 
-const maskOverflow = (element: HTMLElement) => {
-  const atStart = element.scrollLeft === 0;
-  const atEnd =
-    element.offsetWidth + element.scrollLeft === element.scrollWidth;
-  const inBetween = !atStart && !atEnd;
-
-  if (atStart && atEnd) {
-    return;
-  }
-
-  if (inBetween) {
-    element.classList.add(styles.maskBoth);
-    element.classList.remove(styles.maskRight, styles.maskLeft);
-    return;
-  }
-
-  if (atEnd) {
-    element.classList.add(styles.maskLeft);
-    element.classList.remove(styles.maskRight, styles.maskBoth);
-    return;
-  }
-
-  if (atStart) {
-    element.classList.add(styles.maskRight);
-    element.classList.remove(styles.maskLeft, styles.maskBoth);
-    return;
-  }
-};
-
 export const Table = ({
   fullBleed = false,
   alignY = 'center',
@@ -52,20 +24,8 @@ export const Table = ({
   data,
   ...restProps
 }: TableProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      maskOverflow(containerRef.current);
-    }
-  }, []);
-
   const table = (
-    <Box
-      ref={containerRef}
-      onScroll={(e) => maskOverflow(e.currentTarget)}
-      className={styles.tableContainer}
-    >
+    <ScrollContainer>
       <Box
         component="table"
         width="full"
@@ -82,7 +42,7 @@ export const Table = ({
       >
         {children}
       </Box>
-    </Box>
+    </ScrollContainer>
   );
 
   return (

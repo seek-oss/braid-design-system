@@ -1,8 +1,11 @@
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import {
+  Badge,
+  ButtonIcon,
   Card,
   HiddenVisually,
+  IconEdit,
   Notice,
   Stack,
   Strong,
@@ -17,8 +20,6 @@ import {
 } from '../';
 import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-// import { LinkableHeading } from '@braid-design-system/docs-ui';
-// import { DocExample } from 'site/App/DocNavigation/DocExample';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -371,23 +372,198 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            By default, the table will follow the The width of columns can be
-            configured using the <Strong>columnWidths</Strong> prop on{' '}
-            <Strong>Table</Strong>. The prop accepts an array of values, each
-            representing the width of a column.
+            By default, a <Strong>TableCell</Strong> has a{' '}
+            <Strong>width</Strong> of <Strong>auto</Strong>, accomodating the
+            longest content within the column.
           </Text>
           <Text>
-            Supported values are <Strong>content</Strong> (default) and{' '}
-            <Strong>auto</Strong>.
+            If the table content is larger than the available space, eacha
+            column will be as wide as its longest cell and the table will scroll
+            horizontally. However, if the table content is smaller than the
+            available space, the additional space will be distributed
+            automatically across the columns.
           </Text>
-
-          <Notice tone="critical">
-            <Text>WIP...</Text>
+          <Text>
+            To customise how any available space is distributed, a percentage
+            value may be provided to the <Strong>width</Strong> prop — useful
+            for increasing the focus on key value columns.
+          </Text>
+          <Text>
+            Alternatively, a cell can be made as small as possible by setting
+            its <Strong>width</Strong> to <Strong>content</Strong> — recommended
+            for status and actions columns.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              As column widths are set at a cell level, remember to apply them
+              consistently to both the row data <Strong>AND</Strong> the column
+              header too.
+            </Text>
           </Notice>
-
-          {/* DOCUMENT AND DEMO */}
         </>
       ),
+      Example: ({ setDefaultState, getState }) =>
+        source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1: 'Sit',
+                column2: 'Amet',
+                column3: 'Consectetur',
+              },
+              {
+                column1: 'Adipiscing',
+                column2: 'Elit',
+                column3: 'Praesent',
+              },
+              {
+                column1: 'Semper',
+                column2: 'Interdum',
+                column3: 'Viverra',
+              },
+            ])}
+            <Table label="Table column headings example">
+              <TableHeader>
+                <TableCell width="content">
+                  <Text>Status</Text>
+                </TableCell>
+                <TableCell width="30%">
+                  <Text>Lorem</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>Ipsum</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>Dolor</Text>
+                </TableCell>
+                <TableCell width="content" align="right">
+                  <Text>Actions</Text>
+                </TableCell>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row}>
+                    <TableCell width="content">
+                      <Badge bleedY>Badge</Badge>
+                    </TableCell>
+                    <TableCell width="30%">
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                    <TableCell width="content" align="right">
+                      <ButtonIcon
+                        icon={<IconEdit />}
+                        label="Edit"
+                        size="small"
+                        variant="transparent"
+                        id={`edit-${row.column1}`}
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </>,
+        ),
+    },
+    {
+      description: (
+        <>
+          <Text>
+            Additionally, columns accept a <Strong>minWidth</Strong> and{' '}
+            <Strong>maxWidth</Strong> prop to further constrain their width.
+            Both props accept a number representing the number of pixels. As a
+            convenience when setting a <Strong>maxWidth</Strong>, all{' '}
+            <Strong>Text</Strong> components in the column will default{' '}
+            <TextLink href="/components/Text#limiting-the-number-of-lines">
+              maxLines
+            </TextLink>{' '}
+            to a single line, ensuring that content is truncated when its
+            exceeds the specified width.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              When the <Strong>maxWidth</Strong> prop is used alongside a
+              percentage value for <Strong>width</Strong> it is considered
+              flexible — if there is additional space to be allocated based on
+              the percentage, the column will expand accordingly.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: ({ setDefaultState, getState }) =>
+        source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1: 'Sit',
+                column2: 'Amet',
+                column3: 'Consectetur',
+              },
+              {
+                column1: 'Adipiscing incididunt amet id laborum minim',
+                column2: 'Elit',
+                column3: 'Praesent',
+              },
+              {
+                column1: 'Semper',
+                column2: 'Interdum',
+                column3: 'Viverra',
+              },
+            ])}
+            <Table label="Table column headings example">
+              <TableHeader>
+                <TableCell width="content">
+                  <Text>Status</Text>
+                </TableCell>
+                <TableCell maxWidth={100}>
+                  <Text>Lorem</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>Ipsum</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>Dolor</Text>
+                </TableCell>
+                <TableCell width="content" align="right">
+                  <Text>Actions</Text>
+                </TableCell>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row}>
+                    <TableCell width="content">
+                      <Badge bleedY>Badge</Badge>
+                    </TableCell>
+                    <TableCell maxWidth={100}>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                    <TableCell width="content" align="right">
+                      <ButtonIcon
+                        icon={<IconEdit />}
+                        label="Edit"
+                        size="small"
+                        variant="transparent"
+                        id={`edit-${row.column1}`}
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </>,
+        ),
     },
     {
       label: 'Vertical alignment',
