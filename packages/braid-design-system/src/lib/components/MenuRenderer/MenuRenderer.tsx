@@ -153,8 +153,7 @@ export const MenuRenderer = ({
             open: true,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
-            triggerPosition:
-              menuContainerRef && getPosition(menuContainerRef.current),
+            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         case MENU_TRIGGER_DOWN:
@@ -164,8 +163,7 @@ export const MenuRenderer = ({
             open: true,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
-            triggerPosition:
-              menuContainerRef && getPosition(menuContainerRef.current),
+            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         case BACKDROP_CLICK:
@@ -210,8 +208,7 @@ export const MenuRenderer = ({
             open: nextOpen,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
-            triggerPosition:
-              menuContainerRef && getPosition(menuContainerRef.current),
+            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         case MENU_TRIGGER_CLICK: {
@@ -221,15 +218,13 @@ export const MenuRenderer = ({
             ...state,
             open: nextOpen,
             closeReason: CLOSE_REASON_EXIT,
-            triggerPosition:
-              menuContainerRef && getPosition(menuContainerRef.current),
+            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         case WINDOW_RESIZE: {
           return {
             ...state,
-            triggerPosition:
-              menuContainerRef && getPosition(menuContainerRef.current),
+            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         default:
