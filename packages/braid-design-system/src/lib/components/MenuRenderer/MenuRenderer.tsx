@@ -79,9 +79,9 @@ const {
   WINDOW_RESIZE,
 } = actionTypes;
 
-type position = { top: number; bottom: number; left: number; right: number };
+type Position = { top: number; bottom: number; left: number; right: number };
 
-const getPosition = (element: HTMLElement | null): position | undefined => {
+const getPosition = (element: HTMLElement | null): Position | undefined => {
   if (!element) {
     return undefined;
   }
@@ -101,7 +101,7 @@ interface State {
   open: boolean;
   highlightIndex: number;
   closeReason: CloseReason;
-  triggerPosition?: position;
+  triggerPosition?: Position;
 }
 
 const CLOSED_INDEX = -1;
@@ -391,7 +391,7 @@ interface MenuProps {
   focusTrigger: () => void;
   highlightIndex: number;
   children: ReactNode[];
-  triggerPosition?: position;
+  triggerPosition?: Position;
   position?: 'absolute' | 'relative'; // 'relative' is used for screenshot testing
 }
 
