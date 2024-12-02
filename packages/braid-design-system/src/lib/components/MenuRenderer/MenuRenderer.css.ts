@@ -34,5 +34,4 @@ export const menuHeightLimit = style({
     .multiply(9.5)
     .add(vars.space[menuYPadding])
     .toString(),
-  overflowY: 'auto',
 });
