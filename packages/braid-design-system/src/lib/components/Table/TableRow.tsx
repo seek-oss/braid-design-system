@@ -5,6 +5,7 @@ import {
   TableHeaderContext,
   TableContext,
   TableBodyContext,
+  TableFooterContext,
 } from './TableContext';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -19,6 +20,7 @@ export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
   const tableContext = useContext(TableContext);
   const tableHeaderContext = useContext(TableHeaderContext);
   const tableBodyContext = useContext(TableBodyContext);
+  const tableFooterContext = useContext(TableFooterContext);
   const tableRowContext = useContext(TableRowContext);
 
   assert(tableContext, 'TableRow must be used within a Table component');
@@ -31,7 +33,7 @@ export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
   );
 
   assert(
-    tableBodyContext || tableHeaderContext,
+    tableBodyContext || tableHeaderContext || tableFooterContext,
     'TableRow must be used within a TableBody component',
   );
 

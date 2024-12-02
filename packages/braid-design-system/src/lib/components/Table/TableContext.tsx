@@ -10,4 +10,5 @@ export const TableContext = createContext<
 >(false);
 export const TableHeaderContext = createContext(false);
 export const TableBodyContext = createContext(false);
+export const TableFooterContext = createContext(false);
 export const TableRowContext = createContext(false);

@@ -9,6 +9,7 @@ import {
 } from '../../utils/resolveResponsiveRangeProps';
 import {
   TableContext,
+  TableFooterContext,
   TableHeaderContext,
   TableRowContext,
 } from './TableContext';
@@ -52,6 +53,7 @@ export const TableCell = ({
     });
 
   const tableHeaderContext = useContext(TableHeaderContext);
+  const tableFooterContext = useContext(TableFooterContext);
   const tableRowContext = useContext(TableRowContext);
   const tableContext = useContext(TableContext);
 
@@ -64,6 +66,7 @@ export const TableCell = ({
 
   const isHeaderCell =
     typeof header !== 'undefined' ? header : tableHeaderContext;
+  const isFooterCell = tableFooterContext;
 
   const softWidth = width === 'content' ? '1%' : width;
   const hasMaxWidth = typeof maxWidth !== 'undefined';
@@ -97,6 +100,7 @@ export const TableCell = ({
         [styles.maxWidth]: hasMaxWidth,
         [styles.alignYCenter]: tableContext.alignY === 'center',
         [styles.borderBottom]: true,
+        // [styles.borderTopFooter]: isFooterCell,
         [styles.showOnTablet]: !hideOnTablet && hideOnMobile,
         [styles.showOnDesktop]:
           !hideOnDesktop && (hideOnTablet || hideOnMobile),
@@ -114,7 +118,7 @@ export const TableCell = ({
     >
       <DefaultTextPropsProvider
         size="small"
-        weight={isHeaderCell ? 'strong' : undefined}
+        weight={isHeaderCell || isFooterCell ? 'strong' : undefined}
         maxLines={hasMaxWidth && !wrap ? 1 : undefined}
       >
         {align !== 'left' ? (

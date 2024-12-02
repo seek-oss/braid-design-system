@@ -97,6 +97,11 @@ globalStyle(`${table} > tbody > tr:last-of-type > *`, {
   borderBottom: 0,
 });
 
+// export const borderTopFooter = style({});
+// globalStyle(`${table} > tfoot > *:first-of-type > *${borderTopFooter}`, {
+//   borderTop: `${vars.borderWidth.standard} solid ${borderColor}`,
+// });
+
 export const showOnTablet = style(
   responsiveStyle({ tablet: { display: 'table-cell' } }),
 );
