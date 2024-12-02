@@ -20,7 +20,7 @@ export const OverflowMenu = ({
   id,
   ...menuProps
 }: OverflowMenuProps) => (
-  <Box className={styles.wrapperPositioning}>
+  <Box display="flex" className={styles.wrapperPositioning}>
     <MenuRenderer
       trigger={(triggerProps) => (
         <ButtonIcon

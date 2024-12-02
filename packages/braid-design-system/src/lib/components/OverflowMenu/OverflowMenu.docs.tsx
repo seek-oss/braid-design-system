@@ -24,11 +24,7 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Box
-        style={{ maxWidth: '100px' }}
-        display="flex"
-        justifyContent="flexEnd"
-      >
+      <Box style={{ maxWidth: '100px' }}>
         <OverflowMenu label="Options" id="example">
           <MenuItem onClick={() => {}}>Button</MenuItem>
           <MenuItemLink href="#" onClick={() => {}}>
@@ -62,11 +58,7 @@ const docs: ComponentDocs = {
       Example: ({ id, getState, toggleState, showToast }) =>
         source(
           <>
-            <Box
-              style={{ maxWidth: '100px' }}
-              display="flex"
-              justifyContent="flexEnd"
-            >
+            <Box style={{ maxWidth: '100px' }}>
               <OverflowMenu label="Options" id="destructive">
                 <MenuItem
                   onClick={() => toggleState('confirm')}
