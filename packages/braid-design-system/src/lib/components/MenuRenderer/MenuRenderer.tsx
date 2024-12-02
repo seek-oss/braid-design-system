@@ -23,7 +23,6 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import * as styles from './MenuRenderer.css';
-import { triggerVars } from './MenuRenderer.css';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
@@ -419,8 +418,8 @@ export function Menu({
   const inlineVars =
     triggerPosition &&
     assignInlineVars({
-      [triggerVars[placement]]: `${triggerPosition[placement]}px`,
-      [triggerVars[align]]: `${triggerPosition[align]}px`,
+      [styles.triggerVars[placement]]: `${triggerPosition[placement]}px`,
+      [styles.triggerVars[align]]: `${triggerPosition[align]}px`,
     });
 
   return (
