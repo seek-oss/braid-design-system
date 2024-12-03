@@ -382,7 +382,7 @@ export function Menu({
           placement === 'top' && styles.placementBottom,
         ]}
       >
-        <ScrollContainer direction="vertical">
+        <ScrollContainer direction="vertical" fadeSize="small">
           <Box className={styles.menuHeightLimit}>
             {Children.map(children, (item, i) => {
               if (isDivider(item)) {
