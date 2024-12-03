@@ -27,14 +27,12 @@ export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
 
   assert(
     !tableRowContext,
-    tableHeaderContext
-      ? 'TableRow is already provided by the TableHeader component'
-      : 'TableRow cannot be nested instead another TableRow',
+    'TableRow cannot be nested instead another TableRow',
   );
 
   assert(
     tableBodyContext || tableHeaderContext || tableFooterContext,
-    'TableRow must be used within a TableBody component',
+    'TableRow must be used within a table section, e.g. TableHeader, TableBody or TableFooter component',
   );
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import type { ComponentDocs } from 'site/types';
 import {
   Badge,
+  Box,
   ButtonIcon,
   Card,
   HiddenVisually,
@@ -12,6 +13,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableHeadCell,
   TableHeader,
   TableRow,
   Text,
@@ -23,19 +25,29 @@ import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const docs: ComponentDocs = {
   category: 'Layout',
+  subComponents: [
+    'TableHeader',
+    'TableFooter',
+    'TableBody',
+    'TableRow',
+    'TableHeadCell',
+    'TableCell',
+  ],
   Example: () =>
     source(
       <Table label="Table hero example">
         <TableHeader>
-          <TableCell>
-            <Text>Lorem</Text>
-          </TableCell>
-          <TableCell>
-            <Text>Ipsum</Text>
-          </TableCell>
-          <TableCell>
-            <Text>Dolor</Text>
-          </TableCell>
+          <TableRow>
+            <TableHeadCell>
+              <Text>Lorem</Text>
+            </TableHeadCell>
+            <TableHeadCell>
+              <Text>Ipsum</Text>
+            </TableHeadCell>
+            <TableHeadCell>
+              <Text>Dolor</Text>
+            </TableHeadCell>
+          </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow>
@@ -95,70 +107,152 @@ const docs: ComponentDocs = {
     {
       label: 'Table structure',
       description: (
-        <Text>
-          A <Strong>Table</Strong> must include a <Strong>TableBody</Strong>{' '}
-          with one or more <Strong>TableRow</Strong> components, with each
-          containing <Strong>TableCell</Strong> components that represent each
-          column of the tabular data.
-        </Text>
+        <>
+          <Text>
+            A <Strong>Table</Strong> is made up of three sections:{' '}
+            <Strong>TableHeader</Strong>, <Strong>TableBody</Strong> (required)
+            and <Strong>TableFooter</Strong>, each section containing one or
+            more <Strong>TableRow</Strong> components. Each row is made of up of{' '}
+            <Strong>TableCell</Strong> or <Strong>TableHeaderCell</Strong>{' '}
+            components representing each column of the data.
+          </Text>
+        </>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-              {
-                column1: 'Semper',
-                column2: 'Interdum',
-                column3: 'Viverra',
-              },
-            ])}
-            <Table label="Table data example">
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
-                    <TableCell>
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
+      code: false,
+      playroom: false,
+      Example: () =>
+        source(
+          <Box
+            boxShadow="borderInfo"
+            background="infoLight"
+            borderRadius="large"
+            padding="small"
+          >
+            <Stack space="small">
+              <Text tone="info" weight="strong">
+                Table
+              </Text>
+              <Box
+                boxShadow="borderPromote"
+                background="promoteLight"
+                borderRadius="large"
+                padding="small"
+              >
+                <Stack space="small">
+                  <Text tone="promote" weight="strong">
+                    TableHeader
+                  </Text>
 
-        return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
-          value,
-        };
-      },
+                  <Box
+                    boxShadow="borderPositive"
+                    background="positiveLight"
+                    borderRadius="large"
+                    padding="small"
+                  >
+                    <Stack space="small">
+                      <Text tone="positive" weight="strong">
+                        TableRow
+                      </Text>
+                      <Tiles space="small" columns={2}>
+                        <Box
+                          boxShadow="borderNeutral"
+                          background="neutralLight"
+                          borderRadius="large"
+                          padding="small"
+                        >
+                          <Text weight="strong">TableHeaderCell</Text>
+                        </Box>
+                      </Tiles>
+                    </Stack>
+                  </Box>
+                </Stack>
+              </Box>
+              <Box
+                boxShadow="borderPromote"
+                background="promoteLight"
+                borderRadius="large"
+                padding="small"
+              >
+                <Stack space="small">
+                  <Text tone="promote" weight="strong">
+                    TableBody (required)
+                  </Text>
+
+                  <Box
+                    boxShadow="borderPositive"
+                    background="positiveLight"
+                    borderRadius="large"
+                    padding="small"
+                  >
+                    <Stack space="small">
+                      <Text tone="positive" weight="strong">
+                        TableRow
+                      </Text>
+                      <Tiles space="small" columns={2}>
+                        <Box
+                          boxShadow="borderField"
+                          background="surface"
+                          borderRadius="large"
+                          padding="small"
+                        >
+                          <Text tone="secondary" weight="strong">
+                            TableCell
+                          </Text>
+                        </Box>
+                      </Tiles>
+                    </Stack>
+                  </Box>
+                </Stack>
+              </Box>
+              <Box
+                boxShadow="borderPromote"
+                background="promoteLight"
+                borderRadius="large"
+                padding="small"
+              >
+                <Stack space="small">
+                  <Text tone="promote" weight="strong">
+                    TableFooter
+                  </Text>
+
+                  <Box
+                    boxShadow="borderPositive"
+                    background="positiveLight"
+                    borderRadius="large"
+                    padding="small"
+                  >
+                    <Stack space="small">
+                      <Text tone="positive" weight="strong">
+                        TableRow
+                      </Text>
+                      <Tiles space="small" columns={2}>
+                        <Box
+                          boxShadow="borderField"
+                          background="surface"
+                          borderRadius="large"
+                          padding="small"
+                        >
+                          <Text tone="secondary" weight="strong">
+                            TableCell
+                          </Text>
+                        </Box>
+                      </Tiles>
+                    </Stack>
+                  </Box>
+                </Stack>
+              </Box>
+            </Stack>
+          </Box>,
+        ),
     },
     {
       label: 'Column headings',
       description: (
         <Text>
-          A <Strong>TableHeader</Strong> component can be placed before the{' '}
-          <Strong>TableBody</Strong>, providing a header row that defaults all{' '}
-          <Strong>TableCell</Strong> components inside to be{' '}
-          <TextLink href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">
-            table header elements
-          </TextLink>{' '}
-          with relevant styling.
+          A <Strong>TableHeader</Strong> can be provided, containing a{' '}
+          <Strong>TableRow</Strong> of column headings. Each heading cell should
+          use the <Strong>TableHeadCell</Strong> component, providing the
+          relevant semantics, column labelling and styling.
         </Text>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -183,15 +277,17 @@ const docs: ComponentDocs = {
             ])}
             <Table label="Table column headings example">
               <TableHeader>
-                <TableCell>
-                  <Text>Lorem</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Ipsum</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Dolor</Text>
-                </TableCell>
+                <TableRow>
+                  <TableHeadCell>
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
@@ -222,9 +318,9 @@ const docs: ComponentDocs = {
       label: 'Row headings',
       description: (
         <Text>
-          Row-level headings are supported by specifying the{' '}
-          <Strong>header</Strong> prop on the <Strong>TableCell</Strong>{' '}
-          component.
+          Row-level headings are supported by providing a{' '}
+          <Strong>TableHeadCell</Strong> within a <Strong>TableRow</Strong> of
+          the <Strong>TableBody</Strong> section.
         </Text>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -251,9 +347,9 @@ const docs: ComponentDocs = {
               <TableBody>
                 {getState('rows').map((row: any) => (
                   <TableRow key={row}>
-                    <TableCell header>
+                    <TableHeadCell>
                       <Text>{row.column1}</Text>
-                    </TableCell>
+                    </TableHeadCell>
                     <TableCell>
                       <Text>{row.column2}</Text>
                     </TableCell>
@@ -318,25 +414,27 @@ const docs: ComponentDocs = {
             ])}
             <Table label="Table dual axis heading example">
               <TableHeader>
-                <TableCell>
-                  <HiddenVisually>Time</HiddenVisually>
-                </TableCell>
-                <TableCell>
-                  <Text>Lorem</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Ipsum</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Dolor</Text>
-                </TableCell>
+                <TableRow>
+                  <TableHeadCell>
+                    <HiddenVisually>Time</HiddenVisually>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
                   <TableRow key={row}>
-                    <TableCell header>
+                    <TableHeadCell>
                       <Text>{row.column1}</Text>
-                    </TableCell>
+                    </TableHeadCell>
                     <TableCell>
                       <Text>{row.column2}</Text>
                     </TableCell>
@@ -364,9 +462,10 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            By default, a <Strong>TableCell</Strong> has a{' '}
-            <Strong>width</Strong> of <Strong>auto</Strong>, accomodating the
-            longest content within the column.
+            By default, a <Strong>TableCell</Strong> (and{' '}
+            <Strong>TableHeadCell</Strong>) has a <Strong>width</Strong> of{' '}
+            <Strong>auto</Strong>, accomodating the longest content within the
+            column.
           </Text>
           <Text>
             If the table content is larger than the available space, each column
@@ -416,21 +515,23 @@ const docs: ComponentDocs = {
             ])}
             <Table label="Table column headings example">
               <TableHeader>
-                <TableCell width="content">
-                  <Text>Status</Text>
-                </TableCell>
-                <TableCell width="30%">
-                  <Text>Lorem</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Ipsum</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Dolor</Text>
-                </TableCell>
-                <TableCell width="content" align="right">
-                  <Text>Actions</Text>
-                </TableCell>
+                <TableRow>
+                  <TableHeadCell width="content">
+                    <Text>Status</Text>
+                  </TableHeadCell>
+                  <TableHeadCell width="30%">
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                  <TableHeadCell width="content" align="right">
+                    <Text>Actions</Text>
+                  </TableHeadCell>
+                </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
@@ -516,21 +617,23 @@ const docs: ComponentDocs = {
             ])}
             <Table label="Table column headings example">
               <TableHeader>
-                <TableCell width="content">
-                  <Text>Status</Text>
-                </TableCell>
-                <TableCell maxWidth={100}>
-                  <Text>Lorem</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Ipsum</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Dolor</Text>
-                </TableCell>
-                <TableCell width="content" align="right">
-                  <Text>Actions</Text>
-                </TableCell>
+                <TableRow>
+                  <TableHeadCell width="content">
+                    <Text>Status</Text>
+                  </TableHeadCell>
+                  <TableHeadCell maxWidth={100}>
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                  <TableHeadCell width="content" align="right">
+                    <Text>Actions</Text>
+                  </TableHeadCell>
+                </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
@@ -592,15 +695,17 @@ const docs: ComponentDocs = {
               </Text>
               <Table label="Vertical align center example" alignY="center">
                 <TableHeader>
-                  <TableCell>
-                    <Text>Lorem</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>Ipsum</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>Dolor</Text>
-                  </TableCell>
+                  <TableRow>
+                    <TableHeadCell>
+                      <Text>Lorem</Text>
+                    </TableHeadCell>
+                    <TableHeadCell>
+                      <Text>Ipsum</Text>
+                    </TableHeadCell>
+                    <TableHeadCell>
+                      <Text>Dolor</Text>
+                    </TableHeadCell>
+                  </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
@@ -640,15 +745,17 @@ const docs: ComponentDocs = {
               </Text>
               <Table label="Vertical align top example" alignY="top">
                 <TableHeader>
-                  <TableCell>
-                    <Text>Lorem</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>Ipsum</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>Dolor</Text>
-                  </TableCell>
+                  <TableRow>
+                    <TableHeadCell>
+                      <Text>Lorem</Text>
+                    </TableHeadCell>
+                    <TableHeadCell>
+                      <Text>Ipsum</Text>
+                    </TableHeadCell>
+                    <TableHeadCell>
+                      <Text>Dolor</Text>
+                    </TableHeadCell>
+                  </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
@@ -692,7 +799,7 @@ const docs: ComponentDocs = {
           <Text>
             The horizontal alignment of content within cells can be configured
             using the <Strong>align</Strong> prop on <Strong>TableCell</Strong>{' '}
-            components.
+            and <Strong>TableHeadCell</Strong> components.
           </Text>
           <Text>
             Supported alignments are <Strong>left</Strong> (default),{' '}
@@ -724,15 +831,17 @@ const docs: ComponentDocs = {
             ])}
             <Table label="Horizontal alignment example">
               <TableHeader>
-                <TableCell align="left">
-                  <Text>“left”</Text>
-                </TableCell>
-                <TableCell align="center">
-                  <Text>“center”</Text>
-                </TableCell>
-                <TableCell align="right">
-                  <Text>“right”</Text>
-                </TableCell>
+                <TableRow>
+                  <TableHeadCell align="left">
+                    <Text>“left”</Text>
+                  </TableHeadCell>
+                  <TableHeadCell align="center">
+                    <Text>“center”</Text>
+                  </TableHeadCell>
+                  <TableHeadCell align="right">
+                    <Text>“right”</Text>
+                  </TableHeadCell>
+                </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
@@ -764,9 +873,10 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            By default, all <Strong>TableCell</Strong> components are prevented
-            from wrapping their content. This keep rows a consistent height and
-            means the content can influence the column width.
+            By default, all <Strong>TableCell</Strong> and{' '}
+            <Strong>TableHeadCell</Strong> components are prevented from
+            wrapping their content. This keep rows a consistent height and means
+            the content can influence the column width.
           </Text>
           <Text>
             If desired, wrapping can be enabled by setting the{' '}
@@ -795,15 +905,17 @@ const docs: ComponentDocs = {
             ])}
             <Table label="Column visibility example">
               <TableHeader>
-                <TableCell>
-                  <Text>Lorem</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Ipsum</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Dolor</Text>
-                </TableCell>
+                <TableRow>
+                  <TableHeadCell>
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
@@ -879,15 +991,17 @@ const docs: ComponentDocs = {
                 </Text>
                 <Table label="Column visibility example tablet">
                   <TableHeader>
-                    <TableCell>
-                      <Text>Lorem</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>Ipsum</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>Dolor</Text>
-                    </TableCell>
+                    <TableRow>
+                      <TableHeadCell>
+                        <Text>Lorem</Text>
+                      </TableHeadCell>
+                      <TableHeadCell>
+                        <Text>Ipsum</Text>
+                      </TableHeadCell>
+                      <TableHeadCell>
+                        <Text>Dolor</Text>
+                      </TableHeadCell>
+                    </TableRow>
                   </TableHeader>
                   <TableBody>
                     {getState('rows').map((row: any) => (
@@ -912,12 +1026,14 @@ const docs: ComponentDocs = {
                 </Text>
                 <Table label="Column visibility example mobile">
                   <TableHeader>
-                    <TableCell>
-                      <Text>Lorem</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>Dolor</Text>
-                    </TableCell>
+                    <TableRow>
+                      <TableHeadCell>
+                        <Text>Lorem</Text>
+                      </TableHeadCell>
+                      <TableHeadCell>
+                        <Text>Dolor</Text>
+                      </TableHeadCell>
+                    </TableRow>
                   </TableHeader>
                   <TableBody>
                     {getState('rows').map((row: any) => (
@@ -953,15 +1069,17 @@ const docs: ComponentDocs = {
             ])}
             <Table label="Column visibility example">
               <TableHeader>
-                <TableCell>
-                  <Text>Lorem</Text>
-                </TableCell>
-                <TableCell hideBelow="tablet">
-                  <Text>Ipsum</Text>
-                </TableCell>
-                <TableCell>
-                  <Text>Dolor</Text>
-                </TableCell>
+                <TableRow>
+                  <TableHeadCell>
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell hideBelow="tablet">
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
@@ -1017,15 +1135,17 @@ const docs: ComponentDocs = {
 
                 <Table label="Full bleed example" fullBleed>
                   <TableHeader>
-                    <TableCell>
-                      <Text>Lorem</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>Ipsum</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>Dolor</Text>
-                    </TableCell>
+                    <TableRow>
+                      <TableHeadCell>
+                        <Text>Lorem</Text>
+                      </TableHeadCell>
+                      <TableHeadCell>
+                        <Text>Ipsum</Text>
+                      </TableHeadCell>
+                      <TableHeadCell>
+                        <Text>Dolor</Text>
+                      </TableHeadCell>
+                    </TableRow>
                   </TableHeader>
                   <TableBody>
                     {getState('rows').map((row: any) => (

@@ -7873,7 +7873,6 @@ exports[`Table 1`] = `
         | "center"
         | "top"
     children: ReactNode
-    columnWidths?: (string | number)[]
     data?: DataAttributeMap
     fullBleed?: boolean
     label: string
@@ -7900,8 +7899,8 @@ exports[`TableCell 1`] = `
         | "left"
         | "right"
     children: ReactNode
+    colspan?: number
     data?: DataAttributeMap
-    header?: boolean
     hideAbove?: 
         | "desktop"
         | "mobile"
@@ -7910,11 +7909,52 @@ exports[`TableCell 1`] = `
         | "desktop"
         | "tablet"
         | "wide"
-    nowrap?: boolean
+    maxWidth?: number
+    minWidth?: number
     width?: 
         | "auto"
         | "content"
-        | number
+        | \`\${number}%\`
+    wrap?: boolean
+},
+}
+`;
+
+exports[`TableFooter 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableHeadCell 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+    children: ReactNode
+    colspan?: number
+    data?: DataAttributeMap
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
+    maxWidth?: number
+    minWidth?: number
+    width?: 
+        | "auto"
+        | "content"
+        | \`\${number}%\`
     wrap?: boolean
 },
 }

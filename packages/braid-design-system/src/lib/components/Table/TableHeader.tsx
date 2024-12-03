@@ -1,13 +1,12 @@
 import assert from 'assert';
 import { useContext, type ReactNode } from 'react';
 import { Box } from '../Box/Box';
-import { TableRow } from './TableRow';
 import { TableContext, TableHeaderContext } from './TableContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './Table.css';
+// import * as styles from './Table.css';
 
 interface TableHeaderProps {
   children: ReactNode;
@@ -29,13 +28,13 @@ TableHeaderProps) => {
     <TableHeaderContext.Provider value={true}>
       <Box
         component="thead"
-        className={
-          tableContext.fullBleed ? undefined : styles.tableHeaderRounding
-        }
+        // className={
+        // tableContext.fullBleed ? undefined : styles.tableHeaderRounding
+        // }
         {...buildDataAttributes({ data, validateRestProps: restProps })}
         // style={sticky ? { position: 'sticky', top: 0 } : undefined}
       >
-        <TableRow>{children}</TableRow>
+        {children}
       </Box>
     </TableHeaderContext.Provider>
   );

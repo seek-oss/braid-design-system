@@ -15,6 +15,7 @@
     "TableBody",
     "TableCell",
     "TableFooter",
+    "TableHeadCell",
     "TableHeader",
     "TableRow",
     "Tab",

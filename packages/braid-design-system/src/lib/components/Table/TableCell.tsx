@@ -21,8 +21,7 @@ import buildDataAttributes, {
 import * as styles from './Table.css';
 
 type Percentage = `${number}%`;
-interface TableCellProps {
-  header?: boolean;
+interface CellProps {
   children: ReactNode;
   hideBelow?: ResponsiveRangeProps['below'];
   hideAbove?: ResponsiveRangeProps['above'];
@@ -31,10 +30,15 @@ interface TableCellProps {
   width?: 'content' | 'auto' | Percentage;
   minWidth?: number;
   maxWidth?: number;
+  colspan?: number;
   data?: DataAttributeMap;
 }
-export const TableCell = ({
-  header,
+interface BaseCellProps {
+  header?: boolean;
+  scope?: 'col' | 'row';
+}
+const Cell = ({
+  header: isHeaderCell,
   children,
   hideAbove,
   hideBelow,
@@ -43,29 +47,22 @@ export const TableCell = ({
   width = 'auto',
   minWidth,
   maxWidth,
+  colspan,
+  scope,
   data,
   ...restProps
-}: TableCellProps) => {
+}: CellProps & BaseCellProps) => {
   const [hideOnMobile, hideOnTablet, hideOnDesktop, hideOnWide] =
     resolveResponsiveRangeProps({
       below: hideBelow,
       above: hideAbove,
     });
 
-  const tableHeaderContext = useContext(TableHeaderContext);
   const tableFooterContext = useContext(TableFooterContext);
-  const tableRowContext = useContext(TableRowContext);
   const tableContext = useContext(TableContext);
-
-  assert(
-    tableRowContext,
-    'TableCell cannot be used outside a TableRow component',
-  );
 
   assert(tableContext, 'TableCell cannot be used outside a Table component');
 
-  const isHeaderCell =
-    typeof header !== 'undefined' ? header : tableHeaderContext;
   const isFooterCell = tableFooterContext;
 
   const softWidth = width === 'content' ? '1%' : width;
@@ -74,7 +71,8 @@ export const TableCell = ({
   return (
     <Box
       component={isHeaderCell ? 'th' : 'td'}
-      scope={tableHeaderContext ? 'col' : 'row'}
+      scope={scope}
+      colSpan={colspan}
       padding="small"
       textAlign={align}
       background={isHeaderCell ? 'neutralLight' : undefined}
@@ -85,22 +83,14 @@ export const TableCell = ({
         wide: hideOnWide ? 'none' : undefined,
       }}
       className={{
-        /**
-         * When looking at these styles you'll notice that table's display property
-         * has been set to block. While this allows scrolling, the table loses some
-         * of its integrity, and table cells try to become as small as possible.
-         * To mitigate this issue we've set white-space to nowrap on the <tbody>.
-         * However, we don't do this for the <thead> to avoid long titles forcing
-         * columns to be wider than they need to be to display the data.
-         * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#displaying_large_tables_in_small_spaces
-         */
         [styles.nowrap]: !wrap,
         [styles.softWidth]: width && width !== 'auto',
         [styles.minWidth]: typeof minWidth !== 'undefined',
         [styles.maxWidth]: hasMaxWidth,
         [styles.alignYCenter]: tableContext.alignY === 'center',
-        [styles.borderBottom]: true,
-        // [styles.borderTopFooter]: isFooterCell,
+        [styles.bodyCellBorder]: !isHeaderCell,
+        [styles.footerCellBorder]: isFooterCell,
+        [styles.headerCellBorder]: isHeaderCell,
         [styles.showOnTablet]: !hideOnTablet && hideOnMobile,
         [styles.showOnDesktop]:
           !hideOnDesktop && (hideOnTablet || hideOnMobile),
@@ -130,5 +120,36 @@ export const TableCell = ({
         )}
       </DefaultTextPropsProvider>
     </Box>
+  );
+};
+
+export const TableCell = (props: CellProps) => {
+  const tableHeaderContext = useContext(TableHeaderContext);
+  const tableRowContext = useContext(TableRowContext);
+
+  assert(
+    !tableHeaderContext,
+    'TableCell cannot be used inside a TableHeader component. Please use TableHeadCell instead.',
+  );
+
+  assert(
+    tableRowContext,
+    'TableCell cannot be used outside a TableRow component',
+  );
+
+  return <Cell {...props} header={false} scope={undefined} />;
+};
+
+export const TableHeadCell = (props: CellProps) => {
+  const tableHeaderContext = useContext(TableHeaderContext);
+  const tableRowContext = useContext(TableRowContext);
+
+  assert(
+    tableRowContext,
+    'TableHeadCell cannot be used outside a TableRow component',
+  );
+
+  return (
+    <Cell {...props} header={true} scope={tableHeaderContext ? 'col' : 'row'} />
   );
 };

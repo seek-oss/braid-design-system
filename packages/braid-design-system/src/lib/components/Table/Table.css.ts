@@ -5,15 +5,15 @@ import { responsiveStyle } from '../../css/responsiveStyle';
 
 // TABLE
 const borderColor = createVar();
-const borderWidth = createVar();
+const sectionBorderWidth = createVar();
 export const table = style([
   {
     vars: {
       // [borderWidth]: '1px',
-      [borderWidth]: vars.borderWidth.standard,
+      [sectionBorderWidth]: vars.borderWidth.standard,
     },
     borderCollapse: 'separate',
-    border: `${borderWidth} solid ${borderColor}`,
+    border: `${sectionBorderWidth} solid ${borderColor}`,
     fontVariantNumeric: 'tabular-nums',
     wordBreak: 'break-word',
   },
@@ -51,20 +51,6 @@ globalStyle(
   },
 );
 
-// export const noSideBorders = style({
-//   borderLeftColor: 'transparent',
-//   borderRightColor: 'transparent',
-// });
-
-// TABLE HEADER
-export const tableHeaderRounding = style({});
-// globalStyle(`${tableHeaderRounding} > tr > th:first-of-type`, {
-//   borderTopLeftRadius: vars.borderRadius.large,
-// });
-// globalStyle(`${tableHeaderRounding} > tr > th:last-of-type`, {
-//   borderTopRightRadius: vars.borderRadius.large,
-// });
-
 // TABLE CELLS
 export const alignYCenter = style({
   verticalAlign: 'middle',
@@ -89,18 +75,22 @@ export const maxWidth = style({
   maxWidth: maxWidthVar,
 });
 
-export const borderBottom = style({
-  borderBottom: `${borderWidth} solid ${borderColor}`,
-});
-// No border on bottom of last row (table border is used instead)
-globalStyle(`${table} > tbody > tr:last-of-type > *`, {
-  borderBottom: 0,
+export const headerCellBorder = style({});
+globalStyle(`${table} > thead > tr:last-child > ${headerCellBorder}`, {
+  borderBottom: `${sectionBorderWidth} solid ${borderColor}`,
 });
 
-// export const borderTopFooter = style({});
-// globalStyle(`${table} > tfoot > *:first-of-type > *${borderTopFooter}`, {
-//   borderTop: `${vars.borderWidth.standard} solid ${borderColor}`,
-// });
+export const bodyCellBorder = style({});
+// Apply border on bottom of all cells except last row of a table section
+globalStyle(`${table} > * > tr:not(:last-child) > *`, {
+  borderBottom: `1px solid ${borderColor}`,
+});
+
+export const footerCellBorder = style({});
+// Apply heavier section border between footer and body sections
+globalStyle(`${table} > tfoot > tr:first-child > ${footerCellBorder}`, {
+  borderTop: `${sectionBorderWidth} solid ${borderColor}`,
+});
 
 export const showOnTablet = style(
   responsiveStyle({ tablet: { display: 'table-cell' } }),
