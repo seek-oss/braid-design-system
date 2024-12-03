@@ -7,9 +7,12 @@ import {
 
 export const container = style({
   WebkitOverflowScrolling: 'touch',
+  maskComposite: 'intersect',
+});
+
+export const hideScrollbar = style({
   scrollbarWidth: 'none',
   msOverflowStyle: 'none',
-  maskComposite: 'intersect',
   '::-webkit-scrollbar': {
     width: 0,
     height: 0,

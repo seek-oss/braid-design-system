@@ -33,6 +33,7 @@ interface ScrollContainerProps {
   children: ReactNode;
   direction?: keyof typeof styles.direction;
   fadeSize?: keyof typeof styles.fadeSize;
+  hideScrollbar?: boolean;
   data?: DataAttributeMap;
 }
 
@@ -40,6 +41,7 @@ export const ScrollContainer = ({
   children,
   direction = 'horizontal',
   fadeSize = 'medium',
+  hideScrollbar = false,
   data,
   ...restProps
 }: ScrollContainerProps) => {
@@ -74,6 +76,7 @@ export const ScrollContainer = ({
       className={[
         styles.container,
         styles.mask,
+        hideScrollbar ? styles.hideScrollbar : null,
         styles.fadeSize[fadeSize],
         styles.direction[direction],
       ]}
