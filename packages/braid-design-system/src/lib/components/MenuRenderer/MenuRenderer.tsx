@@ -369,7 +369,7 @@ export function Menu({
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
-        paddingY={styles.menuYPadding}
+        paddingY="xxsmall"
         marginTop={placement === 'bottom' ? offsetSpace : undefined}
         marginBottom={placement === 'top' ? offsetSpace : undefined}
         transition="fast"
