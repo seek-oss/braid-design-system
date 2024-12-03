@@ -13,6 +13,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableFooter,
   TableHeadCell,
   TableHeader,
   TableRow,
@@ -458,12 +459,93 @@ const docs: ComponentDocs = {
       },
     },
     {
+      label: 'Table footers',
+      description: (
+        <Text>
+          A <Strong>TableFooter</Strong> can be provided, containing a{' '}
+          <Strong>TableRow</Strong> wrapping <Strong>TableCell</Strong>{' '}
+          components, providing the relevant semantics and styling.
+        </Text>
+      ),
+      Example: ({ setDefaultState, getState }) => {
+        const { code, value } = source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1: 'Sit',
+                column2: 'Amet',
+                column3: 'Consectetur',
+              },
+              {
+                column1: 'Adipiscing',
+                column2: 'Elit',
+                column3: 'Praesent',
+              },
+              {
+                column1: 'Semper',
+                column2: 'Interdum',
+                column3: 'Viverra',
+              },
+            ])}
+            <Table label="Table footer example">
+              <TableHeader>
+                <TableRow>
+                  <TableHeadCell>
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row}>
+                    <TableCell>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell>
+                    <Text>Quis</Text>
+                  </TableCell>
+                  <TableCell>
+                    <Text>Tempor</Text>
+                  </TableCell>
+                  <TableCell>
+                    <Text>Voluptate</Text>
+                  </TableCell>
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </>,
+        );
+
+        return {
+          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          value,
+        };
+      },
+    },
+    {
       label: 'Column widths',
       description: (
         <>
           <Text>
-            By default, a <Strong>TableCell</Strong> (and{' '}
-            <Strong>TableHeadCell</Strong>) has a <Strong>width</Strong> of{' '}
+            By default, a <Strong>TableCell</Strong> and{' '}
+            <Strong>TableHeadCell</Strong> have a <Strong>width</Strong> of{' '}
             <Strong>auto</Strong>, accomodating the longest content within the
             column.
           </Text>
