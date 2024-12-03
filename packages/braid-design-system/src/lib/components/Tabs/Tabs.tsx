@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useRef,
   useState,
+  useCallback,
   type ReactElement,
   type ComponentProps,
 } from 'react';
@@ -19,7 +20,7 @@ import buildDataAttributes, {
 import { TabsContext } from './TabsProvider';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { TabListContext, type TabSize } from './TabListContext';
 import * as styles from './Tabs.css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
@@ -42,18 +43,6 @@ interface TabLinePosition {
 }
 
 const tabLinePositionDefault: TabLinePosition = { left: 0, width: 0 };
-
-const TabsDivider = () => (
-  <Box
-    position="absolute"
-    bottom={0}
-    left={0}
-    right={0}
-    className={styles.divider}
-  >
-    <Divider />
-  </Box>
-);
 
 // This must be called within a `useLayoutEffect` because `.getComputedStyle()` and `.getBoundingClientRect()` force a reflow
 // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
@@ -136,6 +125,33 @@ export const Tabs = (props: TabsProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabItems.join(), dispatch]);
 
+  const {
+    space: { grid, space },
+  } = useBraidTheme();
+  const [showMask, setShowMask] = useState(true);
+
+  // This must be called within a `useLayoutEffect` because `.scrollLeft`, `.scrollWidth` and `.offsetWidth` force a reflow
+  // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+  const updateMask = useCallback(() => {
+    if (!tabsRef.current) {
+      return;
+    }
+
+    setShowMask(
+      tabsRef.current.scrollWidth -
+        tabsRef.current.offsetWidth -
+        tabsRef.current.scrollLeft >
+        grid * space.small,
+    );
+  }, [tabsRef, setShowMask, grid, space]);
+
+  useIsomorphicLayoutEffect(() => {
+    updateMask();
+
+    window.addEventListener('resize', updateMask);
+    return () => window.removeEventListener('resize', updateMask);
+  }, [updateMask]);
+
   const selectedTabIndex =
     typeof selectedItem !== 'undefined'
       ? tabItems.indexOf(selectedItem)
@@ -150,55 +166,87 @@ export const Tabs = (props: TabsProps) => {
   return (
     <Box>
       <Box
-        position="relative"
         className={
           reserveHitArea
             ? undefined
             : negativeMargin('top', dividerSpacingForSize[size])
         }
       >
-        {divider === 'full' ? <TabsDivider /> : null}
-        <ScrollContainer>
+        <Box position="relative">
           <Box
-            {...a11y.tabListProps({ label })}
-            display="flex"
+            ref={tabsRef}
             className={[
-              styles.tabsList,
-              align === 'center' ? styles.marginAuto : undefined,
+              styles.scroll,
+              styles.nowrap,
+              showMask ? styles.mask : null,
             ]}
-            paddingX={gutter}
+            display="flex"
+            onScroll={updateMask}
             flexWrap="nowrap"
-            position="relative"
-            zIndex={1}
-            {...buildDataAttributes({
-              data,
-              validateRestProps: restProps,
-            })}
           >
-            {tabs}
-            {divider === 'minimal' ? <TabsDivider /> : null}
-            {selectedTabButtonEl ? (
+            <Box
+              display="flex"
+              className={align === 'center' ? styles.marginAuto : undefined}
+              paddingX={gutter}
+              flexWrap="nowrap"
+              position="relative"
+              zIndex={1}
+            >
               <Box
-                component="span"
+                {...a11y.tabListProps({ label })}
+                display="flex"
+                {...buildDataAttributes({ data, validateRestProps: restProps })}
+                flexWrap="nowrap"
+                position="relative"
+              >
+                {tabs}
+                {divider === 'minimal' ? (
+                  <Box
+                    position="absolute"
+                    bottom={0}
+                    left={0}
+                    right={0}
+                    className={styles.divider}
+                  >
+                    <Divider />
+                  </Box>
+                ) : null}
+                {selectedTabButtonEl ? (
+                  <Box
+                    component="span"
+                    position="absolute"
+                    display="block"
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    background="formAccent"
+                    pointerEvents="none"
+                    className={[
+                      styles.tabUnderline,
+                      styles.tabUnderlineActiveDarkMode,
+                    ]}
+                    style={assignInlineVars({
+                      [styles.underlineLeft]: activeTabPosition.left.toString(),
+                      [styles.underlineWidth]:
+                        activeTabPosition.width.toString(),
+                    })}
+                  />
+                ) : null}
+              </Box>
+            </Box>
+            {divider === 'full' ? (
+              <Box
                 position="absolute"
-                display="block"
+                bottom={0}
                 left={0}
                 right={0}
-                bottom={0}
-                background="formAccent"
-                pointerEvents="none"
-                className={[
-                  styles.tabUnderline,
-                  styles.tabUnderlineActiveDarkMode,
-                ]}
-                style={assignInlineVars({
-                  [styles.underlineLeft]: activeTabPosition.left.toString(),
-                  [styles.underlineWidth]: activeTabPosition.width.toString(),
-                })}
-              />
+                className={styles.divider}
+              >
+                <Divider />
+              </Box>
             ) : null}
           </Box>
-        </ScrollContainer>
+        </Box>
       </Box>
     </Box>
   );
