@@ -16,6 +16,7 @@ import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
 import { normalizeKey } from '../private/normalizeKey';
 import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
+import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import { type Action, actionTypes } from './MenuRenderer.actions';
 import { MenuRendererContext } from './MenuRendererContext';
 import { MenuRendererItemContext } from './MenuRendererItemContext';
@@ -426,6 +427,7 @@ export function Menu({
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
+        paddingY="xxsmall"
         marginTop={placement === 'bottom' ? offsetSpace : undefined}
         marginBottom={placement === 'top' ? offsetSpace : undefined}
         transition="fast"
@@ -437,28 +439,32 @@ export function Menu({
           width !== 'content' && styles.width[width],
         ]}
       >
-        <Box paddingY={styles.menuYPadding} className={styles.menuHeightLimit}>
-          {Children.map(children, (item, i) => {
-            if (isDivider(item)) {
-              dividerCount++;
-              return item;
-            }
-            const menuItemIndex = i - dividerCount;
-            return (
-              <MenuRendererItemContext.Provider
-                key={menuItemIndex}
-                value={{
-                  isHighlighted: menuItemIndex === highlightIndex,
-                  index: menuItemIndex,
-                  dispatch,
-                  focusTrigger,
-                }}
-              >
-                {item}
-              </MenuRendererItemContext.Provider>
-            );
-          })}
-        </Box>
+        <ScrollContainer direction="vertical" fadeSize="small">
+          <Box className={styles.menuHeightLimit}>
+            {Children.map(children, (item, i) => {
+              if (isDivider(item)) {
+                dividerCount++;
+                return item;
+              }
+
+              const menuItemIndex = i - dividerCount;
+
+              return (
+                <MenuRendererItemContext.Provider
+                  key={menuItemIndex}
+                  value={{
+                    isHighlighted: menuItemIndex === highlightIndex,
+                    index: menuItemIndex,
+                    dispatch,
+                    focusTrigger,
+                  }}
+                >
+                  {item}
+                </MenuRendererItemContext.Provider>
+              );
+            })}
+          </Box>
+        </ScrollContainer>
         <Overlay
           boxShadow="borderNeutralLight"
           borderRadius={borderRadius}
