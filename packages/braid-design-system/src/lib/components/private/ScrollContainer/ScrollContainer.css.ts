@@ -7,6 +7,7 @@ import {
 
 export const container = style({
   WebkitOverflowScrolling: 'touch',
+  WebkitMaskComposite: 'destination-in', // Fallback for browsers that don't support mask-composite
   maskComposite: 'intersect',
 });
 
