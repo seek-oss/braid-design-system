@@ -14,10 +14,10 @@ const maskOverflow = (
 ) => {
   const atTop = element.scrollTop === 0;
   const atBottom =
-    element.scrollHeight - element.offsetHeight - element.scrollTop < 1;
+    element.scrollHeight - element.offsetHeight - element.scrollTop < 2;
   const atLeft = element.scrollLeft === 0;
   const atRight =
-    element.scrollWidth - element.offsetWidth - element.scrollLeft < 1;
+    element.scrollWidth - element.offsetWidth - element.scrollLeft < 2;
 
   if (direction === 'vertical' || direction === 'all') {
     element.classList[atTop ? 'remove' : 'add'](styles.maskTop);
