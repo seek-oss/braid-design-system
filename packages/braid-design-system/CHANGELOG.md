@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 33.2.2
+
+### Patch Changes
+
+- **MenuRenderer, OverflowMenu:** Fixes a bug where menus could be obscured when rendered inside a `Dialog` or `Drawer` component. ([#1665](https://github.com/seek-oss/braid-design-system/pull/1665))
+
 ## 33.2.1
 
 ### Patch Changes
