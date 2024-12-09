@@ -4607,5 +4607,17 @@
         "summary": "**OverflowMenu**: Simplify internal layout.\n\nRefactor the internal layout of `OverflowMenu` to improve the alignment of the menu with the button."
       }
     ]
+  },
+  {
+    "version": "33.2.2",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Fixes a bug where menus could be obscured when rendered inside a `Dialog` or `Drawer` component."
+      }
+    ]
   }
 ]
