@@ -8,16 +8,20 @@ import { throttle } from 'throttle-debounce';
 
 import * as styles from './ScrollContainer.css';
 
+const scrollOffset = 2; // 2 instead of 1 to account for rounding errors in some browsers
+
 const maskOverflow = (
   element: HTMLElement,
   direction: keyof typeof styles.direction,
 ) => {
-  const atTop = element.scrollTop === 0;
+  const atTop = element.scrollTop <= 0;
   const atBottom =
-    element.scrollHeight - element.offsetHeight - element.scrollTop < 1;
-  const atLeft = element.scrollLeft === 0;
+    element.scrollHeight - element.offsetHeight - element.scrollTop <
+    scrollOffset;
+  const atLeft = element.scrollLeft <= 0;
   const atRight =
-    element.scrollWidth - element.offsetWidth - element.scrollLeft < 1;
+    element.scrollWidth - element.offsetWidth - element.scrollLeft <
+    scrollOffset;
 
   if (direction === 'vertical' || direction === 'all') {
     element.classList[atTop ? 'remove' : 'add'](styles.maskTop);
