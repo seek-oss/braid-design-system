@@ -90,6 +90,9 @@
     "patchedDependencies": {
       "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
       "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"
+    },
+    "overrides": {
+      "playroom": "0.0.0-master-20241118051205"
     }
   },
   "manypkg": {
