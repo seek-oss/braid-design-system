@@ -363,7 +363,7 @@ export const MenuRenderer = ({
               dispatch({ type: BACKDROP_CLICK });
             }}
             position="fixed"
-            zIndex="dropdownBackdrop"
+            zIndex="modal"
             top={0}
             left={0}
             className={styles.backdrop}
@@ -423,7 +423,7 @@ export function Menu({
       <Box
         role="menu"
         position={position}
-        zIndex="dropdown"
+        zIndex="modal"
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
