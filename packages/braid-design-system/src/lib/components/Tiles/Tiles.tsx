@@ -46,10 +46,10 @@ export const Tiles = ({
       gap={space}
       className={styles.tiles}
       style={assignInlineVars({
-        [styles.mobileColumnsVar]: String(mobileColumns),
-        [styles.tabletColumnsVar]: String(tabletColumns),
-        [styles.desktopColumnsVar]: String(desktopColumns),
-        [styles.wideColumnsVar]: String(wideColumns),
+        [styles.mobileColumnsVar]: String(mobileColumns) || undefined,
+        [styles.tabletColumnsVar]: String(tabletColumns) || undefined,
+        [styles.desktopColumnsVar]: String(desktopColumns) || undefined,
+        [styles.wideColumnsVar]: String(wideColumns) || undefined,
       })}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
