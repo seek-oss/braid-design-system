@@ -27,12 +27,14 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import * as styles from './AccordionItem.css';
+import { Spread } from '../Spread/Spread';
+import { defaultSize } from './Accordion';
 
 const itemSpaceForSize = {
   xsmall: 'small',
   small: 'medium',
   standard: 'medium',
-  large: 'large',
+  large: 'medium',
 } as const;
 
 export interface AccordionItemBaseProps {
