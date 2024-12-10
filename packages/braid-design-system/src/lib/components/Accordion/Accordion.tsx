@@ -29,6 +29,9 @@ export interface AccordionProps {
   data?: DataAttributeMap;
 }
 
+// Todo - rename
+export const defaultSize = 'large';
+
 const defaultSpaceForSize = {
   divided: {
     xsmall: 'medium',
@@ -46,7 +49,7 @@ const defaultSpaceForSize = {
 
 export const Accordion = ({
   children,
-  size = 'large',
+  size = defaultSize,
   tone,
   weight,
   space: spaceProp,
