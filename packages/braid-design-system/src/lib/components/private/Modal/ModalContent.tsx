@@ -158,30 +158,20 @@ export const ModalContent = ({
             height={
               position === 'right' || position === 'left' ? 'full' : undefined
             }
-            paddingY={modalPadding}
-            paddingX={position !== 'center' ? pageBlockGutters : modalPadding}
             className={[
               styles.pointerEventsAll,
               position === 'center' && styles.maxSize[position],
             ]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <Stack space="large">
-              {illustration ? (
-                <Stack space="medium" align="center">
-                  <Box paddingX="gutter">{illustration}</Box>
-                  <ModalContentHeader
-                    title={title}
-                    headingLevel={headingLevel}
-                    description={description}
-                    descriptionId={descriptionId}
-                    center={Boolean(illustration)}
-                    ref={headingRef}
-                  />
-                </Stack>
-              ) : (
-                <Columns space="none">
-                  <Column>
+            <Box
+              paddingY={modalPadding}
+              paddingX={position !== 'center' ? pageBlockGutters : modalPadding}
+            >
+              <Stack space="large">
+                {illustration ? (
+                  <Stack space="medium" align="center">
+                    <Box paddingX="gutter">{illustration}</Box>
                     <ModalContentHeader
                       title={title}
                       headingLevel={headingLevel}
@@ -190,14 +180,27 @@ export const ModalContent = ({
                       center={Boolean(illustration)}
                       ref={headingRef}
                     />
-                  </Column>
-                  <Column width="content">
-                    <Box width="touchable" />
-                  </Column>
-                </Columns>
-              )}
-              <Fragment>{children}</Fragment>
-            </Stack>
+                  </Stack>
+                ) : (
+                  <Columns space="none">
+                    <Column>
+                      <ModalContentHeader
+                        title={title}
+                        headingLevel={headingLevel}
+                        description={description}
+                        descriptionId={descriptionId}
+                        center={Boolean(illustration)}
+                        ref={headingRef}
+                      />
+                    </Column>
+                    <Column width="content">
+                      <Box width="touchable" />
+                    </Column>
+                  </Columns>
+                )}
+                <Fragment>{children}</Fragment>
+              </Stack>
+            </Box>
           </Box>
         </RemoveScroll>
         <Box
