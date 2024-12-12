@@ -37,8 +37,6 @@ const {
   MENU_ITEM_HOVER,
 } = actionTypes;
 
-const menuItemChildrenSize = 'standard';
-
 type MenuItemTone = 'critical' | undefined;
 
 export interface UseMenuItemProps {
@@ -58,10 +56,11 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   id,
   ...restProps
 }: UseMenuItemProps) {
+  const menuRendererContext = useContext(MenuRendererContext);
   const menuRendererItemContext = useContext(MenuRendererItemContext);
 
   assert(
-    menuRendererItemContext !== null,
+    menuRendererContext !== null && menuRendererItemContext !== null,
     `${displayName} must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
   );
 
@@ -69,6 +68,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     throw new Error(`${displayName} element rendered outside menu context`);
   }
 
+  const { size } = menuRendererContext;
   const { isHighlighted, index, dispatch, focusTrigger } =
     menuRendererItemContext;
   const menuItemRef = useRef<MenuItemElement>(null);
@@ -155,11 +155,11 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       background: isHighlighted ? hoverBackground : undefined,
       className: [
         styles.menuItem,
-        touchableText[menuItemChildrenSize],
+        size === 'standard' ? touchableText[size] : styles.small,
         atoms({
           display: 'block',
           width: 'full',
-          paddingX: 'small',
+          paddingX: size === 'standard' ? 'small' : 'xsmall',
           cursor: 'pointer',
           textAlign: 'left',
           outline: 'none',
@@ -201,19 +201,20 @@ function MenuItemChildren({
   );
 
   let leftSlot: ReactNode = null;
+  const { size, reserveIconSpace } = menuRendererContext;
 
   if (!formElement) {
     if (icon) {
       leftSlot = (
         <Text
-          size={menuItemChildrenSize}
+          size={size}
           baseline={false}
           tone={tone === 'critical' ? tone : undefined}
         >
           {icon}
         </Text>
       );
-    } else if (menuRendererContext.reserveIconSpace) {
+    } else if (reserveIconSpace) {
       leftSlot = (
         <Box component="span" display="block" className={iconSize()} />
       );
@@ -234,7 +235,7 @@ function MenuItemChildren({
       ) : null}
       <Box component="span" minWidth={0}>
         <Text
-          size={menuItemChildrenSize}
+          size={size}
           baseline={false}
           tone={tone === 'critical' ? tone : undefined}
           maxLines={1}

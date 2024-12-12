@@ -6,6 +6,7 @@ import { Menu } from '../MenuRenderer/MenuRenderer';
 const defaultProps = {
   offsetSpace: 'none',
   align: 'left',
+  size: 'standard',
   width: 'content',
   highlightIndex: -1,
   open: true,

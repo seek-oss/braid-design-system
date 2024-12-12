@@ -7,6 +7,8 @@ import {
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../themes/vars.css';
 
+export const menuYPadding = 'xxsmall';
+
 export const backdrop = style({
   width: '100vw',
   height: '100vh',
@@ -48,5 +50,8 @@ export const width = styleVariants({ small, medium, large }, (w) => [
 ]);
 
 export const menuHeightLimit = style({
-  maxHeight: calc(vars.touchableSize).multiply(9.5).toString(),
+  maxHeight: calc(vars.touchableSize)
+    .multiply(9.5)
+    .add(calc(vars.space[menuYPadding]).multiply(2))
+    .toString(),
 });

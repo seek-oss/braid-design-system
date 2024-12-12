@@ -18,6 +18,7 @@ import { calc } from '@vanilla-extract/css-utils';
 const defaultProps = {
   offsetSpace: 'none',
   align: 'left',
+  size: 'standard',
   width: 'content',
   highlightIndex: -1,
   open: true,

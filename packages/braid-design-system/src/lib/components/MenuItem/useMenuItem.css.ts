@@ -1,4 +1,6 @@
 import { style } from '@vanilla-extract/css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+import { vars } from '../../themes/vars.css';
 
 export const menuItem = style({
   selectors: {
@@ -7,3 +9,8 @@ export const menuItem = style({
     },
   },
 });
+
+export const small = style([
+  virtualTouchable,
+  { paddingBlock: vars.space.xxsmall },
+]);
