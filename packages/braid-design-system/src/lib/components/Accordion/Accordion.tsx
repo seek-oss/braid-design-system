@@ -1,10 +1,7 @@
 import assert from 'assert';
 import React, { Children, useMemo } from 'react';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import {
-  type RequiredResponsiveValue,
-  normalizeResponsiveValue,
-} from '../../css/atoms/sprinkles.css';
+import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -21,13 +18,15 @@ export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
 export interface AccordionProps {
   children: ReactNodeNoStrings;
-  dividers?: boolean;
+  dividers?: AccordionContextValue['dividers'];
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
-  space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
+  space?: AccordionContextValue['space'];
   data?: DataAttributeMap;
 }
+
+export const defaultSize = 'large';
 
 const defaultSpaceForSize = {
   divided: {
@@ -46,7 +45,7 @@ const defaultSpaceForSize = {
 
 export const Accordion = ({
   children,
-  size = 'large',
+  size = defaultSize,
   tone,
   weight,
   space: spaceProp,
@@ -71,13 +70,13 @@ export const Accordion = ({
       .join(', ')}`,
   );
 
-  const contextValue = useMemo(
-    () => ({ size, tone, weight }),
-    [size, tone, weight],
-  );
-
   const space =
     spaceProp ?? defaultSpaceForSize[dividers ? 'divided' : 'undivided'][size];
+
+  const contextValue = useMemo(
+    () => ({ dividers, size, tone, weight, space }),
+    [dividers, size, tone, weight, space],
+  );
 
   return (
     <AccordionContext.Provider value={contextValue}>
