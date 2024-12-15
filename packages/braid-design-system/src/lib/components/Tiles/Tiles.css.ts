@@ -1,9 +1,4 @@
-import {
-  createVar,
-  fallbackVar,
-  globalStyle,
-  style,
-} from '@vanilla-extract/css';
+import { createVar, globalStyle, style } from '@vanilla-extract/css';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 const columns = createVar();
@@ -25,26 +20,17 @@ export const tiles = style([
     },
     tablet: {
       vars: {
-        [columns]: fallbackVar(tabletColumnsVar, mobileColumnsVar),
+        [columns]: tabletColumnsVar,
       },
     },
     desktop: {
       vars: {
-        [columns]: fallbackVar(
-          desktopColumnsVar,
-          tabletColumnsVar,
-          mobileColumnsVar,
-        ),
+        [columns]: desktopColumnsVar,
       },
     },
     wide: {
       vars: {
-        [columns]: fallbackVar(
-          wideColumnsVar,
-          desktopColumnsVar,
-          tabletColumnsVar,
-          mobileColumnsVar,
-        ),
+        [columns]: wideColumnsVar,
       },
     },
   }),
