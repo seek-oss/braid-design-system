@@ -26,12 +26,13 @@ export const Tiles = ({
   data,
   ...restProps
 }: TilesProps) => {
+  const normalizedResponsiveColumns = normalizeResponsiveValue(columns);
   const {
     mobile: mobileColumns = '1',
     tablet: tabletColumns = mobileColumns,
     desktop: desktopColumns = tabletColumns,
     wide: wideColumns = desktopColumns,
-  } = normalizeResponsiveValue(columns);
+  } = normalizedResponsiveColumns;
 
   return (
     <Box
