@@ -1,12 +1,10 @@
 import assert from 'assert';
 import { useContext, type ReactNode } from 'react';
-// import { TableRow } from './TableRow';
+import { Box } from '../Box/Box';
 import { TableContext, TableFooterContext } from './TableContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-
-// import * as styles from './Table.css';
 
 interface TableHeaderProps {
   children: ReactNode;
@@ -24,14 +22,12 @@ export const TableFooter = ({
 
   return (
     <TableFooterContext.Provider value={true}>
-      <tfoot
-        // className={
-        // tableContext.fullBleed ? undefined : styles.tableHeaderRounding
-        // }
+      <Box
+        component="tfoot"
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}
-      </tfoot>
+      </Box>
     </TableFooterContext.Provider>
   );
 };

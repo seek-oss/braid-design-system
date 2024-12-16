@@ -4,7 +4,6 @@ import {
   Badge,
   Box,
   ButtonIcon,
-  Card,
   HiddenVisually,
   IconEdit,
   Notice,
@@ -22,7 +21,6 @@ import {
   Tiles,
 } from '../';
 import source from '@braid-design-system/source.macro';
-import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -129,53 +127,57 @@ const docs: ComponentDocs = {
             borderRadius="large"
             padding="small"
           >
-            <Stack space="small">
-              <Text tone="info" weight="strong">
-                Table
-              </Text>
-              <Box
-                boxShadow="borderPromote"
-                background="promoteLight"
-                borderRadius="large"
-                padding="small"
-              >
-                <Stack space="small">
-                  <Text tone="promote" weight="strong">
-                    TableHeader
-                  </Text>
+            <Stack space="medium">
+              <Stack space="xsmall">
+                <Text size="small" tone="info" weight="strong">
+                  Table
+                </Text>
+                <Box
+                  boxShadow="borderPromote"
+                  background="promoteLight"
+                  borderRadius="large"
+                  padding="small"
+                >
+                  <Stack space="xsmall">
+                    <Text size="small" tone="promote" weight="strong">
+                      TableHeader
+                    </Text>
 
-                  <Box
-                    boxShadow="borderPositive"
-                    background="positiveLight"
-                    borderRadius="large"
-                    padding="small"
-                  >
-                    <Stack space="small">
-                      <Text tone="positive" weight="strong">
-                        TableRow
-                      </Text>
-                      <Tiles space="small" columns={2}>
-                        <Box
-                          boxShadow="borderNeutral"
-                          background="neutralLight"
-                          borderRadius="large"
-                          padding="small"
-                        >
-                          <Text weight="strong">TableHeaderCell</Text>
-                        </Box>
-                      </Tiles>
-                    </Stack>
-                  </Box>
-                </Stack>
-              </Box>
+                    <Box
+                      boxShadow="borderPositive"
+                      background="positiveLight"
+                      borderRadius="large"
+                      padding="small"
+                    >
+                      <Stack space="xsmall">
+                        <Text size="small" tone="positive" weight="strong">
+                          TableRow
+                        </Text>
+                        <Tiles space="small" columns={2}>
+                          <Box
+                            boxShadow="borderNeutral"
+                            background="neutralLight"
+                            borderRadius="large"
+                            padding="small"
+                          >
+                            <Text size="small" weight="strong">
+                              TableHeaderCell
+                            </Text>
+                          </Box>
+                        </Tiles>
+                      </Stack>
+                    </Box>
+                  </Stack>
+                </Box>
+              </Stack>
               <Box
                 boxShadow="borderPromote"
                 background="promoteLight"
                 borderRadius="large"
                 padding="small"
               >
-                <Stack space="small">
-                  <Text tone="promote" weight="strong">
+                <Stack space="xsmall">
+                  <Text size="small" tone="promote" weight="strong">
                     TableBody (required)
                   </Text>
 
@@ -185,8 +187,8 @@ const docs: ComponentDocs = {
                     borderRadius="large"
                     padding="small"
                   >
-                    <Stack space="small">
-                      <Text tone="positive" weight="strong">
+                    <Stack space="xsmall">
+                      <Text size="small" tone="positive" weight="strong">
                         TableRow
                       </Text>
                       <Tiles space="small" columns={2}>
@@ -196,7 +198,7 @@ const docs: ComponentDocs = {
                           borderRadius="large"
                           padding="small"
                         >
-                          <Text tone="secondary" weight="strong">
+                          <Text size="small" tone="secondary" weight="strong">
                             TableCell
                           </Text>
                         </Box>
@@ -211,8 +213,8 @@ const docs: ComponentDocs = {
                 borderRadius="large"
                 padding="small"
               >
-                <Stack space="small">
-                  <Text tone="promote" weight="strong">
+                <Stack space="xsmall">
+                  <Text size="small" tone="promote" weight="strong">
                     TableFooter
                   </Text>
 
@@ -222,8 +224,8 @@ const docs: ComponentDocs = {
                     borderRadius="large"
                     padding="small"
                   >
-                    <Stack space="small">
-                      <Text tone="positive" weight="strong">
+                    <Stack space="xsmall">
+                      <Text size="small" tone="positive" weight="strong">
                         TableRow
                       </Text>
                       <Tiles space="small" columns={2}>
@@ -233,7 +235,7 @@ const docs: ComponentDocs = {
                           borderRadius="large"
                           padding="small"
                         >
-                          <Text tone="secondary" weight="strong">
+                          <Text size="small" tone="secondary" weight="strong">
                             TableCell
                           </Text>
                         </Box>
@@ -1185,76 +1187,6 @@ const docs: ComponentDocs = {
         return {
           code: codeDemo.replaceAll(': any', '').replaceAll(' key={row}', ''),
           value: visual,
-        };
-      },
-    },
-    {
-      label: 'Full bleed',
-      description: (
-        <Text>
-          No rounding or side borders, gutter spacing on outer left and right
-          {/* DOCUMENT MORE */}
-        </Text>
-      ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-            ])}
-            <Card>
-              <Stack space="large">
-                <Placeholder height={40} />
-
-                <Table label="Full bleed example" fullBleed>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHeadCell>
-                        <Text>Lorem</Text>
-                      </TableHeadCell>
-                      <TableHeadCell>
-                        <Text>Ipsum</Text>
-                      </TableHeadCell>
-                      <TableHeadCell>
-                        <Text>Dolor</Text>
-                      </TableHeadCell>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {getState('rows').map((row: any) => (
-                      <TableRow key={row}>
-                        <TableCell>
-                          <Text>{row.column1}</Text>
-                        </TableCell>
-                        <TableCell>
-                          <Text>{row.column2}</Text>
-                        </TableCell>
-                        <TableCell>
-                          <Text>{row.column3}</Text>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-
-                <Placeholder height={40} />
-              </Stack>
-            </Card>
-          </>,
-        );
-
-        return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
-          value,
         };
       },
     },

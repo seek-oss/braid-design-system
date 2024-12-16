@@ -3,7 +3,6 @@ import type { TableProps } from './Table';
 
 export const TableContext = createContext<
   | {
-      fullBleed: NonNullable<TableProps['fullBleed']>;
       alignY: NonNullable<TableProps['alignY']>;
     }
   | false

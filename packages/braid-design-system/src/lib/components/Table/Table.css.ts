@@ -31,26 +31,6 @@ export const table = style([
   }),
 ]);
 
-export const fullBleed = style({});
-globalStyle(
-  [
-    `${fullBleed} > tbody > tr > *:first-of-type`,
-    `${fullBleed} > thead > tr > *:first-of-type`,
-  ].join(', '),
-  {
-    paddingLeft: vars.space.gutter,
-  },
-);
-globalStyle(
-  [
-    `${fullBleed} > tbody > tr > *:last-of-type`,
-    `${fullBleed} > thead > tr > *:last-of-type`,
-  ].join(', '),
-  {
-    paddingRight: vars.space.gutter,
-  },
-);
-
 // TABLE CELLS
 export const alignYCenter = style({
   verticalAlign: 'middle',

@@ -1,5 +1,6 @@
 import assert from 'assert';
 import { useContext, type ReactNode } from 'react';
+import { Box } from '../Box/Box';
 import { TableBodyContext, TableContext } from './TableContext';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -8,8 +9,8 @@ import buildDataAttributes, {
 interface TableBodyProps {
   children: ReactNode;
   data?: DataAttributeMap;
-  // sticky?: boolean;
 }
+
 export const TableBody = ({ children, data, ...restProps }: TableBodyProps) => {
   const tableContext = useContext(TableContext);
 
@@ -17,9 +18,12 @@ export const TableBody = ({ children, data, ...restProps }: TableBodyProps) => {
 
   return (
     <TableBodyContext.Provider value={true}>
-      <tbody {...buildDataAttributes({ data, validateRestProps: restProps })}>
+      <Box
+        component="tbody"
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
+      >
         {children}
-      </tbody>
+      </Box>
     </TableBodyContext.Provider>
   );
 };
