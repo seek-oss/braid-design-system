@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 33.2.2
+
+### Patch Changes
+
+- **MenuRenderer, OverflowMenu:** Fixes a bug where menus could be obscured when rendered inside a `Dialog` or `Drawer` component. ([#1665](https://github.com/seek-oss/braid-design-system/pull/1665))
+
+## 33.2.1
+
+### Patch Changes
+
+- **MenuRenderer**: Ensure menu is visible, even when its trigger element is inside a container with overflow hidden. ([#1658](https://github.com/seek-oss/braid-design-system/pull/1658))
+
+- **MenuRenderer, OverflowMenu:** Provide improved scroll affordance ([#1661](https://github.com/seek-oss/braid-design-system/pull/1661))
+
+  Introduce scroll affordance to menus, providing a visual cue that there are more items overflowing vertically.
+
+- **OverflowMenu**: Simplify internal layout. ([#1658](https://github.com/seek-oss/braid-design-system/pull/1658))
+
+  Refactor the internal layout of `OverflowMenu` to improve the alignment of the menu with the button.
+
 ## 33.2.0
 
 ### Minor Changes

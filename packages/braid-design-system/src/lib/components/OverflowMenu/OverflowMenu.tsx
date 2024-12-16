@@ -20,13 +20,13 @@ export const OverflowMenu = ({
   id,
   ...menuProps
 }: OverflowMenuProps) => (
-  <MenuRenderer
-    trigger={(triggerProps) => (
-      <Box
-        display="flex"
-        justifyContent="flexEnd"
-        className={styles.triggerOffset}
-      >
+  <Box
+    className={styles.wrapperPositioning}
+    display="flex"
+    justifyContent="flexEnd"
+  >
+    <MenuRenderer
+      trigger={(triggerProps) => (
         <ButtonIcon
           // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
           // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
@@ -36,12 +36,12 @@ export const OverflowMenu = ({
           label={label}
           {...triggerProps}
         />
-      </Box>
-    )}
-    align="right"
-    offsetSpace="small"
-    {...menuProps}
-  >
-    {children}
-  </MenuRenderer>
+      )}
+      align="right"
+      offsetSpace="small"
+      {...menuProps}
+    >
+      {children}
+    </MenuRenderer>
+  </Box>
 );
