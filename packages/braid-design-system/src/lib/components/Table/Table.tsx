@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { TableContext } from './TableContext';
-import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
+import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -27,6 +27,7 @@ export const Table = ({
         component="table"
         width="full"
         background="surface"
+        borderRadius="large"
         overflow="hidden"
         aria-label={label}
         className={styles.table}

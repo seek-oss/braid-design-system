@@ -7874,7 +7874,6 @@ exports[`Table 1`] = `
         | "top"
     children: ReactNode
     data?: DataAttributeMap
-    fullBleed?: boolean
     label: string
 },
 }
