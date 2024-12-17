@@ -21,6 +21,46 @@ import {
   Tiles,
 } from '../';
 import source from '@braid-design-system/source.macro';
+import type { StackProps } from '../Stack/Stack';
+import { palette } from '../../color/palette';
+import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
+
+const opacityForDepth = {
+  table: 1,
+  section: 0.35,
+  row: 0.5,
+  cell: 0.7,
+} as const;
+
+const TableSection = ({
+  name,
+  type,
+  children,
+}: {
+  name: string;
+  type: keyof typeof opacityForDepth;
+  children?: StackProps['children'];
+}) => (
+  <Box background="customDark" padding="small" position="relative">
+    <Box
+      position="absolute"
+      inset={0}
+      borderRadius={type === 'table' ? 'large' : 'standard'}
+      style={{
+        background: palette.grey[type === 'table' ? 800 : 500],
+        opacity: opacityForDepth[type],
+      }}
+    />
+    <Box position="relative">
+      <Stack space="small">
+        <Text size="small" weight="strong">
+          {name}
+        </Text>
+        {children}
+      </Stack>
+    </Box>
+  </Box>
+);
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -117,135 +157,44 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
+      background: false,
       code: false,
       playroom: false,
       Example: () =>
         source(
-          <Box
-            boxShadow="borderInfo"
-            background="infoLight"
-            borderRadius="large"
-            padding="small"
-          >
-            <Stack space="medium">
-              <Stack space="xsmall">
-                <Text size="small" tone="info" weight="strong">
-                  Table
-                </Text>
-                <Box
-                  boxShadow="borderPromote"
-                  background="promoteLight"
-                  borderRadius="large"
-                  padding="small"
-                >
-                  <Stack space="xsmall">
-                    <Text size="small" tone="promote" weight="strong">
-                      TableHeader
-                    </Text>
-
-                    <Box
-                      boxShadow="borderPositive"
-                      background="positiveLight"
-                      borderRadius="large"
-                      padding="small"
-                    >
-                      <Stack space="xsmall">
-                        <Text size="small" tone="positive" weight="strong">
-                          TableRow
-                        </Text>
-                        <Tiles space="small" columns={2}>
-                          <Box
-                            boxShadow="borderNeutral"
-                            background="neutralLight"
-                            borderRadius="large"
-                            padding="small"
-                          >
-                            <Text size="small" weight="strong">
-                              TableHeaderCell
-                            </Text>
-                          </Box>
-                        </Tiles>
-                      </Stack>
-                    </Box>
-                  </Stack>
-                </Box>
-              </Stack>
-              <Box
-                boxShadow="borderPromote"
-                background="promoteLight"
-                borderRadius="large"
-                padding="small"
-              >
-                <Stack space="xsmall">
-                  <Text size="small" tone="promote" weight="strong">
-                    TableBody (required)
-                  </Text>
-
-                  <Box
-                    boxShadow="borderPositive"
-                    background="positiveLight"
-                    borderRadius="large"
-                    padding="small"
-                  >
-                    <Stack space="xsmall">
-                      <Text size="small" tone="positive" weight="strong">
-                        TableRow
-                      </Text>
-                      <Tiles space="small" columns={2}>
-                        <Box
-                          boxShadow="borderField"
-                          background="surface"
-                          borderRadius="large"
-                          padding="small"
-                        >
-                          <Text size="small" tone="secondary" weight="strong">
-                            TableCell
-                          </Text>
-                        </Box>
-                      </Tiles>
-                    </Stack>
-                  </Box>
-                </Stack>
-              </Box>
-              <Box
-                boxShadow="borderPromote"
-                background="promoteLight"
-                borderRadius="large"
-                padding="small"
-              >
-                <Stack space="xsmall">
-                  <Text size="small" tone="promote" weight="strong">
-                    TableFooter
-                  </Text>
-
-                  <Box
-                    boxShadow="borderPositive"
-                    background="positiveLight"
-                    borderRadius="large"
-                    padding="small"
-                  >
-                    <Stack space="xsmall">
-                      <Text size="small" tone="positive" weight="strong">
-                        TableRow
-                      </Text>
-                      <Tiles space="small" columns={2}>
-                        <Box
-                          boxShadow="borderField"
-                          background="surface"
-                          borderRadius="large"
-                          padding="small"
-                        >
-                          <Text size="small" tone="secondary" weight="strong">
-                            TableCell
-                          </Text>
-                        </Box>
-                      </Tiles>
-                    </Stack>
-                  </Box>
-                </Stack>
-              </Box>
-            </Stack>
-          </Box>,
+          <ScrollContainer>
+            <Box style={{ minWidth: 600 }}>
+              <TableSection name="Table" type="table">
+                <TableSection name="TableHeader" type="section">
+                  <TableSection name="TableRow" type="row">
+                    <Tiles space="small" columns={3}>
+                      <TableSection name="TableHeaderCell" type="cell" />
+                      <TableSection name="TableHeaderCell" type="cell" />
+                      <TableSection name="TableHeaderCell" type="cell" />
+                    </Tiles>
+                  </TableSection>
+                </TableSection>
+                <TableSection name="TableBody (required)" type="section">
+                  <TableSection name="TableRow" type="row">
+                    <Tiles space="small" columns={3}>
+                      <TableSection name="TableCell" type="cell" />
+                      <TableSection name="TableCell" type="cell" />
+                      <TableSection name="TableCell" type="cell" />
+                    </Tiles>
+                  </TableSection>
+                </TableSection>
+                <TableSection name="TableFooter" type="section">
+                  <TableSection name="TableRow" type="row">
+                    <Tiles space="small" columns={3}>
+                      <TableSection name="TableCell" type="cell" />
+                      <TableSection name="TableCell" type="cell" />
+                      <TableSection name="TableCell" type="cell" />
+                    </Tiles>
+                  </TableSection>
+                </TableSection>
+              </TableSection>
+            </Box>
+          </ScrollContainer>,
         ),
     },
     {
@@ -1179,6 +1128,81 @@ const docs: ComponentDocs = {
                     </TableCell>
                   </TableRow>
                 ))}
+              </TableBody>
+            </Table>
+          </>,
+        );
+
+        return {
+          code: codeDemo.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          value: visual,
+        };
+      },
+    },
+    {
+      label: 'Column spanning',
+      description: (
+        <Text>
+          Both <Strong>TableCell</Strong> and <Strong>TableHeadCell</Strong> can
+          span across multiple columns by providing the number of columns via
+          the <Strong>colspan</Strong> prop.
+        </Text>
+      ),
+      Example: ({ setDefaultState, getState }) => {
+        const { code: codeDemo, value: visual } = source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1: 'Sit',
+                column2: 'Amet',
+                column3: 'Consectetur',
+              },
+              {
+                column1: 'Adipiscing',
+                column2: 'Elit',
+                column3: 'Praesent',
+              },
+            ])}
+
+            <Table label="Column spanning example">
+              <TableHeader>
+                <TableRow>
+                  <TableHeadCell width="30%">
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell width="30%">
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell width="30%">
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row}>
+                    <TableCell>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                  </TableRow>
+                ))}
+                <TableRow>
+                  <TableCell colspan={2} wrap>
+                    <Text>
+                      Culpa labore minim consectetur ut officia ea ea cupidatat
+                      excepteur.
+                    </Text>
+                  </TableCell>
+                  <TableCell>
+                    <Text>Tempor</Text>
+                  </TableCell>
+                </TableRow>
               </TableBody>
             </Table>
           </>,
