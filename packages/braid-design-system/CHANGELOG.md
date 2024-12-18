@@ -1,5 +1,22 @@
 # braid-design-system
 
+## 33.2.3
+
+### Patch Changes
+
+- **Tiles**: Fixes a bug where nested `Tiles` components could calculate their columns incorrectly. ([#1667](https://github.com/seek-oss/braid-design-system/pull/1667))
+
+  Previously, when using a `Tiles` component inside another `Tiles` component, the responsive column calculation could be incorrect in certain scenarios.
+  This change ensures nested `Tiles` elements always calculate their columns correctly.
+
+- **Button, ButtonLink:** Ensure inner label is full width ([#1671](https://github.com/seek-oss/braid-design-system/pull/1671))
+
+  Ensuring the inner label element is full width to maintain backwards compatibility with previous block layout.
+
+- **Columns:** Ensure component occupies available height ([#1672](https://github.com/seek-oss/braid-design-system/pull/1672))
+
+  Enables `Columns` content to occupy the available height of the parent container.
+
 ## 33.2.2
 
 ### Patch Changes
