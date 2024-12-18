@@ -3,7 +3,6 @@ import { vars } from '../../themes/vars.css';
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
-// TABLE
 const borderColor = createVar();
 const sectionBorderWidth = createVar();
 export const table = style([
@@ -30,7 +29,24 @@ export const table = style([
   }),
 ]);
 
-// TABLE CELLS
+export const tableSection = style({});
+
+export const row = style({});
+
+export const cell = style({});
+// Apply finer border between rows within a table section
+globalStyle(`${row}:not(:last-child) > ${cell}`, {
+  borderBottom: `1px solid ${borderColor}`,
+});
+
+// Apply heavier border between table sections
+globalStyle(
+  `${tableSection}:not(:first-child) > ${row}:first-child > ${cell}`,
+  {
+    borderTop: `${sectionBorderWidth} solid ${borderColor}`,
+  },
+);
+
 export const alignYCenter = style({
   verticalAlign: 'middle',
 });
@@ -52,24 +68,6 @@ export const minWidth = style({
 export const maxWidthVar = createVar();
 export const maxWidth = style({
   maxWidth: maxWidthVar,
-});
-
-export const headerCellBorder = style({});
-// Apply heavier section border between header and body sections
-globalStyle(`${table} > thead > tr:last-child > ${headerCellBorder}`, {
-  borderBottom: `${sectionBorderWidth} solid ${borderColor}`,
-});
-
-export const bodyCellBorder = style({});
-// Apply finer border on bottom of all cells except last row of a table section
-globalStyle(`${table} > * > tr:not(:last-child) > *`, {
-  borderBottom: `1px solid ${borderColor}`,
-});
-
-export const footerCellBorder = style({});
-// Apply heavier section border between footer and body sections
-globalStyle(`${table} > tfoot > tr:first-child > ${footerCellBorder}`, {
-  borderTop: `${sectionBorderWidth} solid ${borderColor}`,
 });
 
 export const showOnTablet = style(

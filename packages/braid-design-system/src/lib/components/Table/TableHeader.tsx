@@ -6,6 +6,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+import * as styles from './Table.css';
+
 interface TableHeaderProps {
   children: ReactNode;
   data?: DataAttributeMap;
@@ -24,6 +26,7 @@ export const TableHeader = ({
     <TableHeaderContext.Provider value={true}>
       <Box
         component="thead"
+        className={styles.tableSection}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}

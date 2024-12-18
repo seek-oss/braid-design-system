@@ -99,14 +99,12 @@ const Cell = ({
         wide: hideOnWide ? 'none' : undefined,
       }}
       className={{
+        [styles.cell]: true,
         [styles.nowrap]: !wrap,
         [styles.softWidth]: softWidth,
         [styles.minWidth]: typeof minWidth !== 'undefined',
         [styles.maxWidth]: hasMaxWidth,
         [styles.alignYCenter]: tableContext.alignY === 'center',
-        [styles.bodyCellBorder]: !isHeaderCell,
-        [styles.footerCellBorder]: isFooterCell,
-        [styles.headerCellBorder]: isHeaderCell,
         [styles.showOnTablet]: !hideOnTablet && hideOnMobile,
         [styles.showOnDesktop]:
           !hideOnDesktop && (hideOnTablet || hideOnMobile),

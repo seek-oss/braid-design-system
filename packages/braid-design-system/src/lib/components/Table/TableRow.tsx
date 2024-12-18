@@ -12,6 +12,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+import * as styles from './Table.css';
+
 export interface TableRowProps {
   children: ReactNode;
   data?: DataAttributeMap;
@@ -40,6 +42,7 @@ export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
     <TableRowContext.Provider value={true}>
       <Box
         component="tr"
+        className={styles.row}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}

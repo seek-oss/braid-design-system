@@ -6,6 +6,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+import * as styles from './Table.css';
+
 interface TableBodyProps {
   children: ReactNode;
   data?: DataAttributeMap;
@@ -20,6 +22,7 @@ export const TableBody = ({ children, data, ...restProps }: TableBodyProps) => {
     <TableBodyContext.Provider value={true}>
       <Box
         component="tbody"
+        className={styles.tableSection}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}
