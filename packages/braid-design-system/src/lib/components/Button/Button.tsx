@@ -361,6 +361,7 @@ export const ButtonText = ({
       position="relative"
       display="flex"
       justifyContent="center"
+      flexGrow={1}
       flexWrap="wrap"
       overflow="hidden"
       pointerEvents="none"
