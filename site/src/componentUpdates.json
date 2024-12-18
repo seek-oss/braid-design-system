@@ -4619,5 +4619,29 @@
         "summary": "**MenuRenderer, OverflowMenu:** Fixes a bug where menus could be obscured when rendered inside a `Dialog` or `Drawer` component."
       }
     ]
+  },
+  {
+    "version": "33.2.3",
+    "updates": [
+      {
+        "updated": [
+          "Tiles"
+        ],
+        "summary": "**Tiles**: Fixes a bug where nested `Tiles` components could calculate their columns incorrectly.\n\nPreviously, when using a `Tiles` component inside another `Tiles` component, the responsive column calculation could be incorrect in certain scenarios. \nThis change ensures nested `Tiles` elements always calculate their columns correctly."
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Ensure inner label is full width\n\nEnsuring the inner label element is full width to maintain backwards compatibility with previous block layout."
+      },
+      {
+        "updated": [
+          "Columns"
+        ],
+        "summary": "**Columns:** Ensure component occupies available height\n\nEnables `Columns` content to occupy the available height of the parent container."
+      }
+    ]
   }
 ]
