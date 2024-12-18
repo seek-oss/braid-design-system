@@ -410,7 +410,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Table footers',
+      label: 'Column footers',
       description: (
         <Text>
           A <Strong>TableFooter</Strong> can be provided, containing a{' '}
@@ -546,7 +546,7 @@ const docs: ComponentDocs = {
                 column3: 'Viverra',
               },
             ])}
-            <Table label="Table column headings example">
+            <Table label="Table column widths example">
               <TableHeader>
                 <TableRow>
                   <TableHeadCell width="content">
@@ -648,7 +648,7 @@ const docs: ComponentDocs = {
                 column3: 'Viverra',
               },
             ])}
-            <Table label="Table column headings example">
+            <Table label="Table column limits example">
               <TableHeader>
                 <TableRow>
                   <TableHeadCell width="content">
@@ -936,7 +936,7 @@ const docs: ComponentDocs = {
                 column3: 'Praesent',
               },
             ])}
-            <Table label="Column visibility example">
+            <Table label="Column wrapping example">
               <TableHeader>
                 <TableRow>
                   <TableHeadCell>

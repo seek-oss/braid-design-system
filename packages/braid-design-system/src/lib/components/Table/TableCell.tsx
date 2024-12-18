@@ -37,6 +37,22 @@ interface BaseCellProps {
   header?: boolean;
   scope?: 'col' | 'row';
 }
+
+const resolveSoftWidth = (width: CellProps['width']) => {
+  // Small as possible, receive least amount of available space
+  if (width === 'content') {
+    return '1%';
+  }
+  // Yield to the CSS Table Layout algorithm to balance the column
+  // width based on longest cell content, distributing excess
+  // available space.
+  if (width === 'auto') {
+    return undefined;
+  }
+
+  return width;
+};
+
 const Cell = ({
   header: isHeaderCell,
   children,
@@ -65,7 +81,7 @@ const Cell = ({
 
   const isFooterCell = tableFooterContext;
 
-  const softWidth = width === 'content' ? '1%' : width;
+  const softWidth = resolveSoftWidth(width);
   const hasMaxWidth = typeof maxWidth !== 'undefined';
 
   return (
@@ -84,7 +100,7 @@ const Cell = ({
       }}
       className={{
         [styles.nowrap]: !wrap,
-        [styles.softWidth]: width && width !== 'auto',
+        [styles.softWidth]: softWidth,
         [styles.minWidth]: typeof minWidth !== 'undefined',
         [styles.maxWidth]: hasMaxWidth,
         [styles.alignYCenter]: tableContext.alignY === 'center',
@@ -98,7 +114,7 @@ const Cell = ({
           !hideOnWide && (hideOnDesktop || hideOnTablet || hideOnMobile),
       }}
       style={assignInlineVars({
-        [styles.softWidthVar]: width !== 'auto' ? softWidth : undefined,
+        [styles.softWidthVar]: softWidth,
         [styles.minWidthVar]:
           typeof minWidth !== 'undefined' ? `${minWidth}px` : undefined,
         [styles.maxWidthVar]:
