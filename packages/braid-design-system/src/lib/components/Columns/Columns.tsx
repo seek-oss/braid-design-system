@@ -65,6 +65,7 @@ export const Columns = ({
     <Box
       component={component}
       {...collapsibleAlignmentProps}
+      height="full"
       className={negativeMargin('left', {
         mobile: collapseMobile ? 'none' : mobileSpace,
         tablet: collapseTablet ? 'none' : tabletSpace,
