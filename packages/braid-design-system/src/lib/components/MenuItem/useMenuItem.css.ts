@@ -7,3 +7,7 @@ export const menuItem = style({
     },
   },
 });
+
+export const menuItemLeftSlot = style({
+  height: '0px',
+});
