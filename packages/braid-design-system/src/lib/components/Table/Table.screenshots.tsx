@@ -1,11 +1,8 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import {
-  Badge,
   Box,
-  ButtonIcon,
   HiddenVisually,
-  IconEdit,
   Stack,
   Strong,
   Table,
@@ -17,6 +14,7 @@ import {
   TableRow,
   Text,
 } from '../';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const data = [
   {
@@ -496,7 +494,7 @@ export const screenshots: ComponentScreenshot = {
             {data.map((row) => (
               <TableRow key={row.column1}>
                 <TableCell width="content">
-                  <Badge bleedY>Badge</Badge>
+                  <Placeholder width={80} height={10} />
                 </TableCell>
                 <TableCell width="30%">
                   <Text>{row.column1}</Text>
@@ -508,13 +506,7 @@ export const screenshots: ComponentScreenshot = {
                   <Text>{row.column3}</Text>
                 </TableCell>
                 <TableCell width="content" align="right">
-                  <ButtonIcon
-                    icon={<IconEdit />}
-                    label="Edit"
-                    size="small"
-                    variant="transparent"
-                    id={`edit-${row.column1}`}
-                  />
+                  <Placeholder width="100%" height={10} />
                 </TableCell>
               </TableRow>
             ))}
@@ -528,9 +520,6 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell width="content">
-                <Text>Content</Text>
-              </TableHeadCell>
               <TableHeadCell maxWidth={200}>
                 <Text>MaxWidth 200</Text>
               </TableHeadCell>
@@ -548,9 +537,6 @@ export const screenshots: ComponentScreenshot = {
           <TableBody>
             {data.map((row) => (
               <TableRow key={row.column1}>
-                <TableCell width="content">
-                  <Badge bleedY>Badge</Badge>
-                </TableCell>
                 <TableCell maxWidth={200}>
                   <Text>{row.longText}</Text>
                 </TableCell>
@@ -561,13 +547,7 @@ export const screenshots: ComponentScreenshot = {
                   <Text>{row.longText}</Text>
                 </TableCell>
                 <TableCell width="content" align="right">
-                  <ButtonIcon
-                    icon={<IconEdit />}
-                    label="Edit"
-                    size="small"
-                    variant="transparent"
-                    id={`edit-${row.column1}`}
-                  />
+                  <Text>Content</Text>
                 </TableCell>
               </TableRow>
             ))}
@@ -582,9 +562,6 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell width="content">
-                <Text>Content</Text>
-              </TableHeadCell>
               <TableHeadCell maxWidth={200}>
                 <Text>MaxWidth 200</Text>
               </TableHeadCell>
@@ -602,9 +579,6 @@ export const screenshots: ComponentScreenshot = {
           <TableBody>
             {data.map((row) => (
               <TableRow key={row.column1}>
-                <TableCell width="content">
-                  <Badge bleedY>Badge</Badge>
-                </TableCell>
                 <TableCell maxWidth={200}>
                   <Text>{row.longText}</Text>
                 </TableCell>
@@ -615,13 +589,7 @@ export const screenshots: ComponentScreenshot = {
                   <Text>{row.column3}</Text>
                 </TableCell>
                 <TableCell width="content" align="right">
-                  <ButtonIcon
-                    icon={<IconEdit />}
-                    label="Edit"
-                    size="small"
-                    variant="transparent"
-                    id={`edit-${row.column1}`}
-                  />
+                  <Placeholder width="100%" height={10} />
                 </TableCell>
               </TableRow>
             ))}
@@ -656,7 +624,7 @@ export const screenshots: ComponentScreenshot = {
             {data.map((row) => (
               <TableRow key={row.column1}>
                 <TableCell width="content" minWidth={150}>
-                  <Badge bleedY>Badge</Badge>
+                  <Placeholder width={80} height={10} />
                 </TableCell>
                 <TableCell>
                   <Text>{row.longText}</Text>
@@ -668,13 +636,7 @@ export const screenshots: ComponentScreenshot = {
                   <Text>{row.column3}</Text>
                 </TableCell>
                 <TableCell width="content" align="right">
-                  <ButtonIcon
-                    icon={<IconEdit />}
-                    label="Edit"
-                    size="small"
-                    variant="transparent"
-                    id={`edit-${row.column1}`}
-                  />
+                  <Placeholder width="100%" height={10} />
                 </TableCell>
               </TableRow>
             ))}
@@ -683,7 +645,7 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Column spanning',
+      label: 'Column spanning (auto widths)',
       Example: () => (
         <Table label="Label">
           <TableBody>
@@ -696,6 +658,40 @@ export const screenshots: ComponentScreenshot = {
                   <Text>{row.column2}</Text>
                 </TableCell>
                 <TableCell>
+                  <Text>{row.column3}</Text>
+                </TableCell>
+              </TableRow>
+            ))}
+            <TableRow>
+              <TableCell colspan={2} wrap>
+                <Text>
+                  Culpa labore minim consectetur ut officia ea ea cupidatat
+                  excepteur. Incididunt eu anim eu pariatur dolore dolore fugiat
+                  qui ipsum tempor ex laborum voluptate sint.
+                </Text>
+              </TableCell>
+              <TableCell>
+                <Text>Tempor</Text>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      ),
+    },
+    {
+      label: 'Column spanning (soft widths)',
+      Example: () => (
+        <Table label="Label">
+          <TableBody>
+            {data.map((row) => (
+              <TableRow key={row.column1}>
+                <TableCell width="30%">
+                  <Text>{row.column1}</Text>
+                </TableCell>
+                <TableCell width="30%">
+                  <Text>{row.column2}</Text>
+                </TableCell>
+                <TableCell width="30%">
                   <Text>{row.column3}</Text>
                 </TableCell>
               </TableRow>
