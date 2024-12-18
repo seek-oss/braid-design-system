@@ -26,6 +26,7 @@ import buildDataAttributes, {
 import * as styles from './MenuRenderer.css';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import type { MenuSize } from './MenuRendererTypes';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -51,6 +52,7 @@ export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
   align?: 'left' | 'right';
   offsetSpace?: ResponsiveSpace;
+  size?: MenuSize;
   width?: keyof typeof styles.width | 'content';
   placement?: 'top' | 'bottom';
   onOpen?: () => void;
@@ -118,6 +120,7 @@ export const MenuRenderer = ({
   onOpen,
   onClose,
   trigger,
+  size = 'standard',
   width = 'content',
   align = 'left',
   offsetSpace = 'none',
@@ -344,6 +347,7 @@ export const MenuRenderer = ({
           <BraidPortal>
             <Menu
               align={align}
+              size={size}
               width={width}
               placement={placement}
               offsetSpace={offsetSpace}
@@ -385,6 +389,7 @@ const borderRadius = 'large';
 interface MenuProps {
   offsetSpace: NonNullable<MenuRendererProps['offsetSpace']>;
   align: NonNullable<MenuRendererProps['align']>;
+  size: NonNullable<MenuRendererProps['size']>;
   width: NonNullable<MenuRendererProps['width']>;
   placement: NonNullable<MenuRendererProps['placement']>;
   reserveIconSpace: NonNullable<MenuRendererProps['reserveIconSpace']>;
@@ -399,6 +404,7 @@ interface MenuProps {
 export function Menu({
   offsetSpace,
   align,
+  size,
   width,
   placement,
   children,
@@ -419,7 +425,7 @@ export function Menu({
     });
 
   return (
-    <MenuRendererContext.Provider value={{ reserveIconSpace }}>
+    <MenuRendererContext.Provider value={{ size, reserveIconSpace }}>
       <Box
         role="menu"
         position={position}
@@ -427,7 +433,6 @@ export function Menu({
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
-        paddingY="xxsmall"
         marginTop={placement === 'bottom' ? offsetSpace : undefined}
         marginBottom={placement === 'top' ? offsetSpace : undefined}
         transition="fast"
@@ -439,8 +444,11 @@ export function Menu({
           width !== 'content' && styles.width[width],
         ]}
       >
-        <ScrollContainer direction="vertical" fadeSize="small">
-          <Box className={styles.menuHeightLimit}>
+        <ScrollContainer direction="vertical" fadeSize="medium">
+          <Box
+            paddingY={styles.menuYPadding}
+            className={styles.menuHeightLimit}
+          >
             {Children.map(children, (item, i) => {
               if (isDivider(item)) {
                 dividerCount++;
