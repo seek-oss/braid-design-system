@@ -9,7 +9,6 @@ const sectionBorderWidth = createVar();
 export const table = style([
   {
     vars: {
-      // [borderWidth]: '1px',
       [sectionBorderWidth]: vars.borderWidth.standard,
     },
     borderCollapse: 'separate',
@@ -56,12 +55,13 @@ export const maxWidth = style({
 });
 
 export const headerCellBorder = style({});
+// Apply heavier section border between header and body sections
 globalStyle(`${table} > thead > tr:last-child > ${headerCellBorder}`, {
   borderBottom: `${sectionBorderWidth} solid ${borderColor}`,
 });
 
 export const bodyCellBorder = style({});
-// Apply border on bottom of all cells except last row of a table section
+// Apply finer border on bottom of all cells except last row of a table section
 globalStyle(`${table} > * > tr:not(:last-child) > *`, {
   borderBottom: `1px solid ${borderColor}`,
 });

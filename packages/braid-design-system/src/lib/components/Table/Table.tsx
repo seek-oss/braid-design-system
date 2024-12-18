@@ -9,8 +9,8 @@ import * as styles from './Table.css';
 
 export interface TableProps {
   label: string;
-  alignY?: 'top' | 'center';
   children: ReactNode;
+  alignY?: 'top' | 'center';
   data?: DataAttributeMap;
 }
 

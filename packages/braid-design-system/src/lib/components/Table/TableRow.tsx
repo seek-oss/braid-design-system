@@ -1,5 +1,6 @@
 import assert from 'assert';
 import { useContext, type ReactNode } from 'react';
+import { Box } from '../Box/Box';
 import {
   TableRowContext,
   TableHeaderContext,
@@ -37,9 +38,12 @@ export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
 
   return (
     <TableRowContext.Provider value={true}>
-      <tr {...buildDataAttributes({ data, validateRestProps: restProps })}>
+      <Box
+        component="tr"
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
+      >
         {children}
-      </tr>
+      </Box>
     </TableRowContext.Provider>
   );
 };
