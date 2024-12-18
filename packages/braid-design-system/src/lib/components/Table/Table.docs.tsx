@@ -66,11 +66,11 @@ const docs: ComponentDocs = {
   category: 'Layout',
   subComponents: [
     'TableHeader',
-    'TableFooter',
-    'TableBody',
     'TableRow',
     'TableHeadCell',
+    'TableBody',
     'TableCell',
+    'TableFooter',
   ],
   Example: () =>
     source(
