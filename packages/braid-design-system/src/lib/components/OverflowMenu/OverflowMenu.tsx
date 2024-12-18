@@ -9,7 +9,10 @@ import { Box } from '../Box/Box';
 import * as styles from './OverflowMenu.css';
 
 export interface OverflowMenuProps
-  extends Omit<MenuRendererProps, 'trigger' | 'align' | 'offsetSpace'> {
+  extends Omit<
+    MenuRendererProps,
+    'size' | 'trigger' | 'align' | 'offsetSpace'
+  > {
   label: string;
   id?: string;
 }
