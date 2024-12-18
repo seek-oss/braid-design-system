@@ -43,7 +43,7 @@ const data = [
 ];
 
 export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
+  screenshotWidths: [320, 768, 992, 1200],
   examples: [
     {
       label: 'Basic (Header & Body)',
