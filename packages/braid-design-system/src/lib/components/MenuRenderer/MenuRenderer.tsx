@@ -27,6 +27,8 @@ import * as styles from './MenuRenderer.css';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import type { MenuSize } from './MenuRendererTypes';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { vars } from '../../themes/vars.css';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -417,12 +419,16 @@ export function Menu({
 }: MenuProps) {
   let dividerCount = 0;
 
-  const inlineVars =
-    triggerPosition &&
-    assignInlineVars({
+  const menuYPadding =
+    useBraidTheme().legacy && size === 'small' ? 'xsmall' : 'xxsmall';
+
+  const inlineVars = assignInlineVars({
+    ...(triggerPosition && {
       [styles.triggerVars[placement]]: `${triggerPosition[placement]}px`,
       [styles.triggerVars[align]]: `${triggerPosition[align]}px`,
-    });
+    }),
+    [styles.menuYPadding]: vars.space[menuYPadding],
+  });
 
   return (
     <MenuRendererContext.Provider value={{ size, reserveIconSpace }}>
@@ -444,11 +450,11 @@ export function Menu({
           width !== 'content' && styles.width[width],
         ]}
       >
-        <ScrollContainer direction="vertical" fadeSize="medium">
-          <Box
-            paddingY={styles.menuYPadding}
-            className={styles.menuHeightLimit}
-          >
+        <ScrollContainer
+          direction="vertical"
+          fadeSize={size === 'standard' ? 'medium' : 'small'}
+        >
+          <Box paddingY={menuYPadding}>
             {Children.map(children, (item, i) => {
               if (isDivider(item)) {
                 dividerCount++;
