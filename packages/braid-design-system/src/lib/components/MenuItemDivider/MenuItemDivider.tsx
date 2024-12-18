@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { Box } from '../Box/Box';
 import { Divider } from '../Divider/Divider';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
-import { menuYPadding } from '../MenuRenderer/MenuRenderer.css';
 
 export const MenuItemDivider = () => {
   assert(
@@ -12,7 +11,7 @@ export const MenuItemDivider = () => {
   );
 
   return (
-    <Box paddingY={menuYPadding}>
+    <Box paddingY="xxsmall">
       <Divider />
     </Box>
   );
