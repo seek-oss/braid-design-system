@@ -518,5 +518,34 @@ export const screenshots: ComponentScreenshot = {
         </Stack>
       ),
     },
+    {
+      label:
+        'Ensure inner label element is full width (red dots should touch horizontal edges)',
+      Example: () => (
+        <Button>
+          <Box position="absolute" left={0}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              height={24}
+              width={24}
+            >
+              <circle cx="12" cy="12" r="10" fill="red" />
+            </svg>
+          </Box>
+          <Box position="absolute" right={0}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              height={24}
+              width={24}
+            >
+              <circle cx="12" cy="12" r="10" fill="red" />
+            </svg>
+          </Box>
+          Label
+        </Button>
+      ),
+    },
   ],
 };
