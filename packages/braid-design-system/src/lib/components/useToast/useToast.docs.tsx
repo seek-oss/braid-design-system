@@ -14,7 +14,11 @@ import {
 } from '..';
 import { useThemeSettings } from 'site/App/ThemeSetting';
 import Code from 'site/App/Code/Code';
-import Toast, { toastDuration } from './Toast';
+import Toast, {
+  actionableToastDuration,
+  minimumToastDuration,
+  toastCharactersPerSecond,
+} from './Toast';
 import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
@@ -428,9 +432,21 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            {`A toast message can be dismissed via the close button or automatically after ${
-              toastDuration / 1000
-            } seconds.`}
+            A toast message can be dismissed via the close button or
+            automatically after a timeout period.
+          </Text>
+          <Text>
+            Toasts will be displayed for a minimum of{' '}
+            {minimumToastDuration / 1000} seconds, plus an additional second for
+            every {toastCharactersPerSecond} characters in the message and
+            description. This timing is based on average reading speeds to
+            ensure users have enough time to read the message while minimising
+            the time the toast obscures content.
+          </Text>
+          <Text>
+            Toasts with actions will always display for{' '}
+            {actionableToastDuration / 1000} seconds, providing users additional
+            time to interact with the toast.
           </Text>
 
           <Text tone="promote" id="translations">
