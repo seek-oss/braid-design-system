@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Badge, Box, MenuItemCheckbox } from '../';
+import { Badge, Box, Inline, MenuItemCheckbox } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
 
 const defaultProps = {
@@ -23,138 +23,274 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Default',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps}>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Checkbox
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Checkbox
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
+        <Inline space="medium">
+          <Box display="flex">
+            <Menu {...defaultProps}>
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+          <Box display="flex">
+            <Menu {...defaultProps} size="small">
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+        </Inline>
       ),
     },
     {
       label: 'Highlighted',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps} highlightIndex={0}>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Checkbox
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Checkbox
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
+        <Inline space="medium">
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={0}>
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={0} size="small">
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+        </Inline>
       ),
     },
     {
       label: 'With badge',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps} highlightIndex={1}>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Checkbox
-            </MenuItemCheckbox>
-            <MenuItemCheckbox
-              checked={true}
-              onChange={() => {}}
-              badge={<Badge weight="strong">Badge</Badge>}
-            >
-              Checkbox
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
+        <Inline space="medium">
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={1}>
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Checkbox
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={1} size="small">
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Checkbox
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Checkbox
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+        </Inline>
       ),
     },
     {
       label: 'Overflow tests in content width menu (no truncation)',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps} highlightIndex={1} width="content">
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox
-              checked={true}
-              onChange={() => {}}
-              badge={<Badge weight="strong">Badge</Badge>}
+        <Inline space="medium">
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={1} width="content">
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+          <Box display="flex">
+            <Menu
+              {...defaultProps}
+              highlightIndex={1}
+              width="content"
+              size="small"
             >
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+        </Inline>
       ),
     },
     {
       label: 'Overflow tests in small width menu',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps} highlightIndex={1} width="small">
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox
-              checked={true}
-              onChange={() => {}}
-              badge={<Badge weight="strong">Badge</Badge>}
+        <Inline space="medium">
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={1} width="small">
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+          <Box display="flex">
+            <Menu
+              {...defaultProps}
+              highlightIndex={1}
+              width="small"
+              size="small"
             >
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+        </Inline>
       ),
     },
     {
       label: 'Overflow tests in medium width menu',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps} highlightIndex={1} width="medium">
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox
-              checked={true}
-              onChange={() => {}}
-              badge={<Badge weight="strong">Badge</Badge>}
+        <Inline space="medium">
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={1} width="medium">
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+          <Box display="flex">
+            <Menu
+              {...defaultProps}
+              highlightIndex={1}
+              width="medium"
+              size="small"
             >
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+        </Inline>
       ),
     },
     {
       label: 'Overflow tests in large width menu',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps} highlightIndex={1} width="large">
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-            <MenuItemCheckbox
-              checked={true}
-              onChange={() => {}}
-              badge={<Badge weight="strong">Badge</Badge>}
+        <Inline space="medium">
+          <Box display="flex">
+            <Menu {...defaultProps} highlightIndex={1} width="large">
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+          <Box display="flex">
+            <Menu
+              {...defaultProps}
+              highlightIndex={1}
+              width="large"
+              size="small"
             >
-              Really long menu item text that should truncate
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
+              <MenuItemCheckbox checked={false} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox checked={true} onChange={() => {}}>
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+              <MenuItemCheckbox
+                checked={true}
+                onChange={() => {}}
+                badge={<Badge weight="strong">Badge</Badge>}
+              >
+                Really long menu item text that should truncate
+              </MenuItemCheckbox>
+            </Menu>
+          </Box>
+        </Inline>
       ),
     },
   ],
