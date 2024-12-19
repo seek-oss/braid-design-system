@@ -64,7 +64,7 @@ export const ScrollContainer = ({
 
   useIsomorphicLayoutEffect(() => {
     if (containerRef.current) {
-      updateMask();
+      setTimeout(updateMask, 0);
     }
 
     window.addEventListener('resize', updateMask);

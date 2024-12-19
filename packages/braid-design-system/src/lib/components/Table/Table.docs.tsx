@@ -243,7 +243,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell>
                       <Text>{row.column1}</Text>
                     </TableCell>
@@ -261,7 +261,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -298,7 +300,7 @@ const docs: ComponentDocs = {
             <Table label="Table row headings example">
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableHeadCell>
                       <Text>{row.column1}</Text>
                     </TableHeadCell>
@@ -316,7 +318,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -383,7 +387,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableHeadCell>
                       <Text>{row.column1}</Text>
                     </TableHeadCell>
@@ -404,7 +408,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -454,7 +460,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell>
                       <Text>{row.column1}</Text>
                     </TableCell>
@@ -485,7 +491,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -568,7 +576,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell width="content">
                       <Badge bleedY>Badge</Badge>
                     </TableCell>
@@ -598,7 +606,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -670,7 +680,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell width="content">
                       <Badge bleedY>Badge</Badge>
                     </TableCell>
@@ -700,7 +710,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -878,7 +890,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell align="left">
                       <Text>{row.column1}</Text>
                     </TableCell>
@@ -896,7 +908,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -952,7 +966,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell wrap>
                       <Text>{row.column1}</Text>
                     </TableCell>
@@ -970,7 +984,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: code.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: code
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value,
         };
       },
@@ -1038,7 +1054,7 @@ const docs: ComponentDocs = {
                   </TableHeader>
                   <TableBody>
                     {getState('rows').map((row: any) => (
-                      <TableRow key={row}>
+                      <TableRow key={row.column1}>
                         <TableCell>
                           <Text>{row.column1}</Text>
                         </TableCell>
@@ -1070,7 +1086,7 @@ const docs: ComponentDocs = {
                   </TableHeader>
                   <TableBody>
                     {getState('rows').map((row: any) => (
-                      <TableRow key={row}>
+                      <TableRow key={row.column1}>
                         <TableCell>
                           <Text>{row.column1}</Text>
                         </TableCell>
@@ -1116,7 +1132,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell>
                       <Text>{row.column1}</Text>
                     </TableCell>
@@ -1134,7 +1150,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: codeDemo.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: codeDemo
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value: visual,
         };
       },
@@ -1180,7 +1198,7 @@ const docs: ComponentDocs = {
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
-                  <TableRow key={row}>
+                  <TableRow key={row.column1}>
                     <TableCell>
                       <Text>{row.column1}</Text>
                     </TableCell>
@@ -1209,7 +1227,9 @@ const docs: ComponentDocs = {
         );
 
         return {
-          code: codeDemo.replaceAll(': any', '').replaceAll(' key={row}', ''),
+          code: codeDemo
+            .replaceAll(': any', '')
+            .replaceAll(' key={row.column1}', ''),
           value: visual,
         };
       },
