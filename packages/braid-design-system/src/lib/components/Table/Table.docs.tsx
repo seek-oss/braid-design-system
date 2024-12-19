@@ -4,6 +4,7 @@ import {
   Badge,
   Box,
   ButtonIcon,
+  CheckboxStandalone,
   HiddenVisually,
   IconEdit,
   Notice,
@@ -1230,6 +1231,122 @@ const docs: ComponentDocs = {
           code: codeDemo
             .replaceAll(': any', '')
             .replaceAll(' key={row.column1}', ''),
+          value: visual,
+        };
+      },
+    },
+    {
+      label: 'Row selection',
+      description: (
+        <>
+          <Text>
+            A <Strong>TableRow</Strong> can be highlighted by providing the{' '}
+            <Strong>selected</Strong> prop.
+          </Text>
+          <Notice tone="info">
+            <Text>
+              If a selectable row contains interactive elements in its cells,
+              e.g. buttons or links, it is recommended to call{' '}
+              <Strong>event.stopPropagation()</Strong> in their click handlers
+              to stop the event propagating up to the row.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: ({ setDefaultState, getState, setState, toggleState }) => {
+        const { code: codeDemo, value: visual } = source(
+          <>
+            {setDefaultState('rows', [
+              {
+                id: 1,
+                column1: 'Sit',
+                column2: 'Amet',
+                column3: 'Consectetur',
+              },
+              {
+                id: 2,
+                column1: 'Adipiscing',
+                column2: 'Elit',
+                column3: 'Praesent',
+              },
+              {
+                id: 3,
+                column1: 'Semper',
+                column2: 'Interdum',
+                column3: 'Viverra',
+              },
+            ])}
+
+            <Table label="Column spanning example" selectionMode="multi">
+              <TableHeader>
+                <TableRow>
+                  <TableHeadCell width="content">
+                    <Text>
+                      <CheckboxStandalone
+                        id="select-all"
+                        aria-label="Select all rows"
+                        size="small"
+                        checked={getState('rows').map((row: any) =>
+                          getState(row.id),
+                        )}
+                        onChange={({ currentTarget: { checked } }) => {
+                          getState('rows').forEach((row: any) => {
+                            setState(row.id, checked);
+                          });
+                        }}
+                      />
+                    </Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Lorem</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Ipsum</Text>
+                  </TableHeadCell>
+                  <TableHeadCell>
+                    <Text>Dolor</Text>
+                  </TableHeadCell>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow
+                    selected={getState(row.id)}
+                    onClick={() => toggleState(row.id)}
+                    key={row}
+                  >
+                    <TableCell width="content">
+                      <Text>
+                        <CheckboxStandalone
+                          id={row.id}
+                          aria-label={`Select ${row.column1}`}
+                          size="small"
+                          checked={getState(row.id)}
+                          onChange={(event) => {
+                            event.stopPropagation();
+                            setState(row.id, event.currentTarget.checked);
+                          }}
+                        />
+                      </Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </>,
+        );
+
+        return {
+          code: codeDemo.replaceAll(': any', '').replaceAll(' key={row}', ''),
           value: visual,
         };
       },

@@ -1,6 +1,6 @@
 import assert from 'assert';
-import { useContext, type ReactNode } from 'react';
 import { Box } from '../Box/Box';
+import { type AllHTMLAttributes, useContext, type ReactNode } from 'react';
 import {
   TableRowContext,
   TableHeaderContext,
@@ -16,10 +16,17 @@ import * as styles from './Table.css';
 
 export interface TableRowProps {
   children: ReactNode;
+  selected?: boolean;
+  onClick?: AllHTMLAttributes<HTMLTableRowElement>['onClick'];
   data?: DataAttributeMap;
 }
 
-export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
+export const TableRow = ({
+  children,
+  onClick,
+  data,
+  ...restProps
+}: TableRowProps) => {
   const tableContext = useContext(TableContext);
   const tableHeaderContext = useContext(TableHeaderContext);
   const tableBodyContext = useContext(TableBodyContext);
@@ -38,11 +45,23 @@ export const TableRow = ({ children, data, ...restProps }: TableRowProps) => {
     'TableRow must be used within a table section, e.g. TableHeader, TableBody or TableFooter component',
   );
 
+  assert(
+    !('selected' in restProps) ||
+      typeof tableContext.selectionMode !== 'undefined',
+    'TableRow cannot be `selected` without a `selectionMode` specified on the parent Table component',
+  );
+
+  const selected = restProps.selected ?? false;
+
   return (
-    <TableRowContext.Provider value={true}>
+    <TableRowContext.Provider value={{ selected }}>
       <Box
         component="tr"
+        cursor="pointer"
+        onClick={onClick}
         className={styles.row}
+        role={tableContext.selectionMode ? 'row' : undefined}
+        aria-selected={tableContext.selectionMode ? selected : undefined}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}

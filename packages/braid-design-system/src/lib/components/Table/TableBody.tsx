@@ -23,6 +23,7 @@ export const TableBody = ({ children, data, ...restProps }: TableBodyProps) => {
       <Box
         component="tbody"
         className={styles.tableSection}
+        role={tableContext.selectionMode ? 'rowgroup' : undefined}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}

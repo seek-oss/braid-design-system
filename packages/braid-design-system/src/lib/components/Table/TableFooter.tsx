@@ -27,6 +27,7 @@ export const TableFooter = ({
       <Box
         component="tfoot"
         className={styles.tableSection}
+        role={tableContext.selectionMode ? 'rowgroup' : undefined}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}

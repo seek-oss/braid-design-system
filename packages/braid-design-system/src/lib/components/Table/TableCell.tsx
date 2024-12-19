@@ -35,6 +35,7 @@ interface CellProps {
 }
 interface BaseCellProps {
   header?: boolean;
+  selected?: boolean;
   scope?: 'col' | 'row';
 }
 
@@ -55,6 +56,7 @@ const resolveSoftWidth = (width: CellProps['width']) => {
 
 const Cell = ({
   header: isHeaderCell,
+  selected,
   children,
   hideAbove,
   hideBelow,
@@ -83,15 +85,20 @@ const Cell = ({
 
   const softWidth = resolveSoftWidth(width);
   const hasMaxWidth = typeof maxWidth !== 'undefined';
+  const selectedBackground = selected ? 'formAccentSoft' : undefined;
+
+  const resolvedHeaderRole = scope === 'row' ? 'rowheader' : 'columnheader';
+  const resolvedRole = isHeaderCell ? resolvedHeaderRole : 'gridcell';
 
   return (
     <Box
       component={isHeaderCell ? 'th' : 'td'}
+      role={tableContext.selectionMode ? resolvedRole : undefined}
       scope={scope}
       colSpan={colspan}
       padding="small"
       textAlign={align}
-      background={isHeaderCell ? 'neutralLight' : undefined}
+      background={isHeaderCell ? 'neutralLight' : selectedBackground}
       display={{
         mobile: hideOnMobile ? 'none' : undefined,
         tablet: hideOnTablet ? 'none' : undefined,
@@ -151,7 +158,14 @@ export const TableCell = (props: CellProps) => {
     'TableCell cannot be used outside a TableRow component',
   );
 
-  return <Cell {...props} header={false} scope={undefined} />;
+  return (
+    <Cell
+      {...props}
+      selected={tableRowContext.selected}
+      header={false}
+      scope={undefined}
+    />
+  );
 };
 
 export const TableHeadCell = (props: CellProps) => {

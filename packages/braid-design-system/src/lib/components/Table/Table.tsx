@@ -11,6 +11,7 @@ export interface TableProps {
   label: string;
   children: ReactNode;
   alignY?: 'top' | 'center';
+  selectionMode?: 'single' | 'multi';
   data?: DataAttributeMap;
 }
 
@@ -18,10 +19,11 @@ export const Table = ({
   alignY = 'center',
   children,
   label,
+  selectionMode,
   data,
   ...restProps
 }: TableProps) => (
-  <TableContext.Provider value={{ alignY }}>
+  <TableContext.Provider value={{ alignY, selectionMode }}>
     <ScrollContainer>
       <Box
         component="table"
@@ -29,7 +31,9 @@ export const Table = ({
         background="surface"
         borderRadius="large"
         overflow="hidden"
+        role={selectionMode ? 'grid' : undefined}
         aria-label={label}
+        aria-multiselectable={selectionMode === 'multi' || undefined}
         className={styles.table}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
