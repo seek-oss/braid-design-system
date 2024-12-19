@@ -10,6 +10,7 @@ import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import * as styles from './Badge.css';
+import { useDefaultBadgeProps } from './defaultBadgeProps';
 
 type ValueOrArray<T> = T | T[];
 
@@ -61,7 +62,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     {
       tone = 'info',
       weight = 'regular',
-      bleedY = false,
+      bleedY: bleedYProp,
       title,
       children,
       id,
@@ -87,6 +88,8 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     const textContext = useContext(TextContext);
     const headingContext = useContext(HeadingContext);
     const isInline = Boolean(textContext || headingContext);
+
+    const { bleedY } = useDefaultBadgeProps({ bleedY: bleedYProp });
 
     assert(
       !isInline || (isInline && bleedY === false),
