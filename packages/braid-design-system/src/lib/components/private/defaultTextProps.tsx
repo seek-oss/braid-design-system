@@ -5,17 +5,20 @@ import React, {
   useMemo,
 } from 'react';
 import type { TextStyleProps } from '../../css/typography';
+import type { TextProps } from '../Text/Text';
 
 interface DefaultTextProps {
   tone?: TextStyleProps['tone'];
   weight?: TextStyleProps['weight'];
   size?: TextStyleProps['size'];
+  maxLines?: TextProps['maxLines'];
 }
 
 const DefaultTextPropsContext = createContext<DefaultTextProps>({
   tone: undefined,
   weight: undefined,
   size: undefined,
+  maxLines: undefined,
 });
 
 interface DefaultTextPropsProviderProps extends DefaultTextProps {
@@ -26,6 +29,7 @@ export const DefaultTextPropsProvider = ({
   size,
   weight,
   tone,
+  maxLines,
   children,
 }: DefaultTextPropsProviderProps) => {
   const defaultTextProps = useMemo(
@@ -33,8 +37,9 @@ export const DefaultTextPropsProvider = ({
       size,
       weight,
       tone,
+      maxLines,
     }),
-    [size, weight, tone],
+    [size, weight, tone, maxLines],
   );
 
   return (
@@ -48,12 +53,14 @@ export const useDefaultTextProps = ({
   size: sizeProp,
   weight: weightProp,
   tone: toneProp,
+  maxLines: maxLinesProp,
 }: DefaultTextProps) => {
-  const { size, weight, tone } = useContext(DefaultTextPropsContext);
+  const { size, weight, tone, maxLines } = useContext(DefaultTextPropsContext);
 
   return {
     size: sizeProp ?? size ?? 'standard',
     weight: weightProp ?? weight ?? 'regular',
     tone: toneProp ?? tone ?? 'neutral',
+    maxLines: maxLinesProp ?? maxLines ?? undefined,
   };
 };
