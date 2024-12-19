@@ -32,7 +32,7 @@ const maskOverflow = (
       element.classList[atLeft ? 'remove' : 'add'](styles.maskLeft);
       element.classList[atRight ? 'remove' : 'add'](styles.maskRight);
     }
-  }, 100);
+  });
 
 interface ScrollContainerProps {
   children: ReactNode;
