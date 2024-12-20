@@ -4,14 +4,11 @@ import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 const borderColor = createVar();
-const sectionBorderWidth = createVar();
+const sectionBorder = `${vars.borderWidth.standard} solid ${borderColor}`;
 export const table = style([
   {
-    vars: {
-      [sectionBorderWidth]: vars.borderWidth.standard,
-    },
     borderCollapse: 'separate',
-    border: `${sectionBorderWidth} solid ${borderColor}`,
+    border: sectionBorder,
     fontVariantNumeric: 'tabular-nums',
     wordBreak: 'break-word',
   },
@@ -43,7 +40,7 @@ globalStyle(`${row}:not(:last-child) > ${cell}`, {
 globalStyle(
   `${tableSection}:not(:first-child) > ${row}:first-child > ${cell}`,
   {
-    borderTop: `${sectionBorderWidth} solid ${borderColor}`,
+    borderTop: sectionBorder,
   },
 );
 

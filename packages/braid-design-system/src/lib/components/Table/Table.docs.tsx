@@ -198,13 +198,13 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Column headings',
+      label: 'Column headers',
       description: (
         <Text>
-          A <Strong>TableHeader</Strong> can be provided, containing a{' '}
-          <Strong>TableRow</Strong> of column headings. Each heading cell should
-          use the <Strong>TableHeaderCell</Strong> component, providing the
-          relevant semantics, column labelling and styling.
+          A <Strong>TableHeader</Strong> can be provided containing a{' '}
+          <Strong>TableRow</Strong> of <Strong>TableHeaderCell</Strong>{' '}
+          components to provide the relevant semantics, column labelling and
+          styling.
         </Text>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -269,10 +269,10 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Row headings',
+      label: 'Row headers',
       description: (
         <Text>
-          Row-level headings are supported by providing a{' '}
+          Row-level headers are supported by providing a{' '}
           <Strong>TableHeaderCell</Strong> within a <Strong>TableRow</Strong> of
           the <Strong>TableBody</Strong> section.
         </Text>
@@ -297,7 +297,7 @@ const docs: ComponentDocs = {
                 column3: 'Viverra',
               },
             ])}
-            <Table label="Table row headings example">
+            <Table label="Table row headers example">
               <TableBody>
                 {getState('rows').map((row: any) => (
                   <TableRow key={row.column1}>
@@ -329,9 +329,9 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            This may be combined with{' '}
-            <TextLink href="#column-headings">column headings</TextLink> to
-            achieve two-dimensional table headers.
+            A table may also combine both{' '}
+            <TextLink href="#column-headers">column headers</TextLink> and{' '}
+            <TextLink href="#row-headers">row headers</TextLink>.
           </Text>
           <Notice tone="info">
             <Text>
@@ -416,7 +416,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Column footers',
+      label: 'Footers',
       description: (
         <Text>
           A <Strong>TableFooter</Strong> can be provided, containing a{' '}
@@ -558,19 +558,19 @@ const docs: ComponentDocs = {
               <TableHeader>
                 <TableRow>
                   <TableHeaderCell width="content">
-                    <Text>Status</Text>
+                    <Text>&ldquo;content&rdquo;</Text>
                   </TableHeaderCell>
                   <TableHeaderCell width="30%">
-                    <Text>Lorem</Text>
+                    <Text>&ldquo;30%&rdquo;</Text>
                   </TableHeaderCell>
                   <TableHeaderCell>
-                    <Text>Ipsum</Text>
+                    <Text>&ldquo;auto&rdquo;</Text>
                   </TableHeaderCell>
                   <TableHeaderCell>
-                    <Text>Dolor</Text>
+                    <Text>&ldquo;auto&rdquo;</Text>
                   </TableHeaderCell>
                   <TableHeaderCell width="content" align="right">
-                    <Text>Actions</Text>
+                    <Text>&ldquo;content&rdquo;</Text>
                   </TableHeaderCell>
                 </TableRow>
               </TableHeader>
@@ -662,19 +662,19 @@ const docs: ComponentDocs = {
               <TableHeader>
                 <TableRow>
                   <TableHeaderCell width="content">
-                    <Text>Status</Text>
+                    <Text>&ldquo;content&rdquo;</Text>
                   </TableHeaderCell>
                   <TableHeaderCell maxWidth={100}>
-                    <Text>Lorem</Text>
+                    <Text>maxWidth=100</Text>
                   </TableHeaderCell>
                   <TableHeaderCell>
-                    <Text>Ipsum</Text>
+                    <Text>&ldquo;auto&rdquo;</Text>
                   </TableHeaderCell>
                   <TableHeaderCell>
-                    <Text>Dolor</Text>
+                    <Text>&ldquo;auto&rdquo;</Text>
                   </TableHeaderCell>
                   <TableHeaderCell width="content" align="right">
-                    <Text>Actions</Text>
+                    <Text>&ldquo;content&rdquo;</Text>
                   </TableHeaderCell>
                 </TableRow>
               </TableHeader>
@@ -1199,13 +1199,13 @@ const docs: ComponentDocs = {
               <TableBody>
                 {getState('rows').map((row: any) => (
                   <TableRow key={row.column1}>
-                    <TableCell>
+                    <TableCell width="30%">
                       <Text>{row.column1}</Text>
                     </TableCell>
-                    <TableCell>
+                    <TableCell width="30%">
                       <Text>{row.column2}</Text>
                     </TableCell>
-                    <TableCell>
+                    <TableCell width="30%">
                       <Text>{row.column3}</Text>
                     </TableCell>
                   </TableRow>
