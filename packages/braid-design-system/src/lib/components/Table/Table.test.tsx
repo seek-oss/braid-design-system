@@ -8,7 +8,7 @@ import {
   TableBody,
   TableCell,
   TableFooter,
-  TableHeadCell,
+  TableHeaderCell,
   TableHeader,
   TableRow,
   Text,
@@ -42,9 +42,9 @@ describe('Table', () => {
             <Table label="Table label">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Content</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -96,9 +96,9 @@ describe('Table', () => {
             <Table label="Table label">
               <TableBody>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Content</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                   <TableCell>
                     <Text>Content</Text>
                   </TableCell>
@@ -119,19 +119,19 @@ describe('Table', () => {
             <Table label="Table label">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Content</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Content</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Content</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                   <TableCell>
                     <Text>Content</Text>
                   </TableCell>

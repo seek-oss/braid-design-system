@@ -9,7 +9,7 @@ import {
   TableBody,
   TableCell,
   TableFooter,
-  TableHeadCell,
+  TableHeaderCell,
   TableHeader,
   TableRow,
   Text,
@@ -51,15 +51,15 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell>
+              <TableHeaderCell>
                 <Text>Lorem</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Ipsum</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Dolor</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -108,15 +108,15 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell>
+              <TableHeaderCell>
                 <Text>Lorem</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Ipsum</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Dolor</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -157,9 +157,9 @@ export const screenshots: ComponentScreenshot = {
           <TableBody>
             {data.map((row) => (
               <TableRow key={row.column1}>
-                <TableHeadCell>
+                <TableHeaderCell>
                   <Text>{row.column1}</Text>
-                </TableHeadCell>
+                </TableHeaderCell>
                 <TableCell>
                   <Text>{row.column2}</Text>
                 </TableCell>
@@ -178,26 +178,26 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell>
+              <TableHeaderCell>
                 <HiddenVisually>Time</HiddenVisually>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Lorem</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Ipsum</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Dolor</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
             {data.map((row) => (
               <TableRow key={row.time}>
-                <TableHeadCell>
+                <TableHeaderCell>
                   <Text>{row.time}</Text>
-                </TableHeadCell>
+                </TableHeaderCell>
                 <TableCell>
                   <Text>{row.column1}</Text>
                 </TableCell>
@@ -219,15 +219,15 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label" alignY="center">
           <TableHeader>
             <TableRow>
-              <TableHeadCell>
+              <TableHeaderCell>
                 <Text>Lorem</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Ipsum</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Dolor</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -257,15 +257,15 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label" alignY="top">
           <TableHeader>
             <TableRow>
-              <TableHeadCell>
+              <TableHeaderCell>
                 <Text>Lorem</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Ipsum</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Dolor</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -295,15 +295,15 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell align="left">
+              <TableHeaderCell align="left">
                 <Text>“left”</Text>
-              </TableHeadCell>
-              <TableHeadCell align="center">
+              </TableHeaderCell>
+              <TableHeaderCell align="center">
                 <Text>“center”</Text>
-              </TableHeadCell>
-              <TableHeadCell align="right">
+              </TableHeaderCell>
+              <TableHeaderCell align="right">
                 <Text>“right”</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -330,15 +330,15 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell>
+              <TableHeaderCell>
                 <Text>Lorem</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Ipsum</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Dolor</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -394,18 +394,18 @@ export const screenshots: ComponentScreenshot = {
           <Table label="Label">
             <TableHeader>
               <TableRow>
-                <TableHeadCell>
+                <TableHeaderCell>
                   <Text>1</Text>
-                </TableHeadCell>
-                <TableHeadCell hideBelow="desktop">
+                </TableHeaderCell>
+                <TableHeaderCell hideBelow="desktop">
                   <Text>2</Text>
-                </TableHeadCell>
-                <TableHeadCell hideAbove="mobile">
+                </TableHeaderCell>
+                <TableHeaderCell hideAbove="mobile">
                   <Text>3</Text>
-                </TableHeadCell>
-                <TableHeadCell hideAbove="tablet" hideBelow="wide">
+                </TableHeaderCell>
+                <TableHeaderCell hideAbove="tablet" hideBelow="wide">
                   <Text>4</Text>
-                </TableHeadCell>
+                </TableHeaderCell>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -437,15 +437,15 @@ export const screenshots: ComponentScreenshot = {
           <Table label="Label">
             <TableHeader>
               <TableRow>
-                <TableHeadCell>
+                <TableHeaderCell>
                   <Text>Lorem</Text>
-                </TableHeadCell>
-                <TableHeadCell>
+                </TableHeaderCell>
+                <TableHeaderCell>
                   <Text>Ipsum</Text>
-                </TableHeadCell>
-                <TableHeadCell>
+                </TableHeaderCell>
+                <TableHeaderCell>
                   <Text>Dolor</Text>
-                </TableHeadCell>
+                </TableHeaderCell>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -473,21 +473,21 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell width="content">
+              <TableHeaderCell width="content">
                 <Text>Content</Text>
-              </TableHeadCell>
-              <TableHeadCell width="30%">
+              </TableHeaderCell>
+              <TableHeaderCell width="30%">
                 <Text>30%</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell width="content" align="right">
+              </TableHeaderCell>
+              <TableHeaderCell width="content" align="right">
                 <Text>Content</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -520,18 +520,18 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell maxWidth={200}>
+              <TableHeaderCell maxWidth={200}>
                 <Text>MaxWidth 200</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell width="content" align="right">
+              </TableHeaderCell>
+              <TableHeaderCell width="content" align="right">
                 <Text>Content</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -562,18 +562,18 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell maxWidth={200}>
+              <TableHeaderCell maxWidth={200}>
                 <Text>MaxWidth 200</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell width="content" align="right">
+              </TableHeaderCell>
+              <TableHeaderCell width="content" align="right">
                 <Text>Content</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -603,21 +603,21 @@ export const screenshots: ComponentScreenshot = {
         <Table label="Label">
           <TableHeader>
             <TableRow>
-              <TableHeadCell width="content" minWidth={150}>
+              <TableHeaderCell width="content" minWidth={150}>
                 <Text>MinWidth 150</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell>
+              </TableHeaderCell>
+              <TableHeaderCell>
                 <Text>Auto</Text>
-              </TableHeadCell>
-              <TableHeadCell width="content" align="right">
+              </TableHeaderCell>
+              <TableHeaderCell width="content" align="right">
                 <Text>Content</Text>
-              </TableHeadCell>
+              </TableHeaderCell>
             </TableRow>
           </TableHeader>
           <TableBody>

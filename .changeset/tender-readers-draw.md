@@ -14,9 +14,9 @@ new:
 <Table label="Table example">
   <TableHeader>
     <TableRow>
-      <TableHeadCell>...</TableHeadCell>
-      <TableHeadCell>...</TableHeadCell>
-      <TableHeadCell>...</TableHeadCell>
+      <TableHeaderCell>...</TableHeaderCell>
+      <TableHeaderCell>...</TableHeaderCell>
+      <TableHeaderCell>...</TableHeaderCell>
     </TableRow>
   </TableHeader>
   <TableBody>

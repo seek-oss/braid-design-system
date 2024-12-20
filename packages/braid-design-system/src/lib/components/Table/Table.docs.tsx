@@ -13,7 +13,7 @@ import {
   TableBody,
   TableCell,
   TableFooter,
-  TableHeadCell,
+  TableHeaderCell,
   TableHeader,
   TableRow,
   Text,
@@ -67,7 +67,7 @@ const docs: ComponentDocs = {
   subComponents: [
     'TableHeader',
     'TableRow',
-    'TableHeadCell',
+    'TableHeaderCell',
     'TableBody',
     'TableCell',
     'TableFooter',
@@ -77,15 +77,15 @@ const docs: ComponentDocs = {
       <Table label="Table hero example">
         <TableHeader>
           <TableRow>
-            <TableHeadCell>
+            <TableHeaderCell>
               <Text>Lorem</Text>
-            </TableHeadCell>
-            <TableHeadCell>
+            </TableHeaderCell>
+            <TableHeaderCell>
               <Text>Ipsum</Text>
-            </TableHeadCell>
-            <TableHeadCell>
+            </TableHeaderCell>
+            <TableHeaderCell>
               <Text>Dolor</Text>
-            </TableHeadCell>
+            </TableHeaderCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -203,7 +203,7 @@ const docs: ComponentDocs = {
         <Text>
           A <Strong>TableHeader</Strong> can be provided, containing a{' '}
           <Strong>TableRow</Strong> of column headings. Each heading cell should
-          use the <Strong>TableHeadCell</Strong> component, providing the
+          use the <Strong>TableHeaderCell</Strong> component, providing the
           relevant semantics, column labelling and styling.
         </Text>
       ),
@@ -230,15 +230,15 @@ const docs: ComponentDocs = {
             <Table label="Table column headings example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Dolor</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -273,7 +273,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Row-level headings are supported by providing a{' '}
-          <Strong>TableHeadCell</Strong> within a <Strong>TableRow</Strong> of
+          <Strong>TableHeaderCell</Strong> within a <Strong>TableRow</Strong> of
           the <Strong>TableBody</Strong> section.
         </Text>
       ),
@@ -301,9 +301,9 @@ const docs: ComponentDocs = {
               <TableBody>
                 {getState('rows').map((row: any) => (
                   <TableRow key={row.column1}>
-                    <TableHeadCell>
+                    <TableHeaderCell>
                       <Text>{row.column1}</Text>
-                    </TableHeadCell>
+                    </TableHeaderCell>
                     <TableCell>
                       <Text>{row.column2}</Text>
                     </TableCell>
@@ -371,26 +371,26 @@ const docs: ComponentDocs = {
             <Table label="Table dual axis heading example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <HiddenVisually>Time</HiddenVisually>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Dolor</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {getState('rows').map((row: any) => (
                   <TableRow key={row.column1}>
-                    <TableHeadCell>
+                    <TableHeaderCell>
                       <Text>{row.column1}</Text>
-                    </TableHeadCell>
+                    </TableHeaderCell>
                     <TableCell>
                       <Text>{row.column2}</Text>
                     </TableCell>
@@ -447,15 +447,15 @@ const docs: ComponentDocs = {
             <Table label="Table footer example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Dolor</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -504,7 +504,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             By default, a <Strong>TableCell</Strong> and{' '}
-            <Strong>TableHeadCell</Strong> have a <Strong>width</Strong> of{' '}
+            <Strong>TableHeaderCell</Strong> have a <Strong>width</Strong> of{' '}
             <Strong>auto</Strong>, accomodating the longest content within the
             column.
           </Text>
@@ -557,21 +557,21 @@ const docs: ComponentDocs = {
             <Table label="Table column widths example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell width="content">
+                  <TableHeaderCell width="content">
                     <Text>Status</Text>
-                  </TableHeadCell>
-                  <TableHeadCell width="30%">
+                  </TableHeaderCell>
+                  <TableHeaderCell width="30%">
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Dolor</Text>
-                  </TableHeadCell>
-                  <TableHeadCell width="content" align="right">
+                  </TableHeaderCell>
+                  <TableHeaderCell width="content" align="right">
                     <Text>Actions</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -661,21 +661,21 @@ const docs: ComponentDocs = {
             <Table label="Table column limits example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell width="content">
+                  <TableHeaderCell width="content">
                     <Text>Status</Text>
-                  </TableHeadCell>
-                  <TableHeadCell maxWidth={100}>
+                  </TableHeaderCell>
+                  <TableHeaderCell maxWidth={100}>
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Dolor</Text>
-                  </TableHeadCell>
-                  <TableHeadCell width="content" align="right">
+                  </TableHeaderCell>
+                  <TableHeaderCell width="content" align="right">
                     <Text>Actions</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -741,15 +741,15 @@ const docs: ComponentDocs = {
               <Table label="Vertical align center example" alignY="center">
                 <TableHeader>
                   <TableRow>
-                    <TableHeadCell>
+                    <TableHeaderCell>
                       <Text>Lorem</Text>
-                    </TableHeadCell>
-                    <TableHeadCell>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
                       <Text>Ipsum</Text>
-                    </TableHeadCell>
-                    <TableHeadCell>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
                       <Text>Dolor</Text>
-                    </TableHeadCell>
+                    </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -791,15 +791,15 @@ const docs: ComponentDocs = {
               <Table label="Vertical align top example" alignY="top">
                 <TableHeader>
                   <TableRow>
-                    <TableHeadCell>
+                    <TableHeaderCell>
                       <Text>Lorem</Text>
-                    </TableHeadCell>
-                    <TableHeadCell>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
                       <Text>Ipsum</Text>
-                    </TableHeadCell>
-                    <TableHeadCell>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
                       <Text>Dolor</Text>
-                    </TableHeadCell>
+                    </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -844,7 +844,7 @@ const docs: ComponentDocs = {
           <Text>
             The horizontal alignment of content within cells can be configured
             using the <Strong>align</Strong> prop on <Strong>TableCell</Strong>{' '}
-            and <Strong>TableHeadCell</Strong> components.
+            and <Strong>TableHeaderCell</Strong> components.
           </Text>
           <Text>
             Supported alignments are <Strong>left</Strong> (default),{' '}
@@ -877,15 +877,15 @@ const docs: ComponentDocs = {
             <Table label="Horizontal alignment example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell align="left">
+                  <TableHeaderCell align="left">
                     <Text>“left”</Text>
-                  </TableHeadCell>
-                  <TableHeadCell align="center">
+                  </TableHeaderCell>
+                  <TableHeaderCell align="center">
                     <Text>“center”</Text>
-                  </TableHeadCell>
-                  <TableHeadCell align="right">
+                  </TableHeaderCell>
+                  <TableHeaderCell align="right">
                     <Text>“right”</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -921,7 +921,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             By default, all <Strong>TableCell</Strong> and{' '}
-            <Strong>TableHeadCell</Strong> components are prevented from
+            <Strong>TableHeaderCell</Strong> components are prevented from
             wrapping their content. This keep rows a consistent height and means
             the content can influence the column width.
           </Text>
@@ -953,15 +953,15 @@ const docs: ComponentDocs = {
             <Table label="Column wrapping example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Dolor</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -1041,15 +1041,15 @@ const docs: ComponentDocs = {
                 <Table label="Column visibility example tablet">
                   <TableHeader>
                     <TableRow>
-                      <TableHeadCell>
+                      <TableHeaderCell>
                         <Text>Lorem</Text>
-                      </TableHeadCell>
-                      <TableHeadCell>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
                         <Text>Ipsum</Text>
-                      </TableHeadCell>
-                      <TableHeadCell>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
                         <Text>Dolor</Text>
-                      </TableHeadCell>
+                      </TableHeaderCell>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -1076,12 +1076,12 @@ const docs: ComponentDocs = {
                 <Table label="Column visibility example mobile">
                   <TableHeader>
                     <TableRow>
-                      <TableHeadCell>
+                      <TableHeaderCell>
                         <Text>Lorem</Text>
-                      </TableHeadCell>
-                      <TableHeadCell>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
                         <Text>Dolor</Text>
-                      </TableHeadCell>
+                      </TableHeaderCell>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -1119,15 +1119,15 @@ const docs: ComponentDocs = {
             <Table label="Column visibility example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell>
+                  <TableHeaderCell>
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell hideBelow="tablet">
+                  </TableHeaderCell>
+                  <TableHeaderCell hideBelow="tablet">
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
                     <Text>Dolor</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -1161,9 +1161,9 @@ const docs: ComponentDocs = {
       label: 'Column spanning',
       description: (
         <Text>
-          Both <Strong>TableCell</Strong> and <Strong>TableHeadCell</Strong> can
-          span across multiple columns by providing the number of columns via
-          the <Strong>colspan</Strong> prop.
+          Both <Strong>TableCell</Strong> and <Strong>TableHeaderCell</Strong>{' '}
+          can span across multiple columns by providing the number of columns
+          via the <Strong>colspan</Strong> prop.
         </Text>
       ),
       Example: ({ setDefaultState, getState }) => {
@@ -1185,15 +1185,15 @@ const docs: ComponentDocs = {
             <Table label="Column spanning example">
               <TableHeader>
                 <TableRow>
-                  <TableHeadCell width="30%">
+                  <TableHeaderCell width="30%">
                     <Text>Lorem</Text>
-                  </TableHeadCell>
-                  <TableHeadCell width="30%">
+                  </TableHeaderCell>
+                  <TableHeaderCell width="30%">
                     <Text>Ipsum</Text>
-                  </TableHeadCell>
-                  <TableHeadCell width="30%">
+                  </TableHeaderCell>
+                  <TableHeaderCell width="30%">
                     <Text>Dolor</Text>
-                  </TableHeadCell>
+                  </TableHeaderCell>
                 </TableRow>
               </TableHeader>
               <TableBody>

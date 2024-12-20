@@ -72,7 +72,7 @@ export { Table } from './Table/Table';
 export { TableBody } from './Table/TableBody';
 export { TableCell } from './Table/TableCell';
 export { TableFooter } from './Table/TableFooter';
-export { TableHeadCell } from './Table/TableCell';
+export { TableHeaderCell } from './Table/TableCell';
 export { TableHeader } from './Table/TableHeader';
 export { TableRow } from './Table/TableRow';
 export { Tab } from './Tabs/Tab';

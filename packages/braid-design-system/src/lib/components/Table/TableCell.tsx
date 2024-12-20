@@ -143,7 +143,7 @@ export const TableCell = (props: CellProps) => {
 
   assert(
     !tableHeaderContext,
-    'TableCell cannot be used inside a TableHeader component. Please use TableHeadCell instead.',
+    'TableCell cannot be used inside a TableHeader component. Please use TableHeaderCell instead.',
   );
 
   assert(
@@ -154,13 +154,13 @@ export const TableCell = (props: CellProps) => {
   return <Cell {...props} header={false} scope={undefined} />;
 };
 
-export const TableHeadCell = (props: CellProps) => {
+export const TableHeaderCell = (props: CellProps) => {
   const tableHeaderContext = useContext(TableHeaderContext);
   const tableRowContext = useContext(TableRowContext);
 
   assert(
     tableRowContext,
-    'TableHeadCell cannot be used outside a TableRow component',
+    'TableHeaderCell cannot be used outside a TableRow component',
   );
 
   return (

@@ -7929,7 +7929,7 @@ exports[`TableFooter 1`] = `
 }
 `;
 
-exports[`TableHeadCell 1`] = `
+exports[`TableHeaderCell 1`] = `
 {
   exportType: component,
   props: {
