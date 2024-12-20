@@ -29,6 +29,7 @@ import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import * as styles from './AccordionItem.css';
 import { Spread } from '../Spread/Spread';
 import { defaultSize } from './Accordion';
+import { Stack } from '../Stack/Stack';
 
 const itemSpaceForSize = {
   xsmall: 'small',
@@ -124,11 +125,9 @@ export const AccordionItem = ({
   });
 
   return (
-    <Box
+    <Stack
+      space={itemSpace}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
-      display="flex"
-      flexDirection="column"
-      gap={itemSpace}
     >
       <Box position="relative" display="flex">
         <Box
@@ -178,6 +177,6 @@ export const AccordionItem = ({
       <Box display={expanded ? 'block' : 'none'} {...contentProps}>
         {children}
       </Box>
-    </Box>
+    </Stack>
   );
 };
