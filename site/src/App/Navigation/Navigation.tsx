@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef } from 'react';
+import React, { useState, useRef, useEffect, forwardRef, useId } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
 import {
@@ -11,6 +11,7 @@ import {
   MenuItemLink,
   MenuRenderer,
   Text,
+  TextDropdown,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -24,6 +25,11 @@ import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 import * as styles from './Navigation.css';
 import { ThemeToggle } from '../ThemeSetting';
 import { useConfig } from '../ConfigContext';
+import {
+  type ColorMode,
+  getColorMode,
+  setColorMode,
+} from 'braid-src/entries/color-mode/local-storage';
 
 const Header = ({
   menuOpen,
@@ -31,17 +37,46 @@ const Header = ({
 }: {
   menuOpen: boolean;
   menuClick: () => void;
-}) => (
-  <Box paddingY={headerSpaceY} paddingX={gutterSize}>
-    <HeaderNavigation
-      menuOpen={menuOpen}
-      menuClick={menuClick}
-      logo={<Logo iconOnly height={menuButtonSize} />}
-      logoLabel="Braid Logo"
-      themeToggle={<ThemeToggle />}
-    />
-  </Box>
-);
+}) => {
+  const [colorModePreference, setColorModePreference] = useState<
+    ColorMode | undefined
+  >(getColorMode('braid-docs', 'light'));
+  const colorModeId = useId();
+
+  return (
+    <Box paddingY={headerSpaceY} paddingX={gutterSize}>
+      <HeaderNavigation
+        menuOpen={menuOpen}
+        menuClick={menuClick}
+        logo={<Logo iconOnly height={menuButtonSize} />}
+        logoLabel="Braid Logo"
+        themeToggle={
+          <>
+            <ThemeToggle />
+            {colorModePreference && (
+              <Text>
+                <TextDropdown
+                  label="Color Mode"
+                  id={colorModeId}
+                  value={colorModePreference}
+                  onChange={(newValue) => {
+                    setColorModePreference(newValue as ColorMode);
+                    setColorMode('braid-docs', newValue as ColorMode);
+                  }}
+                  options={[
+                    { text: 'Light', value: 'light' },
+                    { text: 'Dark', value: 'dark' },
+                    { text: 'System', value: 'system' },
+                  ]}
+                />
+              </Text>
+            )}
+          </>
+        }
+      />
+    </Box>
+  );
+};
 
 const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ({ children, ...props }, forwardedRef) => (

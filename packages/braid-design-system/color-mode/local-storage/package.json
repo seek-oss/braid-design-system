@@ -1,0 +1,5 @@
+{
+  "main": "../../dist/color-mode/local-storage.cjs",
+  "module": "../../dist/color-mode/local-storage.mjs",
+  "types": "./index.d.ts"
+}
