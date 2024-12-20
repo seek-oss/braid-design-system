@@ -227,6 +227,9 @@ importers:
       react-remove-scroll:
         specifier: ^2.5.3
         version: 2.5.3(@types/react@18.3.3)(react@18.3.1)
+      throttle-debounce:
+        specifier: ^5.0.2
+        version: 5.0.2
       utility-types:
         specifier: ^3.10.0
         version: 3.10.0
@@ -306,6 +309,9 @@ importers:
       '@types/testing-library__jest-dom':
         specifier: ^5.9.1
         version: 5.14.3
+      '@types/throttle-debounce':
+        specifier: ^5.0.2
+        version: 5.0.2
       '@types/uuid':
         specifier: ^8.3.0
         version: 8.3.4
@@ -2970,6 +2976,9 @@ packages:
 
   '@types/testing-library__jest-dom@5.14.3':
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
+
+  '@types/throttle-debounce@5.0.2':
+    resolution: {integrity: sha512-pDzSNulqooSKvSNcksnV72nk8p7gRqN8As71Sp28nov1IgmPKWbOEIwAWvBME5pPTtaXJAvG3O4oc76HlQ4kqQ==}
 
   '@types/tough-cookie@4.0.2':
     resolution: {integrity: sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw==}
@@ -8540,6 +8549,10 @@ packages:
     resolution: {integrity: sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==}
     engines: {node: '>=10'}
 
+  throttle-debounce@5.0.2:
+    resolution: {integrity: sha512-B71/4oyj61iNH0KeCamLuE2rmKuTO5byTOSVwECM5FA7TiAiAW+UqTKZ9ERueC4qvgSttUhdmq1mXC3kJqGX7A==}
+    engines: {node: '>=12.22'}
+
   through2@2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==}
 
@@ -9371,7 +9384,7 @@ snapshots:
       '@babel/core': 7.24.5
       '@babel/helper-compilation-targets': 7.24.7
       '@babel/helper-plugin-utils': 7.25.9
-      debug: 4.3.6
+      debug: 4.4.0
       lodash.debounce: 4.0.8
       resolve: 1.22.8
       semver: 6.3.1
@@ -9383,7 +9396,7 @@ snapshots:
       '@babel/core': 7.24.5
       '@babel/helper-compilation-targets': 7.24.7
       '@babel/helper-plugin-utils': 7.25.9
-      debug: 4.3.6
+      debug: 4.4.0
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -11240,7 +11253,7 @@ snapshots:
       webpack: 5.91.0(@swc/core@1.7.14)(esbuild@0.21.5)
     optionalDependencies:
       type-fest: 3.13.1
-      webpack-dev-server: 5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20))
+      webpack-dev-server: 5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.21.5))
       webpack-hot-middleware: 2.26.1
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.15(react-refresh@0.14.0)(type-fest@3.13.1)(webpack-dev-server@5.0.2(webpack@5.91.0(@swc/core@1.7.14)))(webpack-hot-middleware@2.26.1)(webpack@5.91.0(@swc/core@1.7.14))':
@@ -12393,6 +12406,8 @@ snapshots:
     dependencies:
       '@types/jest': 29.1.2
 
+  '@types/throttle-debounce@5.0.2': {}
+
   '@types/tough-cookie@4.0.2': {}
 
   '@types/unist@2.0.6': {}
@@ -12523,7 +12538,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
-      debug: 4.3.6
+      debug: 4.4.0
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.3
@@ -12537,7 +12552,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
-      debug: 4.3.6
+      debug: 4.4.0
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.3
@@ -13048,7 +13063,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.6
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
 
@@ -16230,7 +16245,7 @@ snapshots:
 
   istanbul-lib-source-maps@4.0.1:
     dependencies:
-      debug: 4.3.6
+      debug: 4.4.0
       istanbul-lib-coverage: 3.2.0
       source-map: 0.6.1
     transitivePeerDependencies:
@@ -17001,7 +17016,7 @@ snapshots:
 
   micromark@2.11.4:
     dependencies:
-      debug: 4.3.6
+      debug: 4.4.0
       parse-entities: 2.0.0
     transitivePeerDependencies:
       - supports-color
@@ -17709,7 +17724,7 @@ snapshots:
       typescript: 5.5.4
       use-debounce: 10.0.0(react@18.3.1)
       webpack: 5.91.0(@swc/core@1.7.14)(esbuild@0.18.20)
-      webpack-dev-server: 5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20))
+      webpack-dev-server: 5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.21.5))
       webpack-merge: 5.8.0
     transitivePeerDependencies:
       - '@swc/core'
@@ -19063,7 +19078,7 @@ snapshots:
       typescript: 5.6.3
       webpack: 5.91.0(@swc/core@1.7.14)(esbuild@0.21.5)
       webpack-bundle-analyzer: 4.6.1
-      webpack-dev-server: 5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20))
+      webpack-dev-server: 5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.21.5))
       webpack-merge: 5.8.0
       webpack-node-externals: 3.0.0
       wrap-ansi: 7.0.0
@@ -19725,6 +19740,8 @@ snapshots:
 
   throttle-debounce@3.0.1: {}
 
+  throttle-debounce@5.0.2: {}
+
   through2@2.0.5:
     dependencies:
       readable-stream: 2.3.7
@@ -20218,7 +20235,7 @@ snapshots:
     optionalDependencies:
       webpack: 5.91.0(@swc/core@1.7.14)
 
-  webpack-dev-server@5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.18.20)):
+  webpack-dev-server@5.0.2(debug@4.3.6)(webpack@5.91.0(@swc/core@1.7.14)(esbuild@0.21.5)):
     dependencies:
       '@types/bonjour': 3.5.13
       '@types/connect-history-api-fallback': 1.5.4

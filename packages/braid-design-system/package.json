@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "33.2.0",
+  "version": "33.2.2",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -206,6 +206,7 @@
     "react-is": "^18.2.0",
     "react-popper-tooltip": "^4.3.1",
     "react-remove-scroll": "^2.5.3",
+    "throttle-debounce": "^5.0.2",
     "utility-types": "^3.10.0",
     "uuid": "^8.3.2"
   },
@@ -234,6 +235,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/sanitize-html": "^2.6.2",
     "@types/testing-library__jest-dom": "^5.9.1",
+    "@types/throttle-debounce": "^5.0.2",
     "@types/uuid": "^8.3.0",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",

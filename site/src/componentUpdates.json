@@ -4583,5 +4583,41 @@
         "summary": "**Autosuggest**: Ensure content is left aligned\n\nApplies left alignment to `Autosuggest` dropdown content to ensure consistent alignment, even when inside centered layout containers."
       }
     ]
+  },
+  {
+    "version": "33.2.1",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer"
+        ],
+        "summary": "**MenuRenderer**: Ensure menu is visible, even when its trigger element is inside a container with overflow hidden."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Provide improved scroll affordance\n\nIntroduce scroll affordance to menus, providing a visual cue that there are more items overflowing vertically."
+      },
+      {
+        "updated": [
+          "OverflowMenu"
+        ],
+        "summary": "**OverflowMenu**: Simplify internal layout.\n\nRefactor the internal layout of `OverflowMenu` to improve the alignment of the menu with the button."
+      }
+    ]
+  },
+  {
+    "version": "33.2.2",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Fixes a bug where menus could be obscured when rendered inside a `Dialog` or `Drawer` component."
+      }
+    ]
   }
 ]
