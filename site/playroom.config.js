@@ -3,7 +3,6 @@ const path = require('path');
 // eslint-disable-next-line import/no-unresolved
 const SkuWebpackPlugin = require('sku/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const browserslist = require('../browserslist');
 const { DefinePlugin } = require('webpack');
 
 const braidSrc = path.join(__dirname, '../packages/braid-design-system/src');
@@ -42,7 +41,6 @@ module.exports = {
       new SkuWebpackPlugin({
         include: [braidSrc],
         target: 'browser',
-        browserslist,
         mode: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
         displayNamesProd: true,
         removeAssertionsInProduction: false,

@@ -2,7 +2,6 @@ const path = require('path');
 
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
-const browserslist = require('../browserslist');
 const routes = require('./sku.routes.js');
 
 const braidRoot = path.join(__dirname, '../packages/braid-design-system');
@@ -18,7 +17,6 @@ module.exports = {
   public: './src/public',
   target: './dist',
   publicPath: `${process.env.BASE_NAME}/`,
-  supportedBrowsers: browserslist,
   displayNamesProd: true,
   compilePackages: ['@braid-design-system/docs-ui'],
   dangerouslySetWebpackConfig: (config) => {
