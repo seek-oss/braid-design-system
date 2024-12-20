@@ -13,25 +13,26 @@ const scrollOffset = 2; // 2 instead of 1 to account for rounding errors in some
 const maskOverflow = (
   element: HTMLElement,
   direction: keyof typeof styles.direction,
-) => {
-  const atTop = element.scrollTop <= 0;
-  const atBottom =
-    element.scrollHeight - element.offsetHeight - element.scrollTop <
-    scrollOffset;
-  const atLeft = element.scrollLeft <= 0;
-  const atRight =
-    element.scrollWidth - element.offsetWidth - element.scrollLeft <
-    scrollOffset;
+) =>
+  setTimeout(() => {
+    const atTop = element.scrollTop <= 0;
+    const atBottom =
+      element.scrollHeight - element.offsetHeight - element.scrollTop <
+      scrollOffset;
+    const atLeft = element.scrollLeft <= 0;
+    const atRight =
+      element.scrollWidth - element.offsetWidth - element.scrollLeft <
+      scrollOffset;
 
-  if (direction === 'vertical' || direction === 'all') {
-    element.classList[atTop ? 'remove' : 'add'](styles.maskTop);
-    element.classList[atBottom ? 'remove' : 'add'](styles.maskBottom);
-  }
-  if (direction === 'horizontal' || direction === 'all') {
-    element.classList[atLeft ? 'remove' : 'add'](styles.maskLeft);
-    element.classList[atRight ? 'remove' : 'add'](styles.maskRight);
-  }
-};
+    if (direction === 'vertical' || direction === 'all') {
+      element.classList[atTop ? 'remove' : 'add'](styles.maskTop);
+      element.classList[atBottom ? 'remove' : 'add'](styles.maskBottom);
+    }
+    if (direction === 'horizontal' || direction === 'all') {
+      element.classList[atLeft ? 'remove' : 'add'](styles.maskLeft);
+      element.classList[atRight ? 'remove' : 'add'](styles.maskRight);
+    }
+  });
 
 interface ScrollContainerProps {
   children: ReactNode;
