@@ -13,10 +13,10 @@ import { Divider } from '../Divider/Divider';
 import {
   type AccordionContextValue,
   AccordionContext,
-  type validSizeValues,
   validTones,
 } from './AccordionContext';
 import flattenChildren from '../../utils/flattenChildren';
+import type { TextProps } from '../Text/Text';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
@@ -47,7 +47,7 @@ const defaultSpaceForSize = {
   },
 } satisfies Record<
   'divided' | 'undivided',
-  Record<NonNullable<validSizeValues>, (typeof validSpaceValues)[number]>
+  Record<NonNullable<TextProps['size']>, (typeof validSpaceValues)[number]>
 >;
 
 export const Accordion = ({
