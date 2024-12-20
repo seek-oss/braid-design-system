@@ -26,7 +26,6 @@ import buildDataAttributes, {
 import * as styles from './MenuRenderer.css';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import type { MenuSize } from './MenuRendererTypes';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { vars } from '../../themes/vars.css';
 
@@ -49,6 +48,7 @@ interface CloseReasonSelection {
   index: number;
   id?: string;
 }
+export type MenuSize = 'standard' | 'small';
 type CloseReason = CloseReasonSelection | CloseReasonExit;
 export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
