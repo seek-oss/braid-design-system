@@ -16,6 +16,7 @@ import {
   validTones,
 } from './AccordionContext';
 import flattenChildren from '../../utils/flattenChildren';
+import type { TextProps } from '../Text/Text';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
@@ -29,24 +30,29 @@ export interface AccordionProps {
   data?: DataAttributeMap;
 }
 
+export const defaultSize = 'large';
+
 const defaultSpaceForSize = {
   divided: {
     xsmall: 'medium',
     small: 'medium',
     standard: 'medium',
-    large: 'large',
+    large: 'medium',
   },
   undivided: {
-    xsmall: 'large',
-    small: 'large',
+    xsmall: 'medium',
+    small: 'medium',
     standard: 'large',
     large: 'large',
   },
-} as const;
+} satisfies Record<
+  'divided' | 'undivided',
+  Record<NonNullable<TextProps['size']>, (typeof validSpaceValues)[number]>
+>;
 
 export const Accordion = ({
   children,
-  size = 'large',
+  size = defaultSize,
   tone,
   weight,
   space: spaceProp,
