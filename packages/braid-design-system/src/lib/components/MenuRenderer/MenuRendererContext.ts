@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { MenuSize } from './MenuRendererTypes';
+import type { MenuSize } from './MenuRenderer';
 
 interface MenuRendererValues {
   size: MenuSize;
