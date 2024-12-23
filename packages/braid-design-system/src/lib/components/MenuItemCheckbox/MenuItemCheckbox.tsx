@@ -2,7 +2,7 @@ import React, { type ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { IconTick } from '../icons/IconTick/IconTick';
 import type { MenuItemProps } from '../MenuItem/MenuItem';
-import { MenuItemLeftSlot, useMenuItem } from '../MenuItem/useMenuItem';
+import { useMenuItem } from '../MenuItem/useMenuItem';
 
 import * as styles from './MenuItemCheckbox.css';
 
@@ -37,34 +37,34 @@ export const MenuItemCheckbox = ({
       display="flex"
       alignItems="center"
     >
-      <MenuItemLeftSlot>
-        <Box
-          component="span"
-          borderRadius="standard"
-          boxShadow="borderField"
-          position="relative"
-          background={{ lightMode: 'surface' }}
-          flexShrink={0}
-          className={styles.checkboxSize}
-        >
-          <Box
-            component="span"
-            position="absolute"
-            inset={0}
-            background="formAccent"
-            borderRadius="standard"
-            transition="fast"
-            opacity={checked ? undefined : 0}
-          >
-            <IconTick size="fill" />
-          </Box>
-        </Box>
-      </MenuItemLeftSlot>
       <MenuItemChildren
         tone={undefined}
-        icon={undefined}
+        leftSlot={
+          <Box
+            component="span"
+            display="block"
+            borderRadius="standard"
+            boxShadow="borderField"
+            position="relative"
+            background={{ lightMode: 'surface' }}
+            flexShrink={0}
+            className={styles.checkboxSize}
+          >
+            <Box
+              component="span"
+              position="absolute"
+              inset={0}
+              background="formAccent"
+              borderRadius="standard"
+              transition="fast"
+              opacity={checked ? undefined : 0}
+            >
+              <IconTick size="fill" />
+            </Box>
+          </Box>
+        }
         badge={badge}
-        formElement={true}
+        isCheckbox={true}
       >
         {children}
       </MenuItemChildren>

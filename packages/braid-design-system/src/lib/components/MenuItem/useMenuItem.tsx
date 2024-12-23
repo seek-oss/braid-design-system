@@ -174,51 +174,23 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   } as const;
 }
 
-export function MenuItemLeftSlot({ children }: { children?: ReactNode }) {
-  const menuRendererContext = useContext(MenuRendererContext);
-  const size = menuRendererContext?.size;
-  const iconSpace = useBraidTheme().legacy ? 'small' : iconSlotSpace;
-
-  return (
-    <Box
-      component="span"
-      position="relative"
-      display="flex"
-      alignItems="center"
-      paddingRight={iconSpace}
-    >
-      <Box
-        component="span"
-        display="block"
-        className={[iconSize({ size }), styles.menuItemLeftSlot]}
-      >
-        &nbsp;
-      </Box>
-      {children ? (
-        <Box component="span" position="absolute" display="flex">
-          {children}
-        </Box>
-      ) : null}
-    </Box>
-  );
-}
-
 export interface MenuItemChildrenProps {
   children: ReactNode;
   tone: MenuItemTone;
   badge: ReactElement<BadgeProps> | undefined;
-  icon: ReactNode | undefined;
-  formElement?: boolean;
+  leftSlot: ReactNode | undefined;
+  isCheckbox?: boolean;
 }
 function MenuItemChildren({
-  icon,
+  leftSlot,
   tone,
   children,
   badge,
-  formElement = false,
+  isCheckbox = false,
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
   const badgeSpace = useBraidTheme().legacy ? 'small' : badgeSlotSpace;
+  const iconSpace = useBraidTheme().legacy ? 'small' : iconSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -235,15 +207,36 @@ function MenuItemChildren({
 
   return (
     <Box component="span" display="flex" alignItems="center" minWidth={0}>
-      {!formElement && (icon || reserveIconSpace) ? (
-        <MenuItemLeftSlot>
-          <Text
-            size={size}
-            tone={tone && tone === 'critical' ? tone : undefined}
+      {leftSlot || reserveIconSpace ? (
+        <Box
+          component="span"
+          position="relative"
+          display="flex"
+          alignItems="center"
+          paddingRight={iconSpace}
+        >
+          <Box
+            component="span"
+            display="block"
+            className={[iconSize({ size }), styles.menuItemLeftSlot]}
           >
-            {icon}
-          </Text>
-        </MenuItemLeftSlot>
+            &nbsp;
+          </Box>
+          {leftSlot ? (
+            <Box component="span" position="absolute">
+              {isCheckbox ? (
+                leftSlot
+              ) : (
+                <Text
+                  size={size}
+                  tone={tone && tone === 'critical' ? tone : undefined}
+                >
+                  {leftSlot}
+                </Text>
+              )}
+            </Box>
+          ) : null}
+        </Box>
       ) : null}
       <Box component="span" minWidth={0}>
         <Text
