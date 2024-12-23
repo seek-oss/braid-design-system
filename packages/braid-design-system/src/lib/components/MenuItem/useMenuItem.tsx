@@ -26,6 +26,7 @@ import { iconSlotSpace } from '../private/iconSlotSpace';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import { DefaultBadgePropsProvider } from '../Badge/defaultBadgeProps';
+import { Inline } from '../Inline/Inline';
 
 const {
   MENU_ITEM_UP,
@@ -161,7 +162,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
           display: 'flex',
           alignItems: 'center',
           width: 'full',
-          paddingX: size === 'standard' ? 'small' : 'small',
+          paddingX: 'small',
           paddingY: size === 'standard' ? undefined : 'xsmall',
           height: size === 'standard' ? 'touchable' : undefined,
           cursor: 'pointer',
@@ -176,33 +177,23 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
 
 export function MenuItemLeftSlot({ children }: { children?: ReactNode }) {
   const menuRendererContext = useContext(MenuRendererContext);
-
-  assert(
-    menuRendererContext !== null,
-    `MenuItem must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
-  );
-
-  const { size } = menuRendererContext;
+  const size = menuRendererContext?.size;
   const iconSpace = useBraidTheme().legacy ? 'small' : iconSlotSpace;
+
   return (
-    <Box
-      component="span"
-      paddingRight={iconSpace}
-      flexShrink={0}
-      minWidth={0}
-      position="relative"
-      display="flex"
-      alignItems="center"
-      className={styles.menuItemLeftSlot}
-    >
-      <Box component="span" display="block" className={iconSize({ size })}>
-        &nbsp;
-      </Box>
-      {children ? (
-        <Box position="absolute" display="flex">
-          {children}
+    <Box position="relative" paddingRight={iconSpace}>
+      <Inline component="span" alignY="center" space="none">
+        <Box className={styles.menuItemLeftSlot}>
+          <Box component="span" display="block" className={iconSize({ size })}>
+            &nbsp;
+          </Box>
         </Box>
-      ) : null}
+        {children ? (
+          <Box position="absolute" display="flex">
+            {children}
+          </Box>
+        ) : null}
+      </Inline>
     </Box>
   );
 }
@@ -238,7 +229,7 @@ function MenuItemChildren({
   const { size, reserveIconSpace } = menuRendererContext;
 
   return (
-    <Box component="span" display="flex" alignItems="center" minWidth={0}>
+    <Inline component="span" alignY="center" space="none">
       {!formElement && (icon || reserveIconSpace) ? (
         <MenuItemLeftSlot>
           <Text
@@ -268,6 +259,6 @@ function MenuItemChildren({
           <DefaultBadgePropsProvider bleedY>{badge}</DefaultBadgePropsProvider>
         </Box>
       ) : null}
-    </Box>
+    </Inline>
   );
 }

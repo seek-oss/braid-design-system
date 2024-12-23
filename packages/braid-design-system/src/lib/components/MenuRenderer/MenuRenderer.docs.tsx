@@ -179,8 +179,8 @@ const docs: ComponentDocs = {
         <Text>
           You can customise the size of the menu via the <Strong>size</Strong>{' '}
           prop, which accepts either <Strong>standard</Strong> or{' '}
-          <Strong>small</Strong>. <Strong>small</Strong> menus are recommended
-          when using a small trigger.
+          <Strong>small</Strong>. When using a small trigger,{' '}
+          <Strong>small</Strong> menus are recommended.
         </Text>
       ),
       Example: () =>

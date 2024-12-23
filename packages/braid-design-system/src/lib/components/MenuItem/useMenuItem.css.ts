@@ -9,5 +9,5 @@ export const menuItem = style({
 });
 
 export const menuItemLeftSlot = style({
-  height: '0px',
+  height: '0px', // Prevents the slot from affecting the height of the MenuItem
 });

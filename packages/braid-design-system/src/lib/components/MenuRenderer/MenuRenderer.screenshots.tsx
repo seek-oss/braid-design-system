@@ -100,28 +100,24 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Placement bottom',
       Example: () => (
-        <Box display="flex">
-          <Box position="relative">
-            <Placeholder height={triggerHeight} label="Menu trigger" />
-            <Menu {...defaultProps} placement="bottom">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
+        <Box position="relative">
+          <Placeholder height={triggerHeight} label="Menu trigger" />
+          <Menu {...defaultProps} placement="bottom">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
         </Box>
       ),
     },
     {
       label: 'Placement bottom with small offset',
       Example: () => (
-        <Box display="flex">
-          <Box position="relative">
-            <Placeholder height={triggerHeight} label="Menu trigger" />
-            <Menu {...defaultProps} placement="bottom" offsetSpace="small">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
+        <Box position="relative">
+          <Placeholder height={triggerHeight} label="Menu trigger" />
+          <Menu {...defaultProps} placement="bottom" offsetSpace="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
         </Box>
       ),
     },
@@ -196,32 +192,28 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width content',
       Example: () => (
         <Inline space="medium">
-          <Box display="flex">
-            <Menu {...defaultProps} width="content">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-            </Menu>
-          </Box>
-          <Box display="flex">
-            <Menu {...defaultProps} width="content" size="small">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-            </Menu>
-          </Box>
+          <Menu {...defaultProps} width="content">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+          <Menu {...defaultProps} width="content" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
         </Inline>
       ),
     },
@@ -229,38 +221,34 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width small',
       Example: () => (
         <Inline space="medium">
-          <Box display="flex">
-            <Menu {...defaultProps} width="small">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemDivider />
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
-          <Box display="flex">
-            <Menu {...defaultProps} width="small" size="small">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemDivider />
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
+          <Menu {...defaultProps} width="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemDivider />
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+          <Menu {...defaultProps} width="small" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemDivider />
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
         </Inline>
       ),
     },
@@ -268,32 +256,28 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width medium',
       Example: () => (
         <Inline space="medium">
-          <Box display="flex">
-            <Menu {...defaultProps} width="medium">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-            </Menu>
-          </Box>
-          <Box display="flex">
-            <Menu {...defaultProps} width="medium" size="small">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-            </Menu>
-          </Box>
+          <Menu {...defaultProps} width="medium">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+          <Menu {...defaultProps} width="medium" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
         </Inline>
       ),
     },
@@ -301,32 +285,28 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width large',
       Example: () => (
         <Inline space="medium">
-          <Box display="flex">
-            <Menu {...defaultProps} width="large">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-            </Menu>
-          </Box>
-          <Box display="flex">
-            <Menu {...defaultProps} width="large" size="small">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-            </Menu>
-          </Box>
+          <Menu {...defaultProps} width="large">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+          <Menu {...defaultProps} width="large" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
         </Inline>
       ),
     },
@@ -334,46 +314,42 @@ export const screenshots: ComponentScreenshot = {
       label: 'Reserve icon space',
       Example: () => (
         <Inline space="medium">
-          <Box display="flex">
-            <Menu {...defaultProps} reserveIconSpace>
-              <MenuItem onClick={() => {}} icon={<IconProfile />}>
-                Item
-              </MenuItem>
-              <MenuItem onClick={() => {}} icon={<IconBookmark />}>
-                Item
-              </MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemDivider />
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
-          <Box display="flex">
-            <Menu {...defaultProps} reserveIconSpace size="small">
-              <MenuItem onClick={() => {}} icon={<IconProfile />}>
-                Item
-              </MenuItem>
-              <MenuItem onClick={() => {}} icon={<IconBookmark />}>
-                Item
-              </MenuItem>
-              <MenuItemDivider />
-              <MenuItemCheckbox checked={true} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemCheckbox checked={false} onChange={() => {}}>
-                Item
-              </MenuItemCheckbox>
-              <MenuItemDivider />
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
+          <Menu {...defaultProps} reserveIconSpace>
+            <MenuItem onClick={() => {}} icon={<IconProfile />}>
+              Item
+            </MenuItem>
+            <MenuItem onClick={() => {}} icon={<IconBookmark />}>
+              Item
+            </MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemDivider />
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+          <Menu {...defaultProps} reserveIconSpace size="small">
+            <MenuItem onClick={() => {}} icon={<IconProfile />}>
+              Item
+            </MenuItem>
+            <MenuItem onClick={() => {}} icon={<IconBookmark />}>
+              Item
+            </MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemDivider />
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
         </Inline>
       ),
     },

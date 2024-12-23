@@ -5,11 +5,12 @@
 ---
 updated:
   - MenuRenderer
+  - OverflowMenu
 ---
 
-**MenuRenderer:** Add `small` size.
+**MenuRenderer, OverflowMenu:** Add `small` size.
 
-Introduce a new `small` size for the `MenuRenderer` component.
+Introduce a new `small` size for `MenuRenderer` and `OverflowMenu`.
 This is available via the `size` prop, which supports the existing `standard` (default) and `small`.
 
 **EXAMPLE USAGE:**
