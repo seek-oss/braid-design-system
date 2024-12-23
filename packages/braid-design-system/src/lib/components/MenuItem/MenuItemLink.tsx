@@ -36,7 +36,7 @@ export const MenuItemLink = ({
       target={target}
       rel={rel}
     >
-      <MenuItemChildren tone={tone} icon={icon} badge={badge}>
+      <MenuItemChildren tone={tone} leftSlot={icon} badge={badge}>
         {children}
       </MenuItemChildren>
     </Box>
