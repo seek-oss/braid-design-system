@@ -101,6 +101,7 @@ const Cell = ({
       }}
       className={{
         [styles.cell]: true,
+        [styles.headCell]: isHeaderCell,
         [styles.nowrap]: !wrap,
         [styles.softWidth]: softWidth,
         [styles.minWidth]: typeof minWidth !== 'undefined',

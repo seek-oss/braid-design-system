@@ -5,6 +5,7 @@ import { responsiveStyle } from '../../css/responsiveStyle';
 
 const borderColor = createVar();
 const sectionBorder = `${vars.borderWidth.standard} solid ${borderColor}`;
+const innerBorder = `1px solid ${borderColor}`;
 export const table = style([
   {
     borderCollapse: 'separate',
@@ -26,15 +27,31 @@ export const table = style([
   }),
 ]);
 
+export const tableHeader = style({});
 export const tableSection = style({});
 
 export const row = style({});
 
 export const cell = style({});
+export const headCell = style({});
 // Apply finer border between rows within a table section
 globalStyle(`${row}:not(:last-child) > ${cell}`, {
-  borderBottom: `1px solid ${borderColor}`,
+  borderBottom: innerBorder,
 });
+
+// Apply fine vertical border between header cells and regular cells
+globalStyle(
+  `${tableSection}:not(${tableHeader}) > ${row} > ${headCell}:not(:first-child)`,
+  {
+    borderLeft: innerBorder,
+  },
+);
+globalStyle(
+  `${tableSection}:not(${tableHeader}) > ${row} > ${headCell}:not(:last-child)`,
+  {
+    borderRight: innerBorder,
+  },
+);
 
 // Apply heavier border between table sections
 globalStyle(

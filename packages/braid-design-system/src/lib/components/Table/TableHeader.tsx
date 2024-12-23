@@ -26,7 +26,7 @@ export const TableHeader = ({
     <TableHeaderContext.Provider value={true}>
       <Box
         component="thead"
-        className={styles.tableSection}
+        className={[styles.tableSection, styles.tableHeader]}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}
