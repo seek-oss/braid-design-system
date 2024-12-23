@@ -8,9 +8,9 @@ import {
   IconChevron,
   Placeholder,
   IconList,
+  ButtonIcon,
 } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
-import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 
 export const snippets: Snippets = [
   {
