@@ -78,7 +78,7 @@ export const snippets: Snippets = [
             <TableHeaderCell width="content">
               <Text>Status</Text>
             </TableHeaderCell>
-            <TableHeaderCell width="30%">
+            <TableHeaderCell>
               <Text>Data</Text>
             </TableHeaderCell>
             <TableHeaderCell>
