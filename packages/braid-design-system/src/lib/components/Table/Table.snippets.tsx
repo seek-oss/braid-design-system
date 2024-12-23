@@ -115,7 +115,7 @@ export const snippets: Snippets = [
           ].map((row) => (
             <TableRow key={row.column1}>
               <TableCell width="content">
-                <Badge bleedY>{row.status}</Badge>
+                <Badge>{row.status}</Badge>
               </TableCell>
               <TableCell>
                 <Text>{row.column1}</Text>

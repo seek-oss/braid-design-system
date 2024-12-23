@@ -17,6 +17,7 @@ import { Inline } from '../Inline/Inline';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { DefaultBadgePropsProvider } from '../Badge/defaultBadgeProps';
 
 import * as styles from './Table.css';
 
@@ -120,19 +121,21 @@ const Cell = ({
       })}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <DefaultTextPropsProvider
-        size="small"
-        weight={isHeaderCell || isFooterCell ? 'strong' : undefined}
-        maxLines={hasMaxWidth && !wrap ? 1 : undefined}
-      >
-        {align !== 'left' ? (
-          <Inline space="none" align={align}>
-            <>{children}</>
-          </Inline>
-        ) : (
-          children
-        )}
-      </DefaultTextPropsProvider>
+      <DefaultBadgePropsProvider bleedY>
+        <DefaultTextPropsProvider
+          size="small"
+          weight={isHeaderCell || isFooterCell ? 'strong' : undefined}
+          maxLines={hasMaxWidth && !wrap ? 1 : undefined}
+        >
+          {align !== 'left' ? (
+            <Inline space="none" align={align}>
+              <>{children}</>
+            </Inline>
+          ) : (
+            children
+          )}
+        </DefaultTextPropsProvider>
+      </DefaultBadgePropsProvider>
     </Box>
   );
 };

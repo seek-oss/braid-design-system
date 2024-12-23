@@ -556,7 +556,7 @@ const docs: ComponentDocs = {
                   {getState('rows').map((row: any) => (
                     <TableRow key={row.column1}>
                       <TableCell width="content">
-                        <Badge bleedY>Badge</Badge>
+                        <Badge>Badge</Badge>
                       </TableCell>
                       <TableCell width="30%">
                         <Text>{row.column1}</Text>
@@ -654,7 +654,7 @@ const docs: ComponentDocs = {
                   {getState('rows').map((row: any) => (
                     <TableRow key={row.column1}>
                       <TableCell width="content">
-                        <Badge bleedY>Badge</Badge>
+                        <Badge>Badge</Badge>
                       </TableCell>
                       <TableCell maxWidth={100}>
                         <Text>{row.column1}</Text>
