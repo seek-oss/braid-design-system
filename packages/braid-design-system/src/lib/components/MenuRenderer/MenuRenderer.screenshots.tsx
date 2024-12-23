@@ -100,24 +100,28 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Placement bottom',
       Example: () => (
-        <Box position="relative">
-          <Placeholder height={triggerHeight} label="Menu trigger" />
-          <Menu {...defaultProps} placement="bottom">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-          </Menu>
+        <Box display="flex">
+          <Box position="relative">
+            <Placeholder height={triggerHeight} label="Menu trigger" />
+            <Menu {...defaultProps} placement="bottom">
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+            </Menu>
+          </Box>
         </Box>
       ),
     },
     {
       label: 'Placement bottom with small offset',
       Example: () => (
-        <Box position="relative">
-          <Placeholder height={triggerHeight} label="Menu trigger" />
-          <Menu {...defaultProps} placement="bottom" offsetSpace="small">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-          </Menu>
+        <Box display="flex">
+          <Box position="relative">
+            <Placeholder height={triggerHeight} label="Menu trigger" />
+            <Menu {...defaultProps} placement="bottom" offsetSpace="small">
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+              <MenuItem onClick={() => {}}>Item</MenuItem>
+            </Menu>
+          </Box>
         </Box>
       ),
     },
