@@ -12,6 +12,7 @@ import {
   IconProfile,
   IconBookmark,
   MenuItemDivider,
+  Stack,
 } from '..';
 import source from '@braid-design-system/source.macro';
 
@@ -115,6 +116,53 @@ export const galleryItems: GalleryComponent = {
               <MenuItemLink href="#">Link</MenuItemLink>
             </MenuRenderer>
           </Inline>,
+        ),
+    },
+    {
+      label: 'Sizes',
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Inline space="none">
+              <MenuRenderer
+                offsetSpace="small"
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text>
+                      Standard{' '}
+                      <IconChevron
+                        direction={open ? 'up' : 'down'}
+                        alignY="lowercase"
+                      />
+                    </Text>
+                  </Box>
+                )}
+              >
+                <MenuItem onClick={() => {}}>Button</MenuItem>
+                <MenuItemLink href="#">Link</MenuItemLink>
+              </MenuRenderer>
+            </Inline>
+            <Inline space="none">
+              <MenuRenderer
+                size="small"
+                offsetSpace="xsmall"
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text size="small">
+                      Small{' '}
+                      <IconChevron
+                        direction={open ? 'up' : 'down'}
+                        alignY="lowercase"
+                      />
+                    </Text>
+                  </Box>
+                )}
+              >
+                <MenuItem onClick={() => {}}>Button</MenuItem>
+                <MenuItemLink href="#">Link</MenuItemLink>
+              </MenuRenderer>
+            </Inline>
+          </Stack>,
         ),
     },
     {

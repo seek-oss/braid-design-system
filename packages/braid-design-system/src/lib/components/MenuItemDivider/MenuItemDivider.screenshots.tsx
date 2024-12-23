@@ -1,11 +1,12 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box, MenuItem, MenuItemCheckbox, MenuItemDivider } from '../';
+import { Inline, MenuItem, MenuItemCheckbox, MenuItemDivider } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
 
 const defaultProps = {
   offsetSpace: 'none',
   align: 'left',
+  size: 'standard',
   width: 'content',
   highlightIndex: -1,
   open: true,
@@ -22,7 +23,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Default',
       Example: () => (
-        <Box display="flex">
+        <Inline space="medium">
           <Menu {...defaultProps}>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -34,13 +35,24 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-        </Box>
+          <Menu {...defaultProps} size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+        </Inline>
       ),
     },
     {
       label: 'Highlighted before divider',
       Example: () => (
-        <Box display="flex">
+        <Inline space="medium">
           <Menu {...defaultProps} highlightIndex={1}>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -52,13 +64,24 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-        </Box>
+          <Menu {...defaultProps} size="small" highlightIndex={1}>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+        </Inline>
       ),
     },
     {
-      label: 'Highlighted before divider',
+      label: 'Highlighted after divider',
       Example: () => (
-        <Box display="flex">
+        <Inline space="medium">
           <Menu {...defaultProps} highlightIndex={2}>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -70,7 +93,18 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-        </Box>
+          <Menu {...defaultProps} size="small" highlightIndex={2}>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+        </Inline>
       ),
     },
   ],

@@ -7418,6 +7418,9 @@ exports[`MenuRenderer 1`] = `
         | "bottom"
         | "top"
     reserveIconSpace?: boolean
+    size?: 
+        | "small"
+        | "standard"
     trigger: (props: TriggerProps, state: TriggerState) => ReactNode
     width?: 
         | "content"
@@ -7495,6 +7498,9 @@ exports[`OverflowMenu 1`] = `
         | "bottom"
         | "top"
     reserveIconSpace?: boolean
+    size?: 
+        | "small"
+        | "standard"
     width?: 
         | "content"
         | "large"

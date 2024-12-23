@@ -26,6 +26,8 @@ import buildDataAttributes, {
 import * as styles from './MenuRenderer.css';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { vars } from '../../themes/vars.css';
 
 interface TriggerProps {
   'aria-haspopup': boolean;
@@ -46,11 +48,13 @@ interface CloseReasonSelection {
   index: number;
   id?: string;
 }
+export type MenuSize = 'standard' | 'small';
 type CloseReason = CloseReasonSelection | CloseReasonExit;
 export interface MenuRendererProps {
   trigger: (props: TriggerProps, state: TriggerState) => ReactNode;
   align?: 'left' | 'right';
   offsetSpace?: ResponsiveSpace;
+  size?: MenuSize;
   width?: keyof typeof styles.width | 'content';
   placement?: 'top' | 'bottom';
   onOpen?: () => void;
@@ -118,6 +122,7 @@ export const MenuRenderer = ({
   onOpen,
   onClose,
   trigger,
+  size = 'standard',
   width = 'content',
   align = 'left',
   offsetSpace = 'none',
@@ -344,6 +349,7 @@ export const MenuRenderer = ({
           <BraidPortal>
             <Menu
               align={align}
+              size={size}
               width={width}
               placement={placement}
               offsetSpace={offsetSpace}
@@ -385,6 +391,7 @@ const borderRadius = 'large';
 interface MenuProps {
   offsetSpace: NonNullable<MenuRendererProps['offsetSpace']>;
   align: NonNullable<MenuRendererProps['align']>;
+  size: NonNullable<MenuRendererProps['size']>;
   width: NonNullable<MenuRendererProps['width']>;
   placement: NonNullable<MenuRendererProps['placement']>;
   reserveIconSpace: NonNullable<MenuRendererProps['reserveIconSpace']>;
@@ -399,6 +406,7 @@ interface MenuProps {
 export function Menu({
   offsetSpace,
   align,
+  size,
   width,
   placement,
   children,
@@ -411,15 +419,19 @@ export function Menu({
 }: MenuProps) {
   let dividerCount = 0;
 
-  const inlineVars =
-    triggerPosition &&
-    assignInlineVars({
+  const menuYPadding =
+    useBraidTheme().legacy && size === 'small' ? 'xsmall' : 'xxsmall';
+
+  const inlineVars = assignInlineVars({
+    ...(triggerPosition && {
       [styles.triggerVars[placement]]: `${triggerPosition[placement]}px`,
       [styles.triggerVars[align]]: `${triggerPosition[align]}px`,
-    });
+    }),
+    [styles.menuYPadding]: vars.space[menuYPadding],
+  });
 
   return (
-    <MenuRendererContext.Provider value={{ reserveIconSpace }}>
+    <MenuRendererContext.Provider value={{ size, reserveIconSpace }}>
       <Box
         role="menu"
         position={position}
@@ -427,7 +439,6 @@ export function Menu({
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
-        paddingY="xxsmall"
         marginTop={placement === 'bottom' ? offsetSpace : undefined}
         marginBottom={placement === 'top' ? offsetSpace : undefined}
         transition="fast"
@@ -439,8 +450,11 @@ export function Menu({
           width !== 'content' && styles.width[width],
         ]}
       >
-        <ScrollContainer direction="vertical" fadeSize="small">
-          <Box className={styles.menuHeightLimit}>
+        <ScrollContainer
+          direction="vertical"
+          fadeSize={size === 'standard' ? 'medium' : 'small'}
+        >
+          <Box paddingY={menuYPadding}>
             {Children.map(children, (item, i) => {
               if (isDivider(item)) {
                 dividerCount++;
