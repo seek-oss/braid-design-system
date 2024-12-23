@@ -26,7 +26,6 @@ import { iconSlotSpace } from '../private/iconSlotSpace';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import { DefaultBadgePropsProvider } from '../Badge/defaultBadgeProps';
-import { Inline } from '../Inline/Inline';
 
 const {
   MENU_ITEM_UP,
@@ -181,19 +180,25 @@ export function MenuItemLeftSlot({ children }: { children?: ReactNode }) {
   const iconSpace = useBraidTheme().legacy ? 'small' : iconSlotSpace;
 
   return (
-    <Box position="relative" paddingRight={iconSpace}>
-      <Inline component="span" alignY="center" space="none">
-        <Box className={styles.menuItemLeftSlot}>
-          <Box component="span" display="block" className={iconSize({ size })}>
-            &nbsp;
-          </Box>
+    <Box
+      component="span"
+      position="relative"
+      display="flex"
+      alignItems="center"
+      paddingRight={iconSpace}
+    >
+      <Box
+        component="span"
+        display="block"
+        className={[iconSize({ size }), styles.menuItemLeftSlot]}
+      >
+        &nbsp;
+      </Box>
+      {children ? (
+        <Box component="span" position="absolute" display="flex">
+          {children}
         </Box>
-        {children ? (
-          <Box position="absolute" display="flex">
-            {children}
-          </Box>
-        ) : null}
-      </Inline>
+      ) : null}
     </Box>
   );
 }
@@ -229,7 +234,7 @@ function MenuItemChildren({
   const { size, reserveIconSpace } = menuRendererContext;
 
   return (
-    <Inline component="span" alignY="center" space="none">
+    <Box component="span" display="flex" alignItems="center" minWidth={0}>
       {!formElement && (icon || reserveIconSpace) ? (
         <MenuItemLeftSlot>
           <Text
@@ -259,6 +264,6 @@ function MenuItemChildren({
           <DefaultBadgePropsProvider bleedY>{badge}</DefaultBadgePropsProvider>
         </Box>
       ) : null}
-    </Inline>
+    </Box>
   );
 }
