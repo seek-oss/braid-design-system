@@ -25,7 +25,6 @@ import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { iconSlotSpace } from '../private/iconSlotSpace';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
-import { DefaultBadgePropsProvider } from '../Badge/defaultBadgeProps';
 
 const {
   MENU_ITEM_UP,
@@ -248,13 +247,8 @@ function MenuItemChildren({
         </Text>
       </Box>
       {badge ? (
-        <Box
-          component="span"
-          paddingLeft={badgeSpace}
-          flexShrink={0}
-          minWidth={0}
-        >
-          <DefaultBadgePropsProvider bleedY>{badge}</DefaultBadgePropsProvider>
+        <Box component="span" paddingLeft={badgeSpace}>
+          <Text size={size}>{badge}</Text>
         </Box>
       ) : null}
     </Box>
