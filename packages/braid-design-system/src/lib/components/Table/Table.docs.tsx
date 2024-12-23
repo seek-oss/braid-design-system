@@ -24,6 +24,7 @@ import source from '@braid-design-system/source.macro';
 import type { StackProps } from '../Stack/Stack';
 import { palette } from '../../color/palette';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
+import { stripTypeAnyFromCode } from './stripTypeAnyFromCode';
 
 const opacityForDepth = {
   table: 1,
@@ -63,7 +64,7 @@ const TableSection = ({
 );
 
 const docs: ComponentDocs = {
-  category: 'Layout',
+  category: 'Content',
   subComponents: [
     'TableHeader',
     'TableRow',
@@ -207,66 +208,60 @@ const docs: ComponentDocs = {
           styling.
         </Text>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-              {
-                column1: 'Semper',
-                column2: 'Interdum',
-                column3: 'Viverra',
-              },
-            ])}
-            <Table label="Table column headings example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell>
-                    <Text>Lorem</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Ipsum</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Dolor</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell>
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+                {
+                  column1: 'Semper',
+                  column2: 'Interdum',
+                  column3: 'Viverra',
+                },
+              ])}
+              <Table label="Table column headings example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell>
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell>
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       label: 'Row headers',
@@ -277,53 +272,47 @@ const docs: ComponentDocs = {
           the <Strong>TableBody</Strong> section.
         </Text>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-              {
-                column1: 'Semper',
-                column2: 'Interdum',
-                column3: 'Viverra',
-              },
-            ])}
-            <Table label="Table row headers example">
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableHeaderCell>
-                      <Text>{row.column1}</Text>
-                    </TableHeaderCell>
-                    <TableCell>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+                {
+                  column1: 'Semper',
+                  column2: 'Interdum',
+                  column3: 'Viverra',
+                },
+              ])}
+              <Table label="Table row headers example">
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableHeaderCell>
+                        <Text>{row.column1}</Text>
+                      </TableHeaderCell>
+                      <TableCell>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       description: (
@@ -345,75 +334,69 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: '09:00-10:00',
-                column2: 'Sit',
-                column3: 'Amet',
-                column4: 'Consectetur',
-              },
-              {
-                column1: '10:00-11:00',
-                column2: 'Adipiscing',
-                column3: 'Elit',
-                column4: 'Praesent',
-              },
-              {
-                column1: '11:00-12:00',
-                column2: 'Semper',
-                column3: 'Interdum',
-                column4: 'Viverra',
-              },
-            ])}
-            <Table label="Table dual axis heading example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell>
-                    <HiddenVisually>Time</HiddenVisually>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Lorem</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Ipsum</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Dolor</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: '09:00-10:00',
+                  column2: 'Sit',
+                  column3: 'Amet',
+                  column4: 'Consectetur',
+                },
+                {
+                  column1: '10:00-11:00',
+                  column2: 'Adipiscing',
+                  column3: 'Elit',
+                  column4: 'Praesent',
+                },
+                {
+                  column1: '11:00-12:00',
+                  column2: 'Semper',
+                  column3: 'Interdum',
+                  column4: 'Viverra',
+                },
+              ])}
+              <Table label="Table dual axis heading example">
+                <TableHeader>
+                  <TableRow>
                     <TableHeaderCell>
-                      <Text>{row.column1}</Text>
+                      <HiddenVisually>Time</HiddenVisually>
                     </TableHeaderCell>
-                    <TableCell>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column4}</Text>
-                    </TableCell>
+                    <TableHeaderCell>
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableHeaderCell>
+                        <Text>{row.column1}</Text>
+                      </TableHeaderCell>
+                      <TableCell>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column4}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       label: 'Footers',
@@ -424,79 +407,73 @@ const docs: ComponentDocs = {
           components, providing the relevant semantics and styling.
         </Text>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-              {
-                column1: 'Semper',
-                column2: 'Interdum',
-                column3: 'Viverra',
-              },
-            ])}
-            <Table label="Table footer example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell>
-                    <Text>Lorem</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Ipsum</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Dolor</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+                {
+                  column1: 'Semper',
+                  column2: 'Interdum',
+                  column3: 'Viverra',
+                },
+              ])}
+              <Table label="Table footer example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell>
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell>
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
                     <TableCell>
-                      <Text>{row.column1}</Text>
+                      <Text>Quis</Text>
                     </TableCell>
                     <TableCell>
-                      <Text>{row.column2}</Text>
+                      <Text>Tempor</Text>
                     </TableCell>
                     <TableCell>
-                      <Text>{row.column3}</Text>
+                      <Text>Voluptate</Text>
                     </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-              <TableFooter>
-                <TableRow>
-                  <TableCell>
-                    <Text>Quis</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>Tempor</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>Voluptate</Text>
-                  </TableCell>
-                </TableRow>
-              </TableFooter>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+                </TableFooter>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       label: 'Column widths',
@@ -534,84 +511,78 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-              {
-                column1: 'Semper',
-                column2: 'Interdum',
-                column3: 'Viverra',
-              },
-            ])}
-            <Table label="Table column widths example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell width="content">
-                    <Text>&ldquo;content&rdquo;</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell width="30%">
-                    <Text>&ldquo;30%&rdquo;</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>&ldquo;auto&rdquo;</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>&ldquo;auto&rdquo;</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell width="content" align="right">
-                    <Text>&ldquo;content&rdquo;</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell width="content">
-                      <Badge bleedY>Badge</Badge>
-                    </TableCell>
-                    <TableCell width="30%">
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
-                    <TableCell width="content" align="right">
-                      <ButtonIcon
-                        icon={<IconEdit />}
-                        label="Edit"
-                        size="small"
-                        variant="transparent"
-                        id={`edit-${row.column1}`}
-                      />
-                    </TableCell>
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+                {
+                  column1: 'Semper',
+                  column2: 'Interdum',
+                  column3: 'Viverra',
+                },
+              ])}
+              <Table label="Table column widths example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="content">
+                      <Text>&ldquo;content&rdquo;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="30%">
+                      <Text>&ldquo;30%&rdquo;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>&ldquo;auto&rdquo;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>&ldquo;auto&rdquo;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="content" align="right">
+                      <Text>&ldquo;content&rdquo;</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell width="content">
+                        <Badge bleedY>Badge</Badge>
+                      </TableCell>
+                      <TableCell width="30%">
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                      <TableCell width="content" align="right">
+                        <ButtonIcon
+                          icon={<IconEdit />}
+                          label="Edit"
+                          size="small"
+                          variant="transparent"
+                          id={`edit-${row.column1}`}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       description: (
@@ -638,84 +609,78 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing incididunt amet id laborum minim',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-              {
-                column1: 'Semper',
-                column2: 'Interdum',
-                column3: 'Viverra',
-              },
-            ])}
-            <Table label="Table column limits example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell width="content">
-                    <Text>&ldquo;content&rdquo;</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell maxWidth={100}>
-                    <Text>maxWidth=100</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>&ldquo;auto&rdquo;</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>&ldquo;auto&rdquo;</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell width="content" align="right">
-                    <Text>&ldquo;content&rdquo;</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell width="content">
-                      <Badge bleedY>Badge</Badge>
-                    </TableCell>
-                    <TableCell maxWidth={100}>
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
-                    <TableCell width="content" align="right">
-                      <ButtonIcon
-                        icon={<IconEdit />}
-                        label="Edit"
-                        size="small"
-                        variant="transparent"
-                        id={`edit-${row.column1}`}
-                      />
-                    </TableCell>
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing incididunt amet id laborum minim',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+                {
+                  column1: 'Semper',
+                  column2: 'Interdum',
+                  column3: 'Viverra',
+                },
+              ])}
+              <Table label="Table column limits example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="content">
+                      <Text>&ldquo;content&rdquo;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell maxWidth={100}>
+                      <Text>maxWidth=100</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>&ldquo;auto&rdquo;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>&ldquo;auto&rdquo;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="content" align="right">
+                      <Text>&ldquo;content&rdquo;</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell width="content">
+                        <Badge bleedY>Badge</Badge>
+                      </TableCell>
+                      <TableCell maxWidth={100}>
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                      <TableCell width="content" align="right">
+                        <ButtonIcon
+                          icon={<IconEdit />}
+                          label="Edit"
+                          size="small"
+                          variant="transparent"
+                          id={`edit-${row.column1}`}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       label: 'Vertical alignment',
@@ -859,61 +824,55 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-            ])}
-            <Table label="Horizontal alignment example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell align="left">
-                    <Text>“left”</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell align="center">
-                    <Text>“center”</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell align="right">
-                    <Text>“right”</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell align="left">
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Text>{row.column3}</Text>
-                    </TableCell>
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+              ])}
+              <Table label="Horizontal alignment example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell align="left">
+                      <Text>“left”</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell align="center">
+                      <Text>“center”</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell align="right">
+                      <Text>“right”</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell align="left">
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell align="center">
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell align="right">
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       label: 'Wrapping',
@@ -932,64 +891,58 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code, value } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1:
-                  'Id nisi consequat enim exercitation non fugiat ipsum ut ea.',
-                column2:
-                  'Incididunt eu anim eu pariatur dolore dolore fugiat qui ipsum tempor ex laborum voluptate sint.',
-                column3:
-                  'Culpa labore minim consectetur ut officia ea ea cupidatat excepteur ipsum.',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-            ])}
-            <Table label="Column wrapping example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell>
-                    <Text>Lorem</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Ipsum</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Dolor</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell wrap>
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell wrap>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell wrap>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1:
+                    'Id nisi consequat enim exercitation non fugiat ipsum ut ea.',
+                  column2:
+                    'Incididunt eu anim eu pariatur dolore dolore fugiat qui ipsum tempor ex laborum voluptate sint.',
+                  column3:
+                    'Culpa labore minim consectetur ut officia ea ea cupidatat excepteur ipsum.',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+              ])}
+              <Table label="Column wrapping example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell>
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: code
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value,
-        };
-      },
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell wrap>
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell wrap>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell wrap>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
     {
       label: 'Column visibility',
@@ -1102,57 +1055,57 @@ const docs: ComponentDocs = {
           </>,
         );
 
-        const { code: codeDemo } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-            ])}
-            <Table label="Column visibility example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell>
-                    <Text>Lorem</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell hideBelow="tablet">
-                    <Text>Ipsum</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Dolor</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell>
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell hideBelow="tablet">
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
+        const { code: codeDemo } = stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+              ])}
+              <Table label="Column visibility example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell>
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell hideBelow="tablet">
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell>
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell hideBelow="tablet">
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
         );
 
         return {
-          code: codeDemo
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
+          code: codeDemo,
           value: visual,
         };
       },
@@ -1166,73 +1119,67 @@ const docs: ComponentDocs = {
           via the <Strong>colspan</Strong> prop.
         </Text>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { code: codeDemo, value: visual } = source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Sit',
-                column2: 'Amet',
-                column3: 'Consectetur',
-              },
-              {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-              },
-            ])}
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+              ])}
 
-            <Table label="Column spanning example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell width="30%">
-                    <Text>Lorem</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell width="30%">
-                    <Text>Ipsum</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell width="30%">
-                    <Text>Dolor</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell width="30%">
-                      <Text>{row.column1}</Text>
+              <Table label="Column spanning example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="30%">
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="30%">
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="30%">
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell width="30%">
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell width="30%">
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell width="30%">
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow>
+                    <TableCell colspan={2} wrap>
+                      <Text>
+                        Culpa labore minim consectetur ut officia ea ea
+                        cupidatat excepteur.
+                      </Text>
                     </TableCell>
-                    <TableCell width="30%">
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell width="30%">
-                      <Text>{row.column3}</Text>
+                    <TableCell>
+                      <Text>Tempor</Text>
                     </TableCell>
                   </TableRow>
-                ))}
-                <TableRow>
-                  <TableCell colspan={2} wrap>
-                    <Text>
-                      Culpa labore minim consectetur ut officia ea ea cupidatat
-                      excepteur.
-                    </Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>Tempor</Text>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </>,
-        );
-
-        return {
-          code: codeDemo
-            .replaceAll(': any', '')
-            .replaceAll(' key={row.column1}', ''),
-          value: visual,
-        };
-      },
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
     },
   ],
 };
