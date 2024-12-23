@@ -13,6 +13,7 @@ import {
   TableHeader,
   TableRow,
   Text,
+  Badge,
 } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
@@ -708,6 +709,77 @@ export const screenshots: ComponentScreenshot = {
                 <Text>Tempor</Text>
               </TableCell>
             </TableRow>
+          </TableBody>
+        </Table>
+      ),
+    },
+    {
+      label: 'Badge bleedY (default to true)',
+      Example: () => (
+        <Table label="Label">
+          <TableBody>
+            {data.map((row) => (
+              <TableRow key={row.column1}>
+                <TableCell width="content">
+                  <Badge>{row.column1}</Badge>
+                </TableCell>
+                <TableCell>
+                  <Text>{row.column2}</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>{row.column3}</Text>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ),
+    },
+    {
+      label: 'Badge bleedY (explicit false)',
+      Example: () => (
+        <Table label="Label">
+          <TableBody>
+            {data.map((row) => (
+              <TableRow key={row.column1}>
+                <TableCell width="content">
+                  <Badge bleedY={false}>{row.column1}</Badge>
+                </TableCell>
+                <TableCell>
+                  <Text>{row.column2}</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>{row.column3}</Text>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ),
+    },
+    {
+      label: 'Badge bleedY (auto inline text)',
+      Example: () => (
+        <Table label="Label">
+          <TableBody>
+            {data.map((row) => (
+              <TableRow key={row.column1}>
+                <TableCell width="content">
+                  <Text>
+                    {row.column1}
+                    <Box component="span" paddingLeft="xsmall">
+                      <Badge>{row.column1}</Badge>
+                    </Box>
+                  </Text>
+                </TableCell>
+                <TableCell>
+                  <Text>{row.column2}</Text>
+                </TableCell>
+                <TableCell>
+                  <Text>{row.column3}</Text>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       ),

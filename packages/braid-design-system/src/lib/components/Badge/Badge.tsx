@@ -89,12 +89,12 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     const headingContext = useContext(HeadingContext);
     const isInline = Boolean(textContext || headingContext);
 
-    const { bleedY } = useDefaultBadgeProps({ bleedY: bleedYProp });
-
     assert(
-      !isInline || (isInline && bleedY === false),
+      !isInline || (isInline && typeof bleedYProp === 'undefined'),
       'A `Badge` cannot use `bleedY` when rendered inside a `Text` or `Heading` component.',
     );
+
+    const { bleedY } = useDefaultBadgeProps({ bleedY: bleedYProp });
 
     const content = (
       // Ensures the foreground text tone follows the default
@@ -132,7 +132,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       </DefaultTextPropsProvider>
     );
 
-    return bleedY ? (
+    return bleedY && !isInline ? (
       <Bleed component="span" vertical={styles.verticalPadding}>
         {content}
       </Bleed>
