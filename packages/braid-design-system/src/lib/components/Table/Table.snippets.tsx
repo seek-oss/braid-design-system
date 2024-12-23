@@ -9,11 +9,9 @@ import {
   TableHeaderCell,
   TableRow,
   Badge,
-  ButtonIcon,
-  MenuRenderer,
-  MenuItem,
-  IconOverflow,
   Stack,
+  OverflowMenu,
+  MenuItem,
 } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
 
@@ -127,23 +125,14 @@ export const snippets: Snippets = [
                 <Text>{row.column3}</Text>
               </TableCell>
               <TableCell width="content" align="right">
-                <MenuRenderer
-                  align="right"
-                  offsetSpace="xsmall"
-                  trigger={(triggerProps) => (
-                    <ButtonIcon
-                      icon={<IconOverflow />}
-                      label="Options"
-                      size="small"
-                      variant="transparent"
-                      id={`options-${row.column1}`}
-                      {...triggerProps}
-                    />
-                  )}
+                <OverflowMenu
+                  size="small"
+                  label="Options"
+                  id={`options-${row.column1}`}
                 >
-                  <MenuItem onClick={() => {}}>Button</MenuItem>
-                  <MenuItem onClick={() => {}}>Button</MenuItem>
-                </MenuRenderer>
+                  <MenuItem>Option</MenuItem>
+                  <MenuItem>Option</MenuItem>
+                </OverflowMenu>
               </TableCell>
             </TableRow>
           ))}
@@ -197,23 +186,14 @@ export const snippets: Snippets = [
                 <Text>{row.column2}</Text>
               </TableCell>
               <TableCell width="content" align="right">
-                <MenuRenderer
-                  align="right"
-                  offsetSpace="xsmall"
-                  trigger={(triggerProps) => (
-                    <ButtonIcon
-                      icon={<IconOverflow />}
-                      label="Options"
-                      size="small"
-                      variant="transparent"
-                      id={`options-${row.line1}`}
-                      {...triggerProps}
-                    />
-                  )}
+                <OverflowMenu
+                  size="small"
+                  label="Options"
+                  id={`options-${row.line1}`}
                 >
-                  <MenuItem onClick={() => {}}>Button</MenuItem>
-                  <MenuItem onClick={() => {}}>Button</MenuItem>
-                </MenuRenderer>
+                  <MenuItem>Option</MenuItem>
+                  <MenuItem>Option</MenuItem>
+                </OverflowMenu>
               </TableCell>
             </TableRow>
           ))}

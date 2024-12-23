@@ -1,10 +1,6 @@
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
 import {
-  ButtonIcon,
-  IconOverflow,
-  MenuItem,
-  MenuRenderer,
   Table,
   TableBody,
   TableCell,
@@ -12,10 +8,13 @@ import {
   TableHeaderCell,
   TableRow,
   Text,
+  Badge,
+  Stack,
+  OverflowMenu,
+  MenuItem,
 } from '..';
 import source from '@braid-design-system/source.macro';
 import { stripTypeAnyFromCode } from './stripTypeAnyFromCode';
-import { Badge, Stack } from '../../playroom/components';
 
 export const galleryItems: GalleryComponent = {
   examples: [
@@ -182,23 +181,14 @@ export const galleryItems: GalleryComponent = {
                         <Text>{row.column3}</Text>
                       </TableCell>
                       <TableCell width="content" align="right">
-                        <MenuRenderer
-                          align="right"
-                          offsetSpace="xsmall"
-                          trigger={(triggerProps) => (
-                            <ButtonIcon
-                              icon={<IconOverflow />}
-                              label="Options"
-                              size="small"
-                              variant="transparent"
-                              id={`options-${row.column1}`}
-                              {...triggerProps}
-                            />
-                          )}
+                        <OverflowMenu
+                          size="small"
+                          label="Options"
+                          id={`options-${row.column1}`}
                         >
-                          <MenuItem onClick={() => {}}>Button</MenuItem>
-                          <MenuItem onClick={() => {}}>Button</MenuItem>
-                        </MenuRenderer>
+                          <MenuItem>Option</MenuItem>
+                          <MenuItem>Option</MenuItem>
+                        </OverflowMenu>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -258,23 +248,14 @@ export const galleryItems: GalleryComponent = {
                         <Text>{row.column2}</Text>
                       </TableCell>
                       <TableCell width="content" align="right">
-                        <MenuRenderer
-                          align="right"
-                          offsetSpace="xsmall"
-                          trigger={(triggerProps) => (
-                            <ButtonIcon
-                              icon={<IconOverflow />}
-                              label="Options"
-                              size="small"
-                              variant="transparent"
-                              id={`options-${row.line1}`}
-                              {...triggerProps}
-                            />
-                          )}
+                        <OverflowMenu
+                          size="small"
+                          label="Options"
+                          id={`options-${row.line1}`}
                         >
-                          <MenuItem onClick={() => {}}>Button</MenuItem>
-                          <MenuItem onClick={() => {}}>Button</MenuItem>
-                        </MenuRenderer>
+                          <MenuItem>Option</MenuItem>
+                          <MenuItem>Option</MenuItem>
+                        </OverflowMenu>
                       </TableCell>
                     </TableRow>
                   ))}
