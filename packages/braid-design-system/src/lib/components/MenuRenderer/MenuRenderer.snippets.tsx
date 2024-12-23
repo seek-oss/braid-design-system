@@ -14,7 +14,7 @@ import source from '@braid-design-system/source.macro';
 
 export const snippets: Snippets = [
   {
-    name: 'Text trigger',
+    name: 'Standard',
     code: source(
       <MenuRenderer
         offsetSpace="small"
@@ -36,7 +36,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small Text trigger',
+    name: 'Small',
     code: source(
       <MenuRenderer
         size="small"
@@ -59,7 +59,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'ButtonIcon trigger',
+    name: 'With ButtonIcon',
     code: source(
       <MenuRenderer
         offsetSpace="small"
@@ -78,7 +78,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small ButtonIcon trigger',
+    name: 'Small with ButtonIcon',
     code: source(
       <MenuRenderer
         size="small"
@@ -100,7 +100,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Placeholder trigger',
+    name: 'With Placeholder',
     code: source(
       <MenuRenderer
         offsetSpace="small"
