@@ -204,7 +204,7 @@ const docs: ComponentDocs = {
           <Stack space="medium">
             <Inline alignY="center" space="medium">
               <Text>Standard</Text>
-              <OverflowMenu size="standard" label="Options" id="example">
+              <OverflowMenu size="standard" label="Options" id="size-standard">
                 <MenuItem id="menuItem1" onClick={() => {}}>
                   Item 1
                 </MenuItem>
@@ -218,7 +218,7 @@ const docs: ComponentDocs = {
             </Inline>
             <Inline alignY="center" space="medium">
               <Text size="small">Small</Text>
-              <OverflowMenu size="small" label="Options" id="example">
+              <OverflowMenu size="small" label="Options" id="size-small">
                 <MenuItem id="menuItem1" onClick={() => {}}>
                   Item 1
                 </MenuItem>
