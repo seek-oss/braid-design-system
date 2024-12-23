@@ -35,6 +35,7 @@ import { snippets as Spread } from './snippets/Spread';
 import { snippets as Stack } from './snippets/Stack';
 import { snippets as Stepper } from './snippets/Stepper';
 import { snippets as Strong } from './snippets/Strong';
+import { snippets as Table } from './snippets/Table';
 import { snippets as Tabs } from './snippets/Tabs';
 import { snippets as Tag } from './snippets/Tag';
 import { snippets as Text } from './snippets/Text';
@@ -84,6 +85,7 @@ export default Object.entries({
   Stack,
   Stepper,
   Strong,
+  Table,
   Tabs,
   Tag,
   Text,
