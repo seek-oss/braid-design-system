@@ -7,8 +7,8 @@ import {
   Text,
   IconChevron,
   Placeholder,
-  IconList,
   ButtonIcon,
+  IconEdit,
 } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
 
@@ -65,7 +65,7 @@ export const snippets: Snippets = [
         offsetSpace="small"
         trigger={(triggerProps) => (
           <ButtonIcon
-            icon={<IconList />}
+            icon={<IconEdit />}
             id="buttonicon-menurenderer"
             label="Menu"
             {...triggerProps}
@@ -87,7 +87,7 @@ export const snippets: Snippets = [
           <Box userSelect="none" cursor="pointer" {...triggerProps}>
             <ButtonIcon
               size="small"
-              icon={<IconList />}
+              icon={<IconEdit />}
               id="small-buttonicon-menurenderer"
               label="Menu"
             />
