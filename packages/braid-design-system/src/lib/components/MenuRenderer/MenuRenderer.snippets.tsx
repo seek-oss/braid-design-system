@@ -64,13 +64,12 @@ export const snippets: Snippets = [
       <MenuRenderer
         offsetSpace="small"
         trigger={(triggerProps) => (
-          <Box userSelect="none" cursor="pointer" {...triggerProps}>
-            <ButtonIcon
-              icon={<IconList />}
-              id="buttonicon-menurenderer"
-              label="Menu"
-            />
-          </Box>
+          <ButtonIcon
+            icon={<IconList />}
+            id="buttonicon-menurenderer"
+            label="Menu"
+            {...triggerProps}
+          />
         )}
       >
         <MenuItem onClick={() => {}}>Button</MenuItem>
@@ -85,14 +84,13 @@ export const snippets: Snippets = [
         size="small"
         offsetSpace="xxsmall"
         trigger={(triggerProps) => (
-          <Box userSelect="none" cursor="pointer" {...triggerProps}>
-            <ButtonIcon
-              size="small"
-              icon={<IconList />}
-              id="buttonicon-menurenderer"
-              label="Menu"
-            />
-          </Box>
+          <ButtonIcon
+            size="small"
+            icon={<IconList />}
+            id="buttonicon-menurenderer"
+            label="Menu"
+            {...triggerProps}
+          />
         )}
       >
         <MenuItem onClick={() => {}}>Button</MenuItem>
@@ -104,8 +102,7 @@ export const snippets: Snippets = [
     name: 'Placeholder trigger',
     code: source(
       <MenuRenderer
-        size="small"
-        offsetSpace="xsmall"
+        offsetSpace="small"
         trigger={(triggerProps) => (
           <Box userSelect="none" cursor="pointer" {...triggerProps}>
             <Placeholder height={50} label="Menu Trigger" />
