@@ -4619,5 +4619,55 @@
         "summary": "**MenuRenderer, OverflowMenu:** Fixes a bug where menus could be obscured when rendered inside a `Dialog` or `Drawer` component."
       }
     ]
+  },
+  {
+    "version": "33.3.0",
+    "updates": [
+      {
+        "updated": [
+          "Tiles"
+        ],
+        "summary": "**Tiles**: Fixes a bug where nested `Tiles` components could calculate their columns incorrectly.\n\nPreviously, when using a `Tiles` component inside another `Tiles` component, the responsive column calculation could be incorrect in certain scenarios. \nThis change ensures nested `Tiles` elements always calculate their columns correctly."
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Ensure inner label is full width\n\nEnsuring the inner label element is full width to maintain backwards compatibility with previous block layout."
+      },
+      {
+        "updated": [
+          "Columns"
+        ],
+        "summary": "**Columns:** Ensure component occupies available height\n\nEnables `Columns` content to occupy the available height of the parent container."
+      },
+      {
+        "new": [
+          "Table"
+        ],
+        "summary": "**Table:** Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<Table label=\"Table example\">\n  <TableHeader>\n    <TableRow>\n      <TableHeaderCell>...</TableHeaderCell>\n      <TableHeaderCell>...</TableHeaderCell>\n      <TableHeaderCell>...</TableHeaderCell>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell>...</TableCell>\n      <TableCell>...</TableCell>\n      <TableCell>...</TableCell>\n    </TableRow>\n    ...\n  </TableBody>\n</Table>\n```"
+      },
+      {
+        "updated": [
+          "AccordionItem"
+        ],
+        "summary": "**AccordionItem**: Simplify internal layout."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu:** Add `small` size.\n\nIntroduce a new `small` size for `MenuRenderer` and `OverflowMenu`.\nThis is available via the `size` prop, which supports the existing `standard` (default) and `small`.\n\n**EXAMPLE USAGE:**\n```jsx\n<MenuRenderer size=\"small\" ... />\n```"
+      },
+      {
+        "updated": [
+          "Accordion",
+          "AccordionItem"
+        ],
+        "summary": "**Accordion, AccordionItem**: Adjust spacing values for improved visual balance.\n\nThis change reduces the default spacing within `Accordion` and `AccordionItem` components at certain sizes, ensuring the content is better associated with the correct `AccordionItem`.\n\nWithin the `Accordion` component, the default space between `AccordionItem` components has been reduced for size `large` with dividers, and sizes `small` and `xsmall` without dividers.\nWithin the `AccordionItem` component, the space between the `label` and content has been reduced for sizes `large` and `small`."
+      }
+    ]
   }
 ]
