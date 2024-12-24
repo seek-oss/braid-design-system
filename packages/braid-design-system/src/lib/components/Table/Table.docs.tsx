@@ -482,26 +482,22 @@ const docs: ComponentDocs = {
           <Text>
             By default, a <Strong>TableCell</Strong> and{' '}
             <Strong>TableHeaderCell</Strong> have a <Strong>width</Strong> of{' '}
-            <Strong>auto</Strong>, accomodating the longest content within the
-            column.
+            <Strong>auto</Strong>, sizing based on the column&rsquo;s longest
+            content and distributing any additional space automatically.
           </Text>
+
           <Text>
-            If the table content is larger than the available space, each column
-            will be as wide as its longest cell and the table will scroll
-            horizontally. However, if the table content is smaller than the
-            available space, the additional space will be distributed
-            automatically across the columns.
+            A cell can be made as small as possible by setting its{' '}
+            <Strong>width</Strong> to <Strong>content</Strong> — recommended for
+            status and actions columns.
           </Text>
+
           <Text>
-            To customise how any available space is distributed, a percentage
-            value may be provided to the <Strong>width</Strong> prop — useful
-            for increasing the focus on key value columns.
+            Alternatively, the distribution of excess space can be weighted by
+            providing a percentage value to the <Strong>width</Strong> prop —
+            useful for increasing the focus on priority columns.
           </Text>
-          <Text>
-            Alternatively, a cell can be made as small as possible by setting
-            its <Strong>width</Strong> to <Strong>content</Strong> — recommended
-            for status and actions columns.
-          </Text>
+
           <Notice tone="info">
             <Text>
               As column widths are set at a cell level, remember to apply them
@@ -588,23 +584,34 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Additionally, columns accept a <Strong>minWidth</Strong> and{' '}
-            <Strong>maxWidth</Strong> prop to further constrain their width.
-            Both props accept a number representing the number of pixels. As a
-            convenience when setting a <Strong>maxWidth</Strong>, all{' '}
-            <Strong>Text</Strong> components in the column will default{' '}
+            Additionally, limits can be provided to column widths via the{' '}
+            <Strong>minWidth</Strong> and <Strong>maxWidth</Strong> props, which
+            accept a number (in pixels).
+          </Text>
+
+          <Text>
+            The <Strong>minWidth</Strong> prop can be used to prevent a column
+            from becoming too small. This is useful for maintaining hierachy
+            when there is less available space, i.e. smaller screen sizes.
+          </Text>
+
+          <Text>
+            The <Strong>maxWidth</Strong> prop is useful for constraining
+            columns with long data, ensuring content is truncated when it
+            exceeds the specified width. As a convenience when setting a{' '}
+            <Strong>maxWidth</Strong>, all <Strong>Text</Strong> components in
+            the column will default{' '}
             <TextLink href="/components/Text#limiting-the-number-of-lines">
               maxLines
             </TextLink>{' '}
-            to a single line, ensuring that content is truncated when its
-            exceeds the specified width.
+            to a single line.
           </Text>
+
           <Notice tone="info">
             <Text>
-              When the <Strong>maxWidth</Strong> prop is used alongside a
-              percentage value for <Strong>width</Strong> it is considered
-              flexible — if there is additional space to be allocated based on
-              the percentage, the column will expand accordingly.
+              If there is additional space to be allocated, a column may expand
+              beyond its <Strong>maxWidth</Strong>, unless a{' '}
+              <Strong>width</Strong> of <Strong>content</Strong> is provided.
             </Text>
           </Notice>
         </>
@@ -620,8 +627,8 @@ const docs: ComponentDocs = {
                   column3: 'Consectetur',
                 },
                 {
-                  column1: 'Adipiscing incididunt amet id laborum minim',
-                  column2: 'Elit',
+                  column1: 'Elit',
+                  column2: 'Adipiscing incididunt amet id laborum minim',
                   column3: 'Praesent',
                 },
                 {
@@ -633,17 +640,14 @@ const docs: ComponentDocs = {
               <Table label="Table column limits example">
                 <TableHeader>
                   <TableRow>
-                    <TableHeaderCell width="content">
-                      <Text>&ldquo;content&rdquo;</Text>
+                    <TableHeaderCell minWidth={150}>
+                      <Text>minWidth=150</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell maxWidth={100}>
-                      <Text>maxWidth=100</Text>
+                    <TableHeaderCell maxWidth={200}>
+                      <Text>maxWidth=200</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell>
-                      <Text>&ldquo;auto&rdquo;</Text>
-                    </TableHeaderCell>
-                    <TableHeaderCell>
-                      <Text>&ldquo;auto&rdquo;</Text>
+                    <TableHeaderCell maxWidth={200} width="content">
+                      <Text>maxWidth & width</Text>
                     </TableHeaderCell>
                     <TableHeaderCell width="content" align="right">
                       <Text>&ldquo;content&rdquo;</Text>
@@ -653,17 +657,14 @@ const docs: ComponentDocs = {
                 <TableBody>
                   {getState('rows').map((row: any) => (
                     <TableRow key={row.column1}>
-                      <TableCell width="content">
-                        <Badge>Badge</Badge>
-                      </TableCell>
-                      <TableCell maxWidth={100}>
+                      <TableCell minWidth={150}>
                         <Text>{row.column1}</Text>
                       </TableCell>
-                      <TableCell>
+                      <TableCell maxWidth={200}>
                         <Text>{row.column2}</Text>
                       </TableCell>
-                      <TableCell>
-                        <Text>{row.column3}</Text>
+                      <TableCell maxWidth={200} width="content">
+                        <Text>{row.column2}</Text>
                       </TableCell>
                       <TableCell width="content" align="right">
                         <ButtonIcon
