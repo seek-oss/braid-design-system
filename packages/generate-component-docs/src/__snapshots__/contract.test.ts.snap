@@ -7871,6 +7871,120 @@ exports[`TabPanels 1`] = `
 }
 `;
 
+exports[`Table 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "center"
+        | "top"
+    children: ReactNode
+    data?: DataAttributeMap
+    label: string
+},
+}
+`;
+
+exports[`TableBody 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableCell 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+    children: ReactNode
+    colspan?: number
+    data?: DataAttributeMap
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
+    maxWidth?: number
+    minWidth?: number
+    width?: 
+        | "auto"
+        | "content"
+        | \`\${number}%\`
+    wrap?: boolean
+},
+}
+`;
+
+exports[`TableFooter 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableHeaderCell 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+    children: ReactNode
+    colspan?: number
+    data?: DataAttributeMap
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
+    maxWidth?: number
+    minWidth?: number
+    width?: 
+        | "auto"
+        | "content"
+        | \`\${number}%\`
+    wrap?: boolean
+},
+}
+`;
+
+exports[`TableHeader 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableRow 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
 exports[`Tabs 1`] = `
 {
   exportType: component,
