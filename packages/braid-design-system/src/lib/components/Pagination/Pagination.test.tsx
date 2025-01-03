@@ -6,6 +6,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BraidTestProvider } from '../../../entries/test';
 import { Pagination } from '..';
+import { defaultPageLimit } from './Pagination';
 
 describe('Pagination', () => {
   it('should render valid html structure', () => {
@@ -65,10 +66,13 @@ describe('Pagination', () => {
     expect(document.body).toHaveFocus();
     await userEvent.tab();
     expect(getByLabelText('Pg 1')).toHaveFocus();
-    await userEvent.tab();
+    for (let i = 0; i < defaultPageLimit; i++) {
+      await userEvent.tab();
+    }
     expect(getByLabelText('Next')).toHaveFocus();
-    await userEvent.tab({ shift: true });
-    await userEvent.tab({ shift: true });
+    for (let i = 0; i <= defaultPageLimit; i++) {
+      await userEvent.tab({ shift: true });
+    }
     expect(document.body).toHaveFocus();
   });
 
@@ -91,12 +95,15 @@ describe('Pagination', () => {
     expect(document.body).toHaveFocus();
     await userEvent.tab();
     expect(getByLabelText('Prev')).toHaveFocus();
-    await userEvent.tab();
+    for (let i = 0; i < defaultPageLimit; i++) {
+      await userEvent.tab();
+    }
     expect(getByLabelText('Pg 8')).toHaveFocus();
     await userEvent.tab();
     expect(document.body).toHaveFocus();
-    await userEvent.tab({ shift: true });
-    await userEvent.tab({ shift: true });
+    for (let i = 0; i <= defaultPageLimit; i++) {
+      await userEvent.tab({ shift: true });
+    }
     expect(getByLabelText('Prev')).toHaveFocus();
   });
 });

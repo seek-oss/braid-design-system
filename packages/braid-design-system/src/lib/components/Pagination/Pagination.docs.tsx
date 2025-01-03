@@ -68,10 +68,9 @@ const docs: ComponentDocs = {
           </Text>
           <Notice>
             <Text>
-              To keep the design simple, only the current page, next and
-              previous links are displayed on <Strong>mobile</Strong>, while on
-              larger devices the limit cannot be increased above the default
-              limit of {defaultPageLimit}.
+              To keep the design simple, only 3 links are displayed on{' '}
+              <Strong>mobile</Strong>, while on larger devices the limit cannot
+              be increased above the default limit of {defaultPageLimit}.
             </Text>
           </Notice>
         </>

@@ -12,6 +12,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styles from './Pagination.css';
+import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 
 export interface PaginationProps {
   page: number;
@@ -65,7 +66,7 @@ const PageNav = ({
         <Text>
           {isPrevious ? <IconChevron direction="left" /> : null}
           <Box
-            display={isPrevious ? ['none', 'inline'] : undefined}
+            display={['none', 'inline']}
             component="span"
             marginLeft={isPrevious ? 'xsmall' : undefined}
             marginRight={isNext ? 'xsmall' : undefined}
@@ -139,18 +140,27 @@ export const Pagination = ({
   pageLabel = (p: number) => `Go to page ${p}`,
   nextLabel = 'Next',
   previousLabel = 'Previous',
-  pageLimit = defaultPageLimit,
+  pageLimit,
   data,
   ...restProps
 }: PaginationProps) => {
   assert(total >= 1, `\`total\` must be at least 1`);
   assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
-  assert(
-    pageLimit >= 1 && pageLimit <= defaultPageLimit,
-    `\`pageLimit\` must be between 1 and ${defaultPageLimit}`,
-  );
+  if (pageLimit) {
+    assert(
+      pageLimit >= 1 && pageLimit <= 7,
+      `\`pageLimit\` must be between 1 and ${defaultPageLimit}`,
+    );
+  }
 
-  const pages = paginate({ page, total, maxPages: pageLimit });
+  const responsiveDefaultPageLimit = useResponsiveValue()({
+    mobile: 3,
+    tablet: pageLimit || defaultPageLimit,
+  });
+
+  const pageLimitValue = responsiveDefaultPageLimit || defaultPageLimit;
+
+  const pages = paginate({ page, total, maxPages: pageLimitValue });
   const showPrevious = page > 1;
   const showNext = page < total;
 
@@ -165,7 +175,7 @@ export const Pagination = ({
           component="li"
           paddingRight={{
             mobile: 'medium',
-            tablet: pageLimit > 2 ? tabletButtonSpacing : undefined,
+            tablet: pageLimitValue > 2 ? tabletButtonSpacing : undefined,
           }}
           transition="fast"
           opacity={!showPrevious ? 0 : undefined}
@@ -190,11 +200,8 @@ export const Pagination = ({
           return (
             <Box
               component="li"
-              display={
-                !current ? { mobile: 'none', tablet: 'block' } : undefined
-              }
               paddingRight={
-                pageLimit > 2 && isNotLast
+                pageLimitValue > 2 && isNotLast
                   ? {
                       tablet: tabletButtonSpacing,
                     }
@@ -218,7 +225,7 @@ export const Pagination = ({
           component="li"
           paddingLeft={{
             mobile: 'medium',
-            tablet: pageLimit > 2 ? tabletButtonSpacing : undefined,
+            tablet: pageLimitValue > 2 ? tabletButtonSpacing : undefined,
           }}
           transition="fast"
           opacity={!showNext ? 0 : undefined}
