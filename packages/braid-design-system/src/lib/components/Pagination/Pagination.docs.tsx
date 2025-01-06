@@ -41,7 +41,7 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#x4-2-general-principles-of-landmark-design">
           General Principles of Landmark Design
         </TextLink>{' '}
-        it is neccessary for it to have an <Strong>aria-label</Strong>.
+        it is necessary for it to have an <Strong>aria-label</Strong>.
       </Text>
       <Text tone="promote" id="translate-nav">
         <IconLanguage title="Translation hint" titleId="translate-nav" /> The{' '}
@@ -64,11 +64,11 @@ const docs: ComponentDocs = {
         <>
           <Text>
             The number of pages displayed can be limited using the{' '}
-            <Strong>pageLimit</Strong> prop.
+            <Strong>pageLimit</Strong> prop, which supports responsive values.
           </Text>
           <Notice>
             <Text>
-              To keep the design simple, only 3 links are displayed on{' '}
+              To keep the design simple, at most 3 links are displayed on{' '}
               <Strong>mobile</Strong>, while on larger devices the limit cannot
               be increased above the default limit of {defaultPageLimit}.
             </Text>

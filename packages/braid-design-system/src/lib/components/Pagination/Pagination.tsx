@@ -13,6 +13,10 @@ import buildDataAttributes, {
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import * as styles from './Pagination.css';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
+import {
+  normalizeResponsiveValue,
+  type RequiredResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
 
 export interface PaginationProps {
   page: number;
@@ -28,7 +32,7 @@ export interface PaginationProps {
   pageLabel?: (page: number) => string;
   nextLabel?: string;
   previousLabel?: string;
-  pageLimit?: number;
+  pageLimit?: RequiredResponsiveValue<1 | 2 | 3 | 4 | 5 | 6 | 7>;
   data?: DataAttributeMap;
 }
 
@@ -63,7 +67,7 @@ const PageNav = ({
         className={styles.background}
       />
       <Box component="span" zIndex={1} userSelect="none">
-        <Text>
+        <Text maxLines={1}>
           {isPrevious ? <IconChevron direction="left" /> : null}
           <Box
             display={['none', 'inline']}
@@ -131,6 +135,11 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
 };
 
 export const defaultPageLimit = 7;
+const defaultMobilePageLimit = 3;
+const defaultResponsivePageLimit = {
+  mobile: defaultMobilePageLimit,
+  tablet: defaultPageLimit,
+} as const;
 
 export const Pagination = ({
   page,
@@ -140,25 +149,29 @@ export const Pagination = ({
   pageLabel = (p: number) => `Go to page ${p}`,
   nextLabel = 'Next',
   previousLabel = 'Previous',
-  pageLimit,
+  pageLimit = defaultResponsivePageLimit,
   data,
   ...restProps
 }: PaginationProps) => {
   assert(total >= 1, `\`total\` must be at least 1`);
   assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
-  if (pageLimit) {
-    assert(
-      pageLimit >= 1 && pageLimit <= 7,
-      `\`pageLimit\` must be between 1 and ${defaultPageLimit}`,
-    );
-  }
 
-  const responsiveDefaultPageLimit = useResponsiveValue()({
-    mobile: 3,
-    tablet: pageLimit || defaultPageLimit,
+  const normalizedResponsiveLimits = normalizeResponsiveValue(pageLimit);
+  const {
+    mobile: mobilePageLimit = defaultMobilePageLimit,
+    tablet: tabletPageLimit = mobilePageLimit,
+    desktop: desktopPageLimit = tabletPageLimit,
+    wide: widePageLimit = desktopPageLimit,
+  } = normalizedResponsiveLimits;
+
+  const responsivePageLimit = useResponsiveValue()({
+    mobile: Math.min(mobilePageLimit, defaultMobilePageLimit),
+    tablet: tabletPageLimit,
+    desktop: desktopPageLimit,
+    wide: widePageLimit,
   });
 
-  const pageLimitValue = responsiveDefaultPageLimit || defaultPageLimit;
+  const pageLimitValue = responsivePageLimit || defaultPageLimit;
 
   const pages = paginate({ page, total, maxPages: pageLimitValue });
   const showPrevious = page > 1;
