@@ -7554,7 +7554,16 @@ exports[`Pagination 1`] = `
     nextLabel?: string
     page: number
     pageLabel?: (page: number) => string
-    pageLimit?: number
+    pageLimit?: 
+        | 1
+        | 2
+        | 3
+        | 4
+        | 5
+        | 6
+        | 7
+        | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", 1 | 2 | 3 | 4 | 5 | 6 | 7>
+        | RequiredResponsiveArray<1 | 2 | 3 | 4, 1 | 2 | 3 | 4 | 5 | 6 | 7 | null>
     previousLabel?: string
     total: number
 },
@@ -7935,6 +7944,16 @@ exports[`TableFooter 1`] = `
 }
 `;
 
+exports[`TableHeader 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
 exports[`TableHeaderCell 1`] = `
 {
   exportType: component,
@@ -7961,16 +7980,6 @@ exports[`TableHeaderCell 1`] = `
         | "content"
         | \`\${number}%\`
     wrap?: boolean
-},
-}
-`;
-
-exports[`TableHeader 1`] = `
-{
-  exportType: component,
-  props: {
-    children: ReactNode
-    data?: DataAttributeMap
 },
 }
 `;
