@@ -454,7 +454,7 @@ export function Menu({
           direction="vertical"
           fadeSize={size === 'standard' ? 'medium' : 'small'}
         >
-          <Box paddingY={menuYPadding}>
+          <Box paddingY={menuYPadding} className={styles.menuHeightLimit}>
             {Children.map(children, (item, i) => {
               if (isDivider(item)) {
                 dividerCount++;
