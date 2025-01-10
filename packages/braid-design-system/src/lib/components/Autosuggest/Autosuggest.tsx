@@ -26,6 +26,7 @@ import {
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
+import { Popover } from '../Popover/Popover';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { IconClear } from '../icons';
@@ -713,7 +714,7 @@ export const Autosuggest = forwardRef(function <Value>(
   }
 
   return (
-    <Fragment>
+    <>
       {showMobileBackdrop ? (
         <Box
           position="fixed"
@@ -738,137 +739,141 @@ export const Autosuggest = forwardRef(function <Value>(
             }
           : null)}
       >
-        <Box position="relative" ref={rootRef}>
-          <Field
-            {...restProps}
-            componentName="Autosuggest"
-            id={resolvedId}
-            value={value.text}
-            prefix={undefined}
-            secondaryIcon={
-              onClear ? (
-                <ClearField
-                  id={`${resolvedId}-clearfield`}
-                  hide={!clearable}
-                  onClear={onClear}
-                  label={clearLabel}
-                  inputRef={inputRef}
-                />
-              ) : null
-            }
-          >
-            {(overlays, fieldProps, icon, secondaryIcon) => (
-              <Box width="full">
-                <Box
-                  component="input"
-                  {...fieldProps}
-                  {...a11y.inputProps}
-                  {...inputProps}
-                  position="relative"
-                  ref={inputRef}
-                />
-                {icon}
-                {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
-                <RemoveScroll ref={menuRef} enabled={isOpen} forwardProps>
-                  <Box
-                    textAlign="left"
-                    component="ul"
-                    display={isOpen ? 'block' : 'none'}
-                    position="absolute"
-                    zIndex="dropdown"
-                    background={
-                      !hasSuggestions && noSuggestionsMessage
-                        ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
-                        : 'surface'
-                    }
-                    borderRadius="standard"
-                    boxShadow="medium"
-                    width="full"
-                    marginTop="xxsmall"
-                    paddingY="xxsmall"
-                    className={styles.menu}
-                    {...a11y.menuProps}
-                  >
-                    {isOpen && !hasSuggestions && noSuggestionsMessage ? (
+        <Box ref={rootRef}>
+          <Popover
+            open={isOpen}
+            align="full"
+            placement="bottom"
+            offsetSpace="none"
+            trigger={(triggerProps) => (
+              <Box {...triggerProps}>
+                <Field
+                  {...restProps}
+                  componentName="Autosuggest"
+                  id={resolvedId}
+                  value={value.text}
+                  prefix={undefined}
+                  secondaryIcon={
+                    onClear ? (
+                      <ClearField
+                        id={`${resolvedId}-clearfield`}
+                        hide={!clearable}
+                        onClear={onClear}
+                        label={clearLabel}
+                        inputRef={inputRef}
+                      />
+                    ) : null
+                  }
+                >
+                  {(overlays, fieldProps, icon, secondaryIcon) => (
+                    <Box width="full">
                       <Box
-                        component="li"
-                        paddingX="small"
-                        className={touchableText.standard}
-                      >
-                        {noSuggestionsMessage.title ? (
-                          <Text
-                            tone="secondary"
-                            weight="medium"
-                            baseline={false}
-                          >
-                            {noSuggestionsMessage.title}
-                          </Text>
-                        ) : null}
-                        <Text tone="secondary" baseline={false}>
-                          {noSuggestionsMessage.description}
-                        </Text>
-                      </Box>
-                    ) : null}
-                    {isOpen && hasSuggestions
-                      ? normalisedSuggestions.map((suggestion, index) => {
-                          const { text } = suggestion;
-                          const groupHeading = groupHeadingIndexes.get(index);
-                          const highlights = suggestionHighlight
-                            ? highlightSuggestions(
-                                suggestion.text,
-                                value.text,
-                                suggestionHighlight,
-                              )
-                            : suggestion.highlights;
-
-                          return (
-                            <Fragment key={index + text}>
-                              {groupHeading ? (
-                                <GroupHeading>{groupHeading}</GroupHeading>
-                              ) : null}
-                              <SuggestionItem
-                                suggestion={{
-                                  ...suggestion,
-                                  highlights,
-                                }}
-                                highlighted={highlightedIndex === index}
-                                selected={value === suggestion}
-                                onClick={() => {
-                                  fireChange(suggestion);
-                                  dispatch({ type: SUGGESTION_MOUSE_CLICK });
-                                }}
-                                onHover={() => {
-                                  dispatch({
-                                    type: SUGGESTION_MOUSE_ENTER,
-                                    value: index,
-                                  });
-                                }}
-                                {...a11y.getItemProps({
-                                  index,
-                                  label: suggestion.label ?? suggestion.text,
-                                  description: suggestion.description,
-                                  groupHeading:
-                                    groupHeadingForSuggestion.get(suggestion),
-                                })}
-                              />
-                            </Fragment>
-                          );
-                        })
-                      : null}
-                  </Box>
-                </RemoveScroll>
-                {overlays}
-                {secondaryIcon}
+                        component="input"
+                        {...fieldProps}
+                        {...a11y.inputProps}
+                        {...inputProps}
+                        position="relative"
+                        ref={inputRef}
+                      />
+                      {icon}
+                      {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
+                      {overlays}
+                      {secondaryIcon}
+                    </Box>
+                  )}
+                </Field>
               </Box>
             )}
-          </Field>
+          >
+            <RemoveScroll ref={menuRef} forwardProps>
+              <Box
+                textAlign="left"
+                component="ul"
+                background={
+                  !hasSuggestions && noSuggestionsMessage
+                    ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
+                    : 'surface'
+                }
+                borderRadius="standard"
+                boxShadow="medium"
+                width="full"
+                marginTop="xxsmall"
+                paddingY="xxsmall"
+                className={styles.menu}
+                {...a11y.menuProps}
+              >
+                {!hasSuggestions && noSuggestionsMessage ? (
+                  <Box
+                    component="li"
+                    paddingX="small"
+                    className={touchableText.standard}
+                  >
+                    {noSuggestionsMessage.title ? (
+                      <Text tone="secondary" weight="medium" baseline={false}>
+                        {noSuggestionsMessage.title}
+                      </Text>
+                    ) : null}
+                    <Text tone="secondary" baseline={false}>
+                      {noSuggestionsMessage.description}
+                    </Text>
+                  </Box>
+                ) : null}
+                {hasSuggestions
+                  ? normalisedSuggestions.map((suggestion, index) => {
+                      const { text } = suggestion;
+                      const groupHeading = groupHeadingIndexes.get(index);
+                      const highlights = suggestionHighlight
+                        ? highlightSuggestions(
+                            suggestion.text,
+                            value.text,
+                            suggestionHighlight,
+                          )
+                        : suggestion.highlights;
+
+                      return (
+                        <Fragment key={index + text}>
+                          {groupHeading ? (
+                            <GroupHeading>{groupHeading}</GroupHeading>
+                          ) : null}
+                          <SuggestionItem
+                            suggestion={{
+                              ...suggestion,
+                              highlights,
+                            }}
+                            highlighted={highlightedIndex === index}
+                            selected={value === suggestion}
+                            onClick={() => {
+                              fireChange(suggestion);
+                              dispatch({ type: SUGGESTION_MOUSE_CLICK });
+                            }}
+                            onHover={() => {
+                              dispatch({
+                                type: SUGGESTION_MOUSE_ENTER,
+                                value: index,
+                              });
+                            }}
+                            {...a11y.getItemProps({
+                              index,
+                              label: suggestion.label ?? suggestion.text,
+                              description: suggestion.description,
+                              groupHeading:
+                                groupHeadingForSuggestion.get(suggestion),
+                            })}
+                          />
+                        </Fragment>
+                      );
+                    })
+                  : null}
+              </Box>
+            </RemoveScroll>
+          </Popover>
         </Box>
         <HiddenVisually {...a11y.assistiveDescriptionProps}>
           {translations.assistiveDescription}
         </HiddenVisually>
         <Announcement>{announcements.join('. ')}</Announcement>
       </Box>
-    </Fragment>
+    </>
   );
 }) as <Value>(
   props: AutosuggestProps<Value> & RefAttributes<HTMLInputElement>,
