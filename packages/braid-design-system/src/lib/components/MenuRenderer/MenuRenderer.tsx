@@ -2,10 +2,8 @@ import assert from 'assert';
 
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
-  type KeyboardEvent,
   type MouseEvent,
   type ReactNode,
-  type Ref,
   Children,
   useRef,
   useReducer,
@@ -14,10 +12,13 @@ import {
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import flattenChildren from '../../utils/flattenChildren';
-import { Box } from '../Box/Box';
-import { BraidPortal } from '../BraidPortal/BraidPortal';
+import { Box, type BoxProps } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
+import {
+  Popover,
+  type TriggerProps as BaseTriggerProps,
+} from '../Popover/Popover';
 import { Overlay } from '../private/Overlay/Overlay';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
@@ -33,12 +34,8 @@ import { MenuRendererItemContext } from './MenuRendererItemContext';
 import * as styles from './MenuRenderer.css';
 import { vars } from '../../themes/vars.css';
 
-interface TriggerProps {
-  'aria-haspopup': boolean;
-  'aria-expanded': boolean;
-  ref: Ref<HTMLButtonElement>;
-  onKeyUp: (event: KeyboardEvent<HTMLButtonElement>) => void;
-  onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
+interface TriggerProps extends BaseTriggerProps {
+  component: BoxProps['component'];
   onClick: (event: MouseEvent) => void;
 }
 interface TriggerState {
@@ -75,42 +72,20 @@ const {
   MENU_ITEM_DOWN,
   MENU_ITEM_ESCAPE,
   MENU_ITEM_TAB,
-  MENU_ITEM_ENTER,
+  MENU_ITEM_TRIGGER_KEYBOARD,
   MENU_ITEM_SPACE,
-  MENU_ITEM_CLICK,
+  MENU_ITEM_TRIGGER_CLICK,
   MENU_ITEM_HOVER,
-  MENU_TRIGGER_ENTER,
-  MENU_TRIGGER_SPACE,
+  MENU_TRIGGER_KEYBOARD,
   MENU_TRIGGER_CLICK,
-  MENU_TRIGGER_TAB,
-  MENU_TRIGGER_ESCAPE,
-  BACKDROP_CLICK,
+  POPOVER_CLOSE,
   WINDOW_RESIZE,
 } = actionTypes;
-
-type Position = { top: number; bottom: number; left: number; right: number };
-
-const getPosition = (element: HTMLElement | null): Position | undefined => {
-  if (!element) {
-    return undefined;
-  }
-
-  const { top, bottom, left, right } = element.getBoundingClientRect();
-  const { scrollX, scrollY, innerWidth, innerHeight } = window;
-
-  return {
-    top: innerHeight - top - scrollY,
-    bottom: bottom + scrollY,
-    left: left + scrollX,
-    right: innerWidth - right - scrollX,
-  };
-};
 
 interface State {
   open: boolean;
   highlightIndex: number;
   closeReason: CloseReason;
-  triggerPosition?: Position;
 }
 
 const CLOSED_INDEX = -1;
@@ -119,7 +94,6 @@ const initialState: State = {
   open: false,
   highlightIndex: CLOSED_INDEX,
   closeReason: CLOSE_REASON_EXIT,
-  triggerPosition: undefined,
 };
 
 export const MenuRenderer = ({
@@ -136,7 +110,7 @@ export const MenuRenderer = ({
   data,
   ...restProps
 }: MenuRendererProps) => {
-  const menuContainerRef = useRef<HTMLButtonElement>(null);
+  // Todo - Fix this. it is not hooked up to anything
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastOpen = useRef(false);
   const items = flattenChildren(children);
@@ -153,8 +127,8 @@ export const MenuRenderer = ({
     'All child nodes within a menu component must be a MenuItem, MenuItemLink, MenuItemCheckbox or MenuItemDivider: https://seek-oss.github.io/braid-design-system/components/MenuRenderer',
   );
 
-  const [{ open, highlightIndex, closeReason, triggerPosition }, dispatch] =
-    useReducer((state: State, action: Action): State => {
+  const [{ open, highlightIndex, closeReason }, dispatch] = useReducer(
+    (state: State, action: Action): State => {
       switch (action.type) {
         case MENU_TRIGGER_UP:
         case MENU_ITEM_UP: {
@@ -163,7 +137,6 @@ export const MenuRenderer = ({
             open: true,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(-1, state.highlightIndex, itemCount),
-            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         case MENU_TRIGGER_DOWN:
@@ -173,13 +146,10 @@ export const MenuRenderer = ({
             open: true,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
-            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
-        case BACKDROP_CLICK:
-        case MENU_TRIGGER_ESCAPE:
-        case MENU_TRIGGER_TAB:
         case MENU_ITEM_ESCAPE:
+        case POPOVER_CLOSE:
         case MENU_ITEM_TAB: {
           return {
             ...state,
@@ -188,9 +158,9 @@ export const MenuRenderer = ({
             highlightIndex: CLOSED_INDEX,
           };
         }
-        case MENU_ITEM_ENTER:
         case MENU_ITEM_SPACE:
-        case MENU_ITEM_CLICK: {
+        case MENU_ITEM_TRIGGER_KEYBOARD:
+        case MENU_ITEM_TRIGGER_CLICK: {
           // Don't close the menu if the user clicked a "form element" item, e.g. checkbox
           if ('formElement' in action && action.formElement) {
             return state;
@@ -210,15 +180,13 @@ export const MenuRenderer = ({
         case MENU_ITEM_HOVER: {
           return { ...state, highlightIndex: action.value };
         }
-        case MENU_TRIGGER_ENTER:
-        case MENU_TRIGGER_SPACE: {
+        case MENU_TRIGGER_KEYBOARD: {
           const nextOpen = !state.open;
           return {
             ...state,
             open: nextOpen,
             closeReason: CLOSE_REASON_EXIT,
             highlightIndex: nextOpen ? 0 : CLOSED_INDEX,
-            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         case MENU_TRIGGER_CLICK: {
@@ -228,19 +196,19 @@ export const MenuRenderer = ({
             ...state,
             open: nextOpen,
             closeReason: CLOSE_REASON_EXIT,
-            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         case WINDOW_RESIZE: {
           return {
             ...state,
-            triggerPosition: getPosition(menuContainerRef.current),
           };
         }
         default:
           return state;
       }
-    }, initialState);
+    },
+    initialState,
+  );
 
   useEffect(() => {
     if (lastOpen.current === open) {
@@ -276,111 +244,75 @@ export const MenuRenderer = ({
     };
   }, [open]);
 
-  const onTriggerKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
-    const targetKey = normalizeKey(event);
-
-    // Space key in keyup/keydown handler in Firefox triggers a click event.
-    // This means the menu never opens, by returning early for Firefox the
-    // menu is opened by firing the click handler. Only trade off is the
-    // first menu item is not highlighted automatically, but considering
-    // space keyboard interactions are optional this is acceptable.
-    //   See Firefox bug details: https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
-    //   See WAI-ARIA keyboard iteractions: https://www.w3.org/WAI/ARIA/apg/patterns/menu/#keyboard-interaction-12
-    //
-    // Firefox useragent check taken from the `bowser` package:
-    // https://github.com/lancedikson/bowser/blob/ea8d9c54271d7b52fecd507ae8b1ba495842bc68/src/parser-browsers.js#L520
-    if (
-      targetKey === ' ' &&
-      /firefox|iceweasel|fxios/i.test(navigator.userAgent)
-    ) {
-      return;
-    }
-
-    const action: Record<string, Action> = {
-      ArrowDown: { type: MENU_TRIGGER_DOWN },
-      ArrowUp: { type: MENU_TRIGGER_UP },
-      Enter: { type: MENU_TRIGGER_ENTER },
-      ' ': { type: MENU_TRIGGER_SPACE },
-      Escape: { type: MENU_TRIGGER_ESCAPE },
-    };
-
-    if (action[targetKey]) {
-      dispatch(action[targetKey]);
-    }
-  };
-
-  const onTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    const targetKey = normalizeKey(event);
-
-    if (targetKey === 'Tab') {
-      dispatch({ type: MENU_ITEM_TAB });
-    }
-
-    // Prevent arrow keys scrolling the document while navigating the menu
-    const isArrowPress = targetKey.indexOf('Arrow') === 0;
-    // Prevent enter or space press from triggering the click handler
-    const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
-
-    if (isArrowPress || isActionKeyPress) {
-      event.preventDefault();
-    }
-  };
-
-  const triggerProps = {
-    'aria-haspopup': true,
-    'aria-expanded': open,
-    role: 'button',
-    tabIndex: 0,
-    ref: buttonRef,
-    onKeyUp: onTriggerKeyUp,
-    onKeyDown: onTriggerKeyDown,
-    onClick: (event: MouseEvent) => {
-      event.stopPropagation();
-      event.preventDefault();
-      dispatch({ type: MENU_TRIGGER_CLICK });
-    },
-  };
-
   return (
-    <Box
-      {...buildDataAttributes({ data, validateRestProps: restProps })}
-      ref={menuContainerRef}
-    >
-      {trigger(triggerProps, { open })}
+    <Popover
+      align={align}
+      placement={placement}
+      offsetSpace={offsetSpace}
+      open={open}
+      onClose={() => dispatch({ type: POPOVER_CLOSE })}
+      onKeyDown={(event) => {
+        const targetKey = normalizeKey(event);
 
-      {open ? (
-        <>
-          <BraidPortal>
-            <Menu
-              align={align}
-              size={size}
-              width={width}
-              placement={placement}
-              offsetSpace={offsetSpace}
-              highlightIndex={highlightIndex}
-              reserveIconSpace={reserveIconSpace}
-              focusTrigger={focusTrigger}
-              dispatch={dispatch}
-              triggerPosition={triggerPosition}
-            >
-              {items}
-            </Menu>
-          </BraidPortal>
-          <Box
-            onClick={(event) => {
+        // Space key in keyup/keydown handler in Firefox triggers a click event.
+        // This means the menu never opens, by returning early for Firefox the
+        // menu is opened by firing the click handler. Only trade off is the
+        // first menu item is not highlighted automatically, but considering
+        // space keyboard interactions are optional this is acceptable.
+        //   See Firefox bug details: https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
+        //   See WAI-ARIA keyboard interactions: https://www.w3.org/WAI/ARIA/apg/patterns/menu/#keyboard-interaction-12
+        //
+        // Firefox useragent check taken from the `bowser` package:
+        // https://github.com/lancedikson/bowser/blob/ea8d9c54271d7b52fecd507ae8b1ba495842bc68/src/parser-browsers.js#L520
+        if (
+          targetKey === ' ' &&
+          /firefox|iceweasel|fxios/i.test(navigator.userAgent)
+        ) {
+          return;
+        }
+
+        const action: Record<string, Action> = {
+          ArrowDown: { type: MENU_TRIGGER_DOWN },
+          ArrowUp: { type: MENU_TRIGGER_UP },
+        };
+
+        if (action[targetKey]) {
+          dispatch(action[targetKey]);
+        }
+      }}
+      {...buildDataAttributes({ data, validateRestProps: restProps })}
+      trigger={(props) =>
+        trigger(
+          {
+            ...props,
+            component: 'button',
+            onClick: (event: MouseEvent) => {
               event.stopPropagation();
               event.preventDefault();
-              dispatch({ type: BACKDROP_CLICK });
-            }}
-            position="fixed"
-            zIndex="modal"
-            top={0}
-            left={0}
-            className={styles.backdrop}
-          />
-        </>
-      ) : null}
-    </Box>
+
+              if (event.detail === 0) {
+                dispatch({ type: MENU_TRIGGER_KEYBOARD });
+              } else {
+                dispatch({ type: MENU_TRIGGER_CLICK });
+              }
+            },
+          },
+          { open },
+        )
+      }
+    >
+      <Menu
+        size={size}
+        width={width}
+        placement={placement}
+        highlightIndex={highlightIndex}
+        reserveIconSpace={reserveIconSpace}
+        focusTrigger={focusTrigger}
+        dispatch={dispatch}
+      >
+        {items}
+      </Menu>
+    </Popover>
   );
 };
 
@@ -393,8 +325,6 @@ const isDivider = (node: ReactNode) =>
 const borderRadius = 'large';
 
 interface MenuProps {
-  offsetSpace: NonNullable<MenuRendererProps['offsetSpace']>;
-  align: NonNullable<MenuRendererProps['align']>;
   size: NonNullable<MenuRendererProps['size']>;
   width: NonNullable<MenuRendererProps['width']>;
   placement: NonNullable<MenuRendererProps['placement']>;
@@ -403,13 +333,10 @@ interface MenuProps {
   focusTrigger: () => void;
   highlightIndex: number;
   children: ReactNode[];
-  triggerPosition?: Position;
-  position?: 'absolute' | 'relative'; // 'relative' is used for screenshot testing
+  position?: undefined | 'relative'; // 'relative' is used for screenshot testing
 }
 
 export function Menu({
-  offsetSpace,
-  align,
   size,
   width,
   placement,
@@ -418,38 +345,27 @@ export function Menu({
   focusTrigger,
   highlightIndex,
   reserveIconSpace,
-  triggerPosition,
-  position = 'absolute',
+  position,
 }: MenuProps) {
   let dividerCount = 0;
 
   const menuYPadding =
     useBraidTheme().legacy && size === 'small' ? 'xsmall' : 'xxsmall';
 
-  const inlineVars = assignInlineVars({
-    ...(triggerPosition && {
-      [styles.triggerVars[placement]]: `${triggerPosition[placement]}px`,
-      [styles.triggerVars[align]]: `${triggerPosition[align]}px`,
-    }),
-    [styles.menuYPadding]: vars.space[menuYPadding],
-  });
-
   return (
     <MenuRendererContext.Provider value={{ size, reserveIconSpace }}>
       <Box
         role="menu"
         position={position}
-        zIndex="modal"
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
-        marginTop={placement === 'bottom' ? offsetSpace : undefined}
-        marginBottom={placement === 'top' ? offsetSpace : undefined}
         transition="fast"
         overflow="hidden"
-        style={inlineVars}
+        style={assignInlineVars({
+          [styles.menuYPadding]: vars.space[menuYPadding],
+        })}
         className={[
-          styles.menuPosition,
           styles.animation,
           width !== 'content' && styles.width[width],
         ]}
