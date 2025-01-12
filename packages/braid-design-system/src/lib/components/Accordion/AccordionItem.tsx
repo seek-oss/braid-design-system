@@ -123,7 +123,7 @@ export const AccordionItem = ({
   });
 
   return (
-    <Stack space={itemSpace} {...restProps}>
+    <Stack space={itemSpace} data={data}>
       <Box position="relative" display="flex">
         <Box
           component="button"
