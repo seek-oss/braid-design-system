@@ -370,7 +370,7 @@ export const IconsDetails = () => (
         </LinkableHeading>
         <Stack space="large">
           <Text>
-            To make the alignment of icons and typography as seemless as
+            To make the alignment of icons and typography as seamless as
             possible, IconRenderer supports{' '}
             <TextLink href="#size-inline">inline sizing</TextLink>. As a result,
             it must be used inside either a{' '}
