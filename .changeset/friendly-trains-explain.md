@@ -8,4 +8,4 @@ updated:
   - OverflowMenu
 ---
 
-**MenuRenderer, OverflowMenu**: Fix bug, ensure the `Menu` size is limited by a maximum height.
+**MenuRenderer, OverflowMenu**: Ensure the menu has a maximum height.
