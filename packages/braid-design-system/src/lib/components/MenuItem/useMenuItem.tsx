@@ -11,7 +11,6 @@ import React, {
 import type { BadgeProps } from '../Badge/Badge';
 import { type BoxProps, Box } from '../Box/Box';
 import { Text } from '../Text/Text';
-import { touchableText } from '../../css/typography.css';
 import { normalizeKey } from '../private/normalizeKey';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
 import { type Action, actionTypes } from '../MenuRenderer/MenuRenderer.actions';
@@ -25,6 +24,7 @@ import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { iconSlotSpace } from '../private/iconSlotSpace';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 const {
   MENU_ITEM_UP,
@@ -36,8 +36,6 @@ const {
   MENU_ITEM_CLICK,
   MENU_ITEM_HOVER,
 } = actionTypes;
-
-const menuItemChildrenSize = 'standard';
 
 type MenuItemTone = 'critical' | undefined;
 
@@ -58,10 +56,11 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   id,
   ...restProps
 }: UseMenuItemProps) {
+  const menuRendererContext = useContext(MenuRendererContext);
   const menuRendererItemContext = useContext(MenuRendererItemContext);
 
   assert(
-    menuRendererItemContext !== null,
+    menuRendererContext !== null && menuRendererItemContext !== null,
     `${displayName} must be rendered as an immediate child of a menu. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/MenuItem`,
   );
 
@@ -69,6 +68,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     throw new Error(`${displayName} element rendered outside menu context`);
   }
 
+  const { size } = menuRendererContext;
   const { isHighlighted, index, dispatch, focusTrigger } =
     menuRendererItemContext;
   const menuItemRef = useRef<MenuItemElement>(null);
@@ -155,11 +155,14 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       background: isHighlighted ? hoverBackground : undefined,
       className: [
         styles.menuItem,
-        touchableText[menuItemChildrenSize],
+        size === 'small' ? virtualTouchable : undefined,
         atoms({
-          display: 'block',
+          display: 'flex',
+          alignItems: 'center',
           width: 'full',
           paddingX: 'small',
+          paddingY: size === 'standard' ? undefined : 'xsmall',
+          height: size === 'standard' ? 'touchable' : undefined,
           cursor: 'pointer',
           textAlign: 'left',
           outline: 'none',
@@ -174,20 +177,19 @@ export interface MenuItemChildrenProps {
   children: ReactNode;
   tone: MenuItemTone;
   badge: ReactElement<BadgeProps> | undefined;
-  icon: ReactNode | undefined;
-  formElement?: boolean;
+  leftSlot: ReactNode | undefined;
+  isCheckbox?: boolean;
 }
 function MenuItemChildren({
-  icon,
+  leftSlot,
   tone,
   children,
   badge,
-  formElement = false,
+  isCheckbox = false,
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
-  const legacy = useBraidTheme().legacy;
-  const iconSpace = legacy ? 'small' : iconSlotSpace;
-  const badgeSpace = legacy ? 'small' : badgeSlotSpace;
+  const badgeSpace = useBraidTheme().legacy ? 'small' : badgeSlotSpace;
+  const iconSpace = useBraidTheme().legacy ? 'small' : iconSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -200,42 +202,44 @@ function MenuItemChildren({
     `MenuItem badge prop can only be an instance of Badge. e.g. <MenuItem badge={<Badge>New</Badge>}>`,
   );
 
-  let leftSlot: ReactNode = null;
-
-  if (!formElement) {
-    if (icon) {
-      leftSlot = (
-        <Text
-          size={menuItemChildrenSize}
-          baseline={false}
-          tone={tone === 'critical' ? tone : undefined}
-        >
-          {icon}
-        </Text>
-      );
-    } else if (menuRendererContext.reserveIconSpace) {
-      leftSlot = (
-        <Box component="span" display="block" className={iconSize()} />
-      );
-    }
-  }
+  const { size, reserveIconSpace } = menuRendererContext;
 
   return (
     <Box component="span" display="flex" alignItems="center" minWidth={0}>
-      {leftSlot ? (
+      {leftSlot || reserveIconSpace ? (
         <Box
           component="span"
+          position="relative"
+          display="flex"
+          alignItems="center"
           paddingRight={iconSpace}
-          flexShrink={0}
-          minWidth={0}
         >
-          {leftSlot}
+          <Box
+            component="span"
+            display="block"
+            className={[iconSize({ size }), styles.menuItemLeftSlot]}
+          >
+            &nbsp;
+          </Box>
+          {leftSlot ? (
+            <Box component="span" position="absolute">
+              {isCheckbox ? (
+                leftSlot
+              ) : (
+                <Text
+                  size={size}
+                  tone={tone && tone === 'critical' ? tone : undefined}
+                >
+                  {leftSlot}
+                </Text>
+              )}
+            </Box>
+          ) : null}
         </Box>
       ) : null}
       <Box component="span" minWidth={0}>
         <Text
-          size={menuItemChildrenSize}
-          baseline={false}
+          size={size}
           tone={tone === 'critical' ? tone : undefined}
           maxLines={1}
         >
@@ -243,13 +247,8 @@ function MenuItemChildren({
         </Text>
       </Box>
       {badge ? (
-        <Box
-          component="span"
-          paddingLeft={badgeSpace}
-          flexShrink={0}
-          minWidth={0}
-        >
-          {badge}
+        <Box component="span" paddingLeft={badgeSpace}>
+          <Text size={size}>{badge}</Text>
         </Box>
       ) : null}
     </Box>

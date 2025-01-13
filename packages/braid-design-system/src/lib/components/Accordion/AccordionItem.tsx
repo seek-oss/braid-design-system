@@ -7,8 +7,6 @@ import React, {
 import assert from 'assert';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
-import { Columns } from '../Columns/Columns';
-import { Column } from '../Column/Column';
 import type { BadgeProps } from '../Badge/Badge';
 import { IconChevron } from '../icons';
 import {
@@ -24,17 +22,18 @@ import {
   AccordionContext,
   validTones,
 } from './AccordionContext';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import * as styles from './AccordionItem.css';
+import { Spread } from '../Spread/Spread';
+import { defaultSize } from './Accordion';
+import { Stack } from '../Stack/Stack';
 
 const itemSpaceForSize = {
   xsmall: 'small',
-  small: 'medium',
+  small: 'small',
   standard: 'medium',
-  large: 'large',
+  large: 'medium',
 } as const;
 
 export interface AccordionItemBaseProps {
@@ -101,7 +100,7 @@ export const AccordionItem = ({
     "Icons cannot set the 'size' or 'tone' prop when passed to an AccordionItem component",
   );
 
-  const size = accordionContext?.size ?? sizeProp ?? 'large';
+  const size = accordionContext?.size ?? sizeProp ?? defaultSize;
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
@@ -124,7 +123,7 @@ export const AccordionItem = ({
   });
 
   return (
-    <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
+    <Stack space={itemSpace} data={data}>
       <Box position="relative" display="flex">
         <Box
           component="button"
@@ -142,29 +141,25 @@ export const AccordionItem = ({
             https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari
           */}
           <Box component="span" position="relative">
-            <Columns component="span" space={itemSpace}>
-              <Column>
-                <Text size={size} weight={weight} tone={tone} icon={icon}>
-                  {badge ? (
-                    <Box component="span" paddingRight={badgeSlotSpace}>
-                      {label}
-                    </Box>
-                  ) : (
-                    label
-                  )}
-                  {badge ? cloneElement(badge, {}) : null}
-                </Text>
-              </Column>
-              <Column width="content">
-                <Text
-                  size={size}
-                  weight={weight}
-                  tone={tone === 'neutral' ? 'secondary' : tone}
-                >
-                  <IconChevron direction={expanded ? 'up' : 'down'} />
-                </Text>
-              </Column>
-            </Columns>
+            <Spread component="span" space={itemSpace}>
+              <Text size={size} weight={weight} tone={tone} icon={icon}>
+                {badge ? (
+                  <Box component="span" paddingRight={badgeSlotSpace}>
+                    {label}
+                  </Box>
+                ) : (
+                  label
+                )}
+                {badge ? cloneElement(badge, {}) : null}
+              </Text>
+              <Text
+                size={size}
+                weight={weight}
+                tone={tone === 'neutral' ? 'secondary' : tone}
+              >
+                <IconChevron direction={expanded ? 'up' : 'down'} />
+              </Text>
+            </Spread>
           </Box>
         </Box>
         <Overlay
@@ -174,13 +169,9 @@ export const AccordionItem = ({
           className={[styles.focusRing, hideFocusRingsClassName]}
         />
       </Box>
-      <Box
-        paddingTop={itemSpace}
-        display={expanded ? 'block' : 'none'}
-        {...contentProps}
-      >
+      <Box display={expanded ? 'block' : 'none'} {...contentProps}>
         {children}
       </Box>
-    </Box>
+    </Stack>
   );
 };

@@ -15,6 +15,7 @@ export interface OverflowMenuProps
 }
 
 export const OverflowMenu = ({
+  size,
   label,
   children,
   id,
@@ -31,6 +32,7 @@ export const OverflowMenu = ({
           // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
           // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
           id={id}
+          size={size}
           icon={<IconOverflow />}
           variant="transparent"
           label={label}
@@ -38,7 +40,8 @@ export const OverflowMenu = ({
         />
       )}
       align="right"
-      offsetSpace="small"
+      size={size}
+      offsetSpace={size === 'standard' ? 'small' : 'xsmall'}
       {...menuProps}
     >
       {children}

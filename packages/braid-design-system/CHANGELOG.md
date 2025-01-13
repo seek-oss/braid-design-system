@@ -1,5 +1,68 @@
 # braid-design-system
 
+## 33.3.0
+
+### Minor Changes
+
+- **Table:** Add component ([#1673](https://github.com/seek-oss/braid-design-system/pull/1673))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Table label="Table example">
+    <TableHeader>
+      <TableRow>
+        <TableHeaderCell>...</TableHeaderCell>
+        <TableHeaderCell>...</TableHeaderCell>
+        <TableHeaderCell>...</TableHeaderCell>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>...</TableCell>
+        <TableCell>...</TableCell>
+        <TableCell>...</TableCell>
+      </TableRow>
+      ...
+    </TableBody>
+  </Table>
+  ```
+
+- **MenuRenderer, OverflowMenu:** Add `small` size. ([#1675](https://github.com/seek-oss/braid-design-system/pull/1675))
+
+  Introduce a new `small` size for `MenuRenderer` and `OverflowMenu`.
+  This is available via the `size` prop, which supports the existing `standard` (default) and `small`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <MenuRenderer size="small" ... />
+  ```
+
+### Patch Changes
+
+- **Tiles**: Fixes a bug where nested `Tiles` components could calculate their columns incorrectly. ([#1667](https://github.com/seek-oss/braid-design-system/pull/1667))
+
+  Previously, when using a `Tiles` component inside another `Tiles` component, the responsive column calculation could be incorrect in certain scenarios.
+  This change ensures nested `Tiles` elements always calculate their columns correctly.
+
+- **Button, ButtonLink:** Ensure inner label is full width ([#1671](https://github.com/seek-oss/braid-design-system/pull/1671))
+
+  Ensuring the inner label element is full width to maintain backwards compatibility with previous block layout.
+
+- **Columns:** Ensure component occupies available height ([#1672](https://github.com/seek-oss/braid-design-system/pull/1672))
+
+  Enables `Columns` content to occupy the available height of the parent container.
+
+- **AccordionItem**: Simplify internal layout. ([#1674](https://github.com/seek-oss/braid-design-system/pull/1674))
+
+- **Accordion, AccordionItem**: Adjust spacing values for improved visual balance. ([#1674](https://github.com/seek-oss/braid-design-system/pull/1674))
+
+  This change reduces the default spacing within `Accordion` and `AccordionItem` components at certain sizes, ensuring the content is better associated with the correct `AccordionItem`.
+
+  Within the `Accordion` component, the default space between `AccordionItem` components has been reduced for size `large` with dividers, and sizes `small` and `xsmall` without dividers.
+  Within the `AccordionItem` component, the space between the `label` and content has been reduced for sizes `large` and `small`.
+
 ## 33.2.2
 
 ### Patch Changes

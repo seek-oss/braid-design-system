@@ -19,5 +19,19 @@ export const screenshots: ComponentScreenshot = {
         </Box>
       ),
     },
+    {
+      label: 'Small',
+      background: 'surface',
+      Example: ({ handler }) => (
+        <Box style={{ maxWidth: '100px' }}>
+          <OverflowMenu size="small" label="Options">
+            <MenuItem onClick={handler}>Button</MenuItem>
+            <MenuItemLink href="#" onClick={handler}>
+              Link
+            </MenuItemLink>
+          </OverflowMenu>
+        </Box>
+      ),
+    },
   ],
 };

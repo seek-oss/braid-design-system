@@ -21,6 +21,7 @@ import { snippets as Heading } from './snippets/Heading';
 import { snippets as Inline } from './snippets/Inline';
 import { snippets as List } from './snippets/List';
 import { snippets as Loader } from './snippets/Loader';
+import { snippets as MenuRenderer } from './snippets/MenuRenderer';
 import { snippets as MonthPicker } from './snippets/MonthPicker';
 import { snippets as Notice } from './snippets/Notice';
 import { snippets as OverflowMenu } from './snippets/OverflowMenu';
@@ -35,6 +36,7 @@ import { snippets as Spread } from './snippets/Spread';
 import { snippets as Stack } from './snippets/Stack';
 import { snippets as Stepper } from './snippets/Stepper';
 import { snippets as Strong } from './snippets/Strong';
+import { snippets as Table } from './snippets/Table';
 import { snippets as Tabs } from './snippets/Tabs';
 import { snippets as Tag } from './snippets/Tag';
 import { snippets as Text } from './snippets/Text';
@@ -70,6 +72,7 @@ export default Object.entries({
   Inline,
   List,
   Loader,
+  MenuRenderer,
   MonthPicker,
   Notice,
   OverflowMenu,
@@ -84,6 +87,7 @@ export default Object.entries({
   Stack,
   Stepper,
   Strong,
+  Table,
   Tabs,
   Tag,
   Text,

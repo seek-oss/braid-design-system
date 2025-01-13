@@ -174,6 +174,61 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Sizes',
+      description: (
+        <Text>
+          You can customise the size of the menu via the <Strong>size</Strong>{' '}
+          prop, which accepts either <Strong>standard</Strong> or{' '}
+          <Strong>small</Strong>. When using a small trigger,{' '}
+          <Strong>small</Strong> menus are recommended.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Inline space="none">
+              <MenuRenderer
+                offsetSpace="small"
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text>
+                      Standard trigger{' '}
+                      <IconChevron
+                        direction={open ? 'up' : 'down'}
+                        alignY="lowercase"
+                      />
+                    </Text>
+                  </Box>
+                )}
+              >
+                <MenuItem onClick={() => {}}>Button</MenuItem>
+                <MenuItemLink href="#">Link</MenuItemLink>
+              </MenuRenderer>
+            </Inline>
+            <Inline space="none">
+              <MenuRenderer
+                size="small"
+                offsetSpace="xsmall"
+                trigger={(triggerProps, { open }) => (
+                  <Box userSelect="none" cursor="pointer" {...triggerProps}>
+                    <Text size="small">
+                      Small trigger{' '}
+                      <IconChevron
+                        direction={open ? 'up' : 'down'}
+                        alignY="lowercase"
+                      />
+                    </Text>
+                  </Box>
+                )}
+              >
+                <MenuItem onClick={() => {}}>Button</MenuItem>
+                <MenuItemLink href="#">Link</MenuItemLink>
+              </MenuRenderer>
+            </Inline>
+          </Stack>,
+        ),
+    },
+    {
       label: 'Width',
       description: (
         <>

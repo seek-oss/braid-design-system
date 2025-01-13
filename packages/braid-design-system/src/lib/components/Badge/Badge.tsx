@@ -10,6 +10,7 @@ import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
 import * as styles from './Badge.css';
+import { useDefaultBadgeProps } from './defaultBadgeProps';
 
 type ValueOrArray<T> = T | T[];
 
@@ -61,7 +62,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     {
       tone = 'info',
       weight = 'regular',
-      bleedY = false,
+      bleedY: bleedYProp,
       title,
       children,
       id,
@@ -89,9 +90,11 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     const isInline = Boolean(textContext || headingContext);
 
     assert(
-      !isInline || (isInline && bleedY === false),
+      !isInline || (isInline && typeof bleedYProp === 'undefined'),
       'A `Badge` cannot use `bleedY` when rendered inside a `Text` or `Heading` component.',
     );
+
+    const { bleedY } = useDefaultBadgeProps({ bleedY: bleedYProp });
 
     const content = (
       // Ensures the foreground text tone follows the default
@@ -129,7 +132,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       </DefaultTextPropsProvider>
     );
 
-    return bleedY ? (
+    return bleedY && !isInline ? (
       <Bleed component="span" vertical={styles.verticalPadding}>
         {content}
       </Bleed>

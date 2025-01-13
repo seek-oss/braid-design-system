@@ -7418,6 +7418,9 @@ exports[`MenuRenderer 1`] = `
         | "bottom"
         | "top"
     reserveIconSpace?: boolean
+    size?: 
+        | "small"
+        | "standard"
     trigger: (props: TriggerProps, state: TriggerState) => ReactNode
     width?: 
         | "content"
@@ -7495,6 +7498,9 @@ exports[`OverflowMenu 1`] = `
         | "bottom"
         | "top"
     reserveIconSpace?: boolean
+    size?: 
+        | "small"
+        | "standard"
     width?: 
         | "content"
         | "large"
@@ -7861,6 +7867,120 @@ exports[`TabPanels 1`] = `
   props: {
     children: ReactNodeNoStrings
     renderInactivePanels?: boolean
+},
+}
+`;
+
+exports[`Table 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "center"
+        | "top"
+    children: ReactNode
+    data?: DataAttributeMap
+    label: string
+},
+}
+`;
+
+exports[`TableBody 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableCell 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+    children: ReactNode
+    colspan?: number
+    data?: DataAttributeMap
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
+    maxWidth?: number
+    minWidth?: number
+    width?: 
+        | "auto"
+        | "content"
+        | \`\${number}%\`
+    wrap?: boolean
+},
+}
+`;
+
+exports[`TableFooter 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableHeaderCell 1`] = `
+{
+  exportType: component,
+  props: {
+    align?: 
+        | "center"
+        | "left"
+        | "right"
+    children: ReactNode
+    colspan?: number
+    data?: DataAttributeMap
+    hideAbove?: 
+        | "desktop"
+        | "mobile"
+        | "tablet"
+    hideBelow?: 
+        | "desktop"
+        | "tablet"
+        | "wide"
+    maxWidth?: number
+    minWidth?: number
+    width?: 
+        | "auto"
+        | "content"
+        | \`\${number}%\`
+    wrap?: boolean
+},
+}
+`;
+
+exports[`TableHeader 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
+exports[`TableRow 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
 },
 }
 `;
