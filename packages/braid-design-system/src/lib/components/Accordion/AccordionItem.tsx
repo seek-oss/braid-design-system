@@ -22,9 +22,7 @@ import {
   AccordionContext,
   validTones,
 } from './AccordionContext';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
+import type { DataAttributeMap } from '../private/buildDataAttributes';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import * as styles from './AccordionItem.css';
 import { Spread } from '../Spread/Spread';
@@ -125,10 +123,7 @@ export const AccordionItem = ({
   });
 
   return (
-    <Stack
-      space={itemSpace}
-      {...buildDataAttributes({ data, validateRestProps: restProps })}
-    >
+    <Stack space={itemSpace} data={data}>
       <Box position="relative" display="flex">
         <Box
           component="button"
