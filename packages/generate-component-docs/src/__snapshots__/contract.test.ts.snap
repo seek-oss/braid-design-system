@@ -2032,7 +2032,7 @@ exports[`BraidProvider 1`] = `
         | FunctionComponent<LinkComponentProps>
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
-    theme: { vanillaTheme: string; name: string; displayName: string; legacy: boolean; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; ... 7 more ...; xxxlarge: number; }; }; color: { ...; }; backgroundLightness: Record<...>; }
+    theme: { vanillaTheme: string; name: string; displayName: string; legacy: boolean; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; href: string; }[]; space: { grid: number; space: { ...; }; }; color: { ...; }; backgroundLightness: Record<...>; }
 },
 }
 `;
@@ -7935,6 +7935,16 @@ exports[`TableFooter 1`] = `
 }
 `;
 
+exports[`TableHeader 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
 exports[`TableHeaderCell 1`] = `
 {
   exportType: component,
@@ -7961,16 +7971,6 @@ exports[`TableHeaderCell 1`] = `
         | "content"
         | \`\${number}%\`
     wrap?: boolean
-},
-}
-`;
-
-exports[`TableHeader 1`] = `
-{
-  exportType: component,
-  props: {
-    children: ReactNode
-    data?: DataAttributeMap
 },
 }
 `;

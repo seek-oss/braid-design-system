@@ -8,7 +8,9 @@ const makeWebFonts = (webFont: BraidTokens['typography']['webFont']) => {
     return [];
   }
 
-  return [{ linkTag: `<link href="${webFont}" rel="stylesheet" />` }];
+  return [
+    { linkTag: `<link href="${webFont}" rel="stylesheet" />`, href: webFont },
+  ];
 };
 
 export const makeRuntimeTokens = (tokens: BraidTokens) => ({
