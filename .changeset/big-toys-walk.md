@@ -7,4 +7,4 @@ updated:
   - AccordionItem
 ---
 
-**AccordionItem**: Fix issue that caused `data` props to be incorrectly parsed, resulting in unexpected warnings.
+**AccordionItem**: Fix issue that caused `data` props to be incorrectly parsed.
