@@ -37,7 +37,7 @@ export default [
     },
   },
   {
-    files: ['*.{js,ts,tsx}'],
+    files: ['**/*.{js,ts,tsx}'],
     ignores: [
       '*.{docs,gallery,screenshots,stories}.tsx',
       'packages/docs-ui/**/*.{ts,tsx}',
