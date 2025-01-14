@@ -42,7 +42,6 @@ const docs: ComponentDocs = {
     </>
   ),
   Example: () =>
-    /* eslint-disable react-hooks/rules-of-hooks */
     source(
       <>
         {(function MyComponent() {
@@ -64,7 +63,6 @@ const docs: ComponentDocs = {
         })()}
       </>,
     ),
-  /* eslint-enable react-hooks/rules-of-hooks */
   alternatives: [
     { name: 'Box', description: 'For custom layouts.' },
     { name: 'Hidden', description: 'For responsively hiding content.' },

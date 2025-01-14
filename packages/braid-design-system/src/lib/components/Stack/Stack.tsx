@@ -8,27 +8,26 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-const validStackComponents = [
-  'div',
-  'span',
-  'p',
-  'article',
-  'section',
-  'main',
-  'nav',
-  'aside',
-  'ul',
-  'ol',
-  'li',
-  'details',
-  'summary',
-  'dd',
-  'dl',
-  'dt',
-] as const;
+type ValidStackComponent =
+  | 'div'
+  | 'span'
+  | 'p'
+  | 'article'
+  | 'section'
+  | 'main'
+  | 'nav'
+  | 'aside'
+  | 'ul'
+  | 'ol'
+  | 'li'
+  | 'details'
+  | 'summary'
+  | 'dd'
+  | 'dl'
+  | 'dt';
 
 export interface StackProps {
-  component?: (typeof validStackComponents)[number];
+  component?: ValidStackComponent;
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
   align?: OptionalResponsiveValue<Align>;

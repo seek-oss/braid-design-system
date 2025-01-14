@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable no-sync */
-
 const esbuild = require('esbuild');
 
 (async () =>

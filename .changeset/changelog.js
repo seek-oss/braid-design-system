@@ -57,21 +57,18 @@ const changelogFunctions = {
     }
 
     if (changeset.commit) {
-      let { links } = await getInfo({
+      const { links } = await getInfo({
         repo,
         commit: changeset.commit,
       });
 
       const versionInfo = links.pull === null ? changeset.commit : links.pull;
 
-      const summary = `- ${firstLine} (${versionInfo})`;
-
-      return `${summary}\n${futureLines.map((l) => `  ${l}`).join('\n')}`;
-    } else {
-      return `\n\n- ${firstLine}\n${futureLines
+      return `- ${firstLine} (${versionInfo})\n${futureLines
         .map((l) => `  ${l}`)
         .join('\n')}`;
     }
+    return `\n\n- ${firstLine}\n${futureLines.map((l) => `  ${l}`).join('\n')}`;
   },
 };
 

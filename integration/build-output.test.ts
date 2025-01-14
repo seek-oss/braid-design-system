@@ -2,7 +2,7 @@
 import path from 'path';
 import glob from 'fast-glob';
 import webpack from 'webpack';
-import braidPkg from 'braid-design-system/package.json'; // eslint-disable-line no-restricted-imports
+import braidPkg from 'braid-design-system/package.json';
 import { exec as _exec } from 'child_process';
 import { promisify } from 'util';
 import { rgPath } from '@vscode/ripgrep';
