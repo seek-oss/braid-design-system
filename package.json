@@ -88,7 +88,7 @@
   "packageManager": "pnpm@9.15.3",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom@9.4.2": "patches/panzoom@9.4.2.patch",
+      "panzoom": "patches/panzoom.patch",
       "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"
     }
   },
