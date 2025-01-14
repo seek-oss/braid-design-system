@@ -67,7 +67,7 @@
     "enquirer": "^2.4.1",
     "escape-string-regexp": "^4.0.0",
     "eslint": "^8.57.1",
-    "eslint-config-seek": "^13.1.1",
+    "eslint-config-seek": "^14.0.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "ignore-sync": "^7.0.1",
