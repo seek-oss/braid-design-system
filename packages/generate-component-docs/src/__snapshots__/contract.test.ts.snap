@@ -473,7 +473,14 @@ exports[`Box 1`] = `
     aria-valuetext?: string
     as?: string
     async?: boolean
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoComplete?: string
     autoCorrect?: string
     autoFocus?: boolean
@@ -808,6 +815,14 @@ exports[`Box 1`] = `
         | false
         | true
     encType?: string
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     flexDirection?: 
         | "column"
         | "columnReverse"
@@ -1281,8 +1296,8 @@ exports[`Box 1`] = `
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
-        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1980,8 +1995,8 @@ exports[`BoxRenderer 1`] = `
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
-        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
     right?: 0
     textAlign?: 
         | "center"
@@ -2345,7 +2360,14 @@ exports[`ButtonLink 1`] = `
     aria-valuemin?: number
     aria-valuenow?: number
     aria-valuetext?: string
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoCorrect?: string
     autoFocus?: boolean
     autoSave?: string
@@ -2376,6 +2398,14 @@ exports[`ButtonLink 1`] = `
         | "true"
         | false
         | true
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -6927,7 +6957,14 @@ exports[`Link 1`] = `
     aria-valuemin?: number
     aria-valuenow?: number
     aria-valuetext?: string
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoCorrect?: string
     autoFocus?: boolean
     autoSave?: string
@@ -6958,6 +6995,14 @@ exports[`Link 1`] = `
         | "true"
         | false
         | true
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -8523,7 +8568,14 @@ exports[`TextLink 1`] = `
     aria-valuemin?: number
     aria-valuenow?: number
     aria-valuetext?: string
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoCorrect?: string
     autoFocus?: boolean
     autoSave?: string
@@ -8553,6 +8605,14 @@ exports[`TextLink 1`] = `
         | "true"
         | false
         | true
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     hidden?: boolean
     hitArea?: 
         | "large"
