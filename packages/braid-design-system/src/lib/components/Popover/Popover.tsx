@@ -1,37 +1,33 @@
 import {
   type KeyboardEvent,
-  type Ref,
   type ReactNode,
-  useRef,
   useEffect,
   useState,
+  type RefObject,
+  useRef,
 } from 'react';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
 import { Box } from '../Box/Box';
 import * as styles from './Popover.css';
-import { normalizeKey } from '../private/normalizeKey';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
-export interface TriggerProps {
-  'aria-haspopup': boolean;
-  'aria-expanded': boolean;
-  ref: Ref<HTMLButtonElement>;
-  onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
-}
+// Todo - if enter ref, add element at the bottom of the popover to focus and trigger onClose
 
 interface PopoverProps {
-  trigger: (props: TriggerProps) => ReactNode;
   align?: 'left' | 'right' | 'full';
   placement?: 'top' | 'bottom';
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
   onClose?: () => void;
-  data?: DataAttributeMap;
+  // Separate from exitRef, as button size changes on active, which causes triggerPosition to be wrong
+  // Todo - come up with better solution
+  triggerWrapperRef: RefObject<HTMLElement>;
+  // Todo - rename, initialFocus ?
+  enterRef?: RefObject<HTMLElement>;
+  // Todo - rename, returnFocus ?
+  exitRef?: RefObject<HTMLElement>;
   children: ReactNode;
 }
 
@@ -54,103 +50,79 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
 };
 
 export const Popover = ({
-  trigger,
   align = 'left',
   placement = 'bottom',
   offsetSpace = 'none',
   open,
-  onKeyDown,
   onClose,
+  triggerWrapperRef,
+  enterRef,
+  exitRef,
   children,
-  data,
-  ...restProps
 }: PopoverProps) => {
-  const menuContainerRef = useRef<HTMLButtonElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
     undefined,
   );
 
-  const focusTrigger = () => {
-    if (buttonRef && buttonRef.current) {
-      buttonRef.current.focus();
-    }
-  };
+  // Todo - do I need this
+  const menuContainerRef = useRef<HTMLDivElement | null>(null);
+  // const menuContainerRef = useCallback((node: HTMLElement) => {
+  //   if (node) {
+  //     console.log('in here');
+  //     setTriggerPosition(getPosition(node));
+  //   }
+  // }, []);
 
+  // Todo - internal prop for showing hiding popover visual element.
+  // always on for consumers but always off for popover, autosuggest and menuRenderer
+
+  // Todo - add error messaging for missing refs
   useEffect(() => {
     if (open) {
-      setTriggerPosition(getPosition(buttonRef.current));
+      setTriggerPosition(getPosition(triggerWrapperRef.current));
+      // Without timeout, focus will not work on first render
+      // Todo - find a better solution
+      setTimeout(() => {
+        if (enterRef && enterRef.current) {
+          enterRef.current.focus();
+        }
+      }, 0);
+    } else if (exitRef && exitRef.current) {
+      exitRef.current.focus();
     }
-  }, [open]);
+  }, [open, enterRef, exitRef, triggerWrapperRef]);
 
   useEffect(() => {
     const handleResize = () => {
-      setTriggerPosition(getPosition(buttonRef.current));
+      console.log('handleResize');
+      setTriggerPosition(getPosition(triggerWrapperRef.current));
     };
 
     if (open) {
       window.addEventListener('resize', handleResize);
+    } else {
+      setTriggerPosition(undefined);
     }
 
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [open]);
+  }, [open, triggerWrapperRef]);
 
-  const onTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    const targetKey = normalizeKey(event);
-
-    // Space key in keyup/keydown handler in Firefox triggers a click event.
-    // This means the menu never opens, by returning early for Firefox the
-    // menu is opened by firing the click handler. Only trade off is the
-    // first menu item is not highlighted automatically, but considering
-    // space keyboard interactions are optional this is acceptable.
-    //   See Firefox bug details: https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
-    //   See WAI-ARIA keyboard interactions: https://www.w3.org/WAI/ARIA/apg/patterns/menu/#keyboard-interaction-12
-    //
-    // Firefox useragent check taken from the `bowser` package:
-    // https://github.com/lancedikson/bowser/blob/ea8d9c54271d7b52fecd507ae8b1ba495842bc68/src/parser-browsers.js#L520
-    if (
-      targetKey === ' ' &&
-      /firefox|iceweasel|fxios/i.test(navigator.userAgent)
-    ) {
-      return;
+  useEffect(() => {
+    if (open) {
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && onClose) {
+          onClose();
+        }
+      });
     }
 
-    if (onClose) {
-      if (targetKey === 'Tab') {
-        onClose();
-      }
-      if (targetKey === 'Escape') {
-        onClose();
-        // Todo - this is not working
-        focusTrigger();
-      }
-    }
-
-    if (onKeyDown) {
-      onKeyDown(event);
-    }
-
-    // Prevent arrow keys scrolling the document while navigating the menu
-    const isArrowPress = targetKey.indexOf('Arrow') === 0;
-    // Prevent enter or space press from triggering the click handler
-    const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
-
-    if (isArrowPress || (isActionKeyPress && open)) {
-      event.preventDefault();
-    }
-  };
-
-  const triggerProps = {
-    'aria-haspopup': true,
-    'aria-expanded': open,
-    role: 'button',
-    tabIndex: 0,
-    ref: buttonRef,
-    onKeyDown: onTriggerKeyDown,
-  };
+    return () => {
+      // Todo - this is not the best code
+      window.removeEventListener('keydown', () => {});
+    };
+  }, [open, exitRef, onClose, triggerWrapperRef]);
 
   const inlineVars = assignInlineVars({
     ...(triggerPosition && {
@@ -164,42 +136,53 @@ export const Popover = ({
     }),
   });
 
-  return (
+  // Todo - rename
+  const LastTabbableElement = () => (
     <Box
-      {...buildDataAttributes({ data, validateRestProps: restProps })}
-      ref={menuContainerRef}
-    >
-      {trigger(triggerProps)}
-      {open && triggerPosition ? (
-        <>
-          <BraidPortal>
-            <Box
-              zIndex="modal"
-              position="absolute"
-              style={inlineVars}
-              className={[styles.popoverPosition]}
-              marginTop={placement === 'bottom' ? offsetSpace : undefined}
-              marginBottom={placement === 'top' ? offsetSpace : undefined}
-            >
-              {children}
-            </Box>
-          </BraidPortal>
-          <Box
-            onClick={(event) => {
-              event.stopPropagation();
-              event.preventDefault();
-              if (onClose) {
-                onClose();
-              }
-            }}
-            position="fixed"
-            zIndex="modal"
-            top={0}
-            left={0}
-            className={styles.backdrop}
-          />
-        </>
-      ) : null}
-    </Box>
+      aria-hidden
+      tabIndex={0}
+      onFocus={() => {
+        if (onClose) {
+          onClose();
+        }
+      }}
+    />
   );
+
+  if (open && triggerPosition) {
+    return (
+      <>
+        <BraidPortal>
+          <Box
+            zIndex="modal"
+            position="absolute"
+            style={inlineVars}
+            className={[styles.popoverPosition]}
+            marginTop={placement === 'bottom' ? offsetSpace : undefined}
+            marginBottom={placement === 'top' ? offsetSpace : undefined}
+            ref={menuContainerRef}
+          >
+            {children}
+            <LastTabbableElement />
+          </Box>
+        </BraidPortal>
+        <Box
+          onClick={(event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            if (onClose) {
+              onClose();
+            }
+          }}
+          position="fixed"
+          zIndex="modal"
+          top={0}
+          left={0}
+          className={styles.backdrop}
+        />
+      </>
+    );
+  }
+
+  return null;
 };
