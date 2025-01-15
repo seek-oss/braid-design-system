@@ -6,6 +6,9 @@ import { load as loadYaml } from 'js-yaml';
 import fastGlob from 'fast-glob';
 const { isDynamicPattern, glob } = fastGlob; // eslint-disable-line import-x/no-named-as-default-member -- commonjs module, will move to built in with node 22.
 
+/**
+ * Ignore linting for all files that are gitignored across all workspaces.
+ */
 const rootDir = dirname(import.meta.filename);
 const { packages: workspaces } = loadYaml(
   readFileSync(join(rootDir, 'pnpm-workspace.yaml'), 'utf8'),
@@ -38,12 +41,7 @@ for (const workspace of workspaces) {
 
 export default [
   {
-    ignores: [
-      '**/node_modules/',
-      '!/.*.js',
-      '!/*.js',
-      ...gitIgnoresFromWorkspaces,
-    ],
+    ignores: gitIgnoresFromWorkspaces,
   },
   ...eslintConfigSeek,
   {
