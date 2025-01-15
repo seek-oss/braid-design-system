@@ -13,7 +13,6 @@
           "generate:component-docs",
           "generate:icons",
           "generate:snippets",
-          "lint:eslint",
           "lint:prettier",
           "lint:tsc"
         ]
@@ -22,11 +21,11 @@
   },
   "targetDefaults": {
     "lint": {
-      "dependsOn": ["lint:eslint", "lint:prettier", "lint:tsc"],
+      "dependsOn": ["lint:prettier", "lint:tsc"],
       "executor": "nx:noop"
     },
     "format": {
-      "dependsOn": ["format:eslint", "format:prettier"],
+      "dependsOn": ["format:prettier"],
       "executor": "nx:noop"
     },
     "validate": {

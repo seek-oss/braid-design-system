@@ -1,29 +1,48 @@
 import eslintConfigSeek from 'eslint-config-seek';
 import importPlugin from 'eslint-plugin-import';
 import { readFileSync } from 'fs';
-import { join, relative } from 'path';
+import { dirname, join, relative } from 'path';
+import { load as loadYaml } from 'js-yaml';
+import fastGlob from 'fast-glob';
+const { isDynamicPattern, glob } = fastGlob; // eslint-disable-line import-x/no-named-as-default-member -- commonjs module, will move to built in with node 22.
 
-const braidPackagePath = join(
-  import.meta.dirname,
-  'packages/braid-design-system',
+const rootDir = dirname(import.meta.filename);
+const { packages: workspaces } = loadYaml(
+  readFileSync(join(rootDir, 'pnpm-workspace.yaml'), 'utf8'),
 );
-const ignoreSkuGitIgnores = readFileSync(
-  `${braidPackagePath}/.gitignore`,
-  'utf8',
-)
-  .split('\n')
-  .filter((line) => line && !line.startsWith('#'))
-  .map((line) => join(relative(import.meta.dirname, braidPackagePath), line));
+const gitIgnoresFromWorkspaces = [];
+
+for (const workspace of workspaces) {
+  const pathFromRoot = join(rootDir, workspace);
+  const workspacePaths = isDynamicPattern(pathFromRoot)
+    ? await glob(pathFromRoot, {
+        onlyDirectories: true,
+      })
+    : [pathFromRoot];
+
+  for (const workspacePath of workspacePaths) {
+    try {
+      gitIgnoresFromWorkspaces.push(
+        ...readFileSync(join(workspacePath, '.gitignore'), 'utf8')
+          .split('\n')
+          .filter((line) => line && !line.startsWith('#'))
+          .map((line) => join(relative(rootDir, workspacePath), line)),
+      );
+    } catch (e) {
+      if (e.code !== 'ENOENT') {
+        throw e;
+      }
+    }
+  }
+}
 
 export default [
   {
     ignores: [
-      '**/dist*/',
-      '**/storybook-static',
       '**/node_modules/',
       '!/.*.js',
       '!/*.js',
-      ...ignoreSkuGitIgnores,
+      ...gitIgnoresFromWorkspaces,
     ],
   },
   ...eslintConfigSeek,
@@ -36,29 +55,13 @@ export default [
       'import/no-relative-packages': 'error',
     },
   },
+  // Prevent importing via project paths, with exception for site-related files
   {
     files: ['**/*.{js,ts,tsx}'],
     ignores: [
-      '**/*.{docs,gallery,screenshots,stories}.tsx',
-      'packages/docs-ui/**/*.{ts,tsx}',
+      'packages/braid-design-system/**/*.{docs,gallery,screenshots,stories}.tsx',
       'site/**/*.{ts,tsx}',
     ],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            'braid-design-system**',
-            'braid-src/**',
-            'site/**',
-            '**/site/**',
-          ],
-        },
-      ],
-    },
-  },
-  {
-    files: ['packages/docs-ui/**/*.{js,ts,tsx}'],
     rules: {
       'no-restricted-imports': [
         'error',
@@ -68,11 +71,15 @@ export default [
       ],
     },
   },
+  // Lint non-project ts files, e.g. jest and storybook config
   {
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ['jest/setupTests.ts', '.storybook/*.ts'],
+          allowDefaultProject: [
+            'jest/setupTests.ts',
+            'packages/braid-design-system/.storybook/*.ts',
+          ],
         },
       },
     },
