@@ -740,50 +740,47 @@ export const Autosuggest = forwardRef(function <Value>(
           : null)}
       >
         <Box ref={rootRef}>
+          <Field
+            {...restProps}
+            componentName="Autosuggest"
+            id={resolvedId}
+            value={value.text}
+            prefix={undefined}
+            secondaryIcon={
+              onClear ? (
+                <ClearField
+                  id={`${resolvedId}-clearfield`}
+                  hide={!clearable}
+                  onClear={onClear}
+                  label={clearLabel}
+                  inputRef={inputRef}
+                />
+              ) : null
+            }
+          >
+            {(overlays, fieldProps, icon, secondaryIcon) => (
+              <Box width="full">
+                <Box
+                  component="input"
+                  {...fieldProps}
+                  {...a11y.inputProps}
+                  {...inputProps}
+                  position="relative"
+                  ref={inputRef}
+                />
+                {icon}
+                {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
+                {overlays}
+                {secondaryIcon}
+              </Box>
+            )}
+          </Field>
           <Popover
+            triggerWrapperRef={rootRef}
             open={isOpen}
             align="full"
             placement="bottom"
             offsetSpace="none"
-            trigger={(triggerProps) => (
-              <Box {...triggerProps}>
-                <Field
-                  {...restProps}
-                  componentName="Autosuggest"
-                  id={resolvedId}
-                  value={value.text}
-                  prefix={undefined}
-                  secondaryIcon={
-                    onClear ? (
-                      <ClearField
-                        id={`${resolvedId}-clearfield`}
-                        hide={!clearable}
-                        onClear={onClear}
-                        label={clearLabel}
-                        inputRef={inputRef}
-                      />
-                    ) : null
-                  }
-                >
-                  {(overlays, fieldProps, icon, secondaryIcon) => (
-                    <Box width="full">
-                      <Box
-                        component="input"
-                        {...fieldProps}
-                        {...a11y.inputProps}
-                        {...inputProps}
-                        position="relative"
-                        ref={inputRef}
-                      />
-                      {icon}
-                      {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
-                      {overlays}
-                      {secondaryIcon}
-                    </Box>
-                  )}
-                </Field>
-              </Box>
-            )}
           >
             <RemoveScroll ref={menuRef} forwardProps>
               <Box

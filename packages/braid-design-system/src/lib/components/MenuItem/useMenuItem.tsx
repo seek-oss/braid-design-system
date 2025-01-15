@@ -34,9 +34,9 @@ const {
   MENU_ITEM_DOWN,
   MENU_ITEM_ESCAPE,
   MENU_ITEM_TAB,
-  MENU_ITEM_TRIGGER_KEYBOARD,
+  MENU_ITEM_ENTER,
   MENU_ITEM_SPACE,
-  MENU_ITEM_TRIGGER_CLICK,
+  MENU_ITEM_CLICK,
   MENU_ITEM_HOVER,
 } = actionTypes;
 
@@ -82,31 +82,13 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     }
   }, [isHighlighted]);
 
-  const onKeyUp = (event: KeyboardEvent<MenuItemElement>) => {
-    const targetKey = normalizeKey(event);
-
-    // Because we call 'preventDefault()' on enter/spacebar in
-    // the 'onKeyDown' handler, we manually trigger a click here.
-    if (targetKey === 'Enter' || targetKey === ' ') {
-      menuItemRef.current?.focus();
-    }
-  };
-
   const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
     const targetKey = normalizeKey(event);
 
     if (targetKey === 'Tab') {
+      focusTrigger();
       dispatch({ type: MENU_ITEM_TAB });
     }
-
-    const closeActionKeys = ['Enter', ' ', 'Escape'];
-
-    const action: Record<string, Action> = {
-      ArrowDown: { type: MENU_ITEM_DOWN },
-      ArrowUp: { type: MENU_ITEM_UP },
-      ' ': { type: MENU_ITEM_SPACE, formElement, index, id },
-      Escape: { type: MENU_ITEM_ESCAPE }, // Todo - this needs to focus the menu
-    };
 
     const isArrowPress = targetKey.indexOf('Arrow') === 0;
     const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
@@ -114,15 +96,34 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     // This prevents spacebar from scrolling the document,
     // but also prevents the click event from firing so we
     // can programmatically trigger a click event in the
-    // 'onKeyDown' handler. This is to normalise behaviour
+    // 'onKeyUp' handler. This is to normalise behaviour
     // between buttons and links, e.g. to make spacebar
     // activate links, which is not standard behaviour.
     if (isArrowPress || isActionKeyPress) {
       event.preventDefault();
     }
+  };
+
+  const onKeyUp = (event: KeyboardEvent<MenuItemElement>) => {
+    const targetKey = normalizeKey(event);
+    const closeActionKeys = ['Enter', ' ', 'Escape'];
+
+    const action: Record<string, Action> = {
+      ArrowDown: { type: MENU_ITEM_DOWN },
+      ArrowUp: { type: MENU_ITEM_UP },
+      Enter: { type: MENU_ITEM_ENTER, formElement, index, id },
+      ' ': { type: MENU_ITEM_SPACE, formElement, index, id },
+      Escape: { type: MENU_ITEM_ESCAPE },
+    };
 
     if (action[targetKey]) {
       dispatch(action[targetKey]);
+    }
+
+    // Because we call 'preventDefault()' on enter/spacebar in
+    // the 'onKeyDown' handler, we manually trigger a click here.
+    if (targetKey === 'Enter' || targetKey === ' ') {
+      menuItemRef.current?.click();
     }
 
     if (
@@ -130,12 +131,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       (formElement && targetKey === 'Escape')
     ) {
       focusTrigger();
-    }
-
-    // Because we call 'preventDefault()' on enter/spacebar in
-    // the 'onKeyDown' handler, we manually trigger a click here.
-    if (targetKey === 'Enter' || targetKey === ' ') {
-      menuItemRef.current?.click();
     }
   };
 
@@ -149,28 +144,17 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       tabIndex: -1,
       ref: menuItemRef,
       id,
-      onKeyDown,
       onKeyUp,
+      onKeyDown,
       onMouseEnter: () => dispatch({ type: MENU_ITEM_HOVER, value: index }),
       onClick: (event: MouseEvent) => {
         event.stopPropagation();
 
-        if (event.detail === 0) {
-          dispatch({
-            type: MENU_ITEM_TRIGGER_KEYBOARD,
-            formElement,
-            index,
-            id,
-          });
-        } else {
-          dispatch({ type: MENU_ITEM_TRIGGER_CLICK, formElement, index, id });
-        }
+        dispatch({ type: MENU_ITEM_CLICK, formElement, index, id });
 
         if (typeof onClick === 'function') {
           onClick();
         }
-
-        menuItemRef.current?.focus();
       },
       /*
       On mobile, switching between 'undefined' and a specified background converts the element to a `ColoredBox` on touch.
