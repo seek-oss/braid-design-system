@@ -72,8 +72,6 @@ const {
   MENU_ITEM_UP,
   MENU_TRIGGER_DOWN,
   MENU_ITEM_DOWN,
-  MENU_ITEM_ESCAPE,
-  MENU_ITEM_TAB,
   MENU_ITEM_ENTER,
   MENU_ITEM_SPACE,
   MENU_ITEM_CLICK,
@@ -83,8 +81,7 @@ const {
   MENU_TRIGGER_CLICK,
   MENU_TRIGGER_TAB,
   MENU_TRIGGER_ESCAPE,
-  BACKDROP_CLICK,
-  WINDOW_RESIZE,
+  MENU_CLOSE,
 } = actionTypes;
 
 interface State {
@@ -153,11 +150,9 @@ export const MenuRenderer = ({
             highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
           };
         }
-        case BACKDROP_CLICK:
+        case MENU_CLOSE:
         case MENU_TRIGGER_ESCAPE:
-        case MENU_TRIGGER_TAB:
-        case MENU_ITEM_ESCAPE:
-        case MENU_ITEM_TAB: {
+        case MENU_TRIGGER_TAB: {
           return {
             ...state,
             open: false,
@@ -206,11 +201,6 @@ export const MenuRenderer = ({
             closeReason: CLOSE_REASON_EXIT,
           };
         }
-        case WINDOW_RESIZE: {
-          return {
-            ...state,
-          };
-        }
         default:
           return state;
       }
@@ -238,20 +228,6 @@ export const MenuRenderer = ({
     }
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      dispatch({ type: WINDOW_RESIZE });
-    };
-
-    if (open) {
-      window.addEventListener('resize', handleResize);
-    }
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [open]);
-
   const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
 
@@ -272,10 +248,6 @@ export const MenuRenderer = ({
       return;
     }
 
-    if (targetKey === 'Tab') {
-      dispatch({ type: MENU_ITEM_TAB });
-    }
-
     // Prevent arrow keys scrolling the document while navigating the menu
     const isArrowPress = targetKey.indexOf('Arrow') === 0;
     // Prevent enter or space press from triggering the click handler
@@ -291,6 +263,7 @@ export const MenuRenderer = ({
       Enter: { type: MENU_TRIGGER_ENTER },
       ' ': { type: MENU_TRIGGER_SPACE },
       Escape: { type: MENU_TRIGGER_ESCAPE },
+      Tab: { type: MENU_TRIGGER_TAB },
     };
 
     if (action[targetKey]) {
@@ -318,7 +291,7 @@ export const MenuRenderer = ({
 
       <BasePopover
         open={open}
-        onClose={() => dispatch({ type: MENU_TRIGGER_ESCAPE })} // Todo - change action
+        onClose={() => dispatch({ type: MENU_CLOSE })}
         triggerWrapperRef={containerRef}
         returnFocusRef={triggerProps.ref}
         align={align}
