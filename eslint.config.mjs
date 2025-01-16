@@ -1,6 +1,5 @@
 import { includeIgnoreFile } from '@eslint/compat';
 import eslintConfigSeek from 'eslint-config-seek';
-import importPlugin from 'eslint-plugin-import';
 import { readFileSync } from 'fs';
 import { dirname, join, relative } from 'path';
 import { load as loadYaml } from 'js-yaml';
@@ -49,12 +48,9 @@ export default [
   ...gitIgnoresFromWorkspaces,
   ...eslintConfigSeek,
   {
-    plugins: {
-      import: importPlugin,
-    },
     rules: {
-      'import/no-cycle': 'warn',
-      'import/no-relative-packages': 'error',
+      'import-x/no-cycle': 'warn',
+      'import-x/no-relative-packages': 'error',
     },
   },
   // Prevent importing via project paths, with exception for site-related files
