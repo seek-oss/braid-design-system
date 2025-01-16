@@ -6,7 +6,7 @@ import {
 
 type PopoverProps = Omit<
   BasePopoverProps,
-  'disableAnimation' | 'focusPopoverOnOpen'
+  'disableAnimation' | 'focusPopoverOnOpen' | 'tabToExit'
 > & {
   returnFocusRef: NonNullable<BasePopoverProps['returnFocusRef']>;
 };
@@ -32,6 +32,7 @@ export const Popover = ({
     initialFocusRef={initialFocusRef}
     returnFocusRef={returnFocusRef}
     focusPopoverOnOpen
+    tabToExit={false}
   >
     <Box borderRadius="standard" boxShadow="small">
       <Box
