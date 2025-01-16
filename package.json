@@ -53,6 +53,7 @@
     "@changesets/cli": "^2.27.11",
     "@changesets/get-github-info": "^0.5.2",
     "@crackle/cli": "^0.15.5",
+    "@eslint/compat": "^1.2.5",
     "@manypkg/cli": "^0.21.4",
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
