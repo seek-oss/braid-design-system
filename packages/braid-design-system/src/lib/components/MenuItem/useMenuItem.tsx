@@ -84,6 +84,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
 
   const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
     const targetKey = normalizeKey(event);
+    const closeActionKeys = ['Enter', ' ', 'Escape'];
 
     if (targetKey === 'Tab') {
       focusTrigger();
@@ -96,17 +97,12 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     // This prevents spacebar from scrolling the document,
     // but also prevents the click event from firing so we
     // can programmatically trigger a click event in the
-    // 'onKeyUp' handler. This is to normalise behaviour
+    // 'onKeyDown' handler. This is to normalise behaviour
     // between buttons and links, e.g. to make spacebar
     // activate links, which is not standard behaviour.
     if (isArrowPress || isActionKeyPress) {
       event.preventDefault();
     }
-  };
-
-  const onKeyUp = (event: KeyboardEvent<MenuItemElement>) => {
-    const targetKey = normalizeKey(event);
-    const closeActionKeys = ['Enter', ' ', 'Escape'];
 
     const action: Record<string, Action> = {
       ArrowDown: { type: MENU_ITEM_DOWN },
@@ -144,7 +140,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       tabIndex: -1,
       ref: menuItemRef,
       id,
-      onKeyUp,
       onKeyDown,
       onMouseEnter: () => dispatch({ type: MENU_ITEM_HOVER, value: index }),
       onClick: (event: MouseEvent) => {
