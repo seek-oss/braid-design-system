@@ -2,6 +2,7 @@ import React, {
   Fragment,
   type ReactNode,
   useEffect,
+  useId,
   useRef,
   useState,
 } from 'react';
@@ -17,6 +18,8 @@ import {
   Alert,
   List,
   Divider,
+  Badge,
+  TooltipRenderer,
 } from 'braid-src/lib/components';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
@@ -36,23 +39,54 @@ const Row = ({
   children: ReactNode;
   hideCanvas?: boolean;
   darkCanvas?: boolean;
-}) => (
-  <Columns space="large" alignY="center">
-    <Column>
-      <Text>
-        <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
-        {name}
-      </Text>
-    </Column>
-    <Column width="content">
-      <Box style={{ color: vars.foregroundColor.neutral as any }}>
-        <ThemedExample transparent={hideCanvas} darkCanvas={darkCanvas}>
-          <Box display="flex">{children}</Box>
-        </ThemedExample>
-      </Box>
-    </Column>
-  </Columns>
-);
+}) => {
+  const tooltipId = useId();
+
+  return (
+    <Columns space="large" alignY="center">
+      <Column>
+        <Text>
+          <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
+          {name}
+          {name === 'rating' ? (
+            <>
+              {' '}
+              <TooltipRenderer
+                id={tooltipId}
+                tooltip={
+                  <Text>
+                    The `rating` token has been deprecated in favour of the
+                    `brandAccent` token
+                  </Text>
+                }
+              >
+                {({ triggerProps }) => (
+                  <Box component="span" {...triggerProps}>
+                    <Badge
+                      tone="caution"
+                      title={
+                        '' /* Blanked-out to prevent title appearing alongside tooltip */
+                      }
+                    >
+                      Deprecated
+                    </Badge>
+                  </Box>
+                )}
+              </TooltipRenderer>
+            </>
+          ) : null}
+        </Text>
+      </Column>
+      <Column width="content">
+        <Box style={{ color: vars.foregroundColor.neutral as any }}>
+          <ThemedExample transparent={hideCanvas} darkCanvas={darkCanvas}>
+            <Box display="flex">{children}</Box>
+          </ThemedExample>
+        </Box>
+      </Column>
+    </Columns>
+  );
+};
 
 const ContentWidthValue = ({ var: varName }: { var: string }) => {
   const [size, setSize] = useState(0);

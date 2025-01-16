@@ -1,7 +1,6 @@
 import React from 'react';
 import assert from 'assert';
 import dedent from 'dedent';
-import { useBackground } from '../Box/BackgroundContext';
 import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
@@ -19,7 +18,6 @@ type RatingStar = {
   percent: number;
 } & UseIconProps;
 const RatingStar = ({ percent, ...restProps }: RatingStar) => {
-  const currentBg = useBackground();
   let component = IconStarEmptySvg;
 
   if (percent >= 25 && percent < 75) {
@@ -32,25 +30,7 @@ const RatingStar = ({ percent, ...restProps }: RatingStar) => {
 
   return (
     <IconContainer {...restProps}>
-      {({ className, ...svgProps }) => (
-        <Box
-          component={component}
-          {...svgProps}
-          className={[
-            className,
-            {
-              [styles.lightModeStarColor]:
-                currentBg.lightMode === 'body' ||
-                currentBg.lightMode === 'surface',
-            },
-            {
-              [styles.darkModeStarColor]:
-                currentBg.darkMode === 'body' ||
-                currentBg.darkMode === 'surface',
-            },
-          ]}
-        />
-      )}
+      {(svgProps) => <Box component={component} {...svgProps} />}
     </IconContainer>
   );
 };
@@ -61,6 +41,7 @@ interface RatingBaseProps {
   size?: TextProps['size'];
   'aria-label'?: string;
   data?: TextProps['data'];
+  tone?: Extract<TextProps['tone'], 'brandAccent' | 'neutral'>;
 }
 type RatingVariants = 'full' | 'starsOnly' | 'minimal';
 
@@ -78,6 +59,7 @@ export const Rating = ({
   size = 'standard',
   weight,
   variant = 'full',
+  tone = 'brandAccent',
   'aria-label': ariaLabel,
   data,
 }: RatingProps) => {
@@ -113,10 +95,17 @@ export const Rating = ({
         }
       >
         {variant === 'minimal' ? (
-          <RatingStar percent={100} />
+          <RatingStar
+            percent={100}
+            tone={tone === 'neutral' ? 'neutral' : 'brandAccent'}
+          />
         ) : (
           ratingArr.map((_, position) => (
-            <RatingStar key={position} percent={getPercent(rating, position)} />
+            <RatingStar
+              key={position}
+              percent={getPercent(rating, position)}
+              tone={tone === 'neutral' ? 'neutral' : 'brandAccent'}
+            />
           ))
         )}
       </Box>

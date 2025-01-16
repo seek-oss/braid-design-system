@@ -157,6 +157,7 @@ export interface BraidTokens {
       positive: string;
       promoteLight: string;
       promote: string;
+      /** @deprecated Recommend using `brandAccent` or `neutral` instead. */
       rating: string;
       secondary: string;
       secondaryInverted: string;
