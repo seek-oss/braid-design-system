@@ -1,4 +1,6 @@
-import { createVar, style } from '@vanilla-extract/css';
+import { createVar, keyframes, style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
+import { vars } from '../../../themes/vars.css';
 
 export const backdrop = style({
   width: '100vw',
@@ -18,4 +20,13 @@ export const popoverPosition = style({
   bottom: triggerVars.top,
   left: triggerVars.left,
   right: triggerVars.right,
+});
+
+export const animation = style({
+  animation: `${keyframes({
+    from: {
+      transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
+      opacity: 0,
+    },
+  })} .125s ease forwards`,
 });
