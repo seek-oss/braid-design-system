@@ -25,11 +25,11 @@ import {
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
-import { Popover } from '../Popover/Popover';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { IconClear } from '../icons';
 import { Announcement } from '../private/Announcement/Announcement';
+import { BasePopover } from '../private/BasePopover/BasePopover';
 import { ClearField } from '../private/Field/ClearField';
 import {
   type FieldBaseProps,
@@ -772,12 +772,13 @@ export const Autosuggest = forwardRef(function <Value>(
               </Box>
             )}
           </Field>
-          <Popover
+          <BasePopover
             triggerWrapperRef={rootRef}
             open={isOpen}
             align="full"
             placement="bottom"
             offsetSpace="none"
+            disableAnimation
           >
             <RemoveScroll ref={menuRef} forwardProps>
               <Box
@@ -860,7 +861,7 @@ export const Autosuggest = forwardRef(function <Value>(
                   : null}
               </Box>
             </RemoveScroll>
-          </Popover>
+          </BasePopover>
         </Box>
         <HiddenVisually {...a11y.assistiveDescriptionProps}>
           {translations.assistiveDescription}
