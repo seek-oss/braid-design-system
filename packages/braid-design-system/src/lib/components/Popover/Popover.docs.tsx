@@ -3,7 +3,6 @@ import type { ComponentDocs } from 'site/types';
 import {
   Box,
   Button,
-  IconChevron,
   Inline,
   Popover,
   Text,
@@ -13,22 +12,17 @@ import { useRef } from 'react';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, setDefaultState, setState, getState, toggleState }) => {
+  Example: ({ setDefaultState, setState, getState, toggleState }) => {
     const triggerWrapperRef = useRef<HTMLButtonElement | null>(null);
-    const enterRef = useRef<HTMLInputElement | null>(null);
-    const exitRef = useRef<HTMLButtonElement | null>(null);
+    const returnFocusRef = useRef<HTMLButtonElement | null>(null);
 
     return source(
       <>
         {setDefaultState('open', false)}
         <Inline space="none">
           <Box ref={triggerWrapperRef}>
-            <Button onClick={() => toggleState('open')} ref={exitRef}>
-              Popover trigger{' '}
-              <IconChevron
-                direction={getState('open') ? 'up' : 'down'}
-                alignY="lowercase"
-              />
+            <Button onClick={() => toggleState('open')} ref={returnFocusRef}>
+              Edit Text
             </Button>
           </Box>
         </Inline>
@@ -36,16 +30,71 @@ const docs: ComponentDocs = {
           open={getState('open')}
           onClose={() => setState('open', false)}
           triggerWrapperRef={triggerWrapperRef}
-          enterRef={enterRef}
-          exitRef={exitRef}
+          returnFocusRef={returnFocusRef}
           offsetSpace="xsmall"
         >
-          <Box borderRadius="standard" boxShadow="small">
-            <Box
-              borderRadius="standard"
-              boxShadow="borderNeutralLight"
-              padding="small"
-              background="surface"
+          <Text>This is some text</Text>
+        </Popover>
+      </>,
+    );
+  },
+  description: (
+    <Text>
+      This component allows you to attach an overlay element positioned relative
+      to a trigger element. This should only be used if standard alternatives
+      aren’t suitable.
+    </Text>
+  ),
+  alternatives: [
+    {
+      name: 'MenuRenderer',
+      description: 'For a menu displaying a list of actions.',
+    },
+    {
+      name: 'TooltipRenderer',
+      description: 'For a popup displaying short content.',
+    },
+    {
+      name: 'Dialog',
+      description: 'For exposing a smaller amount of content in a modal.',
+    },
+    {
+      name: 'Drawer',
+      description: 'For exposing a larger amount of content in a modal.',
+    },
+  ],
+  additional: [
+    {
+      label: 'Auto focus element when opening',
+      // Todo - fix later
+      description: <Text>Edit later</Text>,
+      Example: ({ id, setDefaultState, setState, getState, toggleState }) => {
+        const triggerWrapperRef = useRef<HTMLButtonElement | null>(null);
+        const initialFocusRef = useRef<HTMLInputElement | null>(null);
+        const returnFocusRef = useRef<HTMLButtonElement | null>(null);
+
+        // Todo - handle popover resizing on text input
+
+        return source(
+          <>
+            {setDefaultState('open', false)}
+            <Inline space="none">
+              <Box ref={triggerWrapperRef}>
+                <Button
+                  onClick={() => toggleState('open')}
+                  ref={returnFocusRef}
+                >
+                  Edit Text
+                </Button>
+              </Box>
+            </Inline>
+            <Popover
+              open={getState('open')}
+              onClose={() => setState('open', false)}
+              triggerWrapperRef={triggerWrapperRef}
+              initialFocusRef={initialFocusRef}
+              returnFocusRef={returnFocusRef}
+              offsetSpace="xsmall"
             >
               <TextField
                 id={id}
@@ -53,18 +102,14 @@ const docs: ComponentDocs = {
                 onChange={setState('textfield')}
                 value={getState('textfield')}
                 onClear={() => setState('textfield', '')}
-                ref={enterRef}
+                ref={initialFocusRef}
               />
-              <Button>Test</Button>
-              <Button>Test</Button>
-            </Box>
-          </Box>
-        </Popover>
-      </>,
-    );
-  },
-  description: <Text>A popover component.</Text>,
-  alternatives: [],
+            </Popover>
+          </>,
+        );
+      },
+    },
+  ],
 };
 
 export default docs;

@@ -17,7 +17,7 @@ import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
-import { Popover } from '../Popover/Popover';
+import { BasePopover } from '../private/BasePopover/BasePopover';
 import { Overlay } from '../private/Overlay/Overlay';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
@@ -37,7 +37,6 @@ interface TriggerProps {
   'aria-haspopup': boolean;
   'aria-expanded': boolean;
   ref: Ref<HTMLButtonElement>;
-  onKeyUp: (event: KeyboardEvent<HTMLButtonElement>) => void;
   onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
   onClick: (event: MouseEvent) => void;
 }
@@ -253,7 +252,7 @@ export const MenuRenderer = ({
     };
   }, [open]);
 
-  const onTriggerKeyUp = (event: KeyboardEvent<HTMLButtonElement>) => {
+  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     const targetKey = normalizeKey(event);
 
     // Space key in keyup/keydown handler in Firefox triggers a click event.
@@ -262,7 +261,7 @@ export const MenuRenderer = ({
     // first menu item is not highlighted automatically, but considering
     // space keyboard interactions are optional this is acceptable.
     //   See Firefox bug details: https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
-    //   See WAI-ARIA keyboard iteractions: https://www.w3.org/WAI/ARIA/apg/patterns/menu/#keyboard-interaction-12
+    //   See WAI-ARIA keyboard interactions: https://www.w3.org/WAI/ARIA/apg/patterns/menu/#keyboard-interaction-12
     //
     // Firefox useragent check taken from the `bowser` package:
     // https://github.com/lancedikson/bowser/blob/ea8d9c54271d7b52fecd507ae8b1ba495842bc68/src/parser-browsers.js#L520
@@ -271,6 +270,19 @@ export const MenuRenderer = ({
       /firefox|iceweasel|fxios/i.test(navigator.userAgent)
     ) {
       return;
+    }
+
+    if (targetKey === 'Tab') {
+      dispatch({ type: MENU_ITEM_TAB });
+    }
+
+    // Prevent arrow keys scrolling the document while navigating the menu
+    const isArrowPress = targetKey.indexOf('Arrow') === 0;
+    // Prevent enter or space press from triggering the click handler
+    const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
+
+    if (isArrowPress || isActionKeyPress) {
+      event.preventDefault();
     }
 
     const action: Record<string, Action> = {
@@ -286,31 +298,13 @@ export const MenuRenderer = ({
     }
   };
 
-  const onTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    const targetKey = normalizeKey(event);
-
-    if (targetKey === 'Tab') {
-      dispatch({ type: MENU_ITEM_TAB });
-    }
-
-    // Prevent arrow keys scrolling the document while navigating the menu
-    const isArrowPress = targetKey.indexOf('Arrow') === 0;
-    // Prevent enter or space press from triggering the click handler
-    const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
-
-    if (isArrowPress || isActionKeyPress) {
-      event.preventDefault();
-    }
-  };
-
   const triggerProps = {
     'aria-haspopup': true,
     'aria-expanded': open,
     role: 'button',
     tabIndex: 0,
     ref: buttonRef,
-    onKeyUp: onTriggerKeyUp,
-    onKeyDown: onTriggerKeyDown,
+    onKeyDown,
     onClick: (event: MouseEvent) => {
       event.stopPropagation();
       event.preventDefault();
@@ -320,14 +314,13 @@ export const MenuRenderer = ({
 
   return (
     <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
-      <Box ref={containerRef} style={{ border: '1px solid red' }}>
-        {trigger(triggerProps, { open })}
-      </Box>
+      <Box ref={containerRef}>{trigger(triggerProps, { open })}</Box>
 
-      <Popover
+      <BasePopover
         open={open}
         onClose={() => dispatch({ type: MENU_TRIGGER_ESCAPE })} // Todo - change action
         triggerWrapperRef={containerRef}
+        returnFocusRef={triggerProps.ref}
         align={align}
         placement={placement}
         offsetSpace={offsetSpace}
@@ -345,7 +338,7 @@ export const MenuRenderer = ({
         >
           {items}
         </Menu>
-      </Popover>
+      </BasePopover>
     </Box>
   );
 };
@@ -400,10 +393,7 @@ export function Menu({
         transition="fast"
         overflow="hidden"
         style={inlineVars}
-        className={[
-          styles.animation,
-          width !== 'content' && styles.width[width],
-        ]}
+        className={width !== 'content' && styles.width[width]}
       >
         <ScrollContainer
           direction="vertical"
