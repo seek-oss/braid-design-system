@@ -32,8 +32,6 @@ import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 const {
   MENU_ITEM_UP,
   MENU_ITEM_DOWN,
-  MENU_ITEM_ESCAPE,
-  MENU_ITEM_TAB,
   MENU_ITEM_ENTER,
   MENU_ITEM_SPACE,
   MENU_ITEM_CLICK,
@@ -86,11 +84,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     const targetKey = normalizeKey(event);
     const closeActionKeys = ['Enter', ' ', 'Escape'];
 
-    if (targetKey === 'Tab') {
-      focusTrigger();
-      dispatch({ type: MENU_ITEM_TAB });
-    }
-
     const isArrowPress = targetKey.indexOf('Arrow') === 0;
     const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
 
@@ -109,7 +102,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       ArrowUp: { type: MENU_ITEM_UP },
       Enter: { type: MENU_ITEM_ENTER, formElement, index, id },
       ' ': { type: MENU_ITEM_SPACE, formElement, index, id },
-      Escape: { type: MENU_ITEM_ESCAPE },
     };
 
     if (action[targetKey]) {
