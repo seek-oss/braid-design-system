@@ -27,6 +27,7 @@ export interface BasePopoverProps {
   returnFocusRef?: RefObject<HTMLElement>;
   disableAnimation?: boolean;
   focusPopoverOnOpen?: boolean;
+  tabToExit?: boolean;
   children: ReactNode;
 }
 
@@ -59,6 +60,7 @@ export const BasePopover = ({
   returnFocusRef,
   disableAnimation = false,
   focusPopoverOnOpen = false,
+  tabToExit = true,
   children,
 }: BasePopoverProps) => {
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
@@ -66,55 +68,55 @@ export const BasePopover = ({
   );
 
   const popoverContainerRef = useRef<HTMLDivElement | null>(null);
-  const rendered = useRef(false);
 
   const handleOnClose = () => {
-    if (returnFocusRef) {
-      if (returnFocusRef?.current) {
-        returnFocusRef.current.focus();
-      } else {
-        // eslint-disable-next-line no-console
-        console.error(
-          dedent`
+    if (!returnFocusRef) {
+      return;
+    }
+
+    if (returnFocusRef?.current) {
+      returnFocusRef.current.focus();
+    } else {
+      // eslint-disable-next-line no-console
+      console.error(
+        dedent`
           The returnFocusRef element could not be found.
           Ensure it is being assigned to the Popover trigger, and is available on close.
           `,
-        );
-      }
+      );
+    }
 
-      if (onClose) {
-        onClose();
-      }
+    if (onClose) {
+      onClose();
     }
   };
 
   useEffect(() => {
-    if (!rendered.current) {
-      rendered.current = true;
+    if (!open) {
       return;
     }
-    if (open) {
-      setTriggerPosition(getPosition(triggerWrapperRef.current));
-      // Without timeout, focus will not work on first render
-      // Todo - find a better solution
-      setTimeout(() => {
-        if (initialFocusRef) {
-          if (initialFocusRef.current) {
-            initialFocusRef.current.focus();
-          } else {
-            // eslint-disable-next-line no-console
-            console.error(
-              dedent`
+
+    setTriggerPosition(getPosition(triggerWrapperRef.current));
+    // Without timeout, focus will not work on first render
+    // Needs to be 10ms to work in Safari - 0 for other browsers
+    // Todo - find a better solution
+    setTimeout(() => {
+      if (initialFocusRef) {
+        if (initialFocusRef.current) {
+          initialFocusRef.current.focus();
+        } else {
+          // eslint-disable-next-line no-console
+          console.error(
+            dedent`
                 The initialFocusRef element could not be found.
                 Ensure it is being assigned to a child element of Popover, and is available on open.
                 `,
-            );
-          }
-        } else if (focusPopoverOnOpen && popoverContainerRef.current) {
-          popoverContainerRef.current.focus();
+          );
         }
-      }, 0);
-    }
+      } else if (focusPopoverOnOpen && popoverContainerRef.current) {
+        popoverContainerRef.current.focus();
+      }
+    }, 10);
   }, [
     open,
     initialFocusRef,
@@ -154,7 +156,7 @@ export const BasePopover = ({
   const handleKeyboard = (event: ReactKeyboardEvent) => {
     const targetKey = normalizeKey(event);
 
-    if (targetKey === 'Escape') {
+    if (targetKey === 'Escape' || (tabToExit && targetKey === 'Tab')) {
       handleOnClose();
     }
   };
@@ -191,7 +193,7 @@ export const BasePopover = ({
             ]}
           >
             {children}
-            <ExitFocusCapture />
+            {!tabToExit && <ExitFocusCapture />}
           </Box>
         </BraidPortal>
         <Box
