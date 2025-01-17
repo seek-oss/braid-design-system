@@ -249,7 +249,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.12.1",
-    "sku": "13.3.0",
+    "sku": "13.4.0",
     "storybook": "7.6.20",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"
