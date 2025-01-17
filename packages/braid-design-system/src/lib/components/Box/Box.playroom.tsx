@@ -15,7 +15,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
         // valid, property will be left out until value is valid.
         atoms({ [key]: value });
         sprinklesProps[key] = value;
-      } catch (e) {
+      } catch {
         if (key === 'background') {
           if (
             (typeof value === 'string' &&

@@ -36,6 +36,7 @@ type NavigationSection =
   | 'css'
   | 'logic';
 
+type PlayroomExampleProps = ReturnType<typeof useScope>;
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
@@ -66,7 +67,6 @@ interface ExampleProps {
   id: string;
   handler: () => void;
 }
-interface PlayroomExampleProps extends ReturnType<typeof useScope> {}
 
 export interface GalleryComponent {
   itemWidth?: 'icon' | 'standard' | 'wide';

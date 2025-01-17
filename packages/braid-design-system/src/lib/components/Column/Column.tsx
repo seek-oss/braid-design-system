@@ -16,22 +16,21 @@ import { alignToFlexAlign } from '../../utils/align';
 import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 import * as styles from './Column.css';
 
-const validColumnComponents = [
-  'div',
-  'span',
-  'p',
-  'article',
-  'section',
-  'main',
-  'nav',
-  'aside',
-  'ul',
-  'ol',
-  'li',
-] as const;
+type ValidColumnComponent =
+  | 'div'
+  | 'span'
+  | 'p'
+  | 'article'
+  | 'section'
+  | 'main'
+  | 'nav'
+  | 'aside'
+  | 'ul'
+  | 'ol'
+  | 'li';
 
 export interface ColumnProps {
-  component?: (typeof validColumnComponents)[number];
+  component?: ValidColumnComponent;
   children: ReactNode;
   width?: keyof typeof styles.width | 'content';
   hideBelow?: ResponsiveRangeProps['below'];

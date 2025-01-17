@@ -1,3 +1,4 @@
+/* eslint-disable import-x/export -- Allows playroom exports to override consumer exports */
 export * from '../components';
 
 export { Accordion } from '../components/Accordion/Accordion.playroom';
