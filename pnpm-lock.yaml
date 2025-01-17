@@ -48,7 +48,7 @@ importers:
         version: 0.5.2
       '@crackle/cli':
         specifier: ^0.15.5
-        version: 0.15.5(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))
+        version: 0.15.5(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(magicast@0.3.5)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))
       '@eslint/compat':
         specifier: ^1.2.5
         version: 1.2.5(eslint@9.18.0(jiti@1.21.7))
@@ -361,8 +361,8 @@ importers:
         specifier: ^2.12.1
         version: 2.14.0
       sku:
-        specifier: 13.3.0
-        version: 13.3.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 13.4.0
+        version: 13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       storybook:
         specifier: 7.6.20
         version: 7.6.20
@@ -638,8 +638,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       sku:
-        specifier: 13.3.0
-        version: 13.3.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 13.4.0
+        version: 13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       webpack:
         specifier: ^5.76.0
         version: 5.97.1(@swc/core@1.10.7)
@@ -698,10 +698,6 @@ packages:
 
   '@babel/helper-annotate-as-pure@7.25.9':
     resolution: {integrity: sha512-gv7320KBUFJz1RnylIg5WWYPRXKZ884AGkYpgpWW02TH66Dl+HaC1t1CKd0z3R4b6hdYEcmrNZHUmfCP+1u3/g==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-builder-react-jsx@7.25.9':
-    resolution: {integrity: sha512-jdB+SzneXsYS5aIrjJ0En39gVK2tieaet7Wa09c6oNRGeIBhWJ7MoTp0aTh3fx8SsFhcJBET9rwgi5qn3BbiXA==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-compilation-targets@7.26.5':
@@ -1180,12 +1176,6 @@ packages:
 
   '@babel/plugin-transform-react-display-name@7.25.9':
     resolution: {integrity: sha512-KJfMlYIUxQB1CJfO3e0+h0ZHWOTLCPP115Awhaz8U0Zpq36Gl/cXlpoyMRnUWlhNUBAzldnCiAZNvCDj7CrKxQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-
-  '@babel/plugin-transform-react-inline-elements@7.25.9':
-    resolution: {integrity: sha512-9MtfGNQY8OFKtkY2IhMDhm7qTyyZkvnyM4hwsT8ouX/teyxrdfsNQkZAyKOX3USt1pwrSfbEb/pTNm+3E8pEXw==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -6667,6 +6657,9 @@ packages:
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
 
+  magicast@0.3.5:
+    resolution: {integrity: sha512-L0WhttDl+2BOsybvEOLK7fW3UA0OQ0IQ2d6Zl2x/a6vVRs3bAY0ECOSHHeL5jD+SbOpOCUEi0y1DgHEn9Qn1AQ==}
+
   make-dir@2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
@@ -8429,8 +8422,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@13.3.0:
-    resolution: {integrity: sha512-dHmCwaYf4kbXXu5ndbt6Xp5qoCwKBhxwY/chd5bt6/yg7YzxdSWP8Fyixx9S8wXPr4rQuZYV02ZIPqkfAc7mDw==}
+  sku@13.4.0:
+    resolution: {integrity: sha512-bobK/1mgU4dilg8BQNEm+G8HYSxFx21wA9SU3xFzgdJByBvEzvw4awpyzjph7EfcPZpgKeEHmu8p0CvP9aHbTQ==}
     engines: {node: '>=18.20'}
     hasBin: true
     peerDependencies:
@@ -9653,11 +9646,6 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.5
 
-  '@babel/helper-builder-react-jsx@7.25.9':
-    dependencies:
-      '@babel/helper-annotate-as-pure': 7.25.9
-      '@babel/types': 7.26.5
-
   '@babel/helper-compilation-targets@7.26.5':
     dependencies:
       '@babel/compat-data': 7.26.5
@@ -10186,12 +10174,6 @@ snapshots:
       '@babel/core': 7.26.0
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-transform-react-inline-elements@7.25.9(@babel/core@7.26.0)':
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/helper-builder-react-jsx': 7.25.9
-      '@babel/helper-plugin-utils': 7.26.5
-
   '@babel/plugin-transform-react-jsx-development@7.25.9(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -10629,9 +10611,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@crackle/cli@0.15.5(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))':
+  '@crackle/cli@0.15.5(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(magicast@0.3.5)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))':
     dependencies:
-      '@crackle/core': 0.33.4(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))
+      '@crackle/core': 0.33.4(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(magicast@0.3.5)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -10649,7 +10631,7 @@ snapshots:
       - typescript
       - webpack
 
-  '@crackle/core@0.33.4(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))':
+  '@crackle/core@0.33.4(@types/node@18.19.70)(babel-plugin-macros@3.1.0)(magicast@0.3.5)(terser@5.37.0)(typescript@5.5.4)(webpack@5.97.1(@swc/core@1.10.7))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.26.0)
@@ -10663,7 +10645,7 @@ snapshots:
       '@vitejs/plugin-react-swc': 3.7.2(vite@5.4.11(@types/node@18.19.70)(terser@5.37.0))
       '@vocab/webpack': 1.2.10(webpack@5.97.1(@swc/core@1.10.7))
       builtin-modules: 3.3.0
-      c12: 1.11.2
+      c12: 1.11.2(magicast@0.3.5)
       consola: 3.4.0
       dedent: 1.5.3(babel-plugin-macros@3.1.0)
       defu: 6.1.4
@@ -13894,7 +13876,7 @@ snapshots:
 
   bytes@3.1.2: {}
 
-  c12@1.11.2:
+  c12@1.11.2(magicast@0.3.5):
     dependencies:
       chokidar: 3.6.0
       confbox: 0.1.8
@@ -13908,6 +13890,8 @@ snapshots:
       perfect-debounce: 1.0.0
       pkg-types: 1.3.0
       rc9: 2.1.2
+    optionalDependencies:
+      magicast: 0.3.5
 
   cac@6.7.14: {}
 
@@ -17417,6 +17401,12 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  magicast@0.3.5:
+    dependencies:
+      '@babel/parser': 7.26.5
+      '@babel/types': 7.26.5
+      source-map-js: 1.2.1
+
   make-dir@2.1.0:
     dependencies:
       pify: 4.0.1
@@ -19552,16 +19542,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@13.3.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-constant-elements': 7.25.9(@babel/core@7.26.0)
-      '@babel/plugin-transform-react-inline-elements': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-runtime': 7.25.9(@babel/core@7.26.0)
       '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
       '@babel/preset-react': 7.26.3(@babel/core@7.26.0)
       '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
       '@babel/runtime': 7.26.0
+      '@babel/types': 7.26.5
       '@loadable/babel-plugin': 5.16.1(@babel/core@7.26.0)
       '@loadable/component': 5.16.4(react@18.3.1)
       '@loadable/server': 5.16.5(@loadable/component@5.16.4(react@18.3.1))(react@18.3.1)
@@ -19620,6 +19610,7 @@ snapshots:
       jest-environment-jsdom: 29.7.0
       jest-watch-typeahead: 2.2.2(jest@29.7.0(@types/node@18.19.70)(babel-plugin-macros@3.1.0))
       lint-staged: 15.3.0
+      magicast: 0.3.5
       mini-css-extract-plugin: 2.9.2(webpack@5.97.1(@swc/core@1.10.7)(esbuild@0.18.20))
       minimist: 1.2.8
       nano-memoize: 3.0.16
@@ -19679,16 +19670,16 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  sku@13.3.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.0)(@swc/core@1.10.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.7)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.70)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.18.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-constant-elements': 7.25.9(@babel/core@7.26.0)
-      '@babel/plugin-transform-react-inline-elements': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-runtime': 7.25.9(@babel/core@7.26.0)
       '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
       '@babel/preset-react': 7.26.3(@babel/core@7.26.0)
       '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
       '@babel/runtime': 7.26.0
+      '@babel/types': 7.26.5
       '@loadable/babel-plugin': 5.16.1(@babel/core@7.26.0)
       '@loadable/component': 5.16.4(react@18.3.1)
       '@loadable/server': 5.16.5(@loadable/component@5.16.4(react@18.3.1))(react@18.3.1)
@@ -19747,6 +19738,7 @@ snapshots:
       jest-environment-jsdom: 29.7.0
       jest-watch-typeahead: 2.2.2(jest@29.7.0(@types/node@18.19.70)(babel-plugin-macros@3.1.0))
       lint-staged: 15.3.0
+      magicast: 0.3.5
       mini-css-extract-plugin: 2.9.2(webpack@5.97.1(@swc/core@1.10.7))
       minimist: 1.2.8
       nano-memoize: 3.0.16
