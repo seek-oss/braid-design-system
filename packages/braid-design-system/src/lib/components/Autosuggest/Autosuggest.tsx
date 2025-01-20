@@ -392,6 +392,7 @@ export const Autosuggest = forwardRef(function <Value>(
     [onChange],
   );
 
+  const fieldRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const justPressedArrowRef = useRef(false);
@@ -746,6 +747,7 @@ export const Autosuggest = forwardRef(function <Value>(
             id={resolvedId}
             value={value.text}
             prefix={undefined}
+            inputBoxRef={fieldRef}
             secondaryIcon={
               onClear ? (
                 <ClearField
@@ -776,10 +778,11 @@ export const Autosuggest = forwardRef(function <Value>(
             )}
           </Field>
           <BasePopover
-            triggerWrapperRef={rootRef}
+            triggerWrapperRef={fieldRef}
             open={isOpen}
             align="full"
             placement="bottom"
+            lockPlacement
             offsetSpace="none"
             disableAnimation
           >
