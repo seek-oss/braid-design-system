@@ -12,7 +12,7 @@ type PopoverProps = Omit<
 };
 
 export const Popover = ({
-  placement = 'bottom',
+  placement,
   offsetSpace = 'none',
   open,
   onClose,
@@ -22,7 +22,7 @@ export const Popover = ({
   children,
 }: PopoverProps) => (
   <BasePopover
-    align={'center'}
+    align="center"
     placement={placement}
     offsetSpace={offsetSpace}
     open={open}
