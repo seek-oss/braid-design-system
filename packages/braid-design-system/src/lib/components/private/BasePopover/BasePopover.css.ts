@@ -2,6 +2,9 @@ import { createVar, keyframes, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '../../../themes/vars.css';
 
+// Todo - this is arbitrary - handle this better
+export const maxWidth = 500;
+
 export const backdrop = style({
   width: '100vw',
   height: '100vh',
@@ -13,6 +16,12 @@ export const triggerVars = {
   bottom: createVar(),
   right: createVar(),
 };
+
+export const alignCenter = style({
+  display: 'flex',
+  justifyContent: 'center',
+  width: `${maxWidth}px`,
+});
 
 // Top and bottom reversed to allow for a more natural API
 export const popoverPosition = style({
