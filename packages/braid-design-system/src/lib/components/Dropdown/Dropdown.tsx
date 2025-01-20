@@ -1,13 +1,15 @@
 import React, { type AllHTMLAttributes, Fragment, forwardRef } from 'react';
+
 import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { IconChevron } from '../icons';
 import {
   type FieldBaseProps,
   type FieldLabelVariant,
   Field,
 } from '../private/Field/Field';
-import { IconChevron } from '../icons';
+
 import * as styles from './Dropdown.css';
-import { Text } from '../Text/Text';
 
 type ValidDropdownChildren = AllHTMLAttributes<
   HTMLOptionElement | HTMLOptGroupElement

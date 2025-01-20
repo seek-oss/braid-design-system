@@ -1,11 +1,12 @@
 import React, { type ReactNode } from 'react';
-import type { ReactNodeNoStrings } from '../components/private/ReactNodeNoStrings';
-import { Text } from '../components/Text/Text';
+
+import { Column } from '../components/Column/Column';
+import { Columns } from '../components/Columns/Columns';
 import { Inline } from '../components/Inline/Inline';
 import { Stack } from '../components/Stack/Stack';
+import { Text } from '../components/Text/Text';
 import { Tiles } from '../components/Tiles/Tiles';
-import { Columns } from '../components/Columns/Columns';
-import { Column } from '../components/Column/Column';
+import type { ReactNodeNoStrings } from '../components/private/ReactNodeNoStrings';
 
 const Label = ({ children }: { children: ReactNode }) => (
   <Text baseline={false} size="xsmall" tone="secondary">

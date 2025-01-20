@@ -1,5 +1,7 @@
 import assert from 'assert';
+
 import React, { type ReactNode } from 'react';
+
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import {
   type ResponsiveRangeProps,
@@ -7,10 +9,10 @@ import {
 } from '../../utils/resolveResponsiveRangeProps';
 import { type BoxProps, Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { Keyline } from '../private/Keyline/Keyline';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { Keyline } from '../private/Keyline/Keyline';
 
 export const validCardComponents = [
   'div',

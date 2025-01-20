@@ -5,7 +5,9 @@ import {
   types as t,
 } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
+
 import { renderRecursiveDepthWarning } from '../warning-renderer/warning';
+
 import { deArray } from './helpers';
 import { isBraidImport } from './isBraidImport';
 

@@ -1,14 +1,10 @@
+import source from '@braid-design-system/source.macro';
 import dedent from 'dedent';
 import React from 'react';
-import {
-  type ResponsiveProperties,
-  type PseudoProperties,
-  type UnresponsiveProperties,
-  type BoxShadow,
-  responsiveProperties,
-  pseudoProperties,
-  unresponsiveProperties,
-} from 'braid-src/lib/css/atoms/atomicProperties';
+import Code from 'site/App/Code/Code';
+import { ThemedExample } from 'site/App/ThemeSetting';
+import type { CssDoc } from 'site/types';
+
 import { atoms } from 'braid-src/entries/css';
 import {
   Stack,
@@ -24,10 +20,15 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';
-import source from '@braid-design-system/source.macro';
-import Code from 'site/App/Code/Code';
-import { ThemedExample } from 'site/App/ThemeSetting';
-import type { CssDoc } from 'site/types';
+import {
+  type ResponsiveProperties,
+  type PseudoProperties,
+  type UnresponsiveProperties,
+  type BoxShadow,
+  responsiveProperties,
+  pseudoProperties,
+  unresponsiveProperties,
+} from 'braid-src/lib/css/atoms/atomicProperties';
 
 type BoxShadowDocs = Required<Record<BoxShadow, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;

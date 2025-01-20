@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
   type ModalContentProps,

@@ -1,12 +1,3 @@
-import React, { type ReactElement, useState, useEffect, useRef } from 'react';
-import copy from 'copy-to-clipboard';
-import dedent from 'dedent';
-import memoize from 'lodash.memoize';
-import prettier from 'prettier/standalone';
-import reactElementToJsxString from 'react-element-to-jsx-string';
-import typescriptParser from 'prettier/parser-typescript';
-import { createUrl } from 'playroom/utils';
-import { useConfig } from '../ConfigContext';
 import type { Source } from '@braid-design-system/source.macro';
 import {
   Stack,
@@ -23,16 +14,27 @@ import {
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
-import * as styles from './Code.css';
-
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import usePlayroomScope from 'braid-src/lib/playroom/useScope';
+import copy from 'copy-to-clipboard';
+import dedent from 'dedent';
+import memoize from 'lodash.memoize';
+import { createUrl } from 'playroom/utils';
+import typescriptParser from 'prettier/parser-typescript';
+import prettier from 'prettier/standalone';
+import React, { type ReactElement, useState, useEffect, useRef } from 'react';
+import reactElementToJsxString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
-import { editorTheme } from './editorTheme';
+
+import { useConfig } from '../ConfigContext';
 import { ThemedExample } from '../ThemeSetting';
-import usePlayroomScope from 'braid-src/lib/playroom/useScope';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+
+import { editorTheme } from './editorTheme';
+
+import * as styles from './Code.css';
 
 type ReactElementOrString = ReactElement | string;
 

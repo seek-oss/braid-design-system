@@ -1,4 +1,5 @@
 import React, { type ReactNode } from 'react';
+
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
 import { IconCaution, IconCritical, IconPositive } from '../icons';

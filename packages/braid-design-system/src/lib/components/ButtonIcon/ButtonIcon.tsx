@@ -1,28 +1,31 @@
 import assert from 'assert';
+
 import React, {
   type AllHTMLAttributes,
   type ReactElement,
   forwardRef,
   cloneElement,
 } from 'react';
-import { Box } from '../Box/Box';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
+
+import type { Space } from '../../css/atoms/atoms';
 import {
   type UseIconProps,
   iconContainerSize,
   iconSize,
 } from '../../hooks/useIcon';
+import { Bleed } from '../Bleed/Bleed';
+import { Box } from '../Box/Box';
 import {
   type ButtonStyleProps,
   ButtonOverlays,
   useButtonStyles,
 } from '../Button/Button';
 import { Text } from '../Text/Text';
-import { Bleed } from '../Bleed/Bleed';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';
-import type { Space } from '../../css/atoms/atoms';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
+
 import * as styles from './ButtonIcon.css';
 
 export const buttonIconVariants: Array<

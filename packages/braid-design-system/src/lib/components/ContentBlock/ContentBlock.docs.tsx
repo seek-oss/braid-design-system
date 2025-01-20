@@ -1,10 +1,11 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import { ContentBlock, Stack } from '../';
-import source from '@braid-design-system/source.macro';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const docs: ComponentDocs = {
   category: 'Layout',

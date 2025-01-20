@@ -1,8 +1,10 @@
 import React from 'react';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import type { ComponentScreenshot } from 'site/types';
-import Toast from './Toast';
+
 import { IconBookmark } from '../';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
+import Toast from './Toast';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768],

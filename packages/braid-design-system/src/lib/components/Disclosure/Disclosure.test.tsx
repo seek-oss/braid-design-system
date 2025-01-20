@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
-import React, { useState } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider } from '../../../entries/test';
+import React, { useState } from 'react';
+
 import { Disclosure } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('Disclosure', () => {
   it('should provide internal state by default', async () => {

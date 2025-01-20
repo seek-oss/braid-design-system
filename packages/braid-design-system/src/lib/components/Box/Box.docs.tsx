@@ -1,5 +1,11 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
+import Code from 'site/App/Code/Code';
+import { ThemedExample } from 'site/App/ThemeSetting';
 import type { ComponentDocs } from 'site/types';
+
+import docsTheme from 'braid-src/lib/themes/docs';
+
 import {
   Text,
   TextLink,
@@ -12,12 +18,6 @@ import {
   Alert,
   BraidProvider,
 } from '../';
-import docsTheme from 'braid-src/lib/themes/docs';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { type SimpleBackground, Box } from './Box';
-import source from '@braid-design-system/source.macro';
-import Code from 'site/App/Code/Code';
 import {
   type UnresponsiveProperties,
   type ResponsiveProperties,
@@ -27,8 +27,11 @@ import {
   unresponsiveProperties,
   pseudoProperties,
 } from '../../css/atoms/atomicProperties';
-import { ThemedExample } from 'site/App/ThemeSetting';
 import { Notice } from '../Notice/Notice';
+
+// TODO: COLORMODE RELEASE
+// Use public import
+import { type SimpleBackground, Box } from './Box';
 
 type BackgroundDocs = Required<Record<SimpleBackground, string>>;
 const validateBackgrounds = (backgrounds: BackgroundDocs) => backgrounds;

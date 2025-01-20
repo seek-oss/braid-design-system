@@ -1,10 +1,13 @@
-import React, { useContext, useEffect, Fragment } from 'react';
 import assert from 'assert';
+
+import React, { useContext, useEffect, Fragment } from 'react';
+
 import flattenChildren from '../../utils/flattenChildren';
-import { TabsContext } from './TabsProvider';
-import { TAB_PANELS_UPDATED } from './Tabs.actions';
-import { TabPanelsContext } from './TabPanelsContext';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+
+import { TabPanelsContext } from './TabPanelsContext';
+import { TAB_PANELS_UPDATED } from './Tabs.actions';
+import { TabsContext } from './TabsProvider';
 
 interface TabPanelsProps {
   renderInactivePanels?: boolean;

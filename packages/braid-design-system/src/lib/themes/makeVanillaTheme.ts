@@ -1,5 +1,6 @@
-import { mapValues } from '../utils/mapValues';
 import { getCapHeight, precomputeValues } from '@capsizecss/core';
+
+import { mapValues } from '../utils/mapValues';
 
 import type { BraidTokens, TextDefinition } from './tokenType';
 

@@ -1,8 +1,10 @@
+import source from '@braid-design-system/source.macro';
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import { Box, Stack, Card, Text, Tiles, Strong, Columns, Column } from '../';
 import { Placeholder } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+
 import { validCardComponents } from './Card';
 
 const docs: ComponentDocs = {

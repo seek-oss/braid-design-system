@@ -1,10 +1,11 @@
 // Modified version of
 // https://github.com/atlassian/changesets/blob/master/packages/changelog-github/src/index.ts
 // changing the release line formatting
-const { getInfo } = require('@changesets/get-github-info');
-const yaml = require('js-yaml');
-const fs = require('fs-extra');
 const path = require('path');
+
+const { getInfo } = require('@changesets/get-github-info');
+const fs = require('fs-extra');
+const yaml = require('js-yaml');
 
 const repo = 'seek-oss/braid-design-system';
 

@@ -1,17 +1,18 @@
-import type { Render } from 'sku';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
-import { HelmetProvider } from 'react-helmet-async';
-import dedent from 'dedent';
-import { App } from './App/App';
-import type { RenderContext } from './types';
-import { ConfigProvider } from './App/ConfigContext';
-import * as themes from 'braid-src/lib/themes';
-import { braidVersionToDate } from './getVersionDetails';
-import { initUpdates } from './App/Updates';
 import packageJson from 'braid-design-system/package.json';
 import { colorModeQueryParamCheck } from 'braid-src/entries/color-mode/query-param';
+import * as themes from 'braid-src/lib/themes';
+import dedent from 'dedent';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { HelmetProvider } from 'react-helmet-async';
+import { StaticRouter } from 'react-router-dom/server';
+import type { Render } from 'sku';
+
+import { App } from './App/App';
+import { ConfigProvider } from './App/ConfigContext';
+import { initUpdates } from './App/Updates';
+import { braidVersionToDate } from './getVersionDetails';
+import type { RenderContext } from './types';
 
 const { version } = packageJson;
 

@@ -1,9 +1,10 @@
-import { includeIgnoreFile } from '@eslint/compat';
-import eslintConfigSeek from 'eslint-config-seek';
 import { readFileSync } from 'fs';
 import { dirname, join, relative } from 'path';
-import { load as loadYaml } from 'js-yaml';
+
+import { includeIgnoreFile } from '@eslint/compat';
+import eslintConfigSeek from 'eslint-config-seek';
 import fastGlob from 'fast-glob';
+import { load as loadYaml } from 'js-yaml';
 const { isDynamicPattern, globSync } = fastGlob; // eslint-disable-line import-x/no-named-as-default-member -- commonjs module, will move to built in with node 22.
 
 /**
@@ -51,6 +52,29 @@ export default [
     rules: {
       'import-x/no-cycle': 'warn',
       'import-x/no-relative-packages': 'error',
+      'import-x/order': [
+        'error',
+        {
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc' },
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          pathGroups: [
+            {
+              pattern: '*.css',
+              group: 'index',
+              position: 'after',
+              patternOptions: { matchBase: true },
+            },
+          ],
+        },
+      ],
     },
   },
   // Prevent importing via project paths, with exception for site-related files

@@ -1,6 +1,7 @@
 const path = require('path');
-const SkuWebpackPlugin = require('sku/webpack-plugin');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SkuWebpackPlugin = require('sku/webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
 const braidSrc = path.join(__dirname, '../packages/braid-design-system/src');

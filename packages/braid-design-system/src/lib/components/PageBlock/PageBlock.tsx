@@ -1,9 +1,10 @@
 import React, { type ReactNode } from 'react';
+
+import { Box } from '../Box/Box';
 import {
   ContentBlock,
   type ContentBlockProps,
 } from '../ContentBlock/ContentBlock';
-import { Box } from '../Box/Box';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';

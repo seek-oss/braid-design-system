@@ -1,9 +1,10 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Tag, Inline, IconTag, Stack } from '../';
-import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 import { LayoutTest } from '../../utils/LayoutTest';
 import { Box } from '../Box/Box';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],

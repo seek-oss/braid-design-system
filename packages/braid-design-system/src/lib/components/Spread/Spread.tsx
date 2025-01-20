@@ -1,17 +1,18 @@
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { Box, type BoxProps } from '../Box/Box';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
 import {
   alignYToFlexAlign,
   type AlignY,
   type Align,
   alignToFlexAlign,
 } from '../../utils/align';
+import { Box, type BoxProps } from '../Box/Box';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import * as styles from './Spread.css';
+import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
 
 type ValidSpreadComponent =
   | 'div'

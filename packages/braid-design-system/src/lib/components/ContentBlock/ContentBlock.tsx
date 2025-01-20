@@ -1,8 +1,10 @@
 import React, { type ReactNode } from 'react';
+
 import { type BoxProps, Box } from '../Box/Box';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import * as styles from './ContentBlock.css';
 
 export interface ContentBlockProps {

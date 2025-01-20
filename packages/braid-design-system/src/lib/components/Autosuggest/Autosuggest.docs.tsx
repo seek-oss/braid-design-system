@@ -1,6 +1,8 @@
+import source from '@braid-design-system/source.macro';
+import parseHighlights from 'autosuggest-highlight/parse';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import source from '@braid-design-system/source.macro';
+
 import {
   Autosuggest,
   filterSuggestions,
@@ -16,8 +18,8 @@ import {
   TextField,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
+
 import { highlightSuggestions } from './Autosuggest';
-import parseHighlights from 'autosuggest-highlight/parse';
 
 export const makeSuggestions = (
   suggestions: Array<string | { text: string; description?: string }>,

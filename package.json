@@ -22,7 +22,7 @@
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
     "validate": "nx run-many --target=validate",
-    "format": "concurrently --group 'pnpm:format:*'",
+    "format": "pnpm format:eslint && pnpm format:prettier",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "generate": "nx run braid-design-system:generate",

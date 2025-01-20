@@ -1,11 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import React, { useState } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider } from '../../../entries/test';
+import React, { useState } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+
 import { AccordionItem, Badge, IconHelp } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 import { htmlToText } from '../../utils/htmlToText';
 
 describe('AccordionItem', () => {

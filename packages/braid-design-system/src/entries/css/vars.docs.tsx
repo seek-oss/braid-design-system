@@ -5,6 +5,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import Code from 'site/App/Code/Code';
+import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
+import type { CssDoc } from 'site/types';
+
 import { vars } from 'braid-src/entries/css';
 import {
   Text,
@@ -20,9 +24,6 @@ import {
 } from 'braid-src/lib/components';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import Code from 'site/App/Code/Code';
-import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
-import type { CssDoc } from 'site/types';
 
 const Row = ({
   group,

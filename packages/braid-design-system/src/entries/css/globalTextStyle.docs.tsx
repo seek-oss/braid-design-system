@@ -1,10 +1,11 @@
+import source from '@braid-design-system/source.macro';
 import dedent from 'dedent';
 import React from 'react';
-import { Alert, Stack, Strong, Text, TextLink } from 'braid-src/lib/components';
-import { globalTextStyle } from 'braid-src/lib/css/globalTypographyStyles';
-import source from '@braid-design-system/source.macro';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
+
+import { Alert, Stack, Strong, Text, TextLink } from 'braid-src/lib/components';
+import { globalTextStyle } from 'braid-src/lib/css/globalTypographyStyles';
 
 const docs: CssDoc = {
   usage: (

@@ -1,5 +1,5 @@
-import fs from 'fs-extra';
 import glob from 'fast-glob';
+import fs from 'fs-extra';
 
 // eslint-disable-next-line import-x/no-relative-packages
 import { version } from '../packages/braid-design-system/package.json';

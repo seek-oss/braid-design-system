@@ -1,6 +1,7 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
+import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import { FieldMessage, Alert, Text, Strong, Stack, Box } from '../';
 import { Placeholder } from '../../playroom/components';
 

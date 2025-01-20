@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
-import React, { useRef } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React, { useRef } from 'react';
+
 import { Toggle, Button } from '..';
 import { BraidTestProvider } from '../../../entries/test';
 

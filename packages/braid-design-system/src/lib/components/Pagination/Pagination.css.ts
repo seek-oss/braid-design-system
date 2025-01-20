@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { colorModeStyle } from '../../css/colorModeStyle';
 
 export const hover = style({});

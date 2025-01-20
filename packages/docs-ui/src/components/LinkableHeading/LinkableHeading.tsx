@@ -1,9 +1,10 @@
+import { Heading, Box, IconLink, Link, type Badge } from 'braid-design-system';
 import React, {
   type ReactNode,
   type ComponentProps,
   type ReactElement,
 } from 'react';
-import { Heading, Box, IconLink, Link, type Badge } from 'braid-design-system';
+
 import * as styles from './LinkableHeading.css';
 
 type BadgeProps = ComponentProps<typeof Badge>;

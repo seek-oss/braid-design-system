@@ -1,12 +1,13 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
-import type { Snippets } from '../private/Snippets';
+
 import {
   Box,
   Placeholder,
   Text,
   TooltipRenderer,
 } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {

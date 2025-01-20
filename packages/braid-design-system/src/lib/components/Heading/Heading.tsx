@@ -1,9 +1,12 @@
 import React, { type ReactNode } from 'react';
-import HeadingContext from './HeadingContext';
+
 import {
   type TypographyProps,
   Typography,
 } from '../private/Typography/Typography';
+
+import HeadingContext from './HeadingContext';
+
 import * as typographyStyles from '../../css/typography.css';
 
 const resolveDefaultComponent = {

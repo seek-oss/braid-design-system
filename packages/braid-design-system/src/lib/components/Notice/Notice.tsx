@@ -1,13 +1,14 @@
 import React, { type ReactNode } from 'react';
-import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
-import { Columns } from '../Columns/Columns';
-import { Column } from '../Column/Column';
+
 import { Box } from '../Box/Box';
+import { Column } from '../Column/Column';
+import { Columns } from '../Columns/Columns';
 import { Text } from '../Text/Text';
-import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import { IconInfo, IconCritical, IconPositive, IconPromote } from '../icons';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { iconSlotSpace } from '../private/iconSlotSpace';
 
 type Tone = 'promote' | 'info' | 'positive' | 'critical';

@@ -1,3 +1,6 @@
+import assert from 'assert';
+
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import React, {
   useContext,
   useEffect,
@@ -7,24 +10,25 @@ import React, {
   type ReactElement,
   type ComponentProps,
 } from 'react';
-import assert from 'assert';
-import flattenChildren from '../../utils/flattenChildren';
-import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { Box } from '../Box/Box';
-import { Divider } from '../Divider/Divider';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import { TAB_LIST_UPDATED } from './Tabs.actions';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+import flattenChildren from '../../utils/flattenChildren';
+import { Box } from '../Box/Box';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { Divider } from '../Divider/Divider';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { TabsContext } from './TabsProvider';
-import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { TabListContext, type TabSize } from './TabListContext';
-import * as styles from './Tabs.css';
-import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+
 import { dividerSpacingForSize, type Tab } from './Tab';
+import { TabListContext, type TabSize } from './TabListContext';
+import { TAB_LIST_UPDATED } from './Tabs.actions';
+import { TabsContext } from './TabsProvider';
+
+import * as styles from './Tabs.css';
 
 export interface TabsProps {
   children: ReactNodeNoStrings;

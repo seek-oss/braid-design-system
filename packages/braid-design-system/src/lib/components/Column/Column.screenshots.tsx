@@ -1,7 +1,9 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Columns, Column, Box, Stack } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import { width as columnWidths } from './Column.css';
 
 const widths = [

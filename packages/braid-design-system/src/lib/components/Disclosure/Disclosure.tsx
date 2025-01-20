@@ -1,21 +1,24 @@
-import React, { type ReactNode, useContext } from 'react';
 import assert from 'assert';
-import { Box } from '../Box/Box';
+
+import React, { type ReactNode, useContext } from 'react';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
+import { Box } from '../Box/Box';
+import HeadingContext from '../Heading/HeadingContext';
 import { Text, type TextProps } from '../Text/Text';
+import { TextContext } from '../Text/TextContext';
 import {
   type TextLinkButtonProps,
   TextLinkButton,
 } from '../TextLinkButton/TextLinkButton';
 import { IconChevron } from '../icons';
-import { type UseDisclosureProps, useDisclosure } from './useDisclosure';
 import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { TextContext } from '../Text/TextContext';
-import HeadingContext from '../Heading/HeadingContext';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+
+import { type UseDisclosureProps, useDisclosure } from './useDisclosure';
 
 export interface DisclosureBaseProps {
   expandLabel: string;

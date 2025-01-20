@@ -1,4 +1,5 @@
 import type { FontMetrics } from '@capsizecss/core';
+
 import type { Breakpoint } from '../css/breakpoints';
 
 type FontMetricsForTheme = Pick<

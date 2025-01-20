@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+
 import useIcon, { type UseIconProps } from '../../hooks/useIcon';
 import { Box, type PublicBoxProps } from '../Box/Box';
 

@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
-import React, { useState } from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider } from '../../../entries/test';
-import { RadioGroup, RadioItem } from '..';
 import userEvent from '@testing-library/user-event';
+import React, { useState } from 'react';
+
+import { RadioGroup, RadioItem } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 const TestCase = () => {
   const [value, setValue] = useState('');

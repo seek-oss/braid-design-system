@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+
 import {
   type AccordionItemProps,
   type AccordionItemBaseProps,

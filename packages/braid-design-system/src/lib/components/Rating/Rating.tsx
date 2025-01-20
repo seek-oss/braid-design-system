@@ -1,15 +1,18 @@
-import React from 'react';
 import assert from 'assert';
+
 import dedent from 'dedent';
-import { useBackground } from '../Box/BackgroundContext';
+import React from 'react';
+
 import type { UseIconProps } from '../../hooks/useIcon';
+import { useBackground } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
-import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
-import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
 import { IconContainer } from '../icons/IconContainer';
 import { IconStarActiveSvg as IconStarFullSvg } from '../icons/IconStar/IconStarActiveSvg';
+import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
+import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
 import { iconSlotSpace } from '../private/iconSlotSpace';
+
 import * as styles from './Rating.css';
 
 const getPercent = (rating: number, position: number) =>

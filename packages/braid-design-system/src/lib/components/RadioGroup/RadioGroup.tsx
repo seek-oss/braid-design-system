@@ -1,15 +1,18 @@
-import React, { type FormEvent, type ReactElement } from 'react';
 import assert from 'assert';
+
+import React, { type FormEvent, type ReactElement } from 'react';
+
 import flattenChildren from '../../utils/flattenChildren';
+import { type RadioItemProps, RadioItem } from '../RadioGroup/RadioItem';
+import { type StackProps, Stack } from '../Stack/Stack';
 import {
   type FieldGroupBaseProps,
   type FieldLabelVariant,
   FieldGroup,
 } from '../private/FieldGroup/FieldGroup';
-import { type RadioItemProps, RadioItem } from '../RadioGroup/RadioItem';
-import { type StackProps, Stack } from '../Stack/Stack';
-import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 import type { InlineFieldProps } from '../private/InlineField/InlineField';
+
+import { RadioGroupContext, RadioItemContext } from './RadioGroupContext';
 
 export type RadioGroupBaseProps<Value = NonNullable<string | number>> =
   FieldGroupBaseProps & {

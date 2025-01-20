@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider } from '../../../entries/test';
-import { PasswordField } from '..';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+
+import { PasswordField } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('PasswordField', () => {
   it('should render with password hidden', () => {

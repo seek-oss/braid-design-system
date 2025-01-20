@@ -1,4 +1,6 @@
+import dedent from 'dedent';
 import React, { type AllHTMLAttributes } from 'react';
+
 import { Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
 import {
@@ -6,12 +8,11 @@ import {
   FieldMessage,
 } from '../../FieldMessage/FieldMessage';
 import { type StackProps, Stack } from '../../Stack/Stack';
+import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
-import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
-import dedent from 'dedent';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 

@@ -1,6 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
-import source from '@braid-design-system/source.macro';
+
 import {
   Badge,
   Box,

@@ -1,5 +1,6 @@
-import type { RequiredResponsiveObject } from '../../css/atoms/sprinkles.css';
 import { type Breakpoint, breakpointNames } from '../../css/breakpoints';
+
+import type { RequiredResponsiveObject } from '../../css/atoms/sprinkles.css';
 
 export function resolveResponsiveObject<Value>(
   breakpointName: Breakpoint,

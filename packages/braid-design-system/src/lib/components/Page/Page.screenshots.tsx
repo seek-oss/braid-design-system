@@ -1,8 +1,10 @@
-import React, { type ReactNode } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Box, Page } from '..';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import { heightLimit } from './Page.css';
 
 const viewportHeight = 300;

@@ -8,14 +8,14 @@ import React, {
   useRef,
 } from 'react';
 
+import { Box } from '../Box/Box';
+import { IconVisibility } from '../icons';
 import {
   type FieldBaseProps,
   type FieldLabelVariant,
   Field,
 } from '../private/Field/Field';
-import { Box } from '../Box/Box';
 import { FieldButtonIcon } from '../private/FieldButtonIcon/FieldButtonIcon';
-import { IconVisibility } from '../icons';
 
 type InputProps = AllHTMLAttributes<HTMLInputElement>;
 

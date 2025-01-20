@@ -1,10 +1,11 @@
 import React, { type ReactNode, useRef, useCallback } from 'react';
+import { throttle } from 'throttle-debounce';
+
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../../Box/Box';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
-import { throttle } from 'throttle-debounce';
 
 import * as styles from './ScrollContainer.css';
 

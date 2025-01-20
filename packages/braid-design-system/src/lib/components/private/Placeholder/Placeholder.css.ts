@@ -4,6 +4,7 @@ import {
   style,
   styleVariants,
 } from '@vanilla-extract/css';
+
 import { colorModeStyle } from '../../../css/colorModeStyle';
 
 const vars = createThemeContract({

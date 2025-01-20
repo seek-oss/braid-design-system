@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import dedent from 'dedent';
 import React, {
   type ReactNode,
@@ -10,14 +11,17 @@ import React, {
   useContext,
   forwardRef,
 } from 'react';
+
 import { ensureResetImported } from '../../css/reset/resetTracker';
-import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
-import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
-import { BreakpointProvider } from './BreakpointContext';
-import { BraidThemeContext } from './BraidThemeContext';
 import type { BraidTheme } from '../../themes/makeBraidTheme';
-import { darkMode } from '../../css/atoms/sprinkles.css';
+import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
+import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
+
+import { BraidThemeContext } from './BraidThemeContext';
+import { BreakpointProvider } from './BreakpointContext';
 import { VanillaThemeContainer } from './VanillaThemeContainer';
+
+import { darkMode } from '../../css/atoms/sprinkles.css';
 
 if (process.env.NODE_ENV === 'development') {
   ensureResetImported();

@@ -1,17 +1,18 @@
-import React, { useMemo } from 'react';
-import guides from '../routes/guides';
-import foundations from '../routes/foundations';
-import examples from '../routes/examples';
+import { SideNavigationSection } from '@braid-design-system/docs-ui';
 import { Stack } from 'braid-src/lib/components';
+import React, { useMemo } from 'react';
+import { matchPath, useLocation } from 'react-router';
+
+import { useConfig } from '../ConfigContext';
+import { isNew } from '../Updates';
 import {
   categorisedComponents,
   documentedComponents,
   documentedCss,
 } from '../navigationHelpers';
-import { useConfig } from '../ConfigContext';
-import { isNew } from '../Updates';
-import { SideNavigationSection } from '@braid-design-system/docs-ui';
-import { matchPath, useLocation } from 'react-router';
+import examples from '../routes/examples';
+import foundations from '../routes/foundations';
+import guides from '../routes/guides';
 
 type BadgeLabel = 'New' | 'Deprecated';
 

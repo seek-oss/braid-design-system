@@ -1,5 +1,11 @@
 import React, { type ReactNode, useContext } from 'react';
+
+import { alignToFlexAlign } from '../../utils/align';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
+import {
+  resolveResponsiveRangeProps,
+  type ResponsiveRangeProps,
+} from '../../utils/resolveResponsiveRangeProps';
 import { Box } from '../Box/Box';
 import {
   ColumnsContext,
@@ -8,13 +14,9 @@ import {
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import {
-  resolveResponsiveRangeProps,
-  type ResponsiveRangeProps,
-} from '../../utils/resolveResponsiveRangeProps';
-import { alignToFlexAlign } from '../../utils/align';
-import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
+
 import * as styles from './Column.css';
+import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 
 type ValidColumnComponent =
   | 'div'

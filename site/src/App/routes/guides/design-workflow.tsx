@@ -1,4 +1,4 @@
-import React from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Heading,
   Text,
@@ -6,11 +6,12 @@ import {
   Divider,
   List,
 } from 'braid-src/lib/components';
-import { TextStack } from '../../TextStack/TextStack';
-import { useConfig } from '../../ConfigContext';
+import React from 'react';
+
 import type { Page } from '../../../types';
+import { useConfig } from '../../ConfigContext';
 import { PageTitle } from '../../Seo/PageTitle';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TextStack } from '../../TextStack/TextStack';
 
 const braidDesignSupportLink = (
   <TextLink href="https://seekchat.slack.com/channels/braid-design-support">

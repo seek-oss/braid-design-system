@@ -1,7 +1,10 @@
 import React from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
+
 import { IconChevronSvg } from './IconChevronSvg';
+
 import * as styles from './IconChevron.css';
 
 export type IconChevronProps = IconContainerProps & {

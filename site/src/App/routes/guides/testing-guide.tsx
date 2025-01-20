@@ -1,7 +1,4 @@
-import React from 'react';
-
-import type { Page } from '../../../types';
-import { TextStack } from '../../TextStack/TextStack';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Heading,
   Divider,
@@ -10,9 +7,12 @@ import {
   List,
   Strong,
 } from 'braid-src/lib/components';
+import React from 'react';
+
+import type { Page } from '../../../types';
 import Code from '../../Code/Code';
 import { PageTitle } from '../../Seo/PageTitle';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TextStack } from '../../TextStack/TextStack';
 
 const page: Page = {
   title: 'Testing Guide',

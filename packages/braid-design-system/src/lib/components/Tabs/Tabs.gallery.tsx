@@ -1,5 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
+
 import {
   Stack,
   Tabs,
@@ -13,7 +15,6 @@ import {
   IconRecommended,
 } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
   examples: [

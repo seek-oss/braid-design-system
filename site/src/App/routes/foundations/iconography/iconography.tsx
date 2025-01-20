@@ -1,12 +1,14 @@
+import { Stack, Heading } from 'braid-src/lib/components';
 import React from 'react';
 import { Outlet, Route } from 'react-router';
-import { Stack, Heading } from 'braid-src/lib/components';
+
 import type { Page } from '../../../../types';
-import { PageTitle } from '../../../Seo/PageTitle';
 import {
   DocNavigationBar,
   DocNavigationItem,
 } from '../../../DocNavigation/DocNavigation';
+import { PageTitle } from '../../../Seo/PageTitle';
+
 import { IconsBrowse } from './IconsBrowse';
 import { IconsDetails } from './IconsDetails';
 

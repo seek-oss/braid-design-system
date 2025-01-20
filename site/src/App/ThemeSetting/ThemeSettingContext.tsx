@@ -1,3 +1,5 @@
+import * as themes from 'braid-src/lib/themes';
+import type { BraidTheme } from 'braid-src/lib/themes/makeBraidTheme';
 import React, {
   type ReactNode,
   createContext,
@@ -7,8 +9,6 @@ import React, {
 } from 'react';
 import { useLocalStorage } from 'react-use';
 
-import * as themes from 'braid-src/lib/themes';
-import type { BraidTheme } from 'braid-src/lib/themes/makeBraidTheme';
 type ThemeKey = keyof typeof themes;
 
 const defaultTheme = 'seekJobs' as const;

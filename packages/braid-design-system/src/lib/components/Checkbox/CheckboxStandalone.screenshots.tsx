@@ -1,5 +1,6 @@
 import React, { useState, type ComponentProps } from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Box,
   CheckboxStandalone,

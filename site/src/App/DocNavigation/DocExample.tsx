@@ -1,9 +1,10 @@
-import React, { type ReactNode } from 'react';
 import { Stack } from 'braid-src/lib/components';
-import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExample';
+import React, { type ReactNode } from 'react';
+
 import type { ComponentExample } from '../../types';
 import Code from '../Code/Code';
 import { ThemedExample } from '../ThemeSetting';
+import { useSourceFromExample } from '../useSourceFromExample/useSourceFromExample';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>

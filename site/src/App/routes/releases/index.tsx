@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
-
 // @ts-expect-error
 import changelogContent from 'braid-src/CHANGELOG.md';
+import React, { Fragment } from 'react';
 
 import { Markdown } from '../../Markdown/Markdown';
 import { PageTitle } from '../../Seo/PageTitle';

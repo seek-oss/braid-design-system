@@ -1,5 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Inline,
   Tag,
@@ -10,7 +12,6 @@ import {
   IconLanguage,
   IconTag,
 } from '../';
-import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

@@ -1,13 +1,15 @@
 import React, { type ReactElement, type ReactNode } from 'react';
+
+import type { UseIconProps } from '../../../hooks/useIcon';
+import { alignToFlexAlign } from '../../../utils/align';
 import { type BoxProps, Box } from '../../Box/Box';
+import { MaxLines } from '../MaxLines/MaxLines';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
-import { MaxLines } from '../MaxLines/MaxLines';
-import type { UseIconProps } from '../../../hooks/useIcon';
-import { alignToFlexAlign } from '../../../utils/align';
-import { descenderCropFixForWebkitBox } from '../MaxLines/MaxLines.css';
 import { iconSlotSpace } from '../iconSlotSpace';
+
+import { descenderCropFixForWebkitBox } from '../MaxLines/MaxLines.css';
 
 export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   children?: ReactNode;

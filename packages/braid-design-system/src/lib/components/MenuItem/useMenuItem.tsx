@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import React, {
   type KeyboardEvent,
   type ReactNode,
@@ -8,22 +9,24 @@ import React, {
   useRef,
   useEffect,
 } from 'react';
+
+import { atoms } from '../../css/atoms/atoms';
+import { iconSize } from '../../hooks/useIcon';
 import type { BadgeProps } from '../Badge/Badge';
 import { type BoxProps, Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import { normalizeKey } from '../private/normalizeKey';
-import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { type Action, actionTypes } from '../MenuRenderer/MenuRenderer.actions';
+import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
+import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
+import { Text } from '../Text/Text';
+import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { atoms } from '../../css/atoms/atoms';
-import { iconSize } from '../../hooks/useIcon';
-import * as styles from './useMenuItem.css';
-import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { iconSlotSpace } from '../private/iconSlotSpace';
-import { badgeSlotSpace } from '../private/badgeSlotSpace';
+import { normalizeKey } from '../private/normalizeKey';
+
+import * as styles from './useMenuItem.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 const {

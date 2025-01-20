@@ -1,8 +1,9 @@
 import React, { type ReactNode, Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import { Box, Inline } from '../';
 import { spaces } from '../../utils/docsHelpers';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box style={{ maxWidth: '240px' }}>{children}</Box>

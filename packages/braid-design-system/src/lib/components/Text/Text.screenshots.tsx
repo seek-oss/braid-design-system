@@ -1,6 +1,7 @@
 import React, { Fragment, type ReactNode } from 'react';
-import { titleCase } from 'title-case';
 import type { ComponentScreenshot } from 'site/types';
+import { titleCase } from 'title-case';
+
 import {
   Box,
   Text,
@@ -10,9 +11,10 @@ import {
   IconPositive,
   IconImage,
 } from '../';
-import { textSizeUntrimmed, fontWeight } from '../../css/typography.css';
-import { textAlignments } from '../../utils/docsHelpers';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { textAlignments } from '../../utils/docsHelpers';
+
+import { textSizeUntrimmed, fontWeight } from '../../css/typography.css';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>

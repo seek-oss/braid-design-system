@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Badge, Inline, MenuItemCheckbox } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
 

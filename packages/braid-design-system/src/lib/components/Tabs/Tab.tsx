@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 import React, {
   type KeyboardEvent,
   type ReactNode,
@@ -8,10 +10,22 @@ import React, {
   useEffect,
   cloneElement,
 } from 'react';
-import assert from 'assert';
+
+import type { BraidTokens } from '../../themes/tokenType';
+import type { BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box/Box';
+import { type TextProps, Text } from '../Text/Text';
+import { Overlay } from '../private/Overlay/Overlay';
+import { badgeSlotSpace } from '../private/badgeSlotSpace';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { normalizeKey } from '../private/normalizeKey';
-import { TabsContext } from './TabsProvider';
+import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
+import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
+import { useSpace } from '../useSpace/useSpace';
+
+import { TabListContext, type TabSize } from './TabListContext';
 import {
   type Action,
   TAB_BUTTON_LEFT,
@@ -25,18 +39,8 @@ import {
   TAB_BUTTON_CLICK,
   TAB_BUTTON_REGISTER,
 } from './Tabs.actions';
-import { type TextProps, Text } from '../Text/Text';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
-import { TabListContext, type TabSize } from './TabListContext';
-import { Overlay } from '../private/Overlay/Overlay';
-import type { BadgeProps } from '../Badge/Badge';
-import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
-import { smoothScroll, smoothScrollIntoView } from '../private/smoothScroll';
-import { useSpace } from '../useSpace/useSpace';
-import type { BraidTokens } from '../../themes/tokenType';
-import { badgeSlotSpace } from '../private/badgeSlotSpace';
+import { TabsContext } from './TabsProvider';
+
 import * as styles from './Tabs.css';
 
 export interface TabProps {
