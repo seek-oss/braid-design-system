@@ -13,10 +13,13 @@ import * as styles from './BasePopover.css';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import dedent from 'dedent';
 import { normalizeKey } from '../normalizeKey';
+import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
+
+type Placement = 'top' | 'bottom';
 
 export interface BasePopoverProps {
   align?: 'left' | 'right' | 'full' | 'center';
-  placement?: 'top' | 'bottom';
+  placement?: Placement;
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onClose?: () => void;
@@ -73,6 +76,9 @@ export const BasePopover = ({
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
     undefined,
   );
+  const [popoverPlacement, setPopoverPlacement] =
+    useState<Placement>(placement);
+  const showPopover = open && triggerPosition;
 
   const popoverContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -151,21 +157,69 @@ export const BasePopover = ({
   const triggerCentre =
     triggerPosition?.width && triggerPosition.left + triggerPosition.width / 2;
 
+  const handleFlipPlacement = () => {
+    const popOverBoundingRect =
+      popoverContainerRef?.current?.getBoundingClientRect();
+    if (!popOverBoundingRect) {
+      return;
+    }
+
+    const { top, bottom } = popOverBoundingRect;
+    const distanceFromBottom = window.innerHeight - bottom;
+
+    if (top < 0) {
+      setPopoverPlacement('bottom');
+    } else if (distanceFromBottom < 0) {
+      setPopoverPlacement('top');
+    }
+  };
+
+  useIsomorphicLayoutEffect(() => {
+    if (!showPopover) {
+      setPopoverPlacement(placement);
+      return;
+    }
+
+    handleFlipPlacement();
+  });
+
+  useEffect(() => {
+    if (!showPopover) {
+      return;
+    }
+
+    window.addEventListener('scroll', handleFlipPlacement);
+
+    return () => {
+      window.removeEventListener('scroll', handleFlipPlacement);
+    };
+  });
+
+  let triggerPositionStyles;
+
+  if (align === 'full') {
+    triggerPositionStyles = {
+      [styles.triggerVars.left]: `${triggerPosition?.left}px`,
+      [styles.triggerVars.right]: `${triggerPosition?.right}px`,
+    };
+  } else if (align === 'center') {
+    triggerPositionStyles = {
+      [styles.triggerVars.left]: `calc(${triggerCentre}px - ${
+        styles.maxWidth / 2
+      }px)`,
+    };
+  } else {
+    triggerPositionStyles = triggerPosition && {
+      [styles.triggerVars[align]]: `${triggerPosition[align]}px`,
+    };
+  }
+
   const inlineVars = assignInlineVars({
     ...(triggerPosition && {
-      [styles.triggerVars[placement]]: `${triggerPosition[placement]}px`,
-      ...(align === 'full'
-        ? {
-            [styles.triggerVars.left]: `${triggerPosition?.left}px`,
-            [styles.triggerVars.right]: `${triggerPosition?.right}px`,
-          }
-        : align === 'center'
-        ? {
-            [styles.triggerVars.left]: `calc(${triggerCentre}px - ${
-              styles.maxWidth / 2
-            }px)`,
-          }
-        : { [styles.triggerVars[align]]: `${triggerPosition[align]}px` }),
+      [styles.triggerVars[
+        popoverPlacement
+      ]]: `${triggerPosition[popoverPlacement]}px`,
+      ...triggerPositionStyles,
     }),
   });
 
@@ -189,7 +243,7 @@ export const BasePopover = ({
     />
   );
 
-  if (open && triggerPosition) {
+  if (showPopover) {
     return (
       <>
         <BraidPortal>
@@ -200,8 +254,8 @@ export const BasePopover = ({
             onKeyDown={handleKeyboard}
             zIndex="modal"
             position="absolute"
-            marginTop={placement === 'bottom' ? offsetSpace : undefined}
-            marginBottom={placement === 'top' ? offsetSpace : undefined}
+            marginTop={popoverPlacement === 'bottom' ? offsetSpace : undefined}
+            marginBottom={popoverPlacement === 'top' ? offsetSpace : undefined}
             style={inlineVars}
             className={[
               align === 'center' && styles.alignCenter,
