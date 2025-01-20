@@ -2,7 +2,12 @@ import assert from 'assert';
 
 import clsx from 'clsx';
 import dedent from 'dedent';
-import { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
+import React, {
+  type ReactNode,
+  type AllHTMLAttributes,
+  Fragment,
+  type RefObject,
+} from 'react';
 
 import { textStyles } from '../../../css/typography';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
@@ -59,6 +64,7 @@ export interface FieldBaseProps {
   icon?: ReactNode;
   prefix?: string;
   required?: boolean;
+  inputBoxRef?: RefObject<HTMLElement>;
 }
 
 type PassthroughProps =
@@ -115,6 +121,7 @@ export const Field = ({
   icon,
   prefix,
   required,
+  inputBoxRef,
   componentName,
   ...restProps
 }: InternalFieldProps) => {
@@ -197,6 +204,7 @@ export const Field = ({
 
       <Stack space="xsmall">
         <Box
+          ref={inputBoxRef || undefined}
           position="relative"
           background={fieldBackground}
           borderRadius="standard"
