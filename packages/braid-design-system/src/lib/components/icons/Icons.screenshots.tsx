@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Text,
   Heading,
@@ -14,13 +15,14 @@ import {
   IconBookmark,
 } from '../';
 import type { UseIconProps } from '../../hooks/useIcon';
+
+import * as icons from './index';
+
 import {
   heading as headingSizes,
   textSizeUntrimmed as textSizes,
   tone as tones,
 } from '../../css/typography.css';
-
-import * as icons from './index';
 import { vars } from '../../themes/vars.css';
 
 type IconName = keyof typeof icons;

@@ -1,7 +1,9 @@
 import React from 'react';
 import type { Optional } from 'utility-types';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+
 import { type CheckboxProps, Checkbox as BraidCheckbox } from './Checkbox';
 
 type PlayroomCheckboxProps = StateProp &

@@ -1,4 +1,4 @@
-import React from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Text,
   Columns,
@@ -11,12 +11,14 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
-import { TextStack } from '../../../TextStack/TextStack';
+import React from 'react';
+
 import type { Page } from '../../../../types';
-import { ThemedExample } from '../../../ThemeSetting';
 import { PageTitle } from '../../../Seo/PageTitle';
+import { TextStack } from '../../../TextStack/TextStack';
+import { ThemedExample } from '../../../ThemeSetting';
+
 import * as styles from './tones.css';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 const tones = [
   'critical',

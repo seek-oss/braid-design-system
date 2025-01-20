@@ -1,6 +1,7 @@
 import React from 'react';
-import { Rating, Stack, Text } from '../';
 import type { ComponentScreenshot } from 'site/types';
+
+import { Rating, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 export const screenshots: ComponentScreenshot = {

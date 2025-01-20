@@ -1,6 +1,7 @@
-import React from 'react';
-
 import source from '@braid-design-system/source.macro';
+import React from 'react';
+import type { GalleryComponent } from 'site/types';
+
 import {
   Accordion,
   AccordionItem,
@@ -8,7 +9,6 @@ import {
   IconImage,
   Placeholder,
 } from '../../playroom/components';
-import type { GalleryComponent } from 'site/types';
 
 export const galleryItems: GalleryComponent = {
   examples: [

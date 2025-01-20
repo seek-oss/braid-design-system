@@ -1,5 +1,6 @@
-import type { ComponentExample } from '../../types';
 import useScope from 'braid-src/lib/playroom/useScope';
+
+import type { ComponentExample } from '../../types';
 
 const noop = () => {};
 export const useSourceFromExample = (

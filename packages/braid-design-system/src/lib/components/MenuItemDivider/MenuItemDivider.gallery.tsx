@@ -1,5 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
+
 import {
   MenuItemDivider,
   MenuItem,
@@ -11,7 +13,6 @@ import {
   MenuRenderer,
   Inline,
 } from '..';
-import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
   examples: [

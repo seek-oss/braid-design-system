@@ -1,4 +1,5 @@
 import type { StyleRule } from '@vanilla-extract/css';
+
 import type { Breakpoint } from '../css/breakpoints';
 
 interface RequiredTokens {

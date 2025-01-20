@@ -4,7 +4,9 @@ import React, {
   createContext,
   useReducer,
 } from 'react';
+
 import { normalizeKey } from '../private/normalizeKey';
+
 import type * as styles from './Stepper.css';
 
 export type StepperMode = 'linear' | 'non-linear';

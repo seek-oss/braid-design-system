@@ -1,7 +1,8 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import { ContentBlock } from '../';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 1200],

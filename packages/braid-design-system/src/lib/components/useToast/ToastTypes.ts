@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+
 import type { UseIconProps } from '../../hooks/useIcon';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 

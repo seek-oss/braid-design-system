@@ -1,6 +1,8 @@
 import React from 'react';
-import { type SpreadProps, Spread as BraidSpread } from './Spread';
+
 import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
+
+import { type SpreadProps, Spread as BraidSpread } from './Spread';
 
 export const Spread = ({ space, ...restProps }: SpreadProps) => (
   <BraidSpread space={cleanSpaceValue(space) || 'none'} {...restProps} />

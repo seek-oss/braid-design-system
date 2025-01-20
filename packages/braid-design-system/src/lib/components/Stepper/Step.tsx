@@ -1,12 +1,16 @@
 import assert from 'assert';
+
 import clsx from 'clsx';
 import React, { useContext, useEffect, useRef } from 'react';
+
 import { Box } from '../Box/Box';
+import { Hidden } from '../Hidden/Hidden';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
-import { Hidden } from '../Hidden/Hidden';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
+
 import { StepContext, StepperContext } from './StepperContext';
+
 import * as styles from './Stepper.css';
 
 interface StepIndicatorProps {

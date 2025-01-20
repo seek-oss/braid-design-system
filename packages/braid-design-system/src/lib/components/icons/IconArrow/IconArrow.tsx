@@ -1,7 +1,10 @@
 import React from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
+
 import { IconArrowSvg } from './IconArrowSvg';
+
 import * as styles from './IconArrow.css';
 
 export type IconArrowProps = IconContainerProps & {

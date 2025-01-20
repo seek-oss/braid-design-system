@@ -1,6 +1,6 @@
+import { isLight } from '../utils';
 import { mapValues } from '../utils/mapValues';
 
-import { isLight } from '../utils';
 import type { BraidTokens } from './tokenType';
 
 const makeWebFonts = (webFont: BraidTokens['typography']['webFont']) => {

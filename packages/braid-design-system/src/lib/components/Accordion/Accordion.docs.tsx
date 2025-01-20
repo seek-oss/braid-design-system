@@ -1,6 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import source from '@braid-design-system/source.macro';
+
 import {
   Accordion,
   AccordionItem,
@@ -11,6 +12,7 @@ import {
   IconImage,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+
 import { validSpaceValues } from './Accordion';
 
 const docs: ComponentDocs = {

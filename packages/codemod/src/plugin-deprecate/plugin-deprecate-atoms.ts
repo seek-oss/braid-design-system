@@ -1,5 +1,6 @@
-import { isBraidImport } from './isBraidImport';
 import { type PluginObj, type PluginPass, types as t } from '@babel/core';
+
+import { isBraidImport } from './isBraidImport';
 import { type DeprecationMap, subVisitor } from './subVisitor';
 
 interface Context extends PluginPass {

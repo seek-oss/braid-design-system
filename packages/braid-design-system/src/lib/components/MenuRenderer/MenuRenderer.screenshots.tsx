@@ -1,5 +1,7 @@
+import { calc } from '@vanilla-extract/css-utils';
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Box,
   MenuRenderer,
@@ -11,11 +13,11 @@ import {
   IconProfile,
   Inline,
 } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Menu } from './MenuRenderer';
 import { vars } from '../../../entries/css';
-import { calc } from '@vanilla-extract/css-utils';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
+
+import { Menu } from './MenuRenderer';
 
 const defaultProps = {
   offsetSpace: 'none',

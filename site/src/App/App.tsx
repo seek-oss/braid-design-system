@@ -1,29 +1,30 @@
 import 'braid-src/entries/reset';
 
-import React, { StrictMode, useEffect } from 'react';
-import { Route, Routes, Navigate } from 'react-router';
-import { Link as ReactRouterLink } from 'react-router-dom';
-import { ThemeSettingProvider } from './ThemeSetting';
 import docsTheme from 'braid-src/entries/themes/docs';
 import {
   BraidProvider,
   ToastProvider,
   makeLinkComponent,
 } from 'braid-src/lib/components';
-import { Navigation } from './Navigation/Navigation';
-import { HomePage } from './routes/home';
-import guides from './routes/guides';
-import foundations from './routes/foundations';
-import examples from './routes/examples';
-import { DocNavigation } from './DocNavigation/DocNavigation';
+import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
+import React, { StrictMode, useEffect } from 'react';
+import { Route, Routes, Navigate } from 'react-router';
+import { Link as ReactRouterLink } from 'react-router-dom';
+
 import { DocDetails } from './DocNavigation/DocDetails';
+import { DocNavigation } from './DocNavigation/DocNavigation';
 import { DocProps } from './DocNavigation/DocProps';
 import { DocReleases } from './DocNavigation/DocReleases';
 import { DocSnippets } from './DocNavigation/DocSnippets';
-import { ReleasesPage } from './routes/releases';
-import { GalleryPage } from './routes/gallery';
+import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
-import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
+import { ThemeSettingProvider } from './ThemeSetting';
+import examples from './routes/examples';
+import foundations from './routes/foundations';
+import { GalleryPage } from './routes/gallery';
+import guides from './routes/guides';
+import { HomePage } from './routes/home';
+import { ReleasesPage } from './routes/releases';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>

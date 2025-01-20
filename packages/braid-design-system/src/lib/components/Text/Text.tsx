@@ -1,12 +1,15 @@
-import React, { useContext, useMemo } from 'react';
 import assert from 'assert';
-import { TextContext } from './TextContext';
-import { useDefaultTextProps } from '../private/defaultTextProps';
+
+import React, { useContext, useMemo } from 'react';
+
 import { type TextStyleProps, textStyles } from '../../css/typography';
 import {
   type TypographyProps,
   Typography,
 } from '../private/Typography/Typography';
+import { useDefaultTextProps } from '../private/defaultTextProps';
+
+import { TextContext } from './TextContext';
 
 export interface TextProps extends TypographyProps {
   size?: TextStyleProps['size'];

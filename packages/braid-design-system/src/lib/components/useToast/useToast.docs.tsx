@@ -1,5 +1,9 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
+import Code from 'site/App/Code/Code';
+import { useThemeSettings } from 'site/App/ThemeSetting';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Box,
   Button,
@@ -12,10 +16,8 @@ import {
   IconLanguage,
   IconBookmark,
 } from '..';
-import { useThemeSettings } from 'site/App/ThemeSetting';
-import Code from 'site/App/Code/Code';
+
 import Toast, { toastDuration } from './Toast';
-import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

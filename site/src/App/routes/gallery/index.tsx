@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { parseToHsl, setLightness } from 'polished';
-
-import { PageTitle } from '../../Seo/PageTitle';
 import { Box } from 'braid-src/lib/components';
-import { Logo } from '../../Logo/Logo';
-import { useThemeSettings } from '../../ThemeSetting';
-import { Gallery } from './Gallery';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
+import { parseToHsl, setLightness } from 'polished';
+import React, { useState, useEffect } from 'react';
+
+import { Logo } from '../../Logo/Logo';
+import { PageTitle } from '../../Seo/PageTitle';
+import { useThemeSettings } from '../../ThemeSetting';
+
+import { Gallery } from './Gallery';
+
 import * as styles from './gallery.css';
 
 const useBackgroundColor = () => {

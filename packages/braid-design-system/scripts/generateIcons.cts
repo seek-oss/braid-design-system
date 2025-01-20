@@ -1,13 +1,14 @@
 import path from 'path';
-import fs from 'fs-extra';
-import glob from 'fast-glob';
-import { load } from 'cheerio';
-import { pascalCase } from 'change-case';
-import dedent from 'dedent';
-// @ts-expect-error svgo@3 has types
-import { optimize } from 'svgo';
+
 // @ts-expect-error svgr@6 has types
 import svgr from '@svgr/core';
+import { pascalCase } from 'change-case';
+import { load } from 'cheerio';
+import dedent from 'dedent';
+import glob from 'fast-glob';
+import fs from 'fs-extra';
+// @ts-expect-error svgo@3 has types
+import { optimize } from 'svgo';
 
 import { debugLog, relativeTo } from './utils';
 

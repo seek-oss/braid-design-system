@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider } from '../../../entries/test';
+import React from 'react';
+
 import { Textarea } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('Textarea', () => {
   it('associates field with label correctly', () => {

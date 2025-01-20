@@ -1,5 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import {
   MonthPicker,
   TextLink,
@@ -10,7 +12,6 @@ import {
   Stack,
   Heading,
 } from '../';
-import source from '@braid-design-system/source.macro';
 import { IconLanguage } from '../icons';
 
 const docs: ComponentDocs = {

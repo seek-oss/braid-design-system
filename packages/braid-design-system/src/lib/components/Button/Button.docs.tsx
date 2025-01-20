@@ -1,5 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Button,
   Stack,
@@ -15,7 +17,6 @@ import {
   Toggle,
   IconArrow,
 } from '../';
-import source from '@braid-design-system/source.macro';
 
 const choosingRightButtonDoc = [
   {

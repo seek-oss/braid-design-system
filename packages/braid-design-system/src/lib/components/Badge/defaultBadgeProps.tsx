@@ -1,4 +1,5 @@
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
+
 import type { BadgeProps } from './Badge';
 
 interface DefaultBadgeProps {

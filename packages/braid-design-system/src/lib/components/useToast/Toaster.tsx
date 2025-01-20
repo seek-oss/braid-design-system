@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
 
 import { Box } from '../Box/Box';
+
 import ToastComponent from './Toast';
-import { useFlipList } from './useFlipList';
 import type { InternalToast } from './ToastTypes';
+import { useFlipList } from './useFlipList';
 
 interface ToasterProps {
   toasts: InternalToast[];

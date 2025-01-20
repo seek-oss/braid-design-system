@@ -1,24 +1,27 @@
-import dedent from 'dedent';
 import assert from 'assert';
-import React, { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
+
 import clsx from 'clsx';
+import dedent from 'dedent';
+import React, { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
+
+import { textStyles } from '../../../css/typography';
+import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { type BoxProps, Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
 import {
   type FieldMessageProps,
   FieldMessage,
 } from '../../FieldMessage/FieldMessage';
-import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import { Stack } from '../../Stack/Stack';
+import { Text } from '../../Text/Text';
+import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
-import { textStyles } from '../../../css/typography';
-import { touchableText } from '../../../css/typography.css';
-import { Text } from '../../Text/Text';
 import { mergeIds } from '../mergeIds';
+
 import * as styles from './Field.css';
-import { useBackgroundLightness } from '../../Box/BackgroundContext';
+import { touchableText } from '../../../css/typography.css';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 

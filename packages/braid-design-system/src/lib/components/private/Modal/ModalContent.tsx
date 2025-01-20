@@ -7,21 +7,23 @@ import React, {
   Fragment,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
-import { type BoxProps, Box } from '../../Box/Box';
-import { normalizeKey } from '../normalizeKey';
-import { Heading } from '../../Heading/Heading';
-import { Stack } from '../../Stack/Stack';
-import { Columns } from '../../Columns/Columns';
-import { Column } from '../../Column/Column';
-import { Overlay } from '../Overlay/Overlay';
+
 import { Bleed } from '../../Bleed/Bleed';
-import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
-import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
-import { IconClear } from '../../icons';
+import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
+import { Column } from '../../Column/Column';
+import { Columns } from '../../Columns/Columns';
+import { Heading } from '../../Heading/Heading';
+import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
+import { Stack } from '../../Stack/Stack';
+import { IconClear } from '../../icons';
+import { Overlay } from '../Overlay/Overlay';
+import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
+import { normalizeKey } from '../normalizeKey';
+
 import * as styles from './Modal.css';
 
 export interface ModalContentProps {

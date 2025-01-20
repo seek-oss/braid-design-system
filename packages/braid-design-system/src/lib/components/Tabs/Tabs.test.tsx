@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import React, { useState, Fragment } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider } from '../../../entries/test';
+import React, { useState, Fragment } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+
 import {
   Tabs,
   Tab,
@@ -14,6 +14,7 @@ import {
   Badge,
   IconHome,
 } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 // We have the test environment set to `jsdom`, but the actual code runs in Node.js.
 // That means we will get the error that "useLayoutEffect does nothing on the server".

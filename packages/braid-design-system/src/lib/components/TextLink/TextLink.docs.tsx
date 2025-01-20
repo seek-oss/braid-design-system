@@ -1,5 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Box,
   Inline,
@@ -10,7 +12,6 @@ import {
   IconLink,
   IconArrow,
 } from '../';
-import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

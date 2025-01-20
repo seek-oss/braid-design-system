@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Strong, Text } from '../';
 
 export const screenshots: ComponentScreenshot = {

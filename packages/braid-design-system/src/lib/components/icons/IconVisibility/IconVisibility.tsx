@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
-import { IconVisibilitySvg } from './IconVisibilitySvg';
+
 import { IconVisibilityHiddenSvg } from './IconVisibilityHiddenSvg';
+import { IconVisibilitySvg } from './IconVisibilitySvg';
 
 export type IconVisibilityProps = IconContainerProps & {
   hidden?: boolean;

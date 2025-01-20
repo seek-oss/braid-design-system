@@ -1,17 +1,19 @@
+import dedent from 'dedent';
 import React, { type ReactNode, useContext } from 'react';
-import { type BoxProps, Box } from '../Box/Box';
-import { TextContext } from '../Text/TextContext';
-import HeadingContext from '../Heading/HeadingContext';
+
+import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import {
   type ResponsiveRangeProps,
   resolveResponsiveRangeProps,
 } from '../../utils/resolveResponsiveRangeProps';
+import { type BoxProps, Box } from '../Box/Box';
+import HeadingContext from '../Heading/HeadingContext';
+import { TextContext } from '../Text/TextContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import * as styles from './Hidden.css';
-import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import dedent from 'dedent';
 
 export interface HiddenProps extends ResponsiveRangeProps {
   children: ReactNode;

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { hideFocusRingsDataAttribute } from './hideFocusRingsDataAttribute';
 
 const hideFocusRings = () =>

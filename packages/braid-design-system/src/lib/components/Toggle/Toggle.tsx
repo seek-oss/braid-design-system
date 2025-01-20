@@ -1,20 +1,22 @@
+import dedent from 'dedent';
 import React, {
   type AllHTMLAttributes,
   type ChangeEvent,
   type ReactNode,
   forwardRef,
 } from 'react';
-import { Box } from '../Box/Box';
-import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
-import { Text } from '../Text/Text';
+
 import { useBackgroundLightness } from '../Box/BackgroundContext';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+
 import * as styles from './Toggle.css';
 import type { Size } from './Toggle.css';
-import dedent from 'dedent';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;

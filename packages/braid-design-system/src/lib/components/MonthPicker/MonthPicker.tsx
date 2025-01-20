@@ -1,11 +1,13 @@
+import assert from 'assert';
+
+import { isMobile } from 'is-mobile';
 import React, {
   type ChangeEvent,
   type FocusEvent,
   createRef,
   Fragment,
 } from 'react';
-import { isMobile } from 'is-mobile';
-import assert from 'assert';
+
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
@@ -16,6 +18,7 @@ import {
   type FieldGroupBaseProps,
   FieldGroup,
 } from '../private/FieldGroup/FieldGroup';
+
 import * as styles from './MonthPicker.css';
 
 interface MonthPickerValue {

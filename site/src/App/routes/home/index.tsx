@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Text,
   TextLink,
@@ -6,6 +5,8 @@ import {
   Heading,
   Divider,
 } from 'braid-src/lib/components';
+import React from 'react';
+
 import { useConfig } from '../../ConfigContext';
 
 export const HomePage = () => {

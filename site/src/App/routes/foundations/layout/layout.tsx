@@ -1,4 +1,5 @@
-import React from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
+import source from '@braid-design-system/source.macro';
 import {
   Heading,
   Text,
@@ -25,16 +26,16 @@ import {
   Page,
   Spread,
 } from 'braid-src/lib/components';
-import { TextStack } from '../../../TextStack/TextStack';
-import Code from '../../../Code/Code';
-import tokens from 'braid-src/lib/themes/wireframe/tokens';
-import type { Page as DocsPage } from '../../../../types';
-import { ThemedExample } from '../../../ThemeSetting';
-import { PageTitle } from '../../../Seo/PageTitle';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
-import source from '@braid-design-system/source.macro';
 import { Placeholder } from 'braid-src/lib/playroom/components';
+import tokens from 'braid-src/lib/themes/wireframe/tokens';
+import React from 'react';
+
+import type { Page as DocsPage } from '../../../../types';
+import Code from '../../../Code/Code';
+import { PageTitle } from '../../../Seo/PageTitle';
+import { TextStack } from '../../../TextStack/TextStack';
+import { ThemedExample } from '../../../ThemeSetting';
 
 type Space = 'none' | keyof typeof tokens.space;
 const spaceScale = ['none', ...Object.keys(tokens.space)] as Space[];

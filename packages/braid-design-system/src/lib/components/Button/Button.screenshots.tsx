@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Box,
   Button,
@@ -11,10 +12,10 @@ import {
   IconArrow,
   IconWorkExperience,
 } from '../';
-
-import type { ButtonProps } from './Button';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
+
+import type { ButtonProps } from './Button';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Box, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 

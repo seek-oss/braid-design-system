@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
-import React, { type ComponentProps, useState } from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider } from '../../../entries/test';
-import { Checkbox } from '..';
 import userEvent from '@testing-library/user-event';
+import React, { type ComponentProps, useState } from 'react';
+
+import { Checkbox } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('Checkbox', () => {
   it('associates field with label correctly', () => {

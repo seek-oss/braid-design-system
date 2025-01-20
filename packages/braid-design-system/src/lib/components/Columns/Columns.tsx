@@ -1,18 +1,22 @@
 import assert from 'assert';
+
 import React, { type ReactElement } from 'react';
-import { Box } from '../Box/Box';
-import type { ColumnProps } from '../Column/Column';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import {
   type CollapsibleAlignmentProps,
   resolveCollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
-import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
+import { Box } from '../Box/Box';
+import type { ColumnProps } from '../Column/Column';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import { ColumnsContext, type validColumnsComponents } from './ColumnsContext';
+
+import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 
 export type ColumnsProps = CollapsibleAlignmentProps & {
   space: ResponsiveSpace;

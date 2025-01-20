@@ -1,20 +1,24 @@
-import React, { cloneElement, useCallback, useEffect } from 'react';
 import assert from 'assert';
-import { Stack } from '../Stack/Stack';
-import { Inline } from '../Inline/Inline';
-import { Columns } from '../Columns/Columns';
-import { Column } from '../Column/Column';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
+
+import React, { cloneElement, useCallback, useEffect } from 'react';
+
 import { Box } from '../Box/Box';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
+import { Column } from '../Column/Column';
+import { Columns } from '../Columns/Columns';
+import { ContentBlock } from '../ContentBlock/ContentBlock';
+import { Inline } from '../Inline/Inline';
+import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconPositive, IconCritical, IconClear } from '../icons';
-import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
-import { useTimeout } from './useTimeout';
-import type { InternalToast, ToastAction } from './ToastTypes';
-import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import buildDataAttributes from '../private/buildDataAttributes';
+
+import type { InternalToast, ToastAction } from './ToastTypes';
+import { useTimeout } from './useTimeout';
+
 import * as styles from './Toast.css';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 
 const toneToIcon = {
   critical: IconCritical,

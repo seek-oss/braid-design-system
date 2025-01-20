@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { render } from '@testing-library/react';
-import { htmlToText } from '../../utils/htmlToText';
-import { BraidTestProvider } from '../../../entries/test';
+import React from 'react';
+
 import { type LinkComponent, makeLinkComponent, Text, TextLink } from '..';
+import { BraidTestProvider } from '../../../entries/test';
+import { htmlToText } from '../../utils/htmlToText';
 
 describe('TextLink', () => {
   it('should render a native link by default', () => {

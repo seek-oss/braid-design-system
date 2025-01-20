@@ -1,6 +1,7 @@
 import React, { type ReactNode, createContext, useReducer } from 'react';
 
 import { getNextIndex } from '../private/getNextIndex';
+
 import {
   type Action,
   TAB_BUTTON_LEFT,

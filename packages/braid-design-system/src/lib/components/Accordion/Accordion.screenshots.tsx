@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   AccordionItem,
   Accordion,

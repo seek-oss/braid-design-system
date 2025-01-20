@@ -1,12 +1,13 @@
 import React, { type ReactNode, useEffect, useRef } from 'react';
 import { hydrateRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { useLocation } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+
 import { App } from './App/App';
-import type { RenderContext } from './types';
 import { ConfigProvider } from './App/ConfigContext';
 import { initUpdates } from './App/Updates';
-import { useLocation } from 'react-router';
+import type { RenderContext } from './types';
 
 const ScrollManager = ({ children }: { children: ReactNode }) => {
   const location = useLocation();

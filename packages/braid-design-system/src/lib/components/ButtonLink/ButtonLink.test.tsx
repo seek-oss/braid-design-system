@@ -1,16 +1,17 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { htmlToText } from '../../utils/htmlToText';
-import { BraidTestProvider } from '../../../entries/test';
+
 import {
   type LinkComponent,
   makeLinkComponent,
   ButtonLink,
   IconSend,
 } from '..';
+import { BraidTestProvider } from '../../../entries/test';
+import { htmlToText } from '../../utils/htmlToText';
 
 describe('ButtonLink', () => {
   it('should render valid html structure', () => {

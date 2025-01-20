@@ -1,6 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React, { type ComponentProps, type ReactElement } from 'react';
 import type { ComponentDocs } from 'site/types';
-import source from '@braid-design-system/source.macro';
+
 import {
   Drawer,
   Button,
@@ -14,6 +15,7 @@ import {
   Box,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+
 import { DrawerContent } from './Drawer';
 import { DrawerPreview } from './Drawer.screenshots';
 

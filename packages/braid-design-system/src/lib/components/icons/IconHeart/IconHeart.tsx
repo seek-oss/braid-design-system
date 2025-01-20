@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
-import { IconHeartSvg } from './IconHeartSvg';
+
 import { IconHeartActiveSvg } from './IconHeartActiveSvg';
+import { IconHeartSvg } from './IconHeartSvg';
 
 export type IconHeartProps = IconContainerProps & {
   active?: boolean;

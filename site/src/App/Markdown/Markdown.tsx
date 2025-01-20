@@ -1,7 +1,4 @@
-import React, { type ReactElement } from 'react';
-import ReactMarkdown from 'react-markdown';
-
-import { CodeBlock, type SupportedLanguage } from '../Code/Code';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Text,
   Heading,
@@ -13,8 +10,11 @@ import {
 } from 'braid-src/lib/components';
 import { TextContext } from 'braid-src/lib/components/Text/TextContext';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
+import React, { type ReactElement } from 'react';
+import ReactMarkdown from 'react-markdown';
+
+import { CodeBlock, type SupportedLanguage } from '../Code/Code';
 import { InlineCode } from '../InlineCode/InlineCode';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 const Code = ({
   language,

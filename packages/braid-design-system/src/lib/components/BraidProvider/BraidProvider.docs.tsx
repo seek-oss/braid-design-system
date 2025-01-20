@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import { Text, TextLink, Strong } from '../';
 import type { ComponentDocs } from 'site/types';
+
+import { Text, TextLink, Strong } from '../';
 
 const docs: ComponentDocs = {
   category: 'Logic',

@@ -1,8 +1,7 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
+import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Step } from './Step';
-import { Stepper } from './Stepper';
+
 import {
   Button,
   Column,
@@ -16,6 +15,9 @@ import {
   Text,
   TextLink,
 } from '..';
+
+import { Step } from './Step';
+import { Stepper } from './Stepper';
 
 const docs: ComponentDocs = {
   category: 'Content',

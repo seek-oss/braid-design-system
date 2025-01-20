@@ -6,16 +6,17 @@ import React, {
   useRef,
   useCallback,
 } from 'react';
+
 import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
 import {
   type TextLinkStyles,
   TextLinkContent,
   useLinkStyles,
 } from '../TextLink/TextLink';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
 export interface TextLinkButtonProps

@@ -1,12 +1,14 @@
 import React from 'react';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { Box } from '../Box/Box';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { type Align, alignToFlexAlign } from '../../utils/align';
-import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
+import { Box } from '../Box/Box';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
+import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
 
 type ValidStackComponent =
   | 'div'

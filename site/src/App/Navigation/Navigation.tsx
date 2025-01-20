@@ -1,6 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef } from 'react';
-import { useLocation, Outlet } from 'react-router-dom';
-import { useWindowScroll, useInterval } from 'react-use';
+import { HeaderNavigation } from '@braid-design-system/docs-ui';
 import {
   ContentBlock,
   Hidden,
@@ -15,15 +13,21 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
+import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
+import { useLocation, Outlet } from 'react-router-dom';
+import { useWindowScroll, useInterval } from 'react-use';
+
 import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
-import { useScrollLock } from '../useScrollLock/useScrollLock';
-import { HeaderNavigation } from '@braid-design-system/docs-ui';
-import { Logo } from '../Logo/Logo';
-import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
-import * as styles from './Navigation.css';
-import { ThemeToggle } from '../ThemeSetting';
+
 import { useConfig } from '../ConfigContext';
+import { Logo } from '../Logo/Logo';
+import { ThemeToggle } from '../ThemeSetting';
+import { useScrollLock } from '../useScrollLock/useScrollLock';
+
+import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
+
+import * as styles from './Navigation.css';
 
 const Header = ({
   menuOpen,

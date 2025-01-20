@@ -1,16 +1,20 @@
-import React, { forwardRef, Children, useContext } from 'react';
 import assert from 'assert';
+
+import React, { forwardRef, Children, useContext } from 'react';
+
+import { Bleed } from '../Bleed/Bleed';
 import { type BoxProps, Box } from '../Box/Box';
+import HeadingContext from '../Heading/HeadingContext';
 import { Text } from '../Text/Text';
+import { TextContext } from '../Text/TextContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { Bleed } from '../Bleed/Bleed';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
-import { TextContext } from '../Text/TextContext';
-import HeadingContext from '../Heading/HeadingContext';
-import * as styles from './Badge.css';
+
 import { useDefaultBadgeProps } from './defaultBadgeProps';
+
+import * as styles from './Badge.css';
 
 type ValueOrArray<T> = T | T[];
 

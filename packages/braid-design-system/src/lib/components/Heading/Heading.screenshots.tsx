@@ -1,9 +1,11 @@
 import React, { Fragment, type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { heading } from '../../css/typography.css';
+
 import { Box, Heading, IconPositive, IconImage, Stack, Text } from '../';
-import { textAlignments } from '../../utils/docsHelpers';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
+import { textAlignments } from '../../utils/docsHelpers';
+
+import { heading } from '../../css/typography.css';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>

@@ -1,13 +1,15 @@
-import React, { forwardRef, useContext } from 'react';
 import assert from 'assert';
-import {
-  type InlineFieldProps,
-  InlineField,
-} from '../private/InlineField/InlineField';
+
+import React, { forwardRef, useContext } from 'react';
+
 import {
   RadioGroupContext,
   RadioItemContext,
 } from '../RadioGroup/RadioGroupContext';
+import {
+  type InlineFieldProps,
+  InlineField,
+} from '../private/InlineField/InlineField';
 
 export interface RadioItemProps
   extends Omit<

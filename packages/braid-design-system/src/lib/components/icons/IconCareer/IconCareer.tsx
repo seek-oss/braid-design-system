@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
-import { IconCareerSvg } from './IconCareerSvg';
+
 import { IconCareerActiveSvg } from './IconCareerActiveSvg';
+import { IconCareerSvg } from './IconCareerSvg';
 
 export type IconCareerProps = IconContainerProps & {
   active?: boolean;

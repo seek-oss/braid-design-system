@@ -1,8 +1,9 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import { Divider, Inline, Stack } from '../';
-import source from '@braid-design-system/source.macro';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 export const galleryItems: GalleryComponent = {
   examples: [

@@ -1,8 +1,10 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
-import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { LayoutTest } from '../../utils/LayoutTest';
+
+import { heading, textSizeUntrimmed } from '../../css/typography.css';
 
 const textSizes = Object.keys(textSizeUntrimmed) as Array<
   keyof typeof textSizeUntrimmed

@@ -1,10 +1,13 @@
 import type { ReactNode } from 'react';
+
 import { Box } from '../Box/Box';
-import { TableContext } from './TableContext';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
+import { TableContext } from './TableContext';
+
 import * as styles from './Table.css';
 
 export interface TableProps {

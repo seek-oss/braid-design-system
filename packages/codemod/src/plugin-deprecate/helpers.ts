@@ -1,6 +1,7 @@
-import type { DeprecationMap } from './subVisitor';
 import type { types as t } from '@babel/core';
 import type { NodePath } from '@babel/traverse';
+
+import type { DeprecationMap } from './subVisitor';
 
 export type StringLiteralPath = NodePath<t.StringLiteral>;
 export const updateStringLiteral = ({

@@ -1,9 +1,11 @@
 import React, { forwardRef } from 'react';
+
 import {
   type InlineFieldProps,
   InlineField,
 } from '../private/InlineField/InlineField';
 import type { CheckboxChecked } from '../private/InlineField/StyledInput';
+
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 
 export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {

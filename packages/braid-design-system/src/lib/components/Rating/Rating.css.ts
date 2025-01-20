@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
+
 import { colorModeStyle } from '../../css/colorModeStyle';
+
 import { vars } from '../../themes/vars.css';
 
 export const lightModeStarColor = style(

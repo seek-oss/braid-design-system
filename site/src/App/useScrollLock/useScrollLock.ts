@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { atoms } from 'braid-src/entries/css';
+import { useEffect } from 'react';
 
 export function useScrollLock(lock: boolean) {
   const overflowHidden = atoms({

@@ -1,5 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Badge,
   Box,
@@ -20,10 +22,10 @@ import {
   TextLink,
   Tiles,
 } from '../';
-import source from '@braid-design-system/source.macro';
-import type { StackProps } from '../Stack/Stack';
 import { palette } from '../../color/palette';
+import type { StackProps } from '../Stack/Stack';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
+
 import { stripTypeAnyFromCode } from './stripTypeAnyFromCode';
 
 const opacityForDepth = {

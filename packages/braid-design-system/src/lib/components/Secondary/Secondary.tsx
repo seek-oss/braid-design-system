@@ -1,7 +1,9 @@
 import React, { type ReactNode } from 'react';
+
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import { tone } from '../../css/typography.css';
 
 export interface SecondaryProps {

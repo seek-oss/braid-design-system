@@ -1,10 +1,11 @@
+import source from '@braid-design-system/source.macro';
 import React, { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import { Alert, Box, Divider, TextLink, Toggle } from '../';
-import { Text } from '../Text/Text';
-import { Strong } from '../Strong/Strong';
-import source from '@braid-design-system/source.macro';
 import { Stack } from '../Stack/Stack';
+import { Strong } from '../Strong/Strong';
+import { Text } from '../Text/Text';
 
 const docs: ComponentDocs = {
   category: 'Content',

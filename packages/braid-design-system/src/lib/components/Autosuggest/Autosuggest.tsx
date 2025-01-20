@@ -1,3 +1,6 @@
+import matchHighlights from 'autosuggest-highlight/match';
+import parseHighlights from 'autosuggest-highlight/parse';
+import dedent from 'dedent';
 import React, {
   type ChangeEvent,
   type MouseEvent,
@@ -12,40 +15,39 @@ import React, {
   useEffect,
   forwardRef,
 } from 'react';
-import dedent from 'dedent';
-import parseHighlights from 'autosuggest-highlight/parse';
-import matchHighlights from 'autosuggest-highlight/match';
+import { RemoveScroll } from 'react-remove-scroll';
+
+import { textStyles } from '../../css/typography';
+import {
+  type AutosuggestTranslations,
+  autosuggest,
+} from '../../translations/en';
 import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import { Strong } from '../Strong/Strong';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
+import { Strong } from '../Strong/Strong';
+import { Text } from '../Text/Text';
+import { IconClear } from '../icons';
 import { Announcement } from '../private/Announcement/Announcement';
+import { ClearField } from '../private/Field/ClearField';
 import {
   type FieldBaseProps,
   type FieldLabelVariant,
   Field,
 } from '../private/Field/Field';
-import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
-import { IconClear } from '../icons';
-import { textStyles } from '../../css/typography';
-import { touchableText } from '../../css/typography.css';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
-import { ClearField } from '../private/Field/ClearField';
 import { smoothScroll } from '../private/smoothScroll';
 import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
-import { RemoveScroll } from 'react-remove-scroll';
+
 import {
   createAccessibilityProps,
   getItemId,
 } from './createAccessibilityProps';
-import {
-  type AutosuggestTranslations,
-  autosuggest,
-} from '../../translations/en';
 import { reverseMatches } from './reverseMatches';
 
 import * as styles from './Autosuggest.css';
+import { touchableText } from '../../css/typography.css';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
 

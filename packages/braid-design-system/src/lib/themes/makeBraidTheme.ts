@@ -1,9 +1,10 @@
 import { createTheme } from '@vanilla-extract/css';
 
-import { vars } from './vars.css';
-import { makeVanillaTheme } from './makeVanillaTheme';
 import { makeRuntimeTokens } from './makeRuntimeTokens';
+import { makeVanillaTheme } from './makeVanillaTheme';
 import type { BraidTokens } from './tokenType';
+
+import { vars } from './vars.css';
 
 export const makeBraidTheme = (tokens: BraidTokens) => ({
   ...makeRuntimeTokens(tokens),

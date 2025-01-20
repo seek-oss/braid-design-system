@@ -1,23 +1,5 @@
-import React, {
-  type ReactNode,
-  Fragment,
-  memo,
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-} from 'react';
-import {
-  RecoilRoot,
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from 'recoil';
-import chunk from 'lodash.chunk';
-import memoize from 'lodash.memoize';
-import copy from 'copy-to-clipboard';
-import panzoom from 'panzoom';
-
+import source from '@braid-design-system/source.macro';
+import docsTheme from 'braid-src/entries/themes/docs';
 import {
   BraidProvider,
   Stack,
@@ -46,36 +28,55 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';
-import docsTheme from 'braid-src/entries/themes/docs';
-import { getHistory, isNew } from '../../Updates';
-import source from '@braid-design-system/source.macro';
-import { CodeButton, formatSnippet } from '../../Code/Code';
+import * as icons from 'braid-src/lib/components/icons';
+import {
+  IconContainer,
+  type IconContainerProps,
+} from 'braid-src/lib/components/icons/IconContainer';
+import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import copy from 'copy-to-clipboard';
+import chunk from 'lodash.chunk';
+import memoize from 'lodash.memoize';
+import panzoom from 'panzoom';
+import React, {
+  type ReactNode,
+  Fragment,
+  memo,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+} from 'react';
+import {
+  RecoilRoot,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from 'recoil';
+
 import type { ComponentExample } from '../../../types';
+import { CodeButton, formatSnippet } from '../../Code/Code';
+import { Logo } from '../../Logo/Logo';
 import {
   useThemeSettings,
   ThemedExample,
   ThemeToggle,
 } from '../../ThemeSetting';
+import { getHistory, isNew } from '../../Updates';
 import {
   galleryComponents as allGalleryComponents,
   getComponentDocs,
 } from '../../navigationHelpers';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromExample';
-import * as icons from 'braid-src/lib/components/icons';
+
+import { GalleryPanel } from './GalleryPanel';
 import {
   type FitToScreenDimensions,
   zoom as zoomState,
   fitToScreenDimensions,
   controller as controllerState,
 } from './galleryState';
-import { GalleryPanel } from './GalleryPanel';
-import {
-  IconContainer,
-  type IconContainerProps,
-} from 'braid-src/lib/components/icons/IconContainer';
-import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
-import { Logo } from '../../Logo/Logo';
 
 import * as styles from './gallery.css';
 

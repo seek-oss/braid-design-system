@@ -1,12 +1,14 @@
 import React from 'react';
 import type { Optional } from 'utility-types';
+
 import { useFallbackId } from '../../playroom/utils';
+
+import { type TabProps, Tab as BraidTab } from './Tab';
+import { type TabsProps, Tabs as BraidTabs } from './Tabs';
 import {
   type TabsProviderProps,
   TabsProvider as BraidTabsProvider,
 } from './TabsProvider';
-import { type TabsProps, Tabs as BraidTabs } from './Tabs';
-import { type TabProps, Tab as BraidTab } from './Tab';
 
 type PlayroomTabsProviderProps = Optional<TabsProviderProps, 'id'>;
 
