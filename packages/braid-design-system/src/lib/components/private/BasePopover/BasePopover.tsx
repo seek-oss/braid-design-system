@@ -20,6 +20,7 @@ type Placement = 'top' | 'bottom';
 export interface BasePopoverProps {
   align?: 'left' | 'right' | 'full' | 'center';
   placement?: Placement;
+  lockPlacement?: boolean;
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onClose?: () => void;
@@ -62,6 +63,7 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
 export const BasePopover = ({
   align = 'left',
   placement = 'bottom',
+  lockPlacement = false,
   offsetSpace = 'none',
   open,
   onClose,
@@ -180,11 +182,13 @@ export const BasePopover = ({
       return;
     }
 
-    handleFlipPlacement();
+    if (!lockPlacement) {
+      handleFlipPlacement();
+    }
   });
 
   useEffect(() => {
-    if (!showPopover) {
+    if (lockPlacement || !showPopover) {
       return;
     }
 

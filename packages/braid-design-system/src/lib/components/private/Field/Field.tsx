@@ -2,7 +2,12 @@ import assert from 'assert';
 
 import clsx from 'clsx';
 import dedent from 'dedent';
-import { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
+import React, {
+  type ReactNode,
+  type AllHTMLAttributes,
+  Fragment,
+  type RefObject,
+} from 'react';
 
 import { textStyles } from '../../../css/typography';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
