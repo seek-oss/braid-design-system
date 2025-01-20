@@ -6,13 +6,12 @@ import {
 
 type PopoverProps = Omit<
   BasePopoverProps,
-  'disableAnimation' | 'focusPopoverOnOpen' | 'tabToExit'
+  'disableAnimation' | 'focusPopoverOnOpen' | 'tabToExit' | 'align'
 > & {
   returnFocusRef: NonNullable<BasePopoverProps['returnFocusRef']>;
 };
 
 export const Popover = ({
-  align = 'left',
   placement = 'bottom',
   offsetSpace = 'none',
   open,
@@ -23,7 +22,7 @@ export const Popover = ({
   children,
 }: PopoverProps) => (
   <BasePopover
-    align={align}
+    align={'center'}
     placement={placement}
     offsetSpace={offsetSpace}
     open={open}

@@ -15,7 +15,7 @@ import dedent from 'dedent';
 import { normalizeKey } from '../normalizeKey';
 
 export interface BasePopoverProps {
-  align?: 'left' | 'right' | 'full';
+  align?: 'left' | 'right' | 'full' | 'center';
   placement?: 'top' | 'bottom';
   offsetSpace?: ResponsiveSpace;
   open: boolean;
@@ -31,14 +31,20 @@ export interface BasePopoverProps {
   children: ReactNode;
 }
 
-type Position = { top: number; bottom: number; left: number; right: number };
+type Position = {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+  width?: number;
+};
 
 const getPosition = (element: HTMLElement | null): Position | undefined => {
   if (!element) {
     return undefined;
   }
 
-  const { top, bottom, left, right } = element.getBoundingClientRect();
+  const { top, bottom, left, right, width } = element.getBoundingClientRect();
   const { scrollX, scrollY, innerWidth, innerHeight } = window;
 
   return {
@@ -46,6 +52,7 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
     bottom: bottom + scrollY,
     left: left + scrollX,
     right: innerWidth - right - scrollX,
+    width,
   };
 };
 
@@ -141,6 +148,9 @@ export const BasePopover = ({
     };
   }, [open, triggerWrapperRef]);
 
+  const triggerCentre =
+    triggerPosition?.width && triggerPosition.left + triggerPosition.width / 2;
+
   const inlineVars = assignInlineVars({
     ...(triggerPosition && {
       [styles.triggerVars[placement]]: `${triggerPosition[placement]}px`,
@@ -148,6 +158,12 @@ export const BasePopover = ({
         ? {
             [styles.triggerVars.left]: `${triggerPosition?.left}px`,
             [styles.triggerVars.right]: `${triggerPosition?.right}px`,
+          }
+        : align === 'center'
+        ? {
+            [styles.triggerVars.left]: `calc(${triggerCentre}px - ${
+              styles.maxWidth / 2
+            }px)`,
           }
         : { [styles.triggerVars[align]]: `${triggerPosition[align]}px` }),
     }),
@@ -188,6 +204,7 @@ export const BasePopover = ({
             marginBottom={placement === 'top' ? offsetSpace : undefined}
             style={inlineVars}
             className={[
+              align === 'center' && styles.alignCenter,
               styles.popoverPosition,
               !disableAnimation && styles.animation,
             ]}
