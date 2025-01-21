@@ -62,6 +62,10 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
   };
 };
 
+function clamp(min: number, preferred: number, max: number) {
+  return Math.min(Math.max(preferred, min), max);
+}
+
 export const BasePopover = ({
   align = 'left',
   placement = 'bottom',
@@ -77,9 +81,14 @@ export const BasePopover = ({
   tabToExit = true,
   children,
 }: BasePopoverProps) => {
+  // Todo - rename this?
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
     undefined,
   );
+  const [shiftPopoverPosition, setShiftPopoverPosition] = useState<
+    Position | undefined
+  >(undefined);
+
   const [popoverPlacement, setPopoverPlacement] =
     useState<Placement>(placement);
   const showPopover = open && triggerPosition;
@@ -158,9 +167,6 @@ export const BasePopover = ({
     };
   }, [open, triggerWrapperRef]);
 
-  const triggerCentre =
-    triggerPosition?.width && triggerPosition.left + triggerPosition.width / 2;
-
   const handleFlipPlacement = () => {
     const popOverBoundingRect =
       popoverContainerRef?.current?.getBoundingClientRect();
@@ -178,6 +184,62 @@ export const BasePopover = ({
     }
   };
 
+  const handleShiftAlignment = () => {
+    if (!triggerPosition) {
+      return;
+    }
+
+    const popOverBoundingRect =
+      popoverContainerRef?.current?.getBoundingClientRect();
+    if (!popOverBoundingRect) {
+      return;
+    }
+
+    const { width } = popOverBoundingRect;
+
+    const updatedLeft = clamp(
+      scrollX,
+      triggerPosition.left,
+      window.innerWidth + scrollX - width,
+    );
+
+    const updatedRight = clamp(
+      scrollX + width,
+      triggerPosition.right,
+      window.innerWidth + scrollX,
+    );
+
+    if (
+      updatedLeft === popoverPosition?.left ||
+      updatedRight === popoverPosition?.right
+    ) {
+      return;
+    }
+
+    setShiftPopoverPosition(() => {
+      // Todo - simplify
+      const defaultPosition = {
+        top: 0,
+        bottom: 0,
+        width: 0,
+        left: 0,
+        right: 0,
+      };
+      const position = triggerPosition || defaultPosition;
+
+      if (position.left !== updatedLeft) {
+        return {
+          ...position,
+          left: updatedLeft,
+          right: updatedRight,
+          // Todo - do right
+        };
+      }
+
+      return position;
+    });
+  };
+
   useIsomorphicLayoutEffect(() => {
     if (!showPopover) {
       setPopoverPlacement(placement);
@@ -187,6 +249,7 @@ export const BasePopover = ({
     if (!lockPlacement) {
       handleFlipPlacement();
     }
+    handleShiftAlignment();
   });
 
   useEffect(() => {
@@ -201,12 +264,17 @@ export const BasePopover = ({
     };
   });
 
+  const popoverPosition = shiftPopoverPosition || triggerPosition;
+
   let triggerPositionStyles;
+
+  const triggerCentre =
+    popoverPosition?.width && popoverPosition.left + popoverPosition.width / 2;
 
   if (align === 'full') {
     triggerPositionStyles = {
-      [styles.triggerVars.left]: `${triggerPosition?.left}px`,
-      [styles.triggerVars.right]: `${triggerPosition?.right}px`,
+      [styles.triggerVars.left]: `${popoverPosition?.left}px`,
+      [styles.triggerVars.right]: `${popoverPosition?.right}px`,
     };
   } else if (align === 'center') {
     triggerPositionStyles = {
@@ -215,16 +283,16 @@ export const BasePopover = ({
       }px)`,
     };
   } else {
-    triggerPositionStyles = triggerPosition && {
-      [styles.triggerVars[align]]: `${triggerPosition[align]}px`,
+    triggerPositionStyles = popoverPosition && {
+      [styles.triggerVars[align]]: `${popoverPosition[align]}px`,
     };
   }
 
   const inlineVars = assignInlineVars({
-    ...(triggerPosition && {
+    ...(popoverPosition && {
       [styles.triggerVars[
         popoverPlacement
-      ]]: `${triggerPosition[popoverPlacement]}px`,
+      ]]: `${popoverPosition[popoverPlacement]}px`,
       ...triggerPositionStyles,
     }),
   });
@@ -254,6 +322,7 @@ export const BasePopover = ({
       <>
         <BraidPortal>
           <Box
+            // Todo - add aria-label if focussed
             component="section"
             tabIndex={-1}
             ref={popoverContainerRef}
@@ -273,6 +342,7 @@ export const BasePopover = ({
             {!tabToExit && <ExitFocusCapture />}
           </Box>
         </BraidPortal>
+        {/* Todo - should this be portaled? */}
         <Box
           onClick={(event) => {
             event.stopPropagation();
