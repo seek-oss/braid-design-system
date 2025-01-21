@@ -1,4 +1,3 @@
-import { Box } from '../Box/Box';
 import {
   BasePopover,
   type BasePopoverProps,
@@ -6,12 +5,13 @@ import {
 
 type PopoverProps = Omit<
   BasePopoverProps,
-  'disableAnimation' | 'focusPopoverOnOpen' | 'tabToExit' | 'align'
+  'disableAnimation' | 'focusPopoverOnOpen' | 'tabToExit' | 'lockPlacement'
 > & {
   returnFocusRef: NonNullable<BasePopoverProps['returnFocusRef']>;
 };
 
 export const Popover = ({
+  align,
   placement,
   offsetSpace = 'none',
   open,
@@ -22,8 +22,9 @@ export const Popover = ({
   children,
 }: PopoverProps) => (
   <BasePopover
-    align="center"
+    align={align}
     placement={placement}
+    lockPlacement={false}
     offsetSpace={offsetSpace}
     open={open}
     onClose={onClose}
@@ -33,15 +34,6 @@ export const Popover = ({
     focusPopoverOnOpen
     tabToExit={false}
   >
-    <Box borderRadius="standard" boxShadow="small">
-      <Box
-        borderRadius="standard"
-        boxShadow="borderNeutralLight"
-        padding="medium"
-        background="surface"
-      >
-        {children}
-      </Box>
-    </Box>
+    {children}
   </BasePopover>
 );
