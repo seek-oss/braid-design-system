@@ -1,4 +1,4 @@
-import React, { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext } from 'react';
 
 import { alignToFlexAlign } from '../../utils/align';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';

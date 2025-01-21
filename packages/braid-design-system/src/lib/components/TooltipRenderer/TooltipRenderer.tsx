@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import isMobile from 'is-mobile';
-import React, {
+import {
   type ReactNode,
   createContext,
   useState,

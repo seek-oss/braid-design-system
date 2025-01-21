@@ -1,9 +1,4 @@
-import React, {
-  type ReactNode,
-  createContext,
-  useContext,
-  useMemo,
-} from 'react';
+import { type ReactNode, createContext, useContext, useMemo } from 'react';
 
 import type { TextStyleProps } from '../../css/typography';
 import type { TextProps } from '../Text/Text';

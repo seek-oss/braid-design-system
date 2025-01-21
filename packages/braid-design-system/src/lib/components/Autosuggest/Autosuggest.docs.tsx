@@ -1,6 +1,5 @@
 import source from '@braid-design-system/source.macro';
 import parseHighlights from 'autosuggest-highlight/parse';
-import React from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {

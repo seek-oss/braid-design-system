@@ -10,7 +10,7 @@ import {
 } from 'braid-src/lib/components';
 import { TextContext } from 'braid-src/lib/components/Text/TextContext';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { CodeBlock, type SupportedLanguage } from '../Code/Code';

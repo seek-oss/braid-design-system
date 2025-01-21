@@ -1,6 +1,6 @@
 import { SideNavigationSection } from '@braid-design-system/docs-ui';
 import { Stack } from 'braid-src/lib/components';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router';
 
 import { useConfig } from '../ConfigContext';

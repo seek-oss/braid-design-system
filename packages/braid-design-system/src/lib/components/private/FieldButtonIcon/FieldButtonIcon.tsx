@@ -1,9 +1,4 @@
-import React, {
-  type MouseEvent,
-  useCallback,
-  forwardRef,
-  cloneElement,
-} from 'react';
+import { type MouseEvent, useCallback, forwardRef, cloneElement } from 'react';
 
 import { type ButtonIconProps, ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 

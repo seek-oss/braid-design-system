@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import type { ButtonProps } from '../Button/Button';
 import { type InlineProps, Inline } from '../Inline/Inline';

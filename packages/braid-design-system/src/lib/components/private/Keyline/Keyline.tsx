@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { type BoxProps, Box } from '../../Box/Box';
 

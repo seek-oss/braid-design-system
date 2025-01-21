@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Placeholder } from '../../playroom/components';

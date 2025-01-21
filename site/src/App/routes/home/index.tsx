@@ -5,7 +5,6 @@ import {
   Heading,
   Divider,
 } from 'braid-src/lib/components';
-import React from 'react';
 
 import { useConfig } from '../../ConfigContext';
 

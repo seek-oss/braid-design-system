@@ -1,5 +1,4 @@
 import { calc } from '@vanilla-extract/css-utils';
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import {

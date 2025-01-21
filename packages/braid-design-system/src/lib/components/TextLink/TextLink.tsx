@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { type ReactElement, forwardRef, useContext } from 'react';
+import { type ReactElement, forwardRef, useContext } from 'react';
 
 import { type Atoms, atoms } from '../../css/atoms/atoms';
 import type { UseIconProps } from '../../hooks/useIcon';

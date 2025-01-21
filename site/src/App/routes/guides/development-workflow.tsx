@@ -14,7 +14,6 @@ import {
   Box,
 } from 'braid-src/lib/components';
 import dedent from 'dedent';
-import React from 'react';
 
 import type { Page } from '../../../types';
 import Code from '../../Code/Code';

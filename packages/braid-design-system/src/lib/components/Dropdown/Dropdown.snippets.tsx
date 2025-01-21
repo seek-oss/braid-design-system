@@ -1,5 +1,4 @@
 import source from '@braid-design-system/source.macro';
-import React from 'react';
 
 import { Dropdown, IconHelp, IconLocation } from '../../playroom/components';
 import { TextLink } from '../TextLink/TextLink';

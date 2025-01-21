@@ -1,12 +1,7 @@
 import assert from 'assert';
 
 import { isMobile } from 'is-mobile';
-import React, {
-  type ChangeEvent,
-  type FocusEvent,
-  createRef,
-  Fragment,
-} from 'react';
+import { type ChangeEvent, type FocusEvent, createRef, Fragment } from 'react';
 
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';

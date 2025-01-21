@@ -1,4 +1,4 @@
-import React, { type ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Stack, Textarea, TextLink } from '../';

@@ -1,4 +1,4 @@
-import React, { type AllHTMLAttributes, Fragment, forwardRef } from 'react';
+import { type AllHTMLAttributes, Fragment, forwardRef } from 'react';
 
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';

@@ -1,7 +1,6 @@
 import assert from 'assert';
 
 import dedent from 'dedent';
-import React from 'react';
 
 import type { UseIconProps } from '../../hooks/useIcon';
 import { useBackground } from '../Box/BackgroundContext';

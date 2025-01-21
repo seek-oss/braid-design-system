@@ -25,7 +25,6 @@ import {
 } from 'braid-src/lib/components';
 import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import React from 'react';
 
 import { DocExample } from '../../../DocNavigation/DocExample';
 

@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { type FormEvent, type ReactElement } from 'react';
+import type { FormEvent, ReactElement } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { type RadioItemProps, RadioItem } from '../RadioGroup/RadioItem';

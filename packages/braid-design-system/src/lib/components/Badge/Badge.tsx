@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { forwardRef, Children, useContext } from 'react';
+import { forwardRef, Children, useContext } from 'react';
 
 import { Bleed } from '../Bleed/Bleed';
 import { type BoxProps, Box } from '../Box/Box';

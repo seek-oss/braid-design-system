@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, {
+import {
   type ReactElement,
   type ReactNode,
   cloneElement,

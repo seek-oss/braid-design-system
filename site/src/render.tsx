@@ -2,7 +2,6 @@ import packageJson from 'braid-design-system/package.json';
 import { colorModeQueryParamCheck } from 'braid-src/entries/color-mode/query-param';
 import * as themes from 'braid-src/lib/themes';
 import dedent from 'dedent';
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
 import { StaticRouter } from 'react-router-dom/server';

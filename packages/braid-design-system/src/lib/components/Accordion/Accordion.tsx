@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { Children, useMemo } from 'react';
+import { Children, useMemo } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Divider } from '../Divider/Divider';

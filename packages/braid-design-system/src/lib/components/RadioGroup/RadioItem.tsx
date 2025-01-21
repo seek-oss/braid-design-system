@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import {
   RadioGroupContext,

@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import { AccordionItem, Badge, IconHelp } from '..';

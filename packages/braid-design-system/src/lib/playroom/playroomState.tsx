@@ -1,5 +1,5 @@
 import curry from 'lodash.curry';
-import React, {
+import {
   type ReactNode,
   createContext,
   useContext,

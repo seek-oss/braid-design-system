@@ -1,5 +1,5 @@
 import parseHighlights from 'autosuggest-highlight/parse';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { Highlight } from './Highlight/Highlight';
 import type { TextareaProps } from './Textarea';

@@ -1,5 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Box, Page } from '..';

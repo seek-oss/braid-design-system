@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext } from 'react';
 
 import { Box } from '../Box/Box';
 import { Overlay } from '../private/Overlay/Overlay';

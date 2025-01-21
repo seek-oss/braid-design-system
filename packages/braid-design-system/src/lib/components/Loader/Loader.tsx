@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { atoms } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
 import buildDataAttributes, {

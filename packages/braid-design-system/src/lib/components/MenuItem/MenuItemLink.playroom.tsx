@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   type MenuItemLinkProps,
   MenuItemLink as BraidMenuItemLink,

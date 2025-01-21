@@ -22,7 +22,7 @@ import memoize from 'lodash.memoize';
 import { createUrl } from 'playroom/utils';
 import typescriptParser from 'prettier/parser-typescript';
 import prettier from 'prettier/standalone';
-import React, { type ReactElement, useState, useEffect, useRef } from 'react';
+import { type ReactElement, useState, useEffect, useRef } from 'react';
 import reactElementToJsxString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';

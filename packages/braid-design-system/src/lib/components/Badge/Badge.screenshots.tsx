@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';

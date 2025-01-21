@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, act, waitFor, getByTestId } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { ToastProvider, useToast } from '..';
 import { BraidTestProvider } from '../../../entries/test';

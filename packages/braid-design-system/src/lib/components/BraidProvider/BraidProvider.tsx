@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import dedent from 'dedent';
-import React, {
+import {
   type ReactNode,
   type AnchorHTMLAttributes,
   type ForwardRefRenderFunction,

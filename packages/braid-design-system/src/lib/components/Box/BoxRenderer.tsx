@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import { type Atoms, atoms } from '../../css/atoms/atoms';

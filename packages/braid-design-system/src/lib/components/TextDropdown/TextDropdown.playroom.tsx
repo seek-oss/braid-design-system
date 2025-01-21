@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { Optional } from 'utility-types';
 
 import { useFallbackId } from '../../playroom/utils';

@@ -39,7 +39,7 @@ import copy from 'copy-to-clipboard';
 import chunk from 'lodash.chunk';
 import memoize from 'lodash.memoize';
 import panzoom from 'panzoom';
-import React, {
+import {
   type ReactNode,
   Fragment,
   memo,

@@ -1,5 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import { Alert, Box, Divider, TextLink, Toggle } from '../';
