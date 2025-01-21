@@ -1,3 +1,5 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
+import dedent from 'dedent';
 import {
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
@@ -6,14 +8,14 @@ import {
   type RefObject,
   useRef,
 } from 'react';
-import { BraidPortal } from '../../BraidPortal/BraidPortal';
+
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
-import { Box } from '../../Box/Box';
-import * as styles from './BasePopover.css';
-import { assignInlineVars } from '@vanilla-extract/dynamic';
-import dedent from 'dedent';
-import { normalizeKey } from '../normalizeKey';
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
+import { Box } from '../../Box/Box';
+import { BraidPortal } from '../../BraidPortal/BraidPortal';
+import { normalizeKey } from '../normalizeKey';
+
+import * as styles from './BasePopover.css';
 
 type Placement = 'top' | 'bottom';
 
