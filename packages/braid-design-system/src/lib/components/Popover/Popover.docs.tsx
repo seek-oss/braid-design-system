@@ -1,14 +1,8 @@
 import source from '@braid-design-system/source.macro';
-import type { ComponentDocs } from 'site/types';
-import {
-  Box,
-  Button,
-  Inline,
-  Popover,
-  Text,
-  TextField,
-} from 'braid-design-system';
 import { useRef } from 'react';
+import type { ComponentDocs } from 'site/types';
+
+import { Box, Button, Inline, Popover, Text, TextField } from '../';
 
 const docs: ComponentDocs = {
   category: 'Content',
