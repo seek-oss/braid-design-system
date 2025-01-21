@@ -27,7 +27,16 @@ const docs: ComponentDocs = {
           returnFocusRef={returnFocusRef}
           offsetSpace="xsmall"
         >
-          <Text>This is some text</Text>
+          <Box borderRadius="standard" boxShadow="small">
+            <Box
+              borderRadius="standard"
+              boxShadow="borderNeutralLight"
+              padding="medium"
+              background="surface"
+            >
+              <Text>This is some text</Text>
+            </Box>
+          </Box>
         </Popover>
       </>,
     );
@@ -90,14 +99,23 @@ const docs: ComponentDocs = {
               returnFocusRef={returnFocusRef}
               offsetSpace="xsmall"
             >
-              <TextField
-                id={id}
-                label="Label"
-                onChange={setState('textfield')}
-                value={getState('textfield')}
-                onClear={() => setState('textfield', '')}
-                ref={initialFocusRef}
-              />
+              <Box borderRadius="standard" boxShadow="small">
+                <Box
+                  borderRadius="standard"
+                  boxShadow="borderNeutralLight"
+                  padding="medium"
+                  background="surface"
+                >
+                  <TextField
+                    id={id}
+                    label="Label"
+                    onChange={setState('textfield')}
+                    value={getState('textfield')}
+                    onClear={() => setState('textfield', '')}
+                    ref={initialFocusRef}
+                  />
+                </Box>
+              </Box>
             </Popover>
           </>,
         );
