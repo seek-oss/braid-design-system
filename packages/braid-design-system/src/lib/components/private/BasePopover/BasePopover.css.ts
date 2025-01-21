@@ -3,7 +3,7 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../../themes/vars.css';
 
-// Todo - this is arbitrary - handle this better
+// Todo - this is a dirty hack that doesn't work, pls change
 export const maxWidth = 500;
 
 export const backdrop = style({
