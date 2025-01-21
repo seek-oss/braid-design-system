@@ -1,7 +1,5 @@
 import assert from 'assert';
 
-import React from 'react';
-
 import type { Space } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
 import { ButtonIcon, type ButtonIconProps } from '../ButtonIcon/ButtonIcon';

@@ -6,7 +6,6 @@ import {
   Strong,
   Divider,
 } from 'braid-src/lib/components';
-import React from 'react';
 
 import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';

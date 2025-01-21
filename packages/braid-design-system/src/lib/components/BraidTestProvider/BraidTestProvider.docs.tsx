@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import { Stack, Text, Strong, TextLink, Alert } from '..';

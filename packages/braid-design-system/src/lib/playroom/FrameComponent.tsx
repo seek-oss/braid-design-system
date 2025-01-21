@@ -1,4 +1,4 @@
-import React, { type ReactNode, useEffect, Fragment } from 'react';
+import { type ReactNode, useEffect, Fragment } from 'react';
 
 import {
   BraidProvider,

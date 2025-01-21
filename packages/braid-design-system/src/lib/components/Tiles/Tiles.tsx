@@ -1,5 +1,4 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import React from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';

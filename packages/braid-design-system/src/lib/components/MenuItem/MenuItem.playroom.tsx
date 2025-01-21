@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { type MenuItemProps, MenuItem as BraidMenuItem } from './MenuItem';
 
 export const MenuItem = ({ badge, ...restProps }: MenuItemProps) => (

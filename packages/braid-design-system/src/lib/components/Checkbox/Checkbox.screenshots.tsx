@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Badge, Box, Checkbox, Inline, Stack, Text, Tiles } from '../';

@@ -19,8 +19,6 @@ const relativeToProject = (p: string) => path.relative(baseDir, p);
 
 const componentTemplate = ({ template }: any, opts: any, { componentName, jsx }: any) => {
   const code = `
-    import React from 'react';
-    NEWLINE
     import type { SVGProps } from '../SVGTypes';
     NEWLINE
     export const COMPONENT_NAME = ({ title, titleId, ...props }: SVGProps) => COMPONENT_JSX;
@@ -151,7 +149,6 @@ const svgrConfig = {
     await templateFileIfMissing(
       `${iconName}.tsx`,
       dedent/* ts */ `
-        import React from 'react';
         import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
         import { IconContainer, type IconContainerProps } from '${relative(
           `${baseDir}/src/lib/components/icons/IconContainer`,
@@ -172,7 +169,6 @@ const svgrConfig = {
     await templateFileIfMissing(
       `${iconName}.docs.tsx`,
       dedent/* ts */ `
-        import React from 'react';
         import type { ComponentDocs } from 'site/types';
         import { iconDocumentation } from '${relative(`${iconComponentsDir}/iconCommon.docs`)}';
         import source from '@braid-design-system/source.macro';

@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import clsx from 'clsx';
-import React, { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';

@@ -1,5 +1,5 @@
 import { Stack } from 'braid-src/lib/components';
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import type { ComponentExample } from '../../types';
 import Code from '../Code/Code';

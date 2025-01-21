@@ -1,4 +1,4 @@
-import React, {
+import {
   type AllHTMLAttributes,
   type UIEvent,
   type FormEvent,

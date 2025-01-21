@@ -1,6 +1,5 @@
 import source from '@braid-design-system/source.macro';
 import dedent from 'dedent';
-import React from 'react';
 import Code from 'site/App/Code/Code';
 import { ThemedExample } from 'site/App/ThemeSetting';
 import type { CssDoc } from 'site/types';

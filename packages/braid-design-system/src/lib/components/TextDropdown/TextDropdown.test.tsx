@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Text, TextDropdown } from '..';
 import { BraidTestProvider } from '../../../entries/test';

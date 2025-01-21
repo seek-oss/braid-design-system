@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { type ComponentProps, useState } from 'react';
+import { type ComponentProps, useState } from 'react';
 
 import { Checkbox } from '..';
 import { BraidTestProvider } from '../../../entries/test';

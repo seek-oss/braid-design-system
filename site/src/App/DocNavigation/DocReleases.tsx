@@ -10,7 +10,7 @@ import {
   List,
   Divider,
 } from 'braid-src/lib/components';
-import React, { Fragment, useContext } from 'react';
+import { Fragment, useContext } from 'react';
 
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';

@@ -1,5 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import React, { type ComponentProps, type ReactElement } from 'react';
+import type { ComponentProps, ReactElement } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {

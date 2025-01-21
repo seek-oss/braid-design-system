@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { Space } from '../../../css/atoms/atoms';
 import { type BoxProps, Box } from '../../Box/Box';
 import { iconSlotSpace } from '../iconSlotSpace';

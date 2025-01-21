@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Column } from '../components/Column/Column';
 import { Columns } from '../components/Columns/Columns';

@@ -6,7 +6,6 @@ import {
   Divider,
   List,
 } from 'braid-src/lib/components';
-import React from 'react';
 
 import type { Page } from '../../../types';
 import { useConfig } from '../../ConfigContext';

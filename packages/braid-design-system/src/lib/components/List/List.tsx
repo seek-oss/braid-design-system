@@ -1,4 +1,4 @@
-import React, { type ReactNode, Children } from 'react';
+import { type ReactNode, Children } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';

@@ -1,4 +1,4 @@
-import type React from 'react';
+import type { ComponentType } from 'react';
 
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
@@ -13,7 +13,7 @@ export type IconSentimentProps = IconContainerProps & {
   feeling?: Feeling;
 };
 
-const feelingToIcon: Record<Feeling, React.ComponentType> = {
+const feelingToIcon: Record<Feeling, ComponentType> = {
   positive: IconSentimentPositiveSvg,
   negative: IconSentimentNegativeSvg,
   neutral: IconSentimentSvg,

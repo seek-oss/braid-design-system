@@ -1,5 +1,4 @@
 import source from '@braid-design-system/source.macro';
-import React from 'react';
 
 import { IconTag, Inline, Tag } from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';

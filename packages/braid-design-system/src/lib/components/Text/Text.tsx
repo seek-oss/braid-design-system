@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { useContext, useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
 import { type TextStyleProps, textStyles } from '../../css/typography';
 import {

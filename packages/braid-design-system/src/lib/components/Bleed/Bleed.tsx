@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { type BoxProps, Box } from '../Box/Box';

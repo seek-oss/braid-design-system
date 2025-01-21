@@ -15,7 +15,7 @@ import {
   IconInfo,
 } from 'braid-src/lib/components';
 import partition from 'lodash.partition';
-import React, { Fragment, useContext, useMemo } from 'react';
+import { Fragment, useContext, useMemo } from 'react';
 
 import componentDocs from '../../../componentDocs.json';
 import { useConfig } from '../ConfigContext';

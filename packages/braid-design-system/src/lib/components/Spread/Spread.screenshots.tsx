@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Box, Spread, Stack, Text, Tiles } from '../';

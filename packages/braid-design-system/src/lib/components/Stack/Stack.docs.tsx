@@ -1,5 +1,4 @@
 import source from '@braid-design-system/source.macro';
-import React from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import { Stack, Text, TextLink, Strong, Divider, Notice } from '../';

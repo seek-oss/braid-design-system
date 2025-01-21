@@ -1,4 +1,5 @@
 import { palette } from 'braid-src/lib/color/palette';
+import type { CSSProperties } from 'react';
 
 const tag = palette.blue['300'];
 const attribute = palette.blue['200'];
@@ -102,4 +103,4 @@ export const editorTheme = {
   'deleted-sign': {
     color: deleted,
   },
-} satisfies Record<string, React.CSSProperties>;
+} satisfies Record<string, CSSProperties>;

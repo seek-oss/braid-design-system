@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import { render, getAllByRole } from '@testing-library/react';
-import React from 'react';
 
 import { MonthPicker } from '..';
 import { BraidTestProvider } from '../../../entries/test';

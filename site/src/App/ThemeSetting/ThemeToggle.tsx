@@ -1,7 +1,7 @@
 import { Text, TextDropdown } from 'braid-src/lib/components';
 import type { TextProps } from 'braid-src/lib/components/Text/Text';
 import * as themes from 'braid-src/lib/themes';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { documentedThemes, useThemeSettings } from './ThemeSettingContext';
 

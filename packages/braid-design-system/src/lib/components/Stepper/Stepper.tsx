@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { type ReactElement, Children } from 'react';
+import { type ReactElement, Children } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';

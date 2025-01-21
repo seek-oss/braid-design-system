@@ -1,4 +1,4 @@
-import React, { Fragment, type ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 import { titleCase } from 'title-case';
 

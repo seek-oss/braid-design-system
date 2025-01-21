@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { useContext, useEffect, Fragment } from 'react';
+import { useContext, useEffect, Fragment } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';

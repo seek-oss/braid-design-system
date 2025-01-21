@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { useState, Fragment } from 'react';
+import { useState, Fragment } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import {

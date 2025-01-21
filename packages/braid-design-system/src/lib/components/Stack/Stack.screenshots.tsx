@@ -1,4 +1,4 @@
-import React, { type ReactNode, Fragment } from 'react';
+import { type ReactNode, Fragment } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Box, Stack, Hidden, Heading, Text, Strong } from '../';

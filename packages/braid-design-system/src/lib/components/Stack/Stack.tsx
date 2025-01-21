@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { type Align, alignToFlexAlign } from '../../utils/align';
 import { Box } from '../Box/Box';

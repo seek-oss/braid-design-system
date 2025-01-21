@@ -1,5 +1,4 @@
 import source from '@braid-design-system/source.macro';
-import React from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import { IconSkills, Heading, Stack } from '../../';

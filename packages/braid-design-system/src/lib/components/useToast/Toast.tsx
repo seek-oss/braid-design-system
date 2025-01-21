@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { cloneElement, useCallback, useEffect } from 'react';
+import { cloneElement, forwardRef, useCallback, useEffect } from 'react';
 
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
@@ -66,7 +66,7 @@ const ToastIcon = ({ tone, icon }: Pick<InternalToast, 'tone' | 'icon'>) => {
 interface ToastProps extends InternalToast {
   onClose: (dedupeKey: string, id: string) => void;
 }
-const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
+const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
     {
       id,

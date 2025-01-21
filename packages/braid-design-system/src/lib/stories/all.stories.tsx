@@ -1,7 +1,7 @@
 import '../../entries/reset';
 
 import { storiesOf } from '@storybook/react';
-import React, { type ReactNode, Fragment, useId } from 'react';
+import { type ReactNode, Fragment, useId } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import type { ComponentScreenshot } from 'site/types';
 

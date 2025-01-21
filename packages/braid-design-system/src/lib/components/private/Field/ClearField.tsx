@@ -1,4 +1,4 @@
-import React, { type Ref, type MouseEvent, useCallback } from 'react';
+import { type Ref, type MouseEvent, useCallback } from 'react';
 
 import { Box } from '../../Box/Box';
 import { IconClear } from '../../icons';

@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  type ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { Fragment, type ReactNode, useEffect, useRef, useState } from 'react';
 import Code from 'site/App/Code/Code';
 import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
 import type { CssDoc } from 'site/types';

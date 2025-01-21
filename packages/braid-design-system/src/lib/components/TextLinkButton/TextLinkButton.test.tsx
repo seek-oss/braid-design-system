@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { type MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
 
 import { TextLinkButton, Text, Actions } from '..';
 import { BraidTestProvider } from '../../../entries/test';

@@ -1,9 +1,4 @@
-import React, {
-  type AllHTMLAttributes,
-  forwardRef,
-  Fragment,
-  useRef,
-} from 'react';
+import { type AllHTMLAttributes, forwardRef, Fragment, useRef } from 'react';
 
 import { Box } from '../Box/Box';
 import { ClearField } from '../private/Field/ClearField';

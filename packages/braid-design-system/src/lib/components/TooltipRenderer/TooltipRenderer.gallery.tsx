@@ -1,6 +1,5 @@
 import source from '@braid-design-system/source.macro';
 import { calc } from '@vanilla-extract/css-utils';
-import React from 'react';
 import type { GalleryComponent } from 'site/types';
 
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';

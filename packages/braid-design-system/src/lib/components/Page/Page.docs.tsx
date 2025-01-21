@@ -1,7 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import { calc } from '@vanilla-extract/css-utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import { Box, Notice, Stack, Strong, Text, TextLink, Tiles } from '..';

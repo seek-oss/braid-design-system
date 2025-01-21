@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ComponentExample } from 'site/types';
 
 import { Text, TextLink } from '../';
