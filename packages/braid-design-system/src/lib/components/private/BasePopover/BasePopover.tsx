@@ -204,17 +204,19 @@ export const BasePopover = ({
     const popoverWidth = right - left;
 
     // todo - rename
-    const centredLeft =
+    // If alignProp is center, use left align but adjust the left position for centering
+    const inferredLeft =
       alignProp === 'center' && triggerCenter
         ? triggerCenter - popoverWidth / 2
         : triggerPosition.left;
 
     const updatedLeft = clamp(
       scrollX,
-      centredLeft,
+      inferredLeft,
       window.innerWidth + scrollX - width,
     );
 
+    // Todo - better solution if possible
     const normalisedRight = window.innerWidth - triggerPosition.right;
 
     const updatedRight = clamp(
