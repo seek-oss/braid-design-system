@@ -1,8 +1,10 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { GalleryComponent } from 'site/types';
-import source from '@braid-design-system/source.macro';
+
 import { Dialog, Button, Inline, Stack } from '../';
 import { Placeholder } from '../../playroom/components';
+
 import { DialogContent } from './Dialog';
 
 export const galleryItems: GalleryComponent = {

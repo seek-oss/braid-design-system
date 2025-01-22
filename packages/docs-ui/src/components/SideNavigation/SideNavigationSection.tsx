@@ -1,7 +1,9 @@
 import { Box, HiddenVisually, Stack, Text } from 'braid-design-system';
-import * as styles from './SideNavigation.css';
 import React from 'react';
+
 import { SideNavigationItem } from './SideNavigationItem';
+
+import * as styles from './SideNavigation.css';
 
 interface SideNavigationSection {
   title: string;

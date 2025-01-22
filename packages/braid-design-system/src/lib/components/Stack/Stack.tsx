@@ -1,34 +1,35 @@
 import React from 'react';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { Box } from '../Box/Box';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { type Align, alignToFlexAlign } from '../../utils/align';
-import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
+import { Box } from '../Box/Box';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-const validStackComponents = [
-  'div',
-  'span',
-  'p',
-  'article',
-  'section',
-  'main',
-  'nav',
-  'aside',
-  'ul',
-  'ol',
-  'li',
-  'details',
-  'summary',
-  'dd',
-  'dl',
-  'dt',
-] as const;
+import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
+
+type ValidStackComponent =
+  | 'div'
+  | 'span'
+  | 'p'
+  | 'article'
+  | 'section'
+  | 'main'
+  | 'nav'
+  | 'aside'
+  | 'ul'
+  | 'ol'
+  | 'li'
+  | 'details'
+  | 'summary'
+  | 'dd'
+  | 'dl'
+  | 'dt';
 
 export interface StackProps {
-  component?: (typeof validStackComponents)[number];
+  component?: ValidStackComponent;
   children: ReactNodeNoStrings;
   space: ResponsiveSpace;
   align?: OptionalResponsiveValue<Align>;

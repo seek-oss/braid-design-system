@@ -1,6 +1,8 @@
 import { style } from '@vanilla-extract/css';
+
 import { atoms } from '../../../css/atoms/atoms';
 import { colorModeStyle } from '../../../css/colorModeStyle';
+
 import { vars } from '../../../themes/vars.css';
 
 const space = '2px';

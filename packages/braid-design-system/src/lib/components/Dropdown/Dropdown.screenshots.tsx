@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Dropdown, IconLocation, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 

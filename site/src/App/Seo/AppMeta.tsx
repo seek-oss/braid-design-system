@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useHref } from 'react-router';
+
+import { useConfig } from '../ConfigContext';
+import { getCurrentVersionInfo } from '../Updates';
 
 import { PageTitle } from './PageTitle';
-import { getCurrentVersionInfo } from '../Updates';
-import { useHref } from 'react-router';
-import { useConfig } from '../ConfigContext';
 
 export function AppMeta() {
   const isBrowser = typeof window !== 'undefined';

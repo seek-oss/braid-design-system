@@ -4,6 +4,8 @@ import React, {
   cloneElement,
   forwardRef,
 } from 'react';
+
+import type { BadgeProps } from '../../Badge/Badge';
 import { Box } from '../../Box/Box';
 import type { FieldLabelProps } from '../../FieldLabel/FieldLabel';
 import {
@@ -11,16 +13,17 @@ import {
   FieldMessage,
 } from '../../FieldMessage/FieldMessage';
 import { Text } from '../../Text/Text';
+import { badgeSlotSpace } from '../badgeSlotSpace';
 import { mergeIds } from '../mergeIds';
-import type { BadgeProps } from '../../Badge/Badge';
+
 import {
   type StyledInputProps,
   type PrivateStyledInputProps,
   StyledInput,
 } from './StyledInput';
-import { virtualTouchable } from '../touchable/virtualTouchable.css';
-import { badgeSlotSpace } from '../badgeSlotSpace';
+
 import * as styles from './InlineField.css';
+import { virtualTouchable } from '../touchable/virtualTouchable.css';
 
 interface InlineFieldBaseProps {
   label: NonNullable<FieldLabelProps['label']>;

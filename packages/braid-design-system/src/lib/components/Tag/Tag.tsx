@@ -1,13 +1,16 @@
-import React from 'react';
 import assert from 'assert';
+
+import React from 'react';
+
+import type { Space } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
-import { type TextProps, Text } from '../Text/Text';
 import { ButtonIcon, type ButtonIconProps } from '../ButtonIcon/ButtonIcon';
+import { type TextProps, Text } from '../Text/Text';
 import { IconAdd, IconClear } from '../icons';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import type { Space } from '../../css/atoms/atoms';
+
 import * as styles from './Tag.css';
 
 export const tagSizes = ['small', 'standard'] as const;

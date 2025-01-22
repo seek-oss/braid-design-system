@@ -1,7 +1,8 @@
 import robotoMetrics from '@capsizecss/metrics/roboto';
-import type { DeepPartial } from 'utility-types';
-import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash.merge';
+import { darken, lighten, rgba, saturate } from 'polished';
+import type { DeepPartial } from 'utility-types';
+
 import { palette } from '../../color/palette';
 import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
 

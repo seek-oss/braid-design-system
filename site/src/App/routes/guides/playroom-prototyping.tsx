@@ -1,4 +1,5 @@
-import React from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
+import source from '@braid-design-system/source.macro';
 import {
   Heading,
   Divider,
@@ -23,12 +24,12 @@ import {
   Placeholder,
   TextField,
 } from 'braid-src/lib/playroom/components';
-import source from '@braid-design-system/source.macro';
-import { TextStack } from '../../TextStack/TextStack';
+import React from 'react';
+
 import type { Page } from '../../../types';
-import { PageTitle } from '../../Seo/PageTitle';
 import Code from '../../Code/Code';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { PageTitle } from '../../Seo/PageTitle';
+import { TextStack } from '../../TextStack/TextStack';
 
 interface MockJob {
   id: number;

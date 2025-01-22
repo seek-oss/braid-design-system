@@ -1,10 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { BraidTestProvider } from '../../../entries/test';
+
 import { Button, IconSend } from '..';
-import { render } from '@testing-library/react';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('Button', () => {
   it('should render valid html structure', () => {

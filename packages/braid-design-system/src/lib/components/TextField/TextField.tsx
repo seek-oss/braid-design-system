@@ -4,13 +4,14 @@ import React, {
   Fragment,
   useRef,
 } from 'react';
+
 import { Box } from '../Box/Box';
+import { ClearField } from '../private/Field/ClearField';
 import {
   type FieldBaseProps,
   type FieldLabelVariant,
   Field,
 } from '../private/Field/Field';
-import { ClearField } from '../private/Field/ClearField';
 import { getCharacterLimitStatus } from '../private/Field/getCharacterLimitStatus';
 
 const validTypes = {

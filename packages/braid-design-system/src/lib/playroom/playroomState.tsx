@@ -1,3 +1,4 @@
+import curry from 'lodash.curry';
 import React, {
   type ReactNode,
   createContext,
@@ -5,7 +6,6 @@ import React, {
   useState,
   useMemo,
 } from 'react';
-import curry from 'lodash.curry';
 
 export interface StateProp {
   stateName?: string;

@@ -5,6 +5,7 @@ import {
   styleVariants,
 } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+
 import { vars } from '../../themes/vars.css';
 
 export const menuYPadding = createVar();

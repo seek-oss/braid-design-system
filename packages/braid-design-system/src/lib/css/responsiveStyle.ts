@@ -1,5 +1,7 @@
-import { mapValues } from '../utils/mapValues';
 import type { StyleRule } from '@vanilla-extract/css';
+
+import { mapValues } from '../utils/mapValues';
+
 import { breakpoints } from './breakpoints';
 
 const { mobile: _, ...breakpointsAboveMobile } = breakpoints;

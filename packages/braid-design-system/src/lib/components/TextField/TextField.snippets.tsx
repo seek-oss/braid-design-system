@@ -1,12 +1,13 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
-import type { Snippets } from '../private/Snippets';
+
 import {
   TextField,
   TextLink,
   IconSearch,
   IconHelp,
 } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {

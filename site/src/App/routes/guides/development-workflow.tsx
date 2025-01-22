@@ -1,5 +1,5 @@
-import React from 'react';
-import dedent from 'dedent';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
+import source from '@braid-design-system/source.macro';
 import {
   Heading,
   Text,
@@ -13,13 +13,14 @@ import {
   Column,
   Box,
 } from 'braid-src/lib/components';
-import { TextStack } from '../../TextStack/TextStack';
-import Code from '../../Code/Code';
+import dedent from 'dedent';
+import React from 'react';
+
 import type { Page } from '../../../types';
-import { PageTitle } from '../../Seo/PageTitle';
-import source from '@braid-design-system/source.macro';
+import Code from '../../Code/Code';
 import { InlineCode } from '../../InlineCode/InlineCode';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { PageTitle } from '../../Seo/PageTitle';
+import { TextStack } from '../../TextStack/TextStack';
 
 const DevelopmentWorkflow = () => (
   <TextStack>

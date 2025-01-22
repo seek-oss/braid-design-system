@@ -1,13 +1,16 @@
 import React, { createElement, forwardRef } from 'react';
+
+import type { Background, BoxShadow } from '../../css/atoms/atomicProperties';
 import { atoms } from '../../css/atoms/atoms';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
 import {
   BackgroundProvider,
   useBackground,
   useBackgroundLightness,
 } from './BackgroundContext';
 import type { BoxBackgroundVariant, BoxProps } from './Box';
-import type { Background, BoxShadow } from '../../css/atoms/atomicProperties';
+
 import * as typographyStyles from '../../css/typography.css';
 
 export interface ColoredBoxProps extends BoxProps {

@@ -1,6 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React, { type ComponentProps, type ReactElement } from 'react';
 import type { ComponentDocs } from 'site/types';
-import source from '@braid-design-system/source.macro';
+
 import {
   Dialog,
   Button,
@@ -17,6 +18,7 @@ import {
   TextDropdown,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+
 import { DialogContent } from './Dialog';
 import { DialogPreview } from './Dialog.screenshots';
 

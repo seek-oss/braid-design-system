@@ -1,10 +1,12 @@
 import { style, createVar } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+
 import { atoms } from '../../css/atoms/atoms';
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
-import { vars } from '../../themes/vars.css';
 import { hideFocusRingsDataAttribute } from '../private/hideFocusRings/hideFocusRingsDataAttribute';
+
+import { vars } from '../../themes/vars.css';
 
 const baseColourVar = createVar();
 const highlightVar = createVar();

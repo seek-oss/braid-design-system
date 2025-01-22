@@ -39,7 +39,7 @@
     "date-fns": "^2.28.0",
     "dedent": "^1.5.3",
     "didyoumean2": "^6.0.1",
-    "eslint": "^8.57.1",
+    "eslint": "^9.18.0",
     "lodash.chunk": "^4.2.0",
     "lodash.memoize": "^4.1.2",
     "lodash.partition": "^4.6.0",
@@ -61,7 +61,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
     "recoil": "^0.7.2",
-    "sku": "13.3.0",
+    "sku": "13.4.0",
     "webpack": "^5.76.0"
   },
   "skuSkipPostInstall": true,

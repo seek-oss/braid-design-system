@@ -1,7 +1,9 @@
 import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Disclosure, Stack, Text } from '../';
 import { Box } from '../Box/Box';
+
 import { textSizeUntrimmed } from '../../css/typography.css';
 
 const Container = ({ children }: { children: ReactNode }) => (

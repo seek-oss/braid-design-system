@@ -1,6 +1,7 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import {
   Columns,
   Column,
@@ -11,8 +12,8 @@ import {
   Divider,
   Notice,
 } from '../';
-import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const docs: ComponentDocs = {
   category: 'Layout',

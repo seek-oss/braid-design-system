@@ -1,5 +1,6 @@
 import courierNewMetrics from '@capsizecss/metrics/courierNew';
 import { darken, lighten, tint } from 'polished';
+
 import {
   findClosestAccessibleLighterColor,
   getAccessibleVariant,

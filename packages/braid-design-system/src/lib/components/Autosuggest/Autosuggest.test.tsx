@@ -1,11 +1,13 @@
 import '@testing-library/jest-dom';
-import React, { type Dispatch, useState, useRef, useEffect } from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider } from '../../../entries/test';
+import React, { type Dispatch, useState, useRef, useEffect } from 'react';
+
 import { Autosuggest, filterSuggestions } from '..';
-import type { AutosuggestProps } from './Autosuggest';
+import { BraidTestProvider } from '../../../entries/test';
 import { containerPrefix } from '../private/Announcement/Announcement';
+
+import type { AutosuggestProps } from './Autosuggest';
 
 const getAnnouncements = () =>
   document.body.querySelector(`[id*=${containerPrefix}]`)?.textContent || null;

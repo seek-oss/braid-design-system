@@ -1,7 +1,9 @@
 import { createContext } from 'react';
+
 import type { Space } from '../../css/atoms/atoms';
-import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
 import type { Align } from '../../utils/align';
+
+import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
 
 export const validColumnsComponents = [
   'div',

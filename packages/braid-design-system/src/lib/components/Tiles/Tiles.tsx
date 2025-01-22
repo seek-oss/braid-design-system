@@ -1,16 +1,18 @@
-import React from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { Box } from '../Box/Box';
+import React from 'react';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
+import { Box } from '../Box/Box';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
+import * as styles from './Tiles.css';
 import {
   type RequiredResponsiveValue,
   normalizeResponsiveValue,
 } from '../../css/atoms/sprinkles.css';
-import * as styles from './Tiles.css';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;

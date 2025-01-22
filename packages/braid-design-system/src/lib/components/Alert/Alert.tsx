@@ -1,5 +1,12 @@
 import React, { type ReactNode } from 'react';
+
+import type { BoxShadow } from '../../css/atoms/atomicProperties';
+import { iconContainerSize } from '../../hooks/useIcon';
+import { useBackground } from '../Box/BackgroundContext';
 import { type BoxProps, Box } from '../Box/Box';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { Column } from '../Column/Column';
+import { Columns } from '../Columns/Columns';
 import {
   IconInfo,
   IconCritical,
@@ -9,18 +16,13 @@ import {
   IconClear,
 } from '../icons';
 import type { AllOrNone } from '../private/AllOrNone';
-import { Columns } from '../Columns/Columns';
-import { Column } from '../Column/Column';
 import { Overlay } from '../private/Overlay/Overlay';
-import { useBackground } from '../Box/BackgroundContext';
-import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import type { BoxShadow } from '../../css/atoms/atomicProperties';
-import { iconContainerSize } from '../../hooks/useIcon';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
 import * as styles from './Alert.css';
+import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 

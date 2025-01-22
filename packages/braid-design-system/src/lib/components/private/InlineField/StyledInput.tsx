@@ -6,15 +6,16 @@ import React, {
   useRef,
 } from 'react';
 
-import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
+import { useBackgroundLightness } from '../../Box/BackgroundContext';
+import { type BoxProps, Box } from '../../Box/Box';
 import { IconMinus, IconTick } from '../../icons';
+import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
-import { type BoxProps, Box } from '../../Box/Box';
+
 import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
-import { useBackgroundLightness } from '../../Box/BackgroundContext';
 
 const tones = ['neutral', 'critical'] as const;
 export type InlineFieldTone = (typeof tones)[number];

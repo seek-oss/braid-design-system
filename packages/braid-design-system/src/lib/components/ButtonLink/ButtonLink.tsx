@@ -1,11 +1,10 @@
 import React, { type ReactNode, forwardRef } from 'react';
+
+import { Box } from '../Box/Box';
 import {
   type LinkComponentProps,
   useLinkComponent,
 } from '../BraidProvider/BraidProvider';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
 import {
   type ButtonProps,
   type ButtonStyleProps,
@@ -14,7 +13,9 @@ import {
   ButtonText,
   useButtonStyles,
 } from '../Button/Button';
-import { Box } from '../Box/Box';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 export interface ButtonLinkProps
   extends ButtonStyleProps,

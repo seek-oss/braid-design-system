@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider } from '../../../entries/test';
+import React from 'react';
+
 import { TooltipRenderer, Box, Text } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('TooltipRenderer', () => {
   it('should associate the trigger with the label', async () => {

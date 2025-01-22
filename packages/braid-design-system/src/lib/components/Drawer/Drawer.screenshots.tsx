@@ -1,10 +1,13 @@
 import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Box } from '../Box/Box';
+
 import { Placeholder } from '../../playroom/components';
-import { DrawerContent } from './Drawer';
+import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
+
+import { DrawerContent } from './Drawer';
+
 import * as styles from '../private/Modal/Modal.css';
 
 export const DrawerPreview = ({ children }: { children: ReactNode }) => (

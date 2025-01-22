@@ -1,8 +1,7 @@
 const path = require('path');
-// Todo - shouldn't need eslint disable
-// eslint-disable-next-line import/no-unresolved
-const SkuWebpackPlugin = require('sku/webpack-plugin');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SkuWebpackPlugin = require('sku/webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
 const braidSrc = path.join(__dirname, '../packages/braid-design-system/src');

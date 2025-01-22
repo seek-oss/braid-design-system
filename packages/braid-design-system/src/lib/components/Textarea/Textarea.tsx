@@ -7,14 +7,17 @@ import React, {
   useRef,
   useCallback,
 } from 'react';
+
 import { Box } from '../Box/Box';
-import { formatRanges } from './formatRanges';
 import {
   type FieldBaseProps,
   type FieldLabelVariant,
   Field,
 } from '../private/Field/Field';
 import { getCharacterLimitStatus } from '../private/Field/getCharacterLimitStatus';
+
+import { formatRanges } from './formatRanges';
+
 import * as styles from './Textarea.css';
 
 type NativeTextareaProps = AllHTMLAttributes<HTMLTextAreaElement>;

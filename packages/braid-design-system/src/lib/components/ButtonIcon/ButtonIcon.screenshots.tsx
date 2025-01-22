@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Box, ButtonIcon, Inline, Heading, IconBookmark, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { LayoutTest } from '../../utils/LayoutTest';

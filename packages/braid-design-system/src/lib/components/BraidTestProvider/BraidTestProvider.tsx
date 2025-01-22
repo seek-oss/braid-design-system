@@ -1,12 +1,14 @@
 import React from 'react';
-import * as themes from '../../themes';
+
 import type { Breakpoint } from '../../css/breakpoints';
+import * as themes from '../../themes';
 import {
   type BraidProviderProps,
   BraidProvider,
 } from '../BraidProvider/BraidProvider';
-import { BraidTestProviderContext } from './BraidTestProviderContext';
 import { breakpointContext } from '../BraidProvider/BreakpointContext';
+
+import { BraidTestProviderContext } from './BraidTestProviderContext';
 
 /**
  * Mocking for `jsdom` which doesn't support `scrollIntoView`.

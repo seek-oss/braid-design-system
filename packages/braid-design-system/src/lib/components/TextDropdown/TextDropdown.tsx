@@ -1,13 +1,16 @@
-import React, { type FormEvent, useContext } from 'react';
 import assert from 'assert';
-import { Overlay } from '../private/Overlay/Overlay';
+
+import React, { type FormEvent, useContext } from 'react';
+
 import { Box } from '../Box/Box';
-import { IconChevron } from '../icons';
-import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
+import { TextContext } from '../Text/TextContext';
+import { IconChevron } from '../icons';
+import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import * as styles from './TextDropdown.css';
 
 interface TextDropdownOption<Value> {

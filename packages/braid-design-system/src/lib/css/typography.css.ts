@@ -1,3 +1,4 @@
+import { createTextStyle } from '@capsizecss/vanilla-extract';
 import {
   assignVars,
   createThemeContract,
@@ -5,14 +6,13 @@ import {
   styleVariants,
 } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { createTextStyle } from '@capsizecss/vanilla-extract';
+
+import type { BoxBackgroundVariant } from '../components/Box/Box';
+import { colorModeStyle } from '../css/colorModeStyle';
+import { breakpointQuery, responsiveStyle } from '../css/responsiveStyle';
+import { mapToProperty } from '../utils';
 
 import { vars } from '../themes/vars.css';
-import { breakpointQuery, responsiveStyle } from '../css/responsiveStyle';
-
-import { mapToProperty } from '../utils';
-import { colorModeStyle } from '../css/colorModeStyle';
-import type { BoxBackgroundVariant } from '../components/Box/Box';
 
 export const fontFamily = style({
   fontFamily: vars.fontFamily,

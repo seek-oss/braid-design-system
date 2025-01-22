@@ -1,7 +1,8 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import { useResponsiveValue, Stack, Alert, Strong, Text } from '../';
-import source from '@braid-design-system/source.macro';
 import { Notice } from '../Notice/Notice';
 
 const docs: ComponentDocs = {
@@ -42,7 +43,6 @@ const docs: ComponentDocs = {
     </>
   ),
   Example: () =>
-    /* eslint-disable react-hooks/rules-of-hooks */
     source(
       <>
         {(function MyComponent() {
@@ -64,7 +64,6 @@ const docs: ComponentDocs = {
         })()}
       </>,
     ),
-  /* eslint-enable react-hooks/rules-of-hooks */
   alternatives: [
     { name: 'Box', description: 'For custom layouts.' },
     { name: 'Hidden', description: 'For responsively hiding content.' },

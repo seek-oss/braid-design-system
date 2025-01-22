@@ -1,6 +1,8 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import React, { type ReactNode } from 'react';
+
 import { Box } from '../../Box/Box';
+
 import * as styles from './MaxLines.css';
 
 export const MaxLines = ({

@@ -1,17 +1,5 @@
 import assert from 'assert';
-import React, {
-  type ReactNode,
-  type ReactElement,
-  useState,
-  cloneElement,
-  Children,
-  createContext,
-  useContext,
-} from 'react';
-import { useParams, useMatch, Outlet, useResolvedPath } from 'react-router';
-import flattenChildren from 'react-keyed-flatten-children';
-import { negativeMargin } from 'braid-src/lib/css/negativeMargin/negativeMargin';
-import type { BadgeProps } from 'braid-src/lib/components/Badge/Badge';
+
 import {
   Alert,
   Badge,
@@ -22,13 +10,28 @@ import {
   Stack,
   Text,
 } from 'braid-src/lib/components';
+import type { BadgeProps } from 'braid-src/lib/components/Badge/Badge';
 import { useBackgroundLightness } from 'braid-src/lib/components/Box/BackgroundContext';
+import { negativeMargin } from 'braid-src/lib/css/negativeMargin/negativeMargin';
+import React, {
+  type ReactNode,
+  type ReactElement,
+  useState,
+  cloneElement,
+  Children,
+  createContext,
+  useContext,
+} from 'react';
+import flattenChildren from 'react-keyed-flatten-children';
+import { useParams, useMatch, Outlet, useResolvedPath } from 'react-router';
+
+import { getHistory } from '../Updates';
 import {
   getComponentDocs,
   getComponentSnippets,
   getCssDoc,
 } from '../navigationHelpers';
-import { getHistory } from '../Updates';
+
 import * as styles from './DocNavigation.css';
 
 const navItemPaddingX = ['small', 'medium'] as const;

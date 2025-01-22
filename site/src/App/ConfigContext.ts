@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+
 import type { AppConfig } from '../types';
 
 const defaultConfig: AppConfig = {

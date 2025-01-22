@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Stack,
   List,
@@ -8,10 +8,12 @@ import {
   Badge,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import React, { useContext } from 'react';
+
 import { PageTitle } from '../Seo/PageTitle';
-import { DocsContext } from './DocNavigation';
+
 import { DocExample } from './DocExample';
+import { DocsContext } from './DocNavigation';
 
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);

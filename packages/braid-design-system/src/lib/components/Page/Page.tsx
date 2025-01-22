@@ -1,9 +1,12 @@
 import assert from 'assert';
+
 import React, { type ReactNode, useContext } from 'react';
+
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import PageContext from './PageContext';
 
 import * as styles from './Page.css';

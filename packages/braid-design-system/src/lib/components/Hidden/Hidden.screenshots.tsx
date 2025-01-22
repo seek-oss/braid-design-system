@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { Hidden, Text } from '../';
-import { Box } from '../Box/Box';
+
+import { Hidden, Text, Box } from '../';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320, 768, 992, 1200],

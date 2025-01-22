@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
 import {
   Tiles,
   Box,
@@ -10,9 +8,13 @@ import {
   IconSearch,
   Strong,
 } from 'braid-src/lib/components';
-import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
-import { iconsKeywords } from './iconsKeywords';
 import * as icons from 'braid-src/lib/components/icons';
+import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
+import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
+import React, { useState } from 'react';
+
+import { iconsKeywords } from './iconsKeywords';
+
 import * as styles from './IconsBrowse.css';
 
 export type IconName = keyof typeof icons;

@@ -1,5 +1,9 @@
-import React, { Fragment, useContext, useMemo } from 'react';
-import partition from 'lodash.partition';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
+import type {
+  NormalisedPropType,
+  ExportDoc,
+  NormalisedInterface,
+} from '@braid-design-system/generate-component-docs/src/generate';
 import {
   Box,
   Text,
@@ -10,16 +14,13 @@ import {
   TextLink,
   IconInfo,
 } from 'braid-src/lib/components';
+import partition from 'lodash.partition';
+import React, { Fragment, useContext, useMemo } from 'react';
+
 import componentDocs from '../../../componentDocs.json';
-import type {
-  NormalisedPropType,
-  ExportDoc,
-  NormalisedInterface,
-} from '@braid-design-system/generate-component-docs/src/generate';
+import { useConfig } from '../ConfigContext';
 import { DocsContext } from '../DocNavigation/DocNavigation';
 import { PageTitle } from '../Seo/PageTitle';
-import { useConfig } from '../ConfigContext';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
 
 type ComponentName = keyof typeof componentDocs;
 

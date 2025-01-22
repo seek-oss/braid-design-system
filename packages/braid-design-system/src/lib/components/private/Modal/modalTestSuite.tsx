@@ -1,15 +1,17 @@
 import '@testing-library/jest-dom';
-import React, { type ComponentType, useState } from 'react';
 import {
   render,
   waitForElementToBeRemoved,
   waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Button } from '../../Button/Button';
-import { BraidTestProvider } from '../../../../entries/test';
-import type { ModalProps } from './Modal';
+import React, { type ComponentType, useState } from 'react';
 import type { Optional } from 'utility-types';
+
+import { BraidTestProvider } from '../../../../entries/test';
+import { Button } from '../../Button/Button';
+
+import type { ModalProps } from './Modal';
 
 export const modalTestSuite = (
   name: string,

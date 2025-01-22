@@ -1,10 +1,13 @@
 import React, { type ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Inline, Stack, Box, Text } from '../';
 import { Placeholder } from '../../playroom/components';
-import { DialogContent } from './Dialog';
-import * as styles from '../private/Modal/Modal.css';
 import { externalGutter } from '../private/Modal/ModalExternalGutter';
+
+import { DialogContent } from './Dialog';
+
+import * as styles from '../private/Modal/Modal.css';
 
 export const DialogPreview = ({ children }: { children: ReactNode }) => (
   <Box position="relative">

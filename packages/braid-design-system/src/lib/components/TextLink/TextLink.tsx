@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import React, { type ReactElement, forwardRef, useContext } from 'react';
+
 import { type Atoms, atoms } from '../../css/atoms/atoms';
+import type { UseIconProps } from '../../hooks/useIcon';
 import {
   useBackgroundLightness,
   useBackground,
@@ -16,10 +18,10 @@ import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import type { UseIconProps } from '../../hooks/useIcon';
-import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+
 import * as styles from './TextLink.css';
 import * as typographyStyles from '../../css/typography.css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 export interface TextLinkStyles {
   weight?: 'regular' | 'weak';

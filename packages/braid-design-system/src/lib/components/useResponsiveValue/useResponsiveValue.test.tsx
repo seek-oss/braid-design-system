@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { renderHook } from '@testing-library/react';
-import { BraidTestProvider } from '../../../entries/test';
+import React from 'react';
+
 import { useResponsiveValue } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('useResponsiveValue', () => {
   const testData = [

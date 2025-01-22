@@ -1,5 +1,4 @@
-import React, { type ReactElement } from 'react';
-import type { Page } from '../../../../types';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Heading,
   Text,
@@ -18,12 +17,14 @@ import {
   ButtonIcon,
   Spread,
 } from 'braid-src/lib/components';
-import { TextStack } from '../../../TextStack/TextStack';
-import { Placeholder } from 'braid-src/lib/playroom/components';
-import Code from '../../../Code/Code';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
+import { Placeholder } from 'braid-src/lib/playroom/components';
+import React, { type ReactElement } from 'react';
+
+import type { Page } from '../../../../types';
+import Code from '../../../Code/Code';
 import { PageTitle } from '../../../Seo/PageTitle';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TextStack } from '../../../TextStack/TextStack';
 
 interface StepProps {
   heading?: string;

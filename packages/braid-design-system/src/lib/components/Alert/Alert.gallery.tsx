@@ -1,6 +1,7 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
+import React from 'react';
 import type { GalleryComponent } from 'site/types';
+
 import { Alert, Text, Stack, TextLink, List } from '../';
 
 export const galleryItems: GalleryComponent = {

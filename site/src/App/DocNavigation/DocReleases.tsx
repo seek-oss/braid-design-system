@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Box,
   Stack,
@@ -10,9 +10,11 @@ import {
   List,
   Divider,
 } from 'braid-src/lib/components';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import React, { Fragment, useContext } from 'react';
+
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';
+
 import { DocsContext } from './DocNavigation';
 
 type GroupedHistory = Record<

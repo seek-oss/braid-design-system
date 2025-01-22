@@ -1,7 +1,8 @@
-import React from 'react';
-import { Box, Text, Stack, IconImage, Divider } from '../';
-import type { GalleryComponent } from 'site/types';
 import source from '@braid-design-system/source.macro';
+import React from 'react';
+import type { GalleryComponent } from 'site/types';
+
+import { Box, Text, Stack, IconImage, Divider } from '../';
 
 export const galleryItems: GalleryComponent = {
   examples: [

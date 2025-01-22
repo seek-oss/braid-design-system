@@ -1,5 +1,5 @@
-import React, { type ComponentProps } from 'react';
-import type { Page } from '../../../../types';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
+import source from '@braid-design-system/source.macro';
 import {
   Heading,
   Text,
@@ -12,18 +12,19 @@ import {
   Actions,
   filterSuggestions,
 } from 'braid-src/lib/components';
-import { TextStack } from '../../../TextStack/TextStack';
+import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import {
   Autosuggest,
   TextField,
   MonthPicker,
   Textarea,
 } from 'braid-src/lib/playroom/components';
+import React, { type ComponentProps } from 'react';
+
+import type { Page } from '../../../../types';
 import Code from '../../../Code/Code';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { PageTitle } from '../../../Seo/PageTitle';
-import source from '@braid-design-system/source.macro';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TextStack } from '../../../TextStack/TextStack';
 
 interface StepProps {
   heading?: string;

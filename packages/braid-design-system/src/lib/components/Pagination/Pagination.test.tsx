@@ -1,11 +1,12 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider } from '../../../entries/test';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+
 import { Pagination } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('Pagination', () => {
   it('should render valid html structure', () => {

@@ -1,16 +1,20 @@
-import React from 'react';
 import assert from 'assert';
-import { Box } from '../Box/Box';
+
+import React from 'react';
+
 import { useBackground } from '../Box/BackgroundContext';
-import { IconChevron } from '../icons';
+import { Box } from '../Box/Box';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { type LinkProps, Link } from '../Link/Link';
-import { Overlay } from '../private/Overlay/Overlay';
 import { Text } from '../Text/Text';
-import { paginate } from './paginate';
+import { IconChevron } from '../icons';
+import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
+import { paginate } from './paginate';
+
 import * as styles from './Pagination.css';
 
 export interface PaginationProps {

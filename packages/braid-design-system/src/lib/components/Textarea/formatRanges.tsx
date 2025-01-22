@@ -1,7 +1,8 @@
-import React, { type ReactElement } from 'react';
 import parseHighlights from 'autosuggest-highlight/parse';
-import type { TextareaProps } from './Textarea';
+import React, { type ReactElement } from 'react';
+
 import { Highlight } from './Highlight/Highlight';
+import type { TextareaProps } from './Textarea';
 
 type ReactChild = ReactElement | string | number;
 

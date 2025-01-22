@@ -1,8 +1,9 @@
+import source from '@braid-design-system/source.macro';
 import React from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import { Stack, Text, TextLink, Strong, Divider, Notice } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Layout',

@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+
 import { type BoxProps, Box } from '../Box/Box';
-import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
+import { TextContext } from '../Text/TextContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import * as styles from './HiddenVisually.css';
 
 interface HiddenVisuallyProps {

@@ -1,8 +1,10 @@
 import { useContext } from 'react';
-import type { RequiredResponsiveObject } from '../../css/atoms/sprinkles.css';
 
 import { breakpointContext } from '../BraidProvider/BreakpointContext';
+
 import { resolveResponsiveObject } from './resolveResponsiveObject';
+
+import type { RequiredResponsiveObject } from '../../css/atoms/sprinkles.css';
 
 export const useResponsiveValue = () => {
   const breakpointName = useContext(breakpointContext);
