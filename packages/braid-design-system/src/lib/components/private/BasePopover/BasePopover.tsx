@@ -252,18 +252,6 @@ export const BasePopover = ({
     handleShiftAlignment();
   });
 
-  useEffect(() => {
-    if (lockPlacement || !showPopover) {
-      return;
-    }
-
-    window.addEventListener('scroll', handleFlipPlacement);
-
-    return () => {
-      window.removeEventListener('scroll', handleFlipPlacement);
-    };
-  });
-
   const popoverPosition = shiftPopoverPosition || triggerPosition;
 
   let triggerPositionStyles;
