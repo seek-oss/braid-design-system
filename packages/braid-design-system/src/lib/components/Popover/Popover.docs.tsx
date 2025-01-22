@@ -21,6 +21,7 @@ const docs: ComponentDocs = {
           </Box>
         </Inline>
         <Popover
+          align="center"
           open={getState('open')}
           onClose={() => setState('open', false)}
           triggerWrapperRef={triggerWrapperRef}
@@ -92,6 +93,7 @@ const docs: ComponentDocs = {
               </Box>
             </Inline>
             <Popover
+              align="center"
               open={getState('open')}
               onClose={() => setState('open', false)}
               triggerWrapperRef={triggerWrapperRef}

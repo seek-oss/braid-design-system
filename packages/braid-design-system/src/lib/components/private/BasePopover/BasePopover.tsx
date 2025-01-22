@@ -50,7 +50,8 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
     return undefined;
   }
 
-  const { top, bottom, left, right, width } = element.getBoundingClientRect();
+  const rect = element.getBoundingClientRect();
+  const { top, bottom, left, right, width } = rect;
   const { scrollX, scrollY, innerWidth, innerHeight } = window;
 
   return {
@@ -67,7 +68,7 @@ function clamp(min: number, preferred: number, max: number) {
 }
 
 export const BasePopover = ({
-  align = 'left',
+  align: alignProp = 'left',
   placement = 'bottom',
   lockPlacement = false,
   offsetSpace = 'none',
@@ -81,19 +82,18 @@ export const BasePopover = ({
   tabToExit = true,
   children,
 }: BasePopoverProps) => {
-  // Todo - rename this?
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
     undefined,
   );
-  const [shiftPopoverPosition, setShiftPopoverPosition] = useState<
-    Position | undefined
-  >(undefined);
+  const [horizontalOffset, setHorizontalOffset] = useState(0);
 
   const [popoverPlacement, setPopoverPlacement] =
     useState<Placement>(placement);
   const showPopover = open && triggerPosition;
 
   const popoverContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const align = alignProp === 'center' ? 'left' : alignProp;
 
   const handleOnClose = () => {
     if (!returnFocusRef) {
@@ -119,6 +119,8 @@ export const BasePopover = ({
 
   useEffect(() => {
     if (!open) {
+      setTriggerPosition(undefined);
+      setHorizontalOffset(0);
       return;
     }
 
@@ -156,11 +158,11 @@ export const BasePopover = ({
       setTriggerPosition(getPosition(triggerWrapperRef.current));
     };
 
-    if (open) {
-      window.addEventListener('resize', handleResize);
-    } else {
-      setTriggerPosition(undefined);
+    if (!open) {
+      return;
     }
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -168,13 +170,13 @@ export const BasePopover = ({
   }, [open, triggerWrapperRef]);
 
   const handleFlipPlacement = () => {
-    const popOverBoundingRect =
+    const popoverBoundingRect =
       popoverContainerRef?.current?.getBoundingClientRect();
-    if (!popOverBoundingRect) {
+    if (!popoverBoundingRect) {
       return;
     }
 
-    const { top, bottom } = popOverBoundingRect;
+    const { top, bottom } = popoverBoundingRect;
     const distanceFromBottom = window.innerHeight - bottom;
 
     if (top < 0) {
@@ -184,60 +186,59 @@ export const BasePopover = ({
     }
   };
 
-  const handleShiftAlignment = () => {
+  const handleHorizontalShift = () => {
     if (!triggerPosition) {
       return;
     }
 
-    const popOverBoundingRect =
+    const popoverBoundingRect =
       popoverContainerRef?.current?.getBoundingClientRect();
-    if (!popOverBoundingRect) {
+    if (!popoverBoundingRect) {
       return;
     }
 
-    const { width } = popOverBoundingRect;
+    const { width, left, right } = popoverBoundingRect;
+
+    const triggerCenter =
+      triggerPosition.width && triggerPosition.left + triggerPosition.width / 2;
+    const popoverWidth = right - left;
+
+    // todo - rename
+    const centredLeft =
+      alignProp === 'center' && triggerCenter
+        ? triggerCenter - popoverWidth / 2
+        : triggerPosition.left;
 
     const updatedLeft = clamp(
       scrollX,
-      triggerPosition.left,
+      centredLeft,
       window.innerWidth + scrollX - width,
     );
 
+    const normalisedRight = window.innerWidth - triggerPosition.right;
+
     const updatedRight = clamp(
       scrollX + width,
-      triggerPosition.right,
-      window.innerWidth + scrollX,
+      normalisedRight,
+      scrollX + window.innerWidth,
     );
 
     if (
-      updatedLeft === popoverPosition?.left ||
-      updatedRight === popoverPosition?.right
+      align === 'right' &&
+      updatedRight !== triggerPosition.right + horizontalOffset
     ) {
-      return;
+      setHorizontalOffset(
+        window.innerWidth - updatedRight - triggerPosition.right,
+      );
+    }
+    if (
+      align === 'left' &&
+      updatedLeft !== triggerPosition.left + horizontalOffset
+    ) {
+      setHorizontalOffset(updatedLeft - triggerPosition.left);
     }
 
-    setShiftPopoverPosition(() => {
-      // Todo - simplify
-      const defaultPosition = {
-        top: 0,
-        bottom: 0,
-        width: 0,
-        left: 0,
-        right: 0,
-      };
-      const position = triggerPosition || defaultPosition;
-
-      if (position.left !== updatedLeft) {
-        return {
-          ...position,
-          left: updatedLeft,
-          right: updatedRight,
-          // Todo - do right
-        };
-      }
-
-      return position;
-    });
+    return;
   };
 
   useIsomorphicLayoutEffect(() => {
@@ -246,42 +247,29 @@ export const BasePopover = ({
       return;
     }
 
+    if (align !== 'full') {
+      handleHorizontalShift();
+    }
     if (!lockPlacement) {
       handleFlipPlacement();
     }
-    handleShiftAlignment();
   });
 
-  const popoverPosition = shiftPopoverPosition || triggerPosition;
-
-  let triggerPositionStyles;
-
-  const triggerCentre =
-    popoverPosition?.width && popoverPosition.left + popoverPosition.width / 2;
-
-  if (align === 'full') {
-    triggerPositionStyles = {
-      [styles.triggerVars.left]: `${popoverPosition?.left}px`,
-      [styles.triggerVars.right]: `${popoverPosition?.right}px`,
-    };
-  } else if (align === 'center') {
-    triggerPositionStyles = {
-      [styles.triggerVars.left]: `calc(${triggerCentre}px - ${
-        styles.maxWidth / 2
-      }px)`,
-    };
-  } else {
-    triggerPositionStyles = popoverPosition && {
-      [styles.triggerVars[align]]: `${popoverPosition[align]}px`,
-    };
-  }
-
   const inlineVars = assignInlineVars({
-    ...(popoverPosition && {
+    ...(triggerPosition && {
       [styles.triggerVars[
         popoverPlacement
-      ]]: `${popoverPosition[popoverPlacement]}px`,
-      ...triggerPositionStyles,
+      ]]: `${triggerPosition[popoverPlacement]}px`,
+      ...(align === 'full'
+        ? {
+            [styles.triggerVars.left]: `${triggerPosition?.left}px`,
+            [styles.triggerVars.right]: `${triggerPosition?.right}px`,
+          }
+        : {
+            [styles.triggerVars[align]]: `${
+              triggerPosition[align] + horizontalOffset
+            }px`,
+          }),
     }),
   });
 
@@ -305,49 +293,48 @@ export const BasePopover = ({
     />
   );
 
-  if (showPopover) {
-    return (
-      <>
-        <BraidPortal>
-          <Box
-            // Todo - add aria-label if focussed
-            component="section"
-            tabIndex={-1}
-            ref={popoverContainerRef}
-            onKeyDown={handleKeyboard}
-            zIndex="modal"
-            position="absolute"
-            marginTop={popoverPlacement === 'bottom' ? offsetSpace : undefined}
-            marginBottom={popoverPlacement === 'top' ? offsetSpace : undefined}
-            style={inlineVars}
-            className={[
-              align === 'center' && styles.alignCenter,
-              styles.popoverPosition,
-              !disableAnimation && styles.animation,
-            ]}
-          >
-            {children}
-            {!tabToExit && <ExitFocusCapture />}
-          </Box>
-        </BraidPortal>
-        {/* Todo - should this be portaled? */}
-        <Box
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            if (onClose) {
-              handleOnClose();
-            }
-          }}
-          position="fixed"
-          zIndex="modal"
-          top={0}
-          left={0}
-          className={styles.backdrop}
-        />
-      </>
-    );
+  if (!showPopover) {
+    return null;
   }
 
-  return null;
+  return (
+    <>
+      <BraidPortal>
+        <Box
+          // Todo - add aria-label if focussed
+          component="section"
+          tabIndex={-1}
+          ref={popoverContainerRef}
+          onKeyDown={handleKeyboard}
+          zIndex="modal"
+          position="absolute"
+          marginTop={popoverPlacement === 'bottom' ? offsetSpace : undefined}
+          marginBottom={popoverPlacement === 'top' ? offsetSpace : undefined}
+          style={inlineVars}
+          className={[
+            styles.popoverPosition,
+            !disableAnimation && styles.animation,
+          ]}
+        >
+          {children}
+          {!tabToExit && <ExitFocusCapture />}
+        </Box>
+      </BraidPortal>
+      {/* Todo - should this be portaled? */}
+      <Box
+        onClick={(event) => {
+          event.stopPropagation();
+          event.preventDefault();
+          if (onClose) {
+            handleOnClose();
+          }
+        }}
+        position="fixed"
+        zIndex="modal"
+        top={0}
+        left={0}
+        className={styles.backdrop}
+      />
+    </>
+  );
 };
