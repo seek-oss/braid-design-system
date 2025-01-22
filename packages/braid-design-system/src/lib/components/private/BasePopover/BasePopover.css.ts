@@ -3,9 +3,6 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../../themes/vars.css';
 
-// Todo - this is a dirty hack that doesn't work, pls change
-export const maxWidth = 500;
-
 export const backdrop = style({
   width: '100vw',
   height: '100vh',
@@ -17,12 +14,6 @@ export const triggerVars = {
   bottom: createVar(),
   right: createVar(),
 };
-
-export const alignCenter = style({
-  display: 'flex',
-  justifyContent: 'center',
-  width: `${maxWidth}px`,
-});
 
 // Top and bottom reversed to allow for a more natural API
 export const popoverPosition = style({
