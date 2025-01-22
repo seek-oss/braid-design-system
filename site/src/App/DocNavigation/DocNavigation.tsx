@@ -13,7 +13,7 @@ import {
 import type { BadgeProps } from 'braid-src/lib/components/Badge/Badge';
 import { useBackgroundLightness } from 'braid-src/lib/components/Box/BackgroundContext';
 import { negativeMargin } from 'braid-src/lib/css/negativeMargin/negativeMargin';
-import React, {
+import {
   type ReactNode,
   type ReactElement,
   useState,

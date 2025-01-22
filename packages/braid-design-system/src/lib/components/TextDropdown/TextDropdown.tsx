@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { type FormEvent, useContext } from 'react';
+import { type FormEvent, useContext } from 'react';
 
 import { Box } from '../Box/Box';
 import HeadingContext from '../Heading/HeadingContext';

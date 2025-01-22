@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import { Alert, Text, Stack, TextLink, List } from '../';

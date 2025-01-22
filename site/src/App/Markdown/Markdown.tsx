@@ -10,7 +10,7 @@ import {
 } from 'braid-src/lib/components';
 import { TextContext } from 'braid-src/lib/components/Text/TextContext';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
-import React, { type ReactElement } from 'react';
+import { Children, type ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { CodeBlock, type SupportedLanguage } from '../Code/Code';
@@ -84,7 +84,7 @@ const renderers = {
     </TextContext.Provider>
   ),
   listItem: ({ children }: { children: any }) => {
-    const childList = React.Children.toArray(children);
+    const childList = Children.toArray(children);
 
     // @ts-expect-error
     if (childList[0]?.type?.isParagraph) {

@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { type BoxProps, Box } from '../Box/Box';
 import buildDataAttributes, {

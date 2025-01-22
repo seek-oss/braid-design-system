@@ -1,5 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import React from 'react';
+import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {
@@ -74,11 +74,11 @@ const docs: ComponentDocs = {
             items. Note that, to ensure adequate space for touch targets, the{' '}
             <Strong>space</Strong> prop only accepts values of{' '}
             {validSpaceValues.map((value, i) => (
-              <React.Fragment key={value}>
+              <Fragment key={value}>
                 {i === validSpaceValues.length - 1 ? ' and ' : ''}
                 {i !== validSpaceValues.length - 1 && i !== 0 ? ', ' : ''}
                 <Strong>“{value}”</Strong>
-              </React.Fragment>
+              </Fragment>
             ))}
             .
           </Text>

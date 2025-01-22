@@ -1,6 +1,6 @@
 import clsx, { type ClassValue } from 'clsx';
 import dedent from 'dedent';
-import React, {
+import {
   type AllHTMLAttributes,
   type ElementType,
   createElement,

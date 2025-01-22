@@ -1,5 +1,5 @@
 import dedent from 'dedent';
-import React, {
+import {
   type AllHTMLAttributes,
   type ChangeEvent,
   type ReactNode,

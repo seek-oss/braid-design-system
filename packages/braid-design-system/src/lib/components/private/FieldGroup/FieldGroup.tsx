@@ -1,5 +1,5 @@
 import dedent from 'dedent';
-import React, { type AllHTMLAttributes } from 'react';
+import type { AllHTMLAttributes } from 'react';
 
 import { Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';

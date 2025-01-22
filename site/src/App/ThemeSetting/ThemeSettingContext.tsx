@@ -1,6 +1,6 @@
 import * as themes from 'braid-src/lib/themes';
 import type { BraidTheme } from 'braid-src/lib/themes/makeBraidTheme';
-import React, {
+import {
   type ReactNode,
   createContext,
   useContext,

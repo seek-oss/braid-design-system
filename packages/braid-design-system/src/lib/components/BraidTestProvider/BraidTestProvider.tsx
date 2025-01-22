@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { Breakpoint } from '../../css/breakpoints';
 import * as themes from '../../themes';
 import {

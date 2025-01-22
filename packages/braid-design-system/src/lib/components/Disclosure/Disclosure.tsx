@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import React, { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext } from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';

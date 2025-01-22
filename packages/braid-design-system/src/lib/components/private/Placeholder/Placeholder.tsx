@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Box, Text } from '../../';
 import { atoms } from '../../../css/atoms/atoms';

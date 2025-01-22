@@ -11,7 +11,6 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
-import React from 'react';
 
 import type { Page } from '../../../../types';
 import { PageTitle } from '../../../Seo/PageTitle';

@@ -16,7 +16,7 @@ import {
 } from 'braid-src/lib/components';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { Placeholder } from 'braid-src/lib/playroom/components';
-import React, { type ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import type { Page } from '../../../../types';
 import Code from '../../../Code/Code';

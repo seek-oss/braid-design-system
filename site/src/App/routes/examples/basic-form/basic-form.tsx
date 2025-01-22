@@ -19,7 +19,7 @@ import {
   MonthPicker,
   Textarea,
 } from 'braid-src/lib/playroom/components';
-import React, { type ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';
 import Code from '../../../Code/Code';

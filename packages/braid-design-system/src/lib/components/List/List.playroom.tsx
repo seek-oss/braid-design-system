@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
 import { IconClear } from '../icons';
 

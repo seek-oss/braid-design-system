@@ -1,4 +1,4 @@
-import React, { type ReactNode, useRef, useCallback } from 'react';
+import { type ReactNode, useRef, useCallback } from 'react';
 import { throttle } from 'throttle-debounce';
 
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';

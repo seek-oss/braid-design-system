@@ -1,5 +1,4 @@
 import { Box } from 'braid-design-system';
-import React from 'react';
 
 import * as styles from './MenuButton.css';
 

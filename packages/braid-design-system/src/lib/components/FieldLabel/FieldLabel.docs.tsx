@@ -1,5 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {

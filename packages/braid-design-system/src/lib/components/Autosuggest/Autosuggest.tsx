@@ -1,7 +1,7 @@
 import matchHighlights from 'autosuggest-highlight/match';
 import parseHighlights from 'autosuggest-highlight/parse';
 import dedent from 'dedent';
-import React, {
+import {
   type ChangeEvent,
   type MouseEvent,
   type KeyboardEvent,

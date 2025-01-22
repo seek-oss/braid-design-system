@@ -24,7 +24,6 @@ import {
   Placeholder,
   TextField,
 } from 'braid-src/lib/playroom/components';
-import React from 'react';
 
 import type { Page } from '../../../types';
 import Code from '../../Code/Code';

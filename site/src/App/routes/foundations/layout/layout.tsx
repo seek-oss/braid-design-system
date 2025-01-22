@@ -29,7 +29,6 @@ import {
 import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
 import { Placeholder } from 'braid-src/lib/playroom/components';
 import tokens from 'braid-src/lib/themes/wireframe/tokens';
-import React from 'react';
 
 import type { Page as DocsPage } from '../../../../types';
 import Code from '../../../Code/Code';

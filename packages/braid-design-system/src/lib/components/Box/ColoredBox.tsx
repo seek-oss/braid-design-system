@@ -1,4 +1,4 @@
-import React, { createElement, forwardRef } from 'react';
+import { createElement, forwardRef } from 'react';
 
 import type { Background, BoxShadow } from '../../css/atoms/atomicProperties';
 import { atoms } from '../../css/atoms/atoms';

@@ -1,7 +1,5 @@
 import assert from 'assert';
 
-import React from 'react';
-
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import {
   type CollapsibleAlignmentProps,

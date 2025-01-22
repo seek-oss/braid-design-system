@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { menuTestSuite } from '../MenuRenderer/testHelper';
 
 import { OverflowMenu } from './OverflowMenu';

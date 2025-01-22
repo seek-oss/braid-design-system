@@ -13,7 +13,7 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
-import React, { useState, useRef, useEffect, forwardRef } from 'react';
+import { useState, useRef, useEffect, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';

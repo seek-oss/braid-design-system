@@ -1,7 +1,5 @@
 import assert from 'assert';
 
-import React from 'react';
-
 import { useBackground } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';

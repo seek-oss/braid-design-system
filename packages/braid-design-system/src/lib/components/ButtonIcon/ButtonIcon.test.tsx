@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import React from 'react';
+
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import { ButtonIcon, IconBookmark } from '..';

@@ -1,7 +1,6 @@
 import { Box } from 'braid-src/lib/components';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import React from 'react';
 
 import * as styles from './gallery.css';
 

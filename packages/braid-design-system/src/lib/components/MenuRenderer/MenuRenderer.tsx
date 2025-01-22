@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import React, {
+import {
   type KeyboardEvent,
   type MouseEvent,
   type ReactNode,

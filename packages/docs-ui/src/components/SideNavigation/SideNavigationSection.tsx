@@ -1,5 +1,4 @@
 import { Box, HiddenVisually, Stack, Text } from 'braid-design-system';
-import React from 'react';
 
 import { SideNavigationItem } from './SideNavigationItem';
 

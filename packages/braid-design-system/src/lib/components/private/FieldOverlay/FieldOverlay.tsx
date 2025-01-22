@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { type OverlayProps, Overlay } from '../Overlay/Overlay';
 
 type FieldOverlayVariant =

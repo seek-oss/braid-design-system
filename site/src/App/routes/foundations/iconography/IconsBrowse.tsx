@@ -11,7 +11,7 @@ import {
 import * as icons from 'braid-src/lib/components/icons';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { iconsKeywords } from './iconsKeywords';
 

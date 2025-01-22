@@ -5,7 +5,7 @@ import {
   waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { type ComponentType, useState } from 'react';
+import { type ComponentType, useState } from 'react';
 import type { Optional } from 'utility-types';
 
 import { BraidTestProvider } from '../../../../entries/test';

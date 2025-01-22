@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import { iconContainerSize } from '../../hooks/useIcon';

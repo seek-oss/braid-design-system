@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { type Dispatch, useState, useRef, useEffect } from 'react';
+import { type Dispatch, useState, useRef, useEffect } from 'react';
 
 import { Autosuggest, filterSuggestions } from '..';
 import { BraidTestProvider } from '../../../entries/test';

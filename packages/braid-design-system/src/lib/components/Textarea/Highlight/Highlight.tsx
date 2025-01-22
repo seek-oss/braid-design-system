@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Box } from '../../Box/Box';
 
 import { root, critical, caution } from './Highlight.css';
