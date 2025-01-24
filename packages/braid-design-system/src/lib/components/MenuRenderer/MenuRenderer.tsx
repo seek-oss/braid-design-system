@@ -17,7 +17,10 @@ import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
-import { BasePopover } from '../private/BasePopover/BasePopover';
+import {
+  BasePopover,
+  type Placement,
+} from '../private/BasePopover/BasePopover';
 import { Overlay } from '../private/Overlay/Overlay';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
@@ -59,7 +62,7 @@ export interface MenuRendererProps {
   offsetSpace?: ResponsiveSpace;
   size?: MenuSize;
   width?: keyof typeof styles.width | 'content';
-  placement?: 'top' | 'bottom';
+  placement?: Placement;
   onOpen?: () => void;
   onClose?: (closeReason: CloseReason) => void;
   data?: DataAttributeMap;

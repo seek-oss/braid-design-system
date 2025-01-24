@@ -15,9 +15,11 @@ import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { normalizeKey } from '../normalizeKey';
 
+import { BasePopoverContext } from './BasePopoverContext';
+
 import * as styles from './BasePopover.css';
 
-type Placement = 'top' | 'bottom';
+export type Placement = 'top' | 'bottom';
 
 export interface BasePopoverProps {
   align?: 'left' | 'right' | 'full' | 'center';
@@ -35,6 +37,8 @@ export interface BasePopoverProps {
   focusPopoverOnOpen?: boolean;
   tabToExit?: boolean;
   children: ReactNode;
+  // todo - rename?
+  type?: 'popover' | 'tooltip';
 }
 
 type Position = {
@@ -42,7 +46,7 @@ type Position = {
   bottom: number;
   left: number;
   right: number;
-  width?: number;
+  width: number;
 };
 
 const getPosition = (element: HTMLElement | null): Position | undefined => {
@@ -80,15 +84,16 @@ export const BasePopover = ({
   disableAnimation = false,
   focusPopoverOnOpen = false,
   tabToExit = true,
+  type = 'popover',
   children,
 }: BasePopoverProps) => {
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
     undefined,
   );
   const [horizontalOffset, setHorizontalOffset] = useState(0);
+  const [arrowOffset, setArrowOffset] = useState(0);
+  const [flipPlacement, setFlipPlacement] = useState<Placement>(placement);
 
-  const [popoverPlacement, setPopoverPlacement] =
-    useState<Placement>(placement);
   const showPopover = open && triggerPosition;
 
   const popoverContainerRef = useRef<HTMLDivElement | null>(null);
@@ -96,6 +101,7 @@ export const BasePopover = ({
   const align = alignProp === 'center' ? 'left' : alignProp;
 
   const handleOnClose = () => {
+    // Todo - returnFocusRef should be required
     if (!returnFocusRef) {
       return;
     }
@@ -121,6 +127,7 @@ export const BasePopover = ({
     if (!open) {
       setTriggerPosition(undefined);
       setHorizontalOffset(0);
+      setArrowOffset(0);
       return;
     }
 
@@ -180,9 +187,9 @@ export const BasePopover = ({
     const distanceFromBottom = window.innerHeight - bottom;
 
     if (top < 0) {
-      setPopoverPlacement('bottom');
+      setFlipPlacement('bottom');
     } else if (distanceFromBottom < 0) {
-      setPopoverPlacement('top');
+      setFlipPlacement('top');
     }
   };
 
@@ -210,19 +217,22 @@ export const BasePopover = ({
         ? triggerCenter - popoverWidth / 2
         : triggerPosition.left;
 
+    // Todo - can this use braid tokens?
+    const edgeOffset = 12;
+
     const updatedLeft = clamp(
-      scrollX,
+      scrollX + edgeOffset,
       inferredLeft,
-      window.innerWidth + scrollX - width,
+      window.innerWidth + scrollX - width - edgeOffset,
     );
 
     // Todo - better solution if possible
     const normalisedRight = window.innerWidth - triggerPosition.right;
 
     const updatedRight = clamp(
-      scrollX + width,
+      scrollX + width + edgeOffset,
       normalisedRight,
-      scrollX + window.innerWidth,
+      scrollX + window.innerWidth - edgeOffset,
     );
 
     if (
@@ -238,6 +248,9 @@ export const BasePopover = ({
       updatedLeft !== triggerPosition.left + horizontalOffset
     ) {
       setHorizontalOffset(updatedLeft - triggerPosition.left);
+      setArrowOffset(
+        triggerPosition.left + triggerPosition.width / 2 - updatedLeft,
+      );
     }
 
     return;
@@ -245,7 +258,7 @@ export const BasePopover = ({
 
   useIsomorphicLayoutEffect(() => {
     if (!showPopover) {
-      setPopoverPlacement(placement);
+      setFlipPlacement(placement);
       return;
     }
 
@@ -260,8 +273,8 @@ export const BasePopover = ({
   const inlineVars = assignInlineVars({
     ...(triggerPosition && {
       [styles.triggerVars[
-        popoverPlacement
-      ]]: `${triggerPosition[popoverPlacement]}px`,
+        flipPlacement
+      ]]: `${triggerPosition[flipPlacement]}px`,
       ...(align === 'full'
         ? {
             [styles.triggerVars.left]: `${triggerPosition?.left}px`,
@@ -273,6 +286,7 @@ export const BasePopover = ({
             }px`,
           }),
     }),
+    [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
   });
 
   const handleKeyboard = (event: ReactKeyboardEvent) => {
@@ -299,8 +313,10 @@ export const BasePopover = ({
     return null;
   }
 
+  const contextValue = { arrowOffset, flipPlacement };
+
   return (
-    <>
+    <BasePopoverContext.Provider value={contextValue}>
       <BraidPortal>
         <Box
           // Todo - add aria-label if focussed
@@ -310,8 +326,8 @@ export const BasePopover = ({
           onKeyDown={handleKeyboard}
           zIndex="modal"
           position="absolute"
-          marginTop={popoverPlacement === 'bottom' ? offsetSpace : undefined}
-          marginBottom={popoverPlacement === 'top' ? offsetSpace : undefined}
+          marginTop={flipPlacement === 'bottom' ? offsetSpace : undefined}
+          marginBottom={flipPlacement === 'top' ? offsetSpace : undefined}
           style={inlineVars}
           className={[
             styles.popoverPosition,
@@ -323,20 +339,22 @@ export const BasePopover = ({
         </Box>
       </BraidPortal>
       {/* Todo - should this be portaled? */}
-      <Box
-        onClick={(event) => {
-          event.stopPropagation();
-          event.preventDefault();
-          if (onClose) {
-            handleOnClose();
-          }
-        }}
-        position="fixed"
-        zIndex="modal"
-        top={0}
-        left={0}
-        className={styles.backdrop}
-      />
-    </>
+      {type === 'popover' && (
+        <Box
+          onClick={(event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            if (onClose) {
+              handleOnClose();
+            }
+          }}
+          position="fixed"
+          zIndex="modal"
+          top={0}
+          left={0}
+          className={styles.backdrop}
+        />
+      )}
+    </BasePopoverContext.Provider>
   );
 };

@@ -133,6 +133,7 @@ const docs: ComponentDocs = {
               placement="top"
               tooltip={<Text>The placement is “top”</Text>}
             >
+              {/* Todo - fix ref type issue */}
               {({ triggerProps }) => <Button {...triggerProps}>Top</Button>}
             </TooltipRenderer>
             <TooltipRenderer
