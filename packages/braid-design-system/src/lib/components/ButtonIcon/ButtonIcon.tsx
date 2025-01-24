@@ -181,6 +181,7 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
                   forwardedRef.current = node;
                 }
               }
+              // Todo - fix
               triggerRef(node);
             }}
             tabIndex={tabIndex}
