@@ -15,6 +15,8 @@ export const triggerVars = {
   right: createVar(),
 };
 
+export const flipPlacement = createVar();
+
 // Top and bottom reversed to allow for a more natural API
 export const popoverPosition = style({
   top: triggerVars.bottom,
@@ -26,7 +28,9 @@ export const popoverPosition = style({
 export const animation = style({
   animation: `${keyframes({
     from: {
-      transform: `translateY(${calc(vars.grid).negate().multiply(2)})`,
+      transform: `translateY(${calc(vars.grid)
+        .multiply('2')
+        .multiply(flipPlacement)})`,
       opacity: 0,
     },
   })} .125s ease forwards`,
