@@ -4669,5 +4669,41 @@
         "summary": "**Accordion, AccordionItem**: Adjust spacing values for improved visual balance.\n\nThis change reduces the default spacing within `Accordion` and `AccordionItem` components at certain sizes, ensuring the content is better associated with the correct `AccordionItem`.\n\nWithin the `Accordion` component, the default space between `AccordionItem` components has been reduced for size `large` with dividers, and sizes `small` and `xsmall` without dividers.\nWithin the `AccordionItem` component, the space between the `label` and content has been reduced for sizes `large` and `small`."
       }
     ]
+  },
+  {
+    "version": "33.4.0",
+    "updates": [
+      {
+        "updated": [
+          "AccordionItem"
+        ],
+        "summary": "**AccordionItem**: Fix issue that caused `data` props to be incorrectly parsed."
+      },
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu**: Ensure the menu has a maximum height."
+      },
+      {
+        "updated": [
+          "theme"
+        ],
+        "summary": "**theme:** Expose web fonts `href` on runtime tokens\n\nExtend the `webFonts` runtime token to include the `href` property containing the web font URL.\nThis enables custom handling of web fonts beyond injecting the pre-constructed `link` tag(s).\n\n**EXAMPLE USAGE:**\n```jsx\nimport seekJobs from 'braid-design-system/themes/seekJobs';\n\nconst webFontHrefs = seekJobs.webFonts.map(({ href }) => href);\n\n// => [ \"https://www.seek.com.au/static/shared-web/seeksans.css\" ]\n```"
+      },
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Adopt `brandAccent` tone\n\nThe stars in the `Rating` component now use the `brandAccent` tone rather than the `rating` token from the theme.\n\nAs a result the `rating` variable has been deprecated and will be removed in a future release.\n\n**MIGRATION GUIDE:**\n```diff\n# styles.css.ts\nimport { vars } from 'braid-design-system/css';\n\nexport const myStyle = style({\n-  color: vars.foreground.rating,\n+  color: vars.foreground.brandAccent,\n});\n```"
+      },
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Add `tone` support\n\nFor usages where the `Rating` component should not be accentuated, the `tone` prop can be used to apply `neutral` tone.\n\n**EXAMPLE USAGE:**\n```jsx\n<Rating tone=\"neutral\" />\n```"
+      }
+    ]
   }
 ]
