@@ -169,7 +169,7 @@ export default makeTokens({
         linkLightVisited: palette.purple['200'],
         promote: palette.purple['700'],
         promoteLight: palette.purple['300'],
-        rating: palette.orange['600'],
+        rating: palette.seekPink['500'],
       },
       background: {
         body: '#fff',

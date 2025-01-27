@@ -7717,6 +7717,9 @@ exports[`Rating 1`] = `
         | "small"
         | "standard"
         | "xsmall"
+    tone?: 
+        | "brandAccent"
+        | "neutral"
     variant?: 
         | "full"
         | "minimal"
