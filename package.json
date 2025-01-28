@@ -8,7 +8,8 @@
     "dev": "nx run-many --target=dev",
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
-    "build": "nx run braid-design-system:build",
+    "build": "pnpm build:braid && pnpm build:docs-ui",
+    "build:braid": "nx run braid-design-system:build",
     "build:docs-ui": "nx run docs-ui:build",
     "build:site": "nx run site:build",
     "postbuild": "concurrently --group 'pnpm:test:integration' 'pnpm:validate'",
@@ -32,7 +33,7 @@
     "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm prepare-publish && changeset publish",
-    "prepare-publish": "pnpm build && pnpm build:docs-ui && tsx scripts/copyReadme.cts",
+    "prepare-publish": "pnpm build && tsx scripts/copyReadme.cts",
     "version": "changeset version && tsx scripts/versionComponentUpdates.cts && pnpm install --lockfile-only",
     "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
   },

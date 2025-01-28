@@ -36,6 +36,7 @@
     "@vanilla-extract/css": "^1.9.2"
   },
   "devDependencies": {
+    "@types/react": "^18.3.18",
     "braid-design-system": "workspace:*",
     "react": "^18.3.1"
   },

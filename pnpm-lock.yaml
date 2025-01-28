@@ -449,6 +449,9 @@ importers:
         specifier: ^1.9.2
         version: 1.17.0(babel-plugin-macros@3.1.0)
     devDependencies:
+      '@types/react':
+        specifier: ^18.3.18
+        version: 18.3.18
       braid-design-system:
         specifier: workspace:*
         version: link:../braid-design-system
