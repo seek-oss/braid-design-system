@@ -1,0 +1,29 @@
+name: Clean up preview site
+
+on: workflow_dispatch
+
+jobs:
+  delete:
+    name: Clean up preview site
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+      PREVIEW_DIR: preview/
+      DAYS_OLD: 1
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        ref: gh-pages-test
+
+      - name: Delete old preview directories
+        run: |
+          for i in `find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -mtime +${{ env.DAYS_OLD }} -print`; do echo -e "Deleting directory $i";rm -rf $i; done
+          if [[ $(git status --porcelain --untracked-files=no | wc -l) -eq 0 ]]; then echo "No directories to clean up";exit 0; fi
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add ${{ env.PREVIEW_DIR }}
+          git commit --quiet -m "Clean up old preview directories"
+          git push
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
