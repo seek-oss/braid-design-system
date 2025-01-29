@@ -30,7 +30,6 @@
     "generate:icons": "nx run braid-design-system:generate:icons",
     "generate:snippets": "nx run braid-design-system:generate:snippets",
     "generate:component-docs": "nx run site:generate:component-docs",
-    "deploy": "node scripts/deploy.js",
     "post-commit-status": "node scripts/postCommitStatus.js",
     "release": "pnpm prepare-publish && changeset publish",
     "prepare-publish": "pnpm build && tsx scripts/copyReadme.cts",

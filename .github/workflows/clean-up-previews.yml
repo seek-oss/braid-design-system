@@ -9,16 +9,16 @@ jobs:
     env:
       CI: true
       PREVIEW_DIR: preview
-      DAYS_OLD: -1
+      DAYS_OLD: 7
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          ref: gh-pages-test
+          ref: gh-pages
 
       - name: Delete old preview directories
         run: |
-          for i in `find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -mtime ${{ env.DAYS_OLD }} -print`; do echo -e "Deleting directory $i";rm -rf $i; done
+          for i in `find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -mtime +${{ env.DAYS_OLD }} -print`; do echo -e "Deleting directory $i";rm -rf $i; done
           if [[ $(git status --porcelain --untracked-files=no | wc -l) -eq 0 ]]; then echo "No directories to clean up";exit 0; fi
           git config --local user.name 'GitHub Actions'
           git config --local user.email 'actions@github.com'
