@@ -12,7 +12,7 @@ module.exports = {
   components: require.resolve('./src/playroom.components.ts'),
   snippets: resolveFromBraid('entries/playroom/snippets.ts'),
   themes: resolveFromBraid('lib/themes/index.ts'),
-  defaultVisibleThemes: ['apac', 'seekJobs'],
+  defaultVisibleThemes: ['gradConnection'],
   frameComponent: require.resolve('./src/playroom.frame.ts'),
   scope: require.resolve('./src/playroom.scope.ts'),
   typeScriptFiles: [resolveFromBraid('entries/playroom/components.ts')],
