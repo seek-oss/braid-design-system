@@ -11,7 +11,7 @@
   "devDependencies": {
     "@vanilla-extract/integration": "^7.1.9",
     "@vscode/ripgrep": "^1.15.9",
-    "fast-glob": "^3.2.12",
+    "fast-glob": "^3.3.2",
     "webpack": "^5.76.0"
   }
 }

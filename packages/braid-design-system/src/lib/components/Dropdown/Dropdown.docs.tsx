@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Dropdown,
   List,
@@ -12,7 +13,6 @@ import {
   Heading,
   Notice,
 } from '../';
-import source from '@braid-design-system/source.macro';
 
 const docs: ComponentDocs = {
   category: 'Content',

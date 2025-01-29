@@ -1,16 +1,17 @@
-import React from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { Box } from '../Box/Box';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
+import { Box } from '../Box/Box';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
+import * as styles from './Tiles.css';
 import {
   type RequiredResponsiveValue,
   normalizeResponsiveValue,
 } from '../../css/atoms/sprinkles.css';
-import * as styles from './Tiles.css';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;
@@ -26,20 +27,13 @@ export const Tiles = ({
   data,
   ...restProps
 }: TilesProps) => {
-  /**
-   * Defaulting the normalised column values to empty strings so that when
-   * parsed to strings for `assignInlineVars`, they are correctly omitted
-   * from the style attribute when not defined.
-   *
-   * Without this, `undefined` would be parsed to the string "undefined",
-   * requiring additional logic to omit them manually from the style attribute.
-   */
+  const normalizedResponsiveColumns = normalizeResponsiveValue(columns);
   const {
-    mobile: mobileColumns = '',
-    tablet: tabletColumns = '',
-    desktop: desktopColumns = '',
-    wide: wideColumns = '',
-  } = normalizeResponsiveValue(columns);
+    mobile: mobileColumns = '1',
+    tablet: tabletColumns = mobileColumns,
+    desktop: desktopColumns = tabletColumns,
+    wide: wideColumns = desktopColumns,
+  } = normalizedResponsiveColumns;
 
   return (
     <Box

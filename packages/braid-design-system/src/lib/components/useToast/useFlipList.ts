@@ -1,4 +1,5 @@
 import { useMemo, useCallback } from 'react';
+
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 const animationTimeout = 300;

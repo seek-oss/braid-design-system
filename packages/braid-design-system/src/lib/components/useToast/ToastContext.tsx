@@ -1,4 +1,4 @@
-import React, {
+import {
   type ReactNode,
   useContext,
   createContext,
@@ -8,10 +8,12 @@ import React, {
   useEffect,
   Fragment,
 } from 'react';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
 import { BraidPortal } from '../BraidPortal/BraidPortal';
-import { Toaster } from './Toaster';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
 import type { Toast, InternalToast } from './ToastTypes';
+import { Toaster } from './Toaster';
 
 let toastCounter = 0;
 

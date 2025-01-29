@@ -1,8 +1,8 @@
 import pluginTester from 'babel-plugin-tester';
 import dedent from 'dedent';
 
-import plugin from './plugin-deprecate-vars';
 import { v31 } from './deprecationMaps/v31';
+import plugin from './plugin-deprecate-vars';
 
 const tests: NonNullable<Parameters<typeof pluginTester>[0]>['tests'] = [
   {

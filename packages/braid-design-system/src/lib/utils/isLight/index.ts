@@ -1,6 +1,6 @@
+import { parse as parseGradient } from 'gradient-parser';
 import { parseToRgb } from 'polished';
 // @ts-ignore
-import { parse as parseGradient } from 'gradient-parser';
 
 type LinearGradients = Array<{
   colorStops: Array<{

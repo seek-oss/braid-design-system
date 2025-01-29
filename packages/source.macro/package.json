@@ -1,6 +1,6 @@
 {
   "name": "@braid-design-system/source.macro",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "source.macro.cjs",
   "types": "source.macro.d.ts",
   "files": [

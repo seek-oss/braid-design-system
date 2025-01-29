@@ -1,5 +1,173 @@
 # braid-design-system
 
+## 33.4.0
+
+### Minor Changes
+
+- **theme:** Expose web fonts `href` on runtime tokens ([#1685](https://github.com/seek-oss/braid-design-system/pull/1685))
+
+  Extend the `webFonts` runtime token to include the `href` property containing the web font URL.
+  This enables custom handling of web fonts beyond injecting the pre-constructed `link` tag(s).
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  import seekJobs from 'braid-design-system/themes/seekJobs';
+
+  const webFontHrefs = seekJobs.webFonts.map(({ href }) => href);
+
+  // => [ "https://www.seek.com.au/static/shared-web/seeksans.css" ]
+  ```
+
+- **Rating:** Adopt `brandAccent` tone ([#1693](https://github.com/seek-oss/braid-design-system/pull/1693))
+
+  The stars in the `Rating` component now use the `brandAccent` tone rather than the `rating` token from the theme.
+
+  As a result the `rating` variable has been deprecated and will be removed in a future release.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  # styles.css.ts
+  import { vars } from 'braid-design-system/css';
+
+  export const myStyle = style({
+  -  color: vars.foreground.rating,
+  +  color: vars.foreground.brandAccent,
+  });
+  ```
+
+- **Rating:** Add `tone` support ([#1693](https://github.com/seek-oss/braid-design-system/pull/1693))
+
+  For usages where the `Rating` component should not be accentuated, the `tone` prop can be used to apply `neutral` tone.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Rating tone="neutral" />
+  ```
+
+### Patch Changes
+
+- **AccordionItem**: Fix issue that caused `data` props to be incorrectly parsed. ([#1680](https://github.com/seek-oss/braid-design-system/pull/1680))
+
+- **MenuRenderer, OverflowMenu**: Ensure the menu has a maximum height. ([#1679](https://github.com/seek-oss/braid-design-system/pull/1679))
+
+- Apply import order rules internally ([#1689](https://github.com/seek-oss/braid-design-system/pull/1689))
+
+- Remove default React import internally ([#1690](https://github.com/seek-oss/braid-design-system/pull/1690))
+
+## 33.3.0
+
+### Minor Changes
+
+- **Table:** Add component ([#1673](https://github.com/seek-oss/braid-design-system/pull/1673))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Table label="Table example">
+    <TableHeader>
+      <TableRow>
+        <TableHeaderCell>...</TableHeaderCell>
+        <TableHeaderCell>...</TableHeaderCell>
+        <TableHeaderCell>...</TableHeaderCell>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>...</TableCell>
+        <TableCell>...</TableCell>
+        <TableCell>...</TableCell>
+      </TableRow>
+      ...
+    </TableBody>
+  </Table>
+  ```
+
+- **MenuRenderer, OverflowMenu:** Add `small` size. ([#1675](https://github.com/seek-oss/braid-design-system/pull/1675))
+
+  Introduce a new `small` size for `MenuRenderer` and `OverflowMenu`.
+  This is available via the `size` prop, which supports the existing `standard` (default) and `small`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <MenuRenderer size="small" ... />
+  ```
+
+### Patch Changes
+
+- **Tiles**: Fixes a bug where nested `Tiles` components could calculate their columns incorrectly. ([#1667](https://github.com/seek-oss/braid-design-system/pull/1667))
+
+  Previously, when using a `Tiles` component inside another `Tiles` component, the responsive column calculation could be incorrect in certain scenarios.
+  This change ensures nested `Tiles` elements always calculate their columns correctly.
+
+- **Button, ButtonLink:** Ensure inner label is full width ([#1671](https://github.com/seek-oss/braid-design-system/pull/1671))
+
+  Ensuring the inner label element is full width to maintain backwards compatibility with previous block layout.
+
+- **Columns:** Ensure component occupies available height ([#1672](https://github.com/seek-oss/braid-design-system/pull/1672))
+
+  Enables `Columns` content to occupy the available height of the parent container.
+
+- **AccordionItem**: Simplify internal layout. ([#1674](https://github.com/seek-oss/braid-design-system/pull/1674))
+
+- **Accordion, AccordionItem**: Adjust spacing values for improved visual balance. ([#1674](https://github.com/seek-oss/braid-design-system/pull/1674))
+
+  This change reduces the default spacing within `Accordion` and `AccordionItem` components at certain sizes, ensuring the content is better associated with the correct `AccordionItem`.
+
+  Within the `Accordion` component, the default space between `AccordionItem` components has been reduced for size `large` with dividers, and sizes `small` and `xsmall` without dividers.
+  Within the `AccordionItem` component, the space between the `label` and content has been reduced for sizes `large` and `small`.
+
+## 33.2.2
+
+### Patch Changes
+
+- **MenuRenderer, OverflowMenu:** Fixes a bug where menus could be obscured when rendered inside a `Dialog` or `Drawer` component. ([#1665](https://github.com/seek-oss/braid-design-system/pull/1665))
+
+## 33.2.1
+
+### Patch Changes
+
+- **MenuRenderer**: Ensure menu is visible, even when its trigger element is inside a container with overflow hidden. ([#1658](https://github.com/seek-oss/braid-design-system/pull/1658))
+
+- **MenuRenderer, OverflowMenu:** Provide improved scroll affordance ([#1661](https://github.com/seek-oss/braid-design-system/pull/1661))
+
+  Introduce scroll affordance to menus, providing a visual cue that there are more items overflowing vertically.
+
+- **OverflowMenu**: Simplify internal layout. ([#1658](https://github.com/seek-oss/braid-design-system/pull/1658))
+
+  Refactor the internal layout of `OverflowMenu` to improve the alignment of the menu with the button.
+
+## 33.2.0
+
+### Minor Changes
+
+- Add new icons to the library ([#1655](https://github.com/seek-oss/braid-design-system/pull/1655))
+  - `IconCoverLetter`
+  - `IconChecklist`
+  - `IconDisallow`
+  - `IconBluetooth`
+  - `IconQR`
+
+### Patch Changes
+
+- Update the following icon assets: ([#1655](https://github.com/seek-oss/braid-design-system/pull/1655))
+  - `IconNote`
+  - `IconResume`
+  - `IconDocument`
+  - `IconDocumentBroken`
+  - `IconHeart`
+- **Button, ButtonLink:** Ensure label is vertically centered ([#1656](https://github.com/seek-oss/braid-design-system/pull/1656))
+
+  Fixes a bug where a `ButtonLink` label would not be vertically centered inside containers that stretch elements to fill the available space, such as `Tiles`.
+  While the issue did not affect `Button`, the fix was applied to both components to ensure there is no reliance on browser default styling.
+
+- **Autosuggest**: Ensure content is left aligned ([#1642](https://github.com/seek-oss/braid-design-system/pull/1642))
+
+  Applies left alignment to `Autosuggest` dropdown content to ensure consistent alignment, even when inside centered layout containers.
+
 ## 33.1.0
 
 ### Minor Changes

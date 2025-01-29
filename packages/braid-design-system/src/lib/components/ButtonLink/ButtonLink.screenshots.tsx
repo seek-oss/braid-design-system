@@ -1,6 +1,7 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
-import { ButtonLink, IconSend, Stack, Inline, Text, IconArrow } from '../';
+
+import { ButtonLink, IconSend, Stack, Inline, Text, IconArrow, Box } from '../';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <div style={{ maxWidth: '300px' }}>{children}</div>
@@ -283,6 +284,75 @@ export const screenshots: ComponentScreenshot = {
             </ButtonLink>
           </Inline>
         </Stack>
+      ),
+    },
+    {
+      label:
+        'Vertically centered labels in containers that stretch elements to fill',
+      Example: () => (
+        <Stack space="small">
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <ButtonLink href="#">Non elit</ButtonLink>
+            <ButtonLink href="#">Non elit do do incididunt nostrud</ButtonLink>
+          </Box>
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <ButtonLink href="#" icon={<IconSend />} iconPosition="leading">
+              Non elit
+            </ButtonLink>
+            <ButtonLink href="#" icon={<IconSend />} iconPosition="leading">
+              Non elit do do incididunt nostrud
+            </ButtonLink>
+          </Box>
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <ButtonLink href="#" icon={<IconSend />} iconPosition="trailing">
+              Non elit
+            </ButtonLink>
+            <ButtonLink href="#" icon={<IconSend />} iconPosition="trailing">
+              Non elit do do incididunt nostrud
+            </ButtonLink>
+          </Box>
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'Ensure inner label element is full width (red dots should touch horizontal edges)',
+      Example: () => (
+        <ButtonLink href="#">
+          <Box position="absolute" left={0}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              height={24}
+              width={24}
+            >
+              <circle cx="12" cy="12" r="10" fill="red" />
+            </svg>
+          </Box>
+          <Box position="absolute" right={0}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              height={24}
+              width={24}
+            >
+              <circle cx="12" cy="12" r="10" fill="red" />
+            </svg>
+          </Box>
+          Label
+        </ButtonLink>
       ),
     },
   ],

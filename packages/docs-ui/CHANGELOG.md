@@ -1,5 +1,13 @@
 # @braid-design-system/docs-ui
 
+## 3.0.1
+
+### Patch Changes
+
+- Apply import order rules internally ([#1689](https://github.com/seek-oss/braid-design-system/pull/1689))
+
+- Remove default React import internally ([#1690](https://github.com/seek-oss/braid-design-system/pull/1690))
+
 ## 3.0.0
 
 ### Major Changes

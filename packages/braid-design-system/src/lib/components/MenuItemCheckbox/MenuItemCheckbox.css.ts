@@ -1,6 +1,8 @@
 import { createVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+
 import { responsiveStyle } from '../../css/responsiveStyle';
+
 import { vars } from '../../themes/vars.css';
 
 const checkboxFieldSize = vars.inlineFieldSize.small;

@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   CheckboxStandalone,
   Badge,
@@ -12,7 +13,6 @@ import {
   Alert,
   Divider,
 } from '../';
-import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';
 
 const docs: ComponentDocs = {

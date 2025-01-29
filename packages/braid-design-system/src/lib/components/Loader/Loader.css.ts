@@ -1,5 +1,7 @@
 import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+
 import { responsiveStyle } from '../../css/responsiveStyle';
+
 import { vars } from '../../themes/vars.css';
 
 export const rootSize = styleVariants(vars.textSize, ({ mobile, tablet }) =>

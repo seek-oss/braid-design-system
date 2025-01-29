@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { GalleryComponent } from 'site/types';
+
 import {
   Box,
   MenuItem,
@@ -13,7 +14,6 @@ import {
   IconBookmark,
   IconClear,
 } from '..';
-import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
   examples: [

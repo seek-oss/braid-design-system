@@ -1,5 +1,5 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Box,
   Button,
@@ -11,10 +11,10 @@ import {
   IconArrow,
   IconWorkExperience,
 } from '../';
-
-import type { ButtonProps } from './Button';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
+
+import type { ButtonProps } from './Button';
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [768],
@@ -476,6 +476,75 @@ export const screenshots: ComponentScreenshot = {
             ))}
           </Inline>
         </Stack>
+      ),
+    },
+    {
+      label:
+        'Vertically centered labels in containers that stretch elements to fill',
+      Example: () => (
+        <Stack space="small">
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <Button>Non elit</Button>
+            <Button>Non elit do do incididunt nostrud</Button>
+          </Box>
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <Button icon={<IconWorkExperience />} iconPosition="leading">
+              Non elit
+            </Button>
+            <Button icon={<IconWorkExperience />} iconPosition="leading">
+              Non elit do do incididunt nostrud
+            </Button>
+          </Box>
+          <Box
+            display="flex"
+            gap="small"
+            style={{ alignItems: 'stretch', width: 300, maxWidth: '100%' }}
+          >
+            <Button icon={<IconWorkExperience />} iconPosition="trailing">
+              Non elit
+            </Button>
+            <Button icon={<IconWorkExperience />} iconPosition="trailing">
+              Non elit do do incididunt nostrud
+            </Button>
+          </Box>
+        </Stack>
+      ),
+    },
+    {
+      label:
+        'Ensure inner label element is full width (red dots should touch horizontal edges)',
+      Example: () => (
+        <Button>
+          <Box position="absolute" left={0}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              height={24}
+              width={24}
+            >
+              <circle cx="12" cy="12" r="10" fill="red" />
+            </svg>
+          </Box>
+          <Box position="absolute" right={0}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              height={24}
+              width={24}
+            >
+              <circle cx="12" cy="12" r="10" fill="red" />
+            </svg>
+          </Box>
+          Label
+        </Button>
       ),
     },
   ],

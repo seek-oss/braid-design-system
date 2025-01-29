@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
-import { Text, TextLink, Strong } from '../';
+import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
+
+import { Text, TextLink, Strong } from '../';
 
 const docs: ComponentDocs = {
   category: 'Logic',
@@ -61,7 +62,7 @@ const docs: ComponentDocs = {
         </Fragment>
       ),
       code: `
-        import React from 'react';
+
         import { Link as ReactRouterLink } from 'react-router-dom';
         import { BraidProvider, makeLinkComponent } from 'braid-design-system';
         import wireframe from 'braid-design-system/themes/wireframe';

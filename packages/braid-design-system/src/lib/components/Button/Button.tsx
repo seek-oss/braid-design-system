@@ -1,30 +1,34 @@
 import assert from 'assert';
-import React, {
+
+import {
   type ReactNode,
   type AllHTMLAttributes,
   type ReactElement,
   useContext,
   forwardRef,
 } from 'react';
-import { type BoxBackgroundVariant, type BoxProps, Box } from '../Box/Box';
-import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
-import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
+
+import type { BoxShadow } from '../../css/atoms/atomicProperties';
+import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
+import type { UseIconProps } from '../../hooks/useIcon';
+import ActionsContext from '../Actions/ActionsContext';
+import { Bleed } from '../Bleed/Bleed';
 import {
   type ColorContrastValue,
   useBackgroundLightness,
   useColorContrast,
 } from '../Box/BackgroundContext';
-import { type TextProps, Text } from '../Text/Text';
-import type { BoxShadow } from '../../css/atoms/atomicProperties';
-import ActionsContext from '../Actions/ActionsContext';
-import type { UseIconProps } from '../../hooks/useIcon';
-import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
-import { Bleed } from '../Bleed/Bleed';
+import { type BoxBackgroundVariant, type BoxProps, Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+import { type TextProps, Text } from '../Text/Text';
+import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
+import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
+
 import type { buttonTones } from './buttonTones';
+
 import * as styles from './Button.css';
 
 export const buttonVariants = [
@@ -361,6 +365,7 @@ export const ButtonText = ({
       position="relative"
       display="flex"
       justifyContent="center"
+      flexGrow={1}
       flexWrap="wrap"
       overflow="hidden"
       pointerEvents="none"
@@ -440,7 +445,9 @@ export const useButtonStyles = ({
     borderRadius: radius,
     width: 'full',
     position: 'relative',
-    display: 'block',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     transform: { active: 'touchable' },
     transition: 'touchable',
     outline: 'none',

@@ -1,8 +1,9 @@
-import prettier from 'prettier';
-import fs from 'fs-extra';
-import glob from 'fast-glob';
 import path from 'path';
+
 import { transformFileAsync } from '@babel/core';
+import glob from 'fast-glob';
+import fs from 'fs-extra';
+import prettier from 'prettier';
 
 import { debugLog, relativeTo } from './utils';
 

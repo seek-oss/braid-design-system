@@ -1,8 +1,8 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { GalleryComponent } from 'site/types';
+
 import { Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import source from '@braid-design-system/source.macro';
 
 export const galleryItems: GalleryComponent = {
   examples: [

@@ -1,7 +1,7 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
-import { Disclosure, Text, TextLink, Strong, Stack, Notice } from '..';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
+import { Disclosure, Text, TextLink, Strong, Stack, Notice } from '..';
 
 const docs: ComponentDocs = {
   category: 'Content',

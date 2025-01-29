@@ -1,21 +1,26 @@
 import assert from 'assert';
-import React, { Children, useMemo } from 'react';
+
+import { Children, useMemo } from 'react';
+
+import flattenChildren from '../../utils/flattenChildren';
+import { Divider } from '../Divider/Divider';
+import { Stack } from '../Stack/Stack';
+import type { TextProps } from '../Text/Text';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import {
-  type RequiredResponsiveValue,
-  normalizeResponsiveValue,
-} from '../../css/atoms/sprinkles.css';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { Stack } from '../Stack/Stack';
-import { Divider } from '../Divider/Divider';
+
 import {
   type AccordionContextValue,
   AccordionContext,
   validTones,
 } from './AccordionContext';
-import flattenChildren from '../../utils/flattenChildren';
+
+import {
+  type RequiredResponsiveValue,
+  normalizeResponsiveValue,
+} from '../../css/atoms/sprinkles.css';
 
 export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
@@ -29,24 +34,29 @@ export interface AccordionProps {
   data?: DataAttributeMap;
 }
 
+export const defaultSize = 'large';
+
 const defaultSpaceForSize = {
   divided: {
     xsmall: 'medium',
     small: 'medium',
     standard: 'medium',
-    large: 'large',
+    large: 'medium',
   },
   undivided: {
-    xsmall: 'large',
-    small: 'large',
+    xsmall: 'medium',
+    small: 'medium',
     standard: 'large',
     large: 'large',
   },
-} as const;
+} satisfies Record<
+  'divided' | 'undivided',
+  Record<NonNullable<TextProps['size']>, (typeof validSpaceValues)[number]>
+>;
 
 export const Accordion = ({
   children,
-  size = 'large',
+  size = defaultSize,
   tone,
   weight,
   space: spaceProp,

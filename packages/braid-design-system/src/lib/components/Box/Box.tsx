@@ -1,20 +1,23 @@
 import clsx, { type ClassValue } from 'clsx';
-import React, {
+import dedent from 'dedent';
+import {
   type AllHTMLAttributes,
   type ElementType,
   createElement,
   forwardRef,
   useEffect,
 } from 'react';
-import dedent from 'dedent';
-import { base as baseReset } from '../../css/reset/reset.css';
-import { type Atoms, atoms } from '../../css/atoms/atoms';
-import { type ColorModeValue, sprinkles } from '../../css/atoms/sprinkles.css';
-import { ColoredBox } from './ColoredBox';
+
 import type { Background, BoxShadow } from '../../css/atoms/atomicProperties';
+import { type Atoms, atoms } from '../../css/atoms/atoms';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
+import { ColoredBox } from './ColoredBox';
+
+import { type ColorModeValue, sprinkles } from '../../css/atoms/sprinkles.css';
+import { base as baseReset } from '../../css/reset/reset.css';
 
 export type BoxBackgroundVariant = Background | 'customDark' | 'customLight';
 

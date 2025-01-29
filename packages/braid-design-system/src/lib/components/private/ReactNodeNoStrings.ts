@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-interface ReactNodeArray extends Array<ReactNodeNoStrings> {}
+type ReactNodeArray = ReactNodeNoStrings[];
 export type ReactNodeNoStrings =
   | ReactElement
   | ReactNodeArray

@@ -19,7 +19,7 @@
     "fs-extra": "^10.1.0",
     "lodash.isequal": "^4.5.0",
     "lodash.sortby": "^4.7.0",
-    "tsx": "^4.7.0",
+    "tsx": "^4.19.2",
     "typescript": "~5.5.4"
   },
   "devDependencies": {

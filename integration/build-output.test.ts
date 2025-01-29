@@ -1,12 +1,13 @@
 /** @jest-environment node */
+import { exec as _exec } from 'child_process';
 import path from 'path';
+import { promisify } from 'util';
+
+import { cssFileFilter as isVanillaFile } from '@vanilla-extract/integration';
+import { rgPath } from '@vscode/ripgrep';
+import braidPkg from 'braid-design-system/package.json';
 import glob from 'fast-glob';
 import webpack from 'webpack';
-import braidPkg from 'braid-design-system/package.json'; // eslint-disable-line no-restricted-imports
-import { exec as _exec } from 'child_process';
-import { promisify } from 'util';
-import { rgPath } from '@vscode/ripgrep';
-import { cssFileFilter as isVanillaFile } from '@vanilla-extract/integration';
 
 const { SideEffectsFlagPlugin } = webpack.optimize;
 const exec = promisify(_exec);

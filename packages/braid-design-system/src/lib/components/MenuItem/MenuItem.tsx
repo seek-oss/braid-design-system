@@ -1,5 +1,7 @@
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
+
 import { Box } from '../Box/Box';
+
 import {
   type MenuItemChildrenProps,
   type UseMenuItemProps,
@@ -10,7 +12,7 @@ export interface MenuItemProps
   extends Pick<UseMenuItemProps, 'tone' | 'onClick' | 'data' | 'id'> {
   children: ReactNode;
   badge?: MenuItemChildrenProps['badge'];
-  icon?: MenuItemChildrenProps['icon'];
+  icon?: MenuItemChildrenProps['leftSlot'];
 }
 export const MenuItem = ({
   children,
@@ -30,7 +32,7 @@ export const MenuItem = ({
 
   return (
     <Box {...menuItemProps} component="button" type="button">
-      <MenuItemChildren tone={tone} icon={icon} badge={badge}>
+      <MenuItemChildren tone={tone} leftSlot={icon} badge={badge}>
         {children}
       </MenuItemChildren>
     </Box>

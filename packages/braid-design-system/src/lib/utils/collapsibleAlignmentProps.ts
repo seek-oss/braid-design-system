@@ -1,18 +1,19 @@
 import {
-  type OptionalResponsiveValue,
-  normalizeResponsiveValue,
-} from '../css/atoms/sprinkles.css';
-import {
-  type ResponsiveRangeProps,
-  resolveResponsiveRangeProps,
-} from './resolveResponsiveRangeProps';
-import { optimizeResponsiveArray } from './optimizeResponsiveArray';
-import {
   type Align,
   type AlignY,
   alignToFlexAlign,
   alignYToFlexAlign,
 } from './align';
+import { optimizeResponsiveArray } from './optimizeResponsiveArray';
+import {
+  type ResponsiveRangeProps,
+  resolveResponsiveRangeProps,
+} from './resolveResponsiveRangeProps';
+
+import {
+  type OptionalResponsiveValue,
+  normalizeResponsiveValue,
+} from '../css/atoms/sprinkles.css';
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {

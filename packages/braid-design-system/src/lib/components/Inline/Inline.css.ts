@@ -1,4 +1,5 @@
 import { globalStyle, style } from '@vanilla-extract/css';
+
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 export const fitContentMobile = style({});

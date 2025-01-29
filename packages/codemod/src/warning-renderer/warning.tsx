@@ -1,9 +1,10 @@
 import type { types as t } from '@babel/core';
-import React, { Fragment } from 'react';
 import { Box, Text } from 'ink';
+import React, { Fragment } from 'react';
+
+import { renderToString } from '../ink/ink-to-string';
 
 import { CodeFrame } from './codeFrame';
-import { renderToString } from '../ink/ink-to-string';
 
 interface UntraceableImportWarningProps {
   code: string;

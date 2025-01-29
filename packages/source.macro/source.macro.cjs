@@ -1,5 +1,5 @@
-const { createMacro } = require('babel-plugin-macros');
 const { default: generate } = require('@babel/generator');
+const { createMacro } = require('babel-plugin-macros');
 
 module.exports = createMacro(
   ({ babel: { types: t }, references, config: { codeOnly = false } }) => {

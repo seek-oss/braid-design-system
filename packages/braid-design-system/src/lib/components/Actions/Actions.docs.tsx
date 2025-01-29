@@ -1,6 +1,6 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
 import {
   Actions,
   Button,
@@ -12,6 +12,7 @@ import {
   Tiles,
   Inline,
 } from '../';
+
 import { actionsSpace } from './Actions';
 
 const docs: ComponentDocs = {

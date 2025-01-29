@@ -1,7 +1,7 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
-import { Divider, Stack, Text } from '../';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
+import { Divider, Stack, Text } from '../';
 
 const docs: ComponentDocs = {
   category: 'Layout',

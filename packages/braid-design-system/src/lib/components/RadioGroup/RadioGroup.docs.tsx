@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Badge,
   Text,
@@ -10,9 +11,8 @@ import {
   Tiles,
 } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
-import { Stack } from '../Stack/Stack';
 import { Heading } from '../Heading/Heading';
+import { Stack } from '../Stack/Stack';
 
 const docs: ComponentDocs = {
   category: 'Content',

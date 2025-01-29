@@ -1,6 +1,6 @@
+import { isLight } from '../utils';
 import { mapValues } from '../utils/mapValues';
 
-import { isLight } from '../utils';
 import type { BraidTokens } from './tokenType';
 
 const makeWebFonts = (webFont: BraidTokens['typography']['webFont']) => {
@@ -8,7 +8,9 @@ const makeWebFonts = (webFont: BraidTokens['typography']['webFont']) => {
     return [];
   }
 
-  return [{ linkTag: `<link href="${webFont}" rel="stylesheet" />` }];
+  return [
+    { linkTag: `<link href="${webFont}" rel="stylesheet" />`, href: webFont },
+  ];
 };
 
 export const makeRuntimeTokens = (tokens: BraidTokens) => ({

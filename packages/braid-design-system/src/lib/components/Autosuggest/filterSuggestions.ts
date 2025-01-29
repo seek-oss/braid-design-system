@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import {
   type AutosuggestValue,
   type Suggestion,

@@ -1,12 +1,13 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Hidden } from './Hidden';
-import { Text } from '../Text/Text';
+
+import { Placeholder } from '../../playroom/components';
 import { Stack } from '../Stack/Stack';
 import { Strong } from '../Strong/Strong';
-import { Placeholder } from '../../playroom/components';
+import { Text } from '../Text/Text';
 import { Tiles } from '../Tiles/Tiles';
+
+import { Hidden } from './Hidden';
 
 const docs: ComponentDocs = {
   category: 'Layout',

@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { virtualTouchable } from '../../private/virtualTouchable.css';
 
 export const isOpen = style({});

@@ -1,6 +1,6 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import { Rating, Stack, Inline, Text, Strong, TextLink, Notice } from '../';
 import { IconLanguage } from '../icons';
 
@@ -11,7 +11,7 @@ const docs: ComponentDocs = {
     <>
       <Text>
         To support users with screen readers, an <Strong>aria-label</Strong> is
-        used to provider a description of the rating.
+        used to provide a description of the rating.
       </Text>
 
       <Text tone="promote" id="translations">
@@ -133,6 +133,22 @@ const docs: ComponentDocs = {
             </Inline>
           </Stack>,
         ),
+    },
+    {
+      label: 'De-emphasizing the tone',
+      description: (
+        <>
+          <Text>
+            The Rating can be de-emphasized by setting the <Strong>tone</Strong>{' '}
+            to <Strong>neutral</Strong>.
+          </Text>
+          <Text>
+            This makes the icon(s) follow the default text colour, including
+            inverting on dark surfaces to improve contrast.
+          </Text>
+        </>
+      ),
+      Example: () => source(<Rating rating={3.2} tone="neutral" />),
     },
   ],
 };

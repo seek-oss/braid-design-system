@@ -1,7 +1,7 @@
-import React from 'react';
-import apac from '../../themes/apac';
 import type { ComponentDocs } from 'site/types';
+
 import { Stack, Text, Strong, TextLink, Alert } from '..';
+import apac from '../../themes/apac';
 
 const docs: ComponentDocs = {
   category: 'Logic',

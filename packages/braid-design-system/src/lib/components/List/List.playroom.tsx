@@ -1,7 +1,6 @@
-import React from 'react';
 import { cleanSpaceValue } from '../../playroom/cleanSpaceValue';
-
 import { IconClear } from '../icons';
+
 import { type ListProps, List as BraidList } from './List';
 
 export const List = ({ space, ...props }: ListProps) => {

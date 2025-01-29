@@ -1,5 +1,5 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Loader } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 

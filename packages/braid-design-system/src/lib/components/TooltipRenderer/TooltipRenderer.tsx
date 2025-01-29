@@ -1,4 +1,7 @@
-import React, {
+import assert from 'assert';
+
+import isMobile from 'is-mobile';
+import {
   type ReactNode,
   createContext,
   useState,
@@ -7,17 +10,17 @@ import React, {
   useRef,
 } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
-import isMobile from 'is-mobile';
-import assert from 'assert';
+
+import { atoms } from '../../css/atoms/atoms';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+import { Box } from '../Box/Box';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { atoms } from '../../css/atoms/atoms';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
-import { Box } from '../Box/Box';
+
 import * as styles from './TooltipRenderer.css';
-import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({

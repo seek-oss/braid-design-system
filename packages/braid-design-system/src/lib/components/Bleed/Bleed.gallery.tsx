@@ -1,7 +1,7 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
-import { Bleed } from '../';
 import source from '@braid-design-system/source.macro';
+import type { GalleryComponent } from 'site/types';
+
+import { Bleed } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const galleryItems: GalleryComponent = {

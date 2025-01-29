@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react';
-import type { ComponentDocs } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Box, ContentBlock, PageBlock, Stack, TextLink } from '../';
 import source from '@braid-design-system/source.macro';
+import { Fragment } from 'react';
+import type { ComponentDocs } from 'site/types';
+
+import { Box, ContentBlock, PageBlock, Stack, TextLink } from '../';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
+import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import { gutters, validPageBlockComponents } from './PageBlock';
 
 const docs: ComponentDocs = {

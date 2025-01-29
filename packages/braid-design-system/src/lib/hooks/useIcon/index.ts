@@ -1,19 +1,21 @@
-import { useContext } from 'react';
 import assert from 'assert';
-import clsx from 'clsx';
 
-import type { OptionalTitle } from '../../components/icons/SVGTypes';
+import clsx from 'clsx';
+import { useContext } from 'react';
+
 import type { PublicBoxProps } from '../../components/Box/Box';
-import { TextContext } from '../../components/Text/TextContext';
 import HeadingContext from '../../components/Heading/HeadingContext';
-import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import { TextContext } from '../../components/Text/TextContext';
+import { iconInlineSize } from '../../components/icons/IconRenderer';
+import type { OptionalTitle } from '../../components/icons/SVGTypes';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../../components/private/buildDataAttributes';
-import { iconInlineSize } from '../../components/icons/IconRenderer';
 import { atoms } from '../../css/atoms/atoms';
-import * as typographyStyles from '../../css/typography.css';
+
 import * as styles from './icon.css';
+import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import * as typographyStyles from '../../css/typography.css';
 
 type IconSize = keyof typeof typographyStyles.textSizeUntrimmed | 'fill';
 

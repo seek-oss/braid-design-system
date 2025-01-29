@@ -1,6 +1,6 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   OverflowMenu,
   MenuItem,
@@ -188,6 +188,49 @@ const docs: ComponentDocs = {
               </Inline>
             </Spread>
           </>,
+        ),
+    },
+    {
+      label: 'Sizes',
+      description: (
+        <Text>
+          You can customise the size of the menu via the <Strong>size</Strong>{' '}
+          prop, which accepts either <Strong>standard</Strong> or{' '}
+          <Strong>small</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Stack space="medium">
+            <Inline alignY="center" space="medium">
+              <Text>Standard</Text>
+              <OverflowMenu size="standard" label="Options" id="size-standard">
+                <MenuItem id="menuItem1" onClick={() => {}}>
+                  Item 1
+                </MenuItem>
+                <MenuItem id="menuItem2" onClick={() => {}}>
+                  Item 2
+                </MenuItem>
+                <MenuItem id="menuItem3" onClick={() => {}}>
+                  Item 3
+                </MenuItem>
+              </OverflowMenu>
+            </Inline>
+            <Inline alignY="center" space="medium">
+              <Text size="small">Small</Text>
+              <OverflowMenu size="small" label="Options" id="size-small">
+                <MenuItem id="menuItem1" onClick={() => {}}>
+                  Item 1
+                </MenuItem>
+                <MenuItem id="menuItem2" onClick={() => {}}>
+                  Item 2
+                </MenuItem>
+                <MenuItem id="menuItem3" onClick={() => {}}>
+                  Item 3
+                </MenuItem>
+              </OverflowMenu>
+            </Inline>
+          </Stack>,
         ),
     },
     {

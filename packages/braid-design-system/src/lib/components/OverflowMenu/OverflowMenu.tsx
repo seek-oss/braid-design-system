@@ -1,11 +1,11 @@
-import React from 'react';
+import { Box } from '../Box/Box';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import {
   type MenuRendererProps,
   MenuRenderer,
 } from '../MenuRenderer/MenuRenderer';
-import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { IconOverflow } from '../icons';
-import { Box } from '../Box/Box';
+
 import * as styles from './OverflowMenu.css';
 
 export interface OverflowMenuProps
@@ -15,33 +15,36 @@ export interface OverflowMenuProps
 }
 
 export const OverflowMenu = ({
+  size,
   label,
   children,
   id,
   ...menuProps
 }: OverflowMenuProps) => (
-  <MenuRenderer
-    trigger={(triggerProps) => (
-      <Box
-        display="flex"
-        justifyContent="flexEnd"
-        className={styles.triggerOffset}
-      >
+  <Box
+    className={styles.wrapperPositioning}
+    display="flex"
+    justifyContent="flexEnd"
+  >
+    <MenuRenderer
+      trigger={(triggerProps) => (
         <ButtonIcon
           // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
           // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
           id={id}
+          size={size}
           icon={<IconOverflow />}
           variant="transparent"
           label={label}
           {...triggerProps}
         />
-      </Box>
-    )}
-    align="right"
-    offsetSpace="small"
-    {...menuProps}
-  >
-    {children}
-  </MenuRenderer>
+      )}
+      align="right"
+      size={size}
+      offsetSpace={size === 'standard' ? 'small' : 'xsmall'}
+      {...menuProps}
+    >
+      {children}
+    </MenuRenderer>
+  </Box>
 );

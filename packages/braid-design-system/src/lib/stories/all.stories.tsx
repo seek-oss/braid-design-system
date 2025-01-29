@@ -1,15 +1,17 @@
 import '../../entries/reset';
 
-import React, { type ReactNode, Fragment, useId } from 'react';
 import { storiesOf } from '@storybook/react';
+import { type ReactNode, Fragment, useId } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import * as themes from '../themes';
 import type { ComponentScreenshot } from 'site/types';
-import { PlayroomStateProvider } from '../playroom/playroomState';
+
 import { BraidProvider, ToastProvider } from '../components';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../components/Box/Box';
+import { PlayroomStateProvider } from '../playroom/playroomState';
+import * as themes from '../themes';
+
 import { darkMode } from '../css/atoms/sprinkles.css';
 
 const webFontLinkTags = Array.from(
@@ -151,8 +153,9 @@ Object.keys(allStories)
                 <style type="text/css">{`
                   .noAnimation * {
                     animation-delay: -0.0001s !important;
-                    animation-duration: 0s !important;
                     animation-play-state: paused !important;
+                    animation-duration: 0s !important;
+                    animation-fill-mode: none !important;
                     transition-delay: 0s !important;
                     transition-duration: 0s !important;
                   }

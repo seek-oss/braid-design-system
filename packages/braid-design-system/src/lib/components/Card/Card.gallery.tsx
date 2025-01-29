@@ -1,7 +1,7 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
-import { Card, Text, Stack, Tiles } from '../';
 import source from '@braid-design-system/source.macro';
+import type { GalleryComponent } from 'site/types';
+
+import { Card, Text, Stack, Tiles } from '../';
 import { Placeholder } from '../../playroom/components';
 
 export const galleryItems: GalleryComponent = {

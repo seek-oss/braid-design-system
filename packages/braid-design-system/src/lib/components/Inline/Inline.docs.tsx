@@ -1,6 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import {
   Divider,
   Inline,
@@ -11,7 +11,7 @@ import {
   TextLink,
   Tiles,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const docs: ComponentDocs = {
   category: 'Layout',

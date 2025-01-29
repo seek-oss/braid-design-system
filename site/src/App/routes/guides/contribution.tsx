@@ -1,4 +1,4 @@
-import React from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
 import {
   Heading,
   Text,
@@ -6,10 +6,10 @@ import {
   Strong,
   Divider,
 } from 'braid-src/lib/components';
-import { TextStack } from '../../TextStack/TextStack';
+
 import type { Page } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TextStack } from '../../TextStack/TextStack';
 
 const Contribution = () => (
   <TextStack>

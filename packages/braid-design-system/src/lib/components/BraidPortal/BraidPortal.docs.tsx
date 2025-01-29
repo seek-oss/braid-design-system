@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text, Strong, Alert } from '..';
 import type { ComponentDocs } from 'site/types';
+
+import { Text, Strong, Alert } from '..';
 
 const docs: ComponentDocs = {
   category: 'Logic',

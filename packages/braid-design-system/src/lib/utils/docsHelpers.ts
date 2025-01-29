@@ -1,4 +1,5 @@
 import { responsiveProperties } from '../css/atoms/atomicProperties';
+
 import { vars } from '../themes/vars.css';
 
 export const backgrounds = Object.keys(vars.backgroundColor).sort() as Array<

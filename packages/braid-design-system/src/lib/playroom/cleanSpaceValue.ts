@@ -1,6 +1,7 @@
-import { breakpointNames } from './../css/breakpoints';
-import type { ResponsiveSpace } from '../css/atoms/atoms';
 import { space as spaceValues } from '../css/atoms/atomicProperties';
+import type { ResponsiveSpace } from '../css/atoms/atoms';
+
+import { breakpointNames } from './../css/breakpoints';
 
 const validSpaceValues = Object.keys(spaceValues);
 

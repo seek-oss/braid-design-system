@@ -1,8 +1,8 @@
-import React from 'react';
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
-import { IconBookmarkSvg } from './IconBookmarkSvg';
+
 import { IconBookmarkActiveSvg } from './IconBookmarkActiveSvg';
+import { IconBookmarkSvg } from './IconBookmarkSvg';
 
 export type IconBookmarkProps = IconContainerProps & {
   active?: boolean;

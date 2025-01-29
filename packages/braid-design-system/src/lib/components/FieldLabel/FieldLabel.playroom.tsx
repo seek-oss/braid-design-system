@@ -1,6 +1,7 @@
-import React from 'react';
 import type { Optional } from 'utility-types';
+
 import { useFallbackId } from '../../playroom/utils';
+
 import {
   type FieldLabelProps,
   FieldLabel as BraidFieldLabel,

@@ -1,4 +1,5 @@
-import React from 'react';
+import { LinkableHeading } from '@braid-design-system/docs-ui';
+import source from '@braid-design-system/source.macro';
 import {
   Inline,
   Box,
@@ -22,11 +23,10 @@ import {
   List,
   IconRenderer,
 } from 'braid-src/lib/components';
-import { LinkableHeading } from '@braid-design-system/docs-ui';
-import { DocExample } from '../../../DocNavigation/DocExample';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';
-import source from '@braid-design-system/source.macro';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+
+import { DocExample } from '../../../DocNavigation/DocExample';
 
 export const IconsDetails = () => (
   <Stack space="xxlarge">
@@ -370,7 +370,7 @@ export const IconsDetails = () => (
         </LinkableHeading>
         <Stack space="large">
           <Text>
-            To make the alignment of icons and typography as seemless as
+            To make the alignment of icons and typography as seamless as
             possible, IconRenderer supports{' '}
             <TextLink href="#size-inline">inline sizing</TextLink>. As a result,
             it must be used inside either a{' '}

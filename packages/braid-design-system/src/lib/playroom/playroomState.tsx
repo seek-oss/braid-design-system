@@ -1,11 +1,11 @@
-import React, {
+import curry from 'lodash.curry';
+import {
   type ReactNode,
   createContext,
   useContext,
   useState,
   useMemo,
 } from 'react';
-import curry from 'lodash.curry';
 
 export interface StateProp {
   stateName?: string;

@@ -1,8 +1,8 @@
-import React from 'react';
-import { type LinkProps, Link } from '../Link/Link';
-import { useMenuItem } from './useMenuItem';
-import type { MenuItemProps } from './MenuItem';
 import { Box } from '../Box/Box';
+import { type LinkProps, Link } from '../Link/Link';
+
+import type { MenuItemProps } from './MenuItem';
+import { useMenuItem } from './useMenuItem';
 
 export interface MenuItemLinkProps
   extends MenuItemProps,
@@ -36,7 +36,7 @@ export const MenuItemLink = ({
       target={target}
       rel={rel}
     >
-      <MenuItemChildren tone={tone} icon={icon} badge={badge}>
+      <MenuItemChildren tone={tone} leftSlot={icon} badge={badge}>
         {children}
       </MenuItemChildren>
     </Box>

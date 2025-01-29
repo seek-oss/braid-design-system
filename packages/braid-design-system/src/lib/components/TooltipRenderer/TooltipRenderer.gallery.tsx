@@ -1,11 +1,13 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
 import source from '@braid-design-system/source.macro';
-import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
-import { type TooltipRendererProps, TooltipContent } from './TooltipRenderer';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { constants } from './TooltipRenderer.css';
 import { calc } from '@vanilla-extract/css-utils';
+import type { GalleryComponent } from 'site/types';
+
+import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+
+import { type TooltipRendererProps, TooltipContent } from './TooltipRenderer';
+
+import { constants } from './TooltipRenderer.css';
 
 const MockTooltipContent = ({
   placement,

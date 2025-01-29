@@ -1,23 +1,24 @@
 import fs from 'fs';
-import { parse, print } from 'recast';
+
 import {
   type TransformOptions,
   transformFromAstSync,
   parseSync,
 } from '@babel/core';
-import prettier from 'prettier';
 // @ts-expect-error
 import jsxSyntax from '@babel/plugin-syntax-jsx';
 // @ts-expect-error
 import typescriptSyntax from '@babel/plugin-syntax-typescript';
+import prettier from 'prettier';
+import { parse, print } from 'recast';
 
+import { v31 } from './plugin-deprecate/deprecationMaps/v31';
+import { v31_11 } from './plugin-deprecate/deprecationMaps/v31-11';
 import atomsPlugin from './plugin-deprecate/plugin-deprecate-atoms';
 import propsPlugin from './plugin-deprecate/plugin-deprecate-props';
 import varsPlugin from './plugin-deprecate/plugin-deprecate-vars';
 import importUpdatePlugin from './plugin-deprecate/plugin-import-update';
 import propRenamePlugin from './plugin-deprecate/plugin-prop-rename';
-import { v31 } from './plugin-deprecate/deprecationMaps/v31';
-import { v31_11 } from './plugin-deprecate/deprecationMaps/v31-11';
 
 const pluginsForVersion = {
   v31: [

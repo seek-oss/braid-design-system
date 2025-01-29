@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import fs from 'fs';
 import path from 'path';
-import ts, { type CompilerOptions } from 'typescript';
+
 import isEqual from 'lodash.isequal';
+import ts, { type CompilerOptions } from 'typescript';
 
 const MAX_DEPTH = 10;
 const aliasWhitelist = ['ClassValue'];

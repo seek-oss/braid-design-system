@@ -1,5 +1,6 @@
-import React from 'react';
+import { calc } from '@vanilla-extract/css-utils';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Box,
   MenuRenderer,
@@ -9,15 +10,18 @@ import {
   MenuItemCheckbox,
   IconBookmark,
   IconProfile,
+  Inline,
 } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Menu } from './MenuRenderer';
 import { vars } from '../../../entries/css';
-import { calc } from '@vanilla-extract/css-utils';
+import { Placeholder } from '../private/Placeholder/Placeholder';
+import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
+
+import { Menu } from './MenuRenderer';
 
 const defaultProps = {
   offsetSpace: 'none',
   align: 'left',
+  size: 'standard',
   width: 'content',
   highlightIndex: -1,
   open: true,
@@ -27,6 +31,15 @@ const defaultProps = {
   reserveIconSpace: false,
   placement: 'bottom',
 } as const;
+
+const triggerHeight = 44;
+
+const triggerPosition = {
+  top: triggerHeight,
+  left: 0,
+  bottom: 0, // this value is ignored when placement is top
+  right: 0, // this value is ignored when align is left
+};
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -39,7 +52,7 @@ export const screenshots: ComponentScreenshot = {
             offsetSpace="small"
             trigger={(triggerProps) => (
               <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Placeholder height={44} label="Menu trigger" />
+                <Placeholder height={triggerHeight} label="Menu trigger" />
               </Box>
             )}
           >
@@ -58,7 +71,7 @@ export const screenshots: ComponentScreenshot = {
             offsetSpace="small"
             trigger={(triggerProps) => (
               <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Placeholder height={44} label="Menu trigger" />
+                <Placeholder height={triggerHeight} label="Menu trigger" />
               </Box>
             )}
           >
@@ -76,7 +89,7 @@ export const screenshots: ComponentScreenshot = {
           offsetSpace="small"
           trigger={(triggerProps) => (
             <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Placeholder height={44} label="Menu trigger" />
+              <Placeholder height={triggerHeight} label="Menu trigger" />
             </Box>
           )}
         >
@@ -90,7 +103,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Box display="flex">
           <Box position="relative">
-            <Placeholder height={44} label="Menu trigger" />
+            <Placeholder height={triggerHeight} label="Menu trigger" />
             <Menu {...defaultProps} placement="bottom">
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -104,7 +117,7 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Box display="flex">
           <Box position="relative">
-            <Placeholder height={44} label="Menu trigger" />
+            <Placeholder height={triggerHeight} label="Menu trigger" />
             <Menu {...defaultProps} placement="bottom" offsetSpace="small">
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -120,15 +133,16 @@ export const screenshots: ComponentScreenshot = {
           display="flex"
           style={{
             paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-            marginBottom: calc(vars.touchableSize)
-              .multiply(1.5)
-              .negate()
-              .toString(),
           }}
         >
           <Box position="relative">
-            <Placeholder height={44} label="Menu trigger" />
-            <Menu {...defaultProps} placement="top">
+            <Placeholder height={triggerHeight} label="Menu trigger" />
+            <Menu
+              {...defaultProps}
+              placement="top"
+              triggerPosition={triggerPosition}
+              position="absolute"
+            >
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
             </Menu>
@@ -143,15 +157,17 @@ export const screenshots: ComponentScreenshot = {
           display="flex"
           style={{
             paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-            marginBottom: calc(vars.touchableSize)
-              .multiply(1.5)
-              .negate()
-              .toString(),
           }}
         >
           <Box position="relative">
             <Placeholder height={44} label="Menu trigger" />
-            <Menu {...defaultProps} placement="top" offsetSpace="small">
+            <Menu
+              {...defaultProps}
+              placement="top"
+              offsetSpace="small"
+              triggerPosition={triggerPosition}
+              position="absolute"
+            >
               <MenuItem onClick={() => {}}>Item</MenuItem>
               <MenuItem onClick={() => {}}>Item</MenuItem>
             </Menu>
@@ -160,10 +176,10 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
-      label: 'Width content',
+      label: 'Small size (virtual touch target)',
       Example: () => (
-        <Box display="flex">
-          <Menu {...defaultProps} width="content">
+        <Box display="flex" data={{ [debugTouchableAttrForDataProp]: '' }}>
+          <Menu {...defaultProps} width="content" size="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -178,9 +194,38 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Width content',
+      Example: () => (
+        <Inline space="medium">
+          <Menu {...defaultProps} width="content">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+          <Menu {...defaultProps} width="content" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+        </Inline>
+      ),
+    },
+    {
       label: 'Width small',
       Example: () => (
-        <Box display="flex">
+        <Inline space="medium">
           <Menu {...defaultProps} width="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -195,13 +240,27 @@ export const screenshots: ComponentScreenshot = {
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
           </Menu>
-        </Box>
+          <Menu {...defaultProps} width="small" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemDivider />
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+        </Inline>
       ),
     },
     {
       label: 'Width medium',
       Example: () => (
-        <Box display="flex">
+        <Inline space="medium">
           <Menu {...defaultProps} width="medium">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -213,13 +272,24 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-        </Box>
+          <Menu {...defaultProps} width="medium" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+        </Inline>
       ),
     },
     {
       label: 'Width large',
       Example: () => (
-        <Box display="flex">
+        <Inline space="medium">
           <Menu {...defaultProps} width="large">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
@@ -231,13 +301,24 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-        </Box>
+          <Menu {...defaultProps} width="large" size="small">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+          </Menu>
+        </Inline>
       ),
     },
     {
       label: 'Reserve icon space',
       Example: () => (
-        <Box display="flex">
+        <Inline space="medium">
           <Menu {...defaultProps} reserveIconSpace>
             <MenuItem onClick={() => {}} icon={<IconProfile />}>
               Item
@@ -256,7 +337,74 @@ export const screenshots: ComponentScreenshot = {
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
           </Menu>
-        </Box>
+          <Menu {...defaultProps} reserveIconSpace size="small">
+            <MenuItem onClick={() => {}} icon={<IconProfile />}>
+              Item
+            </MenuItem>
+            <MenuItem onClick={() => {}} icon={<IconBookmark />}>
+              Item
+            </MenuItem>
+            <MenuItemDivider />
+            <MenuItemCheckbox checked={true} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemCheckbox checked={false} onChange={() => {}}>
+              Item
+            </MenuItemCheckbox>
+            <MenuItemDivider />
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+        </Inline>
+      ),
+    },
+    {
+      label: 'Height limit',
+      Example: () => (
+        <Inline space="medium">
+          <Menu {...defaultProps}>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+          </Menu>
+          <Menu {...defaultProps} size="small">
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+          </Menu>
+        </Inline>
       ),
     },
   ],

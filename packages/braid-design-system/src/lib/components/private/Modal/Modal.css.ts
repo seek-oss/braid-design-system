@@ -1,10 +1,13 @@
 import { createVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { externalGutter } from './ModalExternalGutter';
-import { responsiveStyle } from '../../../css/responsiveStyle';
-import { vars } from '../../../themes/vars.css';
+
 import { atoms } from '../../../css/atoms/atoms';
 import { colorModeStyle } from '../../../css/colorModeStyle';
+import { responsiveStyle } from '../../../css/responsiveStyle';
+
+import { externalGutter } from './ModalExternalGutter';
+
+import { vars } from '../../../themes/vars.css';
 
 export const fixedStackingContext = atoms({
   position: 'fixed',

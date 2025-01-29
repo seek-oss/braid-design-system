@@ -1,5 +1,11 @@
 # @braid-design-system/source.macro
 
+## 0.1.3
+
+### Patch Changes
+
+- Apply import order rules internally ([#1689](https://github.com/seek-oss/braid-design-system/pull/1689))
+
 ## 0.1.2
 
 ### Patch Changes

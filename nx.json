@@ -12,23 +12,12 @@
           "build:site",
           "generate:component-docs",
           "generate:icons",
-          "generate:snippets",
-          "lint:eslint",
-          "lint:prettier",
-          "lint:tsc"
+          "generate:snippets"
         ]
       }
     }
   },
   "targetDefaults": {
-    "lint": {
-      "dependsOn": ["lint:eslint", "lint:prettier", "lint:tsc"],
-      "executor": "nx:noop"
-    },
-    "format": {
-      "dependsOn": ["format:eslint", "format:prettier"],
-      "executor": "nx:noop"
-    },
     "validate": {
       "dependsOn": ["validate:src", "validate:dist"],
       "executor": "nx:noop"

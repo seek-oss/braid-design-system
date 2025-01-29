@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console,no-sync */
 const fs = require('fs');
+
 const { prompt } = require('enquirer');
 
 /*

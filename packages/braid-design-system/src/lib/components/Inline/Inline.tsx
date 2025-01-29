@@ -1,16 +1,16 @@
-import React from 'react';
 import assert from 'assert';
 
-import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import {
   type CollapsibleAlignmentProps,
   resolveCollapsibleAlignmentProps,
 } from '../../utils/collapsibleAlignmentProps';
+import { Box } from '../Box/Box';
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
 import * as styles from './Inline.css';
 
 export const validInlineComponents = [

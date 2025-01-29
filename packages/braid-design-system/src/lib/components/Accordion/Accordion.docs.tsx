@@ -1,6 +1,7 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
+import { Fragment } from 'react';
+import type { ComponentDocs } from 'site/types';
+
 import {
   Accordion,
   AccordionItem,
@@ -11,6 +12,7 @@ import {
   IconImage,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+
 import { validSpaceValues } from './Accordion';
 
 const docs: ComponentDocs = {
@@ -72,11 +74,11 @@ const docs: ComponentDocs = {
             items. Note that, to ensure adequate space for touch targets, the{' '}
             <Strong>space</Strong> prop only accepts values of{' '}
             {validSpaceValues.map((value, i) => (
-              <React.Fragment key={value}>
+              <Fragment key={value}>
                 {i === validSpaceValues.length - 1 ? ' and ' : ''}
                 {i !== validSpaceValues.length - 1 && i !== 0 ? ', ' : ''}
                 <Strong>“{value}”</Strong>
-              </React.Fragment>
+              </Fragment>
             ))}
             .
           </Text>

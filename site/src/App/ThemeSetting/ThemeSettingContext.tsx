@@ -1,4 +1,6 @@
-import React, {
+import * as themes from 'braid-src/lib/themes';
+import type { BraidTheme } from 'braid-src/lib/themes/makeBraidTheme';
+import {
   type ReactNode,
   createContext,
   useContext,
@@ -7,8 +9,6 @@ import React, {
 } from 'react';
 import { useLocalStorage } from 'react-use';
 
-import * as themes from 'braid-src/lib/themes';
-import type { BraidTheme } from 'braid-src/lib/themes/makeBraidTheme';
 type ThemeKey = keyof typeof themes;
 
 const defaultTheme = 'gradConnection' as const;

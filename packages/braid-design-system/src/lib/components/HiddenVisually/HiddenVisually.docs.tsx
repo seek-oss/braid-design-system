@@ -1,8 +1,9 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { HiddenVisually } from './HiddenVisually';
+
 import { Text } from '../Text/Text';
+
+import { HiddenVisually } from './HiddenVisually';
 
 const docs: ComponentDocs = {
   category: 'Layout',
