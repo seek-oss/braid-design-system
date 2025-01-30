@@ -16,11 +16,17 @@ function renderAutosuggest<Value>({
   value: initialValue,
   suggestions: suggestionsProp,
   automaticSelection,
+  tabIndex,
   onFocus,
   onBlur,
 }: Pick<
   AutosuggestProps<Value>,
-  'value' | 'suggestions' | 'automaticSelection' | 'onFocus' | 'onBlur'
+  | 'value'
+  | 'suggestions'
+  | 'automaticSelection'
+  | 'onFocus'
+  | 'onBlur'
+  | 'tabIndex'
 >) {
   const changeHandler = jest.fn();
 
@@ -48,6 +54,7 @@ function renderAutosuggest<Value>({
             changeHandler(...args);
           }}
           suggestions={suggestions}
+          tabIndex={tabIndex}
           onFocus={onFocus}
           onBlur={onBlur}
         />
@@ -565,6 +572,81 @@ describe('Autosuggest', () => {
   });
 
   describe('keyboard access', () => {
+    it('should not be accessible with tabindex of -1', async () => {
+      renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+        tabIndex: -1,
+      });
+
+      expect(document.body).toHaveFocus();
+
+      await userEvent.tab();
+
+      expect(document.body).toHaveFocus();
+    });
+
+    it('should be accessible with tabindex of 0', async () => {
+      const { input } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+        tabIndex: 0,
+      });
+
+      expect(document.body).toHaveFocus();
+
+      await userEvent.tab();
+
+      expect(input).toHaveFocus();
+    });
+
+    it('should be accessible with a tabindex of undefined', async () => {
+      const { input } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+        tabIndex: undefined,
+      });
+
+      expect(document.body).toHaveFocus();
+
+      await userEvent.tab();
+
+      expect(input).toHaveFocus();
+    });
+
     it("shouldn't select anything and close the list on enter if the user hasn't navigated the list", async () => {
       const { input, changeHandler, getInputValue, queryByLabelText } =
         renderAutosuggest({

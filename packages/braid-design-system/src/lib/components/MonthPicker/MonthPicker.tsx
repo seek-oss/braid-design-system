@@ -147,6 +147,7 @@ const MonthPicker = ({
   ascendingYears = false,
   monthLabel = 'Month',
   yearLabel = 'Year',
+  tabIndex,
   monthNames = defaultMonthNames,
   ...restProps
 }: MonthPickerProps) => {
@@ -200,6 +201,7 @@ const MonthPicker = ({
       value={customValueToString(currentValue)}
       {...restProps}
       componentName="MonthPicker"
+      tabIndex={tabIndex}
       icon={undefined}
       prefix={undefined}
       name={undefined}
@@ -230,6 +232,7 @@ const MonthPicker = ({
       id={id}
       tone={tone}
       disabled={disabled}
+      tabIndex={tabIndex}
       componentName="MonthPicker"
       {...restProps}
     >

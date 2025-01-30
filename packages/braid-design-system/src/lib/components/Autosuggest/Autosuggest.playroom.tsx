@@ -2,6 +2,7 @@ import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+import { validTabIndexes } from '../private/validateTabIndex';
 
 import {
   type AutosuggestBaseProps,
@@ -19,6 +20,7 @@ export function Autosuggest<Value>({
   value,
   onChange,
   onClear,
+  tabIndex,
   ...restProps
 }: PlayroomAutosuggestProps<Value>) {
   const fallbackId = useFallbackId();
@@ -39,6 +41,7 @@ export function Autosuggest<Value>({
         handleChange(blankValue);
         onClear?.();
       }}
+      tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
       {...restProps}
     />
   );

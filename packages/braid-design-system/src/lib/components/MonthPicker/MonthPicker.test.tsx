@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, getAllByRole } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { MonthPicker } from '..';
 import { BraidTestProvider } from '../../../entries/test';
@@ -270,5 +271,91 @@ describe('MonthPicker (Double dropdown)', () => {
     );
 
     expect(getByLabelText('Year').getAttribute('aria-describedby')).toBeNull();
+  });
+
+  it('fields should not be accessible with tabindex of -1', async () => {
+    render(
+      <BraidTestProvider>
+        <MonthPicker
+          id="month-picker"
+          label="Start"
+          monthLabel="Month"
+          yearLabel="Year"
+          value={{}}
+          onChange={() => {}}
+          tabIndex={-1}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('fields should be accessible with tabindex of 0', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <MonthPicker
+          id="month-picker"
+          label="Start"
+          monthLabel="Month"
+          yearLabel="Year"
+          value={{}}
+          onChange={() => {}}
+          tabIndex={0}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Month')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Year')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('field should be accessible with a tabindex of undefined', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <MonthPicker
+          id="month-picker"
+          label="Start"
+          monthLabel="Month"
+          yearLabel="Year"
+          value={{}}
+          onChange={() => {}}
+          tabIndex={undefined}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Month')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Year')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
   });
 });

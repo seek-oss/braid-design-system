@@ -2,6 +2,7 @@ import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+import { validTabIndexes } from '../private/validateTabIndex';
 
 import {
   type TextFieldBaseProps,
@@ -21,6 +22,7 @@ export const TextField = ({
   value,
   onChange,
   onClear,
+  tabIndex,
   ...restProps
 }: PlayroomTextFieldProps) => {
   const fallbackId = useFallbackId();
@@ -41,6 +43,7 @@ export const TextField = ({
         onClear?.();
       }}
       autoComplete="off"
+      tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
       {...restProps}
     />
   );
