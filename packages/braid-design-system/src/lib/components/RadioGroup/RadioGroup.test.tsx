@@ -248,4 +248,114 @@ describe('RadioGroup', () => {
     await userEvent.tab({ shift: true });
     expect(option2).toHaveFocus();
   });
+
+  it('should not be accessible with tabindex of -1', async () => {
+    render(
+      <BraidTestProvider>
+        <RadioGroup
+          id="options"
+          value=""
+          onChange={() => {}}
+          label="Options"
+          tabIndex={-1}
+        >
+          <RadioItem label="Option 1" value="1" />
+          <RadioItem label="Option 2" value="2" />
+        </RadioGroup>
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('should be accessible with tabindex of 0 with no checked items', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <RadioGroup
+          id="options"
+          value=""
+          onChange={() => {}}
+          label="Options"
+          tabIndex={0}
+        >
+          <RadioItem label="Option 1" value="1" />
+          <RadioItem label="Option 2" value="2" />
+        </RadioGroup>
+      </BraidTestProvider>,
+    );
+
+    const option1 = getByLabelText('Option 1') as HTMLInputElement;
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(option1).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('should be accessible with tabindex of 0 with a checked item', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <RadioGroup
+          id="options"
+          value="2"
+          onChange={() => {}}
+          label="Options"
+          tabIndex={0}
+        >
+          <RadioItem label="Option 1" value="1" />
+          <RadioItem label="Option 2" value="2" />
+        </RadioGroup>
+      </BraidTestProvider>,
+    );
+
+    const option2 = getByLabelText('Option 2') as HTMLInputElement;
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(option2).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('should be accessible with a tabindex of undefined', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <RadioGroup
+          id="options"
+          value=""
+          onChange={() => {}}
+          label="Options"
+          tabIndex={undefined}
+        >
+          <RadioItem label="Option 1" value="1" />
+          <RadioItem label="Option 2" value="2" />
+        </RadioGroup>
+      </BraidTestProvider>,
+    );
+
+    const option1 = getByLabelText('Option 1') as HTMLInputElement;
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(option1).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
 });
