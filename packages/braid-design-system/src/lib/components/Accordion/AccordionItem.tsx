@@ -20,7 +20,9 @@ import { type TextProps, Text } from '../Text/Text';
 import { IconChevron } from '../icons';
 import { Overlay } from '../private/Overlay/Overlay';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 
 import { defaultSize } from './Accordion';
@@ -124,6 +126,14 @@ export const AccordionItem = ({
           onToggle: restProps.onToggle,
         }),
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    /**
+     * Validate that consumers are not passing `data-*`props,
+     * which will not work and are not validated by TypeScript.
+     */
+    buildDataAttributes({ data, validateRestProps: restProps });
+  }
 
   return (
     <Stack space={itemSpace} data={data}>
