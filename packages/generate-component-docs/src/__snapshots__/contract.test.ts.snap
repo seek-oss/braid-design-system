@@ -132,6 +132,9 @@ exports[`Autosuggest 1`] = `
     suggestions: 
         | (value: AutosuggestValue<Value>) => Suggestions<Value>
         | Suggestions<Value>
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -2787,6 +2790,9 @@ exports[`Checkbox 1`] = `
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tone?: 
         | "critical"
         | "neutral"
@@ -2823,6 +2829,9 @@ exports[`CheckboxStandalone 1`] = `
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tone?: 
         | "critical"
         | "neutral"
@@ -3072,6 +3081,9 @@ exports[`Dropdown 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7499,6 +7511,9 @@ exports[`MonthPicker 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7634,6 +7649,9 @@ exports[`PasswordField 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7670,6 +7688,9 @@ exports[`RadioGroup 1`] = `
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
@@ -8330,6 +8351,9 @@ exports[`TextDropdown 1`] = `
     onBlur?: () => void
     onChange: (value: Value) => void
     options: TextDropdownValue<Value>[]
+    tabIndex?: 
+        | -1
+        | 0
     value: NonNullable<Value>
 },
 }
@@ -8379,6 +8403,9 @@ exports[`TextField 1`] = `
     step?: 
         | number
         | string
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -9002,6 +9029,9 @@ exports[`Textarea 1`] = `
         | "true"
         | false
         | true
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"

@@ -19,6 +19,7 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
+import { validateTabIndex } from '../validateTabIndex';
 
 import * as styles from './Field.css';
 import { touchableText } from '../../../css/typography.css';
@@ -59,6 +60,7 @@ export interface FieldBaseProps {
   icon?: ReactNode;
   prefix?: string;
   required?: boolean;
+  tabIndex?: 0 | -1;
 }
 
 type PassthroughProps =
@@ -66,7 +68,8 @@ type PassthroughProps =
   | 'name'
   | 'disabled'
   | 'autoComplete'
-  | 'autoFocus';
+  | 'autoFocus'
+  | 'tabIndex';
 interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
   background: BoxProps['background'];
   borderRadius: BoxProps['borderRadius'];
@@ -115,6 +118,7 @@ export const Field = ({
   icon,
   prefix,
   required,
+  tabIndex,
   componentName,
   ...restProps
 }: InternalFieldProps) => {
@@ -141,6 +145,8 @@ export const Field = ({
         `,
       );
     }
+
+    validateTabIndex(tabIndex);
   }
 
   const messageId = `${id}-message`;
@@ -229,6 +235,7 @@ export const Field = ({
               disabled,
               autoComplete,
               autoFocus,
+              tabIndex,
               ...buildDataAttributes({ data, validateRestProps: restProps }),
               className: clsx(
                 styles.field,

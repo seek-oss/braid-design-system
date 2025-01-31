@@ -47,6 +47,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
       onVisibilityToggle,
       visibilityToggleLabel = 'Toggle password visibility',
       id,
+      tabIndex,
       ...restProps
     },
     forwardedRef,
@@ -81,6 +82,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         componentName="PasswordField"
         id={id}
         value={value}
+        tabIndex={tabIndex}
         icon={undefined}
         prefix={undefined}
         disabled={disabled}

@@ -13,6 +13,7 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
+import { validateTabIndex } from '../validateTabIndex';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 
@@ -41,12 +42,14 @@ export interface FieldGroupBaseProps {
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
   required?: boolean;
+  tabIndex?: 0 | -1;
   data?: DataAttributeMap;
 }
 
 interface FieldGroupRenderProps {
   disabled?: FieldGroupBaseProps['disabled'];
   'aria-describedby'?: string;
+  tabIndex?: 0 | -1;
 }
 
 type InternalFieldGroupProps = FieldGroupBaseProps &
@@ -70,6 +73,7 @@ export const FieldGroup = ({
   tone,
   required,
   role,
+  tabIndex,
   data,
   componentName,
   ...restProps
@@ -106,6 +110,8 @@ export const FieldGroup = ({
         `,
       );
     }
+
+    validateTabIndex(tabIndex);
   }
 
   return (
@@ -137,6 +143,7 @@ export const FieldGroup = ({
         <Stack space={messageSpace}>
           {children({
             disabled,
+            tabIndex,
             'aria-describedby': mergeIds(
               message ? messageId : undefined,
               descriptionId,

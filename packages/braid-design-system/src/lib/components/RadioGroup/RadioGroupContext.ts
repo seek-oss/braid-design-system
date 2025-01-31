@@ -9,6 +9,7 @@ interface RadioGroupContextValues {
   disabled?: boolean;
   tone?: RadioGroupProps['tone'];
   size?: RadioGroupProps['size'];
+  tabIndex?: RadioGroupProps['tabIndex'];
   'aria-describedby'?: string;
   onChange: RadioGroupProps['onChange'];
 }
