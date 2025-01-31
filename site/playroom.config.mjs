@@ -9,7 +9,10 @@ const { DefinePlugin } = webpackPkg;
 
 const require = createRequire(import.meta.url);
 
-const braidSrc = path.join(import.meta.dirname, '../packages/braid-design-system/src');
+const braidSrc = path.join(
+  import.meta.dirname,
+  '../packages/braid-design-system/src',
+);
 const resolveFromBraid = (p) => require.resolve(path.join(braidSrc, p));
 
 export default {
