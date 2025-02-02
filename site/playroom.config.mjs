@@ -1,13 +1,21 @@
-const path = require('path');
+import { createRequire } from 'node:module';
+import path from 'node:path';
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const SkuWebpackPlugin = require('sku/webpack-plugin');
-const { DefinePlugin } = require('webpack');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import SkuWebpackPlugin from 'sku/webpack-plugin';
+import webpackPkg from 'webpack';
 
-const braidSrc = path.join(__dirname, '../packages/braid-design-system/src');
+const { DefinePlugin } = webpackPkg;
+
+const require = createRequire(import.meta.url);
+
+const braidSrc = path.join(
+  import.meta.dirname,
+  '../packages/braid-design-system/src',
+);
 const resolveFromBraid = (p) => require.resolve(path.join(braidSrc, p));
 
-module.exports = {
+export default {
   outputPath: './dist/playroom',
   components: require.resolve('./src/playroom.components.ts'),
   snippets: resolveFromBraid('entries/playroom/snippets.ts'),
