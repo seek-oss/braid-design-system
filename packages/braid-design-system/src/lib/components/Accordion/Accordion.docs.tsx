@@ -220,6 +220,36 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    {
+      label: 'Data attributes',
+      description: (
+        <>
+          <Text>
+            Braid components are very explicit about the properties they accept,
+            which makes providing arbitrary{' '}
+            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
+              data attributes
+            </TextLink>{' '}
+            not possible. Instead, all Braid components accept a{' '}
+            <Strong>data</Strong> prop, allowing a single collection of data
+            attributes to be provided.
+          </Text>
+        </>
+      ),
+      code: `
+        <Accordion
+          data={{ testid: 'accordion-1' }}
+          // => data-testid="accordion-1"
+        >
+          <AccordionItem
+            data={{ testid: 'accordion-item-1' }}
+            // => data-testid="accordion-item-1"
+          >
+            ...
+          </AccordionItem>
+        </Accordion>
+      `,
+    },
   ],
 };
 

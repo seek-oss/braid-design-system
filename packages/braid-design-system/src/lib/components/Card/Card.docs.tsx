@@ -2,7 +2,17 @@ import source from '@braid-design-system/source.macro';
 import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 
-import { Box, Stack, Card, Text, Tiles, Strong, Columns, Column } from '../';
+import {
+  Box,
+  Stack,
+  Card,
+  Text,
+  Tiles,
+  Strong,
+  Columns,
+  Column,
+  TextLink,
+} from '../';
 import { Placeholder } from '../../playroom/components';
 
 import { validCardComponents } from './Card';
@@ -161,6 +171,31 @@ const docs: ComponentDocs = {
           })}
         </Text>
       ),
+    },
+    {
+      label: 'Data attributes',
+      description: (
+        <>
+          <Text>
+            Braid components are very explicit about the properties they accept,
+            which makes providing arbitrary{' '}
+            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
+              data attributes
+            </TextLink>{' '}
+            not possible. Instead, all Braid components accept a{' '}
+            <Strong>data</Strong> prop, allowing a single collection of data
+            attributes to be provided.
+          </Text>
+        </>
+      ),
+      code: `
+        <Card
+          data={{ testid: 'card-1' }}
+          // => data-testid="card-1"
+        >
+          ...
+        </Card>
+      `,
     },
   ],
 };

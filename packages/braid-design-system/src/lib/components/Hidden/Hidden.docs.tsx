@@ -1,13 +1,8 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
+import { Hidden, Stack, Strong, Text, TextLink, Tiles } from '../';
 import { Placeholder } from '../../playroom/components';
-import { Stack } from '../Stack/Stack';
-import { Strong } from '../Strong/Strong';
-import { Text } from '../Text/Text';
-import { Tiles } from '../Tiles/Tiles';
-
-import { Hidden } from './Hidden';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -116,6 +111,31 @@ const docs: ComponentDocs = {
             <Placeholder label="Hidden on print" height={60} />
           </Hidden>,
         ),
+    },
+    {
+      label: 'Data attributes',
+      description: (
+        <>
+          <Text>
+            Braid components are very explicit about the properties they accept,
+            which makes providing arbitrary{' '}
+            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
+              data attributes
+            </TextLink>{' '}
+            not possible. Instead, all Braid components accept a{' '}
+            <Strong>data</Strong> prop, allowing a single collection of data
+            attributes to be provided.
+          </Text>
+        </>
+      ),
+      code: `
+        <Hidden
+          data={{ testid: 'hidden-1' }}
+          // => data-testid="hidden-1"
+        >
+          ...
+        </Hidden>
+      `,
     },
   ],
 };

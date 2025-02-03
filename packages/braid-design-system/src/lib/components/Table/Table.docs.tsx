@@ -1183,6 +1183,47 @@ const docs: ComponentDocs = {
           ),
         ),
     },
+    {
+      label: 'Data attributes',
+      description: (
+        <>
+          <Text>
+            Braid components are very explicit about the properties they accept,
+            which makes providing arbitrary{' '}
+            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
+              data attributes
+            </TextLink>{' '}
+            not possible. Instead, all Braid components accept a{' '}
+            <Strong>data</Strong> prop, allowing a single collection of data
+            attributes to be provided.
+          </Text>
+        </>
+      ),
+      code: `
+        <Table
+          data={{ testid: 'table-1' }}
+          // => data-testid="table-1"
+        >
+          <TableHeader data={{ testid: 'table-header-1' }}>
+            <TableRow data={{ testid: 'table-row-1' }}>
+              <TableHeaderCell data={{ testid: 'table-header-cell-1' }}>
+                ...
+              </TableHeaderCell>
+            </TableRow>
+          </TableHeader>
+          <TableBody data={{ testid: 'table-body-1' }}>
+            <TableRow>
+              <TableCell data={{ testid: 'table-cell-1' }}>
+                ...
+              </TableCell>
+            </TableRow>
+          </TableBody>
+          <TableFooter data={{ testid: 'table-footer-1' }}>
+            ...
+          </TableFooter>
+        </Table>
+      `,
+    },
   ],
 };
 
