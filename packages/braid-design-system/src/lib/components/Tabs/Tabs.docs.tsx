@@ -377,6 +377,51 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Reserve hit area',
+      description: (
+        <>
+          <Text>
+            By default, a <Strong>Tab</Strong> will only occupy the vertical
+            space from the top of the label to the active underline. This means
+            the hit area will bleed out into the space above.
+          </Text>
+          <Text>
+            The bleed can be disabled by setting the{' '}
+            <Strong>reserveHitArea</Strong> prop to <Strong>true</Strong>.
+          </Text>
+        </>
+      ),
+      Example: ({ id }) =>
+        source(
+          <TabsProvider id={id}>
+            <Stack space="medium">
+              <Tabs label="Reserve hit area tabs" reserveHitArea>
+                <Tab>The first tab</Tab>
+                <Tab>The second tab</Tab>
+                <Tab>The third tab</Tab>
+                <Tab badge={<Badge tone="positive">New</Badge>}>
+                  The fourth tab
+                </Tab>
+              </Tabs>
+              <TabPanels>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 1" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 2" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 3" />
+                </TabPanel>
+                <TabPanel>
+                  <Placeholder height={200} label="Panel 4" />
+                </TabPanel>
+              </TabPanels>
+            </Stack>
+          </TabsProvider>,
+        ),
+    },
+    {
       label: 'State management',
       description: (
         <Text>
@@ -398,7 +443,7 @@ const docs: ComponentDocs = {
               onChange={(index, item) => setState('tab', item)}
             >
               <Stack space="medium">
-                <Tabs label="Test tabs" divider="none" reserveHitArea>
+                <Tabs label="Controlled state tabs">
                   <Tab item="first">The first tab</Tab>
                   <Tab item="second">The second tab</Tab>
                   <Tab item="third">The third tab</Tab>
