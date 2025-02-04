@@ -1,5 +1,29 @@
 # braid-design-system
 
+## 33.5.0
+
+### Minor Changes
+
+- Add `tabIndex` support to all form fields ([#1697](https://github.com/seek-oss/braid-design-system/pull/1697))
+
+  Ensure the `tabIndex` prop is available on all form fields, enabling greater control over which elements appear in the keyboard navigation flow.
+
+  In line with [MDN guidance], the only supported values are `0` and `-1` to ensure best practice for keyboard navigation and assistive technologies.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <TextField tabIndex={-1} />
+  ```
+
+  [MDN guidance]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex#:~:text=only%20use%200%20and%20%2D1%20as%20tabindex%20values
+
+### Patch Changes
+
+- **Accordion**: Fix `data` prop parsing ([#1698](https://github.com/seek-oss/braid-design-system/pull/1698))
+
+  Ensure the `data` prop is correctly passed through to `Stack` internally, and validate `data-*` attributes are not being passed in incorrectly.
+
 ## 33.4.0
 
 ### Minor Changes

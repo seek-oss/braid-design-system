@@ -17,6 +17,7 @@ import {
   IconOverflow,
   Divider,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -146,8 +147,8 @@ const docs: ComponentDocs = {
               />
               <Stack space="medium">
                 <Divider />
-                {new Array(3).fill('').map(() => (
-                  <>
+                {new Array(3).fill('').map((_, index) => (
+                  <Fragment key={index}>
                     <Box boxShadow="borderCriticalLight">
                       <Columns space="medium" alignY="center">
                         <Column width="content">
@@ -172,13 +173,24 @@ const docs: ComponentDocs = {
                       </Columns>
                     </Box>
                     <Divider />
-                  </>
+                  </Fragment>
                 ))}
               </Stack>
             </Stack>
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Badge
+          data={{ testid: 'badge-1' }}
+          // => data-testid="badge-1"
+        >
+          ...
+        </Badge>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

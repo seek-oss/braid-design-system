@@ -14,6 +14,7 @@ import {
   IconLanguage,
   TextDropdown,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -390,6 +391,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TextField
+          data={{ testid: 'text-field-1' }}
+          // => data-testid="text-field-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

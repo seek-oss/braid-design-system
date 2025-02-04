@@ -21,6 +21,7 @@ import {
   Toggle,
 } from '..';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -478,6 +479,26 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TabsProvider>
+          <Tabs
+            data={{ testid: 'tabs-1' }}
+            // => data-testid="tabs-1"
+          >
+            <Tab data={{ testid: 'tab-1' }}>
+              ...
+            </Tab>
+          </Tabs>
+          <TabPanels>
+            <TabPanel data={{ testid: 'tab-panel-1' }}>
+              ...
+            </TabPanel>
+          </TabPanels>
+        </TabsProvider>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

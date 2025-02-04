@@ -6,6 +6,7 @@ import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { defaultPageLimit } from './Pagination';
 
@@ -217,6 +218,15 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Pagination
+          data={{ testid: 'pagination-1' }}
+          // => data-testid="pagination-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

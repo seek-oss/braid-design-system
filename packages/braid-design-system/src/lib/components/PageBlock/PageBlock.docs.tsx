@@ -6,6 +6,7 @@ import { Box, ContentBlock, PageBlock, Stack, TextLink } from '../';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { gutters, validPageBlockComponents } from './PageBlock';
 
@@ -143,6 +144,17 @@ const docs: ComponentDocs = {
         </Text>
       ),
     },
+    dataAttributeDocs({
+      code: `
+        <PageBlock
+          data={{ testid: 'page-block-1' }}
+          // => data-testid="page-block-1"
+        >
+          ...
+        </PageBlock>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

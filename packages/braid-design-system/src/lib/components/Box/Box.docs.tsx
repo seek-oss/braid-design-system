@@ -26,7 +26,7 @@ import {
   unresponsiveProperties,
   pseudoProperties,
 } from '../../css/atoms/atomicProperties';
-import { Notice } from '../Notice/Notice';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -131,43 +131,20 @@ const docs: ComponentDocs = {
         </>
       ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-          <Notice>
-            <Text>
-              While Box does support the native HTML syntax, it also supports
-              the <Strong>data</Strong> prop for consistency.
-            </Text>
-          </Notice>
-          <Code playroom={false}>
-            {
-              source(
-                <Box
-                  data={{
-                    testid: 'customIdentifier',
-                  }}
-                  // => data-testid="customIdentifier"
-                >
-                  ...
-                </Box>,
-              ).code
-            }
-          </Code>
-        </>
-      ),
-    },
+    dataAttributeDocs({
+      code: `
+        <Box
+          data={{
+            testid: 'customIdentifier',
+          }}
+          // => data-testid="customIdentifier"
+        >
+          ...
+        </Box>
+      `,
+      supportsNativeSyntax: true,
+      componentName: 'Box',
+    }),
     {
       label: 'CSS utilities',
       description: (

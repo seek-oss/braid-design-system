@@ -11,6 +11,7 @@ import {
   IconLink,
   IconArrow,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -247,6 +248,17 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TextLink
+          data={{ testid: 'text-link-1' }}
+          // => data-testid="text-link-1"
+        >
+          ...
+        </TextLink>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

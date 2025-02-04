@@ -2,6 +2,7 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import { Disclosure, Text, TextLink, Strong, Stack, Notice } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -223,6 +224,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Disclosure
+          data={{ testid: 'disclosure-1' }}
+          // => data-testid="disclosure-1"
+        >
+          ...
+        </Disclosure>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 
