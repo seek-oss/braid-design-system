@@ -18,6 +18,7 @@ import {
   IconHome,
   IconProfile,
   IconRecommended,
+  Toggle,
 } from '..';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -378,6 +379,60 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Reserve hit area',
+      description: (
+        <>
+          <Text>
+            By default, a <Strong>Tab</Strong> will only occupy the vertical
+            space from the top of the label to the active underline. This means
+            the hit area will bleed out into the space above.
+          </Text>
+          <Text>
+            The bleed can be disabled by setting the{' '}
+            <Strong>reserveHitArea</Strong> prop to <Strong>true</Strong>.
+          </Text>
+        </>
+      ),
+      Example: ({ id, getState, toggleState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState('reserveHitArea', false)}
+
+            <Stack space="xlarge">
+              <Toggle
+                id={`${id}_reserveToggle`}
+                label="reserveHitArea"
+                on={getState('reserveHitArea')}
+                onChange={() => toggleState('reserveHitArea')}
+                align="right"
+                togglePosition="trailing"
+              />
+
+              <Box position="relative">
+                <TabsProvider id={`${id}_reserveHitArea`}>
+                  <Tabs
+                    label="Standard tabs"
+                    reserveHitArea={getState('reserveHitArea')}
+                  >
+                    <Tab>The first tab</Tab>
+                    <Tab>The second tab</Tab>
+                    <Tab>The third tab</Tab>
+                    <Tab>The fourth tab</Tab>
+                  </Tabs>
+                </TabsProvider>
+                <Box
+                  position="absolute"
+                  inset={0}
+                  boxShadow="borderCriticalLight"
+                  pointerEvents="none"
+                  zIndex={1}
+                />
+              </Box>
+            </Stack>
+          </>,
+        ),
+    },
+    {
       label: 'State management',
       description: (
         <Text>
@@ -399,7 +454,7 @@ const docs: ComponentDocs = {
               onChange={(index, item) => setState('tab', item)}
             >
               <Stack space="medium">
-                <Tabs label="Test tabs" divider="none" reserveHitArea>
+                <Tabs label="Controlled state tabs">
                   <Tab item="first">The first tab</Tab>
                   <Tab item="second">The second tab</Tab>
                   <Tab item="third">The third tab</Tab>
