@@ -13,6 +13,7 @@ import {
 import { Placeholder } from '../../playroom/components';
 import { Heading } from '../Heading/Heading';
 import { Stack } from '../Stack/Stack';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -352,6 +353,20 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <RadioGroup
+          data={{ testid: 'radio-group-1' }}
+          // => data-testid="radio-group-1"
+        >
+          <RadioItem
+            data={{ testid: 'radio-item-1' }}
+            // => data-testid="radio-item-1"
+          />
+        </RadioGroup>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

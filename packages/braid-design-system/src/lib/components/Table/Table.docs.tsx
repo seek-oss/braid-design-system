@@ -24,6 +24,7 @@ import {
 import { palette } from '../../color/palette';
 import type { StackProps } from '../Stack/Stack';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { stripTypeAnyFromCode } from './stripTypeAnyFromCode';
 
@@ -1183,6 +1184,33 @@ const docs: ComponentDocs = {
           ),
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Table
+          data={{ testid: 'table-1' }}
+          // => data-testid="table-1"
+        >
+          <TableHeader data={{ testid: 'table-header-1' }}>
+            <TableRow data={{ testid: 'table-row-1' }}>
+              <TableHeaderCell data={{ testid: 'table-header-cell-1' }}>
+                ...
+              </TableHeaderCell>
+            </TableRow>
+          </TableHeader>
+          <TableBody data={{ testid: 'table-body-1' }}>
+            <TableRow>
+              <TableCell data={{ testid: 'table-cell-1' }}>
+                ...
+              </TableCell>
+            </TableRow>
+          </TableBody>
+          <TableFooter data={{ testid: 'table-footer-1' }}>
+            ...
+          </TableFooter>
+        </Table>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -23,6 +23,7 @@ import {
   Badge,
   List,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -518,6 +519,17 @@ const docs: ComponentDocs = {
         </>
       ),
     },
+    dataAttributeDocs({
+      code: `
+        <MenuRenderer
+          data={{ testid: 'menu-1' }}
+          // => data-testid="menu-1"
+        >
+          ...
+        </MenuRenderer>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

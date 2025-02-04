@@ -12,6 +12,7 @@ import {
   IconImage,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { validSpaceValues } from './Accordion';
 
@@ -220,6 +221,22 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Accordion
+          data={{ testid: 'accordion-1' }}
+          // => data-testid="accordion-1"
+        >
+          <AccordionItem
+            data={{ testid: 'accordion-item-1' }}
+            // => data-testid="accordion-item-1"
+          >
+            ...
+          </AccordionItem>
+        </Accordion>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

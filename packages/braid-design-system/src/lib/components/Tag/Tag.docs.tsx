@@ -11,6 +11,7 @@ import {
   IconLanguage,
   IconTag,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -174,6 +175,15 @@ const docs: ComponentDocs = {
           </Inline>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Tag
+          data={{ testid: 'tag-1' }}
+          // => data-testid="tag-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

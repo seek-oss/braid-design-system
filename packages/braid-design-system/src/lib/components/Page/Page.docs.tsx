@@ -6,6 +6,7 @@ import type { ComponentDocs } from 'site/types';
 
 import { Box, Notice, Stack, Strong, Text, TextLink, Tiles } from '..';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { Page } from './Page';
 
@@ -163,6 +164,17 @@ const docs: ComponentDocs = {
           </Page>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Page
+          data={{ testid: 'page-1' }}
+          // => data-testid="page-1"
+        >
+          ...
+        </Page>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

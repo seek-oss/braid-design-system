@@ -2,6 +2,7 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import { Text, TextLink, TextLinkButton, Strong, IconLink } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -64,6 +65,17 @@ const docs: ComponentDocs = {
           </Text>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TextLinkButton
+          data={{ testid: 'text-link-button-1' }}
+          // => data-testid="text-link-button-1"
+        >
+          ...
+        </TextLinkButton>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

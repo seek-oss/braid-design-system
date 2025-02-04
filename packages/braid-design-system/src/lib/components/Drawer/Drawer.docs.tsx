@@ -15,6 +15,7 @@ import {
   Box,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { DrawerContent } from './Drawer';
 import { DrawerPreview } from './Drawer.screenshots';
@@ -406,6 +407,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Drawer
+          data={{ testid: 'drawer-1' }}
+          // => data-testid="drawer-1"
+        >
+          ...
+        </Drawer>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 
