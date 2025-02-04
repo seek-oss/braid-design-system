@@ -6,6 +6,7 @@ import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { defaultPageLimit } from './Pagination';
 
@@ -217,29 +218,15 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <Pagination
           data={{ testid: 'pagination-1' }}
           // => data-testid="pagination-1"
         />
       `,
-    },
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

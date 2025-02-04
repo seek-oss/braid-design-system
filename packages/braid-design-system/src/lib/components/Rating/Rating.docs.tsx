@@ -3,6 +3,7 @@ import type { ComponentDocs } from 'site/types';
 
 import { Rating, Stack, Inline, Text, Strong, TextLink, Notice } from '../';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -150,29 +151,15 @@ const docs: ComponentDocs = {
       ),
       Example: () => source(<Rating rating={3.2} tone="neutral" />),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <Rating
           data={{ testid: 'rating-1' }}
           // => data-testid="rating-1"
         />
       `,
-    },
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -3,6 +3,7 @@ import type { ComponentDocs } from 'site/types';
 
 import { Alert, Card, Text, Strong, Stack, TextLink, List, Notice } from '../';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -168,22 +169,7 @@ const docs: ComponentDocs = {
           </Card>,
         ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <Alert
           data={{ testid: 'alert-1' }}
@@ -192,7 +178,8 @@ const docs: ComponentDocs = {
           ...
         </Alert>
       `,
-    },
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

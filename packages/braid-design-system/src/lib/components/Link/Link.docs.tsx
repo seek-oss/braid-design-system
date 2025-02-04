@@ -1,8 +1,9 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Link, Notice, Strong, Text, TextLink } from '..';
+import { Link, Text, TextLink } from '..';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Logic',
@@ -30,28 +31,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-          <Notice>
-            <Text>
-              While Link does support the native HTML syntax, it also supports
-              the <Strong>data</Strong> prop for consistency.
-            </Text>
-          </Notice>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <Link
           data={{ testid: 'link-1' }}
@@ -60,7 +40,9 @@ const docs: ComponentDocs = {
           ...
         </Link>
       `,
-    },
+      supportsNativeSyntax: true,
+      componentName: 'Link',
+    }),
   ],
 };
 

@@ -21,6 +21,7 @@ import {
   IconAdd,
   IconArrow,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -302,29 +303,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <ButtonIcon
           data={{ testid: 'button-icon-1' }}
           // => data-testid="button-icon-1"
         />
       `,
-    },
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

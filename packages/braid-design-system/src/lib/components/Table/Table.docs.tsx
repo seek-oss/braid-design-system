@@ -24,6 +24,7 @@ import {
 import { palette } from '../../color/palette';
 import type { StackProps } from '../Stack/Stack';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { stripTypeAnyFromCode } from './stripTypeAnyFromCode';
 
@@ -1183,22 +1184,7 @@ const docs: ComponentDocs = {
           ),
         ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <Table
           data={{ testid: 'table-1' }}
@@ -1223,7 +1209,8 @@ const docs: ComponentDocs = {
           </TableFooter>
         </Table>
       `,
-    },
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

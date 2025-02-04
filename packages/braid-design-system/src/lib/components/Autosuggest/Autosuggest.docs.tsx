@@ -17,6 +17,7 @@ import {
   TextField,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { highlightSuggestions } from './Autosuggest';
 
@@ -811,29 +812,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <Autosuggest
           data={{ testid: 'autosuggest-1' }}
           // => data-testid="autosuggest-1"
         />
       `,
-    },
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

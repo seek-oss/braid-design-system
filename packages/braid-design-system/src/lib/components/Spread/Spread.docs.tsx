@@ -1,8 +1,9 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Divider, Spread, Stack, Strong, Text, TextLink, Tiles } from '../';
+import { Divider, Spread, Stack, Strong, Text, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -140,22 +141,7 @@ const docs: ComponentDocs = {
         </Spread>,
       ).code,
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-        </>
-      ),
+    dataAttributeDocs({
       code: `
         <Spread
           data={{ testid: 'spread-1' }}
@@ -164,7 +150,8 @@ const docs: ComponentDocs = {
           ...
         </Spread>
       `,
-    },
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 
