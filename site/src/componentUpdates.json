@@ -4705,5 +4705,31 @@
         "summary": "**Rating:** Add `tone` support\n\nFor usages where the `Rating` component should not be accentuated, the `tone` prop can be used to apply `neutral` tone.\n\n**EXAMPLE USAGE:**\n```jsx\n<Rating tone=\"neutral\" />\n```"
       }
     ]
+  },
+  {
+    "version": "33.5.0",
+    "updates": [
+      {
+        "updated": [
+          "Accordion"
+        ],
+        "summary": "**Accordion**: Fix `data` prop parsing\n\nEnsure the `data` prop is correctly passed through to `Stack` internally, and validate `data-*` attributes are not being passed in incorrectly."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "TextDropdown",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "Add `tabIndex` support to all form fields\n\nEnsure the `tabIndex` prop is available on all form fields, enabling greater control over which elements appear in the keyboard navigation flow.\n\nIn line with [MDN guidance], the only supported values are `0` and `-1` to ensure best practice for keyboard navigation and assistive technologies.\n\n**EXAMPLE USAGE:**\n```jsx\n<TextField tabIndex={-1} />\n```\n\n[MDN guidance]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex#:~:text=only%20use%200%20and%20%2D1%20as%20tabindex%20values"
+      }
+    ]
   }
 ]
