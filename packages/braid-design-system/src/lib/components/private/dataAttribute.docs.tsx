@@ -22,7 +22,7 @@ export const dataAttributeDocs: CreateDataAttributeDocs = ({
       <Text>
         Braid components are very explicit about the properties they accept,
         which makes providing arbitrary{' '}
-        <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
+        <TextLink href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes">
           data attributes
         </TextLink>{' '}
         not possible. Instead, a <Strong>data</Strong> prop can be provided as a
