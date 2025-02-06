@@ -361,8 +361,8 @@ importers:
         specifier: ^2.12.1
         version: 2.14.0
       sku:
-        specifier: 13.4.0
-        version: 13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 13.4.1
+        version: 13.4.1(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       storybook:
         specifier: 7.6.20
         version: 7.6.20
@@ -641,8 +641,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       sku:
-        specifier: 13.4.0
-        version: 13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 13.4.1
+        version: 13.4.1(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       webpack:
         specifier: ^5.76.0
         version: 5.97.1(@swc/core@1.10.12)
@@ -8442,8 +8442,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@13.4.0:
-    resolution: {integrity: sha512-bobK/1mgU4dilg8BQNEm+G8HYSxFx21wA9SU3xFzgdJByBvEzvw4awpyzjph7EfcPZpgKeEHmu8p0CvP9aHbTQ==}
+  sku@13.4.1:
+    resolution: {integrity: sha512-2w2md/Skhrz5fgcde2yoLf1a92NOsxWS0UmZLyzL/kIYiqsvDa6z09H/0wxhqxA2rJ8ACmo5gnl/wDpdtAiNrg==}
     engines: {node: '>=18.20'}
     hasBin: true
     peerDependencies:
@@ -12869,7 +12869,7 @@ snapshots:
       debug: 4.4.0
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.7.0
+      semver: 7.7.1
       tsutils: 3.21.0(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
@@ -12884,7 +12884,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.3
-      semver: 7.7.0
+      semver: 7.7.1
       ts-api-utils: 1.4.3(typescript@5.5.4)
     optionalDependencies:
       typescript: 5.5.4
@@ -12899,7 +12899,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.7.0
+      semver: 7.7.1
       ts-api-utils: 1.4.3(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
@@ -12945,7 +12945,7 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.3)
       eslint: 9.19.0(jiti@1.21.7)
       eslint-scope: 5.1.1
-      semver: 7.7.0
+      semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -15785,7 +15785,7 @@ snapshots:
       minimatch: 3.1.2
       node-abort-controller: 3.1.1
       schema-utils: 3.3.0
-      semver: 7.7.0
+      semver: 7.7.1
       tapable: 2.2.1
       typescript: 5.6.3
       webpack: 5.97.1(@swc/core@1.10.12)(esbuild@0.21.5)
@@ -15802,7 +15802,7 @@ snapshots:
       minimatch: 3.1.2
       node-abort-controller: 3.1.1
       schema-utils: 3.3.0
-      semver: 7.7.0
+      semver: 7.7.1
       tapable: 2.2.1
       typescript: 5.6.3
       webpack: 5.97.1(@swc/core@1.10.12)
@@ -18436,7 +18436,7 @@ snapshots:
       cosmiconfig: 9.0.0(typescript@5.6.3)
       jiti: 1.21.7
       postcss: 8.5.1
-      semver: 7.7.0
+      semver: 7.7.1
     optionalDependencies:
       webpack: 5.97.1(@swc/core@1.10.12)(esbuild@0.21.5)
     transitivePeerDependencies:
@@ -18447,7 +18447,7 @@ snapshots:
       cosmiconfig: 9.0.0(typescript@5.6.3)
       jiti: 1.21.7
       postcss: 8.5.1
-      semver: 7.7.0
+      semver: 7.7.1
     optionalDependencies:
       webpack: 5.97.1(@swc/core@1.10.12)
     transitivePeerDependencies:
@@ -19570,7 +19570,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@13.4.1(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
       '@babel/core': 7.26.7
       '@babel/plugin-transform-react-constant-elements': 7.25.9(@babel/core@7.26.7)
@@ -19654,7 +19654,7 @@ snapshots:
       react: 18.3.1
       react-refresh: 0.14.2
       selfsigned: 2.4.1
-      semver: 7.7.0
+      semver: 7.7.1
       serialize-javascript: 6.0.2
       serve-handler: 6.1.6
       svgo-loader: 4.0.0
@@ -19691,7 +19691,7 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  sku@13.4.0(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@13.4.1(@storybook/react-webpack5@7.6.20(@babel/core@7.26.7)(@swc/core@1.10.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.97.1(@swc/core@1.10.12)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.74)(@types/react@18.3.18)(eslint-plugin-import-x@4.6.1(eslint@9.19.0(jiti@1.21.7))(typescript@5.6.3))(jiti@1.21.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
       '@babel/core': 7.26.7
       '@babel/plugin-transform-react-constant-elements': 7.25.9(@babel/core@7.26.7)
@@ -19775,7 +19775,7 @@ snapshots:
       react: 18.3.1
       react-refresh: 0.14.2
       selfsigned: 2.4.1
-      semver: 7.7.0
+      semver: 7.7.1
       serialize-javascript: 6.0.2
       serve-handler: 6.1.6
       svgo-loader: 4.0.0
@@ -21109,7 +21109,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@3.1.0:
