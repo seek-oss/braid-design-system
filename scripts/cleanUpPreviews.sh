@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "DAYS_OLD: ${DAYS_OLD}"
 DATE_FROM_DAYS_AGO=`date --date="${DAYS_OLD} days ago" +"%Y"-"%m"-"%d" || date -v-${DAYS_OLD}d +"%Y"-"%m"-"%d"`;

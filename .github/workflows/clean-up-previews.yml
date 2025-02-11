@@ -18,6 +18,5 @@ jobs:
 
       - name: Delete old preview directories
         run: ./scripts/cleanUpPreviews.sh
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
