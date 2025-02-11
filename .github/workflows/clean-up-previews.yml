@@ -25,7 +25,7 @@ jobs:
           echo $(find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -print)
           for i in $(find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -print); do
             echo "Git log before date:"
-            echo $(git log --before=${DATE_FROM_DAYS_AGO} ${i} | tail -1)
+            echo $(git log --before=$DATE_FROM_DAYS_AGO $i | tail -1)
             if [[ $(git log --before=${DATE_FROM_DAYS_AGO} $i | tail -1) ]]; then
               echo "Deleting directory $i"
               rm -rf $i
