@@ -30,11 +30,11 @@ jobs:
             echo "No directories to clean up"
             exit 0
           fi
-          # git config --local user.name 'GitHub Actions'
-          # git config --local user.email 'actions@github.com'
-          # git add ${{ env.PREVIEW_DIR }}
-          # git commit --quiet -m "Clean up old preview directories"
-          # git push
+          git config --local user.name 'GitHub Actions'
+          git config --local user.email 'actions@github.com'
+          git add ${{ env.PREVIEW_DIR }}
+          git commit --quiet -m "Clean up old preview directories"
+          git push
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
