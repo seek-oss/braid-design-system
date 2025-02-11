@@ -18,14 +18,10 @@ jobs:
 
       - name: Delete old preview directories
         run: |
-          if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-            DATE_FROM_DAYS_AGO=$(date --date="${{ env.DAYS_OLD }} days ago" +"%Y-%m-%d")
-          elif [[ "$OSTYPE" == "darwin"* ]]; then
-            DATE_FROM_DAYS_AGO=$(date -v-${{ env.DAYS_OLD }}d +"%Y-%m-%d")
-          fi
+          DATE_FROM_DAYS_AGO=`date --date="${{env.DAYS_OLD}} days ago" +"%Y"-"%m"-"%d" || date -v-${{env.DAYS_OLD}}d +"%Y"-"%m"-"%d"`;
           echo $DATE_FROM_DAYS_AGO
           for i in $(find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -print); do
-            if [[ $(git log --before=${DATE_FROM_DAYS_AGO} $i | tail -1) ]]; then
+            if [[ $(git log --before=${{DATE_FROM_DAYS_AGO}} $i | tail -1) ]]; then
               echo "Deleting directory $i"
               rm -rf $i
             fi
