@@ -17,6 +17,7 @@ jobs:
           ref: gh-pages
 
       - name: Delete old preview directories
-        run: ./scripts/cleanUpPreviews.sh
+        working-directory: scripts
+        run: ./cleanUpPreviews.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
