@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          fetch-depth: 0
 
       - name: Delete old preview directories
         run: |
