@@ -23,6 +23,9 @@ jobs:
           echo $DATE_FROM_DAYS_AGO
           echo "Preview dirs:"
           echo $(find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -print)
+          echo "Last commit:"
+          echo $(git log -1)
+
           for i in $(find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -print); do
             echo "Git log before date:"
             echo $(git log --before=$DATE_FROM_DAYS_AGO $i | tail -1)
