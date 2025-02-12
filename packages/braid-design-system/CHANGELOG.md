@@ -1,5 +1,40 @@
 # braid-design-system
 
+## 33.6.0
+
+### Minor Changes
+
+- Add new icons to represent other list types. ([#1711](https://github.com/seek-oss/braid-design-system/pull/1711))
+  Sits alongside `IconChecklist` which already exists.
+
+  ```tsx
+  <IconBulletList />
+  <IconNumberedList />
+  ```
+
+  As a result we have deprecated `IconList` in favour of the more specific list types. `IconList` will be removed in a future major version.
+
+  ### MIGRATION GUIDE
+
+  ```diff
+  -<IconList />
+  +<IconBulletList />
+  ```
+
+- Add new icons to support rich text editors and formatting. ([#1711](https://github.com/seek-oss/braid-design-system/pull/1711))
+
+  ```tsx
+  <IconBold />
+  <IconItalic />
+  <IconTitle />
+  <IconRedo />
+  <IconUndo />
+  ```
+
+### Patch Changes
+
+- **IconHeart, IconLink, IconLinkBroken:** Update design ([#1711](https://github.com/seek-oss/braid-design-system/pull/1711))
+
 ## 33.5.0
 
 ### Minor Changes
