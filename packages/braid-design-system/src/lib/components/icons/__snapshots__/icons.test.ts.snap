@@ -111,6 +111,27 @@ export const IconBluetoothSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconBoldSvg should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconBoldSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M17.909 11.08A4.95 4.95 0 0 0 19 8c0-2.757-2.243-5-5-5H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h8.259A5.248 5.248 0 0 0 20 15.759v-.518c0-1.703-.83-3.203-2.091-4.161ZM8 6h6c1.103 0 2 .897 2 2s-.897 2-2 2H8V6Zm9 9.759A2.244 2.244 0 0 1 14.759 18H8v-5h6.759A2.244 2.244 0 0 1 17 15.241v.518Z" />
+  </svg>
+);
+"
+`;
+
 exports[`IconBookmarkActiveSvg should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
@@ -154,6 +175,27 @@ export const IconBookmarkSvg = ({ title, titleId, ...props }: SVGProps) => (
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path d="M19 5.1c.1-1.6-1.1-2.9-2.7-3.1H7.6C6.1 2.1 4.9 3.5 5 5v16c0 .4.2.7.5.9.3.2.7.2 1 0l5.4-3.6 5.4 3.6c.2.1.4.2.6.2.2 0 .3 0 .5-.1.3-.2.5-.5.5-.9l.1-16zm-2 14-4.4-3c-.3-.2-.8-.2-1.1 0l-4.4 3L7 4.9c0-.4.3-.9.7-.9h8.5c.5 0 .8.5.8 1v14.1z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconBulletListSvg should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconBulletListSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M6 14a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm13 3h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Zm0 8h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Z" />
   </svg>
 );
 "
@@ -866,7 +908,7 @@ export const IconHeartActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M16.114 3c-1.538 0-3.008.58-4.114 1.589A6.114 6.114 0 0 0 7.886 3C4.562 3 1.857 5.642 1.857 8.889c0 4.48 5.75 10.106 9.71 12.012a1.005 1.005 0 0 0 .867 0c3.959-1.906 9.709-7.533 9.709-12.012C22.143 5.642 19.438 3 16.114 3Z" />
+    <path d="M16.5 2A6.5 6.5 0 0 0 12 3.815 6.5 6.5 0 0 0 7.5 2 6.508 6.508 0 0 0 1 8.5C1 15.535 10.443 22 12 22s11-6.465 11-13.5C23 4.916 20.084 2 16.5 2Z" />
   </svg>
 );
 "
@@ -887,7 +929,7 @@ export const IconHeartSvg = ({ title, titleId, ...props }: SVGProps) => (
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12 21c-.148 0-.297-.033-.434-.099-3.959-1.906-9.709-7.533-9.709-12.012C1.857 5.642 4.562 3 7.886 3c1.538 0 3.008.58 4.114 1.589A6.114 6.114 0 0 1 16.114 3c3.324 0 6.029 2.642 6.029 5.889 0 4.48-5.75 10.106-9.71 12.012A1.005 1.005 0 0 1 12 21ZM7.886 5C5.664 5 3.857 6.744 3.857 8.889c0 3.382 4.71 8.137 8.143 9.988 3.433-1.85 8.143-6.606 8.143-9.988C20.143 6.744 18.336 5 16.114 5a4.079 4.079 0 0 0-3.303 1.669c-.377.52-1.245.52-1.622 0A4.079 4.079 0 0 0 7.886 5Z" />
+    <path d="M12 22C10.444 22 1 15.535 1 8.5 1 4.916 3.916 2 7.5 2A6.5 6.5 0 0 1 12 3.815 6.5 6.5 0 0 1 16.5 2C20.084 2 23 4.916 23 8.5 23 15.535 13.557 22 12 22Zm.125-1.987Zm-.25 0ZM7.5 4A4.505 4.505 0 0 0 3 8.5c0 5.491 7.441 10.862 9 11.47 1.559-.608 9-5.979 9-11.47C21 6.019 18.981 4 16.5 4c-1.46 0-2.838.717-3.682 1.919-.375.533-1.261.533-1.636 0A4.506 4.506 0 0 0 7.5 4Z" />
   </svg>
 );
 "
@@ -1030,6 +1072,27 @@ export const IconInvoiceSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconItalicSvg should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconItalicSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M18 3H9a1 1 0 1 0 0 2h3.72l-3.5 14H6a1 1 0 1 0 0 2h9a1 1 0 1 0 0-2h-3.72l3.5-14H18a1 1 0 1 0 0-2Z" />
+  </svg>
+);
+"
+`;
+
 exports[`IconLanguageSvg should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
@@ -1081,17 +1144,16 @@ exports[`IconLinkBrokenSvg should match snapshot 1`] = `
 export const IconLinkBrokenSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12.848 17.334a6.214 6.214 0 0 1-1.476-.2L9.44 19.066a3.188 3.188 0 1 1-4.51-4.508l2.962-2.961a3.208 3.208 0 0 1 4.509 0 1 1 0 1 0 1.414-1.414 5.205 5.205 0 0 0-6.832-.413 5.102 5.102 0 0 0-.505.413l-2.961 2.96a5.188 5.188 0 0 0 7.337 7.337l3.293-3.293a6.226 6.226 0 0 1-1.3.147Z" />
-    <path d="M11.15 6.664a6.214 6.214 0 0 1 1.476.2l1.932-1.932a3.188 3.188 0 1 1 4.508 4.508l-2.96 2.961a3.208 3.208 0 0 1-4.51 0 1 1 0 0 0-1.413 1.414 5.205 5.205 0 0 0 6.831.413 5.101 5.101 0 0 0 .506-.413l2.96-2.96a5.188 5.188 0 0 0-7.336-7.337L9.85 6.812a6.226 6.226 0 0 1 1.298-.148Zm-5.736-.25a.997.997 0 0 1-.707-.293L3.293 4.707a1 1 0 0 1 1.414-1.414l1.414 1.414a1 1 0 0 1-.707 1.707ZM3.736 9.321a.994.994 0 0 1-.26-.034l-1.93-.517a1 1 0 0 1 .518-1.932l1.931.517a1 1 0 0 1-.258 1.966ZM8.32 4.735a.999.999 0 0 1-.965-.74l-.517-1.933a1 1 0 0 1 1.932-.517l.517 1.932a1 1 0 0 1-.967 1.258Z" />
+    <path d="M7.054 21.946a4.965 4.965 0 0 1-3.535-1.465c-.945-.943-1.465-2.199-1.465-3.535s.52-2.592 1.465-3.535l3.239-3.24a1 1 0 1 1 1.414 1.415l-3.24 3.24c-.566.566-.878 1.319-.878 2.12s.312 1.555.879 2.121c1.132 1.133 3.109 1.133 4.242 0l3.24-3.239a1 1 0 1 1 1.413 1.414l-3.24 3.24a4.964 4.964 0 0 1-3.534 1.464Zm9.481-7.825a1 1 0 0 1-.707-1.707l3.24-3.238a3.005 3.005 0 0 0 0-4.243 3.007 3.007 0 0 0-4.244 0l-3.238 3.239a1 1 0 1 1-1.414-1.414l3.238-3.24a5.006 5.006 0 0 1 7.071 0 5.008 5.008 0 0 1 0 7.072l-3.239 3.238a.997.997 0 0 1-.707.293ZM5.574 6.587a.997.997 0 0 1-.707-.293L3.453 4.879a1 1 0 1 1 1.414-1.414L6.281 4.88a1 1 0 0 1-.707 1.707ZM3.896 9.494a.994.994 0 0 1-.26-.034l-1.93-.518a1 1 0 0 1 .517-1.931l1.931.517a1 1 0 0 1-.258 1.966ZM8.48 4.908a.999.999 0 0 1-.964-.741l-.518-1.932a1 1 0 0 1 1.932-.517l.517 1.931a1 1 0 0 1-.967 1.26Zm11.36 15.92a.997.997 0 0 1-.707-.293l-1.414-1.415a1 1 0 1 1 1.414-1.414l1.414 1.415a1 1 0 0 1-.707 1.707Zm2.197-3.805a.994.994 0 0 1-.26-.034l-1.931-.517a1 1 0 0 1 .517-1.932l1.932.518a1 1 0 0 1-.258 1.965Zm-6.002 6a.999.999 0 0 1-.965-.74l-.517-1.932a1 1 0 0 1 1.931-.518l.518 1.932a1 1 0 0 1-.967 1.258Z" />
   </svg>
 );
 "
@@ -1103,17 +1165,17 @@ exports[`IconLinkSvg should match snapshot 1`] = `
 export const IconLinkSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12.848 17.334a6.214 6.214 0 0 1-1.476-.2L9.44 19.066a3.188 3.188 0 1 1-4.51-4.508l2.962-2.961a3.208 3.208 0 0 1 4.509 0 1 1 0 1 0 1.414-1.414 5.205 5.205 0 0 0-6.832-.413 5.102 5.102 0 0 0-.505.413l-2.961 2.96a5.188 5.188 0 0 0 7.337 7.337l3.293-3.293a6.226 6.226 0 0 1-1.3.147Z" />
-    <path d="M11.15 6.664a6.214 6.214 0 0 1 1.476.2l1.932-1.932a3.188 3.188 0 1 1 4.508 4.508l-2.96 2.961a3.208 3.208 0 0 1-4.51 0 1 1 0 0 0-1.413 1.414 5.205 5.205 0 0 0 6.831.413 5.101 5.101 0 0 0 .506-.413l2.96-2.96a5.188 5.188 0 0 0-7.336-7.337L9.85 6.812a6.226 6.226 0 0 1 1.298-.148Z" />
+    <path d="M7.054 21.946a4.965 4.965 0 0 1-3.535-1.465c-.945-.943-1.465-2.199-1.465-3.535s.52-2.592 1.465-3.535l3.239-3.24a1 1 0 1 1 1.414 1.415l-3.24 3.24c-.566.566-.878 1.319-.878 2.12s.312 1.555.879 2.121c1.132 1.133 3.109 1.133 4.242 0l3.24-3.239a1 1 0 1 1 1.413 1.414l-3.24 3.24a4.964 4.964 0 0 1-3.534 1.464Zm9.481-7.825a1 1 0 0 1-.707-1.707l3.24-3.238a3.005 3.005 0 0 0 0-4.243 3.007 3.007 0 0 0-4.244 0l-3.238 3.239a1 1 0 1 1-1.414-1.414l3.238-3.24a5.006 5.006 0 0 1 7.071 0 5.008 5.008 0 0 1 0 7.072l-3.239 3.238a.997.997 0 0 1-.707.293Z" />
+    <path d="M8.172 16.828a1 1 0 0 1-.707-1.707l7.656-7.656a1 1 0 1 1 1.414 1.414L8.88 16.535a.997.997 0 0 1-.707.293Z" />
   </svg>
 );
 "
@@ -1347,6 +1409,27 @@ export const IconNotificationSvg = ({ title, titleId, ...props }: SVGProps) => (
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path d="M20 16v-6a8.018 8.018 0 0 0-5.45-7.577 2.996 2.996 0 0 0-5.1 0A8.018 8.018 0 0 0 4 10v6a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM6 16v-6a6.008 6.008 0 0 1 4.411-5.78 1.001 1.001 0 0 0 .663-.591.996.996 0 0 1 1.852 0 1.001 1.001 0 0 0 .663.592A6.008 6.008 0 0 1 18 10v6Zm6 6a2.991 2.991 0 0 0 2.816-2H9.184A2.991 2.991 0 0 0 12 22Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconNumberedListSvg should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconNumberedListSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M5 5h2v6H5zM3.69 17.583l2.087-1.673c.558-.446.755-.671.755-.95 0-.22-.166-.476-.567-.476-.354 0-.656.263-.79.603l-1.426-.603C4.043 13.466 4.993 13 6.033 13c1.44 0 2.248.866 2.248 1.945 0 .709-.499 1.213-1.479 1.952l-.904.686H8.31V19H3.69v-1.417ZM19 9h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Zm0 8h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Z" />
   </svg>
 );
 "
@@ -1650,6 +1733,27 @@ export const IconRecommendedSvg = ({ title, titleId, ...props }: SVGProps) => (
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path d="M19 8c0-3.9-3.1-7-7-7S5 4.1 5 8c0 2 .8 3.8 2.2 5.1L6 21.9c-.1.4.1.8.4 1 .3.2.7.2 1.1 0l4.5-2.7 4.5 2.7c.1.1.3.1.5.1s.4-.1.5-.2c.3-.2.5-.6.4-1L16.7 13c1.5-1.2 2.3-3 2.3-5zM7 8c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5zm8.7 12.1-3.2-1.9c-.3-.2-.7-.2-1 0l-3.2 1.9.7-5.8c.9.4 1.9.7 3 .7s2.1-.2 3-.7l.7 5.8z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconRedoSvg should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconRedoSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M21.923 9.382a1 1 0 0 0-.217-1.09l-4.999-4.999a1 1 0 1 0-1.414 1.414L18.586 8H8.5C4.916 8 2 10.916 2 14.5S4.916 21 8.5 21a1 1 0 1 0 0-2C6.019 19 4 16.981 4 14.5S6.019 10 8.5 10h10.086l-3.293 3.293a1 1 0 1 0 1.414 1.414l4.999-4.999a1 1 0 0 0 .217-.326Z" />
   </svg>
 );
 "
@@ -2359,6 +2463,49 @@ export const IconTipSvg = ({ title, titleId, ...props }: SVGProps) => (
     <path d="M9 18.957a1 1 0 0 1-1-1V16a8.96 8.96 0 0 0-1.485-2.633l-.277-.391a7 7 0 1 1 11.524 0l-.277.391A8.96 8.96 0 0 0 16 16v1.932a1 1 0 0 1-2 0V16c0-1.095.878-2.419 1.856-3.793l.261-.368a5 5 0 1 0-8.234 0l.26.368C9.124 13.581 10 14.905 10 16v1.957a1 1 0 0 1-1 1Z" />
     <path d="M13.286 22h-2.572A2.761 2.761 0 0 1 8 19.2V17a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2.2a2.761 2.761 0 0 1-2.714 2.8ZM10 18v1.2a.761.761 0 0 0 .714.8h2.572a.761.761 0 0 0 .714-.8V18Zm13-8h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Zm-1.475 5.5a.994.994 0 0 1-.499-.134l-1.732-1a1 1 0 1 1 1-1.732l1.732 1a1 1 0 0 1-.5 1.866Zm-1.73-10a1 1 0 0 1-.501-1.866l1.732-1a1 1 0 1 1 1 1.732l-1.732 1a.994.994 0 0 1-.5.134ZM3 10H1a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Zm-.525 5.5a1 1 0 0 1-.501-1.866l1.732-1a1 1 0 1 1 1 1.732l-1.732 1a.994.994 0 0 1-.5.134Zm1.73-10a.994.994 0 0 1-.499-.134l-1.732-1a1 1 0 0 1 1-1.732l1.732 1a1 1 0 0 1-.5 1.866ZM15 10a1 1 0 0 1-1-1 2.003 2.003 0 0 0-2-2 1 1 0 0 1 0-2 4.004 4.004 0 0 1 4 4 1 1 0 0 1-1 1Z" />
     <path d="M14 21a2 2 0 0 1-4 0" />
+  </svg>
+);
+"
+`;
+
+exports[`IconTitleSvg should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconTitleSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M20 10h-6a1 1 0 1 0 0 2h2v7a1 1 0 1 0 2 0v-7h2a1 1 0 1 0 0-2Z" />
+    <path d="M14 6a1 1 0 1 0 0-2H4a1 1 0 1 0 0 2h4v13a1 1 0 1 0 2 0V6h4Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconUndoSvg should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconUndoSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M15.5 8H5.414l3.293-3.293a1 1 0 1 0-1.414-1.414L2.294 8.292a.998.998 0 0 0-.217 1.09c.05.123.124.234.217.326l4.999 4.999a.997.997 0 0 0 1.414 0 1 1 0 0 0 0-1.414L5.414 10H15.5c2.481 0 4.5 2.019 4.5 4.5S17.981 19 15.5 19a1 1 0 1 0 0 2c3.584 0 6.5-2.916 6.5-6.5S19.084 8 15.5 8Z" />
   </svg>
 );
 "

@@ -3717,11 +3717,73 @@ exports[`IconBluetooth 1`] = `
 }
 `;
 
+exports[`IconBold 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconBookmark 1`] = `
 {
   exportType: component,
   props: {
     active?: boolean
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconBulletList 1`] = `
+{
+  exportType: component,
+  props: {
     alignY?: 
         | "lowercase"
         | "uppercase"
@@ -4873,6 +4935,37 @@ exports[`IconInvoice 1`] = `
 }
 `;
 
+exports[`IconItalic 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconLanguage 1`] = `
 {
   exportType: component,
@@ -5307,6 +5400,37 @@ exports[`IconNotification 1`] = `
 }
 `;
 
+exports[`IconNumberedList 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconOverflow 1`] = `
 {
   exportType: component,
@@ -5680,6 +5804,37 @@ exports[`IconQR 1`] = `
 `;
 
 exports[`IconRecommended 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconRedo 1`] = `
 {
   exportType: component,
   props: {
@@ -6534,6 +6689,68 @@ exports[`IconTime 1`] = `
 `;
 
 exports[`IconTip 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconTitle 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconUndo 1`] = `
 {
   exportType: component,
   props: {
