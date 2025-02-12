@@ -11,7 +11,7 @@ jobs:
     env:
       CI: true
       PREVIEW_DIR: preview
-      DAYS_OLD: 12
+      DAYS_OLD: 7
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
