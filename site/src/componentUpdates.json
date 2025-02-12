@@ -4731,5 +4731,35 @@
         "summary": "Add `tabIndex` support to all form fields\n\nEnsure the `tabIndex` prop is available on all form fields, enabling greater control over which elements appear in the keyboard navigation flow.\n\nIn line with [MDN guidance], the only supported values are `0` and `-1` to ensure best practice for keyboard navigation and assistive technologies.\n\n**EXAMPLE USAGE:**\n```jsx\n<TextField tabIndex={-1} />\n```\n\n[MDN guidance]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex#:~:text=only%20use%200%20and%20%2D1%20as%20tabindex%20values"
       }
     ]
+  },
+  {
+    "version": "33.6.0",
+    "updates": [
+      {
+        "new": [
+          "IconBulletList",
+          "IconNumberedList"
+        ],
+        "summary": "Add new icons to represent other list types.\nSits alongside `IconChecklist` which already exists.\n\n```tsx\n<IconBulletList />\n<IconNumberedList />\n```\n\nAs a result we have deprecated `IconList` in favour of the more specific list types. `IconList` will be removed in a future major version.\n\n### MIGRATION GUIDE\n\n```diff\n-<IconList />\n+<IconBulletList />\n```"
+      },
+      {
+        "updated": [
+          "IconHeart",
+          "IconLink",
+          "IconLinkBroken"
+        ],
+        "summary": "**IconHeart, IconLink, IconLinkBroken:** Update design"
+      },
+      {
+        "new": [
+          "IconBold",
+          "IconItalic",
+          "IconRedo",
+          "IconTitle",
+          "IconUndo"
+        ],
+        "summary": "Add new icons to support rich text editors and formatting.\n\n```tsx\n<IconBold />\n<IconItalic />\n<IconTitle />\n<IconRedo />\n<IconUndo />\n```"
+      }
+    ]
   }
 ]
