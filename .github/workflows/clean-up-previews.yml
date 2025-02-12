@@ -1,6 +1,8 @@
 name: Clean up preview site
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: '00 8 * * 1'
 
 jobs:
   delete:
@@ -9,21 +11,32 @@ jobs:
     env:
       CI: true
       PREVIEW_DIR: preview
-      DAYS_OLD: 7
+      DAYS_OLD: 12
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          fetch-depth: 0
 
       - name: Delete old preview directories
         run: |
-          for i in `find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -mtime +${{ env.DAYS_OLD }} -print`; do echo -e "Deleting directory $i";rm -rf $i; done
-          if [[ $(git status --porcelain --untracked-files=no | wc -l) -eq 0 ]]; then echo "No directories to clean up";exit 0; fi
+          DATE_FROM_DAYS_AGO=`date --date="${{env.DAYS_OLD}} days ago" +"%Y"-"%m"-"%d"`;
+          for i in $(find ${{ env.PREVIEW_DIR }} -mindepth 1 -maxdepth 1 -type d -print); do
+            if [[ $(git log --before=$DATE_FROM_DAYS_AGO $i | tail -1) ]]; then
+              echo "Deleting directory $i"
+              rm -rf $i
+            fi
+          done
+          if [[ $(git status --porcelain --untracked-files=no | wc -l) -eq 0 ]]; then
+            echo "No directories to clean up"
+            exit 0
+          fi
           git config --local user.name 'GitHub Actions'
           git config --local user.email 'actions@github.com'
           git add ${{ env.PREVIEW_DIR }}
           git commit --quiet -m "Clean up old preview directories"
+          git pull --rebase
           git push
         shell: bash
         env:
