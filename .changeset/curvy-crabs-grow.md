@@ -16,7 +16,7 @@ Sits alongside `IconChecklist` which already exists.
 <IconNumberedList />
 ```
 
-As a result we are deprecated `IconList` in favour of the more specific list types. The `IconList` will be removed in a future major version.
+As a result we have deprecated `IconList` in favour of the more specific list types. `IconList` will be removed in a future major version.
 
 ### MIGRATION GUIDE
 
