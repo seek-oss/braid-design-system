@@ -62,6 +62,6 @@ export const createAccessibilityProps = ({
         'aria-label': `${label}${description ? ` - ${description}` : ''}${
           groupHeading ? ` (${groupHeading})` : ''
         }`,
-      } as const),
+      }) as const,
   };
 };

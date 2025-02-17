@@ -244,7 +244,7 @@
     "fs-extra": "^10.1.0",
     "html-validate": "^7.1.1",
     "playroom": "0.39.1",
-    "prettier": "^2.8.8",
+    "prettier": "^3.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.3.0",
