@@ -80,7 +80,7 @@
     "jest-watch-typeahead": "^2.2.2",
     "js-yaml": "^4.1.0",
     "nx": "^15.9.7",
-    "prettier": "^2.8.8",
+    "prettier": "^3.4.1",
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
     "tsx": "^4.19.2",
@@ -94,9 +94,6 @@
     "patchedDependencies": {
       "panzoom": "patches/panzoom.patch",
       "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"
-    },
-    "overrides": {
-      "eslint": "^9.18.0"
     }
   },
   "manypkg": {

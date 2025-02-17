@@ -31,7 +31,7 @@ export default ({ uniqueId }: TabA11yParams) => ({
       role: 'tablist',
       'aria-orientation': 'horizontal',
       'aria-label': label,
-    } as const),
+    }) as const,
   tabProps: ({ tabIndex, isSelected }: TabParams) => ({
     role: 'tab',
     tabIndex: isSelected ? undefined : -1,
