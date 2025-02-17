@@ -60,7 +60,7 @@ const transformWithBabel = async (fileName: string) => {
   );
 
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
-  const snippetsIndexCode = prettier.format(
+  const snippetsIndexCode = await prettier.format(
     ` ${importStatements.sort().join('\n')}
 
       export default Object.entries({
