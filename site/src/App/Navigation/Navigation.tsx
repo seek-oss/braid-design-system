@@ -17,7 +17,6 @@ import { useState, useRef, useEffect, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useLocation, Outlet } from 'react-router-dom';
 import { useWindowScroll, useInterval } from 'react-use';
-
 import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 
 import { useConfig } from '../ConfigContext';
