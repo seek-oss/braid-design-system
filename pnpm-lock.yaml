@@ -6,10 +6,10 @@ settings:
 
 patchedDependencies:
   panzoom:
-    hash: 6ozlkenow5f4yy4lstsbsrrv4i
+    hash: 5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30
     path: patches/panzoom.patch
   yoga-layout-prebuilt@1.10.0:
-    hash: bohigvh5hpnbocmxkl4e5ainua
+    hash: 8dd4ed3f7e8f06e1faa05995fcf59ba0a2f949af4a34c35ac4c633399f999bf1
     path: patches/yoga-layout-prebuilt@1.10.0.patch
 
 importers:
@@ -438,7 +438,7 @@ importers:
         version: 11.0.4(@babel/core@7.26.9)
       yoga-layout-prebuilt:
         specifier: ^1.10.0
-        version: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
+        version: 1.10.0(patch_hash=8dd4ed3f7e8f06e1faa05995fcf59ba0a2f949af4a34c35ac4c633399f999bf1)
 
   packages/docs-ui:
     dependencies:
@@ -591,7 +591,7 @@ importers:
         version: 8.6.0
       panzoom:
         specifier: ^9.4.2
-        version: 9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
+        version: 9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       playroom:
         specifier: 0.39.1
         version: 0.39.1(@swc/core@1.10.16)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -16059,7 +16059,7 @@ snapshots:
       widest-line: 3.1.0
       wrap-ansi: 6.2.0
       ws: 7.5.10
-      yoga-layout-prebuilt: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
+      yoga-layout-prebuilt: 1.10.0(patch_hash=8dd4ed3f7e8f06e1faa05995fcf59ba0a2f949af4a34c35ac4c633399f999bf1)
     optionalDependencies:
       '@types/react': 18.3.18
     transitivePeerDependencies:
@@ -17665,7 +17665,7 @@ snapshots:
 
   pako@0.2.9: {}
 
-  panzoom@9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i):
+  panzoom@9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30):
     dependencies:
       amator: 1.1.0
       ngraph.events: 1.2.2
@@ -20776,6 +20776,6 @@ snapshots:
 
   yocto-queue@1.1.1: {}
 
-  yoga-layout-prebuilt@1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua):
+  yoga-layout-prebuilt@1.10.0(patch_hash=8dd4ed3f7e8f06e1faa05995fcf59ba0a2f949af4a34c35ac4c633399f999bf1):
     dependencies:
       '@types/yoga-layout': 1.9.2
