@@ -5,8 +5,8 @@ import type { DeepPartial } from 'utility-types';
 import seekJobs from '../seekJobs/tokens';
 import type { BraidTokens } from '../tokenType';
 
-const brandAccent = '#007BC3';
-const brandAccentLight = '#a8dfff';
+const brandAccent = '#3b72da';
+const brandAccentLight = '#bdd4ff';
 
 const tokens: DeepPartial<BraidTokens> = {
   name: 'seekBusiness',
