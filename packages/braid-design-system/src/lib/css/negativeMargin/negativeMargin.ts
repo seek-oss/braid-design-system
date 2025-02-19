@@ -1,8 +1,10 @@
 import clsx from 'clsx';
-import type { Space } from '../atoms/atoms';
-import type { RequiredResponsiveValue } from '../atoms/sprinkles.css';
+
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
+import type { Space } from '../atoms/atoms';
+
 import * as styles from './negativeMargin.css';
+import type { RequiredResponsiveValue } from '../atoms/sprinkles.css';
 
 const directionStyles = {
   top: styles.top,

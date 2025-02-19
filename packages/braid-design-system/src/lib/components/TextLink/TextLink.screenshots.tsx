@@ -1,5 +1,5 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Box,
   Heading,
@@ -13,9 +13,10 @@ import {
   Strong,
   IconLink,
 } from '../';
-import { heading, tone, textSizeTrimmed } from '../../css/typography.css';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
+
+import { heading, tone, textSizeTrimmed } from '../../css/typography.css';
 
 const textSizes = [
   undefined, // test default case

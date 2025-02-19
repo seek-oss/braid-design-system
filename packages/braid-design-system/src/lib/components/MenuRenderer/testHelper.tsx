@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import { useState } from 'react';
 import {
   type RenderResult,
   render,
@@ -7,13 +6,16 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BraidTestProvider } from '../../../entries/test';
+import { type FunctionComponent, useState } from 'react';
+
 import { MenuItem, MenuItemLink, MenuItemCheckbox, MenuItemDivider } from '..';
+import { BraidTestProvider } from '../../../entries/test';
+
 import type { MenuRendererProps } from './MenuRenderer';
 
 interface MenuTestSuiteParams {
   name: string;
-  Component: React.FunctionComponent<
+  Component: FunctionComponent<
     Pick<MenuRendererProps, 'onOpen' | 'onClose' | 'children'>
   >;
 }

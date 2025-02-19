@@ -1,8 +1,9 @@
-import prettier from 'prettier';
-import fs from 'fs-extra';
-import glob from 'fast-glob';
 import path from 'path';
+
 import { transformFileAsync } from '@babel/core';
+import glob from 'fast-glob';
+import fs from 'fs-extra';
+import prettier from 'prettier';
 
 import { debugLog, relativeTo } from './utils';
 
@@ -59,7 +60,7 @@ const transformWithBabel = async (fileName: string) => {
   );
 
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
-  const snippetsIndexCode = prettier.format(
+  const snippetsIndexCode = await prettier.format(
     ` ${importStatements.sort().join('\n')}
 
       export default Object.entries({

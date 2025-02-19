@@ -12,9 +12,9 @@ pnpm-lock.yaml
 **/playroom/snippets/
 
 # backwards-compatible entry points (with package.json)
-/color-mode/
-/css/
-/playroom/
-/reset/
-/test/
-/themes/
+packages/braid-design-system/color-mode/
+packages/braid-design-system/css/
+packages/braid-design-system/playroom/
+packages/braid-design-system/reset/
+packages/braid-design-system/test/
+packages/braid-design-system/themes/

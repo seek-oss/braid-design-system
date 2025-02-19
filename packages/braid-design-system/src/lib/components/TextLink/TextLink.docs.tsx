@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Box,
   Inline,
@@ -10,7 +11,7 @@ import {
   IconLink,
   IconArrow,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -247,6 +248,17 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TextLink
+          data={{ testid: 'text-link-1' }}
+          // => data-testid="text-link-1"
+        >
+          ...
+        </TextLink>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

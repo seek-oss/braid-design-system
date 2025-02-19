@@ -16,7 +16,7 @@
       }
     },
     "start:playroom": {
-      "dependsOn": ["generate"],
+      "dependsOn": ["generate", "^dev"],
       "executor": "nx:run-script",
       "options": {
         "script": "start:playroom"
@@ -36,7 +36,7 @@
       }
     },
     "build:playroom": {
-      "dependsOn": ["generate"],
+      "dependsOn": ["generate", "^dev"],
       "inputs": ["^default"],
       "outputs": ["dist/playroom"],
       "executor": "nx:run-script",

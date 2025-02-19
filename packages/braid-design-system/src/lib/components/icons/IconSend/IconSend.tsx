@@ -1,6 +1,6 @@
-import React from 'react';
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
+
 import { IconSendSvg } from './IconSendSvg';
 
 export type IconSendProps = IconContainerProps;

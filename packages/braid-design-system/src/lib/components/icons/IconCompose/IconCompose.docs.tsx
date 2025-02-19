@@ -1,8 +1,8 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
-import { iconDocumentation } from '../iconCommon.docs';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
 import { IconCompose, Heading, Stack } from '../../';
+import { iconDocumentation } from '../iconCommon.docs';
 
 const docs: ComponentDocs = {
   category: 'Icon',
@@ -15,7 +15,7 @@ const docs: ComponentDocs = {
       </Stack>,
     ),
   alternatives: [],
-  additional: [iconDocumentation],
+  additional: [...iconDocumentation],
 };
 
 export default docs;

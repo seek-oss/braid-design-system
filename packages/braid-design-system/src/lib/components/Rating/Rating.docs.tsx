@@ -1,8 +1,9 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import { Rating, Stack, Inline, Text, Strong, TextLink, Notice } from '../';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -134,6 +135,31 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    {
+      label: 'De-emphasizing the tone',
+      description: (
+        <>
+          <Text>
+            The Rating can be de-emphasized by setting the <Strong>tone</Strong>{' '}
+            to <Strong>neutral</Strong>.
+          </Text>
+          <Text>
+            This makes the icon(s) follow the default text colour, including
+            inverting on dark surfaces to improve contrast.
+          </Text>
+        </>
+      ),
+      Example: () => source(<Rating rating={3.2} tone="neutral" />),
+    },
+    dataAttributeDocs({
+      code: `
+        <Rating
+          data={{ testid: 'rating-1' }}
+          // => data-testid="rating-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

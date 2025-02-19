@@ -1,8 +1,8 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
-import { PageBlock } from '../';
 import source from '@braid-design-system/source.macro';
+import type { GalleryComponent } from 'site/types';
+
+import { PageBlock } from '../';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 
 export const galleryItems: GalleryComponent = {
   itemWidth: 'wide',

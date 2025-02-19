@@ -1,5 +1,7 @@
 import assert from 'assert';
-import React, {
+
+import { assignInlineVars } from '@vanilla-extract/dynamic';
+import {
   type KeyboardEvent,
   type MouseEvent,
   type ReactNode,
@@ -9,24 +11,26 @@ import React, {
   useReducer,
   useEffect,
 } from 'react';
+
+import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
-import type { ResponsiveSpace } from '../../css/atoms/atoms';
+import { BraidPortal } from '../BraidPortal/BraidPortal';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
-import { normalizeKey } from '../private/normalizeKey';
-import { getNextIndex } from '../private/getNextIndex';
 import { Overlay } from '../private/Overlay/Overlay';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
-import { type Action, actionTypes } from './MenuRenderer.actions';
-import { MenuRendererContext } from './MenuRendererContext';
-import { MenuRendererItemContext } from './MenuRendererItemContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { getNextIndex } from '../private/getNextIndex';
+import { normalizeKey } from '../private/normalizeKey';
+
+import { type Action, actionTypes } from './MenuRenderer.actions';
+import { MenuRendererContext } from './MenuRendererContext';
+import { MenuRendererItemContext } from './MenuRendererItemContext';
+
 import * as styles from './MenuRenderer.css';
-import { BraidPortal } from '../BraidPortal/BraidPortal';
-import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { vars } from '../../themes/vars.css';
 
 interface TriggerProps {
@@ -454,7 +458,7 @@ export function Menu({
           direction="vertical"
           fadeSize={size === 'standard' ? 'medium' : 'small'}
         >
-          <Box paddingY={menuYPadding}>
+          <Box paddingY={menuYPadding} className={styles.menuHeightLimit}>
             {Children.map(children, (item, i) => {
               if (isDivider(item)) {
                 dividerCount++;

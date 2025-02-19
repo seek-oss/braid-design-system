@@ -1,6 +1,9 @@
 import { createContext, useContext } from 'react';
-import type { BoxBackgroundVariant } from './Box';
+
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
+import type { BoxBackgroundVariant } from './Box';
+
 import { mapColorModeValue } from '../../css/atoms/sprinkles.css';
 
 interface BackgroundContextValue {

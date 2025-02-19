@@ -1,12 +1,14 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
-import { Pagination, Card, Notice } from '../';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
+import { Pagination, Card, Notice } from '../';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
-import { defaultPageLimit } from './Pagination';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
+
+import { defaultPageLimit } from './Pagination';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -216,6 +218,15 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Pagination
+          data={{ testid: 'pagination-1' }}
+          // => data-testid="pagination-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

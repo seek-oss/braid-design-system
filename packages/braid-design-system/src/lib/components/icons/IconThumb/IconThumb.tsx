@@ -1,7 +1,8 @@
-import React from 'react';
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
+
 import { IconThumbSvg } from './IconThumbSvg';
+
 import * as styles from './IconThumb.css';
 
 export type IconThumbProps = IconContainerProps & {

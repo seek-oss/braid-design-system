@@ -1,5 +1,6 @@
-import React from 'react';
+import { calc } from '@vanilla-extract/css-utils';
 import type { ComponentScreenshot } from 'site/types';
+
 import {
   Box,
   MenuRenderer,
@@ -11,11 +12,11 @@ import {
   IconProfile,
   Inline,
 } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Menu } from './MenuRenderer';
 import { vars } from '../../../entries/css';
-import { calc } from '@vanilla-extract/css-utils';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
+
+import { Menu } from './MenuRenderer';
 
 const defaultProps = {
   offsetSpace: 'none',
@@ -353,6 +354,55 @@ export const screenshots: ComponentScreenshot = {
             <MenuItemDivider />
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+        </Inline>
+      ),
+    },
+    {
+      label: 'Height limit',
+      Example: () => (
+        <Inline space="medium">
+          <Menu {...defaultProps}>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+          </Menu>
+          <Menu {...defaultProps} size="small">
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
+            <MenuItem onClick={() => {}}>Button</MenuItem>
           </Menu>
         </Inline>
       ),

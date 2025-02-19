@@ -1,11 +1,11 @@
-import React, {
+import curry from 'lodash.curry';
+import {
   type ReactNode,
   createContext,
   useContext,
   useState,
   useMemo,
 } from 'react';
-import curry from 'lodash.curry';
 
 export interface StateProp {
   stateName?: string;
@@ -132,7 +132,7 @@ export function useFallbackState<Value, Handler extends Callback>(
   const resolvedValue =
     value ??
     (stateKey
-      ? playroomState.getState(stateKey) ?? defaultValue
+      ? (playroomState.getState(stateKey) ?? defaultValue)
       : internalStateValue);
 
   return [resolvedValue, handleChange];

@@ -1,8 +1,6 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Step } from './Step';
-import { Stepper } from './Stepper';
+
 import {
   Button,
   Column,
@@ -16,6 +14,10 @@ import {
   Text,
   TextLink,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
+
+import { Step } from './Step';
+import { Stepper } from './Stepper';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -42,7 +44,7 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#x4-2-general-principles-of-landmark-design">
           General Principles of Landmark Design
         </TextLink>{' '}
-        it is neccessary for it to have an <Strong>aria-label</Strong>.
+        it is necessary for it to have an <Strong>aria-label</Strong>.
       </Text>
       <Text tone="promote" id="translations">
         <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
@@ -265,11 +267,7 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             This makes the highlight colour follow the default text colour,
-            including{' '}
-            <TextLink href="#contextual-design">
-              inverting on dark surfaces
-            </TextLink>{' '}
-            to improve contrast.
+            including inverting on dark surfaces to improve contrast.
           </Text>
         </>
       ),
@@ -307,6 +305,17 @@ const docs: ComponentDocs = {
           </Stepper>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Stepper
+          data={{ testid: 'stepper-1' }}
+          // => data-testid="stepper-1"
+        >
+          ...
+        </Stepper>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

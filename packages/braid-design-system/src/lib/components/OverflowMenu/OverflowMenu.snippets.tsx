@@ -1,6 +1,7 @@
-import type { Snippets } from '../private/Snippets';
-import { OverflowMenu, MenuItem } from '../../playroom/components';
 import source from '@braid-design-system/source.macro';
+
+import { OverflowMenu, MenuItem } from '../../playroom/components';
+import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {

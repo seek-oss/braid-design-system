@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider } from '../../../entries/test';
+import userEvent from '@testing-library/user-event';
+
 import { Dropdown } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('Dropdown', () => {
   it('associates field with label correctly', () => {
@@ -239,5 +240,71 @@ describe('Dropdown', () => {
     expect(select.selectedIndex).toBe(0);
     expect(select.options.length).toEqual(1);
     expect(select.options[0].text).toEqual('1');
+  });
+
+  it('field should not be accessible with tabindex of -1', async () => {
+    render(
+      <BraidTestProvider>
+        <Dropdown
+          id="field"
+          label="My dropdown"
+          value="1"
+          onChange={() => {}}
+          tabIndex={-1}
+        >
+          <option>1</option>
+        </Dropdown>
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('field should be accessible with tabindex of 0', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Dropdown
+          id="field"
+          label="My dropdown"
+          value="1"
+          onChange={() => {}}
+          tabIndex={0}
+        >
+          <option>1</option>
+        </Dropdown>
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByRole('combobox')).toHaveFocus();
+  });
+
+  it('field should be accessible with a tabindex of undefined', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Dropdown
+          id="field"
+          label="My dropdown"
+          value="1"
+          onChange={() => {}}
+          tabIndex={undefined}
+        >
+          <option>1</option>
+        </Dropdown>
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByRole('combobox')).toHaveFocus();
   });
 });

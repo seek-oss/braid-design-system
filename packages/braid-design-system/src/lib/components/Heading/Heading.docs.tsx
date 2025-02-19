@@ -1,6 +1,6 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Box,
   Heading,
@@ -11,6 +11,7 @@ import {
   IconImage,
   Divider,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -183,6 +184,17 @@ const docs: ComponentDocs = {
           </Box>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Heading
+          data={{ testid: 'heading-1' }}
+          // => data-testid="heading-1"
+        >
+          ...
+        </Heading>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

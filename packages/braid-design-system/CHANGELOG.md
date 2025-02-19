@@ -1,5 +1,121 @@
 # braid-design-system
 
+## 33.6.0
+
+### Minor Changes
+
+- Add new icons to represent other list types. ([#1711](https://github.com/seek-oss/braid-design-system/pull/1711))
+  Sits alongside `IconChecklist` which already exists.
+
+  ```tsx
+  <IconBulletList />
+  <IconNumberedList />
+  ```
+
+  As a result we have deprecated `IconList` in favour of the more specific list types. `IconList` will be removed in a future major version.
+
+  ### MIGRATION GUIDE
+
+  ```diff
+  -<IconList />
+  +<IconBulletList />
+  ```
+
+- Add new icons to support rich text editors and formatting. ([#1711](https://github.com/seek-oss/braid-design-system/pull/1711))
+
+  ```tsx
+  <IconBold />
+  <IconItalic />
+  <IconTitle />
+  <IconRedo />
+  <IconUndo />
+  ```
+
+### Patch Changes
+
+- **IconHeart, IconLink, IconLinkBroken:** Update design ([#1711](https://github.com/seek-oss/braid-design-system/pull/1711))
+
+## 33.5.0
+
+### Minor Changes
+
+- Add `tabIndex` support to all form fields ([#1697](https://github.com/seek-oss/braid-design-system/pull/1697))
+
+  Ensure the `tabIndex` prop is available on all form fields, enabling greater control over which elements appear in the keyboard navigation flow.
+
+  In line with [MDN guidance], the only supported values are `0` and `-1` to ensure best practice for keyboard navigation and assistive technologies.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <TextField tabIndex={-1} />
+  ```
+
+  [MDN guidance]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex#:~:text=only%20use%200%20and%20%2D1%20as%20tabindex%20values
+
+### Patch Changes
+
+- **Accordion**: Fix `data` prop parsing ([#1698](https://github.com/seek-oss/braid-design-system/pull/1698))
+
+  Ensure the `data` prop is correctly passed through to `Stack` internally, and validate `data-*` attributes are not being passed in incorrectly.
+
+## 33.4.0
+
+### Minor Changes
+
+- **theme:** Expose web fonts `href` on runtime tokens ([#1685](https://github.com/seek-oss/braid-design-system/pull/1685))
+
+  Extend the `webFonts` runtime token to include the `href` property containing the web font URL.
+  This enables custom handling of web fonts beyond injecting the pre-constructed `link` tag(s).
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  import seekJobs from 'braid-design-system/themes/seekJobs';
+
+  const webFontHrefs = seekJobs.webFonts.map(({ href }) => href);
+
+  // => [ "https://www.seek.com.au/static/shared-web/seeksans.css" ]
+  ```
+
+- **Rating:** Adopt `brandAccent` tone ([#1693](https://github.com/seek-oss/braid-design-system/pull/1693))
+
+  The stars in the `Rating` component now use the `brandAccent` tone rather than the `rating` token from the theme.
+
+  As a result the `rating` variable has been deprecated and will be removed in a future release.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  # styles.css.ts
+  import { vars } from 'braid-design-system/css';
+
+  export const myStyle = style({
+  -  color: vars.foreground.rating,
+  +  color: vars.foreground.brandAccent,
+  });
+  ```
+
+- **Rating:** Add `tone` support ([#1693](https://github.com/seek-oss/braid-design-system/pull/1693))
+
+  For usages where the `Rating` component should not be accentuated, the `tone` prop can be used to apply `neutral` tone.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Rating tone="neutral" />
+  ```
+
+### Patch Changes
+
+- **AccordionItem**: Fix issue that caused `data` props to be incorrectly parsed. ([#1680](https://github.com/seek-oss/braid-design-system/pull/1680))
+
+- **MenuRenderer, OverflowMenu**: Ensure the menu has a maximum height. ([#1679](https://github.com/seek-oss/braid-design-system/pull/1679))
+
+- Apply import order rules internally ([#1689](https://github.com/seek-oss/braid-design-system/pull/1689))
+
+- Remove default React import internally ([#1690](https://github.com/seek-oss/braid-design-system/pull/1690))
+
 ## 33.3.0
 
 ### Minor Changes

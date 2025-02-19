@@ -1,13 +1,17 @@
+import source from '@braid-design-system/source.macro';
 import { calc } from '@vanilla-extract/css-utils';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import React, { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import { Box, Notice, Stack, Strong, Text, TextLink, Tiles } from '..';
-import { vars } from '../../themes/vars.css';
-import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
+
 import { Page } from './Page';
+
 import { heightLimit } from './Page.css';
+import { vars } from '../../themes/vars.css';
 
 const screenHeight = 350;
 
@@ -160,6 +164,17 @@ const docs: ComponentDocs = {
           </Page>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Page
+          data={{ testid: 'page-1' }}
+          // => data-testid="page-1"
+        >
+          ...
+        </Page>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

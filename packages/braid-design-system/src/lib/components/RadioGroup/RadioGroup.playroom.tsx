@@ -1,7 +1,9 @@
-import React from 'react';
 import type { Optional } from 'utility-types';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+import { validTabIndexes } from '../private/validateTabIndex';
+
 import {
   type RadioGroupBaseProps,
   type RadioGroupLabelProps,
@@ -18,6 +20,7 @@ export const RadioGroup = ({
   value,
   onChange,
   children,
+  tabIndex,
   ...restProps
 }: PlayroomRadioProps) => {
   const fallbackId = useFallbackId();
@@ -29,6 +32,7 @@ export const RadioGroup = ({
       id={id ?? fallbackId}
       value={state}
       onChange={handleChange}
+      tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
     >
       {children}
     </BraidRadioGroup>

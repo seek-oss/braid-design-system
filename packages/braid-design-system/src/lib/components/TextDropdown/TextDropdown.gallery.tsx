@@ -1,7 +1,7 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
-import { Heading, Strong, Text, TextDropdown } from '..';
 import source from '@braid-design-system/source.macro';
+import type { GalleryComponent } from 'site/types';
+
+import { Heading, Strong, Text, TextDropdown } from '..';
 
 export const galleryItems: GalleryComponent = {
   examples: [

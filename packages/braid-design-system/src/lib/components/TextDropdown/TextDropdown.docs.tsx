@@ -1,7 +1,8 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
-import { Stack, Strong, Text, TextLink, TextDropdown, Notice } from '..';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
+import { Stack, Strong, Text, TextLink, TextDropdown, Notice } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -103,6 +104,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TextDropdown
+          data={{ testid: 'text-dropdown-1' }}
+          // => data-testid="text-dropdown-1"
+        >
+          ...
+        </TextDropdown>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -1,7 +1,8 @@
 import robotoMetrics from '@capsizecss/metrics/roboto';
-import type { DeepPartial } from 'utility-types';
-import { darken, lighten, rgba, saturate } from 'polished';
 import merge from 'lodash.merge';
+import { darken, lighten, rgba, saturate } from 'polished';
+import type { DeepPartial } from 'utility-types';
+
 import { palette } from '../../color/palette';
 import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
 
@@ -254,7 +255,7 @@ export const makeTokens = ({
         positiveLight: palette.mint['300'],
         promote: legacyViolet['700'],
         promoteLight: legacyViolet['300'],
-        rating: '#f57c00',
+        rating: palette.seekPink['500'],
         secondary: palette.grey['500'],
         secondaryInverted: rgba('#fff', 0.65),
       },

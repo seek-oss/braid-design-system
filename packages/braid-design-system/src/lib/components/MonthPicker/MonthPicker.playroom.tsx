@@ -1,7 +1,9 @@
-import React from 'react';
 import type { Optional } from 'utility-types';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+import { validTabIndexes } from '../private/validateTabIndex';
+
 import {
   type MonthPickerBaseProps,
   type MonthPickerLabelProps,
@@ -17,6 +19,7 @@ export const MonthPicker = ({
   stateName,
   value,
   onChange,
+  tabIndex,
   ...restProps
 }: PlayroomMonthPickerProps) => {
   const fallbackId = useFallbackId();
@@ -32,6 +35,7 @@ export const MonthPicker = ({
       id={id ?? fallbackId}
       value={state}
       onChange={handleChange}
+      tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
       {...restProps}
     />
   );

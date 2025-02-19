@@ -1,6 +1,0 @@
-dist*/
-storybook-static
-node_modules/
-
-!/.*.js
-!/*.js

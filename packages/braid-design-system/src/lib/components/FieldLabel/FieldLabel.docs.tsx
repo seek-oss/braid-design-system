@@ -1,6 +1,7 @@
-import React, { type ReactNode } from 'react';
 import source from '@braid-design-system/source.macro';
+import type { ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
+
 import {
   FieldLabel,
   Stack,
@@ -13,6 +14,7 @@ import {
   Notice,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box maxWidth="xsmall">{children}</Box>
@@ -205,6 +207,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <FieldLabel
+          data={{ testid: 'field-label-1' }}
+          // => data-testid="field-label-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

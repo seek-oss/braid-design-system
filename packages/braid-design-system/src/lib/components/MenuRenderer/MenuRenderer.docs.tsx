@@ -1,6 +1,6 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Box,
   MenuRenderer,
@@ -23,6 +23,7 @@ import {
   Badge,
   List,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -518,6 +519,17 @@ const docs: ComponentDocs = {
         </>
       ),
     },
+    dataAttributeDocs({
+      code: `
+        <MenuRenderer
+          data={{ testid: 'menu-1' }}
+          // => data-testid="menu-1"
+        >
+          ...
+        </MenuRenderer>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

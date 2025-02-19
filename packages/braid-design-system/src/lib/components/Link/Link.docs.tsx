@@ -1,8 +1,9 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import { Link, Text, TextLink } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Logic',
@@ -30,6 +31,18 @@ const docs: ComponentDocs = {
         </Text>
       ),
     },
+    dataAttributeDocs({
+      code: `
+        <Link
+          data={{ testid: 'link-1' }}
+          // => data-testid="link-1"
+        >
+          ...
+        </Link>
+      `,
+      supportsNativeSyntax: true,
+      componentName: 'Link',
+    }),
   ],
 };
 

@@ -1,5 +1,6 @@
 import appleSystemMetrics from '@capsizecss/metrics/appleSystem';
 import { darken, lighten, rgba } from 'polished';
+
 import { palette } from '../../color/palette';
 import { type BraidTokens, extractFontMetricsForTheme } from '../tokenType';
 

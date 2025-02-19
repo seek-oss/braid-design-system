@@ -1,6 +1,6 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   MenuItemCheckbox,
   Text,
@@ -12,6 +12,7 @@ import {
   Inline,
   IconChevron,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -131,6 +132,17 @@ const docs: ComponentDocs = {
           </Inline>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <MenuItemCheckbox
+          data={{ testid: 'menu-item-checkbox-1' }}
+          // => data-testid="menu-item-checkbox-1"
+        >
+          ...
+        </MenuItemCheckbox>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

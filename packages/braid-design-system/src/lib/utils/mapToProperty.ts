@@ -1,4 +1,5 @@
 import type { Properties } from 'csstype';
+
 import type { Breakpoint } from '../css/breakpoints';
 import { responsiveStyle } from '../css/responsiveStyle';
 

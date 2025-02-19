@@ -1,7 +1,6 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
-import { iconDocumentation } from '../iconCommon.docs';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
 import {
   IconEnlarge,
   Heading,
@@ -11,6 +10,7 @@ import {
   Inline,
   ButtonIcon,
 } from '../../';
+import { iconDocumentation } from '../iconCommon.docs';
 
 const docs: ComponentDocs = {
   category: 'Icon',

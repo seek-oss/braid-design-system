@@ -1,6 +1,6 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
 import {
   TooltipRenderer,
   Text,
@@ -12,11 +12,13 @@ import {
   Strong,
   Button,
 } from '..';
+
 import {
   type TooltipRendererProps,
   StaticTooltipProvider,
   TooltipTextDefaultsProvider,
 } from './TooltipRenderer';
+
 import { constants } from './TooltipRenderer.css';
 
 const StaticTooltip = ({

@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+
 import type { TableProps } from './Table';
 
 export const TableContext = createContext<

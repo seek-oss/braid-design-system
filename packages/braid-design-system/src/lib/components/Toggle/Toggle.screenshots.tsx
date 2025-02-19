@@ -1,5 +1,5 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Toggle, Box, Tiles, Inline, Text, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';

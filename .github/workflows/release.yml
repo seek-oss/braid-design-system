@@ -57,4 +57,3 @@ jobs:
           clean-exclude: |
             /preview/*
             /grad-connection/*
-          single-commit: true

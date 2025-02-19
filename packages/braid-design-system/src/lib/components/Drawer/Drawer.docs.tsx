@@ -1,6 +1,7 @@
-import React, { type ComponentProps, type ReactElement } from 'react';
-import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
+import type { ComponentProps, ReactElement } from 'react';
+import type { ComponentDocs } from 'site/types';
+
 import {
   Drawer,
   Button,
@@ -14,6 +15,8 @@ import {
   Box,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
+
 import { DrawerContent } from './Drawer';
 import { DrawerPreview } from './Drawer.screenshots';
 
@@ -404,6 +407,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Drawer
+          data={{ testid: 'drawer-1' }}
+          // => data-testid="drawer-1"
+        >
+          ...
+        </Drawer>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { Optional } from 'utility-types';
+
 import { useFallbackId } from '../../playroom/utils';
+import { validTabIndexes } from '../private/validateTabIndex';
+
 import {
   type TextDropdownProps,
   TextDropdown as BraidTextDropdown,
@@ -41,6 +44,7 @@ export function TextDropdown<Value>({
   label,
   onChange,
   options = fallbackOptions,
+  tabIndex,
   ...restProps
 }: PlayroomTextDropdownProps<Value | string>) {
   const fallbackId = useFallbackId();
@@ -65,6 +69,7 @@ export function TextDropdown<Value>({
       value={internalValue}
       options={internalOptions}
       onChange={onChange ? onChange : setInternalValue}
+      tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
       {...restProps}
     />
   );

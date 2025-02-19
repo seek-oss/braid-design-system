@@ -1,8 +1,9 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import { Stack, Text, TextLink, Strong, Divider, Notice } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -122,6 +123,17 @@ const docs: ComponentDocs = {
         </Stack>,
       ).code,
     },
+    dataAttributeDocs({
+      code: `
+        <Stack
+          data={{ testid: 'stack-1' }}
+          // => data-testid="stack-1"
+        >
+          ...
+        </Stack>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

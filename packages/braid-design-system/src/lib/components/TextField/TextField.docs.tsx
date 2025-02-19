@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   IconSearch,
   TextField,
@@ -13,7 +14,7 @@ import {
   IconLanguage,
   TextDropdown,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -390,6 +391,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TextField
+          data={{ testid: 'text-field-1' }}
+          // => data-testid="text-field-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

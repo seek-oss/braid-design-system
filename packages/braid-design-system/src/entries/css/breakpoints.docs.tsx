@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import {
   Box,
   Column,
@@ -11,6 +10,7 @@ import {
   TextLink,
 } from 'braid-src/lib/components';
 import { breakpoints } from 'braid-src/lib/css/breakpoints';
+import { Fragment } from 'react';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
 

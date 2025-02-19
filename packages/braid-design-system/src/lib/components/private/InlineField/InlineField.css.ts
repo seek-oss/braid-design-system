@@ -1,10 +1,12 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { vars } from '../../../themes/vars.css';
-import { hitArea } from '../touchable/hitArea';
-import { debugTouchable } from '../touchable/debugTouchable';
-import { responsiveStyle } from '../../../css/responsiveStyle';
+
 import { colorModeStyle } from '../../../css/colorModeStyle';
+import { responsiveStyle } from '../../../css/responsiveStyle';
+import { debugTouchable } from '../touchable/debugTouchable';
+import { hitArea } from '../touchable/hitArea';
+
+import { vars } from '../../../themes/vars.css';
 
 const sizes = {
   standard: 'standard',

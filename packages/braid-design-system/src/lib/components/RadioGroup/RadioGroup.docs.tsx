@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Badge,
   Text,
@@ -10,9 +11,9 @@ import {
   Tiles,
 } from '..';
 import { Placeholder } from '../../playroom/components';
-import source from '@braid-design-system/source.macro';
-import { Stack } from '../Stack/Stack';
 import { Heading } from '../Heading/Heading';
+import { Stack } from '../Stack/Stack';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -352,6 +353,20 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <RadioGroup
+          data={{ testid: 'radio-group-1' }}
+          // => data-testid="radio-group-1"
+        >
+          <RadioItem
+            data={{ testid: 'radio-item-1' }}
+            // => data-testid="radio-item-1"
+          />
+        </RadioGroup>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

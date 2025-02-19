@@ -1,7 +1,9 @@
-import React from 'react';
 import type { Optional } from 'utility-types';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+import { validTabIndexes } from '../private/validateTabIndex';
+
 import {
   type CheckboxStandaloneProps,
   CheckboxStandalone as BraidCheckboxStandalone,
@@ -15,6 +17,7 @@ export const CheckboxStandalone = ({
   stateName,
   checked,
   onChange,
+  tabIndex,
   'aria-label': ariaLabel,
   ...restProps
 }: PlayroomCheckboxStandaloneProps) => {
@@ -32,6 +35,7 @@ export const CheckboxStandalone = ({
       checked={state}
       onChange={handleChange}
       aria-label={ariaLabel ?? ''}
+      tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
       {...restProps}
     />
   );

@@ -1,7 +1,9 @@
-import React from 'react';
 import type { types as t } from '@babel/core';
 import { Box, Text } from 'ink';
+import React from 'react';
+
 import { renderToString } from '../ink/ink-to-string';
+
 import SyntaxHighlight from './SyntaxHighlight';
 
 interface CodeLineProps {

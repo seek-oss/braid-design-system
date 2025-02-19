@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Textarea,
   TextLink,
@@ -11,7 +12,7 @@ import {
   Heading,
   Alert,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -347,6 +348,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Textarea
+          data={{ testid: 'textarea-1' }}
+          // => data-testid="textarea-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

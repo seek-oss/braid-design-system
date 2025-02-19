@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   List,
   PasswordField,
@@ -9,8 +10,8 @@ import {
   TextLink,
   Heading,
 } from '../';
-import source from '@braid-design-system/source.macro';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -236,6 +237,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <PasswordField
+          data={{ testid: 'password-field-1' }}
+          // => data-testid="password-field-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

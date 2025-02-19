@@ -1,12 +1,12 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
-import type { Snippets } from '../private/Snippets';
+
 import {
   ButtonIcon,
   IconAdd,
   IconBookmark,
   IconHelp,
 } from '../../playroom/components';
+import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {

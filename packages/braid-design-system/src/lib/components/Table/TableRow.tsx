@@ -1,6 +1,12 @@
 import assert from 'assert';
+
 import { useContext, type ReactNode } from 'react';
+
 import { Box } from '../Box/Box';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
+
 import {
   TableRowContext,
   TableHeaderContext,
@@ -8,9 +14,6 @@ import {
   TableBodyContext,
   TableFooterContext,
 } from './TableContext';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
 
 import * as styles from './Table.css';
 

@@ -1,6 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import {
   Divider,
   Inline,
@@ -11,7 +11,8 @@ import {
   TextLink,
   Tiles,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -288,6 +289,17 @@ const docs: ComponentDocs = {
         </Inline>,
       ).code,
     },
+    dataAttributeDocs({
+      code: `
+        <Inline
+          data={{ testid: 'inline-1' }}
+          // => data-testid="inline-1"
+        >
+          ...
+        </Inline>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

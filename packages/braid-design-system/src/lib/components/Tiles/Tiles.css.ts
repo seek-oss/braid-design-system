@@ -1,4 +1,5 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css';
+
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 const columns = createVar();

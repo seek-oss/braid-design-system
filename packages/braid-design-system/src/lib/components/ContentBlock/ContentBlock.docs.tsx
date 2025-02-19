@@ -1,10 +1,11 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
-import { ContentBlock, Stack } from '../';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
+import { ContentBlock, Stack } from '../';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
+import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -59,6 +60,17 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <ContentBlock
+          data={{ testid: 'content-block-1' }}
+          // => data-testid="content-block-1"
+        >
+          ...
+        </ContentBlock>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -1,8 +1,9 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
-import { Autosuggest, filterSuggestions, IconSearch } from '../';
-import { makeSuggestions } from './Autosuggest.docs';
 import source from '@braid-design-system/source.macro';
+import type { GalleryComponent } from 'site/types';
+
+import { Autosuggest, filterSuggestions, IconSearch } from '../';
+
+import { makeSuggestions } from './Autosuggest.docs';
 
 export const galleryItems: GalleryComponent = {
   examples: [

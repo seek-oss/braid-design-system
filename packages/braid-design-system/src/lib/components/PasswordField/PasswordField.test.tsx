@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { render } from '@testing-library/react';
-import { BraidTestProvider } from '../../../entries/test';
-import { PasswordField } from '..';
 import userEvent from '@testing-library/user-event';
+
+import { PasswordField } from '..';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('PasswordField', () => {
   it('should render with password hidden', () => {
@@ -236,5 +236,65 @@ describe('PasswordField', () => {
     );
 
     expect(getByLabelText('My field')).toHaveAttribute('disabled');
+  });
+
+  it('field should not be accessible with tabindex of -1', async () => {
+    render(
+      <BraidTestProvider>
+        <PasswordField
+          id="password"
+          label="Password"
+          value=""
+          onChange={() => {}}
+          tabIndex={-1}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('field should be accessible with tabindex of 0', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <PasswordField
+          id="password"
+          label="Password"
+          value=""
+          onChange={() => {}}
+          tabIndex={0}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Password')).toHaveFocus();
+  });
+
+  it('field should be accessible with a tabindex of undefined', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <PasswordField
+          id="password"
+          label="Password"
+          value=""
+          onChange={() => {}}
+          tabIndex={undefined}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Password')).toHaveFocus();
   });
 });

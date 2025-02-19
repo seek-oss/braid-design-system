@@ -1,5 +1,6 @@
-import type { ReactNode } from 'react';
 import { Box, Hidden, HiddenVisually, Link, Text } from 'braid-design-system';
+import type { ReactNode } from 'react';
+
 import { MenuButton } from '../MenuButton/MenuButton';
 
 interface HeaderNavigationProps {

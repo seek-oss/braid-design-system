@@ -1,6 +1,6 @@
-import React from 'react';
-import type { ComponentDocs } from 'site/types';
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
 import {
   Actions,
   Button,
@@ -12,6 +12,8 @@ import {
   Tiles,
   Inline,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
+
 import { actionsSpace } from './Actions';
 
 const docs: ComponentDocs = {
@@ -128,6 +130,17 @@ const docs: ComponentDocs = {
           </Tiles>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Actions
+          data={{ testid: 'actions-1' }}
+          // => data-testid="actions-1"
+        >
+          ...
+        </Actions>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

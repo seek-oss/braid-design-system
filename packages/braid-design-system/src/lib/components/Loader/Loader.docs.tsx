@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Loader,
   Columns,
@@ -12,9 +13,10 @@ import {
   Button,
   Divider,
 } from '../';
-import source from '@braid-design-system/source.macro';
-import { animationDelayValueInMs } from './Loader.css';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
+
+import { animationDelayValueInMs } from './Loader.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -123,6 +125,15 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Loader
+          data={{ testid: 'loader-1' }}
+          // => data-testid="loader-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

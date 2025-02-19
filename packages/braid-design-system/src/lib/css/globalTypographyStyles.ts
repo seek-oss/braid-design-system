@@ -1,6 +1,8 @@
 import type { StyleRule } from '@vanilla-extract/css';
-import { vars } from '../../lib/themes/vars.css';
+
 import { responsiveStyle } from './responsiveStyle';
+
+import { vars } from '../../lib/themes/vars.css';
 
 interface GlobalTextStyleProps {
   weight?: keyof typeof vars.textWeight;

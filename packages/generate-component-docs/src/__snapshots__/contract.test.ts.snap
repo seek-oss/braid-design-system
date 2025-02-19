@@ -132,6 +132,9 @@ exports[`Autosuggest 1`] = `
     suggestions: 
         | (value: AutosuggestValue<Value>) => Suggestions<Value>
         | Suggestions<Value>
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -473,7 +476,14 @@ exports[`Box 1`] = `
     aria-valuetext?: string
     as?: string
     async?: boolean
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoComplete?: string
     autoCorrect?: string
     autoFocus?: boolean
@@ -808,6 +818,14 @@ exports[`Box 1`] = `
         | false
         | true
     encType?: string
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     flexDirection?: 
         | "column"
         | "columnReverse"
@@ -1281,8 +1299,8 @@ exports[`Box 1`] = `
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
-        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1980,8 +1998,8 @@ exports[`BoxRenderer 1`] = `
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "relative" | "absolute" | "fixed" | null>
-        | { mobile?: "relative" | "absolute" | "fixed" | undefined; tablet?: "relative" | "absolute" | "fixed" | undefined; desktop?: "relative" | "absolute" | "fixed" | undefined; wide?: "relative" | "absolute" | "fixed" | undefined; }
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
     right?: 0
     textAlign?: 
         | "center"
@@ -2032,7 +2050,7 @@ exports[`BraidProvider 1`] = `
         | FunctionComponent<LinkComponentProps>
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
-    theme: { vanillaTheme: string; name: string; displayName: string; legacy: boolean; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; }[]; space: { grid: number; space: { gutter: number; ... 7 more ...; xxxlarge: number; }; }; color: { ...; }; backgroundLightness: Record<...>; }
+    theme: { vanillaTheme: string; name: string; displayName: string; legacy: boolean; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; href: string; }[]; space: { grid: number; space: { ...; }; }; color: { ...; }; backgroundLightness: Record<...>; }
 },
 }
 `;
@@ -2345,7 +2363,14 @@ exports[`ButtonLink 1`] = `
     aria-valuemin?: number
     aria-valuenow?: number
     aria-valuetext?: string
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoCorrect?: string
     autoFocus?: boolean
     autoSave?: string
@@ -2376,6 +2401,14 @@ exports[`ButtonLink 1`] = `
         | "true"
         | false
         | true
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -2757,6 +2790,9 @@ exports[`Checkbox 1`] = `
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tone?: 
         | "critical"
         | "neutral"
@@ -2793,6 +2829,9 @@ exports[`CheckboxStandalone 1`] = `
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tone?: 
         | "critical"
         | "neutral"
@@ -3042,6 +3081,9 @@ exports[`Dropdown 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -3675,11 +3717,73 @@ exports[`IconBluetooth 1`] = `
 }
 `;
 
+exports[`IconBold 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconBookmark 1`] = `
 {
   exportType: component,
   props: {
     active?: boolean
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconBulletList 1`] = `
+{
+  exportType: component,
+  props: {
     alignY?: 
         | "lowercase"
         | "uppercase"
@@ -4831,6 +4935,37 @@ exports[`IconInvoice 1`] = `
 }
 `;
 
+exports[`IconItalic 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconLanguage 1`] = `
 {
   exportType: component,
@@ -5265,6 +5400,37 @@ exports[`IconNotification 1`] = `
 }
 `;
 
+exports[`IconNumberedList 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconOverflow 1`] = `
 {
   exportType: component,
@@ -5638,6 +5804,37 @@ exports[`IconQR 1`] = `
 `;
 
 exports[`IconRecommended 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconRedo 1`] = `
 {
   exportType: component,
   props: {
@@ -6522,6 +6719,68 @@ exports[`IconTip 1`] = `
 }
 `;
 
+exports[`IconTitle 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconUndo 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconUpload 1`] = `
 {
   exportType: component,
@@ -6927,7 +7186,14 @@ exports[`Link 1`] = `
     aria-valuemin?: number
     aria-valuenow?: number
     aria-valuetext?: string
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoCorrect?: string
     autoFocus?: boolean
     autoSave?: string
@@ -6958,6 +7224,14 @@ exports[`Link 1`] = `
         | "true"
         | false
         | true
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -7454,6 +7728,9 @@ exports[`MonthPicker 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7589,6 +7866,9 @@ exports[`PasswordField 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7625,6 +7905,9 @@ exports[`RadioGroup 1`] = `
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
@@ -7672,6 +7955,9 @@ exports[`Rating 1`] = `
         | "small"
         | "standard"
         | "xsmall"
+    tone?: 
+        | "brandAccent"
+        | "neutral"
     variant?: 
         | "full"
         | "minimal"
@@ -7935,6 +8221,16 @@ exports[`TableFooter 1`] = `
 }
 `;
 
+exports[`TableHeader 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    data?: DataAttributeMap
+},
+}
+`;
+
 exports[`TableHeaderCell 1`] = `
 {
   exportType: component,
@@ -7961,16 +8257,6 @@ exports[`TableHeaderCell 1`] = `
         | "content"
         | \`\${number}%\`
     wrap?: boolean
-},
-}
-`;
-
-exports[`TableHeader 1`] = `
-{
-  exportType: component,
-  props: {
-    children: ReactNode
-    data?: DataAttributeMap
 },
 }
 `;
@@ -8282,6 +8568,9 @@ exports[`TextDropdown 1`] = `
     onBlur?: () => void
     onChange: (value: Value) => void
     options: TextDropdownValue<Value>[]
+    tabIndex?: 
+        | -1
+        | 0
     value: NonNullable<Value>
 },
 }
@@ -8331,6 +8620,9 @@ exports[`TextField 1`] = `
     step?: 
         | number
         | string
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -8523,7 +8815,14 @@ exports[`TextLink 1`] = `
     aria-valuemin?: number
     aria-valuenow?: number
     aria-valuetext?: string
-    autoCapitalize?: string
+    autoCapitalize?: 
+        | "characters"
+        | "none"
+        | "off"
+        | "on"
+        | "sentences"
+        | "words"
+        | string & {}
     autoCorrect?: string
     autoFocus?: boolean
     autoSave?: string
@@ -8553,6 +8852,14 @@ exports[`TextLink 1`] = `
         | "true"
         | false
         | true
+    enterKeyHint?: 
+        | "done"
+        | "enter"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
     hidden?: boolean
     hitArea?: 
         | "large"
@@ -8939,6 +9246,9 @@ exports[`Textarea 1`] = `
         | "true"
         | false
         | true
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"

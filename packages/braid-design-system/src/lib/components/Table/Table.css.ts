@@ -1,7 +1,9 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css';
-import { vars } from '../../themes/vars.css';
+
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
+
+import { vars } from '../../themes/vars.css';
 
 const borderColor = createVar();
 const sectionBorder = `${vars.borderWidth.standard} solid ${borderColor}`;

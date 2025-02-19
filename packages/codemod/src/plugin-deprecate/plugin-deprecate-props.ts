@@ -1,11 +1,12 @@
 import { type PluginObj, type PluginPass, types as t } from '@babel/core';
-import { type DeprecationMap, subVisitor } from './subVisitor';
+
 import {
   type StringLiteralPath,
   deArray,
   updateStringLiteral,
 } from './helpers';
 import { isBraidImport } from './isBraidImport';
+import { type DeprecationMap, subVisitor } from './subVisitor';
 
 interface Context extends PluginPass {
   importNames: Map<string, string>;

@@ -1,7 +1,8 @@
-import * as components from 'braid-src/lib/components';
-import * as testComponents from 'braid-src/entries/test';
 import * as css from 'braid-src/entries/css';
+import * as testComponents from 'braid-src/entries/test';
+import * as components from 'braid-src/lib/components';
 import type { Snippets } from 'braid-src/lib/components/private/Snippets';
+
 import type {
   ComponentDocs,
   ComponentExample,

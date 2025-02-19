@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import React from 'react';
+import { render } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { BraidTestProvider } from '../../../entries/test';
+
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   TableRow,
   Text,
 } from '..';
-import { render } from '@testing-library/react';
+import { BraidTestProvider } from '../../../entries/test';
 
 describe('Table', () => {
   it('should have accessible label', () => {

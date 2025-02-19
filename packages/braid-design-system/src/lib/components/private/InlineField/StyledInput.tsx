@@ -1,4 +1,4 @@
-import React, {
+import {
   type ChangeEvent,
   type AllHTMLAttributes,
   useEffect,
@@ -6,15 +6,17 @@ import React, {
   useRef,
 } from 'react';
 
-import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
+import { useBackgroundLightness } from '../../Box/BackgroundContext';
+import { type BoxProps, Box } from '../../Box/Box';
 import { IconMinus, IconTick } from '../../icons';
+import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
-import { type BoxProps, Box } from '../../Box/Box';
+import { validateTabIndex } from '../validateTabIndex';
+
 import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
-import { useBackgroundLightness } from '../../Box/BackgroundContext';
 
 const tones = ['neutral', 'critical'] as const;
 export type InlineFieldTone = (typeof tones)[number];
@@ -37,12 +39,12 @@ export interface StyledInputProps {
   data?: DataAttributeMap;
   required?: boolean;
   size?: Size;
+  tabIndex?: 0 | -1;
 }
 
 export type PrivateStyledInputProps = StyledInputProps & {
   type: 'radio' | 'checkbox';
   checked: CheckboxChecked;
-  tabIndex?: number;
 };
 
 const Indicator = ({
@@ -137,6 +139,10 @@ export const StyledInput = forwardRef<
 
     if (tones.indexOf(tone) === -1) {
       throw new Error(`Invalid tone: ${tone}`);
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      validateTabIndex(tabIndex);
     }
 
     const isCheckbox = type === 'checkbox';

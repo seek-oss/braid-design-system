@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Dropdown,
   List,
@@ -12,7 +13,7 @@ import {
   Heading,
   Notice,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -324,6 +325,17 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Dropdown
+          data={{ testid: 'dropdown-1' }}
+          // => data-testid="dropdown-1"
+        >
+          ...
+        </Dropdown>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

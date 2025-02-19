@@ -1,9 +1,11 @@
 import clsx from 'clsx';
+
+import { optimizeResponsiveArray } from './optimizeResponsiveArray';
+
 import {
   type OptionalResponsiveValue,
   normalizeResponsiveValue,
 } from '../css/atoms/sprinkles.css';
-import { optimizeResponsiveArray } from './optimizeResponsiveArray';
 
 export const resolveResponsiveProp = <Keys extends string | number>(
   value: OptionalResponsiveValue<Keys>,

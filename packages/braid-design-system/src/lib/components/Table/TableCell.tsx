@@ -1,23 +1,26 @@
 import assert from 'assert';
+
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { useContext, type ReactNode } from 'react';
-import { Box } from '../Box/Box';
-import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+
 import {
   resolveResponsiveRangeProps,
   type ResponsiveRangeProps,
 } from '../../utils/resolveResponsiveRangeProps';
+import { DefaultBadgePropsProvider } from '../Badge/defaultBadgeProps';
+import { Box } from '../Box/Box';
+import { Inline } from '../Inline/Inline';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
+import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+
 import {
   TableContext,
   TableFooterContext,
   TableHeaderContext,
   TableRowContext,
 } from './TableContext';
-import { Inline } from '../Inline/Inline';
-import buildDataAttributes, {
-  type DataAttributeMap,
-} from '../private/buildDataAttributes';
-import { DefaultBadgePropsProvider } from '../Badge/defaultBadgeProps';
 
 import * as styles from './Table.css';
 

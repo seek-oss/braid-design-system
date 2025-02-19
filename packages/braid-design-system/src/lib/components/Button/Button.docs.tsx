@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Button,
   Stack,
@@ -15,7 +16,7 @@ import {
   Toggle,
   IconArrow,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const choosingRightButtonDoc = [
   {
@@ -610,6 +611,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Button
+          data={{ testid: 'button-1' }}
+          // => data-testid="button-1"
+        >
+          ...
+        </Button>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

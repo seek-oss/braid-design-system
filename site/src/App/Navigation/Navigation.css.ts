@@ -1,13 +1,14 @@
-import { rgba } from 'polished';
 import { style, globalStyle, createVar } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { vars } from 'braid-src/lib/themes/vars.css';
-import { palette } from 'braid-src/lib/color/palette';
 import {
   breakpoints,
   responsiveStyle,
   colorModeStyle,
 } from 'braid-src/entries/css';
+import { palette } from 'braid-src/lib/color/palette';
+import { vars } from 'braid-src/lib/themes/vars.css';
+import { rgba } from 'polished';
+
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});

@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   Inline,
   Tag,
@@ -10,7 +11,7 @@ import {
   IconLanguage,
   IconTag,
 } from '../';
-import source from '@braid-design-system/source.macro';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -174,6 +175,15 @@ const docs: ComponentDocs = {
           </Inline>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Tag
+          data={{ testid: 'tag-1' }}
+          // => data-testid="tag-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -1,33 +1,38 @@
-import React, {
+import assert from 'assert';
+
+import {
   type ReactElement,
   type ReactNode,
   cloneElement,
   useContext,
 } from 'react';
-import assert from 'assert';
-import { Box } from '../Box/Box';
-import { type TextProps, Text } from '../Text/Text';
+
 import type { BadgeProps } from '../Badge/Badge';
-import { IconChevron } from '../icons';
+import { Box } from '../Box/Box';
 import {
   type UseDisclosureProps,
   type DisclosureStateProps,
   useDisclosure,
 } from '../Disclosure/useDisclosure';
-
-import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
+import { Spread } from '../Spread/Spread';
+import { Stack } from '../Stack/Stack';
+import { type TextProps, Text } from '../Text/Text';
+import { IconChevron } from '../icons';
 import { Overlay } from '../private/Overlay/Overlay';
+import { badgeSlotSpace } from '../private/badgeSlotSpace';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
+import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
+
+import { defaultSize } from './Accordion';
 import {
   type AccordionContextValue,
   AccordionContext,
   validTones,
 } from './AccordionContext';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import { badgeSlotSpace } from '../private/badgeSlotSpace';
+
 import * as styles from './AccordionItem.css';
-import { Spread } from '../Spread/Spread';
-import { defaultSize } from './Accordion';
-import { Stack } from '../Stack/Stack';
 
 const itemSpaceForSize = {
   xsmall: 'small',
@@ -122,8 +127,16 @@ export const AccordionItem = ({
         }),
   });
 
+  if (process.env.NODE_ENV !== 'production') {
+    /**
+     * Validate that consumers are not passing `data-*`props,
+     * which will not work and are not validated by TypeScript.
+     */
+    buildDataAttributes({ data, validateRestProps: restProps });
+  }
+
   return (
-    <Stack space={itemSpace} {...restProps}>
+    <Stack space={itemSpace} data={data}>
       <Box position="relative" display="flex">
         <Box
           component="button"

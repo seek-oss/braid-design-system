@@ -1,6 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+
 import {
   Columns,
   Column,
@@ -11,8 +11,9 @@ import {
   Divider,
   Notice,
 } from '../';
-import source from '@braid-design-system/source.macro';
 import { TextLink } from '../TextLink/TextLink';
+import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -527,6 +528,22 @@ const docs: ComponentDocs = {
         </Columns>,
       ).code,
     },
+    dataAttributeDocs({
+      code: `
+        <Columns
+          data={{ testid: 'columns-1' }}
+          // => data-testid="columns-1"
+          >
+          <Column
+            data={{ testid: 'column-1' }}
+            // => data-testid="column-1"
+          >
+            ...
+          </Column>
+        </Columns>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

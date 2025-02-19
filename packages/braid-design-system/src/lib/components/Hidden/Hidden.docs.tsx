@@ -1,12 +1,9 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
-import { Hidden } from './Hidden';
-import { Text } from '../Text/Text';
-import { Stack } from '../Stack/Stack';
-import { Strong } from '../Strong/Strong';
+
+import { Hidden, Stack, Strong, Text, Tiles } from '../';
 import { Placeholder } from '../../playroom/components';
-import { Tiles } from '../Tiles/Tiles';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -116,6 +113,17 @@ const docs: ComponentDocs = {
           </Hidden>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Hidden
+          data={{ testid: 'hidden-1' }}
+          // => data-testid="hidden-1"
+        >
+          ...
+        </Hidden>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

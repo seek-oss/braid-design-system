@@ -1,5 +1,5 @@
-import React from 'react';
 import type { ComponentScreenshot } from 'site/types';
+
 import { Inline, MenuItem, MenuItemCheckbox, MenuItemDivider } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
 

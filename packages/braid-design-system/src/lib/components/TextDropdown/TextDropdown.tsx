@@ -1,13 +1,17 @@
-import React, { type FormEvent, useContext } from 'react';
 import assert from 'assert';
-import { Overlay } from '../private/Overlay/Overlay';
+
+import { type FormEvent, useContext } from 'react';
+
 import { Box } from '../Box/Box';
-import { IconChevron } from '../icons';
-import { TextContext } from '../Text/TextContext';
 import HeadingContext from '../Heading/HeadingContext';
+import { TextContext } from '../Text/TextContext';
+import { IconChevron } from '../icons';
+import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { validateTabIndex } from '../private/validateTabIndex';
+
 import * as styles from './TextDropdown.css';
 
 interface TextDropdownOption<Value> {
@@ -24,6 +28,7 @@ export interface TextDropdownProps<Value> {
   options: Array<TextDropdownValue<Value>>;
   label: string;
   data?: DataAttributeMap;
+  tabIndex?: 0 | -1;
 }
 
 export function parseSimpleToComplexOption<Value>(
@@ -45,6 +50,7 @@ export function TextDropdown<Value>({
   options,
   label,
   data,
+  tabIndex,
   ...restProps
 }: TextDropdownProps<Value>) {
   assert(
@@ -58,6 +64,10 @@ export function TextDropdown<Value>({
     })(),
     'TextDropdown components must be rendered within a Text or Heading component. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TextDropdown',
   );
+
+  if (process.env.NODE_ENV !== 'production') {
+    validateTabIndex(tabIndex);
+  }
 
   const parsedOptions = options.map(parseSimpleToComplexOption);
   const [currentText] = parsedOptions.filter((o) => value === o.value);
@@ -88,6 +98,7 @@ export function TextDropdown<Value>({
         aria-label={label}
         title={label}
         id={id}
+        tabIndex={tabIndex}
         value={String(value)}
         onChange={(ev: FormEvent<HTMLSelectElement>) => {
           if (typeof onChange === 'function') {

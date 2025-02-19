@@ -1,5 +1,5 @@
-import { babel, webpackFinal } from 'sku/config/storybook';
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import { babel, webpackFinal } from 'sku/config/storybook';
 
 export default {
   stories: ['../src/lib/stories/all.stories.tsx'],

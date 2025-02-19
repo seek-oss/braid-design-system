@@ -1,6 +1,6 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
 import source from '@braid-design-system/source.macro';
+import type { GalleryComponent } from 'site/types';
+
 import {
   Drawer,
   Button,
@@ -11,6 +11,7 @@ import {
   Strong,
 } from '..';
 import { Placeholder } from '../../playroom/components';
+
 import { DrawerContent } from './Drawer';
 
 export const galleryItems: GalleryComponent = {

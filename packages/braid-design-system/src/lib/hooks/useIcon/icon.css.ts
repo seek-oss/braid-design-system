@@ -1,5 +1,7 @@
 import { style, styleVariants } from '@vanilla-extract/css';
+
 import { responsiveStyle } from '../../css/responsiveStyle';
+
 import { vars } from '../../themes/vars.css';
 
 export const iconScaleIncrease = 0.2;

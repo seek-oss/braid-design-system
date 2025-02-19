@@ -1,12 +1,3 @@
-import React, { type ReactElement, useState, useEffect, useRef } from 'react';
-import copy from 'copy-to-clipboard';
-import dedent from 'dedent';
-import memoize from 'lodash.memoize';
-import prettier from 'prettier/standalone';
-import reactElementToJsxString from 'react-element-to-jsx-string';
-import typescriptParser from 'prettier/parser-typescript';
-import { createUrl } from 'playroom/utils';
-import { useConfig } from '../ConfigContext';
 import type { Source } from '@braid-design-system/source.macro';
 import {
   Stack,
@@ -23,16 +14,28 @@ import {
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
-import * as styles from './Code.css';
-
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import usePlayroomScope from 'braid-src/lib/playroom/useScope';
+import copy from 'copy-to-clipboard';
+import dedent from 'dedent';
+import memoize from 'lodash.memoize';
+import { createUrl } from 'playroom/utils';
+import * as prettierPluginEstree from 'prettier/plugins/estree';
+import typescriptParser from 'prettier/plugins/typescript';
+import prettier from 'prettier/standalone';
+import { type ReactElement, useState, useEffect, useRef } from 'react';
+import reactElementToJsxString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
-import { editorTheme } from './editorTheme';
+
+import { useConfig } from '../ConfigContext';
 import { ThemedExample } from '../ThemeSetting';
-import usePlayroomScope from 'braid-src/lib/playroom/useScope';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+
+import { editorTheme } from './editorTheme';
+
+import * as styles from './Code.css';
 
 type ReactElementOrString = ReactElement | string;
 
@@ -44,18 +47,18 @@ for (const [name, language] of Object.entries({ diff, jsx, tsx })) {
 const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx'] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number];
 
-export const formatSnippet = memoize((snippet: string) => {
+export const formatSnippet = memoize(async (snippet: string) => {
   // Remove id props from code snippets since they're not needed in Playroom
   const cleanedSnippet = snippet
     .replace(/id={id}/g, '')
     .replace(/id={`\${id}_[0-9a-zA-Z]+`}/g, '');
 
-  const formattedSnippet = prettier
-    .format(cleanedSnippet, {
-      parser: 'typescript',
-      plugins: [typescriptParser],
-      semi: false,
-    })
+  const prettierSnippet = await prettier.format(cleanedSnippet, {
+    parser: 'typescript',
+    plugins: [typescriptParser, prettierPluginEstree],
+    semi: false,
+  });
+  const formattedSnippet = prettierSnippet
     .replace(/^;/, '') // Remove leading semicolons from JSX
     .replace(/[\r\n]+$/, ''); // Remove trailing newline
 
@@ -204,11 +207,11 @@ const isSource = function <Value>(input: any): input is Source<Value> {
   );
 };
 
-const parseInput = (
+const parseInput = async (
   input: ReactElementOrString | Source<ReactElementOrString>,
-): Source<ReactElementOrString> => {
+): Promise<Source<ReactElementOrString>> => {
   if (typeof input === 'string') {
-    const code = formatSnippet(input);
+    const code = await formatSnippet(input);
 
     return {
       code,
@@ -218,11 +221,11 @@ const parseInput = (
 
   return isSource(input)
     ? {
-        code: formatSnippet(input.code),
+        code: await formatSnippet(input.code),
         value: input.value,
       }
     : {
-        code: formatSnippet(
+        code: await formatSnippet(
           reactElementToJsxString(input, {
             useBooleanShorthandSyntax: false,
             showDefaultProps: false,
@@ -252,9 +255,22 @@ const Code = ({
   const [hideCode, setHideCode] = useState(collapsedByDefault);
   const { playroomUrl } = useConfig();
   const playroomScope = usePlayroomScope();
-  const { code, value } = parseInput(
-    typeof children === 'function' ? children(playroomScope) : children,
-  );
+  const [{ code, value }, setSource] = useState<Source<ReactElementOrString>>({
+    code: '',
+    value: '',
+  });
+
+  useEffect(() => {
+    async function parse() {
+      const parsedInput = await parseInput(
+        typeof children === 'function' ? children(playroomScope) : children,
+      );
+      setSource(parsedInput);
+    }
+    parse();
+    // Ignore `playroomScope` to avoid re-renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [children]);
 
   return (
     <Box position="relative">

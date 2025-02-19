@@ -1,9 +1,10 @@
-import React from 'react';
-import type { GalleryComponent } from 'site/types';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
-import { Button, IconBookmark, Inline } from '..';
-import Toast from './Toast';
 import source from '@braid-design-system/source.macro';
+import type { GalleryComponent } from 'site/types';
+
+import { Button, IconBookmark, Inline } from '..';
+import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
+
+import Toast from './Toast';
 
 export const galleryItems: GalleryComponent = {
   examples: [

@@ -1,7 +1,9 @@
-import React from 'react';
 import type { Optional } from 'utility-types';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 import { useFallbackId } from '../../playroom/utils';
+import { validTabIndexes } from '../private/validateTabIndex';
+
 import {
   type PasswordFieldBaseProps,
   type PasswordFieldLabelProps,
@@ -17,6 +19,7 @@ export const PasswordField = ({
   stateName,
   value,
   onChange,
+  tabIndex,
   ...restProps
 }: PlayroomPasswordFieldProps) => {
   const fallbackId = useFallbackId();
@@ -33,6 +36,7 @@ export const PasswordField = ({
       value={state}
       onChange={handleChange}
       autoComplete="off"
+      tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
       {...restProps}
     />
   );

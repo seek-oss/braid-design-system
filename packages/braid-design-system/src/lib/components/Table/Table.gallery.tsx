@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { GalleryComponent } from 'site/types';
+
 import {
   Table,
   TableBody,
@@ -13,7 +14,7 @@ import {
   OverflowMenu,
   MenuItem,
 } from '..';
-import source from '@braid-design-system/source.macro';
+
 import { stripTypeAnyFromCode } from './stripTypeAnyFromCode';
 
 export const galleryItems: GalleryComponent = {

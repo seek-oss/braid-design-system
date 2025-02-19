@@ -1,6 +1,6 @@
-import React from 'react';
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   MenuItem,
   MenuItemLink,
@@ -22,6 +22,7 @@ import {
   IconBookmark,
   Inline,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -254,6 +255,17 @@ const docs: ComponentDocs = {
           </Inline>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <MenuItem
+          data={{ testid: 'menu-item-1' }}
+          // => data-testid="menu-item-1"
+        >
+          ...
+        </MenuItem>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

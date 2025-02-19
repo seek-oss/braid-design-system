@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box } from 'braid-src/lib/components';
 import * as typographyStyles from 'braid-src/lib/css/typography.css';
 

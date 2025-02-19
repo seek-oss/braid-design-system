@@ -1,6 +1,6 @@
-import React from 'react';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
+
 import * as styles from './Divider.css';
 
 export interface DividerProps {

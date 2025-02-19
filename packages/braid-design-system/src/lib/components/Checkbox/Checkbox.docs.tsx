@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   CheckboxStandalone,
   Badge,
@@ -12,8 +13,8 @@ import {
   Alert,
   Divider,
 } from '../';
-import source from '@braid-design-system/source.macro';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -324,6 +325,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Checkbox
+          data={{ testid: 'checkbox-1' }}
+          // => data-testid="checkbox-1"
+        >
+          ...
+        </Checkbox>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -1,10 +1,13 @@
 import assert from 'assert';
+
 import { useContext, type ReactNode } from 'react';
+
 import { Box } from '../Box/Box';
-import { TableContext, TableHeaderContext } from './TableContext';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+
+import { TableContext, TableHeaderContext } from './TableContext';
 
 import * as styles from './Table.css';
 

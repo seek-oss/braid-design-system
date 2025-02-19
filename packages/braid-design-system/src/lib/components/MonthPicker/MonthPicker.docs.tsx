@@ -1,5 +1,6 @@
-import React from 'react';
+import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
+
 import {
   MonthPicker,
   TextLink,
@@ -10,8 +11,8 @@ import {
   Stack,
   Heading,
 } from '../';
-import source from '@braid-design-system/source.macro';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -289,6 +290,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <MonthPicker
+          data={{ testid: 'month-picker-1' }}
+          // => data-testid="month-picker-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 
