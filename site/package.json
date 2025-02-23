@@ -61,7 +61,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
     "recoil": "^0.7.2",
-    "sku": "14.0.3",
+    "sku": "14.0.4",
     "webpack": "^5.76.0"
   },
   "skuSkipPostInstall": true,
