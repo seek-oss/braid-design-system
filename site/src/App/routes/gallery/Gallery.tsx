@@ -173,7 +173,7 @@ const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
       {code ? (
         <CodeButton
           title="Copy code to clipboard"
-          onClick={() => copy(formatSnippet(code))}
+          onClick={async () => copy(await formatSnippet(code))}
           successLabel="Copied!"
         >
           <IconCopy /> Copy code
