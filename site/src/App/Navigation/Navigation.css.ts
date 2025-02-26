@@ -19,7 +19,7 @@ const fixedWidthAboveMobile = style(
   }),
 );
 
-const hideOnMobileWhenOpen = style({
+const hidePageContentOnMobileWhenOpen = style({
   '@media': {
     [`screen and (max-width: ${breakpoints.wide - 1}px)`]: {
       selectors: {
@@ -32,12 +32,13 @@ const hideOnMobileWhenOpen = style({
   },
 });
 
-const hideOnMobileWhenClosed = style({
+const hideSideNavOnMobileWhenClosed = style({
   '@media': {
     [`screen and (max-width: ${breakpoints.wide - 1}px)`]: {
       selectors: {
         [`&:not(${isOpen})`]: {
           opacity: 0,
+          pointerEvents: 'none',
           transform: `translateY(${calc.negate(vars.space.xsmall)})`,
         },
       },
@@ -56,13 +57,13 @@ const subNavOffsetAboveMobile = style(
 export const sideNavigationContainer = style([
   headerOffset,
   fixedWidthAboveMobile,
-  hideOnMobileWhenClosed,
+  hideSideNavOnMobileWhenClosed,
 ]);
 
 export const pageContent = style([
   headerOffset,
   subNavOffsetAboveMobile,
-  hideOnMobileWhenOpen,
+  hidePageContentOnMobileWhenOpen,
 ]);
 
 globalStyle('html, body', {
