@@ -13,6 +13,7 @@ import {
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
+import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
 import { useState, useRef, useEffect, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useLocation, Outlet } from 'react-router-dom';
@@ -163,24 +164,24 @@ export const Navigation = () => {
       </Box>
 
       <RemoveScroll enabled={isMenuOpen} forwardProps>
-        <FixedContentBlock
-          overflow="auto"
+        <Box
+          position="fixed"
           bottom={0}
-          paddingX={gutterSize}
-          paddingBottom="xxlarge"
+          transition="fast"
           width="full"
-          display={{
-            mobile: isMenuOpen ? 'block' : 'none',
-            wide: 'block',
-          }}
+          pointerEvents={!isMenuOpen ? 'none' : undefined}
           zIndex="sticky"
           className={[
             styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <SideNavigation onSelect={() => setMenuOpen(false)} />
-        </FixedContentBlock>
+          <ScrollContainer direction="vertical">
+            <Box paddingX={gutterSize} paddingBottom="xxlarge">
+              <SideNavigation onSelect={() => setMenuOpen(false)} />
+            </Box>
+          </ScrollContainer>
+        </Box>
       </RemoveScroll>
 
       <Box
