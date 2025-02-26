@@ -25,6 +25,7 @@ const hideOnMobileWhenOpen = style({
       selectors: {
         [`&${isOpen}`]: {
           opacity: 0,
+          pointerEvents: 'none',
         },
       },
     },
