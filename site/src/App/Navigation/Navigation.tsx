@@ -169,7 +169,6 @@ export const Navigation = () => {
           bottom={0}
           transition="fast"
           width="full"
-          pointerEvents={!isMenuOpen ? 'none' : undefined}
           zIndex="sticky"
           className={[
             styles.sideNavigationContainer,
