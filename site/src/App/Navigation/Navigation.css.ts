@@ -37,6 +37,7 @@ const hideOnMobileWhenClosed = style({
       selectors: {
         [`&:not(${isOpen})`]: {
           opacity: 0,
+          transform: `translateY(${calc.negate(vars.space.xsmall)})`,
         },
       },
     },
