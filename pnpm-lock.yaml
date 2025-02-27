@@ -358,8 +358,8 @@ importers:
         specifier: ^2.12.1
         version: 2.14.0
       sku:
-        specifier: 14.0.4
-        version: 14.0.4(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 14.0.5
+        version: 14.0.5(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       storybook:
         specifier: 7.6.20
         version: 7.6.20
@@ -638,8 +638,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       sku:
-        specifier: 14.0.4
-        version: 14.0.4(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
+        specifier: 14.0.5
+        version: 14.0.5(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1)
       webpack:
         specifier: ^5.76.0
         version: 5.98.0(@swc/core@1.10.18)
@@ -1429,9 +1429,11 @@ packages:
 
   '@effect/data@0.4.1':
     resolution: {integrity: sha512-FdQ0qbYL7t+GP5eWdAPC+oeN2w3zqnujrdDLp/sj58UtMxFSHg21crprmbmiAJAWsL5EdB9aZzcisBGn382xHg==}
+    deprecated: this package has been merged into the main effect package
 
   '@effect/io@0.8.0':
     resolution: {integrity: sha512-JJUs05oiHzh/Eupf5mgeLRFA4RXJAJo2DNxPC4ZVXwhvgJeqJ/G0ftYo3znOO0vKLzXjw8WYrnXPBM1nYLPnfQ==}
+    deprecated: this package has been merged into the main effect package
 
   '@emotion/hash@0.9.2':
     resolution: {integrity: sha512-MyqliTZGuOm3+5ZRSaaBGP3USLw6+EGykkwZns2EPC5g8jJ4z9OrdZY9apkl3+UP9+sdz76YYkwCKP5gh8iY3g==}
@@ -8276,8 +8278,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@14.0.4:
-    resolution: {integrity: sha512-XqXoM5QmSkExGNGetmfWYK4FmPiHQpGt4OTgbRUElh6Df32y4oAxmbWdgGaQTxUlWOYfsv+WhwcyrgsZJh6z8w==}
+  sku@14.0.5:
+    resolution: {integrity: sha512-gU7oMWpaK9Xt3lS1bx0QSfD0iee/pVLaM0pYCgHl+JsaKAZVPlTSBN3+Po7ewzajmZCSj+XWXwUhthcUPP2l/w==}
     engines: {node: '>=20.15'}
     hasBin: true
     peerDependencies:
@@ -19169,7 +19171,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@14.0.4(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@14.0.5(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)(esbuild@0.18.20)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
       '@babel/core': 7.26.9
       '@babel/plugin-transform-react-constant-elements': 7.25.9(@babel/core@7.26.9)
@@ -19290,7 +19292,7 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  sku@14.0.4(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
+  sku@14.0.5(@storybook/react-webpack5@7.6.20(@babel/core@7.26.9)(@swc/core@1.10.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(typescript@5.6.3)(webpack-dev-server@5.2.0(webpack@5.98.0(@swc/core@1.10.18)))(webpack-hot-middleware@2.26.1))(@types/node@18.19.76)(@types/react@18.3.18)(@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(eslint@9.21.0(jiti@2.4.2))(typescript@5.5.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@3.13.1)(webpack-hot-middleware@2.26.1):
     dependencies:
       '@babel/core': 7.26.9
       '@babel/plugin-transform-react-constant-elements': 7.25.9(@babel/core@7.26.9)
@@ -20661,7 +20663,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@3.1.0:
