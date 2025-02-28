@@ -25,13 +25,21 @@ export const popoverPosition = style({
   right: triggerVars.right,
 });
 
+export const animationDelayInMs = createVar();
+
+const popupAnimation = keyframes({
+  from: {
+    opacity: 0,
+    transform: `translateY(${calc(vars.grid)
+      .multiply('2')
+      .multiply(flipPlacement)})`,
+  },
+});
+
 export const animation = style({
-  animation: `${keyframes({
-    from: {
-      transform: `translateY(${calc(vars.grid)
-        .multiply('2')
-        .multiply(flipPlacement)})`,
-      opacity: 0,
-    },
-  })} .125s ease forwards`,
+  animationName: popupAnimation,
+  animationFillMode: 'both',
+  animationTimingFunction: 'ease',
+  animationDuration: '0.125s',
+  animationDelay: animationDelayInMs,
 });

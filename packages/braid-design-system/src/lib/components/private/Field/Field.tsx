@@ -101,6 +101,7 @@ type InternalFieldProps = FieldBaseProps &
       prefix: ReactNode,
     ): ReactNode;
     componentName: string;
+    inputBoxRef: RefObject<HTMLElement>;
   };
 
 export const Field = ({
@@ -124,6 +125,7 @@ export const Field = ({
   prefix,
   required,
   tabIndex,
+  inputBoxRef,
   componentName,
   ...restProps
 }: InternalFieldProps) => {
@@ -208,6 +210,7 @@ export const Field = ({
 
       <Stack space="xsmall">
         <Box
+          ref={inputBoxRef}
           position="relative"
           background={fieldBackground}
           borderRadius="standard"
