@@ -188,8 +188,10 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
                   forwardedRef.current = node;
                 }
               }
-              // Todo - fix
-              triggerRef(node);
+              // Todo - check this fix
+              if (triggerRef && 'current' in triggerRef) {
+                triggerRef.current = node;
+              }
             }}
             {...triggerProps}
             {...restProps}
