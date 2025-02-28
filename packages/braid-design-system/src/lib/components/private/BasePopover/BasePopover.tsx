@@ -1,5 +1,6 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import dedent from 'dedent';
+import isMobile from 'is-mobile';
 import {
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
@@ -18,6 +19,8 @@ import { normalizeKey } from '../normalizeKey';
 import { BasePopoverContext } from './BasePopoverContext';
 
 import * as styles from './BasePopover.css';
+
+const tooltipAnimationDelayInMs = 250;
 
 export type Placement = 'top' | 'bottom';
 
@@ -270,24 +273,27 @@ export const BasePopover = ({
     }
   });
 
-  const inlineVars = assignInlineVars({
-    ...(triggerPosition && {
-      [styles.triggerVars[
-        flipPlacement
-      ]]: `${triggerPosition[flipPlacement]}px`,
-      ...(align === 'full'
-        ? {
-            [styles.triggerVars.left]: `${triggerPosition?.left}px`,
-            [styles.triggerVars.right]: `${triggerPosition?.right}px`,
-          }
-        : {
-            [styles.triggerVars[align]]: `${
-              triggerPosition[align] + horizontalOffset
-            }px`,
-          }),
-    }),
+  const triggerPositionVars = triggerPosition && {
+    [styles.triggerVars[flipPlacement]]: `${triggerPosition[flipPlacement]}px`,
+    ...(align === 'full'
+      ? {
+          [styles.triggerVars.left]: `${triggerPosition?.left}px`,
+          [styles.triggerVars.right]: `${triggerPosition?.right}px`,
+        }
+      : {
+          [styles.triggerVars[align]]: `${
+            triggerPosition[align] + horizontalOffset
+          }px`,
+        }),
+  };
+
+  const inlineVars = {
     [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
-  });
+    [styles.animationDelayInMs]:
+      type === 'tooltip' && !isMobile()
+        ? `${tooltipAnimationDelayInMs}ms`
+        : '0',
+  };
 
   const handleKeyboard = (event: ReactKeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -320,6 +326,7 @@ export const BasePopover = ({
       <BraidPortal>
         <Box
           // Todo - add aria-label if focussed
+          role={type === 'tooltip' ? 'tooltip' : undefined}
           component="section"
           tabIndex={-1}
           ref={popoverContainerRef}
@@ -328,7 +335,7 @@ export const BasePopover = ({
           position="absolute"
           marginTop={flipPlacement === 'bottom' ? offsetSpace : undefined}
           marginBottom={flipPlacement === 'top' ? offsetSpace : undefined}
-          style={inlineVars}
+          style={assignInlineVars({ ...triggerPositionVars, ...inlineVars })}
           className={[
             styles.popoverPosition,
             !disableAnimation && styles.animation,

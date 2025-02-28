@@ -117,16 +117,10 @@ export const TooltipRenderer = ({
   const triggerWrapperRef = useRef<HTMLElement>(null);
   const triggerRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
-  const [visible, setVisible] = useState(false);
 
   const isStatic = useContext(StaticTooltipContext);
 
   useEffect(() => {
-    if (!open) {
-      setVisible(false);
-      return;
-    }
-
     const handleKeyDown = ({ key }: KeyboardEvent) => {
       if (key === 'Escape') {
         setOpen(false);
@@ -144,10 +138,6 @@ export const TooltipRenderer = ({
 
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
-
-    const timeout = setTimeout(() => setVisible(true), isMobile() ? 0 : 250);
-
-    return () => clearTimeout(timeout);
   }, [open]);
 
   useEffect(() => {});
@@ -157,10 +147,12 @@ export const TooltipRenderer = ({
       <Box
         ref={triggerWrapperRef}
         tabIndex={-1}
-        onMouseEnter={() => setOpen(true)}
-        onFocus={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-        onBlur={() => setOpen(false)}
+        // Todo - can this code be in css style?
+        onClick={() => isMobile() && setOpen(!open)}
+        onMouseEnter={() => !isMobile() && setOpen(true)}
+        onFocus={() => !isMobile() && setOpen(true)}
+        onMouseLeave={() => !isMobile() && setOpen(false)}
+        onBlur={() => !isMobile() && setOpen(false)}
       >
         {children({
           triggerProps: {
@@ -176,7 +168,7 @@ export const TooltipRenderer = ({
         align="center"
         placement={placement}
         lockPlacement={isStatic}
-        open={isStatic ? true : visible}
+        open={isStatic ? true : open}
         focusPopoverOnOpen={false}
         triggerWrapperRef={triggerRef}
         returnFocusRef={triggerRef}
