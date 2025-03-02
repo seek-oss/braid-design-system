@@ -11,9 +11,10 @@ import {
 } from './TextField';
 
 type PlayroomTextFieldProps = StateProp &
-  Optional<TextFieldBaseProps, 'id' | 'value' | 'onChange'> &
+  Optional<Omit<TextFieldBaseProps, 'onClear'>, 'id' | 'value' | 'onChange'> &
   TextFieldLabelProps & {
     onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
+    onClear?: true | TextFieldBaseProps['onClear'];
   };
 
 export const TextField = ({
@@ -33,15 +34,21 @@ export const TextField = ({
     '',
   );
 
+  const handleOnClear = onClear
+    ? () => {
+        handleChange({ currentTarget: { value: '' } });
+        if (typeof onClear === 'function') {
+          onClear();
+        }
+      }
+    : undefined;
+
   return (
     <BraidTextField
       id={id ?? fallbackId}
       value={state}
       onChange={handleChange}
-      onClear={() => {
-        handleChange({ currentTarget: { value: '' } });
-        onClear?.();
-      }}
+      onClear={handleOnClear}
       autoComplete="off"
       tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
       {...restProps}
