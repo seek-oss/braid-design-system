@@ -142,7 +142,6 @@ export const TooltipRenderer = ({
       <Box
         ref={triggerWrapperRef}
         tabIndex={-1}
-        // Todo - can this code be in css style?
         onClick={() => isMobile() && setOpen(!open)}
         onMouseEnter={() => !isMobile() && setOpen(true)}
         onFocus={() => !isMobile() && setOpen(true)}
@@ -159,13 +158,13 @@ export const TooltipRenderer = ({
       </Box>
       <BasePopover
         id={resolvedId}
-        type="tooltip"
+        isTooltip
         offsetSpace="small"
         align="center"
         placement={placement}
         lockPlacement={isStatic}
         open={isStatic ? true : open}
-        focusPopoverOnOpen={false}
+        focusOnOpen={false}
         triggerWrapperRef={triggerRef}
         returnFocusRef={triggerRef}
       >
