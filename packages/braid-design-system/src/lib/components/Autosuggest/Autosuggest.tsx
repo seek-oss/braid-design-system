@@ -747,7 +747,6 @@ export const Autosuggest = forwardRef(function <Value>(
             id={resolvedId}
             value={value.text}
             prefix={undefined}
-            inputBoxRef={fieldRef}
             secondaryIcon={
               onClear ? (
                 <ClearField
@@ -761,7 +760,7 @@ export const Autosuggest = forwardRef(function <Value>(
             }
           >
             {(overlays, fieldProps, icon, secondaryIcon) => (
-              <Box width="full">
+              <Box width="full" ref={fieldRef}>
                 <Box
                   component="input"
                   {...fieldProps}

@@ -347,9 +347,6 @@ export const BasePopover = ({
           {children}
           {!tabToExit && <ExitFocusCapture />}
         </Box>
-      </BraidPortal>
-      {/* Todo - should this be portaled? */}
-      {type === 'popover' && (
         <Box
           onClick={(event) => {
             event.stopPropagation();
@@ -358,13 +355,14 @@ export const BasePopover = ({
               handleOnClose();
             }
           }}
+          pointerEvents={!onClose ? 'none' : undefined}
           position="fixed"
           zIndex="modal"
           top={0}
           left={0}
           className={styles.backdrop}
         />
-      )}
+      </BraidPortal>
     </BasePopoverContext.Provider>
   );
 };
