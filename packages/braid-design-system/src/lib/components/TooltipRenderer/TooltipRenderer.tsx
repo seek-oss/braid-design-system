@@ -11,11 +11,8 @@ import {
 } from 'react';
 
 import { Box } from '../Box/Box';
-import {
-  BasePopover,
-  type Placement,
-} from '../private/BasePopover/BasePopover';
-import { BasePopoverContext } from '../private/BasePopover/BasePopoverContext';
+import { Popover, type Placement } from '../private/Popover/Popover';
+import { PopoverContext } from '../private/Popover/PopoverContext';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useThemeName } from '../useThemeName/useThemeName';
@@ -53,11 +50,11 @@ export const TooltipTextDefaultsProvider = ({
 };
 
 const TooltipContent = ({ children }: { children: ReactNodeNoStrings }) => {
-  const basePopoverContext = useContext(BasePopoverContext);
+  const popoverContext = useContext(PopoverContext);
 
-  if (!basePopoverContext) {
+  if (!popoverContext) {
     throw new Error(
-      'TooltipRendererNew must be rendered within a BasePopoverContextProvider',
+      'TooltipRendererNew must be rendered within a PopoverContextProvider',
     );
   }
 
@@ -76,9 +73,9 @@ const TooltipContent = ({ children }: { children: ReactNodeNoStrings }) => {
         <Box
           position="fixed"
           background="neutral"
-          className={styles.arrow[basePopoverContext.flipPlacement]}
+          className={styles.arrow[popoverContext.flipPlacement]}
           style={assignInlineVars({
-            [styles.horizontalOffset]: `${basePopoverContext.arrowOffset}px`,
+            [styles.horizontalOffset]: `${popoverContext.arrowOffset}px`,
           })}
         />
       </TooltipTextDefaultsProvider>
@@ -153,7 +150,7 @@ export const TooltipRenderer = ({
           },
         })}
       </Box>
-      <BasePopover
+      <Popover
         id={id}
         isTooltip
         offsetSpace="small"
@@ -166,7 +163,7 @@ export const TooltipRenderer = ({
         returnFocusRef={triggerRef}
       >
         <TooltipContent>{tooltip}</TooltipContent>
-      </BasePopover>
+      </Popover>
     </>
   );
 };
