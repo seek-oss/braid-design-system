@@ -35,12 +35,13 @@ const offset = calc(constants.arrowSize).divide(2).negate().toString();
 export const horizontalOffset = createVar();
 
 const baseArrow = style({
-  left: horizontalOffset,
+  left: `clamp(20%, ${horizontalOffset}, 80%)`,
+  transform: 'translateX(-50%)',
   visibility: 'hidden',
   ':before': {
     visibility: 'visible',
     content: "''",
-    transform: 'translateX(-50%) rotate(45deg)',
+    transform: 'rotate(45deg)',
   },
   selectors: {
     '&, &::before': {
