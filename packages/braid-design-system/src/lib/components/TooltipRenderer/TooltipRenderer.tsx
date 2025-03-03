@@ -52,13 +52,7 @@ export const TooltipTextDefaultsProvider = ({
   );
 };
 
-const TooltipContent = ({
-  id,
-  children,
-}: {
-  id: string;
-  children: ReactNodeNoStrings;
-}) => {
+const TooltipContent = ({ children }: { children: ReactNodeNoStrings }) => {
   const basePopoverContext = useContext(BasePopoverContext);
 
   if (!basePopoverContext) {
@@ -160,6 +154,7 @@ export const TooltipRenderer = ({
         })}
       </Box>
       <BasePopover
+        id={id}
         type="tooltip"
         offsetSpace="small"
         align="center"
@@ -170,7 +165,7 @@ export const TooltipRenderer = ({
         triggerWrapperRef={triggerRef}
         returnFocusRef={triggerRef}
       >
-        <TooltipContent id={id}>{tooltip}</TooltipContent>
+        <TooltipContent>{tooltip}</TooltipContent>
       </BasePopover>
     </>
   );
