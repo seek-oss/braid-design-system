@@ -1,4 +1,4 @@
-@keyframes pa79xk4 {
+@keyframes _3spcah4 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-.pa79xk1 {
+._3spcah1 {
   z-index: 100;
   background: #1c2230;
-  color: var(--_1hrq42d9);
+  color: var(--_1sziwkw9);
 }
-.pa79xk3 > svg > path {
+._3spcah3 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: pa79xk4;
+  animation-name: _3spcah4;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,7 +25,7 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-.pa79xk5 {
+._3spcah5 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
