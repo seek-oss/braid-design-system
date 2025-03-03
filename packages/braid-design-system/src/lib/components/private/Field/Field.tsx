@@ -97,7 +97,6 @@ type InternalFieldProps = FieldBaseProps &
       prefix: ReactNode,
     ): ReactNode;
     componentName: string;
-    inputBoxRef?: RefObject<HTMLElement>;
   };
 
 export const Field = ({
@@ -121,7 +120,6 @@ export const Field = ({
   prefix,
   required,
   tabIndex,
-  inputBoxRef,
   componentName,
   ...restProps
 }: InternalFieldProps) => {
@@ -209,12 +207,10 @@ export const Field = ({
 
       <Stack space="xsmall">
         <Box
-          ref={inputBoxRef}
           position="relative"
           background={fieldBackground}
           borderRadius="standard"
           display="flex"
-          className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
         >
           {children(
             overlays,
@@ -254,6 +250,7 @@ export const Field = ({
                 }),
                 touchableText.standard,
                 icon && !prefix ? styles.iconSpace : null,
+                showSecondaryIcon ? styles.secondaryIconSpace : undefined,
               ),
             },
             icon ? (
@@ -275,13 +272,13 @@ export const Field = ({
             ) : null,
             secondaryIcon ? (
               <Box
-                component="span"
-                position="absolute"
-                width="touchable"
-                height="touchable"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
+                position="absolute"
+                height="touchable"
+                width="touchable"
+                component="span"
                 top={0}
                 right={0}
               >
