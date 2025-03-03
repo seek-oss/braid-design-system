@@ -52,13 +52,7 @@ export const TooltipTextDefaultsProvider = ({
   );
 };
 
-const TooltipContent = ({
-  id,
-  children,
-}: {
-  id: string;
-  children: ReactNodeNoStrings;
-}) => {
+const TooltipContent = ({ children }: { children: ReactNodeNoStrings }) => {
   const basePopoverContext = useContext(BasePopoverContext);
 
   if (!basePopoverContext) {
@@ -76,7 +70,7 @@ const TooltipContent = ({
       className={[styles.maxWidth, styles.translateZ0]}
     >
       <TooltipTextDefaultsProvider>
-        <Box zIndex={1} id={id} position="relative">
+        <Box zIndex={1} position="relative">
           {children}
         </Box>
         <Box
@@ -160,6 +154,7 @@ export const TooltipRenderer = ({
         })}
       </Box>
       <BasePopover
+        id={id}
         type="tooltip"
         offsetSpace="small"
         align="center"
@@ -170,7 +165,7 @@ export const TooltipRenderer = ({
         triggerWrapperRef={triggerRef}
         returnFocusRef={triggerRef}
       >
-        <TooltipContent id={id}>{tooltip}</TooltipContent>
+        <TooltipContent>{tooltip}</TooltipContent>
       </BasePopover>
     </>
   );
