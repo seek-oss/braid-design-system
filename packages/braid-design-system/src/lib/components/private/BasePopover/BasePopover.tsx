@@ -32,17 +32,15 @@ export interface BasePopoverProps {
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onClose?: () => void;
-  // Todo - come up with better solution
-  // Separate from exitRef, as button size changes on active, which causes triggerPosition to be wrong
+  // Separate from exitRef, as button sizes change on active, which causes an incorrect triggerPosition
   triggerWrapperRef: RefObject<HTMLElement>;
   initialFocusRef?: RefObject<HTMLElement>;
   returnFocusRef?: RefObject<HTMLElement>;
   disableAnimation?: boolean;
-  focusPopoverOnOpen?: boolean;
+  focusOnOpen?: boolean;
   tabToExit?: boolean;
   children: ReactNode;
-  // todo - rename?
-  type?: 'popover' | 'tooltip';
+  isTooltip?: boolean;
 }
 
 type Position = {
@@ -87,9 +85,9 @@ export const BasePopover = ({
   initialFocusRef,
   returnFocusRef,
   disableAnimation = false,
-  focusPopoverOnOpen = false,
+  focusOnOpen: focusPopoverOnOpen = false,
   tabToExit = true,
-  type = 'popover',
+  isTooltip = false,
   children,
 }: BasePopoverProps) => {
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
@@ -106,7 +104,6 @@ export const BasePopover = ({
   const align = alignProp === 'center' ? 'left' : alignProp;
 
   const handleOnClose = () => {
-    // Todo - returnFocusRef should be required
     if (!returnFocusRef) {
       return;
     }
@@ -139,7 +136,6 @@ export const BasePopover = ({
     setTriggerPosition(getPosition(triggerWrapperRef.current));
     // Without timeout, focus will not work on first render
     // Needs to be 10ms to work in Safari - 0 for other browsers
-    // Todo - find a better solution
     setTimeout(() => {
       if (initialFocusRef) {
         if (initialFocusRef.current) {
@@ -215,14 +211,13 @@ export const BasePopover = ({
       triggerPosition.width && triggerPosition.left + triggerPosition.width / 2;
     const popoverWidth = right - left;
 
-    // todo - rename
     // If alignProp is center, use left align but adjust the left position for centering
     const inferredLeft =
       alignProp === 'center' && triggerCenter
         ? triggerCenter - popoverWidth / 2
         : triggerPosition.left;
 
-    // Todo - can this use braid tokens?
+    // Todo - use Braid tokens
     const edgeOffset = 12;
 
     const updatedLeft = clamp(
@@ -231,7 +226,6 @@ export const BasePopover = ({
       window.innerWidth + scrollX - width - edgeOffset,
     );
 
-    // Todo - better solution if possible
     const normalisedRight = window.innerWidth - triggerPosition.right;
 
     const updatedRight = clamp(
@@ -292,9 +286,7 @@ export const BasePopover = ({
   const inlineVars = {
     [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
     [styles.animationDelayInMs]:
-      type === 'tooltip' && !isMobile()
-        ? `${tooltipAnimationDelayInMs}ms`
-        : '0',
+      isTooltip && !isMobile() ? `${tooltipAnimationDelayInMs}ms` : '0',
   };
 
   const handleKeyboard = (event: ReactKeyboardEvent) => {
@@ -327,9 +319,8 @@ export const BasePopover = ({
     <BasePopoverContext.Provider value={contextValue}>
       <BraidPortal>
         <Box
-          // Todo - add aria-label if focussed
           id={id}
-          role={type === 'tooltip' ? 'tooltip' : undefined}
+          role={isTooltip ? 'tooltip' : undefined}
           component="section"
           tabIndex={-1}
           ref={popoverContainerRef}
