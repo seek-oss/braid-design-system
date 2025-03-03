@@ -31,7 +31,7 @@ export const Popover = ({
     triggerWrapperRef={triggerWrapperRef}
     initialFocusRef={initialFocusRef}
     returnFocusRef={returnFocusRef}
-    focusPopoverOnOpen
+    focusOnOpen
     tabToExit={false}
   >
     {children}
