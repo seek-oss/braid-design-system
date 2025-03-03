@@ -17,11 +17,8 @@ import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
-import {
-  BasePopover,
-  type Placement,
-} from '../private/BasePopover/BasePopover';
 import { Overlay } from '../private/Overlay/Overlay';
+import { Popover, type Placement } from '../private/Popover/Popover';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -292,7 +289,7 @@ export const MenuRenderer = ({
     <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
       <Box ref={containerRef}>{trigger(triggerProps, { open })}</Box>
 
-      <BasePopover
+      <Popover
         open={open}
         onClose={() => dispatch({ type: MENU_CLOSE })}
         triggerWrapperRef={containerRef}
@@ -314,7 +311,7 @@ export const MenuRenderer = ({
         >
           {items}
         </Menu>
-      </BasePopover>
+      </Popover>
     </Box>
   );
 };

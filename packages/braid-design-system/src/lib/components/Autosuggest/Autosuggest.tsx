@@ -30,13 +30,13 @@ import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { IconClear } from '../icons';
 import { Announcement } from '../private/Announcement/Announcement';
-import { BasePopover } from '../private/BasePopover/BasePopover';
 import { ClearField } from '../private/Field/ClearField';
 import {
   type FieldBaseProps,
   type FieldLabelVariant,
   Field,
 } from '../private/Field/Field';
+import { Popover } from '../private/Popover/Popover';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { smoothScroll } from '../private/smoothScroll';
@@ -776,7 +776,7 @@ export const Autosuggest = forwardRef(function <Value>(
               </Box>
             )}
           </Field>
-          <BasePopover
+          <Popover
             triggerWrapperRef={fieldRef}
             open={isOpen}
             align="full"
@@ -866,7 +866,7 @@ export const Autosuggest = forwardRef(function <Value>(
                   : null}
               </Box>
             </RemoveScroll>
-          </BasePopover>
+          </Popover>
         </Box>
         <HiddenVisually {...a11y.assistiveDescriptionProps}>
           {translations.assistiveDescription}
