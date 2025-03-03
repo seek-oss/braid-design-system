@@ -16,15 +16,15 @@ import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { normalizeKey } from '../normalizeKey';
 
-import { BasePopoverContext } from './BasePopoverContext';
+import { PopoverContext } from './PopoverContext';
 
-import * as styles from './BasePopover.css';
+import * as styles from './Popover.css';
 
 const tooltipAnimationDelayInMs = 250;
 
 export type Placement = 'top' | 'bottom';
 
-export interface BasePopoverProps {
+export interface PopoverProps {
   id?: string;
   align?: 'left' | 'right' | 'full' | 'center';
   placement?: Placement;
@@ -38,9 +38,8 @@ export interface BasePopoverProps {
   returnFocusRef?: RefObject<HTMLElement>;
   disableAnimation?: boolean;
   focusOnOpen?: boolean;
-  tabToExit?: boolean;
-  children: ReactNode;
   isTooltip?: boolean;
+  children: ReactNode;
 }
 
 type Position = {
@@ -73,7 +72,7 @@ function clamp(min: number, preferred: number, max: number) {
   return Math.min(Math.max(preferred, min), max);
 }
 
-export const BasePopover = ({
+export const Popover = ({
   id,
   align: alignProp = 'left',
   placement = 'bottom',
@@ -86,10 +85,9 @@ export const BasePopover = ({
   returnFocusRef,
   disableAnimation = false,
   focusOnOpen: focusPopoverOnOpen = false,
-  tabToExit = true,
   isTooltip = false,
   children,
-}: BasePopoverProps) => {
+}: PopoverProps) => {
   const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
     undefined,
   );
@@ -292,22 +290,10 @@ export const BasePopover = ({
   const handleKeyboard = (event: ReactKeyboardEvent) => {
     const targetKey = normalizeKey(event);
 
-    if (targetKey === 'Escape' || (tabToExit && targetKey === 'Tab')) {
+    if (targetKey === 'Escape' || targetKey === 'Tab') {
       handleOnClose();
     }
   };
-
-  const ExitFocusCapture = () => (
-    <Box
-      aria-hidden
-      tabIndex={0}
-      onFocus={() => {
-        if (onClose) {
-          handleOnClose();
-        }
-      }}
-    />
-  );
 
   if (!showPopover) {
     return null;
@@ -316,7 +302,7 @@ export const BasePopover = ({
   const contextValue = { arrowOffset, flipPlacement };
 
   return (
-    <BasePopoverContext.Provider value={contextValue}>
+    <PopoverContext.Provider value={contextValue}>
       <BraidPortal>
         <Box
           id={id}
@@ -336,7 +322,6 @@ export const BasePopover = ({
           ]}
         >
           {children}
-          {!tabToExit && <ExitFocusCapture />}
         </Box>
         <Box
           onClick={(event) => {
@@ -354,6 +339,6 @@ export const BasePopover = ({
           className={styles.backdrop}
         />
       </BraidPortal>
-    </BasePopoverContext.Provider>
+    </PopoverContext.Provider>
   );
 };
