@@ -80,15 +80,15 @@ const TooltipContent = ({
         <Box className={styles.overflowWrap} position="relative" zIndex={1}>
           {children}
         </Box>
+        <Box
+          position="fixed"
+          background="neutral"
+          className={styles.arrow[basePopoverContext.flipPlacement]}
+          style={assignInlineVars({
+            [styles.horizontalOffset]: `${basePopoverContext.arrowOffset}px`,
+          })}
+        />
       </TooltipTextDefaultsProvider>
-      <Box
-        position="fixed"
-        background="neutral"
-        className={styles.arrow[basePopoverContext.flipPlacement]}
-        style={assignInlineVars({
-          [styles.horizontalOffset]: `${basePopoverContext.arrowOffset}px`,
-        })}
-      />
     </Box>
   );
 };
