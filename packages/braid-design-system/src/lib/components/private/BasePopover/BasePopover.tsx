@@ -25,6 +25,7 @@ const tooltipAnimationDelayInMs = 250;
 export type Placement = 'top' | 'bottom';
 
 export interface BasePopoverProps {
+  id?: string;
   align?: 'left' | 'right' | 'full' | 'center';
   placement?: Placement;
   lockPlacement?: boolean;
@@ -75,6 +76,7 @@ function clamp(min: number, preferred: number, max: number) {
 }
 
 export const BasePopover = ({
+  id,
   align: alignProp = 'left',
   placement = 'bottom',
   lockPlacement = false,
@@ -326,6 +328,7 @@ export const BasePopover = ({
       <BraidPortal>
         <Box
           // Todo - add aria-label if focussed
+          id={id}
           role={type === 'tooltip' ? 'tooltip' : undefined}
           component="section"
           tabIndex={-1}
