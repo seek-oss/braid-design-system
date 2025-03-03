@@ -2,8 +2,8 @@ import { assignInlineVars } from '@vanilla-extract/dynamic';
 import isMobile from 'is-mobile';
 import {
   createContext,
-  type MutableRefObject,
   type ReactNode,
+  type Ref,
   useContext,
   useEffect,
   useRef,
@@ -88,7 +88,8 @@ const TooltipContent = ({ children }: { children: ReactNodeNoStrings }) => {
 };
 
 interface TriggerProps {
-  ref: MutableRefObject<HTMLElement | null>;
+  // Using any to support any HTML element type. Specific types do not work with all elements.
+  ref: Ref<any>;
   tabIndex: 0;
   'aria-describedby': string;
 }
@@ -109,7 +110,7 @@ export const TooltipRenderer = ({
   const resolvedId = useFallbackId(id);
 
   const triggerWrapperRef = useRef<HTMLElement>(null);
-  const triggerRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef(null);
   const [open, setOpen] = useState(false);
 
   const isStatic = useContext(StaticTooltipContext);
