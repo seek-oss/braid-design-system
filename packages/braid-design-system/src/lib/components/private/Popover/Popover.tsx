@@ -101,21 +101,23 @@ export const Popover = ({
 
   const align = alignProp === 'center' ? 'left' : alignProp;
 
-  const handleOnClose = () => {
-    if (!returnFocusRef) {
-      return;
-    }
-
-    if (returnFocusRef?.current) {
-      returnFocusRef.current.focus();
-    } else {
-      // eslint-disable-next-line no-console
-      console.error(
-        dedent`
+  const handleOnClose = ({
+    closeTrigger,
+  }: {
+    closeTrigger: 'backdrop' | 'keyboard';
+  }) => {
+    if (closeTrigger !== 'backdrop' && returnFocusRef) {
+      if (returnFocusRef?.current) {
+        returnFocusRef.current.focus();
+      } else {
+        // eslint-disable-next-line no-console
+        console.error(
+          dedent`
           The returnFocusRef element could not be found.
           Ensure it is being assigned to the Popover trigger, and is available on close.
           `,
-      );
+        );
+      }
     }
 
     if (onClose) {
@@ -291,7 +293,7 @@ export const Popover = ({
     const targetKey = normalizeKey(event);
 
     if (targetKey === 'Escape' || targetKey === 'Tab') {
-      handleOnClose();
+      handleOnClose({ closeTrigger: 'keyboard' });
     }
   };
 
@@ -304,6 +306,21 @@ export const Popover = ({
   return (
     <PopoverContext.Provider value={contextValue}>
       <BraidPortal>
+        <Box
+          onClick={(event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            if (onClose) {
+              handleOnClose({ closeTrigger: 'backdrop' });
+            }
+          }}
+          pointerEvents={!onClose ? 'none' : undefined}
+          position="fixed"
+          zIndex="modal"
+          top={0}
+          left={0}
+          className={styles.backdrop}
+        />
         <Box
           id={id}
           role={isTooltip ? 'tooltip' : undefined}
@@ -323,21 +340,6 @@ export const Popover = ({
         >
           {children}
         </Box>
-        <Box
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            if (onClose) {
-              handleOnClose();
-            }
-          }}
-          pointerEvents={!onClose ? 'none' : undefined}
-          position="fixed"
-          zIndex="modal"
-          top={0}
-          left={0}
-          className={styles.backdrop}
-        />
       </BraidPortal>
     </PopoverContext.Provider>
   );
