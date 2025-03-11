@@ -1,4 +1,4 @@
-@keyframes _1ivfid24 {
+@keyframes fdlthx4 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-._1ivfid21 {
+.fdlthx1 {
   z-index: 100;
   background: #1c2230;
-  color: var(--_1lab2of9);
+  color: var(--_1hhkxrh9);
 }
-._1ivfid23 > svg > path {
+.fdlthx3 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: _1ivfid24;
+  animation-name: fdlthx4;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,7 +25,7 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-._1ivfid25 {
+.fdlthx5 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
