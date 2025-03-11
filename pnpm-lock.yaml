@@ -340,8 +340,8 @@ importers:
         specifier: ^7.1.1
         version: 7.18.1(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.78)(babel-plugin-macros@3.1.0))
       playroom:
-        specifier: 0.39.1
-        version: 0.39.1(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.40.0
+        version: 0.40.0(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       prettier:
         specifier: ^3.4.1
         version: 3.5.3
@@ -593,8 +593,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
       playroom:
-        specifier: 0.39.1
-        version: 0.39.1(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.40.0
+        version: 0.40.0(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -3011,6 +3011,11 @@ packages:
     peerDependencies:
       '@types/react': ^18.0.0
 
+  '@types/react-dom@19.0.4':
+    resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
+    peerDependencies:
+      '@types/react': ^19.0.0
+
   '@types/react-is@18.3.1':
     resolution: {integrity: sha512-zts4lhQn5ia0cF/y2+3V6Riu0MAfez9/LJYavdM8TvcVl+S91A/7VWxyBT8hbRuWspmuCaiGI0F41OJYGrKhRA==}
 
@@ -3025,6 +3030,9 @@ packages:
 
   '@types/react@18.3.18':
     resolution: {integrity: sha512-t4yC+vtgnkYjNSKlFx1jkAhH8LgTo2N/7Qvi83kdEaUtMDiwpbLAktKDaAMlRcJ5eSxZkH74eEGt1ky31d7kfQ==}
+
+  '@types/react@19.0.10':
+    resolution: {integrity: sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==}
 
   '@types/resolve@1.20.6':
     resolution: {integrity: sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==}
@@ -5744,9 +5752,6 @@ packages:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
     engines: {node: '>= 0.4'}
 
-  intersection-observer@0.12.2:
-    resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==}
-
   intl-messageformat@10.7.15:
     resolution: {integrity: sha512-LRyExsEsefQSBjU2p47oAheoKz+EOJxSLDdjOaEjdriajfHsMXOmV/EhMvYSg9bAgCUHasuAC+mcUBe/95PfIg==}
 
@@ -7270,13 +7275,13 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playroom@0.39.1:
-    resolution: {integrity: sha512-SBc6urvNZaPAj/fNIZUmLuJy7fh93lzX6y80dTdvyPVUqzggHk5NDI18NvNQDonq9bqAf7Uy8gHXNj4RHPmglQ==}
+  playroom@0.40.0:
+    resolution: {integrity: sha512-C6z2/c/9gXwntCokOxAojWKHVWrTalzsd+PM5vskT4U4PpzrtN/A2c6TtZYvqpWEyWSME1i3IgWH4ljmGD+obA==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     peerDependencies:
-      react: ^17 || ^18
-      react-dom: ^17 || ^18
+      react: ^17 || ^18 || ^19
+      react-dom: ^17 || ^18 || ^19
 
   please-upgrade-node@3.2.0:
     resolution: {integrity: sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==}
@@ -12482,6 +12487,10 @@ snapshots:
     dependencies:
       '@types/react': 18.3.18
 
+  '@types/react-dom@19.0.4(@types/react@19.0.10)':
+    dependencies:
+      '@types/react': 19.0.10
+
   '@types/react-is@18.3.1':
     dependencies:
       '@types/react': 18.3.18
@@ -12504,6 +12513,10 @@ snapshots:
   '@types/react@18.3.18':
     dependencies:
       '@types/prop-types': 15.7.14
+      csstype: 3.1.3
+
+  '@types/react@19.0.10':
+    dependencies:
       csstype: 3.1.3
 
   '@types/resolve@1.20.6': {}
@@ -16082,8 +16095,6 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.1.0
 
-  intersection-observer@0.12.2: {}
-
   intl-messageformat@10.7.15:
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.3
@@ -17836,7 +17847,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playroom@0.39.1(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.40.0(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.26.9
       '@babel/parser': 7.26.9
@@ -17846,10 +17857,9 @@ snapshots:
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.98.0(@swc/core@1.11.5)(esbuild@0.18.20))
       '@types/base64-url': 2.2.2
       '@types/codemirror': 5.60.15
-      '@types/lodash': 4.17.16
       '@types/prettier': 2.7.3
-      '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+      '@types/react': 19.0.10
+      '@types/react-dom': 19.0.4(@types/react@19.0.10)
       '@vanilla-extract/css': 1.17.1(babel-plugin-macros@3.1.0)
       '@vanilla-extract/css-utils': 0.1.4
       '@vanilla-extract/dynamic': 2.1.2
@@ -17869,14 +17879,11 @@ snapshots:
       fuzzy: 0.1.3
       history: 5.3.0
       html-webpack-plugin: 5.6.3(webpack@5.98.0(@swc/core@1.11.5)(esbuild@0.18.20))
-      intersection-observer: 0.12.2
       localforage: 1.10.0
-      lodash: 4.17.21
       lz-string: 1.5.0
       memoize-one: 6.0.0
       mini-css-extract-plugin: 2.9.2(webpack@5.98.0(@swc/core@1.11.5)(esbuild@0.18.20))
       parse-prop-types: 0.3.0(prop-types@15.8.1)
-      polished: 4.3.1
       portfinder: 1.0.33
       prettier: 2.8.8
       prop-types: 15.8.1
@@ -17886,7 +17893,6 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-helmet: 6.1.0(react@18.3.1)
       react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-use: 17.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       read-pkg-up: 7.0.1
       scope-eval: 1.0.0
       sucrase: 3.35.0
@@ -17907,7 +17913,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  playroom@0.39.1(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.40.0(@swc/core@1.11.5)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.26.9
       '@babel/parser': 7.26.9
@@ -17917,10 +17923,9 @@ snapshots:
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.98.0(@swc/core@1.11.5))
       '@types/base64-url': 2.2.2
       '@types/codemirror': 5.60.15
-      '@types/lodash': 4.17.16
       '@types/prettier': 2.7.3
-      '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+      '@types/react': 19.0.10
+      '@types/react-dom': 19.0.4(@types/react@19.0.10)
       '@vanilla-extract/css': 1.17.1(babel-plugin-macros@3.1.0)
       '@vanilla-extract/css-utils': 0.1.4
       '@vanilla-extract/dynamic': 2.1.2
@@ -17940,14 +17945,11 @@ snapshots:
       fuzzy: 0.1.3
       history: 5.3.0
       html-webpack-plugin: 5.6.3(webpack@5.98.0(@swc/core@1.11.5))
-      intersection-observer: 0.12.2
       localforage: 1.10.0
-      lodash: 4.17.21
       lz-string: 1.5.0
       memoize-one: 6.0.0
       mini-css-extract-plugin: 2.9.2(webpack@5.98.0(@swc/core@1.11.5))
       parse-prop-types: 0.3.0(prop-types@15.8.1)
-      polished: 4.3.1
       portfinder: 1.0.33
       prettier: 2.8.8
       prop-types: 15.8.1
@@ -17957,7 +17959,6 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-helmet: 6.1.0(react@18.3.1)
       react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-use: 17.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       read-pkg-up: 7.0.1
       scope-eval: 1.0.0
       sucrase: 3.35.0
@@ -20670,7 +20671,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@3.1.0:
