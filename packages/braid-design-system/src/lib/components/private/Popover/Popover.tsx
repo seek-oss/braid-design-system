@@ -14,6 +14,7 @@ import type { ResponsiveSpace } from '../../../css/atoms/atoms';
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
+import { useSpace } from '../../useSpace/useSpace';
 import { normalizeKey } from '../normalizeKey';
 
 import { PopoverContext } from './PopoverContext';
@@ -94,6 +95,9 @@ export const Popover = ({
   const [horizontalOffset, setHorizontalOffset] = useState(0);
   const [arrowOffset, setArrowOffset] = useState(0);
   const [flipPlacement, setFlipPlacement] = useState<Placement>(placement);
+
+  const { grid, space } = useSpace();
+  const edgeOffset = space.xsmall * grid;
 
   const showPopover = open && triggerPosition;
 
@@ -216,9 +220,6 @@ export const Popover = ({
       alignProp === 'center' && triggerCenter
         ? triggerCenter - popoverWidth / 2
         : triggerPosition.left;
-
-    // Todo - use Braid tokens
-    const edgeOffset = 12;
 
     const updatedLeft = clamp(
       scrollX + edgeOffset,
