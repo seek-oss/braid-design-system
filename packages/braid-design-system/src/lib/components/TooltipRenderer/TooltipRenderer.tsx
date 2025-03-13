@@ -20,7 +20,6 @@ import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from '../TooltipRenderer/TooltipRenderer.css';
 
-const borderRadius = 'large';
 const edgeOffset = 'xxsmall';
 
 const StaticTooltipContext = createContext(false);
@@ -63,7 +62,7 @@ const TooltipContent = ({
   <Box
     boxShadow="large"
     background="neutral"
-    borderRadius={borderRadius}
+    borderRadius="large"
     padding="small"
     marginX={edgeOffset}
     className={[styles.maxWidth, styles.translateZ0]}
@@ -193,13 +192,14 @@ export const TooltipRenderer = ({
       </Box>
       <Popover
         id={id}
+        role="tooltip"
         ref={tooltipRef}
-        isTooltip
         offsetSpace="small"
         align="center"
         placement={placement}
         lockPlacement={isStatic}
         disableAnimation={isStatic}
+        delayVisibility
         open={isStatic ? true : open}
         focusOnOpen={false}
         triggerRef={triggerRef}
