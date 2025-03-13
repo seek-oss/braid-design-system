@@ -11,20 +11,18 @@ import {
 } from 'react';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../Box/Box';
-import {
-  edgeOffset,
-  Popover,
-  type Placement,
-} from '../private/Popover/Popover';
-import { PopoverContext } from '../private/Popover/PopoverContext';
+import { Popover, type Placement } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from '../TooltipRenderer/TooltipRenderer.css';
 
 const borderRadius = 'large';
+const edgeOffset = 'xxsmall';
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({
@@ -54,40 +52,38 @@ export const TooltipTextDefaultsProvider = ({
   );
 };
 
-const TooltipContent = ({ children }: { children: ReactNodeNoStrings }) => {
-  const popoverContext = useContext(PopoverContext);
-
-  if (!popoverContext) {
-    throw new Error(
-      'TooltipRendererNew must be rendered within a PopoverContextProvider',
-    );
-  }
-
-  return (
-    <Box
-      boxShadow="large"
-      background="neutral"
-      borderRadius={borderRadius}
-      padding="small"
-      marginX={edgeOffset}
-      className={[styles.maxWidth, styles.translateZ0]}
-    >
-      <TooltipTextDefaultsProvider>
-        <Box className={styles.overflowWrap} position="relative" zIndex={1}>
-          {children}
-        </Box>
-        <Box
-          position="fixed"
-          background="neutral"
-          className={styles.arrow[popoverContext.flipPlacement]}
-          style={assignInlineVars({
-            [styles.horizontalOffset]: `${popoverContext.arrowOffset}px`,
-          })}
-        />
-      </TooltipTextDefaultsProvider>
-    </Box>
-  );
-};
+const TooltipContent = ({
+  inferredPlacement,
+  arrowLeftOffset,
+  children,
+}: {
+  inferredPlacement: Placement;
+  arrowLeftOffset: string;
+  children: ReactNodeNoStrings;
+}) => (
+  <Box
+    boxShadow="large"
+    background="neutral"
+    borderRadius={borderRadius}
+    padding="small"
+    marginX={edgeOffset}
+    className={[styles.maxWidth, styles.translateZ0]}
+  >
+    <TooltipTextDefaultsProvider>
+      <Box className={styles.overflowWrap} zIndex={1} position="relative">
+        {children}
+      </Box>
+      <Box
+        position="fixed"
+        background="neutral"
+        className={styles.arrow[inferredPlacement]}
+        style={assignInlineVars({
+          [styles.horizontalOffset]: arrowLeftOffset,
+        })}
+      />
+    </TooltipTextDefaultsProvider>
+  </Box>
+);
 
 interface TriggerProps {
   // Using any to support any HTML element type. Specific types do not work with all elements.
@@ -112,8 +108,15 @@ export const TooltipRenderer = ({
   const resolvedId = useFallbackId(id);
 
   const triggerWrapperRef = useRef<HTMLElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [inferredPlacement, setInferredPlacement] =
+    useState<Placement>(placement);
+  const [arrowLeftOffsetPx, setArrowLeftOffsetPx] = useState(0);
+
+  const { grid, space } = useSpace();
+  const edgeOffsetAsPx = space[edgeOffset] * grid;
 
   const isStatic = useContext(StaticTooltipContext);
 
@@ -137,7 +140,40 @@ export const TooltipRenderer = ({
     document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
   }, [open]);
 
-  useEffect(() => {});
+  useIsomorphicLayoutEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const setArrowPosition = () => {
+      const tooltipPosition = tooltipRef.current?.getBoundingClientRect();
+      const triggerPosition =
+        triggerWrapperRef.current?.getBoundingClientRect();
+
+      if (!tooltipPosition || !triggerPosition) {
+        return;
+      }
+
+      setInferredPlacement(
+        tooltipPosition.top > triggerPosition.top ? 'bottom' : 'top',
+      );
+
+      const triggerLeft = triggerPosition.left;
+      const tooltipLeftToTriggerLeft =
+        triggerLeft - tooltipPosition.left - edgeOffsetAsPx;
+
+      setArrowLeftOffsetPx(
+        tooltipLeftToTriggerLeft + triggerPosition.width / 2,
+      );
+    };
+
+    const timeoutId = setTimeout(() => {
+      const frameId = requestAnimationFrame(setArrowPosition);
+      return () => cancelAnimationFrame(frameId);
+    });
+
+    return () => clearTimeout(timeoutId);
+  }, [open, edgeOffsetAsPx]);
 
   return (
     <>
@@ -160,17 +196,24 @@ export const TooltipRenderer = ({
       </Box>
       <Popover
         id={resolvedId}
+        ref={tooltipRef}
         isTooltip
         offsetSpace="small"
         align="center"
         placement={placement}
         lockPlacement={isStatic}
+        disableAnimation={isStatic}
         open={isStatic ? true : open}
         focusOnOpen={false}
         triggerWrapperRef={triggerRef}
         returnFocusRef={triggerRef}
       >
-        <TooltipContent>{tooltip}</TooltipContent>
+        <TooltipContent
+          inferredPlacement={isStatic ? placement : inferredPlacement}
+          arrowLeftOffset={isStatic ? '50%' : `${arrowLeftOffsetPx}px`}
+        >
+          {tooltip}
+        </TooltipContent>
       </Popover>
     </>
   );
