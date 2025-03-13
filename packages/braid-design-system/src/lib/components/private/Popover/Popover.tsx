@@ -73,6 +73,8 @@ function clamp(min: number, preferred: number, max: number) {
   return Math.min(Math.max(preferred, min), max);
 }
 
+export const edgeOffset = 'xxsmall';
+
 export const Popover = ({
   id,
   align: alignProp = 'left',
@@ -96,8 +98,9 @@ export const Popover = ({
   const [arrowOffset, setArrowOffset] = useState(0);
   const [flipPlacement, setFlipPlacement] = useState<Placement>(placement);
 
+  // Todo -move to tooltip renderer
   const { grid, space } = useSpace();
-  const edgeOffset = space.xsmall * grid;
+  const edgeOffsetAsPx = space[edgeOffset] * grid;
 
   const showPopover = open && triggerPosition;
 
@@ -209,48 +212,47 @@ export const Popover = ({
       return;
     }
 
-    const { width, left, right } = popoverBoundingRect;
+    const { width: popoverWidth } = popoverBoundingRect;
 
     const triggerCenter =
       triggerPosition.width && triggerPosition.left + triggerPosition.width / 2;
-    const popoverWidth = right - left;
 
-    // If alignProp is center, use left align but adjust the left position for centering
-    const inferredLeft =
+    const popoverLeft =
       alignProp === 'center' && triggerCenter
         ? triggerCenter - popoverWidth / 2
         : triggerPosition.left;
 
-    const updatedLeft = clamp(
-      scrollX + edgeOffset,
-      inferredLeft,
-      window.innerWidth + scrollX - width - edgeOffset,
+    const clampedPopoverLeft = clamp(
+      scrollX,
+      popoverLeft,
+      window.innerWidth + scrollX - popoverWidth,
     );
 
-    const normalisedRight = window.innerWidth - triggerPosition.right;
+    const triggerRightFromLeft = window.innerWidth - triggerPosition.right;
 
-    const updatedRight = clamp(
-      scrollX + width + edgeOffset,
-      normalisedRight,
-      scrollX + window.innerWidth - edgeOffset,
+    const clampedTriggerRightFromLeft = clamp(
+      scrollX + popoverWidth,
+      triggerRightFromLeft,
+      scrollX + window.innerWidth,
     );
 
     if (
       align === 'right' &&
-      updatedRight !== triggerPosition.right + horizontalOffset
+      clampedTriggerRightFromLeft !== triggerPosition.right + horizontalOffset
     ) {
       setHorizontalOffset(
-        window.innerWidth - updatedRight - triggerPosition.right,
+        window.innerWidth - clampedTriggerRightFromLeft - triggerPosition.right,
       );
     }
     if (
       align === 'left' &&
-      updatedLeft !== triggerPosition.left + horizontalOffset
+      clampedPopoverLeft !== triggerPosition.left + horizontalOffset
     ) {
-      setHorizontalOffset(updatedLeft - triggerPosition.left);
-      setArrowOffset(
-        triggerPosition.left + triggerPosition.width / 2 - updatedLeft,
-      );
+      setHorizontalOffset(clampedPopoverLeft - triggerPosition.left);
+
+      const popoverToTriggerLength =
+        triggerPosition.left - clampedPopoverLeft - edgeOffsetAsPx;
+      setArrowOffset(popoverToTriggerLength + triggerPosition.width / 2);
     }
 
     return;
