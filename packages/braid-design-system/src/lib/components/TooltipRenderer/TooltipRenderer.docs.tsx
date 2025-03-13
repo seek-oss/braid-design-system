@@ -169,7 +169,7 @@ const docs: ComponentDocs = {
             placement="bottom"
             tooltip={
               <Stack space="medium">
-                <Text weight="strong">Strong text</Text>
+                <Text size="large">Large text</Text>
                 <Text>
                   The quick brown fox jumps over the lazy dog. The quick brown
                   fox jumps over the lazy dog. The quick brown fox jumps over
@@ -196,7 +196,7 @@ const docs: ComponentDocs = {
               placement="bottom"
               tooltip={
                 <Stack space="medium">
-                  <Text weight="strong">Strong text</Text>
+                  <Text size="large">Large text</Text>
                   <Text>
                     The quick brown fox jumps over the lazy dog. The quick brown
                     fox jumps over the lazy dog. The quick brown fox jumps over
