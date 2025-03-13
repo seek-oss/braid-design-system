@@ -112,7 +112,7 @@ export const MenuRenderer = ({
   data,
   ...restProps
 }: MenuRendererProps) => {
-  const containerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastOpen = useRef(false);
   const items = flattenChildren(children);
@@ -287,13 +287,13 @@ export const MenuRenderer = ({
 
   return (
     <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
-      <Box ref={containerRef}>{trigger(triggerProps, { open })}</Box>
+      <Box ref={triggerRef}>{trigger(triggerProps, { open })}</Box>
 
       <Popover
         open={open}
         onClose={() => dispatch({ type: MENU_CLOSE })}
-        triggerWrapperRef={containerRef}
-        returnFocusRef={triggerProps.ref}
+        triggerRef={triggerRef}
+        exitFocusRef={triggerProps.ref}
         align={align}
         placement={placement}
         offsetSpace={offsetSpace}
