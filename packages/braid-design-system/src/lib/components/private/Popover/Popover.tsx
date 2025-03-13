@@ -7,21 +7,20 @@ import {
   useEffect,
   useState,
   type RefObject,
+  forwardRef,
   useRef,
+  useImperativeHandle,
 } from 'react';
 
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
-import { useSpace } from '../../useSpace/useSpace';
 import { normalizeKey } from '../normalizeKey';
-
-import { PopoverContext } from './PopoverContext';
 
 import * as styles from './Popover.css';
 
-const tooltipAnimationDelayInMs = 250;
+export const tooltipAnimationDelayInMs = 250;
 
 export type Placement = 'top' | 'bottom';
 
@@ -73,241 +72,235 @@ function clamp(min: number, preferred: number, max: number) {
   return Math.min(Math.max(preferred, min), max);
 }
 
-export const edgeOffset = 'xxsmall';
+export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
+  (
+    {
+      id,
+      align: alignProp = 'left',
+      placement = 'bottom',
+      lockPlacement = false,
+      offsetSpace = 'none',
+      open,
+      onClose,
+      triggerWrapperRef,
+      initialFocusRef,
+      returnFocusRef,
+      disableAnimation = false,
+      focusOnOpen: focusPopoverOnOpen = false,
+      isTooltip = false,
+      children,
+    },
+    forwardedRef,
+  ) => {
+    const [triggerPosition, setTriggerPosition] = useState<
+      Position | undefined
+    >(undefined);
 
-export const Popover = ({
-  id,
-  align: alignProp = 'left',
-  placement = 'bottom',
-  lockPlacement = false,
-  offsetSpace = 'none',
-  open,
-  onClose,
-  triggerWrapperRef,
-  initialFocusRef,
-  returnFocusRef,
-  disableAnimation = false,
-  focusOnOpen: focusPopoverOnOpen = false,
-  isTooltip = false,
-  children,
-}: PopoverProps) => {
-  const [triggerPosition, setTriggerPosition] = useState<Position | undefined>(
-    undefined,
-  );
-  const [horizontalOffset, setHorizontalOffset] = useState(0);
-  const [arrowOffset, setArrowOffset] = useState(0);
-  const [flipPlacement, setFlipPlacement] = useState<Placement>(placement);
+    const ref = useRef<HTMLDivElement>(null);
+    useImperativeHandle(forwardedRef, () => ref.current as HTMLDivElement);
 
-  // Todo -move to tooltip renderer
-  const { grid, space } = useSpace();
-  const edgeOffsetAsPx = space[edgeOffset] * grid;
+    const [horizontalOffset, setHorizontalOffset] = useState(0);
+    const [flipPlacement, setFlipPlacement] = useState<Placement>(placement);
 
-  const showPopover = open && triggerPosition;
+    const showPopover = open && triggerPosition;
 
-  const popoverContainerRef = useRef<HTMLDivElement | null>(null);
+    const align = alignProp === 'center' ? 'left' : alignProp;
 
-  const align = alignProp === 'center' ? 'left' : alignProp;
-
-  const handleOnClose = ({
-    closeTrigger,
-  }: {
-    closeTrigger: 'backdrop' | 'keyboard';
-  }) => {
-    if (closeTrigger !== 'backdrop' && returnFocusRef) {
-      if (returnFocusRef?.current) {
-        returnFocusRef.current.focus();
-      } else {
-        // eslint-disable-next-line no-console
-        console.error(
-          dedent`
-          The returnFocusRef element could not be found.
-          Ensure it is being assigned to the Popover trigger, and is available on close.
-          `,
-        );
-      }
-    }
-
-    if (onClose) {
-      onClose();
-    }
-  };
-
-  useEffect(() => {
-    if (!open) {
-      setTriggerPosition(undefined);
-      setHorizontalOffset(0);
-      setArrowOffset(0);
-      return;
-    }
-
-    setTriggerPosition(getPosition(triggerWrapperRef.current));
-    // Without timeout, focus will not work on first render
-    // Needs to be 10ms to work in Safari - 0 for other browsers
-    setTimeout(() => {
-      if (initialFocusRef) {
-        if (initialFocusRef.current) {
-          initialFocusRef.current.focus();
+    const handleOnClose = ({
+      closeTrigger,
+    }: {
+      closeTrigger: 'backdrop' | 'keyboard';
+    }) => {
+      if (closeTrigger !== 'backdrop' && returnFocusRef) {
+        if (returnFocusRef?.current) {
+          returnFocusRef.current.focus();
         } else {
           // eslint-disable-next-line no-console
           console.error(
             dedent`
+          The returnFocusRef element could not be found.
+          Ensure it is being assigned to the Popover trigger, and is available on close.
+          `,
+          );
+        }
+      }
+
+      if (onClose) {
+        onClose();
+      }
+    };
+
+    useEffect(() => {
+      if (!open) {
+        setTriggerPosition(undefined);
+        setHorizontalOffset(0);
+        return;
+      }
+
+      setTriggerPosition(getPosition(triggerWrapperRef.current));
+      // Without timeout, focus will not work on first render
+      // Needs to be 10ms to work in Safari - 0 for other browsers
+      setTimeout(() => {
+        if (initialFocusRef) {
+          if (initialFocusRef.current) {
+            initialFocusRef.current.focus();
+          } else {
+            // eslint-disable-next-line no-console
+            console.error(
+              dedent`
                 The initialFocusRef element could not be found.
                 Ensure it is being assigned to a child element of Popover, and is available on open.
                 `,
-          );
+            );
+          }
+        } else if (focusPopoverOnOpen && ref?.current) {
+          ref.current.focus();
         }
-      } else if (focusPopoverOnOpen && popoverContainerRef.current) {
-        popoverContainerRef.current.focus();
+      }, 10);
+    }, [
+      open,
+      forwardedRef,
+      initialFocusRef,
+      returnFocusRef,
+      triggerWrapperRef,
+      focusPopoverOnOpen,
+    ]);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setTriggerPosition(getPosition(triggerWrapperRef.current));
+      };
+
+      if (!open) {
+        return;
       }
-    }, 10);
-  }, [
-    open,
-    initialFocusRef,
-    returnFocusRef,
-    triggerWrapperRef,
-    focusPopoverOnOpen,
-  ]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setTriggerPosition(getPosition(triggerWrapperRef.current));
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, [open, triggerWrapperRef]);
+
+    const handleFlipPlacement = () => {
+      const popoverBoundingRect = ref?.current?.getBoundingClientRect();
+      if (!popoverBoundingRect) {
+        return;
+      }
+
+      const { top, bottom } = popoverBoundingRect;
+      const distanceFromBottom = window.innerHeight - bottom;
+
+      if (top < 0) {
+        setFlipPlacement('bottom');
+      } else if (distanceFromBottom < 0) {
+        setFlipPlacement('top');
+      }
     };
 
-    if (!open) {
-      return;
-    }
+    const handleHorizontalShift = () => {
+      if (!triggerPosition) {
+        return;
+      }
 
-    window.addEventListener('resize', handleResize);
+      const popoverBoundingRect = ref?.current?.getBoundingClientRect();
+      if (!popoverBoundingRect) {
+        return;
+      }
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [open, triggerWrapperRef]);
+      const { width: popoverWidth } = popoverBoundingRect;
 
-  const handleFlipPlacement = () => {
-    const popoverBoundingRect =
-      popoverContainerRef?.current?.getBoundingClientRect();
-    if (!popoverBoundingRect) {
-      return;
-    }
+      const triggerCenter =
+        triggerPosition.width &&
+        triggerPosition.left + triggerPosition.width / 2;
 
-    const { top, bottom } = popoverBoundingRect;
-    const distanceFromBottom = window.innerHeight - bottom;
+      const popoverLeft =
+        alignProp === 'center' && triggerCenter
+          ? triggerCenter - popoverWidth / 2
+          : triggerPosition.left;
 
-    if (top < 0) {
-      setFlipPlacement('bottom');
-    } else if (distanceFromBottom < 0) {
-      setFlipPlacement('top');
-    }
-  };
-
-  const handleHorizontalShift = () => {
-    if (!triggerPosition) {
-      return;
-    }
-
-    const popoverBoundingRect =
-      popoverContainerRef?.current?.getBoundingClientRect();
-    if (!popoverBoundingRect) {
-      return;
-    }
-
-    const { width: popoverWidth } = popoverBoundingRect;
-
-    const triggerCenter =
-      triggerPosition.width && triggerPosition.left + triggerPosition.width / 2;
-
-    const popoverLeft =
-      alignProp === 'center' && triggerCenter
-        ? triggerCenter - popoverWidth / 2
-        : triggerPosition.left;
-
-    const clampedPopoverLeft = clamp(
-      scrollX,
-      popoverLeft,
-      window.innerWidth + scrollX - popoverWidth,
-    );
-
-    const triggerRightFromLeft = window.innerWidth - triggerPosition.right;
-
-    const clampedTriggerRightFromLeft = clamp(
-      scrollX + popoverWidth,
-      triggerRightFromLeft,
-      scrollX + window.innerWidth,
-    );
-
-    if (
-      align === 'right' &&
-      clampedTriggerRightFromLeft !== triggerPosition.right + horizontalOffset
-    ) {
-      setHorizontalOffset(
-        window.innerWidth - clampedTriggerRightFromLeft - triggerPosition.right,
+      const clampedPopoverLeft = clamp(
+        scrollX,
+        popoverLeft,
+        window.innerWidth + scrollX - popoverWidth,
       );
-    }
-    if (
-      align === 'left' &&
-      clampedPopoverLeft !== triggerPosition.left + horizontalOffset
-    ) {
-      setHorizontalOffset(clampedPopoverLeft - triggerPosition.left);
 
-      const popoverToTriggerLength =
-        triggerPosition.left - clampedPopoverLeft - edgeOffsetAsPx;
-      setArrowOffset(popoverToTriggerLength + triggerPosition.width / 2);
-    }
+      const triggerRightFromLeft = window.innerWidth - triggerPosition.right;
 
-    return;
-  };
+      const clampedTriggerRightFromLeft = clamp(
+        scrollX + popoverWidth,
+        triggerRightFromLeft,
+        scrollX + window.innerWidth,
+      );
 
-  useIsomorphicLayoutEffect(() => {
-    if (!showPopover) {
-      setFlipPlacement(placement);
+      if (
+        align === 'right' &&
+        clampedTriggerRightFromLeft !== triggerPosition.right + horizontalOffset
+      ) {
+        setHorizontalOffset(
+          window.innerWidth -
+            clampedTriggerRightFromLeft -
+            triggerPosition.right,
+        );
+      }
+      if (
+        align === 'left' &&
+        clampedPopoverLeft !== triggerPosition.left + horizontalOffset
+      ) {
+        setHorizontalOffset(clampedPopoverLeft - triggerPosition.left);
+      }
+
       return;
+    };
+
+    useIsomorphicLayoutEffect(() => {
+      if (!showPopover) {
+        setFlipPlacement(placement);
+        return;
+      }
+
+      if (align !== 'full') {
+        handleHorizontalShift();
+      }
+      if (!lockPlacement) {
+        handleFlipPlacement();
+      }
+    });
+
+    const triggerPositionVars = triggerPosition && {
+      [styles.triggerVars[flipPlacement]]:
+        `${triggerPosition[flipPlacement]}px`,
+      ...(align === 'full'
+        ? {
+            [styles.triggerVars.left]: `${triggerPosition?.left}px`,
+            [styles.triggerVars.right]: `${triggerPosition?.right}px`,
+          }
+        : {
+            [styles.triggerVars[align]]: `${
+              triggerPosition[align] + horizontalOffset
+            }px`,
+          }),
+    };
+
+    const inlineVars = {
+      [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
+      [styles.animationDelayInMs]:
+        isTooltip && !isMobile() ? `${tooltipAnimationDelayInMs}ms` : '0',
+    };
+
+    const handleKeyboard = (event: ReactKeyboardEvent) => {
+      const targetKey = normalizeKey(event);
+
+      if (targetKey === 'Escape' || targetKey === 'Tab') {
+        handleOnClose({ closeTrigger: 'keyboard' });
+      }
+    };
+
+    if (!showPopover) {
+      return null;
     }
 
-    if (align !== 'full') {
-      handleHorizontalShift();
-    }
-    if (!lockPlacement) {
-      handleFlipPlacement();
-    }
-  });
-
-  const triggerPositionVars = triggerPosition && {
-    [styles.triggerVars[flipPlacement]]: `${triggerPosition[flipPlacement]}px`,
-    ...(align === 'full'
-      ? {
-          [styles.triggerVars.left]: `${triggerPosition?.left}px`,
-          [styles.triggerVars.right]: `${triggerPosition?.right}px`,
-        }
-      : {
-          [styles.triggerVars[align]]: `${
-            triggerPosition[align] + horizontalOffset
-          }px`,
-        }),
-  };
-
-  const inlineVars = {
-    [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
-    [styles.animationDelayInMs]:
-      isTooltip && !isMobile() ? `${tooltipAnimationDelayInMs}ms` : '0',
-  };
-
-  const handleKeyboard = (event: ReactKeyboardEvent) => {
-    const targetKey = normalizeKey(event);
-
-    if (targetKey === 'Escape' || targetKey === 'Tab') {
-      handleOnClose({ closeTrigger: 'keyboard' });
-    }
-  };
-
-  if (!showPopover) {
-    return null;
-  }
-
-  const contextValue = { arrowOffset, flipPlacement };
-
-  return (
-    <PopoverContext.Provider value={contextValue}>
+    return (
       <BraidPortal>
         <Box
           onClick={(event) => {
@@ -326,10 +319,10 @@ export const Popover = ({
         />
         <Box
           id={id}
+          ref={ref}
           role={isTooltip ? 'tooltip' : undefined}
           component="section"
           tabIndex={-1}
-          ref={popoverContainerRef}
           onKeyDown={handleKeyboard}
           zIndex="modal"
           position="absolute"
@@ -344,6 +337,6 @@ export const Popover = ({
           {children}
         </Box>
       </BraidPortal>
-    </PopoverContext.Provider>
-  );
-};
+    );
+  },
+);
