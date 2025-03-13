@@ -205,8 +205,8 @@ export const TooltipRenderer = ({
         disableAnimation={isStatic}
         open={isStatic ? true : open}
         focusOnOpen={false}
-        triggerWrapperRef={triggerRef}
-        returnFocusRef={triggerRef}
+        triggerRef={triggerRef}
+        exitFocusRef={triggerRef}
       >
         <TooltipContent
           inferredPlacement={isStatic ? placement : inferredPlacement}

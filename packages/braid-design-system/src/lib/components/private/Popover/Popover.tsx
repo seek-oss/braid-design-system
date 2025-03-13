@@ -32,10 +32,10 @@ export interface PopoverProps {
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onClose?: () => void;
-  // Separate from exitRef, as button sizes change on active, which causes an incorrect triggerPosition
-  triggerWrapperRef: RefObject<HTMLElement>;
-  initialFocusRef?: RefObject<HTMLElement>;
-  returnFocusRef?: RefObject<HTMLElement>;
+  // Separate from exitFocusRef, as button sizes change on active, which causes an incorrect triggerPosition
+  triggerRef: RefObject<HTMLElement>;
+  enterFocusRef?: RefObject<HTMLElement>;
+  exitFocusRef?: RefObject<HTMLElement>;
   disableAnimation?: boolean;
   focusOnOpen?: boolean;
   isTooltip?: boolean;
@@ -82,9 +82,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       offsetSpace = 'none',
       open,
       onClose,
-      triggerWrapperRef,
-      initialFocusRef,
-      returnFocusRef,
+      triggerRef,
+      enterFocusRef,
+      exitFocusRef,
       disableAnimation = false,
       focusOnOpen: focusPopoverOnOpen = false,
       isTooltip = false,
@@ -111,9 +111,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     }: {
       closeTrigger: 'backdrop' | 'keyboard';
     }) => {
-      if (closeTrigger !== 'backdrop' && returnFocusRef) {
-        if (returnFocusRef?.current) {
-          returnFocusRef.current.focus();
+      if (closeTrigger !== 'backdrop' && exitFocusRef) {
+        if (exitFocusRef?.current) {
+          exitFocusRef.current.focus();
         } else {
           // eslint-disable-next-line no-console
           console.error(
@@ -137,13 +137,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         return;
       }
 
-      setTriggerPosition(getPosition(triggerWrapperRef.current));
+      setTriggerPosition(getPosition(triggerRef.current));
       // Without timeout, focus will not work on first render
       // Needs to be 10ms to work in Safari - 0 for other browsers
       setTimeout(() => {
-        if (initialFocusRef) {
-          if (initialFocusRef.current) {
-            initialFocusRef.current.focus();
+        if (enterFocusRef) {
+          if (enterFocusRef.current) {
+            enterFocusRef.current.focus();
           } else {
             // eslint-disable-next-line no-console
             console.error(
@@ -160,15 +160,15 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     }, [
       open,
       forwardedRef,
-      initialFocusRef,
-      returnFocusRef,
-      triggerWrapperRef,
+      enterFocusRef,
+      exitFocusRef,
+      triggerRef,
       focusPopoverOnOpen,
     ]);
 
     useEffect(() => {
       const handleResize = () => {
-        setTriggerPosition(getPosition(triggerWrapperRef.current));
+        setTriggerPosition(getPosition(triggerRef.current));
       };
 
       if (!open) {
@@ -180,7 +180,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       return () => {
         window.removeEventListener('resize', handleResize);
       };
-    }, [open, triggerWrapperRef]);
+    }, [open, triggerRef]);
 
     const handleFlipPlacement = () => {
       const popoverBoundingRect = ref?.current?.getBoundingClientRect();
