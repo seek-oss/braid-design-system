@@ -1,6 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import dedent from 'dedent';
-import isMobile from 'is-mobile';
 import {
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
@@ -286,8 +285,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     const inlineVars = {
       [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
-      [styles.animationDelayInMs]:
-        delayVisibility && !isMobile() ? `${animationDelayInMs}ms` : '0',
+      [styles.animationDelayInMs]: delayVisibility
+        ? `${animationDelayInMs}ms`
+        : '0',
     };
 
     const handleKeyboard = (event: ReactKeyboardEvent) => {
