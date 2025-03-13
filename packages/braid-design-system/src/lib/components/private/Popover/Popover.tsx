@@ -20,12 +20,13 @@ import { normalizeKey } from '../normalizeKey';
 
 import * as styles from './Popover.css';
 
-export const tooltipAnimationDelayInMs = 250;
+export const animationDelayInMs = 250;
 
 export type Placement = 'top' | 'bottom';
 
 export interface PopoverProps {
   id?: string;
+  role?: string;
   align?: 'left' | 'right' | 'full' | 'center';
   placement?: Placement;
   lockPlacement?: boolean;
@@ -38,7 +39,7 @@ export interface PopoverProps {
   exitFocusRef?: RefObject<HTMLElement>;
   disableAnimation?: boolean;
   focusOnOpen?: boolean;
-  isTooltip?: boolean;
+  delayVisibility?: boolean;
   children: ReactNode;
 }
 
@@ -76,6 +77,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   (
     {
       id,
+      role,
       align: alignProp = 'left',
       placement = 'bottom',
       lockPlacement = false,
@@ -86,8 +88,8 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       enterFocusRef,
       exitFocusRef,
       disableAnimation = false,
-      focusOnOpen: focusPopoverOnOpen = false,
-      isTooltip = false,
+      focusOnOpen = false,
+      delayVisibility = false,
       children,
     },
     forwardedRef,
@@ -153,7 +155,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
                 `,
             );
           }
-        } else if (focusPopoverOnOpen && ref?.current) {
+        } else if (focusOnOpen && ref?.current) {
           ref.current.focus();
         }
       }, 10);
@@ -163,7 +165,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       enterFocusRef,
       exitFocusRef,
       triggerRef,
-      focusPopoverOnOpen,
+      focusOnOpen,
     ]);
 
     useEffect(() => {
@@ -285,7 +287,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const inlineVars = {
       [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
       [styles.animationDelayInMs]:
-        isTooltip && !isMobile() ? `${tooltipAnimationDelayInMs}ms` : '0',
+        delayVisibility && !isMobile() ? `${animationDelayInMs}ms` : '0',
     };
 
     const handleKeyboard = (event: ReactKeyboardEvent) => {
@@ -320,7 +322,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         <Box
           id={id}
           ref={ref}
-          role={isTooltip ? 'tooltip' : undefined}
+          role={role || 'dialog'}
           component="section"
           tabIndex={-1}
           onKeyDown={handleKeyboard}
