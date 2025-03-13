@@ -180,7 +180,7 @@ export const TooltipRenderer = ({
         onMouseEnter={() => !isMobile() && setOpen(true)}
         onFocus={() => !isMobile() && setOpen(true)}
         onMouseLeave={() => !isMobile() && setOpen(false)}
-        onBlur={() => !isMobile() && setOpen(false)}
+        onBlur={() => setOpen(false)}
       >
         {children({
           triggerProps: {
@@ -199,7 +199,7 @@ export const TooltipRenderer = ({
         placement={placement}
         lockPlacement={isStatic}
         disableAnimation={isStatic}
-        delayVisibility
+        delayVisibility={!isMobile()}
         open={isStatic ? true : open}
         focusOnOpen={false}
         triggerRef={triggerRef}
