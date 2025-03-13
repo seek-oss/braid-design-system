@@ -12,7 +12,11 @@ import {
 
 import { useFallbackId } from '../../hooks/useFallbackId';
 import { Box } from '../Box/Box';
-import { Popover, type Placement } from '../private/Popover/Popover';
+import {
+  edgeOffset,
+  Popover,
+  type Placement,
+} from '../private/Popover/Popover';
 import { PopoverContext } from '../private/Popover/PopoverContext';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
@@ -65,6 +69,7 @@ const TooltipContent = ({ children }: { children: ReactNodeNoStrings }) => {
       background="neutral"
       borderRadius={borderRadius}
       padding="small"
+      marginX={edgeOffset}
       className={[styles.maxWidth, styles.translateZ0]}
     >
       <TooltipTextDefaultsProvider>
