@@ -201,7 +201,6 @@ export const TooltipRenderer = ({
         align="center"
         placement={placement}
         lockPlacement={isStatic}
-        disableAnimation={isStatic}
         delayVisibility={!isMobile()}
         open={isStatic ? true : open}
         focusOnOpen={false}
