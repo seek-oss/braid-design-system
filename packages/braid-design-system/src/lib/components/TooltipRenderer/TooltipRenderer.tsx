@@ -103,9 +103,8 @@ export const TooltipRenderer = ({
   placement = 'top',
   children,
 }: TooltipRendererProps) => {
-  const triggerWrapperRef = useRef<HTMLElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [inferredPlacement, setInferredPlacement] =
     useState<PopoverProps['placement']>(placement);
@@ -143,8 +142,7 @@ export const TooltipRenderer = ({
 
     const setArrowPosition = () => {
       const tooltipPosition = tooltipRef.current?.getBoundingClientRect();
-      const triggerPosition =
-        triggerWrapperRef.current?.getBoundingClientRect();
+      const triggerPosition = triggerRef.current?.getBoundingClientRect();
 
       if (!tooltipPosition || !triggerPosition) {
         return;
@@ -174,7 +172,6 @@ export const TooltipRenderer = ({
   return (
     <>
       <Box
-        ref={triggerWrapperRef}
         tabIndex={-1}
         onClick={() => isMobile() && setOpen(!open)}
         onMouseEnter={() => !isMobile() && setOpen(true)}
