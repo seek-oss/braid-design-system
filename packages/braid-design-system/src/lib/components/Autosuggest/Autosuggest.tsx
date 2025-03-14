@@ -776,7 +776,7 @@ export const Autosuggest = forwardRef(function <Value>(
           <Popover
             triggerRef={fieldRef}
             open={isOpen}
-            align="full"
+            width="full"
             placement="bottom"
             lockPlacement
             offsetSpace="none"
