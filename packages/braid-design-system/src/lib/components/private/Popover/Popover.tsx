@@ -19,9 +19,9 @@ import { normalizeKey } from '../normalizeKey';
 
 import * as styles from './Popover.css';
 
-export const animationDelayInMs = 250;
+const animationDelayInMs = 250;
 
-export type Placement = 'top' | 'bottom';
+type Placement = 'top' | 'bottom';
 
 export interface PopoverProps {
   id?: string;
