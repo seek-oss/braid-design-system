@@ -26,7 +26,8 @@ export type Placement = 'top' | 'bottom';
 export interface PopoverProps {
   id?: string;
   role?: string;
-  align?: 'left' | 'right' | 'full' | 'center';
+  align?: 'left' | 'right' | 'center';
+  width?: 'content' | 'full';
   placement?: Placement;
   lockPlacement?: boolean;
   offsetSpace?: ResponsiveSpace;
@@ -77,6 +78,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       id,
       role,
       align: alignProp = 'left',
+      width = 'content',
       placement = 'bottom',
       lockPlacement = false,
       offsetSpace = 'none',
@@ -258,7 +260,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         return;
       }
 
-      if (align !== 'full') {
+      if (width !== 'full') {
         handleHorizontalShift();
       }
       if (!lockPlacement) {
@@ -269,7 +271,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const triggerPositionVars = triggerPosition && {
       [styles.triggerVars[flipPlacement]]:
         `${triggerPosition[flipPlacement]}px`,
-      ...(align === 'full'
+      ...(width === 'full'
         ? {
             [styles.triggerVars.left]: `${triggerPosition?.left}px`,
             [styles.triggerVars.right]: `${triggerPosition?.right}px`,
