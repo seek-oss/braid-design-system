@@ -13,7 +13,7 @@ import {
 import { useFallbackId } from '../../hooks/useFallbackId';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../Box/Box';
-import { Popover, type Placement } from '../private/Popover/Popover';
+import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
@@ -56,7 +56,7 @@ const TooltipContent = ({
   arrowLeftOffset,
   children,
 }: {
-  inferredPlacement: Placement;
+  inferredPlacement: PopoverProps['placement'];
   arrowLeftOffset: string;
   children: ReactNodeNoStrings;
 }) => (
@@ -75,7 +75,7 @@ const TooltipContent = ({
       <Box
         position="fixed"
         background="neutral"
-        className={styles.arrow[inferredPlacement]}
+        className={styles.arrow[inferredPlacement!]}
         style={assignInlineVars({
           [styles.horizontalOffset]: arrowLeftOffset,
         })}
@@ -94,7 +94,7 @@ interface TriggerProps {
 export interface TooltipRendererProps {
   id?: string;
   tooltip: ReactNodeNoStrings;
-  placement?: Placement;
+  placement?: PopoverProps['placement'];
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
 }
 
@@ -111,7 +111,7 @@ export const TooltipRenderer = ({
   const triggerRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [inferredPlacement, setInferredPlacement] =
-    useState<Placement>(placement);
+    useState<PopoverProps['placement']>(placement);
   const [arrowLeftOffsetPx, setArrowLeftOffsetPx] = useState(0);
 
   const { grid, space } = useSpace();
