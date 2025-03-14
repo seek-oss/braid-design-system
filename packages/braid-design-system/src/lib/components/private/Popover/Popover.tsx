@@ -36,7 +36,6 @@ export interface PopoverProps {
   triggerRef: RefObject<HTMLElement>;
   enterFocusRef?: RefObject<HTMLElement>;
   exitFocusRef?: RefObject<HTMLElement>;
-  disableAnimation?: boolean;
   focusOnOpen?: boolean;
   delayVisibility?: boolean;
   children: ReactNode;
@@ -86,7 +85,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       triggerRef,
       enterFocusRef,
       exitFocusRef,
-      disableAnimation = false,
       focusOnOpen = false,
       delayVisibility = false,
       children,
@@ -331,10 +329,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           marginTop={flipPlacement === 'bottom' ? offsetSpace : undefined}
           marginBottom={flipPlacement === 'top' ? offsetSpace : undefined}
           style={assignInlineVars({ ...triggerPositionVars, ...inlineVars })}
-          className={[
-            styles.popoverPosition,
-            !disableAnimation && styles.animation,
-          ]}
+          className={[styles.popoverPosition, styles.animation]}
         >
           {children}
         </Box>
