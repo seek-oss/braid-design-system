@@ -18,7 +18,7 @@ import { Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
 import { Overlay } from '../private/Overlay/Overlay';
-import { Popover, type Placement } from '../private/Popover/Popover';
+import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -59,7 +59,7 @@ export interface MenuRendererProps {
   offsetSpace?: ResponsiveSpace;
   size?: MenuSize;
   width?: keyof typeof styles.width | 'content';
-  placement?: Placement;
+  placement?: PopoverProps['placement'];
   onOpen?: () => void;
   onClose?: (closeReason: CloseReason) => void;
   data?: DataAttributeMap;
