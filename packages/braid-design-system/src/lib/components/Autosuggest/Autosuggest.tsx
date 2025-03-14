@@ -785,7 +785,6 @@ export const Autosuggest = forwardRef(function <Value>(
             placement="bottom"
             lockPlacement
             offsetSpace="none"
-            disableAnimation
           >
             <RemoveScroll ref={menuRef} forwardProps>
               <Box
