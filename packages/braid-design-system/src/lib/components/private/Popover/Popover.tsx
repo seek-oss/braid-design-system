@@ -33,10 +33,8 @@ export interface PopoverProps {
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onClose?: () => void;
-  // Separate from exitFocusRef, as button sizes change on active, which causes an incorrect triggerPosition
   triggerRef: RefObject<HTMLElement>;
   enterFocusRef?: RefObject<HTMLElement>;
-  exitFocusRef?: RefObject<HTMLElement>;
   focusOnOpen?: boolean;
   delayVisibility?: boolean;
   children: ReactNode;
@@ -86,7 +84,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onClose,
       triggerRef,
       enterFocusRef,
-      exitFocusRef,
       focusOnOpen = false,
       delayVisibility = false,
       children,
@@ -112,9 +109,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     }: {
       closeTrigger: 'backdrop' | 'keyboard';
     }) => {
-      if (closeTrigger !== 'backdrop' && exitFocusRef) {
-        if (exitFocusRef?.current) {
-          exitFocusRef.current.focus();
+      if (closeTrigger !== 'backdrop' && triggerRef) {
+        if (triggerRef?.current) {
+          triggerRef.current.focus();
         } else {
           // eslint-disable-next-line no-console
           console.error(
@@ -158,14 +155,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           ref.current.focus();
         }
       }, 10);
-    }, [
-      open,
-      forwardedRef,
-      enterFocusRef,
-      exitFocusRef,
-      triggerRef,
-      focusOnOpen,
-    ]);
+    }, [open, forwardedRef, enterFocusRef, triggerRef, focusOnOpen]);
 
     useEffect(() => {
       const handleResize = () => {
