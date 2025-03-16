@@ -272,13 +272,13 @@ export const Field = ({
             ) : null,
             secondaryIcon ? (
               <Box
+                component="span"
+                position="absolute"
+                width="touchable"
+                height="touchable"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                position="absolute"
-                height="touchable"
-                width="touchable"
-                component="span"
                 top={0}
                 right={0}
               >
