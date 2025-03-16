@@ -35,7 +35,6 @@ export interface PopoverProps {
   onClose?: () => void;
   triggerRef: RefObject<HTMLElement>;
   enterFocusRef?: RefObject<HTMLElement>;
-  focusOnOpen?: boolean;
   delayVisibility?: boolean;
   children: ReactNode;
 }
@@ -84,7 +83,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onClose,
       triggerRef,
       enterFocusRef,
-      focusOnOpen = false,
       delayVisibility = false,
       children,
     },
@@ -139,23 +137,23 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       // Without timeout, focus will not work on first render
       // Needs to be 10ms to work in Safari - 0 for other browsers
       setTimeout(() => {
-        if (enterFocusRef) {
-          if (enterFocusRef.current) {
-            enterFocusRef.current.focus();
-          } else {
-            // eslint-disable-next-line no-console
-            console.error(
-              dedent`
-                The initialFocusRef element could not be found.
+        if (!enterFocusRef) {
+          return;
+        }
+
+        if (enterFocusRef.current) {
+          enterFocusRef.current.focus();
+        } else {
+          // eslint-disable-next-line no-console
+          console.error(
+            dedent`
+                The enterFocusRef element could not be found.
                 Ensure it is being assigned to a child element of Popover, and is available on open.
                 `,
-            );
-          }
-        } else if (focusOnOpen && ref?.current) {
-          ref.current.focus();
+          );
         }
       }, 10);
-    }, [open, forwardedRef, enterFocusRef, triggerRef, focusOnOpen]);
+    }, [open, forwardedRef, enterFocusRef, triggerRef]);
 
     useEffect(() => {
       const handleResize = () => {
