@@ -2,7 +2,7 @@ import assert from 'assert';
 
 import clsx from 'clsx';
 import dedent from 'dedent';
-import React, { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
+import { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
 
 import { textStyles } from '../../../css/typography';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
@@ -268,13 +268,13 @@ export const Field = ({
             ) : null,
             secondaryIcon ? (
               <Box
+                component="span"
+                position="absolute"
+                width="touchable"
+                height="touchable"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                position="absolute"
-                height="touchable"
-                width="touchable"
-                component="span"
                 top={0}
                 right={0}
               >

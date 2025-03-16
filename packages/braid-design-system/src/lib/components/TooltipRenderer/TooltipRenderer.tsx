@@ -167,7 +167,7 @@ export const TooltipRenderer = ({
     });
 
     return () => clearTimeout(timeoutId);
-  }, [open, edgeOffsetAsPx]);
+  }, [open]);
 
   return (
     <>
