@@ -197,7 +197,6 @@ export const TooltipRenderer = ({
         lockPlacement={isStatic}
         delayVisibility={!isMobile()}
         open={isStatic ? true : open}
-        focusOnOpen={false}
         triggerRef={triggerRef}
       >
         <TooltipContent
