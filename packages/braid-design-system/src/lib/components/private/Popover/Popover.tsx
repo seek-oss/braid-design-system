@@ -1,7 +1,6 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import dedent from 'dedent';
 import {
-  type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
   useEffect,
   useState,
@@ -9,13 +8,13 @@ import {
   forwardRef,
   useRef,
   useImperativeHandle,
+  useCallback,
 } from 'react';
 
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
-import { normalizeKey } from '../normalizeKey';
 
 import * as styles from './Popover.css';
 
@@ -102,29 +101,46 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     const align = alignProp === 'center' ? 'left' : alignProp;
 
-    const handleOnClose = ({
-      closeTrigger,
-    }: {
-      closeTrigger: 'backdrop' | 'keyboard';
-    }) => {
-      if (closeTrigger !== 'backdrop' && triggerRef) {
-        if (triggerRef?.current) {
-          triggerRef.current.focus();
-        } else {
-          // eslint-disable-next-line no-console
-          console.error(
-            dedent`
-          The returnFocusRef element could not be found.
+    const handleOnClose = useCallback(
+      ({ closeTrigger }: { closeTrigger: 'backdrop' | 'keyboard' }) => {
+        if (closeTrigger !== 'backdrop' && triggerRef) {
+          if (triggerRef?.current) {
+            triggerRef.current.focus();
+          } else {
+            // eslint-disable-next-line no-console
+            console.error(
+              dedent`
+          The triggerRef element could not be found.
           Ensure it is being assigned to the Popover trigger, and is available on close.
           `,
-          );
+            );
+          }
         }
+
+        if (onClose) {
+          onClose();
+        }
+      },
+      [onClose, triggerRef],
+    );
+
+    useEffect(() => {
+      if (!open || !onClose) {
+        return;
       }
 
-      if (onClose) {
-        onClose();
-      }
-    };
+      const handleKeydown = (event: globalThis.KeyboardEvent) => {
+        if (event.key === 'Escape' || event.key === 'Tab') {
+          handleOnClose({ closeTrigger: 'keyboard' });
+        }
+      };
+
+      window.addEventListener('keydown', handleKeydown);
+
+      return () => {
+        window.removeEventListener('keydown', handleKeydown);
+      };
+    }, [open, onClose, handleOnClose]);
 
     useEffect(() => {
       if (!open) {
@@ -281,14 +297,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         : '0',
     };
 
-    const handleKeyboard = (event: ReactKeyboardEvent) => {
-      const targetKey = normalizeKey(event);
-
-      if (targetKey === 'Escape' || targetKey === 'Tab') {
-        handleOnClose({ closeTrigger: 'keyboard' });
-      }
-    };
-
     if (!showPopover) {
       return null;
     }
@@ -316,7 +324,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           role={role || 'dialog'}
           component="section"
           tabIndex={-1}
-          onKeyDown={handleKeyboard}
           zIndex="modal"
           position="absolute"
           marginTop={flipPlacement === 'bottom' ? offsetSpace : undefined}
