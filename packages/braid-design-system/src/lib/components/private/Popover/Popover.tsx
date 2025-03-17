@@ -165,9 +165,12 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       }
 
       window.addEventListener('resize', handleResize);
+      const resizeObserver = new ResizeObserver(handleResize);
+      resizeObserver.observe(document.body);
 
       return () => {
         window.removeEventListener('resize', handleResize);
+        resizeObserver.disconnect();
       };
     }, [open, triggerRef]);
 
