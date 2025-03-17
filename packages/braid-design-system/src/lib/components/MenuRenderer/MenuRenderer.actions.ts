@@ -11,9 +11,7 @@ export const actionTypes = {
   MENU_TRIGGER_ENTER: 8,
   MENU_TRIGGER_SPACE: 9,
   MENU_TRIGGER_CLICK: 10,
-  MENU_TRIGGER_TAB: 11,
-  MENU_TRIGGER_ESCAPE: 12,
-  MENU_CLOSE: 13,
+  MENU_CLOSE: 11,
 } as const;
 
 export type Action =
@@ -43,6 +41,4 @@ export type Action =
   | { type: typeof actionTypes.MENU_TRIGGER_ENTER }
   | { type: typeof actionTypes.MENU_TRIGGER_SPACE }
   | { type: typeof actionTypes.MENU_TRIGGER_CLICK }
-  | { type: typeof actionTypes.MENU_TRIGGER_TAB }
-  | { type: typeof actionTypes.MENU_TRIGGER_ESCAPE }
   | { type: typeof actionTypes.MENU_CLOSE };
