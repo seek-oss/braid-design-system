@@ -79,8 +79,6 @@ const {
   MENU_TRIGGER_ENTER,
   MENU_TRIGGER_SPACE,
   MENU_TRIGGER_CLICK,
-  MENU_TRIGGER_TAB,
-  MENU_TRIGGER_ESCAPE,
   MENU_CLOSE,
 } = actionTypes;
 
@@ -149,9 +147,7 @@ export const MenuRenderer = ({
             highlightIndex: getNextIndex(1, state.highlightIndex, itemCount),
           };
         }
-        case MENU_CLOSE:
-        case MENU_TRIGGER_ESCAPE:
-        case MENU_TRIGGER_TAB: {
+        case MENU_CLOSE: {
           return {
             ...state,
             open: false,
@@ -261,8 +257,6 @@ export const MenuRenderer = ({
       ArrowUp: { type: MENU_TRIGGER_UP },
       Enter: { type: MENU_TRIGGER_ENTER },
       ' ': { type: MENU_TRIGGER_SPACE },
-      Escape: { type: MENU_TRIGGER_ESCAPE },
-      Tab: { type: MENU_TRIGGER_TAB },
     };
 
     if (action[targetKey]) {
