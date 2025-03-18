@@ -304,6 +304,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     return (
       <BraidPortal>
         <Box
+          data-testid={
+            process.env.NODE_ENV !== 'production' ? 'backdrop' : undefined
+          }
           onClick={(event) => {
             event.stopPropagation();
             event.preventDefault();
