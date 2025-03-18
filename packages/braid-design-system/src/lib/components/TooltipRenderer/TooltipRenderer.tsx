@@ -57,7 +57,7 @@ const TooltipContent = ({
   children,
 }: {
   inferredPlacement: PopoverProps['placement'];
-  arrowLeftOffset: string;
+  arrowLeftOffset: number;
   children: ReactNodeNoStrings;
 }) => (
   <Box
@@ -77,7 +77,7 @@ const TooltipContent = ({
         background="neutral"
         className={styles.arrow[inferredPlacement!]}
         style={assignInlineVars({
-          [styles.horizontalOffset]: arrowLeftOffset,
+          [styles.horizontalOffset]: `${arrowLeftOffset}px`,
         })}
       />
     </TooltipTextDefaultsProvider>
@@ -111,7 +111,7 @@ export const TooltipRenderer = ({
   const [open, setOpen] = useState(false);
   const [inferredPlacement, setInferredPlacement] =
     useState<PopoverProps['placement']>(placement);
-  const [arrowLeftOffsetPx, setArrowLeftOffsetPx] = useState(0);
+  const [arrowLeftOffset, setArrowLeftOffset] = useState(0);
 
   const { grid, space } = useSpace();
   const edgeOffsetAsPx = space[edgeOffset] * grid;
@@ -139,7 +139,7 @@ export const TooltipRenderer = ({
   }, [open]);
 
   useIsomorphicLayoutEffect(() => {
-    if (!open) {
+    if (!open && !isStatic) {
       return;
     }
 
@@ -159,9 +159,7 @@ export const TooltipRenderer = ({
       const tooltipLeftToTriggerLeft =
         triggerLeft - tooltipPosition.left - edgeOffsetAsPx;
 
-      setArrowLeftOffsetPx(
-        tooltipLeftToTriggerLeft + triggerPosition.width / 2,
-      );
+      setArrowLeftOffset(tooltipLeftToTriggerLeft + triggerPosition.width / 2);
     };
 
     const timeoutId = setTimeout(() => {
@@ -170,7 +168,7 @@ export const TooltipRenderer = ({
     });
 
     return () => clearTimeout(timeoutId);
-  }, [open]);
+  }, [open, isStatic, edgeOffsetAsPx]);
 
   return (
     <>
@@ -204,7 +202,7 @@ export const TooltipRenderer = ({
       >
         <TooltipContent
           inferredPlacement={isStatic ? placement : inferredPlacement}
-          arrowLeftOffset={isStatic ? '50%' : `${arrowLeftOffsetPx}px`}
+          arrowLeftOffset={arrowLeftOffset}
         >
           {tooltip}
         </TooltipContent>
