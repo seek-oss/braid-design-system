@@ -295,7 +295,6 @@ export const MenuRenderer = ({
           size={size}
           width={width}
           placement={placement}
-          offsetSpace={offsetSpace}
           highlightIndex={highlightIndex}
           reserveIconSpace={reserveIconSpace}
           focusTrigger={focusTrigger}
@@ -317,7 +316,6 @@ const isDivider = (node: ReactNode) =>
 const borderRadius = 'large';
 
 interface MenuProps {
-  offsetSpace: NonNullable<MenuRendererProps['offsetSpace']>;
   align: NonNullable<MenuRendererProps['align']>;
   size: NonNullable<MenuRendererProps['size']>;
   width: NonNullable<MenuRendererProps['width']>;
