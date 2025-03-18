@@ -350,6 +350,7 @@ export function Menu({
     <MenuRendererContext.Provider value={{ size, reserveIconSpace }}>
       <Box
         role="menu"
+        position="relative"
         boxShadow={placement === 'top' ? 'small' : 'medium'}
         borderRadius={borderRadius}
         background="surface"
