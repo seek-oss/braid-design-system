@@ -82,7 +82,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
 
   const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
     const targetKey = normalizeKey(event);
-    const closeActionKeys = ['Enter', ' ', 'Escape'];
+    const closeActionKeys = ['Enter', ' '];
 
     const isArrowPress = targetKey.indexOf('Arrow') === 0;
     const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
@@ -114,10 +114,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       menuItemRef.current?.click();
     }
 
-    if (
-      (!formElement && closeActionKeys.indexOf(targetKey) > -1) ||
-      (formElement && targetKey === 'Escape')
-    ) {
+    if (!formElement && closeActionKeys.indexOf(targetKey) > -1) {
       focusTrigger();
     }
   };
