@@ -4,11 +4,11 @@ import {
   type ReactNode,
   useEffect,
   useState,
-  type RefObject,
   forwardRef,
   useRef,
   useImperativeHandle,
   useCallback,
+  type RefObject,
 } from 'react';
 
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
@@ -32,8 +32,8 @@ export interface PopoverProps {
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onClose?: () => void;
-  triggerRef: RefObject<HTMLElement>;
-  enterFocusRef?: RefObject<HTMLElement>;
+  triggerRef: RefObject<any>;
+  enterFocusRef?: RefObject<any>;
   delayVisibility?: boolean;
   children: ReactNode;
 }
