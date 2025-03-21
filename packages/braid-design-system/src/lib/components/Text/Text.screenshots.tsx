@@ -142,6 +142,16 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Max lines = 2 (with non-breaking word)',
+      Example: () => (
+        <Box style={{ width: 215 }}>
+          <Text maxLines={2}>
+            AnotherExampleOfReallyLongTextButLimitedTo2LinesAndWontFitInTheLayout
+          </Text>
+        </Box>
+      ),
+    },
+    {
       label: 'Max lines = 3',
       Example: () => (
         <Box style={{ width: 215 }}>
