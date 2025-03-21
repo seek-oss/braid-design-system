@@ -69,6 +69,24 @@ export const screenshots: ComponentScreenshot = {
       ),
     },
     {
+      label: 'Handle long-unbroken text',
+      Example: ({ id }) => (
+        <StaticTooltipProvider>
+          <Box style={{ paddingBottom: 200 }}>
+            <TooltipRenderer
+              id={id}
+              placement="bottom"
+              tooltip={<Text>ReallyLongUnbrokenWordShouldBeHandled</Text>}
+            >
+              {({ triggerProps }) => (
+                <Box style={triggerStyles} {...triggerProps} />
+              )}
+            </TooltipRenderer>
+          </Box>
+        </StaticTooltipProvider>
+      ),
+    },
+    {
       label: 'Text style overrides',
       Example: ({ id }) => (
         <StaticTooltipProvider>

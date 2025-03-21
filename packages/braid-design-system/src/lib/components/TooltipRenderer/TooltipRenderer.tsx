@@ -88,7 +88,7 @@ export const TooltipContent = ({
       className={[styles.maxWidth, styles.translateZ0]}
     >
       <TooltipTextDefaultsProvider>
-        <Box position="relative" zIndex={1}>
+        <Box className={styles.overflowWrap} position="relative" zIndex={1}>
           {children}
         </Box>
         <Box
