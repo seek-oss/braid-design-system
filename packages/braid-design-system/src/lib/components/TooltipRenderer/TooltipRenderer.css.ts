@@ -12,6 +12,10 @@ export const maxWidth = style({
   maxWidth: constants.maxWidth,
 });
 
+export const overflowWrap = style({
+  overflowWrap: 'break-word',
+});
+
 export const verticalOffsetBeforeEntrance = style({
   transform: 'translateZ(0) translateY(4px)',
   selectors: {
