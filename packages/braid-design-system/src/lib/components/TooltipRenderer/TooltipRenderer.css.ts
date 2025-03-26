@@ -1,5 +1,7 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+
+import { space } from '../../css/atoms/atomicProperties';
 
 import { vars } from '../../themes/vars.css';
 
@@ -32,7 +34,13 @@ export const translateZ0 = style({
 
 const borderRadius = vars.borderRadius.small;
 const offset = calc(constants.arrowSize).divide(2).negate().toString();
-export const arrow = style({
+export const horizontalOffset = createVar();
+
+const arrowEdgePadding = 'medium';
+
+const baseArrow = style({
+  left: `clamp(${space[arrowEdgePadding]}, ${horizontalOffset}, ${calc('100%').subtract(space[arrowEdgePadding])})`,
+  transform: 'translateX(-50%)',
   visibility: 'hidden',
   ':before': {
     visibility: 'visible',
@@ -47,17 +55,10 @@ export const arrow = style({
       background: 'inherit',
       borderRadius,
     },
-    '[data-popper-placement^=top] &': {
-      bottom: offset,
-    },
-    '[data-popper-placement^=bottom] &': {
-      top: offset,
-    },
-    '[data-popper-placement^=left] &': {
-      right: offset,
-    },
-    '[data-popper-placement^=right] &': {
-      left: offset,
-    },
   },
+});
+
+export const arrow = styleVariants({
+  top: [baseArrow, { bottom: offset }],
+  bottom: [baseArrow, { top: offset }],
 });
