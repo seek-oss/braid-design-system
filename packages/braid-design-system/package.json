@@ -243,7 +243,7 @@
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "html-validate": "^7.1.1",
-    "playroom": "0.41.0",
+    "playroom": "0.42.0",
     "prettier": "^3.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
