@@ -14,7 +14,7 @@ type PlayroomTextFieldProps = StateProp &
   Optional<Omit<TextFieldBaseProps, 'onClear'>, 'id' | 'value' | 'onChange'> &
   TextFieldLabelProps & {
     onChange?: (fakeEvent: { currentTarget: { value: string } }) => void;
-    onClear?: true | TextFieldBaseProps['onClear'];
+    onClear?: boolean | TextFieldBaseProps['onClear'];
   };
 
 export const TextField = ({
@@ -22,7 +22,7 @@ export const TextField = ({
   stateName,
   value,
   onChange,
-  onClear,
+  onClear = true,
   tabIndex,
   ...restProps
 }: PlayroomTextFieldProps) => {
