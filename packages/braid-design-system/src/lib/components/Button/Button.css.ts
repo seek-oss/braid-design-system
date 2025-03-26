@@ -14,6 +14,8 @@ import { vars } from '../../themes/vars.css';
 
 export const root = style({
   textDecoration: 'none',
+  // Necessary to overwrite Safari's default value for 'align-items' in 'button' elements (which is 'flex-start')
+  alignItems: 'stretch',
 });
 
 export const forceActive = style({});
