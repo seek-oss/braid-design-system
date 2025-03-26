@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 33.6.1
+
+### Patch Changes
+
+- **Text, Heading**: Support long, unbroken text content when using the `maxLines` prop ([#1739](https://github.com/seek-oss/braid-design-system/pull/1739))
+
+- **TooltipRenderer**: Support long, unbroken text content ([#1739](https://github.com/seek-oss/braid-design-system/pull/1739))
+
 ## 33.6.0
 
 ### Minor Changes
