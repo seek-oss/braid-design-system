@@ -13,6 +13,7 @@ import {
   Heading,
   IconLanguage,
   TextDropdown,
+  Notice,
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -223,6 +224,18 @@ const docs: ComponentDocs = {
             />
           </>,
         ),
+    },
+    {
+      description: (
+        <Notice tone="info">
+          <Text>
+            When prototyping in Playroom, fields will automatically include a{' '}
+            <TextLink href="/components/IconClear">clear icon</TextLink> and
+            clearing functionality. To disable this behaviour, set{' '}
+            <Strong>onClear</Strong> to <Strong>false</Strong>.
+          </Text>
+        </Notice>
+      ),
     },
     {
       label: 'Inserting an icon',
