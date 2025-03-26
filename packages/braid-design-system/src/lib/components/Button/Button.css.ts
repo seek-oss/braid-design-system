@@ -11,13 +11,20 @@ import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 import { vars } from '../../themes/vars.css';
-import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 export const root = style({
   textDecoration: 'none',
 });
 
 export const forceActive = style({});
+
+export const activeAnimation = style({
+  selectors: {
+    [`${root}:active &, ${forceActive}&`]: {
+      transform: vars.transform.touchable,
+    },
+  },
+});
 
 export const activeOverlay = style({
   selectors: {
@@ -67,13 +74,12 @@ export const standard = style(
   }),
 );
 
-export const small = style([
-  virtualTouchable,
+export const small = style(
   responsiveStyle({
     mobile: paddingVarForBreakpoint('small', 'mobile'),
     tablet: paddingVarForBreakpoint('small', 'tablet'),
   }),
-]);
+);
 
 export const bleedVerticallyToCapHeight = style({
   marginTop: calc.negate(capHeightToMinHeight),
