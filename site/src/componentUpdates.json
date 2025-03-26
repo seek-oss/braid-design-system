@@ -4761,5 +4761,23 @@
         "summary": "Add new icons to support rich text editors and formatting.\n\n```tsx\n<IconBold />\n<IconItalic />\n<IconTitle />\n<IconRedo />\n<IconUndo />\n```"
       }
     ]
+  },
+  {
+    "version": "33.6.1",
+    "updates": [
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading**: Support long, unbroken text content when using the `maxLines` prop"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer**: Support long, unbroken text content"
+      }
+    ]
   }
 ]
