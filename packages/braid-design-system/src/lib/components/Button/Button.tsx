@@ -30,6 +30,7 @@ import buildDataAttributes, {
 import type { buttonTones } from './buttonTones';
 
 import * as styles from './Button.css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 export const buttonVariants = [
   'solid',
@@ -428,7 +429,7 @@ export const useButtonStyles = ({
   bleed,
 }: ButtonProps & {
   radius?: 'full' | typeof buttonRadius;
-}): BoxProps => {
+}): { root: BoxProps; content: BoxProps } => {
   const { variant, tone } = resolveToneAndVariant({
     variant: variantProp,
     tone: toneProp,
@@ -438,38 +439,46 @@ export const useButtonStyles = ({
   const actionsContext = useContext(ActionsContext);
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone];
-  const colorConstrast = useColorContrast();
+  const colorContrast = useColorContrast();
   const lightness = useBackgroundLightness();
 
   return {
-    borderRadius: radius,
-    width: 'full',
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transform: { active: 'touchable' },
-    transition: 'touchable',
-    outline: 'none',
-    textAlign: 'center',
-    userSelect: 'none',
-    cursor: !loading ? 'pointer' : undefined,
-    background:
-      stylesForVariant.background &&
-      typeof stylesForVariant.background !== 'string'
-        ? colorConstrast(stylesForVariant.background)
-        : stylesForVariant.background,
-    className: [
-      variant === 'soft' && lightness.lightMode === 'dark'
-        ? styles.invertedBackgroundsLightMode.soft
-        : null,
-      variant === 'soft' && lightness.darkMode === 'dark'
-        ? styles.invertedBackgroundsDarkMode.soft
-        : null,
-      styles.root,
-      size === 'standard' ? styles.standard : styles.small,
-      bleed ? styles.bleedVerticallyToCapHeight : null,
-    ],
+    root: {
+      display: 'flex',
+      width: 'full',
+      borderRadius: radius,
+      cursor: !loading ? 'pointer' : undefined,
+      className: [styles.root, size === 'small' ? virtualTouchable : undefined],
+    },
+    content: {
+      component: 'span',
+      borderRadius: radius,
+      width: 'full',
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      transition: 'touchable',
+      outline: 'none',
+      textAlign: 'center',
+      userSelect: 'none',
+      background:
+        stylesForVariant.background &&
+        typeof stylesForVariant.background !== 'string'
+          ? colorContrast(stylesForVariant.background)
+          : stylesForVariant.background,
+      className: [
+        variant === 'soft' && lightness.lightMode === 'dark'
+          ? styles.invertedBackgroundsLightMode.soft
+          : null,
+        variant === 'soft' && lightness.darkMode === 'dark'
+          ? styles.invertedBackgroundsDarkMode.soft
+          : null,
+        styles.activeAnimation,
+        size === 'standard' ? styles.standard : styles.small,
+        bleed ? styles.bleedVerticallyToCapHeight : null,
+      ],
+    },
   } as const;
 };
 
@@ -510,48 +519,53 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ...restProps
     },
     ref,
-  ) => (
-    <ButtonContainer bleed={bleed} variant={variant}>
-      <Box
-        component="button"
-        ref={ref}
-        id={id}
-        type={type}
-        tabIndex={tabIndex}
-        onKeyUp={onKeyUp}
-        onKeyDown={onKeyDown}
-        aria-haspopup={ariaHasPopup}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        aria-describedby={ariaDescribedBy}
-        aria-label={ariaLabel}
-        onClick={onClick}
-        disabled={loading}
-        {...buildDataAttributes({ data, validateRestProps: restProps })}
-        {...useButtonStyles({
-          variant,
-          tone,
-          size,
-          bleed,
-          loading,
-        })}
-      >
-        <ButtonOverlays variant={variant} tone={tone} />
+  ) => {
+    const { root, content } = useButtonStyles({
+      variant,
+      tone,
+      size,
+      bleed,
+      loading,
+    });
 
-        <ButtonText
-          variant={variant}
-          tone={tone}
-          size={size}
-          loading={loading}
-          icon={icon}
-          iconPosition={iconPosition}
-          bleed={bleed}
+    return (
+      <ButtonContainer bleed={bleed} variant={variant}>
+        <Box
+          component="button"
+          ref={ref}
+          id={id}
+          type={type}
+          tabIndex={tabIndex}
+          onKeyUp={onKeyUp}
+          onKeyDown={onKeyDown}
+          aria-haspopup={ariaHasPopup}
+          aria-controls={ariaControls}
+          aria-expanded={ariaExpanded}
+          aria-describedby={ariaDescribedBy}
+          aria-label={ariaLabel}
+          onClick={onClick}
+          disabled={loading}
+          {...root}
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
         >
-          {children}
-        </ButtonText>
-      </Box>
-    </ButtonContainer>
-  ),
+          <Box {...content}>
+            <ButtonOverlays variant={variant} tone={tone} />
+            <ButtonText
+              variant={variant}
+              tone={tone}
+              size={size}
+              loading={loading}
+              icon={icon}
+              iconPosition={iconPosition}
+              bleed={bleed}
+            >
+              {children}
+            </ButtonText>
+          </Box>
+        </Box>
+      </ButtonContainer>
+    );
+  },
 );
 
 Button.displayName = 'Button';

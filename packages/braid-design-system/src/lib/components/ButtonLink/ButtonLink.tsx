@@ -43,6 +43,13 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     ref,
   ) => {
     const LinkComponent = useLinkComponent(ref);
+    const { root, content } = useButtonStyles({
+      variant,
+      tone,
+      size,
+      bleed,
+      loading,
+    });
 
     return (
       <ButtonContainer bleed={bleed} variant={variant}>
@@ -50,28 +57,23 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           component={LinkComponent}
           ref={ref}
           {...restProps}
+          {...root}
           {...buildDataAttributes({ data, validateRestProps: false })}
-          {...useButtonStyles({
-            variant,
-            tone,
-            size,
-            bleed,
-            loading,
-          })}
         >
-          <ButtonOverlays variant={variant} tone={tone} />
-
-          <ButtonText
-            variant={variant}
-            tone={tone}
-            size={size}
-            loading={loading}
-            icon={icon}
-            iconPosition={iconPosition}
-            bleed={bleed}
-          >
-            {children}
-          </ButtonText>
+          <Box {...content}>
+            <ButtonOverlays variant={variant} tone={tone} />
+            <ButtonText
+              variant={variant}
+              tone={tone}
+              size={size}
+              loading={loading}
+              icon={icon}
+              iconPosition={iconPosition}
+              bleed={bleed}
+            >
+              {children}
+            </ButtonText>
+          </Box>
         </Box>
       </ButtonContainer>
     );

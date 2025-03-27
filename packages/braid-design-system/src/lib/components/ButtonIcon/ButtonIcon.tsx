@@ -92,11 +92,7 @@ const PrivateButtonIcon = forwardRef<
     },
     forwardedRef,
   ) => {
-    const {
-      className: buttonClasses,
-      width: _,
-      ...buttonStyleProps
-    } = useButtonStyles({
+    const { root, content } = useButtonStyles({
       variant,
       tone,
       size: size === 'small' ? 'small' : 'standard',
@@ -121,36 +117,39 @@ const PrivateButtonIcon = forwardRef<
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
-        padding={padding[size]}
         onClick={onClick}
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
-        className={[buttonClasses, styles.button]}
         maxWidth="content"
         tabIndex={tabIndex}
+        {...root}
+        className={[root.className, styles.button]}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
-        {...buttonStyleProps}
       >
-        <ButtonOverlays
-          variant={variant}
-          tone={tone}
-          radius="full"
-          keyboardFocusable={typeof tabIndex === 'undefined' || tabIndex >= 0}
-          forceActive={ariaExpanded === 'true' || ariaExpanded === true}
-        />
-
-        <Box
-          component="span"
-          display="block"
-          position="relative"
-          className={
-            size === 'large'
-              ? iconContainerSize()
-              : iconSize({ size, crop: true })
-          }
-        >
-          {cloneElement(icon, { tone: icon.props.tone || tone, size: 'fill' })}
+        <Box {...content} padding={padding[size]}>
+          <ButtonOverlays
+            variant={variant}
+            tone={tone}
+            radius="full"
+            keyboardFocusable={typeof tabIndex === 'undefined' || tabIndex >= 0}
+            forceActive={ariaExpanded === 'true' || ariaExpanded === true}
+          />
+          <Box
+            component="span"
+            display="block"
+            position="relative"
+            className={
+              size === 'large'
+                ? iconContainerSize()
+                : iconSize({ size, crop: true })
+            }
+          >
+            {cloneElement(icon, {
+              tone: icon.props.tone || tone,
+              size: 'fill',
+            })}
+          </Box>
         </Box>
       </Box>
     );
