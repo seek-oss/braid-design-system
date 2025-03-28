@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render } from '@testing-library/react';
+import { createRef } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import {
@@ -143,6 +144,50 @@ describe('Table', () => {
       ).toHTMLValidate({
         extends: ['html-validate:recommended'],
       });
+    });
+  });
+
+  describe('ref forwarding', () => {
+    it('should forward ref to TableBody', () => {
+      const bodyRef = createRef<HTMLTableSectionElement>();
+
+      render(
+        <BraidTestProvider>
+          <Table label="Table with refs">
+            <TableBody ref={bodyRef}>
+              <TableRow>
+                <TableCell>
+                  <Text>Content</Text>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </BraidTestProvider>,
+      );
+
+      expect(bodyRef.current).not.toBeNull();
+      expect(bodyRef.current?.tagName).toBe('TBODY');
+    });
+
+    it('should forward ref to TableRow', () => {
+      const rowRef = createRef<HTMLTableRowElement>();
+
+      render(
+        <BraidTestProvider>
+          <Table label="Table with refs">
+            <TableBody>
+              <TableRow ref={rowRef}>
+                <TableCell>
+                  <Text>Content</Text>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </BraidTestProvider>,
+      );
+
+      expect(rowRef.current).not.toBeNull();
+      expect(rowRef.current?.tagName).toBe('TR');
     });
   });
 });
