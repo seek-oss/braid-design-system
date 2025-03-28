@@ -8177,6 +8177,10 @@ exports[`TableBody 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void
+        | RefObject<HTMLTableSectionElement>
+        | string
 },
 }
 `;
@@ -8267,6 +8271,10 @@ exports[`TableRow 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableRowElement | null) => void
+        | RefObject<HTMLTableRowElement>
+        | string
 },
 }
 `;
