@@ -38,7 +38,7 @@ exports[`AccordionItem 1`] = `
     data?: DataAttributeMap
     expanded?: boolean
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
-    id: string
+    id?: string
     label: string
     onToggle?: (expanded: boolean) => void
     size?: 
@@ -2989,7 +2989,7 @@ exports[`Disclosure 1`] = `
     data?: DataAttributeMap
     expandLabel: string
     expanded?: boolean
-    id: string
+    id?: string
     onToggle?: (expanded: boolean) => void
     size?: 
         | "large"

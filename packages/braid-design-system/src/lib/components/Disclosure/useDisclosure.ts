@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 import type { AllOrNone } from '../private/AllOrNone';
 
@@ -6,7 +6,7 @@ export type DisclosureStateProps = AllOrNone<{
   expanded?: boolean;
   onToggle: (expanded: boolean) => void;
 }>;
-export type UseDisclosureProps = { id: string } & DisclosureStateProps;
+export type UseDisclosureProps = { id?: string } & DisclosureStateProps;
 
 export const useDisclosure = ({
   id,
@@ -16,9 +16,12 @@ export const useDisclosure = ({
   const [expandedFallback, setExpandedFallback] = useState(false);
   const expanded = expandedProp ?? expandedFallback;
 
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
   return {
     buttonProps: {
-      'aria-controls': id,
+      'aria-controls': resolvedId,
       'aria-expanded': expanded,
       onClick: () => {
         const newValue = !expanded;
@@ -33,7 +36,7 @@ export const useDisclosure = ({
       },
     },
     contentProps: {
-      id,
+      id: resolvedId,
     },
     expanded,
   };
