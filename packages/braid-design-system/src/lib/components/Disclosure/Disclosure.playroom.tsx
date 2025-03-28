@@ -1,5 +1,4 @@
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
-import { useFallbackId } from '../../playroom/utils';
 
 import {
   type DisclosureProps,
@@ -23,7 +22,6 @@ export const Disclosure = ({
   onToggle,
   ...restProps
 }: PlayroomDisclosureProps) => {
-  const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(
     stateName,
     expanded,
@@ -33,7 +31,7 @@ export const Disclosure = ({
 
   return (
     <BraidDisclosure
-      id={id ?? fallbackId}
+      id={id}
       expanded={state}
       onToggle={handleChange}
       expandLabel={typeof expandLabel !== 'boolean' ? expandLabel : ''}

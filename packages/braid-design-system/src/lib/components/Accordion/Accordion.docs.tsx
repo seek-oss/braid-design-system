@@ -22,13 +22,13 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Accordion>
-        <AccordionItem label="Accordion item 1" id="accordion_1">
+        <AccordionItem label="Accordion item 1">
           <Placeholder height={80} />
         </AccordionItem>
-        <AccordionItem label="Accordion item 2" id="accordion_2">
+        <AccordionItem label="Accordion item 2">
           <Placeholder height={80} />
         </AccordionItem>
-        <AccordionItem label="Accordion item 3" id="accordion_3">
+        <AccordionItem label="Accordion item 3">
           <Placeholder height={80} />
         </AccordionItem>
       </Accordion>,
@@ -94,13 +94,13 @@ const docs: ComponentDocs = {
             weight="regular"
             dividers={false}
           >
-            <AccordionItem label="Accordion item 1" id="accordion_appearance_1">
+            <AccordionItem label="Accordion item 1">
               <Placeholder height={80} />
             </AccordionItem>
-            <AccordionItem label="Accordion item 2" id="accordion_appearance_2">
+            <AccordionItem label="Accordion item 2">
               <Placeholder height={80} />
             </AccordionItem>
-            <AccordionItem label="Accordion item 3" id="accordion_appearance_3">
+            <AccordionItem label="Accordion item 3">
               <Placeholder height={80} />
             </AccordionItem>
           </Accordion>,
@@ -117,12 +117,11 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Accordion>
-            <AccordionItem label="Accordion item 1" id="accordion_badge_1">
+            <AccordionItem label="Accordion item 1">
               <Placeholder height={80} />
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id="accordion_badge_2"
               badge={
                 <Badge tone="promote" weight="strong">
                   Badge
@@ -131,7 +130,7 @@ const docs: ComponentDocs = {
             >
               <Placeholder height={80} />
             </AccordionItem>
-            <AccordionItem label="Accordion item 3" id="accordion_badge_3">
+            <AccordionItem label="Accordion item 3">
               <Placeholder height={80} />
             </AccordionItem>
           </Accordion>,
@@ -151,25 +150,13 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Accordion>
-            <AccordionItem
-              label="Accordion item 1"
-              id="accordion_icon_1"
-              icon={<IconImage />}
-            >
+            <AccordionItem label="Accordion item 1" icon={<IconImage />}>
               <Placeholder height={80} />
             </AccordionItem>
-            <AccordionItem
-              label="Accordion item 2"
-              id="accordion_icon_2"
-              icon={<IconImage />}
-            >
+            <AccordionItem label="Accordion item 2" icon={<IconImage />}>
               <Placeholder height={80} />
             </AccordionItem>
-            <AccordionItem
-              label="Accordion item 3"
-              id="accordion_icon_3"
-              icon={<IconImage />}
-            >
+            <AccordionItem label="Accordion item 3" icon={<IconImage />}>
               <Placeholder height={80} />
             </AccordionItem>
           </Accordion>,
@@ -195,7 +182,6 @@ const docs: ComponentDocs = {
             <Accordion>
               <AccordionItem
                 label="Accordion item 1"
-                id="accordion_state_1"
                 expanded={getState('expanded1')}
                 onToggle={() => toggleState('expanded1')}
               >
@@ -203,7 +189,6 @@ const docs: ComponentDocs = {
               </AccordionItem>
               <AccordionItem
                 label="Accordion item 2"
-                id="accordion_state_2"
                 expanded={getState('expanded2')}
                 onToggle={() => toggleState('expanded2')}
               >
@@ -211,7 +196,6 @@ const docs: ComponentDocs = {
               </AccordionItem>
               <AccordionItem
                 label="Accordion item 3"
-                id="accordion_state_3"
                 expanded={getState('expanded3')}
                 onToggle={() => toggleState('expanded3')}
               >
