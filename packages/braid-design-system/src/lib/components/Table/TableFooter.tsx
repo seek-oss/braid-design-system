@@ -16,14 +16,10 @@ interface TableFooterProps {
   data?: DataAttributeMap;
 }
 
-export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>((
-  {
-    children,
-    data,
-    ...restProps
-  },
-  ref
-) => {
+export const TableFooter = forwardRef<
+  HTMLTableSectionElement,
+  TableFooterProps
+>(({ children, data, ...restProps }, ref) => {
   const tableContext = useContext(TableContext);
 
   assert(tableContext, 'TableFooter must be used within a Table component');

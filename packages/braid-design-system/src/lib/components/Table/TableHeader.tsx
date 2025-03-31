@@ -16,14 +16,10 @@ interface TableHeaderProps {
   data?: DataAttributeMap;
 }
 
-export const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>((
-  {
-    children,
-    data,
-    ...restProps
-  },
-  ref
-) => {
+export const TableHeader = forwardRef<
+  HTMLTableSectionElement,
+  TableHeaderProps
+>(({ children, data, ...restProps }, ref) => {
   const tableContext = useContext(TableContext);
 
   assert(tableContext, 'TableHeader must be used within a Table component');

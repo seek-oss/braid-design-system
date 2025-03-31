@@ -17,31 +17,24 @@ export interface TableProps {
   data?: DataAttributeMap;
 }
 
-export const Table = forwardRef<HTMLTableElement, TableProps>((
-  {
-    alignY = 'center',
-    children,
-    label,
-    data,
-    ...restProps
-  },
-  ref
-) => (
-  <TableContext.Provider value={{ alignY }}>
-    <ScrollContainer>
-      <Box
-        component="table"
-        width="full"
-        background="surface"
-        borderRadius="large"
-        overflow="hidden"
-        aria-label={label}
-        className={styles.table}
-        ref={ref}
-        {...buildDataAttributes({ data, validateRestProps: restProps })}
-      >
-        {children}
-      </Box>
-    </ScrollContainer>
-  </TableContext.Provider>
-));
+export const Table = forwardRef<HTMLTableElement, TableProps>(
+  ({ alignY = 'center', children, label, data, ...restProps }, ref) => (
+    <TableContext.Provider value={{ alignY }}>
+      <ScrollContainer>
+        <Box
+          component="table"
+          width="full"
+          background="surface"
+          borderRadius="large"
+          overflow="hidden"
+          aria-label={label}
+          className={styles.table}
+          ref={ref}
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
+        >
+          {children}
+        </Box>
+      </ScrollContainer>
+    </TableContext.Provider>
+  ),
+);
