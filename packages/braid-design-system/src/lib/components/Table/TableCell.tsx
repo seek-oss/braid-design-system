@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { useContext, type ReactNode } from 'react';
+import { useContext, type ReactNode, forwardRef } from 'react';
 
 import {
   resolveResponsiveRangeProps,
@@ -57,21 +57,24 @@ const resolveSoftWidth = (width: CellProps['width']) => {
   return width;
 };
 
-const Cell = ({
-  header: isHeaderCell,
-  children,
-  hideAbove,
-  hideBelow,
-  align = 'left',
-  wrap = false,
-  width = 'auto',
-  minWidth,
-  maxWidth,
-  colspan,
-  scope,
-  data,
-  ...restProps
-}: CellProps & BaseCellProps) => {
+const Cell = forwardRef<HTMLTableCellElement, CellProps & BaseCellProps>((
+  {
+    header: isHeaderCell,
+    children,
+    hideAbove,
+    hideBelow,
+    align = 'left',
+    wrap = false,
+    width = 'auto',
+    minWidth,
+    maxWidth,
+    colspan,
+    scope,
+    data,
+    ...restProps
+  },
+  ref
+) => {
   const [hideOnMobile, hideOnTablet, hideOnDesktop, hideOnWide] =
     resolveResponsiveRangeProps({
       below: hideBelow,
@@ -123,6 +126,7 @@ const Cell = ({
         [styles.maxWidthVar]:
           typeof maxWidth !== 'undefined' ? `${maxWidth}px` : undefined,
       })}
+      ref={ref}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <DefaultBadgePropsProvider bleedY>
@@ -142,9 +146,9 @@ const Cell = ({
       </DefaultBadgePropsProvider>
     </Box>
   );
-};
+});
 
-export const TableCell = (props: CellProps) => {
+export const TableCell = forwardRef<HTMLTableCellElement, CellProps>((props, ref) => {
   const tableHeaderContext = useContext(TableHeaderContext);
   const tableRowContext = useContext(TableRowContext);
 
@@ -158,10 +162,10 @@ export const TableCell = (props: CellProps) => {
     'TableCell cannot be used outside a TableRow component',
   );
 
-  return <Cell {...props} header={false} scope={undefined} />;
-};
+  return <Cell {...props} header={false} scope={undefined} ref={ref} />;
+});
 
-export const TableHeaderCell = (props: CellProps) => {
+export const TableHeaderCell = forwardRef<HTMLTableCellElement, CellProps>((props, ref) => {
   const tableHeaderContext = useContext(TableHeaderContext);
   const tableRowContext = useContext(TableRowContext);
 
@@ -171,6 +175,6 @@ export const TableHeaderCell = (props: CellProps) => {
   );
 
   return (
-    <Cell {...props} header={true} scope={tableHeaderContext ? 'col' : 'row'} />
+    <Cell {...props} header={true} scope={tableHeaderContext ? 'col' : 'row'} ref={ref} />
   );
-};
+});

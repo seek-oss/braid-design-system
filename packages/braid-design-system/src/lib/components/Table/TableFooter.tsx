@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { useContext, type ReactNode } from 'react';
+import { useContext, type ReactNode, forwardRef } from 'react';
 
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -11,16 +11,19 @@ import { TableContext, TableFooterContext } from './TableContext';
 
 import * as styles from './Table.css';
 
-interface TableHeaderProps {
+interface TableFooterProps {
   children: ReactNode;
   data?: DataAttributeMap;
 }
 
-export const TableFooter = ({
-  children,
-  data,
-  ...restProps
-}: TableHeaderProps) => {
+export const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>((
+  {
+    children,
+    data,
+    ...restProps
+  },
+  ref
+) => {
   const tableContext = useContext(TableContext);
 
   assert(tableContext, 'TableFooter must be used within a Table component');
@@ -30,10 +33,11 @@ export const TableFooter = ({
       <Box
         component="tfoot"
         className={styles.tableSection}
+        ref={ref}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}
       </Box>
     </TableFooterContext.Provider>
   );
-};
+});

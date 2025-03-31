@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { useContext, type ReactNode } from 'react';
+import { useContext, type ReactNode, forwardRef } from 'react';
 
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -16,11 +16,14 @@ interface TableHeaderProps {
   data?: DataAttributeMap;
 }
 
-export const TableHeader = ({
-  children,
-  data,
-  ...restProps
-}: TableHeaderProps) => {
+export const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>((
+  {
+    children,
+    data,
+    ...restProps
+  },
+  ref
+) => {
   const tableContext = useContext(TableContext);
 
   assert(tableContext, 'TableHeader must be used within a Table component');
@@ -30,10 +33,11 @@ export const TableHeader = ({
       <Box
         component="thead"
         className={[styles.tableSection, styles.tableHeader]}
+        ref={ref}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}
       </Box>
     </TableHeaderContext.Provider>
   );
-};
+});
