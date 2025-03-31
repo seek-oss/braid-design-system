@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useId } from 'react';
 
-import { atoms } from '../../../css/atoms/atoms';
+import { Box } from '../../Box/Box';
 
 import * as styles from '../../HiddenVisually/HiddenVisually.css';
 
-let announcementCounter = 0;
 export const containerPrefix = 'braid-announcement-container';
 
 interface AnnouncementProps {
@@ -13,37 +11,18 @@ interface AnnouncementProps {
 }
 
 export const Announcement = ({ children }: AnnouncementProps) => {
-  const [announcementElement, setElement] = useState<HTMLElement | null>(null);
-  const className = [
-    atoms({
-      reset: 'div',
-      position: 'absolute',
-      overflow: 'hidden',
-    }),
-    styles.root,
-  ].join(' ');
+  const announcementContainerId = `${containerPrefix}-${useId()}`;
 
-  useEffect(() => {
-    const announcementContainerId = `${containerPrefix}-${announcementCounter++}`;
-
-    const element = document.createElement('div');
-    element.setAttribute('id', announcementContainerId);
-    element.setAttribute('class', className);
-    element.setAttribute('aria-live', 'polite');
-    element.setAttribute('aria-atomic', 'true');
-
-    document.body.appendChild(element);
-
-    setElement(element);
-
-    return () => {
-      document.body.removeChild(element);
-    };
-  }, [className]);
-
-  if (!announcementElement) {
-    return null;
-  }
-
-  return createPortal(children, announcementElement);
+  return (
+    <Box
+      id={announcementContainerId}
+      aria-live="polite"
+      aria-atomic="true"
+      position="absolute"
+      overflow="hidden"
+      className={styles.root}
+    >
+      {children}
+    </Box>
+  );
 };
