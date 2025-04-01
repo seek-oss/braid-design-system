@@ -169,7 +169,7 @@ importers:
         version: 4.1.2
       '@capsizecss/metrics':
         specifier: ^3.0.0
-        version: 3.4.0
+        version: 3.5.0
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.0
         version: 2.0.0(@vanilla-extract/css@1.17.1(babel-plugin-macros@3.1.0))
@@ -1335,8 +1335,8 @@ packages:
   '@capsizecss/core@4.1.2':
     resolution: {integrity: sha512-5tMjLsVsaEEwJ816y3eTfhhTIyUWNFt58x6YcHni0eV5tta8MGDOAIe+CV5ICb5pguXgDpNGLprqhPqBWtkFSg==}
 
-  '@capsizecss/metrics@3.4.0':
-    resolution: {integrity: sha512-hIn8MAHxLvwyUh6ZvLQHDt2GPShBz6+gxBs1JTD9GleBkht1AZvtCFo0adr7bQvYYuQzUJeKi69zqlAwgKMHNA==}
+  '@capsizecss/metrics@3.5.0':
+    resolution: {integrity: sha512-Ju2I/Qn3c1OaU8FgeW4Tc22D4C9NwyVfKzNmzst59bvxBjPoLYNZMqFYn+HvCtn4MpXwiaDtCE8fNuQLpdi9yA==}
 
   '@capsizecss/vanilla-extract@2.0.0':
     resolution: {integrity: sha512-6FNLEOcAYo2AklxT7XVEm9Yam2hv76DLEhD6RWK3hJ87Nb9i95Y+rdYHJ3LBlbrzb+ZVJXxzZvg5OAZAqr/K3Q==}
@@ -10522,7 +10522,7 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
-  '@capsizecss/metrics@3.4.0': {}
+  '@capsizecss/metrics@3.5.0': {}
 
   '@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.17.1(babel-plugin-macros@3.1.0))':
     dependencies:
