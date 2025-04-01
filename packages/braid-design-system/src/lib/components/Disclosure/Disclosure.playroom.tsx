@@ -14,7 +14,6 @@ type PlayroomDisclosureProps = StateProp &
   Partial<Pick<DisclosureProps, OptionalProps>>;
 
 export const Disclosure = ({
-  id,
   stateName,
   expanded,
   expandLabel,
@@ -31,7 +30,6 @@ export const Disclosure = ({
 
   return (
     <BraidDisclosure
-      id={id}
       expanded={state}
       onToggle={handleChange}
       expandLabel={typeof expandLabel !== 'boolean' ? expandLabel : ''}

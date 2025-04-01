@@ -14,7 +14,6 @@ type PlayroomAccordionItemProps = StateProp &
   Partial<Pick<AccordionItemProps, OptionalProps>>;
 
 export const AccordionItem = ({
-  id,
   label,
   stateName,
   expanded,
@@ -35,7 +34,6 @@ export const AccordionItem = ({
 
   return (
     <BraidAccordionItem
-      id={id}
       expanded={state}
       onToggle={handleChange}
       label={typeof label !== 'boolean' ? label : ''}

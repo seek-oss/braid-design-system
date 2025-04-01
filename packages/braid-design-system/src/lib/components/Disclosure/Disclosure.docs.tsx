@@ -6,7 +6,7 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({}) =>
+  Example: () =>
     source(
       <Disclosure expandLabel="Show content" collapseLabel="Hide content">
         <Text>Content</Text>
