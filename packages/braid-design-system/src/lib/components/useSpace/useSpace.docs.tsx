@@ -1,4 +1,6 @@
 import source from '@braid-design-system/source.macro';
+import type { ComponentDocs } from 'site/types';
+
 import {
   useSpace,
   Stack,
@@ -7,7 +9,6 @@ import {
   TextLink,
   Strong,
 } from 'braid-src/lib/components';
-import type { ComponentDocs } from 'site/types';
 
 const docs: ComponentDocs = {
   category: 'Logic',

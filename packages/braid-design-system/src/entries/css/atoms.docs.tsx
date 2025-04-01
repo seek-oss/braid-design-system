@@ -1,4 +1,9 @@
 import source from '@braid-design-system/source.macro';
+import dedent from 'dedent';
+import Code from 'site/App/Code/Code';
+import { ThemedExample } from 'site/App/ThemeSetting';
+import type { CssDoc } from 'site/types';
+
 import { atoms } from 'braid-src/entries/css';
 import {
   Stack,
@@ -23,10 +28,6 @@ import {
   pseudoProperties,
   unresponsiveProperties,
 } from 'braid-src/lib/css/atoms/atomicProperties';
-import dedent from 'dedent';
-import Code from 'site/App/Code/Code';
-import { ThemedExample } from 'site/App/ThemeSetting';
-import type { CssDoc } from 'site/types';
 
 type BoxShadowDocs = Required<Record<BoxShadow, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
