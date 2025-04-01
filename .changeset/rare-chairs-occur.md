@@ -2,4 +2,15 @@
 'braid-design-system': minor
 ---
 
-Add `ref` to table components
+---
+updated:
+  - Table
+  - TableBody
+  - TableCell
+  - TableFooter
+  - TableHeader
+  - TableHeaderCell
+  - TableRow
+---
+
+Add `ref` support to table components
