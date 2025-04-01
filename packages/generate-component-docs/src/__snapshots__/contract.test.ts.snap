@@ -8167,6 +8167,10 @@ exports[`Table 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     label: string
+    ref?: 
+        | (instance: HTMLTableElement | null) => void
+        | RefObject<HTMLTableElement>
+        | string
 },
 }
 `;
@@ -8177,6 +8181,10 @@ exports[`TableBody 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void
+        | RefObject<HTMLTableSectionElement>
+        | string
 },
 }
 `;
@@ -8202,6 +8210,10 @@ exports[`TableCell 1`] = `
         | "wide"
     maxWidth?: number
     minWidth?: number
+    ref?: 
+        | (instance: HTMLTableCellElement | null) => void
+        | RefObject<HTMLTableCellElement>
+        | string
     width?: 
         | "auto"
         | "content"
@@ -8217,6 +8229,10 @@ exports[`TableFooter 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void
+        | RefObject<HTMLTableSectionElement>
+        | string
 },
 }
 `;
@@ -8227,6 +8243,10 @@ exports[`TableHeader 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void
+        | RefObject<HTMLTableSectionElement>
+        | string
 },
 }
 `;
@@ -8252,6 +8272,10 @@ exports[`TableHeaderCell 1`] = `
         | "wide"
     maxWidth?: number
     minWidth?: number
+    ref?: 
+        | (instance: HTMLTableCellElement | null) => void
+        | RefObject<HTMLTableCellElement>
+        | string
     width?: 
         | "auto"
         | "content"
@@ -8267,6 +8291,10 @@ exports[`TableRow 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableRowElement | null) => void
+        | RefObject<HTMLTableRowElement>
+        | string
 },
 }
 `;

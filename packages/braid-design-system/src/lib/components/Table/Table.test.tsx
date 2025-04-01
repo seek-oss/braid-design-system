@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render } from '@testing-library/react';
+import { createRef } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import {
@@ -143,6 +144,53 @@ describe('Table', () => {
       ).toHTMLValidate({
         extends: ['html-validate:recommended'],
       });
+    });
+  });
+
+  describe('ref forwarding', () => {
+    it('should forward refs to all table components', () => {
+      const tableRef = createRef<HTMLTableElement>();
+      const headerRef = createRef<HTMLTableSectionElement>();
+      const rowRef = createRef<HTMLTableRowElement>();
+      const bodyRef = createRef<HTMLTableSectionElement>();
+      const cellRef = createRef<HTMLTableCellElement>();
+      const footerRef = createRef<HTMLTableSectionElement>();
+      const headerCellRef = createRef<HTMLTableCellElement>();
+
+      render(
+        <BraidTestProvider>
+          <Table label="Table with refs" ref={tableRef}>
+            <TableHeader ref={headerRef}>
+              <TableRow ref={rowRef}>
+                <TableHeaderCell ref={headerCellRef}>
+                  <Text>Header</Text>
+                </TableHeaderCell>
+              </TableRow>
+            </TableHeader>
+            <TableBody ref={bodyRef}>
+              <TableRow>
+                <TableCell ref={cellRef}>
+                  <Text>Content</Text>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+            <TableFooter ref={footerRef}>
+              <TableRow>
+                <TableCell>
+                  <Text>Footer</Text>
+                </TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </BraidTestProvider>,
+      );
+
+      expect(tableRef.current?.tagName).toBe('TABLE');
+      expect(headerRef.current?.tagName).toBe('THEAD');
+      expect(headerCellRef.current?.tagName).toBe('TH');
+      expect(bodyRef.current?.tagName).toBe('TBODY');
+      expect(cellRef.current?.tagName).toBe('TD');
+      expect(footerRef.current?.tagName).toBe('TFOOT');
     });
   });
 });
