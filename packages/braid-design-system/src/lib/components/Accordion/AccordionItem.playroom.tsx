@@ -1,5 +1,4 @@
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
-import { useFallbackId } from '../../playroom/utils';
 
 import {
   type AccordionItemProps,
@@ -15,7 +14,6 @@ type PlayroomAccordionItemProps = StateProp &
   Partial<Pick<AccordionItemProps, OptionalProps>>;
 
 export const AccordionItem = ({
-  id,
   label,
   stateName,
   expanded,
@@ -27,7 +25,6 @@ export const AccordionItem = ({
   icon,
   ...restProps
 }: PlayroomAccordionItemProps) => {
-  const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(
     stateName,
     expanded,
@@ -37,7 +34,6 @@ export const AccordionItem = ({
 
   return (
     <BraidAccordionItem
-      id={id ?? fallbackId}
       expanded={state}
       onToggle={handleChange}
       label={typeof label !== 'boolean' ? label : ''}
