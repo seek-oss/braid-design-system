@@ -6,12 +6,12 @@ import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
 import { Inline } from '../Inline/Inline';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconPositive, IconCritical, IconClear } from '../icons';
+import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes from '../private/buildDataAttributes';
 
 import type { InternalToast, ToastAction } from './ToastTypes';
@@ -150,67 +150,68 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
     );
 
     return (
-      <ContentBlock width={toastWidth}>
+      <Box
+        position="relative"
+        width="full"
+        maxWidth={toastWidth}
+        display="flex"
+        ref={ref}
+      >
         <Box
-          display="flex"
-          justifyContent="center"
-          textAlign="left"
           role="alert"
-          ref={ref}
-          className={styles.toast}
+          textAlign="left"
+          background={{ lightMode: 'surfaceDark', darkMode: 'surface' }}
+          boxShadow={{
+            lightMode: 'borderNeutral',
+            darkMode: 'borderNeutralLight',
+          }}
           borderRadius={borderRadius}
-          boxShadow="large"
+          paddingY="medium"
+          paddingX="gutter"
+          marginTop={toastGap}
+          width="full"
+          position="relative"
+          className={styles.toast}
           {...buildDataAttributes({ data, validateRestProps: restProps })}
         >
-          <Box
-            background={{ lightMode: 'surfaceDark', darkMode: 'surface' }}
-            position="relative"
-            borderRadius={borderRadius}
-            paddingY="medium"
-            paddingX="gutter"
-            marginTop={toastGap}
-            width="full"
-            boxShadow="borderNeutral"
-            overflow="hidden"
-          >
-            <Columns space="none">
-              {tone !== 'neutral' || (tone === 'neutral' && icon) ? (
-                <Column width="content">
-                  <Box paddingRight="small">
-                    <ToastIcon tone={tone} icon={icon} />
-                  </Box>
-                </Column>
-              ) : null}
-              <Column>{content}</Column>
+          <Columns space="none">
+            {tone !== 'neutral' || (tone === 'neutral' && icon) ? (
               <Column width="content">
-                <Box
-                  width="touchable"
-                  display="flex"
-                  justifyContent="flexEnd"
-                  alignItems="center"
-                  className={lineHeightContainer.standard}
-                  aria-hidden
-                >
-                  <ButtonIcon
-                    icon={<IconClear tone="secondary" />}
-                    variant="transparent"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      remove();
-                    }}
-                    label={closeLabel}
-                    data={
-                      process.env.NODE_ENV !== 'production'
-                        ? { testid: 'clearToast' }
-                        : {}
-                    }
-                  />
+                <Box paddingRight="small">
+                  <ToastIcon tone={tone} icon={icon} />
                 </Box>
               </Column>
-            </Columns>
-          </Box>
+            ) : null}
+            <Column>{content}</Column>
+            <Column width="content">
+              <Box
+                width="touchable"
+                display="flex"
+                justifyContent="flexEnd"
+                alignItems="center"
+                className={lineHeightContainer.standard}
+                aria-hidden
+              >
+                <ButtonIcon
+                  icon={<IconClear tone="secondary" />}
+                  variant="transparent"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    remove();
+                  }}
+                  label={closeLabel}
+                  data={
+                    process.env.NODE_ENV !== 'production'
+                      ? { testid: 'clearToast' }
+                      : {}
+                  }
+                />
+              </Box>
+            </Column>
+          </Columns>
+          <Overlay visible borderRadius={borderRadius} boxShadow="large" />
         </Box>
-      </ContentBlock>
+      </Box>
     );
   },
 );
