@@ -169,7 +169,7 @@ importers:
         version: 4.1.2
       '@capsizecss/metrics':
         specifier: ^3.0.0
-        version: 3.4.0
+        version: 3.5.0
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.0
         version: 2.0.0(@vanilla-extract/css@1.17.1(babel-plugin-macros@3.1.0))
@@ -340,8 +340,8 @@ importers:
         specifier: ^7.1.1
         version: 7.18.1(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.80)(babel-plugin-macros@3.1.0))
       playroom:
-        specifier: 0.41.0
-        version: 0.41.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.42.0
+        version: 0.42.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       prettier:
         specifier: ^3.4.1
         version: 3.5.3
@@ -593,8 +593,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
       playroom:
-        specifier: 0.41.0
-        version: 0.41.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.42.0
+        version: 0.42.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -1335,8 +1335,8 @@ packages:
   '@capsizecss/core@4.1.2':
     resolution: {integrity: sha512-5tMjLsVsaEEwJ816y3eTfhhTIyUWNFt58x6YcHni0eV5tta8MGDOAIe+CV5ICb5pguXgDpNGLprqhPqBWtkFSg==}
 
-  '@capsizecss/metrics@3.4.0':
-    resolution: {integrity: sha512-hIn8MAHxLvwyUh6ZvLQHDt2GPShBz6+gxBs1JTD9GleBkht1AZvtCFo0adr7bQvYYuQzUJeKi69zqlAwgKMHNA==}
+  '@capsizecss/metrics@3.5.0':
+    resolution: {integrity: sha512-Ju2I/Qn3c1OaU8FgeW4Tc22D4C9NwyVfKzNmzst59bvxBjPoLYNZMqFYn+HvCtn4MpXwiaDtCE8fNuQLpdi9yA==}
 
   '@capsizecss/vanilla-extract@2.0.0':
     resolution: {integrity: sha512-6FNLEOcAYo2AklxT7XVEm9Yam2hv76DLEhD6RWK3hJ87Nb9i95Y+rdYHJ3LBlbrzb+ZVJXxzZvg5OAZAqr/K3Q==}
@@ -7438,8 +7438,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playroom@0.41.0:
-    resolution: {integrity: sha512-qnxeAVG0SNXEtu905QeR5/ch8RA54yA1YUON+K5sm+Rv8sOJlhl9hf0WY89+XZDGievoRB0sgvVaJCM5mmbXcw==}
+  playroom@0.42.0:
+    resolution: {integrity: sha512-SigGjFxPo4n5xUsUK6sZkmQv5TMG1e9H8n5zSNuJ25Gm2sX1xVhFKdL6ZOM3LGoFxuILYLJdyVjLEGu4AY6iKA==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     peerDependencies:
@@ -10522,7 +10522,7 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
-  '@capsizecss/metrics@3.4.0': {}
+  '@capsizecss/metrics@3.5.0': {}
 
   '@capsizecss/vanilla-extract@2.0.0(@vanilla-extract/css@1.17.1(babel-plugin-macros@3.1.0))':
     dependencies:
@@ -18213,7 +18213,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playroom@0.41.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.42.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.26.10
       '@babel/parser': 7.26.10
@@ -18240,7 +18240,6 @@ snapshots:
       copy-to-clipboard: 3.3.3
       css-loader: 6.11.0(webpack@5.98.0(@swc/core@1.11.8)(esbuild@0.18.20))
       dedent: 1.5.3(babel-plugin-macros@3.1.0)
-      fast-glob: 3.3.3
       find-up: 5.0.0
       fuzzy: 0.1.3
       history: 5.3.0
@@ -18262,6 +18261,7 @@ snapshots:
       read-pkg-up: 7.0.1
       scope-eval: 1.0.0
       sucrase: 3.35.0
+      tinyglobby: 0.2.12
       typescript: 5.5.4
       use-debounce: 10.0.4(react@18.3.1)
       webpack: 5.98.0(@swc/core@1.11.8)(esbuild@0.18.20)
@@ -18279,7 +18279,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  playroom@0.41.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.42.0(@swc/core@1.11.8)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.26.10
       '@babel/parser': 7.26.10
@@ -18306,7 +18306,6 @@ snapshots:
       copy-to-clipboard: 3.3.3
       css-loader: 6.11.0(webpack@5.98.0(@swc/core@1.11.8))
       dedent: 1.5.3(babel-plugin-macros@3.1.0)
-      fast-glob: 3.3.3
       find-up: 5.0.0
       fuzzy: 0.1.3
       history: 5.3.0
@@ -18328,6 +18327,7 @@ snapshots:
       read-pkg-up: 7.0.1
       scope-eval: 1.0.0
       sucrase: 3.35.0
+      tinyglobby: 0.2.12
       typescript: 5.5.4
       use-debounce: 10.0.4(react@18.3.1)
       webpack: 5.98.0(@swc/core@1.11.8)
