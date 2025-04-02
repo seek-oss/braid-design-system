@@ -826,6 +826,7 @@ exports[`Box 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     flexDirection?: 
         | "column"
         | "columnReverse"
@@ -1291,6 +1292,7 @@ exports[`Box 1`] = `
         | "xxxlarge"
         | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
+    part?: string
     pattern?: string
     placeholder?: string
     playsInline?: boolean
@@ -2409,6 +2411,7 @@ exports[`ButtonLink 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -2597,6 +2600,7 @@ exports[`ButtonLink 1`] = `
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
     prefix?: string
     property?: string
@@ -7232,6 +7236,7 @@ exports[`Link 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -7415,6 +7420,7 @@ exports[`Link 1`] = `
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
     prefix?: string
     property?: string
@@ -8888,6 +8894,7 @@ exports[`TextLink 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     hitArea?: 
         | "large"
@@ -9078,6 +9085,7 @@ exports[`TextLink 1`] = `
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
     prefix?: string
     property?: string
