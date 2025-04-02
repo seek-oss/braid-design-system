@@ -462,7 +462,7 @@ const docs: ComponentDocs = {
           each suggestion.
         </Text>
       ),
-      Example: ({ id, setDefaultState, setState, getState }) =>
+      Example: ({ setDefaultState, setState, getState }) =>
         source(
           <>
             {setDefaultState('textfield', 'App')}
@@ -471,7 +471,6 @@ const docs: ComponentDocs = {
             <Stack space="large">
               <TextField
                 label="Label"
-                id={id}
                 onChange={setState('textfield')}
                 value={getState('textfield')}
               />

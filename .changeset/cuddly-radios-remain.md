@@ -7,6 +7,7 @@ updated:
   - AccordionItem
   - Autosuggest
   - Disclosure
+  - TextField
 ---
 
 Change `id` prop from required to optional, allowing simplified usage
