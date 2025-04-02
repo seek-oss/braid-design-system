@@ -318,7 +318,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('inputmode', 'numeric')}
@@ -327,7 +327,6 @@ const docs: ComponentDocs = {
                 Selected input mode:{' '}
                 <Strong>
                   <TextDropdown
-                    id={`${id}_mode`}
                     label="Input mode"
                     value={getState('inputmode')}
                     onChange={setState('inputmode')}

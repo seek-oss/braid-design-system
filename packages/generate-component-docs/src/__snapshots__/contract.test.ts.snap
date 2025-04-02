@@ -8597,7 +8597,7 @@ exports[`TextDropdown 1`] = `
   exportType: component,
   props: {
     data?: DataAttributeMap
-    id: string
+    id?: string
     label: string
     onBlur?: () => void
     onChange: (value: Value) => void

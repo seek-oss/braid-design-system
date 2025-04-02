@@ -7,6 +7,7 @@ updated:
   - AccordionItem
   - Autosuggest
   - Disclosure
+  - TextDropdown
   - TextField
 ---
 
