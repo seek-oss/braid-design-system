@@ -1,3 +1,4 @@
+import isMobile from 'is-mobile';
 import { useCallback, useState } from 'react';
 
 import { Box } from '../Box/Box';
@@ -40,11 +41,11 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
           pointerEvents={toasts.length === 0 ? 'none' : undefined}
           marginX="gutter"
           marginBottom="xsmall"
-          onMouseEnter={() => setExpanded(true)}
+          onMouseEnter={() => !isMobile() && setExpanded(true)}
           onMouseLeave={() => setExpanded(false)}
+          onClick={() => isMobile() && setExpanded(!expanded)}
           onFocus={() => setExpanded(true)}
           onBlur={() => setExpanded(false)}
-          onClick={() => setExpanded(!expanded)}
         >
           {toasts.map(({ toastKey, ...rest }) => (
             <ToastComponent
