@@ -104,7 +104,7 @@ exports[`Autosuggest 1`] = `
     disabled?: boolean
     hideSuggestionsOnSelection?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
