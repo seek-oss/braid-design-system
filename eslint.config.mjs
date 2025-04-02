@@ -46,6 +46,9 @@ const gitIgnoresFromWorkspaces = workspaces
   .filter(Boolean);
 
 export default [
+  {
+    ignores: ['**/bin.js'],
+  },
   ...gitIgnoresFromWorkspaces,
   ...eslintConfigSeek,
   {
