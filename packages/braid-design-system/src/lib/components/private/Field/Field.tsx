@@ -207,7 +207,6 @@ export const Field = ({
           background={fieldBackground}
           borderRadius="standard"
           display="flex"
-          className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
         >
           {children(
             overlays,
@@ -247,6 +246,7 @@ export const Field = ({
                 }),
                 touchableText.standard,
                 icon && !prefix ? styles.iconSpace : null,
+                showSecondaryIcon ? styles.secondaryIconSpace : undefined,
               ),
             },
             icon ? (
