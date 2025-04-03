@@ -1,5 +1,5 @@
 import isMobile from 'is-mobile';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { Box } from '../Box/Box';
 
@@ -26,38 +26,55 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
     [remove, removeToast],
   );
 
+  useEffect(() => {
+    if (isMobile() && toasts.length <= 1) {
+      setExpanded(false);
+    }
+  }, [toasts.length]);
+
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      position="fixed"
-      bottom={0}
-      width="full"
-    >
+    <>
+      {isMobile() && expanded && toasts.length > 1 && (
+        <Box
+          position="fixed"
+          inset={0}
+          zIndex="notification"
+          onClick={() => setExpanded(false)}
+        />
+      )}
+
       <Box
+        display="flex"
+        justifyContent="center"
+        position="fixed"
+        bottom={0}
         width="full"
-        maxWidth={toastWidth}
-        pointerEvents={toasts.length === 0 ? 'none' : undefined}
-        marginX="gutter"
-        paddingBottom="xsmall"
         zIndex="notification"
-        onMouseEnter={() => !isMobile() && setExpanded(true)}
-        onMouseLeave={() => setExpanded(false)}
-        onClick={() => isMobile() && setExpanded(!expanded)}
-        onFocus={() => setExpanded(true)}
-        onBlur={() => setExpanded(false)}
       >
-        {toasts.map(({ toastKey, ...rest }) => (
-          <ToastComponent
-            key={toastKey}
-            ref={itemRef(toastKey)}
-            toastKey={toastKey}
-            onClose={onClose}
-            expanded={expanded}
-            {...rest}
-          />
-        ))}
+        <Box
+          width="full"
+          maxWidth={toastWidth}
+          pointerEvents={toasts.length === 0 ? 'none' : undefined}
+          marginX="gutter"
+          paddingBottom="xsmall"
+          onMouseEnter={() => !isMobile() && setExpanded(true)}
+          onMouseLeave={() => !isMobile() && setExpanded(false)}
+          onClick={() => setExpanded(!expanded)}
+          onFocus={() => setExpanded(true)}
+          onBlur={() => setExpanded(false)}
+        >
+          {toasts.map(({ toastKey, ...rest }) => (
+            <ToastComponent
+              key={toastKey}
+              ref={itemRef(toastKey)}
+              toastKey={toastKey}
+              onClose={onClose}
+              expanded={expanded}
+              {...rest}
+            />
+          ))}
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
