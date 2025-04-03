@@ -7,7 +7,7 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, setState, getState, setDefaultState }) =>
+      Example: ({ setState, getState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('textdropdown', 'Option 1')}
@@ -15,7 +15,6 @@ export const galleryItems: GalleryComponent = {
             <Text>
               <TextDropdown
                 label="Options"
-                id={id}
                 value={getState('textdropdown')}
                 onChange={setState('textdropdown')}
                 options={['Option 1', 'Option 2', 'Option 3']}
@@ -26,7 +25,7 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Emphasised within a sentence',
-      Example: ({ id, setState, getState, setDefaultState }) =>
+      Example: ({ setState, getState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('sortby', 'Relevance')}
@@ -36,7 +35,6 @@ export const galleryItems: GalleryComponent = {
               <Strong>
                 <TextDropdown
                   label="Sort by"
-                  id={id}
                   value={getState('sortby')}
                   onChange={setState('sortby')}
                   options={['Relevance', 'Date', 'Keyword']}
@@ -48,7 +46,7 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Within a heading',
-      Example: ({ id, setState, getState, setDefaultState }) =>
+      Example: ({ setState, getState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('textdropdown', 'Option 1')}
@@ -57,7 +55,6 @@ export const galleryItems: GalleryComponent = {
               Heading with{' '}
               <TextDropdown
                 label="Options"
-                id={id}
                 value={getState('textdropdown')}
                 onChange={setState('textdropdown')}
                 options={['Option 1', 'Option 2', 'Option 3']}

@@ -6,7 +6,7 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, setState, getState, setDefaultState }) =>
+  Example: ({ setState, getState, setDefaultState }) =>
     source(
       <>
         {setDefaultState('textdropdown', 'Option 1')}
@@ -14,7 +14,6 @@ const docs: ComponentDocs = {
         <Text>
           <TextDropdown
             label="Options"
-            id={id}
             value={getState('textdropdown')}
             onChange={setState('textdropdown')}
             options={['Option 1', 'Option 2', 'Option 3']}
@@ -46,7 +45,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, setState, getState, setDefaultState }) =>
+      Example: ({ setState, getState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('sortby', 'Relevance')}
@@ -56,7 +55,6 @@ const docs: ComponentDocs = {
               <Strong>
                 <TextDropdown
                   label="Sort by"
-                  id={id}
                   value={getState('sortby')}
                   onChange={setState('sortby')}
                   options={['Relevance', 'Date', 'Keyword']}
@@ -76,7 +74,7 @@ const docs: ComponentDocs = {
           <Strong>value</Strong> properties.
         </Text>
       ),
-      Example: ({ id, setState, getState, setDefaultState }) =>
+      Example: ({ setState, getState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('textdropdown', 200)}
@@ -85,7 +83,6 @@ const docs: ComponentDocs = {
               <Text>
                 <TextDropdown
                   label="Options"
-                  id={id}
                   value={getState('textdropdown')}
                   onChange={setState('textdropdown')}
                   options={[

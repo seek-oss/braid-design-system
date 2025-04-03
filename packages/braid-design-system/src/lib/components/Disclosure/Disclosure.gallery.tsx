@@ -8,35 +8,22 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <Disclosure
-            id={id}
-            expandLabel="Show content"
-            collapseLabel="Hide content"
-          >
+          <Disclosure expandLabel="Show content" collapseLabel="Hide content">
             <Placeholder height={100} />
           </Disclosure>,
         ),
     },
     {
       label: 'Visual weight',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Stack space="large">
-            <Disclosure
-              id={`${id}_1`}
-              expandLabel="Regular weight"
-              weight="regular"
-            >
+            <Disclosure expandLabel="Regular weight" weight="regular">
               <Placeholder height={100} />
             </Disclosure>
-            <Disclosure
-              id={`${id}_2`}
-              expandLabel="Weak weight"
-              size="standard"
-              weight="weak"
-            >
+            <Disclosure expandLabel="Weak weight" size="standard" weight="weak">
               <Placeholder height={100} />
             </Disclosure>
           </Stack>,
@@ -44,11 +31,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Sizing',
-      Example: ({ id, handler }) =>
+      Example: ({ handler }) =>
         source(
           <Stack space="large">
             <Disclosure
-              id={`${id}_1`}
               expandLabel="Large size"
               size="large"
               expanded={true}
@@ -59,7 +45,6 @@ export const galleryItems: GalleryComponent = {
               </Text>
             </Disclosure>
             <Disclosure
-              id={`${id}_2`}
               expandLabel="Standard size"
               size="standard"
               expanded={true}
@@ -70,7 +55,6 @@ export const galleryItems: GalleryComponent = {
               </Text>
             </Disclosure>
             <Disclosure
-              id={`${id}_3`}
               expandLabel="Small size"
               size="small"
               expanded={true}
@@ -81,7 +65,6 @@ export const galleryItems: GalleryComponent = {
               </Text>
             </Disclosure>
             <Disclosure
-              id={`${id}_4`}
               expandLabel="Xsmall size"
               size="xsmall"
               expanded={true}

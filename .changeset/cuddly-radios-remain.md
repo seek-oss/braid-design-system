@@ -5,12 +5,13 @@
 ---
 updated:
   - AccordionItem
+  - Autosuggest
   - Disclosure
+  - TextDropdown
+  - TextField
 ---
 
-**AccordionItem, Disclosure**: Change `id` prop from required to optional
-
-The id prop is now optional on both components, allowing simplified usage.
+Change `id` prop from required to optional, allowing simplified usage
 
 **EXAMPLE USAGE:**
 

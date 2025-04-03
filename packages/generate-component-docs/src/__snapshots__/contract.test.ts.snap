@@ -104,7 +104,7 @@ exports[`Autosuggest 1`] = `
     disabled?: boolean
     hideSuggestionsOnSelection?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -8597,7 +8597,7 @@ exports[`TextDropdown 1`] = `
   exportType: component,
   props: {
     data?: DataAttributeMap
-    id: string
+    id?: string
     label: string
     onBlur?: () => void
     onChange: (value: Value) => void
@@ -8625,7 +8625,7 @@ exports[`TextField 1`] = `
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     inputMode?: 
         | "decimal"
         | "email"

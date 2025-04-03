@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { type FormEvent, useContext } from 'react';
+import { type FormEvent, useContext, useId } from 'react';
 
 import { Box } from '../Box/Box';
 import HeadingContext from '../Heading/HeadingContext';
@@ -21,7 +21,7 @@ interface TextDropdownOption<Value> {
 type TextDropdownValue<Value> = Value | TextDropdownOption<Value>;
 
 export interface TextDropdownProps<Value> {
-  id: string;
+  id?: string;
   value: Value;
   onChange: (value: Value) => void;
   onBlur?: () => void;
@@ -78,6 +78,9 @@ export function TextDropdown<Value>({
     );
   }
 
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
   return (
     <Box
       display="inlineBlock"
@@ -97,7 +100,7 @@ export function TextDropdown<Value>({
         className={styles.select}
         aria-label={label}
         title={label}
-        id={id}
+        id={resolvedId}
         tabIndex={tabIndex}
         value={String(value)}
         onChange={(ev: FormEvent<HTMLSelectElement>) => {
