@@ -26,7 +26,7 @@ const toneToIcon = {
   positive: IconPositive,
 };
 
-export const toastDuration = 10000;
+export const toastDuration = 10 * 1000;
 
 const borderRadius = 'large';
 
