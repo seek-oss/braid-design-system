@@ -2,10 +2,8 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 import { babel, webpackFinal } from 'sku/config/storybook';
 
 export default {
-  stories: ['../src/lib/stories/all.stories.tsx'],
-  features: {
-    storyStoreV7: false,
-  },
+  // stories: ['../src/lib/components/**/*.stories.tsx'],
+  stories: ['../src/lib/stories/**/*.stories.@(js|jsx|ts|tsx)'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {
