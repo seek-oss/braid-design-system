@@ -5,7 +5,7 @@ import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect
 
 const px = (v: string | number) => `${v}px`;
 
-const animationTimeout = 300;
+const animationTimeout = 200;
 
 const entranceTransition = 'all 0.2s ease';
 const exitTransition = 'opacity 0.2s ease, height 0.2s ease';
