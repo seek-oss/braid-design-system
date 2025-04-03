@@ -8,10 +8,9 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Checkbox
-            id={id}
             checked={getState('checked')}
             onChange={() => toggleState('checked')}
             label="Label"
@@ -20,10 +19,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Checkbox
-            id={id}
             checked={getState('checked')}
             onChange={() => toggleState('checked')}
             label="Label"
@@ -33,10 +31,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a Badge',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Checkbox
-            id={id}
             checked={getState('checked')}
             onChange={() => toggleState('checked')}
             label="Label"
@@ -50,12 +47,11 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Toggling nested content',
-      Example: ({ id, getState, toggleState, setDefaultState }) =>
+      Example: ({ getState, toggleState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('checked', true)}
             <Checkbox
-              id={id}
               checked={getState('checked')}
               onChange={() => toggleState('checked')}
               label="Label"
@@ -67,29 +63,13 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'States',
-      Example: ({ id, handler }) =>
+      Example: ({ handler }) =>
         source(
           <Stack space="medium">
+            <Checkbox checked={false} label="Unchecked" onChange={handler} />
+            <Checkbox checked={true} label="Checked" onChange={handler} />
+            <Checkbox checked="mixed" label="Mixed" onChange={handler} />
             <Checkbox
-              id={`chk_states_${id}_1`}
-              checked={false}
-              label="Unchecked"
-              onChange={handler}
-            />
-            <Checkbox
-              id={`chk_states_${id}_2`}
-              checked={true}
-              label="Checked"
-              onChange={handler}
-            />
-            <Checkbox
-              id={`chk_states_${id}_3`}
-              checked="mixed"
-              label="Mixed"
-              onChange={handler}
-            />
-            <Checkbox
-              id={`chk_states_${id}_4`}
               disabled={true}
               checked={false}
               onChange={handler}
@@ -100,10 +80,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Small',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Checkbox
-            id={id}
             checked={getState('checked')}
             onChange={() => toggleState('checked')}
             label="Label"

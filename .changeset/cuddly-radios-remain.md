@@ -6,6 +6,8 @@
 updated:
   - AccordionItem
   - Autosuggest
+  - Checkbox
+  - CheckboxStandalone
   - Disclosure
   - TextDropdown
   - TextField
