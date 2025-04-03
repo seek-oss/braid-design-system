@@ -38,7 +38,7 @@ exports[`AccordionItem 1`] = `
     data?: DataAttributeMap
     expanded?: boolean
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
-    id: string
+    id?: string
     label: string
     onToggle?: (expanded: boolean) => void
     size?: 
@@ -104,7 +104,7 @@ exports[`Autosuggest 1`] = `
     disabled?: boolean
     hideSuggestionsOnSelection?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -826,6 +826,7 @@ exports[`Box 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     flexDirection?: 
         | "column"
         | "columnReverse"
@@ -1291,6 +1292,7 @@ exports[`Box 1`] = `
         | "xxxlarge"
         | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
+    part?: string
     pattern?: string
     placeholder?: string
     playsInline?: boolean
@@ -2409,6 +2411,7 @@ exports[`ButtonLink 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -2597,6 +2600,7 @@ exports[`ButtonLink 1`] = `
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
     prefix?: string
     property?: string
@@ -2989,7 +2993,7 @@ exports[`Disclosure 1`] = `
     data?: DataAttributeMap
     expandLabel: string
     expanded?: boolean
-    id: string
+    id?: string
     onToggle?: (expanded: boolean) => void
     size?: 
         | "large"
@@ -7232,6 +7236,7 @@ exports[`Link 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -7415,6 +7420,7 @@ exports[`Link 1`] = `
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
     prefix?: string
     property?: string
@@ -8167,6 +8173,10 @@ exports[`Table 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     label: string
+    ref?: 
+        | (instance: HTMLTableElement | null) => void
+        | RefObject<HTMLTableElement>
+        | string
 },
 }
 `;
@@ -8177,6 +8187,10 @@ exports[`TableBody 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void
+        | RefObject<HTMLTableSectionElement>
+        | string
 },
 }
 `;
@@ -8202,6 +8216,10 @@ exports[`TableCell 1`] = `
         | "wide"
     maxWidth?: number
     minWidth?: number
+    ref?: 
+        | (instance: HTMLTableCellElement | null) => void
+        | RefObject<HTMLTableCellElement>
+        | string
     width?: 
         | "auto"
         | "content"
@@ -8217,6 +8235,10 @@ exports[`TableFooter 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void
+        | RefObject<HTMLTableSectionElement>
+        | string
 },
 }
 `;
@@ -8227,6 +8249,10 @@ exports[`TableHeader 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void
+        | RefObject<HTMLTableSectionElement>
+        | string
 },
 }
 `;
@@ -8252,6 +8278,10 @@ exports[`TableHeaderCell 1`] = `
         | "wide"
     maxWidth?: number
     minWidth?: number
+    ref?: 
+        | (instance: HTMLTableCellElement | null) => void
+        | RefObject<HTMLTableCellElement>
+        | string
     width?: 
         | "auto"
         | "content"
@@ -8267,6 +8297,10 @@ exports[`TableRow 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableRowElement | null) => void
+        | RefObject<HTMLTableRowElement>
+        | string
 },
 }
 `;
@@ -8563,7 +8597,7 @@ exports[`TextDropdown 1`] = `
   exportType: component,
   props: {
     data?: DataAttributeMap
-    id: string
+    id?: string
     label: string
     onBlur?: () => void
     onChange: (value: Value) => void
@@ -8591,7 +8625,7 @@ exports[`TextField 1`] = `
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     inputMode?: 
         | "decimal"
         | "email"
@@ -8860,6 +8894,7 @@ exports[`TextLink 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     hitArea?: 
         | "large"
@@ -9050,6 +9085,7 @@ exports[`TextLink 1`] = `
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
     prefix?: string
     property?: string

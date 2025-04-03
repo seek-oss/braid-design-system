@@ -1,8 +1,9 @@
 import source from '@braid-design-system/source.macro';
-import docsTheme from 'braid-src/lib/themes/docs';
 import Code from 'site/App/Code/Code';
 import { ThemedExample } from 'site/App/ThemeSetting';
 import type { ComponentDocs } from 'site/types';
+
+import docsTheme from 'braid-src/lib/themes/docs';
 
 import {
   Text,

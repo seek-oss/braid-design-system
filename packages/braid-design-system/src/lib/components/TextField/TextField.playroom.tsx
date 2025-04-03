@@ -1,7 +1,6 @@
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
-import { useFallbackId } from '../../playroom/utils';
 import { validTabIndexes } from '../private/validateTabIndex';
 
 import {
@@ -18,7 +17,6 @@ type PlayroomTextFieldProps = StateProp &
   };
 
 export const TextField = ({
-  id,
   stateName,
   value,
   onChange,
@@ -26,7 +24,6 @@ export const TextField = ({
   tabIndex,
   ...restProps
 }: PlayroomTextFieldProps) => {
-  const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(
     stateName,
     value,
@@ -45,7 +42,6 @@ export const TextField = ({
 
   return (
     <BraidTextField
-      id={id ?? fallbackId}
       value={state}
       onChange={handleChange}
       onClear={handleOnClear}

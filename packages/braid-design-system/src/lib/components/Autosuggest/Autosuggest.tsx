@@ -14,6 +14,7 @@ import {
   useCallback,
   useEffect,
   forwardRef,
+  useId,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 
@@ -277,8 +278,9 @@ type HighlightOptions = 'matching' | 'remaining';
 
 export type AutosuggestBaseProps<Value> = Omit<
   FieldBaseProps,
-  'value' | 'autoComplete' | 'prefix'
+  'value' | 'autoComplete' | 'prefix' | 'id'
 > & {
+  id?: FieldBaseProps['id'];
   value: AutosuggestValue<Value>;
   suggestions:
     | Suggestions<Value>
@@ -376,6 +378,9 @@ export const Autosuggest = forwardRef(function <Value>(
       );
     }
   }
+
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
 
   // We need a ref regardless so we can imperatively
   // focus the field when clicking the clear button
@@ -546,7 +551,7 @@ export const Autosuggest = forwardRef(function <Value>(
 
   const highlightedItem =
     typeof highlightedIndex === 'number'
-      ? document.getElementById(getItemId(id, highlightedIndex))
+      ? document.getElementById(getItemId(resolvedId, highlightedIndex))
       : null;
 
   highlightedItem?.scrollIntoView({ block: 'nearest' });
@@ -662,7 +667,7 @@ export const Autosuggest = forwardRef(function <Value>(
   };
 
   const a11y = createAccessibilityProps({
-    id,
+    id: resolvedId,
     isOpen,
     highlightedIndex,
   });
@@ -739,13 +744,13 @@ export const Autosuggest = forwardRef(function <Value>(
           <Field
             {...restProps}
             componentName="Autosuggest"
-            id={id}
+            id={resolvedId}
             value={value.text}
             prefix={undefined}
             secondaryIcon={
               onClear ? (
                 <ClearField
-                  id={`${id}-clearfield`}
+                  id={`${resolvedId}-clearfield`}
                   hide={!clearable}
                   onClear={onClear}
                   label={clearLabel}
