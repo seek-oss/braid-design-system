@@ -105,6 +105,7 @@ const docs: ComponentDocs = {
       code: `
         <TextDropdown
           data={{ testid: 'text-dropdown-1' }}
+          // => data-testid="text-dropdown-1"
         >
           ...
         </TextDropdown>
