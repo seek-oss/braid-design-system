@@ -1,7 +1,6 @@
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
-import { useFallbackId } from '../../playroom/utils';
 import { validTabIndexes } from '../private/validateTabIndex';
 
 import {
@@ -10,10 +9,9 @@ import {
 } from './CheckboxStandalone';
 
 type PlayroomCheckboxStandaloneProps = StateProp &
-  Optional<CheckboxStandaloneProps, 'id' | 'checked' | 'onChange'>;
+  Optional<CheckboxStandaloneProps, 'checked' | 'onChange'>;
 
 export const CheckboxStandalone = ({
-  id,
   stateName,
   checked,
   onChange,
@@ -21,7 +19,6 @@ export const CheckboxStandalone = ({
   'aria-label': ariaLabel,
   ...restProps
 }: PlayroomCheckboxStandaloneProps) => {
-  const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(
     stateName,
     checked,
@@ -31,7 +28,6 @@ export const CheckboxStandalone = ({
 
   return (
     <BraidCheckboxStandalone
-      id={id ?? fallbackId}
       checked={state}
       onChange={handleChange}
       aria-label={ariaLabel ?? ''}

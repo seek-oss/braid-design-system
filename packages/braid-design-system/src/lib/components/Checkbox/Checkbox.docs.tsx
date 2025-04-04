@@ -19,13 +19,12 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['CheckboxStandalone'],
-  Example: ({ id, setDefaultState, getState, toggleState }) =>
+  Example: ({ setDefaultState, getState, toggleState }) =>
     source(
       <>
         {setDefaultState('checked', true)}
 
         <Checkbox
-          id={id}
           checked={getState('checked')}
           onChange={() => toggleState('checked')}
           label="Label"
@@ -69,11 +68,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Checkbox
-              id={`${id}_1`}
               onChange={setState('checkbox')}
               checked={getState('checkbox')}
               label="Label"
@@ -81,7 +79,6 @@ const docs: ComponentDocs = {
               message="Critical message"
             />
             <Checkbox
-              id={`${id}_2`}
               onChange={setState('checkbox2')}
               checked={getState('checkbox2')}
               label="Label"
@@ -100,10 +97,9 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Checkbox
-            id={id}
             checked={getState('checked')}
             onChange={() => toggleState('checked')}
             label="Label"
@@ -120,18 +116,16 @@ const docs: ComponentDocs = {
           <Strong>standard</Strong> or <Strong>small.</Strong>
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Stack space="medium">
             <Checkbox
-              id={`${id}_standard`}
               label="Standard"
               checked={getState('standard')}
               onChange={() => toggleState('standard')}
               size="standard"
             />
             <Checkbox
-              id={`${id}_small`}
               label="Small"
               checked={getState('small')}
               onChange={() => toggleState('small')}
@@ -148,18 +142,16 @@ const docs: ComponentDocs = {
           to the <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, toggleState }) =>
+      Example: ({ toggleState }) =>
         source(
           <Stack space="medium">
             <Checkbox
-              id={`${id}_unchecked`}
               disabled={true}
               checked={false}
               onChange={() => toggleState('unchecked')}
               label="Unchecked"
             />
             <Checkbox
-              id={`${id}_checked`}
               disabled={true}
               checked={true}
               onChange={() => toggleState('checked')}
@@ -176,10 +168,9 @@ const docs: ComponentDocs = {
           the field label using the <Strong>badge</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Checkbox
-            id={id}
             checked={getState('checked')}
             onChange={() => toggleState('checked')}
             label="Label"
@@ -200,13 +191,12 @@ const docs: ComponentDocs = {
           state.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, toggleState }) =>
+      Example: ({ setDefaultState, getState, toggleState }) =>
         source(
           <>
             {setDefaultState('checked', true)}
 
             <Checkbox
-              id={id}
               checked={getState('checked')}
               onChange={() => toggleState('checked')}
               label="Label"
@@ -243,11 +233,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState, toggleState }) =>
+      Example: ({ getState, setState, toggleState }) =>
         source(
           <Stack space="large">
             <Checkbox
-              id={id}
               label="Select all"
               checked={[getState('one'), getState('two'), getState('three')]}
               onChange={({ currentTarget: { checked } }) => {
@@ -259,19 +248,16 @@ const docs: ComponentDocs = {
             <Divider />
             <Stack space="medium">
               <Checkbox
-                id={`${id}_1`}
                 label="One"
                 checked={getState('one')}
                 onChange={() => toggleState('one')}
               />
               <Checkbox
-                id={`${id}_2`}
                 label="Two"
                 checked={getState('two')}
                 onChange={() => toggleState('two')}
               />
               <Checkbox
-                id={`${id}_3`}
                 label="Three"
                 checked={getState('three')}
                 onChange={() => toggleState('three')}
@@ -311,13 +297,12 @@ const docs: ComponentDocs = {
           </Alert>
         </>
       ),
-      Example: ({ id, setDefaultState, getState, toggleState }) =>
+      Example: ({ setDefaultState, getState, toggleState }) =>
         source(
           <>
             {setDefaultState('checked', true)}
 
             <CheckboxStandalone
-              id={id}
               checked={getState('checked')}
               onChange={() => toggleState('checked')}
               aria-label="Standalone checkbox example"
