@@ -17,6 +17,9 @@ const resolveFromBraid = (p) => require.resolve(path.join(braidSrc, p));
 
 export default {
   outputPath: './dist/playroom',
+  ai: {
+    examples: [{name: "", code: "", description:""}]
+  },
   components: require.resolve('./src/playroom.components.ts'),
   snippets: resolveFromBraid('entries/playroom/snippets.ts'),
   themes: resolveFromBraid('lib/themes/index.ts'),
