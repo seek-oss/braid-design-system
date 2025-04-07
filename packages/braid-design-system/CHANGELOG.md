@@ -1,5 +1,32 @@
 # braid-design-system
 
+## 33.7.0
+
+### Minor Changes
+
+- Change `id` prop from required to optional, allowing simplified usage ([#1743](https://github.com/seek-oss/braid-design-system/pull/1743))
+
+  **EXAMPLE USAGE:**
+
+  ```diff
+  - <AccordionItem id="item-1" ... />
+  + <AccordionItem ... />
+  ```
+
+- Add `ref` support to table components ([#1744](https://github.com/seek-oss/braid-design-system/pull/1744))
+
+### Patch Changes
+
+- **Autosuggest**: Fix layout issue causing minor content overflow in certain scenarios ([#1746](https://github.com/seek-oss/braid-design-system/pull/1746))
+
+- **Text, Heading**: Support long, unbroken text content when using the `maxLines` prop ([#1739](https://github.com/seek-oss/braid-design-system/pull/1739))
+
+- **TooltipRenderer**: Support long, unbroken text content ([#1739](https://github.com/seek-oss/braid-design-system/pull/1739))
+
+- **Button, ButtonIcon, ButtonLink**: Ensure hit area remains consistent size ([#1742](https://github.com/seek-oss/braid-design-system/pull/1742))
+
+  Fixes an issue where clicking the edge of buttons would trigger the active animation but not the click event
+
 ## 33.6.0
 
 ### Minor Changes

@@ -4761,5 +4761,61 @@
         "summary": "Add new icons to support rich text editors and formatting.\n\n```tsx\n<IconBold />\n<IconItalic />\n<IconTitle />\n<IconRedo />\n<IconUndo />\n```"
       }
     ]
+  },
+  {
+    "version": "33.7.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Fix layout issue causing minor content overflow in certain scenarios"
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Autosuggest",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Disclosure",
+          "TextDropdown",
+          "TextField"
+        ],
+        "summary": "Change `id` prop from required to optional, allowing simplified usage\n\n**EXAMPLE USAGE:**\n\n```diff\n- <AccordionItem id=\"item-1\" ... />\n+ <AccordionItem ... />\n```"
+      },
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading**: Support long, unbroken text content when using the `maxLines` prop"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer**: Support long, unbroken text content"
+      },
+      {
+        "updated": [
+          "Table",
+          "TableBody",
+          "TableCell",
+          "TableFooter",
+          "TableHeader",
+          "TableHeaderCell",
+          "TableRow"
+        ],
+        "summary": "Add `ref` support to table components"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonIcon",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonIcon, ButtonLink**: Ensure hit area remains consistent size\n\nFixes an issue where clicking the edge of buttons would trigger the active animation but not the click event"
+      }
+    ]
   }
 ]
