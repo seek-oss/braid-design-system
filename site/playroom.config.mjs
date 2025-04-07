@@ -261,6 +261,36 @@ export default {
       `,
         description: 'A basic table with correct component nesting',
       },
+      {
+        name: 'Basic tabs component',
+        code: `
+<TabsProvider>
+  <Stack space="medium">
+    <Tabs label="Test tabs">
+      <Tab>The first tab</Tab>
+      <Tab>The second tab</Tab>
+      <Tab>The third tab</Tab>
+      <Tab badge={<Badge tone="positive">New</Badge>}>The fourth tab</Tab>
+    </Tabs>
+    <TabPanels>
+      <TabPanel>
+        <Placeholder height={200} label="Panel 1" />
+      </TabPanel>
+      <TabPanel>
+        <Placeholder height={200} label="Panel 2" />
+      </TabPanel>
+      <TabPanel>
+        <Placeholder height={200} label="Panel 3" />
+      </TabPanel>
+      <TabPanel>
+        <Placeholder height={200} label="Panel 4" />
+      </TabPanel>
+    </TabPanels>
+  </Stack>
+</TabsProvider>
+      `,
+        description: 'A basic tabs component with correct component nesting',
+      },
       //       {
       //         name: '',
       //         code: `
