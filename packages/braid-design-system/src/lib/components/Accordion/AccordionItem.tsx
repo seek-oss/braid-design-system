@@ -49,7 +49,7 @@ export interface AccordionItemBaseProps {
   weight?: AccordionContextValue['weight'];
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
-  badge?: ReactElement<BadgeProps>;
+  badge?: ReactElement<BadgeProps> | null;
 }
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;

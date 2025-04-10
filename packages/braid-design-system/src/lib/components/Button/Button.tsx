@@ -55,7 +55,7 @@ export interface ButtonProps extends ButtonStyleProps {
   id?: NativeButtonProps['id'];
   onClick?: NativeButtonProps['onClick'];
   type?: 'button' | 'submit' | 'reset';
-  icon?: ReactElement<UseIconProps>;
+  icon?: ReactElement<UseIconProps> | null;
   iconPosition?: 'leading' | 'trailing';
   children?: ReactNode;
   onKeyUp?: NativeButtonProps['onKeyUp'];
