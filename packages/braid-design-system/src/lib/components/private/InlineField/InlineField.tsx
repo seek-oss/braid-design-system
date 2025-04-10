@@ -31,7 +31,7 @@ interface InlineFieldBaseProps {
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   children?: ReactNode;
   description?: ReactNode;
-  badge?: ReactElement<BadgeProps>;
+  badge?: ReactElement<BadgeProps> | null;
 }
 
 export type InlineFieldProps = Omit<
