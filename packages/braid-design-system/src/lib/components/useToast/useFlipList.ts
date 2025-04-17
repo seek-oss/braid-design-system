@@ -3,17 +3,20 @@ import { useMemo, useCallback } from 'react';
 import { vars } from '../../../entries/css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
+import * as styles from './Toast.css';
+
 const px = (v: string | number) => `${v}px`;
 
 const animationTimeout = 200;
 
-const entranceTransition = 'all 0.2s ease';
+const entranceTransition =
+  'opacity 0.2s ease, transform 0.2s ease, height 0.2s ease';
 const exitTransition = 'opacity 0.2s ease, height 0.2s ease';
 
 const visibleStackedToasts = 3;
 
 interface Transform {
-  property: 'opacity' | 'transform' | 'scale' | 'height';
+  property: 'opacity' | 'transform' | 'scale' | 'height' | 'className';
   from?: string;
   to?: string;
 }
@@ -31,8 +34,15 @@ const animate = (
   }, animationTimeout);
 
   transforms.forEach(({ property, from = '' }) => {
-    element.style.setProperty(property, from);
+    if (property === 'className') {
+      if (from) {
+        element.classList.add(from);
+      }
+    } else {
+      element.style.setProperty(property, from);
+    }
   });
+
   element.style.setProperty('transition', '');
 
   const transitionEndHandler = (ev: TransitionEvent) => {
@@ -57,8 +67,17 @@ const animate = (
     window.requestAnimationFrame(() => {
       element.style.setProperty('transition', transition);
 
-      transforms.forEach(({ property, to = '' }) => {
-        element.style.setProperty(property, to);
+      transforms.forEach(({ property, from = '', to = '' }) => {
+        if (property === 'className') {
+          if (from) {
+            element.classList.remove(from);
+          }
+          if (to) {
+            element.classList.add(to);
+          }
+        } else {
+          element.style.setProperty(property, to);
+        }
       });
     });
   });
@@ -118,6 +137,11 @@ export const useFlipList = (expanded: boolean) => {
                 from: opacity,
                 to: position < visibleStackedToasts || expanded ? '1' : '0',
               },
+              {
+                property: 'className',
+                from: expanded ? styles.collapsed : undefined,
+                to: expanded ? undefined : styles.collapsed,
+              },
             ],
           });
         } else if (toastStates.get(toastKey) !== 'entered') {
@@ -138,6 +162,7 @@ export const useFlipList = (expanded: boolean) => {
             ],
           });
         } else {
+          // Animation for existing toasts that are becoming the first
           animations.push({
             element,
             transition: entranceTransition,
@@ -150,6 +175,11 @@ export const useFlipList = (expanded: boolean) => {
               {
                 property: 'transform',
                 from: transform,
+              },
+              {
+                property: 'className',
+                from: expanded ? styles.collapsed : undefined,
+                to: undefined,
               },
             ],
           });
