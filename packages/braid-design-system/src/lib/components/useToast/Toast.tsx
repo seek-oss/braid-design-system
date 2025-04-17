@@ -174,41 +174,43 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
           className={styles.toast}
           {...buildDataAttributes({ data, validateRestProps: restProps })}
         >
-          <Columns space="none">
-            {tone !== 'neutral' || (tone === 'neutral' && icon) ? (
+          <Box transition="fast" className={styles.collapsedToastContent}>
+            <Columns space="none">
+              {tone !== 'neutral' || (tone === 'neutral' && icon) ? (
+                <Column width="content">
+                  <Box paddingRight="small">
+                    <ToastIcon tone={tone} icon={icon} />
+                  </Box>
+                </Column>
+              ) : null}
+              <Column>{content}</Column>
               <Column width="content">
-                <Box paddingRight="small">
-                  <ToastIcon tone={tone} icon={icon} />
+                <Box
+                  width="touchable"
+                  display="flex"
+                  justifyContent="flexEnd"
+                  alignItems="center"
+                  className={lineHeightContainer.standard}
+                  aria-hidden
+                >
+                  <ButtonIcon
+                    icon={<IconClear tone="secondary" />}
+                    variant="transparent"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      remove();
+                    }}
+                    label={closeLabel}
+                    data={
+                      process.env.NODE_ENV !== 'production'
+                        ? { testid: 'clearToast' }
+                        : {}
+                    }
+                  />
                 </Box>
               </Column>
-            ) : null}
-            <Column>{content}</Column>
-            <Column width="content">
-              <Box
-                width="touchable"
-                display="flex"
-                justifyContent="flexEnd"
-                alignItems="center"
-                className={lineHeightContainer.standard}
-                aria-hidden
-              >
-                <ButtonIcon
-                  icon={<IconClear tone="secondary" />}
-                  variant="transparent"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    remove();
-                  }}
-                  label={closeLabel}
-                  data={
-                    process.env.NODE_ENV !== 'production'
-                      ? { testid: 'clearToast' }
-                      : {}
-                  }
-                />
-              </Box>
-            </Column>
-          </Columns>
+            </Columns>
+          </Box>
           <Overlay visible borderRadius={borderRadius} boxShadow="large" />
         </Box>
       </Box>
