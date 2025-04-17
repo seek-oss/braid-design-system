@@ -8,3 +8,13 @@ export const toast = style({
     },
   },
 });
+
+export const collapsed = style({});
+
+export const collapsedToastContent = style({
+  selectors: {
+    [`${collapsed} &`]: {
+      opacity: 0,
+    },
+  },
+});
