@@ -18,10 +18,9 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Default layout',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <DrawerContent
-            id={id}
             title="Default test"
             onClose={() => {}}
             width="medium"
@@ -33,10 +32,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Layout with a description',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <DrawerContent
-            id={id}
             title="Description test"
             description={
               <Placeholder height="auto" width="100%" label="Description" />

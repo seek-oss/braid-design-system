@@ -10,10 +10,9 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Default layout',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <DialogContent
-            id={id}
             title="Default test"
             onClose={() => {}}
             scrollLock={false}
@@ -24,10 +23,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Illustration layout',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <DialogContent
-            id={id}
             title="Illustration test"
             illustration={
               <Placeholder
@@ -52,10 +50,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Layout with a description',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <DialogContent
-            id={id}
             title="Description test"
             description={
               <Placeholder height="auto" width="100%" label="Description" />

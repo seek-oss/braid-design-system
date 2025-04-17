@@ -1,5 +1,7 @@
 import assert from 'assert';
 
+import { useId } from 'react';
+
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
   type ModalContentProps,
@@ -18,12 +20,17 @@ const modalStyle = {
 } as const;
 
 export interface DrawerProps
-  extends Omit<ModalProps, keyof typeof modalStyle | 'width' | 'position'> {
+  extends Omit<
+    ModalProps,
+    keyof typeof modalStyle | 'id' | 'width' | 'position'
+  > {
+  id?: ModalProps['id'];
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
 }
 
 export const Drawer = ({
+  id,
   width = defaultWidth,
   position = defaultPosition,
   ...restProps
@@ -34,21 +41,32 @@ export const Drawer = ({
     `Invalid position: ${position}`,
   );
 
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
   return (
-    <Modal width={width} position={position} {...restProps} {...modalStyle} />
+    <Modal
+      id={resolvedId}
+      width={width}
+      position={position}
+      {...restProps}
+      {...modalStyle}
+    />
   );
 };
 
 interface DrawerContentProps
   extends Omit<
     ModalContentProps,
-    keyof typeof modalStyle | 'width' | 'position'
+    keyof typeof modalStyle | 'id' | 'width' | 'position'
   > {
+  id?: ModalContentProps['id'];
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
 }
 
 export const DrawerContent = ({
+  id,
   width = defaultWidth,
   position = defaultPosition,
   ...restProps
@@ -59,8 +77,12 @@ export const DrawerContent = ({
     `Invalid position: ${position}`,
   );
 
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
   return (
     <ModalContent
+      id={resolvedId}
       width={width}
       position={position}
       {...restProps}
