@@ -27,7 +27,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   );
 
   useEffect(() => {
-    if (isMobile() && toasts.length <= 1) {
+    if (toasts.length <= 1) {
       setExpanded(false);
     }
   }, [toasts.length]);
