@@ -6,6 +6,7 @@
 updated:
   - AccordionItem
   - Autosuggest
+  - ButtonIcon
   - Checkbox
   - CheckboxStandalone
   - Dialog

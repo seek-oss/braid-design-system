@@ -8,14 +8,13 @@ interface Props {
   inputRef: Ref<HTMLInputElement>;
   onClear?: () => void;
   hide?: boolean;
-  id: string;
+  id?: string;
   label?: string;
 }
 export const ClearField = ({
   hide = false,
   onClear,
   label = 'Clear',
-  id,
   inputRef,
 }: Props) => {
   const clearHandler = useCallback(
@@ -46,7 +45,6 @@ export const ClearField = ({
       opacity={hide ? 0 : undefined}
     >
       <FieldButtonIcon
-        id={`${id}-clear`}
         label={label}
         icon={<IconClear />}
         onMouseDown={clearHandler}

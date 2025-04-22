@@ -6,7 +6,6 @@ import {
   Fragment,
   useCallback,
   useRef,
-  useId,
 } from 'react';
 
 import { Box } from '../Box/Box';
@@ -76,9 +75,6 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
       [visible, onVisibilityToggle, inputRef],
     );
 
-    // Todo - remove once `ButtonIcon` id prop is optional
-    const visibilityToggleId = useId();
-
     return (
       <Field
         {...restProps}
@@ -93,7 +89,6 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         secondaryIcon={
           disabled ? null : (
             <FieldButtonIcon
-              id={visibilityToggleId}
               label={visibilityToggleLabel}
               onMouseDown={visibilityHandler}
               icon={<IconVisibility hidden={visible} />}
