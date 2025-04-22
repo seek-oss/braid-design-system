@@ -47,3 +47,4 @@ export { Toggle } from '../components/Toggle/Toggle.playroom';
 export { TooltipRenderer } from '../components/TooltipRenderer/TooltipRenderer.playroom';
 
 export { Placeholder } from '../components/private/Placeholder/Placeholder';
+export { ScrollContainer } from '../components/private/ScrollContainer/ScrollContainer';
