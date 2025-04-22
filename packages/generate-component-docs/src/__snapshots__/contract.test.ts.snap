@@ -3070,7 +3070,7 @@ exports[`Dropdown 1`] = `
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -7856,7 +7856,7 @@ exports[`PasswordField 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -9259,7 +9259,7 @@ exports[`Textarea 1`] = `
     disabled?: boolean
     grow?: boolean
     highlightRanges?: { start: number; end?: number | undefined; }[]
-    id: string
+    id?: string
     label: ReactNode
     lineLimit?: number
     lines?: number

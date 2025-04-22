@@ -2,7 +2,7 @@ import assert from 'assert';
 
 import clsx from 'clsx';
 import dedent from 'dedent';
-import { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
+import { type ReactNode, type AllHTMLAttributes, Fragment, useId } from 'react';
 
 import { textStyles } from '../../../css/typography';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
@@ -44,7 +44,7 @@ export type FieldLabelVariant =
     };
 
 export interface FieldBaseProps {
-  id: NonNullable<FormElementProps['id']>;
+  id?: FormElementProps['id'];
   value?: FormElementProps['value'];
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
@@ -127,6 +127,12 @@ export const Field = ({
     'Prefix must be a string',
   );
 
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
+  const messageId = useId();
+  const descriptionId = useId();
+
   if (process.env.NODE_ENV !== 'production') {
     if (
       'label' in restProps &&
@@ -149,8 +155,6 @@ export const Field = ({
     validateTabIndex(tabIndex);
   }
 
-  const messageId = `${id}-message`;
-  const descriptionId = description ? `${id}-description` : undefined;
   const fieldBackground: BoxProps['background'] = disabled
     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
     : { lightMode: 'surface' };
@@ -187,7 +191,7 @@ export const Field = ({
     <Stack space="small">
       {hasVisualLabelOrDescription ? (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={resolvedId}
           label={'label' in restProps ? restProps.label : undefined}
           disabled={disabled}
           secondaryLabel={
@@ -197,7 +201,7 @@ export const Field = ({
             'tertiaryLabel' in restProps ? restProps.tertiaryLabel : undefined
           }
           description={description}
-          descriptionId={descriptionId}
+          descriptionId={description ? descriptionId : undefined}
         />
       ) : null}
 
@@ -212,7 +216,7 @@ export const Field = ({
           {children(
             overlays,
             {
-              id,
+              id: resolvedId,
               name,
               background: fieldBackground,
               width: 'full',
@@ -223,7 +227,7 @@ export const Field = ({
               'aria-describedby': mergeIds(
                 ariaDescribedBy,
                 message || secondaryMessage ? messageId : undefined,
-                descriptionId,
+                description ? descriptionId : undefined,
               ),
               'aria-required': required,
               ...('aria-label' in restProps
@@ -284,7 +288,7 @@ export const Field = ({
             prefix ? (
               <Box
                 component="label"
-                htmlFor={id}
+                htmlFor={resolvedId}
                 display="flex"
                 alignItems="center"
                 paddingLeft={icon ? undefined : fieldPadding}

@@ -9,6 +9,9 @@ updated:
   - Checkbox
   - CheckboxStandalone
   - Disclosure
+  - Dropdown
+  - PasswordField
+  - Textarea
   - TextDropdown
   - TextField
 ---
