@@ -7,11 +7,10 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Toggle
             label="Label"
-            id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
           />,
@@ -19,11 +18,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Small',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Toggle
             label="Label"
-            id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
             size="small"
@@ -32,12 +30,11 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Toggle Position: "leading" | "trailing"',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Toggle
             togglePosition="trailing"
             label="Trailing toggle"
-            id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
           />,
@@ -45,12 +42,11 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Toggle Alignment: "left" | "justify" | "right"',
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Toggle
             align="right"
             label="Right aligned"
-            id={id}
             on={getState('toggle')}
             onChange={() => toggleState('toggle')}
           />,

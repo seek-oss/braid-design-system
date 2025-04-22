@@ -19,9 +19,9 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Align left',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs">
                 <Tab>The first tab</Tab>
@@ -45,9 +45,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Align center',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs" align="center">
                 <Tab>The first tab</Tab>
@@ -67,9 +67,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Full width divider',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs" divider="full">
                 <Tab>The first tab</Tab>
@@ -89,9 +89,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'No divider',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Tabs label="Test tabs" divider="none">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
@@ -113,9 +113,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a badge',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs">
                 <Tab>The first tab</Tab>
@@ -141,9 +141,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With an icon',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs">
                 <Tab icon={<IconHome />}>The first tab</Tab>
@@ -167,9 +167,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Size small',
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs" size="small">
                 <Tab>First Tab</Tab>
