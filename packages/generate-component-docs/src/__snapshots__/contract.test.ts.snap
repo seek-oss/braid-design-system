@@ -2969,7 +2969,7 @@ exports[`Dialog 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     illustration?: ReactNodeNoStrings
     onClose: (openState: false) => false | void
     open: boolean
@@ -3039,7 +3039,7 @@ exports[`Drawer 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     onClose: (openState: false) => false | void
     open: boolean
     position?: 
@@ -8345,7 +8345,7 @@ exports[`TabsProvider 1`] = `
   exportType: component,
   props: {
     children: ReactNode
-    id: string
+    id?: string
     onChange?: (selectedIndex: number, selectedItem?: string | undefined) => void
     selectedItem?: string
 },
@@ -9354,7 +9354,7 @@ exports[`Toggle 1`] = `
         | "right"
     bleedY?: boolean
     data?: DataAttributeMap
-    id: string
+    id?: string
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
