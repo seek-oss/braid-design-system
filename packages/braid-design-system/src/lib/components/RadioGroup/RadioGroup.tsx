@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import type { FormEvent, ReactElement } from 'react';
+import { useId, type FormEvent, type ReactElement } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { type RadioItemProps, RadioItem } from '../RadioGroup/RadioItem';
@@ -36,8 +36,8 @@ const stackSpaceForSize = {
 } as Record<NonNullable<RadioGroupProps['size']>, StackProps['space']>;
 
 const RadioGroup = ({
-  children,
   id,
+  children,
   value,
   name,
   onChange,
@@ -56,9 +56,10 @@ const RadioGroup = ({
     'All child nodes within a RadioGroup must be a RadioItem: https://seek-oss.github.io/braid-design-system/components/RadioGroup',
   );
 
+  const fallbackName = useId();
+
   return (
     <FieldGroup
-      id={id}
       {...props}
       componentName="RadioGroup"
       disabled={disabled}
@@ -71,7 +72,7 @@ const RadioGroup = ({
           value={{
             id,
             value,
-            name: name || id,
+            name: name || fallbackName,
             onChange,
             disabled,
             tone,

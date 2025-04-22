@@ -1,7 +1,13 @@
 import assert from 'assert';
 
 import { isMobile } from 'is-mobile';
-import { type ChangeEvent, type FocusEvent, createRef, Fragment } from 'react';
+import {
+  type ChangeEvent,
+  type FocusEvent,
+  createRef,
+  Fragment,
+  useId,
+} from 'react';
 
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
@@ -135,7 +141,6 @@ const makeChangeHandler =
   };
 
 const MonthPicker = ({
-  id,
   value,
   onChange,
   onBlur,
@@ -160,8 +165,8 @@ const MonthPicker = ({
 
   const monthRef = createRef<HTMLSelectElement>();
   const yearRef = createRef<HTMLSelectElement>();
-  const monthId = `${id}-month`;
-  const yearId = `${id}-year`;
+  const monthId = useId();
+  const yearId = useId();
 
   const blurHandler = onBlur
     ? (event: FocusEvent<HTMLSelectElement>) => {
@@ -195,7 +200,6 @@ const MonthPicker = ({
 
   const nativeField = (
     <Field
-      id={id}
       tone={tone}
       disabled={disabled}
       value={customValueToString(currentValue)}
@@ -229,7 +233,6 @@ const MonthPicker = ({
 
   const customFieldGroup = (
     <FieldGroup
-      id={id}
       tone={tone}
       disabled={disabled}
       tabIndex={tabIndex}

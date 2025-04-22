@@ -8,10 +8,9 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -26,10 +25,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -46,10 +44,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -65,10 +62,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With item-level descriptions',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -95,10 +91,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a Badge',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -121,10 +116,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Small',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -140,13 +134,12 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Toggling nested content',
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('radio', '2')}
 
             <RadioGroup
-              id={id}
               value={getState('radio')}
               onChange={({ currentTarget: { value } }) =>
                 setState('radio', value)
