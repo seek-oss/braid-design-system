@@ -3070,7 +3070,6 @@ exports[`Dropdown 1`] = `
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
-    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -7856,7 +7855,6 @@ exports[`PasswordField 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
