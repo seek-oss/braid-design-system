@@ -1,27 +1,15 @@
 import type { Optional } from 'utility-types';
 
-import { useFallbackId } from '../../playroom/utils';
-
 import {
   type FieldLabelProps,
   FieldLabel as BraidFieldLabel,
 } from './FieldLabel';
 
-type PlayroomFieldLabelProps = Optional<FieldLabelProps, 'id' | 'htmlFor'>;
+type PlayroomFieldLabelProps = Optional<FieldLabelProps, 'htmlFor'>;
 
 export const FieldLabel = ({
-  id,
   htmlFor,
   ...restProps
-}: PlayroomFieldLabelProps) => {
-  const fallbackId = useFallbackId();
-  const fallbackFor = useFallbackId();
-
-  return (
-    <BraidFieldLabel
-      id={id ?? fallbackId}
-      htmlFor={htmlFor ?? fallbackFor}
-      {...restProps}
-    />
-  );
-};
+}: PlayroomFieldLabelProps) => (
+  <BraidFieldLabel htmlFor={htmlFor ?? false} {...restProps} />
+);
