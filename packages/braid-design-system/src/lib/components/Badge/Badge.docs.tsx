@@ -162,7 +162,6 @@ const docs: ComponentDocs = {
                         </Column>
                         <Column width="content">
                           <ButtonIcon
-                            id="icon"
                             variant="transparent"
                             size="small"
                             label="Options"

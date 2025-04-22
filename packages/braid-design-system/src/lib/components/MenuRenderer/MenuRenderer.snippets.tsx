@@ -65,12 +65,7 @@ export const snippets: Snippets = [
       <MenuRenderer
         offsetSpace="small"
         trigger={(triggerProps) => (
-          <ButtonIcon
-            icon={<IconEdit />}
-            id="buttonicon-menurenderer"
-            label="Menu"
-            {...triggerProps}
-          />
+          <ButtonIcon icon={<IconEdit />} label="Menu" {...triggerProps} />
         )}
       >
         <MenuItem onClick={() => {}}>Button</MenuItem>
@@ -86,12 +81,7 @@ export const snippets: Snippets = [
         offsetSpace="xxsmall"
         trigger={(triggerProps) => (
           <Box userSelect="none" cursor="pointer" {...triggerProps}>
-            <ButtonIcon
-              size="small"
-              icon={<IconEdit />}
-              id="small-buttonicon-menurenderer"
-              label="Menu"
-            />
+            <ButtonIcon size="small" icon={<IconEdit />} label="Menu" />
           </Box>
         )}
       >

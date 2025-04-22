@@ -2163,7 +2163,7 @@ exports[`ButtonIcon 1`] = `
     bleed?: boolean
     data?: DataAttributeMap
     icon: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
-    id: string
+    id?: string
     label: string
     onClick?: MouseEventHandler<HTMLButtonElement>
     onKeyDown?: KeyboardEventHandler<HTMLButtonElement>
