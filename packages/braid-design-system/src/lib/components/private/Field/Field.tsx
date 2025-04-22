@@ -44,7 +44,7 @@ export type FieldLabelVariant =
     };
 
 export interface FieldBaseProps {
-  id?: NonNullable<FormElementProps['id']>;
+  id?: FormElementProps['id'];
   value?: FormElementProps['value'];
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
