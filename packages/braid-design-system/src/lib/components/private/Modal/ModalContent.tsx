@@ -5,6 +5,7 @@ import {
   useRef,
   forwardRef,
   Fragment,
+  useId,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 
@@ -27,7 +28,7 @@ import { normalizeKey } from '../normalizeKey';
 import * as styles from './Modal.css';
 
 export interface ModalContentProps {
-  id: string;
+  id?: string;
   title: string;
   children: ReactNode;
   onClose: () => void;
@@ -99,12 +100,15 @@ export const ModalContent = ({
   data,
   ...restProps
 }: ModalContentProps) => {
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
   const defaultHeadingRef = useRef<HTMLElement>(null);
   const headingRef = headingRefProp || defaultHeadingRef;
 
-  const descriptionId = `${id}_desc`;
+  const descriptionId = `${resolvedId}_desc`;
 
   const handleEscape = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -125,7 +129,7 @@ export const ModalContent = ({
       aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
       aria-describedby={description ? descriptionId : undefined}
       aria-modal="true"
-      id={id}
+      id={resolvedId}
       onKeyDown={handleEscape}
       position="relative"
       width="full"
@@ -223,7 +227,7 @@ export const ModalContent = ({
               className={[styles.closeIconOffset, styles.pointerEventsAll]}
             >
               <ButtonIcon
-                id={`${id}-close`}
+                id={`${resolvedId}-close`}
                 label={closeLabel}
                 icon={<IconClear tone="secondary" />}
                 variant="transparent"
