@@ -93,7 +93,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         secondaryIcon={
           disabled ? null : (
             <FieldButtonIcon
-              id={`${visibilityToggleId}-toggle`}
+              id={visibilityToggleId}
               label={visibilityToggleLabel}
               onMouseDown={visibilityHandler}
               icon={<IconVisibility hidden={visible} />}

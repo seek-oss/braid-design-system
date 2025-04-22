@@ -108,7 +108,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         secondaryIcon={
           onClear ? (
             <ClearField
-              id={`${clearFieldButtonId}-clear`}
+              id={clearFieldButtonId}
               hide={!clearable}
               onClear={onClear}
               label={clearLabel}
