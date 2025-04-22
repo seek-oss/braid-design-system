@@ -1,7 +1,6 @@
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
-import { useFallbackId } from '../../playroom/utils';
 
 import {
   type TextareaBaseProps,
@@ -14,13 +13,11 @@ type PlayroomTextareaProps = StateProp &
   TextareaLabelProps;
 
 export const Textarea = ({
-  id,
   stateName,
   value,
   onChange,
   ...restProps
 }: PlayroomTextareaProps) => {
-  const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(
     stateName,
     value,
@@ -30,7 +27,6 @@ export const Textarea = ({
 
   return (
     <BraidTextarea
-      id={id ?? fallbackId}
       value={state}
       onChange={handleChange}
       autoComplete="off"
