@@ -130,6 +130,9 @@ export const Field = ({
   const fallbackId = useId();
   const resolvedId = id || fallbackId;
 
+  const messageId = useId();
+  const descriptionId = useId();
+
   if (process.env.NODE_ENV !== 'production') {
     if (
       'label' in restProps &&
@@ -152,8 +155,6 @@ export const Field = ({
     validateTabIndex(tabIndex);
   }
 
-  const messageId = `${resolvedId}-message`;
-  const descriptionId = description ? `${resolvedId}-description` : undefined;
   const fieldBackground: BoxProps['background'] = disabled
     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
     : { lightMode: 'surface' };
@@ -200,7 +201,7 @@ export const Field = ({
             'tertiaryLabel' in restProps ? restProps.tertiaryLabel : undefined
           }
           description={description}
-          descriptionId={descriptionId}
+          descriptionId={description ? descriptionId : undefined}
         />
       ) : null}
 
@@ -226,7 +227,7 @@ export const Field = ({
               'aria-describedby': mergeIds(
                 ariaDescribedBy,
                 message || secondaryMessage ? messageId : undefined,
-                descriptionId,
+                description ? descriptionId : undefined,
               ),
               'aria-required': required,
               ...('aria-label' in restProps

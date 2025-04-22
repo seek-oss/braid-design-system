@@ -77,7 +77,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
     );
 
     // Todo - remove once `ButtonIcon` id prop is optional
-    const id = useId();
+    const visibilityToggleId = useId();
 
     return (
       <Field
@@ -93,7 +93,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         secondaryIcon={
           disabled ? null : (
             <FieldButtonIcon
-              id={`${id}-toggle`}
+              id={`${visibilityToggleId}-toggle`}
               label={visibilityToggleLabel}
               onMouseDown={visibilityHandler}
               icon={<IconVisibility hidden={visible} />}

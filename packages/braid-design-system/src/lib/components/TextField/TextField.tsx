@@ -90,7 +90,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     );
 
     // Todo - remove once `ButtonIcon` id prop is optional
-    const id = useId();
+    const clearFieldButtonId = useId();
 
     return (
       <Field
@@ -108,7 +108,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         secondaryIcon={
           onClear ? (
             <ClearField
-              id={`${id}-clear`}
+              id={`${clearFieldButtonId}-clear`}
               hide={!clearable}
               onClear={onClear}
               label={clearLabel}
