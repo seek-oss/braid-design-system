@@ -1,5 +1,3 @@
-import { useId } from 'react';
-
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
   type ModalContentProps,
@@ -15,42 +13,22 @@ const modalStyle = {
 } as const;
 
 export interface DialogProps
-  extends Omit<ModalProps, keyof typeof modalStyle | 'id' | 'width'> {
-  id?: ModalProps['id'];
+  extends Omit<ModalProps, keyof typeof modalStyle | 'width'> {
   width?: ModalProps['width'];
 }
 
-export const Dialog = ({
-  id,
-  width = defaultWidth,
-  ...restProps
-}: DialogProps) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
-
-  return <Modal id={resolvedId} width={width} {...restProps} {...modalStyle} />;
-};
+export const Dialog = ({ width = defaultWidth, ...restProps }: DialogProps) => (
+  <Modal width={width} {...restProps} {...modalStyle} />
+);
 
 interface DialogContentProps
-  extends Omit<ModalContentProps, keyof typeof modalStyle | 'id' | 'width'> {
-  id?: ModalContentProps['id'];
+  extends Omit<ModalContentProps, keyof typeof modalStyle | 'width'> {
   width?: ModalContentProps['width'];
 }
 
 export const DialogContent = ({
-  id,
   width = defaultWidth,
   ...restProps
-}: DialogContentProps) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
-
-  return (
-    <ModalContent
-      id={resolvedId}
-      width={width}
-      {...restProps}
-      {...modalStyle}
-    />
-  );
-};
+}: DialogContentProps) => (
+  <ModalContent width={width} {...restProps} {...modalStyle} />
+);
