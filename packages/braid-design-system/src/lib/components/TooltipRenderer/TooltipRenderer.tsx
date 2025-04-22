@@ -8,6 +8,7 @@ import {
   useEffect,
   useContext,
   useRef,
+  useId,
 } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
@@ -107,7 +108,7 @@ const validPlacements = ['top', 'bottom'] as const;
 type Placement = (typeof validPlacements)[number];
 
 export interface TooltipRendererProps {
-  id: string;
+  id?: string;
   tooltip: ReactNodeNoStrings;
   placement?: Placement;
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
@@ -135,6 +136,9 @@ export const TooltipRenderer = ({
   placement = 'top',
   children,
 }: TooltipRendererProps) => {
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
   assert(
     validPlacements.includes(placement),
     `The 'placement' prop must be one of the following: ${validPlacements.join(
@@ -308,14 +312,14 @@ export const TooltipRenderer = ({
         triggerProps: {
           tabIndex: 0,
           ref: setTriggerRef,
-          'aria-describedby': id,
+          'aria-describedby': resolvedId,
         },
       })}
 
       {triggerRef && (
         <BraidPortal>
           <div
-            id={id}
+            id={resolvedId}
             role="tooltip"
             hidden={!visible ? true : undefined}
             className={atoms({

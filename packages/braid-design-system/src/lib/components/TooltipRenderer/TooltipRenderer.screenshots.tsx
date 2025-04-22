@@ -11,14 +11,10 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Top placement',
-      Example: ({ id }) => (
+      Example: () => (
         <StaticTooltipProvider>
           <Box style={{ paddingTop: 100 }}>
-            <TooltipRenderer
-              id={id}
-              placement="top"
-              tooltip={<Text>Tooltip</Text>}
-            >
+            <TooltipRenderer placement="top" tooltip={<Text>Tooltip</Text>}>
               {({ triggerProps }) => (
                 <Box style={triggerStyles} {...triggerProps} />
               )}
@@ -29,14 +25,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Bottom placement',
-      Example: ({ id }) => (
+      Example: () => (
         <StaticTooltipProvider>
           <Box style={{ paddingBottom: 100 }}>
-            <TooltipRenderer
-              id={id}
-              placement="bottom"
-              tooltip={<Text>Tooltip</Text>}
-            >
+            <TooltipRenderer placement="bottom" tooltip={<Text>Tooltip</Text>}>
               {({ triggerProps }) => (
                 <Box style={triggerStyles} {...triggerProps} />
               )}
@@ -47,11 +39,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Multiple lines of text',
-      Example: ({ id }) => (
+      Example: () => (
         <StaticTooltipProvider>
           <Box style={{ paddingBottom: 200 }}>
             <TooltipRenderer
-              id={id}
               placement="bottom"
               tooltip={
                 <Text>
@@ -70,11 +61,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Handle long-unbroken text',
-      Example: ({ id }) => (
+      Example: () => (
         <StaticTooltipProvider>
           <Box style={{ paddingBottom: 200 }}>
             <TooltipRenderer
-              id={id}
               placement="bottom"
               tooltip={<Text>ReallyLongUnbrokenWordShouldBeHandled</Text>}
             >
@@ -88,11 +78,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Text style overrides',
-      Example: ({ id }) => (
+      Example: () => (
         <StaticTooltipProvider>
           <Box style={{ paddingBottom: 200 }}>
             <TooltipRenderer
-              id={id}
               placement="bottom"
               tooltip={
                 <Stack space="medium">

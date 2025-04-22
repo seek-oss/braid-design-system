@@ -9377,7 +9377,7 @@ exports[`TooltipRenderer 1`] = `
   exportType: component,
   props: {
     children: (renderProps: { triggerProps: TriggerProps; }) => ReactNode
-    id: string
+    id?: string
     placement?: 
         | "bottom"
         | "top"
