@@ -184,7 +184,6 @@ function SuggestionItem({
             height="touchable"
           >
             <ButtonIcon
-              id={`${id}-clear`}
               icon={<IconClear tone="secondary" />}
               tabIndex={-1}
               size="small"
