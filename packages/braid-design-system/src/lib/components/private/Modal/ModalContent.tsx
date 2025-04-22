@@ -104,6 +104,7 @@ export const ModalContent = ({
   const resolvedId = id || fallbackId;
 
   const descriptionId = useId();
+  const closeButtonId = useId();
 
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
@@ -227,7 +228,7 @@ export const ModalContent = ({
               className={[styles.closeIconOffset, styles.pointerEventsAll]}
             >
               <ButtonIcon
-                id={`${resolvedId}-close`}
+                id={closeButtonId}
                 label={closeLabel}
                 icon={<IconClear tone="secondary" />}
                 variant="transparent"
