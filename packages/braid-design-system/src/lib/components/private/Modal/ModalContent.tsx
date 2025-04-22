@@ -103,12 +103,12 @@ export const ModalContent = ({
   const fallbackId = useId();
   const resolvedId = id || fallbackId;
 
+  const descriptionId = useId();
+
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
   const defaultHeadingRef = useRef<HTMLElement>(null);
   const headingRef = headingRefProp || defaultHeadingRef;
-
-  const descriptionId = `${resolvedId}_desc`;
 
   const handleEscape = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
