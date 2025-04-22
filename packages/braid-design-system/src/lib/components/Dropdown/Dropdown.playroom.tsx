@@ -10,11 +10,10 @@ import {
 } from './Dropdown';
 
 type PlayroomDropdownProps = StateProp &
-  Optional<DropdownBaseProps, 'id' | 'value' | 'onChange'> &
+  Optional<DropdownBaseProps, 'value' | 'onChange'> &
   DropdownLabelProps;
 
 export const Dropdown = ({
-  id,
   stateName,
   value,
   onChange,

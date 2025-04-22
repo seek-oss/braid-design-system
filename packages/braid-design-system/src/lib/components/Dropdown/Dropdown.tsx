@@ -1,4 +1,4 @@
-import { type AllHTMLAttributes, Fragment, forwardRef, useId } from 'react';
+import { type AllHTMLAttributes, Fragment, forwardRef } from 'react';
 
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -17,9 +17,8 @@ type ValidDropdownChildren = AllHTMLAttributes<
 type SelectProps = AllHTMLAttributes<HTMLSelectElement>;
 export type DropdownBaseProps = Omit<
   FieldBaseProps,
-  'id' | 'value' | 'secondaryMessage' | 'prefix'
+  'value' | 'secondaryMessage' | 'prefix'
 > & {
-  id?: FieldBaseProps['id'];
   children: ValidDropdownChildren[] | ValidDropdownChildren;
   value: NonNullable<SelectProps['value']>;
   onChange: NonNullable<SelectProps['onChange']>;
@@ -33,7 +32,6 @@ export type DropdownProps = DropdownBaseProps & DropdownLabelProps;
 export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   (props, ref) => {
     const {
-      id,
       children,
       value,
       onChange,
@@ -44,13 +42,9 @@ export const Dropdown = forwardRef<HTMLSelectElement, DropdownProps>(
       ...restProps
     } = props;
 
-    const fallbackId = useId();
-    const resolvedId = id || fallbackId;
-
     return (
       <Field
         {...restProps}
-        id={resolvedId}
         componentName="Dropdown"
         disabled={disabled}
         prefix={undefined}
