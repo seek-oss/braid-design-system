@@ -22,7 +22,7 @@ import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
 export interface ToggleProps {
-  id?: NonNullable<HTMLInputProps['id']>;
+  id?: HTMLInputProps['id'];
   label: ReactNode;
   on: boolean;
   onChange: ChangeHandler;
