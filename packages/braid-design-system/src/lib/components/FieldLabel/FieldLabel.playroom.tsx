@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import type { Optional } from 'utility-types';
 
 import {
@@ -6,14 +5,11 @@ import {
   FieldLabel as BraidFieldLabel,
 } from './FieldLabel';
 
-type PlayroomFieldLabelProps = Optional<FieldLabelProps, 'id' | 'htmlFor'>;
+type PlayroomFieldLabelProps = Optional<FieldLabelProps, 'htmlFor'>;
 
 export const FieldLabel = ({
-  id,
   htmlFor,
   ...restProps
-}: PlayroomFieldLabelProps) => {
-  const fallbackFor = useId();
-
-  return <BraidFieldLabel htmlFor={htmlFor ?? fallbackFor} {...restProps} />;
-};
+}: PlayroomFieldLabelProps) => (
+  <BraidFieldLabel htmlFor={htmlFor ?? false} {...restProps} />
+);
