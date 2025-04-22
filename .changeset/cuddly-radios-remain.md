@@ -18,6 +18,7 @@ updated:
   - TextDropdown
   - TextField
   - Toggle
+  - TooltipRenderer
 ---
 
 Change `id` prop from required to optional, allowing simplified usage

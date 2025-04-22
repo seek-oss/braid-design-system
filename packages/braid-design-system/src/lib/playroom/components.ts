@@ -44,6 +44,5 @@ export { TextDropdown } from '../components/TextDropdown/TextDropdown.playroom';
 export { TextField } from '../components/TextField/TextField.playroom';
 export { Tiles } from '../components/Tiles/Tiles.playroom';
 export { Toggle } from '../components/Toggle/Toggle.playroom';
-export { TooltipRenderer } from '../components/TooltipRenderer/TooltipRenderer.playroom';
 
 export { Placeholder } from '../components/private/Placeholder/Placeholder';
