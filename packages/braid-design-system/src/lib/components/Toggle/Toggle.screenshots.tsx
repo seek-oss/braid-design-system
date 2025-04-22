@@ -9,26 +9,20 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Toggle off',
-      Example: ({ id, handler }) => (
-        <Toggle on={false} label="Toggled off" id={id} onChange={handler} />
+      Example: ({ handler }) => (
+        <Toggle on={false} label="Toggled off" onChange={handler} />
       ),
     },
     {
       label: 'Toggle on',
-      Example: ({ id, handler }) => (
-        <Toggle on={true} label="Toggled on" id={id} onChange={handler} />
+      Example: ({ handler }) => (
+        <Toggle on={true} label="Toggled on" onChange={handler} />
       ),
     },
     {
       label: 'Small size',
-      Example: ({ id, handler }) => (
-        <Toggle
-          on={true}
-          size="small"
-          label="Small"
-          id={id}
-          onChange={handler}
-        />
+      Example: ({ handler }) => (
+        <Toggle on={true} size="small" label="Small" onChange={handler} />
       ),
     },
     {
@@ -36,12 +30,11 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="right"
           label="Aligned right"
-          id={id}
           onChange={handler}
         />
       ),
@@ -51,12 +44,11 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="justify"
           label="Justified"
-          id={id}
           onChange={handler}
         />
       ),
@@ -66,13 +58,12 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Box display="flex">
           <Toggle
             on={true}
             align="justify"
             label="Justified"
-            id={id}
             onChange={handler}
           />
         </Box>
@@ -83,13 +74,12 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="left"
           togglePosition="leading"
           label="Aligned left, leading toggle"
-          id={id}
           onChange={handler}
         />
       ),
@@ -99,13 +89,12 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="left"
           togglePosition="trailing"
           label="Aligned left, trailing toggle"
-          id={id}
           onChange={handler}
         />
       ),
@@ -115,13 +104,12 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="justify"
           togglePosition="leading"
           label="Justified, leading toggle"
-          id={id}
           onChange={handler}
         />
       ),
@@ -131,13 +119,12 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="justify"
           togglePosition="trailing"
           label="Justified, trailing toggle"
-          id={id}
           onChange={handler}
         />
       ),
@@ -147,13 +134,12 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="right"
           togglePosition="leading"
           label="Right aligned, leading toggle"
-          id={id}
           onChange={handler}
         />
       ),
@@ -163,13 +149,12 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           align="right"
           togglePosition="trailing"
           label="Right aligned, trailing toggle"
-          id={id}
           onChange={handler}
         />
       ),
@@ -179,11 +164,10 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Toggle
           on={true}
           label="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."
-          id={id}
           onChange={handler}
         />
       ),
@@ -193,9 +177,9 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Inline space="xsmall">
-          <Toggle on={true} label="Toggle" id={id} onChange={handler} />
+          <Toggle on={true} label="Toggle" onChange={handler} />
           <Text>Inline text</Text>
         </Inline>
       ),
@@ -205,35 +189,22 @@ export const screenshots: ComponentScreenshot = {
       Container: ({ children }) => (
         <div style={{ maxWidth: '300px' }}>{children}</div>
       ),
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Inline space="xsmall">
-          <Toggle
-            on={true}
-            label="Toggle"
-            id={id}
-            onChange={handler}
-            size="small"
-          />
+          <Toggle on={true} label="Toggle" onChange={handler} size="small" />
           <Text size="small">Inline text</Text>
         </Inline>
       ),
     },
     {
       label: 'Virtual touch target',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
-          <Toggle
-            on={true}
-            size="small"
-            label="Small"
-            id={`${id}-1`}
-            onChange={handler}
-          />
+          <Toggle on={true} size="small" label="Small" onChange={handler} />
           <Toggle
             on={true}
             size="standard"
             label="Standard"
-            id={`${id}-2`}
             onChange={handler}
           />
         </Inline>
@@ -241,12 +212,12 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Contrast',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Box maxWidth="xsmall">
           <BackgroundContrastTest>
             <Tiles space="small" columns={2}>
-              <Toggle on={true} label="Label" id={id} onChange={handler} />
-              <Toggle on={false} label="Label" id={id} onChange={handler} />
+              <Toggle on={true} label="Label" onChange={handler} />
+              <Toggle on={false} label="Label" onChange={handler} />
             </Tiles>
           </BackgroundContrastTest>
         </Box>
@@ -254,12 +225,11 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Test: should be left aligned in a centered Stack',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="large" align="center">
           <Toggle
             on={true}
             label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
-            id={id}
             onChange={handler}
           />
         </Stack>

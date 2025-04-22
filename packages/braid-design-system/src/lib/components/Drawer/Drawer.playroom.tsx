@@ -1,7 +1,6 @@
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
-import { useFallbackId } from '../../playroom/utils';
 
 import {
   type DrawerProps,
@@ -10,16 +9,14 @@ import {
 } from './Drawer';
 
 type PlayroomDrawerProps = StateProp &
-  Optional<DrawerProps, 'id' | 'onClose' | 'open'>;
+  Optional<DrawerProps, 'onClose' | 'open'>;
 
 export const Drawer = ({
-  id,
   stateName,
   open,
   onClose,
   ...restProps
 }: PlayroomDrawerProps) => {
-  const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(
     stateName,
     open,
@@ -31,12 +28,7 @@ export const Drawer = ({
     <AllowCloseContext.Provider
       value={onClose !== undefined || stateName !== undefined}
     >
-      <BraidDrawer
-        id={id ?? fallbackId}
-        {...restProps}
-        open={state}
-        onClose={handleChange}
-      />
+      <BraidDrawer {...restProps} open={state} onClose={handleChange} />
     </AllowCloseContext.Provider>
   );
 };

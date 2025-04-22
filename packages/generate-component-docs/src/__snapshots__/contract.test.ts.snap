@@ -2969,7 +2969,7 @@ exports[`Dialog 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     illustration?: ReactNodeNoStrings
     onClose: (openState: false) => false | void
     open: boolean
@@ -3039,7 +3039,7 @@ exports[`Drawer 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     onClose: (openState: false) => false | void
     open: boolean
     position?: 
@@ -3070,7 +3070,7 @@ exports[`Dropdown 1`] = `
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -7856,7 +7856,7 @@ exports[`PasswordField 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -8345,7 +8345,7 @@ exports[`TabsProvider 1`] = `
   exportType: component,
   props: {
     children: ReactNode
-    id: string
+    id?: string
     onChange?: (selectedIndex: number, selectedItem?: string | undefined) => void
     selectedItem?: string
 },
@@ -9259,7 +9259,7 @@ exports[`Textarea 1`] = `
     disabled?: boolean
     grow?: boolean
     highlightRanges?: { start: number; end?: number | undefined; }[]
-    id: string
+    id?: string
     label: ReactNode
     lineLimit?: number
     lines?: number
@@ -9354,7 +9354,7 @@ exports[`Toggle 1`] = `
         | "right"
     bleedY?: boolean
     data?: DataAttributeMap
-    id: string
+    id?: string
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
@@ -9377,7 +9377,7 @@ exports[`TooltipRenderer 1`] = `
   exportType: component,
   props: {
     children: (renderProps: { triggerProps: TriggerProps; }) => ReactNode
-    id: string
+    id?: string
     placement?: 
         | "bottom"
         | "top"

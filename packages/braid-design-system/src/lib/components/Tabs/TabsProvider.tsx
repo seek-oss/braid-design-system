@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, useReducer } from 'react';
+import { type ReactNode, createContext, useId, useReducer } from 'react';
 
 import { getNextIndex } from '../private/getNextIndex';
 
@@ -38,7 +38,7 @@ export const TabsContext = createContext<TabsContextValues | null>(null);
 
 export interface TabsProviderProps {
   children: ReactNode;
-  id: string;
+  id?: string;
   selectedItem?: string;
   onChange?: (selectedIndex: number, selectedItem?: string) => void;
 }
@@ -49,6 +49,9 @@ export const TabsProvider = ({
   id,
   selectedItem,
 }: TabsProviderProps) => {
+  const fallbackId = useId();
+  const resolvedId = id || fallbackId;
+
   const [tabsState, dispatch] = useReducer(
     (state: State, action: Action): State => {
       switch (action.type) {
@@ -151,7 +154,7 @@ export const TabsProvider = ({
             : tabsState.selectedIndex,
         selectedItem,
         dispatch,
-        a11y: tabA11y({ uniqueId: id }),
+        a11y: tabA11y({ uniqueId: resolvedId }),
         onChange,
       }}
     >

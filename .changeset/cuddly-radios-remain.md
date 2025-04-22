@@ -8,9 +8,17 @@ updated:
   - Autosuggest
   - Checkbox
   - CheckboxStandalone
+  - Dialog
   - Disclosure
+  - Drawer
+  - Dropdown
+  - PasswordField
+  - TabsProvider
+  - Textarea
   - TextDropdown
   - TextField
+  - Toggle
+  - TooltipRenderer
 ---
 
 Change `id` prop from required to optional, allowing simplified usage
