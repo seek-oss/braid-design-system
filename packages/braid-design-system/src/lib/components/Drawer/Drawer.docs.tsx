@@ -41,10 +41,9 @@ const drawerPreviewPropsFromSourceValue = (element: DrawerElement) => ({
 const docs: ComponentDocs = {
   category: 'Content',
   examplebackground: false,
-  Example: ({ id }) => {
+  Example: () => {
     const { code, value } = source<DrawerElement>(
       <Drawer
-        id={id}
         title="Title"
         description={<Text tone="secondary">Optional description</Text>}
         width="small"
@@ -121,10 +120,9 @@ const docs: ComponentDocs = {
         </>
       ),
       background: false,
-      Example: ({ id }) => {
+      Example: () => {
         const { code, value } = source<DrawerElement>(
           <Drawer
-            id={id}
             title="Example Title"
             description={
               <Text tone="secondary">
@@ -185,7 +183,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>There are a variety of standard widths to choose from.</Text>
       ),
-      Example: ({ id, setState, getState, toggleState }) =>
+      Example: ({ setState, getState, toggleState }) =>
         source(
           <>
             <Inline space="small">
@@ -216,7 +214,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Drawer
-              id={id}
               title={`Width: ${getState('width')}`}
               open={getState('open')}
               width={getState('width')}
@@ -236,7 +233,7 @@ const docs: ComponentDocs = {
           prop.
         </Text>
       ),
-      Example: ({ id, setState, getState, toggleState }) =>
+      Example: ({ setState, getState, toggleState }) =>
         source(
           <>
             <Inline space="small">
@@ -259,7 +256,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Drawer
-              id={id}
               title={`Position: ${getState('position')}`}
               open={getState('open')}
               position={getState('position')}
@@ -286,7 +282,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <>
             <Inline space="small">
@@ -294,7 +290,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Drawer
-              id={id}
               title="Drawer Title"
               open={getState('drawer')}
               onClose={() => toggleState('drawer')}
@@ -312,7 +307,7 @@ const docs: ComponentDocs = {
           function should return <Strong>false</Strong>.
         </Text>
       ),
-      Example: ({ id, getState, toggleState, setState, setDefaultState }) =>
+      Example: ({ getState, toggleState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('valid', false)}
@@ -325,7 +320,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Drawer
-              id={id}
               title="Drawer Title"
               open={getState('drawer')}
               onClose={() => {
@@ -362,7 +356,7 @@ const docs: ComponentDocs = {
           Drawers is not encouraged.
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <>
             <Inline space="small">
@@ -372,7 +366,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Drawer
-              id={`${id}_3`}
               title="Third Drawer"
               width="small"
               open={getState('thirdDrawer')}
@@ -381,7 +374,6 @@ const docs: ComponentDocs = {
               <Placeholder height={100} label="Drawer Content" />
             </Drawer>
             <Drawer
-              id={`${id}_1`}
               title="First Drawer"
               width="large"
               open={getState('firstDrawer')}
@@ -393,7 +385,6 @@ const docs: ComponentDocs = {
               </Button>
             </Drawer>
             <Drawer
-              id={`${id}_2`}
               title="Second Drawer"
               width="medium"
               open={getState('secondDrawer')}

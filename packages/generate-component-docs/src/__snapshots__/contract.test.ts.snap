@@ -2969,7 +2969,7 @@ exports[`Dialog 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     illustration?: ReactNodeNoStrings
     onClose: (openState: false) => false | void
     open: boolean
@@ -3039,7 +3039,7 @@ exports[`Drawer 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     onClose: (openState: false) => false | void
     open: boolean
     position?: 

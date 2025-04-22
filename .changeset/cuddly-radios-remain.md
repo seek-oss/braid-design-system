@@ -8,7 +8,9 @@ updated:
   - Autosuggest
   - Checkbox
   - CheckboxStandalone
+  - Dialog
   - Disclosure
+  - Drawer
   - Dropdown
   - PasswordField
   - Textarea
