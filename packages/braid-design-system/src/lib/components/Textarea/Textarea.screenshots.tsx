@@ -14,16 +14,15 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea',
       Container,
-      Example: ({ id, handler }) => (
-        <Textarea id={id} value="Text value" onChange={handler} label="Label" />
+      Example: ({ handler }) => (
+        <Textarea value="Text value" onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Textarea with neutral message',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Textarea
-          id={id}
           value=""
           onChange={handler}
           label="Label"
@@ -34,9 +33,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea with secondary label',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Textarea
-          id={id}
           value=""
           onChange={handler}
           label="Label"
@@ -47,9 +45,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea with tertiary label',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Textarea
-          id={id}
           value=""
           onChange={handler}
           label="Label"
@@ -61,18 +58,17 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea with no visual label',
       Container,
-      Example: ({ id, handler }) => (
-        <Textarea id={id} value="" onChange={handler} aria-label="Label" />
+      Example: ({ handler }) => (
+        <Textarea value="" onChange={handler} aria-label="Label" />
       ),
     },
     {
       label: 'Textarea with a description and no visual label',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Textarea
           aria-label="Label"
           description="Longer description of this field"
-          id={id}
           value=""
           onChange={handler}
         />
@@ -81,9 +77,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea with error',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Textarea
-          id={id}
           value=""
           onChange={handler}
           label="Label"
@@ -95,9 +90,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea with positive message',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Textarea
-          id={id}
           value=""
           onChange={handler}
           label="Label"
@@ -109,9 +103,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea with caution message',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Textarea
-          id={id}
           value=""
           onChange={handler}
           label="Label"
@@ -123,25 +116,22 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea disabled',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="gutter">
           <Textarea
             label="With no value or placeholder"
-            id={`${id}_1`}
             value=""
             disabled={true}
             onChange={handler}
           />
           <Textarea
             label="With value and no placeholder"
-            id={`${id}_2`}
             value="Text value"
             disabled={true}
             onChange={handler}
           />
           <Textarea
             label="With no value and a placeholder"
-            id={`${id}_3`}
             value=""
             disabled={true}
             placeholder="Placeholder text"
@@ -149,7 +139,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Textarea
             label="With value and a placeholder"
-            id={`${id}_4`}
             value="Text value"
             disabled={true}
             placeholder="Placeholder text"
@@ -157,7 +146,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Textarea
             label="With critical tone"
-            id={`${id}_5`}
             value=""
             disabled={true}
             tone="critical"
@@ -165,7 +153,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Textarea
             label="With critical tone and message"
-            id={`${id}_6`}
             value=""
             disabled={true}
             tone="critical"
@@ -178,12 +165,11 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea grow field with typing, limited to 6 lines',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState('');
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -195,12 +181,11 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea with character limit and no value',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState('');
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -212,14 +197,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea nearing character limit',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The text is nearing the 50 character limit',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -231,14 +215,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea exceeding character limit',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           '12345678910 The character limit is 9 so the highlighting should start from "10"',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -250,14 +233,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea highlighting a range',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text highlighting a range',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -270,14 +252,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Textarea highlighting a range in caution',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text highlighting a range',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -291,14 +272,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Within character limit with highlight range and no tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text within the limit',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -313,14 +293,13 @@ export const screenshots: ComponentScreenshot = {
       label:
         'Within character limit with highlight range and explicit critical tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text within the limit',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -335,14 +314,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Within character limit with highlight range and caution tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text within the limit',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -357,14 +335,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Exceeding character limit with highlight range and no tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text exceeding the specified 50 character limit',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -379,14 +356,13 @@ export const screenshots: ComponentScreenshot = {
       label:
         'Exceeding character limit with highlight range and explicit critical tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text exceeding the specified 50 character limit',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -401,14 +377,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Exceeding character limit with highlight range and caution tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(
           'The long piece of text exceeding the specified 50 character limit',
         );
 
         return (
           <Textarea
-            id={id}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
             label="Label"
@@ -423,14 +398,9 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Contrast',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <BackgroundContrastTest>
-          <Textarea
-            label="Label"
-            id={id}
-            onChange={handler}
-            value="Text value"
-          />
+          <Textarea label="Label" onChange={handler} value="Text value" />
         </BackgroundContrastTest>
       ),
     },

@@ -43,7 +43,7 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#x4-2-general-principles-of-landmark-design">
           General Principles of Landmark Design
         </TextLink>{' '}
-        it is neccessary for it to have an <Strong>aria-label</Strong>.
+        it is necessary for it to have an <Strong>aria-label</Strong>.
       </Text>
       <Text tone="promote" id="translate-nav">
         <IconLanguage title="Translation hint" titleId="translate-nav" /> The{' '}

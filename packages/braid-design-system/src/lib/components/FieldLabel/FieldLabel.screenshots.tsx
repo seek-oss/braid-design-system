@@ -18,7 +18,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'with secondary label',
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <FieldLabel
           htmlFor={id}
           label="Label"
@@ -29,7 +29,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'with tertiary label',
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <FieldLabel
           htmlFor={id}
           label="Label"
@@ -40,7 +40,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'with description',
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <FieldLabel
           htmlFor={id}
           label="Label"
@@ -51,7 +51,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'with all slots',
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <FieldLabel
           htmlFor={id}
           label="Label"
@@ -64,7 +64,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'when disabled',
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <FieldLabel
           htmlFor={id}
           label="Label"
@@ -78,7 +78,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'with description and no label',
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <FieldLabel
           htmlFor={id}
           secondaryLabel="Secondary"

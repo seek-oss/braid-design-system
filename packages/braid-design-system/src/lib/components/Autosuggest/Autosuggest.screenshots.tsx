@@ -28,14 +28,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Standard suggestions',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState<Value>({ text: '' });
         const [showRecent, setShowRecent] = useState(true);
 
         return (
           <Autosuggest
             label="I like to eat"
-            id={id}
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
@@ -62,14 +61,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Standard suggestions with automatic selection',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
           <Autosuggest
             automaticSelection
             label="I like to eat"
-            id={id}
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
@@ -83,13 +81,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Grouped suggestions',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
           <Autosuggest
             label="I like to eat"
-            id={id}
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
@@ -110,13 +107,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Standard suggestions with an icon',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
           <Autosuggest
             label="I like to eat"
-            id={id}
             value={value}
             icon={<IconSearch />}
             onChange={setValue}
@@ -131,13 +127,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Critical tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
           <Autosuggest
             label="I like to eat"
-            id={id}
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
@@ -153,13 +148,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Caution tone',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
           <Autosuggest
             label="I like to eat"
-            id={id}
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
@@ -175,11 +169,10 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Autosuggest when disabled',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="gutter">
           <Autosuggest
             label="With no value or placeholder"
-            id={`${id}_1`}
             value={{ text: '' }}
             disabled={true}
             onChange={handler}
@@ -187,7 +180,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Autosuggest
             label="With value and no placeholder"
-            id={`${id}_2`}
             value={{ text: 'Text value' }}
             disabled={true}
             onChange={handler}
@@ -195,7 +187,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Autosuggest
             label="With no value and a placeholder"
-            id={`${id}_3`}
             value={{ text: '' }}
             disabled={true}
             placeholder="Placeholder text"
@@ -204,7 +195,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Autosuggest
             label="With value and a placeholder"
-            id={`${id}_4`}
             value={{ text: 'Text value' }}
             disabled={true}
             placeholder="Placeholder text"
@@ -213,7 +203,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Autosuggest
             label="With critical tone"
-            id={`${id}_5`}
             value={{ text: '' }}
             disabled={true}
             tone="critical"
@@ -222,7 +211,6 @@ export const screenshots: ComponentScreenshot = {
           />
           <Autosuggest
             label="With critical tone and message"
-            id={`${id}_6`}
             value={{ text: '' }}
             disabled={true}
             tone="critical"
@@ -236,13 +224,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Autosuggest with no visual label',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState<Value>({ text: '' });
 
         return (
           <Autosuggest
             aria-label="I like to eat"
-            id={id}
             value={value}
             onChange={setValue}
             onClear={() => setValue({ text: '' })}
@@ -256,11 +243,10 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Contrast',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <BackgroundContrastTest>
           <Autosuggest
             label="I like to eat"
-            id={id}
             value={{ text: '' }}
             onChange={handler}
             suggestions={filterSuggestions(

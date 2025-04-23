@@ -83,7 +83,6 @@ export const IconsBrowse = () => {
     <Stack space="medium">
       <Stack space="large">
         <TextField
-          id="iconSearch"
           aria-label="Search for an icon"
           icon={<IconSearch />}
           placeholder="Search"

@@ -1,4 +1,5 @@
 import source from '@braid-design-system/source.macro';
+import { useId } from 'react';
 import Code from 'site/App/Code/Code';
 import { useThemeSettings } from 'site/App/ThemeSetting';
 import type { ComponentDocs } from 'site/types';
@@ -20,7 +21,8 @@ import Toast, { toastDuration } from './Toast';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, showToast }) => {
+  Example: ({ showToast }) => {
+    const id = useId();
     const { theme } = useThemeSettings();
 
     const { code, value } = source(
@@ -143,7 +145,8 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ id, showToast }) => {
+      Example: ({ showToast }) => {
+        const id = useId();
         const { theme } = useThemeSettings();
 
         const { code } = source(
@@ -258,7 +261,8 @@ const docs: ComponentDocs = {
           a description.
         </Text>
       ),
-      Example: ({ id, showToast }) => {
+      Example: ({ showToast }) => {
+        const id = useId();
         const { theme } = useThemeSettings();
 
         const { code } = source(
@@ -317,7 +321,8 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ id, showToast }) => {
+      Example: ({ showToast }) => {
+        const id = useId();
         const { theme } = useThemeSettings();
 
         /* eslint-disable no-alert */
@@ -373,7 +378,8 @@ const docs: ComponentDocs = {
           better accommodate all the content.
         </Text>
       ),
-      Example: ({ id, showToast }) => {
+      Example: ({ showToast }) => {
+        const id = useId();
         const { theme } = useThemeSettings();
 
         /* eslint-disable no-alert */
@@ -441,7 +447,8 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, showToast }) => {
+      Example: ({ showToast }) => {
+        const id = useId();
         const { theme } = useThemeSettings();
 
         const { code } = source(

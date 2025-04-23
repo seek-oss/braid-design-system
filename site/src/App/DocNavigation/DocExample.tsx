@@ -11,7 +11,6 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
 );
 
 interface DocExampleProps {
-  id: string;
   Example?: ComponentExample['Example'];
   code?: ComponentExample['code'];
   Container?: ComponentExample['Container'];
@@ -20,7 +19,6 @@ interface DocExampleProps {
   playroom?: ComponentExample['playroom'];
 }
 export const DocExample = ({
-  id,
   Example,
   code,
   Container = DefaultContainer,
@@ -28,7 +26,7 @@ export const DocExample = ({
   showCodeByDefault = false,
   playroom,
 }: DocExampleProps) => {
-  const { code: codeAsString, value } = useSourceFromExample(id, {
+  const { code: codeAsString, value } = useSourceFromExample({
     Example,
     code,
   });

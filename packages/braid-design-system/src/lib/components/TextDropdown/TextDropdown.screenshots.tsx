@@ -14,14 +14,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Default',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState('Developer');
 
         return (
           <Text>
             <TextDropdown
               label="Job Title"
-              id={id}
               onChange={setValue}
               value={value}
               options={['Developer', 'Designer', 'Product Manager']}
@@ -33,14 +32,13 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'With identifying values',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState(2000);
 
         return (
           <Text>
             <TextDropdown
               label="Location"
-              id={id}
               onChange={setValue}
               value={value}
               options={[
@@ -56,7 +54,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Within strong text',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState('Relevance');
 
         return (
@@ -65,7 +63,6 @@ export const screenshots: ComponentScreenshot = {
             <Strong>
               <TextDropdown
                 label="Sort order"
-                id={id}
                 onChange={setValue}
                 value={value}
                 options={['Relevance', 'Keyword']}
@@ -78,7 +75,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Virtual touch target',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState('Relevance');
 
         return (
@@ -86,7 +83,6 @@ export const screenshots: ComponentScreenshot = {
             Sort by{' '}
             <TextDropdown
               label="Sort order"
-              id={id}
               onChange={setValue}
               value={value}
               options={['Relevance', 'Keyword']}
@@ -98,7 +94,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Within a heading',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState('Sydney');
 
         return (
@@ -106,7 +102,6 @@ export const screenshots: ComponentScreenshot = {
             Jobs in{' '}
             <TextDropdown
               label="Location"
-              id={id}
               onChange={setValue}
               value={value}
               options={['Melbourne', 'Sydney', 'Brisbane']}
@@ -119,14 +114,13 @@ export const screenshots: ComponentScreenshot = {
       label: 'TextDropdown on Brand Background',
       background: 'brand',
       Container,
-      Example: ({ id }) => {
+      Example: () => {
         const [value, setValue] = useState('Designer');
 
         return (
           <Text>
             <TextDropdown
               label="Job Title"
-              id={id}
               onChange={setValue}
               value={value}
               options={['Developer', 'Designer', 'Product Manager']}

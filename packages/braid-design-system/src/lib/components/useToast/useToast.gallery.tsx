@@ -1,4 +1,5 @@
 import source from '@braid-design-system/source.macro';
+import { useId } from 'react';
 import type { GalleryComponent } from 'site/types';
 
 import { Button, IconBookmark, Inline } from '..';
@@ -10,7 +11,8 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'With a positive message',
-      Example: ({ id, handler, showToast }) => {
+      Example: ({ handler, showToast }) => {
+        const id = useId();
         const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
@@ -48,7 +50,8 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, handler, showToast }) => {
+      Example: ({ handler, showToast }) => {
+        const id = useId();
         const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
@@ -86,7 +89,8 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a neutral message',
-      Example: ({ id, handler, showToast }) => {
+      Example: ({ handler, showToast }) => {
+        const id = useId();
         const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
@@ -124,7 +128,8 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a custom icon (neutral tone only)',
-      Example: ({ id, handler, showToast }) => {
+      Example: ({ handler, showToast }) => {
+        const id = useId();
         const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
@@ -164,7 +169,8 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, handler, showToast }) => {
+      Example: ({ handler, showToast }) => {
+        const id = useId();
         const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
@@ -203,7 +209,8 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With an action',
-      Example: ({ id, handler, showToast }) => {
+      Example: ({ handler, showToast }) => {
+        const id = useId();
         const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
@@ -241,7 +248,8 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With an action and description',
-      Example: ({ id, handler, showToast }) => {
+      Example: ({ handler, showToast }) => {
+        const id = useId();
         const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
