@@ -13,14 +13,14 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Standard Field Label',
       Container,
-      Example: ({ id }) => <FieldLabel htmlFor={id} label="Label" />,
+      Example: () => <FieldLabel htmlFor={false} label="Label" />,
     },
     {
       label: 'with secondary label',
       Container,
       Example: () => (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={false}
           label="Label"
           secondaryLabel="Secondary Label"
         />
@@ -31,7 +31,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={false}
           label="Label"
           tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
         />
@@ -42,7 +42,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={false}
           label="Label"
           description="Description with extra information about the field"
         />
@@ -53,7 +53,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={false}
           label="Label"
           secondaryLabel="Secondary"
           tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
@@ -66,7 +66,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={false}
           label="Label"
           disabled={true}
           secondaryLabel="Secondary"
@@ -80,7 +80,7 @@ export const screenshots: ComponentScreenshot = {
       Container,
       Example: () => (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={false}
           secondaryLabel="Secondary"
           tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
           description="Description visible without label or additional white space above"
