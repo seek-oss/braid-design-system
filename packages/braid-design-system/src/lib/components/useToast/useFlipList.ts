@@ -70,9 +70,9 @@ export const useFlipList = () => {
       transition: string;
     }> = [];
 
-    Array.from(refs.entries()).forEach(([id, element]) => {
+    Array.from(refs.entries()).forEach(([toastKey, element]) => {
       if (element) {
-        const prevTop = positions.get(id);
+        const prevTop = positions.get(toastKey);
         const { top, height } = element.getBoundingClientRect();
 
         if (typeof prevTop === 'number' && prevTop !== top) {
@@ -105,9 +105,9 @@ export const useFlipList = () => {
           });
         }
 
-        positions.set(id, element.getBoundingClientRect().top);
+        positions.set(toastKey, element.getBoundingClientRect().top);
       } else {
-        refs.delete(id);
+        refs.delete(toastKey);
       }
     });
 
@@ -117,8 +117,8 @@ export const useFlipList = () => {
   });
 
   const remove = useCallback(
-    (id: string, cb: () => void) => {
-      const element = refs.get(id);
+    (toastKey: string, cb: () => void) => {
+      const element = refs.get(toastKey);
 
       if (element) {
         // Removal animation
@@ -139,8 +139,8 @@ export const useFlipList = () => {
   );
 
   const itemRef = useCallback(
-    (id: string) => (ref: HTMLElement | null) => {
-      refs.set(id, ref);
+    (toastKey: string) => (ref: HTMLElement | null) => {
+      refs.set(toastKey, ref);
     },
     [refs],
   );

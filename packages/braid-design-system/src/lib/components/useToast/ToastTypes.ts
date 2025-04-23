@@ -9,7 +9,9 @@ export interface ToastAction {
 }
 
 export interface InternalToast {
-  id: string;
+  /** Unique for each copy of a toast. Used to handle adding and removing from the DOM. */
+  toastKey: string;
+  /** Used to guarantee that only a single toast with a given key is visible at once. */
   dedupeKey: string;
   vanillaTheme: string;
   tone: 'positive' | 'critical' | 'neutral';

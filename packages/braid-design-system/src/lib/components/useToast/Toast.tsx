@@ -64,12 +64,12 @@ const ToastIcon = ({ tone, icon }: Pick<InternalToast, 'tone' | 'icon'>) => {
 };
 
 interface ToastProps extends InternalToast {
-  onClose: (dedupeKey: string, id: string) => void;
+  onClose: (dedupeKey: string, toastKey: string) => void;
 }
 const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
     {
-      id,
+      toastKey,
       vanillaTheme,
       dedupeKey,
       message,
@@ -86,8 +86,8 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
     ref,
   ) => {
     const remove = useCallback(
-      () => onClose(dedupeKey, id),
-      [onClose, dedupeKey, id],
+      () => onClose(dedupeKey, toastKey),
+      [onClose, dedupeKey, toastKey],
     );
     const { stopTimeout, startTimeout } = useTimeout({
       duration: toastDuration,

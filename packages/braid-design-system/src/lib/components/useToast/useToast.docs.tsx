@@ -45,7 +45,7 @@ const docs: ComponentDocs = {
       value: (
         <Stack space="large" align="center">
           <Toast
-            id={id}
+            toastKey={id}
             dedupeKey={id}
             shouldRemove={false}
             vanillaTheme={theme.vanillaTheme}
@@ -208,7 +208,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              id={`${id}_1`}
+              toastKey={`${id}_1`}
               dedupeKey={`${id}_1`}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}
@@ -217,7 +217,7 @@ const docs: ComponentDocs = {
               tone="positive"
             />
             <Toast
-              id={`${id}_2`}
+              toastKey={`${id}_2`}
               dedupeKey={`${id}_2`}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}
@@ -226,7 +226,7 @@ const docs: ComponentDocs = {
               tone="critical"
             />
             <Toast
-              id={`${id}_3`}
+              toastKey={`${id}_3`}
               dedupeKey={`${id}_3`}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}
@@ -235,7 +235,7 @@ const docs: ComponentDocs = {
               tone="neutral"
             />
             <Toast
-              id={`${id}_4`}
+              toastKey={`${id}_4`}
               dedupeKey={`${id}_4`}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}
@@ -285,7 +285,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              id={id}
+              toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}
@@ -348,7 +348,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              id={id}
+              toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}
@@ -407,7 +407,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              id={id}
+              toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}
@@ -471,7 +471,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              id={id}
+              toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
               vanillaTheme={theme.vanillaTheme}

@@ -35,7 +35,7 @@ export const galleryItems: GalleryComponent = {
           value: (
             <Inline space="gutter" align="center">
               <Toast
-                id={id}
+                toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
                 vanillaTheme={vanillaTheme}
@@ -74,7 +74,7 @@ export const galleryItems: GalleryComponent = {
           value: (
             <Inline space="gutter" align="center">
               <Toast
-                id={id}
+                toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
                 vanillaTheme={vanillaTheme}
@@ -113,7 +113,7 @@ export const galleryItems: GalleryComponent = {
           value: (
             <Inline space="gutter" align="center">
               <Toast
-                id={id}
+                toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
                 vanillaTheme={vanillaTheme}
@@ -153,7 +153,7 @@ export const galleryItems: GalleryComponent = {
           value: (
             <Inline space="gutter" align="center">
               <Toast
-                id={id}
+                toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
                 vanillaTheme={vanillaTheme}
@@ -194,7 +194,7 @@ export const galleryItems: GalleryComponent = {
           code,
           value: (
             <Toast
-              id={id}
+              toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
               vanillaTheme={vanillaTheme}
@@ -233,7 +233,7 @@ export const galleryItems: GalleryComponent = {
           code,
           value: (
             <Toast
-              id={id}
+              toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
               vanillaTheme={vanillaTheme}
@@ -274,7 +274,7 @@ export const galleryItems: GalleryComponent = {
           code,
           value: (
             <Toast
-              id={id}
+              toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
               vanillaTheme={vanillaTheme}

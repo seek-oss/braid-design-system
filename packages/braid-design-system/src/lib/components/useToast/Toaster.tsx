@@ -14,8 +14,8 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const { itemRef, remove } = useFlipList();
 
   const onClose = useCallback(
-    (dedupeKey: string, id: string) => {
-      remove(id, () => {
+    (dedupeKey: string, toastKey: string) => {
+      remove(toastKey, () => {
         removeToast(dedupeKey);
       });
     },
@@ -31,11 +31,11 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
       paddingX="gutter"
       bottom={0}
     >
-      {toasts.map(({ id, ...rest }) => (
-        <Box key={id} paddingBottom="small">
+      {toasts.map(({ toastKey, ...rest }) => (
+        <Box key={toastKey} paddingBottom="small">
           <ToastComponent
-            ref={itemRef(id)}
-            id={id}
+            ref={itemRef(toastKey)}
+            toastKey={toastKey}
             onClose={onClose}
             {...rest}
           />
