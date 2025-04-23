@@ -13,7 +13,9 @@ updated:
   - Disclosure
   - Drawer
   - Dropdown
+  - MonthPicker
   - PasswordField
+  - RadioGroup
   - TabsProvider
   - Textarea
   - TextDropdown

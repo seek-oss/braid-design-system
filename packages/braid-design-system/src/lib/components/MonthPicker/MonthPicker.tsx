@@ -135,7 +135,6 @@ const makeChangeHandler =
   };
 
 const MonthPicker = ({
-  id,
   value,
   onChange,
   onBlur,
@@ -160,8 +159,6 @@ const MonthPicker = ({
 
   const monthRef = createRef<HTMLSelectElement>();
   const yearRef = createRef<HTMLSelectElement>();
-  const monthId = `${id}-month`;
-  const yearId = `${id}-year`;
 
   const blurHandler = onBlur
     ? (event: FocusEvent<HTMLSelectElement>) => {
@@ -195,7 +192,6 @@ const MonthPicker = ({
 
   const nativeField = (
     <Field
-      id={id}
       tone={tone}
       disabled={disabled}
       value={customValueToString(currentValue)}
@@ -229,7 +225,6 @@ const MonthPicker = ({
 
   const customFieldGroup = (
     <FieldGroup
-      id={id}
       tone={tone}
       disabled={disabled}
       tabIndex={tabIndex}
@@ -240,7 +235,6 @@ const MonthPicker = ({
         <Columns space="xsmall">
           <Column>
             <Dropdown
-              id={monthId}
               value={currentValue.month || ''}
               onChange={makeChangeHandler(onChange, value, 'month')}
               onBlur={blurHandler}
@@ -256,7 +250,6 @@ const MonthPicker = ({
           </Column>
           <Column>
             <Dropdown
-              id={yearId}
               value={currentValue.year || ''}
               onChange={makeChangeHandler(onChange, value, 'year')}
               onBlur={blurHandler}

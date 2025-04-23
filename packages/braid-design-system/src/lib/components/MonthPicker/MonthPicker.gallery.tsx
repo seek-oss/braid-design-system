@@ -7,11 +7,10 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
           />,
@@ -19,11 +18,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With additional labels',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             secondaryLabel="optional"
@@ -37,11 +35,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             description="Longer description of this field"
@@ -50,11 +47,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             tone="critical"
@@ -64,11 +60,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a positive message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             tone="positive"
@@ -78,11 +73,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a caution message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             tone="caution"
@@ -92,11 +86,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a neutral message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             tone="neutral"
@@ -106,11 +99,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Disabled field',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             disabled={true}
@@ -119,10 +111,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Custom months and years',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
-            id={id}
             label="Started"
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}

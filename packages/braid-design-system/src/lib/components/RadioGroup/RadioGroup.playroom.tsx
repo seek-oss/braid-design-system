@@ -1,7 +1,6 @@
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
-import { useFallbackId } from '../../playroom/utils';
 import { validTabIndexes } from '../private/validateTabIndex';
 
 import {
@@ -15,7 +14,6 @@ type PlayroomRadioProps = StateProp &
   RadioGroupLabelProps;
 
 export const RadioGroup = ({
-  id,
   stateName,
   value,
   onChange,
@@ -23,13 +21,11 @@ export const RadioGroup = ({
   tabIndex,
   ...restProps
 }: PlayroomRadioProps) => {
-  const fallbackId = useFallbackId();
   const [state, handleChange] = useFallbackState(stateName, value, onChange);
 
   return (
     <BraidRadioGroup
       {...restProps}
-      id={id ?? fallbackId}
       value={state}
       onChange={handleChange}
       tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}

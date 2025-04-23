@@ -7721,7 +7721,7 @@ exports[`MonthPicker 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     maxYear?: number
     message?: ReactNode
@@ -7900,7 +7900,7 @@ exports[`RadioGroup 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
