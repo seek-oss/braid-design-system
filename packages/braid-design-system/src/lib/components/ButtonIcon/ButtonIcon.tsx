@@ -5,10 +5,10 @@ import {
   type ReactElement,
   forwardRef,
   cloneElement,
-  useId,
 } from 'react';
 
 import type { Space } from '../../css/atoms/atoms';
+import { useFallbackId } from '../../hooks/useFallbackId';
 import {
   type UseIconProps,
   iconContainerSize,
@@ -158,8 +158,7 @@ export const PrivateButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
 
 export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   ({ id, label, tooltipPlacement, ...restProps }, forwardedRef) => {
-    const fallbackId = useId();
-    const resolvedId = id || fallbackId;
+    const resolvedId = useFallbackId(id);
 
     return (
       <TooltipRenderer

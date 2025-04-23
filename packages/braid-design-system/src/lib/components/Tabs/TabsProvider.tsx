@@ -1,5 +1,6 @@
-import { type ReactNode, createContext, useId, useReducer } from 'react';
+import { type ReactNode, createContext, useReducer } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { getNextIndex } from '../private/getNextIndex';
 
 import {
@@ -49,8 +50,7 @@ export const TabsProvider = ({
   id,
   selectedItem,
 }: TabsProviderProps) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   const [tabsState, dispatch] = useReducer(
     (state: State, action: Action): State => {

@@ -9,6 +9,7 @@ import {
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
@@ -100,8 +101,7 @@ export const ModalContent = ({
   data,
   ...restProps
 }: ModalContentProps) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   const descriptionId = useId();
 

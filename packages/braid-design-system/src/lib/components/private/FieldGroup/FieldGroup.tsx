@@ -1,6 +1,7 @@
 import dedent from 'dedent';
 import { useId, type AllHTMLAttributes } from 'react';
 
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
 import {
@@ -78,8 +79,7 @@ export const FieldGroup = ({
   componentName,
   ...restProps
 }: InternalFieldGroupProps) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   const labelId = useId();
   const messageId = useId();

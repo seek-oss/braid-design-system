@@ -14,11 +14,11 @@ import {
   useCallback,
   useEffect,
   forwardRef,
-  useId,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 
 import { textStyles } from '../../css/typography';
+import { useFallbackId } from '../../hooks/useFallbackId';
 import {
   type AutosuggestTranslations,
   autosuggest,
@@ -378,8 +378,7 @@ export const Autosuggest = forwardRef(function <Value>(
     }
   }
 
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   // We need a ref regardless so we can imperatively
   // focus the field when clicking the clear button
