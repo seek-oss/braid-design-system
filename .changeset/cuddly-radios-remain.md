@@ -24,7 +24,9 @@ updated:
   - TooltipRenderer
 ---
 
-Change `id` prop from required to optional, allowing simplified usage
+Change `id` prop from required to optional, allowing simplified usage.
+
+Remove the `uuid` dependency which was previously used to generate fallback IDs in Playroom.
 
 **EXAMPLE USAGE:**
 
