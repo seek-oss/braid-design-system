@@ -43,6 +43,7 @@ export const PageBlock = ({
 
   return (
     <Box
+      width="full"
       component={component}
       paddingX={gutters}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
