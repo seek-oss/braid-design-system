@@ -5,6 +5,7 @@ import dedent from 'dedent';
 import { type ReactNode, type AllHTMLAttributes, Fragment, useId } from 'react';
 
 import { textStyles } from '../../../css/typography';
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { type BoxProps, Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
@@ -127,8 +128,7 @@ export const Field = ({
     'Prefix must be a string',
   );
 
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   const messageId = useId();
   const descriptionId = useId();

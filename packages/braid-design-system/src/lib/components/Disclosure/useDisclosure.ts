@@ -1,5 +1,6 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import type { AllOrNone } from '../private/AllOrNone';
 
 export type DisclosureStateProps = AllOrNone<{
@@ -16,8 +17,7 @@ export const useDisclosure = ({
   const [expandedFallback, setExpandedFallback] = useState(false);
   const expanded = expandedProp ?? expandedFallback;
 
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   return {
     buttonProps: {

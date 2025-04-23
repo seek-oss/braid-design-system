@@ -4,9 +4,9 @@ import {
   type ChangeEvent,
   type ReactNode,
   forwardRef,
-  useId,
 } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -59,8 +59,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ) => {
     const lightness = useBackgroundLightness();
 
-    const fallbackId = useId();
-    const resolvedId = id || fallbackId;
+    const resolvedId = useFallbackId(id);
 
     if (process.env.NODE_ENV !== 'production') {
       if (typeof _bleedY !== 'undefined') {

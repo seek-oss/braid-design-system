@@ -8,11 +8,11 @@ import {
   useEffect,
   useContext,
   useRef,
-  useId,
 } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
 import { atoms } from '../../css/atoms/atoms';
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../Box/Box';
 import { BraidPortal } from '../BraidPortal/BraidPortal';
@@ -136,8 +136,7 @@ export const TooltipRenderer = ({
   placement = 'top',
   children,
 }: TooltipRendererProps) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   assert(
     validPlacements.includes(placement),
