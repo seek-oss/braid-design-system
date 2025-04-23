@@ -1,13 +1,7 @@
 import assert from 'assert';
 
 import { isMobile } from 'is-mobile';
-import {
-  type ChangeEvent,
-  type FocusEvent,
-  createRef,
-  Fragment,
-  useId,
-} from 'react';
+import { type ChangeEvent, type FocusEvent, createRef, Fragment } from 'react';
 
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
@@ -165,8 +159,6 @@ const MonthPicker = ({
 
   const monthRef = createRef<HTMLSelectElement>();
   const yearRef = createRef<HTMLSelectElement>();
-  const monthId = useId();
-  const yearId = useId();
 
   const blurHandler = onBlur
     ? (event: FocusEvent<HTMLSelectElement>) => {
@@ -243,7 +235,6 @@ const MonthPicker = ({
         <Columns space="xsmall">
           <Column>
             <Dropdown
-              id={monthId}
               value={currentValue.month || ''}
               onChange={makeChangeHandler(onChange, value, 'month')}
               onBlur={blurHandler}
@@ -259,7 +250,6 @@ const MonthPicker = ({
           </Column>
           <Column>
             <Dropdown
-              id={yearId}
               value={currentValue.year || ''}
               onChange={makeChangeHandler(onChange, value, 'year')}
               onBlur={blurHandler}
