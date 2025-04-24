@@ -32,7 +32,6 @@ export const IconsDetails = () => (
   <Stack space="xxlarge">
     <PlayroomStateProvider>
       <DocExample
-        id="demo"
         Example={() =>
           source(
             <Heading level="2">
@@ -84,7 +83,6 @@ export const IconsDetails = () => (
       </Text>
       <PlayroomStateProvider>
         <DocExample
-          id="accessibility"
           Example={() =>
             source(
               <Tiles space="large" columns={2}>
@@ -137,7 +135,6 @@ export const IconsDetails = () => (
           </Notice>
           <PlayroomStateProvider>
             <DocExample
-              id="sizeInline"
               Example={() =>
                 source(
                   <Stack space="large">
@@ -191,7 +188,6 @@ export const IconsDetails = () => (
           </Notice>
           <PlayroomStateProvider>
             <DocExample
-              id="sizeBlock"
               Example={() =>
                 source(
                   <Tiles space="large" columns={4}>
@@ -239,7 +235,6 @@ export const IconsDetails = () => (
           </Text>
           <PlayroomStateProvider>
             <DocExample
-              id="sizeFill"
               Example={() =>
                 source(
                   <Stack space="small">
@@ -270,7 +265,6 @@ export const IconsDetails = () => (
       </Text>
       <PlayroomStateProvider>
         <DocExample
-          id="tones"
           Example={() =>
             source(
               <Tiles space="small" columns={2}>
@@ -331,7 +325,6 @@ export const IconsDetails = () => (
       </Text>
       <PlayroomStateProvider>
         <DocExample
-          id="alignY"
           Example={() =>
             source(
               <Stack space="large">
@@ -380,7 +373,6 @@ export const IconsDetails = () => (
           <Text>For example, here is a custom circle alongside a Heading:</Text>
           <PlayroomStateProvider>
             <DocExample
-              id="iconRenderer-size"
               Example={() =>
                 source(
                   <Heading level="1">
@@ -425,7 +417,6 @@ export const IconsDetails = () => (
           </Text>
           <PlayroomStateProvider>
             <DocExample
-              id="iconRenderer-colour"
               Example={() =>
                 source(
                   <Stack space="medium">
@@ -472,7 +463,6 @@ export const IconsDetails = () => (
           </Text>
           <PlayroomStateProvider>
             <DocExample
-              id="iconRenderer-a11y"
               Example={() =>
                 source(
                   <Text size="large">
@@ -500,7 +490,6 @@ export const IconsDetails = () => (
           </Text>
           <PlayroomStateProvider>
             <DocExample
-              id="iconRenderer"
               Example={() =>
                 source(
                   <Text size="large">

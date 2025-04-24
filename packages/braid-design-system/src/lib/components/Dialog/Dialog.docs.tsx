@@ -207,7 +207,6 @@ const docs: ComponentDocs = {
                 Select width:{' '}
                 <Strong>
                   <TextDropdown
-                    id="width"
                     label="Width"
                     options={['content', 'xsmall', 'small', 'medium', 'large']}
                     value={getState('width')}
@@ -349,7 +348,6 @@ const docs: ComponentDocs = {
               closeLabel="Close Dialog"
             >
               <Checkbox
-                id="valid"
                 label="Can this Dialog be closed?"
                 checked={getState('valid')}
                 onChange={() => {

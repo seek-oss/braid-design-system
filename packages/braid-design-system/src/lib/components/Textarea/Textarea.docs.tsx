@@ -16,11 +16,10 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, setState }) =>
+  Example: ({ getState, setState }) =>
     source(
       <Textarea
         label="Label"
-        id={id}
         onChange={setState('textarea')}
         value={getState('textarea')}
       />,
@@ -50,11 +49,10 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
             label="Label"
-            id={id}
             onChange={setState('textarea')}
             value={getState('textarea')}
             secondaryLabel="optional"
@@ -84,12 +82,11 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Textarea
               label="Label"
-              id={`${id}_1`}
               onChange={setState('textarea')}
               value={getState('textarea')}
               tone="critical"
@@ -97,7 +94,6 @@ const docs: ComponentDocs = {
             />
             <Textarea
               label="Label"
-              id={`${id}_2`}
               onChange={setState('textarea2')}
               value={getState('textarea2')}
               tone="positive"
@@ -105,7 +101,6 @@ const docs: ComponentDocs = {
             />
             <Textarea
               label="Label"
-              id={`${id}_3`}
               onChange={setState('textarea3')}
               value={getState('textarea3')}
               tone="caution"
@@ -113,7 +108,6 @@ const docs: ComponentDocs = {
             />
             <Textarea
               label="Label"
-              id={`${id}_4`}
               onChange={setState('textarea4')}
               value={getState('textarea4')}
               tone="neutral"
@@ -131,11 +125,10 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
             label="Label"
-            id={id}
             onChange={setState('textarea')}
             value={getState('textarea')}
             description="Extra information about the field"
@@ -150,11 +143,10 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, setState }) =>
+      Example: ({ setState }) =>
         source(
           <Textarea
             label="Label"
-            id={id}
             onChange={setState('textarea')}
             value="Text in disabled field"
             disabled={true}
@@ -169,11 +161,10 @@ const docs: ComponentDocs = {
           a number to the <Strong>lines</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
             label="Label"
-            id={id}
             onChange={setState('textarea')}
             value={getState('textarea')}
             description="Height set to 5 lines"
@@ -196,11 +187,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
             label="Label"
-            id={id}
             onChange={setState('textarea')}
             value={getState('textarea')}
             description="Height limited to 6 lines"
@@ -224,7 +214,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState(
@@ -234,7 +224,6 @@ const docs: ComponentDocs = {
 
             <Textarea
               label="Label"
-              id={id}
               onChange={setState('text')}
               value={getState('text')}
               description="Character limit of 50"
@@ -280,7 +269,7 @@ const docs: ComponentDocs = {
           </Alert>
         </>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState(
@@ -291,7 +280,6 @@ const docs: ComponentDocs = {
             <Stack space="large">
               <Textarea
                 label="Label"
-                id={id}
                 onChange={setState('textarea')}
                 value={getState('textarea')}
                 tone="critical"
@@ -302,7 +290,6 @@ const docs: ComponentDocs = {
 
               <Textarea
                 label="Label"
-                id={`${id}_2`}
                 onChange={setState('textarea')}
                 value={getState('textarea')}
                 tone="caution"
@@ -324,7 +311,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Heading level="2" id="field1Label">
@@ -332,7 +319,6 @@ const docs: ComponentDocs = {
             </Heading>
             <Textarea
               aria-labelledby="field1Label"
-              id={`${id}_1`}
               onChange={setState('text')}
               value={getState('text')}
               message="The label for this field is the Heading element before it."
@@ -340,7 +326,6 @@ const docs: ComponentDocs = {
 
             <Textarea
               aria-label="Hidden label for field"
-              id={`${id}_2`}
               onChange={setState('text2')}
               value={getState('text2')}
               message="The label for this field is hidden."

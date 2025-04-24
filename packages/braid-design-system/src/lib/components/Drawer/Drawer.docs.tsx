@@ -334,7 +334,6 @@ const docs: ComponentDocs = {
               closeLabel="Close Drawer"
             >
               <Checkbox
-                id="valid"
                 label="Can this Drawer be closed?"
                 checked={getState('valid')}
                 onChange={() => {

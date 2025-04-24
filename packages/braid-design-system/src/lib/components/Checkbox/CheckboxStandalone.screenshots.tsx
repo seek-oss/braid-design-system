@@ -22,11 +22,10 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id }) => {
+      Example: () => {
         const [state, setState] = useState(false);
         return (
           <CheckboxStandalone
-            id={id}
             checked={state}
             onChange={() => setState(!state)}
             aria-label="Label"
@@ -36,11 +35,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Small',
-      Example: ({ id }) => {
+      Example: () => {
         const [state, setState] = useState(false);
         return (
           <CheckboxStandalone
-            id={id}
             checked={state}
             onChange={() => setState(!state)}
             aria-label="Label"
@@ -51,9 +49,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Checked',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <CheckboxStandalone
-          id={id}
           checked={true}
           onChange={handler}
           aria-label="Label"
@@ -62,9 +59,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Mixed state',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <CheckboxStandalone
-          id={id}
           checked="mixed"
           onChange={handler}
           aria-label="Label"
@@ -73,31 +69,27 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Disabled',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="gutter">
           <CheckboxStandalone
-            id={`${id}_1`}
             disabled={true}
             checked={false}
             onChange={handler}
             aria-label="Unchecked"
           />
           <CheckboxStandalone
-            id={`${id}_2`}
             disabled={true}
             checked={true}
             onChange={handler}
             aria-label="Checked"
           />
           <CheckboxStandalone
-            id={`${id}_3`}
             disabled={true}
             checked="mixed"
             onChange={handler}
             aria-label="Mixed"
           />
           <CheckboxStandalone
-            id={`${id}_4`}
             disabled={true}
             checked={false}
             onChange={handler}
@@ -105,7 +97,6 @@ export const screenshots: ComponentScreenshot = {
             tone="critical"
           />
           <CheckboxStandalone
-            id={`${id}_5`}
             disabled={true}
             checked={true}
             onChange={handler}
@@ -113,7 +104,6 @@ export const screenshots: ComponentScreenshot = {
             tone="critical"
           />
           <CheckboxStandalone
-            id={`${id}_6`}
             disabled={true}
             checked="mixed"
             onChange={handler}
@@ -125,9 +115,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Critical',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <CheckboxStandalone
-          id={id}
           checked={false}
           onChange={handler}
           aria-label="Label"
@@ -137,12 +126,11 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Virtual touch target',
-      Example: ({ id }) => {
+      Example: () => {
         const [state, setState] = useState(false);
         return (
           <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
             <CheckboxStandalone
-              id={`${id}-1`}
               checked={state}
               onChange={() => setState(!state)}
               aria-label="Label"
@@ -150,7 +138,6 @@ export const screenshots: ComponentScreenshot = {
             />
 
             <CheckboxStandalone
-              id={`${id}-2`}
               checked={state}
               onChange={() => setState(!state)}
               aria-label="Label"
@@ -162,7 +149,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Text alignment',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="medium">
           {checkboxSizes.map((size) => (
             <Box background="surface" key={size}>
@@ -170,7 +157,6 @@ export const screenshots: ComponentScreenshot = {
                 <Column width="content">
                   <Text size={size}>
                     <CheckboxStandalone
-                      id={id}
                       onChange={handler}
                       checked={false}
                       aria-label="Label"
@@ -189,7 +175,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Text alignment with wrapping lines',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Box style={{ maxWidth: 200 }}>
           <Stack space="medium">
             {checkboxSizes.map((size) => (
@@ -198,7 +184,6 @@ export const screenshots: ComponentScreenshot = {
                   <Column width="content">
                     <Text size={size}>
                       <CheckboxStandalone
-                        id={id}
                         onChange={handler}
                         checked={false}
                         aria-label="Label"
@@ -220,18 +205,16 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Contrast',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Box maxWidth="xsmall">
           <BackgroundContrastTest>
             <Tiles space="small" columns={2}>
               <CheckboxStandalone
-                id={id}
                 checked={false}
                 onChange={handler}
                 aria-label="Label"
               />
               <CheckboxStandalone
-                id={id}
                 checked={true}
                 onChange={handler}
                 aria-label="Label"

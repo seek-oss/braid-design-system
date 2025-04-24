@@ -20,7 +20,7 @@ import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash.memoize';
 import { createUrl } from 'playroom/utils';
-import * as prettierPluginEstree from 'prettier/plugins/estree';
+import prettierPluginEstree from 'prettier/plugins/estree';
 import typescriptParser from 'prettier/plugins/typescript';
 import prettier from 'prettier/standalone';
 import { type ReactElement, useState, useEffect, useRef } from 'react';
@@ -48,12 +48,7 @@ const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx'] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number];
 
 export const formatSnippet = memoize(async (snippet: string) => {
-  // Remove id props from code snippets since they're not needed in Playroom
-  const cleanedSnippet = snippet
-    .replace(/id={id}/g, '')
-    .replace(/id={`\${id}_[0-9a-zA-Z]+`}/g, '');
-
-  const prettierSnippet = await prettier.format(cleanedSnippet, {
+  const prettierSnippet = await prettier.format(snippet, {
     parser: 'typescript',
     plugins: [typescriptParser, prettierPluginEstree],
     semi: false,
