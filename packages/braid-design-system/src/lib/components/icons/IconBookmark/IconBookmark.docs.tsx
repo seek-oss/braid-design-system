@@ -56,7 +56,6 @@ const docs: ComponentDocs = {
                   ? 'Bookmark: active = true'
                   : 'Bookmark: active = false'
               }
-              id="toggle-example"
               onClick={() => toggleState('active')}
             />
 

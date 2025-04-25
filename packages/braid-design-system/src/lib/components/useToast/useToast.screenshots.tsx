@@ -19,7 +19,7 @@ export const screenshots: ComponentScreenshot = {
             message="Critical toast"
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -41,7 +41,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -64,7 +64,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -82,7 +82,7 @@ export const screenshots: ComponentScreenshot = {
             message="Positive toast"
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -104,7 +104,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -127,7 +127,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -145,7 +145,7 @@ export const screenshots: ComponentScreenshot = {
             message="Neutral toast"
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -167,7 +167,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -190,7 +190,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -209,7 +209,7 @@ export const screenshots: ComponentScreenshot = {
             message="Neutral toast with icon"
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -232,7 +232,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />
@@ -256,7 +256,7 @@ export const screenshots: ComponentScreenshot = {
             }}
             vanillaTheme={vanillaTheme}
             onClose={() => {}}
-            id="n/a"
+            toastKey="n/a"
             dedupeKey="n/a"
             shouldRemove={false}
           />

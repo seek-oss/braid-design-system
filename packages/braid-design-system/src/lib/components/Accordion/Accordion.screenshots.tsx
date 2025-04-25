@@ -19,7 +19,7 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Default Accordion',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -28,7 +28,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion>
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -36,7 +35,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -44,7 +42,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -56,7 +53,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Default Accordion without dividers',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -65,7 +62,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion dividers={false}>
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -73,7 +69,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -81,7 +76,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -93,7 +87,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Default Accordion with custom space',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -102,7 +96,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion space="xlarge">
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -110,7 +103,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -118,7 +110,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -130,7 +121,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Standard secondary Accordion',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -139,7 +130,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion size="standard" tone="secondary">
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -147,7 +137,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -155,7 +144,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -167,7 +155,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Standard secondary Accordion without dividers',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -176,7 +164,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion size="standard" tone="secondary" dividers={false}>
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -184,7 +171,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -192,7 +178,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -204,7 +189,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Small secondary Accordion',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -213,7 +198,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion size="small" tone="secondary">
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -221,7 +205,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -229,7 +212,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -241,7 +223,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Small secondary Accordion without dividers',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -250,7 +232,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion size="small" tone="secondary" dividers={false}>
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -258,7 +239,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -266,7 +246,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -278,7 +257,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Xsmall secondary Accordion',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -287,7 +266,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion size="xsmall" tone="secondary">
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -295,7 +273,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -303,7 +280,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -315,7 +291,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Xsmall secondary Accordion without dividers',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -324,7 +300,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion size="xsmall" tone="secondary" dividers={false}>
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -332,7 +307,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -340,7 +314,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -352,7 +325,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Accordion regular weight',
-      Example: ({ id }) => {
+      Example: () => {
         const [expanded1, setExpanded1] = useState(false);
         const [expanded2, setExpanded2] = useState(true);
         const [expanded3, setExpanded3] = useState(false);
@@ -361,7 +334,6 @@ export const screenshots: ComponentScreenshot = {
           <Accordion weight="regular">
             <AccordionItem
               label="Accordion item 1"
-              id={`${id}_1`}
               expanded={expanded1}
               onToggle={setExpanded1}
             >
@@ -369,7 +341,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 2"
-              id={`${id}_2`}
               expanded={expanded2}
               onToggle={setExpanded2}
             >
@@ -377,7 +348,6 @@ export const screenshots: ComponentScreenshot = {
             </AccordionItem>
             <AccordionItem
               label="Accordion item 3"
-              id={`${id}_3`}
               expanded={expanded3}
               onToggle={setExpanded3}
             >
@@ -389,34 +359,33 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Default AccordionItem',
-      Example: ({ id }) => (
-        <AccordionItem label="Label" id={id}>
+      Example: () => (
+        <AccordionItem label="Label">
           <Text>Content</Text>
         </AccordionItem>
       ),
     },
     {
       label: 'AccordionItem with size and tone',
-      Example: ({ id }) => (
-        <AccordionItem label="Label" id={id} size="small" tone="secondary">
+      Example: () => (
+        <AccordionItem label="Label" size="small" tone="secondary">
           <Text size="small">Content</Text>
         </AccordionItem>
       ),
     },
     {
       label: 'AccordionItem with regular weight',
-      Example: ({ id }) => (
-        <AccordionItem label="Label" id={id} weight="regular">
+      Example: () => (
+        <AccordionItem label="Label" weight="regular">
           <Text>Content</Text>
         </AccordionItem>
       ),
     },
     {
       label: 'AccordionItem with a badge',
-      Example: ({ id }) => (
+      Example: () => (
         <AccordionItem
           label="Label"
-          id={id}
           badge={
             <Badge tone="promote" weight="strong">
               Badge
@@ -429,49 +398,29 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'AccordionItem with an icon - should follow size',
-      Example: ({ id }) => (
+      Example: () => (
         <Box paddingY="medium">
           <Stack space="medium">
             <Box background="surface">
-              <AccordionItem
-                label="Label"
-                size="xsmall"
-                id={`${id}_1`}
-                icon={<IconImage />}
-              >
+              <AccordionItem label="Label" size="xsmall" icon={<IconImage />}>
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
             <Divider />
             <Box background="surface">
-              <AccordionItem
-                label="Label"
-                size="small"
-                id={`${id}_2`}
-                icon={<IconImage />}
-              >
+              <AccordionItem label="Label" size="small" icon={<IconImage />}>
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
             <Divider />
             <Box background="surface">
-              <AccordionItem
-                label="Label"
-                size="standard"
-                id={`${id}_3`}
-                icon={<IconImage />}
-              >
+              <AccordionItem label="Label" size="standard" icon={<IconImage />}>
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
             <Divider />
             <Box background="surface">
-              <AccordionItem
-                label="Label"
-                size="large"
-                id={`${id}_4`}
-                icon={<IconImage />}
-              >
+              <AccordionItem label="Label" size="large" icon={<IconImage />}>
                 <Text size="small">Content</Text>
               </AccordionItem>
             </Box>
@@ -481,12 +430,12 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Virtual touch target',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Box
           background="surface"
           data={{ [debugTouchableAttrForDataProp]: '' }}
         >
-          <AccordionItem label="Accordion item" id={id} onToggle={handler}>
+          <AccordionItem label="Accordion item" onToggle={handler}>
             <Placeholder height={80} />
           </AccordionItem>
         </Box>
@@ -494,7 +443,7 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'AccordionItem with an icon - should follow tone',
-      Example: ({ id }) => (
+      Example: () => (
         <Box paddingY="medium">
           <Stack space="medium">
             <Box background="surface">
@@ -502,7 +451,6 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="xsmall"
                 tone="secondary"
-                id={`${id}_1`}
                 icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
@@ -514,7 +462,6 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="small"
                 tone="secondary"
-                id={`${id}_2`}
                 icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
@@ -526,7 +473,6 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="standard"
                 tone="secondary"
-                id={`${id}_3`}
                 icon={<IconImage />}
               >
                 <Text size="small">Content</Text>
@@ -538,7 +484,6 @@ export const screenshots: ComponentScreenshot = {
                 label="Label"
                 size="large"
                 tone="secondary"
-                id={`${id}_4`}
                 icon={<IconImage />}
               >
                 <Text size="small">Content</Text>

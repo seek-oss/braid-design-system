@@ -7,10 +7,9 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             value={getState('textarea')}
             onChange={setState('textarea')}
@@ -19,10 +18,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With additional labels',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             onChange={setState('textarea')}
             value={getState('textarea')}
@@ -37,10 +35,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             onChange={setState('textarea')}
             value={getState('textarea')}
@@ -50,10 +47,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             onChange={setState('textarea')}
             value={getState('textarea')}
@@ -64,10 +60,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a positive message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             onChange={setState('textarea')}
             value={getState('textarea')}
@@ -78,10 +73,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a caution message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             onChange={setState('textarea')}
             value={getState('textarea')}
@@ -92,10 +86,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a neutral message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             onChange={setState('textarea')}
             value={getState('textarea')}
@@ -106,10 +99,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Disabled field',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Textarea
-            id={id}
             label="Label"
             onChange={setState('textarea')}
             value={getState('textarea')}
@@ -119,7 +111,7 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Limiting the number of characters',
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState(
@@ -129,7 +121,6 @@ export const galleryItems: GalleryComponent = {
 
             <Textarea
               label="Label"
-              id={id}
               onChange={setState('textarea')}
               value={getState('textarea')}
               description="Character limit of 50"
@@ -140,7 +131,7 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Highlighting ranges',
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState(
@@ -150,7 +141,6 @@ export const galleryItems: GalleryComponent = {
 
             <Textarea
               label="Label"
-              id={id}
               onChange={setState('textarea')}
               value={getState('textarea')}
               tone="critical"

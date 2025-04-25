@@ -70,7 +70,6 @@ const page: Page = {
                 size="large"
                 icon={<IconBookmark />}
                 label="Save job"
-                id="save-preview"
               />
             </Spread>
 
@@ -424,7 +423,6 @@ const page: Page = {
                 size="large"
                 icon={<IconBookmark />}
                 label="Save job"
-                id="save-7a"
               />
             </Spread>
           </Card>
@@ -475,7 +473,6 @@ const page: Page = {
                 size="large"
                 icon={<IconBookmark />}
                 label="Save job"
-                id="save-7b"
               />
             </Spread>
           </Card>

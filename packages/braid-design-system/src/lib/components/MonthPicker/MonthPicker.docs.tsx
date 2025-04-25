@@ -16,11 +16,10 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, setState }) =>
+  Example: ({ getState, setState }) =>
     source(
       <MonthPicker
         label="Label"
-        id={id}
         onChange={setState('monthpicker')}
         value={getState('monthpicker')}
       />,
@@ -42,11 +41,10 @@ const docs: ComponentDocs = {
           prop, with a list of 12 items in the desired format.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             monthNames={[
@@ -80,11 +78,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             minYear={1996}
@@ -116,11 +113,10 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             secondaryLabel="optional"
@@ -150,12 +146,11 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <MonthPicker
               label="Label"
-              id={`${id}_1`}
               onChange={setState('monthpicker')}
               value={getState('monthpicker')}
               tone="critical"
@@ -163,7 +158,6 @@ const docs: ComponentDocs = {
             />
             <MonthPicker
               label="Label"
-              id={`${id}_2`}
               onChange={setState('monthpicker2')}
               value={getState('monthpicker2')}
               tone="positive"
@@ -171,7 +165,6 @@ const docs: ComponentDocs = {
             />
             <MonthPicker
               label="Label"
-              id={`${id}_3`}
               onChange={setState('monthpicker3')}
               value={getState('monthpicker3')}
               tone="caution"
@@ -179,7 +172,6 @@ const docs: ComponentDocs = {
             />
             <MonthPicker
               label="Label"
-              id={`${id}_4`}
               onChange={setState('monthpicker4')}
               value={getState('monthpicker4')}
               tone="neutral"
@@ -197,11 +189,10 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             description="Extra information about the field"
@@ -216,11 +207,10 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             disabled={true}
@@ -244,11 +234,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <MonthPicker
             label="Label"
-            id={id}
             onChange={setState('monthpicker')}
             value={getState('monthpicker')}
             monthLabel="MM"
@@ -266,7 +255,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Heading level="2" id="field1Label">
@@ -274,7 +263,6 @@ const docs: ComponentDocs = {
             </Heading>
             <MonthPicker
               aria-labelledby="field1Label"
-              id={`${id}_1`}
               onChange={setState('monthpicker')}
               value={getState('monthpicker')}
               message="The label for this field is the Heading element before it."
@@ -282,7 +270,6 @@ const docs: ComponentDocs = {
 
             <MonthPicker
               aria-label="Hidden label for field"
-              id={`${id}_2`}
               onChange={setState('monthpicker2')}
               value={getState('monthpicker2')}
               message="The label for this field is hidden."

@@ -7,11 +7,10 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
           />,
@@ -19,11 +18,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With additional labels',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             secondaryLabel="optional"
@@ -33,11 +31,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             description="Longer description of this field"
@@ -46,11 +43,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             tone="critical"
@@ -60,11 +56,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a positive message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             tone="positive"
@@ -74,11 +69,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a caution message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             tone="caution"
@@ -88,11 +82,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a neutral message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             tone="neutral"
@@ -102,11 +95,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Disabled field',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             disabled={true}

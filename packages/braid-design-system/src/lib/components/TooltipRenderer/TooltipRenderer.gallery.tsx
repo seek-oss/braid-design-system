@@ -77,11 +77,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Preview animation',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Inline space="small">
             <TooltipRenderer
-              id={id}
               tooltip={
                 <Text>
                   This is a tooltip! If you provide enough content, the text

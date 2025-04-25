@@ -17,11 +17,10 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, setState }) =>
+  Example: ({ getState, setState }) =>
     source(
       <Dropdown
         label="Label"
-        id={id}
         onChange={setState('dropdown')}
         value={getState('dropdown')}
         placeholder="Please select"
@@ -46,11 +45,10 @@ const docs: ComponentDocs = {
           Grouping is supported via native <Strong>optgroup</Strong> elements.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -91,11 +89,10 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -129,12 +126,11 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Dropdown
               label="Label"
-              id={`${id}_1`}
               onChange={setState('dropdown')}
               value={getState('dropdown')}
               tone="critical"
@@ -146,7 +142,6 @@ const docs: ComponentDocs = {
             </Dropdown>
             <Dropdown
               label="Label"
-              id={`${id}_2`}
               onChange={setState('dropdown2')}
               value={getState('dropdown2')}
               tone="positive"
@@ -158,7 +153,6 @@ const docs: ComponentDocs = {
             </Dropdown>
             <Dropdown
               label="Label"
-              id={`${id}_3`}
               onChange={setState('dropdown3')}
               value={getState('dropdown3')}
               tone="caution"
@@ -170,7 +164,6 @@ const docs: ComponentDocs = {
             </Dropdown>
             <Dropdown
               label="Label"
-              id={`${id}_4`}
               onChange={setState('dropdown4')}
               value={getState('dropdown4')}
               tone="neutral"
@@ -192,11 +185,10 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -215,11 +207,10 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, setState }) =>
+      Example: ({ setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value="Option 1"
             disabled={true}
@@ -245,11 +236,10 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -268,10 +258,9 @@ const docs: ComponentDocs = {
           of the field and is not interactive.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
-            id={id}
             label="Location"
             onChange={setState('dropdown')}
             value={getState('dropdown')}
@@ -294,7 +283,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Heading level="2" id="field1Label">
@@ -303,7 +292,6 @@ const docs: ComponentDocs = {
             <Dropdown
               aria-labelledby="field1Label"
               message="The label for this field is the Heading element before it."
-              id={`${id}_1`}
               onChange={setState('dropdown')}
               value={getState('dropdown')}
               placeholder="Please select"
@@ -314,7 +302,6 @@ const docs: ComponentDocs = {
             <Dropdown
               aria-label="Hidden label for field"
               message="The label for this field is hidden."
-              id={`${id}_2`}
               onChange={setState('dropdown')}
               value={getState('dropdown')}
               placeholder="Please select"

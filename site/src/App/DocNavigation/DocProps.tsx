@@ -130,7 +130,6 @@ const PropList = ({ props }: { props: NormalisedInterface['props'] }) => {
                     </Badge>
                     {deprecatedMessage.text ? (
                       <TooltipRenderer
-                        id={`prop_${propName}`}
                         tooltip={<Text>{deprecatedMessage.text}</Text>}
                       >
                         {({ triggerProps }) => (

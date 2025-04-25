@@ -169,14 +169,14 @@ export const useToast = () => {
 
   return useCallback(
     (toast: Toast) => {
-      const id = `${toastCounter++}`;
+      const toastKey = `${toastCounter++}`;
       const { key, ...rest } = toast;
-      const dedupeKey = key ?? id;
+      const dedupeKey = key ?? toastKey;
 
       addToast({
         ...rest,
         vanillaTheme,
-        id,
+        toastKey,
         dedupeKey,
         shouldRemove: false,
       });

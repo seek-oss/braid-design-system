@@ -155,13 +155,12 @@ const getRowsFor = memoize((type: SetName) => {
 });
 
 interface RenderExampleProps {
-  id: string;
   example: ComponentExample;
   isIcon: boolean;
 }
-const RenderExample = ({ id, example, isIcon }: RenderExampleProps) => {
+const RenderExample = ({ example, isIcon }: RenderExampleProps) => {
   const { label, Container = DefaultContainer } = example;
-  const { code, value } = useSourceFromExample(id, example);
+  const { code, value } = useSourceFromExample(example);
 
   const CopyCodeButton = () => (
     <Spread space="medium" alignY="center">
@@ -307,13 +306,7 @@ const GalleryItem = ({
                   >
                     <BraidProvider styleBody={false} theme={theme}>
                       <PlayroomStateProvider>
-                        <RenderExample
-                          id={`${item.name.toLowerCase()}_${
-                            index + 1 + idx * COLUMN_SIZE
-                          }`}
-                          example={example}
-                          isIcon={isIcon}
-                        />
+                        <RenderExample example={example} isIcon={isIcon} />
                       </PlayroomStateProvider>
                     </BraidProvider>
                   </Box>
@@ -644,24 +637,19 @@ const GalleryInternal = () => {
 
               <PanelDivider />
               <ButtonIcon
-                id="fitToScreen"
                 label="Fit to screen"
                 variant="transparent"
                 onClick={fitToScreen}
                 icon={<IconFitToScreen tone="secondary" />}
               />
               <ButtonIcon
-                id="zoomOut"
                 ref={zoomOutRef}
                 label="Zoom Out"
                 variant="transparent"
                 onClick={zoomOut}
                 icon={<IconMinus tone="secondary" />}
               />
-              <TooltipRenderer
-                id="zoomToActual"
-                tooltip={<Text>Zoom to actual size</Text>}
-              >
+              <TooltipRenderer tooltip={<Text>Zoom to actual size</Text>}>
                 {({ triggerProps }) => (
                   <Button
                     variant="transparent"
@@ -676,7 +664,6 @@ const GalleryInternal = () => {
                 )}
               </TooltipRenderer>
               <ButtonIcon
-                id="zoomIn"
                 ref={zoomInRef}
                 label="Zoom In"
                 variant="transparent"
@@ -736,7 +723,6 @@ const JumpToSelector = memo(({ onSelect }: { onSelect: JumpTo }) => {
   return (
     <Text size="small" tone="secondary">
       <TextDropdown
-        id="search"
         label="Jump to component"
         options={componentList}
         value={value}

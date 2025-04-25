@@ -15,7 +15,6 @@ export const screenshots: ComponentScreenshot = {
         const [state, setState] = useState('');
         return (
           <RadioGroup
-            id="radiolist1"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -31,12 +30,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'With selected item',
       Example: ({ handler }) => (
-        <RadioGroup
-          id="radiolist2"
-          value="2"
-          onChange={handler}
-          label="Experience"
-        >
+        <RadioGroup value="2" onChange={handler} label="Experience">
           <RadioItem label="Less than one year" value="0" />
           <RadioItem label="1 year" value="1" />
           <RadioItem label="2 years" value="2" />
@@ -50,7 +44,6 @@ export const screenshots: ComponentScreenshot = {
         const [state, setState] = useState('');
         return (
           <RadioGroup
-            id="radiolist3"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -70,7 +63,6 @@ export const screenshots: ComponentScreenshot = {
         const [state, setState] = useState('');
         return (
           <RadioGroup
-            id="radiolist4"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -88,13 +80,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'When disabled',
       Example: ({ handler }) => (
-        <RadioGroup
-          id="radiolist5"
-          value="2"
-          onChange={handler}
-          label="Experience"
-          disabled
-        >
+        <RadioGroup value="2" onChange={handler} label="Experience" disabled>
           <RadioItem label="Less than one year" value="0" />
           <RadioItem label="1 year" value="1" />
           <RadioItem label="2 years" value="2" />
@@ -108,7 +94,6 @@ export const screenshots: ComponentScreenshot = {
         const [state, setState] = useState('2');
         return (
           <RadioGroup
-            id="radiolist6"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -131,7 +116,6 @@ export const screenshots: ComponentScreenshot = {
 
         return (
           <RadioGroup
-            id="radiolist7"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -152,7 +136,6 @@ export const screenshots: ComponentScreenshot = {
         const [state, setState] = useState('');
         return (
           <RadioGroup
-            id="radiolistsmall"
             value={state}
             onChange={(e) => setState(e.currentTarget.value)}
             label="Experience"
@@ -169,12 +152,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'When disabled item',
       Example: ({ handler }) => (
-        <RadioGroup
-          id="disableditem"
-          value="2"
-          onChange={handler}
-          label="Experience"
-        >
+        <RadioGroup value="2" onChange={handler} label="Experience">
           <RadioItem label="Less than one year" value="0" />
           <RadioItem label="1 year" value="1" />
           <RadioItem label="2 years" value="2" disabled />
@@ -185,12 +163,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'When labelling via aria-label',
       Example: ({ handler }) => (
-        <RadioGroup
-          id="arialabel"
-          value="2"
-          onChange={handler}
-          aria-label="Label"
-        >
+        <RadioGroup value="2" onChange={handler} aria-label="Label">
           <RadioItem label="One" value="1" />
           <RadioItem label="Two" value="2" />
           <RadioItem label="Three" value="3" />
@@ -200,12 +173,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'When labelling via aria-labelledby',
       Example: ({ handler }) => (
-        <RadioGroup
-          id="arialabelledby"
-          value="2"
-          onChange={handler}
-          aria-labelledby="elementId"
-        >
+        <RadioGroup value="2" onChange={handler} aria-labelledby="elementId">
           <RadioItem label="One" value="1" />
           <RadioItem label="Two" value="2" />
           <RadioItem label="Three" value="3" />
@@ -216,7 +184,6 @@ export const screenshots: ComponentScreenshot = {
       label: 'When labelling via aria-labelledby with a description',
       Example: ({ handler }) => (
         <RadioGroup
-          id="arialabelledbywithdesc"
           value="2"
           onChange={handler}
           aria-labelledby="elementId"
@@ -232,7 +199,6 @@ export const screenshots: ComponentScreenshot = {
       label: 'Virtual touch target (standard)',
       Example: ({ handler }) => (
         <RadioGroup
-          id="radiolist1"
           value="2"
           onChange={handler}
           label="Experience"
@@ -248,7 +214,6 @@ export const screenshots: ComponentScreenshot = {
       label: 'Virtual touch target (small)',
       Example: ({ handler }) => (
         <RadioGroup
-          id="radiolist1"
           value="2"
           onChange={handler}
           label="Experience"
@@ -266,17 +231,10 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ handler }) => (
         <Box maxWidth="xsmall">
           <BackgroundContrastTest>
-            {(background) => (
-              <RadioGroup
-                id={background}
-                value="1"
-                onChange={handler}
-                label="Experience"
-              >
-                <RadioItem label="Less than one year" value="0" />
-                <RadioItem label="1 year" value="1" />
-              </RadioGroup>
-            )}
+            <RadioGroup value="1" onChange={handler} label="Experience">
+              <RadioItem label="Less than one year" value="0" />
+              <RadioItem label="1 year" value="1" />
+            </RadioGroup>
           </BackgroundContrastTest>
         </Box>
       ),
@@ -286,7 +244,6 @@ export const screenshots: ComponentScreenshot = {
       Example: ({ handler }) => (
         <Stack space="large" align="center">
           <RadioGroup
-            id="arialabelledbywithdesc"
             value="2"
             onChange={handler}
             label="Dolor cillum elit aliquip velit reprehenderit."

@@ -1,5 +1,6 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import {
   type InlineFieldProps,
   InlineField,
@@ -17,8 +18,7 @@ export interface CheckboxProps
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ id, checked, tabIndex, ...restProps }, ref) => {
-    const fallbackId = useId();
-    const resolvedId = id || fallbackId;
+    const resolvedId = useFallbackId(id);
 
     const calculatedChecked = Array.isArray(checked)
       ? resolveCheckedGroup(checked)

@@ -14,9 +14,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Default',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           label="Started"
           value={{ month: undefined, year: undefined }}
           onChange={handler}
@@ -26,9 +25,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Selected values',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           label="Started"
           value={{ month: 12, year: 2018 }}
           onChange={handler}
@@ -38,9 +36,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Critical message',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           label="Started"
           tone="critical"
           message="This is a critical message."
@@ -52,9 +49,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Caution message',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           label="Started"
           tone="caution"
           message="This is a caution message."
@@ -66,24 +62,21 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Disabled',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="gutter">
           <MonthPicker
-            id={`${id}_1`}
             label="With value"
             disabled={true}
             value={{ month: 1, year: 2019 }}
             onChange={handler}
           />
           <MonthPicker
-            id={`${id}_2`}
             label="No value"
             disabled={true}
             value={{}}
             onChange={handler}
           />
           <MonthPicker
-            id={`${id}_3`}
             label="With critical tone"
             disabled={true}
             tone="critical"
@@ -91,7 +84,6 @@ export const screenshots: ComponentScreenshot = {
             onChange={handler}
           />
           <MonthPicker
-            id={`${id}_4`}
             label="With critical tone and message"
             disabled={true}
             tone="critical"
@@ -105,9 +97,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'with a description',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           label="Started"
           description="Longer description of this field"
           value={{ month: 1, year: 2019 }}
@@ -118,9 +109,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'No visual label',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           aria-label="Started"
           value={{ month: 1, year: 2019 }}
           onChange={handler}
@@ -130,9 +120,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'No visual label with a description',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           aria-label="Started"
           description="Longer description of this field"
           value={{ month: 1, year: 2019 }}
@@ -143,9 +132,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Custom month and year labels',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <MonthPicker
-          id={id}
           label="Started"
           value={{ month: 7, year: 2020 }}
           onChange={handler}
@@ -171,10 +159,9 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Contrast',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <BackgroundContrastTest>
           <MonthPicker
-            id={id}
             label="Started"
             value={{ month: undefined, year: undefined }}
             onChange={handler}

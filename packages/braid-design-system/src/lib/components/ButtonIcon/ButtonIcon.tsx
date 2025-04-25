@@ -8,6 +8,7 @@ import {
 } from 'react';
 
 import type { Space } from '../../css/atoms/atoms';
+import { useFallbackId } from '../../hooks/useFallbackId';
 import {
   type UseIconProps,
   iconContainerSize,
@@ -40,7 +41,7 @@ export const buttonIconSizes = ['small', 'standard', 'large'] as const;
 type ButtonIconSize = (typeof buttonIconSizes)[number];
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonIconProps {
-  id: string;
+  id?: string;
   icon: ReactElement<UseIconProps>;
   label: string;
   size?: ButtonIconSize;
@@ -65,10 +66,7 @@ const padding: Record<ButtonIconSize, Space> = {
   large: 'xsmall',
 };
 
-const PrivateButtonIcon = forwardRef<
-  HTMLButtonElement,
-  Omit<ButtonIconProps, 'id'> & { id?: string }
->(
+export const PrivateButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   (
     {
       icon,
@@ -110,9 +108,6 @@ const PrivateButtonIcon = forwardRef<
         type={type}
         id={id}
         zIndex={0}
-        // If there is no id, there is no tooltip, so use a title instead.
-        // Removing once consumers have adopted React 18, and we can safely `useId()`
-        title={!id ? label : undefined}
         ref={forwardedRef}
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
@@ -163,22 +158,16 @@ const PrivateButtonIcon = forwardRef<
 
 export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   ({ id, label, tooltipPlacement, ...restProps }, forwardedRef) => {
-    if (!id) {
-      // Remove when we have enough React 18 adoption, in favour of tooltip with `useId()`
-      return (
-        <PrivateButtonIcon label={label} ref={forwardedRef} {...restProps} />
-      );
-    }
+    const resolvedId = useFallbackId(id);
 
     return (
       <TooltipRenderer
-        id={`${id}-tooltip`}
         tooltip={<Text>{label}</Text>}
         placement={tooltipPlacement}
       >
         {({ triggerProps: { ref: triggerRef, ...triggerProps } }) => (
           <PrivateButtonIcon
-            id={id}
+            id={resolvedId}
             label={label}
             ref={(node: HTMLButtonElement) => {
               if (forwardedRef) {

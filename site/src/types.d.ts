@@ -64,7 +64,6 @@ export interface CssDoc {
 }
 
 interface ExampleProps {
-  id: string;
   handler: () => void;
 }
 

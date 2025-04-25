@@ -6,6 +6,7 @@ import {
   forwardRef,
 } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -21,7 +22,7 @@ import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
 export interface ToggleProps {
-  id: NonNullable<HTMLInputProps['id']>;
+  id?: HTMLInputProps['id'];
   label: ReactNode;
   on: boolean;
   onChange: ChangeHandler;
@@ -57,6 +58,8 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     forwardedRef,
   ) => {
     const lightness = useBackgroundLightness();
+
+    const resolvedId = useFallbackId(id);
 
     if (process.env.NODE_ENV !== 'production') {
       if (typeof _bleedY !== 'undefined') {
@@ -103,7 +106,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           <Box
             component="input"
             type="checkbox"
-            id={id}
+            id={resolvedId}
             checked={on}
             onChange={handleChange(onChange)}
             position="absolute"
@@ -184,7 +187,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         </Box>
         <Box
           component="label"
-          htmlFor={id}
+          htmlFor={resolvedId}
           paddingLeft={
             appliedTogglePosition === 'trailing' ? undefined : 'xsmall'
           }

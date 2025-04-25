@@ -29,8 +29,6 @@ export const OverflowMenu = ({
     <MenuRenderer
       trigger={(triggerProps) => (
         <ButtonIcon
-          // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
-          // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
           id={id}
           size={size}
           icon={<IconOverflow />}

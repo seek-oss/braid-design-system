@@ -26,9 +26,9 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
-  Example: ({ id }) =>
+  Example: () =>
     source(
-      <TabsProvider id={id}>
+      <TabsProvider>
         <Stack space="medium">
           <Tabs label="Test tabs">
             <Tab>The first tab</Tab>
@@ -117,9 +117,9 @@ const docs: ComponentDocs = {
           <Strong>align</Strong> prop on <Strong>Tabs</Strong>.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs" align="center">
                 <Tab>The first tab</Tab>
@@ -147,9 +147,9 @@ const docs: ComponentDocs = {
           <Strong>Tabs</Strong> component.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={`${id}_1`}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs" divider="full">
                 <Tab>The first tab</Tab>
@@ -177,9 +177,9 @@ const docs: ComponentDocs = {
           <Strong>“none”</Strong> on the <Strong>Tabs</Strong> component.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={`${id}_2`}>
+          <TabsProvider>
             <Tabs label="Test tabs" divider="none">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
@@ -223,9 +223,9 @@ const docs: ComponentDocs = {
           </TextLink>
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Tabs label="Test tabs" divider="none" gutter="gutter">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
@@ -263,9 +263,9 @@ const docs: ComponentDocs = {
           the <Strong>Tab</Strong> by using the <Strong>badge</Strong> prop.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs">
                 <Tab>The first tab</Tab>
@@ -304,9 +304,9 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs">
                 <Tab icon={<IconHome />}>The first tab</Tab>
@@ -341,14 +341,14 @@ const docs: ComponentDocs = {
           <Strong>small.</Strong>
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Stack space="xlarge">
             <Stack space="medium">
               <Text size="small" tone="secondary">
                 Standard tabs
               </Text>
-              <TabsProvider id={`${id}_std`}>
+              <TabsProvider>
                 <Tabs label="Standard tabs">
                   <Tab>The first tab</Tab>
                   <Tab>The second tab</Tab>
@@ -364,7 +364,7 @@ const docs: ComponentDocs = {
                 Small tabs
               </Text>
 
-              <TabsProvider id={`${id}_small`}>
+              <TabsProvider>
                 <Tabs label="Small tabs" size="small">
                   <Tab>The first tab</Tab>
                   <Tab>The second tab</Tab>
@@ -393,14 +393,13 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, toggleState, setDefaultState }) =>
+      Example: ({ getState, toggleState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('reserveHitArea', false)}
 
             <Stack space="xlarge">
               <Toggle
-                id={`${id}_reserveToggle`}
                 label="reserveHitArea"
                 on={getState('reserveHitArea')}
                 onChange={() => toggleState('reserveHitArea')}
@@ -409,7 +408,7 @@ const docs: ComponentDocs = {
               />
 
               <Box position="relative">
-                <TabsProvider id={`${id}_reserveHitArea`}>
+                <TabsProvider>
                   <Tabs
                     label="Standard tabs"
                     reserveHitArea={getState('reserveHitArea')}
@@ -443,13 +442,12 @@ const docs: ComponentDocs = {
           <Strong>TabsProvider.</Strong>
         </Text>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('tab', 'second')}
 
             <TabsProvider
-              id={id}
               selectedItem={getState('tab')}
               onChange={(index, item) => setState('tab', item)}
             >

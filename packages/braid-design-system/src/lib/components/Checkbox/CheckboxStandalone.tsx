@@ -1,5 +1,6 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { Box } from '../Box/Box';
 import { TextContext } from '../Text/TextContext';
 import {
@@ -23,8 +24,7 @@ export const CheckboxStandalone = forwardRef<
   HTMLInputElement,
   CheckboxStandaloneProps
 >(({ id, checked, ...restProps }, ref) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   const calculatedChecked = Array.isArray(checked)
     ? resolveCheckedGroup(checked)

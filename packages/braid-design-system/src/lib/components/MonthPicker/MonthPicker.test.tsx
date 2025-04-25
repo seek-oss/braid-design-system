@@ -11,7 +11,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByPlaceholderText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           value={{}}
           onChange={onChange}
@@ -34,7 +33,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByPlaceholderText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           value={{}}
           onChange={onChange}
@@ -56,12 +54,7 @@ describe('MonthPicker (Double dropdown)', () => {
   it('associates fieldset with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <MonthPicker
-          id="month-picker"
-          label="Start"
-          value={{}}
-          onChange={() => {}}
-        />
+        <MonthPicker label="Start" value={{}} onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -70,12 +63,7 @@ describe('MonthPicker (Double dropdown)', () => {
   it('associates fieldset with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <MonthPicker
-          id="month-picker"
-          aria-label="Start"
-          value={{}}
-          onChange={() => {}}
-        />
+        <MonthPicker aria-label="Start" value={{}} onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -86,7 +74,6 @@ describe('MonthPicker (Double dropdown)', () => {
       <BraidTestProvider>
         <div id="fieldLabel">Start</div>
         <MonthPicker
-          id="month-picker"
           aria-labelledby="fieldLabel"
           value={{}}
           onChange={() => {}}
@@ -101,7 +88,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           value={{}}
@@ -117,7 +103,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           value={{}}
@@ -133,7 +118,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           message="Required"
@@ -150,7 +134,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           message="Required"
@@ -167,7 +150,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           description="More detail about field"
@@ -186,7 +168,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           description="More detail about field"
@@ -205,7 +186,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           message="Required"
@@ -225,7 +205,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           message="Required"
@@ -245,7 +224,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           value={{}}
@@ -261,7 +239,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           value={{}}
@@ -277,7 +254,6 @@ describe('MonthPicker (Double dropdown)', () => {
     render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           yearLabel="Year"
@@ -303,7 +279,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           yearLabel="Year"
@@ -333,7 +308,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           yearLabel="Year"

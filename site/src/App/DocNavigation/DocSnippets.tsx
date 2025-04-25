@@ -23,11 +23,7 @@ export const DocSnippets = () => {
               <Text tone="secondary">{name}</Text>
               <BraidProvider styleBody={false} theme={theme}>
                 <PlayroomStateProvider>
-                  <DocExample
-                    id={`$group}_${name}`}
-                    Example={() => code}
-                    showCodeByDefault={false}
-                  />
+                  <DocExample Example={() => code} showCodeByDefault={false} />
                 </PlayroomStateProvider>
               </BraidProvider>
             </Stack>

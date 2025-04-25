@@ -571,7 +571,6 @@ const docs: ComponentDocs = {
                           label="Edit"
                           size="small"
                           variant="transparent"
-                          id={`edit-${row.column1}`}
                         />
                       </TableCell>
                     </TableRow>
@@ -674,7 +673,6 @@ const docs: ComponentDocs = {
                           label="Edit"
                           size="small"
                           variant="transparent"
-                          id={`edit-${row.column1}`}
                         />
                       </TableCell>
                     </TableRow>

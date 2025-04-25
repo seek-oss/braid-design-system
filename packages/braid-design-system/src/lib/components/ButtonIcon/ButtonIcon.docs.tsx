@@ -28,10 +28,10 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Inline space="small">
-        <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="example-1" />
-        <ButtonIcon icon={<IconAdd />} label="Add" id="example-2" />
-        <ButtonIcon icon={<IconShare />} label="Share" id="example-3" />
-        <ButtonIcon icon={<IconOverflow />} label="More" id="example-4" />
+        <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
+        <ButtonIcon icon={<IconAdd />} label="Add" />
+        <ButtonIcon icon={<IconShare />} label="Share" />
+        <ButtonIcon icon={<IconOverflow />} label="More" />
       </Inline>,
     ),
   accessibility: (
@@ -79,7 +79,6 @@ const docs: ComponentDocs = {
                 variant="soft"
                 icon={<IconSend />}
                 label="Soft variant"
-                id="variant-1"
               />
               <Text tone="secondary" size="xsmall">
                 SOFT
@@ -91,7 +90,6 @@ const docs: ComponentDocs = {
                 icon={<IconSend />}
                 label="Transparent variant"
                 bleed={false}
-                id="variant-2"
               />
               <Text tone="secondary" size="xsmall">
                 TRANSPARENT
@@ -123,12 +121,7 @@ const docs: ComponentDocs = {
         source(
           <Stack space="gutter">
             <Inline space="gutter" alignY="center">
-              <ButtonIcon
-                size="small"
-                icon={<IconEdit />}
-                label="Small size"
-                id="size-0"
-              />
+              <ButtonIcon size="small" icon={<IconEdit />} label="Small size" />
               <Text tone="secondary" size="xsmall">
                 SMALL
               </Text>
@@ -138,19 +131,13 @@ const docs: ComponentDocs = {
                 size="standard"
                 icon={<IconEdit />}
                 label="Standard size"
-                id="size-1"
               />
               <Text tone="secondary" size="xsmall">
                 STANDARD
               </Text>
             </Inline>
             <Inline space="gutter" alignY="center">
-              <ButtonIcon
-                size="large"
-                icon={<IconEdit />}
-                label="Large size"
-                id="size-2"
-              />
+              <ButtonIcon size="large" icon={<IconEdit />} label="Large size" />
               <Text tone="secondary" size="xsmall">
                 LARGE
               </Text>
@@ -176,7 +163,6 @@ const docs: ComponentDocs = {
                 variant="soft"
                 icon={<IconClear />}
                 label="Neutral tone"
-                id="tone-1"
               />
               <Text tone="secondary" size="xsmall">
                 NEUTRAL
@@ -188,7 +174,6 @@ const docs: ComponentDocs = {
                 variant="soft"
                 icon={<IconClear />}
                 label="Form Accent tone"
-                id="tone-2"
               />
               <Text tone="secondary" size="xsmall">
                 FORMACCENT
@@ -221,7 +206,6 @@ const docs: ComponentDocs = {
                 size="standard"
                 icon={<IconArrow direction="up" />}
                 label="The tooltipPlacement is “top”"
-                id="tooltip-placement-1"
                 tooltipPlacement="top"
               />
               <Text tone="secondary" size="xsmall">
@@ -233,7 +217,6 @@ const docs: ComponentDocs = {
                 size="standard"
                 icon={<IconArrow direction="down" />}
                 label="The tooltipPlacement is “bottom”"
-                id="tooltip-placement-2"
                 tooltipPlacement="bottom"
               />
               <Text tone="secondary" size="xsmall">
@@ -278,7 +261,6 @@ const docs: ComponentDocs = {
                     size="large"
                     icon={<IconHelp />}
                     label="Bleed"
-                    id="bleed-1"
                   />
                 </Inline>
               </Box>
@@ -295,7 +277,6 @@ const docs: ComponentDocs = {
                     size="large"
                     icon={<IconHelp />}
                     label="No Bleed"
-                    id="bleed-2"
                   />
                 </Inline>
               </Box>

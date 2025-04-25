@@ -113,7 +113,7 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Dialog">Dialog.</TextLink>
         </Text>
       ),
-      Example: ({ id, getState, toggleState, showToast }) =>
+      Example: ({ getState, toggleState, showToast }) =>
         source(
           <>
             <Inline space="none">
@@ -136,7 +136,6 @@ const docs: ComponentDocs = {
               </MenuRenderer>
             </Inline>
             <Dialog
-              id={id}
               width="content"
               title="Delete item?"
               open={getState('confirm')}

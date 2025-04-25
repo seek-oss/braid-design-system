@@ -7,11 +7,10 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -23,11 +22,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With option groups',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -47,11 +45,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With additional labels',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -69,11 +66,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -86,11 +82,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With an icon',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -103,11 +98,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -121,11 +115,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a positive message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -139,11 +132,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a caution message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             placeholder="Please select"
@@ -157,11 +149,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Disabled field',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Dropdown
             label="Label"
-            id={id}
             onChange={setState('dropdown')}
             value={getState('dropdown')}
             disabled={true}
