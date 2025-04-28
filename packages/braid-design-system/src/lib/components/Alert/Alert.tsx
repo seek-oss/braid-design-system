@@ -86,6 +86,7 @@ export const Alert = ({
       role="alert"
       aria-live="polite"
       textAlign="left"
+      className={styles.alert}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       <Columns space="small">
