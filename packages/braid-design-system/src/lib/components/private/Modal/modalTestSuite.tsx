@@ -16,10 +16,7 @@ import type { ModalProps } from './Modal';
 export const modalTestSuite = (
   name: string,
   ModalImplementation: ComponentType<
-    Pick<
-      ModalProps,
-      'id' | 'title' | 'closeLabel' | 'open' | 'onClose' | 'children'
-    >
+    Pick<ModalProps, 'title' | 'closeLabel' | 'open' | 'onClose' | 'children'>
   >,
 ) => {
   const CLOSE_LABEL = 'Close button';
@@ -34,7 +31,6 @@ export const modalTestSuite = (
         </Button>
         <input type="text" />
         <ModalImplementation
-          id="testModal"
           title={TITLE}
           closeLabel={CLOSE_LABEL}
           open={open}

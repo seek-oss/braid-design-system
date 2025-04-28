@@ -150,15 +150,9 @@ const docs: ComponentDocs = {
                     setState('closeReason', closeReason);
                   }}
                 >
-                  <MenuItem id="menuItem1" onClick={() => {}}>
-                    Item 1
-                  </MenuItem>
-                  <MenuItem id="menuItem2" onClick={() => {}}>
-                    Item 2
-                  </MenuItem>
-                  <MenuItem id="menuItem3" onClick={() => {}}>
-                    Item 3
-                  </MenuItem>
+                  <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                  <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                  <MenuItem onClick={() => {}}>Item 3</MenuItem>
                 </OverflowMenu>
               </Box>
               <Inline space="small" collapseBelow="tablet">
@@ -204,29 +198,17 @@ const docs: ComponentDocs = {
             <Inline alignY="center" space="medium">
               <Text>Standard</Text>
               <OverflowMenu size="standard" label="Options">
-                <MenuItem id="menuItem1" onClick={() => {}}>
-                  Item 1
-                </MenuItem>
-                <MenuItem id="menuItem2" onClick={() => {}}>
-                  Item 2
-                </MenuItem>
-                <MenuItem id="menuItem3" onClick={() => {}}>
-                  Item 3
-                </MenuItem>
+                <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                <MenuItem onClick={() => {}}>Item 3</MenuItem>
               </OverflowMenu>
             </Inline>
             <Inline alignY="center" space="medium">
               <Text size="small">Small</Text>
               <OverflowMenu size="small" label="Options">
-                <MenuItem id="menuItem1" onClick={() => {}}>
-                  Item 1
-                </MenuItem>
-                <MenuItem id="menuItem2" onClick={() => {}}>
-                  Item 2
-                </MenuItem>
-                <MenuItem id="menuItem3" onClick={() => {}}>
-                  Item 3
-                </MenuItem>
+                <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                <MenuItem onClick={() => {}}>Item 3</MenuItem>
               </OverflowMenu>
             </Inline>
           </Stack>,

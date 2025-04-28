@@ -3,7 +3,6 @@ import { createContext } from 'react';
 import type { RadioGroupProps } from './RadioGroup';
 
 interface RadioGroupContextValues {
-  id: RadioGroupProps['id'];
   name: string;
   value: RadioGroupProps['value'];
   disabled?: boolean;

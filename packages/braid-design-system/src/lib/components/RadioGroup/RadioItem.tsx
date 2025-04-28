@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { forwardRef, useContext } from 'react';
+import { forwardRef, useContext, useId } from 'react';
 
 import {
   RadioGroupContext,
@@ -47,10 +47,12 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
       radioItemContext === 0 && !Boolean(radioGroupContext.value);
     const tababble = checked || isFirstRadioWithNoCheckedValueInGroup;
 
+    const id = useId();
+
     return (
       <InlineField
         {...props}
-        id={`${radioGroupContext.id}_${radioItemContext}`}
+        id={id}
         name={radioGroupContext.name}
         checked={checked}
         onChange={radioGroupContext.onChange}

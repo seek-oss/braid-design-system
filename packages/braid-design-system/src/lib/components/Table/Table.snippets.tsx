@@ -125,11 +125,7 @@ export const snippets: Snippets = [
                 <Text>{row.column3}</Text>
               </TableCell>
               <TableCell width="content" align="right">
-                <OverflowMenu
-                  size="small"
-                  label="Options"
-                  id={`options-${row.column1}`}
-                >
+                <OverflowMenu size="small" label="Options">
                   <MenuItem>Option</MenuItem>
                   <MenuItem>Option</MenuItem>
                 </OverflowMenu>
@@ -186,11 +182,7 @@ export const snippets: Snippets = [
                 <Text>{row.column2}</Text>
               </TableCell>
               <TableCell width="content" align="right">
-                <OverflowMenu
-                  size="small"
-                  label="Options"
-                  id={`options-${row.line1}`}
-                >
+                <OverflowMenu size="small" label="Options">
                   <MenuItem>Option</MenuItem>
                   <MenuItem>Option</MenuItem>
                 </OverflowMenu>

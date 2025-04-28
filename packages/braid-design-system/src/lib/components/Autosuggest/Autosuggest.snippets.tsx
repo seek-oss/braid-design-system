@@ -8,7 +8,6 @@ export const snippets: Snippets = [
     name: 'Standard',
     code: source(
       <Autosuggest
-        id="fruit"
         label="Fruit"
         suggestions={[
           { text: 'Apples' },
@@ -23,7 +22,6 @@ export const snippets: Snippets = [
     code: source(
       <Autosuggest
         label="I like to eat"
-        id="grouped"
         suggestions={[
           {
             label: 'Fruit',
@@ -50,7 +48,6 @@ export const snippets: Snippets = [
     code: source(
       <Autosuggest
         showMobileBackdrop
-        id="mobile"
         label="Fruit"
         suggestions={[
           { text: 'Apples' },
@@ -65,7 +62,6 @@ export const snippets: Snippets = [
     code: source(
       <Autosuggest
         label="I like to eat"
-        id="error"
         tone="critical"
         message="You must make a selection"
         suggestions={[
@@ -81,7 +77,6 @@ export const snippets: Snippets = [
     code: source(
       <Autosuggest
         label="Fruit"
-        id="error"
         description="Select your favourite fruit to eat from the available suggestions."
         suggestions={[
           { text: 'Apples' },
@@ -95,7 +90,6 @@ export const snippets: Snippets = [
     name: 'With icon',
     code: source(
       <Autosuggest
-        id="location"
         aria-label="Location"
         icon={<IconLocation />}
         placeholder="Enter a location"

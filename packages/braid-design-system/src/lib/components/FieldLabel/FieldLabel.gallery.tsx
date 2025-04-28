@@ -7,14 +7,14 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id }) => source(<FieldLabel htmlFor={id} label="Label" />),
+      Example: () => source(<FieldLabel htmlFor="example" label="Label" />),
     },
     {
       label: 'With secondary label',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <FieldLabel
-            htmlFor={id}
+            htmlFor="secondaryExample"
             label="Label"
             secondaryLabel="Secondary label"
           />,
@@ -22,10 +22,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With tertiary label',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <FieldLabel
-            htmlFor={id}
+            htmlFor="tertiaryExample"
             label="Label"
             tertiaryLabel={<TextLink href="#">Tertiary label</TextLink>}
           />,
@@ -33,10 +33,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With all types',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <FieldLabel
-            htmlFor={id}
+            htmlFor="allTypesExample"
             label="Label"
             secondaryLabel="Secondary label"
             tertiaryLabel={<TextLink href="#">Tertiary label</TextLink>}

@@ -10,12 +10,7 @@ describe('PasswordField', () => {
     const onChange = jest.fn();
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="password"
-          label="Password"
-          value=""
-          onChange={onChange}
-        />
+        <PasswordField label="Password" value="" onChange={onChange} />
       </BraidTestProvider>,
     );
 
@@ -28,12 +23,7 @@ describe('PasswordField', () => {
     const onChange = jest.fn();
     const { getByRole, getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="password"
-          label="Password"
-          value=""
-          onChange={onChange}
-        />
+        <PasswordField label="Password" value="" onChange={onChange} />
       </BraidTestProvider>,
     );
 
@@ -50,7 +40,6 @@ describe('PasswordField', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <PasswordField
-          id="password"
           label="Password"
           value=""
           onChange={onChange}
@@ -71,13 +60,7 @@ describe('PasswordField', () => {
     const onChange = jest.fn();
     const { queryByRole } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="password"
-          label="Password"
-          disabled
-          value=""
-          onChange={onChange}
-        />
+        <PasswordField label="Password" disabled value="" onChange={onChange} />
       </BraidTestProvider>,
     );
 
@@ -88,12 +71,7 @@ describe('PasswordField', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="field"
-          label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <PasswordField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -103,12 +81,7 @@ describe('PasswordField', () => {
   it('associates field with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="field"
-          aria-label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <PasswordField aria-label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -135,7 +108,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="field"
           label="My field"
           message="Required"
           value=""
@@ -151,7 +123,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="field"
           label="My field"
           description="More detail about field"
           value=""
@@ -208,12 +179,7 @@ describe('PasswordField', () => {
   it('field is not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="field"
-          label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <PasswordField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -226,7 +192,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="field"
           label="My field"
           value=""
           onChange={() => {}}
@@ -242,7 +207,6 @@ describe('PasswordField', () => {
     render(
       <BraidTestProvider>
         <PasswordField
-          id="password"
           label="Password"
           value=""
           onChange={() => {}}
@@ -262,7 +226,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="password"
           label="Password"
           value=""
           onChange={() => {}}
@@ -282,7 +245,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="password"
           label="Password"
           value=""
           onChange={() => {}}
