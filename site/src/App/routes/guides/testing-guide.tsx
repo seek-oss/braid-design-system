@@ -7,6 +7,7 @@ import {
   List,
   Strong,
 } from 'braid-src/lib/components';
+import dedent from 'dedent';
 
 import type { Page } from '../../../types';
 import Code from '../../Code/Code';
@@ -95,7 +96,7 @@ const page: Page = {
         For example, a typical unit test written with React Testing Library
         might look something like this:
       </Text>
-      <Code playroom={false}>{`
+      <Code playroom={false}>{dedent`
         import { render } from '@testing-library/react';
 
         test('should open menu when clicked', () => {
@@ -115,7 +116,7 @@ const page: Page = {
         </TextLink>{' '}
         library exposes a high-level API for simulating browser events:
       </Text>
-      <Code playroom={false}>{`
+      <Code playroom={false}>{dedent`
         import { render } from '@testing-library/react';
         import userEvent from '@testing-library/user-event';
 

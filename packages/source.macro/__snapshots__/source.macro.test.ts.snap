@@ -14,7 +14,7 @@ const result = source({
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const result = {
-  code: "{\\n  // comment\\n  hello: () => 'world'\\n}",
+  code: '{\\n  // comment\\n  hello: () => "world"\\n}',
   value: {
     // comment
     hello: () => 'world',
@@ -75,7 +75,7 @@ const options = source(() => {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const options = {
-  code: '() => {\\n  sideEffect();\\n\\n  return [\\n  { value: "1", label: "Option 1" },\\n  { value: "2", label: "Option 2" },\\n  { value: "3", label: "Option 3" }];\\n\\n}',
+  code: '() => {\\n  sideEffect()\\n\\n  return [\\n    { value: "1", label: "Option 1" },\\n    { value: "2", label: "Option 2" },\\n    { value: "3", label: "Option 3" },\\n  ]\\n}',
   value: () => {
     sideEffect();
     return [
@@ -103,13 +103,103 @@ exports[`source.macro 5. code only: 5. code only 1`] = `
 import source from './source.macro';
 
 const result = source({
-  hello: () => 'world',
-  some: 'value',
+  hello: () => ({ world: '!', foo: 'bar'}),
 });
       
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const result = "{\\n  hello: () => 'world',\\n  some: 'value'\\n}";
+const result = '{\\n  hello: () => ({ world: "!", foo: "bar" })\\n}';
+
+`;
+
+exports[`source.macro 6. JSX with playroom state: 6. JSX with playroom state 1`] = `
+
+
+import source from './source.macro';
+const result =
+  <Code>
+    {({ setDefaultState, getState: getStateUntyped }) => {
+      const getState = getStateUntyped as (key: string) => MockJob[];
+      return source(
+        <>
+          {setDefaultState('jobs', [
+            {
+              id: 1,
+              title: 'Lead Designer',
+              location: 'Melbourne',
+            },
+            {
+              id: 2,
+              title: 'Senior Developer',
+              location: 'Sydney',
+            },
+            {
+              id: 3,
+              title: 'Product Manager',
+              location: 'Canberra',
+            },
+          ])}
+
+          <Stack space="medium">
+            {getState('jobs').map((job) => (
+              <Card key={job.id}>
+                <Stack space="small">
+                  <Text weight="strong">{job.title}</Text>
+                  <Text>{job.location}</Text>
+                </Stack>
+              </Card>
+            ))}
+          </Stack>
+        </>,
+      );
+    }}
+  </Code>;
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = (
+  <Code>
+    {({ setDefaultState, getState: getStateUntyped }) => {
+      const getState = getStateUntyped as (key: string) => MockJob[];
+      return {
+        code: '<>\\n  {setDefaultState("jobs", [\\n    {\\n      id: 1,\\n      title: "Lead Designer",\\n      location: "Melbourne",\\n    },\\n    {\\n      id: 2,\\n      title: "Senior Developer",\\n      location: "Sydney",\\n    },\\n    {\\n      id: 3,\\n      title: "Product Manager",\\n      location: "Canberra",\\n    },\\n  ])}\\n\\n  <Stack space="medium">\\n    {getState("jobs").map((job) => (\\n      <Card key={job.id}>\\n        <Stack space="small">\\n          <Text weight="strong">{job.title}</Text>\\n          <Text>{job.location}</Text>\\n        </Stack>\\n      </Card>\\n    ))}\\n  </Stack>\\n</>',
+        value: (
+          <>
+            {setDefaultState('jobs', [
+              {
+                id: 1,
+                title: 'Lead Designer',
+                location: 'Melbourne',
+              },
+              {
+                id: 2,
+                title: 'Senior Developer',
+                location: 'Sydney',
+              },
+              {
+                id: 3,
+                title: 'Product Manager',
+                location: 'Canberra',
+              },
+            ])}
+
+            <Stack space="medium">
+              {getState('jobs').map((job) => (
+                <Card key={job.id}>
+                  <Stack space="small">
+                    <Text weight="strong">{job.title}</Text>
+                    <Text>{job.location}</Text>
+                  </Stack>
+                </Card>
+              ))}
+            </Stack>
+          </>
+        ),
+      };
+    }}
+  </Code>
+);
 
 `;
