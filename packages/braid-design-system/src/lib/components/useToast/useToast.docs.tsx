@@ -1,5 +1,4 @@
 import source from '@braid-design-system/source.macro';
-import dedent from 'dedent';
 import { useId } from 'react';
 import Code from 'site/App/Code/Code';
 import { useThemeSettings } from 'site/App/ThemeSetting';
@@ -97,14 +96,14 @@ const docs: ComponentDocs = {
             application code, call the <Strong>useToast</Strong> Hook.
           </Text>
           <Code playroom={false}>
-            {dedent`
-          import { useToast } from 'braid-design-system';
+            {`
+              import { useToast } from 'braid-design-system';
 
-          export const Demo = () => {
-            const showToast = useToast();
+              export const Demo = () => {
+                const showToast = useToast();
 
-            // etc...
-          }
+                // etc...
+              }
         `}
           </Code>
           <Text>
@@ -113,16 +112,16 @@ const docs: ComponentDocs = {
             <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
           </Text>
           <Code playroom={false}>
-            {dedent`
-          import { BraidProvider, ToastProvider } from 'braid-design-system';
+            {`
+              import { BraidProvider, ToastProvider } from 'braid-design-system';
 
-          export const App = () => (
-            <BraidProvider>
-              <ToastProvider>
-                {/* App code... */}
-              </ToastProvider>
-            </BraidProvider>
-          )
+              export const App = () => (
+                <BraidProvider>
+                  <ToastProvider>
+                    {/* App code... */}
+                  </ToastProvider>
+                </BraidProvider>
+              )
         `}
           </Code>
         </>
