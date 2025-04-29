@@ -13,7 +13,6 @@ import {
   Column,
   Box,
 } from 'braid-src/lib/components';
-import dedent from 'dedent';
 
 import type { Page } from '../../../types';
 import Code from '../../Code/Code';
@@ -288,7 +287,7 @@ const DevelopmentWorkflow = () => (
       <InlineCode>flex-basis</InlineCode> value:
     </Text>
     <Code>
-      {dedent`
+      {`
         // myComponent.css.ts
         import { style } from '@vanilla-extract/css';
         import { vars, responsiveStyle } from 'braid-design-system/css';
@@ -310,7 +309,7 @@ const DevelopmentWorkflow = () => (
       and type checking within your editor.
     </Text>
     <Code>
-      {dedent`
+      {`
         // myComponent.ts
         import * as styles from './myComponent.css';
 

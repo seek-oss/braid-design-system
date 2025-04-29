@@ -1,4 +1,3 @@
-import dedent from 'dedent';
 import type { ComponentExample } from 'site/types';
 
 import { Notice, Strong, Text, TextLink } from '../';
@@ -40,5 +39,5 @@ export const dataAttributeDocs: CreateDataAttributeDocs = ({
       ) : null}
     </>
   ),
-  code: dedent(code),
+  code,
 });

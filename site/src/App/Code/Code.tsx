@@ -193,11 +193,15 @@ const parseInput = (
   input: ReactElementOrString | Source<ReactElementOrString>,
 ): Source<ReactElementOrString> => {
   if (typeof input === 'string') {
-    const code = formatSnippet(input);
+    // Dedent only if input starts with whitespace
+    const shouldDedent = /^\s+/.test(input);
+
+    const code = shouldDedent ? dedent(input) : input;
+    const formattedCode = formatSnippet(code);
 
     return {
-      code,
-      value: code,
+      code: formattedCode,
+      value: formattedCode,
     };
   }
 
