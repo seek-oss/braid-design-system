@@ -3,34 +3,22 @@ const prettier = require('@prettier/sync');
 const { createMacro } = require('babel-plugin-macros');
 
 module.exports = createMacro(
-  ({ babel: { types: t }, references, config: { codeOnly = false } }) => {
+  ({
+    babel: { types: t },
+    references,
+    config: { codeOnly = false, formatWithPrettier = true },
+  }) => {
     if (!references.default) {
       return;
     }
 
     references.default.forEach(({ parentPath }) => {
       const value = parentPath.node.arguments[0] || t.identifier('undefined');
-      const generatedCode = generate(value, { retainLines: true });
-      let { code } = generatedCode;
+      let { code } = generate(value, { retainLines: true });
 
-      const optionsPath = parentPath.get('arguments.1');
-      const macroOptions = { formatWithPrettier: true };
-
-      if (optionsPath) {
-        const { confident, value: optionsValue } = optionsPath.evaluate();
-
-        if (
-          confident &&
-          'formatWithPrettier' in optionsValue &&
-          optionsValue.formatWithPrettier === false
-        ) {
-          macroOptions.formatWithPrettier = optionsValue.formatWithPrettier;
-        }
-      }
-
-      if (macroOptions.formatWithPrettier) {
+      if (formatWithPrettier) {
         code = prettier
-          .format(generatedCode.code, {
+          .format(code, {
             parser: 'typescript',
             semi: false,
           })

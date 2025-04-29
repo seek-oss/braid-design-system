@@ -108,6 +108,7 @@ pluginTester({
       `,
     },
     'allows disabling prettier formatting': {
+      pluginOptions: { source: { formatWithPrettier: false } },
       code: /* ts */ `
         import source from './source.macro';
         const result =
@@ -148,16 +149,6 @@ pluginTester({
                 { formatWithPrettier: false });
             }}
           </Code>;
-      `,
-    },
-    'handles empty config object': {
-      code: /* ts */ `
-        import source from './source.macro';
-
-        const result = source(
-          <div />,
-          {}
-        );
       `,
     },
   },

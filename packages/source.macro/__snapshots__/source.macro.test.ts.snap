@@ -294,23 +294,3 @@ const result = (
 );
 
 `;
-
-exports[`source.macro 8. handles empty config object: 8. handles empty config object 1`] = `
-
-
-import source from './source.macro';
-
-const result = source(
-  <div />,
-  {}
-);
-      
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const result = {
-  code: '<div />',
-  value: <div />,
-};
-
-`;
