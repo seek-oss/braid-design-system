@@ -1,4 +1,5 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
+import source from '@braid-design-system/source.macro';
 import {
   Heading,
   Text,
@@ -19,7 +20,7 @@ import {
 } from 'braid-src/lib/components';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { Placeholder } from 'braid-src/lib/playroom/components';
-import type { ReactElement } from 'react';
+import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';
 import Code from '../../../Code/Code';
@@ -29,7 +30,7 @@ import { TextStack } from '../../../TextStack/TextStack';
 interface StepProps {
   heading?: string;
   detail: ReactNodeNoStrings;
-  children: ReactElement;
+  children: ComponentProps<typeof Code>['children'];
 }
 const Step = ({ heading, detail, children }: StepProps) => (
   <Stack space="xlarge">
@@ -129,17 +130,19 @@ const page: Page = {
             </Text>
           }
         >
-          <Card>
-            <Heading level="4">Product Designer</Heading>
-            <Text>Braid Design Pty Ltd</Text>
-            <Text>Melbourne</Text>
-            <Text>Information Technology</Text>
-            <Text>150k+</Text>
-            <Text>
-              Long description of card details providing more information.
-            </Text>
-            <Text>2d ago</Text>
-          </Card>
+          {source(
+            <Card>
+              <Heading level="4">Product Designer</Heading>
+              <Text>Braid Design Pty Ltd</Text>
+              <Text>Melbourne</Text>
+              <Text>Information Technology</Text>
+              <Text>150k+</Text>
+              <Text>
+                Long description of card details providing more information.
+              </Text>
+              <Text>2d ago</Text>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -155,19 +158,21 @@ const page: Page = {
             </Text>
           }
         >
-          <Card>
-            <Stack space="large">
-              <Heading level="4">Product Designer</Heading>
-              <Text>Braid Design Pty Ltd</Text>
-              <Text>Melbourne</Text>
-              <Text>Information Technology</Text>
-              <Text>150k+</Text>
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-              <Text>2d ago</Text>
-            </Stack>
-          </Card>
+          {source(
+            <Card>
+              <Stack space="large">
+                <Heading level="4">Product Designer</Heading>
+                <Text>Braid Design Pty Ltd</Text>
+                <Text>Melbourne</Text>
+                <Text>Information Technology</Text>
+                <Text>150k+</Text>
+                <Text>
+                  Long description of card details providing more information.
+                </Text>
+                <Text>2d ago</Text>
+              </Stack>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -184,26 +189,28 @@ const page: Page = {
             </Text>
           }
         >
-          <Card>
-            <Stack space="large">
-              <Stack space="small">
-                <Heading level="4">Product Designer</Heading>
-                <Text>Braid Design Pty Ltd</Text>
+          {source(
+            <Card>
+              <Stack space="large">
+                <Stack space="small">
+                  <Heading level="4">Product Designer</Heading>
+                  <Text>Braid Design Pty Ltd</Text>
+                </Stack>
+
+                <Stack space="small">
+                  <Text>Melbourne</Text>
+                  <Text>Information Technology</Text>
+                  <Text>150k+</Text>
+                </Stack>
+
+                <Text>
+                  Long description of card details providing more information.
+                </Text>
+
+                <Text>2d ago</Text>
               </Stack>
-
-              <Stack space="small">
-                <Text>Melbourne</Text>
-                <Text>Information Technology</Text>
-                <Text>150k+</Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text>2d ago</Text>
-            </Stack>
-          </Card>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -219,28 +226,30 @@ const page: Page = {
             </Text>
           }
         >
-          <Card>
-            <Stack space="large">
-              <Stack space="small">
-                <Heading level="4">Product Designer</Heading>
-                <Text>Braid Design Pty Ltd</Text>
+          {source(
+            <Card>
+              <Stack space="large">
+                <Stack space="small">
+                  <Heading level="4">Product Designer</Heading>
+                  <Text>Braid Design Pty Ltd</Text>
+                </Stack>
+
+                <Stack space="small">
+                  <Text tone="secondary">Melbourne</Text>
+                  <Text tone="secondary">Information Technology</Text>
+                  <Text tone="secondary">150k+</Text>
+                </Stack>
+
+                <Text>
+                  Long description of card details providing more information.
+                </Text>
+
+                <Text tone="secondary" size="small">
+                  2d ago
+                </Text>
               </Stack>
-
-              <Stack space="small">
-                <Text tone="secondary">Melbourne</Text>
-                <Text tone="secondary">Information Technology</Text>
-                <Text tone="secondary">150k+</Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="small">
-                2d ago
-              </Text>
-            </Stack>
-          </Card>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -254,34 +263,36 @@ const page: Page = {
             </Text>
           }
         >
-          <Card>
-            <Stack space="large">
-              <Stack space="small">
-                <Heading level="4">Product Designer</Heading>
-                <Text>Braid Design Pty Ltd</Text>
+          {source(
+            <Card>
+              <Stack space="large">
+                <Stack space="small">
+                  <Heading level="4">Product Designer</Heading>
+                  <Text>Braid Design Pty Ltd</Text>
+                </Stack>
+
+                <Stack space="small">
+                  <Text tone="secondary" icon={<IconLocation />}>
+                    Melbourne
+                  </Text>
+                  <Text tone="secondary" icon={<IconTag />}>
+                    Information Technology
+                  </Text>
+                  <Text tone="secondary" icon={<IconMoney />}>
+                    150k+
+                  </Text>
+                </Stack>
+
+                <Text>
+                  Long description of card details providing more information.
+                </Text>
+
+                <Text tone="secondary" size="small">
+                  2d ago
+                </Text>
               </Stack>
-
-              <Stack space="small">
-                <Text tone="secondary" icon={<IconLocation />}>
-                  Melbourne
-                </Text>
-                <Text tone="secondary" icon={<IconTag />}>
-                  Information Technology
-                </Text>
-                <Text tone="secondary" icon={<IconMoney />}>
-                  150k+
-                </Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="small">
-                2d ago
-              </Text>
-            </Stack>
-          </Card>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -295,35 +306,37 @@ const page: Page = {
             </Text>
           }
         >
-          <Card>
-            <Stack space="large">
-              <Stack space="small">
-                <Badge tone="positive">New</Badge>
-                <Heading level="4">Product Designer</Heading>
-                <Text>Braid Design Pty Ltd</Text>
+          {source(
+            <Card>
+              <Stack space="large">
+                <Stack space="small">
+                  <Badge tone="positive">New</Badge>
+                  <Heading level="4">Product Designer</Heading>
+                  <Text>Braid Design Pty Ltd</Text>
+                </Stack>
+
+                <Stack space="small">
+                  <Text tone="secondary" icon={<IconLocation />}>
+                    Melbourne
+                  </Text>
+                  <Text tone="secondary" icon={<IconTag />}>
+                    Information Technology
+                  </Text>
+                  <Text tone="secondary" icon={<IconMoney />}>
+                    150k+
+                  </Text>
+                </Stack>
+
+                <Text>
+                  Long description of card details providing more information.
+                </Text>
+
+                <Text tone="secondary" size="small">
+                  2d ago
+                </Text>
               </Stack>
-
-              <Stack space="small">
-                <Text tone="secondary" icon={<IconLocation />}>
-                  Melbourne
-                </Text>
-                <Text tone="secondary" icon={<IconTag />}>
-                  Information Technology
-                </Text>
-                <Text tone="secondary" icon={<IconMoney />}>
-                  150k+
-                </Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="small">
-                2d ago
-              </Text>
-            </Stack>
-          </Card>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -344,100 +357,8 @@ const page: Page = {
             </Stack>
           }
         >
-          <Card>
-            <Stack space="large">
-              <Stack space="small">
-                <Badge tone="positive">New</Badge>
-                <Heading level="4">Product Designer</Heading>
-                <Inline space="small" alignY="center">
-                  <Text>Braid Design Pty Ltd</Text>
-                  <Rating rating={4.5} />
-                </Inline>
-              </Stack>
-
-              <Stack space="small">
-                <Text tone="secondary" icon={<IconLocation />}>
-                  Melbourne
-                </Text>
-                <Text tone="secondary" icon={<IconTag />}>
-                  Information Technology
-                </Text>
-                <Text tone="secondary" icon={<IconMoney />}>
-                  150k+
-                </Text>
-              </Stack>
-
-              <Text>
-                Long description of card details providing more information.
-              </Text>
-
-              <Text tone="secondary" size="small">
-                2d ago
-              </Text>
-            </Stack>
-          </Card>
-        </Step>
-
-        <Step
-          heading="7. Add an action to the corner of the card"
-          detail={
-            <Stack space="xlarge">
-              <Text>
-                Sometimes adding new features can necessitate changing the
-                layout. First, we&rsquo;ll use a{' '}
-                <TextLink href="/components/spread">Spread</TextLink> component
-                to separate our content and action.
-              </Text>
-              <Text tone="secondary">
-                NOTE: To make this easier to follow, we&rsquo;ve replaced the
-                job content with a Placeholder.
-              </Text>
-            </Stack>
-          }
-        >
-          <Card>
-            <Spread space="small">
-              <Placeholder label="Job content" height={80} />
-              <Placeholder label="Save action" height={80} />
-            </Spread>
-          </Card>
-        </Step>
-
-        <Step
-          detail={
-            <Text>
-              For the save action we&rsquo;ll use a{' '}
-              <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink> with
-              an{' '}
-              <TextLink href="/components/IconBookmark">IconBookmark</TextLink>.
-              We can now replace our &ldquo;Save action&rdquo; Placeholder with
-              the ButtonIcon.
-            </Text>
-          }
-        >
-          <Card>
-            <Spread space="small">
-              <Placeholder label="Job content" height={80} />
-              <ButtonIcon
-                variant="transparent"
-                size="large"
-                icon={<IconBookmark />}
-                label="Save job"
-              />
-            </Spread>
-          </Card>
-        </Step>
-
-        <Step
-          detail={
-            <Text>
-              Now that we&rsquo;ve added the action, let&rsquo;s reinstate our
-              content by replacing the &ldquo;Job content&rdquo; Placeholder.
-            </Text>
-          }
-        >
-          <Card>
-            <Spread space="small">
+          {source(
+            <Card>
               <Stack space="large">
                 <Stack space="small">
                   <Badge tone="positive">New</Badge>
@@ -468,14 +389,114 @@ const page: Page = {
                   2d ago
                 </Text>
               </Stack>
-              <ButtonIcon
-                variant="transparent"
-                size="large"
-                icon={<IconBookmark />}
-                label="Save job"
-              />
-            </Spread>
-          </Card>
+            </Card>,
+          )}
+        </Step>
+
+        <Step
+          heading="7. Add an action to the corner of the card"
+          detail={
+            <Stack space="xlarge">
+              <Text>
+                Sometimes adding new features can necessitate changing the
+                layout. First, we&rsquo;ll use a{' '}
+                <TextLink href="/components/spread">Spread</TextLink> component
+                to separate our content and action.
+              </Text>
+              <Text tone="secondary">
+                NOTE: To make this easier to follow, we&rsquo;ve replaced the
+                job content with a Placeholder.
+              </Text>
+            </Stack>
+          }
+        >
+          {source(
+            <Card>
+              <Spread space="small">
+                <Placeholder label="Job content" height={80} />
+                <Placeholder label="Save action" height={80} />
+              </Spread>
+            </Card>,
+          )}
+        </Step>
+
+        <Step
+          detail={
+            <Text>
+              For the save action we&rsquo;ll use a{' '}
+              <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink> with
+              an{' '}
+              <TextLink href="/components/IconBookmark">IconBookmark</TextLink>.
+              We can now replace our &ldquo;Save action&rdquo; Placeholder with
+              the ButtonIcon.
+            </Text>
+          }
+        >
+          {source(
+            <Card>
+              <Spread space="small">
+                <Placeholder label="Job content" height={80} />
+                <ButtonIcon
+                  variant="transparent"
+                  size="large"
+                  icon={<IconBookmark />}
+                  label="Save job"
+                />
+              </Spread>
+            </Card>,
+          )}
+        </Step>
+
+        <Step
+          detail={
+            <Text>
+              Now that we&rsquo;ve added the action, let&rsquo;s reinstate our
+              content by replacing the &ldquo;Job content&rdquo; Placeholder.
+            </Text>
+          }
+        >
+          {source(
+            <Card>
+              <Spread space="small">
+                <Stack space="large">
+                  <Stack space="small">
+                    <Badge tone="positive">New</Badge>
+                    <Heading level="4">Product Designer</Heading>
+                    <Inline space="small" alignY="center">
+                      <Text>Braid Design Pty Ltd</Text>
+                      <Rating rating={4.5} />
+                    </Inline>
+                  </Stack>
+
+                  <Stack space="small">
+                    <Text tone="secondary" icon={<IconLocation />}>
+                      Melbourne
+                    </Text>
+                    <Text tone="secondary" icon={<IconTag />}>
+                      Information Technology
+                    </Text>
+                    <Text tone="secondary" icon={<IconMoney />}>
+                      150k+
+                    </Text>
+                  </Stack>
+
+                  <Text>
+                    Long description of card details providing more information.
+                  </Text>
+
+                  <Text tone="secondary" size="small">
+                    2d ago
+                  </Text>
+                </Stack>
+                <ButtonIcon
+                  variant="transparent"
+                  size="large"
+                  icon={<IconBookmark />}
+                  label="Save job"
+                />
+              </Spread>
+            </Card>,
+          )}
         </Step>
 
         <Text>

@@ -217,6 +217,7 @@ const parseInput = (
             showDefaultProps: false,
             showFunctions: false,
             filterProps: ['onChange', 'onBlur', 'onFocus'],
+            maxInlineAttributesLineLength: 60,
           }),
         ),
         value: input,
