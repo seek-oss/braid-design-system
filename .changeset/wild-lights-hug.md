@@ -5,6 +5,10 @@
 ---
 updated:
   - Alert
+  - Badge
+  - MenuRenderer
+  - OverflowMenu
+  - Table
 ---
 
-**Alert**: Ensure `Alert` content is not vertically clipped when used inside nested flex containers with full height elements.
+Ensure content is not clipped when used inside nested flex containers with stretched sibling elements

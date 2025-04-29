@@ -43,6 +43,8 @@ export const direction = styleVariants({
   horizontal: {
     overflowX: 'auto',
     overflowY: 'hidden',
+    // Ensures content doesn't clip when inside nested flex containers with stretched siblings
+    minHeight: 'fit-content',
   },
   vertical: {
     overflowX: 'hidden',
