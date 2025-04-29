@@ -203,3 +203,114 @@ const result = (
 );
 
 `;
+
+exports[`source.macro 7. allows disabling prettier formatting: 7. allows disabling prettier formatting 1`] = `
+
+
+import source from './source.macro';
+const result =
+  <Code>
+    {({ setDefaultState, getState: getStateUntyped }) => {
+      const getState = getStateUntyped as (key: string) => MockJob[];
+      return source(
+        <>
+          {setDefaultState('jobs', [
+            {
+              id: 1,
+              title: 'Lead Designer',
+              location: 'Melbourne',
+            },
+            {
+              id: 2,
+              title: 'Senior Developer',
+              location: 'Sydney',
+            },
+            {
+              id: 3,
+              title: 'Product Manager',
+              location: 'Canberra',
+            },
+          ])}
+
+          <Stack space="medium">
+            {getState('jobs').map((job) => (
+              <Card key={job.id}>
+                <Stack space="small">
+                  <Text weight="strong">{job.title}</Text>
+                  <Text>{job.location}</Text>
+                </Stack>
+              </Card>
+            ))}
+          </Stack>
+        </>,
+        { formatWithPrettier: false });
+    }}
+  </Code>;
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = (
+  <Code>
+    {({ setDefaultState, getState: getStateUntyped }) => {
+      const getState = getStateUntyped as (key: string) => MockJob[];
+      return {
+        code: "<>\\n          {setDefaultState('jobs', [\\n  {\\n    id: 1,\\n    title: 'Lead Designer',\\n    location: 'Melbourne'\\n  },\\n  {\\n    id: 2,\\n    title: 'Senior Developer',\\n    location: 'Sydney'\\n  },\\n  {\\n    id: 3,\\n    title: 'Product Manager',\\n    location: 'Canberra'\\n  }]\\n  )}\\n\\n          <Stack space=\\"medium\\">\\n            {getState('jobs').map((job) =>\\n    <Card key={job.id}>\\n                <Stack space=\\"small\\">\\n                  <Text weight=\\"strong\\">{job.title}</Text>\\n                  <Text>{job.location}</Text>\\n                </Stack>\\n              </Card>\\n    )}\\n          </Stack>\\n        </>",
+        value: (
+          <>
+            {setDefaultState('jobs', [
+              {
+                id: 1,
+                title: 'Lead Designer',
+                location: 'Melbourne',
+              },
+              {
+                id: 2,
+                title: 'Senior Developer',
+                location: 'Sydney',
+              },
+              {
+                id: 3,
+                title: 'Product Manager',
+                location: 'Canberra',
+              },
+            ])}
+
+            <Stack space="medium">
+              {getState('jobs').map((job) => (
+                <Card key={job.id}>
+                  <Stack space="small">
+                    <Text weight="strong">{job.title}</Text>
+                    <Text>{job.location}</Text>
+                  </Stack>
+                </Card>
+              ))}
+            </Stack>
+          </>
+        ),
+      };
+    }}
+  </Code>
+);
+
+`;
+
+exports[`source.macro 8. handles empty config object: 8. handles empty config object 1`] = `
+
+
+import source from './source.macro';
+
+const result = source(
+  <div />,
+  {}
+);
+      
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = {
+  code: '<div />',
+  value: <div />,
+};
+
+`;
