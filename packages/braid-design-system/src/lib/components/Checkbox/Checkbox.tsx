@@ -9,9 +9,7 @@ import { validTabIndexes } from '../private/validateTabIndex';
 
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 
-export interface CheckboxProps
-  extends Omit<InlineFieldProps, 'id' | 'checked'> {
-  id?: InlineFieldProps['id'];
+export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {
   checked: CheckboxChecked | boolean[];
 }
 
