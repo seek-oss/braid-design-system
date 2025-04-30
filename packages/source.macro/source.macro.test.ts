@@ -145,8 +145,7 @@ pluginTester({
                       </Card>
                     ))}
                   </Stack>
-                </>,
-                { formatWithPrettier: false });
+                </>)
             }}
           </Code>;
       `,
