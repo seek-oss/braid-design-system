@@ -11,8 +11,8 @@ The first argument passed to the macro will be returned both as a string and as 
 ```js
 import source from '@braid-design-system/source.macro';
 
-// Returns: { code: '<div>Hello world</div>', value: <div>Hello world</div> }
 const result = source(<div>Hello world</div>);
+// Returns { code: '<div>Hello world</div>', value: <div>Hello world</div> }
 ```
 
 This macro enables several capabilities that are not easily achievable with snippets:
