@@ -7,10 +7,10 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Critical',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <FieldMessage
-            id={id}
+            id="message1"
             tone="critical"
             message="This is a critical message."
           />,
@@ -18,10 +18,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Positive',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <FieldMessage
-            id={id}
+            id="message2"
             tone="positive"
             message="This is a positive message."
           />,
@@ -29,10 +29,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Caution',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <FieldMessage
-            id={id}
+            id="message3"
             tone="caution"
             message="This is a caution message."
           />,
@@ -40,10 +40,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Neutral',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <FieldMessage
-            id={id}
+            id="message4"
             tone="neutral"
             message="This is a neutral message."
           />,

@@ -85,7 +85,6 @@ export const galleryItems: GalleryComponent = {
             </Inline>
 
             <Dialog
-              id="dialog-animation-example"
               title={`A \"${getState('width')}\" dialog`}
               width={getState('width')}
               open={getState('width')}

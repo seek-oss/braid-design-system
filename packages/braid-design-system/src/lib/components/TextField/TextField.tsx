@@ -1,10 +1,4 @@
-import {
-  type AllHTMLAttributes,
-  forwardRef,
-  Fragment,
-  useId,
-  useRef,
-} from 'react';
+import { type AllHTMLAttributes, forwardRef, Fragment, useRef } from 'react';
 
 import { Box } from '../Box/Box';
 import { ClearField } from '../private/Field/ClearField';
@@ -89,9 +83,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         value.length > 0,
     );
 
-    // Todo - remove once `ButtonIcon` id prop is optional
-    const clearFieldButtonId = useId();
-
     return (
       <Field
         {...restProps}
@@ -108,7 +99,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         secondaryIcon={
           onClear ? (
             <ClearField
-              id={clearFieldButtonId}
               hide={!clearable}
               onClear={onClear}
               label={clearLabel}

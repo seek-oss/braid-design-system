@@ -9,7 +9,7 @@ describe('Dropdown', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Dropdown id="field" label="My dropdown" value="" onChange={() => {}}>
+        <Dropdown label="My dropdown" value="" onChange={() => {}}>
           <option>1</option>
         </Dropdown>
       </BraidTestProvider>,
@@ -21,12 +21,7 @@ describe('Dropdown', () => {
   it('associates field with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Dropdown
-          id="field"
-          aria-label="My dropdown"
-          value=""
-          onChange={() => {}}
-        >
+        <Dropdown aria-label="My dropdown" value="" onChange={() => {}}>
           <option>1</option>
         </Dropdown>
       </BraidTestProvider>,
@@ -57,7 +52,6 @@ describe('Dropdown', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Dropdown
-          id="field"
           label="My dropdown"
           message="Required"
           value=""
@@ -77,7 +71,6 @@ describe('Dropdown', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Dropdown
-          id="field"
           label="My dropdown"
           description="More detail about field"
           value=""
@@ -140,7 +133,7 @@ describe('Dropdown', () => {
   it('field is not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Dropdown id="field" label="My dropdown" value="" onChange={() => {}}>
+        <Dropdown label="My dropdown" value="" onChange={() => {}}>
           <option>1</option>
         </Dropdown>
       </BraidTestProvider>,
@@ -155,7 +148,6 @@ describe('Dropdown', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Dropdown
-          id="field"
           label="My dropdown"
           value=""
           onChange={() => {}}
@@ -182,7 +174,6 @@ describe('Dropdown', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Dropdown
-          id="field"
           label="My dropdown"
           value="1"
           onChange={() => {}}
@@ -208,7 +199,7 @@ describe('Dropdown', () => {
   it('field has blank option selected when value is blank', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Dropdown id="field" label="My dropdown" value="" onChange={() => {}}>
+        <Dropdown label="My dropdown" value="" onChange={() => {}}>
           <option>1</option>
         </Dropdown>
       </BraidTestProvider>,
@@ -229,7 +220,7 @@ describe('Dropdown', () => {
   it('field should be missing blank option when an option is selected', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Dropdown id="field" label="My dropdown" value="1" onChange={() => {}}>
+        <Dropdown label="My dropdown" value="1" onChange={() => {}}>
           <option>1</option>
         </Dropdown>
       </BraidTestProvider>,
@@ -246,7 +237,6 @@ describe('Dropdown', () => {
     render(
       <BraidTestProvider>
         <Dropdown
-          id="field"
           label="My dropdown"
           value="1"
           onChange={() => {}}
@@ -268,7 +258,6 @@ describe('Dropdown', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Dropdown
-          id="field"
           label="My dropdown"
           value="1"
           onChange={() => {}}
@@ -290,7 +279,6 @@ describe('Dropdown', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Dropdown
-          id="field"
           label="My dropdown"
           value="1"
           onChange={() => {}}

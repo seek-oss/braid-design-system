@@ -10,12 +10,7 @@ describe('Checkbox', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Checkbox
-          id="field"
-          label="My field"
-          onChange={() => {}}
-          checked={false}
-        />
+        <Checkbox label="My field" onChange={() => {}} checked={false} />
       </BraidTestProvider>,
     );
 
@@ -26,7 +21,6 @@ describe('Checkbox', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Checkbox
-          id="field"
           label="My field"
           message="Required"
           onChange={() => {}}
@@ -42,7 +36,6 @@ describe('Checkbox', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Checkbox
-          id="field"
           label="My field"
           description="More detail about field"
           onChange={() => {}}
@@ -60,7 +53,6 @@ describe('Checkbox', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Checkbox
-          id="field"
           label="My field"
           message="Required"
           description="More detail about field"
@@ -78,12 +70,7 @@ describe('Checkbox', () => {
   it('field is not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Checkbox
-          id="field"
-          label="My field"
-          onChange={() => {}}
-          checked={false}
-        />
+        <Checkbox label="My field" onChange={() => {}} checked={false} />
       </BraidTestProvider>,
     );
 
@@ -95,12 +82,7 @@ describe('Checkbox', () => {
   it('should communicate the checked state to a screen reader', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Checkbox
-          id="field"
-          label="My field"
-          onChange={() => {}}
-          checked={true}
-        />
+        <Checkbox label="My field" onChange={() => {}} checked={true} />
       </BraidTestProvider>,
     );
 
@@ -110,12 +92,7 @@ describe('Checkbox', () => {
   it('should communicate the unchecked state to a screen reader', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Checkbox
-          id="field"
-          label="My field"
-          onChange={() => {}}
-          checked={false}
-        />
+        <Checkbox label="My field" onChange={() => {}} checked={false} />
       </BraidTestProvider>,
     );
 
@@ -125,12 +102,7 @@ describe('Checkbox', () => {
   it('should communicate the mixed state to a screen reader', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Checkbox
-          id="field"
-          label="My field"
-          onChange={() => {}}
-          checked="mixed"
-        />
+        <Checkbox label="My field" onChange={() => {}} checked="mixed" />
       </BraidTestProvider>,
     );
 
@@ -144,7 +116,6 @@ describe('Checkbox', () => {
       return (
         <BraidTestProvider>
           <Checkbox
-            id="field"
             label="My field"
             onChange={(ev) => setChecked(ev.currentTarget.checked)}
             checked={checked}
@@ -175,12 +146,7 @@ describe('Checkbox', () => {
   it('should not toggle state when forced to `mixed`', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Checkbox
-          id="field"
-          label="My field"
-          onChange={() => {}}
-          checked="mixed"
-        />
+        <Checkbox label="My field" onChange={() => {}} checked="mixed" />
       </BraidTestProvider>,
     );
     const checkbox = getByRole('checkbox') as HTMLInputElement;
@@ -200,7 +166,6 @@ describe('Checkbox', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Checkbox
-          id="field"
           label="My field"
           onChange={() => {}}
           checked={[false, true, false]}
@@ -218,7 +183,6 @@ describe('Checkbox', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Checkbox
-          id="field"
           label="My field"
           onChange={() => {}}
           checked={[false, true, true]}
@@ -236,7 +200,6 @@ describe('Checkbox', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Checkbox
-          id="field"
           label="My field"
           onChange={() => {}}
           checked={[true, true, true]}
@@ -254,7 +217,6 @@ describe('Checkbox', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Checkbox
-          id="field"
           label="My field"
           onChange={() => {}}
           checked={[false, false, false]}
@@ -271,12 +233,7 @@ describe('Checkbox', () => {
   it('should resolve to unchecked when an empty array is provided', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Checkbox
-          id="field"
-          label="My field"
-          onChange={() => {}}
-          checked={[]}
-        />
+        <Checkbox label="My field" onChange={() => {}} checked={[]} />
       </BraidTestProvider>,
     );
     const checkbox = getByRole('checkbox') as HTMLInputElement;
