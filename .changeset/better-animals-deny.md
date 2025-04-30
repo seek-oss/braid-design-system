@@ -1,5 +1,5 @@
 ---
-'@braid-design-system/source.macro': minor
+'@braid-design-system/source.macro': major
 ---
 
 Run `prettier` on macro code output
