@@ -37,9 +37,7 @@ describe('AccordionItem', () => {
   it('should provide internal state by default', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
-        <AccordionItem id="content" label="Label">
-          Content
-        </AccordionItem>
+        <AccordionItem label="Label">Content</AccordionItem>
       </BraidTestProvider>,
     );
 
@@ -68,7 +66,7 @@ describe('AccordionItem', () => {
 
     const { getByRole } = render(
       <BraidTestProvider>
-        <AccordionItem id="content" label="Label" onToggle={toggleHander}>
+        <AccordionItem label="Label" onToggle={toggleHander}>
           Content
         </AccordionItem>
       </BraidTestProvider>,
@@ -92,7 +90,6 @@ describe('AccordionItem', () => {
       return (
         <BraidTestProvider>
           <AccordionItem
-            id="content"
             label="Label"
             expanded={expanded}
             onToggle={setExpanded}

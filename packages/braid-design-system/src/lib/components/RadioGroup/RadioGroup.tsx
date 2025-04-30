@@ -70,7 +70,6 @@ const RadioGroup = ({
       {(fieldGroupProps) => (
         <RadioGroupContext.Provider
           value={{
-            id,
             value,
             name: name || fallbackName,
             onChange,

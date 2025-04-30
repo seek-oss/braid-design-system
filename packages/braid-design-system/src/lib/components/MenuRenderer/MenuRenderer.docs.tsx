@@ -457,15 +457,9 @@ const docs: ComponentDocs = {
                   </Box>
                 )}
               >
-                <MenuItem id="menuItem1" onClick={() => {}}>
-                  Item 1
-                </MenuItem>
-                <MenuItem id="menuItem2" onClick={() => {}}>
-                  Item 2
-                </MenuItem>
-                <MenuItem id="menuItem3" onClick={() => {}}>
-                  Item 3
-                </MenuItem>
+                <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                <MenuItem onClick={() => {}}>Item 3</MenuItem>
               </MenuRenderer>
               <Inline space="small" collapseBelow="tablet">
                 {getState('action') ? (

@@ -3,8 +3,10 @@ import {
   type ReactElement,
   cloneElement,
   forwardRef,
+  useId,
 } from 'react';
 
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import type { BadgeProps } from '../../Badge/Badge';
 import { Box } from '../../Box/Box';
 import type { FieldLabelProps } from '../../FieldLabel/FieldLabel';
@@ -75,8 +77,9 @@ export const InlineField = forwardRef<
     },
     forwardedRef,
   ) => {
-    const messageId = `${id}-message`;
-    const descriptionId = `${id}-description`;
+    const resolvedId = useFallbackId(id);
+    const messageId = useId();
+    const descriptionId = useId();
     const hasMessage = (message && !disabled) || reserveMessageSpace;
 
     if (process.env.NODE_ENV !== 'production') {
@@ -96,7 +99,7 @@ export const InlineField = forwardRef<
           <StyledInput
             {...restProps}
             type={type}
-            id={id}
+            id={resolvedId}
             checked={checked}
             name={name}
             value={value}
@@ -122,7 +125,7 @@ export const InlineField = forwardRef<
             >
               <Box
                 component="label"
-                htmlFor={id}
+                htmlFor={resolvedId}
                 userSelect="none"
                 display="block"
                 cursor={!disabled ? 'pointer' : undefined}
