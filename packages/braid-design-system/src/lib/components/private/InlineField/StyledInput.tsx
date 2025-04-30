@@ -27,7 +27,7 @@ export type CheckboxChecked =
 
 type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
 export interface StyledInputProps {
-  id: NonNullable<InputElementProps['id']>;
+  id?: InputElementProps['id'];
   onChange: NonNullable<InputElementProps['onChange']>;
   value?: InputElementProps['value'];
   name?: InputElementProps['name'];

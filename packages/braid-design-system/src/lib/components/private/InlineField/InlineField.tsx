@@ -28,7 +28,6 @@ import * as styles from './InlineField.css';
 import { virtualTouchable } from '../touchable/virtualTouchable.css';
 
 interface InlineFieldBaseProps {
-  id?: StyledInputProps['id'];
   label: NonNullable<FieldLabelProps['label']>;
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
@@ -39,11 +38,11 @@ interface InlineFieldBaseProps {
 
 export type InlineFieldProps = Omit<
   StyledInputProps,
-  'id' | 'aria-label' | 'aria-labelledby'
+  'aria-label' | 'aria-labelledby'
 > &
   InlineFieldBaseProps;
 
-type PrivateInlineFieldProps = Omit<PrivateStyledInputProps, 'id'> &
+type PrivateInlineFieldProps = PrivateStyledInputProps &
   InlineFieldBaseProps & {
     inList?: boolean;
   };
