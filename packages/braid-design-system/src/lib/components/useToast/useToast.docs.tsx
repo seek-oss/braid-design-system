@@ -97,13 +97,13 @@ const docs: ComponentDocs = {
           </Text>
           <Code playroom={false}>
             {`
-          import { useToast } from 'braid-design-system';
+              import { useToast } from 'braid-design-system';
 
-          export const Demo = () => {
-            const showToast = useToast();
+              export const Demo = () => {
+                const showToast = useToast();
 
-            // etc...
-          }
+                // etc...
+              }
         `}
           </Code>
           <Text>
@@ -113,15 +113,15 @@ const docs: ComponentDocs = {
           </Text>
           <Code playroom={false}>
             {`
-          import { BraidProvider, ToastProvider } from 'braid-design-system';
+              import { BraidProvider, ToastProvider } from 'braid-design-system';
 
-          export const App = () => (
-            <BraidProvider>
-              <ToastProvider>
-                {/* App code... */}
-              </ToastProvider>
-            </BraidProvider>
-          )
+              export const App = () => (
+                <BraidProvider>
+                  <ToastProvider>
+                    {/* App code... */}
+                  </ToastProvider>
+                </BraidProvider>
+              )
         `}
           </Code>
         </>
