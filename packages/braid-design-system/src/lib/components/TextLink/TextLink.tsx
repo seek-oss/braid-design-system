@@ -34,7 +34,7 @@ export interface TextLinkProps
   extends TextLinkStyles,
     Omit<LinkComponentProps, 'className' | 'style'> {
   data?: DataAttributeMap;
-  icon?: ReactElement<UseIconProps>;
+  icon?: ReactElement<UseIconProps> | null;
 }
 
 const isPlainBackground = (

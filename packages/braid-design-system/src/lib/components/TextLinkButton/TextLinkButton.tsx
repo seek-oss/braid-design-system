@@ -30,7 +30,7 @@ export interface TextLinkButtonProps
   'aria-describedby'?: NativeSpanProps['aria-describedby'];
   'aria-label'?: NativeSpanProps['aria-label'];
   tabIndex?: NativeSpanProps['tabIndex'];
-  icon?: ReactElement<UseIconProps>;
+  icon?: ReactElement<UseIconProps> | null;
 }
 
 const noop = () => {};

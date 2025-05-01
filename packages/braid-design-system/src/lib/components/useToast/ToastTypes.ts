@@ -15,7 +15,7 @@ export interface InternalToast {
   dedupeKey: string;
   vanillaTheme: string;
   tone: 'positive' | 'critical' | 'neutral';
-  icon?: ReactElement<UseIconProps>;
+  icon?: ReactElement<UseIconProps> | null;
   message: string;
   shouldRemove: boolean;
   description?: string;
