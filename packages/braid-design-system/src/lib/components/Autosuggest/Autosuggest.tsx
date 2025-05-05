@@ -770,7 +770,6 @@ export const Autosuggest = forwardRef(function <Value>(
                   ref={inputRef}
                 />
                 {icon}
-                {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
                 {overlays}
                 {secondaryIcon}
               </Box>
@@ -784,6 +783,7 @@ export const Autosuggest = forwardRef(function <Value>(
             lockPlacement
             offsetSpace="none"
           >
+            {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
             <RemoveScroll ref={menuRef} forwardProps>
               <Box
                 textAlign="left"
