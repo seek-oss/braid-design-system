@@ -42,7 +42,7 @@ const baseArrow = style({
   left: `clamp(${[
     space[arrowEdgePadding],
     horizontalOffset,
-    calc('100%').subtract(space[arrowEdgePadding])
+    calc('100%').subtract(space[arrowEdgePadding]),
   ].join(', ')})`,
   transform: 'translateX(-50%)',
   visibility: 'hidden',
