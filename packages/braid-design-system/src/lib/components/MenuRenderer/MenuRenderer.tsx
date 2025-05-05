@@ -280,7 +280,7 @@ export const MenuRenderer = ({
 
   return (
     <Box {...buildDataAttributes({ data, validateRestProps: restProps })}>
-      <Box>{trigger(triggerProps, { open })}</Box>
+      {trigger(triggerProps, { open })}
 
       <Popover
         open={open}
