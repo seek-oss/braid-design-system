@@ -19,7 +19,7 @@ import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 
-import * as styles from '../TooltipRenderer/TooltipRenderer.css';
+import * as styles from './TooltipRenderer.css';
 
 const edgeOffset = 'xxsmall';
 
