@@ -15,7 +15,6 @@ describe('TextDropdown', () => {
         <BraidTestProvider>
           <Text>
             <TextDropdown
-              id="content"
               label="Label"
               value={value}
               onChange={setValue}
@@ -39,7 +38,6 @@ describe('TextDropdown', () => {
       <BraidTestProvider>
         <Text>
           <TextDropdown
-            id="content"
             label="Label"
             value="One"
             onChange={() => {}}
@@ -62,7 +60,6 @@ describe('TextDropdown', () => {
       <BraidTestProvider>
         <Text>
           <TextDropdown
-            id="content"
             label="Label"
             value="One"
             onChange={() => {}}
@@ -85,7 +82,6 @@ describe('TextDropdown', () => {
       <BraidTestProvider>
         <Text>
           <TextDropdown
-            id="content"
             label="Label"
             value="One"
             onChange={() => {}}

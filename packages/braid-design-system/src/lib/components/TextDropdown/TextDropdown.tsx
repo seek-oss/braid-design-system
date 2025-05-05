@@ -1,7 +1,8 @@
 import assert from 'assert';
 
-import { type FormEvent, useContext, useId } from 'react';
+import { type FormEvent, useContext } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { Box } from '../Box/Box';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
@@ -78,8 +79,7 @@ export function TextDropdown<Value>({
     );
   }
 
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
+  const resolvedId = useFallbackId(id);
 
   return (
     <Box

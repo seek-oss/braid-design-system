@@ -10,11 +10,10 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id }) => {
+      Example: () => {
         const [state, setState] = useState(false);
         return (
           <Checkbox
-            id={id}
             checked={state}
             onChange={() => setState(!state)}
             label="Label"
@@ -24,11 +23,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Small',
-      Example: ({ id }) => {
+      Example: () => {
         const [state, setState] = useState(false);
         return (
           <Checkbox
-            id={id}
             checked={state}
             onChange={() => setState(!state)}
             label="Label"
@@ -39,43 +37,39 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Checked',
-      Example: ({ id, handler }) => (
-        <Checkbox id={id} checked={true} onChange={handler} label="Label" />
+      Example: ({ handler }) => (
+        <Checkbox checked={true} onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Mixed state',
-      Example: ({ id, handler }) => (
-        <Checkbox id={id} checked="mixed" onChange={handler} label="Label" />
+      Example: ({ handler }) => (
+        <Checkbox checked="mixed" onChange={handler} label="Label" />
       ),
     },
     {
       label: 'Disabled',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="gutter">
           <Checkbox
-            id={`${id}_1`}
             disabled={true}
             checked={false}
             onChange={handler}
             label="Unchecked"
           />
           <Checkbox
-            id={`${id}_2`}
             disabled={true}
             checked={true}
             onChange={handler}
             label="Checked"
           />
           <Checkbox
-            id={`${id}_3`}
             disabled={true}
             checked="mixed"
             onChange={handler}
             label="Mixed"
           />
           <Checkbox
-            id={`${id}_4`}
             disabled={true}
             checked={false}
             onChange={handler}
@@ -83,7 +77,6 @@ export const screenshots: ComponentScreenshot = {
             tone="critical"
           />
           <Checkbox
-            id={`${id}_5`}
             disabled={true}
             checked={true}
             onChange={handler}
@@ -91,7 +84,6 @@ export const screenshots: ComponentScreenshot = {
             tone="critical"
           />
           <Checkbox
-            id={`${id}_6`}
             disabled={true}
             checked="mixed"
             onChange={handler}
@@ -99,7 +91,6 @@ export const screenshots: ComponentScreenshot = {
             tone="critical"
           />
           <Checkbox
-            id={`${id}_7`}
             disabled={true}
             checked={false}
             onChange={handler}
@@ -108,7 +99,6 @@ export const screenshots: ComponentScreenshot = {
             message="Message"
           />
           <Checkbox
-            id={`${id}_8`}
             disabled={true}
             checked={true}
             onChange={handler}
@@ -117,7 +107,6 @@ export const screenshots: ComponentScreenshot = {
             message="Message"
           />
           <Checkbox
-            id={`${id}_9`}
             disabled={true}
             checked="mixed"
             onChange={handler}
@@ -130,9 +119,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Critical',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Checkbox
-          id={id}
           checked={false}
           onChange={handler}
           label="Label"
@@ -143,9 +131,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With a description',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Checkbox
-          id={id}
           checked={false}
           onChange={handler}
           label="Label"
@@ -155,9 +142,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With a Badge',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Checkbox
-          id={id}
           checked={false}
           onChange={handler}
           label="Label"
@@ -171,9 +157,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With a Badge and description',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Checkbox
-          id={id}
           checked={false}
           onChange={handler}
           label="Label"
@@ -188,11 +173,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With nested content visible only when checked',
-      Example: ({ id }) => {
+      Example: () => {
         const [state, setState] = useState(true);
         return (
           <Checkbox
-            id={id}
             checked={state}
             onChange={() => setState(!state)}
             label="Label"
@@ -204,9 +188,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With nested content and description',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Checkbox
-          id={id}
           checked={true}
           onChange={handler}
           label="Label"
@@ -218,9 +201,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With a message and description',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Checkbox
-          id={id}
           checked={false}
           onChange={handler}
           label="Label"
@@ -232,9 +214,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With nested content, a message and description',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Checkbox
-          id={id}
           checked={true}
           onChange={handler}
           label="Label"
@@ -248,12 +229,11 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Virtual touch target',
-      Example: ({ id }) => {
+      Example: () => {
         const [state, setState] = useState(false);
         return (
           <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
             <Checkbox
-              id={`${id}-1`}
               checked={state}
               onChange={() => setState(!state)}
               label="Label"
@@ -261,7 +241,6 @@ export const screenshots: ComponentScreenshot = {
             />
 
             <Checkbox
-              id={`${id}-2`}
               checked={state}
               onChange={() => setState(!state)}
               label="Label"
@@ -273,22 +252,12 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Contrast',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Box maxWidth="xsmall">
           <BackgroundContrastTest>
             <Tiles space="small" columns={2}>
-              <Checkbox
-                id={id}
-                checked={false}
-                onChange={handler}
-                label="Label"
-              />
-              <Checkbox
-                id={id}
-                checked={true}
-                onChange={handler}
-                label="Label"
-              />
+              <Checkbox checked={false} onChange={handler} label="Label" />
+              <Checkbox checked={true} onChange={handler} label="Label" />
             </Tiles>
           </BackgroundContrastTest>
         </Box>
@@ -296,10 +265,9 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Test: should be left aligned in a centered Stack',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="large" align="center">
           <Checkbox
-            id={id}
             checked={false}
             onChange={handler}
             label="Dolor cillum elit aliquip velit reprehenderit."

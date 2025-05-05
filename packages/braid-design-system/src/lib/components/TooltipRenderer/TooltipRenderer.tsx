@@ -10,6 +10,7 @@ import {
   useState,
 } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../Box/Box';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
@@ -91,7 +92,7 @@ interface TriggerProps {
 }
 
 export interface TooltipRendererProps {
-  id: string;
+  id?: string;
   tooltip: ReactNodeNoStrings;
   placement?: PopoverProps['placement'];
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
@@ -103,6 +104,8 @@ export const TooltipRenderer = ({
   placement = 'top',
   children,
 }: TooltipRendererProps) => {
+  const resolvedId = useFallbackId(id);
+
   const tooltipRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
@@ -181,12 +184,12 @@ export const TooltipRenderer = ({
           triggerProps: {
             tabIndex: 0,
             ref: triggerRef,
-            'aria-describedby': id,
+            'aria-describedby': resolvedId,
           },
         })}
       </Box>
       <Popover
-        id={id}
+        id={resolvedId}
         role="tooltip"
         ref={tooltipRef}
         offsetSpace="small"

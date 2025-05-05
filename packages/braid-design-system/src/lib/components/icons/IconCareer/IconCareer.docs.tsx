@@ -55,7 +55,6 @@ const docs: ComponentDocs = {
                   ? 'Career: active = true'
                   : 'Career: active = false'
               }
-              id="toggle-example"
               onClick={() => toggleState('active')}
             />
 

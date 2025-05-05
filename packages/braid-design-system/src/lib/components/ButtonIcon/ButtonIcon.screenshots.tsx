@@ -11,9 +11,7 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Default',
       background: 'surface',
-      Example: () => (
-        <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="1" />
-      ),
+      Example: () => <ButtonIcon icon={<IconBookmark />} label="Bookmark" />,
     },
     {
       label: 'Soft',
@@ -25,21 +23,18 @@ export const screenshots: ComponentScreenshot = {
             size="small"
             icon={<IconBookmark />}
             label="Small"
-            id="1"
           />
           <ButtonIcon
             variant="soft"
             size="standard"
             icon={<IconBookmark />}
             label="Standard"
-            id="2"
           />
           <ButtonIcon
             variant="soft"
             size="large"
             icon={<IconBookmark />}
             label="Large"
-            id="3"
           />
         </Inline>
       ),
@@ -52,12 +47,7 @@ export const screenshots: ComponentScreenshot = {
           <Box background="surface">
             <Inline space="small" alignY="center">
               <Heading level="2">Heading</Heading>
-              <ButtonIcon
-                bleed
-                icon={<IconBookmark />}
-                label="Bookmark"
-                id="1"
-              />
+              <ButtonIcon bleed icon={<IconBookmark />} label="Bookmark" />
             </Inline>
           </Box>
         </Box>
@@ -75,7 +65,6 @@ export const screenshots: ComponentScreenshot = {
                 bleed={false}
                 icon={<IconBookmark />}
                 label="Bookmark"
-                id="1"
               />
             </Inline>
           </Box>
@@ -92,21 +81,18 @@ export const screenshots: ComponentScreenshot = {
             size="small"
             icon={<IconBookmark />}
             label="Small"
-            id="1"
           />
           <ButtonIcon
             variant="transparent"
             size="standard"
             icon={<IconBookmark />}
             label="Standard"
-            id="2"
           />
           <ButtonIcon
             variant="transparent"
             size="large"
             icon={<IconBookmark />}
             label="Large"
-            id="3"
           />
         </Inline>
       ),
@@ -121,14 +107,12 @@ export const screenshots: ComponentScreenshot = {
             tone="formAccent"
             icon={<IconBookmark />}
             label="Bookmark"
-            id="1"
           />
           <ButtonIcon
             variant="soft"
             tone="formAccent"
             icon={<IconBookmark />}
             label="Bookmark"
-            id="1"
           />
         </Inline>
       ),
@@ -143,21 +127,18 @@ export const screenshots: ComponentScreenshot = {
               icon={<IconBookmark />}
               label="Bookmark"
               size="small"
-              id="1"
             />
             <ButtonIcon
               variant="soft"
               icon={<IconBookmark />}
               label="Bookmark"
               size="standard"
-              id="2"
             />
             <ButtonIcon
               variant="soft"
               icon={<IconBookmark />}
               label="Bookmark"
               size="large"
-              id="3"
             />
           </Inline>
           <Inline space="large">
@@ -166,21 +147,18 @@ export const screenshots: ComponentScreenshot = {
               icon={<IconBookmark />}
               label="Bookmark"
               size="small"
-              id="4"
             />
             <ButtonIcon
               variant="transparent"
               icon={<IconBookmark />}
               label="Bookmark"
               size="standard"
-              id="5"
             />
             <ButtonIcon
               variant="transparent"
               icon={<IconBookmark />}
               label="Bookmark"
               size="large"
-              id="6"
             />
           </Inline>
         </Stack>
@@ -198,7 +176,6 @@ export const screenshots: ComponentScreenshot = {
                 variant="transparent"
                 icon={<IconBookmark />}
                 label="Bookmark"
-                id="1"
               />
             </Inline>
           </Box>
@@ -218,7 +195,6 @@ export const screenshots: ComponentScreenshot = {
                 variant="transparent"
                 icon={<IconBookmark />}
                 label="Bookmark"
-                id="1"
               />
             </Inline>
           </Box>
@@ -235,7 +211,6 @@ export const screenshots: ComponentScreenshot = {
             variant="transparent"
             icon={<IconBookmark active tone="brandAccent" />}
             label="Bookmark"
-            id="1"
           />
           <ButtonIcon
             bleed={false}
@@ -243,7 +218,6 @@ export const screenshots: ComponentScreenshot = {
             tone="formAccent"
             icon={<IconBookmark active tone="brandAccent" />}
             label="Bookmark"
-            id="1"
           />
         </Inline>
       ),
@@ -253,13 +227,12 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <BackgroundContrastTest>
           <Inline space="medium">
-            <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="1" />
+            <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
             <ButtonIcon
               variant="transparent"
               bleed={false}
               icon={<IconBookmark />}
               label="Bookmark"
-              id="1"
             />
           </Inline>
         </BackgroundContrastTest>
@@ -269,7 +242,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Layout',
       Example: () => (
         <LayoutTest>
-          <ButtonIcon icon={<IconBookmark />} label="Bookmark" id="1" />
+          <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
         </LayoutTest>
       ),
     },

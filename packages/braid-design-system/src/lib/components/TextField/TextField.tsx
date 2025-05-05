@@ -1,10 +1,4 @@
-import {
-  type AllHTMLAttributes,
-  forwardRef,
-  Fragment,
-  useId,
-  useRef,
-} from 'react';
+import { type AllHTMLAttributes, forwardRef, Fragment, useRef } from 'react';
 
 import { Box } from '../Box/Box';
 import { ClearField } from '../private/Field/ClearField';
@@ -42,9 +36,8 @@ type InputProps = AllHTMLAttributes<HTMLInputElement>;
 
 export type TextFieldBaseProps = Omit<
   FieldBaseProps,
-  'value' | 'secondaryMessage' | 'id'
+  'value' | 'secondaryMessage'
 > & {
-  id?: FieldBaseProps['id'];
   value: NonNullable<InputProps['value']>;
   type?: keyof typeof validTypes;
   inputMode?: InputProps['inputMode'];
@@ -71,7 +64,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onClear,
       placeholder,
       characterLimit,
-      id,
       clearLabel,
       inputMode,
       step,
@@ -79,9 +71,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     },
     forwardedRef,
   ) => {
-    const fallbackId = useId();
-    const resolvedId = id || fallbackId;
-
     // We need a ref regardless so we can imperatively
     // focus the field when clicking the clear button
     const defaultRef = useRef<HTMLInputElement | null>(null);
@@ -98,7 +87,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       <Field
         {...restProps}
         componentName="TextField"
-        id={resolvedId}
         value={value}
         secondaryMessage={
           characterLimit
@@ -111,7 +99,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         secondaryIcon={
           onClear ? (
             <ClearField
-              id={`${resolvedId}-clear`}
               hide={!clearable}
               onClear={onClear}
               label={clearLabel}

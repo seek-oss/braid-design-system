@@ -204,8 +204,7 @@
     "react-is": "^18.2.0",
     "react-remove-scroll": "^2.5.3",
     "throttle-debounce": "^5.0.2",
-    "utility-types": "^3.10.0",
-    "uuid": "^8.3.2"
+    "utility-types": "^3.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -233,7 +232,6 @@
     "@types/sanitize-html": "^2.13.0",
     "@types/testing-library__jest-dom": "^5.9.1",
     "@types/throttle-debounce": "^5.0.2",
-    "@types/uuid": "^8.3.0",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
@@ -242,7 +240,7 @@
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "html-validate": "^7.1.1",
-    "playroom": "0.42.0",
+    "playroom": "0.43.0",
     "prettier": "^3.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

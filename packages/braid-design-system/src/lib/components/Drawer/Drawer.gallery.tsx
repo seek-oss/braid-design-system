@@ -18,10 +18,9 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Default layout',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <DrawerContent
-            id={id}
             title="Default test"
             onClose={() => {}}
             width="medium"
@@ -33,10 +32,9 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Layout with a description',
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <DrawerContent
-            id={id}
             title="Description test"
             description={
               <Placeholder height="auto" width="100%" label="Description" />
@@ -60,7 +58,6 @@ export const galleryItems: GalleryComponent = {
                 Width:{' '}
                 <Strong>
                   <TextDropdown
-                    id="width"
                     label="Width"
                     options={['small', 'medium', 'large']}
                     value={getState('width')}
@@ -72,7 +69,6 @@ export const galleryItems: GalleryComponent = {
                 Position:{' '}
                 <Strong>
                   <TextDropdown
-                    id="position"
                     label="Position"
                     options={['left', 'right']}
                     value={getState('position')}
@@ -86,7 +82,6 @@ export const galleryItems: GalleryComponent = {
             </Inline>
 
             <Drawer
-              id="drawer-animation-example"
               title={`A \"${getState(
                 'width',
               )}\" drawer positioned on the \"${getState('position')}\"`}

@@ -56,7 +56,6 @@ const docs: ComponentDocs = {
                   ? 'Heart: active = true'
                   : 'Heart: active = false'
               }
-              id="toggle-example"
               onClick={() => toggleState('active')}
             />
 

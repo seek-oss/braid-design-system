@@ -18,7 +18,6 @@ export function ThemeToggle({
     <Text weight={weight} size={size}>
       {ready ? (
         <TextDropdown
-          id="theme"
           label="Theme"
           value={themeKey}
           onChange={setThemeKey}

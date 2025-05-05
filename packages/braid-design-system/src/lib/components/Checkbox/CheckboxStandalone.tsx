@@ -1,4 +1,4 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 
 import { Box } from '../Box/Box';
 import { TextContext } from '../Text/TextContext';
@@ -13,19 +13,15 @@ import { resolveCheckedGroup } from './resolveCheckedGroup';
 type LabelStyle =
   | { 'aria-labelledby': NonNullable<string> }
   | { 'aria-label': NonNullable<string> };
-export type CheckboxStandaloneProps = Omit<StyledInputProps, 'id'> &
+export type CheckboxStandaloneProps = StyledInputProps &
   LabelStyle & {
-    id?: StyledInputProps['id'];
     checked: CheckboxProps['checked'];
   };
 
 export const CheckboxStandalone = forwardRef<
   HTMLInputElement,
   CheckboxStandaloneProps
->(({ id, checked, ...restProps }, ref) => {
-  const fallbackId = useId();
-  const resolvedId = id || fallbackId;
-
+>(({ checked, ...restProps }, ref) => {
   const calculatedChecked = Array.isArray(checked)
     ? resolveCheckedGroup(checked)
     : checked;
@@ -35,7 +31,6 @@ export const CheckboxStandalone = forwardRef<
       <TextContext.Provider value={null}>
         <StyledInput
           {...restProps}
-          id={resolvedId}
           checked={calculatedChecked}
           type="checkbox"
           ref={ref}

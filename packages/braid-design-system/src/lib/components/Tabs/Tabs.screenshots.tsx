@@ -17,10 +17,10 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Active indicator - basic',
-      Example: ({ id }) => (
+      Example: () => (
         <Stack space="medium">
           {['1', '2', '3'].map((item) => (
-            <TabsProvider id={id} selectedItem={item} key={item}>
+            <TabsProvider selectedItem={item} key={item}>
               <Tabs label="Standard tabs">
                 <Tab item="1">First Tab</Tab>
                 <Tab item="2">Middle Tab</Tab>
@@ -33,10 +33,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Active indicator - with icons',
-      Example: ({ id }) => (
+      Example: () => (
         <Stack space="medium">
           {['1', '2', '3'].map((item) => (
-            <TabsProvider id={id} selectedItem={item} key={item}>
+            <TabsProvider selectedItem={item} key={item}>
               <Tabs label="Icon tabs">
                 <Tab item="1" icon={<IconHome />}>
                   First Tab
@@ -55,10 +55,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Active indicator - with badge',
-      Example: ({ id }) => (
+      Example: () => (
         <Stack space="medium">
           {['1', '2', '3'].map((item) => (
-            <TabsProvider id={id} selectedItem={item} key={item}>
+            <TabsProvider selectedItem={item} key={item}>
               <Tabs label="Badge tabs">
                 <Tab item="1" badge={<Badge tone="positive">New</Badge>}>
                   First Tab
@@ -77,10 +77,10 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Active indicator - with icons and badge',
-      Example: ({ id }) => (
+      Example: () => (
         <Stack space="medium">
           {['1', '2', '3'].map((item) => (
-            <TabsProvider id={id} selectedItem={item} key={item}>
+            <TabsProvider selectedItem={item} key={item}>
               <Tabs label="Badge tabs">
                 <Tab
                   item="1"
@@ -111,8 +111,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Left aligned',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs">
               <Tab>The first tab</Tab>
@@ -142,8 +142,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Center aligned',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs" align="center">
               <Tab>Tab 1</Tab>
@@ -163,8 +163,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With gutter',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs" gutter="gutter">
               <Tab>The first tab</Tab>
@@ -192,8 +192,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With gutter and reserved hit area',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs" gutter="gutter" reserveHitArea>
               <Tab>The first tab</Tab>
@@ -222,8 +222,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label:
         'Test: Center aligned tabs should be left aligned on mobile when content is too wide',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs" align="center">
               <Tab>The first tab</Tab>
@@ -255,8 +255,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Test: Selected tab should be scrolled into view on load',
-      Example: ({ id }) => (
-        <TabsProvider id={id} selectedItem="4">
+      Example: () => (
+        <TabsProvider selectedItem="4">
           <Stack space="medium">
             <Tabs label="Test tabs" align="center">
               <Tab item="1">The first tab</Tab>
@@ -289,8 +289,8 @@ export const screenshots: ComponentScreenshot = {
     {
       label:
         'Test: Selected tab with gutter should be scrolled into view on load',
-      Example: ({ id }) => (
-        <TabsProvider id={id} selectedItem="3">
+      Example: () => (
+        <TabsProvider selectedItem="3">
           <Stack space="medium">
             <Tabs
               label="Test tabs"
@@ -328,8 +328,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Full width divider',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs" divider="full">
               <Tab>Tab 1</Tab>
@@ -349,8 +349,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Full width divider while center aligned',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs" align="center" divider="full">
               <Tab>Tab 1</Tab>
@@ -370,8 +370,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Full width divider with gutter',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs
               label="Test tabs"
@@ -396,8 +396,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'With an icon',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs">
               <Tab icon={<IconHome />}>The first tab</Tab>
@@ -426,8 +426,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Size small',
-      Example: ({ id }) => (
-        <TabsProvider id={id}>
+      Example: () => (
+        <TabsProvider>
           <Stack space="medium">
             <Tabs label="Test tabs" size="small">
               <Tab icon={<IconHome />}>The first tab</Tab>

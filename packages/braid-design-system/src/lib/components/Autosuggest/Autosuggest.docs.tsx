@@ -755,7 +755,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState, resetState }) =>
+      Example: ({ getState, setState, resetState }) =>
         source(
           <Stack space="large">
             <Heading level="2" id="field1Label">
@@ -764,7 +764,6 @@ const docs: ComponentDocs = {
 
             <Autosuggest
               aria-labelledby="field1Label"
-              id={`${id}_1`}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -778,7 +777,6 @@ const docs: ComponentDocs = {
 
             <Autosuggest
               aria-label="Hidden label for field"
-              id={`${id}_2`}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}

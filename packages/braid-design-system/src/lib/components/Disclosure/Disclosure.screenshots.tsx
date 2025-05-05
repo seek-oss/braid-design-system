@@ -19,9 +19,8 @@ export const screenshots: ComponentScreenshot = {
   examples: [
     {
       label: 'Collapsed',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Disclosure
-          id={id}
           expandLabel="Show content"
           collapseLabel="Hide content"
           expanded={false}
@@ -33,9 +32,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Expanded',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Disclosure
-          id={id}
           expandLabel="Show content"
           collapseLabel="Hide content"
           expanded={true}
@@ -47,9 +45,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Expanded with custom space',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Disclosure
-          id={id}
           expandLabel="Show content"
           collapseLabel="Hide content"
           space="small"
@@ -62,9 +59,8 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Weak weight',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Disclosure
-          id={id}
           expandLabel="Show content"
           collapseLabel="Hide content"
           weight="weak"
@@ -78,13 +74,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Inline and collapsed',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
           semper interdum nibh quis viverra. Nullam ac turpis erat. Cras non
           venenatis lacus. In hac habitasse platea dictumst.
           <Disclosure
-            id={id}
             expandLabel="Show content"
             collapseLabel="Hide content"
             expanded={false}
@@ -99,13 +94,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Inline and expanded',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
           semper interdum nibh quis viverra. Nullam ac turpis erat. Cras non
           venenatis lacus. In hac habitasse platea dictumst.
           <Disclosure
-            id={id}
             expandLabel="Show content"
             collapseLabel="Hide content"
             expanded={true}
@@ -120,13 +114,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Inline, expanded with custom space',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
           semper interdum nibh quis viverra. Nullam ac turpis erat. Cras non
           venenatis lacus. In hac habitasse platea dictumst.
           <Disclosure
-            id={id}
             expandLabel="Show content"
             collapseLabel="Hide content"
             space="xxsmall"
@@ -142,13 +135,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Inline, collapsed with trailing text',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
           semper interdum nibh quis viverra. Nullam ac turpis erat. Cras non
           venenatis lacus. In hac habitasse platea dictumst.
           <Disclosure
-            id={id}
             expandLabel="Show content"
             collapseLabel="Hide content"
             space="xxsmall"
@@ -167,13 +159,12 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Inline, expanded with trailing text',
       Container,
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
           semper interdum nibh quis viverra. Nullam ac turpis erat. Cras non
           venenatis lacus. In hac habitasse platea dictumst.
           <Disclosure
-            id={id}
             expandLabel="Show content"
             collapseLabel="Hide content"
             space="xxsmall"
@@ -191,12 +182,11 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Sizes and default spacing',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="large">
           {textSizes.map((size) => (
             <Disclosure
               key={size}
-              id={`${id}_${size}`}
               expandLabel={`${size.charAt(0).toUpperCase()}${size.slice(
                 1,
               )} size`}
@@ -212,13 +202,12 @@ export const screenshots: ComponentScreenshot = {
     },
     {
       label: 'Inline: Sizes and default spacing',
-      Example: ({ id, handler }) => (
+      Example: ({ handler }) => (
         <Stack space="large">
           {textSizes.map((size) => (
             <Text size={size} key={size}>
               Inline disclosure in{' '}
               <Disclosure
-                id={`${id}_${size}`}
                 expandLabel={`${size} size`}
                 expanded={true}
                 onToggle={handler}

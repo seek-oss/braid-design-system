@@ -25,7 +25,6 @@ export const DocDetails = () => {
         {'Example' in docs && docs.Example ? (
           <PlayroomStateProvider>
             <DocExample
-              id={`${docsName}_example`}
               Example={docs.Example}
               background={docs.examplebackground}
               showCodeByDefault={docs.category === 'Logic'}
@@ -81,7 +80,6 @@ export const DocDetails = () => {
             {example.code || example.Example ? (
               <PlayroomStateProvider>
                 <DocExample
-                  id={String(index)}
                   code={example.code}
                   Example={example.Example}
                   Container={example.Container}

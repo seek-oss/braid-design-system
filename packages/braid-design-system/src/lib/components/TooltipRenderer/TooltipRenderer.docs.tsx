@@ -22,7 +22,6 @@ import {
 import { constants } from './TooltipRenderer.css';
 
 const StaticTooltip = ({
-  id,
   tooltip,
   placement,
   children,
@@ -48,7 +47,7 @@ const StaticTooltip = ({
       <Box position="relative">
         {placement === 'top' ? contentPlaceholder : null}
         <Box position="absolute" left={0} right={0}>
-          <TooltipRenderer id={id} tooltip={tooltip} placement={placement}>
+          <TooltipRenderer tooltip={tooltip} placement={placement}>
             {children}
           </TooltipRenderer>
         </Box>
@@ -60,10 +59,10 @@ const StaticTooltip = ({
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id }) =>
+  Example: () =>
     source(
       <Inline space="small">
-        <TooltipRenderer id={id} tooltip={<Text>This is a tooltip!</Text>}>
+        <TooltipRenderer tooltip={<Text>This is a tooltip!</Text>}>
           {({ triggerProps }) => (
             <Box aria-label="Help" {...triggerProps}>
               <IconHelp />
@@ -127,18 +126,16 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Inline space="small">
             <TooltipRenderer
-              id={`${id}_1`}
               placement="top"
               tooltip={<Text>The placement is “top”</Text>}
             >
               {({ triggerProps }) => <Button {...triggerProps}>Top</Button>}
             </TooltipRenderer>
             <TooltipRenderer
-              id={`${id}_2`}
               placement="bottom"
               tooltip={<Text>The placement is “bottom”</Text>}
             >
@@ -162,10 +159,9 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) => {
+      Example: () => {
         const { code } = source(
           <TooltipRenderer
-            id={id}
             placement="bottom"
             tooltip={
               <Stack space="medium">
@@ -192,7 +188,6 @@ const docs: ComponentDocs = {
           code,
           value: (
             <StaticTooltip
-              id={id}
               placement="bottom"
               tooltip={
                 <Stack space="medium">

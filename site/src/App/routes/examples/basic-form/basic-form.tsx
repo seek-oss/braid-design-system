@@ -54,35 +54,33 @@ const page: Page = {
       </Stack>
 
       <Code collapsedByDefault>
-        {() =>
-          source(
-            <Card>
-              <Stack space="large">
-                <Heading level="3">Add role</Heading>
-                <Stack space="medium">
-                  <Autosuggest
-                    label="Job title"
-                    suggestions={filterSuggestions([
-                      { text: 'Developer' },
-                      { text: 'Designer' },
-                      { text: 'Product Manager' },
-                    ])}
-                  />
-                  <TextField label="Company name" />
-                  <MonthPicker label="Started" />
-                  <Textarea
-                    label="Description"
-                    secondaryLabel="recommended"
-                    description="Summarise your responsibilities, skills and achievements."
-                  />
-                  <Actions>
-                    <Button>Save</Button>
-                  </Actions>
-                </Stack>
+        {source(
+          <Card>
+            <Stack space="large">
+              <Heading level="3">Add role</Heading>
+              <Stack space="medium">
+                <Autosuggest
+                  label="Job title"
+                  suggestions={filterSuggestions([
+                    { text: 'Developer' },
+                    { text: 'Designer' },
+                    { text: 'Product Manager' },
+                  ])}
+                />
+                <TextField label="Company name" />
+                <MonthPicker label="Started" />
+                <Textarea
+                  label="Description"
+                  secondaryLabel="recommended"
+                  description="Summarise your responsibilities, skills and achievements."
+                />
+                <Actions>
+                  <Button>Save</Button>
+                </Actions>
               </Stack>
-            </Card>,
-          )
-        }
+            </Stack>
+          </Card>,
+        )}
       </Code>
 
       <Heading level="3">How do I build this example for myself?</Heading>
@@ -117,9 +115,11 @@ const page: Page = {
             </Text>
           }
         >
-          <Card>
-            <Heading level="3">Add role</Heading>
-          </Card>
+          {source(
+            <Card>
+              <Heading level="3">Add role</Heading>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -133,21 +133,19 @@ const page: Page = {
             </Text>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Heading level="3">Add role</Heading>
-                <Autosuggest
-                  label="Job title"
-                  suggestions={filterSuggestions([
-                    { text: 'Developer' },
-                    { text: 'Designer' },
-                    { text: 'Product Manager' },
-                  ])}
-                />
-              </Card>,
-            )
-          }
+          {source(
+            <Card>
+              <Heading level="3">Add role</Heading>
+              <Autosuggest
+                label="Job title"
+                suggestions={filterSuggestions([
+                  { text: 'Developer' },
+                  { text: 'Designer' },
+                  { text: 'Product Manager' },
+                ])}
+              />
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -163,23 +161,21 @@ const page: Page = {
             </Text>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Stack space="large">
-                  <Heading level="3">Add role</Heading>
-                  <Autosuggest
-                    label="Job title"
-                    suggestions={filterSuggestions([
-                      { text: 'Developer' },
-                      { text: 'Designer' },
-                      { text: 'Product Manager' },
-                    ])}
-                  />
-                </Stack>
-              </Card>,
-            )
-          }
+          {source(
+            <Card>
+              <Stack space="large">
+                <Heading level="3">Add role</Heading>
+                <Autosuggest
+                  label="Job title"
+                  suggestions={filterSuggestions([
+                    { text: 'Developer' },
+                    { text: 'Designer' },
+                    { text: 'Product Manager' },
+                  ])}
+                />
+              </Stack>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -201,26 +197,24 @@ const page: Page = {
             </Stack>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Stack space="large">
-                  <Heading level="3">Add role</Heading>
-                  <Autosuggest
-                    label="Job title"
-                    suggestions={filterSuggestions([
-                      { text: 'Developer' },
-                      { text: 'Designer' },
-                      { text: 'Product Manager' },
-                    ])}
-                  />
-                  <TextField label="Company name" />
-                  <MonthPicker label="Started" />
-                  <Textarea label="Description" />
-                </Stack>
-              </Card>,
-            )
-          }
+          {source(
+            <Card>
+              <Stack space="large">
+                <Heading level="3">Add role</Heading>
+                <Autosuggest
+                  label="Job title"
+                  suggestions={filterSuggestions([
+                    { text: 'Developer' },
+                    { text: 'Designer' },
+                    { text: 'Product Manager' },
+                  ])}
+                />
+                <TextField label="Company name" />
+                <MonthPicker label="Started" />
+                <Textarea label="Description" />
+              </Stack>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -242,26 +236,24 @@ const page: Page = {
             </Stack>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Stack space="large">
-                  <Heading level="3">Add role</Heading>
-                  <Autosuggest
-                    label="Job title"
-                    suggestions={filterSuggestions([
-                      { text: 'Developer' },
-                      { text: 'Designer' },
-                      { text: 'Product Manager' },
-                    ])}
-                  />
-                  <TextField label="Company name" />
-                  <MonthPicker label="Started" />
-                  <Textarea label="Description" secondaryLabel="recommended" />
-                </Stack>
-              </Card>,
-            )
-          }
+          {source(
+            <Card>
+              <Stack space="large">
+                <Heading level="3">Add role</Heading>
+                <Autosuggest
+                  label="Job title"
+                  suggestions={filterSuggestions([
+                    { text: 'Developer' },
+                    { text: 'Designer' },
+                    { text: 'Product Manager' },
+                  ])}
+                />
+                <TextField label="Company name" />
+                <MonthPicker label="Started" />
+                <Textarea label="Description" secondaryLabel="recommended" />
+              </Stack>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -273,30 +265,28 @@ const page: Page = {
             </Text>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Stack space="large">
-                  <Heading level="3">Add role</Heading>
-                  <Autosuggest
-                    label="Job title"
-                    suggestions={filterSuggestions([
-                      { text: 'Developer' },
-                      { text: 'Designer' },
-                      { text: 'Product Manager' },
-                    ])}
-                  />
-                  <TextField label="Company name" />
-                  <MonthPicker label="Started" />
-                  <Textarea
-                    label="Description"
-                    secondaryLabel="recommended"
-                    description="Summarise your responsibilities, skills and achievements."
-                  />
-                </Stack>
-              </Card>,
-            )
-          }
+          {source(
+            <Card>
+              <Stack space="large">
+                <Heading level="3">Add role</Heading>
+                <Autosuggest
+                  label="Job title"
+                  suggestions={filterSuggestions([
+                    { text: 'Developer' },
+                    { text: 'Designer' },
+                    { text: 'Product Manager' },
+                  ])}
+                />
+                <TextField label="Company name" />
+                <MonthPicker label="Started" />
+                <Textarea
+                  label="Description"
+                  secondaryLabel="recommended"
+                  description="Summarise your responsibilities, skills and achievements."
+                />
+              </Stack>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -309,31 +299,29 @@ const page: Page = {
             </Text>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Stack space="large">
-                  <Heading level="3">Add role</Heading>
-                  <Autosuggest
-                    label="Job title"
-                    suggestions={filterSuggestions([
-                      { text: 'Developer' },
-                      { text: 'Designer' },
-                      { text: 'Product Manager' },
-                    ])}
-                  />
-                  <TextField label="Company name" />
-                  <MonthPicker label="Started" />
-                  <Textarea
-                    label="Description"
-                    secondaryLabel="recommended"
-                    description="Summarise your responsibilities, skills and achievements."
-                  />
-                  <Button>Save</Button>
-                </Stack>
-              </Card>,
-            )
-          }
+          {source(
+            <Card>
+              <Stack space="large">
+                <Heading level="3">Add role</Heading>
+                <Autosuggest
+                  label="Job title"
+                  suggestions={filterSuggestions([
+                    { text: 'Developer' },
+                    { text: 'Designer' },
+                    { text: 'Product Manager' },
+                  ])}
+                />
+                <TextField label="Company name" />
+                <MonthPicker label="Started" />
+                <Textarea
+                  label="Description"
+                  secondaryLabel="recommended"
+                  description="Summarise your responsibilities, skills and achievements."
+                />
+                <Button>Save</Button>
+              </Stack>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -353,33 +341,31 @@ const page: Page = {
             </Stack>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Stack space="large">
-                  <Heading level="3">Add role</Heading>
-                  <Autosuggest
-                    label="Job title"
-                    suggestions={filterSuggestions([
-                      { text: 'Developer' },
-                      { text: 'Designer' },
-                      { text: 'Product Manager' },
-                    ])}
-                  />
-                  <TextField label="Company name" />
-                  <MonthPicker label="Started" />
-                  <Textarea
-                    label="Description"
-                    secondaryLabel="recommended"
-                    description="Summarise your responsibilities, skills and achievements."
-                  />
-                  <Actions>
-                    <Button>Save</Button>
-                  </Actions>
-                </Stack>
-              </Card>,
-            )
-          }
+          {source(
+            <Card>
+              <Stack space="large">
+                <Heading level="3">Add role</Heading>
+                <Autosuggest
+                  label="Job title"
+                  suggestions={filterSuggestions([
+                    { text: 'Developer' },
+                    { text: 'Designer' },
+                    { text: 'Product Manager' },
+                  ])}
+                />
+                <TextField label="Company name" />
+                <MonthPicker label="Started" />
+                <Textarea
+                  label="Description"
+                  secondaryLabel="recommended"
+                  description="Summarise your responsibilities, skills and achievements."
+                />
+                <Actions>
+                  <Button>Save</Button>
+                </Actions>
+              </Stack>
+            </Card>,
+          )}
         </Step>
 
         <Step
@@ -401,35 +387,33 @@ const page: Page = {
             </Stack>
           }
         >
-          {() =>
-            source(
-              <Card>
-                <Stack space="xlarge">
-                  <Heading level="3">Add role</Heading>
-                  <Stack space="large">
-                    <Autosuggest
-                      label="Job title"
-                      suggestions={filterSuggestions([
-                        { text: 'Developer' },
-                        { text: 'Designer' },
-                        { text: 'Product Manager' },
-                      ])}
-                    />
-                    <TextField label="Company name" />
-                    <MonthPicker label="Started" />
-                    <Textarea
-                      label="Description"
-                      secondaryLabel="recommended"
-                      description="Summarise your responsibilities, skills and achievements."
-                    />
-                  </Stack>
-                  <Actions>
-                    <Button>Save</Button>
-                  </Actions>
+          {source(
+            <Card>
+              <Stack space="xlarge">
+                <Heading level="3">Add role</Heading>
+                <Stack space="large">
+                  <Autosuggest
+                    label="Job title"
+                    suggestions={filterSuggestions([
+                      { text: 'Developer' },
+                      { text: 'Designer' },
+                      { text: 'Product Manager' },
+                    ])}
+                  />
+                  <TextField label="Company name" />
+                  <MonthPicker label="Started" />
+                  <Textarea
+                    label="Description"
+                    secondaryLabel="recommended"
+                    description="Summarise your responsibilities, skills and achievements."
+                  />
                 </Stack>
-              </Card>,
-            )
-          }
+                <Actions>
+                  <Button>Save</Button>
+                </Actions>
+              </Stack>
+            </Card>,
+          )}
         </Step>
       </Stack>
 

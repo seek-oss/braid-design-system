@@ -547,7 +547,6 @@ const docs: ComponentDocs = {
             <Stack space="xlarge">
               <Stack space="large">
                 <Toggle
-                  id="bleed"
                   on={getState('bleed')}
                   label="Bleed"
                   align="right"

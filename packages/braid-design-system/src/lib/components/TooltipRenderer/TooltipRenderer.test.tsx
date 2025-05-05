@@ -34,7 +34,7 @@ describe('TooltipRenderer', () => {
     const { queryByRole, getByRole, getByLabelText } = render(
       <BraidTestProvider themeName="wireframe">
         <Text>
-          <TooltipRenderer id="TEST_ID" tooltip={<Text>Tooltip text.</Text>}>
+          <TooltipRenderer tooltip={<Text>Tooltip text.</Text>}>
             {({ triggerProps }) => (
               <Box component="span" aria-label="Trigger" {...triggerProps}>
                 Trigger
@@ -59,7 +59,7 @@ describe('TooltipRenderer', () => {
     const { queryByRole, getByRole, getByLabelText, container } = render(
       <BraidTestProvider themeName="wireframe">
         <Text>
-          <TooltipRenderer id="TEST_ID" tooltip={<Text>Tooltip text.</Text>}>
+          <TooltipRenderer tooltip={<Text>Tooltip text.</Text>}>
             {({ triggerProps }) => (
               <Box component="span" aria-label="Trigger" {...triggerProps}>
                 Trigger
@@ -84,7 +84,7 @@ describe('TooltipRenderer', () => {
     const { queryByRole, getByRole, getByLabelText } = render(
       <BraidTestProvider themeName="wireframe">
         <Text>
-          <TooltipRenderer id="TEST_ID" tooltip={<Text>Tooltip text.</Text>}>
+          <TooltipRenderer tooltip={<Text>Tooltip text.</Text>}>
             {({ triggerProps }) => (
               <Box component="span" aria-label="Trigger" {...triggerProps}>
                 Trigger

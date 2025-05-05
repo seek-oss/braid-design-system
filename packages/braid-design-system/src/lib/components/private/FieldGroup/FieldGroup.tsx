@@ -1,6 +1,7 @@
 import dedent from 'dedent';
-import type { AllHTMLAttributes } from 'react';
+import { useId, type AllHTMLAttributes } from 'react';
 
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
 import {
@@ -35,7 +36,7 @@ export type FieldLabelVariant =
     };
 
 export interface FieldGroupBaseProps {
-  id: NonNullable<FormElementProps['id']>;
+  id?: FormElementProps['id'];
   disabled?: FormElementProps['disabled'];
   description?: FieldLabelProps['description'];
   message?: FieldMessageProps['message'];
@@ -78,9 +79,11 @@ export const FieldGroup = ({
   componentName,
   ...restProps
 }: InternalFieldGroupProps) => {
-  const labelId = `${id}-label`;
-  const messageId = `${id}-message`;
-  const descriptionId = description ? `${id}-description` : undefined;
+  const resolvedId = useFallbackId(id);
+
+  const labelId = useId();
+  const messageId = useId();
+  const descriptionId = useId();
 
   let ariaLabelledBy;
   let ariaLabel;
@@ -118,7 +121,7 @@ export const FieldGroup = ({
     <Box
       component="fieldset"
       disabled={disabled}
-      id={id}
+      id={resolvedId}
       role={role}
       aria-labelledby={ariaLabelledBy}
       aria-label={ariaLabel}
@@ -135,7 +138,7 @@ export const FieldGroup = ({
               tertiaryLabel={tertiaryLabel}
               disabled={disabled}
               description={description}
-              descriptionId={descriptionId}
+              descriptionId={description ? descriptionId : undefined}
             />
           </Box>
         ) : null}
@@ -146,7 +149,7 @@ export const FieldGroup = ({
             tabIndex,
             'aria-describedby': mergeIds(
               message ? messageId : undefined,
-              descriptionId,
+              description ? descriptionId : undefined,
             ),
           })}
 

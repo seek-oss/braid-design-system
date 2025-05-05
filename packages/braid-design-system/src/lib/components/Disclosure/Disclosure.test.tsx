@@ -10,7 +10,7 @@ describe('Disclosure', () => {
   it('should provide internal state by default', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
-        <Disclosure id="content" expandLabel="Expand" collapseLabel="Collapse">
+        <Disclosure expandLabel="Expand" collapseLabel="Collapse">
           Content
         </Disclosure>
       </BraidTestProvider>,
@@ -42,9 +42,7 @@ describe('Disclosure', () => {
   it('should default the value of "collapseLabel" to "expandLabel" when not provided', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
-        <Disclosure id="content" expandLabel="Details">
-          Content
-        </Disclosure>
+        <Disclosure expandLabel="Details">Content</Disclosure>
       </BraidTestProvider>,
     );
 
@@ -62,7 +60,6 @@ describe('Disclosure', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Disclosure
-          id="content"
           expandLabel="Expand"
           collapseLabel="Collapse"
           onToggle={toggleHander}
@@ -90,7 +87,6 @@ describe('Disclosure', () => {
       return (
         <BraidTestProvider>
           <Disclosure
-            id="content"
             expandLabel="Expand"
             collapseLabel="Collapse"
             expanded={expanded}

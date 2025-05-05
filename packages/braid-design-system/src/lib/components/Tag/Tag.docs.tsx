@@ -114,7 +114,6 @@ const docs: ComponentDocs = {
                           setState('selected', [...getState('selected'), tag])
                         }
                         addLabel={`Add "${tag}"`}
-                        id={`add-${tag}`}
                       >
                         {tag}
                       </Tag>
@@ -138,7 +137,6 @@ const docs: ComponentDocs = {
                         );
                       }}
                       clearLabel={`Clear "${selectedTag}"`}
-                      id={`clear-${selectedTag}`}
                     >
                       {selectedTag}
                     </Tag>

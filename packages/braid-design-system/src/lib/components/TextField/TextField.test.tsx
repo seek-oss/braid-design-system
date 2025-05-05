@@ -9,7 +9,7 @@ describe('TextField', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <TextField id="field" label="My field" value="" onChange={() => {}} />
+        <TextField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -19,12 +19,7 @@ describe('TextField', () => {
   it('associates field with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <TextField
-          id="field"
-          aria-label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <TextField aria-label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -51,7 +46,6 @@ describe('TextField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <TextField
-          id="field"
           label="My field"
           message="Required"
           value=""
@@ -67,7 +61,6 @@ describe('TextField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <TextField
-          id="field"
           label="My field"
           description="More detail about field"
           value=""
@@ -124,7 +117,7 @@ describe('TextField', () => {
   it('field is not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <TextField id="field" label="My field" value="" onChange={() => {}} />
+        <TextField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -137,7 +130,6 @@ describe('TextField', () => {
     render(
       <BraidTestProvider>
         <TextField
-          id="field"
           label="My field"
           value=""
           onChange={() => {}}
@@ -156,13 +148,7 @@ describe('TextField', () => {
   it('field should be accessible with tabindex of 0', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <TextField
-          id="field"
-          label="My field"
-          value=""
-          onChange={() => {}}
-          tabIndex={0}
-        />
+        <TextField label="My field" value="" onChange={() => {}} tabIndex={0} />
       </BraidTestProvider>,
     );
 
@@ -177,7 +163,6 @@ describe('TextField', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <TextField
-          id="field"
           label="My field"
           value=""
           onChange={() => {}}

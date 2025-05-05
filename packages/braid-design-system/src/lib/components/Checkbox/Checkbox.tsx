@@ -1,4 +1,4 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 
 import {
   type InlineFieldProps,
@@ -9,17 +9,12 @@ import { validTabIndexes } from '../private/validateTabIndex';
 
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 
-export interface CheckboxProps
-  extends Omit<InlineFieldProps, 'id' | 'checked'> {
-  id?: InlineFieldProps['id'];
+export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {
   checked: CheckboxChecked | boolean[];
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ id, checked, tabIndex, ...restProps }, ref) => {
-    const fallbackId = useId();
-    const resolvedId = id || fallbackId;
-
+  ({ checked, tabIndex, ...restProps }, ref) => {
     const calculatedChecked = Array.isArray(checked)
       ? resolveCheckedGroup(checked)
       : checked;
@@ -27,7 +22,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <InlineField
         {...restProps}
-        id={resolvedId}
         tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
         checked={calculatedChecked}
         type="checkbox"

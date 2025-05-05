@@ -26,7 +26,7 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Box style={{ maxWidth: '100px' }}>
-        <OverflowMenu label="Options" id="example">
+        <OverflowMenu label="Options">
           <MenuItem onClick={() => {}}>Button</MenuItem>
           <MenuItemLink href="#" onClick={() => {}}>
             Link
@@ -56,11 +56,11 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Dialog">Dialog.</TextLink>
         </Text>
       ),
-      Example: ({ id, getState, toggleState, showToast }) =>
+      Example: ({ getState, toggleState, showToast }) =>
         source(
           <>
             <Box style={{ maxWidth: '100px' }}>
-              <OverflowMenu label="Options" id="destructive">
+              <OverflowMenu label="Options">
                 <MenuItem
                   onClick={() => toggleState('confirm')}
                   tone="critical"
@@ -70,7 +70,6 @@ const docs: ComponentDocs = {
               </OverflowMenu>
             </Box>
             <Dialog
-              id={id}
               width="content"
               title="Delete item?"
               open={getState('confirm')}
@@ -142,7 +141,6 @@ const docs: ComponentDocs = {
               <Box width="full" style={{ maxWidth: '100px' }}>
                 <OverflowMenu
                   label="Options"
-                  id="example"
                   onOpen={() => {
                     setState('action', 'open');
                     setState('closeReason', {});
@@ -152,15 +150,9 @@ const docs: ComponentDocs = {
                     setState('closeReason', closeReason);
                   }}
                 >
-                  <MenuItem id="menuItem1" onClick={() => {}}>
-                    Item 1
-                  </MenuItem>
-                  <MenuItem id="menuItem2" onClick={() => {}}>
-                    Item 2
-                  </MenuItem>
-                  <MenuItem id="menuItem3" onClick={() => {}}>
-                    Item 3
-                  </MenuItem>
+                  <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                  <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                  <MenuItem onClick={() => {}}>Item 3</MenuItem>
                 </OverflowMenu>
               </Box>
               <Inline space="small" collapseBelow="tablet">
@@ -205,30 +197,18 @@ const docs: ComponentDocs = {
           <Stack space="medium">
             <Inline alignY="center" space="medium">
               <Text>Standard</Text>
-              <OverflowMenu size="standard" label="Options" id="size-standard">
-                <MenuItem id="menuItem1" onClick={() => {}}>
-                  Item 1
-                </MenuItem>
-                <MenuItem id="menuItem2" onClick={() => {}}>
-                  Item 2
-                </MenuItem>
-                <MenuItem id="menuItem3" onClick={() => {}}>
-                  Item 3
-                </MenuItem>
+              <OverflowMenu size="standard" label="Options">
+                <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                <MenuItem onClick={() => {}}>Item 3</MenuItem>
               </OverflowMenu>
             </Inline>
             <Inline alignY="center" space="medium">
               <Text size="small">Small</Text>
-              <OverflowMenu size="small" label="Options" id="size-small">
-                <MenuItem id="menuItem1" onClick={() => {}}>
-                  Item 1
-                </MenuItem>
-                <MenuItem id="menuItem2" onClick={() => {}}>
-                  Item 2
-                </MenuItem>
-                <MenuItem id="menuItem3" onClick={() => {}}>
-                  Item 3
-                </MenuItem>
+              <OverflowMenu size="small" label="Options">
+                <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                <MenuItem onClick={() => {}}>Item 3</MenuItem>
               </OverflowMenu>
             </Inline>
           </Stack>,

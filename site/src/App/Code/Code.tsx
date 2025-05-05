@@ -20,9 +20,6 @@ import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash.memoize';
 import { createUrl } from 'playroom/utils';
-import * as prettierPluginEstree from 'prettier/plugins/estree';
-import typescriptParser from 'prettier/plugins/typescript';
-import prettier from 'prettier/standalone';
 import { type ReactElement, useState, useEffect, useRef } from 'react';
 import reactElementToJsxString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -47,23 +44,8 @@ for (const [name, language] of Object.entries({ diff, jsx, tsx })) {
 const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx'] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number];
 
-export const formatSnippet = memoize(async (snippet: string) => {
-  // Remove id props from code snippets since they're not needed in Playroom
-  const cleanedSnippet = snippet
-    .replace(/id={id}/g, '')
-    .replace(/id={`\${id}_[0-9a-zA-Z]+`}/g, '');
-
-  const prettierSnippet = await prettier.format(cleanedSnippet, {
-    parser: 'typescript',
-    plugins: [typescriptParser, prettierPluginEstree],
-    semi: false,
-  });
-  const formattedSnippet = prettierSnippet
-    .replace(/^;/, '') // Remove leading semicolons from JSX
-    .replace(/[\r\n]+$/, ''); // Remove trailing newline
-
-  const lines = formattedSnippet.split('\n');
-
+export const formatSnippet = memoize((snippet: string) => {
+  const lines = snippet.split('\n');
   const firstLine = lines[0];
   const lastLine = lines[lines.length - 1];
 
@@ -75,7 +57,7 @@ export const formatSnippet = memoize(async (snippet: string) => {
     return dedent(lines.slice(1, lines.length - 1).join('\n'));
   }
 
-  return formattedSnippet;
+  return snippet;
 });
 
 interface CodeButtonProps extends BoxProps {
@@ -207,30 +189,35 @@ const isSource = function <Value>(input: any): input is Source<Value> {
   );
 };
 
-const parseInput = async (
+const parseInput = (
   input: ReactElementOrString | Source<ReactElementOrString>,
-): Promise<Source<ReactElementOrString>> => {
+): Source<ReactElementOrString> => {
   if (typeof input === 'string') {
-    const code = await formatSnippet(input);
+    // Dedent only if input starts with whitespace
+    const shouldDedent = /^\s+/.test(input);
+
+    const code = shouldDedent ? dedent(input) : input;
+    const formattedCode = formatSnippet(code);
 
     return {
-      code,
-      value: code,
+      code: formattedCode,
+      value: formattedCode,
     };
   }
 
   return isSource(input)
     ? {
-        code: await formatSnippet(input.code),
+        code: formatSnippet(input.code),
         value: input.value,
       }
     : {
-        code: await formatSnippet(
+        code: formatSnippet(
           reactElementToJsxString(input, {
             useBooleanShorthandSyntax: false,
             showDefaultProps: false,
             showFunctions: false,
             filterProps: ['onChange', 'onBlur', 'onFocus'],
+            maxInlineAttributesLineLength: 60,
           }),
         ),
         value: input,
@@ -255,22 +242,9 @@ const Code = ({
   const [hideCode, setHideCode] = useState(collapsedByDefault);
   const { playroomUrl } = useConfig();
   const playroomScope = usePlayroomScope();
-  const [{ code, value }, setSource] = useState<Source<ReactElementOrString>>({
-    code: '',
-    value: '',
-  });
-
-  useEffect(() => {
-    async function parse() {
-      const parsedInput = await parseInput(
-        typeof children === 'function' ? children(playroomScope) : children,
-      );
-      setSource(parsedInput);
-    }
-    parse();
-    // Ignore `playroomScope` to avoid re-renders
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [children]);
+  const { code, value } = parseInput(
+    typeof children === 'function' ? children(playroomScope) : children,
+  );
 
   return (
     <Box position="relative">

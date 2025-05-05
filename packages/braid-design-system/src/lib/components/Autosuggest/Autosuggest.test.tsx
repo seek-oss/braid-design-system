@@ -45,7 +45,6 @@ function renderAutosuggest<Value>({
     return (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           automaticSelection={automaticSelection}
           value={value}
@@ -223,7 +222,6 @@ describe('Autosuggest', () => {
       return (
         <BraidTestProvider>
           <Autosuggest
-            id="fruit"
             label="Fruit"
             value={value}
             onChange={(newValue) => {
@@ -371,7 +369,6 @@ describe('Autosuggest', () => {
       return (
         <BraidTestProvider>
           <Autosuggest
-            id="id"
             label="Label"
             value={{ text: '' }}
             onChange={() => {}}
@@ -408,7 +405,6 @@ describe('Autosuggest', () => {
       const { getByLabelText } = render(
         <BraidTestProvider>
           <Autosuggest
-            id="id"
             aria-label="Hidden field label"
             value={{ text: '' }}
             onChange={() => {}}
@@ -844,7 +840,6 @@ describe('Autosuggest', () => {
         return (
           <BraidTestProvider>
             <Autosuggest
-              id="fruit"
               label="Fruit"
               value={value}
               onChange={(newValue) => {
@@ -982,7 +977,6 @@ describe('Autosuggest', () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           value={{ text: '' }}
           onChange={() => {}}
@@ -1021,7 +1015,6 @@ describe('Autosuggest', () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           value={{ text: '' }}
           onChange={() => {}}
@@ -1055,7 +1048,6 @@ describe('Autosuggest', () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           value={{ text: '' }}
           onChange={() => {}}

@@ -1,6 +1,6 @@
 import type { ComponentScreenshot } from 'site/types';
 
-import { PageBlock } from '../';
+import { Box, PageBlock } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 export const screenshots: ComponentScreenshot = {
@@ -44,6 +44,16 @@ export const screenshots: ComponentScreenshot = {
         <PageBlock width="full">
           <Placeholder height={100} />
         </PageBlock>
+      ),
+    },
+    {
+      label: 'Inside flex container',
+      Example: () => (
+        <Box display="flex">
+          <PageBlock width="medium">
+            <Placeholder height={100} />
+          </PageBlock>
+        </Box>
       ),
     },
   ],

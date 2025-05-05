@@ -230,9 +230,6 @@ importers:
       utility-types:
         specifier: ^3.10.0
         version: 3.11.0
-      uuid:
-        specifier: ^8.3.2
-        version: 8.3.2
     devDependencies:
       '@babel/core':
         specifier: ^7.26.0
@@ -309,9 +306,6 @@ importers:
       '@types/throttle-debounce':
         specifier: ^5.0.2
         version: 5.0.2
-      '@types/uuid':
-        specifier: ^8.3.0
-        version: 8.3.4
       babel-plugin-macros:
         specifier: ^3.1.0
         version: 3.1.0
@@ -337,8 +331,8 @@ importers:
         specifier: ^7.1.1
         version: 7.18.1(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.85)(babel-plugin-macros@3.1.0))
       playroom:
-        specifier: 0.42.0
-        version: 0.42.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.43.0
+        version: 0.43.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       prettier:
         specifier: ^3.4.1
         version: 3.5.3
@@ -486,9 +480,15 @@ importers:
       '@babel/generator':
         specifier: ^7.22.15
         version: 7.27.0
+      '@prettier/sync':
+        specifier: ^0.5.5
+        version: 0.5.5(prettier@3.5.3)
       babel-plugin-macros:
         specifier: ^3.1.0
         version: 3.1.0
+      prettier:
+        specifier: ^3.4.1
+        version: 3.5.3
     devDependencies:
       '@babel/plugin-syntax-jsx':
         specifier: ^7.17.12
@@ -590,8 +590,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
       playroom:
-        specifier: 0.42.0
-        version: 0.42.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.43.0
+        version: 0.43.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -2439,6 +2439,11 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
+  '@prettier/sync@0.5.5':
+    resolution: {integrity: sha512-6BMtNr7aQhyNcGzmumkL0tgr1YQGfm9d7ZdmRpWqWuqpc9vZBind4xMe5NMiRECOhjuSiWHfBWLBnXkpeE90bw==}
+    peerDependencies:
+      prettier: '*'
+
   '@remix-run/router@1.23.0':
     resolution: {integrity: sha512-O3rHJzAQKamUz1fvE0Qaw0xSFqsA/yafi2iqeE0pvdFtCO1viYx8QL6f3Ln/aCCTLxs68SLf0KPM9eSeM8yBnA==}
     engines: {node: '>=14.0.0'}
@@ -3130,9 +3135,6 @@ packages:
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
-
-  '@types/uuid@8.3.4':
-    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
 
   '@types/webpack-env@1.18.8':
     resolution: {integrity: sha512-G9eAoJRMLjcvN4I08wB5I7YofOb/kaJNd5uoCMX+LbKXTPCF+ZIHuqTnFaK9Jz1rgs035f9JUPUhNFtqgucy/A==}
@@ -6660,6 +6662,9 @@ packages:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
 
+  make-synchronized@0.4.2:
+    resolution: {integrity: sha512-EwEJSg8gSGLicKXp/VzNi1tvzhdmNBxOzslkkJSoNUCQFZKH/NIUIp7xlfN+noaHrz4BJDN73gne8IHnjl/F/A==}
+
   makeerror@1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
 
@@ -7414,8 +7419,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playroom@0.42.0:
-    resolution: {integrity: sha512-SigGjFxPo4n5xUsUK6sZkmQv5TMG1e9H8n5zSNuJ25Gm2sX1xVhFKdL6ZOM3LGoFxuILYLJdyVjLEGu4AY6iKA==}
+  playroom@0.43.0:
+    resolution: {integrity: sha512-RVmGpslcYvnkyGymvY/sp3ipBGAoSyguFqDYQRd/vgxjZIVjpFFJIvZriZgrQyy9HVNYjLFgC9YFB4lze+V6Mw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     peerDependencies:
@@ -11653,6 +11658,11 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
+  '@prettier/sync@0.5.5(prettier@3.5.3)':
+    dependencies:
+      make-synchronized: 0.4.2
+      prettier: 3.5.3
+
   '@remix-run/router@1.23.0': {}
 
   '@rollup/rollup-android-arm-eabi@4.38.0':
@@ -12783,8 +12793,6 @@ snapshots:
   '@types/tough-cookie@4.0.5': {}
 
   '@types/unist@2.0.11': {}
-
-  '@types/uuid@8.3.4': {}
 
   '@types/webpack-env@1.18.8': {}
 
@@ -17340,6 +17348,8 @@ snapshots:
     dependencies:
       semver: 7.7.1
 
+  make-synchronized@0.4.2: {}
+
   makeerror@1.0.12:
     dependencies:
       tmpl: 1.0.5
@@ -18124,7 +18134,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playroom@0.42.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.43.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.26.10
       '@babel/parser': 7.27.0
@@ -18190,7 +18200,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  playroom@0.42.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.43.0(@swc/core@1.11.13)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.26.10
       '@babel/parser': 7.27.0

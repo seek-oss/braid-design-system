@@ -35,9 +35,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Default layout',
       gutter: false,
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <DrawerContent
-          id={id}
           title="Default test"
           onClose={() => {}}
           width="medium"
@@ -51,9 +50,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Layout with a description',
       gutter: false,
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <DrawerContent
-          id={id}
           title="Description test"
           description={
             <Placeholder height="auto" width="100%" label="Description" />
@@ -69,9 +67,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Layout: Small width',
       gutter: false,
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <DrawerContent
-          id={id}
           title="Small"
           width="small"
           onClose={() => {}}
@@ -85,9 +82,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Layout: Medium width',
       gutter: false,
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <DrawerContent
-          id={id}
           title="Medium"
           width="medium"
           onClose={() => {}}
@@ -101,9 +97,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Layout: Large width',
       gutter: false,
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <DrawerContent
-          id={id}
           title="Large"
           width="large"
           onClose={() => {}}
@@ -117,9 +112,8 @@ export const screenshots: ComponentScreenshot = {
       label: 'Test: Close button layout',
       gutter: false,
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <DrawerContent
-          id={id}
           title="Default test"
           onClose={() => {}}
           width="medium"
@@ -145,10 +139,9 @@ export const screenshots: ComponentScreenshot = {
       label: 'Test: should be left aligned in a centered Stack',
       gutter: false,
       Container,
-      Example: ({ id }) => (
+      Example: () => (
         <Stack space="large" align="center">
           <DrawerContent
-            id={id}
             title="Default test"
             onClose={() => {}}
             width="medium"

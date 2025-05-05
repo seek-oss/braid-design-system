@@ -24,8 +24,8 @@ const docs: ComponentDocs = {
         </Text>
       ),
       code: `
-      import wireframe from 'braid-design-system/themes/wireframe';
-      import { BraidProvider } from 'braid-design-system';
+        import wireframe from 'braid-design-system/themes/wireframe';
+        import { BraidProvider } from 'braid-design-system';
 
         export const App = () => (
           <BraidProvider theme={wireframe}>
@@ -62,7 +62,6 @@ const docs: ComponentDocs = {
         </Fragment>
       ),
       code: `
-
         import { Link as ReactRouterLink } from 'react-router-dom';
         import { BraidProvider, makeLinkComponent } from 'braid-design-system';
         import wireframe from 'braid-design-system/themes/wireframe';
