@@ -11,12 +11,12 @@ import { Popover } from './Popover';
 
 function renderPopover({
   open = false,
-  useManagedState = false,
-  useEnterFocusRef = false,
+  managedState = false,
+  enterFocusRef = false,
 }: {
   open?: boolean;
-  useManagedState?: boolean;
-  useEnterFocusRef?: boolean;
+  managedState?: boolean;
+  enterFocusRef?: boolean;
 } = {}) {
   const TestCase = ({ closeHandler }: { closeHandler: () => void }) => {
     const [openState, setOpenState] = useState(open);
@@ -24,7 +24,7 @@ function renderPopover({
     const popoverRef = useRef<HTMLDivElement>(null);
 
     const handleClose = () => {
-      if (useManagedState) {
+      if (managedState) {
         setOpenState(false);
       }
       closeHandler();
@@ -33,7 +33,7 @@ function renderPopover({
     return (
       <BraidTestProvider>
         <Button
-          onClick={useManagedState ? () => setOpenState(!openState) : undefined}
+          onClick={managedState ? () => setOpenState(!openState) : undefined}
           ref={triggerRef}
           data-testid="trigger"
         >
@@ -41,9 +41,9 @@ function renderPopover({
         </Button>
         <Popover
           ref={popoverRef}
-          enterFocusRef={useEnterFocusRef ? popoverRef : undefined}
+          enterFocusRef={enterFocusRef ? popoverRef : undefined}
           role="menu"
-          open={useManagedState ? openState : open}
+          open={managedState ? openState : open}
           onClose={handleClose}
           triggerRef={triggerRef}
           placement="bottom"
@@ -161,7 +161,7 @@ describe('Popover', () => {
   describe('triggerRef', () => {
     it('should focus the triggerRef element when the popover is closed with the keyboard', async () => {
       const { getByRole, queryByRole } = renderPopover({
-        useManagedState: true,
+        managedState: true,
       });
       const trigger = getByRole('button');
       expect(trigger).toBeInTheDocument();
@@ -181,7 +181,7 @@ describe('Popover', () => {
 
     it('should not focus the triggerRef element when the popover is closed with a backdrop click', async () => {
       const { getByTestId, getByRole, queryByRole } = renderPopover({
-        useManagedState: true,
+        managedState: true,
       });
       const trigger = getByRole('button');
       expect(trigger).toBeInTheDocument();
@@ -204,8 +204,8 @@ describe('Popover', () => {
     it('should not change focus when enterFocusRef is not provided', async () => {
       const { getByRole, queryByRole } = renderPopover({
         open: false,
-        useManagedState: true,
-        useEnterFocusRef: false,
+        managedState: true,
+        enterFocusRef: false,
       });
       const trigger = getByRole('button');
       expect(trigger).toBeInTheDocument();
@@ -223,8 +223,8 @@ describe('Popover', () => {
     it('should focus the enterFocusRef element when the popover is opened', async () => {
       const { getByRole, queryByRole } = renderPopover({
         open: false,
-        useManagedState: true,
-        useEnterFocusRef: true,
+        managedState: true,
+        enterFocusRef: true,
       });
       const trigger = getByRole('button');
       expect(queryByRole('menu')).not.toBeInTheDocument();
