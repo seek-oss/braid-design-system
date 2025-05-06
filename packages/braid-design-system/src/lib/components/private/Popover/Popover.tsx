@@ -68,7 +68,7 @@ function clamp(min: number, preferred: number, max: number) {
   return Math.min(Math.max(preferred, min), max);
 }
 
-export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
+export const Popover = forwardRef<HTMLElement, PopoverProps>(
   (
     {
       id,
@@ -91,8 +91,8 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       Position | undefined
     >(undefined);
 
-    const ref = useRef<HTMLDivElement>(null);
-    useImperativeHandle(forwardedRef, () => ref.current as HTMLDivElement);
+    const ref = useRef<HTMLElement>(null);
+    useImperativeHandle(forwardedRef, () => ref.current as HTMLElement);
 
     const [horizontalOffset, setHorizontalOffset] = useState(0);
     const [flipPlacement, setFlipPlacement] = useState<Placement>(placement);

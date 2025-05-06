@@ -85,7 +85,7 @@ const TooltipContent = ({
 );
 
 interface TriggerProps {
-  // Using any to support any HTML element type. Specific types do not work with all elements.
+  // Using any to support any HTML element type. HTMLElement does not work with HTMLButtonElement
   ref: Ref<any>;
   tabIndex: 0;
   'aria-describedby': string;
@@ -106,8 +106,8 @@ export const TooltipRenderer = ({
 }: TooltipRendererProps) => {
   const resolvedId = useFallbackId(id);
 
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
   const [inferredPlacement, setInferredPlacement] =
     useState<PopoverProps['placement']>(placement);
