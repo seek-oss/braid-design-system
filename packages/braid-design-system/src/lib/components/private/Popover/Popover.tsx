@@ -323,6 +323,8 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
           left={0}
           className={styles.backdrop}
         />
+
+        {/* Todo - migrate to `popover` semantic element when available */}
         <Box
           id={id}
           ref={ref}
