@@ -117,6 +117,7 @@ export const TooltipRenderer = ({
   const edgeOffsetAsPx = space[edgeOffset] * grid;
 
   const isStatic = useContext(StaticTooltipContext);
+  const isMobileDevice = useRef(isMobile()).current;
 
   useEffect(() => {
     const handleKeyDown = ({ key }: KeyboardEvent) => {
@@ -174,11 +175,16 @@ export const TooltipRenderer = ({
     <>
       <Box
         tabIndex={-1}
-        onClick={() => isMobile() && setOpen(!open)}
-        onMouseEnter={() => !isMobile() && setOpen(true)}
-        onFocus={() => !isMobile() && setOpen(true)}
-        onMouseLeave={() => !isMobile() && setOpen(false)}
         onBlur={() => setOpen(false)}
+        {...(isMobileDevice
+          ? {
+              onClick: () => setOpen(!open),
+            }
+          : {
+              onMouseEnter: () => setOpen(true),
+              onFocus: () => setOpen(true),
+              onMouseLeave: () => setOpen(false),
+            })}
       >
         {children({
           triggerProps: {
@@ -196,7 +202,7 @@ export const TooltipRenderer = ({
         align="center"
         placement={placement}
         lockPlacement={isStatic}
-        delayVisibility={!isMobile()}
+        delayVisibility={!isMobileDevice}
         open={isStatic ? true : open}
         triggerRef={triggerRef}
       >
