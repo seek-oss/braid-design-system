@@ -32,8 +32,8 @@ export interface PopoverProps {
   offsetSpace?: ResponsiveSpace;
   open: boolean;
   onClose?: () => void;
-  triggerRef: RefObject<any>;
-  enterFocusRef?: RefObject<any>;
+  triggerRef: RefObject<HTMLElement>;
+  enterFocusRef?: RefObject<HTMLElement>;
   delayVisibility?: boolean;
   children: ReactNode;
 }
