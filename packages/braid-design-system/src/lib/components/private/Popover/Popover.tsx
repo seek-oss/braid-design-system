@@ -156,16 +156,18 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
           return;
         }
 
-        if (enterFocusRef.current) {
-          enterFocusRef.current.focus();
-        } else {
-          // eslint-disable-next-line no-console
-          console.error(
-            dedent`
+        enterFocusRef.current?.focus();
+
+        if (process.env.NODE_ENV !== 'production') {
+          if (!enterFocusRef.current) {
+            // eslint-disable-next-line no-console
+            console.error(
+              dedent`
                 The enterFocusRef element could not be found.
                 Ensure it is being assigned to a child element of Popover, and is available on open.
                 `,
-          );
+            );
+          }
         }
         // Timeout needs to be 10ms to work in Safari - 0 for other browsers
       }, 10);
