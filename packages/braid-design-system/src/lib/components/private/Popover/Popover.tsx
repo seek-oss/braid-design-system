@@ -9,6 +9,7 @@ import {
   useImperativeHandle,
   useCallback,
   type RefObject,
+  type AllHTMLAttributes,
 } from 'react';
 
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
@@ -24,7 +25,7 @@ type Placement = 'top' | 'bottom';
 
 export interface PopoverProps {
   id?: string;
-  role?: string;
+  role?: AllHTMLAttributes<HTMLElement>['role'];
   align?: 'left' | 'right' | 'center';
   width?: 'content' | 'full';
   placement?: Placement;
