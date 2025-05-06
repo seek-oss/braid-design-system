@@ -151,7 +151,6 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
 
       setTriggerPosition(getPosition(triggerRef.current));
       // Without timeout, focus will not work on first render
-      // Needs to be 10ms to work in Safari - 0 for other browsers
       setTimeout(() => {
         if (!enterFocusRef) {
           return;
@@ -168,6 +167,7 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
                 `,
           );
         }
+        // Timeout needs to be 10ms to work in Safari - 0 for other browsers
       }, 10);
     }, [open, forwardedRef, enterFocusRef, triggerRef]);
 
