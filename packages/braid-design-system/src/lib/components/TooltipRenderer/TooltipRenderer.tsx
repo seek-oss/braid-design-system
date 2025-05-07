@@ -3,7 +3,7 @@ import isMobile from 'is-mobile';
 import {
   createContext,
   type ReactNode,
-  type Ref,
+  type RefCallback,
   useContext,
   useEffect,
   useRef,
@@ -85,8 +85,7 @@ const TooltipContent = ({
 );
 
 interface TriggerProps {
-  // Using any to support any HTML element type. HTMLElement does not work with HTMLButtonElement
-  ref: Ref<any>;
+  ref: RefCallback<HTMLElement>;
   tabIndex: 0;
   'aria-describedby': string;
 }
@@ -106,8 +105,8 @@ export const TooltipRenderer = ({
 }: TooltipRendererProps) => {
   const resolvedId = useFallbackId(id);
 
-  const tooltipRef = useRef<HTMLElement>(null);
-  const triggerRef = useRef<HTMLElement>(null);
+  const tooltipRef = useRef<HTMLElement | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
   const [inferredPlacement, setInferredPlacement] =
     useState<PopoverProps['placement']>(placement);
@@ -189,7 +188,9 @@ export const TooltipRenderer = ({
         {children({
           triggerProps: {
             tabIndex: 0,
-            ref: triggerRef,
+            ref: (el) => {
+              triggerRef.current = el;
+            },
             'aria-describedby': resolvedId,
           },
         })}
