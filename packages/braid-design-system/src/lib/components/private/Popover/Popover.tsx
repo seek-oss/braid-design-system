@@ -25,7 +25,7 @@ type Placement = 'top' | 'bottom';
 
 export interface PopoverProps {
   id?: string;
-  role?: AllHTMLAttributes<HTMLElement>['role'];
+  role: NonNullable<AllHTMLAttributes<HTMLElement>['role'] | false>;
   align?: 'left' | 'right' | 'center';
   width?: 'content' | 'full';
   placement?: Placement;
@@ -325,12 +325,11 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
           className={styles.backdrop}
         />
 
-        {/* Todo - migrate to `popover` semantic element when available */}
+        {/* Todo - use `popover` property when available */}
         <Box
           id={id}
           ref={ref}
-          role={role || 'dialog'}
-          component="section"
+          role={role || undefined}
           tabIndex={-1}
           zIndex="modal"
           position="absolute"

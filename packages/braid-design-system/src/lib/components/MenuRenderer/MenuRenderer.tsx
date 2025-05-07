@@ -289,6 +289,7 @@ export const MenuRenderer = ({
         align={align}
         placement={placement}
         offsetSpace={offsetSpace}
+        role={false}
       >
         <Menu
           align={align}
