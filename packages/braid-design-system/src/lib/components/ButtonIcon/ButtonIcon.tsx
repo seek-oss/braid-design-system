@@ -5,6 +5,7 @@ import {
   type ReactElement,
   forwardRef,
   cloneElement,
+  type MutableRefObject,
 } from 'react';
 
 import type { Space } from '../../css/atoms/atoms';
@@ -170,14 +171,16 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
             id={resolvedId}
             label={label}
             ref={(node: HTMLButtonElement) => {
-              if (forwardedRef) {
-                if (typeof forwardedRef === 'function') {
-                  forwardedRef(node);
-                } else {
-                  forwardedRef.current = node;
-                }
+              if (typeof forwardedRef === 'function') {
+                forwardedRef(node);
+              } else if (forwardedRef) {
+                forwardedRef.current = node;
               }
-              triggerRef(node);
+
+              if (triggerRef && 'current' in triggerRef) {
+                (triggerRef as MutableRefObject<HTMLButtonElement>).current =
+                  node;
+              }
             }}
             {...triggerProps}
             {...restProps}
