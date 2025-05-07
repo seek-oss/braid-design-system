@@ -1,5 +1,4 @@
-import docsTheme from 'braid-src/entries/themes/docs';
-import { Stack, Text, BraidProvider } from 'braid-src/lib/components';
+import { Stack, Text } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useContext } from 'react';
 
@@ -20,11 +19,9 @@ export const DocSnippets = () => {
           snippets.map(({ group, name, code }) => (
             <Stack space="medium" key={`${group}_${name}`}>
               <Text tone="secondary">{name}</Text>
-              <BraidProvider styleBody={false} theme={docsTheme}>
-                <PlayroomStateProvider>
-                  <DocExample Example={() => code} showCodeByDefault={false} />
-                </PlayroomStateProvider>
-              </BraidProvider>
+              <PlayroomStateProvider>
+                <DocExample Example={() => code} showCodeByDefault={false} />
+              </PlayroomStateProvider>
             </Stack>
           ))}
       </Stack>
