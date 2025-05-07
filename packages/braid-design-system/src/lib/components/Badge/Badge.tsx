@@ -125,7 +125,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             cursor="default"
             maxWidth="content"
             display={!isInline ? 'flex' : undefined}
-            className={isInline ? styles.inline : undefined}
+            className={[styles.badge, isInline ? styles.inline : undefined]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
             <Text size="xsmall" weight="medium" maxLines={1}>

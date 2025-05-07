@@ -3,6 +3,11 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../themes/vars.css';
 
+export const badge = style({
+  // Ensures content doesn't clip when inside nested flex containers with stretched siblings
+  minHeight: 'fit-content',
+});
+
 export const verticalPadding = 'xxsmall';
 
 export const inline = style({
