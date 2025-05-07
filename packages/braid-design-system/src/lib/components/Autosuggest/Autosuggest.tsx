@@ -782,6 +782,7 @@ export const Autosuggest = forwardRef(function <Value>(
             placement="bottom"
             lockPlacement
             offsetSpace="none"
+            role={false}
           >
             {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
             <RemoveScroll ref={menuRef} forwardProps>
