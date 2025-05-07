@@ -18,15 +18,6 @@ export const overflowWrap = style({
   overflowWrap: 'break-word',
 });
 
-export const verticalOffsetBeforeEntrance = style({
-  transform: 'translateZ(0) translateY(4px)',
-  selectors: {
-    '[data-popper-placement^=bottom] &': {
-      transform: 'translateZ(0) translateY(-4px)',
-    },
-  },
-});
-
 // Fixes shadow clipping bug in Safari
 export const translateZ0 = style({
   transform: 'translateZ(0)',
