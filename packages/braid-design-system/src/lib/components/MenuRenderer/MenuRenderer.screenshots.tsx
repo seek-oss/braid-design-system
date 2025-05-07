@@ -1,5 +1,5 @@
 import { calc } from '@vanilla-extract/css-utils';
-import { useRef } from 'react';
+import { type MutableRefObject, type ReactNode, useRef } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
 import {
@@ -15,7 +15,7 @@ import {
 } from '../';
 import { vars } from '../../../entries/css';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { Popover } from '../private/Popover/Popover';
+import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 import { Menu } from './MenuRenderer';
@@ -35,6 +35,41 @@ const defaultProps = {
 } as const;
 
 const triggerHeight = 44;
+
+const PopoverWrapper = ({
+  children,
+  popoverPlacement,
+}: {
+  children: (props: {
+    triggerRef: MutableRefObject<HTMLButtonElement | null>;
+  }) => ReactNode;
+  popoverPlacement: PopoverProps['placement'];
+}) => {
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const wrapperPadding = calc(vars.touchableSize).multiply(2.5).toString();
+
+  return (
+    <Box
+      display="flex"
+      style={
+        popoverPlacement === 'bottom'
+          ? { paddingBottom: wrapperPadding }
+          : { paddingTop: wrapperPadding }
+      }
+    >
+      <Box ref={triggerRef}>
+        <Placeholder label="Menu trigger" height={triggerHeight} />
+      </Box>
+      {children({ triggerRef })}
+    </Box>
+  );
+};
+
+const ScreenshotPopover = ({
+  ...props
+}: Omit<PopoverProps, 'open' | 'lockPlacement' | 'role'>) => (
+  <Popover open lockPlacement role={false} {...props} />
+);
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -96,127 +131,80 @@ export const screenshots: ComponentScreenshot = {
     {
       label: 'Placement bottom',
       Example: () => {
-        const triggerRef = useRef<HTMLDivElement>(null);
         const placement = 'bottom';
-
         return (
-          <Box
-            display="flex"
-            style={{
-              paddingBottom: calc(vars.touchableSize).multiply(2.5).toString(),
-            }}
-          >
-            <Box ref={triggerRef}>
-              <Placeholder height={triggerHeight} label="Menu trigger" />
-            </Box>
-            <Popover
-              open
-              lockPlacement
-              triggerRef={triggerRef}
-              placement={placement}
-            >
-              <Menu {...defaultProps} placement={placement}>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-              </Menu>
-            </Popover>
-          </Box>
+          <PopoverWrapper popoverPlacement={placement}>
+            {({ triggerRef }) => (
+              <ScreenshotPopover triggerRef={triggerRef} placement={placement}>
+                <Menu {...defaultProps} placement={placement}>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                </Menu>
+              </ScreenshotPopover>
+            )}
+          </PopoverWrapper>
         );
       },
     },
     {
       label: 'Placement bottom with small offset',
       Example: () => {
-        const triggerRef = useRef<HTMLDivElement>(null);
         const placement = 'bottom';
-
         return (
-          <Box
-            display="flex"
-            style={{
-              paddingBottom: calc(vars.touchableSize).multiply(2.5).toString(),
-            }}
-          >
-            <Box ref={triggerRef}>
-              <Placeholder height={triggerHeight} label="Menu trigger" />
-            </Box>
-            <Popover
-              open
-              lockPlacement
-              triggerRef={triggerRef}
-              placement={placement}
-              offsetSpace="small"
-            >
-              <Menu {...defaultProps} placement={placement}>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-              </Menu>
-            </Popover>
-          </Box>
+          <PopoverWrapper popoverPlacement={placement}>
+            {({ triggerRef }) => (
+              <ScreenshotPopover
+                triggerRef={triggerRef}
+                placement={placement}
+                offsetSpace="small"
+              >
+                <Menu {...defaultProps} placement={placement}>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                </Menu>
+              </ScreenshotPopover>
+            )}
+          </PopoverWrapper>
         );
       },
     },
     {
       label: 'Placement top',
       Example: () => {
-        const triggerRef = useRef<HTMLDivElement>(null);
         const placement = 'top';
-
         return (
-          <Box
-            display="flex"
-            style={{
-              paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-            }}
-          >
-            <Box ref={triggerRef}>
-              <Placeholder height={triggerHeight} label="Menu trigger" />
-            </Box>
-            <Popover
-              open
-              lockPlacement
-              triggerRef={triggerRef}
-              placement={placement}
-            >
-              <Menu {...defaultProps} placement={placement}>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-              </Menu>
-            </Popover>
-          </Box>
+          <PopoverWrapper popoverPlacement={placement}>
+            {({ triggerRef }) => (
+              <ScreenshotPopover triggerRef={triggerRef} placement={placement}>
+                <Menu {...defaultProps} placement={placement}>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                </Menu>
+              </ScreenshotPopover>
+            )}
+          </PopoverWrapper>
         );
       },
     },
     {
       label: 'Placement top with small offset',
       Example: () => {
-        const triggerRef = useRef<HTMLDivElement>(null);
-
         const placement = 'top';
-
         return (
-          <Box
-            display="flex"
-            style={{
-              paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-            }}
-          >
-            <Box ref={triggerRef}>
-              <Placeholder height={triggerHeight} label="Menu trigger" />
-            </Box>
-            <Popover
-              open
-              lockPlacement
-              triggerRef={triggerRef}
-              placement={placement}
-              offsetSpace="small"
-            >
-              <Menu {...defaultProps} placement={placement}>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-                <MenuItem onClick={() => {}}>Item</MenuItem>
-              </Menu>
-            </Popover>
-          </Box>
+          <PopoverWrapper popoverPlacement={placement}>
+            {({ triggerRef }) => (
+              <ScreenshotPopover
+                triggerRef={triggerRef}
+                placement={placement}
+                offsetSpace="small"
+              >
+                <Menu {...defaultProps} placement={placement}>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                  <MenuItem onClick={() => {}}>Item</MenuItem>
+                </Menu>
+              </ScreenshotPopover>
+            )}
+          </PopoverWrapper>
         );
       },
     },

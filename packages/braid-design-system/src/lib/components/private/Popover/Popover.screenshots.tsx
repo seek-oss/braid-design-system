@@ -46,8 +46,8 @@ const Wrapper = ({
 
 const ScreenshotPopover = ({
   ...props
-}: Omit<PopoverProps, 'open' | 'lockPlacement'>) => (
-  <Popover open lockPlacement {...props} />
+}: Omit<PopoverProps, 'open' | 'lockPlacement' | 'role'>) => (
+  <Popover open lockPlacement role={false} {...props} />
 );
 
 export const screenshots: ComponentScreenshot = {
