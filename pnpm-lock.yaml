@@ -334,8 +334,8 @@ importers:
         specifier: ^7.1.1
         version: 7.18.1(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.87)(babel-plugin-macros@3.1.0))
       playroom:
-        specifier: 0.43.0
-        version: 0.43.0(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.43.1
+        version: 0.43.1(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       prettier:
         specifier: ^3.4.1
         version: 3.5.3
@@ -593,8 +593,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
       playroom:
-        specifier: 0.43.0
-        version: 0.43.0(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.43.1
+        version: 0.43.1(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -7521,8 +7521,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playroom@0.43.0:
-    resolution: {integrity: sha512-RVmGpslcYvnkyGymvY/sp3ipBGAoSyguFqDYQRd/vgxjZIVjpFFJIvZriZgrQyy9HVNYjLFgC9YFB4lze+V6Mw==}
+  playroom@0.43.1:
+    resolution: {integrity: sha512-D9eOzCDH48juCrerNhsTF+z/hcPvE/QpTQvRzWHpUbv5CIFHG4y7SmmTMUHPrGGx4GNyAKAalwqxkCQMsJcw6A==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     peerDependencies:
@@ -18397,7 +18397,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playroom@0.43.0(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.43.1(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.27.1
       '@babel/parser': 7.27.1
@@ -18463,7 +18463,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  playroom@0.43.0(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  playroom@0.43.1(@swc/core@1.11.24)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.27.1
       '@babel/parser': 7.27.1
@@ -21366,7 +21366,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@3.1.0:
