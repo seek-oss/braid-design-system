@@ -19,8 +19,6 @@ import { BraidPortal } from '../../BraidPortal/BraidPortal';
 
 import * as styles from './Popover.css';
 
-const animationDelayInMs = 250;
-
 type Placement = 'top' | 'bottom';
 
 export interface PopoverProps {
@@ -96,7 +94,8 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
     useImperativeHandle(forwardedRef, () => ref.current as HTMLElement);
 
     const [horizontalOffset, setHorizontalOffset] = useState(0);
-    const [flipPlacement, setFlipPlacement] = useState<Placement>(placement);
+    const [actualPlacement, setActualPlacement] =
+      useState<Placement>(placement);
 
     const showPopover = open && triggerPosition;
 
@@ -193,7 +192,7 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
       };
     }, [open, triggerRef]);
 
-    const handleFlipPlacement = () => {
+    const handlePlacement = () => {
       const popoverBoundingRect = ref?.current?.getBoundingClientRect();
       if (!popoverBoundingRect) {
         return;
@@ -203,9 +202,9 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
       const distanceFromBottom = window.innerHeight - bottom;
 
       if (top < 0) {
-        setFlipPlacement('bottom');
+        setActualPlacement('bottom');
       } else if (distanceFromBottom < 0) {
-        setFlipPlacement('top');
+        setActualPlacement('top');
       }
     };
 
@@ -266,7 +265,7 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
 
     useIsomorphicLayoutEffect(() => {
       if (!showPopover) {
-        setFlipPlacement(placement);
+        setActualPlacement(placement);
         return;
       }
 
@@ -274,30 +273,27 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
         handleHorizontalShift();
       }
       if (!lockPlacement) {
-        handleFlipPlacement();
+        handlePlacement();
       }
     });
 
     const triggerPositionVars = triggerPosition && {
-      [styles.triggerVars[flipPlacement]]:
-        `${triggerPosition[flipPlacement]}px`,
-      ...(width === 'full'
-        ? {
-            [styles.triggerVars.left]: `${triggerPosition?.left}px`,
-            [styles.triggerVars.right]: `${triggerPosition?.right}px`,
-          }
-        : {
-            [styles.triggerVars[align]]: `${
-              triggerPosition[align] + horizontalOffset
-            }px`,
-          }),
-    };
+      // Vertical positioning
+      [styles.triggerVars[actualPlacement]]:
+        `${triggerPosition[actualPlacement]}`,
 
-    const inlineVars = {
-      [styles.flipPlacement]: flipPlacement === 'top' ? '1' : '-1',
-      [styles.animationDelayInMs]: delayVisibility
-        ? `${animationDelayInMs}ms`
-        : '0',
+      // Horizontal positioning
+      [styles.triggerVars.left]:
+        width === 'full' || align === 'left'
+          ? `${triggerPosition?.left}`
+          : undefined,
+      [styles.triggerVars.right]:
+        width === 'full' || align === 'right'
+          ? `${triggerPosition?.right}`
+          : undefined,
+
+      // Horizontal scroll offset
+      [styles.horizontalOffset]: width !== 'full' ? `${horizontalOffset}` : '0',
     };
 
     if (!showPopover) {
@@ -333,10 +329,15 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
           tabIndex={-1}
           zIndex="modal"
           position="absolute"
-          marginTop={flipPlacement === 'bottom' ? offsetSpace : undefined}
-          marginBottom={flipPlacement === 'top' ? offsetSpace : undefined}
-          style={assignInlineVars({ ...triggerPositionVars, ...inlineVars })}
-          className={[styles.popoverPosition, styles.animation]}
+          marginTop={actualPlacement === 'bottom' ? offsetSpace : undefined}
+          marginBottom={actualPlacement === 'top' ? offsetSpace : undefined}
+          style={triggerPositionVars && assignInlineVars(triggerPositionVars)}
+          className={{
+            [styles.popoverPosition]: true,
+            [styles.animation]: true,
+            [styles.invertPlacement]: actualPlacement === 'bottom',
+            [styles.animationDelay]: delayVisibility,
+          }}
         >
           {children}
         </Box>
