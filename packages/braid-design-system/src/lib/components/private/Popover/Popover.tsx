@@ -67,7 +67,7 @@ function clamp(min: number, preferred: number, max: number) {
   return Math.min(Math.max(preferred, min), max);
 }
 
-export const Popover = forwardRef<HTMLElement, PopoverProps>(
+const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
   (
     {
       id,
@@ -103,17 +103,18 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
 
     const handleOnClose = useCallback(
       ({ closeTrigger }: { closeTrigger: 'backdrop' | 'keyboard' }) => {
-        if (closeTrigger !== 'backdrop' && triggerRef) {
-          if (triggerRef?.current) {
-            triggerRef.current.focus();
-          } else {
-            // eslint-disable-next-line no-console
-            console.error(
-              dedent`
-          The triggerRef element could not be found.
-          Ensure it is being assigned to the Popover trigger, and is available on close.
-          `,
-            );
+        if (closeTrigger === 'keyboard' && triggerRef) {
+          triggerRef.current?.focus();
+          if (process.env.NODE_ENV !== 'production') {
+            if (!triggerRef.current) {
+              // eslint-disable-next-line no-console
+              console.error(
+                dedent`
+                  The triggerRef element could not be found.
+                  Ensure it is being assigned to the Popover trigger, and is available on close.
+                `,
+              );
+            }
           }
         }
 
@@ -125,7 +126,7 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
     );
 
     useEffect(() => {
-      if (!open || !onClose) {
+      if (!onClose) {
         return;
       }
 
@@ -144,8 +145,6 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
 
     useEffect(() => {
       if (!open) {
-        setTriggerPosition(undefined);
-        setHorizontalOffset(0);
         return;
       }
 
@@ -178,10 +177,6 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
         setTriggerPosition(getPosition(triggerRef.current));
       };
 
-      if (!open) {
-        return;
-      }
-
       window.addEventListener('resize', handleResize);
       const resizeObserver = new ResizeObserver(handleResize);
       resizeObserver.observe(document.body);
@@ -190,7 +185,7 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
         window.removeEventListener('resize', handleResize);
         resizeObserver.disconnect();
       };
-    }, [open, triggerRef]);
+    }, [triggerRef]);
 
     const handlePlacement = () => {
       const popoverBoundingRect = ref?.current?.getBoundingClientRect();
@@ -201,9 +196,10 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
       const { top, bottom } = popoverBoundingRect;
       const distanceFromBottom = window.innerHeight - bottom;
 
-      if (top < 0) {
+      if (placement === 'top' && top < 0) {
         setActualPlacement('bottom');
-      } else if (distanceFromBottom < 0) {
+      }
+      if (placement === 'bottom' && distanceFromBottom < 0) {
         setActualPlacement('top');
       }
     };
@@ -265,7 +261,6 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
 
     useIsomorphicLayoutEffect(() => {
       if (!showPopover) {
-        setActualPlacement(placement);
         return;
       }
 
@@ -342,6 +337,24 @@ export const Popover = forwardRef<HTMLElement, PopoverProps>(
           {children}
         </Box>
       </BraidPortal>
+    );
+  },
+);
+
+// Wrapper element ensures that Popover is unmounted when closed
+// and state is reset
+export const Popover = forwardRef<HTMLElement, PopoverProps>(
+  (props, forwardedRef) => {
+    const { open, children, ...restProps } = props;
+
+    if (!open) {
+      return null;
+    }
+
+    return (
+      <PopoverContent open={open} ref={forwardedRef} {...restProps}>
+        {children}
+      </PopoverContent>
     );
   },
 );

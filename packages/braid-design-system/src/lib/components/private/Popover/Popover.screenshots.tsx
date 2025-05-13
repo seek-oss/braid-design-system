@@ -349,11 +349,7 @@ export const screenshots: ComponentScreenshot = {
         <Wrapper>
           {({ triggerRef }) => (
             <ScreenshotPopover triggerRef={triggerRef} width="content">
-              <Placeholder
-                label="Popover"
-                height={placeholderHeight}
-                width={popoverWidth}
-              />
+              <Placeholder label="Popover" height={placeholderHeight} />
             </ScreenshotPopover>
           )}
         </Wrapper>
@@ -365,11 +361,7 @@ export const screenshots: ComponentScreenshot = {
         <Wrapper>
           {({ triggerRef }) => (
             <ScreenshotPopover triggerRef={triggerRef} width="full">
-              <Placeholder
-                label="Popover"
-                height={placeholderHeight}
-                width={popoverWidth}
-              />
+              <Placeholder label="Popover" height={placeholderHeight} />
             </ScreenshotPopover>
           )}
         </Wrapper>
