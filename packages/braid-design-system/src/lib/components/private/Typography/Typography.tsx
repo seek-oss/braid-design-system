@@ -13,7 +13,7 @@ import { descenderCropFixForWebkitBox } from '../MaxLines/MaxLines.css';
 
 export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   children?: ReactNode;
-  icon?: ReactElement<UseIconProps>;
+  icon?: ReactElement<UseIconProps> | null;
   align?: BoxProps['textAlign'];
   maxLines?: number;
   data?: DataAttributeMap;
