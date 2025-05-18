@@ -5,7 +5,8 @@
 ---
 updated:
   - MenuItem
+  - MenuItemCheckbox
   - MenuItemLink
 ---
 
-**MenuItem, MenuItemLink**: Fixes an issue which could cause MenuItems to require multiple taps to trigger on iOS
+**MenuItem, MenuItemCheckbox, MenuItemLink**: Fixes an issue which could cause MenuItems to require multiple taps to trigger on iOS
