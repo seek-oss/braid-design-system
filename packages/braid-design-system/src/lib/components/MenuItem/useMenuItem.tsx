@@ -155,7 +155,11 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
           onClick();
         }
       },
-      background: isHighlighted ? hoverBackground : undefined,
+      /*
+      On mobile, switching between 'undefined' and a specified background converts the element to a `ColoredBox` on touch.
+      This can interrupt href navigation and click events on iOS.
+      */
+      background: isHighlighted ? hoverBackground : 'surface',
       className: [
         styles.menuItem,
         size === 'small' ? virtualTouchable : undefined,
