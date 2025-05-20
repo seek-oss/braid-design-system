@@ -8,7 +8,14 @@ import {
 import userEvent from '@testing-library/user-event';
 import { type FunctionComponent, useState } from 'react';
 
-import { MenuItem, MenuItemLink, MenuItemCheckbox, MenuItemDivider } from '..';
+import {
+  MenuItem,
+  MenuItemLink,
+  MenuItemCheckbox,
+  MenuItemDivider,
+  Text,
+  TextLink,
+} from '..';
 import { BraidTestProvider } from '../../../entries/test';
 
 import type { MenuRendererProps } from './MenuRenderer';
@@ -61,6 +68,9 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
                 MenuItemCheckbox
               </MenuItemCheckbox>
             </Component>
+            <Text>
+              <TextLink href="#">Link after Menu</TextLink>
+            </Text>
           </div>
         </BraidTestProvider>
       );
@@ -358,11 +368,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
 
-      it('should close the menu with tab key', async () => {
+      it('should close the menu with tab key, and focus the next element', async () => {
         const { queryByRole, getByRole, openHandler, closeHandler } =
           renderMenu();
 
         const menuButton = getByRole('button');
+        const link = getByRole('link');
 
         await userEvent.click(menuButton);
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
@@ -370,7 +381,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.tab();
 
         expect(queryByRole('menu')).not.toBeInTheDocument();
-        expect(document.body).toHaveFocus();
+        expect(link).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
