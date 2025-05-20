@@ -8,4 +8,6 @@ updated:
   - Drawer
 ---
 
-**Dialog, Drawer**: Fix issue which caused `MenuRenderer` with `top` placement to be positioned incorrectly inside `Drawer` and `Dialog`
+**Dialog, Drawer**: Ensure `MenuRenderer` with `top` placement is positioned correctly
+
+Ensures the menu is correctly positioned when using a `MenuRenderer` with `top` placement inside of a `Dialog` or `Drawer`.
