@@ -153,8 +153,13 @@ export const ModalContent = ({
         width={width !== 'content' ? 'full' : undefined}
         maxWidth={width !== 'content' ? width : undefined}
       >
-        {/* modalRef gets forwarded down to UL by RemoveScroll by `forwardProps` */}
-        <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
+        {/* modalRef gets forwarded down to child element by RemoveScroll by `forwardProps` */}
+        <RemoveScroll
+          noRelative // Allows portalled elements to be positioned correctly relative to the viewport size
+          ref={modalRef}
+          forwardProps
+          enabled={scrollLock}
+        >
           <Box
             background="surface"
             borderRadius={modalRadius}

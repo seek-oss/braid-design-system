@@ -225,8 +225,8 @@ importers:
         specifier: ^4.3.1
         version: 4.4.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-remove-scroll:
-        specifier: ^2.5.3
-        version: 2.6.3(@types/react@18.3.20)(react@18.3.1)
+        specifier: ^2.7.0
+        version: 2.7.0(@types/react@18.3.20)(react@18.3.1)
       throttle-debounce:
         specifier: ^5.0.2
         version: 5.0.2
@@ -620,8 +620,8 @@ importers:
         specifier: ^5.0.3
         version: 5.0.3(@types/react@18.3.20)(react@18.3.1)
       react-remove-scroll:
-        specifier: ^2.5.3
-        version: 2.6.3(@types/react@18.3.20)(react@18.3.1)
+        specifier: ^2.7.0
+        version: 2.7.0(@types/react@18.3.20)(react@18.3.1)
       react-router:
         specifier: ^6.3.0
         version: 6.30.0(react@18.3.1)
@@ -8029,8 +8029,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-remove-scroll@2.6.3:
-    resolution: {integrity: sha512-pnAi91oOk8g8ABQKGF5/M9qxmmOPxaAnopyTHYfqYEwJhyFrbbBtHuSgtKEoH0jpcxx5o3hXqH1mNd9/Oi+8iQ==}
+  react-remove-scroll@2.7.0:
+    resolution: {integrity: sha512-sGsQtcjMqdQyijAHytfGEELB8FufGbfXIsvUTe+NLx1GDRJCXtCFLBLUI1eyZCKXXvbEU2C6gai0PZKoIE9Vbg==}
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': '*'
@@ -19071,7 +19071,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.20
 
-  react-remove-scroll@2.6.3(@types/react@18.3.20)(react@18.3.1):
+  react-remove-scroll@2.7.0(@types/react@18.3.20)(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-remove-scroll-bar: 2.3.8(@types/react@18.3.20)(react@18.3.1)
