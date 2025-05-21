@@ -121,7 +121,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             paddingY={styles.verticalPadding}
             paddingX="xsmall"
             borderRadius="standard"
-            overflow="hidden"
             cursor="default"
             maxWidth="content"
             display={!isInline ? 'flex' : undefined}

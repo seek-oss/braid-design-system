@@ -82,7 +82,6 @@ export const Alert = ({
       paddingX="gutter"
       borderRadius={borderRadius}
       position="relative"
-      overflow="hidden"
       role="alert"
       aria-live="polite"
       textAlign="left"
