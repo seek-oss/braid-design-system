@@ -1,5 +1,55 @@
 # braid-design-system
 
+## 33.7.0
+
+### Minor Changes
+
+- Change `id` prop from required to optional, allowing simplified usage. ([#1743](https://github.com/seek-oss/braid-design-system/pull/1743))
+
+  Remove the `uuid` dependency which was previously used to generate fallback IDs in Playroom.
+
+  **EXAMPLE USAGE:**
+
+  ```diff
+  - <AccordionItem id="item-1" ... />
+  + <AccordionItem ... />
+  ```
+
+- Add `ref` support to table components ([#1744](https://github.com/seek-oss/braid-design-system/pull/1744))
+
+### Patch Changes
+
+- **Autosuggest**: Fix layout issue causing minor content overflow in certain scenarios ([#1746](https://github.com/seek-oss/braid-design-system/pull/1746))
+
+- **Text, Heading**: Support long, unbroken text content when using the `maxLines` prop ([#1739](https://github.com/seek-oss/braid-design-system/pull/1739))
+
+- **Dialog, Drawer**: Ensure `MenuRenderer` with `top` placement is positioned correctly ([#1779](https://github.com/seek-oss/braid-design-system/pull/1779))
+
+  Ensures the menu is correctly positioned when using a `MenuRenderer` with `top` placement inside of a `Dialog` or `Drawer`.
+
+- **MenuItem, MenuItemCheckbox, MenuItemLink**: Fixes an issue which could cause MenuItems to require multiple taps to trigger on iOS ([#1777](https://github.com/seek-oss/braid-design-system/pull/1777))
+
+- **TooltipRenderer**: Support long, unbroken text content ([#1739](https://github.com/seek-oss/braid-design-system/pull/1739))
+
+- Support `null` for `badge` and `icon` slots, in addition to `undefined`. ([#1753](https://github.com/seek-oss/braid-design-system/pull/1753))
+
+  Previously, `badge` and `icon` props could only be explicitly omitted with `undefined`.
+  This change allows passing `null`.
+
+  **EXAMPLE USAGE:**
+
+  ```tsx
+  +(<Button icon={null} />);
+  ```
+
+- **PageBlock**: Ensure component is full width when used inside other layout components ([#1754](https://github.com/seek-oss/braid-design-system/pull/1754))
+
+- **Button, ButtonIcon, ButtonLink**: Ensure hit area remains consistent size ([#1742](https://github.com/seek-oss/braid-design-system/pull/1742))
+
+  Fixes an issue where clicking the edge of buttons would trigger the active animation but not the click event
+
+- Ensure content is not clipped when used inside nested flex containers with stretched sibling elements ([#1771](https://github.com/seek-oss/braid-design-system/pull/1771))
+
 ## 33.6.0
 
 ### Minor Changes
