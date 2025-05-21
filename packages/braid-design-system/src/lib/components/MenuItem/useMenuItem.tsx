@@ -183,7 +183,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
 export interface MenuItemChildrenProps {
   children: ReactNode;
   tone: MenuItemTone;
-  badge: ReactElement<BadgeProps> | undefined;
+  badge: ReactElement<BadgeProps> | undefined | null;
   leftSlot: ReactNode | undefined;
   isCheckbox?: boolean;
 }
