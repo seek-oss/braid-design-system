@@ -46,7 +46,7 @@ import * as styles from './Tabs.css';
 export interface TabProps {
   children: ReactNode;
   item?: string;
-  badge?: ReactElement<BadgeProps>;
+  badge?: ReactElement<BadgeProps> | null;
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
 }
