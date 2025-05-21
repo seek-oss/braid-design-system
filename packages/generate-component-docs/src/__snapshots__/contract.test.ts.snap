@@ -1158,8 +1158,6 @@ exports[`Box 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLElement>
     onReset?: FormEventHandler<HTMLElement>
     onResetCapture?: FormEventHandler<HTMLElement>
-    onResize?: ReactEventHandler<HTMLElement>
-    onResizeCapture?: ReactEventHandler<HTMLElement>
     onScroll?: UIEventHandler<HTMLElement>
     onScrollCapture?: UIEventHandler<HTMLElement>
     onSeeked?: ReactEventHandler<HTMLElement>
@@ -2566,8 +2564,6 @@ exports[`ButtonLink 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
-    onResize?: ReactEventHandler<HTMLAnchorElement>
-    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
@@ -7386,8 +7382,6 @@ exports[`Link 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
-    onResize?: ReactEventHandler<HTMLAnchorElement>
-    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
@@ -9051,8 +9045,6 @@ exports[`TextLink 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
-    onResize?: ReactEventHandler<HTMLAnchorElement>
-    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
