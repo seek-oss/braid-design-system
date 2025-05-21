@@ -8,7 +8,6 @@ Previously, optional props could only be explicitly omitted with  `undefined`. T
 
 **EXAMPLE USAGE:**
 
-```diff
-- <AccordionItem badge={undefined} />
-+ <AccordionItem badge={null} />
+```tsx
++ <Button icon={null} />
 ```
