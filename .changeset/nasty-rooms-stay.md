@@ -2,9 +2,27 @@
 'braid-design-system': patch
 ---
 
-Support `null` for components' optional props, in addition to `undefined`
+---
+updated:
+  - AccordionItem
+  - Button
+  - ButtonLink
+  - Checkbox
+  - Heading
+  - MenuItem
+  - MenuItemLink
+  - RadioItem
+  - Tab
+  - Text
+  - TextLink
+  - TextLinkButton
+  - useToast
+---
 
-Previously, optional props could only be explicitly omitted with  `undefined`. This change allows you to alternatively pass `null`.
+Support `null` for `badge` and `icon` slots, in addition to `undefined`.
+
+Previously, `badge` and `icon` props could only be explicitly omitted with `undefined`.
+This change allows passing `null`.
 
 **EXAMPLE USAGE:**
 
