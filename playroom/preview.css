@@ -1,4 +1,4 @@
-@keyframes _5dj76s4 {
+@keyframes m04d6y4 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-._5dj76s1 {
+.m04d6y1 {
   z-index: 100;
   background: #1c2230;
-  color: var(--_1n74c989);
+  color: var(--b20get9);
 }
-._5dj76s3 > svg > path {
+.m04d6y3 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: _5dj76s4;
+  animation-name: m04d6y4;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,7 +25,7 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-._5dj76s5 {
+.m04d6y5 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
