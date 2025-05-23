@@ -1,6 +1,12 @@
 import assert from 'assert';
 
-import { cloneElement, forwardRef, useCallback, useEffect } from 'react';
+import {
+  type MouseEvent,
+  cloneElement,
+  forwardRef,
+  useCallback,
+  useEffect,
+} from 'react';
 
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
@@ -35,7 +41,7 @@ interface ActionProps extends ToastAction {
 }
 const Action = ({ label, onClick, removeToast }: ActionProps) => {
   const handleClick = useCallback(
-    (event: React.MouseEvent) => {
+    (event: MouseEvent) => {
       event.stopPropagation();
       removeToast();
       onClick();
