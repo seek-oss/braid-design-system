@@ -7930,6 +7930,7 @@ exports[`RadioItem 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
+    id?: string
     label: ReactNode
     ref?: 
         | (instance: HTMLInputElement | null) => void

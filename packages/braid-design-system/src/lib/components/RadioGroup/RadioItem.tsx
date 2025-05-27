@@ -19,7 +19,6 @@ export interface RadioItemProps
     | 'reserveMessageSpace'
     | 'required'
     | 'onChange'
-    | 'id'
     | 'tone'
     | 'size'
     | 'tabIndex'
