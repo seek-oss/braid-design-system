@@ -1042,7 +1042,7 @@ exports[`Box 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLElement>
     onAuxClick?: MouseEventHandler<HTMLElement>
     onAuxClickCapture?: MouseEventHandler<HTMLElement>
-    onBeforeInput?: FormEventHandler<HTMLElement>
+    onBeforeInput?: InputEventHandler<HTMLElement>
     onBeforeInputCapture?: FormEventHandler<HTMLElement>
     onBlur?: FocusEventHandler<HTMLElement>
     onBlurCapture?: FocusEventHandler<HTMLElement>
@@ -2448,7 +2448,7 @@ exports[`ButtonLink 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
-    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
@@ -7266,7 +7266,7 @@ exports[`Link 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
-    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
@@ -8929,7 +8929,7 @@ exports[`TextLink 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
-    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
