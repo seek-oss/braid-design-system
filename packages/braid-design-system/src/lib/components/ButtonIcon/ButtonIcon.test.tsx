@@ -29,36 +29,34 @@ describe('ButtonIcon', () => {
   });
 
   it('should render a button with an aria-label', () => {
-    const { getByRole } = render(
+    const { getByLabelText } = render(
       <BraidTestProvider>
         <ButtonIcon icon={<IconBookmark />} label="Label" />
       </BraidTestProvider>,
     );
 
-    const button = getByRole('button');
+    const button = getByLabelText('Label');
 
-    expect(button).toHaveAttribute('aria-label', 'Label');
     expect(button).toHaveTextContent('');
   });
 
   it('should render a tooltip on hover, with content matching the aria-label', async () => {
-    const { getByRole } = render(
+    const { getByLabelText, getByRole } = render(
       <BraidTestProvider>
         <ButtonIcon icon={<IconBookmark />} label="Label" />
       </BraidTestProvider>,
     );
 
-    const button = getByRole('button');
+    const button = getByLabelText('Label');
 
     await userEvent.hover(button);
     const tooltip = getByRole('tooltip');
 
-    expect(button).toHaveAttribute('aria-label', 'Label');
     expect(tooltip).toHaveTextContent('Label');
   });
 
   it('should honour aria-describedby if provided', () => {
-    const { getByRole } = render(
+    const { getByLabelText } = render(
       <BraidTestProvider>
         <ButtonIcon
           icon={<IconBookmark />}
@@ -69,7 +67,7 @@ describe('ButtonIcon', () => {
       </BraidTestProvider>,
     );
 
-    const button = getByRole('button');
+    const button = getByLabelText('Label');
 
     expect(button).toHaveAccessibleDescription('Actual description');
   });
