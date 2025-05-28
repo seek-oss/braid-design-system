@@ -4877,5 +4877,16 @@
         "summary": "Ensure content is not clipped when used inside nested flex containers with stretched sibling elements"
       }
     ]
+  },
+  {
+    "version": "33.8.0",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon**: Add optional `aria-describedby` prop\n\n`aria-describedby` can be used in addition to `label` to associate additional descriptive elements with the `ButtonIcon`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<ButtonIcon icon={<IconDelete />} label=\"Delete\" aria-describedby=\"descriptionId\" />\n<Text id=\"descriptionId\">Deleted items will be permanently removed after 30 days.</Text>\n```"
+      }
+    ]
   }
 ]
