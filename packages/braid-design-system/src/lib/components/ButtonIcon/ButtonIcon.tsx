@@ -54,6 +54,7 @@ export interface ButtonIconProps {
   onKeyDown?: NativeButtonProps['onKeyDown'];
   'aria-haspopup'?: NativeButtonProps['aria-haspopup'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
+  'aria-describedby'?: NativeButtonProps['aria-describedby'];
   tabIndex?: number;
   data?: DataAttributeMap;
   bleed?: boolean;
@@ -84,6 +85,7 @@ export const PrivateButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
       onKeyDown,
       'aria-haspopup': ariaHasPopUp,
       'aria-expanded': ariaExpanded,
+      'aria-describedby': ariaDescribedBy,
       tabIndex,
       data,
       ...restProps
@@ -112,6 +114,7 @@ export const PrivateButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
+        aria-describedby={ariaDescribedBy}
         onClick={onClick}
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
@@ -165,7 +168,8 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
         tooltip={<Text>{label}</Text>}
         placement={tooltipPlacement}
       >
-        {({ triggerProps: { ref: triggerRef, ...triggerProps } }) => (
+        {/* Omitting triggerProps[aria-describedBy] in favour of consumer controlled aria-describedBy */}
+        {({ triggerProps: { ref: triggerRef, tabIndex } }) => (
           <PrivateButtonIcon
             id={resolvedId}
             label={label}
@@ -179,7 +183,7 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
               }
               triggerRef(node);
             }}
-            {...triggerProps}
+            tabIndex={tabIndex}
             {...restProps}
           />
         )}
