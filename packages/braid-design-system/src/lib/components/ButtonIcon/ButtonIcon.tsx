@@ -5,7 +5,6 @@ import {
   type ReactElement,
   forwardRef,
   cloneElement,
-  type MutableRefObject,
 } from 'react';
 
 import type { Space } from '../../css/atoms/atoms';
@@ -181,9 +180,8 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
                 forwardedRef.current = node;
               }
 
-              if (triggerRef && 'current' in triggerRef) {
-                (triggerRef as MutableRefObject<HTMLButtonElement>).current =
-                  node;
+              if (typeof triggerRef === 'function') {
+                triggerRef(node);
               }
             }}
             tabIndex={tabIndex}
