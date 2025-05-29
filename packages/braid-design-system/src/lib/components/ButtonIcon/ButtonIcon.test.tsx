@@ -17,8 +17,8 @@ describe('ButtonIcon', () => {
         <BraidTestProvider>
           {/*
             Rendering `PrivateButtonIcon` so no tooltip is added.
-            Popper tooltip library does not like being rendered
-            to static markup, but not required for this test.
+            Tooltip does not like being rendered to static markup,
+            but not required for this test.
           */}
           <PrivateButtonIcon icon={<IconBookmark />} label="Bookmark" />
         </BraidTestProvider>,
