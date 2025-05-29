@@ -174,14 +174,15 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
             id={resolvedId}
             label={label}
             ref={(node: HTMLButtonElement) => {
-              if (forwardedRef) {
-                if (typeof forwardedRef === 'function') {
-                  forwardedRef(node);
-                } else {
-                  forwardedRef.current = node;
-                }
+              if (typeof forwardedRef === 'function') {
+                forwardedRef(node);
+              } else if (forwardedRef) {
+                forwardedRef.current = node;
               }
-              triggerRef(node);
+
+              if (typeof triggerRef === 'function') {
+                triggerRef(node);
+              }
             }}
             tabIndex={tabIndex}
             {...restProps}

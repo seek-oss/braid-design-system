@@ -5,10 +5,10 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import { IconBookmark, Text } from '..';
+import { ButtonIcon, IconBookmark, Text } from '..';
 import { BraidTestProvider } from '../../../entries/test';
 
-import { ButtonIcon, PrivateButtonIcon } from './ButtonIcon';
+import { PrivateButtonIcon } from './ButtonIcon';
 
 describe('ButtonIcon', () => {
   it('should render valid html structure', () => {
@@ -17,8 +17,8 @@ describe('ButtonIcon', () => {
         <BraidTestProvider>
           {/*
             Rendering `PrivateButtonIcon` so no tooltip is added.
-            Popper tooltip library does not like being rendered
-            to static markup, but not required for this test.
+            Tooltip does not like being rendered to static markup,
+            but not required for this test.
           */}
           <PrivateButtonIcon icon={<IconBookmark />} label="Bookmark" />
         </BraidTestProvider>,
