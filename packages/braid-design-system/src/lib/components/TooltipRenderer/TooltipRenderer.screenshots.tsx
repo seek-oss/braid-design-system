@@ -1,6 +1,6 @@
 import type { ComponentScreenshot } from 'site/types';
 
-import { Stack, Text, Box, TooltipRenderer } from '../';
+import { Stack, Text, Box, TooltipRenderer, Inline } from '../';
 
 import { StaticTooltipProvider } from './TooltipRenderer';
 
@@ -35,6 +35,63 @@ export const screenshots: ComponentScreenshot = {
             </TooltipRenderer>
           </Box>
         </StaticTooltipProvider>
+      ),
+    },
+    {
+      label: 'Left aligned',
+      Example: () => (
+        <Inline space="small" align="left">
+          <StaticTooltipProvider>
+            <Box style={{ paddingBottom: 100 }}>
+              <TooltipRenderer
+                placement="bottom"
+                tooltip={<Text>Tooltip</Text>}
+              >
+                {({ triggerProps }) => (
+                  <Box style={triggerStyles} {...triggerProps} />
+                )}
+              </TooltipRenderer>
+            </Box>
+          </StaticTooltipProvider>
+        </Inline>
+      ),
+    },
+    {
+      label: 'Center aligned',
+      Example: () => (
+        <Inline space="small" align="center">
+          <StaticTooltipProvider>
+            <Box style={{ paddingBottom: 100 }}>
+              <TooltipRenderer
+                placement="bottom"
+                tooltip={<Text>Tooltip</Text>}
+              >
+                {({ triggerProps }) => (
+                  <Box style={triggerStyles} {...triggerProps} />
+                )}
+              </TooltipRenderer>
+            </Box>
+          </StaticTooltipProvider>
+        </Inline>
+      ),
+    },
+    {
+      label: 'Right aligned',
+      Example: () => (
+        <Inline space="small" align="right">
+          <StaticTooltipProvider>
+            <Box style={{ paddingBottom: 100 }}>
+              <TooltipRenderer
+                placement="bottom"
+                tooltip={<Text>Tooltip</Text>}
+              >
+                {({ triggerProps }) => (
+                  <Box style={triggerStyles} {...triggerProps} />
+                )}
+              </TooltipRenderer>
+            </Box>
+          </StaticTooltipProvider>
+        </Inline>
       ),
     },
     {

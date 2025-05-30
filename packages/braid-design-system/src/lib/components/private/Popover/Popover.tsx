@@ -7,7 +7,6 @@ import {
   forwardRef,
   useRef,
   useImperativeHandle,
-  useCallback,
   type RefObject,
   type AllHTMLAttributes,
 } from 'react';
@@ -29,11 +28,12 @@ export interface PopoverProps {
   placement?: Placement;
   lockPlacement?: boolean;
   offsetSpace?: ResponsiveSpace;
+  delayVisibility?: boolean;
+  modal?: boolean;
   open: boolean;
   onClose?: () => void;
   triggerRef: RefObject<HTMLElement>;
   enterFocusRef?: RefObject<HTMLElement>;
-  delayVisibility?: boolean;
   children: ReactNode;
 }
 
@@ -72,16 +72,17 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
     {
       id,
       role,
-      align: alignProp = 'left',
+      align = 'left',
       width = 'content',
       placement = 'bottom',
       lockPlacement = false,
       offsetSpace = 'none',
+      delayVisibility = false,
+      modal = true,
       open,
       onClose,
       triggerRef,
       enterFocusRef,
-      delayVisibility = false,
       children,
     },
     forwardedRef,
@@ -99,11 +100,11 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const showPopover = open && triggerPosition;
 
-    const align = alignProp === 'center' ? 'left' : alignProp;
+    const alignmentAnchor = align === 'center' ? 'left' : align;
 
-    const handleOnClose = useCallback(
-      ({ closeTrigger }: { closeTrigger: 'backdrop' | 'keyboard' }) => {
-        if (closeTrigger === 'keyboard' && triggerRef) {
+    useEffect(() => {
+      const handleKeydown = (event: globalThis.KeyboardEvent) => {
+        if (event.key === 'Escape' || event.key === 'Tab') {
           triggerRef.current?.focus();
           if (process.env.NODE_ENV !== 'production') {
             if (!triggerRef.current) {
@@ -116,23 +117,10 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
               );
             }
           }
-        }
 
-        if (onClose) {
-          onClose();
-        }
-      },
-      [onClose, triggerRef],
-    );
-
-    useEffect(() => {
-      if (!onClose) {
-        return;
-      }
-
-      const handleKeydown = (event: globalThis.KeyboardEvent) => {
-        if (event.key === 'Escape' || event.key === 'Tab') {
-          handleOnClose({ closeTrigger: 'keyboard' });
+          if (onClose) {
+            onClose();
+          }
         }
       };
 
@@ -141,7 +129,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       return () => {
         window.removeEventListener('keydown', handleKeydown);
       };
-    }, [open, onClose, handleOnClose]);
+    }, [onClose, triggerRef]);
 
     useEffect(() => {
       if (!open) {
@@ -170,7 +158,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
         }
         // Timeout needs to be 10ms to work in Safari - 0 for other browsers
       }, 10);
-    }, [open, forwardedRef, enterFocusRef, triggerRef]);
+    }, [open, enterFocusRef, triggerRef]);
 
     useEffect(() => {
       const handleResize = () => {
@@ -221,7 +209,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
         triggerPosition.left + triggerPosition.width / 2;
 
       const popoverLeft =
-        alignProp === 'center' && triggerCenter
+        align === 'center' && triggerCenter
           ? triggerCenter - popoverWidth / 2
           : triggerPosition.left;
 
@@ -240,7 +228,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       );
 
       if (
-        align === 'right' &&
+        alignmentAnchor === 'right' &&
         clampedTriggerRightFromLeft !== triggerPosition.right + horizontalOffset
       ) {
         setHorizontalOffset(
@@ -250,7 +238,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
         );
       }
       if (
-        align === 'left' &&
+        alignmentAnchor === 'left' &&
         clampedPopoverLeft !== triggerPosition.left + horizontalOffset
       ) {
         setHorizontalOffset(clampedPopoverLeft - triggerPosition.left);
@@ -279,11 +267,11 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
       // Horizontal positioning
       [styles.triggerVars.left]:
-        width === 'full' || align === 'left'
+        width === 'full' || alignmentAnchor === 'left'
           ? `${triggerPosition?.left}`
           : undefined,
       [styles.triggerVars.right]:
-        width === 'full' || align === 'right'
+        width === 'full' || alignmentAnchor === 'right'
           ? `${triggerPosition?.right}`
           : undefined,
 
@@ -297,24 +285,25 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     return (
       <BraidPortal>
-        <Box
-          data-testid={
-            process.env.NODE_ENV !== 'production' ? 'backdrop' : undefined
-          }
-          onClick={(event) => {
-            event.stopPropagation();
-            event.preventDefault();
-            if (onClose) {
-              handleOnClose({ closeTrigger: 'backdrop' });
+        {modal && (
+          <Box
+            data-testid={
+              process.env.NODE_ENV !== 'production' ? 'backdrop' : undefined
             }
-          }}
-          pointerEvents={!onClose ? 'none' : undefined}
-          position="fixed"
-          zIndex="modal"
-          top={0}
-          left={0}
-          className={styles.backdrop}
-        />
+            onClick={(event) => {
+              event.stopPropagation();
+              event.preventDefault();
+              if (onClose) {
+                onClose();
+              }
+            }}
+            position="fixed"
+            zIndex="modal"
+            top={0}
+            left={0}
+            className={styles.backdrop}
+          />
+        )}
 
         {/* Todo - use `popover` property when available */}
         <Box
