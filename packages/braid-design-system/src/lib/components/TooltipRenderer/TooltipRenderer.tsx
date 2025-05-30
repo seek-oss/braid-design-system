@@ -22,6 +22,7 @@ import { useThemeName } from '../useThemeName/useThemeName';
 import * as styles from './TooltipRenderer.css';
 
 const edgeOffset = 'xxsmall';
+export const offsetSpace = 'small';
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({
@@ -51,7 +52,7 @@ export const TooltipTextDefaultsProvider = ({
   );
 };
 
-const TooltipContent = ({
+export const TooltipContent = ({
   inferredPlacement,
   arrowLeftOffset,
   children,
@@ -61,6 +62,7 @@ const TooltipContent = ({
   children: ReactNodeNoStrings;
 }) => (
   <Box
+    textAlign="left"
     boxShadow="large"
     background="neutral"
     borderRadius="large"
@@ -119,12 +121,6 @@ export const TooltipRenderer = ({
   const isMobileDevice = useRef(isMobile()).current;
 
   useEffect(() => {
-    const handleKeyDown = ({ key }: KeyboardEvent) => {
-      if (key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
     const handleScroll = () => {
       setOpen(false);
     };
@@ -134,7 +130,6 @@ export const TooltipRenderer = ({
       passive: true,
     };
 
-    document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
   }, [open]);
 
@@ -199,12 +194,14 @@ export const TooltipRenderer = ({
         id={resolvedId}
         role="tooltip"
         ref={tooltipRef}
-        offsetSpace="small"
+        offsetSpace={offsetSpace}
         align="center"
         placement={placement}
         lockPlacement={isStatic}
         delayVisibility={!isMobileDevice}
+        modal={false}
         open={isStatic ? true : open}
+        onClose={!isStatic ? () => setOpen(false) : undefined}
         triggerRef={triggerRef}
       >
         <TooltipContent
