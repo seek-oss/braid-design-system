@@ -779,9 +779,8 @@ export const Autosuggest = forwardRef(function <Value>(
             triggerRef={fieldRef}
             open={isOpen}
             width="full"
-            placement="bottom"
             lockPlacement
-            offsetSpace="none"
+            offsetSpace="xxsmall"
             role={false}
           >
             {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
@@ -797,7 +796,6 @@ export const Autosuggest = forwardRef(function <Value>(
                 borderRadius="standard"
                 boxShadow="medium"
                 width="full"
-                marginTop="xxsmall"
                 paddingY="xxsmall"
                 className={styles.menu}
                 {...a11y.menuProps}
