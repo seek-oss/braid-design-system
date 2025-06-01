@@ -67,7 +67,7 @@ const padding: Record<ButtonIconSize, Space> = {
   large: 'xsmall',
 };
 
-export const PrivateButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
+const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
   (
     {
       icon,
@@ -170,7 +170,7 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
       >
         {/* Omitting triggerProps[aria-describedBy] in favour of consumer controlled aria-describedBy */}
         {({ triggerProps: { ref: triggerRef, tabIndex } }) => (
-          <PrivateButtonIcon
+          <ButtonIconContent
             id={resolvedId}
             label={label}
             ref={(node: HTMLButtonElement) => {
