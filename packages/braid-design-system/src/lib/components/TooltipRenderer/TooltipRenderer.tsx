@@ -120,9 +120,31 @@ export const TooltipRenderer = ({
   const isStatic = useContext(StaticTooltipContext);
   const isMobileDevice = useRef(isMobile()).current;
 
+  const visible = useRef(false);
+  useEffect(() => {
+    if (!open) {
+      visible.current = false;
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      visible.current = true;
+    });
+
+    return () => clearTimeout(timeout);
+  }, [open]);
+
   useEffect(() => {
     const handleScroll = () => {
-      setOpen(false);
+      /*
+      'visible' is true 1 tick after 'open' is true,
+      giving time for the element to scroll into view
+
+      We only want to remove on scroll once the element is scrolled into view
+      */
+      if (visible.current) {
+        setOpen(false);
+      }
     };
 
     const scrollHandlerOptions = {
@@ -139,7 +161,7 @@ export const TooltipRenderer = ({
         scrollHandlerOptions,
       );
     };
-  }, [open]);
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     if (!open && !isStatic) {
