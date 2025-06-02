@@ -11,6 +11,12 @@ const placeholderHeight = 44;
 const triggerWidth = 150;
 const popoverWidth = 200;
 
+const defaultProps = {
+  open: true,
+  lockPlacement: true,
+  role: false,
+} as const;
+
 const Wrapper = ({
   children,
   popoverPlacement = 'bottom',
@@ -44,12 +50,6 @@ const Wrapper = ({
   );
 };
 
-const ScreenshotPopover = ({
-  ...props
-}: Omit<PopoverProps, 'open' | 'lockPlacement' | 'role'>) => (
-  <Popover open lockPlacement role={false} {...props} />
-);
-
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
@@ -58,7 +58,8 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover
+            <Popover
+              {...defaultProps}
               triggerRef={triggerRef}
               placement="bottom"
               align="left"
@@ -68,7 +69,7 @@ export const screenshots: ComponentScreenshot = {
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -78,7 +79,8 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover
+            <Popover
+              {...defaultProps}
               triggerRef={triggerRef}
               placement="bottom"
               align="center"
@@ -88,7 +90,7 @@ export const screenshots: ComponentScreenshot = {
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -98,7 +100,8 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover
+            <Popover
+              {...defaultProps}
               triggerRef={triggerRef}
               placement="bottom"
               align="right"
@@ -108,7 +111,7 @@ export const screenshots: ComponentScreenshot = {
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -118,7 +121,8 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover
+            <Popover
+              {...defaultProps}
               triggerRef={triggerRef}
               placement="bottom"
               offsetSpace="small"
@@ -128,7 +132,7 @@ export const screenshots: ComponentScreenshot = {
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -138,7 +142,8 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover
+            <Popover
+              {...defaultProps}
               triggerRef={triggerRef}
               placement="bottom"
               offsetSpace="medium"
@@ -148,7 +153,7 @@ export const screenshots: ComponentScreenshot = {
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -158,7 +163,8 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover
+            <Popover
+              {...defaultProps}
               triggerRef={triggerRef}
               placement="bottom"
               offsetSpace="large"
@@ -168,7 +174,7 @@ export const screenshots: ComponentScreenshot = {
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -180,7 +186,8 @@ export const screenshots: ComponentScreenshot = {
         return (
           <Wrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...defaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 align="left"
@@ -190,7 +197,7 @@ export const screenshots: ComponentScreenshot = {
                   height={placeholderHeight}
                   width={popoverWidth}
                 />
-              </ScreenshotPopover>
+              </Popover>
             )}
           </Wrapper>
         );
@@ -203,7 +210,8 @@ export const screenshots: ComponentScreenshot = {
         return (
           <Wrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...defaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 align="center"
@@ -213,7 +221,7 @@ export const screenshots: ComponentScreenshot = {
                   height={placeholderHeight}
                   width={popoverWidth}
                 />
-              </ScreenshotPopover>
+              </Popover>
             )}
           </Wrapper>
         );
@@ -226,7 +234,8 @@ export const screenshots: ComponentScreenshot = {
         return (
           <Wrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...defaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 align="right"
@@ -236,7 +245,7 @@ export const screenshots: ComponentScreenshot = {
                   height={placeholderHeight}
                   width={popoverWidth}
                 />
-              </ScreenshotPopover>
+              </Popover>
             )}
           </Wrapper>
         );
@@ -249,7 +258,8 @@ export const screenshots: ComponentScreenshot = {
         return (
           <Wrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...defaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 offsetSpace="small"
@@ -259,7 +269,7 @@ export const screenshots: ComponentScreenshot = {
                   height={placeholderHeight}
                   width={popoverWidth}
                 />
-              </ScreenshotPopover>
+              </Popover>
             )}
           </Wrapper>
         );
@@ -272,7 +282,8 @@ export const screenshots: ComponentScreenshot = {
         return (
           <Wrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...defaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 offsetSpace="medium"
@@ -282,7 +293,7 @@ export const screenshots: ComponentScreenshot = {
                   height={placeholderHeight}
                   width={popoverWidth}
                 />
-              </ScreenshotPopover>
+              </Popover>
             )}
           </Wrapper>
         );
@@ -295,7 +306,8 @@ export const screenshots: ComponentScreenshot = {
         return (
           <Wrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...defaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 offsetSpace="large"
@@ -305,7 +317,7 @@ export const screenshots: ComponentScreenshot = {
                   height={placeholderHeight}
                   width={popoverWidth}
                 />
-              </ScreenshotPopover>
+              </Popover>
             )}
           </Wrapper>
         );
@@ -316,13 +328,13 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper justifyContent="flexStart">
           {({ triggerRef }) => (
-            <ScreenshotPopover triggerRef={triggerRef} align="right">
+            <Popover {...defaultProps} triggerRef={triggerRef} align="right">
               <Placeholder
                 label="Popover"
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -332,13 +344,13 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper justifyContent="flexEnd">
           {({ triggerRef }) => (
-            <ScreenshotPopover triggerRef={triggerRef} align="left">
+            <Popover {...defaultProps} triggerRef={triggerRef} align="left">
               <Placeholder
                 label="Popover"
                 height={placeholderHeight}
                 width={popoverWidth}
               />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -348,9 +360,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover triggerRef={triggerRef} width="content">
+            <Popover {...defaultProps} triggerRef={triggerRef} width="content">
               <Placeholder label="Popover" height={placeholderHeight} />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
@@ -360,9 +372,9 @@ export const screenshots: ComponentScreenshot = {
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
-            <ScreenshotPopover triggerRef={triggerRef} width="full">
+            <Popover {...defaultProps} triggerRef={triggerRef} width="full">
               <Placeholder label="Popover" height={placeholderHeight} />
-            </ScreenshotPopover>
+            </Popover>
           )}
         </Wrapper>
       ),
