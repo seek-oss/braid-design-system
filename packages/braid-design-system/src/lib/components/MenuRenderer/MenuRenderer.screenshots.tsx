@@ -20,7 +20,7 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 
 import { Menu } from './MenuRenderer';
 
-const defaultProps = {
+const menuDefaultProps = {
   offsetSpace: 'none',
   align: 'left',
   size: 'standard',
@@ -32,6 +32,12 @@ const defaultProps = {
   position: 'relative',
   reserveIconSpace: false,
   placement: 'bottom',
+} as const;
+
+const popoverDefaultProps = {
+  open: true,
+  lockPlacement: true,
+  role: false,
 } as const;
 
 const triggerHeight = 44;
@@ -64,12 +70,6 @@ const PopoverWrapper = ({
     </Box>
   );
 };
-
-const ScreenshotPopover = ({
-  ...props
-}: Omit<PopoverProps, 'open' | 'lockPlacement' | 'role'>) => (
-  <Popover open lockPlacement role={false} {...props} />
-);
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
@@ -135,12 +135,16 @@ export const screenshots: ComponentScreenshot = {
         return (
           <PopoverWrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover triggerRef={triggerRef} placement={placement}>
-                <Menu {...defaultProps} placement={placement}>
+              <Popover
+                {...popoverDefaultProps}
+                triggerRef={triggerRef}
+                placement={placement}
+              >
+                <Menu {...menuDefaultProps} placement={placement}>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                 </Menu>
-              </ScreenshotPopover>
+              </Popover>
             )}
           </PopoverWrapper>
         );
@@ -153,16 +157,17 @@ export const screenshots: ComponentScreenshot = {
         return (
           <PopoverWrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...popoverDefaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 offsetSpace="small"
               >
-                <Menu {...defaultProps} placement={placement}>
+                <Menu {...menuDefaultProps} placement={placement}>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                 </Menu>
-              </ScreenshotPopover>
+              </Popover>
             )}
           </PopoverWrapper>
         );
@@ -175,12 +180,16 @@ export const screenshots: ComponentScreenshot = {
         return (
           <PopoverWrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover triggerRef={triggerRef} placement={placement}>
-                <Menu {...defaultProps} placement={placement}>
+              <Popover
+                {...popoverDefaultProps}
+                triggerRef={triggerRef}
+                placement={placement}
+              >
+                <Menu {...menuDefaultProps} placement={placement}>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                 </Menu>
-              </ScreenshotPopover>
+              </Popover>
             )}
           </PopoverWrapper>
         );
@@ -193,16 +202,17 @@ export const screenshots: ComponentScreenshot = {
         return (
           <PopoverWrapper popoverPlacement={placement}>
             {({ triggerRef }) => (
-              <ScreenshotPopover
+              <Popover
+                {...popoverDefaultProps}
                 triggerRef={triggerRef}
                 placement={placement}
                 offsetSpace="small"
               >
-                <Menu {...defaultProps} placement={placement}>
+                <Menu {...menuDefaultProps} placement={placement}>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                   <MenuItem onClick={() => {}}>Item</MenuItem>
                 </Menu>
-              </ScreenshotPopover>
+              </Popover>
             )}
           </PopoverWrapper>
         );
@@ -212,7 +222,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Small size (virtual touch target)',
       Example: () => (
         <Box display="flex" data={{ [debugTouchableAttrForDataProp]: '' }}>
-          <Menu {...defaultProps} width="content" size="small">
+          <Menu {...menuDefaultProps} width="content" size="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -230,7 +240,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width content',
       Example: () => (
         <Inline space="medium">
-          <Menu {...defaultProps} width="content">
+          <Menu {...menuDefaultProps} width="content">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -241,7 +251,7 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-          <Menu {...defaultProps} width="content" size="small">
+          <Menu {...menuDefaultProps} width="content" size="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -259,7 +269,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width small',
       Example: () => (
         <Inline space="medium">
-          <Menu {...defaultProps} width="small">
+          <Menu {...menuDefaultProps} width="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -273,7 +283,7 @@ export const screenshots: ComponentScreenshot = {
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
           </Menu>
-          <Menu {...defaultProps} width="small" size="small">
+          <Menu {...menuDefaultProps} width="small" size="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -294,7 +304,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width medium',
       Example: () => (
         <Inline space="medium">
-          <Menu {...defaultProps} width="medium">
+          <Menu {...menuDefaultProps} width="medium">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -305,7 +315,7 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-          <Menu {...defaultProps} width="medium" size="small">
+          <Menu {...menuDefaultProps} width="medium" size="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -323,7 +333,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Width large',
       Example: () => (
         <Inline space="medium">
-          <Menu {...defaultProps} width="large">
+          <Menu {...menuDefaultProps} width="large">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -334,7 +344,7 @@ export const screenshots: ComponentScreenshot = {
               Item
             </MenuItemCheckbox>
           </Menu>
-          <Menu {...defaultProps} width="large" size="small">
+          <Menu {...menuDefaultProps} width="large" size="small">
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItemDivider />
@@ -352,7 +362,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Reserve icon space',
       Example: () => (
         <Inline space="medium">
-          <Menu {...defaultProps} reserveIconSpace>
+          <Menu {...menuDefaultProps} reserveIconSpace>
             <MenuItem onClick={() => {}} icon={<IconProfile />}>
               Item
             </MenuItem>
@@ -370,7 +380,7 @@ export const screenshots: ComponentScreenshot = {
             <MenuItem onClick={() => {}}>Item</MenuItem>
             <MenuItem onClick={() => {}}>Item</MenuItem>
           </Menu>
-          <Menu {...defaultProps} reserveIconSpace size="small">
+          <Menu {...menuDefaultProps} reserveIconSpace size="small">
             <MenuItem onClick={() => {}} icon={<IconProfile />}>
               Item
             </MenuItem>
@@ -395,7 +405,7 @@ export const screenshots: ComponentScreenshot = {
       label: 'Height limit',
       Example: () => (
         <Inline space="medium">
-          <Menu {...defaultProps}>
+          <Menu {...menuDefaultProps}>
             <MenuItem onClick={() => {}}>Button</MenuItem>
             <MenuItem onClick={() => {}}>Button</MenuItem>
             <MenuItem onClick={() => {}}>Button</MenuItem>
@@ -416,7 +426,7 @@ export const screenshots: ComponentScreenshot = {
             <MenuItem onClick={() => {}}>Button</MenuItem>
             <MenuItem onClick={() => {}}>Button</MenuItem>
           </Menu>
-          <Menu {...defaultProps} size="small">
+          <Menu {...menuDefaultProps} size="small">
             <MenuItem onClick={() => {}}>Button</MenuItem>
             <MenuItem onClick={() => {}}>Button</MenuItem>
             <MenuItem onClick={() => {}}>Button</MenuItem>
