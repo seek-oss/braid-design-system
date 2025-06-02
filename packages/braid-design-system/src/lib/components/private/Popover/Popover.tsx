@@ -132,11 +132,10 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
     }, [onClose, triggerRef]);
 
     useEffect(() => {
-      if (!open) {
-        return;
-      }
-
       setTriggerPosition(getPosition(triggerRef.current));
+    }, [triggerRef]);
+
+    useEffect(() => {
       // Without timeout, focus will not work on first render
       setTimeout(() => {
         if (!enterFocusRef) {
@@ -186,8 +185,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
       if (placement === 'top' && top < 0) {
         setActualPlacement('bottom');
-      }
-      if (placement === 'bottom' && distanceFromBottom < 0) {
+      } else if (placement === 'bottom' && distanceFromBottom < 0) {
         setActualPlacement('top');
       }
     };
