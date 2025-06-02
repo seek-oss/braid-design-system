@@ -204,6 +204,7 @@
     "@babel/core": "^7.26.0",
     "@babel/plugin-transform-typescript": "^7.20.13",
     "@braid-design-system/source.macro": "workspace:*",
+    "@storybook/preview-api": "8.6.11",
     "@storybook/react": "8.6.11",
     "@storybook/react-webpack5": "8.6.11",
     "@svgr/core": "^5.5.0",

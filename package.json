@@ -68,6 +68,7 @@
     "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
     "nx": "^15.9.7",
+    "panzoom": "9.4.2",
     "prettier": "^3.4.1",
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
@@ -81,8 +82,7 @@
   "packageManager": "pnpm@10.12.4",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom": "patches/panzoom.patch",
-      "html-validate@9.7.0": "patches/html-validate@9.7.0.patch"
+      "panzoom": "patches/panzoom.patch"
     }
   },
   "manypkg": {

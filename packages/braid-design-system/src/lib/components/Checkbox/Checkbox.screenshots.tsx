@@ -1,282 +1,272 @@
-import { useState } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Badge, Box, Checkbox, Inline, Stack, Text, Tiles } from '../';
+import { Badge, Box, Inline, Stack, Text, Tiles } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Standard',
-      Example: () => {
-        const [state, setState] = useState(false);
-        return (
-          <Checkbox
-            checked={state}
-            onChange={() => setState(!state)}
-            label="Label"
-          />
-        );
-      },
-    },
-    {
-      label: 'Small',
-      Example: () => {
-        const [state, setState] = useState(false);
-        return (
-          <Checkbox
-            checked={state}
-            onChange={() => setState(!state)}
-            label="Label"
-            size="small"
-          />
-        );
-      },
-    },
-    {
-      label: 'Checked',
-      Example: ({ handler }) => (
-        <Checkbox checked={true} onChange={handler} label="Label" />
-      ),
-    },
-    {
-      label: 'Mixed state',
-      Example: ({ handler }) => (
-        <Checkbox checked="mixed" onChange={handler} label="Label" />
-      ),
-    },
-    {
-      label: 'Disabled',
-      Example: ({ handler }) => (
-        <Stack space="gutter">
-          <Checkbox
-            disabled={true}
-            checked={false}
-            onChange={handler}
-            label="Unchecked"
-          />
-          <Checkbox
-            disabled={true}
-            checked={true}
-            onChange={handler}
-            label="Checked"
-          />
-          <Checkbox
-            disabled={true}
-            checked="mixed"
-            onChange={handler}
-            label="Mixed"
-          />
-          <Checkbox
-            disabled={true}
-            checked={false}
-            onChange={handler}
-            label="Unchecked & critical"
-            tone="critical"
-          />
-          <Checkbox
-            disabled={true}
-            checked={true}
-            onChange={handler}
-            label="Checked & critical"
-            tone="critical"
-          />
-          <Checkbox
-            disabled={true}
-            checked="mixed"
-            onChange={handler}
-            label="Mixed & critical"
-            tone="critical"
-          />
-          <Checkbox
-            disabled={true}
-            checked={false}
-            onChange={handler}
-            label="Unchecked, critical & message"
-            tone="critical"
-            message="Message"
-          />
-          <Checkbox
-            disabled={true}
-            checked={true}
-            onChange={handler}
-            label="Checked, critical & message"
-            tone="critical"
-            message="Message"
-          />
-          <Checkbox
-            disabled={true}
-            checked="mixed"
-            onChange={handler}
-            label="Mixed, critical & message"
-            tone="critical"
-            message="Message"
-          />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Critical',
-      Example: ({ handler }) => (
-        <Checkbox
-          checked={false}
-          onChange={handler}
-          label="Label"
-          message="This is a critical message"
-          tone="critical"
-        />
-      ),
-    },
-    {
-      label: 'With a description',
-      Example: ({ handler }) => (
-        <Checkbox
-          checked={false}
-          onChange={handler}
-          label="Label"
-          description="Extra information about the field"
-        />
-      ),
-    },
-    {
-      label: 'With a Badge',
-      Example: ({ handler }) => (
-        <Checkbox
-          checked={false}
-          onChange={handler}
-          label="Label"
-          badge={
-            <Badge tone="positive" weight="strong">
-              New
-            </Badge>
-          }
-        />
-      ),
-    },
-    {
-      label: 'With a Badge and description',
-      Example: ({ handler }) => (
-        <Checkbox
-          checked={false}
-          onChange={handler}
-          label="Label"
-          badge={
-            <Badge tone="positive" weight="strong">
-              New
-            </Badge>
-          }
-          description="Extra information about the field"
-        />
-      ),
-    },
-    {
-      label: 'With nested content visible only when checked',
-      Example: () => {
-        const [state, setState] = useState(true);
-        return (
-          <Checkbox
-            checked={state}
-            onChange={() => setState(!state)}
-            label="Label"
-          >
-            <Text>This text is visible when the checkbox is checked.</Text>
-          </Checkbox>
-        );
-      },
-    },
-    {
-      label: 'With nested content and description',
-      Example: ({ handler }) => (
-        <Checkbox
-          checked={true}
-          onChange={handler}
-          label="Label"
-          description="Extra information about the field"
-        >
-          <Text>This text is visible when the button is checked.</Text>
-        </Checkbox>
-      ),
-    },
-    {
-      label: 'With a message and description',
-      Example: ({ handler }) => (
-        <Checkbox
-          checked={false}
-          onChange={handler}
-          label="Label"
-          tone="critical"
-          message="This is a critical message"
-          description="Extra information about the field"
-        />
-      ),
-    },
-    {
-      label: 'With nested content, a message and description',
-      Example: ({ handler }) => (
-        <Checkbox
-          checked={true}
-          onChange={handler}
-          label="Label"
-          tone="critical"
-          message="This is a critical message"
-          description="Extra information about the field"
-        >
-          <Text>This text is visible when the button is checked.</Text>
-        </Checkbox>
-      ),
-    },
-    {
-      label: 'Virtual touch target',
-      Example: () => {
-        const [state, setState] = useState(false);
-        return (
-          <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
-            <Checkbox
-              checked={state}
-              onChange={() => setState(!state)}
-              label="Label"
-              size="small"
-            />
+import { Checkbox } from './Checkbox';
 
-            <Checkbox
-              checked={state}
-              onChange={() => setState(!state)}
-              label="Label"
-              size="standard"
-            />
-          </Inline>
-        );
-      },
+const meta = {
+  title: 'Components/Checkbox',
+  component: Checkbox,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+  argTypes: {
+    onChange: { action: 'changed' },
+    id: { control: 'text' },
+    checked: { control: 'boolean' },
+    label: { control: 'text' },
+    size: {
+      control: 'radio',
+      options: ['small', 'standard'],
     },
-    {
-      label: 'Contrast',
-      Example: ({ handler }) => (
-        <Box maxWidth="xsmall">
-          <BackgroundContrastTest>
-            <Tiles space="small" columns={2}>
-              <Checkbox checked={false} onChange={handler} label="Label" />
-              <Checkbox checked={true} onChange={handler} label="Label" />
-            </Tiles>
-          </BackgroundContrastTest>
-        </Box>
-      ),
+    tone: {
+      control: 'radio',
+      options: ['neutral', 'critical'],
     },
-    {
-      label: 'Test: should be left aligned in a centered Stack',
-      Example: ({ handler }) => (
-        <Stack space="large" align="center">
-          <Checkbox
-            checked={false}
-            onChange={handler}
-            label="Dolor cillum elit aliquip velit reprehenderit."
-            tone="critical"
-            message="Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit."
-            description="Nulla amet dolor sunt elit consequat proident eiusmod id. Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit."
-          />
-        </Stack>
-      ),
-    },
+    message: { control: 'text' },
+    description: { control: 'text' },
+  },
+  args: {
+    id: 'checkbox-example',
+    checked: false,
+    label: 'Label',
+    size: 'standard',
+    onChange: () => {},
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ padding: '1rem' }}>
+        <Story />
+      </div>
+    ),
   ],
+} satisfies Meta<typeof Checkbox>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Standard: Story = {
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    const handleChange = () => updateArgs({ checked: !checked });
+    return <Checkbox {...args} checked={checked} onChange={handleChange} />;
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: 'small',
+  },
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    const handleChange = () => updateArgs({ checked: !checked });
+    return <Checkbox {...args} checked={checked} onChange={handleChange} />;
+  },
+};
+
+export const Checked: Story = {
+  args: {
+    checked: true,
+  },
+};
+
+export const Mixedstate: Story = {
+  name: 'Mixed state',
+  args: {
+    checked: 'mixed',
+  },
+};
+
+export const Disabled: Story = {
+  render: (args) => (
+    <Stack space="gutter">
+      <Checkbox {...args} disabled={true} checked={false} label="Unchecked" />
+      <Checkbox {...args} disabled={true} checked={true} label="Checked" />
+      <Checkbox {...args} disabled={true} checked="mixed" label="Mixed" />
+      <Checkbox
+        {...args}
+        disabled={true}
+        checked={false}
+        label="Unchecked & critical"
+        tone="critical"
+      />
+      <Checkbox
+        {...args}
+        disabled={true}
+        checked={true}
+        label="Checked & critical"
+        tone="critical"
+      />
+      <Checkbox
+        {...args}
+        disabled={true}
+        checked="mixed"
+        label="Mixed & critical"
+        tone="critical"
+      />
+      <Checkbox
+        {...args}
+        disabled={true}
+        checked={false}
+        label="Unchecked, critical & message"
+        tone="critical"
+        message="Message"
+      />
+      <Checkbox
+        {...args}
+        disabled={true}
+        checked={true}
+        label="Checked, critical & message"
+        tone="critical"
+        message="Message"
+      />
+      <Checkbox
+        {...args}
+        disabled={true}
+        checked="mixed"
+        label="Mixed, critical & message"
+        tone="critical"
+        message="Message"
+      />
+    </Stack>
+  ),
+};
+
+export const Critical: Story = {
+  args: {
+    tone: 'critical',
+    message: 'This is a critical message',
+  },
+};
+
+export const Withadescription: Story = {
+  name: 'With a description',
+  args: {
+    description: 'Extra information about the field',
+  },
+};
+
+export const WithaBadge: Story = {
+  name: 'With a Badge',
+  args: {
+    badge: (
+      <Badge tone="positive" weight="strong">
+        New
+      </Badge>
+    ),
+  },
+};
+
+export const WithaBadgeanddescription: Story = {
+  name: 'With a Badge and description',
+  args: {
+    description: 'Extra information about the field',
+    badge: (
+      <Badge tone="positive" weight="strong">
+        New
+      </Badge>
+    ),
+  },
+};
+
+export const Withnestedcontentvisibleonlywhenchecked: Story = {
+  name: 'With nested content visible only when checked',
+  args: {
+    checked: true,
+    children: <Text>This text is visible when the checkbox is checked.</Text>,
+  },
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    const handleChange = () => updateArgs({ checked: !checked });
+    return <Checkbox {...args} checked={checked} onChange={handleChange} />;
+  },
+};
+
+export const Withnestedcontentanddescription: Story = {
+  name: 'With nested content and description',
+  args: {
+    checked: true,
+    description: 'Extra information about the field',
+    children: <Text>This text is visible when the checkbox is checked.</Text>,
+  },
+};
+
+export const Withamessageanddescription: Story = {
+  name: 'With a message and description',
+  args: {
+    tone: 'critical',
+    message: 'This is a critical message',
+    description: 'Extra information about the field',
+  },
+};
+
+export const Withnestedcontentamessageanddescription: Story = {
+  name: 'With nested content, a message and description',
+  args: {
+    checked: true,
+    tone: 'critical',
+    message: 'This is a critical message',
+    description: 'Extra information about the field',
+    children: <Text>This text is visible when the checkbox is checked.</Text>,
+  },
+};
+
+export const Virtualtouchtarget: Story = {
+  name: 'Virtual touch target',
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+    const handleChange = () => updateArgs({ checked: !checked });
+
+    return (
+      <Inline
+        space="large"
+        data={{
+          [debugTouchableAttrForDataProp]: '',
+        }}
+      >
+        <Checkbox
+          {...args}
+          checked={checked}
+          onChange={handleChange}
+          size="small"
+        />
+
+        <Checkbox {...args} checked={checked} onChange={handleChange} />
+      </Inline>
+    );
+  },
+};
+
+export const Contrast: Story = {
+  render: (args) => (
+    <Box maxWidth="xsmall">
+      <BackgroundContrastTest>
+        <Tiles space="small" columns={2}>
+          <Checkbox {...args} checked={false} />
+          <Checkbox {...args} checked={true} />
+        </Tiles>
+      </BackgroundContrastTest>
+    </Box>
+  ),
+};
+
+export const TestshouldbeleftalignedinacenteredStack: Story = {
+  name: 'Test: should be left aligned in a centered Stack',
+  args: {
+    tone: 'critical',
+    message:
+      'Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit.',
+    description:
+      'Nulla amet dolor sunt elit consequat proident eiusmod id. Do ut pariatur anim aliquip duis mollit esse qui irure pariatur eu elit.',
+    label: 'Dolor cillum elit aliquip velit reprehenderit.',
+  },
+  render: (args) => (
+    <Stack space="large" align="center">
+      <Checkbox {...args} />
+    </Stack>
+  ),
 };

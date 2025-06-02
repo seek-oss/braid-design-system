@@ -1,381 +1,381 @@
-import { type ReactNode, Fragment } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
 
 import { Box, Inline } from '../';
-import { spaces } from '../../utils/docsHelpers';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <Box style={{ maxWidth: '240px' }}>{children}</Box>
-);
+const meta = {
+  title: 'Components/Inline',
+  component: Inline,
+  parameters: {
+    screenshotOnlyInWireframe: true,
+  },
+} satisfies Meta<typeof Inline>;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 992, 1200],
-  screenshotOnlyInWireframe: true,
-  examples: [
-    ...spaces.map((space) => ({
-      label: `Space: ${space}`,
-      Container,
-      Example: () => (
-        <Inline space={space}>
+export default meta;
+type Story = StoryObj<typeof Inline>;
+
+const commonParameters = {
+  chromatic: {
+    viewports: [320, 768, 992, 1200],
+  },
+  layout: 'fullscreen',
+};
+
+export const ResponsiveSpace: Story = {
+  name: "Responsive space, e.g. ['xxsmall', 'medium']",
+  render: () => (
+    <Inline space={['xxsmall', 'medium']}>
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const AlignCenter: Story = {
+  name: 'Align horizontally to center',
+  render: () => (
+    <Inline space="small" align="center">
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const AlignRight: Story = {
+  name: 'Align horizontally to right',
+  render: () => (
+    <Inline space="small" align="right">
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const ResponsiveAlignment: Story = {
+  name: 'Responsive alignment (e.g. center on mobile, left from tablet upwards)',
+  render: () => (
+    <Inline space="small" align={['center', 'left']}>
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const AlignVertically: Story = {
+  name: 'Align vertically',
+  render: () => (
+    <Inline space="small" alignY="center">
+      <Placeholder width={48} height={40} />
+      <Placeholder width={48} height={100} />
+      <Placeholder width={48} height={60} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseBelowTablet: Story = {
+  name: 'Collapse below tablet',
+  render: () => (
+    <Inline space="small" collapseBelow="tablet">
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseBelowDesktop: Story = {
+  name: 'Collapse below desktop',
+  render: () => (
+    <Inline space="small" collapseBelow="desktop">
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseBelowWide: Story = {
+  name: 'Collapse below wide',
+  render: () => (
+    <Inline space="small" collapseBelow="wide">
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseBelowDesktopWithResponsiveSpace: Story = {
+  name: 'Collapse below desktop with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop)',
+  render: () => (
+    <Inline space={['xxsmall', 'medium', 'large']} collapseBelow="desktop">
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseBelowWideWithResponsiveSpace: Story = {
+  name: 'Collapse below wide with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop, "xlarge" on wide)',
+  render: () => (
+    <Inline
+      space={['xxsmall', 'medium', 'large', 'xlarge']}
+      collapseBelow="wide"
+    >
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseBelowDesktopWithAlignment: Story = {
+  name: 'Collapse below desktop with alignment (e.g. "center")',
+  render: () => (
+    <Inline space="small" collapseBelow="desktop" align="center">
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseAndResponsiveAlign: Story = {
+  name: 'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be horizontal and right aligned',
+  render: () => (
+    <Inline
+      space="small"
+      collapseBelow="desktop"
+      align={['left', 'center', 'right']}
+    >
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseTabletAlignReverse: Story = {
+  name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned',
+  render: () => (
+    <Inline
+      space="small"
+      collapseBelow="tablet"
+      align={['left', 'center', 'right']}
+      reverse
+    >
+      <Placeholder width={48} height={48} label="1" />
+      <Placeholder width={48} height={48} label="2" />
+      <Placeholder width={48} height={48} label="3" />
+      <Placeholder width={48} height={48} label="4" />
+      <Placeholder width={48} height={48} label="5" />
+      <Placeholder width={48} height={48} label="6" />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseDesktopAlignReverse: Story = {
+  name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned',
+  render: () => (
+    <Inline
+      space="small"
+      collapseBelow="desktop"
+      align={['left', 'center', 'right']}
+      reverse
+    >
+      <Placeholder width={48} height={48} label="1" />
+      <Placeholder width={48} height={48} label="2" />
+      <Placeholder width={48} height={48} label="3" />
+      <Placeholder width={48} height={48} label="4" />
+      <Placeholder width={48} height={48} label="5" />
+      <Placeholder width={48} height={48} label="6" />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const CollapseWideAlignReverse: Story = {
+  name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be vertical and right aligned, on wide should be reversed horizontally and centre aligned',
+  render: () => (
+    <Inline
+      space="small"
+      collapseBelow="wide"
+      align={['left', 'center', 'right', 'center']}
+      reverse
+    >
+      <Placeholder width={48} height={48} label="1" />
+      <Placeholder width={48} height={48} label="2" />
+      <Placeholder width={48} height={48} label="3" />
+      <Placeholder width={48} height={48} label="4" />
+      <Placeholder width={48} height={48} label="5" />
+      <Placeholder width={48} height={48} label="6" />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const FlattenFragments: Story = {
+  name: 'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
+  render: () => (
+    <Inline space="small">
+      <Fragment>
+        <Fragment>
+          <Placeholder width={48} height={48} />
+        </Fragment>
+        <Fragment>
+          <Placeholder width={48} height={48} />
+        </Fragment>
+      </Fragment>
+      <Fragment>
+        <Fragment>
           <Placeholder width={48} height={48} />
           <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    })),
-    {
-      label: "Responsive space, e.g. ['xxsmall', 'medium']",
-      Container,
-      Example: () => (
-        <Inline space={['xxsmall', 'medium']}>
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Align horizontally to center',
-      Container,
-      Example: () => (
-        <Inline space="small" align="center">
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Align horizontally to right',
-      Container,
-      Example: () => (
-        <Inline space="small" align="right">
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Responsive alignment (e.g. center on mobile, left from tablet upwards)',
-      Container,
-      Example: () => (
-        <Inline space="small" align={['center', 'left']}>
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Align vertically',
-      Container,
-      Example: () => (
-        <Inline space="small" alignY="center">
-          <Placeholder width={48} height={40} />
-          <Placeholder width={48} height={100} />
-          <Placeholder width={48} height={60} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Collapse below tablet',
-      Container,
-      Example: () => (
-        <Inline space="small" collapseBelow="tablet">
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Collapse below desktop',
-      Container,
-      Example: () => (
-        <Inline space="small" collapseBelow="desktop">
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Collapse below wide',
-      Container,
-      Example: () => (
-        <Inline space="small" collapseBelow="wide">
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Collapse below desktop with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop)',
-      Container,
-      Example: () => (
-        <Inline space={['xxsmall', 'medium', 'large']} collapseBelow="desktop">
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Collapse below wide with responsive space (e.g. "xxsmall" on mobile, "small" on tablet, "large" on desktop, "xlarge" on wide)',
-      Container,
-      Example: () => (
-        <Inline
-          space={['xxsmall', 'medium', 'large', 'xlarge']}
-          collapseBelow="wide"
-        >
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Collapse below desktop with alignment (e.g. "center")',
-      Container,
-      Example: () => (
-        <Inline space="small" collapseBelow="desktop" align="center">
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be horizontal and right aligned',
-      Container,
-      Example: () => (
-        <Inline
-          space="small"
-          collapseBelow="desktop"
-          align={['left', 'center', 'right']}
-        >
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned',
-      Container,
-      Example: () => (
-        <Inline
-          space="small"
-          collapseBelow="tablet"
-          align={['left', 'center', 'right']}
-          reverse
-        >
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-          <Placeholder width={48} height={48} label="4" />
-          <Placeholder width={48} height={48} label="5" />
-          <Placeholder width={48} height={48} label="6" />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned',
-      Container,
-      Example: () => (
-        <Inline
-          space="small"
-          collapseBelow="desktop"
-          align={['left', 'center', 'right']}
-          reverse
-        >
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-          <Placeholder width={48} height={48} label="4" />
-          <Placeholder width={48} height={48} label="5" />
-          <Placeholder width={48} height={48} label="6" />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be vertical and right aligned, on wide should be reversed horizontally and centre aligned',
-      Container,
-      Example: () => (
-        <Inline
-          space="small"
-          collapseBelow="wide"
-          align={['left', 'center', 'right', 'center']}
-          reverse
-        >
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-          <Placeholder width={48} height={48} label="4" />
-          <Placeholder width={48} height={48} label="5" />
-          <Placeholder width={48} height={48} label="6" />
-        </Inline>
-      ),
-    },
-    {
-      label:
-        'Test - Should flatten fragments (6 placeholders should be evenly spaced)',
-      Container,
-      Example: () => (
-        <Inline space="small">
           <Fragment>
-            <Fragment>
-              <Placeholder width={48} height={48} />
-            </Fragment>
-            <Fragment>
-              <Placeholder width={48} height={48} />
-            </Fragment>
+            <Placeholder width={48} height={48} />
           </Fragment>
-          <Fragment>
-            <Fragment>
-              <Placeholder width={48} height={48} />
-              <Placeholder width={48} height={48} />
-              <Fragment>
-                <Placeholder width={48} height={48} />
-              </Fragment>
-            </Fragment>
-          </Fragment>
-          <Placeholder width={48} height={48} />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Test - Span align to left',
-      Container,
-      Example: () => (
-        <Inline component="span" space="gutter">
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Test - Span align to center',
-      Container,
-      Example: () => (
-        <Inline component="span" space="gutter" align="center">
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Test - Span align to right',
-      Container,
-      Example: () => (
-        <Inline component="span" space="gutter" align="right">
-          <Placeholder width={48} height={48} label="1" />
-          <Placeholder width={48} height={48} label="2" />
-          <Placeholder width={48} height={48} label="3" />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Test - truncation should be visible on all examples below',
-      Container,
-      Example: () => (
-        <Inline space="small">
-          <Box
-            style={{
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
-            occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
-            proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
-            officia quis magna occaecat nostrud.
-          </Box>
-          <Box>
-            <Box
-              style={{
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
-              occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
-              proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
-              officia quis magna occaecat nostrud.
-            </Box>
-          </Box>
-        </Inline>
-      ),
-    },
-  ],
+        </Fragment>
+      </Fragment>
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const SpanAlignLeft: Story = {
+  name: 'Test - Span align to left',
+  render: () => (
+    <Inline component="span" space="gutter">
+      <Placeholder width={48} height={48} label="1" />
+      <Placeholder width={48} height={48} label="2" />
+      <Placeholder width={48} height={48} label="3" />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const SpanAlignCenter: Story = {
+  name: 'Test - Span align to center',
+  render: () => (
+    <Inline component="span" space="gutter" align="center">
+      <Placeholder width={48} height={48} label="1" />
+      <Placeholder width={48} height={48} label="2" />
+      <Placeholder width={48} height={48} label="3" />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const SpanAlignRight: Story = {
+  name: 'Test - Span align to right',
+  render: () => (
+    <Inline component="span" space="gutter" align="right">
+      <Placeholder width={48} height={48} label="1" />
+      <Placeholder width={48} height={48} label="2" />
+      <Placeholder width={48} height={48} label="3" />
+    </Inline>
+  ),
+  parameters: commonParameters,
+};
+
+export const Truncation: Story = {
+  name: 'Test - truncation should be visible on all examples below',
+  render: () => (
+    <Inline space="small">
+      <Box
+        style={{
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        }}
+      >
+        Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
+        occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
+        proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
+        officia quis magna occaecat nostrud.
+      </Box>
+      <Box>
+        <Box
+          style={{
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          Consequat quis anim anim officia voluptate. Ex in ut ipsum tempor
+          occaecat enim laboris ex incididunt sunt non est reprehenderit. Id
+          proident deserunt excepteur esse mollit aliquip. Aute ut tempor ex
+          officia quis magna occaecat nostrud.
+        </Box>
+      </Box>
+    </Inline>
+  ),
+  parameters: commonParameters,
 };

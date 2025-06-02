@@ -1,29 +1,55 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { StoryObj } from '@storybook/react';
+import React from 'react';
 
 import { Button, Actions } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768],
-  examples: [
-    {
-      label: 'Standard size',
-      Example: () => (
-        <Actions>
-          <Button>Button 1</Button>
-          <Button>Button 2</Button>
-          <Button variant="transparent">Button 3</Button>
-        </Actions>
-      ),
+type Story = StoryObj<typeof Actions>;
+
+const meta = {
+  title: 'Components/Actions',
+  component: Actions,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+};
+
+export default meta;
+
+export const Standardsize: Story = {
+  name: 'Standard size',
+  args: {
+    children: (
+      <>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button variant="transparent">Button 3</Button>
+      </>
+    ),
+  },
+  parameters: {
+    chromatic: {
+      viewports: [320, 768],
     },
-    {
-      label: 'Small size',
-      Example: () => (
-        <Actions size="small">
-          <Button>Button 1</Button>
-          <Button>Button 2</Button>
-          <Button variant="transparent">Button 3</Button>
-        </Actions>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const Smallsize: Story = {
+  name: 'Small size',
+  args: {
+    size: 'small',
+    children: (
+      <>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button variant="transparent">Button 3</Button>
+      </>
+    ),
+  },
+  parameters: {
+    chromatic: {
+      viewports: [320, 768],
     },
-  ],
+    layout: 'fullscreen',
+  },
 };

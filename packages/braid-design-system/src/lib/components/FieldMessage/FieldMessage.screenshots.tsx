@@ -1,57 +1,100 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { FieldMessage, Stack } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Critical Field Message',
-      Example: () => (
-        <FieldMessage tone="critical" message="This is a critical message." />
-      ),
+// !! Review this
+
+const meta = {
+  title: 'Components/FieldMessage',
+  component: FieldMessage,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+} satisfies Meta<typeof FieldMessage>;
+
+export default meta;
+type Story = StoryObj<typeof FieldMessage>;
+
+export const Critical: Story = {
+  name: 'Critical Field Message',
+  render: () => (
+    <FieldMessage tone="critical" message="This is a critical message." />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Positive Field Message',
-      Example: () => (
-        <FieldMessage tone="positive" message="This is a positive message." />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const Positive: Story = {
+  name: 'Positive Field Message',
+  render: () => (
+    <FieldMessage tone="positive" message="This is a positive message." />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Caution Field Message',
-      Example: () => (
-        <FieldMessage tone="caution" message="This is a caution message." />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const Caution: Story = {
+  name: 'Caution Field Message',
+  render: () => (
+    <FieldMessage tone="caution" message="This is a caution message." />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Neutral Field Message',
-      Example: () => <FieldMessage message="This is a neutral message." />,
+    layout: 'fullscreen',
+  },
+};
+
+export const Neutral: Story = {
+  name: 'Neutral Field Message',
+  render: () => <FieldMessage message="This is a neutral message." />,
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Critical with long (wrapping) message',
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: () => (
-        <FieldMessage
-          tone="critical"
-          message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
-        />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const CriticalLongMessage: Story = {
+  name: 'Critical with long (wrapping) message',
+  render: () => (
+    <FieldMessage
+      tone="critical"
+      message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Test: should be left aligned in a centered Stack',
-      Container: ({ children }) => (
-        <div style={{ maxWidth: '300px' }}>{children}</div>
-      ),
-      Example: () => (
-        <Stack space="large" align="center">
-          <FieldMessage
-            tone="critical"
-            message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
-          />
-        </Stack>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const LeftAlignedInCenteredStack: Story = {
+  name: 'Test: should be left aligned in a centered Stack',
+  render: () => (
+    <Stack space="large" align="center">
+      <FieldMessage
+        tone="critical"
+        message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
+      />
+    </Stack>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-  ],
+    layout: 'fullscreen',
+  },
 };

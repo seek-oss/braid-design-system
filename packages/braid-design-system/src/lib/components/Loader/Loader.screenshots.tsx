@@ -1,42 +1,78 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Loader } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      Example: () => <Loader />,
-    },
-    {
-      label: 'Delay visibility (used to prevent loading flicker)',
-      Example: () => <Loader delayVisibility />,
-    },
-    {
-      label: 'xsmall',
-      Example: () => <Loader size="xsmall" />,
-    },
-    {
-      label: 'small',
-      Example: () => <Loader size="small" />,
-    },
-    {
-      label: 'standard',
-      Example: () => <Loader size="standard" />,
-    },
-    {
-      label: 'large',
-      Example: () => <Loader size="large" />,
-    },
-    {
-      label: 'Loader Contrast',
-      Example: () => (
-        <BackgroundContrastTest>
-          <Loader />
-        </BackgroundContrastTest>
-      ),
-    },
-  ],
+const meta = {
+  title: 'Components/Loader',
+  component: Loader,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+} satisfies Meta<typeof Loader>;
+
+export default meta;
+type Story = StoryObj<typeof Loader>;
+
+const commonParameters = {
+  chromatic: {
+    viewports: [320],
+  },
+  layout: 'fullscreen',
+};
+
+export const Default: Story = {
+  args: {},
+  name: 'Default',
+  parameters: commonParameters,
+};
+
+export const DelayVisibility: Story = {
+  args: {
+    delayVisibility: true,
+  },
+  name: 'Delay visibility (used to prevent loading flicker)',
+  parameters: commonParameters,
+};
+
+export const XSmall: Story = {
+  args: {
+    size: 'xsmall',
+  },
+  name: 'xsmall',
+  parameters: commonParameters,
+};
+
+export const Small: Story = {
+  args: {
+    size: 'small',
+  },
+  name: 'small',
+  parameters: commonParameters,
+};
+
+export const Standard: Story = {
+  args: {
+    size: 'standard',
+  },
+  name: 'standard',
+  parameters: commonParameters,
+};
+
+export const Large: Story = {
+  args: {
+    size: 'large',
+  },
+  name: 'large',
+  parameters: commonParameters,
+};
+
+export const Contrast: Story = {
+  render: () => (
+    <BackgroundContrastTest>
+      <Loader />
+    </BackgroundContrastTest>
+  ),
+  name: 'Loader Contrast',
+  parameters: commonParameters,
 };

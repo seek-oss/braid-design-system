@@ -1,107 +1,155 @@
-import type { ReactNode } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { FieldLabel, Stack, TextLink } from '../';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+const meta = {
+  title: 'Components/FieldLabel',
+  component: FieldLabel,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+} satisfies Meta<typeof FieldLabel>;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Standard Field Label',
-      Container,
-      Example: () => <FieldLabel htmlFor={false} label="Label" />,
+export default meta;
+type Story = StoryObj<typeof FieldLabel>;
+
+export const Standard: Story = {
+  name: 'Standard Field Label',
+  render: () => <FieldLabel htmlFor={false} label="Label" />,
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'with secondary label',
-      Container,
-      Example: () => (
-        <FieldLabel
-          htmlFor={false}
-          label="Label"
-          secondaryLabel="Secondary Label"
-        />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const WithSecondaryLabel: Story = {
+  name: 'With secondary label',
+  render: () => (
+    <FieldLabel
+      htmlFor={false}
+      label="Label"
+      secondaryLabel="Secondary Label"
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'with tertiary label',
-      Container,
-      Example: () => (
-        <FieldLabel
-          htmlFor={false}
-          label="Label"
-          tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
-        />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const WithTertiaryLabel: Story = {
+  name: 'With tertiary label',
+  render: () => (
+    <FieldLabel
+      htmlFor={false}
+      label="Label"
+      tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'with description',
-      Container,
-      Example: () => (
-        <FieldLabel
-          htmlFor={false}
-          label="Label"
-          description="Description with extra information about the field"
-        />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const WithDescription: Story = {
+  name: 'With description',
+  render: () => (
+    <FieldLabel
+      htmlFor={false}
+      label="Label"
+      description="Description with extra information about the field"
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'with all slots',
-      Container,
-      Example: () => (
-        <FieldLabel
-          htmlFor={false}
-          label="Label"
-          secondaryLabel="Secondary"
-          tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
-          description="Description with extra information about the field"
-        />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const WithAllSlots: Story = {
+  name: 'With all slots',
+  render: () => (
+    <FieldLabel
+      htmlFor={false}
+      label="Label"
+      secondaryLabel="Secondary"
+      tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
+      description="Description with extra information about the field"
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'when disabled',
-      Container,
-      Example: () => (
-        <FieldLabel
-          htmlFor={false}
-          label="Label"
-          disabled={true}
-          secondaryLabel="Secondary"
-          tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
-          description="Description with extra information about the field"
-        />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const Disabled: Story = {
+  name: 'When disabled',
+  render: () => (
+    <FieldLabel
+      htmlFor={false}
+      label="Label"
+      disabled={true}
+      secondaryLabel="Secondary"
+      tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
+      description="Description with extra information about the field"
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'with description and no label',
-      Container,
-      Example: () => (
-        <FieldLabel
-          htmlFor={false}
-          secondaryLabel="Secondary"
-          tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
-          description="Description visible without label or additional white space above"
-        />
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const DescriptionWithoutLabel: Story = {
+  name: 'With description and no label',
+  render: () => (
+    <FieldLabel
+      htmlFor={false}
+      secondaryLabel="Secondary"
+      tertiaryLabel={<TextLink href="#">Tertiary?</TextLink>}
+      description="Description visible without label or additional white space above"
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Test: should be left aligned in a centered Stack',
-      Container,
-      Example: () => (
-        <Stack space="large" align="center">
-          <FieldLabel
-            htmlFor={false}
-            label="Enim elit eu et culpa non esse voluptate labore in ea."
-            secondaryLabel="Secondary"
-            tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
-            description="Enim elit eu et culpa non esse voluptate labore in ea. Incididunt
-            irure aliquip cillum occaecat irure."
-          />
-        </Stack>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const LeftAlignedInCenteredStack: Story = {
+  name: 'Test: should be left aligned in a centered Stack',
+  render: () => (
+    <Stack space="large" align="center">
+      <FieldLabel
+        htmlFor={false}
+        label="Enim elit eu et culpa non esse voluptate labore in ea."
+        secondaryLabel="Secondary"
+        tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
+        description="Enim elit eu et culpa non esse voluptate labore in ea. Incididunt
+          irure aliquip cillum occaecat irure."
+      />
+    </Stack>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-  ],
+    layout: 'fullscreen',
+  },
 };

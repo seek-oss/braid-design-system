@@ -1,3 +1,4 @@
+import '../src/entries/reset';
 import React from 'react';
 import type { Preview, Decorator } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';

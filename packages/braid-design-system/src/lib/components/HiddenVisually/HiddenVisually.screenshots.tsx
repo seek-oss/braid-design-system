@@ -1,19 +1,30 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Text, HiddenVisually } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  screenshotOnlyInWireframe: true,
-  examples: [
-    {
-      label: 'Inside Text',
-      Example: () => (
-        <Text>
-          The next sentence is only available to screen readers.
-          <HiddenVisually> Hello world.</HiddenVisually>
-        </Text>
-      ),
+const meta = {
+  title: 'Components/HiddenVisually',
+  component: HiddenVisually,
+  parameters: {
+    screenshotOnlyInWireframe: true,
+  },
+} satisfies Meta<typeof HiddenVisually>;
+
+export default meta;
+type Story = StoryObj<typeof HiddenVisually>;
+
+export const InsideText: Story = {
+  name: 'Inside Text',
+  render: () => (
+    <Text>
+      The next sentence is only available to screen readers.
+      <HiddenVisually> Hello world.</HiddenVisually>
+    </Text>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-  ],
+    layout: 'fullscreen',
+  },
 };

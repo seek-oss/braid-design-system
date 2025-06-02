@@ -1,159 +1,178 @@
-import type { ReactNode } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Placeholder } from '../../playroom/components';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 
-import { DrawerContent } from './Drawer';
+import { Drawer, DrawerContent } from './Drawer';
 
-import * as styles from '../private/Modal/Modal.css';
+const meta = {
+  title: 'Components/Drawer',
+  component: Drawer,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+} satisfies Meta<typeof Drawer>;
 
-export const DrawerPreview = ({ children }: { children: ReactNode }) => (
-  <Box position="relative">
-    <Box position="absolute" inset={0} className={styles.backdrop} />
-    <Box position="relative" zIndex="modal">
-      {children}
-    </Box>
-  </Box>
-);
+export default meta;
+type Story = StoryObj<typeof Drawer>;
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <Box overflow="hidden">
-    <Box position="absolute" padding="small">
-      <Placeholder height={100} width="100%" label="Page content" />
-    </Box>
-    <DrawerPreview>{children}</DrawerPreview>
-  </Box>
-);
+export const DefaultLayout: Story = {
+  name: 'Default layout',
+  render: () => (
+    <DrawerContent
+      title="Default test"
+      onClose={() => {}}
+      width="medium"
+      scrollLock={false}
+    >
+      <Placeholder height={100} width="100%" />
+    </DrawerContent>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320, 1200],
+    },
+    layout: 'fullscreen',
+  },
+};
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 1200],
-  examples: [
-    {
-      label: 'Default layout',
-      gutter: false,
-      Container,
-      Example: () => (
-        <DrawerContent
-          title="Default test"
-          onClose={() => {}}
-          width="medium"
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DrawerContent>
-      ),
+export const LayoutWithDescription: Story = {
+  name: 'Layout with a description',
+  render: () => (
+    <DrawerContent
+      title="Description test"
+      description={
+        <Placeholder height="auto" width="100%" label="Description" />
+      }
+      onClose={() => {}}
+      scrollLock={false}
+    >
+      <Placeholder height={100} width="100%" />
+    </DrawerContent>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320, 1200],
     },
-    {
-      label: 'Layout with a description',
-      gutter: false,
-      Container,
-      Example: () => (
-        <DrawerContent
-          title="Description test"
-          description={
-            <Placeholder height="auto" width="100%" label="Description" />
-          }
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" />
-        </DrawerContent>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const SmallWidth: Story = {
+  name: 'Layout: Small width',
+  render: () => (
+    <DrawerContent
+      title="Small"
+      width="small"
+      onClose={() => {}}
+      scrollLock={false}
+    >
+      <Placeholder height={100} width="100%" label="Small Drawer" />
+    </DrawerContent>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320, 1200],
     },
-    {
-      label: 'Layout: Small width',
-      gutter: false,
-      Container,
-      Example: () => (
-        <DrawerContent
-          title="Small"
-          width="small"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Small Drawer" />
-        </DrawerContent>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const MediumWidth: Story = {
+  name: 'Layout: Medium width',
+  render: () => (
+    <DrawerContent
+      title="Medium"
+      width="medium"
+      onClose={() => {}}
+      scrollLock={false}
+    >
+      <Placeholder height={100} width="100%" label="Medium Drawer" />
+    </DrawerContent>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320, 1200],
     },
-    {
-      label: 'Layout: Medium width',
-      gutter: false,
-      Container,
-      Example: () => (
-        <DrawerContent
-          title="Medium"
-          width="medium"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Medium Drawer" />
-        </DrawerContent>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const LargeWidth: Story = {
+  name: 'Layout: Large width',
+  render: () => (
+    <DrawerContent
+      title="Large"
+      width="large"
+      onClose={() => {}}
+      scrollLock={false}
+    >
+      <Placeholder height={100} width="100%" label="Large Drawer" />
+    </DrawerContent>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320, 1200],
     },
-    {
-      label: 'Layout: Large width',
-      gutter: false,
-      Container,
-      Example: () => (
-        <DrawerContent
-          title="Large"
-          width="large"
-          onClose={() => {}}
-          scrollLock={false}
-        >
-          <Placeholder height={100} width="100%" label="Large Drawer" />
-        </DrawerContent>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const CloseButtonLayout: Story = {
+  name: 'Test: Close button layout',
+  render: () => (
+    <DrawerContent
+      title="Default test"
+      onClose={() => {}}
+      width="medium"
+      scrollLock={false}
+    >
+      <Box style={{ height: 100 }} />
+      <Box
+        position="absolute"
+        inset={0}
+        style={{ background: '#4964E9' }}
+        background="customDark"
+      >
+        <Placeholder
+          height="100%"
+          width="100%"
+          label="Close button should be on top of content and have a gutter"
+        />
+      </Box>
+    </DrawerContent>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320, 1200],
     },
-    {
-      label: 'Test: Close button layout',
-      gutter: false,
-      Container,
-      Example: () => (
-        <DrawerContent
-          title="Default test"
-          onClose={() => {}}
-          width="medium"
-          scrollLock={false}
-        >
-          <Box style={{ height: 100 }} />
-          <Box
-            position="absolute"
-            inset={0}
-            style={{ background: '#4964E9' }}
-            background="customDark"
-          >
-            <Placeholder
-              height="100%"
-              width="100%"
-              label="Close button should be on top of content and have a gutter"
-            />
-          </Box>
-        </DrawerContent>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const LeftAlignedInCenteredStack: Story = {
+  name: 'Test: should be left aligned in a centered Stack',
+  render: () => (
+    <Stack space="large" align="center">
+      <DrawerContent
+        title="Default test"
+        onClose={() => {}}
+        width="medium"
+        scrollLock={false}
+      >
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+          sodales hendrerit nulla.
+        </Text>
+      </DrawerContent>
+    </Stack>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320, 1200],
     },
-    {
-      label: 'Test: should be left aligned in a centered Stack',
-      gutter: false,
-      Container,
-      Example: () => (
-        <Stack space="large" align="center">
-          <DrawerContent
-            title="Default test"
-            onClose={() => {}}
-            width="medium"
-            scrollLock={false}
-          >
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Pellentesque sodales hendrerit nulla.
-            </Text>
-          </DrawerContent>
-        </Stack>
-      ),
-    },
-  ],
+    layout: 'fullscreen',
+  },
 };
