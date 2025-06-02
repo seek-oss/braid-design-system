@@ -1,186 +1,282 @@
-import type { ReactNode } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 import { MonthPicker, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+const meta = {
+  title: 'Components/MonthPicker',
+  component: MonthPicker,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+    chromatic: {
+      viewports: [320],
+    },
+    layout: 'fullscreen',
+  },
+  argTypes: {
+    value: {
+      control: 'object',
+      description: 'Current month/year value',
+    },
+    onChange: {
+      action: 'changed',
+      description: 'Handler called when the value changes',
+    },
+    minYear: {
+      control: 'number',
+      description: 'Minimum selectable year',
+    },
+    maxYear: {
+      control: 'number',
+      description: 'Maximum selectable year',
+    },
+    ascendingYears: {
+      control: 'boolean',
+      description: 'Whether to display years in ascending order',
+    },
+    monthLabel: {
+      control: 'text',
+      description: 'Label for the month dropdown',
+    },
+    yearLabel: {
+      control: 'text',
+      description: 'Label for the year dropdown',
+    },
+    tone: {
+      control: 'select',
+      options: ['neutral', 'critical', 'positive', 'caution'],
+      description: 'Visual tone of the field',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the field is disabled',
+    },
+    label: {
+      control: 'text',
+      description: 'Text label for the field',
+    },
+    description: {
+      control: 'text',
+      description: 'Additional description text',
+    },
+  },
+  args: {
+    id: 'monthpicker-example',
+    value: {
+      month: undefined,
+      year: undefined,
+    },
+    onChange: (value) => console.log('Changed:', value),
+    minYear: new Date().getFullYear() - 100,
+    maxYear: new Date().getFullYear(),
+    ascendingYears: false,
+    monthLabel: 'Month',
+    yearLabel: 'Year',
+    monthNames: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ],
+    disabled: false,
+    label: 'Select a date',
+  },
+} satisfies Meta<typeof MonthPicker>;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          label="Started"
-          value={{ month: undefined, year: undefined }}
-          onChange={handler}
-        />
-      ),
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  name: 'Default',
+  args: {
+    label: 'Started',
+    value: {
+      month: undefined,
+      year: undefined,
     },
-    {
-      label: 'Selected values',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          label="Started"
-          value={{ month: 12, year: 2018 }}
-          onChange={handler}
-        />
-      ),
+  },
+};
+
+export const Selectedvalues: Story = {
+  name: 'Selected values',
+  args: {
+    label: 'Started',
+    value: {
+      month: 12,
+      year: 2018,
     },
-    {
-      label: 'Critical message',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          label="Started"
-          tone="critical"
-          message="This is a critical message."
-          value={{ month: 1, year: 2019 }}
-          onChange={handler}
-        />
-      ),
+  },
+};
+
+export const Criticalmessage: Story = {
+  name: 'Critical message',
+  args: {
+    label: 'Started',
+    tone: 'critical',
+    message: 'This is a critical message.',
+    value: {
+      month: 1,
+      year: 2019,
     },
-    {
-      label: 'Caution message',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          label="Started"
-          tone="caution"
-          message="This is a caution message."
-          value={{ month: 1, year: 2019 }}
-          onChange={handler}
-        />
-      ),
+  },
+};
+
+export const Cautionmessage: Story = {
+  name: 'Caution message',
+  args: {
+    label: 'Started',
+    tone: 'caution',
+    message: 'This is a caution message.',
+    value: {
+      month: 1,
+      year: 2019,
     },
-    {
-      label: 'Disabled',
-      Container,
-      Example: ({ id, handler }) => (
-        <Stack space="gutter">
-          <MonthPicker
-            id={`${id}_1`}
-            label="With value"
-            disabled={true}
-            value={{ month: 1, year: 2019 }}
-            onChange={handler}
-          />
-          <MonthPicker
-            id={`${id}_2`}
-            label="No value"
-            disabled={true}
-            value={{}}
-            onChange={handler}
-          />
-          <MonthPicker
-            id={`${id}_3`}
-            label="With critical tone"
-            disabled={true}
-            tone="critical"
-            value={{}}
-            onChange={handler}
-          />
-          <MonthPicker
-            id={`${id}_4`}
-            label="With critical tone and message"
-            disabled={true}
-            tone="critical"
-            message="Message"
-            value={{}}
-            onChange={handler}
-          />
-        </Stack>
-      ),
+  },
+};
+
+export const Disabled: Story = {
+  name: 'Disabled',
+  args: {
+    id: 'monthpicker-disabled',
+    label: 'Disabled MonthPicker',
+    onChange: () => {},
+  },
+  render: (args) => (
+    <Stack space="gutter">
+      <MonthPicker
+        id={`${args.id}_1`}
+        label="With value"
+        disabled={true}
+        value={{
+          month: 1,
+          year: 2019,
+        }}
+        onChange={args.onChange}
+      />
+      <MonthPicker
+        id={`${args.id}_2`}
+        label="No value"
+        disabled={true}
+        value={{}}
+        onChange={args.onChange}
+      />
+      <MonthPicker
+        id={`${args.id}_3`}
+        label="With critical tone"
+        disabled={true}
+        tone="critical"
+        value={{}}
+        onChange={args.onChange}
+      />
+      <MonthPicker
+        id={`${args.id}_4`}
+        label="With critical tone and message"
+        disabled={true}
+        tone="critical"
+        message="Message"
+        value={{}}
+        onChange={args.onChange}
+      />
+    </Stack>
+  ),
+};
+
+export const withadescription: Story = {
+  name: 'with a description',
+  args: {
+    label: 'Started',
+    description: 'Longer description of this field',
+    value: {
+      month: 1,
+      year: 2019,
     },
-    {
-      label: 'with a description',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          label="Started"
-          description="Longer description of this field"
-          value={{ month: 1, year: 2019 }}
-          onChange={handler}
-        />
-      ),
+  },
+};
+
+export const Novisuallabel: Story = {
+  name: 'No visual label',
+  args: {
+    label: undefined,
+    'aria-label': 'Started',
+    value: {
+      month: 1,
+      year: 2019,
     },
-    {
-      label: 'No visual label',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          aria-label="Started"
-          value={{ month: 1, year: 2019 }}
-          onChange={handler}
-        />
-      ),
+  },
+};
+
+export const Novisuallabelwithadescription: Story = {
+  name: 'No visual label with a description',
+  args: {
+    label: undefined,
+    'aria-label': 'Started',
+    description: 'Longer description of this field',
+    value: {
+      month: 1,
+      year: 2019,
     },
-    {
-      label: 'No visual label with a description',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          aria-label="Started"
-          description="Longer description of this field"
-          value={{ month: 1, year: 2019 }}
-          onChange={handler}
-        />
-      ),
+  },
+};
+
+export const Custommonthandyearlabels: Story = {
+  name: 'Custom month and year labels',
+  args: {
+    label: 'Started',
+    value: {
+      month: 7,
+      year: 2020,
     },
-    {
-      label: 'Custom month and year labels',
-      Container,
-      Example: ({ id, handler }) => (
-        <MonthPicker
-          id={id}
-          label="Started"
-          value={{ month: 7, year: 2020 }}
-          onChange={handler}
-          monthLabel="MM"
-          yearLabel="YYYY"
-          monthNames={[
-            '01',
-            '02',
-            '03',
-            '04',
-            '05',
-            '06',
-            '07',
-            '08',
-            '09',
-            '10',
-            '11',
-            '12',
-          ]}
-        />
-      ),
+    monthLabel: 'MM',
+    yearLabel: 'YYYY',
+    monthNames: [
+      '01',
+      '02',
+      '03',
+      '04',
+      '05',
+      '06',
+      '07',
+      '08',
+      '09',
+      '10',
+      '11',
+      '12',
+    ],
+  },
+};
+
+export const Contrast: Story = {
+  name: 'Contrast',
+  args: {
+    id: 'contrast-example',
+    label: 'Contrast Example',
+    value: {
+      month: undefined,
+      year: undefined,
     },
-    {
-      label: 'Contrast',
-      Container,
-      Example: ({ id, handler }) => (
-        <BackgroundContrastTest>
-          <MonthPicker
-            id={id}
-            label="Started"
-            value={{ month: undefined, year: undefined }}
-            onChange={handler}
-          />
-        </BackgroundContrastTest>
-      ),
-    },
-  ],
+    onChange: () => {},
+  },
+  render: (args) => (
+    <BackgroundContrastTest>
+      <MonthPicker
+        id={args.id}
+        label="Started"
+        value={{
+          month: undefined,
+          year: undefined,
+        }}
+        onChange={args.onChange}
+      />
+    </BackgroundContrastTest>
+  ),
 };

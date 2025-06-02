@@ -1,6 +1,17 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Text, Heading, IconRenderer, Stack } from '../';
+
+const meta = {
+  title: 'Components/IconRenderer',
+  component: IconRenderer,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+} satisfies Meta<typeof IconRenderer>;
+
+export default meta;
+type Story = StoryObj<typeof IconRenderer>;
 
 const customIcon = (
   <IconRenderer>
@@ -17,39 +28,40 @@ const customIcon = (
   </IconRenderer>
 );
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      Example: () => (
-        <Stack space="large">
-          <Text size="xsmall" icon={customIcon}>
-            Text xsmall with custom icon
-          </Text>
-          <Text size="small" icon={customIcon}>
-            Text small with custom icon
-          </Text>
-          <Text size="standard" icon={customIcon}>
-            Text standard with custom icon
-          </Text>
-          <Text size="large" icon={customIcon}>
-            Text large with custom icon
-          </Text>
-          <Heading level="4" icon={customIcon}>
-            Heading 4 with custom icon
-          </Heading>
-          <Heading level="3" icon={customIcon}>
-            Heading 3 with custom icon
-          </Heading>
-          <Heading level="2" icon={customIcon}>
-            Heading 2 with custom icon
-          </Heading>
-          <Heading level="1" icon={customIcon}>
-            Heading 1 with custom icon
-          </Heading>
-        </Stack>
-      ),
+export const Default: Story = {
+  name: 'Default',
+  render: () => (
+    <Stack space="large">
+      <Text size="xsmall" icon={customIcon}>
+        Text xsmall with custom icon
+      </Text>
+      <Text size="small" icon={customIcon}>
+        Text small with custom icon
+      </Text>
+      <Text size="standard" icon={customIcon}>
+        Text standard with custom icon
+      </Text>
+      <Text size="large" icon={customIcon}>
+        Text large with custom icon
+      </Text>
+      <Heading level="4" icon={customIcon}>
+        Heading 4 with custom icon
+      </Heading>
+      <Heading level="3" icon={customIcon}>
+        Heading 3 with custom icon
+      </Heading>
+      <Heading level="2" icon={customIcon}>
+        Heading 2 with custom icon
+      </Heading>
+      <Heading level="1" icon={customIcon}>
+        Heading 1 with custom icon
+      </Heading>
+    </Stack>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-  ],
+    layout: 'fullscreen',
+  },
 };

@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import type { ReactNode } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type React from 'react';
 
 import { Box, Page } from '..';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -9,7 +9,7 @@ import { heightLimit } from './Page.css';
 
 const viewportHeight = 300;
 
-const Container = ({ children }: { children: ReactNode }) => (
+const Container = ({ children }: { children: React.ReactNode }) => (
   <Box
     position="relative"
     style={assignInlineVars({ [heightLimit]: `${viewportHeight}px` })}
@@ -30,76 +30,109 @@ const Container = ({ children }: { children: ReactNode }) => (
   </Box>
 );
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  screenshotOnlyInWireframe: true,
-  examples: [
-    {
-      label: 'Default',
-      Container,
-      Example: () => (
-        <Page
-          footer={
-            <Box background="promoteLight">
-              <Placeholder label="Footer above fold" height={50} />
-            </Box>
-          }
-        >
-          <Placeholder label="Header" height={50} />
-          <Placeholder label="Content" height={50} />
-        </Page>
-      ),
+const meta = {
+  title: 'Components/Page',
+  component: Page,
+  parameters: {
+    screenshotOnlyInWireframe: true,
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Below fold',
-      Container,
-      Example: () => (
-        <Page
-          footerPosition="belowFold"
-          footer={
-            <Box background="promoteLight">
-              <Placeholder label="Footer below fold" height={50} />
-            </Box>
-          }
-        >
-          <Placeholder label="Header" height={50} />
-          <Placeholder label="Content" height={50} />
-        </Page>
-      ),
+    layout: 'fullscreen',
+  },
+  argTypes: {
+    children: {
+      description: 'Content to display on the page',
     },
-    {
-      label: 'Default - long page (should push footer below fold organically)',
-      Container,
-      Example: () => (
-        <Page
-          footer={
-            <Box background="promoteLight">
-              <Placeholder label="Footer above fold" height={50} />
-            </Box>
-          }
-        >
-          <Placeholder label="Header" height={50} />
-          <Placeholder label="Content" height={viewportHeight * 1.2} />
-        </Page>
-      ),
+    footer: {
+      description: 'Footer content to display',
     },
-    {
-      label:
-        'Below fold - long page (should push footer below fold organically)',
-      Container,
-      Example: () => (
-        <Page
-          footerPosition="belowFold"
-          footer={
-            <Box background="promoteLight">
-              <Placeholder label="Footer" height={50} />
-            </Box>
-          }
-        >
-          <Placeholder label="Header" height={50} />
-          <Placeholder label="Content" height={viewportHeight * 1.2} />
-        </Page>
-      ),
+    footerPosition: {
+      control: 'radio',
+      options: [undefined, 'belowFold'],
+      description: 'Position of the footer relative to the content',
     },
+  },
+  args: {
+    children: (
+      <>
+        <Placeholder label="Header" height={50} />
+        <Placeholder label="Content" height={50} />
+      </>
+    ),
+    footer: (
+      <Box background="promoteLight">
+        <Placeholder label="Footer" height={50} />
+      </Box>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Container>
+        <Story />
+      </Container>
+    ),
   ],
+} satisfies Meta<typeof Page>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  name: 'Default',
+  args: {
+    footer: (
+      <Box background="promoteLight">
+        <Placeholder label="Footer above fold" height={50} />
+      </Box>
+    ),
+  },
+};
+
+export const Belowfold: Story = {
+  name: 'Below fold',
+  args: {
+    footerPosition: 'belowFold',
+    footer: (
+      <Box background="promoteLight">
+        <Placeholder label="Footer below fold" height={50} />
+      </Box>
+    ),
+  },
+};
+
+export const Defaultlongpageshouldpushfooterbelowfoldorganically: Story = {
+  name: 'Default - long page (should push footer below fold organically)',
+  args: {
+    children: (
+      <>
+        <Placeholder label="Header" height={50} />
+        <Placeholder label="Content" height={viewportHeight * 1.2} />
+      </>
+    ),
+    footer: (
+      <Box background="promoteLight">
+        <Placeholder label="Footer above fold" height={50} />
+      </Box>
+    ),
+  },
+};
+
+export const Belowfoldlongpageshouldpushfooterbelowfoldorganically: Story = {
+  name: 'Below fold - long page (should push footer below fold organically)',
+  args: {
+    children: (
+      <>
+        <Placeholder label="Header" height={50} />
+        <Placeholder label="Content" height={viewportHeight * 1.2} />
+      </>
+    ),
+    footerPosition: 'belowFold',
+    footer: (
+      <Box background="promoteLight">
+        <Placeholder label="Footer" height={50} />
+      </Box>
+    ),
+  },
 };

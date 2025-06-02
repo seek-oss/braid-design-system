@@ -1,4 +1,4 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Stack, Text, Box, TooltipRenderer } from '../';
 
@@ -6,111 +6,106 @@ import { StaticTooltipProvider } from './TooltipRenderer';
 
 const triggerStyles = { width: 50, height: 20, background: 'pink' } as const;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Top placement',
-      Example: ({ id }) => (
-        <StaticTooltipProvider>
-          <Box style={{ paddingTop: 100 }}>
-            <TooltipRenderer
-              id={id}
-              placement="top"
-              tooltip={<Text>Tooltip</Text>}
-            >
-              {({ triggerProps }) => (
-                <Box style={triggerStyles} {...triggerProps} />
-              )}
-            </TooltipRenderer>
-          </Box>
-        </StaticTooltipProvider>
-      ),
+const meta: Meta<typeof TooltipRenderer> = {
+  title: 'Components/TooltipRenderer',
+  component: TooltipRenderer,
+  parameters: {
+    layout: 'padded',
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Bottom placement',
-      Example: ({ id }) => (
-        <StaticTooltipProvider>
-          <Box style={{ paddingBottom: 100 }}>
-            <TooltipRenderer
-              id={id}
-              placement="bottom"
-              tooltip={<Text>Tooltip</Text>}
-            >
-              {({ triggerProps }) => (
-                <Box style={triggerStyles} {...triggerProps} />
-              )}
-            </TooltipRenderer>
-          </Box>
-        </StaticTooltipProvider>
-      ),
-    },
-    {
-      label: 'Multiple lines of text',
-      Example: ({ id }) => (
-        <StaticTooltipProvider>
-          <Box style={{ paddingBottom: 200 }}>
-            <TooltipRenderer
-              id={id}
-              placement="bottom"
-              tooltip={
-                <Text>
-                  The quick brown fox jumps over the lazy dog. The quick brown
-                  fox jumps over the lazy dog.
-                </Text>
-              }
-            >
-              {({ triggerProps }) => (
-                <Box style={triggerStyles} {...triggerProps} />
-              )}
-            </TooltipRenderer>
-          </Box>
-        </StaticTooltipProvider>
-      ),
-    },
-    {
-      label: 'Handle long-unbroken text',
-      Example: ({ id }) => (
-        <StaticTooltipProvider>
-          <Box style={{ paddingBottom: 200 }}>
-            <TooltipRenderer
-              id={id}
-              placement="bottom"
-              tooltip={<Text>ReallyLongUnbrokenWordShouldBeHandled</Text>}
-            >
-              {({ triggerProps }) => (
-                <Box style={triggerStyles} {...triggerProps} />
-              )}
-            </TooltipRenderer>
-          </Box>
-        </StaticTooltipProvider>
-      ),
-    },
-    {
-      label: 'Text style overrides',
-      Example: ({ id }) => (
-        <StaticTooltipProvider>
-          <Box style={{ paddingBottom: 200 }}>
-            <TooltipRenderer
-              id={id}
-              placement="bottom"
-              tooltip={
-                <Stack space="medium">
-                  <Text weight="strong">Strong text</Text>
-                  <Text>
-                    The quick brown fox jumps over the lazy dog. The quick brown
-                    fox jumps over the lazy dog.
-                  </Text>
-                </Stack>
-              }
-            >
-              {({ triggerProps }) => (
-                <Box style={triggerStyles} {...triggerProps} />
-              )}
-            </TooltipRenderer>
-          </Box>
-        </StaticTooltipProvider>
-      ),
-    },
+  },
+  decorators: [
+    (Story) => (
+      <StaticTooltipProvider>
+        <Story />
+      </StaticTooltipProvider>
+    ),
   ],
+};
+
+export default meta;
+type Story = StoryObj<typeof TooltipRenderer>;
+
+export const TopPlacement: Story = {
+  render: () => (
+    <Box style={{ paddingTop: 100 }}>
+      <TooltipRenderer
+        id="tooltip-top"
+        placement="top"
+        tooltip={<Text>Tooltip</Text>}
+      >
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
+export const BottomPlacement: Story = {
+  render: () => (
+    <Box style={{ paddingBottom: 100 }}>
+      <TooltipRenderer
+        id="tooltip-bottom"
+        placement="bottom"
+        tooltip={<Text>Tooltip</Text>}
+      >
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
+export const MultipleLinesOfText: Story = {
+  render: () => (
+    <Box style={{ paddingBottom: 200 }}>
+      <TooltipRenderer
+        id="tooltip-multiline"
+        placement="bottom"
+        tooltip={
+          <Text>
+            The quick brown fox jumps over the lazy dog. The quick brown fox
+            jumps over the lazy dog.
+          </Text>
+        }
+      >
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
+export const HandleLongUnbrokenText: Story = {
+  render: () => (
+    <Box style={{ paddingBottom: 200 }}>
+      <TooltipRenderer
+        id="tooltip-long-text"
+        placement="bottom"
+        tooltip={<Text>ReallyLongUnbrokenWordShouldBeHandled</Text>}
+      >
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
+export const TextStyleOverrides: Story = {
+  render: () => (
+    <Box style={{ paddingBottom: 200 }}>
+      <TooltipRenderer
+        id="tooltip-text-styles"
+        placement="bottom"
+        tooltip={
+          <Stack space="medium">
+            <Text weight="strong">Strong text</Text>
+            <Text>
+              The quick brown fox jumps over the lazy dog. The quick brown fox
+              jumps over the lazy dog.
+            </Text>
+          </Stack>
+        }
+      >
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
 };

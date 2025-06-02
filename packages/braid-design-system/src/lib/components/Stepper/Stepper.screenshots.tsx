@@ -1,53 +1,99 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Stepper, Step } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768],
-  examples: [
-    {
-      label: 'Linear',
-      Example: () => (
-        <Stepper label="Linear steps" progress={3}>
-          <Step>1. First step</Step>
-          <Step>2. Second step</Step>
-          <Step>3. Third step</Step>
-          <Step>4. Forth step</Step>
-        </Stepper>
-      ),
+const meta = {
+  title: 'Components/Stepper',
+  component: Stepper,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+} satisfies Meta<typeof Stepper>;
+
+export default meta;
+type Story = StoryObj<typeof Stepper>;
+
+export const Linear: Story = {
+  name: 'Linear',
+  args: {
+    label: 'Linear steps',
+    progress: 3,
+    children: [
+      <Step key="1">1. First step</Step>,
+      <Step key="2">2. Second step</Step>,
+      <Step key="3">3. Third step</Step>,
+      <Step key="4">4. Forth step</Step>,
+    ],
+  },
+  parameters: {
+    chromatic: {
+      viewports: [320, 768],
     },
-    {
-      label: 'Non-linear',
-      Example: () => (
-        <Stepper mode="non-linear" label="Non-linear steps" activeStep={2}>
-          <Step>1. First step</Step>
-          <Step>2. Second step</Step>
-          <Step>3. Third step</Step>
-          <Step complete>4. Forth step</Step>
-        </Stepper>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const Nonlinear: Story = {
+  name: 'Non-linear',
+  args: {
+    mode: 'non-linear',
+    label: 'Non-linear steps',
+    activeStep: 2,
+    children: [
+      <Step key="1">1. First step</Step>,
+      <Step key="2">2. Second step</Step>,
+      <Step key="3">3. Third step</Step>,
+      <Step key="4" complete>
+        4. Forth step
+      </Step>,
+    ],
+  },
+  parameters: {
+    chromatic: {
+      viewports: [320, 768],
     },
-    {
-      label: 'Neutral',
-      Example: () => (
-        <Stepper label="Linear steps" tone="neutral" progress={3}>
-          <Step>1. First step</Step>
-          <Step>2. Second step</Step>
-          <Step>3. Third step</Step>
-          <Step>4. Forth step</Step>
-        </Stepper>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const Neutral: Story = {
+  name: 'Neutral',
+  args: {
+    label: 'Linear steps',
+    tone: 'neutral',
+    progress: 3,
+    children: [
+      <Step key="1">1. First step</Step>,
+      <Step key="2">2. Second step</Step>,
+      <Step key="3">3. Third step</Step>,
+      <Step key="4">4. Forth step</Step>,
+    ],
+  },
+  parameters: {
+    chromatic: {
+      viewports: [320, 768],
     },
-    {
-      label: 'Left aligned',
-      Example: () => (
-        <Stepper label="Linear steps" align="left" progress={3}>
-          <Step>1. First step</Step>
-          <Step>2. Second step</Step>
-          <Step>3. Third step</Step>
-          <Step>4. Forth step</Step>
-        </Stepper>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const Leftaligned: Story = {
+  name: 'Left aligned',
+  args: {
+    label: 'Linear steps',
+    align: 'left',
+    progress: 3,
+    children: [
+      <Step key="1">1. First step</Step>,
+      <Step key="2">2. Second step</Step>,
+      <Step key="3">3. Third step</Step>,
+      <Step key="4">4. Forth step</Step>,
+    ],
+  },
+  parameters: {
+    chromatic: {
+      viewports: [320, 768],
     },
-  ],
+    layout: 'fullscreen',
+  },
 };

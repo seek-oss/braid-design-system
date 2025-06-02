@@ -80,6 +80,7 @@
     "jest-watch-typeahead": "^2.2.2",
     "js-yaml": "^4.1.0",
     "nx": "^15.9.7",
+    "panzoom": "9.4.2",
     "prettier": "^3.4.1",
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
@@ -92,7 +93,7 @@
   "packageManager": "pnpm@9.15.9",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom": "patches/panzoom.patch",
+      "panzoom@9.4.2": "patches/panzoom.patch",
       "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"
     }
   },

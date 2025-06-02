@@ -1,5 +1,5 @@
-import { useState, type ComponentProps } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import {
   Box,
@@ -14,155 +14,202 @@ import {
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-type CheckboxProps = ComponentProps<typeof CheckboxStandalone>;
-const checkboxSizes: Array<CheckboxProps['size']> = ['small', 'standard'];
+const checkboxSizes = ['standard', 'small'] as const;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Standard',
-      Example: ({ id }) => {
-        const [state, setState] = useState(false);
-        return (
-          <CheckboxStandalone
-            id={id}
-            checked={state}
-            onChange={() => setState(!state)}
-            aria-label="Label"
-          />
-        );
-      },
+const meta = {
+  title: 'Components/CheckboxStandalone',
+  component: CheckboxStandalone,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Small',
-      Example: ({ id }) => {
-        const [state, setState] = useState(false);
-        return (
-          <CheckboxStandalone
-            id={id}
-            checked={state}
-            onChange={() => setState(!state)}
-            aria-label="Label"
-            size="small"
-          />
-        );
-      },
-    },
-    {
-      label: 'Checked',
-      Example: ({ id, handler }) => (
+    layout: 'fullscreen',
+  },
+  args: {
+    id: 'checkbox-standalone-example',
+    checked: false,
+    'aria-label': 'Label',
+    onChange: () => {},
+  },
+} satisfies Meta<typeof CheckboxStandalone>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Standard: Story = {
+  name: 'Standard',
+  render: function StandardStory(args) {
+    const [checked, setChecked] = useState(false);
+    return (
+      <CheckboxStandalone
+        {...args}
+        checked={checked}
+        onChange={() => setChecked(!checked)}
+      />
+    );
+  },
+};
+
+export const Small: Story = {
+  name: 'Small',
+  render: function SmallStory(args) {
+    const [checked, setChecked] = useState(false);
+    return (
+      <CheckboxStandalone
+        {...args}
+        checked={checked}
+        onChange={() => setChecked(!checked)}
+        size="small"
+      />
+    );
+  },
+};
+
+export const Checked: Story = {
+  name: 'Checked',
+  args: {
+    checked: true,
+  },
+};
+
+export const Mixedstate: Story = {
+  name: 'Mixed state',
+  args: {
+    checked: 'mixed',
+  },
+};
+
+export const Disabled: Story = {
+  name: 'Disabled',
+  render: function DisabledStory(args) {
+    return (
+      <Stack space="gutter">
         <CheckboxStandalone
-          id={id}
-          checked={true}
-          onChange={handler}
-          aria-label="Label"
-        />
-      ),
-    },
-    {
-      label: 'Mixed state',
-      Example: ({ id, handler }) => (
-        <CheckboxStandalone
-          id={id}
-          checked="mixed"
-          onChange={handler}
-          aria-label="Label"
-        />
-      ),
-    },
-    {
-      label: 'Disabled',
-      Example: ({ id, handler }) => (
-        <Stack space="gutter">
-          <CheckboxStandalone
-            id={`${id}_1`}
-            disabled={true}
-            checked={false}
-            onChange={handler}
-            aria-label="Unchecked"
-          />
-          <CheckboxStandalone
-            id={`${id}_2`}
-            disabled={true}
-            checked={true}
-            onChange={handler}
-            aria-label="Checked"
-          />
-          <CheckboxStandalone
-            id={`${id}_3`}
-            disabled={true}
-            checked="mixed"
-            onChange={handler}
-            aria-label="Mixed"
-          />
-          <CheckboxStandalone
-            id={`${id}_4`}
-            disabled={true}
-            checked={false}
-            onChange={handler}
-            aria-label="Unchecked & critical"
-            tone="critical"
-          />
-          <CheckboxStandalone
-            id={`${id}_5`}
-            disabled={true}
-            checked={true}
-            onChange={handler}
-            aria-label="Checked & critical"
-            tone="critical"
-          />
-          <CheckboxStandalone
-            id={`${id}_6`}
-            disabled={true}
-            checked="mixed"
-            onChange={handler}
-            aria-label="Mixed & critical"
-            tone="critical"
-          />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Critical',
-      Example: ({ id, handler }) => (
-        <CheckboxStandalone
-          id={id}
+          {...args}
+          id={`${args.id}_1`}
+          disabled={true}
           checked={false}
-          onChange={handler}
-          aria-label="Label"
+          aria-label="Unchecked"
+        />
+        <CheckboxStandalone
+          {...args}
+          id={`${args.id}_2`}
+          disabled={true}
+          checked={true}
+          aria-label="Checked"
+        />
+        <CheckboxStandalone
+          {...args}
+          id={`${args.id}_3`}
+          disabled={true}
+          checked="mixed"
+          aria-label="Mixed"
+        />
+        <CheckboxStandalone
+          {...args}
+          id={`${args.id}_4`}
+          disabled={true}
+          checked={false}
+          aria-label="Unchecked & critical"
           tone="critical"
         />
-      ),
-    },
-    {
-      label: 'Virtual touch target',
-      Example: ({ id }) => {
-        const [state, setState] = useState(false);
-        return (
-          <Inline space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
-            <CheckboxStandalone
-              id={`${id}-1`}
-              checked={state}
-              onChange={() => setState(!state)}
-              aria-label="Label"
-              size="small"
-            />
+        <CheckboxStandalone
+          {...args}
+          id={`${args.id}_5`}
+          disabled={true}
+          checked={true}
+          aria-label="Checked & critical"
+          tone="critical"
+        />
+        <CheckboxStandalone
+          {...args}
+          id={`${args.id}_6`}
+          disabled={true}
+          checked="mixed"
+          aria-label="Mixed & critical"
+          tone="critical"
+        />
+      </Stack>
+    );
+  },
+};
 
-            <CheckboxStandalone
-              id={`${id}-2`}
-              checked={state}
-              onChange={() => setState(!state)}
-              aria-label="Label"
-              size="standard"
-            />
-          </Inline>
-        );
-      },
-    },
-    {
-      label: 'Text alignment',
-      Example: ({ id, handler }) => (
+export const Critical: Story = {
+  name: 'Critical',
+  args: {
+    tone: 'critical',
+  },
+};
+
+export const Virtualtouchtarget: Story = {
+  name: 'Virtual touch target',
+  render: function VirtualTouchTargetStory(args) {
+    const [checked, setChecked] = useState(false);
+    return (
+      <Inline
+        space="large"
+        data={{
+          [debugTouchableAttrForDataProp]: '',
+        }}
+      >
+        <CheckboxStandalone
+          {...args}
+          id={`${args.id}-1`}
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+          size="small"
+        />
+
+        <CheckboxStandalone
+          {...args}
+          id={`${args.id}-2`}
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+        />
+      </Inline>
+    );
+  },
+};
+
+export const Textalignment: Story = {
+  name: 'Text alignment',
+  render: function TextAlignmentStory(args) {
+    return (
+      <Stack space="medium">
+        {checkboxSizes.map((size) => (
+          <Box background="surface" key={size}>
+            <Columns space="small">
+              <Column width="content">
+                <Text size={size}>
+                  <CheckboxStandalone
+                    {...args}
+                    id={`${args.id}-${size}`}
+                    size={size}
+                  />
+                </Text>
+              </Column>
+              <Column>
+                <Text size={size}>Text alignment</Text>
+              </Column>
+            </Columns>
+          </Box>
+        ))}
+      </Stack>
+    );
+  },
+};
+
+export const Textalignmentwithwrappinglines: Story = {
+  name: 'Text alignment with wrapping lines',
+  render: function TextAlignmentWrappingStory(args) {
+    return (
+      <Box
+        style={{
+          maxWidth: 200,
+        }}
+      >
         <Stack space="medium">
           {checkboxSizes.map((size) => (
             <Box background="surface" key={size}>
@@ -170,76 +217,46 @@ export const screenshots: ComponentScreenshot = {
                 <Column width="content">
                   <Text size={size}>
                     <CheckboxStandalone
-                      id={id}
-                      onChange={handler}
-                      checked={false}
-                      aria-label="Label"
+                      {...args}
+                      id={`${args.id}-${size}`}
                       size={size}
                     />
                   </Text>
                 </Column>
                 <Column>
-                  <Text size={size}>Text alignment</Text>
+                  <Text size={size}>
+                    Text with really really long wrapping lines
+                  </Text>
                 </Column>
               </Columns>
             </Box>
           ))}
         </Stack>
-      ),
-    },
-    {
-      label: 'Text alignment with wrapping lines',
-      Example: ({ id, handler }) => (
-        <Box style={{ maxWidth: 200 }}>
-          <Stack space="medium">
-            {checkboxSizes.map((size) => (
-              <Box background="surface" key={size}>
-                <Columns space="small">
-                  <Column width="content">
-                    <Text size={size}>
-                      <CheckboxStandalone
-                        id={id}
-                        onChange={handler}
-                        checked={false}
-                        aria-label="Label"
-                        size={size}
-                      />
-                    </Text>
-                  </Column>
-                  <Column>
-                    <Text size={size}>
-                      Text with really really long wrapping lines
-                    </Text>
-                  </Column>
-                </Columns>
-              </Box>
-            ))}
-          </Stack>
-        </Box>
-      ),
-    },
-    {
-      label: 'Contrast',
-      Example: ({ id, handler }) => (
-        <Box maxWidth="xsmall">
-          <BackgroundContrastTest>
-            <Tiles space="small" columns={2}>
-              <CheckboxStandalone
-                id={id}
-                checked={false}
-                onChange={handler}
-                aria-label="Label"
-              />
-              <CheckboxStandalone
-                id={id}
-                checked={true}
-                onChange={handler}
-                aria-label="Label"
-              />
-            </Tiles>
-          </BackgroundContrastTest>
-        </Box>
-      ),
-    },
-  ],
+      </Box>
+    );
+  },
+};
+
+export const Contrast: Story = {
+  name: 'Contrast',
+  render: function ContrastStory(args) {
+    return (
+      <Box maxWidth="xsmall">
+        <BackgroundContrastTest>
+          <Tiles space="small" columns={2}>
+            <CheckboxStandalone
+              {...args}
+              id={`${args.id}-unchecked`}
+              checked={false}
+            />
+            <CheckboxStandalone
+              {...args}
+              id={`${args.id}-checked`}
+              checked={true}
+            />
+          </Tiles>
+        </BackgroundContrastTest>
+      </Box>
+    );
+  },
 };

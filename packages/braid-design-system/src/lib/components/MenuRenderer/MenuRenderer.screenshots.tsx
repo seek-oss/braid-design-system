@@ -1,5 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { calc } from '@vanilla-extract/css-utils';
-import type { ComponentScreenshot } from 'site/types';
+import React from 'react';
 
 import {
   Box,
@@ -18,394 +19,470 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 
 import { Menu } from './MenuRenderer';
 
+// Constants for stories
+const triggerHeight = 44;
+const triggerPosition = {
+  top: 200,
+  bottom: 200,
+  left: 20,
+  right: 20,
+};
 const defaultProps = {
-  offsetSpace: 'none',
-  align: 'left',
-  size: 'standard',
-  width: 'content',
-  highlightIndex: -1,
-  open: true,
   dispatch: () => {},
   focusTrigger: () => {},
-  position: 'relative',
+  highlightIndex: -1,
+  align: 'left' as const,
+  offsetSpace: 'none' as const,
+  size: 'standard' as const,
+  width: 'content' as const,
+  placement: 'bottom' as const,
   reserveIconSpace: false,
-  placement: 'bottom',
-} as const;
-
-const triggerHeight = 44;
-
-const triggerPosition = {
-  top: triggerHeight,
-  left: 0,
-  bottom: 0, // this value is ignored when placement is top
-  right: 0, // this value is ignored when align is left
+  position: 'relative' as const,
 };
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      Example: () => (
-        <Box style={{ maxWidth: '150px' }}>
-          <MenuRenderer
-            offsetSpace="small"
-            trigger={(triggerProps) => (
-              <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Placeholder height={triggerHeight} label="Menu trigger" />
-              </Box>
-            )}
-          >
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItemLink href="#">Link</MenuItemLink>
-          </MenuRenderer>
-        </Box>
-      ),
+const meta = {
+  title: 'Components/MenuRenderer',
+  component: MenuRenderer,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Right aligned',
-      Example: () => (
-        <Box style={{ maxWidth: '150px' }}>
-          <MenuRenderer
-            align="right"
-            offsetSpace="small"
-            trigger={(triggerProps) => (
-              <Box userSelect="none" cursor="pointer" {...triggerProps}>
-                <Placeholder height={triggerHeight} label="Menu trigger" />
-              </Box>
-            )}
-          >
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItemLink href="#">Link</MenuItemLink>
-          </MenuRenderer>
-        </Box>
-      ),
+    layout: 'fullscreen',
+  },
+  argTypes: {
+    align: {
+      control: 'radio',
+      options: ['left', 'right'],
+      description: 'Horizontal alignment of the menu relative to the trigger',
     },
-    {
-      label: 'Trigger grows to parent layout',
-      Example: () => (
-        <MenuRenderer
-          align="right"
+    offsetSpace: {
+      control: 'select',
+      options: ['none', 'xsmall', 'small', 'medium', 'large', 'xlarge'],
+      description: 'Space between the trigger and the menu',
+    },
+    size: {
+      control: 'radio',
+      options: ['standard', 'small'],
+      description: 'Size of the menu items',
+    },
+    width: {
+      control: 'select',
+      options: ['content', 'small', 'medium', 'large'],
+      description: 'Width of the menu',
+    },
+    placement: {
+      control: 'radio',
+      options: ['top', 'bottom'],
+      description: 'Vertical placement of the menu relative to the trigger',
+    },
+    reserveIconSpace: {
+      control: 'boolean',
+      description: 'Whether to reserve space for icons in menu items',
+    },
+  },
+  args: {
+    align: 'left',
+    offsetSpace: 'none',
+    size: 'standard',
+    width: 'content',
+    placement: 'bottom',
+    reserveIconSpace: false,
+    onOpen: undefined,
+    onClose: undefined,
+    trigger: (triggerProps) => (
+      <Box userSelect="none" cursor="pointer" {...triggerProps}>
+        <Placeholder height={triggerHeight} label="Menu trigger" />
+      </Box>
+    ),
+    children: (
+      <>
+        <MenuItem onClick={() => {}}>Button</MenuItem>
+        <MenuItemLink href="#">Link</MenuItemLink>
+      </>
+    ),
+  },
+} satisfies Meta<typeof MenuRenderer>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  name: 'Default',
+  render: (args) => (
+    <Box style={{ maxWidth: '150px' }}>
+      <MenuRenderer trigger={args.trigger} offsetSpace="small">
+        <MenuItem onClick={() => {}}>Button</MenuItem>
+        <MenuItemLink href="#">Link</MenuItemLink>
+      </MenuRenderer>
+    </Box>
+  ),
+  args: {
+    offsetSpace: 'small',
+  },
+};
+
+export const Rightaligned: Story = {
+  name: 'Right aligned',
+  render: (args) => (
+    <Box style={{ maxWidth: '150px' }}>
+      <MenuRenderer align="right" offsetSpace="small" trigger={args.trigger}>
+        <MenuItem onClick={() => {}}>Button</MenuItem>
+        <MenuItemLink href="#">Link</MenuItemLink>
+      </MenuRenderer>
+    </Box>
+  ),
+  args: {
+    align: 'right',
+    offsetSpace: 'small',
+  },
+};
+
+export const Triggergrowstoparentlayout: Story = {
+  name: 'Trigger grows to parent layout',
+  render: (args) => (
+    <MenuRenderer align="right" offsetSpace="small" trigger={args.trigger}>
+      <MenuItem onClick={() => {}}>Button</MenuItem>
+      <MenuItemLink href="#">Link</MenuItemLink>
+    </MenuRenderer>
+  ),
+  args: {
+    align: 'right',
+    offsetSpace: 'small',
+  },
+};
+
+export const Placementbottom: Story = {
+  name: 'Placement bottom',
+  render: () => (
+    <Box display="flex">
+      <Box position="relative">
+        <Placeholder height={triggerHeight} label="Menu trigger" />
+        <Menu {...defaultProps} placement="bottom">
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+        </Menu>
+      </Box>
+    </Box>
+  ),
+  args: {
+    placement: 'bottom',
+  },
+};
+
+export const Placementbottomwithsmalloffset: Story = {
+  name: 'Placement bottom with small offset',
+  render: () => (
+    <Box display="flex">
+      <Box position="relative">
+        <Placeholder height={triggerHeight} label="Menu trigger" />
+        <Menu {...defaultProps} placement="bottom" offsetSpace="small">
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+        </Menu>
+      </Box>
+    </Box>
+  ),
+  args: {
+    placement: 'bottom',
+    offsetSpace: 'small',
+  },
+};
+
+export const Placementtop: Story = {
+  name: 'Placement top',
+  render: () => (
+    <Box
+      display="flex"
+      style={{
+        paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
+      }}
+    >
+      <Box position="relative">
+        <Placeholder height={triggerHeight} label="Menu trigger" />
+        <Menu
+          {...defaultProps}
+          placement="top"
+          triggerPosition={triggerPosition}
+          position="absolute"
+        >
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+        </Menu>
+      </Box>
+    </Box>
+  ),
+  args: {
+    placement: 'top',
+  },
+};
+
+export const Placementtopwithsmalloffset: Story = {
+  name: 'Placement top with small offset',
+  render: () => (
+    <Box
+      display="flex"
+      style={{
+        paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
+      }}
+    >
+      <Box position="relative">
+        <Placeholder height={44} label="Menu trigger" />
+        <Menu
+          {...defaultProps}
+          placement="top"
           offsetSpace="small"
-          trigger={(triggerProps) => (
-            <Box userSelect="none" cursor="pointer" {...triggerProps}>
-              <Placeholder height={triggerHeight} label="Menu trigger" />
-            </Box>
-          )}
+          triggerPosition={triggerPosition}
+          position="absolute"
         >
-          <MenuItem onClick={() => {}}>Button</MenuItem>
-          <MenuItemLink href="#">Link</MenuItemLink>
-        </MenuRenderer>
-      ),
-    },
-    {
-      label: 'Placement bottom',
-      Example: () => (
-        <Box display="flex">
-          <Box position="relative">
-            <Placeholder height={triggerHeight} label="Menu trigger" />
-            <Menu {...defaultProps} placement="bottom">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Placement bottom with small offset',
-      Example: () => (
-        <Box display="flex">
-          <Box position="relative">
-            <Placeholder height={triggerHeight} label="Menu trigger" />
-            <Menu {...defaultProps} placement="bottom" offsetSpace="small">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Placement top',
-      Example: () => (
-        <Box
-          display="flex"
-          style={{
-            paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-          }}
-        >
-          <Box position="relative">
-            <Placeholder height={triggerHeight} label="Menu trigger" />
-            <Menu
-              {...defaultProps}
-              placement="top"
-              triggerPosition={triggerPosition}
-              position="absolute"
-            >
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Placement top with small offset',
-      Example: () => (
-        <Box
-          display="flex"
-          style={{
-            paddingTop: calc(vars.touchableSize).multiply(2.5).toString(),
-          }}
-        >
-          <Box position="relative">
-            <Placeholder height={44} label="Menu trigger" />
-            <Menu
-              {...defaultProps}
-              placement="top"
-              offsetSpace="small"
-              triggerPosition={triggerPosition}
-              position="absolute"
-            >
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Small size (virtual touch target)',
-      Example: () => (
-        <Box display="flex" data={{ [debugTouchableAttrForDataProp]: '' }}>
-          <Menu {...defaultProps} width="content" size="small">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-          </Menu>
-        </Box>
-      ),
-    },
-    {
-      label: 'Width content',
-      Example: () => (
-        <Inline space="medium">
-          <Menu {...defaultProps} width="content">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-          </Menu>
-          <Menu {...defaultProps} width="content" size="small">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-          </Menu>
-        </Inline>
-      ),
-    },
-    {
-      label: 'Width small',
-      Example: () => (
-        <Inline space="medium">
-          <Menu {...defaultProps} width="small">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemDivider />
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-          </Menu>
-          <Menu {...defaultProps} width="small" size="small">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemDivider />
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-          </Menu>
-        </Inline>
-      ),
-    },
-    {
-      label: 'Width medium',
-      Example: () => (
-        <Inline space="medium">
-          <Menu {...defaultProps} width="medium">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-          </Menu>
-          <Menu {...defaultProps} width="medium" size="small">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-          </Menu>
-        </Inline>
-      ),
-    },
-    {
-      label: 'Width large',
-      Example: () => (
-        <Inline space="medium">
-          <Menu {...defaultProps} width="large">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-          </Menu>
-          <Menu {...defaultProps} width="large" size="small">
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-          </Menu>
-        </Inline>
-      ),
-    },
-    {
-      label: 'Reserve icon space',
-      Example: () => (
-        <Inline space="medium">
-          <Menu {...defaultProps} reserveIconSpace>
-            <MenuItem onClick={() => {}} icon={<IconProfile />}>
-              Item
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+          <MenuItem onClick={() => {}}>Item</MenuItem>
+        </Menu>
+      </Box>
+    </Box>
+  ),
+  args: {
+    placement: 'top',
+    offsetSpace: 'small',
+  },
+};
+
+export const Smallsizevirtualtouchtarget: Story = {
+  name: 'Small size (virtual touch target)',
+  render: () => (
+    <Box
+      display="flex"
+      data={{
+        [debugTouchableAttrForDataProp]: '',
+      }}
+    >
+      <Menu {...defaultProps} width="content" size="small">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+      </Menu>
+    </Box>
+  ),
+  args: {
+    size: 'small',
+    width: 'content',
+  },
+};
+
+export const Widthcontent: Story = {
+  name: 'Width content',
+  render: () => (
+    <Inline space="medium">
+      <Menu {...defaultProps} width="content">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+      </Menu>
+      <Menu {...defaultProps} width="content" size="small">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+      </Menu>
+    </Inline>
+  ),
+  args: {
+    width: 'content',
+  },
+};
+
+export const Widthsmall: Story = {
+  name: 'Width small',
+  render: () => (
+    <Inline space="medium">
+      <Menu {...defaultProps} width="small">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemDivider />
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+      </Menu>
+      <Menu {...defaultProps} width="small" size="small">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemDivider />
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+      </Menu>
+    </Inline>
+  ),
+  args: {
+    width: 'small',
+  },
+};
+
+export const Widthmedium: Story = {
+  name: 'Width medium',
+  render: () => (
+    <Inline space="medium">
+      <Menu {...defaultProps} width="medium">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+      </Menu>
+      <Menu {...defaultProps} width="medium" size="small">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+      </Menu>
+    </Inline>
+  ),
+  args: {
+    width: 'medium',
+  },
+};
+
+export const Widthlarge: Story = {
+  name: 'Width large',
+  render: () => (
+    <Inline space="medium">
+      <Menu {...defaultProps} width="large">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+      </Menu>
+      <Menu {...defaultProps} width="large" size="small">
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+      </Menu>
+    </Inline>
+  ),
+  args: {
+    width: 'large',
+  },
+};
+
+export const Reserveiconspace: Story = {
+  name: 'Reserve icon space',
+  render: () => (
+    <Inline space="medium">
+      <Menu {...defaultProps} reserveIconSpace>
+        <MenuItem onClick={() => {}} icon={<IconProfile />}>
+          Item
+        </MenuItem>
+        <MenuItem onClick={() => {}} icon={<IconBookmark />}>
+          Item
+        </MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemDivider />
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+      </Menu>
+      <Menu {...defaultProps} reserveIconSpace size="small">
+        <MenuItem onClick={() => {}} icon={<IconProfile />}>
+          Item
+        </MenuItem>
+        <MenuItem onClick={() => {}} icon={<IconBookmark />}>
+          Item
+        </MenuItem>
+        <MenuItemDivider />
+        <MenuItemCheckbox checked={true} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox checked={false} onChange={() => {}}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemDivider />
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+        <MenuItem onClick={() => {}}>Item</MenuItem>
+      </Menu>
+    </Inline>
+  ),
+  args: {
+    reserveIconSpace: true,
+  },
+};
+
+export const Heightlimit: Story = {
+  name: 'Height limit',
+  render: () => (
+    <Inline space="medium">
+      <Menu {...defaultProps}>
+        {Array(19)
+          .fill(0)
+          .map((_, i) => (
+            <MenuItem key={i} onClick={() => {}}>
+              Button
             </MenuItem>
-            <MenuItem onClick={() => {}} icon={<IconBookmark />}>
-              Item
+          ))}
+      </Menu>
+      <Menu {...defaultProps} size="small">
+        {Array(19)
+          .fill(0)
+          .map((_, i) => (
+            <MenuItem key={i} onClick={() => {}}>
+              Button
             </MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemDivider />
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-          </Menu>
-          <Menu {...defaultProps} reserveIconSpace size="small">
-            <MenuItem onClick={() => {}} icon={<IconProfile />}>
-              Item
-            </MenuItem>
-            <MenuItem onClick={() => {}} icon={<IconBookmark />}>
-              Item
-            </MenuItem>
-            <MenuItemDivider />
-            <MenuItemCheckbox checked={true} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemCheckbox checked={false} onChange={() => {}}>
-              Item
-            </MenuItemCheckbox>
-            <MenuItemDivider />
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-            <MenuItem onClick={() => {}}>Item</MenuItem>
-          </Menu>
-        </Inline>
-      ),
-    },
-    {
-      label: 'Height limit',
-      Example: () => (
-        <Inline space="medium">
-          <Menu {...defaultProps}>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-          </Menu>
-          <Menu {...defaultProps} size="small">
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-            <MenuItem onClick={() => {}}>Button</MenuItem>
-          </Menu>
-        </Inline>
-      ),
-    },
-  ],
+          ))}
+      </Menu>
+    </Inline>
+  ),
 };

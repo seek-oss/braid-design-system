@@ -1,207 +1,265 @@
-import type { ReactNode } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Dropdown, IconLocation, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+const meta = {
+  title: 'Components/Dropdown',
+  component: Dropdown,
+  parameters: {
+    screenshotOnlyInWireframe: false,
+  },
+} satisfies Meta<typeof Dropdown>;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Dropdown with placeholder',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown
-          label="Job Title"
-          id={id}
-          onChange={handler}
-          value=""
-          placeholder="Please select a role title"
-        >
-          <option value="1">Developer</option>
-          <option value="2">Designer</option>
-        </Dropdown>
-      ),
+export default meta;
+type Story = StoryObj<typeof Dropdown>;
+
+const id = 'dropdown-example';
+
+const handler = () => {};
+
+export const WithPlaceholder: Story = {
+  name: 'Dropdown with placeholder',
+  render: () => (
+    <Dropdown
+      label="Job Title"
+      id={id}
+      onChange={handler}
+      value=""
+      placeholder="Please select a role title"
+    >
+      <option value="1">Developer</option>
+      <option value="2">Designer</option>
+    </Dropdown>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Dropdown with options group',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown
-          label="Location"
-          id={id}
-          value=""
-          onChange={handler}
-          placeholder="Please select a location"
-        >
-          <optgroup label="Major Cities">
-            <option value="3004">Melbourne</option>
-            <option value="3002">Sydney</option>
-          </optgroup>
-          <option value="3020">Wonthaggi</option>
-        </Dropdown>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const WithOptionsGroup: Story = {
+  name: 'Dropdown with options group',
+  render: () => (
+    <Dropdown
+      label="Location"
+      id={id}
+      value=""
+      onChange={handler}
+      placeholder="Please select a location"
+    >
+      <optgroup label="Major Cities">
+        <option value="3004">Melbourne</option>
+        <option value="3002">Sydney</option>
+      </optgroup>
+      <option value="3020">Wonthaggi</option>
+    </Dropdown>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Dropdown with icon',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown
-          label="Location"
-          id={id}
-          icon={<IconLocation />}
-          placeholder="Please select a location"
-          value=""
-          onChange={handler}
-        >
-          <option value="3004">Melbourne</option>
-          <option value="3002">Sydney</option>
-        </Dropdown>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const WithIcon: Story = {
+  name: 'Dropdown with icon',
+  render: () => (
+    <Dropdown
+      label="Location"
+      id={id}
+      icon={<IconLocation />}
+      placeholder="Please select a location"
+      value=""
+      onChange={handler}
+    >
+      <option value="3004">Melbourne</option>
+      <option value="3002">Sydney</option>
+    </Dropdown>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Dropdown without placeholder',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown label="Job Title" id={id} onChange={handler} value="">
-          <option value="1">Developer</option>
-          <option value="2">Designer</option>
-        </Dropdown>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const WithoutPlaceholder: Story = {
+  name: 'Dropdown without placeholder',
+  render: () => (
+    <Dropdown label="Job Title" id={id} onChange={handler} value="">
+      <option value="1">Developer</option>
+      <option value="2">Designer</option>
+    </Dropdown>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Dropdown in critical tone',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown
-          label="Job Title"
-          id={id}
-          onChange={handler}
-          value=""
-          tone="critical"
-          message="Required field"
-        >
-          <option value="1">Developer</option>
-          <option value="2">Designer</option>
-        </Dropdown>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const CriticalTone: Story = {
+  name: 'Dropdown in critical tone',
+  render: () => (
+    <Dropdown
+      label="Job Title"
+      id={id}
+      onChange={handler}
+      value=""
+      tone="critical"
+      message="Required field"
+    >
+      <option value="1">Developer</option>
+      <option value="2">Designer</option>
+    </Dropdown>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Dropdown in caution tone',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown
-          label="Job Title"
-          id={id}
-          onChange={handler}
-          value=""
-          tone="caution"
-          message="Caution message"
-        >
-          <option value="1">Developer</option>
-          <option value="2">Designer</option>
-        </Dropdown>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const CautionTone: Story = {
+  name: 'Dropdown in caution tone',
+  render: () => (
+    <Dropdown
+      label="Job Title"
+      id={id}
+      onChange={handler}
+      value=""
+      tone="caution"
+      message="Caution message"
+    >
+      <option value="1">Developer</option>
+      <option value="2">Designer</option>
+    </Dropdown>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Dropdown in disabled state',
-      Container,
-      Example: ({ id, handler }) => (
-        <Stack space="gutter">
-          <Dropdown
-            label="With no value or placeholder"
-            id={`${id}_1`}
-            onChange={handler}
-            value=""
-            disabled={true}
-          >
-            <option value="1">Developer</option>
-            <option value="2">Designer</option>
-          </Dropdown>
-          <Dropdown
-            label="With value and no placeholder"
-            id={`${id}_2`}
-            onChange={handler}
-            value="1"
-            disabled={true}
-          >
-            <option value="1">Developer</option>
-            <option value="2">Designer</option>
-          </Dropdown>
-          <Dropdown
-            label="With no value and a placeholder"
-            id={`${id}_3`}
-            onChange={handler}
-            value=""
-            disabled={true}
-            placeholder="Placeholder text"
-          >
-            <option value="1">Developer</option>
-            <option value="2">Designer</option>
-          </Dropdown>
-          <Dropdown
-            label="With critical tone"
-            id={`${id}_5`}
-            onChange={handler}
-            value=""
-            disabled={true}
-            tone="critical"
-          >
-            <option value="1">Developer</option>
-            <option value="2">Designer</option>
-          </Dropdown>
-          <Dropdown
-            label="With critical tone and message"
-            id={`${id}_6`}
-            onChange={handler}
-            value=""
-            disabled={true}
-            tone="critical"
-            message="Message"
-          >
-            <option value="1">Developer</option>
-            <option value="2">Designer</option>
-          </Dropdown>
-        </Stack>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const DisabledState: Story = {
+  name: 'Dropdown in disabled state',
+  render: () => (
+    <Stack space="gutter">
+      <Dropdown
+        label="With no value or placeholder"
+        id={`${id}_1`}
+        onChange={handler}
+        value=""
+        disabled={true}
+      >
+        <option value="1">Developer</option>
+        <option value="2">Designer</option>
+      </Dropdown>
+      <Dropdown
+        label="With value and no placeholder"
+        id={`${id}_2`}
+        onChange={handler}
+        value="1"
+        disabled={true}
+      >
+        <option value="1">Developer</option>
+        <option value="2">Designer</option>
+      </Dropdown>
+      <Dropdown
+        label="With no value and a placeholder"
+        id={`${id}_3`}
+        onChange={handler}
+        value=""
+        disabled={true}
+        placeholder="Placeholder text"
+      >
+        <option value="1">Developer</option>
+        <option value="2">Designer</option>
+      </Dropdown>
+      <Dropdown
+        label="With critical tone"
+        id={`${id}_5`}
+        onChange={handler}
+        value=""
+        disabled={true}
+        tone="critical"
+      >
+        <option value="1">Developer</option>
+        <option value="2">Designer</option>
+      </Dropdown>
+      <Dropdown
+        label="With critical tone and message"
+        id={`${id}_6`}
+        onChange={handler}
+        value=""
+        disabled={true}
+        tone="critical"
+        message="Message"
+      >
+        <option value="1">Developer</option>
+        <option value="2">Designer</option>
+      </Dropdown>
+    </Stack>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Dropdown with no visual label',
-      Container,
-      Example: ({ id, handler }) => (
-        <Dropdown
-          aria-label="Job Title"
-          id={id}
-          onChange={handler}
-          value=""
-          placeholder="Please select a role title"
-        >
-          <option value="1">Developer</option>
-          <option value="2">Designer</option>
-        </Dropdown>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const NoVisualLabel: Story = {
+  name: 'Dropdown with no visual label',
+  render: () => (
+    <Dropdown
+      aria-label="Job Title"
+      id={id}
+      onChange={handler}
+      value=""
+      placeholder="Please select a role title"
+    >
+      <option value="1">Developer</option>
+      <option value="2">Designer</option>
+    </Dropdown>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-    {
-      label: 'Contrast',
-      Container,
-      Example: ({ id, handler }) => (
-        <BackgroundContrastTest>
-          <Dropdown
-            label="Job Title"
-            id={id}
-            onChange={handler}
-            value=""
-            placeholder="Please select a role title"
-          >
-            <option value="1">Developer</option>
-            <option value="2">Designer</option>
-          </Dropdown>
-        </BackgroundContrastTest>
-      ),
+    layout: 'fullscreen',
+  },
+};
+
+export const ContrastTest: Story = {
+  name: 'Contrast',
+  render: () => (
+    <BackgroundContrastTest>
+      <Dropdown
+        label="Job Title"
+        id={id}
+        onChange={handler}
+        value=""
+        placeholder="Please select a role title"
+      >
+        <option value="1">Developer</option>
+        <option value="2">Designer</option>
+      </Dropdown>
+    </BackgroundContrastTest>
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [320],
     },
-  ],
+    layout: 'fullscreen',
+  },
 };
