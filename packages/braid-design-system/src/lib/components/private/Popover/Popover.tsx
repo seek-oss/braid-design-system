@@ -305,7 +305,6 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           />
         )}
 
-        {/* Todo - use `popover` property when available */}
         <Box
           id={id}
           ref={ref}
