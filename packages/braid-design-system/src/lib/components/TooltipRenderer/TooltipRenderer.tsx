@@ -115,7 +115,7 @@ export const TooltipRenderer = ({
   const [arrowLeftOffset, setArrowLeftOffset] = useState(0);
 
   const { grid, space } = useSpace();
-  const edgeOffsetAsPx = space[edgeOffset] * grid;
+  const edgeOffsetInPx = space[edgeOffset] * grid;
 
   const isStatic = useContext(StaticTooltipContext);
   const isMobileDevice = useRef(isMobile()).current;
@@ -152,7 +152,7 @@ export const TooltipRenderer = ({
 
       const triggerLeft = triggerPosition.left;
       const tooltipLeftToTriggerLeft =
-        triggerLeft - tooltipPosition.left - edgeOffsetAsPx;
+        triggerLeft - tooltipPosition.left - edgeOffsetInPx;
 
       setArrowLeftOffset(tooltipLeftToTriggerLeft + triggerPosition.width / 2);
     };
@@ -163,7 +163,7 @@ export const TooltipRenderer = ({
     });
 
     return () => clearTimeout(timeoutId);
-  }, [open, isStatic, edgeOffsetAsPx]);
+  }, [open, isStatic, edgeOffsetInPx]);
 
   return (
     <>
