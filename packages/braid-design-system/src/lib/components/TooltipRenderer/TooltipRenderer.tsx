@@ -131,6 +131,14 @@ export const TooltipRenderer = ({
     };
 
     document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
+
+    return () => {
+      document.removeEventListener(
+        'scroll',
+        handleScroll,
+        scrollHandlerOptions,
+      );
+    };
   }, [open]);
 
   useIsomorphicLayoutEffect(() => {
