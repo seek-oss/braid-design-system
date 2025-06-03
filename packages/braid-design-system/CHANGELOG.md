@@ -1,5 +1,20 @@
 # braid-design-system
 
+## 33.8.0
+
+### Minor Changes
+
+- **ButtonIcon**: Add optional `aria-describedby` prop ([#1785](https://github.com/seek-oss/braid-design-system/pull/1785))
+
+  `aria-describedby` can be used in addition to `label` to associate additional descriptive elements with the `ButtonIcon`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon icon={<IconDelete />} label="Delete" aria-describedby="descriptionId" />
+  <Text id="descriptionId">Deleted items will be permanently removed after 30 days.</Text>
+  ```
+
 ## 33.7.0
 
 ### Minor Changes
