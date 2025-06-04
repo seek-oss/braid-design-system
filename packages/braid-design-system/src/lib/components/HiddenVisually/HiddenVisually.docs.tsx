@@ -1,8 +1,9 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { HiddenVisually, Text } from '../';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
+import { Text } from '../Text/Text';
+
+import { HiddenVisually } from './HiddenVisually';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -20,19 +21,6 @@ const docs: ComponentDocs = {
       screen.
     </Text>
   ),
-  additional: [
-    dataAttributeDocs({
-      code: `
-        <HiddenVisually
-          data={{ testid: 'hidden-visually-1' }}
-          // => data-testid="hidden-visually-1"
-        >
-          ...
-        </HiddenVisually>
-      `,
-      supportsNativeSyntax: false,
-    }),
-  ],
 };
 
 export default docs;

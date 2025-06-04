@@ -3,7 +3,6 @@ import type { ComponentDocs } from 'site/types';
 
 import { Alert, Card, Text, Strong, Stack, TextLink, List, Notice } from '../';
 import { IconLanguage } from '../icons';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -169,17 +168,6 @@ const docs: ComponentDocs = {
           </Card>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Alert
-          data={{ testid: 'alert-1' }}
-          // => data-testid="alert-1"
-        >
-          ...
-        </Alert>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

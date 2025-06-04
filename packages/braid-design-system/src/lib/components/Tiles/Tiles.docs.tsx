@@ -4,7 +4,6 @@ import type { ComponentDocs } from 'site/types';
 import { Tiles, Text } from '../';
 import { Strong } from '../Strong/Strong';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -102,17 +101,6 @@ const docs: ComponentDocs = {
           </Tiles>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Tiles
-          data={{ testid: 'tiles-1' }}
-          // => data-testid="tiles-1"
-        >
-          ...
-        </Tiles>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

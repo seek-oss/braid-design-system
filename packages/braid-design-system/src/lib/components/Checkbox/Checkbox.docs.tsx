@@ -14,7 +14,6 @@ import {
   Divider,
 } from '../';
 import { Placeholder } from '../../playroom/components';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -310,17 +309,6 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Checkbox
-          data={{ testid: 'checkbox-1' }}
-          // => data-testid="checkbox-1"
-        >
-          ...
-        </Checkbox>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

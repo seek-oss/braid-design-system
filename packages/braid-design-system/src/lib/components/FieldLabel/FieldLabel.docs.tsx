@@ -14,7 +14,6 @@ import {
   Notice,
 } from '../';
 import { Placeholder } from '../../playroom/components';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const Container = ({ children }: { children: ReactNode }) => (
   <Box maxWidth="xsmall">{children}</Box>
@@ -207,15 +206,6 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <FieldLabel
-          data={{ testid: 'field-label-1' }}
-          // => data-testid="field-label-1"
-        />
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

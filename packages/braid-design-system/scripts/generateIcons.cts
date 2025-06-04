@@ -153,7 +153,6 @@ const svgrConfig = {
         import { IconContainer, type IconContainerProps } from '${relative(
           `${baseDir}/src/lib/components/icons/IconContainer`,
         )}';
-
         import { ${svgComponentName} } from '${relative(`${iconDir}/${svgComponentName}`)}';
 
         export type ${iconName}Props = IconContainerProps;
@@ -170,11 +169,10 @@ const svgrConfig = {
     await templateFileIfMissing(
       `${iconName}.docs.tsx`,
       dedent/* ts */ `
-        import source from '@braid-design-system/source.macro';
         import type { ComponentDocs } from 'site/types';
-
-        import { ${iconName}, Heading, Stack } from '${relative(`${baseDir}/src/lib/components`)}';
         import { iconDocumentation } from '${relative(`${iconComponentsDir}/iconCommon.docs`)}';
+        import source from '@braid-design-system/source.macro';
+        import { ${iconName}, Heading, Stack } from '${relative(`${baseDir}/src/lib/components`)}';
 
         const docs: ComponentDocs = {
           category: 'Icon',
@@ -187,7 +185,7 @@ const svgrConfig = {
               </Stack>,
             ),
           alternatives: [],
-          additional: [...iconDocumentation],
+          additional: [iconDocumentation],
         };
 
         export default docs;

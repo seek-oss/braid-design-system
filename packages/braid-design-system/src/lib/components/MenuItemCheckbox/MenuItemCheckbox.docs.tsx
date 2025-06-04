@@ -12,7 +12,6 @@ import {
   Inline,
   IconChevron,
 } from '..';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -132,17 +131,6 @@ const docs: ComponentDocs = {
           </Inline>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <MenuItemCheckbox
-          data={{ testid: 'menu-item-checkbox-1' }}
-          // => data-testid="menu-item-checkbox-1"
-        >
-          ...
-        </MenuItemCheckbox>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

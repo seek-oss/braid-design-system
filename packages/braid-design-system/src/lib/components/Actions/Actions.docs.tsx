@@ -12,7 +12,6 @@ import {
   Tiles,
   Inline,
 } from '../';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { actionsSpace } from './Actions';
 
@@ -130,17 +129,6 @@ const docs: ComponentDocs = {
           </Tiles>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Actions
-          data={{ testid: 'actions-1' }}
-          // => data-testid="actions-1"
-        >
-          ...
-        </Actions>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

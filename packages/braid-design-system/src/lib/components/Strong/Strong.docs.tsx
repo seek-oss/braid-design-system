@@ -2,7 +2,6 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import { Strong, Text, TextLink } from '../';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -26,17 +25,6 @@ const docs: ComponentDocs = {
         </Text>
       ),
     },
-    dataAttributeDocs({
-      code: `
-        <Strong
-          data={{ testid: 'strong-1' }}
-          // => data-testid="strong-1"
-        >
-          ...
-        </Strong>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

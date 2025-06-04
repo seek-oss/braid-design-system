@@ -3,7 +3,6 @@ import type { ComponentDocs } from 'site/types';
 
 import { Divider, Spread, Stack, Strong, Text, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -141,17 +140,6 @@ const docs: ComponentDocs = {
         </Spread>,
       ).code,
     },
-    dataAttributeDocs({
-      code: `
-        <Spread
-          data={{ testid: 'spread-1' }}
-          // => data-testid="spread-1"
-        >
-          ...
-        </Spread>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

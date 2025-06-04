@@ -6,7 +6,6 @@ import { Alert, Box, Divider, TextLink, Toggle } from '../';
 import { Stack } from '../Stack/Stack';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -175,15 +174,6 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Toggle
-          data={{ testid: 'toggle-1' }}
-          // => data-testid="toggle-1"
-        />
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

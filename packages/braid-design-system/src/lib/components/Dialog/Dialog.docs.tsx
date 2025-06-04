@@ -18,7 +18,6 @@ import {
   TextDropdown,
 } from '../';
 import { Placeholder } from '../../playroom/components';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { DialogContent } from './Dialog';
 import { DialogPreview } from './Dialog.screenshots';
@@ -448,17 +447,6 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Dialog
-          data={{ testid: 'dialog-1' }}
-          // => data-testid="dialog-1"
-        >
-          ...
-        </Dialog>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

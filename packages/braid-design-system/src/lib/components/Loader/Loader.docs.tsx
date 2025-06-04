@@ -14,7 +14,6 @@ import {
   Divider,
 } from '../';
 import { IconLanguage } from '../icons';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { animationDelayValueInMs } from './Loader.css';
 
@@ -125,15 +124,6 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Loader
-          data={{ testid: 'loader-1' }}
-          // => data-testid="loader-1"
-        />
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

@@ -17,7 +17,6 @@ import {
   TextField,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { highlightSuggestions } from './Autosuggest';
 
@@ -790,15 +789,6 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Autosuggest
-          data={{ testid: 'autosuggest-1' }}
-          // => data-testid="autosuggest-1"
-        />
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

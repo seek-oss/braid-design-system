@@ -19,7 +19,6 @@ import {
   Inline,
   List,
 } from '../';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -231,17 +230,6 @@ const docs: ComponentDocs = {
         </Text>
       ),
     },
-    dataAttributeDocs({
-      code: `
-        <OverflowMenu
-          data={{ testid: 'overflow-menu-1' }}
-          // => data-testid="overflow-menu-1"
-        >
-          ...
-        </OverflowMenu>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

@@ -13,7 +13,6 @@ import {
   Heading,
   Notice,
 } from '../';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -312,17 +311,6 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Dropdown
-          data={{ testid: 'dropdown-1' }}
-          // => data-testid="dropdown-1"
-        >
-          ...
-        </Dropdown>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

@@ -3,7 +3,6 @@ import type { ComponentDocs } from 'site/types';
 
 import { Box, Bleed, Stack, Text, Strong, TextLink, Tiles, Toggle } from '../';
 import { Placeholder } from '../../playroom/components';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { vars } from '../../themes/vars.css';
 
@@ -251,17 +250,6 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
-    dataAttributeDocs({
-      code: `
-        <Bleed
-          data={{ testid: 'bleed-1' }}
-          // => data-testid="bleed-1"
-        >
-          ...
-        </Bleed>
-      `,
-      supportsNativeSyntax: false,
-    }),
   ],
 };
 

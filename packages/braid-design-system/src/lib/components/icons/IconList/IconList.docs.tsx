@@ -25,7 +25,7 @@ const docs: ComponentDocs = {
       </Stack>,
     ),
   alternatives: [],
-  additional: [...iconDocumentation],
+  additional: [iconDocumentation],
 };
 
 export default docs;
