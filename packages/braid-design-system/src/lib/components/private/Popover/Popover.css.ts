@@ -27,13 +27,6 @@ export const popoverPosition = style({
     .toString(),
 });
 
-const animationDelayInMs = createVar();
-export const animationDelay = style({
-  vars: {
-    [animationDelayInMs]: '250ms',
-  },
-});
-
 const placementModifier = createVar();
 export const invertPlacement = style({
   vars: {
@@ -53,5 +46,8 @@ export const animation = style({
   animationFillMode: 'both',
   animationTimingFunction: 'ease',
   animationDuration: '0.125s',
-  animationDelay: fallbackVar(animationDelayInMs, '0'),
+});
+
+export const delayVisibility = style({
+  animationDelay: '250ms',
 });
