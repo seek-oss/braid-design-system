@@ -228,5 +228,24 @@ export const modalTestSuite = (
       }
       expect(queryByRole('dialog')).not.toBeInTheDocument();
     });
+
+    it('should have a close button that is not aria-hidden', async () => {
+      const { getByTestId, queryByRole } = renderTestCase();
+
+      const dialogOpenButton = getByTestId('buttonBefore');
+      await userEvent.click(dialogOpenButton);
+
+      // Waiting for `ariaHideOthers` to apply
+      await waitFor(() =>
+        expect(document.querySelector('[data-aria-hidden]')).not.toBeNull(),
+      );
+
+      const closeButton = queryByRole('button', {
+        name: CLOSE_LABEL,
+        hidden: false,
+      });
+
+      expect(closeButton).not.toBeNull();
+    });
   });
 };
