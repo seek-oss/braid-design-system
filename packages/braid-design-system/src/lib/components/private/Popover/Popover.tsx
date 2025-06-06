@@ -317,7 +317,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
             [styles.popoverPosition]: true,
             [styles.animation]: true,
             [styles.invertPlacement]: actualPlacement === 'bottom',
-            [styles.animationDelay]: delayVisibility,
+            [styles.delayVisibility]: delayVisibility,
           }}
         >
           {children}
