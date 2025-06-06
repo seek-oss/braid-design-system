@@ -102,7 +102,6 @@ export const ModalContent = ({
   ...restProps
 }: ModalContentProps) => {
   const resolvedId = useFallbackId(id);
-
   const descriptionId = useId();
 
   const defaultModalRef = useRef<HTMLElement>(null);
@@ -140,6 +139,7 @@ export const ModalContent = ({
       justifyContent={justifyContent}
     >
       <Box
+        ref={modalRef}
         position="relative"
         display="flex"
         alignItems="center"
@@ -156,7 +156,6 @@ export const ModalContent = ({
         {/* modalRef gets forwarded down to child element by RemoveScroll by `forwardProps` */}
         <RemoveScroll
           noRelative // Allows portalled elements to be positioned correctly relative to the viewport size
-          ref={modalRef}
           forwardProps
           enabled={scrollLock}
         >
