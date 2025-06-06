@@ -3,27 +3,21 @@ import 'html-validate/jest';
 
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderToStaticMarkup } from 'react-dom/server';
 
-import { IconBookmark, Text } from '..';
+import { ButtonIcon, IconBookmark, Text } from '..';
 import { BraidTestProvider } from '../../../entries/test';
-
-import { ButtonIcon, PrivateButtonIcon } from './ButtonIcon';
 
 describe('ButtonIcon', () => {
   it('should render valid html structure', () => {
-    expect(
-      renderToStaticMarkup(
-        <BraidTestProvider>
-          {/*
-            Rendering `PrivateButtonIcon` so no tooltip is added.
-            Popper tooltip library does not like being rendered
-            to static markup, but not required for this test.
-          */}
-          <PrivateButtonIcon icon={<IconBookmark />} label="Bookmark" />
-        </BraidTestProvider>,
-      ),
-    ).toHTMLValidate({
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <ButtonIcon id="bookmark" icon={<IconBookmark />} label="Bookmark" />
+      </BraidTestProvider>,
+    );
+
+    const button = getByLabelText('Bookmark');
+
+    expect(button).toHTMLValidate({
       extends: ['html-validate:recommended'],
     });
   });
