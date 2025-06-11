@@ -19,7 +19,6 @@ import { Heading } from '../../Heading/Heading';
 import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
-import { Overlay } from '../Overlay/Overlay';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -27,6 +26,7 @@ import buildDataAttributes, {
 import { normalizeKey } from '../normalizeKey';
 
 import * as styles from './Modal.css';
+import { focusRing } from '../../private/hideFocusRings/focusRing.css';
 
 export interface ModalContentProps {
   id?: string;
@@ -64,19 +64,20 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
         <Box
           ref={ref}
           component="span"
-          tabIndex={-1}
-          outline="none"
+          // tabIndex={-1}
+          tabIndex={1} // Allows focus ring to be visible when focused
           position="relative"
-          className={styles.headingRoot}
+          display="inlineBlock"
+          className={[styles.headingRoot, focusRing]}
         >
           {title}
-          <Overlay
+          {/* <Overlay
             boxShadow="outlineFocus"
             borderRadius="standard"
             transition="fast"
             className={styles.headingFocus}
             onlyVisibleForKeyboardNavigation
-          />
+          /> */}
         </Box>
       </Heading>
       {description ? <Box id={descriptionId}>{description}</Box> : null}
