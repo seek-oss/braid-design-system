@@ -120,29 +120,23 @@ export const TooltipRenderer = ({
   const isStatic = useContext(StaticTooltipContext);
   const isMobileDevice = useRef(isMobile()).current;
 
-  const visible = useRef(false);
+  const onScreen = useRef<boolean | null>(null);
+
   useEffect(() => {
-    if (!open) {
-      visible.current = false;
-      return;
+    const observer = new IntersectionObserver(
+      ([entry]: IntersectionObserverEntry[]) => {
+        onScreen.current = entry.isIntersecting;
+      },
+    );
+
+    if (triggerRef.current) {
+      observer.observe(triggerRef.current);
     }
 
-    const timeout = setTimeout(() => {
-      visible.current = true;
-    });
-
-    return () => clearTimeout(timeout);
-  }, [open]);
-
-  useEffect(() => {
     const handleScroll = () => {
-      /*
-      'visible' is true 1 tick after 'open' is true,
-      giving time for the element to scroll into view
-
-      We only want to remove on scroll once the element is scrolled into view
-      */
-      if (visible.current) {
+      // onScreen.current will always be null during testing,
+      // as IntersectionObserver is mocked for Jest
+      if (onScreen.current || onScreen.current === null) {
         setOpen(false);
       }
     };
@@ -155,6 +149,8 @@ export const TooltipRenderer = ({
     document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
 
     return () => {
+      observer.disconnect();
+
       document.removeEventListener(
         'scroll',
         handleScroll,
