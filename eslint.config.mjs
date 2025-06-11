@@ -101,7 +101,10 @@ export default [
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ['packages/braid-design-system/.storybook/*.ts'],
+          allowDefaultProject: [
+            'packages/braid-design-system/.storybook/*.ts',
+            'packages/braid-design-system/.storybook/*.tsx',
+          ],
         },
       },
     },

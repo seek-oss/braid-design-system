@@ -66,6 +66,7 @@ const meta = {
       month: undefined,
       year: undefined,
     },
+    // eslint-disable-next-line no-console
     onChange: (value) => console.log('Changed:', value),
     minYear: new Date().getFullYear() - 100,
     maxYear: new Date().getFullYear(),

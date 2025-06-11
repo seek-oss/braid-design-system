@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Autosuggest, filterSuggestions, IconSearch, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-// Define types based on the actual component
 interface AutosuggestValue<Value = any> {
   text: string;
   description?: string;
@@ -23,10 +22,9 @@ const makeSuggestions = (items: string[]): SuggestionItem[] =>
 
 const defaultFruits = ['Apples', 'Bananas', 'Broccoli', 'Carrots'];
 
-const withAutosuggestState = (storyFn) => {
+const WithAutosuggestState = (storyFn: any) => {
   const [args, updateArgs] = useArgs();
 
-  // Set up handlers that update args
   const handleChange = (newValue: AutosuggestValue) => {
     updateArgs({ value: newValue });
   };
@@ -66,7 +64,7 @@ const meta = {
     suggestions: filterSuggestions(makeSuggestions(defaultFruits)),
   },
   decorators: [
-    withAutosuggestState,
+    WithAutosuggestState,
     (Story) => (
       <div style={{ padding: '1rem', maxWidth: '400px' }}>
         <Story />

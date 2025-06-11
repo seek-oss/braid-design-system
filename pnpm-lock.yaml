@@ -542,7 +542,7 @@ importers:
         version: 8.6.0
       panzoom:
         specifier: ^9.4.2
-        version: 9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
+        version: 9.4.2(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       playroom:
         specifier: 0.44.0
         version: 0.44.0(@swc/core@1.12.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -6850,9 +6850,6 @@ packages:
 
   panzoom@9.4.2:
     resolution: {integrity: sha512-sQLr0t6EmNFXpZHag0HQVtOKqF9xjF7iZdgWg3Ss1o7uh2QZLvcrz7S0Cl8M0d2TkPZ69JfPJdknXN3I0e/2aQ==}
-
-  panzoom@9.4.3:
-    resolution: {integrity: sha512-xaxCpElcRbQsUtIdwlrZA90P90+BHip4Vda2BC8MEb4tkI05PmR6cKECdqUCZ85ZvBHjpI9htJrZBxV5Gp/q/w==}
 
   param-case@3.0.4:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
@@ -16997,12 +16994,6 @@ snapshots:
       quansync: 0.2.10
 
   panzoom@9.4.2(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30):
-    dependencies:
-      amator: 1.1.0
-      ngraph.events: 1.2.2
-      wheel: 1.0.0
-
-  panzoom@9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30):
     dependencies:
       amator: 1.1.0
       ngraph.events: 1.2.2

@@ -1,13 +1,14 @@
 import '../src/entries/reset';
-import React from 'react';
+
 import type { Preview, Decorator } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
+
 import { BraidProvider, ToastProvider } from '../src/lib/components';
 import { PlayroomStateProvider } from '../src/lib/playroom/playroomState';
 import * as themes from '../src/lib/themes';
+
 import { darkMode } from '../src/lib/css/atoms/sprinkles.css';
 
-// Initialize web fonts
 const webFontLinkTags = Array.from(
   new Set(
     Object.values(themes)
@@ -25,6 +26,7 @@ const withTheme: Decorator = (Story, context) => {
   let theme = themes[themeName];
 
   if (!theme) {
+    // eslint-disable-next-line no-console
     console.warn(`Theme "${themeName}" not found, using "apac" theme instead.`);
     theme = themes.apac;
   }
