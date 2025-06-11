@@ -45,7 +45,7 @@
     "lodash.partition": "^4.6.0",
     "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",
-    "panzoom": "^9.4.2",
+    "panzoom": "9.4.2",
     "playroom": "0.42.0",
     "polished": "^4.1.0",
     "prettier": "^3.4.1",

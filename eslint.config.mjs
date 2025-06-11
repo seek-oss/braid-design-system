@@ -104,6 +104,7 @@ export default [
           allowDefaultProject: [
             'jest/setupTests.ts',
             'packages/braid-design-system/.storybook/*.ts',
+            'packages/braid-design-system/.storybook/*.tsx',
           ],
         },
       },
