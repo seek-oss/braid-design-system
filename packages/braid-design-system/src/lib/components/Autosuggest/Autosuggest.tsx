@@ -781,10 +781,15 @@ export const Autosuggest = forwardRef(function <Value>(
             width="full"
             lockPlacement
             offsetSpace="xxsmall"
+            modal={false}
             role={false}
           >
             {/* MenuRef gets forwarded down to UL by RemoveScroll by `forwardProps`. */}
-            <RemoveScroll ref={menuRef} forwardProps>
+            <RemoveScroll
+              noRelative // Allows portalled elements to be positioned correctly relative to the viewport size
+              ref={menuRef}
+              forwardProps
+            >
               <Box
                 textAlign="left"
                 component="ul"
