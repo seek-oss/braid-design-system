@@ -1299,8 +1299,9 @@ exports[`Box 1`] = `
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
-        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
+        | "sticky"
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "sticky" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "sticky" | "relative" | "absolute" | undefined; tablet?: "fixed" | "sticky" | "relative" | "absolute" | undefined; desktop?: "fixed" | "sticky" | "relative" | "absolute" | undefined; wide?: "fixed" | ... 3 more ... | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1998,8 +1999,9 @@ exports[`BoxRenderer 1`] = `
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
-        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
+        | "sticky"
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "sticky" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "sticky" | "relative" | "absolute" | undefined; tablet?: "fixed" | "sticky" | "relative" | "absolute" | undefined; desktop?: "fixed" | "sticky" | "relative" | "absolute" | undefined; wide?: "fixed" | ... 3 more ... | undefined; }
     right?: 0
     textAlign?: 
         | "center"
