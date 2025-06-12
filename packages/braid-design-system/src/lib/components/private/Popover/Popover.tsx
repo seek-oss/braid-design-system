@@ -15,6 +15,7 @@ import type { ResponsiveSpace } from '../../../css/atoms/atoms';
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
+import { animationTimeout } from '../animationTimeout';
 
 import * as styles from './Popover.css';
 
@@ -155,8 +156,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
             );
           }
         }
-        // Timeout needs to be 10ms to work in Safari - 0 for other browsers
-      }, 10);
+      }, animationTimeout);
     }, [open, enterFocusRef, triggerRef]);
 
     useEffect(() => {

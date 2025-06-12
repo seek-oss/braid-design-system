@@ -15,6 +15,7 @@ import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect
 import { Box } from '../Box/Box';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { animationTimeout } from '../private/animationTimeout';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
@@ -23,6 +24,8 @@ import * as styles from './TooltipRenderer.css';
 
 const edgeOffset = 'xxsmall';
 export const offsetSpace = 'small';
+
+type ArrowLeftOffset = number | null;
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({
@@ -58,7 +61,7 @@ export const TooltipContent = ({
   children,
 }: {
   inferredPlacement: PopoverProps['placement'];
-  arrowLeftOffset: number;
+  arrowLeftOffset: ArrowLeftOffset;
   children: ReactNodeNoStrings;
 }) => (
   <Box
@@ -109,14 +112,16 @@ export const TooltipRenderer = ({
 
   const tooltipRef = useRef<HTMLElement | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
+
   const [open, setOpen] = useState(false);
-  const [inferredPlacement, setInferredPlacement] =
-    useState<PopoverProps['placement']>(placement);
-  const [arrowLeftOffset, setArrowLeftOffset] = useState(0);
+  const [triggerPosition, setTriggerPosition] = useState<DOMRect | undefined>(
+    undefined,
+  );
+  const [tooltipPosition, setTooltipPosition] = useState<DOMRect | undefined>(
+    undefined,
+  );
 
   const { grid, space } = useSpace();
-  const edgeOffsetInPx = space[edgeOffset] * grid;
-
   const isStatic = useContext(StaticTooltipContext);
   const isMobileDevice = useRef(isMobile()).current;
 
@@ -160,36 +165,33 @@ export const TooltipRenderer = ({
   }, []);
 
   useIsomorphicLayoutEffect(() => {
-    if (!open && !isStatic) {
-      return;
-    }
-
-    const setArrowPosition = () => {
-      const tooltipPosition = tooltipRef.current?.getBoundingClientRect();
-      const triggerPosition = triggerRef.current?.getBoundingClientRect();
-
-      if (!tooltipPosition || !triggerPosition) {
-        return;
-      }
-
-      setInferredPlacement(
-        tooltipPosition.top > triggerPosition.top ? 'bottom' : 'top',
-      );
-
-      const triggerLeft = triggerPosition.left;
-      const tooltipLeftToTriggerLeft =
-        triggerLeft - tooltipPosition.left - edgeOffsetInPx;
-
-      setArrowLeftOffset(tooltipLeftToTriggerLeft + triggerPosition.width / 2);
+    const setPositions = () => {
+      setTooltipPosition(tooltipRef.current?.getBoundingClientRect());
+      setTriggerPosition(triggerRef.current?.getBoundingClientRect());
     };
 
     const timeoutId = setTimeout(() => {
-      const frameId = requestAnimationFrame(setArrowPosition);
+      const frameId = requestAnimationFrame(setPositions);
       return () => cancelAnimationFrame(frameId);
-    });
+      // Needs to be slightly less than the animation timeout to update position before showing
+    }, animationTimeout / 2);
 
     return () => clearTimeout(timeoutId);
-  }, [open, isStatic, edgeOffsetInPx]);
+  });
+
+  let inferredPlacement: typeof placement = placement;
+  let arrowLeftOffset = 0;
+
+  if (tooltipPosition && triggerPosition && !isStatic) {
+    inferredPlacement =
+      tooltipPosition.top > triggerPosition.top ? 'bottom' : 'top';
+
+    const edgeOffsetInPx = space[edgeOffset] * grid;
+    const tooltipLeftToTriggerLeft =
+      triggerPosition.left - tooltipPosition.left - edgeOffsetInPx;
+
+    arrowLeftOffset = tooltipLeftToTriggerLeft + triggerPosition.width / 2;
+  }
 
   return (
     <>
@@ -231,7 +233,7 @@ export const TooltipRenderer = ({
         triggerRef={triggerRef}
       >
         <TooltipContent
-          inferredPlacement={isStatic ? placement : inferredPlacement}
+          inferredPlacement={inferredPlacement}
           arrowLeftOffset={arrowLeftOffset}
         >
           {tooltip}

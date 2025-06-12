@@ -1,6 +1,8 @@
 import { createVar, fallbackVar, keyframes, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
+import { animationTimeout } from '../animationTimeout';
+
 import { vars } from '../../../themes/vars.css';
 
 export const backdrop = style({
@@ -46,6 +48,7 @@ export const animation = style({
   animationFillMode: 'both',
   animationTimingFunction: 'ease',
   animationDuration: '0.125s',
+  animationDelay: `${animationTimeout}ms`,
 });
 
 export const delayVisibility = style({
