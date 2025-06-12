@@ -153,9 +153,9 @@ export const CodeBlock = ({
   children: string;
   language?: SupportedLanguage | null;
 }) => {
-  // `null` is the language when a code block contains no longuage tag.
+  // `null` is the language when a code block contains no language tag.
   // We resolve it to a valid language or `undefined` to match the syntax highlighter's `language` type.
-  const resolvedLanguage = language || undefined;
+  const resolvedLanguage = language ?? undefined;
 
   if (resolvedLanguage && !supportedLanguages.includes(resolvedLanguage)) {
     throw new Error(
