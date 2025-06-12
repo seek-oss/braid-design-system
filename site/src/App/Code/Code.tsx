@@ -19,7 +19,7 @@ import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash.memoize';
-import { createUrl } from 'playroom/utils';
+import { createUrl } from 'playroom';
 import { type ReactElement, useState, useEffect, useRef } from 'react';
 import reactElementToJsxString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
