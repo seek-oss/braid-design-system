@@ -53,10 +53,12 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
 
   const rect = element.getBoundingClientRect();
   const { top, bottom, left, right, width } = rect;
-  const { scrollX, scrollY, innerWidth, innerHeight } = window;
+  const { scrollX, scrollY, innerWidth } = window;
 
   return {
-    top: innerHeight - top - scrollY,
+    // For `top`, we subtract this from the dynamic viewport height in `Popover.css.ts`
+    // which can't be accessed from Javascript.
+    top: top + scrollY,
     bottom: bottom + scrollY,
     left: left + scrollX,
     right: innerWidth - right - scrollX,
