@@ -36,29 +36,24 @@ paragraph.isParagraph = true;
 const renderers: Components = {
   h1: ({ children }) => (
     <Box>
-      <Heading level="1">{children}</Heading>
-    </Box>
-  ),
-  h2: ({ children }) => (
-    <Box>
       <Heading level="2">{children}</Heading>
     </Box>
   ),
-  h3: ({ children }) => (
+  h2: ({ children }) => (
     <Box paddingTop="medium">
       <LinkableHeading level="3" label="">
         {Array.isArray(children)
-          ? children.map(({ props }) => props.children).join(' ')
+          ? children.map(({ children: child }) => child).join(' ')
           : children}
       </LinkableHeading>
     </Box>
   ),
-  h4: ({ children }) => (
+  h3: ({ children }) => (
     <Box paddingBottom="small" paddingTop="medium">
       <Heading level="4">{children}</Heading>
     </Box>
   ),
-  h5: ({ children }) => (
+  h4: ({ children }) => (
     <Box paddingBottom="small">
       <Heading level="4">{children}</Heading>
     </Box>
@@ -67,14 +62,22 @@ const renderers: Components = {
   ol: ({ children }) => (
     <TextContext.Provider value={null}>
       <Box paddingBottom="medium">
-        <List space="medium">{children as ReactNodeNoStrings}</List>
+        <List space="medium" type="number">
+          {children as ReactNodeNoStrings}
+        </List>
       </Box>
     </TextContext.Provider>
   ),
   ul: ({ children }) => (
     <TextContext.Provider value={null}>
       <Box paddingBottom="medium">
-        <List space="medium">{children as ReactNodeNoStrings}</List>
+        <List space="medium">
+          {
+            Children.map(children, (child) =>
+              typeof child === 'string' ? null : child,
+            ) as ReactNodeNoStrings
+          }
+        </List>
       </Box>
     </TextContext.Provider>
   ),
@@ -82,7 +85,7 @@ const renderers: Components = {
     const childList = Children.toArray(children);
 
     // @ts-expect-error
-    if (childList[0]?.type?.isParagraph) {
+    if (childList[1]?.type?.isParagraph) {
       return <Stack space="medium">{children as ReactNodeNoStrings}</Stack>;
     }
 
@@ -93,7 +96,7 @@ const renderers: Components = {
   pre: ({ children }) => children,
   code: ({ children, className, ...rest }) => {
     // This property is added by the `checkInlineCode` rehype plugin.
-    if ('inline' in rest && rest.inline) {
+    if ('data-inline' in rest && rest['data-inline']) {
       return <InlineCode>{children as string}</InlineCode>;
     }
     const match = /language-(\w+)/.exec(className ?? '');
@@ -134,11 +137,8 @@ export function Markdown({ children }: MarkdownProps) {
 const checkInlineCode = () =>
   function addProp(tree: any) {
     visit(tree, 'element', (node, _, parent) => {
-      if (parent.tagName === 'pre') {
-        node.properties.inline = false;
-        return;
+      if (node.tagName === 'code' && parent.tagName !== 'pre') {
+        node.properties['data-inline'] = true;
       }
-
-      node.properties.inline = true;
     });
   };
