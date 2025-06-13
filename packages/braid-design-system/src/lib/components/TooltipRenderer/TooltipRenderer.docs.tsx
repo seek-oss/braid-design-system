@@ -13,49 +13,9 @@ import {
   Button,
 } from '..';
 
-import {
-  type TooltipRendererProps,
-  StaticTooltipProvider,
-  TooltipTextDefaultsProvider,
-} from './TooltipRenderer';
+import { offsetSpace, TooltipContent } from './TooltipRenderer';
 
 import { constants } from './TooltipRenderer.css';
-
-const StaticTooltip = ({
-  tooltip,
-  placement,
-  children,
-}: TooltipRendererProps) => {
-  const contentPlaceholder = (
-    <Box userSelect="none" opacity={0} aria-hidden>
-      {children({ triggerProps: {} as any })}
-      <TooltipTextDefaultsProvider>
-        <Box
-          style={{
-            maxWidth: constants.maxWidth,
-            paddingTop: constants.arrowSize,
-          }}
-        >
-          <Box padding="medium">{tooltip}</Box>
-        </Box>
-      </TooltipTextDefaultsProvider>
-    </Box>
-  );
-
-  return (
-    <StaticTooltipProvider>
-      <Box position="relative">
-        {placement === 'top' ? contentPlaceholder : null}
-        <Box position="absolute" left={0} right={0}>
-          <TooltipRenderer tooltip={tooltip} placement={placement}>
-            {children}
-          </TooltipRenderer>
-        </Box>
-        {placement === 'bottom' ? contentPlaceholder : null}
-      </Box>
-    </StaticTooltipProvider>
-  );
-};
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -187,9 +147,12 @@ const docs: ComponentDocs = {
         return {
           code,
           value: (
-            <StaticTooltip
-              placement="bottom"
-              tooltip={
+            <Stack space={offsetSpace} align="center">
+              <IconHelp />
+              <TooltipContent
+                inferredPlacement="bottom"
+                arrowLeftOffset={parseInt(constants.maxWidth, 10) / 2}
+              >
                 <Stack space="medium">
                   <Text size="large">Large text</Text>
                   <Text>
@@ -198,16 +161,8 @@ const docs: ComponentDocs = {
                     the lazy dog.
                   </Text>
                 </Stack>
-              }
-            >
-              {({ triggerProps }) => (
-                <Inline space="small" align="center">
-                  <Box aria-label="Help" {...triggerProps}>
-                    <IconHelp />
-                  </Box>
-                </Inline>
-              )}
-            </StaticTooltip>
+              </TooltipContent>
+            </Stack>
           ),
         };
       },

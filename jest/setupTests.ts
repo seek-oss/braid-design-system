@@ -6,6 +6,28 @@ import { format, TextEncoder, TextDecoder } from 'util';
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
+// The `jsdom` jest environment doesn't provide `ResizeObserver`
+class MockResizeObserver {
+  observe = jest.fn();
+  unobserve = jest.fn();
+  disconnect = jest.fn();
+}
+
+global.ResizeObserver = MockResizeObserver;
+
+class MockIntersectionObserver {
+  root = null;
+  rootMargin = '';
+  thresholds = [];
+
+  observe = jest.fn();
+  unobserve = jest.fn();
+  disconnect = jest.fn();
+  takeRecords = jest.fn();
+}
+
+global.IntersectionObserver = MockIntersectionObserver;
+
 const error = global.console.error;
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
