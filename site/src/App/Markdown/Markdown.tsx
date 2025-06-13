@@ -41,10 +41,10 @@ const renderers: Components = {
   ),
   h2: ({ children }) => (
     <Box paddingTop="medium">
-      <LinkableHeading level="3" label="">
+      <LinkableHeading level="3">
         {Array.isArray(children)
           ? children.map(({ children: child }) => child).join(' ')
-          : children}
+          : (children as string)}
       </LinkableHeading>
     </Box>
   ),
