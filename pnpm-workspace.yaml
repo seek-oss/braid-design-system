@@ -2,3 +2,7 @@ packages:
   - packages/*
   - integration
   - site
+overrides:
+  # 10.0.2 caused a breaking change which was fixed in 10.0.3. This can be removed when dependencies update their version.
+  # @see https://github.com/isaacs/minimatch/issues/257
+  minimatch: 10.0.3
