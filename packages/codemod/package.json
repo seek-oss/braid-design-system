@@ -1,6 +1,7 @@
 {
   "name": "@braid-design-system/codemod",
   "private": true,
+  "type": "module",
   "version": "0.0.0",
   "scripts": {
     "build": "node ./scripts/build.js",
