@@ -54,7 +54,7 @@ export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
   examples: [
     {
-      label: 'Bottom placement, right aligned',
+      label: 'Bottom placement, left aligned',
       Example: () => (
         <Wrapper>
           {({ triggerRef }) => (
