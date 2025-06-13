@@ -104,8 +104,8 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const showPopover = open && triggerPosition;
 
-    const { grid } = useSpace();
-    const transitionThresholdInPx = grid * 2;
+    const transitionThresholdInPx =
+      useSpace().space[styles.transitionThreshold];
 
     const alignmentAnchor = align === 'center' ? 'left' : align;
 
@@ -321,13 +321,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           position="absolute"
           marginTop={actualPlacement === 'bottom' ? offsetSpace : undefined}
           marginBottom={actualPlacement === 'top' ? offsetSpace : undefined}
-          style={
-            triggerPositionVars &&
-            assignInlineVars({
-              ...triggerPositionVars,
-              [styles.transitionThreshold]: `${transitionThresholdInPx}`,
-            })
-          }
+          style={triggerPositionVars && assignInlineVars(triggerPositionVars)}
           className={{
             [styles.popoverPosition]: true,
             [styles.animation]: true,
