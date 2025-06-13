@@ -3,8 +3,6 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { animationTimeout } from '../animationTimeout';
 
-import { vars } from '../../../themes/vars.css';
-
 export const backdrop = style({
   width: '100vw',
   height: '100vh',
@@ -43,10 +41,12 @@ export const invertPlacement = style({
   },
 });
 
+export const transitionThreshold = createVar();
+
 const popupAnimation = keyframes({
   from: {
     opacity: 0,
-    transform: `translateY(${calc(vars.grid).multiply('2').multiply(fallbackVar(placementModifier, '1'))})`,
+    transform: `translateY(${calc(transitionThreshold).multiply('1px').multiply(fallbackVar(placementModifier, '1'))})`,
   },
 });
 

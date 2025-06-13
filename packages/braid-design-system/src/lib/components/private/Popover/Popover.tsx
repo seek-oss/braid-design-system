@@ -15,6 +15,7 @@ import type { ResponsiveSpace } from '../../../css/atoms/atoms';
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
+import { useSpace } from '../../useSpace/useSpace';
 import { animationTimeout } from '../animationTimeout';
 
 import * as styles from './Popover.css';
@@ -103,6 +104,9 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const showPopover = open && triggerPosition;
 
+    const { grid } = useSpace();
+    const transitionThresholdInPx = grid * 2;
+
     const alignmentAnchor = align === 'center' ? 'left' : align;
 
     useEffect(() => {
@@ -185,9 +189,12 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       const { top, bottom } = popoverBoundingRect;
       const distanceFromBottom = window.innerHeight - bottom;
 
-      if (placement === 'top' && top < 0) {
+      if (placement === 'top' && top < transitionThresholdInPx) {
         setActualPlacement('bottom');
-      } else if (placement === 'bottom' && distanceFromBottom < 0) {
+      } else if (
+        placement === 'bottom' &&
+        distanceFromBottom < transitionThresholdInPx
+      ) {
         setActualPlacement('top');
       }
     };
@@ -258,7 +265,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       if (!lockPlacement) {
         handlePlacement();
       }
-    });
+    }, [showPopover]);
 
     const triggerPositionVars = triggerPosition && {
       // Vertical positioning
@@ -314,7 +321,13 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           position="absolute"
           marginTop={actualPlacement === 'bottom' ? offsetSpace : undefined}
           marginBottom={actualPlacement === 'top' ? offsetSpace : undefined}
-          style={triggerPositionVars && assignInlineVars(triggerPositionVars)}
+          style={
+            triggerPositionVars &&
+            assignInlineVars({
+              ...triggerPositionVars,
+              [styles.transitionThreshold]: `${transitionThresholdInPx}`,
+            })
+          }
           className={{
             [styles.popoverPosition]: true,
             [styles.animation]: true,
