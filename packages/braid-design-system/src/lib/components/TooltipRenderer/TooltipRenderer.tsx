@@ -185,7 +185,9 @@ export const TooltipRenderer = ({
   if (tooltipPosition && triggerPosition && !isStatic) {
     inferredPlacement =
       tooltipPosition.top > triggerPosition.top ? 'bottom' : 'top';
+  }
 
+  if (tooltipPosition && triggerPosition) {
     const edgeOffsetInPx = space[edgeOffset] * grid;
     const tooltipLeftToTriggerLeft =
       triggerPosition.left - tooltipPosition.left - edgeOffsetInPx;
