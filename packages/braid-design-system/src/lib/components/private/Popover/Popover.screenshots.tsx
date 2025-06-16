@@ -7,9 +7,11 @@ import { Placeholder } from '../Placeholder/Placeholder';
 
 import { Popover, type PopoverProps } from './Popover';
 
-const placeholderHeight = 44;
+const triggerHeight = 44;
 const triggerWidth = 150;
+
 const popoverWidth = 200;
+const popoverHeight = 88;
 
 const defaultProps = {
   open: true,
@@ -29,19 +31,20 @@ const Wrapper = ({
   justifyContent?: BoxProps['justifyContent'];
 }) => {
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const wrapperPadding = 'xxlarge';
 
   return (
     <Box
       display="flex"
       justifyContent={justifyContent}
-      paddingTop={popoverPlacement === 'top' ? wrapperPadding : undefined}
-      paddingBottom={popoverPlacement === 'bottom' ? wrapperPadding : undefined}
+      style={{
+        [popoverPlacement === 'top' ? 'paddingTop' : 'paddingBottom']:
+          popoverHeight * 1.5,
+      }}
     >
       <Box ref={triggerRef}>
         <Placeholder
           label="Trigger"
-          height={placeholderHeight}
+          height={triggerHeight}
           width={triggerWidth}
         />
       </Box>
@@ -66,7 +69,7 @@ export const screenshots: ComponentScreenshot = {
             >
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -87,7 +90,7 @@ export const screenshots: ComponentScreenshot = {
             >
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -108,7 +111,7 @@ export const screenshots: ComponentScreenshot = {
             >
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -129,7 +132,7 @@ export const screenshots: ComponentScreenshot = {
             >
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -150,7 +153,7 @@ export const screenshots: ComponentScreenshot = {
             >
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -171,7 +174,7 @@ export const screenshots: ComponentScreenshot = {
             >
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -194,7 +197,7 @@ export const screenshots: ComponentScreenshot = {
               >
                 <Placeholder
                   label="Popover"
-                  height={placeholderHeight}
+                  height={popoverHeight}
                   width={popoverWidth}
                 />
               </Popover>
@@ -218,7 +221,7 @@ export const screenshots: ComponentScreenshot = {
               >
                 <Placeholder
                   label="Popover"
-                  height={placeholderHeight}
+                  height={popoverHeight}
                   width={popoverWidth}
                 />
               </Popover>
@@ -242,7 +245,7 @@ export const screenshots: ComponentScreenshot = {
               >
                 <Placeholder
                   label="Popover"
-                  height={placeholderHeight}
+                  height={popoverHeight}
                   width={popoverWidth}
                 />
               </Popover>
@@ -266,7 +269,7 @@ export const screenshots: ComponentScreenshot = {
               >
                 <Placeholder
                   label="Popover"
-                  height={placeholderHeight}
+                  height={popoverHeight}
                   width={popoverWidth}
                 />
               </Popover>
@@ -290,7 +293,7 @@ export const screenshots: ComponentScreenshot = {
               >
                 <Placeholder
                   label="Popover"
-                  height={placeholderHeight}
+                  height={popoverHeight}
                   width={popoverWidth}
                 />
               </Popover>
@@ -314,7 +317,7 @@ export const screenshots: ComponentScreenshot = {
               >
                 <Placeholder
                   label="Popover"
-                  height={placeholderHeight}
+                  height={popoverHeight}
                   width={popoverWidth}
                 />
               </Popover>
@@ -331,7 +334,7 @@ export const screenshots: ComponentScreenshot = {
             <Popover {...defaultProps} triggerRef={triggerRef} align="right">
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -347,7 +350,7 @@ export const screenshots: ComponentScreenshot = {
             <Popover {...defaultProps} triggerRef={triggerRef} align="left">
               <Placeholder
                 label="Popover"
-                height={placeholderHeight}
+                height={popoverHeight}
                 width={popoverWidth}
               />
             </Popover>
@@ -361,7 +364,7 @@ export const screenshots: ComponentScreenshot = {
         <Wrapper>
           {({ triggerRef }) => (
             <Popover {...defaultProps} triggerRef={triggerRef} width="content">
-              <Placeholder label="Popover" height={placeholderHeight} />
+              <Placeholder label="Popover" height={popoverHeight} />
             </Popover>
           )}
         </Wrapper>
@@ -373,7 +376,7 @@ export const screenshots: ComponentScreenshot = {
         <Wrapper>
           {({ triggerRef }) => (
             <Popover {...defaultProps} triggerRef={triggerRef} width="full">
-              <Placeholder label="Popover" height={placeholderHeight} />
+              <Placeholder label="Popover" height={popoverHeight} />
             </Popover>
           )}
         </Wrapper>
