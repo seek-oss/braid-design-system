@@ -102,5 +102,9 @@
   },
   "skuSkipPostInstall": true,
   "skuSkipConfigure": true,
-  "skuSkipValidatePeerDeps": true
+  "skuSkipValidatePeerDeps": true,
+  "devDependencies": {
+    "webpack": "^5.76.0",
+    "webpack-merge": "^6.0.1"
+  }
 }
