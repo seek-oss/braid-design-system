@@ -32,8 +32,6 @@ import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 const {
   MENU_ITEM_UP,
   MENU_ITEM_DOWN,
-  MENU_ITEM_ESCAPE,
-  MENU_ITEM_TAB,
   MENU_ITEM_ENTER,
   MENU_ITEM_SPACE,
   MENU_ITEM_CLICK,
@@ -84,10 +82,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
 
   const onKeyDown = (event: KeyboardEvent<MenuItemElement>) => {
     const targetKey = normalizeKey(event);
-
-    if (targetKey === 'Tab') {
-      dispatch({ type: MENU_ITEM_TAB });
-    }
+    const closeActionKeys = ['Enter', ' '];
 
     const isArrowPress = targetKey.indexOf('Arrow') === 0;
     const isActionKeyPress = targetKey === 'Enter' || targetKey === ' ';
@@ -95,24 +90,18 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
     // This prevents spacebar from scrolling the document,
     // but also prevents the click event from firing so we
     // can programmatically trigger a click event in the
-    // 'onKeyUp' handler. This is to normalise behaviour
+    // 'onKeyDown' handler. This is to normalise behaviour
     // between buttons and links, e.g. to make spacebar
     // activate links, which is not standard behaviour.
     if (isArrowPress || isActionKeyPress) {
       event.preventDefault();
     }
-  };
-
-  const onKeyUp = (event: KeyboardEvent<MenuItemElement>) => {
-    const targetKey = normalizeKey(event);
-    const closeActionKeys = ['Enter', ' ', 'Escape'];
 
     const action: Record<string, Action> = {
       ArrowDown: { type: MENU_ITEM_DOWN },
       ArrowUp: { type: MENU_ITEM_UP },
       Enter: { type: MENU_ITEM_ENTER, formElement, index, id },
       ' ': { type: MENU_ITEM_SPACE, formElement, index, id },
-      Escape: { type: MENU_ITEM_ESCAPE },
     };
 
     if (action[targetKey]) {
@@ -125,10 +114,7 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       menuItemRef.current?.click();
     }
 
-    if (
-      (!formElement && closeActionKeys.indexOf(targetKey) > -1) ||
-      (formElement && targetKey === 'Escape')
-    ) {
+    if (!formElement && closeActionKeys.indexOf(targetKey) > -1) {
       focusTrigger();
     }
   };
@@ -143,7 +129,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
       tabIndex: -1,
       ref: menuItemRef,
       id,
-      onKeyUp,
       onKeyDown,
       onMouseEnter: () => dispatch({ type: MENU_ITEM_HOVER, value: index }),
       onClick: (event: MouseEvent) => {

@@ -22,14 +22,16 @@ describe('TooltipRenderer', () => {
     );
 
     const trigger = getByLabelText('Trigger');
-    const tooltip = getByRole('tooltip', { hidden: true });
+
+    await userEvent.hover(trigger);
+    const tooltip = getByRole('tooltip');
 
     expect(trigger.getAttribute('aria-describedby')).toBe('TEST_ID');
     expect(tooltip.id).toBe('TEST_ID');
   });
 
   it('should handle hover', async () => {
-    const { getByRole, getByLabelText } = render(
+    const { queryByRole, getByRole, getByLabelText } = render(
       <BraidTestProvider themeName="wireframe">
         <Text>
           <TooltipRenderer tooltip={<Text>Tooltip text.</Text>}>
@@ -43,19 +45,18 @@ describe('TooltipRenderer', () => {
       </BraidTestProvider>,
     );
 
-    const tooltip = getByRole('tooltip', { hidden: true });
-    expect(tooltip.hidden).toBe(true);
+    expect(queryByRole('tooltip')).toBeNull();
 
     const trigger = getByLabelText('Trigger');
     await userEvent.hover(trigger);
-    await waitFor(() => expect(tooltip.hidden).toBe(false));
+    await waitFor(() => expect(getByRole('tooltip')).toBeInTheDocument());
 
     await userEvent.unhover(trigger);
-    await waitFor(() => expect(tooltip.hidden).toBe(true));
+    await waitFor(() => expect(queryByRole('tooltip')).toBeNull());
   });
 
   it('should hide on scroll', async () => {
-    const { getByRole, getByLabelText, container } = render(
+    const { queryByRole, getByRole, getByLabelText, container } = render(
       <BraidTestProvider themeName="wireframe">
         <Text>
           <TooltipRenderer tooltip={<Text>Tooltip text.</Text>}>
@@ -69,19 +70,18 @@ describe('TooltipRenderer', () => {
       </BraidTestProvider>,
     );
 
-    const tooltip = getByRole('tooltip', { hidden: true });
-    expect(tooltip.hidden).toBe(true);
+    expect(queryByRole('tooltip')).toBeNull();
 
     const trigger = getByLabelText('Trigger');
     await userEvent.hover(trigger);
-    await waitFor(() => expect(tooltip.hidden).toBe(false));
+    await waitFor(() => expect(getByRole('tooltip')).toBeInTheDocument());
 
     fireEvent.scroll(container);
-    await waitFor(() => expect(tooltip.hidden).toBe(true));
+    await waitFor(() => expect(queryByRole('tooltip')).toBeNull());
   });
 
   it('should handle keyboard focus', async () => {
-    const { getByRole, getByLabelText } = render(
+    const { queryByRole, getByRole, getByLabelText } = render(
       <BraidTestProvider themeName="wireframe">
         <Text>
           <TooltipRenderer tooltip={<Text>Tooltip text.</Text>}>
@@ -95,8 +95,7 @@ describe('TooltipRenderer', () => {
       </BraidTestProvider>,
     );
 
-    const tooltip = getByRole('tooltip', { hidden: true });
-    expect(tooltip.hidden).toBe(true);
+    expect(queryByRole('tooltip')).toBeNull();
 
     const trigger = getByLabelText('Trigger');
 
@@ -105,11 +104,11 @@ describe('TooltipRenderer', () => {
     await userEvent.tab();
 
     expect(trigger).toHaveFocus();
-    await waitFor(() => expect(tooltip.hidden).toBe(false));
+    await waitFor(() => expect(getByRole('tooltip')).toBeInTheDocument());
 
     await userEvent.tab({ shift: true });
 
     expect(document.body).toHaveFocus();
-    await waitFor(() => expect(tooltip.hidden).toBe(true));
+    await waitFor(() => expect(queryByRole('tooltip')).toBeNull());
   });
 });
