@@ -1,0 +1,67 @@
+@keyframes _1vff3zr4 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+._1vff3zr1 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--_1woqyb89);
+}
+._1vff3zr3 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: _1vff3zr4;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+._1vff3zr5 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+.awp8qj1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--awp8qj0);
+}
+.awp8qj2 {
+  --awp8qj0: var(--sdzyo8i);
+}
+.awp8qj3 {
+  --awp8qj0: var(--sdzyo8j);
+}
+.awp8qj4 {
+  --awp8qj0: var(--sdzyo8k);
+}
+.awp8qj5 {
+  --awp8qj0: var(--sdzyo8l);
+}
+.awp8qj6 {
+  --awp8qj0: var(--sdzyo8m);
+}
+.awp8qj7 {
+  --awp8qj0: var(--sdzyo8n);
+}
+.awp8qj8 {
+  --awp8qj0: var(--sdzyo8o);
+}
+.awp8qj9 {
+  --awp8qj0: var(--sdzyo8p);
+}
+.awp8qja {
+  --awp8qj0: var(--sdzyo8q);
+}
+.awp8qjb {
+  --awp8qj0: var(--sdzyo8r);
+}
