@@ -55,6 +55,7 @@ const Wrapper = ({
 
 export const screenshots: ComponentScreenshot = {
   screenshotWidths: [320],
+  screenshotOnlyInWireframe: true,
   examples: [
     {
       label: 'Bottom placement, left aligned',
