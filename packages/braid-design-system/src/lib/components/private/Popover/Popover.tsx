@@ -22,6 +22,9 @@ import * as styles from './Popover.css';
 
 type Placement = 'top' | 'bottom';
 
+// Ensures it matches the highest available zIndex. Not semantically correct
+const zIndex = 'notification';
+
 export interface PopoverProps {
   id?: string;
   role: NonNullable<AllHTMLAttributes<HTMLElement>['role'] | false>;
@@ -305,7 +308,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
               }
             }}
             position="fixed"
-            zIndex="modal"
+            zIndex={zIndex}
             top={0}
             left={0}
             className={styles.backdrop}
@@ -317,7 +320,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           ref={ref}
           role={role || undefined}
           tabIndex={-1}
-          zIndex="modal"
+          zIndex={zIndex}
           position="absolute"
           marginTop={actualPlacement === 'bottom' ? offsetSpace : undefined}
           marginBottom={actualPlacement === 'top' ? offsetSpace : undefined}
