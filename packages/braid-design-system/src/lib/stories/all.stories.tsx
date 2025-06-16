@@ -1,7 +1,7 @@
 import '../../entries/reset';
 
 import { storiesOf } from '@storybook/react';
-import { type ReactNode, Fragment, useId } from 'react';
+import { type ReactNode, Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import type { ComponentScreenshot } from 'site/types';
 
@@ -51,7 +51,6 @@ const RenderExample = ({ example }: RenderExampleProps) => {
     gutter = true,
     Example,
   } = example;
-  const id = useId();
 
   return (
     <div
@@ -74,9 +73,7 @@ const RenderExample = ({ example }: RenderExampleProps) => {
         {label}
       </h4>
       <Box background={background} style={gutter ? { padding: 12 } : undefined}>
-        <Container>
-          {Example ? <Example id={id} handler={noop} /> : null}
-        </Container>
+        <Container>{Example ? <Example handler={noop} /> : null}</Container>
       </Box>
       <div style={{ paddingTop: 18 }}>
         <hr
