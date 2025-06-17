@@ -17,6 +17,12 @@ import {
 
 import Toast, { toastDuration } from './Toast';
 
+// For static Toast examples, keys do not need to be unique
+const defaultProps = {
+  toastKey: `toastKey`,
+  dedupeKey: `dedupeKey`,
+} as const;
+
 const docs: ComponentDocs = {
   category: 'Content',
   Example: ({ showToast }) => {
@@ -40,8 +46,7 @@ const docs: ComponentDocs = {
       value: (
         <Stack space="large" align="center">
           <Toast
-            toastKey="content"
-            dedupeKey="content"
+            {...defaultProps}
             shouldRemove={false}
             onClose={() => {}}
             message="Positive toast"
@@ -199,32 +204,28 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              toastKey="tones_1"
-              dedupeKey="tones_1"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               message="Positive message"
               tone="positive"
             />
             <Toast
-              toastKey="tones_2"
-              dedupeKey="tones_2"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               message="Critical message"
               tone="critical"
             />
             <Toast
-              toastKey="tones_3"
-              dedupeKey="tones_3"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               message="Neutral message"
               tone="neutral"
             />
             <Toast
-              toastKey="tones_4"
-              dedupeKey="tones_4"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               message="Neutral message with icon"
@@ -269,8 +270,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              toastKey="descriptions"
-              dedupeKey="descriptions"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               message="Positive message"
@@ -328,8 +328,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              toastKey="actions"
-              dedupeKey="actions"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               message="Positive message"
@@ -383,8 +382,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              toastKey="actionsWithDescription"
-              dedupeKey="actionsWithDescription"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               message="Positive message"
@@ -443,8 +441,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Stack space="large" align="center">
             <Toast
-              toastKey="dismissingMessage"
-              dedupeKey="dismissingMessage"
+              {...defaultProps}
               shouldRemove={false}
               onClose={() => {}}
               tone="positive"
