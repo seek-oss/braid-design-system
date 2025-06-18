@@ -10,5 +10,5 @@ The `braid-upgrade` command is now no longer apart of the core Braid Design Syst
 #### Example
 
 ```bash
-pnpm --package=@braid-design-system/codemod dlx braid-upgrade v31.11 "**/*.{ts,tsx}
+pnpm dlx @braid-design-system/codemod v31.11 "**/*.{ts,tsx}
 ```
