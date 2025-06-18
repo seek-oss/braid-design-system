@@ -6,19 +6,10 @@
   },
   "targets": {
     "build": {
-      "dependsOn": ["codemod", "generate"],
+      "dependsOn": ["generate"],
       "executor": "nx:run-script",
       "options": {
         "script": "build"
-      }
-    },
-    "codemod": {
-      "dependsOn": ["^build"],
-      "inputs": ["^default"],
-      "outputs": ["{projectRoot}/codemod/dist"],
-      "executor": "nx:run-script",
-      "options": {
-        "script": "codemod"
       }
     },
     "dev": {
@@ -100,6 +91,5 @@
       }
     },
     "validate": {}
-  },
-  "implicitDependencies": ["codemod"]
+  }
 }

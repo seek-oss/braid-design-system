@@ -141,12 +141,8 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "braid-upgrade": "./codemod/bin.js"
-  },
   "files": [
     "CHANGELOG.md",
-    "codemod",
     "color-mode",
     "color-mode/query-param",
     "css",
@@ -166,7 +162,6 @@
   ],
   "scripts": {
     "build": "crackle package",
-    "codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "dev": "crackle dev --shim=none",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
@@ -202,7 +197,6 @@
     "polished": "^4.1.0",
     "react-focus-lock": "^2.9.7",
     "react-is": "^18.2.0",
-    "react-popper-tooltip": "^4.3.1",
     "react-remove-scroll": "^2.7.0",
     "throttle-debounce": "^5.0.2",
     "utility-types": "^3.10.0"
@@ -237,7 +231,7 @@
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
     "cheerio": "1.0.0-rc.11",
-    "chromatic": "^6.24.1",
+    "chromatic": "^12.2.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "html-validate": "^7.1.1",
@@ -247,7 +241,7 @@
     "react-dom": "^19.1.0",
     "react-router-dom": "^6.3.0",
     "sanitize-html": "^2.12.1",
-    "sku": "14.4.0",
+    "sku": "14.5.0",
     "storybook": "7.6.20",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"

@@ -39,7 +39,7 @@ export const OverflowMenu = ({
       )}
       align="right"
       size={size}
-      offsetSpace={size === 'standard' ? 'small' : 'xsmall'}
+      offsetSpace="xxsmall"
       {...menuProps}
     >
       {children}
