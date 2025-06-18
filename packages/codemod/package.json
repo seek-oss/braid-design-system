@@ -9,7 +9,9 @@
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write ."
   },
-  "bin": "dist/index.js",
+  "bin": {
+    "braid-upgrade": "dist/index.js"
+  },
   "files": [
     "dist"
   ],
