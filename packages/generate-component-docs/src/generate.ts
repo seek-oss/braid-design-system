@@ -60,18 +60,20 @@ export interface HookDoc {
 
 const unionAliases = {
   ReactNode: [
-    'string',
-    'number',
-    'false',
-    'true',
-    'ReactElement<any, string | JSXElementConstructor<any>>',
     'Iterable<ReactNode>',
+    'Promise<AwaitedReactNode>',
+    'ReactElement<unknown, string | JSXElementConstructor<any>>',
     'ReactPortal',
+    'false',
+    'number',
+    'string',
+    'true',
+    '{ children: ReactNode }',
   ],
   ReactNodeNoStrings: [
     'false',
     'true',
-    'ReactElement<any, string | JSXElementConstructor<any>>',
+    'ReactElement<unknown, string | JSXElementConstructor<any>>',
     'ReactNodeArray',
   ],
 } as const;
