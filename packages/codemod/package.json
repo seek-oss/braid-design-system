@@ -1,6 +1,5 @@
 {
   "name": "@braid-design-system/codemod",
-  "private": true,
   "version": "0.0.0",
   "scripts": {
     "build": "node ./scripts/build.js",
@@ -10,6 +9,12 @@
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write ."
   },
+  "bin": {
+    "braid-upgrade": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
   "author": "SEEK",
   "license": "MIT",
   "dependencies": {
