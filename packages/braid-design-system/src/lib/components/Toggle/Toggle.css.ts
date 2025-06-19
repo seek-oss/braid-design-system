@@ -3,6 +3,11 @@ import { calc } from '@vanilla-extract/css-utils';
 import { rgba } from 'polished';
 
 import { colorModeStyle } from '../../css/colorModeStyle';
+import {
+  focusOutlineColor,
+  outlineTransition,
+  resetOutline,
+} from '../../css/focusOutline';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { debugTouchable } from '../private/touchable/debugTouchable';
 import { hitArea } from '../private/touchable/hitArea';
@@ -116,6 +121,8 @@ export const slider = styleVariants(sizes, (size) => {
   return {
     height: vars.inlineFieldSize[size],
     width: vars.inlineFieldSize[size],
+    outline: resetOutline,
+    transition: `${vars.transition.fast}, ${outlineTransition}`,
     selectors: {
       [`${realField}:active + ${slideContainer} &`]: {
         transform: `translateX(${calc.negate(anticipation)})`,
@@ -125,6 +132,9 @@ export const slider = styleVariants(sizes, (size) => {
       },
       [`${realField}:active:checked + ${slideContainer} &`]: {
         transform: `translateX(${calc.add(slideDistance, anticipation)})`,
+      },
+      [`${realField}:focus-visible + ${slideContainer} &`]: {
+        outlineColor: focusOutlineColor,
       },
     },
   };
@@ -143,15 +153,6 @@ export const hideBorderOnDarkBackgroundInLightMode = style(
     },
   }),
 );
-
-export const focusOverlay = style({
-  selectors: {
-    [`${realField}:focus + ${slideContainer} &,
-      ${realField}:active + ${slideContainer} &`]: {
-      opacity: 1,
-    },
-  },
-});
 
 export const hoverOverlay = style({
   selectors: {

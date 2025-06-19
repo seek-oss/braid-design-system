@@ -44,14 +44,6 @@ export const hoverOverlay = style({
   },
 });
 
-export const focusOverlay = style({
-  selectors: {
-    [`${root}:focus &`]: {
-      opacity: 1,
-    },
-  },
-});
-
 const minHeightValueForSize = {
   standard: vars.touchableSize,
   small: calc.multiply(vars.touchableSize, 0.8),

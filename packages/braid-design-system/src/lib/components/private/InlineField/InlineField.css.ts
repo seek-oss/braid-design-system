@@ -2,6 +2,11 @@ import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { colorModeStyle } from '../../../css/colorModeStyle';
+import {
+  focusOutlineColor,
+  outlineTransition,
+  resetOutline,
+} from '../../../css/focusOutline';
 import { responsiveStyle } from '../../../css/responsiveStyle';
 import { debugTouchable } from '../touchable/debugTouchable';
 import { hitArea } from '../touchable/hitArea';
@@ -51,11 +56,16 @@ export const realField = style([
 export const fakeField = style({
   height: fieldSize,
   width: fieldSize,
+  outline: resetOutline,
+  transition: outlineTransition,
   selectors: {
     // Overrides `surface` background of checked checkbox
     // to make `formAccent` edge crisp on dark background
     [`${realField}[type="checkbox"]:checked ~ &`]: {
       background: 'transparent',
+    },
+    [`${realField}:focus-visible ~ &`]: {
+      outlineColor: focusOutlineColor,
     },
   },
 });
@@ -91,14 +101,6 @@ export const hideBorderOnDarkBackgroundInLightMode = style(
     },
   }),
 );
-
-export const focusOverlay = style({
-  selectors: {
-    [`${realField}:focus + ${fakeField} > &`]: {
-      opacity: 1,
-    },
-  },
-});
 
 export const hoverOverlay = style({
   selectors: {

@@ -38,6 +38,13 @@ const boxShadow = {
   borderPositiveLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positiveLight}`,
   borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
   borderPromoteLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promoteLight}`,
+  // Note, this does not actually deprecate the value.
+  /**
+   * @deprecated The "outlineFocus" box shadow is deprecated and will be removed in a future release.
+   *
+   * Braid manages focus outlines automatically.
+   * Please consider relying on Braid's outline instead.
+   */
   outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
 };
 
@@ -52,6 +59,12 @@ export type PseudoProperties = keyof typeof pseudoProperties;
 export const unresponsiveProperties = {
   overflow: ['hidden', 'scroll', 'visible', 'auto'],
   userSelect: ['none'],
+  /**
+   * @deprecated The "outline" prop is deprecated and will be removed in a future release.
+   *
+   * Braid manages focus outlines automatically.
+   * If you are removing the outline to create a custom focus style, please consider relying on Braid's outline instead.
+   */
   outline: ['none'],
   opacity: [0],
   zIndex: {
