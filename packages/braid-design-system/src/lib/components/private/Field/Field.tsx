@@ -77,7 +77,6 @@ interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
   width: BoxProps['width'];
   paddingLeft: BoxProps['paddingLeft'];
   paddingRight: BoxProps['paddingRight'];
-  outline: BoxProps['outline'];
   'aria-describedby'?: string;
   'aria-required'?: boolean;
   'aria-label'?: string;
@@ -180,7 +179,6 @@ export const Field = ({
         variant="critical"
         visible={tone === 'critical' && !disabled}
       />
-      <FieldOverlay variant="focus" className={styles.focusOverlay} />
       <FieldOverlay variant="formAccent" className={styles.hoverOverlay} />
     </Fragment>
   );
@@ -222,7 +220,6 @@ export const Field = ({
               paddingLeft: fieldPadding,
               paddingRight: showSecondaryIcon ? undefined : fieldPadding,
               borderRadius: 'standard',
-              outline: 'none',
               'aria-describedby': mergeIds(
                 ariaDescribedBy,
                 message || secondaryMessage ? messageId : undefined,

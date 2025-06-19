@@ -3,7 +3,6 @@ import assert from 'assert';
 import { type ReactNode, useContext } from 'react';
 
 import { Box } from '../Box/Box';
-import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -52,18 +51,10 @@ export const TabPanel = ({
       {...a11y.tabPanelProps({ panelIndex, isSelected })}
       display={isSelected ? undefined : 'none'}
       position="relative"
-      outline="none"
       className={styles.tabPanel}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {isSelected || renderInactive ? children : undefined}
-      <Overlay
-        zIndex={1}
-        boxShadow="outlineFocus"
-        borderRadius="large"
-        className={styles.tabPanelFocusRing}
-        onlyVisibleForKeyboardNavigation
-      />
     </Box>
   );
 };

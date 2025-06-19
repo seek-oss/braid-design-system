@@ -155,7 +155,6 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             <Box
               position="absolute"
               background="surface"
-              transition="fast"
               display="flex"
               alignItems="center"
               justifyContent="center"
@@ -171,11 +170,6 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
                   [styles.hideBorderOnDarkBackgroundInLightMode]:
                     lightness.lightMode === 'dark',
                 }}
-              />
-              <FieldOverlay
-                variant="focus"
-                borderRadius="full"
-                className={styles.focusOverlay}
               />
               <FieldOverlay
                 variant="formAccent"

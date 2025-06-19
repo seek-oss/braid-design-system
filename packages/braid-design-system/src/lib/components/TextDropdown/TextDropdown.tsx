@@ -7,7 +7,6 @@ import { Box } from '../Box/Box';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
 import { IconChevron } from '../icons';
-import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -96,8 +95,7 @@ export function TextDropdown<Value>({
         position="absolute"
         inset={0}
         width="full"
-        opacity={0}
-        className={styles.select}
+        className={[styles.select, styles.focusOverlay]}
         aria-label={label}
         title={label}
         id={resolvedId}
@@ -120,14 +118,6 @@ export function TextDropdown<Value>({
           ))}
         </optgroup>
       </Box>
-
-      <Overlay
-        boxShadow="outlineFocus"
-        borderRadius="standard"
-        transition="fast"
-        onlyVisibleForKeyboardNavigation
-        className={styles.focusOverlay}
-      />
     </Box>
   );
 }

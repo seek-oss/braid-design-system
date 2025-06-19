@@ -50,12 +50,7 @@ export const marginAuto = style({
 });
 
 export const tabFocusRing = style({
-  margin: vars.borderWidth.large,
-  selectors: {
-    [`${tab}:focus &`]: {
-      opacity: 1,
-    },
-  },
+  outlineOffset: calc.negate(vars.borderWidth.large),
 });
 
 export const underlineLeft = createVar();
@@ -93,14 +88,6 @@ export const tabUnderlineActiveDarkMode = style(
 );
 
 export const tabPanel = style({});
-
-export const tabPanelFocusRing = style({
-  selectors: {
-    [`${tabPanel}:focus > &`]: {
-      opacity: 1,
-    },
-  },
-});
 
 export const divider = style({
   height: vars.borderWidth.standard,

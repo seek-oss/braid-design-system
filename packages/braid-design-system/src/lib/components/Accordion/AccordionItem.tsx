@@ -18,12 +18,10 @@ import { Spread } from '../Spread/Spread';
 import { Stack } from '../Stack/Stack';
 import { type TextProps, Text } from '../Text/Text';
 import { IconChevron } from '../icons';
-import { Overlay } from '../private/Overlay/Overlay';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
-import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
 
 import { defaultSize } from './Accordion';
 import {
@@ -142,8 +140,7 @@ export const AccordionItem = ({
           component="button"
           type="button"
           cursor="pointer"
-          className={styles.button}
-          outline="none"
+          className={[styles.button, styles.focusRing]}
           width="full"
           textAlign="left"
           {...buttonProps}
@@ -175,12 +172,6 @@ export const AccordionItem = ({
             </Spread>
           </Box>
         </Box>
-        <Overlay
-          boxShadow="outlineFocus"
-          borderRadius="standard"
-          transition="fast"
-          className={[styles.focusRing, hideFocusRingsClassName]}
-        />
       </Box>
       <Box display={expanded ? 'block' : 'none'} {...contentProps}>
         {children}

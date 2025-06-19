@@ -31,6 +31,7 @@ export const divider = style({
 });
 
 export const grabCursor = style({
+  outline: 'none',
   cursor: 'grab',
 });
 

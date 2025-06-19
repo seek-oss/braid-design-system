@@ -1,6 +1,10 @@
 import { style } from '@vanilla-extract/css';
 
-import { hideFocusRingsDataAttribute } from '../../components/private/hideFocusRings/hideFocusRingsDataAttribute';
+import {
+  focusOutlineColor,
+  outlineTransition,
+  resetOutline,
+} from '../focusOutline';
 
 export const base = style({
   margin: 0,
@@ -11,10 +15,10 @@ export const base = style({
   font: 'inherit',
   verticalAlign: 'baseline',
   WebkitTapHighlightColor: 'transparent',
-  selectors: {
-    [`[${hideFocusRingsDataAttribute}] &`]: {
-      outline: 'none',
-    },
+  outline: resetOutline,
+  transition: outlineTransition,
+  ':focus-visible': {
+    outlineColor: focusOutlineColor,
   },
 });
 

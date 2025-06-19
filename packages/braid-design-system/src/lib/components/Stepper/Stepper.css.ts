@@ -3,8 +3,12 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../css/atoms/atoms';
 import { colorModeStyle } from '../../css/colorModeStyle';
+import {
+  focusOutlineColor,
+  outlineTransition,
+  resetOutline,
+} from '../../css/focusOutline';
 import { responsiveStyle } from '../../css/responsiveStyle';
-import { hideFocusRingsDataAttribute } from '../private/hideFocusRings/hideFocusRingsDataAttribute';
 
 import { vars } from '../../themes/vars.css';
 
@@ -44,6 +48,7 @@ export const tone = {
 };
 
 export const step = style({
+  outline: 'none',
   textAlign: 'left',
   ...colorModeStyle({
     lightMode: {
@@ -166,20 +171,15 @@ export const progressUnfilled = style({
 
 export const indicatorContainer = style({
   width: stepIndicatorSize,
+  outline: resetOutline,
+  transition: `${outlineTransition}, ${vars.transition.fast}`,
   selectors: {
     [`${step}:active &`]: {
       transform: vars.transform.touchable,
     },
-    [`body:not([${hideFocusRingsDataAttribute}]) ${step}:focus &`]: {
+    [`${step}:focus-visible &`]: {
+      outlineColor: focusOutlineColor,
       transform: 'scale(1.2)',
-    },
-  },
-});
-
-export const focusOverlay = style({
-  selectors: {
-    [`${step}:focus &`]: {
-      opacity: 1,
     },
   },
 });
