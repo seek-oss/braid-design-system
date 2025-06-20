@@ -70,7 +70,6 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
     {
       toastKey,
-      vanillaTheme,
       dedupeKey,
       message,
       description,
@@ -147,7 +146,6 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
         ref={ref}
         onMouseEnter={stopTimeout}
         onMouseLeave={startTimeout}
-        className={vanillaTheme}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         <Box boxShadow="large" borderRadius={borderRadius}>
