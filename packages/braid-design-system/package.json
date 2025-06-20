@@ -141,12 +141,8 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "braid-upgrade": "./codemod/bin.js"
-  },
   "files": [
     "CHANGELOG.md",
-    "codemod",
     "color-mode",
     "color-mode/query-param",
     "css",
@@ -166,7 +162,6 @@
   ],
   "scripts": {
     "build": "crackle package",
-    "codemod": "rm -rf ./codemod/dist && cp -r ../codemod/dist ./codemod/dist",
     "dev": "crackle dev --shim=none",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
