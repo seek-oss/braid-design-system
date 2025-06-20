@@ -1,5 +1,50 @@
 # braid-design-system
 
+## 33.8.0
+
+### Minor Changes
+
+- **MenuRenderer, OverflowMenu**: Add automatic menu positioning to ensure menus are placed within viewport bounds. ([#1738](https://github.com/seek-oss/braid-design-system/pull/1738))
+
+  Menus now detect when they would render outside window boundaries and automatically adjust their position.
+  This includes flipping their vertical placement and/or aligning to window edges as needed to ensure menus remain fully visible.
+
+- **Autosuggest**: Add entrance animation to suggestions dropdown. ([#1738](https://github.com/seek-oss/braid-design-system/pull/1738))
+
+- **TooltipRenderer**: Improve tooltip positioning at viewport edges. ([#1738](https://github.com/seek-oss/braid-design-system/pull/1738))
+
+  Subtly adjusts tooltip edge padding and minimum arrow margins when triggered near window boundaries to ensure optimal arrow placement.
+
+- **ButtonIcon**: Add optional `aria-describedby` prop ([#1785](https://github.com/seek-oss/braid-design-system/pull/1785))
+
+  `aria-describedby` can be used in addition to `label` to associate additional descriptive elements with the `ButtonIcon`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon icon={<IconDelete />} label="Delete" aria-describedby="descriptionId" />
+  <Text id="descriptionId">Deleted items will be permanently removed after 30 days.</Text>
+  ```
+
+### Patch Changes
+
+- Ensure the `input` element fills the visual field boundary. ([#1738](https://github.com/seek-oss/braid-design-system/pull/1738))
+
+  Previously, when a field action such as "clear" or "toggle password visibility" was present, the native `input` element would shrink to accommodate.
+
+  This change ensures the `input` does not change size, instead applying padding to prevent the field value from colliding with the action.
+  The native browser styles for features such as [`:autofill`] now visually fill the field.
+
+- **Autosuggest, MenuRenderer, OverflowMenu, TooltipRenderer**: Refactor the internal layout of floating elements for improved consistency. ([#1738](https://github.com/seek-oss/braid-design-system/pull/1738))
+
+- **Dialog, Drawer**: Ensure that only elements outside the `Dialog` or `Drawer` are `aria-hidden` when open ([#1792](https://github.com/seek-oss/braid-design-system/pull/1792))
+
+  Fixes an issue where the close button inside the `Dialog` or `Drawer` was incorrectly inside an `aria-hidden` region.
+
+- **useToast**: Simplify internal logic, refining how the theme is applied to Toasts ([#1797](https://github.com/seek-oss/braid-design-system/pull/1797))
+
+- **Autosuggest**: Ensure suggestions dropdown is visible, even when `Autosuggest` is inside a container with overflow hidden. ([#1738](https://github.com/seek-oss/braid-design-system/pull/1738))
+
 ## 33.7.0
 
 ### Minor Changes
