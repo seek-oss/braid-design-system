@@ -60,15 +60,15 @@ export interface HookDoc {
 
 const unionAliases = {
   ReactNode: [
-    'Iterable<ReactNode>',
-    'Promise<AwaitedReactNode>',
-    'ReactElement<unknown, string | JSXElementConstructor<any>>',
-    'ReactPortal',
-    'false',
-    'number',
     'string',
+    'number',
+    'bigint',
+    'false',
     'true',
-    '{ children: ReactNode }',
+    'ReactElement<unknown, string | JSXElementConstructor<any>>',
+    'Iterable<ReactNode>',
+    'ReactPortal',
+    'Promise<AwaitedReactNode>',
   ],
   ReactNodeNoStrings: [
     'false',
@@ -244,7 +244,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
         checker.typeToString(unionItem),
       );
 
-      if (isEqual(types.slice(0, 7), unionAliases.ReactNode)) {
+      if (isEqual(types.slice(0, 9), unionAliases.ReactNode)) {
         return 'ReactNode';
       }
 

@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "test": "pnpm run generate && jest && test:vitest",
-    "test:vitest": "vitest run",
+    "test": "pnpm run generate && jest",
+    "test:vitest": "pnpm run generate && vitest run",
     "test:integration": "jest --config integration/jest.config.js",
     "dev": "nx run-many --target=dev",
     "start": "nx run site:start",
