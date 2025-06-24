@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "test": "pnpm run generate && jest",
+    "test": "pnpm run generate && jest && test:vitest",
+    "test:vitest": "vitest run",
     "test:integration": "jest --config integration/jest.config.js",
     "dev": "nx run-many --target=dev",
     "start": "nx run site:start",
@@ -85,7 +86,8 @@
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
     "tsx": "^4.19.2",
-    "typescript": "~5.5.4"
+    "typescript": "~5.5.4",
+    "vitest": "^3.2.4"
   },
   "volta": {
     "node": "20.19.2"

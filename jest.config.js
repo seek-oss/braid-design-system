@@ -26,6 +26,7 @@ module.exports = {
   testPathIgnorePatterns: [
     `<rootDir>${slash}(.*${slash})?(dist|node_modules)${slash}`,
     `<rootDir>/integration`, // these have a separate Jest config
+    `\\.vitest\\.*$`,
   ],
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   moduleNameMapper: {
