@@ -13,7 +13,6 @@ export interface InternalToast {
   toastKey: string;
   /** Used to guarantee that only a single toast with a given key is visible at once. */
   dedupeKey: string;
-  vanillaTheme: string;
   tone: 'positive' | 'critical' | 'neutral';
   icon?: ReactElement<UseIconProps> | null;
   message: string;

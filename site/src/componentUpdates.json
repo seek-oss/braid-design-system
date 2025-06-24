@@ -4877,5 +4877,71 @@
         "summary": "Ensure content is not clipped when used inside nested flex containers with stretched sibling elements"
       }
     ]
+  },
+  {
+    "version": "33.8.0",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu**: Add automatic menu positioning to ensure menus are placed within viewport bounds.\n\nMenus now detect when they would render outside window boundaries and automatically adjust their position.\nThis includes flipping their vertical placement and/or aligning to window edges as needed to ensure menus remain fully visible."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "PasswordField",
+          "TextField"
+        ],
+        "summary": "Ensure the `input` element fills the visual field boundary.\n\nPreviously, when a field action such as \"clear\" or \"toggle password visibility\" was present, the native `input` element would shrink to accommodate.\n\nThis change ensures the `input` does not change size, instead applying padding to prevent the field value from colliding with the action.\nThe native browser styles for features such as [`:autofill`] now visually fill the field."
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Add entrance animation to suggestions dropdown."
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer**: Improve tooltip positioning at viewport edges.\n\nSubtly adjusts tooltip edge padding and minimum arrow margins when triggered near window boundaries to ensure optimal arrow placement."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "MenuRenderer",
+          "OverflowMenu",
+          "TooltipRenderer"
+        ],
+        "summary": "**Autosuggest, MenuRenderer, OverflowMenu, TooltipRenderer**: Refactor the internal layout of floating elements for improved consistency."
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer**: Ensure that only elements outside the `Dialog` or `Drawer` are `aria-hidden` when open\n\nFixes an issue where the close button inside the `Dialog` or `Drawer` was incorrectly inside an `aria-hidden` region."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast**: Simplify internal logic, refining how the theme is applied to Toasts"
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon**: Add optional `aria-describedby` prop\n\n`aria-describedby` can be used in addition to `label` to associate additional descriptive elements with the `ButtonIcon`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<ButtonIcon icon={<IconDelete />} label=\"Delete\" aria-describedby=\"descriptionId\" />\n<Text id=\"descriptionId\">Deleted items will be permanently removed after 30 days.</Text>\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Ensure suggestions dropdown is visible, even when `Autosuggest` is inside a container with overflow hidden."
+      }
+    ]
   }
 ]
