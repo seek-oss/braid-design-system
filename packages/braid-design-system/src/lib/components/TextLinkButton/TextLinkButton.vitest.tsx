@@ -1,13 +1,14 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { MouseEvent } from 'react';
+import { vi } from 'vitest';
 
 import { TextLinkButton, Text, Actions } from '..';
 import { BraidTestProvider } from '../../../entries/test';
 
 const createMockClickHandler = () =>
-  jest.fn(
+  vi.fn(
     (event: MouseEvent<HTMLElement>) => event.persist(), // https://reactjs.org/docs/events.html#event-pooling
   );
 
@@ -101,7 +102,7 @@ describe('TextLink', () => {
 
   describe('in Actions', () => {
     beforeAll(() => {
-      jest.spyOn(console, 'warn').mockImplementation();
+      vi.spyOn(console, 'warn').mockImplementation(() => {});
     });
 
     it('should call the click handler on click', async () => {

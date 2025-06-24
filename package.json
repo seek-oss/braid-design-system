@@ -65,6 +65,8 @@
     "@types/sanitize-html": "^2.13.0",
     "@types/webpack-env": "^1.18.5",
     "@vanilla-extract/jest-transform": "^1.1.11",
+    "@vanilla-extract/vite-plugin": "^5.0.7",
+    "@vitejs/plugin-react": "^4.6.0",
     "babel-jest": "^29.7.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^3.1.0",
@@ -83,10 +85,13 @@
     "js-yaml": "^4.1.0",
     "nx": "^15.9.7",
     "prettier": "^3.4.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
     "tsx": "^4.19.2",
     "typescript": "~5.5.4",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
   "volta": {

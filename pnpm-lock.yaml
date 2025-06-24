@@ -76,6 +76,12 @@ importers:
       '@vanilla-extract/jest-transform':
         specifier: ^1.1.11
         version: 1.1.17(babel-plugin-macros@3.1.0)
+      '@vanilla-extract/vite-plugin':
+        specifier: ^5.0.7
+        version: 5.0.7(@types/node@18.19.112)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))(yaml@2.8.0)
+      '@vitejs/plugin-react':
+        specifier: ^4.6.0
+        version: 4.6.0(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
       babel-jest:
         specifier: ^29.7.0
         version: 29.7.0(@babel/core@7.27.4)
@@ -130,6 +136,12 @@ importers:
       prettier:
         specifier: ^3.4.1
         version: 3.5.3
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
       renovate-config-seek:
         specifier: 0.4.0
         version: 0.4.0
@@ -142,6 +154,9 @@ importers:
       typescript:
         specifier: ~5.5.4
         version: 5.5.4
+      vite-tsconfig-paths:
+        specifier: ^5.1.4
+        version: 5.1.4(typescript@5.5.4)(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@18.19.112)(jiti@2.4.2)(jsdom@20.0.3)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
@@ -2505,6 +2520,9 @@ packages:
   '@rolldown/pluginutils@1.0.0-beta.11':
     resolution: {integrity: sha512-L/gAA/hyCSuzTF1ftlzUSI/IKr2POHsv1Dd78GfqkR83KMNuswWD61JxGV2L7nRwBBBSDr6R1gCkdTmoN7W4ag==}
 
+  '@rolldown/pluginutils@1.0.0-beta.19':
+    resolution: {integrity: sha512-3FL3mnMbPu0muGOCaKAhhFEYmqv9eTfPSJRJmANrCwtgK8VuxpsZDGK+m0LYAGoyO8+0j5uRe4PeyPDK1yA/hA==}
+
   '@rollup/rollup-android-arm-eabi@4.43.0':
     resolution: {integrity: sha512-Krjy9awJl6rKbruhQDgivNbD1WuLb8xAclM4IR4cN5pHGAs2oIMMQJEiC3IC/9TZJ+QZkmZhlMO/6MBGxPidpw==}
     cpu: [arm]
@@ -3451,6 +3469,11 @@ packages:
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
 
+  '@vanilla-extract/vite-plugin@5.0.7':
+    resolution: {integrity: sha512-UyUma9HEl2qHl0CFlTwPKU7SkyuOwNQOgLT1yMShjqiQqg8k+9oma2Z5GigGtEUhUDizCAxeR4b4bP9KAviDdQ==}
+    peerDependencies:
+      vite: ^5.0.0 || ^6.0.0
+
   '@vanilla-extract/webpack-plugin@2.3.22':
     resolution: {integrity: sha512-3Cx8DkbX3EeLHGbD049jjj6/bWB0VK4YFfWWsf8VXBI8dgf5SvEef1VfET22IOcT9GzLl8MqfsLr/XSo9iv67Q==}
     peerDependencies:
@@ -3469,6 +3492,12 @@ packages:
 
   '@vitejs/plugin-react@4.5.2':
     resolution: {integrity: sha512-QNVT3/Lxx99nMQWJWF7K4N6apUEuT0KlZA3mx/mVaoGj3smm/8rc8ezz15J1pcbcjDK0V15rpHetVfya08r76Q==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0
+
+  '@vitejs/plugin-react@4.6.0':
+    resolution: {integrity: sha512-5Kgff+m8e2PB+9j51eGHEpn5kUzRKH2Ry0qGoe8ItJg7pqnkPrYPkDQZGgGmTa0EGarHrkjLvOdU3b1fzI8otQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0
@@ -11162,7 +11191,7 @@ snapshots:
       '@crackle/router': 0.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@vanilla-extract/css': 1.17.4(babel-plugin-macros@3.1.0)
       '@vanilla-extract/integration': 8.0.4(babel-plugin-macros@3.1.0)
-      '@vanilla-extract/vite-plugin': 5.0.6(@types/node@18.19.112)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))(yaml@2.8.0)
+      '@vanilla-extract/vite-plugin': 5.0.7(@types/node@18.19.112)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))(yaml@2.8.0)
       '@vitejs/plugin-react-swc': 3.10.2(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
       '@vocab/webpack': 1.2.11(webpack@5.99.9(@swc/core@1.12.1))
       c12: 2.0.4(magicast@0.3.5)
@@ -12184,6 +12213,8 @@ snapshots:
   '@remix-run/router@1.23.0': {}
 
   '@rolldown/pluginutils@1.0.0-beta.11': {}
+
+  '@rolldown/pluginutils@1.0.0-beta.19': {}
 
   '@rollup/rollup-android-arm-eabi@4.43.0':
     optional: true
@@ -13743,6 +13774,26 @@ snapshots:
       - tsx
       - yaml
 
+  '@vanilla-extract/vite-plugin@5.0.7(@types/node@18.19.112)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))(yaml@2.8.0)':
+    dependencies:
+      '@vanilla-extract/compiler': 0.2.3(@types/node@18.19.112)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
+      '@vanilla-extract/integration': 8.0.4(babel-plugin-macros@3.1.0)
+      vite: 6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - babel-plugin-macros
+      - jiti
+      - less
+      - lightningcss
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - tsx
+      - yaml
+
   '@vanilla-extract/webpack-plugin@2.3.22(babel-plugin-macros@3.1.0)(webpack@5.99.9(@swc/core@1.12.1)(esbuild@0.18.20))':
     dependencies:
       '@vanilla-extract/integration': 8.0.4(babel-plugin-macros@3.1.0)
@@ -13783,6 +13834,18 @@ snapshots:
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.27.4)
       '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.27.4)
       '@rolldown/pluginutils': 1.0.0-beta.11
+      '@types/babel__core': 7.20.5
+      react-refresh: 0.17.0
+      vite: 6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@vitejs/plugin-react@4.6.0(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))':
+    dependencies:
+      '@babel/core': 7.27.4
+      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.27.4)
+      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.27.4)
+      '@rolldown/pluginutils': 1.0.0-beta.19
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
       vite: 6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
@@ -21345,6 +21408,10 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
+  tsconfck@3.1.6(typescript@5.5.4):
+    optionalDependencies:
+      typescript: 5.5.4
+
   tsconfck@3.1.6(typescript@5.8.3):
     optionalDependencies:
       typescript: 5.8.3
@@ -21725,6 +21792,17 @@ snapshots:
       minimatch: 10.0.3
       oxc-parser: 0.36.0
       vite: 6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
+
+  vite-tsconfig-paths@5.1.4(typescript@5.5.4)(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)):
+    dependencies:
+      debug: 4.4.1
+      globrex: 0.1.2
+      tsconfck: 3.1.6(typescript@5.5.4)
+    optionalDependencies:
+      vite: 6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   vite-tsconfig-paths@5.1.4(typescript@5.8.3)(vite@6.3.5(@types/node@18.19.112)(jiti@2.4.2)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)):
     dependencies:

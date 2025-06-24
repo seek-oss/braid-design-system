@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import { render } from '@testing-library/react';
 
 import { type LinkComponent, makeLinkComponent, Text, TextLink } from '..';
