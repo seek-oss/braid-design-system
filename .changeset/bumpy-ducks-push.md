@@ -7,7 +7,7 @@
 
 **Note: This is technically a breaking change for local migrations, but we expect minimal impact so are releasing this as a minor version change.**
 
-The `braid-upgrade` command is now no longer apart of the core Braid Design System. Instead, `braid-upgrade` can be run via the `@braid-design-system/codemod` package.
+The `braid-upgrade` command is now no longer part of the `braid-design-system` package. Instead, `braid-upgrade` can be run via the `@braid-design-system/codemod` package.
 
 #### Example
 
