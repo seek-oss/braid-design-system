@@ -362,7 +362,7 @@ importers:
         version: 3.0.3
 
   packages/codemod:
-    dependencies:
+    devDependencies:
       '@babel/core':
         specifier: ^7.26.0
         version: 7.27.4
@@ -375,6 +375,12 @@ importers:
       '@babel/traverse':
         specifier: ^7.23.2
         version: 7.27.4
+      '@types/babel__core':
+        specifier: ^7.20.1
+        version: 7.20.5
+      '@types/babel__traverse':
+        specifier: ^7.20.1
+        version: 7.20.7
       '@types/cli-progress':
         specifier: ^3.11.0
         version: 3.11.6
@@ -384,6 +390,9 @@ importers:
       '@types/workerpool':
         specifier: ^6.1.0
         version: 6.4.7
+      babel-plugin-tester:
+        specifier: ^11.0.4
+        version: 11.0.4(@babel/core@7.27.4)
       chalk:
         specifier: ^5.0.1
         version: 5.4.1
@@ -417,16 +426,6 @@ importers:
       workerpool:
         specifier: ^6.2.1
         version: 6.5.1
-    devDependencies:
-      '@types/babel__core':
-        specifier: ^7.20.1
-        version: 7.20.5
-      '@types/babel__traverse':
-        specifier: ^7.20.1
-        version: 7.20.7
-      babel-plugin-tester:
-        specifier: ^11.0.4
-        version: 11.0.4(@babel/core@7.27.4)
       yoga-layout-prebuilt:
         specifier: ^1.10.0
         version: 1.10.0(patch_hash=bohigvh5hpnbocmxkl4e5ainua)
