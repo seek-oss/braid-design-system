@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import {
   type RenderResult,
   render,
@@ -29,8 +28,8 @@ interface MenuTestSuiteParams {
 
 export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
   function renderMenu() {
-    const menuItemHandler = jest.fn();
-    const parentHandler = jest.fn();
+    const menuItemHandler = vi.fn();
+    const parentHandler = vi.fn();
 
     const TestCase = ({
       openHandler,
@@ -76,8 +75,8 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
       );
     };
 
-    const defaultOpen = jest.fn();
-    const defaultClose = jest.fn();
+    const defaultOpen = vi.fn();
+    const defaultClose = vi.fn();
     const { queryByRole, getByRole, getAllByRole, rerender } = render(
       <TestCase openHandler={defaultOpen} closeHandler={defaultClose} />,
     );
@@ -594,7 +593,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         const menuButton = getByRole('button');
 
-        const newOpen = jest.fn();
+        const newOpen = vi.fn();
         await userEvent.click(menuButton);
         expect(openHandler).toHaveBeenNthCalledWith(1);
         rerender({ openHandler: newOpen });
@@ -606,7 +605,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         const menuButton = getByRole('button');
 
-        const newClose = jest.fn();
+        const newClose = vi.fn();
         await userEvent.click(menuButton);
         await userEvent.keyboard('{Escape}');
         expect(closeHandler).toHaveBeenCalledTimes(1);

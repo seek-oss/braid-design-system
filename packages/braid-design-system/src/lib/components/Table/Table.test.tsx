@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import { createRef } from 'react';

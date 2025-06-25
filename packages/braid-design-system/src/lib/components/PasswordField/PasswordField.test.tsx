@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -7,7 +6,7 @@ import { BraidTestProvider } from '../../../entries/test';
 
 describe('PasswordField', () => {
   it('should render with password hidden', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField label="Password" value="" onChange={onChange} />
@@ -20,7 +19,7 @@ describe('PasswordField', () => {
   });
 
   it('should show the password as plain text when visibility button clicked', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByRole, getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField label="Password" value="" onChange={onChange} />
@@ -35,8 +34,8 @@ describe('PasswordField', () => {
   });
 
   it('should call the onVisibilityToggle handler with the new visibility state when toggled', async () => {
-    const onChange = jest.fn();
-    const onVisibilityToggle = jest.fn();
+    const onChange = vi.fn();
+    const onVisibilityToggle = vi.fn();
     const { getByRole } = render(
       <BraidTestProvider>
         <PasswordField
@@ -57,7 +56,7 @@ describe('PasswordField', () => {
   });
 
   it('should not show the visibility toggle button when disabled', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { queryByRole } = render(
       <BraidTestProvider>
         <PasswordField label="Password" disabled value="" onChange={onChange} />

@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -62,7 +61,7 @@ describe('AccordionItem', () => {
   });
 
   it('should support listening to toggle events while uncontrolled', async () => {
-    const toggleHander = jest.fn();
+    const toggleHander = vi.fn();
 
     const { getByRole } = render(
       <BraidTestProvider>

@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render, getAllByRole } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -7,7 +6,7 @@ import { BraidTestProvider } from '../../../entries/test';
 
 describe('MonthPicker (Double dropdown)', () => {
   it('should render years descending by default', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByPlaceholderText } = render(
       <BraidTestProvider>
         <MonthPicker
@@ -29,7 +28,7 @@ describe('MonthPicker (Double dropdown)', () => {
   });
 
   it('should render years ascending when requested', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByPlaceholderText } = render(
       <BraidTestProvider>
         <MonthPicker

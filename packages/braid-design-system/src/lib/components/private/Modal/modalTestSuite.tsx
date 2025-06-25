@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import {
   render,
   waitForElementToBeRemoved,
@@ -56,7 +55,7 @@ export const modalTestSuite = (
   };
 
   function renderTestCase({
-    onClose = jest.fn(),
+    onClose = vi.fn(),
   }: Optional<Pick<ModalProps, 'onClose'>> = {}) {
     return {
       ...render(
@@ -193,7 +192,7 @@ export const modalTestSuite = (
     });
 
     it('should not close if onClose returns `false`', async () => {
-      const onClose = jest
+      const onClose = vi
         .fn()
         .mockReturnValueOnce(false)
         .mockReturnValueOnce(undefined);

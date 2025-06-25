@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 
 import { type LinkComponent, makeLinkComponent, Text, TextLink } from '..';

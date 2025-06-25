@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`source.macro 1. smoke test: 1. smoke test 1`] = `
+exports[`source.macro > 1. smoke test > 1. smoke test 1`] = `
 
 
 import source from './source.macro';
@@ -23,7 +23,7 @@ const result = {
 
 `;
 
-exports[`source.macro 2. react component: 2. react component 1`] = `
+exports[`source.macro > 2. react component > 2. react component 1`] = `
 
 
 import source from './source.macro';
@@ -42,7 +42,7 @@ const result = {
 
 `;
 
-exports[`source.macro 3. ignores types: 3. ignores types 1`] = `
+exports[`source.macro > 3. ignores types > 3. ignores types 1`] = `
 
 
 import type { Source } from './source.macro';
@@ -56,7 +56,7 @@ const foo = 'bar';
 
 `;
 
-exports[`source.macro 4. with new lines: 4. with new lines 1`] = `
+exports[`source.macro > 4. with new lines > 4. with new lines 1`] = `
 
 
 import source from './source.macro';
@@ -97,7 +97,7 @@ const options = {
 
 `;
 
-exports[`source.macro 5. code only: 5. code only 1`] = `
+exports[`source.macro > 5. code only > 5. code only 1`] = `
 
 
 import source from './source.macro';
@@ -113,7 +113,7 @@ const result = '{\\n  hello: () => ({ world: "!", foo: "bar" })\\n}';
 
 `;
 
-exports[`source.macro 6. JSX with playroom state: 6. JSX with playroom state 1`] = `
+exports[`source.macro > 6. JSX with playroom state > 6. JSX with playroom state 1`] = `
 
 
 import source from './source.macro';
@@ -204,7 +204,7 @@ const result = (
 
 `;
 
-exports[`source.macro 7. allows disabling prettier formatting: 7. allows disabling prettier formatting 1`] = `
+exports[`source.macro > 7. allows disabling prettier formatting > 7. allows disabling prettier formatting 1`] = `
 
 
 import source from './source.macro';
