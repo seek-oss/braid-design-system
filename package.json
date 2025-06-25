@@ -3,8 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "test": "pnpm run generate && jest",
+    "test": "pnpm run generate && vitest run && jest",
+    "test:jest": "pnpm run generate && jest",
     "test:integration": "jest --config integration/jest.config.js",
+    "test:vitest": "pnpm run generate && vitest run",
     "dev": "nx run-many --target=dev",
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
@@ -85,7 +87,8 @@
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
     "tsx": "^4.19.2",
-    "typescript": "~5.5.4"
+    "typescript": "~5.5.4",
+    "vitest": "^3.2.4"
   },
   "volta": {
     "node": "20.19.2"
@@ -93,8 +96,7 @@
   "packageManager": "pnpm@9.15.9",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom": "patches/panzoom.patch",
-      "yoga-layout-prebuilt@1.10.0": "patches/yoga-layout-prebuilt@1.10.0.patch"
+      "panzoom": "patches/panzoom.patch"
     }
   },
   "manypkg": {

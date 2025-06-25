@@ -17,5 +17,5 @@
       "braid-src/*": ["./packages/braid-design-system/src/*"]
     }
   },
-  "include": ["./integration", "./scripts"]
+  "include": ["./integration", "./scripts", "vitest.config.ts"]
 }
