@@ -18,5 +18,5 @@
     },
     "types": ["vitest/globals"]
   },
-  "include": ["./integration", "./scripts", "vitest.config.ts"]
+  "include": ["./integration", "./scripts"]
 }

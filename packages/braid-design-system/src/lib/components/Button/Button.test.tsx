@@ -1,4 +1,3 @@
-import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 

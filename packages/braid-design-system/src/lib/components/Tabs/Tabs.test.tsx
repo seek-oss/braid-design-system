@@ -1,4 +1,3 @@
-import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState, Fragment } from 'react';
@@ -14,14 +13,6 @@ import {
   IconHome,
 } from '..';
 import { BraidTestProvider } from '../../../entries/test';
-
-// We have the test environment set to `jsdom`, but the actual code runs in Node.js.
-// That means we will get the error that "useLayoutEffect does nothing on the server".
-// To avoid the error we need to manually switch to `useEffect`.
-// ! See if this breaks
-// vi.mock('../../hooks/useIsomorphicLayoutEffect', () => ({
-//   useIsomorphicLayoutEffect: vi.('react').useEffect,
-// }));
 
 const TestPanel = ({ children }: { children: string }) => {
   const [checked, setChecked] = useState(false);

@@ -1,7 +1,6 @@
 ignores:
   - '@crackle/cli'
   - '@testing-library/dom'
-  - '@types/jest'
   - assert
   # internal
   - braid-src

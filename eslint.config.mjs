@@ -96,13 +96,14 @@ export default [
       ],
     },
   },
-  // Lint non-project ts files, e.g. jest and storybook config
+  // Lint non-project ts files, e.g. vitest and storybook config
   {
     languageOptions: {
       parserOptions: {
         projectService: {
           allowDefaultProject: [
-            'jest/setupTests.ts',
+            'vitest.config.ts',
+            '*/vitest.config.ts',
             'packages/braid-design-system/.storybook/*.ts',
           ],
         },
