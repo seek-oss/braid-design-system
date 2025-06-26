@@ -19486,5 +19486,5 @@ For more detail on the specific changes in this release, please read on.
   <Heading component="div" level="1">
     <IconDelete />
   </Heading>
-</Stack>`,value:n||(n=(0,l.jsx)(i.B,{space:"none",align:"center",children:(0,l.jsx)(s.D,{component:"div",level:"1",children:(0,l.jsx)(r.x,{})})}))}),alternatives:[],additional:[...o.iconDocumentation]}},99834:(e,t,a)=>{"use strict";a.d(t,{U:()=>n}),a(45488);let n=[0,-1]}},e=>{e.O(0,[400],()=>e(e.s=48562)),e.O()}]);
-//# sourceMappingURL=main-5ad6935298dd93c931f8.js.map
+</Stack>`,value:n||(n=(0,l.jsx)(i.B,{space:"none",align:"center",children:(0,l.jsx)(s.D,{component:"div",level:"1",children:(0,l.jsx)(r.x,{})})}))}),alternatives:[],additional:[...o.iconDocumentation]}},99834:(e,t,a)=>{"use strict";a.d(t,{U:()=>n}),a(45488);let n=[0,-1]}},e=>{e.O(0,[716],()=>e(e.s=55582)),e.O()}]);
+//# sourceMappingURL=main-a39570422046f17d5d92.js.map
