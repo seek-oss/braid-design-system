@@ -9,18 +9,46 @@ import { breakpointContext } from '../BraidProvider/BreakpointContext';
 import { BraidTestProviderContext } from './BraidTestProviderContext';
 
 /**
- * Mocking for `jsdom` which doesn't support `scrollIntoView`.
- * Can remove this if/when `jsdom` adds a stub for `scrollIntoView`.
- *
- * GitHub issue: https://github.com/jsdom/jsdom/issues/1695
- * Pull request: https://github.com/jsdom/jsdom/pull/3639
+ * Mocking APIs missing from  `jsdom` environment.
  */
 if (
   typeof navigator !== 'undefined' &&
   navigator?.userAgent?.includes('jsdom')
 ) {
+  /**
+   * Mocking `scrollIntoView` API.
+   *
+   * Can remove this if/when `jsdom` adds a stub for `scrollIntoView`.
+   * GitHub issue: https://github.com/jsdom/jsdom/issues/1695
+   * Pull request: https://github.com/jsdom/jsdom/pull/3639
+   */
   window.HTMLElement.prototype.scrollIntoView =
     window.HTMLElement.prototype.scrollIntoView || (() => {});
+
+  /**
+   * Mocking `ResizeObserver` API.
+   */
+  class MockResizeObserver {
+    observe = jest.fn();
+    unobserve = jest.fn();
+    disconnect = jest.fn();
+  }
+  global.ResizeObserver = MockResizeObserver;
+
+  /**
+   * Mocking `IntersectionObserver` API.
+   */
+  class MockIntersectionObserver {
+    root = null;
+    rootMargin = '';
+    thresholds = [];
+
+    observe = jest.fn();
+    unobserve = jest.fn();
+    disconnect = jest.fn();
+    takeRecords = jest.fn();
+  }
+  global.IntersectionObserver = MockIntersectionObserver;
 }
 
 interface BraidTestProviderProps
