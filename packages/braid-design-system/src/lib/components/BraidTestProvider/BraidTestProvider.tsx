@@ -33,7 +33,7 @@ if (
     unobserve = jest.fn();
     disconnect = jest.fn();
   }
-  global.ResizeObserver = MockResizeObserver;
+  window.ResizeObserver = MockResizeObserver;
 
   /**
    * Mocking `IntersectionObserver` API.
@@ -48,7 +48,7 @@ if (
     disconnect = jest.fn();
     takeRecords = jest.fn();
   }
-  global.IntersectionObserver = MockIntersectionObserver;
+  window.IntersectionObserver = MockIntersectionObserver;
 }
 
 interface BraidTestProviderProps
