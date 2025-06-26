@@ -40,7 +40,7 @@ export const Overlay = ({
     transition={transition}
     inset={0}
     opacity={!visible ? 0 : undefined}
-    className={[className]}
+    className={className}
   >
     {children}
   </Box>
