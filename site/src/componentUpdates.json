@@ -4943,5 +4943,16 @@
         "summary": "**Autosuggest**: Ensure suggestions dropdown is visible, even when `Autosuggest` is inside a container with overflow hidden."
       }
     ]
+  },
+  {
+    "version": "33.9.0",
+    "updates": [
+      {
+        "updated": [
+          "BraidTestProvider"
+        ],
+        "summary": "**BraidTestProvider:** Provide `ResizeObserver` & `IntersectionObserver` stubs to jsdom\n\nFixes an issue where rendering certain Braid components within a test environment could throw errors due to missing APIs in jsdom, causing tests to fail with the following error:\n\n```\nReferenceError: IntersectionObserver is not defined\n```"
+      }
+    ]
   }
 ]
