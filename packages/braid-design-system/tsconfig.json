@@ -1,11 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "vitest/globals",
-      "@testing-library/jest-dom/vitest",
-      "html-validate/vitest"
-    ]
+    "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
   },
   "include": ["./src", "./scripts", "./*.ts"]
 }
