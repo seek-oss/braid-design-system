@@ -90,7 +90,8 @@
   "packageManager": "pnpm@9.15.9",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom": "patches/panzoom.patch"
+      "panzoom": "patches/panzoom.patch",
+      "html-validate@9.7.0": "patches/html-validate@9.7.0.patch"
     }
   },
   "manypkg": {
