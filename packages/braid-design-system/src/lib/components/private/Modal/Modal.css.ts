@@ -149,10 +149,6 @@ export const headingRoot = style({
   overflowWrap: 'break-word',
 });
 
-export const headingFocus = atoms({
-  borderRadius: 'small',
-});
-
 export const closeIconOffset = style({
   top: '-5px',
   right: '-5px',
