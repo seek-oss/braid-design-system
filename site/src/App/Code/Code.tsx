@@ -23,6 +23,7 @@ import { createUrl } from 'playroom';
 import { type ReactElement, useState, useEffect, useRef } from 'react';
 import reactElementToJsxString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
@@ -37,11 +38,11 @@ import * as styles from './Code.css';
 type ReactElementOrString = ReactElement | string;
 
 // `jsx` and `tsx` implicitly register `js` and `ts`
-for (const [name, language] of Object.entries({ diff, jsx, tsx })) {
+for (const [name, language] of Object.entries({ diff, jsx, tsx, bash })) {
   SyntaxHighlighter.registerLanguage(name, language);
 }
 
-const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx'] as const;
+const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx', 'bash'] as const;
 export type SupportedLanguage = (typeof supportedLanguages)[number];
 
 export const formatSnippet = memoize((snippet: string) => {
