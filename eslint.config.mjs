@@ -101,11 +101,7 @@ export default [
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: [
-            'vitest.config.ts',
-            '*/vitest.config.ts',
-            'packages/braid-design-system/.storybook/*.ts',
-          ],
+          allowDefaultProject: ['packages/braid-design-system/.storybook/*.ts'],
         },
       },
     },
