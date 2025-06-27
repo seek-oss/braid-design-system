@@ -71,7 +71,7 @@ export const Placeholder = ({
       display="flex"
       alignItems="center"
       justifyContent="center"
-      borderRadius={shape === 'round' ? 'full' : undefined}
+      borderRadius={shape === 'round' ? 'full' : 'xlarge'}
       className={[
         wireframe.vanillaTheme,
         styles.lightTheme[lightness.lightMode],
