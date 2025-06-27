@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
@@ -55,7 +54,7 @@ describe('Disclosure', () => {
   });
 
   it('should support listening to toggle events while uncontrolled', async () => {
-    const toggleHander = jest.fn();
+    const toggleHander = vi.fn();
 
     const { getByRole } = render(
       <BraidTestProvider>

@@ -140,7 +140,7 @@ export const TooltipRenderer = ({
 
     const handleScroll = () => {
       // onScreen.current will always be null during testing,
-      // as IntersectionObserver is mocked for Jest
+      // as IntersectionObserver is mocked for tests
       if (onScreen.current || onScreen.current === null) {
         setOpen(false);
       }

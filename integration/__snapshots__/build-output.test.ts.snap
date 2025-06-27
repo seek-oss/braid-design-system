@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`build Vanilla Extract files imported as side-effects 1`] = `
+exports[`build > Vanilla Extract files imported as side-effects 1`] = `
 ### dist/lib/components/private/hideFocusRings/hideFocusRings.mjs:
 1 │ import "./hideFocusRings.css.mjs";
 
@@ -24,7 +24,7 @@ exports[`build Vanilla Extract files imported as side-effects 1`] = `
 2 │ import "./lib/css/atoms/sprinkles.css.mjs";
 `;
 
-exports[`build side-effects from dist 1`] = `
+exports[`build > side-effects from dist 1`] = `
 [
   "dist/lib/components/BraidProvider/BraidProvider.cjs",
   "dist/lib/components/BraidProvider/BraidProvider.mjs",
@@ -37,7 +37,7 @@ exports[`build side-effects from dist 1`] = `
 ]
 `;
 
-exports[`build side-effects from src 1`] = `
+exports[`build > side-effects from src 1`] = `
 [
   "src/entries/playroom/components.ts",
   "src/entries/reset.ts",

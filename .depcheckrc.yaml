@@ -1,11 +1,13 @@
 ignores:
   - '@crackle/cli'
   - '@testing-library/dom'
-  - '@types/jest'
   - assert
-  - yoga-layout-prebuilt
   # internal
   - braid-src
   - site
   # Used for generate-component-docs bin
   - tsx
+  # Used for testing
+  - vitest
+  - \@vitejs/plugin-react
+  - \@vanilla-extract/vite-plugin

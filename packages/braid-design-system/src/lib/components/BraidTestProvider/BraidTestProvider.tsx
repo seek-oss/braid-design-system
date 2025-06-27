@@ -8,6 +8,8 @@ import { breakpointContext } from '../BraidProvider/BreakpointContext';
 
 import { BraidTestProviderContext } from './BraidTestProviderContext';
 
+const noop = () => {};
+
 /**
  * Mocking APIs missing from  `jsdom` environment.
  */
@@ -29,9 +31,9 @@ if (
    * Mocking `ResizeObserver` API.
    */
   class MockResizeObserver {
-    observe = jest.fn();
-    unobserve = jest.fn();
-    disconnect = jest.fn();
+    observe = noop;
+    unobserve = noop;
+    disconnect = noop;
   }
   window.ResizeObserver = MockResizeObserver;
 
@@ -43,10 +45,10 @@ if (
     rootMargin = '';
     thresholds = [];
 
-    observe = jest.fn();
-    unobserve = jest.fn();
-    disconnect = jest.fn();
-    takeRecords = jest.fn();
+    observe = noop;
+    unobserve = noop;
+    disconnect = noop;
+    takeRecords = noop;
   }
   window.IntersectionObserver = MockIntersectionObserver;
 }

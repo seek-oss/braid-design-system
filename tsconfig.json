@@ -15,7 +15,8 @@
     "paths": {
       "site/*": ["./site/src/*"],
       "braid-src/*": ["./packages/braid-design-system/src/*"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
-  "include": ["./integration", "./scripts"]
+  "include": ["./integration", "./scripts", "vitest.config.ts"]
 }

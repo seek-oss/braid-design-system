@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render, act, waitFor, getByTestId } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { ReactNode } from 'react';
@@ -89,7 +88,7 @@ describe('useToast', () => {
   it('should handle actions', async () => {
     const { showToast, getAction, queryAllToasts } = renderTestApp();
 
-    const actionClickHandler = jest.fn();
+    const actionClickHandler = vi.fn();
     const actionLabel = 'My action';
 
     showToast({
@@ -114,9 +113,9 @@ describe('useToast', () => {
     const { showToast, getAction, queryAllToasts, findToastByMessage } =
       renderTestApp();
 
-    const actionClickHandler1 = jest.fn();
+    const actionClickHandler1 = vi.fn();
     const actionLabel1 = 'Action 1';
-    const actionClickHandler2 = jest.fn();
+    const actionClickHandler2 = vi.fn();
     const actionLabel2 = 'Action 2';
 
     showToast({

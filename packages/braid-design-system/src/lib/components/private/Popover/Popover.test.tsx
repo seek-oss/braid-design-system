@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useRef, useState } from 'react';
@@ -54,7 +53,7 @@ function renderPopover({
     );
   };
 
-  const defaultClose = jest.fn();
+  const defaultClose = vi.fn();
   const { getByTestId, queryByRole, getByRole, rerender } = render(
     <TestCase closeHandler={defaultClose} />,
   );
@@ -150,7 +149,7 @@ describe('Popover', () => {
       const popover = getByRole('menu');
       expect(popover).toBeInTheDocument();
 
-      const newClose = jest.fn();
+      const newClose = vi.fn();
       await userEvent.keyboard('{Escape}');
       expect(closeHandler).toHaveBeenCalledTimes(1);
       rerender({ closeHandler: newClose });

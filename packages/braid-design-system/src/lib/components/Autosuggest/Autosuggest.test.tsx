@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type Dispatch, useState, useRef, useEffect } from 'react';
@@ -28,7 +27,7 @@ function renderAutosuggest<Value>({
   | 'onBlur'
   | 'tabIndex'
 >) {
-  const changeHandler = jest.fn();
+  const changeHandler = vi.fn();
 
   type Suggestions = AutosuggestProps<Value>['suggestions'];
 
@@ -264,8 +263,8 @@ describe('Autosuggest', () => {
   });
 
   it('should pass through focus and blur events', async () => {
-    const focusHandler = jest.fn();
-    const blurHandler = jest.fn();
+    const focusHandler = vi.fn();
+    const blurHandler = vi.fn();
     const { input } = renderAutosuggest({
       value: { text: '' },
       suggestions: [
@@ -286,7 +285,7 @@ describe('Autosuggest', () => {
   });
 
   it("should call 'onClear' handler when clearing suggestions", async () => {
-    const clearHandler = jest.fn();
+    const clearHandler = vi.fn();
     let suggestions = [
       {
         text: 'Apples',

@@ -6,9 +6,12 @@
  * ----------------------------------------------------------------------
  */
 
+import 'html-validate/vitest';
+import '@testing-library/jest-dom/vitest';
+
 import { format, TextEncoder, TextDecoder } from 'util';
 
-// The `jsdom` jest environment doesn't expose `TextEncoder` or `TextDecoder`
+// The `jsdom` environment doesn't expose `TextEncoder` or `TextDecoder`
 // AFAIK this hack was never required when braid was using sku to run tests,
 // so I'm not sure why it has suddenly become an issue
 global.TextEncoder = TextEncoder;
@@ -27,4 +30,4 @@ global.console.error = (message: any, ...restArgs: any[]) => {
   );
 };
 
-jest.setTimeout(30000);
+vi.setConfig({ testTimeout: 30000 });

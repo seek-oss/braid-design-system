@@ -1,6 +1,5 @@
 import assert from 'assert';
 
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -137,7 +136,7 @@ describe('Stepper', () => {
     });
 
     it('should implement roving focus when `onStepClick` provided', async () => {
-      const onStepClick = jest.fn();
+      const onStepClick = vi.fn();
       const { currentStep, steps, siblingInputs } = renderLinearStepper({
         onStepClick,
       });
@@ -282,7 +281,7 @@ describe('Stepper', () => {
     });
 
     it('should implement roving focus when `onStepClick` provided', async () => {
-      const onStepClick = jest.fn();
+      const onStepClick = vi.fn();
       const { currentStep, steps, siblingInputs } = renderNonLinearStepper({
         activeStep: 3,
         onStepClick,
