@@ -1,5 +1,31 @@
 # braid-design-system
 
+## 33.9.0
+
+### Minor Changes
+
+- @braid-design-system/codemod has been moved to its own package. ([#1801](https://github.com/seek-oss/braid-design-system/pull/1801))
+
+  **Note: This is technically a breaking change for local migrations, but we expect minimal impact so are releasing this as a minor version change.**
+
+  The `braid-upgrade` command is now no longer part of the `braid-design-system` package. Instead, `braid-upgrade` can be run via the `@braid-design-system/codemod` package.
+
+  #### Example
+
+  ```bash
+  pnpm dlx @braid-design-system/codemod v31.11 "**/*.{ts,tsx}"
+  ```
+
+### Patch Changes
+
+- **BraidTestProvider:** Provide `ResizeObserver` & `IntersectionObserver` stubs to jsdom ([#1811](https://github.com/seek-oss/braid-design-system/pull/1811))
+
+  Fixes an issue where rendering certain Braid components within a test environment could throw errors due to missing APIs in jsdom, causing tests to fail with the following error:
+
+  ```
+  ReferenceError: IntersectionObserver is not defined
+  ```
+
 ## 33.8.0
 
 ### Minor Changes
