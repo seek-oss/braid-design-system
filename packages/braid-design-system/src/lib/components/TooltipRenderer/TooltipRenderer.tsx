@@ -164,6 +164,38 @@ export const TooltipRenderer = ({
     };
   }, []);
 
+  useEffect(() => {
+    const toggleTooltip = () => setOpen(!open);
+    const openTooltip = () => setOpen(true);
+    const closeTooltip = () => setOpen(false);
+
+    if (triggerRef.current) {
+      triggerRef.current.addEventListener('blur', closeTooltip);
+
+      if (isMobileDevice) {
+        triggerRef.current.addEventListener('click', toggleTooltip);
+      } else {
+        triggerRef.current.addEventListener('focus', openTooltip);
+        triggerRef.current.addEventListener('mouseenter', openTooltip);
+        triggerRef.current.addEventListener('mouseleave', closeTooltip);
+      }
+    }
+
+    return () => {
+      if (triggerRef.current) {
+        triggerRef.current.removeEventListener('blur', closeTooltip);
+
+        if (isMobileDevice) {
+          triggerRef.current.removeEventListener('click', toggleTooltip);
+        } else {
+          triggerRef.current.removeEventListener('focus', openTooltip);
+          triggerRef.current.removeEventListener('mouseenter', openTooltip);
+          triggerRef.current.removeEventListener('mouseleave', closeTooltip);
+        }
+      }
+    };
+  }, [open, isMobileDevice]);
+
   useIsomorphicLayoutEffect(() => {
     const setPositions = () => {
       setTooltipPosition(tooltipRef.current?.getBoundingClientRect());
@@ -195,29 +227,15 @@ export const TooltipRenderer = ({
 
   return (
     <>
-      <Box
-        tabIndex={-1}
-        onBlur={() => setOpen(false)}
-        {...(isMobileDevice
-          ? {
-              onClick: () => setOpen(!open),
-            }
-          : {
-              onMouseEnter: () => setOpen(true),
-              onFocus: () => setOpen(true),
-              onMouseLeave: () => setOpen(false),
-            })}
-      >
-        {children({
-          triggerProps: {
-            tabIndex: 0,
-            ref: (el) => {
-              triggerRef.current = el;
-            },
-            'aria-describedby': resolvedId,
+      {children({
+        triggerProps: {
+          tabIndex: 0,
+          ref: (el) => {
+            triggerRef.current = el;
           },
-        })}
-      </Box>
+          'aria-describedby': resolvedId,
+        },
+      })}
       <Popover
         id={resolvedId}
         role="tooltip"
