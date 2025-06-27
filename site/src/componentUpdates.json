@@ -4954,5 +4954,23 @@
         "summary": "**BraidTestProvider:** Provide `ResizeObserver` & `IntersectionObserver` stubs to jsdom\n\nFixes an issue where rendering certain Braid components within a test environment could throw errors due to missing APIs in jsdom, causing tests to fail with the following error:\n\n```\nReferenceError: IntersectionObserver is not defined\n```"
       }
     ]
+  },
+  {
+    "version": "33.9.1",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon",
+          "TooltipRenderer"
+        ],
+        "summary": "**ButtonIcon, TooltipRenderer:** Remove unnecessary intermediary element around the tooltip trigger."
+      },
+      {
+        "updated": [
+          "BraidTestProvider"
+        ],
+        "summary": "**BraidTestProvider:** Use stubs instead of mocks to fill missing APIs in jsdom\n\nThis change allows the BraidTestProvider to be framework agnostic for tests and discourages testing the stubbed browser APIs directly."
+      }
+    ]
   }
 ]

@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 33.9.1
+
+### Patch Changes
+
+- **ButtonIcon, TooltipRenderer:** Remove unnecessary intermediary element around the tooltip trigger. ([#1814](https://github.com/seek-oss/braid-design-system/pull/1814))
+
+- **BraidTestProvider:** Use stubs instead of mocks to fill missing APIs in jsdom ([#1809](https://github.com/seek-oss/braid-design-system/pull/1809))
+
+  This change allows the BraidTestProvider to be framework agnostic for tests and discourages testing the stubbed browser APIs directly.
+
 ## 33.9.0
 
 ### Minor Changes
