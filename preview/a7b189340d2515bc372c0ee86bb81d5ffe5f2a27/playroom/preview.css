@@ -1,0 +1,67 @@
+@keyframes _1ny4qh44 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+._1ny4qh41 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--_7ji0f79);
+}
+._1ny4qh43 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: _1ny4qh44;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+._1ny4qh45 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+.zvo1yt1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zvo1yt0);
+}
+.zvo1yt2 {
+  --zvo1yt0: var(--_1p8qjk2i);
+}
+.zvo1yt3 {
+  --zvo1yt0: var(--_1p8qjk2j);
+}
+.zvo1yt4 {
+  --zvo1yt0: var(--_1p8qjk2k);
+}
+.zvo1yt5 {
+  --zvo1yt0: var(--_1p8qjk2l);
+}
+.zvo1yt6 {
+  --zvo1yt0: var(--_1p8qjk2m);
+}
+.zvo1yt7 {
+  --zvo1yt0: var(--_1p8qjk2n);
+}
+.zvo1yt8 {
+  --zvo1yt0: var(--_1p8qjk2o);
+}
+.zvo1yt9 {
+  --zvo1yt0: var(--_1p8qjk2p);
+}
+.zvo1yta {
+  --zvo1yt0: var(--_1p8qjk2q);
+}
+.zvo1ytb {
+  --zvo1yt0: var(--_1p8qjk2r);
+}
