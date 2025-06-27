@@ -1,29 +1,21 @@
+/**
+ * ----------------------------------------------------------------------
+ * NOTE: When adding stub APIs that are unavailable in the `jsdom`
+ * environment, remember to add them to `BraidTestProvider` to ensure
+ * we are stubbing our dependent APIs in consumer test environments too.
+ * ----------------------------------------------------------------------
+ */
+
 import 'html-validate/vitest';
 import '@testing-library/jest-dom/vitest';
 
-import { format } from 'util';
+import { format, TextEncoder, TextDecoder } from 'util';
 
-// The `jsdom` environment doesn't provide `ResizeObserver`
-class MockResizeObserver {
-  observe = vi.fn();
-  unobserve = vi.fn();
-  disconnect = vi.fn();
-}
-
-global.ResizeObserver = MockResizeObserver;
-
-class MockIntersectionObserver {
-  root = null;
-  rootMargin = '';
-  thresholds = [];
-
-  observe = vi.fn();
-  unobserve = vi.fn();
-  disconnect = vi.fn();
-  takeRecords = vi.fn();
-}
-
-global.IntersectionObserver = MockIntersectionObserver;
+// The `jsdom` environment doesn't expose `TextEncoder` or `TextDecoder`
+// AFAIK this hack was never required when braid was using sku to run tests,
+// so I'm not sure why it has suddenly become an issue
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 
 const error = global.console.error;
 
