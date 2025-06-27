@@ -1,3 +1,6 @@
+// ! __This code is not final.__ Discuss how we want to handle vitest and jest support in this file before merging.
+global.jest = vi;
+
 /**
  * ----------------------------------------------------------------------
  * NOTE: When adding stub APIs that are unavailable in the `jsdom`

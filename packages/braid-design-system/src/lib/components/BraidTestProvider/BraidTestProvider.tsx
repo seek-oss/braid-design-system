@@ -8,23 +8,6 @@ import { breakpointContext } from '../BraidProvider/BreakpointContext';
 
 import { BraidTestProviderContext } from './BraidTestProviderContext';
 
-// TODO __This code is not final.__ Discuss how we want to handle vitest and jest support in this file before merging.
-const getTestRunner = () => {
-  if (typeof jest !== 'undefined') {
-    return jest;
-  }
-
-  if (typeof vi !== 'undefined') {
-    return vi;
-  }
-
-  throw new Error(
-    'Could not determine test runner. Please make sure you are using jest or vitest and that global variables are enabled.',
-  );
-};
-
-const testRunner = getTestRunner();
-
 /**
  * Mocking APIs missing from  `jsdom` environment.
  */
@@ -46,9 +29,9 @@ if (
    * Mocking `ResizeObserver` API.
    */
   class MockResizeObserver {
-    observe = testRunner.fn();
-    unobserve = testRunner.fn();
-    disconnect = testRunner.fn();
+    observe = jest.fn();
+    unobserve = jest.fn();
+    disconnect = jest.fn();
   }
   window.ResizeObserver = MockResizeObserver;
 
@@ -60,10 +43,10 @@ if (
     rootMargin = '';
     thresholds = [];
 
-    observe = testRunner.fn();
-    unobserve = testRunner.fn();
-    disconnect = testRunner.fn();
-    takeRecords = testRunner.fn();
+    observe = jest.fn();
+    unobserve = jest.fn();
+    disconnect = jest.fn();
+    takeRecords = jest.fn();
   }
   window.IntersectionObserver = MockIntersectionObserver;
 }
