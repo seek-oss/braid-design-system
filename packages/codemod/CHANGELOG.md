@@ -1,5 +1,11 @@
 # @braid-design-system/codemod
 
+## 1.0.1
+
+### Patch Changes
+
+- Bumping ink dependency to v5 ([#1809](https://github.com/seek-oss/braid-design-system/pull/1809))
+
 ## 1.0.0
 
 ### Major Changes
