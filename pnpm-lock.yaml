@@ -6,10 +6,10 @@ settings:
 
 patchedDependencies:
   html-validate@9.7.0:
-    hash: d5egqxsc5ocopn34ckmlq3a6rq
+    hash: 57d0123c636d6706ae2e927ce461c0f2225ed1373acf56a0cda59ff2eecb59c9
     path: patches/html-validate@9.7.0.patch
   panzoom:
-    hash: 6ozlkenow5f4yy4lstsbsrrv4i
+    hash: 5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30
     path: patches/panzoom.patch
 
 importers:
@@ -290,7 +290,7 @@ importers:
         version: 10.1.0
       html-validate:
         specifier: ^9.7.0
-        version: 9.7.0(patch_hash=d5egqxsc5ocopn34ckmlq3a6rq)(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.112)(babel-plugin-macros@3.1.0))(vitest@3.2.4(@types/node@18.19.112)(jiti@2.4.2)(jsdom@20.0.3)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
+        version: 9.7.0(patch_hash=57d0123c636d6706ae2e927ce461c0f2225ed1373acf56a0cda59ff2eecb59c9)(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.112)(babel-plugin-macros@3.1.0))(vitest@3.2.4(@types/node@18.19.112)(jiti@2.4.2)(jsdom@20.0.3)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
       playroom:
         specifier: 0.44.0
         version: 0.44.0(@swc/core@1.12.1)(babel-plugin-macros@3.1.0)(esbuild@0.18.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -545,7 +545,7 @@ importers:
         version: 8.6.0
       panzoom:
         specifier: ^9.4.2
-        version: 9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i)
+        version: 9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       playroom:
         specifier: 0.44.0
         version: 0.44.0(@swc/core@1.12.1)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -16519,7 +16519,7 @@ snapshots:
       lodash.camelcase: 4.3.0
       react: 18.3.1
 
-  html-validate@9.7.0(patch_hash=d5egqxsc5ocopn34ckmlq3a6rq)(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.112)(babel-plugin-macros@3.1.0))(vitest@3.2.4(@types/node@18.19.112)(jiti@2.4.2)(jsdom@20.0.3)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)):
+  html-validate@9.7.0(patch_hash=57d0123c636d6706ae2e927ce461c0f2225ed1373acf56a0cda59ff2eecb59c9)(jest-diff@29.7.0)(jest-snapshot@29.7.0)(jest@29.7.0(@types/node@18.19.112)(babel-plugin-macros@3.1.0))(vitest@3.2.4(@types/node@18.19.112)(jiti@2.4.2)(jsdom@20.0.3)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)):
     dependencies:
       '@html-validate/stylish': 4.3.0
       '@sidvind/better-ajv-errors': 4.0.0(ajv@8.17.1)
@@ -18356,7 +18356,7 @@ snapshots:
 
   pako@0.2.9: {}
 
-  panzoom@9.4.3(patch_hash=6ozlkenow5f4yy4lstsbsrrv4i):
+  panzoom@9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30):
     dependencies:
       amator: 1.1.0
       ngraph.events: 1.2.2
