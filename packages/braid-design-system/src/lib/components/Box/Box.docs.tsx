@@ -187,7 +187,11 @@ const docs: ComponentDocs = {
                   key={prop}
                   modifier="Responsive"
                   name={prop}
-                  values={Object.keys(responsiveProperties[prop])}
+                  values={
+                    Array.isArray(responsiveProperties[prop])
+                      ? Object.values(responsiveProperties[prop])
+                      : Object.keys(responsiveProperties[prop])
+                  }
                 />
               ))}
               {(Object.keys(pseudoProperties) as PseudoProperties[]).map(
