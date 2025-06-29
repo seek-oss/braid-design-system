@@ -1,3 +1,5 @@
+onlyBuiltDependencies:
+  - sku
 packages:
   - packages/*
   - integration

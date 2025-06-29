@@ -34,7 +34,6 @@ function renderPopover({
         <Button
           onClick={managedState ? () => setOpenState(!openState) : undefined}
           ref={triggerRef}
-          data-testid="trigger"
         >
           Open popover
         </Button>
