@@ -1,5 +1,6 @@
 onlyBuiltDependencies:
   - sku
+  - '@vscode/ripgrep'
 packages:
   - packages/*
   - integration
