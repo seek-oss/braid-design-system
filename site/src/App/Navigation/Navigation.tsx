@@ -156,85 +156,80 @@ export const Navigation = () => {
 
   useScrollLock(isMenuOpen);
 
-  const isNavAlwaysVisible = useResponsiveValue()({
+  const isExpandedSize = useResponsiveValue()({
     mobile: false,
     [styles.visibleNavBreakpoint]: true,
   });
 
-  const navigationVisible = isNavAlwaysVisible || isMenuOpen;
+  const navigationActive = isExpandedSize || isMenuOpen;
 
   return (
-    <Box id="felix-navigation">
-      <ContentBlock width="large">
-        <Box position="fixed" top={0}>
-          <Header
-            menuOpen={isMenuOpen}
-            menuClick={() => setMenuOpen(!isMenuOpen)}
-          />
-        </Box>
-        <RemoveScroll enabled={isMenuOpen} forwardProps>
-          <Box
-            position="fixed"
-            bottom={0}
-            transition="fast"
-            width="full"
-            zIndex="sticky"
-            // @ts-expect-error - inert is not available in @types/react currently
-            inert={navigationVisible ? undefined : ''}
-            className={[
-              styles.sideNavigationContainer,
-              isMenuOpen ? styles.isOpen : undefined,
-            ]}
-          >
-            <ScrollContainer direction="vertical">
-              <Box paddingX={gutterSize} paddingBottom="xxlarge">
-                <SideNavigation onSelect={() => setMenuOpen(false)} />
-              </Box>
-            </ScrollContainer>
-          </Box>
-        </RemoveScroll>
+    <ContentBlock width="large">
+      <Box position="fixed" top={0}>
+        <Header
+          menuOpen={isMenuOpen}
+          menuClick={() => setMenuOpen(!isMenuOpen)}
+        />
+      </Box>
+      <RemoveScroll enabled={isMenuOpen} forwardProps>
         <Box
-          background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
-          position="relative"
-          overflow="hidden" // Fix stack space intercepting nav bar clicks
-          paddingX={{
-            mobile: gutterSize,
-            wide: 'xxlarge',
-          }}
-          paddingY="small"
-          paddingBottom="xxlarge"
-          marginBottom="xxlarge"
+          position="fixed"
+          bottom={0}
           transition="fast"
-          pointerEvents={isMenuOpen ? 'none' : undefined}
+          width="full"
+          zIndex="sticky"
+          // @ts-expect-error - inert is not available in @types/react currently
+          inert={navigationActive ? undefined : ''}
           className={[
-            styles.pageContent,
+            styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <Box paddingBottom="xxlarge" marginBottom="xxlarge">
-            <Outlet />
-            <PreviewBranchPanel />
-          </Box>
+          <ScrollContainer direction="vertical">
+            <Box paddingX={gutterSize} paddingBottom="xxlarge">
+              <SideNavigation onSelect={() => setMenuOpen(false)} />
+            </Box>
+          </ScrollContainer>
         </Box>
-        <FixedContentBlock
-          top={0}
-          left={0}
-          right={0}
-          boxShadow={!isMenuOpen ? 'small' : undefined}
-          display={['block', 'none']}
-          pointerEvents={showStickyHeader ? undefined : 'none'}
-          zIndex="sticky"
-          background="body"
-          opacity={showStickyHeader ? undefined : 0}
-          tabIndex={-1}
-          aria-hidden={true}
-        >
-          <Header
-            menuOpen={isMenuOpen}
-            menuClick={() => setMenuOpen(!isMenuOpen)}
-          />
-        </FixedContentBlock>
-      </ContentBlock>
-    </Box>
+      </RemoveScroll>
+      <Box
+        background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
+        position="relative"
+        overflow="hidden" // Fix stack space intercepting nav bar clicks
+        paddingX={{
+          mobile: gutterSize,
+          wide: 'xxlarge',
+        }}
+        paddingY="small"
+        paddingBottom="xxlarge"
+        marginBottom="xxlarge"
+        transition="fast"
+        pointerEvents={isMenuOpen ? 'none' : undefined}
+        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
+      >
+        <Box paddingBottom="xxlarge" marginBottom="xxlarge">
+          <Outlet />
+          <PreviewBranchPanel />
+        </Box>
+      </Box>
+      <FixedContentBlock
+        top={0}
+        left={0}
+        right={0}
+        boxShadow={!isMenuOpen ? 'small' : undefined}
+        display={['block', 'none']}
+        pointerEvents={showStickyHeader ? undefined : 'none'}
+        zIndex="sticky"
+        background="body"
+        opacity={showStickyHeader ? undefined : 0}
+        tabIndex={-1}
+        aria-hidden={true}
+      >
+        <Header
+          menuOpen={isMenuOpen}
+          menuClick={() => setMenuOpen(!isMenuOpen)}
+        />
+      </FixedContentBlock>
+    </ContentBlock>
   );
 };
