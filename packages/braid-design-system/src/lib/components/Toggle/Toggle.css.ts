@@ -122,7 +122,7 @@ export const slider = styleVariants(sizes, (size) => {
     height: vars.inlineFieldSize[size],
     width: vars.inlineFieldSize[size],
     outline: resetOutline,
-    transition: `${vars.transition.fast}, ${outlineTransition}`,
+    transition: [vars.transition.fast, outlineTransition].join(', '),
     selectors: {
       [`${realField}:active + ${slideContainer} &`]: {
         transform: `translateX(${calc.negate(anticipation)})`,

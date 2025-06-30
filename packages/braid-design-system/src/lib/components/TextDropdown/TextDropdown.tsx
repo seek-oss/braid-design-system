@@ -95,7 +95,8 @@ export function TextDropdown<Value>({
         position="absolute"
         inset={0}
         width="full"
-        className={[styles.select, styles.focusOverlay]}
+        borderRadius="standard" // Ensures focus ring is rounded
+        className={styles.select}
         aria-label={label}
         title={label}
         id={resolvedId}

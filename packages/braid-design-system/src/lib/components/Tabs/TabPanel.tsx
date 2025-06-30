@@ -51,6 +51,7 @@ export const TabPanel = ({
       {...a11y.tabPanelProps({ panelIndex, isSelected })}
       display={isSelected ? undefined : 'none'}
       position="relative"
+      borderRadius="large" // Ensures focus ring is rounded
       className={styles.tabPanel}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
