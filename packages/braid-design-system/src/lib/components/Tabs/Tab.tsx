@@ -15,7 +15,6 @@ import type { BraidTokens } from '../../themes/tokenType';
 import type { BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
-import { Overlay } from '../private/Overlay/Overlay';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -243,13 +242,12 @@ export const Tab = ({
       textAlign="left"
       borderRadius="standard"
       cursor="pointer"
-      outline="none"
       position="relative"
       zIndex={1}
       paddingLeft={tabListItemIndex > 0 ? paddingXForTabSize[size] : undefined}
       paddingRight={!isLast ? paddingXForTabSize[size] : undefined}
       paddingY={dividerSpacingForSize[size]}
-      className={styles.tab}
+      className={[styles.tab, styles.tabFocusRing]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {/* Inactive */}
@@ -303,16 +301,6 @@ export const Tab = ({
           {cloneElement(badge, { bleedY: true })}
         </Box>
       ) : null}
-      <Overlay
-        component="span"
-        zIndex={1}
-        boxShadow="outlineFocus"
-        borderRadius="standard"
-        className={styles.tabFocusRing}
-        visible={false}
-        transition="fast"
-        onlyVisibleForKeyboardNavigation
-      />
     </Box>
   );
 };

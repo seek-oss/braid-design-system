@@ -29,31 +29,26 @@ export const LinkableHeading = ({
   const slug = slugify(label);
 
   return (
-    <Box display="flex">
-      <Box className={styles.linkableHeading} display="inlineBlock">
-        <Box id={slug} position="absolute" />
-        <Link href={`#${slug}`}>
-          <Heading level={level} component={component}>
-            {badge ? (
-              <Box component="span" paddingRight="xsmall">
-                {restProps.children}
-              </Box>
-            ) : (
-              restProps.children
-            )}
-            {badge}
-            <Box
-              component="span"
-              transition="fast"
-              marginLeft="xsmall"
-              opacity={0}
-              className={styles.hashLink}
-            >
-              <IconLink />
-            </Box>
-          </Heading>
-        </Link>
-      </Box>
-    </Box>
+    <Link id={slug} href={`#${slug}`} className={styles.linkableHeading}>
+      <Heading level={level} component={component}>
+        {badge ? (
+          <Box component="span" paddingRight="xsmall">
+            {restProps.children}
+          </Box>
+        ) : (
+          restProps.children
+        )}
+        {badge}
+        <Box
+          component="span"
+          transition="fast"
+          marginLeft="xsmall"
+          opacity={0}
+          className={styles.hashLink}
+        >
+          <IconLink />
+        </Box>
+      </Heading>
+    </Link>
   );
 };

@@ -33,14 +33,6 @@ export const hideBorderOnDarkBackgroundInLightMode = style(
   }),
 );
 
-export const focusOverlay = style({
-  selectors: {
-    [`${field}:focus ~ &`]: {
-      opacity: 1,
-    },
-  },
-});
-
 export const hoverOverlay = style({
   selectors: {
     [`${field}:hover:not(:disabled) ~ &, ${field}:focus ~ &`]: {

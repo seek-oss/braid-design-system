@@ -676,7 +676,6 @@ const GalleryInternal = () => {
       </Box>
 
       <Box
-        outline="none"
         transition="fast"
         opacity={ready ? undefined : 0}
         className={styles.grabCursor}
