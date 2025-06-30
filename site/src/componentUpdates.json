@@ -4972,5 +4972,17 @@
         "summary": "**BraidTestProvider:** Use stubs instead of mocks to fill missing APIs in jsdom\n\nThis change allows the BraidTestProvider to be framework agnostic for tests and discourages testing the stubbed browser APIs directly."
       }
     ]
+  },
+  {
+    "version": "33.10.0",
+    "updates": [
+      {
+        "updated": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms**: Add `sticky` to `position`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Box position=\"sticky\" top={0} ... />\n```"
+      }
+    ]
   }
 ]

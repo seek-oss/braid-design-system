@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 33.10.0
+
+### Minor Changes
+
+- **Box, atoms**: Add `sticky` to `position`. ([#1806](https://github.com/seek-oss/braid-design-system/pull/1806))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box position="sticky" top={0} ... />
+  ```
+
 ## 33.9.1
 
 ### Patch Changes
