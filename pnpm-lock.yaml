@@ -173,9 +173,6 @@ importers:
       lodash.curry:
         specifier: ^4.1.1
         version: 4.1.1
-      lodash.merge:
-        specifier: ^4.6.2
-        version: 4.6.2
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -240,9 +237,6 @@ importers:
       '@types/lodash.curry':
         specifier: ^4.1.9
         version: 4.1.9
-      '@types/lodash.merge':
-        specifier: ^4.6.9
-        version: 4.6.9
       '@types/node':
         specifier: ^18.19.68
         version: 18.19.112
@@ -3039,9 +3033,6 @@ packages:
 
   '@types/lodash.memoize@4.1.9':
     resolution: {integrity: sha512-glY1nQuoqX4Ft8Uk+KfJudOD7DQbbEDF6k9XpGncaohW3RW4eSWBlx6AA0fZCrh40tZcQNH4jS/Oc59J6Eq+aw==}
-
-  '@types/lodash.merge@4.6.9':
-    resolution: {integrity: sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==}
 
   '@types/lodash.partition@4.6.9':
     resolution: {integrity: sha512-ANgnHyTw/C07oHr/8/jzoc1BlZZFRafAyDvc04Z8qR1IvWZpAGB8aHPUkd0UCgJWOauqoCsILhvPLXKsTc4rXQ==}
@@ -12954,10 +12945,6 @@ snapshots:
       '@types/lodash': 4.17.19
 
   '@types/lodash.memoize@4.1.9':
-    dependencies:
-      '@types/lodash': 4.17.19
-
-  '@types/lodash.merge@4.6.9':
     dependencies:
       '@types/lodash': 4.17.19
 
