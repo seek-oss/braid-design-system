@@ -7,21 +7,23 @@ import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});
 
+export const visibleNavBreakpoint = 'wide' as const;
+
 const headerOffset = style({
   top: headerHeight,
 });
 
-const fixedWidthAboveMobile = style(
+const fixedWidthAboveVisibleBreakpoint = style(
   responsiveStyle({
-    wide: {
+    [visibleNavBreakpoint]: {
       width: calc.subtract(menuWidth, vars.space[gutterSize]),
     },
   }),
 );
 
-const hidePageContentOnMobileWhenOpen = style({
+const hidePageContentOnSmallerScreensWhenOpen = style({
   '@media': {
-    [`screen and (max-width: ${breakpoints.wide - 1}px)`]: {
+    [`screen and (max-width: ${breakpoints[visibleNavBreakpoint] - 1}px)`]: {
       selectors: {
         [`&${isOpen}`]: {
           opacity: 0,
@@ -32,9 +34,9 @@ const hidePageContentOnMobileWhenOpen = style({
   },
 });
 
-const hideSideNavOnMobileWhenClosed = style({
+const hideSideNavOnSmallerScreensWhenClosed = style({
   '@media': {
-    [`screen and (max-width: ${breakpoints.wide - 1}px)`]: {
+    [`screen and (max-width: ${breakpoints[visibleNavBreakpoint] - 1}px)`]: {
       selectors: {
         [`&:not(${isOpen})`]: {
           opacity: 0,
@@ -56,14 +58,14 @@ const subNavOffsetAboveMobile = style(
 
 export const sideNavigationContainer = style([
   headerOffset,
-  fixedWidthAboveMobile,
-  hideSideNavOnMobileWhenClosed,
+  fixedWidthAboveVisibleBreakpoint,
+  hideSideNavOnSmallerScreensWhenClosed,
 ]);
 
 export const pageContent = style([
   headerOffset,
   subNavOffsetAboveMobile,
-  hidePageContentOnMobileWhenOpen,
+  hidePageContentOnSmallerScreensWhenOpen,
 ]);
 
 globalStyle('html, body', {

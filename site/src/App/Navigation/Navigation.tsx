@@ -9,6 +9,7 @@ import {
   MenuItemLink,
   MenuRenderer,
   Text,
+  useResponsiveValue,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -155,74 +156,85 @@ export const Navigation = () => {
 
   useScrollLock(isMenuOpen);
 
-  return (
-    <ContentBlock width="large">
-      <Box position="fixed" top={0}>
-        <Header
-          menuOpen={isMenuOpen}
-          menuClick={() => setMenuOpen(!isMenuOpen)}
-        />
-      </Box>
+  const isNavAlwaysVisible = useResponsiveValue()({
+    mobile: false,
+    [styles.visibleNavBreakpoint]: true,
+  });
 
-      <RemoveScroll enabled={isMenuOpen} forwardProps>
+  const navigationVisible = isNavAlwaysVisible || isMenuOpen;
+
+  return (
+    <Box id="felix-navigation">
+      <ContentBlock width="large">
+        <Box position="fixed" top={0}>
+          <Header
+            menuOpen={isMenuOpen}
+            menuClick={() => setMenuOpen(!isMenuOpen)}
+          />
+        </Box>
+        <RemoveScroll enabled={isMenuOpen} forwardProps>
+          <Box
+            position="fixed"
+            bottom={0}
+            transition="fast"
+            width="full"
+            zIndex="sticky"
+            // @ts-expect-error - inert is not available in @types/react currently
+            inert={navigationVisible ? undefined : ''}
+            className={[
+              styles.sideNavigationContainer,
+              isMenuOpen ? styles.isOpen : undefined,
+            ]}
+          >
+            <ScrollContainer direction="vertical">
+              <Box paddingX={gutterSize} paddingBottom="xxlarge">
+                <SideNavigation onSelect={() => setMenuOpen(false)} />
+              </Box>
+            </ScrollContainer>
+          </Box>
+        </RemoveScroll>
         <Box
-          position="fixed"
-          bottom={0}
+          background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
+          position="relative"
+          overflow="hidden" // Fix stack space intercepting nav bar clicks
+          paddingX={{
+            mobile: gutterSize,
+            wide: 'xxlarge',
+          }}
+          paddingY="small"
+          paddingBottom="xxlarge"
+          marginBottom="xxlarge"
           transition="fast"
-          width="full"
-          zIndex="sticky"
+          pointerEvents={isMenuOpen ? 'none' : undefined}
           className={[
-            styles.sideNavigationContainer,
+            styles.pageContent,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <ScrollContainer direction="vertical">
-            <Box paddingX={gutterSize} paddingBottom="xxlarge">
-              <SideNavigation onSelect={() => setMenuOpen(false)} />
-            </Box>
-          </ScrollContainer>
+          <Box paddingBottom="xxlarge" marginBottom="xxlarge">
+            <Outlet />
+            <PreviewBranchPanel />
+          </Box>
         </Box>
-      </RemoveScroll>
-
-      <Box
-        background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
-        position="relative"
-        overflow="hidden" // Fix stack space intercepting nav bar clicks
-        paddingX={{
-          mobile: gutterSize,
-          wide: 'xxlarge',
-        }}
-        paddingY="small"
-        paddingBottom="xxlarge"
-        marginBottom="xxlarge"
-        transition="fast"
-        pointerEvents={isMenuOpen ? 'none' : undefined}
-        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
-      >
-        <Box paddingBottom="xxlarge" marginBottom="xxlarge">
-          <Outlet />
-          <PreviewBranchPanel />
-        </Box>
-      </Box>
-
-      <FixedContentBlock
-        top={0}
-        left={0}
-        right={0}
-        boxShadow={!isMenuOpen ? 'small' : undefined}
-        display={['block', 'none']}
-        pointerEvents={showStickyHeader ? undefined : 'none'}
-        zIndex="sticky"
-        background="body"
-        opacity={showStickyHeader ? undefined : 0}
-        tabIndex={-1}
-        aria-hidden={true}
-      >
-        <Header
-          menuOpen={isMenuOpen}
-          menuClick={() => setMenuOpen(!isMenuOpen)}
-        />
-      </FixedContentBlock>
-    </ContentBlock>
+        <FixedContentBlock
+          top={0}
+          left={0}
+          right={0}
+          boxShadow={!isMenuOpen ? 'small' : undefined}
+          display={['block', 'none']}
+          pointerEvents={showStickyHeader ? undefined : 'none'}
+          zIndex="sticky"
+          background="body"
+          opacity={showStickyHeader ? undefined : 0}
+          tabIndex={-1}
+          aria-hidden={true}
+        >
+          <Header
+            menuOpen={isMenuOpen}
+            menuClick={() => setMenuOpen(!isMenuOpen)}
+          />
+        </FixedContentBlock>
+      </ContentBlock>
+    </Box>
   );
 };
