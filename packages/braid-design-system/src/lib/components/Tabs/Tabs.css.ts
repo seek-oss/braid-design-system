@@ -50,7 +50,7 @@ export const marginAuto = style({
 });
 
 export const tabFocusRing = style({
-  outlineOffset: calc.negate(vars.borderWidth.large),
+  outlineOffset: calc.negate(vars.focusRingSize),
 });
 
 export const underlineLeft = createVar();

@@ -172,7 +172,7 @@ export const progressUnfilled = style({
 export const indicatorContainer = style({
   width: stepIndicatorSize,
   outline: resetOutline,
-  transition: `${outlineTransition}, ${vars.transition.fast}`,
+  transition: [vars.transition.fast, outlineTransition].join(', '),
   selectors: {
     [`${step}:active &`]: {
       transform: vars.transform.touchable,
