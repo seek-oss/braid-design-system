@@ -9,6 +9,7 @@ import {
   MenuItemLink,
   MenuRenderer,
   Text,
+  useResponsiveValue,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -155,6 +156,13 @@ export const Navigation = () => {
 
   useScrollLock(isMenuOpen);
 
+  const isExpandedSize = useResponsiveValue()({
+    mobile: false,
+    [styles.visibleNavBreakpoint]: true,
+  });
+
+  const navigationActive = isExpandedSize || isMenuOpen;
+
   return (
     <ContentBlock width="large">
       <Box position="fixed" top={0}>
@@ -163,7 +171,6 @@ export const Navigation = () => {
           menuClick={() => setMenuOpen(!isMenuOpen)}
         />
       </Box>
-
       <RemoveScroll enabled={isMenuOpen} forwardProps>
         <Box
           position="fixed"
@@ -171,6 +178,8 @@ export const Navigation = () => {
           transition="fast"
           width="full"
           zIndex="sticky"
+          // @ts-expect-error - inert is not available in @types/react currently
+          inert={navigationActive ? undefined : ''}
           className={[
             styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
@@ -183,7 +192,6 @@ export const Navigation = () => {
           </ScrollContainer>
         </Box>
       </RemoveScroll>
-
       <Box
         background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
         position="relative"
@@ -204,7 +212,6 @@ export const Navigation = () => {
           <PreviewBranchPanel />
         </Box>
       </Box>
-
       <FixedContentBlock
         top={0}
         left={0}
