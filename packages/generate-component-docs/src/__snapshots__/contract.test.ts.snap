@@ -117,9 +117,8 @@ exports[`Autosuggest 1`] = `
     onFocus?: () => void
     placeholder?: string
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     scrollToTopOnMobile?: boolean
@@ -169,9 +168,8 @@ exports[`Badge 1`] = `
     data?: DataAttributeMap
     id?: string
     ref?: 
-        | (instance: HTMLSpanElement | null) => void
-        | RefObject<HTMLSpanElement>
-        | string
+        | (instance: HTMLSpanElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLSpanElement | null>
     tabIndex?: number
     title?: string
     tone?: 
@@ -300,7 +298,9 @@ exports[`Box 1`] = `
     accept?: string
     acceptCharset?: string
     accessKey?: string
-    action?: string
+    action?: 
+        | (formData: FormData) => void | Promise<void>
+        | string
     alignItems?: 
         | "center"
         | "flexEnd"
@@ -849,7 +849,9 @@ exports[`Box 1`] = `
         | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
         | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     form?: string
-    formAction?: string
+    formAction?: 
+        | (formData: FormData) => void | Promise<void>
+        | string
     formEncType?: string
     formMethod?: string
     formNoValidate?: boolean
@@ -881,6 +883,7 @@ exports[`Box 1`] = `
     htmlFor?: string
     httpEquiv?: string
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -1044,6 +1047,7 @@ exports[`Box 1`] = `
     onAuxClickCapture?: MouseEventHandler<HTMLElement>
     onBeforeInput?: InputEventHandler<HTMLElement>
     onBeforeInputCapture?: FormEventHandler<HTMLElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLElement>
     onBlur?: FocusEventHandler<HTMLElement>
     onBlurCapture?: FocusEventHandler<HTMLElement>
     onCanPlay?: ReactEventHandler<HTMLElement>
@@ -1160,6 +1164,8 @@ exports[`Box 1`] = `
     onResetCapture?: FormEventHandler<HTMLElement>
     onScroll?: UIEventHandler<HTMLElement>
     onScrollCapture?: UIEventHandler<HTMLElement>
+    onScrollEnd?: UIEventHandler<HTMLElement>
+    onScrollEndCapture?: UIEventHandler<HTMLElement>
     onSeeked?: ReactEventHandler<HTMLElement>
     onSeekedCapture?: ReactEventHandler<HTMLElement>
     onSeeking?: ReactEventHandler<HTMLElement>
@@ -1174,6 +1180,7 @@ exports[`Box 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLElement>
     onTimeUpdate?: ReactEventHandler<HTMLElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLElement>
+    onToggle?: ToggleEventHandler<HTMLElement>
     onTouchCancel?: TouchEventHandler<HTMLElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLElement>
     onTouchEnd?: TouchEventHandler<HTMLElement>
@@ -1182,8 +1189,14 @@ exports[`Box 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLElement>
     onTouchStart?: TouchEventHandler<HTMLElement>
     onTouchStartCapture?: TouchEventHandler<HTMLElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLElement>
     onTransitionEnd?: TransitionEventHandler<HTMLElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLElement>
+    onTransitionRun?: TransitionEventHandler<HTMLElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLElement>
+    onTransitionStart?: TransitionEventHandler<HTMLElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLElement>
     onVolumeChange?: ReactEventHandler<HTMLElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLElement>
     onWaiting?: ReactEventHandler<HTMLElement>
@@ -1295,6 +1308,15 @@ exports[`Box 1`] = `
     placeholder?: string
     playsInline?: boolean
     pointerEvents?: "none"
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     position?: 
         | "absolute"
         | "fixed"
@@ -1309,9 +1331,8 @@ exports[`Box 1`] = `
     radioGroup?: string
     readOnly?: boolean
     ref?: 
-        | (instance: HTMLElement | null) => void
-        | RefObject<HTMLElement>
-        | string
+        | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLElement | null>
     rel?: string
     required?: boolean
     resource?: string
@@ -1560,187 +1581,12 @@ exports[`BoxRenderer 1`] = `
         | "medium"
         | "outlineFocus"
         | "small"
-    children: (className: string) => ReactElement<any, string | JSXElementConstructor<any>> | null
+    children: (className: string) => ReactElement<unknown, string | JSXElementConstructor<any>> | null
     className?: ClassValue
     component?: 
-        | "a"
-        | "abbr"
-        | "address"
-        | "animate"
-        | "animateMotion"
-        | "animateTransform"
-        | "area"
-        | "article"
-        | "aside"
-        | "audio"
-        | "b"
-        | "base"
-        | "bdi"
-        | "bdo"
-        | "big"
-        | "blockquote"
-        | "body"
-        | "br"
-        | "button"
-        | "canvas"
-        | "caption"
-        | "center"
-        | "circle"
-        | "cite"
-        | "clipPath"
-        | "code"
-        | "col"
-        | "colgroup"
-        | "data"
-        | "datalist"
-        | "dd"
-        | "defs"
-        | "del"
-        | "desc"
-        | "details"
-        | "dfn"
-        | "dialog"
-        | "div"
-        | "dl"
-        | "dt"
-        | "ellipse"
-        | "em"
-        | "embed"
-        | "feBlend"
-        | "feColorMatrix"
-        | "feComponentTransfer"
-        | "feComposite"
-        | "feConvolveMatrix"
-        | "feDiffuseLighting"
-        | "feDisplacementMap"
-        | "feDistantLight"
-        | "feDropShadow"
-        | "feFlood"
-        | "feFuncA"
-        | "feFuncB"
-        | "feFuncG"
-        | "feFuncR"
-        | "feGaussianBlur"
-        | "feImage"
-        | "feMerge"
-        | "feMergeNode"
-        | "feMorphology"
-        | "feOffset"
-        | "fePointLight"
-        | "feSpecularLighting"
-        | "feSpotLight"
-        | "feTile"
-        | "feTurbulence"
-        | "fieldset"
-        | "figcaption"
-        | "figure"
-        | "filter"
-        | "footer"
-        | "foreignObject"
-        | "form"
-        | "g"
-        | "h1"
-        | "h2"
-        | "h3"
-        | "h4"
-        | "h5"
-        | "h6"
-        | "head"
-        | "header"
-        | "hgroup"
-        | "hr"
-        | "html"
-        | "i"
-        | "iframe"
-        | "image"
-        | "img"
-        | "input"
-        | "ins"
-        | "kbd"
-        | "keygen"
-        | "label"
-        | "legend"
-        | "li"
-        | "line"
-        | "linearGradient"
-        | "link"
-        | "main"
-        | "map"
-        | "mark"
-        | "marker"
-        | "mask"
-        | "menu"
-        | "menuitem"
-        | "meta"
-        | "metadata"
-        | "meter"
-        | "mpath"
-        | "nav"
-        | "noindex"
-        | "noscript"
-        | "object"
-        | "ol"
-        | "optgroup"
-        | "option"
-        | "output"
-        | "p"
-        | "param"
-        | "path"
-        | "pattern"
-        | "picture"
-        | "polygon"
-        | "polyline"
-        | "pre"
-        | "progress"
-        | "q"
-        | "radialGradient"
-        | "rect"
-        | "rp"
-        | "rt"
-        | "ruby"
-        | "s"
-        | "samp"
-        | "script"
-        | "search"
-        | "section"
-        | "select"
-        | "set"
-        | "slot"
-        | "small"
-        | "source"
-        | "span"
-        | "stop"
-        | "strong"
-        | "style"
-        | "sub"
-        | "summary"
-        | "sup"
-        | "svg"
-        | "switch"
-        | "symbol"
-        | "table"
-        | "tbody"
-        | "td"
-        | "template"
-        | "text"
-        | "textPath"
-        | "textarea"
-        | "tfoot"
-        | "th"
-        | "thead"
-        | "time"
-        | "title"
-        | "tr"
-        | "track"
-        | "tspan"
-        | "u"
-        | "ul"
-        | "use"
-        | "var"
-        | "video"
-        | "view"
-        | "wbr"
-        | "webview"
+        | number
+        | string
+        | symbol
     cursor?: 
         | "default"
         | "pointer"
@@ -2116,9 +1962,8 @@ exports[`Button 1`] = `
     onKeyDown?: KeyboardEventHandler<HTMLButtonElement>
     onKeyUp?: KeyboardEventHandler<HTMLButtonElement>
     ref?: 
-        | (instance: HTMLButtonElement | null) => void
-        | RefObject<HTMLButtonElement>
-        | string
+        | (instance: HTMLButtonElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLButtonElement | null>
     size?: 
         | "small"
         | "standard"
@@ -2171,9 +2016,8 @@ exports[`ButtonIcon 1`] = `
     onKeyUp?: KeyboardEventHandler<HTMLButtonElement>
     onMouseDown?: MouseEventHandler<HTMLButtonElement>
     ref?: 
-        | (instance: HTMLButtonElement | null) => void
-        | RefObject<HTMLButtonElement>
-        | string
+        | (instance: HTMLButtonElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLButtonElement | null>
     size?: 
         | "large"
         | "small"
@@ -2421,6 +2265,7 @@ exports[`ButtonLink 1`] = `
         | "leading"
         | "trailing"
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -2453,6 +2298,7 @@ exports[`ButtonLink 1`] = `
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
     onCanPlay?: ReactEventHandler<HTMLAnchorElement>
@@ -2569,6 +2415,8 @@ exports[`ButtonLink 1`] = `
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onScrollEnd?: UIEventHandler<HTMLAnchorElement>
+    onScrollEndCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
     onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
     onSeeking?: ReactEventHandler<HTMLAnchorElement>
@@ -2583,6 +2431,7 @@ exports[`ButtonLink 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onToggle?: ToggleEventHandler<HTMLAnchorElement>
     onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
@@ -2591,8 +2440,14 @@ exports[`ButtonLink 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchStart?: TouchEventHandler<HTMLAnchorElement>
     onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRun?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStart?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLAnchorElement>
     onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onWaiting?: ReactEventHandler<HTMLAnchorElement>
@@ -2601,13 +2456,21 @@ exports[`ButtonLink 1`] = `
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     part?: string
     ping?: string
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
-        | (instance: HTMLAnchorElement | null) => void
-        | RefObject<HTMLAnchorElement>
-        | string
+        | (instance: HTMLAnchorElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLAnchorElement | null>
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -2785,9 +2648,8 @@ exports[`Checkbox 1`] = `
     name?: string
     onChange: FormEventHandler<HTMLInputElement>
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     size?: 
@@ -2825,9 +2687,8 @@ exports[`CheckboxStandalone 1`] = `
     name?: string
     onChange: FormEventHandler<HTMLInputElement>
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     size?: 
         | "small"
@@ -3078,9 +2939,8 @@ exports[`Dropdown 1`] = `
     onFocus?: FocusEventHandler<HTMLSelectElement>
     placeholder?: string
     ref?: 
-        | (instance: HTMLSelectElement | null) => void
-        | RefObject<HTMLSelectElement>
-        | string
+        | (instance: HTMLSelectElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLSelectElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -5903,7 +5763,7 @@ exports[`IconRenderer 1`] = `
 {
   exportType: component,
   props: {
-    children: ({ className }: { className: string; }) => ReactElement<any, string | JSXElementConstructor<any>> | null
+    children: ({ className }: { className: string; }) => ReactElement<unknown, string | JSXElementConstructor<any>> | null
 },
 }
 `;
@@ -7240,6 +7100,7 @@ exports[`Link 1`] = `
     href: string
     hrefLang?: string
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -7271,6 +7132,7 @@ exports[`Link 1`] = `
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
     onCanPlay?: ReactEventHandler<HTMLAnchorElement>
@@ -7387,6 +7249,8 @@ exports[`Link 1`] = `
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onScrollEnd?: UIEventHandler<HTMLAnchorElement>
+    onScrollEndCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
     onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
     onSeeking?: ReactEventHandler<HTMLAnchorElement>
@@ -7401,6 +7265,7 @@ exports[`Link 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onToggle?: ToggleEventHandler<HTMLAnchorElement>
     onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
@@ -7409,8 +7274,14 @@ exports[`Link 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchStart?: TouchEventHandler<HTMLAnchorElement>
     onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRun?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStart?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLAnchorElement>
     onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onWaiting?: ReactEventHandler<HTMLAnchorElement>
@@ -7419,13 +7290,21 @@ exports[`Link 1`] = `
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     part?: string
     ping?: string
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
-        | (instance: HTMLAnchorElement | null) => void
-        | RefObject<HTMLAnchorElement>
-        | string
+        | (instance: HTMLAnchorElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLAnchorElement | null>
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -7863,9 +7742,8 @@ exports[`PasswordField 1`] = `
     onVisibilityToggle?: (visible: boolean) => void
     placeholder?: string
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -7935,9 +7813,8 @@ exports[`RadioItem 1`] = `
     disabled?: boolean
     label: ReactNode
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     value: 
         | number
         | readonly string[]
@@ -8171,9 +8048,8 @@ exports[`Table 1`] = `
     data?: DataAttributeMap
     label: string
     ref?: 
-        | (instance: HTMLTableElement | null) => void
-        | RefObject<HTMLTableElement>
-        | string
+        | (instance: HTMLTableElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableElement | null>
 },
 }
 `;
@@ -8185,9 +8061,8 @@ exports[`TableBody 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     ref?: 
-        | (instance: HTMLTableSectionElement | null) => void
-        | RefObject<HTMLTableSectionElement>
-        | string
+        | (instance: HTMLTableSectionElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableSectionElement | null>
 },
 }
 `;
@@ -8214,9 +8089,8 @@ exports[`TableCell 1`] = `
     maxWidth?: number
     minWidth?: number
     ref?: 
-        | (instance: HTMLTableCellElement | null) => void
-        | RefObject<HTMLTableCellElement>
-        | string
+        | (instance: HTMLTableCellElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableCellElement | null>
     width?: 
         | "auto"
         | "content"
@@ -8233,9 +8107,8 @@ exports[`TableFooter 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     ref?: 
-        | (instance: HTMLTableSectionElement | null) => void
-        | RefObject<HTMLTableSectionElement>
-        | string
+        | (instance: HTMLTableSectionElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableSectionElement | null>
 },
 }
 `;
@@ -8247,9 +8120,8 @@ exports[`TableHeader 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     ref?: 
-        | (instance: HTMLTableSectionElement | null) => void
-        | RefObject<HTMLTableSectionElement>
-        | string
+        | (instance: HTMLTableSectionElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableSectionElement | null>
 },
 }
 `;
@@ -8276,9 +8148,8 @@ exports[`TableHeaderCell 1`] = `
     maxWidth?: number
     minWidth?: number
     ref?: 
-        | (instance: HTMLTableCellElement | null) => void
-        | RefObject<HTMLTableCellElement>
-        | string
+        | (instance: HTMLTableCellElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableCellElement | null>
     width?: 
         | "auto"
         | "content"
@@ -8295,9 +8166,8 @@ exports[`TableRow 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     ref?: 
-        | (instance: HTMLTableRowElement | null) => void
-        | RefObject<HTMLTableRowElement>
-        | string
+        | (instance: HTMLTableRowElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableRowElement | null>
 },
 }
 `;
@@ -8642,9 +8512,8 @@ exports[`TextField 1`] = `
     placeholder?: string
     prefix?: string
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -8903,6 +8772,7 @@ exports[`TextLink 1`] = `
         | "leading"
         | "trailing"
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -8934,6 +8804,7 @@ exports[`TextLink 1`] = `
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
     onCanPlay?: ReactEventHandler<HTMLAnchorElement>
@@ -9050,6 +8921,8 @@ exports[`TextLink 1`] = `
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onScrollEnd?: UIEventHandler<HTMLAnchorElement>
+    onScrollEndCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
     onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
     onSeeking?: ReactEventHandler<HTMLAnchorElement>
@@ -9064,6 +8937,7 @@ exports[`TextLink 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onToggle?: ToggleEventHandler<HTMLAnchorElement>
     onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
@@ -9072,8 +8946,14 @@ exports[`TextLink 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchStart?: TouchEventHandler<HTMLAnchorElement>
     onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRun?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStart?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLAnchorElement>
     onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onWaiting?: ReactEventHandler<HTMLAnchorElement>
@@ -9082,13 +8962,21 @@ exports[`TextLink 1`] = `
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
     part?: string
     ping?: string
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
-        | (instance: HTMLAnchorElement | null) => void
-        | RefObject<HTMLAnchorElement>
-        | string
+        | (instance: HTMLAnchorElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLAnchorElement | null>
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -9266,9 +9154,8 @@ exports[`Textarea 1`] = `
     onPaste?: ClipboardEventHandler<HTMLTextAreaElement>
     placeholder?: string
     ref?: 
-        | (instance: HTMLTextAreaElement | null) => void
-        | RefObject<HTMLTextAreaElement>
-        | string
+        | (instance: HTMLTextAreaElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTextAreaElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -9298,7 +9185,7 @@ exports[`ThemeNameConsumer 1`] = `
 {
   exportType: component,
   props: {
-    children: (name: string) => ReactElement<any, string | JSXElementConstructor<any>>
+    children: (name: string) => ReactElement<unknown, string | JSXElementConstructor<any>>
 },
 }
 `;
@@ -9354,9 +9241,8 @@ exports[`Toggle 1`] = `
     on: boolean
     onChange: ChangeHandler
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     size?: 
         | "small"
         | "standard"
@@ -9426,9 +9312,8 @@ exports[`makeLinkComponent 1`] = `
 {
   exportType: component,
   props: {
-    defaultProps?: never
     displayName?: string
-    propTypes?: never
+    propTypes?: any
 },
 }
 `;

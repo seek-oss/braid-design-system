@@ -1,8 +1,7 @@
 import { type ReactNode, useEffect, useRef } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
-import { useLocation } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { useLocation, BrowserRouter } from 'react-router';
 
 import { App } from './App/App';
 import { ConfigProvider } from './App/ConfigContext';

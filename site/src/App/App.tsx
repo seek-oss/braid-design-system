@@ -8,8 +8,7 @@ import {
 } from 'braid-src/lib/components';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { StrictMode, useEffect } from 'react';
-import { Route, Routes, Navigate } from 'react-router';
-import { Link as ReactRouterLink } from 'react-router-dom';
+import { Route, Routes, Navigate, Link as ReactRouterLink } from 'react-router';
 
 import { DocDetails } from './DocNavigation/DocDetails';
 import { DocNavigation } from './DocNavigation/DocNavigation';

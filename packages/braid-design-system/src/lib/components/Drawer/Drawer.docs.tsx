@@ -183,9 +183,11 @@ const docs: ComponentDocs = {
       description: (
         <Text>There are a variety of standard widths to choose from.</Text>
       ),
-      Example: ({ setState, getState, toggleState }) =>
+      Example: ({ setDefaultState, setState, getState, toggleState }) =>
         source(
           <>
+            {setDefaultState('width', 'small')}
+
             <Inline space="small">
               <Button
                 onClick={() => {

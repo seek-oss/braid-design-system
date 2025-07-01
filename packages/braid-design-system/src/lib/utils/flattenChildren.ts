@@ -6,7 +6,8 @@ import {
   isValidElement,
   cloneElement,
 } from 'react';
-import { isFragment } from 'react-is';
+
+import { isFragment } from './isFragment';
 
 type ReactChild = ReactElement | string | number;
 
