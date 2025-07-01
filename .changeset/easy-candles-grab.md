@@ -12,9 +12,9 @@ updated:
 **MIGRATION GUIDE:**
 ```diff
 # App.tsx
-- import { apac } from 'braid-design-system/themes/apac';
-+ import { seekJobs } from 'braid-design-system/themes/seekJobs';
+- import apac from 'braid-design-system/themes/apac';
++ import seekJobs from 'braid-design-system/themes/seekJobs';
 
-- <BraidProvider theme={apacTheme} ...>
-+ <BraidProvider theme={seekJobsTheme} ...>
+- <BraidProvider theme={apac} ...>
++ <BraidProvider theme={seekJobs} ...>
 ```
