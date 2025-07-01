@@ -4,4 +4,4 @@
 '@braid-design-system/docs-ui': patch
 ---
 
-Add React 19 to the peer dependency range
+Add support for React 19.x by adding it to the peer dependency range
