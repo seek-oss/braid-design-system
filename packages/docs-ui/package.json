@@ -36,12 +36,12 @@
     "@vanilla-extract/css": "^1.9.2"
   },
   "devDependencies": {
-    "@types/react": "^18.3.18",
+    "@types/react": "^19.1.8",
     "braid-design-system": "workspace:*",
-    "react": "^18.3.1"
+    "react": "^19.1.0"
   },
   "peerDependencies": {
     "braid-design-system": "^33.0.0",
-    "react": "^18.2.0"
+    "react": "^19.1.0"
   }
 }

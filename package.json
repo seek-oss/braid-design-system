@@ -54,7 +54,7 @@
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.19.68",
-    "@types/react": "^18.3.18",
+    "@types/react": "^19.1.8",
     "@types/sanitize-html": "^2.13.0",
     "@types/webpack-env": "^1.18.5",
     "@vanilla-extract/vite-plugin": "^5.0.7",

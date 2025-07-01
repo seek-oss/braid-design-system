@@ -2,7 +2,7 @@ import '../../entries/reset';
 
 import { storiesOf } from '@storybook/react';
 import { type ReactNode, Fragment } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 import type { ComponentScreenshot } from 'site/types';
 
 import { BraidProvider, ToastProvider } from '../components';
