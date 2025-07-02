@@ -85,9 +85,6 @@ importers:
       nx:
         specifier: ^15.9.7
         version: 15.9.7(@swc/core@1.12.1)
-      panzoom:
-        specifier: ^9.4.2
-        version: 9.4.2(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       prettier:
         specifier: ^3.4.1
         version: 3.5.3
