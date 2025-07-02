@@ -1,5 +1,5 @@
-import { useArgs } from '@storybook/preview-api';
-import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from 'storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Autosuggest, filterSuggestions, IconSearch, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';

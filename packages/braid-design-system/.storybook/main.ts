@@ -1,9 +1,12 @@
+import { createRequire } from "node:module";
 /* eslint-disable no-console */
 import fs from 'fs';
-import path from 'path';
+import path, { dirname, join } from 'path';
 
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import { babel, webpackFinal } from 'sku/config/storybook';
+
+const require = createRequire(import.meta.url);
 
 const screenshotsIndexer = {
   test: /\.screenshots\.[tj]sx?$/,
@@ -46,7 +49,7 @@ const screenshotsIndexer = {
 
 const config: StorybookConfig = {
   framework: {
-    name: '@storybook/react-webpack5',
+    name: getAbsolutePath("@storybook/react-webpack5"),
     options: {
       builder: {
         fsCache: true,
@@ -64,3 +67,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import React, { type ComponentProps } from 'react';
 
 import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
