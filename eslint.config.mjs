@@ -3,6 +3,7 @@ import { dirname, join, relative } from 'path';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import eslintConfigSeek from 'eslint-config-seek';
+import storybook from 'eslint-plugin-storybook';
 import fastGlob from 'fast-glob';
 import { load as loadYaml } from 'js-yaml';
 const { isDynamicPattern, globSync } = fastGlob; // eslint-disable-line import-x/no-named-as-default-member -- commonjs module, will move to built in with node 22.
@@ -47,10 +48,11 @@ const gitIgnoresFromWorkspaces = workspaces
 
 export default [
   {
-    ignores: ['**/bin.js'],
+    ignores: ['**/bin.js', '!.storybook'],
   },
   ...gitIgnoresFromWorkspaces,
   ...eslintConfigSeek,
+  ...storybook.configs['flat/recommended'],
   {
     rules: {
       'import-x/no-cycle': 'warn',
@@ -79,8 +81,7 @@ export default [
         },
       ],
     },
-  },
-  // Prevent importing via project paths, with exception for site-related files
+  }, // Prevent importing via project paths, with exception for site-related files
   {
     files: ['**/*.{js,ts,tsx}'],
     ignores: [
@@ -95,8 +96,7 @@ export default [
         },
       ],
     },
-  },
-  // Lint non-project ts files, e.g. vitest and storybook config
+  }, // Lint non-project ts files, e.g. vitest and storybook config
   {
     languageOptions: {
       parserOptions: {

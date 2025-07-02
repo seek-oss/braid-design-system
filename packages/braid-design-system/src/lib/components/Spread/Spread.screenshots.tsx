@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Box, Spread, Stack, Text, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';

@@ -1,6 +1,6 @@
 import '../src/entries/reset';
 
-import type { Preview, Decorator } from '@storybook/react';
+import type { Preview, Decorator } from '@storybook/react-webpack5';
 import { BrowserRouter } from 'react-router-dom';
 
 import { BraidProvider, ToastProvider } from '../src/lib/components';

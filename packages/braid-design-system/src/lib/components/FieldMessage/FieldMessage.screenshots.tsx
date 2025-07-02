@@ -1,8 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { FieldMessage, Stack } from '../';
-
-// !! Review this
 
 const meta = {
   title: 'Components/FieldMessage',

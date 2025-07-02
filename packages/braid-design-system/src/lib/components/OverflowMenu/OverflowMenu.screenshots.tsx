@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import type React from 'react';
 
 import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';

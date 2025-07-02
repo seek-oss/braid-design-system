@@ -1,8 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { calc } from '@vanilla-extract/css-utils';
 import React, { type MutableRefObject, type ReactNode, useRef } from 'react';
-
-// !! Review this
 
 import {
   Box,

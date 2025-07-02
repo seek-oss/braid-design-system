@@ -1,5 +1,5 @@
-import { useArgs } from '@storybook/preview-api';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { useArgs } from 'storybook/preview-api';
 
 import { Badge, Box, Inline, Stack, Text, Tiles } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';

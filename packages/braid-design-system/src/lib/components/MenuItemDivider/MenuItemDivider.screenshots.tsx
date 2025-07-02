@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Inline, MenuItem, MenuItemCheckbox, MenuItemDivider } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
