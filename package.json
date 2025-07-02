@@ -68,14 +68,12 @@
     "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
     "nx": "^15.9.7",
-    "panzoom": "9.4.2",
+    "panzoom": "^9.4.2",
     "prettier": "^3.4.1",
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
     "tsx": "^4.19.2",
     "typescript": "~5.5.4",
-    "webpack": "^5.76.0",
-    "webpack-merge": "^6.0.1",
     "vitest": "^3.2.4"
   },
   "volta": {

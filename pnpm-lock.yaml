@@ -86,7 +86,7 @@ importers:
         specifier: ^15.9.7
         version: 15.9.7(@swc/core@1.12.1)
       panzoom:
-        specifier: 9.4.2
+        specifier: ^9.4.2
         version: 9.4.2(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       prettier:
         specifier: ^3.4.1
@@ -106,12 +106,6 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@18.19.112)(jiti@2.4.2)(jsdom@20.0.3)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)
-      webpack:
-        specifier: ^5.76.0
-        version: 5.99.9(@swc/core@1.12.1)
-      webpack-merge:
-        specifier: ^6.0.1
-        version: 6.0.1
 
   integration:
     dependencies:
