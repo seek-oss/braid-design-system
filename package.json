@@ -85,7 +85,9 @@
     "renovate-config-seek": "0.4.0",
     "skott": "^0.32.1",
     "tsx": "^4.19.2",
-    "typescript": "~5.5.4"
+    "typescript": "~5.5.4",
+    "webpack": "^5.76.0",
+    "webpack-merge": "^6.0.1"
   },
   "volta": {
     "node": "20.19.0"
@@ -102,9 +104,5 @@
   },
   "skuSkipPostInstall": true,
   "skuSkipConfigure": true,
-  "skuSkipValidatePeerDeps": true,
-  "devDependencies": {
-    "webpack": "^5.76.0",
-    "webpack-merge": "^6.0.1"
-  }
+  "skuSkipValidatePeerDeps": true
 }
