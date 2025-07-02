@@ -50,7 +50,7 @@ const gitIgnoresFromWorkspaces = workspaces
 
 export default [
   {
-    ignores: ['**/bin.js'],
+    ignores: ['!.storybook', '**/bin.js'],
   },
   ...gitIgnoresFromWorkspaces,
   ...eslintConfigSeek,

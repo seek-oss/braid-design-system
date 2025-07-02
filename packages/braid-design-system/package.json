@@ -251,8 +251,7 @@
     "sku": "14.2.0",
     "storybook": "9.0.15",
     "svgo": "^2.8.0",
-    "title-case": "^3.0.3",
-    "eslint-plugin-storybook": "9.0.15"
+    "title-case": "^3.0.3"
   },
   "peerDependencies": {
     "react": "^18",
