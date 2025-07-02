@@ -207,6 +207,9 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../source.macro
+      '@storybook/csf-tools':
+        specifier: ^8.6.14
+        version: 8.6.14(storybook@8.6.14(prettier@3.5.3))
       '@storybook/preview-api':
         specifier: 8.6.14
         version: 8.6.14(storybook@8.6.14(prettier@3.5.3))
@@ -2423,6 +2426,11 @@ packages:
     peerDependenciesMeta:
       prettier:
         optional: true
+
+  '@storybook/csf-tools@8.6.14':
+    resolution: {integrity: sha512-Eymed7SmNimrj3azp1DGMEp9f3UdhvmCLqGsuzeKIQoPawwW0135ybls1aG4XfkhcAx51y1jTZG31aipFPRrfg==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
   '@storybook/global@5.0.0':
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
@@ -11372,6 +11380,10 @@ snapshots:
       - storybook
       - supports-color
       - utf-8-validate
+
+  '@storybook/csf-tools@8.6.14(storybook@8.6.14(prettier@3.5.3))':
+    dependencies:
+      storybook: 8.6.14(prettier@3.5.3)
 
   '@storybook/global@5.0.0': {}
 
