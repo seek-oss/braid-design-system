@@ -1,11 +1,11 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
 
 import { readFileSync } from 'fs';
 import { dirname, join, relative } from 'path';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import eslintConfigSeek from 'eslint-config-seek';
+import storybook from 'eslint-plugin-storybook';
 import fastGlob from 'fast-glob';
 import { load as loadYaml } from 'js-yaml';
 const { isDynamicPattern, globSync } = fastGlob; // eslint-disable-line import-x/no-named-as-default-member -- commonjs module, will move to built in with node 22.
@@ -48,62 +48,68 @@ const gitIgnoresFromWorkspaces = workspaces
   // Filter out workspaces that didn't have a gitignore file
   .filter(Boolean);
 
-export default [{
-  ignores: ['**/bin.js'],
-}, ...gitIgnoresFromWorkspaces, ...eslintConfigSeek, {
-  rules: {
-    'import-x/no-cycle': 'warn',
-    'import-x/no-relative-packages': 'error',
-    'import-x/order': [
-      'error',
-      {
-        'newlines-between': 'always',
-        alphabetize: { order: 'asc' },
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        pathGroups: [
-          {
-            pattern: '*.css',
-            group: 'index',
-            position: 'after',
-            patternOptions: { matchBase: true },
-          },
-        ],
-      },
-    ],
+export default [
+  {
+    ignores: ['**/bin.js'],
   },
-}, // Prevent importing via project paths, with exception for site-related files
-{
-  files: ['**/*.{js,ts,tsx}'],
-  ignores: [
-    'packages/braid-design-system/**/*.{docs,gallery,screenshots,stories}.tsx',
-    'site/**/*.{ts,tsx}',
-  ],
-  rules: {
-    'no-restricted-imports': [
-      'error',
-      {
-        patterns: ['braid-src/**', 'site/**', '**/site/**'],
-      },
+  ...gitIgnoresFromWorkspaces,
+  ...eslintConfigSeek,
+  {
+    rules: {
+      'import-x/no-cycle': 'warn',
+      'import-x/no-relative-packages': 'error',
+      'import-x/order': [
+        'error',
+        {
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc' },
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          pathGroups: [
+            {
+              pattern: '*.css',
+              group: 'index',
+              position: 'after',
+              patternOptions: { matchBase: true },
+            },
+          ],
+        },
+      ],
+    },
+  }, // Prevent importing via project paths, with exception for site-related files
+  {
+    files: ['**/*.{js,ts,tsx}'],
+    ignores: [
+      'packages/braid-design-system/**/*.{docs,gallery,screenshots,stories}.tsx',
+      'site/**/*.{ts,tsx}',
     ],
-  },
-}, // Lint non-project ts files, e.g. jest and storybook config
-{
-  languageOptions: {
-    parserOptions: {
-      projectService: {
-        allowDefaultProject: [
-          'jest/setupTests.ts',
-          'packages/braid-design-system/.storybook/*.ts',
-          'packages/braid-design-system/.storybook/*.tsx',
-        ],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['braid-src/**', 'site/**', '**/site/**'],
+        },
+      ],
+    },
+  }, // Lint non-project ts files, e.g. jest and storybook config
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: [
+            'jest/setupTests.ts',
+            'packages/braid-design-system/.storybook/*.ts',
+            'packages/braid-design-system/.storybook/*.tsx',
+          ],
+        },
       },
     },
   },
-}, ...storybook.configs["flat/recommended"]];
+  ...storybook.configs['flat/recommended'],
+];
