@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
+import React from 'react';
 
 import { IconBookmark } from '../';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 import Toast from './Toast';
-import { Meta } from '@storybook/react';
-import React from 'react';
 
 const meta = {
   title: 'Components/useToast',
@@ -18,7 +17,7 @@ export default meta;
 
 export const Criticaltoast = {
   name: 'Critical toast',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -42,7 +41,7 @@ export const Criticaltoast = {
 
 export const Criticaltoastwactions = {
   name: 'Critical toast w/actions',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -70,7 +69,7 @@ export const Criticaltoastwactions = {
 
 export const Criticaltoastwdescriptions = {
   name: 'Critical toast w/descriptions',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -99,7 +98,7 @@ export const Criticaltoastwdescriptions = {
 
 export const Positivetoast = {
   name: 'Positive toast',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -123,7 +122,7 @@ export const Positivetoast = {
 
 export const Positivetoastwactions = {
   name: 'Positive toast w/actions',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -151,7 +150,7 @@ export const Positivetoastwactions = {
 
 export const Positivetoastwdescriptions = {
   name: 'Positive toast w/descriptions',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -180,7 +179,7 @@ export const Positivetoastwdescriptions = {
 
 export const Neutraltoast = {
   name: 'Neutral toast',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -204,7 +203,7 @@ export const Neutraltoast = {
 
 export const Neutraltoastwactions = {
   name: 'Neutral toast w/actions',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -232,7 +231,7 @@ export const Neutraltoastwactions = {
 
 export const Neutraltoastwdescriptions = {
   name: 'Neutral toast w/descriptions',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -261,7 +260,7 @@ export const Neutraltoastwdescriptions = {
 
 export const Neutraltoastwithicon = {
   name: 'Neutral toast with icon',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -286,7 +285,7 @@ export const Neutraltoastwithicon = {
 
 export const Neutraltoastwactionsandicon = {
   name: 'Neutral toast w/actions and icon',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast
@@ -315,7 +314,7 @@ export const Neutraltoastwactionsandicon = {
 
 export const Neutraltoastwdescriptionsandicon = {
   name: 'Neutral toast w/descriptions and icon',
-  render: () => {
+  Render: () => {
     const { vanillaTheme } = useBraidTheme();
     return (
       <Toast

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { calc } from '@vanilla-extract/css-utils';
-import React, { MutableRefObject, ReactNode, useRef } from 'react';
+import React, { type MutableRefObject, type ReactNode, useRef } from 'react';
 
 // !! Review this
 
@@ -17,19 +17,13 @@ import {
 } from '../';
 import { vars } from '../../../entries/css';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 import { Menu } from './MenuRenderer';
-import { Popover, PopoverProps } from '../private/Popover/Popover';
 
 // Constants for stories
 const triggerHeight = 44;
-const triggerPosition = {
-  top: 200,
-  bottom: 200,
-  left: 20,
-  right: 20,
-};
 const menuDefaultProps = {
   dispatch: () => {},
   focusTrigger: () => {},
@@ -193,24 +187,22 @@ export const Triggergrowstoparentlayout: Story = {
 
 export const Placementbottom: Story = {
   name: 'Placement bottom',
-  render: ({ placement }) => {
-    return (
-      <PopoverWrapper popoverPlacement={placement}>
-        {({ triggerRef }) => (
-          <Popover
-            {...popoverDefaultProps}
-            triggerRef={triggerRef}
-            placement={placement}
-          >
-            <Menu {...menuDefaultProps} placement="bottom">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Popover>
-        )}
-      </PopoverWrapper>
-    );
-  },
+  render: ({ placement }) => (
+    <PopoverWrapper popoverPlacement={placement}>
+      {({ triggerRef }) => (
+        <Popover
+          {...popoverDefaultProps}
+          triggerRef={triggerRef}
+          placement={placement}
+        >
+          <Menu {...menuDefaultProps} placement="bottom">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+        </Popover>
+      )}
+    </PopoverWrapper>
+  ),
   args: {
     placement: 'bottom',
   },
@@ -218,25 +210,23 @@ export const Placementbottom: Story = {
 
 export const Placementbottomwithsmalloffset: Story = {
   name: 'Placement bottom with small offset',
-  render: ({ placement }) => {
-    return (
-      <PopoverWrapper popoverPlacement={placement}>
-        {({ triggerRef }) => (
-          <Popover
-            {...popoverDefaultProps}
-            triggerRef={triggerRef}
-            placement={placement}
-            offsetSpace="small"
-          >
-            <Menu {...menuDefaultProps} placement="bottom">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Popover>
-        )}
-      </PopoverWrapper>
-    );
-  },
+  render: ({ placement }) => (
+    <PopoverWrapper popoverPlacement={placement}>
+      {({ triggerRef }) => (
+        <Popover
+          {...popoverDefaultProps}
+          triggerRef={triggerRef}
+          placement={placement}
+          offsetSpace="small"
+        >
+          <Menu {...menuDefaultProps} placement="bottom">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+        </Popover>
+      )}
+    </PopoverWrapper>
+  ),
   args: {
     placement: 'bottom',
     offsetSpace: 'small',
@@ -245,24 +235,22 @@ export const Placementbottomwithsmalloffset: Story = {
 
 export const Placementtop: Story = {
   name: 'Placement top',
-  render: ({ placement }) => {
-    return (
-      <PopoverWrapper popoverPlacement={placement}>
-        {({ triggerRef }) => (
-          <Popover
-            {...popoverDefaultProps}
-            triggerRef={triggerRef}
-            placement={placement}
-          >
-            <Menu {...menuDefaultProps} placement="top">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Popover>
-        )}
-      </PopoverWrapper>
-    );
-  },
+  render: ({ placement }) => (
+    <PopoverWrapper popoverPlacement={placement}>
+      {({ triggerRef }) => (
+        <Popover
+          {...popoverDefaultProps}
+          triggerRef={triggerRef}
+          placement={placement}
+        >
+          <Menu {...menuDefaultProps} placement="top">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+        </Popover>
+      )}
+    </PopoverWrapper>
+  ),
   args: {
     placement: 'top',
   },
@@ -270,25 +258,23 @@ export const Placementtop: Story = {
 
 export const Placementtopwithsmalloffset: Story = {
   name: 'Placement top with small offset',
-  render: ({ placement }) => {
-    return (
-      <PopoverWrapper popoverPlacement={placement}>
-        {({ triggerRef }) => (
-          <Popover
-            {...popoverDefaultProps}
-            triggerRef={triggerRef}
-            placement={placement}
-            offsetSpace="small"
-          >
-            <Menu {...menuDefaultProps} placement="top">
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-              <MenuItem onClick={() => {}}>Item</MenuItem>
-            </Menu>
-          </Popover>
-        )}
-      </PopoverWrapper>
-    );
-  },
+  render: ({ placement }) => (
+    <PopoverWrapper popoverPlacement={placement}>
+      {({ triggerRef }) => (
+        <Popover
+          {...popoverDefaultProps}
+          triggerRef={triggerRef}
+          placement={placement}
+          offsetSpace="small"
+        >
+          <Menu {...menuDefaultProps} placement="top">
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+            <MenuItem onClick={() => {}}>Item</MenuItem>
+          </Menu>
+        </Popover>
+      )}
+    </PopoverWrapper>
+  ),
 
   args: {
     placement: 'top',
