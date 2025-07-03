@@ -35,6 +35,8 @@ export const base = style({
   textDecoration: vars.linkDecoration,
   textDecorationThickness,
   textUnderlineOffset: 3,
+  outlineOffset: '0.2em',
+  borderRadius: vars.borderRadius.small, // Ensures focus ring is rounded
   ':hover': {
     color: textLinkVars.colorHover,
     textDecoration: 'underline',
@@ -48,12 +50,6 @@ export const base = style({
       to browser support policy of Edge 16+.
     */
     textDecorationThickness,
-  },
-  ':focus-visible': {
-    color: textLinkVars.colorHover,
-    outline: `${vars.focusRingSize} solid ${vars.borderColor.focus}`,
-    outlineOffset: '0.2em',
-    borderRadius: vars.borderRadius.small,
   },
 });
 
