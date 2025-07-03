@@ -2,11 +2,7 @@ import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { colorModeStyle } from '../../../css/colorModeStyle';
-import {
-  focusOutlineColor,
-  outlineTransition,
-  resetOutline,
-} from '../../../css/focusOutline';
+import { outlineStyle } from '../../../css/outlineStyle';
 import { responsiveStyle } from '../../../css/responsiveStyle';
 import { debugTouchable } from '../touchable/debugTouchable';
 import { hitArea } from '../touchable/hitArea';
@@ -53,22 +49,20 @@ export const realField = style([
   debugTouchable(),
 ]);
 
-export const fakeField = style({
-  height: fieldSize,
-  width: fieldSize,
-  outline: resetOutline,
-  transition: outlineTransition,
-  selectors: {
-    // Overrides `surface` background of checked checkbox
-    // to make `formAccent` edge crisp on dark background
-    [`${realField}[type="checkbox"]:checked ~ &`]: {
-      background: 'transparent',
-    },
-    [`${realField}:focus-visible ~ &`]: {
-      outlineColor: focusOutlineColor,
+export const fakeField = style([
+  {
+    height: fieldSize,
+    width: fieldSize,
+    selectors: {
+      // Overrides `surface` background of checked checkbox
+      // to make `formAccent` edge crisp on dark background
+      [`${realField}[type="checkbox"]:checked ~ &`]: {
+        background: 'transparent',
+      },
     },
   },
-});
+  outlineStyle(`${realField}:focus-visible ~ &`),
+]);
 
 export const labelOffset = style({
   paddingTop: calc(fieldSize).subtract(labelCapHeight).divide(2).toString(),

@@ -1,10 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-import {
-  focusOutlineColor,
-  outlineTransition,
-  resetOutline,
-} from '../focusOutline';
+import { atomicOutlineStyleRule } from '../outlineStyle';
 
 export const base = style({
   margin: 0,
@@ -15,11 +11,6 @@ export const base = style({
   font: 'inherit',
   verticalAlign: 'baseline',
   WebkitTapHighlightColor: 'transparent',
-  outline: resetOutline,
-  transition: outlineTransition,
-  ':focus-visible': {
-    outlineColor: focusOutlineColor,
-  },
 });
 
 // HTML5 display-role reset for older browsers
@@ -57,7 +48,9 @@ const transparent = style({
   backgroundColor: 'transparent',
 });
 
-const field = style([block, appearance, transparent]);
+const focusVisible = style(atomicOutlineStyleRule());
+
+const field = style([block, appearance, transparent, focusVisible]);
 
 // Custom reset rules
 const mark = style([
@@ -105,12 +98,15 @@ const input = style([
   }),
 ]);
 
-const button = style([transparent]);
+const button = style([transparent, focusVisible]);
 
-const a = style({
-  textDecoration: 'none',
-  color: 'inherit',
-});
+const a = style([
+  focusVisible,
+  {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
+]);
 
 export const element = {
   article: block,

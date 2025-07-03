@@ -3,11 +3,7 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../css/atoms/atoms';
 import { colorModeStyle } from '../../css/colorModeStyle';
-import {
-  focusOutlineColor,
-  outlineTransition,
-  resetOutline,
-} from '../../css/focusOutline';
+import { outlineStyle } from '../../css/outlineStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 import { vars } from '../../themes/vars.css';
@@ -169,17 +165,23 @@ export const progressUnfilled = style({
   transform: 'translateX(-101%)',
 });
 
-export const indicatorContainer = style({
-  width: stepIndicatorSize,
-  outline: resetOutline,
-  transition: [vars.transition.fast, outlineTransition].join(', '),
-  selectors: {
-    [`${step}:active &`]: {
-      transform: vars.transform.touchable,
-    },
-    [`${step}:focus-visible &`]: {
-      outlineColor: focusOutlineColor,
-      transform: 'scale(1.2)',
+const focusVisibleSelector = `${step}:focus-visible &`;
+
+const { transition: outlineTransition, ...outline } =
+  outlineStyle(focusVisibleSelector);
+
+export const indicatorContainer = style([
+  outline,
+  {
+    width: stepIndicatorSize,
+    transition: [vars.transition.fast, outlineTransition].join(', '),
+    selectors: {
+      [`${step}:active &`]: {
+        transform: vars.transform.touchable,
+      },
+      [focusVisibleSelector]: {
+        transform: 'scale(1.2)',
+      },
     },
   },
-});
+]);

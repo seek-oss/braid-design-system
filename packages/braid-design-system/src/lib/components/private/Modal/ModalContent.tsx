@@ -65,6 +65,7 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
           tabIndex={-1}
           component="span"
           position="relative"
+          outline="focus"
           borderRadius="small" // Ensures focus ring is rounded
           className={styles.headingRoot}
         >

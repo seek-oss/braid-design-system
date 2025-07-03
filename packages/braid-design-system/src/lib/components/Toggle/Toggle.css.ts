@@ -3,11 +3,7 @@ import { calc } from '@vanilla-extract/css-utils';
 import { rgba } from 'polished';
 
 import { colorModeStyle } from '../../css/colorModeStyle';
-import {
-  focusOutlineColor,
-  outlineTransition,
-  resetOutline,
-} from '../../css/focusOutline';
+import { outlineStyle } from '../../css/outlineStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 import { debugTouchable } from '../private/touchable/debugTouchable';
 import { hitArea } from '../private/touchable/hitArea';
@@ -118,26 +114,29 @@ export const slider = styleVariants(sizes, (size) => {
     anticipationRatio,
   );
 
-  return {
-    height: vars.inlineFieldSize[size],
-    width: vars.inlineFieldSize[size],
-    outline: resetOutline,
-    transition: [vars.transition.fast, outlineTransition].join(', '),
-    selectors: {
-      [`${realField}:active + ${slideContainer} &`]: {
-        transform: `translateX(${calc.negate(anticipation)})`,
-      },
-      [`${realField}:checked + ${slideContainer} &`]: {
-        transform: `translateX(${slideDistance})`,
-      },
-      [`${realField}:active:checked + ${slideContainer} &`]: {
-        transform: `translateX(${calc.add(slideDistance, anticipation)})`,
-      },
-      [`${realField}:focus-visible + ${slideContainer} &`]: {
-        outlineColor: focusOutlineColor,
+  const { transition: outlineTransition, ...outline } = outlineStyle(
+    `${realField}:focus-visible + ${slideContainer} &`,
+  );
+
+  return [
+    outline,
+    {
+      height: vars.inlineFieldSize[size],
+      width: vars.inlineFieldSize[size],
+      transition: [vars.transition.fast, outlineTransition].join(', '),
+      selectors: {
+        [`${realField}:active + ${slideContainer} &`]: {
+          transform: `translateX(${calc.negate(anticipation)})`,
+        },
+        [`${realField}:checked + ${slideContainer} &`]: {
+          transform: `translateX(${slideDistance})`,
+        },
+        [`${realField}:active:checked + ${slideContainer} &`]: {
+          transform: `translateX(${calc.add(slideDistance, anticipation)})`,
+        },
       },
     },
-  };
+  ];
 });
 
 // Subtly scale the outline overlay to prevent thumb background
