@@ -10,7 +10,7 @@ const REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
  * @see https://github.com/facebook/react/blob/main/packages/react-is/src/ReactIs.js#L40
  */
 
-export const isReactElementType = (value: any) => {
+const isReactElementType = (value: any) => {
   if (typeof value !== 'object' || value === null) {
     return false;
   }
