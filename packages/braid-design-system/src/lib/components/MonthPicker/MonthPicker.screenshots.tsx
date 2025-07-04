@@ -9,10 +9,7 @@ const meta = {
   component: MonthPicker,
   parameters: {
     screenshotOnlyInWireframe: false,
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
   argTypes: {
     value: {

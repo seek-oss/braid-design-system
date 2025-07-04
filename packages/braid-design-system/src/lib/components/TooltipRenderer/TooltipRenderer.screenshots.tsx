@@ -11,9 +11,7 @@ const meta: Meta<typeof TooltipRenderer> = {
   component: TooltipRenderer,
   parameters: {
     layout: 'padded',
-    chromatic: {
-      viewports: [320],
-    },
+     ,
   },
   decorators: [
     (Story) => (

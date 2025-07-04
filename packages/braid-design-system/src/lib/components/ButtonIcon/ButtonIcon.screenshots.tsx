@@ -7,10 +7,7 @@ import { LayoutTest } from '../../utils/LayoutTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
 const defaultParams = {
-  chromatic: {
-    viewports: [320],
-  },
-  layout: 'fullscreen',
+   ,
 };
 
 const meta = {

@@ -30,10 +30,7 @@ export const Collapsed: Story = {
     </Disclosure>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -50,10 +47,7 @@ export const Expanded: Story = {
     </Disclosure>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -71,10 +65,7 @@ export const ExpandedWithCustomSpace: Story = {
     </Disclosure>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -92,10 +83,7 @@ export const WeakWeight: Story = {
     </Disclosure>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -118,10 +106,7 @@ export const InlineAndCollapsed: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -144,10 +129,7 @@ export const InlineAndExpanded: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -171,10 +153,7 @@ export const InlineExpandedWithCustomSpace: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -201,10 +180,7 @@ export const InlineCollapsedWithTrailingText: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -231,10 +207,7 @@ export const InlineExpandedWithTrailingText: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -256,10 +229,7 @@ export const SizesAndDefaultSpacing: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -282,9 +252,6 @@ export const InlineSizesAndDefaultSpacing: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

@@ -24,10 +24,7 @@ export const PasswordFieldStory: Story = {
     value: 'qwerty',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -39,10 +36,7 @@ export const PasswordFieldwithmessage: Story = {
     message: `e.g. Cannot be "password"`,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -54,10 +48,7 @@ export const PasswordFieldwithsecondarylabel: Story = {
     value: 'qwerty',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -72,10 +63,7 @@ export const PasswordFieldwithtertiarylabel: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -86,10 +74,7 @@ export const PasswordFieldwithnovisuallabel: Story = {
     value: 'qwerty',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -102,10 +87,7 @@ export const PasswordFieldwithdescription: Story = {
       'Must be 8 characters long and include a capital letter, a number and a symbol',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -118,10 +100,7 @@ export const PasswordFieldwithadescriptionandnovisuallabel: Story = {
     value: 'qwerty',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -134,10 +113,7 @@ export const PasswordFieldwithcriticalmessage: Story = {
     message: 'Not strong enough',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -150,10 +126,7 @@ export const PasswordFieldwithpositivemessage: Story = {
     tone: 'positive',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -166,10 +139,7 @@ export const PasswordFieldwithcautionmessage: Story = {
     tone: 'caution',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -221,10 +191,7 @@ export const PasswordFielddisabled: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -236,9 +203,6 @@ export const Contrast: Story = {
     </BackgroundContrastTest>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

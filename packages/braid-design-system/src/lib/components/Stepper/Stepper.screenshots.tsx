@@ -29,7 +29,6 @@ export const Linear: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -52,7 +51,6 @@ export const Nonlinear: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -73,7 +71,6 @@ export const Neutral: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -94,6 +91,5 @@ export const Leftaligned: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };

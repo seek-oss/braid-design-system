@@ -8,10 +8,7 @@ const meta = {
   component: Notice,
   parameters: {
     screenshotOnlyInWireframe: false,
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
   argTypes: {
     tone: {

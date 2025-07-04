@@ -54,10 +54,7 @@ export const Default: Story = {
   name: 'Default',
   render: () => <Icons />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -79,10 +76,7 @@ export const AutoSizeViaTextContext: Story = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -109,10 +103,7 @@ export const AutoSizeViaHeadingContext: Story = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -134,10 +125,7 @@ export const AutoToneViaTextContext: Story = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -150,10 +138,7 @@ export const OverrideAutoTone: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -172,10 +157,7 @@ export const AutoToneWithBackgroundContrast: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -199,10 +181,7 @@ export const AlignmentToText: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -226,10 +205,7 @@ export const AlignmentToButtons: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -275,9 +251,6 @@ export const InlineSizingTest: Story = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

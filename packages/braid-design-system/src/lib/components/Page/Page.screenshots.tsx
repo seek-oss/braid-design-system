@@ -35,10 +35,7 @@ const meta = {
   component: Page,
   parameters: {
     screenshotOnlyInWireframe: true,
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
   argTypes: {
     children: {

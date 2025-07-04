@@ -42,7 +42,6 @@ export const ActiveIndicatorBasic: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -71,7 +70,6 @@ export const ActiveIndicatorWithIcons: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -100,7 +98,6 @@ export const ActiveIndicatorWithBadge: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -141,7 +138,6 @@ export const ActiveIndicatorWithIconsAndBadge: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -177,7 +173,6 @@ export const LeftAligned: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -205,7 +200,6 @@ export const CenterAligned: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -241,7 +235,6 @@ export const WithGutter: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -277,7 +270,6 @@ export const WithGutterAndReservedHitArea: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -317,7 +309,6 @@ export const TestCenterAlignedTabsOnMobile: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -357,7 +348,6 @@ export const TestSelectedTabScrolledIntoView: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -397,7 +387,6 @@ export const TestSelectedTabWithGutterScrolledIntoView: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -425,7 +414,6 @@ export const FullWidthDivider: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -453,7 +441,6 @@ export const FullWidthDividerCenterAligned: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -481,7 +468,6 @@ export const FullWidthDividerWithGutter: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -515,7 +501,6 @@ export const WithAnIcon: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -549,6 +534,5 @@ export const SizeSmall: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };

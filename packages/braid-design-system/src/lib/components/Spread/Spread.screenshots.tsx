@@ -27,7 +27,6 @@ export const Horizontal: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -54,7 +53,6 @@ export const Horizontalsinglefullwidthshouldbecontentwidthandspreadtoeachside: S
       chromatic: {
         viewports: [320, 768, 992, 1200],
       },
-      layout: 'fullscreen',
     },
   };
 
@@ -75,7 +73,6 @@ export const Horizontalbothfullwidthshouldbecontentwidthandspreadtoeachside: Sto
       chromatic: {
         viewports: [320, 768, 992, 1200],
       },
-      layout: 'fullscreen',
     },
   };
 
@@ -92,7 +89,6 @@ export const Horizontalsinglechildfullwidthshouldbecontentwidth: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -114,7 +110,6 @@ export const Horizontalresponsivespace: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -132,7 +127,6 @@ export const HorizontalalignYtop: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -150,7 +144,6 @@ export const HorizontalalignYcenter: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -168,7 +161,6 @@ export const HorizontalalignYbottom: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -186,7 +178,6 @@ export const Horizontalaligncenternoimpact: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -212,7 +203,6 @@ export const Vertical: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -230,7 +220,6 @@ export const Verticalsinglefullwidth: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -253,7 +242,6 @@ export const Verticalresponsivespace: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -272,7 +260,6 @@ export const Verticalalignleft: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -291,7 +278,6 @@ export const Verticalaligncenter: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -310,7 +296,6 @@ export const Verticalalignright: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -329,7 +314,6 @@ export const VerticalalignYcenternoimpact: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -356,7 +340,6 @@ export const TestHorizontalwithoutalignYContentshouldaligntopandnotstretch: Stor
       chromatic: {
         viewports: [320, 768, 992, 1200],
       },
-      layout: 'fullscreen',
     },
   };
 
@@ -378,7 +361,6 @@ export const TestTexttruncationhorizontalshouldconsumeavailablespacewithoutpushi
       chromatic: {
         viewports: [320, 768, 992, 1200],
       },
-      layout: 'fullscreen',
     },
   };
 
@@ -407,6 +389,5 @@ export const TestTexttruncationverticalshouldbelimitedtocontainerwidthandrespect
       chromatic: {
         viewports: [320, 768, 992, 1200],
       },
-      layout: 'fullscreen',
     },
   };

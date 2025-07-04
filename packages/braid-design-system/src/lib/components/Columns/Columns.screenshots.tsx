@@ -12,7 +12,6 @@ const meta = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
   argTypes: {
     space: {

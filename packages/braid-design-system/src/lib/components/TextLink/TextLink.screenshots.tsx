@@ -49,7 +49,6 @@ export const weightregular: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -65,7 +64,6 @@ export const weightweak: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -81,7 +79,6 @@ export const hitArealarge: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -103,7 +100,6 @@ export const hitArealargevirtualtouchtarget: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -121,7 +117,6 @@ export const showVisited: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -140,7 +135,6 @@ export const Regularweightinsideavailabletextsizes: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -162,7 +156,6 @@ export const Weakweightinsideavailabletextsizes: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -181,7 +174,6 @@ export const Regularweightinsideavailabletexttones: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -203,7 +195,6 @@ export const Weakweightinsideavailabletexttones: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -222,7 +213,6 @@ export const Regularweightinsideavailableheadinglevels: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -244,7 +234,6 @@ export const Weakweightinsideavailableheadinglevels: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -275,7 +264,6 @@ export const Iconsinheritregularlinkcolour: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -306,7 +294,6 @@ export const Iconsinheritweaklinkcolour: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -324,7 +311,6 @@ export const Withiconslot: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -342,7 +328,6 @@ export const Withatrailingicon: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -360,7 +345,6 @@ export const Withiconslotandweightweak: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -383,7 +367,6 @@ export const Withatrailingiconandweightweak: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -424,7 +407,6 @@ export const TextContrast: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -465,7 +447,6 @@ export const HeadingContrast: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -529,6 +510,5 @@ export const Underlinepositionwraptest: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };

@@ -47,10 +47,7 @@ const meta = {
   component: Autosuggest,
   parameters: {
     screenshotOnlyInWireframe: false,
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
   argTypes: {
     label: { control: 'text' },
@@ -79,10 +76,7 @@ type Story = StoryObj<typeof Autosuggest>;
 
 export const StandardSuggestions: Story = {
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -91,10 +85,7 @@ export const StandardSuggestionsWithAutomaticSelection: Story = {
     automaticSelection: true,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 

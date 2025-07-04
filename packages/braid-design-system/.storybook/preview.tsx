@@ -5,6 +5,7 @@ import type { Preview } from '@storybook/react-webpack5';
 import * as themes from '../src/lib/themes';
 
 import { withTheme } from './decorators';
+import { modes } from './modes';
 
 const webFontLinkTags = Array.from(
   new Set(
@@ -20,6 +21,13 @@ if (typeof document !== 'undefined') {
 
 const preview: Preview = {
   decorators: [withTheme],
+  parameters: {
+    chromatic: {
+      viewports: [320],
+      modes,
+    },
+    layout: 'fullscreen',
+  },
   globalTypes: {
     theme: {
       name: 'Theme',

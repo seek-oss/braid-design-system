@@ -42,7 +42,6 @@ export const Levels: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -65,7 +64,6 @@ export const LineHeights: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -84,7 +82,6 @@ export const WeakWeight: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -103,7 +100,6 @@ export const Alignment: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -118,7 +114,6 @@ export const ResponsiveAlignment: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -137,7 +132,6 @@ export const MaxLinesOne: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -156,7 +150,6 @@ export const MaxLinesOneInFlex: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -176,7 +169,6 @@ export const MaxLinesThree: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -197,7 +189,6 @@ export const WithIcon: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -221,7 +212,6 @@ export const AlignmentWithIcon: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -242,7 +232,6 @@ export const ResponsiveAlignmentWithIcon: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -291,7 +280,6 @@ export const IconLineHeight: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -310,6 +298,5 @@ export const ContrastTest: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };

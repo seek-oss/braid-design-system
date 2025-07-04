@@ -46,7 +46,6 @@ const defaultParams = {
   chromatic: {
     viewports: [768],
   },
-  layout: 'fullscreen',
 };
 
 export const Defaultvariantfortone: Story = {

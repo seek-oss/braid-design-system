@@ -30,7 +30,6 @@ export const Criticaltoast = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -54,7 +53,6 @@ export const Criticaltoastwactions = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -79,7 +77,6 @@ export const Criticaltoastwdescriptions = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -99,7 +96,6 @@ export const Positivetoast = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -123,7 +119,6 @@ export const Positivetoastwactions = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -148,7 +143,6 @@ export const Positivetoastwdescriptions = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -168,7 +162,6 @@ export const Neutraltoast = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -192,7 +185,6 @@ export const Neutraltoastwactions = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -217,7 +209,6 @@ export const Neutraltoastwdescriptions = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -238,7 +229,6 @@ export const Neutraltoastwithicon = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -263,7 +253,6 @@ export const Neutraltoastwactionsandicon = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -290,6 +279,5 @@ export const Neutraltoastwdescriptionsandicon = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };

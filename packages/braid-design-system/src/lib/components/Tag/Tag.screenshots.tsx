@@ -36,7 +36,6 @@ export const StandardTag: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -60,7 +59,6 @@ export const SmallTag: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -102,7 +100,6 @@ export const TruncatedTag: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -143,7 +140,6 @@ export const Virtualtouchtarget: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -181,6 +177,5 @@ export const Layout: Story = {
     chromatic: {
       viewports: [768],
     },
-    layout: 'fullscreen',
   },
 };

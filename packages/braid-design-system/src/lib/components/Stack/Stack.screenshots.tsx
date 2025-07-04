@@ -40,7 +40,6 @@ const spaceStories = spaces.reduce(
         chromatic: {
           viewports: [320, 768, 992, 1200],
         },
-        layout: 'fullscreen',
       },
     };
     return acc;
@@ -72,7 +71,6 @@ export const AlignToCenter: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -91,7 +89,6 @@ export const AlignToRight: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -110,7 +107,6 @@ export const ResponsiveAlignment: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -136,7 +132,6 @@ export const HandlesFragments: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -158,7 +153,6 @@ export const ResponsivelyHidingItems: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -197,7 +191,6 @@ export const HiddenItemsWithResponsiveAlignment: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -216,7 +209,6 @@ export const SpanAlignToLeft: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -236,7 +228,6 @@ export const SpanAlignToCenter: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -256,7 +247,6 @@ export const SpanAlignToRight: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -279,7 +269,6 @@ export const DefaultTextAlignmentLeft: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -302,7 +291,6 @@ export const DefaultTextAlignmentCenter: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -325,6 +313,5 @@ export const DefaultTextAlignmentRight: Story = {
     chromatic: {
       viewports: [320, 768, 992, 1200],
     },
-    layout: 'fullscreen',
   },
 };

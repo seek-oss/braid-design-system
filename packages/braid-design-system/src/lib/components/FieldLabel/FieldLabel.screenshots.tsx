@@ -17,10 +17,7 @@ export const Standard: Story = {
   name: 'Standard Field Label',
   render: () => <FieldLabel htmlFor={false} label="Label" />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -34,10 +31,7 @@ export const WithSecondaryLabel: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -51,10 +45,7 @@ export const WithTertiaryLabel: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -68,10 +59,7 @@ export const WithDescription: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -87,10 +75,7 @@ export const WithAllSlots: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -107,10 +92,7 @@ export const Disabled: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -125,10 +107,7 @@ export const DescriptionWithoutLabel: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -147,9 +126,6 @@ export const LeftAlignedInCenteredStack: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

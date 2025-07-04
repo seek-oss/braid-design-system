@@ -30,10 +30,7 @@ const defaultProps = {
 
 // Common parameters for all stories
 const commonParameters = {
-  chromatic: {
-    viewports: [320],
-  },
-  layout: 'fullscreen',
+   ,
 };
 
 export const Default: Story = {

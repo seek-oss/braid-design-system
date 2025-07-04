@@ -9,10 +9,7 @@ const meta = {
   component: OverflowMenu,
   parameters: {
     screenshotOnlyInWireframe: false,
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
   argTypes: {
     label: {

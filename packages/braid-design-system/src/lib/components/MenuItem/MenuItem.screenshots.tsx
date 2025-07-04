@@ -40,7 +40,6 @@ const commonParameters = {
   chromatic: {
     viewports: [768],
   },
-  layout: 'fullscreen',
 };
 
 export const Default: Story = {

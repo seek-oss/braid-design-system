@@ -4,10 +4,7 @@ import React from 'react';
 import { ButtonLink, IconSend, Stack, Inline, Text, IconArrow, Box } from '../';
 
 const defaultParams = {
-  chromatic: {
-    viewports: [320],
-  },
-  layout: 'fullscreen',
+   ,
 };
 
 const meta = {

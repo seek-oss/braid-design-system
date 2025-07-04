@@ -23,10 +23,7 @@ export const Default: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -41,10 +38,7 @@ export const Weightweak: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -56,10 +50,7 @@ export const Withicon: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -74,10 +65,7 @@ export const Withatrailingicon: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -92,10 +80,7 @@ export const Withiconandweightweak: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -110,9 +95,6 @@ export const Withatrailingiconandweightweak: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

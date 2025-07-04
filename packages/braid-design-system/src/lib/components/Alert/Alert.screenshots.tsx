@@ -31,10 +31,7 @@ export const InfoAlert: Story = {
     children: <AlertContent />,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -48,10 +45,7 @@ export const InfoAlertonasurface: Story = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -63,10 +57,7 @@ export const Dismissiblealert: Story = {
     closeLabel: 'Close info alert',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -80,10 +71,7 @@ export const Dismissiblealertvirtualtouchtarget: Story = {
     onClose: () => {},
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -106,10 +94,7 @@ export const Alertwithrichcontent: Story = {
     tone: 'info',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -120,10 +105,7 @@ export const PromoteAlert: Story = {
     children: <AlertContent tone="promote" />,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -141,10 +123,7 @@ export const PromoteAlertonasurface: Story = {
     children: <AlertContent tone="promote" />,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -155,10 +134,7 @@ export const CautionAlert: Story = {
     children: <AlertContent tone="caution" />,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -172,10 +148,7 @@ export const CautionAlertonasurface: Story = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -186,10 +159,7 @@ export const CriticalAlert: Story = {
     children: <AlertContent tone="critical" />,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -203,10 +173,7 @@ export const CriticalAlertonasurface: Story = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -217,10 +184,7 @@ export const PositiveAlert: Story = {
     children: <AlertContent tone="positive" />,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -234,10 +198,7 @@ export const PositiveAlertonasurface: Story = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -254,9 +215,6 @@ export const TestshouldbeleftalignedinacenteredStack: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

@@ -21,10 +21,7 @@ export const InsideText: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -40,10 +37,7 @@ export const InsideTextwithanicon: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -55,10 +49,7 @@ export const InsideHeading: Story = {
     </Heading>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -74,9 +65,6 @@ export const InsideHeadingwithanicon: Story = {
     </Heading>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

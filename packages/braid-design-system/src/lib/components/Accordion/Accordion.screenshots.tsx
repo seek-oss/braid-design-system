@@ -57,10 +57,7 @@ export const DefaultAccordion = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -97,10 +94,7 @@ export const DefaultAccordionwithoutdividers = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 export const DefaultAccordionwithcustomspace = {
@@ -136,10 +130,7 @@ export const DefaultAccordionwithcustomspace = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -176,10 +167,7 @@ export const StandardsecondaryAccordion = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -216,10 +204,7 @@ export const StandardsecondaryAccordionwithoutdividers = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -256,10 +241,7 @@ export const SmallsecondaryAccordion = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -296,10 +278,7 @@ export const SmallsecondaryAccordionwithoutdividers = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -336,10 +315,7 @@ export const XsmallsecondaryAccordion = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -376,10 +352,7 @@ export const XsmallsecondaryAccordionwithoutdividers = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -416,10 +389,7 @@ export const Accordionregularweight = {
     );
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -431,10 +401,7 @@ export const DefaultAccordionItem = {
     </AccordionItem>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -446,10 +413,7 @@ export const AccordionItemwithsizeandtone = {
     </AccordionItem>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -461,10 +425,7 @@ export const AccordionItemwithregularweight = {
     </AccordionItem>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -483,10 +444,7 @@ export const AccordionItemwithabadge = {
     </AccordionItem>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -522,10 +480,7 @@ export const AccordionItemwithaniconshouldfollowsize = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -544,10 +499,7 @@ export const Virtualtouchtarget = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -603,9 +555,6 @@ export const AccordionItemwithaniconshouldfollowtone = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

@@ -32,10 +32,7 @@ const DefaultComponent = () => {
 export const Default: Story = {
   render: () => <DefaultComponent />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -69,10 +66,7 @@ const WithIdentifyingValuesComponent = () => {
 export const Withidentifyingvalues: Story = {
   render: () => <WithIdentifyingValuesComponent />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -96,10 +90,7 @@ const WithinStrongTextComponent = () => {
 export const Withinstrongtext: Story = {
   render: () => <WithinStrongTextComponent />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -125,10 +116,7 @@ const VirtualTouchTargetComponent = () => {
 export const Virtualtouchtarget: Story = {
   render: () => <VirtualTouchTargetComponent />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -150,10 +138,7 @@ const WithinHeadingComponent = () => {
 export const Withinaheading: Story = {
   render: () => <WithinHeadingComponent />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -178,9 +163,6 @@ export const TextDropdownonBrandBackground: Story = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

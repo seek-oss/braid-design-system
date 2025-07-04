@@ -20,10 +20,7 @@ export const Default: Story = {
     rating: 3,
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -34,10 +31,7 @@ export const VariantstarsOnly: Story = {
     variant: 'starsOnly',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -48,10 +42,7 @@ export const Variantminimal: Story = {
     variant: 'minimal',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -62,10 +53,7 @@ export const Sizelarge: Story = {
     size: 'large',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -76,10 +64,7 @@ export const Sizesmall: Story = {
     size: 'small',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -90,10 +75,7 @@ export const Sizexsmall: Story = {
     size: 'xsmall',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -104,10 +86,7 @@ export const Weightregular: Story = {
     weight: 'regular',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -118,10 +97,7 @@ export const Weightmedium: Story = {
     weight: 'medium',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -132,10 +108,7 @@ export const Weightstrong: Story = {
     weight: 'strong',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -157,10 +130,7 @@ export const Filltest: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -172,9 +142,6 @@ export const RatingContrast: Story = {
     </BackgroundContrastTest>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

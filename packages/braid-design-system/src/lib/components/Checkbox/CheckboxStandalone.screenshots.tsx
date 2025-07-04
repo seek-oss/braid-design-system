@@ -21,10 +21,7 @@ const meta = {
   component: CheckboxStandalone,
   parameters: {
     screenshotOnlyInWireframe: false,
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
   args: {
     id: 'checkbox-standalone-example',

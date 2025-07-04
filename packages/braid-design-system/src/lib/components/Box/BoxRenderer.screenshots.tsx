@@ -45,10 +45,7 @@ export const StandardBoxRenderer: Story = {
     </BoxRenderer>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -64,10 +61,7 @@ export const WithDivComponent: Story = {
     </BoxRenderer>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -83,9 +77,6 @@ export const WithNoPadding: Story = {
     </BoxRenderer>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

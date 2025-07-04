@@ -19,10 +19,7 @@ export const Critical: Story = {
     <FieldMessage tone="critical" message="This is a critical message." />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -32,10 +29,7 @@ export const Positive: Story = {
     <FieldMessage tone="positive" message="This is a positive message." />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -45,10 +39,7 @@ export const Caution: Story = {
     <FieldMessage tone="caution" message="This is a caution message." />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -56,10 +47,7 @@ export const Neutral: Story = {
   name: 'Neutral Field Message',
   render: () => <FieldMessage message="This is a neutral message." />,
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -72,10 +60,7 @@ export const CriticalLongMessage: Story = {
     />
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -90,9 +75,6 @@ export const LeftAlignedInCenteredStack: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

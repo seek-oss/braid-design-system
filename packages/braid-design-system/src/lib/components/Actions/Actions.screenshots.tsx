@@ -30,7 +30,6 @@ export const Standardsize: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -50,6 +49,5 @@ export const Smallsize: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };

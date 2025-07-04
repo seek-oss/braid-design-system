@@ -22,9 +22,6 @@ export const InsideText: Story = {
     </Text>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

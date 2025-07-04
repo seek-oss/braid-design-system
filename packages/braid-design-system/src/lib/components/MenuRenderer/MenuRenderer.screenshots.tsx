@@ -75,10 +75,7 @@ const meta = {
   component: MenuRenderer,
   parameters: {
     screenshotOnlyInWireframe: false,
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
   argTypes: {
     align: {

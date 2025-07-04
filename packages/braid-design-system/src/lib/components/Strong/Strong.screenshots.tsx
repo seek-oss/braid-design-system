@@ -26,9 +26,6 @@ export const StrongExample1: Story = {
     children: 'strong.',
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

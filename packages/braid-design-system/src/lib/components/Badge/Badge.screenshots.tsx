@@ -11,10 +11,7 @@ const textSizes: TextSize[] = ['xsmall', 'small', 'standard', 'large'];
 const headingLevels: HeadingLevel[] = ['1', '2', '3', '4'];
 
 const defaultParams = {
-  chromatic: {
-    viewports: [320],
-  },
-  layout: 'fullscreen',
+   ,
 };
 
 const meta = {

@@ -46,7 +46,6 @@ export const DefaultLayout: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -68,7 +67,6 @@ export const LayoutWithDescription: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -88,7 +86,6 @@ export const SmallWidth: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -108,7 +105,6 @@ export const MediumWidth: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -128,7 +124,6 @@ export const LargeWidth: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -160,7 +155,6 @@ export const CloseButtonLayout: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -185,6 +179,5 @@ export const LeftAlignedInCenteredStack: Story = {
     chromatic: {
       viewports: [320, 1200],
     },
-    layout: 'fullscreen',
   },
 };

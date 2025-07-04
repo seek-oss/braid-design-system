@@ -15,10 +15,7 @@ export default meta;
 type Story = StoryObj<typeof Loader>;
 
 const commonParameters = {
-  chromatic: {
-    viewports: [320],
-  },
-  layout: 'fullscreen',
+   ,
 };
 
 export const Default: Story = {

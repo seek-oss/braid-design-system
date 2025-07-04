@@ -32,10 +32,7 @@ export const Default: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -52,10 +49,7 @@ export const Withselecteditem: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -73,10 +67,7 @@ export const Withdescription: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -95,10 +86,7 @@ export const Withcriticalmessage: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -116,10 +104,7 @@ export const Whendisabled: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -139,10 +124,7 @@ export const Whendisabledandcritical: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -159,10 +141,7 @@ export const Withnestedcontentvisibleonlywhenchecked: Story = {
     </RadioGroup>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -180,10 +159,7 @@ export const Small: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -198,10 +174,7 @@ export const Whendisableditem: Story = {
     </RadioGroup>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -217,10 +190,7 @@ export const Whenlabellingviaarialabel: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -236,10 +206,7 @@ export const Whenlabellingviaarialabelledby: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -256,10 +223,7 @@ export const Whenlabellingviaarialabelledbywithadescription: Story = {
     ],
   },
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -280,10 +244,7 @@ export const Virtualtouchtargetstandard: Story = {
     </RadioGroup>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -305,10 +266,7 @@ export const Virtualtouchtargetsmall: Story = {
     </RadioGroup>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -325,10 +283,7 @@ export const Contrast: Story = {
     </Box>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -357,9 +312,6 @@ export const TestshouldbeleftalignedinacenteredStack: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

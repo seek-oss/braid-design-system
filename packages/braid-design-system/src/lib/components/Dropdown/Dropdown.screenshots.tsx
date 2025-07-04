@@ -30,10 +30,7 @@ export const WithPlaceholder: Story = {
     </Dropdown>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -54,10 +51,7 @@ export const WithOptionsGroup: Story = {
     </Dropdown>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -76,10 +70,7 @@ export const WithIcon: Story = {
     </Dropdown>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -92,10 +83,7 @@ export const WithoutPlaceholder: Story = {
     </Dropdown>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -114,10 +102,7 @@ export const CriticalTone: Story = {
     </Dropdown>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -136,10 +121,7 @@ export const CautionTone: Story = {
     </Dropdown>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -199,10 +181,7 @@ export const DisabledState: Story = {
     </Stack>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -220,10 +199,7 @@ export const NoVisualLabel: Story = {
     </Dropdown>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };
 
@@ -243,9 +219,6 @@ export const ContrastTest: Story = {
     </BackgroundContrastTest>
   ),
   parameters: {
-    chromatic: {
-      viewports: [320],
-    },
-    layout: 'fullscreen',
+     ,
   },
 };

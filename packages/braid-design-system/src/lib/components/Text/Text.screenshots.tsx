@@ -64,7 +64,6 @@ export const Sizes: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -88,7 +87,6 @@ export const LineHeights: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -107,7 +105,6 @@ export const Weights: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -131,7 +128,6 @@ export const TonesOnDarkBackground: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -152,7 +148,6 @@ export const Alignment: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -169,7 +164,6 @@ export const AlignmentResponsive: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -186,7 +180,6 @@ export const MaxLines1: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -203,7 +196,6 @@ export const MaxLines1InFlexContainer: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -220,7 +212,6 @@ export const MaxLines2WithNonBreakingWord: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -238,7 +229,6 @@ export const MaxLines3: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -260,7 +250,6 @@ export const WithAnIcon: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -281,7 +270,6 @@ export const AlignmentWithAnIcon: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -298,7 +286,6 @@ export const ResponsiveAlignmentWithAnIcon: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -347,7 +334,6 @@ export const IconShouldNotImpactLineHeight: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
 
@@ -377,6 +363,5 @@ export const Contrast: Story = {
     chromatic: {
       viewports: [320, 768],
     },
-    layout: 'fullscreen',
   },
 };
