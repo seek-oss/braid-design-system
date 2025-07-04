@@ -82,6 +82,7 @@ export const DocNavigationItem = ({
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         aria-current={active ? 'page' : undefined}
+        className={styles.docNavLink}
       >
         <Box display="flex" alignItems="center" paddingX={navItemPaddingX}>
           <Box position="relative">
