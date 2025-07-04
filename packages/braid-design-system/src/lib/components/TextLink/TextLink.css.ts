@@ -51,6 +51,9 @@ export const base = style({
     */
     textDecorationThickness,
   },
+  ':focus-visible': {
+    color: textLinkVars.colorHover,
+  },
 });
 
 export const weakLink = style({
