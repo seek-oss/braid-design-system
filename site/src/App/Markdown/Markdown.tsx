@@ -13,7 +13,8 @@ import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defau
 import { Children, type ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { CodeBlock, type SupportedLanguage } from '../Code/Code';
+import { CodeBlock } from '../Code/Code';
+import type { SupportedLanguage } from '../Code/SupportedLanguage';
 import { InlineCode } from '../InlineCode/InlineCode';
 
 const Code = ({
