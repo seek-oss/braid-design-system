@@ -10,6 +10,7 @@
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
+    "lint:changesets": "tsx ./scripts/lintChangesets.ts",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "generate:component-docs": "generate-component-docs",
