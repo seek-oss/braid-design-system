@@ -32,9 +32,9 @@ export const atoms = ({ reset, ...rest }: Atoms) => {
           \`outline='focus'\` or \`outlineStyle\` for more complex scenarios.
 
           See documentation:
-          1. https://seek-oss.github.io/braid-design-system/components/Box
+          1. https://seek-oss.github.io/braid-design-system/components/Box#focus-outlines
           2. https://seek-oss.github.io/braid-design-system/css/outlineStyle
-          `,
+        `,
       );
     }
     if (rest.boxShadow && rest.boxShadow === 'outlineFocus') {
@@ -47,9 +47,9 @@ export const atoms = ({ reset, ...rest }: Atoms) => {
           Instead, consider \`outline='focus'\` or the \`outlineStyle\` css utility.
 
           See documentation:
-          1. https://seek-oss.github.io/braid-design-system/css/vars
+          1. https://seek-oss.github.io/braid-design-system/components/Box#focus-outlines
           2. https://seek-oss.github.io/braid-design-system/css/outlineStyle
-          `,
+        `,
       );
     }
   }

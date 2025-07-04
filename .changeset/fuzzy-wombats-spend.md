@@ -1,5 +1,5 @@
 ---
-'braid-design-system': minor
+'braid-design-system': patch
 ---
 
 ---
@@ -8,6 +8,8 @@ updated:
   - Alert
   - Autosuggest
   - Button
+  - ButtonIcon
+  - ButtonLink
   - Checkbox
   - CheckboxStandalone
   - Dialog
@@ -18,39 +20,17 @@ updated:
   - RadioItem
   - Step
   - Tab
+  - TabPanel
   - Textarea
   - TextDropdown
   - TextField
+  - TextLink
+  - TextLinkButton
   - Toggle
 ---
 
-Ensure all focus outlines are styled consistently across components.
+Migrate from custom focus ring visibility to native `:focus-visible` behaviour.
 
-Migrate to using the `outline` for focus outlines instead of `box-shadow`.
-Show outlines based on the native `:focus-visible` pseudo-class, which is available in all supported browsers.
-
-**MIGRATION GUIDE:**
-
-If you are using a custom element, and want to customise the focus outline spacing, you should adjust the `outline` properties for your element, such as `outlineOffset`.
-The outline will match the real borders of your element, so you may need to set a `borderRadius` on the element to style the outline.
-
-```ts
-// CustomElement.css.ts
-import { vars } from 'braid-design-system/css';
-
-export const customFocusRingStyling = style({
-  outlineOffset: vars.space.xxsmall,
-})
-```
-
-```tsx
-// CustomElement.tsx
-import * as styles from './CustomElement.css.ts';
-
-<Box tabIndex={0} borderRadius="small" className={styles.customFocusRingStyling} ... />
-```
-
-If you are using your own outline for any other element, this will override the default focus outline styles.
-
-`outlineFocus` through `boxShadow` atoms is now deprecated and will be removed in a future version.
-Please consider relying on Braid's outline styles instead.
+Previously Braid would change the presentation of focus ring outlines based on the user input, i.e. mouse or keyboard,
+to prevent showing focus rings on click.
+With the updated Browser Support Policy, we can now leverage the native `:focus-visible` pseudo class instead.
