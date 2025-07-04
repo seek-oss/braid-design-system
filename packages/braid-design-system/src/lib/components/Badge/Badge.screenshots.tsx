@@ -10,10 +10,6 @@ type HeadingLevel = NonNullable<ComponentProps<typeof Heading>['level']>;
 const textSizes: TextSize[] = ['xsmall', 'small', 'standard', 'large'];
 const headingLevels: HeadingLevel[] = ['1', '2', '3', '4'];
 
-const defaultParams = {
-   ,
-};
-
 const meta = {
   title: 'Components/Badge',
   component: Badge,
@@ -58,7 +54,6 @@ export const RegularBadge: Story = {
     tone: 'positive',
     children: 'Regular',
   },
-  parameters: defaultParams,
 };
 
 export const StrongBadge: Story = {
@@ -68,7 +63,6 @@ export const StrongBadge: Story = {
     weight: 'strong',
     children: 'Strong',
   },
-  parameters: defaultParams,
 };
 
 export const BadgewithVerticalBleed: Story = {
@@ -78,7 +72,7 @@ export const BadgewithVerticalBleed: Story = {
     bleedY: true,
     children: 'New',
   },
-  parameters: defaultParams,
+
   decorators: [
     (Story) => (
       <Inline space="xsmall" alignY="center">
@@ -95,7 +89,6 @@ export const PositiveBadge: Story = {
     tone: 'positive',
     children: 'Positive',
   },
-  parameters: defaultParams,
 };
 
 export const StrongPositiveBadge: Story = {
@@ -105,7 +98,6 @@ export const StrongPositiveBadge: Story = {
     weight: 'strong',
     children: 'Positive',
   },
-  parameters: defaultParams,
 };
 
 export const CriticalBadge: Story = {
@@ -114,7 +106,6 @@ export const CriticalBadge: Story = {
     tone: 'critical',
     children: 'Critical',
   },
-  parameters: defaultParams,
 };
 
 export const StrongCriticalBadge: Story = {
@@ -124,7 +115,6 @@ export const StrongCriticalBadge: Story = {
     weight: 'strong',
     children: 'Critical',
   },
-  parameters: defaultParams,
 };
 
 export const CautionBadge: Story = {
@@ -133,7 +123,6 @@ export const CautionBadge: Story = {
     tone: 'caution',
     children: 'Caution',
   },
-  parameters: defaultParams,
 };
 
 export const StrongCautionBadge: Story = {
@@ -143,7 +132,6 @@ export const StrongCautionBadge: Story = {
     weight: 'strong',
     children: 'Caution',
   },
-  parameters: defaultParams,
 };
 
 export const InfoBadge: Story = {
@@ -152,7 +140,6 @@ export const InfoBadge: Story = {
     tone: 'info',
     children: 'Info',
   },
-  parameters: defaultParams,
 };
 
 export const StrongInfoBadge: Story = {
@@ -162,7 +149,6 @@ export const StrongInfoBadge: Story = {
     weight: 'strong',
     children: 'Info',
   },
-  parameters: defaultParams,
 };
 
 export const PromoteBadge: Story = {
@@ -171,7 +157,6 @@ export const PromoteBadge: Story = {
     tone: 'promote',
     children: 'Promote',
   },
-  parameters: defaultParams,
 };
 
 export const StrongPromoteBadge: Story = {
@@ -181,7 +166,6 @@ export const StrongPromoteBadge: Story = {
     weight: 'strong',
     children: 'Promote',
   },
-  parameters: defaultParams,
 };
 
 export const NeutralBadge: Story = {
@@ -190,7 +174,6 @@ export const NeutralBadge: Story = {
     tone: 'neutral',
     children: 'Neutral',
   },
-  parameters: defaultParams,
 };
 
 export const StrongNeutralBadge: Story = {
@@ -200,12 +183,11 @@ export const StrongNeutralBadge: Story = {
     weight: 'strong',
     children: 'Neutral',
   },
-  parameters: defaultParams,
 };
 
 export const TestBadgetextshouldfollowtonenotdefaultsetbyList: Story = {
   name: 'Test: Badge text should follow tone not default set by `List`',
-  parameters: defaultParams,
+
   args: {
     tone: 'critical',
     children: 'Critical',
@@ -224,7 +206,7 @@ export const TestBadgetextshouldfollowtonenotdefaultsetbyList: Story = {
 
 export const TestBadgeshouldnotimpactlineheightoftext: Story = {
   name: 'Test: Badge should not impact line height of text',
-  parameters: defaultParams,
+
   args: {
     tone: 'critical',
     weight: 'strong',
@@ -244,7 +226,7 @@ export const TestBadgeshouldnotimpactlineheightoftext: Story = {
 
 export const TestBadgeshouldnotimpactlineheightoftext2: Story = {
   name: 'Test: Badge should not impact line height of text',
-  parameters: defaultParams,
+
   render: () => (
     <Stack space="large">
       {textSizes.map((size) => (
@@ -323,7 +305,7 @@ export const TestBadgeshouldnotimpactlineheightoftext2: Story = {
 
 export const Layout: Story = {
   name: 'Layout',
-  parameters: defaultParams,
+
   decorators: [
     () => (
       <Box maxWidth="xsmall">

@@ -56,9 +56,6 @@ export const DefaultAccordion = {
       </Accordion>
     );
   },
-  parameters: {
-     ,
-  },
 };
 
 export const DefaultAccordionwithoutdividers = {
@@ -93,9 +90,6 @@ export const DefaultAccordionwithoutdividers = {
       </Accordion>
     );
   },
-  parameters: {
-     ,
-  },
 };
 export const DefaultAccordionwithcustomspace = {
   name: 'Default Accordion with custom space',
@@ -128,9 +122,6 @@ export const DefaultAccordionwithcustomspace = {
         </AccordionItem>
       </Accordion>
     );
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -166,9 +157,6 @@ export const StandardsecondaryAccordion = {
       </Accordion>
     );
   },
-  parameters: {
-     ,
-  },
 };
 
 export const StandardsecondaryAccordionwithoutdividers = {
@@ -202,9 +190,6 @@ export const StandardsecondaryAccordionwithoutdividers = {
         </AccordionItem>
       </Accordion>
     );
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -240,9 +225,6 @@ export const SmallsecondaryAccordion = {
       </Accordion>
     );
   },
-  parameters: {
-     ,
-  },
 };
 
 export const SmallsecondaryAccordionwithoutdividers = {
@@ -276,9 +258,6 @@ export const SmallsecondaryAccordionwithoutdividers = {
         </AccordionItem>
       </Accordion>
     );
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -314,9 +293,6 @@ export const XsmallsecondaryAccordion = {
       </Accordion>
     );
   },
-  parameters: {
-     ,
-  },
 };
 
 export const XsmallsecondaryAccordionwithoutdividers = {
@@ -350,9 +326,6 @@ export const XsmallsecondaryAccordionwithoutdividers = {
         </AccordionItem>
       </Accordion>
     );
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -388,9 +361,6 @@ export const Accordionregularweight = {
       </Accordion>
     );
   },
-  parameters: {
-     ,
-  },
 };
 
 export const DefaultAccordionItem = {
@@ -400,9 +370,6 @@ export const DefaultAccordionItem = {
       <Text>Content</Text>
     </AccordionItem>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AccordionItemwithsizeandtone = {
@@ -412,9 +379,6 @@ export const AccordionItemwithsizeandtone = {
       <Text size="small">Content</Text>
     </AccordionItem>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AccordionItemwithregularweight = {
@@ -424,9 +388,6 @@ export const AccordionItemwithregularweight = {
       <Text>Content</Text>
     </AccordionItem>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AccordionItemwithabadge = {
@@ -443,9 +404,6 @@ export const AccordionItemwithabadge = {
       <Text size="small">Content</Text>
     </AccordionItem>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AccordionItemwithaniconshouldfollowsize = {
@@ -479,9 +437,6 @@ export const AccordionItemwithaniconshouldfollowsize = {
       </Stack>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Virtualtouchtarget = {
@@ -498,9 +453,6 @@ export const Virtualtouchtarget = {
       </AccordionItem>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AccordionItemwithaniconshouldfollowtone = {
@@ -554,7 +506,4 @@ export const AccordionItemwithaniconshouldfollowtone = {
       </Stack>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };

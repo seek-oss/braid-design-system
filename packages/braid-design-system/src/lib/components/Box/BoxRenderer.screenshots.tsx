@@ -44,9 +44,6 @@ export const StandardBoxRenderer: Story = {
       )}
     </BoxRenderer>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithDivComponent: Story = {
@@ -60,9 +57,6 @@ export const WithDivComponent: Story = {
       )}
     </BoxRenderer>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithNoPadding: Story = {
@@ -76,7 +70,4 @@ export const WithNoPadding: Story = {
       )}
     </BoxRenderer>
   ),
-  parameters: {
-     ,
-  },
 };

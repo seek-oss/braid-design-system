@@ -29,9 +29,6 @@ export const Collapsed: Story = {
       <Text>Content</Text>
     </Disclosure>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Expanded: Story = {
@@ -46,9 +43,6 @@ export const Expanded: Story = {
       <Text>Content</Text>
     </Disclosure>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const ExpandedWithCustomSpace: Story = {
@@ -64,9 +58,6 @@ export const ExpandedWithCustomSpace: Story = {
       <Text>Content</Text>
     </Disclosure>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WeakWeight: Story = {
@@ -82,9 +73,6 @@ export const WeakWeight: Story = {
       <Text>Content</Text>
     </Disclosure>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InlineAndCollapsed: Story = {
@@ -105,9 +93,6 @@ export const InlineAndCollapsed: Story = {
       </Disclosure>
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InlineAndExpanded: Story = {
@@ -128,9 +113,6 @@ export const InlineAndExpanded: Story = {
       </Disclosure>
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InlineExpandedWithCustomSpace: Story = {
@@ -152,9 +134,6 @@ export const InlineExpandedWithCustomSpace: Story = {
       </Disclosure>
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InlineCollapsedWithTrailingText: Story = {
@@ -179,9 +158,6 @@ export const InlineCollapsedWithTrailingText: Story = {
       facilisis sodales nisl.
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InlineExpandedWithTrailingText: Story = {
@@ -206,9 +182,6 @@ export const InlineExpandedWithTrailingText: Story = {
       facilisis sodales nisl.
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const SizesAndDefaultSpacing: Story = {
@@ -228,9 +201,6 @@ export const SizesAndDefaultSpacing: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InlineSizesAndDefaultSpacing: Story = {
@@ -251,7 +221,4 @@ export const InlineSizesAndDefaultSpacing: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };

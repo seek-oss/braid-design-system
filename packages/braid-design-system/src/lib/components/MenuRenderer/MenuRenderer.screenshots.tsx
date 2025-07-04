@@ -75,7 +75,6 @@ const meta = {
   component: MenuRenderer,
   parameters: {
     screenshotOnlyInWireframe: false,
-     ,
   },
   argTypes: {
     align: {

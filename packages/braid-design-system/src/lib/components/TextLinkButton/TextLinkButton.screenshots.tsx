@@ -22,9 +22,6 @@ export const Default: Story = {
       </TextLinkButton>
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Weightweak: Story = {
@@ -37,9 +34,6 @@ export const Weightweak: Story = {
       .
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Withicon: Story = {
@@ -49,9 +43,6 @@ export const Withicon: Story = {
       <TextLinkButton icon={<IconLink />}>TextLinkButton</TextLinkButton>.
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Withatrailingicon: Story = {
@@ -64,9 +55,6 @@ export const Withatrailingicon: Story = {
       .
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Withiconandweightweak: Story = {
@@ -79,9 +67,6 @@ export const Withiconandweightweak: Story = {
       .
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Withatrailingiconandweightweak: Story = {
@@ -94,7 +79,4 @@ export const Withatrailingiconandweightweak: Story = {
       .
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };

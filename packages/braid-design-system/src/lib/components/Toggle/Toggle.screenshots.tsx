@@ -13,7 +13,6 @@ const meta: Meta<typeof Toggle> = {
   component: Toggle,
   parameters: {
     layout: 'padded',
-     ,
   },
 };
 

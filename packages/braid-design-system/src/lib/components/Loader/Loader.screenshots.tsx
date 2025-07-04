@@ -14,14 +14,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Loader>;
 
-const commonParameters = {
-   ,
-};
-
 export const Default: Story = {
   args: {},
   name: 'Default',
-  parameters: commonParameters,
 };
 
 export const DelayVisibility: Story = {
@@ -29,7 +24,6 @@ export const DelayVisibility: Story = {
     delayVisibility: true,
   },
   name: 'Delay visibility (used to prevent loading flicker)',
-  parameters: commonParameters,
 };
 
 export const XSmall: Story = {
@@ -37,7 +31,6 @@ export const XSmall: Story = {
     size: 'xsmall',
   },
   name: 'xsmall',
-  parameters: commonParameters,
 };
 
 export const Small: Story = {
@@ -45,7 +38,6 @@ export const Small: Story = {
     size: 'small',
   },
   name: 'small',
-  parameters: commonParameters,
 };
 
 export const Standard: Story = {
@@ -53,7 +45,6 @@ export const Standard: Story = {
     size: 'standard',
   },
   name: 'standard',
-  parameters: commonParameters,
 };
 
 export const Large: Story = {
@@ -61,7 +52,6 @@ export const Large: Story = {
     size: 'large',
   },
   name: 'large',
-  parameters: commonParameters,
 };
 
 export const Contrast: Story = {
@@ -71,5 +61,4 @@ export const Contrast: Story = {
     </BackgroundContrastTest>
   ),
   name: 'Loader Contrast',
-  parameters: commonParameters,
 };

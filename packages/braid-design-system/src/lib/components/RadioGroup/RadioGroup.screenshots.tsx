@@ -31,9 +31,6 @@ export const Default: Story = {
       <RadioItem key="3" label="3+ years" value="3" />,
     ],
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Withselecteditem: Story = {
@@ -47,9 +44,6 @@ export const Withselecteditem: Story = {
       <RadioItem key="2" label="2 years" value="2" />,
       <RadioItem key="3" label="3+ years" value="3" />,
     ],
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -65,9 +59,6 @@ export const Withdescription: Story = {
       <RadioItem key="2" label="2 years" value="2" />,
       <RadioItem key="3" label="3+ years" value="3" />,
     ],
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -85,9 +76,6 @@ export const Withcriticalmessage: Story = {
       <RadioItem key="3" label="3+ years" value="3" />,
     ],
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Whendisabled: Story = {
@@ -102,9 +90,6 @@ export const Whendisabled: Story = {
       <RadioItem key="2" label="2 years" value="2" />,
       <RadioItem key="3" label="3+ years" value="3" />,
     ],
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -123,9 +108,6 @@ export const Whendisabledandcritical: Story = {
       <RadioItem key="3" label="3+ years" value="3" />,
     ],
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Withnestedcontentvisibleonlywhenchecked: Story = {
@@ -140,9 +122,6 @@ export const Withnestedcontentvisibleonlywhenchecked: Story = {
       <RadioItem label="3+ years" value="3" />
     </RadioGroup>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Small: Story = {
@@ -158,9 +137,6 @@ export const Small: Story = {
       <RadioItem key="3" label="3+ years" value="3" />,
     ],
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Whendisableditem: Story = {
@@ -173,9 +149,6 @@ export const Whendisableditem: Story = {
       <RadioItem label="3+ years" value="3" />
     </RadioGroup>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Whenlabellingviaarialabel: Story = {
@@ -188,9 +161,6 @@ export const Whenlabellingviaarialabel: Story = {
       <RadioItem key="2" label="Two" value="2" />,
       <RadioItem key="3" label="Three" value="3" />,
     ],
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -205,9 +175,6 @@ export const Whenlabellingviaarialabelledby: Story = {
       <RadioItem key="3" label="Three" value="3" />,
     ],
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Whenlabellingviaarialabelledbywithadescription: Story = {
@@ -221,9 +188,6 @@ export const Whenlabellingviaarialabelledbywithadescription: Story = {
       <RadioItem key="2" label="Two" value="2" />,
       <RadioItem key="3" label="Three" value="3" />,
     ],
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -243,9 +207,6 @@ export const Virtualtouchtargetstandard: Story = {
       <RadioItem label="Three" value="3" />
     </RadioGroup>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Virtualtouchtargetsmall: Story = {
@@ -265,9 +226,6 @@ export const Virtualtouchtargetsmall: Story = {
       <RadioItem label="Three" value="3" />
     </RadioGroup>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Contrast: Story = {
@@ -282,9 +240,6 @@ export const Contrast: Story = {
       </BackgroundContrastTest>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const TestshouldbeleftalignedinacenteredStack: Story = {
@@ -311,7 +266,4 @@ export const TestshouldbeleftalignedinacenteredStack: Story = {
       </RadioGroup>
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };

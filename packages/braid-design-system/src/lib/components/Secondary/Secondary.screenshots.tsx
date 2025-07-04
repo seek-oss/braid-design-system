@@ -20,9 +20,6 @@ export const InsideText: Story = {
       A <Secondary>secondary</Secondary> example.
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InsideTextwithanicon: Story = {
@@ -36,9 +33,6 @@ export const InsideTextwithanicon: Story = {
       example.
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InsideHeading: Story = {
@@ -48,9 +42,6 @@ export const InsideHeading: Story = {
       A <Secondary>secondary</Secondary> example.
     </Heading>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InsideHeadingwithanicon: Story = {
@@ -64,7 +55,4 @@ export const InsideHeadingwithanicon: Story = {
       example.
     </Heading>
   ),
-  parameters: {
-     ,
-  },
 };

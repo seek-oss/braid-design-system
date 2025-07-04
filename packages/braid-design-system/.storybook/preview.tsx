@@ -35,13 +35,7 @@ const preview: Preview = {
       defaultValue: 'apac',
       toolbar: {
         icon: 'paintbrush',
-        items: [
-          { value: 'apac', title: 'APAC' },
-          { value: 'apacDark', title: 'APAC Dark' },
-          { value: 'seekJobs', title: 'SEEK Jobs' },
-          { value: 'seekJobsDark', title: 'SEEK Jobs Dark' },
-          { value: 'seekBusiness', title: 'SEEK Business' },
-        ],
+        items: Object.keys(modes),
       },
     },
   },

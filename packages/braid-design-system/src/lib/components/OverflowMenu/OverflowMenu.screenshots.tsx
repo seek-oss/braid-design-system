@@ -9,7 +9,6 @@ const meta = {
   component: OverflowMenu,
   parameters: {
     screenshotOnlyInWireframe: false,
-     ,
   },
   argTypes: {
     label: {

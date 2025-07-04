@@ -9,7 +9,6 @@ const meta = {
   component: MonthPicker,
   parameters: {
     screenshotOnlyInWireframe: false,
-     ,
   },
   argTypes: {
     value: {

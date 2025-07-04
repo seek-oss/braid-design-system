@@ -3,10 +3,6 @@ import React from 'react';
 
 import { ButtonLink, IconSend, Stack, Inline, Text, IconArrow, Box } from '../';
 
-const defaultParams = {
-   ,
-};
-
 const meta = {
   title: 'Components/ButtonLink',
   component: ButtonLink,
@@ -52,7 +48,6 @@ export const Defaultvariantsfortone: Story = {
       </ButtonLink>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Critical: Story = {
@@ -73,7 +68,6 @@ export const Critical: Story = {
       </ButtonLink>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const BrandAccent: Story = {
@@ -94,7 +88,6 @@ export const BrandAccent: Story = {
       </ButtonLink>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const FormAccent: Story = {
@@ -115,7 +108,6 @@ export const FormAccent: Story = {
       </ButtonLink>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Neutral: Story = {
@@ -136,7 +128,6 @@ export const Neutral: Story = {
       </ButtonLink>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Withicon: Story = {
@@ -178,7 +169,6 @@ export const Withicon: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const WithiconPositiontrailing: Story = {
@@ -259,7 +249,6 @@ export const WithiconPositiontrailing: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
@@ -274,7 +263,6 @@ export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: Story =
@@ -298,7 +286,6 @@ export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: S
         </Inline>
       </Stack>
     ),
-    parameters: defaultParams,
   };
 
 export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Story =
@@ -352,7 +339,6 @@ export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Stor
         </Box>
       </Stack>
     ),
-    parameters: defaultParams,
   };
 
 export const Ensureinnerlabelelementisfullwidthreddotsshouldtouchhorizontaledges: Story =
@@ -383,5 +369,4 @@ export const Ensureinnerlabelelementisfullwidthreddotsshouldtouchhorizontaledges
         Label
       </ButtonLink>
     ),
-    parameters: defaultParams,
   };

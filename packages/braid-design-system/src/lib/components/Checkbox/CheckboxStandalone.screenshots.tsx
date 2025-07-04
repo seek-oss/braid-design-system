@@ -21,7 +21,6 @@ const meta = {
   component: CheckboxStandalone,
   parameters: {
     screenshotOnlyInWireframe: false,
-     ,
   },
   args: {
     id: 'checkbox-standalone-example',

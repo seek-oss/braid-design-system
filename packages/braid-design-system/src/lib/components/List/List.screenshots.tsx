@@ -14,10 +14,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof List>;
 
-const commonParameters = {
-   ,
-};
-
 export const Standard: Story = {
   name: 'Standard List',
   render: () => (
@@ -27,7 +23,6 @@ export const Standard: Story = {
       <Text>This is a list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const Numbered: Story = {
@@ -39,7 +34,6 @@ export const Numbered: Story = {
       <Text>This is a numbered list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const Alpha: Story = {
@@ -51,7 +45,6 @@ export const Alpha: Story = {
       <Text>This is an alpha list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const Roman: Story = {
@@ -63,7 +56,6 @@ export const Roman: Story = {
       <Text>This is a Roman list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const Icon: Story = {
@@ -75,7 +67,6 @@ export const Icon: Story = {
       <Text>This is a list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const WithParagraphs: Story = {
@@ -92,7 +83,6 @@ export const WithParagraphs: Story = {
       </Stack>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const Nested: Story = {
@@ -117,7 +107,6 @@ export const Nested: Story = {
       </Stack>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const CustomSize: Story = {
@@ -129,7 +118,6 @@ export const CustomSize: Story = {
       <Text>This is a large list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const CustomSpace: Story = {
@@ -141,7 +129,6 @@ export const CustomSpace: Story = {
       <Text>List item with large space.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const CustomTone: Story = {
@@ -153,7 +140,6 @@ export const CustomTone: Story = {
       <Text>List item with secondary tone.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const NumberedCustomStart: Story = {
@@ -165,7 +151,6 @@ export const NumberedCustomStart: Story = {
       <Text>This is a numbered list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const AlphaCustomStart: Story = {
@@ -177,7 +162,6 @@ export const AlphaCustomStart: Story = {
       <Text>This is an alpha list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const RomanCustomStart: Story = {
@@ -189,7 +173,6 @@ export const RomanCustomStart: Story = {
       <Text>This is a Roman list item.</Text>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const CascadingStyles: Story = {
@@ -204,7 +187,6 @@ export const CascadingStyles: Story = {
       </Stack>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const OverrideCascadingStyles: Story = {
@@ -219,7 +201,6 @@ export const OverrideCascadingStyles: Story = {
       </Stack>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const FlattenFragments: Story = {
@@ -238,7 +219,6 @@ export const FlattenFragments: Story = {
       </>
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const FullWidth: Story = {
@@ -248,7 +228,6 @@ export const FullWidth: Story = {
       <Placeholder height={60} />
     </List>
   ),
-  parameters: commonParameters,
 };
 
 export const LeftAlignedInCenteredStack: Story = {
@@ -262,7 +241,6 @@ export const LeftAlignedInCenteredStack: Story = {
       </List>
     </Stack>
   ),
-  parameters: commonParameters,
 };
 
 export const LeftAlignedInCenteredText: Story = {
@@ -276,5 +254,4 @@ export const LeftAlignedInCenteredText: Story = {
       </List>
     </Box>
   ),
-  parameters: commonParameters,
 };

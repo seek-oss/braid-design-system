@@ -19,9 +19,6 @@ export const Default: Story = {
   args: {
     rating: 3,
   },
-  parameters: {
-     ,
-  },
 };
 
 export const VariantstarsOnly: Story = {
@@ -29,9 +26,6 @@ export const VariantstarsOnly: Story = {
   args: {
     rating: 4.2,
     variant: 'starsOnly',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -41,9 +35,6 @@ export const Variantminimal: Story = {
     rating: 3.7,
     variant: 'minimal',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Sizelarge: Story = {
@@ -51,9 +42,6 @@ export const Sizelarge: Story = {
   args: {
     rating: 3,
     size: 'large',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -63,9 +51,6 @@ export const Sizesmall: Story = {
     rating: 2,
     size: 'small',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Sizexsmall: Story = {
@@ -73,9 +58,6 @@ export const Sizexsmall: Story = {
   args: {
     rating: 1.5,
     size: 'xsmall',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -85,9 +67,6 @@ export const Weightregular: Story = {
     rating: 3,
     weight: 'regular',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Weightmedium: Story = {
@@ -96,9 +75,6 @@ export const Weightmedium: Story = {
     rating: 2,
     weight: 'medium',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const Weightstrong: Story = {
@@ -106,9 +82,6 @@ export const Weightstrong: Story = {
   args: {
     rating: 1.5,
     weight: 'strong',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -129,9 +102,6 @@ export const Filltest: Story = {
       <Rating rating={1} />
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const RatingContrast: Story = {
@@ -141,7 +111,4 @@ export const RatingContrast: Story = {
       <Rating rating={1.5} size="xsmall" />
     </BackgroundContrastTest>
   ),
-  parameters: {
-     ,
-  },
 };

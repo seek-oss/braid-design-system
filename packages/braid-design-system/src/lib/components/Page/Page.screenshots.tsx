@@ -35,7 +35,6 @@ const meta = {
   component: Page,
   parameters: {
     screenshotOnlyInWireframe: true,
-     ,
   },
   argTypes: {
     children: {

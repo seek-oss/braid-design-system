@@ -6,10 +6,6 @@ import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { LayoutTest } from '../../utils/LayoutTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-const defaultParams = {
-   ,
-};
-
 const meta = {
   title: 'Components/ButtonIcon',
   component: ButtonIcon,
@@ -40,7 +36,6 @@ export const Default: Story = {
     label: 'Bookmark',
     id: '1',
   },
-  parameters: defaultParams,
 };
 
 export const Soft: Story = {
@@ -67,7 +62,6 @@ export const Soft: Story = {
       />
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Softbleedon: Story = {
@@ -82,7 +76,6 @@ export const Softbleedon: Story = {
       </Box>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Softbleedoff: Story = {
@@ -97,7 +90,6 @@ export const Softbleedoff: Story = {
       </Box>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Transparent: Story = {
@@ -124,7 +116,6 @@ export const Transparent: Story = {
       />
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const ToneformAccent: Story = {
@@ -145,7 +136,6 @@ export const ToneformAccent: Story = {
       />
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Virtualtouchtarget: Story = {
@@ -199,7 +189,6 @@ export const Virtualtouchtarget: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const Transparentbleedondefault: Story = {
@@ -218,7 +207,6 @@ export const Transparentbleedondefault: Story = {
       </Box>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Transparentbleedoff: Story = {
@@ -238,7 +226,6 @@ export const Transparentbleedoff: Story = {
       </Box>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Icontoneoverridesbuttontone: Story = {
@@ -260,7 +247,6 @@ export const Icontoneoverridesbuttontone: Story = {
       />
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Contrast: Story = {
@@ -278,7 +264,6 @@ export const Contrast: Story = {
       </Inline>
     </BackgroundContrastTest>
   ),
-  parameters: defaultParams,
 };
 
 export const Layout: Story = {
@@ -288,5 +273,4 @@ export const Layout: Story = {
       <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
     </LayoutTest>
   ),
-  parameters: defaultParams,
 };

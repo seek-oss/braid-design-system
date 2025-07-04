@@ -21,7 +21,4 @@ export const InsideText: Story = {
       <HiddenVisually> Hello world.</HiddenVisually>
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };

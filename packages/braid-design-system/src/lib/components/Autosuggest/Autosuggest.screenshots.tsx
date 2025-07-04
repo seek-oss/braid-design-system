@@ -47,7 +47,6 @@ const meta = {
   component: Autosuggest,
   parameters: {
     screenshotOnlyInWireframe: false,
-     ,
   },
   argTypes: {
     label: { control: 'text' },
@@ -75,18 +74,14 @@ export default meta;
 type Story = StoryObj<typeof Autosuggest>;
 
 export const StandardSuggestions: Story = {
-  parameters: {
-     ,
-  },
+  parameters: {},
 };
 
 export const StandardSuggestionsWithAutomaticSelection: Story = {
   args: {
     automaticSelection: true,
   },
-  parameters: {
-     ,
-  },
+  parameters: {},
 };
 
 export const GroupedSuggestions: Story = {

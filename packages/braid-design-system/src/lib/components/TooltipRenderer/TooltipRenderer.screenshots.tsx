@@ -11,7 +11,6 @@ const meta: Meta<typeof TooltipRenderer> = {
   component: TooltipRenderer,
   parameters: {
     layout: 'padded',
-     ,
   },
   decorators: [
     (Story) => (

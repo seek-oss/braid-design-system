@@ -58,7 +58,4 @@ export const Default: Story = {
       </Heading>
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };

@@ -23,9 +23,6 @@ export const PasswordFieldStory: Story = {
     label: 'Password',
     value: 'qwerty',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const PasswordFieldwithmessage: Story = {
@@ -35,9 +32,6 @@ export const PasswordFieldwithmessage: Story = {
     value: 'qwerty',
     message: `e.g. Cannot be "password"`,
   },
-  parameters: {
-     ,
-  },
 };
 
 export const PasswordFieldwithsecondarylabel: Story = {
@@ -46,9 +40,6 @@ export const PasswordFieldwithsecondarylabel: Story = {
     label: 'Password',
     secondaryLabel: 'required',
     value: 'qwerty',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -62,9 +53,6 @@ export const PasswordFieldwithtertiarylabel: Story = {
       onChange={() => {}}
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const PasswordFieldwithnovisuallabel: Story = {
@@ -72,9 +60,6 @@ export const PasswordFieldwithnovisuallabel: Story = {
   args: {
     'aria-label': 'Password',
     value: 'qwerty',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -86,9 +71,6 @@ export const PasswordFieldwithdescription: Story = {
     description:
       'Must be 8 characters long and include a capital letter, a number and a symbol',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const PasswordFieldwithadescriptionandnovisuallabel: Story = {
@@ -98,9 +80,6 @@ export const PasswordFieldwithadescriptionandnovisuallabel: Story = {
     description:
       'Must be 8 characters long and include a capital letter, a number and a symbol',
     value: 'qwerty',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -112,9 +91,6 @@ export const PasswordFieldwithcriticalmessage: Story = {
     value: 'qwerty',
     message: 'Not strong enough',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const PasswordFieldwithpositivemessage: Story = {
@@ -125,9 +101,6 @@ export const PasswordFieldwithpositivemessage: Story = {
     message: 'Strong!',
     tone: 'positive',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const PasswordFieldwithcautionmessage: Story = {
@@ -137,9 +110,6 @@ export const PasswordFieldwithcautionmessage: Story = {
     value: 'qwerty',
     message: 'Caution message',
     tone: 'caution',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -190,9 +160,6 @@ export const PasswordFielddisabled: Story = {
       />
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Contrast: Story = {
@@ -202,7 +169,4 @@ export const Contrast: Story = {
       <PasswordField label="Label" onChange={() => {}} value="Text value" />
     </BackgroundContrastTest>
   ),
-  parameters: {
-     ,
-  },
 };

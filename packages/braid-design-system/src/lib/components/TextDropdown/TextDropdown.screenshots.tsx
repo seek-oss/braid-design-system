@@ -31,9 +31,6 @@ const DefaultComponent = () => {
 
 export const Default: Story = {
   render: () => <DefaultComponent />,
-  parameters: {
-     ,
-  },
 };
 
 const WithIdentifyingValuesComponent = () => {
@@ -65,9 +62,6 @@ const WithIdentifyingValuesComponent = () => {
 
 export const Withidentifyingvalues: Story = {
   render: () => <WithIdentifyingValuesComponent />,
-  parameters: {
-     ,
-  },
 };
 
 const WithinStrongTextComponent = () => {
@@ -89,9 +83,6 @@ const WithinStrongTextComponent = () => {
 
 export const Withinstrongtext: Story = {
   render: () => <WithinStrongTextComponent />,
-  parameters: {
-     ,
-  },
 };
 
 const VirtualTouchTargetComponent = () => {
@@ -115,9 +106,6 @@ const VirtualTouchTargetComponent = () => {
 
 export const Virtualtouchtarget: Story = {
   render: () => <VirtualTouchTargetComponent />,
-  parameters: {
-     ,
-  },
 };
 
 const WithinHeadingComponent = () => {
@@ -137,9 +125,6 @@ const WithinHeadingComponent = () => {
 
 export const Withinaheading: Story = {
   render: () => <WithinHeadingComponent />,
-  parameters: {
-     ,
-  },
 };
 
 const TextDropdownOnBrandBackgroundComponent = () => {
@@ -162,7 +147,4 @@ export const TextDropdownonBrandBackground: Story = {
       <TextDropdownOnBrandBackgroundComponent />
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };

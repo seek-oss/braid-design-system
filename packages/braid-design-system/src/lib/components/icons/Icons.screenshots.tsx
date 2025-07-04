@@ -53,9 +53,6 @@ type Story = StoryObj<typeof IconDemo>;
 export const Default: Story = {
   name: 'Default',
   render: () => <Icons />,
-  parameters: {
-     ,
-  },
 };
 
 export const AutoSizeViaTextContext: Story = {
@@ -74,9 +71,6 @@ export const AutoSizeViaTextContext: Story = {
         ))}
       </Stack>
     );
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -102,9 +96,6 @@ export const AutoSizeViaHeadingContext: Story = {
       </Stack>
     );
   },
-  parameters: {
-     ,
-  },
 };
 
 export const AutoToneViaTextContext: Story = {
@@ -124,9 +115,6 @@ export const AutoToneViaTextContext: Story = {
       </Stack>
     );
   },
-  parameters: {
-     ,
-  },
 };
 
 export const OverrideAutoTone: Story = {
@@ -137,9 +125,6 @@ export const OverrideAutoTone: Story = {
       <Icons tone="positive" />
     </Text>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AutoToneWithBackgroundContrast: Story = {
@@ -156,9 +141,6 @@ export const AutoToneWithBackgroundContrast: Story = {
       </Text>
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AlignmentToText: Story = {
@@ -180,9 +162,6 @@ export const AlignmentToText: Story = {
       })}
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const AlignmentToButtons: Story = {
@@ -204,9 +183,6 @@ export const AlignmentToButtons: Story = {
       })}
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const InlineSizingTest: Story = {
@@ -249,8 +225,5 @@ export const InlineSizingTest: Story = {
         ))}
       </Stack>
     );
-  },
-  parameters: {
-     ,
   },
 };

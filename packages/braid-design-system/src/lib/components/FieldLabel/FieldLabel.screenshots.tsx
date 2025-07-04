@@ -16,9 +16,6 @@ type Story = StoryObj<typeof FieldLabel>;
 export const Standard: Story = {
   name: 'Standard Field Label',
   render: () => <FieldLabel htmlFor={false} label="Label" />,
-  parameters: {
-     ,
-  },
 };
 
 export const WithSecondaryLabel: Story = {
@@ -30,9 +27,6 @@ export const WithSecondaryLabel: Story = {
       secondaryLabel="Secondary Label"
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithTertiaryLabel: Story = {
@@ -44,9 +38,6 @@ export const WithTertiaryLabel: Story = {
       tertiaryLabel={<TextLink href="#">Tertiary</TextLink>}
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithDescription: Story = {
@@ -58,9 +49,6 @@ export const WithDescription: Story = {
       description="Description with extra information about the field"
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithAllSlots: Story = {
@@ -74,9 +62,6 @@ export const WithAllSlots: Story = {
       description="Description with extra information about the field"
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Disabled: Story = {
@@ -91,9 +76,6 @@ export const Disabled: Story = {
       description="Description with extra information about the field"
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const DescriptionWithoutLabel: Story = {
@@ -106,9 +88,6 @@ export const DescriptionWithoutLabel: Story = {
       description="Description visible without label or additional white space above"
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const LeftAlignedInCenteredStack: Story = {
@@ -125,7 +104,4 @@ export const LeftAlignedInCenteredStack: Story = {
       />
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };

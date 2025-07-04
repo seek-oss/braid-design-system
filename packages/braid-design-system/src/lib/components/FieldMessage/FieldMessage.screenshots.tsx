@@ -18,9 +18,6 @@ export const Critical: Story = {
   render: () => (
     <FieldMessage tone="critical" message="This is a critical message." />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Positive: Story = {
@@ -28,9 +25,6 @@ export const Positive: Story = {
   render: () => (
     <FieldMessage tone="positive" message="This is a positive message." />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Caution: Story = {
@@ -38,17 +32,11 @@ export const Caution: Story = {
   render: () => (
     <FieldMessage tone="caution" message="This is a caution message." />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Neutral: Story = {
   name: 'Neutral Field Message',
   render: () => <FieldMessage message="This is a neutral message." />,
-  parameters: {
-     ,
-  },
 };
 
 export const CriticalLongMessage: Story = {
@@ -59,9 +47,6 @@ export const CriticalLongMessage: Story = {
       message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
     />
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const LeftAlignedInCenteredStack: Story = {
@@ -74,7 +59,4 @@ export const LeftAlignedInCenteredStack: Story = {
       />
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };

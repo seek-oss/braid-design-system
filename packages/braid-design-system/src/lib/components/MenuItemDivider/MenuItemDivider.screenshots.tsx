@@ -28,11 +28,6 @@ const defaultProps = {
   placement: 'bottom',
 } as const;
 
-// Common parameters for all stories
-const commonParameters = {
-   ,
-};
-
 export const Default: Story = {
   name: 'Default',
   render: () => (
@@ -61,7 +56,6 @@ export const Default: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const HighlightedBeforeDivider: Story = {
@@ -92,7 +86,6 @@ export const HighlightedBeforeDivider: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const HighlightedAfterDivider: Story = {
@@ -123,5 +116,4 @@ export const HighlightedAfterDivider: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };

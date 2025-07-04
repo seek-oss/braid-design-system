@@ -30,9 +30,6 @@ export const InfoAlert: Story = {
   args: {
     children: <AlertContent />,
   },
-  parameters: {
-     ,
-  },
 };
 
 export const InfoAlertonasurface: Story = {
@@ -44,9 +41,6 @@ export const InfoAlertonasurface: Story = {
       </Alert>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const Dismissiblealert: Story = {
@@ -55,9 +49,6 @@ export const Dismissiblealert: Story = {
     children: <AlertContent />,
     onClose: () => {},
     closeLabel: 'Close info alert',
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -69,9 +60,6 @@ export const Dismissiblealertvirtualtouchtarget: Story = {
     closeLabel: 'Close info alert',
     tone: 'info',
     onClose: () => {},
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -93,9 +81,6 @@ export const Alertwithrichcontent: Story = {
     ),
     tone: 'info',
   },
-  parameters: {
-     ,
-  },
 };
 
 export const PromoteAlert: Story = {
@@ -103,9 +88,6 @@ export const PromoteAlert: Story = {
   args: {
     tone: 'promote',
     children: <AlertContent tone="promote" />,
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -122,9 +104,6 @@ export const PromoteAlertonasurface: Story = {
     tone: 'promote',
     children: <AlertContent tone="promote" />,
   },
-  parameters: {
-     ,
-  },
 };
 
 export const CautionAlert: Story = {
@@ -132,9 +111,6 @@ export const CautionAlert: Story = {
   args: {
     tone: 'caution',
     children: <AlertContent tone="caution" />,
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -147,9 +123,6 @@ export const CautionAlertonasurface: Story = {
       </Alert>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const CriticalAlert: Story = {
@@ -157,9 +130,6 @@ export const CriticalAlert: Story = {
   args: {
     tone: 'critical',
     children: <AlertContent tone="critical" />,
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -172,9 +142,6 @@ export const CriticalAlertonasurface: Story = {
       </Alert>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const PositiveAlert: Story = {
@@ -182,9 +149,6 @@ export const PositiveAlert: Story = {
   args: {
     tone: 'positive',
     children: <AlertContent tone="positive" />,
-  },
-  parameters: {
-     ,
   },
 };
 
@@ -197,9 +161,6 @@ export const PositiveAlertonasurface: Story = {
       </Alert>
     </Box>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const TestshouldbeleftalignedinacenteredStack: Story = {
@@ -214,7 +175,4 @@ export const TestshouldbeleftalignedinacenteredStack: Story = {
       </Alert>
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };

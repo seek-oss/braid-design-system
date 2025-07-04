@@ -8,7 +8,6 @@ const meta = {
   component: Notice,
   parameters: {
     screenshotOnlyInWireframe: false,
-     ,
   },
   argTypes: {
     tone: {

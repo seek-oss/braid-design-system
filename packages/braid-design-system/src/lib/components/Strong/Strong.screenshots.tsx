@@ -25,7 +25,4 @@ export const StrongExample1: Story = {
   args: {
     children: 'strong.',
   },
-  parameters: {
-     ,
-  },
 };

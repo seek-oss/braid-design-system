@@ -29,9 +29,6 @@ export const WithPlaceholder: Story = {
       <option value="2">Designer</option>
     </Dropdown>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithOptionsGroup: Story = {
@@ -50,9 +47,6 @@ export const WithOptionsGroup: Story = {
       <option value="3020">Wonthaggi</option>
     </Dropdown>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithIcon: Story = {
@@ -69,9 +63,6 @@ export const WithIcon: Story = {
       <option value="3002">Sydney</option>
     </Dropdown>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const WithoutPlaceholder: Story = {
@@ -82,9 +73,6 @@ export const WithoutPlaceholder: Story = {
       <option value="2">Designer</option>
     </Dropdown>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const CriticalTone: Story = {
@@ -101,9 +89,6 @@ export const CriticalTone: Story = {
       <option value="2">Designer</option>
     </Dropdown>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const CautionTone: Story = {
@@ -120,9 +105,6 @@ export const CautionTone: Story = {
       <option value="2">Designer</option>
     </Dropdown>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const DisabledState: Story = {
@@ -180,9 +162,6 @@ export const DisabledState: Story = {
       </Dropdown>
     </Stack>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const NoVisualLabel: Story = {
@@ -198,9 +177,6 @@ export const NoVisualLabel: Story = {
       <option value="2">Designer</option>
     </Dropdown>
   ),
-  parameters: {
-     ,
-  },
 };
 
 export const ContrastTest: Story = {
@@ -218,7 +194,4 @@ export const ContrastTest: Story = {
       </Dropdown>
     </BackgroundContrastTest>
   ),
-  parameters: {
-     ,
-  },
 };
