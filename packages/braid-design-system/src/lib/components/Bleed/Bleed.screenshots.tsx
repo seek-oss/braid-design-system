@@ -1,13 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { wireframeModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import { Bleed, Box, Stack, Text } from '../';
-
-const defaultParams = {
-  chromatic: {
-    viewports: [320, 768, 992, 1200],
-  },
-};
 
 const BleedBox = () => (
   <Box
@@ -21,7 +16,15 @@ const meta = {
   title: 'Components/Bleed',
   component: Bleed,
   parameters: {
-    screenshotOnlyInWireframe: true,
+    // screenshotOnlyInWireframe: true,
+    chromatic: {
+      modes: {
+        xsmall: wireframeModes.xsmall,
+        small: wireframeModes.small,
+        medium: wireframeModes.medium,
+        large: wireframeModes.large,
+      },
+    },
   },
   argTypes: {
     space: {
@@ -131,7 +134,6 @@ export const Onallsides: Story = {
   args: {
     space: 'large',
   },
-  parameters: defaultParams,
 };
 
 export const Horizontally: Story = {
@@ -139,7 +141,6 @@ export const Horizontally: Story = {
   args: {
     horizontal: 'large',
   },
-  parameters: defaultParams,
 };
 
 export const Vertically: Story = {
@@ -147,7 +148,6 @@ export const Vertically: Story = {
   args: {
     vertical: 'large',
   },
-  parameters: defaultParams,
 };
 
 export const Tothetop: Story = {
@@ -155,7 +155,6 @@ export const Tothetop: Story = {
   args: {
     top: 'large',
   },
-  parameters: defaultParams,
 };
 
 export const Tothebottom: Story = {
@@ -163,7 +162,6 @@ export const Tothebottom: Story = {
   args: {
     bottom: 'large',
   },
-  parameters: defaultParams,
 };
 
 export const Totheleft: Story = {
@@ -171,7 +169,6 @@ export const Totheleft: Story = {
   args: {
     left: 'large',
   },
-  parameters: defaultParams,
 };
 
 export const Totheright: Story = {
@@ -179,7 +176,6 @@ export const Totheright: Story = {
   args: {
     right: 'large',
   },
-  parameters: defaultParams,
 };
 
 export const Responsivesingledimension: Story = {
@@ -210,7 +206,6 @@ export const Responsivesingledimension: Story = {
       wide: 'small',
     },
   },
-  parameters: defaultParams,
 };
 
 export const Responsiveonaxis: Story = {
@@ -229,7 +224,6 @@ export const Responsiveonaxis: Story = {
       wide: 'small',
     },
   },
-  parameters: defaultParams,
 };
 
 export const Responsivespace: Story = {
@@ -242,7 +236,6 @@ export const Responsivespace: Story = {
       wide: 'xlarge',
     },
   },
-  parameters: defaultParams,
 };
 
 export const Testlefttrumpshorizontalandspace: Story = {
@@ -266,7 +259,6 @@ export const Testlefttrumpshorizontalandspace: Story = {
       </Box>
     </Bleed>
   ),
-  parameters: defaultParams,
 };
 
 export const Testrighttrumpshorizontalandspace: Story = {
@@ -290,7 +282,6 @@ export const Testrighttrumpshorizontalandspace: Story = {
       </Box>
     </Bleed>
   ),
-  parameters: defaultParams,
 };
 
 export const Testhorizontaltrumpsspace: Story = {
@@ -314,7 +305,6 @@ export const Testhorizontaltrumpsspace: Story = {
       </Box>
     </Bleed>
   ),
-  parameters: defaultParams,
 };
 
 export const Testtoptrumpsverticalandspace: Story = {
@@ -338,7 +328,6 @@ export const Testtoptrumpsverticalandspace: Story = {
       </Box>
     </Bleed>
   ),
-  parameters: defaultParams,
 };
 
 export const Testbottomtrumpsverticalandspace: Story = {
@@ -362,7 +351,6 @@ export const Testbottomtrumpsverticalandspace: Story = {
       </Box>
     </Bleed>
   ),
-  parameters: defaultParams,
 };
 
 export const Testverticaltrumpsspace: Story = {
@@ -386,7 +374,6 @@ export const Testverticaltrumpsspace: Story = {
       </Box>
     </Bleed>
   ),
-  parameters: defaultParams,
 };
 
 export const TestContentshouldberelativetobleedcontainer: Story = {
@@ -409,7 +396,6 @@ export const TestContentshouldberelativetobleedcontainer: Story = {
       </Bleed>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const TestSpan: Story = {
@@ -418,5 +404,4 @@ export const TestSpan: Story = {
     component: 'span',
     space: 'large',
   },
-  parameters: defaultParams,
 };

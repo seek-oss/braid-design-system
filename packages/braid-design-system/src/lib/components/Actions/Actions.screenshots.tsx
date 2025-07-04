@@ -1,4 +1,5 @@
 import type { StoryObj } from '@storybook/react-webpack5';
+import { smModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import { Button, Actions } from '../';
@@ -9,7 +10,15 @@ const meta = {
   title: 'Components/Actions',
   component: Actions,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    parameters: {
+      chromatic: {
+        modes: {
+          ...xsModes,
+          ...smModes,
+        },
+      },
+    },
   },
 };
 
@@ -26,11 +35,6 @@ export const Standardsize: Story = {
       </>
     ),
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Smallsize: Story = {
@@ -44,10 +48,5 @@ export const Smallsize: Story = {
         <Button variant="transparent">Button 3</Button>
       </>
     ),
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
   },
 };

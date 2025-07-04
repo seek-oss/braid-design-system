@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { xsModes, smModes, mdModes, lgModes } from 'braid-storybook/modes';
 import { Fragment } from 'react';
 
 import { Box, Inline } from '../';
@@ -9,17 +10,19 @@ const meta = {
   component: Inline,
   parameters: {
     screenshotOnlyInWireframe: true,
+    chromatic: {
+      modes: {
+        ...xsModes,
+        ...smModes,
+        ...mdModes,
+        ...lgModes,
+      },
+    },
   },
 } satisfies Meta<typeof Inline>;
 
 export default meta;
 type Story = StoryObj<typeof Inline>;
-
-const commonParameters = {
-  chromatic: {
-    viewports: [320, 768, 992, 1200],
-  },
-};
 
 export const ResponsiveSpace: Story = {
   name: "Responsive space, e.g. ['xxsmall', 'medium']",
@@ -37,7 +40,6 @@ export const ResponsiveSpace: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const AlignCenter: Story = {
@@ -56,7 +58,6 @@ export const AlignCenter: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const AlignRight: Story = {
@@ -75,7 +76,6 @@ export const AlignRight: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const ResponsiveAlignment: Story = {
@@ -94,7 +94,6 @@ export const ResponsiveAlignment: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const AlignVertically: Story = {
@@ -106,7 +105,6 @@ export const AlignVertically: Story = {
       <Placeholder width={48} height={60} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseBelowTablet: Story = {
@@ -121,7 +119,6 @@ export const CollapseBelowTablet: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseBelowDesktop: Story = {
@@ -136,7 +133,6 @@ export const CollapseBelowDesktop: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseBelowWide: Story = {
@@ -151,7 +147,6 @@ export const CollapseBelowWide: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseBelowDesktopWithResponsiveSpace: Story = {
@@ -166,7 +161,6 @@ export const CollapseBelowDesktopWithResponsiveSpace: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseBelowWideWithResponsiveSpace: Story = {
@@ -184,7 +178,6 @@ export const CollapseBelowWideWithResponsiveSpace: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseBelowDesktopWithAlignment: Story = {
@@ -199,7 +192,6 @@ export const CollapseBelowDesktopWithAlignment: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseAndResponsiveAlign: Story = {
@@ -218,7 +210,6 @@ export const CollapseAndResponsiveAlign: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseTabletAlignReverse: Story = {
@@ -238,7 +229,6 @@ export const CollapseTabletAlignReverse: Story = {
       <Placeholder width={48} height={48} label="6" />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseDesktopAlignReverse: Story = {
@@ -258,7 +248,6 @@ export const CollapseDesktopAlignReverse: Story = {
       <Placeholder width={48} height={48} label="6" />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const CollapseWideAlignReverse: Story = {
@@ -278,7 +267,6 @@ export const CollapseWideAlignReverse: Story = {
       <Placeholder width={48} height={48} label="6" />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const FlattenFragments: Story = {
@@ -305,7 +293,6 @@ export const FlattenFragments: Story = {
       <Placeholder width={48} height={48} />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const SpanAlignLeft: Story = {
@@ -317,7 +304,6 @@ export const SpanAlignLeft: Story = {
       <Placeholder width={48} height={48} label="3" />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const SpanAlignCenter: Story = {
@@ -329,7 +315,6 @@ export const SpanAlignCenter: Story = {
       <Placeholder width={48} height={48} label="3" />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const SpanAlignRight: Story = {
@@ -341,7 +326,6 @@ export const SpanAlignRight: Story = {
       <Placeholder width={48} height={48} label="3" />
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const Truncation: Story = {
@@ -376,5 +360,4 @@ export const Truncation: Story = {
       </Box>
     </Inline>
   ),
-  parameters: commonParameters,
 };

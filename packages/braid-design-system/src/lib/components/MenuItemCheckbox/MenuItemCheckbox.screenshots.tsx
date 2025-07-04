@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes } from 'braid-storybook/modes';
 
 import { Badge, Inline, MenuItemCheckbox } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
@@ -8,6 +9,11 @@ const meta = {
   component: MenuItemCheckbox,
   parameters: {
     screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...smModes,
+      },
+    },
   },
 } satisfies Meta<typeof MenuItemCheckbox>;
 
@@ -27,13 +33,6 @@ const defaultProps = {
   reserveIconSpace: false,
   placement: 'bottom',
 } as const;
-
-// Common parameters for all stories
-const commonParameters = {
-  chromatic: {
-    viewports: [768],
-  },
-};
 
 export const Default: Story = {
   name: 'Default',
@@ -57,7 +56,6 @@ export const Default: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const Highlighted: Story = {
@@ -82,7 +80,6 @@ export const Highlighted: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const WithBadge: Story = {
@@ -115,7 +112,6 @@ export const WithBadge: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const OverflowContentWidth: Story = {
@@ -154,7 +150,6 @@ export const OverflowContentWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const OverflowSmallWidth: Story = {
@@ -193,7 +188,6 @@ export const OverflowSmallWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const OverflowMediumWidth: Story = {
@@ -232,7 +226,6 @@ export const OverflowMediumWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const OverflowLargeWidth: Story = {
@@ -271,5 +264,4 @@ export const OverflowLargeWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };

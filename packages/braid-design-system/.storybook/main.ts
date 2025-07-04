@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
+import path from 'path';
 
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import { babel, webpackFinal } from 'sku/config/storybook';
@@ -37,7 +38,16 @@ const config: StorybookConfig = {
   ],
   addons: [],
   babel,
-  webpackFinal,
+  webpackFinal: async (webpackConfig, options) => {
+    const skuConfig = await webpackFinal(webpackConfig, options);
+    skuConfig.resolve ??= {};
+    skuConfig.resolve.alias = {
+      ...skuConfig.resolve?.alias,
+      'braid-storybook': __dirname,
+    };
+
+    return skuConfig;
+  },
 };
 
 export default config;

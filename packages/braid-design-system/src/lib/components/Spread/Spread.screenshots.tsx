@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { wireframeModes } from 'braid-storybook/modes';
 
 import { Box, Spread, Stack, Text, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -7,7 +8,15 @@ const meta = {
   title: 'Components/Spread',
   component: Spread,
   parameters: {
-    screenshotOnlyInWireframe: true,
+    // screenshotOnlyInWireframe: true,
+    chromatic: {
+      modes: {
+        xsmall: wireframeModes.xsmall,
+        small: wireframeModes.small,
+        medium: wireframeModes.medium,
+        large: wireframeModes.large,
+      },
+    },
   },
 } satisfies Meta<typeof Spread>;
 
@@ -22,11 +31,6 @@ export const Horizontal: Story = {
       <Placeholder key="1" height={60} width={50} />,
       <Placeholder key="2" height={60} width={80} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -49,11 +53,6 @@ export const Horizontalsinglefullwidthshouldbecontentwidthandspreadtoeachside: S
         </Box>
       </Spread>
     ),
-    parameters: {
-      chromatic: {
-        viewports: [320, 768, 992, 1200],
-      },
-    },
   };
 
 export const Horizontalbothfullwidthshouldbecontentwidthandspreadtoeachside: Story =
@@ -69,11 +68,6 @@ export const Horizontalbothfullwidthshouldbecontentwidthandspreadtoeachside: Sto
         </Box>
       </Spread>
     ),
-    parameters: {
-      chromatic: {
-        viewports: [320, 768, 992, 1200],
-      },
-    },
   };
 
 export const Horizontalsinglechildfullwidthshouldbecontentwidth: Story = {
@@ -85,11 +79,6 @@ export const Horizontalsinglechildfullwidthshouldbecontentwidth: Story = {
       </Box>
     </Spread>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const Horizontalresponsivespace: Story = {
@@ -106,11 +95,6 @@ export const Horizontalresponsivespace: Story = {
       <Placeholder key="2" height={60} width={80} />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const HorizontalalignYtop: Story = {
@@ -122,11 +106,6 @@ export const HorizontalalignYtop: Story = {
       <Placeholder key="1" height={20} width={80} label="top" />,
       <Placeholder key="2" height={60} width="100%" />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -140,11 +119,6 @@ export const HorizontalalignYcenter: Story = {
       <Placeholder key="2" height={60} width="100%" />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const HorizontalalignYbottom: Story = {
@@ -157,11 +131,6 @@ export const HorizontalalignYbottom: Story = {
       <Placeholder key="2" height={60} width="100%" />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const Horizontalaligncenternoimpact: Story = {
@@ -173,11 +142,6 @@ export const Horizontalaligncenternoimpact: Story = {
       <Placeholder key="1" height={60} width="100%" />,
       <Placeholder key="2" height={60} width={80} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -199,11 +163,6 @@ export const Vertical: Story = {
       </Spread>
     </Tiles>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const Verticalsinglefullwidth: Story = {
@@ -215,11 +174,6 @@ export const Verticalsinglefullwidth: Story = {
       <Placeholder key="1" height={60} width="100%" />,
       <Placeholder key="2" height={20} width={80} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -238,11 +192,6 @@ export const Verticalresponsivespace: Story = {
       <Placeholder key="2" height={60} width={80} />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const Verticalalignleft: Story = {
@@ -255,11 +204,6 @@ export const Verticalalignleft: Story = {
       <Placeholder key="1" height={20} width={80} label="left" />,
       <Placeholder key="2" height={60} width={100} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -274,11 +218,6 @@ export const Verticalaligncenter: Story = {
       <Placeholder key="2" height={60} width={100} />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const Verticalalignright: Story = {
@@ -292,11 +231,6 @@ export const Verticalalignright: Story = {
       <Placeholder key="2" height={60} width={100} />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const VerticalalignYcenternoimpact: Story = {
@@ -309,11 +243,6 @@ export const VerticalalignYcenternoimpact: Story = {
       <Placeholder key="1" height={60} width="100%" />,
       <Placeholder key="2" height={60} width={80} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -336,11 +265,6 @@ export const TestHorizontalwithoutalignYContentshouldaligntopandnotstretch: Stor
         </Box>
       </Spread>
     ),
-    parameters: {
-      chromatic: {
-        viewports: [320, 768, 992, 1200],
-      },
-    },
   };
 
 export const TestTexttruncationhorizontalshouldconsumeavailablespacewithoutpushingContentoutofscreen: Story =
@@ -357,11 +281,6 @@ export const TestTexttruncationhorizontalshouldconsumeavailablespacewithoutpushi
         </Box>
       </Spread>
     ),
-    parameters: {
-      chromatic: {
-        viewports: [320, 768, 992, 1200],
-      },
-    },
   };
 
 export const TestTexttruncationverticalshouldbelimitedtocontainerwidthandrespectalignprop: Story =
@@ -385,9 +304,4 @@ export const TestTexttruncationverticalshouldbelimitedtocontainerwidthandrespect
         ))}
       </Stack>
     ),
-    parameters: {
-      chromatic: {
-        viewports: [320, 768, 992, 1200],
-      },
-    },
   };

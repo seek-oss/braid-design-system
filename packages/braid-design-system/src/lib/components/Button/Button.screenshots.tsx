@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import {
@@ -21,7 +22,12 @@ const meta = {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...smModes,
+      },
+    },
   },
   argTypes: {
     tone: {
@@ -42,12 +48,6 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-const defaultParams = {
-  chromatic: {
-    viewports: [768],
-  },
-};
-
 export const Defaultvariantfortone: Story = {
   name: 'Default variant for tone',
   render: () => (
@@ -59,7 +59,6 @@ export const Defaultvariantfortone: Story = {
       <Button tone="neutral">neutral</Button>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Critical: Story = {
@@ -80,7 +79,6 @@ export const Critical: Story = {
       </Button>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const BrandAccent: Story = {
@@ -101,7 +99,6 @@ export const BrandAccent: Story = {
       </Button>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const FormAccent: Story = {
@@ -122,7 +119,6 @@ export const FormAccent: Story = {
       </Button>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Neutral: Story = {
@@ -143,7 +139,6 @@ export const Neutral: Story = {
       </Button>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Smallsize: Story = {
@@ -164,7 +159,6 @@ export const Smallsize: Story = {
       </Button>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Smallsizevirtualtouchtarget: Story = {
@@ -190,7 +184,6 @@ export const Smallsizevirtualtouchtarget: Story = {
       </Button>
     </Inline>
   ),
-  parameters: defaultParams,
 };
 
 export const Withverticalbleedstandard: Story = {
@@ -205,7 +198,6 @@ export const Withverticalbleedstandard: Story = {
       </Box>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Withverticalbleedsmall: Story = {
@@ -222,7 +214,6 @@ export const Withverticalbleedsmall: Story = {
       </Box>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Withfullbleedtransparent: Story = {
@@ -239,7 +230,6 @@ export const Withfullbleedtransparent: Story = {
       </Box>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Withicon: Story = {
@@ -276,7 +266,6 @@ export const Withicon: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const WithiconPositiontrailing: Story = {
@@ -349,7 +338,6 @@ export const WithiconPositiontrailing: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
@@ -364,7 +352,6 @@ export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: Story =
@@ -382,7 +369,6 @@ export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: S
         </Inline>
       </Stack>
     ),
-    parameters: defaultParams,
   };
 
 export const Contrast: Story = {
@@ -405,7 +391,6 @@ export const Contrast: Story = {
       </Inline>
     </BackgroundContrastTest>
   ),
-  parameters: defaultParams,
 };
 
 export const Contrastcritical: Story = {
@@ -428,7 +413,6 @@ export const Contrastcritical: Story = {
       </Inline>
     </BackgroundContrastTest>
   ),
-  parameters: defaultParams,
 };
 
 export const ContrastbrandAccent: Story = {
@@ -451,7 +435,6 @@ export const ContrastbrandAccent: Story = {
       </Inline>
     </BackgroundContrastTest>
   ),
-  parameters: defaultParams,
 };
 
 export const Contrastneutral: Story = {
@@ -474,7 +457,6 @@ export const Contrastneutral: Story = {
       </Inline>
     </BackgroundContrastTest>
   ),
-  parameters: defaultParams,
 };
 
 export const Longlabel: Story = {
@@ -517,7 +499,6 @@ export const Longlabel: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const Unbrokenlabel: Story = {
@@ -560,7 +541,6 @@ export const Unbrokenlabel: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: defaultParams,
 };
 
 export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Story =
@@ -614,7 +594,6 @@ export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Stor
         </Box>
       </Stack>
     ),
-    parameters: defaultParams,
   };
 
 export const Ensureinnerlabelelementisfullwidthreddotsshouldtouchhorizontaledges: Story =
@@ -645,5 +624,4 @@ export const Ensureinnerlabelelementisfullwidthreddotsshouldtouchhorizontaledges
         Label
       </Button>
     ),
-    parameters: defaultParams,
   };

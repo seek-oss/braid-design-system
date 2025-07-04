@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { wireframeModes } from 'braid-storybook/modes';
 
 import { Hidden, Text, Box } from '../';
 
@@ -6,18 +7,20 @@ const meta = {
   title: 'Components/Hidden',
   component: Hidden,
   parameters: {
-    screenshotOnlyInWireframe: true,
+    // screenshotOnlyInWireframe: true,
+    chromatic: {
+      modes: {
+        xsmall: wireframeModes.xsmall,
+        small: wireframeModes.small,
+        medium: wireframeModes.medium,
+        large: wireframeModes.large,
+      },
+    },
   },
 } satisfies Meta<typeof Hidden>;
 
 export default meta;
 type Story = StoryObj<typeof Hidden>;
-
-const commonParameters = {
-  chromatic: {
-    viewports: [320, 768, 992, 1200],
-  },
-};
 
 export const HiddenAlways: Story = {
   name: 'Hidden always',
@@ -31,7 +34,6 @@ export const HiddenAlways: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenBelowTablet: Story = {
@@ -46,7 +48,6 @@ export const HiddenBelowTablet: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenBelowDesktop: Story = {
@@ -61,7 +62,6 @@ export const HiddenBelowDesktop: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenBelowWide: Story = {
@@ -76,7 +76,6 @@ export const HiddenBelowWide: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenAboveMobile: Story = {
@@ -91,7 +90,6 @@ export const HiddenAboveMobile: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenAboveTablet: Story = {
@@ -106,7 +104,6 @@ export const HiddenAboveTablet: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenAboveDesktop: Story = {
@@ -121,7 +118,6 @@ export const HiddenAboveDesktop: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenOnPrint: Story = {
@@ -136,7 +132,6 @@ export const HiddenOnPrint: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenOnScreen: Story = {
@@ -151,7 +146,6 @@ export const HiddenOnScreen: Story = {
       </Hidden>
     </>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenBelowTabletInline: Story = {
@@ -162,7 +156,6 @@ export const HiddenBelowTabletInline: Story = {
       <Hidden below="tablet">Hidden below tablet.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenBelowDesktopInline: Story = {
@@ -173,7 +166,6 @@ export const HiddenBelowDesktopInline: Story = {
       <Hidden below="desktop">Hidden below desktop.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenBelowWideInline: Story = {
@@ -184,7 +176,6 @@ export const HiddenBelowWideInline: Story = {
       <Hidden below="wide">Hidden below wide.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenAboveMobileInline: Story = {
@@ -195,7 +186,6 @@ export const HiddenAboveMobileInline: Story = {
       <Hidden above="mobile">Hidden above mobile.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenAboveTabletInline: Story = {
@@ -206,7 +196,6 @@ export const HiddenAboveTabletInline: Story = {
       <Hidden above="tablet">Hidden above tablet.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenAboveDesktopInline: Story = {
@@ -217,7 +206,6 @@ export const HiddenAboveDesktopInline: Story = {
       <Hidden above="desktop">Hidden above desktop.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenOnPrintInline: Story = {
@@ -228,7 +216,6 @@ export const HiddenOnPrintInline: Story = {
       <Hidden print>Hidden on print.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };
 
 export const HiddenOnScreenInline: Story = {
@@ -239,5 +226,4 @@ export const HiddenOnScreenInline: Story = {
       <Hidden screen>Hidden on screen.</Hidden>
     </Text>
   ),
-  parameters: commonParameters,
 };

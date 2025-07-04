@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { lgModes, xsModes } from 'braid-storybook/modes';
 import type { ReactNode } from 'react';
 
 import { Placeholder } from '../../playroom/components';
@@ -44,7 +45,10 @@ export const DefaultLayout: Story = {
   ),
   parameters: {
     chromatic: {
-      viewports: [320, 1200],
+      modes: {
+        ...xsModes,
+        ...lgModes,
+      },
     },
   },
 };
@@ -63,11 +67,6 @@ export const LayoutWithDescription: Story = {
       <Placeholder height={100} width="100%" />
     </DrawerContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const SmallWidth: Story = {
@@ -82,11 +81,6 @@ export const SmallWidth: Story = {
       <Placeholder height={100} width="100%" label="Small Drawer" />
     </DrawerContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const MediumWidth: Story = {
@@ -101,11 +95,6 @@ export const MediumWidth: Story = {
       <Placeholder height={100} width="100%" label="Medium Drawer" />
     </DrawerContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const LargeWidth: Story = {
@@ -120,11 +109,6 @@ export const LargeWidth: Story = {
       <Placeholder height={100} width="100%" label="Large Drawer" />
     </DrawerContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const CloseButtonLayout: Story = {
@@ -151,11 +135,6 @@ export const CloseButtonLayout: Story = {
       </Box>
     </DrawerContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const LeftAlignedInCenteredStack: Story = {
@@ -175,9 +154,4 @@ export const LeftAlignedInCenteredStack: Story = {
       </DrawerContent>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { lgModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import { Box, PageBlock } from '../';
@@ -10,7 +11,10 @@ const meta = {
   parameters: {
     screenshotOnlyInWireframe: false,
     chromatic: {
-      viewports: [320, 1200],
+      modes: {
+        ...xsModes,
+        ...lgModes,
+      },
     },
   },
   argTypes: {

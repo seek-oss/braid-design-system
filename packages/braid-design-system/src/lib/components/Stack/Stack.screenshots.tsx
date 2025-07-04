@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { wireframeModes } from 'braid-storybook/modes';
 import { Fragment } from 'react';
 
 import { Box, Stack, Hidden, Heading, Text, Strong } from '../';
@@ -9,7 +10,15 @@ const meta = {
   title: 'Components/Stack',
   component: Stack,
   parameters: {
-    screenshotOnlyInWireframe: true,
+    // screenshotOnlyInWireframe: true,
+    chromatic: {
+      modes: {
+        xsmall: wireframeModes.xsmall,
+        small: wireframeModes.small,
+        medium: wireframeModes.medium,
+        large: wireframeModes.large,
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -35,11 +44,6 @@ const spaceStories = spaces.reduce(
           <Placeholder key="2" height={40} />,
           <Placeholder key="3" height={40} />,
         ],
-      },
-      parameters: {
-        chromatic: {
-          viewports: [320, 768, 992, 1200],
-        },
       },
     };
     return acc;
@@ -67,11 +71,6 @@ export const AlignToCenter: Story = {
       <Placeholder key="3" height={40} width={80} />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const AlignToRight: Story = {
@@ -85,11 +84,6 @@ export const AlignToRight: Story = {
       <Placeholder key="3" height={40} width={80} />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const ResponsiveAlignment: Story = {
@@ -102,11 +96,6 @@ export const ResponsiveAlignment: Story = {
       <Placeholder key="2" height={40} width={60} />,
       <Placeholder key="3" height={40} width={80} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -128,11 +117,6 @@ export const HandlesFragments: Story = {
       <Placeholder height={40} />
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const ResponsivelyHidingItems: Story = {
@@ -149,11 +133,6 @@ export const ResponsivelyHidingItems: Story = {
       <Placeholder height={40} label="4" />
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const HiddenItemsWithResponsiveAlignment: Story = {
@@ -187,11 +166,6 @@ export const HiddenItemsWithResponsiveAlignment: Story = {
       </Hidden>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const SpanAlignToLeft: Story = {
@@ -204,11 +178,6 @@ export const SpanAlignToLeft: Story = {
       <Placeholder key="2" height={40} />,
       <Placeholder key="3" height={40} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -224,11 +193,6 @@ export const SpanAlignToCenter: Story = {
       <Placeholder key="3" height={40} width={80} />,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const SpanAlignToRight: Story = {
@@ -242,11 +206,6 @@ export const SpanAlignToRight: Story = {
       <Placeholder key="2" height={40} width={60} />,
       <Placeholder key="3" height={40} width={80} />,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
   },
 };
 
@@ -265,11 +224,6 @@ export const DefaultTextAlignmentLeft: Story = {
       </Text>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const DefaultTextAlignmentCenter: Story = {
@@ -287,11 +241,6 @@ export const DefaultTextAlignmentCenter: Story = {
       </Text>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };
 
 export const DefaultTextAlignmentRight: Story = {
@@ -309,9 +258,4 @@ export const DefaultTextAlignmentRight: Story = {
       </Text>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768, 992, 1200],
-    },
-  },
 };

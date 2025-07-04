@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { wireframeModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import { Columns, Column } from '../';
@@ -8,9 +9,14 @@ const meta = {
   title: 'Components/Columns',
   component: Columns,
   parameters: {
-    screenshotOnlyInWireframe: true,
+    // screenshotOnlyInWireframe: true,
     chromatic: {
-      viewports: [320, 768, 992, 1200],
+      modes: {
+        xsmall: wireframeModes.xsmall,
+        small: wireframeModes.small,
+        medium: wireframeModes.medium,
+        large: wireframeModes.large,
+      },
     },
   },
   argTypes: {

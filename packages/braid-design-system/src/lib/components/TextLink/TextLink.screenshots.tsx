@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes } from 'braid-storybook/modes';
 
 import {
   Box,
@@ -32,7 +33,12 @@ const meta: Meta<typeof TextLink> = {
   title: 'Components/TextLink',
   component: TextLink,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...smModes,
+      },
+    },
   },
 };
 
@@ -45,11 +51,6 @@ export const weightregular: Story = {
       <TextLink href="#">TextLink</TextLink>
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const weightweak: Story = {
@@ -60,11 +61,6 @@ export const weightweak: Story = {
       </TextLink>
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const hitArealarge: Story = {
@@ -75,11 +71,6 @@ export const hitArealarge: Story = {
       </TextLink>
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const hitArealargevirtualtouchtarget: Story = {
@@ -96,11 +87,6 @@ export const hitArealargevirtualtouchtarget: Story = {
       .
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const showVisited: Story = {
@@ -113,11 +99,6 @@ export const showVisited: Story = {
       .
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Regularweightinsideavailabletextsizes: Story = {
@@ -131,11 +112,6 @@ export const Regularweightinsideavailabletextsizes: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Weakweightinsideavailabletextsizes: Story = {
@@ -152,11 +128,6 @@ export const Weakweightinsideavailabletextsizes: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Regularweightinsideavailabletexttones: Story = {
@@ -170,11 +141,6 @@ export const Regularweightinsideavailabletexttones: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Weakweightinsideavailabletexttones: Story = {
@@ -191,11 +157,6 @@ export const Weakweightinsideavailabletexttones: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Regularweightinsideavailableheadinglevels: Story = {
@@ -209,11 +170,6 @@ export const Regularweightinsideavailableheadinglevels: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Weakweightinsideavailableheadinglevels: Story = {
@@ -230,11 +186,6 @@ export const Weakweightinsideavailableheadinglevels: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Iconsinheritregularlinkcolour: Story = {
@@ -260,11 +211,6 @@ export const Iconsinheritregularlinkcolour: Story = {
       </Text>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Iconsinheritweaklinkcolour: Story = {
@@ -290,11 +236,6 @@ export const Iconsinheritweaklinkcolour: Story = {
       </Text>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Withiconslot: Story = {
@@ -307,11 +248,6 @@ export const Withiconslot: Story = {
       .
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Withatrailingicon: Story = {
@@ -324,11 +260,6 @@ export const Withatrailingicon: Story = {
       .
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Withiconslotandweightweak: Story = {
@@ -341,11 +272,6 @@ export const Withiconslotandweightweak: Story = {
       .
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Withatrailingiconandweightweak: Story = {
@@ -363,11 +289,6 @@ export const Withatrailingiconandweightweak: Story = {
       .
     </Text>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const TextContrast: Story = {
@@ -403,11 +324,6 @@ export const TextContrast: Story = {
       )}
     </BackgroundContrastTest>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const HeadingContrast: Story = {
@@ -443,11 +359,6 @@ export const HeadingContrast: Story = {
       )}
     </BackgroundContrastTest>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Underlinepositionwraptest: Story = {
@@ -506,9 +417,4 @@ export const Underlinepositionwraptest: Story = {
       </Stack>
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };

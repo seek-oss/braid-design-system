@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes } from 'braid-storybook/modes';
 
 import { Tag, Inline, IconTag, Stack } from '../';
 import { LayoutTest } from '../../utils/LayoutTest';
@@ -9,7 +10,12 @@ const meta = {
   title: 'Components/Tag',
   component: Tag,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...smModes,
+      },
+    },
   },
 } satisfies Meta<typeof Tag>;
 
@@ -32,11 +38,6 @@ export const StandardTag: Story = {
       </Tag>
     </Inline>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const SmallTag: Story = {
@@ -55,11 +56,6 @@ export const SmallTag: Story = {
       </Tag>
     </Inline>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const TruncatedTag: Story = {
@@ -96,11 +92,6 @@ export const TruncatedTag: Story = {
       </Tag>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Virtualtouchtarget: Story = {
@@ -136,11 +127,6 @@ export const Virtualtouchtarget: Story = {
       </Inline>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };
 
 export const Layout: Story = {
@@ -173,9 +159,4 @@ export const Layout: Story = {
       </LayoutTest>
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [768],
-    },
-  },
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes, xsModes } from 'braid-storybook/modes';
 
 import { Box, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -11,7 +12,10 @@ const meta: Meta<typeof Tiles> = {
   parameters: {
     layout: 'padded',
     chromatic: {
-      viewports: [320, 768],
+      modes: {
+        ...xsModes,
+        ...smModes,
+      },
     },
   },
 };

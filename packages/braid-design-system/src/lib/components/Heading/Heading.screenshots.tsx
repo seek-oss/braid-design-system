@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes, xsModes } from 'braid-storybook/modes';
 import { Fragment } from 'react';
 
 import { Box, Heading, IconPositive, IconImage, Stack, Text } from '../';
@@ -40,7 +41,10 @@ export const Levels: Story = {
   ),
   parameters: {
     chromatic: {
-      viewports: [320, 768],
+      modes: {
+        ...xsModes,
+        ...smModes,
+      },
     },
   },
 };
@@ -60,11 +64,6 @@ export const LineHeights: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const WeakWeight: Story = {
@@ -78,11 +77,6 @@ export const WeakWeight: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Alignment: Story = {
@@ -96,11 +90,6 @@ export const Alignment: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const ResponsiveAlignment: Story = {
@@ -110,11 +99,6 @@ export const ResponsiveAlignment: Story = {
       Right aligned mobile, center on tablet, left on desktop
     </Heading>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const MaxLinesOne: Story = {
@@ -128,11 +112,6 @@ export const MaxLinesOne: Story = {
       <Box style={{ border: '1px solid red' }} />
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const MaxLinesOneInFlex: Story = {
@@ -146,11 +125,6 @@ export const MaxLinesOneInFlex: Story = {
       <Box style={{ border: '1px solid red' }} />
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const MaxLinesThree: Story = {
@@ -165,11 +139,6 @@ export const MaxLinesThree: Story = {
       <Box style={{ border: '1px solid red' }} />
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const WithIcon: Story = {
@@ -185,11 +154,6 @@ export const WithIcon: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const AlignmentWithIcon: Story = {
@@ -208,11 +172,6 @@ export const AlignmentWithIcon: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const ResponsiveAlignmentWithIcon: Story = {
@@ -228,11 +187,6 @@ export const ResponsiveAlignmentWithIcon: Story = {
       </Heading>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const IconLineHeight: Story = {
@@ -276,11 +230,6 @@ export const IconLineHeight: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const ContrastTest: Story = {
@@ -294,9 +243,4 @@ export const ContrastTest: Story = {
       )}
     </BackgroundContrastTest>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };

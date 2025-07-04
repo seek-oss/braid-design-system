@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { wireframeModes } from 'braid-storybook/modes';
 
 import {
   Stack,
@@ -16,7 +17,13 @@ const meta = {
   title: 'Components/Tabs',
   component: Tabs,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        xsmall: wireframeModes.xsmall,
+        large: wireframeModes.large,
+      },
+    },
   },
 } satisfies Meta<typeof Tabs>;
 
@@ -38,11 +45,6 @@ export const ActiveIndicatorBasic: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const ActiveIndicatorWithIcons: Story = {
@@ -66,11 +68,6 @@ export const ActiveIndicatorWithIcons: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const ActiveIndicatorWithBadge: Story = {
@@ -94,11 +91,6 @@ export const ActiveIndicatorWithBadge: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const ActiveIndicatorWithIconsAndBadge: Story = {
@@ -134,11 +126,6 @@ export const ActiveIndicatorWithIconsAndBadge: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const LeftAligned: Story = {
@@ -169,11 +156,6 @@ export const LeftAligned: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const CenterAligned: Story = {
@@ -196,11 +178,6 @@ export const CenterAligned: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const WithGutter: Story = {
@@ -231,11 +208,6 @@ export const WithGutter: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const WithGutterAndReservedHitArea: Story = {
@@ -266,11 +238,6 @@ export const WithGutterAndReservedHitArea: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const TestCenterAlignedTabsOnMobile: Story = {
@@ -305,11 +272,6 @@ export const TestCenterAlignedTabsOnMobile: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const TestSelectedTabScrolledIntoView: Story = {
@@ -344,11 +306,6 @@ export const TestSelectedTabScrolledIntoView: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const TestSelectedTabWithGutterScrolledIntoView: Story = {
@@ -383,11 +340,6 @@ export const TestSelectedTabWithGutterScrolledIntoView: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const FullWidthDivider: Story = {
@@ -410,11 +362,6 @@ export const FullWidthDivider: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const FullWidthDividerCenterAligned: Story = {
@@ -437,11 +384,6 @@ export const FullWidthDividerCenterAligned: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const FullWidthDividerWithGutter: Story = {
@@ -464,11 +406,6 @@ export const FullWidthDividerWithGutter: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const WithAnIcon: Story = {
@@ -497,11 +434,6 @@ export const WithAnIcon: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const SizeSmall: Story = {
@@ -530,9 +462,4 @@ export const SizeSmall: Story = {
       </Stack>
     </TabsProvider>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };

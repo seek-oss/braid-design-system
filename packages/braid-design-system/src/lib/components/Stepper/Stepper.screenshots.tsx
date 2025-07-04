@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes, xsModes } from 'braid-storybook/modes';
 
 import { Stepper, Step } from '../';
 
@@ -6,7 +7,13 @@ const meta = {
   title: 'Components/Stepper',
   component: Stepper,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...xsModes,
+        ...smModes,
+      },
+    },
   },
 } satisfies Meta<typeof Stepper>;
 
@@ -25,11 +32,6 @@ export const Linear: Story = {
       <Step key="4">4. Forth step</Step>,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Nonlinear: Story = {
@@ -47,11 +49,6 @@ export const Nonlinear: Story = {
       </Step>,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Neutral: Story = {
@@ -67,11 +64,6 @@ export const Neutral: Story = {
       <Step key="4">4. Forth step</Step>,
     ],
   },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Leftaligned: Story = {
@@ -86,10 +78,5 @@ export const Leftaligned: Story = {
       <Step key="3">3. Third step</Step>,
       <Step key="4">4. Forth step</Step>,
     ],
-  },
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
   },
 };

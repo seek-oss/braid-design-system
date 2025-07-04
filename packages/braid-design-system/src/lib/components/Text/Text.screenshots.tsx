@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes, xsModes } from 'braid-storybook/modes';
 import { Fragment } from 'react';
 import { titleCase } from 'title-case';
 
@@ -42,7 +43,13 @@ const meta = {
   title: 'Components/Text',
   component: Text,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...smModes,
+        ...xsModes,
+      },
+    },
   },
 } satisfies Meta<typeof Text>;
 
@@ -60,11 +67,6 @@ export const Sizes: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const LineHeights: Story = {
@@ -84,9 +86,6 @@ export const LineHeights: Story = {
   ),
   parameters: {
     backgrounds: { default: 'surface' },
-    chromatic: {
-      viewports: [320, 768],
-    },
   },
 };
 
@@ -101,11 +100,6 @@ export const Weights: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const TonesOnDarkBackground: Story = {
@@ -125,9 +119,6 @@ export const TonesOnDarkBackground: Story = {
   ),
   parameters: {
     backgrounds: { default: 'neutral' },
-    chromatic: {
-      viewports: [320, 768],
-    },
   },
 };
 
@@ -144,11 +135,6 @@ export const Alignment: Story = {
       </Stack>
     </Container>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const AlignmentResponsive: Story = {
@@ -160,11 +146,6 @@ export const AlignmentResponsive: Story = {
       </Text>
     </Container>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const MaxLines1: Story = {
@@ -176,11 +157,6 @@ export const MaxLines1: Story = {
       </Text>
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const MaxLines1InFlexContainer: Story = {
@@ -192,11 +168,6 @@ export const MaxLines1InFlexContainer: Story = {
       </Text>
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const MaxLines2WithNonBreakingWord: Story = {
@@ -208,11 +179,6 @@ export const MaxLines2WithNonBreakingWord: Story = {
       </Text>
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const MaxLines3: Story = {
@@ -225,11 +191,6 @@ export const MaxLines3: Story = {
       </Text>
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const WithAnIcon: Story = {
@@ -247,9 +208,6 @@ export const WithAnIcon: Story = {
   ),
   parameters: {
     backgrounds: { default: 'surface' },
-    chromatic: {
-      viewports: [320, 768],
-    },
   },
 };
 
@@ -266,11 +224,6 @@ export const AlignmentWithAnIcon: Story = {
       </Stack>
     </Container>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const ResponsiveAlignmentWithAnIcon: Story = {
@@ -282,11 +235,6 @@ export const ResponsiveAlignmentWithAnIcon: Story = {
       </Text>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const IconShouldNotImpactLineHeight: Story = {
@@ -330,11 +278,6 @@ export const IconShouldNotImpactLineHeight: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Contrast: Story = {
@@ -359,9 +302,4 @@ export const Contrast: Story = {
       </BackgroundContrastTest>
     </Container>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };

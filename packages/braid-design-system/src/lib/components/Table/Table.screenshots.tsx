@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { lgModes, mdModes, smModes, xsModes } from 'braid-storybook/modes';
 
 import {
   Box,
@@ -48,9 +49,16 @@ const meta = {
   title: 'Components/Table',
   component: Table,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
     chromatic: {
-      viewports: [320, 768, 992, 1200],
+      chromatic: {
+        modes: {
+          ...xsModes,
+          ...smModes,
+          ...mdModes,
+          ...lgModes,
+        },
+      },
     },
   },
 } satisfies Meta<typeof Table>;

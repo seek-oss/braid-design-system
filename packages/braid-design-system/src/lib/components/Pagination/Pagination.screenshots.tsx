@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import { Pagination } from '../';
@@ -12,9 +13,12 @@ const meta = {
   title: 'Components/Pagination',
   component: Pagination,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
     chromatic: {
-      viewports: [320, 768],
+      modes: {
+        ...xsModes,
+        ...smModes,
+      },
     },
   },
   argTypes: {

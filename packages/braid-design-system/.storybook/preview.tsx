@@ -5,7 +5,7 @@ import type { Preview } from '@storybook/react-webpack5';
 import * as themes from '../src/lib/themes';
 
 import { withTheme } from './decorators';
-import { modes } from './modes';
+import { smModes, themeNames } from './modes';
 
 const webFontLinkTags = Array.from(
   new Set(
@@ -23,8 +23,7 @@ const preview: Preview = {
   decorators: [withTheme],
   parameters: {
     chromatic: {
-      viewports: [320],
-      modes,
+      modes: smModes,
     },
     layout: 'fullscreen',
   },
@@ -32,12 +31,15 @@ const preview: Preview = {
     theme: {
       name: 'Theme',
       description: 'Global theme for components',
-      defaultValue: 'apac',
       toolbar: {
         icon: 'paintbrush',
-        items: Object.keys(modes),
+        items: themeNames,
+        dynamicTitle: true,
       },
     },
+  },
+  initialGlobals: {
+    theme: 'apac',
   },
 };
 

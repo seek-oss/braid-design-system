@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { smModes } from 'braid-storybook/modes';
 
 import {
   Badge,
@@ -16,6 +17,11 @@ const meta = {
   component: MenuItem,
   parameters: {
     screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...smModes,
+      },
+    },
   },
 } satisfies Meta<typeof MenuItem>;
 
@@ -36,12 +42,6 @@ const defaultProps = {
   placement: 'bottom',
 } as const;
 
-const commonParameters = {
-  chromatic: {
-    viewports: [768],
-  },
-};
-
 export const Default: Story = {
   name: 'Default',
   render: () => (
@@ -56,7 +56,6 @@ export const Default: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const HighlightedButton: Story = {
@@ -73,7 +72,6 @@ export const HighlightedButton: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const HighlightedLink: Story = {
@@ -90,7 +88,6 @@ export const HighlightedLink: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const Critical: Story = {
@@ -117,7 +114,6 @@ export const Critical: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const HighlightedCriticalButton: Story = {
@@ -138,7 +134,6 @@ export const HighlightedCriticalButton: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const HighlightedCriticalLink: Story = {
@@ -159,7 +154,6 @@ export const HighlightedCriticalLink: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const WithIcon: Story = {
@@ -190,7 +184,6 @@ export const WithIcon: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const WithIconAndReservingSpace: Story = {
@@ -217,7 +210,6 @@ export const WithIconAndReservingSpace: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const WithIconAndCritical: Story = {
@@ -248,7 +240,6 @@ export const WithIconAndCritical: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const WithBadge: Story = {
@@ -301,7 +292,6 @@ export const WithBadge: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 // Reusable component for overflow tests removed - components inlined to fix TypeScript error
@@ -348,7 +338,6 @@ export const OverflowInContentWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const OverflowInSmallWidth: Story = {
@@ -393,7 +382,6 @@ export const OverflowInSmallWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const OverflowInMediumWidth: Story = {
@@ -438,7 +426,6 @@ export const OverflowInMediumWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };
 
 export const OverflowInLargeWidth: Story = {
@@ -483,5 +470,4 @@ export const OverflowInLargeWidth: Story = {
       </Menu>
     </Inline>
   ),
-  parameters: commonParameters,
 };

@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react-webpack5';
+import { smModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import { IconBookmark } from '../';
@@ -9,7 +10,13 @@ const meta = {
   title: 'Components/useToast',
   component: Toast,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...smModes,
+        ...xsModes,
+      },
+    },
   },
 } satisfies Meta<typeof Toast>;
 export default meta;
@@ -26,11 +33,6 @@ export const Criticaltoast = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Criticaltoastwactions = {
@@ -49,11 +51,6 @@ export const Criticaltoastwactions = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Criticaltoastwdescriptions = {
@@ -73,11 +70,6 @@ export const Criticaltoastwdescriptions = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Positivetoast = {
@@ -92,11 +84,6 @@ export const Positivetoast = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Positivetoastwactions = {
@@ -115,11 +102,6 @@ export const Positivetoastwactions = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Positivetoastwdescriptions = {
@@ -139,11 +121,6 @@ export const Positivetoastwdescriptions = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Neutraltoast = {
@@ -158,11 +135,6 @@ export const Neutraltoast = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Neutraltoastwactions = {
@@ -181,11 +153,6 @@ export const Neutraltoastwactions = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Neutraltoastwdescriptions = {
@@ -205,11 +172,6 @@ export const Neutraltoastwdescriptions = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Neutraltoastwithicon = {
@@ -225,11 +187,6 @@ export const Neutraltoastwithicon = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Neutraltoastwactionsandicon = {
@@ -249,11 +206,6 @@ export const Neutraltoastwactionsandicon = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };
 
 export const Neutraltoastwdescriptionsandicon = {
@@ -275,9 +227,4 @@ export const Neutraltoastwdescriptionsandicon = {
       shouldRemove={false}
     />
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 768],
-    },
-  },
 };

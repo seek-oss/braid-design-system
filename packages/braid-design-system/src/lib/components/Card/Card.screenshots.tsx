@@ -1,20 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { lgModes, mdModes, smModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
 
 import { Box, Card, Stack, Text } from '../';
 import { Placeholder } from '../../playroom/components';
 
-const defaultParams = {
-  chromatic: {
-    viewports: [320, 768, 992, 1200],
-  },
-};
-
 const meta = {
   title: 'Components/Card',
   component: Card,
   parameters: {
-    screenshotOnlyInWireframe: false,
+    // screenshotOnlyInWireframe: false,
+    chromatic: {
+      modes: {
+        ...xsModes,
+        ...smModes,
+        ...mdModes,
+        ...lgModes,
+      },
+    },
   },
   argTypes: {
     tone: { control: 'select', options: ['promote', 'formAccent'] },
@@ -38,7 +41,6 @@ type Story = StoryObj<typeof Card>;
 export const Default: Story = {
   name: 'Default',
   args: {},
-  parameters: defaultParams,
 };
 
 export const TonePromote: Story = {
@@ -46,7 +48,6 @@ export const TonePromote: Story = {
   args: {
     tone: 'promote',
   },
-  parameters: defaultParams,
 };
 
 export const ToneFormAccent: Story = {
@@ -54,13 +55,11 @@ export const ToneFormAccent: Story = {
   args: {
     tone: 'formAccent',
   },
-  parameters: defaultParams,
 };
 
 export const Roundeddefault: Story = {
   name: 'Rounded - default',
   args: {},
-  parameters: defaultParams,
 };
 
 export const Roundedtrue: Story = {
@@ -68,7 +67,6 @@ export const Roundedtrue: Story = {
   args: {
     rounded: true,
   },
-  parameters: defaultParams,
 };
 
 export const RoundedAbovemobile: Story = {
@@ -76,7 +74,6 @@ export const RoundedAbovemobile: Story = {
   args: {
     roundedAbove: 'mobile',
   },
-  parameters: defaultParams,
 };
 
 export const RoundedAbovetablet: Story = {
@@ -84,7 +81,6 @@ export const RoundedAbovetablet: Story = {
   args: {
     roundedAbove: 'tablet',
   },
-  parameters: defaultParams,
 };
 
 export const RoundedAbovedesktop: Story = {
@@ -92,7 +88,6 @@ export const RoundedAbovedesktop: Story = {
   args: {
     roundedAbove: 'desktop',
   },
-  parameters: defaultParams,
 };
 
 export const Tonerounded: Story = {
@@ -101,7 +96,6 @@ export const Tonerounded: Story = {
     tone: 'formAccent',
     rounded: true,
   },
-  parameters: defaultParams,
 };
 
 export const Heightfull: Story = {
@@ -113,7 +107,6 @@ export const Heightfull: Story = {
       </Card>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const Heightcontentdefault: Story = {
@@ -125,7 +118,6 @@ export const Heightcontentdefault: Story = {
       </Card>
     </Box>
   ),
-  parameters: defaultParams,
 };
 
 export const TestshouldbeleftalignedinacenteredStack: Story = {
@@ -140,5 +132,4 @@ export const TestshouldbeleftalignedinacenteredStack: Story = {
       </Card>
     </Stack>
   ),
-  parameters: defaultParams,
 };

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { lgModes, xsModes } from 'braid-storybook/modes';
 import type { ReactNode } from 'react';
 
 import { Inline, Stack, Box, Text } from '../';
@@ -38,7 +39,10 @@ export const DefaultLayout: Story = {
   ),
   parameters: {
     chromatic: {
-      viewports: [320, 1200],
+      modes: {
+        ...xsModes,
+        ...lgModes,
+      },
     },
   },
 };
@@ -68,11 +72,6 @@ export const IllustrationLayout: Story = {
       </Stack>
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const LayoutWithDescription: Story = {
@@ -89,11 +88,6 @@ export const LayoutWithDescription: Story = {
       <Placeholder height={100} width="100%" />
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const ContentWidth: Story = {
@@ -110,11 +104,6 @@ export const ContentWidth: Story = {
       </DialogContent>
     </Box>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const XsmallWidth: Story = {
@@ -129,11 +118,6 @@ export const XsmallWidth: Story = {
       <Placeholder height={100} width="100%" label="Xsmall Dialog" />
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const SmallWidth: Story = {
@@ -148,11 +132,6 @@ export const SmallWidth: Story = {
       <Placeholder height={100} width="100%" label="Small Dialog" />
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const MediumWidth: Story = {
@@ -167,11 +146,6 @@ export const MediumWidth: Story = {
       <Placeholder height={100} width="100%" label="Medium Dialog" />
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const LargeWidth: Story = {
@@ -186,11 +160,6 @@ export const LargeWidth: Story = {
       <Placeholder height={100} width="100%" label="Large Dialog" />
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const LongUnbrokenTitle: Story = {
@@ -209,11 +178,6 @@ export const LongUnbrokenTitle: Story = {
       />
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const CloseButtonLayout: Story = {
@@ -240,11 +204,6 @@ export const CloseButtonLayout: Story = {
       </Box>
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
 
 export const LeftAlignedInCenteredStack: Story = {
@@ -264,9 +223,4 @@ export const LeftAlignedInCenteredStack: Story = {
       </DialogContent>
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      viewports: [320, 1200],
-    },
-  },
 };
