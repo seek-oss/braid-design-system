@@ -1,7 +1,6 @@
 import { readFile } from 'fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
-import path from 'path';
 
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import { babel, webpackFinal } from 'sku/config/storybook';
