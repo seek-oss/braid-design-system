@@ -1,10 +1,8 @@
-import source from '@braid-design-system/source.macro';
 import dedent from 'dedent';
 import Code from 'site/App/Code/Code';
 import { ThemedExample } from 'site/App/ThemeSetting';
 import type { CssDoc } from 'site/types';
 
-import { atoms } from 'braid-src/entries/css';
 import {
   Stack,
   Columns,
@@ -86,26 +84,22 @@ const docs: CssDoc = {
             of custom CSS in your application.
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    display: 'flex',
-                    justifyContent: {
-                      mobile: 'center',
-                      tablet: 'flexStart',
-                    },
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: 'full',
-                    height: 'full',
-                  }),
-                ).code
-              };
+              export const className = atoms({
+                display: 'flex',
+                justifyContent: {
+                  mobile: 'center',
+                  tablet: 'flexStart',
+                },
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: 'full',
+                height: 'full',
+              });
             `}
           </Code>
           <Box paddingBottom="large">
@@ -170,9 +164,7 @@ const docs: CssDoc = {
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(atoms({ paddingX: 'gutter', paddingY: 'large' })).code
-              };
+              export const className = atoms({ paddingX: 'gutter', paddingY: 'large' });
             `}
           </Code>
           <ThemedExample>
@@ -302,22 +294,18 @@ const docs: CssDoc = {
             </Strong>
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    padding: {
-                      mobile: 'small',
-                      tablet: 'medium',
-                      desktop: 'large',
-                      wide: 'xlarge',
-                    },
-                  }),
-                ).code
-              };
+              export const className = atoms({
+                padding: {
+                  mobile: 'small',
+                  tablet: 'medium',
+                  desktop: 'large',
+                  wide: 'xlarge',
+                },
+              });
             `}
           </Code>
           <ThemedExample>
@@ -356,17 +344,11 @@ const docs: CssDoc = {
             presence doesn’t alter the dimensions of the element.
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    boxShadow: 'large',
-                  }),
-                ).code
-              };
+              export const className = atoms({ boxShadow: 'large' });
             `}
           </Code>
           <Alert tone="caution">
@@ -482,17 +464,13 @@ const docs: CssDoc = {
             native element type.
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    reset: 'span',
-                  }),
-                ).code
-              };
+              export const className = atoms({
+                reset: 'span',
+              });
             `}
           </Code>
         </>
