@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { smModes, xsModes } from 'braid-storybook/modes';
 import { Fragment } from 'react';
+
+import { smModes, xsModes } from 'braid-storybook/modes';
 
 import { Box, Heading, IconPositive, IconImage, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';

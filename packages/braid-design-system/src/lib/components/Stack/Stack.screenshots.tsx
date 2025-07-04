@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { wireframeModes } from 'braid-storybook/modes';
 import { Fragment } from 'react';
+
+import { wireframeModes } from 'braid-storybook/modes';
 
 import { Box, Stack, Hidden, Heading, Text, Strong } from '../';
 import { spaces } from '../../utils/docsHelpers';

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+
 import { smModes } from 'braid-storybook/modes';
 
 import { Badge, Inline, MenuItemCheckbox } from '../';

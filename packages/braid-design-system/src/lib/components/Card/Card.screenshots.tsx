@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { lgModes, mdModes, smModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
+
+import { lgModes, mdModes, smModes, xsModes } from 'braid-storybook/modes';
 
 import { Box, Card, Stack, Text } from '../';
 import { Placeholder } from '../../playroom/components';

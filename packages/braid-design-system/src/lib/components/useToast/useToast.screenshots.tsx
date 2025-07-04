@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react-webpack5';
-import { smModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
+
+import { smModes, xsModes } from 'braid-storybook/modes';
 
 import { IconBookmark } from '../';
 

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { wireframeModes } from 'braid-storybook/modes';
 import React from 'react';
+
+import { wireframeModes } from 'braid-storybook/modes';
 
 import { Columns, Column } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';

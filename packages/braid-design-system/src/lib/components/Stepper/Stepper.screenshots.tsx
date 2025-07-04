@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+
 import { smModes, xsModes } from 'braid-storybook/modes';
 
 import { Stepper, Step } from '../';

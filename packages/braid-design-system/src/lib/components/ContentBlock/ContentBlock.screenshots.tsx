@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { lgModes, xsModes } from 'braid-storybook/modes';
 import React from 'react';
+
+import { lgModes, xsModes } from 'braid-storybook/modes';
 
 import { Box, ContentBlock } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
