@@ -334,14 +334,14 @@ const docs: CssDoc = {
       ),
     },
     {
-      label: 'Shadows, borders and outlines',
+      label: 'Shadows and borders',
       description: (
         <>
           <Text>
             The atoms function provides a series of <Strong>boxShadow</Strong>{' '}
             values that handle a wide variety of use cases. Note that box
-            shadows are also used for outlines and borders so that their
-            presence doesn’t alter the dimensions of the element.
+            shadows are also used for borders so that their presence doesn’t
+            alter the dimensions of the element.
           </Text>
           <Code playroom={false}>
             {`
