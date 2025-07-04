@@ -8,12 +8,19 @@ updated:
   - atoms
 ---
 
-**Box, atoms**: Deprecate `outline` prop.
+**Box, atoms**: Deprecate `outline` value `none`.
 
-The "outline" prop is deprecated and will be removed in a future release.
+`outline="none"` is deprecated and will be removed in a future release.
 
-Braid manages focus outlines automatically.
-If you are removing the outline to create a custom focus style, please consider relying on Braid's outline instead.
+Braid manages most focus outlines automatically.
+
+If you are applying an outline to a custom element, you can do so via `outline="focus"`.
+
+If you are indirectly applying an outline to a different element, see the [`outlineStyle`] function.
+
+[`outlineStyle`]: https://seek-oss.github.io/braid-design-system/css/outlineStyle
+
+If you are removing the outline to create a custom focus style.
 
 **MIGRATION GUIDE:**
 

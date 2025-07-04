@@ -24,12 +24,15 @@ export const atoms = ({ reset, ...rest }: Atoms) => {
       console.warn(
         dedent`
           \`outline='none'\` is deprecated and will be removed in a future release.
-    
-          Braid manages most focus outlines automatically.
-          For a custom focus outlines, consider \`outline='focus'\` or \`outlineStyle\`.
+
+          Braid manages the focus outlines of interactive elements as part of its
+          scoped CSS reset.
+
+          For a custom focus outlines on non-interactive elements, consider
+          \`outline='focus'\` or \`outlineStyle\` for more complex scenarios.
 
           See documentation:
-          1. https://seek-oss.github.io/braid-design-system/css/vars
+          1. https://seek-oss.github.io/braid-design-system/components/Box
           2. https://seek-oss.github.io/braid-design-system/css/outlineStyle
           `,
       );
@@ -38,10 +41,10 @@ export const atoms = ({ reset, ...rest }: Atoms) => {
       // eslint-disable-next-line no-console
       console.warn(
         dedent`
-          \`boxShadow='outlineFocus'\` is deprecated and will be removed in a future release.
-    
-          Braid manages most focus outlines automatically.
-          For a custom focus outlines, consider \`outline='focus'\` or \`outlineStyle\`.
+          \`outline='none'\` is deprecated and will be removed in a future release.
+
+          Braid no longer uses the \`box-shadow\` for focus outlines.
+          Instead, consider \`outline='focus'\` or the \`outlineStyle\` css utility.
 
           See documentation:
           1. https://seek-oss.github.io/braid-design-system/css/vars
