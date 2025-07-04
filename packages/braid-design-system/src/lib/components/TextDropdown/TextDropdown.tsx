@@ -86,16 +86,12 @@ export function TextDropdown<Value>({
       position="relative"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Box pointerEvents="none" userSelect="none">
-        {currentText.text} <IconChevron alignY="lowercase" />
-      </Box>
-
       <Box
         component="select"
         position="absolute"
         inset={0}
         width="full"
-        borderRadius="standard" // Ensures focus ring is rounded
+        opacity={0}
         className={styles.select}
         aria-label={label}
         title={label}
@@ -118,6 +114,10 @@ export function TextDropdown<Value>({
             </option>
           ))}
         </optgroup>
+      </Box>
+
+      <Box pointerEvents="none" userSelect="none" className={styles.focusRing}>
+        {currentText.text} <IconChevron alignY="lowercase" />
       </Box>
     </Box>
   );
