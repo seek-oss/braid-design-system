@@ -748,7 +748,7 @@ const docs: ComponentDocs = {
           <Code playroom={false}>
             {
               source(
-                <Box component="span" tabIndex={1} outline="focus">
+                <Box component="span" tabIndex={0} outline="focus">
                   ...
                 </Box>,
               ).code
