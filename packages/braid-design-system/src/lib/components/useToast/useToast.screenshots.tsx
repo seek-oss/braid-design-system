@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react-webpack5';
 import React from 'react';
 
 import { IconBookmark } from '../';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 import Toast from './Toast';
 
@@ -17,20 +16,16 @@ export default meta;
 
 export const Criticaltoast = {
   name: 'Critical toast',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="critical"
-        message="Critical toast"
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="critical"
+      message="Critical toast"
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -41,24 +36,20 @@ export const Criticaltoast = {
 
 export const Criticaltoastwactions = {
   name: 'Critical toast w/actions',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="critical"
-        message="Critical toast w/action"
-        action={{
-          label: 'Do the action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="critical"
+      message="Critical toast w/action"
+      action={{
+        label: 'Do the action',
+        onClick: () => {},
+      }}
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -69,25 +60,21 @@ export const Criticaltoastwactions = {
 
 export const Criticaltoastwdescriptions = {
   name: 'Critical toast w/descriptions',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="critical"
-        message="Critical toast"
-        description="A really long description about toast stuff that is quite long and stuff"
-        action={{
-          label: 'Action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="critical"
+      message="Critical toast"
+      description="A really long description about toast stuff that is quite long and stuff"
+      action={{
+        label: 'Action',
+        onClick: () => {},
+      }}
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -98,20 +85,16 @@ export const Criticaltoastwdescriptions = {
 
 export const Positivetoast = {
   name: 'Positive toast',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="positive"
-        message="Positive toast"
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="positive"
+      message="Positive toast"
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -122,24 +105,20 @@ export const Positivetoast = {
 
 export const Positivetoastwactions = {
   name: 'Positive toast w/actions',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="positive"
-        message="Positive toast w/actions"
-        action={{
-          label: 'Do the action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="positive"
+      message="Positive toast w/actions"
+      action={{
+        label: 'Do the action',
+        onClick: () => {},
+      }}
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -150,25 +129,21 @@ export const Positivetoastwactions = {
 
 export const Positivetoastwdescriptions = {
   name: 'Positive toast w/descriptions',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="positive"
-        message="Positive toast"
-        description="A really long description about toast stuff that is quite long and stuff"
-        action={{
-          label: 'Action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="positive"
+      message="Positive toast"
+      description="A really long description about toast stuff that is quite long and stuff"
+      action={{
+        label: 'Action',
+        onClick: () => {},
+      }}
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -179,20 +154,16 @@ export const Positivetoastwdescriptions = {
 
 export const Neutraltoast = {
   name: 'Neutral toast',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="neutral"
-        message="Neutral toast"
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="neutral"
+      message="Neutral toast"
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -203,24 +174,20 @@ export const Neutraltoast = {
 
 export const Neutraltoastwactions = {
   name: 'Neutral toast w/actions',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="neutral"
-        message="Neutral toast w/actions"
-        action={{
-          label: 'Do the action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="neutral"
+      message="Neutral toast w/actions"
+      action={{
+        label: 'Do the action',
+        onClick: () => {},
+      }}
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -231,25 +198,21 @@ export const Neutraltoastwactions = {
 
 export const Neutraltoastwdescriptions = {
   name: 'Neutral toast w/descriptions',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="neutral"
-        message="Neutral toast"
-        description="A really long description about toast stuff that is quite long and stuff"
-        action={{
-          label: 'Action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="neutral"
+      message="Neutral toast"
+      description="A really long description about toast stuff that is quite long and stuff"
+      action={{
+        label: 'Action',
+        onClick: () => {},
+      }}
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -260,21 +223,17 @@ export const Neutraltoastwdescriptions = {
 
 export const Neutraltoastwithicon = {
   name: 'Neutral toast with icon',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="neutral"
-        icon={<IconBookmark />}
-        message="Neutral toast with icon"
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="neutral"
+      icon={<IconBookmark />}
+      message="Neutral toast with icon"
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -285,25 +244,21 @@ export const Neutraltoastwithicon = {
 
 export const Neutraltoastwactionsandicon = {
   name: 'Neutral toast w/actions and icon',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="neutral"
-        icon={<IconBookmark />}
-        message="Neutral toast w/actions and icon"
-        action={{
-          label: 'Do the action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="neutral"
+      icon={<IconBookmark />}
+      message="Neutral toast w/actions and icon"
+      action={{
+        label: 'Do the action',
+        onClick: () => {},
+      }}
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
@@ -314,26 +269,23 @@ export const Neutraltoastwactionsandicon = {
 
 export const Neutraltoastwdescriptionsandicon = {
   name: 'Neutral toast w/descriptions and icon',
-  Render: () => {
-    const { vanillaTheme } = useBraidTheme();
-    return (
-      <Toast
-        tone="neutral"
-        icon={<IconBookmark />}
-        message="Neutral toast with icon"
-        description="A really long description about toast stuff that is quite long and stuff"
-        action={{
-          label: 'Action',
-          onClick: () => {},
-        }}
-        vanillaTheme={vanillaTheme}
-        onClose={() => {}}
-        toastKey="n/a"
-        dedupeKey="n/a"
-        shouldRemove={false}
-      />
-    );
-  },
+  render: () => (
+    <Toast
+      tone="neutral"
+      icon={<IconBookmark />}
+      message="Neutral toast with icon"
+      description="A really long description about toast stuff that is quite long and stuff"
+      action={{
+        label: 'Action',
+        onClick: () => {},
+      }}
+      //
+      onClose={() => {}}
+      toastKey="n/a"
+      dedupeKey="n/a"
+      shouldRemove={false}
+    />
+  ),
   parameters: {
     chromatic: {
       viewports: [320, 768],
