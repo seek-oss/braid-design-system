@@ -8,7 +8,7 @@ import { supportedLanguages } from '../src/App/Code/supportedLanguages.ts';
 const braidChangesetRegex =
   /^---\n'braid-design-system': (?:patch|minor|major)\n---$/m;
 
-const markdownCodeBlockLanguageRegex = /``` *(?<language>[a-z]*)\n/g;
+const markdownCodeBlockLanguageRegex = /``` *(?<language>[a-z]+)\n/g;
 
 const info = (s: string) => styleText('blue', s);
 const critical = (s: string) => styleText('red', s);
@@ -30,18 +30,11 @@ for await (const entry of glob('.changeset/!(README).md', {
     continue;
   }
 
-  let backtickCounter = 0;
   const matches = content.matchAll(markdownCodeBlockLanguageRegex);
 
   for (const match of matches) {
-    // Naively skip closing backticks
-    backtickCounter++;
-    if (backtickCounter % 2 === 0) {
-      continue;
-    }
-
-    // Skip code blocks that have no language
     const language = match.groups?.language;
+    // We should always have a language, this is just a type guard
     if (!language) {
       continue;
     }
