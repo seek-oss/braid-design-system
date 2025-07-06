@@ -334,14 +334,14 @@ const docs: CssDoc = {
       ),
     },
     {
-      label: 'Shadows, borders and outlines',
+      label: 'Shadows and borders',
       description: (
         <>
           <Text>
             The atoms function provides a series of <Strong>boxShadow</Strong>{' '}
             values that handle a wide variety of use cases. Note that box
-            shadows are also used for outlines and borders so that their
-            presence doesn’t alter the dimensions of the element.
+            shadows are also used for borders so that their presence doesn’t
+            alter the dimensions of the element.
           </Text>
           <Code playroom={false}>
             {`
@@ -473,6 +473,57 @@ const docs: CssDoc = {
               });
             `}
           </Code>
+        </>
+      ),
+    },
+    {
+      label: 'Focus outlines',
+      description: (
+        <>
+          <Text>
+            As part of the CSS reset, Braid will automatically style the focus
+            ring <Strong>outline</Strong> when specifying an interactive element
+            in the <TextLink href="#css-reset">reset property</TextLink>, i.e.{' '}
+            <Strong>&ldquo;button&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;a&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;input&rdquo;</Strong>, etc.
+          </Text>
+
+          <Code playroom={false}>
+            {`
+              // styles.css.ts
+              import { atoms } from 'braid-design-system/css';
+
+              export const className = atoms({
+                reset: 'button',
+              });
+            `}
+          </Code>
+
+          <Text>
+            When styling a non-interactive element, i.e.{' '}
+            <Strong>&ldquo;div&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;span&rdquo;</Strong>, etc., or when not using a{' '}
+            <Strong>reset</Strong>, it is necessary to opt in to the focus ring
+            outline using <Strong>outline: &lsquo;focus&rsquo;</Strong>.
+          </Text>
+
+          <Code playroom={false}>
+            {`
+              // styles.css.ts
+              import { atoms } from 'braid-design-system/css';
+
+              export const className = atoms({
+                outline: 'focus'
+              });
+            `}
+          </Code>
+
+          <Text>
+            To apply the focus outline to an element based on the focus of
+            another element, see{' '}
+            <TextLink href="/css/outlineStyle">outlineStyle</TextLink>.
+          </Text>
         </>
       ),
     },

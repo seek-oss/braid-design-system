@@ -13,7 +13,6 @@ import {
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
-import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import copy from 'copy-to-clipboard';
@@ -108,7 +107,6 @@ export const CodeButton = ({
       paddingY="xxsmall"
       paddingX="xsmall"
       position="relative"
-      outline="none"
       className={[styles.button, className]}
       onClick={(e) => {
         if (typeof onClick === 'function') {
@@ -122,10 +120,6 @@ export const CodeButton = ({
       }}
       {...restProps}
     >
-      <FieldOverlay
-        variant="focus"
-        className={[styles.focusOverlay, hideFocusRingsClassName]}
-      />
       <FieldOverlay
         background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
         className={styles.hoverOverlay}

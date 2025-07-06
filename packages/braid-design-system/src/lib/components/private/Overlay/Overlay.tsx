@@ -1,5 +1,4 @@
 import { type BoxProps, Box } from '../../Box/Box';
-import { hideFocusRingsClassName } from '../hideFocusRings/hideFocusRings';
 
 export interface OverlayProps
   extends Partial<
@@ -27,7 +26,6 @@ export const Overlay = ({
   boxShadow,
   transition,
   visible = false,
-  onlyVisibleForKeyboardNavigation = false,
   className,
   children,
 }: OverlayProps) => (
@@ -42,10 +40,7 @@ export const Overlay = ({
     transition={transition}
     inset={0}
     opacity={!visible ? 0 : undefined}
-    className={[
-      onlyVisibleForKeyboardNavigation ? hideFocusRingsClassName : null,
-      className,
-    ]}
+    className={className}
   >
     {children}
   </Box>

@@ -4972,5 +4972,83 @@
         "summary": "**BraidTestProvider:** Use stubs instead of mocks to fill missing APIs in jsdom\n\nThis change allows the BraidTestProvider to be framework agnostic for tests and discourages testing the stubbed browser APIs directly."
       }
     ]
+  },
+  {
+    "version": "33.10.0",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon**: Ensure the focus outline is styled consistently with other components.\n\nFix issue which caused the Braid focus outline to show along with the native browser focus outline."
+      },
+      {
+        "updated": [
+          "apac"
+        ],
+        "summary": "**apac:** Deprecate theme in favour of `seekJobs` theme\n\n**MIGRATION GUIDE:**\n```diff\n# App.tsx\n- import apac from 'braid-design-system/themes/apac';\n+ import seekJobs from 'braid-design-system/themes/seekJobs';\n\n- <BraidProvider theme={apac} ...>\n+ <BraidProvider theme={seekJobs} ...>\n```"
+      },
+      {
+        "updated": [
+          "LinkableHeading"
+        ],
+        "summary": "**LinkableHeading:** Simplify DOM elements and improve focus and scroll styling."
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Alert",
+          "Autosuggest",
+          "Button",
+          "ButtonIcon",
+          "ButtonLink",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dialog",
+          "Drawer",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "RadioItem",
+          "Step",
+          "Tab",
+          "TabPanel",
+          "Textarea",
+          "TextDropdown",
+          "TextField",
+          "TextLink",
+          "TextLinkButton",
+          "Toggle"
+        ],
+        "summary": "Migrate from custom focus ring visibility to native `:focus-visible` behaviour.\n\nPreviously Braid would change the presentation of focus ring outlines based on the user input, i.e. mouse or keyboard,\nto prevent showing focus rings on click.\nWith the updated Browser Support Policy, we can now leverage the native `:focus-visible` pseudo class instead."
+      },
+      {
+        "updated": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms**: Add `sticky` to `position`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Box position=\"sticky\" top={0} ... />\n```"
+      },
+      {
+        "updated": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms**: Deprecate `outline` value `none`, and `boxShadow` value `outlineFocus`.\n\nPreviously it was recommended to hide an element's `outline` in favour of using `boxShadow=\"outlineFocus\"`.\n\nBraid now leverages the `outline` property directly, managing focus rings of interactive elements as part of its scoped CSS reset.\n\n**MIGRATION GUIDE:**\n\nFor styling the focus ring via `Box`:\n\n1. Remove usage of `outline=\"none\"` and `boxShadow=\"outlineFocus\"`\n2. Refer to [`focus outlines`] for guidance on leveraging Braid's focus outline styles.\n\n```diff\n- <Box outline=\"none\" className={styles.customFocusStyles} />\n+ <Box />\n```\n\nFor styling the focus outline of an element based on the focus of another element, see [`outlineStyle`].\n\n[`focus outlines`]: https://seek-oss.github.io/braid-design-system/components/Box#focus-outlines\n[`outlineStyle`]: https://seek-oss.github.io/braid-design-system/css/outlineStyle"
+      },
+      {
+        "updated": [
+          "seekBusiness"
+        ],
+        "summary": "**seekBusiness:** Migrate to updated visual language\n\nMigrate `seekBusiness` theme to new visual language.\nAdopts the `seekJobs` theme for the latest design standards, rather than the legacy `apac` theme, while retaining the `seekBusiness` brand accent colour."
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer**: Ensure the focus outline is correctly applied to the title.\n\nFix issue where focus outline would not be long enough to wrap the entire title text in certain situations."
+      }
+    ]
   }
 ]

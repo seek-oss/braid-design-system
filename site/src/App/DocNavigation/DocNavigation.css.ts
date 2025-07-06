@@ -1,6 +1,16 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { colorModeStyle, vars } from 'braid-src/entries/css';
+import { atoms, colorModeStyle, vars } from 'braid-src/entries/css';
+
+export const docNavLink = style([
+  atoms({
+    display: 'block',
+    borderRadius: 'standard',
+  }),
+  {
+    outlineOffset: calc.negate(vars.space.xxsmall),
+  },
+]);
 
 const activeUnderlineVar = createVar();
 
