@@ -1,8 +1,8 @@
-import { makeModes } from './makeModes';
+import { makeChromaticModes } from './makeChromaticModes';
 
 describe('makeMode', () => {
   it('should enable only the given viewports', () => {
-    const testMakeModes = makeModes(
+    const testMakeModes = makeChromaticModes(
       ['apac'],
       { small: 300, large: 1200 },
       {
@@ -23,8 +23,8 @@ describe('makeMode', () => {
     `);
   });
 
-  it('should filter out modes when not disabling higher level modes', () => {
-    const testMakeModes = makeModes(
+  it('should filter out modes when set as a root Mode', () => {
+    const testMakeModes = makeChromaticModes(
       ['apac', 'apacDark'],
       { small: 300, large: 1200 },
       {
@@ -32,9 +32,8 @@ describe('makeMode', () => {
       },
     );
 
-    expect(
-      testMakeModes({ viewports: ['small'], disableHigherLevelModes: false }),
-    ).toMatchInlineSnapshot(`
+    expect(testMakeModes({ viewports: ['small'], root: true }))
+      .toMatchInlineSnapshot(`
       {
         "apac small": {
           "theme": "apac",
@@ -45,7 +44,7 @@ describe('makeMode', () => {
   });
 
   it('should accept multiple themes and viewports', () => {
-    const testMakeModes = makeModes(
+    const testMakeModes = makeChromaticModes(
       ['apac', 'apacDark'],
       { small: 300, large: 1200 },
       {

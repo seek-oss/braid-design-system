@@ -1,4 +1,4 @@
-import { makeModes } from './utils/makeModes';
+import { makeChromaticModes } from './utils/makeChromaticModes';
 
 export const braidThemes = [
   'apac',
@@ -16,7 +16,7 @@ const braidViewports = {
   large: 1200,
 };
 
-export const makeBraidModes = makeModes(braidThemes, braidViewports, {
+export const makeBraidModes = makeChromaticModes(braidThemes, braidViewports, {
   defaultThemes: [
     'apac',
     'apacDark',
