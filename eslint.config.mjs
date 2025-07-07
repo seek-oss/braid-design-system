@@ -49,7 +49,7 @@ const gitIgnoresFromWorkspaces = workspaces
 
 export default [
   {
-    ignores: ['**/bin.js', '!.storybook', '!**/.storybook'],
+    ignores: ['**/bin.js', '!**/.storybook'],
   },
   ...gitIgnoresFromWorkspaces,
   ...eslintConfigSeek,
@@ -98,16 +98,4 @@ export default [
       ],
     },
   }, // Lint non-project ts files, e.g. vitest and storybook config
-  {
-    languageOptions: {
-      parserOptions: {
-        projectService: {
-          allowDefaultProject: [
-            'packages/braid-design-system/.storybook/main.ts',
-            'packages/braid-design-system/.storybook/*.tsx',
-          ],
-        },
-      },
-    },
-  },
 ];
