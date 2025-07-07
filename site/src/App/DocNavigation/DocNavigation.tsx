@@ -76,7 +76,7 @@ export const DocNavigationItem = ({
   ) : undefined;
 
   return (
-    <Box component="li" position="relative" paddingX={navItemPaddingX}>
+    <Box component="li">
       <Link
         href={href}
         onMouseEnter={() => setHovered(true)}
@@ -84,50 +84,57 @@ export const DocNavigationItem = ({
         aria-current={active ? 'page' : undefined}
         className={styles.docNavLink}
       >
-        {/* Active, strong title */}
         <Box
-          display="flex"
           position="relative"
-          alignItems="center"
-          opacity={active ? undefined : 0}
-          paddingY={navItemPaddingY}
-        >
-          <Box
-            position="absolute"
-            width="full"
-            zIndex={1}
-            bottom={0}
-            className={[
-              styles.activeUnderline,
-              styles.activeUnderlineColor[lightness.lightMode],
-              styles.activeUnderlineColor[lightness.darkMode],
-            ]}
-          />
-          <Text size="standard" weight="strong">
-            {children}
-          </Text>
-          {badgeElement}
-        </Box>
-
-        {/* Inactive, weak title */}
-        <Box
-          aria-hidden
           display="flex"
           alignItems="center"
-          position="absolute"
-          top={0}
-          paddingY={navItemPaddingY}
-          opacity={active ? 0 : undefined}
-          className={index !== 0 ? styles.centerHorizontally : undefined}
+          paddingX={navItemPaddingX}
         >
-          <Text
-            size="standard"
-            weight="medium"
-            tone={hovered ? 'neutral' : 'secondary'}
+          {/* Active, strong title */}
+          <Box
+            display="flex"
+            position="relative"
+            alignItems="center"
+            opacity={active ? undefined : 0}
+            paddingY={navItemPaddingY}
           >
-            {children}
-          </Text>
-          {badgeElement}
+            <Box
+              position="absolute"
+              width="full"
+              zIndex={1}
+              bottom={0}
+              className={[
+                styles.activeUnderline,
+                styles.activeUnderlineColor[lightness.lightMode],
+                styles.activeUnderlineColor[lightness.darkMode],
+              ]}
+            />
+            <Text size="standard" weight="strong">
+              {children}
+            </Text>
+            {badgeElement}
+          </Box>
+
+          {/* Inactive, weak title */}
+          <Box
+            aria-hidden
+            display="flex"
+            alignItems="center"
+            position="absolute"
+            top={0}
+            paddingY={navItemPaddingY}
+            opacity={active ? 0 : undefined}
+            className={index !== 0 ? styles.centerHorizontally : undefined}
+          >
+            <Text
+              size="standard"
+              weight="medium"
+              tone={hovered ? 'neutral' : 'secondary'}
+            >
+              {children}
+            </Text>
+            {badgeElement}
+          </Box>
         </Box>
       </Link>
     </Box>
