@@ -3,6 +3,7 @@ import { dirname, join, relative } from 'path';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import eslintConfigSeek from 'eslint-config-seek';
+// eslint-disable-next-line import-x/no-rename-default
 import storybook from 'eslint-plugin-storybook';
 import fastGlob from 'fast-glob';
 import { load as loadYaml } from 'js-yaml';
@@ -102,7 +103,7 @@ export default [
       parserOptions: {
         projectService: {
           allowDefaultProject: [
-            'packages/braid-design-system/.storybook/*.ts',
+            'packages/braid-design-system/.storybook/main.ts',
             'packages/braid-design-system/.storybook/*.tsx',
           ],
         },
