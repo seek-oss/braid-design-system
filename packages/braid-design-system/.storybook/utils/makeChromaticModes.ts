@@ -10,10 +10,13 @@ type MakeModeOptions<T, V> = {
   root?: boolean;
   /**
    * List of theme names.
+   * @example ['seek', 'seekDark']
    */
   themes?: T[];
   /**
-   * Record of viewport definitions in `{ [name]: size }` format
+   * Record of viewport definitions in `{ [name]: value }` format.
+   * @see {@link https://www.chromatic.com/docs/modes/viewports/#define-viewport-modes} for acceptable viewport values.
+   * @example { small: 320, large: 1200 }
    */
   viewports: V[];
 };
@@ -21,6 +24,10 @@ type MakeModeOptions<T, V> = {
 const makeModeName = (themeName: string, viewportName: string) =>
   `${themeName} ${viewportName}`;
 
+/**
+ * Creates a function that takes a list of themes and viewport definitions and returns a list of modes compatible with Chromatic.
+ * @see {@link https://www.chromatic.com/docs/modes/}
+ */
 export function makeChromaticModes<
   const T extends readonly string[],
   const V extends Record<string, number>,
@@ -66,7 +73,7 @@ export function makeChromaticModes<
 }
 
 /**
- * Loops the provided themes and viewports, calling a callback function that returns a Mode for each combination.
+ * Loops the provided themes and viewports, calling a function that returns a Mode for each combination.
  */
 const makeModeData = (
   themes: string[],
