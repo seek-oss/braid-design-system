@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
 
-import { smModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Pagination } from '../';
 import type { LinkProps } from '../Link/Link';
@@ -16,10 +16,7 @@ const meta = {
   parameters: {
     // screenshotOnlyInWireframe: false,
     chromatic: {
-      modes: {
-        ...xsModes,
-        ...smModes,
-      },
+      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },
   },
   argTypes: {

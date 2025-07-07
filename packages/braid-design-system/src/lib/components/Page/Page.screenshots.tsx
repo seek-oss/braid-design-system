@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import type React from 'react';
 
+import { makeBraidModes } from 'braid-storybook/modes';
+
 import { Box, Page } from '..';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
@@ -34,7 +36,13 @@ const meta = {
   title: 'Components/Page',
   component: Page,
   parameters: {
-    screenshotOnlyInWireframe: true,
+    // screenshotOnlyInWireframe: true,
+    chromatic: {
+      modes: makeBraidModes({
+        viewports: ['xsmall'],
+        themes: ['wireframe'],
+      }),
+    },
   },
   argTypes: {
     children: {

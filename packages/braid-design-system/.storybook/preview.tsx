@@ -5,7 +5,7 @@ import type { Preview } from '@storybook/react-webpack5';
 import * as themes from '../src/lib/themes';
 
 import { withTheme } from './decorators';
-import { smModes, themeNames } from './modes';
+import { braidThemes, makeBraidModes } from './modes';
 
 const webFontLinkTags = Array.from(
   new Set(
@@ -23,7 +23,10 @@ const preview: Preview = {
   decorators: [withTheme],
   parameters: {
     chromatic: {
-      modes: smModes,
+      modes: makeBraidModes({
+        disableHigherLevelModes: false,
+        viewports: ['xsmall'],
+      }),
     },
     layout: 'fullscreen',
   },
@@ -33,7 +36,7 @@ const preview: Preview = {
       description: 'Global theme for components',
       toolbar: {
         icon: 'paintbrush',
-        items: themeNames,
+        items: braidThemes,
         dynamicTitle: true,
       },
     },

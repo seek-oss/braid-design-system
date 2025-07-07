@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Fragment } from 'react';
 
-import { xsModes, smModes, mdModes, lgModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Box, Inline } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -10,14 +10,12 @@ const meta = {
   title: 'Components/Inline',
   component: Inline,
   parameters: {
-    screenshotOnlyInWireframe: true,
+    // screenshotOnlyInWireframe: true,
     chromatic: {
-      modes: {
-        ...xsModes,
-        ...smModes,
-        ...mdModes,
-        ...lgModes,
-      },
+      modes: makeBraidModes({
+        viewports: ['xsmall', 'small', 'medium', 'large'],
+        themes: ['wireframe'],
+      }),
     },
   },
 } satisfies Meta<typeof Inline>;

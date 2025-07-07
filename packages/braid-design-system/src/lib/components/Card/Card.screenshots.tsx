@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
 
-import { lgModes, mdModes, smModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Box, Card, Stack, Text } from '../';
 import { Placeholder } from '../../playroom/components';
@@ -12,12 +12,9 @@ const meta = {
   parameters: {
     // screenshotOnlyInWireframe: false,
     chromatic: {
-      modes: {
-        ...xsModes,
-        ...smModes,
-        ...mdModes,
-        ...lgModes,
-      },
+      modes: makeBraidModes({
+        viewports: ['xsmall', 'small', 'medium', 'large'],
+      }),
     },
   },
   argTypes: {

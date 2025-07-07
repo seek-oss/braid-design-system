@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
 
-import { smModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Button, Actions } from '../';
 
@@ -14,10 +14,7 @@ const meta = {
     // screenshotOnlyInWireframe: false,
     parameters: {
       chromatic: {
-        modes: {
-          ...xsModes,
-          ...smModes,
-        },
+        modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
       },
     },
   },

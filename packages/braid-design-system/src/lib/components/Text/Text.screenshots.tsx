@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Fragment } from 'react';
 import { titleCase } from 'title-case';
 
-import { smModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import {
   Box,
@@ -46,10 +46,7 @@ const meta = {
   parameters: {
     // screenshotOnlyInWireframe: false,
     chromatic: {
-      modes: {
-        ...smModes,
-        ...xsModes,
-      },
+      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },
   },
 } satisfies Meta<typeof Text>;

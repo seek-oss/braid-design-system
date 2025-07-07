@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { smModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Tag, Inline, IconTag, Stack } from '../';
 import { LayoutTest } from '../../utils/LayoutTest';
@@ -13,9 +13,7 @@ const meta = {
   parameters: {
     // screenshotOnlyInWireframe: false,
     chromatic: {
-      modes: {
-        ...smModes,
-      },
+      modes: makeBraidModes({ viewports: ['small'] }),
     },
   },
 } satisfies Meta<typeof Tag>;

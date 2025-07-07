@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-webpack5';
 import React from 'react';
 
-import { smModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { IconBookmark } from '../';
 
@@ -13,10 +13,7 @@ const meta = {
   parameters: {
     // screenshotOnlyInWireframe: false,
     chromatic: {
-      modes: {
-        ...smModes,
-        ...xsModes,
-      },
+      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },
   },
 } satisfies Meta<typeof Toast>;

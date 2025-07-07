@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { smModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Stepper, Step } from '../';
 
@@ -10,10 +10,7 @@ const meta = {
   parameters: {
     // screenshotOnlyInWireframe: false,
     chromatic: {
-      modes: {
-        ...xsModes,
-        ...smModes,
-      },
+      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },
   },
 } satisfies Meta<typeof Stepper>;

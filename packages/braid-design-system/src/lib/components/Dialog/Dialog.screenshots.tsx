@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import type { ReactNode } from 'react';
 
-import { lgModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Inline, Stack, Box, Text } from '../';
 import { Placeholder } from '../../playroom/components';
@@ -40,10 +40,7 @@ export const DefaultLayout: Story = {
   ),
   parameters: {
     chromatic: {
-      modes: {
-        ...xsModes,
-        ...lgModes,
-      },
+      modes: makeBraidModes({ viewports: ['xsmall', 'large'] }),
     },
   },
 };

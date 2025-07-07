@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { wireframeModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import {
   Stack,
@@ -20,10 +20,10 @@ const meta = {
   parameters: {
     // screenshotOnlyInWireframe: false,
     chromatic: {
-      modes: {
-        xsmall: wireframeModes.xsmall,
-        large: wireframeModes.large,
-      },
+      modes: makeBraidModes({
+        viewports: ['xsmall', 'large'],
+        themes: ['wireframe'],
+      }),
     },
   },
 } satisfies Meta<typeof Tabs>;

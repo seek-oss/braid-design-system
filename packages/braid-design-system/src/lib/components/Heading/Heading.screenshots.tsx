@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Fragment } from 'react';
 
-import { smModes, xsModes } from 'braid-storybook/modes';
+import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Box, Heading, IconPositive, IconImage, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
@@ -42,10 +42,7 @@ export const Levels: Story = {
   ),
   parameters: {
     chromatic: {
-      modes: {
-        ...xsModes,
-        ...smModes,
-      },
+      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },
   },
 };
