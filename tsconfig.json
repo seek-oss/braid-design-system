@@ -19,10 +19,5 @@
     },
     "types": ["vitest/globals"]
   },
-  "include": [
-    "./integration",
-    "./scripts",
-    "vitest.config.ts",
-    "packages/braid-design-system/src/**/*.screenshots.tsx"
-  ]
+  "include": ["./integration", "./scripts", "vitest.config.ts"]
 }
