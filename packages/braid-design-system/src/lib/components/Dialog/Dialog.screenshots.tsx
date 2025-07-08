@@ -1,24 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import type { ReactNode } from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Inline, Stack, Box, Text } from '../';
 import { Placeholder } from '../../playroom/components';
-import { externalGutter } from '../private/Modal/ModalExternalGutter';
 
 import { Dialog, DialogContent } from './Dialog';
-
-import * as styles from '../private/Modal/Modal.css';
-
-export const DialogPreview = ({ children }: { children: ReactNode }) => (
-  <Box position="relative">
-    <Box position="absolute" inset={0} className={styles.backdrop} />
-    <Box position="relative" zIndex="modal" padding={externalGutter}>
-      {children}
-    </Box>
-  </Box>
-);
 
 const meta = {
   title: 'Components/Dialog',

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import type { ReactNode } from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
@@ -9,17 +8,6 @@ import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 
 import { Drawer, DrawerContent } from './Drawer';
-
-import * as styles from '../private/Modal/Modal.css';
-
-export const DrawerPreview = ({ children }: { children: ReactNode }) => (
-  <Box position="relative">
-    <Box position="absolute" inset={0} className={styles.backdrop} />
-    <Box position="relative" zIndex="modal">
-      {children}
-    </Box>
-  </Box>
-);
 
 const meta = {
   title: 'Components/Drawer',
