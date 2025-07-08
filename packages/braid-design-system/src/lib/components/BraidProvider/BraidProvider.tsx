@@ -15,7 +15,6 @@ import {
 import { ensureResetImported } from '../../css/reset/resetTracker';
 import type { BraidTheme } from '../../themes/makeBraidTheme';
 import { BraidTestProviderContext } from '../BraidTestProvider/BraidTestProviderContext';
-import { useHideFocusRings } from '../private/hideFocusRings/useHideFocusRings';
 
 import { BraidThemeContext } from './BraidThemeContext';
 import { BreakpointProvider } from './BreakpointContext';
@@ -83,8 +82,6 @@ export const BraidProvider = ({
   const alreadyInBraidProvider = Boolean(useContext(BraidThemeContext));
   const inTestProvider = useContext(BraidTestProviderContext);
   const linkComponentFromContext = useContext(LinkComponentContext);
-
-  useHideFocusRings(!(alreadyInBraidProvider || inTestProvider));
 
   // Node 21 introduces an empty navigator object, so checks need a little more logic to them
   assert(

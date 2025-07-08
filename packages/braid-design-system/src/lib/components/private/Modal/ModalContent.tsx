@@ -19,7 +19,6 @@ import { Heading } from '../../Heading/Heading';
 import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
-import { Overlay } from '../Overlay/Overlay';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -63,20 +62,14 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
       <Heading level={headingLevel} align={center ? 'center' : undefined}>
         <Box
           ref={ref}
-          component="span"
           tabIndex={-1}
-          outline="none"
+          component="span"
           position="relative"
+          outline="focus"
+          borderRadius="small" // Ensures focus ring is rounded
           className={styles.headingRoot}
         >
           {title}
-          <Overlay
-            boxShadow="outlineFocus"
-            borderRadius="standard"
-            transition="fast"
-            className={styles.headingFocus}
-            onlyVisibleForKeyboardNavigation
-          />
         </Box>
       </Heading>
       {description ? <Box id={descriptionId}>{description}</Box> : null}

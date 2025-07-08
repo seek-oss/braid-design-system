@@ -10,6 +10,7 @@
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
+    "lint:changesets": "tsx ./scripts/lintChangesets.ts",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "generate:component-docs": "generate-component-docs",
@@ -62,7 +63,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
     "recoil": "^0.7.2",
-    "sku": "14.6.0",
+    "sku": "14.7.0",
     "webpack": "^5.76.0"
   },
   "skuSkipPostInstall": true,

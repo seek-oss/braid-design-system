@@ -1,10 +1,8 @@
-import source from '@braid-design-system/source.macro';
 import dedent from 'dedent';
 import Code from 'site/App/Code/Code';
 import { ThemedExample } from 'site/App/ThemeSetting';
 import type { CssDoc } from 'site/types';
 
-import { atoms } from 'braid-src/entries/css';
 import {
   Stack,
   Columns,
@@ -86,26 +84,22 @@ const docs: CssDoc = {
             of custom CSS in your application.
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    display: 'flex',
-                    justifyContent: {
-                      mobile: 'center',
-                      tablet: 'flexStart',
-                    },
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: 'full',
-                    height: 'full',
-                  }),
-                ).code
-              };
+              export const className = atoms({
+                display: 'flex',
+                justifyContent: {
+                  mobile: 'center',
+                  tablet: 'flexStart',
+                },
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: 'full',
+                height: 'full',
+              });
             `}
           </Code>
           <Box paddingBottom="large">
@@ -170,9 +164,7 @@ const docs: CssDoc = {
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(atoms({ paddingX: 'gutter', paddingY: 'large' })).code
-              };
+              export const className = atoms({ paddingX: 'gutter', paddingY: 'large' });
             `}
           </Code>
           <ThemedExample>
@@ -302,22 +294,18 @@ const docs: CssDoc = {
             </Strong>
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    padding: {
-                      mobile: 'small',
-                      tablet: 'medium',
-                      desktop: 'large',
-                      wide: 'xlarge',
-                    },
-                  }),
-                ).code
-              };
+              export const className = atoms({
+                padding: {
+                  mobile: 'small',
+                  tablet: 'medium',
+                  desktop: 'large',
+                  wide: 'xlarge',
+                },
+              });
             `}
           </Code>
           <ThemedExample>
@@ -346,27 +334,21 @@ const docs: CssDoc = {
       ),
     },
     {
-      label: 'Shadows, borders and outlines',
+      label: 'Shadows and borders',
       description: (
         <>
           <Text>
             The atoms function provides a series of <Strong>boxShadow</Strong>{' '}
             values that handle a wide variety of use cases. Note that box
-            shadows are also used for outlines and borders so that their
-            presence doesn’t alter the dimensions of the element.
+            shadows are also used for borders so that their presence doesn’t
+            alter the dimensions of the element.
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    boxShadow: 'large',
-                  }),
-                ).code
-              };
+              export const className = atoms({ boxShadow: 'large' });
             `}
           </Code>
           <Alert tone="caution">
@@ -482,19 +464,66 @@ const docs: CssDoc = {
             native element type.
           </Text>
           <Code playroom={false}>
-            {dedent`
+            {`
               // styles.css.ts
               import { atoms } from 'braid-design-system/css';
 
-              export const className = ${
-                source(
-                  atoms({
-                    reset: 'span',
-                  }),
-                ).code
-              };
+              export const className = atoms({
+                reset: 'span',
+              });
             `}
           </Code>
+        </>
+      ),
+    },
+    {
+      label: 'Focus outlines',
+      description: (
+        <>
+          <Text>
+            As part of the CSS reset, Braid will automatically style the focus
+            ring <Strong>outline</Strong> when specifying an interactive element
+            in the <TextLink href="#css-reset">reset property</TextLink>, i.e.{' '}
+            <Strong>&ldquo;button&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;a&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;input&rdquo;</Strong>, etc.
+          </Text>
+
+          <Code playroom={false}>
+            {`
+              // styles.css.ts
+              import { atoms } from 'braid-design-system/css';
+
+              export const className = atoms({
+                reset: 'button',
+              });
+            `}
+          </Code>
+
+          <Text>
+            When styling a non-interactive element, i.e.{' '}
+            <Strong>&ldquo;div&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;span&rdquo;</Strong>, etc., or when not using a{' '}
+            <Strong>reset</Strong>, it is necessary to opt in to the focus ring
+            outline using <Strong>outline: &lsquo;focus&rsquo;</Strong>.
+          </Text>
+
+          <Code playroom={false}>
+            {`
+              // styles.css.ts
+              import { atoms } from 'braid-design-system/css';
+
+              export const className = atoms({
+                outline: 'focus'
+              });
+            `}
+          </Code>
+
+          <Text>
+            To apply the focus outline to an element based on the focus of
+            another element, see{' '}
+            <TextLink href="/css/outlineStyle">outlineStyle</TextLink>.
+          </Text>
         </>
       ),
     },

@@ -261,11 +261,6 @@ export const StyledInput = forwardRef<
             visible={tone === 'critical' && !disabled}
           />
           <FieldOverlay
-            variant="focus"
-            borderRadius={fieldBorderRadius}
-            className={styles.focusOverlay}
-          />
-          <FieldOverlay
             variant="formAccent"
             borderRadius={fieldBorderRadius}
             className={styles.hoverOverlay}

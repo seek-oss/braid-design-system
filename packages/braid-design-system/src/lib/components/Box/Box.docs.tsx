@@ -16,6 +16,7 @@ import {
   Strong,
   Alert,
   BraidProvider,
+  Notice,
 } from '../';
 import {
   type UnresponsiveProperties,
@@ -583,14 +584,14 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Shadows, borders and outlines',
+      label: 'Shadows and borders',
       description: (
         <>
           <Text>
             Box provides a series of <Strong>boxShadow</Strong> values that
             handle a wide variety of use cases. Note that box shadows are also
-            used for outlines and borders so that their presence doesn’t alter
-            the dimensions of the element.
+            used for borders so that their presence doesn’t alter the dimensions
+            of the element.
           </Text>
           <Code playroom={false}>
             {source(<Box boxShadow="large">...</Box>).code}
@@ -711,6 +712,56 @@ const docs: ComponentDocs = {
           ),
         };
       },
+    },
+    {
+      label: 'Focus outlines',
+      description: (
+        <>
+          <Text>
+            Box will automatically style the focus ring <Strong>outline</Strong>{' '}
+            when specifying an interactive{' '}
+            <TextLink href="#semantic-elements">semantic element</TextLink>,
+            i.e. <Strong>&ldquo;button&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;a&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;input&rdquo;</Strong>, etc.
+          </Text>
+
+          <Code playroom={false}>
+            {source(<Box component="button">...</Box>).code}
+          </Code>
+
+          <Text>
+            When styling a non-interactive element, i.e.{' '}
+            <Strong>&ldquo;div&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;span&rdquo;</Strong>, etc., it is necessary to opt in
+            to the focus ring outline using{' '}
+            <Strong>outline=&ldquo;focus&rdquo;</Strong>.
+          </Text>
+
+          <Notice>
+            <Text>
+              For a non-interactive element to receive focus, you must provide a{' '}
+              <Strong>tabIndex</Strong>.
+            </Text>
+          </Notice>
+
+          <Code playroom={false}>
+            {
+              source(
+                <Box component="span" tabIndex={0} outline="focus">
+                  ...
+                </Box>,
+              ).code
+            }
+          </Code>
+
+          <Text>
+            To apply the focus outline to an element based on the focus of
+            another element, see{' '}
+            <TextLink href="/css/outlineStyle">outlineStyle</TextLink>.
+          </Text>
+        </>
+      ),
     },
   ],
 };

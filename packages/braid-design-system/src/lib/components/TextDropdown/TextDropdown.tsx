@@ -7,7 +7,6 @@ import { Box } from '../Box/Box';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
 import { IconChevron } from '../icons';
-import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -87,10 +86,6 @@ export function TextDropdown<Value>({
       position="relative"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Box pointerEvents="none" userSelect="none">
-        {currentText.text} <IconChevron alignY="lowercase" />
-      </Box>
-
       <Box
         component="select"
         position="absolute"
@@ -121,13 +116,9 @@ export function TextDropdown<Value>({
         </optgroup>
       </Box>
 
-      <Overlay
-        boxShadow="outlineFocus"
-        borderRadius="standard"
-        transition="fast"
-        onlyVisibleForKeyboardNavigation
-        className={styles.focusOverlay}
-      />
+      <Box pointerEvents="none" userSelect="none" className={styles.focusRing}>
+        {currentText.text} <IconChevron alignY="lowercase" />
+      </Box>
     </Box>
   );
 }

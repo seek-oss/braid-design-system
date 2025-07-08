@@ -7,7 +7,6 @@ import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
-import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 
 import { StepContext, StepperContext } from './StepperContext';
 
@@ -100,7 +99,6 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
       component="button"
       ref={stepRef}
       position="relative"
-      outline="none"
       display="flex"
       justifyContent={{ tablet: align === 'center' ? 'center' : undefined }}
       width="full"
@@ -165,15 +163,10 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
           display="block"
           position="relative"
           transition="fast"
+          borderRadius="full"
           className={styles.indicatorContainer}
           aria-hidden
         >
-          <FieldOverlay
-            variant="focus"
-            borderRadius="full"
-            onlyVisibleForKeyboardNavigation
-            className={styles.focusOverlay}
-          />
           <StepIndicator
             complete={completed}
             active={active}

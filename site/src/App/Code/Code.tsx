@@ -13,7 +13,6 @@ import {
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
-import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import copy from 'copy-to-clipboard';
@@ -32,6 +31,7 @@ import { useConfig } from '../ConfigContext';
 import { ThemedExample } from '../ThemeSetting';
 
 import { editorTheme } from './editorTheme';
+import type { SupportedLanguage } from './supportedLanguages';
 
 import * as styles from './Code.css';
 
@@ -41,9 +41,6 @@ type ReactElementOrString = ReactElement | string;
 for (const [name, language] of Object.entries({ diff, jsx, tsx, bash })) {
   SyntaxHighlighter.registerLanguage(name, language);
 }
-
-const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx', 'bash'] as const;
-export type SupportedLanguage = (typeof supportedLanguages)[number];
 
 export const formatSnippet = memoize((snippet: string) => {
   const lines = snippet.split('\n');
@@ -110,7 +107,6 @@ export const CodeButton = ({
       paddingY="xxsmall"
       paddingX="xsmall"
       position="relative"
-      outline="none"
       className={[styles.button, className]}
       onClick={(e) => {
         if (typeof onClick === 'function') {
@@ -124,10 +120,6 @@ export const CodeButton = ({
       }}
       {...restProps}
     >
-      <FieldOverlay
-        variant="focus"
-        className={[styles.focusOverlay, hideFocusRingsClassName]}
-      />
       <FieldOverlay
         background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
         className={styles.hoverOverlay}
@@ -157,12 +149,6 @@ export const CodeBlock = ({
   // `null` is the language when a code block contains no longuage tag.
   // We resolve it to a valid language or `undefined` to match the syntax highlighter's `language` type.
   const resolvedLanguage = language || undefined;
-
-  if (resolvedLanguage && !supportedLanguages.includes(resolvedLanguage)) {
-    throw new Error(
-      `Unsupported syntax highlighter language: ${resolvedLanguage}. Please register the language if you wish to support it.`,
-    );
-  }
 
   return (
     <Box
