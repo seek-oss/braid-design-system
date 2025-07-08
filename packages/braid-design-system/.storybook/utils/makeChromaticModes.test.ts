@@ -78,4 +78,51 @@ describe('makeMode', () => {
       }
     `);
   });
+
+  it('should accept multiple themes and viewports with defaults', () => {
+    const testMakeModes = makeChromaticModes(
+      ['apac', 'apacDark', 'wireframe'],
+      { mobile: 300, tablet: 500, desktop: 900 },
+      {
+        defaultThemes: ['apac', 'apacDark'],
+      },
+    );
+
+    expect(testMakeModes({ viewports: ['mobile', 'tablet'] }))
+      .toMatchInlineSnapshot(`
+      {
+        "apac desktop": {
+          "disabled": true,
+        },
+        "apac mobile": {
+          "theme": "apac",
+          "viewport": 300,
+        },
+        "apac tablet": {
+          "theme": "apac",
+          "viewport": 500,
+        },
+        "apacDark desktop": {
+          "disabled": true,
+        },
+        "apacDark mobile": {
+          "theme": "apacDark",
+          "viewport": 300,
+        },
+        "apacDark tablet": {
+          "theme": "apacDark",
+          "viewport": 500,
+        },
+        "wireframe desktop": {
+          "disabled": true,
+        },
+        "wireframe mobile": {
+          "disabled": true,
+        },
+        "wireframe tablet": {
+          "disabled": true,
+        },
+      }
+    `);
+  });
 });
