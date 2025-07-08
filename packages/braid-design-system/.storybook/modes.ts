@@ -2,26 +2,18 @@ import { makeChromaticModes } from './utils/makeChromaticModes';
 
 export const braidThemes = [
   'apac',
-  'apacDark',
   'seekJobs',
   'seekJobsDark',
-  'seekBusiness',
   'wireframe',
 ] as const;
 
 const braidViewports = {
-  xsmall: 320,
-  small: 768,
-  medium: 992,
-  large: 1200,
+  mobile: 320,
+  tablet: 768,
+  desktop: 992,
+  wide: 1200,
 };
 
 export const makeBraidModes = makeChromaticModes(braidThemes, braidViewports, {
-  defaultThemes: [
-    'apac',
-    'apacDark',
-    'seekJobs',
-    'seekJobsDark',
-    'seekBusiness',
-  ],
+  defaultThemes: ['apac', 'seekJobs', 'seekJobsDark'],
 });
