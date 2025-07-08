@@ -10,7 +10,7 @@ const meta = {
   component: MenuItemCheckbox,
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['small'] }),
+      modes: makeBraidModes({ viewports: ['tablet'] }),
     },
   },
 } satisfies Meta<typeof MenuItemCheckbox>;

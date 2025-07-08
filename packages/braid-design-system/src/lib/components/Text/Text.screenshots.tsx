@@ -45,7 +45,7 @@ const meta = {
   component: Text,
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
+      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
     },
   },
 } satisfies Meta<typeof Text>;

@@ -17,7 +17,7 @@ const meta = {
   title: 'Components/MenuItem',
   component: MenuItem,
   parameters: {
-    chromatic: makeBraidModes({ viewports: ['small'] }),
+    chromatic: makeBraidModes({ viewports: ['tablet'] }),
   },
 } satisfies Meta<typeof MenuItem>;
 

@@ -53,7 +53,7 @@ const meta = {
     chromatic: {
       chromatic: {
         modes: makeBraidModes({
-          viewports: ['xsmall', 'small', 'medium', 'large'],
+          viewports: ['mobile', 'tablet', 'desktop', 'wide'],
         }),
       },
     },

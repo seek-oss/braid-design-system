@@ -35,7 +35,7 @@ const meta: Meta<typeof TextLink> = {
   component: TextLink,
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['small'] }),
+      modes: makeBraidModes({ viewports: ['tablet'] }),
     },
   },
 };

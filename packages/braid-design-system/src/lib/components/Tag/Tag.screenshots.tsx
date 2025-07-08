@@ -12,7 +12,7 @@ const meta = {
   component: Tag,
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['small'] }),
+      modes: makeBraidModes({ viewports: ['tablet'] }),
     },
   },
 } satisfies Meta<typeof Tag>;

@@ -39,7 +39,7 @@ export const Levels: Story = {
   ),
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
+      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
     },
   },
 };

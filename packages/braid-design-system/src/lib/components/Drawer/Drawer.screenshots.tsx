@@ -31,7 +31,7 @@ export const DefaultLayout: Story = {
   ),
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['xsmall', 'large'] }),
+      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
     },
   },
 };

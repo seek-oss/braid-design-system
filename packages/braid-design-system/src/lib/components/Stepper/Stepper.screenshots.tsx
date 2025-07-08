@@ -9,7 +9,7 @@ const meta = {
   component: Stepper,
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
+      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
     },
   },
 } satisfies Meta<typeof Stepper>;

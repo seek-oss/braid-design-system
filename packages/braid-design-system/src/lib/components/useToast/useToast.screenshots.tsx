@@ -12,7 +12,7 @@ const meta = {
   component: Toast,
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
+      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
     },
   },
 } satisfies Meta<typeof Toast>;

@@ -24,7 +24,7 @@ const meta = {
   component: Button,
   parameters: {
     chromatic: {
-      modes: makeBraidModes({ viewports: ['small'] }),
+      modes: makeBraidModes({ viewports: ['tablet'] }),
     },
   },
   argTypes: {

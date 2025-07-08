@@ -25,7 +25,7 @@ const preview: Preview = {
     chromatic: {
       modes: makeBraidModes({
         root: true,
-        viewports: ['xsmall'],
+        viewports: ['mobile'],
       }),
     },
     layout: 'fullscreen',
