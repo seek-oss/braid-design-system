@@ -1,6 +1,15 @@
 import { style } from '@vanilla-extract/css';
 
+import { atoms } from '../../css/atoms/atoms';
 import { colorModeStyle } from '../../css/colorModeStyle';
+
+export const borderRadius = 'standard';
+
+export const focusRing = atoms({
+  display: 'block',
+  outline: 'focus',
+  borderRadius,
+});
 
 export const hover = style({});
 

@@ -73,6 +73,7 @@ export const TextLinkButton = ({
       role="button"
       tabIndex={tabIndex ?? 0}
       component="span"
+      outline="focus"
       onClick={onClick}
       onKeyDown={handleKeyboard}
       aria-controls={ariaControls}

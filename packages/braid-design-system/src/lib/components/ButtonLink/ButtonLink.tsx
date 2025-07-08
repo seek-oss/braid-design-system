@@ -55,6 +55,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       <ButtonContainer bleed={bleed} variant={variant}>
         <Box
           component={LinkComponent}
+          outline="focus"
           ref={ref}
           {...restProps}
           {...root}
