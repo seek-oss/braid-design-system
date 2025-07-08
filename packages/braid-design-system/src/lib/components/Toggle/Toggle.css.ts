@@ -26,6 +26,8 @@ export type Size = keyof typeof sizes;
 
 const toggleWidthRatio = 1.6;
 
+// Reset the z-index at the parent level to scope
+// overrides internally.
 export const root = style({
   ':hover': {
     zIndex: 1,
