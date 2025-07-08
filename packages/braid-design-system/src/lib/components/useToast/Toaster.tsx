@@ -1,5 +1,5 @@
 import isMobile from 'is-mobile';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Box } from '../Box/Box';
 
@@ -16,6 +16,7 @@ interface ToasterProps {
 export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const [expanded, setExpanded] = useState(false);
   const { itemRef, remove } = useFlipList(expanded);
+  const isMobileDevice = useRef(isMobile()).current;
 
   const onClose = useCallback(
     (dedupeKey: string, toastKey: string) => {
@@ -34,7 +35,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
 
   return (
     <>
-      {isMobile() && expanded && toasts.length > 1 && (
+      {isMobileDevice && expanded && toasts.length > 1 && (
         <Box
           position="fixed"
           inset={0}
@@ -57,8 +58,8 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
           pointerEvents={toasts.length === 0 ? 'none' : undefined}
           marginX="gutter"
           paddingBottom="xsmall"
-          onMouseEnter={() => !isMobile() && setExpanded(true)}
-          onMouseLeave={() => !isMobile() && setExpanded(false)}
+          onMouseEnter={() => !isMobileDevice && setExpanded(true)}
+          onMouseLeave={() => !isMobileDevice && setExpanded(false)}
           onClick={() => setExpanded(!expanded)}
           onFocus={() => setExpanded(true)}
           onBlur={() => setExpanded(false)}
