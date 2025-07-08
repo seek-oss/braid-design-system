@@ -5,9 +5,6 @@ import { Secondary, Text, IconHome, Heading } from '../';
 const meta = {
   title: 'Components/Secondary',
   component: Secondary,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Secondary>;
 
 export default meta;

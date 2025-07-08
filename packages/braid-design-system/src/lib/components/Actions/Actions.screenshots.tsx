@@ -11,7 +11,6 @@ const meta = {
   title: 'Components/Actions',
   component: Actions,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     parameters: {
       chromatic: {
         modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),

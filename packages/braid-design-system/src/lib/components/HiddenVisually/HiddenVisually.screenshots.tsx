@@ -8,7 +8,6 @@ const meta = {
   title: 'Components/HiddenVisually',
   component: HiddenVisually,
   parameters: {
-    // screenshotOnlyInWireframe: true,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall'],

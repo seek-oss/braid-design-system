@@ -11,7 +11,6 @@ const meta = {
   title: 'Components/Stack',
   component: Stack,
   parameters: {
-    // screenshotOnlyInWireframe: true,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall', 'small', 'medium', 'large'],

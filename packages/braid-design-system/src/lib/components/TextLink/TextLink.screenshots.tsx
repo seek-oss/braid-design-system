@@ -34,7 +34,6 @@ const meta: Meta<typeof TextLink> = {
   title: 'Components/TextLink',
   component: TextLink,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['small'] }),
     },

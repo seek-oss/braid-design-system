@@ -6,9 +6,6 @@ import { Menu } from '../MenuRenderer/MenuRenderer';
 const meta = {
   title: 'Components/MenuItemDivider',
   component: MenuItemDivider,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof MenuItemDivider>;
 
 export default meta;

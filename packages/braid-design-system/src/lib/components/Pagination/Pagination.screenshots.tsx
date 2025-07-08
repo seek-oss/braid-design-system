@@ -14,7 +14,6 @@ const meta = {
   title: 'Components/Pagination',
   component: Pagination,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },

@@ -10,7 +10,6 @@ const meta = {
   title: 'Components/PageBlock',
   component: PageBlock,
   parameters: {
-    screenshotOnlyInWireframe: false,
     chromatic: makeBraidModes({ viewports: ['xsmall', 'large'] }),
   },
   argTypes: {

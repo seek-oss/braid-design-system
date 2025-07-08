@@ -17,7 +17,6 @@ const meta = {
   title: 'Components/Column',
   component: Column,
   parameters: {
-    // screenshotOnlyInWireframe: true,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall', 'small', 'large'],

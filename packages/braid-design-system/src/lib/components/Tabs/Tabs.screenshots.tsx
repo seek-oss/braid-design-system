@@ -18,7 +18,6 @@ const meta = {
   title: 'Components/Tabs',
   component: Tabs,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall', 'large'],

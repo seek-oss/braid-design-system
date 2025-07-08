@@ -7,9 +7,6 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 const meta: Meta<typeof TextDropdown> = {
   title: 'Components/TextDropdown',
   component: TextDropdown,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 };
 
 export default meta;

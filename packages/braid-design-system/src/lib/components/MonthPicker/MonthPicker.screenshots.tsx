@@ -7,9 +7,6 @@ import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 const meta = {
   title: 'Components/MonthPicker',
   component: MonthPicker,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     value: {
       control: 'object',

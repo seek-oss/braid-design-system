@@ -6,9 +6,6 @@ import { Notice, Text, Stack, TextLink, List } from '../';
 const meta = {
   title: 'Components/Notice',
   component: Notice,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     tone: {
       control: 'select',

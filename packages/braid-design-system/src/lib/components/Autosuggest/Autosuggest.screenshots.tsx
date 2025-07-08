@@ -45,9 +45,6 @@ const WithAutosuggestState = (storyFn: any) => {
 const meta = {
   title: 'Components/Autosuggest',
   component: Autosuggest,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     label: { control: 'text' },
     id: { control: 'text' },

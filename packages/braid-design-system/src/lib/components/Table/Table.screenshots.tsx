@@ -50,7 +50,6 @@ const meta = {
   title: 'Components/Table',
   component: Table,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       chromatic: {
         modes: makeBraidModes({

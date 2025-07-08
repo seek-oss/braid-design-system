@@ -5,9 +5,6 @@ import { FieldLabel, Stack, TextLink } from '../';
 const meta = {
   title: 'Components/FieldLabel',
   component: FieldLabel,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof FieldLabel>;
 
 export default meta;

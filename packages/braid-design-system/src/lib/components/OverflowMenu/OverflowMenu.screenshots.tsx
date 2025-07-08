@@ -7,9 +7,6 @@ import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';
 const meta = {
   title: 'Components/OverflowMenu',
   component: OverflowMenu,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     label: {
       control: 'text',

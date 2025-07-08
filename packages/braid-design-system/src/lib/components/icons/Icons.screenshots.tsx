@@ -41,9 +41,6 @@ const IconDemo = () => <Icons />;
 const meta = {
   title: 'Components/Icons',
   component: IconDemo,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof IconDemo>;
 
 export default meta;

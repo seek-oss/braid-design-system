@@ -8,7 +8,6 @@ const meta = {
   title: 'Components/Stepper',
   component: Stepper,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },

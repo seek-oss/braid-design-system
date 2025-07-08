@@ -10,9 +10,6 @@ import { textAlignments } from '../../utils/docsHelpers';
 const meta = {
   title: 'Components/Heading',
   component: Heading,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Heading>;
 
 export default meta;

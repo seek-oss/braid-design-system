@@ -11,7 +11,6 @@ const meta = {
   title: 'Components/Tag',
   component: Tag,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['small'] }),
     },

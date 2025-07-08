@@ -6,9 +6,6 @@ import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 const meta = {
   title: 'Components/Loader',
   component: Loader,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Loader>;
 
 export default meta;

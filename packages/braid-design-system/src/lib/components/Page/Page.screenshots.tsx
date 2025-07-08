@@ -36,7 +36,6 @@ const meta = {
   title: 'Components/Page',
   component: Page,
   parameters: {
-    // screenshotOnlyInWireframe: true,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall'],

@@ -6,9 +6,6 @@ import { Placeholder } from '../../playroom/components';
 const meta = {
   title: 'Components/List',
   component: List,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof List>;
 
 export default meta;

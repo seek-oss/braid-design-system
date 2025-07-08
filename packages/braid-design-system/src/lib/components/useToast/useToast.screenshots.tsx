@@ -11,7 +11,6 @@ const meta = {
   title: 'Components/useToast',
   component: Toast,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },

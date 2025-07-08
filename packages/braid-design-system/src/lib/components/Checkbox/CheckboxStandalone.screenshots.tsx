@@ -19,9 +19,6 @@ const checkboxSizes = ['standard', 'small'] as const;
 const meta = {
   title: 'Components/CheckboxStandalone',
   component: CheckboxStandalone,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   args: {
     id: 'checkbox-standalone-example',
     checked: false,

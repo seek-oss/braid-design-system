@@ -6,9 +6,6 @@ import { ButtonLink, IconSend, Stack, Inline, Text, IconArrow, Box } from '../';
 const meta = {
   title: 'Components/ButtonLink',
   component: ButtonLink,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     tone: {
       control: 'select',

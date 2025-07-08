@@ -10,9 +10,6 @@ import { Checkbox } from './Checkbox';
 const meta = {
   title: 'Components/Checkbox',
   component: Checkbox,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     onChange: { action: 'changed' },
     id: { control: 'text' },

@@ -5,9 +5,6 @@ import { Disclosure, Stack, Text } from '../';
 const meta = {
   title: 'Components/Disclosure',
   component: Disclosure,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Disclosure>;
 
 export default meta;

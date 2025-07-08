@@ -12,9 +12,6 @@ import { Drawer, DrawerContent } from './Drawer';
 const meta = {
   title: 'Components/Drawer',
   component: Drawer,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Drawer>;
 
 export default meta;

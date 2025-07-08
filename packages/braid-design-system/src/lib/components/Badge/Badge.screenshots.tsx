@@ -13,9 +13,6 @@ const headingLevels: HeadingLevel[] = ['1', '2', '3', '4'];
 const meta = {
   title: 'Components/Badge',
   component: Badge,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     tone: {
       control: 'select',

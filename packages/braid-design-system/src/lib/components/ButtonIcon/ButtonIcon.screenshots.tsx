@@ -9,9 +9,6 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 const meta = {
   title: 'Components/ButtonIcon',
   component: ButtonIcon,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     variant: { control: 'select', options: ['soft', 'transparent'] },
     size: { control: 'select', options: ['small', 'standard', 'large'] },

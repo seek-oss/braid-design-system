@@ -10,7 +10,6 @@ const meta = {
   title: 'Components/Card',
   component: Card,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall', 'small', 'medium', 'large'],

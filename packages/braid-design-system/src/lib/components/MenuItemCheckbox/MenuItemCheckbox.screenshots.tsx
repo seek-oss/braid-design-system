@@ -9,7 +9,6 @@ const meta = {
   title: 'Components/MenuItemCheckbox',
   component: MenuItemCheckbox,
   parameters: {
-    screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['small'] }),
     },

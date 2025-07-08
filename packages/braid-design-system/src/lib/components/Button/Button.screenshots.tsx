@@ -23,7 +23,6 @@ const meta = {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['small'] }),
     },

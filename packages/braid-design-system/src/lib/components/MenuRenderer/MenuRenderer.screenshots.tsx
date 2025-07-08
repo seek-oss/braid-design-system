@@ -73,9 +73,6 @@ const PopoverWrapper = ({
 const meta = {
   title: 'Components/MenuRenderer',
   component: MenuRenderer,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     align: {
       control: 'radio',

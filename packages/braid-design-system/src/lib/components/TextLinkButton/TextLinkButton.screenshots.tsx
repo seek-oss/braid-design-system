@@ -5,9 +5,6 @@ import { Text, TextLinkButton, IconLink } from '../';
 const meta: Meta<typeof TextLinkButton> = {
   title: 'Components/TextLinkButton',
   component: TextLinkButton,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 };
 
 export default meta;

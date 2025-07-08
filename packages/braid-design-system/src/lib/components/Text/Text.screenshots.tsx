@@ -44,7 +44,6 @@ const meta = {
   title: 'Components/Text',
   component: Text,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['xsmall', 'small'] }),
     },

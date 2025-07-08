@@ -8,9 +8,6 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 const meta = {
   title: 'Components/RadioGroup',
   component: RadioGroup,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   args: {
     onChange: () => {},
   },

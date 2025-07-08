@@ -5,9 +5,6 @@ import { FieldMessage, Stack } from '../';
 const meta = {
   title: 'Components/FieldMessage',
   component: FieldMessage,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof FieldMessage>;
 
 export default meta;

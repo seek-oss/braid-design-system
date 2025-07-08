@@ -11,9 +11,6 @@ type Story = StoryObj<typeof Alert>;
 const meta = {
   title: 'Components/Alert',
   component: Alert,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Alert>;
 
 export default meta;

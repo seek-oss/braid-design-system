@@ -6,9 +6,6 @@ import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 const meta = {
   title: 'Components/Rating',
   component: Rating,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Rating>;
 
 export default meta;

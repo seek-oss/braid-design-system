@@ -10,7 +10,6 @@ const meta = {
   title: 'Components/Inline',
   component: Inline,
   parameters: {
-    // screenshotOnlyInWireframe: true,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall', 'small', 'medium', 'large'],

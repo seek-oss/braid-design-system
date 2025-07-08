@@ -17,7 +17,6 @@ const meta = {
   title: 'Components/Bleed',
   component: Bleed,
   parameters: {
-    // screenshotOnlyInWireframe: true,
     chromatic: {
       modes: makeBraidModes({
         viewports: ['xsmall', 'small', 'medium', 'large'],

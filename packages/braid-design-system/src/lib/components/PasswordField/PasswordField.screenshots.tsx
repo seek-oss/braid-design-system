@@ -6,9 +6,6 @@ import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 const meta = {
   title: 'Components/PasswordField',
   component: PasswordField,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   args: {
     onChange: () => {},
   },

@@ -10,7 +10,6 @@ const meta = {
   title: 'Components/ContentBlock',
   component: ContentBlock,
   parameters: {
-    // screenshotOnlyInWireframe: false,
     chromatic: {
       modes: makeBraidModes({ viewports: ['xsmall', 'large'] }),
     },

@@ -5,9 +5,6 @@ import { Text, Heading, IconRenderer, Stack } from '../';
 const meta = {
   title: 'Components/IconRenderer',
   component: IconRenderer,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof IconRenderer>;
 
 export default meta;

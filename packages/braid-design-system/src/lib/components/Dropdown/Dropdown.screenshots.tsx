@@ -6,9 +6,6 @@ import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 const meta = {
   title: 'Components/Dropdown',
   component: Dropdown,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Dropdown>;
 
 export default meta;

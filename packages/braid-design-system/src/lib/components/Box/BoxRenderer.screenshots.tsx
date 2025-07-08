@@ -8,9 +8,6 @@ import { BoxRenderer } from './BoxRenderer';
 const meta = {
   title: 'Components/BoxRenderer',
   component: BoxRenderer,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   argTypes: {
     component: { control: 'text' },
     background: {

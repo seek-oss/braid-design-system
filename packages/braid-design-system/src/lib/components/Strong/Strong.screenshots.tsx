@@ -5,9 +5,6 @@ import { Strong, Text } from '../';
 const meta = {
   title: 'Components/Strong',
   component: Strong,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
   decorators: [
     (Story) => (
       <Text>

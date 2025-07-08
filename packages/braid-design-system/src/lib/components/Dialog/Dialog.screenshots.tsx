@@ -10,9 +10,6 @@ import { Dialog, DialogContent } from './Dialog';
 const meta = {
   title: 'Components/Dialog',
   component: Dialog,
-  parameters: {
-    screenshotOnlyInWireframe: false,
-  },
 } satisfies Meta<typeof Dialog>;
 
 export default meta;
