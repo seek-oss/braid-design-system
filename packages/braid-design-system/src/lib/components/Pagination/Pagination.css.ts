@@ -5,11 +5,17 @@ import { colorModeStyle } from '../../css/colorModeStyle';
 
 export const borderRadius = 'standard';
 
-export const focusRing = atoms({
-  display: 'block',
-  outline: 'focus',
-  borderRadius,
-});
+export const focusRing = style([
+  {
+    // Necessary to overwrite browser default for 'a' elements (which is '1px').
+    outlineOffset: 0,
+  },
+  atoms({
+    display: 'block',
+    outline: 'focus',
+    borderRadius,
+  }),
+]);
 
 export const hover = style({});
 
