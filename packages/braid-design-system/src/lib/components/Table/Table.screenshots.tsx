@@ -51,11 +51,9 @@ const meta = {
   component: Table,
   parameters: {
     chromatic: {
-      chromatic: {
-        modes: makeBraidModes({
-          viewports: ['mobile', 'tablet', 'desktop', 'wide'],
-        }),
-      },
+      modes: makeBraidModes({
+        viewports: ['mobile', 'tablet', 'desktop', 'wide'],
+      }),
     },
   },
 } satisfies Meta<typeof Table>;

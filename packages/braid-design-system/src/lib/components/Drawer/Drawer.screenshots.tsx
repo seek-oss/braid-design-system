@@ -12,6 +12,11 @@ import { Drawer, DrawerContent } from './Drawer';
 const meta = {
   title: 'Components/Drawer',
   component: Drawer,
+  parameters: {
+    chromatic: {
+      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
+    },
+  },
 } satisfies Meta<typeof Drawer>;
 
 export default meta;
@@ -29,11 +34,6 @@ export const DefaultLayout: Story = {
       <Placeholder height={100} width="100%" />
     </DrawerContent>
   ),
-  parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
-    },
-  },
 };
 
 export const LayoutWithDescription: Story = {

@@ -11,10 +11,8 @@ const meta = {
   title: 'Components/Actions',
   component: Actions,
   parameters: {
-    parameters: {
-      chromatic: {
-        modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-      },
+    chromatic: {
+      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
     },
   },
 };

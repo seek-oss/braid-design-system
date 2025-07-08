@@ -10,6 +10,11 @@ import { Dialog, DialogContent } from './Dialog';
 const meta = {
   title: 'Components/Dialog',
   component: Dialog,
+  parameters: {
+    chromatic: {
+      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
+    },
+  },
 } satisfies Meta<typeof Dialog>;
 
 export default meta;
@@ -22,11 +27,6 @@ export const DefaultLayout: Story = {
       <Placeholder height={100} width="100%" />
     </DialogContent>
   ),
-  parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
-    },
-  },
 };
 
 export const IllustrationLayout: Story = {

@@ -10,6 +10,11 @@ import { textAlignments } from '../../utils/docsHelpers';
 const meta = {
   title: 'Components/Heading',
   component: Heading,
+  parameters: {
+    chromatic: {
+      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
+    },
+  },
 } satisfies Meta<typeof Heading>;
 
 export default meta;
@@ -37,11 +42,6 @@ export const Levels: Story = {
       ))}
     </Stack>
   ),
-  parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-    },
-  },
 };
 
 export const LineHeights: Story = {
