@@ -13,7 +13,7 @@ import * as styles from './Table.css';
 export interface TableProps {
   label: string;
   children: ReactNode;
-  alignY?: 'top' | 'center';
+  alignY?: keyof typeof styles.alignY;
   data?: DataAttributeMap;
 }
 
