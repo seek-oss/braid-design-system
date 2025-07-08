@@ -24,7 +24,7 @@ const preview: Preview = {
   parameters: {
     chromatic: {
       modes: makeBraidModes({
-        disableHigherLevelModes: false,
+        root: true,
         viewports: ['xsmall'],
       }),
     },
