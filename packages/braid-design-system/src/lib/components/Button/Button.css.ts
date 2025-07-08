@@ -16,6 +16,8 @@ export const root = style({
   textDecoration: 'none',
   // Necessary to overwrite Safari's default value for 'align-items' in 'button' elements (which is 'flex-start')
   alignItems: 'stretch',
+  // Necessary to overwrite browser default for 'a' elements (which is '1px'), keeping Button & ButtonLink uniform.
+  outlineOffset: 0,
 });
 
 export const forceActive = style({});
