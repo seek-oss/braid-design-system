@@ -98,32 +98,27 @@ export const Accordion = ({
     spaceProp ?? defaultSpaceForSize[dividers ? 'divided' : 'undivided'][size];
 
   return (
-    <>
-      <p>hello world</p>
-      <AccordionContext.Provider value={contextValue}>
-        <Stack space={space} data={data}>
-          {!dividers ? (
-            children
-          ) : (
-            <>
-              <Divider />
-              {Children.map(flattenChildren(children), (child, index) => (
-                <>
-                  {index > 0 ? (
-                    <Divider
-                      weight={
-                        typeof dividers === 'string' ? dividers : undefined
-                      }
-                    />
-                  ) : null}
-                  {child}
-                </>
-              ))}
-              <Divider />
-            </>
-          )}
-        </Stack>
-      </AccordionContext.Provider>
-    </>
+    <AccordionContext.Provider value={contextValue}>
+      <Stack space={space} data={data}>
+        {!dividers ? (
+          children
+        ) : (
+          <>
+            <Divider />
+            {Children.map(flattenChildren(children), (child, index) => (
+              <>
+                {index > 0 ? (
+                  <Divider
+                    weight={typeof dividers === 'string' ? dividers : undefined}
+                  />
+                ) : null}
+                {child}
+              </>
+            ))}
+            <Divider />
+          </>
+        )}
+      </Stack>
+    </AccordionContext.Provider>
   );
 };
