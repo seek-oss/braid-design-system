@@ -1,10 +1,9 @@
 import { getCapHeight, precomputeValues } from '@capsizecss/core';
 
+import { px } from '../components/private/px';
 import { mapValues } from '../utils/mapValues';
 
 import type { BraidTokens, TextDefinition } from './tokenType';
-
-const px = (v: string | number) => `${v}px`;
 
 const fontSizeToCapHeight = (
   grid: number,

@@ -2,10 +2,9 @@ import { useMemo, useCallback } from 'react';
 
 import { vars } from '../../../entries/css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+import { px } from '../private/px';
 
 import * as styles from './Toast.css';
-
-const px = (v: string | number) => `${v}px`;
 
 const animationTimeout = 200;
 
@@ -14,6 +13,9 @@ const entranceTransition =
 const exitTransition = 'opacity 0.2s ease, height 0.2s ease';
 
 const visibleStackedToasts = 3;
+
+type LifecycleState = undefined | 'entered' | 'exiting';
+type TransitionType = 'move' | 'enter' | 'becoming-first';
 
 interface Transform {
   property: 'opacity' | 'transform' | 'scale' | 'height' | 'className';
@@ -83,11 +85,9 @@ const animate = (
   });
 };
 
-type toastState = undefined | 'entered' | 'exiting';
-
 export const useFlipList = (expanded: boolean) => {
   const refs = useMemo(() => new Map<string, HTMLElement | null>(), []);
-  const toastStates = useMemo(() => new Map<string, toastState>(), []);
+  const toastStates = useMemo(() => new Map<string, LifecycleState>(), []);
 
   useIsomorphicLayoutEffect(() => {
     const animations: Array<{
@@ -112,77 +112,91 @@ export const useFlipList = (expanded: boolean) => {
 
         const collapsedScale = position === 1 ? 0.9 : 0.8;
 
+        let animationState: TransitionType;
         if (position > 0) {
-          // Move animation for toasts that are not the first
-          animations.push({
-            element,
-            transition: entranceTransition,
-            transforms: [
-              {
-                property: 'height',
-                from: px(height),
-                to: expanded
-                  ? px(fullHeight)
-                  : `${
-                      position < visibleStackedToasts ? vars.space.small : '0px'
-                    }`,
-              },
-              {
-                property: 'transform',
-                from: transform,
-                to: expanded ? undefined : `scaleX(${collapsedScale})`,
-              },
-              {
-                property: 'opacity',
-                from: opacity,
-                to: position < visibleStackedToasts || expanded ? '1' : '0',
-              },
-              {
-                property: 'className',
-                from: expanded ? styles.collapsed : undefined,
-                to: expanded ? undefined : styles.collapsed,
-              },
-            ],
-          });
+          animationState = 'move';
         } else if (toastStates.get(toastKey) !== 'entered') {
-          // Enter animation
-          animations.push({
-            element,
-            transition: entranceTransition,
-            transforms: [
-              {
-                property: 'opacity',
-                from: '0',
-              },
-              {
-                property: 'height',
-                from: '0px',
-                to: px(fullHeight),
-              },
-            ],
-          });
+          animationState = 'enter';
         } else {
-          // Animation for existing toasts that are becoming the first
-          animations.push({
-            element,
-            transition: entranceTransition,
-            transforms: [
-              {
-                property: 'height',
-                from: px(height),
-                to: px(fullHeight),
-              },
-              {
-                property: 'transform',
-                from: transform,
-              },
-              {
-                property: 'className',
-                from: expanded ? styles.collapsed : undefined,
-                to: undefined,
-              },
-            ],
-          });
+          animationState = 'becoming-first';
+        }
+
+        switch (animationState) {
+          case 'move':
+            animations.push({
+              element,
+              transition: entranceTransition,
+              transforms: [
+                {
+                  property: 'height',
+                  from: px(height),
+                  to: expanded
+                    ? px(fullHeight)
+                    : `${
+                        position < visibleStackedToasts
+                          ? vars.space.small
+                          : '0px'
+                      }`,
+                },
+                {
+                  property: 'transform',
+                  from: transform,
+                  to: expanded ? undefined : `scaleX(${collapsedScale})`,
+                },
+                {
+                  property: 'opacity',
+                  from: opacity,
+                  to: position < visibleStackedToasts || expanded ? '1' : '0',
+                },
+                {
+                  property: 'className',
+                  from: expanded ? styles.collapsed : undefined,
+                  to: expanded ? undefined : styles.collapsed,
+                },
+              ],
+            });
+            break;
+
+          case 'enter':
+            animations.push({
+              element,
+              transition: entranceTransition,
+              transforms: [
+                {
+                  property: 'opacity',
+                  from: '0',
+                },
+                {
+                  property: 'height',
+                  from: '0px',
+                  to: px(fullHeight),
+                },
+              ],
+            });
+            break;
+
+          case 'becoming-first':
+            animations.push({
+              element,
+              transition: entranceTransition,
+              transforms: [
+                {
+                  property: 'height',
+                  from: px(height),
+                  to: px(fullHeight),
+                },
+                {
+                  property: 'transform',
+                  from: transform,
+                },
+                {
+                  property: 'className',
+                  from: expanded ? styles.collapsed : undefined,
+                  to: undefined,
+                },
+              ],
+            });
+            break;
         }
 
         toastStates.set(toastKey, 'entered');
