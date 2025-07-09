@@ -7,141 +7,124 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 const meta: Meta<typeof TextDropdown> = {
   title: 'Components/TextDropdown',
   component: TextDropdown,
+  decorators: [
+    (Story, { args }) => {
+      const [value, setValue] = useState(args.value);
+      return <Story args={{ ...args, value, onChange: setValue }} />;
+    },
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof TextDropdown>;
 
-const DefaultComponent = () => {
-  const [value, setValue] = useState('Developer');
-  return (
-    <Text>
-      <TextDropdown
-        label="Job Title"
-        onChange={setValue}
-        value={value}
-        options={['Developer', 'Designer', 'Product Manager']}
-      />
-    </Text>
-  );
-};
-
 export const Default: Story = {
-  render: () => <DefaultComponent />,
-};
-
-const WithIdentifyingValuesComponent = () => {
-  const [value, setValue] = useState(2000);
-  return (
+  name: 'Default',
+  args: {
+    value: 'Developer',
+    label: 'Job Title',
+    options: ['Developer', 'Designer', 'Product Manager'],
+  },
+  decorators: (Story) => (
     <Text>
-      <TextDropdown
-        label="Location"
-        onChange={setValue}
-        value={value}
-        options={[
-          {
-            text: 'Melbourne',
-            value: 3000,
-          },
-          {
-            text: 'Sydney',
-            value: 2000,
-          },
-          {
-            text: 'Brisbane',
-            value: 4000,
-          },
-        ]}
-      />
+      <Story />
     </Text>
-  );
+  ),
 };
 
 export const Withidentifyingvalues: Story = {
-  render: () => <WithIdentifyingValuesComponent />,
-};
-
-const WithinStrongTextComponent = () => {
-  const [value, setValue] = useState('Relevance');
-  return (
+  name: 'With identifying values',
+  args: {
+    value: 2000,
+    label: 'Location',
+    options: [
+      {
+        text: 'Melbourne',
+        value: 3000,
+      },
+      {
+        text: 'Sydney',
+        value: 2000,
+      },
+      {
+        text: 'Brisbane',
+        value: 4000,
+      },
+    ],
+  },
+  decorators: (Story) => (
     <Text>
-      Sort by{' '}
-      <Strong>
-        <TextDropdown
-          label="Sort order"
-          onChange={setValue}
-          value={value}
-          options={['Relevance', 'Keyword']}
-        />
-      </Strong>
+      <Story />
     </Text>
-  );
+  ),
 };
 
 export const Withinstrongtext: Story = {
-  render: () => <WithinStrongTextComponent />,
-};
-
-const VirtualTouchTargetComponent = () => {
-  const [value, setValue] = useState('Relevance');
-  return (
-    <Text
-      data={{
-        [debugTouchableAttrForDataProp]: '',
-      }}
-    >
-      Sort by{' '}
-      <TextDropdown
-        label="Sort order"
-        onChange={setValue}
-        value={value}
-        options={['Relevance', 'Keyword']}
-      />
-    </Text>
-  );
+  name: 'Within strong text',
+  args: {
+    value: 'Relevance',
+    label: 'Sort order',
+    options: ['Relevance', 'Keyword'],
+  },
+  decorators: [
+    (Story) => (
+      <Text>
+        Sort by{' '}
+        <Strong>
+          <Story />
+        </Strong>
+      </Text>
+    ),
+  ],
 };
 
 export const Virtualtouchtarget: Story = {
-  render: () => <VirtualTouchTargetComponent />,
-};
+  name: 'Virtual touch target',
+  args: {
+    value: 'Relevance',
+    label: 'Sort order',
+    options: ['Relevance', 'Keyword'],
+  },
 
-const WithinHeadingComponent = () => {
-  const [value, setValue] = useState('Sydney');
-  return (
-    <Heading level="2">
-      Jobs in{' '}
-      <TextDropdown
-        label="Location"
-        onChange={setValue}
-        value={value}
-        options={['Melbourne', 'Sydney', 'Brisbane']}
-      />
-    </Heading>
-  );
+  decorators: [
+    (Story) => (
+      <Text
+        data={{
+          [debugTouchableAttrForDataProp]: '',
+        }}
+      >
+        Sort by <Story />
+      </Text>
+    ),
+  ],
 };
 
 export const Withinaheading: Story = {
-  render: () => <WithinHeadingComponent />,
-};
-
-const TextDropdownOnBrandBackgroundComponent = () => {
-  const [value, setValue] = useState('Designer');
-  return (
-    <Text>
-      <TextDropdown
-        label="Job Title"
-        onChange={setValue}
-        value={value}
-        options={['Developer', 'Designer', 'Product Manager']}
-      />
-    </Text>
-  );
+  name: 'Within a heading',
+  args: {
+    value: 'Sydney',
+    label: 'Location',
+    options: ['Melbourne', 'Sydney', 'Brisbane'],
+  },
+  decorators: (Story) => (
+    <Heading level="2">
+      Jobs in <Story />
+    </Heading>
+  ),
 };
 
 export const TextDropdownonBrandBackground: Story = {
-  render: () => (
+  name: 'TextDropdown on brand background',
+  args: {
+    value: 'Designer',
+    label: 'Job Title',
+    options: ['Developer', 'Designer', 'Product Manager'],
+  },
+  decorators: (Story) => (
     <Box background="brand" padding="gutter">
-      <TextDropdownOnBrandBackgroundComponent />
+      <Text>
+        <Story />
+      </Text>
     </Box>
   ),
 };

@@ -100,5 +100,5 @@ export default [
         },
       ],
     },
-  }, // Lint non-project ts files, e.g. vitest and storybook config
+  },
 ];
