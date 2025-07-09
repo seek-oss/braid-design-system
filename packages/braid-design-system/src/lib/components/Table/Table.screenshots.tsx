@@ -19,7 +19,6 @@ import {
 } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
-// Sample data for our tables
 const data = [
   {
     column1: 'Sit',
@@ -255,13 +254,13 @@ export const VerticalAlignmentcenter: Story = {
         {data.map((row) => (
           <TableRow key={row.column1}>
             <TableCell>
-              <Stack space="small">
-                <Text>{row.column1}</Text>
-                <Text>{row.column1}</Text>
-              </Stack>
+              <Placeholder width="100%" height={70} />
             </TableCell>
             <TableCell>
-              <Text>{row.column2}</Text>
+              <Stack space="small">
+                <Text>{row.column2}</Text>
+                <Text>{row.column2}</Text>
+              </Stack>
             </TableCell>
             <TableCell>
               <Text>{row.column3}</Text>
@@ -294,13 +293,13 @@ export const VerticalAlignmenttop: Story = {
         {data.map((row) => (
           <TableRow key={row.column1}>
             <TableCell>
-              <Stack space="small">
-                <Text>{row.column1}</Text>
-                <Text>{row.column1}</Text>
-              </Stack>
+              <Placeholder width="100%" height={70} />
             </TableCell>
             <TableCell>
-              <Text>{row.column2}</Text>
+              <Stack space="small">
+                <Text>{row.column2}</Text>
+                <Text>{row.column2}</Text>
+              </Stack>
             </TableCell>
             <TableCell>
               <Text>{row.column3}</Text>
