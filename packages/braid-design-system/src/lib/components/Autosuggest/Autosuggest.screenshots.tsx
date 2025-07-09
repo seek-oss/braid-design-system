@@ -47,23 +47,14 @@ const meta = {
   component: Autosuggest,
   argTypes: {
     label: { control: 'text' },
-    id: { control: 'text' },
     disabled: { control: 'boolean' },
   },
   args: {
     value: { text: '' },
     label: 'I like to eat',
-    id: 'autosuggest_id',
     suggestions: filterSuggestions(makeSuggestions(defaultFruits)),
   },
-  decorators: [
-    WithAutosuggestState,
-    (Story) => (
-      <div style={{ padding: '1rem', maxWidth: '400px' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [WithAutosuggestState],
 } satisfies Meta<typeof Autosuggest>;
 
 export default meta;
@@ -83,7 +74,6 @@ export const StandardSuggestionsWithAutomaticSelection: Story = {
 
 export const GroupedSuggestions: Story = {
   args: {
-    id: 'autosuggest-grouped',
     suggestions: filterSuggestions([
       {
         label: 'Fruit',
@@ -194,7 +184,6 @@ export const AutosuggestWithNoVisualLabel: Story = {
 export const Contrast: Story = {
   args: {
     label: 'I like to eat',
-    id: 'autosuggest-contrast',
     suggestions: filterSuggestions(
       makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
     ),

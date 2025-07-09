@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React, { type ComponentProps } from 'react';
+import React from 'react';
 
 import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
 import { LayoutTest } from '../../utils/LayoutTest';
+import { heading, textSizeUntrimmed } from '../../css/typography.css';
 
-type TextSize = NonNullable<ComponentProps<typeof Text>['size']>;
-type HeadingLevel = NonNullable<ComponentProps<typeof Heading>['level']>;
-
-const textSizes: TextSize[] = ['xsmall', 'small', 'standard', 'large'];
-const headingLevels: HeadingLevel[] = ['1', '2', '3', '4'];
+const textSizes = Object.keys(textSizeUntrimmed) as Array<
+  keyof typeof textSizeUntrimmed
+>;
+const headingLevels = Object.keys(heading).sort() as Array<
+  keyof typeof heading
+>;
 
 const meta = {
   title: 'Components/Badge',

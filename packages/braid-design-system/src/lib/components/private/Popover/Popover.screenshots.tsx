@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { useRef } from 'react';
+import { ComponentProps, useRef } from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 

@@ -4,16 +4,12 @@ import { Toggle, Box, Tiles, Inline, Text, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-const Container = ({ children }: { children: React.ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
-
 const meta: Meta<typeof Toggle> = {
   title: 'Components/Toggle',
-  component: Toggle,
-  parameters: {
-    layout: 'padded',
+  args: {
+    onChange: () => {},
   },
+  component: Toggle,
 };
 
 export default meta;
@@ -23,7 +19,6 @@ export const ToggleOff: Story = {
   args: {
     on: false,
     label: 'Toggled off',
-    onChange: () => {},
   },
 };
 
@@ -31,7 +26,6 @@ export const ToggleOn: Story = {
   args: {
     on: true,
     label: 'Toggled on',
-    onChange: () => {},
   },
 };
 
@@ -40,7 +34,6 @@ export const SmallSize: Story = {
     on: true,
     size: 'small',
     label: 'Small',
-    onChange: () => {},
   },
 };
 
@@ -49,15 +42,7 @@ export const RightAlignedWithDefaultTogglePosition: Story = {
     on: true,
     align: 'right',
     label: 'Aligned right',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const JustifiedWithDefaultTogglePosition: Story = {
@@ -65,29 +50,19 @@ export const JustifiedWithDefaultTogglePosition: Story = {
     on: true,
     align: 'justify',
     label: 'Justified',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const SpaceBetweenTheLabelAndTogglePreserved: Story = {
-  render: () => (
-    <Container>
-      <Box display="flex">
-        <Toggle
-          on={true}
-          align="justify"
-          label="Justified"
-          onChange={() => {}}
-        />
-      </Box>
-    </Container>
+  args: {
+    align: 'justify',
+    on: true,
+    label: 'Justified',
+  },
+  decorators: (Story) => (
+    <Box display="flex">
+      <Story />
+    </Box>
   ),
 };
 
@@ -97,15 +72,7 @@ export const LeftAlignedWithLeadingTogglePosition: Story = {
     align: 'left',
     togglePosition: 'leading',
     label: 'Aligned left, leading toggle',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const LeftAlignedWithTrailingTogglePosition: Story = {
@@ -114,15 +81,7 @@ export const LeftAlignedWithTrailingTogglePosition: Story = {
     align: 'left',
     togglePosition: 'trailing',
     label: 'Aligned left, trailing toggle',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const JustifiedWithLeadingTogglePosition: Story = {
@@ -131,15 +90,7 @@ export const JustifiedWithLeadingTogglePosition: Story = {
     align: 'justify',
     togglePosition: 'leading',
     label: 'Justified, leading toggle',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const JustifiedWithTrailingTogglePosition: Story = {
@@ -148,15 +99,7 @@ export const JustifiedWithTrailingTogglePosition: Story = {
     align: 'justify',
     togglePosition: 'trailing',
     label: 'Justified, trailing toggle',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const RightAlignedWithLeadingTogglePosition: Story = {
@@ -165,15 +108,7 @@ export const RightAlignedWithLeadingTogglePosition: Story = {
     align: 'right',
     togglePosition: 'leading',
     label: 'Right aligned, leading toggle',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const RightAlignedWithTrailingTogglePosition: Story = {
@@ -182,15 +117,7 @@ export const RightAlignedWithTrailingTogglePosition: Story = {
     align: 'right',
     togglePosition: 'trailing',
     label: 'Right aligned, trailing toggle',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const WithALongLabel: Story = {
@@ -198,36 +125,33 @@ export const WithALongLabel: Story = {
     on: true,
     label:
       'The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
-    onChange: () => {},
   },
-  decorators: [
-    (Story) => (
-      <Container>
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const WithInlineTextStandardSize: Story = {
-  render: () => (
-    <Container>
-      <Inline space="xsmall">
-        <Toggle on={true} label="Toggle" onChange={() => {}} />
-        <Text>Inline text</Text>
-      </Inline>
-    </Container>
+  args: {
+    on: true,
+    label: 'Toggle',
+  },
+  decorators: (Story) => (
+    <Inline space="xsmall">
+      <Story />
+      <Text>Inline text</Text>
+    </Inline>
   ),
 };
 
 export const WithInlineTextSmallSize: Story = {
-  render: () => (
-    <Container>
-      <Inline space="xsmall">
-        <Toggle on={true} label="Toggle" onChange={() => {}} size="small" />
-        <Text size="small">Inline text</Text>
-      </Inline>
-    </Container>
+  args: {
+    on: true,
+    label: 'Toggle',
+    size: 'small',
+  },
+  decorators: (Story) => (
+    <Inline space="xsmall">
+      <Story />
+      <Text size="small">Inline text</Text>
+    </Inline>
   ),
 };
 
@@ -254,13 +178,13 @@ export const Contrast: Story = {
 };
 
 export const TestShouldBeLeftAlignedInACenteredStack: Story = {
-  render: () => (
+  args: {
+    on: true,
+    label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  decorators: (Story) => (
     <Stack space="large" align="center">
-      <Toggle
-        on={true}
-        label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales hendrerit nulla."
-        onChange={() => {}}
-      />
+      <Story />
     </Stack>
   ),
 };

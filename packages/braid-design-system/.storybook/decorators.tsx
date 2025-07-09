@@ -12,20 +12,14 @@ export const withTheme: Decorator = (Story, context) => {
   const nonDarkThemeName = themeName.replace('Dark', '');
   const isDark = themeName.includes('Dark');
 
-  let theme = themes[nonDarkThemeName];
+  const theme = themes[nonDarkThemeName];
 
   if (!theme) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Theme "${nonDarkThemeName}" not found, using "apac" theme instead.`,
-    );
-    theme = themes.apac;
+    throw new Error(`Theme not found: "{nonDarkThemeName}".`);
   }
 
-  if (isDark && typeof document !== 'undefined') {
-    document.documentElement.classList.add(darkMode);
-  } else if (typeof document !== 'undefined') {
-    document.documentElement.classList.remove(darkMode);
+  if (typeof document !== 'undefined') {
+    document.documentElement.classList.toggle(darkMode, isDark);
   }
 
   const styleContent = `

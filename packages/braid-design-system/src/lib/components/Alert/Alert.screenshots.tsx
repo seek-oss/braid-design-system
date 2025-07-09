@@ -17,8 +17,8 @@ export default meta;
 
 const AlertContent = ({ tone = 'info' }: { tone?: AlertProps['tone'] }) => (
   <Text>
-    This is a{tone === 'info' && 'n'} {tone || 'important'} piece of
-    information.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in risus
+    ac lorem laoreet porta.
   </Text>
 );
 
@@ -53,7 +53,9 @@ export const Dismissiblealertvirtualtouchtarget: Story = {
   name: 'Dismissible alert (virtual touch target)',
   args: {
     children: <AlertContent />,
-    [debugTouchableAttrForDataProp]: '',
+    data: {
+      [debugTouchableAttrForDataProp]: '',
+    },
     closeLabel: 'Close info alert',
     tone: 'info',
     onClose: () => {},
