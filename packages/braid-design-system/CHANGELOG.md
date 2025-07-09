@@ -1,5 +1,17 @@
 # braid-design-system
 
+## 33.10.1
+
+### Patch Changes
+
+- Ensure focus rings are consistent across components ([#1828](https://github.com/seek-oss/braid-design-system/pull/1828))
+
+  Aligns a few edge cases where focus rings were not consistent due to elements or aria roles not captured by the reset.
+
+- **Table:** Ensure `alignY` prop is applied consistently across browsers ([#1832](https://github.com/seek-oss/braid-design-system/pull/1832))
+
+  Fixes an issue where setting the `alignY` prop to `top` would not apply the `vertical-align` CSS property — instead falling through to our CSS reset which sets `vertical-align: baseline` (rendering inconsistently across browsers).
+
 ## 33.10.0
 
 ### Minor Changes
