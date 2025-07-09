@@ -4,38 +4,38 @@ import React from 'react';
 import { Alert, Text, Stack, TextLink, List, Box } from '../';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-import type { AlertProps } from './Alert';
-
 type Story = StoryObj<typeof Alert>;
 
 const meta = {
   title: 'Components/Alert',
   component: Alert,
+  args: {
+    children: (
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in
+        risus ac lorem laoreet porta.
+      </Text>
+    ),
+  },
 } satisfies Meta<typeof Alert>;
 
 export default meta;
 
-const AlertContent = ({ tone = 'info' }: { tone?: AlertProps['tone'] }) => (
-  <Text>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in risus
-    ac lorem laoreet porta.
-  </Text>
-);
-
 export const InfoAlert: Story = {
   name: 'Info Alert',
   args: {
-    children: <AlertContent />,
+    tone: 'info',
   },
 };
 
 export const InfoAlertonasurface: Story = {
   name: 'Info Alert on a surface',
-  render: () => (
+  args: {
+    tone: 'info',
+  },
+  decorators: (Story) => (
     <Box padding="medium" background="surface">
-      <Alert tone="info">
-        <AlertContent />
-      </Alert>
+      <Story />
     </Box>
   ),
 };
@@ -43,7 +43,6 @@ export const InfoAlertonasurface: Story = {
 export const Dismissiblealert: Story = {
   name: 'Dismissible alert',
   args: {
-    children: <AlertContent />,
     onClose: () => {},
     closeLabel: 'Close info alert',
   },
@@ -52,7 +51,6 @@ export const Dismissiblealert: Story = {
 export const Dismissiblealertvirtualtouchtarget: Story = {
   name: 'Dismissible alert (virtual touch target)',
   args: {
-    children: <AlertContent />,
     data: {
       [debugTouchableAttrForDataProp]: '',
     },
@@ -86,40 +84,36 @@ export const PromoteAlert: Story = {
   name: 'Promote Alert',
   args: {
     tone: 'promote',
-    children: <AlertContent tone="promote" />,
   },
 };
 
 export const PromoteAlertonasurface: Story = {
   name: 'Promote Alert on a surface',
-  render: () => (
-    <Box padding="medium" background="surface">
-      <Alert tone="promote">
-        <Text>This is a promoted piece of information.</Text>
-      </Alert>
-    </Box>
-  ),
   args: {
     tone: 'promote',
-    children: <AlertContent tone="promote" />,
   },
+  decorators: (Story) => (
+    <Box padding="medium" background="surface">
+      <Story />
+    </Box>
+  ),
 };
 
 export const CautionAlert: Story = {
   name: 'Caution Alert',
   args: {
     tone: 'caution',
-    children: <AlertContent tone="caution" />,
   },
 };
 
 export const CautionAlertonasurface: Story = {
   name: 'Caution Alert on a surface',
-  render: () => (
+  args: {
+    tone: 'caution',
+  },
+  decorators: (Story) => (
     <Box padding="medium" background="surface">
-      <Alert tone="caution">
-        <AlertContent tone="caution" />
-      </Alert>
+      <Story />
     </Box>
   ),
 };
@@ -128,17 +122,17 @@ export const CriticalAlert: Story = {
   name: 'Critical Alert',
   args: {
     tone: 'critical',
-    children: <AlertContent tone="critical" />,
   },
 };
 
 export const CriticalAlertonasurface: Story = {
   name: 'Critical Alert on a surface',
-  render: () => (
+  args: {
+    tone: 'critical',
+  },
+  decorators: (Story) => (
     <Box padding="medium" background="surface">
-      <Alert tone="critical">
-        <AlertContent tone="critical" />
-      </Alert>
+      <Story />
     </Box>
   ),
 };
@@ -147,31 +141,26 @@ export const PositiveAlert: Story = {
   name: 'Positive Alert',
   args: {
     tone: 'positive',
-    children: <AlertContent tone="positive" />,
   },
 };
 
 export const PositiveAlertonasurface: Story = {
   name: 'Positive Alert on a surface',
-  render: () => (
+  args: {
+    tone: 'positive',
+  },
+  decorators: (Story) => (
     <Box padding="medium" background="surface">
-      <Alert tone="positive">
-        <AlertContent tone="positive" />
-      </Alert>
+      <Story />
     </Box>
   ),
 };
 
 export const TestshouldbeleftalignedinacenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
-  render: () => (
+  decorators: (Story) => (
     <Stack space="large" align="center">
-      <Alert tone="positive">
-        <Text>
-          Enim elit eu et culpa non esse voluptate labore in ea. Incididunt
-          irure aliquip cillum occaecat irure.
-        </Text>
-      </Alert>
+      <Story />
     </Stack>
   ),
 };

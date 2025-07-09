@@ -5,14 +5,6 @@ import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Bleed, Box, Stack, Text } from '../';
 
-const BleedBox = () => (
-  <Box
-    background="criticalLight"
-    boxShadow="borderCritical"
-    style={{ height: 150 }}
-  />
-);
-
 const meta = {
   title: 'Components/Bleed',
   component: Bleed,
@@ -119,7 +111,13 @@ const meta = {
     component: { control: 'text' },
   },
   args: {
-    children: <BleedBox />,
+    children: (
+      <Box
+        background="criticalLight"
+        boxShadow="borderCritical"
+        style={{ height: 150 }}
+      />
+    ),
   },
   decorators: (Story) => (
     <Box padding="xlarge" boxShadow="borderNeutral">

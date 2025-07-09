@@ -47,7 +47,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  render: function Render(args) {
+  render: (args) => {
     const [{ checked }, updateArgs] = useArgs();
     const handleChange = () => updateArgs({ checked: !checked });
     return <Checkbox {...args} checked={checked} onChange={handleChange} />;
@@ -58,7 +58,7 @@ export const Small: Story = {
   args: {
     size: 'small',
   },
-  render: function Render(args) {
+  render: (args) => {
     const [{ checked }, updateArgs] = useArgs();
     const handleChange = () => updateArgs({ checked: !checked });
     return <Checkbox {...args} checked={checked} onChange={handleChange} />;
@@ -176,7 +176,7 @@ export const Withnestedcontentvisibleonlywhenchecked: Story = {
     checked: true,
     children: <Text>This text is visible when the checkbox is checked.</Text>,
   },
-  render: function Render(args) {
+  render: (args) => {
     const [{ checked }, updateArgs] = useArgs();
     const handleChange = () => updateArgs({ checked: !checked });
     return <Checkbox {...args} checked={checked} onChange={handleChange} />;
@@ -214,7 +214,7 @@ export const Withnestedcontentamessageanddescription: Story = {
 
 export const Virtualtouchtarget: Story = {
   name: 'Virtual touch target',
-  render: function Render(args) {
+  render: (args) => {
     const [{ checked }, updateArgs] = useArgs();
     const handleChange = () => updateArgs({ checked: !checked });
 

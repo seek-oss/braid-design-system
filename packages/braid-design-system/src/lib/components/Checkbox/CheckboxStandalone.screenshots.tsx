@@ -33,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   name: 'Standard',
-  render: function StandardStory(args) {
+  render: (args) => {
     const [checked, setChecked] = useState(false);
     return (
       <CheckboxStandalone
@@ -47,7 +47,7 @@ export const Standard: Story = {
 
 export const Small: Story = {
   name: 'Small',
-  render: function SmallStory(args) {
+  render: (args) => {
     const [checked, setChecked] = useState(false);
     return (
       <CheckboxStandalone
@@ -76,7 +76,7 @@ export const Mixedstate: Story = {
 
 export const Disabled: Story = {
   name: 'Disabled',
-  render: function DisabledStory(args) {
+  render: (args) => {
     return (
       <Stack space="gutter">
         <CheckboxStandalone
@@ -132,7 +132,7 @@ export const Critical: Story = {
 
 export const Virtualtouchtarget: Story = {
   name: 'Virtual touch target',
-  render: function VirtualTouchTargetStory(args) {
+  render: (args) => {
     const [checked, setChecked] = useState(false);
     return (
       <Inline
@@ -160,7 +160,7 @@ export const Virtualtouchtarget: Story = {
 
 export const Textalignment: Story = {
   name: 'Text alignment',
-  render: function TextAlignmentStory(args) {
+  render: (args) => {
     return (
       <Stack space="medium">
         {checkboxSizes.map((size) => (
@@ -184,7 +184,7 @@ export const Textalignment: Story = {
 
 export const Textalignmentwithwrappinglines: Story = {
   name: 'Text alignment with wrapping lines',
-  render: function TextAlignmentWrappingStory(args) {
+  render: (args) => {
     return (
       <Box
         style={{
@@ -216,7 +216,7 @@ export const Textalignmentwithwrappinglines: Story = {
 
 export const Contrast: Story = {
   name: 'Contrast',
-  render: function ContrastStory(args) {
+  render: (args) => {
     return (
       <Box maxWidth="xsmall">
         <BackgroundContrastTest>

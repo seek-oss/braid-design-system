@@ -23,7 +23,7 @@ export default meta;
 
 export const DefaultAccordion = {
   name: 'Default Accordion',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -57,7 +57,7 @@ export const DefaultAccordion = {
 
 export const DefaultAccordionwithoutdividers = {
   name: 'Default Accordion without dividers',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -90,7 +90,7 @@ export const DefaultAccordionwithoutdividers = {
 };
 export const DefaultAccordionwithcustomspace = {
   name: 'Default Accordion with custom space',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -124,7 +124,7 @@ export const DefaultAccordionwithcustomspace = {
 
 export const StandardsecondaryAccordion = {
   name: 'Standard secondary Accordion',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -158,7 +158,7 @@ export const StandardsecondaryAccordion = {
 
 export const StandardsecondaryAccordionwithoutdividers = {
   name: 'Standard secondary Accordion without dividers',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -192,7 +192,7 @@ export const StandardsecondaryAccordionwithoutdividers = {
 
 export const SmallsecondaryAccordion = {
   name: 'Small secondary Accordion',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -226,7 +226,7 @@ export const SmallsecondaryAccordion = {
 
 export const SmallsecondaryAccordionwithoutdividers = {
   name: 'Small secondary Accordion without dividers',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -260,7 +260,7 @@ export const SmallsecondaryAccordionwithoutdividers = {
 
 export const XsmallsecondaryAccordion = {
   name: 'Xsmall secondary Accordion',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -294,7 +294,7 @@ export const XsmallsecondaryAccordion = {
 
 export const XsmallsecondaryAccordionwithoutdividers = {
   name: 'Xsmall secondary Accordion without dividers',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);
@@ -328,7 +328,7 @@ export const XsmallsecondaryAccordionwithoutdividers = {
 
 export const Accordionregularweight = {
   name: 'Accordion regular weight',
-  render: function Render() {
+  render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);
     const [expanded3, setExpanded3] = useState(false);

@@ -24,7 +24,6 @@ const meta = {
       options: ['mobile', 'tablet', 'desktop'],
     },
     height: { control: 'select', options: ['full', 'content'] },
-    children: { control: 'text' },
   },
   args: {
     children: <Placeholder height={100} />,
@@ -97,36 +96,45 @@ export const Tonerounded: Story = {
 
 export const Heightfull: Story = {
   name: 'Height full',
-  render: () => (
+  args: {
+    height: 'full',
+    children: <Placeholder height={60} />,
+  },
+  decorators: (Story) => (
     <Box style={{ height: 300 }}>
-      <Card height="full">
-        <Placeholder height={60} />
-      </Card>
+      <Story />
     </Box>
   ),
 };
 
 export const Heightcontentdefault: Story = {
   name: 'Height content (default)',
-  render: () => (
+  args: {
+    height: 'content',
+    children: <Placeholder height={60} />,
+  },
+  decorators: (Story) => (
     <Box style={{ height: 300 }}>
-      <Card height="content">
-        <Placeholder height={60} />
-      </Card>
+      <Story />
     </Box>
   ),
 };
 
 export const TestshouldbeleftalignedinacenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
-  render: () => (
+  args: {
+    height: 'content',
+    rounded: true,
+    children: (
+      <Text>
+        Enim elit eu et culpa non esse voluptate labore in ea. Incididunt irure
+        aliquip cillum occaecat irure.
+      </Text>
+    ),
+  },
+  decorators: (Story) => (
     <Stack space="large" align="center">
-      <Card height="content">
-        <Text>
-          Enim elit eu et culpa non esse voluptate labore in ea. Incididunt
-          irure aliquip cillum occaecat irure.
-        </Text>
-      </Card>
+      <Story />
     </Stack>
   ),
 };
