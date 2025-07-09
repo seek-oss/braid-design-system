@@ -11,10 +11,18 @@ const meta = {
   title: 'Components/Tag',
   component: Tag,
   parameters: {
+    background: 'surface',
     chromatic: {
       modes: makeBraidModes({ viewports: ['tablet'] }),
     },
   },
+  decorators: (Story, { parameters }) => (
+    <Box
+      {...(parameters.background ? { background: parameters.background } : {})}
+    >
+      <Story />
+    </Box>
+  ),
 } satisfies Meta<typeof Tag>;
 
 export default meta;
@@ -129,6 +137,9 @@ export const Virtualtouchtarget: Story = {
 
 export const Layout: Story = {
   name: 'Layout',
+  parameters: {
+    background: false,
+  },
   render: () => (
     <Box maxWidth="xsmall">
       <LayoutTest>

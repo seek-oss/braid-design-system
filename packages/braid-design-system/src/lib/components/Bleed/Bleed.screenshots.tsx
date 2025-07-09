@@ -121,6 +121,21 @@ const meta = {
   args: {
     children: <BleedBox />,
   },
+  decorators: (Story) => (
+    <Box padding="xlarge" boxShadow="borderNeutral">
+      <Box position="relative">
+        <Story />
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          boxShadow="borderNeutral"
+        />
+      </Box>
+    </Box>
+  ),
 } satisfies Meta<typeof Bleed>;
 
 export default meta;

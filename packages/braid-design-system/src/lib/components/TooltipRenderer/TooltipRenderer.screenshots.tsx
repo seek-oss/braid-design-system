@@ -9,9 +9,6 @@ const triggerStyles = { width: 50, height: 20, background: 'pink' } as const;
 const meta: Meta<typeof TooltipRenderer> = {
   title: 'Components/TooltipRenderer',
   component: TooltipRenderer,
-  parameters: {
-    layout: 'padded',
-  },
   decorators: [
     (Story) => (
       <StaticTooltipProvider>

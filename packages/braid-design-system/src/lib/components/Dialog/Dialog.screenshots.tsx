@@ -4,6 +4,8 @@ import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Inline, Stack, Box, Text } from '../';
 import { Placeholder } from '../../playroom/components';
+import * as styles from '../private/Modal/Modal.css';
+import { externalGutter } from '../private/Modal/ModalExternalGutter';
 
 import { Dialog, DialogContent } from './Dialog';
 
@@ -15,6 +17,19 @@ const meta = {
       modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
     },
   },
+  decorators: (Story) => (
+    <Box>
+      <Box position="absolute" padding="small">
+        <Placeholder height={100} width="100%" label="Page content" />
+      </Box>
+      <Box position="relative">
+        <Box position="absolute" inset={0} className={styles.backdrop} />
+        <Box position="relative" zIndex="modal" padding={externalGutter}>
+          <Story />
+        </Box>
+      </Box>
+    </Box>
+  ),
 } satisfies Meta<typeof Dialog>;
 
 export default meta;

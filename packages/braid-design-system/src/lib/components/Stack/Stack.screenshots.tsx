@@ -4,7 +4,6 @@ import { Fragment } from 'react';
 import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Box, Stack, Hidden, Heading, Text, Strong } from '../';
-import { spaces } from '../../utils/docsHelpers';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const meta = {
@@ -29,34 +28,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof Stack>;
-
-// Create a story for each space value
-const spaceStories = spaces.reduce(
-  (acc, space) => {
-    acc[`Space${space.charAt(0).toUpperCase() + space.slice(1)}`] = {
-      name: `Space: ${space}`,
-      args: {
-        space,
-        children: [
-          <Placeholder key="1" height={40} />,
-          <Placeholder key="2" height={40} />,
-          <Placeholder key="3" height={40} />,
-        ],
-      },
-    };
-    return acc;
-  },
-  {} as Record<string, Story>,
-);
-
-export const SpaceXxsmall = spaceStories.SpaceXxsmall;
-export const SpaceXsmall = spaceStories.SpaceXsmall;
-export const SpaceSmall = spaceStories.SpaceSmall;
-export const SpaceMedium = spaceStories.SpaceMedium;
-export const SpaceLarge = spaceStories.SpaceLarge;
-export const SpaceXlarge = spaceStories.SpaceXlarge;
-export const SpaceXxlarge = spaceStories.SpaceXxlarge;
-export const SpaceGutter = spaceStories.SpaceGutter;
 
 export const AlignToCenter: Story = {
   name: 'Align to center',

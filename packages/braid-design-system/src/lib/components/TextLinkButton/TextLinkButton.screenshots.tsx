@@ -21,7 +21,8 @@ export const Default: Story = {
   ),
 };
 
-export const Weightweak: Story = {
+export const WeightWeak: Story = {
+  name: 'Weight weak',
   render: () => (
     <Text>
       The link in this sentence{' '}
@@ -33,7 +34,8 @@ export const Weightweak: Story = {
   ),
 };
 
-export const Withicon: Story = {
+export const WithIcon: Story = {
+  name: 'With icon',
   render: () => (
     <Text>
       A sentence with a{' '}
@@ -42,7 +44,8 @@ export const Withicon: Story = {
   ),
 };
 
-export const Withatrailingicon: Story = {
+export const WithATrailingIcon: Story = {
+  name: 'With a trailing icon',
   render: () => (
     <Text>
       A sentence with an icon trailing the{' '}
@@ -54,7 +57,8 @@ export const Withatrailingicon: Story = {
   ),
 };
 
-export const Withiconandweightweak: Story = {
+export const WithIconAndWeightWeak: Story = {
+  name: 'With icon and weight weak',
   render: () => (
     <Text>
       A sentence with a{' '}
@@ -66,7 +70,8 @@ export const Withiconandweightweak: Story = {
   ),
 };
 
-export const Withatrailingiconandweightweak: Story = {
+export const WithATrailingIconAndWeightWeak: Story = {
+  name: 'With a trailing icon and weight weak',
   render: () => (
     <Text>
       A sentence with an icon trailing the{' '}

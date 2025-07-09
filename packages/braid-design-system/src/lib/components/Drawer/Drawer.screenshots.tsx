@@ -8,6 +8,7 @@ import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 
 import { Drawer, DrawerContent } from './Drawer';
+import * as styles from '../private/Modal/Modal.css';
 
 const meta = {
   title: 'Components/Drawer',
@@ -17,6 +18,19 @@ const meta = {
       modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
     },
   },
+  decorators: (Story) => (
+    <Box overflow="hidden">
+      <Box position="absolute" padding="small">
+        <Placeholder height={100} width="100%" label="Page content" />
+      </Box>
+      <Box position="relative">
+        <Box position="absolute" inset={0} className={styles.backdrop} />
+        <Box position="relative" zIndex="modal">
+          <Story />
+        </Box>
+      </Box>
+    </Box>
+  ),
 } satisfies Meta<typeof Drawer>;
 
 export default meta;

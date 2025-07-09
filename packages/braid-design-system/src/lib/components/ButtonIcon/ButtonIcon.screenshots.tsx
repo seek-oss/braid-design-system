@@ -20,6 +20,16 @@ const meta = {
     label: { control: 'text' },
     id: { control: 'text' },
   },
+  parameters: {
+    background: 'surface',
+  },
+  decorators: (Story, { parameters }) => (
+    <Box
+      {...(parameters.background ? { background: parameters.background } : {})}
+    >
+      <Story />
+    </Box>
+  ),
 } satisfies Meta<typeof ButtonIcon>;
 
 export default meta;
@@ -137,6 +147,9 @@ export const ToneformAccent: Story = {
 
 export const Virtualtouchtarget: Story = {
   name: 'Virtual touch target',
+  parameters: {
+    background: false,
+  },
   render: () => (
     <Stack
       space="large"
@@ -265,6 +278,9 @@ export const Contrast: Story = {
 
 export const Layout: Story = {
   name: 'Layout',
+  parameters: {
+    background: false,
+  },
   render: () => (
     <LayoutTest>
       <ButtonIcon icon={<IconBookmark />} label="Bookmark" />

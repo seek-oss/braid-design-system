@@ -20,7 +20,7 @@ export default meta;
 
 export const Criticaltoast = {
   name: 'Critical toast',
-  render: () => (
+  render: () => {
     <Toast
       tone="critical"
       message="Critical toast"
@@ -28,8 +28,8 @@ export const Criticaltoast = {
       toastKey="n/a"
       dedupeKey="n/a"
       shouldRemove={false}
-    />
-  ),
+    />;
+  },
 };
 
 export const Criticaltoastwactions = {
@@ -217,7 +217,6 @@ export const Neutraltoastwdescriptionsandicon = {
         label: 'Action',
         onClick: () => {},
       }}
-      //
       onClose={() => {}}
       toastKey="n/a"
       dedupeKey="n/a"

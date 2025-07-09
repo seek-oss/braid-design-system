@@ -53,7 +53,10 @@ export default [
   },
   ...gitIgnoresFromWorkspaces,
   ...eslintConfigSeek,
-  ...storybook.configs['flat/recommended'],
+  {
+    files: ['**/*.screenshots.@(ts|tsx|js|jsx|mjs|cjs)'],
+    extends: [storybook.configs['flat/recommended']],
+  },
   {
     rules: {
       'import-x/no-cycle': 'warn',

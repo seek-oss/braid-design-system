@@ -42,29 +42,3 @@ export const StandardBoxRenderer: Story = {
     </BoxRenderer>
   ),
 };
-
-export const WithDivComponent: Story = {
-  name: 'With Div Component',
-  render: () => (
-    <BoxRenderer component="div" background="neutral" padding="large">
-      {(className) => (
-        <div className={className}>
-          <Text baseline={false}>Content rendered inside a div</Text>
-        </div>
-      )}
-    </BoxRenderer>
-  ),
-};
-
-export const WithNoPadding: Story = {
-  name: 'With No Padding',
-  render: () => (
-    <BoxRenderer component="section" background="brand" padding="none">
-      {(className) => (
-        <section className={className}>
-          <Text baseline={false}>Content without padding</Text>
-        </section>
-      )}
-    </BoxRenderer>
-  ),
-};

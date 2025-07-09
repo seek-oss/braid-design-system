@@ -22,6 +22,7 @@ export default meta;
 type Story = StoryObj<typeof Tiles>;
 
 export const OneColumn: Story = {
+  name: '1 column',
   render: () => (
     <Tiles space="small" columns={1}>
       {[...new Array(1 * Number(exampleRows))].map((_, i) => (
@@ -32,6 +33,7 @@ export const OneColumn: Story = {
 };
 
 export const TwoColumns: Story = {
+  name: '2 columns',
   render: () => (
     <Tiles space="small" columns={2}>
       {[...new Array(2 * exampleRows)].map((_, i) => (
@@ -42,6 +44,7 @@ export const TwoColumns: Story = {
 };
 
 export const ThreeColumns: Story = {
+  name: '3 columns',
   render: () => (
     <Tiles space="small" columns={3}>
       {[...new Array(3 * exampleRows)].map((_, i) => (
@@ -52,6 +55,7 @@ export const ThreeColumns: Story = {
 };
 
 export const FourColumns: Story = {
+  name: '4 columns',
   render: () => (
     <Tiles space="small" columns={4}>
       {[...new Array(4 * exampleRows)].map((_, i) => (
@@ -62,6 +66,7 @@ export const FourColumns: Story = {
 };
 
 export const FiveColumns: Story = {
+  name: '5 columns',
   render: () => (
     <Tiles space="small" columns={5}>
       {[...new Array(5 * exampleRows)].map((_, i) => (
@@ -72,6 +77,7 @@ export const FiveColumns: Story = {
 };
 
 export const SixColumns: Story = {
+  name: '6 columns',
   render: () => (
     <Tiles space="small" columns={6}>
       {[...new Array(6 * exampleRows)].map((_, i) => (
@@ -82,6 +88,7 @@ export const SixColumns: Story = {
 };
 
 export const ResponsiveColumnsEg1OnMobile4FromTabletUpwards: Story = {
+  name: 'Responsive columns (e.g. 1 on mobile, 4 from tablet upwards',
   render: () => (
     <Tiles space="xsmall" columns={[1, 4]}>
       {[...new Array(4 * exampleRows)].map((_, i) => (
@@ -93,6 +100,7 @@ export const ResponsiveColumnsEg1OnMobile4FromTabletUpwards: Story = {
 
 export const TestTruncationShouldBeVisibleOnBothTilesBelowAsWellAsBothTilesBeingEquallySized: Story =
   {
+    name: 'Test - truncation should be visible on both tiles below, as well as both tiles being equally sized',
     render: () => (
       <Tiles space="small" columns={2}>
         <Box

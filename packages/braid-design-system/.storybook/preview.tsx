@@ -42,7 +42,7 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    theme: 'apac',
+    theme: 'seekJobs',
   },
 };
 
