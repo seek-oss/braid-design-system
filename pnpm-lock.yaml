@@ -280,8 +280,8 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       html-validate:
-        specifier: ^9.7.0
-        version: 9.7.0(jest-diff@30.0.4)(jest-snapshot@30.0.4)(jest@30.0.4(@types/node@22.16.0)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.21.5)))(vitest@3.2.4(@types/node@22.16.0)(jiti@2.4.2)(jsdom@26.1.0)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
+        specifier: ^9.7.1
+        version: 9.7.1(jest-diff@30.0.4)(jest-snapshot@30.0.4)(jest@30.0.4(@types/node@22.16.0)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.21.5)))(vitest@3.2.4(@types/node@22.16.0)(jiti@2.4.2)(jsdom@26.1.0)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0))
       playroom:
         specifier: 0.44.0
         version: 0.44.0(@swc/core@1.12.1)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5407,8 +5407,8 @@ packages:
     peerDependencies:
       react: ^0.13.0 || ^0.14.0 || >=15
 
-  html-validate@9.7.0:
-    resolution: {integrity: sha512-PsNv28gwAY5h+yvLScjgC94ErWVl88qYlu/uZp0hRETdKcO2a+lvwi4kpxNYodhDLmwHlZZ1NhMGNeqZhSybmQ==}
+  html-validate@9.7.1:
+    resolution: {integrity: sha512-sOCmfMGrSwax20SG2s+4iC8WqsE7JqncN6kh+YFwrb/gvP2VYN8WEnD4PIrnKBIeRf9ju8BGi50NdpHx9UNS9w==}
     engines: {node: ^18.19.0 || >= 20.6.0}
     hasBin: true
     peerDependencies:
@@ -15273,7 +15273,7 @@ snapshots:
       lodash.camelcase: 4.3.0
       react: 18.3.1
 
-  html-validate@9.7.0(jest-diff@30.0.4)(jest-snapshot@30.0.4)(jest@30.0.4(@types/node@22.16.0)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.21.5)))(vitest@3.2.4(@types/node@22.16.0)(jiti@2.4.2)(jsdom@26.1.0)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)):
+  html-validate@9.7.1(jest-diff@30.0.4)(jest-snapshot@30.0.4)(jest@30.0.4(@types/node@22.16.0)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.21.5)))(vitest@3.2.4(@types/node@22.16.0)(jiti@2.4.2)(jsdom@26.1.0)(terser@5.42.0)(tsx@4.20.3)(yaml@2.8.0)):
     dependencies:
       '@html-validate/stylish': 4.3.0
       '@sidvind/better-ajv-errors': 4.0.0(ajv@8.17.1)

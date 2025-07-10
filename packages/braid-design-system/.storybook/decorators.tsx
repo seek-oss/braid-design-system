@@ -5,6 +5,8 @@ import { BraidProvider, ToastProvider } from '../src/lib/components';
 import { PlayroomStateProvider } from '../src/lib/playroom/playroomState';
 import * as themes from '../src/lib/themes';
 
+import { Artboard } from './Artboard';
+
 import { darkMode } from '../src/lib/css/atoms/sprinkles.css';
 
 export const withTheme: Decorator = (Story, context) => {
@@ -12,7 +14,7 @@ export const withTheme: Decorator = (Story, context) => {
   const nonDarkThemeName = themeName.replace('Dark', '');
   const isDark = themeName.includes('Dark');
 
-  const theme = themes[nonDarkThemeName];
+  const theme = themes[nonDarkThemeName as keyof typeof themes];
 
   if (!theme) {
     throw new Error(`Theme not found: "{nonDarkThemeName}".`);
@@ -22,36 +24,15 @@ export const withTheme: Decorator = (Story, context) => {
     document.documentElement.classList.toggle(darkMode, isDark);
   }
 
-  const styleContent = `
-    .noAnimation * {
-      animation-delay: -0.0001s !important;
-      animation-play-state: paused !important;
-      animation-duration: 0s !important;
-      animation-fill-mode: none !important;
-      transition-delay: 0s !important;
-      transition-duration: 0s !important;
-    }
-    .artboard {
-      --deepColor: ${isDark ? `rgba(255, 255, 255, .1)` : `rgba(0, 0, 0, .05)`};
-      --cubeSize: 12px;
-      background-color: ${isDark ? `black` : `white`};
-      background-image: linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor)),
-        linear-gradient(45deg, var(--deepColor) 25%, transparent 25%, transparent 75%, var(--deepColor) 75%, var(--deepColor));
-      background-size: calc(var(--cubeSize) * 2) calc(var(--cubeSize) * 2);
-      background-position: 0 0, var(--cubeSize) var(--cubeSize);
-    }
-  `;
-
   return (
     <BrowserRouter>
       <BraidProvider theme={theme}>
         <ToastProvider>
-          <style type="text/css">{styleContent}</style>
-          <div className="noAnimation artboard">
+          <Artboard darkMode={isDark}>
             <PlayroomStateProvider>
               <Story />
             </PlayroomStateProvider>
-          </div>
+          </Artboard>
         </ToastProvider>
       </BraidProvider>
     </BrowserRouter>
