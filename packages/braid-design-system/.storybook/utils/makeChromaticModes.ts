@@ -10,7 +10,7 @@ type MakeModeOptions<T, V> = {
   root?: boolean;
   /**
    * List of theme names.
-   * @example ['seek', 'seekDark']
+   * @example ['seekJobs', 'seekJobsDark']
    */
   themes?: T[];
   /**
