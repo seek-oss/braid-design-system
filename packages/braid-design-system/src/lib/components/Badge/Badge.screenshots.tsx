@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
 import { LayoutTest } from '../../utils/LayoutTest';
+
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 
 const textSizes = Object.keys(textSizeUntrimmed) as Array<
@@ -48,7 +48,6 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 
 export const RegularBadge: Story = {
-  name: 'Regular Badge',
   args: {
     tone: 'positive',
     children: 'Regular',
@@ -56,7 +55,6 @@ export const RegularBadge: Story = {
 };
 
 export const StrongBadge: Story = {
-  name: 'Strong Badge',
   args: {
     tone: 'positive',
     weight: 'strong',
@@ -83,7 +81,6 @@ export const BadgewithVerticalBleed: Story = {
 };
 
 export const PositiveBadge: Story = {
-  name: 'Positive Badge',
   args: {
     tone: 'positive',
     children: 'Positive',
@@ -91,7 +88,6 @@ export const PositiveBadge: Story = {
 };
 
 export const StrongPositiveBadge: Story = {
-  name: 'Strong Positive Badge',
   args: {
     tone: 'positive',
     weight: 'strong',
@@ -100,7 +96,6 @@ export const StrongPositiveBadge: Story = {
 };
 
 export const CriticalBadge: Story = {
-  name: 'Critical Badge',
   args: {
     tone: 'critical',
     children: 'Critical',
@@ -108,7 +103,6 @@ export const CriticalBadge: Story = {
 };
 
 export const StrongCriticalBadge: Story = {
-  name: 'Strong Critical Badge',
   args: {
     tone: 'critical',
     weight: 'strong',
@@ -117,7 +111,6 @@ export const StrongCriticalBadge: Story = {
 };
 
 export const CautionBadge: Story = {
-  name: 'Caution Badge',
   args: {
     tone: 'caution',
     children: 'Caution',
@@ -125,7 +118,6 @@ export const CautionBadge: Story = {
 };
 
 export const StrongCautionBadge: Story = {
-  name: 'Strong Caution Badge',
   args: {
     tone: 'caution',
     weight: 'strong',
@@ -134,7 +126,6 @@ export const StrongCautionBadge: Story = {
 };
 
 export const InfoBadge: Story = {
-  name: 'Info Badge',
   args: {
     tone: 'info',
     children: 'Info',
@@ -142,7 +133,6 @@ export const InfoBadge: Story = {
 };
 
 export const StrongInfoBadge: Story = {
-  name: 'Strong Info Badge',
   args: {
     tone: 'info',
     weight: 'strong',
@@ -151,7 +141,6 @@ export const StrongInfoBadge: Story = {
 };
 
 export const PromoteBadge: Story = {
-  name: 'Promote Badge',
   args: {
     tone: 'promote',
     children: 'Promote',
@@ -159,7 +148,6 @@ export const PromoteBadge: Story = {
 };
 
 export const StrongPromoteBadge: Story = {
-  name: 'Strong Promote Badge',
   args: {
     tone: 'promote',
     weight: 'strong',
@@ -168,7 +156,6 @@ export const StrongPromoteBadge: Story = {
 };
 
 export const NeutralBadge: Story = {
-  name: 'Neutral Badge',
   args: {
     tone: 'neutral',
     children: 'Neutral',
@@ -176,7 +163,6 @@ export const NeutralBadge: Story = {
 };
 
 export const StrongNeutralBadge: Story = {
-  name: 'Strong Neutral Badge',
   args: {
     tone: 'neutral',
     weight: 'strong',
@@ -186,7 +172,6 @@ export const StrongNeutralBadge: Story = {
 
 export const TestBadgetextshouldfollowtonenotdefaultsetbyList: Story = {
   name: 'Test: Badge text should follow tone not default set by `List`',
-
   args: {
     tone: 'critical',
     children: 'Critical',
@@ -205,7 +190,6 @@ export const TestBadgetextshouldfollowtonenotdefaultsetbyList: Story = {
 
 export const TestBadgeshouldnotimpactlineheightoftext: Story = {
   name: 'Test: Badge should not impact line height of text',
-
   args: {
     tone: 'critical',
     weight: 'strong',
@@ -225,7 +209,6 @@ export const TestBadgeshouldnotimpactlineheightoftext: Story = {
 
 export const TestBadgeshouldnotimpactlineheightoftext2: Story = {
   name: 'Test: Badge should not impact line height of text',
-
   render: () => (
     <Stack space="large">
       {textSizes.map((size) => (
@@ -303,8 +286,6 @@ export const TestBadgeshouldnotimpactlineheightoftext2: Story = {
 };
 
 export const Layout: Story = {
-  name: 'Layout',
-
   decorators: [
     () => (
       <Box maxWidth="xsmall">

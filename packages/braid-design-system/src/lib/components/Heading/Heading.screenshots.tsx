@@ -32,7 +32,6 @@ const thaiLevels = {
 };
 
 export const Levels: Story = {
-  name: 'Levels',
   render: () => (
     <Stack space="large">
       {headingLevels.map((level) => (

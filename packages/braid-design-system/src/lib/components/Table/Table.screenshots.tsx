@@ -169,7 +169,6 @@ export const AllsectionsHeaderBodyFooter: Story = {
 };
 
 export const RowHeadings: Story = {
-  name: 'Row Headings',
   render: () => (
     <Table label="Label">
       <TableBody>
@@ -312,7 +311,6 @@ export const VerticalAlignmenttop: Story = {
 };
 
 export const HorizontalAlignment: Story = {
-  name: 'Horizontal Alignment',
   render: () => (
     <Table label="Label">
       <TableHeader>
@@ -348,7 +346,6 @@ export const HorizontalAlignment: Story = {
 };
 
 export const Wrapping: Story = {
-  name: 'Wrapping',
   render: () => (
     <Table label="Label">
       <TableHeader>
@@ -391,7 +388,6 @@ export const Wrapping: Story = {
 };
 
 export const Visibility: Story = {
-  name: 'Visibility',
   render: () => (
     <Stack space="small">
       <Text size="small">

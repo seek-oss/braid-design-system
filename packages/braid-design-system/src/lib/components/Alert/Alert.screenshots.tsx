@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { Alert, Text, Stack, TextLink, List, Box } from '../';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
@@ -22,7 +21,6 @@ const meta = {
 export default meta;
 
 export const InfoAlert: Story = {
-  name: 'Info Alert',
   args: {
     tone: 'info',
   },
@@ -40,16 +38,15 @@ export const InfoAlertonasurface: Story = {
   ),
 };
 
-export const Dismissiblealert: Story = {
-  name: 'Dismissible alert',
+export const DismissibleAlert: Story = {
   args: {
     onClose: () => {},
     closeLabel: 'Close info alert',
   },
 };
 
-export const Dismissiblealertvirtualtouchtarget: Story = {
-  name: 'Dismissible alert (virtual touch target)',
+export const DismissibleAlertVirtualTouchTarget: Story = {
+  name: 'Dismissible Alert (virtual touch target)',
   args: {
     data: {
       [debugTouchableAttrForDataProp]: '',
@@ -60,9 +57,9 @@ export const Dismissiblealertvirtualtouchtarget: Story = {
   },
 };
 
-export const Alertwithrichcontent: Story = {
-  name: 'Alert with rich content',
+export const AlertWithRichContent: Story = {
   args: {
+    tone: 'info',
     children: (
       <Stack space="large">
         <Text>
@@ -76,12 +73,10 @@ export const Alertwithrichcontent: Story = {
         </List>
       </Stack>
     ),
-    tone: 'info',
   },
 };
 
 export const PromoteAlert: Story = {
-  name: 'Promote Alert',
   args: {
     tone: 'promote',
   },
@@ -100,7 +95,6 @@ export const PromoteAlertonasurface: Story = {
 };
 
 export const CautionAlert: Story = {
-  name: 'Caution Alert',
   args: {
     tone: 'caution',
   },
@@ -119,7 +113,6 @@ export const CautionAlertonasurface: Story = {
 };
 
 export const CriticalAlert: Story = {
-  name: 'Critical Alert',
   args: {
     tone: 'critical',
   },
@@ -138,7 +131,6 @@ export const CriticalAlertonasurface: Story = {
 };
 
 export const PositiveAlert: Story = {
-  name: 'Positive Alert',
   args: {
     tone: 'positive',
   },

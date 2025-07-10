@@ -61,7 +61,6 @@ export const Small: Story = {
 };
 
 export const Checked: Story = {
-  name: 'Checked',
   args: {
     checked: true,
   },
@@ -76,55 +75,52 @@ export const Mixedstate: Story = {
 
 export const Disabled: Story = {
   name: 'Disabled',
-  render: (args) => {
-    return (
-      <Stack space="gutter">
-        <CheckboxStandalone
-          {...args}
-          disabled={true}
-          checked={false}
-          aria-label="Unchecked"
-        />
-        <CheckboxStandalone
-          {...args}
-          disabled={true}
-          checked={true}
-          aria-label="Checked"
-        />
-        <CheckboxStandalone
-          {...args}
-          disabled={true}
-          checked="mixed"
-          aria-label="Mixed"
-        />
-        <CheckboxStandalone
-          {...args}
-          disabled={true}
-          checked={false}
-          aria-label="Unchecked & critical"
-          tone="critical"
-        />
-        <CheckboxStandalone
-          {...args}
-          disabled={true}
-          checked={true}
-          aria-label="Checked & critical"
-          tone="critical"
-        />
-        <CheckboxStandalone
-          {...args}
-          disabled={true}
-          checked="mixed"
-          aria-label="Mixed & critical"
-          tone="critical"
-        />
-      </Stack>
-    );
-  },
+  render: (args) => (
+    <Stack space="gutter">
+      <CheckboxStandalone
+        {...args}
+        disabled={true}
+        checked={false}
+        aria-label="Unchecked"
+      />
+      <CheckboxStandalone
+        {...args}
+        disabled={true}
+        checked={true}
+        aria-label="Checked"
+      />
+      <CheckboxStandalone
+        {...args}
+        disabled={true}
+        checked="mixed"
+        aria-label="Mixed"
+      />
+      <CheckboxStandalone
+        {...args}
+        disabled={true}
+        checked={false}
+        aria-label="Unchecked & critical"
+        tone="critical"
+      />
+      <CheckboxStandalone
+        {...args}
+        disabled={true}
+        checked={true}
+        aria-label="Checked & critical"
+        tone="critical"
+      />
+      <CheckboxStandalone
+        {...args}
+        disabled={true}
+        checked="mixed"
+        aria-label="Mixed & critical"
+        tone="critical"
+      />
+    </Stack>
+  ),
 };
 
 export const Critical: Story = {
-  name: 'Critical',
   args: {
     tone: 'critical',
   },
@@ -160,8 +156,34 @@ export const Virtualtouchtarget: Story = {
 
 export const Textalignment: Story = {
   name: 'Text alignment',
-  render: (args) => {
-    return (
+  render: (args) => (
+    <Stack space="medium">
+      {checkboxSizes.map((size) => (
+        <Box background="surface" key={size}>
+          <Columns space="small">
+            <Column width="content">
+              <Text size={size}>
+                <CheckboxStandalone {...args} size={size} />
+              </Text>
+            </Column>
+            <Column>
+              <Text size={size}>Text alignment</Text>
+            </Column>
+          </Columns>
+        </Box>
+      ))}
+    </Stack>
+  ),
+};
+
+export const Textalignmentwithwrappinglines: Story = {
+  name: 'Text alignment with wrapping lines',
+  render: (args) => (
+    <Box
+      style={{
+        maxWidth: 200,
+      }}
+    >
       <Stack space="medium">
         {checkboxSizes.map((size) => (
           <Box background="surface" key={size}>
@@ -172,60 +194,28 @@ export const Textalignment: Story = {
                 </Text>
               </Column>
               <Column>
-                <Text size={size}>Text alignment</Text>
+                <Text size={size}>
+                  Text with really really long wrapping lines
+                </Text>
               </Column>
             </Columns>
           </Box>
         ))}
       </Stack>
-    );
-  },
-};
-
-export const Textalignmentwithwrappinglines: Story = {
-  name: 'Text alignment with wrapping lines',
-  render: (args) => {
-    return (
-      <Box
-        style={{
-          maxWidth: 200,
-        }}
-      >
-        <Stack space="medium">
-          {checkboxSizes.map((size) => (
-            <Box background="surface" key={size}>
-              <Columns space="small">
-                <Column width="content">
-                  <Text size={size}>
-                    <CheckboxStandalone {...args} size={size} />
-                  </Text>
-                </Column>
-                <Column>
-                  <Text size={size}>
-                    Text with really really long wrapping lines
-                  </Text>
-                </Column>
-              </Columns>
-            </Box>
-          ))}
-        </Stack>
-      </Box>
-    );
-  },
+    </Box>
+  ),
 };
 
 export const Contrast: Story = {
   name: 'Contrast',
-  render: (args) => {
-    return (
-      <Box maxWidth="xsmall">
-        <BackgroundContrastTest>
-          <Tiles space="small" columns={2}>
-            <CheckboxStandalone {...args} checked={false} />
-            <CheckboxStandalone {...args} checked={true} />
-          </Tiles>
-        </BackgroundContrastTest>
-      </Box>
-    );
-  },
+  render: (args) => (
+    <Box maxWidth="xsmall">
+      <BackgroundContrastTest>
+        <Tiles space="small" columns={2}>
+          <CheckboxStandalone {...args} checked={false} />
+          <CheckboxStandalone {...args} checked={true} />
+        </Tiles>
+      </BackgroundContrastTest>
+    </Box>
+  ),
 };

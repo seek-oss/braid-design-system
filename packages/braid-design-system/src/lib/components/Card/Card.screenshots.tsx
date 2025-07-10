@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
@@ -35,7 +34,6 @@ export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {},
 };
 

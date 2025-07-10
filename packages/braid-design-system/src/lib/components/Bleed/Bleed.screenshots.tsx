@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
@@ -148,14 +147,12 @@ export const Onallsides: Story = {
 };
 
 export const Horizontally: Story = {
-  name: 'Horizontally',
   args: {
     horizontal: 'large',
   },
 };
 
 export const Vertically: Story = {
-  name: 'Vertically',
   args: {
     vertical: 'large',
   },

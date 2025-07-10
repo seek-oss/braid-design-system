@@ -31,7 +31,6 @@ type Story = StoryObj<typeof Tag>;
 const handler = () => {};
 
 export const StandardTag: Story = {
-  name: 'Standard Tag',
   render: () => (
     <Inline space="small">
       <Tag>Tag</Tag>
@@ -47,7 +46,6 @@ export const StandardTag: Story = {
 };
 
 export const SmallTag: Story = {
-  name: 'Small Tag',
   render: () => (
     <Inline space="xsmall">
       <Tag size="small">Tag</Tag>
@@ -65,7 +63,6 @@ export const SmallTag: Story = {
 };
 
 export const TruncatedTag: Story = {
-  name: 'Truncated Tag',
   render: () => (
     <Stack space="small">
       <Tag>
@@ -136,7 +133,6 @@ export const Virtualtouchtarget: Story = {
 };
 
 export const Layout: Story = {
-  name: 'Layout',
   parameters: {
     background: false,
   },

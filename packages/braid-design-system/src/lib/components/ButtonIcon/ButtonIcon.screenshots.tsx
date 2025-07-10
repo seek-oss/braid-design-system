@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { Box, ButtonIcon, Inline, Heading, IconBookmark, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
@@ -37,7 +36,6 @@ export default meta;
 type Story = StoryObj<typeof ButtonIcon>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     icon: <IconBookmark />,
     label: 'Bookmark',
@@ -46,7 +44,6 @@ export const Default: Story = {
 };
 
 export const Soft: Story = {
-  name: 'Soft',
   render: () => (
     <Inline space="large" alignY="center">
       <ButtonIcon
@@ -100,7 +97,6 @@ export const Softbleedoff: Story = {
 };
 
 export const Transparent: Story = {
-  name: 'Transparent',
   render: () => (
     <Inline space="large" alignY="center">
       <ButtonIcon
@@ -260,7 +256,6 @@ export const Icontoneoverridesbuttontone: Story = {
 };
 
 export const Contrast: Story = {
-  name: 'Contrast',
   render: () => (
     <BackgroundContrastTest>
       <Inline space="medium">
@@ -277,7 +272,6 @@ export const Contrast: Story = {
 };
 
 export const Layout: Story = {
-  name: 'Layout',
   parameters: {
     background: false,
   },

@@ -8,6 +8,7 @@ import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 
 import { DrawerContent } from './Drawer';
+
 import * as styles from '../private/Modal/Modal.css';
 
 const meta = {

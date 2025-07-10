@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import type React from 'react';
 
 import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';
 
@@ -68,7 +67,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     label: 'Options',
     size: 'standard',
@@ -76,7 +74,6 @@ export const Default: Story = {
 };
 
 export const Small: Story = {
-  name: 'Small',
   args: {
     label: 'Options',
     size: 'small',

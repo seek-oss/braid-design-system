@@ -12,7 +12,6 @@ export default meta;
 type Story = StoryObj<typeof Rating>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     rating: 3,
   },

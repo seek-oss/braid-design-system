@@ -54,7 +54,6 @@ export default meta;
 type Story = StoryObj<typeof Text>;
 
 export const Sizes: Story = {
-  name: 'Sizes',
   render: () => (
     <Stack space="medium">
       {textSizes.map((size) => (
@@ -87,7 +86,6 @@ export const LineHeights: Story = {
 };
 
 export const Weights: Story = {
-  name: 'Weights',
   render: () => (
     <Stack space="medium">
       {textWeights.map((weight) => (
@@ -120,7 +118,6 @@ export const TonesOnDarkBackground: Story = {
 };
 
 export const Alignment: Story = {
-  name: 'Alignment',
   render: () => (
     <Container>
       <Stack space="medium">
@@ -278,7 +275,6 @@ export const IconShouldNotImpactLineHeight: Story = {
 };
 
 export const Contrast: Story = {
-  name: 'Contrast',
   render: () => (
     <Container>
       <BackgroundContrastTest>

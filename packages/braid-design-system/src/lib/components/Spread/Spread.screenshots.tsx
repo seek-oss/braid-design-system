@@ -22,7 +22,6 @@ export default meta;
 type Story = StoryObj<typeof Spread>;
 
 export const Horizontal: Story = {
-  name: 'Horizontal',
   args: {
     space: 'large',
     children: [
@@ -144,7 +143,6 @@ export const Horizontalaligncenternoimpact: Story = {
 };
 
 export const Vertical: Story = {
-  name: 'Vertical',
   render: () => (
     <Tiles space="large" columns={3}>
       <Spread direction="vertical" space="large">

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
@@ -411,7 +410,6 @@ export const Collapsebelowwidewithresponsivespaceandnoneabovedesktopegsmallmediu
   };
 
 export const Reverse: Story = {
-  name: 'Reverse',
   render: () => (
     <Columns space="small" collapseBelow="tablet" reverse>
       <Column>

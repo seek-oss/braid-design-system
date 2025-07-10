@@ -48,7 +48,6 @@ export default meta;
 type Story = StoryObj<typeof IconDemo>;
 
 export const Default: Story = {
-  name: 'Default',
   render: () => <Icons />,
 };
 

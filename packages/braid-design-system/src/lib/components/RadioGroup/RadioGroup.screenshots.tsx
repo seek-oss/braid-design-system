@@ -17,7 +17,6 @@ export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     value: '',
     label: 'Experience',
@@ -122,7 +121,6 @@ export const Withnestedcontentvisibleonlywhenchecked: Story = {
 };
 
 export const Small: Story = {
-  name: 'Small',
   args: {
     value: '',
     label: 'Experience',
@@ -226,7 +224,6 @@ export const Virtualtouchtargetsmall: Story = {
 };
 
 export const Contrast: Story = {
-  name: 'Contrast',
   render: () => (
     <Box maxWidth="xsmall">
       <BackgroundContrastTest>

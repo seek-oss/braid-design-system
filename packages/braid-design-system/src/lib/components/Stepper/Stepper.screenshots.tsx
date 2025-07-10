@@ -18,7 +18,6 @@ export default meta;
 type Story = StoryObj<typeof Stepper>;
 
 export const Linear: Story = {
-  name: 'Linear',
   args: {
     label: 'Linear steps',
     progress: 3,
@@ -49,7 +48,6 @@ export const Nonlinear: Story = {
 };
 
 export const Neutral: Story = {
-  name: 'Neutral',
   args: {
     label: 'Linear steps',
     tone: 'neutral',

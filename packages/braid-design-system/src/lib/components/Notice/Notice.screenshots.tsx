@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { Notice, Text, Stack, TextLink, List } from '../';
 
@@ -28,7 +27,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const InfoNotice: Story = {
-  name: 'Info Notice',
   args: {
     tone: 'info',
     children: <Text>This is an important piece of information.</Text>,
@@ -56,7 +54,6 @@ export const Noticewithrichcontent: Story = {
 };
 
 export const PromoteNotice: Story = {
-  name: 'Promote Notice',
   args: {
     tone: 'promote',
     children: <Text>This is a promoted piece of information.</Text>,
@@ -64,7 +61,6 @@ export const PromoteNotice: Story = {
 };
 
 export const CriticalNotice: Story = {
-  name: 'Critical Notice',
   args: {
     tone: 'critical',
     children: <Text>This is a critical piece of information.</Text>,
@@ -72,7 +68,6 @@ export const CriticalNotice: Story = {
 };
 
 export const PositiveNotice: Story = {
-  name: 'Positive Notice',
   args: {
     tone: 'positive',
     children: <Text>This is a positive piece of information.</Text>,

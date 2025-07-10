@@ -33,7 +33,6 @@ const defaultProps = {
 } as const;
 
 export const Default: Story = {
-  name: 'Default',
   render: () => (
     <Inline space="medium">
       <Menu {...defaultProps}>
@@ -57,7 +56,6 @@ export const Default: Story = {
 };
 
 export const Highlighted: Story = {
-  name: 'Highlighted',
   render: () => (
     <Inline space="medium">
       <Menu {...defaultProps} highlightIndex={0}>

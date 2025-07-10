@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { ButtonLink, IconSend, Stack, Inline, Text, IconArrow, Box } from '../';
 
@@ -48,7 +47,6 @@ export const Defaultvariantsfortone: Story = {
 };
 
 export const Critical: Story = {
-  name: 'Critical',
   render: () => (
     <Inline space="small" collapseBelow="desktop">
       <ButtonLink href="#" tone="critical" variant="solid">
@@ -108,7 +106,6 @@ export const FormAccent: Story = {
 };
 
 export const Neutral: Story = {
-  name: 'Neutral',
   render: () => (
     <Inline space="small" collapseBelow="desktop">
       <ButtonLink href="#" tone="neutral" variant="solid">

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React, { type ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
@@ -55,7 +55,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const StandardColumns: Story = {
-  name: 'Standard Columns',
   args: {
     children: <Placeholder height={60} />,
   },

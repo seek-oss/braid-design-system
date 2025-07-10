@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
@@ -60,7 +59,6 @@ export const Defaultvariantfortone: Story = {
 };
 
 export const Critical: Story = {
-  name: 'Critical',
   render: () => (
     <Inline space="small">
       <Button tone="critical" variant="solid">
@@ -120,7 +118,6 @@ export const FormAccent: Story = {
 };
 
 export const Neutral: Story = {
-  name: 'Neutral',
   render: () => (
     <Inline space="small">
       <Button tone="neutral" variant="solid">
@@ -370,7 +367,6 @@ export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: S
   };
 
 export const Contrast: Story = {
-  name: 'Contrast',
   render: () => (
     <BackgroundContrastTest>
       <Inline space="small">

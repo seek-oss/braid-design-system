@@ -19,7 +19,6 @@ export default meta;
 type Story = StoryObj<typeof TextDropdown>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     value: 'Developer',
     label: 'Job Title',

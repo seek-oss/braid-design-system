@@ -80,7 +80,7 @@ export const hitArealarge: Story = {
   ),
 };
 
-export const hitArealargevirtualtouchtarget: Story = {
+export const HitAreaLargeVirtualTouchTarget: Story = {
   name: 'hitArea: large (virtual touch target)',
   args: {
     hitArea: 'large',
@@ -111,8 +111,7 @@ export const showVisited: Story = {
   ),
 };
 
-export const Regularweightinsideavailabletextsizes: Story = {
-  name: 'Regular weight inside available text sizes',
+export const RegularWeightInsideAvailableTextSizes: Story = {
   render: () => (
     <Stack space="small">
       {textSizes.map((size) => (
@@ -125,8 +124,7 @@ export const Regularweightinsideavailabletextsizes: Story = {
   ),
 };
 
-export const Weakweightinsideavailabletextsizes: Story = {
-  name: 'Weak weight inside available text sizes',
+export const WeakWeightInsideAvailableTextSizes: Story = {
   render: () => (
     <Stack space="small">
       {textSizes.map((size) => (
@@ -142,8 +140,7 @@ export const Weakweightinsideavailabletextsizes: Story = {
   ),
 };
 
-export const Regularweightinsideavailabletexttones: Story = {
-  name: 'Regular weight inside available text tones',
+export const RegularWeightInsideAvailableTextTones: Story = {
   render: () => (
     <Stack space="small">
       {textTones.map((t) => (
@@ -156,8 +153,7 @@ export const Regularweightinsideavailabletexttones: Story = {
   ),
 };
 
-export const Weakweightinsideavailabletexttones: Story = {
-  name: 'Weak weight inside available text tones',
+export const WeakWeightInsideAvailableTextTones: Story = {
   render: () => (
     <Stack space="small">
       {textTones.map((t) => (
@@ -173,8 +169,7 @@ export const Weakweightinsideavailabletexttones: Story = {
   ),
 };
 
-export const Regularweightinsideavailableheadinglevels: Story = {
-  name: 'Regular weight inside available heading levels',
+export const RegularWeightInsideAvailableHeadingLevels: Story = {
   render: () => (
     <Stack space="medium">
       {headingLevels.map((level) => (
@@ -187,8 +182,7 @@ export const Regularweightinsideavailableheadinglevels: Story = {
   ),
 };
 
-export const Weakweightinsideavailableheadinglevels: Story = {
-  name: 'Weak weight inside available heading levels',
+export const WeakWeightInsideAvailableHeadingLevels: Story = {
   render: () => (
     <Stack space="medium">
       {headingLevels.map((level) => (
@@ -204,8 +198,7 @@ export const Weakweightinsideavailableheadinglevels: Story = {
   ),
 };
 
-export const Iconsinheritregularlinkcolour: Story = {
-  name: 'Icons inherit regular link colour',
+export const IconsInheritRegularLinkColour: Story = {
   render: () => (
     <Stack space="small">
       <Text>
@@ -230,8 +223,7 @@ export const Iconsinheritregularlinkcolour: Story = {
   ),
 };
 
-export const Iconsinheritweaklinkcolour: Story = {
-  name: 'Icons inherit weak link colour',
+export const IconsInheritWeakLinkColour: Story = {
   render: () => (
     <Stack space="small">
       <Text>
@@ -309,7 +301,6 @@ export const Withatrailingiconandweightweak: Story = {
 };
 
 export const TextContrast: Story = {
-  name: 'Text Contrast',
   render: () => (
     <BackgroundContrastTest>
       {(background) => (
@@ -345,7 +336,6 @@ export const TextContrast: Story = {
 };
 
 export const HeadingContrast: Story = {
-  name: 'Heading Contrast',
   render: () => (
     <BackgroundContrastTest>
       {(background) => (
@@ -380,8 +370,7 @@ export const HeadingContrast: Story = {
   ),
 };
 
-export const Underlinepositionwraptest: Story = {
-  name: 'Underline position wrap test',
+export const UnderlinePositionWrapTest: Story = {
   render: () => (
     <Box style={{ maxWidth: 200 }}>
       <Stack space="large">

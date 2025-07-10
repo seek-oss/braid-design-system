@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { MonthPicker, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
@@ -90,7 +89,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     label: 'Started',
     value: {
@@ -138,7 +136,6 @@ export const Cautionmessage: Story = {
 };
 
 export const Disabled: Story = {
-  name: 'Disabled',
   args: {
     label: 'Disabled MonthPicker',
     onChange: () => {},
@@ -179,8 +176,7 @@ export const Disabled: Story = {
   ),
 };
 
-export const withadescription: Story = {
-  name: 'with a description',
+export const WithADescription: Story = {
   args: {
     label: 'Started',
     description: 'Longer description of this field',
@@ -244,7 +240,6 @@ export const Custommonthandyearlabels: Story = {
 };
 
 export const Contrast: Story = {
-  name: 'Contrast',
   args: {
     label: 'Contrast Example',
     value: {

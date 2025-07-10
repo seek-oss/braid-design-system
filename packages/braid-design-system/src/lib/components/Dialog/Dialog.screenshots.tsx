@@ -4,10 +4,11 @@ import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Inline, Stack, Box, Text } from '../';
 import { Placeholder } from '../../playroom/components';
-import * as styles from '../private/Modal/Modal.css';
 import { externalGutter } from '../private/Modal/ModalExternalGutter';
 
 import { DialogContent } from './Dialog';
+
+import * as styles from '../private/Modal/Modal.css';
 
 const meta = {
   title: 'Components/Dialog',

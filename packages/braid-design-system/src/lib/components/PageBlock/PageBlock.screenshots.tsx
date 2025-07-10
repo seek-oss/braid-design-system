@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
@@ -38,33 +37,27 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  name: 'Default',
-};
+export const Default: Story = {};
 
 export const Small: Story = {
-  name: 'Small',
   args: {
     width: 'small',
   },
 };
 
 export const Medium: Story = {
-  name: 'Medium',
   args: {
     width: 'medium',
   },
 };
 
 export const Large: Story = {
-  name: 'Large',
   args: {
     width: 'large',
   },
 };
 
 export const Full: Story = {
-  name: 'Full',
   args: {
     width: 'full',
   },

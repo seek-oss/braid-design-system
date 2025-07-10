@@ -26,7 +26,6 @@ const customIcon = (
 );
 
 export const Default: Story = {
-  name: 'Default',
   render: () => (
     <Stack space="large">
       <Text size="xsmall" icon={customIcon}>

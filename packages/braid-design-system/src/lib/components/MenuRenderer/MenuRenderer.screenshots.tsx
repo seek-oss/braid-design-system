@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { calc } from '@vanilla-extract/css-utils';
-import React, { type MutableRefObject, type ReactNode, useRef } from 'react';
+import { type MutableRefObject, type ReactNode, useRef } from 'react';
 
 import {
   Box,
@@ -132,7 +132,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Default',
   render: (args) => (
     <Box style={{ maxWidth: '150px' }}>
       <MenuRenderer trigger={args.trigger} offsetSpace="small">
