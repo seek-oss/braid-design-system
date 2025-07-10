@@ -11,7 +11,6 @@ export default meta;
 type Story = StoryObj<typeof Secondary>;
 
 export const InsideText: Story = {
-  name: 'Inside Text',
   args: {
     children: 'secondary',
   },
@@ -39,7 +38,6 @@ export const InsideTextwithanicon: Story = {
 };
 
 export const InsideHeading: Story = {
-  name: 'Inside Heading',
   args: {
     children: 'secondary',
   },

@@ -22,7 +22,6 @@ const meta = {
 export default meta;
 
 export const DefaultAccordion = {
-  name: 'Default Accordion',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(true);

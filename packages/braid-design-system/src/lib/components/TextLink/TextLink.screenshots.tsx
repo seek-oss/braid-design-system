@@ -47,8 +47,7 @@ const meta: Meta<typeof TextLink> = {
 export default meta;
 type Story = StoryObj<typeof TextLink>;
 
-export const weightregular: Story = {
-  name: 'weight: regular',
+export const WeightRegular: Story = {
   decorators: (Story) => (
     <Text>
       <Story />
@@ -56,8 +55,7 @@ export const weightregular: Story = {
   ),
 };
 
-export const weightweak: Story = {
-  name: 'weight: weak',
+export const WeightWeak: Story = {
   args: {
     weight: 'weak',
   },
@@ -68,8 +66,7 @@ export const weightweak: Story = {
   ),
 };
 
-export const hitArealarge: Story = {
-  name: 'hitArea: large',
+export const HitAreaLarge: Story = {
   args: {
     hitArea: 'large',
   },
@@ -97,7 +94,7 @@ export const HitAreaLargeVirtualTouchTarget: Story = {
   ),
 };
 
-export const showVisited: Story = {
+export const ShowVisited: Story = {
   name: 'showVisited',
   args: {
     showVisited: true,

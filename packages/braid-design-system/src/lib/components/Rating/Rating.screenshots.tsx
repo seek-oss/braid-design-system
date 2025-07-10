@@ -101,7 +101,6 @@ export const Filltest: Story = {
 };
 
 export const RatingContrast: Story = {
-  name: 'Rating Contrast',
   args: {
     rating: 1.5,
     size: 'xsmall',

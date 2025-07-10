@@ -21,12 +21,9 @@ type Story = StoryObj<typeof Disclosure>;
 
 const textSizes = ['xsmall', 'small', 'standard', 'large'] as const;
 
-export const Collapsed: Story = {
-  name: 'Collapsed',
-};
+export const Collapsed: Story = {};
 
 export const Expanded: Story = {
-  name: 'Expanded',
   args: {
     expanded: true,
   },

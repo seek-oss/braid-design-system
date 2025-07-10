@@ -157,7 +157,6 @@ export const PasswordFielddisabled: Story = {
 };
 
 export const Contrast: Story = {
-  name: 'Contrast',
   args: {
     label: 'Label',
     value: 'Text value',

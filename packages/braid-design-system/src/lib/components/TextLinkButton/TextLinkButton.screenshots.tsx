@@ -12,7 +12,6 @@ export default meta;
 type Story = StoryObj<typeof TextLinkButton>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     children: 'is actually a span with an ARIA role of button.',
   },

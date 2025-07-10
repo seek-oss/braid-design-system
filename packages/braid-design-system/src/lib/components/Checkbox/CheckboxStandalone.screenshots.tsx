@@ -32,7 +32,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  name: 'Standard',
   render: (args) => {
     const [checked, setChecked] = useState(false);
     return (
@@ -46,7 +45,6 @@ export const Standard: Story = {
 };
 
 export const Small: Story = {
-  name: 'Small',
   render: (args) => {
     const [checked, setChecked] = useState(false);
     return (
@@ -74,7 +72,6 @@ export const Mixedstate: Story = {
 };
 
 export const Disabled: Story = {
-  name: 'Disabled',
   render: (args) => (
     <Stack space="gutter">
       <CheckboxStandalone
@@ -207,7 +204,6 @@ export const Textalignmentwithwrappinglines: Story = {
 };
 
 export const Contrast: Story = {
-  name: 'Contrast',
   render: (args) => (
     <Box maxWidth="xsmall">
       <BackgroundContrastTest>
