@@ -68,16 +68,11 @@ export const SmallWidth: Story = {
 
 export const MediumWidth: Story = {
   name: 'Layout: Medium width',
-  render: () => (
-    <DrawerContent
-      title="Medium"
-      width="medium"
-      onClose={() => {}}
-      scrollLock={false}
-    >
-      <Placeholder height={100} width="100%" label="Medium Drawer" />
-    </DrawerContent>
-  ),
+  args: {
+    title: 'Medium',
+    width: 'medium',
+    children: <Placeholder height={100} width="100%" label="Medium Drawer" />,
+  },
 };
 
 export const LargeWidth: Story = {
@@ -126,9 +121,9 @@ export const LeftAlignedInCenteredStack: Story = {
       </Text>
     ),
   },
-  render: (args) => (
+  decorators: (Story) => (
     <Stack space="large" align="center">
-      <DrawerContent {...args} />
+      <Story />
     </Stack>
   ),
 };

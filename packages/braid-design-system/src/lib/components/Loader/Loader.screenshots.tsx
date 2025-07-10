@@ -52,9 +52,9 @@ export const Large: Story = {
 };
 
 export const Contrast: Story = {
-  render: () => (
+  decorators: (Story) => (
     <BackgroundContrastTest>
-      <Loader />
+      <Story />
     </BackgroundContrastTest>
   ),
   name: 'Loader Contrast',

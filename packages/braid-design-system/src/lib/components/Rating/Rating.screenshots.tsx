@@ -103,9 +103,13 @@ export const Filltest: Story = {
 
 export const RatingContrast: Story = {
   name: 'Rating Contrast',
-  render: () => (
+  args: {
+    rating: 1.5,
+    size: 'xsmall',
+  },
+  decorators: (Story) => (
     <BackgroundContrastTest>
-      <Rating rating={1.5} size="xsmall" />
+      <Story />
     </BackgroundContrastTest>
   ),
 };

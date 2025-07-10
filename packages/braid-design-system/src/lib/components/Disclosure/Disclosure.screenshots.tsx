@@ -2,181 +2,159 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Disclosure, Stack, Text } from '../';
 
+const handler = () => {};
+
 const meta = {
   title: 'Components/Disclosure',
   component: Disclosure,
+  args: {
+    expandLabel: 'Show content',
+    collapseLabel: 'Hide content',
+    children: <Text>Content</Text>,
+    expanded: false,
+    onToggle: handler,
+  },
 } satisfies Meta<typeof Disclosure>;
 
 export default meta;
 type Story = StoryObj<typeof Disclosure>;
 
-const handler = () => {};
-
 const textSizes = ['xsmall', 'small', 'standard', 'large'] as const;
 
 export const Collapsed: Story = {
   name: 'Collapsed',
-  render: () => (
-    <Disclosure
-      expandLabel="Show content"
-      collapseLabel="Hide content"
-      expanded={false}
-      onToggle={handler}
-    >
-      <Text>Content</Text>
-    </Disclosure>
-  ),
 };
 
 export const Expanded: Story = {
   name: 'Expanded',
-  render: () => (
-    <Disclosure
-      expandLabel="Show content"
-      collapseLabel="Hide content"
-      expanded={true}
-      onToggle={handler}
-    >
-      <Text>Content</Text>
-    </Disclosure>
-  ),
+  args: {
+    expanded: true,
+  },
 };
 
 export const ExpandedWithCustomSpace: Story = {
   name: 'Expanded with custom space',
-  render: () => (
-    <Disclosure
-      expandLabel="Show content"
-      collapseLabel="Hide content"
-      space="small"
-      expanded={true}
-      onToggle={handler}
-    >
-      <Text>Content</Text>
-    </Disclosure>
-  ),
+  args: {
+    space: 'small',
+    expanded: true,
+  },
 };
 
 export const WeakWeight: Story = {
   name: 'Weak weight',
-  render: () => (
-    <Disclosure
-      expandLabel="Show content"
-      collapseLabel="Hide content"
-      weight="weak"
-      expanded={true}
-      onToggle={handler}
-    >
-      <Text>Content</Text>
-    </Disclosure>
-  ),
+  args: {
+    weight: 'weak',
+    expanded: true,
+  },
 };
 
 export const InlineAndCollapsed: Story = {
   name: 'Inline and collapsed',
-  render: () => (
+  args: {
+    space: 'xxsmall',
+    children: (
+      <>
+        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
+        in sodales dolor velit at sem.
+      </>
+    ),
+  },
+  decorators: (Story) => (
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper
       interdum nibh quis viverra. Nullam ac turpis erat. Cras non venenatis
       lacus. In hac habitasse platea dictumst.
-      <Disclosure
-        expandLabel="Show content"
-        collapseLabel="Hide content"
-        expanded={false}
-        onToggle={handler}
-      >
-        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
-        in sodales dolor velit at sem.
-      </Disclosure>
+      <Story />
     </Text>
   ),
 };
 
 export const InlineAndExpanded: Story = {
   name: 'Inline and expanded',
-  render: () => (
+  args: {
+    expanded: true,
+    children: (
+      <>
+        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
+        in sodales dolor velit at sem.
+      </>
+    ),
+  },
+  decorators: (Story) => (
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper
       interdum nibh quis viverra. Nullam ac turpis erat. Cras non venenatis
       lacus. In hac habitasse platea dictumst.
-      <Disclosure
-        expandLabel="Show content"
-        collapseLabel="Hide content"
-        expanded={true}
-        onToggle={handler}
-      >
-        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
-        in sodales dolor velit at sem.
-      </Disclosure>
+      <Story />
     </Text>
   ),
 };
 
 export const InlineExpandedWithCustomSpace: Story = {
   name: 'Inline, expanded with custom space',
-  render: () => (
+  args: {
+    space: 'large',
+    expanded: true,
+    children: (
+      <>
+        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
+        in sodales dolor velit at sem.
+      </>
+    ),
+  },
+  decorators: (Story) => (
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper
       interdum nibh quis viverra. Nullam ac turpis erat. Cras non venenatis
       lacus. In hac habitasse platea dictumst.
-      <Disclosure
-        expandLabel="Show content"
-        collapseLabel="Hide content"
-        space="xxsmall"
-        expanded={true}
-        onToggle={handler}
-      >
-        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
-        in sodales dolor velit at sem.
-      </Disclosure>
+      <Story />
     </Text>
   ),
 };
 
 export const InlineCollapsedWithTrailingText: Story = {
   name: 'Inline, collapsed with trailing text',
-  render: () => (
+  args: {
+    space: 'xxsmall',
+    children: (
+      <>
+        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
+        in sodales dolor velit at sem.
+      </>
+    ),
+  },
+  decorators: (Story) => (
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper
       interdum nibh quis viverra. Nullam ac turpis erat. Cras non venenatis
       lacus. In hac habitasse platea dictumst.
-      <Disclosure
-        expandLabel="Show content"
-        collapseLabel="Hide content"
-        space="xxsmall"
-        expanded={false}
-        onToggle={handler}
-      >
-        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
-        in sodales dolor velit at sem.
-      </Disclosure>
-      . Curabitur cursus efficitur dui congue facilisis. Nam fermentum nulla vel
-      nunc auctor facilisis. Quisque neque sapien, aliquam eget eros id,
-      facilisis sodales nisl.
+      <Story />. Curabitur cursus efficitur dui congue facilisis. Nam fermentum
+      nulla vel nunc auctor facilisis. Quisque neque sapien, aliquam eget eros
+      id, facilisis sodales nisl.
     </Text>
   ),
 };
 
 export const InlineExpandedWithTrailingText: Story = {
   name: 'Inline, expanded with trailing text',
-  render: () => (
+  args: {
+    space: 'xxsmall',
+    expanded: true,
+    children: (
+      <>
+        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
+        in sodales dolor velit at sem.
+      </>
+    ),
+  },
+  decorators: (Story) => (
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper
       interdum nibh quis viverra. Nullam ac turpis erat. Cras non venenatis
       lacus. In hac habitasse platea dictumst.
-      <Disclosure
-        expandLabel="Show content"
-        collapseLabel="Hide content"
-        space="xxsmall"
-        expanded={true}
-        onToggle={handler}
-      >
-        Vestibulum fringilla, leo at fringilla luctus, risus erat pretium eros,
-        in sodales dolor velit at sem.
-      </Disclosure>
-      Curabitur cursus efficitur dui congue facilisis. Nam fermentum nulla vel
-      nunc auctor facilisis. Quisque neque sapien, aliquam eget eros id,
-      facilisis sodales nisl.
+      <Story /> Curabitur cursus efficitur dui congue facilisis. Nam fermentum
+      nulla vel nunc auctor facilisis. Quisque neque sapien, aliquam eget eros
+      id, facilisis sodales nisl.
     </Text>
   ),
 };

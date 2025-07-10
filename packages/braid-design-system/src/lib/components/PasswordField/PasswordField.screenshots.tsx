@@ -42,14 +42,11 @@ export const PasswordFieldwithsecondarylabel: Story = {
 
 export const PasswordFieldwithtertiarylabel: Story = {
   name: 'PasswordField with tertiary label',
-  render: () => (
-    <PasswordField
-      label="Password"
-      tertiaryLabel={<TextLink href="#">Forgot Password?</TextLink>}
-      value="qwerty"
-      onChange={() => {}}
-    />
-  ),
+  args: {
+    label: 'Password',
+    tertiaryLabel: <TextLink href="#">Forgot Password?</TextLink>,
+    value: 'qwerty',
+  },
 };
 
 export const PasswordFieldwithnovisuallabel: Story = {
@@ -161,9 +158,13 @@ export const PasswordFielddisabled: Story = {
 
 export const Contrast: Story = {
   name: 'Contrast',
-  render: () => (
+  args: {
+    label: 'Label',
+    value: 'Text value',
+  },
+  decorators: (Story) => (
     <BackgroundContrastTest>
-      <PasswordField label="Label" onChange={() => {}} value="Text value" />
+      <Story />
     </BackgroundContrastTest>
   ),
 };

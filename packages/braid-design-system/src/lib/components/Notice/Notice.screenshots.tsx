@@ -81,14 +81,18 @@ export const PositiveNotice: Story = {
 
 export const TestshouldbeleftalignedinacenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
-  render: () => (
+  args: {
+    tone: 'positive',
+    children: (
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        sodales hendrerit nulla.
+      </Text>
+    ),
+  },
+  decorators: (Story) => (
     <Stack space="large" align="center">
-      <Notice tone="positive">
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          sodales hendrerit nulla.
-        </Text>
-      </Notice>
+      <Story />
     </Stack>
   ),
 };

@@ -12,44 +12,56 @@ type Story = StoryObj<typeof Secondary>;
 
 export const InsideText: Story = {
   name: 'Inside Text',
-  render: () => (
+  args: {
+    children: 'secondary',
+  },
+  decorators: (Story) => (
     <Text>
-      A <Secondary>secondary</Secondary> example.
+      A <Story /> example.
     </Text>
   ),
 };
 
 export const InsideTextwithanicon: Story = {
   name: 'Inside Text with an icon',
-  render: () => (
-    <Text>
-      A{' '}
-      <Secondary>
+  args: {
+    children: (
+      <>
         secondary <IconHome />
-      </Secondary>{' '}
-      example.
+      </>
+    ),
+  },
+  decorators: (Story) => (
+    <Text>
+      A <Story /> example.
     </Text>
   ),
 };
 
 export const InsideHeading: Story = {
   name: 'Inside Heading',
-  render: () => (
+  args: {
+    children: 'secondary',
+  },
+  decorators: (Story) => (
     <Heading level="3">
-      A <Secondary>secondary</Secondary> example.
+      A <Story /> example.
     </Heading>
   ),
 };
 
 export const InsideHeadingwithanicon: Story = {
   name: 'Inside Heading with an icon',
-  render: () => (
-    <Heading level="3">
-      A{' '}
-      <Secondary>
+  args: {
+    children: (
+      <>
         secondary <IconHome />
-      </Secondary>{' '}
-      example.
+      </>
+    ),
+  },
+  decorators: (Story) => (
+    <Heading level="3">
+      A <Story /> example.
     </Heading>
   ),
 };

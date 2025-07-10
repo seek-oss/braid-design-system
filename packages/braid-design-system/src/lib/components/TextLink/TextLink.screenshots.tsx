@@ -38,6 +38,10 @@ const meta: Meta<typeof TextLink> = {
       modes: makeBraidModes({ viewports: ['tablet'] }),
     },
   },
+  args: {
+    href: '#',
+    children: 'TextLink',
+  },
 };
 
 export default meta;
@@ -45,61 +49,64 @@ type Story = StoryObj<typeof TextLink>;
 
 export const weightregular: Story = {
   name: 'weight: regular',
-  render: () => (
+  decorators: (Story) => (
     <Text>
-      <TextLink href="#">TextLink</TextLink>
+      <Story />
     </Text>
   ),
 };
 
 export const weightweak: Story = {
   name: 'weight: weak',
-  render: () => (
+  args: {
+    weight: 'weak',
+  },
+  decorators: (Story) => (
     <Text>
-      <TextLink href="#" weight="weak">
-        TextLink
-      </TextLink>
+      <Story />
     </Text>
   ),
 };
 
 export const hitArealarge: Story = {
   name: 'hitArea: large',
-  render: () => (
+  args: {
+    hitArea: 'large',
+  },
+  decorators: (Story) => (
     <Text>
-      <TextLink href="#" hitArea="large">
-        TextLink
-      </TextLink>
+      <Story />
     </Text>
   ),
 };
 
 export const hitArealargevirtualtouchtarget: Story = {
   name: 'hitArea: large (virtual touch target)',
-  render: () => (
+  args: {
+    hitArea: 'large',
+    children: 'virtual touch target',
+  },
+  decorators: (Story) => (
     <Text
       data={{
         [debugTouchableAttrForDataProp]: '',
       }}
     >
-      This is the{' '}
-      <TextLink href="" hitArea="large">
-        virtual touch target
-      </TextLink>
-      .
+      This is the <Story />.
     </Text>
   ),
 };
 
 export const showVisited: Story = {
   name: 'showVisited',
-  render: () => (
+  args: {
+    showVisited: true,
+    href: '',
+    children: 'visited TextLink',
+  },
+  decorators: (Story) => (
     <Text>
-      This is a{' '}
-      <TextLink href="" showVisited>
-        visited TextLink
-      </TextLink>
-      .
+      This is a <Story />.
     </Text>
   ),
 };
@@ -251,57 +258,52 @@ export const Iconsinheritweaklinkcolour: Story = {
 
 export const Withiconslot: Story = {
   name: 'With icon slot',
-  render: () => (
+  args: {
+    icon: <IconLink />,
+  },
+  decorators: (Story) => (
     <Text>
-      A sentence with a{' '}
-      <TextLink href="" icon={<IconLink />}>
-        TextLink
-      </TextLink>
-      .
+      A sentence with a <Story />.
     </Text>
   ),
 };
 
 export const Withatrailingicon: Story = {
   name: 'With a trailing icon',
-  render: () => (
+  args: {
+    icon: <IconLink />,
+    iconPosition: 'trailing',
+  },
+  decorators: (Story) => (
     <Text>
-      A sentence with an icon trailing the{' '}
-      <TextLink href="" icon={<IconLink />} iconPosition="trailing">
-        TextLink
-      </TextLink>
-      .
+      A sentence with an icon trailing the <Story />.
     </Text>
   ),
 };
 
 export const Withiconslotandweightweak: Story = {
   name: 'With icon slot and weight weak',
-  render: () => (
+  args: {
+    weight: 'weak',
+    icon: <IconLink />,
+  },
+  decorators: (Story) => (
     <Text>
-      A sentence with a{' '}
-      <TextLink href="" weight="weak" icon={<IconLink />}>
-        TextLink
-      </TextLink>
-      .
+      A sentence with a <Story />.
     </Text>
   ),
 };
 
 export const Withatrailingiconandweightweak: Story = {
   name: 'With a trailing icon and weight weak',
-  render: () => (
+  args: {
+    weight: 'weak',
+    icon: <IconLink />,
+    iconPosition: 'trailing',
+  },
+  decorators: (Story) => (
     <Text>
-      A sentence with an icon trailing the{' '}
-      <TextLink
-        href=""
-        weight="weak"
-        icon={<IconLink />}
-        iconPosition="trailing"
-      >
-        TextLink
-      </TextLink>
-      .
+      A sentence with an icon trailing the <Story />.
     </Text>
   ),
 };
