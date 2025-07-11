@@ -126,6 +126,7 @@ export const TooltipRenderer = ({
   const isMobileDevice = useRef(isMobile()).current;
 
   const onScreen = useRef<boolean | null>(null);
+  const showTooltip = isStatic ? true : open;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -196,7 +197,7 @@ export const TooltipRenderer = ({
     };
   }, [open, isMobileDevice]);
 
-  useIsomorphicLayoutEffect(() => {
+  const handleTooltipPosition = () => {
     const setPositions = () => {
       setTooltipPosition(tooltipRef.current?.getBoundingClientRect());
       setTriggerPosition(triggerRef.current?.getBoundingClientRect());
@@ -209,7 +210,26 @@ export const TooltipRenderer = ({
     }, animationTimeout / 2);
 
     return () => clearTimeout(timeoutId);
-  });
+  };
+
+  useIsomorphicLayoutEffect(() => {
+    if (!showTooltip) {
+      return;
+    }
+
+    const handleResize = () => {
+      handleTooltipPosition();
+    };
+
+    window.addEventListener('resize', handleResize);
+    const resizeObserver = new ResizeObserver(handleResize);
+    resizeObserver.observe(document.body);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      resizeObserver.disconnect();
+    };
+  }, [showTooltip, triggerRef]);
 
   let inferredPlacement: typeof placement = placement;
   let arrowLeftOffset = 0;
@@ -246,7 +266,7 @@ export const TooltipRenderer = ({
         lockPlacement={isStatic}
         delayVisibility={!isMobileDevice}
         modal={false}
-        open={isStatic ? true : open}
+        open={showTooltip}
         onClose={!isStatic ? () => setOpen(false) : undefined}
         triggerRef={triggerRef}
       >
