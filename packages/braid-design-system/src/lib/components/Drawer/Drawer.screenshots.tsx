@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { setChromatic } from 'braid-storybook/chromatic';
 
-import { Placeholder } from '../../playroom/components';
+import { Placeholder, Spread } from '../../playroom/components';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
@@ -124,5 +124,26 @@ export const LeftAlignedInCenteredStack: Story = {
     <Stack space="large" align="center">
       <Story />
     </Stack>
+  ),
+};
+
+export const SpreadContent: Story = {
+  name: 'Test: Content should be spread',
+  args: {
+    title: 'Spread content',
+    onClose: () => {},
+    width: 'medium',
+    scrollLock: false,
+    children: (
+      <Spread space="none" direction="vertical">
+        <Text>Top of drawer</Text>
+        <Text>Bottom of drawer</Text>
+      </Spread>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
   ),
 };
