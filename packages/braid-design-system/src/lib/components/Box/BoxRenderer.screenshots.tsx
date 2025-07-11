@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
 import { Text } from '../';
 
@@ -27,18 +26,19 @@ type Story = StoryObj<typeof BoxRenderer>;
 
 export const StandardBoxRenderer: Story = {
   name: 'Standard BoxRenderer',
-  render: () => (
-    <BoxRenderer component="ul" background="brand" padding="medium">
-      {(className) => (
-        <ul className={className}>
-          <li>
-            <Text baseline={false}>
-              This text should be white, and it shouldn&apos;t have a visible
-              bullet.
-            </Text>
-          </li>
-        </ul>
-      )}
-    </BoxRenderer>
-  ),
+  args: {
+    component: 'ul',
+    background: 'brand',
+    padding: 'medium',
+    children: (className) => (
+      <ul className={className}>
+        <li>
+          <Text baseline={false}>
+            This text should be white, and it shouldn&apos;t have a visible
+            bullet.
+          </Text>
+        </li>
+      </ul>
+    ),
+  },
 };

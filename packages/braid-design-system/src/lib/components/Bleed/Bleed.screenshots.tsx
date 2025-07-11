@@ -3,6 +3,24 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Bleed, Box, Stack, Text } from '../';
+import type { Space } from '../../css/atoms/atoms';
+
+const spaceOptions: Space[] = [
+  'none',
+  'gutter',
+  'xxsmall',
+  'xsmall',
+  'small',
+  'medium',
+  'large',
+  'xlarge',
+  'xxlarge',
+  'xxxlarge',
+];
+const spaceArg = {
+  control: 'select',
+  options: spaceOptions,
+} as const;
 
 const meta = {
   title: 'Components/Bleed',
@@ -16,97 +34,13 @@ const meta = {
     },
   },
   argTypes: {
-    space: {
-      control: 'select',
-      options: [
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-        'none',
-        'gutter',
-      ],
-    },
-    horizontal: {
-      control: 'select',
-      options: [
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-        'none',
-        'gutter',
-      ],
-    },
-    vertical: {
-      control: 'select',
-      options: [
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-        'none',
-        'gutter',
-      ],
-    },
-    top: {
-      control: 'select',
-      options: [
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-        'none',
-        'gutter',
-      ],
-    },
-    bottom: {
-      control: 'select',
-      options: [
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-        'none',
-        'gutter',
-      ],
-    },
-    left: {
-      control: 'select',
-      options: [
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-        'none',
-        'gutter',
-      ],
-    },
-    right: {
-      control: 'select',
-      options: [
-        'xsmall',
-        'small',
-        'medium',
-        'large',
-        'xlarge',
-        'xxlarge',
-        'none',
-        'gutter',
-      ],
-    },
+    space: spaceArg,
+    horizontal: spaceArg,
+    vertical: spaceArg,
+    top: spaceArg,
+    bottom: spaceArg,
+    left: spaceArg,
+    right: spaceArg,
     component: { control: 'text' },
   },
   args: {

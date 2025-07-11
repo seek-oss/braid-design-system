@@ -1,17 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import type { ComponentProps } from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
 import { Columns, Column, Box, Stack } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
-const widths: Array<ComponentProps<typeof Column>['width']> = [
-  '1/2',
-  '1/3',
-  '1/4',
+import { width as columnWidths } from './Column.css';
+const widths = [
   'content',
-];
+  ...(Object.keys(columnWidths) as Array<keyof typeof columnWidths>),
+] as const;
 
 const meta = {
   title: 'Components/Column',
