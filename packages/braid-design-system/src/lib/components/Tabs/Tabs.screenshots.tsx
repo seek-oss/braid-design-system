@@ -21,7 +21,6 @@ const meta = {
     chromatic: {
       modes: makeBraidModes({
         viewports: ['mobile', 'wide'],
-        themes: ['wireframe'],
       }),
     },
   },

@@ -13,7 +13,10 @@ const meta: Meta<typeof Tiles> = {
   parameters: {
     layout: 'padded',
     chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
+      modes: makeBraidModes({
+        viewports: ['mobile', 'tablet'],
+        themes: ['wireframe'],
+      }),
     },
   },
 };
