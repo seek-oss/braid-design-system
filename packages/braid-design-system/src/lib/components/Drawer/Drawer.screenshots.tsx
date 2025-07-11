@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ComponentScreenshot } from 'site/types';
 
-import { Placeholder } from '../../playroom/components';
+import { Placeholder, Spread } from '../../playroom/components';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
@@ -153,6 +153,26 @@ export const screenshots: ComponentScreenshot = {
             </Text>
           </DrawerContent>
         </Stack>
+      ),
+    },
+    {
+      label: 'Test: content should be spread',
+      gutter: false,
+      Container,
+      Example: () => (
+        <Box style={{ height: 500 }}>
+          <DrawerContent
+            title="Default test"
+            onClose={() => {}}
+            width="medium"
+            scrollLock={false}
+          >
+            <Spread space="none" direction="vertical">
+              <Text>Top of drawer</Text>
+              <Text>Bottom of drawer</Text>
+            </Spread>
+          </DrawerContent>
+        </Box>
       ),
     },
   ],
