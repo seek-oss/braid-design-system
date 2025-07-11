@@ -14,7 +14,6 @@ import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 import { Column } from '../../Column/Column';
-import { Columns } from '../../Columns/Columns';
 import { Heading } from '../../Heading/Heading';
 import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
 import { Stack } from '../../Stack/Stack';
@@ -168,7 +167,12 @@ export const ModalContent = ({
             ]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <Stack space="large">
+            <Box
+              height="full"
+              display="flex"
+              gap="large"
+              flexDirection="column"
+            >
               {illustration ? (
                 <Stack space="medium" align="center">
                   <Box paddingX="gutter">{illustration}</Box>
@@ -182,7 +186,8 @@ export const ModalContent = ({
                   />
                 </Stack>
               ) : (
-                <Columns space="none">
+                // Replacing `Columns` with `Box` to avoid `height="full"`
+                <Box display="flex">
                   <Column>
                     <ModalContentHeader
                       title={title}
@@ -196,10 +201,10 @@ export const ModalContent = ({
                   <Column width="content">
                     <Box width="touchable" />
                   </Column>
-                </Columns>
+                </Box>
               )}
               <Fragment>{children}</Fragment>
-            </Stack>
+            </Box>
           </Box>
         </RemoveScroll>
         <Box
