@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Badge, Inline, Heading, List, Text, Stack, Box, Tiles } from '../';
 import { LayoutTest } from '../../utils/LayoutTest';
 
+import { validBadgeTones, validBadgeWeights } from './Badge';
+
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 
 const textSizes = Object.keys(textSizeUntrimmed) as Array<
@@ -18,18 +20,11 @@ const meta = {
   argTypes: {
     tone: {
       control: 'select',
-      options: [
-        'positive',
-        'critical',
-        'caution',
-        'info',
-        'promote',
-        'neutral',
-      ],
+      options: validBadgeTones,
     },
     weight: {
       control: 'radio',
-      options: ['regular', 'strong'],
+      options: validBadgeWeights,
     },
     bleedY: {
       control: 'boolean',
@@ -69,7 +64,6 @@ export const BadgewithVerticalBleed: Story = {
     bleedY: true,
     children: 'New',
   },
-
   decorators: [
     (Story) => (
       <Inline space="xsmall" alignY="center">
@@ -286,21 +280,19 @@ export const TestBadgeshouldnotimpactlineheightoftext2: Story = {
 };
 
 export const Layout: Story = {
-  decorators: [
-    () => (
-      <Box maxWidth="xsmall">
-        <LayoutTest>
-          <Box>
-            <Badge tone="positive" weight="strong">
-              Lorem et veniam
-            </Badge>
-            <Badge tone="positive" weight="strong">
-              Culpa Lorem et veniam tempor eiusmod fugiat mollit cillum. Do
-              velit eu in.
-            </Badge>
-          </Box>
-        </LayoutTest>
-      </Box>
-    ),
-  ],
+  render: () => (
+    <Box maxWidth="xsmall">
+      <LayoutTest>
+        <Box>
+          <Badge tone="positive" weight="strong">
+            Lorem et veniam
+          </Badge>
+          <Badge tone="positive" weight="strong">
+            Culpa Lorem et veniam tempor eiusmod fugiat mollit cillum. Do velit
+            eu in.
+          </Badge>
+        </Box>
+      </LayoutTest>
+    </Box>
+  ),
 };

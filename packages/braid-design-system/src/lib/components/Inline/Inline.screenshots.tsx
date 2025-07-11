@@ -3,7 +3,8 @@ import { Fragment } from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
-import { Box, Inline } from '../';
+import { Box, Inline, Stack, Strong, Text } from '../';
+import { spaces } from '../../utils/docsHelpers';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const meta = {
@@ -22,11 +23,35 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Inline>;
 
+export const Space: Story = {
+  render: () => (
+    <Stack space="xlarge">
+      {spaces.map((space) => (
+        <Stack space="small" key={space}>
+          <Text size="xsmall" tone="secondary">
+            Space: <Strong>{space}</Strong>
+          </Text>
+          <Inline space={space}>
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+            <Placeholder width={48} height={48} />
+          </Inline>
+        </Stack>
+      ))}
+    </Stack>
+  ),
+};
+
 export const ResponsiveSpace: Story = {
   name: "Responsive space, e.g. ['xxsmall', 'medium']",
   render: () => (
     <Inline space={['xxsmall', 'medium']}>
-      <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
@@ -53,7 +78,6 @@ export const AlignCenter: Story = {
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
-      <Placeholder width={48} height={48} />
     </Inline>
   ),
 };
@@ -71,7 +95,6 @@ export const AlignRight: Story = {
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
-      <Placeholder width={48} height={48} />
     </Inline>
   ),
 };
@@ -80,7 +103,6 @@ export const ResponsiveAlignment: Story = {
   name: 'Responsive alignment (e.g. center on mobile, left from tablet upwards)',
   render: () => (
     <Inline space="small" align={['center', 'left']}>
-      <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />
       <Placeholder width={48} height={48} />

@@ -16,7 +16,8 @@ import {
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-import type { ButtonProps } from './Button';
+import { buttonSizes, buttonVariants, type ButtonProps } from './Button';
+import { buttonTones } from './buttonTones';
 
 const meta = {
   title: 'Components/Button',
@@ -29,13 +30,13 @@ const meta = {
   argTypes: {
     tone: {
       control: 'select',
-      options: ['brandAccent', 'critical', 'formAccent', 'neutral'],
+      options: buttonTones,
     },
     variant: {
       control: 'select',
-      options: ['solid', 'ghost', 'soft', 'transparent'],
+      options: buttonVariants,
     },
-    size: { control: 'radio', options: ['standard', 'small'] },
+    size: { control: 'radio', options: buttonSizes },
     bleed: { control: 'boolean' },
     children: { control: 'text' },
   },

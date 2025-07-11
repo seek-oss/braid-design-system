@@ -9,7 +9,9 @@ const meta = {
   title: 'Components/PageBlock',
   component: PageBlock,
   parameters: {
-    chromatic: makeBraidModes({ viewports: ['mobile', 'wide'] }),
+    chromatic: {
+      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
+    },
   },
   argTypes: {
     width: {
