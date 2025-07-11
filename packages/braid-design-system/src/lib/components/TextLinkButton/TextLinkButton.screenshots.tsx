@@ -13,11 +13,11 @@ type Story = StoryObj<typeof TextLinkButton>;
 
 export const Default: Story = {
   args: {
-    children: 'is actually a span with an ARIA role of button.',
+    children: 'is actually a span with an ARIA role of button',
   },
   decorators: (Story) => (
     <Text>
-      The link in this sentence <Story />
+      The link in this sentence <Story />.
     </Text>
   ),
 };
@@ -26,7 +26,7 @@ export const WeightWeak: Story = {
   name: 'Weight weak',
   args: {
     weight: 'weak',
-    children: 'is actually a span with an ARIA role of button.',
+    children: 'is actually a span with an ARIA role of button',
   },
   decorators: (Story) => (
     <Text>

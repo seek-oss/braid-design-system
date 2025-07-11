@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import type { Decorator, Meta, StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
 
 import { makeBraidModes } from 'braid-storybook/modes';
 
-import { Pagination } from '../';
+import { Pagination, Box } from '../';
 import type { LinkProps } from '../Link/Link';
 
 import { defaultPageLimit } from './Pagination';
@@ -149,15 +149,19 @@ export const SecondLastPageWithMorePages: Story = {
   },
 };
 
+const SurfaceBackgroundDecorator: Decorator = (Story) => (
+  <Box background="surface">
+    <Story />
+  </Box>
+);
+
 export const OnASurface: Story = {
   name: 'On a surface',
   args: {
     page: 1,
     total: defaultPageLimit - 3,
   },
-  parameters: {
-    backgrounds: { default: 'surface' },
-  },
+  decorators: [SurfaceBackgroundDecorator],
 };
 
 export const PageLimitOneFirstPage: Story = {
@@ -167,9 +171,7 @@ export const PageLimitOneFirstPage: Story = {
     total: 10,
     pageLimit: 1,
   },
-  parameters: {
-    backgrounds: { default: 'surface' },
-  },
+  decorators: [SurfaceBackgroundDecorator],
 };
 
 export const PageLimitOneLastPage: Story = {
@@ -179,9 +181,7 @@ export const PageLimitOneLastPage: Story = {
     total: 10,
     pageLimit: 1,
   },
-  parameters: {
-    backgrounds: { default: 'surface' },
-  },
+  decorators: [SurfaceBackgroundDecorator],
 };
 
 export const PageLimitTwoFirstPage: Story = {
@@ -191,9 +191,7 @@ export const PageLimitTwoFirstPage: Story = {
     total: 10,
     pageLimit: 2,
   },
-  parameters: {
-    backgrounds: { default: 'surface' },
-  },
+  decorators: [SurfaceBackgroundDecorator],
 };
 
 export const PageLimitTwoLastPage: Story = {
@@ -203,9 +201,7 @@ export const PageLimitTwoLastPage: Story = {
     total: 10,
     pageLimit: 2,
   },
-  parameters: {
-    backgrounds: { default: 'surface' },
-  },
+  decorators: [SurfaceBackgroundDecorator],
 };
 
 export const PageLimitThreeFirstPage: Story = {
@@ -215,9 +211,7 @@ export const PageLimitThreeFirstPage: Story = {
     total: 10,
     pageLimit: 3,
   },
-  parameters: {
-    backgrounds: { default: 'surface' },
-  },
+  decorators: [SurfaceBackgroundDecorator],
 };
 
 export const PageLimitThreeLastPage: Story = {
@@ -227,7 +221,5 @@ export const PageLimitThreeLastPage: Story = {
     total: 10,
     pageLimit: 3,
   },
-  parameters: {
-    backgrounds: { default: 'surface' },
-  },
+  decorators: [SurfaceBackgroundDecorator],
 };

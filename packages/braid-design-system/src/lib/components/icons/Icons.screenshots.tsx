@@ -126,16 +126,18 @@ export const OverrideAutoTone: Story = {
 export const AutoToneWithBackgroundContrast: Story = {
   name: 'Auto Tone with Background Contrast (via TextContext)',
   render: () => (
-    <Stack space="medium">
-      <Text>Default:</Text>
-      <Text>
-        <Icons />
-      </Text>
-      <Text>Explicitly positive:</Text>
-      <Text>
-        <Icons tone="positive" />
-      </Text>
-    </Stack>
+    <Box background="brand" padding="gutter">
+      <Stack space="medium">
+        <Text>Default:</Text>
+        <Text>
+          <Icons />
+        </Text>
+        <Text>Explicitly positive:</Text>
+        <Text>
+          <Icons tone="positive" />
+        </Text>
+      </Stack>
+    </Box>
   ),
 };
 

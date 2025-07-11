@@ -18,17 +18,17 @@ import {
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-const textSizes = ['xsmall', 'small', 'standard', 'large'] as const;
+import { heading, tone, textSizeTrimmed } from '../../css/typography.css';
+
+const textSizes = [
+  undefined, // test default case
+  ...(Object.keys(textSizeTrimmed) as Array<keyof typeof textSizeTrimmed>),
+];
 const textTones = [
-  'neutral',
-  'secondary',
-  'critical',
-  'caution',
-  'positive',
-  'promote',
-  'info',
-] as const;
-const headingLevels = ['1', '2', '3', '4'] as const;
+  undefined, // test default case
+  ...(Object.keys(tone) as Array<keyof typeof tone>),
+];
+const headingLevels = Object.keys(heading) as Array<keyof typeof heading>;
 
 const meta: Meta<typeof TextLink> = {
   title: 'Components/TextLink',
