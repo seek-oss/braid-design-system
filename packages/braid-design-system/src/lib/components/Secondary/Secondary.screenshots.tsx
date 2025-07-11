@@ -1,49 +1,65 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Secondary, Text, IconHome, Heading } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Inside Text',
-      Example: () => (
-        <Text>
-          A <Secondary>secondary</Secondary> example.
-        </Text>
-      ),
-    },
-    {
-      label: 'Inside Text with an icon',
-      Example: () => (
-        <Text>
-          A{' '}
-          <Secondary>
-            secondary <IconHome />
-          </Secondary>{' '}
-          example.
-        </Text>
-      ),
-    },
-    {
-      label: 'Inside Heading',
-      Example: () => (
-        <Heading level="3">
-          A <Secondary>secondary</Secondary> example.
-        </Heading>
-      ),
-    },
-    {
-      label: 'Inside Heading with an icon',
-      Example: () => (
-        <Heading level="3">
-          A{' '}
-          <Secondary>
-            secondary <IconHome />
-          </Secondary>{' '}
-          example.
-        </Heading>
-      ),
-    },
-  ],
+const meta = {
+  title: 'Components/Secondary',
+  component: Secondary,
+} satisfies Meta<typeof Secondary>;
+
+export default meta;
+type Story = StoryObj<typeof Secondary>;
+
+export const InsideText: Story = {
+  args: {
+    children: 'secondary',
+  },
+  decorators: (Story) => (
+    <Text>
+      A <Story /> example.
+    </Text>
+  ),
+};
+
+export const InsideTextwithanicon: Story = {
+  name: 'Inside Text with an icon',
+  args: {
+    children: (
+      <>
+        secondary <IconHome />
+      </>
+    ),
+  },
+  decorators: (Story) => (
+    <Text>
+      A <Story /> example.
+    </Text>
+  ),
+};
+
+export const InsideHeading: Story = {
+  args: {
+    children: 'secondary',
+  },
+  decorators: (Story) => (
+    <Heading level="3">
+      A <Story /> example.
+    </Heading>
+  ),
+};
+
+export const InsideHeadingwithanicon: Story = {
+  name: 'Inside Heading with an icon',
+  args: {
+    children: (
+      <>
+        secondary <IconHome />
+      </>
+    ),
+  },
+  decorators: (Story) => (
+    <Heading level="3">
+      A <Story /> example.
+    </Heading>
+  ),
 };

@@ -1,250 +1,273 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Box, ButtonIcon, Inline, Heading, IconBookmark, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { LayoutTest } from '../../utils/LayoutTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      background: 'surface',
-      Example: () => <ButtonIcon icon={<IconBookmark />} label="Bookmark" />,
+import {
+  buttonIconSizes,
+  buttonIconTones,
+  buttonIconVariants,
+} from './ButtonIcon';
+
+const meta = {
+  title: 'Components/ButtonIcon',
+  component: ButtonIcon,
+  argTypes: {
+    variant: { control: 'select', options: buttonIconVariants },
+    size: { control: 'select', options: buttonIconSizes },
+    tone: {
+      control: 'select',
+      options: buttonIconTones,
     },
-    {
-      label: 'Soft',
-      background: 'surface',
-      Example: () => (
-        <Inline space="large" alignY="center">
-          <ButtonIcon
-            variant="soft"
-            size="small"
-            icon={<IconBookmark />}
-            label="Small"
-          />
-          <ButtonIcon
-            variant="soft"
-            size="standard"
-            icon={<IconBookmark />}
-            label="Standard"
-          />
-          <ButtonIcon
-            variant="soft"
-            size="large"
-            icon={<IconBookmark />}
-            label="Large"
-          />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Soft - bleed on',
-      background: 'surface',
-      Example: () => (
-        <Box background="neutralLight" borderRadius="standard" padding="gutter">
-          <Box background="surface">
-            <Inline space="small" alignY="center">
-              <Heading level="2">Heading</Heading>
-              <ButtonIcon bleed icon={<IconBookmark />} label="Bookmark" />
-            </Inline>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Soft - bleed off',
-      background: 'surface',
-      Example: () => (
-        <Box background="neutralLight" borderRadius="standard" padding="gutter">
-          <Box background="surface">
-            <Inline space="small" alignY="center">
-              <Heading level="2">Heading</Heading>
-              <ButtonIcon
-                bleed={false}
-                icon={<IconBookmark />}
-                label="Bookmark"
-              />
-            </Inline>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Transparent',
-      background: 'surface',
-      Example: () => (
-        <Inline space="large" alignY="center">
-          <ButtonIcon
-            variant="transparent"
-            size="small"
-            icon={<IconBookmark />}
-            label="Small"
-          />
-          <ButtonIcon
-            variant="transparent"
-            size="standard"
-            icon={<IconBookmark />}
-            label="Standard"
-          />
-          <ButtonIcon
-            variant="transparent"
-            size="large"
-            icon={<IconBookmark />}
-            label="Large"
-          />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Tone - formAccent',
-      background: 'surface',
-      Example: () => (
-        <Inline space="large" alignY="center">
-          <ButtonIcon
-            variant="transparent"
-            tone="formAccent"
-            icon={<IconBookmark />}
-            label="Bookmark"
-          />
-          <ButtonIcon
-            variant="soft"
-            tone="formAccent"
-            icon={<IconBookmark />}
-            label="Bookmark"
-          />
-        </Inline>
-      ),
-    },
-    {
-      label: 'Virtual touch target',
-      Example: () => (
-        <Stack space="large" data={{ [debugTouchableAttrForDataProp]: '' }}>
-          <Inline space="large">
-            <ButtonIcon
-              variant="soft"
-              icon={<IconBookmark />}
-              label="Bookmark"
-              size="small"
-            />
-            <ButtonIcon
-              variant="soft"
-              icon={<IconBookmark />}
-              label="Bookmark"
-              size="standard"
-            />
-            <ButtonIcon
-              variant="soft"
-              icon={<IconBookmark />}
-              label="Bookmark"
-              size="large"
-            />
-          </Inline>
-          <Inline space="large">
-            <ButtonIcon
-              variant="transparent"
-              icon={<IconBookmark />}
-              label="Bookmark"
-              size="small"
-            />
-            <ButtonIcon
-              variant="transparent"
-              icon={<IconBookmark />}
-              label="Bookmark"
-              size="standard"
-            />
-            <ButtonIcon
-              variant="transparent"
-              icon={<IconBookmark />}
-              label="Bookmark"
-              size="large"
-            />
-          </Inline>
-        </Stack>
-      ),
-    },
-    {
-      label: 'Transparent - bleed on (default)',
-      background: 'surface',
-      Example: () => (
-        <Box background="neutralLight" borderRadius="standard" padding="gutter">
-          <Box background="surface">
-            <Inline space="small" alignY="center">
-              <Heading level="2">Heading</Heading>
-              <ButtonIcon
-                variant="transparent"
-                icon={<IconBookmark />}
-                label="Bookmark"
-              />
-            </Inline>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Transparent - bleed off',
-      background: 'surface',
-      Example: () => (
-        <Box background="neutralLight" borderRadius="standard" padding="gutter">
-          <Box background="surface">
-            <Inline space="small" alignY="center">
-              <Heading level="2">Heading</Heading>
-              <ButtonIcon
-                bleed={false}
-                variant="transparent"
-                icon={<IconBookmark />}
-                label="Bookmark"
-              />
-            </Inline>
-          </Box>
-        </Box>
-      ),
-    },
-    {
-      label: 'Icon tone overrides button tone',
-      background: 'surface',
-      Example: () => (
+    bleed: { control: 'boolean' },
+    label: { control: 'text' },
+    id: { control: 'text' },
+  },
+} satisfies Meta<typeof ButtonIcon>;
+
+export default meta;
+
+type Story = StoryObj<typeof ButtonIcon>;
+
+export const Default: Story = {
+  args: {
+    icon: <IconBookmark />,
+    label: 'Bookmark',
+    id: '1',
+  },
+};
+
+export const Soft: Story = {
+  render: () => (
+    <Inline space="large" alignY="center">
+      <ButtonIcon
+        variant="soft"
+        size="small"
+        icon={<IconBookmark />}
+        label="Small"
+      />
+      <ButtonIcon
+        variant="soft"
+        size="standard"
+        icon={<IconBookmark />}
+        label="Standard"
+      />
+      <ButtonIcon
+        variant="soft"
+        size="large"
+        icon={<IconBookmark />}
+        label="Large"
+      />
+    </Inline>
+  ),
+};
+
+export const Softbleedon: Story = {
+  name: 'Soft - bleed on',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
         <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
+          <ButtonIcon bleed icon={<IconBookmark />} label="Bookmark" />
+        </Inline>
+      </Box>
+    </Box>
+  ),
+};
+
+export const Softbleedoff: Story = {
+  name: 'Soft - bleed off',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
+        <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
+          <ButtonIcon bleed={false} icon={<IconBookmark />} label="Bookmark" />
+        </Inline>
+      </Box>
+    </Box>
+  ),
+};
+
+export const Transparent: Story = {
+  render: () => (
+    <Inline space="large" alignY="center">
+      <ButtonIcon
+        variant="transparent"
+        size="small"
+        icon={<IconBookmark />}
+        label="Small"
+      />
+      <ButtonIcon
+        variant="transparent"
+        size="standard"
+        icon={<IconBookmark />}
+        label="Standard"
+      />
+      <ButtonIcon
+        variant="transparent"
+        size="large"
+        icon={<IconBookmark />}
+        label="Large"
+      />
+    </Inline>
+  ),
+};
+
+export const ToneformAccent: Story = {
+  name: 'Tone - formAccent',
+  render: () => (
+    <Inline space="large" alignY="center">
+      <ButtonIcon
+        variant="transparent"
+        tone="formAccent"
+        icon={<IconBookmark />}
+        label="Bookmark"
+      />
+      <ButtonIcon
+        variant="soft"
+        tone="formAccent"
+        icon={<IconBookmark />}
+        label="Bookmark"
+      />
+    </Inline>
+  ),
+};
+
+export const Virtualtouchtarget: Story = {
+  name: 'Virtual touch target',
+  render: () => (
+    <Stack
+      space="large"
+      data={{
+        [debugTouchableAttrForDataProp]: '',
+      }}
+    >
+      <Inline space="large">
+        <ButtonIcon
+          variant="soft"
+          icon={<IconBookmark />}
+          label="Bookmark"
+          size="small"
+        />
+        <ButtonIcon
+          variant="soft"
+          icon={<IconBookmark />}
+          label="Bookmark"
+          size="standard"
+        />
+        <ButtonIcon
+          variant="soft"
+          icon={<IconBookmark />}
+          label="Bookmark"
+          size="large"
+        />
+      </Inline>
+      <Inline space="large">
+        <ButtonIcon
+          variant="transparent"
+          icon={<IconBookmark />}
+          label="Bookmark"
+          size="small"
+        />
+        <ButtonIcon
+          variant="transparent"
+          icon={<IconBookmark />}
+          label="Bookmark"
+          size="standard"
+        />
+        <ButtonIcon
+          variant="transparent"
+          icon={<IconBookmark />}
+          label="Bookmark"
+          size="large"
+        />
+      </Inline>
+    </Stack>
+  ),
+};
+
+export const Transparentbleedondefault: Story = {
+  name: 'Transparent - bleed on (default)',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
+        <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
           <ButtonIcon
-            bleed={false}
             variant="transparent"
-            icon={<IconBookmark active tone="brandAccent" />}
-            label="Bookmark"
-          />
-          <ButtonIcon
-            bleed={false}
-            variant="transparent"
-            tone="formAccent"
-            icon={<IconBookmark active tone="brandAccent" />}
+            icon={<IconBookmark />}
             label="Bookmark"
           />
         </Inline>
-      ),
-    },
-    {
-      label: 'Contrast',
-      Example: () => (
-        <BackgroundContrastTest>
-          <Inline space="medium">
-            <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
-            <ButtonIcon
-              variant="transparent"
-              bleed={false}
-              icon={<IconBookmark />}
-              label="Bookmark"
-            />
-          </Inline>
-        </BackgroundContrastTest>
-      ),
-    },
-    {
-      label: 'Layout',
-      Example: () => (
-        <LayoutTest>
-          <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
-        </LayoutTest>
-      ),
-    },
-  ],
+      </Box>
+    </Box>
+  ),
+};
+
+export const Transparentbleedoff: Story = {
+  name: 'Transparent - bleed off',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
+        <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
+          <ButtonIcon
+            bleed={false}
+            variant="transparent"
+            icon={<IconBookmark />}
+            label="Bookmark"
+          />
+        </Inline>
+      </Box>
+    </Box>
+  ),
+};
+
+export const Icontoneoverridesbuttontone: Story = {
+  name: 'Icon tone overrides button tone',
+  render: () => (
+    <Inline space="small" alignY="center">
+      <ButtonIcon
+        bleed={false}
+        variant="transparent"
+        icon={<IconBookmark active tone="brandAccent" />}
+        label="Bookmark"
+      />
+      <ButtonIcon
+        bleed={false}
+        variant="transparent"
+        tone="formAccent"
+        icon={<IconBookmark active tone="brandAccent" />}
+        label="Bookmark"
+      />
+    </Inline>
+  ),
+};
+
+export const Contrast: Story = {
+  render: () => (
+    <BackgroundContrastTest>
+      <Inline space="medium">
+        <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
+        <ButtonIcon
+          variant="transparent"
+          bleed={false}
+          icon={<IconBookmark />}
+          label="Bookmark"
+        />
+      </Inline>
+    </BackgroundContrastTest>
+  ),
+};
+
+export const Layout: Story = {
+  render: () => (
+    <LayoutTest>
+      <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
+    </LayoutTest>
+  ),
 };

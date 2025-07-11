@@ -38,8 +38,9 @@ export const buttonVariants = [
   'soft',
   'transparent',
 ] as const;
+export const buttonSizes = ['standard', 'small'] as const;
 
-type ButtonSize = 'standard' | 'small';
+type ButtonSize = (typeof buttonSizes)[number];
 type ButtonTone = (typeof buttonTones)[number];
 type ButtonVariant = (typeof buttonVariants)[number];
 export interface ButtonStyleProps {

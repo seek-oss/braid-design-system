@@ -18,7 +18,7 @@ import * as styles from './Badge.css';
 
 type ValueOrArray<T> = T | T[];
 
-const validTones = [
+export const validBadgeTones = [
   'promote',
   'info',
   'neutral',
@@ -26,11 +26,12 @@ const validTones = [
   'caution',
   'critical',
 ] as const;
-type Tone = (typeof validTones)[number];
-type BadgeWeight = 'strong' | 'regular';
+type Tone = (typeof validBadgeTones)[number];
+export const validBadgeWeights = ['strong', 'regular'] as const;
+type Weight = (typeof validBadgeWeights)[number];
 export interface BadgeProps {
   tone?: Tone;
-  weight?: BadgeWeight;
+  weight?: Weight;
   bleedY?: boolean;
   title?: string;
   children: ValueOrArray<string | number>;
@@ -78,7 +79,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     ref,
   ) => {
     assert(
-      validTones.indexOf(tone) >= 0,
+      validBadgeTones.indexOf(tone) >= 0,
       `Badge tone of "${tone}" is not valid.`,
     );
 

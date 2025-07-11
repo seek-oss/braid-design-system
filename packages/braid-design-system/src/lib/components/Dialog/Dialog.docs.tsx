@@ -1,5 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import type { ComponentProps, ReactElement } from 'react';
+import type { ComponentProps, ReactElement, ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {
@@ -18,10 +18,12 @@ import {
   TextDropdown,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { externalGutter } from '../private/Modal/ModalExternalGutter';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { DialogContent } from './Dialog';
-import { DialogPreview } from './Dialog.screenshots';
+
+import * as styles from '../private/Modal/Modal.css';
 
 const Screen = () => (
   <Box
@@ -39,6 +41,15 @@ const dialogPreviewPropsFromSourceValue = (element: DialogElement) => ({
   onClose: () => {},
   scrollLock: false,
 });
+
+const DialogPreview = ({ children }: { children: ReactNode }) => (
+  <Box position="relative">
+    <Box position="absolute" inset={0} className={styles.backdrop} />
+    <Box position="relative" zIndex="modal" padding={externalGutter}>
+      {children}
+    </Box>
+  </Box>
+);
 
 const docs: ComponentDocs = {
   category: 'Content',

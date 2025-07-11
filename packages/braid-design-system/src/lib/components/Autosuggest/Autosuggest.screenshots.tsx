@@ -1,260 +1,199 @@
-import { type ReactNode, useState } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { useArgs } from 'storybook/preview-api';
 
 import { Autosuggest, filterSuggestions, IconSearch, Stack } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
-
-export const makeSuggestions = (
-  suggestions: Array<string | { text: string; description?: string }>,
-  initialValue = 0,
-) =>
-  suggestions.map((suggestion, i) => ({
-    ...(typeof suggestion === 'string' ? { text: suggestion } : suggestion),
-    value: i + initialValue,
-  }));
-
-interface Value {
+interface AutosuggestValue<Value = any> {
   text: string;
-  value?: number;
+  description?: string;
+  value?: Value;
 }
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Standard suggestions',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState<Value>({ text: '' });
-        const [showRecent, setShowRecent] = useState(true);
+interface SuggestionItem {
+  text: string;
+  description?: string;
+  onClear?: (value: AutosuggestValue) => void;
+  clearLabel?: string;
+}
 
-        return (
-          <Autosuggest
-            label="I like to eat"
-            value={value}
-            onChange={setValue}
-            onClear={() => setValue({ text: '' })}
-            suggestions={filterSuggestions([
-              ...(showRecent && value.text === ''
-                ? [
-                    {
-                      text: 'Apples',
-                      onClear: () => setShowRecent(false),
-                    },
-                  ]
-                : []),
-              ...makeSuggestions([
-                ...(value.text !== '' ? ['Apples'] : []),
-                'Bananas',
-                'Broccoli',
-                'Carrots',
-              ]),
-            ])}
-          />
-        );
-      },
-    },
-    {
-      label: 'Standard suggestions with automatic selection',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState<Value>({ text: '' });
+const makeSuggestions = (items: string[]): SuggestionItem[] =>
+  items.map((text) => ({ text }));
 
-        return (
-          <Autosuggest
-            automaticSelection
-            label="I like to eat"
-            value={value}
-            onChange={setValue}
-            onClear={() => setValue({ text: '' })}
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        );
-      },
-    },
-    {
-      label: 'Grouped suggestions',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState<Value>({ text: '' });
+const defaultFruits = ['Apples', 'Bananas', 'Broccoli', 'Carrots'];
 
-        return (
-          <Autosuggest
-            label="I like to eat"
-            value={value}
-            onChange={setValue}
-            onClear={() => setValue({ text: '' })}
-            suggestions={filterSuggestions([
-              {
-                label: 'Fruit',
-                suggestions: makeSuggestions(['Apples', 'Bananas']),
-              },
-              {
-                label: 'Vegetables',
-                suggestions: makeSuggestions(['Broccoli', 'Carrots'], 2),
-              },
-            ])}
-          />
-        );
-      },
-    },
-    {
-      label: 'Standard suggestions with an icon',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState<Value>({ text: '' });
+const WithAutosuggestState = (storyFn: any) => {
+  const [args, updateArgs] = useArgs();
 
-        return (
-          <Autosuggest
-            label="I like to eat"
-            value={value}
-            icon={<IconSearch />}
-            onChange={setValue}
-            onClear={() => setValue({ text: '' })}
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        );
-      },
-    },
-    {
-      label: 'Critical tone',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState<Value>({ text: '' });
+  const handleChange = (newValue: AutosuggestValue) => {
+    updateArgs({ value: newValue });
+  };
 
-        return (
-          <Autosuggest
-            label="I like to eat"
-            value={value}
-            onChange={setValue}
-            onClear={() => setValue({ text: '' })}
-            tone="critical"
-            message="You must make a selection"
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        );
-      },
-    },
-    {
-      label: 'Caution tone',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState<Value>({ text: '' });
+  const handleClear = () => {
+    updateArgs({ value: { text: '' } });
+  };
 
-        return (
-          <Autosuggest
-            label="I like to eat"
-            value={value}
-            onChange={setValue}
-            onClear={() => setValue({ text: '' })}
-            tone="caution"
-            message="Caution message"
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        );
-      },
+  return storyFn({
+    args: {
+      ...args,
+      onChange: handleChange,
+      onClear: handleClear,
     },
-    {
-      label: 'Autosuggest when disabled',
-      Container,
-      Example: ({ handler }) => (
-        <Stack space="gutter">
-          <Autosuggest
-            label="With no value or placeholder"
-            value={{ text: '' }}
-            disabled={true}
-            onChange={handler}
-            suggestions={[]}
-          />
-          <Autosuggest
-            label="With value and no placeholder"
-            value={{ text: 'Text value' }}
-            disabled={true}
-            onChange={handler}
-            suggestions={[]}
-          />
-          <Autosuggest
-            label="With no value and a placeholder"
-            value={{ text: '' }}
-            disabled={true}
-            placeholder="Placeholder text"
-            onChange={handler}
-            suggestions={[]}
-          />
-          <Autosuggest
-            label="With value and a placeholder"
-            value={{ text: 'Text value' }}
-            disabled={true}
-            placeholder="Placeholder text"
-            onChange={handler}
-            suggestions={[]}
-          />
-          <Autosuggest
-            label="With critical tone"
-            value={{ text: '' }}
-            disabled={true}
-            tone="critical"
-            onChange={handler}
-            suggestions={[]}
-          />
-          <Autosuggest
-            label="With critical tone and message"
-            value={{ text: '' }}
-            disabled={true}
-            tone="critical"
-            message="Message"
-            onChange={handler}
-            suggestions={[]}
-          />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Autosuggest with no visual label',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState<Value>({ text: '' });
+  });
+};
 
-        return (
-          <Autosuggest
-            aria-label="I like to eat"
-            value={value}
-            onChange={setValue}
-            onClear={() => setValue({ text: '' })}
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        );
+const meta = {
+  title: 'Components/Autosuggest',
+  component: Autosuggest,
+  argTypes: {
+    label: { control: 'text' },
+    disabled: { control: 'boolean' },
+  },
+  args: {
+    value: { text: '' },
+    label: 'I like to eat',
+    suggestions: filterSuggestions(makeSuggestions(defaultFruits)),
+  },
+  decorators: [WithAutosuggestState],
+} satisfies Meta<typeof Autosuggest>;
+
+export default meta;
+
+type Story = StoryObj<typeof Autosuggest>;
+
+export const StandardSuggestions: Story = {
+  parameters: {},
+};
+
+export const StandardSuggestionsWithAutomaticSelection: Story = {
+  args: {
+    automaticSelection: true,
+  },
+  parameters: {},
+};
+
+export const GroupedSuggestions: Story = {
+  args: {
+    suggestions: filterSuggestions([
+      {
+        label: 'Fruit',
+        suggestions: makeSuggestions(['Apples', 'Bananas']),
       },
-    },
-    {
-      label: 'Contrast',
-      Container,
-      Example: ({ handler }) => (
-        <BackgroundContrastTest>
-          <Autosuggest
-            label="I like to eat"
-            value={{ text: '' }}
-            onChange={handler}
-            suggestions={filterSuggestions(
-              makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
-            )}
-          />
-        </BackgroundContrastTest>
-      ),
-    },
+      {
+        label: 'Vegetables',
+        suggestions: makeSuggestions(['Broccoli', 'Carrots']),
+      },
+    ]),
+  },
+};
+
+export const StandardSuggestionsWithAnIcon: Story = {
+  args: {
+    label: 'I like to eat',
+    icon: <IconSearch />,
+  },
+};
+
+export const CriticalTone: Story = {
+  args: {
+    tone: 'critical',
+    message: 'You must make a selection',
+  },
+};
+
+export const CautionTone: Story = {
+  args: {
+    tone: 'caution',
+    message: 'Please make a selection',
+  },
+};
+
+export const AutosuggestWhenDisabled: Story = {
+  render: ({ onChange: handler }) => (
+    <Stack space="gutter">
+      <Autosuggest
+        label="With no value or placeholder"
+        value={{
+          text: '',
+        }}
+        disabled={true}
+        onChange={handler}
+        suggestions={[]}
+      />
+      <Autosuggest
+        label="With value and no placeholder"
+        value={{
+          text: 'Text value',
+        }}
+        disabled={true}
+        onChange={handler}
+        suggestions={[]}
+      />
+      <Autosuggest
+        label="With no value and a placeholder"
+        value={{
+          text: '',
+        }}
+        disabled={true}
+        placeholder="Placeholder text"
+        onChange={handler}
+        suggestions={[]}
+      />
+      <Autosuggest
+        label="With value and a placeholder"
+        value={{
+          text: 'Text value',
+        }}
+        disabled={true}
+        placeholder="Placeholder text"
+        onChange={handler}
+        suggestions={[]}
+      />
+      <Autosuggest
+        label="With critical tone"
+        value={{
+          text: '',
+        }}
+        disabled={true}
+        tone="critical"
+        onChange={handler}
+        suggestions={[]}
+      />
+      <Autosuggest
+        label="With critical tone and message"
+        value={{
+          text: '',
+        }}
+        disabled={true}
+        tone="critical"
+        message="Message"
+        onChange={handler}
+        suggestions={[]}
+      />
+    </Stack>
+  ),
+};
+
+export const AutosuggestWithNoVisualLabel: Story = {
+  args: {
+    label: undefined,
+    'aria-label': 'I like to eat',
+  },
+};
+
+export const Contrast: Story = {
+  args: {
+    label: 'I like to eat',
+    suggestions: filterSuggestions(
+      makeSuggestions(['Apples', 'Bananas', 'Broccoli', 'Carrots']),
+    ),
+  },
+
+  decorators: [
+    (Story) => (
+      <BackgroundContrastTest>
+        <Story />
+      </BackgroundContrastTest>
+    ),
   ],
 };

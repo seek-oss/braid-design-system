@@ -1,72 +1,93 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Notice, Text, Stack, TextLink, List } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Info Notice',
-      Example: () => (
-        <Notice tone="info">
-          <Text>This is an important piece of information.</Text>
-        </Notice>
-      ),
+const meta = {
+  title: 'Components/Notice',
+  component: Notice,
+  argTypes: {
+    tone: {
+      control: 'select',
+      options: ['info', 'promote', 'positive', 'critical'],
+      description: 'Sets the visual tone of the notice',
     },
-    {
-      label: 'Notice with rich content',
-      Example: () => (
-        <Notice tone="info">
-          <Stack space="medium">
-            <Text>
-              This is an important piece of information with a{' '}
-              <TextLink href="#">TextLink.</TextLink>
-            </Text>
-            <List space="medium">
-              <Text>Bullet 1</Text>
-              <Text>Bullet 2</Text>
-              <Text>Bullet 3</Text>
-            </List>
-          </Stack>
-        </Notice>
-      ),
+    children: {
+      control: 'text',
+      description: 'Content to display within the notice',
     },
-    {
-      label: 'Promote Notice',
-      Example: () => (
-        <Notice tone="promote">
-          <Text>This is a promoted piece of information.</Text>
-        </Notice>
-      ),
-    },
-    {
-      label: 'Critical Notice',
-      Example: () => (
-        <Notice tone="critical">
-          <Text>This is a critical piece of information.</Text>
-        </Notice>
-      ),
-    },
-    {
-      label: 'Positive Notice',
-      Example: () => (
-        <Notice tone="positive">
-          <Text>This is a positive piece of information.</Text>
-        </Notice>
-      ),
-    },
-    {
-      label: 'Test: should be left aligned in a centered Stack',
-      Example: () => (
-        <Stack space="large" align="center">
-          <Notice tone="positive">
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Pellentesque sodales hendrerit nulla.
-            </Text>
-          </Notice>
-        </Stack>
-      ),
-    },
-  ],
+  },
+  args: {
+    tone: 'info',
+    children: <Text>This is a notice message.</Text>,
+  },
+} satisfies Meta<typeof Notice>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const InfoNotice: Story = {
+  args: {
+    tone: 'info',
+    children: <Text>This is an important piece of information.</Text>,
+  },
+};
+
+export const Noticewithrichcontent: Story = {
+  name: 'Notice with rich content',
+  args: {
+    tone: 'info',
+    children: (
+      <Stack space="medium">
+        <Text>
+          This is an important piece of information with a{' '}
+          <TextLink href="#">TextLink.</TextLink>
+        </Text>
+        <List space="medium">
+          <Text>Bullet 1</Text>
+          <Text>Bullet 2</Text>
+          <Text>Bullet 3</Text>
+        </List>
+      </Stack>
+    ),
+  },
+};
+
+export const PromoteNotice: Story = {
+  args: {
+    tone: 'promote',
+    children: <Text>This is a promoted piece of information.</Text>,
+  },
+};
+
+export const CriticalNotice: Story = {
+  args: {
+    tone: 'critical',
+    children: <Text>This is a critical piece of information.</Text>,
+  },
+};
+
+export const PositiveNotice: Story = {
+  args: {
+    tone: 'positive',
+    children: <Text>This is a positive piece of information.</Text>,
+  },
+};
+
+export const TestshouldbeleftalignedinacenteredStack: Story = {
+  name: 'Test: should be left aligned in a centered Stack',
+  args: {
+    tone: 'positive',
+    children: (
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        sodales hendrerit nulla.
+      </Text>
+    ),
+  },
+  decorators: (Story) => (
+    <Stack space="large" align="center">
+      <Story />
+    </Stack>
+  ),
 };

@@ -1,224 +1,169 @@
-import { type ReactNode, useState } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { PasswordField, Stack, TextLink } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
+const meta = {
+  title: 'Components/PasswordField',
+  component: PasswordField,
+  args: {
+    onChange: () => {},
+  },
+} satisfies Meta<typeof PasswordField>;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'PasswordField',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with message',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            value={value}
-            message={`e.g. Cannot be "password"`}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with secondary label',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            secondaryLabel="required"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with tertiary label',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            tertiaryLabel={<TextLink href="#">Forgot Password?</TextLink>}
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with no visual label',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            aria-label="Password"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with description',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-            description="Must be 8 characters long and include a capital letter, a number and a symbol"
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with a description and no visual label',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            aria-label="Password"
-            description="Must be 8 characters long and include a capital letter, a number and a symbol"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with critical message',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            tone="critical"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-            message="Not strong enough"
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with positive message',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-            message="Strong!"
-            tone="positive"
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField with caution message',
-      Container,
-      Example: () => {
-        const [value, setValue] = useState('qwerty');
-        return (
-          <PasswordField
-            label="Password"
-            value={value}
-            onChange={(ev) => setValue(ev.currentTarget.value)}
-            message="Caution message"
-            tone="caution"
-          />
-        );
-      },
-    },
-    {
-      label: 'PasswordField disabled',
-      Container,
-      Example: ({ handler }) => (
-        <Stack space="gutter">
-          <PasswordField
-            label="With no value or placeholder"
-            value=""
-            disabled={true}
-            onChange={handler}
-          />
-          <PasswordField
-            label="With value and no placeholder"
-            value="Text value"
-            disabled={true}
-            onChange={handler}
-          />
-          <PasswordField
-            label="With no value and a placeholder"
-            value=""
-            disabled={true}
-            placeholder="Placeholder text"
-            onChange={handler}
-          />
-          <PasswordField
-            label="With value and a placeholder"
-            value="Text value"
-            disabled={true}
-            placeholder="Placeholder text"
-            onChange={handler}
-          />
-          <PasswordField
-            label="With critical tone"
-            value=""
-            disabled={true}
-            tone="critical"
-            onChange={handler}
-          />
-          <PasswordField
-            label="With critical tone and message"
-            value=""
-            disabled={true}
-            tone="critical"
-            message="Message"
-            onChange={handler}
-          />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Contrast',
-      Container,
-      Example: ({ handler }) => (
-        <BackgroundContrastTest>
-          <PasswordField label="Label" onChange={handler} value="Text value" />
-        </BackgroundContrastTest>
-      ),
-    },
-  ],
+export default meta;
+type Story = StoryObj<typeof PasswordField>;
+
+export const PasswordFieldStory: Story = {
+  name: 'PasswordField',
+  args: {
+    label: 'Password',
+    value: 'qwerty',
+  },
+};
+
+export const PasswordFieldwithmessage: Story = {
+  name: 'PasswordField with message',
+  args: {
+    label: 'Password',
+    value: 'qwerty',
+    message: `e.g. Cannot be "password"`,
+  },
+};
+
+export const PasswordFieldwithsecondarylabel: Story = {
+  name: 'PasswordField with secondary label',
+  args: {
+    label: 'Password',
+    secondaryLabel: 'required',
+    value: 'qwerty',
+  },
+};
+
+export const PasswordFieldwithtertiarylabel: Story = {
+  name: 'PasswordField with tertiary label',
+  args: {
+    label: 'Password',
+    tertiaryLabel: <TextLink href="#">Forgot Password?</TextLink>,
+    value: 'qwerty',
+  },
+};
+
+export const PasswordFieldwithnovisuallabel: Story = {
+  name: 'PasswordField with no visual label',
+  args: {
+    'aria-label': 'Password',
+    value: 'qwerty',
+  },
+};
+
+export const PasswordFieldwithdescription: Story = {
+  name: 'PasswordField with description',
+  args: {
+    label: 'Password',
+    value: 'qwerty',
+    description:
+      'Must be 8 characters long and include a capital letter, a number and a symbol',
+  },
+};
+
+export const PasswordFieldwithadescriptionandnovisuallabel: Story = {
+  name: 'PasswordField with a description and no visual label',
+  args: {
+    'aria-label': 'Password',
+    description:
+      'Must be 8 characters long and include a capital letter, a number and a symbol',
+    value: 'qwerty',
+  },
+};
+
+export const PasswordFieldwithcriticalmessage: Story = {
+  name: 'PasswordField with critical message',
+  args: {
+    label: 'Password',
+    tone: 'critical',
+    value: 'qwerty',
+    message: 'Not strong enough',
+  },
+};
+
+export const PasswordFieldwithpositivemessage: Story = {
+  name: 'PasswordField with positive message',
+  args: {
+    label: 'Password',
+    value: 'qwerty',
+    message: 'Strong!',
+    tone: 'positive',
+  },
+};
+
+export const PasswordFieldwithcautionmessage: Story = {
+  name: 'PasswordField with caution message',
+  args: {
+    label: 'Password',
+    value: 'qwerty',
+    message: 'Caution message',
+    tone: 'caution',
+  },
+};
+
+export const PasswordFielddisabled: Story = {
+  name: 'PasswordField disabled',
+  render: () => (
+    <Stack space="gutter">
+      <PasswordField
+        label="With no value or placeholder"
+        value=""
+        disabled={true}
+        onChange={() => {}}
+      />
+      <PasswordField
+        label="With value and no placeholder"
+        value="Text value"
+        disabled={true}
+        onChange={() => {}}
+      />
+      <PasswordField
+        label="With no value and a placeholder"
+        value=""
+        disabled={true}
+        placeholder="Placeholder text"
+        onChange={() => {}}
+      />
+      <PasswordField
+        label="With value and a placeholder"
+        value="Text value"
+        disabled={true}
+        placeholder="Placeholder text"
+        onChange={() => {}}
+      />
+      <PasswordField
+        label="With critical tone"
+        value=""
+        disabled={true}
+        tone="critical"
+        onChange={() => {}}
+      />
+      <PasswordField
+        label="With critical tone and message"
+        value=""
+        disabled={true}
+        tone="critical"
+        message="Message"
+        onChange={() => {}}
+      />
+    </Stack>
+  ),
+};
+
+export const Contrast: Story = {
+  args: {
+    label: 'Label',
+    value: 'Text value',
+  },
+  decorators: (Story) => (
+    <BackgroundContrastTest>
+      <Story />
+    </BackgroundContrastTest>
+  ),
 };
