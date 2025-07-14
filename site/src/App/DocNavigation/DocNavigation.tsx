@@ -34,9 +34,6 @@ import {
 
 import * as styles from './DocNavigation.css';
 
-const navItemPaddingX = ['small', 'medium'] as const;
-const navItemPaddingY = 'medium' as const;
-
 const DocNavigationItemIndexContext = createContext(-1);
 interface DocsProviderContextValue {
   docsName: string;
@@ -71,9 +68,10 @@ export const DocNavigationItem = ({
   const index = useContext(DocNavigationItemIndexContext);
   const [hovered, setHovered] = useState(false);
 
-  const badgeElement = badge ? (
-    <Box paddingLeft="xsmall">{cloneElement(badge, { bleedY: true })}</Box>
-  ) : undefined;
+  const badgeSpacing = 'xsmall';
+  const badgeElement = badge
+    ? cloneElement(badge, { bleedY: true })
+    : undefined;
 
   return (
     <Box component="li">
@@ -84,53 +82,55 @@ export const DocNavigationItem = ({
         aria-current={active ? 'page' : undefined}
         className={styles.docNavLink}
       >
-        <Box display="flex" alignItems="center" paddingX={navItemPaddingX}>
-          <Box position="relative">
-            <Box
-              display="flex"
-              position="relative"
-              alignItems="center"
-              opacity={active ? undefined : 0}
-              paddingY={navItemPaddingY}
-            >
-              <Box
-                position="absolute"
-                width="full"
-                zIndex={1}
-                bottom={0}
-                className={[
-                  styles.activeUnderline,
-                  styles.activeUnderlineColor[lightness.lightMode],
-                  styles.activeUnderlineColor[lightness.darkMode],
-                ]}
-              />
-              <Text size="standard" weight="strong">
-                {children}
-              </Text>
-              {badgeElement}
-            </Box>
-            <Box
-              aria-hidden
-              display="flex"
-              alignItems="center"
-              position="absolute"
-              top={0}
-              paddingY={navItemPaddingY}
-              opacity={active ? 0 : undefined}
-              {...(index === 0
-                ? { left: 0 }
-                : { className: styles.centerHorizontally })}
-            >
-              <Text
-                size="standard"
-                weight="medium"
-                tone={hovered ? 'neutral' : 'secondary'}
-              >
-                {children}
-              </Text>
-              {badgeElement}
-            </Box>
-          </Box>
+        {/* Active, strong title */}
+        <Box
+          component="span"
+          display="flex"
+          gap={badgeSpacing}
+          position="relative"
+          alignItems="center"
+          opacity={active ? undefined : 0}
+          paddingY={styles.navItemPaddingY}
+        >
+          <Box
+            component="span"
+            position="absolute"
+            width="full"
+            zIndex={1}
+            bottom={0}
+            className={[
+              styles.activeUnderline,
+              styles.activeUnderlineColor[lightness.lightMode],
+              styles.activeUnderlineColor[lightness.darkMode],
+            ]}
+          />
+          <Text size="standard" weight="strong">
+            {children}
+          </Text>
+          {badgeElement}
+        </Box>
+
+        {/* Inactive, weak title */}
+        <Box
+          component="span"
+          aria-hidden
+          display="flex"
+          gap={badgeSpacing}
+          alignItems="center"
+          position="absolute"
+          top={0}
+          paddingY={styles.navItemPaddingY}
+          opacity={active ? 0 : undefined}
+          className={index !== 0 ? styles.centerHorizontally : undefined}
+        >
+          <Text
+            size="standard"
+            weight="medium"
+            tone={hovered ? 'neutral' : 'secondary'}
+          >
+            {children}
+          </Text>
+          {badgeElement}
         </Box>
       </Link>
     </Box>
@@ -161,8 +161,8 @@ export const DocNavigationBar = ({
       component="nav"
       aria-label={title}
       className={[
-        negativeMargin('top', navItemPaddingY),
-        negativeMargin('left', navItemPaddingX),
+        negativeMargin('top', styles.navItemPaddingY),
+        negativeMargin('left', styles.navItemPaddingX),
       ]}
     >
       <Box component="ul" display="flex" alignItems="center" overflow="auto">
@@ -173,7 +173,7 @@ export const DocNavigationBar = ({
         ))}
       </Box>
       <Box
-        paddingLeft={navItemPaddingX}
+        paddingLeft={styles.navItemPaddingX}
         className={styles.inactiveUnderlineCorrection}
       >
         <Divider />
