@@ -172,7 +172,7 @@
     "lint:tsc": "tsc",
     "storybook": "storybook dev",
     "storybook:build": "storybook build --stats-json",
-    "storybook:chromatic": "chromatic --only-changed --storybook-build-dir ./storybook-static --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
+    "storybook:chromatic": "chromatic --only-changed --untraced './packages/!(braid-design-system)/**' --storybook-build-dir ./storybook-static --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
     "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
     "validate:src": "pnpm %skott src",
     "validate:dist": "pnpm %skott dist/index.mjs"
