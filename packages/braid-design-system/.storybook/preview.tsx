@@ -22,7 +22,7 @@ if (typeof document !== 'undefined') {
 const preview: Preview = {
   decorators: [withTheme],
   parameters: {
-    chromatic: setChromatic(),
+    chromatic: setChromatic({ root: true }),
     layout: 'fullscreen',
   },
   globalTypes: {

@@ -2,6 +2,7 @@ import { setChromatic } from './chromatic';
 
 const { modes: themedModes } = setChromatic({
   viewports: ['mobile', 'tablet', 'desktop', 'wide'],
+  root: true,
 });
 
 const { modes: wireframeMode } = setChromatic({
@@ -10,6 +11,6 @@ const { modes: wireframeMode } = setChromatic({
 });
 
 export const allModes = {
-  ...themedModes,
   ...wireframeMode,
+  ...themedModes,
 };

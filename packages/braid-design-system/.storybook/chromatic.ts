@@ -36,7 +36,7 @@ export const setChromatic = (options?: {
 }): ChromaticModesParameter => {
   const {
     viewports = defaultViewports,
-    wireframeOnly,
+    wireframeOnly = false,
     root = false,
   } = options || {};
   const modes: Modes = {};
