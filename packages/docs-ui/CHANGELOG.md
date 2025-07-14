@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 3.0.2
+
+### Patch Changes
+
+- **LinkableHeading:** Simplify DOM elements and improve focus and scroll styling. ([#1810](https://github.com/seek-oss/braid-design-system/pull/1810))
+
 ## 3.0.1
 
 ### Patch Changes

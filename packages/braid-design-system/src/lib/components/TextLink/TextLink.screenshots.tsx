@@ -1,4 +1,6 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import {
   Box,
@@ -28,378 +30,395 @@ const textTones = [
 ];
 const headingLevels = Object.keys(heading) as Array<keyof typeof heading>;
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [768],
-  examples: [
-    {
-      label: 'weight: regular',
-      Example: () => (
-        <Text>
-          <TextLink href="#">TextLink</TextLink>
-        </Text>
-      ),
-    },
-    {
-      label: 'weight: weak',
-      Example: () => (
-        <Text>
-          <TextLink href="#" weight="weak">
-            TextLink
-          </TextLink>
-        </Text>
-      ),
-    },
-    {
-      label: 'hitArea: large',
-      Example: () => (
-        <Text>
-          <TextLink href="#" hitArea="large">
-            TextLink
-          </TextLink>
-        </Text>
-      ),
-    },
-    {
-      label: 'hitArea: large (virtual touch target)',
-      Example: () => (
-        <Text data={{ [debugTouchableAttrForDataProp]: '' }}>
-          This is the{' '}
-          <TextLink href="" hitArea="large">
-            virtual touch target
-          </TextLink>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'showVisited',
-      Example: () => (
-        <Text>
-          This is a{' '}
-          <TextLink href="" showVisited>
-            visited TextLink
-          </TextLink>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'Regular weight inside available text sizes',
-      Example: () => (
-        <Stack space="small">
-          {textSizes.map((size) => (
-            <Text size={size} key={size}>
-              A <TextLink href="#">“regular” TextLink</TextLink> inside{' '}
-              <Strong>“{size || 'default'}”</Strong> Text
-            </Text>
-          ))}
-        </Stack>
-      ),
-    },
-    {
-      label: 'Weak weight inside available text sizes',
-      Example: () => (
-        <Stack space="small">
-          {textSizes.map((size) => (
-            <Text size={size} key={size}>
-              A{' '}
-              <TextLink href="#" weight="weak">
-                “weak” TextLink
-              </TextLink>{' '}
-              inside <Strong>“{size || 'default'}”</Strong> Text
-            </Text>
-          ))}
-        </Stack>
-      ),
-    },
-    {
-      label: 'Regular weight inside available text tones',
-      Example: () => (
-        <Stack space="small">
-          {textTones.map((t) => (
-            <Text tone={t} key={t}>
-              This is a <TextLink href="#">“regular” TextLink</TextLink> inside{' '}
-              <Strong>“{t || 'default'}”</Strong> tone Text
-            </Text>
-          ))}
-        </Stack>
-      ),
-    },
-    {
-      label: 'Weak weight inside available text tones',
-      Example: () => (
-        <Stack space="small">
-          {textTones.map((t) => (
-            <Text tone={t} key={t}>
-              This is a{' '}
-              <TextLink href="#" weight="weak">
-                “weak” TextLink
-              </TextLink>{' '}
-              inside <Strong>“{t || 'default'}”</Strong> tone Text
-            </Text>
-          ))}
-        </Stack>
-      ),
-    },
-    {
-      label: 'Regular weight inside available heading levels',
-      Example: () => (
-        <Stack space="medium">
-          {headingLevels.map((level) => (
-            <Heading level={level} key={level}>
-              A <TextLink href="#">“regular” TextLink</TextLink> inside level “
-              {level}”
-            </Heading>
-          ))}
-        </Stack>
-      ),
-    },
-    {
-      label: 'Weak weight inside available heading levels',
-      Example: () => (
-        <Stack space="medium">
-          {headingLevels.map((level) => (
-            <Heading level={level} key={level}>
-              A{' '}
-              <TextLink href="#" weight="weak">
-                “weak” TextLink
-              </TextLink>{' '}
-              inside level “{level}”
-            </Heading>
-          ))}
-        </Stack>
-      ),
-    },
-    {
-      label: 'Icons inherit regular link colour',
-      Example: () => (
-        <Stack space="small">
-          <Text>
-            This icon matches the link colour:{' '}
-            <TextLink href="#">
-              TextLink <IconHome />
-            </TextLink>
-          </Text>
-          <Text tone="secondary">
-            This icon matches the link colour:{' '}
-            <TextLink href="#">
-              TextLink <IconHome />
-            </TextLink>
-          </Text>
-          <Text tone="critical">
-            This icon matches the link colour:{' '}
-            <TextLink href="#">
-              TextLink <IconHome />
-            </TextLink>
-          </Text>
-        </Stack>
-      ),
-    },
-    {
-      label: 'Icons inherit weak link colour',
-      Example: () => (
-        <Stack space="small">
-          <Text>
-            This icon matches the link colour:{' '}
-            <TextLink href="#" weight="weak">
-              TextLink <IconHome />
-            </TextLink>
-          </Text>
-          <Text tone="secondary">
-            This icon matches the link colour:{' '}
-            <TextLink href="#" weight="weak">
-              TextLink <IconHome />
-            </TextLink>
-          </Text>
-          <Text tone="critical">
-            This icon matches the link colour:{' '}
-            <TextLink href="#" weight="weak">
-              TextLink <IconHome />
-            </TextLink>
-          </Text>
-        </Stack>
-      ),
-    },
-    {
-      label: 'With icon slot',
-      Example: () => (
-        <Text>
-          A sentence with a{' '}
-          <TextLink href="" icon={<IconLink />}>
-            TextLink
-          </TextLink>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'With a trailing icon',
-      Example: () => (
-        <Text>
-          A sentence with an icon trailing the{' '}
-          <TextLink href="" icon={<IconLink />} iconPosition="trailing">
-            TextLink
-          </TextLink>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'With icon slot and weight weak',
-      Example: () => (
-        <Text>
-          A sentence with a{' '}
-          <TextLink href="" weight="weak" icon={<IconLink />}>
-            TextLink
-          </TextLink>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'With a trailing icon and weight weak',
-      Example: () => (
-        <Text>
-          A sentence with an icon trailing the{' '}
-          <TextLink
-            href=""
-            weight="weak"
-            icon={<IconLink />}
-            iconPosition="trailing"
-          >
-            TextLink
-          </TextLink>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'Text Contrast',
-      Example: () => (
-        <BackgroundContrastTest>
-          {(background) => (
-            <Columns space="xlarge">
-              <Column>
-                <Text>{background}</Text>
-              </Column>
-              <Column width="content">
-                <Text>
-                  <TextLink href="#">
-                    Default <IconNewWindow />
-                  </TextLink>
-                </Text>
-              </Column>
-              <Column width="content">
-                <Text>
-                  <TextLink href="#" weight="regular">
-                    Regular <IconNewWindow />
-                  </TextLink>
-                </Text>
-              </Column>
-              <Column>
-                <Text>
-                  <TextLink href="#" weight="weak">
-                    Weak <IconNewWindow />
-                  </TextLink>
-                </Text>
-              </Column>
-            </Columns>
-          )}
-        </BackgroundContrastTest>
-      ),
-    },
-    {
-      label: 'Heading Contrast',
-      Example: () => (
-        <BackgroundContrastTest>
-          {(background) => (
-            <Columns space="xlarge">
-              <Column>
-                <Heading level="4">{background}</Heading>
-              </Column>
-              <Column width="content">
-                <Heading level="4">
-                  <TextLink href="#">
-                    Default <IconNewWindow />
-                  </TextLink>
-                </Heading>
-              </Column>
-              <Column width="content">
-                <Heading level="4">
-                  <TextLink href="#" weight="regular">
-                    Regular <IconNewWindow />
-                  </TextLink>
-                </Heading>
-              </Column>
-              <Column>
-                <Heading level="4">
-                  <TextLink href="#" weight="weak">
-                    Weak <IconNewWindow />
-                  </TextLink>
-                </Heading>
-              </Column>
-            </Columns>
-          )}
-        </BackgroundContrastTest>
-      ),
-    },
-    {
-      label: 'Underline position wrap test',
-      Example: () => (
-        <Box style={{ maxWidth: 200 }}>
-          <Stack space="large">
-            <Text size="xsmall">
-              xsmall{' '}
-              <TextLink href="#" weight="weak">
-                Abcing wrap wrap wrap wrap wrap Wrap
-              </TextLink>
-            </Text>
-            <Text size="small">
-              small{' '}
-              <TextLink href="#" weight="weak">
-                Abcing wrap wrap wrap wrap wrap Wrap
-              </TextLink>
-            </Text>
-            <Text size="standard">
-              standard{' '}
-              <TextLink href="#" weight="weak">
-                Abcing wrap wrap wrap wr Wrap
-              </TextLink>
-            </Text>
-            <Text size="large">
-              large{' '}
-              <TextLink href="#" weight="weak">
-                Abcing wrap wrap wrap wr Wrap
-              </TextLink>
-            </Text>
+const meta: Meta<typeof TextLink> = {
+  title: 'Components/TextLink',
+  component: TextLink,
+  parameters: {
+    chromatic: setChromatic({ viewports: ['tablet'] }),
+  },
+  args: {
+    href: '#',
+    children: 'TextLink',
+  },
+};
 
+export default meta;
+type Story = StoryObj<typeof TextLink>;
+
+export const WeightRegular: Story = {
+  decorators: (Story) => (
+    <Text>
+      <Story />
+    </Text>
+  ),
+};
+
+export const WeightWeak: Story = {
+  args: {
+    weight: 'weak',
+  },
+  decorators: (Story) => (
+    <Text>
+      <Story />
+    </Text>
+  ),
+};
+
+export const HitAreaLarge: Story = {
+  args: {
+    hitArea: 'large',
+  },
+  decorators: (Story) => (
+    <Text>
+      <Story />
+    </Text>
+  ),
+};
+
+export const HitAreaLargeVirtualTouchTarget: Story = {
+  name: 'hitArea: large (virtual touch target)',
+  args: {
+    hitArea: 'large',
+    children: 'virtual touch target',
+  },
+  decorators: (Story) => (
+    <Text
+      data={{
+        [debugTouchableAttrForDataProp]: '',
+      }}
+    >
+      This is the <Story />.
+    </Text>
+  ),
+};
+
+export const ShowVisited: Story = {
+  name: 'showVisited',
+  args: {
+    showVisited: true,
+    href: '',
+    children: 'visited TextLink',
+  },
+  decorators: (Story) => (
+    <Text>
+      This is a <Story />.
+    </Text>
+  ),
+};
+
+export const RegularWeightInsideAvailableTextSizes: Story = {
+  render: () => (
+    <Stack space="small">
+      {textSizes.map((size) => (
+        <Text size={size} key={size}>
+          A <TextLink href="#">“regular“ TextLink</TextLink> inside{' '}
+          <Strong>“{size || 'default'}“</Strong> Text
+        </Text>
+      ))}
+    </Stack>
+  ),
+};
+
+export const WeakWeightInsideAvailableTextSizes: Story = {
+  render: () => (
+    <Stack space="small">
+      {textSizes.map((size) => (
+        <Text size={size} key={size}>
+          A{' '}
+          <TextLink href="#" weight="weak">
+            “weak“ TextLink
+          </TextLink>{' '}
+          inside <Strong>“{size || 'default'}“</Strong> Text
+        </Text>
+      ))}
+    </Stack>
+  ),
+};
+
+export const RegularWeightInsideAvailableTextTones: Story = {
+  render: () => (
+    <Stack space="small">
+      {textTones.map((t) => (
+        <Text tone={t} key={t}>
+          This is a <TextLink href="#">“regular“ TextLink</TextLink> inside{' '}
+          <Strong>“{t || 'default'}“</Strong> tone Text
+        </Text>
+      ))}
+    </Stack>
+  ),
+};
+
+export const WeakWeightInsideAvailableTextTones: Story = {
+  render: () => (
+    <Stack space="small">
+      {textTones.map((t) => (
+        <Text tone={t} key={t}>
+          This is a{' '}
+          <TextLink href="#" weight="weak">
+            “weak“ TextLink
+          </TextLink>{' '}
+          inside <Strong>“{t || 'default'}“</Strong> tone Text
+        </Text>
+      ))}
+    </Stack>
+  ),
+};
+
+export const RegularWeightInsideAvailableHeadingLevels: Story = {
+  render: () => (
+    <Stack space="medium">
+      {headingLevels.map((level) => (
+        <Heading level={level} key={level}>
+          A <TextLink href="#">“regular“ TextLink</TextLink> inside level “
+          {level}“
+        </Heading>
+      ))}
+    </Stack>
+  ),
+};
+
+export const WeakWeightInsideAvailableHeadingLevels: Story = {
+  render: () => (
+    <Stack space="medium">
+      {headingLevels.map((level) => (
+        <Heading level={level} key={level}>
+          A{' '}
+          <TextLink href="#" weight="weak">
+            “weak“ TextLink
+          </TextLink>{' '}
+          inside level “{level}“
+        </Heading>
+      ))}
+    </Stack>
+  ),
+};
+
+export const IconsInheritRegularLinkColour: Story = {
+  render: () => (
+    <Stack space="small">
+      <Text>
+        This icon matches the link colour:{' '}
+        <TextLink href="#">
+          TextLink <IconHome />
+        </TextLink>
+      </Text>
+      <Text tone="secondary">
+        This icon matches the link colour:{' '}
+        <TextLink href="#">
+          TextLink <IconHome />
+        </TextLink>
+      </Text>
+      <Text tone="critical">
+        This icon matches the link colour:{' '}
+        <TextLink href="#">
+          TextLink <IconHome />
+        </TextLink>
+      </Text>
+    </Stack>
+  ),
+};
+
+export const IconsInheritWeakLinkColour: Story = {
+  render: () => (
+    <Stack space="small">
+      <Text>
+        This icon matches the link colour:{' '}
+        <TextLink href="#" weight="weak">
+          TextLink <IconHome />
+        </TextLink>
+      </Text>
+      <Text tone="secondary">
+        This icon matches the link colour:{' '}
+        <TextLink href="#" weight="weak">
+          TextLink <IconHome />
+        </TextLink>
+      </Text>
+      <Text tone="critical">
+        This icon matches the link colour:{' '}
+        <TextLink href="#" weight="weak">
+          TextLink <IconHome />
+        </TextLink>
+      </Text>
+    </Stack>
+  ),
+};
+
+export const Withiconslot: Story = {
+  name: 'With icon slot',
+  args: {
+    icon: <IconLink />,
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with a <Story />.
+    </Text>
+  ),
+};
+
+export const Withatrailingicon: Story = {
+  name: 'With a trailing icon',
+  args: {
+    icon: <IconLink />,
+    iconPosition: 'trailing',
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with an icon trailing the <Story />.
+    </Text>
+  ),
+};
+
+export const Withiconslotandweightweak: Story = {
+  name: 'With icon slot and weight weak',
+  args: {
+    weight: 'weak',
+    icon: <IconLink />,
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with a <Story />.
+    </Text>
+  ),
+};
+
+export const Withatrailingiconandweightweak: Story = {
+  name: 'With a trailing icon and weight weak',
+  args: {
+    weight: 'weak',
+    icon: <IconLink />,
+    iconPosition: 'trailing',
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with an icon trailing the <Story />.
+    </Text>
+  ),
+};
+
+export const TextContrast: Story = {
+  render: () => (
+    <BackgroundContrastTest>
+      {(background) => (
+        <Columns space="xlarge">
+          <Column>
+            <Text>{background}</Text>
+          </Column>
+          <Column width="content">
+            <Text>
+              <TextLink href="#">
+                Default <IconNewWindow />
+              </TextLink>
+            </Text>
+          </Column>
+          <Column width="content">
+            <Text>
+              <TextLink href="#" weight="regular">
+                Regular <IconNewWindow />
+              </TextLink>
+            </Text>
+          </Column>
+          <Column>
+            <Text>
+              <TextLink href="#" weight="weak">
+                Weak <IconNewWindow />
+              </TextLink>
+            </Text>
+          </Column>
+        </Columns>
+      )}
+    </BackgroundContrastTest>
+  ),
+};
+
+export const HeadingContrast: Story = {
+  render: () => (
+    <BackgroundContrastTest>
+      {(background) => (
+        <Columns space="xlarge">
+          <Column>
+            <Heading level="4">{background}</Heading>
+          </Column>
+          <Column width="content">
             <Heading level="4">
-              Heading4{' '}
-              <TextLink href="#" weight="weak">
-                Abcing wrap wrap Wrap Wrap
+              <TextLink href="#">
+                Default <IconNewWindow />
               </TextLink>
             </Heading>
-            <Heading level="3">
-              Heading3{' '}
-              <TextLink href="#" weight="weak">
-                Abcing wrap wrap Wrap
+          </Column>
+          <Column width="content">
+            <Heading level="4">
+              <TextLink href="#" weight="regular">
+                Regular <IconNewWindow />
               </TextLink>
             </Heading>
-            <Heading level="2">
-              H2{' '}
+          </Column>
+          <Column>
+            <Heading level="4">
               <TextLink href="#" weight="weak">
-                Abcing wrap wrap Wrap
+                Weak <IconNewWindow />
               </TextLink>
             </Heading>
-            <Heading level="1">
-              H1{' '}
-              <TextLink href="#" weight="weak">
-                Abing wrap Wrap Wrap
-              </TextLink>
-            </Heading>
-          </Stack>
-        </Box>
-      ),
-    },
-  ],
+          </Column>
+        </Columns>
+      )}
+    </BackgroundContrastTest>
+  ),
+};
+
+export const UnderlinePositionWrapTest: Story = {
+  render: () => (
+    <Box style={{ maxWidth: 200 }}>
+      <Stack space="large">
+        <Text size="xsmall">
+          xsmall{' '}
+          <TextLink href="#" weight="weak">
+            Abcing wrap wrap wrap wrap wrap Wrap
+          </TextLink>
+        </Text>
+        <Text size="small">
+          small{' '}
+          <TextLink href="#" weight="weak">
+            Abcing wrap wrap wrap wrap wrap Wrap
+          </TextLink>
+        </Text>
+        <Text size="standard">
+          standard{' '}
+          <TextLink href="#" weight="weak">
+            Abcing wrap wrap wrap wr Wrap
+          </TextLink>
+        </Text>
+        <Text size="large">
+          large{' '}
+          <TextLink href="#" weight="weak">
+            Abcing wrap wrap wrap wr Wrap
+          </TextLink>
+        </Text>
+
+        <Heading level="4">
+          Heading4{' '}
+          <TextLink href="#" weight="weak">
+            Abcing wrap wrap Wrap Wrap
+          </TextLink>
+        </Heading>
+        <Heading level="3">
+          Heading3{' '}
+          <TextLink href="#" weight="weak">
+            Abcing wrap wrap Wrap
+          </TextLink>
+        </Heading>
+        <Heading level="2">
+          H2{' '}
+          <TextLink href="#" weight="weak">
+            Abcing wrap wrap Wrap
+          </TextLink>
+        </Heading>
+        <Heading level="1">
+          H1{' '}
+          <TextLink href="#" weight="weak">
+            Abing wrap Wrap Wrap
+          </TextLink>
+        </Heading>
+      </Stack>
+    </Box>
+  ),
 };

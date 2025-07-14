@@ -3,6 +3,7 @@ ignores:
   - '@testing-library/dom'
   - assert
   # internal
+  - braid-storybook
   - braid-src
   - site
   # Used for generate-component-docs bin

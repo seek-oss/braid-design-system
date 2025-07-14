@@ -1,5 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import type { ComponentProps, ReactElement } from 'react';
+import type { ComponentProps, ReactElement, ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {
@@ -18,7 +18,8 @@ import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { DrawerContent } from './Drawer';
-import { DrawerPreview } from './Drawer.screenshots';
+
+import * as styles from '../private/Modal/Modal.css';
 
 const Screen = () => (
   <Box
@@ -37,6 +38,15 @@ const drawerPreviewPropsFromSourceValue = (element: DrawerElement) => ({
   onClose: () => {},
   scrollLock: false,
 });
+
+const DrawerPreview = ({ children }: { children: ReactNode }) => (
+  <Box position="relative">
+    <Box position="absolute" inset={0} className={styles.backdrop} />
+    <Box position="relative" zIndex="modal">
+      {children}
+    </Box>
+  </Box>
+);
 
 const docs: ComponentDocs = {
   category: 'Content',

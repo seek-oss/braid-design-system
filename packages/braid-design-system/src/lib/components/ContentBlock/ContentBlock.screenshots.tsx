@@ -1,68 +1,96 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, ContentBlock } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 1200],
-  examples: [
-    {
-      label: 'Default width',
-      Example: () => (
-        <ContentBlock>
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
+const meta = {
+  title: 'Components/ContentBlock',
+  component: ContentBlock,
+  parameters: {
+    chromatic: setChromatic({ viewports: ['mobile', 'wide'] }),
+  },
+  argTypes: {
+    width: {
+      control: 'select',
+      options: ['xsmall', 'small', 'medium', 'large'],
+      description: 'Maximum width of the content block',
     },
-    {
-      label: 'Xsmall width',
-      Example: () => (
-        <ContentBlock width="xsmall">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
+    align: {
+      control: 'radio',
+      options: ['left', 'center'],
+      description: 'Horizontal alignment of the content block',
     },
-    {
-      label: 'Small width',
-      Example: () => (
-        <ContentBlock width="small">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-    {
-      label: 'Medium width',
-      Example: () => (
-        <ContentBlock width="medium">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-    {
-      label: 'Large width',
-      Example: () => (
-        <ContentBlock width="large">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-    {
-      label: 'Align left',
-      Example: () => (
-        <ContentBlock width="xsmall" align="left">
-          <Placeholder height={100} />
-        </ContentBlock>
-      ),
-    },
-    {
-      label: 'Inside flex container',
-      Example: () => (
-        <Box display="flex">
-          <ContentBlock width="medium">
-            <Placeholder height={100} />
-          </ContentBlock>
-        </Box>
-      ),
-    },
-  ],
+  },
+  args: {
+    width: 'medium',
+    align: 'center',
+    children: <Placeholder height={100} />,
+  },
+} satisfies Meta<typeof ContentBlock>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Defaultwidth: Story = {
+  name: 'Default width',
+  args: {
+    children: <Placeholder height={100} />,
+  },
+};
+
+export const Xsmallwidth: Story = {
+  name: 'Xsmall width',
+  args: {
+    width: 'xsmall',
+    children: <Placeholder height={100} />,
+  },
+};
+
+export const Smallwidth: Story = {
+  name: 'Small width',
+  args: {
+    width: 'small',
+    children: <Placeholder height={100} />,
+  },
+};
+
+export const Mediumwidth: Story = {
+  name: 'Medium width',
+  args: {
+    width: 'medium',
+    children: <Placeholder height={100} />,
+  },
+};
+
+export const Largewidth: Story = {
+  name: 'Large width',
+  args: {
+    width: 'large',
+    children: <Placeholder height={100} />,
+  },
+};
+
+export const Alignleft: Story = {
+  name: 'Align left',
+  args: {
+    width: 'xsmall',
+    align: 'left',
+    children: <Placeholder height={100} />,
+  },
+};
+
+export const InsideFlexContainer: Story = {
+  name: 'Inside flex container',
+  args: {
+    width: 'xsmall',
+    children: <Placeholder height={100} />,
+  },
+  decorators: (Story) => (
+    <Box display="flex">
+      <Story />
+    </Box>
+  ),
 };

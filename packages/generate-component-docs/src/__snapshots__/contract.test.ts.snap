@@ -1206,7 +1206,9 @@ exports[`Box 1`] = `
     opacity?: 0
     open?: boolean
     optimum?: number
-    outline?: "none"
+    outline?: 
+        | "focus"
+        | "none"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1743,7 +1745,9 @@ exports[`BoxRenderer 1`] = `
         | "xsmall"
     minWidth?: 0
     opacity?: 0
-    outline?: "none"
+    outline?: 
+        | "focus"
+        | "none"
     overflow?: 
         | "auto"
         | "hidden"

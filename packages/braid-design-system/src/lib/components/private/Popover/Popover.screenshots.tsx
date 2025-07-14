@@ -1,387 +1,200 @@
-import { type MutableRefObject, type ReactNode, useRef } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { useRef } from 'react';
+
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box } from '../..';
-import type { BoxProps } from '../../Box/Box';
 import { Placeholder } from '../Placeholder/Placeholder';
 
-import { Popover, type PopoverProps } from './Popover';
+import { Popover } from './Popover';
 
-const triggerHeight = 44;
-const triggerWidth = 150;
+const TRIGGER_HEIGHT = 44;
+const TRIGGER_WIDTH = 150;
 
-const popoverWidth = 200;
-const popoverHeight = 88;
+const POPOVER_WIDTH = 200;
+const POPOVER_HEIGHT = 88;
 
-const defaultProps = {
-  open: true,
-  lockPlacement: true,
-  role: false,
-} as const;
+const meta = {
+  title: 'Components/Popover',
+  component: Popover,
+  parameters: {
+    justifyContent: 'center',
+    chromatic: setChromatic({
+      viewports: ['mobile'],
+      wireframeOnly: true,
+    }),
+  },
+  args: {
+    open: true,
+    lockPlacement: true,
+    role: false,
+    placement: 'bottom',
+    children: (
+      <Placeholder
+        label="Popover"
+        height={POPOVER_HEIGHT}
+        width={POPOVER_WIDTH}
+      />
+    ),
+  },
+  decorators: [
+    (Story, { args, parameters }) => {
+      const triggerRef = useRef<HTMLButtonElement>(null);
 
-const Wrapper = ({
-  children,
-  popoverPlacement = 'bottom',
-  justifyContent = 'center',
-}: {
-  children: (props: {
-    triggerRef: MutableRefObject<HTMLButtonElement | null>;
-  }) => ReactNode;
-  popoverPlacement?: PopoverProps['placement'];
-  justifyContent?: BoxProps['justifyContent'];
-}) => {
-  const triggerRef = useRef<HTMLButtonElement>(null);
-
-  return (
-    <Box
-      display="flex"
-      justifyContent={justifyContent}
-      style={{
-        [popoverPlacement === 'top' ? 'paddingTop' : 'paddingBottom']:
-          popoverHeight * 1.5,
-      }}
-    >
-      <Box ref={triggerRef}>
-        <Placeholder
-          label="Trigger"
-          height={triggerHeight}
-          width={triggerWidth}
-        />
-      </Box>
-      {children({ triggerRef })}
-    </Box>
-  );
-};
-
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  screenshotOnlyInWireframe: true,
-  examples: [
-    {
-      label: 'Bottom placement, left aligned',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover
-              {...defaultProps}
-              triggerRef={triggerRef}
-              placement="bottom"
-              align="left"
-            >
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Bottom placement, center aligned',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover
-              {...defaultProps}
-              triggerRef={triggerRef}
-              placement="bottom"
-              align="center"
-            >
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Bottom placement, right aligned',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover
-              {...defaultProps}
-              triggerRef={triggerRef}
-              placement="bottom"
-              align="right"
-            >
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Bottom placement with small offset',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover
-              {...defaultProps}
-              triggerRef={triggerRef}
-              placement="bottom"
-              offsetSpace="small"
-            >
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Bottom placement with medium offset',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover
-              {...defaultProps}
-              triggerRef={triggerRef}
-              placement="bottom"
-              offsetSpace="medium"
-            >
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Bottom placement with large offset',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover
-              {...defaultProps}
-              triggerRef={triggerRef}
-              placement="bottom"
-              offsetSpace="large"
-            >
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Top placement, left aligned',
-      Example: () => {
-        const placement = 'top';
-        return (
-          <Wrapper popoverPlacement={placement}>
-            {({ triggerRef }) => (
-              <Popover
-                {...defaultProps}
-                triggerRef={triggerRef}
-                placement={placement}
-                align="left"
-              >
-                <Placeholder
-                  label="Popover"
-                  height={popoverHeight}
-                  width={popoverWidth}
-                />
-              </Popover>
-            )}
-          </Wrapper>
-        );
-      },
-    },
-    {
-      label: 'Top placement, center aligned',
-      Example: () => {
-        const placement = 'top';
-        return (
-          <Wrapper popoverPlacement={placement}>
-            {({ triggerRef }) => (
-              <Popover
-                {...defaultProps}
-                triggerRef={triggerRef}
-                placement={placement}
-                align="center"
-              >
-                <Placeholder
-                  label="Popover"
-                  height={popoverHeight}
-                  width={popoverWidth}
-                />
-              </Popover>
-            )}
-          </Wrapper>
-        );
-      },
-    },
-    {
-      label: 'Top placement, right aligned',
-      Example: () => {
-        const placement = 'top';
-        return (
-          <Wrapper popoverPlacement={placement}>
-            {({ triggerRef }) => (
-              <Popover
-                {...defaultProps}
-                triggerRef={triggerRef}
-                placement={placement}
-                align="right"
-              >
-                <Placeholder
-                  label="Popover"
-                  height={popoverHeight}
-                  width={popoverWidth}
-                />
-              </Popover>
-            )}
-          </Wrapper>
-        );
-      },
-    },
-    {
-      label: 'Top placement with small offset',
-      Example: () => {
-        const placement = 'top';
-        return (
-          <Wrapper popoverPlacement={placement}>
-            {({ triggerRef }) => (
-              <Popover
-                {...defaultProps}
-                triggerRef={triggerRef}
-                placement={placement}
-                offsetSpace="small"
-              >
-                <Placeholder
-                  label="Popover"
-                  height={popoverHeight}
-                  width={popoverWidth}
-                />
-              </Popover>
-            )}
-          </Wrapper>
-        );
-      },
-    },
-    {
-      label: 'Top placement with medium offset',
-      Example: () => {
-        const placement = 'top';
-        return (
-          <Wrapper popoverPlacement={placement}>
-            {({ triggerRef }) => (
-              <Popover
-                {...defaultProps}
-                triggerRef={triggerRef}
-                placement={placement}
-                offsetSpace="medium"
-              >
-                <Placeholder
-                  label="Popover"
-                  height={popoverHeight}
-                  width={popoverWidth}
-                />
-              </Popover>
-            )}
-          </Wrapper>
-        );
-      },
-    },
-    {
-      label: 'Top placement with large offset',
-      Example: () => {
-        const placement = 'top';
-        return (
-          <Wrapper popoverPlacement={placement}>
-            {({ triggerRef }) => (
-              <Popover
-                {...defaultProps}
-                triggerRef={triggerRef}
-                placement={placement}
-                offsetSpace="large"
-              >
-                <Placeholder
-                  label="Popover"
-                  height={popoverHeight}
-                  width={popoverWidth}
-                />
-              </Popover>
-            )}
-          </Wrapper>
-        );
-      },
-    },
-    {
-      label: 'Right aligned at left edge',
-      Example: () => (
-        <Wrapper justifyContent="flexStart">
-          {({ triggerRef }) => (
-            <Popover {...defaultProps} triggerRef={triggerRef} align="right">
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Left aligned at right edge',
-      Example: () => (
-        <Wrapper justifyContent="flexEnd">
-          {({ triggerRef }) => (
-            <Popover {...defaultProps} triggerRef={triggerRef} align="left">
-              <Placeholder
-                label="Popover"
-                height={popoverHeight}
-                width={popoverWidth}
-              />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Content width',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover {...defaultProps} triggerRef={triggerRef} width="content">
-              <Placeholder label="Popover" height={popoverHeight} />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
-    },
-    {
-      label: 'Full width',
-      Example: () => (
-        <Wrapper>
-          {({ triggerRef }) => (
-            <Popover {...defaultProps} triggerRef={triggerRef} width="full">
-              <Placeholder label="Popover" height={popoverHeight} />
-            </Popover>
-          )}
-        </Wrapper>
-      ),
+      return (
+        <Box
+          display="flex"
+          justifyContent={parameters.justifyContent}
+          style={{
+            [args.placement === 'top' ? 'paddingTop' : 'paddingBottom']:
+              POPOVER_HEIGHT * 1.5,
+          }}
+        >
+          <Box ref={triggerRef}>
+            <Placeholder
+              label="Trigger"
+              height={TRIGGER_HEIGHT}
+              width={TRIGGER_WIDTH}
+            />
+          </Box>
+          <Story args={{ ...args, triggerRef }} />
+        </Box>
+      );
     },
   ],
+} satisfies Meta<typeof Popover>;
+
+export default meta;
+
+type Story = StoryObj<typeof Popover>;
+
+export const BottomPlacementLeftAligned: Story = {
+  name: 'Bottom placement, left aligned',
+  args: {
+    placement: 'bottom',
+    align: 'left',
+  },
+};
+
+export const BottomPlacementCenterAligned: Story = {
+  name: 'Bottom placement, center aligned',
+  args: {
+    placement: 'bottom',
+    align: 'center',
+  },
+};
+
+export const BottomPlacementRightAligned: Story = {
+  name: 'Bottom placement, right aligned',
+  args: {
+    placement: 'bottom',
+    align: 'right',
+  },
+};
+
+export const BottomPlacementWithSmallOffset: Story = {
+  name: 'Bottom placement with small offset',
+  args: {
+    placement: 'bottom',
+    offsetSpace: 'small',
+  },
+};
+
+export const BottomPlacementWithMediumOffset: Story = {
+  name: 'Bottom placement with medium offset',
+  args: {
+    placement: 'bottom',
+    offsetSpace: 'medium',
+  },
+};
+export const BottomPlacementWithLargeOffset: Story = {
+  name: 'Bottom placement with large offset',
+  args: {
+    placement: 'bottom',
+    offsetSpace: 'large',
+  },
+};
+
+export const TopPlacementLeftAligned: Story = {
+  name: 'Top placement, left aligned',
+  args: {
+    placement: 'top',
+    align: 'left',
+  },
+};
+
+export const TopPlacementCenterAligned: Story = {
+  name: 'Top placement, center aligned',
+  args: {
+    placement: 'top',
+    align: 'center',
+  },
+};
+
+export const TopPlacementRightAligned: Story = {
+  name: 'Top placement, right aligned',
+  args: {
+    placement: 'top',
+    align: 'right',
+  },
+};
+
+export const TopPlacementWithSmallOffset: Story = {
+  name: 'Top placement with small offset',
+  args: {
+    placement: 'top',
+    offsetSpace: 'small',
+  },
+};
+
+export const TopPlacementWithMediumOffset: Story = {
+  name: 'Top placement with medium offset',
+  args: {
+    placement: 'top',
+    offsetSpace: 'medium',
+  },
+};
+
+export const TopPlacementWithLargeOffset: Story = {
+  name: 'Top placement with large offset',
+  args: {
+    placement: 'top',
+    offsetSpace: 'large',
+  },
+};
+
+export const RightAlignedAtLeftEdge: Story = {
+  name: 'Right aligned at left edge',
+  parameters: {
+    justifyContent: 'flexStart',
+  },
+  args: {
+    align: 'right',
+  },
+};
+
+export const LeftAlignedAtRightEdge: Story = {
+  name: 'Left aligned at right edge',
+  parameters: {
+    justifyContent: 'flexEnd',
+  },
+  args: {
+    align: 'left',
+  },
+};
+
+export const ContentWidth: Story = {
+  name: 'Content width',
+  args: {
+    width: 'content',
+    children: <Placeholder label="Popover" height={POPOVER_HEIGHT} />,
+  },
+};
+
+export const FullWidth: Story = {
+  name: 'Full width',
+  args: {
+    width: 'full',
+    children: <Placeholder label="Popover" height={POPOVER_HEIGHT} />,
+  },
 };

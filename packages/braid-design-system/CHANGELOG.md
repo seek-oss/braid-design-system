@@ -1,5 +1,74 @@
 # braid-design-system
 
+## 33.10.0
+
+### Minor Changes
+
+- **Box, atoms**: Add `sticky` to `position`. ([#1806](https://github.com/seek-oss/braid-design-system/pull/1806))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Box position="sticky" top={0} ... />
+  ```
+
+- **Box, atoms**: Deprecate `outline` value `none`, and `boxShadow` value `outlineFocus`. ([#1810](https://github.com/seek-oss/braid-design-system/pull/1810))
+
+  Previously it was recommended to hide an element's `outline` in favour of using `boxShadow="outlineFocus"`.
+
+  Braid now leverages the `outline` property directly, managing focus rings of interactive elements as part of its scoped CSS reset.
+
+  **MIGRATION GUIDE:**
+
+  For styling the focus ring via `Box`:
+
+  1. Remove usage of `outline="none"` and `boxShadow="outlineFocus"`
+  2. Refer to [`focus outlines`] for guidance on leveraging Braid's focus outline styles.
+
+  ```diff
+  - <Box outline="none" className={styles.customFocusStyles} />
+  + <Box />
+  ```
+
+  For styling the focus outline of an element based on the focus of another element, see [`outlineStyle`].
+
+  [`focus outlines`]: https://seek-oss.github.io/braid-design-system/components/Box#focus-outlines
+  [`outlineStyle`]: https://seek-oss.github.io/braid-design-system/css/outlineStyle
+
+- **seekBusiness:** Migrate to updated visual language ([#1819](https://github.com/seek-oss/braid-design-system/pull/1819))
+
+  Migrate `seekBusiness` theme to new visual language.
+  Adopts the `seekJobs` theme for the latest design standards, rather than the legacy `apac` theme, while retaining the `seekBusiness` brand accent colour.
+
+### Patch Changes
+
+- **ButtonIcon**: Ensure the focus outline is styled consistently with other components. ([#1810](https://github.com/seek-oss/braid-design-system/pull/1810))
+
+  Fix issue which caused the Braid focus outline to show along with the native browser focus outline.
+
+- **apac:** Deprecate theme in favour of `seekJobs` theme ([#1820](https://github.com/seek-oss/braid-design-system/pull/1820))
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  # App.tsx
+  - import apac from 'braid-design-system/themes/apac';
+  + import seekJobs from 'braid-design-system/themes/seekJobs';
+
+  - <BraidProvider theme={apac} ...>
+  + <BraidProvider theme={seekJobs} ...>
+  ```
+
+- Migrate from custom focus ring visibility to native `:focus-visible` behaviour. ([#1810](https://github.com/seek-oss/braid-design-system/pull/1810))
+
+  Previously Braid would change the presentation of focus ring outlines based on the user input, i.e. mouse or keyboard,
+  to prevent showing focus rings on click.
+  With the updated Browser Support Policy, we can now leverage the native `:focus-visible` pseudo class instead.
+
+- **Dialog, Drawer**: Ensure the focus outline is correctly applied to the title. ([#1810](https://github.com/seek-oss/braid-design-system/pull/1810))
+
+  Fix issue where focus outline would not be long enough to wrap the entire title text in certain situations.
+
 ## 33.9.1
 
 ### Patch Changes

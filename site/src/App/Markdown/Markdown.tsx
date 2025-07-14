@@ -15,7 +15,8 @@ import { Children } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import { visit } from 'unist-util-visit';
 
-import { CodeBlock, type SupportedLanguage } from '../Code/Code';
+import { CodeBlock } from '../Code/Code';
+import type { SupportedLanguage } from '../Code/SupportedLanguage';
 import { InlineCode } from '../InlineCode/InlineCode';
 
 const Code = ({ lang, value }: { lang: string | null; value: string }) => (

@@ -113,7 +113,7 @@ const Cell = forwardRef<HTMLTableCellElement, CellProps & BaseCellProps>(
           [styles.softWidth]: softWidth,
           [styles.minWidth]: typeof minWidth !== 'undefined',
           [styles.maxWidth]: hasMaxWidth,
-          [styles.alignYCenter]: tableContext.alignY === 'center',
+          [styles.alignY[tableContext.alignY]]: true,
           [styles.showOnTablet]: !hideOnTablet && hideOnMobile,
           [styles.showOnDesktop]:
             !hideOnDesktop && (hideOnTablet || hideOnMobile),

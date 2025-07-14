@@ -38,8 +38,9 @@ export const buttonVariants = [
   'soft',
   'transparent',
 ] as const;
+export const buttonSizes = ['standard', 'small'] as const;
 
-type ButtonSize = 'standard' | 'small';
+type ButtonSize = (typeof buttonSizes)[number];
 type ButtonTone = (typeof buttonTones)[number];
 type ButtonVariant = (typeof buttonVariants)[number];
 export interface ButtonStyleProps {
@@ -249,11 +250,9 @@ const resolveToneAndVariant = ({
 export const ButtonOverlays = ({
   variant: variantProp,
   tone: toneProp,
-  keyboardFocusable = true,
   forceActive = false,
   radius = buttonRadius,
 }: Pick<ButtonProps, 'variant' | 'tone'> & {
-  keyboardFocusable?: boolean;
   radius?: 'full' | typeof buttonRadius;
   forceActive?: boolean;
 }) => {
@@ -269,14 +268,6 @@ export const ButtonOverlays = ({
 
   return (
     <>
-      {keyboardFocusable ? (
-        <FieldOverlay
-          borderRadius={radius}
-          variant="focus"
-          onlyVisibleForKeyboardNavigation
-          className={styles.focusOverlay}
-        />
-      ) : null}
       <FieldOverlay
         borderRadius={radius}
         background={
@@ -459,7 +450,6 @@ export const useButtonStyles = ({
       alignItems: 'center',
       justifyContent: 'center',
       transition: 'touchable',
-      outline: 'none',
       textAlign: 'center',
       userSelect: 'none',
       background:

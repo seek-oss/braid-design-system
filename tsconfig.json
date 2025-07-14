@@ -11,10 +11,11 @@
     "strict": true,
     "jsx": "preserve",
     "lib": ["dom", "ES2022"],
-    "target": "es5",
+    "target": "ES2022",
     "paths": {
       "site/*": ["./site/src/*"],
-      "braid-src/*": ["./packages/braid-design-system/src/*"]
+      "braid-src/*": ["./packages/braid-design-system/src/*"],
+      "braid-storybook/*": ["./packages/braid-design-system/.storybook/*"]
     },
     "types": ["vitest/globals"]
   },
