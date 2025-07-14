@@ -1,72 +1,113 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Rating, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      Example: () => <Rating rating={3} />,
-    },
-    {
-      label: 'Variant: starsOnly',
-      Example: () => <Rating rating={4.2} variant="starsOnly" />,
-    },
-    {
-      label: 'Variant: minimal',
-      Example: () => <Rating rating={3.7} variant="minimal" />,
-    },
-    {
-      label: 'Size: large',
-      Example: () => <Rating rating={3} size="large" />,
-    },
-    {
-      label: 'Size: small',
-      Example: () => <Rating rating={2} size="small" />,
-    },
-    {
-      label: 'Size: xsmall',
-      Example: () => <Rating rating={1.5} size="xsmall" />,
-    },
-    {
-      label: 'Weight: regular',
-      Example: () => <Rating rating={3} weight="regular" />,
-    },
-    {
-      label: 'Weight: medium',
-      Example: () => <Rating rating={2} weight="medium" />,
-    },
-    {
-      label: 'Weight: strong',
-      Example: () => <Rating rating={1.5} weight="strong" />,
-    },
-    {
-      label: 'Fill test',
-      Example: () => (
-        <Stack space="medium">
-          <Text>Empty</Text>
-          <Rating rating={0} />
-          <Rating rating={0.01} />
-          <Rating rating={0.24} />
-          <Text>Half</Text>
-          <Rating rating={0.25} />
-          <Rating rating={0.74} />
-          <Text>Full</Text>
-          <Rating rating={0.75} />
-          <Rating rating={0.99} />
-          <Rating rating={1} />
-        </Stack>
-      ),
-    },
-    {
-      label: 'Rating Contrast',
-      Example: () => (
-        <BackgroundContrastTest>
-          <Rating rating={1.5} size="xsmall" />
-        </BackgroundContrastTest>
-      ),
-    },
-  ],
+const meta = {
+  title: 'Components/Rating',
+  component: Rating,
+} satisfies Meta<typeof Rating>;
+
+export default meta;
+type Story = StoryObj<typeof Rating>;
+
+export const Default: Story = {
+  args: {
+    rating: 3,
+  },
+};
+
+export const VariantstarsOnly: Story = {
+  name: 'Variant: starsOnly',
+  args: {
+    rating: 4.2,
+    variant: 'starsOnly',
+  },
+};
+
+export const Variantminimal: Story = {
+  name: 'Variant: minimal',
+  args: {
+    rating: 3.7,
+    variant: 'minimal',
+  },
+};
+
+export const Sizelarge: Story = {
+  name: 'Size: large',
+  args: {
+    rating: 3,
+    size: 'large',
+  },
+};
+
+export const Sizesmall: Story = {
+  name: 'Size: small',
+  args: {
+    rating: 2,
+    size: 'small',
+  },
+};
+
+export const Sizexsmall: Story = {
+  name: 'Size: xsmall',
+  args: {
+    rating: 1.5,
+    size: 'xsmall',
+  },
+};
+
+export const Weightregular: Story = {
+  name: 'Weight: regular',
+  args: {
+    rating: 3,
+    weight: 'regular',
+  },
+};
+
+export const Weightmedium: Story = {
+  name: 'Weight: medium',
+  args: {
+    rating: 2,
+    weight: 'medium',
+  },
+};
+
+export const Weightstrong: Story = {
+  name: 'Weight: strong',
+  args: {
+    rating: 1.5,
+    weight: 'strong',
+  },
+};
+
+export const Filltest: Story = {
+  name: 'Fill test',
+  render: () => (
+    <Stack space="medium">
+      <Text>Empty</Text>
+      <Rating rating={0} />
+      <Rating rating={0.01} />
+      <Rating rating={0.24} />
+      <Text>Half</Text>
+      <Rating rating={0.25} />
+      <Rating rating={0.74} />
+      <Text>Full</Text>
+      <Rating rating={0.75} />
+      <Rating rating={0.99} />
+      <Rating rating={1} />
+    </Stack>
+  ),
+};
+
+export const RatingContrast: Story = {
+  args: {
+    rating: 1.5,
+    size: 'xsmall',
+  },
+  decorators: (Story) => (
+    <BackgroundContrastTest>
+      <Story />
+    </BackgroundContrastTest>
+  ),
 };

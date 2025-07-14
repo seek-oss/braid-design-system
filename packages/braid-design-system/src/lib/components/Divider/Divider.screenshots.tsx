@@ -1,17 +1,22 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Divider } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Divider',
-      Example: () => <Divider />,
-    },
-    {
-      label: 'Strong Divider',
-      Example: () => <Divider weight="strong" />,
-    },
-  ],
+const meta = {
+  title: 'Components/Divider',
+  component: Divider,
+} satisfies Meta<typeof Divider>;
+
+export default meta;
+type Story = StoryObj<typeof Divider>;
+
+export const Regular: Story = {
+  name: 'Regular Divider',
+};
+
+export const Strong: Story = {
+  name: 'Strong Divider',
+  args: {
+    weight: 'strong',
+  },
 };

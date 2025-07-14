@@ -1,60 +1,76 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, PageBlock } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 1200],
-  examples: [
-    {
-      label: 'Default',
-      Example: () => (
-        <PageBlock>
-          <Placeholder height={100} />
-        </PageBlock>
-      ),
+const meta = {
+  title: 'Components/PageBlock',
+  component: PageBlock,
+  parameters: {
+    chromatic: setChromatic({ viewports: ['mobile', 'wide'] }),
+  },
+  argTypes: {
+    width: {
+      control: 'select',
+      options: ['small', 'medium', 'large', 'full'],
+      description: 'Width of the content block',
     },
-    {
-      label: 'Small',
-      Example: () => (
-        <PageBlock width="small">
-          <Placeholder height={100} />
-        </PageBlock>
-      ),
+    component: {
+      control: 'select',
+      options: ['div', 'article', 'aside', 'main', 'section', 'nav'],
+      description: 'HTML element to render the component as',
     },
-    {
-      label: 'Medium',
-      Example: () => (
-        <PageBlock width="medium">
-          <Placeholder height={100} />
-        </PageBlock>
-      ),
+    children: {
+      description: 'Content to display within the page block',
     },
-    {
-      label: 'Large',
-      Example: () => (
-        <PageBlock width="large">
-          <Placeholder height={100} />
-        </PageBlock>
-      ),
-    },
-    {
-      label: 'Full',
-      Example: () => (
-        <PageBlock width="full">
-          <Placeholder height={100} />
-        </PageBlock>
-      ),
-    },
-    {
-      label: 'Inside flex container',
-      Example: () => (
-        <Box display="flex">
-          <PageBlock width="medium">
-            <Placeholder height={100} />
-          </PageBlock>
-        </Box>
-      ),
-    },
-  ],
+  },
+  args: {
+    width: 'large',
+    component: 'div',
+    children: <Placeholder height={100} />,
+  },
+} satisfies Meta<typeof PageBlock>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+
+export const Small: Story = {
+  args: {
+    width: 'small',
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    width: 'medium',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    width: 'large',
+  },
+};
+
+export const Full: Story = {
+  args: {
+    width: 'full',
+  },
+};
+
+export const InsideFlexContainer: Story = {
+  name: 'Inside flex container',
+  args: {
+    width: 'medium',
+  },
+  decorators: (Story) => (
+    <Box display="flex">
+      <Story />
+    </Box>
+  ),
 };
