@@ -193,7 +193,7 @@ export const ModalContent = ({
                     ref={headingRef}
                   />
                 </Box>
-                <Box width="touchable" />
+                <Box width="touchable" flexShrink={0} flexGrow={0} />
               </Box>
             )}
             <Fragment>{children}</Fragment>
