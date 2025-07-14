@@ -10,12 +10,12 @@ describe('setChromatic', () => {
             "theme": "apac",
             "viewport": 320,
           },
-          "seekJobs (dark) mobile": {
-            "darkMode": true,
+          "seekJobs mobile": {
+            "darkMode": false,
             "theme": "seekJobs",
             "viewport": 320,
           },
-          "seekJobs mobile": {
+          "seekJobsDark mobile": {
             "darkMode": true,
             "theme": "seekJobs",
             "viewport": 320,
@@ -43,25 +43,11 @@ describe('setChromatic', () => {
           "apac wide": {
             "disabled": true,
           },
-          "seekJobs (dark) desktop": {
-            "disabled": true,
-          },
-          "seekJobs (dark) mobile": {
-            "darkMode": true,
-            "theme": "seekJobs",
-            "viewport": 320,
-          },
-          "seekJobs (dark) tablet": {
-            "disabled": true,
-          },
-          "seekJobs (dark) wide": {
-            "disabled": true,
-          },
           "seekJobs desktop": {
             "disabled": true,
           },
           "seekJobs mobile": {
-            "darkMode": true,
+            "darkMode": false,
             "theme": "seekJobs",
             "viewport": 320,
           },
@@ -69,6 +55,20 @@ describe('setChromatic', () => {
             "disabled": true,
           },
           "seekJobs wide": {
+            "disabled": true,
+          },
+          "seekJobsDark desktop": {
+            "disabled": true,
+          },
+          "seekJobsDark mobile": {
+            "darkMode": true,
+            "theme": "seekJobs",
+            "viewport": 320,
+          },
+          "seekJobsDark tablet": {
+            "disabled": true,
+          },
+          "seekJobsDark wide": {
             "disabled": true,
           },
           "wireframe desktop": {
@@ -106,20 +106,6 @@ describe('setChromatic', () => {
           "apac wide": {
             "disabled": true,
           },
-          "seekJobs (dark) desktop": {
-            "disabled": true,
-          },
-          "seekJobs (dark) mobile": {
-            "disabled": true,
-          },
-          "seekJobs (dark) tablet": {
-            "darkMode": true,
-            "theme": "seekJobs",
-            "viewport": 768,
-          },
-          "seekJobs (dark) wide": {
-            "disabled": true,
-          },
           "seekJobs desktop": {
             "disabled": true,
           },
@@ -127,11 +113,25 @@ describe('setChromatic', () => {
             "disabled": true,
           },
           "seekJobs tablet": {
-            "darkMode": true,
+            "darkMode": false,
             "theme": "seekJobs",
             "viewport": 768,
           },
           "seekJobs wide": {
+            "disabled": true,
+          },
+          "seekJobsDark desktop": {
+            "disabled": true,
+          },
+          "seekJobsDark mobile": {
+            "disabled": true,
+          },
+          "seekJobsDark tablet": {
+            "darkMode": true,
+            "theme": "seekJobs",
+            "viewport": 768,
+          },
+          "seekJobsDark wide": {
             "disabled": true,
           },
           "wireframe desktop": {
@@ -176,42 +176,42 @@ describe('setChromatic', () => {
               "theme": "apac",
               "viewport": 1200,
             },
-            "seekJobs (dark) desktop": {
-              "darkMode": true,
-              "theme": "seekJobs",
-              "viewport": 992,
-            },
-            "seekJobs (dark) mobile": {
-              "darkMode": true,
-              "theme": "seekJobs",
-              "viewport": 320,
-            },
-            "seekJobs (dark) tablet": {
-              "darkMode": true,
-              "theme": "seekJobs",
-              "viewport": 768,
-            },
-            "seekJobs (dark) wide": {
-              "darkMode": true,
-              "theme": "seekJobs",
-              "viewport": 1200,
-            },
             "seekJobs desktop": {
-              "darkMode": true,
+              "darkMode": false,
               "theme": "seekJobs",
               "viewport": 992,
             },
             "seekJobs mobile": {
-              "darkMode": true,
+              "darkMode": false,
               "theme": "seekJobs",
               "viewport": 320,
             },
             "seekJobs tablet": {
-              "darkMode": true,
+              "darkMode": false,
               "theme": "seekJobs",
               "viewport": 768,
             },
             "seekJobs wide": {
+              "darkMode": false,
+              "theme": "seekJobs",
+              "viewport": 1200,
+            },
+            "seekJobsDark desktop": {
+              "darkMode": true,
+              "theme": "seekJobs",
+              "viewport": 992,
+            },
+            "seekJobsDark mobile": {
+              "darkMode": true,
+              "theme": "seekJobs",
+              "viewport": 320,
+            },
+            "seekJobsDark tablet": {
+              "darkMode": true,
+              "theme": "seekJobs",
+              "viewport": 768,
+            },
+            "seekJobsDark wide": {
               "darkMode": true,
               "theme": "seekJobs",
               "viewport": 1200,
@@ -249,18 +249,6 @@ describe('setChromatic', () => {
           "apac wide": {
             "disabled": true,
           },
-          "seekJobs (dark) desktop": {
-            "disabled": true,
-          },
-          "seekJobs (dark) mobile": {
-            "disabled": true,
-          },
-          "seekJobs (dark) tablet": {
-            "disabled": true,
-          },
-          "seekJobs (dark) wide": {
-            "disabled": true,
-          },
           "seekJobs desktop": {
             "disabled": true,
           },
@@ -271,6 +259,18 @@ describe('setChromatic', () => {
             "disabled": true,
           },
           "seekJobs wide": {
+            "disabled": true,
+          },
+          "seekJobsDark desktop": {
+            "disabled": true,
+          },
+          "seekJobsDark mobile": {
+            "disabled": true,
+          },
+          "seekJobsDark tablet": {
+            "disabled": true,
+          },
+          "seekJobsDark wide": {
             "disabled": true,
           },
           "wireframe desktop": {
@@ -309,18 +309,6 @@ describe('setChromatic', () => {
             "apac wide": {
               "disabled": true,
             },
-            "seekJobs (dark) desktop": {
-              "disabled": true,
-            },
-            "seekJobs (dark) mobile": {
-              "disabled": true,
-            },
-            "seekJobs (dark) tablet": {
-              "disabled": true,
-            },
-            "seekJobs (dark) wide": {
-              "disabled": true,
-            },
             "seekJobs desktop": {
               "disabled": true,
             },
@@ -331,6 +319,18 @@ describe('setChromatic', () => {
               "disabled": true,
             },
             "seekJobs wide": {
+              "disabled": true,
+            },
+            "seekJobsDark desktop": {
+              "disabled": true,
+            },
+            "seekJobsDark mobile": {
+              "disabled": true,
+            },
+            "seekJobsDark tablet": {
+              "disabled": true,
+            },
+            "seekJobsDark wide": {
               "disabled": true,
             },
             "wireframe desktop": {

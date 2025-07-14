@@ -47,24 +47,27 @@ export const setChromatic = (options?: {
         (wireframeOnly && theme !== 'wireframe') ||
         (!wireframeOnly && theme === 'wireframe') ||
         !viewports.includes(viewport);
-      const darkMode = darkModeThemes.includes(theme);
 
       if (root && disabled) {
         continue;
       }
 
-      const mode = disabled
+      modes[`${theme} ${viewport}`] = disabled
         ? { disabled: true }
         : {
             theme,
-            darkMode,
+            darkMode: false,
             viewport: screenshotViewports[viewport],
           };
 
-      modes[`${theme} ${viewport}`] = mode;
-
-      if (darkMode) {
-        modes[`${theme}Dark ${viewport}`] = mode;
+      if (darkModeThemes.includes(theme)) {
+        modes[`${theme}Dark ${viewport}`] = disabled
+          ? { disabled: true }
+          : {
+              theme,
+              darkMode: true,
+              viewport: screenshotViewports[viewport],
+            };
       }
     }
   }
