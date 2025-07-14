@@ -69,9 +69,9 @@ export const DocNavigationItem = ({
   const [hovered, setHovered] = useState(false);
 
   const badgeSpacing = 'xsmall';
-  const badgeElement = badge ? (
-    <>{cloneElement(badge, { bleedY: true })}</>
-  ) : undefined;
+  const badgeElement = badge
+    ? cloneElement(badge, { bleedY: true })
+    : undefined;
 
   return (
     <Box component="li">
