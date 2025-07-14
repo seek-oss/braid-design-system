@@ -271,8 +271,8 @@ importers:
         specifier: 1.0.0-rc.11
         version: 1.0.0-rc.11
       chromatic:
-        specifier: ^12.2.0
-        version: 12.2.0
+        specifier: ^13.1.2
+        version: 13.1.2
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.3
@@ -3863,8 +3863,8 @@ packages:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
 
-  chromatic@12.2.0:
-    resolution: {integrity: sha512-GswmBW9ZptAoTns1BMyjbm55Z7EsIJnUvYKdQqXIBZIKbGErmpA+p4c0BYA+nzw5B0M+rb3Iqp1IaH8TFwIQew==}
+  chromatic@13.1.2:
+    resolution: {integrity: sha512-jgVptQabJHOnzmmvLjbtfutREkWGhDDk2gVqMH6N+V7z56oIy4Sd2/U7ZxNvnVFPinZQMSjSdUce4b6JIP64Dg==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
@@ -13369,7 +13369,7 @@ snapshots:
 
   chownr@2.0.0: {}
 
-  chromatic@12.2.0: {}
+  chromatic@13.1.2: {}
 
   chrome-trace-event@1.0.4: {}
 
