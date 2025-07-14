@@ -39,7 +39,7 @@ const drawerPreviewPropsFromSourceValue = (element: DrawerElement) => ({
   scrollLock: false,
 });
 
-export const DrawerPreview = ({ children }: { children: ReactNode }) => (
+const DrawerPreview = ({ children }: { children: ReactNode }) => (
   <Box position="relative">
     <Box position="absolute" inset={0} className={styles.backdrop} />
     <Box position="relative" zIndex="modal">
