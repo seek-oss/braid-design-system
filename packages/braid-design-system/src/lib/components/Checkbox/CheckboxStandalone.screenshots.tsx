@@ -20,7 +20,6 @@ const meta = {
   title: 'Components/CheckboxStandalone',
   component: CheckboxStandalone,
   args: {
-    id: 'checkbox-standalone-example',
     checked: false,
     'aria-label': 'Label',
     onChange: () => {},
