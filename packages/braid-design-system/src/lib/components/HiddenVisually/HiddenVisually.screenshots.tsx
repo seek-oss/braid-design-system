@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Text, HiddenVisually } from '../';
 
@@ -8,12 +8,10 @@ const meta = {
   title: 'Components/HiddenVisually',
   component: HiddenVisually,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile'],
-        themes: ['wireframe'],
-      }),
-    },
+    chromatic: setChromatic({
+      viewports: ['mobile'],
+      wireframeOnly: true,
+    }),
   },
 } satisfies Meta<typeof HiddenVisually>;
 

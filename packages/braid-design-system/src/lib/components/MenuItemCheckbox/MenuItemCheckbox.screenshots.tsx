@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Badge, Inline, MenuItemCheckbox } from '../';
 import { Menu } from '../MenuRenderer/MenuRenderer';
@@ -9,9 +9,7 @@ const meta = {
   title: 'Components/MenuItemCheckbox',
   component: MenuItemCheckbox,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['tablet'] }),
   },
 } satisfies Meta<typeof MenuItemCheckbox>;
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import {
   Stack,
@@ -18,11 +18,7 @@ const meta = {
   title: 'Components/Tabs',
   component: Tabs,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile', 'wide'],
-      }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'wide'] }),
   },
 } satisfies Meta<typeof Tabs>;
 

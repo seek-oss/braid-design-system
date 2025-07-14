@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, Card, Stack, Text } from '../';
 import { Placeholder } from '../../playroom/components';
@@ -9,11 +9,9 @@ const meta = {
   title: 'Components/Card',
   component: Card,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile', 'tablet', 'desktop', 'wide'],
-      }),
-    },
+    chromatic: setChromatic({
+      viewports: ['mobile', 'tablet', 'desktop', 'wide'],
+    }),
   },
   argTypes: {
     tone: { control: 'select', options: ['promote', 'formAccent'] },

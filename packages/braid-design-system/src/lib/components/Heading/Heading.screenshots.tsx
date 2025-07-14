@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Fragment } from 'react';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, Heading, IconPositive, IconImage, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
@@ -11,9 +11,7 @@ const meta = {
   title: 'Components/Heading',
   component: Heading,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },
 } satisfies Meta<typeof Heading>;
 

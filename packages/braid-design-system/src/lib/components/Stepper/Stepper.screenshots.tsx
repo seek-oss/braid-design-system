@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Stepper, Step } from '../';
 
@@ -8,9 +8,7 @@ const meta = {
   title: 'Components/Stepper',
   component: Stepper,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },
 } satisfies Meta<typeof Stepper>;
 

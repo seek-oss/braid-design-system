@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, PageBlock } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -9,9 +9,7 @@ const meta = {
   title: 'Components/PageBlock',
   component: PageBlock,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'wide'] }),
   },
   argTypes: {
     width: {

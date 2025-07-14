@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Fragment } from 'react';
 import { titleCase } from 'title-case';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import {
   Box,
@@ -44,9 +44,7 @@ const meta = {
   title: 'Components/Text',
   component: Text,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },
 } satisfies Meta<typeof Text>;
 

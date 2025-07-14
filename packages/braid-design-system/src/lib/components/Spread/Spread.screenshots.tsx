@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, Spread, Stack, Text, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -9,12 +9,10 @@ const meta = {
   title: 'Components/Spread',
   component: Spread,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile', 'tablet', 'desktop', 'wide'],
-        themes: ['wireframe'],
-      }),
-    },
+    chromatic: setChromatic({
+      viewports: ['mobile', 'tablet', 'desktop', 'wide'],
+      wireframeOnly: true,
+    }),
   },
 } satisfies Meta<typeof Spread>;
 

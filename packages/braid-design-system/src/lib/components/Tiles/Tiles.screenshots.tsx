@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, Tiles } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -12,12 +12,10 @@ const meta: Meta<typeof Tiles> = {
   component: Tiles,
   parameters: {
     layout: 'padded',
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile', 'tablet'],
-        themes: ['wireframe'],
-      }),
-    },
+    chromatic: setChromatic({
+      viewports: ['mobile', 'tablet'],
+      wireframeOnly: true,
+    }),
   },
 };
 

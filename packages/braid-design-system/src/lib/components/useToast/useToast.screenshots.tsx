@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react-webpack5';
-import React from 'react';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { IconBookmark } from '../';
 
@@ -11,9 +10,7 @@ const meta = {
   title: 'Components/useToast',
   component: Toast,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },
   args: {
     tone: 'neutral',

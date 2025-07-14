@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Inline, Stack, Box, Text } from '../';
 import { Placeholder } from '../../playroom/components';
@@ -19,9 +19,7 @@ const meta = {
     scrollLock: false,
   },
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'wide'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'wide'] }),
   },
   decorators: (Story) => (
     <Box>

@@ -1,7 +1,6 @@
 import type { StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Button, Actions } from '../';
 
@@ -11,9 +10,7 @@ const meta = {
   title: 'Components/Actions',
   component: Actions,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },
 };
 

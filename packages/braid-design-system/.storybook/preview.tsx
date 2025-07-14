@@ -4,8 +4,8 @@ import type { Preview } from '@storybook/react-webpack5';
 
 import * as themes from '../src/lib/themes';
 
+import { setChromatic } from './chromatic';
 import { withTheme } from './decorators';
-import { braidThemes, makeBraidModes } from './modes';
 
 const webFontLinkTags = Array.from(
   new Set(
@@ -22,12 +22,7 @@ if (typeof document !== 'undefined') {
 const preview: Preview = {
   decorators: [withTheme],
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({
-        root: true,
-        viewports: ['mobile'],
-      }),
-    },
+    chromatic: setChromatic(),
     layout: 'fullscreen',
   },
   globalTypes: {
@@ -36,13 +31,26 @@ const preview: Preview = {
       description: 'Global theme for components',
       toolbar: {
         icon: 'paintbrush',
-        items: braidThemes,
+        items: Object.keys(themes),
+        dynamicTitle: true,
+      },
+    },
+    darkMode: {
+      name: 'Dark mode',
+      description: 'Global colour mode',
+      toolbar: {
+        icon: 'moonicon',
+        items: [
+          { value: false, icon: 'sun', title: 'Light' },
+          { value: true, icon: 'moon', title: 'Dark' },
+        ],
         dynamicTitle: true,
       },
     },
   },
   initialGlobals: {
     theme: 'seekJobs',
+    darkMode: false,
   },
 };
 

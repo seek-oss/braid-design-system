@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Bleed, Box, Stack, Text } from '../';
 import type { Space } from '../../css/atoms/atoms';
@@ -26,12 +26,10 @@ const meta = {
   title: 'Components/Bleed',
   component: Bleed,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile', 'tablet', 'desktop', 'wide'],
-        themes: ['wireframe'],
-      }),
-    },
+    chromatic: setChromatic({
+      viewports: ['mobile', 'tablet', 'desktop', 'wide'],
+      wireframeOnly: true,
+    }),
   },
   argTypes: {
     space: spaceArg,

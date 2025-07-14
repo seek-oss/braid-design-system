@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import {
   Badge,
@@ -17,7 +17,7 @@ const meta = {
   title: 'Components/MenuItem',
   component: MenuItem,
   parameters: {
-    chromatic: makeBraidModes({ viewports: ['tablet'] }),
+    chromatic: setChromatic({ viewports: ['tablet'] }),
   },
 } satisfies Meta<typeof MenuItem>;
 

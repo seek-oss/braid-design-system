@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Columns, Column } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
@@ -9,12 +9,10 @@ const meta = {
   title: 'Components/Columns',
   component: Columns,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile', 'tablet', 'desktop', 'wide'],
-        themes: ['wireframe'],
-      }),
-    },
+    chromatic: setChromatic({
+      viewports: ['mobile', 'tablet', 'desktop', 'wide'],
+      wireframeOnly: true,
+    }),
   },
   argTypes: {
     space: {

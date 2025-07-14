@@ -1,7 +1,6 @@
 import type { Decorator, Meta, StoryObj } from '@storybook/react-webpack5';
-import React from 'react';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Pagination, Box } from '../';
 import type { LinkProps } from '../Link/Link';
@@ -14,9 +13,7 @@ const meta = {
   title: 'Components/Pagination',
   component: Pagination,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['mobile', 'tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },
   argTypes: {
     page: {

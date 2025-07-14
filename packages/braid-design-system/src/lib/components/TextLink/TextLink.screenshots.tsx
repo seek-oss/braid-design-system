@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import {
   Box,
@@ -34,9 +34,7 @@ const meta: Meta<typeof TextLink> = {
   title: 'Components/TextLink',
   component: TextLink,
   parameters: {
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['tablet'] }),
   },
   args: {
     href: '#',

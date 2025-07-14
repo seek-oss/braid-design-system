@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Tag, Inline, IconTag, Stack } from '../';
 import { LayoutTest } from '../../utils/LayoutTest';
@@ -12,9 +12,7 @@ const meta = {
   component: Tag,
   parameters: {
     background: 'surface',
-    chromatic: {
-      modes: makeBraidModes({ viewports: ['tablet'] }),
-    },
+    chromatic: setChromatic({ viewports: ['tablet'] }),
   },
   decorators: (Story, { parameters }) => (
     <Box

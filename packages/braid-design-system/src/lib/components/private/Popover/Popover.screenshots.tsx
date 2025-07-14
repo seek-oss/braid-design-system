@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { useRef } from 'react';
 
-import { makeBraidModes } from 'braid-storybook/modes';
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box } from '../..';
 import { Placeholder } from '../Placeholder/Placeholder';
@@ -19,12 +19,10 @@ const meta = {
   component: Popover,
   parameters: {
     justifyContent: 'center',
-    chromatic: {
-      modes: makeBraidModes({
-        viewports: ['mobile'],
-        themes: ['wireframe'],
-      }),
-    },
+    chromatic: setChromatic({
+      viewports: ['mobile'],
+      wireframeOnly: true,
+    }),
   },
   args: {
     open: true,
