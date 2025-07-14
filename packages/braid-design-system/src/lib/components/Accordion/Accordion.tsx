@@ -99,6 +99,7 @@ export const Accordion = ({
 
   return (
     <AccordionContext.Provider value={contextValue}>
+      hello
       <Stack space={space} data={data}>
         {!dividers ? (
           children
