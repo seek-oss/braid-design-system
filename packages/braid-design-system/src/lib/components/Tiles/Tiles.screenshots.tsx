@@ -11,7 +11,6 @@ const meta: Meta<typeof Tiles> = {
   title: 'Components/Tiles',
   component: Tiles,
   parameters: {
-    layout: 'padded',
     chromatic: setChromatic({
       viewports: ['mobile', 'tablet'],
       wireframeOnly: true,

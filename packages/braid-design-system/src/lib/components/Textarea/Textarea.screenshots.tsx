@@ -11,9 +11,6 @@ const Container = ({ children }: { children: React.ReactNode }) => (
 const meta: Meta<typeof Textarea> = {
   title: 'Components/Textarea',
   component: Textarea,
-  parameters: {
-    layout: 'padded',
-  },
   decorators: [
     (Story) => (
       <Container>
