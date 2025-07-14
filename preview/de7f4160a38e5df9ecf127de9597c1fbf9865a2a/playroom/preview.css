@@ -1,0 +1,67 @@
+@keyframes _36d43a4 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+._36d43a1 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--iqvdf49);
+}
+._36d43a3 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: _36d43a4;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+._36d43a5 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+.y3e4wc1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--y3e4wc0);
+}
+.y3e4wc2 {
+  --y3e4wc0: var(--lsbbf7i);
+}
+.y3e4wc3 {
+  --y3e4wc0: var(--lsbbf7j);
+}
+.y3e4wc4 {
+  --y3e4wc0: var(--lsbbf7k);
+}
+.y3e4wc5 {
+  --y3e4wc0: var(--lsbbf7l);
+}
+.y3e4wc6 {
+  --y3e4wc0: var(--lsbbf7m);
+}
+.y3e4wc7 {
+  --y3e4wc0: var(--lsbbf7n);
+}
+.y3e4wc8 {
+  --y3e4wc0: var(--lsbbf7o);
+}
+.y3e4wc9 {
+  --y3e4wc0: var(--lsbbf7p);
+}
+.y3e4wca {
+  --y3e4wc0: var(--lsbbf7q);
+}
+.y3e4wcb {
+  --y3e4wc0: var(--lsbbf7r);
+}
