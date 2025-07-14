@@ -64,7 +64,7 @@ export const setChromatic = (options?: {
       modes[`${theme} ${viewport}`] = mode;
 
       if (darkMode) {
-        modes[`${theme} (dark) ${viewport}`] = mode;
+        modes[`${theme}Dark ${viewport}`] = mode;
       }
     }
   }
