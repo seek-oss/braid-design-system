@@ -8,6 +8,8 @@ const REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
  * A subset of the logic from `react-is` that supports both React 18 and 19.
  * We only use this to check for React fragments so only that code has been used.
  * @see https://github.com/facebook/react/blob/main/packages/react-is/src/ReactIs.js#L40
+ *
+ * _Note: once we drop support for React 18 we should move back to using `react-is`_
  */
 
 const isReactElementType = (value: any) => {
