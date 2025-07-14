@@ -18,7 +18,10 @@ const meta = {
   title: 'Components/Tabs',
   component: Tabs,
   parameters: {
-    chromatic: setChromatic({ viewports: ['mobile', 'wide'] }),
+    chromatic: {
+      ...setChromatic({ viewports: ['mobile', 'wide'] }),
+      delay: 20000,
+    },
   },
 } satisfies Meta<typeof Tabs>;
 
