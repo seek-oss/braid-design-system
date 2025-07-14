@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { setChromatic } from 'braid-storybook/chromatic';
 
-import { Placeholder } from '../../playroom/components';
+import { Placeholder, Spread } from '../../playroom/components';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
@@ -109,9 +109,9 @@ export const CloseButtonLayout: Story = {
 };
 
 export const LeftAlignedInCenteredStack: Story = {
-  name: 'Test: should be left aligned in a centered Stack',
+  name: 'Test: Should be left aligned in a centered Stack',
   args: {
-    title: 'Default test',
+    title: 'Left aligned in a centered Stack',
     width: 'medium',
     children: (
       <Text>
@@ -124,5 +124,26 @@ export const LeftAlignedInCenteredStack: Story = {
     <Stack space="large" align="center">
       <Story />
     </Stack>
+  ),
+};
+
+export const SpreadContent: Story = {
+  name: 'Test: Content should be spread',
+  args: {
+    title: 'Spread content',
+    onClose: () => {},
+    width: 'medium',
+    scrollLock: false,
+    children: (
+      <Spread space="none" direction="vertical">
+        <Text>Top of drawer</Text>
+        <Text>Bottom of drawer</Text>
+      </Spread>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
   ),
 };
