@@ -2,10 +2,16 @@ import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { atoms, colorModeStyle, vars } from 'braid-src/entries/css';
 
+export const navItemPaddingY = 'medium' as const;
+export const navItemPaddingX = ['small', 'medium'] as const;
+
 export const docNavLink = style([
   atoms({
-    display: 'block',
     borderRadius: 'standard',
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    paddingX: navItemPaddingX,
   }),
   {
     outlineOffset: calc.negate(vars.space.xxsmall),
