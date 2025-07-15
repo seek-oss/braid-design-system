@@ -20,7 +20,7 @@ const meta = {
   parameters: {
     chromatic: {
       ...setChromatic({ viewports: ['mobile', 'wide'] }),
-      delay: 5000,
+      delay: 4000,
     },
   },
 } satisfies Meta<typeof Tabs>;
