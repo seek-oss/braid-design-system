@@ -130,7 +130,6 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
             variant={variant}
             tone={tone}
             radius="full"
-            keyboardFocusable={typeof tabIndex === 'undefined' || tabIndex >= 0}
             forceActive={ariaExpanded === 'true' || ariaExpanded === true}
           />
           <Box

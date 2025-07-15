@@ -14,7 +14,7 @@ import { Children, type ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { CodeBlock } from '../Code/Code';
-import type { SupportedLanguage } from '../Code/SupportedLanguage';
+import type { SupportedLanguage } from '../Code/supportedLanguages';
 import { InlineCode } from '../InlineCode/InlineCode';
 
 const Code = ({
