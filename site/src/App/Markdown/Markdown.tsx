@@ -35,11 +35,7 @@ const paragraph = ({ children }: any) => (
 paragraph.isParagraph = true;
 
 const renderers: Components = {
-  h1: ({ children }) => (
-    <Box>
-      <Heading level="2">{children}</Heading>
-    </Box>
-  ),
+  h1: ({ children }) => <Heading level="2">{children}</Heading>,
   h2: ({ children }) => (
     <Box paddingTop="medium">
       <LinkableHeading level="3">

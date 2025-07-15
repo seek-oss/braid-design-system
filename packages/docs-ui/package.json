@@ -42,6 +42,6 @@
   },
   "peerDependencies": {
     "braid-design-system": "^33.0.0",
-    "react": "^19.1.0"
+    "react": "^18 || ^19"
   }
 }

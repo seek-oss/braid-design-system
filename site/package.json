@@ -29,7 +29,7 @@
     "@types/lodash.memoize": "^4.1.9",
     "@types/lodash.partition": "^4.6.9",
     "@types/react": "^19.1.8",
-    "@types/react-dom": "^18.3.0",
+    "@types/react-dom": "^19.1.6",
     "@types/react-syntax-highlighter": "^15.5.10",
     "@vanilla-extract/css": "^1.9.2",
     "@vanilla-extract/css-utils": "^0.1.3",

@@ -218,7 +218,7 @@ importers:
         version: 6.6.3
       '@testing-library/react':
         specifier: ^16.0.0
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.7(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@testing-library/user-event':
         specifier: ^14.4.3
         version: 14.6.1(@testing-library/dom@10.4.0)
@@ -238,8 +238,8 @@ importers:
         specifier: ^19.1.8
         version: 19.1.8
       '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.7(@types/react@19.1.8)
+        specifier: ^19.1.6
+        version: 19.1.6(@types/react@19.1.8)
       '@types/sanitize-html':
         specifier: ^2.13.0
         version: 2.16.0
@@ -472,8 +472,8 @@ importers:
         specifier: ^19.1.8
         version: 19.1.8
       '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.7(@types/react@19.1.8)
+        specifier: ^19.1.6
+        version: 19.1.6(@types/react@19.1.8)
       '@types/react-syntax-highlighter':
         specifier: ^15.5.10
         version: 15.5.13
@@ -2865,10 +2865,10 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  '@types/react-dom@18.3.7':
-    resolution: {integrity: sha512-MEe3UeoENYVFXzoXEWsvcpg6ZvlrFNlOQ7EOsvhI3CfAXwzPfO8Qwuxd40nepsYKqyyVQnTdEfv68q91yLcKrQ==}
+  '@types/react-dom@19.1.6':
+    resolution: {integrity: sha512-4hOiT/dwO8Ko0gV1m/TJZYk3y0KBnY9vzDh7W+DH17b2HFSOGgdj33dhihPeuy3l0q23+4e+hoXHV6hCC4dCXw==}
     peerDependencies:
-      '@types/react': ^18.0.0
+      '@types/react': ^19.0.0
 
   '@types/react-syntax-highlighter@15.5.13':
     resolution: {integrity: sha512-uLGJ87j6Sz8UaBAooU0T6lWJ0dBmjZgN1PZTrj05TNql2/XpC6+4HhMT5syIdFUUt+FASfCeLLv4kBygNU+8qA==}
@@ -11879,7 +11879,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.7(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@babel/runtime': 7.27.6
       '@testing-library/dom': 10.4.0
@@ -11887,7 +11887,7 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
     optionalDependencies:
       '@types/react': 19.1.8
-      '@types/react-dom': 18.3.7(@types/react@19.1.8)
+      '@types/react-dom': 19.1.6(@types/react@19.1.8)
 
   '@testing-library/user-event@14.6.1(@testing-library/dom@10.4.0)':
     dependencies:
@@ -12117,7 +12117,7 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-dom@18.3.7(@types/react@19.1.8)':
+  '@types/react-dom@19.1.6(@types/react@19.1.8)':
     dependencies:
       '@types/react': 19.1.8
 
@@ -17663,7 +17663,7 @@ snapshots:
       '@types/codemirror': 5.60.16
       '@types/prettier': 2.7.3
       '@types/react': 19.1.8
-      '@types/react-dom': 18.3.7(@types/react@19.1.8)
+      '@types/react-dom': 19.1.6(@types/react@19.1.8)
       '@vanilla-extract/css': 1.17.4(babel-plugin-macros@3.1.0)
       '@vanilla-extract/css-utils': 0.1.6
       '@vanilla-extract/dynamic': 2.1.5
@@ -17729,7 +17729,7 @@ snapshots:
       '@types/codemirror': 5.60.16
       '@types/prettier': 2.7.3
       '@types/react': 19.1.8
-      '@types/react-dom': 18.3.7(@types/react@19.1.8)
+      '@types/react-dom': 19.1.6(@types/react@19.1.8)
       '@vanilla-extract/css': 1.17.4(babel-plugin-macros@3.1.0)
       '@vanilla-extract/css-utils': 0.1.6
       '@vanilla-extract/dynamic': 2.1.5
