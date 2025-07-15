@@ -148,7 +148,7 @@ const svgrConfig = {
     // Create icon wrapper component, if it doesn't already exist
     await templateFileIfMissing(
       `${iconName}.tsx`,
-      dedent/* ts */ `
+      dedent /* ts */ `
         import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
         import { IconContainer, type IconContainerProps } from '${relative(
           `${baseDir}/src/lib/components/icons/IconContainer`,
@@ -169,7 +169,7 @@ const svgrConfig = {
     // Create documentation, if it doesn't already exist
     await templateFileIfMissing(
       `${iconName}.docs.tsx`,
-      dedent/* ts */ `
+      dedent /* ts */ `
         import source from '@braid-design-system/source.macro';
         import type { ComponentDocs } from 'site/types';
 
