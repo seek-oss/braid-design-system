@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json",
   "include": ["./src", "./scripts"],
   "compilerOptions": {
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "types": ["webpack-env"]
   }
 }
