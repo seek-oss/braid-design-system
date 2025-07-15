@@ -13,8 +13,6 @@ import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
-import { Column } from '../../Column/Column';
-import { Columns } from '../../Columns/Columns';
 import { Heading } from '../../Heading/Heading';
 import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
 import { Stack } from '../../Stack/Stack';
@@ -152,6 +150,9 @@ export const ModalContent = ({
           enabled={scrollLock}
         >
           <Box
+            display="flex"
+            gap="large"
+            flexDirection="column"
             background="surface"
             borderRadius={modalRadius}
             overflow="auto"
@@ -168,10 +169,21 @@ export const ModalContent = ({
             ]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <Stack space="large">
-              {illustration ? (
-                <Stack space="medium" align="center">
-                  <Box paddingX="gutter">{illustration}</Box>
+            {illustration ? (
+              <Stack space="medium" align="center">
+                <Box paddingX="gutter">{illustration}</Box>
+                <ModalContentHeader
+                  title={title}
+                  headingLevel={headingLevel}
+                  description={description}
+                  descriptionId={descriptionId}
+                  center={Boolean(illustration)}
+                  ref={headingRef}
+                />
+              </Stack>
+            ) : (
+              <Box display="flex">
+                <Box width="full" minWidth={0}>
                   <ModalContentHeader
                     title={title}
                     headingLevel={headingLevel}
@@ -180,26 +192,11 @@ export const ModalContent = ({
                     center={Boolean(illustration)}
                     ref={headingRef}
                   />
-                </Stack>
-              ) : (
-                <Columns space="none">
-                  <Column>
-                    <ModalContentHeader
-                      title={title}
-                      headingLevel={headingLevel}
-                      description={description}
-                      descriptionId={descriptionId}
-                      center={Boolean(illustration)}
-                      ref={headingRef}
-                    />
-                  </Column>
-                  <Column width="content">
-                    <Box width="touchable" />
-                  </Column>
-                </Columns>
-              )}
-              <Fragment>{children}</Fragment>
-            </Stack>
+                </Box>
+                <Box width="touchable" flexShrink={0} flexGrow={0} />
+              </Box>
+            )}
+            <Fragment>{children}</Fragment>
           </Box>
         </RemoveScroll>
         <Box
