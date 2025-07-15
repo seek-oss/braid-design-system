@@ -12,4 +12,5 @@ await build({
   target: 'node20',
   outdir: '../dist',
   jsx: 'transform',
+  external: ['react-devtools-core'],
 });
