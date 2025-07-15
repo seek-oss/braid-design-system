@@ -244,7 +244,12 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
         checker.typeToString(unionItem),
       );
 
-      if (isEqual(types.slice(0, 9), unionAliases.ReactNode)) {
+      if (
+        isEqual(
+          types.slice(0, unionAliases.ReactNode.length),
+          unionAliases.ReactNode,
+        )
+      ) {
         return 'ReactNode';
       }
 

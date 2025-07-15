@@ -1,6 +1,7 @@
 import EventEmitter from 'events';
 
 import { render } from 'ink';
+import type React from 'react';
 
 const createStdout = (): any => {
   let lastWrite: any;
@@ -15,7 +16,7 @@ const createStdout = (): any => {
   return stdout;
 };
 
-export const renderToString = (node: JSX.Element): string => {
+export const renderToString = (node: React.JSX.Element): string => {
   const stdout = createStdout();
 
   render(node, {
