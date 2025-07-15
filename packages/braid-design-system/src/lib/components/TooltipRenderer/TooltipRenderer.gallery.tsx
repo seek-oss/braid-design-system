@@ -1,13 +1,10 @@
 import source from '@braid-design-system/source.macro';
-import { calc } from '@vanilla-extract/css-utils';
 import type { GalleryComponent } from 'site/types';
 
 import { TooltipRenderer, Inline, Stack, Text, IconHelp, Box } from '../';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 
 import { type TooltipRendererProps, TooltipContent } from './TooltipRenderer';
-
-import { constants } from './TooltipRenderer.css';
 
 const MockTooltipContent = ({
   placement,
@@ -16,20 +13,8 @@ const MockTooltipContent = ({
   placement: TooltipRendererProps['placement'];
   children: ReactNodeNoStrings;
 }) => (
-  <Box data-popper-placement={placement}>
-    <TooltipContent
-      opacity={100}
-      arrowProps={{
-        'data-popper-arrow': true,
-        style: {
-          position: 'absolute',
-          left: '50%',
-          transform: `translateX(${calc(constants.arrowSize)
-            .negate()
-            .divide(2)})`,
-        },
-      }}
-    >
+  <Box style={{ width: 'fit-content' }}>
+    <TooltipContent inferredPlacement={placement} arrowLeftOffset={0}>
       {children}
     </TooltipContent>
   </Box>
