@@ -13,7 +13,7 @@ import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactN
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
 import { Children } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
-import { visit } from 'unist-util-visit';
+import { SKIP, visit } from 'unist-util-visit';
 
 import { CodeBlock } from '../Code/Code';
 import type { SupportedLanguage } from '../Code/supportedLanguages';
@@ -68,7 +68,7 @@ const renderers: Components = {
   ul: ({ children }) => (
     <TextContext.Provider value={null}>
       <Box paddingBottom="medium">
-        <List space="medium">
+        <List space="medium" type="bullet">
           {
             Children.map(children, (child) =>
               typeof child === 'string' ? null : child,
@@ -82,7 +82,7 @@ const renderers: Components = {
     const childList = Children.toArray(children);
 
     // @ts-expect-error
-    if (childList[1]?.type?.isParagraph) {
+    if (childList[0]?.type?.isParagraph) {
       return <Stack space="medium">{children as ReactNodeNoStrings}</Stack>;
     }
 
@@ -119,7 +119,10 @@ interface MarkdownProps {
 export function Markdown({ children }: MarkdownProps) {
   return (
     <Stack space="medium">
-      <ReactMarkdown components={renderers} rehypePlugins={[checkInlineCode]}>
+      <ReactMarkdown
+        components={renderers}
+        rehypePlugins={[checkInlineCode, removeNewlineInLists]}
+      >
         {children}
       </ReactMarkdown>
     </Stack>
@@ -136,6 +139,26 @@ const checkInlineCode = () =>
     visit(tree, 'element', (node, _, parent) => {
       if (node.tagName === 'code' && parent.tagName !== 'pre') {
         node.properties['data-inline'] = true;
+      }
+    });
+  };
+
+/**
+ * Removes newlines in lists.
+ * This is used to prevent newlines in list items from being rendered as empty list items.
+ */
+const removeNewlineInLists = () =>
+  function addProp(tree: any) {
+    visit(tree, 'text', (node, index, parent) => {
+      const newLine = '\n';
+      const isList =
+        parent?.tagName === 'li' ||
+        parent?.tagName === 'ol' ||
+        parent?.tagName === 'ul';
+      if (isList && node.value === newLine) {
+        parent.children.splice(index, 1);
+        // skip traversing the deleted nodes children and continue traversing from the deleted position.
+        return [SKIP, index];
       }
     });
   };
