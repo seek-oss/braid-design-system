@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { waitFor } from '@storybook/testing-library';
 
 import { setChromatic } from 'braid-storybook/chromatic';
 
@@ -14,22 +15,49 @@ import {
 } from '../';
 import { Placeholder } from '../../playroom/components';
 
+import * as styles from './Tabs.css';
+
 const meta = {
   title: 'Components/Tabs',
   component: Tabs,
   parameters: {
-    chromatic: {
-      ...setChromatic({ viewports: ['mobile', 'wide'] }),
-      delay: 5000,
-    },
+    chromatic: setChromatic({ viewports: ['mobile', 'wide'] }),
   },
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
 type Story = StoryObj<typeof Tabs>;
 
+const waitForActiveUnderline: Story['play'] = async ({ canvasElement }) => {
+  const underlineEl = canvasElement.querySelector(`.${styles.tabUnderline}`);
+  const selectedTab = canvasElement.querySelector('[aria-selected="true"]');
+  const [, underlineVarName] =
+    styles.underlineWidth.match(/^var\((.*)\)$/) ?? [];
+
+  if (underlineEl && selectedTab && underlineVarName) {
+    await waitFor(() => {
+      const tabStyles = getComputedStyle(selectedTab);
+      const underlineStyles = getComputedStyle(underlineEl);
+
+      const paddingLeft = parseFloat(tabStyles.paddingLeft);
+      const paddingRight = parseFloat(tabStyles.paddingRight);
+      const width = parseFloat(tabStyles.width);
+
+      const targetWidth = width - paddingLeft - paddingRight;
+      const underlineWidth = parseFloat(
+        underlineStyles.getPropertyValue(underlineVarName),
+      );
+
+      if (targetWidth - underlineWidth < 0.1) {
+        return Promise.resolve();
+      }
+    });
+  }
+};
+
 export const ActiveIndicatorBasic: Story = {
   name: 'Active indicator - basic',
+  play: waitForActiveUnderline,
   render: () => (
     <Stack space="medium">
       {['1', '2', '3'].map((item) => (
@@ -47,6 +75,7 @@ export const ActiveIndicatorBasic: Story = {
 
 export const ActiveIndicatorWithIcons: Story = {
   name: 'Active indicator - with icons',
+  play: waitForActiveUnderline,
   render: () => (
     <Stack space="medium">
       {['1', '2', '3'].map((item) => (
@@ -70,6 +99,7 @@ export const ActiveIndicatorWithIcons: Story = {
 
 export const ActiveIndicatorWithBadge: Story = {
   name: 'Active indicator - with badge',
+  play: waitForActiveUnderline,
   render: () => (
     <Stack space="medium">
       {['1', '2', '3'].map((item) => (
@@ -93,6 +123,7 @@ export const ActiveIndicatorWithBadge: Story = {
 
 export const ActiveIndicatorWithIconsAndBadge: Story = {
   name: 'Active indicator - with icons and badge',
+  play: waitForActiveUnderline,
   render: () => (
     <Stack space="medium">
       {['1', '2', '3'].map((item) => (
@@ -128,6 +159,7 @@ export const ActiveIndicatorWithIconsAndBadge: Story = {
 
 export const LeftAligned: Story = {
   name: 'Left aligned',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -158,6 +190,7 @@ export const LeftAligned: Story = {
 
 export const CenterAligned: Story = {
   name: 'Center aligned',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -180,6 +213,7 @@ export const CenterAligned: Story = {
 
 export const WithGutter: Story = {
   name: 'With gutter',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -210,6 +244,7 @@ export const WithGutter: Story = {
 
 export const WithGutterAndReservedHitArea: Story = {
   name: 'With gutter and reserved hit area',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -240,6 +275,7 @@ export const WithGutterAndReservedHitArea: Story = {
 
 export const TestCenterAlignedTabsOnMobile: Story = {
   name: 'Test: Center aligned tabs should be left aligned on mobile when content is too wide',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -274,6 +310,7 @@ export const TestCenterAlignedTabsOnMobile: Story = {
 
 export const TestSelectedTabScrolledIntoView: Story = {
   name: 'Test: Selected tab should be scrolled into view on load',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider selectedItem="4">
       <Stack space="medium">
@@ -308,6 +345,7 @@ export const TestSelectedTabScrolledIntoView: Story = {
 
 export const TestSelectedTabWithGutterScrolledIntoView: Story = {
   name: 'Test: Selected tab with gutter should be scrolled into view on load',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider selectedItem="3">
       <Stack space="medium">
@@ -342,6 +380,7 @@ export const TestSelectedTabWithGutterScrolledIntoView: Story = {
 
 export const FullWidthDivider: Story = {
   name: 'Full width divider',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -364,6 +403,7 @@ export const FullWidthDivider: Story = {
 
 export const FullWidthDividerCenterAligned: Story = {
   name: 'Full width divider while center aligned',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -386,6 +426,7 @@ export const FullWidthDividerCenterAligned: Story = {
 
 export const FullWidthDividerWithGutter: Story = {
   name: 'Full width divider with gutter',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -408,6 +449,7 @@ export const FullWidthDividerWithGutter: Story = {
 
 export const WithAnIcon: Story = {
   name: 'With an icon',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">
@@ -436,6 +478,7 @@ export const WithAnIcon: Story = {
 
 export const SizeSmall: Story = {
   name: 'Size small',
+  play: waitForActiveUnderline,
   render: () => (
     <TabsProvider>
       <Stack space="medium">

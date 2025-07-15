@@ -205,6 +205,7 @@
     "@babel/plugin-transform-typescript": "^7.20.13",
     "@braid-design-system/source.macro": "workspace:*",
     "@storybook/react-webpack5": "9.0.15",
+    "@storybook/testing-library": "^0.2.2",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
