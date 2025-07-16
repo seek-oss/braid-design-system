@@ -5050,5 +5050,44 @@
         "summary": "**Dialog, Drawer**: Ensure the focus outline is correctly applied to the title.\n\nFix issue where focus outline would not be long enough to wrap the entire title text in certain situations."
       }
     ]
+  },
+  {
+    "version": "33.10.1",
+    "updates": [
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast:** Clean up internal refactor"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Refactor layout, ensure content area is the full height\n\nThis change allows you to spread content to the bottom of a `Drawer`, for example with a `vertical` direction `Spread`."
+      },
+      {
+        "updated": [
+          "ButtonLink",
+          "Pagination",
+          "Textarea",
+          "TextLinkButton"
+        ],
+        "summary": "Ensure focus rings are consistent across components\n\nAligns a few edge cases where focus rings were not consistent due to elements or aria roles not captured by the reset."
+      },
+      {
+        "updated": [
+          "BraidTestProvider"
+        ],
+        "summary": "**BraidTestProvider:** Align mock with real IntersectionObserver API"
+      },
+      {
+        "updated": [
+          "Table"
+        ],
+        "summary": "**Table:** Ensure `alignY` prop is applied consistently across browsers\n\nFixes an issue where setting the `alignY` prop to `top` would not apply the `vertical-align` CSS property — instead falling through to our CSS reset which sets `vertical-align: baseline` (rendering inconsistently across browsers)."
+      }
+    ]
   }
 ]
