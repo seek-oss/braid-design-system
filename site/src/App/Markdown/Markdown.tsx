@@ -9,24 +9,20 @@ import {
   TextLink,
 } from 'braid-src/lib/components';
 import { TextContext } from 'braid-src/lib/components/Text/TextContext';
+import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
-import { Children, type ReactElement } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { Children } from 'react';
+import ReactMarkdown, { type Components } from 'react-markdown';
+import { SKIP, visit } from 'unist-util-visit';
 
 import { CodeBlock } from '../Code/Code';
 import type { SupportedLanguage } from '../Code/supportedLanguages';
 import { InlineCode } from '../InlineCode/InlineCode';
 
-const Code = ({
-  language,
-  value,
-}: {
-  language: SupportedLanguage | null;
-  value: string;
-}) => (
+const Code = ({ lang, value }: { lang: string | null; value: string }) => (
   <TextContext.Provider value={null}>
     <Box paddingBottom="medium">
-      <CodeBlock language={language}>{value}</CodeBlock>
+      <CodeBlock language={lang as SupportedLanguage}>{value}</CodeBlock>
     </Box>
   </TextContext.Provider>
 );
@@ -38,69 +34,75 @@ const paragraph = ({ children }: any) => (
 );
 paragraph.isParagraph = true;
 
-const renderers = {
-  root: ({ children }: any) => <Stack space="medium">{children}</Stack>,
-  heading: ({ level, children }: any) => {
-    const resolvedLevel = String(level + 1) as '2' | '3' | '4' | '5';
-    const paddingTopForLevel = {
-      '3': 'medium',
-      '4': 'medium',
-    } as const;
-
-    return (
-      <Box
-        paddingBottom={
-          resolvedLevel === '4' || resolvedLevel === '5' ? 'small' : undefined
-        }
-        paddingTop={
-          resolvedLevel in paddingTopForLevel
-            ? paddingTopForLevel[
-                resolvedLevel as keyof typeof paddingTopForLevel
-              ]
-            : undefined
-        }
-      >
-        {resolvedLevel === '3' ? (
-          <LinkableHeading level={resolvedLevel}>
-            {Array.isArray(children)
-              ? children
-                  .map(({ props }: ReactElement) => props.children)
-                  .join(' ')
-              : children}
-          </LinkableHeading>
-        ) : (
-          <Heading level={resolvedLevel === '5' ? '4' : resolvedLevel}>
-            {children}
-          </Heading>
-        )}
-      </Box>
-    );
-  },
-  paragraph,
-  list: ({ children }: { children: any }) => (
+const renderers: Components = {
+  h1: ({ children }) => <Heading level="2">{children}</Heading>,
+  h2: ({ children }) => (
+    <Box paddingTop="medium">
+      <LinkableHeading level="3">
+        {Array.isArray(children)
+          ? children.map(({ children: child }) => child).join(' ')
+          : (children as string)}
+      </LinkableHeading>
+    </Box>
+  ),
+  h3: ({ children }) => (
+    <Box paddingBottom="small" paddingTop="medium">
+      <Heading level="4">{children}</Heading>
+    </Box>
+  ),
+  h4: ({ children }) => (
+    <Box paddingBottom="small">
+      <Heading level="4">{children}</Heading>
+    </Box>
+  ),
+  p: paragraph,
+  ol: ({ children }) => (
     <TextContext.Provider value={null}>
       <Box paddingBottom="medium">
-        <List space="medium">{children}</List>
+        <List space="medium" type="number">
+          {children as ReactNodeNoStrings}
+        </List>
       </Box>
     </TextContext.Provider>
   ),
-  listItem: ({ children }: { children: any }) => {
+  ul: ({ children }) => (
+    <TextContext.Provider value={null}>
+      <Box paddingBottom="medium">
+        <List space="medium" type="bullet">
+          {
+            Children.map(children, (child) =>
+              typeof child === 'string' ? null : child,
+            ) as ReactNodeNoStrings
+          }
+        </List>
+      </Box>
+    </TextContext.Provider>
+  ),
+  li: ({ children }) => {
     const childList = Children.toArray(children);
 
     // @ts-expect-error
     if (childList[0]?.type?.isParagraph) {
-      return <Stack space="medium">{children}</Stack>;
+      return <Stack space="medium">{children as ReactNodeNoStrings}</Stack>;
     }
 
     return <Text>{children}</Text>;
   },
-  strong: Strong,
-  emphasis: Strong,
-  inlineCode: InlineCode,
-  code: Code,
-  link: TextLink,
-  linkReference: TextLink,
-  blockquote: ({ children }: any) => (
+  strong: ({ children }) => <Strong>{children}</Strong>,
+  em: ({ children }) => <Strong>{children}</Strong>,
+  pre: ({ children }) => children,
+  code: ({ children, className, ...rest }) => {
+    // This property is added by the `checkInlineCode` rehype plugin.
+    if ('data-inline' in rest && rest['data-inline']) {
+      return <InlineCode>{children as string}</InlineCode>;
+    }
+    const match = /language-(\w+)/.exec(className ?? '');
+    return <Code lang={match?.[1] ?? null} value={children as string} />;
+  },
+  a: ({ children, href }) => (
+    <TextLink href={href ?? '#!'}>{children}</TextLink>
+  ),
+  blockquote: ({ children }) => (
     <Box paddingX="gutter" paddingY="small" background="neutralLight">
       <Box paddingTop="small">
         <DefaultTextPropsProvider tone="secondary">
@@ -112,18 +114,51 @@ const renderers = {
 };
 
 interface MarkdownProps {
-  children: string;
+  readonly children: string;
 }
 export function Markdown({ children }: MarkdownProps) {
   return (
-    <ReactMarkdown
-      renderers={renderers}
-      allowNode={
-        /* Don't render a node for link definitions */
-        (node) => node.type !== 'definition'
-      }
-    >
-      {children}
-    </ReactMarkdown>
+    <Stack space="medium">
+      <ReactMarkdown
+        components={renderers}
+        rehypePlugins={[checkInlineCode, removeNewlineInLists]}
+      >
+        {children}
+      </ReactMarkdown>
+    </Stack>
   );
 }
+
+/**
+ * Adds an `inline` property to code blocks.
+ * This is used to determine whether the code block should be rendered as inline code or a block code.
+ * Previous versions of `ReactMarkdown` used to add this for us, but now we need to do it manually.
+ */
+const checkInlineCode = () =>
+  function addProp(tree: any) {
+    visit(tree, 'element', (node, _, parent) => {
+      if (node.tagName === 'code' && parent.tagName !== 'pre') {
+        node.properties['data-inline'] = true;
+      }
+    });
+  };
+
+/**
+ * Removes newlines in lists.
+ * This is used to prevent newlines in list items from being rendered as empty list items.
+ */
+const removeNewlineInLists = () =>
+  function removeNewline(tree: any) {
+    const newLine = '\n';
+    visit(tree, 'text', (node, index, parent) => {
+      const isList =
+        parent?.tagName === 'li' ||
+        parent?.tagName === 'ol' ||
+        parent?.tagName === 'ul';
+      if (isList && node.value === newLine) {
+        parent.children.splice(index, 1);
+        // skip traversing the deleted nodes children and continue traversing from the deleted position.
+        return [SKIP, index];
+      }
+    });
+  };

@@ -1,5 +1,5 @@
 import type { Decorator } from '@storybook/react-webpack5';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 
 import { BraidProvider, ToastProvider } from '../src/lib/components';
 import { PlayroomStateProvider } from '../src/lib/playroom/playroomState';

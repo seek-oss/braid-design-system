@@ -26,7 +26,7 @@
     "@types/babel__core": "^7.20.1",
     "@types/babel__traverse": "^7.20.1",
     "@types/cli-progress": "^3.11.0",
-    "@types/react": "^18.3.18",
+    "@types/react": "^19.1.8",
     "@types/workerpool": "^6.1.0",
     "babel-plugin-tester": "^11.0.4",
     "chalk": "^5.0.1",
@@ -35,9 +35,9 @@
     "dedent": "^1.5.3",
     "esbuild": "^0.21.5",
     "fast-glob": "^3.3.2",
-    "ink": "^5.2.0",
+    "ink": "^6.0.1",
     "prettier": "^3.4.1",
-    "react": "^18.3.1",
+    "react": "^19.1.0",
     "recast": "^0.21.1",
     "workerpool": "^6.2.1"
   }

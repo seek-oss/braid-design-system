@@ -37,8 +37,8 @@ export interface PopoverProps {
   modal?: boolean;
   open: boolean;
   onClose?: () => void;
-  triggerRef: RefObject<HTMLElement>;
-  enterFocusRef?: RefObject<HTMLElement>;
+  triggerRef: RefObject<HTMLElement | null>;
+  enterFocusRef?: RefObject<HTMLElement | null>;
   children: ReactNode;
 }
 

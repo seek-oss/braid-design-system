@@ -1,4 +1,5 @@
 import dedent from 'dedent';
+import type React from 'react';
 
 import { type RequiredResponsiveValue, sprinkles } from './sprinkles.css';
 import type { vars } from '../../themes/vars.css';
@@ -10,7 +11,7 @@ export type Space = keyof typeof vars.space | 'none';
 export type ResponsiveSpace = RequiredResponsiveValue<Space>;
 
 export interface Atoms extends Sprinkles {
-  reset?: keyof JSX.IntrinsicElements;
+  reset?: keyof React.JSX.IntrinsicElements;
 }
 
 export const atoms = ({ reset, ...rest }: Atoms) => {

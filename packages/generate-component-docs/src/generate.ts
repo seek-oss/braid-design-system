@@ -62,16 +62,18 @@ const unionAliases = {
   ReactNode: [
     'string',
     'number',
+    'bigint',
     'false',
     'true',
-    'ReactElement<any, string | JSXElementConstructor<any>>',
+    'ReactElement<unknown, string | JSXElementConstructor<any>>',
     'Iterable<ReactNode>',
     'ReactPortal',
+    'Promise<AwaitedReactNode>',
   ],
   ReactNodeNoStrings: [
     'false',
     'true',
-    'ReactElement<any, string | JSXElementConstructor<any>>',
+    'ReactElement<unknown, string | JSXElementConstructor<any>>',
     'ReactNodeArray',
   ],
 } as const;
@@ -242,7 +244,12 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
         checker.typeToString(unionItem),
       );
 
-      if (isEqual(types.slice(0, 7), unionAliases.ReactNode)) {
+      if (
+        isEqual(
+          types.slice(0, unionAliases.ReactNode.length),
+          unionAliases.ReactNode,
+        )
+      ) {
         return 'ReactNode';
       }
 

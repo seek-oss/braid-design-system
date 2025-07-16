@@ -195,7 +195,6 @@
     "lodash.curry": "^4.1.1",
     "polished": "^4.1.0",
     "react-focus-lock": "^2.9.7",
-    "react-is": "^18.2.0",
     "react-remove-scroll": "^2.7.0",
     "throttle-debounce": "^5.0.2",
     "utility-types": "^3.10.0"
@@ -217,10 +216,8 @@
     "@types/gradient-parser": "^0.1.5",
     "@types/lodash.curry": "^4.1.9",
     "@types/node": "^22.16.0",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.0",
-    "@types/react-is": "^18.3.0",
-    "@types/react-router-dom": "^5.3.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "@types/sanitize-html": "^2.13.0",
     "@types/testing-library__jest-dom": "^5.9.1",
     "@types/throttle-debounce": "^5.0.2",
@@ -234,9 +231,9 @@
     "html-validate": "^9.7.1",
     "playroom": "0.44.0",
     "prettier": "^3.4.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.6.3",
     "sanitize-html": "^2.12.1",
     "sku": "14.8.0",
     "storybook": "9.0.15",
@@ -244,7 +241,7 @@
     "title-case": "^3.0.3"
   },
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   }
 }
