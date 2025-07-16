@@ -151,6 +151,8 @@ export const DocNavigationBar = ({
     navigationItems.every(
       (navigationItem) =>
         typeof navigationItem === 'object' &&
+        navigationItem !== null &&
+        'type' in navigationItem &&
         navigationItem.type === DocNavigationItem,
     ),
     'All child nodes within a Navigation must be NavigationItem elements',

@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { FragmentProps, ReactElement } from 'react';
 
 const REACT_ELEMENT_TYPE = Symbol.for('react.transitional.element');
 const LEGACY_REACT_ELEMENT_TYPE = Symbol.for('react.element');
@@ -22,5 +22,5 @@ const isReactElementType = (value: any) => {
   );
 };
 
-export const isFragment = (value: any): value is ReactElement =>
+export const isFragment = (value: any): value is ReactElement<FragmentProps> =>
   isReactElementType(value) && value.type === REACT_FRAGMENT_TYPE;
