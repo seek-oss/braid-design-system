@@ -1,7 +1,7 @@
 import { getCapHeight, precomputeValues } from '@capsizecss/core';
 
-import { px } from '../components/private/px';
 import { mapValues } from '../utils/mapValues';
+import { px } from '../utils/px';
 
 import type { BraidTokens, TextDefinition } from './tokenType';
 

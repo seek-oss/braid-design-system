@@ -2,7 +2,7 @@ import { useMemo, useCallback } from 'react';
 
 import { vars } from '../../../entries/css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
-import { px } from '../private/px';
+import { px } from '../../utils/px';
 
 import * as styles from './Toast.css';
 
