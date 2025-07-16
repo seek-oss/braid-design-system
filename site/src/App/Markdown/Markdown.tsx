@@ -148,9 +148,9 @@ const checkInlineCode = () =>
  * This is used to prevent newlines in list items from being rendered as empty list items.
  */
 const removeNewlineInLists = () =>
-  function addProp(tree: any) {
+  function removeNewline(tree: any) {
+    const newLine = '\n';
     visit(tree, 'text', (node, index, parent) => {
-      const newLine = '\n';
       const isList =
         parent?.tagName === 'li' ||
         parent?.tagName === 'ol' ||
