@@ -3,7 +3,6 @@ import { useId } from 'react';
 import type { GalleryComponent } from 'site/types';
 
 import { Button, IconBookmark, Inline } from '..';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 import Toast from './Toast';
 
@@ -13,7 +12,6 @@ export const galleryItems: GalleryComponent = {
       label: 'With a positive message',
       Example: ({ handler, showToast }) => {
         const id = useId();
-        const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
           <Inline space="small">
@@ -38,7 +36,6 @@ export const galleryItems: GalleryComponent = {
                 toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
-                vanillaTheme={vanillaTheme}
                 onClose={handler}
                 message="Positive message"
                 tone="positive"
@@ -52,7 +49,6 @@ export const galleryItems: GalleryComponent = {
       label: 'With a critical message',
       Example: ({ handler, showToast }) => {
         const id = useId();
-        const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
           <Inline space="small">
@@ -77,7 +73,6 @@ export const galleryItems: GalleryComponent = {
                 toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
-                vanillaTheme={vanillaTheme}
                 onClose={handler}
                 message="Critical message"
                 tone="critical"
@@ -91,7 +86,6 @@ export const galleryItems: GalleryComponent = {
       label: 'With a neutral message',
       Example: ({ handler, showToast }) => {
         const id = useId();
-        const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
           <Inline space="small">
@@ -116,7 +110,6 @@ export const galleryItems: GalleryComponent = {
                 toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
-                vanillaTheme={vanillaTheme}
                 onClose={handler}
                 message="Neutral message"
                 tone="neutral"
@@ -130,7 +123,6 @@ export const galleryItems: GalleryComponent = {
       label: 'With a custom icon (neutral tone only)',
       Example: ({ handler, showToast }) => {
         const id = useId();
-        const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
           <Inline space="small">
@@ -156,7 +148,6 @@ export const galleryItems: GalleryComponent = {
                 toastKey={id}
                 dedupeKey={id}
                 shouldRemove={false}
-                vanillaTheme={vanillaTheme}
                 onClose={handler}
                 message="Neutral message with icon"
                 tone="neutral"
@@ -171,7 +162,6 @@ export const galleryItems: GalleryComponent = {
       label: 'With a description',
       Example: ({ handler, showToast }) => {
         const id = useId();
-        const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
           <Inline space="small">
@@ -197,7 +187,6 @@ export const galleryItems: GalleryComponent = {
               toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
-              vanillaTheme={vanillaTheme}
               onClose={handler}
               message="Toast message"
               tone="positive"
@@ -211,7 +200,6 @@ export const galleryItems: GalleryComponent = {
       label: 'With an action',
       Example: ({ handler, showToast }) => {
         const id = useId();
-        const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
           <Inline space="small">
@@ -236,7 +224,6 @@ export const galleryItems: GalleryComponent = {
               toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
-              vanillaTheme={vanillaTheme}
               onClose={handler}
               message="Toast message"
               tone="critical"
@@ -250,7 +237,6 @@ export const galleryItems: GalleryComponent = {
       label: 'With an action and description',
       Example: ({ handler, showToast }) => {
         const id = useId();
-        const { vanillaTheme } = useBraidTheme();
 
         const { code } = source(
           <Inline space="small">
@@ -277,7 +263,6 @@ export const galleryItems: GalleryComponent = {
               toastKey={id}
               dedupeKey={id}
               shouldRemove={false}
-              vanillaTheme={vanillaTheme}
               onClose={handler}
               message="Toast message"
               tone="positive"

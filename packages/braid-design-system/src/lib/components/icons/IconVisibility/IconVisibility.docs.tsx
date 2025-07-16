@@ -58,7 +58,7 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    iconDocumentation,
+    ...iconDocumentation,
   ],
 };
 

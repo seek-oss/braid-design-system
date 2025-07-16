@@ -114,7 +114,7 @@ describe('ButtonLink', () => {
         <ButtonLink
           href="/foo/bar"
           data-attribute="true"
-          // @ts-ignore
+          // @ts-expect-error Should not support custom classes
           className="CUSTOM_CLASS_NAME"
           style={{ color: 'CUSTOM_COLOR' }}
         >

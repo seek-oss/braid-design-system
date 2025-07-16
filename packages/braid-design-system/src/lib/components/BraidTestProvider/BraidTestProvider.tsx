@@ -48,7 +48,7 @@ if (
     observe = noop;
     unobserve = noop;
     disconnect = noop;
-    takeRecords = noop;
+    takeRecords = () => [];
   }
   window.IntersectionObserver = MockIntersectionObserver;
 }

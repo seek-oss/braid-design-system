@@ -24,7 +24,7 @@ import { PageTitle } from '../Seo/PageTitle';
 
 type ComponentName = keyof typeof componentDocs;
 
-// @ts-ignore
+// @ts-expect-error casting json import
 const docsData = componentDocs as Record<ComponentName, ExportDoc>;
 
 const isValidComponentName = (
