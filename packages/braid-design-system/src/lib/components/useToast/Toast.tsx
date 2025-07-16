@@ -178,6 +178,11 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
           width="full"
           position="relative"
           className={styles.toast}
+          tabIndex={0}
+          outline="focus"
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
           {...buildDataAttributes({ data, validateRestProps: restProps })}
         >
           <Box transition="fast" className={styles.collapsedToastContent}>
