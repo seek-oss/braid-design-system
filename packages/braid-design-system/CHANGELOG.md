@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 33.10.2
+
+### Patch Changes
+
+- Expand the peer dependency range to support React 19. ([#1822](https://github.com/seek-oss/braid-design-system/pull/1822))
+
 ## 33.10.1
 
 ### Patch Changes

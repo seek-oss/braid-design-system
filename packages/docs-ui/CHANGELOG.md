@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 3.0.3
+
+### Patch Changes
+
+- Expand the peer dependency range to support React 19. ([#1822](https://github.com/seek-oss/braid-design-system/pull/1822))
+
 ## 3.0.2
 
 ### Patch Changes
@@ -82,7 +88,6 @@
   This package will contain components for building documentation sites with a consistent user experience to the [Braid Design System] website.
 
   Currently, this package contains:
-
   - A single component: `LinkableHeading`.
   - A README.md for documenting this package and all its components.
 

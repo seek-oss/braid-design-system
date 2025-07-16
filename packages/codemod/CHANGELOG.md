@@ -1,5 +1,11 @@
 # @braid-design-system/codemod
 
+## 1.0.2
+
+### Patch Changes
+
+- Updating React dependencies to v19 ([#1822](https://github.com/seek-oss/braid-design-system/pull/1822))
+
 ## 1.0.1
 
 ### Patch Changes
