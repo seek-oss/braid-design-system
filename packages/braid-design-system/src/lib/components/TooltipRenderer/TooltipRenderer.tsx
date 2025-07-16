@@ -199,17 +199,19 @@ export const TooltipRenderer = ({
 
   const handleTooltipPosition = () => {
     const setPositions = () => {
-      setTooltipPosition(tooltipRef.current?.getBoundingClientRect());
-      setTriggerPosition(triggerRef.current?.getBoundingClientRect());
+      if (tooltipRef.current) {
+        setTooltipPosition(tooltipRef.current.getBoundingClientRect());
+      }
+      if (triggerRef.current) {
+        setTriggerPosition(triggerRef.current.getBoundingClientRect());
+      }
     };
 
-    const timeoutId = setTimeout(() => {
+    setTimeout(() => {
       const frameId = requestAnimationFrame(setPositions);
       return () => cancelAnimationFrame(frameId);
       // Needs to be slightly less than the animation timeout to update position before showing
     }, animationTimeout / 2);
-
-    return () => clearTimeout(timeoutId);
   };
 
   useIsomorphicLayoutEffect(() => {
@@ -217,19 +219,13 @@ export const TooltipRenderer = ({
       return;
     }
 
-    const handleResize = () => {
-      handleTooltipPosition();
-    };
-
-    window.addEventListener('resize', handleResize);
-    const resizeObserver = new ResizeObserver(handleResize);
-    resizeObserver.observe(document.body);
+    handleTooltipPosition();
+    window.addEventListener('resize', handleTooltipPosition);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      resizeObserver.disconnect();
+      window.removeEventListener('resize', handleTooltipPosition);
     };
-  }, [showTooltip, triggerRef]);
+  }, [showTooltip]);
 
   let inferredPlacement: typeof placement = placement;
   let arrowLeftOffset = 0;
