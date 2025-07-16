@@ -178,8 +178,7 @@ export const Navigation = () => {
           transition="fast"
           width="full"
           zIndex="sticky"
-          // @ts-expect-error - inert is not available in @types/react currently
-          inert={navigationActive ? undefined : ''}
+          inert={navigationActive ? undefined : true}
           className={[
             styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
