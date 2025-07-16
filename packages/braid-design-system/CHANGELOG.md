@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 33.10.1
+
+### Patch Changes
+
+- **useToast:** Clean up internal refactor ([#1837](https://github.com/seek-oss/braid-design-system/pull/1837))
+
+- **Dialog, Drawer:** Refactor layout, ensure content area is the full height ([#1834](https://github.com/seek-oss/braid-design-system/pull/1834))
+
+  This change allows you to spread content to the bottom of a `Drawer`, for example with a `vertical` direction `Spread`.
+
+- Ensure focus rings are consistent across components ([#1828](https://github.com/seek-oss/braid-design-system/pull/1828))
+
+  Aligns a few edge cases where focus rings were not consistent due to elements or aria roles not captured by the reset.
+
+- **BraidTestProvider:** Align mock with real IntersectionObserver API ([#1837](https://github.com/seek-oss/braid-design-system/pull/1837))
+
+- **Table:** Ensure `alignY` prop is applied consistently across browsers ([#1832](https://github.com/seek-oss/braid-design-system/pull/1832))
+
+  Fixes an issue where setting the `alignY` prop to `top` would not apply the `vertical-align` CSS property — instead falling through to our CSS reset which sets `vertical-align: baseline` (rendering inconsistently across browsers).
+
 ## 33.10.0
 
 ### Minor Changes
@@ -21,7 +41,6 @@
   **MIGRATION GUIDE:**
 
   For styling the focus ring via `Box`:
-
   1. Remove usage of `outline="none"` and `boxShadow="outlineFocus"`
   2. Refer to [`focus outlines`] for guidance on leveraging Braid's focus outline styles.
 
@@ -1024,7 +1043,6 @@ See full changelog below 👇
 - Standardise `disabled` & `critical` state across form fields ([#1564](https://github.com/seek-oss/braid-design-system/pull/1564))
 
   Improves the consistency of form fields when combining both `disabled` and `critical` tone, which includes:
-
   - Hiding `critical` borders
   - Hiding `message` and not reserving space for it unless explicitly providing the `reserveMessageSpace` prop.
 
@@ -1656,7 +1674,6 @@ See full changelog below 👇
   Our different approach to using colour has seen links dialled back to compete less with other messaging and CTAs.
 
   This affects the following usages across the system:
-
   - `vars.foregroundColor.link`
   - `Text` (using `tone="link"`)
   - `TextLink` and (`TextLinkButton`)
@@ -2468,7 +2485,6 @@ For more detail on the specific changes in this release, please read on.
 - **Tab, Tabs:** Updated visual design ([#1180](https://github.com/seek-oss/braid-design-system/pull/1180))
 
   The appearance of a `Tab` has been updated. Changes include:
-
   - Tab button use `regular` text weight
   - Hover state of inactive tab toggles `neutral` tone instead of underline
   - Active tab indicator underlines content only, without the horizontal gutter and animates between tabs
@@ -3508,7 +3524,6 @@ For more detail on the specific changes in this release, please read on.
 
   **New foregrounds**
   The following foregrounds are now available on the `vars.foregroundColor` theme object:
-
   - `cautionLight`
   - `infoLight`
   - `linkLight`
@@ -3769,12 +3784,10 @@ For more detail on the specific changes in this release, please read on.
   **TOKEN CHANGES**
 
   **New**
-
   - **backgroundColor:** `surface`, `neutralSoft`
   - **borderColor:** `neutral`, `neutralInverted`, `neutralLight`
 
   **Removed**
-
   - **backgroundColor:** `card`, `formAccentDisabled`, `input`, `inputDisabled`, `selection`
   - **borderColor:** `formHover`, `standard`, `standardInverted`
 
@@ -3868,7 +3881,6 @@ For more detail on the specific changes in this release, please read on.
 
   **New backgrounds**
   The following backgrounds are now available:
-
   - `neutralActive`
   - `neutralHover`
   - `neutralSoftActive`
@@ -3876,7 +3888,6 @@ For more detail on the specific changes in this release, please read on.
 
   **New boxShadows**
   The following box shadows are now available:
-
   - `borderBrandAccentLightLarge`
   - `borderCriticalLightLarge`
   - `borderFormAccentLight`
@@ -3886,7 +3897,6 @@ For more detail on the specific changes in this release, please read on.
 
   **New boxShadows**
   The following box shadows are now available:
-
   - `borderBrandAccentLightLarge`
   - `borderCriticalLightLarge`
   - `borderFormAccentLight`
@@ -3900,7 +3910,6 @@ For more detail on the specific changes in this release, please read on.
 
   **New backgrounds**
   The following backgrounds are now available on the `vars.backgroundColor` theme object:
-
   - `neutralActive`
   - `neutralHover`
   - `neutralSoftActive`
@@ -3908,7 +3917,6 @@ For more detail on the specific changes in this release, please read on.
 
   **New borderColors**
   The following border colors are now available on the `vars.borderColor` theme object:
-
   - `brandAccentLight`
   - `criticalLight`
   - `formAccentLight`
@@ -3996,7 +4004,6 @@ For more detail on the specific changes in this release, please read on.
 - **Box:** Add new background and border colours ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
 
   New `background` values:
-
   - `brandAccentSoft`
   - `brandAccentSoftActive`
   - `brandAccentSoftHover`
@@ -4008,7 +4015,6 @@ For more detail on the specific changes in this release, please read on.
   - `formAccentSoftHover`
 
   New `boxShadow` values:
-
   - `borderCautionLight`
   - `borderCriticalLight`
   - `borderInfoLight`
@@ -4016,7 +4022,6 @@ For more detail on the specific changes in this release, please read on.
   - `borderPromoteLight`
 
 - **atoms:** Add new `boxShadow` values: ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
-
   - `borderCautionLight`
   - `borderCriticalLight`
   - `borderInfoLight`
@@ -4026,7 +4031,6 @@ For more detail on the specific changes in this release, please read on.
 - **vars:** Add new background and border colours ([#983](https://github.com/seek-oss/braid-design-system/pull/983))
 
   New `backgroundColor` values:
-
   - `brandAccentSoft`
   - `brandAccentSoftActive`
   - `brandAccentSoftHover`
@@ -4038,7 +4042,6 @@ For more detail on the specific changes in this release, please read on.
   - `formAccentSoftHover`
 
   New `borderColor` values:
-
   - `cautionLight`
   - `criticalLight`
   - `infoLight`
@@ -4116,7 +4119,6 @@ For more detail on the specific changes in this release, please read on.
 - Add `wide` breakpoint of 1200px ([#960](https://github.com/seek-oss/braid-design-system/pull/960))
 
   This adds support for `wide` to the following touchpoints:
-
   - Responsive values, e.g.
     ```ts
     { mobile: 'small', wide: 'large' }
@@ -4255,7 +4257,6 @@ For more detail on the specific changes in this release, please read on.
 - Updated minimum browser requirement to browsers that support CSS variables ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
 
   For the major browsers this includes:
-
   - Chrome 49+
   - iOS 9.3+
   - Safari 9.1+
@@ -4272,7 +4273,6 @@ For more detail on the specific changes in this release, please read on.
 - Standardise breakpoints across all themes ([#947](https://github.com/seek-oss/braid-design-system/pull/947))
 
   All themes now use the following breakpoints:
-
   - Mobile: `0px`
   - Tablet: `740px`
   - Desktop: `992px`
@@ -4282,16 +4282,13 @@ For more detail on the specific changes in this release, please read on.
   This is a change for the following themes:
 
   **jobStreet, jobStreetClassic, jobsDb, occ, wireframe**
-
   - Tablet: `768px` → `740px`
 
   **catho**
-
   - Tablet: `600px` → `740px`
   - Desktop: `1024px` → `992px`
 
   **docs**
-
   - Tablet: `768px` → `740px`
   - Desktop: `1136px` → `992px`
 
@@ -4495,7 +4492,6 @@ For more detail on the specific changes in this release, please read on.
   To maintain accessibility, it is required to provide either a **aria-label** or **aria-labelledby** property, to describe the field's intent.
 
   Given there is no visual label, the following features from a standard Checkbox cannot be supported:
-
   - description
   - message
   - badge
@@ -5543,13 +5539,11 @@ For more detail on the specific changes in this release, please read on.
   The following z-index palette is now available on `Box`:
 
   **Local stacking**
-
   - `0`
   - `1`
   - `2`
 
   **Global stacking**
-
   - `"dropdownBackdrop"`
   - `"dropdown"`
   - `"sticky"`
@@ -5673,7 +5667,6 @@ For more detail on the specific changes in this release, please read on.
 - Add `List` component ([#710](https://github.com/seek-oss/braid-design-system/pull/710))
 
   `List` serves as a replacement for the `BulletList` and `Bullet` components which adds the following improvements:
-
   - Support for numbers and alpha characters as bullets
   - Support for custom start positions in number/alpha lists
   - Rich content support, e.g. list items with multiple paragraphs, nested lists, etc.
@@ -5738,7 +5731,6 @@ For more detail on the specific changes in this release, please read on.
   The `_LEGACY_SPACE_` prop was provided to support consumers migrating to [`v14`](https://github.com/seek-oss/braid-design-system/releases/tag/v14.0.0) when the white space cropping and layout components were originally introduced. This has now been removed to allow us to further improve on our approach.
 
   Migrating off this prop will require consumers to perform the following steps:
-
   - Remove the usage of `_LEGACY_SPACE_` on a component
   - Conduct a visual review of the impact (component will appear closer to neighbouring elements)
   - Use existing layout components, e.g. `Stack`, to define/control the reintroduction of the desired space.
@@ -5823,7 +5815,6 @@ For more detail on the specific changes in this release, please read on.
 - **`seekBusiness` theme:** Inherit from new `apac` theme rather than the deprecated `seekAnz` theme ([#694](https://github.com/seek-oss/braid-design-system/pull/694))
 
   Just like the migration from `seekAnz` to `apac`, the visual changes are as follows:
-
   - The body background has changed from `#eeeeee` to `#f5f6f8`.
   - All grey colours now have a hint of blue.
   - Buttons and form fields have decreased in height from `48px` to `44px`.
@@ -5854,7 +5845,6 @@ For more detail on the specific changes in this release, please read on.
   This component serves as a replacement for `ToggleContent` from [SEEK Style Guide.](https://github.com/seek-oss/seek-style-guide)
 
   **SEEK STYLE GUIDE MIGRATION GUIDE**
-
   - `ToggleContent` has been renamed to `Disclosure`.
   - The `onShowMore` prop has been renamed to `onToggle`.
   - The spacing around the button has changed to follow [Braid's layout guidelines.](https://seek-oss.github.io/braid-design-system/foundations/layout) Design review is recommeded.
@@ -5895,7 +5885,6 @@ For more detail on the specific changes in this release, please read on.
   Consumers of the `seekAnz` theme are under no immediate pressure to migrate and both themes will be provided for the forseeable future. For now, this theme is aimed at those teams that are explicitly wanting to adopt newer design standards.
 
   The visual changes to `seekAnz` are as follows:
-
   - The body background has changed from `#eeeeee` to `#f5f6f8`.
   - All grey colours now have a hint of blue.
   - Buttons and form fields have decreased in height from 48px to 44px.
@@ -5938,7 +5927,6 @@ For more detail on the specific changes in this release, please read on.
 - MonthPicker: Support custom month and year labels ([#672](https://github.com/seek-oss/braid-design-system/pull/672))
 
   To support internationalisation, you can now pass the following props to `MonthPicker`:
-
   - **monthLabel** (`string`)
   - **yearLabel** (`string`)
   - **monthNames** (`string[]`)
@@ -6120,7 +6108,6 @@ For more detail on the specific changes in this release, please read on.
 - Improve field border contrast ratio ([#638](https://github.com/seek-oss/braid-design-system/pull/638))
 
   To improve accessibility, field borders have been darkened for the following themes:
-
   - `seekAnz`
   - `seekBusiness`
   - `seekUnifiedBeta`
@@ -6329,7 +6316,6 @@ For more detail on the specific changes in this release, please read on.
   The implementation of internal spacing within fields has been adjusted to better support browser extensions for password managers.
 
   Affects the following components:
-
   - PasswordField: visibility toggle button
   - TextField: clear button
   - Autosuggest: clear button
@@ -6343,7 +6329,6 @@ For more detail on the specific changes in this release, please read on.
   Field buttons, such as clear and password visibility toggle, fire on mouse down to ensure focus is retained on the relevant field. We now ensure that the button only recognises left mouse button clicks.
 
   Affects the following components:
-
   - PasswordField: visibility toggle button
   - TextField: clear button
   - Autosuggest: clear button
@@ -6553,7 +6538,6 @@ For more detail on the specific changes in this release, please read on.
 - Drop lodash usage to decrease bundle size. ([#585](https://github.com/seek-oss/braid-design-system/pull/585))
 
   This directly affects `MonthPicker` and any components using the `data` prop:
-
   - All field components
   - OverflowMenu
   - MenuRenderer
@@ -6610,7 +6594,6 @@ For more detail on the specific changes in this release, please read on.
   In order to make your custom link component available for any type of link (not just usages of `TextLink`), this release introduces a new `Link` component which renders an unstyled `a` tag by default.
 
   **BREAKING CHANGES**
-
   - `TextLink` now requires an `href` prop. Even though this is unlikely to affect anyone (a `TextLink` without an `href` isn't terribly useful), this is still technically a breaking change.
 
     However, if you find an instance of `TextLink` that you think _shouldn't_ have an `href`, this is a sign that it's not _actually_ a link and you should use a [`TextLinkRenderer`](https://seek-oss.github.io/braid-design-system/components/TextLinkRenderer) instead. Unfortunately, because there's no way for us to know the semantics of your usage ahead of time, we're unable to provide a migration guide, so you'll need to be mindful of how this might impact accessibility.
@@ -6737,7 +6720,6 @@ For more detail on the specific changes in this release, please read on.
 - Add customisable `MenuRenderer` component ([#514](https://github.com/seek-oss/braid-design-system/pull/514))
 
   **BREAKING CHANGES**
-
   - Rename `OverflowMenuItem` to `MenuItem`.
   - Removed `type="link"` from `OverflowMenuItem` due to an accessibility issue with the approach (based on review of consumer usage, it did not seem to be used).
 
@@ -6746,7 +6728,6 @@ For more detail on the specific changes in this release, please read on.
   **`MenuRenderer`**
 
   Encapsulates all the behaviours of an accessible menu button, allowing consumers to define a custom `trigger` to open the menu. The trigger function receives two arguments:
-
   1. Props required for accessibility, including mouse/keyboard interactions
   2. Menu state object containing the `open` state.
 
@@ -6807,7 +6788,6 @@ For more detail on the specific changes in this release, please read on.
 - Only show focus rings on buttons for keyboard navigation. ([#526](https://github.com/seek-oss/braid-design-system/pull/526))
 
   This impacts the following components:
-
   - `Button`
   - `ButtonRenderer`
   - `OverflowMenu`
@@ -6854,5 +6834,4 @@ For more detail on the specific changes in this release, please read on.
 - 33139c8: Clone seekAnz theme to seekUnifiedBeta
 
   BREAKING CHANGE
-
   - `jobsDbRebrand` theme has been removed
