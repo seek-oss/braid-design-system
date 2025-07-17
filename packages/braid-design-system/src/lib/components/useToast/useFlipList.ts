@@ -96,12 +96,15 @@ export const useFlipList = (expanded: boolean) => {
       transition: string;
     }> = [];
 
+    // Filter out exiting toasts for position calculations
+    const activeToasts = Array.from(refs.entries()).filter(
+      ([key, value]) => value !== null && toastStates.get(key) !== 'exiting',
+    );
+
     Array.from(refs.entries()).forEach(([toastKey, element]) => {
       if (element && toastStates.get(toastKey) !== 'exiting') {
-        const index = Array.from(refs.keys()).indexOf(toastKey);
-        const toastsLength = Array.from(refs.values()).filter(
-          (value) => value !== null,
-        ).length;
+        const index = activeToasts.findIndex(([key]) => key === toastKey);
+        const toastsLength = activeToasts.length;
         const position = toastsLength - index - 1;
 
         const { opacity, transform } = element.style;
@@ -151,7 +154,7 @@ export const useFlipList = (expanded: boolean) => {
                 {
                   property: 'className',
                   from: expanded ? styles.collapsed : undefined,
-                  to: expanded ? undefined : styles.collapsed,
+                  to: !expanded && position > 0 ? styles.collapsed : undefined,
                 },
               ],
             });
