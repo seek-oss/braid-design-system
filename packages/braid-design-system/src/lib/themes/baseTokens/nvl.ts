@@ -201,19 +201,16 @@ export const makeTokens = ({
     focusRingSize: 6,
     shadows: {
       small: [
-        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
-        `0 2px 2px -2px ${rgba(palette.grey['800'], 0.1)}`,
-        `0 4px 4px -4px ${rgba(palette.grey['800'], 0.2)}`,
+        `0 0 4px 0 ${rgba(palette.grey['800'], 0.1)}`,
+        `0 2px 4px -1px ${rgba(palette.grey['800'], 0.1)}`,
       ].join(', '),
       medium: [
-        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
+        `0 0 4px 0 ${rgba(palette.grey['800'], 0.1)}`,
         `0 8px 8px -4px ${rgba(palette.grey['800'], 0.1)}`,
-        `0 12px 12px -8px ${rgba(palette.grey['800'], 0.2)}`,
       ].join(', '),
       large: [
-        `0 2px 4px 0px ${rgba(palette.grey['800'], 0.1)}`,
-        `0 12px 12px -4px ${rgba(palette.grey['800'], 0.1)}`,
-        `0 20px 20px -12px ${rgba(palette.grey['800'], 0.2)}`,
+        `0 0 8px 0 ${rgba(palette.grey['800'], 0.1)}`,
+        `0 16px 16px -8px ${rgba(palette.grey['800'], 0.1)}`,
       ].join(', '),
     },
     color: {
