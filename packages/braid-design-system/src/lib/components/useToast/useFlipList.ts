@@ -98,114 +98,118 @@ export const useFlipList = (expanded: boolean) => {
 
     // Filter out exiting toasts for position calculations
     const activeToasts = Array.from(refs.entries()).filter(
-      ([key, value]) => value !== null && toastStates.get(key) !== 'exiting',
+      (entry): entry is [string, HTMLElement] => {
+        const [key, value] = entry;
+        return value !== null && toastStates.get(key) !== 'exiting';
+      },
     );
 
-    Array.from(refs.entries()).forEach(([toastKey, element]) => {
-      if (element && toastStates.get(toastKey) !== 'exiting') {
-        const index = activeToasts.findIndex(([key]) => key === toastKey);
-        const toastsLength = activeToasts.length;
-        const position = toastsLength - index - 1;
+    const exitingToasts = Array.from(refs.entries()).filter(
+      ([key, value]) => !value || toastStates.get(key) === 'exiting',
+    );
 
-        const { opacity, transform } = element.style;
-        const height = element.getBoundingClientRect().height;
-        element.style.height = 'auto';
-        const fullHeight = element.getBoundingClientRect().height;
-        element.style.height = px(height);
+    activeToasts.forEach(([toastKey, element], index) => {
+      const toastsLength = activeToasts.length;
+      const position = toastsLength - index - 1;
 
-        const collapsedScale = position === 1 ? 0.9 : 0.8;
+      const { opacity, transform } = element.style;
+      const height = element.getBoundingClientRect().height;
+      element.style.height = 'auto';
+      const fullHeight = element.getBoundingClientRect().height;
+      element.style.height = px(height);
 
-        let animationState: TransitionType;
-        if (position > 0) {
-          animationState = 'move';
-        } else if (toastStates.get(toastKey) !== 'entered') {
-          animationState = 'enter';
-        } else {
-          animationState = 'becoming-first';
-        }
+      const collapsedScale = position === 1 ? 0.9 : 0.8;
 
-        switch (animationState) {
-          case 'move':
-            animations.push({
-              element,
-              transition: entranceTransition,
-              transforms: [
-                {
-                  property: 'height',
-                  from: px(height),
-                  to: expanded
-                    ? px(fullHeight)
-                    : `${
-                        position < visibleStackedToasts
-                          ? vars.space.small
-                          : '0px'
-                      }`,
-                },
-                {
-                  property: 'transform',
-                  from: transform,
-                  to: expanded ? undefined : `scaleX(${collapsedScale})`,
-                },
-                {
-                  property: 'opacity',
-                  from: opacity,
-                  to: position < visibleStackedToasts || expanded ? '1' : '0',
-                },
-                {
-                  property: 'className',
-                  from: expanded ? styles.collapsed : undefined,
-                  to: !expanded && position > 0 ? styles.collapsed : undefined,
-                },
-              ],
-            });
-            break;
-
-          case 'enter':
-            animations.push({
-              element,
-              transition: entranceTransition,
-              transforms: [
-                {
-                  property: 'opacity',
-                  from: '0',
-                },
-                {
-                  property: 'height',
-                  from: '0px',
-                  to: px(fullHeight),
-                },
-              ],
-            });
-            break;
-
-          case 'becoming-first':
-            animations.push({
-              element,
-              transition: entranceTransition,
-              transforms: [
-                {
-                  property: 'height',
-                  from: px(height),
-                  to: px(fullHeight),
-                },
-                {
-                  property: 'transform',
-                  from: transform,
-                },
-                {
-                  property: 'className',
-                  from: expanded ? styles.collapsed : undefined,
-                  to: undefined,
-                },
-              ],
-            });
-            break;
-        }
-
-        toastStates.set(toastKey, 'entered');
+      let animationState: TransitionType;
+      if (position > 0) {
+        animationState = 'move';
+      } else if (toastStates.get(toastKey) !== 'entered') {
+        animationState = 'enter';
       } else {
-        refs.delete(toastKey);
+        animationState = 'becoming-first';
       }
+
+      switch (animationState) {
+        case 'move':
+          animations.push({
+            element,
+            transition: entranceTransition,
+            transforms: [
+              {
+                property: 'height',
+                from: px(height),
+                to: expanded
+                  ? px(fullHeight)
+                  : `${
+                      position < visibleStackedToasts ? vars.space.small : '0px'
+                    }`,
+              },
+              {
+                property: 'transform',
+                from: transform,
+                to: expanded ? undefined : `scaleX(${collapsedScale})`,
+              },
+              {
+                property: 'opacity',
+                from: opacity,
+                to: position < visibleStackedToasts || expanded ? '1' : '0',
+              },
+              {
+                property: 'className',
+                from: expanded ? styles.collapsed : undefined,
+                to: !expanded && position > 0 ? styles.collapsed : undefined,
+              },
+            ],
+          });
+          break;
+
+        case 'enter':
+          animations.push({
+            element,
+            transition: entranceTransition,
+            transforms: [
+              {
+                property: 'opacity',
+                from: '0',
+              },
+              {
+                property: 'height',
+                from: '0px',
+                to: px(fullHeight),
+              },
+            ],
+          });
+          break;
+
+        case 'becoming-first':
+          animations.push({
+            element,
+            transition: entranceTransition,
+            transforms: [
+              {
+                property: 'height',
+                from: px(height),
+                to: px(fullHeight),
+              },
+              {
+                property: 'transform',
+                from: transform,
+              },
+              {
+                property: 'className',
+                from: expanded ? styles.collapsed : undefined,
+                to: undefined,
+              },
+            ],
+          });
+          break;
+      }
+
+      toastStates.set(toastKey, 'entered');
+    });
+
+    exitingToasts.forEach(([toastKey]) => {
+      refs.delete(toastKey);
     });
 
     animations.forEach(({ element, transforms, transition }) => {
