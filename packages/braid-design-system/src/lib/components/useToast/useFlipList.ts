@@ -7,11 +7,9 @@ import { px } from '../../utils/px';
 import * as styles from './Toast.css';
 
 const animationTimeout = 200;
-
-const entranceTransition =
+const baseTransition =
   'opacity 0.2s ease, transform 0.2s ease, height 0.2s ease';
 const exitTransition = 'opacity 0.2s ease, height 0.2s ease';
-
 const visibleStackedToasts = 3;
 
 type LifecycleState = undefined | 'entered' | 'exiting';
@@ -96,6 +94,14 @@ export const useFlipList = (expanded: boolean) => {
       transition: string;
     }> = [];
 
+    const getCurrentAndFullHeight = (element: HTMLElement) => {
+      const currentHeight = element.getBoundingClientRect().height;
+      element.style.height = 'auto';
+      const fullHeight = element.getBoundingClientRect().height;
+      element.style.height = px(currentHeight);
+      return { currentHeight, fullHeight };
+    };
+
     // Filter out exiting toasts for position calculations
     const activeToasts = Array.from(refs.entries()).filter(
       (entry): entry is [string, HTMLElement] => {
@@ -109,16 +115,9 @@ export const useFlipList = (expanded: boolean) => {
     );
 
     activeToasts.forEach(([toastKey, element], index) => {
-      const toastsLength = activeToasts.length;
-      const position = toastsLength - index - 1;
-
+      const position = activeToasts.length - index - 1;
       const { opacity, transform } = element.style;
-      const height = element.getBoundingClientRect().height;
-      element.style.height = 'auto';
-      const fullHeight = element.getBoundingClientRect().height;
-      element.style.height = px(height);
-
-      const collapsedScale = position === 1 ? 0.9 : 0.8;
+      const { currentHeight, fullHeight } = getCurrentAndFullHeight(element);
 
       let animationState: TransitionType;
       if (position > 0) {
@@ -133,52 +132,39 @@ export const useFlipList = (expanded: boolean) => {
         case 'expand':
           animations.push({
             element,
-            transition: entranceTransition,
+            transition: baseTransition,
             transforms: [
               {
                 property: 'height',
-                from: px(height),
+                from: px(currentHeight),
                 to: px(fullHeight),
               },
-              {
-                property: 'transform',
-                from: transform,
-                to: undefined,
-              },
-              {
-                property: 'opacity',
-                from: opacity,
-                to: '1',
-              },
-              {
-                property: 'className',
-                from: styles.collapsed,
-                to: undefined,
-              },
+              { property: 'transform', from: transform, to: undefined },
+              { property: 'opacity', from: opacity, to: '1' },
+              { property: 'className', from: styles.collapsed, to: undefined },
             ],
           });
           break;
 
         case 'collapse':
+          const visible = position < visibleStackedToasts;
+          const scale = position === 1 ? 0.9 : 0.8;
+
           animations.push({
             element,
-            transition: entranceTransition,
+            transition: baseTransition,
             transforms: [
               {
                 property: 'height',
-                from: px(height),
-                to: position < visibleStackedToasts ? vars.space.small : '0px',
+                from: px(currentHeight),
+                to: visible ? vars.space.small : '0px',
               },
               {
                 property: 'transform',
                 from: transform,
-                to: `scaleX(${collapsedScale})`,
+                to: `scaleX(${scale})`,
               },
-              {
-                property: 'opacity',
-                from: opacity,
-                to: position < visibleStackedToasts ? '1' : '0',
-              },
+              { property: 'opacity', from: opacity, to: visible ? '1' : '0' },
               {
                 property: 'className',
                 from: undefined,
@@ -191,17 +177,10 @@ export const useFlipList = (expanded: boolean) => {
         case 'enter':
           animations.push({
             element,
-            transition: entranceTransition,
+            transition: baseTransition,
             transforms: [
-              {
-                property: 'opacity',
-                from: '0',
-              },
-              {
-                property: 'height',
-                from: '0px',
-                to: px(fullHeight),
-              },
+              { property: 'opacity', from: '0' },
+              { property: 'height', from: '0px', to: px(fullHeight) },
             ],
           });
           break;
@@ -209,17 +188,14 @@ export const useFlipList = (expanded: boolean) => {
         case 'become-first':
           animations.push({
             element,
-            transition: entranceTransition,
+            transition: baseTransition,
             transforms: [
               {
                 property: 'height',
-                from: px(height),
+                from: px(currentHeight),
                 to: px(fullHeight),
               },
-              {
-                property: 'transform',
-                from: transform,
-              },
+              { property: 'transform', from: transform },
               {
                 property: 'className',
                 from: expanded ? styles.collapsed : undefined,
@@ -233,9 +209,7 @@ export const useFlipList = (expanded: boolean) => {
       toastStates.set(toastKey, 'entered');
     });
 
-    exitingToasts.forEach(([toastKey]) => {
-      refs.delete(toastKey);
-    });
+    exitingToasts.forEach(([toastKey]) => refs.delete(toastKey));
 
     animations.forEach(({ element, transforms, transition }) => {
       animate(element, transforms, transition);
@@ -245,22 +219,13 @@ export const useFlipList = (expanded: boolean) => {
   const remove = useCallback(
     (toastKey: string, cb: () => void) => {
       const element = refs.get(toastKey);
-
       if (element) {
         toastStates.set(toastKey, 'exiting');
-        // Removal animation
         animate(
           element,
           [
-            {
-              property: 'opacity',
-              to: '0',
-            },
-            {
-              property: 'height',
-              from: element.style.height,
-              to: '0px',
-            },
+            { property: 'opacity', to: '0' },
+            { property: 'height', from: element.style.height, to: '0px' },
           ],
           exitTransition,
           cb,
@@ -277,8 +242,5 @@ export const useFlipList = (expanded: boolean) => {
     [refs],
   );
 
-  return {
-    itemRef,
-    remove,
-  };
+  return { itemRef, remove };
 };
