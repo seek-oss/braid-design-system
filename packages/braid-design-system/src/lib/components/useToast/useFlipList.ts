@@ -15,7 +15,7 @@ const exitTransition = 'opacity 0.2s ease, height 0.2s ease';
 const visibleStackedToasts = 3;
 
 type LifecycleState = undefined | 'entered' | 'exiting';
-type TransitionType = 'move' | 'enter' | 'becoming-first';
+type TransitionType = 'expand' | 'collapse' | 'enter' | 'become-first';
 
 interface Transform {
   property: 'opacity' | 'transform' | 'scale' | 'height' | 'className';
@@ -122,15 +122,15 @@ export const useFlipList = (expanded: boolean) => {
 
       let animationState: TransitionType;
       if (position > 0) {
-        animationState = 'move';
+        animationState = expanded ? 'expand' : 'collapse';
       } else if (toastStates.get(toastKey) !== 'entered') {
         animationState = 'enter';
       } else {
-        animationState = 'becoming-first';
+        animationState = 'become-first';
       }
 
       switch (animationState) {
-        case 'move':
+        case 'expand':
           animations.push({
             element,
             transition: entranceTransition,
@@ -138,26 +138,51 @@ export const useFlipList = (expanded: boolean) => {
               {
                 property: 'height',
                 from: px(height),
-                to: expanded
-                  ? px(fullHeight)
-                  : `${
-                      position < visibleStackedToasts ? vars.space.small : '0px'
-                    }`,
+                to: px(fullHeight),
               },
               {
                 property: 'transform',
                 from: transform,
-                to: expanded ? undefined : `scaleX(${collapsedScale})`,
+                to: undefined,
               },
               {
                 property: 'opacity',
                 from: opacity,
-                to: position < visibleStackedToasts || expanded ? '1' : '0',
+                to: '1',
               },
               {
                 property: 'className',
-                from: expanded ? styles.collapsed : undefined,
-                to: !expanded && position > 0 ? styles.collapsed : undefined,
+                from: styles.collapsed,
+                to: undefined,
+              },
+            ],
+          });
+          break;
+
+        case 'collapse':
+          animations.push({
+            element,
+            transition: entranceTransition,
+            transforms: [
+              {
+                property: 'height',
+                from: px(height),
+                to: position < visibleStackedToasts ? vars.space.small : '0px',
+              },
+              {
+                property: 'transform',
+                from: transform,
+                to: `scaleX(${collapsedScale})`,
+              },
+              {
+                property: 'opacity',
+                from: opacity,
+                to: position < visibleStackedToasts ? '1' : '0',
+              },
+              {
+                property: 'className',
+                from: undefined,
+                to: position > 0 ? styles.collapsed : undefined,
               },
             ],
           });
@@ -181,7 +206,7 @@ export const useFlipList = (expanded: boolean) => {
           });
           break;
 
-        case 'becoming-first':
+        case 'become-first':
           animations.push({
             element,
             transition: entranceTransition,
