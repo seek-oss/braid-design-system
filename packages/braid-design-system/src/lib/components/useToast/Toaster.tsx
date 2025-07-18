@@ -54,9 +54,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
         zIndex="notification"
         width="full"
         marginX="gutter"
-        bottom={0}
         maxWidth={toastWidth}
-        marginBottom="xsmall"
         display="flex"
         flexDirection="column"
         className={styles.toaster}
