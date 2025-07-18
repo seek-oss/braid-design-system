@@ -52,29 +52,31 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
         width="full"
         zIndex="notification"
       >
-        <Box
-          width="full"
-          maxWidth={toastWidth}
-          pointerEvents={toasts.length === 0 ? 'none' : undefined}
-          marginX="gutter"
-          paddingBottom="xsmall"
-          onMouseEnter={() => !isMobileDevice && setExpanded(true)}
-          onMouseLeave={() => !isMobileDevice && setExpanded(false)}
-          onClick={() => setExpanded(!expanded)}
-          onFocus={() => setExpanded(true)}
-          onBlur={() => setExpanded(false)}
-        >
-          {toasts.map(({ toastKey, ...rest }) => (
-            <ToastComponent
-              key={toastKey}
-              ref={itemRef(toastKey)}
-              toastKey={toastKey}
-              onClose={onClose}
-              expanded={expanded}
-              {...rest}
-            />
-          ))}
-        </Box>
+        {toasts.length > 0 && (
+          <Box
+            width="full"
+            maxWidth={toastWidth}
+            pointerEvents={toasts.length === 0 ? 'none' : undefined}
+            marginX="gutter"
+            paddingBottom="xsmall"
+            onMouseEnter={() => !isMobileDevice && setExpanded(true)}
+            onMouseLeave={() => !isMobileDevice && setExpanded(false)}
+            onClick={() => setExpanded(!expanded)}
+            onFocus={() => setExpanded(true)}
+            onBlur={() => setExpanded(false)}
+          >
+            {toasts.map(({ toastKey, ...rest }) => (
+              <ToastComponent
+                key={toastKey}
+                ref={itemRef(toastKey)}
+                toastKey={toastKey}
+                onClose={onClose}
+                expanded={expanded}
+                {...rest}
+              />
+            ))}
+          </Box>
+        )}
       </Box>
     </>
   );
