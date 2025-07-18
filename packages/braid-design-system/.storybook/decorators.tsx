@@ -1,7 +1,7 @@
 import type { Decorator } from '@storybook/react-webpack5';
 import { BrowserRouter } from 'react-router';
 
-import { BraidProvider, ToastProvider } from '../src/lib/components';
+import { BraidProvider } from '../src/lib/components';
 import { PlayroomStateProvider } from '../src/lib/playroom/playroomState';
 import * as themes from '../src/lib/themes';
 
@@ -25,13 +25,11 @@ export const withTheme: Decorator = (Story, context) => {
   return (
     <BrowserRouter>
       <BraidProvider theme={theme}>
-        <ToastProvider>
-          <Artboard darkMode={isDark}>
-            <PlayroomStateProvider>
-              <Story />
-            </PlayroomStateProvider>
-          </Artboard>
-        </ToastProvider>
+        <Artboard darkMode={isDark}>
+          <PlayroomStateProvider>
+            <Story />
+          </PlayroomStateProvider>
+        </Artboard>
       </BraidProvider>
     </BrowserRouter>
   );
