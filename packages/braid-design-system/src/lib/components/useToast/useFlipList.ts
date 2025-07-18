@@ -102,17 +102,18 @@ export const useFlipList = (expanded: boolean) => {
       return { currentHeight, fullHeight };
     };
 
-    // Filter out exiting toasts for position calculations
-    const activeToasts = Array.from(refs.entries()).filter(
-      (entry): entry is [string, HTMLElement] => {
-        const [key, value] = entry;
-        return value !== null && toastStates.get(key) !== 'exiting';
-      },
-    );
+    const activeToasts: Array<[string, HTMLElement]> = [];
 
-    const exitingToasts = Array.from(refs.entries()).filter(
-      ([key, value]) => !value || toastStates.get(key) === 'exiting',
-    );
+    // Filter out exiting toasts for position calculations
+    Array.from(refs.entries()).forEach(([toastKey, element]) => {
+      if (element !== null) {
+        if (toastStates.get(toastKey) === 'exiting') {
+          refs.delete(toastKey);
+        } else {
+          activeToasts.push([toastKey, element]);
+        }
+      }
+    });
 
     activeToasts.forEach(([toastKey, element], index) => {
       const position = activeToasts.length - index - 1;
@@ -208,8 +209,6 @@ export const useFlipList = (expanded: boolean) => {
 
       toastStates.set(toastKey, 'entered');
     });
-
-    exitingToasts.forEach(([toastKey]) => refs.delete(toastKey));
 
     animations.forEach(({ element, transforms, transition }) => {
       animate(element, transforms, transition);
