@@ -1,14 +1,22 @@
 import { useMemo, useCallback } from 'react';
 
+import { vars } from '../../../entries/css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
+import { px } from '../../utils/px';
 
-const animationTimeout = 300;
+import * as styles from './Toast.css';
 
-const entranceTransition = 'transform 0.2s ease, opacity 0.2s ease';
-const exitTransition = 'opacity 0.1s ease';
+const animationTimeout = 200;
+const baseTransition =
+  'opacity 0.2s ease, transform 0.2s ease, height 0.2s ease';
+const exitTransition = 'opacity 0.2s ease, height 0.2s ease';
+const visibleStackedToasts = 3;
+
+type LifecycleState = undefined | 'entered' | 'exiting';
+type TransitionType = 'expand' | 'collapse' | 'enter' | 'become-first';
 
 interface Transform {
-  property: 'opacity' | 'transform' | 'scale';
+  property: 'opacity' | 'transform' | 'scale' | 'height' | 'className';
   from?: string;
   to?: string;
 }
@@ -26,8 +34,15 @@ const animate = (
   }, animationTimeout);
 
   transforms.forEach(({ property, from = '' }) => {
-    element.style.setProperty(property, from);
+    if (property === 'className') {
+      if (from) {
+        element.classList.add(from);
+      }
+    } else {
+      element.style.setProperty(property, from);
+    }
   });
+
   element.style.setProperty('transition', '');
 
   const transitionEndHandler = (ev: TransitionEvent) => {
@@ -52,16 +67,25 @@ const animate = (
     window.requestAnimationFrame(() => {
       element.style.setProperty('transition', transition);
 
-      transforms.forEach(({ property, to = '' }) => {
-        element.style.setProperty(property, to);
+      transforms.forEach(({ property, from = '', to = '' }) => {
+        if (property === 'className') {
+          if (from) {
+            element.classList.remove(from);
+          }
+          if (to) {
+            element.classList.add(to);
+          }
+        } else {
+          element.style.setProperty(property, to);
+        }
       });
     });
   });
 };
 
-export const useFlipList = () => {
+export const useFlipList = (expanded: boolean) => {
   const refs = useMemo(() => new Map<string, HTMLElement | null>(), []);
-  const positions = useMemo(() => new Map<string, number>(), []);
+  const toastStates = useMemo(() => new Map<string, LifecycleState>(), []);
 
   useIsomorphicLayoutEffect(() => {
     const animations: Array<{
@@ -70,45 +94,120 @@ export const useFlipList = () => {
       transition: string;
     }> = [];
 
+    const getCurrentAndFullHeight = (element: HTMLElement) => {
+      const currentHeight = element.getBoundingClientRect().height;
+      element.style.height = 'auto';
+      const fullHeight = element.getBoundingClientRect().height;
+      element.style.height = px(currentHeight);
+      return { currentHeight, fullHeight };
+    };
+
+    const activeToasts: Array<[string, HTMLElement]> = [];
+
+    // Filter out exiting toasts for position calculations
     Array.from(refs.entries()).forEach(([toastKey, element]) => {
-      if (element) {
-        const prevTop = positions.get(toastKey);
-        const { top, height } = element.getBoundingClientRect();
-
-        if (typeof prevTop === 'number' && prevTop !== top) {
-          // Move animation
-          animations.push({
-            element,
-            transition: entranceTransition,
-            transforms: [
-              {
-                property: 'transform',
-                from: `translateY(${prevTop - top}px)`,
-              },
-            ],
-          });
-        } else if (typeof prevTop !== 'number') {
-          // Enter animation
-          animations.push({
-            element,
-            transition: entranceTransition,
-            transforms: [
-              {
-                property: 'transform',
-                from: `translateY(${height}px)`,
-              },
-              {
-                property: 'opacity',
-                from: '0',
-              },
-            ],
-          });
+      if (element !== null) {
+        if (toastStates.get(toastKey) === 'exiting') {
+          refs.delete(toastKey);
+        } else {
+          activeToasts.push([toastKey, element]);
         }
-
-        positions.set(toastKey, element.getBoundingClientRect().top);
-      } else {
-        refs.delete(toastKey);
       }
+    });
+
+    activeToasts.forEach(([toastKey, element], index) => {
+      const position = activeToasts.length - index - 1;
+      const { opacity, transform } = element.style;
+      const { currentHeight, fullHeight } = getCurrentAndFullHeight(element);
+
+      let animationState: TransitionType;
+      if (position > 0) {
+        animationState = expanded ? 'expand' : 'collapse';
+      } else if (toastStates.get(toastKey) !== 'entered') {
+        animationState = 'enter';
+      } else {
+        animationState = 'become-first';
+      }
+
+      switch (animationState) {
+        case 'expand':
+          animations.push({
+            element,
+            transition: baseTransition,
+            transforms: [
+              {
+                property: 'height',
+                from: px(currentHeight),
+                to: px(fullHeight),
+              },
+              { property: 'transform', from: transform, to: undefined },
+              { property: 'opacity', from: opacity, to: '1' },
+              { property: 'className', from: styles.collapsed, to: undefined },
+            ],
+          });
+          break;
+
+        case 'collapse':
+          const visible = position < visibleStackedToasts;
+          const scale = position === 1 ? 0.9 : 0.8;
+
+          animations.push({
+            element,
+            transition: baseTransition,
+            transforms: [
+              {
+                property: 'height',
+                from: px(currentHeight),
+                to: visible ? vars.space.small : '0px',
+              },
+              {
+                property: 'transform',
+                from: transform,
+                to: `scaleX(${scale})`,
+              },
+              { property: 'opacity', from: opacity, to: visible ? '1' : '0' },
+              {
+                property: 'className',
+                from: undefined,
+                to: position > 0 ? styles.collapsed : undefined,
+              },
+            ],
+          });
+          break;
+
+        case 'enter':
+          animations.push({
+            element,
+            transition: baseTransition,
+            transforms: [
+              { property: 'opacity', from: '0' },
+              { property: 'height', from: '0px', to: px(fullHeight) },
+            ],
+          });
+          break;
+
+        case 'become-first':
+          animations.push({
+            element,
+            transition: baseTransition,
+            transforms: [
+              {
+                property: 'height',
+                from: px(currentHeight),
+                to: px(fullHeight),
+              },
+              { property: 'transform', from: transform },
+              {
+                property: 'className',
+                from: expanded ? styles.collapsed : undefined,
+                to: undefined,
+              },
+            ],
+          });
+          break;
+      }
+
+      toastStates.set(toastKey, 'entered');
     });
 
     animations.forEach(({ element, transforms, transition }) => {
@@ -119,23 +218,20 @@ export const useFlipList = () => {
   const remove = useCallback(
     (toastKey: string, cb: () => void) => {
       const element = refs.get(toastKey);
-
       if (element) {
-        // Removal animation
+        toastStates.set(toastKey, 'exiting');
         animate(
           element,
           [
-            {
-              property: 'opacity',
-              to: '0',
-            },
+            { property: 'opacity', to: '0' },
+            { property: 'height', from: element.style.height, to: '0px' },
           ],
           exitTransition,
           cb,
         );
       }
     },
-    [refs],
+    [refs, toastStates],
   );
 
   const itemRef = useCallback(
@@ -145,8 +241,5 @@ export const useFlipList = () => {
     [refs],
   );
 
-  return {
-    itemRef,
-    remove,
-  };
+  return { itemRef, remove };
 };

@@ -1,20 +1,27 @@
 import assert from 'assert';
 
-import { cloneElement, forwardRef, useCallback, useEffect } from 'react';
+import {
+  type MouseEvent,
+  cloneElement,
+  forwardRef,
+  useCallback,
+  useEffect,
+} from 'react';
 
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
 import { Inline } from '../Inline/Inline';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 import { TextLinkButton } from '../TextLinkButton/TextLinkButton';
 import { IconPositive, IconCritical, IconClear } from '../icons';
+import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes from '../private/buildDataAttributes';
 
 import type { InternalToast, ToastAction } from './ToastTypes';
+import { toastGap, toastWidth } from './consts';
 import { useTimeout } from './useTimeout';
 
 import * as styles from './Toast.css';
@@ -25,7 +32,7 @@ const toneToIcon = {
   positive: IconPositive,
 };
 
-export const toastDuration = 10000;
+export const toastDuration = 10 * 1000;
 
 const borderRadius = 'large';
 
@@ -33,10 +40,14 @@ interface ActionProps extends ToastAction {
   removeToast: () => void;
 }
 const Action = ({ label, onClick, removeToast }: ActionProps) => {
-  const handleClick = useCallback(() => {
-    removeToast();
-    onClick();
-  }, [removeToast, onClick]);
+  const handleClick = useCallback(
+    (event: MouseEvent) => {
+      event.stopPropagation();
+      removeToast();
+      onClick();
+    },
+    [removeToast, onClick],
+  );
 
   return (
     <Text baseline={false}>
@@ -65,6 +76,7 @@ const ToastIcon = ({ tone, icon }: Pick<InternalToast, 'tone' | 'icon'>) => {
 
 interface ToastProps extends InternalToast {
   onClose: (dedupeKey: string, toastKey: string) => void;
+  expanded?: boolean;
 }
 const Toast = forwardRef<HTMLDivElement, ToastProps>(
   (
@@ -80,6 +92,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
       action,
       shouldRemove,
       data,
+      expanded = true,
       ...restProps
     },
     ref,
@@ -99,6 +112,11 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
         remove();
       }
     }, [shouldRemove, remove, stopTimeout]);
+
+    useEffect(
+      () => (expanded ? stopTimeout() : startTimeout()),
+      [expanded, startTimeout, stopTimeout],
+    );
 
     assert(
       !icon || (icon.props.size === undefined && icon.props.tone === undefined),
@@ -139,60 +157,72 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
 
     return (
       <Box
+        position="relative"
+        width="full"
+        maxWidth={toastWidth}
         display="flex"
-        justifyContent="center"
-        textAlign="left"
-        role="alert"
         ref={ref}
-        onMouseEnter={stopTimeout}
-        onMouseLeave={startTimeout}
-        {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
-        <Box boxShadow="large" borderRadius={borderRadius}>
-          <ContentBlock width="xsmall">
-            <Box
-              background={{ lightMode: 'surfaceDark', darkMode: 'surface' }}
-              position="relative"
-              borderRadius={borderRadius}
-              paddingY="medium"
-              paddingX="gutter"
-              overflow="hidden"
-              className={styles.toast}
-            >
-              <Columns space="none">
-                {tone !== 'neutral' || (tone === 'neutral' && icon) ? (
-                  <Column width="content">
-                    <Box paddingRight="small">
-                      <ToastIcon tone={tone} icon={icon} />
-                    </Box>
-                  </Column>
-                ) : null}
-                <Column>{content}</Column>
+        <Box
+          role="alert"
+          textAlign="left"
+          background={{ lightMode: 'surfaceDark', darkMode: 'surface' }}
+          boxShadow={{
+            lightMode: 'borderNeutral',
+            darkMode: 'borderNeutralLight',
+          }}
+          borderRadius={borderRadius}
+          paddingY="medium"
+          paddingX="gutter"
+          marginTop={toastGap}
+          width="full"
+          position="relative"
+          className={styles.toast}
+          tabIndex={0}
+          outline="focus"
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
+        >
+          <Box transition="fast" className={styles.collapsedToastContent}>
+            <Columns space="none">
+              {tone !== 'neutral' || (tone === 'neutral' && icon) ? (
                 <Column width="content">
-                  <Box
-                    width="touchable"
-                    display="flex"
-                    justifyContent="flexEnd"
-                    alignItems="center"
-                    className={lineHeightContainer.standard}
-                    aria-hidden
-                  >
-                    <ButtonIcon
-                      icon={<IconClear tone="secondary" />}
-                      variant="transparent"
-                      onClick={remove}
-                      label={closeLabel}
-                      data={
-                        process.env.NODE_ENV !== 'production'
-                          ? { testid: 'clearToast' }
-                          : {}
-                      }
-                    />
+                  <Box paddingRight="small">
+                    <ToastIcon tone={tone} icon={icon} />
                   </Box>
                 </Column>
-              </Columns>
-            </Box>
-          </ContentBlock>
+              ) : null}
+              <Column>{content}</Column>
+              <Column width="content">
+                <Box
+                  width="touchable"
+                  display="flex"
+                  justifyContent="flexEnd"
+                  alignItems="center"
+                  className={lineHeightContainer.standard}
+                  aria-hidden
+                >
+                  <ButtonIcon
+                    icon={<IconClear tone="secondary" />}
+                    variant="transparent"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      remove();
+                    }}
+                    label={closeLabel}
+                    data={
+                      process.env.NODE_ENV !== 'production'
+                        ? { testid: 'clearToast' }
+                        : {}
+                    }
+                  />
+                </Box>
+              </Column>
+            </Columns>
+          </Box>
+          <Overlay visible borderRadius={borderRadius} boxShadow="large" />
         </Box>
       </Box>
     );
