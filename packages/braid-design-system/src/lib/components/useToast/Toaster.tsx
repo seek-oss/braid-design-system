@@ -18,6 +18,9 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const { itemRef, remove } = useFlipList(expanded);
   const isMobileDevice = useRef(isMobile()).current;
 
+  const expandHandler = () => setExpanded(true);
+  const collapseHandler = () => setExpanded(false);
+
   const onClose = useCallback(
     (dedupeKey: string, toastKey: string) => {
       remove(toastKey, () => {
@@ -59,11 +62,11 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
             pointerEvents={toasts.length === 0 ? 'none' : undefined}
             marginX="gutter"
             paddingBottom="xsmall"
-            onMouseEnter={() => !isMobileDevice && setExpanded(true)}
-            onMouseLeave={() => !isMobileDevice && setExpanded(false)}
+            onMouseEnter={!isMobileDevice ? expandHandler : undefined}
+            onMouseLeave={!isMobileDevice ? collapseHandler : undefined}
+            onFocus={expandHandler}
+            onBlur={collapseHandler}
             onClick={() => setExpanded(!expanded)}
-            onFocus={() => setExpanded(true)}
-            onBlur={() => setExpanded(false)}
           >
             {toasts.map(({ toastKey, ...rest }) => (
               <ToastComponent
