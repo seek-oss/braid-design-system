@@ -36,6 +36,19 @@ describe('RadioGroup', () => {
     expect(getByLabelText('Options').tagName).toBe('FIELDSET');
   });
 
+  it('associates the group with id correctly', () => {
+    const { container } = render(
+      <BraidTestProvider>
+        <RadioGroup id="my-id" value="" onChange={() => {}} label="Options">
+          <RadioItem label="Option 1" value="1" />
+          <RadioItem label="Option 2" value="2" />
+        </RadioGroup>
+      </BraidTestProvider>,
+    );
+
+    expect(container.querySelector('#my-id')?.tagName).toBe('FIELDSET');
+  });
+
   it('associates radio items with their labels correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>

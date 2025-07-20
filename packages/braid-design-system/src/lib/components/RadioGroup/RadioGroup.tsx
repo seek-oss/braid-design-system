@@ -36,7 +36,6 @@ const stackSpaceForSize = {
 } as Record<NonNullable<RadioGroupProps['size']>, StackProps['space']>;
 
 const RadioGroup = ({
-  id,
   children,
   value,
   name,
