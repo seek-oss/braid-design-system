@@ -50,7 +50,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Nospace: Story = {
+export const NoSpace: Story = {
   name: 'No space',
   render: () => (
     <Columns space="none">
@@ -64,7 +64,7 @@ export const Nospace: Story = {
   ),
 };
 
-export const Customspaceegsmall: Story = {
+export const CustomSpace: Story = {
   name: 'Custom space, e.g. small',
   render: () => (
     <Columns space="small">
@@ -78,7 +78,7 @@ export const Customspaceegsmall: Story = {
   ),
 };
 
-export const Responsivespaceegsmalllarge: Story = {
+export const ResponsiveSpace: Story = {
   name: 'Responsive space, e.g. ["small", "large"]',
   render: () => (
     <Columns space={['small', 'large']}>
@@ -92,7 +92,7 @@ export const Responsivespaceegsmalllarge: Story = {
   ),
 };
 
-export const Responsivespacewithnonebelowtabletegnonegutter: Story = {
+export const ResponsiveSpaceWithNoneBelowTablet: Story = {
   name: 'Responsive space with `none` below tablet, e.g. ["none", "gutter"]',
   render: () => (
     <Columns space={['none', 'gutter']}>
@@ -106,7 +106,7 @@ export const Responsivespacewithnonebelowtabletegnonegutter: Story = {
   ),
 };
 
-export const Responsivespacewithnoneabovemobileegsmallnone: Story = {
+export const ResponsiveSpaceWithNoneAboveMobile: Story = {
   name: 'Responsive space with `none` above mobile, e.g. ["small", "none"]',
   render: () => (
     <Columns space={['small', 'none']}>
@@ -120,7 +120,7 @@ export const Responsivespacewithnoneabovemobileegsmallnone: Story = {
   ),
 };
 
-export const Verticallyaligntocenter: Story = {
+export const VerticallyAlignToCenter: Story = {
   name: 'Vertically align to center',
   render: () => (
     <Columns space="small" alignY="center">
@@ -134,7 +134,7 @@ export const Verticallyaligntocenter: Story = {
   ),
 };
 
-export const Verticallyaligntobottom: Story = {
+export const VerticallyAlignToBottom: Story = {
   name: 'Vertically align to bottom',
   render: () => (
     <Columns space="small" alignY="bottom">
@@ -148,7 +148,7 @@ export const Verticallyaligntobottom: Story = {
   ),
 };
 
-export const Responsivealignmentegtoponmobilecenterontabletupwards: Story = {
+export const ResponsiveAlignment: Story = {
   name: 'Responsive alignment (e.g. top on mobile, center on tablet upwards)',
   render: () => (
     <Columns space="small" alignY={['top', 'center']}>
@@ -162,7 +162,7 @@ export const Responsivealignmentegtoponmobilecenterontabletupwards: Story = {
   ),
 };
 
-export const Alignmentcollapse: Story = {
+export const AlignmentCollapse: Story = {
   name: 'Alignment + collapse',
   render: () => (
     <Columns space="small" collapseBelow="tablet" alignY="center">
@@ -176,7 +176,7 @@ export const Alignmentcollapse: Story = {
   ),
 };
 
-export const Collapsebelowtablet: Story = {
+export const CollapseBelowTablet: Story = {
   name: 'Collapse below tablet',
   render: () => (
     <Columns space="small" collapseBelow="tablet">
@@ -190,7 +190,7 @@ export const Collapsebelowtablet: Story = {
   ),
 };
 
-export const Collapsebelowdesktop: Story = {
+export const CollapseBelowDesktop: Story = {
   name: 'Collapse below desktop',
   render: () => (
     <Columns space="small" collapseBelow="desktop">
@@ -204,7 +204,7 @@ export const Collapsebelowdesktop: Story = {
   ),
 };
 
-export const Collapsebelowwide: Story = {
+export const CollapseBelowWide: Story = {
   name: 'Collapse below wide',
   render: () => (
     <Columns space="small" collapseBelow="wide">
@@ -218,7 +218,7 @@ export const Collapsebelowwide: Story = {
   ),
 };
 
-export const Collapsebelowtabletwithcustomspaceegsmall: Story = {
+export const CollapseBelowTabletCustomSpace: Story = {
   name: 'Collapse below tablet with custom space, e.g. "small"',
   render: () => (
     <Columns space="small" collapseBelow="tablet">
@@ -232,7 +232,7 @@ export const Collapsebelowtabletwithcustomspaceegsmall: Story = {
   ),
 };
 
-export const Collapsebelowdesktopwithcustomspaceegsmall: Story = {
+export const CollapseBelowDesktopCustomSpace: Story = {
   name: 'Collapse below desktop with custom space, e.g. "small"',
   render: () => (
     <Columns space="small" collapseBelow="desktop">
@@ -246,7 +246,7 @@ export const Collapsebelowdesktopwithcustomspaceegsmall: Story = {
   ),
 };
 
-export const Collapsebelowwidewithcustomspaceegsmall: Story = {
+export const CollapseBelowWideCustomSpace: Story = {
   name: 'Collapse below wide with custom space, e.g. "small"',
   render: () => (
     <Columns space="small" collapseBelow="wide">
@@ -260,7 +260,7 @@ export const Collapsebelowwidewithcustomspaceegsmall: Story = {
   ),
 };
 
-export const Collapsebelowtabletwithresponsivespaceegsmalllarge: Story = {
+export const CollapseBelowTabletResponsiveSpace: Story = {
   name: 'Collapse below tablet with responsive space, e.g. ["small", "large"]',
   render: () => (
     <Columns space={['small', 'large']} collapseBelow="tablet">
@@ -274,138 +274,127 @@ export const Collapsebelowtabletwithresponsivespaceegsmalllarge: Story = {
   ),
 };
 
-export const Collapsebelowdesktopwithresponsivespaceegsmallmediumxlarge: Story =
-  {
-    name: 'Collapse below desktop with responsive space, e.g. ["small", "medium", "xlarge"]',
-    render: () => (
-      <Columns space={['small', 'medium', 'xlarge']} collapseBelow="desktop">
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowDesktopResponsiveSpace: Story = {
+  name: 'Collapse below desktop with responsive space, e.g. ["small", "medium", "xlarge"]',
+  render: () => (
+    <Columns space={['small', 'medium', 'xlarge']} collapseBelow="desktop">
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const Collapsebelowwidewithresponsivespaceegxsmallsmallmediumxlarge: Story =
-  {
-    name: 'Collapse below wide with responsive space, e.g. ["xsmall", "small", "medium", "xlarge"]',
-    render: () => (
-      <Columns
-        space={['xsmall', 'small', 'medium', 'xlarge']}
-        collapseBelow="wide"
-      >
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowWideResponsiveSpace: Story = {
+  name: 'Collapse below wide with responsive space, e.g. ["xsmall", "small", "medium", "xlarge"]',
+  render: () => (
+    <Columns
+      space={['xsmall', 'small', 'medium', 'xlarge']}
+      collapseBelow="wide"
+    >
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const Collapsebelowtabletwithresponsivespaceandnonebelowtabletegnonegutter: Story =
-  {
-    name: 'Collapse below tablet with responsive space and `none` below tablet, e.g. ["none", "gutter"]',
-    render: () => (
-      <Columns space={['none', 'gutter']} collapseBelow="tablet">
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowTabletNoSpaceBelowTablet: Story = {
+  name: 'Collapse below tablet with responsive space and `none` below tablet, e.g. ["none", "gutter"]',
+  render: () => (
+    <Columns space={['none', 'gutter']} collapseBelow="tablet">
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const Collapsebelowdesktopwithresponsivespaceandnonebelowdesktopegnonexsmallgutter: Story =
-  {
-    name: 'Collapse below desktop with responsive space and `none` below desktop, e.g. ["none", "xsmall", "gutter"]',
-    render: () => (
-      <Columns space={['none', 'xsmall', 'gutter']} collapseBelow="desktop">
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowDesktopNoSpaceBelowDesktop: Story = {
+  name: 'Collapse below desktop with responsive space and `none` below desktop, e.g. ["none", "xsmall", "gutter"]',
+  render: () => (
+    <Columns space={['none', 'xsmall', 'gutter']} collapseBelow="desktop">
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const Collapsebelowwidewithresponsivespaceandnonebelowwideegmobilenonetabletxsmallwidegutter: Story =
-  {
-    name: 'Collapse below wide with responsive space and `none` below wide, e.g. { mobile: "none", tablet: "xsmall", wide: "gutter" }',
-    render: () => (
-      <Columns
-        space={{
-          mobile: 'none',
-          tablet: 'xsmall',
-          wide: 'gutter',
-        }}
-        collapseBelow="wide"
-      >
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowWideNoSpaceBelowWide: Story = {
+  name: 'Collapse below wide with responsive space and `none` below wide, e.g. { mobile: "none", tablet: "xsmall", wide: "gutter" }',
+  render: () => (
+    <Columns
+      space={{
+        mobile: 'none',
+        tablet: 'xsmall',
+        wide: 'gutter',
+      }}
+      collapseBelow="wide"
+    >
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const Collapsebelowtabletwithresponsivespaceandnoneabovemobileegsmallnone: Story =
-  {
-    name: 'Collapse below tablet with responsive space and `none` above mobile, e.g. ["small", "none"]',
-    render: () => (
-      <Columns space={['small', 'none']} collapseBelow="tablet">
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowTabletNoSpaceAboveMobile: Story = {
+  name: 'Collapse below tablet with responsive space and `none` above mobile, e.g. ["small", "none"]',
+  render: () => (
+    <Columns space={['small', 'none']} collapseBelow="tablet">
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const Collapsebelowdesktopwithresponsivespaceandnoneabovetabletegsmallmediumnone: Story =
-  {
-    name: 'Collapse below desktop with responsive space and `none` above tablet, e.g. ["small", "medium", "none"]',
-    render: () => (
-      <Columns space={['small', 'medium', 'none']} collapseBelow="desktop">
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowDesktopNoSpaceAboveTablet: Story = {
+  name: 'Collapse below desktop with responsive space and `none` above tablet, e.g. ["small", "medium", "none"]',
+  render: () => (
+    <Columns space={['small', 'medium', 'none']} collapseBelow="desktop">
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const Collapsebelowwidewithresponsivespaceandnoneabovedesktopegsmallmediumlargenone: Story =
-  {
-    name: 'Collapse below wide with responsive space and `none` above desktop, e.g. ["small", "medium", "large", "none"]',
-    render: () => (
-      <Columns
-        space={['small', 'medium', 'large', 'none']}
-        collapseBelow="wide"
-      >
-        <Column>
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column>
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowWideNoSpaceAboveDesktop: Story = {
+  name: 'Collapse below wide with responsive space and `none` above desktop, e.g. ["small", "medium", "large", "none"]',
+  render: () => (
+    <Columns space={['small', 'medium', 'large', 'none']} collapseBelow="wide">
+      <Column>
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column>
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
 export const Reverse: Story = {
   render: () => (
@@ -420,103 +409,98 @@ export const Reverse: Story = {
   ),
 };
 
-export const TestCollapsedcontentcolumnsshouldbefullwidthwhensettingalignY: Story =
-  {
-    name: 'Test: Collapsed "content" columns should be full width when setting "alignY"',
-    render: () => (
-      <Columns space="small" alignY="bottom" collapseBelow="tablet">
-        <Column>
-          <Placeholder height={60} label="No width" />
-        </Column>
-        <Column width="1/2">
-          <Placeholder height={100} label="1/2 width" />
-        </Column>
-        <Column width="content">
-          <Placeholder height={140} label="Content width" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapsedContentColumnsShouldBeFullWidthWithAlignY: Story = {
+  name: 'Test: Collapsed "content" columns should be full width when setting "alignY"',
+  render: () => (
+    <Columns space="small" alignY="bottom" collapseBelow="tablet">
+      <Column>
+        <Placeholder height={60} label="No width" />
+      </Column>
+      <Column width="1/2">
+        <Placeholder height={100} label="1/2 width" />
+      </Column>
+      <Column width="content">
+        <Placeholder height={140} label="Content width" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const TestcollapseBelowalignOnmobileshouldbeverticalandleftalignedontabletshouldbehorizontalandcentrealignedondesktopshouldbehorizontalandrightaligned: Story =
-  {
-    name: 'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
-    render: () => (
-      <Columns
-        space="small"
-        collapseBelow="tablet"
-        align={['left', 'center', 'right']}
-      >
-        <Column width="1/3">
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column width="1/3">
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowAlign: Story = {
+  name: 'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
+  render: () => (
+    <Columns
+      space="small"
+      collapseBelow="tablet"
+      align={['left', 'center', 'right']}
+    >
+      <Column width="1/3">
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column width="1/3">
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const TestcollapseBelowalignOnmobileshouldbeverticalandleftalignedontabletshouldbehorizontalandcentrealignedondesktopshouldbehorizontalandrightaligned2: Story =
-  {
-    name: 'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
-    render: () => (
-      <Columns
-        space="small"
-        collapseBelow="desktop"
-        align={['left', 'center', 'right']}
-      >
-        <Column width="1/3">
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column width="1/3">
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowAlign2: Story = {
+  name: 'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
+  render: () => (
+    <Columns
+      space="small"
+      collapseBelow="desktop"
+      align={['left', 'center', 'right']}
+    >
+      <Column width="1/3">
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column width="1/3">
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const TestcollapseBelowalignreverseOnmobileshouldbeverticalandleftalignedontabletshouldbereversedhorizontallyandcentrealignedondesktopshouldbereversedhorizontallyandrightalignedonwideshouldbereversedhorizontallyandcentrealigned: Story =
-  {
-    name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and centre aligned',
-    render: () => (
-      <Columns
-        space="small"
-        collapseBelow="tablet"
-        align={['left', 'center', 'right', 'center']}
-        reverse
-      >
-        <Column width="1/3">
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column width="1/3">
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowAlignReverse: Story = {
+  name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and centre aligned',
+  render: () => (
+    <Columns
+      space="small"
+      collapseBelow="tablet"
+      align={['left', 'center', 'right', 'center']}
+      reverse
+    >
+      <Column width="1/3">
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column width="1/3">
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const TestcollapseBelowalignreverseOnmobileshouldbeverticalandleftalignedontabletshouldbeverticalandcentrealignedondesktopshouldbereversedhorizontallyandrightalignedonwideshouldbereversedhorizontallyandcenteraligned: Story =
-  {
-    name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and center aligned',
-    render: () => (
-      <Columns
-        space="small"
-        collapseBelow="desktop"
-        align={['left', 'center', 'right', 'center']}
-        reverse
-      >
-        <Column width="1/3">
-          <Placeholder height={60} label="First" />
-        </Column>
-        <Column width="1/3">
-          <Placeholder height={60} label="Second" />
-        </Column>
-      </Columns>
-    ),
-  };
+export const CollapseBelowAlignReverse2: Story = {
+  name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and center aligned',
+  render: () => (
+    <Columns
+      space="small"
+      collapseBelow="desktop"
+      align={['left', 'center', 'right', 'center']}
+      reverse
+    >
+      <Column width="1/3">
+        <Placeholder height={60} label="First" />
+      </Column>
+      <Column width="1/3">
+        <Placeholder height={60} label="Second" />
+      </Column>
+    </Columns>
+  ),
+};
 
-export const TestcomponentspanwithnoexplicitColumnwidths: Story = {
+export const ComponentSpan: Story = {
   name: 'Test - component span with no explicit Column widths',
   render: () => (
     <Columns space="small" component="span">
@@ -530,8 +514,8 @@ export const TestcomponentspanwithnoexplicitColumnwidths: Story = {
   ),
 };
 
-export const TestcomponentspanwithoneexplictColumnwidthandonenot: Story = {
-  name: 'Test - component span with one explict Column width and one not',
+export const ComponentSpanWithOneExplicitColumnWidth: Story = {
+  name: 'Test - component span with one explicit Column width and one not',
   render: () => (
     <Columns space="small" component="span">
       <Column width="content">

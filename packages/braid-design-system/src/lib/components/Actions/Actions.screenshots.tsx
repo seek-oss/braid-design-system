@@ -16,7 +16,7 @@ const meta = {
 
 export default meta;
 
-export const Standardsize: Story = {
+export const StandardSize: Story = {
   name: 'Standard size',
   args: {
     children: (
@@ -29,7 +29,7 @@ export const Standardsize: Story = {
   },
 };
 
-export const Smallsize: Story = {
+export const SmallSize: Story = {
   name: 'Small size',
   args: {
     size: 'small',

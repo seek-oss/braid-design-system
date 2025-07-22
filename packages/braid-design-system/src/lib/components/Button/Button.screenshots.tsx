@@ -44,7 +44,7 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Defaultvariantfortone: Story = {
+export const DefaultVariantForTone: Story = {
   name: 'Default variant for tone',
   render: () => (
     <Inline space="small">
@@ -135,7 +135,7 @@ export const Neutral: Story = {
   ),
 };
 
-export const Smallsize: Story = {
+export const SmallSize: Story = {
   name: 'Small size',
   render: () => (
     <Inline space="small">
@@ -155,7 +155,7 @@ export const Smallsize: Story = {
   ),
 };
 
-export const Smallsizevirtualtouchtarget: Story = {
+export const SmallSizeVirtualTouchTarget: Story = {
   name: 'Small size (virtual touch target)',
   render: () => (
     <Inline
@@ -180,7 +180,7 @@ export const Smallsizevirtualtouchtarget: Story = {
   ),
 };
 
-export const Withverticalbleedstandard: Story = {
+export const WithVerticalBleedStandard: Story = {
   name: 'With vertical bleed (standard)',
   render: () => (
     <Box background="neutralLight" borderRadius="standard" padding="gutter">
@@ -194,7 +194,7 @@ export const Withverticalbleedstandard: Story = {
   ),
 };
 
-export const Withverticalbleedsmall: Story = {
+export const WithVerticalBleedSmall: Story = {
   name: 'With vertical bleed (small)',
   render: () => (
     <Box background="neutralLight" borderRadius="standard" padding="gutter">
@@ -210,7 +210,7 @@ export const Withverticalbleedsmall: Story = {
   ),
 };
 
-export const Withfullbleedtransparent: Story = {
+export const WithFullBleedTransparent: Story = {
   name: 'With full bleed (transparent)',
   render: () => (
     <Box background="neutralLight" borderRadius="standard" padding="gutter">
@@ -226,7 +226,7 @@ export const Withfullbleedtransparent: Story = {
   ),
 };
 
-export const Withicon: Story = {
+export const WithIcon: Story = {
   name: 'With icon',
   render: () => (
     <Stack space="small">
@@ -262,7 +262,7 @@ export const Withicon: Story = {
   ),
 };
 
-export const WithiconPositiontrailing: Story = {
+export const WithIconPositionTrailing: Story = {
   name: 'With iconPosition trailing',
   render: () => (
     <Stack space="small">
@@ -334,7 +334,7 @@ export const WithiconPositiontrailing: Story = {
   ),
 };
 
-export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
+export const WithIconTransparentVariantAndBleedItShouldAlignWithText: Story = {
   name: 'With icon, transparent variant and bleed, it should align with Text',
   render: () => (
     <Stack space="small">
@@ -348,7 +348,7 @@ export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
   ),
 };
 
-export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: Story =
+export const WithIconTransparentVariantBleedAndSizeSmallItShouldAlignWithText: Story =
   {
     name: 'With icon, transparent variant, bleed and size small, it should align with Text',
     render: () => (
@@ -386,7 +386,7 @@ export const Contrast: Story = {
   ),
 };
 
-export const Contrastcritical: Story = {
+export const ContrastCritical: Story = {
   name: 'Contrast - critical',
   render: () => (
     <BackgroundContrastTest>
@@ -408,7 +408,7 @@ export const Contrastcritical: Story = {
   ),
 };
 
-export const ContrastbrandAccent: Story = {
+export const ContrastBrandAccent: Story = {
   name: 'Contrast - brandAccent',
   render: () => (
     <BackgroundContrastTest>
@@ -430,7 +430,7 @@ export const ContrastbrandAccent: Story = {
   ),
 };
 
-export const Contrastneutral: Story = {
+export const ContrastNeutral: Story = {
   name: 'Contrast - neutral',
   render: () => (
     <BackgroundContrastTest>
@@ -452,7 +452,7 @@ export const Contrastneutral: Story = {
   ),
 };
 
-export const Longlabel: Story = {
+export const LongLabel: Story = {
   name: 'Long label',
   render: () => (
     <Stack space="xsmall">
@@ -494,7 +494,7 @@ export const Longlabel: Story = {
   ),
 };
 
-export const Unbrokenlabel: Story = {
+export const UnbrokenLabel: Story = {
   name: 'Unbroken label',
   render: () => (
     <Stack space="xsmall">
@@ -536,7 +536,7 @@ export const Unbrokenlabel: Story = {
   ),
 };
 
-export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Story =
+export const VerticallyCenteredLabelsInContainersThatStretchElementsToFill: Story =
   {
     name: 'Vertically centered labels in containers that stretch elements to fill',
     render: () => (
@@ -589,7 +589,7 @@ export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Stor
     ),
   };
 
-export const Ensureinnerlabelelementisfullwidthreddotsshouldtouchhorizontaledges: Story =
+export const EnsureInnerLabelElementIsFullWidthRedDotsShouldTouchHorizontalEdges: Story =
   {
     name: 'Ensure inner label element is full width (red dots should touch horizontal edges)',
     render: () => (

@@ -29,7 +29,7 @@ export const Horizontal: Story = {
   },
 };
 
-export const Horizontalsinglefullwidthshouldbecontentwidthandspreadtoeachside: Story =
+export const HorizontalSingleFullWidthShouldBeContentWidthAndSpreadToEachSide: Story =
   {
     name: 'Horizontal single full width (should be content width and spread to each side)',
     render: () => (
@@ -50,7 +50,7 @@ export const Horizontalsinglefullwidthshouldbecontentwidthandspreadtoeachside: S
     ),
   };
 
-export const Horizontalbothfullwidthshouldbecontentwidthandspreadtoeachside: Story =
+export const HorizontalBothFullWidthShouldBeContentWidthAndSpreadToEachSide: Story =
   {
     name: 'Horizontal both full width (should be content width and spread to each side)',
     render: () => (
@@ -65,7 +65,7 @@ export const Horizontalbothfullwidthshouldbecontentwidthandspreadtoeachside: Sto
     ),
   };
 
-export const Horizontalsinglechildfullwidthshouldbecontentwidth: Story = {
+export const HorizontalSingleChildFullWidthShouldBeContentWidth: Story = {
   name: 'Horizontal single child full width (should be content width)',
   render: () => (
     <Spread space="large">
@@ -76,7 +76,7 @@ export const Horizontalsinglechildfullwidthshouldbecontentwidth: Story = {
   ),
 };
 
-export const Horizontalresponsivespace: Story = {
+export const HorizontalResponsiveSpace: Story = {
   name: 'Horizontal responsive space',
   args: {
     space: {
@@ -92,7 +92,7 @@ export const Horizontalresponsivespace: Story = {
   },
 };
 
-export const HorizontalalignYtop: Story = {
+export const HorizontalAlignYTop: Story = {
   name: 'Horizontal alignY top',
   args: {
     space: 'large',
@@ -104,7 +104,7 @@ export const HorizontalalignYtop: Story = {
   },
 };
 
-export const HorizontalalignYcenter: Story = {
+export const HorizontalAlignYCenter: Story = {
   name: 'Horizontal alignY center',
   args: {
     space: 'large',
@@ -116,7 +116,7 @@ export const HorizontalalignYcenter: Story = {
   },
 };
 
-export const HorizontalalignYbottom: Story = {
+export const HorizontalAlignYBottom: Story = {
   name: 'Horizontal alignY bottom',
   args: {
     space: 'large',
@@ -128,7 +128,7 @@ export const HorizontalalignYbottom: Story = {
   },
 };
 
-export const Horizontalaligncenternoimpact: Story = {
+export const HorizontalAlignCenterNoImpact: Story = {
   name: 'Horizontal align center (no impact)',
   args: {
     space: 'large',
@@ -159,7 +159,7 @@ export const Vertical: Story = {
   ),
 };
 
-export const Verticalsinglefullwidth: Story = {
+export const VerticalSingleFullWidth: Story = {
   name: 'Vertical single full width',
   args: {
     direction: 'vertical',
@@ -171,7 +171,7 @@ export const Verticalsinglefullwidth: Story = {
   },
 };
 
-export const Verticalresponsivespace: Story = {
+export const VerticalResponsiveSpace: Story = {
   name: 'Vertical responsive space',
   args: {
     direction: 'vertical',
@@ -188,7 +188,7 @@ export const Verticalresponsivespace: Story = {
   },
 };
 
-export const Verticalalignleft: Story = {
+export const VerticalAlignLeft: Story = {
   name: 'Vertical align left',
   args: {
     direction: 'vertical',
@@ -201,7 +201,7 @@ export const Verticalalignleft: Story = {
   },
 };
 
-export const Verticalaligncenter: Story = {
+export const VerticalAlignCenter: Story = {
   name: 'Vertical align center',
   args: {
     direction: 'vertical',
@@ -214,7 +214,7 @@ export const Verticalaligncenter: Story = {
   },
 };
 
-export const Verticalalignright: Story = {
+export const VerticalAlignRight: Story = {
   name: 'Vertical align right',
   args: {
     direction: 'vertical',
@@ -227,7 +227,7 @@ export const Verticalalignright: Story = {
   },
 };
 
-export const VerticalalignYcenternoimpact: Story = {
+export const VerticalAlignYCenterNoImpact: Story = {
   name: 'Vertical alignY center (no impact)',
   args: {
     direction: 'vertical',
@@ -240,7 +240,7 @@ export const VerticalalignYcenternoimpact: Story = {
   },
 };
 
-export const TestHorizontalwithoutalignYContentshouldaligntopandnotstretch: Story =
+export const TestHorizontalWithoutAlignYContentShouldAlignTopAndNotStretch: Story =
   {
     name: 'Test: Horizontal without alignY (`Content` should align top and not stretch)',
     render: () => (
@@ -261,7 +261,7 @@ export const TestHorizontalwithoutalignYContentshouldaligntopandnotstretch: Stor
     ),
   };
 
-export const TestTexttruncationhorizontalshouldconsumeavailablespacewithoutpushingContentoutofscreen: Story =
+export const TestTextTruncationHorizontalShouldConsumeAvailableSpaceWithoutPushingContentOutOfScreen: Story =
   {
     name: 'Test: Text truncation horizontal, should consume available space without pushing `Content` out of screen',
     render: () => (
@@ -277,7 +277,7 @@ export const TestTexttruncationhorizontalshouldconsumeavailablespacewithoutpushi
     ),
   };
 
-export const TestTexttruncationverticalshouldbelimitedtocontainerwidthandrespectalignprop: Story =
+export const TestTextTruncationVerticalShouldBeLimitedToContainerWidthAndRespectAlignProp: Story =
   {
     name: 'Test: Text truncation vertical, should be limited to container width and respect `align` prop',
     render: () => (

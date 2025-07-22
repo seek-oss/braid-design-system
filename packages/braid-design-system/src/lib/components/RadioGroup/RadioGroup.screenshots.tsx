@@ -29,7 +29,7 @@ export const Default: Story = {
   },
 };
 
-export const Withselecteditem: Story = {
+export const WithSelectedItem: Story = {
   name: 'With selected item',
   args: {
     value: '2',
@@ -43,7 +43,7 @@ export const Withselecteditem: Story = {
   },
 };
 
-export const Withdescription: Story = {
+export const WithDescription: Story = {
   name: 'With description',
   args: {
     value: '',
@@ -58,7 +58,7 @@ export const Withdescription: Story = {
   },
 };
 
-export const Withcriticalmessage: Story = {
+export const WithCriticalMessage: Story = {
   name: 'With critical message',
   args: {
     value: '',
@@ -74,7 +74,7 @@ export const Withcriticalmessage: Story = {
   },
 };
 
-export const Whendisabled: Story = {
+export const WhenDisabled: Story = {
   name: 'When disabled',
   args: {
     value: '2',
@@ -89,7 +89,7 @@ export const Whendisabled: Story = {
   },
 };
 
-export const Whendisabledandcritical: Story = {
+export const WhenDisabledAndCritical: Story = {
   name: 'When disabled and critical',
   args: {
     value: '2',
@@ -106,7 +106,7 @@ export const Whendisabledandcritical: Story = {
   },
 };
 
-export const Withnestedcontentvisibleonlywhenchecked: Story = {
+export const WithNestedContentVisibleOnlyWhenChecked: Story = {
   name: 'With nested content visible only when checked',
   render: () => (
     <RadioGroup value="1" onChange={() => {}} label="Experience">
@@ -134,7 +134,7 @@ export const Small: Story = {
   },
 };
 
-export const Whendisableditem: Story = {
+export const WhenDisabledItem: Story = {
   name: 'When disabled item',
   render: () => (
     <RadioGroup value="2" onChange={() => {}} label="Experience">
@@ -146,7 +146,7 @@ export const Whendisableditem: Story = {
   ),
 };
 
-export const Whenlabellingviaarialabel: Story = {
+export const WhenLabellingViaAriaLabel: Story = {
   name: 'When labelling via aria-label',
   args: {
     value: '2',
@@ -159,7 +159,7 @@ export const Whenlabellingviaarialabel: Story = {
   },
 };
 
-export const Whenlabellingviaarialabelledby: Story = {
+export const WhenLabellingViaAriaLabelledBy: Story = {
   name: 'When labelling via aria-labelledby',
   args: {
     value: '2',
@@ -172,7 +172,7 @@ export const Whenlabellingviaarialabelledby: Story = {
   },
 };
 
-export const Whenlabellingviaarialabelledbywithadescription: Story = {
+export const WhenLabellingViaAriaLabelledByWithADescription: Story = {
   name: 'When labelling via aria-labelledby with a description',
   args: {
     value: '2',
@@ -186,7 +186,7 @@ export const Whenlabellingviaarialabelledbywithadescription: Story = {
   },
 };
 
-export const Virtualtouchtargetstandard: Story = {
+export const VirtualTouchTargetStandard: Story = {
   name: 'Virtual touch target (standard)',
   render: () => (
     <RadioGroup
@@ -204,7 +204,7 @@ export const Virtualtouchtargetstandard: Story = {
   ),
 };
 
-export const Virtualtouchtargetsmall: Story = {
+export const VirtualTouchTargetSmall: Story = {
   name: 'Virtual touch target (small)',
   render: () => (
     <RadioGroup
@@ -236,7 +236,7 @@ export const Contrast: Story = {
   ),
 };
 
-export const TestshouldbeleftalignedinacenteredStack: Story = {
+export const TestShouldBeLeftAlignedInACenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
   render: () => (
     <Stack space="large" align="center">

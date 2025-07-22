@@ -31,7 +31,7 @@ export const Default: Story = {
   ),
 };
 
-export const Withidentifyingvalues: Story = {
+export const WithIdentifyingValues: Story = {
   name: 'With identifying values',
   args: {
     value: 2000,
@@ -58,7 +58,7 @@ export const Withidentifyingvalues: Story = {
   ),
 };
 
-export const Withinstrongtext: Story = {
+export const WithinStrongText: Story = {
   name: 'Within strong text',
   args: {
     value: 'Relevance',
@@ -77,7 +77,7 @@ export const Withinstrongtext: Story = {
   ],
 };
 
-export const Virtualtouchtarget: Story = {
+export const VirtualTouchTarget: Story = {
   name: 'Virtual touch target',
   args: {
     value: 'Relevance',
@@ -98,7 +98,7 @@ export const Virtualtouchtarget: Story = {
   ],
 };
 
-export const Withinaheading: Story = {
+export const WithinAHeading: Story = {
   name: 'Within a heading',
   args: {
     value: 'Sydney',
@@ -112,7 +112,7 @@ export const Withinaheading: Story = {
   ),
 };
 
-export const TextDropdownonBrandBackground: Story = {
+export const TextDropdownOnBrandBackground: Story = {
   name: 'TextDropdown on brand background',
   args: {
     value: 'Designer',

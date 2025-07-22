@@ -33,7 +33,7 @@ export const InfoNotice: Story = {
   },
 };
 
-export const Noticewithrichcontent: Story = {
+export const NoticeWithRichContent: Story = {
   name: 'Notice with rich content',
   args: {
     tone: 'info',
@@ -74,7 +74,7 @@ export const PositiveNotice: Story = {
   },
 };
 
-export const TestshouldbeleftalignedinacenteredStack: Story = {
+export const TestShouldBeLeftAlignedInACenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
   args: {
     tone: 'positive',

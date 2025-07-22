@@ -95,7 +95,7 @@ export const TruncatedTag: Story = {
   ),
 };
 
-export const Virtualtouchtarget: Story = {
+export const VirtualTouchTarget: Story = {
   name: 'Virtual touch target',
   render: () => (
     <Stack space="large">

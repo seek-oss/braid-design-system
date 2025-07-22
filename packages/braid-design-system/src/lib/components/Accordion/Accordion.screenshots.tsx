@@ -54,7 +54,7 @@ export const DefaultAccordion = {
   },
 };
 
-export const DefaultAccordionwithoutdividers = {
+export const DefaultAccordionWithoutDividers = {
   name: 'Default Accordion without dividers',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -87,7 +87,7 @@ export const DefaultAccordionwithoutdividers = {
     );
   },
 };
-export const DefaultAccordionwithcustomspace = {
+export const DefaultAccordionWithCustomSpace = {
   name: 'Default Accordion with custom space',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -121,7 +121,7 @@ export const DefaultAccordionwithcustomspace = {
   },
 };
 
-export const StandardsecondaryAccordion = {
+export const StandardSecondaryAccordion = {
   name: 'Standard secondary Accordion',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -155,7 +155,7 @@ export const StandardsecondaryAccordion = {
   },
 };
 
-export const StandardsecondaryAccordionwithoutdividers = {
+export const StandardSecondaryAccordionWithoutDividers = {
   name: 'Standard secondary Accordion without dividers',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -189,7 +189,7 @@ export const StandardsecondaryAccordionwithoutdividers = {
   },
 };
 
-export const SmallsecondaryAccordion = {
+export const SmallSecondaryAccordion = {
   name: 'Small secondary Accordion',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -223,7 +223,7 @@ export const SmallsecondaryAccordion = {
   },
 };
 
-export const SmallsecondaryAccordionwithoutdividers = {
+export const SmallSecondaryAccordionWithoutDividers = {
   name: 'Small secondary Accordion without dividers',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -257,7 +257,7 @@ export const SmallsecondaryAccordionwithoutdividers = {
   },
 };
 
-export const XsmallsecondaryAccordion = {
+export const XSmallSecondaryAccordion = {
   name: 'Xsmall secondary Accordion',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -291,7 +291,7 @@ export const XsmallsecondaryAccordion = {
   },
 };
 
-export const XsmallsecondaryAccordionwithoutdividers = {
+export const XSmallSecondaryAccordionWithoutDividers = {
   name: 'Xsmall secondary Accordion without dividers',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -325,7 +325,7 @@ export const XsmallsecondaryAccordionwithoutdividers = {
   },
 };
 
-export const Accordionregularweight = {
+export const AccordionRegularWeight = {
   name: 'Accordion regular weight',
   render: () => {
     const [expanded1, setExpanded1] = useState(false);
@@ -368,7 +368,7 @@ export const DefaultAccordionItem = {
   ),
 };
 
-export const AccordionItemwithsizeandtone = {
+export const AccordionItemWithSizeAndTone = {
   name: 'AccordionItem with size and tone',
   render: () => (
     <AccordionItem label="Label" size="small" tone="secondary">
@@ -377,7 +377,7 @@ export const AccordionItemwithsizeandtone = {
   ),
 };
 
-export const AccordionItemwithregularweight = {
+export const AccordionItemWithRegularWeight = {
   name: 'AccordionItem with regular weight',
   render: () => (
     <AccordionItem label="Label" weight="regular">
@@ -386,7 +386,7 @@ export const AccordionItemwithregularweight = {
   ),
 };
 
-export const AccordionItemwithabadge = {
+export const AccordionItemWithABadge = {
   name: 'AccordionItem with a badge',
   render: () => (
     <AccordionItem
@@ -402,7 +402,7 @@ export const AccordionItemwithabadge = {
   ),
 };
 
-export const AccordionItemwithaniconshouldfollowsize = {
+export const AccordionItemWithAnIconShouldFollowSize = {
   name: 'AccordionItem with an icon - should follow size',
   render: () => (
     <Box paddingY="medium">
@@ -435,7 +435,7 @@ export const AccordionItemwithaniconshouldfollowsize = {
   ),
 };
 
-export const Virtualtouchtarget = {
+export const VirtualTouchTarget = {
   name: 'Virtual touch target',
   render: () => (
     <Box
@@ -451,7 +451,7 @@ export const Virtualtouchtarget = {
   ),
 };
 
-export const AccordionItemwithaniconshouldfollowtone = {
+export const AccordionItemWithAnIconShouldFollowTone = {
   name: 'AccordionItem with an icon - should follow tone',
   render: () => (
     <Box paddingY="medium">

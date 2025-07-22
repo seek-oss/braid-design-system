@@ -145,7 +145,7 @@ export const Default: Story = {
   },
 };
 
-export const Rightaligned: Story = {
+export const RightAligned: Story = {
   name: 'Right aligned',
   render: (args) => (
     <Box style={{ maxWidth: '150px' }}>
@@ -161,7 +161,7 @@ export const Rightaligned: Story = {
   },
 };
 
-export const Triggergrowstoparentlayout: Story = {
+export const TriggerGrowsToParentLayout: Story = {
   name: 'Trigger grows to parent layout',
   render: (args) => (
     <MenuRenderer align="right" offsetSpace="small" trigger={args.trigger}>
@@ -175,7 +175,7 @@ export const Triggergrowstoparentlayout: Story = {
   },
 };
 
-export const Placementbottom: Story = {
+export const PlacementBottom: Story = {
   name: 'Placement bottom',
   render: ({ placement }) => (
     <PopoverWrapper popoverPlacement={placement}>
@@ -198,7 +198,7 @@ export const Placementbottom: Story = {
   },
 };
 
-export const Placementbottomwithsmalloffset: Story = {
+export const PlacementBottomWithSmallOffset: Story = {
   name: 'Placement bottom with small offset',
   render: ({ placement }) => (
     <PopoverWrapper popoverPlacement={placement}>
@@ -223,7 +223,7 @@ export const Placementbottomwithsmalloffset: Story = {
   },
 };
 
-export const Placementtop: Story = {
+export const PlacementTop: Story = {
   name: 'Placement top',
   render: ({ placement }) => (
     <PopoverWrapper popoverPlacement={placement}>
@@ -246,7 +246,7 @@ export const Placementtop: Story = {
   },
 };
 
-export const Placementtopwithsmalloffset: Story = {
+export const PlacementTopWithSmallOffset: Story = {
   name: 'Placement top with small offset',
   render: ({ placement }) => (
     <PopoverWrapper popoverPlacement={placement}>
@@ -272,7 +272,7 @@ export const Placementtopwithsmalloffset: Story = {
   },
 };
 
-export const Smallsizevirtualtouchtarget: Story = {
+export const SmallSizeVirtualTouchTarget: Story = {
   name: 'Small size (virtual touch target)',
   render: () => (
     <Box
@@ -300,7 +300,7 @@ export const Smallsizevirtualtouchtarget: Story = {
   },
 };
 
-export const Widthcontent: Story = {
+export const WidthContent: Story = {
   name: 'Width content',
   render: () => (
     <Inline space="medium">
@@ -333,7 +333,7 @@ export const Widthcontent: Story = {
   },
 };
 
-export const Widthsmall: Story = {
+export const WidthSmall: Story = {
   name: 'Width small',
   render: () => (
     <Inline space="medium">
@@ -372,7 +372,7 @@ export const Widthsmall: Story = {
   },
 };
 
-export const Widthmedium: Story = {
+export const WidthMedium: Story = {
   name: 'Width medium',
   render: () => (
     <Inline space="medium">
@@ -405,7 +405,7 @@ export const Widthmedium: Story = {
   },
 };
 
-export const Widthlarge: Story = {
+export const WidthLarge: Story = {
   name: 'Width large',
   render: () => (
     <Inline space="medium">
@@ -438,7 +438,7 @@ export const Widthlarge: Story = {
   },
 };
 
-export const Reserveiconspace: Story = {
+export const ReserveIconSpace: Story = {
   name: 'Reserve icon space',
   render: () => (
     <Inline space="medium">
@@ -485,7 +485,7 @@ export const Reserveiconspace: Story = {
   },
 };
 
-export const Heightlimit: Story = {
+export const HeightLimit: Story = {
   name: 'Height limit',
   render: () => (
     <Inline space="medium">
