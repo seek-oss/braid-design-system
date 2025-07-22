@@ -50,7 +50,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Nospace: Story = {
+export const NoSpace: Story = {
   name: 'No space',
   render: () => (
     <Columns space="none">
@@ -64,7 +64,7 @@ export const Nospace: Story = {
   ),
 };
 
-export const Customspaceegsmall: Story = {
+export const CustomSpaceEgSmall: Story = {
   name: 'Custom space, e.g. small',
   render: () => (
     <Columns space="small">
@@ -78,7 +78,7 @@ export const Customspaceegsmall: Story = {
   ),
 };
 
-export const Responsivespaceegsmalllarge: Story = {
+export const ResponsiveSpaceEgSmallLarge: Story = {
   name: 'Responsive space, e.g. ["small", "large"]',
   render: () => (
     <Columns space={['small', 'large']}>
@@ -92,7 +92,7 @@ export const Responsivespaceegsmalllarge: Story = {
   ),
 };
 
-export const Responsivespacewithnonebelowtabletegnonegutter: Story = {
+export const ResponsiveSpaceWithNoneBelowTabletEgNoneGutter: Story = {
   name: 'Responsive space with `none` below tablet, e.g. ["none", "gutter"]',
   render: () => (
     <Columns space={['none', 'gutter']}>
@@ -106,7 +106,7 @@ export const Responsivespacewithnonebelowtabletegnonegutter: Story = {
   ),
 };
 
-export const Responsivespacewithnoneabovemobileegsmallnone: Story = {
+export const ResponsiveSpaceWithNoneAboveMobileEgSmallNone: Story = {
   name: 'Responsive space with `none` above mobile, e.g. ["small", "none"]',
   render: () => (
     <Columns space={['small', 'none']}>
@@ -120,7 +120,7 @@ export const Responsivespacewithnoneabovemobileegsmallnone: Story = {
   ),
 };
 
-export const Verticallyaligntocenter: Story = {
+export const VerticallyAlignToCenter: Story = {
   name: 'Vertically align to center',
   render: () => (
     <Columns space="small" alignY="center">
@@ -134,7 +134,7 @@ export const Verticallyaligntocenter: Story = {
   ),
 };
 
-export const Verticallyaligntobottom: Story = {
+export const VerticallyAlignToBottom: Story = {
   name: 'Vertically align to bottom',
   render: () => (
     <Columns space="small" alignY="bottom">
@@ -148,7 +148,7 @@ export const Verticallyaligntobottom: Story = {
   ),
 };
 
-export const Responsivealignmentegtoponmobilecenterontabletupwards: Story = {
+export const ResponsiveAlignmentEgTopOnMobileCenterOnTabletUpwards: Story = {
   name: 'Responsive alignment (e.g. top on mobile, center on tablet upwards)',
   render: () => (
     <Columns space="small" alignY={['top', 'center']}>
@@ -162,7 +162,7 @@ export const Responsivealignmentegtoponmobilecenterontabletupwards: Story = {
   ),
 };
 
-export const Alignmentcollapse: Story = {
+export const AlignmentCollapse: Story = {
   name: 'Alignment + collapse',
   render: () => (
     <Columns space="small" collapseBelow="tablet" alignY="center">
@@ -176,7 +176,7 @@ export const Alignmentcollapse: Story = {
   ),
 };
 
-export const Collapsebelowtablet: Story = {
+export const CollapseBelowTablet: Story = {
   name: 'Collapse below tablet',
   render: () => (
     <Columns space="small" collapseBelow="tablet">
@@ -190,7 +190,7 @@ export const Collapsebelowtablet: Story = {
   ),
 };
 
-export const Collapsebelowdesktop: Story = {
+export const CollapseBelowDesktop: Story = {
   name: 'Collapse below desktop',
   render: () => (
     <Columns space="small" collapseBelow="desktop">
@@ -204,7 +204,7 @@ export const Collapsebelowdesktop: Story = {
   ),
 };
 
-export const Collapsebelowwide: Story = {
+export const CollapseBelowWide: Story = {
   name: 'Collapse below wide',
   render: () => (
     <Columns space="small" collapseBelow="wide">
@@ -218,7 +218,7 @@ export const Collapsebelowwide: Story = {
   ),
 };
 
-export const Collapsebelowtabletwithcustomspaceegsmall: Story = {
+export const CollapseBelowTabletWithCustomSpaceEgSmall: Story = {
   name: 'Collapse below tablet with custom space, e.g. "small"',
   render: () => (
     <Columns space="small" collapseBelow="tablet">
@@ -232,7 +232,7 @@ export const Collapsebelowtabletwithcustomspaceegsmall: Story = {
   ),
 };
 
-export const Collapsebelowdesktopwithcustomspaceegsmall: Story = {
+export const CollapseBelowDesktopWithCustomSpaceEgSmall: Story = {
   name: 'Collapse below desktop with custom space, e.g. "small"',
   render: () => (
     <Columns space="small" collapseBelow="desktop">
@@ -246,7 +246,7 @@ export const Collapsebelowdesktopwithcustomspaceegsmall: Story = {
   ),
 };
 
-export const Collapsebelowwidewithcustomspaceegsmall: Story = {
+export const CollapseBelowWideWithCustomSpaceEgSmall: Story = {
   name: 'Collapse below wide with custom space, e.g. "small"',
   render: () => (
     <Columns space="small" collapseBelow="wide">
@@ -260,7 +260,7 @@ export const Collapsebelowwidewithcustomspaceegsmall: Story = {
   ),
 };
 
-export const Collapsebelowtabletwithresponsivespaceegsmalllarge: Story = {
+export const CollapseBelowTabletWithResponsiveSpaceEgSmallLarge: Story = {
   name: 'Collapse below tablet with responsive space, e.g. ["small", "large"]',
   render: () => (
     <Columns space={['small', 'large']} collapseBelow="tablet">
@@ -274,7 +274,7 @@ export const Collapsebelowtabletwithresponsivespaceegsmalllarge: Story = {
   ),
 };
 
-export const Collapsebelowdesktopwithresponsivespaceegsmallmediumxlarge: Story =
+export const CollapseBelowDesktopWithResponsiveSpaceEgSmallMediumXLarge: Story =
   {
     name: 'Collapse below desktop with responsive space, e.g. ["small", "medium", "xlarge"]',
     render: () => (
@@ -289,7 +289,7 @@ export const Collapsebelowdesktopwithresponsivespaceegsmallmediumxlarge: Story =
     ),
   };
 
-export const Collapsebelowwidewithresponsivespaceegxsmallsmallmediumxlarge: Story =
+export const CollapseBelowWideWithResponsiveSpaceEgXSmallSmallMediumXLarge: Story =
   {
     name: 'Collapse below wide with responsive space, e.g. ["xsmall", "small", "medium", "xlarge"]',
     render: () => (
@@ -307,7 +307,7 @@ export const Collapsebelowwidewithresponsivespaceegxsmallsmallmediumxlarge: Stor
     ),
   };
 
-export const Collapsebelowtabletwithresponsivespaceandnonebelowtabletegnonegutter: Story =
+export const CollapseBelowTabletWithResponsiveSpaceAndNoneBelowTabletEgNoneGutter: Story =
   {
     name: 'Collapse below tablet with responsive space and `none` below tablet, e.g. ["none", "gutter"]',
     render: () => (
@@ -322,7 +322,7 @@ export const Collapsebelowtabletwithresponsivespaceandnonebelowtabletegnonegutte
     ),
   };
 
-export const Collapsebelowdesktopwithresponsivespaceandnonebelowdesktopegnonexsmallgutter: Story =
+export const CollapseBelowDesktopWithResponsiveSpaceAndNoneBelowDesktopEgNoneXSmallGutter: Story =
   {
     name: 'Collapse below desktop with responsive space and `none` below desktop, e.g. ["none", "xsmall", "gutter"]',
     render: () => (
@@ -337,7 +337,7 @@ export const Collapsebelowdesktopwithresponsivespaceandnonebelowdesktopegnonexsm
     ),
   };
 
-export const Collapsebelowwidewithresponsivespaceandnonebelowwideegmobilenonetabletxsmallwidegutter: Story =
+export const CollapseBelowWideWithResponsiveSpaceAndNoneBelowWideEgMobileNoneTabletXSmallWideGutter: Story =
   {
     name: 'Collapse below wide with responsive space and `none` below wide, e.g. { mobile: "none", tablet: "xsmall", wide: "gutter" }',
     render: () => (
@@ -359,7 +359,7 @@ export const Collapsebelowwidewithresponsivespaceandnonebelowwideegmobilenonetab
     ),
   };
 
-export const Collapsebelowtabletwithresponsivespaceandnoneabovemobileegsmallnone: Story =
+export const CollapseBelowTabletWithResponsiveSpaceAndNoneAboveMobileEgSmallNone: Story =
   {
     name: 'Collapse below tablet with responsive space and `none` above mobile, e.g. ["small", "none"]',
     render: () => (
@@ -374,7 +374,7 @@ export const Collapsebelowtabletwithresponsivespaceandnoneabovemobileegsmallnone
     ),
   };
 
-export const Collapsebelowdesktopwithresponsivespaceandnoneabovetabletegsmallmediumnone: Story =
+export const CollapseBelowDesktopWithResponsiveSpaceAndNoneAboveTabletEgSmallMediumNone: Story =
   {
     name: 'Collapse below desktop with responsive space and `none` above tablet, e.g. ["small", "medium", "none"]',
     render: () => (
@@ -389,7 +389,7 @@ export const Collapsebelowdesktopwithresponsivespaceandnoneabovetabletegsmallmed
     ),
   };
 
-export const Collapsebelowwidewithresponsivespaceandnoneabovedesktopegsmallmediumlargenone: Story =
+export const CollapseBelowWideWithResponsiveSpaceAndNoneAboveDesktopEgSmallMediumLargeNone: Story =
   {
     name: 'Collapse below wide with responsive space and `none` above desktop, e.g. ["small", "medium", "large", "none"]',
     render: () => (
@@ -420,7 +420,7 @@ export const Reverse: Story = {
   ),
 };
 
-export const TestCollapsedcontentcolumnsshouldbefullwidthwhensettingalignY: Story =
+export const TestCollapsedContentColumnsShouldBeFullWidthWhenSettingAlignY: Story =
   {
     name: 'Test: Collapsed "content" columns should be full width when setting "alignY"',
     render: () => (
@@ -438,7 +438,7 @@ export const TestCollapsedcontentcolumnsshouldbefullwidthwhensettingalignY: Stor
     ),
   };
 
-export const TestcollapseBelowalignOnmobileshouldbeverticalandleftalignedontabletshouldbehorizontalandcentrealignedondesktopshouldbehorizontalandrightaligned: Story =
+export const TestCollapseBelowAlignOnMobileShouldBeVerticalAndLeftAlignedOnTabletShouldBeHorizontalAndCentreAlignedOnDesktopShouldBeHorizontalAndRightAligned: Story =
   {
     name: 'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
     render: () => (
@@ -457,7 +457,7 @@ export const TestcollapseBelowalignOnmobileshouldbeverticalandleftalignedontable
     ),
   };
 
-export const TestcollapseBelowalignOnmobileshouldbeverticalandleftalignedontabletshouldbehorizontalandcentrealignedondesktopshouldbehorizontalandrightaligned2: Story =
+export const TestCollapseBelowAlignOnMobileShouldBeVerticalAndLeftAlignedOnTabletShouldBeHorizontalAndCentreAlignedOnDesktopShouldBeHorizontalAndRightAligned2: Story =
   {
     name: 'Test - collapseBelow + align: On mobile should be vertical and left aligned, on tablet should be horizontal and centre aligned, on desktop should be horizontal and right aligned',
     render: () => (
@@ -476,7 +476,7 @@ export const TestcollapseBelowalignOnmobileshouldbeverticalandleftalignedontable
     ),
   };
 
-export const TestcollapseBelowalignreverseOnmobileshouldbeverticalandleftalignedontabletshouldbereversedhorizontallyandcentrealignedondesktopshouldbereversedhorizontallyandrightalignedonwideshouldbereversedhorizontallyandcentrealigned: Story =
+export const TestCollapseBelowAlignReverseOnMobileShouldBeVerticalAndLeftAlignedOnTabletShouldBeReversedHorizontallyAndCentreAlignedOnDesktopShouldBeReversedHorizontallyAndRightAlignedOnWideShouldBeReversedHorizontallyAndCentreAligned: Story =
   {
     name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be reversed horizontally and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and centre aligned',
     render: () => (
@@ -496,7 +496,7 @@ export const TestcollapseBelowalignreverseOnmobileshouldbeverticalandleftaligned
     ),
   };
 
-export const TestcollapseBelowalignreverseOnmobileshouldbeverticalandleftalignedontabletshouldbeverticalandcentrealignedondesktopshouldbereversedhorizontallyandrightalignedonwideshouldbereversedhorizontallyandcenteraligned: Story =
+export const TestCollapseBelowAlignReverseOnMobileShouldBeVerticalAndLeftAlignedOnTabletShouldBeVerticalAndCentreAlignedOnDesktopShouldBeReversedHorizontallyAndRightAlignedOnWideShouldBeReversedHorizontallyAndCenterAligned: Story =
   {
     name: 'Test - collapseBelow + align + reverse: On mobile should be vertical and left aligned, on tablet should be vertical and centre aligned, on desktop should be reversed horizontally and right aligned, on wide should be reversed horizontally and center aligned',
     render: () => (
@@ -516,7 +516,7 @@ export const TestcollapseBelowalignreverseOnmobileshouldbeverticalandleftaligned
     ),
   };
 
-export const TestcomponentspanwithnoexplicitColumnwidths: Story = {
+export const TestComponentSpanWithNoExplicitColumnWidths: Story = {
   name: 'Test - component span with no explicit Column widths',
   render: () => (
     <Columns space="small" component="span">
@@ -530,8 +530,8 @@ export const TestcomponentspanwithnoexplicitColumnwidths: Story = {
   ),
 };
 
-export const TestcomponentspanwithoneexplictColumnwidthandonenot: Story = {
-  name: 'Test - component span with one explict Column width and one not',
+export const TestComponentSpanWithOneExplicitColumnWidthAndOneNot: Story = {
+  name: 'Test - component span with one explicit Column width and one not',
   render: () => (
     <Columns space="small" component="span">
       <Column width="content">

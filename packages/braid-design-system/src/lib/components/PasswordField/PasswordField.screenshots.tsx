@@ -22,7 +22,7 @@ export const PasswordFieldStory: Story = {
   },
 };
 
-export const PasswordFieldwithmessage: Story = {
+export const PasswordFieldWithMessage: Story = {
   name: 'PasswordField with message',
   args: {
     label: 'Password',
@@ -31,7 +31,7 @@ export const PasswordFieldwithmessage: Story = {
   },
 };
 
-export const PasswordFieldwithsecondarylabel: Story = {
+export const PasswordFieldWithSecondaryLabel: Story = {
   name: 'PasswordField with secondary label',
   args: {
     label: 'Password',
@@ -40,7 +40,7 @@ export const PasswordFieldwithsecondarylabel: Story = {
   },
 };
 
-export const PasswordFieldwithtertiarylabel: Story = {
+export const PasswordFieldWithTertiaryLabel: Story = {
   name: 'PasswordField with tertiary label',
   args: {
     label: 'Password',
@@ -49,7 +49,7 @@ export const PasswordFieldwithtertiarylabel: Story = {
   },
 };
 
-export const PasswordFieldwithnovisuallabel: Story = {
+export const PasswordFieldWithNoVisualLabel: Story = {
   name: 'PasswordField with no visual label',
   args: {
     'aria-label': 'Password',
@@ -57,7 +57,7 @@ export const PasswordFieldwithnovisuallabel: Story = {
   },
 };
 
-export const PasswordFieldwithdescription: Story = {
+export const PasswordFieldWithDescription: Story = {
   name: 'PasswordField with description',
   args: {
     label: 'Password',
@@ -67,7 +67,7 @@ export const PasswordFieldwithdescription: Story = {
   },
 };
 
-export const PasswordFieldwithadescriptionandnovisuallabel: Story = {
+export const PasswordFieldWithADescriptionAndNoVisualLabel: Story = {
   name: 'PasswordField with a description and no visual label',
   args: {
     'aria-label': 'Password',
@@ -77,7 +77,7 @@ export const PasswordFieldwithadescriptionandnovisuallabel: Story = {
   },
 };
 
-export const PasswordFieldwithcriticalmessage: Story = {
+export const PasswordFieldWithCriticalMessage: Story = {
   name: 'PasswordField with critical message',
   args: {
     label: 'Password',
@@ -87,7 +87,7 @@ export const PasswordFieldwithcriticalmessage: Story = {
   },
 };
 
-export const PasswordFieldwithpositivemessage: Story = {
+export const PasswordFieldWithPositiveMessage: Story = {
   name: 'PasswordField with positive message',
   args: {
     label: 'Password',
@@ -97,7 +97,7 @@ export const PasswordFieldwithpositivemessage: Story = {
   },
 };
 
-export const PasswordFieldwithcautionmessage: Story = {
+export const PasswordFieldWithCautionMessage: Story = {
   name: 'PasswordField with caution message',
   args: {
     label: 'Password',
@@ -107,7 +107,7 @@ export const PasswordFieldwithcautionmessage: Story = {
   },
 };
 
-export const PasswordFielddisabled: Story = {
+export const PasswordFieldDisabled: Story = {
   name: 'PasswordField disabled',
   render: () => (
     <Stack space="gutter">

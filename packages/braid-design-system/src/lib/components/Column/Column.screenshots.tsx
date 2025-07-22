@@ -63,7 +63,7 @@ export const StandardColumns: Story = {
   ),
 };
 
-export const Availablewidths: Story = {
+export const AvailableWidths: Story = {
   name: 'Available widths',
   render: () => (
     <Stack space="medium">
@@ -82,7 +82,7 @@ export const Availablewidths: Story = {
   args: {},
 };
 
-export const Gutteralign: Story = {
+export const GutterAlign: Story = {
   name: 'Gutter align',
   render: () => (
     <Stack space="medium">
@@ -153,7 +153,7 @@ export const Gutteralign: Story = {
   args: {},
 };
 
-export const Fullheightcolumnwherecolumnwithshortercontenthasspecifiedwidth: Story =
+export const FullHeightColumnWhereColumnWithShorterContentHasSpecifiedWidth: Story =
   {
     name: 'Full height column, where column with shorter content has specified width',
     render: () => (
@@ -177,7 +177,7 @@ export const Fullheightcolumnwherecolumnwithshortercontenthasspecifiedwidth: Sto
     args: {},
   };
 
-export const Fullheightcolumnwherecolumnwithtallercontenthasspecifiedwidth: Story =
+export const FullHeightColumnWhereColumnWithTallerContentHasSpecifiedWidth: Story =
   {
     name: 'Full height column, where column with taller content has specified width',
     render: () => (
@@ -201,7 +201,7 @@ export const Fullheightcolumnwherecolumnwithtallercontenthasspecifiedwidth: Stor
     args: {},
   };
 
-export const Hidesecondcolumnbelowdesktop: Story = {
+export const HideSecondColumnBelowDesktop: Story = {
   name: 'Hide second column below desktop',
   render: () => (
     <Columns space="small">
@@ -219,7 +219,7 @@ export const Hidesecondcolumnbelowdesktop: Story = {
   args: {},
 };
 
-export const Hidesecondcolumnabovetablet: Story = {
+export const HideSecondColumnAboveTablet: Story = {
   name: 'Hide second column above tablet',
   render: () => (
     <Columns space="small">
@@ -237,7 +237,7 @@ export const Hidesecondcolumnabovetablet: Story = {
   args: {},
 };
 
-export const Hidesecondcolumnbelowtabletwhencollapsed: Story = {
+export const HideSecondColumnBelowTabletWhenCollapsed: Story = {
   name: 'Hide second column below tablet when collapsed',
   render: () => (
     <Columns space="small" collapseBelow="tablet">
@@ -258,7 +258,7 @@ export const Hidesecondcolumnbelowtabletwhencollapsed: Story = {
   args: {},
 };
 
-export const Hidesecondcolumnbelowdesktopandabovemobile: Story = {
+export const HideSecondColumnBelowDesktopAndAboveMobile: Story = {
   name: 'Hide second column below desktop and above mobile',
   render: () => (
     <Columns space="small">

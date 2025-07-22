@@ -243,7 +243,7 @@ export const IconsInheritWeakLinkColour: Story = {
   ),
 };
 
-export const Withiconslot: Story = {
+export const WithIconSlot: Story = {
   name: 'With icon slot',
   args: {
     icon: <IconLink />,
@@ -255,7 +255,7 @@ export const Withiconslot: Story = {
   ),
 };
 
-export const Withatrailingicon: Story = {
+export const WithATrailingIcon: Story = {
   name: 'With a trailing icon',
   args: {
     icon: <IconLink />,
@@ -268,7 +268,7 @@ export const Withatrailingicon: Story = {
   ),
 };
 
-export const Withiconslotandweightweak: Story = {
+export const WithIconSlotAndWeightWeak: Story = {
   name: 'With icon slot and weight weak',
   args: {
     weight: 'weak',
@@ -281,7 +281,7 @@ export const Withiconslotandweightweak: Story = {
   ),
 };
 
-export const Withatrailingiconandweightweak: Story = {
+export const WithATrailingIconAndWeightWeak: Story = {
   name: 'With a trailing icon and weight weak',
   args: {
     weight: 'weak',

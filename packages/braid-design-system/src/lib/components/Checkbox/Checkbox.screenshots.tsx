@@ -71,7 +71,7 @@ export const Checked: Story = {
   },
 };
 
-export const Mixedstate: Story = {
+export const MixedState: Story = {
   name: 'Mixed state',
   args: {
     checked: 'mixed',
@@ -140,14 +140,14 @@ export const Critical: Story = {
   },
 };
 
-export const Withadescription: Story = {
+export const WithADescription: Story = {
   name: 'With a description',
   args: {
     description: 'Extra information about the field',
   },
 };
 
-export const WithaBadge: Story = {
+export const WithABadge: Story = {
   name: 'With a Badge',
   args: {
     badge: (
@@ -158,7 +158,7 @@ export const WithaBadge: Story = {
   },
 };
 
-export const WithaBadgeanddescription: Story = {
+export const WithABadgeAndDescription: Story = {
   name: 'With a Badge and description',
   args: {
     description: 'Extra information about the field',
@@ -170,7 +170,7 @@ export const WithaBadgeanddescription: Story = {
   },
 };
 
-export const Withnestedcontentvisibleonlywhenchecked: Story = {
+export const WithNestedContentVisibleOnlyWhenChecked: Story = {
   name: 'With nested content visible only when checked',
   args: {
     checked: true,
@@ -183,7 +183,7 @@ export const Withnestedcontentvisibleonlywhenchecked: Story = {
   },
 };
 
-export const Withnestedcontentanddescription: Story = {
+export const WithNestedContentAndDescription: Story = {
   name: 'With nested content and description',
   args: {
     checked: true,
@@ -192,7 +192,7 @@ export const Withnestedcontentanddescription: Story = {
   },
 };
 
-export const Withamessageanddescription: Story = {
+export const WithAMessageAndDescription: Story = {
   name: 'With a message and description',
   args: {
     tone: 'critical',
@@ -201,7 +201,7 @@ export const Withamessageanddescription: Story = {
   },
 };
 
-export const Withnestedcontentamessageanddescription: Story = {
+export const WithNestedContentAMessageAndDescription: Story = {
   name: 'With nested content, a message and description',
   args: {
     checked: true,
@@ -212,7 +212,7 @@ export const Withnestedcontentamessageanddescription: Story = {
   },
 };
 
-export const Virtualtouchtarget: Story = {
+export const VirtualTouchTarget: Story = {
   name: 'Virtual touch target',
   render: (args) => {
     const [{ checked }, updateArgs] = useArgs();
@@ -251,7 +251,7 @@ export const Contrast: Story = {
   ),
 };
 
-export const TestshouldbeleftalignedinacenteredStack: Story = {
+export const TestShouldBeLeftAlignedInACenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
   args: {
     tone: 'critical',

@@ -21,7 +21,7 @@ export const InsideText: Story = {
   ),
 };
 
-export const InsideTextwithanicon: Story = {
+export const InsideTextWithAnIcon: Story = {
   name: 'Inside Text with an icon',
   args: {
     children: (
@@ -48,7 +48,7 @@ export const InsideHeading: Story = {
   ),
 };
 
-export const InsideHeadingwithanicon: Story = {
+export const InsideHeadingWithAnIcon: Story = {
   name: 'Inside Heading with an icon',
   args: {
     children: (

@@ -26,7 +26,7 @@ export const InfoAlert: Story = {
   },
 };
 
-export const InfoAlertonasurface: Story = {
+export const InfoAlertOnASurface: Story = {
   name: 'Info Alert on a surface',
   args: {
     tone: 'info',
@@ -82,7 +82,7 @@ export const PromoteAlert: Story = {
   },
 };
 
-export const PromoteAlertonasurface: Story = {
+export const PromoteAlertOnASurface: Story = {
   name: 'Promote Alert on a surface',
   args: {
     tone: 'promote',
@@ -100,7 +100,7 @@ export const CautionAlert: Story = {
   },
 };
 
-export const CautionAlertonasurface: Story = {
+export const CautionAlertOnASurface: Story = {
   name: 'Caution Alert on a surface',
   args: {
     tone: 'caution',
@@ -118,7 +118,7 @@ export const CriticalAlert: Story = {
   },
 };
 
-export const CriticalAlertonasurface: Story = {
+export const CriticalAlertOnASurface: Story = {
   name: 'Critical Alert on a surface',
   args: {
     tone: 'critical',
@@ -136,7 +136,7 @@ export const PositiveAlert: Story = {
   },
 };
 
-export const PositiveAlertonasurface: Story = {
+export const PositiveAlertOnASurface: Story = {
   name: 'Positive Alert on a surface',
   args: {
     tone: 'positive',
@@ -148,7 +148,7 @@ export const PositiveAlertonasurface: Story = {
   ),
 };
 
-export const TestshouldbeleftalignedinacenteredStack: Story = {
+export const TestShouldBeLeftAlignedInACenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
   decorators: (Story) => (
     <Stack space="large" align="center">

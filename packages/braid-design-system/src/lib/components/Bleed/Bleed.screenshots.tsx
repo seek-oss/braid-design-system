@@ -71,7 +71,7 @@ export default meta;
 
 type Story = StoryObj<typeof Bleed>;
 
-export const Onallsides: Story = {
+export const OnAllSides: Story = {
   name: 'On all sides',
   args: {
     space: 'large',
@@ -90,35 +90,35 @@ export const Vertically: Story = {
   },
 };
 
-export const Tothetop: Story = {
+export const ToTheTop: Story = {
   name: 'To the top',
   args: {
     top: 'large',
   },
 };
 
-export const Tothebottom: Story = {
+export const ToTheBottom: Story = {
   name: 'To the bottom',
   args: {
     bottom: 'large',
   },
 };
 
-export const Totheleft: Story = {
+export const ToTheLeft: Story = {
   name: 'To the left',
   args: {
     left: 'large',
   },
 };
 
-export const Totheright: Story = {
+export const ToTheRight: Story = {
   name: 'To the right',
   args: {
     right: 'large',
   },
 };
 
-export const Responsivesingledimension: Story = {
+export const ResponsiveSingleDimension: Story = {
   name: 'Responsive single dimension',
   args: {
     top: {
@@ -148,7 +148,7 @@ export const Responsivesingledimension: Story = {
   },
 };
 
-export const Responsiveonaxis: Story = {
+export const ResponsiveOnAxis: Story = {
   name: 'Responsive on axis',
   args: {
     horizontal: {
@@ -166,7 +166,7 @@ export const Responsiveonaxis: Story = {
   },
 };
 
-export const Responsivespace: Story = {
+export const ResponsiveSpace: Story = {
   name: 'Responsive space',
   args: {
     space: {
@@ -178,7 +178,7 @@ export const Responsivespace: Story = {
   },
 };
 
-export const Testlefttrumpshorizontalandspace: Story = {
+export const TestLeftTrumpsHorizontalAndSpace: Story = {
   name: 'Test - left trumps horizontal and space',
   render: () => (
     <Bleed left="xlarge" horizontal="medium" space="xsmall">
@@ -201,7 +201,7 @@ export const Testlefttrumpshorizontalandspace: Story = {
   ),
 };
 
-export const Testrighttrumpshorizontalandspace: Story = {
+export const TestRightTrumpsHorizontalAndSpace: Story = {
   name: 'Test - right trumps horizontal and space',
   render: () => (
     <Bleed right="xlarge" horizontal="medium" space="xsmall">
@@ -224,7 +224,7 @@ export const Testrighttrumpshorizontalandspace: Story = {
   ),
 };
 
-export const Testhorizontaltrumpsspace: Story = {
+export const TestHorizontalTrumpsSpace: Story = {
   name: 'Test - horizontal trumps space',
   render: () => (
     <Bleed horizontal="xlarge" space="xsmall">
@@ -247,7 +247,7 @@ export const Testhorizontaltrumpsspace: Story = {
   ),
 };
 
-export const Testtoptrumpsverticalandspace: Story = {
+export const TestTopTrumpsVerticalAndSpace: Story = {
   name: 'Test - top trumps vertical and space',
   render: () => (
     <Bleed top="xlarge" vertical="medium" space="xsmall">
@@ -270,7 +270,7 @@ export const Testtoptrumpsverticalandspace: Story = {
   ),
 };
 
-export const Testbottomtrumpsverticalandspace: Story = {
+export const TestBottomTrumpsVerticalAndSpace: Story = {
   name: 'Test - bottom trumps vertical and space',
   render: () => (
     <Bleed bottom="xlarge" vertical="medium" space="xsmall">
@@ -293,7 +293,7 @@ export const Testbottomtrumpsverticalandspace: Story = {
   ),
 };
 
-export const Testverticaltrumpsspace: Story = {
+export const TestVerticalTrumpsSpace: Story = {
   name: 'Test - vertical trumps space',
   render: () => (
     <Bleed vertical="xlarge" space="xsmall">
@@ -316,7 +316,7 @@ export const Testverticaltrumpsspace: Story = {
   ),
 };
 
-export const TestContentshouldberelativetobleedcontainer: Story = {
+export const TestContentShouldBeRelativeToBleedContainer: Story = {
   name: 'Test - Content should be relative to bleed container',
   render: () => (
     <Box padding="large" background="surface">

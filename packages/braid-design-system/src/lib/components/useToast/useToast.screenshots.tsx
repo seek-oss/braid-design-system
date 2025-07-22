@@ -23,7 +23,7 @@ const meta = {
 } satisfies Meta<typeof Toast>;
 export default meta;
 
-export const Criticaltoast = {
+export const CriticalToast = {
   name: 'Critical toast',
   args: {
     tone: 'critical',
@@ -31,7 +31,7 @@ export const Criticaltoast = {
   },
 };
 
-export const Criticaltoastwactions = {
+export const CriticalToastWithActions = {
   name: 'Critical toast w/actions',
   args: {
     tone: 'critical',
@@ -43,7 +43,7 @@ export const Criticaltoastwactions = {
   },
 };
 
-export const Criticaltoastwdescriptions = {
+export const CriticalToastWithDescriptions = {
   name: 'Critical toast w/descriptions',
   args: {
     tone: 'critical',
@@ -57,7 +57,7 @@ export const Criticaltoastwdescriptions = {
   },
 };
 
-export const Positivetoast = {
+export const PositiveToast = {
   name: 'Positive toast',
   args: {
     tone: 'positive',
@@ -65,7 +65,7 @@ export const Positivetoast = {
   },
 };
 
-export const Positivetoastwactions = {
+export const PositiveToastWithActions = {
   name: 'Positive toast w/actions',
   args: {
     tone: 'positive',
@@ -77,7 +77,7 @@ export const Positivetoastwactions = {
   },
 };
 
-export const Positivetoastwdescriptions = {
+export const PositiveToastWithDescriptions = {
   name: 'Positive toast w/descriptions',
   args: {
     tone: 'positive',
@@ -91,7 +91,7 @@ export const Positivetoastwdescriptions = {
   },
 };
 
-export const Neutraltoast = {
+export const NeutralToast = {
   name: 'Neutral toast',
   args: {
     tone: 'neutral',
@@ -99,7 +99,7 @@ export const Neutraltoast = {
   },
 };
 
-export const Neutraltoastwactions = {
+export const NeutralToastWithActions = {
   name: 'Neutral toast w/actions',
   args: {
     tone: 'neutral',
@@ -111,7 +111,7 @@ export const Neutraltoastwactions = {
   },
 };
 
-export const Neutraltoastwdescriptions = {
+export const NeutralToastWithDescriptions = {
   name: 'Neutral toast w/descriptions',
   args: {
     tone: 'neutral',
@@ -125,7 +125,7 @@ export const Neutraltoastwdescriptions = {
   },
 };
 
-export const Neutraltoastwithicon = {
+export const NeutralToastWithIcon = {
   name: 'Neutral toast with icon',
   args: {
     tone: 'neutral',
@@ -134,7 +134,7 @@ export const Neutraltoastwithicon = {
   },
 };
 
-export const Neutraltoastwactionsandicon = {
+export const NeutralToastWithActionsAndIcon = {
   name: 'Neutral toast w/actions and icon',
   args: {
     tone: 'neutral',
@@ -147,7 +147,7 @@ export const Neutraltoastwactionsandicon = {
   },
 };
 
-export const Neutraltoastwdescriptionsandicon = {
+export const NeutralToastWithDescriptionsAndIcon = {
   name: 'Neutral toast w/descriptions and icon',
   args: {
     tone: 'neutral',

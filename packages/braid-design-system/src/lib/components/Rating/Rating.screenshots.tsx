@@ -17,7 +17,7 @@ export const Default: Story = {
   },
 };
 
-export const VariantstarsOnly: Story = {
+export const VariantStarsOnly: Story = {
   name: 'Variant: starsOnly',
   args: {
     rating: 4.2,
@@ -25,7 +25,7 @@ export const VariantstarsOnly: Story = {
   },
 };
 
-export const Variantminimal: Story = {
+export const VariantMinimal: Story = {
   name: 'Variant: minimal',
   args: {
     rating: 3.7,
@@ -33,7 +33,7 @@ export const Variantminimal: Story = {
   },
 };
 
-export const Sizelarge: Story = {
+export const SizeLarge: Story = {
   name: 'Size: large',
   args: {
     rating: 3,
@@ -41,7 +41,7 @@ export const Sizelarge: Story = {
   },
 };
 
-export const Sizesmall: Story = {
+export const SizeSmall: Story = {
   name: 'Size: small',
   args: {
     rating: 2,
@@ -49,7 +49,7 @@ export const Sizesmall: Story = {
   },
 };
 
-export const Sizexsmall: Story = {
+export const SizeXSmall: Story = {
   name: 'Size: xsmall',
   args: {
     rating: 1.5,
@@ -57,7 +57,7 @@ export const Sizexsmall: Story = {
   },
 };
 
-export const Weightregular: Story = {
+export const WeightRegular: Story = {
   name: 'Weight: regular',
   args: {
     rating: 3,
@@ -65,7 +65,7 @@ export const Weightregular: Story = {
   },
 };
 
-export const Weightmedium: Story = {
+export const WeightMedium: Story = {
   name: 'Weight: medium',
   args: {
     rating: 2,
@@ -73,7 +73,7 @@ export const Weightmedium: Story = {
   },
 };
 
-export const Weightstrong: Story = {
+export const WeightStrong: Story = {
   name: 'Weight: strong',
   args: {
     rating: 1.5,
@@ -81,7 +81,7 @@ export const Weightstrong: Story = {
   },
 };
 
-export const Filltest: Story = {
+export const FillTest: Story = {
   name: 'Fill test',
   render: () => (
     <Stack space="medium">

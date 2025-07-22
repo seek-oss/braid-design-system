@@ -49,40 +49,40 @@ export const ToneFormAccent: Story = {
   },
 };
 
-export const Roundeddefault: Story = {
+export const RoundedDefault: Story = {
   name: 'Rounded - default',
   args: {},
 };
 
-export const Roundedtrue: Story = {
+export const RoundedTrue: Story = {
   name: 'Rounded - true',
   args: {
     rounded: true,
   },
 };
 
-export const RoundedAbovemobile: Story = {
+export const RoundedAboveMobile: Story = {
   name: 'RoundedAbove - mobile',
   args: {
     roundedAbove: 'mobile',
   },
 };
 
-export const RoundedAbovetablet: Story = {
+export const RoundedAboveTablet: Story = {
   name: 'RoundedAbove - tablet',
   args: {
     roundedAbove: 'tablet',
   },
 };
 
-export const RoundedAbovedesktop: Story = {
+export const RoundedAboveDesktop: Story = {
   name: 'RoundedAbove - desktop',
   args: {
     roundedAbove: 'desktop',
   },
 };
 
-export const Tonerounded: Story = {
+export const ToneRounded: Story = {
   name: 'Tone & rounded',
   args: {
     tone: 'formAccent',
@@ -90,7 +90,7 @@ export const Tonerounded: Story = {
   },
 };
 
-export const Heightfull: Story = {
+export const HeightFull: Story = {
   name: 'Height full',
   args: {
     height: 'full',
@@ -103,7 +103,7 @@ export const Heightfull: Story = {
   ),
 };
 
-export const Heightcontentdefault: Story = {
+export const HeightContentDefault: Story = {
   name: 'Height content (default)',
   args: {
     height: 'content',
@@ -116,7 +116,7 @@ export const Heightcontentdefault: Story = {
   ),
 };
 
-export const TestshouldbeleftalignedinacenteredStack: Story = {
+export const TestShouldBeLeftAlignedInACenteredStack: Story = {
   name: 'Test: should be left aligned in a centered Stack',
   args: {
     height: 'content',

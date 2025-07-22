@@ -28,7 +28,7 @@ export const Linear: Story = {
   },
 };
 
-export const Nonlinear: Story = {
+export const NonLinear: Story = {
   name: 'Non-linear',
   args: {
     mode: 'non-linear',
@@ -59,7 +59,7 @@ export const Neutral: Story = {
   },
 };
 
-export const Leftaligned: Story = {
+export const LeftAligned: Story = {
   name: 'Left aligned',
   args: {
     label: 'Linear steps',

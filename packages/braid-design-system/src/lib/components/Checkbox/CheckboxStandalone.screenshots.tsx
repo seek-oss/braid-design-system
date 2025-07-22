@@ -63,7 +63,7 @@ export const Checked: Story = {
   },
 };
 
-export const Mixedstate: Story = {
+export const MixedState: Story = {
   name: 'Mixed state',
   args: {
     checked: 'mixed',
@@ -122,7 +122,7 @@ export const Critical: Story = {
   },
 };
 
-export const Virtualtouchtarget: Story = {
+export const VirtualTouchTarget: Story = {
   name: 'Virtual touch target',
   render: (args) => {
     const [checked, setChecked] = useState(false);
@@ -150,7 +150,7 @@ export const Virtualtouchtarget: Story = {
   },
 };
 
-export const Textalignment: Story = {
+export const TextAlignment: Story = {
   name: 'Text alignment',
   render: (args) => (
     <Stack space="medium">
@@ -172,7 +172,7 @@ export const Textalignment: Story = {
   ),
 };
 
-export const Textalignmentwithwrappinglines: Story = {
+export const TextAlignmentWithWrappingLines: Story = {
   name: 'Text alignment with wrapping lines',
   render: (args) => (
     <Box

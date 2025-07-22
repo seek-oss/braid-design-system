@@ -34,14 +34,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Defaultwidth: Story = {
+export const DefaultWidth: Story = {
   name: 'Default width',
   args: {
     children: <Placeholder height={100} />,
   },
 };
 
-export const Xsmallwidth: Story = {
+export const XSmallWidth: Story = {
   name: 'Xsmall width',
   args: {
     width: 'xsmall',
@@ -49,7 +49,7 @@ export const Xsmallwidth: Story = {
   },
 };
 
-export const Smallwidth: Story = {
+export const SmallWidth: Story = {
   name: 'Small width',
   args: {
     width: 'small',
@@ -57,7 +57,7 @@ export const Smallwidth: Story = {
   },
 };
 
-export const Mediumwidth: Story = {
+export const MediumWidth: Story = {
   name: 'Medium width',
   args: {
     width: 'medium',
@@ -65,7 +65,7 @@ export const Mediumwidth: Story = {
   },
 };
 
-export const Largewidth: Story = {
+export const LargeWidth: Story = {
   name: 'Large width',
   args: {
     width: 'large',
@@ -73,7 +73,7 @@ export const Largewidth: Story = {
   },
 };
 
-export const Alignleft: Story = {
+export const AlignLeft: Story = {
   name: 'Align left',
   args: {
     width: 'xsmall',

@@ -57,7 +57,7 @@ export const StrongBadge: Story = {
   },
 };
 
-export const BadgewithVerticalBleed: Story = {
+export const BadgeWithVerticalBleed: Story = {
   name: 'Badge with Vertical Bleed',
   args: {
     tone: 'positive',
@@ -164,7 +164,7 @@ export const StrongNeutralBadge: Story = {
   },
 };
 
-export const TestBadgetextshouldfollowtonenotdefaultsetbyList: Story = {
+export const TestBadgeTextShouldFollowToneNotDefaultSetByList: Story = {
   name: 'Test: Badge text should follow tone not default set by `List`',
   args: {
     tone: 'critical',
@@ -182,7 +182,7 @@ export const TestBadgetextshouldfollowtonenotdefaultsetbyList: Story = {
   ],
 };
 
-export const TestBadgeshouldnotimpactlineheightoftext: Story = {
+export const TestBadgeShouldNotImpactLineHeightOfText: Story = {
   name: 'Test: Badge should not impact line height of text',
   args: {
     tone: 'critical',
@@ -201,7 +201,7 @@ export const TestBadgeshouldnotimpactlineheightoftext: Story = {
   ],
 };
 
-export const TestBadgeshouldnotimpactlineheightoftext2: Story = {
+export const TestBadgeShouldNotImpactLineHeightOfText2: Story = {
   name: 'Test: Badge should not impact line height of text',
   render: () => (
     <Stack space="large">

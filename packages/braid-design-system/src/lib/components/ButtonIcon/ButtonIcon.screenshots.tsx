@@ -64,7 +64,7 @@ export const Soft: Story = {
   ),
 };
 
-export const Softbleedon: Story = {
+export const SoftBleedOn: Story = {
   name: 'Soft - bleed on',
   render: () => (
     <Box background="neutralLight" borderRadius="standard" padding="gutter">
@@ -78,7 +78,7 @@ export const Softbleedon: Story = {
   ),
 };
 
-export const Softbleedoff: Story = {
+export const SoftBleedOff: Story = {
   name: 'Soft - bleed off',
   render: () => (
     <Box background="neutralLight" borderRadius="standard" padding="gutter">
@@ -117,7 +117,7 @@ export const Transparent: Story = {
   ),
 };
 
-export const ToneformAccent: Story = {
+export const ToneFormAccent: Story = {
   name: 'Tone - formAccent',
   render: () => (
     <Inline space="large" alignY="center">
@@ -137,7 +137,7 @@ export const ToneformAccent: Story = {
   ),
 };
 
-export const Virtualtouchtarget: Story = {
+export const VirtualTouchTarget: Story = {
   name: 'Virtual touch target',
   render: () => (
     <Stack
@@ -190,7 +190,7 @@ export const Virtualtouchtarget: Story = {
   ),
 };
 
-export const Transparentbleedondefault: Story = {
+export const TransparentBleedOnDefault: Story = {
   name: 'Transparent - bleed on (default)',
   render: () => (
     <Box background="neutralLight" borderRadius="standard" padding="gutter">
@@ -208,7 +208,7 @@ export const Transparentbleedondefault: Story = {
   ),
 };
 
-export const Transparentbleedoff: Story = {
+export const TransparentBleedOff: Story = {
   name: 'Transparent - bleed off',
   render: () => (
     <Box background="neutralLight" borderRadius="standard" padding="gutter">
@@ -227,7 +227,7 @@ export const Transparentbleedoff: Story = {
   ),
 };
 
-export const Icontoneoverridesbuttontone: Story = {
+export const IconToneOverridesButtonTone: Story = {
   name: 'Icon tone overrides button tone',
   render: () => (
     <Inline space="small" alignY="center">

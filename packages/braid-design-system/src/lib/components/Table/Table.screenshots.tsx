@@ -94,7 +94,7 @@ export const BasicHeaderBody: Story = {
   ),
 };
 
-export const Bodyonly: Story = {
+export const BodyOnly: Story = {
   name: 'Body only',
   render: () => (
     <Table label="Label">
@@ -117,7 +117,7 @@ export const Bodyonly: Story = {
   ),
 };
 
-export const AllsectionsHeaderBodyFooter: Story = {
+export const AllSectionsHeaderBodyFooter: Story = {
   name: 'All sections (Header, Body & Footer)',
   render: () => (
     <Table label="Label">
@@ -188,7 +188,7 @@ export const RowHeadings: Story = {
   ),
 };
 
-export const Dualaxisheadings: Story = {
+export const DualAxisHeadings: Story = {
   name: 'Dual axis headings',
   render: () => (
     <Table label="Label">
@@ -230,7 +230,7 @@ export const Dualaxisheadings: Story = {
   ),
 };
 
-export const VerticalAlignmentcenter: Story = {
+export const VerticalAlignmentCenter: Story = {
   name: 'Vertical Alignment (center)',
   render: () => (
     <Table label="Label" alignY="center">
@@ -269,7 +269,7 @@ export const VerticalAlignmentcenter: Story = {
   ),
 };
 
-export const VerticalAlignmenttop: Story = {
+export const VerticalAlignmentTop: Story = {
   name: 'Vertical Alignment (top)',
   render: () => (
     <Table label="Label" alignY="top">
@@ -449,7 +449,7 @@ export const Visibility: Story = {
   ),
 };
 
-export const ScrollcontainerFadeout: Story = {
+export const ScrollContainerFadeout: Story = {
   name: 'Scroll container fade out',
   render: () => (
     <Box maxWidth="xsmall">

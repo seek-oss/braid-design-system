@@ -90,7 +90,7 @@ export const Default: Story = {
   },
 };
 
-export const Belowfold: Story = {
+export const BelowFold: Story = {
   name: 'Below fold',
   args: {
     footerPosition: 'belowFold',
@@ -102,7 +102,7 @@ export const Belowfold: Story = {
   },
 };
 
-export const Defaultlongpageshouldpushfooterbelowfoldorganically: Story = {
+export const DefaultLongPageShouldPushFooterBelowFoldOrganically: Story = {
   name: 'Default - long page (should push footer below fold organically)',
   args: {
     children: (
@@ -119,7 +119,7 @@ export const Defaultlongpageshouldpushfooterbelowfoldorganically: Story = {
   },
 };
 
-export const Belowfoldlongpageshouldpushfooterbelowfoldorganically: Story = {
+export const BelowFoldLongPageShouldPushFooterBelowFoldOrganically: Story = {
   name: 'Below fold - long page (should push footer below fold organically)',
   args: {
     children: (

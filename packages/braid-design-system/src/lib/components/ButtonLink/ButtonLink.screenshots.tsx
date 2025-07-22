@@ -25,7 +25,7 @@ export default meta;
 
 type Story = StoryObj<typeof ButtonLink>;
 
-export const Defaultvariantsfortone: Story = {
+export const DefaultVariantsForTone: Story = {
   name: 'Default variants for tone',
   render: () => (
     <Inline space="small" collapseBelow="desktop">
@@ -124,7 +124,7 @@ export const Neutral: Story = {
   ),
 };
 
-export const Withicon: Story = {
+export const WithIcon: Story = {
   name: 'With icon',
   render: () => (
     <Stack space="small">
@@ -165,7 +165,7 @@ export const Withicon: Story = {
   ),
 };
 
-export const WithiconPositiontrailing: Story = {
+export const WithIconPositionTrailing: Story = {
   name: 'With iconPosition trailing',
   render: () => (
     <Stack space="small">
@@ -245,7 +245,7 @@ export const WithiconPositiontrailing: Story = {
   ),
 };
 
-export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
+export const WithIconTransparentVariantAndBleedItShouldAlignWithText: Story = {
   name: 'With icon, transparent variant and bleed, it should align with Text',
   render: () => (
     <Stack space="small">
@@ -259,7 +259,7 @@ export const WithicontransparentvariantandbleeditshouldalignwithText: Story = {
   ),
 };
 
-export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: Story =
+export const WithIconTransparentVariantBleedAndSizeSmallItShouldAlignWithText: Story =
   {
     name: 'With icon, transparent variant, bleed and size small, it should align with Text',
     render: () => (
@@ -282,7 +282,7 @@ export const WithicontransparentvariantbleedandsizesmallitshouldalignwithText: S
     ),
   };
 
-export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Story =
+export const VerticallyCenteredLabelsInContainersThatStretchElementsToFill: Story =
   {
     name: 'Vertically centered labels in containers that stretch elements to fill',
     render: () => (
@@ -335,7 +335,7 @@ export const Verticallycenteredlabelsincontainersthatstretchelementstofill: Stor
     ),
   };
 
-export const Ensureinnerlabelelementisfullwidthreddotsshouldtouchhorizontaledges: Story =
+export const EnsureInnerLabelElementIsFullWidthRedDotsShouldTouchHorizontalEdges: Story =
   {
     name: 'Ensure inner label element is full width (red dots should touch horizontal edges)',
     render: () => (

@@ -98,7 +98,7 @@ export const Default: Story = {
   },
 };
 
-export const Selectedvalues: Story = {
+export const SelectedValues: Story = {
   name: 'Selected values',
   args: {
     label: 'Started',
@@ -109,7 +109,7 @@ export const Selectedvalues: Story = {
   },
 };
 
-export const Criticalmessage: Story = {
+export const CriticalMessage: Story = {
   name: 'Critical message',
   args: {
     label: 'Started',
@@ -122,7 +122,7 @@ export const Criticalmessage: Story = {
   },
 };
 
-export const Cautionmessage: Story = {
+export const CautionMessage: Story = {
   name: 'Caution message',
   args: {
     label: 'Started',
@@ -187,7 +187,7 @@ export const WithADescription: Story = {
   },
 };
 
-export const Novisuallabel: Story = {
+export const NoVisualLabel: Story = {
   name: 'No visual label',
   args: {
     label: undefined,
@@ -199,7 +199,7 @@ export const Novisuallabel: Story = {
   },
 };
 
-export const Novisuallabelwithadescription: Story = {
+export const NoVisualLabelWithADescription: Story = {
   name: 'No visual label with a description',
   args: {
     label: undefined,
@@ -212,7 +212,7 @@ export const Novisuallabelwithadescription: Story = {
   },
 };
 
-export const Custommonthandyearlabels: Story = {
+export const CustomMonthAndYearLabels: Story = {
   name: 'Custom month and year labels',
   args: {
     label: 'Started',
