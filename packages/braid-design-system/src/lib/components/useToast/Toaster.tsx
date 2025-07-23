@@ -15,13 +15,7 @@ interface ToasterProps {
 }
 
 export const StaticToaster = (props: BoxProps) => (
-  <Box
-    width="full"
-    display="flex"
-    flexDirection="column"
-    className={styles.toaster}
-    {...props}
-  />
+  <Box width="full" className={styles.toaster} {...props} />
 );
 
 export const Toaster = ({ toasts, removeToast }: ToasterProps) => {

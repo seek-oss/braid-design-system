@@ -11,7 +11,9 @@ const screenWidth = calc('100vw').subtract(
   calc(2).multiply(vars.space[pageBlockGutters.mobile]),
 );
 export const toaster = style({
-  justifySelf: 'center',
+  left: 0,
+  right: 0,
+  marginInline: 'auto',
   bottom: vars.space.xsmall,
   maxWidth: `min(${vars.contentWidth[toastWidth]}, ${screenWidth})`,
 });
