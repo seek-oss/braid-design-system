@@ -1,5 +1,36 @@
 # braid-design-system
 
+## 33.11.0
+
+### Minor Changes
+
+- **useToast**: Improve layout of toasts when multiple toasts are shown ([#1782](https://github.com/seek-oss/braid-design-system/pull/1782))
+
+  When multiple toasts are shown simultaneously, they now visually stack in a collapsed format that expands on interaction.
+  This prevents toasts from obscuring page content while providing users with an easy way to manage and navigate through the recent toast history.
+
+### Patch Changes
+
+- **RadioGroup:** Ensure provided `id` is assigned to `fieldset` ([#1845](https://github.com/seek-oss/braid-design-system/pull/1845))
+
+  Fixes a bug where the provided `id` was not being passed through to the `fieldset` element.
+
+- **seekJobs, seekBusiness:** Update drop shadow palette ([#1847](https://github.com/seek-oss/braid-design-system/pull/1847))
+
+  Refine the drop shadow palette values of `small`, `medium`, and `large`.
+  The shadow values are now softer and more linear in their scale.
+
+- **TooltipRenderer:** Optimise performance by reducing unnecessary recalculations of the trigger position ([#1833](https://github.com/seek-oss/braid-design-system/pull/1833))
+
+- **seekJobs, seekBusiness:** Increase medium font weight ([#1843](https://github.com/seek-oss/braid-design-system/pull/1843))
+
+  The introduction of Traditional Chinese support means characters in this unicode range are rendered using the default `sans-serif` font.
+  The system fonts that handle these characters only cater for **regular** and **bold** weights, resulting in the `medium` weight of 500 falling back to 400 — resulting in loss of visual hierarchy.
+
+  By increasing the weight of `medium` to 600, it will now round up to 700 (`strong`) when the rendered font cannot satisfy `medium`.
+
+  This only affects `seekJobs` and `seekBusiness` themes rendering Traditional Chinese characters, all weights across other character sets remain unchanged.
+
 ## 33.10.2
 
 ### Patch Changes
