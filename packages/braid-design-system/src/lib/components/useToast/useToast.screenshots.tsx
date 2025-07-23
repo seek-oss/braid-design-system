@@ -5,10 +5,18 @@ import { setChromatic } from 'braid-storybook/chromatic';
 import { IconBookmark } from '../';
 
 import Toast from './Toast';
+import { StaticToaster } from './Toaster';
 
 const meta = {
   title: 'Components/useToast',
   component: Toast,
+  decorators: [
+    (Story) => (
+      <StaticToaster>
+        <Story />
+      </StaticToaster>
+    ),
+  ],
   parameters: {
     chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },

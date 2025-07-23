@@ -16,6 +16,7 @@ import {
 } from '..';
 
 import Toast, { toastDuration } from './Toast';
+import { StaticToaster } from './Toaster';
 
 // For static Toast examples, keys do not need to be unique
 const defaultProps = {
@@ -45,13 +46,15 @@ const docs: ComponentDocs = {
       code,
       value: (
         <Stack space="large" align="center">
-          <Toast
-            {...defaultProps}
-            shouldRemove={false}
-            onClose={() => {}}
-            message="Positive toast"
-            tone="positive"
-          />
+          <StaticToaster>
+            <Toast
+              {...defaultProps}
+              shouldRemove={false}
+              onClose={() => {}}
+              message="Positive toast"
+              tone="positive"
+            />
+          </StaticToaster>
           {value}
         </Stack>
       ),
@@ -202,37 +205,39 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
-            <Toast
-              {...defaultProps}
-              shouldRemove={false}
-              onClose={() => {}}
-              message="Positive message"
-              tone="positive"
-            />
-            <Toast
-              {...defaultProps}
-              shouldRemove={false}
-              onClose={() => {}}
-              message="Critical message"
-              tone="critical"
-            />
-            <Toast
-              {...defaultProps}
-              shouldRemove={false}
-              onClose={() => {}}
-              message="Neutral message"
-              tone="neutral"
-            />
-            <Toast
-              {...defaultProps}
-              shouldRemove={false}
-              onClose={() => {}}
-              message="Neutral message with icon"
-              tone="neutral"
-              icon={<IconBookmark />}
-            />
-          </Stack>,
+          <StaticToaster>
+            <Stack space="medium">
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Positive message"
+                tone="positive"
+              />
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Critical message"
+                tone="critical"
+              />
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Neutral message"
+                tone="neutral"
+              />
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Neutral message with icon"
+                tone="neutral"
+                icon={<IconBookmark />}
+              />
+            </Stack>
+          </StaticToaster>,
         );
 
         return {
@@ -268,7 +273,7 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
               {...defaultProps}
               shouldRemove={false}
@@ -277,7 +282,7 @@ const docs: ComponentDocs = {
               tone="positive"
               description="Longer description providing more context for the user."
             />
-          </Stack>,
+          </StaticToaster>,
         );
 
         return {
@@ -326,7 +331,7 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
               {...defaultProps}
               shouldRemove={false}
@@ -338,7 +343,7 @@ const docs: ComponentDocs = {
                 onClick: () => alert('Undo!'),
               }}
             />
-          </Stack>,
+          </StaticToaster>,
         );
         /* eslint-enable no-alert */
 
@@ -380,7 +385,7 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
               {...defaultProps}
               shouldRemove={false}
@@ -393,7 +398,7 @@ const docs: ComponentDocs = {
                 onClick: () => alert('Undo!'),
               }}
             />
-          </Stack>,
+          </StaticToaster>,
         );
         /* eslint-enable no-alert */
 
@@ -439,7 +444,7 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
               {...defaultProps}
               shouldRemove={false}
@@ -449,7 +454,7 @@ const docs: ComponentDocs = {
               description="Using a custom close button label"
               closeLabel="Dismiss this message"
             />
-          </Stack>,
+          </StaticToaster>,
         );
 
         return {
