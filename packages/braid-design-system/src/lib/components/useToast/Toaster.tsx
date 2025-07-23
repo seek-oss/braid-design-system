@@ -1,11 +1,10 @@
 import isMobile from 'is-mobile';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { Box } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 
 import ToastComponent from './Toast';
 import type { InternalToast } from './ToastTypes';
-import { toastWidth } from './consts';
 import { useFlipList } from './useFlipList';
 
 import * as styles from './Toaster.css';
@@ -14,6 +13,16 @@ interface ToasterProps {
   toasts: InternalToast[];
   removeToast: (key: string) => void;
 }
+
+export const StaticToaster = (props: BoxProps) => (
+  <Box
+    width="full"
+    display="flex"
+    flexDirection="column"
+    className={styles.toaster}
+    {...props}
+  />
+);
 
 export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
   const [expanded, setExpanded] = useState(false);
@@ -49,15 +58,9 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
         />
       )}
 
-      <Box
+      <StaticToaster
         position="fixed"
         zIndex="notification"
-        width="full"
-        marginX="gutter"
-        maxWidth={toastWidth}
-        display="flex"
-        flexDirection="column"
-        className={styles.toaster}
         onMouseEnter={!isMobileDevice ? expandHandler : undefined}
         onMouseLeave={!isMobileDevice ? collapseHandler : undefined}
         onFocus={expandHandler}
@@ -75,7 +78,7 @@ export const Toaster = ({ toasts, removeToast }: ToasterProps) => {
             {...rest}
           />
         ))}
-      </Box>
+      </StaticToaster>
     </>
   );
 };

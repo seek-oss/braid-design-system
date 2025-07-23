@@ -21,7 +21,7 @@ import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes from '../private/buildDataAttributes';
 
 import type { InternalToast, ToastAction } from './ToastTypes';
-import { toastGap, toastWidth } from './consts';
+import { toastGap } from './consts';
 import { useTimeout } from './useTimeout';
 
 import * as styles from './Toast.css';
@@ -156,13 +156,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
     );
 
     return (
-      <Box
-        position="relative"
-        width="full"
-        maxWidth={toastWidth}
-        display="flex"
-        ref={ref}
-      >
+      <Box position="relative" width="full" display="flex" ref={ref}>
         <Box
           role="alert"
           textAlign="left"
