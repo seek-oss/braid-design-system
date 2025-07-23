@@ -8,7 +8,8 @@ import { Text } from '../Text/Text';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
-import { gutters, validPageBlockComponents } from './PageBlock';
+import { validPageBlockComponents } from './PageBlock';
+import { pageBlockGutters } from './pageBlockGutters';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -64,9 +65,9 @@ const docs: ComponentDocs = {
             the screen edge.
           </Text>
           <Text>
-            Uses <Strong>{gutters.mobile}</Strong> space on{' '}
+            Uses <Strong>{pageBlockGutters.mobile}</Strong> space on{' '}
             <TextLink href="/css/breakpoints">mobile</TextLink> and the semantic{' '}
-            <Strong>{gutters.tablet}</Strong> on{' '}
+            <Strong>{pageBlockGutters.tablet}</Strong> on{' '}
             <TextLink href="/css/breakpoints">tablet</TextLink> and above.
           </Text>
         </>
@@ -78,7 +79,7 @@ const docs: ComponentDocs = {
               <Text tone="secondary" size="small">
                 On “tablet” and above
               </Text>
-              <Box background="promote" paddingX={gutters.tablet}>
+              <Box background="promote" paddingX={pageBlockGutters.tablet}>
                 <ContentBlock width="medium">
                   <Box background="surface">
                     <Placeholder height={100} />
@@ -92,7 +93,7 @@ const docs: ComponentDocs = {
               </Text>
               <Box
                 background="promote"
-                paddingX={gutters.mobile}
+                paddingX={pageBlockGutters.mobile}
                 maxWidth="xsmall"
               >
                 <ContentBlock width="medium">

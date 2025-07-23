@@ -1,14 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-import { gutters } from '../PageBlock/PageBlock';
+import { pageBlockGutters } from '../PageBlock/pageBlockGutters';
 
 import { toastWidth } from './consts';
 
 import { vars } from '../../themes/vars.css';
 
 const screenWidth = calc('100vw').subtract(
-  calc(2).multiply(vars.space[gutters.mobile]),
+  calc(2).multiply(vars.space[pageBlockGutters.mobile]),
 );
 export const toaster = style({
   justifySelf: 'center',

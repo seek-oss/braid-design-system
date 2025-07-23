@@ -14,7 +14,7 @@ import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 import { Heading } from '../../Heading/Heading';
-import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
+import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
