@@ -1,0 +1,67 @@
+@keyframes ipuvia4 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+.ipuvia1 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--_191r5tg9);
+}
+.ipuvia3 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: ipuvia4;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+.ipuvia5 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+._2plq5q1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_2plq5q0);
+}
+._2plq5q2 {
+  --_2plq5q0: var(--_166glm8i);
+}
+._2plq5q3 {
+  --_2plq5q0: var(--_166glm8j);
+}
+._2plq5q4 {
+  --_2plq5q0: var(--_166glm8k);
+}
+._2plq5q5 {
+  --_2plq5q0: var(--_166glm8l);
+}
+._2plq5q6 {
+  --_2plq5q0: var(--_166glm8m);
+}
+._2plq5q7 {
+  --_2plq5q0: var(--_166glm8n);
+}
+._2plq5q8 {
+  --_2plq5q0: var(--_166glm8o);
+}
+._2plq5q9 {
+  --_2plq5q0: var(--_166glm8p);
+}
+._2plq5qa {
+  --_2plq5q0: var(--_166glm8q);
+}
+._2plq5qb {
+  --_2plq5q0: var(--_166glm8r);
+}
