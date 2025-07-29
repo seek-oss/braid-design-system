@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`IconAISvg should match snapshot 1`] = `
+exports[`IconAISvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconAISvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -21,7 +21,7 @@ export const IconAISvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconAddSvg should match snapshot 1`] = `
+exports[`IconAddSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconAddSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -43,7 +43,7 @@ export const IconAddSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconArrowSvg should match snapshot 1`] = `
+exports[`IconArrowSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconArrowSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -64,7 +64,7 @@ export const IconArrowSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconAttachmentSvg should match snapshot 1`] = `
+exports[`IconAttachmentSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconAttachmentSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -90,7 +90,7 @@ export const IconAttachmentSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconBluetoothSvg should match snapshot 1`] = `
+exports[`IconBluetoothSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconBluetoothSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -111,7 +111,28 @@ export const IconBluetoothSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconBookmarkActiveSvg should match snapshot 1`] = `
+exports[`IconBoldSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconBoldSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M17.909 11.08A4.95 4.95 0 0 0 19 8c0-2.757-2.243-5-5-5H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h8.259A5.248 5.248 0 0 0 20 15.759v-.518c0-1.703-.83-3.203-2.091-4.161ZM8 6h6c1.103 0 2 .897 2 2s-.897 2-2 2H8V6Zm9 9.759A2.244 2.244 0 0 1 14.759 18H8v-5h6.759A2.244 2.244 0 0 1 17 15.241v.518Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconBookmarkActiveSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconBookmarkActiveSvg = ({
@@ -137,7 +158,7 @@ export const IconBookmarkActiveSvg = ({
 "
 `;
 
-exports[`IconBookmarkSvg should match snapshot 1`] = `
+exports[`IconBookmarkSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconBookmarkSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -159,7 +180,28 @@ export const IconBookmarkSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCareerActiveSvg should match snapshot 1`] = `
+exports[`IconBulletListSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconBulletListSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M6 14a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm13 3h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Zm0 8h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconCareerActiveSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCareerActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -181,7 +223,7 @@ export const IconCareerActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCareerSvg should match snapshot 1`] = `
+exports[`IconCareerSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCareerSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -203,7 +245,7 @@ export const IconCareerSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCategorySvg should match snapshot 1`] = `
+exports[`IconCategorySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCategorySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -224,7 +266,7 @@ export const IconCategorySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCautionSvg should match snapshot 1`] = `
+exports[`IconCautionSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCautionSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -247,7 +289,7 @@ export const IconCautionSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconChecklistSvg should match snapshot 1`] = `
+exports[`IconChecklistSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconChecklistSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -268,7 +310,7 @@ export const IconChecklistSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconChevronSvg should match snapshot 1`] = `
+exports[`IconChevronSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconChevronSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -290,7 +332,7 @@ export const IconChevronSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconClearSvg should match snapshot 1`] = `
+exports[`IconClearSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconClearSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -312,7 +354,7 @@ export const IconClearSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCompanySvg should match snapshot 1`] = `
+exports[`IconCompanySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCompanySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -335,7 +377,7 @@ export const IconCompanySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconComposeSvg should match snapshot 1`] = `
+exports[`IconComposeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconComposeSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -358,7 +400,7 @@ export const IconComposeSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCopySvg should match snapshot 1`] = `
+exports[`IconCopySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCopySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -381,7 +423,7 @@ export const IconCopySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCoverLetterSvg should match snapshot 1`] = `
+exports[`IconCoverLetterSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCoverLetterSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -409,7 +451,7 @@ export const IconCoverLetterSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCreditCardSvg should match snapshot 1`] = `
+exports[`IconCreditCardSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCreditCardSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -432,7 +474,7 @@ export const IconCreditCardSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconCriticalSvg should match snapshot 1`] = `
+exports[`IconCriticalSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconCriticalSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -455,7 +497,7 @@ export const IconCriticalSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconDateSvg should match snapshot 1`] = `
+exports[`IconDateSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconDateSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -477,7 +519,7 @@ export const IconDateSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconDeleteSvg should match snapshot 1`] = `
+exports[`IconDeleteSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconDeleteSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -500,7 +542,7 @@ export const IconDeleteSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconDesktopSvg should match snapshot 1`] = `
+exports[`IconDesktopSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconDesktopSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -521,7 +563,7 @@ export const IconDesktopSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconDisallowSvg should match snapshot 1`] = `
+exports[`IconDisallowSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconDisallowSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -542,7 +584,7 @@ export const IconDisallowSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconDocumentBrokenSvg should match snapshot 1`] = `
+exports[`IconDocumentBrokenSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconDocumentBrokenSvg = ({
@@ -568,7 +610,7 @@ export const IconDocumentBrokenSvg = ({
 "
 `;
 
-exports[`IconDocumentSvg should match snapshot 1`] = `
+exports[`IconDocumentSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconDocumentSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -590,7 +632,7 @@ export const IconDocumentSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconDownloadSvg should match snapshot 1`] = `
+exports[`IconDownloadSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconDownloadSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -612,7 +654,7 @@ export const IconDownloadSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconEditSvg should match snapshot 1`] = `
+exports[`IconEditSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconEditSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -634,7 +676,7 @@ export const IconEditSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconEducationSvg should match snapshot 1`] = `
+exports[`IconEducationSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconEducationSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -656,7 +698,7 @@ export const IconEducationSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconEnlargeActiveSvg should match snapshot 1`] = `
+exports[`IconEnlargeActiveSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconEnlargeActiveSvg = ({
@@ -681,7 +723,7 @@ export const IconEnlargeActiveSvg = ({
 "
 `;
 
-exports[`IconEnlargeSvg should match snapshot 1`] = `
+exports[`IconEnlargeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconEnlargeSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -702,7 +744,7 @@ export const IconEnlargeSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconExperienceSvg should match snapshot 1`] = `
+exports[`IconExperienceSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconExperienceSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -723,7 +765,7 @@ export const IconExperienceSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconFilterSvg should match snapshot 1`] = `
+exports[`IconFilterSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconFilterSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -745,7 +787,7 @@ export const IconFilterSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconFlagSvg should match snapshot 1`] = `
+exports[`IconFlagSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconFlagSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -766,7 +808,7 @@ export const IconFlagSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconGiftSvg should match snapshot 1`] = `
+exports[`IconGiftSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconGiftSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -787,7 +829,7 @@ export const IconGiftSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconGlobeSvg should match snapshot 1`] = `
+exports[`IconGlobeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconGlobeSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -808,7 +850,7 @@ export const IconGlobeSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconGridSvg should match snapshot 1`] = `
+exports[`IconGridSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconGridSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -830,7 +872,7 @@ export const IconGridSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconHashSvg should match snapshot 1`] = `
+exports[`IconHashSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconHashSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -851,7 +893,7 @@ export const IconHashSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconHeartActiveSvg should match snapshot 1`] = `
+exports[`IconHeartActiveSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconHeartActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -866,13 +908,13 @@ export const IconHeartActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M16.114 3c-1.538 0-3.008.58-4.114 1.589A6.114 6.114 0 0 0 7.886 3C4.562 3 1.857 5.642 1.857 8.889c0 4.48 5.75 10.106 9.71 12.012a1.005 1.005 0 0 0 .867 0c3.959-1.906 9.709-7.533 9.709-12.012C22.143 5.642 19.438 3 16.114 3Z" />
+    <path d="M16.5 2A6.5 6.5 0 0 0 12 3.815 6.5 6.5 0 0 0 7.5 2 6.508 6.508 0 0 0 1 8.5C1 15.535 10.443 22 12 22s11-6.465 11-13.5C23 4.916 20.084 2 16.5 2Z" />
   </svg>
 );
 "
 `;
 
-exports[`IconHeartSvg should match snapshot 1`] = `
+exports[`IconHeartSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconHeartSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -887,13 +929,13 @@ export const IconHeartSvg = ({ title, titleId, ...props }: SVGProps) => (
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12 21c-.148 0-.297-.033-.434-.099-3.959-1.906-9.709-7.533-9.709-12.012C1.857 5.642 4.562 3 7.886 3c1.538 0 3.008.58 4.114 1.589A6.114 6.114 0 0 1 16.114 3c3.324 0 6.029 2.642 6.029 5.889 0 4.48-5.75 10.106-9.71 12.012A1.005 1.005 0 0 1 12 21ZM7.886 5C5.664 5 3.857 6.744 3.857 8.889c0 3.382 4.71 8.137 8.143 9.988 3.433-1.85 8.143-6.606 8.143-9.988C20.143 6.744 18.336 5 16.114 5a4.079 4.079 0 0 0-3.303 1.669c-.377.52-1.245.52-1.622 0A4.079 4.079 0 0 0 7.886 5Z" />
+    <path d="M12 22C10.444 22 1 15.535 1 8.5 1 4.916 3.916 2 7.5 2A6.5 6.5 0 0 1 12 3.815 6.5 6.5 0 0 1 16.5 2C20.084 2 23 4.916 23 8.5 23 15.535 13.557 22 12 22Zm.125-1.987Zm-.25 0ZM7.5 4A4.505 4.505 0 0 0 3 8.5c0 5.491 7.441 10.862 9 11.47 1.559-.608 9-5.979 9-11.47C21 6.019 18.981 4 16.5 4c-1.46 0-2.838.717-3.682 1.919-.375.533-1.261.533-1.636 0A4.506 4.506 0 0 0 7.5 4Z" />
   </svg>
 );
 "
 `;
 
-exports[`IconHelpSvg should match snapshot 1`] = `
+exports[`IconHelpSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconHelpSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -916,7 +958,7 @@ export const IconHelpSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconHistorySvg should match snapshot 1`] = `
+exports[`IconHistorySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconHistorySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -939,7 +981,7 @@ export const IconHistorySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconHomeSvg should match snapshot 1`] = `
+exports[`IconHomeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconHomeSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -961,7 +1003,7 @@ export const IconHomeSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconImageSvg should match snapshot 1`] = `
+exports[`IconImageSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconImageSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -984,7 +1026,7 @@ export const IconImageSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconInfoSvg should match snapshot 1`] = `
+exports[`IconInfoSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconInfoSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1007,7 +1049,7 @@ export const IconInfoSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconInvoiceSvg should match snapshot 1`] = `
+exports[`IconInvoiceSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconInvoiceSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1030,7 +1072,28 @@ export const IconInvoiceSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconLanguageSvg should match snapshot 1`] = `
+exports[`IconItalicSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconItalicSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M18 3H9a1 1 0 1 0 0 2h3.72l-3.5 14H6a1 1 0 1 0 0 2h9a1 1 0 1 0 0-2h-3.72l3.5-14H18a1 1 0 1 0 0-2Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconLanguageSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconLanguageSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1051,7 +1114,7 @@ export const IconLanguageSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconLicenceSvg should match snapshot 1`] = `
+exports[`IconLicenceSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconLicenceSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1075,51 +1138,50 @@ export const IconLicenceSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconLinkBrokenSvg should match snapshot 1`] = `
+exports[`IconLinkBrokenSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconLinkBrokenSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12.848 17.334a6.214 6.214 0 0 1-1.476-.2L9.44 19.066a3.188 3.188 0 1 1-4.51-4.508l2.962-2.961a3.208 3.208 0 0 1 4.509 0 1 1 0 1 0 1.414-1.414 5.205 5.205 0 0 0-6.832-.413 5.102 5.102 0 0 0-.505.413l-2.961 2.96a5.188 5.188 0 0 0 7.337 7.337l3.293-3.293a6.226 6.226 0 0 1-1.3.147Z" />
-    <path d="M11.15 6.664a6.214 6.214 0 0 1 1.476.2l1.932-1.932a3.188 3.188 0 1 1 4.508 4.508l-2.96 2.961a3.208 3.208 0 0 1-4.51 0 1 1 0 0 0-1.413 1.414 5.205 5.205 0 0 0 6.831.413 5.101 5.101 0 0 0 .506-.413l2.96-2.96a5.188 5.188 0 0 0-7.336-7.337L9.85 6.812a6.226 6.226 0 0 1 1.298-.148Zm-5.736-.25a.997.997 0 0 1-.707-.293L3.293 4.707a1 1 0 0 1 1.414-1.414l1.414 1.414a1 1 0 0 1-.707 1.707ZM3.736 9.321a.994.994 0 0 1-.26-.034l-1.93-.517a1 1 0 0 1 .518-1.932l1.931.517a1 1 0 0 1-.258 1.966ZM8.32 4.735a.999.999 0 0 1-.965-.74l-.517-1.933a1 1 0 0 1 1.932-.517l.517 1.932a1 1 0 0 1-.967 1.258Z" />
+    <path d="M7.054 21.946a4.965 4.965 0 0 1-3.535-1.465c-.945-.943-1.465-2.199-1.465-3.535s.52-2.592 1.465-3.535l3.239-3.24a1 1 0 1 1 1.414 1.415l-3.24 3.24c-.566.566-.878 1.319-.878 2.12s.312 1.555.879 2.121c1.132 1.133 3.109 1.133 4.242 0l3.24-3.239a1 1 0 1 1 1.413 1.414l-3.24 3.24a4.964 4.964 0 0 1-3.534 1.464Zm9.481-7.825a1 1 0 0 1-.707-1.707l3.24-3.238a3.005 3.005 0 0 0 0-4.243 3.007 3.007 0 0 0-4.244 0l-3.238 3.239a1 1 0 1 1-1.414-1.414l3.238-3.24a5.006 5.006 0 0 1 7.071 0 5.008 5.008 0 0 1 0 7.072l-3.239 3.238a.997.997 0 0 1-.707.293ZM5.574 6.587a.997.997 0 0 1-.707-.293L3.453 4.879a1 1 0 1 1 1.414-1.414L6.281 4.88a1 1 0 0 1-.707 1.707ZM3.896 9.494a.994.994 0 0 1-.26-.034l-1.93-.518a1 1 0 0 1 .517-1.931l1.931.517a1 1 0 0 1-.258 1.966ZM8.48 4.908a.999.999 0 0 1-.964-.741l-.518-1.932a1 1 0 0 1 1.932-.517l.517 1.931a1 1 0 0 1-.967 1.26Zm11.36 15.92a.997.997 0 0 1-.707-.293l-1.414-1.415a1 1 0 1 1 1.414-1.414l1.414 1.415a1 1 0 0 1-.707 1.707Zm2.197-3.805a.994.994 0 0 1-.26-.034l-1.931-.517a1 1 0 0 1 .517-1.932l1.932.518a1 1 0 0 1-.258 1.965Zm-6.002 6a.999.999 0 0 1-.965-.74l-.517-1.932a1 1 0 0 1 1.931-.518l.518 1.932a1 1 0 0 1-.967 1.258Z" />
   </svg>
 );
 "
 `;
 
-exports[`IconLinkSvg should match snapshot 1`] = `
+exports[`IconLinkSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconLinkSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12.848 17.334a6.214 6.214 0 0 1-1.476-.2L9.44 19.066a3.188 3.188 0 1 1-4.51-4.508l2.962-2.961a3.208 3.208 0 0 1 4.509 0 1 1 0 1 0 1.414-1.414 5.205 5.205 0 0 0-6.832-.413 5.102 5.102 0 0 0-.505.413l-2.961 2.96a5.188 5.188 0 0 0 7.337 7.337l3.293-3.293a6.226 6.226 0 0 1-1.3.147Z" />
-    <path d="M11.15 6.664a6.214 6.214 0 0 1 1.476.2l1.932-1.932a3.188 3.188 0 1 1 4.508 4.508l-2.96 2.961a3.208 3.208 0 0 1-4.51 0 1 1 0 0 0-1.413 1.414 5.205 5.205 0 0 0 6.831.413 5.101 5.101 0 0 0 .506-.413l2.96-2.96a5.188 5.188 0 0 0-7.336-7.337L9.85 6.812a6.226 6.226 0 0 1 1.298-.148Z" />
+    <path d="M7.054 21.946a4.965 4.965 0 0 1-3.535-1.465c-.945-.943-1.465-2.199-1.465-3.535s.52-2.592 1.465-3.535l3.239-3.24a1 1 0 1 1 1.414 1.415l-3.24 3.24c-.566.566-.878 1.319-.878 2.12s.312 1.555.879 2.121c1.132 1.133 3.109 1.133 4.242 0l3.24-3.239a1 1 0 1 1 1.413 1.414l-3.24 3.24a4.964 4.964 0 0 1-3.534 1.464Zm9.481-7.825a1 1 0 0 1-.707-1.707l3.24-3.238a3.005 3.005 0 0 0 0-4.243 3.007 3.007 0 0 0-4.244 0l-3.238 3.239a1 1 0 1 1-1.414-1.414l3.238-3.24a5.006 5.006 0 0 1 7.071 0 5.008 5.008 0 0 1 0 7.072l-3.239 3.238a.997.997 0 0 1-.707.293Z" />
+    <path d="M8.172 16.828a1 1 0 0 1-.707-1.707l7.656-7.656a1 1 0 1 1 1.414 1.414L8.88 16.535a.997.997 0 0 1-.707.293Z" />
   </svg>
 );
 "
 `;
 
-exports[`IconListSvg should match snapshot 1`] = `
+exports[`IconListSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconListSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1144,7 +1206,7 @@ export const IconListSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconLocationSvg should match snapshot 1`] = `
+exports[`IconLocationSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconLocationSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1167,7 +1229,7 @@ export const IconLocationSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconMailSvg should match snapshot 1`] = `
+exports[`IconMailSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconMailSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1189,7 +1251,7 @@ export const IconMailSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconMessageSvg should match snapshot 1`] = `
+exports[`IconMessageSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconMessageSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1217,7 +1279,7 @@ export const IconMessageSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconMinusSvg should match snapshot 1`] = `
+exports[`IconMinusSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconMinusSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1239,7 +1301,7 @@ export const IconMinusSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconMobileSvg should match snapshot 1`] = `
+exports[`IconMobileSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconMobileSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1261,7 +1323,7 @@ export const IconMobileSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconMoneySvg should match snapshot 1`] = `
+exports[`IconMoneySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconMoneySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1287,7 +1349,7 @@ export const IconMoneySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconNewWindowSvg should match snapshot 1`] = `
+exports[`IconNewWindowSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconNewWindowSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1310,7 +1372,7 @@ export const IconNewWindowSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconNoteSvg should match snapshot 1`] = `
+exports[`IconNoteSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconNoteSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1331,7 +1393,7 @@ export const IconNoteSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconNotificationSvg should match snapshot 1`] = `
+exports[`IconNotificationSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconNotificationSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1352,7 +1414,28 @@ export const IconNotificationSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconOverflowSvg should match snapshot 1`] = `
+exports[`IconNumberedListSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconNumberedListSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M5 5h2v6H5zM3.69 17.583l2.087-1.673c.558-.446.755-.671.755-.95 0-.22-.166-.476-.567-.476-.354 0-.656.263-.79.603l-1.426-.603C4.043 13.466 4.993 13 6.033 13c1.44 0 2.248.866 2.248 1.945 0 .709-.499 1.213-1.479 1.952l-.904.686H8.31V19H3.69v-1.417ZM19 9h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Zm0 8h-7a1 1 0 1 1 0-2h7a1 1 0 1 1 0 2Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconOverflowSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconOverflowSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1376,7 +1459,7 @@ export const IconOverflowSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconPeopleSvg should match snapshot 1`] = `
+exports[`IconPeopleSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPeopleSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1398,7 +1481,7 @@ export const IconPeopleSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconPersonAddSvg should match snapshot 1`] = `
+exports[`IconPersonAddSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPersonAddSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1419,7 +1502,7 @@ export const IconPersonAddSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconPersonVerifiedSvg should match snapshot 1`] = `
+exports[`IconPersonVerifiedSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPersonVerifiedSvg = ({
@@ -1446,7 +1529,7 @@ export const IconPersonVerifiedSvg = ({
 "
 `;
 
-exports[`IconPhoneSvg should match snapshot 1`] = `
+exports[`IconPhoneSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPhoneSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1467,7 +1550,7 @@ export const IconPhoneSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconPlatformAndroidSvg should match snapshot 1`] = `
+exports[`IconPlatformAndroidSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPlatformAndroidSvg = ({
@@ -1492,7 +1575,7 @@ export const IconPlatformAndroidSvg = ({
 "
 `;
 
-exports[`IconPlatformAppleSvg should match snapshot 1`] = `
+exports[`IconPlatformAppleSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPlatformAppleSvg = ({
@@ -1517,7 +1600,7 @@ export const IconPlatformAppleSvg = ({
 "
 `;
 
-exports[`IconPositiveSvg should match snapshot 1`] = `
+exports[`IconPositiveSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPositiveSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1540,7 +1623,7 @@ export const IconPositiveSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconPrintSvg should match snapshot 1`] = `
+exports[`IconPrintSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPrintSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1562,7 +1645,7 @@ export const IconPrintSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconProfileSvg should match snapshot 1`] = `
+exports[`IconProfileSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconProfileSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1583,7 +1666,7 @@ export const IconProfileSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconPromoteSvg should match snapshot 1`] = `
+exports[`IconPromoteSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconPromoteSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1604,7 +1687,7 @@ export const IconPromoteSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconQRSvg should match snapshot 1`] = `
+exports[`IconQRSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconQRSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1633,7 +1716,7 @@ export const IconQRSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconRecommendedSvg should match snapshot 1`] = `
+exports[`IconRecommendedSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconRecommendedSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1655,7 +1738,28 @@ export const IconRecommendedSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconRefreshSvg should match snapshot 1`] = `
+exports[`IconRedoSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconRedoSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M21.923 9.382a1 1 0 0 0-.217-1.09l-4.999-4.999a1 1 0 1 0-1.414 1.414L18.586 8H8.5C4.916 8 2 10.916 2 14.5S4.916 21 8.5 21a1 1 0 1 0 0-2C6.019 19 4 16.981 4 14.5S6.019 10 8.5 10h10.086l-3.293 3.293a1 1 0 1 0 1.414 1.414l4.999-4.999a1 1 0 0 0 .217-.326Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconRefreshSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconRefreshSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1676,7 +1780,7 @@ export const IconRefreshSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconResumeSvg should match snapshot 1`] = `
+exports[`IconResumeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconResumeSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1699,7 +1803,7 @@ export const IconResumeSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconRocketSvg should match snapshot 1`] = `
+exports[`IconRocketSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconRocketSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1721,7 +1825,7 @@ export const IconRocketSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSearchSvg should match snapshot 1`] = `
+exports[`IconSearchSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSearchSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1743,7 +1847,7 @@ export const IconSearchSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSecuritySvg should match snapshot 1`] = `
+exports[`IconSecuritySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSecuritySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1765,7 +1869,7 @@ export const IconSecuritySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSendSvg should match snapshot 1`] = `
+exports[`IconSendSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSendSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1787,7 +1891,7 @@ export const IconSendSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSentSvg should match snapshot 1`] = `
+exports[`IconSentSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSentSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1809,7 +1913,7 @@ export const IconSentSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSentimentNegativeSvg should match snapshot 1`] = `
+exports[`IconSentimentNegativeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSentimentNegativeSvg = ({
@@ -1837,7 +1941,7 @@ export const IconSentimentNegativeSvg = ({
 "
 `;
 
-exports[`IconSentimentPositiveSvg should match snapshot 1`] = `
+exports[`IconSentimentPositiveSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSentimentPositiveSvg = ({
@@ -1865,7 +1969,7 @@ export const IconSentimentPositiveSvg = ({
 "
 `;
 
-exports[`IconSentimentSvg should match snapshot 1`] = `
+exports[`IconSentimentSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSentimentSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1889,7 +1993,7 @@ export const IconSentimentSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSettingsSvg should match snapshot 1`] = `
+exports[`IconSettingsSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSettingsSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1912,7 +2016,7 @@ export const IconSettingsSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconShareSvg should match snapshot 1`] = `
+exports[`IconShareSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconShareSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1934,7 +2038,7 @@ export const IconShareSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSkillsSvg should match snapshot 1`] = `
+exports[`IconSkillsSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSkillsSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -1955,7 +2059,7 @@ export const IconSkillsSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSocialFacebookSvg should match snapshot 1`] = `
+exports[`IconSocialFacebookSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSocialFacebookSvg = ({
@@ -1980,7 +2084,7 @@ export const IconSocialFacebookSvg = ({
 "
 `;
 
-exports[`IconSocialGitHubSvg should match snapshot 1`] = `
+exports[`IconSocialGitHubSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSocialGitHubSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2004,7 +2108,7 @@ export const IconSocialGitHubSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSocialInstagramSvg should match snapshot 1`] = `
+exports[`IconSocialInstagramSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSocialInstagramSvg = ({
@@ -2029,7 +2133,7 @@ export const IconSocialInstagramSvg = ({
 "
 `;
 
-exports[`IconSocialLinkedInSvg should match snapshot 1`] = `
+exports[`IconSocialLinkedInSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSocialLinkedInSvg = ({
@@ -2054,7 +2158,7 @@ export const IconSocialLinkedInSvg = ({
 "
 `;
 
-exports[`IconSocialMediumSvg should match snapshot 1`] = `
+exports[`IconSocialMediumSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSocialMediumSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2076,7 +2180,7 @@ export const IconSocialMediumSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSocialXSvg should match snapshot 1`] = `
+exports[`IconSocialXSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSocialXSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2097,7 +2201,7 @@ export const IconSocialXSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSocialYouTubeSvg should match snapshot 1`] = `
+exports[`IconSocialYouTubeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSocialYouTubeSvg = ({
@@ -2122,7 +2226,7 @@ export const IconSocialYouTubeSvg = ({
 "
 `;
 
-exports[`IconSortSvg should match snapshot 1`] = `
+exports[`IconSortSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSortSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2143,7 +2247,7 @@ export const IconSortSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconStarActiveSvg should match snapshot 1`] = `
+exports[`IconStarActiveSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconStarActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2165,7 +2269,7 @@ export const IconStarActiveSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconStarHalfSvg should match snapshot 1`] = `
+exports[`IconStarHalfSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconStarHalfSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2186,7 +2290,7 @@ export const IconStarHalfSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconStarSvg should match snapshot 1`] = `
+exports[`IconStarSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconStarSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2208,7 +2312,7 @@ export const IconStarSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconStatisticsSvg should match snapshot 1`] = `
+exports[`IconStatisticsSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconStatisticsSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2230,7 +2334,7 @@ export const IconStatisticsSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconSubCategorySvg should match snapshot 1`] = `
+exports[`IconSubCategorySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconSubCategorySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2252,7 +2356,7 @@ export const IconSubCategorySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconTagSvg should match snapshot 1`] = `
+exports[`IconTagSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconTagSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2275,7 +2379,7 @@ export const IconTagSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconThumbSvg should match snapshot 1`] = `
+exports[`IconThumbSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconThumbSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2296,7 +2400,7 @@ export const IconThumbSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconTickSvg should match snapshot 1`] = `
+exports[`IconTickSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconTickSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2318,7 +2422,7 @@ export const IconTickSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconTimeSvg should match snapshot 1`] = `
+exports[`IconTimeSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconTimeSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2341,7 +2445,7 @@ export const IconTimeSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconTipSvg should match snapshot 1`] = `
+exports[`IconTipSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconTipSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2364,7 +2468,50 @@ export const IconTipSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconUploadSvg should match snapshot 1`] = `
+exports[`IconTitleSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconTitleSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M20 10h-6a1 1 0 1 0 0 2h2v7a1 1 0 1 0 2 0v-7h2a1 1 0 1 0 0-2Z" />
+    <path d="M14 6a1 1 0 1 0 0-2H4a1 1 0 1 0 0 2h4v13a1 1 0 1 0 2 0V6h4Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconUndoSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconUndoSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M15.5 8H5.414l3.293-3.293a1 1 0 1 0-1.414-1.414L2.294 8.292a.998.998 0 0 0-.217 1.09c.05.123.124.234.217.326l4.999 4.999a.997.997 0 0 0 1.414 0 1 1 0 0 0 0-1.414L5.414 10H15.5c2.481 0 4.5 2.019 4.5 4.5S17.981 19 15.5 19a1 1 0 1 0 0 2c3.584 0 6.5-2.916 6.5-6.5S19.084 8 15.5 8Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconUploadSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconUploadSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2386,7 +2533,7 @@ export const IconUploadSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconVideoSvg should match snapshot 1`] = `
+exports[`IconVideoSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconVideoSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2408,7 +2555,7 @@ export const IconVideoSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconVisibilityHiddenSvg should match snapshot 1`] = `
+exports[`IconVisibilityHiddenSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconVisibilityHiddenSvg = ({
@@ -2433,7 +2580,7 @@ export const IconVisibilityHiddenSvg = ({
 "
 `;
 
-exports[`IconVisibilitySvg should match snapshot 1`] = `
+exports[`IconVisibilitySvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconVisibilitySvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2455,7 +2602,7 @@ export const IconVisibilitySvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconWorkExperienceSvg should match snapshot 1`] = `
+exports[`IconWorkExperienceSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconWorkExperienceSvg = ({
@@ -2480,7 +2627,7 @@ export const IconWorkExperienceSvg = ({
 "
 `;
 
-exports[`IconZoomInSvg should match snapshot 1`] = `
+exports[`IconZoomInSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconZoomInSvg = ({ title, titleId, ...props }: SVGProps) => (
@@ -2502,7 +2649,7 @@ export const IconZoomInSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
-exports[`IconZoomOutSvg should match snapshot 1`] = `
+exports[`IconZoomOutSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 
 export const IconZoomOutSvg = ({ title, titleId, ...props }: SVGProps) => (

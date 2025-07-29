@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import {
   type RenderResult,
   render,
@@ -8,7 +7,14 @@ import {
 import userEvent from '@testing-library/user-event';
 import { type FunctionComponent, useState } from 'react';
 
-import { MenuItem, MenuItemLink, MenuItemCheckbox, MenuItemDivider } from '..';
+import {
+  MenuItem,
+  MenuItemLink,
+  MenuItemCheckbox,
+  MenuItemDivider,
+  Text,
+  TextLink,
+} from '..';
 import { BraidTestProvider } from '../../../entries/test';
 
 import type { MenuRendererProps } from './MenuRenderer';
@@ -22,8 +28,8 @@ interface MenuTestSuiteParams {
 
 export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
   function renderMenu() {
-    const menuItemHandler = jest.fn();
-    const parentHandler = jest.fn();
+    const menuItemHandler = vi.fn();
+    const parentHandler = vi.fn();
 
     const TestCase = ({
       openHandler,
@@ -61,13 +67,16 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
                 MenuItemCheckbox
               </MenuItemCheckbox>
             </Component>
+            <Text>
+              <TextLink href="#">Link after Menu</TextLink>
+            </Text>
           </div>
         </BraidTestProvider>
       );
     };
 
-    const defaultOpen = jest.fn();
-    const defaultClose = jest.fn();
+    const defaultOpen = vi.fn();
+    const defaultClose = vi.fn();
     const { queryByRole, getByRole, getAllByRole, rerender } = render(
       <TestCase openHandler={defaultOpen} closeHandler={defaultClose} />,
     );
@@ -358,11 +367,12 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
 
-      it('should close the menu with tab key', async () => {
+      it('should close the menu with tab key, and focus the next element', async () => {
         const { queryByRole, getByRole, openHandler, closeHandler } =
           renderMenu();
 
         const menuButton = getByRole('button');
+        const link = getByRole('link');
 
         await userEvent.click(menuButton);
         openHandler.mockClear(); // Clear initial open invocation, to allow later negative assertion
@@ -370,7 +380,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
         await userEvent.tab();
 
         expect(queryByRole('menu')).not.toBeInTheDocument();
-        expect(document.body).toHaveFocus();
+        expect(link).toHaveFocus();
         expect(openHandler).not.toHaveBeenCalled();
         expect(closeHandler).toHaveBeenNthCalledWith(1, { reason: 'exit' });
       });
@@ -583,7 +593,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         const menuButton = getByRole('button');
 
-        const newOpen = jest.fn();
+        const newOpen = vi.fn();
         await userEvent.click(menuButton);
         expect(openHandler).toHaveBeenNthCalledWith(1);
         rerender({ openHandler: newOpen });
@@ -595,7 +605,7 @@ export const menuTestSuite = ({ name, Component }: MenuTestSuiteParams) => {
 
         const menuButton = getByRole('button');
 
-        const newClose = jest.fn();
+        const newClose = vi.fn();
         await userEvent.click(menuButton);
         await userEvent.keyboard('{Escape}');
         expect(closeHandler).toHaveBeenCalledTimes(1);

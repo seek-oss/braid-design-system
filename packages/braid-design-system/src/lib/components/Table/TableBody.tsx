@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { useContext, type ReactNode } from 'react';
+import { useContext, type ReactNode, forwardRef } from 'react';
 
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -16,20 +16,23 @@ interface TableBodyProps {
   data?: DataAttributeMap;
 }
 
-export const TableBody = ({ children, data, ...restProps }: TableBodyProps) => {
-  const tableContext = useContext(TableContext);
+export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
+  ({ children, data, ...restProps }, ref) => {
+    const tableContext = useContext(TableContext);
 
-  assert(tableContext, 'TableBody must be used within a Table component');
+    assert(tableContext, 'TableBody must be used within a Table component');
 
-  return (
-    <TableBodyContext.Provider value={true}>
-      <Box
-        component="tbody"
-        className={styles.tableSection}
-        {...buildDataAttributes({ data, validateRestProps: restProps })}
-      >
-        {children}
-      </Box>
-    </TableBodyContext.Provider>
-  );
-};
+    return (
+      <TableBodyContext.Provider value={true}>
+        <Box
+          component="tbody"
+          className={styles.tableSection}
+          ref={ref}
+          {...buildDataAttributes({ data, validateRestProps: restProps })}
+        >
+          {children}
+        </Box>
+      </TableBodyContext.Provider>
+    );
+  },
+);

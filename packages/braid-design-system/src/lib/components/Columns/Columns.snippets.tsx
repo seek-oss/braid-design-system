@@ -18,7 +18,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Collapse Below Tablet',
+    name: 'Responsive columns',
     code: source(
       <Columns space="large" collapseBelow="tablet">
         <Column>

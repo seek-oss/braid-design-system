@@ -4,6 +4,7 @@ import type { ComponentDocs } from 'site/types';
 
 import { Box, Stack, Card, Text, Tiles, Strong, Columns, Column } from '../';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { validCardComponents } from './Card';
 
@@ -162,6 +163,17 @@ const docs: ComponentDocs = {
         </Text>
       ),
     },
+    dataAttributeDocs({
+      code: `
+        <Card
+          data={{ testid: 'card-1' }}
+          // => data-testid="card-1"
+        >
+          ...
+        </Card>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

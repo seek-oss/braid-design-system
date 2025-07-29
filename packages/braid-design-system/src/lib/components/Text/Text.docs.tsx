@@ -12,6 +12,7 @@ import {
   IconImage,
   Divider,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -283,6 +284,17 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Text
+          data={{ testid: 'text-1' }}
+          // => data-testid="text-1"
+        >
+          ...
+        </Text>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -1,16 +1,15 @@
-import '@testing-library/jest-dom';
 import { render, getAllByRole } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { MonthPicker } from '..';
 import { BraidTestProvider } from '../../../entries/test';
 
 describe('MonthPicker (Double dropdown)', () => {
   it('should render years descending by default', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByPlaceholderText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           value={{}}
           onChange={onChange}
@@ -29,11 +28,10 @@ describe('MonthPicker (Double dropdown)', () => {
   });
 
   it('should render years ascending when requested', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByPlaceholderText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           value={{}}
           onChange={onChange}
@@ -55,12 +53,7 @@ describe('MonthPicker (Double dropdown)', () => {
   it('associates fieldset with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <MonthPicker
-          id="month-picker"
-          label="Start"
-          value={{}}
-          onChange={() => {}}
-        />
+        <MonthPicker label="Start" value={{}} onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -69,12 +62,7 @@ describe('MonthPicker (Double dropdown)', () => {
   it('associates fieldset with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <MonthPicker
-          id="month-picker"
-          aria-label="Start"
-          value={{}}
-          onChange={() => {}}
-        />
+        <MonthPicker aria-label="Start" value={{}} onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -85,7 +73,6 @@ describe('MonthPicker (Double dropdown)', () => {
       <BraidTestProvider>
         <div id="fieldLabel">Start</div>
         <MonthPicker
-          id="month-picker"
           aria-labelledby="fieldLabel"
           value={{}}
           onChange={() => {}}
@@ -100,7 +87,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           value={{}}
@@ -116,7 +102,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           value={{}}
@@ -132,7 +117,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           message="Required"
@@ -149,7 +133,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           message="Required"
@@ -166,7 +149,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           description="More detail about field"
@@ -185,7 +167,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           description="More detail about field"
@@ -204,7 +185,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           message="Required"
@@ -224,7 +204,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           message="Required"
@@ -244,7 +223,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           monthLabel="Month"
           value={{}}
@@ -260,7 +238,6 @@ describe('MonthPicker (Double dropdown)', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <MonthPicker
-          id="month-picker"
           label="Start"
           yearLabel="Year"
           value={{}}
@@ -270,5 +247,88 @@ describe('MonthPicker (Double dropdown)', () => {
     );
 
     expect(getByLabelText('Year').getAttribute('aria-describedby')).toBeNull();
+  });
+
+  it('fields should not be accessible with tabindex of -1', async () => {
+    render(
+      <BraidTestProvider>
+        <MonthPicker
+          label="Start"
+          monthLabel="Month"
+          yearLabel="Year"
+          value={{}}
+          onChange={() => {}}
+          tabIndex={-1}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('fields should be accessible with tabindex of 0', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <MonthPicker
+          label="Start"
+          monthLabel="Month"
+          yearLabel="Year"
+          value={{}}
+          onChange={() => {}}
+          tabIndex={0}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Month')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Year')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('field should be accessible with a tabindex of undefined', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <MonthPicker
+          label="Start"
+          monthLabel="Month"
+          yearLabel="Year"
+          value={{}}
+          onChange={() => {}}
+          tabIndex={undefined}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Month')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Year')).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
   });
 });

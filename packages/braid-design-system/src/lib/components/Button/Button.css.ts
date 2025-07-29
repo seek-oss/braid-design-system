@@ -11,13 +11,24 @@ import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 import { vars } from '../../themes/vars.css';
-import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 export const root = style({
   textDecoration: 'none',
+  // Necessary to overwrite Safari's default value for 'align-items' in 'button' elements (which is 'flex-start')
+  alignItems: 'stretch',
+  // Necessary to overwrite browser default for 'a' elements (which is '1px'), keeping Button & ButtonLink uniform.
+  outlineOffset: 0,
 });
 
 export const forceActive = style({});
+
+export const activeAnimation = style({
+  selectors: {
+    [`${root}:active &, ${forceActive}&`]: {
+      transform: vars.transform.touchable,
+    },
+  },
+});
 
 export const activeOverlay = style({
   selectors: {
@@ -30,14 +41,6 @@ export const activeOverlay = style({
 export const hoverOverlay = style({
   selectors: {
     [`${root}:hover:not(:disabled) &`]: {
-      opacity: 1,
-    },
-  },
-});
-
-export const focusOverlay = style({
-  selectors: {
-    [`${root}:focus &`]: {
       opacity: 1,
     },
   },
@@ -67,13 +70,12 @@ export const standard = style(
   }),
 );
 
-export const small = style([
-  virtualTouchable,
+export const small = style(
   responsiveStyle({
     mobile: paddingVarForBreakpoint('small', 'mobile'),
     tablet: paddingVarForBreakpoint('small', 'tablet'),
   }),
-]);
+);
 
 export const bleedVerticallyToCapHeight = style({
   marginTop: calc.negate(capHeightToMinHeight),

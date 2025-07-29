@@ -81,6 +81,14 @@ export const Accordion = ({
       .join(', ')}`,
   );
 
+  if (process.env.NODE_ENV !== 'production') {
+    /**
+     * Validate that consumers are not passing `data-*`props,
+     * which will not work and are not validated by TypeScript.
+     */
+    buildDataAttributes({ data, validateRestProps: restProps });
+  }
+
   const contextValue = useMemo(
     () => ({ size, tone, weight }),
     [size, tone, weight],
@@ -91,10 +99,7 @@ export const Accordion = ({
 
   return (
     <AccordionContext.Provider value={contextValue}>
-      <Stack
-        space={space}
-        {...buildDataAttributes({ data, validateRestProps: restProps })}
-      >
+      <Stack space={space} data={data}>
         {!dividers ? (
           children
         ) : (

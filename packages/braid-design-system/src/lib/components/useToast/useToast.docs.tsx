@@ -1,6 +1,5 @@
 import source from '@braid-design-system/source.macro';
 import Code from 'site/App/Code/Code';
-import { useThemeSettings } from 'site/App/ThemeSetting';
 import type { ComponentDocs } from 'site/types';
 
 import {
@@ -17,12 +16,17 @@ import {
 } from '..';
 
 import Toast, { toastDuration } from './Toast';
+import { StaticToaster } from './Toaster';
+
+// For static Toast examples, keys do not need to be unique
+const defaultProps = {
+  toastKey: `toastKey`,
+  dedupeKey: `dedupeKey`,
+} as const;
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, showToast }) => {
-    const { theme } = useThemeSettings();
-
+  Example: ({ showToast }) => {
     const { code, value } = source(
       <Inline space="large" align="center">
         <Button
@@ -42,15 +46,15 @@ const docs: ComponentDocs = {
       code,
       value: (
         <Stack space="large" align="center">
-          <Toast
-            id={id}
-            dedupeKey={id}
-            shouldRemove={false}
-            vanillaTheme={theme.vanillaTheme}
-            onClose={() => {}}
-            message="Positive toast"
-            tone="positive"
-          />
+          <StaticToaster>
+            <Toast
+              {...defaultProps}
+              shouldRemove={false}
+              onClose={() => {}}
+              message="Positive toast"
+              tone="positive"
+            />
+          </StaticToaster>
           {value}
         </Stack>
       ),
@@ -95,13 +99,13 @@ const docs: ComponentDocs = {
           </Text>
           <Code playroom={false}>
             {`
-          import { useToast } from 'braid-design-system';
+              import { useToast } from 'braid-design-system';
 
-          export const Demo = () => {
-            const showToast = useToast();
+              export const Demo = () => {
+                const showToast = useToast();
 
-            // etc...
-          }
+                // etc...
+              }
         `}
           </Code>
           <Text>
@@ -111,15 +115,15 @@ const docs: ComponentDocs = {
           </Text>
           <Code playroom={false}>
             {`
-          import { BraidProvider, ToastProvider } from 'braid-design-system';
+              import { BraidProvider, ToastProvider } from 'braid-design-system';
 
-          export const App = () => (
-            <BraidProvider>
-              <ToastProvider>
-                {/* App code... */}
-              </ToastProvider>
-            </BraidProvider>
-          )
+              export const App = () => (
+                <BraidProvider>
+                  <ToastProvider>
+                    {/* App code... */}
+                  </ToastProvider>
+                </BraidProvider>
+              )
         `}
           </Code>
         </>
@@ -143,9 +147,7 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ id, showToast }) => {
-        const { theme } = useThemeSettings();
-
+      Example: ({ showToast }) => {
         const { code } = source(
           <Box padding="medium">
             <Stack space="small">
@@ -203,45 +205,39 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
-            <Toast
-              id={`${id}_1`}
-              dedupeKey={`${id}_1`}
-              shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
-              onClose={() => {}}
-              message="Positive message"
-              tone="positive"
-            />
-            <Toast
-              id={`${id}_2`}
-              dedupeKey={`${id}_2`}
-              shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
-              onClose={() => {}}
-              message="Critical message"
-              tone="critical"
-            />
-            <Toast
-              id={`${id}_3`}
-              dedupeKey={`${id}_3`}
-              shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
-              onClose={() => {}}
-              message="Neutral message"
-              tone="neutral"
-            />
-            <Toast
-              id={`${id}_4`}
-              dedupeKey={`${id}_4`}
-              shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
-              onClose={() => {}}
-              message="Neutral message with icon"
-              tone="neutral"
-              icon={<IconBookmark />}
-            />
-          </Stack>,
+          <StaticToaster>
+            <Stack space="medium">
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Positive message"
+                tone="positive"
+              />
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Critical message"
+                tone="critical"
+              />
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Neutral message"
+                tone="neutral"
+              />
+              <Toast
+                {...defaultProps}
+                shouldRemove={false}
+                onClose={() => {}}
+                message="Neutral message with icon"
+                tone="neutral"
+                icon={<IconBookmark />}
+              />
+            </Stack>
+          </StaticToaster>,
         );
 
         return {
@@ -258,9 +254,7 @@ const docs: ComponentDocs = {
           a description.
         </Text>
       ),
-      Example: ({ id, showToast }) => {
-        const { theme } = useThemeSettings();
-
+      Example: ({ showToast }) => {
         const { code } = source(
           <Inline space="small" align="center">
             <Button
@@ -279,18 +273,16 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
-              id={id}
-              dedupeKey={id}
+              {...defaultProps}
               shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
               onClose={() => {}}
               message="Positive message"
               tone="positive"
               description="Longer description providing more context for the user."
             />
-          </Stack>,
+          </StaticToaster>,
         );
 
         return {
@@ -317,9 +309,7 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ id, showToast }) => {
-        const { theme } = useThemeSettings();
-
+      Example: ({ showToast }) => {
         /* eslint-disable no-alert */
         const { code } = source(
           <Inline space="small" align="center">
@@ -341,12 +331,10 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
-              id={id}
-              dedupeKey={id}
+              {...defaultProps}
               shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
               onClose={() => {}}
               message="Positive message"
               tone="positive"
@@ -355,7 +343,7 @@ const docs: ComponentDocs = {
                 onClick: () => alert('Undo!'),
               }}
             />
-          </Stack>,
+          </StaticToaster>,
         );
         /* eslint-enable no-alert */
 
@@ -373,9 +361,7 @@ const docs: ComponentDocs = {
           better accommodate all the content.
         </Text>
       ),
-      Example: ({ id, showToast }) => {
-        const { theme } = useThemeSettings();
-
+      Example: ({ showToast }) => {
         /* eslint-disable no-alert */
         const { code } = source(
           <Inline space="small" align="center">
@@ -399,12 +385,10 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
-              id={id}
-              dedupeKey={id}
+              {...defaultProps}
               shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
               onClose={() => {}}
               message="Positive message"
               description="Longer description providing more context for the user."
@@ -414,7 +398,7 @@ const docs: ComponentDocs = {
                 onClick: () => alert('Undo!'),
               }}
             />
-          </Stack>,
+          </StaticToaster>,
         );
         /* eslint-enable no-alert */
 
@@ -441,9 +425,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, showToast }) => {
-        const { theme } = useThemeSettings();
-
+      Example: ({ showToast }) => {
         const { code } = source(
           <Inline space="small" align="center">
             <Button
@@ -462,19 +444,17 @@ const docs: ComponentDocs = {
         );
 
         const { value } = source(
-          <Stack space="large" align="center">
+          <StaticToaster>
             <Toast
-              id={id}
-              dedupeKey={id}
+              {...defaultProps}
               shouldRemove={false}
-              vanillaTheme={theme.vanillaTheme}
               onClose={() => {}}
               tone="positive"
               message="Message"
               description="Using a custom close button label"
               closeLabel="Dismiss this message"
             />
-          </Stack>,
+          </StaticToaster>,
         );
 
         return {

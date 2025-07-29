@@ -188,6 +188,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               placeholder={!restProps.disabled ? placeholder : undefined}
               spellCheck={spellCheck}
               className={[styles.field, className]}
+              borderRadius={borderRadius}
               {...fieldProps}
               ref={ref}
             />

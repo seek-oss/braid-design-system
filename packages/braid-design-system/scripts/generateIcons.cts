@@ -148,11 +148,12 @@ const svgrConfig = {
     // Create icon wrapper component, if it doesn't already exist
     await templateFileIfMissing(
       `${iconName}.tsx`,
-      dedent/* ts */ `
+      dedent /* ts */ `
         import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
         import { IconContainer, type IconContainerProps } from '${relative(
           `${baseDir}/src/lib/components/icons/IconContainer`,
         )}';
+
         import { ${svgComponentName} } from '${relative(`${iconDir}/${svgComponentName}`)}';
 
         export type ${iconName}Props = IconContainerProps;
@@ -168,11 +169,12 @@ const svgrConfig = {
     // Create documentation, if it doesn't already exist
     await templateFileIfMissing(
       `${iconName}.docs.tsx`,
-      dedent/* ts */ `
-        import type { ComponentDocs } from 'site/types';
-        import { iconDocumentation } from '${relative(`${iconComponentsDir}/iconCommon.docs`)}';
+      dedent /* ts */ `
         import source from '@braid-design-system/source.macro';
+        import type { ComponentDocs } from 'site/types';
+
         import { ${iconName}, Heading, Stack } from '${relative(`${baseDir}/src/lib/components`)}';
+        import { iconDocumentation } from '${relative(`${iconComponentsDir}/iconCommon.docs`)}';
 
         const docs: ComponentDocs = {
           category: 'Icon',
@@ -185,7 +187,7 @@ const svgrConfig = {
               </Stack>,
             ),
           alternatives: [],
-          additional: [iconDocumentation],
+          additional: [...iconDocumentation],
         };
 
         export default docs;

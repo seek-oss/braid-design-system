@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { TextField } from '..';
 import { BraidTestProvider } from '../../../entries/test';
@@ -8,7 +8,7 @@ describe('TextField', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <TextField id="field" label="My field" value="" onChange={() => {}} />
+        <TextField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -18,12 +18,7 @@ describe('TextField', () => {
   it('associates field with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <TextField
-          id="field"
-          aria-label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <TextField aria-label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -50,7 +45,6 @@ describe('TextField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <TextField
-          id="field"
           label="My field"
           message="Required"
           value=""
@@ -66,7 +60,6 @@ describe('TextField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <TextField
-          id="field"
           label="My field"
           description="More detail about field"
           value=""
@@ -123,12 +116,64 @@ describe('TextField', () => {
   it('field is not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <TextField id="field" label="My field" value="" onChange={() => {}} />
+        <TextField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
     expect(
       getByLabelText('My field').getAttribute('aria-describedby'),
     ).toBeNull();
+  });
+
+  it('field should not be accessible with tabindex of -1', async () => {
+    render(
+      <BraidTestProvider>
+        <TextField
+          label="My field"
+          value=""
+          onChange={() => {}}
+          tabIndex={-1}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('field should be accessible with tabindex of 0', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <TextField label="My field" value="" onChange={() => {}} tabIndex={0} />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByRole('textbox')).toHaveFocus();
+  });
+
+  it('field should be accessible with a tabindex of undefined', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <TextField
+          label="My field"
+          value=""
+          onChange={() => {}}
+          tabIndex={undefined}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByRole('textbox')).toHaveFocus();
   });
 });

@@ -6,6 +6,7 @@ import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { defaultPageLimit } from './Pagination';
 
@@ -42,7 +43,7 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/#x4-2-general-principles-of-landmark-design">
           General Principles of Landmark Design
         </TextLink>{' '}
-        it is neccessary for it to have an <Strong>aria-label</Strong>.
+        it is necessary for it to have an <Strong>aria-label</Strong>.
       </Text>
       <Text tone="promote" id="translate-nav">
         <IconLanguage title="Translation hint" titleId="translate-nav" /> The{' '}
@@ -217,6 +218,15 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Pagination
+          data={{ testid: 'pagination-1' }}
+          // => data-testid="pagination-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

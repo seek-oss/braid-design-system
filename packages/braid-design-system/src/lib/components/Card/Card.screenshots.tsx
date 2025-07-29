@@ -1,115 +1,136 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+
+import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, Card, Stack, Text } from '../';
 import { Placeholder } from '../../playroom/components';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320, 768, 992, 1200],
-  examples: [
-    {
-      label: 'Default',
-      Example: () => (
-        <Card>
-          <Placeholder height={100} />
-        </Card>
-      ),
+const meta = {
+  title: 'Components/Card',
+  component: Card,
+  parameters: {
+    chromatic: setChromatic({
+      viewports: ['mobile', 'tablet', 'desktop', 'wide'],
+    }),
+  },
+  argTypes: {
+    tone: { control: 'select', options: ['promote', 'formAccent'] },
+    rounded: { control: 'boolean' },
+    roundedAbove: {
+      control: 'select',
+      options: ['mobile', 'tablet', 'desktop'],
     },
-    {
-      label: 'Tone - Promote',
-      Example: () => (
-        <Card tone="promote">
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'Tone - FormAccent',
-      Example: () => (
-        <Card tone="formAccent">
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'Rounded - default',
-      Example: () => (
-        <Card>
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'Rounded - true',
-      Example: () => (
-        <Card rounded>
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'RoundedAbove - mobile',
-      Example: () => (
-        <Card roundedAbove="mobile">
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'RoundedAbove - tablet',
-      Example: () => (
-        <Card roundedAbove="tablet">
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'RoundedAbove - desktop',
-      Example: () => (
-        <Card roundedAbove="desktop">
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'Tone & rounded',
-      Example: () => (
-        <Card tone="formAccent" rounded>
-          <Placeholder height={100} />
-        </Card>
-      ),
-    },
-    {
-      label: 'Height full',
-      Example: () => (
-        <Box style={{ height: 300 }}>
-          <Card height="full">
-            <Placeholder height={60} />
-          </Card>
-        </Box>
-      ),
-    },
-    {
-      label: 'Height content (default)',
-      Example: () => (
-        <Box style={{ height: 300 }}>
-          <Card height="content">
-            <Placeholder height={60} />
-          </Card>
-        </Box>
-      ),
-    },
-    {
-      label: 'Test: should be left aligned in a centered Stack',
-      Example: () => (
-        <Stack space="large" align="center">
-          <Card height="content">
-            <Text>
-              Enim elit eu et culpa non esse voluptate labore in ea. Incididunt
-              irure aliquip cillum occaecat irure.
-            </Text>
-          </Card>
-        </Stack>
-      ),
-    },
-  ],
+    height: { control: 'select', options: ['full', 'content'] },
+  },
+  args: {
+    children: <Placeholder height={100} />,
+  },
+} satisfies Meta<typeof Card>;
+
+export default meta;
+
+type Story = StoryObj<typeof Card>;
+
+export const Default: Story = {
+  args: {},
+};
+
+export const TonePromote: Story = {
+  name: 'Tone - Promote',
+  args: {
+    tone: 'promote',
+  },
+};
+
+export const ToneFormAccent: Story = {
+  name: 'Tone - FormAccent',
+  args: {
+    tone: 'formAccent',
+  },
+};
+
+export const RoundedDefault: Story = {
+  name: 'Rounded - default',
+  args: {},
+};
+
+export const RoundedTrue: Story = {
+  name: 'Rounded - true',
+  args: {
+    rounded: true,
+  },
+};
+
+export const RoundedAboveMobile: Story = {
+  name: 'RoundedAbove - mobile',
+  args: {
+    roundedAbove: 'mobile',
+  },
+};
+
+export const RoundedAboveTablet: Story = {
+  name: 'RoundedAbove - tablet',
+  args: {
+    roundedAbove: 'tablet',
+  },
+};
+
+export const RoundedAboveDesktop: Story = {
+  name: 'RoundedAbove - desktop',
+  args: {
+    roundedAbove: 'desktop',
+  },
+};
+
+export const ToneRounded: Story = {
+  name: 'Tone & rounded',
+  args: {
+    tone: 'formAccent',
+    rounded: true,
+  },
+};
+
+export const HeightFull: Story = {
+  name: 'Height full',
+  args: {
+    height: 'full',
+    children: <Placeholder height={60} />,
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 300 }}>
+      <Story />
+    </Box>
+  ),
+};
+
+export const HeightContentDefault: Story = {
+  name: 'Height content (default)',
+  args: {
+    height: 'content',
+    children: <Placeholder height={60} />,
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 300 }}>
+      <Story />
+    </Box>
+  ),
+};
+
+export const TestShouldBeLeftAlignedInACenteredStack: Story = {
+  name: 'Test: should be left aligned in a centered Stack',
+  args: {
+    height: 'content',
+    rounded: true,
+    children: (
+      <Text>
+        Enim elit eu et culpa non esse voluptate labore in ea. Incididunt irure
+        aliquip cillum occaecat irure.
+      </Text>
+    ),
+  },
+  decorators: (Story) => (
+    <Stack space="large" align="center">
+      <Story />
+    </Stack>
+  ),
 };

@@ -148,13 +148,6 @@ export const modalContainer = style({
 export const headingRoot = style({
   overflowWrap: 'break-word',
 });
-export const headingFocus = style({
-  selectors: {
-    [`${headingRoot}:focus &`]: {
-      opacity: 1,
-    },
-  },
-});
 
 export const closeIconOffset = style({
   top: '-5px',

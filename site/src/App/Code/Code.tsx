@@ -13,18 +13,16 @@ import {
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
-import { hideFocusRingsClassName } from 'braid-src/lib/components/private/hideFocusRings/hideFocusRings';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash.memoize';
-import { createUrl } from 'playroom/utils';
-import typescriptParser from 'prettier/parser-typescript';
-import prettier from 'prettier/standalone';
+import { createUrl } from 'playroom';
 import { type ReactElement, useState, useEffect, useRef } from 'react';
 import reactElementToJsxString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
@@ -33,36 +31,19 @@ import { useConfig } from '../ConfigContext';
 import { ThemedExample } from '../ThemeSetting';
 
 import { editorTheme } from './editorTheme';
+import type { SupportedLanguage } from './supportedLanguages';
 
 import * as styles from './Code.css';
 
 type ReactElementOrString = ReactElement | string;
 
 // `jsx` and `tsx` implicitly register `js` and `ts`
-for (const [name, language] of Object.entries({ diff, jsx, tsx })) {
+for (const [name, language] of Object.entries({ diff, jsx, tsx, bash })) {
   SyntaxHighlighter.registerLanguage(name, language);
 }
 
-const supportedLanguages = ['diff', 'js', 'jsx', 'ts', 'tsx'] as const;
-export type SupportedLanguage = (typeof supportedLanguages)[number];
-
 export const formatSnippet = memoize((snippet: string) => {
-  // Remove id props from code snippets since they're not needed in Playroom
-  const cleanedSnippet = snippet
-    .replace(/id={id}/g, '')
-    .replace(/id={`\${id}_[0-9a-zA-Z]+`}/g, '');
-
-  const formattedSnippet = prettier
-    .format(cleanedSnippet, {
-      parser: 'typescript',
-      plugins: [typescriptParser],
-      semi: false,
-    })
-    .replace(/^;/, '') // Remove leading semicolons from JSX
-    .replace(/[\r\n]+$/, ''); // Remove trailing newline
-
-  const lines = formattedSnippet.split('\n');
-
+  const lines = snippet.split('\n');
   const firstLine = lines[0];
   const lastLine = lines[lines.length - 1];
 
@@ -74,7 +55,7 @@ export const formatSnippet = memoize((snippet: string) => {
     return dedent(lines.slice(1, lines.length - 1).join('\n'));
   }
 
-  return formattedSnippet;
+  return snippet;
 });
 
 interface CodeButtonProps extends BoxProps {
@@ -126,7 +107,6 @@ export const CodeButton = ({
       paddingY="xxsmall"
       paddingX="xsmall"
       position="relative"
-      outline="none"
       className={[styles.button, className]}
       onClick={(e) => {
         if (typeof onClick === 'function') {
@@ -140,10 +120,6 @@ export const CodeButton = ({
       }}
       {...restProps}
     >
-      <FieldOverlay
-        variant="focus"
-        className={[styles.focusOverlay, hideFocusRingsClassName]}
-      />
       <FieldOverlay
         background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
         className={styles.hoverOverlay}
@@ -170,15 +146,9 @@ export const CodeBlock = ({
   children: string;
   language?: SupportedLanguage | null;
 }) => {
-  // `null` is the language when a code block contains no longuage tag.
+  // `null` is the language when a code block contains no language tag.
   // We resolve it to a valid language or `undefined` to match the syntax highlighter's `language` type.
   const resolvedLanguage = language || undefined;
-
-  if (resolvedLanguage && !supportedLanguages.includes(resolvedLanguage)) {
-    throw new Error(
-      `Unsupported syntax highlighter language: ${resolvedLanguage}. Please register the language if you wish to support it.`,
-    );
-  }
 
   return (
     <Box
@@ -210,11 +180,15 @@ const parseInput = (
   input: ReactElementOrString | Source<ReactElementOrString>,
 ): Source<ReactElementOrString> => {
   if (typeof input === 'string') {
-    const code = formatSnippet(input);
+    // Dedent only if input starts with whitespace
+    const shouldDedent = /^\s+/.test(input);
+
+    const code = shouldDedent ? dedent(input) : input;
+    const formattedCode = formatSnippet(code);
 
     return {
-      code,
-      value: code,
+      code: formattedCode,
+      value: formattedCode,
     };
   }
 
@@ -230,6 +204,7 @@ const parseInput = (
             showDefaultProps: false,
             showFunctions: false,
             filterProps: ['onChange', 'onBlur', 'onFocus'],
+            maxInlineAttributesLineLength: 60,
           }),
         ),
         value: input,

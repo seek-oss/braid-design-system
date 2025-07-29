@@ -24,7 +24,7 @@ import { PageTitle } from '../Seo/PageTitle';
 
 type ComponentName = keyof typeof componentDocs;
 
-// @ts-ignore
+// @ts-expect-error casting json import
 const docsData = componentDocs as Record<ComponentName, ExportDoc>;
 
 const isValidComponentName = (
@@ -130,7 +130,6 @@ const PropList = ({ props }: { props: NormalisedInterface['props'] }) => {
                     </Badge>
                     {deprecatedMessage.text ? (
                       <TooltipRenderer
-                        id={`prop_${propName}`}
                         tooltip={<Text>{deprecatedMessage.text}</Text>}
                       >
                         {({ triggerProps }) => (

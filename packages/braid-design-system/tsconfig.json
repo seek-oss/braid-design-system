@@ -1,4 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./src", "./scripts", "./*.ts"]
+  "compilerOptions": {
+    "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
+  },
+  "include": ["./src", "./scripts", "./*.ts", "./.storybook/**/*"]
 }

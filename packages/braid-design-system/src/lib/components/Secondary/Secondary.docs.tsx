@@ -2,6 +2,7 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import { Secondary, Text, TextLink } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -25,6 +26,17 @@ const docs: ComponentDocs = {
         </Text>
       ),
     },
+    dataAttributeDocs({
+      code: `
+        <Secondary
+          data={{ testid: 'secondary-1' }}
+          // => data-testid="secondary-1"
+        >
+          ...
+        </Secondary>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

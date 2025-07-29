@@ -5,6 +5,7 @@ import {
   globalHeadingStyle,
   globalTextStyle,
 } from '../lib/css/globalTypographyStyles';
+import { outlineStyle } from '../lib/css/outlineStyle';
 import { responsiveStyle } from '../lib/css/responsiveStyle';
 
 import { vars as internalVars } from '../lib/themes/vars.css';
@@ -59,5 +60,6 @@ export {
   colorModeStyle,
   globalTextStyle,
   globalHeadingStyle,
+  outlineStyle,
 };
 export type { Breakpoint };

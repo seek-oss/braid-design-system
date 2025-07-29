@@ -9,6 +9,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+import { pageBlockGutters } from './pageBlockGutters';
+
 export const validPageBlockComponents = [
   'div',
   'article',
@@ -17,8 +19,6 @@ export const validPageBlockComponents = [
   'section',
   'nav',
 ] as const;
-
-export const gutters = { mobile: 'small', tablet: 'gutter' } as const;
 
 interface Props {
   children: ReactNode;
@@ -43,8 +43,9 @@ export const PageBlock = ({
 
   return (
     <Box
+      width="full"
       component={component}
-      paddingX={gutters}
+      paddingX={pageBlockGutters}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {width === 'full' ? (

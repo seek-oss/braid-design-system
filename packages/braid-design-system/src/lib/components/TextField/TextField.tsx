@@ -64,7 +64,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onClear,
       placeholder,
       characterLimit,
-      id,
       clearLabel,
       inputMode,
       step,
@@ -88,7 +87,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       <Field
         {...restProps}
         componentName="TextField"
-        id={id}
         value={value}
         secondaryMessage={
           characterLimit
@@ -101,7 +99,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         secondaryIcon={
           onClear ? (
             <ClearField
-              id={`${id}-clear`}
               hide={!clearable}
               onClear={onClear}
               label={clearLabel}

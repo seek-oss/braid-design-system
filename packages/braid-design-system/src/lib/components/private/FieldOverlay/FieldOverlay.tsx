@@ -1,11 +1,6 @@
 import { type OverlayProps, Overlay } from '../Overlay/Overlay';
 
-type FieldOverlayVariant =
-  | 'default'
-  | 'disabled'
-  | 'focus'
-  | 'formAccent'
-  | 'critical';
+type FieldOverlayVariant = 'default' | 'disabled' | 'formAccent' | 'critical';
 export interface FieldOverlayProps
   extends Pick<
     OverlayProps,
@@ -25,7 +20,6 @@ const boxShadowForVariant: Record<
 > = {
   default: 'borderField',
   disabled: 'borderNeutralLight',
-  focus: 'outlineFocus',
   formAccent: 'borderFormAccent',
   critical: 'borderCritical',
 };

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Accordion 1`] = `
 {
@@ -38,7 +38,7 @@ exports[`AccordionItem 1`] = `
     data?: DataAttributeMap
     expanded?: boolean
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
-    id: string
+    id?: string
     label: string
     onToggle?: (expanded: boolean) => void
     size?: 
@@ -104,7 +104,7 @@ exports[`Autosuggest 1`] = `
     disabled?: boolean
     hideSuggestionsOnSelection?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -117,9 +117,8 @@ exports[`Autosuggest 1`] = `
     onFocus?: () => void
     placeholder?: string
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     scrollToTopOnMobile?: boolean
@@ -132,6 +131,9 @@ exports[`Autosuggest 1`] = `
     suggestions: 
         | (value: AutosuggestValue<Value>) => Suggestions<Value>
         | Suggestions<Value>
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -166,9 +168,8 @@ exports[`Badge 1`] = `
     data?: DataAttributeMap
     id?: string
     ref?: 
-        | (instance: HTMLSpanElement | null) => void
-        | RefObject<HTMLSpanElement>
-        | string
+        | (instance: HTMLSpanElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLSpanElement | null>
     tabIndex?: number
     title?: string
     tone?: 
@@ -297,7 +298,9 @@ exports[`Box 1`] = `
     accept?: string
     acceptCharset?: string
     accessKey?: string
-    action?: string
+    action?: 
+        | (formData: FormData) => void | Promise<void>
+        | string
     alignItems?: 
         | "center"
         | "flexEnd"
@@ -823,6 +826,7 @@ exports[`Box 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     flexDirection?: 
         | "column"
         | "columnReverse"
@@ -845,7 +849,9 @@ exports[`Box 1`] = `
         | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
         | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     form?: string
-    formAction?: string
+    formAction?: 
+        | (formData: FormData) => void | Promise<void>
+        | string
     formEncType?: string
     formMethod?: string
     formNoValidate?: boolean
@@ -877,6 +883,7 @@ exports[`Box 1`] = `
     htmlFor?: string
     httpEquiv?: string
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -1038,8 +1045,9 @@ exports[`Box 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLElement>
     onAuxClick?: MouseEventHandler<HTMLElement>
     onAuxClickCapture?: MouseEventHandler<HTMLElement>
-    onBeforeInput?: FormEventHandler<HTMLElement>
+    onBeforeInput?: InputEventHandler<HTMLElement>
     onBeforeInputCapture?: FormEventHandler<HTMLElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLElement>
     onBlur?: FocusEventHandler<HTMLElement>
     onBlurCapture?: FocusEventHandler<HTMLElement>
     onCanPlay?: ReactEventHandler<HTMLElement>
@@ -1154,10 +1162,10 @@ exports[`Box 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLElement>
     onReset?: FormEventHandler<HTMLElement>
     onResetCapture?: FormEventHandler<HTMLElement>
-    onResize?: ReactEventHandler<HTMLElement>
-    onResizeCapture?: ReactEventHandler<HTMLElement>
     onScroll?: UIEventHandler<HTMLElement>
     onScrollCapture?: UIEventHandler<HTMLElement>
+    onScrollEnd?: UIEventHandler<HTMLElement>
+    onScrollEndCapture?: UIEventHandler<HTMLElement>
     onSeeked?: ReactEventHandler<HTMLElement>
     onSeekedCapture?: ReactEventHandler<HTMLElement>
     onSeeking?: ReactEventHandler<HTMLElement>
@@ -1172,6 +1180,7 @@ exports[`Box 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLElement>
     onTimeUpdate?: ReactEventHandler<HTMLElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLElement>
+    onToggle?: ToggleEventHandler<HTMLElement>
     onTouchCancel?: TouchEventHandler<HTMLElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLElement>
     onTouchEnd?: TouchEventHandler<HTMLElement>
@@ -1180,8 +1189,14 @@ exports[`Box 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLElement>
     onTouchStart?: TouchEventHandler<HTMLElement>
     onTouchStartCapture?: TouchEventHandler<HTMLElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLElement>
     onTransitionEnd?: TransitionEventHandler<HTMLElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLElement>
+    onTransitionRun?: TransitionEventHandler<HTMLElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLElement>
+    onTransitionStart?: TransitionEventHandler<HTMLElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLElement>
     onVolumeChange?: ReactEventHandler<HTMLElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLElement>
     onWaiting?: ReactEventHandler<HTMLElement>
@@ -1191,7 +1206,9 @@ exports[`Box 1`] = `
     opacity?: 0
     open?: boolean
     optimum?: number
-    outline?: "none"
+    outline?: 
+        | "focus"
+        | "none"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1288,16 +1305,27 @@ exports[`Box 1`] = `
         | "xxxlarge"
         | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
+    part?: string
     pattern?: string
     placeholder?: string
     playsInline?: boolean
     pointerEvents?: "none"
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     position?: 
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
-        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
+        | "sticky"
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "sticky" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "sticky" | "relative" | "absolute" | undefined; tablet?: "fixed" | "sticky" | "relative" | "absolute" | undefined; desktop?: "fixed" | "sticky" | "relative" | "absolute" | undefined; wide?: "fixed" | ... 3 more ... | undefined; }
     poster?: string
     prefix?: string
     preload?: string
@@ -1305,9 +1333,8 @@ exports[`Box 1`] = `
     radioGroup?: string
     readOnly?: boolean
     ref?: 
-        | (instance: HTMLElement | null) => void
-        | RefObject<HTMLElement>
-        | string
+        | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLElement | null>
     rel?: string
     required?: boolean
     resource?: string
@@ -1556,7 +1583,7 @@ exports[`BoxRenderer 1`] = `
         | "medium"
         | "outlineFocus"
         | "small"
-    children: (className: string) => ReactElement<any, string | JSXElementConstructor<any>> | null
+    children: (className: string) => ReactElement<unknown, string | JSXElementConstructor<any>> | null
     className?: ClassValue
     component?: 
         | "a"
@@ -1893,7 +1920,9 @@ exports[`BoxRenderer 1`] = `
         | "xsmall"
     minWidth?: 0
     opacity?: 0
-    outline?: "none"
+    outline?: 
+        | "focus"
+        | "none"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1995,8 +2024,9 @@ exports[`BoxRenderer 1`] = `
         | "absolute"
         | "fixed"
         | "relative"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "relative" | "absolute" | null>
-        | { mobile?: "fixed" | "relative" | "absolute" | undefined; tablet?: "fixed" | "relative" | "absolute" | undefined; desktop?: "fixed" | "relative" | "absolute" | undefined; wide?: "fixed" | "relative" | "absolute" | undefined; }
+        | "sticky"
+        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "sticky" | "relative" | "absolute" | null>
+        | { mobile?: "fixed" | "sticky" | "relative" | "absolute" | undefined; tablet?: "fixed" | "sticky" | "relative" | "absolute" | undefined; desktop?: "fixed" | "sticky" | "relative" | "absolute" | undefined; wide?: "fixed" | ... 3 more ... | undefined; }
     right?: 0
     textAlign?: 
         | "center"
@@ -2112,9 +2142,8 @@ exports[`Button 1`] = `
     onKeyDown?: KeyboardEventHandler<HTMLButtonElement>
     onKeyUp?: KeyboardEventHandler<HTMLButtonElement>
     ref?: 
-        | (instance: HTMLButtonElement | null) => void
-        | RefObject<HTMLButtonElement>
-        | string
+        | (instance: HTMLButtonElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLButtonElement | null>
     size?: 
         | "small"
         | "standard"
@@ -2141,6 +2170,7 @@ exports[`ButtonIcon 1`] = `
 {
   exportType: component,
   props: {
+    aria-describedby?: string
     aria-expanded?: 
         | "false"
         | "true"
@@ -2159,16 +2189,15 @@ exports[`ButtonIcon 1`] = `
     bleed?: boolean
     data?: DataAttributeMap
     icon: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
-    id: string
+    id?: string
     label: string
     onClick?: MouseEventHandler<HTMLButtonElement>
     onKeyDown?: KeyboardEventHandler<HTMLButtonElement>
     onKeyUp?: KeyboardEventHandler<HTMLButtonElement>
     onMouseDown?: MouseEventHandler<HTMLButtonElement>
     ref?: 
-        | (instance: HTMLButtonElement | null) => void
-        | RefObject<HTMLButtonElement>
-        | string
+        | (instance: HTMLButtonElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLButtonElement | null>
     size?: 
         | "large"
         | "small"
@@ -2407,6 +2436,7 @@ exports[`ButtonLink 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     href: string
     hrefLang?: string
@@ -2415,6 +2445,7 @@ exports[`ButtonLink 1`] = `
         | "leading"
         | "trailing"
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -2445,8 +2476,9 @@ exports[`ButtonLink 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
-    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
     onCanPlay?: ReactEventHandler<HTMLAnchorElement>
@@ -2561,10 +2593,10 @@ exports[`ButtonLink 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
-    onResize?: ReactEventHandler<HTMLAnchorElement>
-    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onScrollEnd?: UIEventHandler<HTMLAnchorElement>
+    onScrollEndCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
     onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
     onSeeking?: ReactEventHandler<HTMLAnchorElement>
@@ -2579,6 +2611,7 @@ exports[`ButtonLink 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onToggle?: ToggleEventHandler<HTMLAnchorElement>
     onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
@@ -2587,22 +2620,37 @@ exports[`ButtonLink 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchStart?: TouchEventHandler<HTMLAnchorElement>
     onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRun?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStart?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLAnchorElement>
     onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onWaiting?: ReactEventHandler<HTMLAnchorElement>
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
-        | (instance: HTMLAnchorElement | null) => void
-        | RefObject<HTMLAnchorElement>
-        | string
+        | (instance: HTMLAnchorElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLAnchorElement | null>
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -2774,20 +2822,22 @@ exports[`Checkbox 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
     onChange: FormEventHandler<HTMLInputElement>
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tone?: 
         | "critical"
         | "neutral"
@@ -2813,17 +2863,19 @@ exports[`CheckboxStandalone 1`] = `
         | true
     data?: DataAttributeMap
     disabled?: boolean
-    id: string
+    id?: string
     name?: string
     onChange: FormEventHandler<HTMLInputElement>
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tone?: 
         | "critical"
         | "neutral"
@@ -2957,7 +3009,7 @@ exports[`Dialog 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     illustration?: ReactNodeNoStrings
     onClose: (openState: false) => false | void
     open: boolean
@@ -2981,7 +3033,7 @@ exports[`Disclosure 1`] = `
     data?: DataAttributeMap
     expandLabel: string
     expanded?: boolean
-    id: string
+    id?: string
     onToggle?: (expanded: boolean) => void
     size?: 
         | "large"
@@ -3027,7 +3079,7 @@ exports[`Drawer 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
-    id: string
+    id?: string
     onClose: (openState: false) => false | void
     open: boolean
     position?: 
@@ -3058,7 +3110,7 @@ exports[`Dropdown 1`] = `
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -3067,12 +3119,14 @@ exports[`Dropdown 1`] = `
     onFocus?: FocusEventHandler<HTMLSelectElement>
     placeholder?: string
     ref?: 
-        | (instance: HTMLSelectElement | null) => void
-        | RefObject<HTMLSelectElement>
-        | string
+        | (instance: HTMLSelectElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLSelectElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -3706,11 +3760,73 @@ exports[`IconBluetooth 1`] = `
 }
 `;
 
+exports[`IconBold 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconBookmark 1`] = `
 {
   exportType: component,
   props: {
     active?: boolean
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconBulletList 1`] = `
+{
+  exportType: component,
+  props: {
     alignY?: 
         | "lowercase"
         | "uppercase"
@@ -4862,6 +4978,37 @@ exports[`IconInvoice 1`] = `
 }
 `;
 
+exports[`IconItalic 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconLanguage 1`] = `
 {
   exportType: component,
@@ -5296,6 +5443,37 @@ exports[`IconNotification 1`] = `
 }
 `;
 
+exports[`IconNumberedList 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconOverflow 1`] = `
 {
   exportType: component,
@@ -5699,6 +5877,37 @@ exports[`IconRecommended 1`] = `
 }
 `;
 
+exports[`IconRedo 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconRefresh 1`] = `
 {
   exportType: component,
@@ -5734,7 +5943,7 @@ exports[`IconRenderer 1`] = `
 {
   exportType: component,
   props: {
-    children: ({ className }: { className: string; }) => ReactElement<any, string | JSXElementConstructor<any>> | null
+    children: ({ className }: { className: string; }) => ReactElement<unknown, string | JSXElementConstructor<any>> | null
 },
 }
 `;
@@ -6553,6 +6762,68 @@ exports[`IconTip 1`] = `
 }
 `;
 
+exports[`IconTitle 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
+exports[`IconUndo 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconUpload 1`] = `
 {
   exportType: component,
@@ -7004,10 +7275,12 @@ exports[`Link 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     href: string
     hrefLang?: string
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -7037,8 +7310,9 @@ exports[`Link 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
-    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
     onCanPlay?: ReactEventHandler<HTMLAnchorElement>
@@ -7153,10 +7427,10 @@ exports[`Link 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
-    onResize?: ReactEventHandler<HTMLAnchorElement>
-    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onScrollEnd?: UIEventHandler<HTMLAnchorElement>
+    onScrollEndCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
     onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
     onSeeking?: ReactEventHandler<HTMLAnchorElement>
@@ -7171,6 +7445,7 @@ exports[`Link 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onToggle?: ToggleEventHandler<HTMLAnchorElement>
     onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
@@ -7179,22 +7454,37 @@ exports[`Link 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchStart?: TouchEventHandler<HTMLAnchorElement>
     onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRun?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStart?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLAnchorElement>
     onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onWaiting?: ReactEventHandler<HTMLAnchorElement>
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
-        | (instance: HTMLAnchorElement | null) => void
-        | RefObject<HTMLAnchorElement>
-        | string
+        | (instance: HTMLAnchorElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLAnchorElement | null>
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -7487,7 +7777,7 @@ exports[`MonthPicker 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     maxYear?: number
     message?: ReactNode
@@ -7500,6 +7790,9 @@ exports[`MonthPicker 1`] = `
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7619,7 +7912,7 @@ exports[`PasswordField 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -7629,12 +7922,14 @@ exports[`PasswordField 1`] = `
     onVisibilityToggle?: (visible: boolean) => void
     placeholder?: string
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -7660,7 +7955,7 @@ exports[`RadioGroup 1`] = `
     data?: DataAttributeMap
     description?: ReactNode
     disabled?: boolean
-    id: string
+    id?: string
     label: ReactNode
     message?: ReactNode
     name?: string
@@ -7671,6 +7966,9 @@ exports[`RadioGroup 1`] = `
     size?: 
         | "small"
         | "standard"
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "critical"
@@ -7695,9 +7993,8 @@ exports[`RadioItem 1`] = `
     disabled?: boolean
     label: ReactNode
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     value: 
         | number
         | readonly string[]
@@ -7930,6 +8227,9 @@ exports[`Table 1`] = `
     children: ReactNode
     data?: DataAttributeMap
     label: string
+    ref?: 
+        | (instance: HTMLTableElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableElement | null>
 },
 }
 `;
@@ -7940,6 +8240,9 @@ exports[`TableBody 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableSectionElement | null>
 },
 }
 `;
@@ -7965,6 +8268,9 @@ exports[`TableCell 1`] = `
         | "wide"
     maxWidth?: number
     minWidth?: number
+    ref?: 
+        | (instance: HTMLTableCellElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableCellElement | null>
     width?: 
         | "auto"
         | "content"
@@ -7980,6 +8286,9 @@ exports[`TableFooter 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableSectionElement | null>
 },
 }
 `;
@@ -7990,6 +8299,9 @@ exports[`TableHeader 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableSectionElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableSectionElement | null>
 },
 }
 `;
@@ -8015,6 +8327,9 @@ exports[`TableHeaderCell 1`] = `
         | "wide"
     maxWidth?: number
     minWidth?: number
+    ref?: 
+        | (instance: HTMLTableCellElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableCellElement | null>
     width?: 
         | "auto"
         | "content"
@@ -8030,6 +8345,9 @@ exports[`TableRow 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
+    ref?: 
+        | (instance: HTMLTableRowElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTableRowElement | null>
 },
 }
 `;
@@ -8074,7 +8392,7 @@ exports[`TabsProvider 1`] = `
   exportType: component,
   props: {
     children: ReactNode
-    id: string
+    id?: string
     onChange?: (selectedIndex: number, selectedItem?: string | undefined) => void
     selectedItem?: string
 },
@@ -8326,11 +8644,14 @@ exports[`TextDropdown 1`] = `
   exportType: component,
   props: {
     data?: DataAttributeMap
-    id: string
+    id?: string
     label: string
     onBlur?: () => void
     onChange: (value: Value) => void
     options: TextDropdownValue<Value>[]
+    tabIndex?: 
+        | -1
+        | 0
     value: NonNullable<Value>
 },
 }
@@ -8351,7 +8672,7 @@ exports[`TextField 1`] = `
     description?: ReactNode
     disabled?: boolean
     icon?: ReactNode
-    id: string
+    id?: string
     inputMode?: 
         | "decimal"
         | "email"
@@ -8371,15 +8692,17 @@ exports[`TextField 1`] = `
     placeholder?: string
     prefix?: string
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
     step?: 
         | number
         | string
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -8617,6 +8940,7 @@ exports[`TextLink 1`] = `
         | "previous"
         | "search"
         | "send"
+    exportparts?: string
     hidden?: boolean
     hitArea?: 
         | "large"
@@ -8628,6 +8952,7 @@ exports[`TextLink 1`] = `
         | "leading"
         | "trailing"
     id?: string
+    inert?: boolean
     inlist?: any
     inputMode?: 
         | "decimal"
@@ -8657,8 +8982,9 @@ exports[`TextLink 1`] = `
     onAnimationStartCapture?: AnimationEventHandler<HTMLAnchorElement>
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
-    onBeforeInput?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInput?: InputEventHandler<HTMLAnchorElement>
     onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
     onCanPlay?: ReactEventHandler<HTMLAnchorElement>
@@ -8773,10 +9099,10 @@ exports[`TextLink 1`] = `
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onReset?: FormEventHandler<HTMLAnchorElement>
     onResetCapture?: FormEventHandler<HTMLAnchorElement>
-    onResize?: ReactEventHandler<HTMLAnchorElement>
-    onResizeCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
+    onScrollEnd?: UIEventHandler<HTMLAnchorElement>
+    onScrollEndCapture?: UIEventHandler<HTMLAnchorElement>
     onSeeked?: ReactEventHandler<HTMLAnchorElement>
     onSeekedCapture?: ReactEventHandler<HTMLAnchorElement>
     onSeeking?: ReactEventHandler<HTMLAnchorElement>
@@ -8791,6 +9117,7 @@ exports[`TextLink 1`] = `
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdateCapture?: ReactEventHandler<HTMLAnchorElement>
+    onToggle?: ToggleEventHandler<HTMLAnchorElement>
     onTouchCancel?: TouchEventHandler<HTMLAnchorElement>
     onTouchCancelCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchEnd?: TouchEventHandler<HTMLAnchorElement>
@@ -8799,22 +9126,37 @@ exports[`TextLink 1`] = `
     onTouchMoveCapture?: TouchEventHandler<HTMLAnchorElement>
     onTouchStart?: TouchEventHandler<HTMLAnchorElement>
     onTouchStartCapture?: TouchEventHandler<HTMLAnchorElement>
+    onTransitionCancel?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionCancelCapture?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEnd?: TransitionEventHandler<HTMLAnchorElement>
     onTransitionEndCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRun?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionRunCapture?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStart?: TransitionEventHandler<HTMLAnchorElement>
+    onTransitionStartCapture?: TransitionEventHandler<HTMLAnchorElement>
     onVolumeChange?: ReactEventHandler<HTMLAnchorElement>
     onVolumeChangeCapture?: ReactEventHandler<HTMLAnchorElement>
     onWaiting?: ReactEventHandler<HTMLAnchorElement>
     onWaitingCapture?: ReactEventHandler<HTMLAnchorElement>
     onWheel?: WheelEventHandler<HTMLAnchorElement>
     onWheelCapture?: WheelEventHandler<HTMLAnchorElement>
+    part?: string
     ping?: string
+    popover?: 
+        | ""
+        | "auto"
+        | "manual"
+    popoverTarget?: string
+    popoverTargetAction?: 
+        | "hide"
+        | "show"
+        | "toggle"
     prefix?: string
     property?: string
     radioGroup?: string
     ref?: 
-        | (instance: HTMLAnchorElement | null) => void
-        | RefObject<HTMLAnchorElement>
-        | string
+        | (instance: HTMLAnchorElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLAnchorElement | null>
     referrerPolicy?: 
         | ""
         | "no-referrer"
@@ -8980,7 +9322,7 @@ exports[`Textarea 1`] = `
     disabled?: boolean
     grow?: boolean
     highlightRanges?: { start: number; end?: number | undefined; }[]
-    id: string
+    id?: string
     label: ReactNode
     lineLimit?: number
     lines?: number
@@ -8992,9 +9334,8 @@ exports[`Textarea 1`] = `
     onPaste?: ClipboardEventHandler<HTMLTextAreaElement>
     placeholder?: string
     ref?: 
-        | (instance: HTMLTextAreaElement | null) => void
-        | RefObject<HTMLTextAreaElement>
-        | string
+        | (instance: HTMLTextAreaElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLTextAreaElement | null>
     required?: boolean
     reserveMessageSpace?: boolean
     secondaryLabel?: ReactNode
@@ -9003,6 +9344,9 @@ exports[`Textarea 1`] = `
         | "true"
         | false
         | true
+    tabIndex?: 
+        | -1
+        | 0
     tertiaryLabel?: ReactNode
     tone?: 
         | "caution"
@@ -9021,7 +9365,7 @@ exports[`ThemeNameConsumer 1`] = `
 {
   exportType: component,
   props: {
-    children: (name: string) => ReactElement<any, string | JSXElementConstructor<any>>
+    children: (name: string) => ReactElement<unknown, string | JSXElementConstructor<any>>
 },
 }
 `;
@@ -9072,14 +9416,13 @@ exports[`Toggle 1`] = `
         | "right"
     bleedY?: boolean
     data?: DataAttributeMap
-    id: string
+    id?: string
     label: ReactNode
     on: boolean
     onChange: ChangeHandler
     ref?: 
-        | (instance: HTMLInputElement | null) => void
-        | RefObject<HTMLInputElement>
-        | string
+        | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLInputElement | null>
     size?: 
         | "small"
         | "standard"
@@ -9095,7 +9438,7 @@ exports[`TooltipRenderer 1`] = `
   exportType: component,
   props: {
     children: (renderProps: { triggerProps: TriggerProps; }) => ReactNode
-    id: string
+    id?: string
     placement?: 
         | "bottom"
         | "top"
@@ -9149,9 +9492,8 @@ exports[`makeLinkComponent 1`] = `
 {
   exportType: component,
   props: {
-    defaultProps?: never
     displayName?: string
-    propTypes?: never
+    propTypes?: any
 },
 }
 `;

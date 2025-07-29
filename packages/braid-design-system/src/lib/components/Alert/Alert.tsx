@@ -82,7 +82,6 @@ export const Alert = ({
       paddingX="gutter"
       borderRadius={borderRadius}
       position="relative"
-      overflow="hidden"
       role="alert"
       aria-live="polite"
       textAlign="left"
@@ -104,7 +103,6 @@ export const Alert = ({
               cursor="pointer"
               position="relative"
               onClick={onClose}
-              outline="none"
               transition="touchable"
               transform={{ active: 'touchable' }}
               display="flex"
@@ -112,14 +110,6 @@ export const Alert = ({
               justifyContent="center"
               className={[styles.closeButton, iconContainerSize()]}
             >
-              <Overlay
-                component="span"
-                boxShadow="outlineFocus"
-                transition="fast"
-                onlyVisibleForKeyboardNavigation
-                borderRadius="full"
-                className={styles.closeButtonFocus}
-              />
               <Overlay
                 component="span"
                 background="surface"

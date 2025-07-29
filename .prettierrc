@@ -1,7 +1,6 @@
 {
   "singleQuote": true,
   "tabWidth": 2,
-  "trailingComma": "all",
   "overrides": [
     {
       "files": "packages/braid-design-system/scripts/*",

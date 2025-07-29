@@ -1,6 +1,7 @@
 import dedent from 'dedent';
-import type { AllHTMLAttributes } from 'react';
+import { useId, type AllHTMLAttributes } from 'react';
 
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
 import {
@@ -13,6 +14,7 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
+import { validateTabIndex } from '../validateTabIndex';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 
@@ -34,19 +36,21 @@ export type FieldLabelVariant =
     };
 
 export interface FieldGroupBaseProps {
-  id: NonNullable<FormElementProps['id']>;
+  id?: FormElementProps['id'];
   disabled?: FormElementProps['disabled'];
   description?: FieldLabelProps['description'];
   message?: FieldMessageProps['message'];
   reserveMessageSpace?: FieldMessageProps['reserveMessageSpace'];
   tone?: FieldMessageProps['tone'];
   required?: boolean;
+  tabIndex?: 0 | -1;
   data?: DataAttributeMap;
 }
 
 interface FieldGroupRenderProps {
   disabled?: FieldGroupBaseProps['disabled'];
   'aria-describedby'?: string;
+  tabIndex?: 0 | -1;
 }
 
 type InternalFieldGroupProps = FieldGroupBaseProps &
@@ -70,13 +74,16 @@ export const FieldGroup = ({
   tone,
   required,
   role,
+  tabIndex,
   data,
   componentName,
   ...restProps
 }: InternalFieldGroupProps) => {
-  const labelId = `${id}-label`;
-  const messageId = `${id}-message`;
-  const descriptionId = description ? `${id}-description` : undefined;
+  const resolvedId = useFallbackId(id);
+
+  const labelId = useId();
+  const messageId = useId();
+  const descriptionId = useId();
 
   let ariaLabelledBy;
   let ariaLabel;
@@ -106,13 +113,15 @@ export const FieldGroup = ({
         `,
       );
     }
+
+    validateTabIndex(tabIndex);
   }
 
   return (
     <Box
       component="fieldset"
       disabled={disabled}
-      id={id}
+      id={resolvedId}
       role={role}
       aria-labelledby={ariaLabelledBy}
       aria-label={ariaLabel}
@@ -129,7 +138,7 @@ export const FieldGroup = ({
               tertiaryLabel={tertiaryLabel}
               disabled={disabled}
               description={description}
-              descriptionId={descriptionId}
+              descriptionId={description ? descriptionId : undefined}
             />
           </Box>
         ) : null}
@@ -137,9 +146,10 @@ export const FieldGroup = ({
         <Stack space={messageSpace}>
           {children({
             disabled,
+            tabIndex,
             'aria-describedby': mergeIds(
               message ? messageId : undefined,
-              descriptionId,
+              description ? descriptionId : undefined,
             ),
           })}
 

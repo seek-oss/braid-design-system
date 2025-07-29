@@ -1,4 +1,9 @@
-import { createVar, globalStyle, style } from '@vanilla-extract/css';
+import {
+  createVar,
+  globalStyle,
+  style,
+  styleVariants,
+} from '@vanilla-extract/css';
 
 import { colorModeStyle } from '../../css/colorModeStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
@@ -63,8 +68,13 @@ globalStyle(
   },
 );
 
-export const alignYCenter = style({
-  verticalAlign: 'middle',
+export const alignY = styleVariants({
+  center: {
+    verticalAlign: 'middle',
+  },
+  top: {
+    verticalAlign: 'top',
+  },
 });
 
 export const nowrap = style({

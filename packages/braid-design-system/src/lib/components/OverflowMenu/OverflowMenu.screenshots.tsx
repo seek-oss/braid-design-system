@@ -1,37 +1,81 @@
-import type { ComponentScreenshot } from 'site/types';
+/* eslint-disable no-console */
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Box, OverflowMenu, MenuItem, MenuItemLink } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      background: 'surface',
-      Example: ({ handler }) => (
-        <Box style={{ maxWidth: '100px' }}>
-          <OverflowMenu label="Options">
-            <MenuItem onClick={handler}>Button</MenuItem>
-            <MenuItemLink href="#" onClick={handler}>
-              Link
-            </MenuItemLink>
-          </OverflowMenu>
-        </Box>
-      ),
+const meta = {
+  title: 'Components/OverflowMenu',
+  component: OverflowMenu,
+  argTypes: {
+    label: {
+      control: 'text',
+      description: 'Accessible label for the overflow menu button',
     },
-    {
-      label: 'Small',
-      background: 'surface',
-      Example: ({ handler }) => (
-        <Box style={{ maxWidth: '100px' }}>
-          <OverflowMenu size="small" label="Options">
-            <MenuItem onClick={handler}>Button</MenuItem>
-            <MenuItemLink href="#" onClick={handler}>
-              Link
-            </MenuItemLink>
-          </OverflowMenu>
-        </Box>
-      ),
+    size: {
+      control: 'radio',
+      options: ['standard', 'small'],
+      description: 'Size of the overflow menu button and items',
     },
+    id: {
+      control: 'text',
+      description: 'ID for the button (recommended for accessibility)',
+    },
+    width: {
+      control: 'select',
+      options: ['content', 'small', 'medium', 'large'],
+      description: 'Width of the menu dropdown',
+    },
+    placement: {
+      control: 'radio',
+      options: ['top', 'bottom'],
+      description: 'Placement of the menu dropdown',
+    },
+    reserveIconSpace: {
+      control: 'boolean',
+      description: 'Whether to reserve space for icons in menu items',
+    },
+  },
+  args: {
+    label: 'Options',
+    size: 'standard',
+    id: 'overflow-menu-example',
+    width: 'content',
+    placement: 'bottom',
+    reserveIconSpace: false,
+    children: (
+      <>
+        <MenuItem onClick={() => console.log('Button clicked')}>
+          Button
+        </MenuItem>
+        <MenuItemLink href="#" onClick={() => console.log('Link clicked')}>
+          Link
+        </MenuItemLink>
+      </>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <Box style={{ maxWidth: '100px' }}>
+        <Story />
+      </Box>
+    ),
   ],
+} satisfies Meta<typeof OverflowMenu>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    label: 'Options',
+    size: 'standard',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    label: 'Options',
+    size: 'small',
+  },
 };

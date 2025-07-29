@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 
 import { type LinkComponent, makeLinkComponent, Text, TextLink } from '..';
@@ -103,7 +102,7 @@ describe('TextLink', () => {
           <TextLink
             href="/foo/bar"
             data-attribute="true"
-            // @ts-ignore
+            // @ts-expect-error Should not support custom classes
             className="CUSTOM_CLASS_NAME"
             style={{ color: 'CUSTOM_COLOR' }}
           >

@@ -11,14 +11,14 @@ import {
   Heading,
 } from '../';
 import { IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, setState }) =>
+  Example: ({ getState, setState }) =>
     source(
       <PasswordField
         label="Label"
-        id={id}
         onChange={setState('password')}
         value={getState('password')}
       />,
@@ -48,11 +48,10 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('password')}
             value={getState('password')}
             secondaryLabel="optional"
@@ -78,12 +77,11 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <PasswordField
               label="Label"
-              id={`${id}_1`}
               onChange={setState('passwordfield')}
               value={getState('passwordfield')}
               tone="critical"
@@ -91,7 +89,6 @@ const docs: ComponentDocs = {
             />
             <PasswordField
               label="Label"
-              id={`${id}_2`}
               onChange={setState('passwordfield2')}
               value={getState('passwordfield2')}
               tone="positive"
@@ -99,7 +96,6 @@ const docs: ComponentDocs = {
             />
             <PasswordField
               label="Label"
-              id={`${id}_3`}
               onChange={setState('passwordfield3')}
               value={getState('passwordfield3')}
               tone="caution"
@@ -107,7 +103,6 @@ const docs: ComponentDocs = {
             />
             <PasswordField
               label="Label"
-              id={`${id}_4`}
               onChange={setState('passwordfield4')}
               value={getState('passwordfield4')}
               tone="neutral"
@@ -125,11 +120,10 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('passwordfield')}
             value={getState('passwordfield')}
             description="Extra information about the field"
@@ -144,11 +138,10 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('password')}
             value={getState('password')}
             disabled={true}
@@ -163,11 +156,10 @@ const docs: ComponentDocs = {
           the user no value is entered.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('password')}
             value={getState('password')}
             placeholder="Enter password"
@@ -191,11 +183,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <PasswordField
             label="Label"
-            id={id}
             onChange={setState('password')}
             value={getState('password')}
             visibilityToggleLabel="Hide/show the password"
@@ -212,7 +203,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Heading level="2" id="field1Label">
@@ -220,7 +211,6 @@ const docs: ComponentDocs = {
             </Heading>
             <PasswordField
               aria-labelledby="field1Label"
-              id={`${id}_1`}
               onChange={setState('password')}
               value={getState('password')}
               message="The label for this field is the Heading element before it."
@@ -228,7 +218,6 @@ const docs: ComponentDocs = {
 
             <PasswordField
               aria-label="Hidden label for field"
-              id={`${id}_2`}
               onChange={setState('password2')}
               value={getState('password2')}
               message="The label for this field is hidden."
@@ -236,6 +225,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <PasswordField
+          data={{ testid: 'password-field-1' }}
+          // => data-testid="password-field-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

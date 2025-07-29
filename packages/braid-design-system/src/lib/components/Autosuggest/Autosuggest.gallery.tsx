@@ -9,7 +9,7 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard suggestions',
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
@@ -17,7 +17,6 @@ export const galleryItems: GalleryComponent = {
 
             <Autosuggest
               label="I like to eat"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -43,14 +42,13 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Grouped suggestions',
-      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      Example: ({ getState, setState, setDefaultState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="I like to eat"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -70,7 +68,7 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Standard suggestions with descriptions',
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
@@ -78,7 +76,6 @@ export const galleryItems: GalleryComponent = {
 
             <Autosuggest
               label="I like to eat"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -107,14 +104,13 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Grouped suggestions with descriptions',
-      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      Example: ({ getState, setState, setDefaultState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="I like to eat"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -143,7 +139,7 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Standard suggestions with an icon',
-      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      Example: ({ getState, setState, setDefaultState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
@@ -151,7 +147,6 @@ export const galleryItems: GalleryComponent = {
             <Autosuggest
               label="I like to eat"
               icon={<IconSearch />}
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -164,14 +159,13 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      Example: ({ getState, setState, setDefaultState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="I like to eat"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -186,14 +180,13 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a positive message',
-      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      Example: ({ getState, setState, setDefaultState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="I like to eat"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -208,14 +201,13 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a caution message',
-      Example: ({ id, getState, setState, setDefaultState, resetState }) =>
+      Example: ({ getState, setState, setDefaultState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="I like to eat"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}

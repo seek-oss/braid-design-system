@@ -1,81 +1,92 @@
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { Text, TextLinkButton, IconLink } from '../';
 
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      Example: () => (
-        <Text>
-          The link in this sentence{' '}
-          <TextLinkButton>
-            is actually a span with an ARIA role of button.
-          </TextLinkButton>
-        </Text>
-      ),
-    },
-    {
-      label: 'Weight weak',
-      Example: () => (
-        <Text>
-          The link in this sentence{' '}
-          <TextLinkButton weight="weak">
-            is actually a span with an ARIA role of button
-          </TextLinkButton>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'With icon',
-      Example: () => (
-        <Text>
-          A sentence with a{' '}
-          <TextLinkButton icon={<IconLink />}>TextLinkButton</TextLinkButton>.
-        </Text>
-      ),
-    },
-    {
-      label: 'With a trailing icon',
-      Example: () => (
-        <Text>
-          A sentence with an icon trailing the{' '}
-          <TextLinkButton icon={<IconLink />} iconPosition="trailing">
-            TextLinkButton
-          </TextLinkButton>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'With icon and weight weak',
-      Example: () => (
-        <Text>
-          A sentence with a{' '}
-          <TextLinkButton weight="weak" icon={<IconLink />}>
-            TextLinkButton
-          </TextLinkButton>
-          .
-        </Text>
-      ),
-    },
-    {
-      label: 'With a trailing icon and weight weak',
-      Example: () => (
-        <Text>
-          A sentence with an icon trailing the{' '}
-          <TextLinkButton
-            weight="weak"
-            icon={<IconLink />}
-            iconPosition="trailing"
-          >
-            TextLinkButton
-          </TextLinkButton>
-          .
-        </Text>
-      ),
-    },
-  ],
+const meta: Meta<typeof TextLinkButton> = {
+  title: 'Components/TextLinkButton',
+  component: TextLinkButton,
+  args: {},
+};
+
+export default meta;
+type Story = StoryObj<typeof TextLinkButton>;
+
+export const Default: Story = {
+  args: {
+    children: 'is actually a span with an ARIA role of button',
+  },
+  decorators: (Story) => (
+    <Text>
+      The link in this sentence <Story />.
+    </Text>
+  ),
+};
+
+export const WeightWeak: Story = {
+  name: 'Weight weak',
+  args: {
+    weight: 'weak',
+    children: 'is actually a span with an ARIA role of button',
+  },
+  decorators: (Story) => (
+    <Text>
+      The link in this sentence <Story />.
+    </Text>
+  ),
+};
+
+export const WithIcon: Story = {
+  name: 'With icon',
+  args: {
+    icon: <IconLink />,
+    children: 'TextLinkButton',
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with a <Story />.
+    </Text>
+  ),
+};
+
+export const WithATrailingIcon: Story = {
+  name: 'With a trailing icon',
+  args: {
+    icon: <IconLink />,
+    iconPosition: 'trailing',
+    children: 'TextLinkButton',
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with an icon trailing the <Story />.
+    </Text>
+  ),
+};
+
+export const WithIconAndWeightWeak: Story = {
+  name: 'With icon and weight weak',
+  args: {
+    icon: <IconLink />,
+    weight: 'weak',
+    children: 'TextLinkButton',
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with a <Story />.
+    </Text>
+  ),
+};
+
+export const WithATrailingIconAndWeightWeak: Story = {
+  name: 'With a trailing icon and weight weak',
+  args: {
+    icon: <IconLink />,
+    iconPosition: 'trailing',
+    weight: 'weak',
+    children: 'TextLinkButton',
+  },
+  decorators: (Story) => (
+    <Text>
+      A sentence with an icon trailing the <Story />.
+    </Text>
+  ),
 };

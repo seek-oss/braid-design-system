@@ -22,6 +22,7 @@ export const base = style([
   {
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
+    overflowWrap: 'break-word',
     selectors: {
       [`${descenderCropFixForWebkitBox} &`]: {
         paddingBottom: descenderCropFixOffset,

@@ -22,6 +22,7 @@ import {
   IconBookmark,
   Inline,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -112,7 +113,7 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Dialog">Dialog.</TextLink>
         </Text>
       ),
-      Example: ({ id, getState, toggleState, showToast }) =>
+      Example: ({ getState, toggleState, showToast }) =>
         source(
           <>
             <Inline space="none">
@@ -135,7 +136,6 @@ const docs: ComponentDocs = {
               </MenuRenderer>
             </Inline>
             <Dialog
-              id={id}
               width="content"
               title="Delete item?"
               open={getState('confirm')}
@@ -254,6 +254,17 @@ const docs: ComponentDocs = {
           </Inline>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <MenuItem
+          data={{ testid: 'menu-item-1' }}
+          // => data-testid="menu-item-1"
+        >
+          ...
+        </MenuItem>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

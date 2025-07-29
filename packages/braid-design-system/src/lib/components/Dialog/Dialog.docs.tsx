@@ -1,5 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import type { ComponentProps, ReactElement } from 'react';
+import type { ComponentProps, ReactElement, ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {
@@ -18,9 +18,12 @@ import {
   TextDropdown,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { externalGutter } from '../private/Modal/ModalExternalGutter';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { DialogContent } from './Dialog';
-import { DialogPreview } from './Dialog.screenshots';
+
+import * as styles from '../private/Modal/Modal.css';
 
 const Screen = () => (
   <Box
@@ -39,13 +42,21 @@ const dialogPreviewPropsFromSourceValue = (element: DialogElement) => ({
   scrollLock: false,
 });
 
+const DialogPreview = ({ children }: { children: ReactNode }) => (
+  <Box position="relative">
+    <Box position="absolute" inset={0} className={styles.backdrop} />
+    <Box position="relative" zIndex="modal" padding={externalGutter}>
+      {children}
+    </Box>
+  </Box>
+);
+
 const docs: ComponentDocs = {
   category: 'Content',
   examplebackground: false,
-  Example: ({ id }) => {
+  Example: () => {
     const { code, value } = source<DialogElement>(
       <Dialog
-        id={id}
         title="Title"
         description={<Text tone="secondary">Optional description</Text>}
         open={true}
@@ -121,10 +132,9 @@ const docs: ComponentDocs = {
         </>
       ),
       background: false,
-      Example: ({ id }) => {
+      Example: () => {
         const { code, value } = source<DialogElement>(
           <Dialog
-            id={id}
             title="Example Title"
             description={
               <Text tone="secondary">
@@ -197,7 +207,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
 
-      Example: ({ id, setDefaultState, setState, getState }) =>
+      Example: ({ setDefaultState, setState, getState }) =>
         source(
           <>
             {setDefaultState('open', false)}
@@ -208,7 +218,6 @@ const docs: ComponentDocs = {
                 Select width:{' '}
                 <Strong>
                   <TextDropdown
-                    id="width"
                     label="Width"
                     options={['content', 'xsmall', 'small', 'medium', 'large']}
                     value={getState('width')}
@@ -224,7 +233,6 @@ const docs: ComponentDocs = {
             </Stack>
 
             <Dialog
-              id={id}
               title={`Width: ${getState('width')}`}
               open={getState('open')}
               width={getState('width')}
@@ -248,10 +256,9 @@ const docs: ComponentDocs = {
         </Text>
       ),
       background: false,
-      Example: ({ id }) => {
+      Example: () => {
         const { code, value } = source<DialogElement>(
           <Dialog
-            id={id}
             title="Illustrated Example"
             illustration={
               <Box style={{ height: 72, width: 72 }}>
@@ -300,7 +307,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <>
             <Inline space="small">
@@ -308,7 +315,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Dialog
-              id={id}
               title="Dialog Title"
               open={getState('dialog')}
               onClose={() => toggleState('dialog')}
@@ -326,7 +332,7 @@ const docs: ComponentDocs = {
           function should return <Strong>false</Strong>.
         </Text>
       ),
-      Example: ({ id, getState, toggleState, setState, setDefaultState }) =>
+      Example: ({ getState, toggleState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('valid', false)}
@@ -339,7 +345,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Dialog
-              id={id}
               title="Dialog Title"
               open={getState('dialog')}
               onClose={() => {
@@ -354,7 +359,6 @@ const docs: ComponentDocs = {
               closeLabel="Close Dialog"
             >
               <Checkbox
-                id="valid"
                 label="Can this Dialog be closed?"
                 checked={getState('valid')}
                 onChange={() => {
@@ -382,7 +386,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <>
             <Inline space="small">
@@ -392,7 +396,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Dialog
-              id={id}
               title="Dialog with scrolling content"
               open={getState('dialog')}
               onClose={() => toggleState('dialog')}
@@ -414,7 +417,7 @@ const docs: ComponentDocs = {
           Dialogs is not encouraged.
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <>
             <Inline space="small">
@@ -424,7 +427,6 @@ const docs: ComponentDocs = {
             </Inline>
 
             <Dialog
-              id={`${id}_3`}
               title="Third Dialog"
               width="xsmall"
               open={getState('thirdDialog')}
@@ -433,7 +435,6 @@ const docs: ComponentDocs = {
               <Placeholder height={50} />
             </Dialog>
             <Dialog
-              id={`${id}_1`}
               title="First Dialog"
               width="medium"
               open={getState('firstDialog')}
@@ -445,7 +446,6 @@ const docs: ComponentDocs = {
               </Button>
             </Dialog>
             <Dialog
-              id={`${id}_2`}
               title="Second Dialog"
               width="small"
               open={getState('secondDialog')}
@@ -459,6 +459,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Dialog
+          data={{ testid: 'dialog-1' }}
+          // => data-testid="dialog-1"
+        >
+          ...
+        </Dialog>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

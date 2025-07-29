@@ -3,6 +3,7 @@ import type { ComponentDocs } from 'site/types';
 
 import { List, Text, TextLink, Stack, Column, Columns } from '..';
 import { IconTick, Strong } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -280,6 +281,17 @@ const docs: ComponentDocs = {
           </Columns>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <List
+          data={{ testid: 'list-1' }}
+          // => data-testid="list-1"
+        >
+          ...
+        </List>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

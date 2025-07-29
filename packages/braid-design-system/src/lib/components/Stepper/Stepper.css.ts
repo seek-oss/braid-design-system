@@ -3,8 +3,8 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../css/atoms/atoms';
 import { colorModeStyle } from '../../css/colorModeStyle';
+import { outlineStyle } from '../../css/outlineStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
-import { hideFocusRingsDataAttribute } from '../private/hideFocusRings/hideFocusRingsDataAttribute';
 
 import { vars } from '../../themes/vars.css';
 
@@ -44,6 +44,7 @@ export const tone = {
 };
 
 export const step = style({
+  outline: 'none',
   textAlign: 'left',
   ...colorModeStyle({
     lightMode: {
@@ -164,22 +165,23 @@ export const progressUnfilled = style({
   transform: 'translateX(-101%)',
 });
 
-export const indicatorContainer = style({
-  width: stepIndicatorSize,
-  selectors: {
-    [`${step}:active &`]: {
-      transform: vars.transform.touchable,
-    },
-    [`body:not([${hideFocusRingsDataAttribute}]) ${step}:focus &`]: {
-      transform: 'scale(1.2)',
-    },
-  },
-});
+const focusVisibleSelector = `${step}:focus-visible &`;
 
-export const focusOverlay = style({
-  selectors: {
-    [`${step}:focus &`]: {
-      opacity: 1,
+const { transition: outlineTransition, ...outline } =
+  outlineStyle(focusVisibleSelector);
+
+export const indicatorContainer = style([
+  outline,
+  {
+    width: stepIndicatorSize,
+    transition: [vars.transition.fast, outlineTransition].join(', '),
+    selectors: {
+      [`${step}:active &`]: {
+        transform: vars.transform.touchable,
+      },
+      [focusVisibleSelector]: {
+        transform: 'scale(1.2)',
+      },
     },
   },
-});
+]);

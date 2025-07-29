@@ -1,26 +1,31 @@
-import assert from 'assert';
-
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import isMobile from 'is-mobile';
 import {
-  type ReactNode,
   createContext,
-  useState,
-  useEffect,
+  type ReactNode,
+  type RefCallback,
   useContext,
+  useEffect,
   useRef,
+  useState,
 } from 'react';
-import { usePopperTooltip } from 'react-popper-tooltip';
 
-import { atoms } from '../../css/atoms/atoms';
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../Box/Box';
-import { BraidPortal } from '../BraidPortal/BraidPortal';
+import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import { animationTimeout } from '../private/animationTimeout';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from './TooltipRenderer.css';
+
+const edgeOffset = 'xxsmall';
+export const offsetSpace = 'small';
+
+type ArrowLeftOffset = number | null;
 
 const StaticTooltipContext = createContext(false);
 export const StaticTooltipProvider = ({
@@ -50,84 +55,52 @@ export const TooltipTextDefaultsProvider = ({
   );
 };
 
-const borderRadius = 'large';
-
-export type ArrowProps = ReturnType<
-  ReturnType<typeof usePopperTooltip>['getArrowProps']
->;
+export const TooltipContent = ({
+  inferredPlacement,
+  arrowLeftOffset,
+  children,
+}: {
+  inferredPlacement: PopoverProps['placement'];
+  arrowLeftOffset: ArrowLeftOffset;
+  children: ReactNodeNoStrings;
+}) => (
+  <Box
+    textAlign="left"
+    boxShadow="large"
+    background="neutral"
+    borderRadius="large"
+    padding="small"
+    marginX={edgeOffset}
+    className={[styles.maxWidth, styles.translateZ0]}
+  >
+    <TooltipTextDefaultsProvider>
+      <Box className={styles.overflowWrap} zIndex={1} position="relative">
+        {children}
+      </Box>
+      <Box
+        position="fixed"
+        background="neutral"
+        className={styles.arrow[inferredPlacement!]}
+        style={assignInlineVars({
+          [styles.horizontalOffset]: `${arrowLeftOffset}px`,
+        })}
+      />
+    </TooltipTextDefaultsProvider>
+  </Box>
+);
 
 interface TriggerProps {
-  ref: ReturnType<typeof usePopperTooltip>['setTooltipRef'];
+  ref: RefCallback<HTMLElement>;
   tabIndex: 0;
   'aria-describedby': string;
 }
 
-export const TooltipContent = ({
-  children,
-  opacity,
-  arrowProps,
-}: {
-  children: ReactNodeNoStrings;
-  opacity: 0 | 100;
-  arrowProps: ArrowProps;
-}) => (
-  <Box
-    display="flex"
-    position="relative"
-    transition="fast"
-    opacity={opacity === 0 ? 0 : undefined}
-    className={
-      opacity === 0 ? styles.verticalOffsetBeforeEntrance : styles.translateZ0
-    }
-  >
-    <Box
-      boxShadow="large"
-      background="neutral"
-      borderRadius={borderRadius}
-      padding="small"
-      className={[styles.maxWidth, styles.translateZ0]}
-    >
-      <TooltipTextDefaultsProvider>
-        <Box position="relative" zIndex={1}>
-          {children}
-        </Box>
-        <Box
-          {...arrowProps}
-          borderRadius={borderRadius}
-          background="neutral"
-          className={styles.arrow}
-        />
-      </TooltipTextDefaultsProvider>
-    </Box>
-  </Box>
-);
-
-const validPlacements = ['top', 'bottom'] as const;
-
-type Placement = (typeof validPlacements)[number];
-
 export interface TooltipRendererProps {
-  id: string;
+  id?: string;
   tooltip: ReactNodeNoStrings;
-  placement?: Placement;
+  placement?: PopoverProps['placement'];
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
 }
-
-const normaliseRect = (domRect?: DOMRect) => ({
-  top: Math.round(domRect?.top || 0),
-  left: Math.round(domRect?.left || 0),
-  height: Math.round(domRect?.height || 0),
-  width: Math.round(domRect?.width || 0),
-});
-const defaultRect = normaliseRect();
-
-const doesBoundingBoxNeedUpdating = (
-  element: HTMLElement | null,
-  previousRect: ReturnType<typeof normaliseRect>,
-) => {
-  const currentRect = normaliseRect(element?.getBoundingClientRect());
-  return JSON.stringify(currentRect) !== JSON.stringify(previousRect);
-};
 
 export const TooltipRenderer = ({
   id,
@@ -135,207 +108,171 @@ export const TooltipRenderer = ({
   placement = 'top',
   children,
 }: TooltipRendererProps) => {
-  assert(
-    validPlacements.includes(placement),
-    `The 'placement' prop must be one of the following: ${validPlacements.join(
-      ', ',
-    )}`,
+  const resolvedId = useFallbackId(id);
+
+  const tooltipRef = useRef<HTMLElement | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  const [open, setOpen] = useState(false);
+  const [triggerPosition, setTriggerPosition] = useState<DOMRect | undefined>(
+    undefined,
+  );
+  const [tooltipPosition, setTooltipPosition] = useState<DOMRect | undefined>(
+    undefined,
   );
 
-  const isStatic = useContext(StaticTooltipContext);
-  const [controlledVisible, setControlledVisible] = useState(false);
-  const [opacity, setOpacity] = useState<0 | 100>(0);
   const { grid, space } = useSpace();
-  const triggerBoundingBoxRef =
-    useRef<ReturnType<typeof normaliseRect>>(defaultRect);
-  const tooltipBoundingRectRef =
-    useRef<ReturnType<typeof normaliseRect>>(defaultRect);
+  const isStatic = useContext(StaticTooltipContext);
+  const isMobileDevice = useRef(isMobile()).current;
 
-  const {
-    visible,
-    getTooltipProps,
-    setTooltipRef,
-    tooltipRef,
-    setTriggerRef,
-    triggerRef,
-    getArrowProps,
-    update,
-  } = usePopperTooltip(
-    {
-      placement,
-      trigger: [isMobile() ? 'click' : 'hover', 'focus'],
-      visible: isStatic || controlledVisible,
-      onVisibleChange: (newState) => {
-        triggerBoundingBoxRef.current = normaliseRect(
-          triggerRef?.getBoundingClientRect(),
-        );
-        tooltipBoundingRectRef.current = normaliseRect(
-          tooltipRef?.getBoundingClientRect(),
-        );
-        setControlledVisible(newState);
+  const onScreen = useRef<boolean | null>(null);
+  const showTooltip = isStatic ? true : open;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]: IntersectionObserverEntry[]) => {
+        onScreen.current = entry.isIntersecting;
       },
-    },
-    {
-      modifiers: [
-        {
-          name: 'preventOverflow',
-          options: {
-            padding: space.xsmall * grid,
-          },
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, space.small * grid],
-          },
-        },
-        {
-          name: 'arrow',
-          options: {
-            padding: space.xsmall * grid,
-          },
-        },
-        ...(isStatic
-          ? [
-              {
-                name: 'flip',
-                options: {
-                  fallbackPlacements: [],
-                },
-              },
-            ]
-          : []),
-      ],
-    },
-  );
+    );
+
+    if (triggerRef.current) {
+      observer.observe(triggerRef.current);
+    }
+
+    const handleScroll = () => {
+      // onScreen.current will always be null during testing,
+      // as IntersectionObserver is mocked for tests
+      if (onScreen.current || onScreen.current === null) {
+        setOpen(false);
+      }
+    };
+
+    const scrollHandlerOptions = {
+      capture: true,
+      passive: true,
+    };
+
+    document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
+
+    return () => {
+      observer.disconnect();
+
+      document.removeEventListener(
+        'scroll',
+        handleScroll,
+        scrollHandlerOptions,
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    const toggleTooltip = () => setOpen(!open);
+    const openTooltip = () => setOpen(true);
+    const closeTooltip = () => setOpen(false);
+
+    if (triggerRef.current) {
+      triggerRef.current.addEventListener('blur', closeTooltip);
+
+      if (isMobileDevice) {
+        triggerRef.current.addEventListener('click', toggleTooltip);
+      } else {
+        triggerRef.current.addEventListener('focus', openTooltip);
+        triggerRef.current.addEventListener('mouseenter', openTooltip);
+        triggerRef.current.addEventListener('mouseleave', closeTooltip);
+      }
+    }
+
+    return () => {
+      if (triggerRef.current) {
+        triggerRef.current.removeEventListener('blur', closeTooltip);
+
+        if (isMobileDevice) {
+          triggerRef.current.removeEventListener('click', toggleTooltip);
+        } else {
+          triggerRef.current.removeEventListener('focus', openTooltip);
+          triggerRef.current.removeEventListener('mouseenter', openTooltip);
+          triggerRef.current.removeEventListener('mouseleave', closeTooltip);
+        }
+      }
+    };
+  }, [open, isMobileDevice]);
+
+  const handleTooltipPosition = () => {
+    const setPositions = () => {
+      if (tooltipRef.current) {
+        setTooltipPosition(tooltipRef.current.getBoundingClientRect());
+      }
+      if (triggerRef.current) {
+        setTriggerPosition(triggerRef.current.getBoundingClientRect());
+      }
+    };
+
+    setTimeout(() => {
+      const frameId = requestAnimationFrame(setPositions);
+      return () => cancelAnimationFrame(frameId);
+      // Needs to be slightly less than the animation timeout to update position before showing
+    }, animationTimeout / 2);
+  };
 
   useIsomorphicLayoutEffect(() => {
-    // If the tooltip is visible and the size or position of either the trigger
-    // or the tooltip has changed, then update the tooltip size and position.
-    if (
-      controlledVisible &&
-      update &&
-      (doesBoundingBoxNeedUpdating(triggerRef, triggerBoundingBoxRef.current) ||
-        doesBoundingBoxNeedUpdating(tooltipRef, tooltipBoundingRectRef.current))
-    ) {
-      triggerBoundingBoxRef.current = normaliseRect(
-        triggerRef?.getBoundingClientRect(),
-      );
-      tooltipBoundingRectRef.current = normaliseRect(
-        tooltipRef?.getBoundingClientRect(),
-      );
-
-      update();
-    }
-  });
-
-  useEffect(() => {
-    if (visible) {
-      const handleKeyDown = ({ key }: KeyboardEvent) => {
-        if (key === 'Escape') {
-          setControlledVisible(false);
-        }
-      };
-
-      const handleScroll = () => {
-        setControlledVisible(false);
-      };
-
-      const scrollHandlerOptions = {
-        capture: true,
-        passive: true,
-      };
-
-      document.addEventListener('keydown', handleKeyDown);
-      document.addEventListener('scroll', handleScroll, scrollHandlerOptions);
-
-      return () => {
-        document.removeEventListener('keydown', handleKeyDown);
-        document.removeEventListener(
-          'scroll',
-          handleScroll,
-          scrollHandlerOptions,
-        );
-      };
-    }
-  }, [visible]);
-
-  useEffect(() => {
-    if (!triggerRef) {
+    if (!showTooltip) {
       return;
     }
 
-    if (visible) {
-      const handleFocusIn = (event: FocusEvent) => {
-        if (event.currentTarget !== triggerRef) {
-          setControlledVisible(false);
-        }
-      };
+    handleTooltipPosition();
+    window.addEventListener('resize', handleTooltipPosition);
 
-      document.addEventListener('focusin', handleFocusIn);
+    return () => {
+      window.removeEventListener('resize', handleTooltipPosition);
+    };
+  }, [showTooltip]);
 
-      return () => {
-        document.removeEventListener('focusin', handleFocusIn);
-      };
-    }
-  }, [triggerRef, visible]);
+  let inferredPlacement: typeof placement = placement;
+  let arrowLeftOffset = 0;
 
-  assert(
-    useEffect(() => {
-      if (tooltipRef) {
-        assert(
-          tooltipRef.querySelectorAll('button, input, select, textarea, a')
-            .length === 0,
-          'For accessibility reasons, tooltips must not contain interactive elements',
-        );
-      }
-    }, [tooltipRef]) === undefined,
-  );
+  if (tooltipPosition && triggerPosition) {
+    inferredPlacement =
+      tooltipPosition.top > triggerPosition.top ? 'bottom' : 'top';
 
-  useEffect(() => {
-    if (!tooltipRef || !visible) {
-      return setOpacity(0);
-    }
+    const edgeOffsetInPx = space[edgeOffset] * grid;
+    const tooltipLeftToTriggerLeft =
+      triggerPosition.left - tooltipPosition.left - edgeOffsetInPx;
 
-    const timeout = setTimeout(() => setOpacity(100), isMobile() ? 0 : 250);
-
-    return () => clearTimeout(timeout);
-  }, [tooltipRef, visible]);
+    arrowLeftOffset = tooltipLeftToTriggerLeft + triggerPosition.width / 2;
+  }
 
   return (
     <>
       {children({
         triggerProps: {
           tabIndex: 0,
-          ref: setTriggerRef,
-          'aria-describedby': id,
+          ref: (el) => {
+            triggerRef.current = el;
+          },
+          'aria-describedby': resolvedId,
         },
       })}
-
-      {triggerRef && (
-        <BraidPortal>
-          <div
-            id={id}
-            role="tooltip"
-            hidden={!visible ? true : undefined}
-            className={atoms({
-              reset: 'div',
-              zIndex: 'notification',
-              pointerEvents: 'none',
-              display: triggerRef && visible ? undefined : 'none',
-            })}
-            {...(visible
-              ? getTooltipProps({
-                  ref: setTooltipRef,
-                })
-              : null)}
-          >
-            <TooltipContent opacity={opacity} arrowProps={getArrowProps()}>
-              {tooltip}
-            </TooltipContent>
-          </div>
-        </BraidPortal>
-      )}
+      <Popover
+        id={resolvedId}
+        role="tooltip"
+        ref={tooltipRef}
+        offsetSpace={offsetSpace}
+        align="center"
+        placement={placement}
+        lockPlacement={isStatic}
+        delayVisibility={!isMobileDevice}
+        modal={false}
+        open={showTooltip}
+        onClose={!isStatic ? () => setOpen(false) : undefined}
+        triggerRef={triggerRef}
+      >
+        <TooltipContent
+          inferredPlacement={inferredPlacement}
+          arrowLeftOffset={arrowLeftOffset}
+        >
+          {tooltip}
+        </TooltipContent>
+      </Popover>
     </>
   );
 };

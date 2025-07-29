@@ -13,15 +13,16 @@ import {
   Heading,
   IconLanguage,
   TextDropdown,
+  Notice,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, setState }) =>
+  Example: ({ getState, setState }) =>
     source(
       <TextField
         label="Label"
-        id={id}
         onChange={setState('textfield')}
         value={getState('textfield')}
         onClear={() => setState('textfield', '')}
@@ -59,11 +60,10 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             secondaryLabel="optional"
@@ -93,12 +93,11 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <TextField
               label="Label"
-              id={`${id}_1`}
               onChange={setState('textfield')}
               value={getState('textfield')}
               tone="critical"
@@ -106,7 +105,6 @@ const docs: ComponentDocs = {
             />
             <TextField
               label="Label"
-              id={`${id}_2`}
               onChange={setState('textfield2')}
               value={getState('textfield2')}
               tone="positive"
@@ -114,7 +112,6 @@ const docs: ComponentDocs = {
             />
             <TextField
               label="Label"
-              id={`${id}_3`}
               onChange={setState('textfield3')}
               value={getState('textfield3')}
               tone="caution"
@@ -122,7 +119,6 @@ const docs: ComponentDocs = {
             />
             <TextField
               label="Label"
-              id={`${id}_4`}
               onChange={setState('textfield4')}
               value={getState('textfield4')}
               tone="neutral"
@@ -140,11 +136,10 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             description="Extra information about the field"
@@ -159,11 +154,10 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, setState }) =>
+      Example: ({ setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value="Text in disabled field"
             disabled={true}
@@ -178,11 +172,10 @@ const docs: ComponentDocs = {
           the user when no value is entered.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             placeholder="Enter text"
@@ -207,14 +200,13 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('textfield', 'User entered text')}
 
             <TextField
               label="Label"
-              id={id}
               value={getState('textfield')}
               onChange={setState('textfield')}
               onClear={() => setState('textfield', '')}
@@ -222,6 +214,18 @@ const docs: ComponentDocs = {
             />
           </>,
         ),
+    },
+    {
+      description: (
+        <Notice tone="info">
+          <Text>
+            When prototyping in Playroom, fields will automatically include a{' '}
+            <TextLink href="/components/IconClear">clear icon</TextLink> and
+            clearing functionality. To disable this behaviour, set{' '}
+            <Strong>onClear</Strong> to <Strong>false</Strong>.
+          </Text>
+        </Notice>
+      ),
     },
     {
       label: 'Inserting an icon',
@@ -232,10 +236,9 @@ const docs: ComponentDocs = {
           of the field and is not interactive.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
-            id={id}
             label="Label"
             onChange={setState('textfield')}
             value={getState('textfield')}
@@ -253,10 +256,9 @@ const docs: ComponentDocs = {
           currency symbols, country codes, etc.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
-            id={id}
             label="Phone number"
             onChange={setState('textfield')}
             value={getState('textfield')}
@@ -278,7 +280,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState(
@@ -288,7 +290,6 @@ const docs: ComponentDocs = {
 
             <TextField
               label="Label"
-              id={id}
               onChange={setState('text')}
               value={getState('text')}
               description="Character limit of 50"
@@ -317,7 +318,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('inputmode', 'numeric')}
@@ -326,7 +327,6 @@ const docs: ComponentDocs = {
                 Selected input mode:{' '}
                 <Strong>
                   <TextDropdown
-                    id={`${id}_mode`}
                     label="Input mode"
                     value={getState('inputmode')}
                     onChange={setState('inputmode')}
@@ -343,7 +343,6 @@ const docs: ComponentDocs = {
                 </Strong>
               </Text>
               <TextField
-                id={id}
                 label="Label"
                 onChange={setState('textfield')}
                 value={getState('textfield')}
@@ -366,7 +365,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="large">
             <Heading level="2" id="field1Label">
@@ -374,7 +373,6 @@ const docs: ComponentDocs = {
             </Heading>
             <TextField
               aria-labelledby="field1Label"
-              id={`${id}_1`}
               onChange={setState('text')}
               value={getState('text')}
               message="The label for this field is the Heading element before it."
@@ -382,7 +380,6 @@ const docs: ComponentDocs = {
 
             <TextField
               aria-label="Hidden label for field"
-              id={`${id}_2`}
               onChange={setState('text2')}
               value={getState('text2')}
               message="The label for this field is hidden."
@@ -390,6 +387,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TextField
+          data={{ testid: 'text-field-1' }}
+          // => data-testid="text-field-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -7,15 +6,10 @@ import { BraidTestProvider } from '../../../entries/test';
 
 describe('PasswordField', () => {
   it('should render with password hidden', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="password"
-          label="Password"
-          value=""
-          onChange={onChange}
-        />
+        <PasswordField label="Password" value="" onChange={onChange} />
       </BraidTestProvider>,
     );
 
@@ -25,15 +19,10 @@ describe('PasswordField', () => {
   });
 
   it('should show the password as plain text when visibility button clicked', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByRole, getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="password"
-          label="Password"
-          value=""
-          onChange={onChange}
-        />
+        <PasswordField label="Password" value="" onChange={onChange} />
       </BraidTestProvider>,
     );
 
@@ -45,12 +34,11 @@ describe('PasswordField', () => {
   });
 
   it('should call the onVisibilityToggle handler with the new visibility state when toggled', async () => {
-    const onChange = jest.fn();
-    const onVisibilityToggle = jest.fn();
+    const onChange = vi.fn();
+    const onVisibilityToggle = vi.fn();
     const { getByRole } = render(
       <BraidTestProvider>
         <PasswordField
-          id="password"
           label="Password"
           value=""
           onChange={onChange}
@@ -68,16 +56,10 @@ describe('PasswordField', () => {
   });
 
   it('should not show the visibility toggle button when disabled', () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { queryByRole } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="password"
-          label="Password"
-          disabled
-          value=""
-          onChange={onChange}
-        />
+        <PasswordField label="Password" disabled value="" onChange={onChange} />
       </BraidTestProvider>,
     );
 
@@ -88,12 +70,7 @@ describe('PasswordField', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="field"
-          label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <PasswordField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -103,12 +80,7 @@ describe('PasswordField', () => {
   it('associates field with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="field"
-          aria-label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <PasswordField aria-label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -135,7 +107,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="field"
           label="My field"
           message="Required"
           value=""
@@ -151,7 +122,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="field"
           label="My field"
           description="More detail about field"
           value=""
@@ -208,12 +178,7 @@ describe('PasswordField', () => {
   it('field is not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <PasswordField
-          id="field"
-          label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <PasswordField label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -226,7 +191,6 @@ describe('PasswordField', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <PasswordField
-          id="field"
           label="My field"
           value=""
           onChange={() => {}}
@@ -236,5 +200,62 @@ describe('PasswordField', () => {
     );
 
     expect(getByLabelText('My field')).toHaveAttribute('disabled');
+  });
+
+  it('field should not be accessible with tabindex of -1', async () => {
+    render(
+      <BraidTestProvider>
+        <PasswordField
+          label="Password"
+          value=""
+          onChange={() => {}}
+          tabIndex={-1}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(document.body).toHaveFocus();
+  });
+
+  it('field should be accessible with tabindex of 0', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <PasswordField
+          label="Password"
+          value=""
+          onChange={() => {}}
+          tabIndex={0}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Password')).toHaveFocus();
+  });
+
+  it('field should be accessible with a tabindex of undefined', async () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <PasswordField
+          label="Password"
+          value=""
+          onChange={() => {}}
+          tabIndex={undefined}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(document.body).toHaveFocus();
+
+    await userEvent.tab();
+
+    expect(getByLabelText('Password')).toHaveFocus();
   });
 });

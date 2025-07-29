@@ -2,16 +2,13 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import { Disclosure, Text, TextLink, Strong, Stack, Notice } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id }) =>
+  Example: () =>
     source(
-      <Disclosure
-        id={id}
-        expandLabel="Show content"
-        collapseLabel="Hide content"
-      >
+      <Disclosure expandLabel="Show content" collapseLabel="Hide content">
         <Text>Content</Text>
       </Disclosure>,
     ),
@@ -52,13 +49,12 @@ const docs: ComponentDocs = {
           <Strong>weight</Strong> to <Strong>weak</Strong>.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState }) =>
+      Example: ({ setDefaultState, getState, setState }) =>
         source(
           <>
             {setDefaultState('expanded', false)}
 
             <Disclosure
-              id={id}
               weight="weak"
               expandLabel="Show content"
               collapseLabel="Hide content"
@@ -88,11 +84,10 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ id, handler }) =>
+      Example: ({ handler }) =>
         source(
           <Stack space="large">
             <Disclosure
-              id={`${id}_1`}
               expandLabel="Large size"
               size="large"
               expanded={true}
@@ -103,7 +98,6 @@ const docs: ComponentDocs = {
               </Text>
             </Disclosure>
             <Disclosure
-              id={`${id}_2`}
               expandLabel="Standard size"
               size="standard"
               expanded={true}
@@ -114,7 +108,6 @@ const docs: ComponentDocs = {
               </Text>
             </Disclosure>
             <Disclosure
-              id={`${id}_3`}
               expandLabel="Small size"
               size="small"
               expanded={true}
@@ -125,7 +118,6 @@ const docs: ComponentDocs = {
               </Text>
             </Disclosure>
             <Disclosure
-              id={`${id}_4`}
               expandLabel="Xsmall size"
               size="xsmall"
               expanded={true}
@@ -148,13 +140,12 @@ const docs: ComponentDocs = {
           prop.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState }) =>
+      Example: ({ setDefaultState, getState, setState }) =>
         source(
           <>
             {setDefaultState('expanded', true)}
 
             <Disclosure
-              id={id}
               expandLabel="Show content"
               collapseLabel="Hide content"
               expanded={getState('expanded')}
@@ -177,15 +168,14 @@ const docs: ComponentDocs = {
           parent typographic component.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState }) =>
+      Example: ({ setDefaultState, getState, setState }) =>
         source(
           <>
             {setDefaultState('expanded', false)}
 
             <Text>
-              Preceeding text content that is followed by a Disclosure.
+              Preceding text content that is followed by a Disclosure.
               <Disclosure
-                id={id}
                 expandLabel="Show content"
                 collapseLabel="Hide content"
                 expanded={getState('expanded')}
@@ -206,13 +196,12 @@ const docs: ComponentDocs = {
           <Strong>expanded</Strong> and <Strong>onToggle</Strong> props.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState }) =>
+      Example: ({ setDefaultState, getState, setState }) =>
         source(
           <>
             {setDefaultState('expanded', true)}
 
             <Disclosure
-              id={id}
               expandLabel="Show content"
               collapseLabel="Hide content"
               expanded={getState('expanded')}
@@ -223,6 +212,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Disclosure
+          data={{ testid: 'disclosure-1' }}
+          // => data-testid="disclosure-1"
+        >
+          ...
+        </Disclosure>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

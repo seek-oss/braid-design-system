@@ -3,12 +3,12 @@ import { createContext } from 'react';
 import type { RadioGroupProps } from './RadioGroup';
 
 interface RadioGroupContextValues {
-  id: RadioGroupProps['id'];
   name: string;
   value: RadioGroupProps['value'];
   disabled?: boolean;
   tone?: RadioGroupProps['tone'];
   size?: RadioGroupProps['size'];
+  tabIndex?: RadioGroupProps['tabIndex'];
   'aria-describedby'?: string;
   onChange: RadioGroupProps['onChange'];
 }

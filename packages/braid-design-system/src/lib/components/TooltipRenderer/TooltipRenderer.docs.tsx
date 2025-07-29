@@ -13,57 +13,16 @@ import {
   Button,
 } from '..';
 
-import {
-  type TooltipRendererProps,
-  StaticTooltipProvider,
-  TooltipTextDefaultsProvider,
-} from './TooltipRenderer';
+import { offsetSpace, TooltipContent } from './TooltipRenderer';
 
 import { constants } from './TooltipRenderer.css';
 
-const StaticTooltip = ({
-  id,
-  tooltip,
-  placement,
-  children,
-}: TooltipRendererProps) => {
-  const contentPlaceholder = (
-    <Box userSelect="none" opacity={0} aria-hidden>
-      {children({ triggerProps: {} as any })}
-      <TooltipTextDefaultsProvider>
-        <Box
-          style={{
-            maxWidth: constants.maxWidth,
-            paddingTop: constants.arrowSize,
-          }}
-        >
-          <Box padding="medium">{tooltip}</Box>
-        </Box>
-      </TooltipTextDefaultsProvider>
-    </Box>
-  );
-
-  return (
-    <StaticTooltipProvider>
-      <Box position="relative">
-        {placement === 'top' ? contentPlaceholder : null}
-        <Box position="absolute" left={0} right={0}>
-          <TooltipRenderer id={id} tooltip={tooltip} placement={placement}>
-            {children}
-          </TooltipRenderer>
-        </Box>
-        {placement === 'bottom' ? contentPlaceholder : null}
-      </Box>
-    </StaticTooltipProvider>
-  );
-};
-
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id }) =>
+  Example: () =>
     source(
       <Inline space="small">
-        <TooltipRenderer id={id} tooltip={<Text>This is a tooltip!</Text>}>
+        <TooltipRenderer tooltip={<Text>This is a tooltip!</Text>}>
           {({ triggerProps }) => (
             <Box aria-label="Help" {...triggerProps}>
               <IconHelp />
@@ -127,18 +86,16 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Inline space="small">
             <TooltipRenderer
-              id={`${id}_1`}
               placement="top"
               tooltip={<Text>The placement is “top”</Text>}
             >
               {({ triggerProps }) => <Button {...triggerProps}>Top</Button>}
             </TooltipRenderer>
             <TooltipRenderer
-              id={`${id}_2`}
               placement="bottom"
               tooltip={<Text>The placement is “bottom”</Text>}
             >
@@ -162,14 +119,13 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) => {
+      Example: () => {
         const { code } = source(
           <TooltipRenderer
-            id={id}
             placement="bottom"
             tooltip={
               <Stack space="medium">
-                <Text weight="strong">Strong text</Text>
+                <Text size="large">Large text</Text>
                 <Text>
                   The quick brown fox jumps over the lazy dog. The quick brown
                   fox jumps over the lazy dog. The quick brown fox jumps over
@@ -191,28 +147,22 @@ const docs: ComponentDocs = {
         return {
           code,
           value: (
-            <StaticTooltip
-              id={id}
-              placement="bottom"
-              tooltip={
+            <Stack space={offsetSpace} align="center">
+              <IconHelp />
+              <TooltipContent
+                inferredPlacement="bottom"
+                arrowLeftOffset={parseInt(constants.maxWidth, 10) / 2}
+              >
                 <Stack space="medium">
-                  <Text weight="strong">Strong text</Text>
+                  <Text size="large">Large text</Text>
                   <Text>
                     The quick brown fox jumps over the lazy dog. The quick brown
                     fox jumps over the lazy dog. The quick brown fox jumps over
                     the lazy dog.
                   </Text>
                 </Stack>
-              }
-            >
-              {({ triggerProps }) => (
-                <Inline space="small" align="center">
-                  <Box aria-label="Help" {...triggerProps}>
-                    <IconHelp />
-                  </Box>
-                </Inline>
-              )}
-            </StaticTooltip>
+              </TooltipContent>
+            </Stack>
           ),
         };
       },

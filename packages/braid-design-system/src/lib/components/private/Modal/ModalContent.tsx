@@ -5,19 +5,18 @@ import {
   useRef,
   forwardRef,
   Fragment,
+  useId,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
-import { Column } from '../../Column/Column';
-import { Columns } from '../../Columns/Columns';
 import { Heading } from '../../Heading/Heading';
-import { gutters as pageBlockGutters } from '../../PageBlock/PageBlock';
+import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
-import { Overlay } from '../Overlay/Overlay';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -27,7 +26,7 @@ import { normalizeKey } from '../normalizeKey';
 import * as styles from './Modal.css';
 
 export interface ModalContentProps {
-  id: string;
+  id?: string;
   title: string;
   children: ReactNode;
   onClose: () => void;
@@ -61,20 +60,14 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
       <Heading level={headingLevel} align={center ? 'center' : undefined}>
         <Box
           ref={ref}
-          component="span"
           tabIndex={-1}
-          outline="none"
+          component="span"
           position="relative"
+          outline="focus"
+          borderRadius="small" // Ensures focus ring is rounded
           className={styles.headingRoot}
         >
           {title}
-          <Overlay
-            boxShadow="outlineFocus"
-            borderRadius="standard"
-            transition="fast"
-            className={styles.headingFocus}
-            onlyVisibleForKeyboardNavigation
-          />
         </Box>
       </Heading>
       {description ? <Box id={descriptionId}>{description}</Box> : null}
@@ -99,12 +92,13 @@ export const ModalContent = ({
   data,
   ...restProps
 }: ModalContentProps) => {
+  const resolvedId = useFallbackId(id);
+  const descriptionId = useId();
+
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
   const defaultHeadingRef = useRef<HTMLElement>(null);
   const headingRef = headingRefProp || defaultHeadingRef;
-
-  const descriptionId = `${id}_desc`;
 
   const handleEscape = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -125,7 +119,7 @@ export const ModalContent = ({
       aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
       aria-describedby={description ? descriptionId : undefined}
       aria-modal="true"
-      id={id}
+      id={resolvedId}
       onKeyDown={handleEscape}
       position="relative"
       width="full"
@@ -136,6 +130,7 @@ export const ModalContent = ({
       justifyContent={justifyContent}
     >
       <Box
+        ref={modalRef}
         position="relative"
         display="flex"
         alignItems="center"
@@ -149,9 +144,15 @@ export const ModalContent = ({
         width={width !== 'content' ? 'full' : undefined}
         maxWidth={width !== 'content' ? width : undefined}
       >
-        {/* modalRef gets forwarded down to UL by RemoveScroll by `forwardProps` */}
-        <RemoveScroll ref={modalRef} forwardProps enabled={scrollLock}>
+        <RemoveScroll
+          noRelative // Allows portalled elements to be positioned correctly relative to the viewport size
+          forwardProps
+          enabled={scrollLock}
+        >
           <Box
+            display="flex"
+            gap="large"
+            flexDirection="column"
             background="surface"
             borderRadius={modalRadius}
             overflow="auto"
@@ -168,10 +169,21 @@ export const ModalContent = ({
             ]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <Stack space="large">
-              {illustration ? (
-                <Stack space="medium" align="center">
-                  <Box paddingX="gutter">{illustration}</Box>
+            {illustration ? (
+              <Stack space="medium" align="center">
+                <Box paddingX="gutter">{illustration}</Box>
+                <ModalContentHeader
+                  title={title}
+                  headingLevel={headingLevel}
+                  description={description}
+                  descriptionId={descriptionId}
+                  center={Boolean(illustration)}
+                  ref={headingRef}
+                />
+              </Stack>
+            ) : (
+              <Box display="flex">
+                <Box width="full" minWidth={0}>
                   <ModalContentHeader
                     title={title}
                     headingLevel={headingLevel}
@@ -180,26 +192,11 @@ export const ModalContent = ({
                     center={Boolean(illustration)}
                     ref={headingRef}
                   />
-                </Stack>
-              ) : (
-                <Columns space="none">
-                  <Column>
-                    <ModalContentHeader
-                      title={title}
-                      headingLevel={headingLevel}
-                      description={description}
-                      descriptionId={descriptionId}
-                      center={Boolean(illustration)}
-                      ref={headingRef}
-                    />
-                  </Column>
-                  <Column width="content">
-                    <Box width="touchable" />
-                  </Column>
-                </Columns>
-              )}
-              <Fragment>{children}</Fragment>
-            </Stack>
+                </Box>
+                <Box width="touchable" flexShrink={0} flexGrow={0} />
+              </Box>
+            )}
+            <Fragment>{children}</Fragment>
           </Box>
         </RemoveScroll>
         <Box
@@ -223,7 +220,6 @@ export const ModalContent = ({
               className={[styles.closeIconOffset, styles.pointerEventsAll]}
             >
               <ButtonIcon
-                id={`${id}-close`}
                 label={closeLabel}
                 icon={<IconClear tone="secondary" />}
                 variant="transparent"

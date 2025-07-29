@@ -1,4 +1,3 @@
-/** @jest-environment node */
 import { exec as _exec } from 'child_process';
 import path from 'path';
 import { promisify } from 'util';
@@ -105,7 +104,7 @@ describe('build', () => {
     expect.addSnapshotSerializer({
       test: (val) => typeof val === 'string' && val.startsWith(filePrefix),
       print: (val) => (val as string).trim(),
-    } satisfies jest.SnapshotSerializerPlugin);
+    });
     expect(filesWithVanillaStyles).toMatchSnapshot();
   });
 });

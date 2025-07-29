@@ -7,11 +7,10 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Standard',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             onClear={() => setState('textfield', '')}
@@ -20,11 +19,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With additional labels',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             secondaryLabel="optional"
@@ -38,11 +36,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a description',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             onClear={() => setState('textfield', '')}
@@ -52,11 +49,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a critical message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             tone="critical"
@@ -66,11 +62,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a positive message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             tone="positive"
@@ -80,11 +75,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a caution message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             tone="caution"
@@ -94,11 +88,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a neutral message',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             tone="neutral"
@@ -108,11 +101,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With an icon',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Job Title"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             icon={<IconSearch />}
@@ -122,11 +114,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'With a prefix',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Phone number"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             prefix="+61"
@@ -135,11 +126,10 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Disabled field',
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <TextField
             label="Label"
-            id={id}
             onChange={setState('textfield')}
             value={getState('textfield')}
             disabled={true}

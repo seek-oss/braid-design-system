@@ -1,16 +1,8 @@
 import { parse as parseGradient } from 'gradient-parser';
 import { parseToRgb } from 'polished';
-// @ts-ignore
-
-type LinearGradients = Array<{
-  colorStops: Array<{
-    type: string;
-    value: string;
-  }>;
-}>;
 
 const getLinearGradientColors = (color: string) => {
-  const gradients: LinearGradients = parseGradient(color);
+  const gradients = parseGradient(color);
 
   return gradients[0].colorStops.map(({ type, value }) => {
     if (typeof value !== 'string') {

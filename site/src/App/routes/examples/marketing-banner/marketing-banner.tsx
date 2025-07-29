@@ -16,7 +16,7 @@ import {
 } from 'braid-src/lib/components';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { Placeholder } from 'braid-src/lib/playroom/components';
-import type { ReactElement } from 'react';
+import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';
 import Code from '../../../Code/Code';
@@ -26,7 +26,7 @@ import { TextStack } from '../../../TextStack/TextStack';
 interface StepProps {
   heading?: string;
   detail: ReactNodeNoStrings;
-  children: ReactElement;
+  children: ComponentProps<typeof Code>['children'];
 }
 const Step = ({ heading, detail, children }: StepProps) => (
   <Stack space="xlarge">
@@ -141,13 +141,15 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box>
-            <Heading level="1">
-              Heard about our latest marketing campaign?
-            </Heading>
-            <Button>Show me</Button>
-            <Placeholder height={300} label="Marketing illustration" />
-          </Box>
+          {source(
+            <Box>
+              <Heading level="1">
+                Heard about our latest marketing campaign?
+              </Heading>
+              <Button>Show me</Button>
+              <Placeholder height={300} label="Marketing illustration" />
+            </Box>,
+          )}
         </Step>
 
         <Step
@@ -172,14 +174,16 @@ const page: Page = {
             </Stack>
           }
         >
-          <Columns space="gutter">
-            <Column width="3/5">
-              <Placeholder height={300} />
-            </Column>
-            <Column>
-              <Placeholder height={300} />
-            </Column>
-          </Columns>
+          {source(
+            <Columns space="gutter">
+              <Column width="3/5">
+                <Placeholder height={300} />
+              </Column>
+              <Column>
+                <Placeholder height={300} />
+              </Column>
+            </Columns>,
+          )}
         </Step>
 
         <Step
@@ -216,21 +220,23 @@ const page: Page = {
             </Text>
           }
         >
-          <Box>
-            <Columns space="gutter">
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1">
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Button>Show me</Button>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box>
+              <Columns space="gutter">
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading level="1">
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Button>Show me</Button>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Step
@@ -242,21 +248,23 @@ const page: Page = {
             </Text>
           }
         >
-          <Box>
-            <Columns space="gutter" alignY="center">
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1">
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Button>Show me</Button>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box>
+              <Columns space="gutter" alignY="center">
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading level="1">
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Button>Show me</Button>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Step
@@ -269,21 +277,23 @@ const page: Page = {
             </Text>
           }
         >
-          <Box>
-            <Columns space="gutter" alignY="center">
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1">
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Button variant="ghost">Show me</Button>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box>
+              <Columns space="gutter" alignY="center">
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading level="1">
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Button variant="ghost">Show me</Button>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Step
@@ -302,23 +312,25 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box>
-            <Columns space="gutter" alignY="center">
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1">
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Inline space="none">
-                    <Button variant="ghost">Show me</Button>
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box>
+              <Columns space="gutter" alignY="center">
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading level="1">
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Inline space="none">
+                      <Button variant="ghost">Show me</Button>
+                    </Inline>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Step
@@ -339,25 +351,27 @@ const page: Page = {
             </>
           }
         >
-          <Box background="brandAccent">
-            <Columns space="gutter" alignY="center">
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1">
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Inline space="none">
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box background="brandAccent">
+              <Columns space="gutter" alignY="center">
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading level="1">
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Inline space="none">
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
+                    </Inline>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Text>
@@ -398,25 +412,27 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box background="brandAccent" paddingX="small" paddingY="xlarge">
-            <Columns space="gutter" alignY="center">
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1">
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Inline space="none">
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box background="brandAccent" paddingX="small" paddingY="xlarge">
+              <Columns space="gutter" alignY="center">
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading level="1">
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Inline space="none">
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
+                    </Inline>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Text component="p">
@@ -444,25 +460,27 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box background="brandAccent" paddingX="small" paddingY="xlarge">
-            <Columns space="gutter" alignY="center" collapseBelow="tablet">
-              <Column width="3/5">
-                <Stack space="large">
-                  <Heading level="1">
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Inline space="none">
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box background="brandAccent" paddingX="small" paddingY="xlarge">
+              <Columns space="gutter" alignY="center" collapseBelow="tablet">
+                <Column width="3/5">
+                  <Stack space="large">
+                    <Heading level="1">
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Inline space="none">
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
+                    </Inline>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Text component="p">
@@ -501,31 +519,33 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box background="brandAccent" paddingX="small" paddingY="xlarge">
-            <Columns space="gutter" alignY="center" collapseBelow="tablet">
-              <Column width="3/5">
-                <Stack space="xlarge">
-                  <Heading
-                    level="1"
-                    align={{ mobile: 'center', tablet: 'left' }}
-                  >
-                    Heard about our latest marketing campaign?
-                  </Heading>
-                  <Inline
-                    space="none"
-                    align={{ mobile: 'center', tablet: 'left' }}
-                  >
-                    <Button variant="ghost" tone="neutral">
-                      Show me
-                    </Button>
-                  </Inline>
-                </Stack>
-              </Column>
-              <Column>
-                <Placeholder height={300} label="Marketing illustration" />
-              </Column>
-            </Columns>
-          </Box>
+          {source(
+            <Box background="brandAccent" paddingX="small" paddingY="xlarge">
+              <Columns space="gutter" alignY="center" collapseBelow="tablet">
+                <Column width="3/5">
+                  <Stack space="xlarge">
+                    <Heading
+                      level="1"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      Heard about our latest marketing campaign?
+                    </Heading>
+                    <Inline
+                      space="none"
+                      align={{ mobile: 'center', tablet: 'left' }}
+                    >
+                      <Button variant="ghost" tone="neutral">
+                        Show me
+                      </Button>
+                    </Inline>
+                  </Stack>
+                </Column>
+                <Column>
+                  <Placeholder height={300} label="Marketing illustration" />
+                </Column>
+              </Columns>
+            </Box>,
+          )}
         </Step>
 
         <Text component="p">
@@ -556,27 +576,29 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box background="brandAccent" paddingX="small" paddingY="xlarge">
-            <ContentBlock>
-              <Columns space="gutter" alignY="center">
-                <Column width="3/5">
-                  <Stack space="large">
-                    <Heading level="1">
-                      Heard about our latest marketing campaign?
-                    </Heading>
-                    <Inline space="none">
-                      <Button variant="ghost" tone="neutral">
-                        Show me
-                      </Button>
-                    </Inline>
-                  </Stack>
-                </Column>
-                <Column>
-                  <Placeholder height={300} label="Marketing illustration" />
-                </Column>
-              </Columns>
-            </ContentBlock>
-          </Box>
+          {source(
+            <Box background="brandAccent" paddingX="small" paddingY="xlarge">
+              <ContentBlock>
+                <Columns space="gutter" alignY="center">
+                  <Column width="3/5">
+                    <Stack space="large">
+                      <Heading level="1">
+                        Heard about our latest marketing campaign?
+                      </Heading>
+                      <Inline space="none">
+                        <Button variant="ghost" tone="neutral">
+                          Show me
+                        </Button>
+                      </Inline>
+                    </Stack>
+                  </Column>
+                  <Column>
+                    <Placeholder height={300} label="Marketing illustration" />
+                  </Column>
+                </Columns>
+              </ContentBlock>
+            </Box>,
+          )}
         </Step>
 
         <Step
@@ -595,37 +617,39 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box
-            background="brandAccent"
-            paddingX="small"
-            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
-          >
-            <ContentBlock>
-              <Columns space="gutter" alignY="center" collapseBelow="tablet">
-                <Column width="3/5">
-                  <Stack space="xlarge">
-                    <Heading
-                      level="1"
-                      align={{ mobile: 'center', tablet: 'left' }}
-                    >
-                      Heard about our latest marketing campaign?
-                    </Heading>
-                    <Inline
-                      space="none"
-                      align={{ mobile: 'center', tablet: 'left' }}
-                    >
-                      <Button variant="ghost" tone="neutral">
-                        Show me
-                      </Button>
-                    </Inline>
-                  </Stack>
-                </Column>
-                <Column>
-                  <Placeholder height={300} label="Marketing illustration" />
-                </Column>
-              </Columns>
-            </ContentBlock>
-          </Box>
+          {source(
+            <Box
+              background="brandAccent"
+              paddingX="small"
+              paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
+            >
+              <ContentBlock>
+                <Columns space="gutter" alignY="center" collapseBelow="tablet">
+                  <Column width="3/5">
+                    <Stack space="xlarge">
+                      <Heading
+                        level="1"
+                        align={{ mobile: 'center', tablet: 'left' }}
+                      >
+                        Heard about our latest marketing campaign?
+                      </Heading>
+                      <Inline
+                        space="none"
+                        align={{ mobile: 'center', tablet: 'left' }}
+                      >
+                        <Button variant="ghost" tone="neutral">
+                          Show me
+                        </Button>
+                      </Inline>
+                    </Stack>
+                  </Column>
+                  <Column>
+                    <Placeholder height={300} label="Marketing illustration" />
+                  </Column>
+                </Columns>
+              </ContentBlock>
+            </Box>,
+          )}
         </Step>
 
         <Step
@@ -640,41 +664,43 @@ const page: Page = {
             </Stack>
           }
         >
-          <Box
-            background="brandAccent"
-            paddingX="small"
-            paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
-          >
-            <ContentBlock>
-              <Columns
-                space={{ mobile: 'xlarge', tablet: 'gutter' }}
-                alignY="center"
-                collapseBelow="tablet"
-              >
-                <Column width="3/5">
-                  <Stack space="large">
-                    <Heading
-                      level="1"
-                      align={{ mobile: 'center', tablet: 'left' }}
-                    >
-                      Heard about our latest marketing campaign?
-                    </Heading>
-                    <Inline
-                      space="none"
-                      align={{ mobile: 'center', tablet: 'left' }}
-                    >
-                      <Button variant="ghost" tone="neutral">
-                        Show me
-                      </Button>
-                    </Inline>
-                  </Stack>
-                </Column>
-                <Column>
-                  <Placeholder height={300} label="Marketing illustration" />
-                </Column>
-              </Columns>
-            </ContentBlock>
-          </Box>
+          {source(
+            <Box
+              background="brandAccent"
+              paddingX="small"
+              paddingY={{ mobile: 'xlarge', tablet: 'xxlarge' }}
+            >
+              <ContentBlock>
+                <Columns
+                  space={{ mobile: 'xlarge', tablet: 'gutter' }}
+                  alignY="center"
+                  collapseBelow="tablet"
+                >
+                  <Column width="3/5">
+                    <Stack space="large">
+                      <Heading
+                        level="1"
+                        align={{ mobile: 'center', tablet: 'left' }}
+                      >
+                        Heard about our latest marketing campaign?
+                      </Heading>
+                      <Inline
+                        space="none"
+                        align={{ mobile: 'center', tablet: 'left' }}
+                      >
+                        <Button variant="ghost" tone="neutral">
+                          Show me
+                        </Button>
+                      </Inline>
+                    </Stack>
+                  </Column>
+                  <Column>
+                    <Placeholder height={300} label="Marketing illustration" />
+                  </Column>
+                </Columns>
+              </ContentBlock>
+            </Box>,
+          )}
         </Step>
       </Stack>
 

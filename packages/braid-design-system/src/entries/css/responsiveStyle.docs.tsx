@@ -1,10 +1,8 @@
-import source from '@braid-design-system/source.macro';
-import dedent from 'dedent';
 import { Fragment } from 'react';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
 
-import { responsiveStyle, vars, breakpoints } from 'braid-src/entries/css';
+import { breakpoints } from 'braid-src/entries/css';
 import { Notice, Strong, Text, TextLink } from 'braid-src/lib/components';
 
 const bps = Object.keys(breakpoints);
@@ -54,21 +52,19 @@ const docs: CssDoc = {
             , e.g. <Strong>style</Strong>, to create the actual styles.
           </Text>
           <Code>
-            {dedent`
+            {`
               // styles.css.ts
               import { style } from '@vanilla-extract/css';
               import { vars, responsiveStyle } from 'braid-design-system/css';
 
-              export const className = style(${
-                source(
-                  responsiveStyle({
-                    mobile: { flexBasis: vars.space.small },
-                    tablet: { flexBasis: vars.space.medium },
-                    desktop: { flexBasis: vars.space.large },
-                    wide: { flexBasis: vars.space.xlarge },
-                  }),
-                ).code
-              });
+              export const className = style(
+                responsiveStyle({
+                  mobile: { flexBasis: vars.space.small },
+                  tablet: { flexBasis: vars.space.medium },
+                  desktop: { flexBasis: vars.space.large },
+                  wide: { flexBasis: vars.space.xlarge },
+                }),
+              );
 
               // is equivalent to
               import { style } from '@vanilla-extract/css';

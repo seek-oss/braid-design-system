@@ -2,14 +2,15 @@ import assert from 'assert';
 
 import { type FormEvent, useContext } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import { Box } from '../Box/Box';
 import HeadingContext from '../Heading/HeadingContext';
 import { TextContext } from '../Text/TextContext';
 import { IconChevron } from '../icons';
-import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { validateTabIndex } from '../private/validateTabIndex';
 
 import * as styles from './TextDropdown.css';
 
@@ -20,13 +21,14 @@ interface TextDropdownOption<Value> {
 type TextDropdownValue<Value> = Value | TextDropdownOption<Value>;
 
 export interface TextDropdownProps<Value> {
-  id: string;
+  id?: string;
   value: Value;
   onChange: (value: Value) => void;
   onBlur?: () => void;
   options: Array<TextDropdownValue<Value>>;
   label: string;
   data?: DataAttributeMap;
+  tabIndex?: 0 | -1;
 }
 
 export function parseSimpleToComplexOption<Value>(
@@ -48,6 +50,7 @@ export function TextDropdown<Value>({
   options,
   label,
   data,
+  tabIndex,
   ...restProps
 }: TextDropdownProps<Value>) {
   assert(
@@ -62,6 +65,10 @@ export function TextDropdown<Value>({
     'TextDropdown components must be rendered within a Text or Heading component. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/TextDropdown',
   );
 
+  if (process.env.NODE_ENV !== 'production') {
+    validateTabIndex(tabIndex);
+  }
+
   const parsedOptions = options.map(parseSimpleToComplexOption);
   const [currentText] = parsedOptions.filter((o) => value === o.value);
 
@@ -71,16 +78,14 @@ export function TextDropdown<Value>({
     );
   }
 
+  const resolvedId = useFallbackId(id);
+
   return (
     <Box
       display="inlineBlock"
       position="relative"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      <Box pointerEvents="none" userSelect="none">
-        {currentText.text} <IconChevron alignY="lowercase" />
-      </Box>
-
       <Box
         component="select"
         position="absolute"
@@ -90,7 +95,8 @@ export function TextDropdown<Value>({
         className={styles.select}
         aria-label={label}
         title={label}
-        id={id}
+        id={resolvedId}
+        tabIndex={tabIndex}
         value={String(value)}
         onChange={(ev: FormEvent<HTMLSelectElement>) => {
           if (typeof onChange === 'function') {
@@ -110,13 +116,9 @@ export function TextDropdown<Value>({
         </optgroup>
       </Box>
 
-      <Overlay
-        boxShadow="outlineFocus"
-        borderRadius="standard"
-        transition="fast"
-        onlyVisibleForKeyboardNavigation
-        className={styles.focusOverlay}
-      />
+      <Box pointerEvents="none" userSelect="none" className={styles.focusRing}>
+        {currentText.text} <IconChevron alignY="lowercase" />
+      </Box>
     </Box>
   );
 }

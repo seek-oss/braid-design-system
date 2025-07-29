@@ -132,7 +132,7 @@ export function useFallbackState<Value, Handler extends Callback>(
   const resolvedValue =
     value ??
     (stateKey
-      ? playroomState.getState(stateKey) ?? defaultValue
+      ? (playroomState.getState(stateKey) ?? defaultValue)
       : internalStateValue);
 
   return [resolvedValue, handleChange];

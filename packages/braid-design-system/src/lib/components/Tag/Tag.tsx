@@ -62,7 +62,6 @@ export const Tag = ({
   );
 
   let label = 'Clear';
-  let buttonType = 'clear';
   let handler;
 
   const clearable = 'onClear' in restProps && restProps.onClear;
@@ -71,11 +70,9 @@ export const Tag = ({
   if (clearable) {
     label = restProps.clearLabel;
     handler = restProps.onClear;
-    buttonType = 'clear';
   } else if (addable) {
     label = restProps.addLabel;
     handler = restProps.onAdd;
-    buttonType = 'add';
   }
   const hasButton = clearable || addable;
 
@@ -105,9 +102,6 @@ export const Tag = ({
       {hasButton ? (
         <Box className={styles.clearGutter}>
           <ButtonIcon
-            // @ts-expect-error With no id, ButtonIcon will fallback from Tooltip to title internally.
-            // ID will no longer be required when React 18 has sufficient adoption and we can safely `useId()`
-            id={id ? `${id}-${buttonType}` : undefined}
             icon={addable ? <IconAdd /> : <IconClear tone="secondary" />}
             label={label}
             size="small"

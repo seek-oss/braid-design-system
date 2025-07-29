@@ -60,7 +60,7 @@ If you're rendering within the context of another application, you may want to o
 If you'd like to customise the technical implementation of all `Link` and `TextLink` components from Braid, you can pass a custom component to the `linkComponent` prop on `BraidProvider`. For example, if you wanted to ensure that all relative links are [React Router](https://reacttraining.com/react-router/) links:
 
 ```tsx
-import { Link as ReactRouterLink } from 'react-router-dom';
+import { Link as ReactRouterLink } from 'react-router';
 import { BraidProvider, makeLinkComponent } from 'braid-design-system';
 import wireframe from 'braid-design-system/themes/wireframe';
 

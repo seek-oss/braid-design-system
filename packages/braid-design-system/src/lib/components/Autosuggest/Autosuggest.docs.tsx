@@ -17,6 +17,7 @@ import {
   TextField,
 } from '../';
 import { IconHelp, IconLanguage } from '../icons';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { highlightSuggestions } from './Autosuggest';
 
@@ -31,14 +32,13 @@ export const makeSuggestions = (
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+  Example: ({ setDefaultState, getState, setState, resetState }) =>
     source(
       <>
         {setDefaultState('value', { text: '' })}
 
         <Autosuggest
           label="Label"
-          id={id}
           value={getState('value')}
           onChange={setState('value')}
           onClear={() => resetState('value')}
@@ -87,7 +87,7 @@ const docs: ComponentDocs = {
           </List>
         </>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
@@ -100,7 +100,6 @@ const docs: ComponentDocs = {
                   Help
                 </TextLink>
               }
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -132,7 +131,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value1', { text: '' })}
@@ -142,7 +141,6 @@ const docs: ComponentDocs = {
             <Stack space="large">
               <Autosuggest
                 label="Label"
-                id={`${id}_1`}
                 value={getState('value1')}
                 onChange={setState('value1')}
                 onClear={() => resetState('value1')}
@@ -157,7 +155,6 @@ const docs: ComponentDocs = {
               />
               <Autosuggest
                 label="Label"
-                id={`${id}_2`}
                 value={getState('value2')}
                 onChange={setState('value2')}
                 onClear={() => resetState('value2')}
@@ -172,7 +169,6 @@ const docs: ComponentDocs = {
               />
               <Autosuggest
                 label="Label"
-                id={`${id}_3`}
                 value={getState('value3')}
                 onChange={setState('value3')}
                 onClear={() => resetState('value3')}
@@ -187,7 +183,6 @@ const docs: ComponentDocs = {
               />
               <Autosuggest
                 label="Label"
-                id={`${id}_4`}
                 value={getState('value4')}
                 onChange={setState('value4')}
                 onClear={() => resetState('value4')}
@@ -213,14 +208,13 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -243,14 +237,13 @@ const docs: ComponentDocs = {
           <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: 'Text in disabled field' })}
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -273,14 +266,13 @@ const docs: ComponentDocs = {
           the user when no value is selected.
         </Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -313,14 +305,13 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState, resetState, setDefaultState }) =>
+      Example: ({ getState, setState, resetState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -352,7 +343,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
@@ -360,7 +351,6 @@ const docs: ComponentDocs = {
             <Autosuggest
               automaticSelection
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -379,14 +369,13 @@ const docs: ComponentDocs = {
       description: (
         <Text>Suggestion items can optionally be nested into groups.</Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -427,14 +416,13 @@ const docs: ComponentDocs = {
       description: (
         <Text>Suggestion items can optionally contain a description.</Text>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -474,7 +462,7 @@ const docs: ComponentDocs = {
           each suggestion.
         </Text>
       ),
-      Example: ({ id, setDefaultState, setState, getState }) =>
+      Example: ({ setDefaultState, setState, getState }) =>
         source(
           <>
             {setDefaultState('textfield', 'App')}
@@ -483,7 +471,6 @@ const docs: ComponentDocs = {
             <Stack space="large">
               <TextField
                 label="Label"
-                id={id}
                 onChange={setState('textfield')}
                 value={getState('textfield')}
               />
@@ -531,14 +518,13 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: 'App' })}
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -612,7 +598,6 @@ const docs: ComponentDocs = {
         </>
       ),
       Example: ({
-        id,
         setDefaultState,
         getState,
         setState,
@@ -629,7 +614,6 @@ const docs: ComponentDocs = {
 
             <Autosuggest
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -674,7 +658,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('value', { text: '' })}
@@ -683,7 +667,6 @@ const docs: ComponentDocs = {
               showMobileBackdrop
               scrollToTopOnMobile
               label="Label"
-              id={id}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -726,7 +709,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, setDefaultState, getState, setState, resetState }) =>
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
         source(
           <>
             {setDefaultState('field1', { text: '' })}
@@ -738,7 +721,6 @@ const docs: ComponentDocs = {
                 scrollToTopOnMobile
                 label="Label"
                 description="Focus the field to see a simple message"
-                id={`${id}_noSuggestionsMessage1`}
                 value={getState('field1')}
                 onChange={setState('field1')}
                 onClear={() => resetState('field1')}
@@ -750,7 +732,6 @@ const docs: ComponentDocs = {
                 scrollToTopOnMobile
                 label="Label"
                 description="Focus the field to see more structured prompt"
-                id={`${id}_noSuggestionsMessage2`}
                 value={getState('field2')}
                 onChange={setState('field2')}
                 onClear={() => resetState('field2')}
@@ -774,7 +755,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState, resetState }) =>
+      Example: ({ getState, setState, resetState }) =>
         source(
           <Stack space="large">
             <Heading level="2" id="field1Label">
@@ -783,7 +764,6 @@ const docs: ComponentDocs = {
 
             <Autosuggest
               aria-labelledby="field1Label"
-              id={`${id}_1`}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -797,7 +777,6 @@ const docs: ComponentDocs = {
 
             <Autosuggest
               aria-label="Hidden label for field"
-              id={`${id}_2`}
               value={getState('value')}
               onChange={setState('value')}
               onClear={() => resetState('value')}
@@ -811,6 +790,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Autosuggest
+          data={{ testid: 'autosuggest-1' }}
+          // => data-testid="autosuggest-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

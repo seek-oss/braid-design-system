@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
@@ -10,7 +9,7 @@ describe('Disclosure', () => {
   it('should provide internal state by default', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
-        <Disclosure id="content" expandLabel="Expand" collapseLabel="Collapse">
+        <Disclosure expandLabel="Expand" collapseLabel="Collapse">
           Content
         </Disclosure>
       </BraidTestProvider>,
@@ -42,9 +41,7 @@ describe('Disclosure', () => {
   it('should default the value of "collapseLabel" to "expandLabel" when not provided', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
-        <Disclosure id="content" expandLabel="Details">
-          Content
-        </Disclosure>
+        <Disclosure expandLabel="Details">Content</Disclosure>
       </BraidTestProvider>,
     );
 
@@ -57,12 +54,11 @@ describe('Disclosure', () => {
   });
 
   it('should support listening to toggle events while uncontrolled', async () => {
-    const toggleHander = jest.fn();
+    const toggleHander = vi.fn();
 
     const { getByRole } = render(
       <BraidTestProvider>
         <Disclosure
-          id="content"
           expandLabel="Expand"
           collapseLabel="Collapse"
           onToggle={toggleHander}
@@ -90,7 +86,6 @@ describe('Disclosure', () => {
       return (
         <BraidTestProvider>
           <Disclosure
-            id="content"
             expandLabel="Expand"
             collapseLabel="Collapse"
             expanded={expanded}

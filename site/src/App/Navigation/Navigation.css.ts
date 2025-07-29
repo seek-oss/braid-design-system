@@ -1,48 +1,47 @@
-import { style, globalStyle, createVar } from '@vanilla-extract/css';
+import { style, globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import {
-  breakpoints,
-  responsiveStyle,
-  colorModeStyle,
-} from 'braid-src/entries/css';
-import { palette } from 'braid-src/lib/color/palette';
+import { breakpoints, responsiveStyle } from 'braid-src/entries/css';
 import { vars } from 'braid-src/lib/themes/vars.css';
-import { rgba } from 'polished';
 
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
 export const isOpen = style({});
 
+export const visibleNavBreakpoint = 'wide' as const;
+
 const headerOffset = style({
   top: headerHeight,
 });
 
-const fixedWidthAboveMobile = style(
+const fixedWidthAboveVisibleBreakpoint = style(
   responsiveStyle({
-    wide: {
+    [visibleNavBreakpoint]: {
       width: calc.subtract(menuWidth, vars.space[gutterSize]),
     },
   }),
 );
 
-const hideOnMobileWhenOpen = style({
+const hidePageContentOnSmallerScreensWhenOpen = style({
   '@media': {
-    [`screen and (max-width: ${breakpoints.wide - 1}px)`]: {
+    [`screen and (max-width: ${breakpoints[visibleNavBreakpoint] - 1}px)`]: {
       selectors: {
         [`&${isOpen}`]: {
           opacity: 0,
+          pointerEvents: 'none',
         },
       },
     },
   },
 });
 
-const hideOnMobileWhenClosed = style({
+const hideSideNavOnSmallerScreensWhenClosed = style({
   '@media': {
-    [`screen and (max-width: ${breakpoints.wide - 1}px)`]: {
+    [`screen and (max-width: ${breakpoints[visibleNavBreakpoint] - 1}px)`]: {
       selectors: {
         [`&:not(${isOpen})`]: {
           opacity: 0,
+          pointerEvents: 'none',
+          transform: `translateY(${calc.negate(vars.space.xsmall)})`,
         },
       },
     },
@@ -57,52 +56,16 @@ const subNavOffsetAboveMobile = style(
   }),
 );
 
-const backgroundVar = createVar();
-const shadowVar = createVar();
-const transparent = 'rgba(0, 0, 0, 0)';
-const scrollShadows = style([
-  {
-    backgroundPosition: 'center top',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'local, scroll',
-  },
-  colorModeStyle({
-    lightMode: {
-      vars: {
-        [backgroundVar]: vars.backgroundColor.body,
-        [shadowVar]: rgba(palette.grey['800'], 0.2),
-      },
-      backgroundImage: [
-        `linear-gradient(${backgroundVar} 30%, ${transparent})`,
-        `radial-gradient(farthest-side at 50% 0, ${shadowVar}, ${transparent})`,
-      ].join(', '),
-      backgroundSize: '100% 40px, 100% 18px',
-    },
-    darkMode: {
-      vars: {
-        [backgroundVar]: vars.backgroundColor.bodyDark,
-        [shadowVar]: palette.grey['800'],
-      },
-      backgroundImage: [
-        `linear-gradient(45deg, ${backgroundVar}, ${backgroundVar})`,
-        `linear-gradient(90deg, ${transparent}, ${shadowVar} 15%, ${shadowVar} 85%, ${transparent})`,
-      ].join(', '),
-      backgroundSize: '100% 2px',
-    },
-  }),
-]);
-
 export const sideNavigationContainer = style([
   headerOffset,
-  fixedWidthAboveMobile,
-  hideOnMobileWhenClosed,
-  scrollShadows,
+  fixedWidthAboveVisibleBreakpoint,
+  hideSideNavOnSmallerScreensWhenClosed,
 ]);
 
 export const pageContent = style([
   headerOffset,
   subNavOffsetAboveMobile,
-  hideOnMobileWhenOpen,
+  hidePageContentOnSmallerScreensWhenOpen,
 ]);
 
 globalStyle('html, body', {

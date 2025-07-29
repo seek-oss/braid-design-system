@@ -13,6 +13,7 @@ import { FieldOverlay } from '../FieldOverlay/FieldOverlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
+import { validateTabIndex } from '../validateTabIndex';
 
 import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
@@ -26,7 +27,7 @@ export type CheckboxChecked =
 
 type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
 export interface StyledInputProps {
-  id: NonNullable<InputElementProps['id']>;
+  id?: InputElementProps['id'];
   onChange: NonNullable<InputElementProps['onChange']>;
   value?: InputElementProps['value'];
   name?: InputElementProps['name'];
@@ -38,12 +39,12 @@ export interface StyledInputProps {
   data?: DataAttributeMap;
   required?: boolean;
   size?: Size;
+  tabIndex?: 0 | -1;
 }
 
 export type PrivateStyledInputProps = StyledInputProps & {
   type: 'radio' | 'checkbox';
   checked: CheckboxChecked;
-  tabIndex?: number;
 };
 
 const Indicator = ({
@@ -138,6 +139,10 @@ export const StyledInput = forwardRef<
 
     if (tones.indexOf(tone) === -1) {
       throw new Error(`Invalid tone: ${tone}`);
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      validateTabIndex(tabIndex);
     }
 
     const isCheckbox = type === 'checkbox';
@@ -254,11 +259,6 @@ export const StyledInput = forwardRef<
             variant="critical"
             borderRadius={fieldBorderRadius}
             visible={tone === 'critical' && !disabled}
-          />
-          <FieldOverlay
-            variant="focus"
-            borderRadius={fieldBorderRadius}
-            className={styles.focusOverlay}
           />
           <FieldOverlay
             variant="formAccent"

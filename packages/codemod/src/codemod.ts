@@ -137,7 +137,7 @@ export default async ({
   if (hasChanged) {
     await fs.promises.writeFile(
       filePath,
-      prettier.format(newSource, {
+      await prettier.format(newSource, {
         parser: 'babel-ts',
         singleQuote: true,
         tabWidth: 2,

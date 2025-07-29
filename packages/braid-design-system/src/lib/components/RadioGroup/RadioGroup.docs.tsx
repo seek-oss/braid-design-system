@@ -13,14 +13,14 @@ import {
 import { Placeholder } from '../../playroom/components';
 import { Heading } from '../Heading/Heading';
 import { Stack } from '../Stack/Stack';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['RadioItem'],
-  Example: ({ id, getState, setState }) =>
+  Example: ({ getState, setState }) =>
     source(
       <RadioGroup
-        id={id}
         value={getState('radio')}
         onChange={({ currentTarget: { value } }) => setState('radio', value)}
         label="Label"
@@ -71,11 +71,10 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
             <RadioGroup
-              id={id}
               value={getState('radio')}
               onChange={({ currentTarget: { value } }) =>
                 setState('radio', value)
@@ -89,7 +88,6 @@ const docs: ComponentDocs = {
               <RadioItem label="Three" value="3" />
             </RadioGroup>
             <RadioGroup
-              id={`${id}_2`}
               value={getState('radio2')}
               onChange={({ currentTarget: { value } }) =>
                 setState('radio2', value)
@@ -114,10 +112,9 @@ const docs: ComponentDocs = {
           screen reader when the field is focused.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -140,11 +137,10 @@ const docs: ComponentDocs = {
           <Strong>standard</Strong> or <Strong>small.</Strong>
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
             <RadioGroup
-              id={`${id}_standard`}
               value={getState('radio')}
               onChange={({ currentTarget: { value } }) =>
                 setState('radio', value)
@@ -156,7 +152,6 @@ const docs: ComponentDocs = {
               <RadioItem label="Two" value="2" />
             </RadioGroup>
             <RadioGroup
-              id={`${id}_small`}
               value={getState('radio2')}
               onChange={({ currentTarget: { value } }) =>
                 setState('radio2', value)
@@ -178,10 +173,9 @@ const docs: ComponentDocs = {
           <Strong>true</Strong> to the <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <RadioGroup
-            id={id}
             value="2"
             onChange={() => {}}
             label="Label"
@@ -201,10 +195,9 @@ const docs: ComponentDocs = {
           <Strong>true</Strong> to its <Strong>disabled</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -227,10 +220,9 @@ const docs: ComponentDocs = {
           reader when the item is focused.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -264,10 +256,9 @@ const docs: ComponentDocs = {
           prop.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <RadioGroup
-            id={id}
             value={getState('radio')}
             onChange={({ currentTarget: { value } }) =>
               setState('radio', value)
@@ -297,13 +288,12 @@ const docs: ComponentDocs = {
           based on the value state.
         </Text>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('radio', '2')}
 
             <RadioGroup
-              id={id}
               value={getState('radio')}
               onChange={({ currentTarget: { value } }) =>
                 setState('radio', value)
@@ -329,7 +319,7 @@ const docs: ComponentDocs = {
           or <Strong>aria-labelledby</Strong> can be provided.
         </Text>
       ),
-      Example: ({ id, getState, setState }) =>
+      Example: ({ getState, setState }) =>
         source(
           <Stack space="medium">
             <Heading level="2" id="fieldLabel">
@@ -337,7 +327,6 @@ const docs: ComponentDocs = {
             </Heading>
 
             <RadioGroup
-              id={`${id}_indirectLabel`}
               value={getState('radio')}
               onChange={({ currentTarget: { value } }) =>
                 setState('radio', value)
@@ -352,6 +341,20 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <RadioGroup
+          data={{ testid: 'radio-group-1' }}
+          // => data-testid="radio-group-1"
+        >
+          <RadioItem
+            data={{ testid: 'radio-item-1' }}
+            // => data-testid="radio-item-1"
+          />
+        </RadioGroup>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

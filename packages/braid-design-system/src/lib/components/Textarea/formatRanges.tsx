@@ -17,30 +17,33 @@ export const formatRanges = (
     const validatedAndSortedRanges = highlightRanges
       // sort ranges by start index
       .sort((a, b) => (a.start > b.start ? 1 : -1))
-      .reduce((acc, { end, start }) => {
-        const resolvedEnd = end || value.length;
+      .reduce(
+        (acc, { end, start }) => {
+          const resolvedEnd = end || value.length;
 
-        // skip range if end character is less than start character
-        if (resolvedEnd <= start) {
-          return acc;
-        }
+          // skip range if end character is less than start character
+          if (resolvedEnd <= start) {
+            return acc;
+          }
 
-        // handle overlapping ranges
-        const adjustedRange: Array<{
-          start: number;
-          end: number | undefined;
-        }> = [];
-        if (resolvedEnd > lastEnd) {
-          adjustedRange.push({
-            // if overlapping, start from end of last range otherwise start from specified range
-            start: start < lastEnd ? lastEnd : start,
-            end,
-          });
-          lastEnd = resolvedEnd;
-        }
+          // handle overlapping ranges
+          const adjustedRange: Array<{
+            start: number;
+            end: number | undefined;
+          }> = [];
+          if (resolvedEnd > lastEnd) {
+            adjustedRange.push({
+              // if overlapping, start from end of last range otherwise start from specified range
+              start: start < lastEnd ? lastEnd : start,
+              end,
+            });
+            lastEnd = resolvedEnd;
+          }
 
-        return [...acc, ...adjustedRange];
-      }, [] as NonNullable<TextareaProps['highlightRanges']>);
+          return [...acc, ...adjustedRange];
+        },
+        [] as NonNullable<TextareaProps['highlightRanges']>,
+      );
 
     return parseHighlights(
       value,

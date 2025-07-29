@@ -18,6 +18,7 @@ export const Announcement = ({ children }: AnnouncementProps) => {
     atoms({
       reset: 'div',
       position: 'absolute',
+      bottom: 0,
       overflow: 'hidden',
     }),
     styles.root,
@@ -45,5 +46,7 @@ export const Announcement = ({ children }: AnnouncementProps) => {
     return null;
   }
 
+  // Portal ensures screen reader announcements complete,
+  // even if the parent component unmounts
   return createPortal(children, announcementElement);
 };

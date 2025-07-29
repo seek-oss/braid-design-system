@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type ComponentProps, useState } from 'react';
@@ -11,7 +10,6 @@ describe('CheckboxStandalone', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={false}
@@ -27,7 +25,6 @@ describe('CheckboxStandalone', () => {
       <BraidTestProvider>
         <h3 id="other">Other field</h3>
         <CheckboxStandalone
-          id="field"
           aria-labelledby="other"
           onChange={() => {}}
           checked={false}
@@ -42,7 +39,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={true}
@@ -57,7 +53,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={false}
@@ -72,7 +67,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked="mixed"
@@ -90,7 +84,6 @@ describe('CheckboxStandalone', () => {
       return (
         <BraidTestProvider>
           <CheckboxStandalone
-            id="field"
             aria-label="My field"
             onChange={(ev) => setChecked(ev.currentTarget.checked)}
             checked={checked}
@@ -122,7 +115,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked="mixed"
@@ -146,7 +138,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={[false, true, false]}
@@ -164,7 +155,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={[false, true, true]}
@@ -182,7 +172,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={[true, true, true]}
@@ -200,7 +189,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={[false, false, false]}
@@ -218,7 +206,6 @@ describe('CheckboxStandalone', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <CheckboxStandalone
-          id="field"
           aria-label="My field"
           onChange={() => {}}
           checked={[]}

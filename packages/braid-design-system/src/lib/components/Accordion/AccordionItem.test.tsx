@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
@@ -37,9 +35,7 @@ describe('AccordionItem', () => {
   it('should provide internal state by default', async () => {
     const { getByRole, getByText } = render(
       <BraidTestProvider>
-        <AccordionItem id="content" label="Label">
-          Content
-        </AccordionItem>
+        <AccordionItem label="Label">Content</AccordionItem>
       </BraidTestProvider>,
     );
 
@@ -64,11 +60,11 @@ describe('AccordionItem', () => {
   });
 
   it('should support listening to toggle events while uncontrolled', async () => {
-    const toggleHander = jest.fn();
+    const toggleHander = vi.fn();
 
     const { getByRole } = render(
       <BraidTestProvider>
-        <AccordionItem id="content" label="Label" onToggle={toggleHander}>
+        <AccordionItem label="Label" onToggle={toggleHander}>
           Content
         </AccordionItem>
       </BraidTestProvider>,
@@ -92,7 +88,6 @@ describe('AccordionItem', () => {
       return (
         <BraidTestProvider>
           <AccordionItem
-            id="content"
             label="Label"
             expanded={expanded}
             onToggle={setExpanded}

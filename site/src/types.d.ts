@@ -64,7 +64,6 @@ export interface CssDoc {
 }
 
 interface ExampleProps {
-  id: string;
   handler: () => void;
 }
 
@@ -85,16 +84,4 @@ export interface ComponentExample {
   code?: string | false;
   showCodeByDefault?: boolean;
   playroom?: boolean;
-}
-
-export interface ComponentScreenshot {
-  screenshotWidths: Array<320 | 768 | 992 | 1200>;
-  screenshotOnlyInWireframe?: boolean;
-  examples: Array<{
-    label?: string;
-    background?: NonNullable<BoxProps['background']>;
-    gutter?: boolean;
-    Example?: (props: ExampleProps) => ReactElement;
-    Container?: (props: { children: ReactNode }) => ReactElement;
-  }>;
 }

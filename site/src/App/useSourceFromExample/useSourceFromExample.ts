@@ -3,21 +3,16 @@ import useScope from 'braid-src/lib/playroom/useScope';
 import type { ComponentExample } from '../../types';
 
 const noop = () => {};
-export const useSourceFromExample = (
-  id: string,
-  { Example, code: codeOverride }: Pick<ComponentExample, 'Example' | 'code'>,
-) => {
-  let returnCode, returnValue;
+
+export const useSourceFromExample = ({
+  Example,
+  code: codeOverride,
+}: Pick<ComponentExample, 'Example' | 'code'>) => {
   const playroomScope = useScope();
 
-  if (Example) {
-    const result = Example({ id, handler: noop, ...playroomScope }); // eslint-disable-line new-cap
-    returnCode = result.code.replace(/id={id}/g, '');
-    returnValue = result.value;
+  if (!Example) {
+    return { code: codeOverride, value: undefined };
   }
 
-  return {
-    code: codeOverride ?? returnCode,
-    value: returnValue,
-  };
+  return Example({ handler: noop, ...playroomScope }); // eslint-disable-line new-cap
 };

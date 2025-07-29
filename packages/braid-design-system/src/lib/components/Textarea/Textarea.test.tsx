@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 
 import { Textarea } from '..';
@@ -8,7 +7,7 @@ describe('Textarea', () => {
   it('associates field with label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Textarea id="field" label="My field" value="" onChange={() => {}} />
+        <Textarea label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -18,12 +17,7 @@ describe('Textarea', () => {
   it('associates field with aria-label correctly', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Textarea
-          id="field"
-          aria-label="My field"
-          value=""
-          onChange={() => {}}
-        />
+        <Textarea aria-label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 
@@ -50,7 +44,6 @@ describe('Textarea', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Textarea
-          id="field"
           label="My field"
           message="Required"
           value=""
@@ -66,7 +59,6 @@ describe('Textarea', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
         <Textarea
-          id="field"
           label="My field"
           description="More detail about field"
           value=""
@@ -85,7 +77,6 @@ describe('Textarea', () => {
       <BraidTestProvider>
         <span id="detail">Custom description</span>
         <Textarea
-          id="field"
           label="My field"
           aria-describedby="detail"
           value=""
@@ -104,7 +95,6 @@ describe('Textarea', () => {
       <BraidTestProvider>
         <span id="detail">Custom description</span>
         <Textarea
-          id="field"
           label="My field"
           message="Required"
           description="More detail about field"
@@ -123,7 +113,7 @@ describe('Textarea', () => {
   it('field is not marked as having a description without a message or description', () => {
     const { getByLabelText } = render(
       <BraidTestProvider>
-        <Textarea id="field" label="My field" value="" onChange={() => {}} />
+        <Textarea label="My field" value="" onChange={() => {}} />
       </BraidTestProvider>,
     );
 

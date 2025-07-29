@@ -13,6 +13,7 @@ import {
 } from '../';
 import { TextLink } from '../TextLink/TextLink';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -527,6 +528,22 @@ const docs: ComponentDocs = {
         </Columns>,
       ).code,
     },
+    dataAttributeDocs({
+      code: `
+        <Columns
+          data={{ testid: 'columns-1' }}
+          // => data-testid="columns-1"
+          >
+          <Column
+            data={{ testid: 'column-1' }}
+            // => data-testid="column-1"
+          >
+            ...
+          </Column>
+        </Columns>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -3,6 +3,8 @@ import { dirname, join, relative } from 'path';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import eslintConfigSeek from 'eslint-config-seek';
+// eslint-disable-next-line import-x/no-rename-default
+import storybook from 'eslint-plugin-storybook';
 import fastGlob from 'fast-glob';
 import { load as loadYaml } from 'js-yaml';
 const { isDynamicPattern, globSync } = fastGlob; // eslint-disable-line import-x/no-named-as-default-member -- commonjs module, will move to built in with node 22.
@@ -46,8 +48,15 @@ const gitIgnoresFromWorkspaces = workspaces
   .filter(Boolean);
 
 export default [
+  {
+    ignores: ['**/bin.js', '!**/.storybook'],
+  },
   ...gitIgnoresFromWorkspaces,
   ...eslintConfigSeek,
+  ...storybook.configs['flat/recommended'].map((config) => ({
+    ...config,
+    files: ['**/*.screenshots.@(ts|tsx|js|jsx|mjs|cjs)'],
+  })),
   {
     rules: {
       'import-x/no-cycle': 'warn',
@@ -76,8 +85,7 @@ export default [
         },
       ],
     },
-  },
-  // Prevent importing via project paths, with exception for site-related files
+  }, // Prevent importing via project paths, with exception for site-related files
   {
     files: ['**/*.{js,ts,tsx}'],
     ignores: [
@@ -91,19 +99,6 @@ export default [
           patterns: ['braid-src/**', 'site/**', '**/site/**'],
         },
       ],
-    },
-  },
-  // Lint non-project ts files, e.g. jest and storybook config
-  {
-    languageOptions: {
-      parserOptions: {
-        projectService: {
-          allowDefaultProject: [
-            'jest/setupTests.ts',
-            'packages/braid-design-system/.storybook/*.ts',
-          ],
-        },
-      },
     },
   },
 ];

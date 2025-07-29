@@ -12,6 +12,8 @@ import {
 
 export default function useScope() {
   const responsiveValue = useResponsiveValue();
+  const showToast = useToast();
+  const playroomState = usePlayroomStore();
 
   // TODO: COLORMODE RELEASE
   // Revisit when dark mode frames are first class
@@ -81,9 +83,9 @@ export default function useScope() {
     vars,
     atoms,
     breakpoints,
-    showToast: useToast(),
+    showToast,
     responsiveValue: playroomResponsiveValue,
     colorModeValue: playroomColorModeValue,
-    ...usePlayroomStore(),
+    ...playroomState,
   };
 }

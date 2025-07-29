@@ -1,3 +1,5 @@
+import { atomicOutlineStyleRule } from '../outlineStyle';
+
 import { vars } from '../../themes/vars.css';
 
 const sizes = {
@@ -52,7 +54,10 @@ export type PseudoProperties = keyof typeof pseudoProperties;
 export const unresponsiveProperties = {
   overflow: ['hidden', 'scroll', 'visible', 'auto'],
   userSelect: ['none'],
-  outline: ['none'],
+  outline: {
+    none: 'none',
+    focus: atomicOutlineStyleRule(),
+  },
   opacity: [0],
   zIndex: {
     0: 0,
@@ -102,7 +107,7 @@ export const responsiveProperties = {
     inlineBlock: 'inline-block',
     flex: 'flex',
   },
-  position: ['relative', 'absolute', 'fixed'],
+  position: ['relative', 'absolute', 'fixed', 'sticky'],
   borderRadius: {
     none: '0px',
     full: '9999px',

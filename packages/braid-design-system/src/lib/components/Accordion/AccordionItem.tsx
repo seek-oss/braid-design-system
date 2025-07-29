@@ -18,10 +18,10 @@ import { Spread } from '../Spread/Spread';
 import { Stack } from '../Stack/Stack';
 import { type TextProps, Text } from '../Text/Text';
 import { IconChevron } from '../icons';
-import { Overlay } from '../private/Overlay/Overlay';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
-import type { DataAttributeMap } from '../private/buildDataAttributes';
-import { hideFocusRingsClassName } from '../private/hideFocusRings/hideFocusRings';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 
 import { defaultSize } from './Accordion';
 import {
@@ -47,7 +47,7 @@ export interface AccordionItemBaseProps {
   weight?: AccordionContextValue['weight'];
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
-  badge?: ReactElement<BadgeProps>;
+  badge?: ReactElement<BadgeProps> | null;
 }
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
@@ -125,6 +125,14 @@ export const AccordionItem = ({
         }),
   });
 
+  if (process.env.NODE_ENV !== 'production') {
+    /**
+     * Validate that consumers are not passing `data-*`props,
+     * which will not work and are not validated by TypeScript.
+     */
+    buildDataAttributes({ data, validateRestProps: restProps });
+  }
+
   return (
     <Stack space={itemSpace} data={data}>
       <Box position="relative" display="flex">
@@ -132,8 +140,7 @@ export const AccordionItem = ({
           component="button"
           type="button"
           cursor="pointer"
-          className={styles.button}
-          outline="none"
+          className={[styles.button, styles.focusRing]}
           width="full"
           textAlign="left"
           {...buttonProps}
@@ -165,12 +172,6 @@ export const AccordionItem = ({
             </Spread>
           </Box>
         </Box>
-        <Overlay
-          boxShadow="outlineFocus"
-          borderRadius="standard"
-          transition="fast"
-          className={[styles.focusRing, hideFocusRingsClassName]}
-        />
       </Box>
       <Box display={expanded ? 'block' : 'none'} {...contentProps}>
         {children}

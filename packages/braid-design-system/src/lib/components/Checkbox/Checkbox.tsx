@@ -5,6 +5,7 @@ import {
   InlineField,
 } from '../private/InlineField/InlineField';
 import type { CheckboxChecked } from '../private/InlineField/StyledInput';
+import { validTabIndexes } from '../private/validateTabIndex';
 
 import { resolveCheckedGroup } from './resolveCheckedGroup';
 
@@ -13,7 +14,7 @@ export interface CheckboxProps extends Omit<InlineFieldProps, 'checked'> {
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ checked, ...restProps }, ref) => {
+  ({ checked, tabIndex, ...restProps }, ref) => {
     const calculatedChecked = Array.isArray(checked)
       ? resolveCheckedGroup(checked)
       : checked;
@@ -21,6 +22,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <InlineField
         {...restProps}
+        tabIndex={validTabIndexes.includes(tabIndex!) ? tabIndex : undefined}
         checked={calculatedChecked}
         type="checkbox"
         ref={ref}

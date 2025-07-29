@@ -33,8 +33,6 @@ export interface PaginationProps {
   data?: DataAttributeMap;
 }
 
-const borderRadius = 'standard';
-
 const PageNav = ({
   label,
   direction,
@@ -59,7 +57,7 @@ const PageNav = ({
       <Overlay
         component="span"
         background="formAccentSoft"
-        borderRadius={borderRadius}
+        borderRadius={styles.borderRadius}
         transition="fast"
         className={styles.background}
       />
@@ -102,12 +100,12 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
         component="span"
         background={current ? 'formAccent' : 'formAccentSoft'}
         transition={current ? undefined : 'fast'}
-        borderRadius={borderRadius}
+        borderRadius={styles.borderRadius}
         className={[styles.background, current ? styles.current : undefined]}
       />
       <Overlay
         component="span"
-        borderRadius={borderRadius}
+        borderRadius={styles.borderRadius}
         boxShadow="borderFormAccent"
         className={{
           [styles.lightModeCurrentKeyline]:
@@ -180,6 +178,7 @@ export const Pagination = ({
             title={previousLabel}
             aria-hidden={!showPrevious}
             tabIndex={!showPrevious ? -1 : undefined}
+            className={styles.focusRing}
           >
             <PageNav label={previousLabel} direction="prev" />
           </Link>
@@ -209,6 +208,7 @@ export const Pagination = ({
                 aria-label={pageLabel(pageNumber)}
                 aria-current={current ? 'page' : undefined}
                 title={pageLabel(pageNumber)}
+                className={styles.focusRing}
               >
                 <Page number={pageNumber} current={current} />
               </Link>
@@ -233,6 +233,7 @@ export const Pagination = ({
             title={nextLabel}
             aria-hidden={!showNext}
             tabIndex={!showNext ? -1 : undefined}
+            className={styles.focusRing}
           >
             <PageNav label={nextLabel} direction="next" />
           </Link>

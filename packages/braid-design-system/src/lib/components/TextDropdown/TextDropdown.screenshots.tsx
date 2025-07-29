@@ -1,139 +1,129 @@
-import { type ReactNode, useState } from 'react';
-import type { ComponentScreenshot } from 'site/types';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { useState } from 'react';
 
-import { Heading, Strong, Text, TextDropdown } from '../';
+import { Box, Heading, Strong, Text, TextDropdown } from '../';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 
-const Container = ({ children }: { children: ReactNode }) => (
-  <div style={{ maxWidth: '300px' }}>{children}</div>
-);
-
-export const screenshots: ComponentScreenshot = {
-  screenshotWidths: [320],
-  examples: [
-    {
-      label: 'Default',
-      Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('Developer');
-
-        return (
-          <Text>
-            <TextDropdown
-              label="Job Title"
-              id={id}
-              onChange={setValue}
-              value={value}
-              options={['Developer', 'Designer', 'Product Manager']}
-            />
-          </Text>
-        );
-      },
-    },
-    {
-      label: 'With identifying values',
-      Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState(2000);
-
-        return (
-          <Text>
-            <TextDropdown
-              label="Location"
-              id={id}
-              onChange={setValue}
-              value={value}
-              options={[
-                { text: 'Melbourne', value: 3000 },
-                { text: 'Sydney', value: 2000 },
-                { text: 'Brisbane', value: 4000 },
-              ]}
-            />
-          </Text>
-        );
-      },
-    },
-    {
-      label: 'Within strong text',
-      Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('Relevance');
-
-        return (
-          <Text>
-            Sort by{' '}
-            <Strong>
-              <TextDropdown
-                label="Sort order"
-                id={id}
-                onChange={setValue}
-                value={value}
-                options={['Relevance', 'Keyword']}
-              />
-            </Strong>
-          </Text>
-        );
-      },
-    },
-    {
-      label: 'Virtual touch target',
-      Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('Relevance');
-
-        return (
-          <Text data={{ [debugTouchableAttrForDataProp]: '' }}>
-            Sort by{' '}
-            <TextDropdown
-              label="Sort order"
-              id={id}
-              onChange={setValue}
-              value={value}
-              options={['Relevance', 'Keyword']}
-            />
-          </Text>
-        );
-      },
-    },
-    {
-      label: 'Within a heading',
-      Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('Sydney');
-
-        return (
-          <Heading level="2">
-            Jobs in{' '}
-            <TextDropdown
-              label="Location"
-              id={id}
-              onChange={setValue}
-              value={value}
-              options={['Melbourne', 'Sydney', 'Brisbane']}
-            />
-          </Heading>
-        );
-      },
-    },
-    {
-      label: 'TextDropdown on Brand Background',
-      background: 'brand',
-      Container,
-      Example: ({ id }) => {
-        const [value, setValue] = useState('Designer');
-
-        return (
-          <Text>
-            <TextDropdown
-              label="Job Title"
-              id={id}
-              onChange={setValue}
-              value={value}
-              options={['Developer', 'Designer', 'Product Manager']}
-            />
-          </Text>
-        );
-      },
+const meta: Meta<typeof TextDropdown> = {
+  title: 'Components/TextDropdown',
+  component: TextDropdown,
+  decorators: [
+    (Story, { args }) => {
+      const [value, setValue] = useState(args.value);
+      return <Story args={{ ...args, value, onChange: setValue }} />;
     },
   ],
+};
+
+export default meta;
+type Story = StoryObj<typeof TextDropdown>;
+
+export const Default: Story = {
+  args: {
+    value: 'Developer',
+    label: 'Job Title',
+    options: ['Developer', 'Designer', 'Product Manager'],
+  },
+  decorators: (Story) => (
+    <Text>
+      <Story />
+    </Text>
+  ),
+};
+
+export const WithIdentifyingValues: Story = {
+  name: 'With identifying values',
+  args: {
+    value: 2000,
+    label: 'Location',
+    options: [
+      {
+        text: 'Melbourne',
+        value: 3000,
+      },
+      {
+        text: 'Sydney',
+        value: 2000,
+      },
+      {
+        text: 'Brisbane',
+        value: 4000,
+      },
+    ],
+  },
+  decorators: (Story) => (
+    <Text>
+      <Story />
+    </Text>
+  ),
+};
+
+export const WithinStrongText: Story = {
+  name: 'Within strong text',
+  args: {
+    value: 'Relevance',
+    label: 'Sort order',
+    options: ['Relevance', 'Keyword'],
+  },
+  decorators: [
+    (Story) => (
+      <Text>
+        Sort by{' '}
+        <Strong>
+          <Story />
+        </Strong>
+      </Text>
+    ),
+  ],
+};
+
+export const VirtualTouchTarget: Story = {
+  name: 'Virtual touch target',
+  args: {
+    value: 'Relevance',
+    label: 'Sort order',
+    options: ['Relevance', 'Keyword'],
+  },
+
+  decorators: [
+    (Story) => (
+      <Text
+        data={{
+          [debugTouchableAttrForDataProp]: '',
+        }}
+      >
+        Sort by <Story />
+      </Text>
+    ),
+  ],
+};
+
+export const WithinAHeading: Story = {
+  name: 'Within a heading',
+  args: {
+    value: 'Sydney',
+    label: 'Location',
+    options: ['Melbourne', 'Sydney', 'Brisbane'],
+  },
+  decorators: (Story) => (
+    <Heading level="2">
+      Jobs in <Story />
+    </Heading>
+  ),
+};
+
+export const TextDropdownOnBrandBackground: Story = {
+  name: 'TextDropdown on brand background',
+  args: {
+    value: 'Designer',
+    label: 'Job Title',
+    options: ['Developer', 'Designer', 'Product Manager'],
+  },
+  decorators: (Story) => (
+    <Box background="brand" padding="gutter">
+      <Text>
+        <Story />
+      </Text>
+    </Box>
+  ),
 };

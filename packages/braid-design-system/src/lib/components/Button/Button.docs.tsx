@@ -16,6 +16,7 @@ import {
   Toggle,
   IconArrow,
 } from '../';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const choosingRightButtonDoc = [
   {
@@ -546,7 +547,6 @@ const docs: ComponentDocs = {
             <Stack space="xlarge">
               <Stack space="large">
                 <Toggle
-                  id="bleed"
                   on={getState('bleed')}
                   label="Bleed"
                   align="right"
@@ -610,6 +610,17 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Button
+          data={{ testid: 'button-1' }}
+          // => data-testid="button-1"
+        >
+          ...
+        </Button>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

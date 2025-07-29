@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import {
   render,
   waitForElementToBeRemoved,
@@ -16,10 +15,7 @@ import type { ModalProps } from './Modal';
 export const modalTestSuite = (
   name: string,
   ModalImplementation: ComponentType<
-    Pick<
-      ModalProps,
-      'id' | 'title' | 'closeLabel' | 'open' | 'onClose' | 'children'
-    >
+    Pick<ModalProps, 'title' | 'closeLabel' | 'open' | 'onClose' | 'children'>
   >,
 ) => {
   const CLOSE_LABEL = 'Close button';
@@ -34,7 +30,6 @@ export const modalTestSuite = (
         </Button>
         <input type="text" />
         <ModalImplementation
-          id="testModal"
           title={TITLE}
           closeLabel={CLOSE_LABEL}
           open={open}
@@ -60,7 +55,7 @@ export const modalTestSuite = (
   };
 
   function renderTestCase({
-    onClose = jest.fn(),
+    onClose = vi.fn(),
   }: Optional<Pick<ModalProps, 'onClose'>> = {}) {
     return {
       ...render(
@@ -197,7 +192,7 @@ export const modalTestSuite = (
     });
 
     it('should not close if onClose returns `false`', async () => {
-      const onClose = jest
+      const onClose = vi
         .fn()
         .mockReturnValueOnce(false)
         .mockReturnValueOnce(undefined);
@@ -231,6 +226,25 @@ export const modalTestSuite = (
         });
       }
       expect(queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
+    it('should have a close button that is not aria-hidden', async () => {
+      const { getByTestId, queryByRole } = renderTestCase();
+
+      const dialogOpenButton = getByTestId('buttonBefore');
+      await userEvent.click(dialogOpenButton);
+
+      // Waiting for `ariaHideOthers` to apply
+      await waitFor(() =>
+        expect(document.querySelector('[data-aria-hidden]')).not.toBeNull(),
+      );
+
+      const closeButton = queryByRole('button', {
+        name: CLOSE_LABEL,
+        hidden: false,
+      });
+
+      expect(closeButton).not.toBeNull();
     });
   });
 };

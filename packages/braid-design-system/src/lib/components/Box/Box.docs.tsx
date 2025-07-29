@@ -16,6 +16,7 @@ import {
   Strong,
   Alert,
   BraidProvider,
+  Notice,
 } from '../';
 import {
   type UnresponsiveProperties,
@@ -26,7 +27,7 @@ import {
   unresponsiveProperties,
   pseudoProperties,
 } from '../../css/atoms/atomicProperties';
-import { Notice } from '../Notice/Notice';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 // TODO: COLORMODE RELEASE
 // Use public import
@@ -131,43 +132,20 @@ const docs: ComponentDocs = {
         </>
       ),
     },
-    {
-      label: 'Data attributes',
-      description: (
-        <>
-          <Text>
-            Braid components are very explicit about the properties they accept,
-            which makes providing arbitrary{' '}
-            <TextLink href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">
-              data attributes
-            </TextLink>{' '}
-            not possible. Instead, all Braid components accept a{' '}
-            <Strong>data</Strong> prop, allowing a single collection of data
-            attributes to be provided.
-          </Text>
-          <Notice>
-            <Text>
-              While Box does support the native HTML syntax, it also supports
-              the <Strong>data</Strong> prop for consistency.
-            </Text>
-          </Notice>
-          <Code playroom={false}>
-            {
-              source(
-                <Box
-                  data={{
-                    testid: 'customIdentifier',
-                  }}
-                  // => data-testid="customIdentifier"
-                >
-                  ...
-                </Box>,
-              ).code
-            }
-          </Code>
-        </>
-      ),
-    },
+    dataAttributeDocs({
+      code: `
+        <Box
+          data={{
+            testid: 'customIdentifier',
+          }}
+          // => data-testid="customIdentifier"
+        >
+          ...
+        </Box>
+      `,
+      supportsNativeSyntax: true,
+      componentName: 'Box',
+    }),
     {
       label: 'CSS utilities',
       description: (
@@ -210,7 +188,11 @@ const docs: ComponentDocs = {
                   key={prop}
                   modifier="Responsive"
                   name={prop}
-                  values={Object.keys(responsiveProperties[prop])}
+                  values={
+                    Array.isArray(responsiveProperties[prop])
+                      ? Object.values(responsiveProperties[prop])
+                      : Object.keys(responsiveProperties[prop])
+                  }
                 />
               ))}
               {(Object.keys(pseudoProperties) as PseudoProperties[]).map(
@@ -602,14 +584,14 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Shadows, borders and outlines',
+      label: 'Shadows and borders',
       description: (
         <>
           <Text>
             Box provides a series of <Strong>boxShadow</Strong> values that
             handle a wide variety of use cases. Note that box shadows are also
-            used for outlines and borders so that their presence doesn’t alter
-            the dimensions of the element.
+            used for borders so that their presence doesn’t alter the dimensions
+            of the element.
           </Text>
           <Code playroom={false}>
             {source(<Box boxShadow="large">...</Box>).code}
@@ -730,6 +712,56 @@ const docs: ComponentDocs = {
           ),
         };
       },
+    },
+    {
+      label: 'Focus outlines',
+      description: (
+        <>
+          <Text>
+            Box will automatically style the focus ring <Strong>outline</Strong>{' '}
+            when specifying an interactive{' '}
+            <TextLink href="#semantic-elements">semantic element</TextLink>,
+            i.e. <Strong>&ldquo;button&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;a&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;input&rdquo;</Strong>, etc.
+          </Text>
+
+          <Code playroom={false}>
+            {source(<Box component="button">...</Box>).code}
+          </Code>
+
+          <Text>
+            When styling a non-interactive element, i.e.{' '}
+            <Strong>&ldquo;div&rdquo;</Strong>,{' '}
+            <Strong>&ldquo;span&rdquo;</Strong>, etc., it is necessary to opt in
+            to the focus ring outline using{' '}
+            <Strong>outline=&ldquo;focus&rdquo;</Strong>.
+          </Text>
+
+          <Notice>
+            <Text>
+              For a non-interactive element to receive focus, you must provide a{' '}
+              <Strong>tabIndex</Strong>.
+            </Text>
+          </Notice>
+
+          <Code playroom={false}>
+            {
+              source(
+                <Box component="span" tabIndex={0} outline="focus">
+                  ...
+                </Box>,
+              ).code
+            }
+          </Code>
+
+          <Text>
+            To apply the focus outline to an element based on the focus of
+            another element, see{' '}
+            <TextLink href="/css/outlineStyle">outlineStyle</TextLink>.
+          </Text>
+        </>
+      ),
     },
   ],
 };

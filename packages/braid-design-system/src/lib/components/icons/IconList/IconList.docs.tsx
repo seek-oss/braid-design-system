@@ -1,11 +1,21 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { IconList, Heading, Stack } from '../../';
+import { IconList, Heading, Stack, Text, TextLink } from '../../';
 import { iconDocumentation } from '../iconCommon.docs';
 
 const docs: ComponentDocs = {
   category: 'Icon',
+  deprecationWarning: (
+    <Text>
+      This component has been deprecated and will be removed in a future
+      release.
+      <br />
+      Please switch to{' '}
+      <TextLink href="/components/IconBulletList">IconBulletList</TextLink>{' '}
+      instead.
+    </Text>
+  ),
   Example: () =>
     source(
       <Stack space="none" align="center">
@@ -15,7 +25,7 @@ const docs: ComponentDocs = {
       </Stack>,
     ),
   alternatives: [],
-  additional: [iconDocumentation],
+  additional: [...iconDocumentation],
 };
 
 export default docs;

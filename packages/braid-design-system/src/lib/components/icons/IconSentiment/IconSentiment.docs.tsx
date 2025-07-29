@@ -62,7 +62,7 @@ const docs: ComponentDocs = {
           </Inline>,
         ),
     },
-    iconDocumentation,
+    ...iconDocumentation,
   ],
 };
 

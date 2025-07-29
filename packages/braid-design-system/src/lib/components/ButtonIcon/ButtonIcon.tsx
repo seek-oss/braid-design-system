@@ -8,6 +8,7 @@ import {
 } from 'react';
 
 import type { Space } from '../../css/atoms/atoms';
+import { useFallbackId } from '../../hooks/useFallbackId';
 import {
   type UseIconProps,
   iconContainerSize,
@@ -40,7 +41,7 @@ export const buttonIconSizes = ['small', 'standard', 'large'] as const;
 type ButtonIconSize = (typeof buttonIconSizes)[number];
 type NativeButtonProps = AllHTMLAttributes<HTMLButtonElement>;
 export interface ButtonIconProps {
-  id: string;
+  id?: string;
   icon: ReactElement<UseIconProps>;
   label: string;
   size?: ButtonIconSize;
@@ -53,6 +54,7 @@ export interface ButtonIconProps {
   onKeyDown?: NativeButtonProps['onKeyDown'];
   'aria-haspopup'?: NativeButtonProps['aria-haspopup'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
+  'aria-describedby'?: NativeButtonProps['aria-describedby'];
   tabIndex?: number;
   data?: DataAttributeMap;
   bleed?: boolean;
@@ -65,10 +67,7 @@ const padding: Record<ButtonIconSize, Space> = {
   large: 'xsmall',
 };
 
-const PrivateButtonIcon = forwardRef<
-  HTMLButtonElement,
-  Omit<ButtonIconProps, 'id'> & { id?: string }
->(
+const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
   (
     {
       icon,
@@ -86,17 +85,14 @@ const PrivateButtonIcon = forwardRef<
       onKeyDown,
       'aria-haspopup': ariaHasPopUp,
       'aria-expanded': ariaExpanded,
+      'aria-describedby': ariaDescribedBy,
       tabIndex,
       data,
       ...restProps
     },
     forwardedRef,
   ) => {
-    const {
-      className: buttonClasses,
-      width: _,
-      ...buttonStyleProps
-    } = useButtonStyles({
+    const { root, content } = useButtonStyles({
       variant,
       tone,
       size: size === 'small' ? 'small' : 'standard',
@@ -114,43 +110,43 @@ const PrivateButtonIcon = forwardRef<
         type={type}
         id={id}
         zIndex={0}
-        // If there is no id, there is no tooltip, so use a title instead.
-        // Removing once consumers have adopted React 18, and we can safely `useId()`
-        title={!id ? label : undefined}
         ref={forwardedRef}
         aria-label={label}
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
-        padding={padding[size]}
+        aria-describedby={ariaDescribedBy}
         onClick={onClick}
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}
         onMouseDown={onMouseDown}
-        className={[buttonClasses, styles.button]}
         maxWidth="content"
         tabIndex={tabIndex}
+        {...root}
+        className={[root.className, styles.button]}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
-        {...buttonStyleProps}
       >
-        <ButtonOverlays
-          variant={variant}
-          tone={tone}
-          radius="full"
-          keyboardFocusable={typeof tabIndex === 'undefined' || tabIndex >= 0}
-          forceActive={ariaExpanded === 'true' || ariaExpanded === true}
-        />
-
-        <Box
-          component="span"
-          display="block"
-          position="relative"
-          className={
-            size === 'large'
-              ? iconContainerSize()
-              : iconSize({ size, crop: true })
-          }
-        >
-          {cloneElement(icon, { tone: icon.props.tone || tone, size: 'fill' })}
+        <Box {...content} padding={padding[size]}>
+          <ButtonOverlays
+            variant={variant}
+            tone={tone}
+            radius="full"
+            forceActive={ariaExpanded === 'true' || ariaExpanded === true}
+          />
+          <Box
+            component="span"
+            display="block"
+            position="relative"
+            className={
+              size === 'large'
+                ? iconContainerSize()
+                : iconSize({ size, crop: true })
+            }
+          >
+            {cloneElement(icon, {
+              tone: icon.props.tone || tone,
+              size: 'fill',
+            })}
+          </Box>
         </Box>
       </Box>
     );
@@ -164,34 +160,30 @@ const PrivateButtonIcon = forwardRef<
 
 export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   ({ id, label, tooltipPlacement, ...restProps }, forwardedRef) => {
-    if (!id) {
-      // Remove when we have enough React 18 adoption, in favour of tooltip with `useId()`
-      return (
-        <PrivateButtonIcon label={label} ref={forwardedRef} {...restProps} />
-      );
-    }
+    const resolvedId = useFallbackId(id);
 
     return (
       <TooltipRenderer
-        id={`${id}-tooltip`}
         tooltip={<Text>{label}</Text>}
         placement={tooltipPlacement}
       >
-        {({ triggerProps: { ref: triggerRef, ...triggerProps } }) => (
-          <PrivateButtonIcon
-            id={id}
+        {/* Omitting triggerProps[aria-describedBy] in favour of consumer controlled aria-describedBy */}
+        {({ triggerProps: { ref: triggerRef, tabIndex } }) => (
+          <ButtonIconContent
+            id={resolvedId}
             label={label}
             ref={(node: HTMLButtonElement) => {
-              if (forwardedRef) {
-                if (typeof forwardedRef === 'function') {
-                  forwardedRef(node);
-                } else {
-                  forwardedRef.current = node;
-                }
+              if (typeof forwardedRef === 'function') {
+                forwardedRef(node);
+              } else if (forwardedRef) {
+                forwardedRef.current = node;
               }
-              triggerRef(node);
+
+              if (typeof triggerRef === 'function') {
+                triggerRef(node);
+              }
             }}
-            {...triggerProps}
+            tabIndex={tabIndex}
             {...restProps}
           />
         )}

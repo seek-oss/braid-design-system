@@ -12,6 +12,7 @@ import {
   Tiles,
 } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Layout',
@@ -288,6 +289,17 @@ const docs: ComponentDocs = {
         </Inline>,
       ).code,
     },
+    dataAttributeDocs({
+      code: `
+        <Inline
+          data={{ testid: 'inline-1' }}
+          // => data-testid="inline-1"
+        >
+          ...
+        </Inline>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -10,14 +10,16 @@ import {
   MenuItemLink,
   MenuRenderer,
   Text,
+  useResponsiveValue,
 } from 'braid-src/lib/components';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
+import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
 import { gradConnection } from 'braid-src/lib/themes';
 import { useState, useRef, useEffect, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
-import { useLocation, Outlet } from 'react-router-dom';
+import { useLocation, Outlet } from 'react-router';
 import { useWindowScroll, useInterval } from 'react-use';
 
 import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
@@ -158,6 +160,13 @@ export const Navigation = () => {
 
   useScrollLock(isMenuOpen);
 
+  const isExpandedSize = useResponsiveValue()({
+    mobile: false,
+    [styles.visibleNavBreakpoint]: true,
+  });
+
+  const navigationActive = isExpandedSize || isMenuOpen;
+
   return (
     <ContentBlock width="large">
       <Box position="fixed" top={0}>
@@ -166,28 +175,26 @@ export const Navigation = () => {
           menuClick={() => setMenuOpen(!isMenuOpen)}
         />
       </Box>
-
       <RemoveScroll enabled={isMenuOpen} forwardProps>
-        <FixedContentBlock
-          overflow="auto"
+        <Box
+          position="fixed"
           bottom={0}
-          paddingX={gutterSize}
-          paddingBottom="xxlarge"
+          transition="fast"
           width="full"
-          display={{
-            mobile: isMenuOpen ? 'block' : 'none',
-            wide: 'block',
-          }}
           zIndex="sticky"
+          inert={navigationActive ? undefined : true}
           className={[
             styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <SideNavigation onSelect={() => setMenuOpen(false)} />
-        </FixedContentBlock>
+          <ScrollContainer direction="vertical">
+            <Box paddingX={gutterSize} paddingBottom="xxlarge">
+              <SideNavigation onSelect={() => setMenuOpen(false)} />
+            </Box>
+          </ScrollContainer>
+        </Box>
       </RemoveScroll>
-
       <Box
         background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
         position="relative"
@@ -208,7 +215,6 @@ export const Navigation = () => {
           <PreviewBranchPanel />
         </Box>
       </Box>
-
       <FixedContentBlock
         top={0}
         left={0}

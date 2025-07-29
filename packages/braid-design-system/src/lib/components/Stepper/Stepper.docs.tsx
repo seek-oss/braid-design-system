@@ -14,6 +14,7 @@ import {
   Text,
   TextLink,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { Step } from './Step';
 import { Stepper } from './Stepper';
@@ -304,6 +305,17 @@ const docs: ComponentDocs = {
           </Stepper>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Stepper
+          data={{ testid: 'stepper-1' }}
+          // => data-testid="stepper-1"
+        >
+          ...
+        </Stepper>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

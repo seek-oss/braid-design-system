@@ -4,7 +4,7 @@ import * as themes from 'braid-src/lib/themes';
 import dedent from 'dedent';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router';
 import type { Render } from 'sku';
 
 import { App } from './App/App';

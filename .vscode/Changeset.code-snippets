@@ -16,8 +16,8 @@
       "```jsx",
       "$0",
       "```}",
-      ""
+      "",
     ],
-    "description": "Standardises the shape of Braid changesets for consistent release notes experience"
-  }
+    "description": "Standardises the shape of Braid changesets for consistent release notes experience",
+  },
 }

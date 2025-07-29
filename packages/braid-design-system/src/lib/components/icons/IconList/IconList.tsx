@@ -1,3 +1,5 @@
+import dedent from 'dedent';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
@@ -5,8 +7,26 @@ import { IconListSvg } from './IconListSvg';
 
 export type IconListProps = IconContainerProps;
 
-export const IconList = (props: IconListProps) => (
-  <IconContainer {...props}>
-    {(svgProps) => <Box component={IconListSvg} {...svgProps} />}
-  </IconContainer>
-);
+/** @deprecated  Use `IconBulletList` instead */
+export const IconList = (props: IconListProps) => {
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      dedent`
+        The \`IconList\` component is deprecated. Please use \`IconBulletList\` instead.
+            %c-<IconList />
+            %c+<IconBulletList />
+        %c
+      `,
+      'color: red',
+      'color: green',
+      'color: inherit',
+    );
+  }
+
+  return (
+    <IconContainer {...props}>
+      {(svgProps) => <Box component={IconListSvg} {...svgProps} />}
+    </IconContainer>
+  );
+};

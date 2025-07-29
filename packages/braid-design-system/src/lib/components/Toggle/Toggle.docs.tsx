@@ -6,14 +6,14 @@ import { Alert, Box, Divider, TextLink, Toggle } from '../';
 import { Stack } from '../Stack/Stack';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: ({ id, getState, toggleState }) =>
+  Example: ({ getState, toggleState }) =>
     source(
       <Toggle
         label="Label"
-        id={id}
         on={getState('toggle')}
         onChange={() => toggleState('toggle')}
       />,
@@ -32,12 +32,11 @@ const docs: ComponentDocs = {
           Toggles can be aligned via the <Strong>align</Strong> prop.
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Stack space="large">
             <Toggle
               label="Left"
-              id={`${id}_1`}
               on={getState('toggle1')}
               onChange={() => toggleState('toggle1')}
               align="left"
@@ -45,7 +44,6 @@ const docs: ComponentDocs = {
             <Divider />
             <Toggle
               label="Justify"
-              id={`${id}_2`}
               on={getState('toggle2')}
               onChange={() => toggleState('toggle2')}
               align="justify"
@@ -53,7 +51,6 @@ const docs: ComponentDocs = {
             <Divider />
             <Toggle
               label="Right"
-              id={`${id}_3`}
               on={getState('toggle3')}
               onChange={() => toggleState('toggle3')}
               align="right"
@@ -76,12 +73,11 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Stack space="large">
             <Toggle
               label="Leading"
-              id={`${id}_leading`}
               on={getState('toggleLeading')}
               onChange={() => toggleState('toggleLeading')}
               togglePosition="leading"
@@ -89,7 +85,6 @@ const docs: ComponentDocs = {
             <Divider />
             <Toggle
               label="Trailing"
-              id={`${id}_trailing`}
               on={getState('toggleTrailing')}
               onChange={() => toggleState('toggleTrailing')}
               togglePosition="trailing"
@@ -130,7 +125,7 @@ const docs: ComponentDocs = {
           </Text>
         </Fragment>
       ),
-      Example: ({ id, setDefaultState, getState, toggleState }) =>
+      Example: ({ setDefaultState, getState, toggleState }) =>
         source(
           <>
             {setDefaultState('verticalBleed', true)}
@@ -140,7 +135,6 @@ const docs: ComponentDocs = {
               <Box boxShadow="borderCriticalLight">
                 <Toggle
                   label="BleedY"
-                  id={`${id}_toggle_bleed`}
                   on={getState('verticalBleed')}
                   onChange={() => toggleState('verticalBleed')}
                   align="left"
@@ -163,18 +157,16 @@ const docs: ComponentDocs = {
           <Strong>small.</Strong>
         </Text>
       ),
-      Example: ({ id, getState, toggleState }) =>
+      Example: ({ getState, toggleState }) =>
         source(
           <Stack space="large">
             <Toggle
-              id={`${id}_standard`}
               label="Standard"
               on={getState('two')}
               onChange={() => toggleState('two')}
               size="standard"
             />
             <Toggle
-              id={`${id}_small`}
               label="Small"
               on={getState('one')}
               onChange={() => toggleState('one')}
@@ -183,6 +175,15 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Toggle
+          data={{ testid: 'toggle-1' }}
+          // => data-testid="toggle-1"
+        />
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

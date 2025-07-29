@@ -57,7 +57,6 @@ const docs: ComponentDocs = {
                   ? 'Enlarge: active = true'
                   : 'Enlarge: active = false'
               }
-              id="toggle-example"
               onClick={() => toggleState('active')}
             />
 
@@ -67,7 +66,7 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    iconDocumentation,
+    ...iconDocumentation,
   ],
 };
 

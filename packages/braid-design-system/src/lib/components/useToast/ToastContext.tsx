@@ -10,7 +10,6 @@ import {
 } from 'react';
 
 import { BraidPortal } from '../BraidPortal/BraidPortal';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 
 import type { Toast, InternalToast } from './ToastTypes';
 import { Toaster } from './Toaster';
@@ -160,7 +159,6 @@ const ToastPortal = ({ children }: ToastPortalProps) => {
 };
 
 export const useToast = () => {
-  const { vanillaTheme } = useBraidTheme();
   const addToast = useContext(ToastControllerContext);
 
   if (addToast === null) {
@@ -169,18 +167,17 @@ export const useToast = () => {
 
   return useCallback(
     (toast: Toast) => {
-      const id = `${toastCounter++}`;
+      const toastKey = `${toastCounter++}`;
       const { key, ...rest } = toast;
-      const dedupeKey = key ?? id;
+      const dedupeKey = key ?? toastKey;
 
       addToast({
         ...rest,
-        vanillaTheme,
-        id,
+        toastKey,
         dedupeKey,
         shouldRemove: false,
       });
     },
-    [vanillaTheme, addToast],
+    [addToast],
   );
 };

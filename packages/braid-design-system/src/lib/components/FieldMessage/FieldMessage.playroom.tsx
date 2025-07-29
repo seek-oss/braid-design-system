@@ -1,6 +1,6 @@
 import type { Optional } from 'utility-types';
 
-import { useFallbackId } from '../../playroom/utils';
+import { useFallbackId } from '../../hooks/useFallbackId';
 
 import {
   type FieldMessageProps,
@@ -15,11 +15,11 @@ export const FieldMessage = ({
   tone,
   ...restProps
 }: PlayroomFieldMessageProps) => {
-  const fallbackId = useFallbackId();
+  const resolvedId = useFallbackId(id);
 
   return (
     <BraidFieldMessage
-      id={id ?? fallbackId}
+      id={resolvedId}
       tone={tone && tones.indexOf(tone) > -1 ? tone : undefined}
       {...restProps}
     />

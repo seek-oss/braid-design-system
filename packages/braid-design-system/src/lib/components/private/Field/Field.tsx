@@ -2,9 +2,10 @@ import assert from 'assert';
 
 import clsx from 'clsx';
 import dedent from 'dedent';
-import { type ReactNode, type AllHTMLAttributes, Fragment } from 'react';
+import { type ReactNode, type AllHTMLAttributes, Fragment, useId } from 'react';
 
 import { textStyles } from '../../../css/typography';
+import { useFallbackId } from '../../../hooks/useFallbackId';
 import { useBackgroundLightness } from '../../Box/BackgroundContext';
 import { type BoxProps, Box } from '../../Box/Box';
 import { type FieldLabelProps, FieldLabel } from '../../FieldLabel/FieldLabel';
@@ -19,6 +20,7 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
 import { mergeIds } from '../mergeIds';
+import { validateTabIndex } from '../validateTabIndex';
 
 import * as styles from './Field.css';
 import { touchableText } from '../../../css/typography.css';
@@ -43,7 +45,7 @@ export type FieldLabelVariant =
     };
 
 export interface FieldBaseProps {
-  id: NonNullable<FormElementProps['id']>;
+  id?: FormElementProps['id'];
   value?: FormElementProps['value'];
   name?: FormElementProps['name'];
   disabled?: FormElementProps['disabled'];
@@ -59,6 +61,7 @@ export interface FieldBaseProps {
   icon?: ReactNode;
   prefix?: string;
   required?: boolean;
+  tabIndex?: 0 | -1;
 }
 
 type PassthroughProps =
@@ -66,14 +69,14 @@ type PassthroughProps =
   | 'name'
   | 'disabled'
   | 'autoComplete'
-  | 'autoFocus';
+  | 'autoFocus'
+  | 'tabIndex';
 interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
   background: BoxProps['background'];
   borderRadius: BoxProps['borderRadius'];
   width: BoxProps['width'];
   paddingLeft: BoxProps['paddingLeft'];
   paddingRight: BoxProps['paddingRight'];
-  outline: BoxProps['outline'];
   'aria-describedby'?: string;
   'aria-required'?: boolean;
   'aria-label'?: string;
@@ -115,6 +118,7 @@ export const Field = ({
   icon,
   prefix,
   required,
+  tabIndex,
   componentName,
   ...restProps
 }: InternalFieldProps) => {
@@ -122,6 +126,11 @@ export const Field = ({
     prefix === undefined || typeof prefix === 'string',
     'Prefix must be a string',
   );
+
+  const resolvedId = useFallbackId(id);
+
+  const messageId = useId();
+  const descriptionId = useId();
 
   if (process.env.NODE_ENV !== 'production') {
     if (
@@ -141,10 +150,10 @@ export const Field = ({
         `,
       );
     }
+
+    validateTabIndex(tabIndex);
   }
 
-  const messageId = `${id}-message`;
-  const descriptionId = description ? `${id}-description` : undefined;
   const fieldBackground: BoxProps['background'] = disabled
     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
     : { lightMode: 'surface' };
@@ -170,7 +179,6 @@ export const Field = ({
         variant="critical"
         visible={tone === 'critical' && !disabled}
       />
-      <FieldOverlay variant="focus" className={styles.focusOverlay} />
       <FieldOverlay variant="formAccent" className={styles.hoverOverlay} />
     </Fragment>
   );
@@ -181,7 +189,7 @@ export const Field = ({
     <Stack space="small">
       {hasVisualLabelOrDescription ? (
         <FieldLabel
-          htmlFor={id}
+          htmlFor={resolvedId}
           label={'label' in restProps ? restProps.label : undefined}
           disabled={disabled}
           secondaryLabel={
@@ -191,7 +199,7 @@ export const Field = ({
             'tertiaryLabel' in restProps ? restProps.tertiaryLabel : undefined
           }
           description={description}
-          descriptionId={descriptionId}
+          descriptionId={description ? descriptionId : undefined}
         />
       ) : null}
 
@@ -201,23 +209,21 @@ export const Field = ({
           background={fieldBackground}
           borderRadius="standard"
           display="flex"
-          className={showSecondaryIcon ? styles.secondaryIconSpace : undefined}
         >
           {children(
             overlays,
             {
-              id,
+              id: resolvedId,
               name,
               background: fieldBackground,
               width: 'full',
               paddingLeft: fieldPadding,
               paddingRight: showSecondaryIcon ? undefined : fieldPadding,
               borderRadius: 'standard',
-              outline: 'none',
               'aria-describedby': mergeIds(
                 ariaDescribedBy,
                 message || secondaryMessage ? messageId : undefined,
-                descriptionId,
+                description ? descriptionId : undefined,
               ),
               'aria-required': required,
               ...('aria-label' in restProps
@@ -229,6 +235,7 @@ export const Field = ({
               disabled,
               autoComplete,
               autoFocus,
+              tabIndex,
               ...buildDataAttributes({ data, validateRestProps: restProps }),
               className: clsx(
                 styles.field,
@@ -240,6 +247,7 @@ export const Field = ({
                 }),
                 touchableText.standard,
                 icon && !prefix ? styles.iconSpace : null,
+                showSecondaryIcon ? styles.secondaryIconSpace : undefined,
               ),
             },
             icon ? (
@@ -277,7 +285,7 @@ export const Field = ({
             prefix ? (
               <Box
                 component="label"
-                htmlFor={id}
+                htmlFor={resolvedId}
                 display="flex"
                 alignItems="center"
                 paddingLeft={icon ? undefined : fieldPadding}

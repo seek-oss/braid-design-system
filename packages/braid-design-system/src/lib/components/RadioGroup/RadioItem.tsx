@@ -22,6 +22,7 @@ export interface RadioItemProps
     | 'id'
     | 'tone'
     | 'size'
+    | 'tabIndex'
   > {
   value: NonNullable<InlineFieldProps['value']>;
 }
@@ -49,7 +50,6 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
     return (
       <InlineField
         {...props}
-        id={`${radioGroupContext.id}_${radioItemContext}`}
         name={radioGroupContext.name}
         checked={checked}
         onChange={radioGroupContext.onChange}
@@ -62,7 +62,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
         size={radioGroupContext.size}
         disabled={radioGroupContext.disabled || props.disabled}
         aria-describedby={radioGroupContext['aria-describedby']}
-        tabIndex={tababble ? 0 : -1}
+        tabIndex={tababble && radioGroupContext.tabIndex !== -1 ? 0 : -1}
         inList={true}
         type="radio"
         message={null}

@@ -25,13 +25,3 @@ export const hoverOverlay = [
     },
   }),
 ];
-
-export const focusOverlay = [
-  style({
-    selectors: {
-      [`${button}:focus &`]: {
-        opacity: 1,
-      },
-    },
-  }),
-];

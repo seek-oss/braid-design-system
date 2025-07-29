@@ -23,6 +23,7 @@ import {
   Badge,
   List,
 } from '..';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -293,7 +294,7 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Dialog">Dialog.</TextLink>
         </Text>
       ),
-      Example: ({ id, getState, toggleState, showToast }) =>
+      Example: ({ getState, toggleState, showToast }) =>
         source(
           <>
             <Inline space="none">
@@ -320,7 +321,6 @@ const docs: ComponentDocs = {
               </MenuRenderer>
             </Inline>
             <Dialog
-              id={id}
               width="content"
               title="Delete item?"
               open={getState('confirm')}
@@ -457,15 +457,9 @@ const docs: ComponentDocs = {
                   </Box>
                 )}
               >
-                <MenuItem id="menuItem1" onClick={() => {}}>
-                  Item 1
-                </MenuItem>
-                <MenuItem id="menuItem2" onClick={() => {}}>
-                  Item 2
-                </MenuItem>
-                <MenuItem id="menuItem3" onClick={() => {}}>
-                  Item 3
-                </MenuItem>
+                <MenuItem onClick={() => {}}>Item 1</MenuItem>
+                <MenuItem onClick={() => {}}>Item 2</MenuItem>
+                <MenuItem onClick={() => {}}>Item 3</MenuItem>
               </MenuRenderer>
               <Inline space="small" collapseBelow="tablet">
                 {getState('action') ? (
@@ -518,6 +512,17 @@ const docs: ComponentDocs = {
         </>
       ),
     },
+    dataAttributeDocs({
+      code: `
+        <MenuRenderer
+          data={{ testid: 'menu-1' }}
+          // => data-testid="menu-1"
+        >
+          ...
+        </MenuRenderer>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

@@ -4705,5 +4705,431 @@
         "summary": "**Rating:** Add `tone` support\n\nFor usages where the `Rating` component should not be accentuated, the `tone` prop can be used to apply `neutral` tone.\n\n**EXAMPLE USAGE:**\n```jsx\n<Rating tone=\"neutral\" />\n```"
       }
     ]
+  },
+  {
+    "version": "33.5.0",
+    "updates": [
+      {
+        "updated": [
+          "Accordion"
+        ],
+        "summary": "**Accordion**: Fix `data` prop parsing\n\nEnsure the `data` prop is correctly passed through to `Stack` internally, and validate `data-*` attributes are not being passed in incorrectly."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "TextDropdown",
+          "TextField",
+          "Textarea"
+        ],
+        "summary": "Add `tabIndex` support to all form fields\n\nEnsure the `tabIndex` prop is available on all form fields, enabling greater control over which elements appear in the keyboard navigation flow.\n\nIn line with [MDN guidance], the only supported values are `0` and `-1` to ensure best practice for keyboard navigation and assistive technologies.\n\n**EXAMPLE USAGE:**\n```jsx\n<TextField tabIndex={-1} />\n```\n\n[MDN guidance]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex#:~:text=only%20use%200%20and%20%2D1%20as%20tabindex%20values"
+      }
+    ]
+  },
+  {
+    "version": "33.6.0",
+    "updates": [
+      {
+        "new": [
+          "IconBulletList",
+          "IconNumberedList"
+        ],
+        "summary": "Add new icons to represent other list types.\nSits alongside `IconChecklist` which already exists.\n\n```tsx\n<IconBulletList />\n<IconNumberedList />\n```\n\nAs a result we have deprecated `IconList` in favour of the more specific list types. `IconList` will be removed in a future major version.\n\n### MIGRATION GUIDE\n\n```diff\n-<IconList />\n+<IconBulletList />\n```"
+      },
+      {
+        "updated": [
+          "IconHeart",
+          "IconLink",
+          "IconLinkBroken"
+        ],
+        "summary": "**IconHeart, IconLink, IconLinkBroken:** Update design"
+      },
+      {
+        "new": [
+          "IconBold",
+          "IconItalic",
+          "IconRedo",
+          "IconTitle",
+          "IconUndo"
+        ],
+        "summary": "Add new icons to support rich text editors and formatting.\n\n```tsx\n<IconBold />\n<IconItalic />\n<IconTitle />\n<IconRedo />\n<IconUndo />\n```"
+      }
+    ]
+  },
+  {
+    "version": "33.7.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Fix layout issue causing minor content overflow in certain scenarios"
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Autosuggest",
+          "ButtonIcon",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dialog",
+          "Disclosure",
+          "Drawer",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "TabsProvider",
+          "Textarea",
+          "TextDropdown",
+          "TextField",
+          "Toggle",
+          "TooltipRenderer"
+        ],
+        "summary": "Change `id` prop from required to optional, allowing simplified usage.\n\nRemove the `uuid` dependency which was previously used to generate fallback IDs in Playroom.\n\n**EXAMPLE USAGE:**\n\n```diff\n- <AccordionItem id=\"item-1\" ... />\n+ <AccordionItem ... />\n```"
+      },
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading**: Support long, unbroken text content when using the `maxLines` prop"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer**: Ensure `MenuRenderer` with `top` placement is positioned correctly\n\nEnsures the menu is correctly positioned when using a `MenuRenderer` with `top` placement inside of a `Dialog` or `Drawer`."
+      },
+      {
+        "updated": [
+          "MenuItem",
+          "MenuItemCheckbox",
+          "MenuItemLink"
+        ],
+        "summary": "**MenuItem, MenuItemCheckbox, MenuItemLink**: Fixes an issue which could cause MenuItems to require multiple taps to trigger on iOS"
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer**: Support long, unbroken text content"
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Button",
+          "ButtonLink",
+          "Checkbox",
+          "Heading",
+          "MenuItem",
+          "MenuItemLink",
+          "RadioItem",
+          "Tab",
+          "Text",
+          "TextLink",
+          "TextLinkButton",
+          "useToast"
+        ],
+        "summary": "Support `null` for `badge` and `icon` slots, in addition to `undefined`.\n\nPreviously, `badge` and `icon` props could only be explicitly omitted with `undefined`.\nThis change allows passing `null`.\n\n**EXAMPLE USAGE:**\n\n```tsx\n+ <Button icon={null} />\n```"
+      },
+      {
+        "updated": [
+          "PageBlock"
+        ],
+        "summary": "**PageBlock**: Ensure component is full width when used inside other layout components"
+      },
+      {
+        "updated": [
+          "Table",
+          "TableBody",
+          "TableCell",
+          "TableFooter",
+          "TableHeader",
+          "TableHeaderCell",
+          "TableRow"
+        ],
+        "summary": "Add `ref` support to table components"
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonIcon",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonIcon, ButtonLink**: Ensure hit area remains consistent size\n\nFixes an issue where clicking the edge of buttons would trigger the active animation but not the click event"
+      },
+      {
+        "updated": [
+          "Alert",
+          "Badge",
+          "MenuRenderer",
+          "OverflowMenu",
+          "Table"
+        ],
+        "summary": "Ensure content is not clipped when used inside nested flex containers with stretched sibling elements"
+      }
+    ]
+  },
+  {
+    "version": "33.8.0",
+    "updates": [
+      {
+        "updated": [
+          "MenuRenderer",
+          "OverflowMenu"
+        ],
+        "summary": "**MenuRenderer, OverflowMenu**: Add automatic menu positioning to ensure menus are placed within viewport bounds.\n\nMenus now detect when they would render outside window boundaries and automatically adjust their position.\nThis includes flipping their vertical placement and/or aligning to window edges as needed to ensure menus remain fully visible."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "PasswordField",
+          "TextField"
+        ],
+        "summary": "Ensure the `input` element fills the visual field boundary.\n\nPreviously, when a field action such as \"clear\" or \"toggle password visibility\" was present, the native `input` element would shrink to accommodate.\n\nThis change ensures the `input` does not change size, instead applying padding to prevent the field value from colliding with the action.\nThe native browser styles for features such as [`:autofill`] now visually fill the field."
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Add entrance animation to suggestions dropdown."
+      },
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer**: Improve tooltip positioning at viewport edges.\n\nSubtly adjusts tooltip edge padding and minimum arrow margins when triggered near window boundaries to ensure optimal arrow placement."
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "MenuRenderer",
+          "OverflowMenu",
+          "TooltipRenderer"
+        ],
+        "summary": "**Autosuggest, MenuRenderer, OverflowMenu, TooltipRenderer**: Refactor the internal layout of floating elements for improved consistency."
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer**: Ensure that only elements outside the `Dialog` or `Drawer` are `aria-hidden` when open\n\nFixes an issue where the close button inside the `Dialog` or `Drawer` was incorrectly inside an `aria-hidden` region."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast**: Simplify internal logic, refining how the theme is applied to Toasts"
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon**: Add optional `aria-describedby` prop\n\n`aria-describedby` can be used in addition to `label` to associate additional descriptive elements with the `ButtonIcon`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<ButtonIcon icon={<IconDelete />} label=\"Delete\" aria-describedby=\"descriptionId\" />\n<Text id=\"descriptionId\">Deleted items will be permanently removed after 30 days.</Text>\n```"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest**: Ensure suggestions dropdown is visible, even when `Autosuggest` is inside a container with overflow hidden."
+      }
+    ]
+  },
+  {
+    "version": "33.9.0",
+    "updates": [
+      {
+        "updated": [
+          "BraidTestProvider"
+        ],
+        "summary": "**BraidTestProvider:** Provide `ResizeObserver` & `IntersectionObserver` stubs to jsdom\n\nFixes an issue where rendering certain Braid components within a test environment could throw errors due to missing APIs in jsdom, causing tests to fail with the following error:\n\n```\nReferenceError: IntersectionObserver is not defined\n```"
+      }
+    ]
+  },
+  {
+    "version": "33.9.1",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon",
+          "TooltipRenderer"
+        ],
+        "summary": "**ButtonIcon, TooltipRenderer:** Remove unnecessary intermediary element around the tooltip trigger."
+      },
+      {
+        "updated": [
+          "BraidTestProvider"
+        ],
+        "summary": "**BraidTestProvider:** Use stubs instead of mocks to fill missing APIs in jsdom\n\nThis change allows the BraidTestProvider to be framework agnostic for tests and discourages testing the stubbed browser APIs directly."
+      }
+    ]
+  },
+  {
+    "version": "33.10.0",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon**: Ensure the focus outline is styled consistently with other components.\n\nFix issue which caused the Braid focus outline to show along with the native browser focus outline."
+      },
+      {
+        "updated": [
+          "apac"
+        ],
+        "summary": "**apac:** Deprecate theme in favour of `seekJobs` theme\n\n**MIGRATION GUIDE:**\n```diff\n# App.tsx\n- import apac from 'braid-design-system/themes/apac';\n+ import seekJobs from 'braid-design-system/themes/seekJobs';\n\n- <BraidProvider theme={apac} ...>\n+ <BraidProvider theme={seekJobs} ...>\n```"
+      },
+      {
+        "updated": [
+          "LinkableHeading"
+        ],
+        "summary": "**LinkableHeading:** Simplify DOM elements and improve focus and scroll styling."
+      },
+      {
+        "updated": [
+          "AccordionItem",
+          "Alert",
+          "Autosuggest",
+          "Button",
+          "ButtonIcon",
+          "ButtonLink",
+          "Checkbox",
+          "CheckboxStandalone",
+          "Dialog",
+          "Drawer",
+          "Dropdown",
+          "MonthPicker",
+          "PasswordField",
+          "RadioItem",
+          "Step",
+          "Tab",
+          "TabPanel",
+          "Textarea",
+          "TextDropdown",
+          "TextField",
+          "TextLink",
+          "TextLinkButton",
+          "Toggle"
+        ],
+        "summary": "Migrate from custom focus ring visibility to native `:focus-visible` behaviour.\n\nPreviously Braid would change the presentation of focus ring outlines based on the user input, i.e. mouse or keyboard,\nto prevent showing focus rings on click.\nWith the updated Browser Support Policy, we can now leverage the native `:focus-visible` pseudo class instead."
+      },
+      {
+        "updated": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms**: Add `sticky` to `position`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Box position=\"sticky\" top={0} ... />\n```"
+      },
+      {
+        "updated": [
+          "Box",
+          "atoms"
+        ],
+        "summary": "**Box, atoms**: Deprecate `outline` value `none`, and `boxShadow` value `outlineFocus`.\n\nPreviously it was recommended to hide an element's `outline` in favour of using `boxShadow=\"outlineFocus\"`.\n\nBraid now leverages the `outline` property directly, managing focus rings of interactive elements as part of its scoped CSS reset.\n\n**MIGRATION GUIDE:**\n\nFor styling the focus ring via `Box`:\n\n1. Remove usage of `outline=\"none\"` and `boxShadow=\"outlineFocus\"`\n2. Refer to [`focus outlines`] for guidance on leveraging Braid's focus outline styles.\n\n```diff\n- <Box outline=\"none\" className={styles.customFocusStyles} />\n+ <Box />\n```\n\nFor styling the focus outline of an element based on the focus of another element, see [`outlineStyle`].\n\n[`focus outlines`]: https://seek-oss.github.io/braid-design-system/components/Box#focus-outlines\n[`outlineStyle`]: https://seek-oss.github.io/braid-design-system/css/outlineStyle"
+      },
+      {
+        "updated": [
+          "seekBusiness"
+        ],
+        "summary": "**seekBusiness:** Migrate to updated visual language\n\nMigrate `seekBusiness` theme to new visual language.\nAdopts the `seekJobs` theme for the latest design standards, rather than the legacy `apac` theme, while retaining the `seekBusiness` brand accent colour."
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer**: Ensure the focus outline is correctly applied to the title.\n\nFix issue where focus outline would not be long enough to wrap the entire title text in certain situations."
+      }
+    ]
+  },
+  {
+    "version": "33.10.1",
+    "updates": [
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast:** Clean up internal refactor"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Refactor layout, ensure content area is the full height\n\nThis change allows you to spread content to the bottom of a `Drawer`, for example with a `vertical` direction `Spread`."
+      },
+      {
+        "updated": [
+          "ButtonLink",
+          "Pagination",
+          "Textarea",
+          "TextLinkButton"
+        ],
+        "summary": "Ensure focus rings are consistent across components\n\nAligns a few edge cases where focus rings were not consistent due to elements or aria roles not captured by the reset."
+      },
+      {
+        "updated": [
+          "BraidTestProvider"
+        ],
+        "summary": "**BraidTestProvider:** Align mock with real IntersectionObserver API"
+      },
+      {
+        "updated": [
+          "Table"
+        ],
+        "summary": "**Table:** Ensure `alignY` prop is applied consistently across browsers\n\nFixes an issue where setting the `alignY` prop to `top` would not apply the `vertical-align` CSS property — instead falling through to our CSS reset which sets `vertical-align: baseline` (rendering inconsistently across browsers)."
+      }
+    ]
+  },
+  {
+    "version": "33.10.2",
+    "updates": []
+  },
+  {
+    "version": "33.11.0",
+    "updates": [
+      {
+        "updated": [
+          "RadioGroup"
+        ],
+        "summary": "**RadioGroup:** Ensure provided `id` is assigned to `fieldset`\n\nFixes a bug where the provided `id` was not being passed through to the `fieldset` element."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast**: Improve layout of toasts when multiple toasts are shown\n\nWhen multiple toasts are shown simultaneously, they now visually stack in a collapsed format that expands on interaction.\nThis prevents toasts from obscuring page content while providing users with an easy way to manage and navigate through the recent toast history."
+      },
+      {
+        "updated": [
+          "seekJobs",
+          "seekBusiness"
+        ],
+        "summary": "**seekJobs, seekBusiness:** Update drop shadow palette\n\nRefine the drop shadow palette values of `small`, `medium`, and `large`.\nThe shadow values are now softer and more linear in their scale."
+      },
+      {
+        "updated": [
+          "ButtonIcon",
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Optimise performance by reducing unnecessary recalculations of the trigger position"
+      },
+      {
+        "updated": [
+          "seekJobs",
+          "seekBusiness"
+        ],
+        "summary": "**seekJobs, seekBusiness:** Increase medium font weight\n\nThe introduction of Traditional Chinese support means characters in this unicode range are rendered using the default `sans-serif` font.\nThe system fonts that handle these characters only cater for **regular** and **bold** weights, resulting in the `medium` weight of 500 falling back to 400 — resulting in loss of visual hierarchy.\n\nBy increasing the weight of `medium` to 600, it will now round up to 700 (`strong`) when the rendered font cannot satisfy `medium`.\n\nThis only affects `seekJobs` and `seekBusiness` themes rendering Traditional Chinese characters, all weights across other character sets remain unchanged."
+      }
+    ]
   }
 ]

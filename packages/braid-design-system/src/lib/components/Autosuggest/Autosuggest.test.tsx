@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type Dispatch, useState, useRef, useEffect } from 'react';
@@ -16,13 +15,19 @@ function renderAutosuggest<Value>({
   value: initialValue,
   suggestions: suggestionsProp,
   automaticSelection,
+  tabIndex,
   onFocus,
   onBlur,
 }: Pick<
   AutosuggestProps<Value>,
-  'value' | 'suggestions' | 'automaticSelection' | 'onFocus' | 'onBlur'
+  | 'value'
+  | 'suggestions'
+  | 'automaticSelection'
+  | 'onFocus'
+  | 'onBlur'
+  | 'tabIndex'
 >) {
-  const changeHandler = jest.fn();
+  const changeHandler = vi.fn();
 
   type Suggestions = AutosuggestProps<Value>['suggestions'];
 
@@ -39,7 +44,6 @@ function renderAutosuggest<Value>({
     return (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           automaticSelection={automaticSelection}
           value={value}
@@ -48,6 +52,7 @@ function renderAutosuggest<Value>({
             changeHandler(...args);
           }}
           suggestions={suggestions}
+          tabIndex={tabIndex}
           onFocus={onFocus}
           onBlur={onBlur}
         />
@@ -216,7 +221,6 @@ describe('Autosuggest', () => {
       return (
         <BraidTestProvider>
           <Autosuggest
-            id="fruit"
             label="Fruit"
             value={value}
             onChange={(newValue) => {
@@ -259,8 +263,8 @@ describe('Autosuggest', () => {
   });
 
   it('should pass through focus and blur events', async () => {
-    const focusHandler = jest.fn();
-    const blurHandler = jest.fn();
+    const focusHandler = vi.fn();
+    const blurHandler = vi.fn();
     const { input } = renderAutosuggest({
       value: { text: '' },
       suggestions: [
@@ -281,7 +285,7 @@ describe('Autosuggest', () => {
   });
 
   it("should call 'onClear' handler when clearing suggestions", async () => {
-    const clearHandler = jest.fn();
+    const clearHandler = vi.fn();
     let suggestions = [
       {
         text: 'Apples',
@@ -364,7 +368,6 @@ describe('Autosuggest', () => {
       return (
         <BraidTestProvider>
           <Autosuggest
-            id="id"
             label="Label"
             value={{ text: '' }}
             onChange={() => {}}
@@ -401,7 +404,6 @@ describe('Autosuggest', () => {
       const { getByLabelText } = render(
         <BraidTestProvider>
           <Autosuggest
-            id="id"
             aria-label="Hidden field label"
             value={{ text: '' }}
             onChange={() => {}}
@@ -565,6 +567,81 @@ describe('Autosuggest', () => {
   });
 
   describe('keyboard access', () => {
+    it('should not be accessible with tabindex of -1', async () => {
+      renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+        tabIndex: -1,
+      });
+
+      expect(document.body).toHaveFocus();
+
+      await userEvent.tab();
+
+      expect(document.body).toHaveFocus();
+    });
+
+    it('should be accessible with tabindex of 0', async () => {
+      const { input } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+        tabIndex: 0,
+      });
+
+      expect(document.body).toHaveFocus();
+
+      await userEvent.tab();
+
+      expect(input).toHaveFocus();
+    });
+
+    it('should be accessible with a tabindex of undefined', async () => {
+      const { input } = renderAutosuggest({
+        value: { text: '' },
+        suggestions: [
+          {
+            text: 'Apples',
+            value: 'apples',
+            highlights: [{ start: 0, end: 4 }],
+          },
+          {
+            text: 'Bananas',
+            value: 'bananas',
+            highlights: [{ start: 0, end: 4 }],
+          },
+        ],
+        tabIndex: undefined,
+      });
+
+      expect(document.body).toHaveFocus();
+
+      await userEvent.tab();
+
+      expect(input).toHaveFocus();
+    });
+
     it("shouldn't select anything and close the list on enter if the user hasn't navigated the list", async () => {
       const { input, changeHandler, getInputValue, queryByLabelText } =
         renderAutosuggest({
@@ -762,7 +839,6 @@ describe('Autosuggest', () => {
         return (
           <BraidTestProvider>
             <Autosuggest
-              id="fruit"
               label="Fruit"
               value={value}
               onChange={(newValue) => {
@@ -900,7 +976,6 @@ describe('Autosuggest', () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           value={{ text: '' }}
           onChange={() => {}}
@@ -939,7 +1014,6 @@ describe('Autosuggest', () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           value={{ text: '' }}
           onChange={() => {}}
@@ -973,7 +1047,6 @@ describe('Autosuggest', () => {
     const TestCase = () => (
       <BraidTestProvider>
         <Autosuggest
-          id="fruit"
           label="Fruit"
           value={{ text: '' }}
           onChange={() => {}}

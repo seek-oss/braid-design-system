@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderToStaticMarkup } from 'react-dom/server';

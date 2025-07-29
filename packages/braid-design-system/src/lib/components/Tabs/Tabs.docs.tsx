@@ -18,15 +18,17 @@ import {
   IconHome,
   IconProfile,
   IconRecommended,
+  Toggle,
 } from '..';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
   subComponents: ['TabsProvider', 'Tab', 'TabPanels', 'TabPanel'],
-  Example: ({ id }) =>
+  Example: () =>
     source(
-      <TabsProvider id={id}>
+      <TabsProvider>
         <Stack space="medium">
           <Tabs label="Test tabs">
             <Tab>The first tab</Tab>
@@ -115,9 +117,9 @@ const docs: ComponentDocs = {
           <Strong>align</Strong> prop on <Strong>Tabs</Strong>.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs" align="center">
                 <Tab>The first tab</Tab>
@@ -145,9 +147,9 @@ const docs: ComponentDocs = {
           <Strong>Tabs</Strong> component.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={`${id}_1`}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs" divider="full">
                 <Tab>The first tab</Tab>
@@ -175,9 +177,9 @@ const docs: ComponentDocs = {
           <Strong>“none”</Strong> on the <Strong>Tabs</Strong> component.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={`${id}_2`}>
+          <TabsProvider>
             <Tabs label="Test tabs" divider="none">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
@@ -221,9 +223,9 @@ const docs: ComponentDocs = {
           </TextLink>
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Tabs label="Test tabs" divider="none" gutter="gutter">
               <Tab>The first tab</Tab>
               <Tab>The second tab</Tab>
@@ -261,9 +263,9 @@ const docs: ComponentDocs = {
           the <Strong>Tab</Strong> by using the <Strong>badge</Strong> prop.
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs">
                 <Tab>The first tab</Tab>
@@ -302,9 +304,9 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
-          <TabsProvider id={id}>
+          <TabsProvider>
             <Stack space="medium">
               <Tabs label="Test tabs">
                 <Tab icon={<IconHome />}>The first tab</Tab>
@@ -339,14 +341,14 @@ const docs: ComponentDocs = {
           <Strong>small.</Strong>
         </Text>
       ),
-      Example: ({ id }) =>
+      Example: () =>
         source(
           <Stack space="xlarge">
             <Stack space="medium">
               <Text size="small" tone="secondary">
                 Standard tabs
               </Text>
-              <TabsProvider id={`${id}_std`}>
+              <TabsProvider>
                 <Tabs label="Standard tabs">
                   <Tab>The first tab</Tab>
                   <Tab>The second tab</Tab>
@@ -362,7 +364,7 @@ const docs: ComponentDocs = {
                 Small tabs
               </Text>
 
-              <TabsProvider id={`${id}_small`}>
+              <TabsProvider>
                 <Tabs label="Small tabs" size="small">
                   <Tab>The first tab</Tab>
                   <Tab>The second tab</Tab>
@@ -377,6 +379,59 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Reserve hit area',
+      description: (
+        <>
+          <Text>
+            By default, a <Strong>Tab</Strong> will only occupy the vertical
+            space from the top of the label to the active underline. This means
+            the hit area will bleed out into the space above.
+          </Text>
+          <Text>
+            The bleed can be disabled by setting the{' '}
+            <Strong>reserveHitArea</Strong> prop to <Strong>true</Strong>.
+          </Text>
+        </>
+      ),
+      Example: ({ getState, toggleState, setDefaultState }) =>
+        source(
+          <>
+            {setDefaultState('reserveHitArea', false)}
+
+            <Stack space="xlarge">
+              <Toggle
+                label="reserveHitArea"
+                on={getState('reserveHitArea')}
+                onChange={() => toggleState('reserveHitArea')}
+                align="right"
+                togglePosition="trailing"
+              />
+
+              <Box position="relative">
+                <TabsProvider>
+                  <Tabs
+                    label="Standard tabs"
+                    reserveHitArea={getState('reserveHitArea')}
+                  >
+                    <Tab>The first tab</Tab>
+                    <Tab>The second tab</Tab>
+                    <Tab>The third tab</Tab>
+                    <Tab>The fourth tab</Tab>
+                  </Tabs>
+                </TabsProvider>
+                <Box
+                  position="absolute"
+                  inset={0}
+                  boxShadow="borderCriticalLight"
+                  pointerEvents="none"
+                  zIndex={1}
+                />
+              </Box>
+            </Stack>
+          </>,
+        ),
+    },
+    {
       label: 'State management',
       description: (
         <Text>
@@ -387,18 +442,17 @@ const docs: ComponentDocs = {
           <Strong>TabsProvider.</Strong>
         </Text>
       ),
-      Example: ({ id, getState, setState, setDefaultState }) =>
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('tab', 'second')}
 
             <TabsProvider
-              id={id}
               selectedItem={getState('tab')}
               onChange={(index, item) => setState('tab', item)}
             >
               <Stack space="medium">
-                <Tabs label="Test tabs" divider="none" reserveHitArea>
+                <Tabs label="Controlled state tabs">
                   <Tab item="first">The first tab</Tab>
                   <Tab item="second">The second tab</Tab>
                   <Tab item="third">The third tab</Tab>
@@ -423,6 +477,26 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <TabsProvider>
+          <Tabs
+            data={{ testid: 'tabs-1' }}
+            // => data-testid="tabs-1"
+          >
+            <Tab data={{ testid: 'tab-1' }}>
+              ...
+            </Tab>
+          </Tabs>
+          <TabPanels>
+            <TabPanel data={{ testid: 'tab-panel-1' }}>
+              ...
+            </TabPanel>
+          </TabPanels>
+        </TabsProvider>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 

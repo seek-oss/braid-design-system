@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-import 'html-validate/jest';
 import { render } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -116,7 +114,7 @@ describe('ButtonLink', () => {
         <ButtonLink
           href="/foo/bar"
           data-attribute="true"
-          // @ts-ignore
+          // @ts-expect-error Should not support custom classes
           className="CUSTOM_CLASS_NAME"
           style={{ color: 'CUSTOM_COLOR' }}
         >

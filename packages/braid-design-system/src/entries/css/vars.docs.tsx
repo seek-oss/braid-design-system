@@ -1,11 +1,4 @@
-import {
-  Fragment,
-  type ReactNode,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react';
+import { Fragment, type ReactNode, useEffect, useRef, useState } from 'react';
 import Code from 'site/App/Code/Code';
 import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
 import type { CssDoc } from 'site/types';
@@ -40,54 +33,49 @@ const Row = ({
   children: ReactNode;
   hideCanvas?: boolean;
   darkCanvas?: boolean;
-}) => {
-  const tooltipId = useId();
-
-  return (
-    <Columns space="large" alignY="center">
-      <Column>
-        <Text>
-          <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
-          {name}
-          {name === 'rating' ? (
-            <>
-              {' '}
-              <TooltipRenderer
-                id={tooltipId}
-                tooltip={
-                  <Text>
-                    The `rating` token has been deprecated in favour of the
-                    `brandAccent` token
-                  </Text>
-                }
-              >
-                {({ triggerProps }) => (
-                  <Box component="span" {...triggerProps}>
-                    <Badge
-                      tone="caution"
-                      title={
-                        '' /* Blanked-out to prevent title appearing alongside tooltip */
-                      }
-                    >
-                      Deprecated
-                    </Badge>
-                  </Box>
-                )}
-              </TooltipRenderer>
-            </>
-          ) : null}
-        </Text>
-      </Column>
-      <Column width="content">
-        <Box style={{ color: vars.foregroundColor.neutral as any }}>
-          <ThemedExample transparent={hideCanvas} darkCanvas={darkCanvas}>
-            <Box display="flex">{children}</Box>
-          </ThemedExample>
-        </Box>
-      </Column>
-    </Columns>
-  );
-};
+}) => (
+  <Columns space="large" alignY="center">
+    <Column>
+      <Text>
+        <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
+        {name}
+        {name === 'rating' ? (
+          <>
+            {' '}
+            <TooltipRenderer
+              tooltip={
+                <Text>
+                  The `rating` token has been deprecated in favour of the
+                  `brandAccent` token
+                </Text>
+              }
+            >
+              {({ triggerProps }) => (
+                <Box component="span" {...triggerProps}>
+                  <Badge
+                    tone="caution"
+                    title={
+                      '' /* Blanked-out to prevent title appearing alongside tooltip */
+                    }
+                  >
+                    Deprecated
+                  </Badge>
+                </Box>
+              )}
+            </TooltipRenderer>
+          </>
+        ) : null}
+      </Text>
+    </Column>
+    <Column width="content">
+      <Box style={{ color: vars.foregroundColor.neutral as any }}>
+        <ThemedExample transparent={hideCanvas} darkCanvas={darkCanvas}>
+          <Box display="flex">{children}</Box>
+        </ThemedExample>
+      </Box>
+    </Column>
+  </Columns>
+);
 
 const ContentWidthValue = ({ var: varName }: { var: string }) => {
   const [size, setSize] = useState(0);
