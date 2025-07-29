@@ -1,4 +1,4 @@
-@keyframes _1mqlxsn4 {
+@keyframes _5jnvhd4 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-._1mqlxsn1 {
-  z-index: 100;
+._5jnvhd1 {
+  z-index: 99999;
   background: #1c2230;
-  color: var(--_1xer0lw9);
+  color: var(--_1kddpj19);
 }
-._1mqlxsn3 > svg > path {
+._5jnvhd3 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: _1mqlxsn4;
+  animation-name: _5jnvhd4;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,8 +25,43 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-._1mqlxsn5 {
+._5jnvhd5 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
+}
+._11fry2r1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_11fry2r0);
+}
+._11fry2r2 {
+  --_11fry2r0: var(--x72vdli);
+}
+._11fry2r3 {
+  --_11fry2r0: var(--x72vdlj);
+}
+._11fry2r4 {
+  --_11fry2r0: var(--x72vdlk);
+}
+._11fry2r5 {
+  --_11fry2r0: var(--x72vdll);
+}
+._11fry2r6 {
+  --_11fry2r0: var(--x72vdlm);
+}
+._11fry2r7 {
+  --_11fry2r0: var(--x72vdln);
+}
+._11fry2r8 {
+  --_11fry2r0: var(--x72vdlo);
+}
+._11fry2r9 {
+  --_11fry2r0: var(--x72vdlp);
+}
+._11fry2ra {
+  --_11fry2r0: var(--x72vdlq);
+}
+._11fry2rb {
+  --_11fry2r0: var(--x72vdlr);
 }
