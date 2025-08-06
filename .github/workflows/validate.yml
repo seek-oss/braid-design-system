@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-        with:
-          # This makes Actions fetch all Git history so that chromatic can diff against previous commits
-          fetch-depth: 0
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v3
@@ -38,8 +35,3 @@ jobs:
           pnpm test
           pnpm build
           pnpm postbuild
-
-      - name: Chromatic
-        run: pnpm storybook:chromatic
-        env:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}
