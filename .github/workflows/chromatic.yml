@@ -1,0 +1,36 @@
+name: Chromatic
+
+on: workflow_dispatch
+
+jobs:
+  chromatic:
+    name: Run Chromatic
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # This makes Actions fetch all Git history so that chromatic can diff against previous commits
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version-file: package.json
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Build Braid
+        run: pnpm build
+
+      - name: Chromatic
+        run: pnpm storybook:chromatic
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_APP_CODE }}
