@@ -21,7 +21,7 @@ const screenshotViewports: Record<ViewportName, number> = {
 const defaultViewports: ViewportName[] = ['mobile'];
 const allViewports = Object.keys(screenshotViewports) as ViewportName[];
 
-const screenshotThemes = ['seekJobs', 'wifeframe'];
+const screenshotThemes = ['seekJobs', 'wireframe'];
 const darkModeThemes = ['seekJobs'];
 
 const allThemeNames = Object.keys(allThemes);
