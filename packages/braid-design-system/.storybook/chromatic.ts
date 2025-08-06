@@ -1,3 +1,5 @@
+import assert from 'assert/strict';
+
 import type { breakpointNames } from './../src/lib/css/breakpoints';
 import * as allThemes from './../src/lib/themes';
 
@@ -19,11 +21,20 @@ const screenshotViewports: Record<ViewportName, number> = {
 const defaultViewports: ViewportName[] = ['mobile'];
 const allViewports = Object.keys(screenshotViewports) as ViewportName[];
 
-const allThemeNames = Object.keys(allThemes);
-const screenshotThemes = allThemeNames.filter(
-  (themeName) => themeName !== 'docs' && themeName !== 'seekBusiness',
-);
+const screenshotThemes = ['seekJobs', 'wifeframe'];
 const darkModeThemes = ['seekJobs'];
+
+const allThemeNames = Object.keys(allThemes);
+
+assert(
+  screenshotThemes.every((theme) => allThemeNames.includes(theme)),
+  `screenshotThemes must be a subset of allThemes: ${screenshotThemes.join(', ')}`,
+);
+
+assert(
+  darkModeThemes.every((theme) => screenshotThemes.includes(theme)),
+  `darkModeThemes must be a subset of screenshotThemes: ${darkModeThemes.join(', ')}`,
+);
 
 /**
  * Returns themes, viewport and colour mode definitions as Chromatic Modes.
