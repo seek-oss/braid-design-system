@@ -5,11 +5,6 @@ describe('setChromatic', () => {
     expect(setChromatic({ root: true })).toMatchInlineSnapshot(`
       {
         "modes": {
-          "apac mobile": {
-            "darkMode": false,
-            "theme": "apac",
-            "viewport": 320,
-          },
           "seekJobs mobile": {
             "darkMode": false,
             "theme": "seekJobs",
@@ -29,20 +24,6 @@ describe('setChromatic', () => {
     expect(setChromatic()).toMatchInlineSnapshot(`
       {
         "modes": {
-          "apac desktop": {
-            "disabled": true,
-          },
-          "apac mobile": {
-            "darkMode": false,
-            "theme": "apac",
-            "viewport": 320,
-          },
-          "apac tablet": {
-            "disabled": true,
-          },
-          "apac wide": {
-            "disabled": true,
-          },
           "seekJobs desktop": {
             "disabled": true,
           },
@@ -92,20 +73,6 @@ describe('setChromatic', () => {
     expect(setChromatic({ viewports: ['tablet'] })).toMatchInlineSnapshot(`
       {
         "modes": {
-          "apac desktop": {
-            "disabled": true,
-          },
-          "apac mobile": {
-            "disabled": true,
-          },
-          "apac tablet": {
-            "darkMode": false,
-            "theme": "apac",
-            "viewport": 768,
-          },
-          "apac wide": {
-            "disabled": true,
-          },
           "seekJobs desktop": {
             "disabled": true,
           },
@@ -156,26 +123,6 @@ describe('setChromatic', () => {
       .toMatchInlineSnapshot(`
         {
           "modes": {
-            "apac desktop": {
-              "darkMode": false,
-              "theme": "apac",
-              "viewport": 992,
-            },
-            "apac mobile": {
-              "darkMode": false,
-              "theme": "apac",
-              "viewport": 320,
-            },
-            "apac tablet": {
-              "darkMode": false,
-              "theme": "apac",
-              "viewport": 768,
-            },
-            "apac wide": {
-              "darkMode": false,
-              "theme": "apac",
-              "viewport": 1200,
-            },
             "seekJobs desktop": {
               "darkMode": false,
               "theme": "seekJobs",
@@ -237,18 +184,6 @@ describe('setChromatic', () => {
     expect(setChromatic({ wireframeOnly: true })).toMatchInlineSnapshot(`
       {
         "modes": {
-          "apac desktop": {
-            "disabled": true,
-          },
-          "apac mobile": {
-            "disabled": true,
-          },
-          "apac tablet": {
-            "disabled": true,
-          },
-          "apac wide": {
-            "disabled": true,
-          },
           "seekJobs desktop": {
             "disabled": true,
           },
@@ -297,18 +232,6 @@ describe('setChromatic', () => {
       .toMatchInlineSnapshot(`
         {
           "modes": {
-            "apac desktop": {
-              "disabled": true,
-            },
-            "apac mobile": {
-              "disabled": true,
-            },
-            "apac tablet": {
-              "disabled": true,
-            },
-            "apac wide": {
-              "disabled": true,
-            },
             "seekJobs desktop": {
               "disabled": true,
             },

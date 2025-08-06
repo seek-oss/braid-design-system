@@ -19,11 +19,30 @@ const screenshotViewports: Record<ViewportName, number> = {
 const defaultViewports: ViewportName[] = ['mobile'];
 const allViewports = Object.keys(screenshotViewports) as ViewportName[];
 
-const allThemeNames = Object.keys(allThemes);
-const screenshotThemes = allThemeNames.filter(
-  (themeName) => themeName !== 'docs' && themeName !== 'seekBusiness',
-);
+const screenshotThemes = ['seekJobs', 'wireframe'];
 const darkModeThemes = ['seekJobs'];
+
+const allThemeNames = Object.keys(allThemes);
+
+const screenshotThemesAreValid = screenshotThemes.every((theme) =>
+  allThemeNames.includes(theme),
+);
+
+if (!screenshotThemesAreValid) {
+  throw new Error(
+    `screenshotThemes must be a subset of all themes: ${screenshotThemes.join(', ')}`,
+  );
+}
+
+const darkModeThemesAreValid = darkModeThemes.every((theme) =>
+  screenshotThemes.includes(theme),
+);
+
+if (!darkModeThemesAreValid) {
+  throw new Error(
+    `darkModeThemes must be a subset of screenshotThemes: ${darkModeThemes.join(', ')}`,
+  );
+}
 
 /**
  * Returns themes, viewport and colour mode definitions as Chromatic Modes.
