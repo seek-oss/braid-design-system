@@ -277,8 +277,8 @@ importers:
         specifier: ^9.7.1
         version: 9.7.1(jest-diff@30.0.4)(jest-snapshot@30.0.4)(jest@30.0.4(@types/node@22.16.3)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.21.5)))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.16.3)(jiti@2.4.2)(jsdom@26.1.0)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
       playroom:
-        specifier: 0.44.2-fix-code-loading-ff-20250813004811
-        version: 0.44.2-fix-code-loading-ff-20250813004811(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 00.44.2-fix-code-loading-ff-20250813060028
+        version: 0.44.2-fix-code-loading-ff-20250813060028(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       prettier:
         specifier: ^3.4.1
         version: 3.6.2
@@ -532,8 +532,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       playroom:
-        specifier: 0.44.2-fix-code-loading-ff-20250813004811
-        version: 0.44.2-fix-code-loading-ff-20250813004811(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.25.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 00.44.2-fix-code-loading-ff-20250813060028
+        version: 0.44.2-fix-code-loading-ff-20250813060028(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.25.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -7122,8 +7122,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playroom@0.44.2-fix-code-loading-ff-20250813004811:
-    resolution: {integrity: sha512-sBXr60tbL6TVEw8otwd0KVJGrEz4URGe5eK5BZKeO9xegbSLklL1sE2a09QW6Mnqt8P8nQ7K0WKyFT4jvRK8Ow==}
+  playroom@0.44.2-fix-code-loading-ff-20250813060028:
+    resolution: {integrity: sha512-7acDTMq5/53wgLb/17q+DBRZg99AqW1w8SZmcr39mioc5pbZDa0cshsrpsFxwwYYuhSQUK31ziA0VKPF/VKA0Q==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     peerDependencies:
@@ -17648,7 +17648,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playroom@0.44.2-fix-code-loading-ff-20250813004811(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  playroom@0.44.2-fix-code-loading-ff-20250813060028(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@babel/core': 7.28.0
       '@babel/parser': 7.28.0
@@ -17713,7 +17713,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  playroom@0.44.2-fix-code-loading-ff-20250813004811(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.25.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  playroom@0.44.2-fix-code-loading-ff-20250813060028(@swc/core@1.12.14)(babel-plugin-macros@3.1.0)(esbuild@0.25.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@babel/core': 7.28.0
       '@babel/parser': 7.28.0
