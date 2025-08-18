@@ -1,6 +1,11 @@
 {
   "name": "@braid-design-system/docs-ui",
   "version": "3.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seek-oss/braid-design-system.git",
+    "directory": "packages/docs-ui"
+  },
   "license": "MIT",
   "author": "SEEK",
   "exports": {
@@ -21,6 +26,7 @@
     "dist"
   ],
   "scripts": {
+    "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
     "build": "crackle package",
     "dev": "crackle dev --shim=none",
     "format:eslint": "eslint --cache --fix .",
@@ -28,9 +34,8 @@
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
-    "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
-    "validate:src": "pnpm %skott src",
-    "validate:dist": "pnpm %skott dist/index.mjs"
+    "validate:dist": "pnpm %skott dist/index.mjs",
+    "validate:src": "pnpm %skott src"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.9.2"
