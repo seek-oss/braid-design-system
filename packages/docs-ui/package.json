@@ -3,6 +3,11 @@
   "version": "3.0.3",
   "license": "MIT",
   "author": "SEEK",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seek-oss/braid-design-system.git",
+    "directory": "packages/docs-ui"
+  },
   "exports": {
     ".": {
       "types": {
