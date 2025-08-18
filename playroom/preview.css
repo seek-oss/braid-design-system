@@ -1,4 +1,4 @@
-@keyframes _5jnvhd4 {
+@keyframes pcs0t24 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-._5jnvhd1 {
+.pcs0t21 {
   z-index: 99999;
   background: #1c2230;
-  color: var(--_1kddpj19);
+  color: var(--qcxet9);
 }
-._5jnvhd3 > svg > path {
+.pcs0t23 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: _5jnvhd4;
+  animation-name: pcs0t24;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,43 +25,43 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-._5jnvhd5 {
+.pcs0t25 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
 }
-._11fry2r1 {
+._3jmzk41 {
   display: flex;
   flex-direction: column;
-  gap: var(--_11fry2r0);
+  gap: var(--_3jmzk40);
 }
-._11fry2r2 {
-  --_11fry2r0: var(--x72vdli);
+._3jmzk42 {
+  --_3jmzk40: var(--q8opsig);
 }
-._11fry2r3 {
-  --_11fry2r0: var(--x72vdlj);
+._3jmzk43 {
+  --_3jmzk40: var(--q8opsih);
 }
-._11fry2r4 {
-  --_11fry2r0: var(--x72vdlk);
+._3jmzk44 {
+  --_3jmzk40: var(--q8opsii);
 }
-._11fry2r5 {
-  --_11fry2r0: var(--x72vdll);
+._3jmzk45 {
+  --_3jmzk40: var(--q8opsij);
 }
-._11fry2r6 {
-  --_11fry2r0: var(--x72vdlm);
+._3jmzk46 {
+  --_3jmzk40: var(--q8opsik);
 }
-._11fry2r7 {
-  --_11fry2r0: var(--x72vdln);
+._3jmzk47 {
+  --_3jmzk40: var(--q8opsil);
 }
-._11fry2r8 {
-  --_11fry2r0: var(--x72vdlo);
+._3jmzk48 {
+  --_3jmzk40: var(--q8opsim);
 }
-._11fry2r9 {
-  --_11fry2r0: var(--x72vdlp);
+._3jmzk49 {
+  --_3jmzk40: var(--q8opsin);
 }
-._11fry2ra {
-  --_11fry2r0: var(--x72vdlq);
+._3jmzk4a {
+  --_3jmzk40: var(--q8opsio);
 }
-._11fry2rb {
-  --_11fry2r0: var(--x72vdlr);
+._3jmzk4b {
+  --_3jmzk40: var(--q8opsip);
 }
