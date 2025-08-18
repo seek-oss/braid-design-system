@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 3.0.4
+
+### Patch Changes
+
+- Add `repository` info to `package.json` ([#1855](https://github.com/seek-oss/braid-design-system/pull/1855))
+
 ## 3.0.3
 
 ### Patch Changes
