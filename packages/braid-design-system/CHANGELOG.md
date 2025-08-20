@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 33.11.1
+
+### Patch Changes
+
+- **Actions:** Ensure full width on mobile ([#1858](https://github.com/seek-oss/braid-design-system/pull/1858))
+
+  Ensure that the children of an `Action` component are always full width on mobile, including within a centred flex container.
+
 ## 33.11.0
 
 ### Minor Changes
