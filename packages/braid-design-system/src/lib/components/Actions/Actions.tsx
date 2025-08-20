@@ -1,9 +1,12 @@
 import { useMemo } from 'react';
 
+import { Box } from '../Box/Box';
 import type { ButtonProps } from '../Button/Button';
-import { type InlineProps, Inline } from '../Inline/Inline';
+import type { InlineProps } from '../Inline/Inline';
 
 import ActionsContext from './ActionsContext';
+
+import * as styles from './Actions.css';
 
 export interface ActionsProps {
   size?: ButtonProps['size'];
@@ -18,9 +21,16 @@ export const Actions = ({ size, data, children }: ActionsProps) => {
 
   return (
     <ActionsContext.Provider value={contextValue}>
-      <Inline collapseBelow="tablet" space={actionsSpace} data={data}>
+      <Box
+        display="flex"
+        flexDirection={{ mobile: 'column', [styles.actionsBreakpoint]: 'row' }}
+        flexWrap="wrap"
+        gap={actionsSpace}
+        className={styles.root}
+        data={data}
+      >
         {children}
-      </Inline>
+      </Box>
     </ActionsContext.Provider>
   );
 };
