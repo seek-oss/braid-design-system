@@ -16,6 +16,8 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { actionsSpace } from './Actions';
 
+import { actionsBreakpoint } from './Actions.css';
+
 const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
@@ -52,8 +54,9 @@ const docs: ComponentDocs = {
             The buttons are arranged using a responsive{' '}
             <TextLink href="/components/Inline">Inline</TextLink> component.{' '}
             <Strong>On mobile</Strong>, the buttons are full width, and stacked
-            vertically. <Strong>Above mobile</Strong>, the buttons are the width
-            of their content sitting side by side, wrapping when necessary.
+            vertically. <Strong>On {actionsBreakpoint} and above</Strong>, the
+            buttons are the width of their content sitting side by side,
+            wrapping when necessary.
           </Text>
 
           <Notice tone="info">

@@ -7,7 +7,7 @@ export const fitContentTablet = style({});
 export const fitContentDesktop = style({});
 export const fitContentWide = style({});
 
-const fitContentStyleRule = {
+export const fitContentStyleRule = {
   flexBasis: 'auto',
   width: 'auto',
   minWidth: 0,

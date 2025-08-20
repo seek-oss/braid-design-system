@@ -2,7 +2,7 @@ import type { StoryObj } from '@storybook/react-webpack5';
 
 import { setChromatic } from 'braid-storybook/chromatic';
 
-import { Button, Actions } from '../';
+import { Button, Actions, Stack } from '../';
 
 type Story = StoryObj<typeof Actions>;
 
@@ -12,33 +12,33 @@ const meta = {
   parameters: {
     chromatic: setChromatic({ viewports: ['mobile', 'tablet'] }),
   },
+  args: {
+    children: (
+      <>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button variant="transparent">Button 3</Button>
+      </>
+    ),
+  },
 };
 
 export default meta;
 
-export const StandardSize: Story = {
-  name: 'Standard size',
+export const StandardSize: Story = {};
+
+export const SmallSize: Story = {
   args: {
-    children: (
-      <>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button variant="transparent">Button 3</Button>
-      </>
-    ),
+    size: 'small',
   },
 };
 
-export const SmallSize: Story = {
-  name: 'Small size',
-  args: {
-    size: 'small',
-    children: (
-      <>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button variant="transparent">Button 3</Button>
-      </>
+export const InCenteredFlexContainer: Story = {
+  decorators: [
+    (Story) => (
+      <Stack space="small" align="center">
+        <Story />
+      </Stack>
     ),
-  },
+  ],
 };
