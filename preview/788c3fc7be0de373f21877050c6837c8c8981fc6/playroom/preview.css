@@ -1,0 +1,67 @@
+@keyframes g21jx44 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+.g21jx41 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--_1qmcjry9);
+}
+.g21jx43 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: g21jx44;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+.g21jx45 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+._17zo6kr1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_17zo6kr0);
+}
+._17zo6kr2 {
+  --_17zo6kr0: var(--_18hcil6g);
+}
+._17zo6kr3 {
+  --_17zo6kr0: var(--_18hcil6h);
+}
+._17zo6kr4 {
+  --_17zo6kr0: var(--_18hcil6i);
+}
+._17zo6kr5 {
+  --_17zo6kr0: var(--_18hcil6j);
+}
+._17zo6kr6 {
+  --_17zo6kr0: var(--_18hcil6k);
+}
+._17zo6kr7 {
+  --_17zo6kr0: var(--_18hcil6l);
+}
+._17zo6kr8 {
+  --_17zo6kr0: var(--_18hcil6m);
+}
+._17zo6kr9 {
+  --_17zo6kr0: var(--_18hcil6n);
+}
+._17zo6kra {
+  --_17zo6kr0: var(--_18hcil6o);
+}
+._17zo6krb {
+  --_17zo6kr0: var(--_18hcil6p);
+}
