@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 3.0.5
+
+### Patch Changes
+
+- Fixes a bug that caused versions 3.0.1 to 3.0.4 to be published with broken artifacts ([#1860](https://github.com/seek-oss/braid-design-system/pull/1860))
+
 ## 3.0.4
 
 ### Patch Changes
