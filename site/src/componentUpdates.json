@@ -5146,5 +5146,9 @@
         "summary": "**Actions:** Ensure full width on mobile\n\nEnsure that the children of an `Action` component are always full width on mobile, including within a centred flex container."
       }
     ]
+  },
+  {
+    "version": "33.11.1",
+    "updates": []
   }
 ]
