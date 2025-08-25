@@ -12,10 +12,6 @@
     },
     "lint": {},
     "format": {},
-    "validate": {},
-    "validate:dist": {
-      "dependsOn": ["dev"],
-      "executor": "nx:noop"
-    }
+    "validate": {}
   }
 }
