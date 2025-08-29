@@ -1,5 +1,14 @@
 # braid-design-system
 
+## 33.11.2
+
+### Patch Changes
+
+- **ButtonIcon:** Better match `Tooltip` text size with `size` prop ([#1864](https://github.com/seek-oss/braid-design-system/pull/1864))
+
+  When using a `small` `ButtonIcon`, the `Tooltip` text size is now set to `small`.
+  For other sizes, the text remains at the default `standard` size.
+
 ## 33.11.1
 
 ### Patch Changes
