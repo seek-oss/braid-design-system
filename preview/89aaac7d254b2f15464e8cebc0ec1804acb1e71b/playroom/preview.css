@@ -1,0 +1,67 @@
+@keyframes _1yur2y84 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+._1yur2y81 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--_1h6ev3m9);
+}
+._1yur2y83 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: _1yur2y84;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+._1yur2y85 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+._78m8gh1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_78m8gh0);
+}
+._78m8gh2 {
+  --_78m8gh0: var(--_1j5ujcmg);
+}
+._78m8gh3 {
+  --_78m8gh0: var(--_1j5ujcmh);
+}
+._78m8gh4 {
+  --_78m8gh0: var(--_1j5ujcmi);
+}
+._78m8gh5 {
+  --_78m8gh0: var(--_1j5ujcmj);
+}
+._78m8gh6 {
+  --_78m8gh0: var(--_1j5ujcmk);
+}
+._78m8gh7 {
+  --_78m8gh0: var(--_1j5ujcml);
+}
+._78m8gh8 {
+  --_78m8gh0: var(--_1j5ujcmm);
+}
+._78m8gh9 {
+  --_78m8gh0: var(--_1j5ujcmn);
+}
+._78m8gha {
+  --_78m8gh0: var(--_1j5ujcmo);
+}
+._78m8ghb {
+  --_78m8gh0: var(--_1j5ujcmp);
+}
