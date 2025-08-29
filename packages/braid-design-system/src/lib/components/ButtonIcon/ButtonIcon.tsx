@@ -159,12 +159,14 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
 );
 
 export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
-  ({ id, label, tooltipPlacement, ...restProps }, forwardedRef) => {
+  ({ id, label, tooltipPlacement, size, ...restProps }, forwardedRef) => {
     const resolvedId = useFallbackId(id);
 
     return (
       <TooltipRenderer
-        tooltip={<Text>{label}</Text>}
+        tooltip={
+          <Text size={size === 'small' ? 'small' : 'standard'}>{label}</Text>
+        }
         placement={tooltipPlacement}
       >
         {/* Omitting triggerProps[aria-describedBy] in favour of consumer controlled aria-describedBy */}
@@ -172,6 +174,7 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
           <ButtonIconContent
             id={resolvedId}
             label={label}
+            size={size}
             ref={(node: HTMLButtonElement) => {
               if (typeof forwardedRef === 'function') {
                 forwardedRef(node);
