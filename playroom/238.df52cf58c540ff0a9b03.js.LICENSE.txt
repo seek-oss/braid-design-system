@@ -1,3 +1,9 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
 /*!
     localForage -- Offline Storage, Improved
     Version 1.10.0
