@@ -5150,5 +5150,16 @@
   {
     "version": "33.11.1",
     "updates": []
+  },
+  {
+    "version": "33.11.2",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Better match `Tooltip` text size with `size` prop\n\nWhen using a `small` `ButtonIcon`, the `Tooltip` text size is now set to `small`.\nFor other sizes, the text remains at the default `standard` size."
+      }
+    ]
   }
 ]
