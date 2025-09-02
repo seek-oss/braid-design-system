@@ -5161,5 +5161,17 @@
         "summary": "**ButtonIcon:** Better match `Tooltip` text size with `size` prop\n\nWhen using a `small` `ButtonIcon`, the `Tooltip` text size is now set to `small`.\nFor other sizes, the text remains at the default `standard` size."
       }
     ]
+  },
+  {
+    "version": "33.11.3",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonLink:** Ensure focus ring supports `bleed` layout\n\nFixes the focus ring layout when combined with the `bleed` prop to ensure the outline wraps the visual boundary of the button."
+      }
+    ]
   }
 ]

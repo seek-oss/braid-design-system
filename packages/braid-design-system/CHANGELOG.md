@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 33.11.3
+
+### Patch Changes
+
+- **Button, ButtonLink:** Ensure focus ring supports `bleed` layout ([#1866](https://github.com/seek-oss/braid-design-system/pull/1866))
+
+  Fixes the focus ring layout when combined with the `bleed` prop to ensure the outline wraps the visual boundary of the button.
+
 ## 33.11.2
 
 ### Patch Changes
