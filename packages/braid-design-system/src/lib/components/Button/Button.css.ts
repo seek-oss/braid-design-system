@@ -8,6 +8,7 @@ import { calc } from '@vanilla-extract/css-utils';
 import { rgba } from 'polished';
 
 import { colorModeStyle } from '../../css/colorModeStyle';
+import { outlineStyle } from '../../css/outlineStyle';
 import { responsiveStyle } from '../../css/responsiveStyle';
 
 import { vars } from '../../themes/vars.css';
@@ -45,6 +46,9 @@ export const hoverOverlay = style({
     },
   },
 });
+
+// Applied to nested element to keep outline correct on button using `bleed`
+export const focusRing = style(outlineStyle(`${root}:focus-visible > &`));
 
 const minHeightValueForSize = {
   standard: vars.touchableSize,

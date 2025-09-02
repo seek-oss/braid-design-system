@@ -439,6 +439,7 @@ export const useButtonStyles = ({
       width: 'full',
       borderRadius: radius,
       cursor: !loading ? 'pointer' : undefined,
+      outline: 'none',
       className: [styles.root, size === 'small' ? virtualTouchable : undefined],
     },
     content: {
@@ -458,6 +459,7 @@ export const useButtonStyles = ({
           ? colorContrast(stylesForVariant.background)
           : stylesForVariant.background,
       className: [
+        styles.focusRing,
         variant === 'soft' && lightness.lightMode === 'dark'
           ? styles.invertedBackgroundsLightMode.soft
           : null,
