@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 33.11.4
+
+### Patch Changes
+
+- **Button, ButtonIcon, ButtonLink:** Ensure active transition is correctly applied ([#1868](https://github.com/seek-oss/braid-design-system/pull/1868))
+
 ## 33.11.3
 
 ### Patch Changes
