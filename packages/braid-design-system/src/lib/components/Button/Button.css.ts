@@ -47,8 +47,16 @@ export const hoverOverlay = style({
   },
 });
 
-// Applied to nested element to keep outline correct on button using `bleed`
-export const focusRing = style(outlineStyle(`${root}:focus-visible > &`));
+const { transition: outlineTransition, ...restOutlineStyles } = outlineStyle(
+  `${root}:focus-visible > &`,
+);
+
+export const focusRing = style([
+  {
+    transition: [vars.transition.touchable, outlineTransition].join(', '),
+  },
+  restOutlineStyles,
+]);
 
 const minHeightValueForSize = {
   standard: vars.touchableSize,

@@ -450,7 +450,6 @@ export const useButtonStyles = ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      transition: 'touchable',
       textAlign: 'center',
       userSelect: 'none',
       background:
