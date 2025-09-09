@@ -5173,5 +5173,18 @@
         "summary": "**Button, ButtonLink:** Ensure focus ring supports `bleed` layout\n\nFixes the focus ring layout when combined with the `bleed` prop to ensure the outline wraps the visual boundary of the button."
       }
     ]
+  },
+  {
+    "version": "33.11.4",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonIcon",
+          "ButtonLink"
+        ],
+        "summary": "**Button, ButtonIcon, ButtonLink:** Ensure active transition is correctly applied"
+      }
+    ]
   }
 ]
