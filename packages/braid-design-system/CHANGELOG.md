@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 33.11.5
+
+### Patch Changes
+
+- **Button, ButtonIcon, ButtonLink:** Remove use of deprecated `outline` atoms value, in favour of CSS property ([#1871](https://github.com/seek-oss/braid-design-system/pull/1871))
+
 ## 33.11.4
 
 ### Patch Changes
