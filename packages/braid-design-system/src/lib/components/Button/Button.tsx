@@ -439,7 +439,6 @@ export const useButtonStyles = ({
       width: 'full',
       borderRadius: radius,
       cursor: !loading ? 'pointer' : undefined,
-      outline: 'none',
       className: [styles.root, size === 'small' ? virtualTouchable : undefined],
     },
     content: {
