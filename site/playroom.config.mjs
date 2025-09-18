@@ -2,7 +2,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import SkuWebpackPlugin from 'sku/webpack-plugin';
+import { SkuWebpackPlugin } from 'sku/webpack-plugin';
 import webpackPkg from 'webpack';
 
 const { DefinePlugin } = webpackPkg;
