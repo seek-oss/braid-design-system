@@ -1,4 +1,4 @@
-@keyframes s1qawi4 {
+@keyframes _1gud9zl4 {
   0%, 100% {
     opacity: 0;
   }
@@ -9,15 +9,15 @@
     stroke-dashoffset: 0;
   }
 }
-.s1qawi1 {
+._1gud9zl1 {
   z-index: 99999;
   background: #1c2230;
-  color: var(--_1yyo78u9);
+  color: var(--a14e3l9);
 }
-.s1qawi3 > svg > path {
+._1gud9zl3 > svg > path {
   stroke-dasharray: 1000px;
   stroke-dashoffset: 1000;
-  animation-name: s1qawi4;
+  animation-name: _1gud9zl4;
   animation-duration: 1300ms;
   animation-delay: 500ms;
   animation-direction: forwards;
@@ -25,43 +25,43 @@
   animation-iteration-count: 2;
   animation-fill-mode: forwards;
 }
-.s1qawi5 {
+._1gud9zl5 {
   margin: 0 auto;
   width: 40vw;
   max-width: 200px;
 }
-.zegrsg1 {
+._1vjhjbh1 {
   display: flex;
   flex-direction: column;
-  gap: var(--zegrsg0);
+  gap: var(--_1vjhjbh0);
 }
-.zegrsg2 {
-  --zegrsg0: var(--gzcr55g);
+._1vjhjbh2 {
+  --_1vjhjbh0: var(--_1s0y5lg);
 }
-.zegrsg3 {
-  --zegrsg0: var(--gzcr55h);
+._1vjhjbh3 {
+  --_1vjhjbh0: var(--_1s0y5lh);
 }
-.zegrsg4 {
-  --zegrsg0: var(--gzcr55i);
+._1vjhjbh4 {
+  --_1vjhjbh0: var(--_1s0y5li);
 }
-.zegrsg5 {
-  --zegrsg0: var(--gzcr55j);
+._1vjhjbh5 {
+  --_1vjhjbh0: var(--_1s0y5lj);
 }
-.zegrsg6 {
-  --zegrsg0: var(--gzcr55k);
+._1vjhjbh6 {
+  --_1vjhjbh0: var(--_1s0y5lk);
 }
-.zegrsg7 {
-  --zegrsg0: var(--gzcr55l);
+._1vjhjbh7 {
+  --_1vjhjbh0: var(--_1s0y5ll);
 }
-.zegrsg8 {
-  --zegrsg0: var(--gzcr55m);
+._1vjhjbh8 {
+  --_1vjhjbh0: var(--_1s0y5lm);
 }
-.zegrsg9 {
-  --zegrsg0: var(--gzcr55n);
+._1vjhjbh9 {
+  --_1vjhjbh0: var(--_1s0y5ln);
 }
-.zegrsga {
-  --zegrsg0: var(--gzcr55o);
+._1vjhjbha {
+  --_1vjhjbh0: var(--_1s0y5lo);
 }
-.zegrsgb {
-  --zegrsg0: var(--gzcr55p);
+._1vjhjbhb {
+  --_1vjhjbh0: var(--_1s0y5lp);
 }
