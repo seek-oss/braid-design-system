@@ -7,13 +7,19 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      An Alert is a conditional message provided in response to user action or
+      system activity, and presented in the context of the user flow.
+    </Text>
+  ),
   Example: () =>
     source(
       <Stack space="medium">
         <Alert tone="promote">
           <Text>This is a promoted message.</Text>
         </Alert>
-        <Alert tone="info">
+        <Alert tone="info" data={{ testid: 'alert-1' }}>
           <Text>This is an informative message.</Text>
         </Alert>
         <Alert tone="positive">
