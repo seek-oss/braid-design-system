@@ -74,6 +74,7 @@ export interface GalleryComponent {
 
 export interface ComponentExample {
   label?: string;
+  primaryHeading?: boolean;
   deprecated?: boolean;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']> | false;

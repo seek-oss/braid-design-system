@@ -5,6 +5,8 @@ import { vars } from 'braid-src/lib/themes/vars.css';
 
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
+import { hideBelowPx } from '../TableOfContents/TableOfContents.css';
+
 export const isOpen = style({});
 
 export const visibleNavBreakpoint = 'wide' as const;
@@ -75,4 +77,10 @@ globalStyle('html, body', {
 
 export const maxWidthFull = style({
   maxWidth: '100%',
+});
+
+export const outerContent = style({
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  maxWidth: hideBelowPx,
 });

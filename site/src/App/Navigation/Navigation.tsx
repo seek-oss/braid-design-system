@@ -1,6 +1,5 @@
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
 import {
-  ContentBlock,
   Hidden,
   IconChevron,
   IconNewWindow,
@@ -31,6 +30,12 @@ import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 
 import * as styles from './Navigation.css';
 
+const ContentBlockXL = ({ children }: { children: React.ReactNode }) => (
+  <Box className={styles.outerContent} width="full">
+    {children}
+  </Box>
+);
+
 const Header = ({
   menuOpen,
   menuClick,
@@ -52,7 +57,7 @@ const Header = ({
 const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ({ children, ...props }, forwardedRef) => (
     <Box transition="fast" {...props} position="fixed" ref={forwardedRef}>
-      <ContentBlock width="large">{children}</ContentBlock>
+      <ContentBlockXL>{children}</ContentBlockXL>
     </Box>
   ),
 );
@@ -164,7 +169,7 @@ export const Navigation = () => {
   const navigationActive = isExpandedSize || isMenuOpen;
 
   return (
-    <ContentBlock width="large">
+    <ContentBlockXL>
       <Box position="fixed" top={0}>
         <Header
           menuOpen={isMenuOpen}
@@ -194,7 +199,7 @@ export const Navigation = () => {
       <Box
         background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
         position="relative"
-        overflow="hidden" // Fix stack space intercepting nav bar clicks
+        overflow="visible" // Allow sticky children inside
         paddingX={{
           mobile: gutterSize,
           wide: 'xxlarge',
@@ -204,7 +209,11 @@ export const Navigation = () => {
         marginBottom="xxlarge"
         transition="fast"
         pointerEvents={isMenuOpen ? 'none' : undefined}
-        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
+        className={[
+          styles.pageContent,
+          isMenuOpen ? styles.isOpen : undefined,
+          styles.outerContent,
+        ]}
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
           <Outlet />
@@ -229,6 +238,6 @@ export const Navigation = () => {
           menuClick={() => setMenuOpen(!isMenuOpen)}
         />
       </FixedContentBlock>
-    </ContentBlock>
+    </ContentBlockXL>
   );
 };
