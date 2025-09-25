@@ -49,11 +49,13 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'Notice',
-      description: 'For a lighter visual treatment.',
+      description:
+        'For messages that sit within a section, card, or widget; or for a lighter visual treatment.',
     },
     {
       name: 'useToast',
-      description: 'For asynchronous messages that float above the page.',
+      description:
+        'To acknowledges a user action without interrupting their flow.',
     },
   ],
   additional: [
@@ -188,6 +190,49 @@ const docs: ComponentDocs = {
           </Alert>,
         ),
       /* eslint-enable no-alert */
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use an Alert if your message:</Text>
+            <List space="large">
+              <Text>
+                relates to an important condition, status or system change;
+              </Text>
+              <Text>sits at the page or section level; and</Text>
+              <Text>is relevant to the user's current task.</Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don't use an Alert if your message:</Text>
+            <List space="large">
+              <Text>
+                needs to be permanently on the screen (use plain{' '}
+                <TextLink href="/components/Text">Text</TextLink> instead).
+              </Text>
+              <Text>
+                sits within a section, card, or bounded box such as a widget
+                (use a <TextLink href="/components/Notice">Notice</TextLink>{' '}
+                instead).
+              </Text>
+              <Text>
+                needs to acknowledge a user action without interrupting their
+                flow (use a <TextLink href="/components/Toast">Toast</TextLink>{' '}
+                instead).
+              </Text>
+              <Text>
+                relates to an upcoming global system outage (use a{' '}
+                <TextLink href="/components/ServiceOutageBanner">
+                  Service Outage Banner
+                </TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
     },
     dataAttributeDocs({
       code: `
