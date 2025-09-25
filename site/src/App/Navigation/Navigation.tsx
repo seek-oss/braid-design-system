@@ -169,6 +169,7 @@ export const Navigation = () => {
   const navigationActive = isExpandedSize || isMenuOpen;
 
   return (
+    // Todo - outercontent.css shouldn't be used twice
     <ContentBlockXL>
       <Box position="fixed" top={0}>
         <Header
@@ -211,8 +212,8 @@ export const Navigation = () => {
         pointerEvents={isMenuOpen ? 'none' : undefined}
         className={[
           styles.pageContent,
-          isMenuOpen ? styles.isOpen : undefined,
           styles.outerContent,
+          isMenuOpen ? styles.isOpen : undefined,
         ]}
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">

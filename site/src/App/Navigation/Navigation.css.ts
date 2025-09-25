@@ -80,7 +80,6 @@ export const maxWidthFull = style({
 });
 
 export const outerContent = style({
-  marginLeft: 'auto',
-  marginRight: 'auto',
+  marginInline: 'auto',
   maxWidth: hideBelowPx,
 });
