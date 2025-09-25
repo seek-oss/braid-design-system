@@ -1,11 +1,10 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { breakpoints, responsiveStyle } from 'braid-src/entries/css';
+import tokens from 'braid-src/lib/themes/docs/tokens';
 import { vars } from 'braid-src/lib/themes/vars.css';
 
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
-
-import { hideBelowPx } from '../DocNavigation/DocDetails.css';
 
 export const isOpen = style({});
 
@@ -79,7 +78,9 @@ export const maxWidthFull = style({
   maxWidth: '100%',
 });
 
-export const outerContent = style({
+export const contentBlockXLWidth = tokens.contentWidth.large + 200;
+
+export const contentBlockXL = style({
   marginInline: 'auto',
-  maxWidth: hideBelowPx,
+  maxWidth: contentBlockXLWidth,
 });

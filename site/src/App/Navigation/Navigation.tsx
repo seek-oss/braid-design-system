@@ -30,12 +30,6 @@ import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 
 import * as styles from './Navigation.css';
 
-const ContentBlockXL = ({ children }: { children: React.ReactNode }) => (
-  <Box className={styles.outerContent} width="full">
-    {children}
-  </Box>
-);
-
 const Header = ({
   menuOpen,
   menuClick,
@@ -57,7 +51,7 @@ const Header = ({
 const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ({ children, ...props }, forwardedRef) => (
     <Box transition="fast" {...props} position="fixed" ref={forwardedRef}>
-      <ContentBlockXL>{children}</ContentBlockXL>
+      {children}
     </Box>
   ),
 );
@@ -169,8 +163,7 @@ export const Navigation = () => {
   const navigationActive = isExpandedSize || isMenuOpen;
 
   return (
-    // Todo - outercontent.css shouldn't be used twice
-    <ContentBlockXL>
+    <Box width="full" className={styles.contentBlockXL}>
       <Box position="fixed" top={0}>
         <Header
           menuOpen={isMenuOpen}
@@ -210,11 +203,7 @@ export const Navigation = () => {
         marginBottom="xxlarge"
         transition="fast"
         pointerEvents={isMenuOpen ? 'none' : undefined}
-        className={[
-          styles.pageContent,
-          styles.outerContent,
-          isMenuOpen ? styles.isOpen : undefined,
-        ]}
+        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
       >
         <Box paddingBottom="xxlarge" marginBottom="xxlarge">
           <Outlet />
@@ -239,6 +228,6 @@ export const Navigation = () => {
           menuClick={() => setMenuOpen(!isMenuOpen)}
         />
       </FixedContentBlock>
-    </ContentBlockXL>
+    </Box>
   );
 };

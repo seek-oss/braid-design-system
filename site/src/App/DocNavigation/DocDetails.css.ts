@@ -1,9 +1,8 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import tokens from 'braid-src/lib/themes/docs/tokens';
 import { vars } from 'braid-src/lib/themes/vars.css';
 
-export const hideBelowPx = tokens.contentWidth.large + 200;
+import { contentBlockXLWidth } from '../Navigation/Navigation.css';
 
 const topOffset = vars.space.large;
 
@@ -14,7 +13,7 @@ export const root = style({
   alignSelf: 'flex-start',
   width: '240px',
   '@media': {
-    [`screen and (max-width: ${hideBelowPx}px)`]: {
+    [`screen and (max-width: ${contentBlockXLWidth}px)`]: {
       display: 'none',
     },
   },
