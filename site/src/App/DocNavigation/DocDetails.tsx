@@ -22,6 +22,10 @@ export const DocDetails = () => {
     <>
       <PageTitle title={docsName} />
       <Stack space="xxlarge">
+        {docs.description ? (
+          <Stack space="large">{docs.description}</Stack>
+        ) : null}
+
         {'Example' in docs && docs.Example ? (
           <PlayroomStateProvider>
             <DocExample
@@ -30,29 +34,6 @@ export const DocDetails = () => {
               showCodeByDefault={docs.category === 'Logic'}
             />
           </PlayroomStateProvider>
-        ) : null}
-
-        {docs.description ? (
-          <Stack space="large">{docs.description}</Stack>
-        ) : null}
-
-        {'alternatives' in docs && docs.alternatives.length > 0 ? (
-          <Stack space="large">
-            <LinkableHeading level="3">Alternatives</LinkableHeading>
-            <List space="large">
-              {docs.alternatives.map((alt) => (
-                <Text key={`${alt.name}`}>
-                  <TextLink
-                    hitArea="large"
-                    href={`/${alt.section || 'components'}/${alt.name}`}
-                  >
-                    {alt.name}
-                  </TextLink>{' '}
-                  <Secondary>— {alt.description}</Secondary>
-                </Text>
-              ))}
-            </List>
-          </Stack>
         ) : null}
 
         {'accessibility' in docs && docs.accessibility ? (
@@ -93,6 +74,25 @@ export const DocDetails = () => {
             ) : null}
           </Stack>
         ))}
+
+        {'alternatives' in docs && docs.alternatives.length > 0 ? (
+          <Stack space="large">
+            <LinkableHeading level="3">Alternatives</LinkableHeading>
+            <List space="large">
+              {docs.alternatives.map((alt) => (
+                <Text key={`${alt.name}`}>
+                  <TextLink
+                    hitArea="large"
+                    href={`/${alt.section || 'components'}/${alt.name}`}
+                  >
+                    {alt.name}
+                  </TextLink>{' '}
+                  <Secondary>— {alt.description}</Secondary>
+                </Text>
+              ))}
+            </List>
+          </Stack>
+        ) : null}
       </Stack>
     </>
   ) : null;
