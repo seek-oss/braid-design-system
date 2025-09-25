@@ -140,7 +140,6 @@ export const DocDetails = () => {
     isSub: boolean;
     onClick: (e: React.MouseEvent) => void;
   }) => {
-    // todo - migrate to css
     const [hovered, setHovered] = useState(false);
     let tone: 'promote' | 'neutral' | 'secondary' = 'secondary';
     if (active) {
