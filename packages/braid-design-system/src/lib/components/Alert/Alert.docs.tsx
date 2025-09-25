@@ -222,13 +222,6 @@ const docs: ComponentDocs = {
                 flow (use a{' '}
                 <TextLink href="/components/useToast">Toast</TextLink> instead).
               </Text>
-              <Text>
-                relates to an upcoming global system outage (use a{' '}
-                <TextLink href="/components/ServiceOutageBanner">
-                  Service Outage Banner
-                </TextLink>{' '}
-                instead).
-              </Text>
             </List>
           </Stack>
         </Stack>
