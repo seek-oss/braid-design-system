@@ -193,7 +193,6 @@ export const Navigation = () => {
       <Box
         background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
         position="relative"
-        overflow="visible" // Allow sticky children inside
         paddingX={{
           mobile: gutterSize,
           wide: 'xxlarge',

@@ -125,7 +125,7 @@ export const DocDetails = () => {
     } catch {}
   };
 
-  const tocItemTextSize = 'xsmall' as const;
+  const tocItemTextSize = 'xsmall';
 
   const TocItemLink = ({
     href,
@@ -139,31 +139,24 @@ export const DocDetails = () => {
     active: boolean;
     isSub: boolean;
     onClick: (e: React.MouseEvent) => void;
-  }) => {
-    const [hovered, setHovered] = useState(false);
-    let tone: 'promote' | 'neutral' | 'secondary' = 'secondary';
-    if (active) {
-      tone = 'promote';
-    } else if (hovered) {
-      tone = 'neutral';
-    }
-
-    return (
-      <Box
-        component="a"
-        href={href}
-        onClick={onClick}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        style={{ textDecoration: 'none' }}
-        paddingLeft={isSub ? 'small' : undefined}
-      >
-        <Text size={tocItemTextSize} tone={tone}>
+  }) => (
+    <Box
+      component="a"
+      href={href}
+      onClick={onClick}
+      style={{ textDecoration: 'none' }}
+      paddingLeft={isSub ? 'small' : undefined}
+    >
+      <Text size={tocItemTextSize}>
+        <Box
+          component="span"
+          className={active ? styles.tocItemLabelActive : styles.tocItemLabel}
+        >
           {label}
-        </Text>
-      </Box>
-    );
-  };
+        </Box>
+      </Text>
+    </Box>
+  );
 
   return docs ? (
     <>

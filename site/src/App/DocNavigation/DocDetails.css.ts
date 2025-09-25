@@ -18,3 +18,16 @@ export const root = style({
     },
   },
 });
+
+export const tocItemLabel = style({
+  color: vars.foregroundColor.secondary,
+  selectors: {
+    '&:hover': {
+      color: vars.foregroundColor.neutral,
+    },
+  },
+});
+
+export const tocItemLabelActive = style({
+  color: vars.foregroundColor.promote,
+});
