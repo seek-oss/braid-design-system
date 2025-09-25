@@ -219,8 +219,8 @@ const docs: ComponentDocs = {
               </Text>
               <Text>
                 needs to acknowledge a user action without interrupting their
-                flow (use a <TextLink href="/components/Toast">Toast</TextLink>{' '}
-                instead).
+                flow (use a{' '}
+                <TextLink href="/components/useToast">Toast</TextLink> instead).
               </Text>
               <Text>
                 relates to an upcoming global system outage (use a{' '}
@@ -245,6 +245,29 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      label: 'Content guidelines',
+      description: (
+        <Stack space="large">
+          <List space="large">
+            <Text>
+              Write Alerts as short phrases or sentences. The key is to let the
+              user know the information they need, and the actions they need to
+              take, in a clear and concise way.
+            </Text>
+            <Text>
+              Using a CTA is optional, depending on whether you want the user to
+              take an action or not.
+            </Text>
+            <Text>
+              There's no need to add a full stop on a short sentence or phrase.
+              Include full stops for full sentences.
+            </Text>
+            <Text>Don't use headings for Alerts.</Text>
+          </List>
+        </Stack>
+      ),
+    },
   ],
 };
 
