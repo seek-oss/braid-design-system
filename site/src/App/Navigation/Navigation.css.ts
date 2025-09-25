@@ -5,7 +5,7 @@ import { vars } from 'braid-src/lib/themes/vars.css';
 
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 
-import { hideBelowPx } from '../TableOfContents/TableOfContents.css';
+import { hideBelowPx } from '../DocNavigation/DocDetails.css';
 
 export const isOpen = style({});
 
