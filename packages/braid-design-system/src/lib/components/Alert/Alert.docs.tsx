@@ -1,8 +1,8 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Alert, Card, Text, Strong, Stack, TextLink, List, Notice } from '../';
-import { IconLanguage } from '../icons';
+import { Alert, Card, Text, Strong, Stack, TextLink, List } from '../';
+import { IconInfo } from '../icons';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
@@ -58,7 +58,24 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Content guidelines',
+      label: 'Choosing a tone',
+      description: (
+        <Stack space="large">
+          <Text>
+            Use the <Strong>tone</Strong> property to help communicate the
+            meaning behind the Alert. Alerts support{' '}
+            <Strong>promote, info, positive, caution</Strong> and{' '}
+            <Strong>critcal</Strong> tones.
+          </Text>
+          <Text>
+            Read more about{' '}
+            <TextLink href="/foundations/tones">Braid tones</TextLink>.
+          </Text>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Formatting your message',
       description: (
         <Stack space="large">
           <Text>
@@ -66,12 +83,12 @@ const docs: ComponentDocs = {
             <TextLink href="/components/Stack">Stack</TextLink> and{' '}
             <TextLink href="/components/Inline">Inline</TextLink>, as well as
             typographic components such as{' '}
-            <TextLink href="/components/Text">Text</TextLink>,{' '}
+            <TextLink href="/components/Text">Text</TextLink>,
             <TextLink href="/components/TextLink">TextLink</TextLink> and{' '}
             <TextLink href="/components/List">List</TextLink>. We do not
             recommend using{' '}
             <TextLink href="/components/Button">Button</TextLink> elements
-            inside of message.
+            inside of Alerts.
           </Text>
           <Text>
             This component has only been designed to use standard size text. Any
@@ -97,48 +114,17 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Dismissable alerts',
-      description: (
-        <>
-          <Text>
-            An Alert can be made dismissable by providing an{' '}
-            <Strong>onClose</Strong> handler.
-          </Text>
-
-          <Text tone="promote" id="translations">
-            <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
-            <Strong>aria-label</Strong> for the close button can be customised
-            via the <Strong>closeLabel</Strong> prop.
-          </Text>
-        </>
-      ),
-      Example: () =>
-        /* eslint-disable no-alert */
-        source(
-          <Alert
-            tone="info"
-            onClose={() => alert('Dismiss this message')}
-            closeLabel="Close info alert"
-          >
-            <Text>This is an informative message.</Text>
-          </Alert>,
-        ),
-      /* eslint-enable no-alert */
-    },
-    {
       label: 'Contextual design',
       description: (
         <>
-          <Notice>
-            <Text>
-              Only applicable to themes with grey body backgrounds, e.g.{' '}
-              <Strong>apac</Strong>.
-            </Text>
-          </Notice>
           <Text>
             When an Alert is used on a <Strong>surface</Strong> background
             colour, i.e. in a <TextLink href="/components/Card">Card</TextLink>,
             the outline is omitted.
+          </Text>
+          <Text size="small" tone="secondary" icon={<IconInfo />}>
+            Only applicable to themes with grey body backgrounds, e.g.{' '}
+            <Strong>apac</Strong>.
           </Text>
           {/*
           TODO: COLORMODE RELEASE
@@ -174,6 +160,34 @@ const docs: ComponentDocs = {
             </Stack>
           </Card>,
         ),
+    },
+    {
+      label: 'Dismissable alerts',
+      description: (
+        <>
+          <Text>
+            An Alert can be made dismissable by providing an{' '}
+            <Strong>onClose</Strong> handler.
+          </Text>
+
+          <Text size="small" tone="secondary" icon={<IconInfo />}>
+            The <Strong>aria-label</Strong> for the close button can be
+            customised via the <Strong>closeLabel</Strong> prop.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        /* eslint-disable no-alert */
+        source(
+          <Alert
+            tone="info"
+            onClose={() => alert('Dismiss this message')}
+            closeLabel="Close info alert"
+          >
+            <Text>This is an informative message.</Text>
+          </Alert>,
+        ),
+      /* eslint-enable no-alert */
     },
     dataAttributeDocs({
       code: `
