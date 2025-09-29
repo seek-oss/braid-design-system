@@ -202,10 +202,12 @@ const docs: ComponentDocs = {
             <Text>Use an Alert if your message:</Text>
             <List space="large">
               <Text>
-                relates to an important condition, status or system change;
+                relates to an important condition, status or system change.
               </Text>
-              <Text>sits at the page or section level; and</Text>
-              <Text>is relevant to the user&rsquo;s current task.</Text>
+              <Text>
+                sits at the page or section level and is relevant to the
+                user&rsquo;s current task.
+              </Text>
             </List>
           </Stack>
           <Stack space="large">
