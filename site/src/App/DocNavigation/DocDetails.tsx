@@ -17,14 +17,15 @@ import { DocsContext } from './DocNavigation';
 
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
+  const sectionSpacing = 'large';
 
   return docs ? (
     <>
       <PageTitle title={docsName} />
       <Stack space="xxlarge">
-        <Stack space="large">
+        <Stack space={sectionSpacing}>
           {docs.description ? (
-            <Stack space="large">{docs.description}</Stack>
+            <Stack space={sectionSpacing}>{docs.description}</Stack>
           ) : null}
 
           {'Example' in docs && docs.Example ? (
@@ -39,14 +40,14 @@ export const DocDetails = () => {
         </Stack>
 
         {'accessibility' in docs && docs.accessibility ? (
-          <Stack space="large">
+          <Stack space={sectionSpacing}>
             <LinkableHeading level="3">Accessibility</LinkableHeading>
             {docs.accessibility}
           </Stack>
         ) : null}
 
         {(docs.additional || []).map((example, index) => (
-          <Stack space="large" key={index}>
+          <Stack space={sectionSpacing} key={index}>
             {example.label ? (
               <LinkableHeading
                 level="3"
@@ -78,7 +79,7 @@ export const DocDetails = () => {
         ))}
 
         {'alternatives' in docs && docs.alternatives.length > 0 ? (
-          <Stack space="large">
+          <Stack space={sectionSpacing}>
             <LinkableHeading level="3">Alternatives</LinkableHeading>
             <List space="large">
               {docs.alternatives.map((alt) => (
