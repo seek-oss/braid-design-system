@@ -19,7 +19,7 @@ const docs: ComponentDocs = {
         <Alert tone="promote">
           <Text>This is a promoted message.</Text>
         </Alert>
-        <Alert tone="info" data={{ testid: 'alert-1' }}>
+        <Alert tone="info">
           <Text>This is an informative message.</Text>
         </Alert>
         <Alert tone="positive">
