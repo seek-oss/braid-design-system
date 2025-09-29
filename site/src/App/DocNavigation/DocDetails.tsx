@@ -22,19 +22,21 @@ export const DocDetails = () => {
     <>
       <PageTitle title={docsName} />
       <Stack space="xxlarge">
-        {docs.description ? (
-          <Stack space="large">{docs.description}</Stack>
-        ) : null}
+        <Stack space="large">
+          {docs.description ? (
+            <Stack space="large">{docs.description}</Stack>
+          ) : null}
 
-        {'Example' in docs && docs.Example ? (
-          <PlayroomStateProvider>
-            <DocExample
-              Example={docs.Example}
-              background={docs.examplebackground}
-              showCodeByDefault={docs.category === 'Logic'}
-            />
-          </PlayroomStateProvider>
-        ) : null}
+          {'Example' in docs && docs.Example ? (
+            <PlayroomStateProvider>
+              <DocExample
+                Example={docs.Example}
+                background={docs.examplebackground}
+                showCodeByDefault={docs.category === 'Logic'}
+              />
+            </PlayroomStateProvider>
+          ) : null}
+        </Stack>
 
         {'accessibility' in docs && docs.accessibility ? (
           <Stack space="large">
