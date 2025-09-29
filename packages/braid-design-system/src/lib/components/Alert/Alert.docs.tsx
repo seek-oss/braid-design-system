@@ -1,8 +1,8 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Alert, Card, Text, Strong, Stack, TextLink, List } from '../';
-import { IconInfo } from '../icons';
+import { Alert, Card, Text, Strong, Stack, TextLink, List, Notice } from '../';
+import { IconLanguage } from '../icons';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
@@ -119,14 +119,16 @@ const docs: ComponentDocs = {
       label: 'Contextual design',
       description: (
         <>
+          <Notice tone="info">
+            <Text>
+              Only applicable to themes with grey body backgrounds, e.g.{' '}
+              <Strong>apac</Strong>.
+            </Text>
+          </Notice>
           <Text>
             When an Alert is used on a <Strong>surface</Strong> background
             colour, i.e. in a <TextLink href="/components/Card">Card</TextLink>,
             the outline is omitted.
-          </Text>
-          <Text size="small" tone="secondary" icon={<IconInfo />}>
-            Only applicable to themes with grey body backgrounds, e.g.{' '}
-            <Strong>apac</Strong>.
           </Text>
           {/*
           TODO: COLORMODE RELEASE
@@ -172,7 +174,8 @@ const docs: ComponentDocs = {
             <Strong>onClose</Strong> handler.
           </Text>
 
-          <Text size="small" tone="secondary" icon={<IconInfo />}>
+          <Text tone="promote" id="translations">
+            <IconLanguage title="Translation hint" titleId="translations" />
             The <Strong>aria-label</Strong> for the close button can be
             customised via the <Strong>closeLabel</Strong> prop.
           </Text>
