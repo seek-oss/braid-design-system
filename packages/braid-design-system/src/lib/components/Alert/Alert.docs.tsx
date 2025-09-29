@@ -202,11 +202,11 @@ const docs: ComponentDocs = {
                 relates to an important condition, status or system change;
               </Text>
               <Text>sits at the page or section level; and</Text>
-              <Text>is relevant to the user's current task.</Text>
+              <Text>is relevant to the user&rsquo;s current task.</Text>
             </List>
           </Stack>
           <Stack space="large">
-            <Text>Don't use an Alert if your message:</Text>
+            <Text>Don&rsquo;t use an Alert if your message:</Text>
             <List space="large">
               <Text>
                 needs to be permanently on the screen (use plain{' '}
@@ -253,10 +253,10 @@ const docs: ComponentDocs = {
               take an action or not.
             </Text>
             <Text>
-              There's no need to add a full stop on a short sentence or phrase.
-              Include full stops for full sentences.
+              There&rsquo;s no need to add a full stop on a short sentence or
+              phrase. Include full stops for full sentences.
             </Text>
-            <Text>Don't use headings for Alerts.</Text>
+            <Text>Don&rsquo;t use headings for Alerts.</Text>
           </List>
         </Stack>
       ),
