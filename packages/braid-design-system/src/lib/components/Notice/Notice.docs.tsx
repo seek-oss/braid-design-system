@@ -6,6 +6,12 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A Notice is a conditional message provided in response to user action or
+      system activity, and presented in the context of the user flow.
+    </Text>
+  ),
   Example: () =>
     source(
       <Stack space="medium">
