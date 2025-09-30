@@ -167,6 +167,29 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      label: 'Content guidelines',
+      description: (
+        <Stack space="large">
+          <List space="large">
+            <Text>
+              Write Notices as short phrases or sentences. The key is to let the
+              user know the information they need, and the actions they need to
+              take, in a clear and concise way.
+            </Text>
+            <Text>
+              Using a CTA is optional, depending on whether you want the user to
+              take an action or not.
+            </Text>
+            <Text>
+              There&rsquo;s no need to add a full stop on a short sentence or
+              phrase. Include full stops for full sentences.
+            </Text>
+            <Text>Don&rsquo;t use headings for Notices.</Text>
+          </List>
+        </Stack>
+      ),
+    },
   ],
 };
 
