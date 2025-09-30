@@ -70,7 +70,7 @@ const docs: ComponentDocs = {
           <Text>
             Use the <Strong>tone</Strong> property to help communicate the
             meaning behind the Notice. Notices support{' '}
-            <Strong>promote, info, positive, caution</Strong> and{' '}
+            <Strong>promote, info, positive</Strong> and{' '}
             <Strong>critcal</Strong> tones.
           </Text>
           <Text>
