@@ -53,11 +53,13 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'Alert',
-      description: 'For a stronger visual treatment.',
+      description:
+        'For page and section level messages, or for a stronger visual treatment.',
     },
     {
       name: 'useToast',
-      description: 'For asynchronous messages that float above the page.',
+      description:
+        'To acknowledges a user action without interrupting their flow.',
     },
   ],
   additional: [
