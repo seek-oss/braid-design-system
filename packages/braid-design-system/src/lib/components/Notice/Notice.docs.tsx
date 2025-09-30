@@ -117,6 +117,43 @@ const docs: ComponentDocs = {
           </Notice>,
         ),
     },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Notice if your message:</Text>
+            <List space="large">
+              <Text>
+                relates to an important condition, status or system change
+              </Text>
+              <Text>
+                sits within a section, card, or bounded box and is relevant to
+                the user&rsquo;s current task.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Notice if your message:</Text>
+            <List space="large">
+              <Text>
+                needs to be permanently on the screen (use plain{' '}
+                <TextLink href="/components/Text">Text</TextLink> instead)
+              </Text>
+              <Text>
+                sits at the page or section level (use an{' '}
+                <TextLink href="/components/Alert">Alert</TextLink> instead)
+              </Text>
+              <Text>
+                needs to acknowledge a user action without interrupting their
+                flow (use a{' '}
+                <TextLink href="/components/useToast">Toast</TextLink> instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
     dataAttributeDocs({
       code: `
         <Notice
