@@ -75,7 +75,7 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             Read more about{' '}
-            <TextLink href="/foundations/tones">Braid tones</TextLink>.
+            <TextLink href="/foundations/tones">Tones</TextLink>.
           </Text>
         </Stack>
       ),
