@@ -70,8 +70,8 @@ const docs: ComponentDocs = {
             <Strong>critcal</Strong> tones.
           </Text>
           <Text>
-            Read more about{' '}
-            <TextLink href="/foundations/tones">Braid tones</TextLink>.
+            Read more about <TextLink href="/foundations/tones">Tones</TextLink>
+            .
           </Text>
         </Stack>
       ),
