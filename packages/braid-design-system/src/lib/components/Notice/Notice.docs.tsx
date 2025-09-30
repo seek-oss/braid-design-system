@@ -79,7 +79,7 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Content guidelines',
+      label: 'Formatting your message',
       description: (
         <Stack space="large">
           <Text>
