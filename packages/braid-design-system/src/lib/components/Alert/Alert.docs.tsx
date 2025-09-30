@@ -202,7 +202,7 @@ const docs: ComponentDocs = {
             <Text>Use an Alert if your message:</Text>
             <List space="large">
               <Text>
-                relates to an important condition, status or system change.
+                relates to an important condition, status or system change
               </Text>
               <Text>
                 sits at the page or section level and is relevant to the
@@ -215,12 +215,12 @@ const docs: ComponentDocs = {
             <List space="large">
               <Text>
                 needs to be permanently on the screen (use plain{' '}
-                <TextLink href="/components/Text">Text</TextLink> instead).
+                <TextLink href="/components/Text">Text</TextLink> instead)
               </Text>
               <Text>
                 sits within a section, card, or bounded box such as a widget
                 (use a <TextLink href="/components/Notice">Notice</TextLink>{' '}
-                instead).
+                instead)
               </Text>
               <Text>
                 needs to acknowledge a user action without interrupting their
