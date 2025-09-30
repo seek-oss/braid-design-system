@@ -62,6 +62,23 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
+      label: 'Choosing a tone',
+      description: (
+        <Stack space="large">
+          <Text>
+            Use the <Strong>tone</Strong> property to help communicate the
+            meaning behind the Notice. Notices support{' '}
+            <Strong>promote, info, positive, caution</Strong> and{' '}
+            <Strong>critcal</Strong> tones.
+          </Text>
+          <Text>
+            Read more about{' '}
+            <TextLink href="/foundations/tones">Braid tones</TextLink>.
+          </Text>
+        </Stack>
+      ),
+    },
+    {
       label: 'Content guidelines',
       description: (
         <Stack space="large">
