@@ -33,6 +33,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
+      # Ensure npm 11.5.1 or later is installed
       - name: Install latest npm
         run: npm install -g npm@latest
 
@@ -87,6 +88,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
+      # Ensure npm 11.5.1 or later is installed
       - name: Install latest npm
         run: npm install -g npm@latest
 
