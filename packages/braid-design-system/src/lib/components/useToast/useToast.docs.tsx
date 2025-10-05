@@ -86,56 +86,6 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Playroom prototyping',
-      description: (
-        <Text>
-          The <Strong>showToast</Strong> function used in these examples is
-          automatically available in Playroom. You do not need to call the{' '}
-          <Strong>useToast</Strong> function.
-        </Text>
-      ),
-    },
-    {
-      label: 'Development considerations',
-      description: (
-        <>
-          <Text>
-            To get access to the <Strong>showToast</Strong> function in your
-            application code, call the <Strong>useToast</Strong> Hook.
-          </Text>
-          <Code playroom={false}>
-            {`
-              import { useToast } from 'braid-design-system';
-
-              export const Demo = () => {
-                const showToast = useToast();
-
-                // etc...
-              }
-        `}
-          </Code>
-          <Text>
-            To enable this Hook, wrap your app in a{' '}
-            <Strong>ToastProvider</Strong>—typically where you render{' '}
-            <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
-          </Text>
-          <Code playroom={false}>
-            {`
-              import { BraidProvider, ToastProvider } from 'braid-design-system';
-
-              export const App = () => (
-                <BraidProvider>
-                  <ToastProvider>
-                    {/* App code... */}
-                  </ToastProvider>
-                </BraidProvider>
-              )
-        `}
-          </Code>
-        </>
-      ),
-    },
-    {
       label: 'Choosing a tone',
       description: (
         <>
@@ -523,6 +473,56 @@ const docs: ComponentDocs = {
             </Button>
           </Inline>,
         ),
+    },
+    {
+      label: 'Playroom prototyping',
+      description: (
+        <Text>
+          The <Strong>showToast</Strong> function used in these examples is
+          automatically available in Playroom. You do not need to call the{' '}
+          <Strong>useToast</Strong> function.
+        </Text>
+      ),
+    },
+    {
+      label: 'Development considerations',
+      description: (
+        <>
+          <Text>
+            To get access to the <Strong>showToast</Strong> function in your
+            application code, call the <Strong>useToast</Strong> Hook.
+          </Text>
+          <Code playroom={false}>
+            {`
+              import { useToast } from 'braid-design-system';
+
+              export const Demo = () => {
+                const showToast = useToast();
+
+                // etc...
+              }
+        `}
+          </Code>
+          <Text>
+            To enable this Hook, wrap your app in a{' '}
+            <Strong>ToastProvider</Strong>—typically where you render{' '}
+            <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
+          </Text>
+          <Code playroom={false}>
+            {`
+              import { BraidProvider, ToastProvider } from 'braid-design-system';
+
+              export const App = () => (
+                <BraidProvider>
+                  <ToastProvider>
+                    {/* App code... */}
+                  </ToastProvider>
+                </BraidProvider>
+              )
+        `}
+          </Code>
+        </>
+      ),
     },
   ],
 };
