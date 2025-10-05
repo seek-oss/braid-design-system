@@ -304,7 +304,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Actions',
+      label: 'Including actions',
       description: (
         <>
           <Text>
