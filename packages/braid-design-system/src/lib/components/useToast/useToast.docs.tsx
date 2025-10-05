@@ -136,12 +136,18 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Tones',
+      label: 'Choosing a tone',
       description: (
         <>
           <Text>
-            Toasts support <Strong>positive</Strong>, <Strong>critical</Strong>{' '}
-            and <Strong>neutral</Strong> tones.
+            Use the <Strong>tone</Strong> property to help communicate the
+            meaning behind your message. Toasts support{' '}
+            <Strong>positive</Strong>, <Strong>critical</Strong> and{' '}
+            <Strong>neutral</Strong> tones.
+          </Text>
+          <Text>
+            Read more about <TextLink href="/foundations/tones">Tones</TextLink>
+            .
           </Text>
           <Notice>
             <Text>
