@@ -13,6 +13,7 @@ import {
   Notice,
   IconLanguage,
   IconBookmark,
+  List,
 } from '..';
 
 import Toast, { toastDuration } from './Toast';
@@ -523,6 +524,38 @@ const docs: ComponentDocs = {
         `}
           </Code>
         </>
+      ),
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Toast if your message:</Text>
+            <List space="large">
+              <Text>has been triggered by a user action</Text>
+              <Text>is relevant to the user&rsquo;s current task.</Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Toast if your message:</Text>
+            <List space="large">
+              <Text>
+                needs to be permanently on the screen (use plain{' '}
+                <TextLink href="/components/Text">Text</TextLink> instead)
+              </Text>
+              <Text>
+                needs to sit within the content of the page (use an{' '}
+                <TextLink href="/components/Alert">Alert</TextLink> or{' '}
+                <TextLink href="/components/Notice">Notice</TextLink> instead)
+              </Text>
+              <Text>
+                doesn&rsquo;t relate to the user&rsquo;s current task (as this
+                may cause a distraction).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
       ),
     },
   ],
