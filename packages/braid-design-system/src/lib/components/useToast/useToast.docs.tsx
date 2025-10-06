@@ -533,8 +533,11 @@ const docs: ComponentDocs = {
           <Stack space="large">
             <Text>Use a Toast if your message:</Text>
             <List space="large">
-              <Text>has been triggered by a user action</Text>
-              <Text>is relevant to the user&rsquo;s current task.</Text>
+              <Text>
+                has been triggered by a user action relevant to their current
+                task
+              </Text>
+              <Text>does not impact the user&rsquo;s ability to continue.</Text>
             </List>
           </Stack>
           <Stack space="large">
@@ -545,7 +548,7 @@ const docs: ComponentDocs = {
                 <TextLink href="/components/Text">Text</TextLink> instead)
               </Text>
               <Text>
-                needs to sit within the content of the page (use an{' '}
+                impacts the user&rsquo;s ability to continue (use an{' '}
                 <TextLink href="/components/Alert">Alert</TextLink> or{' '}
                 <TextLink href="/components/Notice">Notice</TextLink> instead)
               </Text>
