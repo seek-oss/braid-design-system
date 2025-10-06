@@ -7,6 +7,11 @@
     "source.macro.cjs",
     "source.macro.d.ts"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seek-oss/braid-design-system.git",
+    "directory": "packages/source.macro"
+  },
   "scripts": {
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
