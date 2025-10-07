@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seek-oss/braid-design-system.git",
+    "directory": "packages/generate-component-docs"
+  },
   "scripts": {
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
