@@ -277,8 +277,8 @@ importers:
         specifier: ^9.7.1
         version: 9.7.1(jest-diff@30.2.0)(jest-snapshot@30.2.0)(jest@30.2.0(@types/node@22.18.6)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.21.5)))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.6)(jiti@2.6.0)(jsdom@26.1.0)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       playroom:
-        specifier: 0.45.0-next-20251008215322
-        version: 0.45.0-next-20251008215322(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: 0.45.0-next-20251009003835
+        version: 0.45.0-next-20251009003835(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       prettier:
         specifier: ^3.4.1
         version: 3.6.2
@@ -532,8 +532,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       playroom:
-        specifier: 0.45.0-next-20251008215322
-        version: 0.45.0-next-20251008215322(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.25.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: 0.45.0-next-20251009003835
+        version: 0.45.0-next-20251009003835(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.25.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -3428,6 +3428,9 @@ packages:
     resolution: {integrity: sha512-nzvgl3VfhcELQ8LyVrYOru+UtAy1nrygk2+AGbTm8a5YcO6o8lSjAT+pfg3vJWxIoZKOUhrK6UU7xW/+00kQrg==}
     hasBin: true
 
+  '@zumer/snapdom@1.9.14':
+    resolution: {integrity: sha512-kQARFS/jf+fsIFv9qxfNp8YMeun5tTyhFDk3iv47Lywk5YRldhINWicEZI15fP3FDUCeo8ok+BP0CtnDRFMFRg==}
+
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
     engines: {node: '>= 0.6'}
@@ -3751,10 +3754,6 @@ packages:
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
-
-  base64-arraybuffer@1.0.2:
-    resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
-    engines: {node: '>= 0.6.0'}
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -4323,9 +4322,6 @@ packages:
 
   css-in-js-utils@3.1.0:
     resolution: {integrity: sha512-fJAcud6B3rRu+KHYk+Bwf+WFL2MDCJJ1XG9x137tJQ0xYxor7XziQtuGFbWNdqrvF4Tk26O3H73nfVqXt/fW1A==}
-
-  css-line-break@2.1.0:
-    resolution: {integrity: sha512-FHcKFCZcAha3LwfVBhCQbW2nCNbkZXn7KVUJcsT5/P8YmfsVja0FMPJr0B903j/E69HUphKiV9iQArX8SDYA4w==}
 
   css-loader@6.11.0:
     resolution: {integrity: sha512-CTJ+AEQJjq5NzLga5pE39qdiSV56F8ywCIsqNIRF0r7BDgWsN25aazToqAFg7ZrtA/U016xudB3ffgweORxX7g==}
@@ -5584,10 +5580,6 @@ packages:
         optional: true
       webpack:
         optional: true
-
-  html2canvas@1.4.1:
-    resolution: {integrity: sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==}
-    engines: {node: '>=8.0.0'}
 
   htmlparser2@6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
@@ -7247,8 +7239,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playroom@0.45.0-next-20251008215322:
-    resolution: {integrity: sha512-OWfhv2lJuHIZurMkMg4Dheg9YtEgwGtLnSNEEPPoSbZsIcX9vuI+PDLpZwxRyXLA4SN5xVbTIfW9BYrdsC8sNg==}
+  playroom@0.45.0-next-20251009003835:
+    resolution: {integrity: sha512-UdbZuWCtlhidyqXBH1Mc6evgU1UMP5iAf3QwPBoF6uzgWQHHBolTVrP6nUWHYhqOt2JPJjbW4MgXHvasPGek1Q==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     peerDependencies:
@@ -8600,9 +8592,6 @@ packages:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
     engines: {node: '>=8'}
 
-  text-segmentation@1.0.3:
-    resolution: {integrity: sha512-iOiPUo/BGnZ6+54OsWxZidGCsdU8YbE4PSpdPinp7DeMtUJNJBoJ/ouUSTJjHkh1KntHaltHl/gDs2FC4i5+Nw==}
-
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
     engines: {node: '>=0.8'}
@@ -8990,9 +8979,6 @@ packages:
   utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
-
-  utrie@1.0.2:
-    resolution: {integrity: sha512-1MLa5ouZiOmQzUbjbu9VmjLzn1QLXBhwpUa7kdLUQK+KQ5KA9I1vk5U4YHe/X2Ch7PYnJfWuWT+VbuxbGwljhw==}
 
   uuid@3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
@@ -13041,6 +13027,8 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
+  '@zumer/snapdom@1.9.14': {}
+
   accepts@1.3.8:
     dependencies:
       mime-types: 2.1.35
@@ -13423,8 +13411,6 @@ snapshots:
   bail@2.0.2: {}
 
   balanced-match@1.0.2: {}
-
-  base64-arraybuffer@1.0.2: {}
 
   base64-js@1.5.1: {}
 
@@ -14018,10 +14004,6 @@ snapshots:
   css-in-js-utils@3.1.0:
     dependencies:
       hyphenate-style-name: 1.1.0
-
-  css-line-break@2.1.0:
-    dependencies:
-      utrie: 1.0.2
 
   css-loader@6.11.0(webpack@5.101.3(@swc/core@1.13.5)(esbuild@0.21.5)):
     dependencies:
@@ -15680,11 +15662,6 @@ snapshots:
       tapable: 2.2.3
     optionalDependencies:
       webpack: 5.101.3(@swc/core@1.13.5)(esbuild@0.25.10)
-
-  html2canvas@1.4.1:
-    dependencies:
-      css-line-break: 2.1.0
-      text-segmentation: 1.0.3
 
   htmlparser2@6.1.0:
     dependencies:
@@ -17795,7 +17772,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playroom@0.45.0-next-20251008215322(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  playroom@0.45.0-next-20251009003835(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@babel/core': 7.28.4
       '@babel/parser': 7.28.4
@@ -17816,6 +17793,7 @@ snapshots:
       '@vanilla-extract/dynamic': 2.1.5
       '@vanilla-extract/sprinkles': 1.6.5(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))
       '@vanilla-extract/webpack-plugin': 2.3.22(babel-plugin-macros@3.1.0)(webpack@5.101.3(@swc/core@1.13.5)(esbuild@0.21.5))
+      '@zumer/snapdom': 1.9.14
       babel-loader: 9.2.1(@babel/core@7.28.4)(webpack@5.101.3(@swc/core@1.13.5)(esbuild@0.21.5))
       clsx: 2.1.1
       cmdk-base: 0.0.8(@base-ui-components/react@1.0.0-beta.1(@types/react@19.1.15)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.15)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -17828,7 +17806,6 @@ snapshots:
       find-up: 5.0.0
       history: 5.3.0
       html-webpack-plugin: 5.6.4(webpack@5.101.3(@swc/core@1.13.5)(esbuild@0.21.5))
-      html2canvas: 1.4.1
       localforage: 1.10.0
       lucide-react: 0.541.0(react@19.1.1)
       lz-string: 1.5.0
@@ -17863,7 +17840,7 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  playroom@0.45.0-next-20251008215322(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.25.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  playroom@0.45.0-next-20251009003835(@swc/core@1.13.5)(babel-plugin-macros@3.1.0)(esbuild@0.25.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@babel/core': 7.28.4
       '@babel/parser': 7.28.4
@@ -17884,6 +17861,7 @@ snapshots:
       '@vanilla-extract/dynamic': 2.1.5
       '@vanilla-extract/sprinkles': 1.6.5(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))
       '@vanilla-extract/webpack-plugin': 2.3.22(babel-plugin-macros@3.1.0)(webpack@5.101.3(@swc/core@1.13.5)(esbuild@0.25.10))
+      '@zumer/snapdom': 1.9.14
       babel-loader: 9.2.1(@babel/core@7.28.4)(webpack@5.101.3(@swc/core@1.13.5)(esbuild@0.25.10))
       clsx: 2.1.1
       cmdk-base: 0.0.8(@base-ui-components/react@1.0.0-beta.1(@types/react@19.1.15)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.15)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -17896,7 +17874,6 @@ snapshots:
       find-up: 5.0.0
       history: 5.3.0
       html-webpack-plugin: 5.6.4(webpack@5.101.3(@swc/core@1.13.5)(esbuild@0.25.10))
-      html2canvas: 1.4.1
       localforage: 1.10.0
       lucide-react: 0.541.0(react@19.1.1)
       lz-string: 1.5.0
@@ -19839,10 +19816,6 @@ snapshots:
       glob: 7.2.3
       minimatch: 3.1.2
 
-  text-segmentation@1.0.3:
-    dependencies:
-      utrie: 1.0.2
-
   thenify-all@1.6.0:
     dependencies:
       thenify: 3.3.1
@@ -20224,10 +20197,6 @@ snapshots:
   utility-types@3.11.0: {}
 
   utils-merge@1.0.1: {}
-
-  utrie@1.0.2:
-    dependencies:
-      base64-arraybuffer: 1.0.2
 
   uuid@3.4.0: {}
 
