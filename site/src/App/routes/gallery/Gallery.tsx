@@ -1,7 +1,5 @@
 import source from '@braid-design-system/source.macro';
-import docsTheme from 'braid-src/entries/themes/docs';
 import {
-  BraidProvider,
   Stack,
   Text,
   Heading,
@@ -47,13 +45,9 @@ import {
   useState,
   useRef,
   useCallback,
+  createContext,
+  useContext,
 } from 'react';
-import {
-  RecoilRoot,
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from 'recoil';
 
 import type { ComponentExample } from '../../../types';
 import { CodeButton, formatSnippet } from '../../Code/Code';
@@ -71,12 +65,6 @@ import {
 import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromExample';
 
 import { GalleryPanel } from './GalleryPanel';
-import {
-  type FitToScreenDimensions,
-  zoom as zoomState,
-  fitToScreenDimensions,
-  controller as controllerState,
-} from './galleryState';
 
 import * as styles from './gallery.css';
 
@@ -195,25 +183,50 @@ const RenderExample = ({ example, isIcon }: RenderExampleProps) => {
   ];
 
   return (
-    <BraidProvider styleBody={false} theme={docsTheme}>
-      <Stack space={isIcon ? 'xxsmall' : 'small'}>
-        {isIcon ? children.reverse() : children}
-      </Stack>
-    </BraidProvider>
+    <Stack space={isIcon ? 'xxsmall' : 'small'}>
+      {isIcon ? children.reverse() : children}
+    </Stack>
   );
 };
 
-type JumpTo = (componentName: string) => void;
+const widthMap = {
+  icon: undefined,
+  standard: '700px',
+  wide: '1500px',
+};
+const GalleryItemExample = ({
+  exampleChunk,
+  isIcon,
+  width,
+}: {
+  exampleChunk: ComponentExample[];
+  isIcon: boolean;
+  width: keyof typeof widthMap;
+}) => (
+  <Stack space="xlarge">
+    {exampleChunk.map((example, index) => (
+      <Box
+        component={isIcon ? undefined : 'section'}
+        style={{
+          width: widthMap[width],
+        }}
+        key={`${example.label}_${index}`}
+        className={styles.animationsOnlyOnHover}
+      >
+        <PlayroomStateProvider>
+          <RenderExample example={example} isIcon={isIcon} />
+        </PlayroomStateProvider>
+      </Box>
+    ))}
+  </Stack>
+);
 
 const GalleryItem = ({
   item,
-  jumpTo,
 }: {
   item: (typeof allStandardGalleryComponents)[number];
-  jumpTo: JumpTo;
 }) => {
-  const { theme } = useThemeSettings();
-
+  const jumpTo = useContext(JumpToContext);
   const componentDocs = getComponentDocs(item.name);
   const relevantNames = componentDocs.subComponents
     ? [item.name, ...componentDocs.subComponents]
@@ -226,12 +239,6 @@ const GalleryItem = ({
   ).length;
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
-  const widthMap = {
-    icon: undefined,
-    standard: '700px',
-    wide: '1500px',
-  };
-
   const isIcon = componentDocs.category === 'Icon';
 
   return (
@@ -243,7 +250,11 @@ const GalleryItem = ({
       margin={isIcon ? 'small' : 'xxlarge'}
       data-braid-component-name={item.name}
       tabIndex={0}
-      onDoubleClick={() => jumpTo(item.name)}
+      onClick={(ev) => {
+        if (ev.detail === 2) {
+          jumpTo(item.name);
+        }
+      }}
     >
       <Stack space={isIcon ? 'medium' : 'xxlarge'}>
         <Box position="relative">
@@ -294,24 +305,11 @@ const GalleryItem = ({
         <Columns space="xlarge">
           {item.examples.map((exampleChunk, idx) => (
             <Column key={`${item.name}_${idx}`}>
-              <Stack space="xlarge">
-                {exampleChunk.map((example, index) => (
-                  <Box
-                    component={isIcon ? undefined : 'section'}
-                    style={{
-                      width: widthMap[item.itemWidth],
-                    }}
-                    key={`${example.label}_${index}`}
-                    className={styles.animationsOnlyOnHover}
-                  >
-                    <BraidProvider styleBody={false} theme={theme}>
-                      <PlayroomStateProvider>
-                        <RenderExample example={example} isIcon={isIcon} />
-                      </PlayroomStateProvider>
-                    </BraidProvider>
-                  </Box>
-                ))}
-              </Stack>
+              <GalleryItemExample
+                exampleChunk={exampleChunk}
+                isIcon={isIcon}
+                width={item.itemWidth}
+              />
             </Column>
           ))}
         </Columns>
@@ -364,9 +362,8 @@ const GalleryItem = ({
 interface StageProps {
   setName: SetName;
   title: string;
-  jumpTo: JumpTo;
 }
-const Stage = ({ setName, jumpTo, title }: StageProps) => {
+const Stage = ({ setName, title }: StageProps) => {
   const items = getRowsFor(setName);
   const rowLength = items[0].length;
 
@@ -386,9 +383,7 @@ const Stage = ({ setName, jumpTo, title }: StageProps) => {
                   key={`rowItem-${item}`}
                   width={row[item] ? 'content' : undefined}
                 >
-                  {row[item] ? (
-                    <GalleryItem item={row[item]} jumpTo={jumpTo} />
-                  ) : null}
+                  {row[item] ? <GalleryItem item={row[item]} /> : null}
                 </Column>
               ))}
             </Columns>
@@ -400,7 +395,11 @@ const Stage = ({ setName, jumpTo, title }: StageProps) => {
 };
 
 const jumpToEdgeThreshold = 80;
-
+interface FitToScreenDimensions {
+  x: number;
+  y: number;
+  scale: number;
+}
 const calculateFitToScreenDimensions = (
   contentEl: HTMLDivElement,
 ): FitToScreenDimensions => {
@@ -420,18 +419,19 @@ const calculateFitToScreenDimensions = (
 };
 
 const zoomStep = 0.4;
-const GalleryInternal = () => {
+const GalleryInternal = ({ children }: { children: ReactNode }) => {
   const { ready: themeReady } = useThemeSettings();
   const [ready, setReady] = useState(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const zoomInRef = useRef<HTMLButtonElement | null>(null);
   const zoomOutRef = useRef<HTMLButtonElement | null>(null);
 
-  const [fitToScreenDims, setFitToScreenDimensions] = useRecoilState(
-    fitToScreenDimensions,
-  );
-  const setZoom = useSetRecoilState(zoomState);
-  const [controller, setController] = useRecoilState(controllerState);
+  const [fitToScreenDims, setFitToScreenDimensions] =
+    useState<FitToScreenDimensions | null>(null);
+  const [zoom, setZoom] = useState(1);
+  const [controller, setController] = useState<ReturnType<
+    typeof panzoom
+  > | null>(null);
 
   const zoomOut = useCallback(() => {
     if (controller) {
@@ -659,7 +659,7 @@ const GalleryInternal = () => {
                     onClick={actualSize}
                     {...triggerProps}
                   >
-                    <CurrentZoom />
+                    <CurrentZoom zoom={zoom} />
                   </Button>
                 )}
               </TooltipRenderer>
@@ -686,31 +686,41 @@ const GalleryInternal = () => {
           userSelect="none"
           className={styles.contentWrapper}
         >
-          <Box component="section">
-            <Stage setName="components" title="Components" jumpTo={jumpTo} />
-          </Box>
-          <Box component="section" style={{ paddingLeft: 800 }}>
-            <Stage setName="layout" title="Layout" jumpTo={jumpTo} />
-          </Box>
-          <Box component="section" style={{ paddingLeft: 800 }}>
-            <Stage setName="icons" title="Icons" jumpTo={jumpTo} />
-          </Box>
+          <JumpToContext.Provider value={jumpTo}>
+            {children}
+          </JumpToContext.Provider>
         </Box>
       </Box>
     </>
   );
 };
 
+type JumpTo = (componentName: string) => void;
+const JumpToContext = createContext<JumpTo>(() => {});
+
 export const Gallery = () => (
-  <RecoilRoot>
-    <GalleryInternal />
-  </RecoilRoot>
+  <GalleryInternal>
+    <GalleryContent />
+  </GalleryInternal>
 );
 
-const CurrentZoom = () => {
-  const currentZoom = useRecoilValue(zoomState);
-  return <Secondary>{Math.round(currentZoom * 100)}%</Secondary>;
-};
+const GalleryContent = () => (
+  <>
+    <Box component="section">
+      <Stage setName="components" title="Components" />
+    </Box>
+    <Box component="section" style={{ paddingLeft: 800 }}>
+      <Stage setName="layout" title="Layout" />
+    </Box>
+    <Box component="section" style={{ paddingLeft: 800 }}>
+      <Stage setName="icons" title="Icons" />
+    </Box>
+  </>
+);
+
+const CurrentZoom = ({ zoom }: { zoom: number }) => (
+  <Secondary>{Math.round(zoom * 100)}%</Secondary>
+);
 
 const jumpToPlaceholder = 'Jump to';
 const componentList = [jumpToPlaceholder].concat(
