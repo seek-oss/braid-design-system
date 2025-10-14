@@ -9,8 +9,8 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      An Alert is a conditional message provided in response to user action or
-      system activity, and presented in the context of the user flow.
+      A conditional message provided in response to user action or system
+      activity, and presented in the context of the user flow.
     </Text>
   ),
   Example: () =>
