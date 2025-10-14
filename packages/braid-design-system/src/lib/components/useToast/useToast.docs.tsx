@@ -29,8 +29,8 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      A Toast is a brief, temporary message that appears at the bottom of the
-      screen to acknowledge user actions without interrupting their workflow.
+      A brief, temporary message that appears at the bottom of the screen to
+      acknowledge user actions without interrupting their workflow.
     </Text>
   ),
   Example: ({ showToast }) => {
