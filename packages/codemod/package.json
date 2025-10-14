@@ -2,6 +2,11 @@
   "name": "@braid-design-system/codemod",
   "version": "1.0.2",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seek-oss/braid-design-system.git",
+    "directory": "packages/codemod"
+  },
   "scripts": {
     "build": "node ./scripts/build.js",
     "lint:eslint": "eslint --cache .",
