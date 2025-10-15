@@ -55,7 +55,7 @@ const docs: ComponentDocs = {
     {
       name: 'useToast',
       description:
-        'To acknowledge a user action without interrupting their flow.',
+        'To briefly acknowledge a user action without interrupting their flow.',
     },
   ],
   additional: [
