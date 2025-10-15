@@ -50,7 +50,7 @@ const docs: ComponentDocs = {
     {
       name: 'Notice',
       description:
-        'For messages that sit within a section, card, or widget; or for a lighter visual treatment.',
+        'For light in-flow messages that sit within a section, card, or widget.',
     },
     {
       name: 'useToast',

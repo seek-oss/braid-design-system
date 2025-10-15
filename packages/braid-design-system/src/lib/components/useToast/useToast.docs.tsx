@@ -83,7 +83,7 @@ const docs: ComponentDocs = {
     {
       name: 'Notice',
       description:
-        'For lighter in-flow messages that sit within a section, card, or widget.',
+        'For light in-flow messages that sit within a section, card, or widget.',
     },
   ],
   additional: [
