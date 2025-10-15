@@ -9,8 +9,8 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      An Alert is a conditional message provided in response to user action or
-      system activity, and presented in the context of the user flow.
+      A conditional message provided in response to user action or system
+      activity, and presented in the context of the user flow.
     </Text>
   ),
   Example: () =>
@@ -50,12 +50,12 @@ const docs: ComponentDocs = {
     {
       name: 'Notice',
       description:
-        'For messages that sit within a section, card, or widget; or for a lighter visual treatment.',
+        'For light in-flow messages that sit within a section, card, or widget.',
     },
     {
       name: 'useToast',
       description:
-        'To acknowledges a user action without interrupting their flow.',
+        'To briefly acknowledge a user action without interrupting their flow.',
     },
   ],
   additional: [
