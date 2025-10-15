@@ -78,7 +78,8 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'Alert',
-      description: 'For in-flow messages that sit at page or section level.',
+      description:
+        'For strong in-flow messages that sit at page or section level.',
     },
     {
       name: 'Notice',

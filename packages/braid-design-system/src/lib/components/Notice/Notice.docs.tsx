@@ -54,7 +54,7 @@ const docs: ComponentDocs = {
     {
       name: 'Alert',
       description:
-        'For page and section level messages, or for a stronger visual treatment.',
+        'For strong in-flow messages that sit at page or section level.',
     },
     {
       name: 'useToast',
