@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Note that the <Strong>caution</Strong> tone is not supported because
-        it’s not possible to achieve an accessible contrast ratio while
+        it&rsquo;s not possible to achieve an accessible contrast ratio while
         maintining an acceptable semantic colour. For this case, consider using
         an <TextLink href="/components/Alert">Alert</TextLink> instead.
       </Text>
