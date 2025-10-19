@@ -19,6 +19,12 @@ import { constants } from './TooltipRenderer.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A concise, floating message that gives users non-critical, extra context
+      on mouse hover or keyboard focus.
+    </Text>
+  ),
   Example: () =>
     source(
       <Inline space="small">
