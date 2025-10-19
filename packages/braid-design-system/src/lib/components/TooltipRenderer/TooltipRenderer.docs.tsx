@@ -69,15 +69,6 @@ const docs: ComponentDocs = {
   ),
   additional: [
     {
-      label: 'Development considerations',
-      description: (
-        <Text>
-          The trigger element must support <Strong>ref</Strong>,{' '}
-          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
-        </Text>
-      ),
-    },
-    {
       label: 'Placement',
       description: (
         <>
@@ -172,6 +163,15 @@ const docs: ComponentDocs = {
           ),
         };
       },
+    },
+    {
+      label: 'Development considerations',
+      description: (
+        <Text>
+          The trigger element must support <Strong>ref</Strong>,{' '}
+          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
+        </Text>
+      ),
     },
   ],
 };
