@@ -73,9 +73,10 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Tooltips are positioned above the trigger element by default, but
-            you can configure this via the <Strong>placement</Strong> prop which
-            accepts either <Strong>top</Strong> or <Strong>bottom</Strong>.
+            Tooltips can be triggered on any element of your choice. They are
+            positioned above the trigger element by default, but you can
+            configure this via the <Strong>placement</Strong> prop which accepts
+            either <Strong>top</Strong> or <Strong>bottom</Strong>.
           </Text>
           <Text>
             Whichever direction you choose, the tooltip will be centred against
