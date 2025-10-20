@@ -103,17 +103,25 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Formatting',
+      label: 'Formatting your message',
       description: (
         <>
           <Text>
-            To ensure readability, tooltips have a maximum width of{' '}
+            To ensure readability, Tooltips have a maximum width of{' '}
             {constants.maxWidth}, which means that text will wrap onto multiple
             lines if you provide enough content.
           </Text>
           <Text>
-            You can also use multiple text elements and layout components to
-            create more custom layouts.
+            You can also use multiple{' '}
+            <TextLink href="/components/Text">Text</TextLink> elements and
+            layout components like{' '}
+            <TextLink href="/components/Stack">Stack</TextLink> to create more
+            tailored layouts.
+          </Text>
+          <Text>
+            Keep in mind that Tooltip content should be brief. Ideally less than
+            100 characters / 20 words, and a maximum of 250 characters / 50
+            words.
           </Text>
         </>
       ),
