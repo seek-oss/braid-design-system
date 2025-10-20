@@ -42,12 +42,12 @@ const docs: ComponentDocs = {
     {
       name: 'Dialog',
       description:
-        'For exposing additional content in a modal with richer formatting.',
+        'For exposing additional content in a modal with rich formatting.',
     },
     {
       name: 'Disclosure',
       description:
-        'For revealing content inline with a light visual treatment.',
+        'For revealing optional content inline with a light visual treatment.',
     },
   ],
   accessibility: (
