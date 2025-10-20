@@ -11,6 +11,7 @@ import {
   TextLink,
   Strong,
   Button,
+  List,
 } from '..';
 
 import { offsetSpace, TooltipContent } from './TooltipRenderer';
@@ -172,6 +173,36 @@ const docs: ComponentDocs = {
           ),
         };
       },
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Tooltip:</Text>
+            <List space="large">
+              <Text>
+                to provide optional information such as a short explanation of
+                what something means.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Tooltip:</Text>
+            <List space="large">
+              <Text>
+                if the information is important or the user needs it to complete
+                a task (make it visible up front)
+              </Text>
+              <Text>
+                to display complex content including CTAs or images (consider
+                using a <TextLink href="/components/Dialog">Dialog</TextLink>{' '}
+                instead)
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
     },
     {
       label: 'Development considerations',
