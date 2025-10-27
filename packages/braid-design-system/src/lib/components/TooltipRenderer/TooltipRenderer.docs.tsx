@@ -197,7 +197,7 @@ const docs: ComponentDocs = {
               <Text>
                 to display complex content including CTAs or images (consider
                 using a <TextLink href="/components/Dialog">Dialog</TextLink>{' '}
-                instead)
+                instead).
               </Text>
             </List>
           </Stack>
