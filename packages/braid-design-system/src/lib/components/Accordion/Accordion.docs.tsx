@@ -18,6 +18,12 @@ import { validSpaceValues } from './Accordion';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A vertically stacked list of panels that expand and collapse to reveal
+      sections of content.
+    </Text>
+  ),
   subComponents: ['AccordionItem'],
   Example: () =>
     source(
