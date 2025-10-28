@@ -2196,6 +2196,27 @@ export const IconSocialMediumSvg = ({ title, titleId, ...props }: SVGProps) => (
 "
 `;
 
+exports[`IconSocialTiktokSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconSocialTiktokSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M9.578 22c3.13 0 6.446-2.302 6.446-6.64V8.293c1.381 1.381 3.056 1.815 4.858 1.815V6.925C18.667 6.77 16.218 5.317 15.664 2h-3.197v13.587c0 1.782-1.281 2.923-2.836 2.923s-2.936-1.148-2.936-2.923c0-2.055 1.608-3.143 3.75-2.916V9.227a5.3 5.3 0 0 0-.88-.066c-3.51 0-6.447 2.816-6.447 6.306C3.11 19.164 6.014 22 9.578 22" />
+  </svg>
+);
+"
+`;
+
 exports[`IconSocialXSvg > should match snapshot 1`] = `
 "import type { SVGProps } from '../SVGTypes';
 

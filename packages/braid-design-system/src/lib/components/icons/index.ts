@@ -89,6 +89,7 @@ export { IconSocialGitHub } from './IconSocialGitHub/IconSocialGitHub';
 export { IconSocialInstagram } from './IconSocialInstagram/IconSocialInstagram';
 export { IconSocialLinkedIn } from './IconSocialLinkedIn/IconSocialLinkedIn';
 export { IconSocialMedium } from './IconSocialMedium/IconSocialMedium';
+export { IconSocialTiktok } from './IconSocialTiktok/IconSocialTiktok';
 export { IconSocialX } from './IconSocialX/IconSocialX';
 export { IconSocialYouTube } from './IconSocialYouTube/IconSocialYouTube';
 export { IconSort } from './IconSort/IconSort';
