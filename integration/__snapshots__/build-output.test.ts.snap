@@ -15,10 +15,6 @@ exports[`build > Vanilla Extract files imported as side-effects 1`] = `
 
 ### dist/lib/themes/wireframe/index.mjs:
 1 │ import "./wireframeTheme.css.mjs";
-
-### dist/reset.mjs:
-1 │ import "./lib/css/reset/reset.css.mjs";
-2 │ import "./lib/css/atoms/sprinkles.css.mjs";
 `;
 
 exports[`build > side-effects from dist 1`] = `
