@@ -6447,6 +6447,37 @@ exports[`IconSocialMedium 1`] = `
 }
 `;
 
+exports[`IconSocialTiktok 1`] = `
+{
+  exportType: component,
+  props: {
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconSocialX 1`] = `
 {
   exportType: component,
