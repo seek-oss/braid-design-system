@@ -67,24 +67,24 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Customising the appearance',
+      label: 'Tailoring the appearance',
       description: (
         <>
           <Text>
-            You can customise the <Strong>size</Strong>, <Strong>tone</Strong>{' '}
-            and <Strong>weight</Strong> props, and optionally set the{' '}
+            You can specify the <Strong>size</Strong>, <Strong>tone</Strong> and{' '}
+            <Strong>weight</Strong> props, and optionally set the{' '}
             <Strong>dividers</Strong> prop to <Strong>false.</Strong>
           </Text>
           <Text>
-            While we aim to provide sensible defaults, you can also provide a
-            custom <Strong>space</Strong> value to adjust the spacing between
-            items. Note that, to ensure adequate space for touch targets, the{' '}
-            <Strong>space</Strong> prop only accepts values of{' '}
+            You may also provide a <Strong>space</Strong> value to adjust the
+            spacing between items. Note that in order to ensure adequate space
+            for touch targets, the <Strong>space</Strong> prop only accepts
+            values of{' '}
             {validSpaceValues.map((value, i) => (
               <Fragment key={value}>
                 {i === validSpaceValues.length - 1 ? ' and ' : ''}
                 {i !== validSpaceValues.length - 1 && i !== 0 ? ', ' : ''}
-                <Strong>“{value}”</Strong>
+                <Strong>{value}</Strong>
               </Fragment>
             ))}
             .
