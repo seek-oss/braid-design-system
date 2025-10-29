@@ -49,20 +49,19 @@ const docs: ComponentDocs = {
   ),
   alternatives: [
     {
+      name: 'Dialog',
+      description:
+        'For exposing additional content in a modal with rich formatting.',
+    },
+    {
       name: 'Disclosure',
-      description: 'For a lighter visual treatment.',
+      description:
+        'For revealing optional content inline with a light visual treatment.',
     },
     {
       name: 'Tabs',
-      description: 'For a horizontal selection of multiple content panels.',
-    },
-    {
-      name: 'Dialog',
-      description: 'For exposing a smaller amount of content in a modal.',
-    },
-    {
-      name: 'Drawer',
-      description: 'For exposing a larger amount of content in a modal.',
+      description:
+        'For presenting multiple sections of content in horizontal panels.',
     },
   ],
   additional: [
