@@ -144,7 +144,7 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Inserting an icon',
+      label: 'Icons',
       description: (
         <>
           <Text>
