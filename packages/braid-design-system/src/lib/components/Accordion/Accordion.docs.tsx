@@ -10,6 +10,8 @@ import {
   TextLink,
   Strong,
   IconImage,
+  List,
+  Stack,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -227,6 +229,23 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      label: 'Content guidelines',
+      description: (
+        <Stack space="large">
+          <List space="large">
+            <Text>
+              Avoid putting critical or high-priority content in an accordion,
+              as users may not read it.
+            </Text>
+            <Text>
+              Label your accordion items appropriately to help users decide
+              which sections to read.
+            </Text>
+          </List>
+        </Stack>
+      ),
+    },
   ],
 };
 
