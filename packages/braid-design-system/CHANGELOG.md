@@ -1,5 +1,29 @@
 # braid-design-system
 
+## 33.12.0
+
+### Minor Changes
+
+- **IconSocialTiktok:** Add component ([#1889](https://github.com/seek-oss/braid-design-system/pull/1889))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconSocialTiktok />
+  ```
+
+- **IconMicrophone:** Add component ([#1887](https://github.com/seek-oss/braid-design-system/pull/1887))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconMicrophone />
+  ```
+
+### Patch Changes
+
+- **IconAttachment, IconLocation:** Update artworks to be more rounded and spacious, consistent with the latest design language ([#1887](https://github.com/seek-oss/braid-design-system/pull/1887))
+
 ## 33.11.5
 
 ### Patch Changes
