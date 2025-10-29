@@ -113,11 +113,12 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Badge support',
+      label: 'Badges',
       description: (
         <Text>
-          Add a <TextLink href="/components/Badge">Badge</TextLink> alongside
-          the label of the AccordionItem using the <Strong>badge</Strong> prop.
+          Add an optional <TextLink href="/components/Badge">Badge</TextLink>{' '}
+          alongside the label of the AccordionItem using the{' '}
+          <Strong>badge</Strong> prop.
         </Text>
       ),
       Example: () =>
