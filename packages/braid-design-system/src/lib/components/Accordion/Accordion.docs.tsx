@@ -213,6 +213,44 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use an Accordion:</Text>
+            <List space="large">
+              <Text>
+                to shorten pages and reduce scrolling when content isn&rsquo;t
+                crucial to read in full (e.g. FYIs)
+              </Text>
+              <Text>
+                to display basic content such as text, links and occasional
+                images.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use an Accordion:</Text>
+            <List space="large">
+              <Text>
+                if the information is needed for the user to complete their
+                current task (make it visible upfront instead)
+              </Text>
+              <Text>
+                to capture complex user input, such as in a form (consider using
+                a <TextLink href="/components/Drawer">Drawer</TextLink> instead)
+              </Text>
+              <Text>
+                for a single section of content (consider using a{' '}
+                <TextLink href="/components/Disclosure">Disclosure</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
     dataAttributeDocs({
       code: `
         <Accordion
