@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 33.12.1
+
+### Patch Changes
+
+- **IconInfo:** Update illustration ([#1891](https://github.com/seek-oss/braid-design-system/pull/1891))
+
 ## 33.12.0
 
 ### Minor Changes

@@ -5223,5 +5223,16 @@
         "summary": "**IconMicrophone:** Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<IconMicrophone />\n```"
       }
     ]
+  },
+  {
+    "version": "33.12.1",
+    "updates": [
+      {
+        "updated": [
+          "IconInfo"
+        ],
+        "summary": "**IconInfo:** Update illustration"
+      }
+    ]
   }
 ]
