@@ -104,7 +104,21 @@ const skuRender: Render<RenderContext> = {
           ${headTags}
         </head>
         <body><div id="app">{{ html }}</div></body>
-        ${bodyTags}${process.env.NODE_ENV === 'production' ? '<script async src="https://static.hotjar.com/c/hotjar-6533508.js?sv=6"></script>' : ''}
+        ${bodyTags}${
+          process.env.NODE_ENV === 'production'
+            ? `
+        <script>
+          (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:6533508,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>`
+            : ''
+        }
       </html>
     `.replace('{{ html }}', html); // Maintain indenting in 'pre' tags
   },
