@@ -104,7 +104,7 @@ const skuRender: Render<RenderContext> = {
           ${headTags}
         </head>
         <body><div id="app">{{ html }}</div></body>
-        ${bodyTags}
+        ${bodyTags}${process.env.NODE_ENV === 'production' ? '<script async src="https://static.hotjar.com/c/hotjar-6533508.js?sv=6"></script>' : ''}
       </html>
     `.replace('{{ html }}', html); // Maintain indenting in 'pre' tags
   },
