@@ -48,7 +48,7 @@
     "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
-    "playroom": "0.45.0-next-20251029043202",
+    "playroom": "1.0.0-next-20251105003450",
     "polished": "^4.1.0",
     "prettier": "^3.4.1",
     "react": "^19.1.0",
