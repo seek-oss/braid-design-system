@@ -73,7 +73,7 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Sizing',
+      label: 'Size',
       description: (
         <>
           <Text>
