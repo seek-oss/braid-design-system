@@ -1,7 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Disclosure, Text, TextLink, Strong, Stack, Notice } from '..';
+import { Disclosure, Text, TextLink, Strong, Stack, Notice, List } from '..';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
@@ -217,6 +217,47 @@ const docs: ComponentDocs = {
             </Disclosure>
           </>,
         ),
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Disclosure:</Text>
+            <List space="large">
+              <Text>
+                to display a single section of optional content, such as
+                explanatory text or further details.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Disclosure:</Text>
+            <List space="large">
+              <Text>
+                if the information is needed for the user to complete their
+                current task (make it visible upfront instead)
+              </Text>
+              <Text>
+                to provide a short definition of what something means (consider
+                using a <TextLink href="/components/Tooltip">Tooltip</TextLink>{' '}
+                instead)
+              </Text>
+              <Text>
+                to display multiple sections of collapsable content (consider
+                using an{' '}
+                <TextLink href="/components/Accordion">Accordion</TextLink>{' '}
+                instead)
+              </Text>
+              <Text>
+                to display complex content including images or CTAs (consider
+                using a <TextLink href="/components/Dialog">Dialog</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
     },
     dataAttributeDocs({
       code: `
