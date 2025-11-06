@@ -87,12 +87,13 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
     'certification',
     'license',
   ],
-  IconLinkBroken: ['brokenlink', 'chain', 'broken', 'error'],
+  IconLinkBroken: ['brokenLink', 'chain', 'broken', 'error'],
   IconList: ['lines', 'queue', 'stack'],
   IconLocation: ['pin', 'marker', 'place', 'map', 'gps'],
   IconMail: ['envelope', 'letter', 'message'],
   IconMessage: ['chat', 'bubble', 'comment'],
   IconMinus: ['remove', 'delete', 'subtract', '-'],
+  IconMicrophone: ['mic', 'audio', 'voice', 'record', 'sound'],
   IconMobile: ['phone', 'cellphone', 'device', 'iphone', 'android'],
   IconMoney: [
     'cash',
@@ -164,6 +165,7 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
   IconSocialLinkedIn: ['social', 'linkedin', 'network'],
   IconSocialMedium: ['social', 'medium', 'network', 'blog', 'article'],
   IconSocialX: ['social', 'twitter', 'network', 'x'],
+  IconSocialTiktok: ['social', 'tiktok', 'network', 'video', 'music'],
   IconSocialYouTube: ['social', 'youtube', 'network', 'video', 'google'],
   IconSort: [
     'order',

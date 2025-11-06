@@ -11,6 +11,7 @@ import {
   TextLink,
   Strong,
   Button,
+  List,
 } from '..';
 
 import { offsetSpace, TooltipContent } from './TooltipRenderer';
@@ -19,6 +20,12 @@ import { constants } from './TooltipRenderer.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A concise, floating message that gives users non-critical, extra context
+      on mouse hover or keyboard focus.
+    </Text>
+  ),
   Example: () =>
     source(
       <Inline space="small">
@@ -35,12 +42,12 @@ const docs: ComponentDocs = {
     {
       name: 'Dialog',
       description:
-        'For exposing additional content in a modal with richer formatting.',
+        'For exposing additional content in a modal with rich formatting.',
     },
     {
       name: 'Disclosure',
       description:
-        'For revealing content inline with a light visual treatment.',
+        'For revealing optional content inline with a light visual treatment.',
     },
   ],
   accessibility: (
@@ -63,22 +70,14 @@ const docs: ComponentDocs = {
   ),
   additional: [
     {
-      label: 'Development considerations',
-      description: (
-        <Text>
-          The trigger element must support <Strong>ref</Strong>,{' '}
-          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
-        </Text>
-      ),
-    },
-    {
       label: 'Placement',
       description: (
         <>
           <Text>
-            Tooltips are positioned above the trigger element by default, but
-            you can configure this via the <Strong>placement</Strong> prop which
-            accepts either <Strong>top</Strong> or <Strong>bottom</Strong>.
+            Tooltips can be triggered on any element of your choice. They are
+            positioned above the trigger element by default, but you can
+            configure this via the <Strong>placement</Strong> prop which accepts
+            either <Strong>top</Strong> or <Strong>bottom</Strong>.
           </Text>
           <Text>
             Whichever direction you choose, the tooltip will be centred against
@@ -105,17 +104,25 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Formatting',
+      label: 'Formatting your message',
       description: (
         <>
           <Text>
-            To ensure readability, tooltips have a maximum width of{' '}
+            To ensure readability, Tooltips have a maximum width of{' '}
             {constants.maxWidth}, which means that text will wrap onto multiple
             lines if you provide enough content.
           </Text>
           <Text>
-            You can also use multiple text elements and layout components to
-            create more custom layouts.
+            You can also use multiple{' '}
+            <TextLink href="/components/Text">Text</TextLink> elements and
+            layout components like{' '}
+            <TextLink href="/components/Stack">Stack</TextLink> to create more
+            tailored layouts.
+          </Text>
+          <Text>
+            Keep in mind that Tooltip content should be brief. Ideally less than
+            100 characters / 20 words, and a maximum of 250 characters / 50
+            words.
           </Text>
         </>
       ),
@@ -166,6 +173,45 @@ const docs: ComponentDocs = {
           ),
         };
       },
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Tooltip:</Text>
+            <List space="large">
+              <Text>
+                to provide optional information such as a short explanation of
+                what something means.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Tooltip:</Text>
+            <List space="large">
+              <Text>
+                if the information is important or the user needs it to complete
+                a task (make it visible up front)
+              </Text>
+              <Text>
+                to display complex content including CTAs or images (consider
+                using a <TextLink href="/components/Dialog">Dialog</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Development considerations',
+      description: (
+        <Text>
+          The trigger element must support <Strong>ref</Strong>,{' '}
+          <Strong>tabIndex</Strong> and <Strong>aria-describedby</Strong> props.
+        </Text>
+      ),
     },
   ],
 };

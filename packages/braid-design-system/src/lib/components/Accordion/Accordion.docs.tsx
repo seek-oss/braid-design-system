@@ -10,6 +10,8 @@ import {
   TextLink,
   Strong,
   IconImage,
+  List,
+  Stack,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -18,6 +20,12 @@ import { validSpaceValues } from './Accordion';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A vertically stacked list of panels that expand and collapse to reveal
+      sections of content.
+    </Text>
+  ),
   subComponents: ['AccordionItem'],
   Example: () =>
     source(
@@ -43,42 +51,41 @@ const docs: ComponentDocs = {
   ),
   alternatives: [
     {
+      name: 'Dialog',
+      description:
+        'For exposing additional content in a modal with rich formatting.',
+    },
+    {
       name: 'Disclosure',
-      description: 'For a lighter visual treatment.',
+      description:
+        'For revealing optional content inline with a light visual treatment.',
     },
     {
       name: 'Tabs',
-      description: 'For a horizontal selection of multiple content panels.',
-    },
-    {
-      name: 'Dialog',
-      description: 'For exposing a smaller amount of content in a modal.',
-    },
-    {
-      name: 'Drawer',
-      description: 'For exposing a larger amount of content in a modal.',
+      description:
+        'For presenting multiple sections of content in horizontal panels.',
     },
   ],
   additional: [
     {
-      label: 'Customising the appearance',
+      label: 'Tailoring the appearance',
       description: (
         <>
           <Text>
-            You can customise the <Strong>size</Strong>, <Strong>tone</Strong>{' '}
-            and <Strong>weight</Strong> props, and optionally set the{' '}
+            You can specify the <Strong>size</Strong>, <Strong>tone</Strong> and{' '}
+            <Strong>weight</Strong> props, and optionally set the{' '}
             <Strong>dividers</Strong> prop to <Strong>false.</Strong>
           </Text>
           <Text>
-            While we aim to provide sensible defaults, you can also provide a
-            custom <Strong>space</Strong> value to adjust the spacing between
-            items. Note that, to ensure adequate space for touch targets, the{' '}
-            <Strong>space</Strong> prop only accepts values of{' '}
+            You may also provide a <Strong>space</Strong> value to adjust the
+            spacing between items. Note that in order to ensure adequate space
+            for touch targets, the <Strong>space</Strong> prop only accepts
+            values of{' '}
             {validSpaceValues.map((value, i) => (
               <Fragment key={value}>
                 {i === validSpaceValues.length - 1 ? ' and ' : ''}
                 {i !== validSpaceValues.length - 1 && i !== 0 ? ', ' : ''}
-                <Strong>“{value}”</Strong>
+                <Strong>{value}</Strong>
               </Fragment>
             ))}
             .
@@ -107,11 +114,12 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Badge support',
+      label: 'Badges',
       description: (
         <Text>
-          Add a <TextLink href="/components/Badge">Badge</TextLink> alongside
-          the label of the AccordionItem using the <Strong>badge</Strong> prop.
+          Add an optional <TextLink href="/components/Badge">Badge</TextLink>{' '}
+          alongside the label of the AccordionItem using the{' '}
+          <Strong>badge</Strong> prop.
         </Text>
       ),
       Example: () =>
@@ -137,7 +145,7 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Inserting an icon',
+      label: 'Icons',
       description: (
         <>
           <Text>
@@ -205,6 +213,44 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use an Accordion:</Text>
+            <List space="large">
+              <Text>
+                to shorten pages and reduce scrolling when content isn&rsquo;t
+                crucial to read in full (e.g. FYIs)
+              </Text>
+              <Text>
+                to display basic content such as text, links and occasional
+                images.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use an Accordion:</Text>
+            <List space="large">
+              <Text>
+                if the information is needed for the user to complete their
+                current task (make it visible upfront instead)
+              </Text>
+              <Text>
+                to capture complex user input, such as in a form (consider using
+                a <TextLink href="/components/Drawer">Drawer</TextLink> instead)
+              </Text>
+              <Text>
+                for a single section of content (consider using a{' '}
+                <TextLink href="/components/Disclosure">Disclosure</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
     dataAttributeDocs({
       code: `
         <Accordion
@@ -221,6 +267,23 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      label: 'Content guidelines',
+      description: (
+        <Stack space="large">
+          <List space="large">
+            <Text>
+              Avoid putting critical or high-priority content in an accordion,
+              as users may not read it.
+            </Text>
+            <Text>
+              Label your accordion items appropriately to help users decide
+              which sections to read.
+            </Text>
+          </List>
+        </Stack>
+      ),
+    },
   ],
 };
 

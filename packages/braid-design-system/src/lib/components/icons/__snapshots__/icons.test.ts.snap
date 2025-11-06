@@ -69,22 +69,17 @@ exports[`IconAttachmentSvg > should match snapshot 1`] = `
 
 export const IconAttachmentSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
     width={16}
     height={16}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    focusable="false"
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M16.033 4c-.662 0-1.296.263-1.764.73l-8.026 8.027a4.243 4.243 0 0 0 6 6l8.026-8.026a1 1 0 0 1 1.414 1.415l-8.026 8.026a6.243 6.243 0 1 1-8.828-8.83l8.026-8.025a4.495 4.495 0 1 1 6.357 6.357L11.177 17.7a2.749 2.749 0 0 1-3.886-3.886l7.415-7.406a1 1 0 0 1 1.414 1.415l-7.414 7.405a.75.75 0 0 0 .528 1.277.748.748 0 0 0 .529-.22l8.035-8.025A2.497 2.497 0 0 0 16.033 4Z"
-      fill="currentColor"
-    />
+    <path d="M11 21.6c-1.8 0-3.7-.8-5.1-2.1-2.7-2.7-2.7-7.2 0-9.9l5.7-5.7c1.9-1.9 5.1-2 7.1 0 1.9 1.9 1.9 5.1 0 7.1L13 16.7c-1.2 1.2-3.1 1.2-4.2 0-.6-.6-.9-1.3-.9-2.1 0-1.2.3-1.6.9-2.1L12.3 9c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-3.5 3.5c-.2.2-.3.4-.3.7s.1.5.3.7c.4.4 1 .4 1.4 0l5.7-5.7c1.2-1.2 1.2-3.1 0-4.2-1.2-1.2-3.1-1.2-4.2 0l-5.7 5.7c-1.9 1.9-1.9 5.1 0 7.1 1.9 1.9 5.1 1.9 7.1 0l3.5-3.5c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-3.5 3.5c-1.4 1.4-3.2 2-4.9 2Z" />
   </svg>
 );
 "
@@ -1033,7 +1028,6 @@ export const IconInfoSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    xmlSpace="preserve"
     focusable="false"
     fill="currentColor"
     width={16}
@@ -1042,8 +1036,8 @@ export const IconInfoSvg = ({ title, titleId, ...props }: SVGProps) => (
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12 1C5.9 1 1 5.9 1 12s4.9 11 11 11 11-4.9 11-11S18.1 1 12 1zm0 20c-5 0-9-4-9-9s4-9 9-9 9 4 9 9-4 9-9 9z" />
-    <path d="M12 11c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1s1-.4 1-1v-4c0-.6-.4-1-1-1zm.9-3.4c0-.1-.1-.1-.1-.2s-.1-.1-.1-.1c-.3-.3-.7-.4-1.1-.2-.1.1-.2.1-.3.2l-.1.1c0 .1-.1.1-.1.2s0 .1-.1.2V8c0 .3.1.5.3.7.1.1.2.2.3.2.1.1.3.1.4.1h.2c.1 0 .1 0 .2-.1.1 0 .1-.1.2-.1l.1-.1c.2-.2.3-.4.3-.7v-.2c0-.1-.1-.1-.1-.2z" />
+    <path d="M12 1C5.935 1 1 5.935 1 12s4.935 11 11 11 11-4.935 11-11S18.065 1 12 1Zm0 20c-4.963 0-9-4.037-9-9s4.037-9 9-9 9 4.037 9 9-4.037 9-9 9Z" />
+    <path d="M12 10h-2v2h1v6h2v-7a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0c-.12.05-.23.12-.33.21-.18.19-.29.45-.29.71 0 .07.01.13.02.2.01.06.03.12.06.18.02.06.05.12.09.18l.12.15c.1.09.21.16.33.21.12.06.25.08.38.08s.26-.02.38-.08c.13-.05.23-.12.33-.21.04-.05.09-.1.12-.15.04-.06.07-.12.09-.18.03-.06.05-.12.06-.18.02-.07.02-.13.02-.2 0-.26-.1-.52-.29-.71-.1-.09-.2-.16-.33-.21Z" />
   </svg>
 );
 "
@@ -1213,7 +1207,6 @@ export const IconLocationSvg = ({ title, titleId, ...props }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    xmlSpace="preserve"
     focusable="false"
     fill="currentColor"
     width={16}
@@ -1222,8 +1215,8 @@ export const IconLocationSvg = ({ title, titleId, ...props }: SVGProps) => (
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M12 1C7.6 1 4 4.6 4 9c0 4.1 6.5 12.6 7.2 13.6.2.2.5.4.8.4s.6-.1.8-.4c.7-1 7.2-9.5 7.2-13.6 0-4.4-3.6-8-8-8zm0 19.3c-2.2-3-6-8.8-6-11.3 0-3.3 2.7-6 6-6s6 2.7 6 6c0 2.5-3.8 8.3-6 11.3z" />
-    <path d="M12 5c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3zm0 4c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z" />
+    <path d="M12 13c-1.654 0-3-1.346-3-3s1.346-3 3-3 3 1.346 3 3-1.346 3-3 3m0-4a1 1 0 1 0 .001 2.001A1 1 0 0 0 12 9" />
+    <path d="M12 3a7 7 0 0 1 7 7c0 6-7 11-7 11s-7-5-7-11a7 7 0 0 1 7-7m0-2c-4.963 0-9 4.037-9 9 0 6.95 7.518 12.399 7.838 12.627a2 2 0 0 0 2.324 0C13.482 22.4 21 16.95 21 10c0-4.963-4.037-9-9-9" />
   </svg>
 );
 "
@@ -1274,6 +1267,28 @@ export const IconMessageSvg = ({ title, titleId, ...props }: SVGProps) => (
       strokeLinejoin="round"
       strokeWidth={2}
     />
+  </svg>
+);
+"
+`;
+
+exports[`IconMicrophoneSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconMicrophoneSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={16}
+    height={16}
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M19 12a1 1 0 1 0-2 0c0 2.757-2.243 5-5 5s-5-2.243-5-5a1 1 0 1 0-2 0c0 3.519 2.614 6.432 6 6.92V20H9a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-2v-1.08c3.386-.488 6-3.401 6-6.92Z" />
+    <path d="M12 16c2.206 0 4-1.794 4-4V6c0-2.206-1.794-4-4-4S8 3.794 8 6v6c0 2.206 1.794 4 4 4ZM10 6c0-1.103.897-2 2-2s2 .897 2 2v6c0 1.103-.897 2-2 2s-2-.897-2-2V6Z" />
   </svg>
 );
 "
@@ -2175,6 +2190,27 @@ export const IconSocialMediumSvg = ({ title, titleId, ...props }: SVGProps) => (
     {title ? <title id={titleId}>{title}</title> : null}
     <path d="M13.41 12c0 3.45-2.779 6.247-6.205 6.247S1 15.45 1 12s2.778-6.247 6.205-6.247S13.409 8.55 13.409 12m6.807 0c0 3.248-1.39 5.88-3.102 5.88S14.01 15.249 14.01 12s1.39-5.88 3.103-5.88 3.102 2.632 3.102 5.88M23 12c0 2.91-.488 5.269-1.091 5.269s-1.091-2.36-1.091-5.269.488-5.269 1.09-5.269S23 9.091 23 12" />
     <path fill="none" d="M22.98 6.104v11.755H1.032V6.104H22.98Z" />
+  </svg>
+);
+"
+`;
+
+exports[`IconSocialTiktokSvg > should match snapshot 1`] = `
+"import type { SVGProps } from '../SVGTypes';
+
+export const IconSocialTiktokSvg = ({ title, titleId, ...props }: SVGProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M9.578 22c3.13 0 6.446-2.302 6.446-6.64V8.293c1.381 1.381 3.056 1.815 4.858 1.815V6.925C18.667 6.77 16.218 5.317 15.664 2h-3.197v13.587c0 1.782-1.281 2.923-2.836 2.923s-2.936-1.148-2.936-2.923c0-2.055 1.608-3.143 3.75-2.916V9.227a5.3 5.3 0 0 0-.88-.066c-3.51 0-6.447 2.816-6.447 6.306C3.11 19.164 6.014 22 9.578 22" />
   </svg>
 );
 "

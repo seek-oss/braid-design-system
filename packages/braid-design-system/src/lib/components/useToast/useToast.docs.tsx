@@ -13,6 +13,7 @@ import {
   Notice,
   IconLanguage,
   IconBookmark,
+  List,
 } from '..';
 
 import Toast, { toastDuration } from './Toast';
@@ -26,6 +27,12 @@ const defaultProps = {
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A brief, temporary message that appears at the bottom of the screen to
+      acknowledge user actions without interrupting their workflow.
+    </Text>
+  ),
   Example: ({ showToast }) => {
     const { code, value } = source(
       <Inline space="large" align="center">
@@ -71,71 +78,29 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'Alert',
-      description: 'For in-flow messaging.',
+      description:
+        'For strong in-flow messages that sit at page or section level.',
     },
     {
       name: 'Notice',
-      description: 'For lighter in-flow messaging.',
+      description:
+        'For light in-flow messages that sit within a section, card, or widget.',
     },
   ],
   additional: [
     {
-      label: 'Playroom prototyping',
-      description: (
-        <Text>
-          The <Strong>showToast</Strong> function used in these examples is
-          automatically available in Playroom. You do not need to call the{' '}
-          <Strong>useToast</Strong> function.
-        </Text>
-      ),
-    },
-    {
-      label: 'Development considerations',
+      label: 'Choosing a tone',
       description: (
         <>
           <Text>
-            To get access to the <Strong>showToast</Strong> function in your
-            application code, call the <Strong>useToast</Strong> Hook.
+            Use the <Strong>tone</Strong> property to help communicate the
+            meaning behind your message. Toasts support{' '}
+            <Strong>positive</Strong>, <Strong>critical</Strong> and{' '}
+            <Strong>neutral</Strong> tones.
           </Text>
-          <Code playroom={false}>
-            {`
-              import { useToast } from 'braid-design-system';
-
-              export const Demo = () => {
-                const showToast = useToast();
-
-                // etc...
-              }
-        `}
-          </Code>
           <Text>
-            To enable this Hook, wrap your app in a{' '}
-            <Strong>ToastProvider</Strong>—typically where you render{' '}
-            <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
-          </Text>
-          <Code playroom={false}>
-            {`
-              import { BraidProvider, ToastProvider } from 'braid-design-system';
-
-              export const App = () => (
-                <BraidProvider>
-                  <ToastProvider>
-                    {/* App code... */}
-                  </ToastProvider>
-                </BraidProvider>
-              )
-        `}
-          </Code>
-        </>
-      ),
-    },
-    {
-      label: 'Tones',
-      description: (
-        <>
-          <Text>
-            Toasts support <Strong>positive</Strong>, <Strong>critical</Strong>{' '}
-            and <Strong>neutral</Strong> tones.
+            Read more about <TextLink href="/foundations/tones">Tones</TextLink>
+            .
           </Text>
           <Notice>
             <Text>
@@ -292,7 +257,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Actions',
+      label: 'Including actions',
       description: (
         <>
           <Text>
@@ -511,6 +476,91 @@ const docs: ComponentDocs = {
             </Button>
           </Inline>,
         ),
+    },
+    {
+      label: 'Playroom prototyping',
+      description: (
+        <Text>
+          The <Strong>showToast</Strong> function used in these examples is
+          automatically available in Playroom. You do not need to call the{' '}
+          <Strong>useToast</Strong> function.
+        </Text>
+      ),
+    },
+    {
+      label: 'Development considerations',
+      description: (
+        <>
+          <Text>
+            To get access to the <Strong>showToast</Strong> function in your
+            application code, call the <Strong>useToast</Strong> Hook.
+          </Text>
+          <Code playroom={false}>
+            {`
+              import { useToast } from 'braid-design-system';
+
+              export const Demo = () => {
+                const showToast = useToast();
+
+                // etc...
+              }
+        `}
+          </Code>
+          <Text>
+            To enable this Hook, wrap your app in a{' '}
+            <Strong>ToastProvider</Strong>—typically where you render{' '}
+            <TextLink href="/components/BraidProvider">BraidProvider</TextLink>.
+          </Text>
+          <Code playroom={false}>
+            {`
+              import { BraidProvider, ToastProvider } from 'braid-design-system';
+
+              export const App = () => (
+                <BraidProvider>
+                  <ToastProvider>
+                    {/* App code... */}
+                  </ToastProvider>
+                </BraidProvider>
+              )
+        `}
+          </Code>
+        </>
+      ),
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Toast if your message:</Text>
+            <List space="large">
+              <Text>
+                has been triggered by a user action relevant to their current
+                task
+              </Text>
+              <Text>does not impact the user&rsquo;s ability to continue.</Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Toast if your message:</Text>
+            <List space="large">
+              <Text>
+                needs to be permanently on the screen (use plain{' '}
+                <TextLink href="/components/Text">Text</TextLink> instead)
+              </Text>
+              <Text>
+                impacts the user&rsquo;s ability to continue (use an{' '}
+                <TextLink href="/components/Alert">Alert</TextLink> or{' '}
+                <TextLink href="/components/Notice">Notice</TextLink> instead)
+              </Text>
+              <Text>
+                doesn&rsquo;t relate to the user&rsquo;s current task (as this
+                may cause a distraction).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
     },
   ],
 };

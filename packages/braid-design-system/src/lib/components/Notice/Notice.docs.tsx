@@ -8,8 +8,8 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      A Notice is a conditional message provided in response to user action or
-      system activity, and presented in the context of the user flow.
+      A conditional message provided in response to user action or system
+      activity, and presented in the context of the user flow.
     </Text>
   ),
   Example: () =>
@@ -44,7 +44,7 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Note that the <Strong>caution</Strong> tone is not supported because
-        it’s not possible to achieve an accessible contrast ratio while
+        it&rsquo;s not possible to achieve an accessible contrast ratio while
         maintining an acceptable semantic colour. For this case, consider using
         an <TextLink href="/components/Alert">Alert</TextLink> instead.
       </Text>
@@ -54,12 +54,12 @@ const docs: ComponentDocs = {
     {
       name: 'Alert',
       description:
-        'For page and section level messages, or for a stronger visual treatment.',
+        'For strong in-flow messages that sit at page or section level.',
     },
     {
       name: 'useToast',
       description:
-        'To acknowledges a user action without interrupting their flow.',
+        'To briefly acknowledge a user action without interrupting their flow.',
     },
   ],
   additional: [
