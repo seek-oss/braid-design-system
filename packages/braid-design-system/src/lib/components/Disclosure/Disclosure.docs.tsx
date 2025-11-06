@@ -137,12 +137,12 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Custom space',
+      label: 'Spacing',
       description: (
         <Text>
           The default space between the disclosure label and content will be
-          determined by the <TextLink href="#sizing">size</TextLink>.
-          Alternatively, this can be customised via the <Strong>space</Strong>{' '}
+          determined by the <TextLink href="#size">size</TextLink>.
+          Alternatively, this can be tailored via the <Strong>space</Strong>{' '}
           prop.
         </Text>
       ),
