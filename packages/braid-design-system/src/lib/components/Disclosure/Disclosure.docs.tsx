@@ -29,7 +29,8 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'Accordion',
-      description: 'For a more prominent visual treatment.',
+      description:
+        'For revealing sections of content in a vertically stacked list.',
     },
     {
       name: 'Tabs',
@@ -37,11 +38,13 @@ const docs: ComponentDocs = {
     },
     {
       name: 'Dialog',
-      description: 'For exposing a smaller amount of content in a modal.',
+      description:
+        'For exposing additional content in a modal with rich formatting.',
     },
     {
       name: 'Drawer',
-      description: 'For exposing a larger amount of content in a modal.',
+      description:
+        'For exposing complex content or capturing user input in a modal panel.',
     },
   ],
   additional: [
