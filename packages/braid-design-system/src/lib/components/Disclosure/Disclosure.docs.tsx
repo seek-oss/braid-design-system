@@ -6,6 +6,12 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A single section of inline content that can be expanded and collapsed by
+      the user.
+    </Text>
+  ),
   Example: () =>
     source(
       <Disclosure expandLabel="Show content" collapseLabel="Hide content">
