@@ -273,6 +273,24 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      label: 'Content guidelines',
+      description: (
+        <Stack space="large">
+          <List space="large">
+            <Text>
+              A Disclosure supports rich content but may be best suited for
+              simple text and links.
+            </Text>
+            <Text>
+              Be mindful that a Disclosure will push down the content below it.
+              Ideally keep it&rsquo;s content to a few sentences or a single
+              paragraph.
+            </Text>
+          </List>
+        </Stack>
+      ),
+    },
   ],
 };
 
