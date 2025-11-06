@@ -228,9 +228,10 @@ const docs: ComponentDocs = {
           <Stack space="large">
             <Text>Use a Disclosure:</Text>
             <List space="large">
+              <Text>to display a single section of collapsable content</Text>
               <Text>
-                to display a single section of optional content, such as
-                explanatory text or further details.
+                to reveal optional content, such as explanatory text or further
+                details.
               </Text>
             </List>
           </Stack>
@@ -242,11 +243,6 @@ const docs: ComponentDocs = {
                 current task (make it visible upfront instead)
               </Text>
               <Text>
-                to provide a short definition of what something means (consider
-                using a <TextLink href="/components/Tooltip">Tooltip</TextLink>{' '}
-                instead)
-              </Text>
-              <Text>
                 to display multiple sections of collapsable content (consider
                 using an{' '}
                 <TextLink href="/components/Accordion">Accordion</TextLink>{' '}
@@ -255,6 +251,11 @@ const docs: ComponentDocs = {
               <Text>
                 to display complex content including images or CTAs (consider
                 using a <TextLink href="/components/Dialog">Dialog</TextLink>{' '}
+                instead)
+              </Text>
+              <Text>
+                to provide a short definition of what something means (consider
+                using a <TextLink href="/components/Tooltip">Tooltip</TextLink>{' '}
                 instead).
               </Text>
             </List>
