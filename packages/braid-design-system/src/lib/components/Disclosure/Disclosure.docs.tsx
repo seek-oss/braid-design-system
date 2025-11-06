@@ -1,11 +1,17 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Disclosure, Text, TextLink, Strong, Stack, Notice } from '..';
+import { Disclosure, Text, TextLink, Strong, Stack, Notice, List } from '..';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A single section of inline content that can be expanded and collapsed by
+      the user.
+    </Text>
+  ),
   Example: () =>
     source(
       <Disclosure expandLabel="Show content" collapseLabel="Hide content">
@@ -23,7 +29,8 @@ const docs: ComponentDocs = {
   alternatives: [
     {
       name: 'Accordion',
-      description: 'For a more prominent visual treatment.',
+      description:
+        'For revealing sections of content in a vertically stacked list.',
     },
     {
       name: 'Tabs',
@@ -31,11 +38,13 @@ const docs: ComponentDocs = {
     },
     {
       name: 'Dialog',
-      description: 'For exposing a smaller amount of content in a modal.',
+      description:
+        'For exposing additional content in a modal with rich formatting.',
     },
     {
       name: 'Drawer',
-      description: 'For exposing a larger amount of content in a modal.',
+      description:
+        'For exposing complex content or capturing user input in a modal panel.',
     },
   ],
   additional: [
@@ -67,7 +76,7 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Sizing',
+      label: 'Size',
       description: (
         <>
           <Text>
@@ -131,12 +140,12 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Custom space',
+      label: 'Spacing',
       description: (
         <Text>
           The default space between the disclosure label and content will be
-          determined by the <TextLink href="#sizing">size</TextLink>.
-          Alternatively, this can be customised via the <Strong>space</Strong>{' '}
+          determined by the <TextLink href="#size">size</TextLink>.
+          Alternatively, this can be tailored via the <Strong>space</Strong>{' '}
           prop.
         </Text>
       ),
@@ -212,6 +221,48 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Disclosure:</Text>
+            <List space="large">
+              <Text>to display a single section of collapsable content</Text>
+              <Text>
+                to reveal optional content, such as explanatory text or further
+                details.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Disclosure:</Text>
+            <List space="large">
+              <Text>
+                if the information is needed for the user to complete their
+                current task (make it visible upfront instead)
+              </Text>
+              <Text>
+                to display multiple sections of collapsable content (consider
+                using an{' '}
+                <TextLink href="/components/Accordion">Accordion</TextLink>{' '}
+                instead)
+              </Text>
+              <Text>
+                to display complex content including images or CTAs (consider
+                using a <TextLink href="/components/Dialog">Dialog</TextLink>{' '}
+                instead)
+              </Text>
+              <Text>
+                to provide a short definition of what something means (consider
+                using a <TextLink href="/components/Tooltip">Tooltip</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
     dataAttributeDocs({
       code: `
         <Disclosure
@@ -223,6 +274,24 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      label: 'Content guidelines',
+      description: (
+        <Stack space="large">
+          <List space="large">
+            <Text>
+              A Disclosure supports rich content but may be best suited for
+              simple text and links.
+            </Text>
+            <Text>
+              Be mindful that a Disclosure will push down the content below it.
+              Ideally keep it&rsquo;s content to a few sentences or a single
+              paragraph.
+            </Text>
+          </List>
+        </Stack>
+      ),
+    },
   ],
 };
 
