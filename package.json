@@ -78,9 +78,9 @@
     "vitest": "^3.2.4"
   },
   "volta": {
-    "node": "22.19.0"
+    "node": "22.21.1"
   },
-  "packageManager": "pnpm@10.17.0",
+  "packageManager": "pnpm@10.21.0",
   "pnpm": {
     "patchedDependencies": {
       "panzoom": "patches/panzoom.patch"
