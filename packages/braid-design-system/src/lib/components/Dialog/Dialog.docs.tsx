@@ -106,16 +106,20 @@ const docs: ComponentDocs = {
     </>
   ),
   alternatives: [
-    { name: 'Drawer', description: 'For a larger amount of content.' },
+    {
+      name: 'Drawer',
+      description:
+        'For exposing complex content or capturing user input in a modal panel.',
+    },
     {
       name: 'Accordion',
       description:
-        'For revealing content inline with a strong visual treatment.',
+        'For revealing sections of content in a vertically stacked list.',
     },
     {
       name: 'Disclosure',
       description:
-        'For revealing content inline with a light visual treatment.',
+        'For revealing optional content inline with a light visual treatment.',
     },
   ],
   additional: [
