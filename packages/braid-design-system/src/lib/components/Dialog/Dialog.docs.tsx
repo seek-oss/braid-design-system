@@ -191,12 +191,13 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Widths',
+      label: 'Width',
       description: (
         <Text>
-          There are a variety of standard widths to choose from, as well as{' '}
-          <Strong>content</Strong> width for custom sizing based on the content
-          of the dialog.
+          The <Strong>width</Strong> prop can be set to <Strong>xsmall</Strong>,{' '}
+          <Strong>small</Strong>, <Strong>medium</Strong> or{' '}
+          <Strong>large</Strong> for standardised widths, or{' '}
+          <Strong>content</Strong> to take on the width of it&rsquo;s contents.
         </Text>
       ),
 
