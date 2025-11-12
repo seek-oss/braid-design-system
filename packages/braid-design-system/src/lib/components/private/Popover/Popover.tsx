@@ -202,11 +202,9 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
         window.innerHeight - triggerBoundingRect.bottom >=
         popoverHeight + transitionThresholdInPx;
 
-      if (!fitsAbove && !fitsBelow) {
-        setActualPlacement(placement);
-      } else if (!fitsAbove) {
+      if (!fitsAbove && fitsBelow) {
         setActualPlacement('bottom');
-      } else if (!fitsBelow) {
+      } else if (!fitsBelow && fitsAbove) {
         setActualPlacement('top');
       } else {
         setActualPlacement(placement);
