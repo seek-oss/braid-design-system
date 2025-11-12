@@ -242,11 +242,11 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Illustrated dialogs',
+      label: 'Illustrations',
       description: (
         <Text>
-          You can also provide an element to render at the top of the dialog via
-          the <Strong>illustration</Strong> prop.
+          You can provide an element to display at the top of the Dialog via the{' '}
+          <Strong>illustration</Strong> prop.
         </Text>
       ),
       background: false,
