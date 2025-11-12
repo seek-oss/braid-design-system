@@ -286,7 +286,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Customising the close behaviour',
+      label: 'Tailoring the close behaviour',
       description: (
         <>
           <Text>
