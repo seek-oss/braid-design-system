@@ -100,16 +100,16 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Customising the labels',
+      label: 'Tailoring the labels',
       description: (
         <>
           <Text>
-            The label text for the navigation links can be customised using the{' '}
+            The label text for the navigation links can be tailored using the{' '}
             <Strong>previousLabel</Strong> and <Strong>nextLabel</Strong> props.
           </Text>
           <Text tone="promote" id="translate-page">
             <IconLanguage title="Translation hint" titleId="translate-page" />{' '}
-            The <Strong>aria-label</Strong> for the page links can be customised
+            The <Strong>aria-label</Strong> for the page links can be tailored
             by providing a function to the <Strong>pageLabel</Strong> prop. The
             function receives the page number should it be required for
             interpolation.
