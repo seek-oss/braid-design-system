@@ -371,7 +371,7 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            If the contents are unable to fit on the screen, dialogs become
+            If the contents are unable to fit on the screen, Dialogs become
             scrollable with a fixed close button.
           </Text>
           <Text>
