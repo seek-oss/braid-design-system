@@ -279,7 +279,7 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Customising the close behaviour',
+      label: 'Tailoring the close behaviour',
       description: (
         <>
           <Text>
@@ -289,8 +289,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text tone="promote" id="translations">
             <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
-            <Strong>aria-label</Strong> for the close button can be customised
-            by providing a <Strong>closeLabel</Strong> prop.
+            <Strong>aria-label</Strong> for the close button can be tailored by
+            providing a <Strong>closeLabel</Strong> prop.
           </Text>
         </>
       ),
