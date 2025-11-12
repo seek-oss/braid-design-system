@@ -16,6 +16,7 @@ import {
   Checkbox,
   Alert,
   TextDropdown,
+  List,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { externalGutter } from '../private/Modal/ModalExternalGutter';
@@ -174,23 +175,19 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Design considerations',
+      label: 'General best practice',
       description: (
-        <>
+        <List space="large">
           <Text>
-            Recommended for prompting the user to make a decision or confirm an
-            action. For more detailed content or user input (e.g. forms),
-            consider using a{' '}
-            <TextLink href="/components/Drawer">Drawer</TextLink> instead.
+            A Dialog can be triggered on any element of your choice, but should
+            always be directly connected to a user action such as clicking a
+            button.
           </Text>
-          <Alert tone="caution">
-            <Text>
-              The presentation of a Dialog should always be directly connected
-              to a user action, such as a button click.{' '}
-              <Strong>Opening on page load should be avoided.</Strong>
-            </Text>
-          </Alert>
-        </>
+          <Text>
+            Avoid displaying a Dialog on page load, as users tend to dismiss
+            these without reading them.
+          </Text>
+        </List>
       ),
     },
     {
