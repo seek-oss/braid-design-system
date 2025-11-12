@@ -53,6 +53,12 @@ const DialogPreview = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A modal overlay that focusses user attention by disabling the screen to
+      show a message.
+    </Text>
+  ),
   examplebackground: false,
   Example: () => {
     const { code, value } = source<DialogElement>(
