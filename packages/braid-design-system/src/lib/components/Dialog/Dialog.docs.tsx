@@ -194,16 +194,6 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Development considerations',
-      description: (
-        <Text>
-          It’s recommended that you connect the Dialog’s <Strong>open</Strong>{' '}
-          state to your router so that it can be closed via the browser’s back
-          button.
-        </Text>
-      ),
-    },
-    {
       label: 'Widths',
       description: (
         <Text>
@@ -464,6 +454,16 @@ const docs: ComponentDocs = {
             </Dialog>
           </>,
         ),
+    },
+    {
+      label: 'Development considerations',
+      description: (
+        <Text>
+          It’s recommended that you connect the Dialog’s <Strong>open</Strong>{' '}
+          state to your router so that it can be closed via the browser’s back
+          button.
+        </Text>
+      ),
     },
     dataAttributeDocs({
       code: `
