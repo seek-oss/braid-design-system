@@ -16,6 +16,7 @@ import {
   Checkbox,
   Alert,
   TextDropdown,
+  List,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { externalGutter } from '../private/Modal/ModalExternalGutter';
@@ -53,6 +54,12 @@ const DialogPreview = ({ children }: { children: ReactNode }) => (
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A modal overlay that focusses user attention by disabling the screen to
+      show a message.
+    </Text>
+  ),
   examplebackground: false,
   Example: () => {
     const { code, value } = source<DialogElement>(
@@ -99,16 +106,20 @@ const docs: ComponentDocs = {
     </>
   ),
   alternatives: [
-    { name: 'Drawer', description: 'For a larger amount of content.' },
+    {
+      name: 'Drawer',
+      description:
+        'For exposing complex content or capturing user input in a modal panel.',
+    },
     {
       name: 'Accordion',
       description:
-        'For revealing content inline with a strong visual treatment.',
+        'For revealing sections of content in a vertically stacked list.',
     },
     {
       name: 'Disclosure',
       description:
-        'For revealing content inline with a light visual treatment.',
+        'For revealing optional content inline with a light visual treatment.',
     },
   ],
   additional: [
@@ -168,42 +179,13 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Design considerations',
-      description: (
-        <>
-          <Text>
-            Recommended for prompting the user to make a decision or confirm an
-            action. For more detailed content or user input (e.g. forms),
-            consider using a{' '}
-            <TextLink href="/components/Drawer">Drawer</TextLink> instead.
-          </Text>
-          <Alert tone="caution">
-            <Text>
-              The presentation of a Dialog should always be directly connected
-              to a user action, such as a button click.{' '}
-              <Strong>Opening on page load should be avoided.</Strong>
-            </Text>
-          </Alert>
-        </>
-      ),
-    },
-    {
-      label: 'Development considerations',
+      label: 'Width',
       description: (
         <Text>
-          It’s recommended that you connect the Dialog’s <Strong>open</Strong>{' '}
-          state to your router so that it can be closed via the browser’s back
-          button.
-        </Text>
-      ),
-    },
-    {
-      label: 'Widths',
-      description: (
-        <Text>
-          There are a variety of standard widths to choose from, as well as{' '}
-          <Strong>content</Strong> width for custom sizing based on the content
-          of the dialog.
+          The <Strong>width</Strong> prop can be set to <Strong>xsmall</Strong>,{' '}
+          <Strong>small</Strong>, <Strong>medium</Strong> or{' '}
+          <Strong>large</Strong> for standardised widths, or{' '}
+          <Strong>content</Strong> to take on the width of it&rsquo;s contents.
         </Text>
       ),
 
@@ -248,11 +230,11 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Illustrated dialogs',
+      label: 'Illustrations',
       description: (
         <Text>
-          You can also provide an element to render at the top of the dialog via
-          the <Strong>illustration</Strong> prop.
+          You can provide an element to display at the top of the Dialog via the{' '}
+          <Strong>illustration</Strong> prop.
         </Text>
       ),
       background: false,
@@ -292,7 +274,7 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Customising the close behaviour',
+      label: 'Tailoring the close behaviour',
       description: (
         <>
           <Text>
@@ -302,8 +284,8 @@ const docs: ComponentDocs = {
           </Text>
           <Text tone="promote" id="translations">
             <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
-            <Strong>aria-label</Strong> for the close button can be customised
-            by providing a <Strong>closeLabel</Strong> prop.
+            <Strong>aria-label</Strong> for the close button can be tailored by
+            providing a <Strong>closeLabel</Strong> prop.
           </Text>
         </>
       ),
@@ -377,7 +359,7 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            If the contents are unable to fit on the screen, dialogs become
+            If the contents are unable to fit on the screen, Dialogs become
             scrollable with a fixed close button.
           </Text>
           <Text>
@@ -458,6 +440,70 @@ const docs: ComponentDocs = {
             </Dialog>
           </>,
         ),
+    },
+    {
+      label: 'General best practice',
+      description: (
+        <List space="large">
+          <Text>
+            A Dialog can be triggered on any element of your choice, but should
+            always be directly connected to a user action such as clicking a
+            button.
+          </Text>
+          <Text>
+            Avoid displaying a Dialog on page load, as users tend to dismiss
+            these without reading them.
+          </Text>
+        </List>
+      ),
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Dialog:</Text>
+            <List space="large">
+              <Text>
+                to reveal secondary information including images or interactive
+                elements
+              </Text>
+              <Text>
+                to confirm an important user action (e.g. deleting a piece of
+                data).
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Dialog:</Text>
+            <List space="large">
+              <Text>
+                if your content is less than 20 words in length (consider using
+                a{' '}
+                <TextLink href="/components/TooltipRenderer">
+                  TooltipRenderer
+                </TextLink>{' '}
+                instead)
+              </Text>
+              <Text>
+                to capture complex user input, such as in a form (consider using
+                a <TextLink href="/components/Drawer">Drawer</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
+    {
+      label: 'Development considerations',
+      description: (
+        <Text>
+          It&rsquo;s recommended that you connect the Dialog&rsquo;s{' '}
+          <Strong>open</Strong> state to your router so that it can be closed
+          via the browser&rsquo;s back button.
+        </Text>
+      ),
     },
     dataAttributeDocs({
       code: `

@@ -255,7 +255,10 @@ const docs: ComponentDocs = {
               </Text>
               <Text>
                 to provide a short definition of what something means (consider
-                using a <TextLink href="/components/Tooltip">Tooltip</TextLink>{' '}
+                using a{' '}
+                <TextLink href="/components/TooltipRenderer">
+                  TooltipRenderer
+                </TextLink>{' '}
                 instead).
               </Text>
             </List>
