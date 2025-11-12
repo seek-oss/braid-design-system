@@ -175,22 +175,6 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'General best practice',
-      description: (
-        <List space="large">
-          <Text>
-            A Dialog can be triggered on any element of your choice, but should
-            always be directly connected to a user action such as clicking a
-            button.
-          </Text>
-          <Text>
-            Avoid displaying a Dialog on page load, as users tend to dismiss
-            these without reading them.
-          </Text>
-        </List>
-      ),
-    },
-    {
       label: 'Width',
       description: (
         <Text>
@@ -452,6 +436,22 @@ const docs: ComponentDocs = {
             </Dialog>
           </>,
         ),
+    },
+    {
+      label: 'General best practice',
+      description: (
+        <List space="large">
+          <Text>
+            A Dialog can be triggered on any element of your choice, but should
+            always be directly connected to a user action such as clicking a
+            button.
+          </Text>
+          <Text>
+            Avoid displaying a Dialog on page load, as users tend to dismiss
+            these without reading them.
+          </Text>
+        </List>
+      ),
     },
     {
       label: 'When to use',
