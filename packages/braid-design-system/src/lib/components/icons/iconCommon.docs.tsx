@@ -5,10 +5,10 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 export const iconDocumentation: ComponentExample[] = [
   {
-    label: 'Customising the appearance',
+    label: 'Tailoring the appearance',
     description: (
       <Text>
-        For details about customising the appearance of icons see the{' '}
+        For details about tailoring the appearance of icons see the{' '}
         <TextLink href="/foundations/iconography">
           iconography documentation
         </TextLink>
