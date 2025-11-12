@@ -86,7 +86,6 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
     case OPEN_MODAL: {
       switch (prevState) {
         case INITIAL:
-        case CLOSING:
         case CLOSED: {
           return OPENING;
         }
@@ -181,18 +180,25 @@ export const Modal = ({
     }
   }, [closing]);
 
-  const shouldAriaHideOthers = state === OPEN || state === CLOSING;
+  const closed = state === CLOSED;
   useEffect(() => {
-    if (shouldAriaHideOthers && modalRef.current) {
-      return ariaHideOthers(modalRef.current, { delay: ANIMATION_DURATION });
+    if (closed && openRef.current) {
+      closeHandlerRef.current(false);
     }
-  }, [shouldAriaHideOthers]);
+  }, [closed]);
 
   useEffect(() => {
     if (typeof onClose === 'function') {
       closeHandlerRef.current = onClose;
     }
   }, [onClose]);
+
+  const shouldAriaHideOthers = state === OPEN || state === CLOSING;
+  useEffect(() => {
+    if (shouldAriaHideOthers && modalRef.current) {
+      return ariaHideOthers(modalRef.current, { delay: ANIMATION_DURATION });
+    }
+  }, [shouldAriaHideOthers]);
 
   useEffect(() => {
     const event = trapActive ? 'blur' : 'focus';
@@ -230,7 +236,6 @@ export const Modal = ({
           inset={0}
           zIndex="modalBackdrop"
           opacity={state !== OPEN ? 0 : undefined}
-          pointerEvents={state === CLOSING ? 'none' : undefined}
           className={[styles.backdrop, styles.transition[position]]}
         />
 
