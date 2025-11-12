@@ -454,12 +454,50 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Dialog:</Text>
+            <List space="large">
+              <Text>
+                to display secondary information including images or interactive
+                elements
+              </Text>
+              <Text>
+                to confirm an important user action (e.g. deleting a piece of
+                data).
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Dialog:</Text>
+            <List space="large">
+              <Text>
+                if your content is less than 25 words in length (consider using
+                a{' '}
+                <TextLink href="/components/TooltipRenderer">
+                  TooltipRenderer
+                </TextLink>{' '}
+                instead)
+              </Text>
+              <Text>
+                to capture complex user input, such as in a form (consider using
+                a <TextLink href="/components/Drawer">Drawer</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
+    {
       label: 'Development considerations',
       description: (
         <Text>
-          It’s recommended that you connect the Dialog’s <Strong>open</Strong>{' '}
-          state to your router so that it can be closed via the browser’s back
-          button.
+          It&rsquo;s recommended that you connect the Dialog&rsquo;s{' '}
+          <Strong>open</Strong> state to your router so that it can be closed
+          via the browser&rsquo;s back button.
         </Text>
       ),
     },
