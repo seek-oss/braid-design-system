@@ -189,16 +189,27 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
         return;
       }
 
-      const { top, bottom } = popoverBoundingRect;
-      const distanceFromBottom = window.innerHeight - bottom;
+      const triggerBoundingRect = triggerRef.current?.getBoundingClientRect();
+      if (!triggerBoundingRect) {
+        return;
+      }
 
-      if (placement === 'top' && top < transitionThresholdInPx) {
+      const { height: popoverHeight } = popoverBoundingRect;
+
+      const fitsAbove =
+        triggerBoundingRect.top >= popoverHeight + transitionThresholdInPx;
+      const fitsBelow =
+        window.innerHeight - triggerBoundingRect.bottom >=
+        popoverHeight + transitionThresholdInPx;
+
+      if (!fitsAbove && !fitsBelow) {
+        setActualPlacement(placement);
+      } else if (!fitsAbove) {
         setActualPlacement('bottom');
-      } else if (
-        placement === 'bottom' &&
-        distanceFromBottom < transitionThresholdInPx
-      ) {
+      } else if (!fitsBelow) {
         setActualPlacement('top');
+      } else {
+        setActualPlacement(placement);
       }
     };
 
