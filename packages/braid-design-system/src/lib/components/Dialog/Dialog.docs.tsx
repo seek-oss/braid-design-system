@@ -474,7 +474,7 @@ const docs: ComponentDocs = {
             <Text>Don&rsquo;t use a Dialog:</Text>
             <List space="large">
               <Text>
-                if your content is less than 25 words in length (consider using
+                if your content is less than 20 words in length (consider using
                 a{' '}
                 <TextLink href="/components/TooltipRenderer">
                   TooltipRenderer
