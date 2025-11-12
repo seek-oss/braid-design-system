@@ -461,7 +461,7 @@ const docs: ComponentDocs = {
             <Text>Use a Dialog:</Text>
             <List space="large">
               <Text>
-                to display secondary information including images or interactive
+                to reveal secondary information including images or interactive
                 elements
               </Text>
               <Text>
