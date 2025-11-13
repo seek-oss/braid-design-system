@@ -79,35 +79,6 @@ const choosingRightButtonDoc = [
         </Stack>,
       ),
   },
-  {
-    description: (
-      <>
-        <Text>
-          As the approach to colour in our experiences has changed over time, so
-          too has the default visual prominence for buttons. For this reason,
-          older themes such as <Strong>apac</Strong> and{' '}
-          <Strong>seekBusiness</Strong> continue to have the default tone of{' '}
-          <Strong>formAccent</Strong> and a <Strong>solid</Strong> variant.
-        </Text>
-      </>
-    ),
-    playroom: false,
-    code: false,
-    Example: () =>
-      source(
-        <Stack space="small">
-          <Text size="small" tone="secondary">
-            Historical default was the <Strong>formAccent</Strong> tone and{' '}
-            <Strong>solid</Strong> variant:
-          </Text>
-          <Inline space="none">
-            <Button variant="solid" tone="formAccent">
-              Button
-            </Button>
-          </Inline>
-        </Stack>,
-      ),
-  },
 ] as const;
 
 const docs: ComponentDocs = {
@@ -220,18 +191,10 @@ const docs: ComponentDocs = {
     {
       label: 'Emphasizing actions',
       description: (
-        <>
-          <Text>
-            For cases where actions need to be emphasized, the{' '}
-            <Strong>tone</Strong> can be set to <Strong>formAccent</Strong>.
-          </Text>
-          <Notice>
-            <Text>
-              This is the default tone in the <Strong>apac</Strong> and{' '}
-              <Strong>seekBusiness</Strong> themes.
-            </Text>
-          </Notice>
-        </>
+        <Text>
+          For cases where actions need to be emphasized, the{' '}
+          <Strong>tone</Strong> can be set to <Strong>formAccent</Strong>.
+        </Text>
       ),
       Example: () =>
         source(

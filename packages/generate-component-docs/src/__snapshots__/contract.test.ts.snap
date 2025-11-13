@@ -2078,7 +2078,7 @@ exports[`BraidProvider 1`] = `
         | FunctionComponent<LinkComponentProps>
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
-    theme: { vanillaTheme: string; name: string; displayName: string; legacy: boolean; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; href: string; }[]; space: { grid: number; space: { ...; }; }; color: { ...; }; backgroundLightness: Record<...>; }
+    theme: { vanillaTheme: string; name: string; displayName: string; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; href: string; }[]; space: { grid: number; space: { gutter: number; ... 7 more ...; xxxlarge: number; }; }; color: { ...; }; backgroundLightness: Record<...>; }
 },
 }
 `;
@@ -2098,7 +2098,6 @@ exports[`BraidTestProvider 1`] = `
         | FunctionComponent<LinkComponentProps>
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     themeName?: 
-        | "apac"
         | "docs"
         | "seekBusiness"
         | "seekJobs"
@@ -2796,11 +2795,6 @@ exports[`Card 1`] = `
     height?: 
         | "content"
         | "full"
-    rounded?: boolean
-    roundedAbove?: 
-        | "desktop"
-        | "mobile"
-        | "tablet"
     tone?: 
         | "formAccent"
         | "promote"
