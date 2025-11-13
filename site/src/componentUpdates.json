@@ -5234,5 +5234,25 @@
         "summary": "**IconInfo:** Update illustration"
       }
     ]
+  },
+  {
+    "version": "33.12.2",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest",
+          "MenuRenderer",
+          "TooltipRenderer"
+        ],
+        "summary": "**Autosuggest, MenuRenderer, TooltipRenderer:** Improve placement logic\n\nIn `MenuRenderer`, if there is not enough space for the menu above or below the trigger, the menu will be positioned based on the `placement` prop."
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Ensure page elements are not interactive during close animation"
+      }
+    ]
   }
 ]
