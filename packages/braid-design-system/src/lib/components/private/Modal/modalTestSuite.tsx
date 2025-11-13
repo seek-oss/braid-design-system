@@ -246,28 +246,5 @@ export const modalTestSuite = (
 
       expect(closeButton).not.toBeNull();
     });
-
-    it('should not reopen if open button is clicked during close animation', async () => {
-      const { getByTestId, getByLabelText, queryByRole } = renderTestCase();
-
-      const dialogOpenButton = getByTestId('buttonBefore');
-      await userEvent.click(dialogOpenButton);
-
-      const closeButton = getByLabelText(CLOSE_LABEL);
-      await userEvent.click(closeButton);
-
-      // Click open button again while the dialog is closing
-      await userEvent.click(dialogOpenButton);
-
-      await waitForElementToBeRemoved(() => queryByRole('dialog'), {
-        timeout: EXIT_TIMEOUT,
-      });
-
-      expect(queryByRole('dialog')).not.toBeInTheDocument();
-
-      await userEvent.click(dialogOpenButton);
-
-      expect(queryByRole('dialog')).toBeVisible();
-    });
   });
 };

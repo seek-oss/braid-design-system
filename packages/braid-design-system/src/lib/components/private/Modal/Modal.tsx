@@ -180,25 +180,18 @@ export const Modal = ({
     }
   }, [closing]);
 
-  const closed = state === CLOSED;
-  useEffect(() => {
-    if (closed && openRef.current) {
-      closeHandlerRef.current(false);
-    }
-  }, [closed]);
-
-  useEffect(() => {
-    if (typeof onClose === 'function') {
-      closeHandlerRef.current = onClose;
-    }
-  }, [onClose]);
-
   const shouldAriaHideOthers = state === OPEN || state === CLOSING;
   useEffect(() => {
     if (shouldAriaHideOthers && modalRef.current) {
       return ariaHideOthers(modalRef.current, { delay: ANIMATION_DURATION });
     }
   }, [shouldAriaHideOthers]);
+
+  useEffect(() => {
+    if (typeof onClose === 'function') {
+      closeHandlerRef.current = onClose;
+    }
+  }, [onClose]);
 
   useEffect(() => {
     const event = trapActive ? 'blur' : 'focus';
