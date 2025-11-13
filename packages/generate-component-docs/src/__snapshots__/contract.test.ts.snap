@@ -9479,7 +9479,6 @@ exports[`Toggle 1`] = `
         | "justify"
         | "left"
         | "right"
-    bleedY?: boolean
     data?: DataAttributeMap
     id?: string
     label: ReactNode

@@ -41,14 +41,6 @@ export const realField = style([
   debugTouchable(),
 ]);
 
-export const realFieldPosition = styleVariants(sizes, (size) => ({
-  top: calc(hitArea)
-    .subtract(vars.inlineFieldSize[size])
-    .divide(2)
-    .negate()
-    .toString(),
-}));
-
 export const fieldSize = styleVariants(sizes, (size) => ({
   width: calc.multiply(vars.inlineFieldSize[size], toggleWidthRatio),
 }));
