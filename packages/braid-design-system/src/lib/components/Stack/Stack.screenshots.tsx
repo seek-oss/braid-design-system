@@ -124,13 +124,6 @@ export const HiddenItemsWithResponsiveAlignment: Story = {
       <Hidden above="desktop">
         <Placeholder width={40} height={40} label="6" />
       </Hidden>
-      <Hidden screen>
-        <Placeholder
-          width={40}
-          height={40}
-          label="This should not be visible"
-        />
-      </Hidden>
     </Stack>
   ),
 };
