@@ -40,30 +40,5 @@ export const galleryItems: GalleryComponent = {
           </Tiles>,
         ),
     },
-    {
-      label: 'Rounded corners',
-      Example: () =>
-        source(
-          <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                DEFAULT
-              </Text>
-              <Card>
-                <Placeholder height={100} />
-              </Card>
-            </Stack>
-
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                ROUNDED
-              </Text>
-              <Card rounded>
-                <Placeholder height={100} />
-              </Card>
-            </Stack>
-          </Tiles>,
-        ),
-    },
   ],
 };
