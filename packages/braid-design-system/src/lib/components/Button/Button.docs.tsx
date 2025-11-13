@@ -861,7 +861,6 @@ const docs: ComponentDocs = {
                   label="Bleed"
                   align="right"
                   onChange={() => toggleState('bleed')}
-                  bleedY
                 />
                 <Text tone="secondary" weight="strong">
                   Standard size alignment
