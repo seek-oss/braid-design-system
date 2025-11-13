@@ -1,8 +1,6 @@
 import assert from 'assert';
 
-import { useBackground } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { type LinkProps, Link } from '../Link/Link';
 import { Text } from '../Text/Text';
 import { IconChevron } from '../icons';
@@ -81,53 +79,44 @@ const PageNav = ({
 
 const tabletButtonSpacing = 'xxsmall';
 
-const Page = ({ number, current }: { number: number; current: boolean }) => {
-  const parentBackground = useBackground();
-  const isLegacyTheme = useBraidTheme().legacy;
-
-  return (
-    <Box
+const Page = ({ number, current }: { number: number; current: boolean }) => (
+  <Box
+    component="span"
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+    height="touchable"
+    width="touchable"
+    position="relative"
+    className={styles.hover}
+  >
+    <Overlay
       component="span"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      height="touchable"
-      width="touchable"
-      position="relative"
-      className={styles.hover}
-    >
-      <Overlay
-        component="span"
-        background={current ? 'formAccent' : 'formAccentSoft'}
-        transition={current ? undefined : 'fast'}
-        borderRadius={styles.borderRadius}
-        className={[styles.background, current ? styles.current : undefined]}
-      />
-      <Overlay
-        component="span"
-        borderRadius={styles.borderRadius}
-        boxShadow="borderFormAccent"
-        className={{
-          [styles.lightModeCurrentKeyline]:
-            isLegacyTheme &&
-            parentBackground.lightMode !== 'surface' &&
-            current,
-          [styles.darkModeCurrentKeyline]: current,
-        }}
-      />
-      <Box component="span" zIndex={1} userSelect="none">
-        <Text
-          baseline={false}
-          align="center"
-          weight={current ? 'medium' : undefined}
-          tone={current ? 'formAccent' : undefined}
-        >
-          {number}
-        </Text>
-      </Box>
+      background={current ? 'formAccent' : 'formAccentSoft'}
+      transition={current ? undefined : 'fast'}
+      borderRadius={styles.borderRadius}
+      className={[styles.background, current ? styles.current : undefined]}
+    />
+    <Overlay
+      component="span"
+      borderRadius={styles.borderRadius}
+      boxShadow="borderFormAccent"
+      className={{
+        [styles.darkModeCurrentKeyline]: current,
+      }}
+    />
+    <Box component="span" zIndex={1} userSelect="none">
+      <Text
+        baseline={false}
+        align="center"
+        weight={current ? 'medium' : undefined}
+        tone={current ? 'formAccent' : undefined}
+      >
+        {number}
+      </Text>
     </Box>
-  );
-};
+  </Box>
+);
 
 export const defaultPageLimit = 7;
 

@@ -16,14 +16,6 @@ const makeWebFonts = (webFont: BraidTokens['typography']['webFont']) => {
 export const makeRuntimeTokens = (tokens: BraidTokens) => ({
   name: tokens.name,
   displayName: tokens.displayName,
-  /**
-   * The boundary for making updated design decisions without disturbing
-   * existing consumers. Updated decisions can be assessed as part of
-   * migrating between themes.
-   *
-   * This token will be removed when the `apac` theme is retired.
-   */
-  legacy: tokens.legacy,
   background: {
     lightMode: tokens.color.background.body,
     darkMode: tokens.color.background.bodyDark,

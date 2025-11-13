@@ -1,7 +1,7 @@
 import type { ComponentDocs } from 'site/types';
 
 import { Stack, Text, Strong, TextLink, Alert } from '..';
-import apac from '../../themes/apac';
+import seekJobs from '../../themes/seekJobs';
 
 const docs: ComponentDocs = {
   category: 'Logic',
@@ -40,7 +40,7 @@ const docs: ComponentDocs = {
 
         it('should do something', () => {
           render(
-            <BraidTestProvider themeName="${apac.name}">
+            <BraidTestProvider themeName="${seekJobs.name}">
               ...
             </BraidTestProvider>
           );

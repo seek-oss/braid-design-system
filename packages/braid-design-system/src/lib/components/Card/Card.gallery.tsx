@@ -58,7 +58,7 @@ export const galleryItems: GalleryComponent = {
               <Text size="xsmall" tone="secondary">
                 ROUNDED
               </Text>
-              <Card rounded>
+              <Card>
                 <Placeholder height={100} />
               </Card>
             </Stack>

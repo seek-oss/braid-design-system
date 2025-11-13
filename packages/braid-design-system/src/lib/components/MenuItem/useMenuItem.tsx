@@ -14,7 +14,6 @@ import { atoms } from '../../css/atoms/atoms';
 import { iconSize } from '../../hooks/useIcon';
 import type { BadgeProps } from '../Badge/Badge';
 import { type BoxProps, Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { type Action, actionTypes } from '../MenuRenderer/MenuRenderer.actions';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
@@ -180,8 +179,8 @@ function MenuItemChildren({
   isCheckbox = false,
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
-  const badgeSpace = useBraidTheme().legacy ? 'small' : badgeSlotSpace;
-  const iconSpace = useBraidTheme().legacy ? 'small' : iconSlotSpace;
+  const badgeSpace = badgeSlotSpace;
+  const iconSpace = iconSlotSpace;
 
   assert(
     menuRendererContext !== null,
