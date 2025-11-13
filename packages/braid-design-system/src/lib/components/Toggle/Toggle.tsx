@@ -1,4 +1,3 @@
-import dedent from 'dedent';
 import {
   type AllHTMLAttributes,
   type ChangeEvent,
@@ -29,8 +28,6 @@ export interface ToggleProps {
   align?: 'left' | 'right' | 'justify';
   togglePosition?: 'leading' | 'trailing';
   size?: Size;
-  /** @deprecated `bleedY` is enabled by default, and configuration will be removed in a future version */
-  bleedY?: boolean;
   data?: DataAttributeMap;
 }
 
@@ -51,7 +48,6 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       align = 'left',
       togglePosition,
       size = 'standard',
-      bleedY: _bleedY,
       data,
       ...restProps
     },
@@ -60,22 +56,6 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     const lightness = useBackgroundLightness();
 
     const resolvedId = useFallbackId(id);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (typeof _bleedY !== 'undefined') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          dedent`
-            ${
-              _bleedY
-                ? `The "bleedY" prop has been deprecated and will be removed in a future version. "bleedY" is enabled by default, so this prop can safely be removed with no layout impact.`
-                : `The "bleedY" prop has been deprecated and will be removed in a future version. "bleedY" is now enabled by default. Please remove the "bleedY" prop and optimize your layout.`
-            }`,
-        );
-      }
-    }
-
-    const bleedY = _bleedY ?? true;
 
     const defaultTogglePosition = align === 'left' ? 'leading' : 'trailing';
     const appliedTogglePosition = togglePosition || defaultTogglePosition;
@@ -99,9 +79,9 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
       >
         <Box
           position="relative"
-          className={bleedY && styles.bleedToCapHeight[size]}
-          display={bleedY ? 'flex' : undefined}
-          alignItems={bleedY ? 'center' : undefined}
+          className={styles.bleedToCapHeight[size]}
+          display="flex"
+          alignItems="center"
         >
           <Box
             component="input"
@@ -113,11 +93,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             zIndex={1}
             cursor="pointer"
             opacity={0}
-            className={[
-              styles.realField,
-              !bleedY && styles.realFieldPosition[size],
-              styles.fieldSize[size],
-            ]}
+            className={[styles.realField, styles.fieldSize[size]]}
             ref={forwardedRef}
           />
           <Box
@@ -197,7 +173,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           className={virtualTouchable}
         >
           <Text
-            baseline={bleedY}
+            baseline
             weight={on ? 'strong' : undefined}
             size={size}
             align={
