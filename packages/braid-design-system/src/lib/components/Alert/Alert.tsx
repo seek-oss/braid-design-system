@@ -1,10 +1,7 @@
 import type { ReactNode } from 'react';
 
-import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import { iconContainerSize } from '../../hooks/useIcon';
-import { useBackground } from '../Box/BackgroundContext';
 import { type BoxProps, Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { Column } from '../Column/Column';
 import { Columns } from '../Columns/Columns';
 import {
@@ -45,14 +42,6 @@ const backgroundForTone: Record<Tone, BoxProps['background']> = {
   critical: 'criticalLight',
 };
 
-const borderForTone: Record<Tone, BoxShadow> = {
-  promote: 'borderPromoteLight',
-  info: 'borderInfoLight',
-  positive: 'borderPositiveLight',
-  caution: 'borderCautionLight',
-  critical: 'borderCriticalLight',
-};
-
 const icons = {
   positive: IconPositive,
   info: IconInfo,
@@ -70,8 +59,6 @@ export const Alert = ({
   onClose,
   ...restProps
 }: AlertProps) => {
-  const isLegacyTheme = useBraidTheme().legacy;
-  const parentBackground = useBackground();
   const Icon = icons[tone];
 
   return (
@@ -129,13 +116,6 @@ export const Alert = ({
           </Column>
         ) : null}
       </Columns>
-      {isLegacyTheme && parentBackground.lightMode !== 'surface' && (
-        <Overlay
-          borderRadius={borderRadius}
-          boxShadow={{ lightMode: borderForTone[tone] }}
-          visible
-        />
-      )}
     </Box>
   );
 };

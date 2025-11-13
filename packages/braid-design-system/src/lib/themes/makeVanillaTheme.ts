@@ -82,7 +82,7 @@ const fontSizeToCapHeight = (
 };
 
 export const makeVanillaTheme = (braidTokens: BraidTokens) => {
-  const { name, displayName, legacy, ...tokens } = braidTokens;
+  const { name, displayName, ...tokens } = braidTokens;
   const { webFont, ...typography } = tokens.typography;
   const { foreground, background } = tokens.color;
   const textSize = mapValues(tokens.typography.text, (definition) =>
@@ -122,12 +122,7 @@ export const makeVanillaTheme = (braidTokens: BraidTokens) => {
         tokens.typography.fontWeight[tokens.typography.heading.weight.regular],
       ),
     },
-    /*
-      Going forward, all links variants should be underlined as an accessibility
-      best practice. However, to maintain existing behaviour we are sunsetting
-      the old style based on the `legacy` theme flag, e.g. `apac`.
-    */
-    linkDecoration: legacy ? 'none' : 'underline',
+    linkDecoration: 'underline',
     inlineFieldSize: {
       standard: getInlineFieldSize('standard'),
       small: getInlineFieldSize('small'),
