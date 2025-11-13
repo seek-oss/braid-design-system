@@ -130,20 +130,6 @@ export const HiddenOnPrint: Story = {
   ),
 };
 
-export const HiddenOnScreen: Story = {
-  name: 'Hidden on Screen',
-  render: () => (
-    <>
-      <Text>The following line is hidden on screen:</Text>
-      <Hidden screen>
-        <Box paddingTop="small">
-          <Text>Hidden on screen.</Text>
-        </Box>
-      </Hidden>
-    </>
-  ),
-};
-
 export const HiddenBelowTabletInline: Story = {
   name: 'Hidden below tablet (inline)',
   render: () => (
@@ -210,16 +196,6 @@ export const HiddenOnPrintInline: Story = {
     <Text>
       The following text node is hidden on print:{' '}
       <Hidden print>Hidden on print.</Hidden>
-    </Text>
-  ),
-};
-
-export const HiddenOnScreenInline: Story = {
-  name: 'Hidden on screen (inline)',
-  render: () => (
-    <Text>
-      The following text node is hidden on screen:{' '}
-      <Hidden screen>Hidden on screen.</Hidden>
     </Text>
   ),
 };
