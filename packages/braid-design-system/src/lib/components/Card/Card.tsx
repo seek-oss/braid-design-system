@@ -2,13 +2,7 @@ import assert from 'assert';
 
 import type { FC, ReactNode } from 'react';
 
-import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
-import {
-  type ResponsiveRangeProps,
-  resolveResponsiveRangeProps,
-} from '../../utils/resolveResponsiveRangeProps';
 import { type BoxProps, Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { Keyline } from '../private/Keyline/Keyline';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -23,16 +17,6 @@ export const validCardComponents = [
   'section',
 ] as const;
 
-interface SimpleCardRounding {
-  rounded?: boolean;
-  roundedAbove?: never;
-}
-
-interface ResponsiveCardRounding {
-  rounded?: never;
-  roundedAbove?: ResponsiveRangeProps['above'];
-}
-
 const borderRadius = 'large';
 
 export type CardProps = {
@@ -41,7 +25,7 @@ export type CardProps = {
   component?: (typeof validCardComponents)[number];
   height?: Extract<BoxProps['height'], 'full'> | 'content';
   data?: DataAttributeMap;
-} & (SimpleCardRounding | ResponsiveCardRounding);
+};
 
 export const Card: FC<CardProps> = ({
   children,
@@ -57,25 +41,6 @@ export const Card: FC<CardProps> = ({
       .map((c) => `'${c}'`)
       .join(', ')}]`,
   );
-  const isLegacyTheme = useBraidTheme().legacy;
-
-  let resolvedRounding: BoxProps['borderRadius'];
-
-  if ('rounded' in restProps) {
-    resolvedRounding = borderRadius;
-  } else if ('roundedAbove' in restProps) {
-    const [roundedOnMobile, roundedOnTablet, roundedOnDesktop, roundedOnWide] =
-      resolveResponsiveRangeProps({ above: restProps.roundedAbove });
-
-    resolvedRounding = optimizeResponsiveArray([
-      roundedOnMobile ? borderRadius : 'none',
-      roundedOnTablet ? borderRadius : 'none',
-      roundedOnDesktop ? borderRadius : 'none',
-      roundedOnWide ? borderRadius : 'none',
-    ]);
-  }
-
-  const roundingForTheme = !isLegacyTheme ? borderRadius : resolvedRounding;
 
   return (
     <Box
@@ -83,13 +48,13 @@ export const Card: FC<CardProps> = ({
       position="relative"
       background="surface"
       padding="gutter"
-      borderRadius={roundingForTheme}
-      boxShadow={!isLegacyTheme ? 'borderNeutralLight' : undefined}
+      borderRadius={borderRadius}
+      boxShadow="borderNeutralLight"
       height={height === 'full' ? height : undefined}
       textAlign="left"
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
-      {tone ? <Keyline tone={tone} borderRadius={roundingForTheme} /> : null}
+      {tone ? <Keyline tone={tone} borderRadius={borderRadius} /> : null}
       {children}
     </Box>
   );

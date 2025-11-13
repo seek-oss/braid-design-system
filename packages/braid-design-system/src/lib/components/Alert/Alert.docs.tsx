@@ -1,7 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Alert, Card, Text, Strong, Stack, TextLink, List, Notice } from '../';
+import { Alert, Text, Strong, Stack, TextLink, List } from '../';
 import { IconLanguage } from '../icons';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -113,56 +113,6 @@ const docs: ComponentDocs = {
               </List>
             </Stack>
           </Alert>,
-        ),
-    },
-    {
-      label: 'Contextual design',
-      description: (
-        <>
-          <Notice tone="info">
-            <Text>
-              Only applicable to themes with grey body backgrounds, e.g.{' '}
-              <Strong>apac</Strong>.
-            </Text>
-          </Notice>
-          <Text>
-            When an Alert is used on a <Strong>surface</Strong> background
-            colour, i.e. in a <TextLink href="/components/Card">Card</TextLink>,
-            the outline is omitted.
-          </Text>
-          {/*
-          TODO: COLORMODE RELEASE
-          <Notice>
-            <Text>
-              This only applies in a light context, i.e. when the soft
-              background colours require differentiation from the surrounding
-              background colour.
-            </Text>
-          </Notice>
-          */}
-        </>
-      ),
-      Example: () =>
-        source(
-          <Card>
-            <Stack space="medium">
-              <Alert tone="promote">
-                <Text>This is a promoted message.</Text>
-              </Alert>
-              <Alert tone="info">
-                <Text>This is an informative message.</Text>
-              </Alert>
-              <Alert tone="positive">
-                <Text>This is a positive message.</Text>
-              </Alert>
-              <Alert tone="caution">
-                <Text>This is a cautionary message.</Text>
-              </Alert>
-              <Alert tone="critical">
-                <Text>This is a critical message.</Text>
-              </Alert>
-            </Stack>
-          </Card>,
         ),
     },
     {

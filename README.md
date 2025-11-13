@@ -30,7 +30,7 @@ For example:
 
 ```js
 import 'braid-design-system/reset'; // <-- Must be first
-import apacTheme from 'braid-design-system/themes/apac';
+import seekJobsTheme from 'braid-design-system/themes/seekJobs';
 import { BraidProvider, Text } from 'braid-design-system';
 // ...etc.
 ```
@@ -39,11 +39,11 @@ Finally, render the `BraidProvider` component, providing the imported theme via 
 
 ```js
 import 'braid-design-system/reset';
-import apacTheme from 'braid-design-system/themes/apac';
+import seekJobsTheme from 'braid-design-system/themes/seekJobs';
 import { BraidProvider, Text } from 'braid-design-system';
 
 export default () => (
-  <BraidProvider theme={apacTheme}>
+  <BraidProvider theme={seekJobsTheme}>
     <Text>Hello World!</Text>
   </BraidProvider>
 );
@@ -52,7 +52,7 @@ export default () => (
 If you're rendering within the context of another application, you may want to opt out of the provided body styles, which set the background color and reset margin and padding:
 
 ```js
-<BraidProvider theme={apacTheme} styleBody={false}>
+<BraidProvider theme={seekJobsTheme} styleBody={false}>
   <Text>Hello World!</Text>
 </BraidProvider>
 ```
