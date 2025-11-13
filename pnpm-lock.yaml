@@ -130,7 +130,7 @@ importers:
     dependencies:
       '@capsizecss/core':
         specifier: ^4.1.2
-        version: 4.1.2
+        version: 4.1.3
       '@capsizecss/metrics':
         specifier: ^3.0.0
         version: 3.5.0
@@ -1267,6 +1267,9 @@ packages:
 
   '@capsizecss/core@4.1.2':
     resolution: {integrity: sha512-5tMjLsVsaEEwJ816y3eTfhhTIyUWNFt58x6YcHni0eV5tta8MGDOAIe+CV5ICb5pguXgDpNGLprqhPqBWtkFSg==}
+
+  '@capsizecss/core@4.1.3':
+    resolution: {integrity: sha512-d2sTTBwKuVioYxpwpU4URMp8VkFK+GI1VNGNawQcF8HBMHzCDa1FLcbeXJSzb5AJik7ZGv3aFVCTs7IS9MhvHg==}
 
   '@capsizecss/metrics@3.5.0':
     resolution: {integrity: sha512-Ju2I/Qn3c1OaU8FgeW4Tc22D4C9NwyVfKzNmzst59bvxBjPoLYNZMqFYn+HvCtn4MpXwiaDtCE8fNuQLpdi9yA==}
@@ -10254,6 +10257,10 @@ snapshots:
   '@bcoe/v8-coverage@0.2.3': {}
 
   '@capsizecss/core@4.1.2':
+    dependencies:
+      csstype: 3.1.3
+
+  '@capsizecss/core@4.1.3':
     dependencies:
       csstype: 3.1.3
 
