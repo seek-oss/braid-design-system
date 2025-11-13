@@ -179,8 +179,6 @@ function MenuItemChildren({
   isCheckbox = false,
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
-  const badgeSpace = badgeSlotSpace;
-  const iconSpace = iconSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -203,7 +201,7 @@ function MenuItemChildren({
           position="relative"
           display="flex"
           alignItems="center"
-          paddingRight={iconSpace}
+          paddingRight={iconSlotSpace}
         >
           <Box
             component="span"
@@ -238,7 +236,7 @@ function MenuItemChildren({
         </Text>
       </Box>
       {badge ? (
-        <Box component="span" paddingLeft={badgeSpace}>
+        <Box component="span" paddingLeft={badgeSlotSpace}>
           <Text size={size}>{badge}</Text>
         </Box>
       ) : null}
