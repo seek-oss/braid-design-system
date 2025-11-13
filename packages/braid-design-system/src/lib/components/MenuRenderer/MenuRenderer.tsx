@@ -15,7 +15,6 @@ import {
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
@@ -340,8 +339,7 @@ export function Menu({
 }: MenuProps) {
   let dividerCount = 0;
 
-  const menuYPadding =
-    useBraidTheme().legacy && size === 'small' ? 'xsmall' : 'xxsmall';
+  const menuYPadding = 'xxsmall';
 
   const inlineVars = assignInlineVars({
     [styles.menuYPadding]: vars.space[menuYPadding],
