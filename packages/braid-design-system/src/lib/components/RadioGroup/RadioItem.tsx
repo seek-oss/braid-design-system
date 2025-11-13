@@ -1,6 +1,5 @@
-import assert from 'assert';
-
 import { forwardRef, useContext } from 'react';
+import assert from 'tiny-invariant';
 
 import {
   RadioGroupContext,

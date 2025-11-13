@@ -1,5 +1,3 @@
-import assert from 'assert';
-
 import {
   type ReactNode,
   type AllHTMLAttributes,
@@ -7,6 +5,7 @@ import {
   useContext,
   forwardRef,
 } from 'react';
+import assert from 'tiny-invariant';
 
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
