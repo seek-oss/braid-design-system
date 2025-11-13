@@ -86,7 +86,6 @@ const reducer: Reducer<State, Action> = (prevState, action) => {
     case OPEN_MODAL: {
       switch (prevState) {
         case INITIAL:
-        case CLOSING:
         case CLOSED: {
           return OPENING;
         }
@@ -230,7 +229,6 @@ export const Modal = ({
           inset={0}
           zIndex="modalBackdrop"
           opacity={state !== OPEN ? 0 : undefined}
-          pointerEvents={state === CLOSING ? 'none' : undefined}
           className={[styles.backdrop, styles.transition[position]]}
         />
 
