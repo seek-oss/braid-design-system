@@ -1,5 +1,15 @@
 # braid-design-system
 
+## 33.12.2
+
+### Patch Changes
+
+- **Autosuggest, MenuRenderer, TooltipRenderer:** Improve placement logic ([#1904](https://github.com/seek-oss/braid-design-system/pull/1904))
+
+  In `MenuRenderer`, if there is not enough space for the menu above or below the trigger, the menu will be positioned based on the `placement` prop.
+
+- **Dialog, Drawer:** Ensure page elements are not interactive during close animation ([#1906](https://github.com/seek-oss/braid-design-system/pull/1906))
+
 ## 33.12.1
 
 ### Patch Changes
