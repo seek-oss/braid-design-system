@@ -215,7 +215,6 @@ const docs: ComponentDocs = {
               <Toggle
                 align="right"
                 label="Toggle bleed"
-                bleedY
                 on={getState('bleed')}
                 onChange={() => toggleState('bleed')}
               />
