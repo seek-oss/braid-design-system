@@ -3579,7 +3579,6 @@ exports[`Hidden 1`] = `
     data?: DataAttributeMap
     inline?: boolean
     print?: boolean
-    screen?: boolean
 },
 }
 `;
