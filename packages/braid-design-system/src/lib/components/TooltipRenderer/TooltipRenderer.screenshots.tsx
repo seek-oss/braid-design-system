@@ -117,6 +117,19 @@ export const HandleLongUnbrokenText: Story = {
   ),
 };
 
+export const HandleLongUnbrokenChineseText: Story = {
+  render: () => (
+    <Box style={{ paddingBottom: 200 }} display="flex" justifyContent="flexEnd">
+      <TooltipRenderer
+        placement="bottom"
+        tooltip={<Text>上傳您的文檔上傳您的文檔上傳您的文檔上傳您的文檔</Text>}
+      >
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
 export const TextStyleOverrides: Story = {
   render: () => (
     <Box style={{ paddingBottom: 200 }}>
