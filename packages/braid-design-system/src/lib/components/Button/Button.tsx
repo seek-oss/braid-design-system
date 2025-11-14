@@ -457,7 +457,7 @@ export const useButtonStyles = ({
           ? colorContrast(stylesForVariant.background)
           : stylesForVariant.background,
       className: [
-        styles.focusRing,
+        // styles.focusRing,
         variant === 'soft' && lightness.lightMode === 'dark'
           ? styles.invertedBackgroundsLightMode.soft
           : null,

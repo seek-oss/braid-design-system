@@ -1,7 +1,5 @@
 import { style } from '@vanilla-extract/css';
 
-import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
-
 export const button = style([
   {
     ':hover': {
@@ -13,5 +11,5 @@ export const button = style([
       },
     },
   },
-  virtualTouchable,
+  // virtualTouchable,
 ]);
