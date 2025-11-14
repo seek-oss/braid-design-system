@@ -1,5 +1,3 @@
-import assert from 'assert';
-
 import dedent from 'dedent';
 import {
   type ReactNode,
@@ -11,6 +9,7 @@ import {
   useContext,
   forwardRef,
 } from 'react';
+import assert from 'tiny-invariant';
 
 import { ensureResetImported } from '../../css/reset/resetTracker';
 import type { BraidTheme } from '../../themes/makeBraidTheme';

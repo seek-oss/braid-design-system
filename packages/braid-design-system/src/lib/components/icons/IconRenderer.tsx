@@ -1,7 +1,6 @@
-import assert from 'assert';
-
 import clsx from 'clsx';
 import { type ReactElement, useContext } from 'react';
+import assert from 'tiny-invariant';
 
 import { atoms } from '../../css/atoms/atoms';
 import HeadingContext from '../Heading/HeadingContext';

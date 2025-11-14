@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'tiny-invariant';
 
 import type { Space } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';

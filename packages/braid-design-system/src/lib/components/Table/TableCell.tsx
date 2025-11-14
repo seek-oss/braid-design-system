@@ -1,7 +1,6 @@
-import assert from 'assert';
-
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { useContext, type ReactNode, forwardRef } from 'react';
+import assert from 'tiny-invariant';
 
 import {
   resolveResponsiveRangeProps,

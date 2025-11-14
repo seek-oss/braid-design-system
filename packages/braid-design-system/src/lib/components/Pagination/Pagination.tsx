@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'tiny-invariant';
 
 import { Box } from '../Box/Box';
 import { type LinkProps, Link } from '../Link/Link';

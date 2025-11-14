@@ -1,11 +1,10 @@
-import assert from 'assert';
-
 import {
   type ReactElement,
   type ReactNode,
   cloneElement,
   useContext,
 } from 'react';
+import assert from 'tiny-invariant';
 
 import type { BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box/Box';

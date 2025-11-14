@@ -1,8 +1,7 @@
-import assert from 'assert';
-
 import clsx from 'clsx';
 import dedent from 'dedent';
 import { type ReactNode, type AllHTMLAttributes, Fragment, useId } from 'react';
+import assert from 'tiny-invariant';
 
 import { textStyles } from '../../../css/typography';
 import { useFallbackId } from '../../../hooks/useFallbackId';

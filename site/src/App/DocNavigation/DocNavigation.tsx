@@ -1,5 +1,3 @@
-import assert from 'assert';
-
 import {
   Alert,
   Badge,
@@ -24,6 +22,7 @@ import {
 } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { useParams, useMatch, Outlet, useResolvedPath } from 'react-router';
+import assert from 'tiny-invariant';
 
 import { getHistory } from '../Updates';
 import {

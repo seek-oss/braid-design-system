@@ -1,7 +1,6 @@
-import assert from 'assert';
-
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import assert from 'tiny-invariant';
 
 import { Step, Stepper } from '..';
 import { BraidTestProvider } from '../../../entries/test';
