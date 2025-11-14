@@ -136,7 +136,7 @@ importers:
         version: 3.6.2
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.0
-        version: 2.0.1(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))
+        version: 2.0.3(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))
       '@vanilla-extract/css':
         specifier: ^1.9.2
         version: 1.17.4(babel-plugin-macros@3.1.0)
@@ -1265,17 +1265,14 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@capsizecss/core@4.1.2':
-    resolution: {integrity: sha512-5tMjLsVsaEEwJ816y3eTfhhTIyUWNFt58x6YcHni0eV5tta8MGDOAIe+CV5ICb5pguXgDpNGLprqhPqBWtkFSg==}
-
   '@capsizecss/core@4.1.3':
     resolution: {integrity: sha512-d2sTTBwKuVioYxpwpU4URMp8VkFK+GI1VNGNawQcF8HBMHzCDa1FLcbeXJSzb5AJik7ZGv3aFVCTs7IS9MhvHg==}
 
   '@capsizecss/metrics@3.6.2':
     resolution: {integrity: sha512-5uL1EIhAlfg0dvWsR1DGfqIsyiPBUsD/qlra15B82Ik28BcH7ScYEHLA4F34fZA0KamlpYcappvt2n1pTuDUfw==}
 
-  '@capsizecss/vanilla-extract@2.0.1':
-    resolution: {integrity: sha512-Lh7d932zojyvSpKh1IkAU3zkSOBec1OQjO7/KRK/tEh9dIF2wWG9H7SG3H4nwBNyeOLBxEulqHKR+bA1gpeKLg==}
+  '@capsizecss/vanilla-extract@2.0.3':
+    resolution: {integrity: sha512-zf1E4Npm+zxe9ieo5Es3XSBg4Iqayhb9ypXalGjniEeWt10sr8B4xX6jyo+urMAXdut1baB8rmrcnKxWZcplww==}
     peerDependencies:
       '@vanilla-extract/css': ^1.4.0
 
@@ -10256,19 +10253,15 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@capsizecss/core@4.1.2':
-    dependencies:
-      csstype: 3.1.3
-
   '@capsizecss/core@4.1.3':
     dependencies:
       csstype: 3.1.3
 
   '@capsizecss/metrics@3.6.2': {}
 
-  '@capsizecss/vanilla-extract@2.0.1(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))':
+  '@capsizecss/vanilla-extract@2.0.3(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))':
     dependencies:
-      '@capsizecss/core': 4.1.2
+      '@capsizecss/core': 4.1.3
       '@vanilla-extract/css': 1.17.4(babel-plugin-macros@3.1.0)
 
   '@changesets/apply-release-plan@7.0.13':
