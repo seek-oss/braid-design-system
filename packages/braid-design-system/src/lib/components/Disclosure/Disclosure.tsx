@@ -1,6 +1,5 @@
-import assert from 'assert';
-
 import { useContext, type FC, type ReactNode } from 'react';
+import assert from 'tiny-invariant';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';

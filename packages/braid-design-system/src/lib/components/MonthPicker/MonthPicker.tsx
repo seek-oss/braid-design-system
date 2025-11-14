@@ -1,7 +1,6 @@
-import assert from 'assert';
-
 import { isMobile } from 'is-mobile';
 import { type ChangeEvent, type FocusEvent, createRef, Fragment } from 'react';
+import assert from 'tiny-invariant';
 
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';

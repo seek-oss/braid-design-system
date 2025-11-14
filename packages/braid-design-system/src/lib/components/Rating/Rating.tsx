@@ -1,7 +1,6 @@
-import assert from 'assert';
-
 import dedent from 'dedent';
 import type { FC } from 'react';
+import assert from 'tiny-invariant';
 
 import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
