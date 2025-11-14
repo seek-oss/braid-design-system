@@ -1,6 +1,5 @@
-import assert from 'assert';
-
 import { Children, useMemo } from 'react';
+import assert from 'tiny-invariant';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Divider } from '../Divider/Divider';

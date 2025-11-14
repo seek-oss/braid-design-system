@@ -1,6 +1,5 @@
-import assert from 'assert';
-
 import { useContext, useMemo } from 'react';
+import assert from 'tiny-invariant';
 
 import { type TextStyleProps, textStyles } from '../../css/typography';
 import {
