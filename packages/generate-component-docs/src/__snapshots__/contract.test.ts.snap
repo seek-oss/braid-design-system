@@ -1313,6 +1313,7 @@ exports[`Box 1`] = `
     popover?: 
         | ""
         | "auto"
+        | "hint"
         | "manual"
     popoverTarget?: string
     popoverTargetAction?: 
@@ -2638,6 +2639,7 @@ exports[`ButtonLink 1`] = `
     popover?: 
         | ""
         | "auto"
+        | "hint"
         | "manual"
     popoverTarget?: string
     popoverTargetAction?: 
@@ -7534,6 +7536,7 @@ exports[`Link 1`] = `
     popover?: 
         | ""
         | "auto"
+        | "hint"
         | "manual"
     popoverTarget?: string
     popoverTargetAction?: 
@@ -9206,6 +9209,7 @@ exports[`TextLink 1`] = `
     popover?: 
         | ""
         | "auto"
+        | "hint"
         | "manual"
     popoverTarget?: string
     popoverTargetAction?: 
