@@ -1,11 +1,10 @@
-import assert from 'assert';
-
 import {
   type AllHTMLAttributes,
   type ReactElement,
   forwardRef,
   cloneElement,
 } from 'react';
+import assert from 'tiny-invariant';
 
 import type { Space } from '../../css/atoms/atoms';
 import { useFallbackId } from '../../hooks/useFallbackId';

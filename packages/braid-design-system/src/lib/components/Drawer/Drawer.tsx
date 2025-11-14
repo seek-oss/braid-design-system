@@ -1,4 +1,4 @@
-import assert from 'assert';
+import assert from 'tiny-invariant';
 
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {

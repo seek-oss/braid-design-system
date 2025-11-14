@@ -1,6 +1,5 @@
-import assert from 'assert';
-
 import { useContext, useEffect, Fragment } from 'react';
+import assert from 'tiny-invariant';
 
 import flattenChildren from '../../utils/flattenChildren';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
