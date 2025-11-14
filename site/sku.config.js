@@ -19,6 +19,7 @@ module.exports = {
   publicPath: `${process.env.BASE_NAME}/`,
   displayNamesProd: true,
   compilePackages: ['@braid-design-system/docs-ui'],
+  sourceMapsProd: false,
   dangerouslySetWebpackConfig: (config) => {
     // uncomment if you need to debug issues with side-effects
     // config.devtool = 'cheap-source-map';
