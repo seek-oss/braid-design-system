@@ -57,7 +57,8 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
 
   const rect = element.getBoundingClientRect();
   const { top, bottom, left, right, width } = rect;
-  const { scrollX, scrollY, innerWidth } = window;
+  const { scrollX, scrollY } = window;
+  const viewportWidth = document.documentElement.clientWidth;
 
   return {
     // For `top`, we subtract this from the dynamic viewport height in `Popover.css.ts`
@@ -65,7 +66,7 @@ const getPosition = (element: HTMLElement | null): Position | undefined => {
     top: top + scrollY,
     bottom: bottom + scrollY,
     left: left + scrollX,
-    right: innerWidth - right - scrollX,
+    right: viewportWidth - right - scrollX,
     width,
   };
 };
@@ -221,6 +222,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       }
 
       const { width: popoverWidth } = popoverBoundingRect;
+      const viewportWidth = document.documentElement.clientWidth;
 
       const triggerCenter =
         triggerPosition.width &&
@@ -234,15 +236,15 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       const clampedPopoverLeft = clamp(
         scrollX,
         popoverLeft,
-        window.innerWidth + scrollX - popoverWidth,
+        viewportWidth + scrollX - popoverWidth,
       );
 
-      const triggerRightFromLeft = window.innerWidth - triggerPosition.right;
+      const triggerRightFromLeft = viewportWidth - triggerPosition.right;
 
       const clampedTriggerRightFromLeft = clamp(
         scrollX + popoverWidth,
         triggerRightFromLeft,
-        scrollX + window.innerWidth,
+        scrollX + viewportWidth,
       );
 
       if (
@@ -250,9 +252,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
         clampedTriggerRightFromLeft !== triggerPosition.right + horizontalOffset
       ) {
         setHorizontalOffset(
-          window.innerWidth -
-            clampedTriggerRightFromLeft -
-            triggerPosition.right,
+          viewportWidth - clampedTriggerRightFromLeft - triggerPosition.right,
         );
       }
       if (
