@@ -16,6 +16,7 @@ export const maxWidth = style({
 
 export const overflowWrap = style({
   overflowWrap: 'break-word',
+  wordBreak: 'keep-all',
 });
 
 // Fixes shadow clipping bug in Safari
