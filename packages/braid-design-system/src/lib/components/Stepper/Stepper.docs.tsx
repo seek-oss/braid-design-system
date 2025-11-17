@@ -532,6 +532,29 @@ const docs: ComponentDocs = {
           </>,
         ),
     },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Stepper:</Text>
+            <List space="large">
+              <Text>
+                to guide users through complex, multi-step tasks or processes.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Stepper:</Text>
+            <List space="large">
+              <Text>
+                if the task only requires one or two straightforward actions.
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
     dataAttributeDocs({
       code: `
         <Stepper
