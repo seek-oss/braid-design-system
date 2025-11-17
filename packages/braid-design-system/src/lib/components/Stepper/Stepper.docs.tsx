@@ -5,8 +5,11 @@ import {
   Button,
   Column,
   Columns,
+  Heading,
+  IconArrow,
   IconChevron,
   IconLanguage,
+  IconSend,
   Inline,
   Notice,
   Stack,
@@ -14,6 +17,7 @@ import {
   Text,
   TextLink,
 } from '..';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { Step } from './Step';
@@ -123,6 +127,80 @@ const docs: ComponentDocs = {
             <Step>2. Second step</Step>
             <Step>3. Third step</Step>
           </Stepper>,
+        ),
+    },
+    {
+      label: 'Button placement',
+      description: (
+        <>
+          <Text>
+            It&rsquo;s recommended to display “Back” on the left and “Continue”
+            on the right. Below are examples of how this could look on web and
+            mobile.
+          </Text>
+        </>
+      ),
+    },
+    {
+      description: <Heading level="4">Tablet and Desktop</Heading>,
+      Example: ({ setDefaultState, setState, getState }) =>
+        source(
+          <>
+            {setDefaultState('progress', 1)}
+            <Stack space="large">
+              <Stepper label="Linear steps" progress={getState('progress')}>
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step>3. Third step</Step>
+                <Step>4. Forth step</Step>
+              </Stepper>
+              <Placeholder height="300" label="Content" />
+              <Columns space="small">
+                <Column>
+                  <Inline space="small">
+                    {getState('progress') > 1 ? (
+                      <Button
+                        variant="soft"
+                        onClick={() =>
+                          setState('progress', getState('progress') - 1)
+                        }
+                      >
+                        <IconArrow direction="left" /> Back
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+                <Column>
+                  <Inline space="small" align="right">
+                    <Button variant="transparent">Save draft</Button>
+                    {getState('progress') < 4 ? (
+                      <Button
+                        variant="solid"
+                        tone="formAccent"
+                        onClick={() =>
+                          setState('progress', getState('progress') + 1)
+                        }
+                      >
+                        Continue <IconArrow direction="right" />
+                      </Button>
+                    ) : null}
+                    {getState('progress') > 3 ? (
+                      <Button
+                        icon={<IconSend />}
+                        iconPosition="trailing"
+                        tone="brandAccent"
+                        onClick={() =>
+                          setState('progress', getState('progress') + 1)
+                        }
+                      >
+                        Submit
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+              </Columns>
+            </Stack>
+          </>,
         ),
     },
     {
