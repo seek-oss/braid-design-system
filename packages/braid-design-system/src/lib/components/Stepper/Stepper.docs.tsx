@@ -2,10 +2,11 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import {
+  Box,
   Button,
   Column,
   Columns,
-  Heading,
+  Hidden,
   IconArrow,
   IconChevron,
   IconLanguage,
@@ -135,14 +136,11 @@ const docs: ComponentDocs = {
         <>
           <Text>
             It&rsquo;s recommended to display “Back” on the left and “Continue”
-            on the right. Below are examples of how this could look on web and
-            mobile.
+            on the right. Resize your browser window to see responsive
+            behaviour.
           </Text>
         </>
       ),
-    },
-    {
-      description: <Heading level="4">Tablet and Desktop</Heading>,
       Example: ({ setDefaultState, setState, getState }) =>
         source(
           <>
@@ -155,35 +153,82 @@ const docs: ComponentDocs = {
                 <Step>4. Forth step</Step>
               </Stepper>
               <Placeholder height="300" label="Content" />
-              <Columns space="small">
-                <Column>
-                  <Inline space="small">
+              <Hidden below="tablet">
+                <Columns space="small">
+                  <Column>
+                    <Inline space="small">
+                      {getState('progress') > 1 ? (
+                        <Button
+                          variant="soft"
+                          onClick={() =>
+                            setState('progress', getState('progress') - 1)
+                          }
+                        >
+                          <IconArrow direction="left" /> Back
+                        </Button>
+                      ) : null}
+                    </Inline>
+                  </Column>
+                  <Column>
+                    <Inline space="small" align="right">
+                      <Button variant="transparent">Save draft</Button>
+                      {getState('progress') < 4 ? (
+                        <Button
+                          variant="solid"
+                          tone="formAccent"
+                          onClick={() =>
+                            setState('progress', getState('progress') + 1)
+                          }
+                        >
+                          Continue <IconArrow direction="right" />
+                        </Button>
+                      ) : null}
+                      {getState('progress') > 3 ? (
+                        <Button
+                          icon={<IconSend />}
+                          iconPosition="trailing"
+                          tone="brandAccent"
+                          onClick={() =>
+                            setState('progress', getState('progress') + 1)
+                          }
+                        >
+                          Submit
+                        </Button>
+                      ) : null}
+                    </Inline>
+                  </Column>
+                </Columns>
+              </Hidden>
+              <Hidden above="mobile">
+                <Columns space="xsmall">
+                  <Column>
                     {getState('progress') > 1 ? (
                       <Button
+                        icon={<IconArrow direction="left" />}
                         variant="soft"
                         onClick={() =>
                           setState('progress', getState('progress') - 1)
                         }
                       >
-                        <IconArrow direction="left" /> Back
+                        Back
                       </Button>
                     ) : null}
-                  </Inline>
-                </Column>
-                <Column>
-                  <Inline space="small" align="right">
-                    <Button variant="transparent">Save draft</Button>
+                  </Column>
+                  <Column>
                     {getState('progress') < 4 ? (
                       <Button
                         variant="solid"
                         tone="formAccent"
+                        icon={<IconArrow direction="right" />}
+                        iconPosition="trailing"
                         onClick={() =>
                           setState('progress', getState('progress') + 1)
                         }
                       >
-                        Continue <IconArrow direction="right" />
+                        Continue
                       </Button>
                     ) : null}
+
                     {getState('progress') > 3 ? (
                       <Button
                         icon={<IconSend />}
@@ -196,9 +241,13 @@ const docs: ComponentDocs = {
                         Submit
                       </Button>
                     ) : null}
-                  </Inline>
-                </Column>
-              </Columns>
+                  </Column>
+                </Columns>
+
+                <Box paddingTop="small">
+                  <Button variant="transparent">Save draft</Button>
+                </Box>
+              </Hidden>
             </Stack>
           </>,
         ),
