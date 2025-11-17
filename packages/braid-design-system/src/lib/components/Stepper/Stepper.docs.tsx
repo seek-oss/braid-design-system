@@ -12,6 +12,7 @@ import {
   IconLanguage,
   IconSend,
   Inline,
+  List,
   Notice,
   Stack,
   Strong,
@@ -129,6 +130,21 @@ const docs: ComponentDocs = {
             <Step>3. Third step</Step>
           </Stepper>,
         ),
+    },
+    {
+      label: 'General best practice',
+      description: (
+        <List space="large">
+          <Text>
+            Provide controls for the user to progress forward and backwards
+            through the steps (e.g. “Continue” and “Back” buttons).
+          </Text>
+          <Text>
+            When relevant, allow the user to save their point in the flow to
+            return to it later (e.g. &quot;Save draft&quot; button).
+          </Text>
+        </List>
+      ),
     },
     {
       label: 'Button placement',
