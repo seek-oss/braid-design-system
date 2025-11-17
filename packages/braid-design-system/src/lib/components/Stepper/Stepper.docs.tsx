@@ -143,6 +143,12 @@ const docs: ComponentDocs = {
             When relevant, allow the user to save their point in the flow to
             return to it later (e.g. &quot;Save draft&quot; button).
           </Text>
+          <Text>
+            Regardless of the actions you provide, consider which are most
+            important and apply an appropriate visual hierarchy using variants{' '}
+            <Strong>solid</Strong>, <Strong>ghost</Strong>,{' '}
+            <Strong>soft</Strong> and <Strong>transparent</Strong>.
+          </Text>
         </List>
       ),
     },
