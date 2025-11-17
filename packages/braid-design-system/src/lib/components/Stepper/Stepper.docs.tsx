@@ -8,7 +8,6 @@ import {
   Columns,
   Hidden,
   IconArrow,
-  IconChevron,
   IconLanguage,
   IconSend,
   Inline,
@@ -174,7 +173,7 @@ const docs: ComponentDocs = {
       Example: ({ setDefaultState, setState, getState }) =>
         source(
           <>
-            {setDefaultState('progress', 1)}
+            {setDefaultState('progress', 2)}
             <Stack space="large">
               <Stepper label="Linear steps" progress={getState('progress')}>
                 <Step>1. First step</Step>
@@ -182,7 +181,7 @@ const docs: ComponentDocs = {
                 <Step>3. Third step</Step>
                 <Step>4. Forth step</Step>
               </Stepper>
-              <Placeholder height="300" label="Content" />
+              <Placeholder height="200" label="Content" />
               <Hidden below="tablet">
                 <Columns space="small">
                   <Column>
@@ -302,37 +301,102 @@ const docs: ComponentDocs = {
                 <Step>3. Third step</Step>
                 <Step>4. Forth step</Step>
               </Stepper>
-              <Columns space="small">
-                <Column>
-                  <Inline space="small" align="right">
+              <Placeholder height="200" label="Content" />
+              <Hidden below="tablet">
+                <Columns space="small">
+                  <Column>
+                    <Inline space="small">
+                      {getState('progress') > 1 ? (
+                        <Button
+                          variant="soft"
+                          onClick={() =>
+                            setState('progress', getState('progress') - 1)
+                          }
+                        >
+                          <IconArrow direction="left" /> Back
+                        </Button>
+                      ) : null}
+                    </Inline>
+                  </Column>
+                  <Column>
+                    <Inline space="small" align="right">
+                      <Button variant="transparent">Save draft</Button>
+                      {getState('progress') < 4 ? (
+                        <Button
+                          variant="solid"
+                          tone="formAccent"
+                          onClick={() =>
+                            setState('progress', getState('progress') + 1)
+                          }
+                        >
+                          Continue <IconArrow direction="right" />
+                        </Button>
+                      ) : null}
+                      {getState('progress') > 3 ? (
+                        <Button
+                          icon={<IconSend />}
+                          iconPosition="trailing"
+                          tone="brandAccent"
+                          onClick={() =>
+                            setState('progress', getState('progress') + 1)
+                          }
+                        >
+                          Submit
+                        </Button>
+                      ) : null}
+                    </Inline>
+                  </Column>
+                </Columns>
+              </Hidden>
+              <Hidden above="mobile">
+                <Columns space="xsmall">
+                  <Column>
                     {getState('progress') > 1 ? (
                       <Button
-                        size="small"
-                        variant="ghost"
+                        icon={<IconArrow direction="left" />}
+                        variant="soft"
                         onClick={() =>
                           setState('progress', getState('progress') - 1)
                         }
                       >
-                        <IconChevron direction="left" /> Back
+                        Back
                       </Button>
                     ) : null}
-                  </Inline>
-                </Column>
-                <Column>
-                  <Inline space="small">
+                  </Column>
+                  <Column>
                     {getState('progress') < 4 ? (
                       <Button
-                        size="small"
+                        variant="solid"
+                        tone="formAccent"
+                        icon={<IconArrow direction="right" />}
+                        iconPosition="trailing"
                         onClick={() =>
                           setState('progress', getState('progress') + 1)
                         }
                       >
-                        Next <IconChevron direction="right" />
+                        Continue
                       </Button>
                     ) : null}
-                  </Inline>
-                </Column>
-              </Columns>
+
+                    {getState('progress') > 3 ? (
+                      <Button
+                        icon={<IconSend />}
+                        iconPosition="trailing"
+                        tone="brandAccent"
+                        onClick={() =>
+                          setState('progress', getState('progress') + 1)
+                        }
+                      >
+                        Submit
+                      </Button>
+                    ) : null}
+                  </Column>
+                </Columns>
+
+                <Box paddingTop="small">
+                  <Button variant="transparent">Save draft</Button>
+                </Box>
+              </Hidden>
             </Stack>
           </>,
         ),
