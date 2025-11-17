@@ -161,11 +161,10 @@ const docs: ComponentDocs = {
             on the right.
           </Text>
           <Text>
-            If designing in a language other than english and your button word
-            lengths are long, you may not be able to fit “Back” and “Continue”
-            side by side on mobile. If this is the case, it’s recommended to
-            stack buttons vertically with “Continue” on the top followed by
-            “Back” and then “Save”.
+            When designing in a language other than english, the button word
+            lengths may become too long to fit side by side on mobile. If this
+            is the case, you can stack buttons vertically with “Continue” on the
+            top followed by “Back” then “Save”.
           </Text>
           <Notice>
             <Text>Resize your browser window to see responsive behaviour.</Text>
