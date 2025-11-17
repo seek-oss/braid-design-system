@@ -137,11 +137,11 @@ const docs: ComponentDocs = {
         <List space="large">
           <Text>
             Provide controls for the user to progress forward and backwards
-            through the steps (e.g. “Continue” and “Back” buttons).
+            through the steps.
           </Text>
           <Text>
             When relevant, allow the user to save their point in the flow to
-            return to it later (e.g. &quot;Save draft&quot; button).
+            return to it later.
           </Text>
           <Text>
             Regardless of the actions you provide, consider which are most
@@ -159,6 +159,13 @@ const docs: ComponentDocs = {
           <Text>
             It&rsquo;s recommended to display “Back” on the left and “Continue”
             on the right.
+          </Text>
+          <Text>
+            If designing in a language other than english and your button word
+            lengths are long, you may not be able to fit “Back” and “Continue”
+            side by side on mobile. If this is the case, it’s recommended to
+            stack buttons vertically with “Continue” on the top followed by
+            “Back” and then “Save”.
           </Text>
           <Notice>
             <Text>Resize your browser window to see responsive behaviour.</Text>
