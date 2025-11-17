@@ -152,9 +152,11 @@ const docs: ComponentDocs = {
         <>
           <Text>
             It&rsquo;s recommended to display “Back” on the left and “Continue”
-            on the right. Resize your browser window to see responsive
-            behaviour.
+            on the right.
           </Text>
+          <Notice>
+            <Text>Resize your browser window to see responsive behaviour.</Text>
+          </Notice>
         </>
       ),
       Example: ({ setDefaultState, setState, getState }) =>
