@@ -21,6 +21,12 @@ import { Stepper } from './Stepper';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A progress indicator that guides users through multi-step tasks and
+      enables navigation between steps.
+    </Text>
+  ),
   subComponents: ['Step'],
   Example: () =>
     source(
