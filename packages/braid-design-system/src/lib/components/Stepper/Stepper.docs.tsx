@@ -78,6 +78,54 @@ const docs: ComponentDocs = {
   alternatives: [],
   additional: [
     {
+      label: 'Alignment',
+      description: (
+        <>
+          <Text>
+            The Stepper is center-aligned by default, but this can be customised
+            via the <Strong>align</Strong> prop.
+          </Text>
+          <Notice>
+            <Text>
+              The alignment is always set to <Strong>left</Strong> on mobile due
+              to space constraints with step labels.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stepper align="left" label="Left aligned" progress={2}>
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step>3. Third step</Step>
+          </Stepper>,
+        ),
+    },
+    {
+      label: 'Tone',
+      description: (
+        <>
+          <Text>
+            The Stepper can be de-emphasized by setting the{' '}
+            <Strong>tone</Strong> to <Strong>neutral</Strong>.
+          </Text>
+          <Text>
+            This makes the highlight colour follow the default text colour,
+            including inverting on dark surfaces to improve contrast.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stepper tone="neutral" label="De-emphasized the tone" progress={2}>
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step>3. Third step</Step>
+          </Stepper>,
+        ),
+    },
+    {
       label: 'Linear mode',
       description: (
         <Text>
@@ -261,54 +309,6 @@ const docs: ComponentDocs = {
               </Stepper>
             </Stack>
           </>,
-        ),
-    },
-    {
-      label: 'De-emphasizing the tone',
-      description: (
-        <>
-          <Text>
-            The Stepper can be de-emphasized by setting the{' '}
-            <Strong>tone</Strong> to <Strong>neutral</Strong>.
-          </Text>
-          <Text>
-            This makes the highlight colour follow the default text colour,
-            including inverting on dark surfaces to improve contrast.
-          </Text>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Stepper tone="neutral" label="De-emphasized the tone" progress={2}>
-            <Step>1. First step</Step>
-            <Step>2. Second step</Step>
-            <Step>3. Third step</Step>
-          </Stepper>,
-        ),
-    },
-    {
-      label: 'Alignment',
-      description: (
-        <>
-          <Text>
-            The Stepper is center-aligned by default, but this can be customised
-            via the <Strong>align</Strong> prop.
-          </Text>
-          <Notice>
-            <Text>
-              The alignment is always set to <Strong>left</Strong> on mobile due
-              to space constraints with step labels.
-            </Text>
-          </Notice>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Stepper align="left" label="Left aligned" progress={2}>
-            <Step>1. First step</Step>
-            <Step>2. Second step</Step>
-            <Step>3. Third step</Step>
-          </Stepper>,
         ),
     },
     dataAttributeDocs({
