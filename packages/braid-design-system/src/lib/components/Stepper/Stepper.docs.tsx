@@ -135,7 +135,7 @@ const docs: ComponentDocs = {
       description: (
         <List space="large">
           <Text>
-            Provide controls for the user to progress forward and backwards
+            Provide buttons for the user to progress forward and backward
             through the steps.
           </Text>
           <Text>
@@ -285,9 +285,10 @@ const docs: ComponentDocs = {
       label: 'Linear mode',
       description: (
         <Text>
-          By default the <Strong>mode</Strong> is set to <Strong>linear</Strong>
-          , requiring a step number be passed to the <Strong>progress</Strong>{' '}
-          prop indicating how far through the process the user is.
+          The default <Strong>mode</Strong> is <Strong>linear</Strong>, which
+          requires each step be completed before advancing. This mode requires a
+          step number be passed to the <Strong>progress</Strong> prop to
+          indicate the user&rsquo;s progress.
         </Text>
       ),
       Example: ({ setDefaultState, setState, getState }) =>
