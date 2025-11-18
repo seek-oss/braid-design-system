@@ -407,14 +407,14 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            For cases where the steps are not necessarily sequential, the{' '}
-            <Strong>mode</Strong> can be set to <Strong>non-linear</Strong>.
+            For non-sequential steps, the <Strong>mode</Strong> can be set to{' '}
+            <Strong>non-linear</Strong>. This allows users to navigate between
+            steps regardless of completion.
           </Text>
           <Text>
             In this mode, the <Strong>activeStep</Strong> prop is required and
-            the completion of an individual step can be controlled by providing
-            the <Strong>complete</Strong> prop to the <Strong>Step</Strong>{' '}
-            itself.
+            individual step completion can be controlled via the{' '}
+            <Strong>complete</Strong> prop on the <Strong>Step</Strong> itself.
           </Text>
         </>
       ),
