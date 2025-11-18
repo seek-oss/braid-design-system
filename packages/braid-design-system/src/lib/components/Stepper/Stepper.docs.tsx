@@ -383,39 +383,22 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'General best practice',
+      label: 'Providing user controls',
       description: (
-        <List space="large">
+        <>
           <Text>
-            Provide buttons for the user to progress forward and backward
-            through the steps.
+            We recommend providing “Back” and “Continue” buttons for the user to
+            navigate through the steps.
           </Text>
           <Text>
-            When relevant, allow the user to save their point in the flow to
-            return to it later.
+            When relevant, you may also want to allow the user to save their
+            point in the flow to return to it later.
           </Text>
           <Text>
             Regardless of the actions you provide, consider which are most
             important and apply an appropriate visual hierarchy using variants{' '}
             <Strong>solid</Strong>, <Strong>ghost</Strong>,{' '}
             <Strong>soft</Strong> and <Strong>transparent</Strong>.
-          </Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Button placement',
-      description: (
-        <>
-          <Text>
-            It&rsquo;s recommended to display “Back” on the left and “Continue”
-            on the right.
-          </Text>
-          <Text>
-            When designing in a language other than english, the button word
-            lengths may become too long to fit side by side on mobile. If this
-            is the case, you can stack buttons vertically with “Continue” on the
-            top followed by “Back” then “Save”.
           </Text>
           <Notice>
             <Text>Resize your browser window to see responsive behaviour.</Text>
@@ -532,6 +515,16 @@ const docs: ComponentDocs = {
             </Stack>
           </>,
         ),
+    },
+    {
+      description: (
+        <Text>
+          When designing in a language other than english, the button word
+          lengths may become too long to fit side by side on mobile. If this is
+          the case, you can stack buttons vertically with “Continue” on the top
+          followed by “Back” then “Save”.
+        </Text>
+      ),
     },
     {
       label: 'When to use',
