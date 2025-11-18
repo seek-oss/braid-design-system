@@ -387,12 +387,10 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            We recommend providing “Back” and “Continue” buttons for the user to
-            navigate through the steps.
-          </Text>
-          <Text>
-            When relevant, you may also want to allow the user to save their
-            point in the flow to return to it later.
+            We recommend providing &quot;Back&quot; and &quot;Continue&quot;
+            buttons for the user to navigate through the steps. When relevant,
+            you may also want to provide a &quot;Save&quot; button so the user
+            can return to their progress later.
           </Text>
           <Text>
             Regardless of the actions you provide, consider which are most
