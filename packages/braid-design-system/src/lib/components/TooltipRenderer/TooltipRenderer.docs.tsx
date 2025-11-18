@@ -157,8 +157,8 @@ const docs: ComponentDocs = {
             <Stack space={offsetSpace} align="center">
               <IconHelp />
               <TooltipContent
-                inferredPlacement="bottom"
-                arrowLeftOffset={parseInt(constants.maxWidth, 10) / 2}
+                _INTERNAL_staticPlacement="bottom"
+                _INTERNAL_staticArrowLeft={parseInt(constants.maxWidth, 10) / 2}
               >
                 <Stack space="medium">
                   <Text size="large">Large text</Text>

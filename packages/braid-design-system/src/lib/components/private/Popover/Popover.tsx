@@ -1,18 +1,26 @@
-import { assignInlineVars } from '@vanilla-extract/dynamic';
+import {
+  useFloating,
+  offset as floatingOffset,
+  flip,
+  shift,
+  arrow as floatingArrow,
+  autoUpdate,
+  type Placement as FloatingPlacement,
+} from '@floating-ui/react-dom';
 import dedent from 'dedent';
 import {
   type ReactNode,
   useEffect,
-  useState,
   forwardRef,
   useRef,
   useImperativeHandle,
   type RefObject,
   type AllHTMLAttributes,
+  createContext,
+  useContext,
 } from 'react';
 
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
-import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 import { useSpace } from '../../useSpace/useSpace';
@@ -39,40 +47,24 @@ export interface PopoverProps {
   onClose?: () => void;
   triggerRef: RefObject<HTMLElement | null>;
   enterFocusRef?: RefObject<HTMLElement | null>;
+  arrowRef?: RefObject<HTMLElement | null>;
   children: ReactNode;
 }
 
-type Position = {
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-  width: number;
-};
-
-const getPosition = (element: HTMLElement | null): Position | undefined => {
-  if (!element) {
-    return undefined;
-  }
-
-  const rect = element.getBoundingClientRect();
-  const { top, bottom, left, right, width } = rect;
-  const { scrollX, scrollY, innerWidth } = window;
-
-  return {
-    // For `top`, we subtract this from the dynamic viewport height in `Popover.css.ts`
-    // which can't be accessed from Javascript.
-    top: top + scrollY,
-    bottom: bottom + scrollY,
-    left: left + scrollX,
-    right: innerWidth - right - scrollX,
-    width,
+export interface PopoverMiddlewareData {
+  arrow?: {
+    x?: number;
+    y?: number;
   };
-};
-
-function clamp(min: number, preferred: number, max: number) {
-  return Math.min(Math.max(preferred, min), max);
+  actualPlacement?: Placement;
 }
+
+const PopoverContext = createContext<PopoverMiddlewareData | null>(null);
+
+export const usePopoverContext = () => {
+  const context = useContext(PopoverContext);
+  return context;
+};
 
 const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
   (
@@ -90,27 +82,59 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       onClose,
       triggerRef,
       enterFocusRef,
+      arrowRef,
       children,
     },
     forwardedRef,
   ) => {
-    const [triggerPosition, setTriggerPosition] = useState<
-      Position | undefined
-    >(undefined);
-
     const ref = useRef<HTMLElement>(null);
     useImperativeHandle(forwardedRef, () => ref.current as HTMLElement);
 
-    const [horizontalOffset, setHorizontalOffset] = useState(0);
-    const [actualPlacement, setActualPlacement] =
-      useState<Placement>(placement);
+    const spaceScale = useSpace();
+    let offsetSpacePx = 0;
+    if (offsetSpace !== 'none' && typeof offsetSpace === 'string') {
+      offsetSpacePx = spaceScale.space[offsetSpace] * spaceScale.grid;
+    }
 
-    const showPopover = open && triggerPosition;
+    const middleware = [
+      floatingOffset(offsetSpacePx),
+      lockPlacement ? undefined : flip(),
+      width !== 'full'
+        ? shift({
+            padding: 8,
+            crossAxis: align === 'center',
+          })
+        : undefined,
+      arrowRef ? floatingArrow({ element: arrowRef }) : undefined,
+    ].filter((m): m is NonNullable<typeof m> => m !== undefined);
 
-    const transitionThresholdInPx =
-      useSpace().space[styles.transitionThreshold];
+    const floatingPlacement: FloatingPlacement =
+      placement === 'top' ? 'top' : 'bottom';
 
-    const alignmentAnchor = align === 'center' ? 'left' : align;
+    const {
+      refs,
+      floatingStyles,
+      middlewareData,
+      placement: actualPlacement,
+      isPositioned,
+    } = useFloating({
+      placement: floatingPlacement,
+      middleware,
+      whileElementsMounted: autoUpdate,
+      elements: {
+        reference: triggerRef.current,
+      },
+    });
+
+    useEffect(() => {
+      refs.setReference(triggerRef.current);
+    }, [triggerRef, refs]);
+
+    useEffect(() => {
+      if (ref.current) {
+        refs.setFloating(ref.current);
+      }
+    }, [refs]);
 
     useEffect(() => {
       const handleKeydown = (event: globalThis.KeyboardEvent) => {
@@ -142,11 +166,6 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
     }, [onClose, triggerRef]);
 
     useEffect(() => {
-      setTriggerPosition(getPosition(triggerRef.current));
-    }, [triggerRef]);
-
-    useEffect(() => {
-      // Without timeout, focus will not work on first render
       setTimeout(() => {
         if (!enterFocusRef) {
           return;
@@ -166,140 +185,26 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           }
         }
       }, animationTimeout);
-    }, [open, enterFocusRef, triggerRef]);
+    }, [open, enterFocusRef]);
 
-    useEffect(() => {
-      const handleResize = () => {
-        setTriggerPosition(getPosition(triggerRef.current));
-      };
+    const inferredPlacement: Placement = actualPlacement?.startsWith('top')
+      ? 'top'
+      : 'bottom';
 
-      window.addEventListener('resize', handleResize);
-      const resizeObserver = new ResizeObserver(handleResize);
-      resizeObserver.observe(document.body);
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-        resizeObserver.disconnect();
-      };
-    }, [triggerRef]);
-
-    const handlePlacement = () => {
-      const popoverBoundingRect = ref?.current?.getBoundingClientRect();
-      if (!popoverBoundingRect) {
-        return;
-      }
-
-      const triggerBoundingRect = triggerRef.current?.getBoundingClientRect();
-      if (!triggerBoundingRect) {
-        return;
-      }
-
-      const { height: popoverHeight } = popoverBoundingRect;
-
-      const heightRequired = popoverHeight + transitionThresholdInPx;
-      const fitsAbove = triggerBoundingRect.top >= heightRequired;
-      const fitsBelow =
-        window.innerHeight - triggerBoundingRect.bottom >= heightRequired;
-
-      if (!fitsAbove && fitsBelow) {
-        setActualPlacement('bottom');
-      } else if (!fitsBelow && fitsAbove) {
-        setActualPlacement('top');
-      } else {
-        setActualPlacement(placement);
-      }
+    const combinedStyles = {
+      ...floatingStyles,
+      ...(width === 'full' && triggerRef.current
+        ? {
+            width: `${triggerRef.current.getBoundingClientRect().width}px`,
+          }
+        : {}),
+      ...(!isPositioned ? { opacity: 0, pointerEvents: 'none' as const } : {}),
     };
 
-    const handleHorizontalShift = () => {
-      if (!triggerPosition) {
-        return;
-      }
-
-      const popoverBoundingRect = ref?.current?.getBoundingClientRect();
-      if (!popoverBoundingRect) {
-        return;
-      }
-
-      const { width: popoverWidth } = popoverBoundingRect;
-
-      const triggerCenter =
-        triggerPosition.width &&
-        triggerPosition.left + triggerPosition.width / 2;
-
-      const popoverLeft =
-        align === 'center' && triggerCenter
-          ? triggerCenter - popoverWidth / 2
-          : triggerPosition.left;
-
-      const clampedPopoverLeft = clamp(
-        scrollX,
-        popoverLeft,
-        window.innerWidth + scrollX - popoverWidth,
-      );
-
-      const triggerRightFromLeft = window.innerWidth - triggerPosition.right;
-
-      const clampedTriggerRightFromLeft = clamp(
-        scrollX + popoverWidth,
-        triggerRightFromLeft,
-        scrollX + window.innerWidth,
-      );
-
-      if (
-        alignmentAnchor === 'right' &&
-        clampedTriggerRightFromLeft !== triggerPosition.right + horizontalOffset
-      ) {
-        setHorizontalOffset(
-          window.innerWidth -
-            clampedTriggerRightFromLeft -
-            triggerPosition.right,
-        );
-      }
-      if (
-        alignmentAnchor === 'left' &&
-        clampedPopoverLeft !== triggerPosition.left + horizontalOffset
-      ) {
-        setHorizontalOffset(clampedPopoverLeft - triggerPosition.left);
-      }
-
-      return;
+    const popoverContextValue: PopoverMiddlewareData = {
+      arrow: middlewareData.arrow,
+      actualPlacement: inferredPlacement,
     };
-
-    useIsomorphicLayoutEffect(() => {
-      if (!showPopover) {
-        return;
-      }
-
-      if (width !== 'full') {
-        handleHorizontalShift();
-      }
-      if (!lockPlacement) {
-        handlePlacement();
-      }
-    }, [showPopover]);
-
-    const triggerPositionVars = triggerPosition && {
-      // Vertical positioning
-      [styles.triggerVars[actualPlacement]]:
-        `${triggerPosition[actualPlacement]}`,
-
-      // Horizontal positioning
-      [styles.triggerVars.left]:
-        width === 'full' || alignmentAnchor === 'left'
-          ? `${triggerPosition?.left}`
-          : undefined,
-      [styles.triggerVars.right]:
-        width === 'full' || alignmentAnchor === 'right'
-          ? `${triggerPosition?.right}`
-          : undefined,
-
-      // Horizontal scroll offset
-      [styles.horizontalOffset]: width !== 'full' ? `${horizontalOffset}` : '0',
-    };
-
-    if (!showPopover) {
-      return null;
-    }
 
     return (
       <BraidPortal>
@@ -329,18 +234,16 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           role={role || undefined}
           tabIndex={-1}
           zIndex={zIndex}
-          position="absolute"
-          marginTop={actualPlacement === 'bottom' ? offsetSpace : undefined}
-          marginBottom={actualPlacement === 'top' ? offsetSpace : undefined}
-          style={triggerPositionVars && assignInlineVars(triggerPositionVars)}
+          style={combinedStyles}
           className={{
-            [styles.popoverPosition]: true,
             [styles.animation]: true,
-            [styles.invertPlacement]: actualPlacement === 'bottom',
+            [styles.invertPlacement]: inferredPlacement === 'bottom',
             [styles.delayVisibility]: delayVisibility,
           }}
         >
-          {children}
+          <PopoverContext.Provider value={popoverContextValue}>
+            {children}
+          </PopoverContext.Provider>
         </Box>
       </BraidPortal>
     );
