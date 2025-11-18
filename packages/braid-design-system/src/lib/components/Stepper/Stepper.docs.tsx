@@ -8,6 +8,7 @@ import {
   Columns,
   Hidden,
   IconArrow,
+  IconChevron,
   IconLanguage,
   IconSend,
   Inline,
@@ -149,104 +150,39 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step>3. Third step</Step>
-                <Step>4. Fourth step</Step>
+                <Step>4. Forth step</Step>
               </Stepper>
-              <Placeholder height="200" label="Content" />
-              <Hidden below="tablet">
-                <Columns space="small">
-                  <Column>
-                    <Inline space="small">
-                      {getState('progress') > 1 ? (
-                        <Button
-                          variant="soft"
-                          onClick={() =>
-                            setState('progress', getState('progress') - 1)
-                          }
-                        >
-                          <IconArrow direction="left" /> Back
-                        </Button>
-                      ) : null}
-                    </Inline>
-                  </Column>
-                  <Column>
-                    <Inline space="small" align="right">
-                      <Button variant="transparent">Save draft</Button>
-                      {getState('progress') < 4 ? (
-                        <Button
-                          variant="solid"
-                          tone="formAccent"
-                          onClick={() =>
-                            setState('progress', getState('progress') + 1)
-                          }
-                        >
-                          Continue <IconArrow direction="right" />
-                        </Button>
-                      ) : null}
-                      {getState('progress') > 3 ? (
-                        <Button
-                          icon={<IconSend />}
-                          iconPosition="trailing"
-                          tone="brandAccent"
-                          onClick={() =>
-                            setState('progress', getState('progress') + 1)
-                          }
-                        >
-                          Submit
-                        </Button>
-                      ) : null}
-                    </Inline>
-                  </Column>
-                </Columns>
-              </Hidden>
-              <Hidden above="mobile">
-                <Columns space="xsmall">
-                  <Column>
+              <Columns space="small">
+                <Column>
+                  <Inline space="small" align="right">
                     {getState('progress') > 1 ? (
                       <Button
-                        icon={<IconArrow direction="left" />}
-                        variant="soft"
+                        size="small"
+                        variant="ghost"
                         onClick={() =>
                           setState('progress', getState('progress') - 1)
                         }
                       >
-                        Back
+                        <IconChevron direction="left" /> Back
                       </Button>
                     ) : null}
-                  </Column>
-                  <Column>
+                  </Inline>
+                </Column>
+                <Column>
+                  <Inline space="small">
                     {getState('progress') < 4 ? (
                       <Button
-                        variant="solid"
-                        tone="formAccent"
-                        icon={<IconArrow direction="right" />}
-                        iconPosition="trailing"
+                        size="small"
                         onClick={() =>
                           setState('progress', getState('progress') + 1)
                         }
                       >
-                        Continue
+                        Next <IconChevron direction="right" />
                       </Button>
                     ) : null}
-
-                    {getState('progress') > 3 ? (
-                      <Button
-                        icon={<IconSend />}
-                        iconPosition="trailing"
-                        tone="brandAccent"
-                        onClick={() =>
-                          setState('progress', getState('progress') + 1)
-                        }
-                      >
-                        Submit
-                      </Button>
-                    ) : null}
-                  </Column>
-                </Columns>
-
-                <Box paddingTop="small">
-                  <Button variant="transparent">Save draft</Button>
-                </Box>
-              </Hidden>
+                  </Inline>
+                </Column>
+              </Columns>
             </Stack>
           </>,
         ),
@@ -267,14 +203,54 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: () =>
+      Example: ({ setDefaultState, getState, setState }) =>
         source(
-          <Stepper label="Non-linear steps" mode="non-linear" activeStep={2}>
-            <Step>1. First step</Step>
-            <Step>2. Second step</Step>
-            <Step complete>3. Third step</Step>
-            <Step>4. Fourth step</Step>
-          </Stepper>,
+          <>
+            {setDefaultState('activeStep', 2)}
+            <Stack space="large">
+              <Stepper
+                mode="non-linear"
+                label="Non-linear steps"
+                activeStep={getState('activeStep')}
+              >
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step complete>3. Third step</Step>
+                <Step>4. Forth step</Step>
+              </Stepper>
+              <Columns space="small">
+                <Column>
+                  <Inline space="small" align="right">
+                    {getState('activeStep') > 1 ? (
+                      <Button
+                        size="small"
+                        variant="ghost"
+                        onClick={() =>
+                          setState('activeStep', getState('activeStep') - 1)
+                        }
+                      >
+                        <IconChevron direction="left" /> Back
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+                <Column>
+                  <Inline space="small">
+                    {getState('activeStep') < 4 ? (
+                      <Button
+                        size="small"
+                        onClick={() =>
+                          setState('activeStep', getState('activeStep') + 1)
+                        }
+                      >
+                        Next <IconChevron direction="right" />
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+              </Columns>
+            </Stack>
+          </>,
         ),
     },
     {
