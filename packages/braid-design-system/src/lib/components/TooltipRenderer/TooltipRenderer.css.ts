@@ -1,7 +1,5 @@
-import { createVar, style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-
-import { space } from '../../css/atoms/atomicProperties';
 
 import { vars } from '../../themes/vars.css';
 
@@ -26,17 +24,8 @@ export const translateZ0 = style({
 
 const borderRadius = vars.borderRadius.small;
 const offset = calc(constants.arrowSize).divide(2).negate().toString();
-export const horizontalOffset = createVar();
-
-const arrowEdgePadding = 'medium';
 
 const baseArrow = style({
-  left: `clamp(${[
-    space[arrowEdgePadding],
-    horizontalOffset,
-    calc('100%').subtract(space[arrowEdgePadding]),
-  ].join(', ')})`,
-  transform: 'translateX(-50%)',
   visibility: 'hidden',
   ':before': {
     visibility: 'visible',
