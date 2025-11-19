@@ -5,7 +5,6 @@ import {
   shift,
   arrow as floatingArrow,
   autoUpdate,
-  type Placement as FloatingPlacement,
 } from '@floating-ui/react-dom';
 import dedent from 'dedent';
 import {
@@ -117,9 +116,6 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       arrowRef ? floatingArrow({ element: arrowRef }) : undefined,
     ].filter((m): m is NonNullable<typeof m> => m !== undefined);
 
-    const floatingPlacement: FloatingPlacement =
-      placement === 'top' ? 'top' : 'bottom';
-
     const {
       refs,
       floatingStyles,
@@ -127,12 +123,9 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       placement: actualPlacement,
       isPositioned,
     } = useFloating({
-      placement: floatingPlacement,
+      placement,
       middleware,
       whileElementsMounted: autoUpdate,
-      elements: {
-        reference: triggerRef.current,
-      },
     });
 
     useEffect(() => {

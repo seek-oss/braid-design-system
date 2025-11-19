@@ -143,7 +143,6 @@ export const TooltipRenderer = ({
 }: TooltipRendererProps) => {
   const resolvedId = useFallbackId(id);
 
-  const tooltipRef = useRef<HTMLElement | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
   const arrowRef = useRef<HTMLElement | null>(null);
 
@@ -159,10 +158,6 @@ export const TooltipRenderer = ({
 
   const onScreen = useRef<boolean | null>(null);
   const showTooltip = isStatic ? true : open;
-
-  useEffect(() => {
-    setResolvedPlacement(placement);
-  }, [placement]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -247,7 +242,6 @@ export const TooltipRenderer = ({
       <Popover
         id={resolvedId}
         role="tooltip"
-        ref={tooltipRef}
         offsetSpace={offsetSpace}
         align="center"
         placement={placement}
