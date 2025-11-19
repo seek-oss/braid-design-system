@@ -235,15 +235,18 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           tabIndex={-1}
           zIndex={zIndex}
           style={combinedStyles}
-          className={{
-            [styles.animation]: true,
-            [styles.invertPlacement]: inferredPlacement === 'bottom',
-            [styles.delayVisibility]: delayVisibility,
-          }}
         >
-          <PopoverContext.Provider value={popoverContextValue}>
-            {children}
-          </PopoverContext.Provider>
+          <Box
+            className={{
+              [styles.animation]: true,
+              [styles.invertPlacement]: inferredPlacement === 'bottom',
+              [styles.delayVisibility]: delayVisibility,
+            }}
+          >
+            <PopoverContext.Provider value={popoverContextValue}>
+              {children}
+            </PopoverContext.Provider>
+          </Box>
         </Box>
       </BraidPortal>
     );
