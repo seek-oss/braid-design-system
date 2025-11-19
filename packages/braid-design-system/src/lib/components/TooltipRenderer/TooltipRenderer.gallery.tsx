@@ -14,12 +14,7 @@ const MockTooltipContent = ({
   children: ReactNodeNoStrings;
 }) => (
   <Box style={{ width: 'fit-content' }}>
-    <TooltipContent
-      _INTERNAL_staticPlacement={placement}
-      _INTERNAL_staticArrowLeft={0}
-    >
-      {children}
-    </TooltipContent>
+    <TooltipContent inferredPlacement={placement}>{children}</TooltipContent>
   </Box>
 );
 
