@@ -29,8 +29,8 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      A progress indicator that guides users through multi-step tasks and
-      enables navigation between steps.
+      A progress indicator that guides users through multi-step tasks by
+      displaying position and completion status.
     </Text>
   ),
   subComponents: ['Step'],
