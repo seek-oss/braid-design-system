@@ -14,7 +14,7 @@ import {
   List,
 } from '..';
 
-import { offsetSpace, TooltipContent } from './TooltipRenderer';
+import { TooltipContent } from './TooltipRenderer';
 
 import { constants } from './TooltipRenderer.css';
 
@@ -154,12 +154,8 @@ const docs: ComponentDocs = {
         return {
           code,
           value: (
-            <Stack space={offsetSpace} align="center">
-              <IconHelp />
-              <TooltipContent
-                inferredPlacement="bottom"
-                arrowLeftOffset={parseInt(constants.maxWidth, 10) / 2}
-              >
+            <Stack space="none" align="center">
+              <TooltipContent inferredPlacement="bottom">
                 <Stack space="medium">
                   <Text size="large">Large text</Text>
                   <Text>

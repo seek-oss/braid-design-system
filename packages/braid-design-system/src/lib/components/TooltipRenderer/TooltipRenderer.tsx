@@ -57,20 +57,17 @@ export const TooltipContent = ({
   inferredPlacement,
   arrowRef,
   children,
-  arrowLeftOffset, // Todo - remove prop
 }: {
   inferredPlacement: PopoverProps['placement'];
   arrowRef?: React.RefObject<HTMLElement | null>;
   children: ReactNodeNoStrings;
-  arrowLeftOffset?: number;
 }) => {
   const popoverContext = usePopoverContext();
 
-  const arrowX = arrowLeftOffset ?? popoverContext?.arrow?.x ?? 0;
+  const arrowX = popoverContext?.arrow?.x ?? 0;
   const arrowY = popoverContext?.arrow?.y;
   const placement =
     inferredPlacement ?? popoverContext?.actualPlacement ?? 'top';
-  const isStatic = arrowLeftOffset !== undefined;
 
   return (
     <Box
@@ -90,10 +87,7 @@ export const TooltipContent = ({
           ref={arrowRef}
           position="fixed"
           background="neutral"
-          className={[
-            styles.arrow[placement],
-            isStatic ? styles.staticArrow : undefined,
-          ]}
+          className={styles.arrow[placement]}
           style={{
             left: arrowX !== undefined ? `${arrowX}px` : undefined,
             top: arrowY !== undefined ? `${arrowY}px` : undefined,
