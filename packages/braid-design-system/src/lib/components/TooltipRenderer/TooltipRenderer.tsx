@@ -60,7 +60,7 @@ export const TooltipContent = ({
   arrowRef?: React.RefObject<HTMLElement | null>;
   children: ReactNodeNoStrings;
 }) => {
-  const arrowX = arrowPosition?.x ?? 0;
+  const arrowX = arrowPosition?.x;
   const arrowY = arrowPosition?.y;
 
   return (
