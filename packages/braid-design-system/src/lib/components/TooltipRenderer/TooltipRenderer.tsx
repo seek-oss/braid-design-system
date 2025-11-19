@@ -11,11 +11,7 @@ import {
 
 import { useFallbackId } from '../../hooks/useFallbackId';
 import { Box } from '../Box/Box';
-import {
-  Popover,
-  type PopoverProps,
-  usePopoverContext,
-} from '../private/Popover/Popover';
+import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useThemeName } from '../useThemeName/useThemeName';
@@ -54,20 +50,18 @@ export const TooltipTextDefaultsProvider = ({
 };
 
 export const TooltipContent = ({
-  inferredPlacement,
+  placement,
+  arrowPosition,
   arrowRef,
   children,
 }: {
-  inferredPlacement: PopoverProps['placement'];
+  placement: PopoverProps['placement'];
+  arrowPosition?: { x?: number; y?: number };
   arrowRef?: React.RefObject<HTMLElement | null>;
   children: ReactNodeNoStrings;
 }) => {
-  const popoverContext = usePopoverContext();
-
-  const arrowX = popoverContext?.arrow?.x ?? 0;
-  const arrowY = popoverContext?.arrow?.y;
-  const placement =
-    inferredPlacement ?? popoverContext?.actualPlacement ?? 'top';
+  const arrowX = arrowPosition?.x ?? 0;
+  const arrowY = arrowPosition?.y;
 
   return (
     <Box
@@ -87,7 +81,7 @@ export const TooltipContent = ({
           ref={arrowRef}
           position="fixed"
           background="neutral"
-          className={styles.arrow[placement]}
+          className={styles.arrow[placement ?? 'top']}
           style={{
             left: arrowX !== undefined ? `${arrowX}px` : undefined,
             top: arrowY !== undefined ? `${arrowY}px` : undefined,
@@ -124,12 +118,21 @@ export const TooltipRenderer = ({
   const arrowRef = useRef<HTMLElement | null>(null);
 
   const [open, setOpen] = useState(false);
+  const [resolvedPlacement, setResolvedPlacement] =
+    useState<PopoverProps['placement']>(placement);
+  const [arrowPosition, setArrowPosition] = useState<
+    { x?: number; y?: number } | undefined
+  >();
 
   const isStatic = useContext(StaticTooltipContext);
   const isMobileDevice = useRef(isMobile()).current;
 
   const onScreen = useRef<boolean | null>(null);
   const showTooltip = isStatic ? true : open;
+
+  useEffect(() => {
+    setResolvedPlacement(placement);
+  }, [placement]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -223,10 +226,18 @@ export const TooltipRenderer = ({
         modal={false}
         open={showTooltip}
         onClose={!isStatic ? () => setOpen(false) : undefined}
+        onPlacementChange={({ placement: newPlacement, arrow }) => {
+          setResolvedPlacement(newPlacement);
+          setArrowPosition(arrow);
+        }}
         triggerRef={triggerRef}
         arrowRef={arrowRef}
       >
-        <TooltipContent inferredPlacement={placement} arrowRef={arrowRef}>
+        <TooltipContent
+          placement={resolvedPlacement}
+          arrowPosition={arrowPosition}
+          arrowRef={arrowRef}
+        >
           {tooltip}
         </TooltipContent>
       </Popover>
