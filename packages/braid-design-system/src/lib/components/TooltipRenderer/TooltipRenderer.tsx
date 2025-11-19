@@ -54,22 +54,23 @@ export const TooltipTextDefaultsProvider = ({
 };
 
 export const TooltipContent = ({
+  inferredPlacement,
   arrowRef,
   children,
-  _INTERNAL_staticPlacement,
-  _INTERNAL_staticArrowLeft,
+  arrowLeftOffset, // Todo - remove prop
 }: {
+  inferredPlacement: PopoverProps['placement'];
   arrowRef?: React.RefObject<HTMLElement | null>;
   children: ReactNodeNoStrings;
-  _INTERNAL_staticPlacement?: 'top' | 'bottom';
-  _INTERNAL_staticArrowLeft?: number;
+  arrowLeftOffset?: number;
 }) => {
   const popoverContext = usePopoverContext();
 
-  const arrowX = _INTERNAL_staticArrowLeft ?? popoverContext?.arrow?.x ?? 0;
+  const arrowX = arrowLeftOffset ?? popoverContext?.arrow?.x ?? 0;
   const arrowY = popoverContext?.arrow?.y;
   const placement =
-    _INTERNAL_staticPlacement ?? popoverContext?.actualPlacement ?? 'top';
+    inferredPlacement ?? popoverContext?.actualPlacement ?? 'top';
+  const isStatic = arrowLeftOffset !== undefined;
 
   return (
     <Box
@@ -89,7 +90,10 @@ export const TooltipContent = ({
           ref={arrowRef}
           position="fixed"
           background="neutral"
-          className={styles.arrow[placement]}
+          className={[
+            styles.arrow[placement],
+            isStatic ? styles.staticArrow : undefined,
+          ]}
           style={{
             left: arrowX !== undefined ? `${arrowX}px` : undefined,
             top: arrowY !== undefined ? `${arrowY}px` : undefined,
@@ -228,7 +232,9 @@ export const TooltipRenderer = ({
         triggerRef={triggerRef}
         arrowRef={arrowRef}
       >
-        <TooltipContent arrowRef={arrowRef}>{tooltip}</TooltipContent>
+        <TooltipContent inferredPlacement={placement} arrowRef={arrowRef}>
+          {tooltip}
+        </TooltipContent>
       </Popover>
     </>
   );
