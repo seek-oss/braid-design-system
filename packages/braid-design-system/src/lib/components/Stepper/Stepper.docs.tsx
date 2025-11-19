@@ -499,9 +499,6 @@ const docs: ComponentDocs = {
             is the case, you can stack buttons vertically with “Continue” on the
             top followed by “Back” then “Save”.
           </Text>
-          <Notice>
-            <Text>Resize your browser window to see responsive behaviour.</Text>
-          </Notice>
         </>
       ),
     },
