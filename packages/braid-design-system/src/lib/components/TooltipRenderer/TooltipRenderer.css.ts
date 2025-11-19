@@ -43,10 +43,6 @@ const baseArrow = style({
   },
 });
 
-export const staticArrow = style({
-  transform: 'translateX(-50%)',
-});
-
 export const arrow = styleVariants({
   top: [baseArrow, { bottom: offset }],
   bottom: [baseArrow, { top: offset }],
