@@ -33,6 +33,14 @@ type Placement = 'top' | 'bottom';
 // Ensures it matches the highest available zIndex. Not semantically correct
 const zIndex = 'notification';
 
+export interface PopoverPlacementData {
+  placement: Placement;
+  arrow?: {
+    x?: number;
+    y?: number;
+  };
+}
+
 export interface PopoverProps {
   id?: string;
   role: NonNullable<AllHTMLAttributes<HTMLElement>['role'] | false>;
@@ -45,6 +53,7 @@ export interface PopoverProps {
   modal?: boolean;
   open: boolean;
   onClose?: () => void;
+  onPlacementChange?: (data: PopoverPlacementData) => void;
   triggerRef: RefObject<HTMLElement | null>;
   enterFocusRef?: RefObject<HTMLElement | null>;
   arrowRef?: RefObject<HTMLElement | null>;
@@ -80,6 +89,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       modal = true,
       open,
       onClose,
+      onPlacementChange,
       triggerRef,
       enterFocusRef,
       arrowRef,
@@ -190,6 +200,15 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
     const inferredPlacement: Placement = actualPlacement?.startsWith('top')
       ? 'top'
       : 'bottom';
+
+    useEffect(() => {
+      if (onPlacementChange) {
+        onPlacementChange({
+          placement: inferredPlacement,
+          arrow: middlewareData.arrow,
+        });
+      }
+    }, [inferredPlacement, middlewareData.arrow, onPlacementChange]);
 
     const combinedStyles = {
       ...floatingStyles,

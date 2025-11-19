@@ -14,7 +14,7 @@ const MockTooltipContent = ({
   children: ReactNodeNoStrings;
 }) => (
   <Box style={{ width: 'fit-content' }}>
-    <TooltipContent inferredPlacement={placement}>{children}</TooltipContent>
+    <TooltipContent placement={placement}>{children}</TooltipContent>
   </Box>
 );
 

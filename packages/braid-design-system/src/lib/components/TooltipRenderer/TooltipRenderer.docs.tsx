@@ -155,7 +155,7 @@ const docs: ComponentDocs = {
           code,
           value: (
             <Stack space="none" align="center">
-              <TooltipContent inferredPlacement="bottom">
+              <TooltipContent placement="bottom">
                 <Stack space="medium">
                   <Text size="large">Large text</Text>
                   <Text>
