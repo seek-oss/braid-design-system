@@ -1,3 +1,4 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import isMobile from 'is-mobile';
 import {
   createContext,
@@ -82,10 +83,10 @@ export const TooltipContent = ({
           position="fixed"
           background="neutral"
           className={styles.arrow[placement ?? 'top']}
-          style={{
-            left: arrowX !== undefined ? `${arrowX}px` : undefined,
-            top: arrowY !== undefined ? `${arrowY}px` : undefined,
-          }}
+          style={assignInlineVars({
+            [styles.arrowX]: arrowX !== undefined ? `${arrowX}px` : 'unset',
+            [styles.arrowY]: arrowY !== undefined ? `${arrowY}px` : 'unset',
+          })}
         />
       </TooltipTextDefaultsProvider>
     </Box>

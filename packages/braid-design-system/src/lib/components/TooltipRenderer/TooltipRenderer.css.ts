@@ -1,4 +1,4 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../themes/vars.css';
@@ -25,7 +25,12 @@ export const translateZ0 = style({
 const borderRadius = vars.borderRadius.small;
 const offset = calc(constants.arrowSize).divide(2).negate().toString();
 
+export const arrowX = createVar();
+export const arrowY = createVar();
+
 const baseArrow = style({
+  left: arrowX,
+  top: arrowY,
   visibility: 'hidden',
   ':before': {
     visibility: 'visible',
