@@ -111,7 +111,6 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       lockPlacement ? undefined : flip(),
       width !== 'full'
         ? shift({
-            padding: 8,
             crossAxis: align === 'center',
           })
         : undefined,

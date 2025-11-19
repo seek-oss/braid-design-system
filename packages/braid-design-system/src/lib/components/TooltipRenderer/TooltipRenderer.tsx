@@ -19,7 +19,6 @@ import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from './TooltipRenderer.css';
 
-const edgeOffset = 'xxsmall';
 export const offsetSpace = 'small';
 
 const StaticTooltipContext = createContext(false);
@@ -71,7 +70,6 @@ export const TooltipContent = ({
       background="neutral"
       borderRadius="large"
       padding="small"
-      marginX={edgeOffset}
       className={[styles.maxWidth, styles.translateZ0]}
     >
       <TooltipTextDefaultsProvider>
