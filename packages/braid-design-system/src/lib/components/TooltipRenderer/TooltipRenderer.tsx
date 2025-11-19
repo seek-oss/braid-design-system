@@ -20,12 +20,13 @@ import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from './TooltipRenderer.css';
 
-const clamp = (min: number, value: number, max: number) =>
-  Math.max(min, Math.min(value, max));
-
 export const offsetSpace = 'small';
 
 const StaticTooltipContext = createContext(false);
+
+const clamp = (min: number, value: number, max: number) =>
+  Math.max(min, Math.min(value, max));
+
 export const StaticTooltipProvider = ({
   children,
 }: {
@@ -69,7 +70,7 @@ export const TooltipContent = ({
 
   const { space, grid } = useSpace();
   const edgeOffsetInPx = grid * space.xsmall;
-  const rightEdgeMagicNumber = 20; // Todo - replace with some derived value. probably arrow size
+  const arrowWidthOffset = styles.constantsPxSizes.arrowSize * 2;
 
   const [tooltipWidth, setTooltipWidth] = useState(0);
   const tooltipContainerRef = useRef<HTMLElement | null>(null);
@@ -87,7 +88,7 @@ export const TooltipContent = ({
       ? clamp(
           edgeOffsetInPx,
           arrowX,
-          tooltipWidth - edgeOffsetInPx - rightEdgeMagicNumber,
+          tooltipWidth - edgeOffsetInPx - arrowWidthOffset,
         )
       : arrowX;
 
