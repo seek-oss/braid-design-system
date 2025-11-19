@@ -15,9 +15,13 @@ import { Box } from '../Box/Box';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from './TooltipRenderer.css';
+
+const clamp = (min: number, value: number, max: number) =>
+  Math.max(min, Math.min(value, max));
 
 export const offsetSpace = 'small';
 
@@ -63,8 +67,33 @@ export const TooltipContent = ({
   const arrowX = arrowPosition?.x;
   const arrowY = arrowPosition?.y;
 
+  const { space, grid } = useSpace();
+  const edgeOffsetInPx = grid * space.xsmall;
+  const rightEdgeMagicNumber = 20; // Todo - replace with some derived value. probably arrow size
+
+  const [tooltipWidth, setTooltipWidth] = useState(0);
+  const tooltipContainerRef = useRef<HTMLElement | null>(null);
+
+  const handleTooltipContainerRef = (element: HTMLElement | null) => {
+    tooltipContainerRef.current = element;
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      setTooltipWidth(rect.width);
+    }
+  };
+
+  const clampedArrowX =
+    arrowX !== undefined && tooltipWidth > 0
+      ? clamp(
+          edgeOffsetInPx,
+          arrowX,
+          tooltipWidth - edgeOffsetInPx - rightEdgeMagicNumber,
+        )
+      : arrowX;
+
   return (
     <Box
+      ref={handleTooltipContainerRef}
       textAlign="left"
       boxShadow="large"
       background="neutral"
@@ -82,7 +111,8 @@ export const TooltipContent = ({
           background="neutral"
           className={styles.arrow[placement ?? 'top']}
           style={assignInlineVars({
-            [styles.arrowX]: arrowX !== undefined ? `${arrowX}px` : 'unset',
+            [styles.arrowX]:
+              clampedArrowX !== undefined ? `${clampedArrowX}px` : 'unset',
             [styles.arrowY]: arrowY !== undefined ? `${arrowY}px` : 'unset',
           })}
         />
