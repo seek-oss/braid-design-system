@@ -1,9 +1,9 @@
 import {
   useFloating,
-  offset as floatingOffset,
+  offset as floatingUiOffset,
   flip,
   shift,
-  arrow as floatingArrow,
+  arrow as floatingUiArrow,
   autoUpdate,
 } from '@floating-ui/react-dom';
 import dedent from 'dedent';
@@ -28,23 +28,31 @@ import { animationTimeout } from '../animationTimeout';
 import * as styles from './Popover.css';
 
 type Placement = 'top' | 'bottom';
+type Align = 'left' | 'right' | 'center';
 
-type FloatingUiPlacement = Extract<
+type FloatingUiPosition = Extract<
   ReturnType<typeof useFloating>['placement'],
   'top' | 'bottom' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'
 >;
 
-function getFloatingUiPlacement(
+const positionMap: Record<Placement, Record<Align, FloatingUiPosition>> = {
+  top: {
+    left: 'top-start',
+    center: 'top',
+    right: 'top-end',
+  },
+  bottom: {
+    left: 'bottom-start',
+    center: 'bottom',
+    right: 'bottom-end',
+  },
+};
+
+function getFloatingUiPosition(
   placement: Placement,
-  align: 'left' | 'right' | 'center',
-): FloatingUiPlacement {
-  if (align === 'left') {
-    return placement === 'top' ? 'top-start' : 'bottom-start';
-  }
-  if (align === 'right') {
-    return placement === 'top' ? 'top-end' : 'bottom-end';
-  }
-  return placement;
+  align: Align,
+): FloatingUiPosition {
+  return positionMap[placement][align];
 }
 
 // Ensures it matches the highest available zIndex. Not semantically correct
@@ -123,30 +131,27 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       offsetSpacePx = spaceScale.space[offsetSpace] * spaceScale.grid;
     }
 
-    const floatingUiRequestedPlacement = getFloatingUiPlacement(
-      placement,
-      align,
-    );
+    const floatingUiRequestedPosition = getFloatingUiPosition(placement, align);
 
     const middleware = [
-      floatingOffset(offsetSpacePx),
+      floatingUiOffset(offsetSpacePx),
       lockPlacement ? undefined : flip(),
       width !== 'full'
         ? shift({
             crossAxis: align === 'center',
           })
         : undefined,
-      arrowRef ? floatingArrow({ element: arrowRef }) : undefined,
+      arrowRef ? floatingUiArrow({ element: arrowRef }) : undefined,
     ].filter((m): m is NonNullable<typeof m> => m !== undefined);
 
     const {
       refs,
       floatingStyles,
       middlewareData,
-      placement: floatingUiEvaluatedPlacement,
+      placement: floatingUiEvaluatedPosition,
       isPositioned,
     } = useFloating({
-      placement: floatingUiRequestedPlacement,
+      placement: floatingUiRequestedPosition,
       middleware,
       whileElementsMounted: autoUpdate,
     });
@@ -212,9 +217,9 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       }, animationTimeout);
     }, [open, enterFocusRef]);
 
-    // Floating UI supports multiple placements, but we only use 'top' and 'bottom'
-    const resolvedPlacement: Placement =
-      floatingUiEvaluatedPlacement?.startsWith('top') ? 'top' : 'bottom';
+    const resolvedPlacement = floatingUiEvaluatedPosition?.startsWith('top')
+      ? 'top'
+      : 'bottom';
 
     useEffect(() => {
       if (onPlacementChange) {
@@ -227,6 +232,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const combinedStyles = {
       ...floatingStyles,
+      // Todo - ensure this is correct
       ...(width === 'full' && triggerRef.current
         ? {
             width: `${triggerRef.current.getBoundingClientRect().width}px`,
