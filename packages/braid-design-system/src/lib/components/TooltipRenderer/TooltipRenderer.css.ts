@@ -3,13 +3,13 @@ import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '../../themes/vars.css';
 
-export const constantsPxSizes = {
-  maxWidth: 260,
-  arrowSize: 12,
+export const constants = {
+  maxWidth: '260px',
+  arrowSize: '12px',
 };
 
 export const maxWidth = style({
-  maxWidth: calc.multiply(constantsPxSizes.maxWidth, '1px'),
+  maxWidth: constants.maxWidth,
 });
 
 export const overflowWrap = style({
@@ -23,10 +23,7 @@ export const translateZ0 = style({
 });
 
 const borderRadius = vars.borderRadius.small;
-const offset = calc(calc.multiply(constantsPxSizes.arrowSize, '1px'))
-  .divide(2)
-  .negate()
-  .toString();
+const offset = calc(constants.arrowSize).divide(2).negate().toString();
 
 export const arrowX = createVar();
 export const arrowY = createVar();
@@ -42,14 +39,8 @@ const baseArrow = style({
   },
   selectors: {
     '&, &::before': {
-      width: calc.add(
-        calc.multiply(constantsPxSizes.arrowSize, '1px'),
-        calc.multiply(borderRadius, 2),
-      ),
-      height: calc.add(
-        calc.multiply(constantsPxSizes.arrowSize, '1px'),
-        calc.multiply(borderRadius, 2),
-      ),
+      width: calc.add(constants.arrowSize, calc.multiply(borderRadius, 2)),
+      height: calc.add(constants.arrowSize, calc.multiply(borderRadius, 2)),
       position: 'absolute',
       background: 'inherit',
       borderRadius,

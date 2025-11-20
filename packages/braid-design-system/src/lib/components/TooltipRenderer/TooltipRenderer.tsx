@@ -70,7 +70,7 @@ export const TooltipContent = ({
 
   const { space, grid } = useSpace();
   const edgeOffsetInPx = grid * space.xsmall;
-  const arrowWidthOffset = styles.constantsPxSizes.arrowSize * 2;
+  const arrowWidthOffset = parseFloat(styles.constants.arrowSize) * 2;
 
   const [tooltipWidth, setTooltipWidth] = useState(0);
   const tooltipContainerRef = useRef<HTMLElement | null>(null);

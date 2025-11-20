@@ -16,7 +16,7 @@ import {
 
 import { TooltipContent } from './TooltipRenderer';
 
-import { constantsPxSizes } from './TooltipRenderer.css';
+import { constants } from './TooltipRenderer.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -109,8 +109,8 @@ const docs: ComponentDocs = {
         <>
           <Text>
             To ensure readability, Tooltips have a maximum width of{' '}
-            {`${constantsPxSizes.maxWidth}px`}, which means that text will wrap
-            onto multiple lines if you provide enough content.
+            {constants.maxWidth}, which means that text will wrap onto multiple
+            lines if you provide enough content.
           </Text>
           <Text>
             You can also use multiple{' '}
