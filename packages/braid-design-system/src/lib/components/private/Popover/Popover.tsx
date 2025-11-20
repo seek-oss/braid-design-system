@@ -64,7 +64,7 @@ export interface PopoverMiddlewareData {
     x?: number;
     y?: number;
   };
-  actualPlacement?: Placement;
+  resolvedPlacement?: Placement;
 }
 
 const PopoverContext = createContext<PopoverMiddlewareData | null>(null);
@@ -120,7 +120,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       refs,
       floatingStyles,
       middlewareData,
-      placement: actualPlacement,
+      placement: floatingUiPlacement,
       isPositioned,
     } = useFloating({
       placement,
@@ -189,18 +189,19 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       }, animationTimeout);
     }, [open, enterFocusRef]);
 
-    const inferredPlacement: Placement = actualPlacement?.startsWith('top')
+    // Floating UI supports multiple placements, but we only use 'top' and 'bottom'
+    const resolvedPlacement: Placement = floatingUiPlacement?.startsWith('top')
       ? 'top'
       : 'bottom';
 
     useEffect(() => {
       if (onPlacementChange) {
         onPlacementChange({
-          placement: inferredPlacement,
+          placement: resolvedPlacement,
           arrow: middlewareData.arrow,
         });
       }
-    }, [inferredPlacement, middlewareData.arrow, onPlacementChange]);
+    }, [resolvedPlacement, middlewareData.arrow, onPlacementChange]);
 
     const combinedStyles = {
       ...floatingStyles,
@@ -214,7 +215,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const popoverContextValue: PopoverMiddlewareData = {
       arrow: middlewareData.arrow,
-      actualPlacement: inferredPlacement,
+      resolvedPlacement,
     };
 
     return (
@@ -250,7 +251,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
           <Box
             className={{
               [styles.animation]: true,
-              [styles.invertPlacement]: inferredPlacement === 'bottom',
+              [styles.invertPlacement]: resolvedPlacement === 'bottom',
               [styles.delayVisibility]: delayVisibility,
             }}
           >
