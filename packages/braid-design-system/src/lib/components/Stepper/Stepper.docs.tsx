@@ -2,18 +2,24 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import {
+  Box,
   Button,
   Column,
   Columns,
+  Hidden,
+  IconArrow,
   IconChevron,
   IconLanguage,
+  IconSend,
   Inline,
+  List,
   Notice,
   Stack,
   Strong,
   Text,
   TextLink,
 } from '..';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { Step } from './Step';
@@ -21,6 +27,12 @@ import { Stepper } from './Stepper';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A progress indicator that guides users through multi-step tasks by
+      displaying position and completion status.
+    </Text>
+  ),
   subComponents: ['Step'],
   Example: () =>
     source(
@@ -28,7 +40,7 @@ const docs: ComponentDocs = {
         <Step>1. First step</Step>
         <Step>2. Second step</Step>
         <Step>3. Third step</Step>
-        <Step>4. Forth step</Step>
+        <Step>4. Fourth step</Step>
         <Step>5. Fifth step</Step>
       </Stepper>,
     ),
@@ -72,12 +84,61 @@ const docs: ComponentDocs = {
   alternatives: [],
   additional: [
     {
+      label: 'Alignment',
+      description: (
+        <>
+          <Text>
+            The Stepper is center-aligned by default, but this can be customised
+            via the <Strong>align</Strong> prop.
+          </Text>
+          <Notice>
+            <Text>
+              The alignment is always set to <Strong>left</Strong> on mobile due
+              to space constraints with step labels.
+            </Text>
+          </Notice>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stepper align="left" label="Left aligned" progress={2}>
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step>3. Third step</Step>
+          </Stepper>,
+        ),
+    },
+    {
+      label: 'Tone',
+      description: (
+        <>
+          <Text>
+            The Stepper can be de-emphasized by setting the{' '}
+            <Strong>tone</Strong> to <Strong>neutral</Strong>.
+          </Text>
+          <Text>
+            This makes the highlight colour follow the default text colour,
+            including inverting on dark surfaces to improve contrast.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stepper tone="neutral" label="De-emphasized the tone" progress={2}>
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step>3. Third step</Step>
+          </Stepper>,
+        ),
+    },
+    {
       label: 'Linear mode',
       description: (
         <Text>
-          By default the <Strong>mode</Strong> is set to <Strong>linear</Strong>
-          , requiring a step number be passed to the <Strong>progress</Strong>{' '}
-          prop indicating how far through the process the user is.
+          The default <Strong>mode</Strong> is <Strong>linear</Strong>, which
+          requires each step be completed before advancing. This mode requires a
+          step number be passed to the <Strong>progress</Strong> prop to
+          indicate the user&rsquo;s progress.
         </Text>
       ),
       Example: ({ setDefaultState, setState, getState }) =>
@@ -85,6 +146,10 @@ const docs: ComponentDocs = {
           <>
             {setDefaultState('progress', 1)}
             <Stack space="large">
+              <Text tone="secondary" size="small">
+                Use the buttons to move between steps and update their
+                completion status:
+              </Text>
               <Stepper label="Linear steps" progress={getState('progress')}>
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
@@ -131,25 +196,69 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            For cases where the steps are not necessarily sequential, the{' '}
-            <Strong>mode</Strong> can be set to <Strong>non-linear</Strong>.
+            For non-sequential steps, the <Strong>mode</Strong> can be set to{' '}
+            <Strong>non-linear</Strong>. This allows users to navigate between
+            steps regardless of completion.
           </Text>
           <Text>
             In this mode, the <Strong>activeStep</Strong> prop is required and
-            the completion of an individual step can be controlled by providing
-            the <Strong>complete</Strong> prop to the <Strong>Step</Strong>{' '}
-            itself.
+            individual step completion can be controlled via the{' '}
+            <Strong>complete</Strong> prop on the <Strong>Step</Strong> itself.
           </Text>
         </>
       ),
-      Example: () =>
+      Example: ({ setDefaultState, getState, setState }) =>
         source(
-          <Stepper label="Non-linear steps" mode="non-linear" activeStep={2}>
-            <Step>1. First step</Step>
-            <Step>2. Second step</Step>
-            <Step complete>3. Third step</Step>
-            <Step>4. Forth step</Step>
-          </Stepper>,
+          <>
+            {setDefaultState('activeStep', 2)}
+            <Stack space="large">
+              <Text tone="secondary" size="small">
+                Use the buttons to move between steps without changing their
+                completion status:
+              </Text>
+              <Stepper
+                mode="non-linear"
+                label="Non-linear steps"
+                activeStep={getState('activeStep')}
+              >
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step complete>3. Third step</Step>
+                <Step>4. Forth step</Step>
+              </Stepper>
+              <Columns space="small">
+                <Column>
+                  <Inline space="small" align="right">
+                    {getState('activeStep') > 1 ? (
+                      <Button
+                        size="small"
+                        variant="ghost"
+                        onClick={() =>
+                          setState('activeStep', getState('activeStep') - 1)
+                        }
+                      >
+                        <IconChevron direction="left" /> Back
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+                <Column>
+                  <Inline space="small">
+                    {getState('activeStep') < 4 ? (
+                      <Button
+                        size="small"
+                        onClick={() =>
+                          setState('activeStep', getState('activeStep') + 1)
+                        }
+                      >
+                        Next <IconChevron direction="right" />
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+              </Columns>
+            </Stack>
+          </>,
         ),
     },
     {
@@ -201,7 +310,7 @@ const docs: ComponentDocs = {
                   3. Third step
                 </Step>
                 <Step id={4} complete={getState('complete')[4]}>
-                  4. Forth step
+                  4. Fourth step
                 </Step>
                 <Step id={5} complete={getState('complete')[5]}>
                   5. Fifth step
@@ -249,7 +358,7 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step>3. Third step</Step>
-                <Step>4. Forth step</Step>
+                <Step>4. Fourth step</Step>
                 <Step>5. Fifth step</Step>
                 <Step>6. Sixth step</Step>
               </Stepper>
@@ -258,52 +367,171 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'De-emphasizing the tone',
+      label: 'Providing user controls',
       description: (
         <>
           <Text>
-            The Stepper can be de-emphasized by setting the{' '}
-            <Strong>tone</Strong> to <Strong>neutral</Strong>.
+            We recommend providing &quot;Back&quot; and &quot;Continue&quot;
+            buttons for the user to navigate through the steps. When relevant,
+            you may also want to provide a &quot;Save&quot; button so the user
+            can return to their progress later.
           </Text>
           <Text>
-            This makes the highlight colour follow the default text colour,
-            including inverting on dark surfaces to improve contrast.
-          </Text>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Stepper tone="neutral" label="De-emphasized the tone" progress={2}>
-            <Step>1. First step</Step>
-            <Step>2. Second step</Step>
-            <Step>3. Third step</Step>
-          </Stepper>,
-        ),
-    },
-    {
-      label: 'Alignment',
-      description: (
-        <>
-          <Text>
-            The Stepper is center-aligned by default, but this can be customised
-            via the <Strong>align</Strong> prop.
+            Regardless of the actions you provide, consider which are most
+            important and apply an appropriate visual hierarchy using variants{' '}
+            <Strong>solid</Strong>, <Strong>ghost</Strong>,{' '}
+            <Strong>soft</Strong> and <Strong>transparent</Strong>.
           </Text>
           <Notice>
-            <Text>
-              The alignment is always set to <Strong>left</Strong> on mobile due
-              to space constraints with step labels.
-            </Text>
+            <Text>Resize your browser window to see responsive behaviour.</Text>
           </Notice>
         </>
       ),
-      Example: () =>
+      Example: ({ setDefaultState, setState, getState }) =>
         source(
-          <Stepper align="left" label="Left aligned" progress={2}>
-            <Step>1. First step</Step>
-            <Step>2. Second step</Step>
-            <Step>3. Third step</Step>
-          </Stepper>,
+          <>
+            {setDefaultState('progress', 2)}
+            <Stack space="large">
+              <Stepper label="Linear steps" progress={getState('progress')}>
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step>3. Third step</Step>
+                <Step>4. Fourth step</Step>
+              </Stepper>
+              <Placeholder height="200" label="Content" />
+              <Hidden below="tablet">
+                <Columns space="small">
+                  <Column>
+                    <Inline space="small">
+                      {getState('progress') > 1 ? (
+                        <Button
+                          variant="soft"
+                          onClick={() =>
+                            setState('progress', getState('progress') - 1)
+                          }
+                        >
+                          <IconArrow direction="left" /> Back
+                        </Button>
+                      ) : null}
+                    </Inline>
+                  </Column>
+                  <Column>
+                    <Inline space="small" align="right">
+                      <Button variant="transparent">Save draft</Button>
+                      {getState('progress') < 4 ? (
+                        <Button
+                          variant="solid"
+                          tone="formAccent"
+                          onClick={() =>
+                            setState('progress', getState('progress') + 1)
+                          }
+                        >
+                          Continue <IconArrow direction="right" />
+                        </Button>
+                      ) : null}
+                      {getState('progress') > 3 ? (
+                        <Button
+                          icon={<IconSend />}
+                          iconPosition="trailing"
+                          tone="brandAccent"
+                          onClick={() =>
+                            setState('progress', getState('progress') + 1)
+                          }
+                        >
+                          Submit
+                        </Button>
+                      ) : null}
+                    </Inline>
+                  </Column>
+                </Columns>
+              </Hidden>
+              <Hidden above="mobile">
+                <Columns space="xsmall">
+                  <Column>
+                    {getState('progress') > 1 ? (
+                      <Button
+                        icon={<IconArrow direction="left" />}
+                        variant="soft"
+                        onClick={() =>
+                          setState('progress', getState('progress') - 1)
+                        }
+                      >
+                        Back
+                      </Button>
+                    ) : null}
+                  </Column>
+                  <Column>
+                    {getState('progress') < 4 ? (
+                      <Button
+                        variant="solid"
+                        tone="formAccent"
+                        icon={<IconArrow direction="right" />}
+                        iconPosition="trailing"
+                        onClick={() =>
+                          setState('progress', getState('progress') + 1)
+                        }
+                      >
+                        Continue
+                      </Button>
+                    ) : null}
+
+                    {getState('progress') > 3 ? (
+                      <Button
+                        icon={<IconSend />}
+                        iconPosition="trailing"
+                        tone="brandAccent"
+                        onClick={() =>
+                          setState('progress', getState('progress') + 1)
+                        }
+                      >
+                        Submit
+                      </Button>
+                    ) : null}
+                  </Column>
+                </Columns>
+
+                <Box paddingTop="small">
+                  <Button variant="transparent">Save draft</Button>
+                </Box>
+              </Hidden>
+            </Stack>
+          </>,
         ),
+    },
+    {
+      description: (
+        <>
+          <Text>
+            When designing in a language other than english, the button word
+            lengths may become too long to fit side by side on mobile. If this
+            is the case, you can stack buttons vertically with “Continue” on the
+            top followed by “Back” then “Save”.
+          </Text>
+        </>
+      ),
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Stepper:</Text>
+            <List space="large">
+              <Text>
+                to guide users through complex, multi-step tasks or processes.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Stepper:</Text>
+            <List space="large">
+              <Text>
+                if the task only requires one or two straightforward actions.
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
     },
     dataAttributeDocs({
       code: `
