@@ -194,7 +194,7 @@
     "is-mobile": "^4.0.0",
     "lodash.curry": "^4.1.1",
     "polished": "^4.1.0",
-    "react-focus-lock": "^2.9.7",
+    "focus-trap-react": "^10.2.3",
     "react-remove-scroll": "^2.7.0",
     "throttle-debounce": "^5.0.2",
     "utility-types": "^3.10.0"

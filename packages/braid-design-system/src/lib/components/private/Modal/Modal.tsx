@@ -1,3 +1,4 @@
+import FocusTrap from 'focus-trap-react';
 import {
   type ReactNode,
   type Reducer,
@@ -8,7 +9,6 @@ import {
   useContext,
   useReducer,
 } from 'react';
-import FocusLock from 'react-focus-lock';
 
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
@@ -206,67 +206,71 @@ export const Modal = ({
 
   return state === OPENING || state === OPEN || state === CLOSING ? (
     <ModalPortal>
-      <FocusLock
+      <FocusTrap
         className={styles.resetStackingContext}
-        disabled={!trapActive}
-        autoFocus={false}
-        onActivation={() => {
-          if (state === OPEN) {
-            return;
-          }
+        active={trapActive}
+        focusTrapOptions={{
+          initialFocus: false,
+          onActivate: () => {
+            if (state === OPEN) {
+              return;
+            }
 
-          if (headingRef.current && shouldFocus) {
-            headingRef.current.focus();
-          }
+            if (headingRef.current && shouldFocus) {
+              headingRef.current.focus();
+            }
 
-          dispatch(ANIMATION_COMPLETE);
+            dispatch(ANIMATION_COMPLETE);
+          },
+          returnFocusOnDeactivate: true,
         }}
-        returnFocus
       >
-        <Box
-          onClick={state === OPEN ? initiateClose : undefined}
-          position="fixed"
-          inset={0}
-          zIndex="modalBackdrop"
-          opacity={state !== OPEN ? 0 : undefined}
-          className={[styles.backdrop, styles.transition[position]]}
-        />
+        <Box className={styles.resetStackingContext}>
+          <Box
+            onClick={state === OPEN ? initiateClose : undefined}
+            position="fixed"
+            inset={0}
+            zIndex="modalBackdrop"
+            opacity={state !== OPEN ? 0 : undefined}
+            className={[styles.backdrop, styles.transition[position]]}
+          />
 
-        <Box
-          position="fixed"
-          inset={0}
-          zIndex="modal"
-          pointerEvents="none"
-          opacity={state !== OPEN ? 0 : undefined}
-          paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
-          paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
-          padding={position === 'center' ? externalGutter : undefined}
-          className={[
-            styles.modalContainer,
-            styles.transition[position],
-            state === OPENING && styles.entrance[position],
-            state === CLOSING && styles.exit[position],
-          ]}
-        >
-          <ModalContent
-            id={id}
-            description={description}
-            onClose={initiateClose}
-            width={width}
-            closeLabel={closeLabel}
-            illustration={illustration}
-            title={title}
-            headingLevel={headingLevel}
-            headingRef={headingRef}
-            modalRef={modalRef}
-            position={position}
-            scrollLock={!(state === CLOSING)}
-            {...restProps}
+          <Box
+            position="fixed"
+            inset={0}
+            zIndex="modal"
+            pointerEvents="none"
+            opacity={state !== OPEN ? 0 : undefined}
+            paddingLeft={position === 'right' ? ['none', 'xlarge'] : undefined}
+            paddingRight={position === 'left' ? ['none', 'xlarge'] : undefined}
+            padding={position === 'center' ? externalGutter : undefined}
+            className={[
+              styles.modalContainer,
+              styles.transition[position],
+              state === OPENING && styles.entrance[position],
+              state === CLOSING && styles.exit[position],
+            ]}
           >
-            {children}
-          </ModalContent>
+            <ModalContent
+              id={id}
+              description={description}
+              onClose={initiateClose}
+              width={width}
+              closeLabel={closeLabel}
+              illustration={illustration}
+              title={title}
+              headingLevel={headingLevel}
+              headingRef={headingRef}
+              modalRef={modalRef}
+              position={position}
+              scrollLock={!(state === CLOSING)}
+              {...restProps}
+            >
+              {children}
+            </ModalContent>
+          </Box>
         </Box>
-      </FocusLock>
+      </FocusTrap>
     </ModalPortal>
   ) : null;
 };
