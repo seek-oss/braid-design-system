@@ -10,6 +10,7 @@ import dedent from 'dedent';
 import {
   type ReactNode,
   useEffect,
+  useState,
   forwardRef,
   useRef,
   useImperativeHandle,
@@ -124,6 +125,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
   ) => {
     const ref = useRef<HTMLElement>(null);
     useImperativeHandle(forwardedRef, () => ref.current as HTMLElement);
+    const [triggerWidth, setTriggerWidth] = useState<number | null>(null);
 
     const spaceScale = useSpace();
     let offsetSpacePx = 0;
@@ -135,14 +137,13 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const middleware = [
       floatingUiOffset(offsetSpacePx),
-      lockPlacement ? undefined : flip(),
-      width !== 'full'
-        ? shift({
-            crossAxis: align === 'center',
-          })
-        : undefined,
-      arrowRef ? floatingUiArrow({ element: arrowRef }) : undefined,
-    ].filter((m): m is NonNullable<typeof m> => m !== undefined);
+      !lockPlacement && flip(),
+      width !== 'full' &&
+        shift({
+          crossAxis: align === 'center',
+        }),
+      arrowRef && floatingUiArrow({ element: arrowRef }),
+    ].filter(Boolean);
 
     const {
       refs,
@@ -217,6 +218,14 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       }, animationTimeout);
     }, [open, enterFocusRef]);
 
+    useEffect(() => {
+      if (width === 'full' && triggerRef.current && open) {
+        setTriggerWidth(triggerRef.current.getBoundingClientRect().width);
+      } else {
+        setTriggerWidth(null);
+      }
+    }, [width, triggerRef, open]);
+
     const resolvedPlacement = floatingUiEvaluatedPosition?.startsWith('top')
       ? 'top'
       : 'bottom';
@@ -232,10 +241,9 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const combinedStyles = {
       ...floatingStyles,
-      // Todo - ensure this is correct
-      ...(width === 'full' && triggerRef.current
+      ...(width === 'full' && triggerWidth !== null
         ? {
-            width: `${triggerRef.current.getBoundingClientRect().width}px`,
+            width: `${triggerWidth}px`,
           }
         : {}),
       ...(!isPositioned ? { opacity: 0, pointerEvents: 'none' as const } : {}),
