@@ -29,6 +29,24 @@ import * as styles from './Popover.css';
 
 type Placement = 'top' | 'bottom';
 
+type FloatingUiPlacement = Extract<
+  ReturnType<typeof useFloating>['placement'],
+  'top' | 'bottom' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'
+>;
+
+function getFloatingUiPlacement(
+  placement: Placement,
+  align: 'left' | 'right' | 'center',
+): FloatingUiPlacement {
+  if (align === 'left') {
+    return placement === 'top' ? 'top-start' : 'bottom-start';
+  }
+  if (align === 'right') {
+    return placement === 'top' ? 'top-end' : 'bottom-end';
+  }
+  return placement;
+}
+
 // Ensures it matches the highest available zIndex. Not semantically correct
 const zIndex = 'notification';
 
@@ -105,6 +123,11 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       offsetSpacePx = spaceScale.space[offsetSpace] * spaceScale.grid;
     }
 
+    const floatingUiRequestedPlacement = getFloatingUiPlacement(
+      placement,
+      align,
+    );
+
     const middleware = [
       floatingOffset(offsetSpacePx),
       lockPlacement ? undefined : flip(),
@@ -120,10 +143,10 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       refs,
       floatingStyles,
       middlewareData,
-      placement: floatingUiPlacement,
+      placement: floatingUiEvaluatedPlacement,
       isPositioned,
     } = useFloating({
-      placement,
+      placement: floatingUiRequestedPlacement,
       middleware,
       whileElementsMounted: autoUpdate,
     });
@@ -190,9 +213,8 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
     }, [open, enterFocusRef]);
 
     // Floating UI supports multiple placements, but we only use 'top' and 'bottom'
-    const resolvedPlacement: Placement = floatingUiPlacement?.startsWith('top')
-      ? 'top'
-      : 'bottom';
+    const resolvedPlacement: Placement =
+      floatingUiEvaluatedPlacement?.startsWith('top') ? 'top' : 'bottom';
 
     useEffect(() => {
       if (onPlacementChange) {
