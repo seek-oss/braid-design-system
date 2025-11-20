@@ -147,7 +147,8 @@ const docs: ComponentDocs = {
             {setDefaultState('progress', 1)}
             <Stack space="large">
               <Text tone="secondary" size="small">
-                Use the buttons to complete the steps in linear mode:
+                Use the buttons to move between steps and update their
+                completion status:
               </Text>
               <Stepper label="Linear steps" progress={getState('progress')}>
                 <Step>1. First step</Step>
@@ -212,7 +213,8 @@ const docs: ComponentDocs = {
             {setDefaultState('activeStep', 2)}
             <Stack space="large">
               <Text tone="secondary" size="small">
-                Use the buttons to move between steps without completing them:
+                Use the buttons to move between steps without changing their
+                completion status:
               </Text>
               <Stepper
                 mode="non-linear"
