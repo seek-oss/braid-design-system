@@ -2,8 +2,8 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 import {
   Accordion,
   AccordionItem,
+  Badge,
   Stack,
-  Text,
 } from 'braid-src/lib/components';
 import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router';
@@ -131,7 +131,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
       </AccordionItem>
 
       <AccordionItem label="Patterns">
-        <Text>Coming soon!</Text>
+        <Badge tone="info">Coming soon</Badge>
       </AccordionItem>
 
       <AccordionItem label="Development tools">
