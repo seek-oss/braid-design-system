@@ -207,7 +207,7 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step>3. Third step</Step>
-                <Step>4. Forth step</Step>
+                <Step>4. Fourth step</Step>
               </Stepper>
               <Columns space="small">
                 <Column>
@@ -252,7 +252,7 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step>3. Third step</Step>
-                <Step>4. Forth step</Step>
+                <Step>4. Fourth step</Step>
               </Stepper>
               <Columns space="small">
                 <Column>
@@ -328,7 +328,7 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step complete>3. Third step</Step>
-                <Step>4. Forth step</Step>
+                <Step>4. Fourth step</Step>
               </Stepper>
               <Columns space="small">
                 <Column>
@@ -377,7 +377,7 @@ const docs: ComponentDocs = {
                 <Step>1. First step</Step>
                 <Step>2. Second step</Step>
                 <Step complete>3. Third step</Step>
-                <Step>4. Forth step</Step>
+                <Step>4. Fourth step</Step>
               </Stepper>
               <Columns space="small">
                 <Column>
