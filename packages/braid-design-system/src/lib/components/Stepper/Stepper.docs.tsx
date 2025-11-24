@@ -87,25 +87,50 @@ const docs: ComponentDocs = {
       label: 'Alignment',
       description: (
         <>
+          <Text>The Stepper is displayed center-aligned by default.</Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="large">
+            <Text tone="secondary" size="small">
+              Centre aligned (default):
+            </Text>
+            <Stepper label="Default alignment" progress={2}>
+              <Step>1. First step</Step>
+              <Step>2. Second step</Step>
+              <Step>3. Third step</Step>
+            </Stepper>
+          </Stack>,
+        ),
+    },
+    {
+      description: (
+        <>
           <Text>
-            The Stepper is center-aligned by default, but this can be customised
-            via the <Strong>align</Strong> prop.
+            This can be changed to <Strong>left</Strong> using the{' '}
+            <Strong>align</Strong> prop.
           </Text>
           <Notice>
             <Text>
-              The alignment is always set to <Strong>left</Strong> on mobile due
-              to space constraints with step labels.
+              Note that alignment is always set to <Strong>left</Strong> on
+              mobile due to space constraints with step labels.
             </Text>
           </Notice>
         </>
       ),
       Example: () =>
         source(
-          <Stepper align="left" label="Left aligned" progress={2}>
-            <Step>1. First step</Step>
-            <Step>2. Second step</Step>
-            <Step>3. Third step</Step>
-          </Stepper>,
+          <Stack space="large">
+            <Text tone="secondary" size="small">
+              Left aligned:
+            </Text>
+            <Stepper align="left" label="Left aligned" progress={2}>
+              <Step>1. First step</Step>
+              <Step>2. Second step</Step>
+              <Step>3. Third step</Step>
+            </Stepper>
+          </Stack>,
         ),
     },
     {
