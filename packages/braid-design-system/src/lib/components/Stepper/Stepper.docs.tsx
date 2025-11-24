@@ -544,8 +544,8 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ setDefaultState, getState, setState }) =>
-        source(
+      Example: ({ setDefaultState, getState, setState }) => {
+        const { value: visual } = source(
           <>
             {setDefaultState('activeStep', 2)}
             <Stack space="large">
@@ -569,7 +569,36 @@ const docs: ComponentDocs = {
               </Stepper>
             </Stack>
           </>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <>
+            {setDefaultState('activeStep', 2)}
+            <Stack space="large">
+              <Stepper
+                label="Linear steps"
+                progress={5}
+                activeStep={getState('activeStep')}
+                onStepClick={({ stepNumber }) =>
+                  setState('activeStep', stepNumber)
+                }
+              >
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step>3. Third step</Step>
+                <Step>4. Fourth step</Step>
+                <Step>5. Fifth step</Step>
+                <Step>6. Sixth step</Step>
+              </Stepper>
+            </Stack>
+          </>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Providing user controls',
