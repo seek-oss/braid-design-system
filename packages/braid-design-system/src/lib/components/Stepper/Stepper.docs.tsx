@@ -311,8 +311,8 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: ({ setDefaultState, getState, setState }) =>
-        source(
+      Example: ({ setDefaultState, setState, getState }) => {
+        const { value: visual } = source(
           <>
             {setDefaultState('activeStep', 2)}
             <Stack space="large">
@@ -363,7 +363,62 @@ const docs: ComponentDocs = {
               </Columns>
             </Stack>
           </>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <>
+            {setDefaultState('activeStep', 2)}
+            <Stack space="large">
+              <Stepper
+                mode="non-linear"
+                label="Non-linear steps"
+                activeStep={getState('activeStep')}
+              >
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step complete>3. Third step</Step>
+                <Step>4. Forth step</Step>
+              </Stepper>
+              <Columns space="small">
+                <Column>
+                  <Inline space="small" align="right">
+                    {getState('activeStep') > 1 ? (
+                      <Button
+                        size="small"
+                        variant="ghost"
+                        onClick={() =>
+                          setState('activeStep', getState('activeStep') - 1)
+                        }
+                      >
+                        <IconChevron direction="left" /> Back
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+                <Column>
+                  <Inline space="small">
+                    {getState('activeStep') < 4 ? (
+                      <Button
+                        size="small"
+                        onClick={() =>
+                          setState('activeStep', getState('activeStep') + 1)
+                        }
+                      >
+                        Next <IconChevron direction="right" />
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+              </Columns>
+            </Stack>
+          </>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Step interactions',
