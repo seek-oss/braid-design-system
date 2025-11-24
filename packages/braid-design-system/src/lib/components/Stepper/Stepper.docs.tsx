@@ -88,7 +88,11 @@ const docs: ComponentDocs = {
       label: 'Alignment',
       description: (
         <>
-          <Text>The Stepper is displayed center-aligned by default.</Text>
+          <Text>
+            The Stepper is center-aligned by default, positioning it at the
+            center of its container with step labels center-aligned to their
+            corresponding steps.
+          </Text>
         </>
       ),
       Example: () => {
@@ -123,8 +127,9 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            This can be changed to <Strong>left</Strong> using the{' '}
-            <Strong>align</Strong> prop.
+            To align the Stepper to the left of its container, set the{' '}
+            <Strong>align</Strong> prop to <Strong>left</Strong>. This will also
+            left-align step labels to their corresponding steps.
           </Text>
           <Notice>
             <Text>
