@@ -90,11 +90,11 @@ const docs: ComponentDocs = {
           <Text>The Stepper is displayed center-aligned by default.</Text>
         </>
       ),
-      Example: () =>
-        source(
+      Example: () => {
+        const { value: visual } = source(
           <Stack space="large">
             <Text tone="secondary" size="small">
-              Centre aligned (default):
+              Default alignment (center):
             </Text>
             <Stepper label="Default alignment" progress={2}>
               <Step>1. First step</Step>
@@ -102,7 +102,21 @@ const docs: ComponentDocs = {
               <Step>3. Third step</Step>
             </Stepper>
           </Stack>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <Stepper label="Default alignment" progress={2}>
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step>3. Third step</Step>
+          </Stepper>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       description: (
@@ -119,8 +133,8 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: () =>
-        source(
+      Example: () => {
+        const { value: visual } = source(
           <Stack space="large">
             <Text tone="secondary" size="small">
               Left aligned:
@@ -131,7 +145,21 @@ const docs: ComponentDocs = {
               <Step>3. Third step</Step>
             </Stepper>
           </Stack>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <Stepper align="left" label="Left aligned" progress={2}>
+            <Step>1. First step</Step>
+            <Step>2. Second step</Step>
+            <Step>3. Third step</Step>
+          </Stepper>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Tone',
