@@ -659,11 +659,14 @@ const docs: ComponentDocs = {
                         setState('progress', getState('progress') + 1)
                       }
                     >
-                      {getState('progress') < 4 ? 'Continue' : 'Submit'}{' '}
                       {getState('progress') < 4 ? (
-                        <IconArrow direction="right" />
+                        <>
+                          Continue <IconArrow direction="right" />
+                        </>
                       ) : (
-                        <IconSend />
+                        <>
+                          Submit <IconSend />
+                        </>
                       )}
                     </Button>
                   </Inline>
@@ -694,11 +697,14 @@ const docs: ComponentDocs = {
                         setState('progress', getState('progress') + 1)
                       }
                     >
-                      {getState('progress') < 4 ? 'Continue' : 'Submit'}{' '}
                       {getState('progress') < 4 ? (
-                        <IconArrow direction="right" />
+                        <>
+                          Continue <IconArrow direction="right" />
+                        </>
                       ) : (
-                        <IconSend />
+                        <>
+                          Submit <IconSend />
+                        </>
                       )}
                     </Button>
                   </Column>
