@@ -438,8 +438,8 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, getState, setState }) =>
-        source(
+      Example: ({ setDefaultState, getState, setState }) => {
+        const { value: visual } = source(
           <>
             {setDefaultState('complete', {})}
             <Stack space="large">
@@ -480,7 +480,53 @@ const docs: ComponentDocs = {
               </Stepper>
             </Stack>
           </>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <>
+            {setDefaultState('complete', {})}
+            <Stack space="large">
+              <Stepper
+                label="Interactions"
+                mode="non-linear"
+                activeStep={1}
+                onStepClick={({ id }) => {
+                  if (id) {
+                    setState('complete', {
+                      ...getState('complete'),
+                      [id]: !getState('complete')[id],
+                    });
+                  }
+                }}
+              >
+                <Step id={1} complete={getState('complete')[1]}>
+                  1. First step
+                </Step>
+                <Step id={2} complete={getState('complete')[2]}>
+                  2. Second step
+                </Step>
+                <Step id={3} complete={getState('complete')[3]}>
+                  3. Third step
+                </Step>
+                <Step id={4} complete={getState('complete')[4]}>
+                  4. Fourth step
+                </Step>
+                <Step id={5} complete={getState('complete')[5]}>
+                  5. Fifth step
+                </Step>
+                <Step id={6} complete={getState('complete')[6]}>
+                  6. Sixth step
+                </Step>
+              </Stepper>
+            </Stack>
+          </>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Setting the active step',
