@@ -14,6 +14,7 @@ import {
   Inline,
   List,
   Notice,
+  Spread,
   Stack,
   Strong,
   Text,
@@ -634,50 +635,39 @@ const docs: ComponentDocs = {
               </Stepper>
               <Placeholder height="200" label="Content" />
               <Hidden below="tablet">
-                <Columns space="small">
-                  <Column>
-                    <Inline space="small">
-                      {getState('progress') > 1 ? (
-                        <Button
-                          variant="soft"
-                          onClick={() =>
-                            setState('progress', getState('progress') - 1)
-                          }
-                        >
-                          <IconArrow direction="left" /> Back
-                        </Button>
-                      ) : null}
-                    </Inline>
-                  </Column>
-                  <Column>
-                    <Inline space="small" align="right">
-                      <Button variant="transparent">Save draft</Button>
+                <Spread space="small">
+                  <Inline space="small">
+                    {getState('progress') > 1 ? (
+                      <Button
+                        variant="soft"
+                        onClick={() =>
+                          setState('progress', getState('progress') - 1)
+                        }
+                      >
+                        <IconArrow direction="left" /> Back
+                      </Button>
+                    ) : null}
+                  </Inline>
+                  <Inline space="small" align="right">
+                    <Button variant="transparent">Save draft</Button>
+                    <Button
+                      variant="solid"
+                      tone={
+                        getState('progress') < 4 ? 'formAccent' : 'brandAccent'
+                      }
+                      onClick={() =>
+                        setState('progress', getState('progress') + 1)
+                      }
+                    >
+                      {getState('progress') < 4 ? 'Continue' : 'Submit'}{' '}
                       {getState('progress') < 4 ? (
-                        <Button
-                          variant="solid"
-                          tone="formAccent"
-                          onClick={() =>
-                            setState('progress', getState('progress') + 1)
-                          }
-                        >
-                          Continue <IconArrow direction="right" />
-                        </Button>
-                      ) : null}
-                      {getState('progress') > 3 ? (
-                        <Button
-                          icon={<IconSend />}
-                          iconPosition="trailing"
-                          tone="brandAccent"
-                          onClick={() =>
-                            setState('progress', getState('progress') + 1)
-                          }
-                        >
-                          Submit
-                        </Button>
-                      ) : null}
-                    </Inline>
-                  </Column>
-                </Columns>
+                        <IconArrow direction="right" />
+                      ) : (
+                        <IconSend />
+                      )}
+                    </Button>
+                  </Inline>
+                </Spread>
               </Hidden>
               <Hidden above="mobile">
                 <Columns space="xsmall">
@@ -695,35 +685,24 @@ const docs: ComponentDocs = {
                     ) : null}
                   </Column>
                   <Column>
-                    {getState('progress') < 4 ? (
-                      <Button
-                        variant="solid"
-                        tone="formAccent"
-                        icon={<IconArrow direction="right" />}
-                        iconPosition="trailing"
-                        onClick={() =>
-                          setState('progress', getState('progress') + 1)
-                        }
-                      >
-                        Continue
-                      </Button>
-                    ) : null}
-
-                    {getState('progress') > 3 ? (
-                      <Button
-                        icon={<IconSend />}
-                        iconPosition="trailing"
-                        tone="brandAccent"
-                        onClick={() =>
-                          setState('progress', getState('progress') + 1)
-                        }
-                      >
-                        Submit
-                      </Button>
-                    ) : null}
+                    <Button
+                      variant="solid"
+                      tone={
+                        getState('progress') < 4 ? 'formAccent' : 'brandAccent'
+                      }
+                      onClick={() =>
+                        setState('progress', getState('progress') + 1)
+                      }
+                    >
+                      {getState('progress') < 4 ? 'Continue' : 'Submit'}{' '}
+                      {getState('progress') < 4 ? (
+                        <IconArrow direction="right" />
+                      ) : (
+                        <IconSend />
+                      )}
+                    </Button>
                   </Column>
                 </Columns>
-
                 <Box paddingTop="small">
                   <Button variant="transparent">Save draft</Button>
                 </Box>
