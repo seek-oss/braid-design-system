@@ -194,8 +194,8 @@ const docs: ComponentDocs = {
           indicate the user&rsquo;s progress.
         </Text>
       ),
-      Example: ({ setDefaultState, setState, getState }) =>
-        source(
+      Example: ({ setDefaultState, setState, getState }) => {
+        const { value: visual } = source(
           <>
             {setDefaultState('progress', 1)}
             <Stack space="large">
@@ -242,7 +242,58 @@ const docs: ComponentDocs = {
               </Columns>
             </Stack>
           </>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <>
+            {setDefaultState('progress', 1)}
+            <Stack space="large">
+              <Stepper label="Linear steps" progress={getState('progress')}>
+                <Step>1. First step</Step>
+                <Step>2. Second step</Step>
+                <Step>3. Third step</Step>
+                <Step>4. Forth step</Step>
+              </Stepper>
+              <Columns space="small">
+                <Column>
+                  <Inline space="small" align="right">
+                    {getState('progress') > 1 ? (
+                      <Button
+                        size="small"
+                        variant="ghost"
+                        onClick={() =>
+                          setState('progress', getState('progress') - 1)
+                        }
+                      >
+                        <IconChevron direction="left" /> Back
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+                <Column>
+                  <Inline space="small">
+                    {getState('progress') < 4 ? (
+                      <Button
+                        size="small"
+                        onClick={() =>
+                          setState('progress', getState('progress') + 1)
+                        }
+                      >
+                        Next <IconChevron direction="right" />
+                      </Button>
+                    ) : null}
+                  </Inline>
+                </Column>
+              </Columns>
+            </Stack>
+          </>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Non-linear mode',
