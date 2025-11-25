@@ -98,7 +98,7 @@ const docs: ComponentDocs = {
         const { value: visual } = source(
           <Stack space="large">
             <Text tone="secondary" size="small">
-              Default alignment (center):
+              Default alignment (center)
             </Text>
             <Stepper label="Default alignment" progress={2}>
               <Step>1. First step</Step>
@@ -142,7 +142,7 @@ const docs: ComponentDocs = {
         const { value: visual } = source(
           <Stack space="large">
             <Text tone="secondary" size="small">
-              Left aligned:
+              Left aligned
             </Text>
             <Stepper align="left" label="Left aligned" progress={2}>
               <Step>1. First step</Step>
@@ -206,7 +206,7 @@ const docs: ComponentDocs = {
             <Stack space="large">
               <Text tone="secondary" size="small">
                 Use the buttons to move between steps and update their
-                completion status:
+                completion status
               </Text>
               <Stepper label="Linear steps" progress={getState('progress')}>
                 <Step>1. First step</Step>
@@ -323,7 +323,7 @@ const docs: ComponentDocs = {
             <Stack space="large">
               <Text tone="secondary" size="small">
                 Use the buttons to move between steps without changing their
-                completion status:
+                completion status
               </Text>
               <Stepper
                 mode="non-linear"
@@ -449,7 +449,7 @@ const docs: ComponentDocs = {
             {setDefaultState('complete', {})}
             <Stack space="large">
               <Text tone="secondary" size="small">
-                Click on a step to toggle its completion status:
+                Click on a step to toggle its completion status
               </Text>
               <Stepper
                 label="Interactions"
@@ -555,7 +555,7 @@ const docs: ComponentDocs = {
             {setDefaultState('activeStep', 2)}
             <Stack space="large">
               <Text tone="secondary" size="small">
-                Click on a step to set it as the active step:
+                Click on a step to set it as the active step
               </Text>
               <Stepper
                 label="Linear steps"
