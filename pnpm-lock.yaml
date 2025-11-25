@@ -136,7 +136,7 @@ importers:
         version: 3.6.2
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.0
-        version: 2.0.3(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))
+        version: 2.0.4(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))
       '@vanilla-extract/css':
         specifier: ^1.9.2
         version: 1.17.4(babel-plugin-macros@3.1.0)
@@ -1271,8 +1271,8 @@ packages:
   '@capsizecss/metrics@3.6.2':
     resolution: {integrity: sha512-5uL1EIhAlfg0dvWsR1DGfqIsyiPBUsD/qlra15B82Ik28BcH7ScYEHLA4F34fZA0KamlpYcappvt2n1pTuDUfw==}
 
-  '@capsizecss/vanilla-extract@2.0.3':
-    resolution: {integrity: sha512-zf1E4Npm+zxe9ieo5Es3XSBg4Iqayhb9ypXalGjniEeWt10sr8B4xX6jyo+urMAXdut1baB8rmrcnKxWZcplww==}
+  '@capsizecss/vanilla-extract@2.0.4':
+    resolution: {integrity: sha512-KImqHutsYyeA718+3Fqg7Bw/RCSKgu+FESsMitWt9u4/KpBpB+s7cW4DWJyC6N5AzOoahYB7Jnu0hKB3HW+X6A==}
     peerDependencies:
       '@vanilla-extract/css': ^1.4.0
 
@@ -10254,7 +10254,7 @@ snapshots:
 
   '@capsizecss/metrics@3.6.2': {}
 
-  '@capsizecss/vanilla-extract@2.0.3(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))':
+  '@capsizecss/vanilla-extract@2.0.4(@vanilla-extract/css@1.17.4(babel-plugin-macros@3.1.0))':
     dependencies:
       '@capsizecss/core': 4.1.3
       '@vanilla-extract/css': 1.17.4(babel-plugin-macros@3.1.0)
