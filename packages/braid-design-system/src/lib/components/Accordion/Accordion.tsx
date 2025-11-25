@@ -22,7 +22,12 @@ import {
   normalizeResponsiveValue,
 } from '../../css/atoms/sprinkles.css';
 
-export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
+export const validSpaceValues = [
+  'xxsmall',
+  'medium',
+  'large',
+  'xlarge',
+] as const;
 
 export interface AccordionProps {
   children: ReactNodeNoStrings;

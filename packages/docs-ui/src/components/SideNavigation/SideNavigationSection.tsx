@@ -11,9 +11,11 @@ interface SideNavigationSection {
 }
 
 const Title = ({ children }: { children: string }) => (
-  <Text size="xsmall" weight="medium" component="h2">
-    {children}
-  </Text>
+  <Box>
+    <Text size="xsmall" weight="medium" component="h2">
+      {children}
+    </Text>
+  </Box>
 );
 
 const ItemList = ({ items }: { items: SideNavigationItem[] }) => (
@@ -36,7 +38,7 @@ export const SideNavigationSection = ({
   hideTitle,
   items,
 }: SideNavigationSection) => (
-  <Box component="nav">
+  <Box component="nav" paddingLeft="large">
     {hideTitle ? (
       <>
         <HiddenVisually>

@@ -38,7 +38,12 @@ const Header = ({
   menuOpen: boolean;
   menuClick: () => void;
 }) => (
-  <Box paddingY={headerSpaceY} paddingX={gutterSize}>
+  <Box
+    paddingY={headerSpaceY}
+    paddingX="large"
+    background="neutralSoft"
+    style={{ minWidth: '308px' }}
+  >
     <HeaderNavigation
       menuOpen={menuOpen}
       menuClick={menuClick}
@@ -164,7 +169,7 @@ export const Navigation = () => {
   const navigationActive = isExpandedSize || isMenuOpen;
 
   return (
-    <ContentBlock width="large">
+    <ContentBlock width="large" align="left">
       <Box position="fixed" top={0}>
         <Header
           menuOpen={isMenuOpen}

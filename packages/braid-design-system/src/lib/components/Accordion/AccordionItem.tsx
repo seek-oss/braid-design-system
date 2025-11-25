@@ -8,6 +8,7 @@ import {
 } from 'react';
 
 import type { BadgeProps } from '../Badge/Badge';
+import { Bleed } from '../Bleed/Bleed';
 import { Box } from '../Box/Box';
 import {
   type UseDisclosureProps,
@@ -134,48 +135,50 @@ export const AccordionItem = ({
   }
 
   return (
-    <Stack space={itemSpace} data={data}>
-      <Box position="relative" display="flex">
-        <Box
-          component="button"
-          type="button"
-          cursor="pointer"
-          className={[styles.button, styles.focusRing]}
-          width="full"
-          textAlign="left"
-          {...buttonProps}
-        >
-          {/*
+    <Bleed horizontal="xsmall">
+      <Stack space={itemSpace} data={data}>
+        <Box position="relative" display="flex">
+          <Box
+            component="button"
+            type="button"
+            cursor="pointer"
+            className={[styles.button, styles.focusRing]}
+            width="full"
+            textAlign="left"
+            {...buttonProps}
+          >
+            {/*
             This seemingly pointless use of Box makes button overflow visible in Safari.
             If we don't add this, the bottom of the text node is visibly cropped.
             https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari
           */}
-          <Box component="span" position="relative">
-            <Spread component="span" space={itemSpace}>
-              <Text size={size} weight={weight} tone={tone} icon={icon}>
-                {badge ? (
-                  <Box component="span" paddingRight={badgeSlotSpace}>
-                    {label}
-                  </Box>
-                ) : (
-                  label
-                )}
-                {badge ? cloneElement(badge, {}) : null}
-              </Text>
-              <Text
-                size={size}
-                weight={weight}
-                tone={tone === 'neutral' ? 'secondary' : tone}
-              >
-                <IconChevron direction={expanded ? 'up' : 'down'} />
-              </Text>
-            </Spread>
+            <Box component="span" position="relative">
+              <Spread component="span" space={itemSpace}>
+                <Text size={size} weight={weight} tone={tone} icon={icon}>
+                  {badge ? (
+                    <Box component="span" paddingRight={badgeSlotSpace}>
+                      {label}
+                    </Box>
+                  ) : (
+                    label
+                  )}
+                  {badge ? cloneElement(badge, {}) : null}
+                </Text>
+                <Text
+                  size={size}
+                  weight={weight}
+                  tone={tone === 'neutral' ? 'secondary' : tone}
+                >
+                  <IconChevron direction={expanded ? 'up' : 'down'} />
+                </Text>
+              </Spread>
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <Box display={expanded ? 'block' : 'none'} {...contentProps}>
-        {children}
-      </Box>
-    </Stack>
+        <Box display={expanded ? 'block' : 'none'} {...contentProps}>
+          {children}
+        </Box>
+      </Stack>
+    </Bleed>
   );
 };

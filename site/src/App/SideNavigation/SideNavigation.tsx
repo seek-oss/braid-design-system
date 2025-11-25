@@ -4,6 +4,9 @@ import {
   AccordionItem,
   Badge,
   Stack,
+  Box,
+  Bleed,
+  Divider,
 } from 'braid-src/lib/components';
 import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router';
@@ -50,115 +53,132 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   );
 
   return (
-    <Accordion size="standard">
-      <AccordionItem label="Getting started">
-        <Stack space="large">
-          <SideNavigationSection
-            title="Resources"
-            hideTitle={true}
-            items={[
-              {
-                name: 'Releases',
-                path: '/releases',
-                active: isActive('/releases'),
+    <Bleed horizontal="medium">
+      <Divider />
+      <Box
+        background="neutralSoft"
+        padding="medium"
+        height="full"
+        style={{
+          minHeight: '85vh',
+        }}
+      >
+        <Accordion
+          size="small"
+          weight="medium"
+          dividers={false}
+          space="xxsmall"
+        >
+          <AccordionItem label="Getting started">
+            <Stack space="large">
+              <SideNavigationSection
+                title="Resources"
+                hideTitle={true}
+                items={[
+                  {
+                    name: 'Releases',
+                    path: '/releases',
+                    active: isActive('/releases'),
+                    onClick: onSelect,
+                  },
+                  {
+                    name: 'Gallery',
+                    path: '/gallery',
+                  },
+                  {
+                    name: 'Playroom',
+                    path: playroomUrl,
+                  },
+                  {
+                    name: 'GitHub',
+                    path: 'https://github.com/seek-oss/braid-design-system',
+                  },
+                ]}
+              />
+
+              <SideNavigationSection
+                title="Guides"
+                items={Object.entries(guides).map(([path, guide]) => ({
+                  name: guide.title,
+                  badge: guide.badge,
+                  path,
+                  active: isActive(path),
+                  onClick: onSelect,
+                }))}
+              />
+
+              <SideNavigationSection
+                title="Examples"
+                items={Object.entries(examples).map(([path, example]) => ({
+                  name: example.title,
+                  badge: example.badge,
+                  path,
+                  active: isActive(path),
+                  onClick: onSelect,
+                }))}
+              />
+            </Stack>
+          </AccordionItem>
+
+          <AccordionItem label="Foundations">
+            <SideNavigationSection
+              title="Foundations"
+              hideTitle={true}
+              items={Object.entries(foundations).map(([path, foundation]) => ({
+                name: foundation.title,
+                badge: foundation.badge,
+                path,
+                active: isActive(path),
                 onClick: onSelect,
-              },
-              {
-                name: 'Gallery',
-                path: '/gallery',
-              },
-              {
-                name: 'Playroom',
-                path: playroomUrl,
-              },
-              {
-                name: 'GitHub',
-                path: 'https://github.com/seek-oss/braid-design-system',
-              },
-            ]}
-          />
+              }))}
+            />
+          </AccordionItem>
 
-          <SideNavigationSection
-            title="Guides"
-            items={Object.entries(guides).map(([path, guide]) => ({
-              name: guide.title,
-              badge: guide.badge,
-              path,
-              active: isActive(path),
-              onClick: onSelect,
-            }))}
-          />
+          <AccordionItem label="Components">
+            <SideNavigationSection
+              title="Components"
+              hideTitle={true}
+              items={componentsList.map((docs) => ({
+                name: docs.name,
+                badge: getBadge(docs),
+                path: `/components/${docs.name}`,
+                active: isActive(`/components/${docs.name}`),
+                onClick: onSelect,
+              }))}
+            />
+          </AccordionItem>
 
-          <SideNavigationSection
-            title="Examples"
-            items={Object.entries(examples).map(([path, example]) => ({
-              name: example.title,
-              badge: example.badge,
-              path,
-              active: isActive(path),
-              onClick: onSelect,
-            }))}
-          />
-        </Stack>
-      </AccordionItem>
+          <AccordionItem label="Patterns">
+            <Badge tone="info">Coming soon</Badge>
+          </AccordionItem>
 
-      <AccordionItem label="Foundations">
-        <SideNavigationSection
-          title="Foundations"
-          hideTitle={true}
-          items={Object.entries(foundations).map(([path, foundation]) => ({
-            name: foundation.title,
-            badge: foundation.badge,
-            path,
-            active: isActive(path),
-            onClick: onSelect,
-          }))}
-        />
-      </AccordionItem>
+          <AccordionItem label="Development tools">
+            <Stack space="large">
+              <SideNavigationSection
+                title="CSS"
+                items={documentedCss.map((doc) => ({
+                  name: doc.name,
+                  badge: getBadge(doc),
+                  path: `/css/${doc.name}`,
+                  active: isActive(`/css/${doc.name}`),
+                  onClick: onSelect,
+                }))}
+              />
 
-      <AccordionItem label="Components">
-        <SideNavigationSection
-          title="Components"
-          hideTitle={true}
-          items={componentsList.map((docs) => ({
-            name: docs.name,
-            badge: getBadge(docs),
-            path: `/components/${docs.name}`,
-            active: isActive(`/components/${docs.name}`),
-            onClick: onSelect,
-          }))}
-        />
-      </AccordionItem>
-
-      <AccordionItem label="Patterns">
-        <Badge tone="info">Coming soon</Badge>
-      </AccordionItem>
-
-      <AccordionItem label="Development tools">
-        <Stack space="large">
-          <SideNavigationSection
-            title="CSS"
-            items={documentedCss.map((doc) => ({
-              name: doc.name,
-              badge: getBadge(doc),
-              path: `/css/${doc.name}`,
-              active: isActive(`/css/${doc.name}`),
-              onClick: onSelect,
-            }))}
-          />
-
-          <SideNavigationSection
-            title="Logic"
-            items={categorisedComponents.Logic.map((docs) => ({
-              name: docs.name,
-              badge: getBadge(docs),
-              path: `/components/${docs.name}`,
-              active: isActive(`/components/${docs.name}`),
-              onClick: onSelect,
-            }))}
-          />
-        </Stack>
-      </AccordionItem>
-    </Accordion>
+              <SideNavigationSection
+                title="Logic"
+                items={categorisedComponents.Logic.map((docs) => ({
+                  name: docs.name,
+                  badge: getBadge(docs),
+                  path: `/components/${docs.name}`,
+                  active: isActive(`/components/${docs.name}`),
+                  onClick: onSelect,
+                }))}
+              />
+            </Stack>
+          </AccordionItem>
+        </Accordion>
+      </Box>
+    </Bleed>
   );
 };
