@@ -14,7 +14,6 @@ import {
   Inline,
   List,
   Notice,
-  Spread,
   Stack,
   Strong,
   Text,
@@ -640,47 +639,53 @@ const docs: ComponentDocs = {
               </Stepper>
               <Placeholder height="200" label="Content" />
               <Hidden below="tablet">
-                <Spread space="small">
-                  <Inline space="small">
+                <Columns space="small">
+                  <Column>
                     {getState('progress') > 1 ? (
+                      <Inline space="small">
+                        <Button
+                          variant="soft"
+                          onClick={() =>
+                            setState('progress', getState('progress') - 1)
+                          }
+                        >
+                          <IconArrow direction="left" /> Back
+                        </Button>
+                      </Inline>
+                    ) : null}
+                  </Column>
+                  <Column width="content">
+                    <Inline space="small">
+                      <Button variant="transparent">Save draft</Button>
                       <Button
-                        variant="soft"
+                        variant="solid"
+                        tone={
+                          getState('progress') < 4
+                            ? 'formAccent'
+                            : 'brandAccent'
+                        }
                         onClick={() =>
-                          setState('progress', getState('progress') - 1)
+                          setState('progress', getState('progress') + 1)
                         }
                       >
-                        <IconArrow direction="left" /> Back
+                        {getState('progress') < 4 ? (
+                          <>
+                            Continue <IconArrow direction="right" />
+                          </>
+                        ) : (
+                          <>
+                            Submit <IconSend />
+                          </>
+                        )}
                       </Button>
-                    ) : null}
-                  </Inline>
-                  <Inline space="small" align="right">
-                    <Button variant="transparent">Save draft</Button>
-                    <Button
-                      variant="solid"
-                      tone={
-                        getState('progress') < 4 ? 'formAccent' : 'brandAccent'
-                      }
-                      onClick={() =>
-                        setState('progress', getState('progress') + 1)
-                      }
-                    >
-                      {getState('progress') < 4 ? (
-                        <>
-                          Continue <IconArrow direction="right" />
-                        </>
-                      ) : (
-                        <>
-                          Submit <IconSend />
-                        </>
-                      )}
-                    </Button>
-                  </Inline>
-                </Spread>
+                    </Inline>
+                  </Column>
+                </Columns>
               </Hidden>
               <Hidden above="mobile">
                 <Columns space="xsmall">
-                  <Column>
-                    {getState('progress') > 1 ? (
+                  {getState('progress') > 1 ? (
+                    <Column>
                       <Button
                         icon={<IconArrow direction="left" />}
                         variant="soft"
@@ -690,8 +695,8 @@ const docs: ComponentDocs = {
                       >
                         Back
                       </Button>
-                    ) : null}
-                  </Column>
+                    </Column>
+                  ) : null}
                   <Column>
                     <Button
                       variant="solid"
