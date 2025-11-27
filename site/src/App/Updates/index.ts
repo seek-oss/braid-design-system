@@ -159,7 +159,7 @@ export const getHistory = memo((...names: string[]) => {
             summary: update.summary,
             isRecent: Boolean(
               versionReleaseDate &&
-                differenceInMonths(renderDate, versionReleaseDate) < 2,
+              differenceInMonths(renderDate, versionReleaseDate) < 2,
             ),
           };
         }),
