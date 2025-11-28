@@ -11,19 +11,18 @@ import {
   InlineField,
 } from '../private/InlineField/InlineField';
 
-export interface RadioItemProps
-  extends Omit<
-    InlineFieldProps,
-    | 'name'
-    | 'message'
-    | 'reserveMessageSpace'
-    | 'required'
-    | 'onChange'
-    | 'id'
-    | 'tone'
-    | 'size'
-    | 'tabIndex'
-  > {
+export interface RadioItemProps extends Omit<
+  InlineFieldProps,
+  | 'name'
+  | 'message'
+  | 'reserveMessageSpace'
+  | 'required'
+  | 'onChange'
+  | 'id'
+  | 'tone'
+  | 'size'
+  | 'tabIndex'
+> {
   value: NonNullable<InlineFieldProps['value']>;
 }
 
