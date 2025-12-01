@@ -15,6 +15,7 @@ import {
   Notice,
   Toggle,
   IconArrow,
+  Actions,
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -120,12 +121,56 @@ const docs: ComponentDocs = {
   ),
   Example: () =>
     source(
-      <Inline space="small" collapseBelow="desktop">
-        <Button variant="solid">Solid</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="soft">Soft</Button>
-        <Button variant="transparent">Transparent</Button>
-      </Inline>,
+      <Stack space="xsmall">
+        <Actions>
+          <Button variant="solid">Solid</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="soft">Soft</Button>
+          <Button variant="transparent">Transparent</Button>
+        </Actions>
+        <Actions>
+          <Button variant="solid" tone="brandAccent">
+            Solid
+          </Button>
+          <Button variant="ghost" tone="brandAccent">
+            Ghost
+          </Button>
+          <Button variant="soft" tone="brandAccent">
+            Soft
+          </Button>
+          <Button variant="transparent" tone="brandAccent">
+            Transparent
+          </Button>
+        </Actions>
+        <Actions>
+          <Button variant="solid" tone="formAccent">
+            Solid
+          </Button>
+          <Button variant="ghost" tone="formAccent">
+            Ghost
+          </Button>
+          <Button variant="soft" tone="formAccent">
+            Soft
+          </Button>
+          <Button variant="transparent" tone="formAccent">
+            Transparent
+          </Button>
+        </Actions>
+        <Actions>
+          <Button variant="solid" tone="critical">
+            Solid
+          </Button>
+          <Button variant="ghost" tone="critical">
+            Ghost
+          </Button>
+          <Button variant="soft" tone="critical">
+            Soft
+          </Button>
+          <Button variant="transparent" tone="critical">
+            Transparent
+          </Button>
+        </Actions>
+      </Stack>,
     ),
   alternatives: [
     {
