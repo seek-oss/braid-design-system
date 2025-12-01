@@ -356,12 +356,13 @@ export const ButtonText = ({
       component="span"
       position="relative"
       display="flex"
-      justifyContent="center"
+      // justifyContent="center" Comment out for proto experiment
       flexGrow={1}
       flexWrap="wrap"
       overflow="hidden"
       pointerEvents="none"
       paddingX={labelPaddingX}
+      paddingLeft="large" // Chez
       className={styles.padToMinHeight}
       background={
         tone === 'neutral' && variant !== 'solid'

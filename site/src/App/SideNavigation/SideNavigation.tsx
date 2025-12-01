@@ -6,7 +6,6 @@ import {
   Stack,
   Box,
   Bleed,
-  Divider,
 } from 'braid-src/lib/components';
 import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router';
@@ -54,13 +53,13 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
 
   return (
     <Bleed horizontal="medium">
-      <Divider />
       <Box
-        background="neutralSoft"
-        padding="medium"
+        // background="neutralSoft" Chez
+        paddingX="medium"
         height="full"
         style={{
           minHeight: '85vh',
+          // borderTop: '2px solid #eaecf1', Chez
         }}
       >
         <Accordion

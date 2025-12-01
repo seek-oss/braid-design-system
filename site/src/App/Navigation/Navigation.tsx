@@ -41,7 +41,7 @@ const Header = ({
   <Box
     paddingY={headerSpaceY}
     paddingX="large"
-    background="neutralSoft"
+    // background="neutralSoft" Chez
     style={{ minWidth: '308px' }}
   >
     <HeaderNavigation
