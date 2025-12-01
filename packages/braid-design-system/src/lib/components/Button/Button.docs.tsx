@@ -112,6 +112,12 @@ const choosingRightButtonDoc = [
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A prominent, interactive element that allows the user to initiate an
+      action with a click or tap.
+    </Text>
+  ),
   Example: () =>
     source(
       <Inline space="small" collapseBelow="desktop">
