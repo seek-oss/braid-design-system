@@ -169,7 +169,7 @@ export const Navigation = () => {
   const navigationActive = isExpandedSize || isMenuOpen;
 
   return (
-    <ContentBlock width="large" align="left">
+    <ContentBlock width="large" align="center">
       <Box position="fixed" top={0}>
         <Header
           menuOpen={isMenuOpen}
