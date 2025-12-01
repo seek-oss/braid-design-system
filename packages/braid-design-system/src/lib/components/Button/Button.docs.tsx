@@ -16,6 +16,7 @@ import {
   Toggle,
   IconArrow,
   Actions,
+  List,
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -188,32 +189,53 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
+      label: 'Choosing a variant and tone',
+      description: (
+        <Text>
+          You can adjust the prominence and meaning of buttons by using the{' '}
+          <Strong>variant</Strong> and <Strong>tone</Strong> properties.
+        </Text>
+      ),
+    },
+    {
       label: 'Variants',
       description: (
-        <>
+        <Stack space="xxlarge">
           <Text>
-            You can customise the appearance of the button via the{' '}
-            <Strong>variant</Strong> prop, which accepts either{' '}
-            <Strong>solid</Strong>, <Strong>ghost</Strong>,{' '}
-            <Strong>soft</Strong> or <Strong>transparent</Strong>.
+            Variants allow you to alter the visual prominence of a button. The{' '}
+            <Strong>variant</Strong> prop accepts either <Strong>solid</Strong>,{' '}
+            <Strong>ghost</Strong>, <Strong>soft</Strong> or{' '}
+            <Strong>transparent</Strong>. When no variant is specified, the
+            button will appear as ghost by default.
           </Text>
-          <Notice>
-            <Text>
-              When using a <Strong>transparent</Strong> button on its own,
-              consider using the <TextLink href="#bleed">bleed</TextLink> prop
-              for better alignment.
-            </Text>
-          </Notice>
-        </>
+          <Stack space="large">
+            <Text>How to use:</Text>
+            <List space="large">
+              <Text>
+                Choose a variant that reflects the importance of the action.
+              </Text>
+              <Text>
+                Avoid grouping buttons of the same variant, and instead create
+                visual hierarchy using different variants.
+              </Text>
+              <Text>
+                Avoid using transparent buttons in isolation, as they offer less
+                visual affordance on their own (consider using a{' '}
+                <TextLink href="/components/TextLink">TextLink</TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
       ),
       Example: () =>
         source(
-          <Inline space="small" collapseBelow="desktop">
+          <Actions>
             <Button variant="solid">Solid</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="soft">Soft</Button>
             <Button variant="transparent">Transparent</Button>
-          </Inline>,
+          </Actions>,
         ),
     },
     {
@@ -221,7 +243,8 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           For hero actions that want to leverage the brand colour, you can set
-          the button’s <Strong>tone</Strong> to <Strong>brandAccent.</Strong>
+          the button&rsquo;s <Strong>tone</Strong> to{' '}
+          <Strong>brandAccent.</Strong>
         </Text>
       ),
       Example: () =>
