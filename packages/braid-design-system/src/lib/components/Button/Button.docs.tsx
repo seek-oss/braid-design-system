@@ -123,12 +123,6 @@ const docs: ComponentDocs = {
     source(
       <Stack space="xsmall">
         <Actions>
-          <Button variant="solid">Solid</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="soft">Soft</Button>
-          <Button variant="transparent">Transparent</Button>
-        </Actions>
-        <Actions>
           <Button variant="solid" tone="brandAccent">
             Solid
           </Button>
@@ -169,6 +163,12 @@ const docs: ComponentDocs = {
           <Button variant="transparent" tone="critical">
             Transparent
           </Button>
+        </Actions>
+        <Actions>
+          <Button variant="solid">Solid</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="soft">Soft</Button>
+          <Button variant="transparent">Transparent</Button>
         </Actions>
       </Stack>,
     ),
