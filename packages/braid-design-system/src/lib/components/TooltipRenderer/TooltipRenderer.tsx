@@ -115,8 +115,8 @@ export const TooltipContent = ({
           className={styles.arrow[placement ?? 'top']}
           style={assignInlineVars({
             [styles.arrowX]:
-              clampedArrowX !== undefined ? `${clampedArrowX}px` : 'unset',
-            [styles.arrowY]: arrowY !== undefined ? `${arrowY}px` : 'unset',
+              clampedArrowX !== undefined ? `${clampedArrowX}px` : undefined,
+            [styles.arrowY]: arrowY !== undefined ? `${arrowY}px` : undefined,
           })}
         />
       </TooltipTextDefaultsProvider>
