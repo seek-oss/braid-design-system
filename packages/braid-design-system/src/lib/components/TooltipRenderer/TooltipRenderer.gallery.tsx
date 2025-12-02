@@ -14,9 +14,7 @@ const MockTooltipContent = ({
   children: ReactNodeNoStrings;
 }) => (
   <Box style={{ width: 'fit-content' }}>
-    <TooltipContent inferredPlacement={placement} arrowLeftOffset={0}>
-      {children}
-    </TooltipContent>
+    <TooltipContent placement={placement}>{children}</TooltipContent>
   </Box>
 );
 
