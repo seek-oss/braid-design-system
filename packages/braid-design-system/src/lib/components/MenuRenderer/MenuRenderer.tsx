@@ -12,7 +12,7 @@ import {
   useEffect,
 } from 'react';
 
-import type { ResponsiveSpace } from '../../css/atoms/atoms';
+import type { ResponsiveSpace, Space } from '../../css/atoms/atoms';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
@@ -25,12 +25,17 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
+import { useResponsiveValue } from '../useResponsiveValue/useResponsiveValue';
 
 import { type Action, actionTypes } from './MenuRenderer.actions';
 import { MenuRendererContext } from './MenuRendererContext';
 import { MenuRendererItemContext } from './MenuRendererItemContext';
 
 import * as styles from './MenuRenderer.css';
+import {
+  normalizeResponsiveValue,
+  type RequiredResponsiveObject,
+} from '../../css/atoms/sprinkles.css';
 import { vars } from '../../themes/vars.css';
 
 interface TriggerProps {
@@ -110,6 +115,27 @@ export const MenuRenderer = ({
   data,
   ...restProps
 }: MenuRendererProps) => {
+  const responsiveValue = useResponsiveValue();
+  const resolveOffsetSpace = (): Space => {
+    if (typeof offsetSpace === 'string') {
+      return offsetSpace;
+    }
+
+    const normalizedOffsetSpace = normalizeResponsiveValue(offsetSpace);
+    const offsetSpaceForResponsiveValue: RequiredResponsiveObject<Space> = {
+      mobile: normalizedOffsetSpace.mobile ?? 'none',
+      tablet: normalizedOffsetSpace.tablet,
+      desktop: normalizedOffsetSpace.desktop,
+      wide: normalizedOffsetSpace.wide,
+    };
+
+    return (
+      responsiveValue(offsetSpaceForResponsiveValue) ??
+      offsetSpaceForResponsiveValue.mobile
+    );
+  };
+  const resolvedOffsetSpace = resolveOffsetSpace();
+
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastOpen = useRef(false);
   const items = flattenChildren(children);
@@ -288,7 +314,7 @@ export const MenuRenderer = ({
         triggerRef={triggerProps.ref}
         align={align}
         placement={placement}
-        offsetSpace={offsetSpace}
+        offsetSpace={resolvedOffsetSpace}
         role={false}
       >
         <Menu
