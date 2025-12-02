@@ -5,12 +5,12 @@ import {
   shift,
   arrow as floatingUiArrow,
   autoUpdate,
+  size as floatingUiSize,
 } from '@floating-ui/react-dom';
 import dedent from 'dedent';
 import {
   type ReactNode,
   useEffect,
-  useState,
   forwardRef,
   useRef,
   useImperativeHandle,
@@ -125,8 +125,6 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
   ) => {
     const ref = useRef<HTMLElement>(null);
     useImperativeHandle(forwardedRef, () => ref.current as HTMLElement);
-    const [triggerWidth, setTriggerWidth] = useState<number | null>(null);
-
     const spaceScale = useSpace();
     let offsetSpacePx = 0;
     if (offsetSpace !== 'none' && typeof offsetSpace === 'string') {
@@ -141,6 +139,14 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       width !== 'full' &&
         shift({
           crossAxis: align === 'center',
+        }),
+      width === 'full' &&
+        floatingUiSize({
+          apply({ rects, elements }) {
+            Object.assign(elements.floating.style, {
+              width: `${rects.reference.width}px`,
+            });
+          },
         }),
       arrowRef && floatingUiArrow({ element: arrowRef }),
     ].filter(Boolean);
@@ -218,14 +224,6 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       }, animationTimeout);
     }, [open, enterFocusRef]);
 
-    useEffect(() => {
-      if (width === 'full' && triggerRef.current && open) {
-        setTriggerWidth(triggerRef.current.getBoundingClientRect().width);
-      } else {
-        setTriggerWidth(null);
-      }
-    }, [width, triggerRef, open]);
-
     const resolvedPlacement = floatingUiEvaluatedPosition?.startsWith('top')
       ? 'top'
       : 'bottom';
@@ -241,11 +239,6 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
 
     const combinedStyles = {
       ...floatingStyles,
-      ...(width === 'full' && triggerWidth !== null
-        ? {
-            width: `${triggerWidth}px`,
-          }
-        : {}),
       ...(!isPositioned ? { opacity: 0, pointerEvents: 'none' as const } : {}),
     };
 
