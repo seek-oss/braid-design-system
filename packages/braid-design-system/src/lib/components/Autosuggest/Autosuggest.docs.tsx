@@ -799,6 +799,25 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      description: (
+        <Text>
+          Individual suggestions can also expose data attributes, which are
+          applied to each rendered list item.
+        </Text>
+      ),
+      code: `
+        <Autosuggest
+          suggestions={[
+            {
+              text: 'Apples',
+              data: { testid: 'suggestion-apples' },
+              // => <li data-testid="suggestion-apples">...</li>
+            },
+          ]}
+        />
+      `,
+    },
   ],
 };
 
