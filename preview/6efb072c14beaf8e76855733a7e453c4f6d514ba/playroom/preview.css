@@ -1,0 +1,67 @@
+@keyframes _1fgmja74 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+._1fgmja71 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--bcbny79);
+}
+._1fgmja73 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: _1fgmja74;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+._1fgmja75 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+.ogtjl41 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ogtjl40);
+}
+.ogtjl42 {
+  --ogtjl40: var(--b8635fg);
+}
+.ogtjl43 {
+  --ogtjl40: var(--b8635fh);
+}
+.ogtjl44 {
+  --ogtjl40: var(--b8635fi);
+}
+.ogtjl45 {
+  --ogtjl40: var(--b8635fj);
+}
+.ogtjl46 {
+  --ogtjl40: var(--b8635fk);
+}
+.ogtjl47 {
+  --ogtjl40: var(--b8635fl);
+}
+.ogtjl48 {
+  --ogtjl40: var(--b8635fm);
+}
+.ogtjl49 {
+  --ogtjl40: var(--b8635fn);
+}
+.ogtjl4a {
+  --ogtjl40: var(--b8635fo);
+}
+.ogtjl4b {
+  --ogtjl40: var(--b8635fp);
+}
