@@ -11,6 +11,7 @@ import {
 } from 'react';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { Box } from '../Box/Box';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
@@ -75,13 +76,14 @@ export const TooltipContent = ({
   const [tooltipWidth, setTooltipWidth] = useState(0);
   const tooltipContainerRef = useRef<HTMLElement | null>(null);
 
-  const handleTooltipContainerRef = (element: HTMLElement | null) => {
-    tooltipContainerRef.current = element;
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      setTooltipWidth(rect.width);
+  useIsomorphicLayoutEffect(() => {
+    if (!tooltipContainerRef.current) {
+      return;
     }
-  };
+
+    const { width } = tooltipContainerRef.current.getBoundingClientRect();
+    setTooltipWidth(width);
+  }, [children]);
 
   const clampedArrowX =
     arrowX !== undefined && tooltipWidth > 0
@@ -94,7 +96,7 @@ export const TooltipContent = ({
 
   return (
     <Box
-      ref={handleTooltipContainerRef}
+      ref={tooltipContainerRef}
       textAlign="left"
       boxShadow="large"
       background="neutral"
