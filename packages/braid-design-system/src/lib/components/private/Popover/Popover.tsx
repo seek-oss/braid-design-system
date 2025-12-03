@@ -136,18 +136,17 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
     const middleware = [
       floatingUiOffset(offsetSpacePx),
       !lockPlacement && flip(),
-      width !== 'full' &&
-        shift({
-          crossAxis: align === 'center',
-        }),
-      width === 'full' &&
-        floatingUiSize({
-          apply({ rects, elements }) {
-            Object.assign(elements.floating.style, {
-              width: `${rects.reference.width}px`,
-            });
-          },
-        }),
+      width === 'full'
+        ? floatingUiSize({
+            apply({ rects, elements }) {
+              Object.assign(elements.floating.style, {
+                width: `${rects.reference.width}px`,
+              });
+            },
+          })
+        : shift({
+            crossAxis: align === 'center',
+          }),
       arrowRef && floatingUiArrow({ element: arrowRef }),
     ].filter(Boolean);
 
