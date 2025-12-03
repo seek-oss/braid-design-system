@@ -206,7 +206,7 @@ const docs: ComponentDocs = {
             <Strong>variant</Strong> prop accepts either <Strong>solid</Strong>,{' '}
             <Strong>ghost</Strong>, <Strong>soft</Strong> or{' '}
             <Strong>transparent</Strong>. When no variant is specified, the
-            button will appear as <Strong>ghost</Strong> by default.
+            button will appear as ghost by default.
           </Text>
           <Text>Advice for using variants:</Text>
           <List space="large">
@@ -235,6 +235,18 @@ const docs: ComponentDocs = {
             <Button variant="transparent">Transparent</Button>
           </Actions>,
         ),
+    },
+    {
+      label: 'Tones',
+      description: (
+        <Text>
+          Tones allow you to provide additional information regarding the
+          meaning or importance of the action. The tone prop accepts either
+          <Strong>brandAccent</Strong>, <Strong>formAccent</Strong>,{' '}
+          <Strong>critical</Strong> or <Strong>neutral</Strong>. When no tone is
+          specified, the button will appear as neutral by default.
+        </Text>
+      ),
     },
     {
       label: 'Branding',
