@@ -299,6 +299,43 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      description: (
+        <Stack space="large">
+          <Heading level="4">formAccent</Heading>
+          <Text>
+            For cases where actions need to be emphasized, the{' '}
+            <Strong>tone</Strong> can be set to <Strong>formAccent</Strong>.
+            This is our second most visibly strong tone and can be used to
+            emphasize an action. Unlike brandAccent, you may chose to have
+            multiple formAccent buttons on the same page.
+          </Text>
+          <Notice>
+            <Text>
+              This is the default tone in the <Strong>apac</Strong> and{' '}
+              <Strong>seekBusiness</Strong> themes.
+            </Text>
+          </Notice>
+        </Stack>
+      ),
+      Example: () =>
+        source(
+          <Actions>
+            <Button tone="formAccent" variant="solid">
+              Solid
+            </Button>
+            <Button tone="formAccent" variant="ghost">
+              Ghost
+            </Button>
+            <Button tone="formAccent" variant="soft">
+              Soft
+            </Button>
+            <Button tone="formAccent" variant="transparent">
+              Transparent
+            </Button>
+          </Actions>,
+        ),
+    },
+    {
       label: 'Destructive actions',
       description: (
         <Text>
@@ -320,40 +357,6 @@ const docs: ComponentDocs = {
             </Button>
             <Button tone="critical" icon={<IconDelete />} variant="transparent">
               Delete
-            </Button>
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Emphasizing actions',
-      description: (
-        <>
-          <Text>
-            For cases where actions need to be emphasized, the{' '}
-            <Strong>tone</Strong> can be set to <Strong>formAccent</Strong>.
-          </Text>
-          <Notice>
-            <Text>
-              This is the default tone in the <Strong>apac</Strong> and{' '}
-              <Strong>seekBusiness</Strong> themes.
-            </Text>
-          </Notice>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Inline space="small">
-            <Button tone="formAccent" variant="solid">
-              Solid
-            </Button>
-            <Button tone="formAccent" variant="ghost">
-              Ghost
-            </Button>
-            <Button tone="formAccent" variant="soft">
-              Soft
-            </Button>
-            <Button tone="formAccent" variant="transparent">
-              Transparent
             </Button>
           </Inline>,
         ),
