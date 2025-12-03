@@ -229,7 +229,7 @@
     "chromatic": "^13.1.2",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
-    "html-validate": "^9.7.1",
+    "html-validate": "^10.4.0",
     "playroom": "0.44.4",
     "prettier": "^3.4.1",
     "react": "^19.1.0",
