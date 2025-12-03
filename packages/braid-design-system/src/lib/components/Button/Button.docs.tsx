@@ -241,7 +241,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Tones allow you to provide additional information regarding the
-          meaning or importance of the action. The tone prop accepts either
+          meaning or importance of the action. The tone prop accepts either{' '}
           <Strong>brandAccent</Strong>, <Strong>formAccent</Strong>,{' '}
           <Strong>critical</Strong> or <Strong>neutral</Strong>. When no tone is
           specified, the button will appear as neutral by default.
@@ -249,17 +249,40 @@ const docs: ComponentDocs = {
       ),
     },
     {
-      label: 'Branding',
       description: (
-        <Text>
-          For hero actions that want to leverage the brand colour, you can set
-          the button&rsquo;s <Strong>tone</Strong> to{' '}
-          <Strong>brandAccent.</Strong>
-        </Text>
+        <Stack space="large">
+          <Heading level="4">brandAccent</Heading>
+          <Text>
+            For hero actions that want to leverage the brand colour, you can set
+            the button&rsquo;s <Strong>tone</Strong> to{' '}
+            <Strong>brandAccent</Strong>. This is our most visibly strong tone
+            and should be used sparingly.
+          </Text>
+          <Text>How to use:</Text>
+          <List space="large">
+            <Stack space="large">
+              <Text>
+                Use brandAccent to draw attention to our products most important
+                actions, such as:
+              </Text>
+              <List space="medium">
+                <Text>starting a key flow like apply or job posting</Text>
+                <Text>submitting a form or payment</Text>
+                <Text>
+                  submitting a primary search query (such as a new job or
+                  candidate search).
+                </Text>
+              </List>
+            </Stack>
+            <Text>
+              Avoid using multiple brandAccent buttons on the same page.
+            </Text>
+          </List>
+        </Stack>
       ),
       Example: () =>
         source(
-          <Inline space="small">
+          <Actions>
             <Button tone="brandAccent" variant="solid">
               Search
             </Button>
@@ -272,7 +295,7 @@ const docs: ComponentDocs = {
             <Button tone="brandAccent" variant="transparent">
               Search
             </Button>
-          </Inline>,
+          </Actions>,
         ),
     },
     {
