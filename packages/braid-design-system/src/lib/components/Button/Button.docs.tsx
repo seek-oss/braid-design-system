@@ -200,32 +200,30 @@ const docs: ComponentDocs = {
     {
       label: 'Variants',
       description: (
-        <Stack space="xxlarge">
+        <Stack space="large">
           <Text>
             Variants allow you to alter the visual prominence of a button. The{' '}
             <Strong>variant</Strong> prop accepts either <Strong>solid</Strong>,{' '}
             <Strong>ghost</Strong>, <Strong>soft</Strong> or{' '}
             <Strong>transparent</Strong>. When no variant is specified, the
-            button will appear as ghost by default.
+            button will appear as <Strong>ghost</Strong> by default.
           </Text>
-          <Stack space="large">
-            <Text>How to use:</Text>
-            <List space="large">
-              <Text>
-                Choose a variant that reflects the importance of the action.
-              </Text>
-              <Text>
-                Avoid grouping buttons of the same variant, and instead create
-                visual hierarchy using different variants.
-              </Text>
-              <Text>
-                Avoid using transparent buttons in isolation, as they offer less
-                visual affordance on their own (consider using a{' '}
-                <TextLink href="/components/TextLink">TextLink</TextLink>{' '}
-                instead).
-              </Text>
-            </List>
-          </Stack>
+          <Text>Advice for using variants:</Text>
+          <List space="large">
+            <Text>
+              Choose a variant that reflects the importance of the action.
+            </Text>
+            <Text>
+              Avoid grouping buttons of the same variant, and instead create
+              visual hierarchy using different variants.
+            </Text>
+            <Text>
+              Avoid using transparent buttons in isolation, as they offer less
+              visual affordance on their own (consider using a{' '}
+              <TextLink href="/components/TextLink">TextLink</TextLink>{' '}
+              instead).
+            </Text>
+          </List>
         </Stack>
       ),
       Example: () =>
