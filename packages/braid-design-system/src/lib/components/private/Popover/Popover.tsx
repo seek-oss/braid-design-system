@@ -23,10 +23,12 @@ import {
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
+import { useResponsiveValue } from '../../useResponsiveValue/useResponsiveValue';
 import { useSpace } from '../../useSpace/useSpace';
 import { animationTimeout } from '../animationTimeout';
 
 import * as styles from './Popover.css';
+import { normalizeResponsiveValue } from '../../../css/atoms/sprinkles.css';
 
 type Placement = 'top' | 'bottom';
 type Align = 'left' | 'right' | 'center';
@@ -125,10 +127,19 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
   ) => {
     const ref = useRef<HTMLElement>(null);
     useImperativeHandle(forwardedRef, () => ref.current as HTMLElement);
+
+    const normalized = normalizeResponsiveValue(offsetSpace);
+    const mobile = normalized.mobile ?? 'none';
+    const tablet = normalized.tablet ?? mobile;
+    const desktop = normalized.desktop ?? tablet;
+    const wide = normalized.wide ?? desktop;
+    const resolvedOffsetSpace =
+      useResponsiveValue()({ mobile, tablet, desktop, wide }) ?? mobile;
+
     const spaceScale = useSpace();
     let offsetSpacePx = 0;
-    if (offsetSpace !== 'none' && typeof offsetSpace === 'string') {
-      offsetSpacePx = spaceScale.space[offsetSpace] * spaceScale.grid;
+    if (resolvedOffsetSpace !== 'none') {
+      offsetSpacePx = spaceScale.space[resolvedOffsetSpace] * spaceScale.grid;
     }
 
     const floatingUiRequestedPosition = getFloatingUiPosition(placement, align);
