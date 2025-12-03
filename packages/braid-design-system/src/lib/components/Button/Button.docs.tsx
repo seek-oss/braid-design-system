@@ -208,7 +208,7 @@ const docs: ComponentDocs = {
             <Strong>transparent</Strong>. When no variant is specified, the
             button will appear as ghost by default.
           </Text>
-          <Text>Advice for using variants:</Text>
+          <Text>How to use:</Text>
           <List space="large">
             <Text>
               Choose a variant that reflects the importance of the action.
