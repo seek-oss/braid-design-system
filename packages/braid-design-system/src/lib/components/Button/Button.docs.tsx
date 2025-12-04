@@ -391,8 +391,9 @@ const docs: ComponentDocs = {
           <Strong>small.</Strong>
         </Text>
       ),
-      Example: () =>
-        source(
+
+      Example: () => {
+        const { value: visual } = source(
           <Stack space="large">
             <Stack space="small">
               <Text tone="secondary" weight="strong">
@@ -409,7 +410,7 @@ const docs: ComponentDocs = {
               <Text tone="secondary" weight="strong">
                 Small size
               </Text>
-              <Inline space="small" collapseBelow="desktop">
+              <Actions>
                 <Button variant="solid" size="small">
                   Solid
                 </Button>
@@ -422,10 +423,41 @@ const docs: ComponentDocs = {
                 <Button variant="transparent" size="small">
                   Transparent
                 </Button>
-              </Inline>
+              </Actions>
             </Stack>
           </Stack>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <Stack space="large">
+            <Actions>
+              <Button variant="solid">Solid</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="soft">Soft</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Actions>
+            <Actions>
+              <Button variant="solid" size="small">
+                Solid
+              </Button>
+              <Button variant="ghost" size="small">
+                Ghost
+              </Button>
+              <Button variant="soft" size="small">
+                Soft
+              </Button>
+              <Button variant="transparent" size="small">
+                Transparent
+              </Button>
+            </Actions>
+          </Stack>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Icons',
