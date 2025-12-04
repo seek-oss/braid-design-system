@@ -258,26 +258,21 @@ const docs: ComponentDocs = {
             <Strong>brandAccent</Strong>. This is our most visibly strong tone
             and should be used sparingly.
           </Text>
-          <Text>How to use:</Text>
-          <List space="large">
-            <Stack space="large">
-              <Text>
-                Use brandAccent to draw attention to our products most important
-                actions, such as:
-              </Text>
-              <List space="medium">
-                <Text>starting a key flow like apply or job posting</Text>
-                <Text>submitting a form or payment</Text>
-                <Text>
-                  submitting a primary search query (such as a new job or
-                  candidate search).
-                </Text>
-              </List>
-            </Stack>
+          <Text>
+            Use brandAccent to draw attention to our products most important
+            actions, such as:
+          </Text>
+          <List space="medium">
+            <Text>starting a key flow like apply or job posting</Text>
+            <Text>submitting a form or payment</Text>
             <Text>
-              Avoid using multiple brandAccent buttons on the same page.
+              submitting a primary search query (such as a new job or candidate
+              search).
             </Text>
           </List>
+          <Text>
+            Avoid using multiple brandAccent buttons on the same page.
+          </Text>
         </Stack>
       ),
       Example: () =>
