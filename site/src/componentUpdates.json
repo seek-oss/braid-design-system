@@ -5265,5 +5265,19 @@
         "summary": "**TooltipRenderer:** Ensure Chinese text is not wrapped incorrectly\n\nRight aligned tooltip triggers with tooltips containing long unbroken Chinese text are no longer forcibly broken across many lines.\nThis was due to the use of `overflow-wrap: break-word;` used to break long strings of Latin characters—guarding against broken layouts.\n\nFor Chinese, Japanese and Korean (CJK) character sets, to avoid the unwanted line breaks it is recommened to apply the `word-break: keep-all;` CSS property.\n\nSee [MDN reference] for more information.\n\n[MDN reference]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/word-break#keep-all"
       }
     ]
+  },
+  {
+    "version": "33.12.4",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest",
+          "MenuRenderer",
+          "OverflowMenu",
+          "TooltipRenderer"
+        ],
+        "summary": "**Autosuggest, MenuRenderer, OverflowMenu, TooltipRenderer**: Ensure `TooltipRenderer` is correctly positioned on Android devices\n\nAdditionally, adjust `TooltipRenderer` positioning at screen edges, removing extra edge spacing.\nThis ensures the tooltip arrow is more closely aligned with the trigger when the trigger is near the edge of the screen."
+      }
+    ]
   }
 ]
