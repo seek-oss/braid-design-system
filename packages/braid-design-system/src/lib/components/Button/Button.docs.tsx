@@ -336,16 +336,25 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Destructive actions',
       description: (
-        <Text>
-          For destructive actions like “Delete” you can set the button’s{' '}
-          <Strong>tone</Strong> to <Strong>critical.</Strong>
-        </Text>
+        <Stack space="large">
+          <Heading level="4">Critical</Heading>
+          <Text>
+            For destructive actions like “Delete” you can set the button&rsquo;s{' '}
+            <Strong>tone</Strong> to <Strong>critical.</Strong> This tone
+            provides a visual warning to users and should be reserved for
+            destructive actions.
+          </Text>
+          <Text>
+            Multiple critical buttons may appear on the same page but should
+            relate to different pieces of content. Avoid using multiple critical
+            buttons in the same group of buttons.
+          </Text>
+        </Stack>
       ),
       Example: () =>
         source(
-          <Inline space="small">
+          <Actions>
             <Button tone="critical" icon={<IconDelete />} variant="solid">
               Delete
             </Button>
@@ -358,7 +367,7 @@ const docs: ComponentDocs = {
             <Button tone="critical" icon={<IconDelete />} variant="transparent">
               Delete
             </Button>
-          </Inline>,
+          </Actions>,
         ),
     },
     {
