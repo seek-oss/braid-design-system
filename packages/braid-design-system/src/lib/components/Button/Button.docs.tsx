@@ -371,15 +371,13 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'De-emphasized actions',
       description: (
-        <>
+        <Stack space="large">
+          <Heading level="4">Neutral</Heading>
           <Text>
             For cases where actions need to be de-emphasized, the{' '}
-            <Strong>tone</Strong> can be set to <Strong>neutral</Strong>.
-          </Text>
-          <Text>
-            This makes the button follow the default text colour, including{' '}
+            <Strong>tone</Strong> can be set to <Strong>neutral</Strong>. This
+            makes the button follow the default text colour, including{' '}
             <TextLink href="#contextual-design">
               inverting on dark surfaces
             </TextLink>{' '}
@@ -391,11 +389,11 @@ const docs: ComponentDocs = {
               non-legacy themes.
             </Text>
           </Notice>
-        </>
+        </Stack>
       ),
       Example: () =>
         source(
-          <Inline space="small">
+          <Actions>
             <Button tone="neutral" variant="solid">
               Solid
             </Button>
@@ -408,7 +406,7 @@ const docs: ComponentDocs = {
             <Button tone="neutral" variant="transparent">
               Transparent
             </Button>
-          </Inline>,
+          </Actions>,
         ),
     },
     {
