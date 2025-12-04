@@ -680,18 +680,17 @@ const docs: ComponentDocs = {
         );
 
         const { code: codeDemo } = source(
-          <Stack space="large">
-            <Stack space="none">
-              <Button variant="solid">Solid</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="transparent">Transparent</Button>
-            </Stack>
+          <>
+            <Button variant="solid">Solid</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="transparent">Transparent</Button>
+
             <Actions>
               <Button variant="solid">Solid</Button>
               <Button variant="ghost">Ghost</Button>
               <Button variant="transparent">Transparent</Button>
             </Actions>
-          </Stack>,
+          </>,
         );
 
         return {
