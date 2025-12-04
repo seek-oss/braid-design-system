@@ -1,5 +1,14 @@
 # braid-design-system
 
+## 33.12.4
+
+### Patch Changes
+
+- **Autosuggest, MenuRenderer, OverflowMenu, TooltipRenderer**: Ensure `TooltipRenderer` is correctly positioned on Android devices ([#1926](https://github.com/seek-oss/braid-design-system/pull/1926))
+
+  Additionally, adjust `TooltipRenderer` positioning at screen edges, removing extra edge spacing.
+  This ensures the tooltip arrow is more closely aligned with the trigger when the trigger is near the edge of the screen.
+
 ## 33.12.3
 
 ### Patch Changes
