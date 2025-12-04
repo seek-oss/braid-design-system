@@ -398,12 +398,12 @@ const docs: ComponentDocs = {
               <Text tone="secondary" weight="strong">
                 Standard size
               </Text>
-              <Inline space="small" collapseBelow="desktop">
+              <Actions>
                 <Button variant="solid">Solid</Button>
                 <Button variant="ghost">Ghost</Button>
                 <Button variant="soft">Soft</Button>
                 <Button variant="transparent">Transparent</Button>
-              </Inline>
+              </Actions>
             </Stack>
             <Stack space="small">
               <Text tone="secondary" weight="strong">
@@ -431,48 +431,52 @@ const docs: ComponentDocs = {
       label: 'Icons',
       description: (
         <Text>
-          For decoration or help distinguishing between buttons, an{' '}
-          <Strong>icon</Strong> can be provided.
+          For differentiation and to help communicate the purpose of the button,
+          an <Strong>icon</Strong> can be provided.
         </Text>
       ),
       Example: () =>
         source(
-          <Inline space="gutter" alignY="center">
+          <Stack space="large">
             <Stack space="small">
               <Text tone="secondary" weight="strong">
                 Standard size
               </Text>
-              <Button icon={<IconSend />}>Send</Button>
+              <Actions>
+                <Button icon={<IconSend />}>Send</Button>
+              </Actions>
             </Stack>
             <Stack space="small">
               <Text tone="secondary" weight="strong">
                 Small size
               </Text>
-              <Button size="small" icon={<IconSend />}>
-                Send
-              </Button>
+              <Actions>
+                <Button size="small" icon={<IconSend />}>
+                  Send
+                </Button>
+              </Actions>
             </Stack>
-          </Inline>,
+          </Stack>,
         ),
     },
     {
       description: (
         <Text>
           By default, an icon will be <Strong>leading</Strong> the label,
-          however this can be customised by setting the{' '}
+          however this can be tailored by setting the{' '}
           <Strong>iconPosition</Strong> to <Strong>trailing</Strong>.
         </Text>
       ),
       Example: () =>
         source(
-          <Inline space="small">
+          <Actions>
             <Button
               icon={<IconArrow direction="right" />}
               iconPosition="trailing"
             >
               Next
             </Button>
-          </Inline>,
+          </Actions>,
         ),
     },
     {
