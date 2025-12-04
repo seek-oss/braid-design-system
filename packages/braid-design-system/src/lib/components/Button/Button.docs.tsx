@@ -571,6 +571,94 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Defining button width',
+      description: (
+        <>
+          <Text>
+            Buttons can be displayed either at full width (as wide as the
+            element that contains them) or content width (only as wide as the
+            content inside them).
+          </Text>
+          <Text>
+            It&rsquo;s recommended to display buttons at full width on mobile
+            and content width on tablet and desktop. An easy way to achieve this
+            is by using the{' '}
+            <TextLink href="/components/Actions">Actions</TextLink> layout
+            component, which applies spacing and responsive behaviour to
+            buttons.
+          </Text>
+        </>
+      ),
+    },
+    {
+      description: (
+        <>
+          <Heading level="4">The Actions component</Heading>
+          <Text>
+            Actions is a layout component which applies spacing and responsive
+            behaviour to display buttons in a consistent way. It&rsquo;s
+            recommended to always use the Actions component when displaying
+            buttons, unless you have specific needs requiring the use of other
+            layout components (such as Inline or Columns).
+          </Text>
+        </>
+      ),
+      Example: () => {
+        const { value: visual } = source(
+          <Stack space="large">
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Without actions component
+              </Text>
+              <Text tone="secondary" size="small">
+                Buttons are full width by default without any spacing around
+                them.
+              </Text>
+              <Stack space="none">
+                <Button variant="solid">Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Stack>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                With actions component
+              </Text>
+              <Text tone="secondary" size="small">
+                Buttons take the width of their content and sit side by side on
+                tablet and desktop, and become full width on mobile.
+              </Text>
+              <Actions>
+                <Button variant="solid">Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Actions>
+            </Stack>
+          </Stack>,
+        );
+
+        const { code: codeDemo } = source(
+          <Stack space="large">
+            <Stack space="none">
+              <Button variant="solid">Solid</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Stack>
+            <Actions>
+              <Button variant="solid">Solid</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Actions>
+          </Stack>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
+    },
+    {
       label: 'Bleed',
       description: (
         <>
