@@ -391,7 +391,6 @@ const docs: ComponentDocs = {
           <Strong>small.</Strong>
         </Text>
       ),
-
       Example: () => {
         const { value: visual } = source(
           <Stack space="large">
@@ -467,8 +466,8 @@ const docs: ComponentDocs = {
           an <Strong>icon</Strong> can be provided.
         </Text>
       ),
-      Example: () =>
-        source(
+      Example: () => {
+        const { value: visual } = source(
           <Stack space="large">
             <Stack space="small">
               <Text tone="secondary" weight="strong">
@@ -489,7 +488,26 @@ const docs: ComponentDocs = {
               </Actions>
             </Stack>
           </Stack>,
-        ),
+        );
+
+        const { code: codeDemo } = source(
+          <Stack space="large">
+            <Actions>
+              <Button icon={<IconSend />}>Send</Button>
+            </Actions>
+            <Actions>
+              <Button size="small" icon={<IconSend />}>
+                Send
+              </Button>
+            </Actions>
+          </Stack>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       description: (
