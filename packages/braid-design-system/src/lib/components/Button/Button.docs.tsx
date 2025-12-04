@@ -22,7 +22,7 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const choosingRightButtonDoc = [
   {
-    label: 'Choosing the right button',
+    label: 'Interplay between variant and tone',
     description: (
       <>
         <Text>
@@ -30,12 +30,18 @@ const choosingRightButtonDoc = [
           <Strong>ghost</Strong> variant, allowing the visual prominence to be
           increased or decreased as required.
         </Text>
-
         <Text>
           This enables colour to be applied as accents and with purpose, rather
           than by default — improving the management of user attention and
           supporting a more declarative hierarchy of actions.
         </Text>
+        <Notice>
+          <Text>
+            Older themes like <Strong>apac</Strong> and{' '}
+            <Strong>seekBusiness</Strong> retain the default{' '}
+            <Strong>formAccent</Strong> tone and <Strong>solid</Strong> variant.
+          </Text>
+        </Notice>
       </>
     ),
     playroom: false,
@@ -47,11 +53,11 @@ const choosingRightButtonDoc = [
             Default is a <Strong>neutral</Strong> tone and{' '}
             <Strong>ghost</Strong> variant:
           </Text>
-          <Inline space="none">
+          <Actions>
             <Button variant="ghost" tone="neutral">
               Button
             </Button>
-          </Inline>
+          </Actions>
         </Stack>,
       ),
   },
@@ -75,38 +81,9 @@ const choosingRightButtonDoc = [
             Default variant becomes <Strong>solid</Strong> when a{' '}
             <Strong>tone</Strong> is applied:
           </Text>
-          <Inline space="none">
+          <Actions>
             <Button tone="critical">Button</Button>
-          </Inline>
-        </Stack>,
-      ),
-  },
-  {
-    description: (
-      <>
-        <Text>
-          As the approach to colour in our experiences has changed over time, so
-          too has the default visual prominence for buttons. For this reason,
-          older themes such as <Strong>apac</Strong> and{' '}
-          <Strong>seekBusiness</Strong> continue to have the default tone of{' '}
-          <Strong>formAccent</Strong> and a <Strong>solid</Strong> variant.
-        </Text>
-      </>
-    ),
-    playroom: false,
-    code: false,
-    Example: () =>
-      source(
-        <Stack space="small">
-          <Text size="small" tone="secondary">
-            Historical default was the <Strong>formAccent</Strong> tone and{' '}
-            <Strong>solid</Strong> variant:
-          </Text>
-          <Inline space="none">
-            <Button variant="solid" tone="formAccent">
-              Button
-            </Button>
-          </Inline>
+          </Actions>
         </Stack>,
       ),
   },
@@ -404,6 +381,7 @@ const docs: ComponentDocs = {
           </Actions>,
         ),
     },
+    ...choosingRightButtonDoc,
     {
       label: 'Disabled actions',
       description: (
@@ -467,7 +445,6 @@ const docs: ComponentDocs = {
           </Stack>,
         ),
     },
-    ...choosingRightButtonDoc,
     {
       label: 'Icons',
       description: (
