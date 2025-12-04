@@ -383,10 +383,10 @@ const docs: ComponentDocs = {
     },
     ...choosingRightButtonDoc,
     {
-      label: 'Sizes',
+      label: 'Size',
       description: (
         <Text>
-          You can customise the size of the button via the <Strong>size</Strong>{' '}
+          You can tailor the size of the button via the <Strong>size</Strong>{' '}
           prop, which accepts either <Strong>standard</Strong> or{' '}
           <Strong>small.</Strong>
         </Text>
