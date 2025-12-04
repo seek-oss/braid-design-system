@@ -509,63 +509,55 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Box background="neutral">
-            <Stack space="small">
-              <Inline space="small">
-                <Button tone="formAccent" variant="solid">
+            <Stack space="xsmall">
+              <Actions>
+                <Button variant="solid" tone="brandAccent">
                   Solid
                 </Button>
-                <Button tone="formAccent" variant="ghost">
+                <Button variant="ghost" tone="brandAccent">
                   Ghost
                 </Button>
-                <Button tone="formAccent" variant="soft">
+                <Button variant="soft" tone="brandAccent">
                   Soft
                 </Button>
-                <Button tone="formAccent" variant="transparent">
+                <Button variant="transparent" tone="brandAccent">
                   Transparent
                 </Button>
-              </Inline>
-              <Inline space="small">
-                <Button tone="brandAccent" variant="solid">
+              </Actions>
+              <Actions>
+                <Button variant="solid" tone="formAccent">
                   Solid
                 </Button>
-                <Button tone="brandAccent" variant="ghost">
+                <Button variant="ghost" tone="formAccent">
                   Ghost
                 </Button>
-                <Button tone="brandAccent" variant="soft">
+                <Button variant="soft" tone="formAccent">
                   Soft
                 </Button>
-                <Button tone="brandAccent" variant="transparent">
+                <Button variant="transparent" tone="formAccent">
                   Transparent
                 </Button>
-              </Inline>
-              <Inline space="small">
-                <Button tone="critical" variant="solid">
+              </Actions>
+              <Actions>
+                <Button variant="solid" tone="critical">
                   Solid
                 </Button>
-                <Button tone="critical" variant="ghost">
+                <Button variant="ghost" tone="critical">
                   Ghost
                 </Button>
-                <Button tone="critical" variant="soft">
+                <Button variant="soft" tone="critical">
                   Soft
                 </Button>
-                <Button tone="critical" variant="transparent">
+                <Button variant="transparent" tone="critical">
                   Transparent
                 </Button>
-              </Inline>
-              <Inline space="small">
-                <Button tone="neutral" variant="solid">
-                  Solid
-                </Button>
-                <Button tone="neutral" variant="ghost">
-                  Ghost
-                </Button>
-                <Button tone="neutral" variant="soft">
-                  Soft
-                </Button>
-                <Button tone="neutral" variant="transparent">
-                  Transparent
-                </Button>
-              </Inline>
+              </Actions>
+              <Actions>
+                <Button variant="solid">Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="soft">Soft</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Actions>
             </Stack>
           </Box>,
         ),
