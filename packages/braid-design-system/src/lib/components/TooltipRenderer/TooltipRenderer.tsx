@@ -212,6 +212,7 @@ export const TooltipRenderer = ({
         triggerRef.current.addEventListener('focus', openTooltip);
         triggerRef.current.addEventListener('mouseenter', openTooltip);
         triggerRef.current.addEventListener('mouseleave', closeTooltip);
+        triggerRef.current.addEventListener('click', closeTooltip);
       }
     }
 
@@ -225,6 +226,7 @@ export const TooltipRenderer = ({
           triggerRef.current.removeEventListener('focus', openTooltip);
           triggerRef.current.removeEventListener('mouseenter', openTooltip);
           triggerRef.current.removeEventListener('mouseleave', closeTooltip);
+          triggerRef.current.removeEventListener('click', closeTooltip);
         }
       }
     };
