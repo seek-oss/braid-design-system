@@ -568,7 +568,6 @@ exports[`Box 1`] = `
         | "borderPromoteLight"
         | "large"
         | "medium"
-        | "outlineFocus"
         | "small"
     capture?: 
         | "environment"
@@ -1206,9 +1205,7 @@ exports[`Box 1`] = `
     opacity?: 0
     open?: boolean
     optimum?: number
-    outline?: 
-        | "focus"
-        | "none"
+    outline?: "focus"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1582,7 +1579,6 @@ exports[`BoxRenderer 1`] = `
         | "borderPromoteLight"
         | "large"
         | "medium"
-        | "outlineFocus"
         | "small"
     children: (className: string) => ReactElement<unknown, string | JSXElementConstructor<any>> | null
     className?: ClassValue
@@ -1921,9 +1917,7 @@ exports[`BoxRenderer 1`] = `
         | "xsmall"
     minWidth?: 0
     opacity?: 0
-    outline?: 
-        | "focus"
-        | "none"
+    outline?: "focus"
     overflow?: 
         | "auto"
         | "hidden"

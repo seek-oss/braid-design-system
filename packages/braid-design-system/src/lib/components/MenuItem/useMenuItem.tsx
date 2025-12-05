@@ -155,7 +155,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
           height: size === 'standard' ? 'touchable' : undefined,
           cursor: 'pointer',
           textAlign: 'left',
-          outline: 'none',
         }),
       ],
       ...buildDataAttributes({ data, validateRestProps: restProps }),

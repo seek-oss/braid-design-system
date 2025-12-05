@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const menuItem = style({
+  outline: 'none',
   selectors: {
     [`&::-moz-focus-inner`]: {
       border: 0,
