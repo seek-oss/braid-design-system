@@ -88,7 +88,6 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
     'license',
   ],
   IconLinkBroken: ['brokenLink', 'chain', 'broken', 'error'],
-  IconList: ['lines', 'queue', 'stack'],
   IconLocation: ['pin', 'marker', 'place', 'map', 'gps'],
   IconMail: ['envelope', 'letter', 'message'],
   IconMessage: ['chat', 'bubble', 'comment'],

@@ -47,7 +47,6 @@ export { IconLanguage } from './IconLanguage/IconLanguage';
 export { IconLicence } from './IconLicence/IconLicence';
 export { IconLink } from './IconLink/IconLink';
 export { IconLinkBroken } from './IconLinkBroken/IconLinkBroken';
-export { IconList } from './IconList/IconList';
 export { IconLocation } from './IconLocation/IconLocation';
 export { IconMail } from './IconMail/IconMail';
 export { IconMessage } from './IconMessage/IconMessage';
