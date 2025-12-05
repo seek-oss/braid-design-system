@@ -40,7 +40,6 @@ const boxShadow = {
   borderPositiveLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.positiveLight}`,
   borderPromote: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promote}`,
   borderPromoteLight: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.promoteLight}`,
-  outlineFocus: `0 0 0 ${vars.focusRingSize} ${vars.borderColor.focus}`,
 };
 
 export type BoxShadow = keyof typeof boxShadow;
@@ -55,7 +54,6 @@ export const unresponsiveProperties = {
   overflow: ['hidden', 'scroll', 'visible', 'auto'],
   userSelect: ['none'],
   outline: {
-    none: 'none',
     focus: atomicOutlineStyleRule(),
   },
   opacity: [0],
