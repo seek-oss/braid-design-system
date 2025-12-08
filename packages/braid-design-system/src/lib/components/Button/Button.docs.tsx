@@ -218,7 +218,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Tones allow you to provide additional information regarding the
-          meaning or importance of the action. The tone prop accepts either{' '}
+          meaning or importance of an action. The tone prop accepts either{' '}
           <Strong>brandAccent</Strong>, <Strong>formAccent</Strong>,{' '}
           <Strong>critical</Strong> or <Strong>neutral</Strong>. When no tone is
           specified, the button will appear as neutral by default.
@@ -625,9 +625,7 @@ const docs: ComponentDocs = {
             It&rsquo;s recommended to display buttons at full width on mobile
             and content width on tablet and desktop. An easy way to achieve this
             is by using the{' '}
-            <TextLink href="/components/Actions">Actions</TextLink> layout
-            component, which applies spacing and responsive behaviour to
-            buttons.
+            <TextLink href="/components/Actions">Actions</TextLink> component.
           </Text>
         </>
       ),
@@ -637,11 +635,12 @@ const docs: ComponentDocs = {
         <>
           <Heading level="4">The Actions component</Heading>
           <Text>
-            Actions is a layout component which applies spacing and responsive
-            behaviour to display buttons in a consistent way. It&rsquo;s
-            recommended to always use the Actions component when displaying
-            buttons, unless you have specific needs requiring the use of other
-            layout components (such as Inline or Columns).
+            <TextLink href="/components/Actions">Actions</TextLink> is a layout
+            component that applies spacing and responsive behaviour to buttons
+            in a consistent way. It&rsquo;s recommended to always use the
+            Actions component when displaying buttons, unless you have specific
+            needs requiring the use of other layout components (such as Inline
+            or Columns).
           </Text>
         </>
       ),
