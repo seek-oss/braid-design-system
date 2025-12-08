@@ -699,6 +699,65 @@ const docs: ComponentDocs = {
       },
     },
     {
+      label: 'Grouping multiple buttons',
+      description: (
+        <>
+          <Text>
+            When grouping buttons it&rsquo;s important to create hierarchy by
+            assigning different variants. Consider which action is the most
+            important and give that button the most prominent appearance.
+          </Text>
+          <Text>
+            A few examples of button groups that provide appropriate hierarchy
+            are shown below.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="xsmall">
+            <Actions>
+              <Button variant="solid">Solid</Button>
+              <Button variant="soft">Soft</Button>
+            </Actions>
+            <Actions>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Actions>
+            <Actions>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="soft">Soft</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Actions>
+            <Actions>
+              <Button variant="solid">Solid</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="transparent">Transparent</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Actions>
+          </Stack>,
+        ),
+    },
+    {
+      description: (
+        <Text>
+          Avoid displaying multiple solid buttons together with different tones
+          applied. If you need to apply more than one tone within a group of
+          buttons, apply different variants also to create appropriate
+          hierarchy.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Actions>
+            <Button tone="critical" variant="solid" icon={<IconDelete />}>
+              Delete
+            </Button>
+            <Button variant="ghost">Cancel</Button>
+          </Actions>,
+        ),
+    },
+    {
       label: 'Bleed',
       description: (
         <>
