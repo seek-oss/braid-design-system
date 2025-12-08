@@ -9527,7 +9527,7 @@ exports[`useColor 1`] = `
 {
   exportType: hook,
   params: [],
-  returnType: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 14 more ...; secondaryInverted: string; }; background: { ...; }; },
+  returnType: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 13 more ...; secondaryInverted: string; }; background: { ...; }; },
 }
 `;
 
