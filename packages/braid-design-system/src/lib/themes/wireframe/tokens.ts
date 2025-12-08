@@ -241,7 +241,6 @@ const tokens: BraidTokens = {
       positiveLight,
       promote: getAccessibleVariant(promote),
       promoteLight,
-      rating: black,
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
     },

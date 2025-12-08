@@ -15,8 +15,6 @@ import {
   Alert,
   List,
   Divider,
-  Badge,
-  TooltipRenderer,
 } from 'braid-src/lib/components';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
@@ -39,32 +37,6 @@ const Row = ({
       <Text>
         <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
         {name}
-        {name === 'rating' ? (
-          <>
-            {' '}
-            <TooltipRenderer
-              tooltip={
-                <Text>
-                  The `rating` token has been deprecated in favour of the
-                  `brandAccent` token
-                </Text>
-              }
-            >
-              {({ triggerProps }) => (
-                <Box component="span" {...triggerProps}>
-                  <Badge
-                    tone="caution"
-                    title={
-                      '' /* Blanked-out to prevent title appearing alongside tooltip */
-                    }
-                  >
-                    Deprecated
-                  </Badge>
-                </Box>
-              )}
-            </TooltipRenderer>
-          </>
-        ) : null}
       </Text>
     </Column>
     <Column width="content">

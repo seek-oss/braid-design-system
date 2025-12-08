@@ -208,7 +208,6 @@ const tokens: BraidTokens = {
       positiveLight: palette.mint['400'],
       promote: palette.violet['700'],
       promoteLight: palette.violet['400'],
-      rating: black,
       secondary,
       secondaryInverted: rgba('#fff', 0.65),
     },
