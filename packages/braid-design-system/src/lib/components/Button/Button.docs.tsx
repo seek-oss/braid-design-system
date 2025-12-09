@@ -17,7 +17,11 @@ import {
   IconArrow,
   Actions,
   List,
+  Column,
+  Columns,
+  ContentBlock,
 } from '../';
+import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const choosingRightButtonDoc = [
@@ -755,6 +759,99 @@ const docs: ComponentDocs = {
             </Button>
             <Button variant="ghost">Cancel</Button>
           </Actions>,
+        ),
+    },
+    {
+      label: 'Positioning primary and secondary buttons',
+      description: (
+        <>
+          <Heading level="4">Web</Heading>
+          <Text>
+            It&rsquo;s recommended to left align buttons together with the
+            primary action on the left.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="small">
+            <Placeholder label="Page content" height={125} />
+            <Actions>
+              <Button>Primary</Button>
+              <Button variant="soft">Secondary</Button>
+            </Actions>
+          </Stack>,
+        ),
+    },
+    {
+      description: (
+        <>
+          <Heading level="4">Mobile</Heading>
+          <Text>
+            It&rsquo;s recommended to stack buttons at full width with primary
+            appearing first followed by secondary.
+          </Text>
+          <Text>
+            If you chose to position buttons side by side on mobile instead,
+            it&rsquo;s recommended to align with the Apps advice below and
+            position primary on the right.
+          </Text>
+        </>
+      ),
+      Example: () => {
+        const { value: visual } = source(
+          <ContentBlock width="xsmall" align="left">
+            <Stack space="small">
+              <Placeholder label="Page content" height={125} />
+              <Stack space="xsmall">
+                <Button>Primary</Button>
+                <Button variant="soft">Secondary</Button>
+              </Stack>
+            </Stack>
+          </ContentBlock>,
+        );
+
+        const { code: codeDemo } = source(
+          <Actions>
+            <Button>Primary</Button>
+            <Button variant="soft">Secondary</Button>
+          </Actions>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
+    },
+    {
+      description: (
+        <>
+          <Heading level="4">Apps</Heading>
+          <Text>
+            It&rsquo;s recommended to observe apps best practice and position
+            primary on the right, secondary on the left with buttons placed side
+            by side, justified to the screen width.
+          </Text>
+        </>
+      ),
+      playroom: false,
+      code: false,
+      Example: () =>
+        source(
+          <ContentBlock width="xsmall" align="left">
+            <Stack space="small">
+              <Placeholder label="Page content" height={125} />
+              <Columns space="small">
+                <Column>
+                  <Button variant="soft">Secondary</Button>
+                </Column>
+                <Column>
+                  <Button>Primary</Button>
+                </Column>
+              </Columns>
+            </Stack>
+          </ContentBlock>,
         ),
     },
     {
