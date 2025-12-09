@@ -161,11 +161,18 @@ const docs: ComponentDocs = {
     },
     {
       name: 'ButtonLink',
-      description: 'For a semantic link that looks like a button.',
+      description:
+        'For a semantic link that looks like a button and takes users to other pages or resources.',
+    },
+    {
+      name: 'TextLink',
+      description:
+        'For a semantic link that takes users to other pages or resources.',
     },
     {
       name: 'TextLinkButton',
-      description: 'For a semantic button that looks like a link.',
+      description:
+        'For a semantic button that looks like a link and allows the user to perform an action.',
     },
   ],
   additional: [
