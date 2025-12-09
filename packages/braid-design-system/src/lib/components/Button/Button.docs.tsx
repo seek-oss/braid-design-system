@@ -1166,7 +1166,7 @@ const docs: ComponentDocs = {
                       <Text>Do</Text>
                     </TableHeaderCell>
                     <TableHeaderCell>
-                      <Text>Don't</Text>
+                      <Text>Don&rsquo;t</Text>
                     </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
@@ -1208,7 +1208,7 @@ const docs: ComponentDocs = {
                       <Text>Do</Text>
                     </TableHeaderCell>
                     <TableHeaderCell>
-                      <Text>Don't</Text>
+                      <Text>Don&rsquo;t</Text>
                     </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
