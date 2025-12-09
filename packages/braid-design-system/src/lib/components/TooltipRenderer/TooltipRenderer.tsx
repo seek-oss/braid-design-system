@@ -75,6 +75,7 @@ export const TooltipContent = ({
   const arrowWidthOffset = parseFloat(styles.constants.arrowSize) * 2;
 
   const [tooltipWidth, setTooltipWidth] = useState(0);
+  const [tooltipHeight, setTooltipHeight] = useState(0);
   const tooltipContainerRef = useRef<HTMLElement | null>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -82,8 +83,10 @@ export const TooltipContent = ({
       return;
     }
 
-    const { width } = tooltipContainerRef.current.getBoundingClientRect();
+    const { width, height } =
+      tooltipContainerRef.current.getBoundingClientRect();
     setTooltipWidth(width);
+    setTooltipHeight(height);
   }, [children]);
 
   const clampedArrowX =
@@ -94,6 +97,15 @@ export const TooltipContent = ({
           tooltipWidth - edgeOffsetInPx - arrowWidthOffset,
         )
       : arrowX;
+
+  const clampedArrowY =
+    arrowY !== undefined && tooltipHeight > 0
+      ? clamp(
+          edgeOffsetInPx,
+          arrowY,
+          tooltipHeight - edgeOffsetInPx - arrowWidthOffset,
+        )
+      : arrowY;
 
   return (
     <Box
@@ -117,7 +129,8 @@ export const TooltipContent = ({
           style={assignInlineVars({
             [styles.arrowX]:
               clampedArrowX !== undefined ? `${clampedArrowX}px` : undefined,
-            [styles.arrowY]: arrowY !== undefined ? `${arrowY}px` : undefined,
+            [styles.arrowY]:
+              clampedArrowY !== undefined ? `${clampedArrowY}px` : undefined,
           })}
         />
       </TooltipTextDefaultsProvider>

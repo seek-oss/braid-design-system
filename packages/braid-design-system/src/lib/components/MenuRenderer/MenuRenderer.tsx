@@ -60,7 +60,7 @@ export interface MenuRendererProps {
   offsetSpace?: ResponsiveSpace;
   size?: MenuSize;
   width?: keyof typeof styles.width | 'content';
-  placement?: PopoverProps['placement'];
+  placement?: Extract<PopoverProps['placement'], 'top' | 'bottom'>;
   onOpen?: () => void;
   onClose?: (closeReason: CloseReason) => void;
   data?: DataAttributeMap;
@@ -287,7 +287,7 @@ export const MenuRenderer: FC<MenuRendererProps> = ({
         open={open}
         onClose={() => dispatch({ type: MENU_CLOSE })}
         triggerRef={triggerProps.ref}
-        align={align}
+        align={align === 'left' ? 'start' : 'end'}
         placement={placement}
         offsetSpace={offsetSpace}
         role={false}
