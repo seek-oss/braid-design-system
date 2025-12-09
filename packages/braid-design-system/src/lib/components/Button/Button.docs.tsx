@@ -841,9 +841,8 @@ const docs: ComponentDocs = {
     {
       description: (
         <Text>
-          If you chose to position buttons side by side on mobile instead,
-          it&rsquo;s recommended to align with the Apps advice below and
-          position primary on the right.
+          If you need to position buttons side by side on mobile instead, follow
+          the Apps advice below.
         </Text>
       ),
     },
@@ -852,7 +851,7 @@ const docs: ComponentDocs = {
         <>
           <Heading level="4">Apps</Heading>
           <Text>
-            It&rsquo;s recommended to observe apps best practice and position
+            It&rsquo;s recommended to observe Apps best practice and position
             primary on the right, secondary on the left with buttons placed side
             by side, justified to the screen width.
           </Text>
