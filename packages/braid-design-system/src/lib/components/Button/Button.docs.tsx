@@ -20,6 +20,12 @@ import {
   Column,
   Columns,
   ContentBlock,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
 } from '../';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -1059,6 +1065,177 @@ const docs: ComponentDocs = {
       `,
       supportsNativeSyntax: false,
     }),
+    {
+      label: 'Content guidelines',
+      description: (
+        <>
+          <Stack space="xxlarge">
+            <Notice>
+              <Text>
+                Buttons let users take action or make a choice. A button is
+                different from a link. Links take users somewhere.
+              </Text>
+            </Notice>
+            <Stack space="large">
+              <Heading level="4">Be clear and concise.</Heading>
+              <List space="large">
+                <Text>
+                  Be direct and use active language e.g. &quot;Post ad&quot;.
+                </Text>
+                <Text>Use 2 to 4 words only.</Text>
+                <Text>Use sentence case.</Text>
+                <Text>
+                  Don&rsquo;t use punctuation, such as exclamation marks, full
+                  stops or commas.
+                </Text>
+                <Text>One action only per button.</Text>
+                <Text>Don&rsquo;t include pronouns in buttons.</Text>
+              </List>
+              <Table label="Do and don&rsquo;t">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="50%">
+                      <Text>Do</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Don&rsquo;t</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>
+                      <Text>Explore this career</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Find out more about this career</Text>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Text>Complete profile</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Complete My Profile</Text>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Text>Create alert</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Yes, create alert</Text>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Text>Buy credit</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Save and purchase credit</Text>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Text>Edit preferences</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Add or edit preferences</Text>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
+            <Stack space="large">
+              <Heading level="4">Tell users what action they can take.</Heading>
+              <List space="large">
+                <Text>Buttons should always perform an action.</Text>
+                <Text>
+                  Use a verb and a noun e.g. Create [verb/action] job ad
+                  [noun/name].
+                </Text>
+                <Text>
+                  It&rsquo;s okay to drop the noun for common actions like,
+                  &quot;Done&quot;, &quot;Submit&quot;, &quot;Next&quot;.
+                </Text>
+              </List>
+              <Table label="Do and don&rsquo;t">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="50%">
+                      <Text>Do</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Don't</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>
+                      <Text>View profile</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Full profile</Text>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
+            <Stack space="large">
+              <Heading level="4">Let users know what happens next.</Heading>
+              <List space="large">
+                <Text>
+                  Be specific. People need to know what to expect when they
+                  click a button. Button content should make sense even if
+                  someone doesn&rsquo;t read the content around it e.g. someone
+                  using a screenreader to jump through the links, someone
+                  scanning the page or someone with a small visual focus field.
+                </Text>
+                <Text>
+                  Match the destination content. Button content should reflect
+                  the title of the destination content.
+                </Text>
+                <Text>
+                  Never mislead people by mislabelling a button. We&rsquo;ll
+                  lose their trust.
+                </Text>
+              </List>
+              <Table label="Do and Don&rsquo;t">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="50%">
+                      <Text>Do</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Don't</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>
+                      <Text>Create resumé</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Get started</Text>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Text>Update profile</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Get started</Text>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
+          </Stack>
+        </>
+      ),
+    },
   ],
 };
 
