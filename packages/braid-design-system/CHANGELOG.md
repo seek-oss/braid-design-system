@@ -1,5 +1,30 @@
 # braid-design-system
 
+## 33.13.0
+
+### Minor Changes
+
+- **Autosuggest:** Add support for data attributes on individual suggestions ([#1938](https://github.com/seek-oss/braid-design-system/pull/1938))
+
+  The data attributes are applied to each rendered list item.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Autosuggest
+    suggestions={[
+      {
+        text: 'Apples',
+        data: { testid: 'suggestion-apples' },
+      },
+    ]}
+  />
+  ```
+
+### Patch Changes
+
+- **ButtonIcon, TooltipRenderer:** Close tooltips after clicking the trigger on desktop devices ([#1932](https://github.com/seek-oss/braid-design-system/pull/1932))
+
 ## 33.12.4
 
 ### Patch Changes

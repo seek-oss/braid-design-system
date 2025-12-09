@@ -5279,5 +5279,23 @@
         "summary": "**Autosuggest, MenuRenderer, OverflowMenu, TooltipRenderer**: Ensure `TooltipRenderer` is correctly positioned on Android devices\n\nAdditionally, adjust `TooltipRenderer` positioning at screen edges, removing extra edge spacing.\nThis ensures the tooltip arrow is more closely aligned with the trigger when the trigger is near the edge of the screen."
       }
     ]
+  },
+  {
+    "version": "33.13.0",
+    "updates": [
+      {
+        "updated": [
+          "ButtonIcon",
+          "TooltipRenderer"
+        ],
+        "summary": "**ButtonIcon, TooltipRenderer:** Close tooltips after clicking the trigger on desktop devices"
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add support for data attributes on individual suggestions\n\nThe data attributes are applied to each rendered list item.\n\n**EXAMPLE USAGE:**\n```jsx\n<Autosuggest\n  suggestions={[\n    {\n      text: 'Apples',\n      data: { testid: 'suggestion-apples' },\n    },\n  ]}\n/>\n```"
+      }
+    ]
   }
 ]
