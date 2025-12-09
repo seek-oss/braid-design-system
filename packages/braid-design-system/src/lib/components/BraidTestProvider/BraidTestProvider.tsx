@@ -53,10 +53,8 @@ if (
   window.IntersectionObserver = MockIntersectionObserver;
 }
 
-interface BraidTestProviderProps extends Omit<
-  BraidProviderProps,
-  'theme' | 'styleBody'
-> {
+interface BraidTestProviderProps
+  extends Omit<BraidProviderProps, 'theme' | 'styleBody'> {
   themeName?: keyof typeof themes;
   breakpoint?: Breakpoint | null;
 }

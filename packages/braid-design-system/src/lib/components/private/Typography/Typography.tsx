@@ -19,7 +19,8 @@ export interface TypographyProps extends Pick<BoxProps, 'id' | 'component'> {
   data?: DataAttributeMap;
 }
 interface PrivateTypographyProps
-  extends TypographyProps, Pick<BoxProps, 'className'> {}
+  extends TypographyProps,
+    Pick<BoxProps, 'className'> {}
 
 export const Typography = ({
   id,

@@ -18,7 +18,8 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 
 export interface ButtonLinkProps
-  extends ButtonStyleProps, Omit<LinkComponentProps, 'className' | 'style'> {
+  extends ButtonStyleProps,
+    Omit<LinkComponentProps, 'className' | 'style'> {
   children?: ReactNode;
   data?: DataAttributeMap;
   icon?: ButtonProps['icon'];

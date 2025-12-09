@@ -27,8 +27,7 @@ export interface BoxBaseProps extends Omit<Atoms, 'reset' | 'background'> {
 }
 
 export interface BoxProps
-  extends
-    BoxBaseProps,
+  extends BoxBaseProps,
     Omit<
       AllHTMLAttributes<HTMLElement>,
       'width' | 'height' | 'className' | 'data'

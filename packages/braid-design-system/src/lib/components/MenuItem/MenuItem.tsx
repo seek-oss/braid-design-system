@@ -8,10 +8,8 @@ import {
   useMenuItem,
 } from './useMenuItem';
 
-export interface MenuItemProps extends Pick<
-  UseMenuItemProps,
-  'tone' | 'onClick' | 'data' | 'id'
-> {
+export interface MenuItemProps
+  extends Pick<UseMenuItemProps, 'tone' | 'onClick' | 'data' | 'id'> {
   children: ReactNode;
   badge?: MenuItemChildrenProps['badge'];
   icon?: MenuItemChildrenProps['leftSlot'];

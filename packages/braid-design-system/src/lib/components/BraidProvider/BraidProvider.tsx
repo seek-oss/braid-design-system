@@ -27,7 +27,8 @@ if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
 }
 
-export interface LinkComponentProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface LinkComponentProps
+  extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
 

@@ -19,8 +19,9 @@ import { version } from '../packages/braid-design-system/package.json';
     await fs.remove(updateFile);
   }
 
-  const componentUpdatesFile =
-    require.resolve('../site/src/componentUpdates.json');
+  const componentUpdatesFile = require.resolve(
+    '../site/src/componentUpdates.json',
+  );
 
   const existingComponentUpdates = await fs.readJSON(componentUpdatesFile);
 

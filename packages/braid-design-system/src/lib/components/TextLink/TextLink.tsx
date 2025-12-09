@@ -31,7 +31,8 @@ export interface TextLinkStyles {
 }
 
 export interface TextLinkProps
-  extends TextLinkStyles, Omit<LinkComponentProps, 'className' | 'style'> {
+  extends TextLinkStyles,
+    Omit<LinkComponentProps, 'className' | 'style'> {
   data?: DataAttributeMap;
   icon?: ReactElement<UseIconProps> | null;
 }

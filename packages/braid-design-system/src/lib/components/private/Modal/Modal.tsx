@@ -19,10 +19,11 @@ import { ariaHideOthers } from './ariaHideOthers';
 
 import * as styles from './Modal.css';
 
-export interface ModalProps extends Omit<
-  ModalContentProps,
-  'onClose' | 'scrollLock' | 'headingRef' | 'modalRef'
-> {
+export interface ModalProps
+  extends Omit<
+    ModalContentProps,
+    'onClose' | 'scrollLock' | 'headingRef' | 'modalRef'
+  > {
   open: boolean;
   onClose: (openState: false) => void | false;
 }
