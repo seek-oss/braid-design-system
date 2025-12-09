@@ -767,55 +767,69 @@ const docs: ComponentDocs = {
         <>
           <Heading level="4">Web</Heading>
           <Text>
-            It&rsquo;s recommended to left align buttons together with the
-            primary action on the left.
+            It&rsquo;s recommended to lead with the primary button followed by
+            secondary. On tablet and desktop, buttons should align to the left.
+            On mobile, buttons should stack at full width with primary appearing
+            first.
           </Text>
+          <Notice>
+            <Text>
+              An exception to this guidance is when buttons appear in the
+              context of a{' '}
+              <TextLink href="/components/Stepper">Stepper</TextLink>. In these
+              scenarios, the primary button should align to the right. Further
+              details can be found under{' '}
+              <TextLink href="/components/Stepper#providing-user-controls">
+                Providing user controls
+              </TextLink>
+              .
+            </Text>
+          </Notice>
         </>
       ),
-      Example: () =>
-        source(
-          <Stack space="small">
-            <Placeholder label="Page content" height={125} />
-            <Actions>
-              <Button>Primary</Button>
-              <Button variant="soft">Secondary</Button>
-            </Actions>
-          </Stack>,
-        ),
-    },
-    {
-      description: (
-        <>
-          <Heading level="4">Mobile</Heading>
-          <Text>
-            It&rsquo;s recommended to stack buttons at full width with primary
-            appearing first followed by secondary.
-          </Text>
-          <Text>
-            If you chose to position buttons side by side on mobile instead,
-            it&rsquo;s recommended to align with the Apps advice below and
-            position primary on the right.
-          </Text>
-        </>
-      ),
+
       Example: () => {
         const { value: visual } = source(
-          <ContentBlock width="xsmall" align="left">
+          <Stack space="xlarge">
             <Stack space="small">
-              <Placeholder label="Page content" height={125} />
-              <Stack space="xsmall">
-                <Button>Primary</Button>
-                <Button variant="soft">Secondary</Button>
+              <Text tone="secondary" weight="strong">
+                Tablet and desktop
+              </Text>
+              <Stack space="small">
+                <Placeholder label="Page content" height={125} />
+                <Actions>
+                  <Button>Primary</Button>
+                  <Button variant="soft">Secondary</Button>
+                </Actions>
               </Stack>
             </Stack>
-          </ContentBlock>,
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Mobile
+              </Text>
+              <ContentBlock width="xsmall" align="left">
+                <Stack space="small">
+                  <Placeholder label="Page content" height={125} />
+                  <Stack space="xsmall">
+                    <Button>Primary</Button>
+                    <Button variant="soft">Secondary</Button>
+                  </Stack>
+                </Stack>
+              </ContentBlock>
+            </Stack>
+          </Stack>,
         );
 
         const { code: codeDemo } = source(
-          <Actions>
-            <Button>Primary</Button>
-            <Button variant="soft">Secondary</Button>
-          </Actions>,
+          <>
+            <Stack space="small">
+              <Placeholder label="Page content" height={125} />
+              <Actions>
+                <Button>Primary</Button>
+                <Button variant="soft">Secondary</Button>
+              </Actions>
+            </Stack>
+          </>,
         );
 
         return {
@@ -823,6 +837,15 @@ const docs: ComponentDocs = {
           value: visual,
         };
       },
+    },
+    {
+      description: (
+        <Text>
+          If you chose to position buttons side by side on mobile instead,
+          it&rsquo;s recommended to align with the Apps advice below and
+          position primary on the right.
+        </Text>
+      ),
     },
     {
       description: (
