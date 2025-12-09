@@ -30,7 +30,7 @@ import {
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
-const choosingRightButtonDoc = [
+const interplayVariantAndToneDoc = [
   {
     label: 'Interplay between variant and tone',
     description: (
@@ -183,10 +183,10 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Choosing a variant and tone',
+      label: 'Choosing a button style',
       description: (
         <Text>
-          You can adjust the prominence and meaning of buttons by using the{' '}
+          You can adjust the prominence and meaning of a button by using the{' '}
           <Strong>variant</Strong> and <Strong>tone</Strong> properties.
         </Text>
       ),
@@ -202,7 +202,7 @@ const docs: ComponentDocs = {
             <Strong>transparent</Strong>. When no variant is specified, the
             button will appear as ghost by default.
           </Text>
-          <Text>How to use:</Text>
+          <Text>When selecting a variant:</Text>
           <List space="large">
             <Text>
               Choose a variant that reflects the importance of the action.
@@ -295,7 +295,7 @@ const docs: ComponentDocs = {
             For cases where actions need to be emphasized, the{' '}
             <Strong>tone</Strong> can be set to <Strong>formAccent</Strong>.
             This is our second most visibly strong tone and can be used to
-            emphasize an action. Unlike brandAccent, you may chose to have
+            emphasize an action. Unlike brandAccent, you may choose to have
             multiple formAccent buttons on the same page.
           </Text>
           <Notice>
@@ -331,13 +331,13 @@ const docs: ComponentDocs = {
           <Text>
             For destructive actions like “Delete” you can set the button&rsquo;s{' '}
             <Strong>tone</Strong> to <Strong>critical.</Strong> This tone
-            provides a visual warning to users and should be reserved for
-            destructive actions.
+            provides a visual warning to users and should be reserved for high
+            risk actions.
           </Text>
           <Text>
+            Avoid using multiple critical buttons in the same group of buttons.
             Multiple critical buttons may appear on the same page but should
-            relate to different pieces of content. Avoid using multiple critical
-            buttons in the same group of buttons.
+            relate to different pieces of content.
           </Text>
         </Stack>
       ),
@@ -398,7 +398,7 @@ const docs: ComponentDocs = {
           </Actions>,
         ),
     },
-    ...choosingRightButtonDoc,
+    ...interplayVariantAndToneDoc,
     {
       label: 'Size',
       description: (
@@ -541,7 +541,7 @@ const docs: ComponentDocs = {
               icon={<IconArrow direction="right" />}
               iconPosition="trailing"
             >
-              Next
+              Continue
             </Button>
           </Actions>,
         ),
@@ -656,8 +656,9 @@ const docs: ComponentDocs = {
             component that applies spacing and responsive behaviour to buttons
             in a consistent way. It&rsquo;s recommended to always use the
             Actions component when displaying buttons, unless you have specific
-            needs requiring the use of other layout components (such as Inline
-            or Columns).
+            needs requiring the use of other layout components (such as{' '}
+            <TextLink href="/components/Inline">Inline</TextLink> or{' '}
+            <TextLink href="/components/Columns">Columns</TextLink>).
           </Text>
         </>
       ),
@@ -790,10 +791,10 @@ const docs: ComponentDocs = {
               An exception to this guidance is when buttons appear in the
               context of a{' '}
               <TextLink href="/components/Stepper">Stepper</TextLink>. In these
-              scenarios, the primary button should align to the right. Further
-              details can be found under{' '}
+              scenarios, the primary button should align to the right. Read more
+              about{' '}
               <TextLink href="/components/Stepper#providing-user-controls">
-                Providing user controls
+                positioning Stepper buttons
               </TextLink>
               .
             </Text>
