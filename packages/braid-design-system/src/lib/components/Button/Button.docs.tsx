@@ -1009,6 +1009,38 @@ const docs: ComponentDocs = {
         </>
       ),
     },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xxlarge">
+          <Stack space="large">
+            <Text>Use a Button:</Text>
+            <List space="large">
+              <Text>
+                to allow the user to perform an action, like initiating a new
+                flow or confirming a decision.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Button:</Text>
+            <List space="large">
+              <Text>
+                to link to other pages or resources (consider using a{' '}
+                <TextLink href="/components/TextLink">TextLink</TextLink> or{' '}
+                <TextLink href="/components/ButtonLink">ButtonLink</TextLink>{' '}
+                instead.
+              </Text>
+              <Text>
+                to allow the user to select content, such as when applying
+                filters (consider using{' '}
+                <TextLink href="/components/Tag">Tags</TextLink> instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
     dataAttributeDocs({
       code: `
         <Button
