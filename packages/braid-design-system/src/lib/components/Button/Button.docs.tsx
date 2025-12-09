@@ -992,19 +992,19 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Disabled actions',
+      label: 'Disabled buttons',
       description: (
         <>
           <Text>
-            A <Strong>Button</Strong> cannot be disabled. This is a deliberate
-            design decision to encourage more accessible patterns that inform
-            the user about what is required to progress.
+            A button cannot be disabled (unless loading), as this is not an
+            accessible solution and does not provide information to the user
+            about how to fix the issue. Avoid disabled buttons where possible.
           </Text>
           <Text>
-            For example, when designing a form, instead of disabling the submit
-            button when a required field is missing, allow the user to attempt
-            to submit and fail. Validation feedback can then be provided
-            informing the user of what they must do to progress.
+            When designing a form, instead of disabling the submit button when a
+            required field is missing, allow the user to attempt to submit and
+            fail. Then provide validation feedback informing the user of what
+            they must do to progress.
           </Text>
         </>
       ),
