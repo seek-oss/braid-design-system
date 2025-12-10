@@ -33,21 +33,7 @@ import { normalizeResponsiveValue } from '../../../css/atoms/sprinkles.css';
 type Placement = 'top' | 'bottom' | 'left' | 'right';
 type Align = 'start' | 'end' | 'center';
 
-type FloatingUiPosition = Extract<
-  ReturnType<typeof useFloating>['placement'],
-  | 'top'
-  | 'bottom'
-  | 'left'
-  | 'right'
-  | 'top-start'
-  | 'top-end'
-  | 'bottom-start'
-  | 'bottom-end'
-  | 'left-start'
-  | 'left-end'
-  | 'right-start'
-  | 'right-end'
->;
+type FloatingUiPosition = ReturnType<typeof useFloating>['placement'];
 
 const positionMap: Record<Placement, Record<Align, FloatingUiPosition>> = {
   top: {
