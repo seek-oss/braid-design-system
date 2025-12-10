@@ -82,7 +82,7 @@ const interplayVariantAndToneDoc = [
         <Stack space="small">
           <Text size="small" tone="secondary">
             Default variant becomes <Strong>solid</Strong> when a{' '}
-            <Strong>tone</Strong> is applied:
+            <Strong>tone</Strong> is applied
           </Text>
           <Actions>
             <Button tone="critical">Button</Button>
