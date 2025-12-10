@@ -392,7 +392,7 @@ const docs: ComponentDocs = {
         <Text>
           You can tailor the size of the button via the <Strong>size</Strong>{' '}
           prop, which accepts either <Strong>standard</Strong> or{' '}
-          <Strong>small.</Strong>
+          <Strong>small</Strong>.
         </Text>
       ),
       Example: () => {
