@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -12,12 +13,12 @@ type PlayroomTextareaProps = StateProp &
   Optional<TextareaBaseProps, 'id' | 'value' | 'onChange'> &
   TextareaLabelProps;
 
-export const Textarea = ({
+export const Textarea: FC<PlayroomTextareaProps> = ({
   stateName,
   value,
   onChange,
   ...restProps
-}: PlayroomTextareaProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     value,

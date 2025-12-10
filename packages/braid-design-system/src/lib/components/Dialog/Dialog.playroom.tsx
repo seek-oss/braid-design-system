@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -8,12 +9,12 @@ import { type DialogProps, Dialog as BraidDialog } from './Dialog';
 type PlayroomDialogProps = StateProp &
   Optional<DialogProps, 'onClose' | 'open'>;
 
-export const Dialog = ({
+export const Dialog: FC<PlayroomDialogProps> = ({
   stateName,
   open,
   onClose,
   ...restProps
-}: PlayroomDialogProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     open,

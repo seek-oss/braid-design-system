@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
@@ -10,11 +11,11 @@ import {
 
 type PlayroomFieldMessageProps = Optional<FieldMessageProps, 'id'>;
 
-export const FieldMessage = ({
+export const FieldMessage: FC<PlayroomFieldMessageProps> = ({
   id,
   tone,
   ...restProps
-}: PlayroomFieldMessageProps) => {
+}) => {
   const resolvedId = useFallbackId(id);
 
   return (

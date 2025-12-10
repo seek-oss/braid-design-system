@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext, type FC } from 'react';
 
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -18,13 +18,13 @@ interface PageProps {
   data?: DataAttributeMap;
 }
 
-export const Page = ({
+export const Page: FC<PageProps> = ({
   children,
   footer,
   footerPosition,
   data,
   ...restProps
-}: PageProps) => {
+}) => {
   assert(
     !useContext(PageContext),
     'Page components should not be nested within each other',

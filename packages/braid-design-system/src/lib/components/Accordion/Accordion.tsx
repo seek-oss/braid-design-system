@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { Children, useMemo } from 'react';
+import { Children, useMemo, type FC } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Divider } from '../Divider/Divider';
@@ -54,7 +54,7 @@ const defaultSpaceForSize = {
   Record<NonNullable<TextProps['size']>, (typeof validSpaceValues)[number]>
 >;
 
-export const Accordion = ({
+export const Accordion: FC<AccordionProps> = ({
   children,
   size = defaultSize,
   tone,
@@ -63,7 +63,7 @@ export const Accordion = ({
   dividers = true,
   data,
   ...restProps
-}: AccordionProps) => {
+}) => {
   assert(
     spaceProp === undefined ||
       Object.values(normalizeResponsiveValue(spaceProp)).every(

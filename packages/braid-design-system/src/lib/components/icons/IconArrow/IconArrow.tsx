@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
@@ -9,7 +11,10 @@ export type IconArrowProps = IconContainerProps & {
   direction?: 'up' | 'down' | 'left' | 'right';
 };
 
-export const IconArrow = ({ direction = 'up', ...props }: IconArrowProps) => (
+export const IconArrow: FC<IconArrowProps> = ({
+  direction = 'up',
+  ...props
+}) => (
   <IconContainer {...props}>
     {({ className, ...svgProps }) => (
       <Box

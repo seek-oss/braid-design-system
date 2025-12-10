@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
@@ -5,7 +7,7 @@ import { IconDownloadSvg } from './IconDownloadSvg';
 
 export type IconDownloadProps = IconContainerProps;
 
-export const IconDownload = (props: IconDownloadProps) => (
+export const IconDownload: FC<IconDownloadProps> = (props) => (
   <IconContainer
     {...props}
     verticalCorrection={{

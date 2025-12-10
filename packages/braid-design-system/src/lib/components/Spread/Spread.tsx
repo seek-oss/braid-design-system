@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import {
   alignYToFlexAlign,
@@ -35,7 +37,7 @@ export interface SpreadProps {
   data?: DataAttributeMap;
 }
 
-export const Spread = ({
+export const Spread: FC<SpreadProps> = ({
   component,
   children,
   space,
@@ -44,7 +46,7 @@ export const Spread = ({
   alignY = 'top',
   data,
   ...restProps
-}: SpreadProps) => {
+}) => {
   const isVertical = direction === 'vertical';
   const isHorizontal = !isVertical;
   let alignItems: BoxProps['alignItems'];

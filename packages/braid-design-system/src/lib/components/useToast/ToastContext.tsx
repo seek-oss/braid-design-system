@@ -7,6 +7,7 @@ import {
   useState,
   useEffect,
   Fragment,
+  type FC,
 } from 'react';
 
 import { BraidPortal } from '../BraidPortal/BraidPortal';
@@ -119,7 +120,7 @@ const InternalToastProvider = ({ children }: ToastProviderProps) => {
   );
 };
 
-export const ToastProvider = ({ children }: ToastProviderProps) => {
+export const ToastProvider: FC<ToastProviderProps> = ({ children }) => {
   const currentContext = useContext(ToastControllerContext);
 
   if (currentContext !== null) {

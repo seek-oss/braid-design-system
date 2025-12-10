@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { useContext, useMemo } from 'react';
+import { type FC, useContext, useMemo } from 'react';
 
 import { type TextStyleProps, textStyles } from '../../css/typography';
 import {
@@ -18,14 +18,14 @@ export interface TextProps extends TypographyProps {
   baseline?: TextStyleProps['baseline'];
 }
 
-export const Text = ({
+export const Text: FC<TextProps> = ({
   size: sizeProp,
   tone: toneProp,
   weight: weightProp,
   maxLines: maxLinesProp,
   baseline = true,
   ...typographyProps
-}: TextProps) => {
+}) => {
   assert(
     !useContext(TextContext),
     'Text components should not be nested within each other',

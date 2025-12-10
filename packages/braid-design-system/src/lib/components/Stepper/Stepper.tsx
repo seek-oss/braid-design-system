@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { type ReactElement, Children } from 'react';
+import { type ReactElement, Children, type FC } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
@@ -58,7 +58,7 @@ const resolveActiveStep = (
   return activeStep || 0;
 };
 
-export const Stepper = ({
+export const Stepper: FC<StepperProps> = ({
   activeStep,
   label,
   mode = 'linear',
@@ -69,7 +69,7 @@ export const Stepper = ({
   id,
   onStepClick,
   ...restProps
-}: StepperProps) => {
+}) => {
   const steps = flattenChildren(children) as Step[];
   const stepCount = steps.length;
   const isLinear = mode === 'linear';
@@ -82,6 +82,7 @@ export const Stepper = ({
     const isLast = stepNumber === stepCount;
 
     assert(
+      // @ts-expect-error __isStep__ Braid custom property
       !child || child.type.__isStep__,
       'Only Step elements can be direct children of a Stepper. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/Stepper',
     );

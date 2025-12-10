@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 
 import {
@@ -13,7 +15,7 @@ type PlayroomAccordionItemProps = StateProp &
   AccordionItemStateProps &
   Partial<Pick<AccordionItemProps, OptionalProps>>;
 
-export const AccordionItem = ({
+export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
   label,
   stateName,
   expanded,
@@ -24,7 +26,7 @@ export const AccordionItem = ({
   badge,
   icon,
   ...restProps
-}: PlayroomAccordionItemProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     expanded,

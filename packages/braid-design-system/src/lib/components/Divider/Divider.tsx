@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { useBackgroundLightness } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
 
@@ -7,7 +9,7 @@ export interface DividerProps {
   weight?: 'regular' | 'strong';
 }
 
-export const Divider = ({ weight = 'regular' }: DividerProps) => {
+export const Divider: FC<DividerProps> = ({ weight = 'regular' }) => {
   const lightness = useBackgroundLightness();
 
   return (

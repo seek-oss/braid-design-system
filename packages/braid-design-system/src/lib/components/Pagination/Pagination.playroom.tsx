@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 import type { Optional } from 'utility-types';
 
 import type { StateProp } from '../../playroom/playroomState';
@@ -41,13 +41,13 @@ const resolveFallbackTotal = (
   return resolvedPage > defaultPageLimit ? resolvedPage * 2 : defaultTotal;
 };
 
-export const Pagination = ({
+export const Pagination: FC<PlayroomPaginationProps> = ({
   page,
   total,
   linkProps,
   label,
   ...restProps
-}: PlayroomPaginationProps) => {
+}) => {
   const fallbackPage = resolveFallbackPage(page, total);
   const fallbackTotal = resolveFallbackTotal(total, fallbackPage);
   const [currentPage, setCurrentPage] = useState(fallbackPage);

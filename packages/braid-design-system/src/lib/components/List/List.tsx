@@ -1,4 +1,4 @@
-import { type ReactNode, Children } from 'react';
+import { Children, type FC, type ReactNode } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
@@ -96,7 +96,7 @@ export type ListProps = {
   data?: StackProps['data'];
 } & (ListTypeIcon | ListTypeCharacter);
 
-export const List = ({
+export const List: FC<ListProps> = ({
   children,
   size: sizeProp,
   tone: toneProp,
@@ -105,7 +105,7 @@ export const List = ({
   start = 1,
   data,
   ...restProps
-}: ListProps) => {
+}) => {
   const { size, tone } = useDefaultTextProps({
     size: sizeProp,
     tone: toneProp,

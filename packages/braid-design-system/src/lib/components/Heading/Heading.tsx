@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import {
   type TypographyProps,
@@ -22,12 +22,12 @@ export interface HeadingProps extends TypographyProps {
   children: ReactNode;
 }
 
-export const Heading = ({
+export const Heading: FC<HeadingProps> = ({
   level,
   weight,
   component,
   ...typographyProps
-}: HeadingProps) => (
+}) => (
   <HeadingContext.Provider value={true}>
     <Typography
       {...typographyProps}

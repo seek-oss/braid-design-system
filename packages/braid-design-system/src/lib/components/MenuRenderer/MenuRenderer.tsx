@@ -2,6 +2,7 @@ import assert from 'assert';
 
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
+  type FC,
   type KeyboardEvent,
   type MouseEvent,
   type ReactNode,
@@ -96,7 +97,7 @@ const initialState: State = {
   closeReason: CLOSE_REASON_EXIT,
 };
 
-export const MenuRenderer = ({
+export const MenuRenderer: FC<MenuRendererProps> = ({
   onOpen,
   onClose,
   trigger,
@@ -109,7 +110,7 @@ export const MenuRenderer = ({
   children,
   data,
   ...restProps
-}: MenuRendererProps) => {
+}) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastOpen = useRef(false);
   const items = flattenChildren(children);

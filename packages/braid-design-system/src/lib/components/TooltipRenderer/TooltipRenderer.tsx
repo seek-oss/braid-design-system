@@ -8,6 +8,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type FC,
 } from 'react';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
@@ -137,12 +138,12 @@ export interface TooltipRendererProps {
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
 }
 
-export const TooltipRenderer = ({
+export const TooltipRenderer: FC<TooltipRendererProps> = ({
   id,
   tooltip,
   placement = 'top',
   children,
-}: TooltipRendererProps) => {
+}) => {
   const resolvedId = useFallbackId(id);
 
   const triggerRef = useRef<HTMLElement | null>(null);

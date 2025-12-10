@@ -1,6 +1,7 @@
 import assert from 'assert';
 
 import {
+  type FC,
   type ReactElement,
   type ReactNode,
   cloneElement,
@@ -53,7 +54,7 @@ export interface AccordionItemBaseProps {
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
 export type AccordionItemStateProps = DisclosureStateProps;
 
-export const AccordionItem = ({
+export const AccordionItem: FC<AccordionItemProps> = ({
   id,
   label,
   children,
@@ -64,7 +65,7 @@ export const AccordionItem = ({
   icon,
   data,
   ...restProps
-}: AccordionItemProps) => {
+}) => {
   const accordionContext = useContext(AccordionContext);
 
   assert(

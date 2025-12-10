@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -12,12 +12,12 @@ export interface SecondaryProps {
   data?: DataAttributeMap;
 }
 
-export const Secondary = ({
+export const Secondary: FC<SecondaryProps> = ({
   children,
   data,
   id,
   ...restProps
-}: SecondaryProps) => (
+}) => (
   <span
     className={tone.secondary}
     id={id}

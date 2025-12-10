@@ -1,5 +1,7 @@
 import assert from 'assert';
 
+import type { FC } from 'react';
+
 import type { Space } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
 import { ButtonIcon, type ButtonIconProps } from '../ButtonIcon/ButtonIcon';
@@ -43,14 +45,14 @@ const paddingXForSize: Record<NonNullable<TagProps['size']>, Space> = {
   standard: 'small',
 };
 
-export const Tag = ({
+export const Tag: FC<TagProps> = ({
   size = 'standard',
   data,
   id,
   icon,
   children,
   ...restProps
-}: TagProps) => {
+}) => {
   assert(
     typeof children === 'undefined' || typeof children === 'string',
     'Tag may only contain a string',

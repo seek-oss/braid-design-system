@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import type { ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
@@ -28,7 +28,7 @@ export type ColumnsProps = CollapsibleAlignmentProps & {
   data?: DataAttributeMap;
 };
 
-export const Columns = ({
+export const Columns: FC<ColumnsProps> = ({
   children,
   collapseBelow,
   reverse = false,
@@ -38,7 +38,7 @@ export const Columns = ({
   component = 'div',
   data,
   ...restProps
-}: ColumnsProps) => {
+}) => {
   assert(
     !reverse || (reverse && collapseBelow),
     'The `reverse` prop should only be applied in combination with the `collapseBelow` prop.\nIf you do not want to collapse responsively, it is recommended to reorder the content directly.\n\nSee documentation for details: https://seek-oss.github.io/braid-design-system/components/Columns#reversing-the-column-order',

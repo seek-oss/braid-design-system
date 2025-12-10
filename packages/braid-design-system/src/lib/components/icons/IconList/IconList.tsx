@@ -1,4 +1,5 @@
 import dedent from 'dedent';
+import type { FC } from 'react';
 
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
@@ -8,7 +9,7 @@ import { IconListSvg } from './IconListSvg';
 export type IconListProps = IconContainerProps;
 
 /** @deprecated  Use `IconBulletList` instead */
-export const IconList = (props: IconListProps) => {
+export const IconList: FC<IconListProps> = (props) => {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.warn(

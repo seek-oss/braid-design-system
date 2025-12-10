@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, FC } from 'react';
 
 import { Box } from '../Box/Box';
 import type { MenuItemProps } from '../MenuItem/MenuItem';
@@ -15,14 +15,14 @@ export interface MenuItemCheckboxProps extends Pick<
   onChange: (checked: boolean) => void;
   checked: boolean;
 }
-export const MenuItemCheckbox = ({
+export const MenuItemCheckbox: FC<MenuItemCheckboxProps> = ({
   children,
   onChange,
   checked,
   data,
   badge,
   id,
-}: MenuItemCheckboxProps) => {
+}) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLButtonElement>({
     onClick: () => onChange(!checked),
     formElement: true,
@@ -74,4 +74,5 @@ export const MenuItemCheckbox = ({
     </Box>
   );
 };
+// @ts-expect-error __isMenuItem__ Braid custom property
 MenuItemCheckbox.__isMenuItem__ = true;

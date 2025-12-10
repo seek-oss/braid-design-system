@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 
 import {
@@ -13,14 +15,14 @@ type PlayroomDisclosureProps = StateProp &
   DisclosureStateProps &
   Partial<Pick<DisclosureProps, OptionalProps>>;
 
-export const Disclosure = ({
+export const Disclosure: FC<PlayroomDisclosureProps> = ({
   stateName,
   expanded,
   expandLabel,
   collapseLabel,
   onToggle,
   ...restProps
-}: PlayroomDisclosureProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     expanded,

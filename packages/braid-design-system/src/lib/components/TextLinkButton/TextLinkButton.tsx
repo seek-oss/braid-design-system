@@ -5,6 +5,7 @@ import {
   type ReactElement,
   useRef,
   useCallback,
+  type FC,
 } from 'react';
 
 import type { UseIconProps } from '../../hooks/useIcon';
@@ -36,7 +37,7 @@ export interface TextLinkButtonProps extends Omit<
 }
 
 const noop = () => {};
-export const TextLinkButton = ({
+export const TextLinkButton: FC<TextLinkButtonProps> = ({
   weight,
   hitArea,
   id,
@@ -51,7 +52,7 @@ export const TextLinkButton = ({
   icon,
   iconPosition,
   ...restProps
-}: TextLinkButtonProps) => {
+}) => {
   const buttonRef = useRef<HTMLSpanElement>(null);
   const classes = useLinkStyles({
     reset: false,
