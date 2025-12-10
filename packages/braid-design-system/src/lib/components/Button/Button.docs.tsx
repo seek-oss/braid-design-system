@@ -1037,17 +1037,6 @@ const docs: ComponentDocs = {
         </Stack>
       ),
     },
-    dataAttributeDocs({
-      code: `
-        <Button
-          data={{ testid: 'button-1' }}
-          // => data-testid="button-1"
-        >
-          ...
-        </Button>
-      `,
-      supportsNativeSyntax: false,
-    }),
     {
       label: 'Content guidelines',
       description: (
@@ -1214,6 +1203,17 @@ const docs: ComponentDocs = {
           </Tiles>,
         ),
     },
+    dataAttributeDocs({
+      code: `
+        <Button
+          data={{ testid: 'button-1' }}
+          // => data-testid="button-1"
+        >
+          ...
+        </Button>
+      `,
+      supportsNativeSyntax: false,
+    }),
   ],
 };
 
