@@ -45,13 +45,6 @@ const interplayVariantAndToneDoc = [
           than by default — improving the management of user attention and
           supporting a more declarative hierarchy of actions.
         </Text>
-        <Notice>
-          <Text>
-            Older themes like <Strong>apac</Strong> and{' '}
-            <Strong>seekBusiness</Strong> retain the default{' '}
-            <Strong>formAccent</Strong> tone and <Strong>solid</Strong> variant.
-          </Text>
-        </Notice>
       </>
     ),
     playroom: false,
@@ -298,12 +291,6 @@ const docs: ComponentDocs = {
             emphasize an action. Unlike brandAccent, you may choose to have
             multiple formAccent buttons on the same page.
           </Text>
-          <Notice>
-            <Text>
-              This is the default tone in the <Strong>apac</Strong> and{' '}
-              <Strong>seekBusiness</Strong> themes.
-            </Text>
-          </Notice>
         </Stack>
       ),
       Example: () =>
