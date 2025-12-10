@@ -266,16 +266,16 @@ const docs: ComponentDocs = {
         source(
           <Actions>
             <Button tone="brandAccent" variant="solid">
-              Search
+              Solid
             </Button>
             <Button tone="brandAccent" variant="ghost">
-              Search
+              Ghost
             </Button>
             <Button tone="brandAccent" variant="soft">
-              Search
+              Soft
             </Button>
             <Button tone="brandAccent" variant="transparent">
-              Search
+              Transparent
             </Button>
           </Actions>,
         ),
@@ -331,17 +331,17 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Actions>
-            <Button tone="critical" icon={<IconDelete />} variant="solid">
-              Delete
+            <Button tone="critical" variant="solid">
+              Solid
             </Button>
-            <Button tone="critical" icon={<IconDelete />} variant="ghost">
-              Delete
+            <Button tone="critical" variant="ghost">
+              Ghost
             </Button>
-            <Button tone="critical" icon={<IconDelete />} variant="soft">
-              Delete
+            <Button tone="critical" variant="soft">
+              Soft
             </Button>
-            <Button tone="critical" icon={<IconDelete />} variant="transparent">
-              Delete
+            <Button tone="critical" variant="transparent">
+              Transparent
             </Button>
           </Actions>,
         ),
