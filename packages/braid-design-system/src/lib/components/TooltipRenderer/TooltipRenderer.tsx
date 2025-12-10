@@ -72,7 +72,7 @@ export const TooltipContent = ({
 
   const { space, grid } = useSpace();
   const edgeOffsetInPx = grid * space.xsmall;
-  const arrowWidthOffset = parseFloat(styles.constants.arrowSize) * 2;
+  const arrowSizeOffset = parseFloat(styles.constants.arrowSize) * 2;
 
   const [tooltipWidth, setTooltipWidth] = useState(0);
   const [tooltipHeight, setTooltipHeight] = useState(0);
@@ -94,7 +94,7 @@ export const TooltipContent = ({
       ? clamp(
           edgeOffsetInPx,
           arrowX,
-          tooltipWidth - edgeOffsetInPx - arrowWidthOffset,
+          tooltipWidth - edgeOffsetInPx - arrowSizeOffset,
         )
       : arrowX;
 
@@ -103,7 +103,7 @@ export const TooltipContent = ({
       ? clamp(
           edgeOffsetInPx,
           arrowY,
-          tooltipHeight - edgeOffsetInPx - arrowWidthOffset,
+          tooltipHeight - edgeOffsetInPx - arrowSizeOffset,
         )
       : arrowY;
 
