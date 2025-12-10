@@ -54,7 +54,7 @@ const interplayVariantAndToneDoc = [
         <Stack space="small">
           <Text size="small" tone="secondary">
             Default is a <Strong>neutral</Strong> tone and{' '}
-            <Strong>ghost</Strong> variant:
+            <Strong>ghost</Strong> variant
           </Text>
           <Actions>
             <Button variant="ghost" tone="neutral">
