@@ -7,8 +7,10 @@ import { IconTick } from '../icons/IconTick/IconTick';
 
 import * as styles from './MenuItemCheckbox.css';
 
-export interface MenuItemCheckboxProps
-  extends Pick<MenuItemProps, 'data' | 'badge' | 'id'> {
+export interface MenuItemCheckboxProps extends Pick<
+  MenuItemProps,
+  'data' | 'badge' | 'id'
+> {
   children: ReactNode;
   onChange: (checked: boolean) => void;
   checked: boolean;

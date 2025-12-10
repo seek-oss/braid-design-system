@@ -1,19 +1,18 @@
 import { type BoxProps, Box } from '../../Box/Box';
 
-export interface OverlayProps
-  extends Partial<
-    Pick<
-      BoxProps,
-      | 'component'
-      | 'children'
-      | 'zIndex'
-      | 'background'
-      | 'borderRadius'
-      | 'boxShadow'
-      | 'transition'
-      | 'className'
-    >
-  > {
+export interface OverlayProps extends Partial<
+  Pick<
+    BoxProps,
+    | 'component'
+    | 'children'
+    | 'zIndex'
+    | 'background'
+    | 'borderRadius'
+    | 'boxShadow'
+    | 'transition'
+    | 'className'
+  >
+> {
   visible?: boolean;
   onlyVisibleForKeyboardNavigation?: boolean;
 }

@@ -7,8 +7,7 @@ import type { MenuItemProps } from './MenuItem';
 import { useMenuItem } from './useMenuItem';
 
 export interface MenuItemLinkProps
-  extends MenuItemProps,
-    Pick<LinkProps, 'href' | 'target' | 'rel'> {}
+  extends MenuItemProps, Pick<LinkProps, 'href' | 'target' | 'rel'> {}
 
 export const MenuItemLink: FC<MenuItemLinkProps> = ({
   href,

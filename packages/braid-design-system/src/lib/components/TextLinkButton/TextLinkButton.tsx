@@ -20,8 +20,10 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
-export interface TextLinkButtonProps
-  extends Omit<TextLinkStyles, 'showVisited'> {
+export interface TextLinkButtonProps extends Omit<
+  TextLinkStyles,
+  'showVisited'
+> {
   id?: NativeSpanProps['id'];
   onClick?: NativeSpanProps['onClick'];
   data?: DataAttributeMap;

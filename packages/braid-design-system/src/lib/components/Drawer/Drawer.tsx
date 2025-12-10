@@ -19,8 +19,10 @@ const modalStyle = {
   illustration: undefined,
 } as const;
 
-export interface DrawerProps
-  extends Omit<ModalProps, keyof typeof modalStyle | 'width' | 'position'> {
+export interface DrawerProps extends Omit<
+  ModalProps,
+  keyof typeof modalStyle | 'width' | 'position'
+> {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
 }
@@ -41,11 +43,10 @@ export const Drawer: FC<DrawerProps> = ({
   );
 };
 
-interface DrawerContentProps
-  extends Omit<
-    ModalContentProps,
-    keyof typeof modalStyle | 'width' | 'position'
-  > {
+interface DrawerContentProps extends Omit<
+  ModalContentProps,
+  keyof typeof modalStyle | 'width' | 'position'
+> {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
 }

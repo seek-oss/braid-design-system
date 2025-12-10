@@ -10,8 +10,10 @@ import { IconOverflow } from '../icons';
 
 import * as styles from './OverflowMenu.css';
 
-export interface OverflowMenuProps
-  extends Omit<MenuRendererProps, 'trigger' | 'align' | 'offsetSpace'> {
+export interface OverflowMenuProps extends Omit<
+  MenuRendererProps,
+  'trigger' | 'align' | 'offsetSpace'
+> {
   label: string;
   id?: string;
 }

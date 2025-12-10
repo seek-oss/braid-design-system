@@ -44,8 +44,10 @@ export interface ModalContentProps {
 
 const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
 
-interface ModalContentHeaderProps
-  extends Pick<ModalContentProps, 'headingLevel' | 'description'> {
+interface ModalContentHeaderProps extends Pick<
+  ModalContentProps,
+  'headingLevel' | 'description'
+> {
   title: string;
   descriptionId: string;
   center?: boolean;
