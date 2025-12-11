@@ -186,7 +186,7 @@ const docs: ComponentDocs = {
     {
       label: 'When to use',
       description: (
-        <Stack space="xxlarge">
+        <Stack space="xlarge">
           <Stack space="large">
             <Text>Use a Tooltip:</Text>
             <List space="large">

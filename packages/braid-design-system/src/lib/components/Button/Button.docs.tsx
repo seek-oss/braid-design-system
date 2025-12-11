@@ -924,7 +924,7 @@ const docs: ComponentDocs = {
     {
       label: 'When to use',
       description: (
-        <Stack space="xxlarge">
+        <Stack space="xlarge">
           <Stack space="large">
             <Text>Use a Button:</Text>
             <List space="large">
