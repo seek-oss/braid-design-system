@@ -1,5 +1,6 @@
 import type { types as t } from '@babel/core';
 import { Box, Text } from 'ink';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
 
 import { renderToString } from '../ink/ink-to-string';
