@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 33.14.0
+
+### Minor Changes
+
+- **TooltipRenderer:** Add support for `left` and `right` placement, in addition to existing `top` and `bottom`. ([#1942](https://github.com/seek-oss/braid-design-system/pull/1942))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <TooltipRenderer
+    placement="left"
+    ...props
+  >
+   ...
+  </TooltipRenderer>
+
+  ```
+
+### Patch Changes
+
+- Improve components type definitions in support of Playroom props ([#1941](https://github.com/seek-oss/braid-design-system/pull/1941))
+
 ## 33.13.0
 
 ### Minor Changes

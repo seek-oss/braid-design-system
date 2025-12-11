@@ -5297,5 +5297,19 @@
         "summary": "**Autosuggest:** Add support for data attributes on individual suggestions\n\nThe data attributes are applied to each rendered list item.\n\n**EXAMPLE USAGE:**\n```jsx\n<Autosuggest\n  suggestions={[\n    {\n      text: 'Apples',\n      data: { testid: 'suggestion-apples' },\n    },\n  ]}\n/>\n```"
       }
     ]
+  },
+  {
+    "version": "33.14.0",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest",
+          "MenuRenderer",
+          "OverflowMenu",
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Add support for `left` and `right` placement, in addition to existing `top` and `bottom`.\n\n**EXAMPLE USAGE:**\n```jsx\n<TooltipRenderer\n  placement=\"left\"\n  ...props\n>\n ...\n</TooltipRenderer>\n\n```"
+      }
+    ]
   }
 ]
