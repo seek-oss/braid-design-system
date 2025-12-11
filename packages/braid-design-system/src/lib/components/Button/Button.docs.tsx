@@ -606,25 +606,66 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Defining button width',
+      label: 'Layout patterns',
       description: (
         <>
           <Text>
-            Buttons can be displayed either at full width (as wide as the
-            element that contains them) or content width (only as wide as the
-            content inside them).
+            By default, buttons have no layout applied and run full width. We
+            recommend positioning buttons side by side and sized to their
+            content on tablet and desktop. On mobile, buttons should stack
+            vertically at full width.
           </Text>
           <Text>
-            It&rsquo;s recommended to display buttons at full width on mobile
-            and content width on tablet and desktop. This can be achieved by
-            using the <TextLink href="/components/Actions">Actions</TextLink>{' '}
-            component. Use Actions for all button layouts, unless you have
-            specific needs requiring other layout components (such as{' '}
+            The easiest way to achieve this layout is with the{' '}
+            <TextLink href="/components/Actions">Actions</TextLink> component,
+            which handles spacing and responsive behavior automatically. If you
+            have specific layout needs, you can also use{' '}
             <TextLink href="/components/Inline">Inline</TextLink> or{' '}
-            <TextLink href="/components/Columns">Columns</TextLink>).
+            <TextLink href="/components/Columns">Columns</TextLink>.
           </Text>
         </>
       ),
+      Example: () => {
+        const { value: visual } = source(
+          <Tiles space="xlarge" columns={[1, 2]}>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Tablet and desktop
+              </Text>
+              <Actions>
+                <Button variant="solid">Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Actions>
+            </Stack>
+            <Stack space="small">
+              <Text tone="secondary" weight="strong">
+                Mobile
+              </Text>
+              <Stack space="xsmall">
+                <Button variant="solid">Solid</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="transparent">Transparent</Button>
+              </Stack>
+            </Stack>
+          </Tiles>,
+        );
+
+        const { code: codeDemo } = source(
+          <>
+            <Actions>
+              <Button variant="solid">Solid</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Actions>
+          </>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'Grouping multiple buttons',

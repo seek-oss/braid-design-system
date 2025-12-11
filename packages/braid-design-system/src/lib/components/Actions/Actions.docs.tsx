@@ -22,27 +22,10 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () => {
     const { value: visual } = source(
-      <Stack space="large">
+      <Tiles space="xlarge" columns={[1, 2]}>
         <Stack space="small">
           <Text tone="secondary" weight="strong">
-            Without actions component
-          </Text>
-          <Text tone="secondary" size="small">
-            Buttons are full width by default without any spacing around them.
-          </Text>
-          <Stack space="none">
-            <Button variant="solid">Solid</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="transparent">Transparent</Button>
-          </Stack>
-        </Stack>
-        <Stack space="small">
-          <Text tone="secondary" weight="strong">
-            With actions component
-          </Text>
-          <Text tone="secondary" size="small">
-            Buttons take the width of their content and sit side by side on
-            tablet and desktop, and become full width on mobile.
+            Tablet and desktop
           </Text>
           <Actions>
             <Button variant="solid">Solid</Button>
@@ -50,15 +33,21 @@ const docs: ComponentDocs = {
             <Button variant="transparent">Transparent</Button>
           </Actions>
         </Stack>
-      </Stack>,
+        <Stack space="small">
+          <Text tone="secondary" weight="strong">
+            Mobile
+          </Text>
+          <Stack space="xsmall">
+            <Button variant="solid">Solid</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="transparent">Transparent</Button>
+          </Stack>
+        </Stack>
+      </Tiles>,
     );
 
     const { code: codeDemo } = source(
       <>
-        <Button variant="solid">Solid</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="transparent">Transparent</Button>
-
         <Actions>
           <Button variant="solid">Solid</Button>
           <Button variant="ghost">Ghost</Button>
