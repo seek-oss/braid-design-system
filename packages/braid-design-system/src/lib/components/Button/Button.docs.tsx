@@ -783,10 +783,10 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-
-      Example: () => {
-        const { value: visual } = source(
-          <Stack space="xlarge">
+      code: false,
+      Example: () =>
+        source(
+          <Tiles space="xlarge" columns={[1, 2]}>
             <Stack space="small">
               <Text tone="secondary" weight="strong">
                 Tablet and desktop
@@ -813,26 +813,8 @@ const docs: ComponentDocs = {
                 </Stack>
               </ContentBlock>
             </Stack>
-          </Stack>,
-        );
-
-        const { code: codeDemo } = source(
-          <>
-            <Stack space="small">
-              <Placeholder label="Page content" height={125} />
-              <Actions>
-                <Button>Primary</Button>
-                <Button variant="soft">Secondary</Button>
-              </Actions>
-            </Stack>
-          </>,
-        );
-
-        return {
-          code: codeDemo,
-          value: visual,
-        };
-      },
+          </Tiles>,
+        ),
     },
     {
       description: (
