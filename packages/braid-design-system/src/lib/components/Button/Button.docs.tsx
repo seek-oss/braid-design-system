@@ -354,12 +354,6 @@ const docs: ComponentDocs = {
             </TextLink>{' '}
             to improve contrast.
           </Text>
-          <Notice>
-            <Text>
-              This is the default tone for <Strong>seekJobs</Strong> and other
-              non-legacy themes.
-            </Text>
-          </Notice>
         </Stack>
       ),
       Example: () =>
