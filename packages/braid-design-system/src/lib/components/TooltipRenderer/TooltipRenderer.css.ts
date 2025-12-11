@@ -51,4 +51,6 @@ const baseArrow = style({
 export const arrow = styleVariants({
   top: [baseArrow, { bottom: offset }],
   bottom: [baseArrow, { top: offset }],
+  left: [baseArrow, { right: offset }],
+  right: [baseArrow, { left: offset }],
 });

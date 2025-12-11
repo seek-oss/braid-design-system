@@ -9509,6 +9509,8 @@ exports[`TooltipRenderer 1`] = `
     id?: string
     placement?: 
         | "bottom"
+        | "left"
+        | "right"
         | "top"
     tooltip: ReactNodeNoStrings
 },

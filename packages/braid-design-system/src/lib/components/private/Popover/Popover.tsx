@@ -30,24 +30,31 @@ import { animationTimeout } from '../animationTimeout';
 import * as styles from './Popover.css';
 import { normalizeResponsiveValue } from '../../../css/atoms/sprinkles.css';
 
-type Placement = 'top' | 'bottom';
-type Align = 'left' | 'right' | 'center';
+type Placement = 'top' | 'bottom' | 'left' | 'right';
+type Align = 'start' | 'end' | 'center';
 
-type FloatingUiPosition = Extract<
-  ReturnType<typeof useFloating>['placement'],
-  'top' | 'bottom' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'
->;
+type FloatingUiPosition = ReturnType<typeof useFloating>['placement'];
 
 const positionMap: Record<Placement, Record<Align, FloatingUiPosition>> = {
   top: {
-    left: 'top-start',
+    start: 'top-start',
     center: 'top',
-    right: 'top-end',
+    end: 'top-end',
   },
   bottom: {
-    left: 'bottom-start',
+    start: 'bottom-start',
     center: 'bottom',
-    right: 'bottom-end',
+    end: 'bottom-end',
+  },
+  left: {
+    start: 'left-start',
+    center: 'left',
+    end: 'left-end',
+  },
+  right: {
+    start: 'right-start',
+    center: 'right',
+    end: 'right-end',
   },
 };
 
@@ -72,7 +79,7 @@ export interface PopoverPlacementData {
 export interface PopoverProps {
   id?: string;
   role: NonNullable<AllHTMLAttributes<HTMLElement>['role'] | false>;
-  align?: 'left' | 'right' | 'center';
+  align?: 'start' | 'end' | 'center';
   width?: 'content' | 'full';
   placement?: Placement;
   lockPlacement?: boolean;
@@ -108,7 +115,7 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
     {
       id,
       role,
-      align = 'left',
+      align = 'start',
       width = 'content',
       placement = 'bottom',
       lockPlacement = false,
@@ -234,9 +241,8 @@ const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
       }, animationTimeout);
     }, [open, enterFocusRef]);
 
-    const resolvedPlacement = floatingUiEvaluatedPosition?.startsWith('top')
-      ? 'top'
-      : 'bottom';
+    const resolvedPlacement =
+      (floatingUiEvaluatedPosition?.split('-')[0] as Placement) ?? 'bottom';
 
     useEffect(() => {
       if (onPlacementChange) {

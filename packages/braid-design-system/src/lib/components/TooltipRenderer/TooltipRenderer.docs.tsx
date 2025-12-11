@@ -76,8 +76,9 @@ const docs: ComponentDocs = {
           <Text>
             Tooltips can be triggered on any element of your choice. They are
             positioned above the trigger element by default, but you can
-            configure this via the <Strong>placement</Strong> prop which accepts
-            either <Strong>top</Strong> or <Strong>bottom</Strong>.
+            configure this via the <Strong>placement</Strong> prop which accepts{' '}
+            <Strong>top</Strong>, <Strong>bottom</Strong>, <Strong>left</Strong>
+            , or <Strong>right</Strong>.
           </Text>
           <Text>
             Whichever direction you choose, the tooltip will be centred against
@@ -87,18 +88,30 @@ const docs: ComponentDocs = {
       ),
       Example: () =>
         source(
-          <Inline space="small">
+          <Inline space="small" align="center">
             <TooltipRenderer
               placement="top"
-              tooltip={<Text>The placement is “top”</Text>}
+              tooltip={<Text>The placement is &ldquo;top&rdquo;</Text>}
             >
               {({ triggerProps }) => <Button {...triggerProps}>Top</Button>}
             </TooltipRenderer>
             <TooltipRenderer
               placement="bottom"
-              tooltip={<Text>The placement is “bottom”</Text>}
+              tooltip={<Text>The placement is &ldquo;bottom&rdquo;</Text>}
             >
               {({ triggerProps }) => <Button {...triggerProps}>Bottom</Button>}
+            </TooltipRenderer>
+            <TooltipRenderer
+              placement="left"
+              tooltip={<Text>The placement is &ldquo;left&rdquo;</Text>}
+            >
+              {({ triggerProps }) => <Button {...triggerProps}>Left</Button>}
+            </TooltipRenderer>
+            <TooltipRenderer
+              placement="right"
+              tooltip={<Text>The placement is &ldquo;right&rdquo;</Text>}
+            >
+              {({ triggerProps }) => <Button {...triggerProps}>Right</Button>}
             </TooltipRenderer>
           </Inline>,
         ),
