@@ -30,9 +30,9 @@ const docs: ComponentDocs = {
     ),
   description: (
     <Text>
-      The <Strong>Actions</Strong> component standardises the responsive layout
-      and spacing for groups of{' '}
-      <TextLink href="/components/Button">Button</TextLink> components.
+      A layout component that applies spacing and responsive behaviour to{' '}
+      <TextLink href="/components/Button">Buttons</TextLink> in a consistent
+      way.
     </Text>
   ),
   alternatives: [
