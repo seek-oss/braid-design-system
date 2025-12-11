@@ -20,14 +20,58 @@ import { actionsBreakpoint } from './Actions.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: () =>
-    source(
-      <Actions>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button variant="transparent">Button 3</Button>
-      </Actions>,
-    ),
+  Example: () => {
+    const { value: visual } = source(
+      <Stack space="large">
+        <Stack space="small">
+          <Text tone="secondary" weight="strong">
+            Without actions component
+          </Text>
+          <Text tone="secondary" size="small">
+            Buttons are full width by default without any spacing around them.
+          </Text>
+          <Stack space="none">
+            <Button variant="solid">Solid</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="transparent">Transparent</Button>
+          </Stack>
+        </Stack>
+        <Stack space="small">
+          <Text tone="secondary" weight="strong">
+            With actions component
+          </Text>
+          <Text tone="secondary" size="small">
+            Buttons take the width of their content and sit side by side on
+            tablet and desktop, and become full width on mobile.
+          </Text>
+          <Actions>
+            <Button variant="solid">Solid</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="transparent">Transparent</Button>
+          </Actions>
+        </Stack>
+      </Stack>,
+    );
+
+    const { code: codeDemo } = source(
+      <>
+        <Button variant="solid">Solid</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="transparent">Transparent</Button>
+
+        <Actions>
+          <Button variant="solid">Solid</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="transparent">Transparent</Button>
+        </Actions>
+      </>,
+    );
+
+    return {
+      code: codeDemo,
+      value: visual,
+    };
+  },
   description: (
     <Text>
       A layout component that applies spacing and responsive behaviour to{' '}
