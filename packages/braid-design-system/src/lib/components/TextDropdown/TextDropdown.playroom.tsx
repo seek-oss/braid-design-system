@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { type FC, useState, useEffect } from 'react';
 import type { Optional } from 'utility-types';
 
 import { validTabIndexes } from '../private/validateTabIndex';
@@ -37,14 +37,14 @@ function resolveOptions<Value>(
     : fallbackOptions;
 }
 
-export function TextDropdown<Value>({
+export const TextDropdown: FC<PlayroomTextDropdownProps<any>> = ({
   value,
   label,
   onChange,
   options = fallbackOptions,
   tabIndex,
   ...restProps
-}: PlayroomTextDropdownProps<Value | string>) {
+}) => {
   const [internalValue, setInternalValue] = useState(
     resolveValue(value, options),
   );
@@ -69,4 +69,4 @@ export function TextDropdown<Value>({
       {...restProps}
     />
   );
-}
+};

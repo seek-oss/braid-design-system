@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
@@ -10,7 +10,7 @@ export interface BraidPortalProps {
   container?: Element;
 }
 
-export const BraidPortal = ({ children, container }: BraidPortalProps) => {
+export const BraidPortal: FC<BraidPortalProps> = ({ children, container }) => {
   const { vanillaTheme } = useBraidTheme();
 
   return createPortal(

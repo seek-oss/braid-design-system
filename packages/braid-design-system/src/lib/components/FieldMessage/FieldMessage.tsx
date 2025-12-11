@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
@@ -25,7 +25,7 @@ const icon: Record<'critical' | 'positive' | 'caution', TextProps['icon']> = {
   positive: <IconPositive tone="positive" />,
   caution: <IconCaution tone="caution" />,
 };
-export const FieldMessage = ({
+export const FieldMessage: FC<FieldMessageProps> = ({
   id,
   tone = 'neutral',
   message,
@@ -34,7 +34,7 @@ export const FieldMessage = ({
   disabled,
   data,
   ...restProps
-}: FieldMessageProps) => {
+}) => {
   if (tones.indexOf(tone) === -1) {
     throw new Error(`Invalid tone: ${tone}`);
   }

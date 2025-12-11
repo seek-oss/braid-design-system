@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import {
@@ -43,14 +43,14 @@ export type CardProps = {
   data?: DataAttributeMap;
 } & (SimpleCardRounding | ResponsiveCardRounding);
 
-export const Card = ({
+export const Card: FC<CardProps> = ({
   children,
   component = 'div',
   tone,
   data,
   height,
   ...restProps
-}: CardProps) => {
+}) => {
   assert(
     validCardComponents.includes(component),
     `Invalid Card component: '${component}'. Should be one of [${validCardComponents

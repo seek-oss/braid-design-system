@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -13,14 +14,14 @@ type PlayroomRadioProps = StateProp &
   Optional<RadioGroupBaseProps, 'id' | 'value' | 'onChange'> &
   RadioGroupLabelProps;
 
-export const RadioGroup = ({
+export const RadioGroup: FC<PlayroomRadioProps> = ({
   stateName,
   value,
   onChange,
   children,
   tabIndex,
   ...restProps
-}: PlayroomRadioProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(stateName, value, onChange);
 
   return (

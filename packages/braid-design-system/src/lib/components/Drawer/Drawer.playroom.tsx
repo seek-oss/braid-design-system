@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -11,12 +12,12 @@ import {
 type PlayroomDrawerProps = StateProp &
   Optional<DrawerProps, 'onClose' | 'open'>;
 
-export const Drawer = ({
+export const Drawer: FC<PlayroomDrawerProps> = ({
   stateName,
   open,
   onClose,
   ...restProps
-}: PlayroomDrawerProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     open,

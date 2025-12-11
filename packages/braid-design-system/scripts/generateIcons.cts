@@ -19,9 +19,11 @@ const relativeToProject = (p: string) => path.relative(baseDir, p);
 
 const componentTemplate = ({ template }: any, opts: any, { componentName, jsx }: any) => {
   const code = `
+    import type { FC } from 'react';
+
     import type { SVGProps } from '../SVGTypes';
     NEWLINE
-    export const COMPONENT_NAME = ({ title, titleId, ...props }: SVGProps) => COMPONENT_JSX;
+    export const COMPONENT_NAME: FC<SVGProps> = ({ title, titleId, ...props }) => COMPONENT_JSX;
   `;
 
   const reactTemplate = template.smart(code, {
@@ -32,6 +34,7 @@ const componentTemplate = ({ template }: any, opts: any, { componentName, jsx }:
     COMPONENT_NAME: componentName,
     COMPONENT_JSX: jsx,
     NEWLINE: '\n',
+    FC: 'FC',
   });
 };
 
@@ -149,6 +152,8 @@ const svgrConfig = {
     await templateFileIfMissing(
       `${iconName}.tsx`,
       dedent /* ts */ `
+        import type { FC } from 'react';
+
         import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
         import { IconContainer, type IconContainerProps } from '${relative(
           `${baseDir}/src/lib/components/icons/IconContainer`,
@@ -158,7 +163,7 @@ const svgrConfig = {
 
         export type ${iconName}Props = IconContainerProps;
 
-        export const ${iconName} = (props: ${iconName}Props) => (
+        export const ${iconName}: FC<${iconName}Props> = (props) => (
           <IconContainer {...props}>
             {(svgProps) => <Box component={${svgComponentName}} {...svgProps} />}
           </IconContainer>

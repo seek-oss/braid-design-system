@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import {
@@ -16,13 +18,13 @@ export interface OverflowMenuProps extends Omit<
   id?: string;
 }
 
-export const OverflowMenu = ({
+export const OverflowMenu: FC<OverflowMenuProps> = ({
   size,
   label,
   children,
   id,
   ...menuProps
-}: OverflowMenuProps) => (
+}) => (
   <Box
     className={styles.wrapperPositioning}
     display="flex"

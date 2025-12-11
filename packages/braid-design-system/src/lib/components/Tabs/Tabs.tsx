@@ -9,6 +9,7 @@ import {
   useCallback,
   type ReactElement,
   type ComponentProps,
+  type FC,
 } from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
@@ -66,7 +67,7 @@ const getActiveTabLinePosition = (
   return { left: button.offsetLeft + paddingLeft, width };
 };
 
-export const Tabs = (props: TabsProps) => {
+export const Tabs: FC<TabsProps> = (props) => {
   const tabsContext = useContext(TabsContext);
   const tabsRef = useRef<HTMLElement>(null);
   const [activeTabPosition, setActiveTabPosition] = useState(

@@ -1,5 +1,7 @@
 import assert from 'assert';
 
+import type { FC } from 'react';
+
 import { useBackground } from '../Box/BackgroundContext';
 import { Box } from '../Box/Box';
 import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
@@ -131,7 +133,7 @@ const Page = ({ number, current }: { number: number; current: boolean }) => {
 
 export const defaultPageLimit = 7;
 
-export const Pagination = ({
+export const Pagination: FC<PaginationProps> = ({
   page,
   total,
   linkProps,
@@ -142,7 +144,7 @@ export const Pagination = ({
   pageLimit = defaultPageLimit,
   data,
   ...restProps
-}: PaginationProps) => {
+}) => {
   assert(total >= 1, `\`total\` must be at least 1`);
   assert(page >= 1 && page <= total, `\`page\` must be between 1 and ${total}`);
   assert(

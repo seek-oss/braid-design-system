@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import type { BoxShadow } from '../../css/atoms/atomicProperties';
 import { iconContainerSize } from '../../hooks/useIcon';
@@ -61,7 +61,7 @@ const icons = {
   critical: IconCritical,
 };
 
-export const Alert = ({
+export const Alert: FC<AlertProps> = ({
   tone = 'info',
   children,
   id,
@@ -69,7 +69,7 @@ export const Alert = ({
   data,
   onClose,
   ...restProps
-}: AlertProps) => {
+}) => {
   const isLegacyTheme = useBraidTheme().legacy;
   const parentBackground = useBackground();
   const Icon = icons[tone];

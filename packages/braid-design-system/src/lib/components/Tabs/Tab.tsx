@@ -9,6 +9,7 @@ import {
   useContext,
   useEffect,
   cloneElement,
+  type FC,
 } from 'react';
 
 import type { BraidTokens } from '../../themes/tokenType';
@@ -62,14 +63,14 @@ const paddingXForTabSize: Record<TabSize, keyof BraidTokens['space']> = {
   standard: 'small',
   small: 'xsmall',
 } as const;
-export const Tab = ({
+export const Tab: FC<TabProps> = ({
   children,
   data,
   badge,
   icon,
   item,
   ...restProps
-}: TabProps) => {
+}) => {
   const tabsContext = useContext(TabsContext);
   const tabListContext = useContext(TabListContext);
   const tabRef = useRef<HTMLButtonElement>(null);
@@ -304,5 +305,5 @@ export const Tab = ({
     </Box>
   );
 };
-
+// @ts-expect-error __isTab__ Braid custom property
 Tab.__isTab__ = true;

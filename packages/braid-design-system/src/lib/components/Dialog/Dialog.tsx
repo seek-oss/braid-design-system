@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
   type ModalContentProps,
@@ -19,9 +21,10 @@ export interface DialogProps extends Omit<
   width?: ModalProps['width'];
 }
 
-export const Dialog = ({ width = defaultWidth, ...restProps }: DialogProps) => (
-  <Modal width={width} {...restProps} {...modalStyle} />
-);
+export const Dialog: FC<DialogProps> = ({
+  width = defaultWidth,
+  ...restProps
+}) => <Modal width={width} {...restProps} {...modalStyle} />;
 
 interface DialogContentProps extends Omit<
   ModalContentProps,

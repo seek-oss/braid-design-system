@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -16,14 +17,14 @@ type PlayroomTextFieldProps = StateProp &
     onClear?: boolean | TextFieldBaseProps['onClear'];
   };
 
-export const TextField = ({
+export const TextField: FC<PlayroomTextFieldProps> = ({
   stateName,
   value,
   onChange,
   onClear = true,
   tabIndex,
   ...restProps
-}: PlayroomTextFieldProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     value,

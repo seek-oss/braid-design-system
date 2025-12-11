@@ -1,6 +1,7 @@
 import assert from 'assert';
 
 import dedent from 'dedent';
+import type { FC } from 'react';
 
 import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
@@ -56,7 +57,7 @@ export type RatingProps = RatingBaseProps &
       }
   );
 
-export const Rating = ({
+export const Rating: FC<RatingProps> = ({
   rating,
   size = 'standard',
   weight,
@@ -64,7 +65,7 @@ export const Rating = ({
   tone = 'brandAccent',
   'aria-label': ariaLabel,
   data,
-}: RatingProps) => {
+}) => {
   assert(
     !rating || (rating >= 0 && rating <= 5),
     'Rating must be between 0 and 5',

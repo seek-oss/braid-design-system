@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { type Align, alignToFlexAlign } from '../../utils/align';
 import { Box } from '../Box/Box';
@@ -34,14 +36,14 @@ export interface StackProps {
   data?: DataAttributeMap;
 }
 
-export const Stack = ({
+export const Stack: FC<StackProps> = ({
   component = 'div',
   children,
   space = 'none',
   align: alignProp,
   data,
   ...restProps
-}: StackProps) => {
+}) => {
   /**
    * Creating a seam between the provided prop and the default value
    * to enable only setting the text alignment when the `align` prop

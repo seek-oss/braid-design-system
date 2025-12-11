@@ -1,4 +1,4 @@
-import { type ReactNode, useContext } from 'react';
+import { useContext, type FC, type ReactNode } from 'react';
 
 import { alignToFlexAlign } from '../../utils/align';
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
@@ -54,7 +54,7 @@ const componentForParent = (
   return 'div';
 };
 
-export const Column = ({
+export const Column: FC<ColumnProps> = ({
   component,
   children,
   data,
@@ -62,7 +62,7 @@ export const Column = ({
   hideBelow,
   hideAbove,
   ...restProps
-}: ColumnProps) => {
+}) => {
   const {
     collapseMobile,
     collapseTablet,

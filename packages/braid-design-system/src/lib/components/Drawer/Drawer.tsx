@@ -1,5 +1,7 @@
 import assert from 'assert';
 
+import type { FC } from 'react';
+
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
   type ModalContentProps,
@@ -25,11 +27,11 @@ export interface DrawerProps extends Omit<
   position?: (typeof validPositions)[number];
 }
 
-export const Drawer = ({
+export const Drawer: FC<DrawerProps> = ({
   width = defaultWidth,
   position = defaultPosition,
   ...restProps
-}: DrawerProps) => {
+}) => {
   assert(validWidths.indexOf(width) >= 0, `Invalid width: ${width}`);
   assert(
     validPositions.indexOf(position) >= 0,

@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { atoms } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -14,13 +16,13 @@ interface LoaderProps {
   data?: DataAttributeMap;
 }
 
-export const Loader = ({
+export const Loader: FC<LoaderProps> = ({
   size = 'standard',
   'aria-label': ariaLabel = 'Loading',
   delayVisibility = false,
   data,
   ...restProps
-}: LoaderProps) => (
+}) => (
   <Box
     display="flex"
     alignItems="center"

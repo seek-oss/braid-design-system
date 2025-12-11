@@ -1,5 +1,7 @@
 import assert from 'assert';
 
+import type { FC } from 'react';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import {
   type CollapsibleAlignmentProps,
@@ -30,7 +32,7 @@ export type InlineProps = CollapsibleAlignmentProps & {
   children: ReactNodeNoStrings;
 };
 
-export const Inline = ({
+export const Inline: FC<InlineProps> = ({
   space = 'none',
   align,
   alignY,
@@ -40,7 +42,7 @@ export const Inline = ({
   data,
   children,
   ...restProps
-}: InlineProps) => {
+}) => {
   assert(
     !reverse || (reverse && collapseBelow),
     'The `reverse` prop should only be applied in combination with the `collapseBelow` prop.\nIf you do not want to collapse responsively, it is recommended to reorder the content directly.\n\nSee documentation for details: https://seek-oss.github.io/braid-design-system/components/Inline#reversing-the-order',

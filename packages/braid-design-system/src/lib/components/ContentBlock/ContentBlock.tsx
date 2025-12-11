@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import { type BoxProps, Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -14,13 +14,13 @@ export interface ContentBlockProps {
   data?: DataAttributeMap;
 }
 
-export const ContentBlock = ({
+export const ContentBlock: FC<ContentBlockProps> = ({
   width = 'medium',
   align = 'center',
   data,
   children,
   ...restProps
-}: ContentBlockProps) => (
+}) => (
   <Box
     width="full"
     maxWidth={width}

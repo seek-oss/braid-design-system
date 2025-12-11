@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { type BoxProps, Box } from '../Box/Box';
@@ -20,7 +22,7 @@ export interface BleedProps {
   data?: DataAttributeMap;
 }
 
-export const Bleed = ({
+export const Bleed: FC<BleedProps> = ({
   space,
   horizontal,
   vertical,
@@ -32,7 +34,7 @@ export const Bleed = ({
   component = 'div',
   data,
   ...restProps
-}: BleedProps) => (
+}) => (
   <Box
     component={component}
     display={component === 'span' ? 'block' : undefined}

@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import {
@@ -7,9 +8,7 @@ import {
 
 type PlayroomFieldLabelProps = Optional<FieldLabelProps, 'htmlFor'>;
 
-export const FieldLabel = ({
+export const FieldLabel: FC<PlayroomFieldLabelProps> = ({
   htmlFor,
   ...restProps
-}: PlayroomFieldLabelProps) => (
-  <BraidFieldLabel htmlFor={htmlFor ?? false} {...restProps} />
-);
+}) => <BraidFieldLabel htmlFor={htmlFor ?? false} {...restProps} />;

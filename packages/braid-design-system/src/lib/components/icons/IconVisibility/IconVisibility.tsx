@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
@@ -8,7 +10,10 @@ export type IconVisibilityProps = IconContainerProps & {
   hidden?: boolean;
 };
 
-export const IconVisibility = ({ hidden, ...props }: IconVisibilityProps) => (
+export const IconVisibility: FC<IconVisibilityProps> = ({
+  hidden,
+  ...props
+}) => (
   <IconContainer {...props}>
     {(svgProps) => (
       <Box

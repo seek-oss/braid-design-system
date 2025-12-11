@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import { Box } from '../Box/Box';
 import { Secondary } from '../Secondary/Secondary';
@@ -19,7 +19,7 @@ export interface FieldLabelProps {
   data?: DataAttributeMap;
 }
 
-export const FieldLabel = ({
+export const FieldLabel: FC<FieldLabelProps> = ({
   id,
   htmlFor,
   label,
@@ -29,7 +29,7 @@ export const FieldLabel = ({
   description,
   descriptionId,
   data,
-}: FieldLabelProps) => {
+}) => {
   if (!label && !description) {
     return null;
   }

@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
@@ -9,10 +11,10 @@ export type IconChevronProps = IconContainerProps & {
   direction?: 'up' | 'down' | 'left' | 'right';
 };
 
-export const IconChevron = ({
+export const IconChevron: FC<IconChevronProps> = ({
   direction = 'down',
   ...props
-}: IconChevronProps) => (
+}) => (
   <IconContainer {...props}>
     {({ className, ...svgProps }) => (
       <Box
