@@ -298,8 +298,8 @@ importers:
         specifier: ^2.12.1
         version: 2.17.0
       sku:
-        specifier: 15.4.0
-        version: 15.4.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
+        specifier: 15.5.0
+        version: 15.5.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
       storybook:
         specifier: 9.0.15
         version: 9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3)
@@ -574,8 +574,8 @@ importers:
         specifier: ^17.4.0
         version: 17.6.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       sku:
-        specifier: 15.4.0
-        version: 15.4.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.0))(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
+        specifier: 15.5.0
+        version: 15.5.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.0))(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
@@ -2684,16 +2684,12 @@ packages:
   '@sinonjs/fake-timers@13.0.5':
     resolution: {integrity: sha512-36/hTbH2uaWuGVERyC6da9YwGWnzUZXuPro/F2LfsdOsLnCojz/iSH8MxUt/FD2S5XBSVPhmArFUXcpCQ2Hkiw==}
 
-  '@sku-lib/babel-plugin-display-name@0.0.1':
-    resolution: {integrity: sha512-YAUfkmFUwc8Sxp/lEfkvSl3VA0P2UjlPoclyqmLzJY+iTxx4qhPzfA85CADG9jDaOZfYELOmAGLmoGcNuIOU8g==}
+  '@sku-lib/babel-plugin-display-name@0.0.2':
+    resolution: {integrity: sha512-E8kDGIbPZSxNfJfDzvy8pBmcy33evsTZxUqwhoCR4IIDBT76gZ5qIEIkFemZDmDRb9XLiUZSZAunyqLxP/r85w==}
     engines: {node: '>=22.19.0'}
 
-  '@sku-lib/utils@1.1.1':
-    resolution: {integrity: sha512-4rF5VQryqAUU5icVIyD6QoGej0HFmQrjTv7R7AFAAEFrK25wqdZuPF8GXfUqWqLeGRPvFVOpLjx6UZcNKLdjLg==}
-    engines: {node: '>=22.19.0'}
-
-  '@sku-lib/vite@1.0.0':
-    resolution: {integrity: sha512-1kvtlPmWtRiONan8d4E4PXyxHYthOQcj5HQ577lMGTCWTGWXWRbDiSIKaEIeKaFKFjq6SwFK7mtJjySBi5+VFQ==}
+  '@sku-lib/vite@1.0.1':
+    resolution: {integrity: sha512-Cc1dB2n153s9HAU9rc9OLt1fFu99VKB4/VgPZqWzmIu5WDpPziqt3aDYTpJ+Q7b31+jf4rjSXFhYevbkNtv++A==}
     engines: {node: '>=22.19.0'}
     peerDependencies:
       '@types/react': ^18.0.0 || ^19.0.0
@@ -8365,8 +8361,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@15.4.0:
-    resolution: {integrity: sha512-RynFAJeiWREj3TjcukqkOFlXQ6Z8bTVFFGHrOBbeYpYHM5PUYBj+egveKvZPvbbQbPq314UwUTfq7CvcZiZIFQ==}
+  sku@15.5.0:
+    resolution: {integrity: sha512-klRMGYezhoEGORDkZjGoxqpem4bGhrzJO3jdM381y75u6mrnuiGi+WsVK5Ulc5G1cCXnBe+2XaKBLohPb9BdcA==}
     engines: {node: '>=22.19.0'}
     hasBin: true
     peerDependencies:
@@ -11899,23 +11895,14 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
-  '@sku-lib/babel-plugin-display-name@0.0.1':
+  '@sku-lib/babel-plugin-display-name@0.0.2':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/helper-plugin-utils': 7.27.1
     transitivePeerDependencies:
       - supports-color
 
-  '@sku-lib/utils@1.1.1':
-    dependencies:
-      chalk: 5.6.2
-      find-up: 7.0.0
-      indent-string: 5.0.0
-      package-manager-detector: 0.2.11
-      semver: 7.7.3
-      wrap-ansi: 9.0.2
-
-  '@sku-lib/vite@1.0.0(@types/react@19.2.7)(react@19.2.0)(vite@7.2.6(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
+  '@sku-lib/vite@1.0.1(@types/react@19.2.7)(react@19.2.0)(vite@7.2.6(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
     dependencies:
       '@types/react': 19.2.7
       debug: 4.4.3
@@ -19298,7 +19285,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@15.4.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
+  sku@15.5.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/generator': 7.28.5
@@ -19317,9 +19304,8 @@ snapshots:
       '@loadable/server': 5.16.7(@loadable/component@5.16.7(react@19.2.0))(react@19.2.0)
       '@loadable/webpack-plugin': 5.15.2(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
       '@pmmmwh/react-refresh-webpack-plugin': 0.6.2(react-refresh@0.17.0)(type-fest@4.41.0)(webpack-dev-server@5.2.0(debug@4.4.3)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5)))(webpack-hot-middleware@2.26.1)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
-      '@sku-lib/babel-plugin-display-name': 0.0.1
-      '@sku-lib/utils': 1.1.1
-      '@sku-lib/vite': 1.0.0(@types/react@19.2.7)(react@19.2.0)(vite@7.2.6(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
+      '@sku-lib/babel-plugin-display-name': 0.0.2
+      '@sku-lib/vite': 1.0.1(@types/react@19.2.7)(react@19.2.0)(vite@7.2.6(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
       '@swc/core': 1.15.3
       '@types/eslint': 9.6.1
       '@types/express': 4.17.25
@@ -19452,7 +19438,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@15.4.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.0))(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
+  sku@15.5.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.3)(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.3))(typescript@5.5.4))(@types/node@22.19.1)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.48.0(@typescript-eslint/parser@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.0))(esbuild@0.27.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(rollup@4.53.3)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.1)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/generator': 7.28.5
@@ -19471,9 +19457,8 @@ snapshots:
       '@loadable/server': 5.16.7(@loadable/component@5.16.7(react@19.2.0))(react@19.2.0)
       '@loadable/webpack-plugin': 5.15.2(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.0))
       '@pmmmwh/react-refresh-webpack-plugin': 0.6.2(react-refresh@0.17.0)(type-fest@4.41.0)(webpack-dev-server@5.2.0(debug@4.4.3)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.0)))(webpack-hot-middleware@2.26.1)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.0))
-      '@sku-lib/babel-plugin-display-name': 0.0.1
-      '@sku-lib/utils': 1.1.1
-      '@sku-lib/vite': 1.0.0(@types/react@19.2.7)(react@19.2.0)(vite@7.2.6(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
+      '@sku-lib/babel-plugin-display-name': 0.0.2
+      '@sku-lib/vite': 1.0.1(@types/react@19.2.7)(react@19.2.0)(vite@7.2.6(@types/node@22.19.1)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
       '@swc/core': 1.15.3
       '@types/eslint': 9.6.1
       '@types/express': 4.17.25
@@ -21022,7 +21007,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@5.0.0:
