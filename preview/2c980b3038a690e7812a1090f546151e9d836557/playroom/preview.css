@@ -1,0 +1,67 @@
+@keyframes ln7h4q4 {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  50%, 100% {
+    stroke-dashoffset: 0;
+  }
+}
+.ln7h4q1 {
+  z-index: 99999;
+  background: #1c2230;
+  color: var(--xyepzd9);
+}
+.ln7h4q3 > svg > path {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000;
+  animation-name: ln7h4q4;
+  animation-duration: 1300ms;
+  animation-delay: 500ms;
+  animation-direction: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 2;
+  animation-fill-mode: forwards;
+}
+.ln7h4q5 {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 200px;
+}
+.i3je41 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--i3je40);
+}
+.i3je42 {
+  --i3je40: var(--_1l4tr1ag);
+}
+.i3je43 {
+  --i3je40: var(--_1l4tr1ah);
+}
+.i3je44 {
+  --i3je40: var(--_1l4tr1ai);
+}
+.i3je45 {
+  --i3je40: var(--_1l4tr1aj);
+}
+.i3je46 {
+  --i3je40: var(--_1l4tr1ak);
+}
+.i3je47 {
+  --i3je40: var(--_1l4tr1al);
+}
+.i3je48 {
+  --i3je40: var(--_1l4tr1am);
+}
+.i3je49 {
+  --i3je40: var(--_1l4tr1an);
+}
+.i3je4a {
+  --i3je40: var(--_1l4tr1ao);
+}
+.i3je4b {
+  --i3je40: var(--_1l4tr1ap);
+}
