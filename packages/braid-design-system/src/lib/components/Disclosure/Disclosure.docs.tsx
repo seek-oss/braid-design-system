@@ -224,7 +224,7 @@ const docs: ComponentDocs = {
     {
       label: 'When to use',
       description: (
-        <Stack space="xxlarge">
+        <Stack space="xlarge">
           <Stack space="large">
             <Text>Use a Disclosure:</Text>
             <List space="large">
