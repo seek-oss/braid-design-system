@@ -329,7 +329,7 @@
   >
     <Text>Content</Text>
   </Disclosure>
-</>`,value:(0,y.jsxs)(y.Fragment,{children:[t("expanded",!0),(0,y.jsx)(p.E,{expandLabel:"Show content",collapseLabel:"Hide content",expanded:a("expanded"),onToggle:n("expanded"),children:c||(c=(0,y.jsx)(x.E,{children:"Content"}))})]})}}},{label:"When to use",description:(0,y.jsxs)(m.B,{space:"xxlarge",children:[(0,y.jsxs)(m.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"Use a Disclosure:"}),(0,y.jsxs)(u.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"to display a single section of collapsable content"}),(0,y.jsx)(x.E,{children:"to reveal optional content, such as explanatory text or further details."})]})]}),(0,y.jsxs)(m.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"Don’t use a Disclosure:"}),(0,y.jsxs)(u.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"if the information is needed for the user to complete their current task (make it visible upfront instead)"}),(0,y.jsxs)(x.E,{children:["to display multiple sections of collapsable content (consider using an"," ",(0,y.jsx)(f.Yq,{href:"/components/Accordion",children:"Accordion"})," ","instead)"]}),(0,y.jsxs)(x.E,{children:["to display complex content including images or CTAs (consider using a ",(0,y.jsx)(f.Yq,{href:"/components/Dialog",children:"Dialog"})," ","instead)"]}),(0,y.jsxs)(x.E,{children:["to provide a short definition of what something means (consider using a"," ",(0,y.jsx)(f.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"})," ","instead)."]})]})]})]})},(0,b.dataAttributeDocs)({code:`
+</>`,value:(0,y.jsxs)(y.Fragment,{children:[t("expanded",!0),(0,y.jsx)(p.E,{expandLabel:"Show content",collapseLabel:"Hide content",expanded:a("expanded"),onToggle:n("expanded"),children:c||(c=(0,y.jsx)(x.E,{children:"Content"}))})]})}}},{label:"When to use",description:(0,y.jsxs)(m.B,{space:"xlarge",children:[(0,y.jsxs)(m.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"Use a Disclosure:"}),(0,y.jsxs)(u.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"to display a single section of collapsable content"}),(0,y.jsx)(x.E,{children:"to reveal optional content, such as explanatory text or further details."})]})]}),(0,y.jsxs)(m.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"Don’t use a Disclosure:"}),(0,y.jsxs)(u.B,{space:"large",children:[(0,y.jsx)(x.E,{children:"if the information is needed for the user to complete their current task (make it visible upfront instead)"}),(0,y.jsxs)(x.E,{children:["to display multiple sections of collapsable content (consider using an"," ",(0,y.jsx)(f.Yq,{href:"/components/Accordion",children:"Accordion"})," ","instead)"]}),(0,y.jsxs)(x.E,{children:["to display complex content including images or CTAs (consider using a ",(0,y.jsx)(f.Yq,{href:"/components/Dialog",children:"Dialog"})," ","instead)"]}),(0,y.jsxs)(x.E,{children:["to provide a short definition of what something means (consider using a"," ",(0,y.jsx)(f.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"})," ","instead)."]})]})]})]})},(0,b.dataAttributeDocs)({code:`
         <Disclosure
           data={{ testid: 'disclosure-1' }}
           // => data-testid="disclosure-1"
@@ -1852,71 +1852,92 @@
           data={{ testid: 'password-field-1' }}
           // => data-testid="password-field-1"
         />
-      `,supportsNativeSyntax:!1})]}},12120:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>O});var n,i,s,r,o,l,d,c,p,u,h,m,g,x,f,b,y,v,j,w,T=a(97081),k=a(70017),C=a(81007),S=a(6981),E=a(52457),A=a(10680),I=a(7815),B=a(21073),L=a(85185),N=a(24877),M=a(83250),P=a(70265),H=a(71068),q=a(26101),D=a(77900);let R=[{label:"Choosing the right button",description:(0,D.jsxs)(D.Fragment,{children:[(0,D.jsxs)(N.E,{children:["By default, a button has a ",(0,D.jsx)(L.O,{children:"neutral"})," tone and uses the"," ",(0,D.jsx)(L.O,{children:"ghost"})," variant, allowing the visual prominence to be increased or decreased as required."]}),(0,D.jsx)(N.E,{children:"This enables colour to be applied as accents and with purpose, rather than by default — improving the management of user attention and supporting a more declarative hierarchy of actions."})]}),playroom:!1,code:!1,Example:()=>({code:`<Stack space="small">
+      `,supportsNativeSyntax:!1})]}},12120:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>eo});var n,i,s,r,o,l,d,c,p,u,h,m,g,x,f,b,y,v,j,w,T,k,C,S,E,A,I,B,L,N,M,P,H,q,D,R=a(97081),O=a(88417),F=a(70017),z=a(81007),Y=a(6981),G=a(78042),U=a(54129),V=a(4217),_=a(52457),W=a(10680),$=a(63731),X=a(7815),Z=a(21073),K=a(85185),J=a(24877),Q=a(83250),ee=a(70265),et=a(60130),ea=a(71068),en=a(31939),ei=a(26101),es=a(77900);let er=[{label:"Interplay between variant and tone",description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsxs)(J.E,{children:["By default, a button has a ",(0,es.jsx)(K.O,{children:"neutral"})," tone and uses the"," ",(0,es.jsx)(K.O,{children:"ghost"})," variant, allowing the visual prominence to be increased or decreased as required."]}),(0,es.jsx)(J.E,{children:"This enables colour to be applied as accents and with purpose, rather than by default — improving the management of user attention and supporting a more declarative hierarchy of actions."})]}),playroom:!1,code:!1,Example:()=>({code:`<Stack space="small">
   <Text size="small" tone="secondary">
     Default is a <Strong>neutral</Strong> tone and <Strong>ghost</Strong>{" "}
-    variant:
+    variant
   </Text>
-  <Inline space="none">
+  <Actions>
     <Button variant="ghost" tone="neutral">
       Button
     </Button>
-  </Inline>
-</Stack>`,value:n||(n=(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsxs)(N.E,{size:"small",tone:"secondary",children:["Default is a ",(0,D.jsx)(L.O,{children:"neutral"})," tone and"," ",(0,D.jsx)(L.O,{children:"ghost"})," variant:"]}),(0,D.jsx)(A.c,{space:"none",children:(0,D.jsx)(C.$n,{variant:"ghost",tone:"neutral",children:"Button"})})]}))})},{description:(0,D.jsx)(D.Fragment,{children:(0,D.jsxs)(N.E,{children:["To compliment this, when a ",(0,D.jsx)(L.O,{children:"tone"})," is purposefully applied to a button, the default variant becomes"," ",(0,D.jsx)(L.O,{children:"solid"})," to maximise its impact — allowing the visual prominence to be reduced as needed."]})}),playroom:!1,code:!1,Example:()=>({code:`<Stack space="small">
+  </Actions>
+</Stack>`,value:n||(n=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsxs)(J.E,{size:"small",tone:"secondary",children:["Default is a ",(0,es.jsx)(K.O,{children:"neutral"})," tone and"," ",(0,es.jsx)(K.O,{children:"ghost"})," variant"]}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{variant:"ghost",tone:"neutral",children:"Button"})})]}))})},{description:(0,es.jsx)(es.Fragment,{children:(0,es.jsxs)(J.E,{children:["To compliment this, when a ",(0,es.jsx)(K.O,{children:"tone"})," is purposefully applied to a button, the default variant becomes"," ",(0,es.jsx)(K.O,{children:"solid"})," to maximise its impact — allowing the visual prominence to be reduced as needed."]})}),playroom:!1,code:!1,Example:()=>({code:`<Stack space="small">
   <Text size="small" tone="secondary">
     Default variant becomes <Strong>solid</Strong> when a <Strong>tone</Strong>{" "}
-    is applied:
+    is applied
   </Text>
-  <Inline space="none">
+  <Actions>
     <Button tone="critical">Button</Button>
-  </Inline>
-</Stack>`,value:i||(i=(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsxs)(N.E,{size:"small",tone:"secondary",children:["Default variant becomes ",(0,D.jsx)(L.O,{children:"solid"})," when a"," ",(0,D.jsx)(L.O,{children:"tone"})," is applied:"]}),(0,D.jsx)(A.c,{space:"none",children:(0,D.jsx)(C.$n,{tone:"critical",children:"Button"})})]}))})},{description:(0,D.jsx)(D.Fragment,{children:(0,D.jsxs)(N.E,{children:["As the approach to colour in our experiences has changed over time, so too has the default visual prominence for buttons. For this reason, older themes such as ",(0,D.jsx)(L.O,{children:"apac"})," and"," ",(0,D.jsx)(L.O,{children:"seekBusiness"})," continue to have the default tone of"," ",(0,D.jsx)(L.O,{children:"formAccent"})," and a ",(0,D.jsx)(L.O,{children:"solid"})," variant."]})}),playroom:!1,code:!1,Example:()=>({code:`<Stack space="small">
-  <Text size="small" tone="secondary">
-    Historical default was the <Strong>formAccent</Strong> tone and{" "}
-    <Strong>solid</Strong> variant:
-  </Text>
-  <Inline space="none">
-    <Button variant="solid" tone="formAccent">
-      Button
+  </Actions>
+</Stack>`,value:i||(i=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsxs)(J.E,{size:"small",tone:"secondary",children:["Default variant becomes ",(0,es.jsx)(K.O,{children:"solid"})," when a"," ",(0,es.jsx)(K.O,{children:"tone"})," is applied"]}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{tone:"critical",children:"Button"})})]}))})}],eo={category:"Content",description:(0,es.jsx)(J.E,{children:"A prominent, interactive element that allows the user to initiate an action with a click or tap."}),Example:()=>({code:`<Stack space="xsmall">
+  <Actions>
+    <Button variant="solid" tone="brandAccent">
+      Solid
     </Button>
-  </Inline>
-</Stack>`,value:s||(s=(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsxs)(N.E,{size:"small",tone:"secondary",children:["Historical default was the ",(0,D.jsx)(L.O,{children:"formAccent"})," tone and"," ",(0,D.jsx)(L.O,{children:"solid"})," variant:"]}),(0,D.jsx)(A.c,{space:"none",children:(0,D.jsx)(C.$n,{variant:"solid",tone:"formAccent",children:"Button"})})]}))})}],O={category:"Content",Example:()=>({code:`<Inline space="small" collapseBelow="desktop">
+    <Button variant="ghost" tone="brandAccent">
+      Ghost
+    </Button>
+    <Button variant="soft" tone="brandAccent">
+      Soft
+    </Button>
+    <Button variant="transparent" tone="brandAccent">
+      Transparent
+    </Button>
+  </Actions>
+  <Actions>
+    <Button variant="solid" tone="formAccent">
+      Solid
+    </Button>
+    <Button variant="ghost" tone="formAccent">
+      Ghost
+    </Button>
+    <Button variant="soft" tone="formAccent">
+      Soft
+    </Button>
+    <Button variant="transparent" tone="formAccent">
+      Transparent
+    </Button>
+  </Actions>
+  <Actions>
+    <Button variant="solid" tone="critical">
+      Solid
+    </Button>
+    <Button variant="ghost" tone="critical">
+      Ghost
+    </Button>
+    <Button variant="soft" tone="critical">
+      Soft
+    </Button>
+    <Button variant="transparent" tone="critical">
+      Transparent
+    </Button>
+  </Actions>
+  <Actions>
+    <Button variant="solid">Solid</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Actions>
+</Stack>`,value:s||(s=(0,es.jsxs)(Z.B,{space:"xsmall",children:[(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",tone:"brandAccent",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",tone:"brandAccent",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",tone:"brandAccent",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",tone:"brandAccent",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",tone:"formAccent",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",tone:"formAccent",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",tone:"formAccent",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",tone:"formAccent",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",tone:"critical",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",tone:"critical",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",tone:"critical",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",tone:"critical",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]})]}))}),alternatives:[{name:"ButtonIcon",description:"For buttons containing only an icon."},{name:"ButtonLink",description:"For a semantic link that looks like a button and takes users to other pages or resources."},{name:"TextLink",description:"For a semantic link that takes users to other pages or resources."},{name:"TextLinkButton",description:"For a semantic button that looks like a link and allows the user to perform an action."}],additional:[{label:"Choosing a button style",description:(0,es.jsxs)(J.E,{children:["You can adjust the prominence and meaning of a button by using the"," ",(0,es.jsx)(K.O,{children:"variant"})," and ",(0,es.jsx)(K.O,{children:"tone"})," properties."]})},{label:"Variants",description:(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsxs)(J.E,{children:["Variants allow you to alter the visual prominence of a button. The"," ",(0,es.jsx)(K.O,{children:"variant"})," prop accepts either ",(0,es.jsx)(K.O,{children:"solid"}),","," ",(0,es.jsx)(K.O,{children:"ghost"}),", ",(0,es.jsx)(K.O,{children:"soft"})," or"," ",(0,es.jsx)(K.O,{children:"transparent"}),". When no variant is specified, the button will appear as ghost by default."]}),(0,es.jsx)(J.E,{children:"When selecting a variant:"}),(0,es.jsxs)($.B,{space:"large",children:[(0,es.jsx)(J.E,{children:"Choose a variant that reflects the importance of the action."}),(0,es.jsx)(J.E,{children:"Avoid grouping buttons of the same variant, and instead create visual hierarchy using different variants."}),(0,es.jsxs)(J.E,{children:["Avoid using transparent buttons in isolation, as they offer less visual affordance on their own (consider using a"," ",(0,es.jsx)(Q.Yq,{href:"/components/TextLink",children:"TextLink"})," ","instead)."]})]})]}),Example:()=>({code:`<Actions>
   <Button variant="solid">Solid</Button>
   <Button variant="ghost">Ghost</Button>
   <Button variant="soft">Soft</Button>
   <Button variant="transparent">Transparent</Button>
-</Inline>`,value:r||(r=(0,D.jsxs)(A.c,{space:"small",collapseBelow:"desktop",children:[(0,D.jsx)(C.$n,{variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{variant:"transparent",children:"Transparent"})]}))}),alternatives:[{name:"ButtonIcon",description:"For buttons containing only an icon."},{name:"ButtonLink",description:"For a semantic link that looks like a button."},{name:"TextLinkButton",description:"For a semantic button that looks like a link."}],additional:[{label:"Variants",description:(0,D.jsxs)(D.Fragment,{children:[(0,D.jsxs)(N.E,{children:["You can customise the appearance of the button via the"," ",(0,D.jsx)(L.O,{children:"variant"})," prop, which accepts either"," ",(0,D.jsx)(L.O,{children:"solid"}),", ",(0,D.jsx)(L.O,{children:"ghost"}),","," ",(0,D.jsx)(L.O,{children:"soft"})," or ",(0,D.jsx)(L.O,{children:"transparent"}),"."]}),(0,D.jsx)(I.$,{children:(0,D.jsxs)(N.E,{children:["When using a ",(0,D.jsx)(L.O,{children:"transparent"})," button on its own, consider using the ",(0,D.jsx)(M.Yq,{href:"#bleed",children:"bleed"})," prop for better alignment."]})})]}),Example:()=>({code:`<Inline space="small" collapseBelow="desktop">
-  <Button variant="solid">Solid</Button>
-  <Button variant="ghost">Ghost</Button>
-  <Button variant="soft">Soft</Button>
-  <Button variant="transparent">Transparent</Button>
-</Inline>`,value:o||(o=(0,D.jsxs)(A.c,{space:"small",collapseBelow:"desktop",children:[(0,D.jsx)(C.$n,{variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{variant:"transparent",children:"Transparent"})]}))})},{label:"Branding",description:(0,D.jsxs)(N.E,{children:["For hero actions that want to leverage the brand colour, you can set the button’s ",(0,D.jsx)(L.O,{children:"tone"})," to ",(0,D.jsx)(L.O,{children:"brandAccent."})]}),Example:()=>({code:`<Inline space="small">
+</Actions>`,value:r||(r=(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]}))})},{label:"Tones",description:(0,es.jsxs)(J.E,{children:["Tones allow you to provide additional information regarding the meaning or importance of an action. The tone prop accepts either"," ",(0,es.jsx)(K.O,{children:"brandAccent"}),", ",(0,es.jsx)(K.O,{children:"formAccent"}),","," ",(0,es.jsx)(K.O,{children:"critical"})," or ",(0,es.jsx)(K.O,{children:"neutral"}),". When no tone is specified, the button will appear as neutral by default."]})},{description:(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(_.D,{level:"4",children:"brandAccent"}),(0,es.jsxs)(J.E,{children:["For hero actions that want to leverage the brand colour, you can set the button’s ",(0,es.jsx)(K.O,{children:"tone"})," to"," ",(0,es.jsx)(K.O,{children:"brandAccent"}),". This is our most visibly strong tone and should be used sparingly."]}),(0,es.jsx)(J.E,{children:"Use brandAccent to draw attention to our products most important actions, such as:"}),(0,es.jsxs)($.B,{space:"medium",children:[(0,es.jsx)(J.E,{children:"starting a key flow like apply or job posting"}),(0,es.jsx)(J.E,{children:"submitting a form or payment"}),(0,es.jsx)(J.E,{children:"submitting a primary search query (such as a new job or candidate search)."})]}),(0,es.jsx)(J.E,{children:"Avoid using multiple brandAccent buttons on the same page."})]}),Example:()=>({code:`<Actions>
   <Button tone="brandAccent" variant="solid">
-    Search
+    Solid
   </Button>
   <Button tone="brandAccent" variant="ghost">
-    Search
+    Ghost
   </Button>
   <Button tone="brandAccent" variant="soft">
-    Search
+    Soft
   </Button>
   <Button tone="brandAccent" variant="transparent">
-    Search
+    Transparent
   </Button>
-</Inline>`,value:l||(l=(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"solid",children:"Search"}),(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"ghost",children:"Search"}),(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"soft",children:"Search"}),(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"transparent",children:"Search"})]}))})},{label:"Destructive actions",description:(0,D.jsxs)(N.E,{children:["For destructive actions like “Delete” you can set the button’s"," ",(0,D.jsx)(L.O,{children:"tone"})," to ",(0,D.jsx)(L.O,{children:"critical."})]}),Example:()=>({code:`<Inline space="small">
-  <Button tone="critical" icon={<IconDelete />} variant="solid">
-    Delete
-  </Button>
-  <Button tone="critical" icon={<IconDelete />} variant="ghost">
-    Delete
-  </Button>
-  <Button tone="critical" icon={<IconDelete />} variant="soft">
-    Delete
-  </Button>
-  <Button tone="critical" icon={<IconDelete />} variant="transparent">
-    Delete
-  </Button>
-</Inline>`,value:d||(d=(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"critical",icon:(0,D.jsx)(S.x,{}),variant:"solid",children:"Delete"}),(0,D.jsx)(C.$n,{tone:"critical",icon:(0,D.jsx)(S.x,{}),variant:"ghost",children:"Delete"}),(0,D.jsx)(C.$n,{tone:"critical",icon:(0,D.jsx)(S.x,{}),variant:"soft",children:"Delete"}),(0,D.jsx)(C.$n,{tone:"critical",icon:(0,D.jsx)(S.x,{}),variant:"transparent",children:"Delete"})]}))})},{label:"Emphasizing actions",description:(0,D.jsxs)(D.Fragment,{children:[(0,D.jsxs)(N.E,{children:["For cases where actions need to be emphasized, the"," ",(0,D.jsx)(L.O,{children:"tone"})," can be set to ",(0,D.jsx)(L.O,{children:"formAccent"}),"."]}),(0,D.jsx)(I.$,{children:(0,D.jsxs)(N.E,{children:["This is the default tone in the ",(0,D.jsx)(L.O,{children:"apac"})," and"," ",(0,D.jsx)(L.O,{children:"seekBusiness"})," themes."]})})]}),Example:()=>({code:`<Inline space="small">
+</Actions>`,value:o||(o=(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{tone:"brandAccent",variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{tone:"brandAccent",variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{tone:"brandAccent",variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{tone:"brandAccent",variant:"transparent",children:"Transparent"})]}))})},{description:(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(_.D,{level:"4",children:"formAccent"}),(0,es.jsxs)(J.E,{children:["For cases where actions need to be emphasized, the"," ",(0,es.jsx)(K.O,{children:"tone"})," can be set to ",(0,es.jsx)(K.O,{children:"formAccent"}),". This is our second most visibly strong tone and can be used to emphasize an action. Unlike brandAccent, you may choose to have multiple formAccent buttons on the same page."]})]}),Example:()=>({code:`<Actions>
   <Button tone="formAccent" variant="solid">
     Solid
   </Button>
@@ -1929,7 +1950,20 @@
   <Button tone="formAccent" variant="transparent">
     Transparent
   </Button>
-</Inline>`,value:c||(c=(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"formAccent",variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{tone:"formAccent",variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{tone:"formAccent",variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{tone:"formAccent",variant:"transparent",children:"Transparent"})]}))})},{label:"De-emphasized actions",description:(0,D.jsxs)(D.Fragment,{children:[(0,D.jsxs)(N.E,{children:["For cases where actions need to be de-emphasized, the"," ",(0,D.jsx)(L.O,{children:"tone"})," can be set to ",(0,D.jsx)(L.O,{children:"neutral"}),"."]}),(0,D.jsxs)(N.E,{children:["This makes the button follow the default text colour, including"," ",(0,D.jsx)(M.Yq,{href:"#contextual-design",children:"inverting on dark surfaces"})," ","to improve contrast."]}),(0,D.jsx)(I.$,{children:(0,D.jsxs)(N.E,{children:["This is the default tone for ",(0,D.jsx)(L.O,{children:"seekJobs"})," and other non-legacy themes."]})})]}),Example:()=>({code:`<Inline space="small">
+</Actions>`,value:l||(l=(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{tone:"formAccent",variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{tone:"formAccent",variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{tone:"formAccent",variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{tone:"formAccent",variant:"transparent",children:"Transparent"})]}))})},{description:(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(_.D,{level:"4",children:"Critical"}),(0,es.jsxs)(J.E,{children:["For destructive actions like “Delete” you can set the button’s"," ",(0,es.jsx)(K.O,{children:"tone"})," to ",(0,es.jsx)(K.O,{children:"critical"}),". This tone provides a visual warning to users and should be reserved for high risk actions."]}),(0,es.jsx)(J.E,{children:"Avoid using multiple critical buttons in the same group of buttons. Multiple critical buttons may appear on the same page but should relate to different pieces of content."})]}),Example:()=>({code:`<Actions>
+  <Button tone="critical" variant="solid">
+    Solid
+  </Button>
+  <Button tone="critical" variant="ghost">
+    Ghost
+  </Button>
+  <Button tone="critical" variant="soft">
+    Soft
+  </Button>
+  <Button tone="critical" variant="transparent">
+    Transparent
+  </Button>
+</Actions>`,value:d||(d=(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{tone:"critical",variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{tone:"critical",variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{tone:"critical",variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{tone:"critical",variant:"transparent",children:"Transparent"})]}))})},{description:(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(_.D,{level:"4",children:"Neutral"}),(0,es.jsxs)(J.E,{children:["For cases where actions need to be de-emphasized, the"," ",(0,es.jsx)(K.O,{children:"tone"})," can be set to ",(0,es.jsx)(K.O,{children:"neutral"}),". This makes the button follow the default text colour, including"," ",(0,es.jsx)(Q.Yq,{href:"#contextual-design",children:"inverting on dark surfaces"})," ","to improve contrast."]})]}),Example:()=>({code:`<Actions>
   <Button tone="neutral" variant="solid">
     Solid
   </Button>
@@ -1942,23 +1976,23 @@
   <Button tone="neutral" variant="transparent">
     Transparent
   </Button>
-</Inline>`,value:p||(p=(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"neutral",variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{tone:"neutral",variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{tone:"neutral",variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{tone:"neutral",variant:"transparent",children:"Transparent"})]}))})},{label:"Disabled actions",description:(0,D.jsxs)(D.Fragment,{children:[(0,D.jsxs)(N.E,{children:["A ",(0,D.jsx)(L.O,{children:"Button"})," cannot be disabled. This is a deliberate design decision to encourage more accessible patterns that inform the user about what is required to progress."]}),(0,D.jsx)(N.E,{children:"For example, when designing a form, instead of disabling the submit button when a required field is missing, allow the user to attempt to submit and fail. Validation feedback can then be provided informing the user of what they must do to progress."})]})},{label:"Sizes",description:(0,D.jsxs)(N.E,{children:["You can customise the size of the button via the ",(0,D.jsx)(L.O,{children:"size"})," ","prop, which accepts either ",(0,D.jsx)(L.O,{children:"standard"})," or"," ",(0,D.jsx)(L.O,{children:"small."})]}),Example:()=>({code:`<Stack space="large">
+</Actions>`,value:c||(c=(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{tone:"neutral",variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{tone:"neutral",variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{tone:"neutral",variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{tone:"neutral",variant:"transparent",children:"Transparent"})]}))})},...er,{label:"Size",description:(0,es.jsxs)(J.E,{children:["You can tailor the size of the button via the ",(0,es.jsx)(K.O,{children:"size"})," ","prop, which accepts either ",(0,es.jsx)(K.O,{children:"standard"})," or"," ",(0,es.jsx)(K.O,{children:"small"}),"."]}),Example:()=>{let{value:e}={code:`<Stack space="large">
   <Stack space="small">
     <Text tone="secondary" weight="strong">
       Standard size
     </Text>
-    <Inline space="small" collapseBelow="desktop">
+    <Actions>
       <Button variant="solid">Solid</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="soft">Soft</Button>
       <Button variant="transparent">Transparent</Button>
-    </Inline>
+    </Actions>
   </Stack>
   <Stack space="small">
     <Text tone="secondary" weight="strong">
       Small size
     </Text>
-    <Inline space="small" collapseBelow="desktop">
+    <Actions>
       <Button variant="solid" size="small">
         Solid
       </Button>
@@ -1971,89 +2005,204 @@
       <Button variant="transparent" size="small">
         Transparent
       </Button>
-    </Inline>
+    </Actions>
   </Stack>
-</Stack>`,value:u||(u=(0,D.jsxs)(B.B,{space:"large",children:[(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsx)(N.E,{tone:"secondary",weight:"strong",children:"Standard size"}),(0,D.jsxs)(A.c,{space:"small",collapseBelow:"desktop",children:[(0,D.jsx)(C.$n,{variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{variant:"transparent",children:"Transparent"})]})]}),(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsx)(N.E,{tone:"secondary",weight:"strong",children:"Small size"}),(0,D.jsxs)(A.c,{space:"small",collapseBelow:"desktop",children:[(0,D.jsx)(C.$n,{variant:"solid",size:"small",children:"Solid"}),(0,D.jsx)(C.$n,{variant:"ghost",size:"small",children:"Ghost"}),(0,D.jsx)(C.$n,{variant:"soft",size:"small",children:"Soft"}),(0,D.jsx)(C.$n,{variant:"transparent",size:"small",children:"Transparent"})]})]})]}))})},...R,{label:"Icons",description:(0,D.jsxs)(N.E,{children:["For decoration or help distinguishing between buttons, an"," ",(0,D.jsx)(L.O,{children:"icon"})," can be provided."]}),Example:()=>({code:`<Inline space="gutter" alignY="center">
+</Stack>`,value:p||(p=(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Standard size"}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]})]}),(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Small size"}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",size:"small",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",size:"small",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",size:"small",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",size:"small",children:"Transparent"})]})]})]}))},{code:t}={code:`<Stack space="large">
+  <Actions>
+    <Button variant="solid">Solid</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Actions>
+  <Actions>
+    <Button variant="solid" size="small">
+      Solid
+    </Button>
+    <Button variant="ghost" size="small">
+      Ghost
+    </Button>
+    <Button variant="soft" size="small">
+      Soft
+    </Button>
+    <Button variant="transparent" size="small">
+      Transparent
+    </Button>
+  </Actions>
+</Stack>`,value:u||(u=(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",size:"small",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",size:"small",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",size:"small",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",size:"small",children:"Transparent"})]})]}))};return{code:t,value:e}}},{label:"Icons",description:(0,es.jsxs)(J.E,{children:["For differentiation and to help communicate the purpose of the button, an ",(0,es.jsx)(K.O,{children:"icon"})," can be provided."]}),Example:()=>{let{value:e}={code:`<Stack space="large">
   <Stack space="small">
     <Text tone="secondary" weight="strong">
       Standard size
     </Text>
-    <Button icon={<IconSend />}>Send</Button>
+    <Actions>
+      <Button icon={<IconSend />}>Send</Button>
+    </Actions>
   </Stack>
   <Stack space="small">
     <Text tone="secondary" weight="strong">
       Small size
     </Text>
+    <Actions>
+      <Button size="small" icon={<IconSend />}>
+        Send
+      </Button>
+    </Actions>
+  </Stack>
+</Stack>`,value:h||(h=(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Standard size"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{icon:(0,es.jsx)(ee.m,{}),children:"Send"})})]}),(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Small size"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{size:"small",icon:(0,es.jsx)(ee.m,{}),children:"Send"})})]})]}))},{code:t}={code:`<Stack space="large">
+  <Actions>
+    <Button icon={<IconSend />}>Send</Button>
+  </Actions>
+  <Actions>
     <Button size="small" icon={<IconSend />}>
       Send
     </Button>
-  </Stack>
-</Inline>`,value:h||(h=(0,D.jsxs)(A.c,{space:"gutter",alignY:"center",children:[(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsx)(N.E,{tone:"secondary",weight:"strong",children:"Standard size"}),(0,D.jsx)(C.$n,{icon:(0,D.jsx)(P.m,{}),children:"Send"})]}),(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsx)(N.E,{tone:"secondary",weight:"strong",children:"Small size"}),(0,D.jsx)(C.$n,{size:"small",icon:(0,D.jsx)(P.m,{}),children:"Send"})]})]}))})},{description:(0,D.jsxs)(N.E,{children:["By default, an icon will be ",(0,D.jsx)(L.O,{children:"leading"})," the label, however this can be customised by setting the"," ",(0,D.jsx)(L.O,{children:"iconPosition"})," to ",(0,D.jsx)(L.O,{children:"trailing"}),"."]}),Example:()=>({code:`<Inline space="small">
+  </Actions>
+</Stack>`,value:m||(m=(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{icon:(0,es.jsx)(ee.m,{}),children:"Send"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{size:"small",icon:(0,es.jsx)(ee.m,{}),children:"Send"})})]}))};return{code:t,value:e}}},{description:(0,es.jsxs)(J.E,{children:["By default, an icon will be ",(0,es.jsx)(K.O,{children:"leading"})," the label, however this can be tailored by setting the"," ",(0,es.jsx)(K.O,{children:"iconPosition"})," to ",(0,es.jsx)(K.O,{children:"trailing"}),"."]}),Example:()=>({code:`<Actions>
   <Button icon={<IconArrow direction="right" />} iconPosition="trailing">
-    Next
+    Continue
   </Button>
-</Inline>`,value:m||(m=(0,D.jsx)(A.c,{space:"small",children:(0,D.jsx)(C.$n,{icon:(0,D.jsx)(T.P,{direction:"right"}),iconPosition:"trailing",children:"Next"})}))})},{label:"Loading Button",description:(0,D.jsx)(D.Fragment,{children:(0,D.jsxs)(N.E,{children:["You can indicate a loading state inline with the"," ",(0,D.jsx)(L.O,{children:"loading"})," prop, which also ensures that the button is disabled."]})}),Example:()=>({code:`<Inline space="small">
-  <Button loading>Loading Button</Button>
-</Inline>`,value:g||(g=(0,D.jsx)(A.c,{space:"small",children:(0,D.jsx)(C.$n,{loading:!0,children:"Loading Button"})}))})},{label:"Contextual design",description:(0,D.jsxs)(D.Fragment,{children:[(0,D.jsxs)(N.E,{children:["The ",(0,D.jsx)(L.O,{children:"ghost"}),", ",(0,D.jsx)(L.O,{children:"soft"}),", and"," ",(0,D.jsx)(L.O,{children:"transparent"})," variants automatically lighten their foreground colour to improve contrast against a dark background. To compliment this, the hover and active backgrounds remove the colour in favour of a white translucency."]}),(0,D.jsx)(I.$,{children:(0,D.jsxs)(N.E,{children:["Buttons with a ",(0,D.jsx)(L.O,{children:"neutral"})," tone are inverted to improve contrast."]})}),(0,D.jsxs)(N.E,{children:["When using custom background colours or images on a"," ",(0,D.jsx)(M.Yq,{href:"/components/Box",children:"Box"})," component, this behaviour can be applied by setting the ",(0,D.jsx)(L.O,{children:"background"})," ","to either ",(0,D.jsx)(L.O,{children:"customLight"})," or"," ",(0,D.jsx)(L.O,{children:"customDark"}),"."]})]}),background:"neutral",Example:()=>({code:`<Box background="neutral">
-  <Stack space="small">
-    <Inline space="small">
-      <Button tone="formAccent" variant="solid">
+</Actions>`,value:g||(g=(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{icon:(0,es.jsx)(R.P,{direction:"right"}),iconPosition:"trailing",children:"Continue"})}))})},{label:"Contextual design",description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsxs)(J.E,{children:["The ",(0,es.jsx)(K.O,{children:"ghost"}),", ",(0,es.jsx)(K.O,{children:"soft"}),", and"," ",(0,es.jsx)(K.O,{children:"transparent"})," variants automatically lighten their foreground colour to improve contrast against a dark background. To compliment this, the hover and active backgrounds remove the colour in favour of a white translucency."]}),(0,es.jsx)(X.$,{children:(0,es.jsxs)(J.E,{children:["Buttons with a ",(0,es.jsx)(K.O,{children:"neutral"})," tone are inverted to improve contrast."]})}),(0,es.jsxs)(J.E,{children:["When using custom background colours or images on a"," ",(0,es.jsx)(Q.Yq,{href:"/components/Box",children:"Box"})," component, this behaviour can be applied by setting the ",(0,es.jsx)(K.O,{children:"background"})," ","to either ",(0,es.jsx)(K.O,{children:"customLight"})," or"," ",(0,es.jsx)(K.O,{children:"customDark"}),"."]})]}),background:"neutral",Example:()=>({code:`<Box background="neutral">
+  <Stack space="xsmall">
+    <Actions>
+      <Button variant="solid" tone="brandAccent">
         Solid
       </Button>
-      <Button tone="formAccent" variant="ghost">
+      <Button variant="ghost" tone="brandAccent">
         Ghost
       </Button>
-      <Button tone="formAccent" variant="soft">
+      <Button variant="soft" tone="brandAccent">
         Soft
       </Button>
-      <Button tone="formAccent" variant="transparent">
+      <Button variant="transparent" tone="brandAccent">
         Transparent
       </Button>
-    </Inline>
-    <Inline space="small">
-      <Button tone="brandAccent" variant="solid">
+    </Actions>
+    <Actions>
+      <Button variant="solid" tone="formAccent">
         Solid
       </Button>
-      <Button tone="brandAccent" variant="ghost">
+      <Button variant="ghost" tone="formAccent">
         Ghost
       </Button>
-      <Button tone="brandAccent" variant="soft">
+      <Button variant="soft" tone="formAccent">
         Soft
       </Button>
-      <Button tone="brandAccent" variant="transparent">
+      <Button variant="transparent" tone="formAccent">
         Transparent
       </Button>
-    </Inline>
-    <Inline space="small">
-      <Button tone="critical" variant="solid">
+    </Actions>
+    <Actions>
+      <Button variant="solid" tone="critical">
         Solid
       </Button>
-      <Button tone="critical" variant="ghost">
+      <Button variant="ghost" tone="critical">
         Ghost
       </Button>
-      <Button tone="critical" variant="soft">
+      <Button variant="soft" tone="critical">
         Soft
       </Button>
-      <Button tone="critical" variant="transparent">
+      <Button variant="transparent" tone="critical">
         Transparent
       </Button>
-    </Inline>
-    <Inline space="small">
-      <Button tone="neutral" variant="solid">
-        Solid
-      </Button>
-      <Button tone="neutral" variant="ghost">
-        Ghost
-      </Button>
-      <Button tone="neutral" variant="soft">
-        Soft
-      </Button>
-      <Button tone="neutral" variant="transparent">
-        Transparent
-      </Button>
-    </Inline>
+    </Actions>
+    <Actions>
+      <Button variant="solid">Solid</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="soft">Soft</Button>
+      <Button variant="transparent">Transparent</Button>
+    </Actions>
   </Stack>
-</Box>`,value:x||(x=(0,D.jsx)(k.l,{background:"neutral",children:(0,D.jsxs)(B.B,{space:"small",children:[(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"formAccent",variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{tone:"formAccent",variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{tone:"formAccent",variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{tone:"formAccent",variant:"transparent",children:"Transparent"})]}),(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{tone:"brandAccent",variant:"transparent",children:"Transparent"})]}),(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"critical",variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{tone:"critical",variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{tone:"critical",variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{tone:"critical",variant:"transparent",children:"Transparent"})]}),(0,D.jsxs)(A.c,{space:"small",children:[(0,D.jsx)(C.$n,{tone:"neutral",variant:"solid",children:"Solid"}),(0,D.jsx)(C.$n,{tone:"neutral",variant:"ghost",children:"Ghost"}),(0,D.jsx)(C.$n,{tone:"neutral",variant:"soft",children:"Soft"}),(0,D.jsx)(C.$n,{tone:"neutral",variant:"transparent",children:"Transparent"})]})]})}))})},{label:"Bleed",description:(0,D.jsxs)(D.Fragment,{children:[(0,D.jsxs)(N.E,{children:["The ",(0,D.jsx)(L.O,{children:"bleed"})," prop allows the background colour to bleed out into the surrounding layout — leaving the button to only take up the space required for the label itself."]}),(0,D.jsx)(I.$,{children:(0,D.jsxs)(N.E,{children:["The bleed is only applied vertically, with exception to the"," ",(0,D.jsx)(L.O,{children:"transparent"})," variant, which also applies horizontally to facilitate better alignment with surrounding text."]})}),(0,D.jsxs)(N.E,{children:["For example, we can align a button to a"," ",(0,D.jsx)(M.Yq,{href:"/components/Heading",children:"Heading"})," element using an ",(0,D.jsx)(M.Yq,{href:"/components/Inline",children:"Inline"}),", even though the button is actually taller than the heading. If we didn’t use the ",(0,D.jsx)(L.O,{children:"bleed"})," prop in this case, the button would introduce unwanted space above and below the heading."]})]}),Example:e=>{let{setDefaultState:t,toggleState:a,getState:n}=e;return{code:`<>
+</Box>`,value:x||(x=(0,es.jsx)(F.l,{background:"neutral",children:(0,es.jsxs)(Z.B,{space:"xsmall",children:[(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",tone:"brandAccent",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",tone:"brandAccent",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",tone:"brandAccent",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",tone:"brandAccent",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",tone:"formAccent",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",tone:"formAccent",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",tone:"formAccent",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",tone:"formAccent",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",tone:"critical",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",tone:"critical",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",tone:"critical",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",tone:"critical",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]})]})}))})},{label:"Layout patterns",description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsx)(J.E,{children:"By default, buttons have no layout applied and run full width. We recommend positioning buttons side by side and sized to their content on tablet and desktop. On mobile, buttons should stack vertically at full width."}),(0,es.jsxs)(J.E,{children:["The easiest way to achieve this layout is with the"," ",(0,es.jsx)(Q.Yq,{href:"/components/Actions",children:"Actions"})," component, which handles spacing and responsive behavior automatically. If you have specific layout needs, you can also use"," ",(0,es.jsx)(Q.Yq,{href:"/components/Inline",children:"Inline"})," or"," ",(0,es.jsx)(Q.Yq,{href:"/components/Columns",children:"Columns"}),"."]})]}),Example:()=>{let{value:e}={code:`<Tiles space="xlarge" columns={[1, 2]}>
+  <Stack space="small">
+    <Text tone="secondary" size="small">
+      Above mobile
+    </Text>
+    <Actions>
+      <Button variant="solid">Solid</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="transparent">Transparent</Button>
+    </Actions>
+  </Stack>
+  <Stack space="small">
+    <Text tone="secondary" size="small">
+      On mobile
+    </Text>
+    <Stack space="xsmall">
+      <Button variant="solid">Solid</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="transparent">Transparent</Button>
+    </Stack>
+  </Stack>
+</Tiles>`,value:(0,es.jsxs)(et.U,{space:"xlarge",columns:[1,2],children:[f||(f=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",size:"small",children:"Above mobile"}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]})]})),b||(b=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",size:"small",children:"On mobile"}),(0,es.jsxs)(Z.B,{space:"xsmall",children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]})]}))]})},{code:t}={code:`<>
+  <Actions>
+    <Button variant="solid">Solid</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Actions>
+</>`,value:y||(y=(0,es.jsx)(es.Fragment,{children:(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]})}))};return{code:t,value:e}}},{label:"Grouping multiple buttons",description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsx)(J.E,{children:"When grouping buttons it’s important to create hierarchy by assigning different variants. Consider which action is the most important and give that button the most prominent appearance."}),(0,es.jsx)(J.E,{children:"A few examples of button groups that provide appropriate hierarchy are shown below."})]}),Example:()=>({code:`<Stack space="xsmall">
+  <Actions>
+    <Button variant="solid">Solid</Button>
+    <Button variant="soft">Soft</Button>
+  </Actions>
+  <Actions>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Actions>
+  <Actions>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="soft">Soft</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Actions>
+  <Actions>
+    <Button variant="solid">Solid</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="transparent">Transparent</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Actions>
+</Stack>`,value:v||(v=(0,es.jsxs)(Z.B,{space:"xsmall",children:[(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Soft"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Soft"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{variant:"solid",children:"Solid"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Ghost"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"}),(0,es.jsx)(z.$n,{variant:"transparent",children:"Transparent"})]})]}))})},{description:(0,es.jsx)(J.E,{children:"Avoid displaying multiple solid buttons together with different tones applied. If you need to apply more than one tone within a group of buttons, apply different variants also to create appropriate hierarchy."}),Example:()=>({code:`<Actions>
+  <Button tone="critical" variant="solid" icon={<IconDelete />}>
+    Delete
+  </Button>
+  <Button variant="ghost">Cancel</Button>
+</Actions>`,value:j||(j=(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{tone:"critical",variant:"solid",icon:(0,es.jsx)(Y.x,{}),children:"Delete"}),(0,es.jsx)(z.$n,{variant:"ghost",children:"Cancel"})]}))})},{label:"Positioning primary and secondary buttons",description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsx)(_.D,{level:"4",children:"Web"}),(0,es.jsx)(J.E,{children:"It’s recommended to lead with the primary button followed by secondary. On tablet and desktop, buttons should align to the left. On mobile, buttons should stack at full width with primary appearing first."}),(0,es.jsx)(X.$,{children:(0,es.jsxs)(J.E,{children:["An exception to this guidance is when buttons appear in the context of a"," ",(0,es.jsx)(Q.Yq,{href:"/components/Stepper",children:"Stepper"}),". In these scenarios, the primary button should align to the right. Read more about"," ",(0,es.jsx)(Q.Yq,{href:"/components/Stepper#providing-user-controls",children:"positioning Stepper buttons"}),"."]})})]}),code:!1,Example:()=>({code:`<Tiles space="xlarge" columns={[1, 2]}>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Tablet and desktop
+    </Text>
+    <Stack space="small">
+      <Placeholder label="Page content" height={125} />
+      <Actions>
+        <Button>Primary</Button>
+        <Button variant="soft">Secondary</Button>
+      </Actions>
+    </Stack>
+  </Stack>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Mobile
+    </Text>
+    <ContentBlock width="xsmall" align="left">
+      <Stack space="small">
+        <Placeholder label="Page content" height={125} />
+        <Stack space="xsmall">
+          <Button>Primary</Button>
+          <Button variant="soft">Secondary</Button>
+        </Stack>
+      </Stack>
+    </ContentBlock>
+  </Stack>
+</Tiles>`,value:(0,es.jsxs)(et.U,{space:"xlarge",columns:[1,2],children:[w||(w=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Tablet and desktop"}),(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(en.O,{label:"Page content",height:125}),(0,es.jsxs)(O.E,{children:[(0,es.jsx)(z.$n,{children:"Primary"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Secondary"})]})]})]})),T||(T=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Mobile"}),(0,es.jsx)(V.$,{width:"xsmall",align:"left",children:(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(en.O,{label:"Page content",height:125}),(0,es.jsxs)(Z.B,{space:"xsmall",children:[(0,es.jsx)(z.$n,{children:"Primary"}),(0,es.jsx)(z.$n,{variant:"soft",children:"Secondary"})]})]})})]}))]})})},{description:(0,es.jsx)(J.E,{children:"If you need to position buttons side by side on mobile instead, follow the Apps advice below."})},{description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsx)(_.D,{level:"4",children:"Apps"}),(0,es.jsx)(J.E,{children:"It’s recommended to observe Apps best practice and position primary on the right, secondary on the left with buttons placed side by side, justified to the screen width."})]}),playroom:!1,code:!1,Example:()=>({code:`<ContentBlock width="xsmall" align="left">
+  <Stack space="small">
+    <Placeholder label="Page content" height={125} />
+    <Columns space="small">
+      <Column>
+        <Button variant="soft">Secondary</Button>
+      </Column>
+      <Column>
+        <Button>Primary</Button>
+      </Column>
+    </Columns>
+  </Stack>
+</ContentBlock>`,value:k||(k=(0,es.jsx)(V.$,{width:"xsmall",align:"left",children:(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(en.O,{label:"Page content",height:125}),(0,es.jsxs)(U.e,{space:"small",children:[(0,es.jsx)(G.V,{children:(0,es.jsx)(z.$n,{variant:"soft",children:"Secondary"})}),(0,es.jsx)(G.V,{children:(0,es.jsx)(z.$n,{children:"Primary"})})]})]})}))})},{label:"Bleed",description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsxs)(J.E,{children:["The ",(0,es.jsx)(K.O,{children:"bleed"})," prop allows the background colour to bleed out into the surrounding layout — leaving the button to only take up the space required for the label itself."]}),(0,es.jsx)(X.$,{children:(0,es.jsxs)(J.E,{children:["The bleed is only applied vertically, with exception to the"," ",(0,es.jsx)(K.O,{children:"transparent"})," variant, which also applies horizontally to facilitate better alignment with surrounding text."]})}),(0,es.jsxs)(J.E,{children:["For example, we can align a button to a"," ",(0,es.jsx)(Q.Yq,{href:"/components/Heading",children:"Heading"})," element using an ",(0,es.jsx)(Q.Yq,{href:"/components/Inline",children:"Inline"}),", even though the button is actually taller than the heading. If we didn’t use the ",(0,es.jsx)(K.O,{children:"bleed"})," prop in this case, the button would introduce unwanted space above and below the heading."]})]}),Example:e=>{let{setDefaultState:t,toggleState:a,getState:n}=e;return{code:`<>
   {setDefaultState("bleed", true)}
 
   <Stack space="xlarge">
@@ -2116,7 +2265,87 @@
       </Box>
     </Stack>
   </Stack>
-</>`,value:(0,D.jsxs)(D.Fragment,{children:[t("bleed",!0),(0,D.jsxs)(B.B,{space:"xlarge",children:[(0,D.jsxs)(B.B,{space:"large",children:[(0,D.jsx)(H.l,{on:n("bleed"),label:"Bleed",align:"right",onChange:()=>a("bleed"),bleedY:!0}),f||(f=(0,D.jsx)(N.E,{tone:"secondary",weight:"strong",children:"Standard size alignment"})),(0,D.jsx)(k.l,{boxShadow:"borderCriticalLight",children:(0,D.jsxs)(A.c,{space:"xsmall",alignY:"center",children:[b||(b=(0,D.jsx)(E.D,{level:"2",children:"Heading"})),(0,D.jsx)(C.$n,{bleed:n("bleed"),tone:"formAccent",variant:"solid",children:"Button"})]})})]}),(0,D.jsxs)(B.B,{space:"medium",children:[y||(y=(0,D.jsx)(N.E,{tone:"secondary",weight:"strong",children:"Small size alignment"})),(0,D.jsx)(k.l,{boxShadow:"borderCriticalLight",children:(0,D.jsxs)(A.c,{space:"xsmall",alignY:"center",children:[v||(v=(0,D.jsx)(E.D,{level:"2",children:"Heading"})),(0,D.jsx)(C.$n,{bleed:n("bleed"),size:"small",tone:"formAccent",variant:"solid",children:"Button"})]})})]}),(0,D.jsxs)(B.B,{space:"medium",children:[j||(j=(0,D.jsx)(N.E,{tone:"secondary",weight:"strong",children:"Transparent variant alignment"})),(0,D.jsx)(k.l,{boxShadow:"borderCriticalLight",children:(0,D.jsxs)(B.B,{space:"gutter",children:[w||(w=(0,D.jsx)(E.D,{level:"2",children:"Heading"})),(0,D.jsx)(A.c,{space:"none",children:(0,D.jsx)(C.$n,{bleed:n("bleed"),variant:"transparent",tone:"formAccent",children:"Button"})})]})})]})]})]})}}},(0,q.dataAttributeDocs)({code:`
+</>`,value:(0,es.jsxs)(es.Fragment,{children:[t("bleed",!0),(0,es.jsxs)(Z.B,{space:"xlarge",children:[(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(ea.l,{on:n("bleed"),label:"Bleed",align:"right",onChange:()=>a("bleed"),bleedY:!0}),C||(C=(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Standard size alignment"})),(0,es.jsx)(F.l,{boxShadow:"borderCriticalLight",children:(0,es.jsxs)(W.c,{space:"xsmall",alignY:"center",children:[S||(S=(0,es.jsx)(_.D,{level:"2",children:"Heading"})),(0,es.jsx)(z.$n,{bleed:n("bleed"),tone:"formAccent",variant:"solid",children:"Button"})]})})]}),(0,es.jsxs)(Z.B,{space:"medium",children:[E||(E=(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Small size alignment"})),(0,es.jsx)(F.l,{boxShadow:"borderCriticalLight",children:(0,es.jsxs)(W.c,{space:"xsmall",alignY:"center",children:[A||(A=(0,es.jsx)(_.D,{level:"2",children:"Heading"})),(0,es.jsx)(z.$n,{bleed:n("bleed"),size:"small",tone:"formAccent",variant:"solid",children:"Button"})]})})]}),(0,es.jsxs)(Z.B,{space:"medium",children:[I||(I=(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Transparent variant alignment"})),(0,es.jsx)(F.l,{boxShadow:"borderCriticalLight",children:(0,es.jsxs)(Z.B,{space:"gutter",children:[B||(B=(0,es.jsx)(_.D,{level:"2",children:"Heading"})),(0,es.jsx)(W.c,{space:"none",children:(0,es.jsx)(z.$n,{bleed:n("bleed"),variant:"transparent",tone:"formAccent",children:"Button"})})]})})]})]})]})}}},{label:"Loading Button",description:(0,es.jsx)(es.Fragment,{children:(0,es.jsxs)(J.E,{children:["You can indicate a loading state inline with the"," ",(0,es.jsx)(K.O,{children:"loading"})," prop, which also ensures that the button is disabled."]})}),Example:()=>({code:`<Inline space="small">
+  <Button loading>Loading Button</Button>
+</Inline>`,value:L||(L=(0,es.jsx)(W.c,{space:"small",children:(0,es.jsx)(z.$n,{loading:!0,children:"Loading Button"})}))})},{label:"Disabled buttons",description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsx)(J.E,{children:"A button cannot be disabled (unless loading), as this is not an accessible solution and does not provide information to the user about how to fix the issue. Avoid disabled buttons where possible."}),(0,es.jsx)(J.E,{children:"When designing a form, instead of disabling the submit button when a required field is missing, allow the user to attempt to submit and fail. Then provide validation feedback informing the user of what they must do to progress."})]})},{label:"When to use",description:(0,es.jsxs)(Z.B,{space:"xlarge",children:[(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(J.E,{children:"Use a Button:"}),(0,es.jsx)($.B,{space:"large",children:(0,es.jsx)(J.E,{children:"to allow the user to perform an action, like initiating a new flow or confirming a decision."})})]}),(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(J.E,{children:"Don’t use a Button:"}),(0,es.jsxs)($.B,{space:"large",children:[(0,es.jsxs)(J.E,{children:["to link to other pages or resources (consider using a"," ",(0,es.jsx)(Q.Yq,{href:"/components/TextLink",children:"TextLink"})," or"," ",(0,es.jsx)(Q.Yq,{href:"/components/ButtonLink",children:"ButtonLink"})," ","instead."]}),(0,es.jsxs)(J.E,{children:["to allow the user to select content, such as when applying filters (consider using"," ",(0,es.jsx)(Q.Yq,{href:"/components/Tag",children:"Tags"})," instead)."]})]})]})]})},{label:"Content guidelines",description:(0,es.jsx)(es.Fragment,{children:(0,es.jsxs)(Z.B,{space:"xxlarge",children:[(0,es.jsx)(X.$,{children:(0,es.jsx)(J.E,{children:"Buttons let users take action or make a choice. A button is different from a link. Links take users somewhere."})}),(0,es.jsxs)(Z.B,{space:"large",children:[(0,es.jsx)(_.D,{level:"4",children:"Be clear and concise."}),(0,es.jsxs)($.B,{space:"large",children:[(0,es.jsx)(J.E,{children:'Be direct and use active language e.g. "Post ad".'}),(0,es.jsx)(J.E,{children:"Use 2 to 4 words only."}),(0,es.jsx)(J.E,{children:"Use sentence case."}),(0,es.jsx)(J.E,{children:"Don’t use punctuation, such as exclamation marks, full stops or commas."}),(0,es.jsx)(J.E,{children:"One action only per button."}),(0,es.jsx)(J.E,{children:"Don’t include pronouns in buttons."})]})]})]})}),code:!1,Example:()=>({code:`<Tiles space="xlarge" columns={[1, 2]}>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Do
+    </Text>
+    <Actions>
+      <Button>Explore this career</Button>
+    </Actions>
+    <Actions>
+      <Button>Complete profile</Button>
+    </Actions>
+    <Actions>
+      <Button>Create alert</Button>
+    </Actions>
+    <Actions>
+      <Button>Buy credit</Button>
+    </Actions>
+    <Actions>
+      <Button>Edit preferences</Button>
+    </Actions>
+  </Stack>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Don&rsquo;t
+    </Text>
+    <Actions>
+      <Button>Find out more about this career</Button>
+    </Actions>
+    <Actions>
+      <Button>Complete My Profile</Button>
+    </Actions>
+    <Actions>
+      <Button>Yes, create alert</Button>
+    </Actions>
+    <Actions>
+      <Button>Save and purchase credit</Button>
+    </Actions>
+    <Actions>
+      <Button>Add or edit preferences</Button>
+    </Actions>
+  </Stack>
+</Tiles>`,value:(0,es.jsxs)(et.U,{space:"xlarge",columns:[1,2],children:[N||(N=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Do"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Explore this career"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Complete profile"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Create alert"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Buy credit"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Edit preferences"})})]})),M||(M=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Don’t"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Find out more about this career"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Complete My Profile"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Yes, create alert"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Save and purchase credit"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Add or edit preferences"})})]}))]})})},{description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsx)(_.D,{level:"4",children:"Tell users what action they can take."}),(0,es.jsxs)($.B,{space:"large",children:[(0,es.jsx)(J.E,{children:"Buttons should always perform an action."}),(0,es.jsx)(J.E,{children:"Use a verb and a noun e.g. Create [verb/action] job ad [noun/name]."}),(0,es.jsx)(J.E,{children:'It’s okay to drop the noun for common actions like, "Done", "Submit", "Next".'})]})]}),code:!1,Example:()=>({code:`<Tiles space="xlarge" columns={[1, 2]}>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Do
+    </Text>
+    <Actions>
+      <Button>View profile</Button>
+    </Actions>
+  </Stack>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Don&rsquo;t
+    </Text>
+    <Actions>
+      <Button>Full profile</Button>
+    </Actions>
+  </Stack>
+</Tiles>`,value:(0,es.jsxs)(et.U,{space:"xlarge",columns:[1,2],children:[P||(P=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Do"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"View profile"})})]})),H||(H=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Don’t"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Full profile"})})]}))]})})},{description:(0,es.jsxs)(es.Fragment,{children:[(0,es.jsx)(_.D,{level:"4",children:"Let users know what happens next."}),(0,es.jsxs)($.B,{space:"large",children:[(0,es.jsx)(J.E,{children:"Be specific. People need to know what to expect when they click a button. Button content should make sense even if someone doesn’t read the content around it e.g. someone using a screenreader to jump through the links, someone scanning the page or someone with a small visual focus field."}),(0,es.jsx)(J.E,{children:"Match the destination content. Button content should reflect the title of the destination content."}),(0,es.jsx)(J.E,{children:"Never mislead people by mislabelling a button. We’ll lose their trust."})]})]}),code:!1,Example:()=>({code:`<Tiles space="xlarge" columns={[1, 2]}>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Do
+    </Text>
+    <Actions>
+      <Button>Create resum\xe9</Button>
+    </Actions>
+    <Actions>
+      <Button>Update profile</Button>
+    </Actions>
+  </Stack>
+  <Stack space="small">
+    <Text tone="secondary" weight="strong">
+      Don&rsquo;t
+    </Text>
+    <Actions>
+      <Button>Get started</Button>
+    </Actions>
+  </Stack>
+</Tiles>`,value:(0,es.jsxs)(et.U,{space:"xlarge",columns:[1,2],children:[q||(q=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Do"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Create resumé"})}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Update profile"})})]})),D||(D=(0,es.jsxs)(Z.B,{space:"small",children:[(0,es.jsx)(J.E,{tone:"secondary",weight:"strong",children:"Don’t"}),(0,es.jsx)(O.E,{children:(0,es.jsx)(z.$n,{children:"Get started"})})]}))]})})},(0,ei.dataAttributeDocs)({code:`
         <Button
           data={{ testid: 'button-1' }}
           // => data-testid="button-1"
@@ -2347,7 +2576,7 @@
   closeLabel="Close info alert"
 >
   <Text>This is an informative message.</Text>
-</Alert>`,value:(0,f.jsx)(o.F,{tone:"info",onClose:()=>alert("Dismiss this message"),closeLabel:"Close info alert",children:r||(r=(0,f.jsx)(h.E,{children:"This is an informative message."}))})})},{label:"When to use",description:(0,f.jsxs)(p.B,{space:"xxlarge",children:[(0,f.jsxs)(p.B,{space:"large",children:[(0,f.jsx)(h.E,{children:"Use an Alert if your message:"}),(0,f.jsxs)(d.B,{space:"large",children:[(0,f.jsx)(h.E,{children:"relates to an important condition, status or system change"}),(0,f.jsx)(h.E,{children:"sits at the page or section level and is relevant to the user’s current task."})]})]}),(0,f.jsxs)(p.B,{space:"large",children:[(0,f.jsx)(h.E,{children:"Don’t use an Alert if your message:"}),(0,f.jsxs)(d.B,{space:"large",children:[(0,f.jsxs)(h.E,{children:["needs to be permanently on the screen (use plain"," ",(0,f.jsx)(m.Yq,{href:"/components/Text",children:"Text"})," instead)"]}),(0,f.jsxs)(h.E,{children:["sits within a section, card, or bounded box such as a widget (use a ",(0,f.jsx)(m.Yq,{href:"/components/Notice",children:"Notice"})," ","instead)"]}),(0,f.jsxs)(h.E,{children:["needs to acknowledge a user action without interrupting their flow (use a"," ",(0,f.jsx)(m.Yq,{href:"/components/useToast",children:"Toast"})," instead)."]})]})]})]})},(0,x.dataAttributeDocs)({code:`
+</Alert>`,value:(0,f.jsx)(o.F,{tone:"info",onClose:()=>alert("Dismiss this message"),closeLabel:"Close info alert",children:r||(r=(0,f.jsx)(h.E,{children:"This is an informative message."}))})})},{label:"When to use",description:(0,f.jsxs)(p.B,{space:"xlarge",children:[(0,f.jsxs)(p.B,{space:"large",children:[(0,f.jsx)(h.E,{children:"Use an Alert if your message:"}),(0,f.jsxs)(d.B,{space:"large",children:[(0,f.jsx)(h.E,{children:"relates to an important condition, status or system change"}),(0,f.jsx)(h.E,{children:"sits at the page or section level and is relevant to the user’s current task."})]})]}),(0,f.jsxs)(p.B,{space:"large",children:[(0,f.jsx)(h.E,{children:"Don’t use an Alert if your message:"}),(0,f.jsxs)(d.B,{space:"large",children:[(0,f.jsxs)(h.E,{children:["needs to be permanently on the screen (use plain"," ",(0,f.jsx)(m.Yq,{href:"/components/Text",children:"Text"})," instead)"]}),(0,f.jsxs)(h.E,{children:["sits within a section, card, or bounded box such as a widget (use a ",(0,f.jsx)(m.Yq,{href:"/components/Notice",children:"Notice"})," ","instead)"]}),(0,f.jsxs)(h.E,{children:["needs to acknowledge a user action without interrupting their flow (use a"," ",(0,f.jsx)(m.Yq,{href:"/components/useToast",children:"Toast"})," instead)."]})]})]})]})},(0,x.dataAttributeDocs)({code:`
         <Alert
           data={{ testid: 'alert-1' }}
           // => data-testid="alert-1"
@@ -2434,30 +2663,34 @@
   <Heading component="div" level="1">
     <IconImage />
   </Heading>
-</Stack>`,value:n||(n=(0,l.jsx)(r.B,{space:"none",align:"center",children:(0,l.jsx)(i.D,{component:"div",level:"1",children:(0,l.jsx)(s.d,{})})}))}),alternatives:[],additional:[...o.iconDocumentation]}},13718:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>v});var n,i,s,r,o,l=a(88417),d=a(81007),c=a(10680),p=a(7815),u=a(21073),h=a(85185),m=a(24877),g=a(83250),x=a(60130),f=a(26101),b=a(94391),y=a(77900);let v={category:"Content",Example:()=>({code:`<Actions>
-  <Button>Button 1</Button>
-  <Button>Button 2</Button>
-  <Button variant="transparent">Button 3</Button>
-</Actions>`,value:n||(n=(0,y.jsxs)(l.E,{children:[(0,y.jsx)(d.$n,{children:"Button 1"}),(0,y.jsx)(d.$n,{children:"Button 2"}),(0,y.jsx)(d.$n,{variant:"transparent",children:"Button 3"})]}))}),description:(0,y.jsxs)(m.E,{children:["The ",(0,y.jsx)(h.O,{children:"Actions"})," component standardises the responsive layout and spacing for groups of"," ",(0,y.jsx)(g.Yq,{href:"/components/Button",children:"Button"})," components."]}),alternatives:[{name:"Inline",description:"For laying out flowing content that is allowed to wrap."},{name:"Columns",description:"For fine-grained control of widths, spacing and alignment."}],additional:[{label:"Layout",description:(0,y.jsxs)(y.Fragment,{children:[(0,y.jsxs)(m.E,{children:["The buttons are arranged using a responsive"," ",(0,y.jsx)(g.Yq,{href:"/components/Inline",children:"Inline"})," component."," ",(0,y.jsx)(h.O,{children:"On mobile"}),", the buttons are full width, and stacked vertically. ",(0,y.jsxs)(h.O,{children:["On ",b.T," and above"]}),", the buttons are the width of their content sitting side by side, wrapping when necessary."]}),(0,y.jsx)(p.$,{tone:"info",children:(0,y.jsx)(m.E,{children:"For consistency, it is recommended to always lead with the primary action."})})]}),code:!1,Example:()=>({code:`<Tiles space="xlarge" columns={[1, 2]}>
-  <Stack space="small">
-    <Text tone="secondary" size="small">
-      On mobile
-    </Text>
-    <Stack space={actionsSpace}>
-      <Button>Primary</Button>
-      <Button variant="transparent">Secondary</Button>
-    </Stack>
-  </Stack>
+</Stack>`,value:n||(n=(0,l.jsx)(r.B,{space:"none",align:"center",children:(0,l.jsx)(i.D,{component:"div",level:"1",children:(0,l.jsx)(s.d,{})})}))}),alternatives:[],additional:[...o.iconDocumentation]}},13718:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>y});var n,i,s,r,o,l=a(88417),d=a(81007),c=a(7815),p=a(21073),u=a(85185),h=a(24877),m=a(83250),g=a(60130),x=a(26101),f=a(94391),b=a(77900);let y={category:"Content",Example:()=>{let{value:e}={code:`<Tiles space="xlarge" columns={[1, 2]}>
   <Stack space="small">
     <Text tone="secondary" size="small">
       Above mobile
     </Text>
-    <Inline space={actionsSpace}>
-      <Button>Primary</Button>
-      <Button variant="transparent">Secondary</Button>
-    </Inline>
+    <Actions>
+      <Button variant="solid">Solid</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="transparent">Transparent</Button>
+    </Actions>
   </Stack>
-</Tiles>`,value:(0,y.jsxs)(x.U,{space:"xlarge",columns:[1,2],children:[i||(i=(0,y.jsxs)(u.B,{space:"small",children:[(0,y.jsx)(m.E,{tone:"secondary",size:"small",children:"On mobile"}),(0,y.jsxs)(u.B,{space:l.K,children:[(0,y.jsx)(d.$n,{children:"Primary"}),(0,y.jsx)(d.$n,{variant:"transparent",children:"Secondary"})]})]})),s||(s=(0,y.jsxs)(u.B,{space:"small",children:[(0,y.jsx)(m.E,{tone:"secondary",size:"small",children:"Above mobile"}),(0,y.jsxs)(c.c,{space:l.K,children:[(0,y.jsx)(d.$n,{children:"Primary"}),(0,y.jsx)(d.$n,{variant:"transparent",children:"Secondary"})]})]}))]})})},{label:"Sizes",description:(0,y.jsxs)(y.Fragment,{children:[(0,y.jsxs)(m.E,{children:["The size of all the buttons within an ",(0,y.jsx)(h.O,{children:"Actions"})," ","component can be controlled uniformly via the ",(0,y.jsx)(h.O,{children:"size"})," ","prop, which accepts either ",(0,y.jsx)(h.O,{children:"standard"})," or"," ",(0,y.jsx)(h.O,{children:"small."})]}),(0,y.jsxs)(m.E,{children:["The specified ",(0,y.jsx)(h.O,{children:"size"})," will also be applied to any"," ",(0,y.jsx)(g.Yq,{href:"/components/Button#icons",children:"icons"})," if provided."]})]}),Example:()=>({code:`<Tiles space="xlarge" columns={[1, 2]}>
+  <Stack space="small">
+    <Text tone="secondary" size="small">
+      On mobile
+    </Text>
+    <Stack space="xsmall">
+      <Button variant="solid">Solid</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="transparent">Transparent</Button>
+    </Stack>
+  </Stack>
+</Tiles>`,value:(0,b.jsxs)(g.U,{space:"xlarge",columns:[1,2],children:[n||(n=(0,b.jsxs)(p.B,{space:"small",children:[(0,b.jsx)(h.E,{tone:"secondary",size:"small",children:"Above mobile"}),(0,b.jsxs)(l.E,{children:[(0,b.jsx)(d.$n,{variant:"solid",children:"Solid"}),(0,b.jsx)(d.$n,{variant:"ghost",children:"Ghost"}),(0,b.jsx)(d.$n,{variant:"transparent",children:"Transparent"})]})]})),i||(i=(0,b.jsxs)(p.B,{space:"small",children:[(0,b.jsx)(h.E,{tone:"secondary",size:"small",children:"On mobile"}),(0,b.jsxs)(p.B,{space:"xsmall",children:[(0,b.jsx)(d.$n,{variant:"solid",children:"Solid"}),(0,b.jsx)(d.$n,{variant:"ghost",children:"Ghost"}),(0,b.jsx)(d.$n,{variant:"transparent",children:"Transparent"})]})]}))]})},{code:t}={code:`<>
+  <Actions>
+    <Button variant="solid">Solid</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="transparent">Transparent</Button>
+  </Actions>
+</>`,value:s||(s=(0,b.jsx)(b.Fragment,{children:(0,b.jsxs)(l.E,{children:[(0,b.jsx)(d.$n,{variant:"solid",children:"Solid"}),(0,b.jsx)(d.$n,{variant:"ghost",children:"Ghost"}),(0,b.jsx)(d.$n,{variant:"transparent",children:"Transparent"})]})}))};return{code:t,value:e}},description:(0,b.jsxs)(h.E,{children:["A layout component that applies spacing and responsive behaviour to"," ",(0,b.jsx)(m.Yq,{href:"/components/Button",children:"Buttons"})," in a consistent way."]}),alternatives:[{name:"Inline",description:"For laying out flowing content that is allowed to wrap."},{name:"Columns",description:"For fine-grained control of widths, spacing and alignment."}],additional:[{label:"Layout",description:(0,b.jsxs)(b.Fragment,{children:[(0,b.jsxs)(h.E,{children:["The buttons are arranged using a responsive"," ",(0,b.jsx)(m.Yq,{href:"/components/Inline",children:"Inline"})," component."," ",(0,b.jsx)(u.O,{children:"On mobile"}),", the buttons are full width, and stacked vertically. ",(0,b.jsxs)(u.O,{children:["On ",f.T," and above"]}),", the buttons are the width of their content sitting side by side, wrapping when necessary."]}),(0,b.jsx)(c.$,{tone:"info",children:(0,b.jsx)(h.E,{children:"For consistency, it is recommended to always lead with the primary action."})})]})},{label:"Sizes",description:(0,b.jsxs)(b.Fragment,{children:[(0,b.jsxs)(h.E,{children:["The size of all the buttons within an ",(0,b.jsx)(u.O,{children:"Actions"})," ","component can be controlled uniformly via the ",(0,b.jsx)(u.O,{children:"size"})," ","prop, which accepts either ",(0,b.jsx)(u.O,{children:"standard"})," or"," ",(0,b.jsx)(u.O,{children:"small."})]}),(0,b.jsxs)(h.E,{children:["The specified ",(0,b.jsx)(u.O,{children:"size"})," will also be applied to any"," ",(0,b.jsx)(m.Yq,{href:"/components/Button#icons",children:"icons"})," if provided."]})]}),Example:()=>({code:`<Tiles space="xlarge" columns={[1, 2]}>
   <Stack space="small">
     <Text tone="secondary" size="small">
       Standard size
@@ -2476,7 +2709,7 @@
       <Button variant="transparent">Button 2</Button>
     </Actions>
   </Stack>
-</Tiles>`,value:(0,y.jsxs)(x.U,{space:"xlarge",columns:[1,2],children:[r||(r=(0,y.jsxs)(u.B,{space:"small",children:[(0,y.jsx)(m.E,{tone:"secondary",size:"small",children:"Standard size"}),(0,y.jsxs)(l.E,{children:[(0,y.jsx)(d.$n,{children:"Button 1"}),(0,y.jsx)(d.$n,{variant:"transparent",children:"Button 2"})]})]})),o||(o=(0,y.jsxs)(u.B,{space:"small",children:[(0,y.jsx)(m.E,{tone:"secondary",size:"small",children:"Small size"}),(0,y.jsxs)(l.E,{size:"small",children:[(0,y.jsx)(d.$n,{children:"Button 1"}),(0,y.jsx)(d.$n,{variant:"transparent",children:"Button 2"})]})]}))]})})},(0,f.dataAttributeDocs)({code:`
+</Tiles>`,value:(0,b.jsxs)(g.U,{space:"xlarge",columns:[1,2],children:[r||(r=(0,b.jsxs)(p.B,{space:"small",children:[(0,b.jsx)(h.E,{tone:"secondary",size:"small",children:"Standard size"}),(0,b.jsxs)(l.E,{children:[(0,b.jsx)(d.$n,{children:"Button 1"}),(0,b.jsx)(d.$n,{variant:"transparent",children:"Button 2"})]})]})),o||(o=(0,b.jsxs)(p.B,{space:"small",children:[(0,b.jsx)(h.E,{tone:"secondary",size:"small",children:"Small size"}),(0,b.jsxs)(l.E,{size:"small",children:[(0,b.jsx)(d.$n,{children:"Button 1"}),(0,b.jsx)(d.$n,{variant:"transparent",children:"Button 2"})]})]}))]})})},(0,x.dataAttributeDocs)({code:`
         <Actions
           data={{ testid: 'actions-1' }}
           // => data-testid="actions-1"
@@ -2861,7 +3094,7 @@
       <Placeholder height={80} />
     </AccordionItem>
   </Accordion>
-</>`,value:(0,w.jsxs)(w.Fragment,{children:[t("expanded1",!1),t("expanded2",!0),t("expanded3",!1),(0,w.jsxs)(p.nD,{children:[(0,w.jsx)(u.A,{label:"Accordion item 1",expanded:a("expanded1"),onToggle:()=>n("expanded1"),children:o||(o=(0,w.jsx)(v.O,{height:80}))}),(0,w.jsx)(u.A,{label:"Accordion item 2",expanded:a("expanded2"),onToggle:()=>n("expanded2"),children:l||(l=(0,w.jsx)(v.O,{height:80}))}),(0,w.jsx)(u.A,{label:"Accordion item 3",expanded:a("expanded3"),onToggle:()=>n("expanded3"),children:d||(d=(0,w.jsx)(v.O,{height:80}))})]})]})}}},{label:"When to use",description:(0,w.jsxs)(x.B,{space:"xxlarge",children:[(0,w.jsxs)(x.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"Use an Accordion:"}),(0,w.jsxs)(m.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"to shorten pages and reduce scrolling when content isn’t crucial to read in full (e.g. FYIs)"}),(0,w.jsx)(b.E,{children:"to display basic content such as text, links and occasional images."})]})]}),(0,w.jsxs)(x.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"Don’t use an Accordion:"}),(0,w.jsxs)(m.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"if the information is needed for the user to complete their current task (make it visible upfront instead)"}),(0,w.jsxs)(b.E,{children:["to capture complex user input, such as in a form (consider using a ",(0,w.jsx)(y.Yq,{href:"/components/Drawer",children:"Drawer"})," instead)"]}),(0,w.jsxs)(b.E,{children:["for a single section of content (consider using a"," ",(0,w.jsx)(y.Yq,{href:"/components/Disclosure",children:"Disclosure"})," ","instead)."]})]})]})]})},(0,j.dataAttributeDocs)({code:`
+</>`,value:(0,w.jsxs)(w.Fragment,{children:[t("expanded1",!1),t("expanded2",!0),t("expanded3",!1),(0,w.jsxs)(p.nD,{children:[(0,w.jsx)(u.A,{label:"Accordion item 1",expanded:a("expanded1"),onToggle:()=>n("expanded1"),children:o||(o=(0,w.jsx)(v.O,{height:80}))}),(0,w.jsx)(u.A,{label:"Accordion item 2",expanded:a("expanded2"),onToggle:()=>n("expanded2"),children:l||(l=(0,w.jsx)(v.O,{height:80}))}),(0,w.jsx)(u.A,{label:"Accordion item 3",expanded:a("expanded3"),onToggle:()=>n("expanded3"),children:d||(d=(0,w.jsx)(v.O,{height:80}))})]})]})}}},{label:"When to use",description:(0,w.jsxs)(x.B,{space:"xlarge",children:[(0,w.jsxs)(x.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"Use an Accordion:"}),(0,w.jsxs)(m.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"to shorten pages and reduce scrolling when content isn’t crucial to read in full (e.g. FYIs)"}),(0,w.jsx)(b.E,{children:"to display basic content such as text, links and occasional images."})]})]}),(0,w.jsxs)(x.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"Don’t use an Accordion:"}),(0,w.jsxs)(m.B,{space:"large",children:[(0,w.jsx)(b.E,{children:"if the information is needed for the user to complete their current task (make it visible upfront instead)"}),(0,w.jsxs)(b.E,{children:["to capture complex user input, such as in a form (consider using a ",(0,w.jsx)(y.Yq,{href:"/components/Drawer",children:"Drawer"})," instead)"]}),(0,w.jsxs)(b.E,{children:["for a single section of content (consider using a"," ",(0,w.jsx)(y.Yq,{href:"/components/Disclosure",children:"Disclosure"})," ","instead)."]})]})]})]})},(0,j.dataAttributeDocs)({code:`
         <Accordion
           data={{ testid: 'accordion-1' }}
           // => data-testid="accordion-1"
@@ -4699,7 +4932,7 @@
       <Text>Bullet 3</Text>
     </List>
   </Stack>
-</Notice>`,value:i||(i=(0,u.jsx)(r.$,{tone:"info",children:(0,u.jsxs)(o.B,{space:"large",children:[(0,u.jsxs)(d.E,{children:["This is an important piece of information with a"," ",(0,u.jsx)(c.Yq,{href:"#",children:"TextLink."})]}),(0,u.jsxs)(s.B,{space:"medium",children:[(0,u.jsx)(d.E,{children:"Bullet 1"}),(0,u.jsx)(d.E,{children:"Bullet 2"}),(0,u.jsx)(d.E,{children:"Bullet 3"})]})]})}))})},{label:"When to use",description:(0,u.jsxs)(o.B,{space:"xxlarge",children:[(0,u.jsxs)(o.B,{space:"large",children:[(0,u.jsx)(d.E,{children:"Use a Notice if your message:"}),(0,u.jsxs)(s.B,{space:"large",children:[(0,u.jsx)(d.E,{children:"relates to an important condition, status or system change"}),(0,u.jsx)(d.E,{children:"sits within a section, card, or bounded box and is relevant to the user’s current task."})]})]}),(0,u.jsxs)(o.B,{space:"large",children:[(0,u.jsx)(d.E,{children:"Don’t use a Notice if your message:"}),(0,u.jsxs)(s.B,{space:"large",children:[(0,u.jsxs)(d.E,{children:["needs to be permanently on the screen (use plain"," ",(0,u.jsx)(c.Yq,{href:"/components/Text",children:"Text"})," instead)"]}),(0,u.jsxs)(d.E,{children:["sits at the page or section level (use an"," ",(0,u.jsx)(c.Yq,{href:"/components/Alert",children:"Alert"})," instead)"]}),(0,u.jsxs)(d.E,{children:["needs to acknowledge a user action without interrupting their flow (use a"," ",(0,u.jsx)(c.Yq,{href:"/components/useToast",children:"Toast"})," instead)."]})]})]})]})},(0,p.dataAttributeDocs)({code:`
+</Notice>`,value:i||(i=(0,u.jsx)(r.$,{tone:"info",children:(0,u.jsxs)(o.B,{space:"large",children:[(0,u.jsxs)(d.E,{children:["This is an important piece of information with a"," ",(0,u.jsx)(c.Yq,{href:"#",children:"TextLink."})]}),(0,u.jsxs)(s.B,{space:"medium",children:[(0,u.jsx)(d.E,{children:"Bullet 1"}),(0,u.jsx)(d.E,{children:"Bullet 2"}),(0,u.jsx)(d.E,{children:"Bullet 3"})]})]})}))})},{label:"When to use",description:(0,u.jsxs)(o.B,{space:"xlarge",children:[(0,u.jsxs)(o.B,{space:"large",children:[(0,u.jsx)(d.E,{children:"Use a Notice if your message:"}),(0,u.jsxs)(s.B,{space:"large",children:[(0,u.jsx)(d.E,{children:"relates to an important condition, status or system change"}),(0,u.jsx)(d.E,{children:"sits within a section, card, or bounded box and is relevant to the user’s current task."})]})]}),(0,u.jsxs)(o.B,{space:"large",children:[(0,u.jsx)(d.E,{children:"Don’t use a Notice if your message:"}),(0,u.jsxs)(s.B,{space:"large",children:[(0,u.jsxs)(d.E,{children:["needs to be permanently on the screen (use plain"," ",(0,u.jsx)(c.Yq,{href:"/components/Text",children:"Text"})," instead)"]}),(0,u.jsxs)(d.E,{children:["sits at the page or section level (use an"," ",(0,u.jsx)(c.Yq,{href:"/components/Alert",children:"Alert"})," instead)"]}),(0,u.jsxs)(d.E,{children:["needs to acknowledge a user action without interrupting their flow (use a"," ",(0,u.jsx)(c.Yq,{href:"/components/useToast",children:"Toast"})," instead)."]})]})]})]})},(0,p.dataAttributeDocs)({code:`
         <Notice
           data={{ testid: 'Notice-1' }}
           // => data-testid="Notice-1"
@@ -4786,7 +5019,7 @@
       </Box>
     </Inline>
   )}
-</TooltipRenderer>`,value:(0,T.jsx)(j.rE,{placement:"bottom",tooltip:d||(d=(0,T.jsxs)(f.B,{space:"medium",children:[(0,T.jsx)(y.E,{size:"large",children:"Large text"}),(0,T.jsx)(y.E,{children:"The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."})]})),children:e=>{let{triggerProps:t}=e;return(0,T.jsx)(m.c,{space:"small",align:"center",children:(0,T.jsx)(u.l,{"aria-label":"Help",...t,children:c||(c=(0,T.jsx)(g.L,{}))})})}})};return{code:e,value:p||(p=(0,T.jsx)(f.B,{space:"none",align:"center",children:(0,T.jsx)(j.ZI,{placement:"bottom",children:(0,T.jsxs)(f.B,{space:"medium",children:[(0,T.jsx)(y.E,{size:"large",children:"Large text"}),(0,T.jsx)(y.E,{children:"The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."})]})})}))}}},{label:"When to use",description:(0,T.jsxs)(f.B,{space:"xxlarge",children:[(0,T.jsxs)(f.B,{space:"large",children:[(0,T.jsx)(y.E,{children:"Use a Tooltip:"}),(0,T.jsx)(x.B,{space:"large",children:(0,T.jsx)(y.E,{children:"to provide optional information such as a short explanation of what something means."})})]}),(0,T.jsxs)(f.B,{space:"large",children:[(0,T.jsx)(y.E,{children:"Don’t use a Tooltip:"}),(0,T.jsxs)(x.B,{space:"large",children:[(0,T.jsx)(y.E,{children:"if the information is important or the user needs it to complete a task (make it visible up front)"}),(0,T.jsxs)(y.E,{children:["to display complex content including CTAs or images (consider using a ",(0,T.jsx)(v.Yq,{href:"/components/Dialog",children:"Dialog"})," ","instead)."]})]})]})]})},{label:"Development considerations",description:(0,T.jsxs)(y.E,{children:["The trigger element must support ",(0,T.jsx)(b.O,{children:"ref"}),","," ",(0,T.jsx)(b.O,{children:"tabIndex"})," and ",(0,T.jsx)(b.O,{children:"aria-describedby"})," props."]})}]}},40715:(e,t,a)=>{"use strict";a.d(t,{l:()=>r});var n=a(24444),i=a(26807);let s=Object.keys(n.xe),r=e=>{let t="object"==typeof e&&Object.keys(e).some(t=>i.u.includes(t)&&s.includes(e[t])),a=Array.isArray(e)&&e.some(e=>s.includes(e));return"string"==typeof e&&s.includes(e)||t||a?e:void 0}},40825:(e,t,a)=>{"use strict";a.r(t),a.d(t,{galleryItems:()=>l});var n,i,s=a(88417),r=a(81007),o=a(77900);let l={examples:[{label:"Standard size",Example:()=>({code:`<Actions>
+</TooltipRenderer>`,value:(0,T.jsx)(j.rE,{placement:"bottom",tooltip:d||(d=(0,T.jsxs)(f.B,{space:"medium",children:[(0,T.jsx)(y.E,{size:"large",children:"Large text"}),(0,T.jsx)(y.E,{children:"The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."})]})),children:e=>{let{triggerProps:t}=e;return(0,T.jsx)(m.c,{space:"small",align:"center",children:(0,T.jsx)(u.l,{"aria-label":"Help",...t,children:c||(c=(0,T.jsx)(g.L,{}))})})}})};return{code:e,value:p||(p=(0,T.jsx)(f.B,{space:"none",align:"center",children:(0,T.jsx)(j.ZI,{placement:"bottom",children:(0,T.jsxs)(f.B,{space:"medium",children:[(0,T.jsx)(y.E,{size:"large",children:"Large text"}),(0,T.jsx)(y.E,{children:"The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog."})]})})}))}}},{label:"When to use",description:(0,T.jsxs)(f.B,{space:"xlarge",children:[(0,T.jsxs)(f.B,{space:"large",children:[(0,T.jsx)(y.E,{children:"Use a Tooltip:"}),(0,T.jsx)(x.B,{space:"large",children:(0,T.jsx)(y.E,{children:"to provide optional information such as a short explanation of what something means."})})]}),(0,T.jsxs)(f.B,{space:"large",children:[(0,T.jsx)(y.E,{children:"Don’t use a Tooltip:"}),(0,T.jsxs)(x.B,{space:"large",children:[(0,T.jsx)(y.E,{children:"if the information is important or the user needs it to complete a task (make it visible up front)"}),(0,T.jsxs)(y.E,{children:["to display complex content including CTAs or images (consider using a ",(0,T.jsx)(v.Yq,{href:"/components/Dialog",children:"Dialog"})," ","instead)."]})]})]})]})},{label:"Development considerations",description:(0,T.jsxs)(y.E,{children:["The trigger element must support ",(0,T.jsx)(b.O,{children:"ref"}),","," ",(0,T.jsx)(b.O,{children:"tabIndex"})," and ",(0,T.jsx)(b.O,{children:"aria-describedby"})," props."]})}]}},40715:(e,t,a)=>{"use strict";a.d(t,{l:()=>r});var n=a(24444),i=a(26807);let s=Object.keys(n.xe),r=e=>{let t="object"==typeof e&&Object.keys(e).some(t=>i.u.includes(t)&&s.includes(e[t])),a=Array.isArray(e)&&e.some(e=>s.includes(e));return"string"==typeof e&&s.includes(e)||t||a?e:void 0}},40825:(e,t,a)=>{"use strict";a.r(t),a.d(t,{galleryItems:()=>l});var n,i,s=a(88417),r=a(81007),o=a(77900);let l={examples:[{label:"Standard size",Example:()=>({code:`<Actions>
   <Button>Button 1</Button>
   <Button>Button 2</Button>
   <Button variant="transparent">Button 3</Button>
@@ -5598,7 +5831,7 @@
       </Box>
     </Hidden>
   </Stack>
-</>`,value:(0,eA.jsxs)(eA.Fragment,{children:[t("progress",2),(0,eA.jsxs)(ey.B,{space:"large",children:[(0,eA.jsxs)(eE.C,{label:"Linear steps",progress:n("progress"),children:[X||(X=(0,eA.jsx)(eS.p,{children:"1. First step"})),Z||(Z=(0,eA.jsx)(eS.p,{children:"2. Second step"})),K||(K=(0,eA.jsx)(eS.p,{children:"3. Third step"})),J||(J=(0,eA.jsx)(eS.p,{children:"4. Fourth step"}))]}),Q||(Q=(0,eA.jsx)(ek.O,{height:"200",label:"Content"})),(0,eA.jsx)(em.j,{below:"tablet",children:(0,eA.jsxs)(eh.e,{space:"small",children:[(0,eA.jsx)(eu.V,{children:n("progress")>1?(0,eA.jsx)(eg.c,{space:"small",children:(0,eA.jsxs)(ep.$n,{variant:"soft",onClick:()=>a("progress",n("progress")-1),children:[ee||(ee=(0,eA.jsx)(el.P,{direction:"left"}))," Back"]})}):null}),(0,eA.jsx)(eu.V,{width:"content",children:(0,eA.jsxs)(eg.c,{space:"small",children:[et||(et=(0,eA.jsx)(ep.$n,{variant:"transparent",children:"Save draft"})),(0,eA.jsx)(ep.$n,{variant:"solid",tone:4>n("progress")?"formAccent":"brandAccent",onClick:()=>a("progress",n("progress")+1),children:4>n("progress")?ea||(ea=(0,eA.jsxs)(eA.Fragment,{children:["Continue ",(0,eA.jsx)(el.P,{direction:"right"})]})):en||(en=(0,eA.jsxs)(eA.Fragment,{children:["Submit ",(0,eA.jsx)(eT.m,{})]}))})]})})]})}),(0,eA.jsxs)(em.j,{above:"mobile",children:[(0,eA.jsxs)(eh.e,{space:"xsmall",children:[n("progress")>1?(0,eA.jsx)(eu.V,{children:(0,eA.jsx)(ep.$n,{icon:ei||(ei=(0,eA.jsx)(el.P,{direction:"left"})),variant:"soft",onClick:()=>a("progress",n("progress")-1),children:"Back"})}):null,(0,eA.jsx)(eu.V,{children:(0,eA.jsx)(ep.$n,{variant:"solid",tone:4>n("progress")?"formAccent":"brandAccent",onClick:()=>a("progress",n("progress")+1),children:4>n("progress")?es||(es=(0,eA.jsxs)(eA.Fragment,{children:["Continue ",(0,eA.jsx)(el.P,{direction:"right"})]})):er||(er=(0,eA.jsxs)(eA.Fragment,{children:["Submit ",(0,eA.jsx)(eT.m,{})]}))})})]}),eo||(eo=(0,eA.jsx)(ec.l,{paddingTop:"small",children:(0,eA.jsx)(ep.$n,{variant:"transparent",children:"Save draft"})}))]})]})]})}}},{description:(0,eA.jsx)(eA.Fragment,{children:(0,eA.jsx)(ej.E,{children:"When designing in a language other than english, the button word lengths may become too long to fit side by side on mobile. If this is the case, you can stack buttons vertically with “Continue” on the top followed by “Back” then “Save”."})})},{label:"When to use",description:(0,eA.jsxs)(ey.B,{space:"xxlarge",children:[(0,eA.jsxs)(ey.B,{space:"large",children:[(0,eA.jsx)(ej.E,{children:"Use a Stepper:"}),(0,eA.jsx)(ex.B,{space:"large",children:(0,eA.jsx)(ej.E,{children:"to guide users through complex, multi-step tasks or processes."})})]}),(0,eA.jsxs)(ey.B,{space:"large",children:[(0,eA.jsx)(ej.E,{children:"Don’t use a Stepper:"}),(0,eA.jsx)(ex.B,{space:"large",children:(0,eA.jsx)(ej.E,{children:"if the task only requires one or two straightforward actions."})})]})]})},(0,eC.dataAttributeDocs)({code:`
+</>`,value:(0,eA.jsxs)(eA.Fragment,{children:[t("progress",2),(0,eA.jsxs)(ey.B,{space:"large",children:[(0,eA.jsxs)(eE.C,{label:"Linear steps",progress:n("progress"),children:[X||(X=(0,eA.jsx)(eS.p,{children:"1. First step"})),Z||(Z=(0,eA.jsx)(eS.p,{children:"2. Second step"})),K||(K=(0,eA.jsx)(eS.p,{children:"3. Third step"})),J||(J=(0,eA.jsx)(eS.p,{children:"4. Fourth step"}))]}),Q||(Q=(0,eA.jsx)(ek.O,{height:"200",label:"Content"})),(0,eA.jsx)(em.j,{below:"tablet",children:(0,eA.jsxs)(eh.e,{space:"small",children:[(0,eA.jsx)(eu.V,{children:n("progress")>1?(0,eA.jsx)(eg.c,{space:"small",children:(0,eA.jsxs)(ep.$n,{variant:"soft",onClick:()=>a("progress",n("progress")-1),children:[ee||(ee=(0,eA.jsx)(el.P,{direction:"left"}))," Back"]})}):null}),(0,eA.jsx)(eu.V,{width:"content",children:(0,eA.jsxs)(eg.c,{space:"small",children:[et||(et=(0,eA.jsx)(ep.$n,{variant:"transparent",children:"Save draft"})),(0,eA.jsx)(ep.$n,{variant:"solid",tone:4>n("progress")?"formAccent":"brandAccent",onClick:()=>a("progress",n("progress")+1),children:4>n("progress")?ea||(ea=(0,eA.jsxs)(eA.Fragment,{children:["Continue ",(0,eA.jsx)(el.P,{direction:"right"})]})):en||(en=(0,eA.jsxs)(eA.Fragment,{children:["Submit ",(0,eA.jsx)(eT.m,{})]}))})]})})]})}),(0,eA.jsxs)(em.j,{above:"mobile",children:[(0,eA.jsxs)(eh.e,{space:"xsmall",children:[n("progress")>1?(0,eA.jsx)(eu.V,{children:(0,eA.jsx)(ep.$n,{icon:ei||(ei=(0,eA.jsx)(el.P,{direction:"left"})),variant:"soft",onClick:()=>a("progress",n("progress")-1),children:"Back"})}):null,(0,eA.jsx)(eu.V,{children:(0,eA.jsx)(ep.$n,{variant:"solid",tone:4>n("progress")?"formAccent":"brandAccent",onClick:()=>a("progress",n("progress")+1),children:4>n("progress")?es||(es=(0,eA.jsxs)(eA.Fragment,{children:["Continue ",(0,eA.jsx)(el.P,{direction:"right"})]})):er||(er=(0,eA.jsxs)(eA.Fragment,{children:["Submit ",(0,eA.jsx)(eT.m,{})]}))})})]}),eo||(eo=(0,eA.jsx)(ec.l,{paddingTop:"small",children:(0,eA.jsx)(ep.$n,{variant:"transparent",children:"Save draft"})}))]})]})]})}}},{description:(0,eA.jsx)(eA.Fragment,{children:(0,eA.jsx)(ej.E,{children:"When designing in a language other than english, the button word lengths may become too long to fit side by side on mobile. If this is the case, you can stack buttons vertically with “Continue” on the top followed by “Back” then “Save”."})})},{label:"When to use",description:(0,eA.jsxs)(ey.B,{space:"xlarge",children:[(0,eA.jsxs)(ey.B,{space:"large",children:[(0,eA.jsx)(ej.E,{children:"Use a Stepper:"}),(0,eA.jsx)(ex.B,{space:"large",children:(0,eA.jsx)(ej.E,{children:"to guide users through complex, multi-step tasks or processes."})})]}),(0,eA.jsxs)(ey.B,{space:"large",children:[(0,eA.jsx)(ej.E,{children:"Don’t use a Stepper:"}),(0,eA.jsx)(ex.B,{space:"large",children:(0,eA.jsx)(ej.E,{children:"if the task only requires one or two straightforward actions."})})]})]})},(0,eC.dataAttributeDocs)({code:`
         <Stepper
           data={{ testid: 'stepper-1' }}
           // => data-testid="stepper-1"
@@ -17871,7 +18104,7 @@ For more detail on the specific changes in this release, please read on.
       Open third dialog
     </Button>
   </Dialog>
-</>`,value:(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(E.c,{space:"small",children:(0,F.jsx)(k.$n,{onClick:()=>a("firstDialog"),children:"Open nested dialog"})}),(0,F.jsx)(S.lG,{title:"Third Dialog",width:"xsmall",open:t("thirdDialog"),onClose:()=>a("thirdDialog"),children:y||(y=(0,F.jsx)(q.O,{height:50}))}),(0,F.jsxs)(S.lG,{title:"First Dialog",width:"medium",open:t("firstDialog"),onClose:()=>a("firstDialog"),children:[v||(v=(0,F.jsx)(q.O,{height:300,label:"Dialog Content"})),(0,F.jsx)(k.$n,{onClick:()=>a("secondDialog"),children:"Open second dialog"})]}),(0,F.jsxs)(S.lG,{title:"Second Dialog",width:"small",open:t("secondDialog"),onClose:()=>a("secondDialog"),children:[j||(j=(0,F.jsx)(q.O,{height:200,label:"Dialog Content"})),(0,F.jsx)(k.$n,{onClick:()=>a("thirdDialog"),children:"Open third dialog"})]})]})}}},{label:"General best practice",description:(0,F.jsxs)(A.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"A Dialog can be triggered on any element of your choice, but should always be directly connected to a user action such as clicking a button."}),(0,F.jsx)(M.E,{children:"Avoid displaying a Dialog on page load, as users tend to dismiss these without reading them."})]})},{label:"When to use",description:(0,F.jsxs)(L.B,{space:"xxlarge",children:[(0,F.jsxs)(L.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"Use a Dialog:"}),(0,F.jsxs)(A.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"to reveal secondary information including images or interactive elements"}),(0,F.jsx)(M.E,{children:"to confirm an important user action (e.g. deleting a piece of data)."})]})]}),(0,F.jsxs)(L.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"Don’t use a Dialog:"}),(0,F.jsxs)(A.B,{space:"large",children:[(0,F.jsxs)(M.E,{children:["if your content is less than 20 words in length (consider using a"," ",(0,F.jsx)(H.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"})," ","instead)"]}),(0,F.jsxs)(M.E,{children:["to capture complex user input, such as in a form (consider using a ",(0,F.jsx)(H.Yq,{href:"/components/Drawer",children:"Drawer"})," ","instead)."]})]})]})]})},{label:"Development considerations",description:(0,F.jsxs)(M.E,{children:["It’s recommended that you connect the Dialog’s"," ",(0,F.jsx)(N.O,{children:"open"})," state to your router so that it can be closed via the browser’s back button."]})},(0,R.dataAttributeDocs)({code:`
+</>`,value:(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(E.c,{space:"small",children:(0,F.jsx)(k.$n,{onClick:()=>a("firstDialog"),children:"Open nested dialog"})}),(0,F.jsx)(S.lG,{title:"Third Dialog",width:"xsmall",open:t("thirdDialog"),onClose:()=>a("thirdDialog"),children:y||(y=(0,F.jsx)(q.O,{height:50}))}),(0,F.jsxs)(S.lG,{title:"First Dialog",width:"medium",open:t("firstDialog"),onClose:()=>a("firstDialog"),children:[v||(v=(0,F.jsx)(q.O,{height:300,label:"Dialog Content"})),(0,F.jsx)(k.$n,{onClick:()=>a("secondDialog"),children:"Open second dialog"})]}),(0,F.jsxs)(S.lG,{title:"Second Dialog",width:"small",open:t("secondDialog"),onClose:()=>a("secondDialog"),children:[j||(j=(0,F.jsx)(q.O,{height:200,label:"Dialog Content"})),(0,F.jsx)(k.$n,{onClick:()=>a("thirdDialog"),children:"Open third dialog"})]})]})}}},{label:"General best practice",description:(0,F.jsxs)(A.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"A Dialog can be triggered on any element of your choice, but should always be directly connected to a user action such as clicking a button."}),(0,F.jsx)(M.E,{children:"Avoid displaying a Dialog on page load, as users tend to dismiss these without reading them."})]})},{label:"When to use",description:(0,F.jsxs)(L.B,{space:"xlarge",children:[(0,F.jsxs)(L.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"Use a Dialog:"}),(0,F.jsxs)(A.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"to reveal secondary information including images or interactive elements"}),(0,F.jsx)(M.E,{children:"to confirm an important user action (e.g. deleting a piece of data)."})]})]}),(0,F.jsxs)(L.B,{space:"large",children:[(0,F.jsx)(M.E,{children:"Don’t use a Dialog:"}),(0,F.jsxs)(A.B,{space:"large",children:[(0,F.jsxs)(M.E,{children:["if your content is less than 20 words in length (consider using a"," ",(0,F.jsx)(H.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"})," ","instead)"]}),(0,F.jsxs)(M.E,{children:["to capture complex user input, such as in a form (consider using a ",(0,F.jsx)(H.Yq,{href:"/components/Drawer",children:"Drawer"})," ","instead)."]})]})]})]})},{label:"Development considerations",description:(0,F.jsxs)(M.E,{children:["It’s recommended that you connect the Dialog’s"," ",(0,F.jsx)(N.O,{children:"open"})," state to your router so that it can be closed via the browser’s back button."]})},(0,R.dataAttributeDocs)({code:`
         <Dialog
           data={{ testid: 'dialog-1' }}
           // => data-testid="dialog-1"
@@ -18575,7 +18808,7 @@ For more detail on the specific changes in this release, please read on.
       </Box>
     )}
   </TooltipRenderer>
-</Inline>`,value:(0,m.jsx)(d.c,{space:"small",children:(0,m.jsx)(h.rE,{tooltip:r||(r=(0,m.jsx)(u.E,{children:"This is a tooltip! If you provide enough content, the text will wrap onto multiple lines."})),children:e=>{let{triggerProps:t}=e;return(0,m.jsx)(l.l,{"aria-label":"Help",...t,children:o||(o=(0,m.jsx)(c.L,{}))})}})})})}]}},88417:(e,t,a)=>{"use strict";a.d(t,{E:()=>d,K:()=>l});var n=a(82128),i=a(70017),s=a(81180),r=a(94391),o=a(77900);let l="xsmall",d=e=>{let{size:t,data:a,children:d}=e,c=(0,n.useMemo)(()=>({size:t}),[t]);return(0,o.jsx)(s.A.Provider,{value:c,children:(0,o.jsx)(i.a,{display:"flex",flexDirection:{mobile:"column",[r.T]:"row"},flexWrap:"wrap",gap:l,className:r.z,data:a,children:d})})};d.displayName="Actions"},88569:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>d});var n,i=a(52457),s=a(21073),r=a(70291),o=a(97404),l=a(77900);let d={category:"Icon",Example:()=>({code:`<Stack space="none" align="center">
+</Inline>`,value:(0,m.jsx)(d.c,{space:"small",children:(0,m.jsx)(h.rE,{tooltip:r||(r=(0,m.jsx)(u.E,{children:"This is a tooltip! If you provide enough content, the text will wrap onto multiple lines."})),children:e=>{let{triggerProps:t}=e;return(0,m.jsx)(l.l,{"aria-label":"Help",...t,children:o||(o=(0,m.jsx)(c.L,{}))})}})})})}]}},88417:(e,t,a)=>{"use strict";a.d(t,{E:()=>l});var n=a(82128),i=a(70017),s=a(81180),r=a(94391),o=a(77900);let l=e=>{let{size:t,data:a,children:l}=e,d=(0,n.useMemo)(()=>({size:t}),[t]);return(0,o.jsx)(s.A.Provider,{value:d,children:(0,o.jsx)(i.a,{display:"flex",flexDirection:{mobile:"column",[r.T]:"row"},flexWrap:"wrap",gap:"xsmall",className:r.z,data:a,children:l})})};l.displayName="Actions"},88569:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>d});var n,i=a(52457),s=a(21073),r=a(70291),o=a(97404),l=a(77900);let d={category:"Icon",Example:()=>({code:`<Stack space="none" align="center">
   <Heading component="div" level="1">
     <IconPositive />
   </Heading>
@@ -18880,7 +19113,7 @@ For more detail on the specific changes in this release, please read on.
                   </ToastProvider>
                 </BraidProvider>
               )
-        `})]})},{label:"When to use",description:(0,v.jsxs)(m.B,{space:"xxlarge",children:[(0,v.jsxs)(m.B,{space:"large",children:[(0,v.jsx)(x.E,{children:"Use a Toast if your message:"}),(0,v.jsxs)(p.B,{space:"large",children:[(0,v.jsx)(x.E,{children:"has been triggered by a user action relevant to their current task"}),(0,v.jsx)(x.E,{children:"does not impact the user’s ability to continue."})]})]}),(0,v.jsxs)(m.B,{space:"large",children:[(0,v.jsx)(x.E,{children:"Don’t use a Toast if your message:"}),(0,v.jsxs)(p.B,{space:"large",children:[(0,v.jsxs)(x.E,{children:["needs to be permanently on the screen (use plain"," ",(0,v.jsx)(f.Yq,{href:"/components/Text",children:"Text"})," instead)"]}),(0,v.jsxs)(x.E,{children:["impacts the user’s ability to continue (use an"," ",(0,v.jsx)(f.Yq,{href:"/components/Alert",children:"Alert"})," or"," ",(0,v.jsx)(f.Yq,{href:"/components/Notice",children:"Notice"})," instead)"]}),(0,v.jsx)(x.E,{children:"doesn’t relate to the user’s current task (as this may cause a distraction)."})]})]})]})}]}},90205:(e,t,a)=>{"use strict";a.r(t),a.d(t,{snippets:()=>r});var n=a(81676),i=a(50460),s=a(77900);let r=[{name:"Info",code:{code:'<Badge tone="info">Badge</Badge>',value:(0,s.jsx)(n.E,{tone:"info",children:"Badge"})}},{name:"Info (strong)",code:{code:`<Badge tone="info" weight="strong">
+        `})]})},{label:"When to use",description:(0,v.jsxs)(m.B,{space:"xlarge",children:[(0,v.jsxs)(m.B,{space:"large",children:[(0,v.jsx)(x.E,{children:"Use a Toast if your message:"}),(0,v.jsxs)(p.B,{space:"large",children:[(0,v.jsx)(x.E,{children:"has been triggered by a user action relevant to their current task"}),(0,v.jsx)(x.E,{children:"does not impact the user’s ability to continue."})]})]}),(0,v.jsxs)(m.B,{space:"large",children:[(0,v.jsx)(x.E,{children:"Don’t use a Toast if your message:"}),(0,v.jsxs)(p.B,{space:"large",children:[(0,v.jsxs)(x.E,{children:["needs to be permanently on the screen (use plain"," ",(0,v.jsx)(f.Yq,{href:"/components/Text",children:"Text"})," instead)"]}),(0,v.jsxs)(x.E,{children:["impacts the user’s ability to continue (use an"," ",(0,v.jsx)(f.Yq,{href:"/components/Alert",children:"Alert"})," or"," ",(0,v.jsx)(f.Yq,{href:"/components/Notice",children:"Notice"})," instead)"]}),(0,v.jsx)(x.E,{children:"doesn’t relate to the user’s current task (as this may cause a distraction)."})]})]})]})}]}},90205:(e,t,a)=>{"use strict";a.r(t),a.d(t,{snippets:()=>r});var n=a(81676),i=a(50460),s=a(77900);let r=[{name:"Info",code:{code:'<Badge tone="info">Badge</Badge>',value:(0,s.jsx)(n.E,{tone:"info",children:"Badge"})}},{name:"Info (strong)",code:{code:`<Badge tone="info" weight="strong">
   Badge
 </Badge>`,value:(0,s.jsx)(n.E,{tone:"info",weight:"strong",children:"Badge"})}},{name:"Promote",code:{code:'<Badge tone="promote">Badge</Badge>',value:(0,s.jsx)(n.E,{tone:"promote",children:"Badge"})}},{name:"Promote (strong)",code:{code:`<Badge tone="promote" weight="strong">
   Badge
