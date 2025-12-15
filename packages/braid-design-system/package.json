@@ -236,7 +236,7 @@
     "react-dom": "^19.1.0",
     "react-router": "^7.6.3",
     "sanitize-html": "^2.12.1",
-    "sku": "15.4.0",
+    "sku": "15.5.0",
     "storybook": "9.0.15",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"

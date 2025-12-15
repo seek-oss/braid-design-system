@@ -81,7 +81,7 @@
   "volta": {
     "node": "22.21.1"
   },
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.25.0",
   "pnpm": {
     "patchedDependencies": {
       "panzoom": "patches/panzoom.patch"
