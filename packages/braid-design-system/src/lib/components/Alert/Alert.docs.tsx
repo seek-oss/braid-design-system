@@ -197,7 +197,7 @@ const docs: ComponentDocs = {
     {
       label: 'When to use',
       description: (
-        <Stack space="xxlarge">
+        <Stack space="xlarge">
           <Stack space="large">
             <Text>Use an Alert if your message:</Text>
             <List space="large">
