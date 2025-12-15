@@ -1,5 +1,5 @@
 import dedent from 'dedent';
-import { type ReactNode, useContext } from 'react';
+import { useContext, type FC, type ReactNode } from 'react';
 
 import { optimizeResponsiveArray } from '../../utils/optimizeResponsiveArray';
 import {
@@ -30,7 +30,7 @@ export interface HiddenProps extends ResponsiveRangeProps {
   data?: DataAttributeMap;
 }
 
-export const Hidden = ({
+export const Hidden: FC<HiddenProps> = ({
   children,
   component,
   above,
@@ -40,7 +40,7 @@ export const Hidden = ({
   inline: inlineProp,
   data,
   ...restProps
-}: HiddenProps) => {
+}) => {
   if (process.env.NODE_ENV === 'development') {
     if (typeof screen !== 'undefined') {
       // eslint-disable-next-line no-console

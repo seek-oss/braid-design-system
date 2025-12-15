@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -11,14 +12,14 @@ import {
 type PlayroomCheckboxStandaloneProps = StateProp &
   Optional<CheckboxStandaloneProps, 'checked' | 'onChange'>;
 
-export const CheckboxStandalone = ({
+export const CheckboxStandalone: FC<PlayroomCheckboxStandaloneProps> = ({
   stateName,
   checked,
   onChange,
   tabIndex,
   'aria-label': ariaLabel,
   ...restProps
-}: PlayroomCheckboxStandaloneProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     checked,

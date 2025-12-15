@@ -1,4 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import type { FC } from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
@@ -20,13 +21,13 @@ export interface TilesProps {
   data?: DataAttributeMap;
 }
 
-export const Tiles = ({
+export const Tiles: FC<TilesProps> = ({
   children,
   space = 'none',
   columns = 1,
   data,
   ...restProps
-}: TilesProps) => {
+}) => {
   const normalizedResponsiveColumns = normalizeResponsiveValue(columns);
   const {
     mobile: mobileColumns = '1',

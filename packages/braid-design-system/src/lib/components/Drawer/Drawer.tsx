@@ -1,5 +1,7 @@
 import assert from 'assert';
 
+import type { FC } from 'react';
+
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
   type ModalContentProps,
@@ -17,17 +19,19 @@ const modalStyle = {
   illustration: undefined,
 } as const;
 
-export interface DrawerProps
-  extends Omit<ModalProps, keyof typeof modalStyle | 'width' | 'position'> {
+export interface DrawerProps extends Omit<
+  ModalProps,
+  keyof typeof modalStyle | 'width' | 'position'
+> {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
 }
 
-export const Drawer = ({
+export const Drawer: FC<DrawerProps> = ({
   width = defaultWidth,
   position = defaultPosition,
   ...restProps
-}: DrawerProps) => {
+}) => {
   assert(validWidths.indexOf(width) >= 0, `Invalid width: ${width}`);
   assert(
     validPositions.indexOf(position) >= 0,
@@ -39,11 +43,10 @@ export const Drawer = ({
   );
 };
 
-interface DrawerContentProps
-  extends Omit<
-    ModalContentProps,
-    keyof typeof modalStyle | 'width' | 'position'
-  > {
+interface DrawerContentProps extends Omit<
+  ModalContentProps,
+  keyof typeof modalStyle | 'width' | 'position'
+> {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
 }

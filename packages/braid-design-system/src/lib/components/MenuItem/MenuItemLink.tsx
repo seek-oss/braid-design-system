@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../Box/Box';
 import { type LinkProps, Link } from '../Link/Link';
 
@@ -5,10 +7,9 @@ import type { MenuItemProps } from './MenuItem';
 import { useMenuItem } from './useMenuItem';
 
 export interface MenuItemLinkProps
-  extends MenuItemProps,
-    Pick<LinkProps, 'href' | 'target' | 'rel'> {}
+  extends MenuItemProps, Pick<LinkProps, 'href' | 'target' | 'rel'> {}
 
-export const MenuItemLink = ({
+export const MenuItemLink: FC<MenuItemLinkProps> = ({
   href,
   target,
   rel,
@@ -19,7 +20,7 @@ export const MenuItemLink = ({
   badge,
   icon,
   id,
-}: MenuItemLinkProps) => {
+}) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLAnchorElement>({
     displayName: 'MenuItemLink',
     onClick,
@@ -42,4 +43,5 @@ export const MenuItemLink = ({
     </Box>
   );
 };
+// @ts-expect-error __isMenuItem__ Braid custom property
 MenuItemLink.__isMenuItem__ = true;

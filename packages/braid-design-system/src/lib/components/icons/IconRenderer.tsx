@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import clsx from 'clsx';
-import { type ReactElement, useContext } from 'react';
+import { type ReactElement, useContext, type FC } from 'react';
 
 import { atoms } from '../../css/atoms/atoms';
 import HeadingContext from '../Heading/HeadingContext';
@@ -32,7 +32,7 @@ export const iconInlineSize = ({
 interface IconRendererProps {
   children: ({ className }: { className: string }) => ReactElement | null;
 }
-export const IconRenderer = ({ children }: IconRendererProps) => {
+export const IconRenderer: FC<IconRendererProps> = ({ children }) => {
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
 

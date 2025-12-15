@@ -37,6 +37,9 @@ import {
   Field,
 } from '../private/Field/Field';
 import { Popover } from '../private/Popover/Popover';
+import buildDataAttributes, {
+  type DataAttributeMap,
+} from '../private/buildDataAttributes';
 import { getNextIndex } from '../private/getNextIndex';
 import { normalizeKey } from '../private/normalizeKey';
 import { smoothScroll } from '../private/smoothScroll';
@@ -64,6 +67,7 @@ export interface Suggestion<Value = any> extends AutosuggestValue<Value> {
   highlights?: SuggestionMatch;
   onClear?: (value: AutosuggestValue<Value>) => void;
   clearLabel?: string;
+  data?: DataAttributeMap;
 }
 
 export interface GroupedSuggestions<Value> {
@@ -125,7 +129,7 @@ function SuggestionItem({
   id,
   ...restProps
 }: SuggestionItemProps) {
-  const { highlights = [], onClear, clearLabel } = suggestion;
+  const { highlights = [], onClear, clearLabel, data } = suggestion;
   const label = suggestion.label ?? suggestion.text;
 
   const suggestionParts = parseHighlights(
@@ -144,6 +148,7 @@ function SuggestionItem({
       onMouseMove={onHover}
       onTouchStart={onHover}
       id={id}
+      {...buildDataAttributes({ data, validateRestProps: false })}
       {...restProps}
     >
       {/*
@@ -674,9 +679,9 @@ export const Autosuggest = forwardRef(function <Value>(
 
   const clearable = Boolean(
     typeof onClear !== 'undefined' &&
-      !restProps.disabled &&
-      typeof value !== 'undefined' &&
-      value.text.length > 0,
+    !restProps.disabled &&
+    typeof value !== 'undefined' &&
+    value.text.length > 0,
   );
 
   const announcements = [];

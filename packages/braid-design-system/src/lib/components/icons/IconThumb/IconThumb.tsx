@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
@@ -9,7 +11,10 @@ export type IconThumbProps = IconContainerProps & {
   direction?: 'up' | 'down';
 };
 
-export const IconThumb = ({ direction = 'up', ...props }: IconThumbProps) => (
+export const IconThumb: FC<IconThumbProps> = ({
+  direction = 'up',
+  ...props
+}) => (
   <IconContainer {...props}>
     {({ className, ...svgProps }) => (
       <Box

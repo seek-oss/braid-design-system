@@ -1,16 +1,15 @@
 import { type OverlayProps, Overlay } from '../Overlay/Overlay';
 
 type FieldOverlayVariant = 'default' | 'disabled' | 'formAccent' | 'critical';
-export interface FieldOverlayProps
-  extends Pick<
-    OverlayProps,
-    | 'children'
-    | 'visible'
-    | 'onlyVisibleForKeyboardNavigation'
-    | 'background'
-    | 'borderRadius'
-    | 'className'
-  > {
+export interface FieldOverlayProps extends Pick<
+  OverlayProps,
+  | 'children'
+  | 'visible'
+  | 'onlyVisibleForKeyboardNavigation'
+  | 'background'
+  | 'borderRadius'
+  | 'className'
+> {
   variant?: FieldOverlayVariant;
 }
 

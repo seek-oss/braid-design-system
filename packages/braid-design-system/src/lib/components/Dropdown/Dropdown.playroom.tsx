@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -13,13 +14,13 @@ type PlayroomDropdownProps = StateProp &
   Optional<DropdownBaseProps, 'value' | 'onChange'> &
   DropdownLabelProps;
 
-export const Dropdown = ({
+export const Dropdown: FC<PlayroomDropdownProps> = ({
   stateName,
   value,
   onChange,
   tabIndex,
   ...restProps
-}: PlayroomDropdownProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     value,

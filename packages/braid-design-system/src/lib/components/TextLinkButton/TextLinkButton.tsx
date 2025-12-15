@@ -5,6 +5,7 @@ import {
   type ReactElement,
   useRef,
   useCallback,
+  type FC,
 } from 'react';
 
 import type { UseIconProps } from '../../hooks/useIcon';
@@ -19,8 +20,10 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 
 type NativeSpanProps = AllHTMLAttributes<HTMLSpanElement>;
-export interface TextLinkButtonProps
-  extends Omit<TextLinkStyles, 'showVisited'> {
+export interface TextLinkButtonProps extends Omit<
+  TextLinkStyles,
+  'showVisited'
+> {
   id?: NativeSpanProps['id'];
   onClick?: NativeSpanProps['onClick'];
   data?: DataAttributeMap;
@@ -34,7 +37,7 @@ export interface TextLinkButtonProps
 }
 
 const noop = () => {};
-export const TextLinkButton = ({
+export const TextLinkButton: FC<TextLinkButtonProps> = ({
   weight,
   hitArea,
   id,
@@ -49,7 +52,7 @@ export const TextLinkButton = ({
   icon,
   iconPosition,
   ...restProps
-}: TextLinkButtonProps) => {
+}) => {
   const buttonRef = useRef<HTMLSpanElement>(null);
   const classes = useLinkStyles({
     reset: false,

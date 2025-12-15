@@ -41,13 +41,23 @@ const meta = {
     (Story, { args, parameters }) => {
       const triggerRef = useRef<HTMLButtonElement>(null);
 
+      const isHorizontalPlacement =
+        args.placement === 'left' || args.placement === 'right';
+
       return (
         <Box
           display="flex"
           justifyContent={parameters.justifyContent}
+          alignItems={isHorizontalPlacement ? 'center' : undefined}
           style={{
-            [args.placement === 'top' ? 'paddingTop' : 'paddingBottom']:
-              POPOVER_HEIGHT * 1.5,
+            paddingTop:
+              args.placement === 'top' || isHorizontalPlacement
+                ? POPOVER_HEIGHT * 1.5
+                : undefined,
+            paddingBottom:
+              args.placement === 'bottom' || isHorizontalPlacement
+                ? POPOVER_HEIGHT * 1.5
+                : undefined,
           }}
         >
           <Box ref={triggerRef}>
@@ -68,11 +78,11 @@ export default meta;
 
 type Story = StoryObj<typeof Popover>;
 
-export const BottomPlacementLeftAligned: Story = {
-  name: 'Bottom placement, left aligned',
+export const BottomPlacementStartAligned: Story = {
+  name: 'Bottom placement, start aligned',
   args: {
     placement: 'bottom',
-    align: 'left',
+    align: 'start',
   },
 };
 
@@ -84,11 +94,11 @@ export const BottomPlacementCenterAligned: Story = {
   },
 };
 
-export const BottomPlacementRightAligned: Story = {
-  name: 'Bottom placement, right aligned',
+export const BottomPlacementEndAligned: Story = {
+  name: 'Bottom placement, end aligned',
   args: {
     placement: 'bottom',
-    align: 'right',
+    align: 'end',
   },
 };
 
@@ -115,11 +125,11 @@ export const BottomPlacementWithLargeOffset: Story = {
   },
 };
 
-export const TopPlacementLeftAligned: Story = {
-  name: 'Top placement, left aligned',
+export const TopPlacementStartAligned: Story = {
+  name: 'Top placement, start aligned',
   args: {
     placement: 'top',
-    align: 'left',
+    align: 'start',
   },
 };
 
@@ -131,11 +141,11 @@ export const TopPlacementCenterAligned: Story = {
   },
 };
 
-export const TopPlacementRightAligned: Story = {
-  name: 'Top placement, right aligned',
+export const TopPlacementEndAligned: Story = {
+  name: 'Top placement, end aligned',
   args: {
     placement: 'top',
-    align: 'right',
+    align: 'end',
   },
 };
 
@@ -163,23 +173,71 @@ export const TopPlacementWithLargeOffset: Story = {
   },
 };
 
-export const RightAlignedAtLeftEdge: Story = {
-  name: 'Right aligned at left edge',
+export const LeftPlacementStartAligned: Story = {
+  name: 'Left placement, start aligned',
+  args: {
+    placement: 'left',
+    align: 'start',
+  },
+};
+
+export const LeftPlacementCenterAligned: Story = {
+  name: 'Left placement, center aligned',
+  args: {
+    placement: 'left',
+    align: 'center',
+  },
+};
+
+export const LeftPlacementEndAligned: Story = {
+  name: 'Left placement, end aligned',
+  args: {
+    placement: 'left',
+    align: 'end',
+  },
+};
+
+export const RightPlacementStartAligned: Story = {
+  name: 'Right placement, start aligned',
+  args: {
+    placement: 'right',
+    align: 'start',
+  },
+};
+
+export const RightPlacementCenterAligned: Story = {
+  name: 'Right placement, center aligned',
+  args: {
+    placement: 'right',
+    align: 'center',
+  },
+};
+
+export const RightPlacementEndAligned: Story = {
+  name: 'Right placement, end aligned',
+  args: {
+    placement: 'right',
+    align: 'end',
+  },
+};
+
+export const EndAlignedAtStartEdge: Story = {
+  name: 'End aligned at start edge',
   parameters: {
     justifyContent: 'flexStart',
   },
   args: {
-    align: 'right',
+    align: 'end',
   },
 };
 
-export const LeftAlignedAtRightEdge: Story = {
-  name: 'Left aligned at right edge',
+export const StartAlignedAtEndEdge: Story = {
+  name: 'Start aligned at end edge',
   parameters: {
     justifyContent: 'flexEnd',
   },
   args: {
-    align: 'left',
+    align: 'start',
   },
 };
 

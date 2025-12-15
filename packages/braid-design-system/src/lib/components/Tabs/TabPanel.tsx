@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext, type FC } from 'react';
 
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
@@ -18,12 +18,12 @@ export interface TabPanelProps {
   data?: DataAttributeMap;
 }
 
-export const TabPanel = ({
+export const TabPanel: FC<TabPanelProps> = ({
   children,
   data,
   item,
   ...restProps
-}: TabPanelProps) => {
+}) => {
   const tabsContext = useContext(TabsContext);
   const tabPanelsContext = useContext(TabPanelsContext);
 
@@ -62,4 +62,5 @@ export const TabPanel = ({
 };
 
 TabPanel.displayName = 'TabPanel';
+// @ts-expect-error __isTabPanel__ Braid custom property
 TabPanel.__isTabPanel__ = true;

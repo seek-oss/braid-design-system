@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, FC } from 'react';
 
 import { Box } from '../Box/Box';
 
@@ -8,13 +8,15 @@ import {
   useMenuItem,
 } from './useMenuItem';
 
-export interface MenuItemProps
-  extends Pick<UseMenuItemProps, 'tone' | 'onClick' | 'data' | 'id'> {
+export interface MenuItemProps extends Pick<
+  UseMenuItemProps,
+  'tone' | 'onClick' | 'data' | 'id'
+> {
   children: ReactNode;
   badge?: MenuItemChildrenProps['badge'];
   icon?: MenuItemChildrenProps['leftSlot'];
 }
-export const MenuItem = ({
+export const MenuItem: FC<MenuItemProps> = ({
   children,
   onClick,
   data,
@@ -22,7 +24,7 @@ export const MenuItem = ({
   badge,
   icon,
   id,
-}: MenuItemProps) => {
+}) => {
   const { menuItemProps, MenuItemChildren } = useMenuItem<HTMLButtonElement>({
     tone,
     onClick,
@@ -38,4 +40,5 @@ export const MenuItem = ({
     </Box>
   );
 };
+// @ts-expect-error __isMenuItem__ Braid custom property
 MenuItem.__isMenuItem__ = true;

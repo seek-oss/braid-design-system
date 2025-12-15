@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, useReducer } from 'react';
+import { type ReactNode, createContext, useReducer, type FC } from 'react';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
 import { getNextIndex } from '../private/getNextIndex';
@@ -44,12 +44,12 @@ export interface TabsProviderProps {
   onChange?: (selectedIndex: number, selectedItem?: string) => void;
 }
 
-export const TabsProvider = ({
+export const TabsProvider: FC<TabsProviderProps> = ({
   children,
   onChange,
   id,
   selectedItem,
-}: TabsProviderProps) => {
+}) => {
   const resolvedId = useFallbackId(id);
 
   const [tabsState, dispatch] = useReducer(

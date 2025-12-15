@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, FC } from 'react';
 
 import { Box } from '../Box/Box';
 import { Column } from '../Column/Column';
@@ -26,12 +26,12 @@ const icons = {
   critical: IconCritical,
 };
 
-export const Notice = ({
+export const Notice: FC<NoticeProps> = ({
   tone = 'info',
   data,
   children,
   ...restProps
-}: NoticeProps) => {
+}) => {
   const Icon = icons[tone];
 
   return (

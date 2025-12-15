@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -13,13 +14,13 @@ type PlayroomPasswordFieldProps = StateProp &
   Optional<PasswordFieldBaseProps, 'value' | 'onChange'> &
   PasswordFieldLabelProps;
 
-export const PasswordField = ({
+export const PasswordField: FC<PlayroomPasswordFieldProps> = ({
   stateName,
   value,
   onChange,
   tabIndex,
   ...restProps
-}: PlayroomPasswordFieldProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     value,

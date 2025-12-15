@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, type FC } from 'react';
 
 import { type BoxProps, Box } from '../Box/Box';
 import HeadingContext from '../Heading/HeadingContext';
@@ -15,12 +15,12 @@ interface HiddenVisuallyProps {
   data?: DataAttributeMap;
 }
 
-export const HiddenVisually = ({
+export const HiddenVisually: FC<HiddenVisuallyProps> = ({
   id,
   data,
   children,
   ...restProps
-}: HiddenVisuallyProps) => {
+}) => {
   const inText = Boolean(useContext(TextContext));
   const inHeading = Boolean(useContext(HeadingContext));
 

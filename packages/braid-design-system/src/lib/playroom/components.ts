@@ -1,6 +1,13 @@
 /* eslint-disable import-x/export -- Allows playroom exports to override consumer exports */
 export * from '../components';
 
+/**
+ * Override Braid exports that we don't want in Playroom
+ */
+export const BraidPortal = undefined;
+export const BraidProvider = undefined;
+export const makeLinkComponent = undefined;
+
 export { Accordion } from '../components/Accordion/Accordion.playroom';
 export { AccordionItem } from '../components/Accordion/AccordionItem.playroom';
 export { Alert } from '../components/Alert/Alert.playroom';

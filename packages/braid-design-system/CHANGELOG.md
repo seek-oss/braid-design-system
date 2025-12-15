@@ -1,5 +1,76 @@
 # braid-design-system
 
+## 33.14.0
+
+### Minor Changes
+
+- **TooltipRenderer:** Add support for `left` and `right` placement, in addition to existing `top` and `bottom`. ([#1942](https://github.com/seek-oss/braid-design-system/pull/1942))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <TooltipRenderer
+    placement="left"
+    ...props
+  >
+   ...
+  </TooltipRenderer>
+
+  ```
+
+### Patch Changes
+
+- Improve components type definitions in support of Playroom props ([#1941](https://github.com/seek-oss/braid-design-system/pull/1941))
+
+## 33.13.0
+
+### Minor Changes
+
+- **Autosuggest:** Add support for data attributes on individual suggestions ([#1938](https://github.com/seek-oss/braid-design-system/pull/1938))
+
+  The data attributes are applied to each rendered list item.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Autosuggest
+    suggestions={[
+      {
+        text: 'Apples',
+        data: { testid: 'suggestion-apples' },
+      },
+    ]}
+  />
+  ```
+
+### Patch Changes
+
+- **ButtonIcon, TooltipRenderer:** Close tooltips after clicking the trigger on desktop devices ([#1932](https://github.com/seek-oss/braid-design-system/pull/1932))
+
+## 33.12.4
+
+### Patch Changes
+
+- **Autosuggest, MenuRenderer, OverflowMenu, TooltipRenderer**: Ensure `TooltipRenderer` is correctly positioned on Android devices ([#1926](https://github.com/seek-oss/braid-design-system/pull/1926))
+
+  Additionally, adjust `TooltipRenderer` positioning at screen edges, removing extra edge spacing.
+  This ensures the tooltip arrow is more closely aligned with the trigger when the trigger is near the edge of the screen.
+
+## 33.12.3
+
+### Patch Changes
+
+- **TooltipRenderer:** Ensure Chinese text is not wrapped incorrectly ([#1916](https://github.com/seek-oss/braid-design-system/pull/1916))
+
+  Right aligned tooltip triggers with tooltips containing long unbroken Chinese text are no longer forcibly broken across many lines.
+  This was due to the use of `overflow-wrap: break-word;` used to break long strings of Latin characters—guarding against broken layouts.
+
+  For Chinese, Japanese and Korean (CJK) character sets, to avoid the unwanted line breaks it is recommened to apply the `word-break: keep-all;` CSS property.
+
+  See [MDN reference] for more information.
+
+  [MDN reference]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/word-break#keep-all
+
 ## 33.12.2
 
 ### Patch Changes
@@ -2478,9 +2549,8 @@ For more detail on the specific changes in this release, please read on.
   ```jsx
   // playroom.config.js
   module.exports = {
-    frameComponent: require.resolve(
-      'braid-design-system/playroom/FrameComponent',
-    ),
+    frameComponent:
+      require.resolve('braid-design-system/playroom/FrameComponent'),
     components: require.resolve('braid-design-system/playroom/components'),
     snippets: require.resolve('braid-design-system/playroom/snippets'),
     scope: require.resolve('braid-design-system/playroom/scope'),
@@ -2625,9 +2695,8 @@ For more detail on the specific changes in this release, please read on.
   ```jsx
   // playroom.config.js
   module.exports = {
-    frameComponent: require.resolve(
-      'braid-design-system/playroom/FrameComponent.tsx',
-    ),
+    frameComponent:
+      require.resolve('braid-design-system/playroom/FrameComponent.tsx'),
     components: require.resolve('braid-design-system/playroom/components.ts'),
     snippets: require.resolve('braid-design-system/playroom/snippets.ts'),
     scope: require.resolve('braid-design-system/playroom/scope.ts'),

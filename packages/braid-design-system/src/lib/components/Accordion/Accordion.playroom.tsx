@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import wireframe from '../../themes/wireframe';
 
 import {
@@ -30,13 +32,13 @@ const filterSpace = (space: NonNullable<AccordionProps['space']>) => {
   return filteredSpace as Readonly<typeof filteredSpace>;
 };
 
-export const Accordion = ({
+export const Accordion: FC<AccordionProps> = ({
   space,
   size,
   tone,
   weight,
   ...restProps
-}: AccordionProps) => (
+}) => (
   <BraidAccordion
     size={typeof size === 'boolean' ? undefined : size}
     tone={typeof tone === 'boolean' ? undefined : tone}

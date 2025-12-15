@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, type FC } from 'react';
 
 import { Box } from '../Box/Box';
 import type { ButtonProps } from '../Button/Button';
@@ -16,7 +16,7 @@ export interface ActionsProps {
 
 export const actionsSpace = 'xsmall';
 
-export const Actions = ({ size, data, children }: ActionsProps) => {
+export const Actions: FC<ActionsProps> = ({ size, data, children }) => {
   const contextValue = useMemo(() => ({ size }), [size]);
 
   return (

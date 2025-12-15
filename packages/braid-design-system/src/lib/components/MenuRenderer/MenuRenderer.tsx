@@ -2,6 +2,7 @@ import assert from 'assert';
 
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
+  type FC,
   type KeyboardEvent,
   type MouseEvent,
   type ReactNode,
@@ -59,7 +60,7 @@ export interface MenuRendererProps {
   offsetSpace?: ResponsiveSpace;
   size?: MenuSize;
   width?: keyof typeof styles.width | 'content';
-  placement?: PopoverProps['placement'];
+  placement?: Extract<PopoverProps['placement'], 'top' | 'bottom'>;
   onOpen?: () => void;
   onClose?: (closeReason: CloseReason) => void;
   data?: DataAttributeMap;
@@ -96,7 +97,7 @@ const initialState: State = {
   closeReason: CLOSE_REASON_EXIT,
 };
 
-export const MenuRenderer = ({
+export const MenuRenderer: FC<MenuRendererProps> = ({
   onOpen,
   onClose,
   trigger,
@@ -109,7 +110,7 @@ export const MenuRenderer = ({
   children,
   data,
   ...restProps
-}: MenuRendererProps) => {
+}) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const lastOpen = useRef(false);
   const items = flattenChildren(children);
@@ -286,7 +287,7 @@ export const MenuRenderer = ({
         open={open}
         onClose={() => dispatch({ type: MENU_CLOSE })}
         triggerRef={triggerProps.ref}
-        align={align}
+        align={align === 'left' ? 'start' : 'end'}
         placement={placement}
         offsetSpace={offsetSpace}
         role={false}

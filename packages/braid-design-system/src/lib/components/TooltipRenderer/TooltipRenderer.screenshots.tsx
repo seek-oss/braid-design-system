@@ -41,6 +41,26 @@ export const BottomPlacement: Story = {
   ),
 };
 
+export const LeftPlacement: Story = {
+  render: () => (
+    <Box style={{ paddingLeft: 200 }} display="flex" justifyContent="flexEnd">
+      <TooltipRenderer placement="left" tooltip={<Text>Tooltip</Text>}>
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
+export const RightPlacement: Story = {
+  render: () => (
+    <Box style={{ paddingRight: 200 }}>
+      <TooltipRenderer placement="right" tooltip={<Text>Tooltip</Text>}>
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
 export const LeftAligned: Story = {
   render: () => (
     <Box style={{ paddingBottom: 100 }}>

@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import type { Optional } from 'utility-types';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
@@ -13,13 +14,13 @@ type PlayroomMonthPickerProps = StateProp &
   Optional<MonthPickerBaseProps, 'value' | 'onChange'> &
   MonthPickerLabelProps;
 
-export const MonthPicker = ({
+export const MonthPicker: FC<PlayroomMonthPickerProps> = ({
   stateName,
   value,
   onChange,
   tabIndex,
   ...restProps
-}: PlayroomMonthPickerProps) => {
+}) => {
   const [state, handleChange] = useFallbackState(
     stateName,
     value,

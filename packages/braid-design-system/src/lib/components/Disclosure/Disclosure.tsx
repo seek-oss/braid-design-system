@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { type ReactNode, useContext } from 'react';
+import { useContext, type FC, type ReactNode } from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
@@ -42,7 +42,7 @@ const defaultSpaceForSize: Record<
   small: 'small',
 };
 
-export const Disclosure = ({
+export const Disclosure: FC<DisclosureProps> = ({
   id,
   expandLabel,
   collapseLabel = expandLabel,
@@ -52,7 +52,7 @@ export const Disclosure = ({
   data,
   weight,
   ...restProps
-}: DisclosureProps) => {
+}) => {
   assert(
     typeof expandLabel === 'undefined' || typeof expandLabel === 'string',
     "'expandLabel' must be a string",

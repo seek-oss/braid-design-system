@@ -10,6 +10,7 @@ import {
   createContext,
   useContext,
   forwardRef,
+  type FC,
 } from 'react';
 
 import { ensureResetImported } from '../../css/reset/resetTracker';
@@ -26,8 +27,7 @@ if (process.env.NODE_ENV === 'development') {
   ensureResetImported();
 }
 
-export interface LinkComponentProps
-  extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface LinkComponentProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
 
@@ -73,12 +73,12 @@ export interface BraidProviderProps {
   children: ReactNode;
 }
 
-export const BraidProvider = ({
+export const BraidProvider: FC<BraidProviderProps> = ({
   theme,
   styleBody = true,
   linkComponent,
   children,
-}: BraidProviderProps) => {
+}) => {
   const alreadyInBraidProvider = Boolean(useContext(BraidThemeContext));
   const inTestProvider = useContext(BraidTestProviderContext);
   const linkComponentFromContext = useContext(LinkComponentContext);

@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { useContext, useEffect, Fragment } from 'react';
+import { useContext, useEffect, Fragment, type FC } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
@@ -14,10 +14,10 @@ interface TabPanelsProps {
   children: ReactNodeNoStrings;
 }
 
-export const TabPanels = ({
+export const TabPanels: FC<TabPanelsProps> = ({
   renderInactivePanels = false,
   children,
-}: TabPanelsProps) => {
+}) => {
   const tabsContext = useContext(TabsContext);
 
   if (!tabsContext) {

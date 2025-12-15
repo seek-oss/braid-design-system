@@ -65,7 +65,7 @@
     "depcheck": "^1.4.7",
     "enquirer": "^2.4.1",
     "eslint": "^9.18.0",
-    "eslint-config-seek": "^14.0.0",
+    "eslint-config-seek": "^15.0.0",
     "eslint-plugin-storybook": "9.0.15",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
@@ -81,7 +81,7 @@
   "volta": {
     "node": "22.21.1"
   },
-  "packageManager": "pnpm@10.22.0",
+  "packageManager": "pnpm@10.25.0",
   "pnpm": {
     "patchedDependencies": {
       "panzoom": "patches/panzoom.patch"

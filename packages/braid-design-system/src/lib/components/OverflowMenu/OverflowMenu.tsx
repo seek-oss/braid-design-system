@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import {
@@ -8,19 +10,21 @@ import { IconOverflow } from '../icons';
 
 import * as styles from './OverflowMenu.css';
 
-export interface OverflowMenuProps
-  extends Omit<MenuRendererProps, 'trigger' | 'align' | 'offsetSpace'> {
+export interface OverflowMenuProps extends Omit<
+  MenuRendererProps,
+  'trigger' | 'align' | 'offsetSpace'
+> {
   label: string;
   id?: string;
 }
 
-export const OverflowMenu = ({
+export const OverflowMenu: FC<OverflowMenuProps> = ({
   size,
   label,
   children,
   id,
   ...menuProps
-}: OverflowMenuProps) => (
+}) => (
   <Box
     className={styles.wrapperPositioning}
     display="flex"

@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
@@ -8,7 +10,10 @@ export type IconCareerProps = IconContainerProps & {
   active?: boolean;
 };
 
-export const IconCareer = ({ active = false, ...props }: IconCareerProps) => (
+export const IconCareer: FC<IconCareerProps> = ({
+  active = false,
+  ...props
+}) => (
   <IconContainer {...props}>
     {(svgProps) => (
       <Box

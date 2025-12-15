@@ -1,7 +1,7 @@
 import assert from 'assert';
 
 import clsx from 'clsx';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, type FC } from 'react';
 
 import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';
@@ -53,7 +53,7 @@ export interface StepProps {
   id?: string | number;
 }
 
-export const Step = ({ complete = false, id, children }: StepProps) => {
+export const Step: FC<StepProps> = ({ complete = false, id, children }) => {
   const stepRef = useRef<HTMLButtonElement>(null);
   const { stepNumber, isLast } = useContext(StepContext);
   const stepperContext = useContext(StepperContext);
@@ -195,4 +195,5 @@ export const Step = ({ complete = false, id, children }: StepProps) => {
   );
 };
 
+// @ts-expect-error __isStep__ Braid custom property
 Step.__isStep__ = true;

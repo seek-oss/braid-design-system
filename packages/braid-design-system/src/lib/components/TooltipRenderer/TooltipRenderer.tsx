@@ -8,6 +8,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type FC,
 } from 'react';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
@@ -15,19 +16,19 @@ import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect
 import { Box } from '../Box/Box';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { animationTimeout } from '../private/animationTimeout';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
 import { useSpace } from '../useSpace/useSpace';
 import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from './TooltipRenderer.css';
 
-const edgeOffset = 'xxsmall';
 export const offsetSpace = 'small';
 
-type ArrowLeftOffset = number | null;
-
 const StaticTooltipContext = createContext(false);
+
+const clamp = (min: number, value: number, max: number) =>
+  Math.max(min, Math.min(value, max));
+
 export const StaticTooltipProvider = ({
   children,
 }: {
@@ -56,38 +57,86 @@ export const TooltipTextDefaultsProvider = ({
 };
 
 export const TooltipContent = ({
-  inferredPlacement,
-  arrowLeftOffset,
+  placement,
+  arrowPosition,
+  arrowRef,
   children,
 }: {
-  inferredPlacement: PopoverProps['placement'];
-  arrowLeftOffset: ArrowLeftOffset;
+  placement: PopoverProps['placement'];
+  arrowPosition?: { x?: number; y?: number };
+  arrowRef?: React.RefObject<HTMLElement | null>;
   children: ReactNodeNoStrings;
-}) => (
-  <Box
-    textAlign="left"
-    boxShadow="large"
-    background="neutral"
-    borderRadius="large"
-    padding="small"
-    marginX={edgeOffset}
-    className={[styles.maxWidth, styles.translateZ0]}
-  >
-    <TooltipTextDefaultsProvider>
-      <Box className={styles.overflowWrap} zIndex={1} position="relative">
-        {children}
-      </Box>
-      <Box
-        position="fixed"
-        background="neutral"
-        className={styles.arrow[inferredPlacement!]}
-        style={assignInlineVars({
-          [styles.horizontalOffset]: `${arrowLeftOffset}px`,
-        })}
-      />
-    </TooltipTextDefaultsProvider>
-  </Box>
-);
+}) => {
+  const arrowX = arrowPosition?.x;
+  const arrowY = arrowPosition?.y;
+
+  const { space, grid } = useSpace();
+  const edgeOffsetInPx = grid * space.xsmall;
+  const arrowSizeOffset = parseFloat(styles.constants.arrowSize) * 2;
+
+  const [tooltipWidth, setTooltipWidth] = useState(0);
+  const [tooltipHeight, setTooltipHeight] = useState(0);
+  const tooltipContainerRef = useRef<HTMLElement | null>(null);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!tooltipContainerRef.current) {
+      return;
+    }
+
+    const { width, height } =
+      tooltipContainerRef.current.getBoundingClientRect();
+    setTooltipWidth(width);
+    setTooltipHeight(height);
+  }, [children]);
+
+  const clampedArrowX =
+    arrowX !== undefined && tooltipWidth > 0
+      ? clamp(
+          edgeOffsetInPx,
+          arrowX,
+          tooltipWidth - edgeOffsetInPx - arrowSizeOffset,
+        )
+      : arrowX;
+
+  const clampedArrowY =
+    arrowY !== undefined && tooltipHeight > 0
+      ? clamp(
+          edgeOffsetInPx,
+          arrowY,
+          tooltipHeight - edgeOffsetInPx - arrowSizeOffset,
+        )
+      : arrowY;
+
+  return (
+    <Box
+      ref={tooltipContainerRef}
+      textAlign="left"
+      boxShadow="large"
+      background="neutral"
+      borderRadius="large"
+      padding="small"
+      className={[styles.maxWidth, styles.translateZ0]}
+    >
+      <TooltipTextDefaultsProvider>
+        <Box className={styles.overflowWrap} zIndex={1} position="relative">
+          {children}
+        </Box>
+        <Box
+          ref={arrowRef}
+          position="fixed"
+          background="neutral"
+          className={styles.arrow[placement ?? 'top']}
+          style={assignInlineVars({
+            [styles.arrowX]:
+              clampedArrowX !== undefined ? `${clampedArrowX}px` : undefined,
+            [styles.arrowY]:
+              clampedArrowY !== undefined ? `${clampedArrowY}px` : undefined,
+          })}
+        />
+      </TooltipTextDefaultsProvider>
+    </Box>
+  );
+};
 
 interface TriggerProps {
   ref: RefCallback<HTMLElement>;
@@ -102,26 +151,24 @@ export interface TooltipRendererProps {
   children: (renderProps: { triggerProps: TriggerProps }) => ReactNode;
 }
 
-export const TooltipRenderer = ({
+export const TooltipRenderer: FC<TooltipRendererProps> = ({
   id,
   tooltip,
   placement = 'top',
   children,
-}: TooltipRendererProps) => {
+}) => {
   const resolvedId = useFallbackId(id);
 
-  const tooltipRef = useRef<HTMLElement | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
+  const arrowRef = useRef<HTMLElement | null>(null);
 
   const [open, setOpen] = useState(false);
-  const [triggerPosition, setTriggerPosition] = useState<DOMRect | undefined>(
-    undefined,
-  );
-  const [tooltipPosition, setTooltipPosition] = useState<DOMRect | undefined>(
-    undefined,
-  );
+  const [resolvedPlacement, setResolvedPlacement] =
+    useState<PopoverProps['placement']>(placement);
+  const [arrowPosition, setArrowPosition] = useState<
+    { x?: number; y?: number } | undefined
+  >();
 
-  const { grid, space } = useSpace();
   const isStatic = useContext(StaticTooltipContext);
   const isMobileDevice = useRef(isMobile()).current;
 
@@ -179,6 +226,7 @@ export const TooltipRenderer = ({
         triggerRef.current.addEventListener('focus', openTooltip);
         triggerRef.current.addEventListener('mouseenter', openTooltip);
         triggerRef.current.addEventListener('mouseleave', closeTooltip);
+        triggerRef.current.addEventListener('click', closeTooltip);
       }
     }
 
@@ -192,54 +240,11 @@ export const TooltipRenderer = ({
           triggerRef.current.removeEventListener('focus', openTooltip);
           triggerRef.current.removeEventListener('mouseenter', openTooltip);
           triggerRef.current.removeEventListener('mouseleave', closeTooltip);
+          triggerRef.current.removeEventListener('click', closeTooltip);
         }
       }
     };
   }, [open, isMobileDevice]);
-
-  const handleTooltipPosition = () => {
-    const setPositions = () => {
-      if (tooltipRef.current) {
-        setTooltipPosition(tooltipRef.current.getBoundingClientRect());
-      }
-      if (triggerRef.current) {
-        setTriggerPosition(triggerRef.current.getBoundingClientRect());
-      }
-    };
-
-    setTimeout(() => {
-      const frameId = requestAnimationFrame(setPositions);
-      return () => cancelAnimationFrame(frameId);
-      // Needs to be slightly less than the animation timeout to update position before showing
-    }, animationTimeout / 2);
-  };
-
-  useIsomorphicLayoutEffect(() => {
-    if (!showTooltip) {
-      return;
-    }
-
-    handleTooltipPosition();
-    window.addEventListener('resize', handleTooltipPosition);
-
-    return () => {
-      window.removeEventListener('resize', handleTooltipPosition);
-    };
-  }, [showTooltip]);
-
-  let inferredPlacement: typeof placement = placement;
-  let arrowLeftOffset = 0;
-
-  if (tooltipPosition && triggerPosition) {
-    inferredPlacement =
-      tooltipPosition.top > triggerPosition.top ? 'bottom' : 'top';
-
-    const edgeOffsetInPx = space[edgeOffset] * grid;
-    const tooltipLeftToTriggerLeft =
-      triggerPosition.left - tooltipPosition.left - edgeOffsetInPx;
-
-    arrowLeftOffset = tooltipLeftToTriggerLeft + triggerPosition.width / 2;
-  }
 
   return (
     <>
@@ -255,7 +260,6 @@ export const TooltipRenderer = ({
       <Popover
         id={resolvedId}
         role="tooltip"
-        ref={tooltipRef}
         offsetSpace={offsetSpace}
         align="center"
         placement={placement}
@@ -264,11 +268,17 @@ export const TooltipRenderer = ({
         modal={false}
         open={showTooltip}
         onClose={!isStatic ? () => setOpen(false) : undefined}
+        onPlacementChange={({ placement: newPlacement, arrow }) => {
+          setResolvedPlacement(newPlacement);
+          setArrowPosition(arrow);
+        }}
         triggerRef={triggerRef}
+        arrowRef={arrowRef}
       >
         <TooltipContent
-          inferredPlacement={inferredPlacement}
-          arrowLeftOffset={arrowLeftOffset}
+          placement={resolvedPlacement}
+          arrowPosition={arrowPosition}
+          arrowRef={arrowRef}
         >
           {tooltip}
         </TooltipContent>

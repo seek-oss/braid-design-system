@@ -10,29 +10,59 @@ import {
   Stack,
   Notice,
   Tiles,
-  Inline,
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
-
-import { actionsSpace } from './Actions';
 
 import { actionsBreakpoint } from './Actions.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
-  Example: () =>
-    source(
-      <Actions>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button variant="transparent">Button 3</Button>
-      </Actions>,
-    ),
+  Example: () => {
+    const { value: visual } = source(
+      <Tiles space="xlarge" columns={[1, 2]}>
+        <Stack space="small">
+          <Text tone="secondary" size="small">
+            Above mobile
+          </Text>
+          <Actions>
+            <Button variant="solid">Solid</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="transparent">Transparent</Button>
+          </Actions>
+        </Stack>
+        <Stack space="small">
+          <Text tone="secondary" size="small">
+            On mobile
+          </Text>
+          <Stack space="xsmall">
+            <Button variant="solid">Solid</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="transparent">Transparent</Button>
+          </Stack>
+        </Stack>
+      </Tiles>,
+    );
+
+    const { code: codeDemo } = source(
+      <>
+        <Actions>
+          <Button variant="solid">Solid</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="transparent">Transparent</Button>
+        </Actions>
+      </>,
+    );
+
+    return {
+      code: codeDemo,
+      value: visual,
+    };
+  },
   description: (
     <Text>
-      The <Strong>Actions</Strong> component standardises the responsive layout
-      and spacing for groups of{' '}
-      <TextLink href="/components/Button">Button</TextLink> components.
+      A layout component that applies spacing and responsive behaviour to{' '}
+      <TextLink href="/components/Button">Buttons</TextLink> in a consistent
+      way.
     </Text>
   ),
   alternatives: [
@@ -67,30 +97,6 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      code: false,
-      Example: () =>
-        source(
-          <Tiles space="xlarge" columns={[1, 2]}>
-            <Stack space="small">
-              <Text tone="secondary" size="small">
-                On mobile
-              </Text>
-              <Stack space={actionsSpace}>
-                <Button>Primary</Button>
-                <Button variant="transparent">Secondary</Button>
-              </Stack>
-            </Stack>
-            <Stack space="small">
-              <Text tone="secondary" size="small">
-                Above mobile
-              </Text>
-              <Inline space={actionsSpace}>
-                <Button>Primary</Button>
-                <Button variant="transparent">Secondary</Button>
-              </Inline>
-            </Stack>
-          </Tiles>,
-        ),
     },
     {
       label: 'Sizes',

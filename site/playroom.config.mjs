@@ -29,13 +29,6 @@ export default {
   openBrowser: false,
   port: 8082,
   webpackConfig: () => ({
-    module: {
-      rules: [
-        // Playroom has its own CSS loaders and sku has its own CSS loaders.
-        // We want to override Playroom's loaders and only use sku's ones.
-        { test: /\.css$/, use: [] },
-      ],
-    },
     resolve: {
       alias: {
         'braid-src': braidSrc,

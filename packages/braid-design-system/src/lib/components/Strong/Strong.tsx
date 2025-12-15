@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -12,7 +12,12 @@ export interface StrongProps {
   data?: DataAttributeMap;
 }
 
-export const Strong = ({ children, data, id, ...restProps }: StrongProps) => (
+export const Strong: FC<StrongProps> = ({
+  children,
+  data,
+  id,
+  ...restProps
+}) => (
   <strong
     className={fontWeight.strong}
     id={id}

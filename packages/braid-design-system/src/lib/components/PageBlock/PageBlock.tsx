@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, FC } from 'react';
 
 import { Box } from '../Box/Box';
 import {
@@ -29,13 +29,13 @@ interface Props {
   data?: DataAttributeMap;
 }
 
-export const PageBlock = ({
+export const PageBlock: FC<Props> = ({
   children,
   width = 'large',
   component: componentProp,
   data,
   ...restProps
-}: Props) => {
+}) => {
   const component =
     componentProp && validPageBlockComponents.includes(componentProp)
       ? componentProp

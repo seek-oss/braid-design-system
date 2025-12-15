@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react';
+import type { ComponentType, FC } from 'react';
 
 import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
@@ -19,10 +19,10 @@ const feelingToIcon: Record<Feeling, ComponentType> = {
   neutral: IconSentimentSvg,
 };
 
-export const IconSentiment = ({
+export const IconSentiment: FC<IconSentimentProps> = ({
   feeling = 'neutral',
   ...props
-}: IconSentimentProps) => (
+}) => (
   <IconContainer {...props}>
     {(svgProps) => (
       <Box

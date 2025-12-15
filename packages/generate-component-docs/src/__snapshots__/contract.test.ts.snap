@@ -7764,6 +7764,9 @@ exports[`MenuItemCheckbox 1`] = `
 
 exports[`MenuItemDivider 1`] = `
 {
+  exportType: component,
+  props: {
+},
 }
 `;
 
@@ -9506,6 +9509,8 @@ exports[`TooltipRenderer 1`] = `
     id?: string
     placement?: 
         | "bottom"
+        | "left"
+        | "right"
         | "top"
     tooltip: ReactNodeNoStrings
 },
