@@ -18,7 +18,7 @@ import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContaine
 import { useState, useRef, useEffect, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useLocation, Outlet } from 'react-router';
-import { useWindowScroll, useInterval } from 'react-use';
+import { useInterval } from 'react-use';
 
 import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 
@@ -30,6 +30,38 @@ import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
 
 import * as styles from './Navigation.css';
+
+// Safe wrapper for useWindowScroll that handles SSR
+// Always calls hooks (no conditional hook calls) but safely handles SSR
+const useSafeWindowScroll = () => {
+  const [scrollPosition, setScrollPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const updateScrollPosition = () => {
+      setScrollPosition({
+        x: window.scrollX || window.pageXOffset || 0,
+        y: window.scrollY || window.pageYOffset || 0,
+      });
+    };
+
+    // Set initial scroll position
+    updateScrollPosition();
+
+    // Listen for scroll events
+    window.addEventListener('scroll', updateScrollPosition, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollPosition);
+    };
+  }, []);
+
+  return scrollPosition;
+};
 
 const Header = ({
   menuOpen,
@@ -138,7 +170,7 @@ const PreviewBranchPanel = () => {
 
 export const Navigation = () => {
   const lastScrollTop = useRef(0);
-  const { y: scrollTop } = useWindowScroll();
+  const { y: scrollTop } = useSafeWindowScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
