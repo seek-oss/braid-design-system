@@ -18,7 +18,7 @@ Consumers should use the `brandAccent` or `neutral` variables instead.
 import { vars } from 'braid-design-system/css';
 
 export const myStyle = style({
--  color: vars.foreground.rating,
-+  color: vars.foreground.brandAccent,
+-  color: vars.foregroundColor.rating,
++  color: vars.foregroundColor.brandAccent,
 });
 ```
