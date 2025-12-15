@@ -192,7 +192,7 @@
     "csstype": "^3.0.6",
     "dedent": "^1.5.3",
     "gradient-parser": "^1.0.0",
-    "is-mobile": "^4.0.0",
+    "is-mobile": "^5.0.0",
     "lodash.curry": "^4.1.1",
     "polished": "^4.1.0",
     "react-focus-lock": "^2.9.7",
