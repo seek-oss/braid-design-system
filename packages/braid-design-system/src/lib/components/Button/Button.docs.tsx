@@ -629,8 +629,8 @@ const docs: ComponentDocs = {
         const { value: visual } = source(
           <Tiles space="xlarge" columns={[1, 2]}>
             <Stack space="small">
-              <Text tone="secondary" weight="strong">
-                Tablet and desktop
+              <Text tone="secondary" size="small">
+                Above mobile
               </Text>
               <Actions>
                 <Button variant="solid">Solid</Button>
@@ -639,8 +639,8 @@ const docs: ComponentDocs = {
               </Actions>
             </Stack>
             <Stack space="small">
-              <Text tone="secondary" weight="strong">
-                Mobile
+              <Text tone="secondary" size="small">
+                On mobile
               </Text>
               <Stack space="xsmall">
                 <Button variant="solid">Solid</Button>
