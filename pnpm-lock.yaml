@@ -280,8 +280,8 @@ importers:
         specifier: ^9.7.1
         version: 9.7.1(jest-diff@30.2.0)(jest-snapshot@30.2.0)(jest@30.2.0(@types/node@22.19.2)(babel-plugin-macros@3.1.0)(esbuild-register@3.6.0(esbuild@0.21.5)))(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.2)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
       playroom:
-        specifier: 0.44.4
-        version: 0.44.4(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 1.0.3
+        version: 1.0.3(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       prettier:
         specifier: ^3.4.1
         version: 3.7.4
@@ -535,8 +535,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.3(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
       playroom:
-        specifier: 0.44.4
-        version: 0.44.4(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.27.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 1.0.3
+        version: 1.0.3(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.27.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       polished:
         specifier: ^4.1.0
         version: 4.3.1
@@ -1261,6 +1261,29 @@ packages:
   '@babel/types@7.28.5':
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
+
+  '@base-ui-components/react@1.0.0-beta.4':
+    resolution: {integrity: sha512-sPYKj26gbFHD2ZsrMYqQshXnMuomBodzPn+d0dDxWieTj232XCQ9QGt9fU9l5SDGC9hi8s24lDlg9FXPSI7T8A==}
+    engines: {node: '>=14.0.0'}
+    deprecated: Package was renamed to @base-ui/react
+    peerDependencies:
+      '@types/react': ^17 || ^18 || ^19
+      react: ^17 || ^18 || ^19
+      react-dom: ^17 || ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@base-ui-components/utils@0.1.2':
+    resolution: {integrity: sha512-aEitDGpMsYO2qnSpYOwZNykn9Rzn2ioyEVk2fyDRH7t+TIHVKpp9CeV7SPTq43M9mMSDxQ+7UeZJVkrj2dCVIQ==}
+    deprecated: Package was renamed to @base-ui/utils
+    peerDependencies:
+      '@types/react': ^17 || ^18 || ^19
+      react: ^17 || ^18 || ^19
+      react-dom: ^17 || ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@base2/pretty-print-object@1.0.2':
     resolution: {integrity: sha512-rBha0UDfV7EmBRjWrGG7Cpwxg8WomPlo0q+R2so47ZFf9wy4YKJzLuHcVa0UGFjdcLZj/4F/1FNC46GIQhe7sA==}
@@ -3579,6 +3602,9 @@ packages:
     resolution: {integrity: sha512-nzvgl3VfhcELQ8LyVrYOru+UtAy1nrygk2+AGbTm8a5YcO6o8lSjAT+pfg3vJWxIoZKOUhrK6UU7xW/+00kQrg==}
     hasBin: true
 
+  '@zumer/snapdom@1.9.14':
+    resolution: {integrity: sha512-kQARFS/jf+fsIFv9qxfNp8YMeun5tTyhFDk3iv47Lywk5YRldhINWicEZI15fP3FDUCeo8ok+BP0CtnDRFMFRg==}
+
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
     engines: {node: '>= 0.6'}
@@ -4239,6 +4265,13 @@ packages:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
 
+  cmdk-base@0.0.8:
+    resolution: {integrity: sha512-w7tzUkaLb+T8+JaRZLsPGIvAhWNdkI2+ThnC+dqsjYrl7M6JMcOFYWQKtm8QSGf3aF4NXpbsfGCTCCjXaj1WKA==}
+    peerDependencies:
+      '@base-ui-components/react': ^1.0.0-beta.2
+      react: ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^18 || ^19 || ^19.0.0-rc
+
   co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
@@ -4776,9 +4809,6 @@ packages:
 
   dom-converter@0.2.0:
     resolution: {integrity: sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==}
-
-  dom-helpers@5.2.1:
-    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
 
   dom-serializer@1.4.1:
     resolution: {integrity: sha512-VHwB3KfrcOOkelEG2ZOfxqLZdfkil8PtJi4P8N2MMXucZq2yLp75ClViUlOVwyoHEDjYU433Aq+5zWP61+RGag==}
@@ -5448,10 +5478,6 @@ packages:
 
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
-
-  fuse.js@7.1.0:
-    resolution: {integrity: sha512-trLf4SzuuUxfusZADLINj+dE8clK1frKdmqiJNb1Es75fmI5oY6X2mxLVUciLLjxqw/xr72Dhy+lER6dGd02FQ==}
-    engines: {node: '>=10'}
 
   gauge@2.7.4:
     resolution: {integrity: sha512-14x4kjc6lkD3ltw589k0NrPD6cCNTD6CWoVUNpB85+DrtONoZn+Rug6xZU5RvSC4+TZPxA5AnBibQYAvZn41Hg==}
@@ -6610,6 +6636,11 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
+  lucide-react@0.541.0:
+    resolution: {integrity: sha512-s0Vircsu5WaGv2KoJZ5+SoxiAJ3UXV5KqEM3eIFDHaHkcLIFdIWgXtZ412+Gh02UsdS7Was+jvEpBvPCWQISlg==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
@@ -7398,8 +7429,8 @@ packages:
     resolution: {integrity: sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==}
     engines: {node: '>=8'}
 
-  playroom@0.44.4:
-    resolution: {integrity: sha512-GAosQqlt3Ij1bUtx95kReWmNVCY7OiIrVfwAhw7SF7mWaIpzdrxzoQ6i0zZi4MDI2TldjwXaQ359kL/7ORqxcQ==}
+  playroom@1.0.3:
+    resolution: {integrity: sha512-LHqZg4Y7AbTbeRVMcVmD/+kwpeArVeuqhQjsW0bCVSIoU3EJWwAzGT5dIOZLBXjC2FvNUrk/SUQeenwjc5XW/Q==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     peerDependencies:
@@ -7893,12 +7924,6 @@ packages:
     peerDependencies:
       react: '>= 0.14.0'
 
-  react-transition-group@4.4.5:
-    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
-    peerDependencies:
-      react: '>=16.6.0'
-      react-dom: '>=16.6.0'
-
   react-universal-interface@0.6.2:
     resolution: {integrity: sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==}
     peerDependencies:
@@ -8042,6 +8067,9 @@ packages:
 
   reselect@4.1.8:
     resolution: {integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==}
+
+  reselect@5.1.1:
+    resolution: {integrity: sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==}
 
   resize-observer-polyfill@1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
@@ -8727,6 +8755,9 @@ packages:
     resolution: {integrity: sha512-MeQTA1r0litLUf0Rp/iisCaL8761lKAZHaimlbGK4j0HysC4PLfqygQj9srcs0m2RdtDYnF8UuYyKpbjHYp7Jw==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
+  tabbable@6.3.0:
+    resolution: {integrity: sha512-EIHvdY5bPLuWForiR/AN2Bxngzpuwn1is4asboytXtpTgsArc+WmSJKVLlhdh71u7jFcryDqB2A8lQvj78MkyQ==}
+
   table-layout@1.0.2:
     resolution: {integrity: sha512-qd/R7n5rQTRFi+Zf2sk5XVVd9UQl6ZkduPFC3S7WEGJAmetDTjY3qPN50eSKzwuzEyQKy5TN2TiZdkIjos2L6A==}
     engines: {node: '>=8.0.0'}
@@ -9127,6 +9158,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  use-sync-external-store@1.6.0:
+    resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   used-styles@3.0.1:
     resolution: {integrity: sha512-bkTRpNw1h2TsTqi3hpnNI1z6oc/sc3+8eC65iT+MP54/wI3s3LLj3M6poxZ+Qid0L6rn+/IpY8xsROWcmaTtBw==}
@@ -10466,6 +10502,31 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
+
+  '@base-ui-components/react@1.0.0-beta.4(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      '@babel/runtime': 7.28.4
+      '@base-ui-components/utils': 0.1.2(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@floating-ui/react-dom': 2.1.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@floating-ui/utils': 0.2.10
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+      reselect: 5.1.1
+      tabbable: 6.3.0
+      use-sync-external-store: 1.6.0(react@19.2.3)
+    optionalDependencies:
+      '@types/react': 19.2.7
+
+  '@base-ui-components/utils@0.1.2(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      '@babel/runtime': 7.28.4
+      '@floating-ui/utils': 0.2.10
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+      reselect: 5.1.1
+      use-sync-external-store: 1.6.0(react@19.2.3)
+    optionalDependencies:
+      '@types/react': 19.2.7
 
   '@base2/pretty-print-object@1.0.2': {}
 
@@ -13265,6 +13326,8 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
+  '@zumer/snapdom@1.9.14': {}
+
   accepts@1.3.8:
     dependencies:
       mime-types: 2.1.35
@@ -14022,6 +14085,15 @@ snapshots:
 
   clsx@2.1.1: {}
 
+  cmdk-base@0.0.8(@base-ui-components/react@1.0.0-beta.4(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      '@base-ui-components/react': 1.0.0-beta.4(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@base-ui-components/utils': 0.1.2(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    transitivePeerDependencies:
+      - '@types/react'
+
   co@4.6.0: {}
 
   code-excerpt@4.0.0:
@@ -14582,11 +14654,6 @@ snapshots:
   dom-converter@0.2.0:
     dependencies:
       utila: 0.4.0
-
-  dom-helpers@5.2.1:
-    dependencies:
-      '@babel/runtime': 7.28.4
-      csstype: 3.2.3
 
   dom-serializer@1.4.1:
     dependencies:
@@ -15571,8 +15638,6 @@ snapshots:
       is-callable: 1.2.7
 
   functions-have-names@1.2.3: {}
-
-  fuse.js@7.1.0: {}
 
   gauge@2.7.4:
     dependencies:
@@ -17088,6 +17153,10 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
+  lucide-react@0.541.0(react@19.2.3):
+    dependencies:
+      react: 19.2.3
+
   lz-string@1.5.0: {}
 
   magic-string@0.30.21:
@@ -18043,13 +18112,16 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  playroom@0.44.4(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  playroom@1.0.3(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/parser': 7.28.5
       '@babel/preset-env': 7.28.5(@babel/core@7.28.5)
       '@babel/preset-react': 7.28.5(@babel/core@7.28.5)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.28.5)
+      '@base-ui-components/react': 1.0.0-beta.4(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@capsizecss/metrics': 3.6.2
+      '@capsizecss/vanilla-extract': 2.0.4(@vanilla-extract/css@1.17.5(babel-plugin-macros@3.1.0))
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
       '@types/base64-url': 2.2.2
       '@types/codemirror': 5.60.17
@@ -18059,21 +18131,23 @@ snapshots:
       '@vanilla-extract/css': 1.17.5(babel-plugin-macros@3.1.0)
       '@vanilla-extract/css-utils': 0.1.6
       '@vanilla-extract/dynamic': 2.1.5
+      '@vanilla-extract/integration': 8.0.6(babel-plugin-macros@3.1.0)
       '@vanilla-extract/sprinkles': 1.6.5(@vanilla-extract/css@1.17.5(babel-plugin-macros@3.1.0))
       '@vanilla-extract/webpack-plugin': 2.3.24(babel-plugin-macros@3.1.0)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
+      '@zumer/snapdom': 1.9.14
       babel-loader: 9.2.1(@babel/core@7.28.5)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
       clsx: 2.1.1
+      cmdk-base: 0.0.8(@base-ui-components/react@1.0.0-beta.4(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       codemirror: 5.65.20
       command-line-args: 5.2.1
       command-line-usage: 6.1.3
-      copy-to-clipboard: 3.3.3
       css-loader: 6.11.0(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
       dedent: 1.7.0(babel-plugin-macros@3.1.0)
       find-up: 5.0.0
-      fuse.js: 7.1.0
       history: 5.3.0
       html-webpack-plugin: 5.6.5(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
       localforage: 1.10.0
+      lucide-react: 0.541.0(react@19.2.3)
       lz-string: 1.5.0
       memoize-one: 6.0.0
       mini-css-extract-plugin: 2.9.4(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.21.5))
@@ -18085,7 +18159,6 @@ snapshots:
       react-docgen-typescript: 2.4.0(typescript@5.5.4)
       react-dom: 19.2.3(react@19.2.3)
       react-error-boundary: 4.1.2(react@19.2.3)
-      react-transition-group: 4.4.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       read-pkg-up: 7.0.1
       scope-eval: 1.0.0
       sucrase: 3.35.1
@@ -18107,13 +18180,16 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  playroom@0.44.4(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.27.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  playroom@1.0.3(@swc/core@1.15.3)(babel-plugin-macros@3.1.0)(esbuild@0.27.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/parser': 7.28.5
       '@babel/preset-env': 7.28.5(@babel/core@7.28.5)
       '@babel/preset-react': 7.28.5(@babel/core@7.28.5)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.28.5)
+      '@base-ui-components/react': 1.0.0-beta.4(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@capsizecss/metrics': 3.6.2
+      '@capsizecss/vanilla-extract': 2.0.4(@vanilla-extract/css@1.17.5(babel-plugin-macros@3.1.0))
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.1))
       '@types/base64-url': 2.2.2
       '@types/codemirror': 5.60.17
@@ -18123,21 +18199,23 @@ snapshots:
       '@vanilla-extract/css': 1.17.5(babel-plugin-macros@3.1.0)
       '@vanilla-extract/css-utils': 0.1.6
       '@vanilla-extract/dynamic': 2.1.5
+      '@vanilla-extract/integration': 8.0.6(babel-plugin-macros@3.1.0)
       '@vanilla-extract/sprinkles': 1.6.5(@vanilla-extract/css@1.17.5(babel-plugin-macros@3.1.0))
       '@vanilla-extract/webpack-plugin': 2.3.24(babel-plugin-macros@3.1.0)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.1))
+      '@zumer/snapdom': 1.9.14
       babel-loader: 9.2.1(@babel/core@7.28.5)(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.1))
       clsx: 2.1.1
+      cmdk-base: 0.0.8(@base-ui-components/react@1.0.0-beta.4(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       codemirror: 5.65.20
       command-line-args: 5.2.1
       command-line-usage: 6.1.3
-      copy-to-clipboard: 3.3.3
       css-loader: 6.11.0(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.1))
       dedent: 1.7.0(babel-plugin-macros@3.1.0)
       find-up: 5.0.0
-      fuse.js: 7.1.0
       history: 5.3.0
       html-webpack-plugin: 5.6.5(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.1))
       localforage: 1.10.0
+      lucide-react: 0.541.0(react@19.2.3)
       lz-string: 1.5.0
       memoize-one: 6.0.0
       mini-css-extract-plugin: 2.9.4(webpack@5.103.0(@swc/core@1.15.3)(esbuild@0.27.1))
@@ -18149,7 +18227,6 @@ snapshots:
       react-docgen-typescript: 2.4.0(typescript@5.5.4)
       react-dom: 19.2.3(react@19.2.3)
       react-error-boundary: 4.1.2(react@19.2.3)
-      react-transition-group: 4.4.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       read-pkg-up: 7.0.1
       scope-eval: 1.0.0
       sucrase: 3.35.1
@@ -18675,15 +18752,6 @@ snapshots:
       react: 19.2.3
       refractor: 3.6.0
 
-  react-transition-group@4.4.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
-    dependencies:
-      '@babel/runtime': 7.28.4
-      dom-helpers: 5.2.1
-      loose-envify: 1.4.0
-      prop-types: 15.8.1
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
-
   react-universal-interface@0.6.2(react@19.2.3)(tslib@2.8.1):
     dependencies:
       react: 19.2.3
@@ -18898,6 +18966,8 @@ snapshots:
   requires-port@1.0.0: {}
 
   reselect@4.1.8: {}
+
+  reselect@5.1.1: {}
 
   resize-observer-polyfill@1.5.1: {}
 
@@ -20051,6 +20121,8 @@ snapshots:
     dependencies:
       '@pkgr/core': 0.2.9
 
+  tabbable@6.3.0: {}
+
   table-layout@1.0.2:
     dependencies:
       array-back: 4.0.2
@@ -20457,6 +20529,10 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.7
+
+  use-sync-external-store@1.6.0(react@19.2.3):
+    dependencies:
+      react: 19.2.3
 
   used-styles@3.0.1:
     dependencies:
@@ -21051,7 +21127,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@5.0.0:
