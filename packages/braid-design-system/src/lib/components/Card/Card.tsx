@@ -1,5 +1,6 @@
+import assert from 'assert';
+
 import type { FC, ReactNode } from 'react';
-import assert from 'tiny-invariant';
 
 import { type BoxProps, Box } from '../Box/Box';
 import { Keyline } from '../private/Keyline/Keyline';

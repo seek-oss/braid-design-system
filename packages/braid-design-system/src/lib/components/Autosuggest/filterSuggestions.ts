@@ -1,4 +1,4 @@
-import assert from 'tiny-invariant';
+import assert from 'assert';
 
 import {
   type AutosuggestValue,

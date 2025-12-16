@@ -1,5 +1,6 @@
+import assert from 'assert';
+
 import type { FC } from 'react';
-import assert from 'tiny-invariant';
 
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {

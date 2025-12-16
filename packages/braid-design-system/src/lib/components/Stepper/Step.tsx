@@ -1,6 +1,7 @@
+import assert from 'assert';
+
 import clsx from 'clsx';
 import { useContext, useEffect, useRef, type FC } from 'react';
-import assert from 'tiny-invariant';
 
 import { Box } from '../Box/Box';
 import { Hidden } from '../Hidden/Hidden';

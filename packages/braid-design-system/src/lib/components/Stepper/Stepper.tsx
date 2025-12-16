@@ -1,5 +1,6 @@
+import assert from 'assert';
+
 import { type ReactElement, Children, type FC } from 'react';
-import assert from 'tiny-invariant';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';

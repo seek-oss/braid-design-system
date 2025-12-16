@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 import {
   type KeyboardEvent,
   type ReactNode,
@@ -9,7 +11,6 @@ import {
   cloneElement,
   type FC,
 } from 'react';
-import assert from 'tiny-invariant';
 
 import type { BraidTokens } from '../../themes/tokenType';
 import type { BadgeProps } from '../Badge/Badge';

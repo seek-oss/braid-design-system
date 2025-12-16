@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   type FC,
@@ -10,7 +12,6 @@ import {
   useReducer,
   useEffect,
 } from 'react';
-import assert from 'tiny-invariant';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import flattenChildren from '../../utils/flattenChildren';

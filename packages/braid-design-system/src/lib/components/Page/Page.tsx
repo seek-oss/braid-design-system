@@ -1,5 +1,6 @@
+import assert from 'assert';
+
 import { type ReactNode, useContext, type FC } from 'react';
-import assert from 'tiny-invariant';
 
 import { Box } from '../Box/Box';
 import buildDataAttributes, {
