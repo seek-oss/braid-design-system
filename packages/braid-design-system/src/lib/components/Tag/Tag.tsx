@@ -1,5 +1,6 @@
+import assert from 'assert';
+
 import type { FC } from 'react';
-import assert from 'tiny-invariant';
 
 import type { Space } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';

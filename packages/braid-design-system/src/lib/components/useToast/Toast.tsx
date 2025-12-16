@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 import {
   type MouseEvent,
   cloneElement,
@@ -5,7 +7,6 @@ import {
   useCallback,
   useEffect,
 } from 'react';
-import assert from 'tiny-invariant';
 
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';

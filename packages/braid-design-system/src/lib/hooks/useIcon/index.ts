@@ -1,6 +1,7 @@
+import assert from 'assert';
+
 import clsx from 'clsx';
 import { useContext } from 'react';
-import assert from 'tiny-invariant';
 
 import type { PublicBoxProps } from '../../components/Box/Box';
 import HeadingContext from '../../components/Heading/HeadingContext';

@@ -1,5 +1,6 @@
+import assert from 'assert';
+
 import { type FormEvent, useContext } from 'react';
-import assert from 'tiny-invariant';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
 import { Box } from '../Box/Box';

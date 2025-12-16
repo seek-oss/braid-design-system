@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   useContext,
@@ -9,7 +11,6 @@ import {
   type ComponentProps,
   type FC,
 } from 'react';
-import assert from 'tiny-invariant';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { negativeMargin } from '../../css/negativeMargin/negativeMargin';

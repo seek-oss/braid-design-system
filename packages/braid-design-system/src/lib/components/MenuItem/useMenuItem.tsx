@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 import {
   type KeyboardEvent,
   type ReactNode,
@@ -7,7 +9,6 @@ import {
   useRef,
   useEffect,
 } from 'react';
-import assert from 'tiny-invariant';
 
 import { atoms } from '../../css/atoms/atoms';
 import { iconSize } from '../../hooks/useIcon';

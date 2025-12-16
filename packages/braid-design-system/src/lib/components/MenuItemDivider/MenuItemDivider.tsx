@@ -1,5 +1,6 @@
+import assert from 'assert';
+
 import { useContext, type FC } from 'react';
-import assert from 'tiny-invariant';
 
 import { Box } from '../Box/Box';
 import { Divider } from '../Divider/Divider';
