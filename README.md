@@ -120,7 +120,7 @@ To prevent these checks from being included in production builds and disrupting 
 At SEEK this is done by [sku] as part of the build process via [Babel] with the [babel-plugin-unassert] plugin.
 The minimum `sku` version that supports stripping assertions from the `assert` library is [12.6.0].
 
-[assert]: https://www.npmjs.com/package/tiny-invariant
+[assert]: https://www.npmjs.com/package/assert
 [unassert]: https://www.npmjs.com/package/unassert
 [Babel]: https://babeljs.io/
 [babel-plugin-unassert]: https://github.com/unassert-js/babel-plugin-unassert
