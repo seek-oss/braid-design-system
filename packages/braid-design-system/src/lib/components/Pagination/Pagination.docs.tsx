@@ -1,7 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { Pagination, Card, Notice } from '../';
+import { Pagination, Notice } from '../';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 import { TextLink } from '../TextLink/TextLink';
@@ -178,45 +178,6 @@ const docs: ComponentDocs = {
           </>,
         ),
       showCodeByDefault: true,
-    },
-    {
-      label: 'Contextual design',
-      description: (
-        <>
-          <Notice>
-            <Text>
-              Only applicable to themes with grey body backgrounds, e.g.{' '}
-              <Strong>apac</Strong>.
-            </Text>
-          </Notice>
-          <Text>
-            When Pagination is used on a <Strong>surface</Strong> background
-            colour, i.e. in a <TextLink href="/components/Card">Card</TextLink>,
-            the outline of the active page indicator is omitted.
-          </Text>
-        </>
-      ),
-      Example: ({ setDefaultState, getState, setState }) =>
-        source(
-          <>
-            {setDefaultState('page', 1)}
-
-            <Card>
-              <Pagination
-                page={getState('page')}
-                total={10}
-                linkProps={({ page }) => ({
-                  href: `#`,
-                  onClick: (e) => {
-                    e.preventDefault();
-                    setState('page', page);
-                  },
-                })}
-                label="Pagination Example"
-              />
-            </Card>
-          </>,
-        ),
     },
     dataAttributeDocs({
       code: `

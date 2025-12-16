@@ -50,7 +50,6 @@ const getHoverColor = (x: string) =>
 const tokens: BraidTokens = {
   name: 'wireframe',
   displayName: 'Wireframe',
-  legacy: false,
   typography: {
     fontFamily: '"Courier New", monospace',
     webFont: null,
@@ -242,7 +241,6 @@ const tokens: BraidTokens = {
       positiveLight,
       promote: getAccessibleVariant(promote),
       promoteLight,
-      rating: black,
       secondary,
       secondaryInverted: 'hsla(0, 0%, 100%, 0.65)',
     },

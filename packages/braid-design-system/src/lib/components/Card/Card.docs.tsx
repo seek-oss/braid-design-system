@@ -12,7 +12,7 @@ const docs: ComponentDocs = {
   category: 'Content',
   Example: () =>
     source(
-      <Card rounded>
+      <Card>
         <Placeholder label="This content is inside a card" height={60} />
       </Card>,
     ),
@@ -85,56 +85,6 @@ const docs: ComponentDocs = {
                 FORMACCENT
               </Text>
               <Card tone="formAccent">
-                <Box style={{ height: 100 }} width="full" />
-              </Card>
-            </Stack>
-          </Tiles>,
-        ),
-    },
-    {
-      label: 'Rounded corners',
-      description: (
-        <>
-          <Text>
-            Card corners can be rounded by providing the{' '}
-            <Strong>rounded</Strong> prop.
-          </Text>
-          <Text>
-            Alternatively, rounding may be applied responsively using the{' '}
-            <Strong>roundedAbove</Strong> prop, and providing either{' '}
-            <Strong>mobile</Strong>, <Strong>tablet</Strong> or{' '}
-            <Strong>desktop</Strong>. This enables card edges to be softened on
-            larger screens, but squared off if it runs full bleed on smaller
-            devices.
-          </Text>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                DEFAULT
-              </Text>
-              <Card>
-                <Box style={{ height: 100 }} width="full" />
-              </Card>
-            </Stack>
-
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                ROUNDED
-              </Text>
-              <Card rounded>
-                <Box style={{ height: 100 }} width="full" />
-              </Card>
-            </Stack>
-
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                RESPONSIVELY ROUNDED (e.g. above mobile)
-              </Text>
-              <Card roundedAbove="mobile">
                 <Box style={{ height: 100 }} width="full" />
               </Card>
             </Stack>

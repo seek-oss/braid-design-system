@@ -32,7 +32,6 @@ export const makeTokens = ({
   const tokens: BraidTokens = {
     name,
     displayName,
-    legacy: false,
     typography: {
       fontFamily: 'SeekSans, "SeekSans Fallback", Arial, Tahoma, sans-serif',
       webFont: 'https://www.seek.com.au/static/shared-web/seeksans.css',
@@ -236,7 +235,6 @@ export const makeTokens = ({
         positiveLight: palette.mint['300'],
         promote,
         promoteLight: palette.purple['300'],
-        rating: brandAccent,
         secondary: palette.grey['500'],
         secondaryInverted: rgba('#fff', 0.65),
       },

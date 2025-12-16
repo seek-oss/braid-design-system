@@ -96,14 +96,6 @@
       "import": "./dist/test.mjs",
       "require": "./dist/test.cjs"
     },
-    "./themes/apac": {
-      "types": {
-        "import": "./dist/themes/apac.d.mts",
-        "require": "./dist/themes/apac.d.ts"
-      },
-      "import": "./dist/themes/apac.mjs",
-      "require": "./dist/themes/apac.cjs"
-    },
     "./themes/docs": {
       "types": {
         "import": "./dist/themes/docs.d.mts",
@@ -154,7 +146,6 @@
     "query-param",
     "reset",
     "test",
-    "themes/apac",
     "themes/docs",
     "themes/seekBusiness",
     "themes/seekJobs",
@@ -186,7 +177,7 @@
     "@vanilla-extract/css-utils": "^0.1.3",
     "@vanilla-extract/dynamic": "^2.1.2",
     "@vanilla-extract/sprinkles": "^1.5.1",
-    "assert": "^2.0.0",
+    "assert": "^2.1.0",
     "autosuggest-highlight": "^3.3.4",
     "clsx": "^2.1.1",
     "csstype": "^3.0.6",

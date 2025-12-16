@@ -14,7 +14,6 @@ import { atoms } from '../../css/atoms/atoms';
 import { iconSize } from '../../hooks/useIcon';
 import type { BadgeProps } from '../Badge/Badge';
 import { type BoxProps, Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { type Action, actionTypes } from '../MenuRenderer/MenuRenderer.actions';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
@@ -157,7 +156,6 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
           height: size === 'standard' ? 'touchable' : undefined,
           cursor: 'pointer',
           textAlign: 'left',
-          outline: 'none',
         }),
       ],
       ...buildDataAttributes({ data, validateRestProps: restProps }),
@@ -180,8 +178,6 @@ function MenuItemChildren({
   isCheckbox = false,
 }: MenuItemChildrenProps) {
   const menuRendererContext = useContext(MenuRendererContext);
-  const badgeSpace = useBraidTheme().legacy ? 'small' : badgeSlotSpace;
-  const iconSpace = useBraidTheme().legacy ? 'small' : iconSlotSpace;
 
   assert(
     menuRendererContext !== null,
@@ -204,7 +200,7 @@ function MenuItemChildren({
           position="relative"
           display="flex"
           alignItems="center"
-          paddingRight={iconSpace}
+          paddingRight={iconSlotSpace}
         >
           <Box
             component="span"
@@ -239,7 +235,7 @@ function MenuItemChildren({
         </Text>
       </Box>
       {badge ? (
-        <Box component="span" paddingLeft={badgeSpace}>
+        <Box component="span" paddingLeft={badgeSlotSpace}>
           <Text size={size}>{badge}</Text>
         </Box>
       ) : null}

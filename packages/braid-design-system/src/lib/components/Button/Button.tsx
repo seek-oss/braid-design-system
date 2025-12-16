@@ -19,7 +19,6 @@ import {
   useColorContrast,
 } from '../Box/BackgroundContext';
 import { type BoxBackgroundVariant, type BoxProps, Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { type TextProps, Text } from '../Text/Text';
 import { AvoidWidowIcon } from '../private/AvoidWidowIcon/AvoidWidowIcon';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
@@ -230,15 +229,7 @@ const buttonRadius = 'standard';
 const resolveToneAndVariant = ({
   variant: variantProp,
   tone: toneProp,
-  legacy,
-}: Pick<ButtonProps, 'variant' | 'tone'> & { legacy: boolean }) => {
-  if (legacy) {
-    return {
-      variant: variantProp ?? 'solid',
-      tone: toneProp ?? 'formAccent',
-    };
-  }
-
+}: Pick<ButtonProps, 'variant' | 'tone'>) => {
   const fallbackVariant = toneProp ? 'solid' : 'ghost';
 
   return {
@@ -259,7 +250,6 @@ export const ButtonOverlays = ({
   const { variant, tone } = resolveToneAndVariant({
     variant: variantProp,
     tone: toneProp,
-    legacy: useBraidTheme().legacy,
   });
 
   const stylesForVariant = variants[variant][tone];
@@ -332,19 +322,14 @@ export const ButtonText = ({
   const { variant, tone } = resolveToneAndVariant({
     variant: variantProp,
     tone: toneProp,
-    legacy: useBraidTheme().legacy,
   });
 
   const lightness = useBackgroundLightness();
   const actionsContext = useContext(ActionsContext);
-  const isLegacyTheme = useBraidTheme().legacy;
   const size = sizeProp ?? actionsContext?.size ?? 'standard';
   const stylesForVariant = variants[variant][tone];
   const shouldReducePaddingX = size === 'small' || variant === 'transparent';
-  const labelPaddingXForTheme = isLegacyTheme ? 'medium' : 'gutter';
-  const labelPaddingX = shouldReducePaddingX
-    ? transparentPaddingX
-    : labelPaddingXForTheme;
+  const labelPaddingX = shouldReducePaddingX ? transparentPaddingX : 'gutter';
 
   assert(
     !icon || (icon.props.size === undefined && icon.props.tone === undefined),
@@ -425,7 +410,6 @@ export const useButtonStyles = ({
   const { variant, tone } = resolveToneAndVariant({
     variant: variantProp,
     tone: toneProp,
-    legacy: useBraidTheme().legacy,
   });
 
   const actionsContext = useContext(ActionsContext);

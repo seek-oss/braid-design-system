@@ -1,8 +1,7 @@
 import source from '@braid-design-system/source.macro';
-import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 
-import { Alert, Box, Divider, TextLink, Toggle } from '../';
+import { Divider, Toggle } from '../';
 import { Stack } from '../Stack/Stack';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
@@ -90,62 +89,6 @@ const docs: ComponentDocs = {
               togglePosition="trailing"
             />
           </Stack>,
-        ),
-    },
-    {
-      label: 'Vertical bleed',
-      deprecated: true,
-      description: (
-        <Fragment>
-          <Text>
-            The <Strong>bleedY</Strong> prop removes the excess vertical space
-            created by the toggle input — ensuring it’s only as tall as the{' '}
-            provided label text.
-          </Text>
-          <Text>
-            This better aligns with the{' '}
-            <TextLink href="/foundations/layout">layout principles</TextLink> of
-            the system, enabling the surrounding white space to be controlled by
-            the parent layout component, e.g.{' '}
-            <TextLink href="/components/Stack">Stack</TextLink>.
-          </Text>
-          <Alert tone="caution">
-            <Text>
-              Vertical bleed is enabled by default, and will become the standard
-              in the future. It is recommended to remove the{' '}
-              <Strong>bleedY</Strong>
-              prop now and migrate your layout accordingly.
-            </Text>
-          </Alert>
-          <Text>
-            In the following example, a{' '}
-            <TextLink href="/components/Stack">Stack</TextLink> controls the
-            space between child elements. Switching the toggle off introduces
-            unwanted space above and below the label.
-          </Text>
-        </Fragment>
-      ),
-      Example: ({ setDefaultState, getState, toggleState }) =>
-        source(
-          <>
-            {setDefaultState('verticalBleed', true)}
-            <Stack space="medium">
-              <Text>Text</Text>
-              <Text>Text</Text>
-              <Box boxShadow="borderCriticalLight">
-                <Toggle
-                  label="BleedY"
-                  on={getState('verticalBleed')}
-                  onChange={() => toggleState('verticalBleed')}
-                  align="left"
-                  togglePosition="trailing"
-                  bleedY={getState('verticalBleed')}
-                />
-              </Box>
-
-              <Text>Text</Text>
-            </Stack>
-          </>,
         ),
     },
     {

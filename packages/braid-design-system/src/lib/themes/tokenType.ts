@@ -38,14 +38,6 @@ type FontWeight = 'regular' | 'medium' | 'strong';
 export interface BraidTokens {
   name: string;
   displayName: string;
-  /**
-   * The boundary for making updated design decisions without disturbing
-   * existing consumers. Updated decisions can be assessed as part of
-   * migrating between themes.
-   *
-   * This token will be removed when the `apac` theme is retired.
-   */
-  legacy: boolean;
   typography: {
     fontFamily: string;
     webFont: string | null;
@@ -158,8 +150,6 @@ export interface BraidTokens {
       positive: string;
       promoteLight: string;
       promote: string;
-      /** @deprecated Recommend using `brandAccent` or `neutral` instead. */
-      rating: string;
       secondary: string;
       secondaryInverted: string;
     };

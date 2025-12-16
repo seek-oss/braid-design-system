@@ -568,7 +568,6 @@ exports[`Box 1`] = `
         | "borderPromoteLight"
         | "large"
         | "medium"
-        | "outlineFocus"
         | "small"
     capture?: 
         | "environment"
@@ -1206,9 +1205,7 @@ exports[`Box 1`] = `
     opacity?: 0
     open?: boolean
     optimum?: number
-    outline?: 
-        | "focus"
-        | "none"
+    outline?: "focus"
     overflow?: 
         | "auto"
         | "hidden"
@@ -1582,7 +1579,6 @@ exports[`BoxRenderer 1`] = `
         | "borderPromoteLight"
         | "large"
         | "medium"
-        | "outlineFocus"
         | "small"
     children: (className: string) => ReactElement<unknown, string | JSXElementConstructor<any>> | null
     className?: ClassValue
@@ -1921,9 +1917,7 @@ exports[`BoxRenderer 1`] = `
         | "xsmall"
     minWidth?: 0
     opacity?: 0
-    outline?: 
-        | "focus"
-        | "none"
+    outline?: "focus"
     overflow?: 
         | "auto"
         | "hidden"
@@ -2078,7 +2072,7 @@ exports[`BraidProvider 1`] = `
         | FunctionComponent<LinkComponentProps>
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     styleBody?: boolean
-    theme: { vanillaTheme: string; name: string; displayName: string; legacy: boolean; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; href: string; }[]; space: { grid: number; space: { ...; }; }; color: { ...; }; backgroundLightness: Record<...>; }
+    theme: { vanillaTheme: string; name: string; displayName: string; background: { lightMode: string; darkMode: string; }; webFonts: { linkTag: string; href: string; }[]; space: { grid: number; space: { gutter: number; ... 7 more ...; xxxlarge: number; }; }; color: { ...; }; backgroundLightness: Record<...>; }
 },
 }
 `;
@@ -2098,7 +2092,6 @@ exports[`BraidTestProvider 1`] = `
         | FunctionComponent<LinkComponentProps>
         | { readonly __forwardRef__: ForwardRefExoticComponent<LinkComponentProps & RefAttributes<HTMLAnchorElement>>; }
     themeName?: 
-        | "apac"
         | "docs"
         | "seekBusiness"
         | "seekJobs"
@@ -2796,11 +2789,6 @@ exports[`Card 1`] = `
     height?: 
         | "content"
         | "full"
-    rounded?: boolean
-    roundedAbove?: 
-        | "desktop"
-        | "mobile"
-        | "tablet"
     tone?: 
         | "formAccent"
         | "promote"
@@ -3585,7 +3573,6 @@ exports[`Hidden 1`] = `
     data?: DataAttributeMap
     inline?: boolean
     print?: boolean
-    screen?: boolean
 },
 }
 `;
@@ -5104,37 +5091,6 @@ exports[`IconLink 1`] = `
 `;
 
 exports[`IconLinkBroken 1`] = `
-{
-  exportType: component,
-  props: {
-    alignY?: 
-        | "lowercase"
-        | "uppercase"
-    data?: DataAttributeMap
-    size?: 
-        | "fill"
-        | "large"
-        | "small"
-        | "standard"
-        | "xsmall"
-    title?: string
-    titleId?: string
-    tone?: 
-        | "brandAccent"
-        | "caution"
-        | "critical"
-        | "formAccent"
-        | "info"
-        | "link"
-        | "neutral"
-        | "positive"
-        | "promote"
-        | "secondary"
-},
-}
-`;
-
-exports[`IconList 1`] = `
 {
   exportType: component,
   props: {
@@ -9482,7 +9438,6 @@ exports[`Toggle 1`] = `
         | "justify"
         | "left"
         | "right"
-    bleedY?: boolean
     data?: DataAttributeMap
     id?: string
     label: ReactNode
@@ -9572,7 +9527,7 @@ exports[`useColor 1`] = `
 {
   exportType: hook,
   params: [],
-  returnType: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 14 more ...; secondaryInverted: string; }; background: { ...; }; },
+  returnType: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 13 more ...; secondaryInverted: string; }; background: { ...; }; },
 }
 `;
 

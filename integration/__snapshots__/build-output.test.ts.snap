@@ -1,9 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`build > Vanilla Extract files imported as side-effects 1`] = `
-### dist/lib/themes/apac/index.mjs:
-1 │ import "./apacTheme.css.mjs";
-
 ### dist/lib/themes/docs/index.mjs:
 1 │ import "./docsTheme.css.mjs";
 

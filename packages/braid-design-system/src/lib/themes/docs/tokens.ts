@@ -16,7 +16,6 @@ const secondary = palette.grey['500'];
 const tokens: BraidTokens = {
   name: 'docs',
   displayName: 'Docs',
-  legacy: false,
   typography: {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
@@ -209,7 +208,6 @@ const tokens: BraidTokens = {
       positiveLight: palette.mint['400'],
       promote: palette.violet['700'],
       promoteLight: palette.violet['400'],
-      rating: black,
       secondary,
       secondaryInverted: rgba('#fff', 0.65),
     },

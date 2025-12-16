@@ -30,7 +30,7 @@ For example:
 
 ```js
 import 'braid-design-system/reset'; // <-- Must be first
-import apacTheme from 'braid-design-system/themes/apac';
+import seekJobsTheme from 'braid-design-system/themes/seekJobs';
 import { BraidProvider, Text } from 'braid-design-system';
 // ...etc.
 ```
@@ -39,11 +39,11 @@ Finally, render the `BraidProvider` component, providing the imported theme via 
 
 ```js
 import 'braid-design-system/reset';
-import apacTheme from 'braid-design-system/themes/apac';
+import seekJobsTheme from 'braid-design-system/themes/seekJobs';
 import { BraidProvider, Text } from 'braid-design-system';
 
 export default () => (
-  <BraidProvider theme={apacTheme}>
+  <BraidProvider theme={seekJobsTheme}>
     <Text>Hello World!</Text>
   </BraidProvider>
 );
@@ -52,7 +52,7 @@ export default () => (
 If you're rendering within the context of another application, you may want to opt out of the provided body styles, which set the background color and reset margin and padding:
 
 ```js
-<BraidProvider theme={apacTheme} styleBody={false}>
+<BraidProvider theme={seekJobsTheme} styleBody={false}>
   <Text>Hello World!</Text>
 </BraidProvider>
 ```
@@ -115,9 +115,9 @@ At SEEK this is done via [sku] as part of the build process.
 
 To ensure correct usage of its components, Braid performs some precondition and invariant checking at runtime using the [assert] library.
 
-To prevent these checks from being included in production builds and distrupting the end user experience, it is recommended that `assert` calls are stripped at build time using the [unassert](https://www.npmjs.com/package/unassert) library.
+To prevent these checks from being included in production builds and disrupting the end user experience, it is recommended that `assert` calls are stripped at build time using the [unassert] library.
 
-At SEEK this is done via [sku] as part of the build process via [Babel] with the [babel-plugin-unassert] plugin.
+At SEEK this is done by [sku] as part of the build process via [Babel] with the [babel-plugin-unassert] plugin.
 
 [assert]: https://www.npmjs.com/package/assert
 [unassert]: https://www.npmjs.com/package/unassert

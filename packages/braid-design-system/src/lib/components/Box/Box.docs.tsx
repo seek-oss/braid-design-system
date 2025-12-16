@@ -626,7 +626,6 @@ const docs: ComponentDocs = {
                   'Used for large neutral borders on dark backgrounds.',
                 borderNeutralLight: 'Used for light neutral element borders.',
                 borderField: 'Used for borders around form fields.',
-                outlineFocus: 'Used for focus states of interactive elements.',
                 borderFormAccent:
                   'Used for borders around prominent interactive elements.',
                 borderFormAccentLarge:

@@ -45,16 +45,6 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With rounded corners',
-    code: source(
-      <Card rounded>
-        <Stack space="large">
-          <Placeholder height={200} />
-        </Stack>
-      </Card>,
-    ),
-  },
-  {
     name: 'With Overflow Menu',
     code: source(
       <Card>
