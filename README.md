@@ -118,13 +118,11 @@ To ensure correct usage of its components, Braid performs some precondition and 
 To prevent these checks from being included in production builds and disrupting the end user experience, it is recommended that `assert` calls are stripped at build time using the [unassert] library.
 
 At SEEK this is done by [sku] as part of the build process via [Babel] with the [babel-plugin-unassert] plugin.
-The minimum `sku` version that supports stripping assertions from the `assert` library is [12.6.0].
 
 [assert]: https://www.npmjs.com/package/assert
 [unassert]: https://www.npmjs.com/package/unassert
 [Babel]: https://babeljs.io/
 [babel-plugin-unassert]: https://github.com/unassert-js/babel-plugin-unassert
-[12.6.0]: https://github.com/seek-oss/sku/releases/tag/sku%4012.6.0
 
 ### Dev-time Warnings
 
