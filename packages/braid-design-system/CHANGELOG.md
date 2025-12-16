@@ -1,5 +1,110 @@
 # braid-design-system
 
+## 34.0.0
+
+### Major Changes
+
+- **Hidden:** Remove `screen` prop ([#1947](https://github.com/seek-oss/braid-design-system/pull/1947))
+
+  Remove the deprecated `screen` prop from the `Hidden` component.
+  For content designed to improve the screen reader experience, please use use the `HiddenVisually` component instead.
+  Alternatively, for content designed to be hidden unconditionally, remove the `screen` prop.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  - <Hidden screen>
+  + <Hidden>
+  ```
+
+- **Box, atoms:** Remove deprecated `rating` variable. ([#1947](https://github.com/seek-oss/braid-design-system/pull/1947))
+
+  Consumers should use the `brandAccent` or `neutral` variables instead.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  # styles.css.ts
+  import { vars } from 'braid-design-system/css';
+
+  export const myStyle = style({
+  -  color: vars.foregroundColor.rating,
+  +  color: vars.foregroundColor.brandAccent,
+  });
+  ```
+
+- **Card:** Remove `rounded` prop ([#1947](https://github.com/seek-oss/braid-design-system/pull/1947))
+
+  The `rounded` prop only affected deleted themes such as `apac` and has no effect on supported themes.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  - <Card rounded>...</Card>
+  + <Card>...</Card>
+  ```
+
+- **Box, atoms**: Remove deprecated `outline` value `none`, and `boxShadow` value `outlineFocus`. ([#1947](https://github.com/seek-oss/braid-design-system/pull/1947))
+
+  Braid leverages the `outline` property directly, managing focus rings of interactive elements as part of its scoped CSS reset.
+
+  **MIGRATION GUIDE:**
+
+  For styling the focus ring via `Box`:
+  1. Remove usage of `outline="none"` and `boxShadow="outlineFocus"`
+  2. Refer to [`focus outlines`] for guidance on leveraging Braid's focus outline styles.
+
+  ```diff
+  - <Box outline="none" className={styles.customFocusStyles} />
+  + <Box />
+  ```
+
+  For styling the focus outline of an element based on the focus of another element, see [`outlineStyle`].
+
+  [`focus outlines`]: https://seek-oss.github.io/braid-design-system/components/Box#focus-outlines
+  [`outlineStyle`]: https://seek-oss.github.io/braid-design-system/css/outlineStyle
+
+- **apac:** Remove in favour of `seekJobs` theme ([#1947](https://github.com/seek-oss/braid-design-system/pull/1947))
+
+  The previously deprecated `apac` theme has been removed.
+  Consumers should migrate to the `seekJobs` theme.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  # App.tsx
+  - import apac from 'braid-design-system/themes/apac';
+  + import seekJobs from 'braid-design-system/themes/seekJobs';
+
+  - <BraidProvider theme={apac} ...>
+  + <BraidProvider theme={seekJobs} ...>
+  ```
+
+- **IconList:** Remove deprecated component, in favour of more specific list types: `IconBulletList` and `IconNumberedList`. ([#1947](https://github.com/seek-oss/braid-design-system/pull/1947))
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  -<IconList />
+  +<IconBulletList />
+  ```
+
+- **Toggle:** Remove `bleedY` prop ([#1947](https://github.com/seek-oss/braid-design-system/pull/1947))
+
+  Remove the deprecated `bleedY` prop from the `Toggle` component.
+  Consumers should remove use of the `bleedY` prop, and if previously setting `bleedY` to false, should update their layout accordingly.
+
+  **MIGRATION GUIDE:**
+
+  ```diff
+  - <Toggle bleedY />
+  + <Toggle />
+  ```
+
+### Patch Changes
+
+- Update `is-mobile` dependency ([#1945](https://github.com/seek-oss/braid-design-system/pull/1945))
+
 ## 33.14.0
 
 ### Minor Changes
