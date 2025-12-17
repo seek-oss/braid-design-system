@@ -1,5 +1,7 @@
 # @braid-design-system/docs-ui
 
+## 4.0.0
+
 ## 3.0.5
 
 ### Patch Changes
