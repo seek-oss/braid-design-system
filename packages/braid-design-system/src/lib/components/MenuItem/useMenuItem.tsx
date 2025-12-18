@@ -18,6 +18,7 @@ import { type Action, actionTypes } from '../MenuRenderer/MenuRenderer.actions';
 import { MenuRendererContext } from '../MenuRenderer/MenuRendererContext';
 import { MenuRendererItemContext } from '../MenuRenderer/MenuRendererItemContext';
 import { Text } from '../Text/Text';
+import { animationTimeout } from '../private/animationTimeout';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -74,8 +75,13 @@ export function useMenuItem<MenuItemElement extends HTMLElement>({
   const menuItemRef = useRef<MenuItemElement>(null);
 
   useEffect(() => {
+    // Delay to prevent scroll before Popover is positioned correctly
     if (isHighlighted) {
-      menuItemRef.current?.focus();
+      const timeoutId = setTimeout(() => {
+        menuItemRef.current?.focus();
+      }, animationTimeout);
+
+      return () => clearTimeout(timeoutId);
     }
   }, [isHighlighted]);
 
