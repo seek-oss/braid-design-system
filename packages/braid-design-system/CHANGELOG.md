@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 34.0.1
+
+### Patch Changes
+
+- **MenuRenderer, OverflowMenu:** Prevent the document from scrolling when opening the menu with the keyboard ([#1952](https://github.com/seek-oss/braid-design-system/pull/1952))
+
 ## 34.0.0
 
 ### Major Changes
