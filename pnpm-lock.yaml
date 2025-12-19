@@ -27,7 +27,7 @@ importers:
         version: 0.5.2
       '@crackle/cli':
         specifier: ^0.16.0
-        version: 0.16.3(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)
+        version: 0.16.4(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)
       '@eslint/compat':
         specifier: ^1.2.5
         version: 1.4.1(eslint@9.39.2(jiti@2.6.1))
@@ -1364,13 +1364,13 @@ packages:
     resolution: {integrity: sha512-VfSSQwXSN9BEVQppsgb9I/+9FaQI7DJEyytaLv2c6hMo2CJVi2RDuWseyybKXfs/3ZHXT6Tg6nCmwcD0evidkA==}
     engines: {node: '>=20.18.3'}
 
-  '@crackle/cli@0.16.3':
-    resolution: {integrity: sha512-EfNSNst/g0cJTwWO2w7g//kMGimmg5YmvljP3Ut2eJRdKXCIGyiCfy08vft2ZR+YpMLuCndCviHZUgwhgabaVw==}
+  '@crackle/cli@0.16.4':
+    resolution: {integrity: sha512-7HmgtDcoNSWwa/wEfzfLgz6g6pJiIqOqtEfOphmaqFrDM0am3NDm8XqzrKNRYoIWLMecinD2poioyrf7SNpbhA==}
     engines: {node: '>=20.18.3'}
     hasBin: true
 
-  '@crackle/core@0.34.3':
-    resolution: {integrity: sha512-wyWJ3dZXxTYjWYT+b6Zw3scGYQcRADax+2hrRS9y2bDub1bHStjARt88mngLW2IUF2WnN4Adw4N7Z/RbKIgf/Q==}
+  '@crackle/core@0.34.4':
+    resolution: {integrity: sha512-d9nJcMxDOjRlW2P6/yL58J13IhJqssfmSJftaqngaNICvowyyhy3AR066dPOCGb1f4ESWmJKlo9Cx6hrjzn0Pg==}
     engines: {node: '>=20.18.3'}
     peerDependencies:
       typescript: '>=5.2.2'
@@ -10520,9 +10520,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@crackle/cli@0.16.3(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)':
+  '@crackle/cli@0.16.4(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)':
     dependencies:
-      '@crackle/core': 0.34.3(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)
+      '@crackle/core': 0.34.4(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -10542,7 +10542,7 @@ snapshots:
       - webpack
       - yaml
 
-  '@crackle/core@0.34.3(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)':
+  '@crackle/core@0.34.4(@types/node@22.19.3)(babel-plugin-macros@3.1.0)(jiti@2.6.1)(magicast@0.3.5)(terser@5.44.1)(typescript@5.5.4)(webpack@5.104.1(@swc/core@1.15.7)(esbuild@0.27.2))(yaml@2.8.2)':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/plugin-syntax-jsx': 7.27.1(@babel/core@7.28.5)
@@ -20825,7 +20825,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 4.2.3
+      string-width: 1.0.2
     optional: true
 
   widest-line@5.0.0:
