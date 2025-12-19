@@ -50,7 +50,7 @@
     "@babel/preset-typescript": "^7.26.0",
     "@changesets/cli": "^2.27.11",
     "@changesets/get-github-info": "^0.5.2",
-    "@crackle/cli": "^0.16.0",
+    "@crackle/cli": "^0.16.4",
     "@eslint/compat": "^1.2.5",
     "@manypkg/cli": "^0.21.4",
     "@octokit/rest": "^18.12.0",
