@@ -298,8 +298,8 @@ importers:
         specifier: ^2.12.1
         version: 2.17.0
       sku:
-        specifier: 15.6.0
-        version: 15.6.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
+        specifier: 15.7.0
+        version: 15.7.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
       storybook:
         specifier: 9.0.15
         version: 9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4)
@@ -574,8 +574,8 @@ importers:
         specifier: ^17.4.0
         version: 17.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       sku:
-        specifier: 15.6.0
-        version: 15.6.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.2))(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
+        specifier: 15.7.0
+        version: 15.7.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.2))(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2)
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
@@ -8240,12 +8240,12 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@15.6.0:
-    resolution: {integrity: sha512-6RMjWL/1B9LzsQ3bYQRWMZy9Nxp8LuwiD3SQvwKTAdlJNfLhhWR9b/NYnyNiY4uN+csVgIjrhnqVB28BhIifJg==}
+  sku@15.7.0:
+    resolution: {integrity: sha512-Mx1pV+AKlRLW1jN/kVrx+LHUiy94ft74A8X5loKKXfGA2TclEr7UjlA12x9LSQFL9dZIw09i+Xl6moR9cE93vg==}
     engines: {node: '>=22.19.0'}
     hasBin: true
     peerDependencies:
-      '@storybook/react-webpack5': ^7.0.0 || ^8.0.0 || ^9.0.0
+      '@storybook/react-webpack5': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
       '@types/react': ^18.0.0 || ^19.0.0
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -15491,7 +15491,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -19125,7 +19125,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@15.6.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
+  sku@15.7.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.21.5))(esbuild@0.21.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/generator': 7.28.5
@@ -19278,7 +19278,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@15.6.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.2))(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
+  sku@15.7.0(@storybook/react-webpack5@9.0.15(@swc/core@1.15.8)(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@9.0.15(@testing-library/dom@10.4.1)(prettier@3.7.4))(typescript@5.5.4))(@types/node@22.19.3)(@types/react@19.2.7)(@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(@typescript-eslint/utils@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.5.4))(esbuild-register@3.6.0(esbuild@0.27.2))(esbuild@0.27.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rollup@4.55.1)(terser@5.44.1)(tsx@4.21.0)(type-fest@4.41.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.19.3)(jiti@2.6.1)(jsdom@26.1.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(yaml@2.8.2):
     dependencies:
       '@babel/core': 7.28.5
       '@babel/generator': 7.28.5
@@ -20853,7 +20853,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@5.0.0:
