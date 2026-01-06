@@ -66,7 +66,7 @@
     "enquirer": "^2.4.1",
     "eslint": "^9.18.0",
     "eslint-config-seek": "^15.0.0",
-    "eslint-plugin-storybook": "9.0.15",
+    "eslint-plugin-storybook": "^10.1.11",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",

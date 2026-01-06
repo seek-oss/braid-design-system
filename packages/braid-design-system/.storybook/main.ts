@@ -42,7 +42,7 @@ const config: StorybookConfig = {
     skuConfig.resolve ??= {};
     skuConfig.resolve.alias = {
       ...skuConfig.resolve?.alias,
-      'braid-storybook': __dirname,
+      'braid-storybook': import.meta.dirname,
     };
 
     return skuConfig;
