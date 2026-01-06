@@ -6,7 +6,7 @@
 */
 
 /*!
-* tabbable 6.3.0
+* tabbable 6.4.0
 * @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
 */
 
