@@ -6,7 +6,6 @@
     "test": "pnpm run generate && vitest run --project=!integration",
     "test:integration": "vitest run --project=integration",
     "test:update": "vitest run -u",
-    "dev": "nx run-many --target=dev",
     "start": "nx run site:start",
     "start:playroom": "nx run site:start:playroom",
     "build": "pnpm build:braid && pnpm build:docs-ui && pnpm build:codemod",
