@@ -8,7 +8,7 @@
   },
   "packageRules": [
     {
-      "matchPackagePrefixes": ["playroom", "@capsizecss/", "@crackle/"],
+      "matchPackagePrefixes": ["playroom", "@capsizecss/"],
       "enabled": true
     },
     {

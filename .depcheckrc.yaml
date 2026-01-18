@@ -1,5 +1,4 @@
 ignores:
-  - '@crackle/cli'
   - '@testing-library/dom'
   - assert
   - tsdown
