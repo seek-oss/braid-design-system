@@ -1,14 +1,14 @@
-import { type Atoms, atoms as internalAtoms } from '../lib/css/atoms/atoms';
-import { breakpoints, type Breakpoint } from '../lib/css/breakpoints';
-import { colorModeStyle } from '../lib/css/colorModeStyle';
+import { type Atoms, atoms as internalAtoms } from './lib/css/atoms/atoms';
+import { breakpoints, type Breakpoint } from './lib/css/breakpoints';
+import { colorModeStyle } from './lib/css/colorModeStyle';
 import {
   globalHeadingStyle,
   globalTextStyle,
-} from '../lib/css/globalTypographyStyles';
-import { outlineStyle } from '../lib/css/outlineStyle';
-import { responsiveStyle } from '../lib/css/responsiveStyle';
+} from './lib/css/globalTypographyStyles';
+import { outlineStyle } from './lib/css/outlineStyle';
+import { responsiveStyle } from './lib/css/responsiveStyle';
 
-import { vars as internalVars } from '../lib/themes/vars.css';
+import { vars as internalVars } from './lib/themes/vars.css';
 
 const {
   grid,

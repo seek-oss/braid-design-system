@@ -3,7 +3,7 @@ import Code from 'site/App/Code/Code';
 import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
 import type { CssDoc } from 'site/types';
 
-import { vars } from 'braid-src/entries/css';
+import { vars } from 'braid-src/css';
 import {
   Text,
   TextLink,
