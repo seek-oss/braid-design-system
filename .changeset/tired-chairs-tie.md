@@ -3,4 +3,4 @@
 '@braid-design-system/docs-ui': patch
 ---
 
-Migrate to tsdown for build
+Migrate source code bundling to use `tsdown`.
