@@ -1,5 +1,5 @@
-import matchHighlights from 'autosuggest-highlight/match/index.js';
-import parseHighlights from 'autosuggest-highlight/parse/index.js';
+import matchHighlights from 'autosuggest-highlight/match';
+import parseHighlights from 'autosuggest-highlight/parse';
 import dedent from 'dedent';
 import {
   type ChangeEvent,

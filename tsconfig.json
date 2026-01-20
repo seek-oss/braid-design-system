@@ -17,7 +17,7 @@
       "braid-src/*": ["./packages/braid-design-system/src/*"],
       "braid-storybook/*": ["./packages/braid-design-system/.storybook/*"]
     },
-    // This condition enables us to import TS source directly across workspace packages.
+    // This condition enables us to import TS source directly across workspace packages at dev time.
     "customConditions": ["braid-dev"],
     "types": ["vitest/globals"]
   },
