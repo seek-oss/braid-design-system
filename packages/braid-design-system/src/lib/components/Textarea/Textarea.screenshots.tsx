@@ -172,6 +172,15 @@ export const TextareaGrowFieldWithTypingLimitedTo6Lines: Story = {
   render: () => <GrowFieldComponent />,
 };
 
+export const TextareaAt1Line: Story = {
+  args: {
+    value: '',
+    onChange: () => {},
+    label: 'Label',
+    lines: 1,
+  },
+};
+
 const CharacterLimitNoValueComponent = () => {
   const [value, setValue] = useState('');
   return (
