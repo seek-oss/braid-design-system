@@ -5372,5 +5372,22 @@
         "summary": "**MenuRenderer, OverflowMenu:** Prevent the document from scrolling when opening the menu with the keyboard"
       }
     ]
+  },
+  {
+    "version": "34.0.2",
+    "updates": [
+      {
+        "updated": [
+          "TooltipRenderer"
+        ],
+        "summary": "**TooltipRenderer:** Fix line wrapping with mixed character sets"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** update min-height to match touchableSize"
+      }
+    ]
   }
 ]
