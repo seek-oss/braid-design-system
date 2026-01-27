@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 34.0.2
+
+### Patch Changes
+
+- **TooltipRenderer:** Fix line wrapping with mixed character sets ([#1975](https://github.com/seek-oss/braid-design-system/pull/1975))
+
+- **Textarea:** update min-height to match touchableSize ([#1974](https://github.com/seek-oss/braid-design-system/pull/1974))
+
 ## 34.0.1
 
 ### Patch Changes
