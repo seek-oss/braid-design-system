@@ -1,0 +1,20 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 9bbcd40ff573a118482da3b1157ba7c7ba568696..992b32cd7f507eac6fb663777e7a8f5a72e3d268 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -939,10 +939,11 @@ function createDtsResolvePlugin({ cwd, tsconfig, tsconfigRaw, resolve, resolver,
+ 					external: true,
+ 					moduleSideEffects: sideEffects
+ 				};
+-				if (RE_CSS.test(id)) {
+-					debug$1("Externalizing css import:", id);
+-					return external;
+-				}
++				// PATCHED: Disabled CSS externalization
++				// if (RE_CSS.test(id)) {
++				// 	debug$1("Externalizing css import:", id);
++				// 	return external;
++				// }
+ 				const rolldownResolution = await this.resolve(id, importer, options);
+ 				debug$1("Rolldown resolution for dts import %O from %O: %O", id, importer, rolldownResolution);
+ 				const dtsResolution = await resolveDtsPath(id, importer, rolldownResolution);

@@ -83,7 +83,8 @@
   "packageManager": "pnpm@10.28.2",
   "pnpm": {
     "patchedDependencies": {
-      "panzoom": "patches/panzoom.patch"
+      "panzoom": "patches/panzoom.patch",
+      "rolldown-plugin-dts@0.20.0": "patches/rolldown-plugin-dts@0.20.0.patch"
     }
   },
   "manypkg": {
