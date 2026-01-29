@@ -18,12 +18,12 @@ const resolveFromBraid = (p) => require.resolve(path.join(braidSrc, p));
 export default {
   outputPath: './dist/playroom',
   components: require.resolve('./src/playroom.components.ts'),
-  snippets: resolveFromBraid('entries/playroom/snippets.ts'),
+  snippets: resolveFromBraid('playroom/snippets.ts'),
   themes: resolveFromBraid('lib/themes/index.ts'),
   defaultVisibleThemes: ['seekJobs'],
   frameComponent: require.resolve('./src/playroom.frame.ts'),
   scope: require.resolve('./src/playroom.scope.ts'),
-  typeScriptFiles: [resolveFromBraid('entries/playroom/components.ts')],
+  typeScriptFiles: [resolveFromBraid('playroom/components.ts')],
   widths: [320, 390, 768, 1024, 1280, 1440, 1600],
   defaultVisibleWidths: [390, 768, 1280],
   openBrowser: false,
@@ -33,6 +33,7 @@ export default {
       alias: {
         'braid-src': braidSrc,
       },
+      conditionNames: ['...', 'braid-dev'],
     },
     plugins: [
       new MiniCssExtractPlugin({

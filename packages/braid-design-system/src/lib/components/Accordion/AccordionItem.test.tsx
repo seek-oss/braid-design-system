@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import { AccordionItem, Badge, IconHelp } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 import { htmlToText } from '../../utils/htmlToText';
 
 describe('AccordionItem', () => {

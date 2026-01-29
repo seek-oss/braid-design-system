@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { atoms } from 'braid-src/entries/css';
+import { atoms } from 'braid-src/css';
 
 // @ts-expect-error
 import { myShadow } from './shadows';

@@ -1,7 +1,7 @@
-import * as css from 'braid-src/entries/css';
-import * as testComponents from 'braid-src/entries/test';
+import * as css from 'braid-src/css';
 import * as components from 'braid-src/lib/components';
 import type { Snippets } from 'braid-src/lib/components/private/Snippets';
+import * as testComponents from 'braid-src/test';
 
 import type {
   ComponentDocs,
@@ -17,7 +17,7 @@ const componentDocsContext = require.context(
   /.docs\.tsx$/,
 );
 const cssDocsContext = require.context(
-  'braid-src/entries/css/',
+  'braid-src/lib/css/',
   true,
   /.docs\.tsx$/,
 );

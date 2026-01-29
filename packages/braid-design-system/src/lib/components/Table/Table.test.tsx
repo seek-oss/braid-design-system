@@ -12,7 +12,7 @@ import {
   TableRow,
   Text,
 } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('Table', () => {
   it('should have accessible label', () => {

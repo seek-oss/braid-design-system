@@ -31,7 +31,16 @@ const makeStoreConsumer = (
   defaultState: Map<string, any>,
   store: Store,
   setStore: (newStore: Store) => void,
-) => {
+): {
+  setDefaultState: (key: string, value: any) => void;
+  getState: (key: string) => any;
+  setState: {
+    (key: string, value: any): void;
+    (key: string): (value: any) => void;
+  };
+  toggleState: (key: string) => void;
+  resetState: (...keys: string[]) => void;
+} => {
   const setDefaultState = (key: string, value: any) => {
     defaultState.set(key, value);
   };
@@ -90,7 +99,7 @@ export const PlayroomStateProvider = ({
   );
 };
 
-export const usePlayroomStore = () => {
+export const usePlayroomStore = (): ReturnType<typeof makeStoreConsumer> => {
   const storeConsumer = useContext(PlayroomStateContext);
 
   if (storeConsumer === null) {

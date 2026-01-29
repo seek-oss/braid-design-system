@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { type ComponentProps, useState } from 'react';
 
 import { CheckboxStandalone } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('CheckboxStandalone', () => {
   it('associates field with label correctly', () => {

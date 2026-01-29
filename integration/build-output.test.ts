@@ -79,6 +79,7 @@ describe('build', () => {
         '--no-ignore',
         `--regexp='${search.source}'`,
         '--sort=path',
+        "--glob='!*.d.{m,c}ts'", // Ignore declaration files
       ];
       const rgArgs = [...options, searchPath];
 

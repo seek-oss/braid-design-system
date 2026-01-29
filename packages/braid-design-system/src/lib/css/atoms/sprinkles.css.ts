@@ -8,6 +8,9 @@ import {
   createNormalizeValueFn,
 } from '@vanilla-extract/sprinkles';
 
+// Ensure reset is emitted before sprinkles in the bundle
+import '../reset/reset.css';
+
 import { type Breakpoint, breakpoints, breakpointNames } from '../breakpoints';
 
 import {

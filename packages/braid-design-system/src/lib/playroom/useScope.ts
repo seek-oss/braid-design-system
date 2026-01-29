@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { vars, atoms, breakpoints } from '../../entries/css';
+import { vars, atoms, breakpoints } from '../../css';
 import { useToast, useResponsiveValue } from '../components';
 
 import { usePlayroomStore } from './playroomState';
@@ -10,7 +10,16 @@ import {
   darkMode,
 } from '../css/atoms/sprinkles.css';
 
-export default function useScope() {
+type PlayroomScope = {
+  vars: typeof vars;
+  atoms: typeof atoms;
+  breakpoints: typeof breakpoints;
+  showToast: ReturnType<typeof useToast>;
+  responsiveValue: <Value>(value: RequiredResponsiveObject<Value>) => Value;
+  colorModeValue: (value: Record<'lightMode' | 'darkMode', any>) => any;
+} & ReturnType<typeof usePlayroomStore>;
+
+export default function useScope(): PlayroomScope {
   const responsiveValue = useResponsiveValue();
   const showToast = useToast();
   const playroomState = usePlayroomStore();

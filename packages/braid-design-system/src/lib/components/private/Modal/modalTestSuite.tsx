@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { type ComponentType, useState } from 'react';
 import type { Optional } from 'utility-types';
 
-import { BraidTestProvider } from '../../../../entries/test';
+import { BraidTestProvider } from '../../../../test';
 import { Button } from '../../Button/Button';
 
 import type { ModalProps } from './Modal';

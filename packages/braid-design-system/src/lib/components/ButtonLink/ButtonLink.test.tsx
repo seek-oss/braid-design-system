@@ -7,7 +7,7 @@ import {
   ButtonLink,
   IconSend,
 } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 import { htmlToText } from '../../utils/htmlToText';
 
 describe('ButtonLink', () => {

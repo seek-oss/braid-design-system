@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
 import { Textarea } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('Textarea', () => {
   it('associates field with label correctly', () => {

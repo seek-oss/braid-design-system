@@ -1,4 +1,4 @@
-import { darkMode } from '../../lib/css/atoms/sprinkles.css';
+import { darkMode } from '../lib/css/atoms/sprinkles.css';
 
 const flag = '_bdsdm';
 // VALUES

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
 import { type LinkComponent, makeLinkComponent, Text, TextLink } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 import { htmlToText } from '../../utils/htmlToText';
 
 describe('TextLink', () => {

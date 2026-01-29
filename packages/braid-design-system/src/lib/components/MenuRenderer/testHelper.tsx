@@ -16,7 +16,7 @@ import {
   Text,
   TextLink,
 } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 import type { MenuRendererProps } from './MenuRenderer';
 

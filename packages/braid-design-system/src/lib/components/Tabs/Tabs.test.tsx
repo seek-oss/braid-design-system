@@ -12,7 +12,7 @@ import {
   Badge,
   IconHome,
 } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 const TestPanel = ({ children }: { children: string }) => {
   const [checked, setChecked] = useState(false);

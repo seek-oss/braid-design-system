@@ -2,7 +2,7 @@ import { render, getAllByRole } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { MonthPicker } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('MonthPicker (Double dropdown)', () => {
   it('should render years descending by default', () => {

@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import { IconTick, List, Text } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('List', () => {
   it('should render valid html structure', () => {

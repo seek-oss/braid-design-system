@@ -26,9 +26,9 @@ const getPages = (relativePath) => {
 
 // TODO: COLORMODE RELEASE
 // Remove `colorModeStyle` from `undocumentedExports.json`
-const cssNames = getExports('src/entries/css.ts', 'css');
+const cssNames = getExports('src/css.ts', 'css');
 const componentNames = getExports('src/lib/components/index.ts');
-const testNames = getExports('src/entries/test.ts');
+const testNames = getExports('src/test.ts');
 const iconNames = getExports('src/lib/components/icons/index.ts');
 
 const guideRoutes = getPages('src/App/routes/guides/index.ts');

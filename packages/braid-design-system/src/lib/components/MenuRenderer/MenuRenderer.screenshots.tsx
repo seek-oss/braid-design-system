@@ -13,7 +13,7 @@ import {
   IconProfile,
   Inline,
 } from '../';
-import { vars } from '../../../entries/css';
+import { vars } from '../../../css';
 import { Placeholder } from '../private/Placeholder/Placeholder';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
