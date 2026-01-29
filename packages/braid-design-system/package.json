@@ -125,7 +125,7 @@
     "storybook": "storybook dev",
     "storybook:build": "storybook build --stats-json",
     "storybook:chromatic": "chromatic --only-changed --untraced './packages/!(braid-design-system)/**' --storybook-build-dir ./storybook-static --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
-    "validate:dist": "pnpm %skott dist/index.mjs",
+    "validate:dist": "tsx ./scripts/validateEsmImports.ts && pnpm %skott dist/index.mjs",
     "validate:src": "pnpm %skott src"
   },
   "dependencies": {
@@ -182,6 +182,7 @@
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "html-validate": "^9.7.1",
+    "picocolors": "^1.1.1",
     "playroom": "1.0.5",
     "prettier": "^3.4.1",
     "react": "^19.1.0",
