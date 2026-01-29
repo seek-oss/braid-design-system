@@ -67,6 +67,12 @@ const TableSection = ({
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A structure of rows and columns that allows users to easily view, compare
+      and analyse a dataset.
+    </Text>
+  ),
   subComponents: [
     'TableHeader',
     'TableRow',
