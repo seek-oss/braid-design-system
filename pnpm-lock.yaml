@@ -8,9 +8,6 @@ patchedDependencies:
   panzoom:
     hash: 5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30
     path: patches/panzoom.patch
-  rolldown-plugin-dts@0.21.7:
-    hash: 5115f06c653d0a1780c774961a860bb80f4a7ba3fc9e819eb2eb878d3cad9b3e
-    path: patches/rolldown-plugin-dts@0.21.7.patch
 
 importers:
 
@@ -8256,8 +8253,8 @@ packages:
     deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
-  rolldown-plugin-dts@0.21.7:
-    resolution: {integrity: sha512-u6mHPTxLzC/eU3hbFqu1Hd47if1zXITvNtbro5PRVqMe3tLzUkdeur87wRg8Y/bX5PYUUtPuGO815uHp8zi9uQ==}
+  rolldown-plugin-dts@0.21.8:
+    resolution: {integrity: sha512-czOQoe6eZpRKCv9P+ijO/v4A2TwQjASAV7qezUxRZSua06Yb2REPIZv/mbfXiZDP1ZfI7Ez7re7qfK9F9u0Epw==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       '@ts-macro/tsc': ^0.3.6
@@ -18813,7 +18810,7 @@ snapshots:
     dependencies:
       glob: 7.2.3
 
-  rolldown-plugin-dts@0.21.7(patch_hash=5115f06c653d0a1780c774961a860bb80f4a7ba3fc9e819eb2eb878d3cad9b3e)(rolldown@1.0.0-rc.1)(typescript@5.5.4):
+  rolldown-plugin-dts@0.21.8(rolldown@1.0.0-rc.1)(typescript@5.5.4):
     dependencies:
       '@babel/generator': 8.0.0-beta.4
       '@babel/parser': 8.0.0-beta.4
@@ -19922,7 +19919,7 @@ snapshots:
       obug: 2.1.1
       picomatch: 4.0.3
       rolldown: 1.0.0-rc.1
-      rolldown-plugin-dts: 0.21.7(patch_hash=5115f06c653d0a1780c774961a860bb80f4a7ba3fc9e819eb2eb878d3cad9b3e)(rolldown@1.0.0-rc.1)(typescript@5.5.4)
+      rolldown-plugin-dts: 0.21.8(rolldown@1.0.0-rc.1)(typescript@5.5.4)
       semver: 7.7.3
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
