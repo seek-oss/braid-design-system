@@ -34,30 +34,34 @@ function getPackageName(importPath: string): string | null {
   return firstSlash > -1 ? importPath.substring(0, firstSlash) : null;
 }
 
+function resolvePackageJsonPath(packageName: string): string {
+  let packageJsonPath: string;
+  try {
+    packageJsonPath = require.resolve(`${packageName}/package.json`, {
+      paths: [process.cwd()],
+    });
+  } catch {
+    const packagePath = require.resolve(packageName, {
+      paths: [process.cwd()],
+    });
+    let currentDir = dirname(packagePath);
+
+    while (!existsSync(join(currentDir, 'package.json')) && currentDir !== dirname(currentDir)) {
+      currentDir = dirname(currentDir);
+    }
+    packageJsonPath = join(currentDir, 'package.json');
+  }
+
+  return packageJsonPath;
+}
+
 function hasExportsField(packageName: string): boolean {
   if (packageExportsCache.has(packageName)) {
     return packageExportsCache.get(packageName)!;
   }
 
   try {
-    let packageJsonPath: string;
-
-    try {
-      packageJsonPath = require.resolve(`${packageName}/package.json`, {
-        paths: [process.cwd()],
-      });
-    } catch {
-      const packagePath = require.resolve(packageName, {
-        paths: [process.cwd()],
-      });
-      let currentDir = dirname(packagePath);
-
-      while (!existsSync(join(currentDir, 'package.json')) && currentDir !== dirname(currentDir)) {
-        currentDir = dirname(currentDir);
-      }
-      packageJsonPath = join(currentDir, 'package.json');
-    }
-
+    const packageJsonPath = resolvePackageJsonPath(packageName);
     const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
     const hasExports = 'exports' in packageJson;
 
