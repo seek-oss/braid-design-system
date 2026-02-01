@@ -2,9 +2,9 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import { ContentBlock, Stack } from '../';
+import { Placeholder } from '../../playroom/components';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
-import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {

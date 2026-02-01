@@ -21,7 +21,10 @@ import {
 import {
   Checkbox,
   Drawer,
+  Inline,
   Placeholder,
+  PlaceholderFooter,
+  PlaceholderHeader,
   TextField,
 } from 'braid-src/lib/playroom/components';
 
@@ -57,23 +60,47 @@ const PlayroomPrototyping = () => (
 
     <Divider />
 
-    <List>
-      <Text>
-        <TextLink href="#placeholder">Placeholder</TextLink>
-      </Text>
+    <List space="medium">
       <Text>
         <TextLink href="#rendering-repetitive-content">
           Rendering repetitive content
         </TextLink>
       </Text>
-      <Text>
-        <TextLink href="#managing-state">Managing state</TextLink>
-      </Text>
-      <Text>
-        <TextLink href="#navigating-between-screens">
-          Navigating between screens
-        </TextLink>
-      </Text>
+
+      <Stack space="small">
+        <Text>
+          <TextLink href="#state-management">State Management</TextLink>
+        </Text>
+        <List>
+          <Text>
+            <TextLink href="#using-field-state">Using field state</TextLink>
+          </Text>
+          <Text>
+            <TextLink href="#navigating-between-screens">
+              Navigating between screens
+            </TextLink>
+          </Text>
+        </List>
+      </Stack>
+
+      <Stack space="small">
+        <Text>
+          <TextLink href="#playroom-only-components">
+            Playroom-only components
+          </TextLink>
+        </Text>
+        <List>
+          <Text>
+            <TextLink href="#placeholder">Placeholder</TextLink>
+          </Text>
+          <Text>
+            <TextLink href="#placeholderheader">PlaceholderHeader</TextLink>
+          </Text>
+          <Text>
+            <TextLink href="#placeholderfooter">PlaceholderFooter</TextLink>
+          </Text>
+        </List>
+      </Stack>
       <Text>
         <TextLink href="#custom-styling">Custom styling</TextLink>
       </Text>
@@ -81,51 +108,9 @@ const PlayroomPrototyping = () => (
 
     <Divider />
 
-    <LinkableHeading level="3">Placeholder</LinkableHeading>
-    <Text>
-      When laying out a prototype you may wish to reserve space that would
-      normally be occupied by other elements in the real product. For this we
-      provide a special Playroom-only component called{' '}
-      <Strong>Placeholder</Strong>.
-    </Text>
-    <Text>
-      A Placeholder can be given a <Strong>height</Strong> and/or{' '}
-      <Strong>width</Strong>, as well as an optional <Strong>label</Strong>. You
-      can even change the <Strong>shape</Strong>, choosing between{' '}
-      <Strong>round</Strong> and <Strong>rectangle</Strong>.
-    </Text>
-    <Code>
-      <Columns space="medium">
-        <Column width="1/4">
-          <Placeholder height="100%" label="Side bar" />
-        </Column>
-        <Column>
-          <Stack space="medium">
-            <Placeholder height={80} width={80} shape="round" />
-            <Card>
-              <Stack space="small">
-                <Text weight="strong">Senior Developer</Text>
-                <Text>Sydney</Text>
-              </Stack>
-            </Card>
-            <Placeholder height={80} />
-          </Stack>
-        </Column>
-      </Columns>
-    </Code>
-    <Text>
-      Placeholder can be used to add images to your prototype as well, by simply
-      providing a url to the <Strong>image</Strong> prop. By default this will
-      fill the Placeholder with the image focusing on the center. You can
-      customise the size via the <Strong>imageSize</Strong> prop, which accepts
-      any valid{' '}
-      <TextLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-size">
-        background-size
-      </TextLink>{' '}
-      value.
-    </Text>
-
-    <LinkableHeading level="3">Rendering repetitive content</LinkableHeading>
+    <LinkableHeading component="h2" level="3">
+      Rendering repetitive content
+    </LinkableHeading>
     <Text>
       Most designs contain some degree of repeating content. For example, let’s
       say we have a list of basic cards:
@@ -202,7 +187,7 @@ const PlayroomPrototyping = () => (
               },
             ])}
 
-            <Stack space="medium">
+            <Stack space="small">
               {getState('jobs').map((job) => (
                 <Card key={job.id}>
                   <Stack space="small">
@@ -265,7 +250,7 @@ const PlayroomPrototyping = () => (
               },
             ])}
 
-            <Stack space="medium">
+            <Stack space="small">
               {getState('jobs').map((job) => (
                 <Card key={job.id} tone={job.featured ? 'promote' : undefined}>
                   <Stack space="small">
@@ -285,80 +270,54 @@ const PlayroomPrototyping = () => (
       }}
     </Code>
 
-    <LinkableHeading level="3">Managing state</LinkableHeading>
-    <Text>
-      Braid components, when used in Playroom, manage their own state internally
-      by default. For example, if you use a{' '}
-      <TextLink href="/components/Checkbox">Checkbox</TextLink> component,
-      you’re able to toggle the checkbox on and off.
-    </Text>
-    <Code>
-      <Checkbox label="Checkbox" />
-    </Code>
-    <Text>
-      This checkbox works in isolation, but what if we wanted it to control
-      other parts of the UI? Well, first we need to provide a{' '}
-      <Strong>stateName</Strong> prop to our checkbox, which then allows us to
-      ask for its state elsewhere in our prototype using the{' '}
-      <Strong>getState</Strong> function.
-    </Text>
-    <Text>
-      As a minimal example, let’s make the checkbox toggle the visibility of
-      another element:
-    </Text>
-    <Code>
-      {({ getState }) =>
-        source(
-          <Stack space="medium">
-            <Checkbox label="Checkbox" stateName="myCheckbox" />
+    <LinkableHeading component="h2" level="3">
+      State management
+    </LinkableHeading>
 
-            {getState('myCheckbox') && (
-              <Notice tone="positive">
-                <Text>Good job! You checked the checkbox!</Text>
-              </Notice>
-            )}
-          </Stack>,
-        )
-      }
-    </Code>
-    <Text>
-      We could also use the checkbox state to toggle the visibility of two
-      alternate elements:
-    </Text>
-    <Code>
-      {({ getState }) =>
-        source(
-          <Stack space="medium">
-            <Checkbox label="Checkbox" stateName="myCheckbox" />
+    <Stack space="large">
+      <LinkableHeading level="3">Using field state</LinkableHeading>
+      <Text>
+        Braid components, when used in Playroom, manage their own state
+        internally by default. For example, if you use a{' '}
+        <TextLink href="/components/Checkbox">Checkbox</TextLink> component,
+        you’re able to toggle the checkbox on and off.
+      </Text>
+      <Code>
+        <Checkbox label="Checkbox" />
+      </Code>
+      <Text>
+        This checkbox works in isolation, but what if we wanted it to control
+        other parts of the UI? Well, first we need to provide a{' '}
+        <Strong>stateName</Strong> prop to our checkbox, which then allows us to
+        ask for its state elsewhere in our prototype using the{' '}
+        <Strong>getState</Strong> function.
+      </Text>
+      <Text>
+        As a minimal example, let’s make the checkbox toggle the visibility of
+        another element:
+      </Text>
+      <Code>
+        {({ getState }) =>
+          source(
+            <Stack space="medium">
+              <Checkbox label="Checkbox" stateName="myCheckbox" />
 
-            {getState('myCheckbox') ? (
-              <Notice tone="positive">
-                <Text>Good job! You checked the checkbox!</Text>
-              </Notice>
-            ) : (
-              <Notice tone="critical">
-                <Text>Oops! You haven’t checked the checkbox!</Text>
-              </Notice>
-            )}
-          </Stack>,
-        )
-      }
-    </Code>
-
-    <Text>
-      By default, all state values are blank until the user interacts with
-      something. While this is usually fine in simple prototypes, you’re likely
-      to find scenarios where you need the state to have a default value. For
-      example, we might want our checkbox to be checked by default. To support
-      this, our Playrooom provides a <Strong>setDefaultState</Strong> function
-      which should be called before rendering anything to the screen:
-    </Text>
-    <Code>
-      {({ setDefaultState, getState }) =>
-        source(
-          <>
-            {setDefaultState('myCheckbox', true)}
-
+              {getState('myCheckbox') && (
+                <Notice tone="positive">
+                  <Text>Good job! You checked the checkbox!</Text>
+                </Notice>
+              )}
+            </Stack>,
+          )
+        }
+      </Code>
+      <Text>
+        We could also use the checkbox state to toggle the visibility of two
+        alternate elements:
+      </Text>
+      <Code>
+        {({ getState }) =>
+          source(
             <Stack space="medium">
               <Checkbox label="Checkbox" stateName="myCheckbox" />
 
@@ -371,19 +330,50 @@ const PlayroomPrototyping = () => (
                   <Text>Oops! You haven’t checked the checkbox!</Text>
                 </Notice>
               )}
-            </Stack>
-          </>,
-        )
-      }
-    </Code>
-    <Text>
-      We can bind to more complicated state too, like text values within{' '}
-      <TextLink href="/components/TextField">TextField</TextLink> components:
-    </Text>
-    <Code>
-      {({ getState }) =>
-        source(
-          <Card>
+            </Stack>,
+          )
+        }
+      </Code>
+
+      <Text>
+        By default, all state values are blank until the user interacts with
+        something. While this is usually fine in simple prototypes, you’re
+        likely to find scenarios where you need the state to have a default
+        value. For example, we might want our checkbox to be checked by default.
+        To support this, our Playrooom provides a{' '}
+        <Strong>setDefaultState</Strong> function which should be called before
+        rendering anything to the screen:
+      </Text>
+      <Code>
+        {({ setDefaultState, getState }) =>
+          source(
+            <>
+              {setDefaultState('myCheckbox', true)}
+
+              <Stack space="medium">
+                <Checkbox label="Checkbox" stateName="myCheckbox" />
+
+                {getState('myCheckbox') ? (
+                  <Notice tone="positive">
+                    <Text>Good job! You checked the checkbox!</Text>
+                  </Notice>
+                ) : (
+                  <Notice tone="critical">
+                    <Text>Oops! You haven’t checked the checkbox!</Text>
+                  </Notice>
+                )}
+              </Stack>
+            </>,
+          )
+        }
+      </Code>
+      <Text>
+        We can bind to more complicated state too, like text values within{' '}
+        <TextLink href="/components/TextField">TextField</TextLink> components:
+      </Text>
+      <Code>
+        {({ getState }) =>
+          source(
             <Stack space="large">
               <TextField label="First name" stateName="firstName" />
               <TextField label="Last name" stateName="lastName" />
@@ -393,75 +383,74 @@ const PlayroomPrototyping = () => (
                   👋 Hello {getState('firstName')} {getState('lastName')}!
                 </Heading>
               ) : null}
-            </Stack>
-          </Card>,
-        )
-      }
-    </Code>
-    <Text>
-      It’s not just about form elements either. For example, we might want to
-      provide a <TextLink href="/components/Button">Button</TextLink> that, via
-      an <Strong>onClick</Strong> handler, toggles the <Strong>open</Strong>{' '}
-      state of a <TextLink href="/components/Drawer">Drawer</TextLink>.
-    </Text>
-    <Text>
-      In this example we’re making use of the <Strong>toggleState</Strong>{' '}
-      function to set the state to <Strong>true</Strong> if the drawer is
-      hidden.
-    </Text>
+            </Stack>,
+          )
+        }
+      </Code>
+      <Text>
+        It’s not just about form elements either. For example, we might want to
+        provide a <TextLink href="/components/Button">Button</TextLink> that,
+        via an <Strong>onClick</Strong> handler, toggles the{' '}
+        <Strong>open</Strong> state of a{' '}
+        <TextLink href="/components/Drawer">Drawer</TextLink>.
+      </Text>
+      <Text>
+        In this example we’re making use of the <Strong>toggleState</Strong>{' '}
+        function to set the state to <Strong>true</Strong> if the drawer is
+        hidden.
+      </Text>
 
-    <Code>
-      {({ toggleState }) =>
-        source(
-          <Card>
-            <Actions>
-              <Button onClick={() => toggleState('myDrawer')}>
-                Open drawer
-              </Button>
-            </Actions>
+      <Code>
+        {({ toggleState }) =>
+          source(
+            <>
+              <Actions>
+                <Button onClick={() => toggleState('myDrawer')}>
+                  Open drawer
+                </Button>
+              </Actions>
 
-            <Drawer title="Drawer" stateName="myDrawer">
-              <Placeholder height={100} />
-            </Drawer>
-          </Card>,
-        )
-      }
-    </Code>
+              <Drawer title="Drawer" stateName="myDrawer">
+                <Placeholder height={100} />
+              </Drawer>
+            </>,
+          )
+        }
+      </Code>
+    </Stack>
 
-    <LinkableHeading level="3">Navigating between screens</LinkableHeading>
-    <Text>
-      We can also leverage state to simulate having multiple screens by using a
-      piece of state called <Strong>screen</Strong>.
-    </Text>
-    <Text>
-      In this example we’re making use of the <Strong>setState</Strong> function
-      to choose the desired screen, and the <Strong>resetState</Strong> function
-      to go back to the original screen.
-    </Text>
+    <Stack space="large">
+      <LinkableHeading level="3">Navigating between screens</LinkableHeading>
+      <Text>
+        We can also leverage state to simulate having multiple screens by using
+        a piece of state called <Strong>screen</Strong>.
+      </Text>
+      <Text>
+        In this example we’re making use of the <Strong>setState</Strong>{' '}
+        function to choose the desired screen, and the{' '}
+        <Strong>resetState</Strong> function to go back to the original screen.
+      </Text>
 
-    <Code>
-      {({ setDefaultState, getState, setState, resetState }) =>
-        source(
-          <>
-            {setDefaultState('screen', 'Home')}
+      <Code>
+        {({ setDefaultState, getState, setState, resetState }) =>
+          source(
+            <>
+              {setDefaultState('screen', 'Home')}
 
-            {getState('screen') === 'Home' && (
-              <Card>
+              {getState('screen') === 'Home' && (
                 <Stack space="large">
-                  <Heading level="3">Home</Heading>
+                  <Heading level="2">Home</Heading>
                   <Actions>
                     <Button onClick={() => setState('screen', 'Welcome')}>
                       Sign in
                     </Button>
                   </Actions>
                 </Stack>
-              </Card>
-            )}
+              )}
 
-            {getState('screen') === 'Welcome' && (
-              <Card>
+              {getState('screen') === 'Welcome' && (
                 <Stack space="large">
-                  <Heading level="3">👋 Welcome!</Heading>
+                  <Heading level="2">👋 Welcome!</Heading>
                   <Placeholder height={100} />
                   <Actions>
                     <Button onClick={() => resetState('screen')}>
@@ -469,14 +458,226 @@ const PlayroomPrototyping = () => (
                     </Button>
                   </Actions>
                 </Stack>
-              </Card>
-            )}
-          </>,
-        )
-      }
-    </Code>
+              )}
+            </>,
+          )
+        }
+      </Code>
+    </Stack>
 
-    <LinkableHeading level="3">Custom styling</LinkableHeading>
+    <LinkableHeading component="h2" level="3">
+      Playroom-only components
+    </LinkableHeading>
+
+    <Text>
+      To better facilitate prototyping, Braid provides a few extra components
+      that are only available within Playroom. These components are designed to
+      help you quickly build either wireframes or more realistic prototypes
+      without needing to create them from scratch.
+    </Text>
+
+    <Stack space="large">
+      <LinkableHeading level="3" label="placeholder">
+        &lt;Placeholder /&gt;
+      </LinkableHeading>
+      <Text>
+        For wireframing or scaffolding page layout around a prototype.
+      </Text>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">Size</LinkableHeading>
+
+        <Text>
+          Use <Strong>height</Strong> and <Strong>width</Strong> props to
+          control the size. Any numerical value will be treated as pixels, while
+          strings can use any valid CSS unit, i.e. “auto” or “100%”. The default
+          height is 120px, and width is “auto”.
+        </Text>
+
+        <Code collapsedByDefault>
+          <Columns space="medium">
+            <Column width="1/2">
+              <Placeholder height={80} />
+            </Column>
+            <Column width="content">
+              <Placeholder height="100%" width={60} />
+            </Column>
+            <Column>
+              <Placeholder height={150} />
+            </Column>
+          </Columns>
+        </Code>
+      </Stack>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">Label</LinkableHeading>
+
+        <Text>
+          Use <Strong>label</Strong> to provide a descriptive text for the
+          placeholder.
+        </Text>
+
+        <Code collapsedByDefault>
+          <Columns space="medium">
+            <Column width="content">
+              <Placeholder height={80} width={150} label="Sidebar" />
+            </Column>
+            <Column>
+              <Placeholder height={80} width="100%" label="Content" />
+            </Column>
+          </Columns>
+        </Code>
+      </Stack>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">Shape</LinkableHeading>
+
+        <Text>
+          Use <Strong>shape</Strong> choose between a <Strong>rectangle</Strong>{' '}
+          (default) or <Strong>round</Strong>.
+        </Text>
+
+        <Code collapsedByDefault>
+          <Inline space="medium">
+            <Placeholder height={80} width={80} shape="rectangle" />
+            <Placeholder height={80} width={80} shape="round" />
+          </Inline>
+        </Code>
+      </Stack>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">Images</LinkableHeading>
+
+        <Text>
+          Use <Strong>image</Strong> to apply a background image that fills the
+          placeholder. The <Strong>imageSize</Strong> prop controls how the
+          image is sized and accepts any valid CSS{' '}
+          <TextLink
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-size"
+            target="_blank"
+          >
+            background-size
+          </TextLink>{' '}
+          value, defaulting to{' '}
+          <TextLink
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-size#cover"
+            target="_blank"
+          >
+            “cover”
+          </TextLink>
+          .
+        </Text>
+
+        <Code collapsedByDefault>
+          <Placeholder
+            height={200}
+            image="https://lists.office.com/Images/62140e26-37b7-42d2-8dfb-a4d7cf1bc427/6632ae14-287a-4766-869f-a4b0c2a287e6/T29KISYT8UJTUNYSO9P2YRXCCF/76926616-dcbe-4e3d-a0d3-6ab3641d8d86"
+          />
+        </Code>
+      </Stack>
+    </Stack>
+
+    <Stack space="large">
+      <LinkableHeading level="3" label="placeholderHeader">
+        &lt;PlaceholderHeader /&gt;
+      </LinkableHeading>
+      <Text>
+        For placeholder for framing SEEK-based experiences in prototypes.
+      </Text>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">brand</LinkableHeading>
+
+        <Text>
+          Sets the logo for the selected brand. By default uses{' '}
+          <Strong>seek</Strong>, with options for <Strong>jobsdb</Strong> and{' '}
+          <Strong>jobstreet</Strong>.
+        </Text>
+
+        <Code collapsedByDefault>
+          <Stack space="small">
+            <PlaceholderHeader brand="seek" />
+            <PlaceholderHeader brand="jobsdb" />
+            <PlaceholderHeader brand="jobstreet" />
+          </Stack>
+        </Code>
+      </Stack>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">authenticated</LinkableHeading>
+
+        <Text>
+          By default, presents a basic logged in user account menu. To prototype
+          a logged out experience, set the <Strong>authenticated</Strong> prop
+          to <Strong>false</Strong> .
+        </Text>
+
+        <Code collapsedByDefault>
+          <PlaceholderHeader authenticated={false} />
+        </Code>
+      </Stack>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">product</LinkableHeading>
+
+        <Text>Sets the product scope to be used alongside the logo.</Text>
+
+        <Code collapsedByDefault>
+          <PlaceholderHeader product="product" />
+        </Code>
+      </Stack>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">divider</LinkableHeading>
+
+        <Text>
+          By default, the header uses a bottom divider, which can be disabled by
+          setting the <Strong>divider</Strong> prop to <Strong>false</Strong>.
+        </Text>
+
+        <Code collapsedByDefault>
+          <PlaceholderHeader divider={false} />
+        </Code>
+      </Stack>
+    </Stack>
+
+    <Stack space="large">
+      <LinkableHeading level="3" label="placeholderFooter">
+        &lt;PlaceholderFooter /&gt;
+      </LinkableHeading>
+      <Text>
+        For placeholder for framing SEEK-based experiences in prototypes.
+      </Text>
+
+      <Notice>
+        <Text>
+          Recommended to use in conjunction with the <Strong>footer</Strong>{' '}
+          prop on the <TextLink href="/components/Page">Page</TextLink>{' '}
+          component.
+        </Text>
+      </Notice>
+
+      <Code playroom={false}>
+        <PlaceholderFooter />
+      </Code>
+
+      <Stack space="medium">
+        <LinkableHeading level="4">divider</LinkableHeading>
+
+        <Text>
+          By default, the footer uses a top divider, which can be disabled by
+          setting the <Strong>divider</Strong> prop to <Strong>false</Strong>.
+        </Text>
+
+        <Code collapsedByDefault>
+          <PlaceholderFooter divider={false} />
+        </Code>
+      </Stack>
+    </Stack>
+
+    <LinkableHeading component="h2" level="3">
+      Custom styling
+    </LinkableHeading>
     <Alert tone="caution">
       <Text>
         This section covers very low-level mechanisms that require familiarity

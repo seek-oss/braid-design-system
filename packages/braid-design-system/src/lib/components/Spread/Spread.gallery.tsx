@@ -2,7 +2,7 @@ import source from '@braid-design-system/source.macro';
 import type { GalleryComponent } from 'site/types';
 
 import { Divider, Spread, Stack, Tiles } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 
 export const galleryItems: GalleryComponent = {
   examples: [
