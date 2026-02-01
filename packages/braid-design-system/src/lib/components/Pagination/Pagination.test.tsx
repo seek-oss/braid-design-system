@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 import { Pagination } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('Pagination', () => {
   it('should render valid html structure', () => {

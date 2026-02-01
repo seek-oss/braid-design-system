@@ -15,124 +15,85 @@
   "author": "SEEK",
   "sideEffects": [
     "**/components/BraidProvider/BraidProvider.*",
-    "**/entries/playroom/components.ts",
-    "**/entries/reset.ts",
+    "**/playroom/components.ts",
+    "**/reset.ts",
     "**/reset/**",
     "*.css.*",
     "dist/playroom/components.*",
-    "dist/reset.*",
-    "dist/side-effects/**"
+    "dist/reset.*"
   ],
+  "type": "module",
   "exports": {
     ".": {
-      "types": {
-        "import": "./dist/index.d.mts",
-        "require": "./dist/index.d.ts"
-      },
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "braid-dev": "./src/index.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     },
     "./color-mode/query-param": {
-      "types": {
-        "import": "./dist/color-mode/query-param.d.mts",
-        "require": "./dist/color-mode/query-param.d.ts"
-      },
-      "import": "./dist/color-mode/query-param.mjs",
-      "require": "./dist/color-mode/query-param.cjs"
+      "braid-dev": "./src/color-mode/query-param.ts",
+      "require": "./dist/color-mode/query-param.cjs",
+      "import": "./dist/color-mode/query-param.mjs"
     },
     "./css": {
-      "types": {
-        "import": "./dist/css.d.mts",
-        "require": "./dist/css.d.ts"
-      },
-      "import": "./dist/css.mjs",
-      "require": "./dist/css.cjs"
-    },
-    "./playroom/FrameComponent": {
-      "types": {
-        "import": "./dist/playroom/FrameComponent.d.mts",
-        "require": "./dist/playroom/FrameComponent.d.ts"
-      },
-      "import": "./dist/playroom/FrameComponent.mjs",
-      "require": "./dist/playroom/FrameComponent.cjs"
+      "braid-dev": "./src/css.ts",
+      "require": "./dist/css.cjs",
+      "import": "./dist/css.mjs"
     },
     "./playroom/components": {
-      "types": {
-        "import": "./dist/playroom/components.d.mts",
-        "require": "./dist/playroom/components.d.ts"
-      },
-      "import": "./dist/playroom/components.mjs",
-      "require": "./dist/playroom/components.cjs"
+      "braid-dev": "./src/playroom/components.ts",
+      "require": "./dist/playroom/components.cjs",
+      "import": "./dist/playroom/components.mjs"
+    },
+    "./playroom/FrameComponent": {
+      "braid-dev": "./src/playroom/FrameComponent.ts",
+      "require": "./dist/playroom/FrameComponent.cjs",
+      "import": "./dist/playroom/FrameComponent.mjs"
     },
     "./playroom/scope": {
-      "types": {
-        "import": "./dist/playroom/scope.d.mts",
-        "require": "./dist/playroom/scope.d.ts"
-      },
-      "import": "./dist/playroom/scope.mjs",
-      "require": "./dist/playroom/scope.cjs"
+      "braid-dev": "./src/playroom/scope.ts",
+      "require": "./dist/playroom/scope.cjs",
+      "import": "./dist/playroom/scope.mjs"
     },
     "./playroom/snippets": {
-      "types": {
-        "import": "./dist/playroom/snippets.d.mts",
-        "require": "./dist/playroom/snippets.d.ts"
-      },
-      "import": "./dist/playroom/snippets.mjs",
-      "require": "./dist/playroom/snippets.cjs"
+      "braid-dev": "./src/playroom/snippets.ts",
+      "require": "./dist/playroom/snippets.cjs",
+      "import": "./dist/playroom/snippets.mjs"
     },
     "./reset": {
-      "types": {
-        "import": "./dist/reset.d.mts",
-        "require": "./dist/reset.d.ts"
-      },
-      "import": "./dist/reset.mjs",
-      "require": "./dist/reset.cjs"
+      "braid-dev": "./src/reset.ts",
+      "require": "./dist/reset.cjs",
+      "import": "./dist/reset.mjs"
     },
     "./test": {
-      "types": {
-        "import": "./dist/test.d.mts",
-        "require": "./dist/test.d.ts"
-      },
-      "import": "./dist/test.mjs",
-      "require": "./dist/test.cjs"
+      "braid-dev": "./src/test.ts",
+      "require": "./dist/test.cjs",
+      "import": "./dist/test.mjs"
     },
     "./themes/docs": {
-      "types": {
-        "import": "./dist/themes/docs.d.mts",
-        "require": "./dist/themes/docs.d.ts"
-      },
-      "import": "./dist/themes/docs.mjs",
-      "require": "./dist/themes/docs.cjs"
+      "braid-dev": "./src/themes/docs.ts",
+      "require": "./dist/themes/docs.cjs",
+      "import": "./dist/themes/docs.mjs"
     },
     "./themes/seekBusiness": {
-      "types": {
-        "import": "./dist/themes/seekBusiness.d.mts",
-        "require": "./dist/themes/seekBusiness.d.ts"
-      },
-      "import": "./dist/themes/seekBusiness.mjs",
-      "require": "./dist/themes/seekBusiness.cjs"
+      "braid-dev": "./src/themes/seekBusiness.ts",
+      "require": "./dist/themes/seekBusiness.cjs",
+      "import": "./dist/themes/seekBusiness.mjs"
     },
     "./themes/seekJobs": {
-      "types": {
-        "import": "./dist/themes/seekJobs.d.mts",
-        "require": "./dist/themes/seekJobs.d.ts"
-      },
-      "import": "./dist/themes/seekJobs.mjs",
-      "require": "./dist/themes/seekJobs.cjs"
+      "braid-dev": "./src/themes/seekJobs.ts",
+      "require": "./dist/themes/seekJobs.cjs",
+      "import": "./dist/themes/seekJobs.mjs"
     },
     "./themes/wireframe": {
-      "types": {
-        "import": "./dist/themes/wireframe.d.mts",
-        "require": "./dist/themes/wireframe.d.ts"
-      },
-      "import": "./dist/themes/wireframe.mjs",
-      "require": "./dist/themes/wireframe.cjs"
+      "braid-dev": "./src/themes/wireframe.ts",
+      "require": "./dist/themes/wireframe.cjs",
+      "import": "./dist/themes/wireframe.mjs"
     },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
   "files": [
     "CHANGELOG.md",
     "color-mode",
@@ -152,8 +113,8 @@
     "themes/wireframe"
   ],
   "scripts": {
-    "build": "crackle package",
-    "dev": "crackle dev --shim=none",
+    "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
+    "build": "tsdown",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "generate:icons": "tsx ./scripts/generateIcons.cts",
@@ -164,9 +125,8 @@
     "storybook": "storybook dev",
     "storybook:build": "storybook build --stats-json",
     "storybook:chromatic": "chromatic --only-changed --untraced './packages/!(braid-design-system)/**' --storybook-build-dir ./storybook-static --exit-zero-on-changes --exit-once-uploaded --auto-accept-changes master",
-    "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
-    "validate:src": "pnpm %skott src",
-    "validate:dist": "pnpm %skott dist/index.mjs"
+    "validate:dist": "tsx ./scripts/validateEsmImports.ts && pnpm %skott dist/index.mjs",
+    "validate:src": "pnpm %skott src"
   },
   "dependencies": {
     "@capsizecss/core": "^4.1.2",
@@ -213,6 +173,7 @@
     "@types/sanitize-html": "^2.13.0",
     "@types/testing-library__jest-dom": "^5.9.1",
     "@types/throttle-debounce": "^5.0.2",
+    "@vanilla-extract/rollup-plugin": "^1.5.1",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
@@ -221,6 +182,7 @@
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "html-validate": "^9.7.1",
+    "picocolors": "^1.1.1",
     "playroom": "1.0.5",
     "prettier": "^3.4.1",
     "react": "^19.1.0",
@@ -235,5 +197,62 @@
   "peerDependencies": {
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.mjs"
+      },
+      "./color-mode/query-param": {
+        "require": "./dist/color-mode/query-param.cjs",
+        "import": "./dist/color-mode/query-param.mjs"
+      },
+      "./css": {
+        "require": "./dist/css.cjs",
+        "import": "./dist/css.mjs"
+      },
+      "./playroom/components": {
+        "require": "./dist/playroom/components.cjs",
+        "import": "./dist/playroom/components.mjs"
+      },
+      "./playroom/FrameComponent": {
+        "require": "./dist/playroom/FrameComponent.cjs",
+        "import": "./dist/playroom/FrameComponent.mjs"
+      },
+      "./playroom/scope": {
+        "require": "./dist/playroom/scope.cjs",
+        "import": "./dist/playroom/scope.mjs"
+      },
+      "./playroom/snippets": {
+        "require": "./dist/playroom/snippets.cjs",
+        "import": "./dist/playroom/snippets.mjs"
+      },
+      "./reset": {
+        "require": "./dist/reset.cjs",
+        "import": "./dist/reset.mjs"
+      },
+      "./test": {
+        "require": "./dist/test.cjs",
+        "import": "./dist/test.mjs"
+      },
+      "./themes/docs": {
+        "require": "./dist/themes/docs.cjs",
+        "import": "./dist/themes/docs.mjs"
+      },
+      "./themes/seekBusiness": {
+        "require": "./dist/themes/seekBusiness.cjs",
+        "import": "./dist/themes/seekBusiness.mjs"
+      },
+      "./themes/seekJobs": {
+        "require": "./dist/themes/seekJobs.cjs",
+        "import": "./dist/themes/seekJobs.mjs"
+      },
+      "./themes/wireframe": {
+        "require": "./dist/themes/wireframe.cjs",
+        "import": "./dist/themes/wireframe.mjs"
+      },
+      "./package.json": "./package.json"
+    }
   }
 }

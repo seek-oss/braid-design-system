@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ButtonIcon, IconBookmark, Text } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('ButtonIcon', () => {
   it('should render valid html structure', () => {

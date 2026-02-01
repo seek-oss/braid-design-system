@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
 import { useResponsiveValue } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('useResponsiveValue', () => {
   const testData = [

@@ -1,4 +1,4 @@
-import '../src/entries/reset';
+import '../src/reset';
 
 import type { Preview } from '@storybook/react-webpack5';
 
