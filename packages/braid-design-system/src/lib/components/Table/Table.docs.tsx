@@ -983,6 +983,77 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Column spanning',
+      description: (
+        <Text>
+          Both <Strong>TableCell</Strong> and <Strong>TableHeaderCell</Strong>{' '}
+          can span across multiple columns by providing the number of columns
+          via the <Strong>colspan</Strong> prop.
+        </Text>
+      ),
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+              ])}
+
+              <Table label="Column spanning example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="30%">
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="30%">
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="30%">
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell width="30%">
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell width="30%">
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell width="30%">
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow>
+                    <TableCell colspan={2} wrap>
+                      <Text>
+                        Culpa labore minim consectetur ut officia ea ea
+                        cupidatat excepteur.
+                      </Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Tempor</Text>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
+    },
+    {
       label: 'Column visibility',
       description: (
         <>
@@ -1147,77 +1218,6 @@ const docs: ComponentDocs = {
           value: visual,
         };
       },
-    },
-    {
-      label: 'Column spanning',
-      description: (
-        <Text>
-          Both <Strong>TableCell</Strong> and <Strong>TableHeaderCell</Strong>{' '}
-          can span across multiple columns by providing the number of columns
-          via the <Strong>colspan</Strong> prop.
-        </Text>
-      ),
-      Example: ({ setDefaultState, getState }) =>
-        stripTypeAnyFromCode(
-          source(
-            <>
-              {setDefaultState('rows', [
-                {
-                  column1: 'Sit',
-                  column2: 'Amet',
-                  column3: 'Consectetur',
-                },
-                {
-                  column1: 'Adipiscing',
-                  column2: 'Elit',
-                  column3: 'Praesent',
-                },
-              ])}
-
-              <Table label="Column spanning example">
-                <TableHeader>
-                  <TableRow>
-                    <TableHeaderCell width="30%">
-                      <Text>Lorem</Text>
-                    </TableHeaderCell>
-                    <TableHeaderCell width="30%">
-                      <Text>Ipsum</Text>
-                    </TableHeaderCell>
-                    <TableHeaderCell width="30%">
-                      <Text>Dolor</Text>
-                    </TableHeaderCell>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {getState('rows').map((row: any) => (
-                    <TableRow key={row.column1}>
-                      <TableCell width="30%">
-                        <Text>{row.column1}</Text>
-                      </TableCell>
-                      <TableCell width="30%">
-                        <Text>{row.column2}</Text>
-                      </TableCell>
-                      <TableCell width="30%">
-                        <Text>{row.column3}</Text>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                  <TableRow>
-                    <TableCell colspan={2} wrap>
-                      <Text>
-                        Culpa labore minim consectetur ut officia ea ea
-                        cupidatat excepteur.
-                      </Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>Tempor</Text>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </>,
-          ),
-        ),
     },
     {
       label: 'Responsive behaviour',
