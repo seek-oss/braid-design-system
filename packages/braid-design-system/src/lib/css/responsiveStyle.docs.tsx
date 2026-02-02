@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
 
-import { breakpoints } from 'braid-src/entries/css';
+import { breakpoints } from 'braid-src/css';
 import { Notice, Strong, Text, TextLink } from 'braid-src/lib/components';
 
 const bps = Object.keys(breakpoints);

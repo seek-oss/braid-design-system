@@ -1,5 +1,5 @@
 import packageJson from 'braid-design-system/package.json';
-import { colorModeQueryParamCheck } from 'braid-src/entries/color-mode/query-param';
+import { colorModeQueryParamCheck } from 'braid-src/color-mode/query-param';
 import * as themes from 'braid-src/lib/themes';
 import dedent from 'dedent';
 import { renderToString } from 'react-dom/server';
