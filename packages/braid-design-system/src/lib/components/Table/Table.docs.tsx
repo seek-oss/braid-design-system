@@ -516,7 +516,7 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Tables display at full width of their container, with columns
+            Tables display at full width of their container with columns
             expanding to fill available space. When a table is wider than the
             available space (such as on mobile or tablet), it scrolls
             horizontally to retain its structure and allow easy comparison of
@@ -1338,7 +1338,7 @@ const docs: ComponentDocs = {
             <Text>Don&rsquo;t use a Table:</Text>
             <List space="large">
               <Text>
-                To display a list of items (use a{' '}
+                To display a simple list of items (use a{' '}
                 <TextLink href="/components/List">List</TextLink> instead)
               </Text>
               <Text>
