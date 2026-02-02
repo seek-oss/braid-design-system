@@ -224,8 +224,7 @@ const docs: ComponentDocs = {
             <Text>
               Avoid placing your table inside a bounded box or{' '}
               <TextLink href="/components/Card">Card</TextLink>. Instead, place
-              it directly onto the page surface (this avoids having boxes inside
-              of boxes).
+              it directly onto the page surface.
             </Text>
             <Text>
               Give each piece of data it&rsquo;s own column, avoid showing
