@@ -1,26 +1,47 @@
 import source from '@braid-design-system/source.macro';
 
-import { Page, Placeholder } from '../../playroom/components';
+import {
+  Page,
+  PlaceholderFooter,
+  PlaceholderHeader,
+} from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
+
+import { ContainerForPageDocs } from './Page.docs';
+
+const defaultSnippetSource = source(
+  <Page footer={<PlaceholderFooter />}>
+    <PlaceholderHeader />
+  </Page>,
+);
+
+const belowFoldSnippetSource = source(
+  <Page footer={<PlaceholderFooter />} footerPosition="belowFold">
+    <PlaceholderHeader />
+  </Page>,
+);
 
 export const snippets: Snippets = [
   {
     name: 'Default',
-    code: source(
-      <Page footer={<Placeholder label="Footer" height={100} />}>
-        <Placeholder label="Header" height={60} />
-      </Page>,
-    ),
+    code: {
+      code: defaultSnippetSource.code,
+      value: (
+        <ContainerForPageDocs screenHeight={500}>
+          {defaultSnippetSource.value}
+        </ContainerForPageDocs>
+      ),
+    },
   },
   {
     name: 'Footer below fold',
-    code: source(
-      <Page
-        footer={<Placeholder label="Footer" height={100} />}
-        footerPosition="belowFold"
-      >
-        <Placeholder label="Header" height={60} />
-      </Page>,
-    ),
+    code: {
+      code: belowFoldSnippetSource.code,
+      value: (
+        <ContainerForPageDocs screenHeight={500}>
+          {belowFoldSnippetSource.value}
+        </ContainerForPageDocs>
+      ),
+    },
   },
 ];

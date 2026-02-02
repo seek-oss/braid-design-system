@@ -10,7 +10,6 @@ import {
   IconChevron,
   MenuItem,
   IconTick,
-  MenuItemLink,
   Inline,
   TextLink,
   Text,
@@ -95,8 +94,6 @@ export const PlaceholderFooter: FC<FooterProps> = ({ divider = true }) => {
                     {c}
                   </MenuItem>
                 ))}
-
-                <MenuItemLink href="#">Link</MenuItemLink>
               </MenuRenderer>
             </Column>
             <Column>

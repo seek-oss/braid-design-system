@@ -13,9 +13,7 @@ import { Page } from './Page';
 import { heightLimit } from './Page.css';
 import { vars } from '../../themes/vars.css';
 
-const screenHeight = 350;
-
-const ScreenOverlay = () => (
+const ScreenOverlay = ({ screenHeight }: { screenHeight: number }) => (
   <Box
     boxShadow="borderNeutralLarge"
     borderRadius="standard"
@@ -23,6 +21,8 @@ const ScreenOverlay = () => (
     top={0}
     left={0}
     right={0}
+    zIndex={1}
+    pointerEvents="none"
     style={{
       height: screenHeight,
     }}
@@ -30,7 +30,13 @@ const ScreenOverlay = () => (
 );
 
 const screenBorderWidth = vars.borderWidth.large;
-export const ContainerForPageDocs = ({ children }: { children: ReactNode }) => (
+export const ContainerForPageDocs = ({
+  children,
+  screenHeight = 350,
+}: {
+  children: ReactNode;
+  screenHeight?: number;
+}) => (
   <Box display="flex" justifyContent="center">
     <Box
       position="relative"
@@ -46,7 +52,7 @@ export const ContainerForPageDocs = ({ children }: { children: ReactNode }) => (
         maxWidth: screenHeight * 1.6,
       }}
     >
-      <ScreenOverlay />
+      <ScreenOverlay screenHeight={screenHeight} />
       <Box style={{ padding: screenBorderWidth }}>{children}</Box>
     </Box>
   </Box>

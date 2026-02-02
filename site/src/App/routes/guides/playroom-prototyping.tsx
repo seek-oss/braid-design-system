@@ -32,6 +32,7 @@ import type { Page } from '../../../types';
 import Code from '../../Code/Code';
 import { PageTitle } from '../../Seo/PageTitle';
 import { TextStack } from '../../TextStack/TextStack';
+import { ThemedExample } from '../../ThemeSetting';
 
 interface MockJob {
   id: number;
@@ -477,12 +478,12 @@ const PlayroomPrototyping = () => (
     </Text>
 
     <Stack space="large">
-      <LinkableHeading level="3" label="placeholder">
-        &lt;Placeholder /&gt;
-      </LinkableHeading>
-      <Text>
-        For wireframing or scaffolding page layout around a prototype.
-      </Text>
+      <Stack space="medium">
+        <LinkableHeading level="3">Placeholder</LinkableHeading>
+        <Text>
+          For wireframing or scaffolding page layout around a prototype.
+        </Text>
+      </Stack>
 
       <Stack space="medium">
         <LinkableHeading level="4">Size</LinkableHeading>
@@ -578,12 +579,12 @@ const PlayroomPrototyping = () => (
     </Stack>
 
     <Stack space="large">
-      <LinkableHeading level="3" label="placeholderHeader">
-        &lt;PlaceholderHeader /&gt;
-      </LinkableHeading>
-      <Text>
-        For placeholder for framing SEEK-based experiences in prototypes.
-      </Text>
+      <Stack space="medium">
+        <LinkableHeading level="3">PlaceholderHeader</LinkableHeading>
+        <Text>
+          For placeholder for framing SEEK-based experiences in prototypes.
+        </Text>
+      </Stack>
 
       <Stack space="medium">
         <LinkableHeading level="4">brand</LinkableHeading>
@@ -642,12 +643,12 @@ const PlayroomPrototyping = () => (
     </Stack>
 
     <Stack space="large">
-      <LinkableHeading level="3" label="placeholderFooter">
-        &lt;PlaceholderFooter /&gt;
-      </LinkableHeading>
-      <Text>
-        For placeholder for framing SEEK-based experiences in prototypes.
-      </Text>
+      <Stack space="medium">
+        <LinkableHeading level="3">PlaceholderFooter</LinkableHeading>
+        <Text>
+          For placeholder for framing SEEK-based experiences in prototypes.
+        </Text>
+      </Stack>
 
       <Notice>
         <Text>
@@ -657,9 +658,9 @@ const PlayroomPrototyping = () => (
         </Text>
       </Notice>
 
-      <Code playroom={false}>
+      <ThemedExample>
         <PlaceholderFooter />
-      </Code>
+      </ThemedExample>
 
       <Stack space="medium">
         <LinkableHeading level="4">divider</LinkableHeading>
