@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { TextField } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('TextField', () => {
   it('associates field with label correctly', () => {

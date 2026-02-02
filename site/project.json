@@ -9,14 +9,14 @@
       "executor": "nx:noop"
     },
     "start:site": {
-      "dependsOn": ["generate", "^dev"],
+      "dependsOn": ["generate"],
       "executor": "nx:run-script",
       "options": {
         "script": "start:site"
       }
     },
     "start:playroom": {
-      "dependsOn": ["generate", "^dev"],
+      "dependsOn": ["generate"],
       "executor": "nx:run-script",
       "options": {
         "script": "start:playroom"
@@ -27,7 +27,7 @@
       "executor": "nx:noop"
     },
     "build:site": {
-      "dependsOn": ["generate", "^dev"],
+      "dependsOn": ["generate"],
       "inputs": ["default", "^default"],
       "outputs": ["dist/(!playroom)/**/*"],
       "executor": "nx:run-script",
@@ -36,7 +36,7 @@
       }
     },
     "build:playroom": {
-      "dependsOn": ["generate", "^dev"],
+      "dependsOn": ["generate"],
       "inputs": ["^default"],
       "outputs": ["dist/playroom"],
       "executor": "nx:run-script",
@@ -59,7 +59,7 @@
     },
     "lint": {},
     "lint:tsc": {
-      "dependsOn": ["generate", "^dev"],
+      "dependsOn": ["generate"],
       "executor": "nx:run-script",
       "options": {
         "script": "lint:tsc"

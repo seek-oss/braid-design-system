@@ -1,4 +1,4 @@
-import parseHighlights from 'autosuggest-highlight/parse';
+import parseHighlights from 'autosuggest-highlight/parse/index.js';
 import type { ReactElement } from 'react';
 
 import { Highlight } from './Highlight/Highlight';

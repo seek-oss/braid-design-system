@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { type Dispatch, useState, useRef, useEffect } from 'react';
 
 import { Autosuggest, filterSuggestions } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 import { containerPrefix } from '../private/Announcement/Announcement';
 
 import type { AutosuggestProps } from './Autosuggest';
