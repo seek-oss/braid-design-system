@@ -21,6 +21,8 @@ import {
   TextLink,
   Tiles,
   List,
+  Actions,
+  Button,
 } from '../';
 import { palette } from '../../color/palette';
 import type { StackProps } from '../Stack/Stack';
@@ -1216,6 +1218,120 @@ const docs: ComponentDocs = {
             </>,
           ),
         ),
+    },
+    {
+      label: 'Responsive behaviour',
+      description: (
+        <>
+          <Text>
+            Note that tables retain their structure and scroll horizontally on
+            smaller devices. This allows users to continue comparing data points
+            easily.
+          </Text>
+        </>
+      ),
+      Example: ({ setDefaultState, getState }) => {
+        const { value: visual } = source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1: 'Adipiscing',
+                column2: 'Elit',
+                column3: 'Praesent',
+                column4: 'Semper',
+                column5: 'Interdum',
+                column6: 'Viverra',
+              },
+              {
+                column1: 'Donec',
+                column2: 'Libero',
+                column3: 'Erat',
+                column4: 'Facilisis',
+                column5: 'Quis',
+                column6: 'Dictum',
+              },
+              {
+                column1: 'Nullam',
+                column2: 'Rhoncus',
+                column3: 'Tellus',
+                column4: 'Vestibulum',
+                column5: 'Purus',
+                column6: 'Vitae',
+              },
+            ])}
+            <Tiles space="xlarge" columns={[1, 2]}>
+              <Stack space="small">
+                <Text tone="secondary" size="small">
+                  On mobile
+                </Text>
+                <Table label="Responsive behaviour example">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHeaderCell>
+                        <Text>Lorem</Text>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
+                        <Text>Ipsum</Text>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
+                        <Text>Dolor</Text>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
+                        <Text>Sit</Text>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
+                        <Text>Amet</Text>
+                      </TableHeaderCell>
+                      <TableHeaderCell>
+                        <Text>Consectetur</Text>
+                      </TableHeaderCell>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {getState('rows').map((row: any) => (
+                      <TableRow key={row.column1}>
+                        <TableCell>
+                          <Text>{row.column1}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{row.column2}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{row.column3}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{row.column4}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{row.column5}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{row.column6}</Text>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </Stack>
+            </Tiles>
+          </>,
+        );
+
+        const { code: codeDemo } = source(
+          <>
+            <Actions>
+              <Button variant="solid">Solid</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="transparent">Transparent</Button>
+            </Actions>
+          </>,
+        );
+
+        return {
+          code: codeDemo,
+          value: visual,
+        };
+      },
     },
     {
       label: 'When to use',
