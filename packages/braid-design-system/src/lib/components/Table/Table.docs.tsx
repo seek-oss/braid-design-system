@@ -1217,6 +1217,41 @@ const docs: ComponentDocs = {
           ),
         ),
     },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xlarge">
+          <Stack space="large">
+            <Text>Use a Table:</Text>
+            <List space="large">
+              <Text>
+                To display a dataset in a structured way using rows and columns
+              </Text>
+              <Text>
+                To allow users to easily view, compare and analyse a dataset
+              </Text>
+              <Text>When your dataset is primarily numerical.</Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Table:</Text>
+            <List space="large">
+              <Text>
+                To display a list of items (use a{' '}
+                <TextLink href="/components/List">List</TextLink> instead)
+              </Text>
+              <Text>
+                To layout content on a page (use{' '}
+                <TextLink href="/foundations/layout">
+                  layout components
+                </TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
     dataAttributeDocs({
       code: `
         <Table
