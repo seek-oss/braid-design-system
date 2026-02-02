@@ -21,8 +21,6 @@ import {
   TextLink,
   Tiles,
   List,
-  Actions,
-  Button,
 } from '../';
 import { palette } from '../../color/palette';
 import type { StackProps } from '../Stack/Stack';
@@ -1219,118 +1217,106 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Responsive behaviour',
+      label: 'Table width',
       description: (
         <>
           <Text>
-            Note that tables retain their structure and scroll horizontally on
-            smaller devices. This allows users to continue comparing data points
-            easily.
+            Tables display at full width of their container, with columns
+            expanding to fill available space. When a table is wider than the
+            available space (such as on mobile or tablet), it scrolls
+            horizontally to retain its structure and allow easy comparison of
+            data.
           </Text>
         </>
       ),
-      Example: ({ setDefaultState, getState }) => {
-        const { value: visual } = source(
+      Example: ({ setDefaultState, getState }) =>
+        source(
           <>
             {setDefaultState('rows', [
               {
-                column1: 'Adipiscing',
-                column2: 'Elit',
-                column3: 'Praesent',
-                column4: 'Semper',
-                column5: 'Interdum',
-                column6: 'Viverra',
+                column1: 'Adipiscing elit',
+                column2: 'Praesent semper',
+                column3: 'Interdum viverra',
+                column4: 'Sed convallis ',
+                column5: 'Phasellus condimentum',
+                column6: 'Cras finibus',
+                column7: 'Rutrum lacinia',
               },
               {
-                column1: 'Donec',
-                column2: 'Libero',
-                column3: 'Erat',
-                column4: 'Facilisis',
-                column5: 'Quis',
-                column6: 'Dictum',
+                column1: 'Donec ibero',
+                column2: 'Erat facilisis',
+                column3: 'Quis dictum',
+                column4: 'Quisque lobortis',
+                column5: 'Aenean bibendum',
+                column6: 'Maximus neque',
+                column7: 'Gravida imperdiet',
               },
               {
-                column1: 'Nullam',
-                column2: 'Rhoncus',
-                column3: 'Tellus',
-                column4: 'Vestibulum',
-                column5: 'Purus',
-                column6: 'Vitae',
+                column1: 'Nullam rhoncus',
+                column2: 'Tellus vestibulum',
+                column3: 'Purus vitae',
+                column4: 'Porttitor sapien',
+                column5: 'Morbi cursus',
+                column6: 'Odio aliquet',
+                column7: 'Commodo quisque',
               },
             ])}
-            <Tiles space="xlarge" columns={[1, 2]}>
-              <Stack space="small">
-                <Text tone="secondary" size="small">
-                  On mobile
-                </Text>
-                <Table label="Responsive behaviour example">
-                  <TableHeader>
-                    <TableRow>
-                      <TableHeaderCell>
-                        <Text>Lorem</Text>
-                      </TableHeaderCell>
-                      <TableHeaderCell>
-                        <Text>Ipsum</Text>
-                      </TableHeaderCell>
-                      <TableHeaderCell>
-                        <Text>Dolor</Text>
-                      </TableHeaderCell>
-                      <TableHeaderCell>
-                        <Text>Sit</Text>
-                      </TableHeaderCell>
-                      <TableHeaderCell>
-                        <Text>Amet</Text>
-                      </TableHeaderCell>
-                      <TableHeaderCell>
-                        <Text>Consectetur</Text>
-                      </TableHeaderCell>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {getState('rows').map((row: any) => (
-                      <TableRow key={row.column1}>
-                        <TableCell>
-                          <Text>{row.column1}</Text>
-                        </TableCell>
-                        <TableCell>
-                          <Text>{row.column2}</Text>
-                        </TableCell>
-                        <TableCell>
-                          <Text>{row.column3}</Text>
-                        </TableCell>
-                        <TableCell>
-                          <Text>{row.column4}</Text>
-                        </TableCell>
-                        <TableCell>
-                          <Text>{row.column5}</Text>
-                        </TableCell>
-                        <TableCell>
-                          <Text>{row.column6}</Text>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Stack>
-            </Tiles>
+            <Table label="Horizontal scrolling example">
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderCell>
+                    <Text>Lorem</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Ipsum</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Dolor</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Sit</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Amet</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Consectetur</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Pharetra</Text>
+                  </TableHeaderCell>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row.column1}>
+                    <TableCell>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column4}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column5}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column6}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column7}</Text>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </>,
-        );
-
-        const { code: codeDemo } = source(
-          <>
-            <Actions>
-              <Button variant="solid">Solid</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="transparent">Transparent</Button>
-            </Actions>
-          </>,
-        );
-
-        return {
-          code: codeDemo,
-          value: visual,
-        };
-      },
+        ),
     },
     {
       label: 'When to use',
