@@ -517,7 +517,7 @@ const docs: ComponentDocs = {
             Tables display at full width of their container with columns
             expanding to fill available space. When a table is wider than the
             available space, it scrolls horizontally to retain its structure and
-            allow easy comparison of data. This behaviour also applies to mobile
+            allow easy comparison of data. This behaviour also applies on mobile
             and tablet.
           </Text>
         </>
