@@ -210,28 +210,26 @@ const docs: ComponentDocs = {
     {
       label: 'Visual guidelines',
       description: (
-        <Stack space="large">
-          <List space="large">
-            <Text>
-              Keep it simple and limit colour usage. Avoid over-styling content
-              or displaying unnecessary components within the table. In most
-              cases using <TextLink href="/components/Text">Text</TextLink> and{' '}
-              <TextLink href="/components/TextLink">TextLink</TextLink> should
-              suffice.
-            </Text>
-            <Text>
-              Avoid placing your table inside a bounded box or{' '}
-              <TextLink href="/components/Card">Card</TextLink>. Instead, place
-              it directly onto the page surface.
-            </Text>
-            <Text>
-              Give each piece of data it&rsquo;s own column, avoid showing
-              multiple pieces of data in a single column.
-            </Text>
-            <Text>Left align textual data and right align numerical data.</Text>
-            <Text>Keep column headers short, a few words at most.</Text>
-          </List>
-        </Stack>
+        <List space="large">
+          <Text>
+            Keep it simple and limit colour usage. Avoid over-styling content or
+            displaying unnecessary components within the table. In most cases
+            using <TextLink href="/components/Text">Text</TextLink> and{' '}
+            <TextLink href="/components/TextLink">TextLink</TextLink> should
+            suffice.
+          </Text>
+          <Text>
+            Avoid placing your table inside a bounded box or{' '}
+            <TextLink href="/components/Card">Card</TextLink>. Instead, place it
+            directly onto the page surface.
+          </Text>
+          <Text>
+            Give each piece of data it&rsquo;s own column, avoid showing
+            multiple pieces of data in a single column.
+          </Text>
+          <Text>Left align textual data and right align numerical data.</Text>
+          <Text>Keep column headers short, a few words at most.</Text>
+        </List>
       ),
     },
     {
