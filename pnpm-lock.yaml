@@ -198,6 +198,9 @@ importers:
       '@babel/plugin-transform-typescript':
         specifier: ^7.20.13
         version: 7.28.6(@babel/core@7.28.6)
+      '@babel/types':
+        specifier: ^7.26.0
+        version: 7.28.6
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../source.macro
@@ -261,6 +264,9 @@ importers:
       babel-plugin-macros:
         specifier: ^3.1.0
         version: 3.1.0
+      babel-plugin-remove-unused-vars:
+        specifier: ^2.2.0
+        version: 2.2.0
       babel-plugin-transform-remove-imports:
         specifier: ^1.7.0
         version: 1.8.1(@babel/core@7.28.6)
@@ -4057,6 +4063,9 @@ packages:
     resolution: {integrity: sha512-ISqQ2frbiNU9vIJkzg7dlPpznPZ4jOiUQ1uSmB0fEHeowtN3COYRsXr/xexn64NpU13P06jc/L5TgiJXOgrbEg==}
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
+
+  babel-plugin-remove-unused-vars@2.2.0:
+    resolution: {integrity: sha512-s5OoMCGk616NnfuM4whPwvEi9iupOTLhkAlfCKnAoFJze5ZeJESdGgWI7Ovx0qIS4J9uFjDUU3ZvkvwZLUgWpw==}
 
   babel-plugin-tester@11.0.4:
     resolution: {integrity: sha512-cqswtpSPo0e++rZB0l/54EG17LL25l9gLgh59yXfnmNxX+2lZTIOpx2zt4YI9QIClVXc8xf63J6yWwKkzy0jNg==}
@@ -13775,6 +13784,8 @@ snapshots:
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.6)
     transitivePeerDependencies:
       - supports-color
+
+  babel-plugin-remove-unused-vars@2.2.0: {}
 
   babel-plugin-tester@11.0.4(@babel/core@7.28.6):
     dependencies:

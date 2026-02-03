@@ -154,6 +154,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/plugin-transform-typescript": "^7.20.13",
+    "@babel/types": "^7.26.0",
     "@braid-design-system/source.macro": "workspace:*",
     "@storybook/react-webpack5": "10.1.11",
     "@svgr/core": "^5.5.0",
@@ -175,6 +176,7 @@
     "@types/throttle-debounce": "^5.0.2",
     "@vanilla-extract/rollup-plugin": "^1.5.1",
     "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-remove-unused-vars": "^2.2.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
     "cheerio": "1.0.0-rc.11",
