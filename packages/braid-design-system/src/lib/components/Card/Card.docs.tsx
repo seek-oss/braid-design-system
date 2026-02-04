@@ -10,6 +10,12 @@ import { validCardComponents } from './Card';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A visual container for information and actions related to a single
+      subject.
+    </Text>
+  ),
   Example: () =>
     source(
       <Card>
