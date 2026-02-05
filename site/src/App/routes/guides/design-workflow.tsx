@@ -24,7 +24,7 @@ const DesignWorkflow = () => {
 
   return (
     <TextStack>
-      <Heading component="h1" level="2">
+      <Heading level="1">
         <PageTitle title="Design Workflow" />
         Design Workflow
       </Heading>

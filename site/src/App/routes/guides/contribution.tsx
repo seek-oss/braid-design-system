@@ -13,7 +13,7 @@ import { TextStack } from '../../TextStack/TextStack';
 
 const Contribution = () => (
   <TextStack>
-    <Heading component="h1" level="2">
+    <Heading level="1">
       <PageTitle title="Contribution" />
       Contribution
     </Heading>
