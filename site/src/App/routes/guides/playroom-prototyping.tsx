@@ -43,7 +43,7 @@ interface MockJob {
 
 const PlayroomPrototyping = () => (
   <TextStack>
-    <Heading component="h1" level="2">
+    <Heading level="1">
       <PageTitle title="Playroom Prototyping" />
       Playroom Prototyping
     </Heading>

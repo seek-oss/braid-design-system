@@ -213,9 +213,7 @@ export const DocNavigation = () => {
   return (
     <Stack space={['xlarge', 'xxlarge']}>
       <Stack space={['large', 'xlarge']}>
-        <Heading level="2" component="h1">
-          {docsName}
-        </Heading>
+        <Heading level="1">{docsName}</Heading>
         <DocNavigationBar title="Subnavigation">
           <DocNavigationItem href={`/${docsType}/${docsName}`}>
             Details
