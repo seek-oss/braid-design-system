@@ -6,7 +6,6 @@ import {
   TextLink,
   Secondary,
   Text,
-  Badge,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { Fragment, useContext, useEffect, useMemo, useState } from 'react';
@@ -15,23 +14,52 @@ import { PageTitle } from '../Seo/PageTitle';
 
 import { DocExample } from './DocExample';
 import { DocsContext } from './DocNavigation';
+import { DocSection } from './DocSection';
+import { type TocItem, TocItemLink } from './DocToC';
 
 import * as styles from './DocDetails.css';
 
+const sectionSpacing = 'medium';
+const activeViewPortDistance = 50;
+
+const useScrollSpy = (anchorIds: string[], updateUrl = true) => {
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!anchorIds.length) {
+      return;
+    }
+
+    const handleScroll = () => {
+      const anchors: HTMLElement[] = anchorIds
+        .map((id) => document.getElementById(id))
+        .filter((el): el is HTMLElement => Boolean(el));
+
+      const withinRange = anchors
+        .map((el) => {
+          const top = el.getBoundingClientRect().top;
+          return { el, top };
+        })
+        .filter(({ top }) => top >= 0 && top <= activeViewPortDistance);
+
+      if (withinRange.length > 0) {
+        const newActiveId = withinRange[0].el.id;
+        setActiveId(newActiveId);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [anchorIds, updateUrl]);
+
+  return activeId;
+};
+
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
-  const sectionSpacing = 'large';
-
-  const hasAlternatives =
-    docs && 'alternatives' in docs && docs.alternatives.length > 0;
-  const hasAccessibility =
-    docs && 'accessibility' in docs && docs.accessibility;
-
-  type TocItem = {
-    readonly id: string;
-    readonly label: string;
-    readonly isSub: boolean;
-  };
 
   const slugify = (string: string) =>
     string
@@ -40,24 +68,49 @@ export const DocDetails = () => {
       .replace(/-$/, '')
       .toLowerCase();
 
-  const tocItems = useMemo<readonly TocItem[]>(() => {
+  const hasAlternatives =
+    docs && 'alternatives' in docs && docs.alternatives.length > 0;
+  const hasAccessibility =
+    docs && 'accessibility' in docs && docs.accessibility;
+
+  const { additionalItems } = useMemo<{
+    additionalItems: readonly TocItem[];
+    appearanceItems: readonly TocItem[];
+    layoutItems: readonly TocItem[];
+    statesItems: readonly TocItem[];
+    usageItems: readonly TocItem[];
+  }>(() => {
     if (!docs) {
-      return [];
+      return {
+        additionalItems: [],
+        appearanceItems: [],
+        layoutItems: [],
+        statesItems: [],
+        usageItems: [],
+      };
     }
+    const additionalItemsArray: TocItem[] = [];
+    const appearanceItemsArray: TocItem[] = [];
+    const layoutItemsArray: TocItem[] = [];
+    const statesItemsArray: TocItem[] = [];
+    const usageItemsArray: TocItem[] = [];
 
-    const items: TocItem[] = [];
-
-    (docs.additional || []).forEach((example) => {
+    docs.additional?.forEach((example) => {
       if (example.label) {
-        items.push({
+        additionalItemsArray.push({
           id: slugify(example.label),
           label: example.label,
-          isSub: example.primaryHeading === false,
         });
       }
     });
 
-    return items;
+    return {
+      additionalItems: additionalItemsArray,
+      appearanceItems: appearanceItemsArray,
+      layoutItems: layoutItemsArray,
+      statesItems: statesItemsArray,
+      usageItems: usageItemsArray,
+    };
   }, [docs]);
 
   const anchorIds = useMemo(() => {
@@ -68,96 +121,17 @@ export const DocDetails = () => {
     if (hasAccessibility) {
       ids.push('accessibility');
     }
-    ids.push(...tocItems.map(({ id }) => id));
+    ids.push(...additionalItems.map(({ id }) => id));
     return ids;
-  }, [hasAlternatives, hasAccessibility, tocItems]);
+  }, [hasAlternatives, hasAccessibility, additionalItems]);
 
-  const hasHeadings =
-    hasAlternatives || hasAccessibility || tocItems.length > 0;
-
-  const [activeId, setActiveId] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!anchorIds.length) {
-      return;
-    }
-
-    const anchors: HTMLElement[] = anchorIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    const computeActive = () => {
-      const viewportH =
-        window.innerHeight || document.documentElement.clientHeight;
-
-      const visible = anchors
-        .map((el) => ({ el, rect: el.getBoundingClientRect() }))
-        .filter(({ rect }) => rect.top < viewportH && rect.bottom > 0)
-        .sort((a, b) => a.rect.top - b.rect.top);
-
-      let next: string | null = null;
-      if (visible.length > 0) {
-        next = visible[0].el.id;
-      } else if (anchors.length > 0) {
-        const above = anchors
-          .map((el) => ({ el, top: el.getBoundingClientRect().top }))
-          .filter(({ top }) => top <= 0)
-          .sort((a, b) => b.top - a.top);
-        next = (above[0]?.el || anchors[0]).id;
-      }
-
-      setActiveId(next);
-    };
-
-    const io = new IntersectionObserver(() => computeActive(), {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0,
-    });
-    anchors.forEach((a) => io.observe(a));
-
-    computeActive();
-    return () => io.disconnect();
-  }, [anchorIds]);
+  const activeId = useScrollSpy(anchorIds);
 
   const handleTocClick = (_event: React.MouseEvent, id: string) => {
     try {
       window.history.pushState(null, '', `#${id}`);
     } catch {}
   };
-
-  const tocItemTextSize = 'xsmall';
-
-  const TocItemLink = ({
-    href,
-    label,
-    active,
-    isSub,
-    onClick,
-  }: {
-    href: string;
-    label: string;
-    active: boolean;
-    isSub: boolean;
-    onClick: (e: React.MouseEvent) => void;
-  }) => (
-    <Box
-      component="a"
-      href={href}
-      onClick={onClick}
-      style={{ textDecoration: 'none' }}
-      paddingLeft={isSub ? 'small' : undefined}
-    >
-      <Text size={tocItemTextSize}>
-        <Box
-          component="span"
-          className={active ? styles.tocItemLabelActive : styles.tocItemLabel}
-        >
-          {label}
-        </Box>
-      </Text>
-    </Box>
-  );
 
   return docs ? (
     <>
@@ -179,66 +153,63 @@ export const DocDetails = () => {
                   />
                 </PlayroomStateProvider>
               ) : null}
+
+              {'alternatives' in docs ? (
+                <Stack space={sectionSpacing}>
+                  <LinkableHeading level="3">Alternatives</LinkableHeading>
+                  <List space={sectionSpacing}>
+                    {docs.alternatives.map((alt) => (
+                      <Text key={`${alt.name}`}>
+                        <TextLink
+                          hitArea="large"
+                          href={`/${alt.section || 'components'}/${alt.name}`}
+                        >
+                          {alt.name}
+                        </TextLink>{' '}
+                        <Secondary>— {alt.description}</Secondary>
+                      </Text>
+                    ))}
+                  </List>
+                </Stack>
+              ) : null}
+
+              {'accessibility' in docs ? (
+                <Stack space={sectionSpacing}>
+                  <LinkableHeading level="3">Accessibility</LinkableHeading>
+                  {docs.accessibility}
+                </Stack>
+              ) : null}
+
+              {docs.docSections &&
+                Object.entries(docs.docSections).map(
+                  ([sectionKey, sectionExamples]) => (
+                    <Stack key={sectionKey} space="medium">
+                      <LinkableHeading level="2" label={sectionKey}>
+                        {/* This is pretty hacky */}
+                        {sectionKey.charAt(0).toUpperCase() +
+                          sectionKey.slice(1)}
+                      </LinkableHeading>
+                      {sectionExamples.map(
+                        (example: { label?: string }, index: number) => (
+                          <DocSection
+                            key={index}
+                            section={example}
+                            sectionSpacing={sectionSpacing}
+                          />
+                        ),
+                      )}
+                    </Stack>
+                  ),
+                )}
+
+              {(docs.additional || []).map((example, index) => (
+                <DocSection
+                  key={index}
+                  section={example}
+                  sectionSpacing={sectionSpacing}
+                />
+              ))}
             </Stack>
-
-            {hasAlternatives && 'alternatives' in docs ? (
-              <Stack space={sectionSpacing}>
-                <LinkableHeading level="3">Alternatives</LinkableHeading>
-                <List space={sectionSpacing}>
-                  {docs.alternatives.map((alt) => (
-                    <Text key={`${alt.name}`}>
-                      <TextLink
-                        hitArea="large"
-                        href={`/${alt.section || 'components'}/${alt.name}`}
-                      >
-                        {alt.name}
-                      </TextLink>{' '}
-                      <Secondary>— {alt.description}</Secondary>
-                    </Text>
-                  ))}
-                </List>
-              </Stack>
-            ) : null}
-
-            {hasAccessibility && 'accessibility' in docs ? (
-              <Stack space={sectionSpacing}>
-                <LinkableHeading level="3">Accessibility</LinkableHeading>
-                {docs.accessibility}
-              </Stack>
-            ) : null}
-
-            {(docs.additional || []).map((example, index) => (
-              <Stack space={sectionSpacing} key={index}>
-                {example.label ? (
-                  <LinkableHeading
-                    level={example.primaryHeading === false ? '4' : '3'}
-                    badge={
-                      example.deprecated ? (
-                        <Badge tone="caution">Deprecated</Badge>
-                      ) : undefined
-                    }
-                  >
-                    {example.label}
-                  </LinkableHeading>
-                ) : null}
-                {example.description ?? null}
-                {example.code || example.Example ? (
-                  <PlayroomStateProvider>
-                    <DocExample
-                      code={example.code}
-                      Example={example.Example}
-                      Container={example.Container}
-                      background={example.background}
-                      showCodeByDefault={
-                        example.showCodeByDefault ||
-                        example.Example === undefined
-                      }
-                      playroom={example.playroom}
-                    />
-                  </PlayroomStateProvider>
-                ) : null}
-              </Stack>
-            ))}
           </Stack>
         </Box>
         <Box className={styles.root}>
@@ -246,45 +217,122 @@ export const DocDetails = () => {
             <Text weight="strong" size="small">
               On this page
             </Text>
-            <Stack space="medium">
-              {hasHeadings ? (
+            <Box component="nav">
+              <Stack space="medium" component="ul">
                 <>
                   {hasAlternatives ? (
-                    <TocItemLink
-                      href="#alternatives"
-                      label="Alternatives"
-                      active={activeId === 'alternatives'}
-                      isSub={false}
-                      onClick={(e) => handleTocClick(e, 'alternatives')}
-                    />
+                    <Box component="li">
+                      <TocItemLink
+                        href="#alternatives"
+                        label="Alternatives"
+                        active={activeId === 'alternatives'}
+                        onClick={(e) => handleTocClick(e, 'alternatives')}
+                      />
+                    </Box>
                   ) : null}
+
                   {hasAccessibility ? (
-                    <TocItemLink
-                      href="#accessibility"
-                      label="Accessibility"
-                      active={activeId === 'accessibility'}
-                      isSub={false}
-                      onClick={(e) => handleTocClick(e, 'accessibility')}
-                    />
+                    <Box component="li">
+                      <TocItemLink
+                        href="#accessibility"
+                        label="Accessibility"
+                        active={activeId === 'accessibility'}
+                        onClick={(e) => handleTocClick(e, 'accessibility')}
+                      />
+                    </Box>
                   ) : null}
-                  {tocItems.map(({ id, label, isSub }) => (
+
+                  {/* {hasAppearance ? (
+                    <Stack component="li" space="small">
+                      <TocItemLink
+                        href="#appearance"
+                        label="Appearance"
+                        active={activeId === 'appearance'}
+                        onClick={(e) => handleTocClick(e, 'appearance')}
+                      />
+                      {appearanceItems.length > 0 ? (
+                        <Stack component="ul" space="small">
+                          {appearanceItems.map(({ id, label }) => (
+                            <Box component="li" key={id}>
+                              <TocItemLink
+                                href={`#${id}`}
+                                label={label}
+                                active={activeId === id}
+                                isChild={true}
+                                onClick={(e) => handleTocClick(e, id)}
+                              />
+                            </Box>
+                          ))}
+                        </Stack>
+                      ) : null}
+                    </Stack>
+                  ) : null}
+
+                  {hasStates ? (
+                    <Stack component="li" space="small">
+                      <TocItemLink
+                        href="#states"
+                        label="States"
+                        active={activeId === 'states'}
+                        onClick={(e) => handleTocClick(e, 'states')}
+                      />
+                      {statesItems.length > 0 ? (
+                        <Stack component="ul" space="small">
+                          {statesItems.map(({ id, label }) => (
+                            <Box component="li" key={id}>
+                              <TocItemLink
+                                href={`#${id}`}
+                                label={label}
+                                active={activeId === id}
+                                isChild={true}
+                                onClick={(e) => handleTocClick(e, id)}
+                              />
+                            </Box>
+                          ))}
+                        </Stack>
+                      ) : null}
+                    </Stack>
+                  ) : null}
+
+                  {hasLayout ? (
+                    <Stack component="li" space="small">
+                      <TocItemLink
+                        href="#layout"
+                        label="Layout"
+                        active={activeId === 'layout'}
+                        onClick={(e) => handleTocClick(e, 'layout')}
+                      />
+                      {layoutItems.length > 0 ? (
+                        <Stack component="ul" space="small">
+                          {layoutItems.map(({ id, label }) => (
+                            <Box component="li" key={id}>
+                              <TocItemLink
+                                href={`#${id}`}
+                                label={label}
+                                active={activeId === id}
+                                isChild={true}
+                                onClick={(e) => handleTocClick(e, id)}
+                              />
+                            </Box>
+                          ))}
+                        </Stack>
+                      ) : null}
+                    </Stack>
+                  ) : null} */}
+
+                  {additionalItems.map(({ id, label }) => (
                     <Fragment key={id}>
                       <TocItemLink
                         href={`#${id}`}
                         label={label}
                         active={activeId === id}
-                        isSub={isSub}
                         onClick={(e) => handleTocClick(e, id)}
                       />
                     </Fragment>
                   ))}
                 </>
-              ) : (
-                <Text tone="secondary" size={tocItemTextSize}>
-                  No headings
-                </Text>
-              )}
-            </Stack>
+              </Stack>
+            </Box>
           </Stack>
         </Box>
       </Box>

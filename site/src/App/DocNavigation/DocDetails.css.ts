@@ -29,5 +29,5 @@ export const tocItemLabel = style({
 });
 
 export const tocItemLabelActive = style({
-  color: vars.foregroundColor.promote,
+  color: vars.foregroundColor.brandAccent,
 });

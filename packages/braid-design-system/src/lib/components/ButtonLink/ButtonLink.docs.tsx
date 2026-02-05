@@ -44,6 +44,89 @@ const docs: ComponentDocs = {
       description: 'For a semantic button that looks like a TextLink.',
     },
   ],
+  docSections: {
+    appearance: [
+      {
+        label: 'Appearance 1',
+        description: (
+          <Text>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
+            unde tempora, nesciunt totam eligendi animi est qui modi, explicabo
+            labore ipsum rem iusto deserunt aliquid? Debitis repellendus quasi
+            corporis magni?
+          </Text>
+        ),
+      },
+      {
+        label: 'Appearance 2',
+        description: (
+          <Text>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
+            unde tempora, nesciunt totam eligendi animi est qui modi, explicabo
+            labore ipsum rem iusto deserunt aliquid? Debitis repellendus quasi
+            corporis magni?
+          </Text>
+        ),
+      },
+    ],
+    states: [
+      {
+        label: 'States 1',
+        description: (
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+            doloribus illo delectus debitis facere non cum illum earum ab aut,
+            repellat reprehenderit iusto in nemo minus? Corrupti voluptate
+            officiis beatae.
+          </Text>
+        ),
+      },
+      {
+        label: 'States 2',
+        description: (
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+            doloribus illo delectus debitis facere non cum illum earum ab aut,
+            repellat reprehenderit iusto in nemo minus? Corrupti voluptate
+            officiis beatae.
+          </Text>
+        ),
+      },
+      {
+        label: 'States 3',
+        description: (
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+            doloribus illo delectus debitis facere non cum illum earum ab aut,
+            repellat reprehenderit iusto in nemo minus? Corrupti voluptate
+            officiis beatae.
+          </Text>
+        ),
+      },
+      {
+        label: 'States 4',
+        description: (
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+            doloribus illo delectus debitis facere non cum illum earum ab aut,
+            repellat reprehenderit iusto in nemo minus? Corrupti voluptate
+            officiis beatae.
+          </Text>
+        ),
+      },
+      {
+        label: 'States 5',
+        description: (
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+            doloribus illo delectus debitis facere non cum illum earum ab aut,
+            repellat reprehenderit iusto in nemo minus? Corrupti voluptate
+            officiis beatae.
+          </Text>
+        ),
+      },
+    ],
+  },
   additional: [
     {
       label: 'Custom link rendering',

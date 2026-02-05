@@ -37,6 +37,14 @@ type NavigationSection =
   | 'logic';
 
 type PlayroomExampleProps = ReturnType<typeof useScope>;
+
+interface DocSections {
+  appearance?: ComponentExample[];
+  layout?: ComponentExample[];
+  states?: ComponentExample[];
+  usage?: ComponentExample[];
+};
+
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
@@ -53,13 +61,14 @@ export interface ComponentDocs {
     section?: NavigationSection;
   }>;
   accessibility?: ReactNodeNoStrings;
+  docSections?: DocSections;
   additional?: ComponentExample[];
 }
 
 export interface CssDoc {
   banner?: ReactNodeNoStrings;
-  usage: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
+  docSections?: DocSections;
   additional?: ComponentExample[];
 }
 
@@ -74,7 +83,6 @@ export interface GalleryComponent {
 
 export interface ComponentExample {
   label?: string;
-  primaryHeading?: boolean; // Todo - determine how this will be used
   deprecated?: boolean;
   description?: ReactNodeNoStrings;
   background?: NonNullable<BoxProps['background']> | false;
