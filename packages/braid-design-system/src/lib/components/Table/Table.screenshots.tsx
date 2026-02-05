@@ -17,7 +17,7 @@ import {
   Text,
   Badge,
 } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 
 const data = [
   {

@@ -51,4 +51,6 @@ export { TextField } from '../components/TextField/TextField.playroom';
 export { Tiles } from '../components/Tiles/Tiles.playroom';
 export { Toggle } from '../components/Toggle/Toggle.playroom';
 
-export { Placeholder } from '../components/private/Placeholder/Placeholder';
+export { PlaceholderHeader } from './components/PlaceholderHeader/PlaceholderHeader';
+export { PlaceholderFooter } from './components/PlaceholderFooter/PlaceholderFooter';
+export { Placeholder } from './components/Placeholder/Placeholder';

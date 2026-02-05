@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, Stack, Hidden, Heading, Text, Strong } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 
 const meta = {
   title: 'Components/Stack',

@@ -2,9 +2,9 @@ import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useRef, useState } from 'react';
 
+import { Placeholder } from '../../../playroom/components';
 import { BraidTestProvider } from '../../BraidTestProvider/BraidTestProvider';
 import { Button } from '../../Button/Button';
-import { Placeholder } from '../Placeholder/Placeholder';
 
 import { Popover } from './Popover';
 

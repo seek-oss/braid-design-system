@@ -4,8 +4,8 @@ import { Fragment } from 'react';
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Box, Inline, Stack, Strong, Text } from '../';
+import { Placeholder } from '../../playroom/components';
 import { spaces } from '../../utils/docsHelpers';
-import { Placeholder } from '../private/Placeholder/Placeholder';
 
 const meta = {
   title: 'Components/Inline',
