@@ -109,9 +109,7 @@ const PlayroomPrototyping = () => (
 
     <Divider />
 
-    <LinkableHeading component="h2" level="3">
-      Rendering repetitive content
-    </LinkableHeading>
+    <LinkableHeading level="2">Rendering repetitive content</LinkableHeading>
     <Text>
       Most designs contain some degree of repeating content. For example, let’s
       say we have a list of basic cards:
@@ -271,9 +269,7 @@ const PlayroomPrototyping = () => (
       }}
     </Code>
 
-    <LinkableHeading component="h2" level="3">
-      State management
-    </LinkableHeading>
+    <LinkableHeading level="2">State management</LinkableHeading>
 
     <Stack space="large">
       <LinkableHeading level="3">Using field state</LinkableHeading>
@@ -466,9 +462,7 @@ const PlayroomPrototyping = () => (
       </Code>
     </Stack>
 
-    <LinkableHeading component="h2" level="3">
-      Playroom-only components
-    </LinkableHeading>
+    <LinkableHeading level="2">Playroom-only components</LinkableHeading>
 
     <Text>
       To better facilitate prototyping, Braid provides a few extra components
@@ -676,9 +670,7 @@ const PlayroomPrototyping = () => (
       </Stack>
     </Stack>
 
-    <LinkableHeading component="h2" level="3">
-      Custom styling
-    </LinkableHeading>
+    <LinkableHeading level="2">Custom styling</LinkableHeading>
     <Alert tone="caution">
       <Text>
         This section covers very low-level mechanisms that require familiarity
@@ -732,7 +724,7 @@ const PlayroomPrototyping = () => (
       }
     </Code>
 
-    <Heading level="3">What’s next?</Heading>
+    <Heading level="2">What’s next?</Heading>
     <Text>
       If you’ve come this far, it’s likely that you’ll still have some
       questions. Please reach out so we can give you a hand, and hopefully feed
