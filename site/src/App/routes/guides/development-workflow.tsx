@@ -22,7 +22,7 @@ import { TextStack } from '../../TextStack/TextStack';
 
 const DevelopmentWorkflow = () => (
   <TextStack>
-    <Heading component="h1" level="2">
+    <Heading level="1">
       <PageTitle title="Development Workflow" />
       Development Workflow
     </Heading>

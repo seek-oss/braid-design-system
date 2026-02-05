@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { MouseEvent } from 'react';
 
 import { TextLinkButton, Text, Actions } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 const createMockClickHandler = () =>
   vi.fn(

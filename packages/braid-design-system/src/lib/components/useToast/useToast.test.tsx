@@ -9,7 +9,7 @@ import userEvent from '@testing-library/user-event';
 import type { ReactNode } from 'react';
 
 import { ToastProvider, useToast } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 type ShowToast = ReturnType<typeof useToast>;
 

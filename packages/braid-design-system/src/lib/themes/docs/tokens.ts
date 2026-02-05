@@ -38,8 +38,8 @@ const tokens: BraidTokens = {
             rows: 10,
           },
           tablet: {
-            fontSize: 52,
-            rows: 15,
+            fontSize: 38,
+            rows: 12,
           },
         },
         '2': {
@@ -48,27 +48,27 @@ const tokens: BraidTokens = {
             rows: 9,
           },
           tablet: {
-            fontSize: 38,
-            rows: 13,
+            fontSize: 32,
+            rows: 10,
           },
         },
         '3': {
           mobile: {
-            fontSize: 22,
-            rows: 8,
+            fontSize: 24,
+            rows: 9,
           },
           tablet: {
-            fontSize: 22,
-            rows: 8,
+            fontSize: 26,
+            rows: 9,
           },
         },
         '4': {
           mobile: {
-            fontSize: 18,
+            fontSize: 22,
             rows: 8,
           },
           tablet: {
-            fontSize: 18,
+            fontSize: 22,
             rows: 8,
           },
         },
@@ -98,21 +98,21 @@ const tokens: BraidTokens = {
       standard: {
         mobile: {
           fontSize: 18,
-          rows: 8,
+          rows: 7,
         },
         tablet: {
           fontSize: 18,
-          rows: 8,
+          rows: 7,
         },
       },
       large: {
         mobile: {
-          fontSize: 22,
-          rows: 9,
+          fontSize: 20,
+          rows: 8,
         },
         tablet: {
-          fontSize: 22,
-          rows: 9,
+          fontSize: 20,
+          rows: 8,
         },
       },
     },

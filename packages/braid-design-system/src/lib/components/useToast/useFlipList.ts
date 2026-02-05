@@ -1,6 +1,6 @@
 import { useMemo, useCallback } from 'react';
 
-import { vars } from '../../../entries/css';
+import { vars } from '../../../css';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import { px } from '../../utils/px';
 

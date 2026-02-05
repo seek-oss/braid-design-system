@@ -1,21 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`build > Vanilla Extract files imported as side-effects 1`] = `
-### dist/lib/themes/docs/index.mjs:
-1 │ import "./docsTheme.css.mjs";
-
-### dist/lib/themes/seekBusiness/index.mjs:
-1 │ import "./seekBusinessTheme.css.mjs";
-
-### dist/lib/themes/seekJobs/index.mjs:
-1 │ import "./seekJobs.css.mjs";
-
-### dist/lib/themes/wireframe/index.mjs:
-1 │ import "./wireframeTheme.css.mjs";
+### dist/lib/css/atoms/sprinkles.css.mjs:
+2 │ import "../reset/reset.css.mjs";
 
 ### dist/reset.mjs:
-1 │ import "./lib/css/reset/reset.css.mjs";
-2 │ import "./lib/css/atoms/sprinkles.css.mjs";
+2 │ import "./lib/css/reset/reset.css.mjs";
+3 │ import "./lib/css/atoms/sprinkles.css.mjs";
 `;
 
 exports[`build > side-effects from dist 1`] = `
@@ -33,9 +24,10 @@ exports[`build > side-effects from dist 1`] = `
 
 exports[`build > side-effects from src 1`] = `
 [
-  "src/entries/playroom/components.ts",
-  "src/entries/reset.ts",
   "src/lib/components/BraidProvider/BraidProvider.tsx",
   "src/lib/css/reset/resetTracker.ts",
+  "src/lib/playroom/components.ts",
+  "src/playroom/components.ts",
+  "src/reset.ts",
 ]
 `;
