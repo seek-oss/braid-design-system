@@ -69,20 +69,6 @@
         "script": "format:eslint"
       }
     },
-    "storybook:build": {
-      "dependsOn": ["generate"],
-      "executor": "nx:run-script",
-      "options": {
-        "script": "storybook:build"
-      }
-    },
-    "storybook:chromatic": {
-      "dependsOn": ["storybook:build"],
-      "executor": "nx:run-script",
-      "options": {
-        "script": "storybook:chromatic"
-      }
-    },
     "validate": {}
   }
 }

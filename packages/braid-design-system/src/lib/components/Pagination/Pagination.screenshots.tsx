@@ -1,5 +1,4 @@
 import type { Decorator, Meta, StoryObj } from '@storybook/react-webpack5';
-
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Pagination, Box } from '../';

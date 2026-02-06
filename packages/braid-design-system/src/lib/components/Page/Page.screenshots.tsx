@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import type React from 'react';
-
 import { setChromatic } from 'braid-storybook/chromatic';
+import type React from 'react';
 
 import { Box, Page } from '..';
 import { Placeholder } from '../../playroom/components';

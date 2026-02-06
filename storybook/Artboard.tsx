@@ -1,7 +1,6 @@
+import { palette } from 'braid-src/lib/color/palette';
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
-
-import { palette } from '../src/lib/color/palette';
 
 const styleContent = `
     .noAnimation * {

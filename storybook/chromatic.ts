@@ -1,5 +1,5 @@
-import type { breakpointNames } from './../src/lib/css/breakpoints';
-import * as allThemes from './../src/lib/themes';
+import type { breakpointNames } from 'braid-src/lib/css/breakpoints';
+import * as allThemes from 'braid-src/lib/themes';
 
 type Mode =
   | { disabled: boolean }
