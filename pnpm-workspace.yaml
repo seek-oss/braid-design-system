@@ -4,4 +4,5 @@ onlyBuiltDependencies:
 packages:
   - packages/*
   - integration
+  - storybook
   - site

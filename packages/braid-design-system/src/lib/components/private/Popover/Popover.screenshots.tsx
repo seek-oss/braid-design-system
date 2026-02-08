@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { useRef } from 'react';
-
 import { setChromatic } from 'braid-storybook/chromatic';
+import { useRef } from 'react';
 
 import { Box } from '../..';
 import { Placeholder } from '../../../playroom/components';

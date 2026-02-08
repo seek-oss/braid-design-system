@@ -1,8 +1,7 @@
-import '../src/reset';
+import 'braid-src/reset';
 
 import type { Preview } from '@storybook/react-webpack5';
-
-import * as themes from '../src/lib/themes';
+import * as themes from 'braid-src/lib/themes';
 
 import { setChromatic } from './chromatic';
 import { withTheme } from './decorators';
@@ -35,14 +34,14 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
-    darkMode: {
-      name: 'Dark mode',
+    colourMode: {
+      name: 'Colour mode',
       description: 'Global colour mode',
       toolbar: {
-        icon: 'moonicon',
+        icon: 'moon',
         items: [
-          { value: false, icon: 'sun', title: 'Light' },
-          { value: true, icon: 'moon', title: 'Dark' },
+          { value: 'light', icon: 'sun', title: 'Light' },
+          { value: 'dark', icon: 'moon', title: 'Dark' },
         ],
         dynamicTitle: true,
       },
@@ -50,7 +49,7 @@ const preview: Preview = {
   },
   initialGlobals: {
     theme: 'seekJobs',
-    darkMode: false,
+    colourMode: 'light',
   },
 };
 
