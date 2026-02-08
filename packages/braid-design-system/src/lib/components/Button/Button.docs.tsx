@@ -22,7 +22,7 @@ import {
   ContentBlock,
   Tiles,
 } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const interplayVariantAndToneDoc = [

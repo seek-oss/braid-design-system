@@ -90,12 +90,13 @@ export default [
     ignores: [
       'packages/braid-design-system/**/*.{docs,gallery,screenshots,stories}.tsx',
       'site/**/*.{ts,tsx}',
+      'storybook/**/*.{ts,tsx}',
     ],
     rules: {
       'no-restricted-imports': [
         'error',
         {
-          patterns: ['braid-src/**', 'site/**', '**/site/**'],
+          patterns: ['braid-src/**', 'site/**', '**/site/**', 'storybook/**'],
         },
       ],
     },

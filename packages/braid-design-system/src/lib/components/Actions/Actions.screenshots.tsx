@@ -1,5 +1,4 @@
 import type { StoryObj } from '@storybook/react-webpack5';
-
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Button, Actions, Stack } from '../';

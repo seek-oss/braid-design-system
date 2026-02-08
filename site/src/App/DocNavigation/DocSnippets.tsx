@@ -1,6 +1,6 @@
 import { Stack, Text } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import { useContext } from 'react';
+import { Fragment, useContext } from 'react';
 
 import { PageTitle } from '../Seo/PageTitle';
 
@@ -16,11 +16,17 @@ export const DocSnippets = () => {
 
       <Stack space="xxlarge">
         {snippets &&
-          snippets.map(({ group, name, code }) => (
+          snippets.map(({ group, name, code, Container = Fragment }) => (
             <Stack space="medium" key={`${group}_${name}`}>
               <Text tone="secondary">{name}</Text>
               <PlayroomStateProvider>
-                <DocExample Example={() => code} showCodeByDefault={false} />
+                <DocExample
+                  Example={() => ({
+                    code: code.code,
+                    value: <Container>{code.value}</Container>,
+                  })}
+                  showCodeByDefault={false}
+                />
               </PlayroomStateProvider>
             </Stack>
           ))}

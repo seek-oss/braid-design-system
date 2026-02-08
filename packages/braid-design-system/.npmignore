@@ -1,6 +1,5 @@
 scripts/
 icons/
-storybook-static
 **/__snapshots__/**/*
 *.test.tsx
 *.test.ts

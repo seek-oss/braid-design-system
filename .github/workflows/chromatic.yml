@@ -30,7 +30,7 @@ jobs:
         run: pnpm i
 
       - name: Build Braid
-        run: pnpm build
+        run: pnpm storybook:build
 
       - name: Chromatic
         run: pnpm storybook:chromatic

@@ -3,9 +3,9 @@ import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import { Box, ContentBlock, PageBlock, Stack, TextLink } from '../';
+import { Placeholder } from '../../playroom/components';
 import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
-import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { validPageBlockComponents } from './PageBlock';

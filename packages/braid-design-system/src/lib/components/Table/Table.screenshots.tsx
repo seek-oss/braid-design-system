@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import {
@@ -17,7 +16,7 @@ import {
   Text,
   Badge,
 } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 
 const data = [
   {
