@@ -200,9 +200,8 @@ const docs: ComponentDocs = {
         <Stack space="large">
           <Heading level="4">Content size</Heading>
           <Text>
-            The size and spacing of card content can be tailored to meet your
-            needs. Below are examples of the same content displayed with 3
-            different sizing approaches.
+            The size and spacing of card content can be tailored when needed.
+            Below are examples of 3 different sizing approaches.
           </Text>
         </Stack>
       ),
@@ -217,8 +216,9 @@ const docs: ComponentDocs = {
                 </Stack>
                 <Text>
                   Standard text lorem ipsum dolor sit amet consectetur
-                  adipiscing elit. Vivamus iaculis ut neque sit amet
-                  egestas.{' '}
+                  adipiscing elit. Vivamus iaculis ut neque sit amet egestas
+                  consectetur. Lorem ipsum dolor sit amet consectetur adipiscing
+                  elit. Vivamus iaculis ut neque sit amet egestas.
                 </Text>
                 <Text tone="secondary">Standard, secondary text</Text>
                 <Actions>
