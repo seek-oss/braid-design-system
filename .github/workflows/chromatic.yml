@@ -29,7 +29,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Build Braid
+      - name: Build Storybook
         run: pnpm storybook:build
 
       - name: Chromatic

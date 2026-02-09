@@ -4,6 +4,7 @@ export default defineConfig({
   test: {
     projects: [
       'packages/*',
+      'storybook',
       {
         test: {
           name: 'integration',
