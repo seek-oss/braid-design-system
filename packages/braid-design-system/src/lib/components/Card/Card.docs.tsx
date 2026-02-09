@@ -276,11 +276,17 @@ const docs: ComponentDocs = {
     {
       label: 'Tones',
       description: (
-        <Text>
-          Providing a <Strong>tone</Strong> prop will add a keyline down the
-          left hand side of the container. The supported tones are{' '}
-          <Strong>promote</Strong> and <Strong>formAccent</Strong>.
-        </Text>
+        <>
+          <Text>
+            Use the <Strong>tone</Strong> property to visually accentuate a Card
+            by adding a keyline down the left hand side. Supported tones include{' '}
+            <Strong>promote</Strong> and <Strong>formAccent</Strong>.
+          </Text>
+          <Text>
+            Read more about <TextLink href="/foundations/tones">Tones</TextLink>
+            .
+          </Text>
+        </>
       ),
       Example: () =>
         source(
@@ -345,7 +351,7 @@ const docs: ComponentDocs = {
       label: 'General best practice',
       description: (
         <List space="large">
-          <Text>Ensure a card is scannable and easy to digest.</Text>
+          <Text>Ensure card content is scannable and easy to digest.</Text>
           <Text>
             Limit content to a single subject (e.g. a single job, candidate,
             article).
@@ -389,8 +395,7 @@ const docs: ComponentDocs = {
               </Text>
               <Text>
                 visually differentiate static, non-actionable content (use{' '}
-                <TextLink href="/components/Box">Box</TextLink>
-                with instead).
+                <TextLink href="/components/Box">Box</TextLink> instead).
               </Text>
             </List>
           </Stack>
