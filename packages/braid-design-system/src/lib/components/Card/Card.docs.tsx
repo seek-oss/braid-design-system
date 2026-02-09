@@ -88,51 +88,51 @@ const docs: ComponentDocs = {
     },
     {
       description: (
-        <Stack space="xxlarge">
-          <Stack space="large">
-            <Heading level="4">Typography</Heading>
+        <>
+          <Heading level="4">Typography</Heading>
+          <Text>
+            Keep it simple and try to limit text sizes to one{' '}
+            <Strong>Heading</Strong> and one <Strong>Text</Strong> size. As a
+            default, we recommend:
+          </Text>
+          <List space="medium">
             <Text>
-              Keep it simple and try to limit text sizes to one{' '}
-              <Strong>Heading</Strong> and one <Strong>Text</Strong> size. As a
-              default, we recommend:
+              Heading <Strong>level 4</Strong> for card headings
             </Text>
-            <List space="medium">
-              <Text>
-                Heading <Strong>level 4</Strong> for card headings
-              </Text>
-              <Text>
-                Text size <Strong>standard</Strong> for subheadings and body
-                copy
-              </Text>
-              <Text>
-                Text tone <Strong>secondary</Strong> for secondary copy.
-              </Text>
-            </List>
-          </Stack>
-          <Stack space="large">
-            <Heading level="4">Vertical spacing</Heading>
             <Text>
-              Use the <TextLink href="/components/Stack">Stack</TextLink>{' '}
-              component to apply vertical spacing within a card. As a default,
-              we recommend:
+              Text size <Strong>standard</Strong> for subheadings and body copy
             </Text>
-            <List space="medium">
-              <Text>
-                Stack space <Strong>medium</Strong> for separating content
-                groups / sections (or large for an airier feel)
-              </Text>
-              <Text>
-                Stack space <Strong>small</Strong> for related content
-                you&rsquo;d like to display more tightly (such as the heading
-                and subheading).
-              </Text>
-            </List>
             <Text>
-              Below is the same example as before but with Stack spacing
-              highlighted for visibility.
+              Text tone <Strong>secondary</Strong> for secondary copy.
             </Text>
-          </Stack>
-        </Stack>
+          </List>
+        </>
+      ),
+    },
+    {
+      description: (
+        <>
+          <Heading level="4">Vertical spacing</Heading>
+          <Text>
+            Use the <TextLink href="/components/Stack">Stack</TextLink>{' '}
+            component to apply vertical spacing within a card. As a default, we
+            recommend:
+          </Text>
+          <List space="medium">
+            <Text>
+              Stack space <Strong>medium</Strong> for separating content groups
+              / sections (or large for an airier feel)
+            </Text>
+            <Text>
+              Stack space <Strong>small</Strong> for related content you&rsquo;d
+              like to display more tightly (such as the heading and subheading).
+            </Text>
+          </List>
+          <Text>
+            Below is the same example as before but with Stack spacing
+            highlighted for visibility.
+          </Text>
+        </>
       ),
       playroom: false,
       code: false,
