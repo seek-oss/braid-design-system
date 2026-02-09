@@ -1,5 +1,19 @@
 # braid-design-system
 
+## 34.0.2
+
+### Patch Changes
+
+- **TooltipRenderer:** Fix line wrapping with mixed character sets ([#1975](https://github.com/seek-oss/braid-design-system/pull/1975))
+
+- **docs:** Update typography token values ([#1981](https://github.com/seek-oss/braid-design-system/pull/1981))
+
+  Improve the typographic scale for better visual hierarchy and readability.
+
+- **Textarea:** update min-height to match touchableSize ([#1974](https://github.com/seek-oss/braid-design-system/pull/1974))
+
+- Migrate source code bundling to use `tsdown`. ([#1971](https://github.com/seek-oss/braid-design-system/pull/1971))
+
 ## 34.0.1
 
 ### Patch Changes
