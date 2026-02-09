@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 4.0.1
+
+### Patch Changes
+
+- Migrate source code bundling to use `tsdown`. ([#1971](https://github.com/seek-oss/braid-design-system/pull/1971))
+
 ## 4.0.0
 
 ## 3.0.5
