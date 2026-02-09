@@ -104,7 +104,7 @@ const docs: ComponentDocs = {
                 copy
               </Text>
               <Text>
-                Text tone <Strong>secondary</Strong> for secondary copy
+                Text tone <Strong>secondary</Strong> for secondary copy.
               </Text>
             </List>
           </Stack>
@@ -123,7 +123,7 @@ const docs: ComponentDocs = {
               <Text>
                 Stack space <Strong>small</Strong> for related content
                 you&rsquo;d like to display more tightly (such as the heading
-                and subheading)
+                and subheading).
               </Text>
             </List>
             <Text>
