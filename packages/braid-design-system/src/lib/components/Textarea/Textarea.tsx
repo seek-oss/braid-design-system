@@ -1,11 +1,11 @@
 import {
   type AllHTMLAttributes,
   type UIEvent,
-  type FormEvent,
   forwardRef,
   useState,
   useRef,
   useCallback,
+  type ChangeEvent,
 } from 'react';
 
 import { Box } from '../Box/Box';
@@ -165,7 +165,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               zIndex={1}
               rows={rows}
               value={value}
-              onChange={(e: FormEvent<HTMLTextAreaElement>) => {
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                 if (grow) {
                   setRows(calculateLines(e.currentTarget, lines, lineLimit));
                 }
