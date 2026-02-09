@@ -342,6 +342,22 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'General best practice',
+      description: (
+        <List space="large">
+          <Text>Ensure a card is scannable and easy to digest.</Text>
+          <Text>
+            Limit content to a single subject (e.g. a single job, candidate,
+            article).
+          </Text>
+          <Text>
+            Include clear action(s). These can be in relation to the subject or
+            to simply view more details.
+          </Text>
+        </List>
+      ),
+    },
+    {
       label: 'When to use',
       description: (
         <Stack space="xlarge">
