@@ -342,6 +342,46 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'When to use',
+      description: (
+        <Stack space="xlarge">
+          <Stack space="large">
+            <Text>Use a Card to:</Text>
+            <List space="large">
+              <Text>
+                provide a summary and entry point to more detailed information
+                about a single subject
+              </Text>
+              <Text>
+                allow users to take relevant action(s) related to the subject
+                (e.g. save, delete).
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Card to:</Text>
+            <List space="large">
+              <Text>
+                provide actionable content relating to multiple subjects (break
+                them into individual cards instead)
+              </Text>
+              <Text>
+                inform the user about important changes or conditions in the
+                interface (use{' '}
+                <TextLink href="/components/Alert">Alert</TextLink> or{' '}
+                <TextLink href="/components/Notice">Notice</TextLink> instead)
+              </Text>
+              <Text>
+                visually differentiate static, non-actionable content (use{' '}
+                <TextLink href="/components/Box">Box</TextLink>
+                with instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
+    },
+    {
       label: 'Custom semantics',
       description: (
         <Text>
