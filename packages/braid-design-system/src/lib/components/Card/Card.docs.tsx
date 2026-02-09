@@ -195,6 +195,38 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Tones',
+      description: (
+        <Text>
+          Providing a <Strong>tone</Strong> prop will add a keyline down the
+          left hand side of the container. The supported tones are{' '}
+          <Strong>promote</Strong> and <Strong>formAccent</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                PROMOTE
+              </Text>
+              <Card tone="promote">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                FORMACCENT
+              </Text>
+              <Card tone="formAccent">
+                <Box style={{ height: 100 }} width="full" />
+              </Card>
+            </Stack>
+          </Tiles>,
+        ),
+    },
+    {
       label: 'Controlling the height',
       description: (
         <>
@@ -228,38 +260,6 @@ const docs: ComponentDocs = {
               </Card>
             </Column>
           </Columns>,
-        ),
-    },
-    {
-      label: 'Tones',
-      description: (
-        <Text>
-          Providing a <Strong>tone</Strong> prop will add a keyline down the
-          left hand side of the container. The supported tones are{' '}
-          <Strong>promote</Strong> and <Strong>formAccent</Strong>.
-        </Text>
-      ),
-      Example: () =>
-        source(
-          <Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                PROMOTE
-              </Text>
-              <Card tone="promote">
-                <Box style={{ height: 100 }} width="full" />
-              </Card>
-            </Stack>
-
-            <Stack space="small">
-              <Text size="xsmall" tone="secondary">
-                FORMACCENT
-              </Text>
-              <Card tone="formAccent">
-                <Box style={{ height: 100 }} width="full" />
-              </Card>
-            </Stack>
-          </Tiles>,
         ),
     },
     {
