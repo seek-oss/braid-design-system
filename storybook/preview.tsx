@@ -5,6 +5,7 @@ import * as themes from 'braid-src/lib/themes';
 
 import { setChromatic } from './chromatic';
 import { withTheme } from './decorators';
+import { colourModes, defaultColourMode } from './globalTypes';
 
 const webFontLinkTags = Array.from(
   new Set(
@@ -39,17 +40,18 @@ const preview: Preview = {
       description: 'Global colour mode',
       toolbar: {
         icon: 'moon',
-        items: [
-          { value: 'light', icon: 'sun', title: 'Light' },
-          { value: 'dark', icon: 'moon', title: 'Dark' },
-        ],
+        items: colourModes.map((mode) => ({
+          value: mode,
+          icon: mode === 'light' ? 'sun' : 'moon',
+          title: mode.charAt(0).toUpperCase() + mode.slice(1),
+        })),
         dynamicTitle: true,
       },
     },
   },
   initialGlobals: {
     theme: 'seekJobs',
-    colourMode: 'light',
+    colourMode: defaultColourMode,
   },
 };
 

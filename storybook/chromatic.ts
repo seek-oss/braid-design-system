@@ -1,9 +1,11 @@
 import type { breakpointNames } from 'braid-src/lib/css/breakpoints';
 import * as allThemes from 'braid-src/lib/themes';
 
+import type { ColourMode } from './globalTypes';
+
 type Mode =
   | { disabled: boolean }
-  | { theme: string; viewport: number; darkMode?: boolean };
+  | { theme: string; viewport: number; colourMode?: ColourMode };
 type Modes = Record<string, Mode>;
 type ChromaticModesParameter = {
   modes: Modes;
@@ -75,7 +77,7 @@ export const setChromatic = (options?: {
         ? { disabled: true }
         : {
             theme,
-            darkMode: false,
+            colourMode: 'light',
             viewport: screenshotViewports[viewport],
           };
 
@@ -84,7 +86,7 @@ export const setChromatic = (options?: {
           ? { disabled: true }
           : {
               theme,
-              darkMode: true,
+              colourMode: 'dark',
               viewport: screenshotViewports[viewport],
             };
       }

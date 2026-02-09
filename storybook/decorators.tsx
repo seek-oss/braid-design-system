@@ -6,10 +6,12 @@ import * as themes from 'braid-src/lib/themes';
 import { BrowserRouter } from 'react-router';
 
 import { Artboard } from './Artboard';
+import type { StorybookGlobals } from './globalTypes';
 
 export const withTheme: Decorator = (Story, context) => {
-  const isDark = context.globals.colourMode === 'dark';
-  const themeName = context.globals.theme as keyof typeof themes;
+  const storybookGlobals = context.globals as StorybookGlobals;
+  const isDark = storybookGlobals.colourMode === 'dark';
+  const themeName = storybookGlobals.theme as keyof typeof themes;
   const theme = themes[themeName as keyof typeof themes];
 
   if (!theme) {
