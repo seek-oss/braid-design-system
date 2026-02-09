@@ -121,7 +121,7 @@ const docs: ComponentDocs = {
           <List space="medium">
             <Text>
               Stack space <Strong>medium</Strong> for separating content groups
-              / sections (or large for an airier feel)
+              and sections (or <Strong>large</Strong> for an airier feel)
             </Text>
             <Text>
               Stack space <Strong>small</Strong> for related content you&rsquo;d
@@ -129,8 +129,8 @@ const docs: ComponentDocs = {
             </Text>
           </List>
           <Text>
-            Below is the same example as before but with Stack spacing
-            highlighted for visibility.
+            Below is the same example as before but with spacing highlighted for
+            visibility.
           </Text>
         </>
       ),
@@ -200,9 +200,9 @@ const docs: ComponentDocs = {
         <Stack space="large">
           <Heading level="4">Content size</Heading>
           <Text>
-            The size and spacing of card content can be tailored to meet the
-            needs of each use case. Below are examples of the same content
-            displayed with 3 different sizing approaches.
+            The size and spacing of card content can be tailored to meet your
+            needs. Below are examples of the same content displayed with 3
+            different sizing approaches.
           </Text>
         </Stack>
       ),
