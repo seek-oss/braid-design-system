@@ -23,6 +23,7 @@ import {
   MenuItem,
   OverflowMenu,
   Spread,
+  TextLinkButton,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -192,6 +193,84 @@ const docs: ComponentDocs = {
               </Box>
             );
           })(),
+        ),
+    },
+    {
+      description: (
+        <Stack space="large">
+          <Heading level="4">Content size</Heading>
+          <Text>
+            The size and spacing of card content can be tailored to meet the
+            needs of each use case. Below are examples of the same content
+            displayed with 3 different sizing approaches.
+          </Text>
+        </Stack>
+      ),
+      Example: () =>
+        source(
+          <Stack space="small">
+            <Card>
+              <Stack space="medium">
+                <Stack space="small">
+                  <Heading level="4">Heading level 4</Heading>
+                  <Text>Standard text</Text>
+                </Stack>
+                <Text>
+                  Standard text lorem ipsum dolor sit amet consectetur
+                  adipiscing elit. Vivamus iaculis ut neque sit amet
+                  egestas.{' '}
+                </Text>
+                <Text tone="secondary">Standard, secondary text</Text>
+                <Actions>
+                  <Button>Button</Button>
+                </Actions>
+              </Stack>
+            </Card>
+
+            <Card>
+              <Stack space="medium">
+                <Stack space="xsmall">
+                  <Text size="large" weight="strong">
+                    Large, strong text
+                  </Text>
+                  <Text size="small">Small text</Text>
+                </Stack>
+                <Text size="small">
+                  Small text lorem ipsum dolor sit amet consectetur adipiscing
+                  elit. Vivamus iaculis ut neque sit amet egestas. Lorem ipsum
+                  dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut
+                  neque sit amet egestas.
+                </Text>
+                <Text tone="secondary" size="small">
+                  Small, secondary text
+                </Text>
+                <Actions>
+                  <Button size="small">Small button</Button>
+                </Actions>
+              </Stack>
+            </Card>
+
+            <Card>
+              <Stack space="medium">
+                <Stack space="xsmall">
+                  <Text weight="strong">Strong text</Text>
+                  <Text size="small">Small text</Text>
+                </Stack>
+                <Text size="xsmall">
+                  Xsmall text lorem ipsum dolor sit amet consectetur adipiscing
+                  elit. Vivamus iaculis ut neque sit amet egestas. Lorem ipsum
+                  dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut
+                  neque sit amet egestas.
+                </Text>
+                <Text tone="secondary" size="xsmall">
+                  Xsmall, secondary text
+                </Text>
+                <Text size="xsmall">
+                  <TextLinkButton>Xsmall TextLink</TextLinkButton>
+                </Text>
+              </Stack>
+            </Card>
+          </Stack>,
         ),
     },
     {
