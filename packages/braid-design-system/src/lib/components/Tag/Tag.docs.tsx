@@ -70,6 +70,26 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Icons',
+      description: (
+        <>
+          <Text>
+            For differentiation or to help communicate the meaning of the tag,
+            an <Strong>icon</Strong> can be provided. This will be placed to the
+            left of the text.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Inline space="small">
+            <Tag icon={<IconTag />}>One</Tag>
+            <Tag icon={<IconTag />}>Two</Tag>
+            <Tag icon={<IconTag />}>Three</Tag>
+          </Inline>,
+        ),
+    },
+    {
       label: 'Actionable tags',
       description: (
         <>
@@ -159,26 +179,6 @@ const docs: ComponentDocs = {
           value,
         };
       },
-    },
-    {
-      label: 'Inserting an icon',
-      description: (
-        <>
-          <Text>
-            For decoration or help distinguishing between tags, an{' '}
-            <Strong>icon</Strong> can be provided. This will be placed to the
-            left of the text.
-          </Text>
-        </>
-      ),
-      Example: () =>
-        source(
-          <Inline space="small">
-            <Tag icon={<IconTag />}>One</Tag>
-            <Tag icon={<IconTag />}>Two</Tag>
-            <Tag icon={<IconTag />}>Three</Tag>
-          </Inline>,
-        ),
     },
     dataAttributeDocs({
       code: `
