@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Columns, Column, Box, Stack } from '../';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 
 import { width as columnWidths } from './Column.css';
 const widths = [

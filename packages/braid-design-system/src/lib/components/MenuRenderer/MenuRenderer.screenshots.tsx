@@ -14,7 +14,7 @@ import {
   Inline,
 } from '../';
 import { vars } from '../../../css';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
 

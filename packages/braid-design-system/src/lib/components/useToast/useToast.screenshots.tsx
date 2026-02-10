@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react-webpack5';
-
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import { IconBookmark } from '../';

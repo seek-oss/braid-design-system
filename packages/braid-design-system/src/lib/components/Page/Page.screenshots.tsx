@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import { setChromatic } from 'braid-storybook/chromatic';
 import type React from 'react';
 
-import { setChromatic } from 'braid-storybook/chromatic';
-
 import { Box, Page } from '..';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 
 import { heightLimit } from './Page.css';
 

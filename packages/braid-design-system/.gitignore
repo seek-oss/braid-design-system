@@ -2,5 +2,4 @@ node_modules/
 src/lib/components/icons/*/*Svg.tsx
 src/lib/playroom/snippets/*
 README.md
-storybook-static
 dist/

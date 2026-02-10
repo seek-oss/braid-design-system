@@ -1,6 +1,8 @@
 import path from 'path';
 
-import { transformFileAsync } from '@babel/core';
+import { type NodePath, type PluginObj, transformFileAsync } from '@babel/core';
+import type * as types from '@babel/types';
+import type { ObjectExpression } from '@babel/types';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 import prettier from 'prettier';
@@ -12,6 +14,27 @@ const componentsDir = path.join(baseDir, 'src/lib/components');
 const snippetsDir = path.join(baseDir, 'src/lib/playroom/snippets');
 const snippetsIndexFile = path.join(baseDir, 'src/lib/playroom/snippets.ts');
 
+/**
+ * Removes the `Container` property from snippets before  exporting to Playroom.
+ * This optional property is only used to provide wrapping components for the
+ * purposes of the Braid docs site.
+ */
+const stripContainerPropertyPlugin = ({ types: t }: { types: typeof types }): PluginObj => ({
+  name: 'stripContainerPropertyPlugin',
+  visitor: {
+    ObjectExpression(treePath: NodePath<ObjectExpression>) {
+      const properties = treePath.node.properties;
+      const filteredProperties = properties.filter(
+        (property) => !(t.isObjectProperty(property) && t.isIdentifier(property.key, { name: 'Container' })),
+      );
+
+      if (filteredProperties.length !== properties.length) {
+        treePath.node.properties = filteredProperties;
+      }
+    },
+  },
+});
+
 const relativeToProject = (p: string) => path.relative(baseDir, p);
 const transformWithBabel = async (fileName: string) => {
   const result = await transformFileAsync(fileName, {
@@ -19,6 +42,8 @@ const transformWithBabel = async (fileName: string) => {
       [require.resolve('babel-plugin-transform-remove-imports'), { removeAll: true }],
       [require.resolve('babel-plugin-macros'), { source: { codeOnly: true } }],
       [require.resolve('@babel/plugin-transform-typescript'), { isTSX: true }],
+      [stripContainerPropertyPlugin],
+      [require.resolve('babel-plugin-remove-unused-vars')], // Clean up any unused vars as result of previous plugins
     ],
     babelrc: false,
     configFile: false,

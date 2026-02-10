@@ -19,7 +19,7 @@ import {
   Text,
   TextLink,
 } from '..';
-import { Placeholder } from '../private/Placeholder/Placeholder';
+import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { Step } from './Step';

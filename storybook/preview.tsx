@@ -1,11 +1,11 @@
-import '../src/reset';
+import 'braid-src/reset';
 
 import type { Preview } from '@storybook/react-webpack5';
-
-import * as themes from '../src/lib/themes';
+import * as themes from 'braid-src/lib/themes';
 
 import { setChromatic } from './chromatic';
 import { withTheme } from './decorators';
+import { colourModes, defaultColourMode } from './globalTypes';
 
 const webFontLinkTags = Array.from(
   new Set(
@@ -35,22 +35,23 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
-    darkMode: {
-      name: 'Dark mode',
+    colourMode: {
+      name: 'Colour mode',
       description: 'Global colour mode',
       toolbar: {
-        icon: 'moonicon',
-        items: [
-          { value: false, icon: 'sun', title: 'Light' },
-          { value: true, icon: 'moon', title: 'Dark' },
-        ],
+        icon: 'moon',
+        items: colourModes.map((mode) => ({
+          value: mode,
+          icon: mode === 'light' ? 'sun' : 'moon',
+          title: mode.charAt(0).toUpperCase() + mode.slice(1),
+        })),
         dynamicTitle: true,
       },
     },
   },
   initialGlobals: {
     theme: 'seekJobs',
-    darkMode: false,
+    colourMode: defaultColourMode,
   },
 };
 

@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { type FormEvent, useContext } from 'react';
+import { type ChangeEvent, useContext } from 'react';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
 import { Box } from '../Box/Box';
@@ -98,7 +98,7 @@ export function TextDropdown<Value>({
         id={resolvedId}
         tabIndex={tabIndex}
         value={String(value)}
-        onChange={(ev: FormEvent<HTMLSelectElement>) => {
+        onChange={(ev: ChangeEvent<HTMLSelectElement>) => {
           if (typeof onChange === 'function') {
             const newValue =
               parsedOptions[ev.currentTarget.selectedIndex].value;
