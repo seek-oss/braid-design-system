@@ -15,6 +15,13 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <>
+      <Text>
+        A text based element for displaying user-provided data or selections.
+      </Text>
+    </>
+  ),
   Example: () =>
     source(
       <Inline space="small">
