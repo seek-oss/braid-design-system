@@ -1,0 +1,5 @@
+{
+  "main": "../../dist/playroom/scope.cjs",
+  "module": "../../dist/playroom/scope.mjs",
+  "types": "./index.d.ts"
+}

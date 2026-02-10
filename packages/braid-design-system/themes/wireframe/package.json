@@ -1,0 +1,5 @@
+{
+  "main": "../../dist/themes/wireframe.cjs",
+  "module": "../../dist/themes/wireframe.mjs",
+  "types": "./index.d.ts"
+}

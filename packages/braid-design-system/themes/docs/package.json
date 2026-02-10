@@ -1,0 +1,5 @@
+{
+  "main": "../../dist/themes/docs.cjs",
+  "module": "../../dist/themes/docs.mjs",
+  "types": "./index.d.ts"
+}

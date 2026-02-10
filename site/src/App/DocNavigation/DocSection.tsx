@@ -9,19 +9,12 @@ import { DocExample } from './DocExample';
 
 export const DocSection = ({
   section,
-  heading,
-  sectionSpacing,
+  headingSpacing = 'medium',
 }: {
   section: ComponentExample;
-  heading?: string;
-  sectionSpacing: ResponsiveSpace;
+  headingSpacing?: ResponsiveSpace;
 }) => (
-  <Stack space={sectionSpacing}>
-    {heading ? (
-      <>
-        <LinkableHeading level="2">{heading}</LinkableHeading>
-      </>
-    ) : null}
+  <Stack space={headingSpacing}>
     {section.label ? (
       <LinkableHeading
         level="3"

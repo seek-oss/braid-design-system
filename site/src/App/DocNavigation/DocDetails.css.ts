@@ -6,7 +6,7 @@ import { contentBlockXLWidth } from '../Navigation/Navigation.css';
 
 const topOffset = vars.space.large;
 
-export const root = style({
+export const toc = style({
   position: 'sticky',
   top: topOffset,
   maxHeight: calc.subtract('100vh', topOffset),

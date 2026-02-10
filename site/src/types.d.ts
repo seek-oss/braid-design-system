@@ -38,11 +38,13 @@ type NavigationSection =
 
 type PlayroomExampleProps = ReturnType<typeof useScope>;
 
+type NonEmptyArray<T> = [T, ...T[]];
+
 interface DocSections {
-  appearance?: ComponentExample[];
-  layout?: ComponentExample[];
-  states?: ComponentExample[];
-  usage?: ComponentExample[];
+  appearance?: NonEmptyArray<ComponentExample>;
+  layout?: NonEmptyArray<ComponentExample>;
+  states?: NonEmptyArray<ComponentExample>;
+  usage?: NonEmptyArray<ComponentExample>;
 };
 
 export interface ComponentDocs {

@@ -1,0 +1,5 @@
+{
+  "main": "../../dist/playroom/FrameComponent.cjs",
+  "module": "../../dist/playroom/FrameComponent.mjs",
+  "types": "./index.d.ts"
+}

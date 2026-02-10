@@ -1,0 +1,5 @@
+{
+  "main": "../../dist/color-mode/query-param.cjs",
+  "module": "../../dist/color-mode/query-param.mjs",
+  "types": "./index.d.ts"
+}
