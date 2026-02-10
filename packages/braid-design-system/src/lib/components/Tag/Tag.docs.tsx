@@ -33,11 +33,11 @@ const docs: ComponentDocs = {
   alternatives: [{ name: 'Badge', description: 'For static labels.' }],
   additional: [
     {
-      label: 'Sizes',
+      label: 'Size',
       description: (
         <>
           <Text>
-            You can customise the size of the tag via the <Strong>size</Strong>{' '}
+            You can tailor the size of the tag via the <Strong>size</Strong>{' '}
             prop, which accepts either <Strong>standard</Strong> or{' '}
             <Strong>small</Strong>.
           </Text>
