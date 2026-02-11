@@ -363,10 +363,10 @@ animation: 350ms ease-in-out scaleBounce;
           <Heading level="4">Form field input</Heading>
           <Text>
             Allows users to select items from a predefined list, enter their own
-            items, or a combination of both. The example below uses an{' '}
-            <TextLink href="/components/Autosuggest">Autosuggest</TextLink>{' '}
-            field to surface a predefined list, however additional approaches
-            can be created using inputs such as{' '}
+            items, or a combination of both. The example below uses{' '}
+            <TextLink href="/components/Autosuggest">Autosuggest</TextLink> to
+            surface a predefined list, however additional approaches can be
+            created using{' '}
             <TextLink href="/components/Dropdown">Dropdown</TextLink> or{' '}
             <TextLink href="/components/TextField">TextField</TextLink>.
           </Text>
