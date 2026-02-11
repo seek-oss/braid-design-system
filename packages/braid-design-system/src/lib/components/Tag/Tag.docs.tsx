@@ -12,6 +12,8 @@ import {
   IconTag,
   Heading,
   Box,
+  Autosuggest,
+  filterSuggestions,
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -189,7 +191,7 @@ const docs: ComponentDocs = {
           <Text>
             Use actionable tags to allow users to input data, make selections,
             define search criteria or filter content. Common patterns include
-            selecting from a list or inputting via a form field. Below are
+            selecting from a list or entering text in a form field. Below are
             examples of each.
           </Text>
         </>
@@ -351,6 +353,138 @@ animation: 350ms ease-in-out scaleBounce;
                   </Inline>
                 )}
               </Stack>
+            </Stack>
+          </>,
+        ),
+    },
+    {
+      description: (
+        <Stack space="large">
+          <Heading level="4">Form field input</Heading>
+          <Text>
+            Allows users to select items from a predefined list, enter their own
+            items, or a combination of both. The example below uses an{' '}
+            <TextLink href="/components/Autosuggest">Autosuggest</TextLink>{' '}
+            field to surface a predefined list, however additional approaches
+            can be created using inputs such as{' '}
+            <TextLink href="/components/Dropdown">Dropdown</TextLink> or{' '}
+            <TextLink href="/components/TextField">TextField</TextLink>.
+          </Text>
+        </Stack>
+      ),
+      Example: ({ setDefaultState, getState, setState, resetState }) =>
+        source(
+          <>
+            {setDefaultState('selected', ['English', 'Indonesian Bahasa'])}
+            {setDefaultState(
+              'languages',
+              [
+                'Arabic',
+                'Cantonese',
+                'English',
+                'German',
+                'Hindi',
+                'Indonesian Bahasa',
+                'Korean',
+                'Maori',
+                'Spanish',
+              ].filter((tag) => !getState('selected').includes(tag)),
+            )}
+            {setDefaultState('language', { text: '' })}
+
+            {/* Create queue of tags to animate */}
+            {setDefaultState('newlyAdded', [])}
+            {/* Define animation CSS */}
+            <style>
+              {`
+@keyframes scaleBounce {
+50% { transform: scale(1.1) }
+}
+.bounce {
+animation: 350ms ease-in-out scaleBounce;
+}
+`}
+            </style>
+
+            <Stack space="small">
+              <Autosuggest
+                noSuggestionsMessage={
+                  getState('selected').length === 9
+                    ? 'All languages selected'
+                    : 'No matching languages'
+                }
+                id="Language"
+                label="Languages"
+                aria-label="Language"
+                icon={<IconLanguage />}
+                placeholder="Enter a language"
+                suggestions={filterSuggestions(
+                  getState('languages').map((language: string) => ({
+                    text: language,
+                    value: language,
+                  })),
+                )}
+                value={getState('language')}
+                onChange={(newValue) => {
+                  if (getState('languages').includes(newValue.value)) {
+                    resetState('language');
+                    setState('selected', [
+                      ...getState('selected'),
+                      newValue.value,
+                    ]);
+
+                    // Add tag to animation queue
+                    setState('newlyAdded', [
+                      newValue.text,
+                      ...getState('newlyAdded'),
+                    ]);
+                    // After 400ms (animation is 350ms), remove the tag from the queue
+                    setTimeout(() => {
+                      setState(
+                        'newlyAdded',
+                        getState('newlyAdded').filter(
+                          (addedTag: string) => addedTag !== newValue.text,
+                        ),
+                      );
+                    }, 400);
+                  } else {
+                    setState('language', newValue);
+                  }
+                }}
+              />
+
+              {getState('selected').length === 0 ? (
+                <Text tone="secondary">No languages selected.</Text>
+              ) : (
+                <Inline space="xsmall" alignY="center">
+                  {getState('selected').map((selectedTag: string) => (
+                    <Box
+                      key={selectedTag}
+                      className={
+                        // Add animation class to tag if in the queue
+                        getState('newlyAdded').includes(selectedTag)
+                          ? 'bounce'
+                          : undefined
+                      }
+                    >
+                      <Tag
+                        onClear={() => {
+                          setState(
+                            'selected',
+                            getState('selected').filter(
+                              (tag: string) => tag !== selectedTag,
+                            ),
+                          );
+                        }}
+                        clearLabel={`Clear "${selectedTag}"`}
+                        id={`clear-${selectedTag}`}
+                      >
+                        {selectedTag}
+                      </Tag>
+                    </Box>
+                  ))}
+                </Inline>
+              )}
             </Stack>
           </>,
         ),
