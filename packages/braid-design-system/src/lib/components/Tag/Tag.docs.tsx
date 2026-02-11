@@ -10,6 +10,8 @@ import {
   Stack,
   IconLanguage,
   IconTag,
+  Heading,
+  Box,
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -179,6 +181,179 @@ const docs: ComponentDocs = {
           value,
         };
       },
+    },
+    {
+      label: 'Interaction patterns',
+      description: (
+        <>
+          <Text>
+            Use actionable tags to allow users to input data, make selections,
+            define search criteria or filter content. Common patterns include
+            selecting from a list or inputting via a form field. Below are
+            examples of each.
+          </Text>
+        </>
+      ),
+    },
+    {
+      description: (
+        <Stack space="large">
+          <Heading level="4">Selecting from a list</Heading>
+          <Text>Allows users to select items from a predefined list.</Text>
+        </Stack>
+      ),
+      Example: ({ setDefaultState, getState, setState }) =>
+        source(
+          <>
+            {setDefaultState('selected', [
+              'Arabic',
+              'English',
+              'French',
+              'Mandarin',
+            ])}
+            {setDefaultState('available', [
+              'Cantonese',
+              'German',
+              'Hindi',
+              'Indonesian Bahasa',
+              'Korean',
+              'Maori',
+              'Spanish',
+              'Urdu',
+            ])}
+            {/* Create queue of tags to animate */}
+            {setDefaultState('newlyAdded', [])}
+            {setDefaultState('newlyCleared', [])}
+            {/* Define animation CSS */}
+            <style>
+              {`
+@keyframes scaleBounce {
+50% { transform: scale(1.1) }
+}
+.bounce {
+animation: 350ms ease-in-out scaleBounce;
+}
+`}
+            </style>
+
+            <Stack space="xlarge">
+              <Stack space="small">
+                <Text>Available languages</Text>
+                {getState('available').length === 0 ? (
+                  <Text tone="secondary">No available languages.</Text>
+                ) : (
+                  <Inline space="xsmall" alignY="center">
+                    {getState('available').map((availableTag: string) => (
+                      <Box
+                        key={availableTag}
+                        className={
+                          // Add animation class to tag if in the queue
+                          getState('newlyCleared').includes(availableTag)
+                            ? 'bounce'
+                            : undefined
+                        }
+                      >
+                        <Tag
+                          key={availableTag}
+                          onAdd={() => {
+                            setState(
+                              'available',
+                              getState('available').filter(
+                                (tag: string) => tag !== availableTag,
+                              ),
+                            );
+
+                            setState('selected', [
+                              availableTag,
+                              ...getState('selected'),
+                            ]);
+
+                            // Add tag to animation queue
+                            setState('newlyAdded', [
+                              availableTag,
+                              ...getState('newlyAdded'),
+                            ]);
+                            // After 400ms (animation is 350ms), remove the tag from the queue
+                            setTimeout(() => {
+                              setState(
+                                'newlyAdded',
+                                getState('newlyAdded').filter(
+                                  (addedTag: string) =>
+                                    addedTag !== availableTag,
+                                ),
+                              );
+                            }, 400);
+                          }}
+                          addLabel={`Add "${availableTag}"`}
+                          id={`add-${availableTag}`}
+                        >
+                          {availableTag}
+                        </Tag>
+                      </Box>
+                    ))}
+                  </Inline>
+                )}
+              </Stack>
+
+              <Stack space="small">
+                <Text>Selected languages</Text>
+                {getState('selected').length === 0 ? (
+                  <Text tone="secondary">No selected languages.</Text>
+                ) : (
+                  <Inline space="xsmall" alignY="center">
+                    {getState('selected').map((selectedTag: string) => (
+                      <Box
+                        key={selectedTag}
+                        className={
+                          // Add animation class to tag if in the queue
+                          getState('newlyAdded').includes(selectedTag)
+                            ? 'bounce'
+                            : undefined
+                        }
+                      >
+                        <Tag
+                          onClear={() => {
+                            setState(
+                              'selected',
+                              getState('selected').filter(
+                                (tag: string) => tag !== selectedTag,
+                              ),
+                            );
+
+                            setState('available', [
+                              ...getState('available'),
+                              selectedTag,
+                            ]);
+
+                            // Add tag to animation queue
+                            setState('newlyCleared', [
+                              selectedTag,
+                              ...getState('newlyCleared'),
+                            ]);
+                            // After 400ms (animation is 350ms), remove the tag from the queue
+                            setTimeout(() => {
+                              setState(
+                                'newlyCleared',
+                                getState('newlyCleared').filter(
+                                  (clearedTag: string) =>
+                                    clearedTag !== selectedTag,
+                                ),
+                              );
+                            }, 400);
+                          }}
+                          clearLabel={`Clear "${selectedTag}"`}
+                          id={`clear-${selectedTag}`}
+                        >
+                          {selectedTag}
+                        </Tag>
+                      </Box>
+                    ))}
+                  </Inline>
+                )}
+              </Stack>
+            </Stack>
+          </>,
+        ),
     },
     dataAttributeDocs({
       code: `
