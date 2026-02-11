@@ -187,14 +187,12 @@ const docs: ComponentDocs = {
     {
       label: 'Interaction patterns',
       description: (
-        <>
-          <Text>
-            Use actionable tags to allow users to input data, make selections,
-            define search criteria or filter content. Common patterns include
-            selecting from a list or entering text in a form field. Below are
-            examples of each.
-          </Text>
-        </>
+        <Text>
+          Use actionable tags to allow users to input data, make selections,
+          define search criteria or filter content. Common patterns include
+          selecting from a list or entering text in a form field. Below are
+          examples of each.
+        </Text>
       ),
     },
     {
