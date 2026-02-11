@@ -14,6 +14,7 @@ import {
   Box,
   Autosuggest,
   filterSuggestions,
+  List,
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -486,6 +487,36 @@ animation: 350ms ease-in-out scaleBounce;
             </Stack>
           </>,
         ),
+    },
+    {
+      label: 'When to use',
+      description: (
+        <Stack space="xlarge">
+          <Stack space="large">
+            <Text>Use a Tag:</Text>
+            <List space="large">
+              <Text>To display discrete pieces of user-provided data</Text>
+              <Text>
+                To allow users to make selections, define search criteria or
+                filter content.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Tag:</Text>
+            <List space="large">
+              <Text>
+                To display the status of an object (use a{' '}
+                <TextLink href="/components/Badge">Badge</TextLink> instead)
+              </Text>
+              <Text>
+                To perform actions other than “add” or “clear” (use a{' '}
+                <TextLink href="/foundations/button">Button</TextLink> instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
+      ),
     },
     dataAttributeDocs({
       code: `
