@@ -1,25 +1,22 @@
 import { Text, Box, Stack } from 'braid-src/lib/components';
 import { useEffect, useState } from 'react';
 
-export type TocItem = {
-  readonly id: string;
-  readonly label: string;
-  readonly isChild?: boolean;
-};
+export interface TocItem {
+  id: string;
+  label: string;
+  isChild?: boolean;
+  href?: string;
+}
 
-export type TocSection = {
-  readonly id: string;
-  readonly label: string;
-  readonly href: string;
-  readonly children?: ReadonlyArray<{
-    readonly id: string;
-    readonly label: string;
-    readonly href: string;
-  }>;
-};
+export interface TocSection {
+  id: string;
+  label: string;
+  href: string;
+  children?: TocItem[];
+}
 
 const tocItemTextSize = 'xsmall';
-const SCROLL_THRESHOLD = 100; // Distance from top of viewport to consider a section "active"
+const scrollThreshold = 100;
 
 const TocItemLink = ({
   href,
@@ -42,15 +39,11 @@ const TocItemLink = ({
     style={{
       textDecoration: 'none',
     }}
-    paddingLeft={isChild ? 'small' : undefined}
+    paddingLeft={isChild ? 'medium' : undefined}
     display="block"
   >
-    <Text
-      size={tocItemTextSize}
-      weight={isActive ? 'strong' : undefined}
-      tone={isActive ? 'brandAccent' : undefined}
-    >
-      {children}
+    <Text size={tocItemTextSize} tone={isActive ? 'neutral' : 'secondary'}>
+      | {children}
     </Text>
   </Box>
 );
@@ -66,38 +59,29 @@ export const Toc = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      // Collect all section IDs (both parent and children)
-      const allIds: string[] = [];
+      const anchorIds: string[] = [];
       sections.forEach((section) => {
-        allIds.push(section.id);
+        anchorIds.push(section.id);
         if (section.children) {
           section.children.forEach((child) => {
-            allIds.push(child.id);
+            anchorIds.push(child.id);
           });
         }
       });
 
-      // Find the section that is currently near the top of the viewport
-      // We want to keep the last section that has passed the threshold as active
       let currentActiveId = '';
-      for (const id of allIds) {
+      for (const id of anchorIds) {
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // If the section has passed the threshold (top is above it), mark it as active
-          if (rect.top <= SCROLL_THRESHOLD) {
+          if (rect.top <= scrollThreshold) {
             currentActiveId = id;
           }
         }
       }
-
       setActiveId(currentActiveId);
     };
 
-    // Initial check
-    handleScroll();
-
-    // Add scroll listener
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
@@ -129,7 +113,7 @@ export const Toc = ({
                     <TocItemLink
                       key={child.id}
                       label={child.label}
-                      href={child.href}
+                      href={child.id}
                       isChild={true}
                       isActive={activeId === child.id}
                       onClick={(e) => onTocClick(e, child.id)}

@@ -8,19 +8,19 @@ import {
   Text,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import { useCallback, useContext, useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
 import { PageTitle } from '../Seo/PageTitle';
 
 import { DocExample } from './DocExample';
 import { DocsContext } from './DocNavigation';
 import { DocSection } from './DocSection';
-import { type TocSection, Toc } from './DocToc';
+import { TocSection, Toc } from './DocToc';
 
 import * as styles from './DocDetails.css';
 
-const headingSpacing = 'medium';
-const innerSectionSpacing = 'medium';
+const headingSpacing = 'large';
+const innerSectionSpacing = 'xxlarge';
 const outerSectionSpacing = 'xxlarge';
 
 const getSectionHeading = (sectionKey: string): string => {
@@ -38,24 +38,21 @@ const getSectionHeading = (sectionKey: string): string => {
   }
 };
 
+const slugify = (string: string) =>
+  string
+    .replace(/[\s?]/g, '-')
+    .replace('--', '-')
+    .replace(/-$/, '')
+    .toLowerCase();
+
+const hasContent = (example: {
+  description?: unknown;
+  code?: unknown;
+  Example?: unknown;
+}) => Boolean(example.description || example.code || example.Example);
+
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
-
-  const slugify = useCallback(
-    (string: string) =>
-      string
-        .replace(/[\s?]/g, '-')
-        .replace('--', '-')
-        .replace(/-$/, '')
-        .toLowerCase(),
-    [],
-  );
-
-  const hasContent = useCallback(
-    (example: { description?: unknown; code?: unknown; Example?: unknown }) =>
-      Boolean(example.description || example.code || example.Example),
-    [],
-  );
 
   const tocSections = useMemo<readonly TocSection[]>(() => {
     if (!docs) {
@@ -64,16 +61,6 @@ export const DocDetails = () => {
 
     const sections: TocSection[] = [];
 
-    // Add Alternatives section
-    if ('alternatives' in docs && docs.alternatives.length > 0) {
-      sections.push({
-        id: 'alternatives',
-        label: 'Alternatives',
-        href: '#alternatives',
-      });
-    }
-
-    // Add Accessibility section
     if ('accessibility' in docs && docs.accessibility) {
       sections.push({
         id: 'accessibility',
@@ -82,11 +69,9 @@ export const DocDetails = () => {
       });
     }
 
-    // Add doc sections (appearance, states, layout, usage)
     if (docs.docSections) {
       Object.entries(docs.docSections).forEach(
         ([sectionKey, docSectionChildren]) => {
-          // Skip sections where all children have no content
           const hasAnyContent = docSectionChildren.some(hasContent);
           if (!hasAnyContent) {
             return;
@@ -95,16 +80,15 @@ export const DocDetails = () => {
           const heading = getSectionHeading(sectionKey);
 
           const children = docSectionChildren
-            .filter(
-              (example: { label?: string }): example is { label: string } =>
-                Boolean(example.label),
+            .filter((child: { label?: string }): child is { label: string } =>
+              Boolean(child.label),
             )
-            .map((example: { label: string }) => {
-              const exampleId = slugify(example.label);
+            .map((child: { label: string }) => {
+              const childId = slugify(child.label);
               return {
-                id: exampleId,
-                label: example.label,
-                href: `#${exampleId}`,
+                id: childId,
+                label: child.label,
+                href: `#${childId}`,
               };
             });
 
@@ -118,20 +102,27 @@ export const DocDetails = () => {
       );
     }
 
-    // Add additional items
-    docs.additional?.forEach((example) => {
-      if (example.label) {
-        const id = slugify(example.label);
+    docs.additional?.forEach((child) => {
+      if (child.label) {
+        const id = slugify(child.label);
         sections.push({
           id,
-          label: example.label,
+          label: child.label,
           href: `#${id}`,
         });
       }
     });
 
+    if ('alternatives' in docs && docs.alternatives.length > 0) {
+      sections.push({
+        id: 'alternatives',
+        label: 'Alternatives',
+        href: '#alternatives',
+      });
+    }
+
     return sections;
-  }, [docs, slugify, hasContent]);
+  }, [docs]);
 
   const handleTocClick = (_event: React.MouseEvent, id: string) => {
     try {
@@ -160,10 +151,49 @@ export const DocDetails = () => {
                 </PlayroomStateProvider>
               ) : null}
 
+              {'accessibility' in docs ? (
+                <Stack space={headingSpacing}>
+                  <LinkableHeading level="3">Accessibility</LinkableHeading>
+                  {docs.accessibility}
+                </Stack>
+              ) : null}
+
+              {docs.docSections &&
+                Object.entries(docs.docSections)
+                  .filter(([, docSectionChildren]) =>
+                    docSectionChildren.some(hasContent),
+                  )
+                  .map(([sectionKey, docSectionChildren]) => (
+                    <Stack key={sectionKey} space={headingSpacing}>
+                      <LinkableHeading level="2" label={sectionKey}>
+                        {getSectionHeading(sectionKey)}
+                      </LinkableHeading>
+                      <Stack space={innerSectionSpacing}>
+                        {docSectionChildren.map(
+                          (example: { label?: string }, index: number) => (
+                            <DocSection
+                              key={index}
+                              section={example}
+                              headingSpacing={headingSpacing}
+                            />
+                          ),
+                        )}
+                      </Stack>
+                    </Stack>
+                  ))}
+
+              {(docs.additional || []).map((example, index) => (
+                <DocSection
+                  key={index}
+                  section={example}
+                  headingSpacing={headingSpacing}
+                />
+              ))}
+
               {'alternatives' in docs ? (
-                <Stack space={innerSectionSpacing}>
+                <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Alternatives</LinkableHeading>
-                  <List space={innerSectionSpacing}>
+                  <List space="medium">
                     {docs.alternatives.map((alt) => (
                       <Text key={`${alt.name}`}>
                         <TextLink
@@ -178,43 +208,6 @@ export const DocDetails = () => {
                   </List>
                 </Stack>
               ) : null}
-
-              {'accessibility' in docs ? (
-                <Stack space={innerSectionSpacing}>
-                  <LinkableHeading level="3">Accessibility</LinkableHeading>
-                  {docs.accessibility}
-                </Stack>
-              ) : null}
-
-              {docs.docSections &&
-                Object.entries(docs.docSections)
-                  .filter(([, docSectionChildren]) =>
-                    docSectionChildren.some(hasContent),
-                  )
-                  .map(([sectionKey, docSectionChildren]) => (
-                    <Stack key={sectionKey} space={outerSectionSpacing}>
-                      <LinkableHeading level="2" label={sectionKey}>
-                        {getSectionHeading(sectionKey)}
-                      </LinkableHeading>
-                      {docSectionChildren.map(
-                        (example: { label?: string }, index: number) => (
-                          <DocSection
-                            key={index}
-                            section={example}
-                            headingSpacing={headingSpacing}
-                          />
-                        ),
-                      )}
-                    </Stack>
-                  ))}
-
-              {(docs.additional || []).map((example, index) => (
-                <DocSection
-                  key={index}
-                  section={example}
-                  headingSpacing={headingSpacing}
-                />
-              ))}
             </Stack>
           </Stack>
         </Box>
