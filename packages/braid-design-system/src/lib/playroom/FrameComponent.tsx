@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, Fragment } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 import {
   BraidProvider,
@@ -8,6 +8,7 @@ import {
 } from '../components';
 import type { BraidTheme } from '../themes/makeBraidTheme';
 
+import SpaceDebugContext from './SpaceDebugContext';
 import { PlayroomStateProvider } from './playroomState';
 
 import { darkMode } from '../css/atoms/sprinkles.css';
@@ -43,6 +44,7 @@ const ResponsiveReady = ({ children }: { children: ReactNode }) => {
 };
 
 export default ({ theme, children }: Props) => {
+  const [spaceDebug, setSpaceDebug] = useState(false);
   // TODO: COLORMODE RELEASE
   // Remove color mode toggle
   useEffect(() => {
@@ -50,7 +52,13 @@ export default ({ theme, children }: Props) => {
     const darkTrigger = 'braiddark';
     const lightTrigger = 'braidlight';
     const longestTrigger = Math.max(lightTrigger.length, darkTrigger.length);
-    const colorModeToggle = (ev: KeyboardEvent) => {
+    const globalKeyDownHandler = (ev: KeyboardEvent) => {
+      if (ev.ctrlKey && ev.shiftKey && ev.key === 'D') {
+        setSpaceDebug((prev) => !prev);
+        code = '';
+        return;
+      }
+
       code += ev.key;
       if (code.substr(code.length - darkTrigger.length) === darkTrigger) {
         document.documentElement.classList.add(darkMode);
@@ -66,15 +74,15 @@ export default ({ theme, children }: Props) => {
         code = code.substr(code.length - longestTrigger);
       }
     };
-    window.addEventListener('keydown', colorModeToggle);
+    window.addEventListener('keydown', globalKeyDownHandler);
 
     return () => {
-      window.removeEventListener('keydown', colorModeToggle);
+      window.removeEventListener('keydown', globalKeyDownHandler);
     };
   }, []);
 
   return (
-    <Fragment>
+    <SpaceDebugContext.Provider value={spaceDebug}>
       <div
         dangerouslySetInnerHTML={{
           __html: theme.webFonts.map((font) => font.linkTag).join(''),
@@ -87,6 +95,6 @@ export default ({ theme, children }: Props) => {
           </ToastProvider>
         </BraidProvider>
       </PlayroomStateProvider>
-    </Fragment>
+    </SpaceDebugContext.Provider>
   );
 };
