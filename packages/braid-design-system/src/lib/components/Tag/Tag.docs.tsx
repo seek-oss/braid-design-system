@@ -35,7 +35,12 @@ const docs: ComponentDocs = {
         <Tag>Three</Tag>
       </Inline>,
     ),
-  alternatives: [{ name: 'Badge', description: 'For static labels.' }],
+  alternatives: [
+    {
+      name: 'Badge',
+      description: 'For communicating the status of an object.',
+    },
+  ],
   additional: [
     {
       label: 'Size',
