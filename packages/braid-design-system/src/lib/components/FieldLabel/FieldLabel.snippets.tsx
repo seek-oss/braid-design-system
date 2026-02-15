@@ -5,15 +5,15 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<FieldLabel label="Label" />),
   },
   {
-    name: 'Standard with secondary label',
+    description: 'Standard with secondary label',
     code: source(<FieldLabel label="Label" secondaryLabel="Optional" />),
   },
   {
-    name: 'Standard with tertiary label',
+    description: 'Standard with tertiary label',
     code: source(
       <FieldLabel
         label="Label"

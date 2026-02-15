@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Critical',
+    description: 'Critical',
     code: source(
       <Alert tone="critical">
         <Text>Critical Alert</Text>
@@ -13,7 +13,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Caution',
+    description: 'Caution',
     code: source(
       <Alert tone="caution">
         <Text>Caution Alert</Text>
@@ -21,7 +21,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Positive',
+    description: 'Positive',
     code: source(
       <Alert tone="positive">
         <Text>Positive Alert</Text>
@@ -29,7 +29,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Info',
+    description: 'Info',
     code: source(
       <Alert tone="info">
         <Text>Info Alert</Text>
@@ -37,7 +37,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Promote',
+    description: 'Promote',
     code: source(
       <Alert tone="promote">
         <Text>Promote Alert</Text>
@@ -45,7 +45,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Dismissible alert',
+    description: 'Dismissible alert',
     code: source(
       <Alert onClose={() => {}} closeLabel="Close">
         <Text>Dismissible Alert</Text>

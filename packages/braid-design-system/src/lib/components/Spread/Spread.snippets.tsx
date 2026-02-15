@@ -13,7 +13,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Horizontal direction',
+    description: 'Horizontal direction',
     code: source(
       <Spread space="small" alignY="center">
         <Placeholder height={60} width={50} />
@@ -22,7 +22,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Vertical direction',
+    description: 'Vertical direction',
     code: source(
       <Spread space="small" direction="vertical">
         <Placeholder height={60} />
@@ -31,7 +31,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Heading and action',
+    description: 'Heading and action',
     code: source(
       <Spread space="small" alignY="center">
         <Heading level="4">Heading</Heading>
@@ -43,7 +43,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Content stack and date stamp',
+    description: 'Content stack and date stamp',
     code: source(
       <Spread space="large" direction="vertical">
         <Stack space="small">

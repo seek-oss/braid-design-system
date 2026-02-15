@@ -5,31 +5,31 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<Checkbox label="Label" />),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(<Checkbox label="Label" size="small" />),
   },
   {
-    name: 'With a critical message',
+    description: 'With a critical message',
     code: source(
       <Checkbox label="Label" tone="critical" message="Critical message" />,
     ),
   },
   {
-    name: 'With a description',
+    description: 'With a description',
     code: source(<Checkbox label="Label" description="Description" />),
   },
   {
-    name: 'With a Badge',
+    description: 'With a Badge',
     code: source(
       <Checkbox label="Label" badge={<Badge weight="strong">Badge</Badge>} />,
     ),
   },
   {
-    name: 'With nested content',
+    description: 'With nested content',
     code: source(
       <Checkbox label="Label">
         <Placeholder height={100} />

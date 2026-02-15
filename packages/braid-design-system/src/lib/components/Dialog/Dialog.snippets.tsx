@@ -13,7 +13,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <Dialog title="Dialog Heading" open={true}>
         <Placeholder width={250} height={100} />
@@ -21,7 +21,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With illustration',
+    description: 'With illustration',
     code: source(
       <Dialog
         title="Illustrated Dialog"
@@ -43,7 +43,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Xsmall',
+    description: 'Xsmall',
     code: source(
       <Dialog title="Dialog Heading" width="xsmall" open={true}>
         <Placeholder width="100%" height={100} />
@@ -51,7 +51,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(
       <Dialog title="Dialog Heading" width="small" open={true}>
         <Placeholder width="100%" height={100} />
@@ -59,7 +59,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Medium',
+    description: 'Medium',
     code: source(
       <Dialog title="Dialog Heading" width="medium" open={true}>
         <Placeholder width="100%" height={100} />
@@ -67,7 +67,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Large',
+    description: 'Large',
     code: source(
       <Dialog title="Dialog Heading" width="large" open={true}>
         <Placeholder width="100%" height={100} />

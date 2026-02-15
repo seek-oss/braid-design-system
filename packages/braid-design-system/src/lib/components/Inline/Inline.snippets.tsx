@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Xsmall space',
+    description: 'Xsmall space',
     code: source(
       <Inline space="xsmall">
         <Placeholder width={48} height={48} />
@@ -15,7 +15,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Vertically centered',
+    description: 'Vertically centered',
     code: source(
       <Inline space="small" alignY="center">
         <Placeholder width={48} height={48} />
@@ -25,7 +25,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Responsive space',
+    description: 'Responsive space',
     code: source(
       <Inline space={{ mobile: 'small', tablet: 'large' }}>
         <Placeholder width={48} height={48} />

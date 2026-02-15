@@ -4,5 +4,5 @@ import { Secondary } from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
-  { name: 'Standard', code: source(<Secondary>Secondary</Secondary>) },
+  { description: 'Standard', code: source(<Secondary>Secondary</Secondary>) },
 ];

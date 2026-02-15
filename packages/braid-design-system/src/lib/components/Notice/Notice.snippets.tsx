@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Critical',
+    description: 'Critical',
     code: source(
       <Notice tone="critical">
         <Text>Critical Notice</Text>
@@ -13,7 +13,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Positive',
+    description: 'Positive',
     code: source(
       <Notice tone="positive">
         <Text>Positive Notice</Text>
@@ -21,7 +21,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Info',
+    description: 'Info',
     code: source(
       <Notice tone="info">
         <Text>Info Notice</Text>
@@ -29,7 +29,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Promote',
+    description: 'Promote',
     code: source(
       <Notice tone="promote">
         <Text>Promote Notice</Text>

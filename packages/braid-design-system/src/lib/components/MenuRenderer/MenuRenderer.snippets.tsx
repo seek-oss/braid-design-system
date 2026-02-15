@@ -15,7 +15,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <MenuRenderer
         offsetSpace="small"
@@ -37,7 +37,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(
       <MenuRenderer
         size="small"
@@ -60,7 +60,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With ButtonIcon',
+    description: 'With ButtonIcon',
     code: source(
       <MenuRenderer
         offsetSpace="small"
@@ -74,7 +74,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small with ButtonIcon',
+    description: 'Small with ButtonIcon',
     code: source(
       <MenuRenderer
         size="small"
@@ -91,7 +91,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With Placeholder',
+    description: 'With Placeholder',
     code: source(
       <MenuRenderer
         offsetSpace="small"

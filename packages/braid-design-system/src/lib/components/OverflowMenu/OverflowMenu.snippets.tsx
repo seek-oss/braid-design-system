@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <OverflowMenu label="Options">
         <MenuItem>Option</MenuItem>
@@ -14,7 +14,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(
       <OverflowMenu size="small" label="Options">
         <MenuItem>Option</MenuItem>
