@@ -2450,25 +2450,141 @@
   <ButtonLink href="#" variant="transparent">
     Transparent
   </ButtonLink>
-</Inline>`,value:n||(n=(0,d.jsxs)(i.c,{space:"small",collapseBelow:"desktop",children:[(0,d.jsx)(s.v,{href:"#",variant:"solid",children:"Solid"}),(0,d.jsx)(s.v,{href:"#",variant:"ghost",children:"Ghost"}),(0,d.jsx)(s.v,{href:"#",variant:"soft",children:"Soft"}),(0,d.jsx)(s.v,{href:"#",variant:"transparent",children:"Transparent"})]}))}),accessibility:(0,d.jsxs)(o.E,{children:["Even though it looks like a"," ",(0,d.jsx)(l.Yq,{href:"/components/Button",children:"Button"}),", this is actually a semantic link."]}),alternatives:[{name:"Button",description:"For a semantic button."},{name:"ButtonIcon",description:"For buttons containing only an icon."},{name:"TextLinkButton",description:"For a semantic button that looks like a TextLink."}],additional:[{label:"Custom link rendering",description:(0,d.jsxs)(o.E,{children:["This component renders a native ",(0,d.jsx)(r.O,{children:"a"})," element by default, but this can be customised via the ",(0,d.jsx)(r.O,{children:"linkComponent"})," prop on ",(0,d.jsx)(l.Yq,{href:"/components/BraidProvider",children:"BraidProvider"}),"."]})}]}},48969(e,t,a){"use strict";a.d(t,{v:()=>d});var n=a(71299),s=a(3031),i=a(56663),r=a(60348),o=a(24367),l=a(36259);let d=(0,n.forwardRef)((e,t)=>{let{children:a,size:n,tone:d,variant:c,bleed:p,icon:u,iconPosition:h,loading:m,data:g,...x}=e,f=(0,i.d5)(t),{root:b,content:y}=(0,r.Kd)({variant:c,tone:d,size:n,bleed:p,loading:m});return(0,l.jsx)(r.Ef,{bleed:p,variant:c,children:(0,l.jsx)(s.a,{component:f,outline:"focus",ref:t,...x,...b,...(0,o.A)({data:g,validateRestProps:!1}),children:(0,l.jsxs)(s.a,{...y,children:[(0,l.jsx)(r.M9,{variant:c,tone:d}),(0,l.jsx)(r.C3,{variant:c,tone:d,size:n,loading:m,icon:u,iconPosition:h,bleed:p,children:a})]})})})});d.displayName="ButtonLink",d.displayName="ButtonLink"},14534(e,t,a){"use strict";a.r(t),a.d(t,{default:()=>j});var n,s,i,r,o,l,d=a(71299),c=a(3031),p=a(21114),u=a(34831),h=a(78127),m=a(9127),g=a(1959),x=a(7787),f=a(25089),b=a(82023),y=a(47391),v=a(36259);let j={category:"Content",Example:()=>({code:`<Card>
+</Inline>`,value:n||(n=(0,d.jsxs)(i.c,{space:"small",collapseBelow:"desktop",children:[(0,d.jsx)(s.v,{href:"#",variant:"solid",children:"Solid"}),(0,d.jsx)(s.v,{href:"#",variant:"ghost",children:"Ghost"}),(0,d.jsx)(s.v,{href:"#",variant:"soft",children:"Soft"}),(0,d.jsx)(s.v,{href:"#",variant:"transparent",children:"Transparent"})]}))}),accessibility:(0,d.jsxs)(o.E,{children:["Even though it looks like a"," ",(0,d.jsx)(l.Yq,{href:"/components/Button",children:"Button"}),", this is actually a semantic link."]}),alternatives:[{name:"Button",description:"For a semantic button."},{name:"ButtonIcon",description:"For buttons containing only an icon."},{name:"TextLinkButton",description:"For a semantic button that looks like a TextLink."}],additional:[{label:"Custom link rendering",description:(0,d.jsxs)(o.E,{children:["This component renders a native ",(0,d.jsx)(r.O,{children:"a"})," element by default, but this can be customised via the ",(0,d.jsx)(r.O,{children:"linkComponent"})," prop on ",(0,d.jsx)(l.Yq,{href:"/components/BraidProvider",children:"BraidProvider"}),"."]})}]}},48969(e,t,a){"use strict";a.d(t,{v:()=>d});var n=a(71299),s=a(3031),i=a(56663),r=a(60348),o=a(24367),l=a(36259);let d=(0,n.forwardRef)((e,t)=>{let{children:a,size:n,tone:d,variant:c,bleed:p,icon:u,iconPosition:h,loading:m,data:g,...x}=e,f=(0,i.d5)(t),{root:b,content:y}=(0,r.Kd)({variant:c,tone:d,size:n,bleed:p,loading:m});return(0,l.jsx)(r.Ef,{bleed:p,variant:c,children:(0,l.jsx)(s.a,{component:f,outline:"focus",ref:t,...x,...b,...(0,o.A)({data:g,validateRestProps:!1}),children:(0,l.jsxs)(s.a,{...y,children:[(0,l.jsx)(r.M9,{variant:c,tone:d}),(0,l.jsx)(r.C3,{variant:c,tone:d,size:n,loading:m,icon:u,iconPosition:h,bleed:p,children:a})]})})})});d.displayName="ButtonLink",d.displayName="ButtonLink"},14534(e,t,a){"use strict";a.r(t),a.d(t,{default:()=>F});var n,s,i,r,o,l,d,c,p,u,h,m,g,x=a(71299),f=a(36470),b=a(30873),y=a(61263),v=a(3031),j=a(60348),w=a(21114),T=a(34831),k=a(78127),C=a(26191),A=a(56835),S=a(38097),E=a(15655),I=a(63983),B=a(85766),L=a(9127),N=a(1959),M=a(7787),P=a(78777),H=a(7367),q=a(25089),D=a(82023),R=a(47391),O=a(36259);let F={category:"Content",description:(0,O.jsx)(M.E,{children:"A visual container for information and actions related to a single subject."}),Example:()=>({code:`<Card>
   <Placeholder label="This content is inside a card" height={60} />
-</Card>`,value:n||(n=(0,v.jsx)(p.Z,{children:(0,v.jsx)(b.OrA,{label:"This content is inside a card",height:60})}))}),alternatives:[{name:"Box",description:"For custom layouts."}],additional:[{label:"Controlling the height",description:(0,v.jsxs)(v.Fragment,{children:[(0,v.jsxs)(x.E,{children:["By default, ",(0,v.jsx)(g.O,{children:"height"})," will be set to"," ",(0,v.jsx)(g.O,{children:"content"})," — growing to accomodate what is inside it."]}),(0,v.jsxs)(x.E,{children:["Alternatively, choose a height of ",(0,v.jsx)(g.O,{children:"full"})," to use all available vertical space. This is useful when composing rows of Card components that should all be equal height."]})]}),Example:()=>({code:`<Columns space={{ mobile: "xsmall", tablet: "gutter" }}>
-  <Column>
-    <Card height="full">
-      <Placeholder height={60} />
-    </Card>
-  </Column>
-  <Column>
-    <Card height="full">
-      <Placeholder height={200} />
-    </Card>
-  </Column>
-  <Column>
-    <Card height="full">
-      <Placeholder height={100} />
-    </Card>
-  </Column>
-</Columns>`,value:(0,v.jsxs)(h.e,{space:{mobile:"xsmall",tablet:"gutter"},children:[s||(s=(0,v.jsx)(u.V,{children:(0,v.jsx)(p.Z,{height:"full",children:(0,v.jsx)(b.OrA,{height:60})})})),i||(i=(0,v.jsx)(u.V,{children:(0,v.jsx)(p.Z,{height:"full",children:(0,v.jsx)(b.OrA,{height:200})})})),r||(r=(0,v.jsx)(u.V,{children:(0,v.jsx)(p.Z,{height:"full",children:(0,v.jsx)(b.OrA,{height:100})})}))]})})},{label:"Tones",description:(0,v.jsxs)(x.E,{children:["Providing a ",(0,v.jsx)(g.O,{children:"tone"})," prop will add a keyline down the left hand side of the container. The supported tones are"," ",(0,v.jsx)(g.O,{children:"promote"})," and ",(0,v.jsx)(g.O,{children:"formAccent"}),"."]}),Example:()=>({code:`<Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
+</Card>`,value:n||(n=(0,O.jsx)(w.Z,{children:(0,O.jsx)(D.OrA,{label:"This content is inside a card",height:60})}))}),alternatives:[{name:"Box",description:"For custom layouts."}],additional:[{label:"Visual guidelines",description:(0,O.jsx)(M.E,{children:"Cards are highly flexible and can contain many types of content including copy, images, calls to action and layout components. Below is just one example of how a card can look."}),Example:()=>({code:`<Card>
+  <Stack space="medium">
+    <Stack space="small">
+      <Spread space="small">
+        <Heading level="4">Heading level 4</Heading>
+        <OverflowMenu label="Options">
+          <MenuItem icon={<IconNote />}>Menu item 1</MenuItem>
+          <MenuItem icon={<IconBookmark />}>Menu item 2</MenuItem>
+        </OverflowMenu>
+      </Spread>
+      <Text>Standard text</Text>
+    </Stack>
+    <Text>
+      Standard text lorem ipsum dolor sit amet consectetur adipiscing elit.
+      Vivamus iaculis ut neque sit amet egestas.{" "}
+    </Text>
+    <Text tone="secondary">Standard, secondary text</Text>
+    <Actions>
+      <Button>Button</Button>
+    </Actions>
+  </Stack>
+</Card>`,value:s||(s=(0,O.jsx)(w.Z,{children:(0,O.jsxs)(L.B,{space:"medium",children:[(0,O.jsxs)(L.B,{space:"small",children:[(0,O.jsxs)(I.K,{space:"small",children:[(0,O.jsx)(C.D,{level:"4",children:"Heading level 4"}),(0,O.jsxs)(E.o,{label:"Options",children:[(0,O.jsx)(S.D,{icon:(0,O.jsx)(B.w,{}),children:"Menu item 1"}),(0,O.jsx)(S.D,{icon:(0,O.jsx)(b.E,{}),children:"Menu item 2"})]})]}),(0,O.jsx)(M.E,{children:"Standard text"})]}),(0,O.jsxs)(M.E,{children:["Standard text lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas."," "]}),(0,O.jsx)(M.E,{tone:"secondary",children:"Standard, secondary text"}),(0,O.jsx)(y.E,{children:(0,O.jsx)(j.$n,{children:"Button"})})]})}))})},{description:(0,O.jsxs)(O.Fragment,{children:[(0,O.jsx)(C.D,{level:"4",children:"Typography"}),(0,O.jsxs)(M.E,{children:["Keep it simple and try to limit text sizes to one"," ",(0,O.jsx)(N.O,{children:"Heading"})," and one ",(0,O.jsx)(N.O,{children:"Text"})," size. As a default, we recommend:"]}),(0,O.jsxs)(A.B,{space:"medium",children:[(0,O.jsxs)(M.E,{children:["Heading ",(0,O.jsx)(N.O,{children:"level 4"})," for card headings"]}),(0,O.jsxs)(M.E,{children:["Text size ",(0,O.jsx)(N.O,{children:"standard"})," for subheadings and body copy"]}),(0,O.jsxs)(M.E,{children:["Text tone ",(0,O.jsx)(N.O,{children:"secondary"})," for secondary copy."]})]})]})},{description:(0,O.jsxs)(O.Fragment,{children:[(0,O.jsx)(C.D,{level:"4",children:"Vertical spacing"}),(0,O.jsxs)(M.E,{children:["Use the ",(0,O.jsx)(P.Yq,{href:"/components/Stack",children:"Stack"})," ","component to apply vertical spacing within a card. As a default, we recommend:"]}),(0,O.jsxs)(A.B,{space:"medium",children:[(0,O.jsxs)(M.E,{children:["Stack space ",(0,O.jsx)(N.O,{children:"medium"})," for separating content groups and sections (or ",(0,O.jsx)(N.O,{children:"large"})," for an airier feel)"]}),(0,O.jsxs)(M.E,{children:["Stack space ",(0,O.jsx)(N.O,{children:"small"})," for related content you’d like to display more tightly (such as the heading and subheading)."]})]}),(0,O.jsx)(M.E,{children:"Below is the same example as before but with spacing highlighted for visibility."})]}),playroom:!1,code:!1,Example:()=>{let e;return{code:`(() => {
+  const VisualSpace = ({ space }: { space: "small" | "medium" | "large" }) => (
+    <Box
+      background={
+        (
+          {
+            small: "promoteLight",
+            medium: "infoLight",
+            large: "positiveLight",
+          } as const
+        )[space] ?? "neutralLight"
+      }
+      display="flex"
+      alignItems="center"
+      paddingLeft="xxsmall"
+      style={{ height: vars.space[space] }}
+    >
+      <Text size="xsmall" weight="strong">
+        {space.substring(0, space.lastIndexOf("x") + 2).toUpperCase()}
+      </Text>
+    </Box>
+  )
+
+  return (
+    <Box padding="small">
+      <Card>
+        <Spread space="small">
+          <Heading level="4">Heading level 4</Heading>
+
+          <OverflowMenu label="Options">
+            <MenuItem icon={<IconNote />}>Menu item 1</MenuItem>
+            <MenuItem icon={<IconBookmark />}>Menu item 2</MenuItem>
+          </OverflowMenu>
+        </Spread>
+        <VisualSpace space="small" />
+        <Text>Standard text</Text>
+        <VisualSpace space="medium" />
+        <Text>
+          Standard text lorem ipsum dolor sit amet consectetur adipiscing elit.
+          Vivamus iaculis ut neque sit amet egestas.{" "}
+        </Text>
+        <VisualSpace space="medium" />
+        <Text tone="secondary">Standard, secondary text</Text>
+        <VisualSpace space="medium" />
+        <Actions>
+          <Button>Button</Button>
+        </Actions>
+      </Card>
+    </Box>
+  )
+})()`,value:((e=e=>{let{space:t}=e;return(0,O.jsx)(v.l,{background:{small:"promoteLight",medium:"infoLight",large:"positiveLight"}[t]??"neutralLight",display:"flex",alignItems:"center",paddingLeft:"xxsmall",style:{height:f.vars.space[t]},children:(0,O.jsx)(M.E,{size:"xsmall",weight:"strong",children:t.substring(0,t.lastIndexOf("x")+2).toUpperCase()})})}).displayName="VisualSpace",(0,O.jsx)(v.l,{padding:"small",children:(0,O.jsxs)(w.Z,{children:[i||(i=(0,O.jsxs)(I.K,{space:"small",children:[(0,O.jsx)(C.D,{level:"4",children:"Heading level 4"}),(0,O.jsxs)(E.o,{label:"Options",children:[(0,O.jsx)(S.D,{icon:(0,O.jsx)(B.w,{}),children:"Menu item 1"}),(0,O.jsx)(S.D,{icon:(0,O.jsx)(b.E,{}),children:"Menu item 2"})]})]})),(0,O.jsx)(e,{space:"small"}),r||(r=(0,O.jsx)(M.E,{children:"Standard text"})),(0,O.jsx)(e,{space:"medium"}),o||(o=(0,O.jsxs)(M.E,{children:["Standard text lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas."," "]})),(0,O.jsx)(e,{space:"medium"}),l||(l=(0,O.jsx)(M.E,{tone:"secondary",children:"Standard, secondary text"})),(0,O.jsx)(e,{space:"medium"}),d||(d=(0,O.jsx)(y.E,{children:(0,O.jsx)(j.$n,{children:"Button"})}))]})}))}}},{description:(0,O.jsxs)(L.B,{space:"large",children:[(0,O.jsx)(C.D,{level:"4",children:"Content size"}),(0,O.jsx)(M.E,{children:"The size and spacing of card content can be tailored when needed. Below are examples of 3 different sizing approaches."})]}),Example:()=>({code:`<Stack space="small">
+  <Card>
+    <Stack space="medium">
+      <Stack space="small">
+        <Heading level="4">Heading level 4</Heading>
+        <Text>Standard text</Text>
+      </Stack>
+      <Text>
+        Standard text lorem ipsum dolor sit amet consectetur adipiscing elit.
+        Vivamus iaculis ut neque sit amet egestas consectetur. Lorem ipsum dolor
+        sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet
+        egestas.
+      </Text>
+      <Text tone="secondary">Standard, secondary text</Text>
+      <Actions>
+        <Button>Button</Button>
+      </Actions>
+    </Stack>
+  </Card>
+
+  <Card>
+    <Stack space="medium">
+      <Stack space="xsmall">
+        <Text size="large" weight="strong">
+          Large, strong text
+        </Text>
+        <Text size="small">Small text</Text>
+      </Stack>
+      <Text size="small">
+        Small text lorem ipsum dolor sit amet consectetur adipiscing elit.
+        Vivamus iaculis ut neque sit amet egestas. Lorem ipsum dolor sit amet
+        consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas.
+      </Text>
+      <Text tone="secondary" size="small">
+        Small, secondary text
+      </Text>
+      <Actions>
+        <Button size="small">Small button</Button>
+      </Actions>
+    </Stack>
+  </Card>
+
+  <Card>
+    <Stack space="medium">
+      <Stack space="xsmall">
+        <Text weight="strong">Strong text</Text>
+        <Text size="small">Small text</Text>
+      </Stack>
+      <Text size="xsmall">
+        Xsmall text lorem ipsum dolor sit amet consectetur adipiscing elit.
+        Vivamus iaculis ut neque sit amet egestas. Lorem ipsum dolor sit amet
+        consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas.
+      </Text>
+      <Text tone="secondary" size="xsmall">
+        Xsmall, secondary text
+      </Text>
+      <Text size="xsmall">
+        <TextLinkButton>Xsmall TextLink</TextLinkButton>
+      </Text>
+    </Stack>
+  </Card>
+</Stack>`,value:c||(c=(0,O.jsxs)(L.B,{space:"small",children:[(0,O.jsx)(w.Z,{children:(0,O.jsxs)(L.B,{space:"medium",children:[(0,O.jsxs)(L.B,{space:"small",children:[(0,O.jsx)(C.D,{level:"4",children:"Heading level 4"}),(0,O.jsx)(M.E,{children:"Standard text"})]}),(0,O.jsx)(M.E,{children:"Standard text lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas consectetur. Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas."}),(0,O.jsx)(M.E,{tone:"secondary",children:"Standard, secondary text"}),(0,O.jsx)(y.E,{children:(0,O.jsx)(j.$n,{children:"Button"})})]})}),(0,O.jsx)(w.Z,{children:(0,O.jsxs)(L.B,{space:"medium",children:[(0,O.jsxs)(L.B,{space:"xsmall",children:[(0,O.jsx)(M.E,{size:"large",weight:"strong",children:"Large, strong text"}),(0,O.jsx)(M.E,{size:"small",children:"Small text"})]}),(0,O.jsx)(M.E,{size:"small",children:"Small text lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas. Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas."}),(0,O.jsx)(M.E,{tone:"secondary",size:"small",children:"Small, secondary text"}),(0,O.jsx)(y.E,{children:(0,O.jsx)(j.$n,{size:"small",children:"Small button"})})]})}),(0,O.jsx)(w.Z,{children:(0,O.jsxs)(L.B,{space:"medium",children:[(0,O.jsxs)(L.B,{space:"xsmall",children:[(0,O.jsx)(M.E,{weight:"strong",children:"Strong text"}),(0,O.jsx)(M.E,{size:"small",children:"Small text"})]}),(0,O.jsx)(M.E,{size:"xsmall",children:"Xsmall text lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas. Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus iaculis ut neque sit amet egestas."}),(0,O.jsx)(M.E,{tone:"secondary",size:"xsmall",children:"Xsmall, secondary text"}),(0,O.jsx)(M.E,{size:"xsmall",children:(0,O.jsx)(H.W,{children:"Xsmall TextLink"})})]})})]}))})},{label:"Tones",description:(0,O.jsxs)(O.Fragment,{children:[(0,O.jsxs)(M.E,{children:["Use the ",(0,O.jsx)(N.O,{children:"tone"})," property to visually accentuate a Card by adding a keyline down the left hand side. Supported tones include"," ",(0,O.jsx)(N.O,{children:"promote"})," and ",(0,O.jsx)(N.O,{children:"formAccent"}),"."]}),(0,O.jsxs)(M.E,{children:["Read more about ",(0,O.jsx)(P.Yq,{href:"/foundations/tones",children:"Tones"}),"."]})]}),Example:()=>({code:`<Tiles space="large" columns={{ mobile: 1, tablet: 2 }}>
   <Stack space="small">
     <Text size="xsmall" tone="secondary">
       PROMOTE
@@ -2486,7 +2602,23 @@
       <Box style={{ height: 100 }} width="full" />
     </Card>
   </Stack>
-</Tiles>`,value:(0,v.jsxs)(f.U,{space:"large",columns:{mobile:1,tablet:2},children:[(0,v.jsxs)(m.B,{space:"small",children:[o||(o=(0,v.jsx)(x.E,{size:"xsmall",tone:"secondary",children:"PROMOTE"})),(0,v.jsx)(p.Z,{tone:"promote",children:(0,v.jsx)(c.l,{style:{height:100},width:"full"})})]}),(0,v.jsxs)(m.B,{space:"small",children:[l||(l=(0,v.jsx)(x.E,{size:"xsmall",tone:"secondary",children:"FORMACCENT"})),(0,v.jsx)(p.Z,{tone:"formAccent",children:(0,v.jsx)(c.l,{style:{height:100},width:"full"})})]})]})})},{label:"Custom semantics",description:(0,v.jsxs)(x.E,{children:["The HTML tag can be customised to ensure the underlying document semantics are meaningful. This can be done using the"," ",(0,v.jsx)(g.O,{children:"component"})," prop and supports"," ",p.L.map((e,t)=>{let a=p.L.length-2;return(0,v.jsxs)(d.Fragment,{children:[(0,v.jsx)(g.O,{children:e}),"div"===e?" (default)":"",t<a?", ":t===a?" and ":"."]},e)})]})},(0,y.dataAttributeDocs)({code:`
+</Tiles>`,value:(0,O.jsxs)(q.U,{space:"large",columns:{mobile:1,tablet:2},children:[(0,O.jsxs)(L.B,{space:"small",children:[p||(p=(0,O.jsx)(M.E,{size:"xsmall",tone:"secondary",children:"PROMOTE"})),(0,O.jsx)(w.Z,{tone:"promote",children:(0,O.jsx)(v.l,{style:{height:100},width:"full"})})]}),(0,O.jsxs)(L.B,{space:"small",children:[u||(u=(0,O.jsx)(M.E,{size:"xsmall",tone:"secondary",children:"FORMACCENT"})),(0,O.jsx)(w.Z,{tone:"formAccent",children:(0,O.jsx)(v.l,{style:{height:100},width:"full"})})]})]})})},{label:"Controlling the height",description:(0,O.jsxs)(O.Fragment,{children:[(0,O.jsxs)(M.E,{children:["By default, ",(0,O.jsx)(N.O,{children:"height"})," will be set to"," ",(0,O.jsx)(N.O,{children:"content"})," — growing to accomodate what is inside it."]}),(0,O.jsxs)(M.E,{children:["Alternatively, choose a height of ",(0,O.jsx)(N.O,{children:"full"})," to use all available vertical space. This is useful when composing rows of Card components that should all be equal height."]})]}),Example:()=>({code:`<Columns space={{ mobile: "xsmall", tablet: "gutter" }}>
+  <Column>
+    <Card height="full">
+      <Placeholder height={60} />
+    </Card>
+  </Column>
+  <Column>
+    <Card height="full">
+      <Placeholder height={200} />
+    </Card>
+  </Column>
+  <Column>
+    <Card height="full">
+      <Placeholder height={100} />
+    </Card>
+  </Column>
+</Columns>`,value:(0,O.jsxs)(k.e,{space:{mobile:"xsmall",tablet:"gutter"},children:[h||(h=(0,O.jsx)(T.V,{children:(0,O.jsx)(w.Z,{height:"full",children:(0,O.jsx)(D.OrA,{height:60})})})),m||(m=(0,O.jsx)(T.V,{children:(0,O.jsx)(w.Z,{height:"full",children:(0,O.jsx)(D.OrA,{height:200})})})),g||(g=(0,O.jsx)(T.V,{children:(0,O.jsx)(w.Z,{height:"full",children:(0,O.jsx)(D.OrA,{height:100})})}))]})})},{label:"General best practice",description:(0,O.jsxs)(A.B,{space:"large",children:[(0,O.jsx)(M.E,{children:"Ensure card content is scannable and easy to digest."}),(0,O.jsx)(M.E,{children:"Limit content to a single subject (e.g. a single job, candidate, article)."}),(0,O.jsx)(M.E,{children:"Include clear action(s). These can be in relation to the subject or to simply view more details."})]})},{label:"When to use",description:(0,O.jsxs)(L.B,{space:"xlarge",children:[(0,O.jsxs)(L.B,{space:"large",children:[(0,O.jsx)(M.E,{children:"Use a Card to:"}),(0,O.jsxs)(A.B,{space:"large",children:[(0,O.jsx)(M.E,{children:"provide a summary and entry point to more detailed information about a single subject"}),(0,O.jsx)(M.E,{children:"allow users to take relevant action(s) related to the subject (e.g. save, delete)."})]})]}),(0,O.jsxs)(L.B,{space:"large",children:[(0,O.jsx)(M.E,{children:"Don’t use a Card to:"}),(0,O.jsxs)(A.B,{space:"large",children:[(0,O.jsx)(M.E,{children:"provide actionable content relating to multiple subjects (break them into individual cards instead)"}),(0,O.jsxs)(M.E,{children:["inform the user about important changes or conditions in the interface (use"," ",(0,O.jsx)(P.Yq,{href:"/components/Alert",children:"Alert"})," or"," ",(0,O.jsx)(P.Yq,{href:"/components/Notice",children:"Notice"})," instead)"]}),(0,O.jsxs)(M.E,{children:["visually differentiate static, non-actionable content (use"," ",(0,O.jsx)(P.Yq,{href:"/components/Box",children:"Box"})," instead)."]})]})]})]})},{label:"Custom semantics",description:(0,O.jsxs)(M.E,{children:["The HTML tag can be customised to ensure the underlying document semantics are meaningful. This can be done using the"," ",(0,O.jsx)(N.O,{children:"component"})," prop and supports"," ",w.L.map((e,t)=>{let a=w.L.length-2;return(0,O.jsxs)(x.Fragment,{children:[(0,O.jsx)(N.O,{children:e}),"div"===e?" (default)":"",t<a?", ":t===a?" and ":"."]},e)})]})},(0,R.dataAttributeDocs)({code:`
         <Card
           data={{ testid: 'card-1' }}
           // => data-testid="card-1"
