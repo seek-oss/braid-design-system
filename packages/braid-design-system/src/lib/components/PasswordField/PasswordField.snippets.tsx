@@ -5,11 +5,11 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<PasswordField label="Password" />),
   },
   {
-    name: 'With additional labels',
+    description: 'With additional labels',
     code: source(
       <PasswordField
         label="Password"
@@ -19,7 +19,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a description',
+    description: 'With a description',
     code: source(
       <PasswordField
         label="Label"
@@ -28,7 +28,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a critical message',
+    description: 'With a critical message',
     code: source(
       <PasswordField
         label="Label"
@@ -38,7 +38,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a positive message',
+    description: 'With a positive message',
     code: source(
       <PasswordField
         label="Label"
@@ -48,7 +48,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a neutral message',
+    description: 'With a neutral message',
     code: source(
       <PasswordField label="Label" tone="neutral" message="Neutral message" />,
     ),

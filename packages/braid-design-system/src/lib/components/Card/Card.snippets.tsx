@@ -14,7 +14,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'With Heading',
+    description: 'With Heading',
     code: source(
       <Card>
         <Stack space="large">
@@ -25,7 +25,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With promote tone',
+    description: 'With promote tone',
     code: source(
       <Card tone="promote">
         <Stack space="large">
@@ -35,7 +35,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With formAccent tone',
+    description: 'With formAccent tone',
     code: source(
       <Card tone="formAccent">
         <Stack space="large">
@@ -45,7 +45,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With Overflow Menu',
+    description: 'With Overflow Menu',
     code: source(
       <Card>
         <Stack space="large">

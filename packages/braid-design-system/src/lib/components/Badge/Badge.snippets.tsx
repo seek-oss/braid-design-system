@@ -5,11 +5,11 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Info',
+    description: 'Info',
     code: source(<Badge tone="info">Badge</Badge>),
   },
   {
-    name: 'Info (strong)',
+    description: 'Info (strong)',
     code: source(
       <Badge tone="info" weight="strong">
         Badge
@@ -17,11 +17,11 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Promote',
+    description: 'Promote',
     code: source(<Badge tone="promote">Badge</Badge>),
   },
   {
-    name: 'Promote (strong)',
+    description: 'Promote (strong)',
     code: source(
       <Badge tone="promote" weight="strong">
         Badge
@@ -29,11 +29,11 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Positive',
+    description: 'Positive',
     code: source(<Badge tone="positive">Badge</Badge>),
   },
   {
-    name: 'Positive (strong)',
+    description: 'Positive (strong)',
     code: source(
       <Badge tone="positive" weight="strong">
         Badge
@@ -41,11 +41,11 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Caution',
+    description: 'Caution',
     code: source(<Badge tone="caution">Badge</Badge>),
   },
   {
-    name: 'Caution (strong)',
+    description: 'Caution (strong)',
     code: source(
       <Badge tone="caution" weight="strong">
         Badge
@@ -53,11 +53,11 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Critical',
+    description: 'Critical',
     code: source(<Badge tone="critical">Badge</Badge>),
   },
   {
-    name: 'Critical (strong)',
+    description: 'Critical (strong)',
     code: source(
       <Badge tone="critical" weight="strong">
         Badge
@@ -65,11 +65,11 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Neutral',
+    description: 'Neutral',
     code: source(<Badge tone="neutral">Badge</Badge>),
   },
   {
-    name: 'Neutral (strong)',
+    description: 'Neutral (strong)',
     code: source(
       <Badge tone="neutral" weight="strong">
         Badge
@@ -77,7 +77,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Multiple',
+    description: 'Multiple',
     code: source(
       <Inline space="small">
         <Badge tone="info">Badge</Badge>

@@ -5,11 +5,11 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<Textarea label="Label" />),
   },
   {
-    name: 'With additional labels',
+    description: 'With additional labels',
     code: source(
       <Textarea
         label="Label"
@@ -23,7 +23,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a description',
+    description: 'With a description',
     code: source(
       <Textarea
         label="Label"
@@ -32,33 +32,33 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a critical message',
+    description: 'With a critical message',
     code: source(
       <Textarea label="Label" tone="critical" message="Critical message" />,
     ),
   },
   {
-    name: 'With a positive message',
+    description: 'With a positive message',
     code: source(
       <Textarea label="Label" tone="positive" message="Positive message" />,
     ),
   },
   {
-    name: 'With a neutral message',
+    description: 'With a neutral message',
     code: source(
       <Textarea label="Label" tone="neutral" message="Neutral message" />,
     ),
   },
   {
-    name: 'With fixed height of 5 lines',
+    description: 'With fixed height of 5 lines',
     code: source(<Textarea label="Label" grow={false} lines={5} />),
   },
   {
-    name: 'With dynamic height, limited to 7 lines',
+    description: 'With dynamic height, limited to 7 lines',
     code: source(<Textarea label="Label" grow={true} lineLimit={7} />),
   },
   {
-    name: 'With character limit',
+    description: 'With character limit',
     code: source(
       <Textarea
         label="Label"
@@ -68,7 +68,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a highlighted range',
+    description: 'With a highlighted range',
     code: source(
       <Textarea
         label="Label"
