@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <ContentBlock>
         <Placeholder height={100} />
@@ -13,7 +13,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Xsmall',
+    description: 'Xsmall',
     code: source(
       <ContentBlock width="xsmall">
         <Placeholder height={100} />
@@ -21,7 +21,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(
       <ContentBlock width="small">
         <Placeholder height={100} />
@@ -29,7 +29,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Large',
+    description: 'Large',
     code: source(
       <ContentBlock width="large">
         <Placeholder height={100} />
@@ -37,7 +37,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Left aligned',
+    description: 'Left aligned',
     code: source(
       <ContentBlock width="small" align="left">
         <Placeholder height={100} />

@@ -10,7 +10,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Large',
+    description: 'Large',
     code: source(
       <Accordion>
         <AccordionItem label="Item 1">
@@ -26,7 +26,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Large, without dividers',
+    description: 'Large, without dividers',
     code: source(
       <Accordion dividers={false}>
         <AccordionItem label="Item 1">
@@ -42,7 +42,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <Accordion size="standard">
         <AccordionItem label="Item 1">
@@ -58,7 +58,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Standard, without dividers',
+    description: 'Standard, without dividers',
     code: source(
       <Accordion size="standard" dividers={false}>
         <AccordionItem label="Item 1">
@@ -74,7 +74,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Large standalone item',
+    description: 'Large standalone item',
     code: source(
       <AccordionItem label="Label">
         <Placeholder height={100} />
@@ -82,7 +82,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Standard standalone item',
+    description: 'Standard standalone item',
     code: source(
       <AccordionItem label="Label" size="standard">
         <Placeholder height={100} />
@@ -90,7 +90,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Standalone item with a badge',
+    description: 'Standalone item with a badge',
     code: source(
       <AccordionItem
         label="Label"

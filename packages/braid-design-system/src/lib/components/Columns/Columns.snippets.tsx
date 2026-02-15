@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: '2 Columns',
+    description: '2 Columns',
     code: source(
       <Columns space="large">
         <Column>
@@ -18,7 +18,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Responsive columns',
+    description: 'Responsive columns',
     code: source(
       <Columns space="large" collapseBelow="tablet">
         <Column>
@@ -31,7 +31,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Content width second column',
+    description: 'Content width second column',
     code: source(
       <Columns space="small">
         <Column>
@@ -44,7 +44,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Split View',
+    description: 'Split View',
     code: source(
       <Columns space="xlarge" collapseBelow="tablet">
         <Column width="2/5">
@@ -57,7 +57,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Main Content With Sidebar',
+    description: 'Main Content With Sidebar',
     code: source(
       <Columns space="xlarge" collapseBelow="tablet">
         <Column width="2/3">

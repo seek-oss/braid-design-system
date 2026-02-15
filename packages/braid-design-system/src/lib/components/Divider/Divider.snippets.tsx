@@ -4,6 +4,6 @@ import { Divider } from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
-  { name: 'Regular', code: source(<Divider />) },
-  { name: 'Strong', code: source(<Divider weight="strong" />) },
+  { description: 'Regular', code: source(<Divider />) },
+  { description: 'Strong', code: source(<Divider weight="strong" />) },
 ];

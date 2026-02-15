@@ -5,23 +5,23 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<Toggle label="Label" />),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(<Toggle label="Label" size="small" />),
   },
   {
-    name: 'Right aligned',
+    description: 'Right aligned',
     code: source(<Toggle label="Label" align="right" />),
   },
   {
-    name: 'Justified',
+    description: 'Justified',
     code: source(<Toggle label="Label" align="justify" />),
   },
   {
-    name: 'Trailing toggle position',
+    description: 'Trailing toggle position',
     code: source(<Toggle label="Label" togglePosition="trailing" />),
   },
 ];

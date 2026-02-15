@@ -10,27 +10,27 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Soft',
+    description: 'Soft',
     code: source(
       <ButtonIcon variant="soft" icon={<IconBookmark />} label="Bookmark" />,
     ),
   },
   {
-    name: 'Transparent',
+    description: 'Transparent',
     code: source(
       <ButtonIcon variant="transparent" icon={<IconHelp />} label="Help" />,
     ),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(<ButtonIcon size="small" icon={<IconAdd />} label="Add" />),
   },
   {
-    name: 'Large',
+    description: 'Large',
     code: source(<ButtonIcon size="large" icon={<IconAdd />} label="Add" />),
   },
   {
-    name: 'Form accent',
+    description: 'Form accent',
     code: source(
       <ButtonIcon tone="formAccent" icon={<IconAdd />} label="Add" />,
     ),

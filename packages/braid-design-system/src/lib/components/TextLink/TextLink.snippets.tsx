@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Inline link',
+    description: 'Inline link',
     code: source(
       <Text>
         <TextLink href="#">Link text</TextLink>
@@ -13,7 +13,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Large hit area',
+    description: 'Large hit area',
     code: source(
       <Text>
         <TextLink href="#" hitArea="large">
@@ -23,7 +23,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Visited',
+    description: 'Visited',
     code: source(
       <Text>
         <TextLink href="" showVisited>

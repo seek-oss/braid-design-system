@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'XSmall Space',
+    description: 'XSmall Space',
     code: source(
       <List space="xsmall">
         <Text>Text</Text>
@@ -15,7 +15,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small Space',
+    description: 'Small Space',
     code: source(
       <List space="small">
         <Text>Text</Text>
@@ -25,7 +25,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Medium Space',
+    description: 'Medium Space',
     code: source(
       <List space="medium">
         <Text>Text</Text>
@@ -35,7 +35,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Secondary',
+    description: 'Secondary',
     code: source(
       <List space="medium" tone="secondary">
         <Text>Text</Text>
@@ -45,7 +45,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Numbered',
+    description: 'Numbered',
     code: source(
       <List space="medium" type="number">
         <Text>Text</Text>
@@ -55,7 +55,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Alpha',
+    description: 'Alpha',
     code: source(
       <List space="medium" type="alpha">
         <Text>Text</Text>
@@ -65,7 +65,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Roman',
+    description: 'Roman',
     code: source(
       <List space="medium" type="roman">
         <Text>Text</Text>
@@ -75,7 +75,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Icon',
+    description: 'Icon',
     code: source(
       <List space="medium" type="icon" icon={<IconTick tone="positive" />}>
         <Text>Text</Text>
