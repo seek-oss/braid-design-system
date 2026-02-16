@@ -5,19 +5,19 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<Rating rating={3} />),
   },
   {
-    name: 'Large',
+    description: 'Large',
     code: source(<Rating rating={3.7} size="large" />),
   },
   {
-    name: 'Variant: starsOnly',
+    description: 'Variant: starsOnly',
     code: source(<Rating rating={4.2} variant="starsOnly" />),
   },
   {
-    name: 'Variant: minimal',
+    description: 'Variant: minimal',
     code: source(<Rating rating={3.7} variant="minimal" />),
   },
 ];

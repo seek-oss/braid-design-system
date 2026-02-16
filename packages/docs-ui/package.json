@@ -1,6 +1,6 @@
 {
   "name": "@braid-design-system/docs-ui",
-  "version": "3.0.5",
+  "version": "4.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/seek-oss/braid-design-system.git",
@@ -8,27 +8,24 @@
   },
   "license": "MIT",
   "author": "SEEK",
+  "type": "module",
   "exports": {
     ".": {
-      "types": {
-        "import": "./dist/index.d.mts",
-        "require": "./dist/index.d.ts"
-      },
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "braid-dev": "./src/index.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
   "files": [
     "dist"
   ],
   "scripts": {
     "%skott": "skott --displayMode=file-tree --showCircularDependencies --no-trackTypeOnlyDependencies",
-    "build": "crackle package",
-    "dev": "crackle dev --shim=none",
+    "build": "tsdown",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "lint:eslint": "eslint --cache .",
@@ -42,11 +39,21 @@
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
+    "@vanilla-extract/rollup-plugin": "^1.5.1",
     "braid-design-system": "workspace:*",
     "react": "^19.1.0"
   },
   "peerDependencies": {
-    "braid-design-system": "^33.0.0",
+    "braid-design-system": "^34.0.0",
     "react": "^18 || ^19"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.mjs"
+      },
+      "./package.json": "./package.json"
+    }
   }
 }

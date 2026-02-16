@@ -150,6 +150,23 @@ export const HandleLongUnbrokenChineseText: Story = {
   ),
 };
 
+export const HandleLongUnbrokenMixedCharacterSetText: Story = {
+  render: () => (
+    <Box style={{ paddingBottom: 200 }} display="flex" justifyContent="flexEnd">
+      <TooltipRenderer
+        placement="bottom"
+        tooltip={
+          <Text>
+            此僱主過去 30 天回覆了約 50% 的申請，數據來自其申請管理動態
+          </Text>
+        }
+      >
+        {({ triggerProps }) => <Box style={triggerStyles} {...triggerProps} />}
+      </TooltipRenderer>
+    </Box>
+  ),
+};
+
 export const TextStyleOverrides: Story = {
   render: () => (
     <Box style={{ paddingBottom: 200 }}>

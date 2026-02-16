@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 
 import { Text, TextDropdown } from '..';
-import { BraidTestProvider } from '../../../entries/test';
+import { BraidTestProvider } from '../../../test';
 
 describe('TextDropdown', () => {
   it('should support controlled state', () => {

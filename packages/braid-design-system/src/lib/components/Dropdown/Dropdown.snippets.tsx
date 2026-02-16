@@ -6,7 +6,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <Dropdown label="Label" placeholder="Please select">
         <option>Option 1</option>
@@ -16,7 +16,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With option groups',
+    description: 'With option groups',
     code: source(
       <Dropdown label="Label" placeholder="Please select">
         <optgroup label="Group 1">
@@ -33,7 +33,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With additional labels',
+    description: 'With additional labels',
     code: source(
       <Dropdown
         label="Label"
@@ -51,7 +51,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a description',
+    description: 'With a description',
     code: source(
       <Dropdown
         label="Label"
@@ -65,7 +65,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With an icon',
+    description: 'With an icon',
     code: source(
       <Dropdown
         label="Label"
@@ -79,7 +79,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a critical message',
+    description: 'With a critical message',
     code: source(
       <Dropdown
         label="Label"
@@ -94,7 +94,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a positive message',
+    description: 'With a positive message',
     code: source(
       <Dropdown
         label="Label"

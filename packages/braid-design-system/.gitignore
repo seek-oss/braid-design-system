@@ -1,22 +1,5 @@
 node_modules/
-codemod/dist/
 src/lib/components/icons/*/*Svg.tsx
 src/lib/playroom/snippets/*
 README.md
-storybook-static
-
-# managed by crackle
-/color-mode/query-param
-/css
-/dist
-/playroom/FrameComponent
-/playroom/components
-/playroom/scope
-/playroom/snippets
-/reset
-/test
-/themes/docs
-/themes/seekBusiness
-/themes/seekJobs
-/themes/wireframe
-# end managed by crackle
+dist/

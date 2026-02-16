@@ -1,6 +1,6 @@
 import { createVar, style } from '@vanilla-extract/css';
 
-import { atoms } from '../../../../entries/css';
+import { atoms } from '../../../../css';
 
 /*
 Fixes a bug when using -webkit-box, where the descender on the last line

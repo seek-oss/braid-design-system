@@ -1,7 +1,7 @@
 ignores:
-  - '@crackle/cli'
   - '@testing-library/dom'
   - assert
+  - tsdown
   # internal
   - braid-storybook
   - braid-src
@@ -9,6 +9,7 @@ ignores:
   # Used for generate-component-docs bin
   - tsx
   # Used for testing
+  - \@storybook/addon-webpack5-compiler-babel
   - vitest
   - \@vitejs/plugin-react
   - \@vanilla-extract/vite-plugin

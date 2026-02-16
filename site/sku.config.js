@@ -39,6 +39,8 @@ module.exports = {
       site: path.join(__dirname, './src'),
     };
 
+    config.resolve.conditionNames = ['...', 'braid-dev'];
+
     // Import Changelog as a raw string so it can be passed to the markdown renderer
     config.module.rules.push({
       test: resolveFromBraid('CHANGELOG.md'),

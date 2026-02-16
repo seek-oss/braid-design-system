@@ -99,10 +99,10 @@ export default Object.entries({
   Toggle,
   TooltipRenderer,
 })
-  .map(([group, snippets]) =>
+  .map(([name, snippets]) =>
     snippets.map((snippet) => ({
       ...snippet,
-      group,
+      name: 'name' in snippet ? snippet.name : name,
     })),
   )
   .flat();

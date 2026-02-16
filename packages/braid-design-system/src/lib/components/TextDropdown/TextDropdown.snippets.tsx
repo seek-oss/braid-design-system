@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <Text>
         <TextDropdown
@@ -17,7 +17,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Emphasised within a sentence',
+    description: 'Emphasised within a sentence',
     code: source(
       <Text>
         Sort by{' '}
@@ -31,7 +31,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Within a heading',
+    description: 'Within a heading',
     code: source(
       <Heading level="2">
         Heading with{' '}

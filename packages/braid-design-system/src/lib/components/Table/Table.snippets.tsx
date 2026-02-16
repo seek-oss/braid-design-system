@@ -17,7 +17,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Basic',
+    description: 'Basic',
     code: source(
       <Table label="Basic table example">
         <TableHeader>
@@ -68,7 +68,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With status and actions columns',
+    description: 'With status and actions columns',
     code: source(
       <Table label="Status and actions example">
         <TableHeader>
@@ -137,7 +137,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With multi-line cell data and actions',
+    description: 'With multi-line cell data and actions',
     code: source(
       <Table label="Multi-line cell data example">
         <TableHeader>

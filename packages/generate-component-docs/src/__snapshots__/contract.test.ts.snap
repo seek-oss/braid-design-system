@@ -1045,7 +1045,7 @@ exports[`Box 1`] = `
     onAuxClick?: MouseEventHandler<HTMLElement>
     onAuxClickCapture?: MouseEventHandler<HTMLElement>
     onBeforeInput?: InputEventHandler<HTMLElement>
-    onBeforeInputCapture?: FormEventHandler<HTMLElement>
+    onBeforeInputCapture?: InputEventHandler<HTMLElement>
     onBeforeToggle?: ToggleEventHandler<HTMLElement>
     onBlur?: FocusEventHandler<HTMLElement>
     onBlurCapture?: FocusEventHandler<HTMLElement>
@@ -1053,8 +1053,8 @@ exports[`Box 1`] = `
     onCanPlayCapture?: ReactEventHandler<HTMLElement>
     onCanPlayThrough?: ReactEventHandler<HTMLElement>
     onCanPlayThroughCapture?: ReactEventHandler<HTMLElement>
-    onChange?: FormEventHandler<HTMLElement>
-    onChangeCapture?: FormEventHandler<HTMLElement>
+    onChange?: ChangeEventHandler<HTMLElement, Element>
+    onChangeCapture?: ChangeEventHandler<HTMLElement, Element>
     onClick?: MouseEventHandler<HTMLElement>
     onClickCapture?: MouseEventHandler<HTMLElement>
     onCompositionEnd?: CompositionEventHandler<HTMLElement>
@@ -1101,10 +1101,10 @@ exports[`Box 1`] = `
     onFocusCapture?: FocusEventHandler<HTMLElement>
     onGotPointerCapture?: PointerEventHandler<HTMLElement>
     onGotPointerCaptureCapture?: PointerEventHandler<HTMLElement>
-    onInput?: FormEventHandler<HTMLElement>
-    onInputCapture?: FormEventHandler<HTMLElement>
-    onInvalid?: FormEventHandler<HTMLElement>
-    onInvalidCapture?: FormEventHandler<HTMLElement>
+    onInput?: InputEventHandler<HTMLElement>
+    onInputCapture?: InputEventHandler<HTMLElement>
+    onInvalid?: ReactEventHandler<HTMLElement>
+    onInvalidCapture?: ReactEventHandler<HTMLElement>
     onKeyDown?: KeyboardEventHandler<HTMLElement>
     onKeyDownCapture?: KeyboardEventHandler<HTMLElement>
     onKeyPress?: KeyboardEventHandler<HTMLElement>
@@ -1159,8 +1159,8 @@ exports[`Box 1`] = `
     onProgressCapture?: ReactEventHandler<HTMLElement>
     onRateChange?: ReactEventHandler<HTMLElement>
     onRateChangeCapture?: ReactEventHandler<HTMLElement>
-    onReset?: FormEventHandler<HTMLElement>
-    onResetCapture?: FormEventHandler<HTMLElement>
+    onReset?: ReactEventHandler<HTMLElement>
+    onResetCapture?: ReactEventHandler<HTMLElement>
     onScroll?: UIEventHandler<HTMLElement>
     onScrollCapture?: UIEventHandler<HTMLElement>
     onScrollEnd?: UIEventHandler<HTMLElement>
@@ -1173,8 +1173,8 @@ exports[`Box 1`] = `
     onSelectCapture?: ReactEventHandler<HTMLElement>
     onStalled?: ReactEventHandler<HTMLElement>
     onStalledCapture?: ReactEventHandler<HTMLElement>
-    onSubmit?: FormEventHandler<HTMLElement>
-    onSubmitCapture?: FormEventHandler<HTMLElement>
+    onSubmit?: SubmitEventHandler<HTMLElement>
+    onSubmitCapture?: SubmitEventHandler<HTMLElement>
     onSuspend?: ReactEventHandler<HTMLElement>
     onSuspendCapture?: ReactEventHandler<HTMLElement>
     onTimeUpdate?: ReactEventHandler<HTMLElement>
@@ -2470,7 +2470,7 @@ exports[`ButtonLink 1`] = `
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onBeforeInput?: InputEventHandler<HTMLAnchorElement>
-    onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInputCapture?: InputEventHandler<HTMLAnchorElement>
     onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
@@ -2478,8 +2478,8 @@ exports[`ButtonLink 1`] = `
     onCanPlayCapture?: ReactEventHandler<HTMLAnchorElement>
     onCanPlayThrough?: ReactEventHandler<HTMLAnchorElement>
     onCanPlayThroughCapture?: ReactEventHandler<HTMLAnchorElement>
-    onChange?: FormEventHandler<HTMLAnchorElement>
-    onChangeCapture?: FormEventHandler<HTMLAnchorElement>
+    onChange?: ChangeEventHandler<HTMLAnchorElement, Element>
+    onChangeCapture?: ChangeEventHandler<HTMLAnchorElement, Element>
     onClick?: MouseEventHandler<HTMLAnchorElement>
     onClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onCompositionEnd?: CompositionEventHandler<HTMLAnchorElement>
@@ -2526,10 +2526,10 @@ exports[`ButtonLink 1`] = `
     onFocusCapture?: FocusEventHandler<HTMLAnchorElement>
     onGotPointerCapture?: PointerEventHandler<HTMLAnchorElement>
     onGotPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
-    onInput?: FormEventHandler<HTMLAnchorElement>
-    onInputCapture?: FormEventHandler<HTMLAnchorElement>
-    onInvalid?: FormEventHandler<HTMLAnchorElement>
-    onInvalidCapture?: FormEventHandler<HTMLAnchorElement>
+    onInput?: InputEventHandler<HTMLAnchorElement>
+    onInputCapture?: InputEventHandler<HTMLAnchorElement>
+    onInvalid?: ReactEventHandler<HTMLAnchorElement>
+    onInvalidCapture?: ReactEventHandler<HTMLAnchorElement>
     onKeyDown?: KeyboardEventHandler<HTMLAnchorElement>
     onKeyDownCapture?: KeyboardEventHandler<HTMLAnchorElement>
     onKeyPress?: KeyboardEventHandler<HTMLAnchorElement>
@@ -2584,8 +2584,8 @@ exports[`ButtonLink 1`] = `
     onProgressCapture?: ReactEventHandler<HTMLAnchorElement>
     onRateChange?: ReactEventHandler<HTMLAnchorElement>
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
-    onReset?: FormEventHandler<HTMLAnchorElement>
-    onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onReset?: ReactEventHandler<HTMLAnchorElement>
+    onResetCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onScrollEnd?: UIEventHandler<HTMLAnchorElement>
@@ -2598,8 +2598,8 @@ exports[`ButtonLink 1`] = `
     onSelectCapture?: ReactEventHandler<HTMLAnchorElement>
     onStalled?: ReactEventHandler<HTMLAnchorElement>
     onStalledCapture?: ReactEventHandler<HTMLAnchorElement>
-    onSubmit?: FormEventHandler<HTMLAnchorElement>
-    onSubmitCapture?: FormEventHandler<HTMLAnchorElement>
+    onSubmit?: SubmitEventHandler<HTMLAnchorElement>
+    onSubmitCapture?: SubmitEventHandler<HTMLAnchorElement>
     onSuspend?: ReactEventHandler<HTMLAnchorElement>
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
@@ -2815,7 +2815,7 @@ exports[`Checkbox 1`] = `
     label: ReactNode
     message?: ReactNode
     name?: string
-    onChange: FormEventHandler<HTMLInputElement>
+    onChange: ChangeEventHandler<HTMLInputElement, Element>
     ref?: 
         | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
         | RefObject<HTMLInputElement | null>
@@ -2854,7 +2854,7 @@ exports[`CheckboxStandalone 1`] = `
     disabled?: boolean
     id?: string
     name?: string
-    onChange: FormEventHandler<HTMLInputElement>
+    onChange: ChangeEventHandler<HTMLInputElement, Element>
     ref?: 
         | (instance: HTMLInputElement | null) => void | (() => VoidOrUndefinedOnly)
         | RefObject<HTMLInputElement | null>
@@ -3104,7 +3104,7 @@ exports[`Dropdown 1`] = `
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLSelectElement>
-    onChange: FormEventHandler<HTMLSelectElement>
+    onChange: ChangeEventHandler<HTMLSelectElement, Element>
     onFocus?: FocusEventHandler<HTMLSelectElement>
     placeholder?: string
     ref?: 
@@ -7330,7 +7330,7 @@ exports[`Link 1`] = `
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onBeforeInput?: InputEventHandler<HTMLAnchorElement>
-    onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInputCapture?: InputEventHandler<HTMLAnchorElement>
     onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
@@ -7338,8 +7338,8 @@ exports[`Link 1`] = `
     onCanPlayCapture?: ReactEventHandler<HTMLAnchorElement>
     onCanPlayThrough?: ReactEventHandler<HTMLAnchorElement>
     onCanPlayThroughCapture?: ReactEventHandler<HTMLAnchorElement>
-    onChange?: FormEventHandler<HTMLAnchorElement>
-    onChangeCapture?: FormEventHandler<HTMLAnchorElement>
+    onChange?: ChangeEventHandler<HTMLAnchorElement, Element>
+    onChangeCapture?: ChangeEventHandler<HTMLAnchorElement, Element>
     onClick?: MouseEventHandler<HTMLAnchorElement>
     onClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onCompositionEnd?: CompositionEventHandler<HTMLAnchorElement>
@@ -7386,10 +7386,10 @@ exports[`Link 1`] = `
     onFocusCapture?: FocusEventHandler<HTMLAnchorElement>
     onGotPointerCapture?: PointerEventHandler<HTMLAnchorElement>
     onGotPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
-    onInput?: FormEventHandler<HTMLAnchorElement>
-    onInputCapture?: FormEventHandler<HTMLAnchorElement>
-    onInvalid?: FormEventHandler<HTMLAnchorElement>
-    onInvalidCapture?: FormEventHandler<HTMLAnchorElement>
+    onInput?: InputEventHandler<HTMLAnchorElement>
+    onInputCapture?: InputEventHandler<HTMLAnchorElement>
+    onInvalid?: ReactEventHandler<HTMLAnchorElement>
+    onInvalidCapture?: ReactEventHandler<HTMLAnchorElement>
     onKeyDown?: KeyboardEventHandler<HTMLAnchorElement>
     onKeyDownCapture?: KeyboardEventHandler<HTMLAnchorElement>
     onKeyPress?: KeyboardEventHandler<HTMLAnchorElement>
@@ -7444,8 +7444,8 @@ exports[`Link 1`] = `
     onProgressCapture?: ReactEventHandler<HTMLAnchorElement>
     onRateChange?: ReactEventHandler<HTMLAnchorElement>
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
-    onReset?: FormEventHandler<HTMLAnchorElement>
-    onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onReset?: ReactEventHandler<HTMLAnchorElement>
+    onResetCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onScrollEnd?: UIEventHandler<HTMLAnchorElement>
@@ -7458,8 +7458,8 @@ exports[`Link 1`] = `
     onSelectCapture?: ReactEventHandler<HTMLAnchorElement>
     onStalled?: ReactEventHandler<HTMLAnchorElement>
     onStalledCapture?: ReactEventHandler<HTMLAnchorElement>
-    onSubmit?: FormEventHandler<HTMLAnchorElement>
-    onSubmitCapture?: FormEventHandler<HTMLAnchorElement>
+    onSubmit?: SubmitEventHandler<HTMLAnchorElement>
+    onSubmitCapture?: SubmitEventHandler<HTMLAnchorElement>
     onSuspend?: ReactEventHandler<HTMLAnchorElement>
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
@@ -7940,7 +7940,7 @@ exports[`PasswordField 1`] = `
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
-    onChange: FormEventHandler<HTMLInputElement>
+    onChange: ChangeEventHandler<HTMLInputElement, Element>
     onFocus?: FocusEventHandler<HTMLInputElement>
     onVisibilityToggle?: (visible: boolean) => void
     placeholder?: string
@@ -8709,7 +8709,7 @@ exports[`TextField 1`] = `
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLInputElement>
-    onChange: FormEventHandler<HTMLInputElement>
+    onChange: ChangeEventHandler<HTMLInputElement, Element>
     onClear?: () => void
     onFocus?: FocusEventHandler<HTMLInputElement>
     placeholder?: string
@@ -9006,7 +9006,7 @@ exports[`TextLink 1`] = `
     onAuxClick?: MouseEventHandler<HTMLAnchorElement>
     onAuxClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onBeforeInput?: InputEventHandler<HTMLAnchorElement>
-    onBeforeInputCapture?: FormEventHandler<HTMLAnchorElement>
+    onBeforeInputCapture?: InputEventHandler<HTMLAnchorElement>
     onBeforeToggle?: ToggleEventHandler<HTMLAnchorElement>
     onBlur?: FocusEventHandler<HTMLAnchorElement>
     onBlurCapture?: FocusEventHandler<HTMLAnchorElement>
@@ -9014,8 +9014,8 @@ exports[`TextLink 1`] = `
     onCanPlayCapture?: ReactEventHandler<HTMLAnchorElement>
     onCanPlayThrough?: ReactEventHandler<HTMLAnchorElement>
     onCanPlayThroughCapture?: ReactEventHandler<HTMLAnchorElement>
-    onChange?: FormEventHandler<HTMLAnchorElement>
-    onChangeCapture?: FormEventHandler<HTMLAnchorElement>
+    onChange?: ChangeEventHandler<HTMLAnchorElement, Element>
+    onChangeCapture?: ChangeEventHandler<HTMLAnchorElement, Element>
     onClick?: MouseEventHandler<HTMLAnchorElement>
     onClickCapture?: MouseEventHandler<HTMLAnchorElement>
     onCompositionEnd?: CompositionEventHandler<HTMLAnchorElement>
@@ -9062,10 +9062,10 @@ exports[`TextLink 1`] = `
     onFocusCapture?: FocusEventHandler<HTMLAnchorElement>
     onGotPointerCapture?: PointerEventHandler<HTMLAnchorElement>
     onGotPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
-    onInput?: FormEventHandler<HTMLAnchorElement>
-    onInputCapture?: FormEventHandler<HTMLAnchorElement>
-    onInvalid?: FormEventHandler<HTMLAnchorElement>
-    onInvalidCapture?: FormEventHandler<HTMLAnchorElement>
+    onInput?: InputEventHandler<HTMLAnchorElement>
+    onInputCapture?: InputEventHandler<HTMLAnchorElement>
+    onInvalid?: ReactEventHandler<HTMLAnchorElement>
+    onInvalidCapture?: ReactEventHandler<HTMLAnchorElement>
     onKeyDown?: KeyboardEventHandler<HTMLAnchorElement>
     onKeyDownCapture?: KeyboardEventHandler<HTMLAnchorElement>
     onKeyPress?: KeyboardEventHandler<HTMLAnchorElement>
@@ -9120,8 +9120,8 @@ exports[`TextLink 1`] = `
     onProgressCapture?: ReactEventHandler<HTMLAnchorElement>
     onRateChange?: ReactEventHandler<HTMLAnchorElement>
     onRateChangeCapture?: ReactEventHandler<HTMLAnchorElement>
-    onReset?: FormEventHandler<HTMLAnchorElement>
-    onResetCapture?: FormEventHandler<HTMLAnchorElement>
+    onReset?: ReactEventHandler<HTMLAnchorElement>
+    onResetCapture?: ReactEventHandler<HTMLAnchorElement>
     onScroll?: UIEventHandler<HTMLAnchorElement>
     onScrollCapture?: UIEventHandler<HTMLAnchorElement>
     onScrollEnd?: UIEventHandler<HTMLAnchorElement>
@@ -9134,8 +9134,8 @@ exports[`TextLink 1`] = `
     onSelectCapture?: ReactEventHandler<HTMLAnchorElement>
     onStalled?: ReactEventHandler<HTMLAnchorElement>
     onStalledCapture?: ReactEventHandler<HTMLAnchorElement>
-    onSubmit?: FormEventHandler<HTMLAnchorElement>
-    onSubmitCapture?: FormEventHandler<HTMLAnchorElement>
+    onSubmit?: SubmitEventHandler<HTMLAnchorElement>
+    onSubmitCapture?: SubmitEventHandler<HTMLAnchorElement>
     onSuspend?: ReactEventHandler<HTMLAnchorElement>
     onSuspendCapture?: ReactEventHandler<HTMLAnchorElement>
     onTimeUpdate?: ReactEventHandler<HTMLAnchorElement>
@@ -9353,7 +9353,7 @@ exports[`Textarea 1`] = `
     message?: ReactNode
     name?: string
     onBlur?: FocusEventHandler<HTMLTextAreaElement>
-    onChange: FormEventHandler<HTMLTextAreaElement>
+    onChange: ChangeEventHandler<HTMLTextAreaElement, Element>
     onFocus?: FocusEventHandler<HTMLTextAreaElement>
     onPaste?: ClipboardEventHandler<HTMLTextAreaElement>
     placeholder?: string

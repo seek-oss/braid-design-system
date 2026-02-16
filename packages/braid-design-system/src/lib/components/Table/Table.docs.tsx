@@ -20,6 +20,7 @@ import {
   Text,
   TextLink,
   Tiles,
+  List,
 } from '../';
 import { palette } from '../../color/palette';
 import type { StackProps } from '../Stack/Stack';
@@ -67,6 +68,12 @@ const TableSection = ({
 
 const docs: ComponentDocs = {
   category: 'Content',
+  description: (
+    <Text>
+      A structure of rows and columns that allows users to easily view, compare
+      and analyse a dataset.
+    </Text>
+  ),
   subComponents: [
     'TableHeader',
     'TableRow',
@@ -199,6 +206,31 @@ const docs: ComponentDocs = {
             </Box>
           </ScrollContainer>,
         ),
+    },
+    {
+      label: 'Visual guidelines',
+      description: (
+        <List space="large">
+          <Text>
+            Keep it simple and limit colour usage. Avoid over-styling content or
+            displaying unnecessary components within the table. In most cases
+            using <TextLink href="/components/Text">Text</TextLink> and{' '}
+            <TextLink href="/components/TextLink">TextLink</TextLink> should
+            suffice.
+          </Text>
+          <Text>
+            Avoid placing your table inside a bounded box or{' '}
+            <TextLink href="/components/Card">Card</TextLink>. Instead, place it
+            directly onto the page surface.
+          </Text>
+          <Text>
+            Give each piece of data it&rsquo;s own column, avoid showing
+            multiple pieces of data in a single column.
+          </Text>
+          <Text>Left align textual data and right align numerical data.</Text>
+          <Text>Keep column headers short, a few words at most.</Text>
+        </List>
+      ),
     },
     {
       label: 'Column headers',
@@ -475,6 +507,108 @@ const docs: ComponentDocs = {
               </Table>
             </>,
           ),
+        ),
+    },
+    {
+      label: 'Table width',
+      description: (
+        <>
+          <Text>
+            Tables display at full width of their container with columns
+            expanding to fill available space. When a table is wider than the
+            available space, it scrolls horizontally to retain its structure and
+            allow easy comparison of data. This behaviour also applies on mobile
+            and tablet.
+          </Text>
+        </>
+      ),
+      Example: ({ setDefaultState, getState }) =>
+        source(
+          <>
+            {setDefaultState('rows', [
+              {
+                column1: 'Adipiscing elit',
+                column2: 'Praesent semper',
+                column3: 'Interdum viverra',
+                column4: 'Sed convallis ',
+                column5: 'Phasellus condimentum',
+                column6: 'Cras finibus',
+                column7: 'Rutrum lacinia',
+              },
+              {
+                column1: 'Donec ibero',
+                column2: 'Erat facilisis',
+                column3: 'Quis dictum',
+                column4: 'Quisque lobortis',
+                column5: 'Aenean bibendum',
+                column6: 'Maximus neque',
+                column7: 'Gravida imperdiet',
+              },
+              {
+                column1: 'Nullam rhoncus',
+                column2: 'Tellus vestibulum',
+                column3: 'Purus vitae',
+                column4: 'Porttitor sapien',
+                column5: 'Morbi cursus',
+                column6: 'Odio aliquet',
+                column7: 'Commodo quisque',
+              },
+            ])}
+            <Table label="Horizontal scrolling example">
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderCell>
+                    <Text>Lorem</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Ipsum</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Dolor</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Sit</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Amet</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Consectetur</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell>
+                    <Text>Pharetra</Text>
+                  </TableHeaderCell>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {getState('rows').map((row: any) => (
+                  <TableRow key={row.column1}>
+                    <TableCell>
+                      <Text>{row.column1}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column2}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column3}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column4}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column5}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column6}</Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>{row.column7}</Text>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </>,
         ),
     },
     {
@@ -946,6 +1080,77 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Column spanning',
+      description: (
+        <Text>
+          Both <Strong>TableCell</Strong> and <Strong>TableHeaderCell</Strong>{' '}
+          can span across multiple columns by providing the number of columns
+          via the <Strong>colspan</Strong> prop.
+        </Text>
+      ),
+      Example: ({ setDefaultState, getState }) =>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Sit',
+                  column2: 'Amet',
+                  column3: 'Consectetur',
+                },
+                {
+                  column1: 'Adipiscing',
+                  column2: 'Elit',
+                  column3: 'Praesent',
+                },
+              ])}
+
+              <Table label="Column spanning example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell width="30%">
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="30%">
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell width="30%">
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell width="30%">
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell width="30%">
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell width="30%">
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow>
+                    <TableCell colspan={2} wrap>
+                      <Text>
+                        Culpa labore minim consectetur ut officia ea ea
+                        cupidatat excepteur.
+                      </Text>
+                    </TableCell>
+                    <TableCell>
+                      <Text>Tempor</Text>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </>,
+          ),
+        ),
+    },
+    {
       label: 'Column visibility',
       description: (
         <>
@@ -1112,75 +1317,39 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Column spanning',
+      label: 'When to use',
       description: (
-        <Text>
-          Both <Strong>TableCell</Strong> and <Strong>TableHeaderCell</Strong>{' '}
-          can span across multiple columns by providing the number of columns
-          via the <Strong>colspan</Strong> prop.
-        </Text>
+        <Stack space="xlarge">
+          <Stack space="large">
+            <Text>Use a Table:</Text>
+            <List space="large">
+              <Text>
+                To display a dataset in a structured way using rows and columns
+              </Text>
+              <Text>
+                To allow users to easily view, compare and analyse a dataset
+              </Text>
+              <Text>When your dataset is primarily numerical.</Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Table:</Text>
+            <List space="large">
+              <Text>
+                To display a simple list of items (use a{' '}
+                <TextLink href="/components/List">List</TextLink> instead)
+              </Text>
+              <Text>
+                To layout content on a page (use{' '}
+                <TextLink href="/foundations/layout">
+                  layout components
+                </TextLink>{' '}
+                instead).
+              </Text>
+            </List>
+          </Stack>
+        </Stack>
       ),
-      Example: ({ setDefaultState, getState }) =>
-        stripTypeAnyFromCode(
-          source(
-            <>
-              {setDefaultState('rows', [
-                {
-                  column1: 'Sit',
-                  column2: 'Amet',
-                  column3: 'Consectetur',
-                },
-                {
-                  column1: 'Adipiscing',
-                  column2: 'Elit',
-                  column3: 'Praesent',
-                },
-              ])}
-
-              <Table label="Column spanning example">
-                <TableHeader>
-                  <TableRow>
-                    <TableHeaderCell width="30%">
-                      <Text>Lorem</Text>
-                    </TableHeaderCell>
-                    <TableHeaderCell width="30%">
-                      <Text>Ipsum</Text>
-                    </TableHeaderCell>
-                    <TableHeaderCell width="30%">
-                      <Text>Dolor</Text>
-                    </TableHeaderCell>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {getState('rows').map((row: any) => (
-                    <TableRow key={row.column1}>
-                      <TableCell width="30%">
-                        <Text>{row.column1}</Text>
-                      </TableCell>
-                      <TableCell width="30%">
-                        <Text>{row.column2}</Text>
-                      </TableCell>
-                      <TableCell width="30%">
-                        <Text>{row.column3}</Text>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                  <TableRow>
-                    <TableCell colspan={2} wrap>
-                      <Text>
-                        Culpa labore minim consectetur ut officia ea ea
-                        cupidatat excepteur.
-                      </Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>Tempor</Text>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </>,
-          ),
-        ),
     },
     dataAttributeDocs({
       code: `

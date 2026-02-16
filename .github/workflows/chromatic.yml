@@ -12,8 +12,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          # This makes Actions fetch all Git history so that chromatic can diff against previous commits
+          # This makes Actions fetch all Git history so that chromatic can diff against previous commits.
+          # Filter by `blob:none` to avoid downloading unnecessary file contents.
           fetch-depth: 0
+          filter: blob:none
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v3
@@ -27,8 +29,8 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Build Braid
-        run: pnpm build
+      - name: Build Storybook
+        run: pnpm storybook:build
 
       - name: Chromatic
         run: pnpm storybook:chromatic

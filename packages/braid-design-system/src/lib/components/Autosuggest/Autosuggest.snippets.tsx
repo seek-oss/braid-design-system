@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <Autosuggest
         label="Fruit"
@@ -18,7 +18,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Grouped suggestions',
+    description: 'Grouped suggestions',
     code: source(
       <Autosuggest
         label="I like to eat"
@@ -44,7 +44,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With mobile backdrop',
+    description: 'With mobile backdrop',
     code: source(
       <Autosuggest
         showMobileBackdrop
@@ -58,7 +58,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With error',
+    description: 'With error',
     code: source(
       <Autosuggest
         label="I like to eat"
@@ -73,7 +73,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With description',
+    description: 'With description',
     code: source(
       <Autosuggest
         label="Fruit"
@@ -87,7 +87,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With icon',
+    description: 'With icon',
     code: source(
       <Autosuggest
         aria-label="Location"

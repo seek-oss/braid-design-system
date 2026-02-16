@@ -17,7 +17,7 @@ const page: Page = {
   title: 'Testing Guide',
   element: (
     <TextStack>
-      <Heading component="h1" level="2">
+      <Heading level="1">
         <PageTitle title="Testing Guide" />
         Testing Guide
       </Heading>

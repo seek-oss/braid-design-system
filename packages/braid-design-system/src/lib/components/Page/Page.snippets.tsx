@@ -1,26 +1,36 @@
 import source from '@braid-design-system/source.macro';
+import type { ReactNode } from 'react';
 
-import { Page, Placeholder } from '../../playroom/components';
+import {
+  Page,
+  PlaceholderFooter,
+  PlaceholderHeader,
+} from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
+
+import { ContainerForPageDocs } from './Page.docs';
+
+const Container = ({ children }: { children: ReactNode }) => (
+  <ContainerForPageDocs screenHeight={500}>{children}</ContainerForPageDocs>
+);
 
 export const snippets: Snippets = [
   {
-    name: 'Default',
+    description: 'Default',
     code: source(
-      <Page footer={<Placeholder label="Footer" height={100} />}>
-        <Placeholder label="Header" height={60} />
+      <Page footer={<PlaceholderFooter />}>
+        <PlaceholderHeader />
       </Page>,
     ),
+    Container,
   },
   {
-    name: 'Footer below fold',
+    description: 'Footer below fold',
     code: source(
-      <Page
-        footer={<Placeholder label="Footer" height={100} />}
-        footerPosition="belowFold"
-      >
-        <Placeholder label="Header" height={60} />
+      <Page footer={<PlaceholderFooter />} footerPosition="belowFold">
+        <PlaceholderHeader />
       </Page>,
     ),
+    Container,
   },
 ];

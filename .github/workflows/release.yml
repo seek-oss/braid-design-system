@@ -20,8 +20,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits.
+          # Filter by `blob:none` to avoid downloading unnecessary file contents.
           fetch-depth: 0
+          filter: blob:none
           token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
       - name: Set up pnpm

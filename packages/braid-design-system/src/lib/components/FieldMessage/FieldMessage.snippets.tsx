@@ -5,23 +5,23 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<FieldMessage message="This is a message" />),
   },
   {
-    name: 'Positive',
+    description: 'Positive',
     code: source(
       <FieldMessage tone="positive" message="This is a positive message" />,
     ),
   },
   {
-    name: 'Critical',
+    description: 'Critical',
     code: source(
       <FieldMessage tone="critical" message="This is a critical message" />,
     ),
   },
   {
-    name: 'Secondary message',
+    description: 'Secondary message',
     code: source(
       <FieldMessage
         message="This is a message"

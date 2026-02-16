@@ -1,5 +1,5 @@
 import { createVar, style } from '@vanilla-extract/css';
-import { colorModeStyle } from 'braid-src/entries/css';
+import { colorModeStyle } from 'braid-src/css';
 import { palette } from 'braid-src/lib/color/palette';
 import tokens from 'braid-src/lib/themes/docs/tokens';
 

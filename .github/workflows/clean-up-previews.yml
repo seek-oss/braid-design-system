@@ -18,7 +18,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          # This makes Actions fetch all Git history so that the cleanup script can access metadata
+          # from past commits.
+          # Filter by `blob:none` to avoid downloading unnecessary file contents.
           fetch-depth: 0
+          filter: blob:none
 
       - name: Delete old preview directories
         run: |

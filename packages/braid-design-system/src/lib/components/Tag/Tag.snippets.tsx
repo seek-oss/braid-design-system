@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <Inline space="small">
         <Tag>Tag</Tag>
@@ -15,7 +15,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(
       <Inline space="xsmall">
         <Tag size="small">Tag</Tag>
@@ -25,7 +25,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Clearable',
+    description: 'Clearable',
     code: source(
       <Inline space="small">
         <Tag onClear={() => {}} clearLabel="Clear">
@@ -41,7 +41,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Addable',
+    description: 'Addable',
     code: source(
       <Inline space="small">
         <Tag onAdd={() => {}} addLabel="Add">
@@ -57,7 +57,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With icon',
+    description: 'With icon',
     code: source(
       <Inline space="small">
         <Tag icon={<IconTag />}>Tag</Tag>

@@ -11,8 +11,8 @@ import {
   Divider,
   Notice,
 } from '../';
+import { Placeholder } from '../../playroom/components';
 import { TextLink } from '../TextLink/TextLink';
-import { Placeholder } from '../private/Placeholder/Placeholder';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
