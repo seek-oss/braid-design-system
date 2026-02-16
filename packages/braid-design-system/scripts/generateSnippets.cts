@@ -11,6 +11,7 @@ import { debugLog, relativeTo } from './utils';
 
 const baseDir = path.join(__dirname, '..');
 const componentsDir = path.join(baseDir, 'src/lib/components');
+const recipesDir = path.join(baseDir, 'src/lib/playroom/recipes');
 const snippetsDir = path.join(baseDir, 'src/lib/playroom/snippets');
 const snippetsIndexFile = path.join(baseDir, 'src/lib/playroom/snippets.ts');
 
@@ -56,15 +57,7 @@ const transformWithBabel = async (fileName: string) => {
   return result.code;
 };
 
-(async () => {
-  const snippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: componentsDir,
-    absolute: true,
-    onlyFiles: true,
-  });
-
-  await fs.emptyDir(snippetsDir);
-
+const generateSnippetsForPaths = async (snippetPaths: string[]) => {
   const importStatements: string[] = [];
   const exportEntries: string[] = [];
 
@@ -84,18 +77,58 @@ const transformWithBabel = async (fileName: string) => {
     }),
   );
 
+  return {
+    importStatements: importStatements.sort(),
+    exportEntries: exportEntries.sort(),
+  };
+};
+
+(async () => {
+  const componentSnippetPaths = await glob('**/*.snippets.tsx', {
+    cwd: componentsDir,
+    absolute: true,
+    onlyFiles: true,
+  });
+  const recipeSnippetPaths = await glob('**/*.snippets.tsx', {
+    cwd: recipesDir,
+    absolute: true,
+    onlyFiles: true,
+  });
+
+  await fs.emptyDir(snippetsDir);
+
+  const { importStatements: recipeImportStatements, exportEntries: recipeExportEntries } =
+    await generateSnippetsForPaths(recipeSnippetPaths);
+  const { importStatements: componentImportStatements, exportEntries: componentExportEntries } =
+    await generateSnippetsForPaths(componentSnippetPaths);
+
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
   const snippetsIndexCode = await prettier.format(
-    ` ${importStatements.sort().join('\n')}
+    ` ${[...recipeImportStatements, ...componentImportStatements].sort().join('\n')}
 
-      export default Object.entries({
-        ${exportEntries.sort().join(',\n')}
-      }).map(([name, snippets]) =>
-        snippets.map((snippet) => ({
-          ...snippet,
-          name: "name" in snippet ? snippet.name : name,
-        })),
-      ).flat();
+      const groupOrder = ['Layouts', 'Blocks', 'Components'];
+      const allSnippets = [];
+      const snippetsMap = {
+        ${[...recipeExportEntries, ...componentExportEntries].join(',\n')}
+      };
+
+      for (const [name, snippets] of Object.entries(snippetsMap)) {
+        for (const snippet of snippets) {
+          allSnippets.push({
+            ...snippet,
+            name: 'name' in snippet ? snippet.name : name,
+            group: 'group' in snippet ? snippet.group : 'Components',
+          });
+        }
+      }
+        
+      allSnippets.sort((a, b) => {
+        const aIndex = groupOrder.indexOf(a.group);
+        const bIndex = groupOrder.indexOf(b.group);
+        return (aIndex === -1 ? 3 : aIndex) - (bIndex === -1 ? 3 : bIndex);
+      });
+      
+      export default allSnippets;
     `,
     { ...prettierOptions, parser: 'babel-ts' },
   );
