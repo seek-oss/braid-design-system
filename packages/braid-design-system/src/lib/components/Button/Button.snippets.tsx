@@ -5,23 +5,23 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Solid',
+    description: 'Solid',
     code: source(<Button variant="solid">Button</Button>),
   },
   {
-    name: 'Ghost',
+    description: 'Ghost',
     code: source(<Button variant="ghost">Button</Button>),
   },
   {
-    name: 'Soft',
+    description: 'Soft',
     code: source(<Button variant="soft">Button</Button>),
   },
   {
-    name: 'Transparent',
+    description: 'Transparent',
     code: source(<Button variant="transparent">Button</Button>),
   },
   {
-    name: 'Critical Solid',
+    description: 'Critical Solid',
     code: source(
       <Button tone="critical" variant="solid">
         Button
@@ -29,7 +29,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Critical Ghost',
+    description: 'Critical Ghost',
     code: source(
       <Button tone="critical" variant="ghost">
         Button
@@ -37,7 +37,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Critical Soft',
+    description: 'Critical Soft',
     code: source(
       <Button tone="critical" variant="soft">
         Button
@@ -45,7 +45,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Critical Transparent',
+    description: 'Critical Transparent',
     code: source(
       <Button tone="critical" variant="transparent">
         Button
@@ -53,7 +53,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'BrandAccent Solid',
+    description: 'BrandAccent Solid',
     code: source(
       <Button tone="brandAccent" variant="solid">
         Button
@@ -61,7 +61,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'BrandAccent Ghost',
+    description: 'BrandAccent Ghost',
     code: source(
       <Button tone="brandAccent" variant="ghost">
         Button
@@ -69,7 +69,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'BrandAccent Soft',
+    description: 'BrandAccent Soft',
     code: source(
       <Button tone="brandAccent" variant="soft">
         Button
@@ -77,7 +77,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'BrandAccent Transparent',
+    description: 'BrandAccent Transparent',
     code: source(
       <Button tone="brandAccent" variant="transparent">
         Button
@@ -85,7 +85,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Neutral Solid',
+    description: 'Neutral Solid',
     code: source(
       <Button tone="neutral" variant="solid">
         Button
@@ -93,7 +93,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Neutral Ghost',
+    description: 'Neutral Ghost',
     code: source(
       <Button tone="neutral" variant="ghost">
         Button
@@ -101,7 +101,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Neutral Soft',
+    description: 'Neutral Soft',
     code: source(
       <Button tone="neutral" variant="soft">
         Button
@@ -109,7 +109,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Neutral Transparent',
+    description: 'Neutral Transparent',
     code: source(
       <Button tone="neutral" variant="transparent">
         Button
@@ -117,7 +117,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small Solid',
+    description: 'Small Solid',
     code: source(
       <Button size="small" variant="solid">
         Button
@@ -125,7 +125,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small Ghost',
+    description: 'Small Ghost',
     code: source(
       <Button size="small" variant="ghost">
         Button
@@ -133,7 +133,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small Soft',
+    description: 'Small Soft',
     code: source(
       <Button size="small" variant="soft">
         Button
@@ -141,7 +141,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small Transparent',
+    description: 'Small Transparent',
     code: source(
       <Button size="small" variant="transparent">
         Button

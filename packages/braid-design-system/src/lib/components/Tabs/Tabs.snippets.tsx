@@ -15,7 +15,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'With full divider',
+    description: 'With full divider',
     code: source(
       <TabsProvider>
         <Stack space="medium">
@@ -36,7 +36,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With no divider',
+    description: 'With no divider',
     code: source(
       <TabsProvider>
         <Stack space="medium">
@@ -57,7 +57,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a badge',
+    description: 'With a badge',
     code: source(
       <TabsProvider>
         <Stack space="medium">
@@ -78,7 +78,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With an icon',
+    description: 'With an icon',
     code: source(
       <TabsProvider>
         <Stack space="medium">
@@ -99,7 +99,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Align center',
+    description: 'Align center',
     code: source(
       <TabsProvider>
         <Stack space="medium">
@@ -120,7 +120,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Size small',
+    description: 'Size small',
     code: source(
       <TabsProvider>
         <Stack space="medium">

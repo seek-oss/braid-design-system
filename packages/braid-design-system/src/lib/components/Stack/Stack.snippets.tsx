@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Small content',
+    description: 'Small content',
     code: source(
       <Stack space="xsmall">
         <Text size="small">Small Text</Text>
@@ -14,7 +14,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Standard content',
+    description: 'Standard content',
     code: source(
       <Stack space="small">
         <Text>Standard Text</Text>
@@ -23,7 +23,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Titled content',
+    description: 'Titled content',
     code: source(
       <Stack space="small">
         <Heading level="4">Heading</Heading>
@@ -32,7 +32,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Content groups',
+    description: 'Content groups',
     code: source(
       <Stack space="medium">
         <Heading level="4">Heading</Heading>
@@ -41,7 +41,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Content groups (loose)',
+    description: 'Content groups (loose)',
     code: source(
       <Stack space="large">
         <Heading level="3">Heading</Heading>
@@ -50,7 +50,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Section groups',
+    description: 'Section groups',
     code: source(
       <Stack space="large">
         <Placeholder height={40} />
@@ -59,7 +59,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Section groups (loose)',
+    description: 'Section groups (loose)',
     code: source(
       <Stack space="xlarge">
         <Placeholder height={40} />
@@ -68,7 +68,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Page sections',
+    description: 'Page sections',
     code: source(
       <Stack space="xxlarge">
         <Placeholder height={100} />
@@ -77,7 +77,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Page sections (loose)',
+    description: 'Page sections (loose)',
     code: source(
       <Stack space="xxxlarge">
         <Placeholder height={100} />

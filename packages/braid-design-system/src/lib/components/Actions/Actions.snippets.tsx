@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard size',
+    description: 'Standard size',
     code: source(
       <Actions>
         <Button>Button 1</Button>
@@ -14,7 +14,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small size',
+    description: 'Small size',
     code: source(
       <Actions size="small">
         <Button>Button 1</Button>

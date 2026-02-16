@@ -16,7 +16,7 @@ const Container = ({ children }: { children: ReactNode }) => (
 
 export const snippets: Snippets = [
   {
-    name: 'Default',
+    description: 'Default',
     code: source(
       <Page footer={<PlaceholderFooter />}>
         <PlaceholderHeader />
@@ -25,7 +25,7 @@ export const snippets: Snippets = [
     Container,
   },
   {
-    name: 'Footer below fold',
+    description: 'Footer below fold',
     code: source(
       <Page footer={<PlaceholderFooter />} footerPosition="belowFold">
         <PlaceholderHeader />

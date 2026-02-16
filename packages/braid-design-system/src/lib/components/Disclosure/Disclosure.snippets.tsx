@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <Disclosure expandLabel="Show" collapseLabel="Hide">
         <Text>Content</Text>

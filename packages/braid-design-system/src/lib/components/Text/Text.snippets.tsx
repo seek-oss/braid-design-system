@@ -5,39 +5,39 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<Text>Standard text</Text>),
   },
   {
-    name: 'Large',
+    description: 'Large',
     code: source(<Text size="large">Large text</Text>),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(<Text size="small">Small text</Text>),
   },
   {
-    name: 'Xsmall',
+    description: 'Xsmall',
     code: source(<Text size="xsmall">Xsmall text</Text>),
   },
   {
-    name: 'Tone (critical)',
+    description: 'Tone (critical)',
     code: source(<Text tone="critical">Critical text</Text>),
   },
   {
-    name: 'Tone (positive)',
+    description: 'Tone (positive)',
     code: source(<Text tone="positive">Positive text</Text>),
   },
   {
-    name: 'Tone (secondary)',
+    description: 'Tone (secondary)',
     code: source(<Text tone="secondary">Secondary text</Text>),
   },
   {
-    name: 'Weight (strong)',
+    description: 'Weight (strong)',
     code: source(<Text weight="strong">Strong text</Text>),
   },
   {
-    name: 'Weight (medium)',
+    description: 'Weight (medium)',
     code: source(<Text weight="medium">Medium text</Text>),
   },
 ];
