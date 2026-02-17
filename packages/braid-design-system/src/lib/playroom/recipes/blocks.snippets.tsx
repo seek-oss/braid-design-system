@@ -36,18 +36,12 @@ import {
   TabPanels,
   Tabs,
   TabsProvider,
+  IconArrow,
+  Step,
+  Stepper,
 } from '../../playroom/components';
-import type useScope from '../useScope';
 
-/**
- * Playroom stubs for stateful snippets.
- */
-function getState(key: string): unknown {
-  return () => key as string;
-}
-function toggleState(key: string): ReturnType<typeof useScope>['toggleState'] {
-  return () => key;
-}
+import { getState, setDefaultState, setState, toggleState } from './stateStubs';
 
 export const snippets: Snippets = [
   {
@@ -464,6 +458,77 @@ export const snippets: Snippets = [
               ))}
             </TableBody>
           </Table>
+        </Stack>
+      </PageBlock>,
+    ),
+  },
+  {
+    group: 'Blocks',
+    name: 'Stepper',
+    code: source(
+      <PageBlock width="medium">
+        {setDefaultState('progress', 1)}
+        {setDefaultState('activeStep', 1)}
+        <Stack space="xlarge">
+          <Stepper
+            label="Stepped Block"
+            align="left"
+            progress={getState('progress')}
+            activeStep={getState('activeStep')}
+            onStepClick={({ stepNumber }) => setState('activeStep', stepNumber)}
+          >
+            <Step>Step 1</Step>
+            <Step>Step 2</Step>
+            <Step>Step 3</Step>
+            <Step>Step 4</Step>
+            <Step>Step 5</Step>
+          </Stepper>
+
+          {
+            {
+              1: <Placeholder label="Step content 1" height={400} />,
+              2: <Placeholder label="Step content 2" height={400} />,
+              3: <Placeholder label="Step content 3" height={400} />,
+              4: <Placeholder label="Step content 4" height={400} />,
+              5: <Placeholder label="Step content 5" height={400} />,
+            }[getState('activeStep') as number]
+          }
+
+          <Columns space="small">
+            <Column>
+              <Actions>
+                {getState('activeStep') > 1 ? (
+                  <Button
+                    icon={<IconArrow direction="left" />}
+                    onClick={() =>
+                      setState('activeStep', getState('activeStep') - 1)
+                    }
+                  >
+                    Back
+                  </Button>
+                ) : null}
+              </Actions>
+            </Column>
+            <Column width="content">
+              <Actions>
+                <Button
+                  variant="solid"
+                  tone="formAccent"
+                  icon={<IconArrow direction="right" />}
+                  iconPosition="trailing"
+                  onClick={() => {
+                    const newStep = getState('activeStep') + 1;
+                    setState('activeStep', newStep);
+                    if (newStep > getState('progress')) {
+                      setState('progress', newStep);
+                    }
+                  }}
+                >
+                  Continue
+                </Button>
+              </Actions>
+            </Column>
+          </Columns>
         </Stack>
       </PageBlock>,
     ),

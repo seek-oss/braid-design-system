@@ -27,12 +27,12 @@ const unwrapValue = (value: any) => {
   return actualValue;
 };
 
-const makeStoreConsumer = (
+export const makeStoreConsumer = (
   defaultState: Map<string, any>,
   store: Store,
   setStore: (newStore: Store) => void,
 ): {
-  setDefaultState: (key: string, value: any) => void;
+  setDefaultState: (key: string, value: any) => any;
   getState: (key: string) => any;
   setState: {
     (key: string, value: any): void;
