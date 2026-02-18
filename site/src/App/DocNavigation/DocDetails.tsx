@@ -15,7 +15,7 @@ import { PageTitle } from '../Seo/PageTitle';
 import { DocExample } from './DocExample';
 import { DocsContext } from './DocNavigation';
 import { DocSection } from './DocSection';
-import { TocSection, Toc } from './DocToc';
+import { Toc, type TocSection } from './DocToc';
 
 import * as styles from './DocDetails.css';
 
@@ -27,8 +27,8 @@ const getSectionHeading = (sectionKey: string): string => {
   switch (sectionKey) {
     case 'appearance':
       return 'Appearance';
-    case 'states':
-      return 'States';
+    case 'interaction':
+      return 'Interaction';
     case 'layout':
       return 'Layout';
     case 'usage':
@@ -54,7 +54,7 @@ const hasContent = (example: {
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
 
-  const tocSections = useMemo<readonly TocSection[]>(() => {
+  const tocSections = useMemo(() => {
     if (!docs) {
       return [];
     }
@@ -211,7 +211,7 @@ export const DocDetails = () => {
             </Stack>
           </Stack>
         </Box>
-        <Box className={styles.toc}>
+        <Box className={styles.toc} padding="small">
           <Toc sections={tocSections} onTocClick={handleTocClick} />
         </Box>
       </Box>

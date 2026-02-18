@@ -1,6 +1,8 @@
 import { Text, Box, Stack } from 'braid-src/lib/components';
 import { useEffect, useState } from 'react';
 
+import { textHover, tocItem, tocItemActive } from './DocDetails.css';
+
 export interface TocItem {
   id: string;
   label: string;
@@ -36,14 +38,13 @@ const TocItemLink = ({
     component="a"
     href={href}
     onClick={onClick}
-    style={{
-      textDecoration: 'none',
-    }}
-    paddingLeft={isChild ? 'medium' : undefined}
     display="block"
+    paddingLeft={isChild ? 'large' : 'medium'}
+    className={[tocItem, isActive && tocItemActive]}
+    paddingY="small"
   >
     <Text size={tocItemTextSize} tone={isActive ? 'neutral' : 'secondary'}>
-      | {children}
+      <span className={textHover}>{children}</span>
     </Text>
   </Box>
 );
@@ -91,13 +92,13 @@ export const Toc = ({
 
   return (
     <Stack space="medium">
-      <Text weight="strong" size="small">
+      <Text size="xsmall" tone="secondary" weight="medium">
         On this page
       </Text>
       <Box component="nav">
-        <Stack space="medium" component="ul">
+        <Stack space="none" component="ul">
           {sections.map((section) => (
-            <Stack component="li" key={section.id} space="small">
+            <Stack component="li" key={section.id} space="none">
               <TocItemLink
                 href={section.href}
                 label={section.label}
@@ -108,12 +109,12 @@ export const Toc = ({
               </TocItemLink>
 
               {section.children && section.children.length > 0 ? (
-                <Stack component="ul" space="small">
+                <Stack component="ul" space="none">
                   {section.children.map((child) => (
                     <TocItemLink
                       key={child.id}
                       label={child.label}
-                      href={child.id}
+                      href={`#${child.id}`}
                       isChild={true}
                       isActive={activeId === child.id}
                       onClick={(e) => onTocClick(e, child.id)}

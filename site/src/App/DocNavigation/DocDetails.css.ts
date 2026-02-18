@@ -11,7 +11,7 @@ export const toc = style({
   top: topOffset,
   maxHeight: calc.subtract('100vh', topOffset),
   alignSelf: 'flex-start',
-  width: '300px',
+  minWidth: '250px',
   '@media': {
     [`screen and (max-width: ${contentBlockXLWidth}px)`]: {
       display: 'none',
@@ -19,15 +19,28 @@ export const toc = style({
   },
 });
 
-export const tocItemLabel = style({
+export const tocItem = style ({
+  borderLeft: `4px solid ${vars.borderColor.neutralLight}`,
   color: vars.foregroundColor.secondary,
+  transition: 'border-color 250ms ease',
+  selectors: {
+    '&:hover': {
+      borderColor: vars.borderColor.neutral,
+    },
+  },
+})
+
+export const tocItemActive = style ({
+  color: vars.foregroundColor.neutral,
+  borderLeft: `4px solid ${vars.borderColor.neutral}`,
+  transition: 'border-color 250ms ease'
+})
+
+export const textHover = style({
+  transition: 'color 250ms ease',
   selectors: {
     '&:hover': {
       color: vars.foregroundColor.neutral,
     },
   },
-});
-
-export const tocItemLabelActive = style({
-  color: vars.foregroundColor.brandAccent,
-});
+})

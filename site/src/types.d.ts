@@ -43,7 +43,7 @@ type NonEmptyArray<T> = [T, ...T[]];
 interface DocSections {
   appearance?: NonEmptyArray<ComponentExample>;
   layout?: NonEmptyArray<ComponentExample>;
-  states?: NonEmptyArray<ComponentExample>;
+  interaction?: NonEmptyArray<ComponentExample>;
   usage?: NonEmptyArray<ComponentExample>;
 };
 
