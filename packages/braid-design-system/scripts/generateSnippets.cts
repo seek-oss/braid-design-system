@@ -90,10 +90,10 @@ const transformWithBabel = async (fileName: string) => {
 
       export default Object.entries({
         ${exportEntries.sort().join(',\n')}
-      }).map(([group, snippets]) =>
+      }).map(([name, snippets]) =>
         snippets.map((snippet) => ({
           ...snippet,
-          group,
+          name: "name" in snippet ? snippet.name : name,
         })),
       ).flat();
     `,

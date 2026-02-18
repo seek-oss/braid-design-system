@@ -10,7 +10,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(
       <RadioGroup label="Label">
         <RadioItem label="One" value="1" />
@@ -19,7 +19,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a critical message',
+    description: 'With a critical message',
     code: source(
       <RadioGroup label="Label" tone="critical" message="Critical message">
         <RadioItem label="One" value="1" />
@@ -28,7 +28,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a description',
+    description: 'With a description',
     code: source(
       <RadioGroup label="Label" description="More details about options">
         <RadioItem label="One" value="1" />
@@ -37,7 +37,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With item-level descriptions',
+    description: 'With item-level descriptions',
     code: source(
       <RadioGroup label="Label">
         <RadioItem label="One" value="1" description="Description for item 1" />
@@ -46,7 +46,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a Badge',
+    description: 'With a Badge',
     code: source(
       <RadioGroup label="Label">
         <RadioItem label="One" value="1" />
@@ -63,7 +63,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Small',
+    description: 'Small',
     code: source(
       <RadioGroup label="Label" size="small">
         <RadioItem label="One" value="1" />
@@ -72,7 +72,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With nested content',
+    description: 'With nested content',
     code: source(
       <RadioGroup label="Label">
         <RadioItem label="One" value="1" />

@@ -10,11 +10,11 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Standard',
+    description: 'Standard',
     code: source(<TextField label="Label" />),
   },
   {
-    name: 'With additional labels',
+    description: 'With additional labels',
     code: source(
       <TextField
         label="Label"
@@ -28,7 +28,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With a description',
+    description: 'With a description',
     code: source(
       <TextField
         label="Label"
@@ -37,31 +37,31 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'With an icon',
+    description: 'With an icon',
     code: source(
       <TextField label="Label" icon={<IconSearch />} placeholder="Search" />,
     ),
   },
   {
-    name: 'With a prefix',
+    description: 'With a prefix',
     code: source(
       <TextField label="Label" prefix="Prefix" placeholder="Search" />,
     ),
   },
   {
-    name: 'With a critical message',
+    description: 'With a critical message',
     code: source(
       <TextField label="Label" tone="critical" message="Critical message" />,
     ),
   },
   {
-    name: 'With a positive message',
+    description: 'With a positive message',
     code: source(
       <TextField label="Label" tone="positive" message="Positive message" />,
     ),
   },
   {
-    name: 'With a neutral message',
+    description: 'With a neutral message',
     code: source(
       <TextField label="Label" tone="neutral" message="Neutral message" />,
     ),

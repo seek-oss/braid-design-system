@@ -5,7 +5,7 @@ import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
   {
-    name: 'Default',
+    description: 'Default',
     code: source(
       <Stepper label="Linear steps" progress={3}>
         <Step>1. First step</Step>
@@ -16,7 +16,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Non-linear',
+    description: 'Non-linear',
     code: source(
       <Stepper mode="non-linear" label="Non-linear steps" activeStep={2}>
         <Step>1. First step</Step>
@@ -27,7 +27,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Neutral',
+    description: 'Neutral',
     code: source(
       <Stepper label="Linear steps" tone="neutral" progress={3}>
         <Step>1. First step</Step>
@@ -38,7 +38,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    name: 'Left aligned',
+    description: 'Left aligned',
     code: source(
       <Stepper label="Linear steps" align="left" progress={3}>
         <Step>1. First step</Step>
