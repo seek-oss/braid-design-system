@@ -1,5 +1,0 @@
-{
-  "main": "../../dist/themes/seekBusiness.cjs",
-  "module": "../../dist/themes/seekBusiness.mjs",
-  "types": "./index.d.ts"
-}

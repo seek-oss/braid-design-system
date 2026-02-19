@@ -1,5 +1,0 @@
-{
-  "main": "../../dist/playroom/snippets.cjs",
-  "module": "../../dist/playroom/snippets.mjs",
-  "types": "./index.d.ts"
-}

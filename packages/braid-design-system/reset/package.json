@@ -1,5 +1,0 @@
-{
-  "main": "../dist/reset.cjs",
-  "module": "../dist/reset.mjs",
-  "types": "./index.d.ts"
-}

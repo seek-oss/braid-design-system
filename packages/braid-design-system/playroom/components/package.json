@@ -1,5 +1,0 @@
-{
-  "main": "../../dist/playroom/components.cjs",
-  "module": "../../dist/playroom/components.mjs",
-  "types": "./index.d.ts"
-}

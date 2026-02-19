@@ -15,7 +15,7 @@ import { PageTitle } from '../Seo/PageTitle';
 import { DocExample } from './DocExample';
 import { DocsContext } from './DocNavigation';
 import { DocSection } from './DocSection';
-import { Toc, type TocSection } from './DocToc';
+import { Toc, type TocSection } from './DocToC';
 
 import * as styles from './DocDetails.css';
 
