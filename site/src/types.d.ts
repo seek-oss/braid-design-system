@@ -70,6 +70,7 @@ export interface ComponentDocs {
 export interface CssDoc {
   banner?: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
+  usage: ReactNodeNoStrings;
   docSections?: DocSections;
   additional?: ComponentExample[];
 }
