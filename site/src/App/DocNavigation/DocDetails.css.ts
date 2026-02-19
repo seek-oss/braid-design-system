@@ -19,7 +19,7 @@ export const toc = style({
   },
 });
 
-export const tocItem = style ({
+export const tocItem = style({
   borderLeft: `4px solid ${vars.borderColor.neutralLight}`,
   color: vars.foregroundColor.secondary,
   transition: 'border-color 250ms ease',
@@ -28,13 +28,13 @@ export const tocItem = style ({
       borderColor: vars.borderColor.neutral,
     },
   },
-})
+});
 
-export const tocItemActive = style ({
+export const tocItemActive = style({
   color: vars.foregroundColor.neutral,
   borderLeft: `4px solid ${vars.borderColor.neutral}`,
-  transition: 'border-color 250ms ease'
-})
+  transition: 'border-color 250ms ease',
+});
 
 export const textHover = style({
   transition: 'color 250ms ease',
@@ -43,4 +43,4 @@ export const textHover = style({
       color: vars.foregroundColor.neutral,
     },
   },
-})
+});

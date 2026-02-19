@@ -45,7 +45,7 @@ interface DocSections {
   layout?: NonEmptyArray<ComponentExample>;
   interaction?: NonEmptyArray<ComponentExample>;
   usage?: NonEmptyArray<ComponentExample>;
-};
+}
 
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
