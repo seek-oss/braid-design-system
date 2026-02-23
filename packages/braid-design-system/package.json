@@ -181,7 +181,7 @@
     "fs-extra": "^10.1.0",
     "html-validate": "^9.7.1",
     "picocolors": "^1.1.1",
-    "playroom": "1.2.0-frame-settings-20260217001657",
+    "playroom": "1.2.0",
     "prettier": "^3.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
