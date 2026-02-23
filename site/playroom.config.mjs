@@ -26,6 +26,11 @@ export default {
   typeScriptFiles: [resolveFromBraid('playroom/components.ts')],
   widths: [320, 390, 768, 1024, 1280, 1440, 1600],
   defaultVisibleWidths: [390, 768, 1280],
+  frameSettings: [
+    { id: 'stackDebug', label: 'Stack Debug', defaultValue: false },
+    { id: 'touchTargets', label: 'Touch Targets', defaultValue: false },
+    { id: 'darkMode', label: 'Dark Mode (beta)', defaultValue: false },
+  ],
   openBrowser: false,
   port: 8082,
   webpackConfig: () => ({

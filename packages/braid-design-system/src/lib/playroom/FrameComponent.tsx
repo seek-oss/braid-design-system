@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, Fragment } from 'react';
+import { type ReactNode, useEffect, useMemo } from 'react';
 
 import {
   BraidProvider,
@@ -6,15 +6,18 @@ import {
   ToastProvider,
   useResponsiveValue,
 } from '../components';
+import { debugTouchableAttrForDataProp } from '../components/private/touchable/debugTouchable';
 import type { BraidTheme } from '../themes/makeBraidTheme';
 
+import SpaceDebugContext from './SpaceDebugContext';
 import { PlayroomStateProvider } from './playroomState';
 
-import { darkMode } from '../css/atoms/sprinkles.css';
+import { darkMode as darkModeClass } from '../css/atoms/sprinkles.css';
 
 interface Props {
   theme: BraidTheme;
   children: ReactNode;
+  frameSettings: Record<string, boolean>;
 }
 
 const PlayroomLink = makeLinkComponent(
@@ -42,39 +45,41 @@ const ResponsiveReady = ({ children }: { children: ReactNode }) => {
   return <>{responsiveReady ? children : null}</>;
 };
 
-export default ({ theme, children }: Props) => {
+const touchTargetDataProp = `data-${debugTouchableAttrForDataProp}`;
+
+export default ({ theme, children, frameSettings }: Props) => {
+  const spaceDebug = useMemo(
+    () => frameSettings.stackDebug,
+    [frameSettings.stackDebug],
+  );
+  const touchTargets = useMemo(
+    () => frameSettings.touchTargets,
+    [frameSettings.touchTargets],
+  );
+  const darkMode = useMemo(
+    () => frameSettings.darkMode,
+    [frameSettings.darkMode],
+  );
+
   // TODO: COLORMODE RELEASE
   // Remove color mode toggle
   useEffect(() => {
-    let code = '';
-    const darkTrigger = 'braiddark';
-    const lightTrigger = 'braidlight';
-    const longestTrigger = Math.max(lightTrigger.length, darkTrigger.length);
-    const colorModeToggle = (ev: KeyboardEvent) => {
-      code += ev.key;
-      if (code.substr(code.length - darkTrigger.length) === darkTrigger) {
-        document.documentElement.classList.add(darkMode);
-        code = '';
-      }
-
-      if (code.substr(code.length - lightTrigger.length) === lightTrigger) {
-        document.documentElement.classList.remove(darkMode);
-        code = '';
-      }
-
-      if (code.length > longestTrigger) {
-        code = code.substr(code.length - longestTrigger);
-      }
-    };
-    window.addEventListener('keydown', colorModeToggle);
-
-    return () => {
-      window.removeEventListener('keydown', colorModeToggle);
-    };
-  }, []);
+    if (darkMode) {
+      document.documentElement.classList.add(darkModeClass);
+    } else {
+      document.documentElement.classList.remove(darkModeClass);
+    }
+  }, [darkMode]);
+  useEffect(() => {
+    if (touchTargets) {
+      document.documentElement.setAttribute(touchTargetDataProp, 'true');
+    } else {
+      document.documentElement.removeAttribute(touchTargetDataProp);
+    }
+  }, [touchTargets]);
 
   return (
-    <Fragment>
+    <SpaceDebugContext.Provider value={spaceDebug}>
       <div
         dangerouslySetInnerHTML={{
           __html: theme.webFonts.map((font) => font.linkTag).join(''),
@@ -87,6 +92,6 @@ export default ({ theme, children }: Props) => {
           </ToastProvider>
         </BraidProvider>
       </PlayroomStateProvider>
-    </Fragment>
+    </SpaceDebugContext.Provider>
   );
 };
