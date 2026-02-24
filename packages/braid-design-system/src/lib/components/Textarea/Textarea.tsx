@@ -82,7 +82,9 @@ const calculateLines = (
   }
 
   const linesWithLimitApplied =
-    lineLimit != null ? Math.min(currentRows, lineLimit) : currentRows;
+    typeof lineLimit === 'number'
+      ? Math.min(currentRows, lineLimit)
+      : currentRows;
   return Math.max(linesWithLimitApplied, lines);
 };
 
