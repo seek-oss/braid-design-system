@@ -7,4 +7,6 @@ updated:
   - Textarea
 ---
 
-**Textarea:** Height now automatically shrinks with content as well as growing with the `grow` prop (default).
+**Textarea:** Add support for automatic shrinking height with the `grow` prop (`true` by default).
+
+Automatically shrink and grow height with content when using the `grow` prop.
