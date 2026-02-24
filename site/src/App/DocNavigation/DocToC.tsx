@@ -1,7 +1,12 @@
-import { Text, Box, Stack } from 'braid-src/lib/components';
+import { Text, Box, Stack, Link } from 'braid-src/lib/components';
 import { useEffect, useState } from 'react';
 
-import { textHover, tocItem, tocItemActive } from './DocDetails.css';
+import {
+  textHover,
+  tocItem,
+  tocItemActive,
+  tocItemChild,
+} from './DocDetails.css';
 
 export interface TocItem {
   id: string;
@@ -18,7 +23,6 @@ export interface TocSection {
 }
 
 const tocItemTextSize = 'xsmall';
-const scrollThreshold = 100;
 
 const TocItemLink = ({
   href,
@@ -34,19 +38,15 @@ const TocItemLink = ({
   onClick: (e: React.MouseEvent) => void;
   children?: React.ReactNode;
 }) => (
-  <Box
-    component="a"
+  <Link
     href={href}
     onClick={onClick}
-    display="block"
-    paddingLeft={isChild ? 'large' : 'medium'}
-    className={[tocItem, isActive && tocItemActive]}
-    paddingY="small"
+    className={[tocItem, isChild && tocItemChild, isActive && tocItemActive]}
   >
     <Text size={tocItemTextSize} tone={isActive ? 'neutral' : 'secondary'}>
       <span className={textHover}>{children}</span>
     </Text>
-  </Box>
+  </Link>
 );
 
 export const Toc = ({
@@ -75,7 +75,7 @@ export const Toc = ({
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= scrollThreshold) {
+          if (rect.top <= window.innerHeight / 3) {
             currentActiveId = id;
           }
         }
@@ -96,9 +96,9 @@ export const Toc = ({
         On this page
       </Text>
       <Box component="nav">
-        <Stack space="none" component="ul">
+        <Box component="ul">
           {sections.map((section) => (
-            <Stack component="li" key={section.id} space="none">
+            <Box component="li" key={section.id}>
               <TocItemLink
                 href={section.href}
                 label={section.label}
@@ -109,7 +109,7 @@ export const Toc = ({
               </TocItemLink>
 
               {section.children && section.children.length > 0 ? (
-                <Stack component="ul" space="none">
+                <Box component="ul">
                   {section.children.map((child) => (
                     <TocItemLink
                       key={child.id}
@@ -122,11 +122,11 @@ export const Toc = ({
                       {child.label}
                     </TocItemLink>
                   ))}
-                </Stack>
+                </Box>
               ) : null}
-            </Stack>
+            </Box>
           ))}
-        </Stack>
+        </Box>
       </Box>
     </Stack>
   );

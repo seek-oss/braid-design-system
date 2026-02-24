@@ -23,6 +23,10 @@ export const tocItem = style({
   borderLeft: `4px solid ${vars.borderColor.neutralLight}`,
   color: vars.foregroundColor.secondary,
   transition: 'border-color 250ms ease',
+  display: 'block',
+  paddingLeft: vars.space.medium,
+  paddingTop: vars.space.small,
+  paddingBottom: vars.space.small,
   selectors: {
     '&:hover': {
       borderColor: vars.borderColor.neutral,
@@ -30,10 +34,13 @@ export const tocItem = style({
   },
 });
 
+export const tocItemChild = style({
+  paddingLeft: vars.space.large,
+});
+
 export const tocItemActive = style({
   color: vars.foregroundColor.neutral,
-  borderLeft: `4px solid ${vars.borderColor.neutral}`,
-  transition: 'border-color 250ms ease',
+  borderColor: vars.borderColor.neutral,
 });
 
 export const textHover = style({

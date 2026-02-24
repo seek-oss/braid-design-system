@@ -211,7 +211,7 @@ export const DocDetails = () => {
             </Stack>
           </Stack>
         </Box>
-        <Box className={styles.toc} padding="small">
+        <Box className={styles.toc}>
           <Toc sections={tocSections} onTocClick={handleTocClick} />
         </Box>
       </Box>
