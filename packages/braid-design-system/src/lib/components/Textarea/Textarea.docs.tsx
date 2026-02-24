@@ -173,12 +173,12 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Grow height with user input',
+      label: 'Adjust height with user input',
       description: (
         <>
           <Text>
-            By default, the field grows in height as the user types. You can set
-            a limit to the number of lines by passing a number to the{' '}
+            By default, the field adjusts its height as the user types. You can
+            set a limit to the number of lines by passing a number to the{' '}
             <Strong>lineLimit</Strong> prop.
           </Text>
           <Text>
