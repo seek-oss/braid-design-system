@@ -69,12 +69,11 @@ const calculateLines = (
 
   // Reset the height to 0 to calculate the full scroll height
   target.style.height = '0';
-  target.style.minHeight = '0';
   const scrollHeight = target.scrollHeight;
 
   // Unset the height so it is auto-sized again
   target.style.height = '';
-  target.style.minHeight = '';
+
   const currentRows = Math.floor(
     (scrollHeight - padding) / pxToInt(lineHeight),
   );
