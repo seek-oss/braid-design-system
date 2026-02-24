@@ -57,9 +57,11 @@ const calculateLines = (
   const { paddingBottom, paddingTop, lineHeight } =
     window.getComputedStyle(target);
 
-  // If a height is set, the user has manually resized the textarea
-  // Bail out of auto-resizing behaviour to preserve the user preference
-  if (target.style.height) {
+  const lineHeightCannotBeAccuratelyCalculated = !lineHeight.endsWith('px'); // Guard against other theme values
+  const heightSetByUser = Boolean(target.style.height); // User has manually resized the textarea
+
+  if (lineHeightCannotBeAccuratelyCalculated || heightSetByUser) {
+    // Bail out of auto-resizing behaviour
     return lines;
   }
 
