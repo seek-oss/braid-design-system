@@ -40,6 +40,7 @@ export type TextareaBaseProps = Omit<
   characterLimit?: number;
   lines?: number;
   lineLimit?: number;
+  // Todo - rename to autoResize in v35 major, as it now supports growing and shrinking.
   grow?: boolean;
 };
 export type TextareaLabelProps = FieldLabelVariant;
@@ -56,24 +57,33 @@ const calculateLines = (
   const { paddingBottom, paddingTop, lineHeight } =
     window.getComputedStyle(target);
 
-  // If line height is not a pixel value (e.g. 'normal' or unitless),
-  // bail out of grow behaviour as we cannot calculate accurately.
-  if (!lineHeight.endsWith('px')) {
+  // If a height is set, the user has manually resized the textarea
+  // Bail out of auto-resizing behaviour to preserve the user preference
+  if (target.style.height) {
     return lines;
   }
 
   const padding = pxToInt(paddingTop) + pxToInt(paddingBottom);
+
+  // Reset the height to 0 to calculate the full scroll height
+  target.style.height = '0';
+  target.style.minHeight = '0';
+  const scrollHeight = target.scrollHeight;
+
+  // Unset the height so it is auto-sized again
+  target.style.height = '';
+  target.style.minHeight = '';
   const currentRows = Math.floor(
-    (target.scrollHeight - padding) / pxToInt(lineHeight),
+    (scrollHeight - padding) / pxToInt(lineHeight),
   );
 
   if (target && target.value === '') {
     return lines;
   }
 
-  return typeof lineLimit === 'number' && currentRows > lineLimit
-    ? lineLimit
-    : currentRows;
+  const linesWithLimitApplied =
+    lineLimit != null ? Math.min(currentRows, lineLimit) : currentRows;
+  return Math.max(linesWithLimitApplied, lines);
 };
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
