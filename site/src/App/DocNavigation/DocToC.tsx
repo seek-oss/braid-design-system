@@ -71,12 +71,25 @@ export const Toc = ({
       });
 
       let currentActiveId = '';
-      for (const id of anchorIds) {
+      for (let i = 0; i < anchorIds.length; i++) {
+        const id = anchorIds[i];
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top <= window.innerHeight / 3) {
-            currentActiveId = id;
+            const hasPreviousElement = i > 0;
+            const previousIsNotVisible =
+              !hasPreviousElement ||
+              (() => {
+                const prevElement = document.getElementById(anchorIds[i - 1]);
+                return (
+                  prevElement && prevElement.getBoundingClientRect().top < 0
+                );
+              })();
+
+            if (previousIsNotVisible) {
+              currentActiveId = id;
+            }
           }
         }
       }
