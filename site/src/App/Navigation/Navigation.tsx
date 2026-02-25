@@ -1,6 +1,5 @@
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
 import {
-  ContentBlock,
   Hidden,
   IconChevron,
   IconNewWindow,
@@ -52,7 +51,7 @@ const Header = ({
 const FixedContentBlock = forwardRef<HTMLElement, BoxProps>(
   ({ children, ...props }, forwardedRef) => (
     <Box transition="fast" {...props} position="fixed" ref={forwardedRef}>
-      <ContentBlock width="large">{children}</ContentBlock>
+      {children}
     </Box>
   ),
 );
@@ -164,7 +163,7 @@ export const Navigation = () => {
   const navigationActive = isExpandedSize || isMenuOpen;
 
   return (
-    <ContentBlock width="large">
+    <Box width="full" className={styles.contentBlockXL}>
       <Box position="fixed" top={0}>
         <Header
           menuOpen={isMenuOpen}
@@ -194,7 +193,6 @@ export const Navigation = () => {
       <Box
         background={{ lightMode: 'surface', darkMode: 'bodyDark' }}
         position="relative"
-        overflow="hidden" // Fix stack space intercepting nav bar clicks
         paddingX={{
           mobile: gutterSize,
           wide: 'xxlarge',
@@ -229,6 +227,6 @@ export const Navigation = () => {
           menuClick={() => setMenuOpen(!isMenuOpen)}
         />
       </FixedContentBlock>
-    </ContentBlock>
+    </Box>
   );
 };
