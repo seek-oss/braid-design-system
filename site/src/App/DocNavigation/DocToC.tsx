@@ -77,17 +77,8 @@ export const Toc = ({
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top <= window.innerHeight / 3) {
-            const hasPreviousElement = i > 0;
-            const previousIsNotVisible =
-              !hasPreviousElement ||
-              (() => {
-                const prevElement = document.getElementById(anchorIds[i - 1]);
-                return (
-                  prevElement && prevElement.getBoundingClientRect().top < 0
-                );
-              })();
-
-            if (previousIsNotVisible) {
+            const prevElement = document.getElementById(anchorIds[i - 1]);
+            if (!prevElement || prevElement.getBoundingClientRect().top < 0) {
               currentActiveId = id;
             }
           }
