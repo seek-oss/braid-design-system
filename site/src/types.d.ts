@@ -37,6 +37,16 @@ type NavigationSection =
   | 'logic';
 
 type PlayroomExampleProps = ReturnType<typeof useScope>;
+
+type NonEmptyArray<T> = [T, ...T[]];
+
+interface DocSections {
+  appearance?: NonEmptyArray<ComponentExample>;
+  layout?: NonEmptyArray<ComponentExample>;
+  interaction?: NonEmptyArray<ComponentExample>;
+  usage?: NonEmptyArray<ComponentExample>;
+}
+
 export interface ComponentDocs {
   category: 'Logic' | 'Layout' | 'Content' | 'Icon';
   deprecationWarning?: ReactNodeNoStrings;
@@ -53,13 +63,15 @@ export interface ComponentDocs {
     section?: NavigationSection;
   }>;
   accessibility?: ReactNodeNoStrings;
+  docSections?: DocSections;
   additional?: ComponentExample[];
 }
 
 export interface CssDoc {
   banner?: ReactNodeNoStrings;
-  usage: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
+  usage: ReactNodeNoStrings;
+  docSections?: DocSections;
   additional?: ComponentExample[];
 }
 
