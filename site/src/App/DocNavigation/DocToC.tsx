@@ -111,16 +111,18 @@ export const Toc = ({
               {section.children && section.children.length > 0 ? (
                 <Box component="ul">
                   {section.children.map((child) => (
-                    <TocItemLink
-                      key={child.id}
-                      label={child.label}
-                      href={`#${child.id}`}
-                      isChild={true}
-                      isActive={activeId === child.id}
-                      onClick={(e) => onTocClick(e, child.id)}
-                    >
-                      {child.label}
-                    </TocItemLink>
+                    <Box component="li" key={child.id}>
+                      <TocItemLink
+                        key={child.id}
+                        label={child.label}
+                        href={`#${child.id}`}
+                        isChild={true}
+                        isActive={activeId === child.id}
+                        onClick={(e) => onTocClick(e, child.id)}
+                      >
+                        {child.label}
+                      </TocItemLink>
+                    </Box>
                   ))}
                 </Box>
               ) : null}
