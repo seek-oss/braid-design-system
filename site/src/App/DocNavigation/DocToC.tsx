@@ -56,11 +56,21 @@ export const Toc = ({
   sections: readonly TocSection[];
   onTocClick: (event: React.MouseEvent, id: string) => void;
 }) => {
-  const [activeId, setActiveId] = useState<string>('');
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
-    const handleScroll = () => {
+    const updateActiveSection = () => {
+      /*
+        We determine the next potential active section by testing which title has just crossed the top 1/3 parallel of the viewport.
+        This 'feels' more natural than the top of the viewport as it's where the user's eye is most likely resting as they read/scoll.
+        
+        However if the previous title is still visible, we hold off on setting the new section as active until the previous has scrolled
+        out of view. This guards against short sections being skipped over if they're shorter than 1/3 of the viewport height.
+      */
+      const activeThreshold = window.innerHeight / 3;
       const anchorIds: string[] = [];
+      let currentActiveSection = '';
+
       sections.forEach((section) => {
         anchorIds.push(section.id);
         if (section.children) {
@@ -70,27 +80,32 @@ export const Toc = ({
         }
       });
 
-      let currentActiveId = '';
-      for (let i = 0; i < anchorIds.length; i++) {
-        const id = anchorIds[i];
-        const element = document.getElementById(id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 3) {
-            const prevElement = document.getElementById(anchorIds[i - 1]);
-            if (!prevElement || prevElement.getBoundingClientRect().top < 0) {
-              currentActiveId = id;
-            }
-          }
+      for (let i = anchorIds.length - 1; i >= 0; i--) {
+        const element = document.getElementById(anchorIds[i]);
+        if (!element) {
+          continue;
+        }
+
+        const isInActiveZone =
+          element.getBoundingClientRect().top <= activeThreshold;
+        const previousElement =
+          i > 0 ? document.getElementById(anchorIds[i - 1]) : null;
+        const previousSectionHasLeft =
+          !previousElement || previousElement.getBoundingClientRect().top < 0;
+
+        if (isInActiveZone && previousSectionHasLeft) {
+          currentActiveSection = anchorIds[i];
+          break;
         }
       }
-      setActiveId(currentActiveId);
+      setActiveSection(currentActiveSection);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', updateActiveSection);
     };
   }, [sections]);
 
@@ -106,7 +121,7 @@ export const Toc = ({
               <TocItemLink
                 href={section.href}
                 label={section.label}
-                isActive={activeId === section.id}
+                isActive={activeSection === section.id}
                 onClick={(e) => onTocClick(e, section.id)}
               >
                 {section.label}
@@ -121,7 +136,7 @@ export const Toc = ({
                         label={child.label}
                         href={`#${child.id}`}
                         isChild={true}
-                        isActive={activeId === child.id}
+                        isActive={activeSection === child.id}
                         onClick={(e) => onTocClick(e, child.id)}
                       >
                         {child.label}

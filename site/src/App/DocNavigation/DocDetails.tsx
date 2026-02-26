@@ -54,6 +54,17 @@ const hasContent = (example: {
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
 
+  /*
+    Build the ToC sections
+      - Accessibility
+      - Each docSection and their children
+      - Each additional section. Additional is kept
+        as for now as it's where most content sits currently,
+        but will likely be deprecated in the future as we
+        align content to the docSection structure.
+      - Alternatives
+
+  */
   const tocSections = useMemo(() => {
     if (!docs) {
       return [];
