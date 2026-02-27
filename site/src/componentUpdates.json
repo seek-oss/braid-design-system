@@ -5395,5 +5395,16 @@
         "summary": "**Textarea:** update min-height to match touchableSize"
       }
     ]
+  },
+  {
+    "version": "34.0.3",
+    "updates": [
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Add support for automatic shrinking height with the `grow` prop (`true` by default).\n\nAutomatically shrink and grow height with content when using the `grow` prop."
+      }
+    ]
   }
 ]

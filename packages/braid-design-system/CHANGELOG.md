@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 34.0.3
+
+### Patch Changes
+
+- **Textarea:** Add support for automatic shrinking height with the `grow` prop (`true` by default). ([#2000](https://github.com/seek-oss/braid-design-system/pull/2000))
+
+  Automatically shrink and grow height with content when using the `grow` prop.
+
 ## 34.0.2
 
 ### Patch Changes
