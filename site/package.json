@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build:site": "NODE_ENV=production SKU_TELEMETRY=false sku build",
-    "build:playroom": "NODE_ENV=production playroom build",
+    "build:playroom": "NODE_ENV=production playroom build --config ./playroom.config.mts",
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
@@ -15,7 +15,7 @@
     "format:prettier": "prettier --cache --write .",
     "generate:component-docs": "generate-component-docs",
     "start:site": "SKU_TELEMETRY=false sku start",
-    "start:playroom": "playroom"
+    "start:playroom": "playroom --config ./playroom.config.mts"
   },
   "author": "SEEK",
   "license": "MIT",
@@ -48,7 +48,7 @@
     "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
-    "playroom": "1.1.0",
+    "playroom": "1.2.1",
     "polished": "^4.1.0",
     "prettier": "^3.4.1",
     "react": "^19.1.0",
