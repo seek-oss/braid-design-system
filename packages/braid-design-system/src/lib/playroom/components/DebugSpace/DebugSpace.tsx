@@ -7,21 +7,28 @@ import type { Space } from '../../../css/atoms/atoms';
 import * as styles from './DebugSpace.css';
 import { normalizeResponsiveValue } from '../../../css/atoms/sprinkles.css';
 
+/**
+ * Map of hue and saturation values for each step of the space scale.
+ * These are combined with different lightness and alpha values for
+ * background and text to ensure sufficient contrast.
+ */
 const spaceColours: Record<Space, string> = {
-  none: '#000000',
-  gutter: '#000000',
-  xxsmall: '#4964E9',
-  xsmall: '#0377FF',
-  small: '#03B3FF',
-  medium: '#02DA73',
-  large: '#FAC713',
-  xlarge: '#FF8A1F',
-  xxlarge: '#FF1F7D',
-  xxxlarge: '#E600EB',
+  none: '',
+  gutter: `280, 100%`,
+  xxsmall: `230, 100%`,
+  xsmall: `212, 100%`,
+  small: `198, 100%`,
+  medium: `151, 70%`,
+  large: `47, 80%`,
+  xlarge: `29, 100%`,
+  xxlarge: `335, 100%`,
+  xxxlarge: `299, 100%`,
 };
 
 const formatSpace = (space: string) =>
-  space.slice(0, space.lastIndexOf('x') + 2).toUpperCase();
+  space === 'gutter'
+    ? 'GUT'
+    : space.slice(0, space.lastIndexOf('x') + 2).toUpperCase();
 
 export const DebugSpace = ({ space }: { space: StackProps['space'] }) => {
   const normalizedSpace = normalizeResponsiveValue(space);
@@ -52,6 +59,7 @@ export const DebugSpace = ({ space }: { space: StackProps['space'] }) => {
         position="absolute"
         inset={0}
         paddingX="xxsmall"
+        className={styles.text}
       >
         <Box
           component="span"

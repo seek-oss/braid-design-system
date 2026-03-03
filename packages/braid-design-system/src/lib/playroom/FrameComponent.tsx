@@ -6,7 +6,6 @@ import {
   ToastProvider,
   useResponsiveValue,
 } from '../components';
-import { debugTouchableAttrForDataProp } from '../components/private/touchable/debugTouchable';
 import type { BraidTheme } from '../themes/makeBraidTheme';
 
 import SpaceDebugContext from './SpaceDebugContext';
@@ -45,17 +44,12 @@ const ResponsiveReady = ({ children }: { children: ReactNode }) => {
   return <>{responsiveReady ? children : null}</>;
 };
 
-const touchTargetDataProp = `data-${debugTouchableAttrForDataProp}`;
-
 export default ({ theme, children, frameSettings }: Props) => {
-  const spaceDebug = useMemo(
+  const stackDebug = useMemo(
     () => frameSettings.stackDebug,
     [frameSettings.stackDebug],
   );
-  const touchTargets = useMemo(
-    () => frameSettings.touchTargets,
-    [frameSettings.touchTargets],
-  );
+
   const darkMode = useMemo(
     () => frameSettings.darkMode,
     [frameSettings.darkMode],
@@ -70,16 +64,9 @@ export default ({ theme, children, frameSettings }: Props) => {
       document.documentElement.classList.remove(darkModeClass);
     }
   }, [darkMode]);
-  useEffect(() => {
-    if (touchTargets) {
-      document.documentElement.setAttribute(touchTargetDataProp, 'true');
-    } else {
-      document.documentElement.removeAttribute(touchTargetDataProp);
-    }
-  }, [touchTargets]);
 
   return (
-    <SpaceDebugContext.Provider value={spaceDebug}>
+    <SpaceDebugContext.Provider value={stackDebug}>
       <div
         dangerouslySetInnerHTML={{
           __html: theme.webFonts.map((font) => font.linkTag).join(''),

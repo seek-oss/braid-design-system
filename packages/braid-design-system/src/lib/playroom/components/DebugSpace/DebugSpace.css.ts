@@ -4,7 +4,7 @@ import { responsiveStyle } from '../../../css/responsiveStyle';
 
 import { vars } from '../../../themes/vars.css';
 
-const backgroundColor = createVar();
+const debugColor = createVar();
 export const mobileSpaceVar = createVar();
 export const tabletSpaceVar = createVar();
 export const desktopSpaceVar = createVar();
@@ -12,38 +12,35 @@ export const wideSpaceVar = createVar();
 
 export const space = style([
   {
-    fontFamily: vars.fontFamily,
-    fontSize: vars.textSize.xsmall.mobile.fontSize,
-    fontWeight: vars.textWeight.strong,
-    color: backgroundColor,
-    '::before': {
-      content: '',
-      position: 'absolute',
-      inset: 0,
-      background: backgroundColor,
-      opacity: 0.2,
-    },
+    background: `hsla(${debugColor}, 56%, .2)`,
   },
   responsiveStyle({
     mobile: {
       vars: {
-        [backgroundColor]: mobileSpaceVar,
+        [debugColor]: mobileSpaceVar,
       },
     },
     tablet: {
       vars: {
-        [backgroundColor]: tabletSpaceVar,
+        [debugColor]: tabletSpaceVar,
       },
     },
     desktop: {
       vars: {
-        [backgroundColor]: desktopSpaceVar,
+        [debugColor]: desktopSpaceVar,
       },
     },
     wide: {
       vars: {
-        [backgroundColor]: wideSpaceVar,
+        [debugColor]: wideSpaceVar,
       },
     },
   }),
 ]);
+
+export const text = style({
+  fontFamily: vars.fontFamily,
+  fontSize: vars.textSize.xsmall.mobile.fontSize,
+  fontWeight: vars.textWeight.strong,
+  color: `hsla(${debugColor}, 29%, 1)`,
+});

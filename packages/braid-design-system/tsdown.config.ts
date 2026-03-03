@@ -8,6 +8,7 @@ export default defineConfig({
     css: './src/css.ts',
     'playroom/components': './src/playroom/components.ts',
     'playroom/FrameComponent': './src/playroom/FrameComponent.ts',
+    'playroom/frameSettings': './src/playroom/frameSettings.ts',
     'playroom/scope': './src/playroom/scope.ts',
     'playroom/snippets': './src/playroom/snippets.ts',
     reset: './src/reset.ts',

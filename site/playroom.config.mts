@@ -1,6 +1,7 @@
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
+import frameSettings from 'braid-src/playroom/frameSettings';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import type { PlayroomConfig } from 'playroom';
 import { SkuWebpackPlugin } from 'sku/webpack-plugin';
@@ -27,11 +28,7 @@ export default {
   typeScriptFiles: [resolveFromBraid('playroom/components.ts')],
   widths: [320, 390, 768, 1024, 1280, 1440, 1600],
   defaultVisibleWidths: [390, 768, 1280],
-  frameSettings: [
-    { id: 'stackDebug', label: 'Stack Debug', defaultValue: false },
-    { id: 'touchTargets', label: 'Touch Targets', defaultValue: false },
-    { id: 'darkMode', label: 'Dark Mode (beta)', defaultValue: false },
-  ],
+  frameSettings,
   openBrowser: false,
   port: 8082,
   webpackConfig: () => ({

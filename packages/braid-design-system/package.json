@@ -26,68 +26,73 @@
   "exports": {
     ".": {
       "braid-dev": "./src/index.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./color-mode/query-param": {
       "braid-dev": "./src/color-mode/query-param.ts",
-      "require": "./dist/color-mode/query-param.cjs",
-      "import": "./dist/color-mode/query-param.mjs"
+      "import": "./dist/color-mode/query-param.mjs",
+      "require": "./dist/color-mode/query-param.cjs"
     },
     "./css": {
       "braid-dev": "./src/css.ts",
-      "require": "./dist/css.cjs",
-      "import": "./dist/css.mjs"
+      "import": "./dist/css.mjs",
+      "require": "./dist/css.cjs"
     },
     "./playroom/components": {
       "braid-dev": "./src/playroom/components.ts",
-      "require": "./dist/playroom/components.cjs",
-      "import": "./dist/playroom/components.mjs"
+      "import": "./dist/playroom/components.mjs",
+      "require": "./dist/playroom/components.cjs"
     },
     "./playroom/FrameComponent": {
       "braid-dev": "./src/playroom/FrameComponent.ts",
-      "require": "./dist/playroom/FrameComponent.cjs",
-      "import": "./dist/playroom/FrameComponent.mjs"
+      "import": "./dist/playroom/FrameComponent.mjs",
+      "require": "./dist/playroom/FrameComponent.cjs"
+    },
+    "./playroom/frameSettings": {
+      "braid-dev": "./src/playroom/frameSettings.ts",
+      "import": "./dist/playroom/frameSettings.mjs",
+      "require": "./dist/playroom/frameSettings.cjs"
     },
     "./playroom/scope": {
       "braid-dev": "./src/playroom/scope.ts",
-      "require": "./dist/playroom/scope.cjs",
-      "import": "./dist/playroom/scope.mjs"
+      "import": "./dist/playroom/scope.mjs",
+      "require": "./dist/playroom/scope.cjs"
     },
     "./playroom/snippets": {
       "braid-dev": "./src/playroom/snippets.ts",
-      "require": "./dist/playroom/snippets.cjs",
-      "import": "./dist/playroom/snippets.mjs"
+      "import": "./dist/playroom/snippets.mjs",
+      "require": "./dist/playroom/snippets.cjs"
     },
     "./reset": {
       "braid-dev": "./src/reset.ts",
-      "require": "./dist/reset.cjs",
-      "import": "./dist/reset.mjs"
+      "import": "./dist/reset.mjs",
+      "require": "./dist/reset.cjs"
     },
     "./test": {
       "braid-dev": "./src/test.ts",
-      "require": "./dist/test.cjs",
-      "import": "./dist/test.mjs"
+      "import": "./dist/test.mjs",
+      "require": "./dist/test.cjs"
     },
     "./themes/docs": {
       "braid-dev": "./src/themes/docs.ts",
-      "require": "./dist/themes/docs.cjs",
-      "import": "./dist/themes/docs.mjs"
+      "import": "./dist/themes/docs.mjs",
+      "require": "./dist/themes/docs.cjs"
     },
     "./themes/seekBusiness": {
       "braid-dev": "./src/themes/seekBusiness.ts",
-      "require": "./dist/themes/seekBusiness.cjs",
-      "import": "./dist/themes/seekBusiness.mjs"
+      "import": "./dist/themes/seekBusiness.mjs",
+      "require": "./dist/themes/seekBusiness.cjs"
     },
     "./themes/seekJobs": {
       "braid-dev": "./src/themes/seekJobs.ts",
-      "require": "./dist/themes/seekJobs.cjs",
-      "import": "./dist/themes/seekJobs.mjs"
+      "import": "./dist/themes/seekJobs.mjs",
+      "require": "./dist/themes/seekJobs.cjs"
     },
     "./themes/wireframe": {
       "braid-dev": "./src/themes/wireframe.ts",
-      "require": "./dist/themes/wireframe.cjs",
-      "import": "./dist/themes/wireframe.mjs"
+      "import": "./dist/themes/wireframe.mjs",
+      "require": "./dist/themes/wireframe.cjs"
     },
     "./package.json": "./package.json"
   },
@@ -197,56 +202,60 @@
   "publishConfig": {
     "exports": {
       ".": {
-        "require": "./dist/index.cjs",
-        "import": "./dist/index.mjs"
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
       },
       "./color-mode/query-param": {
-        "require": "./dist/color-mode/query-param.cjs",
-        "import": "./dist/color-mode/query-param.mjs"
+        "import": "./dist/color-mode/query-param.mjs",
+        "require": "./dist/color-mode/query-param.cjs"
       },
       "./css": {
-        "require": "./dist/css.cjs",
-        "import": "./dist/css.mjs"
+        "import": "./dist/css.mjs",
+        "require": "./dist/css.cjs"
       },
       "./playroom/components": {
-        "require": "./dist/playroom/components.cjs",
-        "import": "./dist/playroom/components.mjs"
+        "import": "./dist/playroom/components.mjs",
+        "require": "./dist/playroom/components.cjs"
       },
       "./playroom/FrameComponent": {
-        "require": "./dist/playroom/FrameComponent.cjs",
-        "import": "./dist/playroom/FrameComponent.mjs"
+        "import": "./dist/playroom/FrameComponent.mjs",
+        "require": "./dist/playroom/FrameComponent.cjs"
+      },
+      "./playroom/frameSettings": {
+        "import": "./dist/playroom/frameSettings.mjs",
+        "require": "./dist/playroom/frameSettings.cjs"
       },
       "./playroom/scope": {
-        "require": "./dist/playroom/scope.cjs",
-        "import": "./dist/playroom/scope.mjs"
+        "import": "./dist/playroom/scope.mjs",
+        "require": "./dist/playroom/scope.cjs"
       },
       "./playroom/snippets": {
-        "require": "./dist/playroom/snippets.cjs",
-        "import": "./dist/playroom/snippets.mjs"
+        "import": "./dist/playroom/snippets.mjs",
+        "require": "./dist/playroom/snippets.cjs"
       },
       "./reset": {
-        "require": "./dist/reset.cjs",
-        "import": "./dist/reset.mjs"
+        "import": "./dist/reset.mjs",
+        "require": "./dist/reset.cjs"
       },
       "./test": {
-        "require": "./dist/test.cjs",
-        "import": "./dist/test.mjs"
+        "import": "./dist/test.mjs",
+        "require": "./dist/test.cjs"
       },
       "./themes/docs": {
-        "require": "./dist/themes/docs.cjs",
-        "import": "./dist/themes/docs.mjs"
+        "import": "./dist/themes/docs.mjs",
+        "require": "./dist/themes/docs.cjs"
       },
       "./themes/seekBusiness": {
-        "require": "./dist/themes/seekBusiness.cjs",
-        "import": "./dist/themes/seekBusiness.mjs"
+        "import": "./dist/themes/seekBusiness.mjs",
+        "require": "./dist/themes/seekBusiness.cjs"
       },
       "./themes/seekJobs": {
-        "require": "./dist/themes/seekJobs.cjs",
-        "import": "./dist/themes/seekJobs.mjs"
+        "import": "./dist/themes/seekJobs.mjs",
+        "require": "./dist/themes/seekJobs.cjs"
       },
       "./themes/wireframe": {
-        "require": "./dist/themes/wireframe.cjs",
-        "import": "./dist/themes/wireframe.mjs"
+        "import": "./dist/themes/wireframe.mjs",
+        "require": "./dist/themes/wireframe.cjs"
       },
       "./package.json": "./package.json"
     }
