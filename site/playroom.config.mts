@@ -1,7 +1,6 @@
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
-import frameSettings from 'braid-src/playroom/frameSettings';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import type { PlayroomConfig } from 'playroom';
 import { SkuWebpackPlugin } from 'sku/webpack-plugin';
@@ -16,6 +15,10 @@ const braidSrc = path.join(
   '../packages/braid-design-system/src',
 );
 const resolveFromBraid = (p: string) => require.resolve(path.join(braidSrc, p));
+
+const { frameSettings } = await import(
+  resolveFromBraid('playroom/frameSettings.ts')
+);
 
 export default {
   outputPath: './dist/playroom',
