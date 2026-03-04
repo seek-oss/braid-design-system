@@ -29,6 +29,8 @@ export { Dropdown } from '../components/Dropdown/Dropdown.playroom';
 export { FieldLabel } from '../components/FieldLabel/FieldLabel.playroom';
 export { FieldMessage } from '../components/FieldMessage/FieldMessage.playroom';
 export { Heading } from '../components/Heading/Heading.playroom';
+export { Hidden } from '../components/Hidden/Hidden.playroom';
+export { HiddenVisually } from '../components/HiddenVisually/HiddenVisually.playroom';
 export { Inline } from '../components/Inline/Inline.playroom';
 export { Link } from '../components/Link/Link.playroom';
 export { List } from '../components/List/List.playroom';

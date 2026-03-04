@@ -38,3 +38,5 @@ export const Box = forwardRef<HTMLElement, BoxProps>((props, ref) => {
 });
 
 Box.displayName = 'Box';
+// @ts-expect-error Used for debugging Stack space in Playroom
+Box.__isBox__ = true;

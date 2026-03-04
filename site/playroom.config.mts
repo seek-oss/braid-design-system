@@ -16,6 +16,10 @@ const braidSrc = path.join(
 );
 const resolveFromBraid = (p: string) => require.resolve(path.join(braidSrc, p));
 
+const { frameSettings } = await import(
+  resolveFromBraid('playroom/frameSettings.ts')
+);
+
 export default {
   outputPath: './dist/playroom',
   components: require.resolve('./src/playroom.components.ts'),
@@ -27,6 +31,7 @@ export default {
   typeScriptFiles: [resolveFromBraid('playroom/components.ts')],
   widths: [320, 390, 768, 1024, 1280, 1440, 1600],
   defaultVisibleWidths: [390, 768, 1280],
+  frameSettings,
   openBrowser: false,
   port: 8082,
   webpackConfig: () => ({
