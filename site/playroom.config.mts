@@ -2,6 +2,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import type { PlayroomConfig } from 'playroom';
 import { SkuWebpackPlugin } from 'sku/webpack-plugin';
 import webpackPkg from 'webpack';
 
@@ -13,7 +14,11 @@ const braidSrc = path.join(
   import.meta.dirname,
   '../packages/braid-design-system/src',
 );
-const resolveFromBraid = (p) => require.resolve(path.join(braidSrc, p));
+const resolveFromBraid = (p: string) => require.resolve(path.join(braidSrc, p));
+
+const { frameSettings } = await import(
+  resolveFromBraid('playroom/frameSettings.ts')
+);
 
 export default {
   outputPath: './dist/playroom',
@@ -26,6 +31,7 @@ export default {
   typeScriptFiles: [resolveFromBraid('playroom/components.ts')],
   widths: [320, 390, 768, 1024, 1280, 1440, 1600],
   defaultVisibleWidths: [390, 768, 1280],
+  frameSettings,
   openBrowser: false,
   port: 8082,
   webpackConfig: () => ({
@@ -42,7 +48,8 @@ export default {
       new SkuWebpackPlugin({
         include: [braidSrc],
         target: 'browser',
-        mode: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
+        mode:
+          process.env.NODE_ENV === 'production' ? 'production' : 'development',
         displayNamesProd: true,
         removeAssertionsInProduction: false,
         MiniCssExtractPlugin,
@@ -52,4 +59,4 @@ export default {
       }),
     ],
   }),
-};
+} satisfies PlayroomConfig;
