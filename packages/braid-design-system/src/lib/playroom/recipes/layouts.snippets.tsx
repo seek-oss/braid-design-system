@@ -29,7 +29,7 @@ export const snippets: Snippets = [
           <PlaceholderHeader />
 
           <PageBlock width="medium">
-            <Stack space="large">
+            <Stack space="medium">
               <Heading level="2">Standard Page</Heading>
 
               <Text>
@@ -42,10 +42,58 @@ export const snippets: Snippets = [
               <Text>
                 If providing text immediately below the Heading, consider using{' '}
                 <Strong>standard Text</Strong> and grouping with a{' '}
-                <Strong>large Stack</Strong>.
+                <Strong>medium Stack</Strong>.
               </Text>
 
               <Text>Use this layout as a starting point.</Text>
+            </Stack>
+          </PageBlock>
+
+          <PageBlock width="medium">
+            <Placeholder label="Section" height={300} />
+          </PageBlock>
+
+          <PageBlock width="medium">
+            <Placeholder label="Section" height={250} />
+          </PageBlock>
+
+          <PageBlock width="medium">
+            <Placeholder label="Section" height={400} />
+          </PageBlock>
+        </Stack>
+      </Page>,
+    ),
+    Container,
+  },
+  {
+    group: 'Layouts',
+    name: 'Compact Page',
+    code: source(
+      <Page footer={<PlaceholderFooter />} footerPosition="belowFold">
+        <Stack space="xlarge">
+          <PlaceholderHeader />
+
+          <PageBlock width="medium">
+            <Stack space="medium">
+              <Heading level="2">Compact Page</Heading>
+
+              <Text>
+                Combines a <Strong>Heading level 2</Strong> with{' '}
+                <Strong>xlarge Stack</Strong> spacing between sections, where
+                each section uses a <Strong>medium PageBlock</Strong> to
+                establish content max width and consistent screen gutters.
+              </Text>
+
+              <Text>
+                If providing text immediately below the Heading, consider using{' '}
+                <Strong>standard Text</Strong> and grouping with a{' '}
+                <Strong>medium Stack</Strong>.
+              </Text>
+
+              <Text>
+                Use this layout as a starting point where information density
+                needs to be optimised.
+              </Text>
             </Stack>
           </PageBlock>
 
@@ -73,86 +121,38 @@ export const snippets: Snippets = [
         <Stack space="xxxlarge">
           <PlaceholderHeader />
 
-          <PageBlock width="medium">
+          <PageBlock width="large">
             <Stack space="large">
               <Heading level="1">Spacious Page</Heading>
 
-              <Text>
+              <Text size="large">
                 Combines a <Strong>Heading level 1</Strong> with{' '}
                 <Strong>xxxlarge Stack</Strong> spacing between sections, where
                 each section uses a <Strong>large PageBlock</Strong> to
                 establish content max width and consistent screen gutters.
               </Text>
 
-              <Text>
+              <Text size="large">
                 If providing text immediately below the Heading, consider using{' '}
                 <Strong>large Text</Strong> and grouping with a{' '}
-                <Strong>xlarge Stack</Strong>.
+                <Strong>large Stack</Strong>.
               </Text>
 
-              <Text>
+              <Text size="large">
                 Use this layout for landing pages and larger form content.
               </Text>
             </Stack>
           </PageBlock>
 
-          <PageBlock width="medium">
+          <PageBlock width="large">
             <Placeholder label="Section" height={300} />
           </PageBlock>
 
-          <PageBlock width="medium">
+          <PageBlock width="large">
             <Placeholder label="Section" height={250} />
           </PageBlock>
 
-          <PageBlock width="medium">
-            <Placeholder label="Section" height={400} />
-          </PageBlock>
-        </Stack>
-      </Page>,
-    ),
-    Container,
-  },
-  {
-    group: 'Layouts',
-    name: 'Compact Page',
-    code: source(
-      <Page footer={<PlaceholderFooter />} footerPosition="belowFold">
-        <Stack space="xxlarge">
-          <PlaceholderHeader />
-
-          <PageBlock width="medium">
-            <Stack space="large">
-              <Heading level="2">Compact Page</Heading>
-
-              <Text>
-                Combines a <Strong>Heading level 2</Strong> with{' '}
-                <Strong>xxlarge Stack</Strong> spacing between sections, where
-                each section uses a <Strong>large PageBlock</Strong> to
-                establish content max width and consistent screen gutters.
-              </Text>
-
-              <Text>
-                If providing text immediately below the Heading, consider using{' '}
-                <Strong>standard Text</Strong> and grouping with a{' '}
-                <Strong>large Stack</Strong>.
-              </Text>
-
-              <Text>
-                Use this layout as a starting point where information density
-                needs to be optimised.
-              </Text>
-            </Stack>
-          </PageBlock>
-
-          <PageBlock width="medium">
-            <Placeholder label="Section" height={300} />
-          </PageBlock>
-
-          <PageBlock width="medium">
-            <Placeholder label="Section" height={250} />
-          </PageBlock>
-
-          <PageBlock width="medium">
+          <PageBlock width="large">
             <Placeholder label="Section" height={400} />
           </PageBlock>
         </Stack>

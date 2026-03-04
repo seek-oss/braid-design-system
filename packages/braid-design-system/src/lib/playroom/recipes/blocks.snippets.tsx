@@ -49,7 +49,7 @@ export const snippets: Snippets = [
     name: 'Standard',
     code: source(
       <PageBlock width="medium">
-        <Stack space="large">
+        <Stack space="medium">
           <Stack space="small">
             <Heading level="3">Heading</Heading>
 
@@ -59,20 +59,18 @@ export const snippets: Snippets = [
             </Text>
           </Stack>
 
-          <Stack space="medium">
-            <Text>
-              Combines a <Strong>Heading level 3</Strong> with{' '}
-              <Strong>large Stack</Strong> spacing content groups within the
-              section.
-            </Text>
+          <Text>
+            Combines a <Strong>Heading level 3</Strong> with a{' '}
+            <Strong>medium Stack</Strong> spacing content groups within the
+            section.
+          </Text>
 
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              convallis cursus quam nec volutpat. In hac habitasse platea
-              dictumst. Praesent egestas erat id mollis imperdiet. Vestibulum
-              non commodo nisi, sed tempus magna. Duis a malesuada diam.
-            </Text>
-          </Stack>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+            convallis cursus quam nec volutpat. In hac habitasse platea
+            dictumst. Praesent egestas erat id mollis imperdiet. Vestibulum non
+            commodo nisi, sed tempus magna. Duis a malesuada diam.
+          </Text>
 
           <Actions>
             <Button>Action (optional)</Button>
@@ -86,7 +84,7 @@ export const snippets: Snippets = [
     name: 'Card list',
     code: source(
       <PageBlock width="medium">
-        <Stack space="large">
+        <Stack space="medium">
           <Heading level="3">Heading (optional)</Heading>
 
           <Stack component="ul" space="small">
@@ -137,108 +135,50 @@ export const snippets: Snippets = [
     name: 'Divided list',
     code: source(
       <PageBlock width="medium">
-        <Stack space="large">
+        <Stack space="medium">
           <Heading level="3">Heading (optional)</Heading>
 
-          <Stack space="medium">
-            {[
-              {
-                title: 'Item 1',
-                description: 'Lorem ipsum',
-              },
-              {
-                title: 'Item 2',
-                description: 'Consectetur adipiscing',
-              },
-              {
-                title: 'Item 3',
-                description: 'Vel odio',
-              },
-            ].map((item) => (
-              <>
-                <Columns space="small">
-                  <Column>
-                    <Stack space="small">
-                      <Text component="h4" weight="strong">
-                        {item.title}
-                      </Text>
-                      <Text tone="secondary">{item.description}</Text>
-                    </Stack>
-                  </Column>
-                  <Column width="content">
-                    <ButtonIcon
-                      variant="transparent"
-                      icon={<IconEdit />}
-                      label="Edit"
-                    />
-                  </Column>
-                </Columns>
-                <Divider />
-              </>
-            ))}
-          </Stack>
+          {[
+            {
+              title: 'Item 1',
+              description: 'Lorem ipsum',
+            },
+            {
+              title: 'Item 2',
+              description: 'Consectetur adipiscing',
+            },
+            {
+              title: 'Item 3',
+              description: 'Vel odio',
+            },
+          ].map((item) => (
+            <>
+              <Columns space="small">
+                <Column>
+                  <Stack space="small">
+                    <Text component="h4" weight="strong">
+                      {item.title}
+                    </Text>
+                    <Text tone="secondary">{item.description}</Text>
+                  </Stack>
+                </Column>
+                <Column width="content">
+                  <ButtonIcon
+                    variant="transparent"
+                    icon={<IconEdit />}
+                    label="Edit"
+                  />
+                </Column>
+              </Columns>
+              <Divider />
+            </>
+          ))}
 
           <Actions>
             <Button>Action (optional)</Button>
           </Actions>
         </Stack>
       </PageBlock>,
-    ),
-  },
-  {
-    group: 'Blocks',
-    name: 'Branded container',
-    description: 'Standard',
-    code: source(
-      <PageBlock width="medium">
-        <Box background="brand" padding="gutter" borderRadius="large">
-          <Stack space="large">
-            <Heading level="3">Heading</Heading>
-
-            <Text>
-              Combines a <Strong>Heading level 3</Strong> with{' '}
-              <Strong>large Stack</Strong> spacing content groups within the
-              section.
-            </Text>
-
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              convallis cursus quam nec volutpat. In hac habitasse platea
-              dictumst. Praesent egestas erat id mollis imperdiet. Vestibulum
-              non commodo nisi, sed tempus magna. Duis a malesuada diam.
-            </Text>
-          </Stack>
-        </Box>
-      </PageBlock>,
-    ),
-  },
-  {
-    group: 'Blocks',
-    name: 'Branded container',
-    description: 'Large',
-    code: source(
-      <ContentBlock width="large">
-        <Box background="brand" padding="xlarge" borderRadius="xlarge">
-          <PageBlock width="medium">
-            <Stack space="large">
-              <Heading level="1">Heading</Heading>
-
-              <Text size="large">
-                Combines a <Strong>Heading level 1</Strong> with{' '}
-                <Strong>large Text</Strong> in a <Strong>large Stack</Strong>{' '}
-                spacing content groups within the section.
-              </Text>
-
-              <Text size="large">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                convallis cursus quam nec volutpat. In hac habitasse platea
-                dictumst. Praesent egestas erat id mollis imperdiet. Vestibulum
-                non commodo nisi, sed tempus magna. Duis a malesuada diam.
-              </Text>
-            </Stack>
-          </PageBlock>
-        </Box>
-      </ContentBlock>,
     ),
   },
   {
@@ -252,11 +192,11 @@ export const snippets: Snippets = [
             <Heading level="2">Heading</Heading>
 
             <Text>
-              Combines a <Strong>Heading level 2</Strong> with{' '}
+              Combines a <Strong>Heading level 2</Strong> with a{' '}
               <Strong>large Stack</Strong> spacing content groups within the
               section.
               <br />
-              Uses <Strong>PageBlock</Strong> inside the section to maintain
+              Uses a <Strong>PageBlock</Strong> inside the section to maintain
               screen gutters on small screens.
             </Text>
 
@@ -268,6 +208,45 @@ export const snippets: Snippets = [
             </Text>
           </Stack>
         </PageBlock>
+      </Box>,
+    ),
+  },
+  {
+    group: 'Blocks',
+    name: 'Branded container',
+    description: 'Rounded from desktop (full bleed below)',
+    code: source(
+      <Box paddingX={{ desktop: 'gutter' }}>
+        <ContentBlock width="large">
+          <Box
+            background="brand"
+            paddingY="xlarge"
+            borderRadius={{ desktop: 'xlarge' }}
+          >
+            <PageBlock width="medium">
+              <Stack space="large">
+                <Heading level="2">Heading</Heading>
+
+                <Text>
+                  Combines a <Strong>Heading level 2</Strong> with a{' '}
+                  <Strong>large Stack</Strong> spacing content groups within the
+                  section.
+                  <br />
+                  Uses a <Strong>PageBlock</Strong> inside the section to
+                  maintain screen gutters on small screens.
+                </Text>
+
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                  convallis cursus quam nec volutpat. In hac habitasse platea
+                  dictumst. Praesent egestas erat id mollis imperdiet.
+                  Vestibulum non commodo nisi, sed tempus magna. Duis a
+                  malesuada diam.
+                </Text>
+              </Stack>
+            </PageBlock>
+          </Box>
+        </ContentBlock>
       </Box>,
     ),
   },
@@ -286,7 +265,7 @@ export const snippets: Snippets = [
             </Text>
 
             <Text>
-              Uses a <Strong>large Stack</Strong> for fields, with an{' '}
+              Uses a <Strong>large Stack</Strong> for fields, with a{' '}
               <Strong>xlarge Stack</Strong> separating the actions from the
               form.
             </Text>
@@ -326,7 +305,7 @@ export const snippets: Snippets = [
     code: source(
       <PageBlock width="medium">
         <Stack space="xlarge">
-          <Stack space="medium">
+          <Stack space="small">
             <Heading level="3">Heading</Heading>
 
             <Text>
@@ -391,7 +370,7 @@ export const snippets: Snippets = [
     name: 'Table',
     code: source(
       <PageBlock width="medium">
-        <Stack space="large">
+        <Stack space="medium">
           <Heading level="3">Heading (optional)</Heading>
 
           <Table label="Table Block">
@@ -469,7 +448,7 @@ export const snippets: Snippets = [
       <PageBlock width="medium">
         {setDefaultState('progress', 1)}
         {setDefaultState('activeStep', 1)}
-        <Stack space="xlarge">
+        <Stack space="large">
           <Stepper
             label="Stepped Block"
             align="left"
@@ -484,20 +463,26 @@ export const snippets: Snippets = [
             <Step>Step 5</Step>
           </Stepper>
 
-          {
-            {
-              1: <Placeholder label="Step content 1" height={400} />,
-              2: <Placeholder label="Step content 2" height={400} />,
-              3: <Placeholder label="Step content 3" height={400} />,
-              4: <Placeholder label="Step content 4" height={400} />,
-              5: <Placeholder label="Step content 5" height={400} />,
-            }[getState('activeStep') as number]
-          }
+          {getState('activeStep') === 1 && (
+            <Placeholder label="Step content 1" height={400} />
+          )}
+          {getState('activeStep') === 2 && (
+            <Placeholder label="Step content 2" height={400} />
+          )}
+          {getState('activeStep') === 3 && (
+            <Placeholder label="Step content 3" height={400} />
+          )}
+          {getState('activeStep') === 4 && (
+            <Placeholder label="Step content 4" height={400} />
+          )}
+          {getState('activeStep') === 5 && (
+            <Placeholder label="Step content 5" height={400} />
+          )}
 
           <Columns space="small">
             <Column>
-              <Actions>
-                {getState('activeStep') > 1 ? (
+              {getState('activeStep') > 1 && (
+                <Actions>
                   <Button
                     icon={<IconArrow direction="left" />}
                     onClick={() =>
@@ -506,27 +491,29 @@ export const snippets: Snippets = [
                   >
                     Back
                   </Button>
-                ) : null}
-              </Actions>
+                </Actions>
+              )}
             </Column>
             <Column width="content">
-              <Actions>
-                <Button
-                  variant="solid"
-                  tone="formAccent"
-                  icon={<IconArrow direction="right" />}
-                  iconPosition="trailing"
-                  onClick={() => {
-                    const newStep = getState('activeStep') + 1;
-                    setState('activeStep', newStep);
-                    if (newStep > getState('progress')) {
-                      setState('progress', newStep);
-                    }
-                  }}
-                >
-                  Continue
-                </Button>
-              </Actions>
+              {getState('activeStep') < 5 && (
+                <Actions>
+                  <Button
+                    variant="solid"
+                    tone="formAccent"
+                    icon={<IconArrow direction="right" />}
+                    iconPosition="trailing"
+                    onClick={() => {
+                      const newStep = getState('activeStep') + 1;
+                      setState('activeStep', newStep);
+                      if (newStep > getState('progress')) {
+                        setState('progress', newStep);
+                      }
+                    }}
+                  >
+                    Continue
+                  </Button>
+                </Actions>
+              )}
             </Column>
           </Columns>
         </Stack>
