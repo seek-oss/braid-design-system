@@ -5406,5 +5406,9 @@
         "summary": "**Textarea:** Add support for automatic shrinking height with the `grow` prop (`true` by default).\n\nAutomatically shrink and grow height with content when using the `grow` prop."
       }
     ]
+  },
+  {
+    "version": "34.0.4",
+    "updates": []
   }
 ]
