@@ -47,8 +47,14 @@ import { snippets as Textarea } from './snippets/Textarea';
 import { snippets as Tiles } from './snippets/Tiles';
 import { snippets as Toggle } from './snippets/Toggle';
 import { snippets as TooltipRenderer } from './snippets/TooltipRenderer';
+import { snippets as blocks } from './snippets/blocks';
+import { snippets as layouts } from './snippets/layouts';
 
-export default Object.entries({
+const groupOrder = ['Layouts', 'Blocks', 'Components'];
+const allSnippets = [];
+const snippetsMap = {
+  blocks,
+  layouts,
   Accordion,
   Actions,
   Alert,
@@ -98,11 +104,22 @@ export default Object.entries({
   Tiles,
   Toggle,
   TooltipRenderer,
-})
-  .map(([name, snippets]) =>
-    snippets.map((snippet) => ({
+};
+
+for (const [name, snippets] of Object.entries(snippetsMap)) {
+  for (const snippet of snippets) {
+    allSnippets.push({
       ...snippet,
       name: 'name' in snippet ? snippet.name : name,
-    })),
-  )
-  .flat();
+      group: 'group' in snippet ? snippet.group : 'Components',
+    });
+  }
+}
+
+allSnippets.sort((a, b) => {
+  const aIndex = groupOrder.indexOf(a.group);
+  const bIndex = groupOrder.indexOf(b.group);
+  return (aIndex === -1 ? 3 : aIndex) - (bIndex === -1 ? 3 : bIndex);
+});
+
+export default allSnippets;
