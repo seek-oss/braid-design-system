@@ -1,5 +1,19 @@
 # braid-design-system
 
+## 34.0.4
+
+### Patch Changes
+
+- playroom: Add "layout" and "block" recipes to snippets ([#2009](https://github.com/seek-oss/braid-design-system/pull/2009))
+
+- playroom: Add support for frameSettings ([#2006](https://github.com/seek-oss/braid-design-system/pull/2006))
+
+  Introduce new `frameSettings` for Playroom to configure frame options for specific frames.
+
+  Settings added:
+  - **Stack Debug**: Show highlight overlays of stack spacing to help review spacing and layout.
+  - **Dark Mode**: Switch the colour mode to dark mode (only used by pages embedded in native apps currently).
+
 ## 34.0.3
 
 ### Patch Changes
