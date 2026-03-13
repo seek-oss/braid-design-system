@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
+import { globalTextStyle } from 'braid-design-system/css';
+
 import { atoms } from '../../css/atoms/atoms';
 import { outlineStyle } from '../../css/outlineStyle';
 import { debugTouchable } from '../private/touchable/debugTouchable';
@@ -8,10 +10,13 @@ import { virtualTouchableRules } from '../private/touchable/virtualTouchableRule
 import { vars } from '../../themes/vars.css';
 
 export const select = style([
+   globalTextStyle({
+    size: 'standard'
+  }),
   {
     ...virtualTouchableRules,
   },
-  debugTouchable(),
+  debugTouchable()
 ]);
 
 export const focusRing = style([
