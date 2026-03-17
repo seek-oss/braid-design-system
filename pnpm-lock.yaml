@@ -133,7 +133,7 @@ importers:
         version: 4.1.3
       '@capsizecss/metrics':
         specifier: ^3.0.0
-        version: 3.6.2
+        version: 3.7.0
       '@capsizecss/vanilla-extract':
         specifier: ^2.0.4
         version: 2.0.4(@vanilla-extract/css@1.18.0(babel-plugin-macros@3.1.0))
@@ -1349,8 +1349,8 @@ packages:
   '@capsizecss/core@4.1.3':
     resolution: {integrity: sha512-d2sTTBwKuVioYxpwpU4URMp8VkFK+GI1VNGNawQcF8HBMHzCDa1FLcbeXJSzb5AJik7ZGv3aFVCTs7IS9MhvHg==}
 
-  '@capsizecss/metrics@3.6.2':
-    resolution: {integrity: sha512-5uL1EIhAlfg0dvWsR1DGfqIsyiPBUsD/qlra15B82Ik28BcH7ScYEHLA4F34fZA0KamlpYcappvt2n1pTuDUfw==}
+  '@capsizecss/metrics@3.7.0':
+    resolution: {integrity: sha512-NHdEMrl/zd2XgiSv2xHRF/FxGc2OTBKjhPzr9SgbHzqmoTVn8BbRK88Dtq0m65idX/RMD7ptyVdbGHFcvlErSw==}
 
   '@capsizecss/vanilla-extract@2.0.4':
     resolution: {integrity: sha512-KImqHutsYyeA718+3Fqg7Bw/RCSKgu+FESsMitWt9u4/KpBpB+s7cW4DWJyC6N5AzOoahYB7Jnu0hKB3HW+X6A==}
@@ -10846,7 +10846,7 @@ snapshots:
     dependencies:
       csstype: 3.2.3
 
-  '@capsizecss/metrics@3.6.2': {}
+  '@capsizecss/metrics@3.7.0': {}
 
   '@capsizecss/vanilla-extract@2.0.4(@vanilla-extract/css@1.18.0(babel-plugin-macros@3.1.0))':
     dependencies:
@@ -18299,7 +18299,7 @@ snapshots:
       '@babel/preset-react': 7.28.5(@babel/core@7.29.0)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.29.0)
       '@base-ui/react': 1.2.0(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@capsizecss/metrics': 3.6.2
+      '@capsizecss/metrics': 3.7.0
       '@capsizecss/vanilla-extract': 2.0.4(@vanilla-extract/css@1.18.0(babel-plugin-macros@3.1.0))
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.105.4(@swc/core@1.15.18))
       '@types/codemirror': 5.60.17
