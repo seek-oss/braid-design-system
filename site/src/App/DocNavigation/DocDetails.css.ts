@@ -51,3 +51,13 @@ export const textHover = style({
     },
   },
 });
+
+// Subtract the height of the sticky offset, the cap height of the text, and the gap between the text and the ToC.
+export const tocHeightSet = style({
+  maxHeight: calc.subtract(
+    '100vh',
+    topOffset,
+    vars.textSize.standard.mobile.capHeight,
+    vars.space.medium,
+  ),
+});
