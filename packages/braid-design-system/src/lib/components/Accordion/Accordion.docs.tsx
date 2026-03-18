@@ -14,9 +14,9 @@ import {
   Stack,
 } from '../';
 import { Placeholder } from '../../playroom/components';
+import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { validSpaceValues } from './Accordion';
-import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
   category: 'Content',
