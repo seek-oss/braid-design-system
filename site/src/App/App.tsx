@@ -7,7 +7,7 @@ import {
 } from 'braid-src/lib/components';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import docsTheme from 'braid-src/themes/docs';
-import { StrictMode, useEffect } from 'react';
+import { StrictMode, useEffect, useState } from 'react';
 import { Route, Routes, Navigate, Link as ReactRouterLink } from 'react-router';
 
 import { DocDetails } from './DocNavigation/DocDetails';
@@ -18,6 +18,8 @@ import { DocSnippets } from './DocNavigation/DocSnippets';
 import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
 import { ThemeSettingProvider } from './ThemeSetting';
+import { SearchModal } from './Search/SearchModal';
+import { useSearchHotkey } from './useSearchHotkey/useSearchHotkey';
 import examples from './routes/examples';
 import foundations from './routes/foundations';
 import { GalleryPage } from './routes/gallery';
@@ -55,6 +57,12 @@ const CustomLink = makeLinkComponent(
 );
 
 export const App = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useSearchHotkey({
+    onOpen: () => setIsSearchOpen(true),
+  });
+
   // TODO: COLORMODE RELEASE
   // Remove color mode toggle
   useEffect(() => {
@@ -91,6 +99,10 @@ export const App = () => {
         <BraidProvider theme={docsTheme} linkComponent={CustomLink}>
           <ToastProvider>
             <AppMeta />
+            <SearchModal
+              isOpen={isSearchOpen}
+              onClose={() => setIsSearchOpen(false)}
+            />
             <Routes>
               <Route path="/gallery" element={<GalleryPage />} />
               <Route element={<Navigation />}>
