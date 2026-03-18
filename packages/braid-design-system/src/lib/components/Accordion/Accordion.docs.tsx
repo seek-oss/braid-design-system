@@ -217,7 +217,7 @@ const docs: ComponentDocs = {
           ),
       },
     ],
-    usage: [
+    bestPractices: [
       {
         label: 'When to use',
         description: (

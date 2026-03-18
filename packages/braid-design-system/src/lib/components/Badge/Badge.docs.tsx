@@ -178,7 +178,7 @@ const docs: ComponentDocs = {
           ),
       },
     ],
-    usage: [
+    bestPractices: [
       dataAttributeDocs({
         code: `
           <Badge

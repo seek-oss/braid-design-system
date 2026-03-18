@@ -27,12 +27,12 @@ const getSectionHeading = (sectionKey: string): string => {
   switch (sectionKey) {
     case 'appearance':
       return 'Appearance';
-    case 'interaction':
-      return 'Interaction';
     case 'layout':
       return 'Layout';
-    case 'usage':
-      return 'Usage';
+    case 'interaction':
+      return 'Interaction';
+    case 'bestPractices':
+      return 'Best practices';
     default:
       return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
   }
