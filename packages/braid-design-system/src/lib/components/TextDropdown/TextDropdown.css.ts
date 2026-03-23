@@ -10,13 +10,13 @@ import { virtualTouchableRules } from '../private/touchable/virtualTouchableRule
 import { vars } from '../../themes/vars.css';
 
 export const select = style([
-   globalTextStyle({
-    size: 'standard'
+  globalTextStyle({
+    size: 'standard',
   }),
   {
     ...virtualTouchableRules,
   },
-  debugTouchable()
+  debugTouchable(),
 ]);
 
 export const focusRing = style([
