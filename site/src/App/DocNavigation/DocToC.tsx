@@ -1,4 +1,5 @@
 import { Text, Box, Stack, Link } from 'braid-src/lib/components';
+import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
 import { useEffect, useState } from 'react';
 
 import {
@@ -6,6 +7,7 @@ import {
   tocItem,
   tocItemActive,
   tocItemChild,
+  tocHeightSet,
 } from './DocDetails.css';
 
 export interface TocItem {
@@ -114,41 +116,43 @@ export const Toc = ({
       <Text size="xsmall" tone="secondary" weight="medium">
         On this page
       </Text>
-      <Box component="nav">
-        <Box component="ul">
-          {sections.map((section) => (
-            <Box component="li" key={section.id}>
-              <TocItemLink
-                href={section.href}
-                label={section.label}
-                isActive={activeSection === section.id}
-                onClick={(e) => onTocClick(e, section.id)}
-              >
-                {section.label}
-              </TocItemLink>
+      <ScrollContainer direction="vertical">
+        <Box component="nav" className={tocHeightSet}>
+          <Box component="ul">
+            {sections.map((section) => (
+              <Box component="li" key={section.id}>
+                <TocItemLink
+                  href={section.href}
+                  label={section.label}
+                  isActive={activeSection === section.id}
+                  onClick={(e) => onTocClick(e, section.id)}
+                >
+                  {section.label}
+                </TocItemLink>
 
-              {section.children && section.children.length > 0 ? (
-                <Box component="ul">
-                  {section.children.map((child) => (
-                    <Box component="li" key={child.id}>
-                      <TocItemLink
-                        key={child.id}
-                        label={child.label}
-                        href={`#${child.id}`}
-                        isChild={true}
-                        isActive={activeSection === child.id}
-                        onClick={(e) => onTocClick(e, child.id)}
-                      >
-                        {child.label}
-                      </TocItemLink>
-                    </Box>
-                  ))}
-                </Box>
-              ) : null}
-            </Box>
-          ))}
+                {section.children && section.children.length > 0 ? (
+                  <Box component="ul">
+                    {section.children.map((child) => (
+                      <Box component="li" key={child.id}>
+                        <TocItemLink
+                          key={child.id}
+                          label={child.label}
+                          href={`#${child.id}`}
+                          isChild={true}
+                          isActive={activeSection === child.id}
+                          onClick={(e) => onTocClick(e, child.id)}
+                        >
+                          {child.label}
+                        </TocItemLink>
+                      </Box>
+                    ))}
+                  </Box>
+                ) : null}
+              </Box>
+            ))}
+          </Box>
         </Box>
-      </Box>
+      </ScrollContainer>
     </Stack>
   );
 };
