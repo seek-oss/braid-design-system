@@ -9,6 +9,7 @@ export interface SearchItem {
   name: string;
   path: string;
   category: 'Foundations' | 'Components' | 'CSS' | 'Logic';
+  hasProps: boolean;
 }
 
 export const getSearchItems = (): SearchItem[] => {
@@ -20,6 +21,7 @@ export const getSearchItems = (): SearchItem[] => {
       name: foundation.title,
       path,
       category: 'Foundations',
+      hasProps: false,
     });
   });
 
@@ -32,6 +34,7 @@ export const getSearchItems = (): SearchItem[] => {
       name: doc.name,
       path: `/components/${doc.name}`,
       category: 'Components',
+      hasProps: true,
     });
   });
 
@@ -41,6 +44,7 @@ export const getSearchItems = (): SearchItem[] => {
       name: doc.name,
       path: `/css/${doc.name}`,
       category: 'CSS',
+      hasProps: false,
     });
   });
 
@@ -51,6 +55,7 @@ export const getSearchItems = (): SearchItem[] => {
         name: doc.name,
         path: `/components/${doc.name}`,
         category: 'Logic',
+        hasProps: false,
       });
     });
   }

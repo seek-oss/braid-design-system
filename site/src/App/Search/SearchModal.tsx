@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState, useMemo } from 'react';
-import { useNavigate } from 'react-router';
 import {
   Box,
   Dialog,
@@ -8,7 +6,11 @@ import {
   Text,
   IconSearch,
   Bleed,
+  ButtonLink,
 } from 'braid-src/lib/components';
+import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
+import { useEffect, useRef, useState, useMemo } from 'react';
+import { useNavigate } from 'react-router';
 
 import {
   getSearchItems,
@@ -16,7 +18,7 @@ import {
   type SearchItem,
 } from './getSearchItems';
 
-import { searchItem, searchItemActive } from './SearchModal.css';
+import { uppercase } from './SearchModal.css';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -78,7 +80,9 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
+      if (!isOpen) {
+        return;
+      }
 
       switch (e.key) {
         case 'Escape':
@@ -93,17 +97,24 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
           break;
         case 'ArrowUp':
           e.preventDefault();
-          setSelectedIndex((prev) =>
-            flatResults.length === 0
-              ? 0
-              : prev === 0
-                ? flatResults.length - 1
-                : prev - 1,
-          );
+          setSelectedIndex((prev) => {
+            if (flatResults.length === 0) {
+              return 0;
+            }
+            if (prev === 0) {
+              return flatResults.length - 1;
+            }
+            return prev - 1;
+          });
           break;
         case 'Enter':
           if (flatResults[selectedIndex]) {
-            navigate(flatResults[selectedIndex].path);
+            const selectedItem = flatResults[selectedIndex];
+            const targetPath =
+              e.shiftKey && selectedItem.hasProps
+                ? `${selectedItem.path}/props`
+                : selectedItem.path;
+            navigate(targetPath);
             onClose();
           }
           e.preventDefault();
@@ -131,14 +142,14 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
     <Dialog
       open={isOpen}
       onClose={onClose}
-      width="small"
-      title=""
+      width="medium"
+      title="Jump to"
       closeLabel="Close search"
     >
       <TextField
         icon={<IconSearch />}
         ref={inputRef}
-        label="What do you want to find?"
+        label=""
         placeholder="Search Foundations, Components, CSS, Logic..."
         value={searchQuery}
         onChange={(e) => {
@@ -147,68 +158,90 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
         }}
       />
 
-      <Box ref={resultsRef} paddingY="small">
-        {flatResults.length === 0 && searchQuery.trim() ? (
-          <Text align="center" tone="secondary">
-            No results found
-          </Text>
-        ) : !searchQuery.trim() ? (
-          <Text align="center" tone="secondary">
-            Start typing to search...
-          </Text>
-        ) : (
-          <Bleed horizontal="large">
-            <Box paddingX="large">
-              <Stack space="large">
-                {(['Foundations', 'Components', 'CSS', 'Logic'] as const).map(
-                  (category) => {
-                    const items = groupedResults[category];
-                    if (items.length === 0) return null;
+      <Box ref={resultsRef} paddingY="small" style={{ height: '40vh' }}>
+        {(() => {
+          if (flatResults.length === 0 && searchQuery.trim()) {
+            return (
+              <Text align="center" tone="secondary">
+                No results found
+              </Text>
+            );
+          }
 
-                    return (
-                      <Stack key={category} space="small">
-                        <Text weight="strong" size="small" tone="neutral">
-                          {category}
-                        </Text>
+          if (!searchQuery.trim()) {
+            return (
+              <Text align="center" tone="secondary">
+                Start typing to search...
+              </Text>
+            );
+          }
 
-                        {items.map((item) => {
-                          const globalIndex = flatResults.findIndex(
-                            (r) => r.path === item.path,
-                          );
-                          const isSelected = globalIndex === selectedIndex;
+          return (
+            <ScrollContainer direction="vertical">
+              <Bleed horizontal="large">
+                <Box paddingX="large">
+                  <Stack space="large">
+                    {(
+                      ['Foundations', 'Components', 'CSS', 'Logic'] as const
+                    ).map((category) => {
+                      const items = groupedResults[category];
+                      if (items.length === 0) {
+                        return null;
+                      }
 
-                          return (
-                            <Stack space="small">
+                      return (
+                        <Stack key={category} space="small" component="ul">
+                          <Box className={uppercase} component="li">
+                            <Text size="xsmall" weight="medium" component="h2">
+                              {category}
+                            </Text>
+                          </Box>
+
+                          {items.map((item) => {
+                            const globalIndex = flatResults.findIndex(
+                              (r) => r.path === item.path,
+                            );
+                            const isSelected = globalIndex === selectedIndex;
+
+                            return (
                               <Box
-                                padding="small"
                                 key={item.path}
-                                data-index={globalIndex}
-                                className={
-                                  isSelected
-                                    ? [searchItemActive, searchItem]
-                                    : searchItem
-                                }
-                                onClick={() => {
-                                  navigate(item.path);
-                                  onClose();
-                                }}
-                                onMouseEnter={() =>
-                                  setSelectedIndex(globalIndex)
-                                }
+                                component="li"
+                                display="flex"
+                                alignItems="center"
+                                gap="small"
                               >
-                                <Text size="standard">{item.name}</Text>
+                                <ButtonLink
+                                  variant={isSelected ? 'soft' : 'transparent'}
+                                  tone="formAccent"
+                                  size="small"
+                                  href={item.path}
+                                  onClick={() => {
+                                    navigate(item.path);
+                                    onClose();
+                                  }}
+                                  onMouseEnter={() =>
+                                    setSelectedIndex(globalIndex)
+                                  }
+                                  data-index={globalIndex}
+                                >
+                                  {item.name}
+                                </ButtonLink>
+                                <Text size="xsmall" tone="secondary">
+                                  {item.hasProps && 'Shift+Enter for props'}
+                                </Text>
                               </Box>
-                            </Stack>
-                          );
-                        })}
-                      </Stack>
-                    );
-                  },
-                )}
-              </Stack>
-            </Box>
-          </Bleed>
-        )}
+                            );
+                          })}
+                        </Stack>
+                      );
+                    })}
+                  </Stack>
+                </Box>
+              </Bleed>
+            </ScrollContainer>
+          );
+        })()}
       </Box>
     </Dialog>
   );
