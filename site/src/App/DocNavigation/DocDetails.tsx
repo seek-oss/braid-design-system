@@ -54,15 +54,20 @@ const hasContent = (example: {
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
 
+  const hasBestPractices = Boolean(
+    docs?.docSections?.bestPractices?.some(hasContent),
+  );
+
   /*
     Build the ToC sections
-      - Accessibility
-      - Each docSection and their children
+      - Accessibility (top-level when no bestPractices section, otherwise nested within it)
+      - Each docSection and their children. When bestPractices is present,
+        accessibility and alternatives are nested as children within it.
       - Each additional section. Additional is kept
         as for now as it's where most content sits currently,
         but will likely be deprecated in the future as we
         align content to the docSection structure.
-      - Alternatives
+      - Alternatives (top-level when no bestPractices section, otherwise nested within it)
 
   */
   const tocSections = useMemo(() => {
@@ -72,7 +77,7 @@ export const DocDetails = () => {
 
     const sections: TocSection[] = [];
 
-    if ('accessibility' in docs && docs.accessibility) {
+    if (!hasBestPractices && 'accessibility' in docs && docs.accessibility) {
       sections.push({
         id: 'accessibility',
         label: 'Accessibility',
@@ -103,12 +108,44 @@ export const DocDetails = () => {
               };
             });
 
-          sections.push({
-            id: sectionKey,
-            label: heading,
-            href: `#${sectionKey}`,
-            children: children.length > 0 ? children : undefined,
-          });
+          if (sectionKey === 'bestPractices') {
+            const bestPracticesChildren: TocSection[] = [];
+
+            if ('accessibility' in docs && docs.accessibility) {
+              bestPracticesChildren.push({
+                id: 'accessibility',
+                label: 'Accessibility',
+                href: '#accessibility',
+              });
+            }
+
+            bestPracticesChildren.push(...children);
+
+            if ('alternatives' in docs && docs.alternatives.length > 0) {
+              bestPracticesChildren.push({
+                id: 'alternatives',
+                label: 'Alternatives',
+                href: '#alternatives',
+              });
+            }
+
+            sections.push({
+              id: sectionKey,
+              label: heading,
+              href: `#${sectionKey}`,
+              children:
+                bestPracticesChildren.length > 0
+                  ? bestPracticesChildren
+                  : undefined,
+            });
+          } else {
+            sections.push({
+              id: sectionKey,
+              label: heading,
+              href: `#${sectionKey}`,
+              children: children.length > 0 ? children : undefined,
+            });
+          }
         },
       );
     }
@@ -124,7 +161,11 @@ export const DocDetails = () => {
       }
     });
 
-    if ('alternatives' in docs && docs.alternatives.length > 0) {
+    if (
+      !hasBestPractices &&
+      'alternatives' in docs &&
+      docs.alternatives.length > 0
+    ) {
       sections.push({
         id: 'alternatives',
         label: 'Alternatives',
@@ -133,7 +174,7 @@ export const DocDetails = () => {
     }
 
     return sections;
-  }, [docs]);
+  }, [docs, hasBestPractices]);
 
   const handleTocClick = (_event: React.MouseEvent, id: string) => {
     try {
@@ -162,7 +203,7 @@ export const DocDetails = () => {
                 </PlayroomStateProvider>
               ) : null}
 
-              {'accessibility' in docs ? (
+              {'accessibility' in docs && !hasBestPractices ? (
                 <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Accessibility</LinkableHeading>
                   {docs.accessibility}
@@ -180,6 +221,15 @@ export const DocDetails = () => {
                         {getSectionHeading(sectionKey)}
                       </LinkableHeading>
                       <Stack space={innerSectionSpacing}>
+                        {sectionKey === 'bestPractices' &&
+                        'accessibility' in docs ? (
+                          <Stack space={headingSpacing}>
+                            <LinkableHeading level="3">
+                              Accessibility
+                            </LinkableHeading>
+                            {docs.accessibility}
+                          </Stack>
+                        ) : null}
                         {docSectionChildren.map(
                           (example: { label?: string }, index: number) => (
                             <DocSection
@@ -189,6 +239,28 @@ export const DocDetails = () => {
                             />
                           ),
                         )}
+                        {sectionKey === 'bestPractices' &&
+                        'alternatives' in docs &&
+                        docs.alternatives.length > 0 ? (
+                          <Stack space={headingSpacing}>
+                            <LinkableHeading level="3">
+                              Alternatives
+                            </LinkableHeading>
+                            <List space="medium">
+                              {docs.alternatives.map((alt) => (
+                                <Text key={`${alt.name}`}>
+                                  <TextLink
+                                    hitArea="large"
+                                    href={`/${alt.section || 'components'}/${alt.name}`}
+                                  >
+                                    {alt.name}
+                                  </TextLink>{' '}
+                                  <Secondary>— {alt.description}</Secondary>
+                                </Text>
+                              ))}
+                            </List>
+                          </Stack>
+                        ) : null}
                       </Stack>
                     </Stack>
                   ))}
@@ -201,7 +273,9 @@ export const DocDetails = () => {
                 />
               ))}
 
-              {'alternatives' in docs ? (
+              {'alternatives' in docs &&
+              !hasBestPractices &&
+              docs.alternatives.length > 0 ? (
                 <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Alternatives</LinkableHeading>
                   <List space="medium">
