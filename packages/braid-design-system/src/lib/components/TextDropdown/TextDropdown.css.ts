@@ -1,8 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-import { globalTextStyle } from 'braid-design-system/css';
-
 import { atoms } from '../../css/atoms/atoms';
+import { globalTextStyle } from '../../css/globalTypographyStyles';
 import { outlineStyle } from '../../css/outlineStyle';
 import { debugTouchable } from '../private/touchable/debugTouchable';
 import { virtualTouchableRules } from '../private/touchable/virtualTouchableRules';
