@@ -94,6 +94,7 @@ export const DocDetails = () => {
           }
 
           const heading = getSectionHeading(sectionKey);
+          const sectionId = slugify(sectionKey);
 
           const children = docSectionChildren
             .filter((child: { label?: string }): child is { label: string } =>
@@ -130,9 +131,9 @@ export const DocDetails = () => {
             }
 
             sections.push({
-              id: sectionKey,
+              id: sectionId,
               label: heading,
-              href: `#${sectionKey}`,
+              href: `#${sectionId}`,
               children:
                 bestPracticesChildren.length > 0
                   ? bestPracticesChildren
@@ -140,9 +141,9 @@ export const DocDetails = () => {
             });
           } else {
             sections.push({
-              id: sectionKey,
+              id: sectionId,
               label: heading,
-              href: `#${sectionKey}`,
+              href: `#${sectionId}`,
               children: children.length > 0 ? children : undefined,
             });
           }
