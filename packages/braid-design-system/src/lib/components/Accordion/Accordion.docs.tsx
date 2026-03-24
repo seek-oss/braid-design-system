@@ -219,6 +219,23 @@ const docs: ComponentDocs = {
     ],
     bestPractices: [
       {
+        label: 'Content guidelines',
+        description: (
+          <Stack space="large">
+            <List space="large">
+              <Text>
+                Avoid putting critical or high-priority content in an accordion,
+                as users may not read it.
+              </Text>
+              <Text>
+                Label your accordion items appropriately to help users decide
+                which sections to read.
+              </Text>
+            </List>
+          </Stack>
+        ),
+      },
+      {
         label: 'When to use',
         description: (
           <Stack space="xlarge">
@@ -275,25 +292,7 @@ const docs: ComponentDocs = {
       }),
     ],
   },
-  additional: [
-    {
-      label: 'Content guidelines',
-      description: (
-        <Stack space="large">
-          <List space="large">
-            <Text>
-              Avoid putting critical or high-priority content in an accordion,
-              as users may not read it.
-            </Text>
-            <Text>
-              Label your accordion items appropriately to help users decide
-              which sections to read.
-            </Text>
-          </List>
-        </Stack>
-      ),
-    },
-  ],
+  additional: [],
 };
 
 export default docs;

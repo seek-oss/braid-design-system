@@ -27,7 +27,7 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const interplayVariantAndToneDoc = [
   {
-    label: 'Interplay between variant and tone',
+    label: 'Impact of variant on tone',
     description: (
       <>
         <Text>
