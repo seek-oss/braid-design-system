@@ -2,6 +2,9 @@
 'braid-design-system': patch
 ---
 
-Added a hard font-size declaration to the TextDropdown component. Previously this component inherited it's font-size, leading to inconsistent experiences, potential WAI issues, and poor UI.
+---
+updated:
+  - TextDropdown
+---
 
-With this patch it is reset to the globalText: standard font size.
+**TextDropdown:** Updated font-size of options to maintain consistency and accessibility 
