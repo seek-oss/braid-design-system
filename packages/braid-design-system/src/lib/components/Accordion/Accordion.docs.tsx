@@ -292,7 +292,6 @@ const docs: ComponentDocs = {
       }),
     ],
   },
-  additional: [],
 };
 
 export default docs;

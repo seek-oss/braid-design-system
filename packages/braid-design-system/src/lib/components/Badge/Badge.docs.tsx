@@ -199,7 +199,6 @@ const docs: ComponentDocs = {
       description: 'For user-provided content.',
     },
   ],
-  additional: [],
 };
 
 export default docs;
