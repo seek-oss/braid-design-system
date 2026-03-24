@@ -175,7 +175,7 @@ export const DocDetails = () => {
                     docSectionChildren.some(hasContent),
                   )
                   .map(([sectionKey, docSectionChildren]) => (
-                    <Stack key={sectionKey} space={headingSpacing}>
+                    <Stack key={sectionKey} space="medium">
                       <LinkableHeading level="2" label={sectionKey}>
                         {getSectionHeading(sectionKey)}
                       </LinkableHeading>
