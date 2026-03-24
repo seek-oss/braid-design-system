@@ -1,11 +1,9 @@
+import { Box, IconChevron, Spread, Stack, Text } from 'braid-design-system';
 import { type FC, type ReactNode, useContext, useId, useState } from 'react';
 
-import { Box, Spread, Stack, Text } from 'braid-design-system';
-import { IconChevron } from 'braid-design-system';
-
 import {
+  type SideNavigationCategoryContextValue,
   SideNavigationCategoryContext,
-  validTones,
 } from './SideNavigationCategoryContext';
 
 import * as styles from './SideNavigationCategoryItem.css';
@@ -15,14 +13,20 @@ const defaultSize = 'large';
 export interface SideNavigationCategoryItemProps {
   label: string;
   children: ReactNode;
-  size?: 'xsmall' | 'small' | 'standard' | 'large';
-  tone?: (typeof validTones)[number];
-  weight?: 'regular' | 'medium' | 'strong';
+  size?: SideNavigationCategoryContextValue['size'];
+  tone?: SideNavigationCategoryContextValue['tone'];
+  weight?: SideNavigationCategoryContextValue['weight'];
 }
 
 export const SideNavigationCategoryItem: FC<
   SideNavigationCategoryItemProps
-> = ({ label, children, size: sizeProp, tone: toneProp, weight: weightProp }) => {
+> = ({
+  label,
+  children,
+  size: sizeProp,
+  tone: toneProp,
+  weight: weightProp,
+}) => {
   const categoryContext = useContext(SideNavigationCategoryContext);
   const contentId = useId();
   const [expanded, setExpanded] = useState(false);
@@ -31,8 +35,7 @@ export const SideNavigationCategoryItem: FC<
   const tone = categoryContext?.tone ?? toneProp ?? 'neutral';
   const weight = categoryContext?.weight ?? weightProp ?? 'medium';
 
-  const itemSpace =
-    size === 'xsmall' || size === 'small' ? 'small' : 'medium';
+  const itemSpace = size === 'xsmall' || size === 'small' ? 'small' : 'medium';
 
   return (
     <Stack space={itemSpace}>
