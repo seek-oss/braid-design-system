@@ -38,8 +38,8 @@ export const SideNavigationItem = ({
     borderRadius="standard"
     cursor="pointer"
     background={active ? 'formAccentSoft' : undefined}
-    paddingX="small"
-    paddingY="xsmall"
+    paddingX="large"
+    paddingY="small"
     className={styles.link}
   >
     <Inline space="small" alignY="center">
