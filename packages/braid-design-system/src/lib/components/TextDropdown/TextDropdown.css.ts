@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 import { atoms } from '../../css/atoms/atoms';
+import { globalTextStyle } from '../../css/globalTypographyStyles';
 import { outlineStyle } from '../../css/outlineStyle';
 import { debugTouchable } from '../private/touchable/debugTouchable';
 import { virtualTouchableRules } from '../private/touchable/virtualTouchableRules';
@@ -8,6 +9,9 @@ import { virtualTouchableRules } from '../private/touchable/virtualTouchableRule
 import { vars } from '../../themes/vars.css';
 
 export const select = style([
+  globalTextStyle({
+    size: 'standard',
+  }),
   {
     ...virtualTouchableRules,
   },
