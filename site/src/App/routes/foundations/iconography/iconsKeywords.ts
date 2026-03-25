@@ -74,6 +74,7 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
     'wallpaper',
     'landscape',
   ],
+  IconImageBroken: ['picture', 'photo', 'camera', 'image', 'broken', 'missing'],
   IconInfo: ['information', 'i', 'circle'],
   IconInvoice: ['bill', 'payment', 'receipt'],
   IconItalic: ['slanted', 'oblique', 'rich text', 'editor', 'formatting'],
@@ -112,6 +113,7 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
   IconPeople: ['users', 'group', 'team'],
   IconPersonAdd: ['person', 'user', 'add', 'add person', 'plus'],
   IconPersonVerified: ['person', 'user', 'verified', 'check', 'tick', 'shield'],
+  IconPhotoAdd: ['photo', 'camera', 'add'],
   IconPhone: ['call', 'telephone', 'mobile', 'home', 'landline'],
   IconPlatformAndroid: ['platform', 'android', 'google', 'mobile', 'phone'],
   IconPlatformApple: [
