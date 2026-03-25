@@ -28,7 +28,7 @@ export const SideNavigationCategory: FC<SideNavigationCategoryProps> = ({
 
   return (
     <SideNavigationCategoryContext.Provider value={contextValue}>
-      <Stack space="medium">
+      <Stack space="xxsmall">
         {!dividers ? (
           <>{children}</>
         ) : (

@@ -1,4 +1,4 @@
-import { Badge, Bleed, ButtonLink, Inline } from 'braid-design-system';
+import { Badge, ButtonLink, Inline } from 'braid-design-system';
 import type { ComponentProps } from 'react';
 
 type BadgeLabel = 'New' | 'Deprecated';
@@ -26,17 +26,15 @@ export const SideNavigationItem = ({
   active,
 }: SideNavigationItem) => (
   <Inline space="medium" alignY="center">
-    <Bleed horizontal="small">
-      <ButtonLink
-        variant={active ? 'soft' : 'transparent'}
-        tone="formAccent"
-        size="small"
-        href={path}
-        onClick={onClick}
-      >
-        {name}
-      </ButtonLink>
-    </Bleed>
+    <ButtonLink
+      variant={active ? 'soft' : 'transparent'}
+      tone="formAccent"
+      size="small"
+      href={path}
+      onClick={onClick}
+    >
+      {name}
+    </ButtonLink>
     {badge ? (
       <Badge bleedY tone={toneForBadge[badge]}>
         {badge}

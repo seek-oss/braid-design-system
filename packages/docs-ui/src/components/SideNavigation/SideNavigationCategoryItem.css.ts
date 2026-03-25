@@ -13,3 +13,9 @@ export const focusRing = style([
     borderRadius: 'small',
   }),
 ]);
+
+export const hoverBackground = style({
+  ':hover': {
+    background: vars.backgroundColor.neutralSoft,
+  },
+});

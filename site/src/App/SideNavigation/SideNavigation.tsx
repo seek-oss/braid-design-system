@@ -3,6 +3,7 @@ import {
   SideNavigationCategory,
   SideNavigationCategoryItem,
 } from '@braid-design-system/docs-ui';
+import { Stack } from 'braid-src/index';
 import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router';
 
@@ -16,7 +17,6 @@ import {
 import examples from '../routes/examples';
 import foundations from '../routes/foundations';
 import guides from '../routes/guides';
-import { Stack } from 'braid-src/index';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -49,7 +49,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   );
 
   return (
-    <SideNavigationCategory>
+    <SideNavigationCategory dividers={false} size="small">
       <SideNavigationCategoryItem label="Getting started">
         <Stack space="large">
           <SideNavigationSection

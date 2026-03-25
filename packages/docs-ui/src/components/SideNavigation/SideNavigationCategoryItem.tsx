@@ -44,7 +44,9 @@ export const SideNavigationCategoryItem: FC<
           component="button"
           type="button"
           cursor="pointer"
-          className={[styles.button, styles.focusRing]}
+          padding="medium"
+          borderRadius="standard"
+          className={[styles.button, styles.focusRing, styles.hoverBackground]}
           width="full"
           textAlign="left"
           aria-expanded={expanded}
