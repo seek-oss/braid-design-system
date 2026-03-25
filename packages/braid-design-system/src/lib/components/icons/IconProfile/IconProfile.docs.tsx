@@ -1,21 +1,71 @@
 import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
-import { IconProfile, Heading, Stack } from '../../';
+import {
+  IconProfile,
+  Heading,
+  Stack,
+  Inline,
+  Text,
+  Strong,
+  ButtonIcon,
+} from '../../';
 import { iconDocumentation } from '../iconCommon.docs';
 
 const docs: ComponentDocs = {
   category: 'Icon',
   Example: () =>
     source(
-      <Stack space="none" align="center">
-        <Heading component="div" level="1">
-          <IconProfile />
-        </Heading>
-      </Stack>,
+      <Inline space={{ mobile: 'large', tablet: 'xlarge' }} align="center">
+        <Stack space="medium" align="center">
+          <Heading component="div" level="1">
+            <IconProfile />
+          </Heading>
+          <Text tone="secondary" size="small" align="center">
+            INACTIVE
+          </Text>
+        </Stack>
+        <Stack space="medium" align="center">
+          <Heading component="div" level="1">
+            <IconProfile active />
+          </Heading>
+          <Text tone="secondary" size="small" align="center">
+            ACTIVE
+          </Text>
+        </Stack>
+      </Inline>,
     ),
   alternatives: [],
-  additional: [...iconDocumentation],
+  additional: [
+    {
+      label: 'Toggling active state',
+      description: (
+        <Text>
+          The icon can be marked as active using the <Strong>active</Strong>{' '}
+          prop.
+        </Text>
+      ),
+      Example: ({ getState, toggleState }) =>
+        source(
+          <Stack space="large">
+            <ButtonIcon
+              icon={<IconProfile active={getState('active')} />}
+              size="large"
+              label={
+                getState('active')
+                  ? 'Profile: active = true'
+                  : 'Profile: active = false'
+              }
+              onClick={() => toggleState('active')}
+            />
+            <Text tone="secondary" size="small">
+              (Click icon above to toggle active state)
+            </Text>
+          </Stack>,
+        ),
+    },
+    ...iconDocumentation,
+  ],
 };
 
 export default docs;
