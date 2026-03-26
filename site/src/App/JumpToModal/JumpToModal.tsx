@@ -18,14 +18,28 @@ import {
   type SearchItem,
 } from './getSearchItems';
 
-import { uppercase } from './SearchModal.css';
+import { uppercase } from './JumpToModal.css';
 
-interface SearchModalProps {
+interface JumpToModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
+const KeyboardIcon = ({ children }: { children: React.ReactNode }) => (
+  <Box
+    display="flex"
+    padding="xsmall"
+    background="neutralSoft"
+    borderRadius="standard"
+    alignItems="center"
+    justifyContent="center"
+  >
+    <Text tone="secondary" size="xsmall">
+      {children}
+    </Text>
+  </Box>
+);
+export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -179,7 +193,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
           return (
             <ScrollContainer direction="vertical">
               <Bleed horizontal="large">
-                <Box paddingX="large">
+                <Box paddingX="large" paddingTop="xxsmall">
                   <Stack space="large">
                     {(
                       ['Foundations', 'Components', 'CSS', 'Logic'] as const
@@ -209,27 +223,43 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                                 component="li"
                                 display="flex"
                                 alignItems="center"
+                                justifyContent="spaceBetween"
                                 gap="small"
                               >
-                                <ButtonLink
-                                  variant={isSelected ? 'soft' : 'transparent'}
-                                  tone="formAccent"
-                                  size="small"
-                                  href={item.path}
-                                  onClick={() => {
-                                    navigate(item.path);
-                                    onClose();
-                                  }}
-                                  onMouseEnter={() =>
-                                    setSelectedIndex(globalIndex)
-                                  }
-                                  data-index={globalIndex}
-                                >
-                                  {item.name}
-                                </ButtonLink>
-                                <Text size="xsmall" tone="secondary">
-                                  {item.hasProps && 'Shift+Enter for props'}
-                                </Text>
+                                <Box display="flex">
+                                  <ButtonLink
+                                    variant={
+                                      isSelected ? 'soft' : 'transparent'
+                                    }
+                                    tone="formAccent"
+                                    size="small"
+                                    href={item.path}
+                                    onClick={() => {
+                                      navigate(item.path);
+                                      onClose();
+                                    }}
+                                    onMouseEnter={() =>
+                                      setSelectedIndex(globalIndex)
+                                    }
+                                    data-index={globalIndex}
+                                  >
+                                    {item.name}
+                                  </ButtonLink>
+                                </Box>
+
+                                {item.hasProps && isSelected && (
+                                  <Box
+                                    display="flex"
+                                    alignItems="center"
+                                    gap="xxsmall"
+                                  >
+                                    <KeyboardIcon>⇧</KeyboardIcon>
+                                    <KeyboardIcon>↵</KeyboardIcon>
+                                    <Text tone="secondary" size="xsmall">
+                                      Props
+                                    </Text>
+                                  </Box>
+                                )}
                               </Box>
                             );
                           })}

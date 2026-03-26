@@ -15,17 +15,17 @@ import { DocNavigation } from './DocNavigation/DocNavigation';
 import { DocProps } from './DocNavigation/DocProps';
 import { DocReleases } from './DocNavigation/DocReleases';
 import { DocSnippets } from './DocNavigation/DocSnippets';
+import { JumpToModal } from './JumpToModal/JumpToModal';
 import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
 import { ThemeSettingProvider } from './ThemeSetting';
-import { SearchModal } from './Search/SearchModal';
-import { useSearchHotkey } from './useSearchHotkey/useSearchHotkey';
 import examples from './routes/examples';
 import foundations from './routes/foundations';
 import { GalleryPage } from './routes/gallery';
 import guides from './routes/guides';
 import { HomePage } from './routes/home';
 import { ReleasesPage } from './routes/releases';
+import { useSearchHotkey } from './useSearchHotkey/useSearchHotkey';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -57,10 +57,10 @@ const CustomLink = makeLinkComponent(
 );
 
 export const App = () => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isJumpToModalOpen, setIsJumpToModalOpen] = useState(false);
 
   useSearchHotkey({
-    onOpen: () => setIsSearchOpen(true),
+    onOpen: () => setIsJumpToModalOpen(true),
   });
 
   // TODO: COLORMODE RELEASE
@@ -99,9 +99,9 @@ export const App = () => {
         <BraidProvider theme={docsTheme} linkComponent={CustomLink}>
           <ToastProvider>
             <AppMeta />
-            <SearchModal
-              isOpen={isSearchOpen}
-              onClose={() => setIsSearchOpen(false)}
+            <JumpToModal
+              isOpen={isJumpToModalOpen}
+              onClose={() => setIsJumpToModalOpen(false)}
             />
             <Routes>
               <Route path="/gallery" element={<GalleryPage />} />
