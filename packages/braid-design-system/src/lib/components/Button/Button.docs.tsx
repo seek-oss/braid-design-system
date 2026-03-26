@@ -312,8 +312,8 @@ const docs: ComponentDocs = {
           <Stack space="large">
             <Heading level="4">Critical</Heading>
             <Text>
-              For destructive actions like “Delete” you can set the
-              button&rsquo;s <Strong>tone</Strong> to <Strong>critical</Strong>.
+              For destructive actions like &quot;Delete&quot; you can set the
+              button&apos;s <Strong>tone</Strong> to <Strong>critical</Strong>.
               This tone provides a visual warning to users and should be
               reserved for high risk actions.
             </Text>
