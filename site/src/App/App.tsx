@@ -1,8 +1,5 @@
 import 'braid-src/reset';
 
-// TEMPORARY: Remove when discarding Heading level 2 override exploration
-import './HeadingOverride.css';
-
 import {
   BraidProvider,
   ToastProvider,
