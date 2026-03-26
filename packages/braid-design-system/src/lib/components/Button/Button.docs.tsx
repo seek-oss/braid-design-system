@@ -848,7 +848,7 @@ const docs: ComponentDocs = {
               <TextLink href="/components/Heading">Heading</TextLink> element
               using an <TextLink href="/components/Inline">Inline</TextLink>,
               even though the button is actually taller than the heading. If we
-              didn’t use the <Strong>bleed</Strong> prop in this case, the
+              didn&apos;t use the <Strong>bleed</Strong> prop in this case, the
               button would introduce unwanted space above and below the heading.
             </Text>
           </>
