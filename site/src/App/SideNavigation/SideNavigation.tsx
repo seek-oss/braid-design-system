@@ -3,7 +3,7 @@ import {
   SideNavigationCategory,
   SideNavigationCategoryItem,
 } from '@braid-design-system/docs-ui';
-import { Stack } from 'braid-src/index';
+import { Bleed, Stack } from 'braid-src/index';
 import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router';
 
@@ -49,102 +49,78 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   );
 
   return (
-    <SideNavigationCategory dividers={false} size="small">
-      <SideNavigationCategoryItem label="Getting started">
-        <Stack space="large">
-          <SideNavigationSection
-            title="Resources"
-            hideTitle={true}
-            items={[
-              {
-                name: 'Releases',
-                path: '/releases',
-                active: isActive('/releases'),
+    <Bleed left="medium">
+      <SideNavigationCategory dividers={false} size="small">
+        <SideNavigationCategoryItem label="Getting started">
+          <Stack space="large">
+            <SideNavigationSection
+              title="Resources"
+              hideTitle={true}
+              items={[
+                {
+                  name: 'Releases',
+                  path: '/releases',
+                  active: isActive('/releases'),
+                  onClick: onSelect,
+                },
+                {
+                  name: 'Gallery',
+                  path: '/gallery',
+                },
+                {
+                  name: 'Playroom',
+                  path: playroomUrl,
+                },
+                {
+                  name: 'GitHub',
+                  path: 'https://github.com/seek-oss/braid-design-system',
+                },
+              ]}
+            />
+
+            <SideNavigationSection
+              title="Guides"
+              items={Object.entries(guides).map(([path, guide]) => ({
+                name: guide.title,
+                badge: guide.badge,
+                path,
+                active: isActive(path),
                 onClick: onSelect,
-              },
-              {
-                name: 'Gallery',
-                path: '/gallery',
-              },
-              {
-                name: 'Playroom',
-                path: playroomUrl,
-              },
-              {
-                name: 'GitHub',
-                path: 'https://github.com/seek-oss/braid-design-system',
-              },
-            ]}
-          />
+              }))}
+            />
 
+            <SideNavigationSection
+              title="Examples"
+              items={Object.entries(examples).map(([path, example]) => ({
+                name: example.title,
+                badge: example.badge,
+                path,
+                active: isActive(path),
+                onClick: onSelect,
+              }))}
+            />
+          </Stack>
+        </SideNavigationCategoryItem>
+
+        <SideNavigationCategoryItem label="Foundations">
           <SideNavigationSection
-            title="Guides"
-            items={Object.entries(guides).map(([path, guide]) => ({
-              name: guide.title,
-              badge: guide.badge,
+            title="Foundations"
+            hideTitle={true}
+            items={Object.entries(foundations).map(([path, foundation]) => ({
+              name: foundation.title,
+              badge: foundation.badge,
               path,
               active: isActive(path),
               onClick: onSelect,
             }))}
           />
+        </SideNavigationCategoryItem>
 
+        <SideNavigationCategoryItem label="Components">
           <SideNavigationSection
-            title="Examples"
-            items={Object.entries(examples).map(([path, example]) => ({
-              name: example.title,
-              badge: example.badge,
-              path,
-              active: isActive(path),
-              onClick: onSelect,
-            }))}
-          />
-        </Stack>
-      </SideNavigationCategoryItem>
-
-      <SideNavigationCategoryItem label="Foundations">
-        <SideNavigationSection
-          title="Foundations"
-          hideTitle={true}
-          items={Object.entries(foundations).map(([path, foundation]) => ({
-            name: foundation.title,
-            badge: foundation.badge,
-            path,
-            active: isActive(path),
-            onClick: onSelect,
-          }))}
-        />
-      </SideNavigationCategoryItem>
-
-      <SideNavigationCategoryItem label="Components">
-        <SideNavigationSection
-          title="Components"
-          hideTitle={true}
-          items={componentsList.map((docs) => ({
-            name: docs.name,
-            badge: getBadge(docs),
-            path: `/components/${docs.name}`,
-            active: isActive(`/components/${docs.name}`),
-            onClick: onSelect,
-          }))}
-        />
-      </SideNavigationCategoryItem>
-
-      <SideNavigationCategoryItem label="Utilities">
-        <Stack space="large">
-          <SideNavigationSection
-            title="CSS"
-            items={documentedCss.map((doc) => ({
-              name: doc.name,
-              badge: getBadge(doc),
-              path: `/css/${doc.name}`,
-              active: isActive(`/css/${doc.name}`),
-              onClick: onSelect,
-            }))}
-          />
-
-          <SideNavigationSection
-            title="Logic"
-            items={categorisedComponents.Logic.map((docs) => ({
+            title="Components"
+            hideTitle={true}
+            items={componentsList.map((docs) => ({
               name: docs.name,
               badge: getBadge(docs),
               path: `/components/${docs.name}`,
@@ -152,8 +128,34 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
               onClick: onSelect,
             }))}
           />
-        </Stack>
-      </SideNavigationCategoryItem>
-    </SideNavigationCategory>
+        </SideNavigationCategoryItem>
+
+        <SideNavigationCategoryItem label="Utilities">
+          <Stack space="large">
+            <SideNavigationSection
+              title="CSS"
+              items={documentedCss.map((doc) => ({
+                name: doc.name,
+                badge: getBadge(doc),
+                path: `/css/${doc.name}`,
+                active: isActive(`/css/${doc.name}`),
+                onClick: onSelect,
+              }))}
+            />
+
+            <SideNavigationSection
+              title="Logic"
+              items={categorisedComponents.Logic.map((docs) => ({
+                name: docs.name,
+                badge: getBadge(docs),
+                path: `/components/${docs.name}`,
+                active: isActive(`/components/${docs.name}`),
+                onClick: onSelect,
+              }))}
+            />
+          </Stack>
+        </SideNavigationCategoryItem>
+      </SideNavigationCategory>
+    </Bleed>
   );
 };
