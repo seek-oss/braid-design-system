@@ -46,7 +46,7 @@ export const SideNavigationSection = ({
       </>
     ) : (
       <Stack space="small">
-        <Box className={styles.uppercase}>
+        <Box className={styles.uppercase} paddingLeft="large">
           <Title>{title}</Title>
         </Box>
         <ItemList items={items} />

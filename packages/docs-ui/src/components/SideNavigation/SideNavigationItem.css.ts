@@ -4,7 +4,7 @@ import { vars } from 'braid-design-system/css';
 export const link = style({
   textDecoration: 'none',
   ':hover': {
-    background: vars.backgroundColor.formAccentSoftHover,
+    background: vars.backgroundColor.formAccentSoft,
   },
   ':active': {
     background: vars.backgroundColor.formAccentSoftActive,
