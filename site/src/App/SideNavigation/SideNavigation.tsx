@@ -147,6 +147,10 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           />
         </SideNavigationCategoryItem>
 
+        <SideNavigationCategoryItem label="Patterns">
+          <SideNavigationSection title="Patterns" hideTitle={true} items={[]} />
+        </SideNavigationCategoryItem>
+
         <SideNavigationCategoryItem
           label="Utilities"
           defaultExpanded={
